@@ -30,18 +30,20 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// using VLAN tag
 //			_, err := network.NewNetworkVlan(ctx, "vlan99", &network.NetworkVlanArgs{
-//				Comment:  pulumi.String("VLAN 99"),
 //				NodeName: pulumi.String("pve"),
+//				Name:     pulumi.String("eno0.99"),
+//				Comment:  pulumi.String("VLAN 99"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// using custom network interface name
 //			_, err = network.NewNetworkVlan(ctx, "vlan98", &network.NetworkVlanArgs{
-//				Comment:   pulumi.String("VLAN 98"),
-//				Interface: pulumi.String("eno0"),
 //				NodeName:  pulumi.String("pve"),
+//				Name:      pulumi.String("vlan_lab"),
+//				Interface: pulumi.String("eno0"),
 //				Vlan:      pulumi.Int(98),
+//				Comment:   pulumi.String("VLAN 98"),
 //			})
 //			if err != nil {
 //				return err

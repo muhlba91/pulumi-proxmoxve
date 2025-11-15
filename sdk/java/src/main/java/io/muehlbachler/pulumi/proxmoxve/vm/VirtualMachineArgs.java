@@ -43,14 +43,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     public static final VirtualMachineArgs Empty = new VirtualMachineArgs();
 
     /**
-     * Whether to enable ACPI (defaults to `true`).
+     * Whether to enable ACPI (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     @Import(name="acpi")
     private @Nullable Output<Boolean> acpi;
 
     /**
-     * @return Whether to enable ACPI (defaults to `true`).
+     * @return Whether to enable ACPI (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> acpi() {
@@ -103,14 +103,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The BIOS implementation (defaults to `seabios`).
+     * The BIOS implementation (defaults to &lt;span pulumi-lang-nodejs=&#34;`seabios`&#34; pulumi-lang-dotnet=&#34;`Seabios`&#34; pulumi-lang-go=&#34;`seabios`&#34; pulumi-lang-python=&#34;`seabios`&#34; pulumi-lang-yaml=&#34;`seabios`&#34; pulumi-lang-java=&#34;`seabios`&#34;&gt;`seabios`&lt;/span&gt;).
      * 
      */
     @Import(name="bios")
     private @Nullable Output<String> bios;
 
     /**
-     * @return The BIOS implementation (defaults to `seabios`).
+     * @return The BIOS implementation (defaults to &lt;span pulumi-lang-nodejs=&#34;`seabios`&#34; pulumi-lang-dotnet=&#34;`Seabios`&#34; pulumi-lang-go=&#34;`seabios`&#34; pulumi-lang-python=&#34;`seabios`&#34; pulumi-lang-yaml=&#34;`seabios`&#34; pulumi-lang-java=&#34;`seabios`&#34;&gt;`seabios`&lt;/span&gt;).
      * 
      */
     public Optional<Output<String>> bios() {
@@ -210,16 +210,16 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The efi disk device (required if `bios` is set
-     * to `ovmf`)
+     * The efi disk device (required if &lt;span pulumi-lang-nodejs=&#34;`bios`&#34; pulumi-lang-dotnet=&#34;`Bios`&#34; pulumi-lang-go=&#34;`bios`&#34; pulumi-lang-python=&#34;`bios`&#34; pulumi-lang-yaml=&#34;`bios`&#34; pulumi-lang-java=&#34;`bios`&#34;&gt;`bios`&lt;/span&gt; is set
+     * to &lt;span pulumi-lang-nodejs=&#34;`ovmf`&#34; pulumi-lang-dotnet=&#34;`Ovmf`&#34; pulumi-lang-go=&#34;`ovmf`&#34; pulumi-lang-python=&#34;`ovmf`&#34; pulumi-lang-yaml=&#34;`ovmf`&#34; pulumi-lang-java=&#34;`ovmf`&#34;&gt;`ovmf`&lt;/span&gt;)
      * 
      */
     @Import(name="efiDisk")
     private @Nullable Output<VirtualMachineEfiDiskArgs> efiDisk;
 
     /**
-     * @return The efi disk device (required if `bios` is set
-     * to `ovmf`)
+     * @return The efi disk device (required if &lt;span pulumi-lang-nodejs=&#34;`bios`&#34; pulumi-lang-dotnet=&#34;`Bios`&#34; pulumi-lang-go=&#34;`bios`&#34; pulumi-lang-python=&#34;`bios`&#34; pulumi-lang-yaml=&#34;`bios`&#34; pulumi-lang-java=&#34;`bios`&#34;&gt;`bios`&lt;/span&gt; is set
+     * to &lt;span pulumi-lang-nodejs=&#34;`ovmf`&#34; pulumi-lang-dotnet=&#34;`Ovmf`&#34; pulumi-lang-go=&#34;`ovmf`&#34; pulumi-lang-python=&#34;`ovmf`&#34; pulumi-lang-yaml=&#34;`ovmf`&#34; pulumi-lang-java=&#34;`ovmf`&#34;&gt;`ovmf`&lt;/span&gt;)
      * 
      */
     public Optional<Output<VirtualMachineEfiDiskArgs>> efiDisk() {
@@ -319,14 +319,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The VM machine type (defaults to `pc`).
+     * The VM machine type (defaults to &lt;span pulumi-lang-nodejs=&#34;`pc`&#34; pulumi-lang-dotnet=&#34;`Pc`&#34; pulumi-lang-go=&#34;`pc`&#34; pulumi-lang-python=&#34;`pc`&#34; pulumi-lang-yaml=&#34;`pc`&#34; pulumi-lang-java=&#34;`pc`&#34;&gt;`pc`&lt;/span&gt;).
      * 
      */
     @Import(name="machine")
     private @Nullable Output<String> machine;
 
     /**
-     * @return The VM machine type (defaults to `pc`).
+     * @return The VM machine type (defaults to &lt;span pulumi-lang-nodejs=&#34;`pc`&#34; pulumi-lang-dotnet=&#34;`Pc`&#34; pulumi-lang-go=&#34;`pc`&#34; pulumi-lang-python=&#34;`pc`&#34; pulumi-lang-yaml=&#34;`pc`&#34; pulumi-lang-java=&#34;`pc`&#34;&gt;`pc`&lt;/span&gt;).
      * 
      */
     public Optional<Output<String>> machine() {
@@ -350,7 +350,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * Migrate the VM on node change instead of re-creating
-     * it (defaults to `false`).
+     * it (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Import(name="migrate")
@@ -358,7 +358,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return Migrate the VM on node change instead of re-creating
-     * it (defaults to `false`).
+     * it (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> migrate() {
@@ -429,7 +429,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * Specifies whether a VM will be started during system
-     * boot. (defaults to `true`)
+     * boot. (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
      * 
      */
     @Import(name="onBoot")
@@ -437,7 +437,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return Specifies whether a VM will be started during system
-     * boot. (defaults to `true`)
+     * boot. (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
      * 
      */
     public Optional<Output<Boolean>> onBoot() {
@@ -475,14 +475,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+     * Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Import(name="protection")
     private @Nullable Output<Boolean> protection;
 
     /**
-     * @return Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+     * @return Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> protection() {
@@ -490,14 +490,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Reboot the VM after initial creation (defaults to `false`).
+     * Reboot the VM after initial creation (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Import(name="reboot")
     private @Nullable Output<Boolean> reboot;
 
     /**
-     * @return Reboot the VM after initial creation (defaults to `false`).
+     * @return Reboot the VM after initial creation (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> reboot() {
@@ -505,14 +505,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Reboot the VM after update if needed (defaults to `true`).
+     * Reboot the VM after update if needed (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     @Import(name="rebootAfterUpdate")
     private @Nullable Output<Boolean> rebootAfterUpdate;
 
     /**
-     * @return Reboot the VM after update if needed (defaults to `true`).
+     * @return Reboot the VM after update if needed (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> rebootAfterUpdate() {
@@ -583,7 +583,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * Whether to start the virtual machine (defaults
-     * to `true`).
+     * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     @Import(name="started")
@@ -591,7 +591,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return Whether to start the virtual machine (defaults
-     * to `true`).
+     * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> started() {
@@ -614,14 +614,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Whether to stop rather than shutdown on VM destroy (defaults to `false`)
+     * Whether to stop rather than shutdown on VM destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
     @Import(name="stopOnDestroy")
     private @Nullable Output<Boolean> stopOnDestroy;
 
     /**
-     * @return Whether to stop rather than shutdown on VM destroy (defaults to `false`)
+     * @return Whether to stop rather than shutdown on VM destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
     public Optional<Output<Boolean>> stopOnDestroy() {
@@ -630,7 +630,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * Whether to enable the USB tablet device (defaults
-     * to `true`).
+     * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     @Import(name="tabletDevice")
@@ -638,7 +638,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return Whether to enable the USB tablet device (defaults
-     * to `true`).
+     * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> tabletDevice() {
@@ -649,7 +649,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
      * A list of tags of the VM. This is only meta information (
      * defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
      * template is not sorted, then Proxmox will always report a difference on the
-     * resource. You may use the `ignore_changes` lifecycle meta-argument to ignore
+     * resource. You may use the &lt;span pulumi-lang-nodejs=&#34;`ignoreChanges`&#34; pulumi-lang-dotnet=&#34;`IgnoreChanges`&#34; pulumi-lang-go=&#34;`ignoreChanges`&#34; pulumi-lang-python=&#34;`ignore_changes`&#34; pulumi-lang-yaml=&#34;`ignoreChanges`&#34; pulumi-lang-java=&#34;`ignoreChanges`&#34;&gt;`ignore_changes`&lt;/span&gt; lifecycle meta-argument to ignore
      * changes to this attribute.
      * 
      */
@@ -660,7 +660,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
      * @return A list of tags of the VM. This is only meta information (
      * defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
      * template is not sorted, then Proxmox will always report a difference on the
-     * resource. You may use the `ignore_changes` lifecycle meta-argument to ignore
+     * resource. You may use the &lt;span pulumi-lang-nodejs=&#34;`ignoreChanges`&#34; pulumi-lang-dotnet=&#34;`IgnoreChanges`&#34; pulumi-lang-go=&#34;`ignoreChanges`&#34; pulumi-lang-python=&#34;`ignore_changes`&#34; pulumi-lang-yaml=&#34;`ignoreChanges`&#34; pulumi-lang-java=&#34;`ignoreChanges`&#34;&gt;`ignore_changes`&lt;/span&gt; lifecycle meta-argument to ignore
      * changes to this attribute.
      * 
      */
@@ -669,14 +669,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Whether to create a template (defaults to `false`).
+     * Whether to create a template (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Import(name="template")
     private @Nullable Output<Boolean> template;
 
     /**
-     * @return Whether to create a template (defaults to `false`).
+     * @return Whether to create a template (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> template() {
@@ -738,10 +738,10 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
      * MoveDisk timeout
      * 
      * @deprecated
-     * This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead.
+     * This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create /&lt;span pulumi-lang-nodejs=&#34; timeoutClone &#34; pulumi-lang-dotnet=&#34; TimeoutClone &#34; pulumi-lang-go=&#34; timeoutClone &#34; pulumi-lang-python=&#34; timeout_clone &#34; pulumi-lang-yaml=&#34; timeoutClone &#34; pulumi-lang-java=&#34; timeoutClone &#34;&gt; timeout_clone &lt;/span&gt;/ timeout_migrate) is used instead.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead. */
+    @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create /<span pulumi-lang-nodejs="" timeoutClone "" pulumi-lang-dotnet="" TimeoutClone "" pulumi-lang-go="" timeoutClone "" pulumi-lang-python="" timeout_clone "" pulumi-lang-yaml="" timeoutClone "" pulumi-lang-java="" timeoutClone ""> timeout_clone </span>/ timeout_migrate) is used instead. */
     @Import(name="timeoutMoveDisk")
     private @Nullable Output<Integer> timeoutMoveDisk;
 
@@ -749,10 +749,10 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
      * @return MoveDisk timeout
      * 
      * @deprecated
-     * This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead.
+     * This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create /&lt;span pulumi-lang-nodejs=&#34; timeoutClone &#34; pulumi-lang-dotnet=&#34; TimeoutClone &#34; pulumi-lang-go=&#34; timeoutClone &#34; pulumi-lang-python=&#34; timeout_clone &#34; pulumi-lang-yaml=&#34; timeoutClone &#34; pulumi-lang-java=&#34; timeoutClone &#34;&gt; timeout_clone &lt;/span&gt;/ timeout_migrate) is used instead.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead. */
+    @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create /<span pulumi-lang-nodejs="" timeoutClone "" pulumi-lang-dotnet="" TimeoutClone "" pulumi-lang-go="" timeoutClone "" pulumi-lang-python="" timeout_clone "" pulumi-lang-yaml="" timeoutClone "" pulumi-lang-java="" timeoutClone ""> timeout_clone </span>/ timeout_migrate) is used instead. */
     public Optional<Output<Integer>> timeoutMoveDisk() {
         return Optional.ofNullable(this.timeoutMoveDisk);
     }
@@ -994,7 +994,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param acpi Whether to enable ACPI (defaults to `true`).
+         * @param acpi Whether to enable ACPI (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1005,7 +1005,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param acpi Whether to enable ACPI (defaults to `true`).
+         * @param acpi Whether to enable ACPI (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1078,7 +1078,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param bios The BIOS implementation (defaults to `seabios`).
+         * @param bios The BIOS implementation (defaults to &lt;span pulumi-lang-nodejs=&#34;`seabios`&#34; pulumi-lang-dotnet=&#34;`Seabios`&#34; pulumi-lang-go=&#34;`seabios`&#34; pulumi-lang-python=&#34;`seabios`&#34; pulumi-lang-yaml=&#34;`seabios`&#34; pulumi-lang-java=&#34;`seabios`&#34;&gt;`seabios`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1089,7 +1089,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param bios The BIOS implementation (defaults to `seabios`).
+         * @param bios The BIOS implementation (defaults to &lt;span pulumi-lang-nodejs=&#34;`seabios`&#34; pulumi-lang-dotnet=&#34;`Seabios`&#34; pulumi-lang-go=&#34;`seabios`&#34; pulumi-lang-python=&#34;`seabios`&#34; pulumi-lang-yaml=&#34;`seabios`&#34; pulumi-lang-java=&#34;`seabios`&#34;&gt;`seabios`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1248,8 +1248,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param efiDisk The efi disk device (required if `bios` is set
-         * to `ovmf`)
+         * @param efiDisk The efi disk device (required if &lt;span pulumi-lang-nodejs=&#34;`bios`&#34; pulumi-lang-dotnet=&#34;`Bios`&#34; pulumi-lang-go=&#34;`bios`&#34; pulumi-lang-python=&#34;`bios`&#34; pulumi-lang-yaml=&#34;`bios`&#34; pulumi-lang-java=&#34;`bios`&#34;&gt;`bios`&lt;/span&gt; is set
+         * to &lt;span pulumi-lang-nodejs=&#34;`ovmf`&#34; pulumi-lang-dotnet=&#34;`Ovmf`&#34; pulumi-lang-go=&#34;`ovmf`&#34; pulumi-lang-python=&#34;`ovmf`&#34; pulumi-lang-yaml=&#34;`ovmf`&#34; pulumi-lang-java=&#34;`ovmf`&#34;&gt;`ovmf`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -1260,8 +1260,8 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param efiDisk The efi disk device (required if `bios` is set
-         * to `ovmf`)
+         * @param efiDisk The efi disk device (required if &lt;span pulumi-lang-nodejs=&#34;`bios`&#34; pulumi-lang-dotnet=&#34;`Bios`&#34; pulumi-lang-go=&#34;`bios`&#34; pulumi-lang-python=&#34;`bios`&#34; pulumi-lang-yaml=&#34;`bios`&#34; pulumi-lang-java=&#34;`bios`&#34;&gt;`bios`&lt;/span&gt; is set
+         * to &lt;span pulumi-lang-nodejs=&#34;`ovmf`&#34; pulumi-lang-dotnet=&#34;`Ovmf`&#34; pulumi-lang-go=&#34;`ovmf`&#34; pulumi-lang-python=&#34;`ovmf`&#34; pulumi-lang-yaml=&#34;`ovmf`&#34; pulumi-lang-java=&#34;`ovmf`&#34;&gt;`ovmf`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -1420,7 +1420,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param machine The VM machine type (defaults to `pc`).
+         * @param machine The VM machine type (defaults to &lt;span pulumi-lang-nodejs=&#34;`pc`&#34; pulumi-lang-dotnet=&#34;`Pc`&#34; pulumi-lang-go=&#34;`pc`&#34; pulumi-lang-python=&#34;`pc`&#34; pulumi-lang-yaml=&#34;`pc`&#34; pulumi-lang-java=&#34;`pc`&#34;&gt;`pc`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1431,7 +1431,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param machine The VM machine type (defaults to `pc`).
+         * @param machine The VM machine type (defaults to &lt;span pulumi-lang-nodejs=&#34;`pc`&#34; pulumi-lang-dotnet=&#34;`Pc`&#34; pulumi-lang-go=&#34;`pc`&#34; pulumi-lang-python=&#34;`pc`&#34; pulumi-lang-yaml=&#34;`pc`&#34; pulumi-lang-java=&#34;`pc`&#34;&gt;`pc`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1463,7 +1463,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param migrate Migrate the VM on node change instead of re-creating
-         * it (defaults to `false`).
+         * it (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1475,7 +1475,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param migrate Migrate the VM on node change instead of re-creating
-         * it (defaults to `false`).
+         * it (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1592,7 +1592,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param onBoot Specifies whether a VM will be started during system
-         * boot. (defaults to `true`)
+         * boot. (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -1604,7 +1604,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param onBoot Specifies whether a VM will be started during system
-         * boot. (defaults to `true`)
+         * boot. (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -1656,7 +1656,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param protection Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+         * @param protection Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1667,7 +1667,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param protection Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+         * @param protection Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1677,7 +1677,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param reboot Reboot the VM after initial creation (defaults to `false`).
+         * @param reboot Reboot the VM after initial creation (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1688,7 +1688,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param reboot Reboot the VM after initial creation (defaults to `false`).
+         * @param reboot Reboot the VM after initial creation (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1698,7 +1698,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param rebootAfterUpdate Reboot the VM after update if needed (defaults to `true`).
+         * @param rebootAfterUpdate Reboot the VM after update if needed (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1709,7 +1709,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param rebootAfterUpdate Reboot the VM after update if needed (defaults to `true`).
+         * @param rebootAfterUpdate Reboot the VM after update if needed (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1826,7 +1826,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param started Whether to start the virtual machine (defaults
-         * to `true`).
+         * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1838,7 +1838,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param started Whether to start the virtual machine (defaults
-         * to `true`).
+         * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1869,7 +1869,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param stopOnDestroy Whether to stop rather than shutdown on VM destroy (defaults to `false`)
+         * @param stopOnDestroy Whether to stop rather than shutdown on VM destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -1880,7 +1880,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param stopOnDestroy Whether to stop rather than shutdown on VM destroy (defaults to `false`)
+         * @param stopOnDestroy Whether to stop rather than shutdown on VM destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -1891,7 +1891,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param tabletDevice Whether to enable the USB tablet device (defaults
-         * to `true`).
+         * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1903,7 +1903,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param tabletDevice Whether to enable the USB tablet device (defaults
-         * to `true`).
+         * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1916,7 +1916,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
          * @param tags A list of tags of the VM. This is only meta information (
          * defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
          * template is not sorted, then Proxmox will always report a difference on the
-         * resource. You may use the `ignore_changes` lifecycle meta-argument to ignore
+         * resource. You may use the &lt;span pulumi-lang-nodejs=&#34;`ignoreChanges`&#34; pulumi-lang-dotnet=&#34;`IgnoreChanges`&#34; pulumi-lang-go=&#34;`ignoreChanges`&#34; pulumi-lang-python=&#34;`ignore_changes`&#34; pulumi-lang-yaml=&#34;`ignoreChanges`&#34; pulumi-lang-java=&#34;`ignoreChanges`&#34;&gt;`ignore_changes`&lt;/span&gt; lifecycle meta-argument to ignore
          * changes to this attribute.
          * 
          * @return builder
@@ -1931,7 +1931,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
          * @param tags A list of tags of the VM. This is only meta information (
          * defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
          * template is not sorted, then Proxmox will always report a difference on the
-         * resource. You may use the `ignore_changes` lifecycle meta-argument to ignore
+         * resource. You may use the &lt;span pulumi-lang-nodejs=&#34;`ignoreChanges`&#34; pulumi-lang-dotnet=&#34;`IgnoreChanges`&#34; pulumi-lang-go=&#34;`ignoreChanges`&#34; pulumi-lang-python=&#34;`ignore_changes`&#34; pulumi-lang-yaml=&#34;`ignoreChanges`&#34; pulumi-lang-java=&#34;`ignoreChanges`&#34;&gt;`ignore_changes`&lt;/span&gt; lifecycle meta-argument to ignore
          * changes to this attribute.
          * 
          * @return builder
@@ -1945,7 +1945,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
          * @param tags A list of tags of the VM. This is only meta information (
          * defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
          * template is not sorted, then Proxmox will always report a difference on the
-         * resource. You may use the `ignore_changes` lifecycle meta-argument to ignore
+         * resource. You may use the &lt;span pulumi-lang-nodejs=&#34;`ignoreChanges`&#34; pulumi-lang-dotnet=&#34;`IgnoreChanges`&#34; pulumi-lang-go=&#34;`ignoreChanges`&#34; pulumi-lang-python=&#34;`ignore_changes`&#34; pulumi-lang-yaml=&#34;`ignoreChanges`&#34; pulumi-lang-java=&#34;`ignoreChanges`&#34;&gt;`ignore_changes`&lt;/span&gt; lifecycle meta-argument to ignore
          * changes to this attribute.
          * 
          * @return builder
@@ -1956,7 +1956,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param template Whether to create a template (defaults to `false`).
+         * @param template Whether to create a template (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1967,7 +1967,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param template Whether to create a template (defaults to `false`).
+         * @param template Whether to create a template (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -2051,10 +2051,10 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          * @deprecated
-         * This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead.
+         * This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create /&lt;span pulumi-lang-nodejs=&#34; timeoutClone &#34; pulumi-lang-dotnet=&#34; TimeoutClone &#34; pulumi-lang-go=&#34; timeoutClone &#34; pulumi-lang-python=&#34; timeout_clone &#34; pulumi-lang-yaml=&#34; timeoutClone &#34; pulumi-lang-java=&#34; timeoutClone &#34;&gt; timeout_clone &lt;/span&gt;/ timeout_migrate) is used instead.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead. */
+        @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create /<span pulumi-lang-nodejs="" timeoutClone "" pulumi-lang-dotnet="" TimeoutClone "" pulumi-lang-go="" timeoutClone "" pulumi-lang-python="" timeout_clone "" pulumi-lang-yaml="" timeoutClone "" pulumi-lang-java="" timeoutClone ""> timeout_clone </span>/ timeout_migrate) is used instead. */
         public Builder timeoutMoveDisk(@Nullable Output<Integer> timeoutMoveDisk) {
             $.timeoutMoveDisk = timeoutMoveDisk;
             return this;
@@ -2066,10 +2066,10 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
          * @return builder
          * 
          * @deprecated
-         * This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead.
+         * This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create /&lt;span pulumi-lang-nodejs=&#34; timeoutClone &#34; pulumi-lang-dotnet=&#34; TimeoutClone &#34; pulumi-lang-go=&#34; timeoutClone &#34; pulumi-lang-python=&#34; timeout_clone &#34; pulumi-lang-yaml=&#34; timeoutClone &#34; pulumi-lang-java=&#34; timeoutClone &#34;&gt; timeout_clone &lt;/span&gt;/ timeout_migrate) is used instead.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead. */
+        @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create /<span pulumi-lang-nodejs="" timeoutClone "" pulumi-lang-dotnet="" TimeoutClone "" pulumi-lang-go="" timeoutClone "" pulumi-lang-python="" timeout_clone "" pulumi-lang-yaml="" timeoutClone "" pulumi-lang-java="" timeoutClone ""> timeout_clone </span>/ timeout_migrate) is used instead. */
         public Builder timeoutMoveDisk(Integer timeoutMoveDisk) {
             return timeoutMoveDisk(Output.of(timeoutMoveDisk));
         }

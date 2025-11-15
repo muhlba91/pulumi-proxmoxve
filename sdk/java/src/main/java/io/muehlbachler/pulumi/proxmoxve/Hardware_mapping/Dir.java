@@ -47,6 +47,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new Dir("example", DirArgs.builder()
  *             .comment("This is a comment")
+ *             .name("example")
  *             .maps(DirMapArgs.builder()
  *                 .node("pve")
  *                 .path("/mnt/data")

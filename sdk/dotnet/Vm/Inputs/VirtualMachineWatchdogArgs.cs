@@ -13,19 +13,19 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
     public sealed class VirtualMachineWatchdogArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The action to perform if after activation the guest fails to poll the watchdog in time  (defaults to `none`).
+        /// The action to perform if after activation the guest fails to poll the watchdog in time  (defaults to `None`).
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }
 
         /// <summary>
-        /// Whether the watchdog is enabled (defaults to `false`).
+        /// Whether the watchdog is enabled (defaults to `False`).
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The watchdog type to emulate (defaults to `i6300esb`).
+        /// The watchdog type to emulate (defaults to `I6300esb`).
         /// </summary>
         [Input("model")]
         public Input<string>? Model { get; set; }

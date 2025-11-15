@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			operationsMonitoring, err := permission.NewRole(ctx, "operationsMonitoring", &permission.RoleArgs{
+//			operationsMonitoring, err := permission.NewRole(ctx, "operations_monitoring", &permission.RoleArgs{
 //				RoleId: pulumi.String("operations-monitoring"),
 //				Privileges: pulumi.StringArray{
 //					pulumi.String("VM.GuestAgent.Audit"),
@@ -37,7 +37,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = permission.NewUser(ctx, "operationsAutomation", &permission.UserArgs{
+//			_, err = permission.NewUser(ctx, "operations_automation", &permission.UserArgs{
 //				Acls: permission.UserAclArray{
 //					&permission.UserAclArgs{
 //						Path:      pulumi.String("/vms/1234"),

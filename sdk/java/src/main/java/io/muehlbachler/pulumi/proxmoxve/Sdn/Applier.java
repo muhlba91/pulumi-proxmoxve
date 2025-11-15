@@ -12,72 +12,7 @@ import io.muehlbachler.pulumi.proxmoxve.Utilities;
 import javax.annotation.Nullable;
 
 /**
- * **EXPERIMENTAL** Triggers Proxmox&#39;s SDN **Apply** (equivalent to `PUT /cluster/sdn`).Intended to be used with `replace_triggered_by` so it runs after SDN objects change.
- * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import io.muehlbachler.pulumi.proxmoxve.Sdn.Applier;
- * import io.muehlbachler.pulumi.proxmoxve.SDNZone.Simple;
- * import io.muehlbachler.pulumi.proxmoxve.SDNZone.SimpleArgs;
- * import io.muehlbachler.pulumi.proxmoxve.Sdn.ApplierArgs;
- * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var finalizer = new Applier("finalizer");
- * 
- *         // SDN Zone (Simple) - First zone for applier demonstration
- *         var exampleZone1 = new Simple("exampleZone1", SimpleArgs.builder()
- *             .zoneId("zone1")
- *             .nodes("pve")
- *             .mtu(1500)
- *             .dns("1.1.1.1")
- *             .dnsZone("example.com")
- *             .ipam("pve")
- *             .reverseDns("1.1.1.1")
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(finalizer)
- *                 .build());
- * 
- *         // SDN Zone (Simple) - Second zone for applier demonstration
- *         var exampleZone2 = new Simple("exampleZone2", SimpleArgs.builder()
- *             .zoneId("zone2")
- *             .nodes("pve")
- *             .mtu(1500)
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(finalizer)
- *                 .build());
- * 
- *         // SDN Applier - Applies SDN configuration changes
- *         var exampleApplier = new Applier("exampleApplier", ApplierArgs.Empty, CustomResourceOptions.builder()
- *             .dependsOn(            
- *                 exampleZone1,
- *                 exampleZone2)
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
+ * **EXPERIMENTAL** Triggers Proxmox&#39;s SDN **Apply** (equivalent to `PUT /cluster/sdn`).Intended to be used with &lt;span pulumi-lang-nodejs=&#34;`replaceTriggeredBy`&#34; pulumi-lang-dotnet=&#34;`ReplaceTriggeredBy`&#34; pulumi-lang-go=&#34;`replaceTriggeredBy`&#34; pulumi-lang-python=&#34;`replace_triggered_by`&#34; pulumi-lang-yaml=&#34;`replaceTriggeredBy`&#34; pulumi-lang-java=&#34;`replaceTriggeredBy`&#34;&gt;`replace_triggered_by`&lt;/span&gt; so it runs after SDN objects change.
  * 
  */
 @ResourceType(type="proxmoxve:Sdn/applier:Applier")

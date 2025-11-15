@@ -22,17 +22,19 @@ namespace Pulumi.ProxmoxVE.Metrics
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var influxdbServer = new ProxmoxVE.Metrics.MetricsServer("influxdbServer", new()
+    ///     var influxdbServer = new ProxmoxVE.Metrics.MetricsServer("influxdb_server", new()
     ///     {
-    ///         Port = 8089,
+    ///         Name = "example_influxdb_server",
     ///         Server = "192.168.3.2",
+    ///         Port = 8089,
     ///         Type = "influxdb",
     ///     });
     /// 
-    ///     var graphiteServer = new ProxmoxVE.Metrics.MetricsServer("graphiteServer", new()
+    ///     var graphiteServer = new ProxmoxVE.Metrics.MetricsServer("graphite_server", new()
     ///     {
-    ///         Port = 2003,
+    ///         Name = "example_graphite_server",
     ///         Server = "192.168.4.2",
+    ///         Port = 2003,
     ///         Type = "graphite",
     ///     });
     /// 
@@ -51,7 +53,7 @@ namespace Pulumi.ProxmoxVE.Metrics
     public partial class MetricsServer : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Set this to `true` to disable this metric server.
+        /// Set this to `True` to disable this metric server.
         /// </summary>
         [Output("disable")]
         public Output<bool?> Disable { get; private set; } = null!;
@@ -63,7 +65,7 @@ namespace Pulumi.ProxmoxVE.Metrics
         public Output<string?> GraphitePath { get; private set; } = null!;
 
         /// <summary>
-        /// Protocol to send graphite data. Choice is between `udp` | `tcp`. If not set, PVE default is `udp`.
+        /// Protocol to send graphite data. Choice is between `Udp` | `Tcp`. If not set, PVE default is `Udp`.
         /// </summary>
         [Output("graphiteProto")]
         public Output<string?> GraphiteProto { get; private set; } = null!;
@@ -81,7 +83,7 @@ namespace Pulumi.ProxmoxVE.Metrics
         public Output<string?> InfluxBucket { get; private set; } = null!;
 
         /// <summary>
-        /// Protocol for InfluxDB. Choice is between `udp` | `http` | `https`. If not set, PVE default is `udp`.
+        /// Protocol for InfluxDB. Choice is between `Udp` | `Http` | `Https`. If not set, PVE default is `Udp`.
         /// </summary>
         [Output("influxDbProto")]
         public Output<string?> InfluxDbProto { get; private set; } = null!;
@@ -105,7 +107,7 @@ namespace Pulumi.ProxmoxVE.Metrics
         public Output<string?> InfluxToken { get; private set; } = null!;
 
         /// <summary>
-        /// Set to `false` to disable certificate verification for https endpoints.
+        /// Set to `False` to disable certificate verification for https endpoints.
         /// </summary>
         [Output("influxVerify")]
         public Output<bool?> InfluxVerify { get; private set; } = null!;
@@ -141,7 +143,7 @@ namespace Pulumi.ProxmoxVE.Metrics
         public Output<int?> Timeout { get; private set; } = null!;
 
         /// <summary>
-        /// Plugin type. Choice is between `graphite` | `influxdb`.
+        /// Plugin type. Choice is between `Graphite` | `Influxdb`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -198,7 +200,7 @@ namespace Pulumi.ProxmoxVE.Metrics
     public sealed class MetricsServerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Set this to `true` to disable this metric server.
+        /// Set this to `True` to disable this metric server.
         /// </summary>
         [Input("disable")]
         public Input<bool>? Disable { get; set; }
@@ -210,7 +212,7 @@ namespace Pulumi.ProxmoxVE.Metrics
         public Input<string>? GraphitePath { get; set; }
 
         /// <summary>
-        /// Protocol to send graphite data. Choice is between `udp` | `tcp`. If not set, PVE default is `udp`.
+        /// Protocol to send graphite data. Choice is between `Udp` | `Tcp`. If not set, PVE default is `Udp`.
         /// </summary>
         [Input("graphiteProto")]
         public Input<string>? GraphiteProto { get; set; }
@@ -228,7 +230,7 @@ namespace Pulumi.ProxmoxVE.Metrics
         public Input<string>? InfluxBucket { get; set; }
 
         /// <summary>
-        /// Protocol for InfluxDB. Choice is between `udp` | `http` | `https`. If not set, PVE default is `udp`.
+        /// Protocol for InfluxDB. Choice is between `Udp` | `Http` | `Https`. If not set, PVE default is `Udp`.
         /// </summary>
         [Input("influxDbProto")]
         public Input<string>? InfluxDbProto { get; set; }
@@ -262,7 +264,7 @@ namespace Pulumi.ProxmoxVE.Metrics
         }
 
         /// <summary>
-        /// Set to `false` to disable certificate verification for https endpoints.
+        /// Set to `False` to disable certificate verification for https endpoints.
         /// </summary>
         [Input("influxVerify")]
         public Input<bool>? InfluxVerify { get; set; }
@@ -298,7 +300,7 @@ namespace Pulumi.ProxmoxVE.Metrics
         public Input<int>? Timeout { get; set; }
 
         /// <summary>
-        /// Plugin type. Choice is between `graphite` | `influxdb`.
+        /// Plugin type. Choice is between `Graphite` | `Influxdb`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -312,7 +314,7 @@ namespace Pulumi.ProxmoxVE.Metrics
     public sealed class MetricsServerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Set this to `true` to disable this metric server.
+        /// Set this to `True` to disable this metric server.
         /// </summary>
         [Input("disable")]
         public Input<bool>? Disable { get; set; }
@@ -324,7 +326,7 @@ namespace Pulumi.ProxmoxVE.Metrics
         public Input<string>? GraphitePath { get; set; }
 
         /// <summary>
-        /// Protocol to send graphite data. Choice is between `udp` | `tcp`. If not set, PVE default is `udp`.
+        /// Protocol to send graphite data. Choice is between `Udp` | `Tcp`. If not set, PVE default is `Udp`.
         /// </summary>
         [Input("graphiteProto")]
         public Input<string>? GraphiteProto { get; set; }
@@ -342,7 +344,7 @@ namespace Pulumi.ProxmoxVE.Metrics
         public Input<string>? InfluxBucket { get; set; }
 
         /// <summary>
-        /// Protocol for InfluxDB. Choice is between `udp` | `http` | `https`. If not set, PVE default is `udp`.
+        /// Protocol for InfluxDB. Choice is between `Udp` | `Http` | `Https`. If not set, PVE default is `Udp`.
         /// </summary>
         [Input("influxDbProto")]
         public Input<string>? InfluxDbProto { get; set; }
@@ -376,7 +378,7 @@ namespace Pulumi.ProxmoxVE.Metrics
         }
 
         /// <summary>
-        /// Set to `false` to disable certificate verification for https endpoints.
+        /// Set to `False` to disable certificate verification for https endpoints.
         /// </summary>
         [Input("influxVerify")]
         public Input<bool>? InfluxVerify { get; set; }
@@ -412,7 +414,7 @@ namespace Pulumi.ProxmoxVE.Metrics
         public Input<int>? Timeout { get; set; }
 
         /// <summary>
-        /// Plugin type. Choice is between `graphite` | `influxdb`.
+        /// Plugin type. Choice is between `Graphite` | `Influxdb`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

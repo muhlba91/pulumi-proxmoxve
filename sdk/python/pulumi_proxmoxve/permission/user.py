@@ -412,10 +412,10 @@ class User(pulumi.CustomResource):
         import pulumi
         import pulumi_proxmoxve as proxmoxve
 
-        operations_monitoring = proxmoxve.permission.Role("operationsMonitoring",
+        operations_monitoring = proxmoxve.permission.Role("operations_monitoring",
             role_id="operations-monitoring",
             privileges=["VM.GuestAgent.Audit"])
-        operations_automation = proxmoxve.permission.User("operationsAutomation",
+        operations_automation = proxmoxve.permission.User("operations_automation",
             acls=[{
                 "path": "/vms/1234",
                 "propagate": True,
@@ -465,10 +465,10 @@ class User(pulumi.CustomResource):
         import pulumi
         import pulumi_proxmoxve as proxmoxve
 
-        operations_monitoring = proxmoxve.permission.Role("operationsMonitoring",
+        operations_monitoring = proxmoxve.permission.Role("operations_monitoring",
             role_id="operations-monitoring",
             privileges=["VM.GuestAgent.Audit"])
-        operations_automation = proxmoxve.permission.User("operationsAutomation",
+        operations_automation = proxmoxve.permission.User("operations_automation",
             acls=[{
                 "path": "/vms/1234",
                 "propagate": True,

@@ -38,7 +38,7 @@ public final class GetServerResult {
      */
     private String server;
     /**
-     * @return Plugin type. Either `graphite` or `influxdb`.
+     * @return Plugin type. Either &lt;span pulumi-lang-nodejs=&#34;`graphite`&#34; pulumi-lang-dotnet=&#34;`Graphite`&#34; pulumi-lang-go=&#34;`graphite`&#34; pulumi-lang-python=&#34;`graphite`&#34; pulumi-lang-yaml=&#34;`graphite`&#34; pulumi-lang-java=&#34;`graphite`&#34;&gt;`graphite`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`influxdb`&#34; pulumi-lang-dotnet=&#34;`Influxdb`&#34; pulumi-lang-go=&#34;`influxdb`&#34; pulumi-lang-python=&#34;`influxdb`&#34; pulumi-lang-yaml=&#34;`influxdb`&#34; pulumi-lang-java=&#34;`influxdb`&#34;&gt;`influxdb`&lt;/span&gt;.
      * 
      */
     private String type;
@@ -80,7 +80,7 @@ public final class GetServerResult {
         return this.server;
     }
     /**
-     * @return Plugin type. Either `graphite` or `influxdb`.
+     * @return Plugin type. Either &lt;span pulumi-lang-nodejs=&#34;`graphite`&#34; pulumi-lang-dotnet=&#34;`Graphite`&#34; pulumi-lang-go=&#34;`graphite`&#34; pulumi-lang-python=&#34;`graphite`&#34; pulumi-lang-yaml=&#34;`graphite`&#34; pulumi-lang-java=&#34;`graphite`&#34;&gt;`graphite`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`influxdb`&#34; pulumi-lang-dotnet=&#34;`Influxdb`&#34; pulumi-lang-go=&#34;`influxdb`&#34; pulumi-lang-python=&#34;`influxdb`&#34; pulumi-lang-yaml=&#34;`influxdb`&#34; pulumi-lang-java=&#34;`influxdb`&#34;&gt;`influxdb`&lt;/span&gt;.
      * 
      */
     public String type() {

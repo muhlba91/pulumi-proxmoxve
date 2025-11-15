@@ -14,50 +14,50 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ContainerFeatures {
     /**
-     * @return Whether the container supports FUSE mounts (defaults to `false`)
+     * @return Whether the container supports FUSE mounts (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
     private @Nullable Boolean fuse;
     /**
-     * @return Whether the container supports `keyctl()` system call (defaults to `false`)
+     * @return Whether the container supports `keyctl()` system call (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
     private @Nullable Boolean keyctl;
     /**
-     * @return List of allowed mount types (`cifs` or `nfs`)
+     * @return List of allowed mount types (&lt;span pulumi-lang-nodejs=&#34;`cifs`&#34; pulumi-lang-dotnet=&#34;`Cifs`&#34; pulumi-lang-go=&#34;`cifs`&#34; pulumi-lang-python=&#34;`cifs`&#34; pulumi-lang-yaml=&#34;`cifs`&#34; pulumi-lang-java=&#34;`cifs`&#34;&gt;`cifs`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`nfs`&#34; pulumi-lang-dotnet=&#34;`Nfs`&#34; pulumi-lang-go=&#34;`nfs`&#34; pulumi-lang-python=&#34;`nfs`&#34; pulumi-lang-yaml=&#34;`nfs`&#34; pulumi-lang-java=&#34;`nfs`&#34;&gt;`nfs`&lt;/span&gt;)
      * 
      */
     private @Nullable List<String> mounts;
     /**
-     * @return Whether the container is nested (defaults to `false`)
+     * @return Whether the container is nested (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
     private @Nullable Boolean nesting;
 
     private ContainerFeatures() {}
     /**
-     * @return Whether the container supports FUSE mounts (defaults to `false`)
+     * @return Whether the container supports FUSE mounts (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
     public Optional<Boolean> fuse() {
         return Optional.ofNullable(this.fuse);
     }
     /**
-     * @return Whether the container supports `keyctl()` system call (defaults to `false`)
+     * @return Whether the container supports `keyctl()` system call (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
     public Optional<Boolean> keyctl() {
         return Optional.ofNullable(this.keyctl);
     }
     /**
-     * @return List of allowed mount types (`cifs` or `nfs`)
+     * @return List of allowed mount types (&lt;span pulumi-lang-nodejs=&#34;`cifs`&#34; pulumi-lang-dotnet=&#34;`Cifs`&#34; pulumi-lang-go=&#34;`cifs`&#34; pulumi-lang-python=&#34;`cifs`&#34; pulumi-lang-yaml=&#34;`cifs`&#34; pulumi-lang-java=&#34;`cifs`&#34;&gt;`cifs`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`nfs`&#34; pulumi-lang-dotnet=&#34;`Nfs`&#34; pulumi-lang-go=&#34;`nfs`&#34; pulumi-lang-python=&#34;`nfs`&#34; pulumi-lang-yaml=&#34;`nfs`&#34; pulumi-lang-java=&#34;`nfs`&#34;&gt;`nfs`&lt;/span&gt;)
      * 
      */
     public List<String> mounts() {
         return this.mounts == null ? List.of() : this.mounts;
     }
     /**
-     * @return Whether the container is nested (defaults to `false`)
+     * @return Whether the container is nested (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
     public Optional<Boolean> nesting() {

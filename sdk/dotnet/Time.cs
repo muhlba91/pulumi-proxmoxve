@@ -22,7 +22,7 @@ namespace Pulumi.ProxmoxVE
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var firstNodeTime = new ProxmoxVE.Time("firstNodeTime", new()
+    ///     var firstNodeTime = new ProxmoxVE.Time("first_node_time", new()
     ///     {
     ///         NodeName = "first-node",
     ///         TimeZone = "UTC",

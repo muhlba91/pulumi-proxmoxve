@@ -16,13 +16,13 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         /// The CPU cores that are used to run the VM’s vCPU. The
         /// value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
         /// For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four
-        /// CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+        /// CPU cores. Setting `Affinity` is only allowed for `root@pam` authenticated user.
         /// </summary>
         [Input("affinity")]
         public Input<string>? Affinity { get; set; }
 
         /// <summary>
-        /// The CPU architecture (defaults to `x86_64`).
+        /// The CPU architecture (defaults to `X8664`).
         /// </summary>
         [Input("architecture")]
         public Input<string>? Architecture { get; set; }
@@ -81,7 +81,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<int>? Limit { get; set; }
 
         /// <summary>
-        /// Enable/disable NUMA. (default to `false`)
+        /// Enable/disable NUMA. (default to `False`)
         /// </summary>
         [Input("numa")]
         public Input<bool>? Numa { get; set; }
@@ -94,7 +94,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
 
         /// <summary>
         /// The emulated CPU type, it's recommended to
-        /// use `x86-64-v2-AES` (defaults to `qemu64`).
+        /// use `x86-64-v2-AES` (defaults to `Qemu64`).
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

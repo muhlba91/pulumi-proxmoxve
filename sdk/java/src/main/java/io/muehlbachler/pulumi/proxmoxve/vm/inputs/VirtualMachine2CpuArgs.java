@@ -19,14 +19,14 @@ public final class VirtualMachine2CpuArgs extends com.pulumi.resources.ResourceA
     public static final VirtualMachine2CpuArgs Empty = new VirtualMachine2CpuArgs();
 
     /**
-     * The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root{@literal @}pam` authenticated user.
+     * The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting &lt;span pulumi-lang-nodejs=&#34;`affinity`&#34; pulumi-lang-dotnet=&#34;`Affinity`&#34; pulumi-lang-go=&#34;`affinity`&#34; pulumi-lang-python=&#34;`affinity`&#34; pulumi-lang-yaml=&#34;`affinity`&#34; pulumi-lang-java=&#34;`affinity`&#34;&gt;`affinity`&lt;/span&gt; is only allowed for `root{@literal @}pam` authenticated user.
      * 
      */
     @Import(name="affinity")
     private @Nullable Output<String> affinity;
 
     /**
-     * @return The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root{@literal @}pam` authenticated user.
+     * @return The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting &lt;span pulumi-lang-nodejs=&#34;`affinity`&#34; pulumi-lang-dotnet=&#34;`Affinity`&#34; pulumi-lang-go=&#34;`affinity`&#34; pulumi-lang-python=&#34;`affinity`&#34; pulumi-lang-yaml=&#34;`affinity`&#34; pulumi-lang-java=&#34;`affinity`&#34;&gt;`affinity`&lt;/span&gt; is only allowed for `root{@literal @}pam` authenticated user.
      * 
      */
     public Optional<Output<String>> affinity() {
@@ -34,14 +34,14 @@ public final class VirtualMachine2CpuArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The CPU architecture `&lt;aarch64 | x86_64&gt;` (defaults to the host). Setting `affinity` is only allowed for `root{@literal @}pam` authenticated user.
+     * The CPU architecture `&lt;aarch64 | x86_64&gt;` (defaults to the host). Setting &lt;span pulumi-lang-nodejs=&#34;`affinity`&#34; pulumi-lang-dotnet=&#34;`Affinity`&#34; pulumi-lang-go=&#34;`affinity`&#34; pulumi-lang-python=&#34;`affinity`&#34; pulumi-lang-yaml=&#34;`affinity`&#34; pulumi-lang-java=&#34;`affinity`&#34;&gt;`affinity`&lt;/span&gt; is only allowed for `root{@literal @}pam` authenticated user.
      * 
      */
     @Import(name="architecture")
     private @Nullable Output<String> architecture;
 
     /**
-     * @return The CPU architecture `&lt;aarch64 | x86_64&gt;` (defaults to the host). Setting `affinity` is only allowed for `root{@literal @}pam` authenticated user.
+     * @return The CPU architecture `&lt;aarch64 | x86_64&gt;` (defaults to the host). Setting &lt;span pulumi-lang-nodejs=&#34;`affinity`&#34; pulumi-lang-dotnet=&#34;`Affinity`&#34; pulumi-lang-go=&#34;`affinity`&#34; pulumi-lang-python=&#34;`affinity`&#34; pulumi-lang-yaml=&#34;`affinity`&#34; pulumi-lang-java=&#34;`affinity`&#34;&gt;`affinity`&lt;/span&gt; is only allowed for `root{@literal @}pam` authenticated user.
      * 
      */
     public Optional<Output<String>> architecture() {
@@ -49,14 +49,14 @@ public final class VirtualMachine2CpuArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The number of CPU cores per socket (defaults to `1`).
+     * The number of CPU cores per socket (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
      * 
      */
     @Import(name="cores")
     private @Nullable Output<Integer> cores;
 
     /**
-     * @return The number of CPU cores per socket (defaults to `1`).
+     * @return The number of CPU cores per socket (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Integer>> cores() {
@@ -64,14 +64,14 @@ public final class VirtualMachine2CpuArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+     * Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: &lt;span pulumi-lang-nodejs=&#34;`pcid`&#34; pulumi-lang-dotnet=&#34;`Pcid`&#34; pulumi-lang-go=&#34;`pcid`&#34; pulumi-lang-python=&#34;`pcid`&#34; pulumi-lang-yaml=&#34;`pcid`&#34; pulumi-lang-java=&#34;`pcid`&#34;&gt;`pcid`&lt;/span&gt;, `spec-ctrl`, &lt;span pulumi-lang-nodejs=&#34;`ibpb`&#34; pulumi-lang-dotnet=&#34;`Ibpb`&#34; pulumi-lang-go=&#34;`ibpb`&#34; pulumi-lang-python=&#34;`ibpb`&#34; pulumi-lang-yaml=&#34;`ibpb`&#34; pulumi-lang-java=&#34;`ibpb`&#34;&gt;`ibpb`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`ssbd`&#34; pulumi-lang-dotnet=&#34;`Ssbd`&#34; pulumi-lang-go=&#34;`ssbd`&#34; pulumi-lang-python=&#34;`ssbd`&#34; pulumi-lang-yaml=&#34;`ssbd`&#34; pulumi-lang-java=&#34;`ssbd`&#34;&gt;`ssbd`&lt;/span&gt;, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, &lt;span pulumi-lang-nodejs=&#34;`pdpe1gb`&#34; pulumi-lang-dotnet=&#34;`Pdpe1gb`&#34; pulumi-lang-go=&#34;`pdpe1gb`&#34; pulumi-lang-python=&#34;`pdpe1gb`&#34; pulumi-lang-yaml=&#34;`pdpe1gb`&#34; pulumi-lang-java=&#34;`pdpe1gb`&#34;&gt;`pdpe1gb`&lt;/span&gt;, `md-clear`, `hv-tlbflush`, `hv-evmcs`, &lt;span pulumi-lang-nodejs=&#34;`aes`&#34; pulumi-lang-dotnet=&#34;`Aes`&#34; pulumi-lang-go=&#34;`aes`&#34; pulumi-lang-python=&#34;`aes`&#34; pulumi-lang-yaml=&#34;`aes`&#34; pulumi-lang-java=&#34;`aes`&#34;&gt;`aes`&lt;/span&gt;.
      * 
      */
     @Import(name="flags")
     private @Nullable Output<List<String>> flags;
 
     /**
-     * @return Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+     * @return Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: &lt;span pulumi-lang-nodejs=&#34;`pcid`&#34; pulumi-lang-dotnet=&#34;`Pcid`&#34; pulumi-lang-go=&#34;`pcid`&#34; pulumi-lang-python=&#34;`pcid`&#34; pulumi-lang-yaml=&#34;`pcid`&#34; pulumi-lang-java=&#34;`pcid`&#34;&gt;`pcid`&lt;/span&gt;, `spec-ctrl`, &lt;span pulumi-lang-nodejs=&#34;`ibpb`&#34; pulumi-lang-dotnet=&#34;`Ibpb`&#34; pulumi-lang-go=&#34;`ibpb`&#34; pulumi-lang-python=&#34;`ibpb`&#34; pulumi-lang-yaml=&#34;`ibpb`&#34; pulumi-lang-java=&#34;`ibpb`&#34;&gt;`ibpb`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`ssbd`&#34; pulumi-lang-dotnet=&#34;`Ssbd`&#34; pulumi-lang-go=&#34;`ssbd`&#34; pulumi-lang-python=&#34;`ssbd`&#34; pulumi-lang-yaml=&#34;`ssbd`&#34; pulumi-lang-java=&#34;`ssbd`&#34;&gt;`ssbd`&lt;/span&gt;, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, &lt;span pulumi-lang-nodejs=&#34;`pdpe1gb`&#34; pulumi-lang-dotnet=&#34;`Pdpe1gb`&#34; pulumi-lang-go=&#34;`pdpe1gb`&#34; pulumi-lang-python=&#34;`pdpe1gb`&#34; pulumi-lang-yaml=&#34;`pdpe1gb`&#34; pulumi-lang-java=&#34;`pdpe1gb`&#34;&gt;`pdpe1gb`&lt;/span&gt;, `md-clear`, `hv-tlbflush`, `hv-evmcs`, &lt;span pulumi-lang-nodejs=&#34;`aes`&#34; pulumi-lang-dotnet=&#34;`Aes`&#34; pulumi-lang-go=&#34;`aes`&#34; pulumi-lang-python=&#34;`aes`&#34; pulumi-lang-yaml=&#34;`aes`&#34; pulumi-lang-java=&#34;`aes`&#34;&gt;`aes`&lt;/span&gt;.
      * 
      */
     public Optional<Output<List<String>>> flags() {
@@ -79,14 +79,14 @@ public final class VirtualMachine2CpuArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The number of hotplugged vCPUs (defaults to `0`).
+     * The number of hotplugged vCPUs (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
      * 
      */
     @Import(name="hotplugged")
     private @Nullable Output<Integer> hotplugged;
 
     /**
-     * @return The number of hotplugged vCPUs (defaults to `0`).
+     * @return The number of hotplugged vCPUs (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Integer>> hotplugged() {
@@ -94,14 +94,14 @@ public final class VirtualMachine2CpuArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Limit of CPU usage (defaults to `0` which means no limit).
+     * Limit of CPU usage (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; which means no limit).
      * 
      */
     @Import(name="limit")
     private @Nullable Output<Integer> limit;
 
     /**
-     * @return Limit of CPU usage (defaults to `0` which means no limit).
+     * @return Limit of CPU usage (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; which means no limit).
      * 
      */
     public Optional<Output<Integer>> limit() {
@@ -109,14 +109,14 @@ public final class VirtualMachine2CpuArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Enable NUMA (defaults to `false`).
+     * Enable NUMA (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Import(name="numa")
     private @Nullable Output<Boolean> numa;
 
     /**
-     * @return Enable NUMA (defaults to `false`).
+     * @return Enable NUMA (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> numa() {
@@ -124,14 +124,14 @@ public final class VirtualMachine2CpuArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The number of CPU sockets (defaults to `1`).
+     * The number of CPU sockets (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
      * 
      */
     @Import(name="sockets")
     private @Nullable Output<Integer> sockets;
 
     /**
-     * @return The number of CPU sockets (defaults to `1`).
+     * @return The number of CPU sockets (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Integer>> sockets() {
@@ -139,14 +139,14 @@ public final class VirtualMachine2CpuArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Emulated CPU type, it&#39;s recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+     * Emulated CPU type, it&#39;s recommended to use `x86-64-v2-AES` or higher (defaults to &lt;span pulumi-lang-nodejs=&#34;`kvm64`&#34; pulumi-lang-dotnet=&#34;`Kvm64`&#34; pulumi-lang-go=&#34;`kvm64`&#34; pulumi-lang-python=&#34;`kvm64`&#34; pulumi-lang-yaml=&#34;`kvm64`&#34; pulumi-lang-java=&#34;`kvm64`&#34;&gt;`kvm64`&lt;/span&gt;). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Emulated CPU type, it&#39;s recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+     * @return Emulated CPU type, it&#39;s recommended to use `x86-64-v2-AES` or higher (defaults to &lt;span pulumi-lang-nodejs=&#34;`kvm64`&#34; pulumi-lang-dotnet=&#34;`Kvm64`&#34; pulumi-lang-go=&#34;`kvm64`&#34; pulumi-lang-python=&#34;`kvm64`&#34; pulumi-lang-yaml=&#34;`kvm64`&#34; pulumi-lang-java=&#34;`kvm64`&#34;&gt;`kvm64`&lt;/span&gt;). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
      * 
      */
     public Optional<Output<String>> type() {
@@ -202,7 +202,7 @@ public final class VirtualMachine2CpuArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param affinity The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root{@literal @}pam` authenticated user.
+         * @param affinity The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting &lt;span pulumi-lang-nodejs=&#34;`affinity`&#34; pulumi-lang-dotnet=&#34;`Affinity`&#34; pulumi-lang-go=&#34;`affinity`&#34; pulumi-lang-python=&#34;`affinity`&#34; pulumi-lang-yaml=&#34;`affinity`&#34; pulumi-lang-java=&#34;`affinity`&#34;&gt;`affinity`&lt;/span&gt; is only allowed for `root{@literal @}pam` authenticated user.
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class VirtualMachine2CpuArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param affinity The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root{@literal @}pam` authenticated user.
+         * @param affinity The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting &lt;span pulumi-lang-nodejs=&#34;`affinity`&#34; pulumi-lang-dotnet=&#34;`Affinity`&#34; pulumi-lang-go=&#34;`affinity`&#34; pulumi-lang-python=&#34;`affinity`&#34; pulumi-lang-yaml=&#34;`affinity`&#34; pulumi-lang-java=&#34;`affinity`&#34;&gt;`affinity`&lt;/span&gt; is only allowed for `root{@literal @}pam` authenticated user.
          * 
          * @return builder
          * 
@@ -223,7 +223,7 @@ public final class VirtualMachine2CpuArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param architecture The CPU architecture `&lt;aarch64 | x86_64&gt;` (defaults to the host). Setting `affinity` is only allowed for `root{@literal @}pam` authenticated user.
+         * @param architecture The CPU architecture `&lt;aarch64 | x86_64&gt;` (defaults to the host). Setting &lt;span pulumi-lang-nodejs=&#34;`affinity`&#34; pulumi-lang-dotnet=&#34;`Affinity`&#34; pulumi-lang-go=&#34;`affinity`&#34; pulumi-lang-python=&#34;`affinity`&#34; pulumi-lang-yaml=&#34;`affinity`&#34; pulumi-lang-java=&#34;`affinity`&#34;&gt;`affinity`&lt;/span&gt; is only allowed for `root{@literal @}pam` authenticated user.
          * 
          * @return builder
          * 
@@ -234,7 +234,7 @@ public final class VirtualMachine2CpuArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param architecture The CPU architecture `&lt;aarch64 | x86_64&gt;` (defaults to the host). Setting `affinity` is only allowed for `root{@literal @}pam` authenticated user.
+         * @param architecture The CPU architecture `&lt;aarch64 | x86_64&gt;` (defaults to the host). Setting &lt;span pulumi-lang-nodejs=&#34;`affinity`&#34; pulumi-lang-dotnet=&#34;`Affinity`&#34; pulumi-lang-go=&#34;`affinity`&#34; pulumi-lang-python=&#34;`affinity`&#34; pulumi-lang-yaml=&#34;`affinity`&#34; pulumi-lang-java=&#34;`affinity`&#34;&gt;`affinity`&lt;/span&gt; is only allowed for `root{@literal @}pam` authenticated user.
          * 
          * @return builder
          * 
@@ -244,7 +244,7 @@ public final class VirtualMachine2CpuArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param cores The number of CPU cores per socket (defaults to `1`).
+         * @param cores The number of CPU cores per socket (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class VirtualMachine2CpuArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param cores The number of CPU cores per socket (defaults to `1`).
+         * @param cores The number of CPU cores per socket (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -265,7 +265,7 @@ public final class VirtualMachine2CpuArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param flags Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+         * @param flags Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: &lt;span pulumi-lang-nodejs=&#34;`pcid`&#34; pulumi-lang-dotnet=&#34;`Pcid`&#34; pulumi-lang-go=&#34;`pcid`&#34; pulumi-lang-python=&#34;`pcid`&#34; pulumi-lang-yaml=&#34;`pcid`&#34; pulumi-lang-java=&#34;`pcid`&#34;&gt;`pcid`&lt;/span&gt;, `spec-ctrl`, &lt;span pulumi-lang-nodejs=&#34;`ibpb`&#34; pulumi-lang-dotnet=&#34;`Ibpb`&#34; pulumi-lang-go=&#34;`ibpb`&#34; pulumi-lang-python=&#34;`ibpb`&#34; pulumi-lang-yaml=&#34;`ibpb`&#34; pulumi-lang-java=&#34;`ibpb`&#34;&gt;`ibpb`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`ssbd`&#34; pulumi-lang-dotnet=&#34;`Ssbd`&#34; pulumi-lang-go=&#34;`ssbd`&#34; pulumi-lang-python=&#34;`ssbd`&#34; pulumi-lang-yaml=&#34;`ssbd`&#34; pulumi-lang-java=&#34;`ssbd`&#34;&gt;`ssbd`&lt;/span&gt;, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, &lt;span pulumi-lang-nodejs=&#34;`pdpe1gb`&#34; pulumi-lang-dotnet=&#34;`Pdpe1gb`&#34; pulumi-lang-go=&#34;`pdpe1gb`&#34; pulumi-lang-python=&#34;`pdpe1gb`&#34; pulumi-lang-yaml=&#34;`pdpe1gb`&#34; pulumi-lang-java=&#34;`pdpe1gb`&#34;&gt;`pdpe1gb`&lt;/span&gt;, `md-clear`, `hv-tlbflush`, `hv-evmcs`, &lt;span pulumi-lang-nodejs=&#34;`aes`&#34; pulumi-lang-dotnet=&#34;`Aes`&#34; pulumi-lang-go=&#34;`aes`&#34; pulumi-lang-python=&#34;`aes`&#34; pulumi-lang-yaml=&#34;`aes`&#34; pulumi-lang-java=&#34;`aes`&#34;&gt;`aes`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class VirtualMachine2CpuArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param flags Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+         * @param flags Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: &lt;span pulumi-lang-nodejs=&#34;`pcid`&#34; pulumi-lang-dotnet=&#34;`Pcid`&#34; pulumi-lang-go=&#34;`pcid`&#34; pulumi-lang-python=&#34;`pcid`&#34; pulumi-lang-yaml=&#34;`pcid`&#34; pulumi-lang-java=&#34;`pcid`&#34;&gt;`pcid`&lt;/span&gt;, `spec-ctrl`, &lt;span pulumi-lang-nodejs=&#34;`ibpb`&#34; pulumi-lang-dotnet=&#34;`Ibpb`&#34; pulumi-lang-go=&#34;`ibpb`&#34; pulumi-lang-python=&#34;`ibpb`&#34; pulumi-lang-yaml=&#34;`ibpb`&#34; pulumi-lang-java=&#34;`ibpb`&#34;&gt;`ibpb`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`ssbd`&#34; pulumi-lang-dotnet=&#34;`Ssbd`&#34; pulumi-lang-go=&#34;`ssbd`&#34; pulumi-lang-python=&#34;`ssbd`&#34; pulumi-lang-yaml=&#34;`ssbd`&#34; pulumi-lang-java=&#34;`ssbd`&#34;&gt;`ssbd`&lt;/span&gt;, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, &lt;span pulumi-lang-nodejs=&#34;`pdpe1gb`&#34; pulumi-lang-dotnet=&#34;`Pdpe1gb`&#34; pulumi-lang-go=&#34;`pdpe1gb`&#34; pulumi-lang-python=&#34;`pdpe1gb`&#34; pulumi-lang-yaml=&#34;`pdpe1gb`&#34; pulumi-lang-java=&#34;`pdpe1gb`&#34;&gt;`pdpe1gb`&lt;/span&gt;, `md-clear`, `hv-tlbflush`, `hv-evmcs`, &lt;span pulumi-lang-nodejs=&#34;`aes`&#34; pulumi-lang-dotnet=&#34;`Aes`&#34; pulumi-lang-go=&#34;`aes`&#34; pulumi-lang-python=&#34;`aes`&#34; pulumi-lang-yaml=&#34;`aes`&#34; pulumi-lang-java=&#34;`aes`&#34;&gt;`aes`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -286,7 +286,7 @@ public final class VirtualMachine2CpuArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param flags Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+         * @param flags Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: &lt;span pulumi-lang-nodejs=&#34;`pcid`&#34; pulumi-lang-dotnet=&#34;`Pcid`&#34; pulumi-lang-go=&#34;`pcid`&#34; pulumi-lang-python=&#34;`pcid`&#34; pulumi-lang-yaml=&#34;`pcid`&#34; pulumi-lang-java=&#34;`pcid`&#34;&gt;`pcid`&lt;/span&gt;, `spec-ctrl`, &lt;span pulumi-lang-nodejs=&#34;`ibpb`&#34; pulumi-lang-dotnet=&#34;`Ibpb`&#34; pulumi-lang-go=&#34;`ibpb`&#34; pulumi-lang-python=&#34;`ibpb`&#34; pulumi-lang-yaml=&#34;`ibpb`&#34; pulumi-lang-java=&#34;`ibpb`&#34;&gt;`ibpb`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`ssbd`&#34; pulumi-lang-dotnet=&#34;`Ssbd`&#34; pulumi-lang-go=&#34;`ssbd`&#34; pulumi-lang-python=&#34;`ssbd`&#34; pulumi-lang-yaml=&#34;`ssbd`&#34; pulumi-lang-java=&#34;`ssbd`&#34;&gt;`ssbd`&lt;/span&gt;, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, &lt;span pulumi-lang-nodejs=&#34;`pdpe1gb`&#34; pulumi-lang-dotnet=&#34;`Pdpe1gb`&#34; pulumi-lang-go=&#34;`pdpe1gb`&#34; pulumi-lang-python=&#34;`pdpe1gb`&#34; pulumi-lang-yaml=&#34;`pdpe1gb`&#34; pulumi-lang-java=&#34;`pdpe1gb`&#34;&gt;`pdpe1gb`&lt;/span&gt;, `md-clear`, `hv-tlbflush`, `hv-evmcs`, &lt;span pulumi-lang-nodejs=&#34;`aes`&#34; pulumi-lang-dotnet=&#34;`Aes`&#34; pulumi-lang-go=&#34;`aes`&#34; pulumi-lang-python=&#34;`aes`&#34; pulumi-lang-yaml=&#34;`aes`&#34; pulumi-lang-java=&#34;`aes`&#34;&gt;`aes`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -296,7 +296,7 @@ public final class VirtualMachine2CpuArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param hotplugged The number of hotplugged vCPUs (defaults to `0`).
+         * @param hotplugged The number of hotplugged vCPUs (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -307,7 +307,7 @@ public final class VirtualMachine2CpuArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param hotplugged The number of hotplugged vCPUs (defaults to `0`).
+         * @param hotplugged The number of hotplugged vCPUs (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -317,7 +317,7 @@ public final class VirtualMachine2CpuArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param limit Limit of CPU usage (defaults to `0` which means no limit).
+         * @param limit Limit of CPU usage (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; which means no limit).
          * 
          * @return builder
          * 
@@ -328,7 +328,7 @@ public final class VirtualMachine2CpuArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param limit Limit of CPU usage (defaults to `0` which means no limit).
+         * @param limit Limit of CPU usage (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; which means no limit).
          * 
          * @return builder
          * 
@@ -338,7 +338,7 @@ public final class VirtualMachine2CpuArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param numa Enable NUMA (defaults to `false`).
+         * @param numa Enable NUMA (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -349,7 +349,7 @@ public final class VirtualMachine2CpuArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param numa Enable NUMA (defaults to `false`).
+         * @param numa Enable NUMA (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -359,7 +359,7 @@ public final class VirtualMachine2CpuArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param sockets The number of CPU sockets (defaults to `1`).
+         * @param sockets The number of CPU sockets (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -370,7 +370,7 @@ public final class VirtualMachine2CpuArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param sockets The number of CPU sockets (defaults to `1`).
+         * @param sockets The number of CPU sockets (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -380,7 +380,7 @@ public final class VirtualMachine2CpuArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param type Emulated CPU type, it&#39;s recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+         * @param type Emulated CPU type, it&#39;s recommended to use `x86-64-v2-AES` or higher (defaults to &lt;span pulumi-lang-nodejs=&#34;`kvm64`&#34; pulumi-lang-dotnet=&#34;`Kvm64`&#34; pulumi-lang-go=&#34;`kvm64`&#34; pulumi-lang-python=&#34;`kvm64`&#34; pulumi-lang-yaml=&#34;`kvm64`&#34; pulumi-lang-java=&#34;`kvm64`&#34;&gt;`kvm64`&lt;/span&gt;). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
          * 
          * @return builder
          * 
@@ -391,7 +391,7 @@ public final class VirtualMachine2CpuArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param type Emulated CPU type, it&#39;s recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+         * @param type Emulated CPU type, it&#39;s recommended to use `x86-64-v2-AES` or higher (defaults to &lt;span pulumi-lang-nodejs=&#34;`kvm64`&#34; pulumi-lang-dotnet=&#34;`Kvm64`&#34; pulumi-lang-go=&#34;`kvm64`&#34; pulumi-lang-python=&#34;`kvm64`&#34; pulumi-lang-yaml=&#34;`kvm64`&#34; pulumi-lang-java=&#34;`kvm64`&#34;&gt;`kvm64`&lt;/span&gt;). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
          * 
          * @return builder
          * 

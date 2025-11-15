@@ -59,7 +59,7 @@ public final class GetQinqResult {
      */
     private String reverseDns;
     /**
-     * @return Service VLAN tag for QinQ. The tag must be between `1` and `4094`.
+     * @return Service VLAN tag for QinQ. The tag must be between &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`4094`&#34; pulumi-lang-dotnet=&#34;`4094`&#34; pulumi-lang-go=&#34;`4094`&#34; pulumi-lang-python=&#34;`4094`&#34; pulumi-lang-yaml=&#34;`4094`&#34; pulumi-lang-java=&#34;`4094`&#34;&gt;`4094`&lt;/span&gt;.
      * 
      */
     private Integer serviceVlan;
@@ -139,7 +139,7 @@ public final class GetQinqResult {
         return this.reverseDns;
     }
     /**
-     * @return Service VLAN tag for QinQ. The tag must be between `1` and `4094`.
+     * @return Service VLAN tag for QinQ. The tag must be between &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`4094`&#34; pulumi-lang-dotnet=&#34;`4094`&#34; pulumi-lang-go=&#34;`4094`&#34; pulumi-lang-python=&#34;`4094`&#34; pulumi-lang-yaml=&#34;`4094`&#34; pulumi-lang-java=&#34;`4094`&#34;&gt;`4094`&lt;/span&gt;.
      * 
      */
     public Integer serviceVlan() {

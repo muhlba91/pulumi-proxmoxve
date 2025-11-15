@@ -29,26 +29,26 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sdnzone.NewEvpn(ctx, "example", &sdnzone.EvpnArgs{
-//				AdvertiseSubnets:        pulumi.Bool(true),
+//				ZoneId: pulumi.String("evpn1"),
+//				Nodes: pulumi.StringArray{
+//					pulumi.String("pve"),
+//				},
 //				Controller:              pulumi.String("evpn-controller1"),
+//				VrfVxlan:                pulumi.Int(4000),
+//				AdvertiseSubnets:        pulumi.Bool(true),
 //				DisableArpNdSuppression: pulumi.Bool(false),
-//				Dns:                     pulumi.String("1.1.1.1"),
-//				DnsZone:                 pulumi.String("example.com"),
 //				ExitNodes: pulumi.StringArray{
 //					pulumi.String("pve-exit1"),
 //					pulumi.String("pve-exit2"),
 //				},
 //				ExitNodesLocalRouting: pulumi.Bool(true),
-//				ZoneId:                pulumi.String("evpn1"),
-//				Ipam:                  pulumi.String("pve"),
+//				PrimaryExitNode:       pulumi.String("pve-exit1"),
+//				RtImport:              pulumi.String("65000:65000"),
 //				Mtu:                   pulumi.Int(1450),
-//				Nodes: pulumi.StringArray{
-//					pulumi.String("pve"),
-//				},
-//				PrimaryExitNode: pulumi.String("pve-exit1"),
-//				ReverseDns:      pulumi.String("1.1.1.1"),
-//				RtImport:        pulumi.String("65000:65000"),
-//				VrfVxlan:        pulumi.Int(4000),
+//				Dns:                   pulumi.String("1.1.1.1"),
+//				DnsZone:               pulumi.String("example.com"),
+//				Ipam:                  pulumi.String("pve"),
+//				ReverseDns:            pulumi.String("1.1.1.1"),
 //			})
 //			if err != nil {
 //				return err
@@ -116,9 +116,6 @@ func NewEvpn(ctx *pulumi.Context,
 
 	if args.Controller == nil {
 		return nil, errors.New("invalid value for required argument 'Controller'")
-	}
-	if args.Nodes == nil {
-		return nil, errors.New("invalid value for required argument 'Nodes'")
 	}
 	if args.VrfVxlan == nil {
 		return nil, errors.New("invalid value for required argument 'VrfVxlan'")

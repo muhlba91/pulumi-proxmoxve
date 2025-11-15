@@ -178,11 +178,11 @@ namespace Pulumi.ProxmoxVE
              public class Ssh
              {
             /// <summary>
-            /// Whether to use the SSH agent for authentication. Takes precedence over the `private_key` and `password` fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or `false` if not set.
+            /// Whether to use the SSH agent for authentication. Takes precedence over the `PrivateKey` and `Password` fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or `False` if not set.
             /// </summary>
                 public bool? Agent { get; set; }
             /// <summary>
-            /// Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or `false` if not set.
+            /// Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or `False` if not set.
             /// </summary>
                 public bool? AgentForwarding { get; set; }
             /// <summary>
@@ -194,7 +194,7 @@ namespace Pulumi.ProxmoxVE
             /// </summary>
                 public ImmutableArray<Pulumi.ProxmoxVE.Config.Types.SshNode> Nodes { get; set; }
             /// <summary>
-            /// The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
+            /// The password used for the SSH connection. Defaults to the value of the `Password` field of the `Provider` block.
             /// </summary>
                 public string? Password { get; set; } = null!;
             /// <summary>
@@ -214,7 +214,7 @@ namespace Pulumi.ProxmoxVE
             /// </summary>
                 public string? Socks5Username { get; set; } = null!;
             /// <summary>
-            /// The username used for the SSH connection. Defaults to the value of the `username` field of the `provider` block.
+            /// The username used for the SSH connection. Defaults to the value of the `Username` field of the `Provider` block.
             /// </summary>
                 public string? Username { get; set; } = null!;
             }

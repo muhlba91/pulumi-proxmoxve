@@ -16,16 +16,16 @@ import * as utilities from "../utilities";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
  * const example = new proxmoxve.network.Firewall("example", {
- *     ebtables: false,
  *     enabled: false,
- *     forwardPolicy: "ACCEPT",
+ *     ebtables: false,
  *     inputPolicy: "DROP",
+ *     outputPolicy: "ACCEPT",
+ *     forwardPolicy: "ACCEPT",
  *     logRatelimit: {
- *         burst: 10,
  *         enabled: false,
+ *         burst: 10,
  *         rate: "5/second",
  *     },
- *     outputPolicy: "ACCEPT",
  * });
  * ```
  *

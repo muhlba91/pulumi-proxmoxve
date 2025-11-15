@@ -20,13 +20,13 @@ public final class VirtualMachineClone {
      */
     private @Nullable String datastoreId;
     /**
-     * @return Full or linked clone (defaults to `true`).
+     * @return Full or linked clone (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     private @Nullable Boolean full;
     /**
      * @return The name of the source node (leave blank, if
-     * equal to the `node_name` argument).
+     * equal to the &lt;span pulumi-lang-nodejs=&#34;`nodeName`&#34; pulumi-lang-dotnet=&#34;`NodeName`&#34; pulumi-lang-go=&#34;`nodeName`&#34; pulumi-lang-python=&#34;`node_name`&#34; pulumi-lang-yaml=&#34;`nodeName`&#34; pulumi-lang-java=&#34;`nodeName`&#34;&gt;`node_name`&lt;/span&gt; argument).
      * 
      */
     private @Nullable String nodeName;
@@ -52,7 +52,7 @@ public final class VirtualMachineClone {
         return Optional.ofNullable(this.datastoreId);
     }
     /**
-     * @return Full or linked clone (defaults to `true`).
+     * @return Full or linked clone (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Optional<Boolean> full() {
@@ -60,7 +60,7 @@ public final class VirtualMachineClone {
     }
     /**
      * @return The name of the source node (leave blank, if
-     * equal to the `node_name` argument).
+     * equal to the &lt;span pulumi-lang-nodejs=&#34;`nodeName`&#34; pulumi-lang-dotnet=&#34;`NodeName`&#34; pulumi-lang-go=&#34;`nodeName`&#34; pulumi-lang-python=&#34;`node_name`&#34; pulumi-lang-yaml=&#34;`nodeName`&#34; pulumi-lang-java=&#34;`nodeName`&#34;&gt;`node_name`&lt;/span&gt; argument).
      * 
      */
     public Optional<String> nodeName() {

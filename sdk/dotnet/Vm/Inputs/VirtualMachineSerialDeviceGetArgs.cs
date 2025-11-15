@@ -13,7 +13,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
     public sealed class VirtualMachineSerialDeviceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The device (defaults to `socket`).
+        /// The device (defaults to `Socket`).
         /// - `/dev/*` - A host serial device.
         /// </summary>
         [Input("device")]

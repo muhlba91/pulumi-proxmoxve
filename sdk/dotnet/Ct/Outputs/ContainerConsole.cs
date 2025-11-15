@@ -15,7 +15,7 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
     {
         /// <summary>
         /// Whether to enable the console device (defaults
-        /// to `true`).
+        /// to `True`).
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
@@ -23,7 +23,7 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
         /// </summary>
         public readonly int? TtyCount;
         /// <summary>
-        /// The console mode (defaults to `tty`).
+        /// The console mode (defaults to `Tty`).
         /// </summary>
         public readonly string? Type;
 

@@ -18,14 +18,14 @@ public final class VirtualMachineRngArgs extends com.pulumi.resources.ResourceAr
     public static final VirtualMachineRngArgs Empty = new VirtualMachineRngArgs();
 
     /**
-     * Maximum bytes of entropy allowed to get injected into the guest every `period` milliseconds (defaults to `1024`). Prefer a lower value when using `/dev/random` as source.
+     * Maximum bytes of entropy allowed to get injected into the guest every &lt;span pulumi-lang-nodejs=&#34;`period`&#34; pulumi-lang-dotnet=&#34;`Period`&#34; pulumi-lang-go=&#34;`period`&#34; pulumi-lang-python=&#34;`period`&#34; pulumi-lang-yaml=&#34;`period`&#34; pulumi-lang-java=&#34;`period`&#34;&gt;`period`&lt;/span&gt; milliseconds (defaults to &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt;). Prefer a lower value when using `/dev/random` as source.
      * 
      */
     @Import(name="maxBytes")
     private @Nullable Output<Integer> maxBytes;
 
     /**
-     * @return Maximum bytes of entropy allowed to get injected into the guest every `period` milliseconds (defaults to `1024`). Prefer a lower value when using `/dev/random` as source.
+     * @return Maximum bytes of entropy allowed to get injected into the guest every &lt;span pulumi-lang-nodejs=&#34;`period`&#34; pulumi-lang-dotnet=&#34;`Period`&#34; pulumi-lang-go=&#34;`period`&#34; pulumi-lang-python=&#34;`period`&#34; pulumi-lang-yaml=&#34;`period`&#34; pulumi-lang-java=&#34;`period`&#34;&gt;`period`&lt;/span&gt; milliseconds (defaults to &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt;). Prefer a lower value when using `/dev/random` as source.
      * 
      */
     public Optional<Output<Integer>> maxBytes() {
@@ -33,14 +33,14 @@ public final class VirtualMachineRngArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Every `period` milliseconds the entropy-injection quota is reset, allowing the guest to retrieve another `max_bytes` of entropy (defaults to `1000`).
+     * Every &lt;span pulumi-lang-nodejs=&#34;`period`&#34; pulumi-lang-dotnet=&#34;`Period`&#34; pulumi-lang-go=&#34;`period`&#34; pulumi-lang-python=&#34;`period`&#34; pulumi-lang-yaml=&#34;`period`&#34; pulumi-lang-java=&#34;`period`&#34;&gt;`period`&lt;/span&gt; milliseconds the entropy-injection quota is reset, allowing the guest to retrieve another &lt;span pulumi-lang-nodejs=&#34;`maxBytes`&#34; pulumi-lang-dotnet=&#34;`MaxBytes`&#34; pulumi-lang-go=&#34;`maxBytes`&#34; pulumi-lang-python=&#34;`max_bytes`&#34; pulumi-lang-yaml=&#34;`maxBytes`&#34; pulumi-lang-java=&#34;`maxBytes`&#34;&gt;`max_bytes`&lt;/span&gt; of entropy (defaults to &lt;span pulumi-lang-nodejs=&#34;`1000`&#34; pulumi-lang-dotnet=&#34;`1000`&#34; pulumi-lang-go=&#34;`1000`&#34; pulumi-lang-python=&#34;`1000`&#34; pulumi-lang-yaml=&#34;`1000`&#34; pulumi-lang-java=&#34;`1000`&#34;&gt;`1000`&lt;/span&gt;).
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return Every `period` milliseconds the entropy-injection quota is reset, allowing the guest to retrieve another `max_bytes` of entropy (defaults to `1000`).
+     * @return Every &lt;span pulumi-lang-nodejs=&#34;`period`&#34; pulumi-lang-dotnet=&#34;`Period`&#34; pulumi-lang-go=&#34;`period`&#34; pulumi-lang-python=&#34;`period`&#34; pulumi-lang-yaml=&#34;`period`&#34; pulumi-lang-java=&#34;`period`&#34;&gt;`period`&lt;/span&gt; milliseconds the entropy-injection quota is reset, allowing the guest to retrieve another &lt;span pulumi-lang-nodejs=&#34;`maxBytes`&#34; pulumi-lang-dotnet=&#34;`MaxBytes`&#34; pulumi-lang-go=&#34;`maxBytes`&#34; pulumi-lang-python=&#34;`max_bytes`&#34; pulumi-lang-yaml=&#34;`maxBytes`&#34; pulumi-lang-java=&#34;`maxBytes`&#34;&gt;`max_bytes`&lt;/span&gt; of entropy (defaults to &lt;span pulumi-lang-nodejs=&#34;`1000`&#34; pulumi-lang-dotnet=&#34;`1000`&#34; pulumi-lang-go=&#34;`1000`&#34; pulumi-lang-python=&#34;`1000`&#34; pulumi-lang-yaml=&#34;`1000`&#34; pulumi-lang-java=&#34;`1000`&#34;&gt;`1000`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -89,7 +89,7 @@ public final class VirtualMachineRngArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param maxBytes Maximum bytes of entropy allowed to get injected into the guest every `period` milliseconds (defaults to `1024`). Prefer a lower value when using `/dev/random` as source.
+         * @param maxBytes Maximum bytes of entropy allowed to get injected into the guest every &lt;span pulumi-lang-nodejs=&#34;`period`&#34; pulumi-lang-dotnet=&#34;`Period`&#34; pulumi-lang-go=&#34;`period`&#34; pulumi-lang-python=&#34;`period`&#34; pulumi-lang-yaml=&#34;`period`&#34; pulumi-lang-java=&#34;`period`&#34;&gt;`period`&lt;/span&gt; milliseconds (defaults to &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt;). Prefer a lower value when using `/dev/random` as source.
          * 
          * @return builder
          * 
@@ -100,7 +100,7 @@ public final class VirtualMachineRngArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param maxBytes Maximum bytes of entropy allowed to get injected into the guest every `period` milliseconds (defaults to `1024`). Prefer a lower value when using `/dev/random` as source.
+         * @param maxBytes Maximum bytes of entropy allowed to get injected into the guest every &lt;span pulumi-lang-nodejs=&#34;`period`&#34; pulumi-lang-dotnet=&#34;`Period`&#34; pulumi-lang-go=&#34;`period`&#34; pulumi-lang-python=&#34;`period`&#34; pulumi-lang-yaml=&#34;`period`&#34; pulumi-lang-java=&#34;`period`&#34;&gt;`period`&lt;/span&gt; milliseconds (defaults to &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt;). Prefer a lower value when using `/dev/random` as source.
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class VirtualMachineRngArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param period Every `period` milliseconds the entropy-injection quota is reset, allowing the guest to retrieve another `max_bytes` of entropy (defaults to `1000`).
+         * @param period Every &lt;span pulumi-lang-nodejs=&#34;`period`&#34; pulumi-lang-dotnet=&#34;`Period`&#34; pulumi-lang-go=&#34;`period`&#34; pulumi-lang-python=&#34;`period`&#34; pulumi-lang-yaml=&#34;`period`&#34; pulumi-lang-java=&#34;`period`&#34;&gt;`period`&lt;/span&gt; milliseconds the entropy-injection quota is reset, allowing the guest to retrieve another &lt;span pulumi-lang-nodejs=&#34;`maxBytes`&#34; pulumi-lang-dotnet=&#34;`MaxBytes`&#34; pulumi-lang-go=&#34;`maxBytes`&#34; pulumi-lang-python=&#34;`max_bytes`&#34; pulumi-lang-yaml=&#34;`maxBytes`&#34; pulumi-lang-java=&#34;`maxBytes`&#34;&gt;`max_bytes`&lt;/span&gt; of entropy (defaults to &lt;span pulumi-lang-nodejs=&#34;`1000`&#34; pulumi-lang-dotnet=&#34;`1000`&#34; pulumi-lang-go=&#34;`1000`&#34; pulumi-lang-python=&#34;`1000`&#34; pulumi-lang-yaml=&#34;`1000`&#34; pulumi-lang-java=&#34;`1000`&#34;&gt;`1000`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -121,7 +121,7 @@ public final class VirtualMachineRngArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param period Every `period` milliseconds the entropy-injection quota is reset, allowing the guest to retrieve another `max_bytes` of entropy (defaults to `1000`).
+         * @param period Every &lt;span pulumi-lang-nodejs=&#34;`period`&#34; pulumi-lang-dotnet=&#34;`Period`&#34; pulumi-lang-go=&#34;`period`&#34; pulumi-lang-python=&#34;`period`&#34; pulumi-lang-yaml=&#34;`period`&#34; pulumi-lang-java=&#34;`period`&#34;&gt;`period`&lt;/span&gt; milliseconds the entropy-injection quota is reset, allowing the guest to retrieve another &lt;span pulumi-lang-nodejs=&#34;`maxBytes`&#34; pulumi-lang-dotnet=&#34;`MaxBytes`&#34; pulumi-lang-go=&#34;`maxBytes`&#34; pulumi-lang-python=&#34;`max_bytes`&#34; pulumi-lang-yaml=&#34;`maxBytes`&#34; pulumi-lang-java=&#34;`maxBytes`&#34;&gt;`max_bytes`&lt;/span&gt; of entropy (defaults to &lt;span pulumi-lang-nodejs=&#34;`1000`&#34; pulumi-lang-dotnet=&#34;`1000`&#34; pulumi-lang-go=&#34;`1000`&#34; pulumi-lang-python=&#34;`1000`&#34; pulumi-lang-yaml=&#34;`1000`&#34; pulumi-lang-java=&#34;`1000`&#34;&gt;`1000`&lt;/span&gt;).
          * 
          * @return builder
          * 

@@ -20,13 +20,13 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         public readonly string Device;
         /// <summary>
         /// The PCI device ID. This parameter is not compatible
-        /// with `api_token` and requires the root `username` and `password`
-        /// configured in the proxmox provider. Use either this or `mapping`.
+        /// with `ApiToken` and requires the root `Username` and `Password`
+        /// configured in the proxmox provider. Use either this or `Mapping`.
         /// </summary>
         public readonly string? Id;
         /// <summary>
         /// The resource mapping name of the device, for
-        /// example gpu. Use either this or `id`.
+        /// example gpu. Use either this or `Id`.
         /// </summary>
         public readonly string? Mapping;
         /// <summary>
@@ -46,12 +46,12 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         public readonly string? RomFile;
         /// <summary>
         /// Makes the firmware ROM visible for the VM (defaults
-        /// to `true`).
+        /// to `True`).
         /// </summary>
         public readonly bool? Rombar;
         /// <summary>
         /// Marks the PCI(e) device as the primary GPU of the VM.
-        /// With this enabled the `vga` configuration argument will be ignored.
+        /// With this enabled the `Vga` configuration argument will be ignored.
         /// </summary>
         public readonly bool? Xvga;
 

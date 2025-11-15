@@ -30,18 +30,20 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := network.NewFirewallAlias(ctx, "localNetwork", &network.FirewallAliasArgs{
-//				NodeName: pulumi.Any(proxmox_virtual_environment_vm.Example.Node_name),
-//				VmId:     pulumi.Any(proxmox_virtual_environment_vm.Example.Vm_id),
+//			_, err := network.NewFirewallAlias(ctx, "local_network", &network.FirewallAliasArgs{
+//				NodeName: pulumi.Any(example.NodeName),
+//				VmId:     pulumi.Any(example.VmId),
+//				Name:     pulumi.String("local_network"),
 //				Cidr:     pulumi.String("192.168.0.0/23"),
 //				Comment:  pulumi.String("Managed by Pulumi"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				proxmox_virtual_environment_vm.Example,
+//				example,
 //			}))
 //			if err != nil {
 //				return err
 //			}
-//			_, err = network.NewFirewallAlias(ctx, "ubuntuVm", &network.FirewallAliasArgs{
+//			_, err = network.NewFirewallAlias(ctx, "ubuntu_vm", &network.FirewallAliasArgs{
+//				Name:    pulumi.String("ubuntu"),
 //				Cidr:    pulumi.String("192.168.0.1"),
 //				Comment: pulumi.String("Managed by Pulumi"),
 //			})

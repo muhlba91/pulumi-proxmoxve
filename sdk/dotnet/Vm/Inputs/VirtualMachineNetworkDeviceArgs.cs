@@ -13,25 +13,25 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
     public sealed class VirtualMachineNetworkDeviceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the network bridge (defaults to `vmbr0`).
+        /// The name of the network bridge (defaults to `Vmbr0`).
         /// </summary>
         [Input("bridge")]
         public Input<string>? Bridge { get; set; }
 
         /// <summary>
-        /// Whether to disconnect the network device from the network (defaults to `false`).
+        /// Whether to disconnect the network device from the network (defaults to `False`).
         /// </summary>
         [Input("disconnected")]
         public Input<bool>? Disconnected { get; set; }
 
         /// <summary>
-        /// Whether to enable the network device (defaults to `true`).
+        /// Whether to enable the network device (defaults to `True`).
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Whether this interface's firewall rules should be used (defaults to `false`).
+        /// Whether this interface's firewall rules should be used (defaults to `False`).
         /// </summary>
         [Input("firewall")]
         public Input<bool>? Firewall { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<string>? MacAddress { get; set; }
 
         /// <summary>
-        /// The network device model (defaults to `virtio`).
+        /// The network device model (defaults to `Virtio`).
         /// </summary>
         [Input("model")]
         public Input<string>? Model { get; set; }

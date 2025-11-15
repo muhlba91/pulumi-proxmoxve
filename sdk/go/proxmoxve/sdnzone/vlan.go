@@ -29,15 +29,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sdnzone.NewVlan(ctx, "example", &sdnzone.VlanArgs{
-//				Bridge:  pulumi.String("vmbr0"),
-//				Dns:     pulumi.String("1.1.1.1"),
-//				DnsZone: pulumi.String("example.com"),
-//				ZoneId:  pulumi.String("vlan1"),
-//				Ipam:    pulumi.String("pve"),
-//				Mtu:     pulumi.Int(1500),
-//				Nodes: pulumi.StringArray{
-//					pulumi.String("pve"),
-//				},
+//				ZoneId:     pulumi.String("vlan1"),
+//				Bridge:     pulumi.String("vmbr0"),
+//				Mtu:        pulumi.Int(1500),
+//				Dns:        pulumi.String("1.1.1.1"),
+//				DnsZone:    pulumi.String("example.com"),
+//				Ipam:       pulumi.String("pve"),
 //				ReverseDns: pulumi.String("1.1.1.1"),
 //			})
 //			if err != nil {
@@ -92,9 +89,6 @@ func NewVlan(ctx *pulumi.Context,
 
 	if args.Bridge == nil {
 		return nil, errors.New("invalid value for required argument 'Bridge'")
-	}
-	if args.Nodes == nil {
-		return nil, errors.New("invalid value for required argument 'Nodes'")
 	}
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")

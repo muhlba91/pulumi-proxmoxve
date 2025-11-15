@@ -15,15 +15,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
- * const localNetwork = new proxmoxve.network.FirewallAlias("localNetwork", {
- *     nodeName: proxmox_virtual_environment_vm.example.node_name,
- *     vmId: proxmox_virtual_environment_vm.example.vm_id,
+ * const localNetwork = new proxmoxve.network.FirewallAlias("local_network", {
+ *     nodeName: example.nodeName,
+ *     vmId: example.vmId,
+ *     name: "local_network",
  *     cidr: "192.168.0.0/23",
  *     comment: "Managed by Pulumi",
  * }, {
- *     dependsOn: [proxmox_virtual_environment_vm.example],
+ *     dependsOn: [example],
  * });
- * const ubuntuVm = new proxmoxve.network.FirewallAlias("ubuntuVm", {
+ * const ubuntuVm = new proxmoxve.network.FirewallAlias("ubuntu_vm", {
+ *     name: "ubuntu",
  *     cidr: "192.168.0.1",
  *     comment: "Managed by Pulumi",
  * });

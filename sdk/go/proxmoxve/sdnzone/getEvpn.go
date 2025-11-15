@@ -34,21 +34,21 @@ import (
 //				return err
 //			}
 //			ctx.Export("dataProxmoxVirtualEnvironmentSdnZoneEvpn", pulumi.Map{
-//				"id":                         example.Id,
-//				"nodes":                      example.Nodes,
-//				"controller":                 example.Controller,
-//				"vrf_vxlan":                  example.VrfVxlan,
-//				"advertise_subnets":          example.AdvertiseSubnets,
-//				"disable_arp_nd_suppression": example.DisableArpNdSuppression,
-//				"exit_nodes":                 example.ExitNodes,
-//				"exit_nodes_local_routing":   example.ExitNodesLocalRouting,
-//				"primary_exit_node":          example.PrimaryExitNode,
-//				"rt_import":                  example.RtImport,
-//				"mtu":                        example.Mtu,
-//				"dns":                        example.Dns,
-//				"dns_zone":                   example.DnsZone,
-//				"ipam":                       example.Ipam,
-//				"reverse_dns":                example.ReverseDns,
+//				"id":                      example.Id,
+//				"nodes":                   example.Nodes,
+//				"controller":              example.Controller,
+//				"vrfVxlan":                example.VrfVxlan,
+//				"advertiseSubnets":        example.AdvertiseSubnets,
+//				"disableArpNdSuppression": example.DisableArpNdSuppression,
+//				"exitNodes":               example.ExitNodes,
+//				"exitNodesLocalRouting":   example.ExitNodesLocalRouting,
+//				"primaryExitNode":         example.PrimaryExitNode,
+//				"rtImport":                example.RtImport,
+//				"mtu":                     example.Mtu,
+//				"dns":                     example.Dns,
+//				"dnsZone":                 example.DnsZone,
+//				"ipam":                    example.Ipam,
+//				"reverseDns":              example.ReverseDns,
 //			})
 //			return nil
 //		})

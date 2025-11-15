@@ -19,7 +19,7 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
         public readonly string? DatastoreId;
         /// <summary>
         /// The name of the source node (leave blank, if
-        /// equal to the `node_name` argument).
+        /// equal to the `NodeName` argument).
         /// </summary>
         public readonly string? NodeName;
         /// <summary>

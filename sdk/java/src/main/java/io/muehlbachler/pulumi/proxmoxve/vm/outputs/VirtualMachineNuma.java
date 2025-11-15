@@ -35,7 +35,7 @@ public final class VirtualMachineNuma {
      */
     private Integer memory;
     /**
-     * @return The NUMA policy (defaults to `preferred`).
+     * @return The NUMA policy (defaults to &lt;span pulumi-lang-nodejs=&#34;`preferred`&#34; pulumi-lang-dotnet=&#34;`Preferred`&#34; pulumi-lang-go=&#34;`preferred`&#34; pulumi-lang-python=&#34;`preferred`&#34; pulumi-lang-yaml=&#34;`preferred`&#34; pulumi-lang-java=&#34;`preferred`&#34;&gt;`preferred`&lt;/span&gt;).
      * 
      */
     private @Nullable String policy;
@@ -71,7 +71,7 @@ public final class VirtualMachineNuma {
         return this.memory;
     }
     /**
-     * @return The NUMA policy (defaults to `preferred`).
+     * @return The NUMA policy (defaults to &lt;span pulumi-lang-nodejs=&#34;`preferred`&#34; pulumi-lang-dotnet=&#34;`Preferred`&#34; pulumi-lang-go=&#34;`preferred`&#34; pulumi-lang-python=&#34;`preferred`&#34; pulumi-lang-yaml=&#34;`preferred`&#34; pulumi-lang-java=&#34;`preferred`&#34;&gt;`preferred`&lt;/span&gt;).
      * 
      */
     public Optional<String> policy() {

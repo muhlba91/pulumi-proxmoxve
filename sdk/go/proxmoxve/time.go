@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := proxmoxve.NewTime(ctx, "firstNodeTime", &proxmoxve.TimeArgs{
+//			_, err := proxmoxve.NewTime(ctx, "first_node_time", &proxmoxve.TimeArgs{
 //				NodeName: pulumi.String("first-node"),
 //				TimeZone: pulumi.String("UTC"),
 //			})

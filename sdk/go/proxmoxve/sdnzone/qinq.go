@@ -29,18 +29,15 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sdnzone.NewQinq(ctx, "example", &sdnzone.QinqArgs{
-//				Bridge:  pulumi.String("vmbr0"),
-//				Dns:     pulumi.String("1.1.1.1"),
-//				DnsZone: pulumi.String("example.com"),
-//				ZoneId:  pulumi.String("qinq1"),
-//				Ipam:    pulumi.String("pve"),
-//				Mtu:     pulumi.Int(1496),
-//				Nodes: pulumi.StringArray{
-//					pulumi.String("pve"),
-//				},
-//				ReverseDns:          pulumi.String("1.1.1.1"),
+//				ZoneId:              pulumi.String("qinq1"),
+//				Bridge:              pulumi.String("vmbr0"),
 //				ServiceVlan:         pulumi.Int(100),
 //				ServiceVlanProtocol: pulumi.String("802.1ad"),
+//				Mtu:                 pulumi.Int(1496),
+//				Dns:                 pulumi.String("1.1.1.1"),
+//				DnsZone:             pulumi.String("example.com"),
+//				Ipam:                pulumi.String("pve"),
+//				ReverseDns:          pulumi.String("1.1.1.1"),
 //			})
 //			if err != nil {
 //				return err
@@ -98,9 +95,6 @@ func NewQinq(ctx *pulumi.Context,
 
 	if args.Bridge == nil {
 		return nil, errors.New("invalid value for required argument 'Bridge'")
-	}
-	if args.Nodes == nil {
-		return nil, errors.New("invalid value for required argument 'Nodes'")
 	}
 	if args.ServiceVlan == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceVlan'")

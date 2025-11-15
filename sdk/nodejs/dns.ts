@@ -7,6 +7,29 @@ import * as utilities from "./utilities";
 /**
  * Manages the DNS configuration for a specific node.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const firstNodeDnsConfiguration = proxmoxve.Network.getDNS({
+ *     nodeName: "first-node",
+ * });
+ * const firstNodeDnsConfigurationDNS = new proxmoxve.DNS("first_node_dns_configuration", {
+ *     domain: firstNodeDnsConfiguration.then(firstNodeDnsConfiguration => firstNodeDnsConfiguration.domain),
+ *     nodeName: firstNodeDnsConfiguration.then(firstNodeDnsConfiguration => firstNodeDnsConfiguration.nodeName),
+ *     servers: [
+ *         "1.1.1.1",
+ *         "1.0.0.1",
+ *     ],
+ * });
+ * ```
+ *
+ * ## Important Notes
+ *
+ * Be careful not to use this resource multiple times for the same node.
+ *
  * ## Import
  *
  * Instances can be imported using the `node_name`, e.g.,

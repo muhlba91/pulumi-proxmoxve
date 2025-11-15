@@ -34,11 +34,8 @@ import (
 //				return err
 //			}
 //			// SDN Zone (Simple) - Basic zone for simple vnets
-//			exampleZone1, err := sdnzone.NewSimple(ctx, "exampleZone1", &sdnzone.SimpleArgs{
-//				ZoneId: pulumi.String("zone1"),
-//				Nodes: pulumi.StringArray{
-//					pulumi.String("pve"),
-//				},
+//			exampleZone1, err := sdnzone.NewSimple(ctx, "example_zone_1", &sdnzone.SimpleArgs{
+//				ZoneId:     pulumi.String("zone1"),
 //				Mtu:        pulumi.Int(1500),
 //				Dns:        pulumi.String("1.1.1.1"),
 //				DnsZone:    pulumi.String("example.com"),
@@ -51,12 +48,9 @@ import (
 //				return err
 //			}
 //			// SDN Zone (Simple) - Second zone for demonstration
-//			exampleZone2, err := sdnzone.NewSimple(ctx, "exampleZone2", &sdnzone.SimpleArgs{
+//			exampleZone2, err := sdnzone.NewSimple(ctx, "example_zone_2", &sdnzone.SimpleArgs{
 //				ZoneId: pulumi.String("zone2"),
-//				Nodes: pulumi.StringArray{
-//					pulumi.String("pve"),
-//				},
-//				Mtu: pulumi.Int(1500),
+//				Mtu:    pulumi.Int(1500),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				finalizer,
 //			}))
@@ -64,7 +58,7 @@ import (
 //				return err
 //			}
 //			// Basic VNet (Simple)
-//			basicVnet, err := sdn.NewVnet(ctx, "basicVnet", &sdn.VnetArgs{
+//			basicVnet, err := sdn.NewVnet(ctx, "basic_vnet", &sdn.VnetArgs{
 //				VnetId: pulumi.String("vnet1"),
 //				Zone:   exampleZone1.ZoneId,
 //			}, pulumi.DependsOn([]pulumi.Resource{
@@ -74,7 +68,7 @@ import (
 //				return err
 //			}
 //			// VNet with Alias and Port Isolation
-//			isolatedVnet, err := sdn.NewVnet(ctx, "isolatedVnet", &sdn.VnetArgs{
+//			isolatedVnet, err := sdn.NewVnet(ctx, "isolated_vnet", &sdn.VnetArgs{
 //				VnetId:       pulumi.String("vnet2"),
 //				Zone:         exampleZone2.ZoneId,
 //				Alias:        pulumi.String("Isolated VNet"),
@@ -87,7 +81,7 @@ import (
 //				return err
 //			}
 //			// SDN Applier for all resources
-//			_, err = sdn.NewApplier(ctx, "vnetApplier", nil, pulumi.DependsOn([]pulumi.Resource{
+//			_, err = sdn.NewApplier(ctx, "vnet_applier", nil, pulumi.DependsOn([]pulumi.Resource{
 //				exampleZone1,
 //				exampleZone2,
 //				basicVnet,

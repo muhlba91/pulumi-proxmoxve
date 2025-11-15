@@ -18,10 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * A security group is a collection of rules, defined at cluster level, which can
- * be used in all VMs&#39; rules. For example, you can define a group named “webserver”
- * with rules to open the http and https ports. Rules can be created on the cluster
- * level, on VM / Container level.
+ * Manages cluster-level, node-level or VM/container-level firewall rules.
  * 
  * ## Example Usage
  * 
@@ -51,8 +48,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var inbound = new FirewallRules("inbound", FirewallRulesArgs.builder()
- *             .nodeName(proxmox_virtual_environment_vm.example().node_name())
- *             .vmId(proxmox_virtual_environment_vm.example().vm_id())
+ *             .nodeName(example.nodeName())
+ *             .vmId(example.vmId())
  *             .rules(            
  *                 FirewallRulesRuleArgs.builder()
  *                     .type("in")
@@ -73,14 +70,14 @@ import javax.annotation.Nullable;
  *                     .log("info")
  *                     .build(),
  *                 FirewallRulesRuleArgs.builder()
- *                     .securityGroup(proxmox_virtual_environment_cluster_firewall_security_group.example().name())
+ *                     .securityGroup(exampleProxmoxVirtualEnvironmentClusterFirewallSecurityGroup.name())
  *                     .comment("From security group")
  *                     .iface("net0")
  *                     .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(                
- *                     proxmox_virtual_environment_vm.example(),
- *                     proxmox_virtual_environment_cluster_firewall_security_group.example())
+ *                     example,
+ *                     exampleProxmoxVirtualEnvironmentClusterFirewallSecurityGroup)
  *                 .build());
  * 
  *     }
@@ -89,20 +86,34 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * ### Container Rules
+ * 
+ * Use the import ID format: `container/&lt;node_name&gt;/&lt;container_id&gt;`
+ * 
+ * Example uses node name `pve` and container ID `100`.
+ * 
+ * **Example:**
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:Network/firewallRules:FirewallRules container_rules container/pve/100
+ * ```
+ * 
  */
 @ResourceType(type="proxmoxve:Network/firewallRules:FirewallRules")
 public class FirewallRules extends com.pulumi.resources.CustomResource {
     /**
-     * Container ID. Leave empty for cluster level
-     * rules.
+     * Container ID. Leave empty for node/cluster level rules.
      * 
      */
     @Export(name="containerId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> containerId;
 
     /**
-     * @return Container ID. Leave empty for cluster level
-     * rules.
+     * @return Container ID. Leave empty for node/cluster level rules.
      * 
      */
     public Output<Optional<Integer>> containerId() {
@@ -124,7 +135,7 @@ public class FirewallRules extends com.pulumi.resources.CustomResource {
     }
     /**
      * Firewall rule block (multiple blocks supported).
-     * The provider supports two types of the `rule` blocks:
+     * The provider supports two types of the &lt;span pulumi-lang-nodejs=&#34;`rule`&#34; pulumi-lang-dotnet=&#34;`Rule`&#34; pulumi-lang-go=&#34;`rule`&#34; pulumi-lang-python=&#34;`rule`&#34; pulumi-lang-yaml=&#34;`rule`&#34; pulumi-lang-java=&#34;`rule`&#34;&gt;`rule`&lt;/span&gt; blocks:
      * - A rule definition block, which includes the following arguments:
      * 
      */
@@ -133,7 +144,7 @@ public class FirewallRules extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Firewall rule block (multiple blocks supported).
-     * The provider supports two types of the `rule` blocks:
+     * The provider supports two types of the &lt;span pulumi-lang-nodejs=&#34;`rule`&#34; pulumi-lang-dotnet=&#34;`Rule`&#34; pulumi-lang-go=&#34;`rule`&#34; pulumi-lang-python=&#34;`rule`&#34; pulumi-lang-yaml=&#34;`rule`&#34; pulumi-lang-java=&#34;`rule`&#34;&gt;`rule`&lt;/span&gt; blocks:
      * - A rule definition block, which includes the following arguments:
      * 
      */
@@ -141,14 +152,14 @@ public class FirewallRules extends com.pulumi.resources.CustomResource {
         return this.rules;
     }
     /**
-     * VM ID. Leave empty for cluster level rules.
+     * VM ID. Leave empty for node/cluster level rules.
      * 
      */
     @Export(name="vmId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> vmId;
 
     /**
-     * @return VM ID. Leave empty for cluster level rules.
+     * @return VM ID. Leave empty for node/cluster level rules.
      * 
      */
     public Output<Optional<Integer>> vmId() {

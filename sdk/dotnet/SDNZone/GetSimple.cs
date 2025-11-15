@@ -37,9 +37,9 @@ namespace Pulumi.ProxmoxVE.SDNZone
         ///             { "nodes", example.Apply(getSimpleResult =&gt; getSimpleResult.Nodes) },
         ///             { "mtu", example.Apply(getSimpleResult =&gt; getSimpleResult.Mtu) },
         ///             { "dns", example.Apply(getSimpleResult =&gt; getSimpleResult.Dns) },
-        ///             { "dns_zone", example.Apply(getSimpleResult =&gt; getSimpleResult.DnsZone) },
+        ///             { "dnsZone", example.Apply(getSimpleResult =&gt; getSimpleResult.DnsZone) },
         ///             { "ipam", example.Apply(getSimpleResult =&gt; getSimpleResult.Ipam) },
-        ///             { "reverse_dns", example.Apply(getSimpleResult =&gt; getSimpleResult.ReverseDns) },
+        ///             { "reverseDns", example.Apply(getSimpleResult =&gt; getSimpleResult.ReverseDns) },
         ///         },
         ///     };
         /// });
@@ -74,9 +74,9 @@ namespace Pulumi.ProxmoxVE.SDNZone
         ///             { "nodes", example.Apply(getSimpleResult =&gt; getSimpleResult.Nodes) },
         ///             { "mtu", example.Apply(getSimpleResult =&gt; getSimpleResult.Mtu) },
         ///             { "dns", example.Apply(getSimpleResult =&gt; getSimpleResult.Dns) },
-        ///             { "dns_zone", example.Apply(getSimpleResult =&gt; getSimpleResult.DnsZone) },
+        ///             { "dnsZone", example.Apply(getSimpleResult =&gt; getSimpleResult.DnsZone) },
         ///             { "ipam", example.Apply(getSimpleResult =&gt; getSimpleResult.Ipam) },
-        ///             { "reverse_dns", example.Apply(getSimpleResult =&gt; getSimpleResult.ReverseDns) },
+        ///             { "reverseDns", example.Apply(getSimpleResult =&gt; getSimpleResult.ReverseDns) },
         ///         },
         ///     };
         /// });
@@ -111,9 +111,9 @@ namespace Pulumi.ProxmoxVE.SDNZone
         ///             { "nodes", example.Apply(getSimpleResult =&gt; getSimpleResult.Nodes) },
         ///             { "mtu", example.Apply(getSimpleResult =&gt; getSimpleResult.Mtu) },
         ///             { "dns", example.Apply(getSimpleResult =&gt; getSimpleResult.Dns) },
-        ///             { "dns_zone", example.Apply(getSimpleResult =&gt; getSimpleResult.DnsZone) },
+        ///             { "dnsZone", example.Apply(getSimpleResult =&gt; getSimpleResult.DnsZone) },
         ///             { "ipam", example.Apply(getSimpleResult =&gt; getSimpleResult.Ipam) },
-        ///             { "reverse_dns", example.Apply(getSimpleResult =&gt; getSimpleResult.ReverseDns) },
+        ///             { "reverseDns", example.Apply(getSimpleResult =&gt; getSimpleResult.ReverseDns) },
         ///         },
         ///     };
         /// });
@@ -157,6 +157,10 @@ namespace Pulumi.ProxmoxVE.SDNZone
     public sealed class GetSimpleResult
     {
         /// <summary>
+        /// The type of the DHCP backend for this zone.
+        /// </summary>
+        public readonly string Dhcp;
+        /// <summary>
         /// DNS API server address.
         /// </summary>
         public readonly string Dns;
@@ -195,6 +199,8 @@ namespace Pulumi.ProxmoxVE.SDNZone
 
         [OutputConstructor]
         private GetSimpleResult(
+            string dhcp,
+
             string dns,
 
             string dnsZone,
@@ -213,6 +219,7 @@ namespace Pulumi.ProxmoxVE.SDNZone
 
             string state)
         {
+            Dhcp = dhcp;
             Dns = dns;
             DnsZone = dnsZone;
             Id = id;

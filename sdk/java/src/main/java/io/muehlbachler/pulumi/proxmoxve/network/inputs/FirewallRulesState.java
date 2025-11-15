@@ -19,16 +19,14 @@ public final class FirewallRulesState extends com.pulumi.resources.ResourceArgs 
     public static final FirewallRulesState Empty = new FirewallRulesState();
 
     /**
-     * Container ID. Leave empty for cluster level
-     * rules.
+     * Container ID. Leave empty for node/cluster level rules.
      * 
      */
     @Import(name="containerId")
     private @Nullable Output<Integer> containerId;
 
     /**
-     * @return Container ID. Leave empty for cluster level
-     * rules.
+     * @return Container ID. Leave empty for node/cluster level rules.
      * 
      */
     public Optional<Output<Integer>> containerId() {
@@ -52,7 +50,7 @@ public final class FirewallRulesState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * Firewall rule block (multiple blocks supported).
-     * The provider supports two types of the `rule` blocks:
+     * The provider supports two types of the &lt;span pulumi-lang-nodejs=&#34;`rule`&#34; pulumi-lang-dotnet=&#34;`Rule`&#34; pulumi-lang-go=&#34;`rule`&#34; pulumi-lang-python=&#34;`rule`&#34; pulumi-lang-yaml=&#34;`rule`&#34; pulumi-lang-java=&#34;`rule`&#34;&gt;`rule`&lt;/span&gt; blocks:
      * - A rule definition block, which includes the following arguments:
      * 
      */
@@ -61,7 +59,7 @@ public final class FirewallRulesState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return Firewall rule block (multiple blocks supported).
-     * The provider supports two types of the `rule` blocks:
+     * The provider supports two types of the &lt;span pulumi-lang-nodejs=&#34;`rule`&#34; pulumi-lang-dotnet=&#34;`Rule`&#34; pulumi-lang-go=&#34;`rule`&#34; pulumi-lang-python=&#34;`rule`&#34; pulumi-lang-yaml=&#34;`rule`&#34; pulumi-lang-java=&#34;`rule`&#34;&gt;`rule`&lt;/span&gt; blocks:
      * - A rule definition block, which includes the following arguments:
      * 
      */
@@ -70,14 +68,14 @@ public final class FirewallRulesState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * VM ID. Leave empty for cluster level rules.
+     * VM ID. Leave empty for node/cluster level rules.
      * 
      */
     @Import(name="vmId")
     private @Nullable Output<Integer> vmId;
 
     /**
-     * @return VM ID. Leave empty for cluster level rules.
+     * @return VM ID. Leave empty for node/cluster level rules.
      * 
      */
     public Optional<Output<Integer>> vmId() {
@@ -112,8 +110,7 @@ public final class FirewallRulesState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param containerId Container ID. Leave empty for cluster level
-         * rules.
+         * @param containerId Container ID. Leave empty for node/cluster level rules.
          * 
          * @return builder
          * 
@@ -124,8 +121,7 @@ public final class FirewallRulesState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param containerId Container ID. Leave empty for cluster level
-         * rules.
+         * @param containerId Container ID. Leave empty for node/cluster level rules.
          * 
          * @return builder
          * 
@@ -157,7 +153,7 @@ public final class FirewallRulesState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param rules Firewall rule block (multiple blocks supported).
-         * The provider supports two types of the `rule` blocks:
+         * The provider supports two types of the &lt;span pulumi-lang-nodejs=&#34;`rule`&#34; pulumi-lang-dotnet=&#34;`Rule`&#34; pulumi-lang-go=&#34;`rule`&#34; pulumi-lang-python=&#34;`rule`&#34; pulumi-lang-yaml=&#34;`rule`&#34; pulumi-lang-java=&#34;`rule`&#34;&gt;`rule`&lt;/span&gt; blocks:
          * - A rule definition block, which includes the following arguments:
          * 
          * @return builder
@@ -170,7 +166,7 @@ public final class FirewallRulesState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param rules Firewall rule block (multiple blocks supported).
-         * The provider supports two types of the `rule` blocks:
+         * The provider supports two types of the &lt;span pulumi-lang-nodejs=&#34;`rule`&#34; pulumi-lang-dotnet=&#34;`Rule`&#34; pulumi-lang-go=&#34;`rule`&#34; pulumi-lang-python=&#34;`rule`&#34; pulumi-lang-yaml=&#34;`rule`&#34; pulumi-lang-java=&#34;`rule`&#34;&gt;`rule`&lt;/span&gt; blocks:
          * - A rule definition block, which includes the following arguments:
          * 
          * @return builder
@@ -182,7 +178,7 @@ public final class FirewallRulesState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param rules Firewall rule block (multiple blocks supported).
-         * The provider supports two types of the `rule` blocks:
+         * The provider supports two types of the &lt;span pulumi-lang-nodejs=&#34;`rule`&#34; pulumi-lang-dotnet=&#34;`Rule`&#34; pulumi-lang-go=&#34;`rule`&#34; pulumi-lang-python=&#34;`rule`&#34; pulumi-lang-yaml=&#34;`rule`&#34; pulumi-lang-java=&#34;`rule`&#34;&gt;`rule`&lt;/span&gt; blocks:
          * - A rule definition block, which includes the following arguments:
          * 
          * @return builder
@@ -193,7 +189,7 @@ public final class FirewallRulesState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vmId VM ID. Leave empty for cluster level rules.
+         * @param vmId VM ID. Leave empty for node/cluster level rules.
          * 
          * @return builder
          * 
@@ -204,7 +200,7 @@ public final class FirewallRulesState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vmId VM ID. Leave empty for cluster level rules.
+         * @param vmId VM ID. Leave empty for node/cluster level rules.
          * 
          * @return builder
          * 

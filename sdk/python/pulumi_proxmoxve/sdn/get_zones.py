@@ -85,15 +85,18 @@ def get_zones(type: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
+    # List all SDN zones
     all = proxmoxve.Sdn.get_zones()
+    # List only EVPN zones
     evpn_only = proxmoxve.Sdn.get_zones(type="evpn")
+    # List only Simple zones  
     simple_only = proxmoxve.Sdn.get_zones(type="simple")
     pulumi.export("dataProxmoxVirtualEnvironmentSdnZonesAll", {
         "zones": all.zones,
     })
     pulumi.export("dataProxmoxVirtualEnvironmentSdnZonesFiltered", {
-        "evpn_zones": evpn_only.zones,
-        "simple_zones": simple_only.zones,
+        "evpnZones": evpn_only.zones,
+        "simpleZones": simple_only.zones,
     })
     ```
 
@@ -120,15 +123,18 @@ def get_zones_output(type: Optional[pulumi.Input[Optional[_builtins.str]]] = Non
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
+    # List all SDN zones
     all = proxmoxve.Sdn.get_zones()
+    # List only EVPN zones
     evpn_only = proxmoxve.Sdn.get_zones(type="evpn")
+    # List only Simple zones  
     simple_only = proxmoxve.Sdn.get_zones(type="simple")
     pulumi.export("dataProxmoxVirtualEnvironmentSdnZonesAll", {
         "zones": all.zones,
     })
     pulumi.export("dataProxmoxVirtualEnvironmentSdnZonesFiltered", {
-        "evpn_zones": evpn_only.zones,
-        "simple_zones": simple_only.zones,
+        "evpnZones": evpn_only.zones,
+        "simpleZones": simple_only.zones,
     })
     ```
 

@@ -19,14 +19,14 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<string>? DatastoreId { get; set; }
 
         /// <summary>
-        /// Full or linked clone (defaults to `true`).
+        /// Full or linked clone (defaults to `True`).
         /// </summary>
         [Input("full")]
         public Input<bool>? Full { get; set; }
 
         /// <summary>
         /// The name of the source node (leave blank, if
-        /// equal to the `node_name` argument).
+        /// equal to the `NodeName` argument).
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }

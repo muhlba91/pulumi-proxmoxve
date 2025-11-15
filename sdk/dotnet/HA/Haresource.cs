@@ -32,7 +32,7 @@ namespace Pulumi.ProxmoxVE.HA
     ///     {
     ///         DependsOn =
     ///         {
-    ///             proxmox_virtual_environment_hagroup.Example,
+    ///             exampleProxmoxVirtualEnvironmentHagroup,
     ///         },
     ///     });
     /// 
@@ -89,7 +89,7 @@ namespace Pulumi.ProxmoxVE.HA
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// The type of HA resources to create. If unset, it will be deduced from the `resource_id`.
+        /// The type of HA resources to create. If unset, it will be deduced from the `ResourceId`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -178,7 +178,7 @@ namespace Pulumi.ProxmoxVE.HA
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// The type of HA resources to create. If unset, it will be deduced from the `resource_id`.
+        /// The type of HA resources to create. If unset, it will be deduced from the `ResourceId`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -228,7 +228,7 @@ namespace Pulumi.ProxmoxVE.HA
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// The type of HA resources to create. If unset, it will be deduced from the `resource_id`.
+        /// The type of HA resources to create. If unset, it will be deduced from the `ResourceId`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

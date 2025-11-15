@@ -32,7 +32,7 @@ namespace Pulumi.ProxmoxVE.User
     ///         UserId = "user@pve",
     ///     });
     /// 
-    ///     var userToken = new ProxmoxVE.User.Token("userToken", new()
+    ///     var userToken = new ProxmoxVE.User.Token("user_token", new()
     ///     {
     ///         Comment = "Managed by Pulumi",
     ///         ExpirationDate = "2033-01-01T22:00:00Z",

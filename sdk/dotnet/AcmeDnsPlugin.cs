@@ -24,13 +24,13 @@ namespace Pulumi.ProxmoxVE
     /// {
     ///     var example = new ProxmoxVE.AcmeDnsPlugin("example", new()
     ///     {
+    ///         Plugin = "test",
     ///         Api = "aws",
     ///         Data = 
     ///         {
     ///             { "AWS_ACCESS_KEY_ID", "EXAMPLE" },
     ///             { "AWS_SECRET_ACCESS_KEY", "EXAMPLE" },
     ///         },
-    ///         Plugin = "test",
     ///     });
     /// 
     /// });

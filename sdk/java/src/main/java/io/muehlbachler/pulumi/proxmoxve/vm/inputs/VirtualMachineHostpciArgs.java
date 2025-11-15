@@ -36,8 +36,8 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
 
     /**
      * The PCI device ID. This parameter is not compatible
-     * with `api_token` and requires the root `username` and `password`
-     * configured in the proxmox provider. Use either this or `mapping`.
+     * with &lt;span pulumi-lang-nodejs=&#34;`apiToken`&#34; pulumi-lang-dotnet=&#34;`ApiToken`&#34; pulumi-lang-go=&#34;`apiToken`&#34; pulumi-lang-python=&#34;`api_token`&#34; pulumi-lang-yaml=&#34;`apiToken`&#34; pulumi-lang-java=&#34;`apiToken`&#34;&gt;`api_token`&lt;/span&gt; and requires the root &lt;span pulumi-lang-nodejs=&#34;`username`&#34; pulumi-lang-dotnet=&#34;`Username`&#34; pulumi-lang-go=&#34;`username`&#34; pulumi-lang-python=&#34;`username`&#34; pulumi-lang-yaml=&#34;`username`&#34; pulumi-lang-java=&#34;`username`&#34;&gt;`username`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`password`&#34; pulumi-lang-dotnet=&#34;`Password`&#34; pulumi-lang-go=&#34;`password`&#34; pulumi-lang-python=&#34;`password`&#34; pulumi-lang-yaml=&#34;`password`&#34; pulumi-lang-java=&#34;`password`&#34;&gt;`password`&lt;/span&gt;
+     * configured in the proxmox provider. Use either this or &lt;span pulumi-lang-nodejs=&#34;`mapping`&#34; pulumi-lang-dotnet=&#34;`Mapping`&#34; pulumi-lang-go=&#34;`mapping`&#34; pulumi-lang-python=&#34;`mapping`&#34; pulumi-lang-yaml=&#34;`mapping`&#34; pulumi-lang-java=&#34;`mapping`&#34;&gt;`mapping`&lt;/span&gt;.
      * 
      */
     @Import(name="id")
@@ -45,8 +45,8 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
 
     /**
      * @return The PCI device ID. This parameter is not compatible
-     * with `api_token` and requires the root `username` and `password`
-     * configured in the proxmox provider. Use either this or `mapping`.
+     * with &lt;span pulumi-lang-nodejs=&#34;`apiToken`&#34; pulumi-lang-dotnet=&#34;`ApiToken`&#34; pulumi-lang-go=&#34;`apiToken`&#34; pulumi-lang-python=&#34;`api_token`&#34; pulumi-lang-yaml=&#34;`apiToken`&#34; pulumi-lang-java=&#34;`apiToken`&#34;&gt;`api_token`&lt;/span&gt; and requires the root &lt;span pulumi-lang-nodejs=&#34;`username`&#34; pulumi-lang-dotnet=&#34;`Username`&#34; pulumi-lang-go=&#34;`username`&#34; pulumi-lang-python=&#34;`username`&#34; pulumi-lang-yaml=&#34;`username`&#34; pulumi-lang-java=&#34;`username`&#34;&gt;`username`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`password`&#34; pulumi-lang-dotnet=&#34;`Password`&#34; pulumi-lang-go=&#34;`password`&#34; pulumi-lang-python=&#34;`password`&#34; pulumi-lang-yaml=&#34;`password`&#34; pulumi-lang-java=&#34;`password`&#34;&gt;`password`&lt;/span&gt;
+     * configured in the proxmox provider. Use either this or &lt;span pulumi-lang-nodejs=&#34;`mapping`&#34; pulumi-lang-dotnet=&#34;`Mapping`&#34; pulumi-lang-go=&#34;`mapping`&#34; pulumi-lang-python=&#34;`mapping`&#34; pulumi-lang-yaml=&#34;`mapping`&#34; pulumi-lang-java=&#34;`mapping`&#34;&gt;`mapping`&lt;/span&gt;.
      * 
      */
     public Optional<Output<String>> id() {
@@ -55,7 +55,7 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
 
     /**
      * The resource mapping name of the device, for
-     * example gpu. Use either this or `id`.
+     * example gpu. Use either this or &lt;span pulumi-lang-nodejs=&#34;`id`&#34; pulumi-lang-dotnet=&#34;`Id`&#34; pulumi-lang-go=&#34;`id`&#34; pulumi-lang-python=&#34;`id`&#34; pulumi-lang-yaml=&#34;`id`&#34; pulumi-lang-java=&#34;`id`&#34;&gt;`id`&lt;/span&gt;.
      * 
      */
     @Import(name="mapping")
@@ -63,7 +63,7 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
 
     /**
      * @return The resource mapping name of the device, for
-     * example gpu. Use either this or `id`.
+     * example gpu. Use either this or &lt;span pulumi-lang-nodejs=&#34;`id`&#34; pulumi-lang-dotnet=&#34;`Id`&#34; pulumi-lang-go=&#34;`id`&#34; pulumi-lang-python=&#34;`id`&#34; pulumi-lang-yaml=&#34;`id`&#34; pulumi-lang-java=&#34;`id`&#34;&gt;`id`&lt;/span&gt;.
      * 
      */
     public Optional<Output<String>> mapping() {
@@ -123,7 +123,7 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
 
     /**
      * Makes the firmware ROM visible for the VM (defaults
-     * to `true`).
+     * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     @Import(name="rombar")
@@ -131,7 +131,7 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
 
     /**
      * @return Makes the firmware ROM visible for the VM (defaults
-     * to `true`).
+     * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> rombar() {
@@ -140,7 +140,7 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
 
     /**
      * Marks the PCI(e) device as the primary GPU of the VM.
-     * With this enabled the `vga` configuration argument will be ignored.
+     * With this enabled the &lt;span pulumi-lang-nodejs=&#34;`vga`&#34; pulumi-lang-dotnet=&#34;`Vga`&#34; pulumi-lang-go=&#34;`vga`&#34; pulumi-lang-python=&#34;`vga`&#34; pulumi-lang-yaml=&#34;`vga`&#34; pulumi-lang-java=&#34;`vga`&#34;&gt;`vga`&lt;/span&gt; configuration argument will be ignored.
      * 
      */
     @Import(name="xvga")
@@ -148,7 +148,7 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
 
     /**
      * @return Marks the PCI(e) device as the primary GPU of the VM.
-     * With this enabled the `vga` configuration argument will be ignored.
+     * With this enabled the &lt;span pulumi-lang-nodejs=&#34;`vga`&#34; pulumi-lang-dotnet=&#34;`Vga`&#34; pulumi-lang-go=&#34;`vga`&#34; pulumi-lang-python=&#34;`vga`&#34; pulumi-lang-yaml=&#34;`vga`&#34; pulumi-lang-java=&#34;`vga`&#34;&gt;`vga`&lt;/span&gt; configuration argument will be ignored.
      * 
      */
     public Optional<Output<Boolean>> xvga() {
@@ -211,8 +211,8 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
 
         /**
          * @param id The PCI device ID. This parameter is not compatible
-         * with `api_token` and requires the root `username` and `password`
-         * configured in the proxmox provider. Use either this or `mapping`.
+         * with &lt;span pulumi-lang-nodejs=&#34;`apiToken`&#34; pulumi-lang-dotnet=&#34;`ApiToken`&#34; pulumi-lang-go=&#34;`apiToken`&#34; pulumi-lang-python=&#34;`api_token`&#34; pulumi-lang-yaml=&#34;`apiToken`&#34; pulumi-lang-java=&#34;`apiToken`&#34;&gt;`api_token`&lt;/span&gt; and requires the root &lt;span pulumi-lang-nodejs=&#34;`username`&#34; pulumi-lang-dotnet=&#34;`Username`&#34; pulumi-lang-go=&#34;`username`&#34; pulumi-lang-python=&#34;`username`&#34; pulumi-lang-yaml=&#34;`username`&#34; pulumi-lang-java=&#34;`username`&#34;&gt;`username`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`password`&#34; pulumi-lang-dotnet=&#34;`Password`&#34; pulumi-lang-go=&#34;`password`&#34; pulumi-lang-python=&#34;`password`&#34; pulumi-lang-yaml=&#34;`password`&#34; pulumi-lang-java=&#34;`password`&#34;&gt;`password`&lt;/span&gt;
+         * configured in the proxmox provider. Use either this or &lt;span pulumi-lang-nodejs=&#34;`mapping`&#34; pulumi-lang-dotnet=&#34;`Mapping`&#34; pulumi-lang-go=&#34;`mapping`&#34; pulumi-lang-python=&#34;`mapping`&#34; pulumi-lang-yaml=&#34;`mapping`&#34; pulumi-lang-java=&#34;`mapping`&#34;&gt;`mapping`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -224,8 +224,8 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
 
         /**
          * @param id The PCI device ID. This parameter is not compatible
-         * with `api_token` and requires the root `username` and `password`
-         * configured in the proxmox provider. Use either this or `mapping`.
+         * with &lt;span pulumi-lang-nodejs=&#34;`apiToken`&#34; pulumi-lang-dotnet=&#34;`ApiToken`&#34; pulumi-lang-go=&#34;`apiToken`&#34; pulumi-lang-python=&#34;`api_token`&#34; pulumi-lang-yaml=&#34;`apiToken`&#34; pulumi-lang-java=&#34;`apiToken`&#34;&gt;`api_token`&lt;/span&gt; and requires the root &lt;span pulumi-lang-nodejs=&#34;`username`&#34; pulumi-lang-dotnet=&#34;`Username`&#34; pulumi-lang-go=&#34;`username`&#34; pulumi-lang-python=&#34;`username`&#34; pulumi-lang-yaml=&#34;`username`&#34; pulumi-lang-java=&#34;`username`&#34;&gt;`username`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`password`&#34; pulumi-lang-dotnet=&#34;`Password`&#34; pulumi-lang-go=&#34;`password`&#34; pulumi-lang-python=&#34;`password`&#34; pulumi-lang-yaml=&#34;`password`&#34; pulumi-lang-java=&#34;`password`&#34;&gt;`password`&lt;/span&gt;
+         * configured in the proxmox provider. Use either this or &lt;span pulumi-lang-nodejs=&#34;`mapping`&#34; pulumi-lang-dotnet=&#34;`Mapping`&#34; pulumi-lang-go=&#34;`mapping`&#34; pulumi-lang-python=&#34;`mapping`&#34; pulumi-lang-yaml=&#34;`mapping`&#34; pulumi-lang-java=&#34;`mapping`&#34;&gt;`mapping`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
 
         /**
          * @param mapping The resource mapping name of the device, for
-         * example gpu. Use either this or `id`.
+         * example gpu. Use either this or &lt;span pulumi-lang-nodejs=&#34;`id`&#34; pulumi-lang-dotnet=&#34;`Id`&#34; pulumi-lang-go=&#34;`id`&#34; pulumi-lang-python=&#34;`id`&#34; pulumi-lang-yaml=&#34;`id`&#34; pulumi-lang-java=&#34;`id`&#34;&gt;`id`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
 
         /**
          * @param mapping The resource mapping name of the device, for
-         * example gpu. Use either this or `id`.
+         * example gpu. Use either this or &lt;span pulumi-lang-nodejs=&#34;`id`&#34; pulumi-lang-dotnet=&#34;`Id`&#34; pulumi-lang-go=&#34;`id`&#34; pulumi-lang-python=&#34;`id`&#34; pulumi-lang-yaml=&#34;`id`&#34; pulumi-lang-java=&#34;`id`&#34;&gt;`id`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -328,7 +328,7 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
 
         /**
          * @param rombar Makes the firmware ROM visible for the VM (defaults
-         * to `true`).
+         * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -340,7 +340,7 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
 
         /**
          * @param rombar Makes the firmware ROM visible for the VM (defaults
-         * to `true`).
+         * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -351,7 +351,7 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
 
         /**
          * @param xvga Marks the PCI(e) device as the primary GPU of the VM.
-         * With this enabled the `vga` configuration argument will be ignored.
+         * With this enabled the &lt;span pulumi-lang-nodejs=&#34;`vga`&#34; pulumi-lang-dotnet=&#34;`Vga`&#34; pulumi-lang-go=&#34;`vga`&#34; pulumi-lang-python=&#34;`vga`&#34; pulumi-lang-yaml=&#34;`vga`&#34; pulumi-lang-java=&#34;`vga`&#34;&gt;`vga`&lt;/span&gt; configuration argument will be ignored.
          * 
          * @return builder
          * 
@@ -363,7 +363,7 @@ public final class VirtualMachineHostpciArgs extends com.pulumi.resources.Resour
 
         /**
          * @param xvga Marks the PCI(e) device as the primary GPU of the VM.
-         * With this enabled the `vga` configuration argument will be ignored.
+         * With this enabled the &lt;span pulumi-lang-nodejs=&#34;`vga`&#34; pulumi-lang-dotnet=&#34;`Vga`&#34; pulumi-lang-go=&#34;`vga`&#34; pulumi-lang-python=&#34;`vga`&#34; pulumi-lang-yaml=&#34;`vga`&#34; pulumi-lang-java=&#34;`vga`&#34;&gt;`vga`&lt;/span&gt; configuration argument will be ignored.
          * 
          * @return builder
          * 

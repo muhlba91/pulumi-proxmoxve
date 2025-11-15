@@ -25,14 +25,14 @@ namespace Pulumi.ProxmoxVE
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var operationsAutomation = new ProxmoxVE.Permission.User("operationsAutomation", new()
+    ///     var operationsAutomation = new ProxmoxVE.Permission.User("operations_automation", new()
     ///     {
     ///         Comment = "Managed by Pulumi",
     ///         Password = "a-strong-password",
     ///         UserId = "operations-automation@pve",
     ///     });
     /// 
-    ///     var operationsMonitoring = new ProxmoxVE.Permission.Role("operationsMonitoring", new()
+    ///     var operationsMonitoring = new ProxmoxVE.Permission.Role("operations_monitoring", new()
     ///     {
     ///         RoleId = "operations-monitoring",
     ///         Privileges = new[]
@@ -41,7 +41,7 @@ namespace Pulumi.ProxmoxVE
     ///         },
     ///     });
     /// 
-    ///     var operationsAutomationMonitoring = new ProxmoxVE.Acl("operationsAutomationMonitoring", new()
+    ///     var operationsAutomationMonitoring = new ProxmoxVE.Acl("operations_automation_monitoring", new()
     ///     {
     ///         UserId = operationsAutomation.UserId,
     ///         RoleId = operationsMonitoring.RoleId,
@@ -66,7 +66,7 @@ namespace Pulumi.ProxmoxVE
     public partial class Acl : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The group the ACL should apply to (mutually exclusive with `token_id` and `user_id`)
+        /// The group the ACL should apply to (mutually exclusive with `TokenId` and `UserId`)
         /// </summary>
         [Output("groupId")]
         public Output<string?> GroupId { get; private set; } = null!;
@@ -90,13 +90,13 @@ namespace Pulumi.ProxmoxVE
         public Output<string> RoleId { get; private set; } = null!;
 
         /// <summary>
-        /// The token the ACL should apply to (mutually exclusive with `group_id` and `user_id`)
+        /// The token the ACL should apply to (mutually exclusive with `GroupId` and `UserId`)
         /// </summary>
         [Output("tokenId")]
         public Output<string?> TokenId { get; private set; } = null!;
 
         /// <summary>
-        /// The user the ACL should apply to (mutually exclusive with `group_id` and `token_id`)
+        /// The user the ACL should apply to (mutually exclusive with `GroupId` and `TokenId`)
         /// </summary>
         [Output("userId")]
         public Output<string?> UserId { get; private set; } = null!;
@@ -149,7 +149,7 @@ namespace Pulumi.ProxmoxVE
     public sealed class AclArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The group the ACL should apply to (mutually exclusive with `token_id` and `user_id`)
+        /// The group the ACL should apply to (mutually exclusive with `TokenId` and `UserId`)
         /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
@@ -173,13 +173,13 @@ namespace Pulumi.ProxmoxVE
         public Input<string> RoleId { get; set; } = null!;
 
         /// <summary>
-        /// The token the ACL should apply to (mutually exclusive with `group_id` and `user_id`)
+        /// The token the ACL should apply to (mutually exclusive with `GroupId` and `UserId`)
         /// </summary>
         [Input("tokenId")]
         public Input<string>? TokenId { get; set; }
 
         /// <summary>
-        /// The user the ACL should apply to (mutually exclusive with `group_id` and `token_id`)
+        /// The user the ACL should apply to (mutually exclusive with `GroupId` and `TokenId`)
         /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }
@@ -193,7 +193,7 @@ namespace Pulumi.ProxmoxVE
     public sealed class AclState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The group the ACL should apply to (mutually exclusive with `token_id` and `user_id`)
+        /// The group the ACL should apply to (mutually exclusive with `TokenId` and `UserId`)
         /// </summary>
         [Input("groupId")]
         public Input<string>? GroupId { get; set; }
@@ -217,13 +217,13 @@ namespace Pulumi.ProxmoxVE
         public Input<string>? RoleId { get; set; }
 
         /// <summary>
-        /// The token the ACL should apply to (mutually exclusive with `group_id` and `user_id`)
+        /// The token the ACL should apply to (mutually exclusive with `GroupId` and `UserId`)
         /// </summary>
         [Input("tokenId")]
         public Input<string>? TokenId { get; set; }
 
         /// <summary>
-        /// The user the ACL should apply to (mutually exclusive with `group_id` and `token_id`)
+        /// The user the ACL should apply to (mutually exclusive with `GroupId` and `TokenId`)
         /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }

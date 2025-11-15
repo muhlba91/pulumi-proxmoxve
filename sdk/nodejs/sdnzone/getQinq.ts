@@ -20,13 +20,13 @@ import * as utilities from "../utilities";
  *     id: example.then(example => example.id),
  *     nodes: example.then(example => example.nodes),
  *     bridge: example.then(example => example.bridge),
- *     service_vlan: example.then(example => example.serviceVlan),
- *     service_vlan_protocol: example.then(example => example.serviceVlanProtocol),
+ *     serviceVlan: example.then(example => example.serviceVlan),
+ *     serviceVlanProtocol: example.then(example => example.serviceVlanProtocol),
  *     mtu: example.then(example => example.mtu),
  *     dns: example.then(example => example.dns),
- *     dns_zone: example.then(example => example.dnsZone),
+ *     dnsZone: example.then(example => example.dnsZone),
  *     ipam: example.then(example => example.ipam),
- *     reverse_dns: example.then(example => example.reverseDns),
+ *     reverseDns: example.then(example => example.reverseDns),
  * };
  * ```
  */
@@ -116,13 +116,13 @@ export interface GetQinqResult {
  *     id: example.then(example => example.id),
  *     nodes: example.then(example => example.nodes),
  *     bridge: example.then(example => example.bridge),
- *     service_vlan: example.then(example => example.serviceVlan),
- *     service_vlan_protocol: example.then(example => example.serviceVlanProtocol),
+ *     serviceVlan: example.then(example => example.serviceVlan),
+ *     serviceVlanProtocol: example.then(example => example.serviceVlanProtocol),
  *     mtu: example.then(example => example.mtu),
  *     dns: example.then(example => example.dns),
- *     dns_zone: example.then(example => example.dnsZone),
+ *     dnsZone: example.then(example => example.dnsZone),
  *     ipam: example.then(example => example.ipam),
- *     reverse_dns: example.then(example => example.reverseDns),
+ *     reverseDns: example.then(example => example.reverseDns),
  * };
  * ```
  */

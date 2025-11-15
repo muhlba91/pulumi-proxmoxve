@@ -46,13 +46,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Vlan("example", VlanArgs.builder()
+ *             .zoneId("vlan1")
  *             .bridge("vmbr0")
+ *             .mtu(1500)
  *             .dns("1.1.1.1")
  *             .dnsZone("example.com")
- *             .zoneId("vlan1")
  *             .ipam("pve")
- *             .mtu(1500)
- *             .nodes("pve")
  *             .reverseDns("1.1.1.1")
  *             .build());
  * 

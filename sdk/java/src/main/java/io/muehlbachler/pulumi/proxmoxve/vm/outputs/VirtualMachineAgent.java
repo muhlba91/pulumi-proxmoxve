@@ -14,24 +14,24 @@ import javax.annotation.Nullable;
 public final class VirtualMachineAgent {
     /**
      * @return Whether to enable the QEMU agent (defaults
-     * to `false`).
+     * to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     private @Nullable Boolean enabled;
     /**
      * @return The maximum amount of time to wait for data from
-     * the QEMU agent to become available ( defaults to `15m`).
+     * the QEMU agent to become available ( defaults to &lt;span pulumi-lang-nodejs=&#34;`15m`&#34; pulumi-lang-dotnet=&#34;`15m`&#34; pulumi-lang-go=&#34;`15m`&#34; pulumi-lang-python=&#34;`15m`&#34; pulumi-lang-yaml=&#34;`15m`&#34; pulumi-lang-java=&#34;`15m`&#34;&gt;`15m`&lt;/span&gt;).
      * 
      */
     private @Nullable String timeout;
     /**
      * @return Whether to enable the FSTRIM feature in the QEMU agent
-     * (defaults to `false`).
+     * (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     private @Nullable Boolean trim;
     /**
-     * @return The QEMU agent interface type (defaults to `virtio`).
+     * @return The QEMU agent interface type (defaults to &lt;span pulumi-lang-nodejs=&#34;`virtio`&#34; pulumi-lang-dotnet=&#34;`Virtio`&#34; pulumi-lang-go=&#34;`virtio`&#34; pulumi-lang-python=&#34;`virtio`&#34; pulumi-lang-yaml=&#34;`virtio`&#34; pulumi-lang-java=&#34;`virtio`&#34;&gt;`virtio`&lt;/span&gt;).
      * 
      */
     private @Nullable String type;
@@ -39,7 +39,7 @@ public final class VirtualMachineAgent {
     private VirtualMachineAgent() {}
     /**
      * @return Whether to enable the QEMU agent (defaults
-     * to `false`).
+     * to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Optional<Boolean> enabled() {
@@ -47,7 +47,7 @@ public final class VirtualMachineAgent {
     }
     /**
      * @return The maximum amount of time to wait for data from
-     * the QEMU agent to become available ( defaults to `15m`).
+     * the QEMU agent to become available ( defaults to &lt;span pulumi-lang-nodejs=&#34;`15m`&#34; pulumi-lang-dotnet=&#34;`15m`&#34; pulumi-lang-go=&#34;`15m`&#34; pulumi-lang-python=&#34;`15m`&#34; pulumi-lang-yaml=&#34;`15m`&#34; pulumi-lang-java=&#34;`15m`&#34;&gt;`15m`&lt;/span&gt;).
      * 
      */
     public Optional<String> timeout() {
@@ -55,14 +55,14 @@ public final class VirtualMachineAgent {
     }
     /**
      * @return Whether to enable the FSTRIM feature in the QEMU agent
-     * (defaults to `false`).
+     * (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Optional<Boolean> trim() {
         return Optional.ofNullable(this.trim);
     }
     /**
-     * @return The QEMU agent interface type (defaults to `virtio`).
+     * @return The QEMU agent interface type (defaults to &lt;span pulumi-lang-nodejs=&#34;`virtio`&#34; pulumi-lang-dotnet=&#34;`Virtio`&#34; pulumi-lang-go=&#34;`virtio`&#34; pulumi-lang-python=&#34;`virtio`&#34; pulumi-lang-yaml=&#34;`virtio`&#34; pulumi-lang-java=&#34;`virtio`&#34;&gt;`virtio`&lt;/span&gt;).
      * 
      */
     public Optional<String> type() {

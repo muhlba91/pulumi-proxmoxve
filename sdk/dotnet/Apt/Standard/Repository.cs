@@ -22,18 +22,18 @@ namespace Pulumi.ProxmoxVE.Apt.Standard
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleRepository = new ProxmoxVE.Apt.Standard.Repository("exampleRepository", new()
+    ///     var example = new ProxmoxVE.Apt.Standard.Repository("example", new()
     ///     {
     ///         Handle = "no-subscription",
     ///         Node = "pve",
     ///     });
     /// 
-    ///     var exampleApt_repositoryRepository = new ProxmoxVE.Apt.Repository("exampleApt/repositoryRepository", new()
+    ///     var exampleRepository = new ProxmoxVE.Apt.Repository("example", new()
     ///     {
     ///         Enabled = true,
-    ///         FilePath = exampleRepository.FilePath,
-    ///         Index = exampleRepository.Index,
-    ///         Node = exampleRepository.Node,
+    ///         FilePath = example.FilePath,
+    ///         Index = example.Index,
+    ///         Node = example.Node,
     ///     });
     /// 
     /// });
@@ -67,7 +67,7 @@ namespace Pulumi.ProxmoxVE.Apt.Standard
         public Output<string> FilePath { get; private set; } = null!;
 
         /// <summary>
-        /// The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `ceph-squid-enterprise` | `ceph-squid-no-subscription` | `ceph-squid-test` | `enterprise` | `no-subscription` | `test`.
+        /// The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `ceph-squid-enterprise` | `ceph-squid-no-subscription` | `ceph-squid-test` | `Enterprise` | `no-subscription` | `Test`.
         /// </summary>
         [Output("handle")]
         public Output<string> Handle { get; private set; } = null!;
@@ -144,7 +144,7 @@ namespace Pulumi.ProxmoxVE.Apt.Standard
     public sealed class RepositoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `ceph-squid-enterprise` | `ceph-squid-no-subscription` | `ceph-squid-test` | `enterprise` | `no-subscription` | `test`.
+        /// The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `ceph-squid-enterprise` | `ceph-squid-no-subscription` | `ceph-squid-test` | `Enterprise` | `no-subscription` | `Test`.
         /// </summary>
         [Input("handle", required: true)]
         public Input<string> Handle { get; set; } = null!;
@@ -176,7 +176,7 @@ namespace Pulumi.ProxmoxVE.Apt.Standard
         public Input<string>? FilePath { get; set; }
 
         /// <summary>
-        /// The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `ceph-squid-enterprise` | `ceph-squid-no-subscription` | `ceph-squid-test` | `enterprise` | `no-subscription` | `test`.
+        /// The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `ceph-squid-enterprise` | `ceph-squid-no-subscription` | `ceph-squid-test` | `Enterprise` | `no-subscription` | `Test`.
         /// </summary>
         [Input("handle")]
         public Input<string>? Handle { get; set; }

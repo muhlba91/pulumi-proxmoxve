@@ -14,13 +14,12 @@ import * as utilities from "../utilities";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
  * const example = new proxmoxve.sdnzone.Vlan("example", {
+ *     zoneId: "vlan1",
  *     bridge: "vmbr0",
+ *     mtu: 1500,
  *     dns: "1.1.1.1",
  *     dnsZone: "example.com",
- *     zoneId: "vlan1",
  *     ipam: "pve",
- *     mtu: 1500,
- *     nodes: ["pve"],
  *     reverseDns: "1.1.1.1",
  * });
  * ```
@@ -132,9 +131,6 @@ export class Vlan extends pulumi.CustomResource {
             if (args?.bridge === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bridge'");
             }
-            if (args?.nodes === undefined && !opts.urn) {
-                throw new Error("Missing required property 'nodes'");
-            }
             if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
@@ -227,7 +223,7 @@ export interface VlanArgs {
     /**
      * The Proxmox nodes which the zone and associated VNets should be deployed on
      */
-    nodes: pulumi.Input<pulumi.Input<string>[]>;
+    nodes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Reverse DNS API server address.
      */

@@ -29,37 +29,6 @@ public final class HAFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.proxmoxve.HA.HAFunctions;
-     * import com.pulumi.proxmoxve.HA.inputs.GetHAGroupArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = HAFunctions.getHAGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
-     * 
-     *         final var example = "TODO: ForExpression";
-     * 
-     *         ctx.export("proxmoxVirtualEnvironmentHagroupsFull", example);
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -72,37 +41,6 @@ public final class HAFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.proxmoxve.HA.HAFunctions;
-     * import com.pulumi.proxmoxve.HA.inputs.GetHAGroupArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = HAFunctions.getHAGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
-     * 
-     *         final var example = "TODO: ForExpression";
-     * 
-     *         ctx.export("proxmoxVirtualEnvironmentHagroupsFull", example);
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -115,37 +53,6 @@ public final class HAFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.proxmoxve.HA.HAFunctions;
-     * import com.pulumi.proxmoxve.HA.inputs.GetHAGroupArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = HAFunctions.getHAGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
-     * 
-     *         final var example = "TODO: ForExpression";
-     * 
-     *         ctx.export("proxmoxVirtualEnvironmentHagroupsFull", example);
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -158,37 +65,6 @@ public final class HAFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.proxmoxve.HA.HAFunctions;
-     * import com.pulumi.proxmoxve.HA.inputs.GetHAGroupArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = HAFunctions.getHAGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
-     * 
-     *         final var example = "TODO: ForExpression";
-     * 
-     *         ctx.export("proxmoxVirtualEnvironmentHagroupsFull", example);
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -201,37 +77,6 @@ public final class HAFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.proxmoxve.HA.HAFunctions;
-     * import com.pulumi.proxmoxve.HA.inputs.GetHAGroupArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = HAFunctions.getHAGroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
-     * 
-     *         final var example = "TODO: ForExpression";
-     * 
-     *         ctx.export("proxmoxVirtualEnvironmentHagroupsFull", example);
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -524,39 +369,6 @@ public final class HAFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.proxmoxve.HA.HAFunctions;
-     * import com.pulumi.proxmoxve.HA.inputs.GetHAResourcesArgs;
-     * import com.pulumi.proxmoxve.HA.inputs.GetHAResourceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
-     *             .build());
-     * 
-     *         final var example = "TODO: ForExpression";
-     * 
-     *         ctx.export("proxmoxVirtualEnvironmentHaresourcesFull", example);
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -569,39 +381,6 @@ public final class HAFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.proxmoxve.HA.HAFunctions;
-     * import com.pulumi.proxmoxve.HA.inputs.GetHAResourcesArgs;
-     * import com.pulumi.proxmoxve.HA.inputs.GetHAResourceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
-     *             .build());
-     * 
-     *         final var example = "TODO: ForExpression";
-     * 
-     *         ctx.export("proxmoxVirtualEnvironmentHaresourcesFull", example);
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -614,39 +393,6 @@ public final class HAFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.proxmoxve.HA.HAFunctions;
-     * import com.pulumi.proxmoxve.HA.inputs.GetHAResourcesArgs;
-     * import com.pulumi.proxmoxve.HA.inputs.GetHAResourceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
-     *             .build());
-     * 
-     *         final var example = "TODO: ForExpression";
-     * 
-     *         ctx.export("proxmoxVirtualEnvironmentHaresourcesFull", example);
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -659,39 +405,6 @@ public final class HAFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.proxmoxve.HA.HAFunctions;
-     * import com.pulumi.proxmoxve.HA.inputs.GetHAResourcesArgs;
-     * import com.pulumi.proxmoxve.HA.inputs.GetHAResourceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
-     *             .build());
-     * 
-     *         final var example = "TODO: ForExpression";
-     * 
-     *         ctx.export("proxmoxVirtualEnvironmentHaresourcesFull", example);
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -704,39 +417,6 @@ public final class HAFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.proxmoxve.HA.HAFunctions;
-     * import com.pulumi.proxmoxve.HA.inputs.GetHAResourcesArgs;
-     * import com.pulumi.proxmoxve.HA.inputs.GetHAResourceArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
-     *             .build());
-     * 
-     *         final var example = "TODO: ForExpression";
-     * 
-     *         ctx.export("proxmoxVirtualEnvironmentHaresourcesFull", example);
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -771,9 +451,11 @@ public final class HAFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // This will fetch the set of all HA resource identifiers.
      *         final var exampleAll = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
      *             .build());
      * 
+     *         // This will fetch the set of HA resource identifiers that correspond to virtual machines.
      *         final var exampleVm = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
      *             .type("vm")
      *             .build());
@@ -820,9 +502,11 @@ public final class HAFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // This will fetch the set of all HA resource identifiers.
      *         final var exampleAll = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
      *             .build());
      * 
+     *         // This will fetch the set of HA resource identifiers that correspond to virtual machines.
      *         final var exampleVm = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
      *             .type("vm")
      *             .build());
@@ -869,9 +553,11 @@ public final class HAFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // This will fetch the set of all HA resource identifiers.
      *         final var exampleAll = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
      *             .build());
      * 
+     *         // This will fetch the set of HA resource identifiers that correspond to virtual machines.
      *         final var exampleVm = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
      *             .type("vm")
      *             .build());
@@ -918,9 +604,11 @@ public final class HAFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // This will fetch the set of all HA resource identifiers.
      *         final var exampleAll = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
      *             .build());
      * 
+     *         // This will fetch the set of HA resource identifiers that correspond to virtual machines.
      *         final var exampleVm = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
      *             .type("vm")
      *             .build());
@@ -967,9 +655,11 @@ public final class HAFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // This will fetch the set of all HA resource identifiers.
      *         final var exampleAll = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
      *             .build());
      * 
+     *         // This will fetch the set of HA resource identifiers that correspond to virtual machines.
      *         final var exampleVm = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
      *             .type("vm")
      *             .build());
@@ -1016,9 +706,11 @@ public final class HAFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // This will fetch the set of all HA resource identifiers.
      *         final var exampleAll = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
      *             .build());
      * 
+     *         // This will fetch the set of HA resource identifiers that correspond to virtual machines.
      *         final var exampleVm = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
      *             .type("vm")
      *             .build());
@@ -1065,9 +757,11 @@ public final class HAFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // This will fetch the set of all HA resource identifiers.
      *         final var exampleAll = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
      *             .build());
      * 
+     *         // This will fetch the set of HA resource identifiers that correspond to virtual machines.
      *         final var exampleVm = HAFunctions.getHAResources(GetHAResourcesArgs.builder()
      *             .type("vm")
      *             .build());

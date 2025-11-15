@@ -49,14 +49,14 @@ public final class HAGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A flag that indicates that failing back to a higher priority node is disabled for this HA group. Defaults to `false`.
+     * A flag that indicates that failing back to a higher priority node is disabled for this HA group. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
      * 
      */
     @Import(name="noFailback")
     private @Nullable Output<Boolean> noFailback;
 
     /**
-     * @return A flag that indicates that failing back to a higher priority node is disabled for this HA group. Defaults to `false`.
+     * @return A flag that indicates that failing back to a higher priority node is disabled for this HA group. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
      * 
      */
     public Optional<Output<Boolean>> noFailback() {
@@ -64,14 +64,14 @@ public final class HAGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The member nodes for this group. They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or `null` for unset priorities.
+     * The member nodes for this group. They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or &lt;span pulumi-lang-nodejs=&#34;`null`&#34; pulumi-lang-dotnet=&#34;`Null`&#34; pulumi-lang-go=&#34;`null`&#34; pulumi-lang-python=&#34;`null`&#34; pulumi-lang-yaml=&#34;`null`&#34; pulumi-lang-java=&#34;`null`&#34;&gt;`null`&lt;/span&gt; for unset priorities.
      * 
      */
     @Import(name="nodes")
     private @Nullable Output<Map<String,Integer>> nodes;
 
     /**
-     * @return The member nodes for this group. They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or `null` for unset priorities.
+     * @return The member nodes for this group. They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or &lt;span pulumi-lang-nodejs=&#34;`null`&#34; pulumi-lang-dotnet=&#34;`Null`&#34; pulumi-lang-go=&#34;`null`&#34; pulumi-lang-python=&#34;`null`&#34; pulumi-lang-yaml=&#34;`null`&#34; pulumi-lang-java=&#34;`null`&#34;&gt;`null`&lt;/span&gt; for unset priorities.
      * 
      */
     public Optional<Output<Map<String,Integer>>> nodes() {
@@ -79,14 +79,14 @@ public final class HAGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A flag that indicates that other nodes may not be used to run resources associated to this HA group. Defaults to `false`.
+     * A flag that indicates that other nodes may not be used to run resources associated to this HA group. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
      * 
      */
     @Import(name="restricted")
     private @Nullable Output<Boolean> restricted;
 
     /**
-     * @return A flag that indicates that other nodes may not be used to run resources associated to this HA group. Defaults to `false`.
+     * @return A flag that indicates that other nodes may not be used to run resources associated to this HA group. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
      * 
      */
     public Optional<Output<Boolean>> restricted() {
@@ -164,7 +164,7 @@ public final class HAGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param noFailback A flag that indicates that failing back to a higher priority node is disabled for this HA group. Defaults to `false`.
+         * @param noFailback A flag that indicates that failing back to a higher priority node is disabled for this HA group. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class HAGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param noFailback A flag that indicates that failing back to a higher priority node is disabled for this HA group. Defaults to `false`.
+         * @param noFailback A flag that indicates that failing back to a higher priority node is disabled for this HA group. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class HAGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodes The member nodes for this group. They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or `null` for unset priorities.
+         * @param nodes The member nodes for this group. They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or &lt;span pulumi-lang-nodejs=&#34;`null`&#34; pulumi-lang-dotnet=&#34;`Null`&#34; pulumi-lang-go=&#34;`null`&#34; pulumi-lang-python=&#34;`null`&#34; pulumi-lang-yaml=&#34;`null`&#34; pulumi-lang-java=&#34;`null`&#34;&gt;`null`&lt;/span&gt; for unset priorities.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class HAGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodes The member nodes for this group. They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or `null` for unset priorities.
+         * @param nodes The member nodes for this group. They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or &lt;span pulumi-lang-nodejs=&#34;`null`&#34; pulumi-lang-dotnet=&#34;`Null`&#34; pulumi-lang-go=&#34;`null`&#34; pulumi-lang-python=&#34;`null`&#34; pulumi-lang-yaml=&#34;`null`&#34; pulumi-lang-java=&#34;`null`&#34;&gt;`null`&lt;/span&gt; for unset priorities.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class HAGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param restricted A flag that indicates that other nodes may not be used to run resources associated to this HA group. Defaults to `false`.
+         * @param restricted A flag that indicates that other nodes may not be used to run resources associated to this HA group. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class HAGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param restricted A flag that indicates that other nodes may not be used to run resources associated to this HA group. Defaults to `false`.
+         * @param restricted A flag that indicates that other nodes may not be used to run resources associated to this HA group. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
          * 
          * @return builder
          * 

@@ -14,7 +14,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
     {
         /// <summary>
         /// The IPv4 address in CIDR notation
-        /// (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
+        /// (e.g. 192.168.2.2/24). Alternatively, set this to `Dhcp` for
         /// autodiscovery.
         /// </summary>
         [Input("address")]
@@ -22,7 +22,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
 
         /// <summary>
         /// The IPv4 gateway (must be omitted
-        /// when `dhcp` is used as the address).
+        /// when `Dhcp` is used as the address).
         /// </summary>
         [Input("gateway")]
         public Input<string>? Gateway { get; set; }

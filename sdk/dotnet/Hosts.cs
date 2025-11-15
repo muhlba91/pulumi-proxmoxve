@@ -12,6 +12,40 @@ namespace Pulumi.ProxmoxVE
     /// <summary>
     /// Manages the host entries on a specific node.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var firstNodeHostEntries = new ProxmoxVE.Hosts("first_node_host_entries", new()
+    ///     {
+    ///         NodeName = "first-node",
+    ///         Entries = new[]
+    ///         {
+    ///             new ProxmoxVE.Inputs.HostsEntryArgs
+    ///             {
+    ///                 Address = "127.0.0.1",
+    ///                 Hostnames = new[]
+    ///                 {
+    ///                     "localhost",
+    ///                     "localhost.localdomain",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Important Notes
+    /// 
+    /// Be careful not to use this resource multiple times for the same node.
+    /// 
     /// ## Import
     /// 
     /// Instances can be imported using the `node_name`, e.g.,
@@ -38,7 +72,7 @@ namespace Pulumi.ProxmoxVE
         public Output<string> Digest { get; private set; } = null!;
 
         /// <summary>
-        /// The host entries (conversion of `addresses` and `hostnames` into
+        /// The host entries (conversion of `Addresses` and `Hostnames` into
         /// objects).
         /// </summary>
         [Output("entries")]
@@ -157,7 +191,7 @@ namespace Pulumi.ProxmoxVE
         private InputList<Inputs.HostsEntryGetArgs>? _entries;
 
         /// <summary>
-        /// The host entries (conversion of `addresses` and `hostnames` into
+        /// The host entries (conversion of `Addresses` and `Hostnames` into
         /// objects).
         /// </summary>
         public InputList<Inputs.HostsEntryGetArgs> Entries

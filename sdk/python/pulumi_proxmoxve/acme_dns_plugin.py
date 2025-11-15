@@ -245,12 +245,12 @@ class AcmeDnsPlugin(pulumi.CustomResource):
         import pulumi_proxmoxve as proxmoxve
 
         example = proxmoxve.AcmeDnsPlugin("example",
+            plugin="test",
             api="aws",
             data={
                 "AWS_ACCESS_KEY_ID": "EXAMPLE",
                 "AWS_SECRET_ACCESS_KEY": "EXAMPLE",
-            },
-            plugin="test")
+            })
         ```
 
         ## Import
@@ -288,12 +288,12 @@ class AcmeDnsPlugin(pulumi.CustomResource):
         import pulumi_proxmoxve as proxmoxve
 
         example = proxmoxve.AcmeDnsPlugin("example",
+            plugin="test",
             api="aws",
             data={
                 "AWS_ACCESS_KEY_ID": "EXAMPLE",
                 "AWS_SECRET_ACCESS_KEY": "EXAMPLE",
-            },
-            plugin="test")
+            })
         ```
 
         ## Import

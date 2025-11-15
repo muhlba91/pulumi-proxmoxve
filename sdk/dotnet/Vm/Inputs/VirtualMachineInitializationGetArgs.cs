@@ -29,7 +29,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         /// The hardware interface to connect the cloud-init
         /// image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
         /// detected if the setting is missing but a cloud-init image is present,
-        /// otherwise defaults to `ide2`.
+        /// otherwise defaults to `Ide2`.
         /// </summary>
         [Input("interface")]
         public Input<string>? Interface { get; set; }
@@ -57,7 +57,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         /// <summary>
         /// The identifier for a file containing
         /// network configuration data passed to the VM via cloud-init (conflicts
-        /// with `ip_config`).
+        /// with `IpConfig`).
         /// </summary>
         [Input("networkDataFileId")]
         public Input<string>? NetworkDataFileId { get; set; }
@@ -70,14 +70,14 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
 
         /// <summary>
         /// The user account configuration (conflicts
-        /// with `user_data_file_id`).
+        /// with `UserDataFileId`).
         /// </summary>
         [Input("userAccount")]
         public Input<Inputs.VirtualMachineInitializationUserAccountGetArgs>? UserAccount { get; set; }
 
         /// <summary>
         /// The identifier for a file containing
-        /// custom user data (conflicts with `user_account`).
+        /// custom user data (conflicts with `UserAccount`).
         /// </summary>
         [Input("userDataFileId")]
         public Input<string>? UserDataFileId { get; set; }

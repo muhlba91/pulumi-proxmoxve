@@ -10,10 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.Network
 {
     /// <summary>
-    /// A security group is a collection of rules, defined at cluster level, which can
-    /// be used in all VMs' rules. For example, you can define a group named “webserver”
-    /// with rules to open the http and https ports. Rules can be created on the cluster
-    /// level, on VM / Container level.
+    /// Manages cluster-level, node-level or VM/container-level firewall rules.
     /// 
     /// ## Example Usage
     /// 
@@ -27,8 +24,8 @@ namespace Pulumi.ProxmoxVE.Network
     /// {
     ///     var inbound = new ProxmoxVE.Network.FirewallRules("inbound", new()
     ///     {
-    ///         NodeName = proxmox_virtual_environment_vm.Example.Node_name,
-    ///         VmId = proxmox_virtual_environment_vm.Example.Vm_id,
+    ///         NodeName = example.NodeName,
+    ///         VmId = example.VmId,
     ///         Rules = new[]
     ///         {
     ///             new ProxmoxVE.Network.Inputs.FirewallRulesRuleArgs
@@ -53,7 +50,7 @@ namespace Pulumi.ProxmoxVE.Network
     ///             },
     ///             new ProxmoxVE.Network.Inputs.FirewallRulesRuleArgs
     ///             {
-    ///                 SecurityGroup = proxmox_virtual_environment_cluster_firewall_security_group.Example.Name,
+    ///                 SecurityGroup = exampleProxmoxVirtualEnvironmentClusterFirewallSecurityGroup.Name,
     ///                 Comment = "From security group",
     ///                 Iface = "net0",
     ///             },
@@ -62,20 +59,35 @@ namespace Pulumi.ProxmoxVE.Network
     ///     {
     ///         DependsOn =
     ///         {
-    ///             proxmox_virtual_environment_vm.Example,
-    ///             proxmox_virtual_environment_cluster_firewall_security_group.Example,
+    ///             example,
+    ///             exampleProxmoxVirtualEnvironmentClusterFirewallSecurityGroup,
     ///         },
     ///     });
     /// 
     /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ### Container Rules
+    /// 
+    /// Use the import ID format: `container/&lt;node_name&gt;/&lt;container_id&gt;`
+    /// 
+    /// Example uses node name `pve` and container ID `100`.
+    /// 
+    /// **Example:**
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:Network/firewallRules:FirewallRules container_rules container/pve/100
     /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:Network/firewallRules:FirewallRules")]
     public partial class FirewallRules : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Container ID. Leave empty for cluster level
-        /// rules.
+        /// Container ID. Leave empty for node/cluster level rules.
         /// </summary>
         [Output("containerId")]
         public Output<int?> ContainerId { get; private set; } = null!;
@@ -88,14 +100,14 @@ namespace Pulumi.ProxmoxVE.Network
 
         /// <summary>
         /// Firewall rule block (multiple blocks supported).
-        /// The provider supports two types of the `rule` blocks:
+        /// The provider supports two types of the `Rule` blocks:
         /// - A rule definition block, which includes the following arguments:
         /// </summary>
         [Output("rules")]
         public Output<ImmutableArray<Outputs.FirewallRulesRule>> Rules { get; private set; } = null!;
 
         /// <summary>
-        /// VM ID. Leave empty for cluster level rules.
+        /// VM ID. Leave empty for node/cluster level rules.
         /// </summary>
         [Output("vmId")]
         public Output<int?> VmId { get; private set; } = null!;
@@ -148,8 +160,7 @@ namespace Pulumi.ProxmoxVE.Network
     public sealed class FirewallRulesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Container ID. Leave empty for cluster level
-        /// rules.
+        /// Container ID. Leave empty for node/cluster level rules.
         /// </summary>
         [Input("containerId")]
         public Input<int>? ContainerId { get; set; }
@@ -165,7 +176,7 @@ namespace Pulumi.ProxmoxVE.Network
 
         /// <summary>
         /// Firewall rule block (multiple blocks supported).
-        /// The provider supports two types of the `rule` blocks:
+        /// The provider supports two types of the `Rule` blocks:
         /// - A rule definition block, which includes the following arguments:
         /// </summary>
         public InputList<Inputs.FirewallRulesRuleArgs> Rules
@@ -175,7 +186,7 @@ namespace Pulumi.ProxmoxVE.Network
         }
 
         /// <summary>
-        /// VM ID. Leave empty for cluster level rules.
+        /// VM ID. Leave empty for node/cluster level rules.
         /// </summary>
         [Input("vmId")]
         public Input<int>? VmId { get; set; }
@@ -189,8 +200,7 @@ namespace Pulumi.ProxmoxVE.Network
     public sealed class FirewallRulesState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Container ID. Leave empty for cluster level
-        /// rules.
+        /// Container ID. Leave empty for node/cluster level rules.
         /// </summary>
         [Input("containerId")]
         public Input<int>? ContainerId { get; set; }
@@ -206,7 +216,7 @@ namespace Pulumi.ProxmoxVE.Network
 
         /// <summary>
         /// Firewall rule block (multiple blocks supported).
-        /// The provider supports two types of the `rule` blocks:
+        /// The provider supports two types of the `Rule` blocks:
         /// - A rule definition block, which includes the following arguments:
         /// </summary>
         public InputList<Inputs.FirewallRulesRuleGetArgs> Rules
@@ -216,7 +226,7 @@ namespace Pulumi.ProxmoxVE.Network
         }
 
         /// <summary>
-        /// VM ID. Leave empty for cluster level rules.
+        /// VM ID. Leave empty for node/cluster level rules.
         /// </summary>
         [Input("vmId")]
         public Input<int>? VmId { get; set; }

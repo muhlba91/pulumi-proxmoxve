@@ -32,14 +32,14 @@ public final class ContainerInitializationIpConfigArgs extends com.pulumi.resour
     }
 
     /**
-     * The IPv4 configuration.
+     * The IPv6 configuration.
      * 
      */
     @Import(name="ipv6")
     private @Nullable Output<ContainerInitializationIpConfigIpv6Args> ipv6;
 
     /**
-     * @return The IPv4 configuration.
+     * @return The IPv6 configuration.
      * 
      */
     public Optional<Output<ContainerInitializationIpConfigIpv6Args>> ipv6() {
@@ -93,7 +93,7 @@ public final class ContainerInitializationIpConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param ipv6 The IPv4 configuration.
+         * @param ipv6 The IPv6 configuration.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ContainerInitializationIpConfigArgs extends com.pulumi.resour
         }
 
         /**
-         * @param ipv6 The IPv4 configuration.
+         * @param ipv6 The IPv6 configuration.
          * 
          * @return builder
          * 

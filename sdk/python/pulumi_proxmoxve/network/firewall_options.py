@@ -517,8 +517,8 @@ class FirewallOptions(pulumi.CustomResource):
         import pulumi_proxmoxve as proxmoxve
 
         example = proxmoxve.network.FirewallOptions("example",
-            node_name=proxmox_virtual_environment_vm["example"]["node_name"],
-            vm_id=proxmox_virtual_environment_vm["example"]["vm_id"],
+            node_name=example_proxmox_virtual_environment_vm["nodeName"],
+            vm_id=example_proxmox_virtual_environment_vm["vmId"],
             dhcp=True,
             enabled=False,
             ipfilter=True,
@@ -529,7 +529,23 @@ class FirewallOptions(pulumi.CustomResource):
             input_policy="ACCEPT",
             output_policy="ACCEPT",
             radv=True,
-            opts = pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm["example"]]))
+            opts = pulumi.ResourceOptions(depends_on=[example_proxmox_virtual_environment_vm]))
+        ```
+
+        ## Import
+
+        ### Container Firewall Options
+
+        Use the import ID format: `container/<node_name>/<container_id>`
+
+        Example uses node name `pve` and container ID `100`.
+
+        **Example:**
+
+        bash
+
+        ```sh
+        $ pulumi import proxmoxve:Network/firewallOptions:FirewallOptions container_firewall_options container/pve/100
         ```
 
         :param str resource_name: The name of the resource.
@@ -574,8 +590,8 @@ class FirewallOptions(pulumi.CustomResource):
         import pulumi_proxmoxve as proxmoxve
 
         example = proxmoxve.network.FirewallOptions("example",
-            node_name=proxmox_virtual_environment_vm["example"]["node_name"],
-            vm_id=proxmox_virtual_environment_vm["example"]["vm_id"],
+            node_name=example_proxmox_virtual_environment_vm["nodeName"],
+            vm_id=example_proxmox_virtual_environment_vm["vmId"],
             dhcp=True,
             enabled=False,
             ipfilter=True,
@@ -586,7 +602,23 @@ class FirewallOptions(pulumi.CustomResource):
             input_policy="ACCEPT",
             output_policy="ACCEPT",
             radv=True,
-            opts = pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm["example"]]))
+            opts = pulumi.ResourceOptions(depends_on=[example_proxmox_virtual_environment_vm]))
+        ```
+
+        ## Import
+
+        ### Container Firewall Options
+
+        Use the import ID format: `container/<node_name>/<container_id>`
+
+        Example uses node name `pve` and container ID `100`.
+
+        **Example:**
+
+        bash
+
+        ```sh
+        $ pulumi import proxmoxve:Network/firewallOptions:FirewallOptions container_firewall_options container/pve/100
         ```
 
         :param str resource_name: The name of the resource.

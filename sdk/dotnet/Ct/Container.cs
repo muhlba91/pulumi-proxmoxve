@@ -12,6 +12,123 @@ namespace Pulumi.ProxmoxVE.CT
     /// <summary>
     /// Manages a container.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// using Random = Pulumi.Random;
+    /// using Std = Pulumi.Std;
+    /// using Tls = Pulumi.Tls;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ubuntu2504LxcImg = new ProxmoxVE.Download.File("ubuntu_2504_lxc_img", new()
+    ///     {
+    ///         ContentType = "vztmpl",
+    ///         DatastoreId = "local",
+    ///         NodeName = "first-node",
+    ///         Url = "https://mirrors.servercentral.com/ubuntu-cloud-images/releases/25.04/release/ubuntu-25.04-server-cloudimg-amd64-root.tar.xz",
+    ///     });
+    /// 
+    ///     var ubuntuContainerPassword = new Random.RandomPassword("ubuntu_container_password", new()
+    ///     {
+    ///         Length = 16,
+    ///         OverrideSpecial = "_%@",
+    ///         Special = true,
+    ///     });
+    /// 
+    ///     var ubuntuContainerKey = new Tls.PrivateKey("ubuntu_container_key", new()
+    ///     {
+    ///         Algorithm = "RSA",
+    ///         RsaBits = 2048,
+    ///     });
+    /// 
+    ///     var ubuntuContainer = new ProxmoxVE.CT.Container("ubuntu_container", new()
+    ///     {
+    ///         Description = "Managed by Pulumi",
+    ///         NodeName = "first-node",
+    ///         VmId = 1234,
+    ///         Unprivileged = true,
+    ///         Features = new ProxmoxVE.CT.Inputs.ContainerFeaturesArgs
+    ///         {
+    ///             Nesting = true,
+    ///         },
+    ///         Initialization = new ProxmoxVE.CT.Inputs.ContainerInitializationArgs
+    ///         {
+    ///             Hostname = "terraform-provider-proxmox-ubuntu-container",
+    ///             IpConfigs = new[]
+    ///             {
+    ///                 new ProxmoxVE.CT.Inputs.ContainerInitializationIpConfigArgs
+    ///                 {
+    ///                     Ipv4 = new ProxmoxVE.CT.Inputs.ContainerInitializationIpConfigIpv4Args
+    ///                     {
+    ///                         Address = "dhcp",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             UserAccount = new ProxmoxVE.CT.Inputs.ContainerInitializationUserAccountArgs
+    ///             {
+    ///                 Keys = new[]
+    ///                 {
+    ///                     Std.Trimspace.Invoke(new()
+    ///                     {
+    ///                         Input = ubuntuContainerKey.PublicKeyOpenssh,
+    ///                     }).Apply(invoke =&gt; invoke.Result),
+    ///                 },
+    ///                 Password = ubuntuContainerPassword.Result,
+    ///             },
+    ///         },
+    ///         NetworkInterfaces = new[]
+    ///         {
+    ///             new ProxmoxVE.CT.Inputs.ContainerNetworkInterfaceArgs
+    ///             {
+    ///                 Name = "veth0",
+    ///             },
+    ///         },
+    ///         Disk = new ProxmoxVE.CT.Inputs.ContainerDiskArgs
+    ///         {
+    ///             DatastoreId = "local-lvm",
+    ///             Size = 4,
+    ///         },
+    ///         OperatingSystem = new ProxmoxVE.CT.Inputs.ContainerOperatingSystemArgs
+    ///         {
+    ///             TemplateFileId = ubuntu2504LxcImg.Id,
+    ///             Type = "ubuntu",
+    ///         },
+    ///         MountPoints = new[]
+    ///         {
+    ///             new ProxmoxVE.CT.Inputs.ContainerMountPointArgs
+    ///             {
+    ///                 Volume = "/mnt/bindmounts/shared",
+    ///                 Path = "/mnt/shared",
+    ///             },
+    ///             new ProxmoxVE.CT.Inputs.ContainerMountPointArgs
+    ///             {
+    ///                 Volume = "local-lvm",
+    ///                 Size = "10G",
+    ///                 Path = "/mnt/volume",
+    ///             },
+    ///         },
+    ///         Startup = new ProxmoxVE.CT.Inputs.ContainerStartupArgs
+    ///         {
+    ///             Order = 3,
+    ///             UpDelay = 60,
+    ///             DownDelay = 60,
+    ///         },
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["ubuntuContainerPassword"] = ubuntuContainerPassword.Result,
+    ///         ["ubuntuContainerPrivateKey"] = ubuntuContainerKey.PrivateKeyPem,
+    ///         ["ubuntuContainerPublicKey"] = ubuntuContainerKey.PublicKeyOpenssh,
+    ///     };
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Instances can be imported using the `node_name` and the `vm_id`, e.g.,
@@ -129,20 +246,20 @@ namespace Pulumi.ProxmoxVE.CT
         public Output<string?> PoolId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+        /// Whether to set the protection flag of the container (defaults to `False`). This will prevent the container itself and its disk for remove/update operations.
         /// </summary>
         [Output("protection")]
         public Output<bool?> Protection { get; private set; } = null!;
 
         /// <summary>
         /// Automatically start container when the host
-        /// system boots (defaults to `true`).
+        /// system boots (defaults to `True`).
         /// </summary>
         [Output("startOnBoot")]
         public Output<bool?> StartOnBoot { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to start the container (defaults to `true`).
+        /// Whether to start the container (defaults to `True`).
         /// </summary>
         [Output("started")]
         public Output<bool?> Started { get; private set; } = null!;
@@ -157,14 +274,14 @@ namespace Pulumi.ProxmoxVE.CT
         /// A list of tags the container tags. This is only meta
         /// information (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.
         /// If tag contains capital letters, then Proxmox will always report a
-        /// difference on the resource. You may use the `ignore_changes` lifecycle
+        /// difference on the resource. You may use the `IgnoreChanges` lifecycle
         /// meta-argument to ignore changes to this attribute.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to create a template (defaults to `false`).
+        /// Whether to create a template (defaults to `False`).
         /// </summary>
         [Output("template")]
         public Output<bool?> Template { get; private set; } = null!;
@@ -200,7 +317,7 @@ namespace Pulumi.ProxmoxVE.CT
         public Output<int?> TimeoutUpdate { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the container runs as unprivileged on the host (defaults to `false`).
+        /// Whether the container runs as unprivileged on the host (defaults to `False`).
         /// </summary>
         [Output("unprivileged")]
         public Output<bool?> Unprivileged { get; private set; } = null!;
@@ -368,20 +485,20 @@ namespace Pulumi.ProxmoxVE.CT
         public Input<string>? PoolId { get; set; }
 
         /// <summary>
-        /// Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+        /// Whether to set the protection flag of the container (defaults to `False`). This will prevent the container itself and its disk for remove/update operations.
         /// </summary>
         [Input("protection")]
         public Input<bool>? Protection { get; set; }
 
         /// <summary>
         /// Automatically start container when the host
-        /// system boots (defaults to `true`).
+        /// system boots (defaults to `True`).
         /// </summary>
         [Input("startOnBoot")]
         public Input<bool>? StartOnBoot { get; set; }
 
         /// <summary>
-        /// Whether to start the container (defaults to `true`).
+        /// Whether to start the container (defaults to `True`).
         /// </summary>
         [Input("started")]
         public Input<bool>? Started { get; set; }
@@ -399,7 +516,7 @@ namespace Pulumi.ProxmoxVE.CT
         /// A list of tags the container tags. This is only meta
         /// information (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.
         /// If tag contains capital letters, then Proxmox will always report a
-        /// difference on the resource. You may use the `ignore_changes` lifecycle
+        /// difference on the resource. You may use the `IgnoreChanges` lifecycle
         /// meta-argument to ignore changes to this attribute.
         /// </summary>
         public InputList<string> Tags
@@ -409,7 +526,7 @@ namespace Pulumi.ProxmoxVE.CT
         }
 
         /// <summary>
-        /// Whether to create a template (defaults to `false`).
+        /// Whether to create a template (defaults to `False`).
         /// </summary>
         [Input("template")]
         public Input<bool>? Template { get; set; }
@@ -445,7 +562,7 @@ namespace Pulumi.ProxmoxVE.CT
         public Input<int>? TimeoutUpdate { get; set; }
 
         /// <summary>
-        /// Whether the container runs as unprivileged on the host (defaults to `false`).
+        /// Whether the container runs as unprivileged on the host (defaults to `False`).
         /// </summary>
         [Input("unprivileged")]
         public Input<bool>? Unprivileged { get; set; }
@@ -598,20 +715,20 @@ namespace Pulumi.ProxmoxVE.CT
         public Input<string>? PoolId { get; set; }
 
         /// <summary>
-        /// Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+        /// Whether to set the protection flag of the container (defaults to `False`). This will prevent the container itself and its disk for remove/update operations.
         /// </summary>
         [Input("protection")]
         public Input<bool>? Protection { get; set; }
 
         /// <summary>
         /// Automatically start container when the host
-        /// system boots (defaults to `true`).
+        /// system boots (defaults to `True`).
         /// </summary>
         [Input("startOnBoot")]
         public Input<bool>? StartOnBoot { get; set; }
 
         /// <summary>
-        /// Whether to start the container (defaults to `true`).
+        /// Whether to start the container (defaults to `True`).
         /// </summary>
         [Input("started")]
         public Input<bool>? Started { get; set; }
@@ -629,7 +746,7 @@ namespace Pulumi.ProxmoxVE.CT
         /// A list of tags the container tags. This is only meta
         /// information (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.
         /// If tag contains capital letters, then Proxmox will always report a
-        /// difference on the resource. You may use the `ignore_changes` lifecycle
+        /// difference on the resource. You may use the `IgnoreChanges` lifecycle
         /// meta-argument to ignore changes to this attribute.
         /// </summary>
         public InputList<string> Tags
@@ -639,7 +756,7 @@ namespace Pulumi.ProxmoxVE.CT
         }
 
         /// <summary>
-        /// Whether to create a template (defaults to `false`).
+        /// Whether to create a template (defaults to `False`).
         /// </summary>
         [Input("template")]
         public Input<bool>? Template { get; set; }
@@ -675,7 +792,7 @@ namespace Pulumi.ProxmoxVE.CT
         public Input<int>? TimeoutUpdate { get; set; }
 
         /// <summary>
-        /// Whether the container runs as unprivileged on the host (defaults to `false`).
+        /// Whether the container runs as unprivileged on the host (defaults to `False`).
         /// </summary>
         [Input("unprivileged")]
         public Input<bool>? Unprivileged { get; set; }

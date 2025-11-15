@@ -27,16 +27,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// List all SDN zones
 //			all, err := sdn.GetZones(ctx, &sdn.GetZonesArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			// List only EVPN zones
 //			evpnOnly, err := sdn.GetZones(ctx, &sdn.GetZonesArgs{
 //				Type: pulumi.StringRef("evpn"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			// List only Simple zones
 //			simpleOnly, err := sdn.GetZones(ctx, &sdn.GetZonesArgs{
 //				Type: pulumi.StringRef("simple"),
 //			}, nil)
@@ -47,8 +50,8 @@ import (
 //				"zones": all.Zones,
 //			})
 //			ctx.Export("dataProxmoxVirtualEnvironmentSdnZonesFiltered", []sdn.GetZonesZoneMap{
-//				"evpn_zones":   evpnOnly.Zones,
-//				"simple_zones": simpleOnly.Zones,
+//				"evpnZones":   evpnOnly.Zones,
+//				"simpleZones": simpleOnly.Zones,
 //			})
 //			return nil
 //		})

@@ -34,16 +34,16 @@ import (
 //				return err
 //			}
 //			ctx.Export("dataProxmoxVirtualEnvironmentSdnZoneQinq", pulumi.Map{
-//				"id":                    example.Id,
-//				"nodes":                 example.Nodes,
-//				"bridge":                example.Bridge,
-//				"service_vlan":          example.ServiceVlan,
-//				"service_vlan_protocol": example.ServiceVlanProtocol,
-//				"mtu":                   example.Mtu,
-//				"dns":                   example.Dns,
-//				"dns_zone":              example.DnsZone,
-//				"ipam":                  example.Ipam,
-//				"reverse_dns":           example.ReverseDns,
+//				"id":                  example.Id,
+//				"nodes":               example.Nodes,
+//				"bridge":              example.Bridge,
+//				"serviceVlan":         example.ServiceVlan,
+//				"serviceVlanProtocol": example.ServiceVlanProtocol,
+//				"mtu":                 example.Mtu,
+//				"dns":                 example.Dns,
+//				"dnsZone":             example.DnsZone,
+//				"ipam":                example.Ipam,
+//				"reverseDns":          example.ReverseDns,
 //			})
 //			return nil
 //		})

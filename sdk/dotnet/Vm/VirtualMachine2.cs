@@ -15,7 +15,7 @@ namespace Pulumi.ProxmoxVE.VM
     /// 
     /// &gt; Many attributes are marked as **optional** _and_ **computed** in the schema,
     /// hence you may seem added to the plan with "(known after apply)" status, even if they are not set in the configuration.
-    /// This is done to support the `clone` operation, when a VM is created from an existing VM or template,
+    /// This is done to support the `Clone` operation, when a VM is created from an existing VM or template,
     /// and the source attributes are copied to the clone.&lt;br&gt;&lt;br&gt;
     /// Computed attributes allow the provider to set those attributes without user input.
     /// The attributes are also marked as optional to allow the practitioner to set (or overwrite) them if needed.
@@ -24,7 +24,7 @@ namespace Pulumi.ProxmoxVE.VM
     public partial class VirtualMachine2 : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+        /// The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `Q35` machine type only supports `Ide0` and `Ide2` of IDE interfaces.
         /// </summary>
         [Output("cdrom")]
         public Output<ImmutableDictionary<string, Outputs.VirtualMachine2Cdrom>> Cdrom { get; private set; } = null!;
@@ -66,7 +66,7 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<Outputs.VirtualMachine2Rng> Rng { get; private set; } = null!;
 
         /// <summary>
-        /// Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
+        /// Set to true to stop (rather than shutdown) the VM on destroy (defaults to `False`).
         /// </summary>
         [Output("stopOnDestroy")]
         public Output<bool> StopOnDestroy { get; private set; } = null!;
@@ -87,7 +87,7 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<Outputs.VirtualMachine2Timeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
-        /// Configure the VGA Hardware. If you want to use high resolution modes (&gt;= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
+        /// Configure the VGA Hardware. If you want to use high resolution modes (&gt;= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `Std` for all OS types besides some Windows versions (XP and older) which use `Cirrus`. The `Qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
         /// </summary>
         [Output("vga")]
         public Output<Outputs.VirtualMachine2Vga> Vga { get; private set; } = null!;
@@ -143,7 +143,7 @@ namespace Pulumi.ProxmoxVE.VM
         private InputMap<Inputs.VirtualMachine2CdromArgs>? _cdrom;
 
         /// <summary>
-        /// The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+        /// The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `Q35` machine type only supports `Ide0` and `Ide2` of IDE interfaces.
         /// </summary>
         public InputMap<Inputs.VirtualMachine2CdromArgs> Cdrom
         {
@@ -188,7 +188,7 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<Inputs.VirtualMachine2RngArgs>? Rng { get; set; }
 
         /// <summary>
-        /// Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
+        /// Set to true to stop (rather than shutdown) the VM on destroy (defaults to `False`).
         /// </summary>
         [Input("stopOnDestroy")]
         public Input<bool>? StopOnDestroy { get; set; }
@@ -215,7 +215,7 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<Inputs.VirtualMachine2TimeoutsArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// Configure the VGA Hardware. If you want to use high resolution modes (&gt;= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
+        /// Configure the VGA Hardware. If you want to use high resolution modes (&gt;= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `Std` for all OS types besides some Windows versions (XP and older) which use `Cirrus`. The `Qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
         /// </summary>
         [Input("vga")]
         public Input<Inputs.VirtualMachine2VgaArgs>? Vga { get; set; }
@@ -232,7 +232,7 @@ namespace Pulumi.ProxmoxVE.VM
         private InputMap<Inputs.VirtualMachine2CdromGetArgs>? _cdrom;
 
         /// <summary>
-        /// The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+        /// The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `Q35` machine type only supports `Ide0` and `Ide2` of IDE interfaces.
         /// </summary>
         public InputMap<Inputs.VirtualMachine2CdromGetArgs> Cdrom
         {
@@ -277,7 +277,7 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<Inputs.VirtualMachine2RngGetArgs>? Rng { get; set; }
 
         /// <summary>
-        /// Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
+        /// Set to true to stop (rather than shutdown) the VM on destroy (defaults to `False`).
         /// </summary>
         [Input("stopOnDestroy")]
         public Input<bool>? StopOnDestroy { get; set; }
@@ -304,7 +304,7 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<Inputs.VirtualMachine2TimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// Configure the VGA Hardware. If you want to use high resolution modes (&gt;= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
+        /// Configure the VGA Hardware. If you want to use high resolution modes (&gt;= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `Std` for all OS types besides some Windows versions (XP and older) which use `Cirrus`. The `Qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
         /// </summary>
         [Input("vga")]
         public Input<Inputs.VirtualMachine2VgaGetArgs>? Vga { get; set; }

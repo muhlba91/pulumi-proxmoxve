@@ -24,19 +24,15 @@ namespace Pulumi.ProxmoxVE.SDNZone
     /// {
     ///     var example = new ProxmoxVE.SDNZone.Qinq("example", new()
     ///     {
-    ///         Bridge = "vmbr0",
-    ///         Dns = "1.1.1.1",
-    ///         DnsZone = "example.com",
     ///         ZoneId = "qinq1",
-    ///         Ipam = "pve",
-    ///         Mtu = 1496,
-    ///         Nodes = new[]
-    ///         {
-    ///             "pve",
-    ///         },
-    ///         ReverseDns = "1.1.1.1",
+    ///         Bridge = "vmbr0",
     ///         ServiceVlan = 100,
     ///         ServiceVlanProtocol = "802.1ad",
+    ///         Mtu = 1496,
+    ///         Dns = "1.1.1.1",
+    ///         DnsZone = "example.com",
+    ///         Ipam = "pve",
+    ///         ReverseDns = "1.1.1.1",
     ///     });
     /// 
     /// });
@@ -204,7 +200,7 @@ namespace Pulumi.ProxmoxVE.SDNZone
         [Input("mtu")]
         public Input<int>? Mtu { get; set; }
 
-        [Input("nodes", required: true)]
+        [Input("nodes")]
         private InputList<string>? _nodes;
 
         /// <summary>

@@ -16,17 +16,17 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VirtualMachineDisk {
     /**
-     * @return The disk AIO mode (defaults to `io_uring`).
+     * @return The disk AIO mode (defaults to &lt;span pulumi-lang-nodejs=&#34;`ioUring`&#34; pulumi-lang-dotnet=&#34;`IoUring`&#34; pulumi-lang-go=&#34;`ioUring`&#34; pulumi-lang-python=&#34;`io_uring`&#34; pulumi-lang-yaml=&#34;`ioUring`&#34; pulumi-lang-java=&#34;`ioUring`&#34;&gt;`io_uring`&lt;/span&gt;).
      * 
      */
     private @Nullable String aio;
     /**
-     * @return Whether the drive should be included when making backups (defaults to `true`).
+     * @return Whether the drive should be included when making backups (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     private @Nullable Boolean backup;
     /**
-     * @return The cache type (defaults to `none`).
+     * @return The cache type (defaults to &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34;&gt;`none`&lt;/span&gt;).
      * 
      */
     private @Nullable String cache;
@@ -38,8 +38,8 @@ public final class VirtualMachineDisk {
     private @Nullable String datastoreId;
     /**
      * @return Whether to pass discard/trim requests to the
-     * underlying storage. Supported values are `on`/`ignore` (defaults
-     * to `ignore`).
+     * underlying storage. Supported values are &lt;span pulumi-lang-nodejs=&#34;`on`&#34; pulumi-lang-dotnet=&#34;`On`&#34; pulumi-lang-go=&#34;`on`&#34; pulumi-lang-python=&#34;`on`&#34; pulumi-lang-yaml=&#34;`on`&#34; pulumi-lang-java=&#34;`on`&#34;&gt;`on`&lt;/span&gt;/&lt;span pulumi-lang-nodejs=&#34;`ignore`&#34; pulumi-lang-dotnet=&#34;`Ignore`&#34; pulumi-lang-go=&#34;`ignore`&#34; pulumi-lang-python=&#34;`ignore`&#34; pulumi-lang-yaml=&#34;`ignore`&#34; pulumi-lang-java=&#34;`ignore`&#34;&gt;`ignore`&lt;/span&gt; (defaults
+     * to &lt;span pulumi-lang-nodejs=&#34;`ignore`&#34; pulumi-lang-dotnet=&#34;`Ignore`&#34; pulumi-lang-go=&#34;`ignore`&#34; pulumi-lang-python=&#34;`ignore`&#34; pulumi-lang-yaml=&#34;`ignore`&#34; pulumi-lang-java=&#34;`ignore`&#34;&gt;`ignore`&lt;/span&gt;).
      * 
      */
     private @Nullable String discard;
@@ -51,41 +51,41 @@ public final class VirtualMachineDisk {
     /**
      * @return The file ID for a disk image when importing a disk into VM. The ID format is
      * `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`. Can be also taken from
-     * `proxmoxve.Download.File` resource. *Deprecated*, use `import_from` instead.
+     * &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-go=&#34;`Download.File`&#34; pulumi-lang-python=&#34;`Download.File`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-java=&#34;`proxmoxve.Download.File`&#34;&gt;`proxmoxve.Download.File`&lt;/span&gt; resource. *Deprecated*, use &lt;span pulumi-lang-nodejs=&#34;`importFrom`&#34; pulumi-lang-dotnet=&#34;`ImportFrom`&#34; pulumi-lang-go=&#34;`importFrom`&#34; pulumi-lang-python=&#34;`import_from`&#34; pulumi-lang-yaml=&#34;`importFrom`&#34; pulumi-lang-java=&#34;`importFrom`&#34;&gt;`import_from`&lt;/span&gt; instead.
      * 
      */
     private @Nullable String fileId;
     /**
-     * @return The file ID for a disk image to import into VM. The image must be of `import` content type.
+     * @return The file ID for a disk image to import into VM. The image must be of &lt;span pulumi-lang-nodejs=&#34;`import`&#34; pulumi-lang-dotnet=&#34;`Import`&#34; pulumi-lang-go=&#34;`import`&#34; pulumi-lang-python=&#34;`import`&#34; pulumi-lang-yaml=&#34;`import`&#34; pulumi-lang-java=&#34;`import`&#34;&gt;`import`&lt;/span&gt; content type.
      * The ID format is `&lt;datastore_id&gt;:import/&lt;file_name&gt;`, for example `local:import/centos8.qcow2`. Can be also taken from
-     * `proxmoxve.Download.File` resource.
+     * &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-go=&#34;`Download.File`&#34; pulumi-lang-python=&#34;`Download.File`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-java=&#34;`proxmoxve.Download.File`&#34;&gt;`proxmoxve.Download.File`&lt;/span&gt; resource.
      * 
      */
     private @Nullable String importFrom;
     /**
-     * @return The disk interface for Proxmox, currently `scsi`,
-     * `sata` and `virtio` interfaces are supported. Append the disk index at
-     * the end, for example, `virtio0` for the first virtio disk, `virtio1` for
+     * @return The disk interface for Proxmox, currently &lt;span pulumi-lang-nodejs=&#34;`scsi`&#34; pulumi-lang-dotnet=&#34;`Scsi`&#34; pulumi-lang-go=&#34;`scsi`&#34; pulumi-lang-python=&#34;`scsi`&#34; pulumi-lang-yaml=&#34;`scsi`&#34; pulumi-lang-java=&#34;`scsi`&#34;&gt;`scsi`&lt;/span&gt;,
+     * &lt;span pulumi-lang-nodejs=&#34;`sata`&#34; pulumi-lang-dotnet=&#34;`Sata`&#34; pulumi-lang-go=&#34;`sata`&#34; pulumi-lang-python=&#34;`sata`&#34; pulumi-lang-yaml=&#34;`sata`&#34; pulumi-lang-java=&#34;`sata`&#34;&gt;`sata`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`virtio`&#34; pulumi-lang-dotnet=&#34;`Virtio`&#34; pulumi-lang-go=&#34;`virtio`&#34; pulumi-lang-python=&#34;`virtio`&#34; pulumi-lang-yaml=&#34;`virtio`&#34; pulumi-lang-java=&#34;`virtio`&#34;&gt;`virtio`&lt;/span&gt; interfaces are supported. Append the disk index at
+     * the end, for example, &lt;span pulumi-lang-nodejs=&#34;`virtio0`&#34; pulumi-lang-dotnet=&#34;`Virtio0`&#34; pulumi-lang-go=&#34;`virtio0`&#34; pulumi-lang-python=&#34;`virtio0`&#34; pulumi-lang-yaml=&#34;`virtio0`&#34; pulumi-lang-java=&#34;`virtio0`&#34;&gt;`virtio0`&lt;/span&gt; for the first virtio disk, &lt;span pulumi-lang-nodejs=&#34;`virtio1`&#34; pulumi-lang-dotnet=&#34;`Virtio1`&#34; pulumi-lang-go=&#34;`virtio1`&#34; pulumi-lang-python=&#34;`virtio1`&#34; pulumi-lang-yaml=&#34;`virtio1`&#34; pulumi-lang-java=&#34;`virtio1`&#34;&gt;`virtio1`&lt;/span&gt; for
      * the second, etc.
      * 
      */
     private String interface_;
     /**
      * @return Whether to use iothreads for this disk (defaults
-     * to `false`).
+     * to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     private @Nullable Boolean iothread;
     /**
      * @return The in-datastore path to the disk image.
      * ***Experimental.***Use to attach another VM&#39;s disks,
-     * or (as root only) host&#39;s filesystem paths (`datastore_id` empty string).
+     * or (as root only) host&#39;s filesystem paths (&lt;span pulumi-lang-nodejs=&#34;`datastoreId`&#34; pulumi-lang-dotnet=&#34;`DatastoreId`&#34; pulumi-lang-go=&#34;`datastoreId`&#34; pulumi-lang-python=&#34;`datastore_id`&#34; pulumi-lang-yaml=&#34;`datastoreId`&#34; pulumi-lang-java=&#34;`datastoreId`&#34;&gt;`datastore_id`&lt;/span&gt; empty string).
      * See &#34;*Example: Attached disks*&#34;.
      * 
      */
     private @Nullable String pathInDatastore;
     /**
-     * @return Whether the drive should be considered for replication jobs (defaults to `true`).
+     * @return Whether the drive should be considered for replication jobs (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     private @Nullable Boolean replicate;
@@ -95,7 +95,7 @@ public final class VirtualMachineDisk {
      */
     private @Nullable String serial;
     /**
-     * @return The disk size in gigabytes (defaults to `8`).
+     * @return The disk size in gigabytes (defaults to &lt;span pulumi-lang-nodejs=&#34;`8`&#34; pulumi-lang-dotnet=&#34;`8`&#34; pulumi-lang-go=&#34;`8`&#34; pulumi-lang-python=&#34;`8`&#34; pulumi-lang-yaml=&#34;`8`&#34; pulumi-lang-java=&#34;`8`&#34;&gt;`8`&lt;/span&gt;).
      * 
      */
     private @Nullable Integer size;
@@ -106,7 +106,7 @@ public final class VirtualMachineDisk {
     private @Nullable VirtualMachineDiskSpeed speed;
     /**
      * @return Whether to use an SSD emulation option for this disk (
-     * defaults to `false`). Note that SSD emulation is not supported on VirtIO
+     * defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). Note that SSD emulation is not supported on VirtIO
      * Block drives.
      * 
      */
@@ -114,21 +114,21 @@ public final class VirtualMachineDisk {
 
     private VirtualMachineDisk() {}
     /**
-     * @return The disk AIO mode (defaults to `io_uring`).
+     * @return The disk AIO mode (defaults to &lt;span pulumi-lang-nodejs=&#34;`ioUring`&#34; pulumi-lang-dotnet=&#34;`IoUring`&#34; pulumi-lang-go=&#34;`ioUring`&#34; pulumi-lang-python=&#34;`io_uring`&#34; pulumi-lang-yaml=&#34;`ioUring`&#34; pulumi-lang-java=&#34;`ioUring`&#34;&gt;`io_uring`&lt;/span&gt;).
      * 
      */
     public Optional<String> aio() {
         return Optional.ofNullable(this.aio);
     }
     /**
-     * @return Whether the drive should be included when making backups (defaults to `true`).
+     * @return Whether the drive should be included when making backups (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Optional<Boolean> backup() {
         return Optional.ofNullable(this.backup);
     }
     /**
-     * @return The cache type (defaults to `none`).
+     * @return The cache type (defaults to &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34;&gt;`none`&lt;/span&gt;).
      * 
      */
     public Optional<String> cache() {
@@ -144,8 +144,8 @@ public final class VirtualMachineDisk {
     }
     /**
      * @return Whether to pass discard/trim requests to the
-     * underlying storage. Supported values are `on`/`ignore` (defaults
-     * to `ignore`).
+     * underlying storage. Supported values are &lt;span pulumi-lang-nodejs=&#34;`on`&#34; pulumi-lang-dotnet=&#34;`On`&#34; pulumi-lang-go=&#34;`on`&#34; pulumi-lang-python=&#34;`on`&#34; pulumi-lang-yaml=&#34;`on`&#34; pulumi-lang-java=&#34;`on`&#34;&gt;`on`&lt;/span&gt;/&lt;span pulumi-lang-nodejs=&#34;`ignore`&#34; pulumi-lang-dotnet=&#34;`Ignore`&#34; pulumi-lang-go=&#34;`ignore`&#34; pulumi-lang-python=&#34;`ignore`&#34; pulumi-lang-yaml=&#34;`ignore`&#34; pulumi-lang-java=&#34;`ignore`&#34;&gt;`ignore`&lt;/span&gt; (defaults
+     * to &lt;span pulumi-lang-nodejs=&#34;`ignore`&#34; pulumi-lang-dotnet=&#34;`Ignore`&#34; pulumi-lang-go=&#34;`ignore`&#34; pulumi-lang-python=&#34;`ignore`&#34; pulumi-lang-yaml=&#34;`ignore`&#34; pulumi-lang-java=&#34;`ignore`&#34;&gt;`ignore`&lt;/span&gt;).
      * 
      */
     public Optional<String> discard() {
@@ -161,25 +161,25 @@ public final class VirtualMachineDisk {
     /**
      * @return The file ID for a disk image when importing a disk into VM. The ID format is
      * `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`. Can be also taken from
-     * `proxmoxve.Download.File` resource. *Deprecated*, use `import_from` instead.
+     * &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-go=&#34;`Download.File`&#34; pulumi-lang-python=&#34;`Download.File`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-java=&#34;`proxmoxve.Download.File`&#34;&gt;`proxmoxve.Download.File`&lt;/span&gt; resource. *Deprecated*, use &lt;span pulumi-lang-nodejs=&#34;`importFrom`&#34; pulumi-lang-dotnet=&#34;`ImportFrom`&#34; pulumi-lang-go=&#34;`importFrom`&#34; pulumi-lang-python=&#34;`import_from`&#34; pulumi-lang-yaml=&#34;`importFrom`&#34; pulumi-lang-java=&#34;`importFrom`&#34;&gt;`import_from`&lt;/span&gt; instead.
      * 
      */
     public Optional<String> fileId() {
         return Optional.ofNullable(this.fileId);
     }
     /**
-     * @return The file ID for a disk image to import into VM. The image must be of `import` content type.
+     * @return The file ID for a disk image to import into VM. The image must be of &lt;span pulumi-lang-nodejs=&#34;`import`&#34; pulumi-lang-dotnet=&#34;`Import`&#34; pulumi-lang-go=&#34;`import`&#34; pulumi-lang-python=&#34;`import`&#34; pulumi-lang-yaml=&#34;`import`&#34; pulumi-lang-java=&#34;`import`&#34;&gt;`import`&lt;/span&gt; content type.
      * The ID format is `&lt;datastore_id&gt;:import/&lt;file_name&gt;`, for example `local:import/centos8.qcow2`. Can be also taken from
-     * `proxmoxve.Download.File` resource.
+     * &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-go=&#34;`Download.File`&#34; pulumi-lang-python=&#34;`Download.File`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-java=&#34;`proxmoxve.Download.File`&#34;&gt;`proxmoxve.Download.File`&lt;/span&gt; resource.
      * 
      */
     public Optional<String> importFrom() {
         return Optional.ofNullable(this.importFrom);
     }
     /**
-     * @return The disk interface for Proxmox, currently `scsi`,
-     * `sata` and `virtio` interfaces are supported. Append the disk index at
-     * the end, for example, `virtio0` for the first virtio disk, `virtio1` for
+     * @return The disk interface for Proxmox, currently &lt;span pulumi-lang-nodejs=&#34;`scsi`&#34; pulumi-lang-dotnet=&#34;`Scsi`&#34; pulumi-lang-go=&#34;`scsi`&#34; pulumi-lang-python=&#34;`scsi`&#34; pulumi-lang-yaml=&#34;`scsi`&#34; pulumi-lang-java=&#34;`scsi`&#34;&gt;`scsi`&lt;/span&gt;,
+     * &lt;span pulumi-lang-nodejs=&#34;`sata`&#34; pulumi-lang-dotnet=&#34;`Sata`&#34; pulumi-lang-go=&#34;`sata`&#34; pulumi-lang-python=&#34;`sata`&#34; pulumi-lang-yaml=&#34;`sata`&#34; pulumi-lang-java=&#34;`sata`&#34;&gt;`sata`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`virtio`&#34; pulumi-lang-dotnet=&#34;`Virtio`&#34; pulumi-lang-go=&#34;`virtio`&#34; pulumi-lang-python=&#34;`virtio`&#34; pulumi-lang-yaml=&#34;`virtio`&#34; pulumi-lang-java=&#34;`virtio`&#34;&gt;`virtio`&lt;/span&gt; interfaces are supported. Append the disk index at
+     * the end, for example, &lt;span pulumi-lang-nodejs=&#34;`virtio0`&#34; pulumi-lang-dotnet=&#34;`Virtio0`&#34; pulumi-lang-go=&#34;`virtio0`&#34; pulumi-lang-python=&#34;`virtio0`&#34; pulumi-lang-yaml=&#34;`virtio0`&#34; pulumi-lang-java=&#34;`virtio0`&#34;&gt;`virtio0`&lt;/span&gt; for the first virtio disk, &lt;span pulumi-lang-nodejs=&#34;`virtio1`&#34; pulumi-lang-dotnet=&#34;`Virtio1`&#34; pulumi-lang-go=&#34;`virtio1`&#34; pulumi-lang-python=&#34;`virtio1`&#34; pulumi-lang-yaml=&#34;`virtio1`&#34; pulumi-lang-java=&#34;`virtio1`&#34;&gt;`virtio1`&lt;/span&gt; for
      * the second, etc.
      * 
      */
@@ -188,7 +188,7 @@ public final class VirtualMachineDisk {
     }
     /**
      * @return Whether to use iothreads for this disk (defaults
-     * to `false`).
+     * to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Optional<Boolean> iothread() {
@@ -197,7 +197,7 @@ public final class VirtualMachineDisk {
     /**
      * @return The in-datastore path to the disk image.
      * ***Experimental.***Use to attach another VM&#39;s disks,
-     * or (as root only) host&#39;s filesystem paths (`datastore_id` empty string).
+     * or (as root only) host&#39;s filesystem paths (&lt;span pulumi-lang-nodejs=&#34;`datastoreId`&#34; pulumi-lang-dotnet=&#34;`DatastoreId`&#34; pulumi-lang-go=&#34;`datastoreId`&#34; pulumi-lang-python=&#34;`datastore_id`&#34; pulumi-lang-yaml=&#34;`datastoreId`&#34; pulumi-lang-java=&#34;`datastoreId`&#34;&gt;`datastore_id`&lt;/span&gt; empty string).
      * See &#34;*Example: Attached disks*&#34;.
      * 
      */
@@ -205,7 +205,7 @@ public final class VirtualMachineDisk {
         return Optional.ofNullable(this.pathInDatastore);
     }
     /**
-     * @return Whether the drive should be considered for replication jobs (defaults to `true`).
+     * @return Whether the drive should be considered for replication jobs (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Optional<Boolean> replicate() {
@@ -219,7 +219,7 @@ public final class VirtualMachineDisk {
         return Optional.ofNullable(this.serial);
     }
     /**
-     * @return The disk size in gigabytes (defaults to `8`).
+     * @return The disk size in gigabytes (defaults to &lt;span pulumi-lang-nodejs=&#34;`8`&#34; pulumi-lang-dotnet=&#34;`8`&#34; pulumi-lang-go=&#34;`8`&#34; pulumi-lang-python=&#34;`8`&#34; pulumi-lang-yaml=&#34;`8`&#34; pulumi-lang-java=&#34;`8`&#34;&gt;`8`&lt;/span&gt;).
      * 
      */
     public Optional<Integer> size() {
@@ -234,7 +234,7 @@ public final class VirtualMachineDisk {
     }
     /**
      * @return Whether to use an SSD emulation option for this disk (
-     * defaults to `false`). Note that SSD emulation is not supported on VirtIO
+     * defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). Note that SSD emulation is not supported on VirtIO
      * Block drives.
      * 
      */

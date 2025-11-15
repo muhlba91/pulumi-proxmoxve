@@ -47,7 +47,7 @@ public final class GetHAResourceResult {
      */
     private String state;
     /**
-     * @return The type of High Availability resource (`vm` or `ct`).
+     * @return The type of High Availability resource (&lt;span pulumi-lang-nodejs=&#34;`vm`&#34; pulumi-lang-dotnet=&#34;`Vm`&#34; pulumi-lang-go=&#34;`vm`&#34; pulumi-lang-python=&#34;`vm`&#34; pulumi-lang-yaml=&#34;`vm`&#34; pulumi-lang-java=&#34;`vm`&#34;&gt;`vm`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`ct`&#34; pulumi-lang-dotnet=&#34;`Ct`&#34; pulumi-lang-go=&#34;`ct`&#34; pulumi-lang-python=&#34;`ct`&#34; pulumi-lang-yaml=&#34;`ct`&#34; pulumi-lang-java=&#34;`ct`&#34;&gt;`ct`&lt;/span&gt;).
      * 
      */
     private String type;
@@ -103,7 +103,7 @@ public final class GetHAResourceResult {
         return this.state;
     }
     /**
-     * @return The type of High Availability resource (`vm` or `ct`).
+     * @return The type of High Availability resource (&lt;span pulumi-lang-nodejs=&#34;`vm`&#34; pulumi-lang-dotnet=&#34;`Vm`&#34; pulumi-lang-go=&#34;`vm`&#34; pulumi-lang-python=&#34;`vm`&#34; pulumi-lang-yaml=&#34;`vm`&#34; pulumi-lang-java=&#34;`vm`&#34;&gt;`vm`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`ct`&#34; pulumi-lang-dotnet=&#34;`Ct`&#34; pulumi-lang-go=&#34;`ct`&#34; pulumi-lang-python=&#34;`ct`&#34; pulumi-lang-yaml=&#34;`ct`&#34; pulumi-lang-java=&#34;`ct`&#34;&gt;`ct`&lt;/span&gt;).
      * 
      */
     public String type() {

@@ -35,36 +35,6 @@ class Applier(pulumi.CustomResource):
         """
         **EXPERIMENTAL** Triggers Proxmox's SDN **Apply** (equivalent to `PUT /cluster/sdn`).Intended to be used with `replace_triggered_by` so it runs after SDN objects change.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        finalizer = proxmoxve.sdn.Applier("finalizer")
-        # SDN Zone (Simple) - First zone for applier demonstration
-        example_zone1 = proxmoxve.sdnzone.Simple("exampleZone1",
-            zone_id="zone1",
-            nodes=["pve"],
-            mtu=1500,
-            dns="1.1.1.1",
-            dns_zone="example.com",
-            ipam="pve",
-            reverse_dns="1.1.1.1",
-            opts = pulumi.ResourceOptions(depends_on=[finalizer]))
-        # SDN Zone (Simple) - Second zone for applier demonstration
-        example_zone2 = proxmoxve.sdnzone.Simple("exampleZone2",
-            zone_id="zone2",
-            nodes=["pve"],
-            mtu=1500,
-            opts = pulumi.ResourceOptions(depends_on=[finalizer]))
-        # SDN Applier - Applies SDN configuration changes
-        example_applier = proxmoxve.sdn.Applier("exampleApplier", opts = pulumi.ResourceOptions(depends_on=[
-                example_zone1,
-                example_zone2,
-            ]))
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -76,36 +46,6 @@ class Applier(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         **EXPERIMENTAL** Triggers Proxmox's SDN **Apply** (equivalent to `PUT /cluster/sdn`).Intended to be used with `replace_triggered_by` so it runs after SDN objects change.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        finalizer = proxmoxve.sdn.Applier("finalizer")
-        # SDN Zone (Simple) - First zone for applier demonstration
-        example_zone1 = proxmoxve.sdnzone.Simple("exampleZone1",
-            zone_id="zone1",
-            nodes=["pve"],
-            mtu=1500,
-            dns="1.1.1.1",
-            dns_zone="example.com",
-            ipam="pve",
-            reverse_dns="1.1.1.1",
-            opts = pulumi.ResourceOptions(depends_on=[finalizer]))
-        # SDN Zone (Simple) - Second zone for applier demonstration
-        example_zone2 = proxmoxve.sdnzone.Simple("exampleZone2",
-            zone_id="zone2",
-            nodes=["pve"],
-            mtu=1500,
-            opts = pulumi.ResourceOptions(depends_on=[finalizer]))
-        # SDN Applier - Applies SDN configuration changes
-        example_applier = proxmoxve.sdn.Applier("exampleApplier", opts = pulumi.ResourceOptions(depends_on=[
-                example_zone1,
-                example_zone2,
-            ]))
-        ```
 
         :param str resource_name: The name of the resource.
         :param ApplierArgs args: The arguments to use to populate this resource's properties.

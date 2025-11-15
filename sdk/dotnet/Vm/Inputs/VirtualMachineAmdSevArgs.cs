@@ -14,34 +14,34 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
     {
         /// <summary>
         /// Sets policy bit to allow Simultaneous Multi Threading (SMT)
-        /// (Ignored unless for SEV-SNP) (defaults to `true`).
+        /// (Ignored unless for SEV-SNP) (defaults to `True`).
         /// </summary>
         [Input("allowSmt")]
         public Input<bool>? AllowSmt { get; set; }
 
         /// <summary>
-        /// Add kernel hashes to guest firmware for measured linux kernel launch (defaults to `false`).
+        /// Add kernel hashes to guest firmware for measured linux kernel launch (defaults to `False`).
         /// </summary>
         [Input("kernelHashes")]
         public Input<bool>? KernelHashes { get; set; }
 
         /// <summary>
         /// Sets policy bit to disallow debugging of guest (defaults
-        /// to `false`).
+        /// to `False`).
         /// </summary>
         [Input("noDebug")]
         public Input<bool>? NoDebug { get; set; }
 
         /// <summary>
-        /// Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to `false`).
+        /// Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to `False`).
         /// 
-        /// The `amd_sev` setting is only allowed for a `root@pam` authenticated user.
+        /// The `AmdSev` setting is only allowed for a `root@pam` authenticated user.
         /// </summary>
         [Input("noKeySharing")]
         public Input<bool>? NoKeySharing { get; set; }
 
         /// <summary>
-        /// Enable standard SEV with `std` or enable experimental SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option (defaults to `std`).
+        /// Enable standard SEV with `Std` or enable experimental SEV-ES with the `Es` option or enable experimental SEV-SNP with the `Snp` option (defaults to `Std`).
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

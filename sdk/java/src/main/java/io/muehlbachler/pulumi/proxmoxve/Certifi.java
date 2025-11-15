@@ -23,6 +23,62 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.tls.PrivateKey;
+ * import com.pulumi.tls.PrivateKeyArgs;
+ * import com.pulumi.tls.SelfSignedCert;
+ * import com.pulumi.tls.SelfSignedCertArgs;
+ * import com.pulumi.tls.inputs.SelfSignedCertSubjectArgs;
+ * import io.muehlbachler.pulumi.proxmoxve.Certifi;
+ * import io.muehlbachler.pulumi.proxmoxve.CertifiArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var proxmoxVirtualEnvironmentCertificate = new PrivateKey("proxmoxVirtualEnvironmentCertificate", PrivateKeyArgs.builder()
+ *             .algorithm("RSA")
+ *             .rsaBits(2048)
+ *             .build());
+ * 
+ *         var proxmoxVirtualEnvironmentCertificateSelfSignedCert = new SelfSignedCert("proxmoxVirtualEnvironmentCertificateSelfSignedCert", SelfSignedCertArgs.builder()
+ *             .keyAlgorithm(proxmoxVirtualEnvironmentCertificate.algorithm())
+ *             .privateKeyPem(proxmoxVirtualEnvironmentCertificate.privateKeyPem())
+ *             .subject(SelfSignedCertSubjectArgs.builder()
+ *                 .commonName("example.com")
+ *                 .organization("Terraform Provider for Proxmox")
+ *                 .build())
+ *             .validityPeriodHours(8760)
+ *             .allowedUses(            
+ *                 "key_encipherment",
+ *                 "digital_signature",
+ *                 "server_auth")
+ *             .build());
+ * 
+ *         var example = new Certifi("example", CertifiArgs.builder()
+ *             .certificate(proxmoxVirtualEnvironmentCertificateSelfSignedCert.certPem())
+ *             .nodeName("first-node")
+ *             .privateKey(proxmoxVirtualEnvironmentCertificate.privateKeyPem())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

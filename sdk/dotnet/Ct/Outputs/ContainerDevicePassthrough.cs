@@ -14,7 +14,7 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
     public sealed class ContainerDevicePassthrough
     {
         /// <summary>
-        /// Deny the container to write to the device (defaults to `false`).
+        /// Deny the container to write to the device (defaults to `False`).
         /// </summary>
         public readonly bool? DenyWrite;
         /// <summary>

@@ -162,7 +162,7 @@ namespace Pulumi.ProxmoxVE.Metrics
         /// </summary>
         public readonly string Server;
         /// <summary>
-        /// Plugin type. Either `graphite` or `influxdb`.
+        /// Plugin type. Either `Graphite` or `Influxdb`.
         /// </summary>
         public readonly string Type;
 

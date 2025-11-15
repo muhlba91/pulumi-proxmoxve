@@ -14,7 +14,7 @@ namespace Pulumi.ProxmoxVE.Outputs
     public sealed class GetContainersFilterResult
     {
         /// <summary>
-        /// Name of the container attribute to filter on. One of [`name`, `template`, `status`, `node_name`]
+        /// Name of the container attribute to filter on. One of [`Name`, `Template`, `Status`, `NodeName`]
         /// </summary>
         public readonly string Name;
         /// <summary>

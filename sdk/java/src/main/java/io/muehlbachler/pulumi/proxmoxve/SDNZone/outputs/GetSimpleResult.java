@@ -14,6 +14,11 @@ import java.util.Objects;
 @CustomType
 public final class GetSimpleResult {
     /**
+     * @return The type of the DHCP backend for this zone.
+     * 
+     */
+    private String dhcp;
+    /**
      * @return DNS API server address.
      * 
      */
@@ -60,6 +65,13 @@ public final class GetSimpleResult {
     private String state;
 
     private GetSimpleResult() {}
+    /**
+     * @return The type of the DHCP backend for this zone.
+     * 
+     */
+    public String dhcp() {
+        return this.dhcp;
+    }
     /**
      * @return DNS API server address.
      * 
@@ -133,6 +145,7 @@ public final class GetSimpleResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String dhcp;
         private String dns;
         private String dnsZone;
         private String id;
@@ -145,6 +158,7 @@ public final class GetSimpleResult {
         public Builder() {}
         public Builder(GetSimpleResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.dhcp = defaults.dhcp;
     	      this.dns = defaults.dns;
     	      this.dnsZone = defaults.dnsZone;
     	      this.id = defaults.id;
@@ -156,6 +170,14 @@ public final class GetSimpleResult {
     	      this.state = defaults.state;
         }
 
+        @CustomType.Setter
+        public Builder dhcp(String dhcp) {
+            if (dhcp == null) {
+              throw new MissingRequiredPropertyException("GetSimpleResult", "dhcp");
+            }
+            this.dhcp = dhcp;
+            return this;
+        }
         @CustomType.Setter
         public Builder dns(String dns) {
             if (dns == null) {
@@ -233,6 +255,7 @@ public final class GetSimpleResult {
         }
         public GetSimpleResult build() {
             final var _resultValue = new GetSimpleResult();
+            _resultValue.dhcp = dhcp;
             _resultValue.dns = dns;
             _resultValue.dnsZone = dnsZone;
             _resultValue.id = id;

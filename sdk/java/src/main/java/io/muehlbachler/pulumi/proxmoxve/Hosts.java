@@ -21,6 +21,42 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.Hosts;
+ * import io.muehlbachler.pulumi.proxmoxve.HostsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var firstNodeHostEntries = new Hosts("firstNodeHostEntries", HostsArgs.builder()
+ *             .nodeName("first-node")
+ *             .entries(List.of(Map.ofEntries(
+ *                 Map.entry("address", "127.0.0.1"),
+ *                 Map.entry("hostnames", List.of(                
+ *                     "localhost",
+ *                     "localhost.localdomain"))
+ *             )))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Important Notes
@@ -69,7 +105,7 @@ public class Hosts extends com.pulumi.resources.CustomResource {
         return this.digest;
     }
     /**
-     * The host entries (conversion of `addresses` and `hostnames` into
+     * The host entries (conversion of &lt;span pulumi-lang-nodejs=&#34;`addresses`&#34; pulumi-lang-dotnet=&#34;`Addresses`&#34; pulumi-lang-go=&#34;`addresses`&#34; pulumi-lang-python=&#34;`addresses`&#34; pulumi-lang-yaml=&#34;`addresses`&#34; pulumi-lang-java=&#34;`addresses`&#34;&gt;`addresses`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`hostnames`&#34; pulumi-lang-dotnet=&#34;`Hostnames`&#34; pulumi-lang-go=&#34;`hostnames`&#34; pulumi-lang-python=&#34;`hostnames`&#34; pulumi-lang-yaml=&#34;`hostnames`&#34; pulumi-lang-java=&#34;`hostnames`&#34;&gt;`hostnames`&lt;/span&gt; into
      * objects).
      * 
      */
@@ -77,7 +113,7 @@ public class Hosts extends com.pulumi.resources.CustomResource {
     private Output<List<HostsEntry>> entries;
 
     /**
-     * @return The host entries (conversion of `addresses` and `hostnames` into
+     * @return The host entries (conversion of &lt;span pulumi-lang-nodejs=&#34;`addresses`&#34; pulumi-lang-dotnet=&#34;`Addresses`&#34; pulumi-lang-go=&#34;`addresses`&#34; pulumi-lang-python=&#34;`addresses`&#34; pulumi-lang-yaml=&#34;`addresses`&#34; pulumi-lang-java=&#34;`addresses`&#34;&gt;`addresses`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`hostnames`&#34; pulumi-lang-dotnet=&#34;`Hostnames`&#34; pulumi-lang-go=&#34;`hostnames`&#34; pulumi-lang-python=&#34;`hostnames`&#34; pulumi-lang-yaml=&#34;`hostnames`&#34; pulumi-lang-java=&#34;`hostnames`&#34;&gt;`hostnames`&lt;/span&gt; into
      * objects).
      * 
      */

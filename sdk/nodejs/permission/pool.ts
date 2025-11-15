@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
- * const operationsPool = new proxmoxve.permission.Pool("operationsPool", {
+ * const operationsPool = new proxmoxve.permission.Pool("operations_pool", {
  *     comment: "Managed by Pulumi",
  *     poolId: "operations-pool",
  * });

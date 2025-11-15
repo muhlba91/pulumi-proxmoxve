@@ -14,17 +14,16 @@ import * as utilities from "../utilities";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
  * const example = new proxmoxve.sdnzone.Vxlan("example", {
- *     dns: "1.1.1.1",
- *     dnsZone: "example.com",
  *     zoneId: "vxlan1",
- *     ipam: "pve",
- *     mtu: 1450,
- *     nodes: ["pve"],
  *     peers: [
  *         "10.0.0.1",
  *         "10.0.0.2",
  *         "10.0.0.3",
  *     ],
+ *     mtu: 1450,
+ *     dns: "1.1.1.1",
+ *     dnsZone: "example.com",
+ *     ipam: "pve",
  *     reverseDns: "1.1.1.1",
  * });
  * ```
@@ -133,9 +132,6 @@ export class Vxlan extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as VxlanArgs | undefined;
-            if (args?.nodes === undefined && !opts.urn) {
-                throw new Error("Missing required property 'nodes'");
-            }
             if (args?.peers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'peers'");
             }
@@ -227,7 +223,7 @@ export interface VxlanArgs {
     /**
      * The Proxmox nodes which the zone and associated VNets should be deployed on
      */
-    nodes: pulumi.Input<pulumi.Input<string>[]>;
+    nodes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A list of IP addresses of each node in the VXLAN zone. This can be external nodes reachable at this IP address. All nodes in the cluster need to be mentioned here
      */

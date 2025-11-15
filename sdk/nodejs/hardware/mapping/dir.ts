@@ -17,6 +17,7 @@ import * as utilities from "../../utilities";
  *
  * const example = new proxmoxve.hardware.mapping.Dir("example", {
  *     comment: "This is a comment",
+ *     name: "example",
  *     maps: [{
  *         node: "pve",
  *         path: "/mnt/data",

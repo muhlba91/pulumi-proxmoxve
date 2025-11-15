@@ -39,7 +39,7 @@ namespace Pulumi.ProxmoxVE.Network.Outputs
         /// </summary>
         public readonly string? Dport;
         /// <summary>
-        /// Enable this rule. Defaults to `true`.
+        /// Enable this rule. Defaults to `True`.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
@@ -49,8 +49,8 @@ namespace Pulumi.ProxmoxVE.Network.Outputs
         /// </summary>
         public readonly string? Iface;
         /// <summary>
-        /// Log level for this rule (`emerg`, `alert`, `crit`,
-        /// `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+        /// Log level for this rule (`Emerg`, `Alert`, `Crit`,
+        /// `Err`, `Warning`, `Notice`, `Info`, `Debug`, `Nolog`).
         /// </summary>
         public readonly string? Log;
         /// <summary>
@@ -89,7 +89,7 @@ namespace Pulumi.ProxmoxVE.Network.Outputs
         /// </summary>
         public readonly string? Sport;
         /// <summary>
-        /// Rule type (`in`, `out`, `forward`).
+        /// Rule type (`In`, `Out`, `Forward`).
         /// </summary>
         public readonly string? Type;
 

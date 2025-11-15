@@ -14,7 +14,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     public sealed class VirtualMachine2Vga
     {
         /// <summary>
-        /// Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+        /// Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `Vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
         /// </summary>
         public readonly string? Clipboard;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly int? Memory;
         /// <summary>
-        /// The VGA type (defaults to `std`).
+        /// The VGA type (defaults to `Std`).
         /// </summary>
         public readonly string? Type;
 

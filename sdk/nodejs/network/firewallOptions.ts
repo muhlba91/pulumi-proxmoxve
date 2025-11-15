@@ -14,8 +14,8 @@ import * as utilities from "../utilities";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
  * const example = new proxmoxve.network.FirewallOptions("example", {
- *     nodeName: proxmox_virtual_environment_vm.example.node_name,
- *     vmId: proxmox_virtual_environment_vm.example.vm_id,
+ *     nodeName: exampleProxmoxVirtualEnvironmentVm.nodeName,
+ *     vmId: exampleProxmoxVirtualEnvironmentVm.vmId,
  *     dhcp: true,
  *     enabled: false,
  *     ipfilter: true,
@@ -27,8 +27,24 @@ import * as utilities from "../utilities";
  *     outputPolicy: "ACCEPT",
  *     radv: true,
  * }, {
- *     dependsOn: [proxmox_virtual_environment_vm.example],
+ *     dependsOn: [exampleProxmoxVirtualEnvironmentVm],
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * ### Container Firewall Options
+ *
+ * Use the import ID format: `container/<node_name>/<container_id>`
+ *
+ * Example uses node name `pve` and container ID `100`.
+ *
+ * **Example:**
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:Network/firewallOptions:FirewallOptions container_firewall_options container/pve/100
  * ```
  */
 export class FirewallOptions extends pulumi.CustomResource {

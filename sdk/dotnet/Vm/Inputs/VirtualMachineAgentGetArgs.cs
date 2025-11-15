@@ -14,7 +14,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
     {
         /// <summary>
         /// Whether to enable the QEMU agent (defaults
-        /// to `false`).
+        /// to `False`).
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -28,13 +28,13 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
 
         /// <summary>
         /// Whether to enable the FSTRIM feature in the QEMU agent
-        /// (defaults to `false`).
+        /// (defaults to `False`).
         /// </summary>
         [Input("trim")]
         public Input<bool>? Trim { get; set; }
 
         /// <summary>
-        /// The QEMU agent interface type (defaults to `virtio`).
+        /// The QEMU agent interface type (defaults to `Virtio`).
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

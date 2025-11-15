@@ -25,17 +25,19 @@ namespace Pulumi.ProxmoxVE.Network
     ///     // using VLAN tag
     ///     var vlan99 = new ProxmoxVE.Network.NetworkVlan("vlan99", new()
     ///     {
-    ///         Comment = "VLAN 99",
     ///         NodeName = "pve",
+    ///         Name = "eno0.99",
+    ///         Comment = "VLAN 99",
     ///     });
     /// 
     ///     // using custom network interface name
     ///     var vlan98 = new ProxmoxVE.Network.NetworkVlan("vlan98", new()
     ///     {
-    ///         Comment = "VLAN 98",
-    ///         Interface = "eno0",
     ///         NodeName = "pve",
+    ///         Name = "vlan_lab",
+    ///         Interface = "eno0",
     ///         Vlan = 98,
+    ///         Comment = "VLAN 98",
     ///     });
     /// 
     /// });
@@ -67,7 +69,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Output<string?> Address6 { get; private set; } = null!;
 
         /// <summary>
-        /// Automatically start interface on boot (defaults to `true`).
+        /// Automatically start interface on boot (defaults to `True`).
         /// </summary>
         [Output("autostart")]
         public Output<bool> Autostart { get; private set; } = null!;
@@ -91,7 +93,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Output<string?> Gateway6 { get; private set; } = null!;
 
         /// <summary>
-        /// The VLAN raw device. See also `name`.
+        /// The VLAN raw device. See also `Name`.
         /// </summary>
         [Output("interface")]
         public Output<string> Interface { get; private set; } = null!;
@@ -103,7 +105,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Output<int?> Mtu { get; private set; } = null!;
 
         /// <summary>
-        /// The interface name. Either add the VLAN tag number to an existing interface name, e.g. `ens18.21` (and do not set `interface` and `vlan`), or use custom name, e.g. `vlan_lab` (`interface` and `vlan` are then required).
+        /// The interface name. Either add the VLAN tag number to an existing interface name, e.g. `ens18.21` (and do not set `Interface` and `Vlan`), or use custom name, e.g. `VlanLab` (`Interface` and `Vlan` are then required).
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -115,7 +117,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Output<string> NodeName { get; private set; } = null!;
 
         /// <summary>
-        /// The VLAN tag. See also `name`.
+        /// The VLAN tag. See also `Name`.
         /// </summary>
         [Output("vlan")]
         public Output<int> Vlan { get; private set; } = null!;
@@ -180,7 +182,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Input<string>? Address6 { get; set; }
 
         /// <summary>
-        /// Automatically start interface on boot (defaults to `true`).
+        /// Automatically start interface on boot (defaults to `True`).
         /// </summary>
         [Input("autostart")]
         public Input<bool>? Autostart { get; set; }
@@ -204,7 +206,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Input<string>? Gateway6 { get; set; }
 
         /// <summary>
-        /// The VLAN raw device. See also `name`.
+        /// The VLAN raw device. See also `Name`.
         /// </summary>
         [Input("interface")]
         public Input<string>? Interface { get; set; }
@@ -216,7 +218,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Input<int>? Mtu { get; set; }
 
         /// <summary>
-        /// The interface name. Either add the VLAN tag number to an existing interface name, e.g. `ens18.21` (and do not set `interface` and `vlan`), or use custom name, e.g. `vlan_lab` (`interface` and `vlan` are then required).
+        /// The interface name. Either add the VLAN tag number to an existing interface name, e.g. `ens18.21` (and do not set `Interface` and `Vlan`), or use custom name, e.g. `VlanLab` (`Interface` and `Vlan` are then required).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -228,7 +230,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Input<string> NodeName { get; set; } = null!;
 
         /// <summary>
-        /// The VLAN tag. See also `name`.
+        /// The VLAN tag. See also `Name`.
         /// </summary>
         [Input("vlan")]
         public Input<int>? Vlan { get; set; }
@@ -254,7 +256,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Input<string>? Address6 { get; set; }
 
         /// <summary>
-        /// Automatically start interface on boot (defaults to `true`).
+        /// Automatically start interface on boot (defaults to `True`).
         /// </summary>
         [Input("autostart")]
         public Input<bool>? Autostart { get; set; }
@@ -278,7 +280,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Input<string>? Gateway6 { get; set; }
 
         /// <summary>
-        /// The VLAN raw device. See also `name`.
+        /// The VLAN raw device. See also `Name`.
         /// </summary>
         [Input("interface")]
         public Input<string>? Interface { get; set; }
@@ -290,7 +292,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Input<int>? Mtu { get; set; }
 
         /// <summary>
-        /// The interface name. Either add the VLAN tag number to an existing interface name, e.g. `ens18.21` (and do not set `interface` and `vlan`), or use custom name, e.g. `vlan_lab` (`interface` and `vlan` are then required).
+        /// The interface name. Either add the VLAN tag number to an existing interface name, e.g. `ens18.21` (and do not set `Interface` and `Vlan`), or use custom name, e.g. `VlanLab` (`Interface` and `Vlan` are then required).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -302,7 +304,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Input<string>? NodeName { get; set; }
 
         /// <summary>
-        /// The VLAN tag. See also `name`.
+        /// The VLAN tag. See also `Name`.
         /// </summary>
         [Input("vlan")]
         public Input<int>? Vlan { get; set; }

@@ -28,18 +28,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleRepository, err := apt.NewRepository(ctx, "exampleRepository", &apt.RepositoryArgs{
+//			example, err := apt.NewRepository(ctx, "example", &apt.RepositoryArgs{
 //				Handle: pulumi.String("no-subscription"),
 //				Node:   pulumi.String("pve"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = apt.NewRepository(ctx, "exampleApt/repositoryRepository", &apt.RepositoryArgs{
+//			_, err = apt.NewRepository(ctx, "example", &apt.RepositoryArgs{
 //				Enabled:  pulumi.Bool(true),
-//				FilePath: exampleRepository.FilePath,
-//				Index:    exampleRepository.Index,
-//				Node:     exampleRepository.Node,
+//				FilePath: example.FilePath,
+//				Index:    example.Index,
+//				Node:     example.Node,
 //			})
 //			if err != nil {
 //				return err

@@ -30,6 +30,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := hardware.NewUsb(ctx, "example", &hardware.UsbArgs{
 //				Comment: pulumi.String("This is a comment"),
+//				Name:    pulumi.String("example"),
 //				Maps: mapping.UsbMapTypeArray{
 //					&mapping.UsbMapTypeArgs{
 //						Comment: pulumi.String("This is a device specific comment"),

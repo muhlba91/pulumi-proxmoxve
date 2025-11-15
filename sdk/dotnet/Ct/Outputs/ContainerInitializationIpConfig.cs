@@ -18,7 +18,7 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
         /// </summary>
         public readonly Outputs.ContainerInitializationIpConfigIpv4? Ipv4;
         /// <summary>
-        /// The IPv4 configuration.
+        /// The IPv6 configuration.
         /// </summary>
         public readonly Outputs.ContainerInitializationIpConfigIpv6? Ipv6;
 

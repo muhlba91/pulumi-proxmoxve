@@ -23,7 +23,7 @@ public final class GetDatastoresFilters {
      */
     private @Nullable String id;
     /**
-     * @return If `target` is different to `node_name`, then only lists shared stores which content is accessible on this node and the specified `target` node.
+     * @return If &lt;span pulumi-lang-nodejs=&#34;`target`&#34; pulumi-lang-dotnet=&#34;`Target`&#34; pulumi-lang-go=&#34;`target`&#34; pulumi-lang-python=&#34;`target`&#34; pulumi-lang-yaml=&#34;`target`&#34; pulumi-lang-java=&#34;`target`&#34;&gt;`target`&lt;/span&gt; is different to &lt;span pulumi-lang-nodejs=&#34;`nodeName`&#34; pulumi-lang-dotnet=&#34;`NodeName`&#34; pulumi-lang-go=&#34;`nodeName`&#34; pulumi-lang-python=&#34;`node_name`&#34; pulumi-lang-yaml=&#34;`nodeName`&#34; pulumi-lang-java=&#34;`nodeName`&#34;&gt;`node_name`&lt;/span&gt;, then only lists shared stores which content is accessible on this node and the specified &lt;span pulumi-lang-nodejs=&#34;`target`&#34; pulumi-lang-dotnet=&#34;`Target`&#34; pulumi-lang-go=&#34;`target`&#34; pulumi-lang-python=&#34;`target`&#34; pulumi-lang-yaml=&#34;`target`&#34; pulumi-lang-java=&#34;`target`&#34;&gt;`target`&lt;/span&gt; node.
      * 
      */
     private @Nullable String target;
@@ -44,7 +44,7 @@ public final class GetDatastoresFilters {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return If `target` is different to `node_name`, then only lists shared stores which content is accessible on this node and the specified `target` node.
+     * @return If &lt;span pulumi-lang-nodejs=&#34;`target`&#34; pulumi-lang-dotnet=&#34;`Target`&#34; pulumi-lang-go=&#34;`target`&#34; pulumi-lang-python=&#34;`target`&#34; pulumi-lang-yaml=&#34;`target`&#34; pulumi-lang-java=&#34;`target`&#34;&gt;`target`&lt;/span&gt; is different to &lt;span pulumi-lang-nodejs=&#34;`nodeName`&#34; pulumi-lang-dotnet=&#34;`NodeName`&#34; pulumi-lang-go=&#34;`nodeName`&#34; pulumi-lang-python=&#34;`node_name`&#34; pulumi-lang-yaml=&#34;`nodeName`&#34; pulumi-lang-java=&#34;`nodeName`&#34;&gt;`node_name`&lt;/span&gt;, then only lists shared stores which content is accessible on this node and the specified &lt;span pulumi-lang-nodejs=&#34;`target`&#34; pulumi-lang-dotnet=&#34;`Target`&#34; pulumi-lang-go=&#34;`target`&#34; pulumi-lang-python=&#34;`target`&#34; pulumi-lang-yaml=&#34;`target`&#34; pulumi-lang-java=&#34;`target`&#34;&gt;`target`&lt;/span&gt; node.
      * 
      */
     public Optional<String> target() {

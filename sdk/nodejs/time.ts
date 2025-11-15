@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
- * const firstNodeTime = new proxmoxve.Time("firstNodeTime", {
+ * const firstNodeTime = new proxmoxve.Time("first_node_time", {
  *     nodeName: "first-node",
  *     timeZone: "UTC",
  * });

@@ -34,14 +34,14 @@ public final class VirtualMachineEfiDiskArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The file format (defaults to `raw`).
+     * The file format (defaults to &lt;span pulumi-lang-nodejs=&#34;`raw`&#34; pulumi-lang-dotnet=&#34;`Raw`&#34; pulumi-lang-go=&#34;`raw`&#34; pulumi-lang-python=&#34;`raw`&#34; pulumi-lang-yaml=&#34;`raw`&#34; pulumi-lang-java=&#34;`raw`&#34;&gt;`raw`&lt;/span&gt;).
      * 
      */
     @Import(name="fileFormat")
     private @Nullable Output<String> fileFormat;
 
     /**
-     * @return The file format (defaults to `raw`).
+     * @return The file format (defaults to &lt;span pulumi-lang-nodejs=&#34;`raw`&#34; pulumi-lang-dotnet=&#34;`Raw`&#34; pulumi-lang-go=&#34;`raw`&#34; pulumi-lang-python=&#34;`raw`&#34; pulumi-lang-yaml=&#34;`raw`&#34; pulumi-lang-java=&#34;`raw`&#34;&gt;`raw`&lt;/span&gt;).
      * 
      */
     public Optional<Output<String>> fileFormat() {
@@ -51,8 +51,8 @@ public final class VirtualMachineEfiDiskArgs extends com.pulumi.resources.Resour
     /**
      * Use am EFI vars template with
      * distribution-specific and Microsoft Standard keys enrolled, if used with
-     * EFI type=`4m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
-     * to `false`).
+     * EFI type=&lt;span pulumi-lang-nodejs=&#34;`4m`&#34; pulumi-lang-dotnet=&#34;`4m`&#34; pulumi-lang-go=&#34;`4m`&#34; pulumi-lang-python=&#34;`4m`&#34; pulumi-lang-yaml=&#34;`4m`&#34; pulumi-lang-java=&#34;`4m`&#34;&gt;`4m`&lt;/span&gt;. Ignored for VMs with cpu.architecture=&lt;span pulumi-lang-nodejs=&#34;`aarch64`&#34; pulumi-lang-dotnet=&#34;`Aarch64`&#34; pulumi-lang-go=&#34;`aarch64`&#34; pulumi-lang-python=&#34;`aarch64`&#34; pulumi-lang-yaml=&#34;`aarch64`&#34; pulumi-lang-java=&#34;`aarch64`&#34;&gt;`aarch64`&lt;/span&gt; (defaults
+     * to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Import(name="preEnrolledKeys")
@@ -61,8 +61,8 @@ public final class VirtualMachineEfiDiskArgs extends com.pulumi.resources.Resour
     /**
      * @return Use am EFI vars template with
      * distribution-specific and Microsoft Standard keys enrolled, if used with
-     * EFI type=`4m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
-     * to `false`).
+     * EFI type=&lt;span pulumi-lang-nodejs=&#34;`4m`&#34; pulumi-lang-dotnet=&#34;`4m`&#34; pulumi-lang-go=&#34;`4m`&#34; pulumi-lang-python=&#34;`4m`&#34; pulumi-lang-yaml=&#34;`4m`&#34; pulumi-lang-java=&#34;`4m`&#34;&gt;`4m`&lt;/span&gt;. Ignored for VMs with cpu.architecture=&lt;span pulumi-lang-nodejs=&#34;`aarch64`&#34; pulumi-lang-dotnet=&#34;`Aarch64`&#34; pulumi-lang-go=&#34;`aarch64`&#34; pulumi-lang-python=&#34;`aarch64`&#34; pulumi-lang-yaml=&#34;`aarch64`&#34; pulumi-lang-java=&#34;`aarch64`&#34;&gt;`aarch64`&lt;/span&gt; (defaults
+     * to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> preEnrolledKeys() {
@@ -70,20 +70,20 @@ public final class VirtualMachineEfiDiskArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Size and type of the OVMF EFI disk. `4m` is newer and
+     * Size and type of the OVMF EFI disk. &lt;span pulumi-lang-nodejs=&#34;`4m`&#34; pulumi-lang-dotnet=&#34;`4m`&#34; pulumi-lang-go=&#34;`4m`&#34; pulumi-lang-python=&#34;`4m`&#34; pulumi-lang-yaml=&#34;`4m`&#34; pulumi-lang-java=&#34;`4m`&#34;&gt;`4m`&lt;/span&gt; is newer and
      * recommended, and required for Secure Boot. For backwards compatibility
-     * use `2m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
-     * to `2m`).
+     * use &lt;span pulumi-lang-nodejs=&#34;`2m`&#34; pulumi-lang-dotnet=&#34;`2m`&#34; pulumi-lang-go=&#34;`2m`&#34; pulumi-lang-python=&#34;`2m`&#34; pulumi-lang-yaml=&#34;`2m`&#34; pulumi-lang-java=&#34;`2m`&#34;&gt;`2m`&lt;/span&gt;. Ignored for VMs with cpu.architecture=&lt;span pulumi-lang-nodejs=&#34;`aarch64`&#34; pulumi-lang-dotnet=&#34;`Aarch64`&#34; pulumi-lang-go=&#34;`aarch64`&#34; pulumi-lang-python=&#34;`aarch64`&#34; pulumi-lang-yaml=&#34;`aarch64`&#34; pulumi-lang-java=&#34;`aarch64`&#34;&gt;`aarch64`&lt;/span&gt; (defaults
+     * to &lt;span pulumi-lang-nodejs=&#34;`2m`&#34; pulumi-lang-dotnet=&#34;`2m`&#34; pulumi-lang-go=&#34;`2m`&#34; pulumi-lang-python=&#34;`2m`&#34; pulumi-lang-yaml=&#34;`2m`&#34; pulumi-lang-java=&#34;`2m`&#34;&gt;`2m`&lt;/span&gt;).
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Size and type of the OVMF EFI disk. `4m` is newer and
+     * @return Size and type of the OVMF EFI disk. &lt;span pulumi-lang-nodejs=&#34;`4m`&#34; pulumi-lang-dotnet=&#34;`4m`&#34; pulumi-lang-go=&#34;`4m`&#34; pulumi-lang-python=&#34;`4m`&#34; pulumi-lang-yaml=&#34;`4m`&#34; pulumi-lang-java=&#34;`4m`&#34;&gt;`4m`&lt;/span&gt; is newer and
      * recommended, and required for Secure Boot. For backwards compatibility
-     * use `2m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
-     * to `2m`).
+     * use &lt;span pulumi-lang-nodejs=&#34;`2m`&#34; pulumi-lang-dotnet=&#34;`2m`&#34; pulumi-lang-go=&#34;`2m`&#34; pulumi-lang-python=&#34;`2m`&#34; pulumi-lang-yaml=&#34;`2m`&#34; pulumi-lang-java=&#34;`2m`&#34;&gt;`2m`&lt;/span&gt;. Ignored for VMs with cpu.architecture=&lt;span pulumi-lang-nodejs=&#34;`aarch64`&#34; pulumi-lang-dotnet=&#34;`Aarch64`&#34; pulumi-lang-go=&#34;`aarch64`&#34; pulumi-lang-python=&#34;`aarch64`&#34; pulumi-lang-yaml=&#34;`aarch64`&#34; pulumi-lang-java=&#34;`aarch64`&#34;&gt;`aarch64`&lt;/span&gt; (defaults
+     * to &lt;span pulumi-lang-nodejs=&#34;`2m`&#34; pulumi-lang-dotnet=&#34;`2m`&#34; pulumi-lang-go=&#34;`2m`&#34; pulumi-lang-python=&#34;`2m`&#34; pulumi-lang-yaml=&#34;`2m`&#34; pulumi-lang-java=&#34;`2m`&#34;&gt;`2m`&lt;/span&gt;).
      * 
      */
     public Optional<Output<String>> type() {
@@ -141,7 +141,7 @@ public final class VirtualMachineEfiDiskArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param fileFormat The file format (defaults to `raw`).
+         * @param fileFormat The file format (defaults to &lt;span pulumi-lang-nodejs=&#34;`raw`&#34; pulumi-lang-dotnet=&#34;`Raw`&#34; pulumi-lang-go=&#34;`raw`&#34; pulumi-lang-python=&#34;`raw`&#34; pulumi-lang-yaml=&#34;`raw`&#34; pulumi-lang-java=&#34;`raw`&#34;&gt;`raw`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class VirtualMachineEfiDiskArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param fileFormat The file format (defaults to `raw`).
+         * @param fileFormat The file format (defaults to &lt;span pulumi-lang-nodejs=&#34;`raw`&#34; pulumi-lang-dotnet=&#34;`Raw`&#34; pulumi-lang-go=&#34;`raw`&#34; pulumi-lang-python=&#34;`raw`&#34; pulumi-lang-yaml=&#34;`raw`&#34; pulumi-lang-java=&#34;`raw`&#34;&gt;`raw`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -164,8 +164,8 @@ public final class VirtualMachineEfiDiskArgs extends com.pulumi.resources.Resour
         /**
          * @param preEnrolledKeys Use am EFI vars template with
          * distribution-specific and Microsoft Standard keys enrolled, if used with
-         * EFI type=`4m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
-         * to `false`).
+         * EFI type=&lt;span pulumi-lang-nodejs=&#34;`4m`&#34; pulumi-lang-dotnet=&#34;`4m`&#34; pulumi-lang-go=&#34;`4m`&#34; pulumi-lang-python=&#34;`4m`&#34; pulumi-lang-yaml=&#34;`4m`&#34; pulumi-lang-java=&#34;`4m`&#34;&gt;`4m`&lt;/span&gt;. Ignored for VMs with cpu.architecture=&lt;span pulumi-lang-nodejs=&#34;`aarch64`&#34; pulumi-lang-dotnet=&#34;`Aarch64`&#34; pulumi-lang-go=&#34;`aarch64`&#34; pulumi-lang-python=&#34;`aarch64`&#34; pulumi-lang-yaml=&#34;`aarch64`&#34; pulumi-lang-java=&#34;`aarch64`&#34;&gt;`aarch64`&lt;/span&gt; (defaults
+         * to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -178,8 +178,8 @@ public final class VirtualMachineEfiDiskArgs extends com.pulumi.resources.Resour
         /**
          * @param preEnrolledKeys Use am EFI vars template with
          * distribution-specific and Microsoft Standard keys enrolled, if used with
-         * EFI type=`4m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
-         * to `false`).
+         * EFI type=&lt;span pulumi-lang-nodejs=&#34;`4m`&#34; pulumi-lang-dotnet=&#34;`4m`&#34; pulumi-lang-go=&#34;`4m`&#34; pulumi-lang-python=&#34;`4m`&#34; pulumi-lang-yaml=&#34;`4m`&#34; pulumi-lang-java=&#34;`4m`&#34;&gt;`4m`&lt;/span&gt;. Ignored for VMs with cpu.architecture=&lt;span pulumi-lang-nodejs=&#34;`aarch64`&#34; pulumi-lang-dotnet=&#34;`Aarch64`&#34; pulumi-lang-go=&#34;`aarch64`&#34; pulumi-lang-python=&#34;`aarch64`&#34; pulumi-lang-yaml=&#34;`aarch64`&#34; pulumi-lang-java=&#34;`aarch64`&#34;&gt;`aarch64`&lt;/span&gt; (defaults
+         * to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -189,10 +189,10 @@ public final class VirtualMachineEfiDiskArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param type Size and type of the OVMF EFI disk. `4m` is newer and
+         * @param type Size and type of the OVMF EFI disk. &lt;span pulumi-lang-nodejs=&#34;`4m`&#34; pulumi-lang-dotnet=&#34;`4m`&#34; pulumi-lang-go=&#34;`4m`&#34; pulumi-lang-python=&#34;`4m`&#34; pulumi-lang-yaml=&#34;`4m`&#34; pulumi-lang-java=&#34;`4m`&#34;&gt;`4m`&lt;/span&gt; is newer and
          * recommended, and required for Secure Boot. For backwards compatibility
-         * use `2m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
-         * to `2m`).
+         * use &lt;span pulumi-lang-nodejs=&#34;`2m`&#34; pulumi-lang-dotnet=&#34;`2m`&#34; pulumi-lang-go=&#34;`2m`&#34; pulumi-lang-python=&#34;`2m`&#34; pulumi-lang-yaml=&#34;`2m`&#34; pulumi-lang-java=&#34;`2m`&#34;&gt;`2m`&lt;/span&gt;. Ignored for VMs with cpu.architecture=&lt;span pulumi-lang-nodejs=&#34;`aarch64`&#34; pulumi-lang-dotnet=&#34;`Aarch64`&#34; pulumi-lang-go=&#34;`aarch64`&#34; pulumi-lang-python=&#34;`aarch64`&#34; pulumi-lang-yaml=&#34;`aarch64`&#34; pulumi-lang-java=&#34;`aarch64`&#34;&gt;`aarch64`&lt;/span&gt; (defaults
+         * to &lt;span pulumi-lang-nodejs=&#34;`2m`&#34; pulumi-lang-dotnet=&#34;`2m`&#34; pulumi-lang-go=&#34;`2m`&#34; pulumi-lang-python=&#34;`2m`&#34; pulumi-lang-yaml=&#34;`2m`&#34; pulumi-lang-java=&#34;`2m`&#34;&gt;`2m`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -203,10 +203,10 @@ public final class VirtualMachineEfiDiskArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param type Size and type of the OVMF EFI disk. `4m` is newer and
+         * @param type Size and type of the OVMF EFI disk. &lt;span pulumi-lang-nodejs=&#34;`4m`&#34; pulumi-lang-dotnet=&#34;`4m`&#34; pulumi-lang-go=&#34;`4m`&#34; pulumi-lang-python=&#34;`4m`&#34; pulumi-lang-yaml=&#34;`4m`&#34; pulumi-lang-java=&#34;`4m`&#34;&gt;`4m`&lt;/span&gt; is newer and
          * recommended, and required for Secure Boot. For backwards compatibility
-         * use `2m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
-         * to `2m`).
+         * use &lt;span pulumi-lang-nodejs=&#34;`2m`&#34; pulumi-lang-dotnet=&#34;`2m`&#34; pulumi-lang-go=&#34;`2m`&#34; pulumi-lang-python=&#34;`2m`&#34; pulumi-lang-yaml=&#34;`2m`&#34; pulumi-lang-java=&#34;`2m`&#34;&gt;`2m`&lt;/span&gt;. Ignored for VMs with cpu.architecture=&lt;span pulumi-lang-nodejs=&#34;`aarch64`&#34; pulumi-lang-dotnet=&#34;`Aarch64`&#34; pulumi-lang-go=&#34;`aarch64`&#34; pulumi-lang-python=&#34;`aarch64`&#34; pulumi-lang-yaml=&#34;`aarch64`&#34; pulumi-lang-java=&#34;`aarch64`&#34;&gt;`aarch64`&lt;/span&gt; (defaults
+         * to &lt;span pulumi-lang-nodejs=&#34;`2m`&#34; pulumi-lang-dotnet=&#34;`2m`&#34; pulumi-lang-go=&#34;`2m`&#34; pulumi-lang-python=&#34;`2m`&#34; pulumi-lang-yaml=&#34;`2m`&#34; pulumi-lang-java=&#34;`2m`&#34;&gt;`2m`&lt;/span&gt;).
          * 
          * @return builder
          * 

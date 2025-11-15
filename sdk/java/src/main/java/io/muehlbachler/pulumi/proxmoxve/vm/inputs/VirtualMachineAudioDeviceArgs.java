@@ -38,14 +38,14 @@ public final class VirtualMachineAudioDeviceArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * The driver (defaults to `spice`).
+     * The driver (defaults to &lt;span pulumi-lang-nodejs=&#34;`spice`&#34; pulumi-lang-dotnet=&#34;`Spice`&#34; pulumi-lang-go=&#34;`spice`&#34; pulumi-lang-python=&#34;`spice`&#34; pulumi-lang-yaml=&#34;`spice`&#34; pulumi-lang-java=&#34;`spice`&#34;&gt;`spice`&lt;/span&gt;).
      * 
      */
     @Import(name="driver")
     private @Nullable Output<String> driver;
 
     /**
-     * @return The driver (defaults to `spice`).
+     * @return The driver (defaults to &lt;span pulumi-lang-nodejs=&#34;`spice`&#34; pulumi-lang-dotnet=&#34;`Spice`&#34; pulumi-lang-go=&#34;`spice`&#34; pulumi-lang-python=&#34;`spice`&#34; pulumi-lang-yaml=&#34;`spice`&#34; pulumi-lang-java=&#34;`spice`&#34;&gt;`spice`&lt;/span&gt;).
      * 
      */
     public Optional<Output<String>> driver() {
@@ -54,7 +54,7 @@ public final class VirtualMachineAudioDeviceArgs extends com.pulumi.resources.Re
 
     /**
      * Whether to enable the audio device (defaults
-     * to `true`).
+     * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     @Import(name="enabled")
@@ -62,7 +62,7 @@ public final class VirtualMachineAudioDeviceArgs extends com.pulumi.resources.Re
 
     /**
      * @return Whether to enable the audio device (defaults
-     * to `true`).
+     * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -123,7 +123,7 @@ public final class VirtualMachineAudioDeviceArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param driver The driver (defaults to `spice`).
+         * @param driver The driver (defaults to &lt;span pulumi-lang-nodejs=&#34;`spice`&#34; pulumi-lang-dotnet=&#34;`Spice`&#34; pulumi-lang-go=&#34;`spice`&#34; pulumi-lang-python=&#34;`spice`&#34; pulumi-lang-yaml=&#34;`spice`&#34; pulumi-lang-java=&#34;`spice`&#34;&gt;`spice`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class VirtualMachineAudioDeviceArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param driver The driver (defaults to `spice`).
+         * @param driver The driver (defaults to &lt;span pulumi-lang-nodejs=&#34;`spice`&#34; pulumi-lang-dotnet=&#34;`Spice`&#34; pulumi-lang-go=&#34;`spice`&#34; pulumi-lang-python=&#34;`spice`&#34; pulumi-lang-yaml=&#34;`spice`&#34; pulumi-lang-java=&#34;`spice`&#34;&gt;`spice`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class VirtualMachineAudioDeviceArgs extends com.pulumi.resources.Re
 
         /**
          * @param enabled Whether to enable the audio device (defaults
-         * to `true`).
+         * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class VirtualMachineAudioDeviceArgs extends com.pulumi.resources.Re
 
         /**
          * @param enabled Whether to enable the audio device (defaults
-         * to `true`).
+         * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 

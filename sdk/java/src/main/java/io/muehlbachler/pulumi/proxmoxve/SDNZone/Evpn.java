@@ -46,23 +46,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Evpn("example", EvpnArgs.builder()
- *             .advertiseSubnets(true)
+ *             .zoneId("evpn1")
+ *             .nodes("pve")
  *             .controller("evpn-controller1")
+ *             .vrfVxlan(4000)
+ *             .advertiseSubnets(true)
  *             .disableArpNdSuppression(false)
- *             .dns("1.1.1.1")
- *             .dnsZone("example.com")
  *             .exitNodes(            
  *                 "pve-exit1",
  *                 "pve-exit2")
  *             .exitNodesLocalRouting(true)
- *             .zoneId("evpn1")
- *             .ipam("pve")
- *             .mtu(1450)
- *             .nodes("pve")
  *             .primaryExitNode("pve-exit1")
- *             .reverseDns("1.1.1.1")
  *             .rtImport("65000:65000")
- *             .vrfVxlan(4000)
+ *             .mtu(1450)
+ *             .dns("1.1.1.1")
+ *             .dnsZone("example.com")
+ *             .ipam("pve")
+ *             .reverseDns("1.1.1.1")
  *             .build());
  * 
  *     }

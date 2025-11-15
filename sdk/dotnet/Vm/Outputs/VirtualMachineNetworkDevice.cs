@@ -14,19 +14,19 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     public sealed class VirtualMachineNetworkDevice
     {
         /// <summary>
-        /// The name of the network bridge (defaults to `vmbr0`).
+        /// The name of the network bridge (defaults to `Vmbr0`).
         /// </summary>
         public readonly string? Bridge;
         /// <summary>
-        /// Whether to disconnect the network device from the network (defaults to `false`).
+        /// Whether to disconnect the network device from the network (defaults to `False`).
         /// </summary>
         public readonly bool? Disconnected;
         /// <summary>
-        /// Whether to enable the network device (defaults to `true`).
+        /// Whether to enable the network device (defaults to `True`).
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// Whether this interface's firewall rules should be used (defaults to `false`).
+        /// Whether this interface's firewall rules should be used (defaults to `False`).
         /// </summary>
         public readonly bool? Firewall;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly string? MacAddress;
         /// <summary>
-        /// The network device model (defaults to `virtio`).
+        /// The network device model (defaults to `Virtio`).
         /// </summary>
         public readonly string? Model;
         /// <summary>

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// An IPSet allows us to group multiple IP addresses, IP subnets and aliases. Aliases can be
+// An IPSet allows us to group multiple IP addresses, IP subnets and aliases. IPSets can be
 // created on the cluster level, on VM / Container level.
 //
 // ## Example Usage
@@ -29,8 +29,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := network.NewFirewallIPSet(ctx, "ipset", &network.FirewallIPSetArgs{
-//				NodeName: pulumi.Any(proxmox_virtual_environment_vm.Example.Node_name),
-//				VmId:     pulumi.Any(proxmox_virtual_environment_vm.Example.Vm_id),
+//				NodeName: pulumi.Any(example.NodeName),
+//				VmId:     pulumi.Any(example.VmId),
+//				Name:     pulumi.String("local_network"),
 //				Comment:  pulumi.String("Managed by Pulumi"),
 //				Cidrs: network.FirewallIPSetCidrArray{
 //					&network.FirewallIPSetCidrArgs{
@@ -48,7 +49,7 @@ import (
 //					},
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				proxmox_virtual_environment_vm.Example,
+//				example,
 //			}))
 //			if err != nil {
 //				return err
@@ -57,6 +58,22 @@ import (
 //		})
 //	}
 //
+// ```
+//
+// ## Import
+//
+// ### Container IPSet
+//
+// Use the import ID format: `container/<node_name>/<container_id>/<ipset_name>`
+//
+// Example uses node name `pve` and container ID `100` and ipset name `local_network`.
+//
+// **Example:**
+//
+// bash
+//
+// ```sh
+// $ pulumi import proxmoxve:Network/firewallIPSet:FirewallIPSet container_ipset container/pve/100/local_network
 // ```
 type FirewallIPSet struct {
 	pulumi.CustomResourceState

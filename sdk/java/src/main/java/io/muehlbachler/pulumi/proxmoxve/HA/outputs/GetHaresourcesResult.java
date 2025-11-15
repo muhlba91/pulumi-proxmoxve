@@ -24,7 +24,7 @@ public final class GetHAResourcesResult {
      */
     private List<String> resourceIds;
     /**
-     * @return The type of High Availability resources to fetch (`vm` or `ct`). All resources will be fetched if this option is unset.
+     * @return The type of High Availability resources to fetch (&lt;span pulumi-lang-nodejs=&#34;`vm`&#34; pulumi-lang-dotnet=&#34;`Vm`&#34; pulumi-lang-go=&#34;`vm`&#34; pulumi-lang-python=&#34;`vm`&#34; pulumi-lang-yaml=&#34;`vm`&#34; pulumi-lang-java=&#34;`vm`&#34;&gt;`vm`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`ct`&#34; pulumi-lang-dotnet=&#34;`Ct`&#34; pulumi-lang-go=&#34;`ct`&#34; pulumi-lang-python=&#34;`ct`&#34; pulumi-lang-yaml=&#34;`ct`&#34; pulumi-lang-java=&#34;`ct`&#34;&gt;`ct`&lt;/span&gt;). All resources will be fetched if this option is unset.
      * 
      */
     private @Nullable String type;
@@ -45,7 +45,7 @@ public final class GetHAResourcesResult {
         return this.resourceIds;
     }
     /**
-     * @return The type of High Availability resources to fetch (`vm` or `ct`). All resources will be fetched if this option is unset.
+     * @return The type of High Availability resources to fetch (&lt;span pulumi-lang-nodejs=&#34;`vm`&#34; pulumi-lang-dotnet=&#34;`Vm`&#34; pulumi-lang-go=&#34;`vm`&#34; pulumi-lang-python=&#34;`vm`&#34; pulumi-lang-yaml=&#34;`vm`&#34; pulumi-lang-java=&#34;`vm`&#34;&gt;`vm`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`ct`&#34; pulumi-lang-dotnet=&#34;`Ct`&#34; pulumi-lang-go=&#34;`ct`&#34; pulumi-lang-python=&#34;`ct`&#34; pulumi-lang-yaml=&#34;`ct`&#34; pulumi-lang-java=&#34;`ct`&#34;&gt;`ct`&lt;/span&gt;). All resources will be fetched if this option is unset.
      * 
      */
     public Optional<String> type() {

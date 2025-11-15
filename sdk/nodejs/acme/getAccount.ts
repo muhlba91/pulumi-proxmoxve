@@ -15,10 +15,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
+ * // This will fetch all ACME accounts...
  * const all = proxmoxve.Acme.getAccounts({});
- * const example = all.then(all => .map(([__key, __value]) => (proxmoxve.Acme.getAccount({
+ * // ...which we will go through in order to fetch the whole data on each account.
+ * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: proxmoxve.Acme.getAccount({
  *     name: __value,
- * }))));
+ * }) })));
  * export const dataProxmoxVirtualEnvironmentAcmeAccount = example;
  * ```
  */
@@ -78,10 +80,12 @@ export interface GetAccountResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
+ * // This will fetch all ACME accounts...
  * const all = proxmoxve.Acme.getAccounts({});
- * const example = all.then(all => .map(([__key, __value]) => (proxmoxve.Acme.getAccount({
+ * // ...which we will go through in order to fetch the whole data on each account.
+ * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: proxmoxve.Acme.getAccount({
  *     name: __value,
- * }))));
+ * }) })));
  * export const dataProxmoxVirtualEnvironmentAcmeAccount = example;
  * ```
  */

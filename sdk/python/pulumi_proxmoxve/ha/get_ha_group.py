@@ -120,8 +120,10 @@ def get_ha_group(group: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
+    # This will fetch the set of HA group identifiers...
     all = proxmoxve.HA.get_ha_groups()
-    example = [proxmoxve.HA.get_ha_group(group=__value) for __key, __value in all.group_ids]
+    # ...which we will go through in order to fetch the whole data on each group.
+    example = {__key: proxmoxve.HA.get_ha_group(group=__value) for __key, __value in all.group_ids}
     pulumi.export("proxmoxVirtualEnvironmentHagroupsFull", example)
     ```
 
@@ -151,8 +153,10 @@ def get_ha_group_output(group: Optional[pulumi.Input[_builtins.str]] = None,
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
+    # This will fetch the set of HA group identifiers...
     all = proxmoxve.HA.get_ha_groups()
-    example = [proxmoxve.HA.get_ha_group(group=__value) for __key, __value in all.group_ids]
+    # ...which we will go through in order to fetch the whole data on each group.
+    example = {__key: proxmoxve.HA.get_ha_group(group=__value) for __key, __value in all.group_ids}
     pulumi.export("proxmoxVirtualEnvironmentHagroupsFull", example)
     ```
 

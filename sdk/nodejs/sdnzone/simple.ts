@@ -14,12 +14,12 @@ import * as utilities from "../utilities";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
  * const example = new proxmoxve.sdnzone.Simple("example", {
+ *     zoneId: "simple1",
+ *     nodes: ["pve"],
+ *     mtu: 1500,
  *     dns: "1.1.1.1",
  *     dnsZone: "example.com",
- *     zoneId: "simple1",
  *     ipam: "pve",
- *     mtu: 1500,
- *     nodes: ["pve"],
  *     reverseDns: "1.1.1.1",
  * });
  * ```
@@ -128,9 +128,6 @@ export class Simple extends pulumi.CustomResource {
             resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as SimpleArgs | undefined;
-            if (args?.nodes === undefined && !opts.urn) {
-                throw new Error("Missing required property 'nodes'");
-            }
             if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
@@ -223,7 +220,7 @@ export interface SimpleArgs {
     /**
      * The Proxmox nodes which the zone and associated VNets should be deployed on
      */
-    nodes: pulumi.Input<pulumi.Input<string>[]>;
+    nodes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Reverse DNS API server address.
      */

@@ -47,15 +47,17 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var localNetwork = new FirewallAlias("localNetwork", FirewallAliasArgs.builder()
- *             .nodeName(proxmox_virtual_environment_vm.example().node_name())
- *             .vmId(proxmox_virtual_environment_vm.example().vm_id())
+ *             .nodeName(example.nodeName())
+ *             .vmId(example.vmId())
+ *             .name("local_network")
  *             .cidr("192.168.0.0/23")
  *             .comment("Managed by Pulumi")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(proxmox_virtual_environment_vm.example())
+ *                 .dependsOn(example)
  *                 .build());
  * 
  *         var ubuntuVm = new FirewallAlias("ubuntuVm", FirewallAliasArgs.builder()
+ *             .name("ubuntu")
  *             .cidr("192.168.0.1")
  *             .comment("Managed by Pulumi")
  *             .build());

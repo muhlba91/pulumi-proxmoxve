@@ -18,14 +18,14 @@ public final class GetContainersFilter extends com.pulumi.resources.InvokeArgs {
     public static final GetContainersFilter Empty = new GetContainersFilter();
 
     /**
-     * Name of the container attribute to filter on. One of [`name`, `template`, `status`, `node_name`]
+     * Name of the container attribute to filter on. One of [&lt;span pulumi-lang-nodejs=&#34;`name`&#34; pulumi-lang-dotnet=&#34;`Name`&#34; pulumi-lang-go=&#34;`name`&#34; pulumi-lang-python=&#34;`name`&#34; pulumi-lang-yaml=&#34;`name`&#34; pulumi-lang-java=&#34;`name`&#34;&gt;`name`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`template`&#34; pulumi-lang-dotnet=&#34;`Template`&#34; pulumi-lang-go=&#34;`template`&#34; pulumi-lang-python=&#34;`template`&#34; pulumi-lang-yaml=&#34;`template`&#34; pulumi-lang-java=&#34;`template`&#34;&gt;`template`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`status`&#34; pulumi-lang-dotnet=&#34;`Status`&#34; pulumi-lang-go=&#34;`status`&#34; pulumi-lang-python=&#34;`status`&#34; pulumi-lang-yaml=&#34;`status`&#34; pulumi-lang-java=&#34;`status`&#34;&gt;`status`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`nodeName`&#34; pulumi-lang-dotnet=&#34;`NodeName`&#34; pulumi-lang-go=&#34;`nodeName`&#34; pulumi-lang-python=&#34;`node_name`&#34; pulumi-lang-yaml=&#34;`nodeName`&#34; pulumi-lang-java=&#34;`nodeName`&#34;&gt;`node_name`&lt;/span&gt;]
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return Name of the container attribute to filter on. One of [`name`, `template`, `status`, `node_name`]
+     * @return Name of the container attribute to filter on. One of [&lt;span pulumi-lang-nodejs=&#34;`name`&#34; pulumi-lang-dotnet=&#34;`Name`&#34; pulumi-lang-go=&#34;`name`&#34; pulumi-lang-python=&#34;`name`&#34; pulumi-lang-yaml=&#34;`name`&#34; pulumi-lang-java=&#34;`name`&#34;&gt;`name`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`template`&#34; pulumi-lang-dotnet=&#34;`Template`&#34; pulumi-lang-go=&#34;`template`&#34; pulumi-lang-python=&#34;`template`&#34; pulumi-lang-yaml=&#34;`template`&#34; pulumi-lang-java=&#34;`template`&#34;&gt;`template`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`status`&#34; pulumi-lang-dotnet=&#34;`Status`&#34; pulumi-lang-go=&#34;`status`&#34; pulumi-lang-python=&#34;`status`&#34; pulumi-lang-yaml=&#34;`status`&#34; pulumi-lang-java=&#34;`status`&#34;&gt;`status`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`nodeName`&#34; pulumi-lang-dotnet=&#34;`NodeName`&#34; pulumi-lang-go=&#34;`nodeName`&#34; pulumi-lang-python=&#34;`node_name`&#34; pulumi-lang-yaml=&#34;`nodeName`&#34; pulumi-lang-java=&#34;`nodeName`&#34;&gt;`node_name`&lt;/span&gt;]
      * 
      */
     public String name() {
@@ -89,7 +89,7 @@ public final class GetContainersFilter extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name Name of the container attribute to filter on. One of [`name`, `template`, `status`, `node_name`]
+         * @param name Name of the container attribute to filter on. One of [&lt;span pulumi-lang-nodejs=&#34;`name`&#34; pulumi-lang-dotnet=&#34;`Name`&#34; pulumi-lang-go=&#34;`name`&#34; pulumi-lang-python=&#34;`name`&#34; pulumi-lang-yaml=&#34;`name`&#34; pulumi-lang-java=&#34;`name`&#34;&gt;`name`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`template`&#34; pulumi-lang-dotnet=&#34;`Template`&#34; pulumi-lang-go=&#34;`template`&#34; pulumi-lang-python=&#34;`template`&#34; pulumi-lang-yaml=&#34;`template`&#34; pulumi-lang-java=&#34;`template`&#34;&gt;`template`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`status`&#34; pulumi-lang-dotnet=&#34;`Status`&#34; pulumi-lang-go=&#34;`status`&#34; pulumi-lang-python=&#34;`status`&#34; pulumi-lang-yaml=&#34;`status`&#34; pulumi-lang-java=&#34;`status`&#34;&gt;`status`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`nodeName`&#34; pulumi-lang-dotnet=&#34;`NodeName`&#34; pulumi-lang-go=&#34;`nodeName`&#34; pulumi-lang-python=&#34;`node_name`&#34; pulumi-lang-yaml=&#34;`nodeName`&#34; pulumi-lang-java=&#34;`nodeName`&#34;&gt;`node_name`&lt;/span&gt;]
          * 
          * @return builder
          * 

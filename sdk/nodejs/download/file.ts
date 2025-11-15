@@ -16,61 +16,61 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
- * const release20231228Debian12BookwormQcow2Img = new proxmoxve.download.File("release20231228Debian12BookwormQcow2Img", {
- *     checksum: "d2fbcf11fb28795842e91364d8c7b69f1870db09ff299eb94e4fbbfa510eb78d141e74c1f4bf6dfa0b7e33d0c3b66e6751886feadb4e9916f778bab1776bdf1b",
- *     checksumAlgorithm: "sha512",
+ * const release20231228Debian12BookwormQcow2Img = new proxmoxve.download.File("release_20231228_debian_12_bookworm_qcow2_img", {
  *     contentType: "iso",
  *     datastoreId: "local",
  *     fileName: "debian-12-generic-amd64-20231228-1609.img",
  *     nodeName: "pve",
  *     url: "https://cloud.debian.org/images/cloud/bookworm/20231228-1609/debian-12-generic-amd64-20231228-1609.qcow2",
- * });
- * const release20231228Debian12BookwormQcow2 = new proxmoxve.download.File("release20231228Debian12BookwormQcow2", {
  *     checksum: "d2fbcf11fb28795842e91364d8c7b69f1870db09ff299eb94e4fbbfa510eb78d141e74c1f4bf6dfa0b7e33d0c3b66e6751886feadb4e9916f778bab1776bdf1b",
  *     checksumAlgorithm: "sha512",
+ * });
+ * const release20231228Debian12BookwormQcow2 = new proxmoxve.download.File("release_20231228_debian_12_bookworm_qcow2", {
  *     contentType: "import",
  *     datastoreId: "local",
  *     fileName: "debian-12-generic-amd64-20231228-1609.qcow2",
  *     nodeName: "pve",
  *     url: "https://cloud.debian.org/images/cloud/bookworm/20231228-1609/debian-12-generic-amd64-20231228-1609.qcow2",
+ *     checksum: "d2fbcf11fb28795842e91364d8c7b69f1870db09ff299eb94e4fbbfa510eb78d141e74c1f4bf6dfa0b7e33d0c3b66e6751886feadb4e9916f778bab1776bdf1b",
+ *     checksumAlgorithm: "sha512",
  * });
- * const latestDebian12BookwormQcow2Img = new proxmoxve.download.File("latestDebian12BookwormQcow2Img", {
+ * const latestDebian12BookwormQcow2Img = new proxmoxve.download.File("latest_debian_12_bookworm_qcow2_img", {
  *     contentType: "iso",
  *     datastoreId: "local",
  *     fileName: "debian-12-generic-amd64.qcow2.img",
  *     nodeName: "pve",
  *     url: "https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2",
  * });
- * const latestDebian12BookwormQcow2 = new proxmoxve.download.File("latestDebian12BookwormQcow2", {
+ * const latestDebian12BookwormQcow2 = new proxmoxve.download.File("latest_debian_12_bookworm_qcow2", {
  *     contentType: "import",
  *     datastoreId: "local",
  *     fileName: "debian-12-generic-amd64.qcow2",
  *     nodeName: "pve",
  *     url: "https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2",
  * });
- * const latestUbuntu22JammyQcow2Img = new proxmoxve.download.File("latestUbuntu22JammyQcow2Img", {
+ * const latestUbuntu22JammyQcow2Img = new proxmoxve.download.File("latest_ubuntu_22_jammy_qcow2_img", {
  *     contentType: "iso",
  *     datastoreId: "local",
  *     nodeName: "pve",
  *     url: "https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img",
  * });
- * const latestStaticUbuntu24NobleQcow2Img = new proxmoxve.download.File("latestStaticUbuntu24NobleQcow2Img", {
+ * const latestStaticUbuntu24NobleQcow2Img = new proxmoxve.download.File("latest_static_ubuntu_24_noble_qcow2_img", {
  *     contentType: "iso",
  *     datastoreId: "local",
  *     nodeName: "pve",
- *     overwrite: false,
  *     url: "https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img",
+ *     overwrite: false,
  * });
- * const release20231211Ubuntu22JammyLxcImg = new proxmoxve.download.File("release20231211Ubuntu22JammyLxcImg", {
- *     checksum: "c9997dcfea5d826fd04871f960c513665f2e87dd7450bba99f68a97e60e4586e",
- *     checksumAlgorithm: "sha256",
+ * const release20231211Ubuntu22JammyLxcImg = new proxmoxve.download.File("release_20231211_ubuntu_22_jammy_lxc_img", {
  *     contentType: "vztmpl",
  *     datastoreId: "local",
  *     nodeName: "pve",
- *     uploadTimeout: 4444,
  *     url: "https://cloud-images.ubuntu.com/releases/22.04/release-20231211/ubuntu-22.04-server-cloudimg-amd64-root.tar.xz",
+ *     checksum: "c9997dcfea5d826fd04871f960c513665f2e87dd7450bba99f68a97e60e4586e",
+ *     checksumAlgorithm: "sha256",
+ *     uploadTimeout: 4444,
  * });
- * const latestUbuntu22JammyLxcImg = new proxmoxve.download.File("latestUbuntu22JammyLxcImg", {
+ * const latestUbuntu22JammyLxcImg = new proxmoxve.download.File("latest_ubuntu_22_jammy_lxc_img", {
  *     contentType: "vztmpl",
  *     datastoreId: "local",
  *     nodeName: "pve",

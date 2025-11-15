@@ -9,6 +9,36 @@ import * as utilities from "../utilities";
 /**
  * Manages Proxmox VE Cluster Datacenter options.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const options = new proxmoxve.cluster.Options("options", {
+ *     language: "en",
+ *     keyboard: "pl",
+ *     emailFrom: "ged@gont.earthsea",
+ *     bandwidthLimitMigration: 555555,
+ *     bandwidthLimitDefault: 666666,
+ *     maxWorkers: 5,
+ *     migrationCidr: "10.0.0.0/8",
+ *     migrationType: "secure",
+ *     nextId: {
+ *         lower: 100,
+ *         upper: 999999999,
+ *     },
+ *     notify: {
+ *         haFencingMode: "never",
+ *         haFencingTarget: "default-matcher",
+ *         packageUpdates: "always",
+ *         packageUpdatesTarget: "default-matcher",
+ *         packageReplication: "always",
+ *         packageReplicationTarget: "default-matcher",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * #!/usr/bin/env sh

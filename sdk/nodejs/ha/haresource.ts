@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *     group: "example",
  *     comment: "Managed by Pulumi",
  * }, {
- *     dependsOn: [proxmox_virtual_environment_hagroup.example],
+ *     dependsOn: [exampleProxmoxVirtualEnvironmentHagroup],
  * });
  * ```
  *

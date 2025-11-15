@@ -289,14 +289,14 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+     * Whether to set the protection flag of the container (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). This will prevent the container itself and its disk for remove/update operations.
      * 
      */
     @Import(name="protection")
     private @Nullable Output<Boolean> protection;
 
     /**
-     * @return Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+     * @return Whether to set the protection flag of the container (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). This will prevent the container itself and its disk for remove/update operations.
      * 
      */
     public Optional<Output<Boolean>> protection() {
@@ -305,7 +305,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Automatically start container when the host
-     * system boots (defaults to `true`).
+     * system boots (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     @Import(name="startOnBoot")
@@ -313,7 +313,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Automatically start container when the host
-     * system boots (defaults to `true`).
+     * system boots (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> startOnBoot() {
@@ -321,14 +321,14 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to start the container (defaults to `true`).
+     * Whether to start the container (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     @Import(name="started")
     private @Nullable Output<Boolean> started;
 
     /**
-     * @return Whether to start the container (defaults to `true`).
+     * @return Whether to start the container (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> started() {
@@ -354,7 +354,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
      * A list of tags the container tags. This is only meta
      * information (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.
      * If tag contains capital letters, then Proxmox will always report a
-     * difference on the resource. You may use the `ignore_changes` lifecycle
+     * difference on the resource. You may use the &lt;span pulumi-lang-nodejs=&#34;`ignoreChanges`&#34; pulumi-lang-dotnet=&#34;`IgnoreChanges`&#34; pulumi-lang-go=&#34;`ignoreChanges`&#34; pulumi-lang-python=&#34;`ignore_changes`&#34; pulumi-lang-yaml=&#34;`ignoreChanges`&#34; pulumi-lang-java=&#34;`ignoreChanges`&#34;&gt;`ignore_changes`&lt;/span&gt; lifecycle
      * meta-argument to ignore changes to this attribute.
      * 
      */
@@ -365,7 +365,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
      * @return A list of tags the container tags. This is only meta
      * information (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.
      * If tag contains capital letters, then Proxmox will always report a
-     * difference on the resource. You may use the `ignore_changes` lifecycle
+     * difference on the resource. You may use the &lt;span pulumi-lang-nodejs=&#34;`ignoreChanges`&#34; pulumi-lang-dotnet=&#34;`IgnoreChanges`&#34; pulumi-lang-go=&#34;`ignoreChanges`&#34; pulumi-lang-python=&#34;`ignore_changes`&#34; pulumi-lang-yaml=&#34;`ignoreChanges`&#34; pulumi-lang-java=&#34;`ignoreChanges`&#34;&gt;`ignore_changes`&lt;/span&gt; lifecycle
      * meta-argument to ignore changes to this attribute.
      * 
      */
@@ -374,14 +374,14 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to create a template (defaults to `false`).
+     * Whether to create a template (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Import(name="template")
     private @Nullable Output<Boolean> template;
 
     /**
-     * @return Whether to create a template (defaults to `false`).
+     * @return Whether to create a template (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> template() {
@@ -437,10 +437,10 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
      * Start container timeout
      * 
      * @deprecated
-     * This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead.
+     * This field is deprecated and will be removed in a future release. An overall operation timeout (&lt;span pulumi-lang-nodejs=&#34;`timeoutCreate`&#34; pulumi-lang-dotnet=&#34;`TimeoutCreate`&#34; pulumi-lang-go=&#34;`timeoutCreate`&#34; pulumi-lang-python=&#34;`timeout_create`&#34; pulumi-lang-yaml=&#34;`timeoutCreate`&#34; pulumi-lang-java=&#34;`timeoutCreate`&#34;&gt;`timeout_create`&lt;/span&gt; / &lt;span pulumi-lang-nodejs=&#34;`timeoutClone`&#34; pulumi-lang-dotnet=&#34;`TimeoutClone`&#34; pulumi-lang-go=&#34;`timeoutClone`&#34; pulumi-lang-python=&#34;`timeout_clone`&#34; pulumi-lang-yaml=&#34;`timeoutClone`&#34; pulumi-lang-java=&#34;`timeoutClone`&#34;&gt;`timeout_clone`&lt;/span&gt;) is used instead.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead. */
+    @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (<span pulumi-lang-nodejs=""`timeoutCreate`"" pulumi-lang-dotnet=""`TimeoutCreate`"" pulumi-lang-go=""`timeoutCreate`"" pulumi-lang-python=""`timeout_create`"" pulumi-lang-yaml=""`timeoutCreate`"" pulumi-lang-java=""`timeoutCreate`"">`timeout_create`</span> / <span pulumi-lang-nodejs=""`timeoutClone`"" pulumi-lang-dotnet=""`TimeoutClone`"" pulumi-lang-go=""`timeoutClone`"" pulumi-lang-python=""`timeout_clone`"" pulumi-lang-yaml=""`timeoutClone`"" pulumi-lang-java=""`timeoutClone`"">`timeout_clone`</span>) is used instead. */
     @Import(name="timeoutStart")
     private @Nullable Output<Integer> timeoutStart;
 
@@ -448,10 +448,10 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
      * @return Start container timeout
      * 
      * @deprecated
-     * This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead.
+     * This field is deprecated and will be removed in a future release. An overall operation timeout (&lt;span pulumi-lang-nodejs=&#34;`timeoutCreate`&#34; pulumi-lang-dotnet=&#34;`TimeoutCreate`&#34; pulumi-lang-go=&#34;`timeoutCreate`&#34; pulumi-lang-python=&#34;`timeout_create`&#34; pulumi-lang-yaml=&#34;`timeoutCreate`&#34; pulumi-lang-java=&#34;`timeoutCreate`&#34;&gt;`timeout_create`&lt;/span&gt; / &lt;span pulumi-lang-nodejs=&#34;`timeoutClone`&#34; pulumi-lang-dotnet=&#34;`TimeoutClone`&#34; pulumi-lang-go=&#34;`timeoutClone`&#34; pulumi-lang-python=&#34;`timeout_clone`&#34; pulumi-lang-yaml=&#34;`timeoutClone`&#34; pulumi-lang-java=&#34;`timeoutClone`&#34;&gt;`timeout_clone`&lt;/span&gt;) is used instead.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead. */
+    @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (<span pulumi-lang-nodejs=""`timeoutCreate`"" pulumi-lang-dotnet=""`TimeoutCreate`"" pulumi-lang-go=""`timeoutCreate`"" pulumi-lang-python=""`timeout_create`"" pulumi-lang-yaml=""`timeoutCreate`"" pulumi-lang-java=""`timeoutCreate`"">`timeout_create`</span> / <span pulumi-lang-nodejs=""`timeoutClone`"" pulumi-lang-dotnet=""`TimeoutClone`"" pulumi-lang-go=""`timeoutClone`"" pulumi-lang-python=""`timeout_clone`"" pulumi-lang-yaml=""`timeoutClone`"" pulumi-lang-java=""`timeoutClone`"">`timeout_clone`</span>) is used instead. */
     public Optional<Output<Integer>> timeoutStart() {
         return Optional.ofNullable(this.timeoutStart);
     }
@@ -472,14 +472,14 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the container runs as unprivileged on the host (defaults to `false`).
+     * Whether the container runs as unprivileged on the host (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Import(name="unprivileged")
     private @Nullable Output<Boolean> unprivileged;
 
     /**
-     * @return Whether the container runs as unprivileged on the host (defaults to `false`).
+     * @return Whether the container runs as unprivileged on the host (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> unprivileged() {
@@ -945,7 +945,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protection Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+         * @param protection Whether to set the protection flag of the container (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). This will prevent the container itself and its disk for remove/update operations.
          * 
          * @return builder
          * 
@@ -956,7 +956,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protection Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+         * @param protection Whether to set the protection flag of the container (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). This will prevent the container itself and its disk for remove/update operations.
          * 
          * @return builder
          * 
@@ -967,7 +967,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param startOnBoot Automatically start container when the host
-         * system boots (defaults to `true`).
+         * system boots (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -979,7 +979,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param startOnBoot Automatically start container when the host
-         * system boots (defaults to `true`).
+         * system boots (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -989,7 +989,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param started Whether to start the container (defaults to `true`).
+         * @param started Whether to start the container (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1000,7 +1000,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param started Whether to start the container (defaults to `true`).
+         * @param started Whether to start the container (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1034,7 +1034,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
          * @param tags A list of tags the container tags. This is only meta
          * information (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.
          * If tag contains capital letters, then Proxmox will always report a
-         * difference on the resource. You may use the `ignore_changes` lifecycle
+         * difference on the resource. You may use the &lt;span pulumi-lang-nodejs=&#34;`ignoreChanges`&#34; pulumi-lang-dotnet=&#34;`IgnoreChanges`&#34; pulumi-lang-go=&#34;`ignoreChanges`&#34; pulumi-lang-python=&#34;`ignore_changes`&#34; pulumi-lang-yaml=&#34;`ignoreChanges`&#34; pulumi-lang-java=&#34;`ignoreChanges`&#34;&gt;`ignore_changes`&lt;/span&gt; lifecycle
          * meta-argument to ignore changes to this attribute.
          * 
          * @return builder
@@ -1049,7 +1049,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
          * @param tags A list of tags the container tags. This is only meta
          * information (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.
          * If tag contains capital letters, then Proxmox will always report a
-         * difference on the resource. You may use the `ignore_changes` lifecycle
+         * difference on the resource. You may use the &lt;span pulumi-lang-nodejs=&#34;`ignoreChanges`&#34; pulumi-lang-dotnet=&#34;`IgnoreChanges`&#34; pulumi-lang-go=&#34;`ignoreChanges`&#34; pulumi-lang-python=&#34;`ignore_changes`&#34; pulumi-lang-yaml=&#34;`ignoreChanges`&#34; pulumi-lang-java=&#34;`ignoreChanges`&#34;&gt;`ignore_changes`&lt;/span&gt; lifecycle
          * meta-argument to ignore changes to this attribute.
          * 
          * @return builder
@@ -1063,7 +1063,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
          * @param tags A list of tags the container tags. This is only meta
          * information (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.
          * If tag contains capital letters, then Proxmox will always report a
-         * difference on the resource. You may use the `ignore_changes` lifecycle
+         * difference on the resource. You may use the &lt;span pulumi-lang-nodejs=&#34;`ignoreChanges`&#34; pulumi-lang-dotnet=&#34;`IgnoreChanges`&#34; pulumi-lang-go=&#34;`ignoreChanges`&#34; pulumi-lang-python=&#34;`ignore_changes`&#34; pulumi-lang-yaml=&#34;`ignoreChanges`&#34; pulumi-lang-java=&#34;`ignoreChanges`&#34;&gt;`ignore_changes`&lt;/span&gt; lifecycle
          * meta-argument to ignore changes to this attribute.
          * 
          * @return builder
@@ -1074,7 +1074,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param template Whether to create a template (defaults to `false`).
+         * @param template Whether to create a template (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1085,7 +1085,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param template Whether to create a template (defaults to `false`).
+         * @param template Whether to create a template (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1163,10 +1163,10 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead.
+         * This field is deprecated and will be removed in a future release. An overall operation timeout (&lt;span pulumi-lang-nodejs=&#34;`timeoutCreate`&#34; pulumi-lang-dotnet=&#34;`TimeoutCreate`&#34; pulumi-lang-go=&#34;`timeoutCreate`&#34; pulumi-lang-python=&#34;`timeout_create`&#34; pulumi-lang-yaml=&#34;`timeoutCreate`&#34; pulumi-lang-java=&#34;`timeoutCreate`&#34;&gt;`timeout_create`&lt;/span&gt; / &lt;span pulumi-lang-nodejs=&#34;`timeoutClone`&#34; pulumi-lang-dotnet=&#34;`TimeoutClone`&#34; pulumi-lang-go=&#34;`timeoutClone`&#34; pulumi-lang-python=&#34;`timeout_clone`&#34; pulumi-lang-yaml=&#34;`timeoutClone`&#34; pulumi-lang-java=&#34;`timeoutClone`&#34;&gt;`timeout_clone`&lt;/span&gt;) is used instead.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead. */
+        @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (<span pulumi-lang-nodejs=""`timeoutCreate`"" pulumi-lang-dotnet=""`TimeoutCreate`"" pulumi-lang-go=""`timeoutCreate`"" pulumi-lang-python=""`timeout_create`"" pulumi-lang-yaml=""`timeoutCreate`"" pulumi-lang-java=""`timeoutCreate`"">`timeout_create`</span> / <span pulumi-lang-nodejs=""`timeoutClone`"" pulumi-lang-dotnet=""`TimeoutClone`"" pulumi-lang-go=""`timeoutClone`"" pulumi-lang-python=""`timeout_clone`"" pulumi-lang-yaml=""`timeoutClone`"" pulumi-lang-java=""`timeoutClone`"">`timeout_clone`</span>) is used instead. */
         public Builder timeoutStart(@Nullable Output<Integer> timeoutStart) {
             $.timeoutStart = timeoutStart;
             return this;
@@ -1178,10 +1178,10 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead.
+         * This field is deprecated and will be removed in a future release. An overall operation timeout (&lt;span pulumi-lang-nodejs=&#34;`timeoutCreate`&#34; pulumi-lang-dotnet=&#34;`TimeoutCreate`&#34; pulumi-lang-go=&#34;`timeoutCreate`&#34; pulumi-lang-python=&#34;`timeout_create`&#34; pulumi-lang-yaml=&#34;`timeoutCreate`&#34; pulumi-lang-java=&#34;`timeoutCreate`&#34;&gt;`timeout_create`&lt;/span&gt; / &lt;span pulumi-lang-nodejs=&#34;`timeoutClone`&#34; pulumi-lang-dotnet=&#34;`TimeoutClone`&#34; pulumi-lang-go=&#34;`timeoutClone`&#34; pulumi-lang-python=&#34;`timeout_clone`&#34; pulumi-lang-yaml=&#34;`timeoutClone`&#34; pulumi-lang-java=&#34;`timeoutClone`&#34;&gt;`timeout_clone`&lt;/span&gt;) is used instead.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead. */
+        @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (<span pulumi-lang-nodejs=""`timeoutCreate`"" pulumi-lang-dotnet=""`TimeoutCreate`"" pulumi-lang-go=""`timeoutCreate`"" pulumi-lang-python=""`timeout_create`"" pulumi-lang-yaml=""`timeoutCreate`"" pulumi-lang-java=""`timeoutCreate`"">`timeout_create`</span> / <span pulumi-lang-nodejs=""`timeoutClone`"" pulumi-lang-dotnet=""`TimeoutClone`"" pulumi-lang-go=""`timeoutClone`"" pulumi-lang-python=""`timeout_clone`"" pulumi-lang-yaml=""`timeoutClone`"" pulumi-lang-java=""`timeoutClone`"">`timeout_clone`</span>) is used instead. */
         public Builder timeoutStart(Integer timeoutStart) {
             return timeoutStart(Output.of(timeoutStart));
         }
@@ -1208,7 +1208,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param unprivileged Whether the container runs as unprivileged on the host (defaults to `false`).
+         * @param unprivileged Whether the container runs as unprivileged on the host (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1219,7 +1219,7 @@ public final class ContainerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param unprivileged Whether the container runs as unprivileged on the host (defaults to `false`).
+         * @param unprivileged Whether the container runs as unprivileged on the host (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 

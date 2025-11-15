@@ -28,17 +28,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := metrics.NewMetricsServer(ctx, "influxdbServer", &metrics.MetricsServerArgs{
-//				Port:   pulumi.Int(8089),
+//			_, err := metrics.NewMetricsServer(ctx, "influxdb_server", &metrics.MetricsServerArgs{
+//				Name:   pulumi.String("example_influxdb_server"),
 //				Server: pulumi.String("192.168.3.2"),
+//				Port:   pulumi.Int(8089),
 //				Type:   pulumi.String("influxdb"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = metrics.NewMetricsServer(ctx, "graphiteServer", &metrics.MetricsServerArgs{
-//				Port:   pulumi.Int(2003),
+//			_, err = metrics.NewMetricsServer(ctx, "graphite_server", &metrics.MetricsServerArgs{
+//				Name:   pulumi.String("example_graphite_server"),
 //				Server: pulumi.String("192.168.4.2"),
+//				Port:   pulumi.Int(2003),
 //				Type:   pulumi.String("graphite"),
 //			})
 //			if err != nil {

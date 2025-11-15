@@ -34,7 +34,7 @@ namespace Pulumi.ProxmoxVE.Storage.Inputs
 
         /// <summary>
         /// Whether to skip the TLS verification step for
-        /// HTTPS sources (defaults to `false`).
+        /// HTTPS sources (defaults to `False`).
         /// </summary>
         [Input("insecure")]
         public Input<bool>? Insecure { get; set; }

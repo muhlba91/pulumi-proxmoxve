@@ -10,70 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.VM
 {
     /// <summary>
-    /// Manages a virtual machine.
-    /// 
-    /// ## High Availability
-    /// 
-    /// When managing a virtual machine in a multi-node cluster, the VM's HA settings can
-    /// be managed using the `proxmoxve.HA.HAResource` resource.
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using ProxmoxVE = Pulumi.ProxmoxVE;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var ubuntuVmVirtualMachine = new ProxmoxVE.VM.VirtualMachine("ubuntuVmVirtualMachine", new()
-    ///     {
-    ///         VmId = 4321,
-    ///     });
-    /// 
-    ///     var ubuntuVmHAResource = new ProxmoxVE.HA.HAResource("ubuntuVmHAResource", new()
-    ///     {
-    ///         Comment = "Managed by Pulumi",
-    ///         Group = "node1",
-    ///         ResourceId = ubuntuVmVirtualMachine.VmId.Apply(vmId =&gt; $"vm:{vmId}"),
-    ///         State = "started",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Important Notes
-    /// 
-    /// ### `local-lvm` Datastore
-    /// 
-    /// The `local-lvm` is the **default datastore** for many configuration blocks, including `initialization` and `tpm_state`, which may not seem to be related to "storage".
-    /// If you do not have `local-lvm` configured in your environment, you may need to explicitly set the `datastore_id` in such blocks to a different value.
-    /// 
-    /// ### Cloning
-    /// 
-    /// When cloning an existing virtual machine, whether it's a template or not, the
-    /// resource will inherit the disks and other configuration from the source VM.
-    /// 
-    /// *If* you modify any attributes of an existing disk in the clone, you also need to\
-    /// explicitly provide values for any other attributes that differ from the schema defaults\
-    /// in the source (e.g., `size`, `discard`, `cache`, `aio`).\
-    /// Otherwise, the schema defaults will take effect and override the source values.
-    /// 
-    /// Furthermore, when cloning from one node to a different one, the behavior changes
-    /// depening on the datastores of the source VM. If at least one non-shared
-    /// datastore is used, the VM is first cloned to the source node before being
-    /// migrated to the target node. This circumvents a limitation in the Proxmox clone
-    /// API.
-    /// 
-    /// Because the migration step after the clone tries to preserve the used
-    /// datastores by their name, it may fail if a datastore used in the source VM is
-    /// not available on the target node (e.g. `local-lvm` is used on the source node in
-    /// the VM but no `local-lvm` datastore is available on the target node). In this
-    /// case, it is recommended to set the `datastore_id` argument in the `clone` block
-    /// to force the migration step to migrate all disks to a specific datastore on the
-    /// target node. If you need certain disks to be on specific datastores, set
-    /// the `datastore_id` argument of the disks in the `disks` block to move the disks
-    /// to the correct datastore after the cloning and migrating succeeded.
-    /// 
     /// ## Import
     /// 
     /// Instances can be imported using the `node_name` and the `vm_id`, e.g.,
@@ -88,7 +24,7 @@ namespace Pulumi.ProxmoxVE.VM
     public partial class VirtualMachine : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether to enable ACPI (defaults to `true`).
+        /// Whether to enable ACPI (defaults to `True`).
         /// </summary>
         [Output("acpi")]
         public Output<bool?> Acpi { get; private set; } = null!;
@@ -112,7 +48,7 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<Outputs.VirtualMachineAudioDevice?> AudioDevice { get; private set; } = null!;
 
         /// <summary>
-        /// The BIOS implementation (defaults to `seabios`).
+        /// The BIOS implementation (defaults to `Seabios`).
         /// </summary>
         [Output("bios")]
         public Output<string?> Bios { get; private set; } = null!;
@@ -155,8 +91,8 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<ImmutableArray<Outputs.VirtualMachineDisk>> Disks { get; private set; } = null!;
 
         /// <summary>
-        /// The efi disk device (required if `bios` is set
-        /// to `ovmf`)
+        /// The efi disk device (required if `Bios` is set
+        /// to `Ovmf`)
         /// </summary>
         [Output("efiDisk")]
         public Output<Outputs.VirtualMachineEfiDisk?> EfiDisk { get; private set; } = null!;
@@ -181,14 +117,14 @@ namespace Pulumi.ProxmoxVE.VM
 
         /// <summary>
         /// The IPv4 addresses per network interface published by the
-        /// QEMU agent (empty list when `agent.enabled` is `false`)
+        /// QEMU agent (empty list when `agent.enabled` is `False`)
         /// </summary>
         [Output("ipv4Addresses")]
         public Output<ImmutableArray<ImmutableArray<string>>> Ipv4Addresses { get; private set; } = null!;
 
         /// <summary>
         /// The IPv6 addresses per network interface published by the
-        /// QEMU agent (empty list when `agent.enabled` is `false`)
+        /// QEMU agent (empty list when `agent.enabled` is `False`)
         /// </summary>
         [Output("ipv6Addresses")]
         public Output<ImmutableArray<ImmutableArray<string>>> Ipv6Addresses { get; private set; } = null!;
@@ -213,7 +149,7 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<ImmutableArray<string>> MacAddresses { get; private set; } = null!;
 
         /// <summary>
-        /// The VM machine type (defaults to `pc`).
+        /// The VM machine type (defaults to `Pc`).
         /// </summary>
         [Output("machine")]
         public Output<string?> Machine { get; private set; } = null!;
@@ -226,7 +162,7 @@ namespace Pulumi.ProxmoxVE.VM
 
         /// <summary>
         /// Migrate the VM on node change instead of re-creating
-        /// it (defaults to `false`).
+        /// it (defaults to `False`).
         /// </summary>
         [Output("migrate")]
         public Output<bool?> Migrate { get; private set; } = null!;
@@ -245,7 +181,7 @@ namespace Pulumi.ProxmoxVE.VM
 
         /// <summary>
         /// The network interface names published by the QEMU
-        /// agent (empty list when `agent.enabled` is `false`)
+        /// agent (empty list when `agent.enabled` is `False`)
         /// </summary>
         [Output("networkInterfaceNames")]
         public Output<ImmutableArray<string>> NetworkInterfaceNames { get; private set; } = null!;
@@ -265,7 +201,7 @@ namespace Pulumi.ProxmoxVE.VM
 
         /// <summary>
         /// Specifies whether a VM will be started during system
-        /// boot. (defaults to `true`)
+        /// boot. (defaults to `True`)
         /// </summary>
         [Output("onBoot")]
         public Output<bool?> OnBoot { get; private set; } = null!;
@@ -283,19 +219,19 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<string?> PoolId { get; private set; } = null!;
 
         /// <summary>
-        /// Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+        /// Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `False`).
         /// </summary>
         [Output("protection")]
         public Output<bool?> Protection { get; private set; } = null!;
 
         /// <summary>
-        /// Reboot the VM after initial creation (defaults to `false`).
+        /// Reboot the VM after initial creation (defaults to `False`).
         /// </summary>
         [Output("reboot")]
         public Output<bool?> Reboot { get; private set; } = null!;
 
         /// <summary>
-        /// Reboot the VM after update if needed (defaults to `true`).
+        /// Reboot the VM after update if needed (defaults to `True`).
         /// </summary>
         [Output("rebootAfterUpdate")]
         public Output<bool?> RebootAfterUpdate { get; private set; } = null!;
@@ -327,7 +263,7 @@ namespace Pulumi.ProxmoxVE.VM
 
         /// <summary>
         /// Whether to start the virtual machine (defaults
-        /// to `true`).
+        /// to `True`).
         /// </summary>
         [Output("started")]
         public Output<bool?> Started { get; private set; } = null!;
@@ -339,14 +275,14 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<Outputs.VirtualMachineStartup?> Startup { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to stop rather than shutdown on VM destroy (defaults to `false`)
+        /// Whether to stop rather than shutdown on VM destroy (defaults to `False`)
         /// </summary>
         [Output("stopOnDestroy")]
         public Output<bool?> StopOnDestroy { get; private set; } = null!;
 
         /// <summary>
         /// Whether to enable the USB tablet device (defaults
-        /// to `true`).
+        /// to `True`).
         /// </summary>
         [Output("tabletDevice")]
         public Output<bool?> TabletDevice { get; private set; } = null!;
@@ -355,14 +291,14 @@ namespace Pulumi.ProxmoxVE.VM
         /// A list of tags of the VM. This is only meta information (
         /// defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
         /// template is not sorted, then Proxmox will always report a difference on the
-        /// resource. You may use the `ignore_changes` lifecycle meta-argument to ignore
+        /// resource. You may use the `IgnoreChanges` lifecycle meta-argument to ignore
         /// changes to this attribute.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to create a template (defaults to `false`).
+        /// Whether to create a template (defaults to `False`).
         /// </summary>
         [Output("template")]
         public Output<bool?> Template { get; private set; } = null!;
@@ -506,7 +442,7 @@ namespace Pulumi.ProxmoxVE.VM
     public sealed class VirtualMachineArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to enable ACPI (defaults to `true`).
+        /// Whether to enable ACPI (defaults to `True`).
         /// </summary>
         [Input("acpi")]
         public Input<bool>? Acpi { get; set; }
@@ -530,7 +466,7 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<Inputs.VirtualMachineAudioDeviceArgs>? AudioDevice { get; set; }
 
         /// <summary>
-        /// The BIOS implementation (defaults to `seabios`).
+        /// The BIOS implementation (defaults to `Seabios`).
         /// </summary>
         [Input("bios")]
         public Input<string>? Bios { get; set; }
@@ -585,8 +521,8 @@ namespace Pulumi.ProxmoxVE.VM
         }
 
         /// <summary>
-        /// The efi disk device (required if `bios` is set
-        /// to `ovmf`)
+        /// The efi disk device (required if `Bios` is set
+        /// to `Ovmf`)
         /// </summary>
         [Input("efiDisk")]
         public Input<Inputs.VirtualMachineEfiDiskArgs>? EfiDisk { get; set; }
@@ -641,7 +577,7 @@ namespace Pulumi.ProxmoxVE.VM
         }
 
         /// <summary>
-        /// The VM machine type (defaults to `pc`).
+        /// The VM machine type (defaults to `Pc`).
         /// </summary>
         [Input("machine")]
         public Input<string>? Machine { get; set; }
@@ -654,7 +590,7 @@ namespace Pulumi.ProxmoxVE.VM
 
         /// <summary>
         /// Migrate the VM on node change instead of re-creating
-        /// it (defaults to `false`).
+        /// it (defaults to `False`).
         /// </summary>
         [Input("migrate")]
         public Input<bool>? Migrate { get; set; }
@@ -698,7 +634,7 @@ namespace Pulumi.ProxmoxVE.VM
 
         /// <summary>
         /// Specifies whether a VM will be started during system
-        /// boot. (defaults to `true`)
+        /// boot. (defaults to `True`)
         /// </summary>
         [Input("onBoot")]
         public Input<bool>? OnBoot { get; set; }
@@ -716,19 +652,19 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<string>? PoolId { get; set; }
 
         /// <summary>
-        /// Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+        /// Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `False`).
         /// </summary>
         [Input("protection")]
         public Input<bool>? Protection { get; set; }
 
         /// <summary>
-        /// Reboot the VM after initial creation (defaults to `false`).
+        /// Reboot the VM after initial creation (defaults to `False`).
         /// </summary>
         [Input("reboot")]
         public Input<bool>? Reboot { get; set; }
 
         /// <summary>
-        /// Reboot the VM after update if needed (defaults to `true`).
+        /// Reboot the VM after update if needed (defaults to `True`).
         /// </summary>
         [Input("rebootAfterUpdate")]
         public Input<bool>? RebootAfterUpdate { get; set; }
@@ -772,7 +708,7 @@ namespace Pulumi.ProxmoxVE.VM
 
         /// <summary>
         /// Whether to start the virtual machine (defaults
-        /// to `true`).
+        /// to `True`).
         /// </summary>
         [Input("started")]
         public Input<bool>? Started { get; set; }
@@ -784,14 +720,14 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<Inputs.VirtualMachineStartupArgs>? Startup { get; set; }
 
         /// <summary>
-        /// Whether to stop rather than shutdown on VM destroy (defaults to `false`)
+        /// Whether to stop rather than shutdown on VM destroy (defaults to `False`)
         /// </summary>
         [Input("stopOnDestroy")]
         public Input<bool>? StopOnDestroy { get; set; }
 
         /// <summary>
         /// Whether to enable the USB tablet device (defaults
-        /// to `true`).
+        /// to `True`).
         /// </summary>
         [Input("tabletDevice")]
         public Input<bool>? TabletDevice { get; set; }
@@ -803,7 +739,7 @@ namespace Pulumi.ProxmoxVE.VM
         /// A list of tags of the VM. This is only meta information (
         /// defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
         /// template is not sorted, then Proxmox will always report a difference on the
-        /// resource. You may use the `ignore_changes` lifecycle meta-argument to ignore
+        /// resource. You may use the `IgnoreChanges` lifecycle meta-argument to ignore
         /// changes to this attribute.
         /// </summary>
         public InputList<string> Tags
@@ -813,7 +749,7 @@ namespace Pulumi.ProxmoxVE.VM
         }
 
         /// <summary>
-        /// Whether to create a template (defaults to `false`).
+        /// Whether to create a template (defaults to `False`).
         /// </summary>
         [Input("template")]
         public Input<bool>? Template { get; set; }
@@ -930,7 +866,7 @@ namespace Pulumi.ProxmoxVE.VM
     public sealed class VirtualMachineState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to enable ACPI (defaults to `true`).
+        /// Whether to enable ACPI (defaults to `True`).
         /// </summary>
         [Input("acpi")]
         public Input<bool>? Acpi { get; set; }
@@ -954,7 +890,7 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<Inputs.VirtualMachineAudioDeviceGetArgs>? AudioDevice { get; set; }
 
         /// <summary>
-        /// The BIOS implementation (defaults to `seabios`).
+        /// The BIOS implementation (defaults to `Seabios`).
         /// </summary>
         [Input("bios")]
         public Input<string>? Bios { get; set; }
@@ -1009,8 +945,8 @@ namespace Pulumi.ProxmoxVE.VM
         }
 
         /// <summary>
-        /// The efi disk device (required if `bios` is set
-        /// to `ovmf`)
+        /// The efi disk device (required if `Bios` is set
+        /// to `Ovmf`)
         /// </summary>
         [Input("efiDisk")]
         public Input<Inputs.VirtualMachineEfiDiskGetArgs>? EfiDisk { get; set; }
@@ -1044,7 +980,7 @@ namespace Pulumi.ProxmoxVE.VM
 
         /// <summary>
         /// The IPv4 addresses per network interface published by the
-        /// QEMU agent (empty list when `agent.enabled` is `false`)
+        /// QEMU agent (empty list when `agent.enabled` is `False`)
         /// </summary>
         public InputList<ImmutableArray<string>> Ipv4Addresses
         {
@@ -1057,7 +993,7 @@ namespace Pulumi.ProxmoxVE.VM
 
         /// <summary>
         /// The IPv6 addresses per network interface published by the
-        /// QEMU agent (empty list when `agent.enabled` is `false`)
+        /// QEMU agent (empty list when `agent.enabled` is `False`)
         /// </summary>
         public InputList<ImmutableArray<string>> Ipv6Addresses
         {
@@ -1091,7 +1027,7 @@ namespace Pulumi.ProxmoxVE.VM
         }
 
         /// <summary>
-        /// The VM machine type (defaults to `pc`).
+        /// The VM machine type (defaults to `Pc`).
         /// </summary>
         [Input("machine")]
         public Input<string>? Machine { get; set; }
@@ -1104,7 +1040,7 @@ namespace Pulumi.ProxmoxVE.VM
 
         /// <summary>
         /// Migrate the VM on node change instead of re-creating
-        /// it (defaults to `false`).
+        /// it (defaults to `False`).
         /// </summary>
         [Input("migrate")]
         public Input<bool>? Migrate { get; set; }
@@ -1132,7 +1068,7 @@ namespace Pulumi.ProxmoxVE.VM
 
         /// <summary>
         /// The network interface names published by the QEMU
-        /// agent (empty list when `agent.enabled` is `false`)
+        /// agent (empty list when `agent.enabled` is `False`)
         /// </summary>
         public InputList<string> NetworkInterfaceNames
         {
@@ -1161,7 +1097,7 @@ namespace Pulumi.ProxmoxVE.VM
 
         /// <summary>
         /// Specifies whether a VM will be started during system
-        /// boot. (defaults to `true`)
+        /// boot. (defaults to `True`)
         /// </summary>
         [Input("onBoot")]
         public Input<bool>? OnBoot { get; set; }
@@ -1179,19 +1115,19 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<string>? PoolId { get; set; }
 
         /// <summary>
-        /// Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+        /// Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `False`).
         /// </summary>
         [Input("protection")]
         public Input<bool>? Protection { get; set; }
 
         /// <summary>
-        /// Reboot the VM after initial creation (defaults to `false`).
+        /// Reboot the VM after initial creation (defaults to `False`).
         /// </summary>
         [Input("reboot")]
         public Input<bool>? Reboot { get; set; }
 
         /// <summary>
-        /// Reboot the VM after update if needed (defaults to `true`).
+        /// Reboot the VM after update if needed (defaults to `True`).
         /// </summary>
         [Input("rebootAfterUpdate")]
         public Input<bool>? RebootAfterUpdate { get; set; }
@@ -1235,7 +1171,7 @@ namespace Pulumi.ProxmoxVE.VM
 
         /// <summary>
         /// Whether to start the virtual machine (defaults
-        /// to `true`).
+        /// to `True`).
         /// </summary>
         [Input("started")]
         public Input<bool>? Started { get; set; }
@@ -1247,14 +1183,14 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<Inputs.VirtualMachineStartupGetArgs>? Startup { get; set; }
 
         /// <summary>
-        /// Whether to stop rather than shutdown on VM destroy (defaults to `false`)
+        /// Whether to stop rather than shutdown on VM destroy (defaults to `False`)
         /// </summary>
         [Input("stopOnDestroy")]
         public Input<bool>? StopOnDestroy { get; set; }
 
         /// <summary>
         /// Whether to enable the USB tablet device (defaults
-        /// to `true`).
+        /// to `True`).
         /// </summary>
         [Input("tabletDevice")]
         public Input<bool>? TabletDevice { get; set; }
@@ -1266,7 +1202,7 @@ namespace Pulumi.ProxmoxVE.VM
         /// A list of tags of the VM. This is only meta information (
         /// defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
         /// template is not sorted, then Proxmox will always report a difference on the
-        /// resource. You may use the `ignore_changes` lifecycle meta-argument to ignore
+        /// resource. You may use the `IgnoreChanges` lifecycle meta-argument to ignore
         /// changes to this attribute.
         /// </summary>
         public InputList<string> Tags
@@ -1276,7 +1212,7 @@ namespace Pulumi.ProxmoxVE.VM
         }
 
         /// <summary>
-        /// Whether to create a template (defaults to `false`).
+        /// Whether to create a template (defaults to `False`).
         /// </summary>
         [Input("template")]
         public Input<bool>? Template { get; set; }

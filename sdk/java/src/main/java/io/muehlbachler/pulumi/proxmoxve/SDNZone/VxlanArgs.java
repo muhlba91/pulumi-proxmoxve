@@ -82,15 +82,15 @@ public final class VxlanArgs extends com.pulumi.resources.ResourceArgs {
      * The Proxmox nodes which the zone and associated VNets should be deployed on
      * 
      */
-    @Import(name="nodes", required=true)
-    private Output<List<String>> nodes;
+    @Import(name="nodes")
+    private @Nullable Output<List<String>> nodes;
 
     /**
      * @return The Proxmox nodes which the zone and associated VNets should be deployed on
      * 
      */
-    public Output<List<String>> nodes() {
-        return this.nodes;
+    public Optional<Output<List<String>>> nodes() {
+        return Optional.ofNullable(this.nodes);
     }
 
     /**
@@ -259,7 +259,7 @@ public final class VxlanArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder nodes(Output<List<String>> nodes) {
+        public Builder nodes(@Nullable Output<List<String>> nodes) {
             $.nodes = nodes;
             return this;
         }
@@ -358,9 +358,6 @@ public final class VxlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public VxlanArgs build() {
-            if ($.nodes == null) {
-                throw new MissingRequiredPropertyException("VxlanArgs", "nodes");
-            }
             if ($.peers == null) {
                 throw new MissingRequiredPropertyException("VxlanArgs", "peers");
             }

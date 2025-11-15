@@ -28,11 +28,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := permission.NewRole(ctx, "operationsMonitoring", &permission.RoleArgs{
+//			_, err := permission.NewRole(ctx, "operations_monitoring", &permission.RoleArgs{
+//				RoleId: pulumi.String("operations-monitoring"),
 //				Privileges: pulumi.StringArray{
 //					pulumi.String("VM.GuestAgent.Audit"),
 //				},
-//				RoleId: pulumi.String("operations-monitoring"),
 //			})
 //			if err != nil {
 //				return err

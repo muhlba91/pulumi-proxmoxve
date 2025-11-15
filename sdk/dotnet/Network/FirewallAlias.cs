@@ -24,22 +24,24 @@ namespace Pulumi.ProxmoxVE.Network
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var localNetwork = new ProxmoxVE.Network.FirewallAlias("localNetwork", new()
+    ///     var localNetwork = new ProxmoxVE.Network.FirewallAlias("local_network", new()
     ///     {
-    ///         NodeName = proxmox_virtual_environment_vm.Example.Node_name,
-    ///         VmId = proxmox_virtual_environment_vm.Example.Vm_id,
+    ///         NodeName = example.NodeName,
+    ///         VmId = example.VmId,
+    ///         Name = "local_network",
     ///         Cidr = "192.168.0.0/23",
     ///         Comment = "Managed by Pulumi",
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
     ///         {
-    ///             proxmox_virtual_environment_vm.Example,
+    ///             example,
     ///         },
     ///     });
     /// 
-    ///     var ubuntuVm = new ProxmoxVE.Network.FirewallAlias("ubuntuVm", new()
+    ///     var ubuntuVm = new ProxmoxVE.Network.FirewallAlias("ubuntu_vm", new()
     ///     {
+    ///         Name = "ubuntu",
     ///         Cidr = "192.168.0.1",
     ///         Comment = "Managed by Pulumi",
     ///     });

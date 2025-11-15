@@ -31,7 +31,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly int Memory;
         /// <summary>
-        /// The NUMA policy (defaults to `preferred`).
+        /// The NUMA policy (defaults to `Preferred`).
         /// </summary>
         public readonly string? Policy;
 

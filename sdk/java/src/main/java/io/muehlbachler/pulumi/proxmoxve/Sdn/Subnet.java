@@ -22,6 +22,119 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.Sdn.Applier;
+ * import io.muehlbachler.pulumi.proxmoxve.SDNZone.Simple;
+ * import io.muehlbachler.pulumi.proxmoxve.SDNZone.SimpleArgs;
+ * import io.muehlbachler.pulumi.proxmoxve.Sdn.Vnet;
+ * import io.muehlbachler.pulumi.proxmoxve.Sdn.VnetArgs;
+ * import io.muehlbachler.pulumi.proxmoxve.Sdn.Subnet;
+ * import io.muehlbachler.pulumi.proxmoxve.Sdn.SubnetArgs;
+ * import com.pulumi.proxmoxve.Sdn.inputs.SubnetDhcpRangeArgs;
+ * import io.muehlbachler.pulumi.proxmoxve.Sdn.ApplierArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var finalizer = new Applier("finalizer");
+ * 
+ *         // SDN Zone (Simple) - Basic zone for simple vnets
+ *         var exampleZone1 = new Simple("exampleZone1", SimpleArgs.builder()
+ *             .zoneId("zone1")
+ *             .nodes("pve")
+ *             .mtu(1500)
+ *             .dns("1.1.1.1")
+ *             .dnsZone("example.com")
+ *             .ipam("pve")
+ *             .reverseDns("1.1.1.1")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(finalizer)
+ *                 .build());
+ * 
+ *         // SDN Zone (Simple) - Second zone for demonstration
+ *         var exampleZone2 = new Simple("exampleZone2", SimpleArgs.builder()
+ *             .zoneId("zone2")
+ *             .nodes("pve")
+ *             .mtu(1500)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(finalizer)
+ *                 .build());
+ * 
+ *         // SDN VNet - Basic vnet
+ *         var exampleVnet1 = new Vnet("exampleVnet1", VnetArgs.builder()
+ *             .vnetId("vnet1")
+ *             .zone(exampleZone1.zoneId())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(finalizer)
+ *                 .build());
+ * 
+ *         // SDN VNet - VNet with alias and port isolation
+ *         var exampleVnet2 = new Vnet("exampleVnet2", VnetArgs.builder()
+ *             .vnetId("vnet2")
+ *             .zone(exampleZone2.zoneId())
+ *             .alias("Example VNet 2")
+ *             .isolatePorts(true)
+ *             .vlanAware(false)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(finalizer)
+ *                 .build());
+ * 
+ *         // Basic Subnet
+ *         var basicSubnet = new Subnet("basicSubnet", SubnetArgs.builder()
+ *             .cidr("192.168.1.0/24")
+ *             .vnet(exampleVnet1.vnetId())
+ *             .gateway("192.168.1.1")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(finalizer)
+ *                 .build());
+ * 
+ *         // Subnet with DHCP Configuration
+ *         var dhcpSubnet = new Subnet("dhcpSubnet", SubnetArgs.builder()
+ *             .cidr("192.168.2.0/24")
+ *             .vnet(exampleVnet2.vnetId())
+ *             .gateway("192.168.2.1")
+ *             .dhcpDnsServer("192.168.2.53")
+ *             .dnsZonePrefix("internal.example.com")
+ *             .snat(true)
+ *             .dhcpRange(SubnetDhcpRangeArgs.builder()
+ *                 .startAddress("192.168.2.10")
+ *                 .endAddress("192.168.2.100")
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(finalizer)
+ *                 .build());
+ * 
+ *         // SDN Applier for all resources
+ *         var subnetApplier = new Applier("subnetApplier", ApplierArgs.Empty, CustomResourceOptions.builder()
+ *             .dependsOn(            
+ *                 exampleZone1,
+ *                 exampleZone2,
+ *                 exampleVnet1,
+ *                 exampleVnet2,
+ *                 basicSubnet,
+ *                 dhcpSubnet)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -18,14 +18,14 @@ public final class ContainerFeaturesArgs extends com.pulumi.resources.ResourceAr
     public static final ContainerFeaturesArgs Empty = new ContainerFeaturesArgs();
 
     /**
-     * Whether the container supports FUSE mounts (defaults to `false`)
+     * Whether the container supports FUSE mounts (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
     @Import(name="fuse")
     private @Nullable Output<Boolean> fuse;
 
     /**
-     * @return Whether the container supports FUSE mounts (defaults to `false`)
+     * @return Whether the container supports FUSE mounts (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
     public Optional<Output<Boolean>> fuse() {
@@ -33,14 +33,14 @@ public final class ContainerFeaturesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Whether the container supports `keyctl()` system call (defaults to `false`)
+     * Whether the container supports `keyctl()` system call (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
     @Import(name="keyctl")
     private @Nullable Output<Boolean> keyctl;
 
     /**
-     * @return Whether the container supports `keyctl()` system call (defaults to `false`)
+     * @return Whether the container supports `keyctl()` system call (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
     public Optional<Output<Boolean>> keyctl() {
@@ -48,14 +48,14 @@ public final class ContainerFeaturesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * List of allowed mount types (`cifs` or `nfs`)
+     * List of allowed mount types (&lt;span pulumi-lang-nodejs=&#34;`cifs`&#34; pulumi-lang-dotnet=&#34;`Cifs`&#34; pulumi-lang-go=&#34;`cifs`&#34; pulumi-lang-python=&#34;`cifs`&#34; pulumi-lang-yaml=&#34;`cifs`&#34; pulumi-lang-java=&#34;`cifs`&#34;&gt;`cifs`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`nfs`&#34; pulumi-lang-dotnet=&#34;`Nfs`&#34; pulumi-lang-go=&#34;`nfs`&#34; pulumi-lang-python=&#34;`nfs`&#34; pulumi-lang-yaml=&#34;`nfs`&#34; pulumi-lang-java=&#34;`nfs`&#34;&gt;`nfs`&lt;/span&gt;)
      * 
      */
     @Import(name="mounts")
     private @Nullable Output<List<String>> mounts;
 
     /**
-     * @return List of allowed mount types (`cifs` or `nfs`)
+     * @return List of allowed mount types (&lt;span pulumi-lang-nodejs=&#34;`cifs`&#34; pulumi-lang-dotnet=&#34;`Cifs`&#34; pulumi-lang-go=&#34;`cifs`&#34; pulumi-lang-python=&#34;`cifs`&#34; pulumi-lang-yaml=&#34;`cifs`&#34; pulumi-lang-java=&#34;`cifs`&#34;&gt;`cifs`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`nfs`&#34; pulumi-lang-dotnet=&#34;`Nfs`&#34; pulumi-lang-go=&#34;`nfs`&#34; pulumi-lang-python=&#34;`nfs`&#34; pulumi-lang-yaml=&#34;`nfs`&#34; pulumi-lang-java=&#34;`nfs`&#34;&gt;`nfs`&lt;/span&gt;)
      * 
      */
     public Optional<Output<List<String>>> mounts() {
@@ -63,14 +63,14 @@ public final class ContainerFeaturesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Whether the container is nested (defaults to `false`)
+     * Whether the container is nested (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
     @Import(name="nesting")
     private @Nullable Output<Boolean> nesting;
 
     /**
-     * @return Whether the container is nested (defaults to `false`)
+     * @return Whether the container is nested (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
     public Optional<Output<Boolean>> nesting() {
@@ -105,7 +105,7 @@ public final class ContainerFeaturesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param fuse Whether the container supports FUSE mounts (defaults to `false`)
+         * @param fuse Whether the container supports FUSE mounts (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class ContainerFeaturesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param fuse Whether the container supports FUSE mounts (defaults to `false`)
+         * @param fuse Whether the container supports FUSE mounts (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class ContainerFeaturesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param keyctl Whether the container supports `keyctl()` system call (defaults to `false`)
+         * @param keyctl Whether the container supports `keyctl()` system call (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class ContainerFeaturesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param keyctl Whether the container supports `keyctl()` system call (defaults to `false`)
+         * @param keyctl Whether the container supports `keyctl()` system call (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class ContainerFeaturesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param mounts List of allowed mount types (`cifs` or `nfs`)
+         * @param mounts List of allowed mount types (&lt;span pulumi-lang-nodejs=&#34;`cifs`&#34; pulumi-lang-dotnet=&#34;`Cifs`&#34; pulumi-lang-go=&#34;`cifs`&#34; pulumi-lang-python=&#34;`cifs`&#34; pulumi-lang-yaml=&#34;`cifs`&#34; pulumi-lang-java=&#34;`cifs`&#34;&gt;`cifs`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`nfs`&#34; pulumi-lang-dotnet=&#34;`Nfs`&#34; pulumi-lang-go=&#34;`nfs`&#34; pulumi-lang-python=&#34;`nfs`&#34; pulumi-lang-yaml=&#34;`nfs`&#34; pulumi-lang-java=&#34;`nfs`&#34;&gt;`nfs`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class ContainerFeaturesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param mounts List of allowed mount types (`cifs` or `nfs`)
+         * @param mounts List of allowed mount types (&lt;span pulumi-lang-nodejs=&#34;`cifs`&#34; pulumi-lang-dotnet=&#34;`Cifs`&#34; pulumi-lang-go=&#34;`cifs`&#34; pulumi-lang-python=&#34;`cifs`&#34; pulumi-lang-yaml=&#34;`cifs`&#34; pulumi-lang-java=&#34;`cifs`&#34;&gt;`cifs`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`nfs`&#34; pulumi-lang-dotnet=&#34;`Nfs`&#34; pulumi-lang-go=&#34;`nfs`&#34; pulumi-lang-python=&#34;`nfs`&#34; pulumi-lang-yaml=&#34;`nfs`&#34; pulumi-lang-java=&#34;`nfs`&#34;&gt;`nfs`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class ContainerFeaturesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param mounts List of allowed mount types (`cifs` or `nfs`)
+         * @param mounts List of allowed mount types (&lt;span pulumi-lang-nodejs=&#34;`cifs`&#34; pulumi-lang-dotnet=&#34;`Cifs`&#34; pulumi-lang-go=&#34;`cifs`&#34; pulumi-lang-python=&#34;`cifs`&#34; pulumi-lang-yaml=&#34;`cifs`&#34; pulumi-lang-java=&#34;`cifs`&#34;&gt;`cifs`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`nfs`&#34; pulumi-lang-dotnet=&#34;`Nfs`&#34; pulumi-lang-go=&#34;`nfs`&#34; pulumi-lang-python=&#34;`nfs`&#34; pulumi-lang-yaml=&#34;`nfs`&#34; pulumi-lang-java=&#34;`nfs`&#34;&gt;`nfs`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class ContainerFeaturesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param nesting Whether the container is nested (defaults to `false`)
+         * @param nesting Whether the container is nested (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class ContainerFeaturesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param nesting Whether the container is nested (defaults to `false`)
+         * @param nesting Whether the container is nested (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
          * 
          * @return builder
          * 

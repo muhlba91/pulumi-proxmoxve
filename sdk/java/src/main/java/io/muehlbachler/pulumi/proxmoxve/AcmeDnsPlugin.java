@@ -46,12 +46,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new AcmeDnsPlugin("example", AcmeDnsPluginArgs.builder()
+ *             .plugin("test")
  *             .api("aws")
  *             .data(Map.ofEntries(
  *                 Map.entry("AWS_ACCESS_KEY_ID", "EXAMPLE"),
  *                 Map.entry("AWS_SECRET_ACCESS_KEY", "EXAMPLE")
  *             ))
- *             .plugin("test")
  *             .build());
  * 
  *     }

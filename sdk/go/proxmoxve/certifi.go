@@ -13,6 +13,59 @@ import (
 )
 
 // Manages the custom SSL/TLS certificate for a specific node.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve"
+//	"github.com/pulumi/pulumi-tls/sdk/v5/go/tls"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			proxmoxVirtualEnvironmentCertificate, err := tls.NewPrivateKey(ctx, "proxmox_virtual_environment_certificate", &tls.PrivateKeyArgs{
+//				Algorithm: pulumi.String("RSA"),
+//				RsaBits:   pulumi.Int(2048),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			proxmoxVirtualEnvironmentCertificateSelfSignedCert, err := tls.NewSelfSignedCert(ctx, "proxmox_virtual_environment_certificate", &tls.SelfSignedCertArgs{
+//				KeyAlgorithm:  proxmoxVirtualEnvironmentCertificate.Algorithm,
+//				PrivateKeyPem: proxmoxVirtualEnvironmentCertificate.PrivateKeyPem,
+//				Subject: &tls.SelfSignedCertSubjectArgs{
+//					CommonName:   pulumi.String("example.com"),
+//					Organization: pulumi.String("Terraform Provider for Proxmox"),
+//				},
+//				ValidityPeriodHours: pulumi.Int(8760),
+//				AllowedUses: pulumi.StringArray{
+//					pulumi.String("key_encipherment"),
+//					pulumi.String("digital_signature"),
+//					pulumi.String("server_auth"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = proxmoxve.NewCertifi(ctx, "example", &proxmoxve.CertifiArgs{
+//				Certificate: proxmoxVirtualEnvironmentCertificateSelfSignedCert.CertPem,
+//				NodeName:    pulumi.String("first-node"),
+//				PrivateKey:  proxmoxVirtualEnvironmentCertificate.PrivateKeyPem,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Certifi struct {
 	pulumi.CustomResourceState
 

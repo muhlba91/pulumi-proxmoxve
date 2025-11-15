@@ -19,20 +19,20 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly string? DatastoreId;
         /// <summary>
-        /// The file format (defaults to `raw`).
+        /// The file format (defaults to `Raw`).
         /// </summary>
         public readonly string? FileFormat;
         /// <summary>
         /// Use am EFI vars template with
         /// distribution-specific and Microsoft Standard keys enrolled, if used with
-        /// EFI type=`4m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
-        /// to `false`).
+        /// EFI type=`4m`. Ignored for VMs with cpu.architecture=`Aarch64` (defaults
+        /// to `False`).
         /// </summary>
         public readonly bool? PreEnrolledKeys;
         /// <summary>
         /// Size and type of the OVMF EFI disk. `4m` is newer and
         /// recommended, and required for Secure Boot. For backwards compatibility
-        /// use `2m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
+        /// use `2m`. Ignored for VMs with cpu.architecture=`Aarch64` (defaults
         /// to `2m`).
         /// </summary>
         public readonly string? Type;

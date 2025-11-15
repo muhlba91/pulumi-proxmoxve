@@ -13,7 +13,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
     public sealed class VirtualMachine2CdromArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+        /// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `None` to leave the CD-ROM empty. Use `Cdrom` to connect to the physical drive.
         /// </summary>
         [Input("fileId")]
         public Input<string>? FileId { get; set; }

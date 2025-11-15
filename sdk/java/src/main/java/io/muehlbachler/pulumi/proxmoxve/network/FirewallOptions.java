@@ -46,8 +46,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new FirewallOptions("example", FirewallOptionsArgs.builder()
- *             .nodeName(proxmox_virtual_environment_vm.example().node_name())
- *             .vmId(proxmox_virtual_environment_vm.example().vm_id())
+ *             .nodeName(exampleProxmoxVirtualEnvironmentVm.nodeName())
+ *             .vmId(exampleProxmoxVirtualEnvironmentVm.vmId())
  *             .dhcp(true)
  *             .enabled(false)
  *             .ipfilter(true)
@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *             .outputPolicy("ACCEPT")
  *             .radv(true)
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(proxmox_virtual_environment_vm.example())
+ *                 .dependsOn(exampleProxmoxVirtualEnvironmentVm)
  *                 .build());
  * 
  *     }
@@ -67,6 +67,22 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * ### Container Firewall Options
+ * 
+ * Use the import ID format: `container/&lt;node_name&gt;/&lt;container_id&gt;`
+ * 
+ * Example uses node name `pve` and container ID `100`.
+ * 
+ * **Example:**
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:Network/firewallOptions:FirewallOptions container_firewall_options container/pve/100
+ * ```
  * 
  */
 @ResourceType(type="proxmoxve:Network/firewallOptions:FirewallOptions")
@@ -153,8 +169,8 @@ public class FirewallOptions extends com.pulumi.resources.CustomResource {
     }
     /**
      * Log level for incoming
-     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-     * `debug`, `nolog`).
+     * packets (&lt;span pulumi-lang-nodejs=&#34;`emerg`&#34; pulumi-lang-dotnet=&#34;`Emerg`&#34; pulumi-lang-go=&#34;`emerg`&#34; pulumi-lang-python=&#34;`emerg`&#34; pulumi-lang-yaml=&#34;`emerg`&#34; pulumi-lang-java=&#34;`emerg`&#34;&gt;`emerg`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`alert`&#34; pulumi-lang-dotnet=&#34;`Alert`&#34; pulumi-lang-go=&#34;`alert`&#34; pulumi-lang-python=&#34;`alert`&#34; pulumi-lang-yaml=&#34;`alert`&#34; pulumi-lang-java=&#34;`alert`&#34;&gt;`alert`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`crit`&#34; pulumi-lang-dotnet=&#34;`Crit`&#34; pulumi-lang-go=&#34;`crit`&#34; pulumi-lang-python=&#34;`crit`&#34; pulumi-lang-yaml=&#34;`crit`&#34; pulumi-lang-java=&#34;`crit`&#34;&gt;`crit`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`err`&#34; pulumi-lang-dotnet=&#34;`Err`&#34; pulumi-lang-go=&#34;`err`&#34; pulumi-lang-python=&#34;`err`&#34; pulumi-lang-yaml=&#34;`err`&#34; pulumi-lang-java=&#34;`err`&#34;&gt;`err`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`warning`&#34; pulumi-lang-dotnet=&#34;`Warning`&#34; pulumi-lang-go=&#34;`warning`&#34; pulumi-lang-python=&#34;`warning`&#34; pulumi-lang-yaml=&#34;`warning`&#34; pulumi-lang-java=&#34;`warning`&#34;&gt;`warning`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`notice`&#34; pulumi-lang-dotnet=&#34;`Notice`&#34; pulumi-lang-go=&#34;`notice`&#34; pulumi-lang-python=&#34;`notice`&#34; pulumi-lang-yaml=&#34;`notice`&#34; pulumi-lang-java=&#34;`notice`&#34;&gt;`notice`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`info`&#34; pulumi-lang-dotnet=&#34;`Info`&#34; pulumi-lang-go=&#34;`info`&#34; pulumi-lang-python=&#34;`info`&#34; pulumi-lang-yaml=&#34;`info`&#34; pulumi-lang-java=&#34;`info`&#34;&gt;`info`&lt;/span&gt;,
+     * &lt;span pulumi-lang-nodejs=&#34;`debug`&#34; pulumi-lang-dotnet=&#34;`Debug`&#34; pulumi-lang-go=&#34;`debug`&#34; pulumi-lang-python=&#34;`debug`&#34; pulumi-lang-yaml=&#34;`debug`&#34; pulumi-lang-java=&#34;`debug`&#34;&gt;`debug`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`nolog`&#34; pulumi-lang-dotnet=&#34;`Nolog`&#34; pulumi-lang-go=&#34;`nolog`&#34; pulumi-lang-python=&#34;`nolog`&#34; pulumi-lang-yaml=&#34;`nolog`&#34; pulumi-lang-java=&#34;`nolog`&#34;&gt;`nolog`&lt;/span&gt;).
      * 
      */
     @Export(name="logLevelIn", refs={String.class}, tree="[0]")
@@ -162,8 +178,8 @@ public class FirewallOptions extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Log level for incoming
-     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-     * `debug`, `nolog`).
+     * packets (&lt;span pulumi-lang-nodejs=&#34;`emerg`&#34; pulumi-lang-dotnet=&#34;`Emerg`&#34; pulumi-lang-go=&#34;`emerg`&#34; pulumi-lang-python=&#34;`emerg`&#34; pulumi-lang-yaml=&#34;`emerg`&#34; pulumi-lang-java=&#34;`emerg`&#34;&gt;`emerg`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`alert`&#34; pulumi-lang-dotnet=&#34;`Alert`&#34; pulumi-lang-go=&#34;`alert`&#34; pulumi-lang-python=&#34;`alert`&#34; pulumi-lang-yaml=&#34;`alert`&#34; pulumi-lang-java=&#34;`alert`&#34;&gt;`alert`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`crit`&#34; pulumi-lang-dotnet=&#34;`Crit`&#34; pulumi-lang-go=&#34;`crit`&#34; pulumi-lang-python=&#34;`crit`&#34; pulumi-lang-yaml=&#34;`crit`&#34; pulumi-lang-java=&#34;`crit`&#34;&gt;`crit`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`err`&#34; pulumi-lang-dotnet=&#34;`Err`&#34; pulumi-lang-go=&#34;`err`&#34; pulumi-lang-python=&#34;`err`&#34; pulumi-lang-yaml=&#34;`err`&#34; pulumi-lang-java=&#34;`err`&#34;&gt;`err`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`warning`&#34; pulumi-lang-dotnet=&#34;`Warning`&#34; pulumi-lang-go=&#34;`warning`&#34; pulumi-lang-python=&#34;`warning`&#34; pulumi-lang-yaml=&#34;`warning`&#34; pulumi-lang-java=&#34;`warning`&#34;&gt;`warning`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`notice`&#34; pulumi-lang-dotnet=&#34;`Notice`&#34; pulumi-lang-go=&#34;`notice`&#34; pulumi-lang-python=&#34;`notice`&#34; pulumi-lang-yaml=&#34;`notice`&#34; pulumi-lang-java=&#34;`notice`&#34;&gt;`notice`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`info`&#34; pulumi-lang-dotnet=&#34;`Info`&#34; pulumi-lang-go=&#34;`info`&#34; pulumi-lang-python=&#34;`info`&#34; pulumi-lang-yaml=&#34;`info`&#34; pulumi-lang-java=&#34;`info`&#34;&gt;`info`&lt;/span&gt;,
+     * &lt;span pulumi-lang-nodejs=&#34;`debug`&#34; pulumi-lang-dotnet=&#34;`Debug`&#34; pulumi-lang-go=&#34;`debug`&#34; pulumi-lang-python=&#34;`debug`&#34; pulumi-lang-yaml=&#34;`debug`&#34; pulumi-lang-java=&#34;`debug`&#34;&gt;`debug`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`nolog`&#34; pulumi-lang-dotnet=&#34;`Nolog`&#34; pulumi-lang-go=&#34;`nolog`&#34; pulumi-lang-python=&#34;`nolog`&#34; pulumi-lang-yaml=&#34;`nolog`&#34; pulumi-lang-java=&#34;`nolog`&#34;&gt;`nolog`&lt;/span&gt;).
      * 
      */
     public Output<Optional<String>> logLevelIn() {
@@ -171,8 +187,8 @@ public class FirewallOptions extends com.pulumi.resources.CustomResource {
     }
     /**
      * Log level for outgoing
-     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-     * `debug`, `nolog`).
+     * packets (&lt;span pulumi-lang-nodejs=&#34;`emerg`&#34; pulumi-lang-dotnet=&#34;`Emerg`&#34; pulumi-lang-go=&#34;`emerg`&#34; pulumi-lang-python=&#34;`emerg`&#34; pulumi-lang-yaml=&#34;`emerg`&#34; pulumi-lang-java=&#34;`emerg`&#34;&gt;`emerg`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`alert`&#34; pulumi-lang-dotnet=&#34;`Alert`&#34; pulumi-lang-go=&#34;`alert`&#34; pulumi-lang-python=&#34;`alert`&#34; pulumi-lang-yaml=&#34;`alert`&#34; pulumi-lang-java=&#34;`alert`&#34;&gt;`alert`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`crit`&#34; pulumi-lang-dotnet=&#34;`Crit`&#34; pulumi-lang-go=&#34;`crit`&#34; pulumi-lang-python=&#34;`crit`&#34; pulumi-lang-yaml=&#34;`crit`&#34; pulumi-lang-java=&#34;`crit`&#34;&gt;`crit`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`err`&#34; pulumi-lang-dotnet=&#34;`Err`&#34; pulumi-lang-go=&#34;`err`&#34; pulumi-lang-python=&#34;`err`&#34; pulumi-lang-yaml=&#34;`err`&#34; pulumi-lang-java=&#34;`err`&#34;&gt;`err`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`warning`&#34; pulumi-lang-dotnet=&#34;`Warning`&#34; pulumi-lang-go=&#34;`warning`&#34; pulumi-lang-python=&#34;`warning`&#34; pulumi-lang-yaml=&#34;`warning`&#34; pulumi-lang-java=&#34;`warning`&#34;&gt;`warning`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`notice`&#34; pulumi-lang-dotnet=&#34;`Notice`&#34; pulumi-lang-go=&#34;`notice`&#34; pulumi-lang-python=&#34;`notice`&#34; pulumi-lang-yaml=&#34;`notice`&#34; pulumi-lang-java=&#34;`notice`&#34;&gt;`notice`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`info`&#34; pulumi-lang-dotnet=&#34;`Info`&#34; pulumi-lang-go=&#34;`info`&#34; pulumi-lang-python=&#34;`info`&#34; pulumi-lang-yaml=&#34;`info`&#34; pulumi-lang-java=&#34;`info`&#34;&gt;`info`&lt;/span&gt;,
+     * &lt;span pulumi-lang-nodejs=&#34;`debug`&#34; pulumi-lang-dotnet=&#34;`Debug`&#34; pulumi-lang-go=&#34;`debug`&#34; pulumi-lang-python=&#34;`debug`&#34; pulumi-lang-yaml=&#34;`debug`&#34; pulumi-lang-java=&#34;`debug`&#34;&gt;`debug`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`nolog`&#34; pulumi-lang-dotnet=&#34;`Nolog`&#34; pulumi-lang-go=&#34;`nolog`&#34; pulumi-lang-python=&#34;`nolog`&#34; pulumi-lang-yaml=&#34;`nolog`&#34; pulumi-lang-java=&#34;`nolog`&#34;&gt;`nolog`&lt;/span&gt;).
      * 
      */
     @Export(name="logLevelOut", refs={String.class}, tree="[0]")
@@ -180,8 +196,8 @@ public class FirewallOptions extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Log level for outgoing
-     * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-     * `debug`, `nolog`).
+     * packets (&lt;span pulumi-lang-nodejs=&#34;`emerg`&#34; pulumi-lang-dotnet=&#34;`Emerg`&#34; pulumi-lang-go=&#34;`emerg`&#34; pulumi-lang-python=&#34;`emerg`&#34; pulumi-lang-yaml=&#34;`emerg`&#34; pulumi-lang-java=&#34;`emerg`&#34;&gt;`emerg`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`alert`&#34; pulumi-lang-dotnet=&#34;`Alert`&#34; pulumi-lang-go=&#34;`alert`&#34; pulumi-lang-python=&#34;`alert`&#34; pulumi-lang-yaml=&#34;`alert`&#34; pulumi-lang-java=&#34;`alert`&#34;&gt;`alert`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`crit`&#34; pulumi-lang-dotnet=&#34;`Crit`&#34; pulumi-lang-go=&#34;`crit`&#34; pulumi-lang-python=&#34;`crit`&#34; pulumi-lang-yaml=&#34;`crit`&#34; pulumi-lang-java=&#34;`crit`&#34;&gt;`crit`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`err`&#34; pulumi-lang-dotnet=&#34;`Err`&#34; pulumi-lang-go=&#34;`err`&#34; pulumi-lang-python=&#34;`err`&#34; pulumi-lang-yaml=&#34;`err`&#34; pulumi-lang-java=&#34;`err`&#34;&gt;`err`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`warning`&#34; pulumi-lang-dotnet=&#34;`Warning`&#34; pulumi-lang-go=&#34;`warning`&#34; pulumi-lang-python=&#34;`warning`&#34; pulumi-lang-yaml=&#34;`warning`&#34; pulumi-lang-java=&#34;`warning`&#34;&gt;`warning`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`notice`&#34; pulumi-lang-dotnet=&#34;`Notice`&#34; pulumi-lang-go=&#34;`notice`&#34; pulumi-lang-python=&#34;`notice`&#34; pulumi-lang-yaml=&#34;`notice`&#34; pulumi-lang-java=&#34;`notice`&#34;&gt;`notice`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`info`&#34; pulumi-lang-dotnet=&#34;`Info`&#34; pulumi-lang-go=&#34;`info`&#34; pulumi-lang-python=&#34;`info`&#34; pulumi-lang-yaml=&#34;`info`&#34; pulumi-lang-java=&#34;`info`&#34;&gt;`info`&lt;/span&gt;,
+     * &lt;span pulumi-lang-nodejs=&#34;`debug`&#34; pulumi-lang-dotnet=&#34;`Debug`&#34; pulumi-lang-go=&#34;`debug`&#34; pulumi-lang-python=&#34;`debug`&#34; pulumi-lang-yaml=&#34;`debug`&#34; pulumi-lang-java=&#34;`debug`&#34;&gt;`debug`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`nolog`&#34; pulumi-lang-dotnet=&#34;`Nolog`&#34; pulumi-lang-go=&#34;`nolog`&#34; pulumi-lang-python=&#34;`nolog`&#34; pulumi-lang-yaml=&#34;`nolog`&#34; pulumi-lang-java=&#34;`nolog`&#34;&gt;`nolog`&lt;/span&gt;).
      * 
      */
     public Output<Optional<String>> logLevelOut() {

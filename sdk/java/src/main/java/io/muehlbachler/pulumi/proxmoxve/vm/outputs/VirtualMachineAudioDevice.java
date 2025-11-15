@@ -21,13 +21,13 @@ public final class VirtualMachineAudioDevice {
      */
     private @Nullable String device;
     /**
-     * @return The driver (defaults to `spice`).
+     * @return The driver (defaults to &lt;span pulumi-lang-nodejs=&#34;`spice`&#34; pulumi-lang-dotnet=&#34;`Spice`&#34; pulumi-lang-go=&#34;`spice`&#34; pulumi-lang-python=&#34;`spice`&#34; pulumi-lang-yaml=&#34;`spice`&#34; pulumi-lang-java=&#34;`spice`&#34;&gt;`spice`&lt;/span&gt;).
      * 
      */
     private @Nullable String driver;
     /**
      * @return Whether to enable the audio device (defaults
-     * to `true`).
+     * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     private @Nullable Boolean enabled;
@@ -44,7 +44,7 @@ public final class VirtualMachineAudioDevice {
         return Optional.ofNullable(this.device);
     }
     /**
-     * @return The driver (defaults to `spice`).
+     * @return The driver (defaults to &lt;span pulumi-lang-nodejs=&#34;`spice`&#34; pulumi-lang-dotnet=&#34;`Spice`&#34; pulumi-lang-go=&#34;`spice`&#34; pulumi-lang-python=&#34;`spice`&#34; pulumi-lang-yaml=&#34;`spice`&#34; pulumi-lang-java=&#34;`spice`&#34;&gt;`spice`&lt;/span&gt;).
      * 
      */
     public Optional<String> driver() {
@@ -52,7 +52,7 @@ public final class VirtualMachineAudioDevice {
     }
     /**
      * @return Whether to enable the audio device (defaults
-     * to `true`).
+     * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Optional<Boolean> enabled() {

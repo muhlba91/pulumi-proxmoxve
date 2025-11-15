@@ -49,25 +49,26 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var webserver = new FirewallSecurityGroup("webserver", FirewallSecurityGroupArgs.builder()
+ *             .name("webserver")
  *             .comment("Managed by Pulumi")
  *             .rules(            
  *                 FirewallSecurityGroupRuleArgs.builder()
+ *                     .type("in")
  *                     .action("ACCEPT")
  *                     .comment("Allow HTTP")
  *                     .dest("192.168.1.5")
  *                     .dport("80")
- *                     .log("info")
  *                     .proto("tcp")
- *                     .type("in")
+ *                     .log("info")
  *                     .build(),
  *                 FirewallSecurityGroupRuleArgs.builder()
+ *                     .type("in")
  *                     .action("ACCEPT")
  *                     .comment("Allow HTTPS")
  *                     .dest("192.168.1.5")
  *                     .dport("443")
- *                     .log("info")
  *                     .proto("tcp")
- *                     .type("in")
+ *                     .log("info")
  *                     .build())
  *             .build());
  * 

@@ -30,6 +30,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := hardware.NewDir(ctx, "example", &hardware.DirArgs{
 //				Comment: pulumi.String("This is a comment"),
+//				Name:    pulumi.String("example"),
 //				Maps: mapping.DirMapTypeArray{
 //					&mapping.DirMapTypeArgs{
 //						Node: pulumi.String("pve"),

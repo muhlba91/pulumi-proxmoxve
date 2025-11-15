@@ -15,7 +15,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     {
         /// <summary>
         /// Whether to enable the QEMU agent (defaults
-        /// to `false`).
+        /// to `False`).
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
@@ -25,11 +25,11 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         public readonly string? Timeout;
         /// <summary>
         /// Whether to enable the FSTRIM feature in the QEMU agent
-        /// (defaults to `false`).
+        /// (defaults to `False`).
         /// </summary>
         public readonly bool? Trim;
         /// <summary>
-        /// The QEMU agent interface type (defaults to `virtio`).
+        /// The QEMU agent interface type (defaults to `Virtio`).
         /// </summary>
         public readonly string? Type;
 

@@ -34,13 +34,13 @@ import (
 //				return err
 //			}
 //			ctx.Export("dataProxmoxVirtualEnvironmentSdnZoneSimple", pulumi.Map{
-//				"id":          example.Id,
-//				"nodes":       example.Nodes,
-//				"mtu":         example.Mtu,
-//				"dns":         example.Dns,
-//				"dns_zone":    example.DnsZone,
-//				"ipam":        example.Ipam,
-//				"reverse_dns": example.ReverseDns,
+//				"id":         example.Id,
+//				"nodes":      example.Nodes,
+//				"mtu":        example.Mtu,
+//				"dns":        example.Dns,
+//				"dnsZone":    example.DnsZone,
+//				"ipam":       example.Ipam,
+//				"reverseDns": example.ReverseDns,
 //			})
 //			return nil
 //		})
@@ -65,6 +65,8 @@ type LookupSimpleArgs struct {
 
 // A collection of values returned by getSimple.
 type LookupSimpleResult struct {
+	// The type of the DHCP backend for this zone.
+	Dhcp string `pulumi:"dhcp"`
 	// DNS API server address.
 	Dns string `pulumi:"dns"`
 	// DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
@@ -117,6 +119,11 @@ func (o LookupSimpleResultOutput) ToLookupSimpleResultOutput() LookupSimpleResul
 
 func (o LookupSimpleResultOutput) ToLookupSimpleResultOutputWithContext(ctx context.Context) LookupSimpleResultOutput {
 	return o
+}
+
+// The type of the DHCP backend for this zone.
+func (o LookupSimpleResultOutput) Dhcp() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSimpleResult) string { return v.Dhcp }).(pulumi.StringOutput)
 }
 
 // DNS API server address.

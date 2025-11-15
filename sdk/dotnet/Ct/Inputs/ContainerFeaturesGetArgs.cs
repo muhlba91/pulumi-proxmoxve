@@ -13,13 +13,13 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
     public sealed class ContainerFeaturesGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the container supports FUSE mounts (defaults to `false`)
+        /// Whether the container supports FUSE mounts (defaults to `False`)
         /// </summary>
         [Input("fuse")]
         public Input<bool>? Fuse { get; set; }
 
         /// <summary>
-        /// Whether the container supports `keyctl()` system call (defaults to `false`)
+        /// Whether the container supports `keyctl()` system call (defaults to `False`)
         /// </summary>
         [Input("keyctl")]
         public Input<bool>? Keyctl { get; set; }
@@ -28,7 +28,7 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
         private InputList<string>? _mounts;
 
         /// <summary>
-        /// List of allowed mount types (`cifs` or `nfs`)
+        /// List of allowed mount types (`Cifs` or `Nfs`)
         /// </summary>
         public InputList<string> Mounts
         {
@@ -37,7 +37,7 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
         }
 
         /// <summary>
-        /// Whether the container is nested (defaults to `false`)
+        /// Whether the container is nested (defaults to `False`)
         /// </summary>
         [Input("nesting")]
         public Input<bool>? Nesting { get; set; }

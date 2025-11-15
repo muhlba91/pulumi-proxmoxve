@@ -11,6 +11,51 @@ namespace Pulumi.ProxmoxVE
 {
     /// <summary>
     /// Manages the custom SSL/TLS certificate for a specific node.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// using Tls = Pulumi.Tls;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var proxmoxVirtualEnvironmentCertificate = new Tls.PrivateKey("proxmox_virtual_environment_certificate", new()
+    ///     {
+    ///         Algorithm = "RSA",
+    ///         RsaBits = 2048,
+    ///     });
+    /// 
+    ///     var proxmoxVirtualEnvironmentCertificateSelfSignedCert = new Tls.SelfSignedCert("proxmox_virtual_environment_certificate", new()
+    ///     {
+    ///         KeyAlgorithm = proxmoxVirtualEnvironmentCertificate.Algorithm,
+    ///         PrivateKeyPem = proxmoxVirtualEnvironmentCertificate.PrivateKeyPem,
+    ///         Subject = new Tls.Inputs.SelfSignedCertSubjectArgs
+    ///         {
+    ///             CommonName = "example.com",
+    ///             Organization = "Terraform Provider for Proxmox",
+    ///         },
+    ///         ValidityPeriodHours = 8760,
+    ///         AllowedUses = new[]
+    ///         {
+    ///             "key_encipherment",
+    ///             "digital_signature",
+    ///             "server_auth",
+    ///         },
+    ///     });
+    /// 
+    ///     var example = new ProxmoxVE.Certifi("example", new()
+    ///     {
+    ///         Certificate = proxmoxVirtualEnvironmentCertificateSelfSignedCert.CertPem,
+    ///         NodeName = "first-node",
+    ///         PrivateKey = proxmoxVirtualEnvironmentCertificate.PrivateKeyPem,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:index/certifi:Certifi")]
     public partial class Certifi : global::Pulumi.CustomResource

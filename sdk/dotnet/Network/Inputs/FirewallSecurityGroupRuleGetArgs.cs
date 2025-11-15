@@ -46,7 +46,7 @@ namespace Pulumi.ProxmoxVE.Network.Inputs
         public Input<string>? Dport { get; set; }
 
         /// <summary>
-        /// Enable this rule. Defaults to `true`.
+        /// Enable this rule. Defaults to `True`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -60,8 +60,8 @@ namespace Pulumi.ProxmoxVE.Network.Inputs
         public Input<string>? Iface { get; set; }
 
         /// <summary>
-        /// Log level for this rule (`emerg`, `alert`, `crit`,
-        /// `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+        /// Log level for this rule (`Emerg`, `Alert`, `Crit`,
+        /// `Err`, `Warning`, `Notice`, `Info`, `Debug`, `Nolog`).
         /// </summary>
         [Input("log")]
         public Input<string>? Log { get; set; }
@@ -114,7 +114,7 @@ namespace Pulumi.ProxmoxVE.Network.Inputs
         public Input<string>? Sport { get; set; }
 
         /// <summary>
-        /// Rule type (`in`, `out`, `forward`).
+        /// Rule type (`In`, `Out`, `Forward`).
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -12,6 +12,39 @@ namespace Pulumi.ProxmoxVE
     /// <summary>
     /// Manages the DNS configuration for a specific node.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var firstNodeDnsConfiguration = ProxmoxVE.Network.GetDNS.Invoke(new()
+    ///     {
+    ///         NodeName = "first-node",
+    ///     });
+    /// 
+    ///     var firstNodeDnsConfigurationDNS = new ProxmoxVE.DNS("first_node_dns_configuration", new()
+    ///     {
+    ///         Domain = firstNodeDnsConfiguration.Apply(getDNSResult =&gt; getDNSResult.Domain),
+    ///         NodeName = firstNodeDnsConfiguration.Apply(getDNSResult =&gt; getDNSResult.NodeName),
+    ///         Servers = new[]
+    ///         {
+    ///             "1.1.1.1",
+    ///             "1.0.0.1",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Important Notes
+    /// 
+    /// Be careful not to use this resource multiple times for the same node.
+    /// 
     /// ## Import
     /// 
     /// Instances can be imported using the `node_name`, e.g.,

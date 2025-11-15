@@ -29,8 +29,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := network.NewFirewallOptions(ctx, "example", &network.FirewallOptionsArgs{
-//				NodeName:     pulumi.Any(proxmox_virtual_environment_vm.Example.Node_name),
-//				VmId:         pulumi.Any(proxmox_virtual_environment_vm.Example.Vm_id),
+//				NodeName:     pulumi.Any(exampleProxmoxVirtualEnvironmentVm.NodeName),
+//				VmId:         pulumi.Any(exampleProxmoxVirtualEnvironmentVm.VmId),
 //				Dhcp:         pulumi.Bool(true),
 //				Enabled:      pulumi.Bool(false),
 //				Ipfilter:     pulumi.Bool(true),
@@ -42,7 +42,7 @@ import (
 //				OutputPolicy: pulumi.String("ACCEPT"),
 //				Radv:         pulumi.Bool(true),
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				proxmox_virtual_environment_vm.Example,
+//				exampleProxmoxVirtualEnvironmentVm,
 //			}))
 //			if err != nil {
 //				return err
@@ -51,6 +51,22 @@ import (
 //		})
 //	}
 //
+// ```
+//
+// ## Import
+//
+// ### Container Firewall Options
+//
+// Use the import ID format: `container/<node_name>/<container_id>`
+//
+// Example uses node name `pve` and container ID `100`.
+//
+// **Example:**
+//
+// bash
+//
+// ```sh
+// $ pulumi import proxmoxve:Network/firewallOptions:FirewallOptions container_firewall_options container/pve/100
 // ```
 type FirewallOptions struct {
 	pulumi.CustomResourceState

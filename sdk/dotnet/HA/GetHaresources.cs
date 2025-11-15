@@ -24,8 +24,10 @@ namespace Pulumi.ProxmoxVE.HA
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // This will fetch the set of all HA resource identifiers.
         ///     var exampleAll = ProxmoxVE.HA.GetHAResources.Invoke();
         /// 
+        ///     // This will fetch the set of HA resource identifiers that correspond to virtual machines.
         ///     var exampleVm = ProxmoxVE.HA.GetHAResources.Invoke(new()
         ///     {
         ///         Type = "vm",
@@ -58,8 +60,10 @@ namespace Pulumi.ProxmoxVE.HA
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // This will fetch the set of all HA resource identifiers.
         ///     var exampleAll = ProxmoxVE.HA.GetHAResources.Invoke();
         /// 
+        ///     // This will fetch the set of HA resource identifiers that correspond to virtual machines.
         ///     var exampleVm = ProxmoxVE.HA.GetHAResources.Invoke(new()
         ///     {
         ///         Type = "vm",
@@ -92,8 +96,10 @@ namespace Pulumi.ProxmoxVE.HA
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // This will fetch the set of all HA resource identifiers.
         ///     var exampleAll = ProxmoxVE.HA.GetHAResources.Invoke();
         /// 
+        ///     // This will fetch the set of HA resource identifiers that correspond to virtual machines.
         ///     var exampleVm = ProxmoxVE.HA.GetHAResources.Invoke(new()
         ///     {
         ///         Type = "vm",
@@ -118,7 +124,7 @@ namespace Pulumi.ProxmoxVE.HA
     public sealed class GetHAResourcesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The type of High Availability resources to fetch (`vm` or `ct`). All resources will be fetched if this option is unset.
+        /// The type of High Availability resources to fetch (`Vm` or `Ct`). All resources will be fetched if this option is unset.
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
@@ -132,7 +138,7 @@ namespace Pulumi.ProxmoxVE.HA
     public sealed class GetHAResourcesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The type of High Availability resources to fetch (`vm` or `ct`). All resources will be fetched if this option is unset.
+        /// The type of High Availability resources to fetch (`Vm` or `Ct`). All resources will be fetched if this option is unset.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -156,7 +162,7 @@ namespace Pulumi.ProxmoxVE.HA
         /// </summary>
         public readonly ImmutableArray<string> ResourceIds;
         /// <summary>
-        /// The type of High Availability resources to fetch (`vm` or `ct`). All resources will be fetched if this option is unset.
+        /// The type of High Availability resources to fetch (`Vm` or `Ct`). All resources will be fetched if this option is unset.
         /// </summary>
         public readonly string? Type;
 

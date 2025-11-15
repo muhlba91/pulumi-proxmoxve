@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 public final class FirewallLogRatelimit {
     /**
      * @return Initial burst of packages which will always get
-     * logged before the rate is applied (defaults to `5`).
+     * logged before the rate is applied (defaults to &lt;span pulumi-lang-nodejs=&#34;`5`&#34; pulumi-lang-dotnet=&#34;`5`&#34; pulumi-lang-go=&#34;`5`&#34; pulumi-lang-python=&#34;`5`&#34; pulumi-lang-yaml=&#34;`5`&#34; pulumi-lang-java=&#34;`5`&#34;&gt;`5`&lt;/span&gt;).
      * 
      */
     private @Nullable Integer burst;
@@ -34,7 +34,7 @@ public final class FirewallLogRatelimit {
     private FirewallLogRatelimit() {}
     /**
      * @return Initial burst of packages which will always get
-     * logged before the rate is applied (defaults to `5`).
+     * logged before the rate is applied (defaults to &lt;span pulumi-lang-nodejs=&#34;`5`&#34; pulumi-lang-dotnet=&#34;`5`&#34; pulumi-lang-go=&#34;`5`&#34; pulumi-lang-python=&#34;`5`&#34; pulumi-lang-yaml=&#34;`5`&#34; pulumi-lang-java=&#34;`5`&#34;&gt;`5`&lt;/span&gt;).
      * 
      */
     public Optional<Integer> burst() {

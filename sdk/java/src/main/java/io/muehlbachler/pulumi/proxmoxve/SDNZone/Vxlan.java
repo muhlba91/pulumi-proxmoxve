@@ -46,16 +46,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Vxlan("example", VxlanArgs.builder()
- *             .dns("1.1.1.1")
- *             .dnsZone("example.com")
  *             .zoneId("vxlan1")
- *             .ipam("pve")
- *             .mtu(1450)
- *             .nodes("pve")
  *             .peers(            
  *                 "10.0.0.1",
  *                 "10.0.0.2",
  *                 "10.0.0.3")
+ *             .mtu(1450)
+ *             .dns("1.1.1.1")
+ *             .dnsZone("example.com")
+ *             .ipam("pve")
  *             .reverseDns("1.1.1.1")
  *             .build());
  * 

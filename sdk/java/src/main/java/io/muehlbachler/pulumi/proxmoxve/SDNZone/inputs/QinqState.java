@@ -139,14 +139,14 @@ public final class QinqState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Service VLAN tag for QinQ. The tag must be between `1` and `4094`.
+     * Service VLAN tag for QinQ. The tag must be between &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`4094`&#34; pulumi-lang-dotnet=&#34;`4094`&#34; pulumi-lang-go=&#34;`4094`&#34; pulumi-lang-python=&#34;`4094`&#34; pulumi-lang-yaml=&#34;`4094`&#34; pulumi-lang-java=&#34;`4094`&#34;&gt;`4094`&lt;/span&gt;.
      * 
      */
     @Import(name="serviceVlan")
     private @Nullable Output<Integer> serviceVlan;
 
     /**
-     * @return Service VLAN tag for QinQ. The tag must be between `1` and `4094`.
+     * @return Service VLAN tag for QinQ. The tag must be between &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`4094`&#34; pulumi-lang-dotnet=&#34;`4094`&#34; pulumi-lang-go=&#34;`4094`&#34; pulumi-lang-python=&#34;`4094`&#34; pulumi-lang-yaml=&#34;`4094`&#34; pulumi-lang-java=&#34;`4094`&#34;&gt;`4094`&lt;/span&gt;.
      * 
      */
     public Optional<Output<Integer>> serviceVlan() {
@@ -412,7 +412,7 @@ public final class QinqState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceVlan Service VLAN tag for QinQ. The tag must be between `1` and `4094`.
+         * @param serviceVlan Service VLAN tag for QinQ. The tag must be between &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`4094`&#34; pulumi-lang-dotnet=&#34;`4094`&#34; pulumi-lang-go=&#34;`4094`&#34; pulumi-lang-python=&#34;`4094`&#34; pulumi-lang-yaml=&#34;`4094`&#34; pulumi-lang-java=&#34;`4094`&#34;&gt;`4094`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -423,7 +423,7 @@ public final class QinqState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceVlan Service VLAN tag for QinQ. The tag must be between `1` and `4094`.
+         * @param serviceVlan Service VLAN tag for QinQ. The tag must be between &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`4094`&#34; pulumi-lang-dotnet=&#34;`4094`&#34; pulumi-lang-go=&#34;`4094`&#34; pulumi-lang-python=&#34;`4094`&#34; pulumi-lang-yaml=&#34;`4094`&#34; pulumi-lang-java=&#34;`4094`&#34;&gt;`4094`&lt;/span&gt;.
          * 
          * @return builder
          * 

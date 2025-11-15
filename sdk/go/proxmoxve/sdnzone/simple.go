@@ -29,14 +29,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sdnzone.NewSimple(ctx, "example", &sdnzone.SimpleArgs{
-//				Dns:     pulumi.String("1.1.1.1"),
-//				DnsZone: pulumi.String("example.com"),
-//				ZoneId:  pulumi.String("simple1"),
-//				Ipam:    pulumi.String("pve"),
-//				Mtu:     pulumi.Int(1500),
+//				ZoneId: pulumi.String("simple1"),
 //				Nodes: pulumi.StringArray{
 //					pulumi.String("pve"),
 //				},
+//				Mtu:        pulumi.Int(1500),
+//				Dns:        pulumi.String("1.1.1.1"),
+//				DnsZone:    pulumi.String("example.com"),
+//				Ipam:       pulumi.String("pve"),
 //				ReverseDns: pulumi.String("1.1.1.1"),
 //			})
 //			if err != nil {
@@ -89,9 +89,6 @@ func NewSimple(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Nodes == nil {
-		return nil, errors.New("invalid value for required argument 'Nodes'")
-	}
 	if args.ZoneId == nil {
 		return nil, errors.New("invalid value for required argument 'ZoneId'")
 	}

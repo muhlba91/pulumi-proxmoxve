@@ -29,19 +29,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sdnzone.NewVxlan(ctx, "example", &sdnzone.VxlanArgs{
-//				Dns:     pulumi.String("1.1.1.1"),
-//				DnsZone: pulumi.String("example.com"),
-//				ZoneId:  pulumi.String("vxlan1"),
-//				Ipam:    pulumi.String("pve"),
-//				Mtu:     pulumi.Int(1450),
-//				Nodes: pulumi.StringArray{
-//					pulumi.String("pve"),
-//				},
+//				ZoneId: pulumi.String("vxlan1"),
 //				Peers: pulumi.StringArray{
 //					pulumi.String("10.0.0.1"),
 //					pulumi.String("10.0.0.2"),
 //					pulumi.String("10.0.0.3"),
 //				},
+//				Mtu:        pulumi.Int(1450),
+//				Dns:        pulumi.String("1.1.1.1"),
+//				DnsZone:    pulumi.String("example.com"),
+//				Ipam:       pulumi.String("pve"),
 //				ReverseDns: pulumi.String("1.1.1.1"),
 //			})
 //			if err != nil {
@@ -94,9 +91,6 @@ func NewVxlan(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Nodes == nil {
-		return nil, errors.New("invalid value for required argument 'Nodes'")
-	}
 	if args.Peers == nil {
 		return nil, errors.New("invalid value for required argument 'Peers'")
 	}

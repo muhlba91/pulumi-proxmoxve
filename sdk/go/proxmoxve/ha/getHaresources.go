@@ -26,11 +26,13 @@ import (
 // )
 // func main() {
 // pulumi.Run(func(ctx *pulumi.Context) error {
+// // This will fetch the set of all HA resource identifiers.
 // exampleAll, err := ha.GetHAResources(ctx, &ha.GetHAResourcesArgs{
 // }, nil);
 // if err != nil {
 // return err
 // }
+// // This will fetch the set of HA resource identifiers that correspond to virtual machines.
 // exampleVm, err := ha.GetHAResources(ctx, &ha.GetHAResourcesArgs{
 // Type: pulumi.StringRef("vm"),
 // }, nil);

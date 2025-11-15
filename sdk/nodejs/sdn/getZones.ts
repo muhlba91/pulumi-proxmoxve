@@ -15,10 +15,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
+ * // List all SDN zones
  * const all = proxmoxve.Sdn.getZones({});
+ * // List only EVPN zones
  * const evpnOnly = proxmoxve.Sdn.getZones({
  *     type: "evpn",
  * });
+ * // List only Simple zones  
  * const simpleOnly = proxmoxve.Sdn.getZones({
  *     type: "simple",
  * });
@@ -26,8 +29,8 @@ import * as utilities from "../utilities";
  *     zones: all.then(all => all.zones),
  * };
  * export const dataProxmoxVirtualEnvironmentSdnZonesFiltered = {
- *     evpn_zones: evpnOnly.then(evpnOnly => evpnOnly.zones),
- *     simple_zones: simpleOnly.then(simpleOnly => simpleOnly.zones),
+ *     evpnZones: evpnOnly.then(evpnOnly => evpnOnly.zones),
+ *     simpleZones: simpleOnly.then(simpleOnly => simpleOnly.zones),
  * };
  * ```
  */
@@ -75,10 +78,13 @@ export interface GetZonesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
+ * // List all SDN zones
  * const all = proxmoxve.Sdn.getZones({});
+ * // List only EVPN zones
  * const evpnOnly = proxmoxve.Sdn.getZones({
  *     type: "evpn",
  * });
+ * // List only Simple zones  
  * const simpleOnly = proxmoxve.Sdn.getZones({
  *     type: "simple",
  * });
@@ -86,8 +92,8 @@ export interface GetZonesResult {
  *     zones: all.then(all => all.zones),
  * };
  * export const dataProxmoxVirtualEnvironmentSdnZonesFiltered = {
- *     evpn_zones: evpnOnly.then(evpnOnly => evpnOnly.zones),
- *     simple_zones: simpleOnly.then(simpleOnly => simpleOnly.zones),
+ *     evpnZones: evpnOnly.then(evpnOnly => evpnOnly.zones),
+ *     simpleZones: simpleOnly.then(simpleOnly => simpleOnly.zones),
  * };
  * ```
  */

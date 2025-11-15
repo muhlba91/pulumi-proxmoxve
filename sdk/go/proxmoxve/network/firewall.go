@@ -28,16 +28,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := network.NewFirewall(ctx, "example", &network.FirewallArgs{
-//				Ebtables:      pulumi.Bool(false),
 //				Enabled:       pulumi.Bool(false),
-//				ForwardPolicy: pulumi.String("ACCEPT"),
+//				Ebtables:      pulumi.Bool(false),
 //				InputPolicy:   pulumi.String("DROP"),
+//				OutputPolicy:  pulumi.String("ACCEPT"),
+//				ForwardPolicy: pulumi.String("ACCEPT"),
 //				LogRatelimit: &network.FirewallLogRatelimitArgs{
-//					Burst:   pulumi.Int(10),
 //					Enabled: pulumi.Bool(false),
+//					Burst:   pulumi.Int(10),
 //					Rate:    pulumi.String("5/second"),
 //				},
-//				OutputPolicy: pulumi.String("ACCEPT"),
 //			})
 //			if err != nil {
 //				return err

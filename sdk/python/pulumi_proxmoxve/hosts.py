@@ -174,6 +174,27 @@ class Hosts(pulumi.CustomResource):
         """
         Manages the host entries on a specific node.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        first_node_host_entries = proxmoxve.Hosts("first_node_host_entries",
+            node_name="first-node",
+            entries=[{
+                "address": "127.0.0.1",
+                "hostnames": [
+                    "localhost",
+                    "localhost.localdomain",
+                ],
+            }])
+        ```
+
+        ## Important Notes
+
+        Be careful not to use this resource multiple times for the same node.
+
         ## Import
 
         Instances can be imported using the `node_name`, e.g.,
@@ -197,6 +218,27 @@ class Hosts(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages the host entries on a specific node.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        first_node_host_entries = proxmoxve.Hosts("first_node_host_entries",
+            node_name="first-node",
+            entries=[{
+                "address": "127.0.0.1",
+                "hostnames": [
+                    "localhost",
+                    "localhost.localdomain",
+                ],
+            }])
+        ```
+
+        ## Important Notes
+
+        Be careful not to use this resource multiple times for the same node.
 
         ## Import
 

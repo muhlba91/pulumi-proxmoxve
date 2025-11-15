@@ -14,30 +14,6 @@ import (
 // Retrieves information about a specific High Availability group.
 //
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/ha"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			all, err := ha.GetHAGroups(ctx, map[string]interface{}{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			example := "TODO: For expression"
-//			ctx.Export("proxmoxVirtualEnvironmentHagroupsFull", example)
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupHAGroup(ctx *pulumi.Context, args *LookupHAGroupArgs, opts ...pulumi.InvokeOption) (*LookupHAGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupHAGroupResult

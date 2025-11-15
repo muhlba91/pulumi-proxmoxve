@@ -24,15 +24,11 @@ namespace Pulumi.ProxmoxVE.Acme
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // This will fetch all ACME accounts...
         ///     var all = ProxmoxVE.Acme.GetAccounts.Invoke();
         /// 
-        ///     var example = .Select(__value =&gt; 
-        ///     {
-        ///         return ProxmoxVE.Acme.GetAccount.Invoke(new()
-        ///         {
-        ///             Name = __value,
-        ///         });
-        ///     }).ToList();
+        ///     // ...which we will go through in order to fetch the whole data on each account.
+        ///     var example = ;
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -57,15 +53,11 @@ namespace Pulumi.ProxmoxVE.Acme
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // This will fetch all ACME accounts...
         ///     var all = ProxmoxVE.Acme.GetAccounts.Invoke();
         /// 
-        ///     var example = .Select(__value =&gt; 
-        ///     {
-        ///         return ProxmoxVE.Acme.GetAccount.Invoke(new()
-        ///         {
-        ///             Name = __value,
-        ///         });
-        ///     }).ToList();
+        ///     // ...which we will go through in order to fetch the whole data on each account.
+        ///     var example = ;
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -90,15 +82,11 @@ namespace Pulumi.ProxmoxVE.Acme
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // This will fetch all ACME accounts...
         ///     var all = ProxmoxVE.Acme.GetAccounts.Invoke();
         /// 
-        ///     var example = .Select(__value =&gt; 
-        ///     {
-        ///         return ProxmoxVE.Acme.GetAccount.Invoke(new()
-        ///         {
-        ///             Name = __value,
-        ///         });
-        ///     }).ToList();
+        ///     // ...which we will go through in order to fetch the whole data on each account.
+        ///     var example = ;
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {

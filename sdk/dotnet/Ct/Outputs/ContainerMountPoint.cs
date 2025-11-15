@@ -19,7 +19,7 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
         public readonly bool? Acl;
         /// <summary>
         /// Whether to include the mount point in backups (only
-        /// used for volume mount points, defaults to `false`).
+        /// used for volume mount points, defaults to `False`).
         /// </summary>
         public readonly bool? Backup;
         /// <summary>

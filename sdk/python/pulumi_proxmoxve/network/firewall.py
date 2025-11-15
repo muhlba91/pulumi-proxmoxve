@@ -249,16 +249,16 @@ class Firewall(pulumi.CustomResource):
         import pulumi_proxmoxve as proxmoxve
 
         example = proxmoxve.network.Firewall("example",
-            ebtables=False,
             enabled=False,
-            forward_policy="ACCEPT",
+            ebtables=False,
             input_policy="DROP",
+            output_policy="ACCEPT",
+            forward_policy="ACCEPT",
             log_ratelimit={
-                "burst": 10,
                 "enabled": False,
+                "burst": 10,
                 "rate": "5/second",
-            },
-            output_policy="ACCEPT")
+            })
         ```
 
         ## Important Notes
@@ -300,16 +300,16 @@ class Firewall(pulumi.CustomResource):
         import pulumi_proxmoxve as proxmoxve
 
         example = proxmoxve.network.Firewall("example",
-            ebtables=False,
             enabled=False,
-            forward_policy="ACCEPT",
+            ebtables=False,
             input_policy="DROP",
+            output_policy="ACCEPT",
+            forward_policy="ACCEPT",
             log_ratelimit={
-                "burst": 10,
                 "enabled": False,
+                "burst": 10,
                 "rate": "5/second",
-            },
-            output_policy="ACCEPT")
+            })
         ```
 
         ## Important Notes

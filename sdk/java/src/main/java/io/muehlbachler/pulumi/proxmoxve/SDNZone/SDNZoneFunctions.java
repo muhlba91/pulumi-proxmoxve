@@ -63,18 +63,18 @@ public final class SDNZoneFunctions {
      *             Map.entry("id", example.id()),
      *             Map.entry("nodes", example.nodes()),
      *             Map.entry("controller", example.controller()),
-     *             Map.entry("vrf_vxlan", example.vrfVxlan()),
-     *             Map.entry("advertise_subnets", example.advertiseSubnets()),
-     *             Map.entry("disable_arp_nd_suppression", example.disableArpNdSuppression()),
-     *             Map.entry("exit_nodes", example.exitNodes()),
-     *             Map.entry("exit_nodes_local_routing", example.exitNodesLocalRouting()),
-     *             Map.entry("primary_exit_node", example.primaryExitNode()),
-     *             Map.entry("rt_import", example.rtImport()),
+     *             Map.entry("vrfVxlan", example.vrfVxlan()),
+     *             Map.entry("advertiseSubnets", example.advertiseSubnets()),
+     *             Map.entry("disableArpNdSuppression", example.disableArpNdSuppression()),
+     *             Map.entry("exitNodes", example.exitNodes()),
+     *             Map.entry("exitNodesLocalRouting", example.exitNodesLocalRouting()),
+     *             Map.entry("primaryExitNode", example.primaryExitNode()),
+     *             Map.entry("rtImport", example.rtImport()),
      *             Map.entry("mtu", example.mtu()),
      *             Map.entry("dns", example.dns()),
-     *             Map.entry("dns_zone", example.dnsZone()),
+     *             Map.entry("dnsZone", example.dnsZone()),
      *             Map.entry("ipam", example.ipam()),
-     *             Map.entry("reverse_dns", example.reverseDns())
+     *             Map.entry("reverseDns", example.reverseDns())
      *         ));
      *     }
      * }
@@ -122,18 +122,18 @@ public final class SDNZoneFunctions {
      *             Map.entry("id", example.id()),
      *             Map.entry("nodes", example.nodes()),
      *             Map.entry("controller", example.controller()),
-     *             Map.entry("vrf_vxlan", example.vrfVxlan()),
-     *             Map.entry("advertise_subnets", example.advertiseSubnets()),
-     *             Map.entry("disable_arp_nd_suppression", example.disableArpNdSuppression()),
-     *             Map.entry("exit_nodes", example.exitNodes()),
-     *             Map.entry("exit_nodes_local_routing", example.exitNodesLocalRouting()),
-     *             Map.entry("primary_exit_node", example.primaryExitNode()),
-     *             Map.entry("rt_import", example.rtImport()),
+     *             Map.entry("vrfVxlan", example.vrfVxlan()),
+     *             Map.entry("advertiseSubnets", example.advertiseSubnets()),
+     *             Map.entry("disableArpNdSuppression", example.disableArpNdSuppression()),
+     *             Map.entry("exitNodes", example.exitNodes()),
+     *             Map.entry("exitNodesLocalRouting", example.exitNodesLocalRouting()),
+     *             Map.entry("primaryExitNode", example.primaryExitNode()),
+     *             Map.entry("rtImport", example.rtImport()),
      *             Map.entry("mtu", example.mtu()),
      *             Map.entry("dns", example.dns()),
-     *             Map.entry("dns_zone", example.dnsZone()),
+     *             Map.entry("dnsZone", example.dnsZone()),
      *             Map.entry("ipam", example.ipam()),
-     *             Map.entry("reverse_dns", example.reverseDns())
+     *             Map.entry("reverseDns", example.reverseDns())
      *         ));
      *     }
      * }
@@ -181,18 +181,18 @@ public final class SDNZoneFunctions {
      *             Map.entry("id", example.id()),
      *             Map.entry("nodes", example.nodes()),
      *             Map.entry("controller", example.controller()),
-     *             Map.entry("vrf_vxlan", example.vrfVxlan()),
-     *             Map.entry("advertise_subnets", example.advertiseSubnets()),
-     *             Map.entry("disable_arp_nd_suppression", example.disableArpNdSuppression()),
-     *             Map.entry("exit_nodes", example.exitNodes()),
-     *             Map.entry("exit_nodes_local_routing", example.exitNodesLocalRouting()),
-     *             Map.entry("primary_exit_node", example.primaryExitNode()),
-     *             Map.entry("rt_import", example.rtImport()),
+     *             Map.entry("vrfVxlan", example.vrfVxlan()),
+     *             Map.entry("advertiseSubnets", example.advertiseSubnets()),
+     *             Map.entry("disableArpNdSuppression", example.disableArpNdSuppression()),
+     *             Map.entry("exitNodes", example.exitNodes()),
+     *             Map.entry("exitNodesLocalRouting", example.exitNodesLocalRouting()),
+     *             Map.entry("primaryExitNode", example.primaryExitNode()),
+     *             Map.entry("rtImport", example.rtImport()),
      *             Map.entry("mtu", example.mtu()),
      *             Map.entry("dns", example.dns()),
-     *             Map.entry("dns_zone", example.dnsZone()),
+     *             Map.entry("dnsZone", example.dnsZone()),
      *             Map.entry("ipam", example.ipam()),
-     *             Map.entry("reverse_dns", example.reverseDns())
+     *             Map.entry("reverseDns", example.reverseDns())
      *         ));
      *     }
      * }
@@ -240,18 +240,18 @@ public final class SDNZoneFunctions {
      *             Map.entry("id", example.id()),
      *             Map.entry("nodes", example.nodes()),
      *             Map.entry("controller", example.controller()),
-     *             Map.entry("vrf_vxlan", example.vrfVxlan()),
-     *             Map.entry("advertise_subnets", example.advertiseSubnets()),
-     *             Map.entry("disable_arp_nd_suppression", example.disableArpNdSuppression()),
-     *             Map.entry("exit_nodes", example.exitNodes()),
-     *             Map.entry("exit_nodes_local_routing", example.exitNodesLocalRouting()),
-     *             Map.entry("primary_exit_node", example.primaryExitNode()),
-     *             Map.entry("rt_import", example.rtImport()),
+     *             Map.entry("vrfVxlan", example.vrfVxlan()),
+     *             Map.entry("advertiseSubnets", example.advertiseSubnets()),
+     *             Map.entry("disableArpNdSuppression", example.disableArpNdSuppression()),
+     *             Map.entry("exitNodes", example.exitNodes()),
+     *             Map.entry("exitNodesLocalRouting", example.exitNodesLocalRouting()),
+     *             Map.entry("primaryExitNode", example.primaryExitNode()),
+     *             Map.entry("rtImport", example.rtImport()),
      *             Map.entry("mtu", example.mtu()),
      *             Map.entry("dns", example.dns()),
-     *             Map.entry("dns_zone", example.dnsZone()),
+     *             Map.entry("dnsZone", example.dnsZone()),
      *             Map.entry("ipam", example.ipam()),
-     *             Map.entry("reverse_dns", example.reverseDns())
+     *             Map.entry("reverseDns", example.reverseDns())
      *         ));
      *     }
      * }
@@ -299,18 +299,18 @@ public final class SDNZoneFunctions {
      *             Map.entry("id", example.id()),
      *             Map.entry("nodes", example.nodes()),
      *             Map.entry("controller", example.controller()),
-     *             Map.entry("vrf_vxlan", example.vrfVxlan()),
-     *             Map.entry("advertise_subnets", example.advertiseSubnets()),
-     *             Map.entry("disable_arp_nd_suppression", example.disableArpNdSuppression()),
-     *             Map.entry("exit_nodes", example.exitNodes()),
-     *             Map.entry("exit_nodes_local_routing", example.exitNodesLocalRouting()),
-     *             Map.entry("primary_exit_node", example.primaryExitNode()),
-     *             Map.entry("rt_import", example.rtImport()),
+     *             Map.entry("vrfVxlan", example.vrfVxlan()),
+     *             Map.entry("advertiseSubnets", example.advertiseSubnets()),
+     *             Map.entry("disableArpNdSuppression", example.disableArpNdSuppression()),
+     *             Map.entry("exitNodes", example.exitNodes()),
+     *             Map.entry("exitNodesLocalRouting", example.exitNodesLocalRouting()),
+     *             Map.entry("primaryExitNode", example.primaryExitNode()),
+     *             Map.entry("rtImport", example.rtImport()),
      *             Map.entry("mtu", example.mtu()),
      *             Map.entry("dns", example.dns()),
-     *             Map.entry("dns_zone", example.dnsZone()),
+     *             Map.entry("dnsZone", example.dnsZone()),
      *             Map.entry("ipam", example.ipam()),
-     *             Map.entry("reverse_dns", example.reverseDns())
+     *             Map.entry("reverseDns", example.reverseDns())
      *         ));
      *     }
      * }
@@ -358,13 +358,13 @@ public final class SDNZoneFunctions {
      *             Map.entry("id", example.id()),
      *             Map.entry("nodes", example.nodes()),
      *             Map.entry("bridge", example.bridge()),
-     *             Map.entry("service_vlan", example.serviceVlan()),
-     *             Map.entry("service_vlan_protocol", example.serviceVlanProtocol()),
+     *             Map.entry("serviceVlan", example.serviceVlan()),
+     *             Map.entry("serviceVlanProtocol", example.serviceVlanProtocol()),
      *             Map.entry("mtu", example.mtu()),
      *             Map.entry("dns", example.dns()),
-     *             Map.entry("dns_zone", example.dnsZone()),
+     *             Map.entry("dnsZone", example.dnsZone()),
      *             Map.entry("ipam", example.ipam()),
-     *             Map.entry("reverse_dns", example.reverseDns())
+     *             Map.entry("reverseDns", example.reverseDns())
      *         ));
      *     }
      * }
@@ -412,13 +412,13 @@ public final class SDNZoneFunctions {
      *             Map.entry("id", example.id()),
      *             Map.entry("nodes", example.nodes()),
      *             Map.entry("bridge", example.bridge()),
-     *             Map.entry("service_vlan", example.serviceVlan()),
-     *             Map.entry("service_vlan_protocol", example.serviceVlanProtocol()),
+     *             Map.entry("serviceVlan", example.serviceVlan()),
+     *             Map.entry("serviceVlanProtocol", example.serviceVlanProtocol()),
      *             Map.entry("mtu", example.mtu()),
      *             Map.entry("dns", example.dns()),
-     *             Map.entry("dns_zone", example.dnsZone()),
+     *             Map.entry("dnsZone", example.dnsZone()),
      *             Map.entry("ipam", example.ipam()),
-     *             Map.entry("reverse_dns", example.reverseDns())
+     *             Map.entry("reverseDns", example.reverseDns())
      *         ));
      *     }
      * }
@@ -466,13 +466,13 @@ public final class SDNZoneFunctions {
      *             Map.entry("id", example.id()),
      *             Map.entry("nodes", example.nodes()),
      *             Map.entry("bridge", example.bridge()),
-     *             Map.entry("service_vlan", example.serviceVlan()),
-     *             Map.entry("service_vlan_protocol", example.serviceVlanProtocol()),
+     *             Map.entry("serviceVlan", example.serviceVlan()),
+     *             Map.entry("serviceVlanProtocol", example.serviceVlanProtocol()),
      *             Map.entry("mtu", example.mtu()),
      *             Map.entry("dns", example.dns()),
-     *             Map.entry("dns_zone", example.dnsZone()),
+     *             Map.entry("dnsZone", example.dnsZone()),
      *             Map.entry("ipam", example.ipam()),
-     *             Map.entry("reverse_dns", example.reverseDns())
+     *             Map.entry("reverseDns", example.reverseDns())
      *         ));
      *     }
      * }
@@ -520,13 +520,13 @@ public final class SDNZoneFunctions {
      *             Map.entry("id", example.id()),
      *             Map.entry("nodes", example.nodes()),
      *             Map.entry("bridge", example.bridge()),
-     *             Map.entry("service_vlan", example.serviceVlan()),
-     *             Map.entry("service_vlan_protocol", example.serviceVlanProtocol()),
+     *             Map.entry("serviceVlan", example.serviceVlan()),
+     *             Map.entry("serviceVlanProtocol", example.serviceVlanProtocol()),
      *             Map.entry("mtu", example.mtu()),
      *             Map.entry("dns", example.dns()),
-     *             Map.entry("dns_zone", example.dnsZone()),
+     *             Map.entry("dnsZone", example.dnsZone()),
      *             Map.entry("ipam", example.ipam()),
-     *             Map.entry("reverse_dns", example.reverseDns())
+     *             Map.entry("reverseDns", example.reverseDns())
      *         ));
      *     }
      * }
@@ -574,13 +574,13 @@ public final class SDNZoneFunctions {
      *             Map.entry("id", example.id()),
      *             Map.entry("nodes", example.nodes()),
      *             Map.entry("bridge", example.bridge()),
-     *             Map.entry("service_vlan", example.serviceVlan()),
-     *             Map.entry("service_vlan_protocol", example.serviceVlanProtocol()),
+     *             Map.entry("serviceVlan", example.serviceVlan()),
+     *             Map.entry("serviceVlanProtocol", example.serviceVlanProtocol()),
      *             Map.entry("mtu", example.mtu()),
      *             Map.entry("dns", example.dns()),
-     *             Map.entry("dns_zone", example.dnsZone()),
+     *             Map.entry("dnsZone", example.dnsZone()),
      *             Map.entry("ipam", example.ipam()),
-     *             Map.entry("reverse_dns", example.reverseDns())
+     *             Map.entry("reverseDns", example.reverseDns())
      *         ));
      *     }
      * }
@@ -629,9 +629,9 @@ public final class SDNZoneFunctions {
      *             Map.entry("nodes", example.nodes()),
      *             Map.entry("mtu", example.mtu()),
      *             Map.entry("dns", example.dns()),
-     *             Map.entry("dns_zone", example.dnsZone()),
+     *             Map.entry("dnsZone", example.dnsZone()),
      *             Map.entry("ipam", example.ipam()),
-     *             Map.entry("reverse_dns", example.reverseDns())
+     *             Map.entry("reverseDns", example.reverseDns())
      *         ));
      *     }
      * }
@@ -680,9 +680,9 @@ public final class SDNZoneFunctions {
      *             Map.entry("nodes", example.nodes()),
      *             Map.entry("mtu", example.mtu()),
      *             Map.entry("dns", example.dns()),
-     *             Map.entry("dns_zone", example.dnsZone()),
+     *             Map.entry("dnsZone", example.dnsZone()),
      *             Map.entry("ipam", example.ipam()),
-     *             Map.entry("reverse_dns", example.reverseDns())
+     *             Map.entry("reverseDns", example.reverseDns())
      *         ));
      *     }
      * }
@@ -731,9 +731,9 @@ public final class SDNZoneFunctions {
      *             Map.entry("nodes", example.nodes()),
      *             Map.entry("mtu", example.mtu()),
      *             Map.entry("dns", example.dns()),
-     *             Map.entry("dns_zone", example.dnsZone()),
+     *             Map.entry("dnsZone", example.dnsZone()),
      *             Map.entry("ipam", example.ipam()),
-     *             Map.entry("reverse_dns", example.reverseDns())
+     *             Map.entry("reverseDns", example.reverseDns())
      *         ));
      *     }
      * }
@@ -782,9 +782,9 @@ public final class SDNZoneFunctions {
      *             Map.entry("nodes", example.nodes()),
      *             Map.entry("mtu", example.mtu()),
      *             Map.entry("dns", example.dns()),
-     *             Map.entry("dns_zone", example.dnsZone()),
+     *             Map.entry("dnsZone", example.dnsZone()),
      *             Map.entry("ipam", example.ipam()),
-     *             Map.entry("reverse_dns", example.reverseDns())
+     *             Map.entry("reverseDns", example.reverseDns())
      *         ));
      *     }
      * }
@@ -833,9 +833,9 @@ public final class SDNZoneFunctions {
      *             Map.entry("nodes", example.nodes()),
      *             Map.entry("mtu", example.mtu()),
      *             Map.entry("dns", example.dns()),
-     *             Map.entry("dns_zone", example.dnsZone()),
+     *             Map.entry("dnsZone", example.dnsZone()),
      *             Map.entry("ipam", example.ipam()),
-     *             Map.entry("reverse_dns", example.reverseDns())
+     *             Map.entry("reverseDns", example.reverseDns())
      *         ));
      *     }
      * }
@@ -885,9 +885,9 @@ public final class SDNZoneFunctions {
      *             Map.entry("bridge", example.bridge()),
      *             Map.entry("mtu", example.mtu()),
      *             Map.entry("dns", example.dns()),
-     *             Map.entry("dns_zone", example.dnsZone()),
+     *             Map.entry("dnsZone", example.dnsZone()),
      *             Map.entry("ipam", example.ipam()),
-     *             Map.entry("reverse_dns", example.reverseDns())
+     *             Map.entry("reverseDns", example.reverseDns())
      *         ));
      *     }
      * }
@@ -937,9 +937,9 @@ public final class SDNZoneFunctions {
      *             Map.entry("bridge", example.bridge()),
      *             Map.entry("mtu", example.mtu()),
      *             Map.entry("dns", example.dns()),
-     *             Map.entry("dns_zone", example.dnsZone()),
+     *             Map.entry("dnsZone", example.dnsZone()),
      *             Map.entry("ipam", example.ipam()),
-     *             Map.entry("reverse_dns", example.reverseDns())
+     *             Map.entry("reverseDns", example.reverseDns())
      *         ));
      *     }
      * }
@@ -989,9 +989,9 @@ public final class SDNZoneFunctions {
      *             Map.entry("bridge", example.bridge()),
      *             Map.entry("mtu", example.mtu()),
      *             Map.entry("dns", example.dns()),
-     *             Map.entry("dns_zone", example.dnsZone()),
+     *             Map.entry("dnsZone", example.dnsZone()),
      *             Map.entry("ipam", example.ipam()),
-     *             Map.entry("reverse_dns", example.reverseDns())
+     *             Map.entry("reverseDns", example.reverseDns())
      *         ));
      *     }
      * }
@@ -1041,9 +1041,9 @@ public final class SDNZoneFunctions {
      *             Map.entry("bridge", example.bridge()),
      *             Map.entry("mtu", example.mtu()),
      *             Map.entry("dns", example.dns()),
-     *             Map.entry("dns_zone", example.dnsZone()),
+     *             Map.entry("dnsZone", example.dnsZone()),
      *             Map.entry("ipam", example.ipam()),
-     *             Map.entry("reverse_dns", example.reverseDns())
+     *             Map.entry("reverseDns", example.reverseDns())
      *         ));
      *     }
      * }
@@ -1093,9 +1093,9 @@ public final class SDNZoneFunctions {
      *             Map.entry("bridge", example.bridge()),
      *             Map.entry("mtu", example.mtu()),
      *             Map.entry("dns", example.dns()),
-     *             Map.entry("dns_zone", example.dnsZone()),
+     *             Map.entry("dnsZone", example.dnsZone()),
      *             Map.entry("ipam", example.ipam()),
-     *             Map.entry("reverse_dns", example.reverseDns())
+     *             Map.entry("reverseDns", example.reverseDns())
      *         ));
      *     }
      * }
@@ -1145,9 +1145,9 @@ public final class SDNZoneFunctions {
      *             Map.entry("peers", example.peers()),
      *             Map.entry("mtu", example.mtu()),
      *             Map.entry("dns", example.dns()),
-     *             Map.entry("dns_zone", example.dnsZone()),
+     *             Map.entry("dnsZone", example.dnsZone()),
      *             Map.entry("ipam", example.ipam()),
-     *             Map.entry("reverse_dns", example.reverseDns())
+     *             Map.entry("reverseDns", example.reverseDns())
      *         ));
      *     }
      * }
@@ -1197,9 +1197,9 @@ public final class SDNZoneFunctions {
      *             Map.entry("peers", example.peers()),
      *             Map.entry("mtu", example.mtu()),
      *             Map.entry("dns", example.dns()),
-     *             Map.entry("dns_zone", example.dnsZone()),
+     *             Map.entry("dnsZone", example.dnsZone()),
      *             Map.entry("ipam", example.ipam()),
-     *             Map.entry("reverse_dns", example.reverseDns())
+     *             Map.entry("reverseDns", example.reverseDns())
      *         ));
      *     }
      * }
@@ -1249,9 +1249,9 @@ public final class SDNZoneFunctions {
      *             Map.entry("peers", example.peers()),
      *             Map.entry("mtu", example.mtu()),
      *             Map.entry("dns", example.dns()),
-     *             Map.entry("dns_zone", example.dnsZone()),
+     *             Map.entry("dnsZone", example.dnsZone()),
      *             Map.entry("ipam", example.ipam()),
-     *             Map.entry("reverse_dns", example.reverseDns())
+     *             Map.entry("reverseDns", example.reverseDns())
      *         ));
      *     }
      * }
@@ -1301,9 +1301,9 @@ public final class SDNZoneFunctions {
      *             Map.entry("peers", example.peers()),
      *             Map.entry("mtu", example.mtu()),
      *             Map.entry("dns", example.dns()),
-     *             Map.entry("dns_zone", example.dnsZone()),
+     *             Map.entry("dnsZone", example.dnsZone()),
      *             Map.entry("ipam", example.ipam()),
-     *             Map.entry("reverse_dns", example.reverseDns())
+     *             Map.entry("reverseDns", example.reverseDns())
      *         ));
      *     }
      * }
@@ -1353,9 +1353,9 @@ public final class SDNZoneFunctions {
      *             Map.entry("peers", example.peers()),
      *             Map.entry("mtu", example.mtu()),
      *             Map.entry("dns", example.dns()),
-     *             Map.entry("dns_zone", example.dnsZone()),
+     *             Map.entry("dnsZone", example.dnsZone()),
      *             Map.entry("ipam", example.ipam()),
-     *             Map.entry("reverse_dns", example.reverseDns())
+     *             Map.entry("reverseDns", example.reverseDns())
      *         ));
      *     }
      * }

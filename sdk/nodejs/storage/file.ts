@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
- * const ubuntuContainerTemplate = new proxmoxve.storage.File("ubuntuContainerTemplate", {
+ * const ubuntuContainerTemplate = new proxmoxve.storage.File("ubuntu_container_template", {
  *     contentType: "iso",
  *     datastoreId: "local",
  *     nodeName: "pve",
@@ -55,12 +55,73 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
- * const ubuntuContainerTemplate = new proxmoxve.storage.File("ubuntuContainerTemplate", {
+ * const ubuntuContainerTemplate = new proxmoxve.storage.File("ubuntu_container_template", {
  *     contentType: "import",
  *     datastoreId: "local",
  *     nodeName: "pve",
  *     sourceFile: {
  *         path: "https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img",
+ *     },
+ * });
+ * ```
+ *
+ * ### Snippets
+ *
+ * > Snippets are not enabled by default in new Proxmox installations. You need to enable them in the 'Datacenter>Storage' section of the proxmox interface before first using this resource.
+ *
+ * > The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ * import * as std from "@pulumi/std";
+ *
+ * const cloudConfig = new proxmoxve.storage.File("cloud_config", {
+ *     contentType: "snippets",
+ *     datastoreId: "local",
+ *     nodeName: "pve",
+ *     sourceRaw: {
+ *         data: std.trimspace({
+ *             input: example.publicKeyOpenssh,
+ *         }).then(invoke => `#cloud-config
+ * chpasswd:
+ *   list: |
+ *     ubuntu:example
+ *   expire: false
+ * hostname: example-hostname
+ * packages:
+ *   - qemu-guest-agent
+ * users:
+ *   - default
+ *   - name: ubuntu
+ *     groups: sudo
+ *     shell: /bin/bash
+ *     ssh-authorized-keys:
+ *       - ${invoke.result}
+ *     sudo: ALL=(ALL) NOPASSWD:ALL
+ * `),
+ *         fileName: "example.cloud-config.yaml",
+ *     },
+ * });
+ * ```
+ *
+ * The `fileMode` attribute can be used to make a script file executable, e.g. when referencing the file in the `hookScriptFileId` attribute of a container or a VM resource which is a requirement enforced by the Proxmox VE API.
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const hookScript = new proxmoxve.storage.File("hook_script", {
+ *     contentType: "snippets",
+ *     datastoreId: "local",
+ *     nodeName: "pve",
+ *     fileMode: "0700",
+ *     sourceRaw: {
+ *         data: `#!/usr/bin/env bash
+ *
+ * echo \\"Running hook script\\"
+ * `,
+ *         fileName: "prepare-hook.sh",
  *     },
  * });
  * ```
@@ -73,7 +134,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
- * const ubuntuContainerTemplate = new proxmoxve.storage.File("ubuntuContainerTemplate", {
+ * const ubuntuContainerTemplate = new proxmoxve.storage.File("ubuntu_container_template", {
  *     contentType: "vztmpl",
  *     datastoreId: "local",
  *     nodeName: "first-node",

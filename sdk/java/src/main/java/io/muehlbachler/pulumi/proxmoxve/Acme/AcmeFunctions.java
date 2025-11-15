@@ -27,37 +27,6 @@ public final class AcmeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.proxmoxve.Acme.AcmeFunctions;
-     * import com.pulumi.proxmoxve.Acme.inputs.GetAccountArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = AcmeFunctions.getAccounts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
-     * 
-     *         final var example = "TODO: ForExpression";
-     * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentAcmeAccount", example);
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -70,37 +39,6 @@ public final class AcmeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.proxmoxve.Acme.AcmeFunctions;
-     * import com.pulumi.proxmoxve.Acme.inputs.GetAccountArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = AcmeFunctions.getAccounts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
-     * 
-     *         final var example = "TODO: ForExpression";
-     * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentAcmeAccount", example);
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -113,37 +51,6 @@ public final class AcmeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.proxmoxve.Acme.AcmeFunctions;
-     * import com.pulumi.proxmoxve.Acme.inputs.GetAccountArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = AcmeFunctions.getAccounts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
-     * 
-     *         final var example = "TODO: ForExpression";
-     * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentAcmeAccount", example);
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -156,37 +63,6 @@ public final class AcmeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.proxmoxve.Acme.AcmeFunctions;
-     * import com.pulumi.proxmoxve.Acme.inputs.GetAccountArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = AcmeFunctions.getAccounts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
-     * 
-     *         final var example = "TODO: ForExpression";
-     * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentAcmeAccount", example);
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -199,37 +75,6 @@ public final class AcmeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.proxmoxve.Acme.AcmeFunctions;
-     * import com.pulumi.proxmoxve.Acme.inputs.GetAccountArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = AcmeFunctions.getAccounts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
-     * 
-     *         final var example = "TODO: ForExpression";
-     * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentAcmeAccount", example);
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -242,37 +87,6 @@ public final class AcmeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.proxmoxve.Acme.AcmeFunctions;
-     * import com.pulumi.proxmoxve.Acme.inputs.GetAccountArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = AcmeFunctions.getAccounts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
-     * 
-     *         final var example = "TODO: ForExpression";
-     * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentAcmeAccount", example);
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -285,37 +99,6 @@ public final class AcmeFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * <pre>
-     * {@code
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.proxmoxve.Acme.AcmeFunctions;
-     * import com.pulumi.proxmoxve.Acme.inputs.GetAccountArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var all = AcmeFunctions.getAccounts(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
-     * 
-     *         final var example = "TODO: ForExpression";
-     * 
-     *         ctx.export("dataProxmoxVirtualEnvironmentAcmeAccount", example);
-     *     }
-     * }
-     * }
-     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */

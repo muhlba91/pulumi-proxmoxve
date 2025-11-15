@@ -18,15 +18,15 @@ public final class ContainerInitializationDns {
      */
     private @Nullable String domain;
     /**
-     * @return The DNS server. The `server` attribute is
-     * deprecated and will be removed in a future release. Please use
-     * the `servers` attribute instead.
+     * @return The DNS server.
+     * The &lt;span pulumi-lang-nodejs=&#34;`server`&#34; pulumi-lang-dotnet=&#34;`Server`&#34; pulumi-lang-go=&#34;`server`&#34; pulumi-lang-python=&#34;`server`&#34; pulumi-lang-yaml=&#34;`server`&#34; pulumi-lang-java=&#34;`server`&#34;&gt;`server`&lt;/span&gt; attribute is deprecated and will be removed in a future release. Please use
+     * the &lt;span pulumi-lang-nodejs=&#34;`servers`&#34; pulumi-lang-dotnet=&#34;`Servers`&#34; pulumi-lang-go=&#34;`servers`&#34; pulumi-lang-python=&#34;`servers`&#34; pulumi-lang-yaml=&#34;`servers`&#34; pulumi-lang-java=&#34;`servers`&#34;&gt;`servers`&lt;/span&gt; attribute instead.
      * 
      * @deprecated
-     * The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+     * The &lt;span pulumi-lang-nodejs=&#34;`server`&#34; pulumi-lang-dotnet=&#34;`Server`&#34; pulumi-lang-go=&#34;`server`&#34; pulumi-lang-python=&#34;`server`&#34; pulumi-lang-yaml=&#34;`server`&#34; pulumi-lang-java=&#34;`server`&#34;&gt;`server`&lt;/span&gt; attribute is deprecated and will be removed in a future release. Please use the &lt;span pulumi-lang-nodejs=&#34;`servers`&#34; pulumi-lang-dotnet=&#34;`Servers`&#34; pulumi-lang-go=&#34;`servers`&#34; pulumi-lang-python=&#34;`servers`&#34; pulumi-lang-yaml=&#34;`servers`&#34; pulumi-lang-java=&#34;`servers`&#34;&gt;`servers`&lt;/span&gt; attribute instead.
      * 
      */
-    @Deprecated /* The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead. */
+    @Deprecated /* The <span pulumi-lang-nodejs=""`server`"" pulumi-lang-dotnet=""`Server`"" pulumi-lang-go=""`server`"" pulumi-lang-python=""`server`"" pulumi-lang-yaml=""`server`"" pulumi-lang-java=""`server`"">`server`</span> attribute is deprecated and will be removed in a future release. Please use the <span pulumi-lang-nodejs=""`servers`"" pulumi-lang-dotnet=""`Servers`"" pulumi-lang-go=""`servers`"" pulumi-lang-python=""`servers`"" pulumi-lang-yaml=""`servers`"" pulumi-lang-java=""`servers`"">`servers`</span> attribute instead. */
     private @Nullable String server;
     /**
      * @return The list of DNS servers.
@@ -43,15 +43,15 @@ public final class ContainerInitializationDns {
         return Optional.ofNullable(this.domain);
     }
     /**
-     * @return The DNS server. The `server` attribute is
-     * deprecated and will be removed in a future release. Please use
-     * the `servers` attribute instead.
+     * @return The DNS server.
+     * The &lt;span pulumi-lang-nodejs=&#34;`server`&#34; pulumi-lang-dotnet=&#34;`Server`&#34; pulumi-lang-go=&#34;`server`&#34; pulumi-lang-python=&#34;`server`&#34; pulumi-lang-yaml=&#34;`server`&#34; pulumi-lang-java=&#34;`server`&#34;&gt;`server`&lt;/span&gt; attribute is deprecated and will be removed in a future release. Please use
+     * the &lt;span pulumi-lang-nodejs=&#34;`servers`&#34; pulumi-lang-dotnet=&#34;`Servers`&#34; pulumi-lang-go=&#34;`servers`&#34; pulumi-lang-python=&#34;`servers`&#34; pulumi-lang-yaml=&#34;`servers`&#34; pulumi-lang-java=&#34;`servers`&#34;&gt;`servers`&lt;/span&gt; attribute instead.
      * 
      * @deprecated
-     * The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+     * The &lt;span pulumi-lang-nodejs=&#34;`server`&#34; pulumi-lang-dotnet=&#34;`Server`&#34; pulumi-lang-go=&#34;`server`&#34; pulumi-lang-python=&#34;`server`&#34; pulumi-lang-yaml=&#34;`server`&#34; pulumi-lang-java=&#34;`server`&#34;&gt;`server`&lt;/span&gt; attribute is deprecated and will be removed in a future release. Please use the &lt;span pulumi-lang-nodejs=&#34;`servers`&#34; pulumi-lang-dotnet=&#34;`Servers`&#34; pulumi-lang-go=&#34;`servers`&#34; pulumi-lang-python=&#34;`servers`&#34; pulumi-lang-yaml=&#34;`servers`&#34; pulumi-lang-java=&#34;`servers`&#34;&gt;`servers`&lt;/span&gt; attribute instead.
      * 
      */
-    @Deprecated /* The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead. */
+    @Deprecated /* The <span pulumi-lang-nodejs=""`server`"" pulumi-lang-dotnet=""`Server`"" pulumi-lang-go=""`server`"" pulumi-lang-python=""`server`"" pulumi-lang-yaml=""`server`"" pulumi-lang-java=""`server`"">`server`</span> attribute is deprecated and will be removed in a future release. Please use the <span pulumi-lang-nodejs=""`servers`"" pulumi-lang-dotnet=""`Servers`"" pulumi-lang-go=""`servers`"" pulumi-lang-python=""`servers`"" pulumi-lang-yaml=""`servers`"" pulumi-lang-java=""`servers`"">`servers`</span> attribute instead. */
     public Optional<String> server() {
         return Optional.ofNullable(this.server);
     }

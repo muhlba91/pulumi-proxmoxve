@@ -9,6 +9,28 @@ import * as utilities from "./utilities";
 /**
  * Manages the host entries on a specific node.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const firstNodeHostEntries = new proxmoxve.Hosts("first_node_host_entries", {
+ *     nodeName: "first-node",
+ *     entries: [{
+ *         address: "127.0.0.1",
+ *         hostnames: [
+ *             "localhost",
+ *             "localhost.localdomain",
+ *         ],
+ *     }],
+ * });
+ * ```
+ *
+ * ## Important Notes
+ *
+ * Be careful not to use this resource multiple times for the same node.
+ *
  * ## Import
  *
  * Instances can be imported using the `node_name`, e.g.,

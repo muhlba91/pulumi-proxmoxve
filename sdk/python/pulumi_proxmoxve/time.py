@@ -144,7 +144,7 @@ class Time(pulumi.CustomResource):
         import pulumi
         import pulumi_proxmoxve as proxmoxve
 
-        first_node_time = proxmoxve.Time("firstNodeTime",
+        first_node_time = proxmoxve.Time("first_node_time",
             node_name="first-node",
             time_zone="UTC")
         ```
@@ -179,7 +179,7 @@ class Time(pulumi.CustomResource):
         import pulumi
         import pulumi_proxmoxve as proxmoxve
 
-        first_node_time = proxmoxve.Time("firstNodeTime",
+        first_node_time = proxmoxve.Time("first_node_time",
             node_name="first-node",
             time_zone="UTC")
         ```

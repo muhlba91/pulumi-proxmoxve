@@ -13,10 +13,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
+ * // This will fetch the set of HA group identifiers...
  * const all = proxmoxve.HA.getHAGroups({});
- * const example = all.then(all => .map(([__key, __value]) => (proxmoxve.HA.getHAGroup({
+ * // ...which we will go through in order to fetch the whole data on each group.
+ * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: proxmoxve.HA.getHAGroup({
  *     group: __value,
- * }))));
+ * }) })));
  * export const proxmoxVirtualEnvironmentHagroupsFull = example;
  * ```
  */
@@ -75,10 +77,12 @@ export interface GetHAGroupResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
+ * // This will fetch the set of HA group identifiers...
  * const all = proxmoxve.HA.getHAGroups({});
- * const example = all.then(all => .map(([__key, __value]) => (proxmoxve.HA.getHAGroup({
+ * // ...which we will go through in order to fetch the whole data on each group.
+ * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: proxmoxve.HA.getHAGroup({
  *     group: __value,
- * }))));
+ * }) })));
  * export const proxmoxVirtualEnvironmentHagroupsFull = example;
  * ```
  */

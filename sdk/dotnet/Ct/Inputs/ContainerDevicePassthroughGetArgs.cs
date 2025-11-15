@@ -13,7 +13,7 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
     public sealed class ContainerDevicePassthroughGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Deny the container to write to the device (defaults to `false`).
+        /// Deny the container to write to the device (defaults to `False`).
         /// </summary>
         [Input("denyWrite")]
         public Input<bool>? DenyWrite { get; set; }

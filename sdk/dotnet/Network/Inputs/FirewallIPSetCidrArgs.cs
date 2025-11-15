@@ -25,7 +25,7 @@ namespace Pulumi.ProxmoxVE.Network.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Entries marked as `nomatch` are skipped as if those
+        /// Entries marked as `Nomatch` are skipped as if those
         /// were not added to the set.
         /// </summary>
         [Input("nomatch")]

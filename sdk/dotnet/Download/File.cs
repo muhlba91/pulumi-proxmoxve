@@ -25,29 +25,29 @@ namespace Pulumi.ProxmoxVE.Download
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var release20231228Debian12BookwormQcow2Img = new ProxmoxVE.Download.File("release20231228Debian12BookwormQcow2Img", new()
+    ///     var release20231228Debian12BookwormQcow2Img = new ProxmoxVE.Download.File("release_20231228_debian_12_bookworm_qcow2_img", new()
     ///     {
-    ///         Checksum = "d2fbcf11fb28795842e91364d8c7b69f1870db09ff299eb94e4fbbfa510eb78d141e74c1f4bf6dfa0b7e33d0c3b66e6751886feadb4e9916f778bab1776bdf1b",
-    ///         ChecksumAlgorithm = "sha512",
     ///         ContentType = "iso",
     ///         DatastoreId = "local",
     ///         FileName = "debian-12-generic-amd64-20231228-1609.img",
     ///         NodeName = "pve",
     ///         Url = "https://cloud.debian.org/images/cloud/bookworm/20231228-1609/debian-12-generic-amd64-20231228-1609.qcow2",
-    ///     });
-    /// 
-    ///     var release20231228Debian12BookwormQcow2 = new ProxmoxVE.Download.File("release20231228Debian12BookwormQcow2", new()
-    ///     {
     ///         Checksum = "d2fbcf11fb28795842e91364d8c7b69f1870db09ff299eb94e4fbbfa510eb78d141e74c1f4bf6dfa0b7e33d0c3b66e6751886feadb4e9916f778bab1776bdf1b",
     ///         ChecksumAlgorithm = "sha512",
+    ///     });
+    /// 
+    ///     var release20231228Debian12BookwormQcow2 = new ProxmoxVE.Download.File("release_20231228_debian_12_bookworm_qcow2", new()
+    ///     {
     ///         ContentType = "import",
     ///         DatastoreId = "local",
     ///         FileName = "debian-12-generic-amd64-20231228-1609.qcow2",
     ///         NodeName = "pve",
     ///         Url = "https://cloud.debian.org/images/cloud/bookworm/20231228-1609/debian-12-generic-amd64-20231228-1609.qcow2",
+    ///         Checksum = "d2fbcf11fb28795842e91364d8c7b69f1870db09ff299eb94e4fbbfa510eb78d141e74c1f4bf6dfa0b7e33d0c3b66e6751886feadb4e9916f778bab1776bdf1b",
+    ///         ChecksumAlgorithm = "sha512",
     ///     });
     /// 
-    ///     var latestDebian12BookwormQcow2Img = new ProxmoxVE.Download.File("latestDebian12BookwormQcow2Img", new()
+    ///     var latestDebian12BookwormQcow2Img = new ProxmoxVE.Download.File("latest_debian_12_bookworm_qcow2_img", new()
     ///     {
     ///         ContentType = "iso",
     ///         DatastoreId = "local",
@@ -56,7 +56,7 @@ namespace Pulumi.ProxmoxVE.Download
     ///         Url = "https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2",
     ///     });
     /// 
-    ///     var latestDebian12BookwormQcow2 = new ProxmoxVE.Download.File("latestDebian12BookwormQcow2", new()
+    ///     var latestDebian12BookwormQcow2 = new ProxmoxVE.Download.File("latest_debian_12_bookworm_qcow2", new()
     ///     {
     ///         ContentType = "import",
     ///         DatastoreId = "local",
@@ -65,7 +65,7 @@ namespace Pulumi.ProxmoxVE.Download
     ///         Url = "https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2",
     ///     });
     /// 
-    ///     var latestUbuntu22JammyQcow2Img = new ProxmoxVE.Download.File("latestUbuntu22JammyQcow2Img", new()
+    ///     var latestUbuntu22JammyQcow2Img = new ProxmoxVE.Download.File("latest_ubuntu_22_jammy_qcow2_img", new()
     ///     {
     ///         ContentType = "iso",
     ///         DatastoreId = "local",
@@ -73,27 +73,27 @@ namespace Pulumi.ProxmoxVE.Download
     ///         Url = "https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img",
     ///     });
     /// 
-    ///     var latestStaticUbuntu24NobleQcow2Img = new ProxmoxVE.Download.File("latestStaticUbuntu24NobleQcow2Img", new()
+    ///     var latestStaticUbuntu24NobleQcow2Img = new ProxmoxVE.Download.File("latest_static_ubuntu_24_noble_qcow2_img", new()
     ///     {
     ///         ContentType = "iso",
     ///         DatastoreId = "local",
     ///         NodeName = "pve",
-    ///         Overwrite = false,
     ///         Url = "https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img",
+    ///         Overwrite = false,
     ///     });
     /// 
-    ///     var release20231211Ubuntu22JammyLxcImg = new ProxmoxVE.Download.File("release20231211Ubuntu22JammyLxcImg", new()
+    ///     var release20231211Ubuntu22JammyLxcImg = new ProxmoxVE.Download.File("release_20231211_ubuntu_22_jammy_lxc_img", new()
     ///     {
-    ///         Checksum = "c9997dcfea5d826fd04871f960c513665f2e87dd7450bba99f68a97e60e4586e",
-    ///         ChecksumAlgorithm = "sha256",
     ///         ContentType = "vztmpl",
     ///         DatastoreId = "local",
     ///         NodeName = "pve",
-    ///         UploadTimeout = 4444,
     ///         Url = "https://cloud-images.ubuntu.com/releases/22.04/release-20231211/ubuntu-22.04-server-cloudimg-amd64-root.tar.xz",
+    ///         Checksum = "c9997dcfea5d826fd04871f960c513665f2e87dd7450bba99f68a97e60e4586e",
+    ///         ChecksumAlgorithm = "sha256",
+    ///         UploadTimeout = 4444,
     ///     });
     /// 
-    ///     var latestUbuntu22JammyLxcImg = new ProxmoxVE.Download.File("latestUbuntu22JammyLxcImg", new()
+    ///     var latestUbuntu22JammyLxcImg = new ProxmoxVE.Download.File("latest_ubuntu_22_jammy_lxc_img", new()
     ///     {
     ///         ContentType = "vztmpl",
     ///         DatastoreId = "local",
@@ -114,13 +114,13 @@ namespace Pulumi.ProxmoxVE.Download
         public Output<string?> Checksum { get; private set; } = null!;
 
         /// <summary>
-        /// The algorithm to calculate the checksum of the file. Must be `md5` | `sha1` | `sha224` | `sha256` | `sha384` | `sha512`.
+        /// The algorithm to calculate the checksum of the file. Must be `Md5` | `Sha1` | `Sha224` | `Sha256` | `Sha384` | `Sha512`.
         /// </summary>
         [Output("checksumAlgorithm")]
         public Output<string?> ChecksumAlgorithm { get; private set; } = null!;
 
         /// <summary>
-        /// The file content type. Must be `iso` or `import` for VM images or `vztmpl` for LXC images.
+        /// The file content type. Must be `Iso` or `Import` for VM images or `Vztmpl` for LXC images.
         /// </summary>
         [Output("contentType")]
         public Output<string> ContentType { get; private set; } = null!;
@@ -132,13 +132,13 @@ namespace Pulumi.ProxmoxVE.Download
         public Output<string> DatastoreId { get; private set; } = null!;
 
         /// <summary>
-        /// Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
+        /// Decompress the downloaded file using the specified compression algorithm. Must be one of `Gz` | `Lzo` | `Zst` | `Bz2`.
         /// </summary>
         [Output("decompressionAlgorithm")]
         public Output<string?> DecompressionAlgorithm { get; private set; } = null!;
 
         /// <summary>
-        /// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
+        /// The file name. If not provided, it is calculated using `Url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
         /// </summary>
         [Output("fileName")]
         public Output<string> FileName { get; private set; } = null!;
@@ -150,13 +150,13 @@ namespace Pulumi.ProxmoxVE.Download
         public Output<string> NodeName { get; private set; } = null!;
 
         /// <summary>
-        /// By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
+        /// By default `True`. If `True` and file size has changed in the datastore, it will be replaced. If `False`, there will be no check.
         /// </summary>
         [Output("overwrite")]
         public Output<bool> Overwrite { get; private set; } = null!;
 
         /// <summary>
-        /// If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
+        /// If `True` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `False` and the file already exists, an error will be returned.
         /// </summary>
         [Output("overwriteUnmanaged")]
         public Output<bool> OverwriteUnmanaged { get; private set; } = null!;
@@ -180,7 +180,7 @@ namespace Pulumi.ProxmoxVE.Download
         public Output<string> Url { get; private set; } = null!;
 
         /// <summary>
-        /// By default `true`. If `false`, no SSL/TLS certificates will be verified.
+        /// By default `True`. If `False`, no SSL/TLS certificates will be verified.
         /// </summary>
         [Output("verify")]
         public Output<bool> Verify { get; private set; } = null!;
@@ -239,13 +239,13 @@ namespace Pulumi.ProxmoxVE.Download
         public Input<string>? Checksum { get; set; }
 
         /// <summary>
-        /// The algorithm to calculate the checksum of the file. Must be `md5` | `sha1` | `sha224` | `sha256` | `sha384` | `sha512`.
+        /// The algorithm to calculate the checksum of the file. Must be `Md5` | `Sha1` | `Sha224` | `Sha256` | `Sha384` | `Sha512`.
         /// </summary>
         [Input("checksumAlgorithm")]
         public Input<string>? ChecksumAlgorithm { get; set; }
 
         /// <summary>
-        /// The file content type. Must be `iso` or `import` for VM images or `vztmpl` for LXC images.
+        /// The file content type. Must be `Iso` or `Import` for VM images or `Vztmpl` for LXC images.
         /// </summary>
         [Input("contentType", required: true)]
         public Input<string> ContentType { get; set; } = null!;
@@ -257,13 +257,13 @@ namespace Pulumi.ProxmoxVE.Download
         public Input<string> DatastoreId { get; set; } = null!;
 
         /// <summary>
-        /// Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
+        /// Decompress the downloaded file using the specified compression algorithm. Must be one of `Gz` | `Lzo` | `Zst` | `Bz2`.
         /// </summary>
         [Input("decompressionAlgorithm")]
         public Input<string>? DecompressionAlgorithm { get; set; }
 
         /// <summary>
-        /// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
+        /// The file name. If not provided, it is calculated using `Url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
         /// </summary>
         [Input("fileName")]
         public Input<string>? FileName { get; set; }
@@ -275,13 +275,13 @@ namespace Pulumi.ProxmoxVE.Download
         public Input<string> NodeName { get; set; } = null!;
 
         /// <summary>
-        /// By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
+        /// By default `True`. If `True` and file size has changed in the datastore, it will be replaced. If `False`, there will be no check.
         /// </summary>
         [Input("overwrite")]
         public Input<bool>? Overwrite { get; set; }
 
         /// <summary>
-        /// If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
+        /// If `True` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `False` and the file already exists, an error will be returned.
         /// </summary>
         [Input("overwriteUnmanaged")]
         public Input<bool>? OverwriteUnmanaged { get; set; }
@@ -299,7 +299,7 @@ namespace Pulumi.ProxmoxVE.Download
         public Input<string> Url { get; set; } = null!;
 
         /// <summary>
-        /// By default `true`. If `false`, no SSL/TLS certificates will be verified.
+        /// By default `True`. If `False`, no SSL/TLS certificates will be verified.
         /// </summary>
         [Input("verify")]
         public Input<bool>? Verify { get; set; }
@@ -319,13 +319,13 @@ namespace Pulumi.ProxmoxVE.Download
         public Input<string>? Checksum { get; set; }
 
         /// <summary>
-        /// The algorithm to calculate the checksum of the file. Must be `md5` | `sha1` | `sha224` | `sha256` | `sha384` | `sha512`.
+        /// The algorithm to calculate the checksum of the file. Must be `Md5` | `Sha1` | `Sha224` | `Sha256` | `Sha384` | `Sha512`.
         /// </summary>
         [Input("checksumAlgorithm")]
         public Input<string>? ChecksumAlgorithm { get; set; }
 
         /// <summary>
-        /// The file content type. Must be `iso` or `import` for VM images or `vztmpl` for LXC images.
+        /// The file content type. Must be `Iso` or `Import` for VM images or `Vztmpl` for LXC images.
         /// </summary>
         [Input("contentType")]
         public Input<string>? ContentType { get; set; }
@@ -337,13 +337,13 @@ namespace Pulumi.ProxmoxVE.Download
         public Input<string>? DatastoreId { get; set; }
 
         /// <summary>
-        /// Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
+        /// Decompress the downloaded file using the specified compression algorithm. Must be one of `Gz` | `Lzo` | `Zst` | `Bz2`.
         /// </summary>
         [Input("decompressionAlgorithm")]
         public Input<string>? DecompressionAlgorithm { get; set; }
 
         /// <summary>
-        /// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
+        /// The file name. If not provided, it is calculated using `Url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
         /// </summary>
         [Input("fileName")]
         public Input<string>? FileName { get; set; }
@@ -355,13 +355,13 @@ namespace Pulumi.ProxmoxVE.Download
         public Input<string>? NodeName { get; set; }
 
         /// <summary>
-        /// By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
+        /// By default `True`. If `True` and file size has changed in the datastore, it will be replaced. If `False`, there will be no check.
         /// </summary>
         [Input("overwrite")]
         public Input<bool>? Overwrite { get; set; }
 
         /// <summary>
-        /// If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
+        /// If `True` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `False` and the file already exists, an error will be returned.
         /// </summary>
         [Input("overwriteUnmanaged")]
         public Input<bool>? OverwriteUnmanaged { get; set; }
@@ -385,7 +385,7 @@ namespace Pulumi.ProxmoxVE.Download
         public Input<string>? Url { get; set; }
 
         /// <summary>
-        /// By default `true`. If `false`, no SSL/TLS certificates will be verified.
+        /// By default `True`. If `False`, no SSL/TLS certificates will be verified.
         /// </summary>
         [Input("verify")]
         public Input<bool>? Verify { get; set; }

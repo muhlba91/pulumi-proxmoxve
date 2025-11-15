@@ -29,12 +29,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := proxmoxve.NewAcmeDnsPlugin(ctx, "example", &proxmoxve.AcmeDnsPluginArgs{
-//				Api: pulumi.String("aws"),
+//				Plugin: pulumi.String("test"),
+//				Api:    pulumi.String("aws"),
 //				Data: pulumi.StringMap{
 //					"AWS_ACCESS_KEY_ID":     pulumi.String("EXAMPLE"),
 //					"AWS_SECRET_ACCESS_KEY": pulumi.String("EXAMPLE"),
 //				},
-//				Plugin: pulumi.String("test"),
 //			})
 //			if err != nil {
 //				return err

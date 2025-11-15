@@ -20,7 +20,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
 
         /// <summary>
         /// The floating memory in megabytes. The default is `0`, which disables "ballooning device" for the VM.
-        /// Please note that Proxmox has ballooning enabled by default. To enable it, set `floating` to the same value as `dedicated`.
+        /// Please note that Proxmox has ballooning enabled by default. To enable it, set `Floating` to the same value as `Dedicated`.
         /// See [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_memory) section 10.2.6 for more information.
         /// </summary>
         [Input("floating")]
@@ -33,9 +33,9 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<string>? Hugepages { get; set; }
 
         /// <summary>
-        /// Keep hugepages memory after the VM is stopped (defaults to `false`).
+        /// Keep hugepages memory after the VM is stopped (defaults to `False`).
         /// 
-        /// Settings `hugepages` and `keep_hugepages` are only allowed for `root@pam` authenticated user.
+        /// Settings `Hugepages` and `KeepHugepages` are only allowed for `root@pam` authenticated user.
         /// And required `cpu.numa` to be enabled.
         /// </summary>
         [Input("keepHugepages")]

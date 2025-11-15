@@ -14,12 +14,14 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
     public sealed class ContainerInitializationIpConfigIpv6
     {
         /// <summary>
-        /// The IPv6 address (use `dhcp` for auto-discovery).
+        /// The IPv6 address in CIDR notation
+        /// (e.g. fd1c::7334/64). Alternatively, set this
+        /// to `Dhcp` for autodiscovery.
         /// </summary>
         public readonly string? Address;
         /// <summary>
         /// The IPv6 gateway (must be omitted
-        /// when `dhcp` is used as the address).
+        /// when `Dhcp` is used as the address).
         /// </summary>
         public readonly string? Gateway;
 

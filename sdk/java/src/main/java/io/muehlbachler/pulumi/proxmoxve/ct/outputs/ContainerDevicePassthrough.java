@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ContainerDevicePassthrough {
     /**
-     * @return Deny the container to write to the device (defaults to `false`).
+     * @return Deny the container to write to the device (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     private @Nullable Boolean denyWrite;
@@ -43,7 +43,7 @@ public final class ContainerDevicePassthrough {
 
     private ContainerDevicePassthrough() {}
     /**
-     * @return Deny the container to write to the device (defaults to `false`).
+     * @return Deny the container to write to the device (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Optional<Boolean> denyWrite() {

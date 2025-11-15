@@ -26,7 +26,10 @@ class GetSimpleResult:
     """
     A collection of values returned by getSimple.
     """
-    def __init__(__self__, dns=None, dns_zone=None, id=None, ipam=None, mtu=None, nodes=None, pending=None, reverse_dns=None, state=None):
+    def __init__(__self__, dhcp=None, dns=None, dns_zone=None, id=None, ipam=None, mtu=None, nodes=None, pending=None, reverse_dns=None, state=None):
+        if dhcp and not isinstance(dhcp, str):
+            raise TypeError("Expected argument 'dhcp' to be a str")
+        pulumi.set(__self__, "dhcp", dhcp)
         if dns and not isinstance(dns, str):
             raise TypeError("Expected argument 'dns' to be a str")
         pulumi.set(__self__, "dns", dns)
@@ -54,6 +57,14 @@ class GetSimpleResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+
+    @_builtins.property
+    @pulumi.getter
+    def dhcp(self) -> _builtins.str:
+        """
+        The type of the DHCP backend for this zone.
+        """
+        return pulumi.get(self, "dhcp")
 
     @_builtins.property
     @pulumi.getter
@@ -134,6 +145,7 @@ class AwaitableGetSimpleResult(GetSimpleResult):
         if False:
             yield self
         return GetSimpleResult(
+            dhcp=self.dhcp,
             dns=self.dns,
             dns_zone=self.dns_zone,
             id=self.id,
@@ -162,9 +174,9 @@ def get_simple(id: Optional[_builtins.str] = None,
         "nodes": example.nodes,
         "mtu": example.mtu,
         "dns": example.dns,
-        "dns_zone": example.dns_zone,
+        "dnsZone": example.dns_zone,
         "ipam": example.ipam,
-        "reverse_dns": example.reverse_dns,
+        "reverseDns": example.reverse_dns,
     })
     ```
 
@@ -177,6 +189,7 @@ def get_simple(id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('proxmoxve:SDNZone/getSimple:getSimple', __args__, opts=opts, typ=GetSimpleResult).value
 
     return AwaitableGetSimpleResult(
+        dhcp=pulumi.get(__ret__, 'dhcp'),
         dns=pulumi.get(__ret__, 'dns'),
         dns_zone=pulumi.get(__ret__, 'dns_zone'),
         id=pulumi.get(__ret__, 'id'),
@@ -203,9 +216,9 @@ def get_simple_output(id: Optional[pulumi.Input[_builtins.str]] = None,
         "nodes": example.nodes,
         "mtu": example.mtu,
         "dns": example.dns,
-        "dns_zone": example.dns_zone,
+        "dnsZone": example.dns_zone,
         "ipam": example.ipam,
-        "reverse_dns": example.reverse_dns,
+        "reverseDns": example.reverse_dns,
     })
     ```
 
@@ -217,6 +230,7 @@ def get_simple_output(id: Optional[pulumi.Input[_builtins.str]] = None,
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:SDNZone/getSimple:getSimple', __args__, opts=opts, typ=GetSimpleResult)
     return __ret__.apply(lambda __response__: GetSimpleResult(
+        dhcp=pulumi.get(__response__, 'dhcp'),
         dns=pulumi.get(__response__, 'dns'),
         dns_zone=pulumi.get(__response__, 'dns_zone'),
         id=pulumi.get(__response__, 'id'),

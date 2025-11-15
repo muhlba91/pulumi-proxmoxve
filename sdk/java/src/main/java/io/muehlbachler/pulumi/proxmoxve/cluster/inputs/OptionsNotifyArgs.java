@@ -16,14 +16,14 @@ public final class OptionsNotifyArgs extends com.pulumi.resources.ResourceArgs {
     public static final OptionsNotifyArgs Empty = new OptionsNotifyArgs();
 
     /**
-     * Cluster-wide notification settings for the HA fencing mode. Must be `always` | `never`.
+     * Cluster-wide notification settings for the HA fencing mode. Must be &lt;span pulumi-lang-nodejs=&#34;`always`&#34; pulumi-lang-dotnet=&#34;`Always`&#34; pulumi-lang-go=&#34;`always`&#34; pulumi-lang-python=&#34;`always`&#34; pulumi-lang-yaml=&#34;`always`&#34; pulumi-lang-java=&#34;`always`&#34;&gt;`always`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`never`&#34; pulumi-lang-dotnet=&#34;`Never`&#34; pulumi-lang-go=&#34;`never`&#34; pulumi-lang-python=&#34;`never`&#34; pulumi-lang-yaml=&#34;`never`&#34; pulumi-lang-java=&#34;`never`&#34;&gt;`never`&lt;/span&gt;.
      * 
      */
     @Import(name="haFencingMode")
     private @Nullable Output<String> haFencingMode;
 
     /**
-     * @return Cluster-wide notification settings for the HA fencing mode. Must be `always` | `never`.
+     * @return Cluster-wide notification settings for the HA fencing mode. Must be &lt;span pulumi-lang-nodejs=&#34;`always`&#34; pulumi-lang-dotnet=&#34;`Always`&#34; pulumi-lang-go=&#34;`always`&#34; pulumi-lang-python=&#34;`always`&#34; pulumi-lang-yaml=&#34;`always`&#34; pulumi-lang-java=&#34;`always`&#34;&gt;`always`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`never`&#34; pulumi-lang-dotnet=&#34;`Never`&#34; pulumi-lang-go=&#34;`never`&#34; pulumi-lang-python=&#34;`never`&#34; pulumi-lang-yaml=&#34;`never`&#34; pulumi-lang-java=&#34;`never`&#34;&gt;`never`&lt;/span&gt;.
      * 
      */
     public Optional<Output<String>> haFencingMode() {
@@ -46,14 +46,14 @@ public final class OptionsNotifyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cluster-wide notification settings for package updates. Must be `auto` | `always` | `never`.
+     * Cluster-wide notification settings for package updates. Must be &lt;span pulumi-lang-nodejs=&#34;`auto`&#34; pulumi-lang-dotnet=&#34;`Auto`&#34; pulumi-lang-go=&#34;`auto`&#34; pulumi-lang-python=&#34;`auto`&#34; pulumi-lang-yaml=&#34;`auto`&#34; pulumi-lang-java=&#34;`auto`&#34;&gt;`auto`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`always`&#34; pulumi-lang-dotnet=&#34;`Always`&#34; pulumi-lang-go=&#34;`always`&#34; pulumi-lang-python=&#34;`always`&#34; pulumi-lang-yaml=&#34;`always`&#34; pulumi-lang-java=&#34;`always`&#34;&gt;`always`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`never`&#34; pulumi-lang-dotnet=&#34;`Never`&#34; pulumi-lang-go=&#34;`never`&#34; pulumi-lang-python=&#34;`never`&#34; pulumi-lang-yaml=&#34;`never`&#34; pulumi-lang-java=&#34;`never`&#34;&gt;`never`&lt;/span&gt;.
      * 
      */
     @Import(name="packageUpdates")
     private @Nullable Output<String> packageUpdates;
 
     /**
-     * @return Cluster-wide notification settings for package updates. Must be `auto` | `always` | `never`.
+     * @return Cluster-wide notification settings for package updates. Must be &lt;span pulumi-lang-nodejs=&#34;`auto`&#34; pulumi-lang-dotnet=&#34;`Auto`&#34; pulumi-lang-go=&#34;`auto`&#34; pulumi-lang-python=&#34;`auto`&#34; pulumi-lang-yaml=&#34;`auto`&#34; pulumi-lang-java=&#34;`auto`&#34;&gt;`auto`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`always`&#34; pulumi-lang-dotnet=&#34;`Always`&#34; pulumi-lang-go=&#34;`always`&#34; pulumi-lang-python=&#34;`always`&#34; pulumi-lang-yaml=&#34;`always`&#34; pulumi-lang-java=&#34;`always`&#34;&gt;`always`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`never`&#34; pulumi-lang-dotnet=&#34;`Never`&#34; pulumi-lang-go=&#34;`never`&#34; pulumi-lang-python=&#34;`never`&#34; pulumi-lang-yaml=&#34;`never`&#34; pulumi-lang-java=&#34;`never`&#34;&gt;`never`&lt;/span&gt;.
      * 
      */
     public Optional<Output<String>> packageUpdates() {
@@ -76,14 +76,14 @@ public final class OptionsNotifyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Cluster-wide notification settings for replication. Must be `always` | `never`.
+     * Cluster-wide notification settings for replication. Must be &lt;span pulumi-lang-nodejs=&#34;`always`&#34; pulumi-lang-dotnet=&#34;`Always`&#34; pulumi-lang-go=&#34;`always`&#34; pulumi-lang-python=&#34;`always`&#34; pulumi-lang-yaml=&#34;`always`&#34; pulumi-lang-java=&#34;`always`&#34;&gt;`always`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`never`&#34; pulumi-lang-dotnet=&#34;`Never`&#34; pulumi-lang-go=&#34;`never`&#34; pulumi-lang-python=&#34;`never`&#34; pulumi-lang-yaml=&#34;`never`&#34; pulumi-lang-java=&#34;`never`&#34;&gt;`never`&lt;/span&gt;.
      * 
      */
     @Import(name="replication")
     private @Nullable Output<String> replication;
 
     /**
-     * @return Cluster-wide notification settings for replication. Must be `always` | `never`.
+     * @return Cluster-wide notification settings for replication. Must be &lt;span pulumi-lang-nodejs=&#34;`always`&#34; pulumi-lang-dotnet=&#34;`Always`&#34; pulumi-lang-go=&#34;`always`&#34; pulumi-lang-python=&#34;`always`&#34; pulumi-lang-yaml=&#34;`always`&#34; pulumi-lang-java=&#34;`always`&#34;&gt;`always`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`never`&#34; pulumi-lang-dotnet=&#34;`Never`&#34; pulumi-lang-go=&#34;`never`&#34; pulumi-lang-python=&#34;`never`&#34; pulumi-lang-yaml=&#34;`never`&#34; pulumi-lang-java=&#34;`never`&#34;&gt;`never`&lt;/span&gt;.
      * 
      */
     public Optional<Output<String>> replication() {
@@ -135,7 +135,7 @@ public final class OptionsNotifyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param haFencingMode Cluster-wide notification settings for the HA fencing mode. Must be `always` | `never`.
+         * @param haFencingMode Cluster-wide notification settings for the HA fencing mode. Must be &lt;span pulumi-lang-nodejs=&#34;`always`&#34; pulumi-lang-dotnet=&#34;`Always`&#34; pulumi-lang-go=&#34;`always`&#34; pulumi-lang-python=&#34;`always`&#34; pulumi-lang-yaml=&#34;`always`&#34; pulumi-lang-java=&#34;`always`&#34;&gt;`always`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`never`&#34; pulumi-lang-dotnet=&#34;`Never`&#34; pulumi-lang-go=&#34;`never`&#34; pulumi-lang-python=&#34;`never`&#34; pulumi-lang-yaml=&#34;`never`&#34; pulumi-lang-java=&#34;`never`&#34;&gt;`never`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class OptionsNotifyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param haFencingMode Cluster-wide notification settings for the HA fencing mode. Must be `always` | `never`.
+         * @param haFencingMode Cluster-wide notification settings for the HA fencing mode. Must be &lt;span pulumi-lang-nodejs=&#34;`always`&#34; pulumi-lang-dotnet=&#34;`Always`&#34; pulumi-lang-go=&#34;`always`&#34; pulumi-lang-python=&#34;`always`&#34; pulumi-lang-yaml=&#34;`always`&#34; pulumi-lang-java=&#34;`always`&#34;&gt;`always`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`never`&#34; pulumi-lang-dotnet=&#34;`Never`&#34; pulumi-lang-go=&#34;`never`&#34; pulumi-lang-python=&#34;`never`&#34; pulumi-lang-yaml=&#34;`never`&#34; pulumi-lang-java=&#34;`never`&#34;&gt;`never`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class OptionsNotifyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param packageUpdates Cluster-wide notification settings for package updates. Must be `auto` | `always` | `never`.
+         * @param packageUpdates Cluster-wide notification settings for package updates. Must be &lt;span pulumi-lang-nodejs=&#34;`auto`&#34; pulumi-lang-dotnet=&#34;`Auto`&#34; pulumi-lang-go=&#34;`auto`&#34; pulumi-lang-python=&#34;`auto`&#34; pulumi-lang-yaml=&#34;`auto`&#34; pulumi-lang-java=&#34;`auto`&#34;&gt;`auto`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`always`&#34; pulumi-lang-dotnet=&#34;`Always`&#34; pulumi-lang-go=&#34;`always`&#34; pulumi-lang-python=&#34;`always`&#34; pulumi-lang-yaml=&#34;`always`&#34; pulumi-lang-java=&#34;`always`&#34;&gt;`always`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`never`&#34; pulumi-lang-dotnet=&#34;`Never`&#34; pulumi-lang-go=&#34;`never`&#34; pulumi-lang-python=&#34;`never`&#34; pulumi-lang-yaml=&#34;`never`&#34; pulumi-lang-java=&#34;`never`&#34;&gt;`never`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class OptionsNotifyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param packageUpdates Cluster-wide notification settings for package updates. Must be `auto` | `always` | `never`.
+         * @param packageUpdates Cluster-wide notification settings for package updates. Must be &lt;span pulumi-lang-nodejs=&#34;`auto`&#34; pulumi-lang-dotnet=&#34;`Auto`&#34; pulumi-lang-go=&#34;`auto`&#34; pulumi-lang-python=&#34;`auto`&#34; pulumi-lang-yaml=&#34;`auto`&#34; pulumi-lang-java=&#34;`auto`&#34;&gt;`auto`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`always`&#34; pulumi-lang-dotnet=&#34;`Always`&#34; pulumi-lang-go=&#34;`always`&#34; pulumi-lang-python=&#34;`always`&#34; pulumi-lang-yaml=&#34;`always`&#34; pulumi-lang-java=&#34;`always`&#34;&gt;`always`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`never`&#34; pulumi-lang-dotnet=&#34;`Never`&#34; pulumi-lang-go=&#34;`never`&#34; pulumi-lang-python=&#34;`never`&#34; pulumi-lang-yaml=&#34;`never`&#34; pulumi-lang-java=&#34;`never`&#34;&gt;`never`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class OptionsNotifyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param replication Cluster-wide notification settings for replication. Must be `always` | `never`.
+         * @param replication Cluster-wide notification settings for replication. Must be &lt;span pulumi-lang-nodejs=&#34;`always`&#34; pulumi-lang-dotnet=&#34;`Always`&#34; pulumi-lang-go=&#34;`always`&#34; pulumi-lang-python=&#34;`always`&#34; pulumi-lang-yaml=&#34;`always`&#34; pulumi-lang-java=&#34;`always`&#34;&gt;`always`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`never`&#34; pulumi-lang-dotnet=&#34;`Never`&#34; pulumi-lang-go=&#34;`never`&#34; pulumi-lang-python=&#34;`never`&#34; pulumi-lang-yaml=&#34;`never`&#34; pulumi-lang-java=&#34;`never`&#34;&gt;`never`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class OptionsNotifyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param replication Cluster-wide notification settings for replication. Must be `always` | `never`.
+         * @param replication Cluster-wide notification settings for replication. Must be &lt;span pulumi-lang-nodejs=&#34;`always`&#34; pulumi-lang-dotnet=&#34;`Always`&#34; pulumi-lang-go=&#34;`always`&#34; pulumi-lang-python=&#34;`always`&#34; pulumi-lang-yaml=&#34;`always`&#34; pulumi-lang-java=&#34;`always`&#34;&gt;`always`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`never`&#34; pulumi-lang-dotnet=&#34;`Never`&#34; pulumi-lang-go=&#34;`never`&#34; pulumi-lang-python=&#34;`never`&#34; pulumi-lang-yaml=&#34;`never`&#34; pulumi-lang-java=&#34;`never`&#34;&gt;`never`&lt;/span&gt;.
          * 
          * @return builder
          * 

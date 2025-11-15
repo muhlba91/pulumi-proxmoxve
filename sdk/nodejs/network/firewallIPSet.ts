@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * An IPSet allows us to group multiple IP addresses, IP subnets and aliases. Aliases can be
+ * An IPSet allows us to group multiple IP addresses, IP subnets and aliases. IPSets can be
  * created on the cluster level, on VM / Container level.
  *
  * ## Example Usage
@@ -17,8 +17,9 @@ import * as utilities from "../utilities";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
  * const ipset = new proxmoxve.network.FirewallIPSet("ipset", {
- *     nodeName: proxmox_virtual_environment_vm.example.node_name,
- *     vmId: proxmox_virtual_environment_vm.example.vm_id,
+ *     nodeName: example.nodeName,
+ *     vmId: example.vmId,
+ *     name: "local_network",
  *     comment: "Managed by Pulumi",
  *     cidrs: [
  *         {
@@ -36,8 +37,24 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  * }, {
- *     dependsOn: [proxmox_virtual_environment_vm.example],
+ *     dependsOn: [example],
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * ### Container IPSet
+ *
+ * Use the import ID format: `container/<node_name>/<container_id>/<ipset_name>`
+ *
+ * Example uses node name `pve` and container ID `100` and ipset name `local_network`.
+ *
+ * **Example:**
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:Network/firewallIPSet:FirewallIPSet container_ipset container/pve/100/local_network
  * ```
  */
 export class FirewallIPSet extends pulumi.CustomResource {

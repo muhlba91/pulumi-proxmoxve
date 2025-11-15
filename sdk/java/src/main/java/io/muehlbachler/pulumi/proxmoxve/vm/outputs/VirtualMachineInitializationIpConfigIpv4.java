@@ -13,14 +13,14 @@ import javax.annotation.Nullable;
 public final class VirtualMachineInitializationIpConfigIpv4 {
     /**
      * @return The IPv4 address in CIDR notation
-     * (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
+     * (e.g. 192.168.2.2/24). Alternatively, set this to &lt;span pulumi-lang-nodejs=&#34;`dhcp`&#34; pulumi-lang-dotnet=&#34;`Dhcp`&#34; pulumi-lang-go=&#34;`dhcp`&#34; pulumi-lang-python=&#34;`dhcp`&#34; pulumi-lang-yaml=&#34;`dhcp`&#34; pulumi-lang-java=&#34;`dhcp`&#34;&gt;`dhcp`&lt;/span&gt; for
      * autodiscovery.
      * 
      */
     private @Nullable String address;
     /**
      * @return The IPv4 gateway (must be omitted
-     * when `dhcp` is used as the address).
+     * when &lt;span pulumi-lang-nodejs=&#34;`dhcp`&#34; pulumi-lang-dotnet=&#34;`Dhcp`&#34; pulumi-lang-go=&#34;`dhcp`&#34; pulumi-lang-python=&#34;`dhcp`&#34; pulumi-lang-yaml=&#34;`dhcp`&#34; pulumi-lang-java=&#34;`dhcp`&#34;&gt;`dhcp`&lt;/span&gt; is used as the address).
      * 
      */
     private @Nullable String gateway;
@@ -28,7 +28,7 @@ public final class VirtualMachineInitializationIpConfigIpv4 {
     private VirtualMachineInitializationIpConfigIpv4() {}
     /**
      * @return The IPv4 address in CIDR notation
-     * (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
+     * (e.g. 192.168.2.2/24). Alternatively, set this to &lt;span pulumi-lang-nodejs=&#34;`dhcp`&#34; pulumi-lang-dotnet=&#34;`Dhcp`&#34; pulumi-lang-go=&#34;`dhcp`&#34; pulumi-lang-python=&#34;`dhcp`&#34; pulumi-lang-yaml=&#34;`dhcp`&#34; pulumi-lang-java=&#34;`dhcp`&#34;&gt;`dhcp`&lt;/span&gt; for
      * autodiscovery.
      * 
      */
@@ -37,7 +37,7 @@ public final class VirtualMachineInitializationIpConfigIpv4 {
     }
     /**
      * @return The IPv4 gateway (must be omitted
-     * when `dhcp` is used as the address).
+     * when &lt;span pulumi-lang-nodejs=&#34;`dhcp`&#34; pulumi-lang-dotnet=&#34;`Dhcp`&#34; pulumi-lang-go=&#34;`dhcp`&#34; pulumi-lang-python=&#34;`dhcp`&#34; pulumi-lang-yaml=&#34;`dhcp`&#34; pulumi-lang-java=&#34;`dhcp`&#34;&gt;`dhcp`&lt;/span&gt; is used as the address).
      * 
      */
     public Optional<String> gateway() {

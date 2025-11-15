@@ -55,7 +55,7 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
      * The hardware interface to connect the cloud-init
      * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
      * detected if the setting is missing but a cloud-init image is present,
-     * otherwise defaults to `ide2`.
+     * otherwise defaults to &lt;span pulumi-lang-nodejs=&#34;`ide2`&#34; pulumi-lang-dotnet=&#34;`Ide2`&#34; pulumi-lang-go=&#34;`ide2`&#34; pulumi-lang-python=&#34;`ide2`&#34; pulumi-lang-yaml=&#34;`ide2`&#34; pulumi-lang-java=&#34;`ide2`&#34;&gt;`ide2`&lt;/span&gt;.
      * 
      */
     @Import(name="interface")
@@ -65,7 +65,7 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
      * @return The hardware interface to connect the cloud-init
      * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
      * detected if the setting is missing but a cloud-init image is present,
-     * otherwise defaults to `ide2`.
+     * otherwise defaults to &lt;span pulumi-lang-nodejs=&#34;`ide2`&#34; pulumi-lang-dotnet=&#34;`Ide2`&#34; pulumi-lang-go=&#34;`ide2`&#34; pulumi-lang-python=&#34;`ide2`&#34; pulumi-lang-yaml=&#34;`ide2`&#34; pulumi-lang-java=&#34;`ide2`&#34;&gt;`ide2`&lt;/span&gt;.
      * 
      */
     public Optional<Output<String>> interface_() {
@@ -109,7 +109,7 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
     /**
      * The identifier for a file containing
      * network configuration data passed to the VM via cloud-init (conflicts
-     * with `ip_config`).
+     * with &lt;span pulumi-lang-nodejs=&#34;`ipConfig`&#34; pulumi-lang-dotnet=&#34;`IpConfig`&#34; pulumi-lang-go=&#34;`ipConfig`&#34; pulumi-lang-python=&#34;`ip_config`&#34; pulumi-lang-yaml=&#34;`ipConfig`&#34; pulumi-lang-java=&#34;`ipConfig`&#34;&gt;`ip_config`&lt;/span&gt;).
      * 
      */
     @Import(name="networkDataFileId")
@@ -118,7 +118,7 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
     /**
      * @return The identifier for a file containing
      * network configuration data passed to the VM via cloud-init (conflicts
-     * with `ip_config`).
+     * with &lt;span pulumi-lang-nodejs=&#34;`ipConfig`&#34; pulumi-lang-dotnet=&#34;`IpConfig`&#34; pulumi-lang-go=&#34;`ipConfig`&#34; pulumi-lang-python=&#34;`ip_config`&#34; pulumi-lang-yaml=&#34;`ipConfig`&#34; pulumi-lang-java=&#34;`ipConfig`&#34;&gt;`ip_config`&lt;/span&gt;).
      * 
      */
     public Optional<Output<String>> networkDataFileId() {
@@ -142,7 +142,7 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
 
     /**
      * The user account configuration (conflicts
-     * with `user_data_file_id`).
+     * with &lt;span pulumi-lang-nodejs=&#34;`userDataFileId`&#34; pulumi-lang-dotnet=&#34;`UserDataFileId`&#34; pulumi-lang-go=&#34;`userDataFileId`&#34; pulumi-lang-python=&#34;`user_data_file_id`&#34; pulumi-lang-yaml=&#34;`userDataFileId`&#34; pulumi-lang-java=&#34;`userDataFileId`&#34;&gt;`user_data_file_id`&lt;/span&gt;).
      * 
      */
     @Import(name="userAccount")
@@ -150,7 +150,7 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
 
     /**
      * @return The user account configuration (conflicts
-     * with `user_data_file_id`).
+     * with &lt;span pulumi-lang-nodejs=&#34;`userDataFileId`&#34; pulumi-lang-dotnet=&#34;`UserDataFileId`&#34; pulumi-lang-go=&#34;`userDataFileId`&#34; pulumi-lang-python=&#34;`user_data_file_id`&#34; pulumi-lang-yaml=&#34;`userDataFileId`&#34; pulumi-lang-java=&#34;`userDataFileId`&#34;&gt;`user_data_file_id`&lt;/span&gt;).
      * 
      */
     public Optional<Output<VirtualMachineInitializationUserAccountArgs>> userAccount() {
@@ -159,7 +159,7 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
 
     /**
      * The identifier for a file containing
-     * custom user data (conflicts with `user_account`).
+     * custom user data (conflicts with &lt;span pulumi-lang-nodejs=&#34;`userAccount`&#34; pulumi-lang-dotnet=&#34;`UserAccount`&#34; pulumi-lang-go=&#34;`userAccount`&#34; pulumi-lang-python=&#34;`user_account`&#34; pulumi-lang-yaml=&#34;`userAccount`&#34; pulumi-lang-java=&#34;`userAccount`&#34;&gt;`user_account`&lt;/span&gt;).
      * 
      */
     @Import(name="userDataFileId")
@@ -167,7 +167,7 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
 
     /**
      * @return The identifier for a file containing
-     * custom user data (conflicts with `user_account`).
+     * custom user data (conflicts with &lt;span pulumi-lang-nodejs=&#34;`userAccount`&#34; pulumi-lang-dotnet=&#34;`UserAccount`&#34; pulumi-lang-go=&#34;`userAccount`&#34; pulumi-lang-python=&#34;`user_account`&#34; pulumi-lang-yaml=&#34;`userAccount`&#34; pulumi-lang-java=&#34;`userAccount`&#34;&gt;`user_account`&lt;/span&gt;).
      * 
      */
     public Optional<Output<String>> userDataFileId() {
@@ -272,7 +272,7 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
          * @param interface_ The hardware interface to connect the cloud-init
          * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
          * detected if the setting is missing but a cloud-init image is present,
-         * otherwise defaults to `ide2`.
+         * otherwise defaults to &lt;span pulumi-lang-nodejs=&#34;`ide2`&#34; pulumi-lang-dotnet=&#34;`Ide2`&#34; pulumi-lang-go=&#34;`ide2`&#34; pulumi-lang-python=&#34;`ide2`&#34; pulumi-lang-yaml=&#34;`ide2`&#34; pulumi-lang-java=&#34;`ide2`&#34;&gt;`ide2`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -286,7 +286,7 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
          * @param interface_ The hardware interface to connect the cloud-init
          * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
          * detected if the setting is missing but a cloud-init image is present,
-         * otherwise defaults to `ide2`.
+         * otherwise defaults to &lt;span pulumi-lang-nodejs=&#34;`ide2`&#34; pulumi-lang-dotnet=&#34;`Ide2`&#34; pulumi-lang-go=&#34;`ide2`&#34; pulumi-lang-python=&#34;`ide2`&#34; pulumi-lang-yaml=&#34;`ide2`&#34; pulumi-lang-java=&#34;`ide2`&#34;&gt;`ide2`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -355,7 +355,7 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
         /**
          * @param networkDataFileId The identifier for a file containing
          * network configuration data passed to the VM via cloud-init (conflicts
-         * with `ip_config`).
+         * with &lt;span pulumi-lang-nodejs=&#34;`ipConfig`&#34; pulumi-lang-dotnet=&#34;`IpConfig`&#34; pulumi-lang-go=&#34;`ipConfig`&#34; pulumi-lang-python=&#34;`ip_config`&#34; pulumi-lang-yaml=&#34;`ipConfig`&#34; pulumi-lang-java=&#34;`ipConfig`&#34;&gt;`ip_config`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -368,7 +368,7 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
         /**
          * @param networkDataFileId The identifier for a file containing
          * network configuration data passed to the VM via cloud-init (conflicts
-         * with `ip_config`).
+         * with &lt;span pulumi-lang-nodejs=&#34;`ipConfig`&#34; pulumi-lang-dotnet=&#34;`IpConfig`&#34; pulumi-lang-go=&#34;`ipConfig`&#34; pulumi-lang-python=&#34;`ip_config`&#34; pulumi-lang-yaml=&#34;`ipConfig`&#34; pulumi-lang-java=&#34;`ipConfig`&#34;&gt;`ip_config`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -400,7 +400,7 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
 
         /**
          * @param userAccount The user account configuration (conflicts
-         * with `user_data_file_id`).
+         * with &lt;span pulumi-lang-nodejs=&#34;`userDataFileId`&#34; pulumi-lang-dotnet=&#34;`UserDataFileId`&#34; pulumi-lang-go=&#34;`userDataFileId`&#34; pulumi-lang-python=&#34;`user_data_file_id`&#34; pulumi-lang-yaml=&#34;`userDataFileId`&#34; pulumi-lang-java=&#34;`userDataFileId`&#34;&gt;`user_data_file_id`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -412,7 +412,7 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
 
         /**
          * @param userAccount The user account configuration (conflicts
-         * with `user_data_file_id`).
+         * with &lt;span pulumi-lang-nodejs=&#34;`userDataFileId`&#34; pulumi-lang-dotnet=&#34;`UserDataFileId`&#34; pulumi-lang-go=&#34;`userDataFileId`&#34; pulumi-lang-python=&#34;`user_data_file_id`&#34; pulumi-lang-yaml=&#34;`userDataFileId`&#34; pulumi-lang-java=&#34;`userDataFileId`&#34;&gt;`user_data_file_id`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -423,7 +423,7 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
 
         /**
          * @param userDataFileId The identifier for a file containing
-         * custom user data (conflicts with `user_account`).
+         * custom user data (conflicts with &lt;span pulumi-lang-nodejs=&#34;`userAccount`&#34; pulumi-lang-dotnet=&#34;`UserAccount`&#34; pulumi-lang-go=&#34;`userAccount`&#34; pulumi-lang-python=&#34;`user_account`&#34; pulumi-lang-yaml=&#34;`userAccount`&#34; pulumi-lang-java=&#34;`userAccount`&#34;&gt;`user_account`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -435,7 +435,7 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
 
         /**
          * @param userDataFileId The identifier for a file containing
-         * custom user data (conflicts with `user_account`).
+         * custom user data (conflicts with &lt;span pulumi-lang-nodejs=&#34;`userAccount`&#34; pulumi-lang-dotnet=&#34;`UserAccount`&#34; pulumi-lang-go=&#34;`userAccount`&#34; pulumi-lang-python=&#34;`user_account`&#34; pulumi-lang-yaml=&#34;`userAccount`&#34; pulumi-lang-java=&#34;`userAccount`&#34;&gt;`user_account`&lt;/span&gt;).
          * 
          * @return builder
          * 

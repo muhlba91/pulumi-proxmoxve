@@ -13,13 +13,13 @@ namespace Pulumi.ProxmoxVE.Inputs
     public sealed class ProviderSshArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether to use the SSH agent for authentication. Takes precedence over the `private_key` and `password` fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or `false` if not set.
+        /// Whether to use the SSH agent for authentication. Takes precedence over the `PrivateKey` and `Password` fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or `False` if not set.
         /// </summary>
         [Input("agent")]
         public Input<bool>? Agent { get; set; }
 
         /// <summary>
-        /// Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or `false` if not set.
+        /// Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or `False` if not set.
         /// </summary>
         [Input("agentForwarding")]
         public Input<bool>? AgentForwarding { get; set; }
@@ -46,7 +46,7 @@ namespace Pulumi.ProxmoxVE.Inputs
         private Input<string>? _password;
 
         /// <summary>
-        /// The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
+        /// The password used for the SSH connection. Defaults to the value of the `Password` field of the `Provider` block.
         /// </summary>
         public Input<string>? Password
         {
@@ -103,7 +103,7 @@ namespace Pulumi.ProxmoxVE.Inputs
         public Input<string>? Socks5Username { get; set; }
 
         /// <summary>
-        /// The username used for the SSH connection. Defaults to the value of the `username` field of the `provider` block.
+        /// The username used for the SSH connection. Defaults to the value of the `Username` field of the `Provider` block.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

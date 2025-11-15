@@ -273,6 +273,72 @@ class Subnet(pulumi.CustomResource):
         """
         Manages SDN Subnets in Proxmox VE.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        finalizer = proxmoxve.sdn.Applier("finalizer")
+        # SDN Zone (Simple) - Basic zone for simple vnets
+        example_zone1 = proxmoxve.sdnzone.Simple("example_zone_1",
+            zone_id="zone1",
+            nodes=["pve"],
+            mtu=1500,
+            dns="1.1.1.1",
+            dns_zone="example.com",
+            ipam="pve",
+            reverse_dns="1.1.1.1",
+            opts = pulumi.ResourceOptions(depends_on=[finalizer]))
+        # SDN Zone (Simple) - Second zone for demonstration
+        example_zone2 = proxmoxve.sdnzone.Simple("example_zone_2",
+            zone_id="zone2",
+            nodes=["pve"],
+            mtu=1500,
+            opts = pulumi.ResourceOptions(depends_on=[finalizer]))
+        # SDN VNet - Basic vnet
+        example_vnet1 = proxmoxve.sdn.Vnet("example_vnet_1",
+            vnet_id="vnet1",
+            zone=example_zone1.zone_id,
+            opts = pulumi.ResourceOptions(depends_on=[finalizer]))
+        # SDN VNet - VNet with alias and port isolation
+        example_vnet2 = proxmoxve.sdn.Vnet("example_vnet_2",
+            vnet_id="vnet2",
+            zone=example_zone2.zone_id,
+            alias="Example VNet 2",
+            isolate_ports=True,
+            vlan_aware=False,
+            opts = pulumi.ResourceOptions(depends_on=[finalizer]))
+        # Basic Subnet
+        basic_subnet = proxmoxve.sdn.Subnet("basic_subnet",
+            cidr="192.168.1.0/24",
+            vnet=example_vnet1.vnet_id,
+            gateway="192.168.1.1",
+            opts = pulumi.ResourceOptions(depends_on=[finalizer]))
+        # Subnet with DHCP Configuration
+        dhcp_subnet = proxmoxve.sdn.Subnet("dhcp_subnet",
+            cidr="192.168.2.0/24",
+            vnet=example_vnet2.vnet_id,
+            gateway="192.168.2.1",
+            dhcp_dns_server="192.168.2.53",
+            dns_zone_prefix="internal.example.com",
+            snat=True,
+            dhcp_range={
+                "start_address": "192.168.2.10",
+                "end_address": "192.168.2.100",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[finalizer]))
+        # SDN Applier for all resources
+        subnet_applier = proxmoxve.sdn.Applier("subnet_applier", opts = pulumi.ResourceOptions(depends_on=[
+                example_zone1,
+                example_zone2,
+                example_vnet1,
+                example_vnet2,
+                basic_subnet,
+                dhcp_subnet,
+            ]))
+        ```
+
         ## Import
 
         #!/usr/bin/env sh
@@ -307,6 +373,72 @@ class Subnet(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages SDN Subnets in Proxmox VE.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        finalizer = proxmoxve.sdn.Applier("finalizer")
+        # SDN Zone (Simple) - Basic zone for simple vnets
+        example_zone1 = proxmoxve.sdnzone.Simple("example_zone_1",
+            zone_id="zone1",
+            nodes=["pve"],
+            mtu=1500,
+            dns="1.1.1.1",
+            dns_zone="example.com",
+            ipam="pve",
+            reverse_dns="1.1.1.1",
+            opts = pulumi.ResourceOptions(depends_on=[finalizer]))
+        # SDN Zone (Simple) - Second zone for demonstration
+        example_zone2 = proxmoxve.sdnzone.Simple("example_zone_2",
+            zone_id="zone2",
+            nodes=["pve"],
+            mtu=1500,
+            opts = pulumi.ResourceOptions(depends_on=[finalizer]))
+        # SDN VNet - Basic vnet
+        example_vnet1 = proxmoxve.sdn.Vnet("example_vnet_1",
+            vnet_id="vnet1",
+            zone=example_zone1.zone_id,
+            opts = pulumi.ResourceOptions(depends_on=[finalizer]))
+        # SDN VNet - VNet with alias and port isolation
+        example_vnet2 = proxmoxve.sdn.Vnet("example_vnet_2",
+            vnet_id="vnet2",
+            zone=example_zone2.zone_id,
+            alias="Example VNet 2",
+            isolate_ports=True,
+            vlan_aware=False,
+            opts = pulumi.ResourceOptions(depends_on=[finalizer]))
+        # Basic Subnet
+        basic_subnet = proxmoxve.sdn.Subnet("basic_subnet",
+            cidr="192.168.1.0/24",
+            vnet=example_vnet1.vnet_id,
+            gateway="192.168.1.1",
+            opts = pulumi.ResourceOptions(depends_on=[finalizer]))
+        # Subnet with DHCP Configuration
+        dhcp_subnet = proxmoxve.sdn.Subnet("dhcp_subnet",
+            cidr="192.168.2.0/24",
+            vnet=example_vnet2.vnet_id,
+            gateway="192.168.2.1",
+            dhcp_dns_server="192.168.2.53",
+            dns_zone_prefix="internal.example.com",
+            snat=True,
+            dhcp_range={
+                "start_address": "192.168.2.10",
+                "end_address": "192.168.2.100",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[finalizer]))
+        # SDN Applier for all resources
+        subnet_applier = proxmoxve.sdn.Applier("subnet_applier", opts = pulumi.ResourceOptions(depends_on=[
+                example_zone1,
+                example_zone2,
+                example_vnet1,
+                example_vnet2,
+                basic_subnet,
+                dhcp_subnet,
+            ]))
+        ```
 
         ## Import
 

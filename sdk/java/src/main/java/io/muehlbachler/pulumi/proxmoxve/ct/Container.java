@@ -33,6 +33,124 @@ import javax.annotation.Nullable;
 /**
  * Manages a container.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.Download.File;
+ * import io.muehlbachler.pulumi.proxmoxve.Download.FileArgs;
+ * import com.pulumi.random.RandomPassword;
+ * import com.pulumi.random.RandomPasswordArgs;
+ * import com.pulumi.tls.PrivateKey;
+ * import com.pulumi.tls.PrivateKeyArgs;
+ * import io.muehlbachler.pulumi.proxmoxve.CT.Container;
+ * import io.muehlbachler.pulumi.proxmoxve.CT.ContainerArgs;
+ * import com.pulumi.proxmoxve.CT.inputs.ContainerFeaturesArgs;
+ * import com.pulumi.proxmoxve.CT.inputs.ContainerInitializationArgs;
+ * import com.pulumi.proxmoxve.CT.inputs.ContainerInitializationUserAccountArgs;
+ * import com.pulumi.proxmoxve.CT.inputs.ContainerNetworkInterfaceArgs;
+ * import com.pulumi.proxmoxve.CT.inputs.ContainerDiskArgs;
+ * import com.pulumi.proxmoxve.CT.inputs.ContainerOperatingSystemArgs;
+ * import com.pulumi.proxmoxve.CT.inputs.ContainerMountPointArgs;
+ * import com.pulumi.proxmoxve.CT.inputs.ContainerStartupArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.TrimspaceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var ubuntu2504LxcImg = new File("ubuntu2504LxcImg", FileArgs.builder()
+ *             .contentType("vztmpl")
+ *             .datastoreId("local")
+ *             .nodeName("first-node")
+ *             .url("https://mirrors.servercentral.com/ubuntu-cloud-images/releases/25.04/release/ubuntu-25.04-server-cloudimg-amd64-root.tar.xz")
+ *             .build());
+ * 
+ *         var ubuntuContainerPassword = new RandomPassword("ubuntuContainerPassword", RandomPasswordArgs.builder()
+ *             .length(16)
+ *             .overrideSpecial("_%}{@literal @}{@code ")
+ *             .special(true)
+ *             .build());
+ * 
+ *         var ubuntuContainerKey = new PrivateKey("ubuntuContainerKey", PrivateKeyArgs.builder()
+ *             .algorithm("RSA")
+ *             .rsaBits(2048)
+ *             .build());
+ * 
+ *         var ubuntuContainer = new Container("ubuntuContainer", ContainerArgs.builder()
+ *             .description("Managed by Pulumi")
+ *             .nodeName("first-node")
+ *             .vmId(1234)
+ *             .unprivileged(true)
+ *             .features(ContainerFeaturesArgs.builder()
+ *                 .nesting(true)
+ *                 .build())
+ *             .initialization(ContainerInitializationArgs.builder()
+ *                 .hostname("terraform-provider-proxmox-ubuntu-container")
+ *                 .ipConfigs(ContainerInitializationIpConfigArgs.builder()
+ *                     .ipv4(ContainerInitializationIpConfigIpv4Args.builder()
+ *                         .address("dhcp")
+ *                         .build())
+ *                     .build())
+ *                 .userAccount(ContainerInitializationUserAccountArgs.builder()
+ *                     .keys(StdFunctions.trimspace(TrimspaceArgs.builder()
+ *                         .input(ubuntuContainerKey.publicKeyOpenssh())
+ *                         .build()).applyValue(_invoke -> _invoke.result()))
+ *                     .password(ubuntuContainerPassword.result())
+ *                     .build())
+ *                 .build())
+ *             .networkInterfaces(ContainerNetworkInterfaceArgs.builder()
+ *                 .name("veth0")
+ *                 .build())
+ *             .disk(ContainerDiskArgs.builder()
+ *                 .datastoreId("local-lvm")
+ *                 .size(4)
+ *                 .build())
+ *             .operatingSystem(ContainerOperatingSystemArgs.builder()
+ *                 .templateFileId(ubuntu2504LxcImg.id())
+ *                 .type("ubuntu")
+ *                 .build())
+ *             .mountPoints(            
+ *                 ContainerMountPointArgs.builder()
+ *                     .volume("/mnt/bindmounts/shared")
+ *                     .path("/mnt/shared")
+ *                     .build(),
+ *                 ContainerMountPointArgs.builder()
+ *                     .volume("local-lvm")
+ *                     .size("10G")
+ *                     .path("/mnt/volume")
+ *                     .build())
+ *             .startup(ContainerStartupArgs.builder()
+ *                 .order(3)
+ *                 .upDelay(60)
+ *                 .downDelay(60)
+ *                 .build())
+ *             .build());
+ * 
+ *         ctx.export("ubuntuContainerPassword", ubuntuContainerPassword.result());
+ *         ctx.export("ubuntuContainerPrivateKey", ubuntuContainerKey.privateKeyPem());
+ *         ctx.export("ubuntuContainerPublicKey", ubuntuContainerKey.publicKeyOpenssh());
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Instances can be imported using the `node_name` and the `vm_id`, e.g.,
@@ -287,14 +405,14 @@ public class Container extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.poolId);
     }
     /**
-     * Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+     * Whether to set the protection flag of the container (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). This will prevent the container itself and its disk for remove/update operations.
      * 
      */
     @Export(name="protection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> protection;
 
     /**
-     * @return Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
+     * @return Whether to set the protection flag of the container (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). This will prevent the container itself and its disk for remove/update operations.
      * 
      */
     public Output<Optional<Boolean>> protection() {
@@ -302,7 +420,7 @@ public class Container extends com.pulumi.resources.CustomResource {
     }
     /**
      * Automatically start container when the host
-     * system boots (defaults to `true`).
+     * system boots (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     @Export(name="startOnBoot", refs={Boolean.class}, tree="[0]")
@@ -310,21 +428,21 @@ public class Container extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Automatically start container when the host
-     * system boots (defaults to `true`).
+     * system boots (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Output<Optional<Boolean>> startOnBoot() {
         return Codegen.optional(this.startOnBoot);
     }
     /**
-     * Whether to start the container (defaults to `true`).
+     * Whether to start the container (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     @Export(name="started", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> started;
 
     /**
-     * @return Whether to start the container (defaults to `true`).
+     * @return Whether to start the container (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Output<Optional<Boolean>> started() {
@@ -348,7 +466,7 @@ public class Container extends com.pulumi.resources.CustomResource {
      * A list of tags the container tags. This is only meta
      * information (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.
      * If tag contains capital letters, then Proxmox will always report a
-     * difference on the resource. You may use the `ignore_changes` lifecycle
+     * difference on the resource. You may use the &lt;span pulumi-lang-nodejs=&#34;`ignoreChanges`&#34; pulumi-lang-dotnet=&#34;`IgnoreChanges`&#34; pulumi-lang-go=&#34;`ignoreChanges`&#34; pulumi-lang-python=&#34;`ignore_changes`&#34; pulumi-lang-yaml=&#34;`ignoreChanges`&#34; pulumi-lang-java=&#34;`ignoreChanges`&#34;&gt;`ignore_changes`&lt;/span&gt; lifecycle
      * meta-argument to ignore changes to this attribute.
      * 
      */
@@ -359,7 +477,7 @@ public class Container extends com.pulumi.resources.CustomResource {
      * @return A list of tags the container tags. This is only meta
      * information (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.
      * If tag contains capital letters, then Proxmox will always report a
-     * difference on the resource. You may use the `ignore_changes` lifecycle
+     * difference on the resource. You may use the &lt;span pulumi-lang-nodejs=&#34;`ignoreChanges`&#34; pulumi-lang-dotnet=&#34;`IgnoreChanges`&#34; pulumi-lang-go=&#34;`ignoreChanges`&#34; pulumi-lang-python=&#34;`ignore_changes`&#34; pulumi-lang-yaml=&#34;`ignoreChanges`&#34; pulumi-lang-java=&#34;`ignoreChanges`&#34;&gt;`ignore_changes`&lt;/span&gt; lifecycle
      * meta-argument to ignore changes to this attribute.
      * 
      */
@@ -367,14 +485,14 @@ public class Container extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * Whether to create a template (defaults to `false`).
+     * Whether to create a template (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Export(name="template", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> template;
 
     /**
-     * @return Whether to create a template (defaults to `false`).
+     * @return Whether to create a template (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Output<Optional<Boolean>> template() {
@@ -426,10 +544,10 @@ public class Container extends com.pulumi.resources.CustomResource {
      * Start container timeout
      * 
      * @deprecated
-     * This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead.
+     * This field is deprecated and will be removed in a future release. An overall operation timeout (&lt;span pulumi-lang-nodejs=&#34;`timeoutCreate`&#34; pulumi-lang-dotnet=&#34;`TimeoutCreate`&#34; pulumi-lang-go=&#34;`timeoutCreate`&#34; pulumi-lang-python=&#34;`timeout_create`&#34; pulumi-lang-yaml=&#34;`timeoutCreate`&#34; pulumi-lang-java=&#34;`timeoutCreate`&#34;&gt;`timeout_create`&lt;/span&gt; / &lt;span pulumi-lang-nodejs=&#34;`timeoutClone`&#34; pulumi-lang-dotnet=&#34;`TimeoutClone`&#34; pulumi-lang-go=&#34;`timeoutClone`&#34; pulumi-lang-python=&#34;`timeout_clone`&#34; pulumi-lang-yaml=&#34;`timeoutClone`&#34; pulumi-lang-java=&#34;`timeoutClone`&#34;&gt;`timeout_clone`&lt;/span&gt;) is used instead.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead. */
+    @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (<span pulumi-lang-nodejs=""`timeoutCreate`"" pulumi-lang-dotnet=""`TimeoutCreate`"" pulumi-lang-go=""`timeoutCreate`"" pulumi-lang-python=""`timeout_create`"" pulumi-lang-yaml=""`timeoutCreate`"" pulumi-lang-java=""`timeoutCreate`"">`timeout_create`</span> / <span pulumi-lang-nodejs=""`timeoutClone`"" pulumi-lang-dotnet=""`TimeoutClone`"" pulumi-lang-go=""`timeoutClone`"" pulumi-lang-python=""`timeout_clone`"" pulumi-lang-yaml=""`timeoutClone`"" pulumi-lang-java=""`timeoutClone`"">`timeout_clone`</span>) is used instead. */
     @Export(name="timeoutStart", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeoutStart;
 
@@ -455,14 +573,14 @@ public class Container extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.timeoutUpdate);
     }
     /**
-     * Whether the container runs as unprivileged on the host (defaults to `false`).
+     * Whether the container runs as unprivileged on the host (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Export(name="unprivileged", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> unprivileged;
 
     /**
-     * @return Whether the container runs as unprivileged on the host (defaults to `false`).
+     * @return Whether the container runs as unprivileged on the host (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Output<Optional<Boolean>> unprivileged() {

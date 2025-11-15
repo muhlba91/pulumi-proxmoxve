@@ -25,15 +25,13 @@ namespace Pulumi.ProxmoxVE.Network
     ///     var vlan99 = new ProxmoxVE.Network.NetworkVlan("vlan99", new()
     ///     {
     ///         NodeName = "pve",
+    ///         Name = "ens18.99",
     ///     });
     /// 
-    ///     //# or alternatively, use custom name:
-    ///     // name      = "vlan_lab"
-    ///     // interface = "eno0"
-    ///     // vlan      = 98
     ///     var vmbr99 = new ProxmoxVE.Network.NetworkBridge("vmbr99", new()
     ///     {
     ///         NodeName = "pve",
+    ///         Name = "vmbr99",
     ///         Address = "99.99.99.99/16",
     ///         Comment = "vmbr99 comment",
     ///         Ports = new[]
@@ -77,7 +75,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Output<string?> Address6 { get; private set; } = null!;
 
         /// <summary>
-        /// Automatically start interface on boot (defaults to `true`).
+        /// Automatically start interface on boot (defaults to `True`).
         /// </summary>
         [Output("autostart")]
         public Output<bool> Autostart { get; private set; } = null!;
@@ -125,7 +123,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Output<ImmutableArray<string>> Ports { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the interface bridge is VLAN aware (defaults to `false`).
+        /// Whether the interface bridge is VLAN aware (defaults to `False`).
         /// </summary>
         [Output("vlanAware")]
         public Output<bool> VlanAware { get; private set; } = null!;
@@ -190,7 +188,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Input<string>? Address6 { get; set; }
 
         /// <summary>
-        /// Automatically start interface on boot (defaults to `true`).
+        /// Automatically start interface on boot (defaults to `True`).
         /// </summary>
         [Input("autostart")]
         public Input<bool>? Autostart { get; set; }
@@ -244,7 +242,7 @@ namespace Pulumi.ProxmoxVE.Network
         }
 
         /// <summary>
-        /// Whether the interface bridge is VLAN aware (defaults to `false`).
+        /// Whether the interface bridge is VLAN aware (defaults to `False`).
         /// </summary>
         [Input("vlanAware")]
         public Input<bool>? VlanAware { get; set; }
@@ -270,7 +268,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Input<string>? Address6 { get; set; }
 
         /// <summary>
-        /// Automatically start interface on boot (defaults to `true`).
+        /// Automatically start interface on boot (defaults to `True`).
         /// </summary>
         [Input("autostart")]
         public Input<bool>? Autostart { get; set; }
@@ -324,7 +322,7 @@ namespace Pulumi.ProxmoxVE.Network
         }
 
         /// <summary>
-        /// Whether the interface bridge is VLAN aware (defaults to `false`).
+        /// Whether the interface bridge is VLAN aware (defaults to `False`).
         /// </summary>
         [Input("vlanAware")]
         public Input<bool>? VlanAware { get; set; }

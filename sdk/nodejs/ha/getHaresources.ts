@@ -13,7 +13,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
+ * // This will fetch the set of all HA resource identifiers.
  * const exampleAll = proxmoxve.HA.getHAResources({});
+ * // This will fetch the set of HA resource identifiers that correspond to virtual machines.
  * const exampleVm = proxmoxve.HA.getHAResources({
  *     type: "vm",
  * });
@@ -67,7 +69,9 @@ export interface GetHAResourcesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
+ * // This will fetch the set of all HA resource identifiers.
  * const exampleAll = proxmoxve.HA.getHAResources({});
+ * // This will fetch the set of HA resource identifiers that correspond to virtual machines.
  * const exampleVm = proxmoxve.HA.getHAResources({
  *     type: "vm",
  * });

@@ -24,28 +24,28 @@ namespace Pulumi.ProxmoxVE.SDNZone
     /// {
     ///     var example = new ProxmoxVE.SDNZone.Evpn("example", new()
     ///     {
-    ///         AdvertiseSubnets = true,
+    ///         ZoneId = "evpn1",
+    ///         Nodes = new[]
+    ///         {
+    ///             "pve",
+    ///         },
     ///         Controller = "evpn-controller1",
+    ///         VrfVxlan = 4000,
+    ///         AdvertiseSubnets = true,
     ///         DisableArpNdSuppression = false,
-    ///         Dns = "1.1.1.1",
-    ///         DnsZone = "example.com",
     ///         ExitNodes = new[]
     ///         {
     ///             "pve-exit1",
     ///             "pve-exit2",
     ///         },
     ///         ExitNodesLocalRouting = true,
-    ///         ZoneId = "evpn1",
-    ///         Ipam = "pve",
-    ///         Mtu = 1450,
-    ///         Nodes = new[]
-    ///         {
-    ///             "pve",
-    ///         },
     ///         PrimaryExitNode = "pve-exit1",
-    ///         ReverseDns = "1.1.1.1",
     ///         RtImport = "65000:65000",
-    ///         VrfVxlan = 4000,
+    ///         Mtu = 1450,
+    ///         Dns = "1.1.1.1",
+    ///         DnsZone = "example.com",
+    ///         Ipam = "pve",
+    ///         ReverseDns = "1.1.1.1",
     ///     });
     /// 
     /// });
@@ -273,7 +273,7 @@ namespace Pulumi.ProxmoxVE.SDNZone
         [Input("mtu")]
         public Input<int>? Mtu { get; set; }
 
-        [Input("nodes", required: true)]
+        [Input("nodes")]
         private InputList<string>? _nodes;
 
         /// <summary>

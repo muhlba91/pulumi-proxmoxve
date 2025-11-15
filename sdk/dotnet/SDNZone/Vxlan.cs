@@ -24,21 +24,17 @@ namespace Pulumi.ProxmoxVE.SDNZone
     /// {
     ///     var example = new ProxmoxVE.SDNZone.Vxlan("example", new()
     ///     {
-    ///         Dns = "1.1.1.1",
-    ///         DnsZone = "example.com",
     ///         ZoneId = "vxlan1",
-    ///         Ipam = "pve",
-    ///         Mtu = 1450,
-    ///         Nodes = new[]
-    ///         {
-    ///             "pve",
-    ///         },
     ///         Peers = new[]
     ///         {
     ///             "10.0.0.1",
     ///             "10.0.0.2",
     ///             "10.0.0.3",
     ///         },
+    ///         Mtu = 1450,
+    ///         Dns = "1.1.1.1",
+    ///         DnsZone = "example.com",
+    ///         Ipam = "pve",
     ///         ReverseDns = "1.1.1.1",
     ///     });
     /// 
@@ -189,7 +185,7 @@ namespace Pulumi.ProxmoxVE.SDNZone
         [Input("mtu")]
         public Input<int>? Mtu { get; set; }
 
-        [Input("nodes", required: true)]
+        [Input("nodes")]
         private InputList<string>? _nodes;
 
         /// <summary>

@@ -13,7 +13,7 @@ namespace Pulumi.ProxmoxVE.Cluster.Inputs
     public sealed class OptionsNotifyGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cluster-wide notification settings for the HA fencing mode. Must be `always` | `never`.
+        /// Cluster-wide notification settings for the HA fencing mode. Must be `Always` | `Never`.
         /// </summary>
         [Input("haFencingMode")]
         public Input<string>? HaFencingMode { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.ProxmoxVE.Cluster.Inputs
         public Input<string>? HaFencingTarget { get; set; }
 
         /// <summary>
-        /// Cluster-wide notification settings for package updates. Must be `auto` | `always` | `never`.
+        /// Cluster-wide notification settings for package updates. Must be `Auto` | `Always` | `Never`.
         /// </summary>
         [Input("packageUpdates")]
         public Input<string>? PackageUpdates { get; set; }
@@ -37,7 +37,7 @@ namespace Pulumi.ProxmoxVE.Cluster.Inputs
         public Input<string>? PackageUpdatesTarget { get; set; }
 
         /// <summary>
-        /// Cluster-wide notification settings for replication. Must be `always` | `never`.
+        /// Cluster-wide notification settings for replication. Must be `Always` | `Never`.
         /// </summary>
         [Input("replication")]
         public Input<string>? Replication { get; set; }

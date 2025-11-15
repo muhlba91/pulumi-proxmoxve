@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := permission.NewPool(ctx, "operationsPool", &permission.PoolArgs{
+//			_, err := permission.NewPool(ctx, "operations_pool", &permission.PoolArgs{
 //				Comment: pulumi.String("Managed by Pulumi"),
 //				PoolId:  pulumi.String("operations-pool"),
 //			})

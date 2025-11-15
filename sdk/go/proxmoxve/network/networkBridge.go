@@ -30,12 +30,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			vlan99, err := network.NewNetworkVlan(ctx, "vlan99", &network.NetworkVlanArgs{
 //				NodeName: pulumi.String("pve"),
+//				Name:     pulumi.String("ens18.99"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = network.NewNetworkBridge(ctx, "vmbr99", &network.NetworkBridgeArgs{
 //				NodeName: pulumi.String("pve"),
+//				Name:     pulumi.String("vmbr99"),
 //				Address:  pulumi.String("99.99.99.99/16"),
 //				Comment:  pulumi.String("vmbr99 comment"),
 //				Ports: pulumi.StringArray{

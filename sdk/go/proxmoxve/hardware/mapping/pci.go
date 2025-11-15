@@ -14,6 +14,44 @@ import (
 
 // Manages a PCI hardware mapping in a Proxmox VE cluster.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/hardware"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := hardware.NewPci(ctx, "example", &hardware.PciArgs{
+//				Comment: pulumi.String("This is a comment"),
+//				Name:    pulumi.String("example"),
+//				Maps: mapping.PciMapTypeArray{
+//					&mapping.PciMapTypeArgs{
+//						Comment:     pulumi.String("This is a device specific comment"),
+//						Id:          pulumi.String("8086:5916"),
+//						IommuGroup:  pulumi.Int(0),
+//						Node:        pulumi.String("pve"),
+//						Path:        pulumi.String("0000:00:02.0"),
+//						SubsystemId: pulumi.String("8086:2068"),
+//					},
+//				},
+//				MediatedDevices: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // #!/usr/bin/env sh

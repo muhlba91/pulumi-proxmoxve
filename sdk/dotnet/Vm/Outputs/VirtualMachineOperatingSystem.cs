@@ -14,7 +14,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     public sealed class VirtualMachineOperatingSystem
     {
         /// <summary>
-        /// The type (defaults to `other`).
+        /// The type (defaults to `Other`).
         /// </summary>
         public readonly string? Type;
 

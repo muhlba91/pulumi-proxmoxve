@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Manages files upload using PVE download-url API. It can be fully compatible and faster replacement for image files created using `proxmoxve.Storage.File`. Supports images for VMs (ISO and disk images) and LXC (CT Templates).
+ * Manages files upload using PVE download-url API. It can be fully compatible and faster replacement for image files created using &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Storage.File`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Storage.File`&#34; pulumi-lang-go=&#34;`Storage.File`&#34; pulumi-lang-python=&#34;`Storage.File`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Storage.File`&#34; pulumi-lang-java=&#34;`proxmoxve.Storage.File`&#34;&gt;`proxmoxve.Storage.File`&lt;/span&gt;. Supports images for VMs (ISO and disk images) and LXC (CT Templates).
  * 
  * &gt; Besides the `Datastore.AllocateTemplate` privilege, this resource requires both the `Sys.Audit` and `Sys.Modify` privileges.&lt;br&gt;&lt;br&gt;
  * For more details, see the [`download-url`](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/storage/{storage}/download-url) API documentation under the &#34;Required permissions&#34; section.
@@ -48,23 +48,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var release20231228Debian12BookwormQcow2Img = new File("release20231228Debian12BookwormQcow2Img", FileArgs.builder()
- *             .checksum("d2fbcf11fb28795842e91364d8c7b69f1870db09ff299eb94e4fbbfa510eb78d141e74c1f4bf6dfa0b7e33d0c3b66e6751886feadb4e9916f778bab1776bdf1b")
- *             .checksumAlgorithm("sha512")
  *             .contentType("iso")
  *             .datastoreId("local")
  *             .fileName("debian-12-generic-amd64-20231228-1609.img")
  *             .nodeName("pve")
  *             .url("https://cloud.debian.org/images/cloud/bookworm/20231228-1609/debian-12-generic-amd64-20231228-1609.qcow2")
+ *             .checksum("d2fbcf11fb28795842e91364d8c7b69f1870db09ff299eb94e4fbbfa510eb78d141e74c1f4bf6dfa0b7e33d0c3b66e6751886feadb4e9916f778bab1776bdf1b")
+ *             .checksumAlgorithm("sha512")
  *             .build());
  * 
  *         var release20231228Debian12BookwormQcow2 = new File("release20231228Debian12BookwormQcow2", FileArgs.builder()
- *             .checksum("d2fbcf11fb28795842e91364d8c7b69f1870db09ff299eb94e4fbbfa510eb78d141e74c1f4bf6dfa0b7e33d0c3b66e6751886feadb4e9916f778bab1776bdf1b")
- *             .checksumAlgorithm("sha512")
  *             .contentType("import")
  *             .datastoreId("local")
  *             .fileName("debian-12-generic-amd64-20231228-1609.qcow2")
  *             .nodeName("pve")
  *             .url("https://cloud.debian.org/images/cloud/bookworm/20231228-1609/debian-12-generic-amd64-20231228-1609.qcow2")
+ *             .checksum("d2fbcf11fb28795842e91364d8c7b69f1870db09ff299eb94e4fbbfa510eb78d141e74c1f4bf6dfa0b7e33d0c3b66e6751886feadb4e9916f778bab1776bdf1b")
+ *             .checksumAlgorithm("sha512")
  *             .build());
  * 
  *         var latestDebian12BookwormQcow2Img = new File("latestDebian12BookwormQcow2Img", FileArgs.builder()
@@ -94,18 +94,18 @@ import javax.annotation.Nullable;
  *             .contentType("iso")
  *             .datastoreId("local")
  *             .nodeName("pve")
- *             .overwrite(false)
  *             .url("https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img")
+ *             .overwrite(false)
  *             .build());
  * 
  *         var release20231211Ubuntu22JammyLxcImg = new File("release20231211Ubuntu22JammyLxcImg", FileArgs.builder()
- *             .checksum("c9997dcfea5d826fd04871f960c513665f2e87dd7450bba99f68a97e60e4586e")
- *             .checksumAlgorithm("sha256")
  *             .contentType("vztmpl")
  *             .datastoreId("local")
  *             .nodeName("pve")
- *             .uploadTimeout(4444)
  *             .url("https://cloud-images.ubuntu.com/releases/22.04/release-20231211/ubuntu-22.04-server-cloudimg-amd64-root.tar.xz")
+ *             .checksum("c9997dcfea5d826fd04871f960c513665f2e87dd7450bba99f68a97e60e4586e")
+ *             .checksumAlgorithm("sha256")
+ *             .uploadTimeout(4444)
  *             .build());
  * 
  *         var latestUbuntu22JammyLxcImg = new File("latestUbuntu22JammyLxcImg", FileArgs.builder()
@@ -139,28 +139,28 @@ public class File extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.checksum);
     }
     /**
-     * The algorithm to calculate the checksum of the file. Must be `md5` | `sha1` | `sha224` | `sha256` | `sha384` | `sha512`.
+     * The algorithm to calculate the checksum of the file. Must be &lt;span pulumi-lang-nodejs=&#34;`md5`&#34; pulumi-lang-dotnet=&#34;`Md5`&#34; pulumi-lang-go=&#34;`md5`&#34; pulumi-lang-python=&#34;`md5`&#34; pulumi-lang-yaml=&#34;`md5`&#34; pulumi-lang-java=&#34;`md5`&#34;&gt;`md5`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`sha1`&#34; pulumi-lang-dotnet=&#34;`Sha1`&#34; pulumi-lang-go=&#34;`sha1`&#34; pulumi-lang-python=&#34;`sha1`&#34; pulumi-lang-yaml=&#34;`sha1`&#34; pulumi-lang-java=&#34;`sha1`&#34;&gt;`sha1`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`sha224`&#34; pulumi-lang-dotnet=&#34;`Sha224`&#34; pulumi-lang-go=&#34;`sha224`&#34; pulumi-lang-python=&#34;`sha224`&#34; pulumi-lang-yaml=&#34;`sha224`&#34; pulumi-lang-java=&#34;`sha224`&#34;&gt;`sha224`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`sha256`&#34; pulumi-lang-dotnet=&#34;`Sha256`&#34; pulumi-lang-go=&#34;`sha256`&#34; pulumi-lang-python=&#34;`sha256`&#34; pulumi-lang-yaml=&#34;`sha256`&#34; pulumi-lang-java=&#34;`sha256`&#34;&gt;`sha256`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`sha384`&#34; pulumi-lang-dotnet=&#34;`Sha384`&#34; pulumi-lang-go=&#34;`sha384`&#34; pulumi-lang-python=&#34;`sha384`&#34; pulumi-lang-yaml=&#34;`sha384`&#34; pulumi-lang-java=&#34;`sha384`&#34;&gt;`sha384`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`sha512`&#34; pulumi-lang-dotnet=&#34;`Sha512`&#34; pulumi-lang-go=&#34;`sha512`&#34; pulumi-lang-python=&#34;`sha512`&#34; pulumi-lang-yaml=&#34;`sha512`&#34; pulumi-lang-java=&#34;`sha512`&#34;&gt;`sha512`&lt;/span&gt;.
      * 
      */
     @Export(name="checksumAlgorithm", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> checksumAlgorithm;
 
     /**
-     * @return The algorithm to calculate the checksum of the file. Must be `md5` | `sha1` | `sha224` | `sha256` | `sha384` | `sha512`.
+     * @return The algorithm to calculate the checksum of the file. Must be &lt;span pulumi-lang-nodejs=&#34;`md5`&#34; pulumi-lang-dotnet=&#34;`Md5`&#34; pulumi-lang-go=&#34;`md5`&#34; pulumi-lang-python=&#34;`md5`&#34; pulumi-lang-yaml=&#34;`md5`&#34; pulumi-lang-java=&#34;`md5`&#34;&gt;`md5`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`sha1`&#34; pulumi-lang-dotnet=&#34;`Sha1`&#34; pulumi-lang-go=&#34;`sha1`&#34; pulumi-lang-python=&#34;`sha1`&#34; pulumi-lang-yaml=&#34;`sha1`&#34; pulumi-lang-java=&#34;`sha1`&#34;&gt;`sha1`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`sha224`&#34; pulumi-lang-dotnet=&#34;`Sha224`&#34; pulumi-lang-go=&#34;`sha224`&#34; pulumi-lang-python=&#34;`sha224`&#34; pulumi-lang-yaml=&#34;`sha224`&#34; pulumi-lang-java=&#34;`sha224`&#34;&gt;`sha224`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`sha256`&#34; pulumi-lang-dotnet=&#34;`Sha256`&#34; pulumi-lang-go=&#34;`sha256`&#34; pulumi-lang-python=&#34;`sha256`&#34; pulumi-lang-yaml=&#34;`sha256`&#34; pulumi-lang-java=&#34;`sha256`&#34;&gt;`sha256`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`sha384`&#34; pulumi-lang-dotnet=&#34;`Sha384`&#34; pulumi-lang-go=&#34;`sha384`&#34; pulumi-lang-python=&#34;`sha384`&#34; pulumi-lang-yaml=&#34;`sha384`&#34; pulumi-lang-java=&#34;`sha384`&#34;&gt;`sha384`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`sha512`&#34; pulumi-lang-dotnet=&#34;`Sha512`&#34; pulumi-lang-go=&#34;`sha512`&#34; pulumi-lang-python=&#34;`sha512`&#34; pulumi-lang-yaml=&#34;`sha512`&#34; pulumi-lang-java=&#34;`sha512`&#34;&gt;`sha512`&lt;/span&gt;.
      * 
      */
     public Output<Optional<String>> checksumAlgorithm() {
         return Codegen.optional(this.checksumAlgorithm);
     }
     /**
-     * The file content type. Must be `iso` or `import` for VM images or `vztmpl` for LXC images.
+     * The file content type. Must be &lt;span pulumi-lang-nodejs=&#34;`iso`&#34; pulumi-lang-dotnet=&#34;`Iso`&#34; pulumi-lang-go=&#34;`iso`&#34; pulumi-lang-python=&#34;`iso`&#34; pulumi-lang-yaml=&#34;`iso`&#34; pulumi-lang-java=&#34;`iso`&#34;&gt;`iso`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`import`&#34; pulumi-lang-dotnet=&#34;`Import`&#34; pulumi-lang-go=&#34;`import`&#34; pulumi-lang-python=&#34;`import`&#34; pulumi-lang-yaml=&#34;`import`&#34; pulumi-lang-java=&#34;`import`&#34;&gt;`import`&lt;/span&gt; for VM images or &lt;span pulumi-lang-nodejs=&#34;`vztmpl`&#34; pulumi-lang-dotnet=&#34;`Vztmpl`&#34; pulumi-lang-go=&#34;`vztmpl`&#34; pulumi-lang-python=&#34;`vztmpl`&#34; pulumi-lang-yaml=&#34;`vztmpl`&#34; pulumi-lang-java=&#34;`vztmpl`&#34;&gt;`vztmpl`&lt;/span&gt; for LXC images.
      * 
      */
     @Export(name="contentType", refs={String.class}, tree="[0]")
     private Output<String> contentType;
 
     /**
-     * @return The file content type. Must be `iso` or `import` for VM images or `vztmpl` for LXC images.
+     * @return The file content type. Must be &lt;span pulumi-lang-nodejs=&#34;`iso`&#34; pulumi-lang-dotnet=&#34;`Iso`&#34; pulumi-lang-go=&#34;`iso`&#34; pulumi-lang-python=&#34;`iso`&#34; pulumi-lang-yaml=&#34;`iso`&#34; pulumi-lang-java=&#34;`iso`&#34;&gt;`iso`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`import`&#34; pulumi-lang-dotnet=&#34;`Import`&#34; pulumi-lang-go=&#34;`import`&#34; pulumi-lang-python=&#34;`import`&#34; pulumi-lang-yaml=&#34;`import`&#34; pulumi-lang-java=&#34;`import`&#34;&gt;`import`&lt;/span&gt; for VM images or &lt;span pulumi-lang-nodejs=&#34;`vztmpl`&#34; pulumi-lang-dotnet=&#34;`Vztmpl`&#34; pulumi-lang-go=&#34;`vztmpl`&#34; pulumi-lang-python=&#34;`vztmpl`&#34; pulumi-lang-yaml=&#34;`vztmpl`&#34; pulumi-lang-java=&#34;`vztmpl`&#34;&gt;`vztmpl`&lt;/span&gt; for LXC images.
      * 
      */
     public Output<String> contentType() {
@@ -181,28 +181,28 @@ public class File extends com.pulumi.resources.CustomResource {
         return this.datastoreId;
     }
     /**
-     * Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
+     * Decompress the downloaded file using the specified compression algorithm. Must be one of &lt;span pulumi-lang-nodejs=&#34;`gz`&#34; pulumi-lang-dotnet=&#34;`Gz`&#34; pulumi-lang-go=&#34;`gz`&#34; pulumi-lang-python=&#34;`gz`&#34; pulumi-lang-yaml=&#34;`gz`&#34; pulumi-lang-java=&#34;`gz`&#34;&gt;`gz`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`lzo`&#34; pulumi-lang-dotnet=&#34;`Lzo`&#34; pulumi-lang-go=&#34;`lzo`&#34; pulumi-lang-python=&#34;`lzo`&#34; pulumi-lang-yaml=&#34;`lzo`&#34; pulumi-lang-java=&#34;`lzo`&#34;&gt;`lzo`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`zst`&#34; pulumi-lang-dotnet=&#34;`Zst`&#34; pulumi-lang-go=&#34;`zst`&#34; pulumi-lang-python=&#34;`zst`&#34; pulumi-lang-yaml=&#34;`zst`&#34; pulumi-lang-java=&#34;`zst`&#34;&gt;`zst`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`bz2`&#34; pulumi-lang-dotnet=&#34;`Bz2`&#34; pulumi-lang-go=&#34;`bz2`&#34; pulumi-lang-python=&#34;`bz2`&#34; pulumi-lang-yaml=&#34;`bz2`&#34; pulumi-lang-java=&#34;`bz2`&#34;&gt;`bz2`&lt;/span&gt;.
      * 
      */
     @Export(name="decompressionAlgorithm", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> decompressionAlgorithm;
 
     /**
-     * @return Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
+     * @return Decompress the downloaded file using the specified compression algorithm. Must be one of &lt;span pulumi-lang-nodejs=&#34;`gz`&#34; pulumi-lang-dotnet=&#34;`Gz`&#34; pulumi-lang-go=&#34;`gz`&#34; pulumi-lang-python=&#34;`gz`&#34; pulumi-lang-yaml=&#34;`gz`&#34; pulumi-lang-java=&#34;`gz`&#34;&gt;`gz`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`lzo`&#34; pulumi-lang-dotnet=&#34;`Lzo`&#34; pulumi-lang-go=&#34;`lzo`&#34; pulumi-lang-python=&#34;`lzo`&#34; pulumi-lang-yaml=&#34;`lzo`&#34; pulumi-lang-java=&#34;`lzo`&#34;&gt;`lzo`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`zst`&#34; pulumi-lang-dotnet=&#34;`Zst`&#34; pulumi-lang-go=&#34;`zst`&#34; pulumi-lang-python=&#34;`zst`&#34; pulumi-lang-yaml=&#34;`zst`&#34; pulumi-lang-java=&#34;`zst`&#34;&gt;`zst`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`bz2`&#34; pulumi-lang-dotnet=&#34;`Bz2`&#34; pulumi-lang-go=&#34;`bz2`&#34; pulumi-lang-python=&#34;`bz2`&#34; pulumi-lang-yaml=&#34;`bz2`&#34; pulumi-lang-java=&#34;`bz2`&#34;&gt;`bz2`&lt;/span&gt;.
      * 
      */
     public Output<Optional<String>> decompressionAlgorithm() {
         return Codegen.optional(this.decompressionAlgorithm);
     }
     /**
-     * The file name. If not provided, it is calculated using `url`. PVE will raise &#39;wrong file extension&#39; error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
+     * The file name. If not provided, it is calculated using &lt;span pulumi-lang-nodejs=&#34;`url`&#34; pulumi-lang-dotnet=&#34;`Url`&#34; pulumi-lang-go=&#34;`url`&#34; pulumi-lang-python=&#34;`url`&#34; pulumi-lang-yaml=&#34;`url`&#34; pulumi-lang-java=&#34;`url`&#34;&gt;`url`&lt;/span&gt;. PVE will raise &#39;wrong file extension&#39; error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
      * 
      */
     @Export(name="fileName", refs={String.class}, tree="[0]")
     private Output<String> fileName;
 
     /**
-     * @return The file name. If not provided, it is calculated using `url`. PVE will raise &#39;wrong file extension&#39; error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
+     * @return The file name. If not provided, it is calculated using &lt;span pulumi-lang-nodejs=&#34;`url`&#34; pulumi-lang-dotnet=&#34;`Url`&#34; pulumi-lang-go=&#34;`url`&#34; pulumi-lang-python=&#34;`url`&#34; pulumi-lang-yaml=&#34;`url`&#34; pulumi-lang-java=&#34;`url`&#34;&gt;`url`&lt;/span&gt;. PVE will raise &#39;wrong file extension&#39; error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
      * 
      */
     public Output<String> fileName() {
@@ -223,28 +223,28 @@ public class File extends com.pulumi.resources.CustomResource {
         return this.nodeName;
     }
     /**
-     * By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
+     * By default &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;. If &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt; and file size has changed in the datastore, it will be replaced. If &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;, there will be no check.
      * 
      */
     @Export(name="overwrite", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> overwrite;
 
     /**
-     * @return By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
+     * @return By default &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;. If &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt; and file size has changed in the datastore, it will be replaced. If &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;, there will be no check.
      * 
      */
     public Output<Boolean> overwrite() {
         return this.overwrite;
     }
     /**
-     * If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
+     * If &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt; and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt; and the file already exists, an error will be returned.
      * 
      */
     @Export(name="overwriteUnmanaged", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> overwriteUnmanaged;
 
     /**
-     * @return If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
+     * @return If &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt; and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt; and the file already exists, an error will be returned.
      * 
      */
     public Output<Boolean> overwriteUnmanaged() {
@@ -293,14 +293,14 @@ public class File extends com.pulumi.resources.CustomResource {
         return this.url;
     }
     /**
-     * By default `true`. If `false`, no SSL/TLS certificates will be verified.
+     * By default &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;. If &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;, no SSL/TLS certificates will be verified.
      * 
      */
     @Export(name="verify", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> verify;
 
     /**
-     * @return By default `true`. If `false`, no SSL/TLS certificates will be verified.
+     * @return By default &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;. If &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;, no SSL/TLS certificates will be verified.
      * 
      */
     public Output<Boolean> verify() {

@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ContainerCpu {
     /**
-     * @return The CPU architecture (defaults to `amd64`).
+     * @return The CPU architecture (defaults to &lt;span pulumi-lang-nodejs=&#34;`amd64`&#34; pulumi-lang-dotnet=&#34;`Amd64`&#34; pulumi-lang-go=&#34;`amd64`&#34; pulumi-lang-python=&#34;`amd64`&#34; pulumi-lang-yaml=&#34;`amd64`&#34; pulumi-lang-java=&#34;`amd64`&#34;&gt;`amd64`&lt;/span&gt;).
      * 
      */
     private @Nullable String architecture;
     /**
-     * @return The number of CPU cores (defaults to `1`).
+     * @return The number of CPU cores (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
      * 
      */
     private @Nullable Integer cores;
     /**
-     * @return The CPU units (defaults to `1024`).
+     * @return The CPU units (defaults to &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt;).
      * 
      */
     private @Nullable Integer units;
 
     private ContainerCpu() {}
     /**
-     * @return The CPU architecture (defaults to `amd64`).
+     * @return The CPU architecture (defaults to &lt;span pulumi-lang-nodejs=&#34;`amd64`&#34; pulumi-lang-dotnet=&#34;`Amd64`&#34; pulumi-lang-go=&#34;`amd64`&#34; pulumi-lang-python=&#34;`amd64`&#34; pulumi-lang-yaml=&#34;`amd64`&#34; pulumi-lang-java=&#34;`amd64`&#34;&gt;`amd64`&lt;/span&gt;).
      * 
      */
     public Optional<String> architecture() {
         return Optional.ofNullable(this.architecture);
     }
     /**
-     * @return The number of CPU cores (defaults to `1`).
+     * @return The number of CPU cores (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
      * 
      */
     public Optional<Integer> cores() {
         return Optional.ofNullable(this.cores);
     }
     /**
-     * @return The CPU units (defaults to `1024`).
+     * @return The CPU units (defaults to &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt;).
      * 
      */
     public Optional<Integer> units() {

@@ -25,6 +25,7 @@ namespace Pulumi.ProxmoxVE.Hardware.Mapping
     ///     var example = new ProxmoxVE.Hardware.Mapping.Usb("example", new()
     ///     {
     ///         Comment = "This is a comment",
+    ///         Name = "example",
     ///         Maps = new[]
     ///         {
     ///             new ProxmoxVE.Hardware.Mapping.Inputs.UsbMapArgs

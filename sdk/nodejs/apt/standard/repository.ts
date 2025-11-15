@@ -13,15 +13,15 @@ import * as utilities from "../../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
- * const exampleRepository = new proxmoxve.apt.standard.Repository("exampleRepository", {
+ * const example = new proxmoxve.apt.standard.Repository("example", {
  *     handle: "no-subscription",
  *     node: "pve",
  * });
- * const exampleApt_repositoryRepository = new proxmoxve.apt.Repository("exampleApt/repositoryRepository", {
+ * const exampleRepository = new proxmoxve.apt.Repository("example", {
  *     enabled: true,
- *     filePath: exampleRepository.filePath,
- *     index: exampleRepository.index,
- *     node: exampleRepository.node,
+ *     filePath: example.filePath,
+ *     index: example.index,
+ *     node: example.node,
  * });
  * ```
  *

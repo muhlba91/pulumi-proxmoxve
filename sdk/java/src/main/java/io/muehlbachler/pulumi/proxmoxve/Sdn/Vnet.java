@@ -54,7 +54,6 @@ import javax.annotation.Nullable;
  *         // SDN Zone (Simple) - Basic zone for simple vnets
  *         var exampleZone1 = new Simple("exampleZone1", SimpleArgs.builder()
  *             .zoneId("zone1")
- *             .nodes("pve")
  *             .mtu(1500)
  *             .dns("1.1.1.1")
  *             .dnsZone("example.com")
@@ -67,7 +66,6 @@ import javax.annotation.Nullable;
  *         // SDN Zone (Simple) - Second zone for demonstration
  *         var exampleZone2 = new Simple("exampleZone2", SimpleArgs.builder()
  *             .zoneId("zone2")
- *             .nodes("pve")
  *             .mtu(1500)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(finalizer)

@@ -24,8 +24,8 @@ namespace Pulumi.ProxmoxVE.Network
     /// {
     ///     var example = new ProxmoxVE.Network.FirewallOptions("example", new()
     ///     {
-    ///         NodeName = proxmox_virtual_environment_vm.Example.Node_name,
-    ///         VmId = proxmox_virtual_environment_vm.Example.Vm_id,
+    ///         NodeName = exampleProxmoxVirtualEnvironmentVm.NodeName,
+    ///         VmId = exampleProxmoxVirtualEnvironmentVm.VmId,
     ///         Dhcp = true,
     ///         Enabled = false,
     ///         Ipfilter = true,
@@ -40,11 +40,27 @@ namespace Pulumi.ProxmoxVE.Network
     ///     {
     ///         DependsOn =
     ///         {
-    ///             proxmox_virtual_environment_vm.Example,
+    ///             exampleProxmoxVirtualEnvironmentVm,
     ///         },
     ///     });
     /// 
     /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// ### Container Firewall Options
+    /// 
+    /// Use the import ID format: `container/&lt;node_name&gt;/&lt;container_id&gt;`
+    /// 
+    /// Example uses node name `pve` and container ID `100`.
+    /// 
+    /// **Example:**
+    /// 
+    /// bash
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:Network/firewallOptions:FirewallOptions container_firewall_options container/pve/100
     /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:Network/firewallOptions:FirewallOptions")]
@@ -87,16 +103,16 @@ namespace Pulumi.ProxmoxVE.Network
 
         /// <summary>
         /// Log level for incoming
-        /// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-        /// `debug`, `nolog`).
+        /// packets (`Emerg`, `Alert`, `Crit`, `Err`, `Warning`, `Notice`, `Info`,
+        /// `Debug`, `Nolog`).
         /// </summary>
         [Output("logLevelIn")]
         public Output<string?> LogLevelIn { get; private set; } = null!;
 
         /// <summary>
         /// Log level for outgoing
-        /// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-        /// `debug`, `nolog`).
+        /// packets (`Emerg`, `Alert`, `Crit`, `Err`, `Warning`, `Notice`, `Info`,
+        /// `Debug`, `Nolog`).
         /// </summary>
         [Output("logLevelOut")]
         public Output<string?> LogLevelOut { get; private set; } = null!;
@@ -222,16 +238,16 @@ namespace Pulumi.ProxmoxVE.Network
 
         /// <summary>
         /// Log level for incoming
-        /// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-        /// `debug`, `nolog`).
+        /// packets (`Emerg`, `Alert`, `Crit`, `Err`, `Warning`, `Notice`, `Info`,
+        /// `Debug`, `Nolog`).
         /// </summary>
         [Input("logLevelIn")]
         public Input<string>? LogLevelIn { get; set; }
 
         /// <summary>
         /// Log level for outgoing
-        /// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-        /// `debug`, `nolog`).
+        /// packets (`Emerg`, `Alert`, `Crit`, `Err`, `Warning`, `Notice`, `Info`,
+        /// `Debug`, `Nolog`).
         /// </summary>
         [Input("logLevelOut")]
         public Input<string>? LogLevelOut { get; set; }
@@ -318,16 +334,16 @@ namespace Pulumi.ProxmoxVE.Network
 
         /// <summary>
         /// Log level for incoming
-        /// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-        /// `debug`, `nolog`).
+        /// packets (`Emerg`, `Alert`, `Crit`, `Err`, `Warning`, `Notice`, `Info`,
+        /// `Debug`, `Nolog`).
         /// </summary>
         [Input("logLevelIn")]
         public Input<string>? LogLevelIn { get; set; }
 
         /// <summary>
         /// Log level for outgoing
-        /// packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
-        /// `debug`, `nolog`).
+        /// packets (`Emerg`, `Alert`, `Crit`, `Err`, `Warning`, `Notice`, `Info`,
+        /// `Debug`, `Nolog`).
         /// </summary>
         [Input("logLevelOut")]
         public Input<string>? LogLevelOut { get; set; }

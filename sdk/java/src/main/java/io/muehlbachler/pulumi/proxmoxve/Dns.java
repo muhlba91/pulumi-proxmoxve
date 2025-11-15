@@ -18,6 +18,55 @@ import javax.annotation.Nullable;
 /**
  * Manages the DNS configuration for a specific node.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.proxmoxve.Network.NetworkFunctions;
+ * import com.pulumi.proxmoxve.Network.inputs.GetDNSArgs;
+ * import io.muehlbachler.pulumi.proxmoxve.DNS;
+ * import io.muehlbachler.pulumi.proxmoxve.DNSArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var firstNodeDnsConfiguration = NetworkFunctions.getDNS(GetDNSArgs.builder()
+ *             .nodeName("first-node")
+ *             .build());
+ * 
+ *         var firstNodeDnsConfigurationDNS = new DNS("firstNodeDnsConfigurationDNS", DNSArgs.builder()
+ *             .domain(firstNodeDnsConfiguration.domain())
+ *             .nodeName(firstNodeDnsConfiguration.nodeName())
+ *             .servers(            
+ *                 "1.1.1.1",
+ *                 "1.0.0.1")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Important Notes
+ * 
+ * Be careful not to use this resource multiple times for the same node.
+ * 
  * ## Import
  * 
  * Instances can be imported using the `node_name`, e.g.,

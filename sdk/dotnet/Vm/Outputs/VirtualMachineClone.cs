@@ -18,12 +18,12 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly string? DatastoreId;
         /// <summary>
-        /// Full or linked clone (defaults to `true`).
+        /// Full or linked clone (defaults to `True`).
         /// </summary>
         public readonly bool? Full;
         /// <summary>
         /// The name of the source node (leave blank, if
-        /// equal to the `node_name` argument).
+        /// equal to the `NodeName` argument).
         /// </summary>
         public readonly string? NodeName;
         /// <summary>

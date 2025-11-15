@@ -20,7 +20,7 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
 
         /// <summary>
         /// The name of the source node (leave blank, if
-        /// equal to the `node_name` argument).
+        /// equal to the `NodeName` argument).
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }

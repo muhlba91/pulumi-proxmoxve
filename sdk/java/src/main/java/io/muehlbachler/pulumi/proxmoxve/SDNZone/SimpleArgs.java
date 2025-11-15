@@ -19,14 +19,14 @@ public final class SimpleArgs extends com.pulumi.resources.ResourceArgs {
     public static final SimpleArgs Empty = new SimpleArgs();
 
     /**
-     * The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
+     * The type of the DHCP backend for this zone. Currently the only supported value is &lt;span pulumi-lang-nodejs=&#34;`dnsmasq`&#34; pulumi-lang-dotnet=&#34;`Dnsmasq`&#34; pulumi-lang-go=&#34;`dnsmasq`&#34; pulumi-lang-python=&#34;`dnsmasq`&#34; pulumi-lang-yaml=&#34;`dnsmasq`&#34; pulumi-lang-java=&#34;`dnsmasq`&#34;&gt;`dnsmasq`&lt;/span&gt;.
      * 
      */
     @Import(name="dhcp")
     private @Nullable Output<String> dhcp;
 
     /**
-     * @return The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
+     * @return The type of the DHCP backend for this zone. Currently the only supported value is &lt;span pulumi-lang-nodejs=&#34;`dnsmasq`&#34; pulumi-lang-dotnet=&#34;`Dnsmasq`&#34; pulumi-lang-go=&#34;`dnsmasq`&#34; pulumi-lang-python=&#34;`dnsmasq`&#34; pulumi-lang-yaml=&#34;`dnsmasq`&#34; pulumi-lang-java=&#34;`dnsmasq`&#34;&gt;`dnsmasq`&lt;/span&gt;.
      * 
      */
     public Optional<Output<String>> dhcp() {
@@ -97,15 +97,15 @@ public final class SimpleArgs extends com.pulumi.resources.ResourceArgs {
      * The Proxmox nodes which the zone and associated VNets should be deployed on
      * 
      */
-    @Import(name="nodes", required=true)
-    private Output<List<String>> nodes;
+    @Import(name="nodes")
+    private @Nullable Output<List<String>> nodes;
 
     /**
      * @return The Proxmox nodes which the zone and associated VNets should be deployed on
      * 
      */
-    public Output<List<String>> nodes() {
-        return this.nodes;
+    public Optional<Output<List<String>>> nodes() {
+        return Optional.ofNullable(this.nodes);
     }
 
     /**
@@ -170,7 +170,7 @@ public final class SimpleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dhcp The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
+         * @param dhcp The type of the DHCP backend for this zone. Currently the only supported value is &lt;span pulumi-lang-nodejs=&#34;`dnsmasq`&#34; pulumi-lang-dotnet=&#34;`Dnsmasq`&#34; pulumi-lang-go=&#34;`dnsmasq`&#34; pulumi-lang-python=&#34;`dnsmasq`&#34; pulumi-lang-yaml=&#34;`dnsmasq`&#34; pulumi-lang-java=&#34;`dnsmasq`&#34;&gt;`dnsmasq`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class SimpleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dhcp The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
+         * @param dhcp The type of the DHCP backend for this zone. Currently the only supported value is &lt;span pulumi-lang-nodejs=&#34;`dnsmasq`&#34; pulumi-lang-dotnet=&#34;`Dnsmasq`&#34; pulumi-lang-go=&#34;`dnsmasq`&#34; pulumi-lang-python=&#34;`dnsmasq`&#34; pulumi-lang-yaml=&#34;`dnsmasq`&#34; pulumi-lang-java=&#34;`dnsmasq`&#34;&gt;`dnsmasq`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class SimpleArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder nodes(Output<List<String>> nodes) {
+        public Builder nodes(@Nullable Output<List<String>> nodes) {
             $.nodes = nodes;
             return this;
         }
@@ -348,9 +348,6 @@ public final class SimpleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SimpleArgs build() {
-            if ($.nodes == null) {
-                throw new MissingRequiredPropertyException("SimpleArgs", "nodes");
-            }
             if ($.zoneId == null) {
                 throw new MissingRequiredPropertyException("SimpleArgs", "zoneId");
             }

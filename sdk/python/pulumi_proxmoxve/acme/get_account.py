@@ -121,8 +121,10 @@ def get_account(name: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
+    # This will fetch all ACME accounts...
     all = proxmoxve.Acme.get_accounts()
-    example = [proxmoxve.Acme.get_account(name=__value) for __key, __value in all.accounts]
+    # ...which we will go through in order to fetch the whole data on each account.
+    example = {__key: proxmoxve.Acme.get_account(name=__value) for __key, __value in all.accounts}
     pulumi.export("dataProxmoxVirtualEnvironmentAcmeAccount", example)
     ```
 
@@ -152,8 +154,10 @@ def get_account_output(name: Optional[pulumi.Input[Optional[_builtins.str]]] = N
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
+    # This will fetch all ACME accounts...
     all = proxmoxve.Acme.get_accounts()
-    example = [proxmoxve.Acme.get_account(name=__value) for __key, __value in all.accounts]
+    # ...which we will go through in order to fetch the whole data on each account.
+    example = {__key: proxmoxve.Acme.get_account(name=__value) for __key, __value in all.accounts}
     pulumi.export("dataProxmoxVirtualEnvironmentAcmeAccount", example)
     ```
 

@@ -14,12 +14,12 @@ import * as utilities from "./utilities";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
  * const example = new proxmoxve.AcmeDnsPlugin("example", {
+ *     plugin: "test",
  *     api: "aws",
  *     data: {
  *         AWS_ACCESS_KEY_ID: "EXAMPLE",
  *         AWS_SECRET_ACCESS_KEY: "EXAMPLE",
  *     },
- *     plugin: "test",
  * });
  * ```
  *

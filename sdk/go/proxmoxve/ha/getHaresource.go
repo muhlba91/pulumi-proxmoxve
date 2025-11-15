@@ -14,30 +14,6 @@ import (
 // Retrieves the list of High Availability resources.
 //
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/ha"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			all, err := ha.GetHAResources(ctx, &ha.GetHAResourcesArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			example := "TODO: For expression"
-//			ctx.Export("proxmoxVirtualEnvironmentHaresourcesFull", example)
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupHAResource(ctx *pulumi.Context, args *LookupHAResourceArgs, opts ...pulumi.InvokeOption) (*LookupHAResourceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupHAResourceResult

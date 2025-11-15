@@ -10,72 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.Sdn
 {
     /// <summary>
-    /// **EXPERIMENTAL** Triggers Proxmox's SDN **Apply** (equivalent to `PUT /cluster/sdn`).Intended to be used with `replace_triggered_by` so it runs after SDN objects change.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using ProxmoxVE = Pulumi.ProxmoxVE;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var finalizer = new ProxmoxVE.Sdn.Applier("finalizer");
-    /// 
-    ///     // SDN Zone (Simple) - First zone for applier demonstration
-    ///     var exampleZone1 = new ProxmoxVE.SDNZone.Simple("exampleZone1", new()
-    ///     {
-    ///         ZoneId = "zone1",
-    ///         Nodes = new[]
-    ///         {
-    ///             "pve",
-    ///         },
-    ///         Mtu = 1500,
-    ///         Dns = "1.1.1.1",
-    ///         DnsZone = "example.com",
-    ///         Ipam = "pve",
-    ///         ReverseDns = "1.1.1.1",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             finalizer,
-    ///         },
-    ///     });
-    /// 
-    ///     // SDN Zone (Simple) - Second zone for applier demonstration
-    ///     var exampleZone2 = new ProxmoxVE.SDNZone.Simple("exampleZone2", new()
-    ///     {
-    ///         ZoneId = "zone2",
-    ///         Nodes = new[]
-    ///         {
-    ///             "pve",
-    ///         },
-    ///         Mtu = 1500,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             finalizer,
-    ///         },
-    ///     });
-    /// 
-    ///     // SDN Applier - Applies SDN configuration changes
-    ///     var exampleApplier = new ProxmoxVE.Sdn.Applier("exampleApplier", new()
-    ///     {
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             exampleZone1,
-    ///             exampleZone2,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
+    /// **EXPERIMENTAL** Triggers Proxmox's SDN **Apply** (equivalent to `PUT /cluster/sdn`).Intended to be used with `ReplaceTriggeredBy` so it runs after SDN objects change.
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:Sdn/applier:Applier")]
     public partial class Applier : global::Pulumi.CustomResource

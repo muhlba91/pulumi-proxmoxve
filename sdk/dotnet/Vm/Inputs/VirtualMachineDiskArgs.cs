@@ -13,19 +13,19 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
     public sealed class VirtualMachineDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The disk AIO mode (defaults to `io_uring`).
+        /// The disk AIO mode (defaults to `IoUring`).
         /// </summary>
         [Input("aio")]
         public Input<string>? Aio { get; set; }
 
         /// <summary>
-        /// Whether the drive should be included when making backups (defaults to `true`).
+        /// Whether the drive should be included when making backups (defaults to `True`).
         /// </summary>
         [Input("backup")]
         public Input<bool>? Backup { get; set; }
 
         /// <summary>
-        /// The cache type (defaults to `none`).
+        /// The cache type (defaults to `None`).
         /// </summary>
         [Input("cache")]
         public Input<string>? Cache { get; set; }
@@ -39,8 +39,8 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
 
         /// <summary>
         /// Whether to pass discard/trim requests to the
-        /// underlying storage. Supported values are `on`/`ignore` (defaults
-        /// to `ignore`).
+        /// underlying storage. Supported values are `On`/`Ignore` (defaults
+        /// to `Ignore`).
         /// </summary>
         [Input("discard")]
         public Input<string>? Discard { get; set; }
@@ -54,13 +54,13 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         /// <summary>
         /// The file ID for a disk image when importing a disk into VM. The ID format is
         /// `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`. Can be also taken from
-        /// `proxmoxve.Download.File` resource. *Deprecated*, use `import_from` instead.
+        /// `proxmoxve.Download.File` resource. *Deprecated*, use `ImportFrom` instead.
         /// </summary>
         [Input("fileId")]
         public Input<string>? FileId { get; set; }
 
         /// <summary>
-        /// The file ID for a disk image to import into VM. The image must be of `import` content type.
+        /// The file ID for a disk image to import into VM. The image must be of `Import` content type.
         /// The ID format is `&lt;datastore_id&gt;:import/&lt;file_name&gt;`, for example `local:import/centos8.qcow2`. Can be also taken from
         /// `proxmoxve.Download.File` resource.
         /// </summary>
@@ -68,9 +68,9 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<string>? ImportFrom { get; set; }
 
         /// <summary>
-        /// The disk interface for Proxmox, currently `scsi`,
-        /// `sata` and `virtio` interfaces are supported. Append the disk index at
-        /// the end, for example, `virtio0` for the first virtio disk, `virtio1` for
+        /// The disk interface for Proxmox, currently `Scsi`,
+        /// `Sata` and `Virtio` interfaces are supported. Append the disk index at
+        /// the end, for example, `Virtio0` for the first virtio disk, `Virtio1` for
         /// the second, etc.
         /// </summary>
         [Input("interface", required: true)]
@@ -78,7 +78,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
 
         /// <summary>
         /// Whether to use iothreads for this disk (defaults
-        /// to `false`).
+        /// to `False`).
         /// </summary>
         [Input("iothread")]
         public Input<bool>? Iothread { get; set; }
@@ -86,14 +86,14 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         /// <summary>
         /// The in-datastore path to the disk image.
         /// ***Experimental.***Use to attach another VM's disks,
-        /// or (as root only) host's filesystem paths (`datastore_id` empty string).
+        /// or (as root only) host's filesystem paths (`DatastoreId` empty string).
         /// See "*Example: Attached disks*".
         /// </summary>
         [Input("pathInDatastore")]
         public Input<string>? PathInDatastore { get; set; }
 
         /// <summary>
-        /// Whether the drive should be considered for replication jobs (defaults to `true`).
+        /// Whether the drive should be considered for replication jobs (defaults to `True`).
         /// </summary>
         [Input("replicate")]
         public Input<bool>? Replicate { get; set; }
@@ -118,7 +118,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
 
         /// <summary>
         /// Whether to use an SSD emulation option for this disk (
-        /// defaults to `false`). Note that SSD emulation is not supported on VirtIO
+        /// defaults to `False`). Note that SSD emulation is not supported on VirtIO
         /// Block drives.
         /// </summary>
         [Input("ssd")]

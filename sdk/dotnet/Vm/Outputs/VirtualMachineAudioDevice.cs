@@ -21,12 +21,12 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly string? Device;
         /// <summary>
-        /// The driver (defaults to `spice`).
+        /// The driver (defaults to `Spice`).
         /// </summary>
         public readonly string? Driver;
         /// <summary>
         /// Whether to enable the audio device (defaults
-        /// to `true`).
+        /// to `True`).
         /// </summary>
         public readonly bool? Enabled;
 

@@ -26,28 +26,29 @@ namespace Pulumi.ProxmoxVE.Network
     /// {
     ///     var webserver = new ProxmoxVE.Network.FirewallSecurityGroup("webserver", new()
     ///     {
+    ///         Name = "webserver",
     ///         Comment = "Managed by Pulumi",
     ///         Rules = new[]
     ///         {
     ///             new ProxmoxVE.Network.Inputs.FirewallSecurityGroupRuleArgs
     ///             {
+    ///                 Type = "in",
     ///                 Action = "ACCEPT",
     ///                 Comment = "Allow HTTP",
     ///                 Dest = "192.168.1.5",
     ///                 Dport = "80",
-    ///                 Log = "info",
     ///                 Proto = "tcp",
-    ///                 Type = "in",
+    ///                 Log = "info",
     ///             },
     ///             new ProxmoxVE.Network.Inputs.FirewallSecurityGroupRuleArgs
     ///             {
+    ///                 Type = "in",
     ///                 Action = "ACCEPT",
     ///                 Comment = "Allow HTTPS",
     ///                 Dest = "192.168.1.5",
     ///                 Dport = "443",
-    ///                 Log = "info",
     ///                 Proto = "tcp",
-    ///                 Type = "in",
+    ///                 Log = "info",
     ///             },
     ///         },
     ///     });

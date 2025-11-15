@@ -23,7 +23,7 @@ public final class GetHostsResult {
      */
     private String digest;
     /**
-     * @return The host entries (conversion of `addresses` and `hostnames` into
+     * @return The host entries (conversion of &lt;span pulumi-lang-nodejs=&#34;`addresses`&#34; pulumi-lang-dotnet=&#34;`Addresses`&#34; pulumi-lang-go=&#34;`addresses`&#34; pulumi-lang-python=&#34;`addresses`&#34; pulumi-lang-yaml=&#34;`addresses`&#34; pulumi-lang-java=&#34;`addresses`&#34;&gt;`addresses`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`hostnames`&#34; pulumi-lang-dotnet=&#34;`Hostnames`&#34; pulumi-lang-go=&#34;`hostnames`&#34; pulumi-lang-python=&#34;`hostnames`&#34; pulumi-lang-yaml=&#34;`hostnames`&#34; pulumi-lang-java=&#34;`hostnames`&#34;&gt;`hostnames`&lt;/span&gt; into
      * objects).
      * 
      */
@@ -56,7 +56,7 @@ public final class GetHostsResult {
         return this.digest;
     }
     /**
-     * @return The host entries (conversion of `addresses` and `hostnames` into
+     * @return The host entries (conversion of &lt;span pulumi-lang-nodejs=&#34;`addresses`&#34; pulumi-lang-dotnet=&#34;`Addresses`&#34; pulumi-lang-go=&#34;`addresses`&#34; pulumi-lang-python=&#34;`addresses`&#34; pulumi-lang-yaml=&#34;`addresses`&#34; pulumi-lang-java=&#34;`addresses`&#34;&gt;`addresses`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`hostnames`&#34; pulumi-lang-dotnet=&#34;`Hostnames`&#34; pulumi-lang-go=&#34;`hostnames`&#34; pulumi-lang-python=&#34;`hostnames`&#34; pulumi-lang-yaml=&#34;`hostnames`&#34; pulumi-lang-java=&#34;`hostnames`&#34;&gt;`hostnames`&lt;/span&gt; into
      * objects).
      * 
      */

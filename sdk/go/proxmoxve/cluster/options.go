@@ -13,6 +13,51 @@ import (
 
 // Manages Proxmox VE Cluster Datacenter options.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/cluster"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cluster.NewOptions(ctx, "options", &cluster.OptionsArgs{
+//				Language:                pulumi.String("en"),
+//				Keyboard:                pulumi.String("pl"),
+//				EmailFrom:               pulumi.String("ged@gont.earthsea"),
+//				BandwidthLimitMigration: pulumi.Int(555555),
+//				BandwidthLimitDefault:   pulumi.Int(666666),
+//				MaxWorkers:              pulumi.Int(5),
+//				MigrationCidr:           pulumi.String("10.0.0.0/8"),
+//				MigrationType:           pulumi.String("secure"),
+//				NextId: &cluster.OptionsNextIdArgs{
+//					Lower: pulumi.Int(100),
+//					Upper: pulumi.Int(999999999),
+//				},
+//				Notify: &cluster.OptionsNotifyArgs{
+//					HaFencingMode:            pulumi.String("never"),
+//					HaFencingTarget:          pulumi.String("default-matcher"),
+//					PackageUpdates:           pulumi.String("always"),
+//					PackageUpdatesTarget:     pulumi.String("default-matcher"),
+//					PackageReplication:       "always",
+//					PackageReplicationTarget: "default-matcher",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // #!/usr/bin/env sh

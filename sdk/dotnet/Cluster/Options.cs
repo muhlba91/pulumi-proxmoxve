@@ -12,6 +12,45 @@ namespace Pulumi.ProxmoxVE.Cluster
     /// <summary>
     /// Manages Proxmox VE Cluster Datacenter options.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var options = new ProxmoxVE.Cluster.Options("options", new()
+    ///     {
+    ///         Language = "en",
+    ///         Keyboard = "pl",
+    ///         EmailFrom = "ged@gont.earthsea",
+    ///         BandwidthLimitMigration = 555555,
+    ///         BandwidthLimitDefault = 666666,
+    ///         MaxWorkers = 5,
+    ///         MigrationCidr = "10.0.0.0/8",
+    ///         MigrationType = "secure",
+    ///         NextId = new ProxmoxVE.Cluster.Inputs.OptionsNextIdArgs
+    ///         {
+    ///             Lower = 100,
+    ///             Upper = 999999999,
+    ///         },
+    ///         Notify = new ProxmoxVE.Cluster.Inputs.OptionsNotifyArgs
+    ///         {
+    ///             HaFencingMode = "never",
+    ///             HaFencingTarget = "default-matcher",
+    ///             PackageUpdates = "always",
+    ///             PackageUpdatesTarget = "default-matcher",
+    ///             PackageReplication = "always",
+    ///             PackageReplicationTarget = "default-matcher",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// #!/usr/bin/env sh
@@ -56,13 +95,13 @@ namespace Pulumi.ProxmoxVE.Cluster
         public Output<int?> BandwidthLimitRestore { get; private set; } = null!;
 
         /// <summary>
-        /// Select the default Console viewer. Must be `applet` | `vv`| `html5` | `xtermjs`. You can either use the builtin java applet (VNC; deprecated and maps to html5), an external virt-viewer compatible application (SPICE), an HTML5 based vnc viewer (noVNC), or an HTML5 based console client (xtermjs). If the selected viewer is not available (e.g. SPICE not activated for the VM), the fallback is noVNC.
+        /// Select the default Console viewer. Must be `Applet` | `Vv`| `Html5` | `Xtermjs`. You can either use the builtin java applet (VNC; deprecated and maps to html5), an external virt-viewer compatible application (SPICE), an HTML5 based vnc viewer (noVNC), or an HTML5 based console client (xtermjs). If the selected viewer is not available (e.g. SPICE not activated for the VM), the fallback is noVNC.
         /// </summary>
         [Output("console")]
         public Output<string?> Console { get; private set; } = null!;
 
         /// <summary>
-        /// Cluster resource scheduling setting for HA. Must be `static` | `basic` (default is `basic`).
+        /// Cluster resource scheduling setting for HA. Must be `Static` | `Basic` (default is `Basic`).
         /// </summary>
         [Output("crsHa")]
         public Output<string> CrsHa { get; private set; } = null!;
@@ -86,7 +125,7 @@ namespace Pulumi.ProxmoxVE.Cluster
         public Output<string?> EmailFrom { get; private set; } = null!;
 
         /// <summary>
-        /// Cluster wide HA shutdown policy (). Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
+        /// Cluster wide HA shutdown policy (). Must be `Freeze` | `Failover` | `Migrate` | `Conditional` (default is `Conditional`).
         /// </summary>
         [Output("haShutdownPolicy")]
         public Output<string?> HaShutdownPolicy { get; private set; } = null!;
@@ -98,13 +137,13 @@ namespace Pulumi.ProxmoxVE.Cluster
         public Output<string?> HttpProxy { get; private set; } = null!;
 
         /// <summary>
-        /// Default keyboard layout for vnc server. Must be `de` | `de-ch` | `da` | `en-gb` | `en-us` | `es` | `fi` | `fr` | `fr-be` | `fr-ca` | `fr-ch` | `hu` | `is` | `it` | `ja` | `lt` | `mk` | `nl` | `no` | `pl` | `pt` | `pt-br` | `sv` | `sl` | `tr`.
+        /// Default keyboard layout for vnc server. Must be `De` | `de-ch` | `Da` | `en-gb` | `en-us` | `Es` | `Fi` | `Fr` | `fr-be` | `fr-ca` | `fr-ch` | `Hu` | `Is` | `It` | `Ja` | `Lt` | `Mk` | `Nl` | `No` | `Pl` | `Pt` | `pt-br` | `Sv` | `Sl` | `Tr`.
         /// </summary>
         [Output("keyboard")]
         public Output<string?> Keyboard { get; private set; } = null!;
 
         /// <summary>
-        /// Default GUI language. Must be `ca` | `da` | `de` | `en` | `es` | `eu` | `fa` | `fr` | `he` | `it` | `ja` | `nb` | `nn` | `pl` | `pt_BR` | `ru` | `sl` | `sv` | `tr` | `zh_CN` | `zh_TW`.
+        /// Default GUI language. Must be `Ca` | `Da` | `De` | `En` | `Es` | `Eu` | `Fa` | `Fr` | `He` | `It` | `Ja` | `Nb` | `Nn` | `Pl` | `pt_BR` | `Ru` | `Sl` | `Sv` | `Tr` | `zh_CN` | `zh_TW`.
         /// </summary>
         [Output("language")]
         public Output<string?> Language { get; private set; } = null!;
@@ -128,7 +167,7 @@ namespace Pulumi.ProxmoxVE.Cluster
         public Output<string?> MigrationCidr { get; private set; } = null!;
 
         /// <summary>
-        /// Cluster wide migration type. Must be `secure` | `insecure` (default is `secure`).
+        /// Cluster wide migration type. Must be `Secure` | `Insecure` (default is `Secure`).
         /// </summary>
         [Output("migrationType")]
         public Output<string?> MigrationType { get; private set; } = null!;
@@ -223,13 +262,13 @@ namespace Pulumi.ProxmoxVE.Cluster
         public Input<int>? BandwidthLimitRestore { get; set; }
 
         /// <summary>
-        /// Select the default Console viewer. Must be `applet` | `vv`| `html5` | `xtermjs`. You can either use the builtin java applet (VNC; deprecated and maps to html5), an external virt-viewer compatible application (SPICE), an HTML5 based vnc viewer (noVNC), or an HTML5 based console client (xtermjs). If the selected viewer is not available (e.g. SPICE not activated for the VM), the fallback is noVNC.
+        /// Select the default Console viewer. Must be `Applet` | `Vv`| `Html5` | `Xtermjs`. You can either use the builtin java applet (VNC; deprecated and maps to html5), an external virt-viewer compatible application (SPICE), an HTML5 based vnc viewer (noVNC), or an HTML5 based console client (xtermjs). If the selected viewer is not available (e.g. SPICE not activated for the VM), the fallback is noVNC.
         /// </summary>
         [Input("console")]
         public Input<string>? Console { get; set; }
 
         /// <summary>
-        /// Cluster resource scheduling setting for HA. Must be `static` | `basic` (default is `basic`).
+        /// Cluster resource scheduling setting for HA. Must be `Static` | `Basic` (default is `Basic`).
         /// </summary>
         [Input("crsHa")]
         public Input<string>? CrsHa { get; set; }
@@ -253,7 +292,7 @@ namespace Pulumi.ProxmoxVE.Cluster
         public Input<string>? EmailFrom { get; set; }
 
         /// <summary>
-        /// Cluster wide HA shutdown policy (). Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
+        /// Cluster wide HA shutdown policy (). Must be `Freeze` | `Failover` | `Migrate` | `Conditional` (default is `Conditional`).
         /// </summary>
         [Input("haShutdownPolicy")]
         public Input<string>? HaShutdownPolicy { get; set; }
@@ -265,13 +304,13 @@ namespace Pulumi.ProxmoxVE.Cluster
         public Input<string>? HttpProxy { get; set; }
 
         /// <summary>
-        /// Default keyboard layout for vnc server. Must be `de` | `de-ch` | `da` | `en-gb` | `en-us` | `es` | `fi` | `fr` | `fr-be` | `fr-ca` | `fr-ch` | `hu` | `is` | `it` | `ja` | `lt` | `mk` | `nl` | `no` | `pl` | `pt` | `pt-br` | `sv` | `sl` | `tr`.
+        /// Default keyboard layout for vnc server. Must be `De` | `de-ch` | `Da` | `en-gb` | `en-us` | `Es` | `Fi` | `Fr` | `fr-be` | `fr-ca` | `fr-ch` | `Hu` | `Is` | `It` | `Ja` | `Lt` | `Mk` | `Nl` | `No` | `Pl` | `Pt` | `pt-br` | `Sv` | `Sl` | `Tr`.
         /// </summary>
         [Input("keyboard")]
         public Input<string>? Keyboard { get; set; }
 
         /// <summary>
-        /// Default GUI language. Must be `ca` | `da` | `de` | `en` | `es` | `eu` | `fa` | `fr` | `he` | `it` | `ja` | `nb` | `nn` | `pl` | `pt_BR` | `ru` | `sl` | `sv` | `tr` | `zh_CN` | `zh_TW`.
+        /// Default GUI language. Must be `Ca` | `Da` | `De` | `En` | `Es` | `Eu` | `Fa` | `Fr` | `He` | `It` | `Ja` | `Nb` | `Nn` | `Pl` | `pt_BR` | `Ru` | `Sl` | `Sv` | `Tr` | `zh_CN` | `zh_TW`.
         /// </summary>
         [Input("language")]
         public Input<string>? Language { get; set; }
@@ -295,7 +334,7 @@ namespace Pulumi.ProxmoxVE.Cluster
         public Input<string>? MigrationCidr { get; set; }
 
         /// <summary>
-        /// Cluster wide migration type. Must be `secure` | `insecure` (default is `secure`).
+        /// Cluster wide migration type. Must be `Secure` | `Insecure` (default is `Secure`).
         /// </summary>
         [Input("migrationType")]
         public Input<string>? MigrationType { get; set; }
@@ -351,13 +390,13 @@ namespace Pulumi.ProxmoxVE.Cluster
         public Input<int>? BandwidthLimitRestore { get; set; }
 
         /// <summary>
-        /// Select the default Console viewer. Must be `applet` | `vv`| `html5` | `xtermjs`. You can either use the builtin java applet (VNC; deprecated and maps to html5), an external virt-viewer compatible application (SPICE), an HTML5 based vnc viewer (noVNC), or an HTML5 based console client (xtermjs). If the selected viewer is not available (e.g. SPICE not activated for the VM), the fallback is noVNC.
+        /// Select the default Console viewer. Must be `Applet` | `Vv`| `Html5` | `Xtermjs`. You can either use the builtin java applet (VNC; deprecated and maps to html5), an external virt-viewer compatible application (SPICE), an HTML5 based vnc viewer (noVNC), or an HTML5 based console client (xtermjs). If the selected viewer is not available (e.g. SPICE not activated for the VM), the fallback is noVNC.
         /// </summary>
         [Input("console")]
         public Input<string>? Console { get; set; }
 
         /// <summary>
-        /// Cluster resource scheduling setting for HA. Must be `static` | `basic` (default is `basic`).
+        /// Cluster resource scheduling setting for HA. Must be `Static` | `Basic` (default is `Basic`).
         /// </summary>
         [Input("crsHa")]
         public Input<string>? CrsHa { get; set; }
@@ -381,7 +420,7 @@ namespace Pulumi.ProxmoxVE.Cluster
         public Input<string>? EmailFrom { get; set; }
 
         /// <summary>
-        /// Cluster wide HA shutdown policy (). Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
+        /// Cluster wide HA shutdown policy (). Must be `Freeze` | `Failover` | `Migrate` | `Conditional` (default is `Conditional`).
         /// </summary>
         [Input("haShutdownPolicy")]
         public Input<string>? HaShutdownPolicy { get; set; }
@@ -393,13 +432,13 @@ namespace Pulumi.ProxmoxVE.Cluster
         public Input<string>? HttpProxy { get; set; }
 
         /// <summary>
-        /// Default keyboard layout for vnc server. Must be `de` | `de-ch` | `da` | `en-gb` | `en-us` | `es` | `fi` | `fr` | `fr-be` | `fr-ca` | `fr-ch` | `hu` | `is` | `it` | `ja` | `lt` | `mk` | `nl` | `no` | `pl` | `pt` | `pt-br` | `sv` | `sl` | `tr`.
+        /// Default keyboard layout for vnc server. Must be `De` | `de-ch` | `Da` | `en-gb` | `en-us` | `Es` | `Fi` | `Fr` | `fr-be` | `fr-ca` | `fr-ch` | `Hu` | `Is` | `It` | `Ja` | `Lt` | `Mk` | `Nl` | `No` | `Pl` | `Pt` | `pt-br` | `Sv` | `Sl` | `Tr`.
         /// </summary>
         [Input("keyboard")]
         public Input<string>? Keyboard { get; set; }
 
         /// <summary>
-        /// Default GUI language. Must be `ca` | `da` | `de` | `en` | `es` | `eu` | `fa` | `fr` | `he` | `it` | `ja` | `nb` | `nn` | `pl` | `pt_BR` | `ru` | `sl` | `sv` | `tr` | `zh_CN` | `zh_TW`.
+        /// Default GUI language. Must be `Ca` | `Da` | `De` | `En` | `Es` | `Eu` | `Fa` | `Fr` | `He` | `It` | `Ja` | `Nb` | `Nn` | `Pl` | `pt_BR` | `Ru` | `Sl` | `Sv` | `Tr` | `zh_CN` | `zh_TW`.
         /// </summary>
         [Input("language")]
         public Input<string>? Language { get; set; }
@@ -423,7 +462,7 @@ namespace Pulumi.ProxmoxVE.Cluster
         public Input<string>? MigrationCidr { get; set; }
 
         /// <summary>
-        /// Cluster wide migration type. Must be `secure` | `insecure` (default is `secure`).
+        /// Cluster wide migration type. Must be `Secure` | `Insecure` (default is `Secure`).
         /// </summary>
         [Input("migrationType")]
         public Input<string>? MigrationType { get; set; }

@@ -65,19 +65,19 @@ namespace Pulumi.ProxmoxVE.HA
         public Output<string> Group { get; private set; } = null!;
 
         /// <summary>
-        /// A flag that indicates that failing back to a higher priority node is disabled for this HA group. Defaults to `false`.
+        /// A flag that indicates that failing back to a higher priority node is disabled for this HA group. Defaults to `False`.
         /// </summary>
         [Output("noFailback")]
         public Output<bool> NoFailback { get; private set; } = null!;
 
         /// <summary>
-        /// The member nodes for this group. They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or `null` for unset priorities.
+        /// The member nodes for this group. They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or `Null` for unset priorities.
         /// </summary>
         [Output("nodes")]
         public Output<ImmutableDictionary<string, int>> Nodes { get; private set; } = null!;
 
         /// <summary>
-        /// A flag that indicates that other nodes may not be used to run resources associated to this HA group. Defaults to `false`.
+        /// A flag that indicates that other nodes may not be used to run resources associated to this HA group. Defaults to `False`.
         /// </summary>
         [Output("restricted")]
         public Output<bool> Restricted { get; private set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.ProxmoxVE.HA
         public Input<string> Group { get; set; } = null!;
 
         /// <summary>
-        /// A flag that indicates that failing back to a higher priority node is disabled for this HA group. Defaults to `false`.
+        /// A flag that indicates that failing back to a higher priority node is disabled for this HA group. Defaults to `False`.
         /// </summary>
         [Input("noFailback")]
         public Input<bool>? NoFailback { get; set; }
@@ -151,7 +151,7 @@ namespace Pulumi.ProxmoxVE.HA
         private InputMap<int>? _nodes;
 
         /// <summary>
-        /// The member nodes for this group. They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or `null` for unset priorities.
+        /// The member nodes for this group. They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or `Null` for unset priorities.
         /// </summary>
         public InputMap<int> Nodes
         {
@@ -160,7 +160,7 @@ namespace Pulumi.ProxmoxVE.HA
         }
 
         /// <summary>
-        /// A flag that indicates that other nodes may not be used to run resources associated to this HA group. Defaults to `false`.
+        /// A flag that indicates that other nodes may not be used to run resources associated to this HA group. Defaults to `False`.
         /// </summary>
         [Input("restricted")]
         public Input<bool>? Restricted { get; set; }
@@ -186,7 +186,7 @@ namespace Pulumi.ProxmoxVE.HA
         public Input<string>? Group { get; set; }
 
         /// <summary>
-        /// A flag that indicates that failing back to a higher priority node is disabled for this HA group. Defaults to `false`.
+        /// A flag that indicates that failing back to a higher priority node is disabled for this HA group. Defaults to `False`.
         /// </summary>
         [Input("noFailback")]
         public Input<bool>? NoFailback { get; set; }
@@ -195,7 +195,7 @@ namespace Pulumi.ProxmoxVE.HA
         private InputMap<int>? _nodes;
 
         /// <summary>
-        /// The member nodes for this group. They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or `null` for unset priorities.
+        /// The member nodes for this group. They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or `Null` for unset priorities.
         /// </summary>
         public InputMap<int> Nodes
         {
@@ -204,7 +204,7 @@ namespace Pulumi.ProxmoxVE.HA
         }
 
         /// <summary>
-        /// A flag that indicates that other nodes may not be used to run resources associated to this HA group. Defaults to `false`.
+        /// A flag that indicates that other nodes may not be used to run resources associated to this HA group. Defaults to `False`.
         /// </summary>
         [Input("restricted")]
         public Input<bool>? Restricted { get; set; }

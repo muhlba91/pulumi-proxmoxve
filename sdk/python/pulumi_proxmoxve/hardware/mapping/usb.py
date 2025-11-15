@@ -150,6 +150,7 @@ class Usb(pulumi.CustomResource):
 
         example = proxmoxve.hardware.mapping.Usb("example",
             comment="This is a comment",
+            name="example",
             maps=[{
                 "comment": "This is a device specific comment",
                 "id": "8087:0a2b",
@@ -191,6 +192,7 @@ class Usb(pulumi.CustomResource):
 
         example = proxmoxve.hardware.mapping.Usb("example",
             comment="This is a comment",
+            name="example",
             maps=[{
                 "comment": "This is a device specific comment",
                 "id": "8087:0a2b",

@@ -13,7 +13,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
     public sealed class VirtualMachineVgaGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable VNC clipboard by setting to `vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
+        /// Enable VNC clipboard by setting to `Vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
         /// </summary>
         [Input("clipboard")]
         public Input<string>? Clipboard { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<int>? Memory { get; set; }
 
         /// <summary>
-        /// The VGA type (defaults to `std`).
+        /// The VGA type (defaults to `Std`).
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

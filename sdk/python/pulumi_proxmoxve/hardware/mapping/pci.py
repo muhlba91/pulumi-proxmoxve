@@ -175,6 +175,26 @@ class Pci(pulumi.CustomResource):
         """
         Manages a PCI hardware mapping in a Proxmox VE cluster.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.hardware.mapping.Pci("example",
+            comment="This is a comment",
+            name="example",
+            maps=[{
+                "comment": "This is a device specific comment",
+                "id": "8086:5916",
+                "iommu_group": 0,
+                "node": "pve",
+                "path": "0000:00:02.0",
+                "subsystem_id": "8086:2068",
+            }],
+            mediated_devices=True)
+        ```
+
         ## Import
 
         #!/usr/bin/env sh
@@ -200,6 +220,26 @@ class Pci(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a PCI hardware mapping in a Proxmox VE cluster.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.hardware.mapping.Pci("example",
+            comment="This is a comment",
+            name="example",
+            maps=[{
+                "comment": "This is a device specific comment",
+                "id": "8086:5916",
+                "iommu_group": 0,
+                "node": "pve",
+                "path": "0000:00:02.0",
+                "subsystem_id": "8086:2068",
+            }],
+            mediated_devices=True)
+        ```
 
         ## Import
 

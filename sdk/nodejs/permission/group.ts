@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
- * const operationsTeam = new proxmoxve.permission.Group("operationsTeam", {
+ * const operationsTeam = new proxmoxve.permission.Group("operations_team", {
  *     comment: "Managed by Pulumi",
  *     groupId: "operations-team",
  * });

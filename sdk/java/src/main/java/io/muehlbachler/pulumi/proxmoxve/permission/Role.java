@@ -43,8 +43,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var operationsMonitoring = new Role("operationsMonitoring", RoleArgs.builder()
- *             .privileges("VM.GuestAgent.Audit")
  *             .roleId("operations-monitoring")
+ *             .privileges("VM.GuestAgent.Audit")
  *             .build());
  * 
  *     }

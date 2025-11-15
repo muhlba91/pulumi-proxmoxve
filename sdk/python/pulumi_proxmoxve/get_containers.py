@@ -110,7 +110,11 @@ def get_containers(filters: Optional[Sequence[Union['GetContainersFilterArgs', '
     import pulumi_proxmoxve as proxmoxve
 
     ubuntu_containers = proxmoxve.get_containers(tags=["ubuntu"])
-    ubuntu_templates = proxmoxve.get_containers(filters=[
+    ubuntu_templates = proxmoxve.get_containers(tags=[
+            "template",
+            "latest",
+        ],
+        filters=[
             {
                 "name": "template",
                 "values": ["true"],
@@ -132,10 +136,6 @@ def get_containers(filters: Optional[Sequence[Union['GetContainersFilterArgs', '
                     "node_eu_[1-3]",
                 ],
             },
-        ],
-        tags=[
-            "template",
-            "latest",
         ])
     ```
 
@@ -172,7 +172,11 @@ def get_containers_output(filters: Optional[pulumi.Input[Optional[Sequence[Union
     import pulumi_proxmoxve as proxmoxve
 
     ubuntu_containers = proxmoxve.get_containers(tags=["ubuntu"])
-    ubuntu_templates = proxmoxve.get_containers(filters=[
+    ubuntu_templates = proxmoxve.get_containers(tags=[
+            "template",
+            "latest",
+        ],
+        filters=[
             {
                 "name": "template",
                 "values": ["true"],
@@ -194,10 +198,6 @@ def get_containers_output(filters: Optional[pulumi.Input[Optional[Sequence[Union
                     "node_eu_[1-3]",
                 ],
             },
-        ],
-        tags=[
-            "template",
-            "latest",
         ])
     ```
 

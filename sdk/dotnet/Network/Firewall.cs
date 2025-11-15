@@ -24,17 +24,17 @@ namespace Pulumi.ProxmoxVE.Network
     /// {
     ///     var example = new ProxmoxVE.Network.Firewall("example", new()
     ///     {
-    ///         Ebtables = false,
     ///         Enabled = false,
-    ///         ForwardPolicy = "ACCEPT",
+    ///         Ebtables = false,
     ///         InputPolicy = "DROP",
+    ///         OutputPolicy = "ACCEPT",
+    ///         ForwardPolicy = "ACCEPT",
     ///         LogRatelimit = new ProxmoxVE.Network.Inputs.FirewallLogRatelimitArgs
     ///         {
-    ///             Burst = 10,
     ///             Enabled = false,
+    ///             Burst = 10,
     ///             Rate = "5/second",
     ///         },
-    ///         OutputPolicy = "ACCEPT",
     ///     });
     /// 
     /// });

@@ -84,7 +84,9 @@ def get_ha_resources(type: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
+    # This will fetch the set of all HA resource identifiers.
     example_all = proxmoxve.HA.get_ha_resources()
+    # This will fetch the set of HA resource identifiers that correspond to virtual machines.
     example_vm = proxmoxve.HA.get_ha_resources(type="vm")
     pulumi.export("dataProxmoxVirtualEnvironmentHaresources", {
         "all": example_all.resource_ids,
@@ -115,7 +117,9 @@ def get_ha_resources_output(type: Optional[pulumi.Input[Optional[_builtins.str]]
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
+    # This will fetch the set of all HA resource identifiers.
     example_all = proxmoxve.HA.get_ha_resources()
+    # This will fetch the set of HA resource identifiers that correspond to virtual machines.
     example_vm = proxmoxve.HA.get_ha_resources(type="vm")
     pulumi.export("dataProxmoxVirtualEnvironmentHaresources", {
         "all": example_all.resource_ids,

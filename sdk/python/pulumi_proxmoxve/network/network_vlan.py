@@ -412,14 +412,16 @@ class NetworkVlan(pulumi.CustomResource):
 
         # using VLAN tag
         vlan99 = proxmoxve.network.NetworkVlan("vlan99",
-            comment="VLAN 99",
-            node_name="pve")
+            node_name="pve",
+            name="eno0.99",
+            comment="VLAN 99")
         # using custom network interface name
         vlan98 = proxmoxve.network.NetworkVlan("vlan98",
-            comment="VLAN 98",
-            interface="eno0",
             node_name="pve",
-            vlan=98)
+            name="vlan_lab",
+            interface="eno0",
+            vlan=98,
+            comment="VLAN 98")
         ```
 
         ## Import
@@ -463,14 +465,16 @@ class NetworkVlan(pulumi.CustomResource):
 
         # using VLAN tag
         vlan99 = proxmoxve.network.NetworkVlan("vlan99",
-            comment="VLAN 99",
-            node_name="pve")
+            node_name="pve",
+            name="eno0.99",
+            comment="VLAN 99")
         # using custom network interface name
         vlan98 = proxmoxve.network.NetworkVlan("vlan98",
-            comment="VLAN 98",
-            interface="eno0",
             node_name="pve",
-            vlan=98)
+            name="vlan_lab",
+            interface="eno0",
+            vlan=98,
+            comment="VLAN 98")
         ```
 
         ## Import

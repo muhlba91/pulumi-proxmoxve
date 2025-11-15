@@ -22,14 +22,14 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<string>? Device { get; set; }
 
         /// <summary>
-        /// The driver (defaults to `spice`).
+        /// The driver (defaults to `Spice`).
         /// </summary>
         [Input("driver")]
         public Input<string>? Driver { get; set; }
 
         /// <summary>
         /// Whether to enable the audio device (defaults
-        /// to `true`).
+        /// to `True`).
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

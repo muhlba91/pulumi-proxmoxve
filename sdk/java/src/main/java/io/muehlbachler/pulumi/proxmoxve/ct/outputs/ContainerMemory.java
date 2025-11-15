@@ -13,12 +13,12 @@ import javax.annotation.Nullable;
 public final class ContainerMemory {
     /**
      * @return The dedicated memory in megabytes (defaults
-     * to `512`).
+     * to &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34;&gt;`512`&lt;/span&gt;).
      * 
      */
     private @Nullable Integer dedicated;
     /**
-     * @return The swap size in megabytes (defaults to `0`).
+     * @return The swap size in megabytes (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
      * 
      */
     private @Nullable Integer swap;
@@ -26,14 +26,14 @@ public final class ContainerMemory {
     private ContainerMemory() {}
     /**
      * @return The dedicated memory in megabytes (defaults
-     * to `512`).
+     * to &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34;&gt;`512`&lt;/span&gt;).
      * 
      */
     public Optional<Integer> dedicated() {
         return Optional.ofNullable(this.dedicated);
     }
     /**
-     * @return The swap size in megabytes (defaults to `0`).
+     * @return The swap size in megabytes (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
      * 
      */
     public Optional<Integer> swap() {

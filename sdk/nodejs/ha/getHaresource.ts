@@ -13,10 +13,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
+ * // This will fetch the set of all HA resource identifiers...
  * const all = proxmoxve.HA.getHAResources({});
- * const example = all.then(all => .map(([__key, __value]) => (proxmoxve.HA.getHAResource({
+ * // ...which we will go through in order to fetch the whole record for each resource.
+ * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: proxmoxve.HA.getHAResource({
  *     resourceId: __value,
- * }))));
+ * }) })));
  * export const proxmoxVirtualEnvironmentHaresourcesFull = example;
  * ```
  */
@@ -83,10 +85,12 @@ export interface GetHAResourceResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
+ * // This will fetch the set of all HA resource identifiers...
  * const all = proxmoxve.HA.getHAResources({});
- * const example = all.then(all => .map(([__key, __value]) => (proxmoxve.HA.getHAResource({
+ * // ...which we will go through in order to fetch the whole record for each resource.
+ * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: proxmoxve.HA.getHAResource({
  *     resourceId: __value,
- * }))));
+ * }) })));
  * export const proxmoxVirtualEnvironmentHaresourcesFull = example;
  * ```
  */

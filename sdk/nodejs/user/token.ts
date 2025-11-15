@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  *     expirationDate: "2034-01-01T22:00:00Z",
  *     userId: "user@pve",
  * });
- * const userToken = new proxmoxve.user.Token("userToken", {
+ * const userToken = new proxmoxve.user.Token("user_token", {
  *     comment: "Managed by Pulumi",
  *     expirationDate: "2033-01-01T22:00:00Z",
  *     tokenName: "tk1",

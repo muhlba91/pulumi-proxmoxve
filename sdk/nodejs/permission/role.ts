@@ -13,9 +13,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
- * const operationsMonitoring = new proxmoxve.permission.Role("operationsMonitoring", {
- *     privileges: ["VM.GuestAgent.Audit"],
+ * const operationsMonitoring = new proxmoxve.permission.Role("operations_monitoring", {
  *     roleId: "operations-monitoring",
+ *     privileges: ["VM.GuestAgent.Audit"],
  * });
  * ```
  *

@@ -13,7 +13,7 @@ PROVIDER        := pulumi-resource-${PACK}
 VERSION         := $(shell pulumictl get version)
 
 JAVA_GEN 		 := pulumi-java-gen
-JAVA_GEN_VERSION := v1.16.2
+JAVA_GEN_VERSION := v1.17.0
 
 TESTPARALLELISM := 4
 

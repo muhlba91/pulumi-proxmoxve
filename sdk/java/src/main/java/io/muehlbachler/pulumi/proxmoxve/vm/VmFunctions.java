@@ -266,6 +266,9 @@ public final class VMFunctions {
      *             .build());
      * 
      *         final var ubuntuTemplates = VMFunctions.getVirtualMachines(GetVirtualMachinesArgs.builder()
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
      *             .filters(            
      *                 GetVirtualMachinesFilterArgs.builder()
      *                     .name("template")
@@ -287,9 +290,6 @@ public final class VMFunctions {
      *                         "node_us_[1-3]",
      *                         "node_eu_[1-3]")
      *                     .build())
-     *             .tags(            
-     *                 "template",
-     *                 "latest")
      *             .build());
      * 
      *     }
@@ -335,6 +335,9 @@ public final class VMFunctions {
      *             .build());
      * 
      *         final var ubuntuTemplates = VMFunctions.getVirtualMachines(GetVirtualMachinesArgs.builder()
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
      *             .filters(            
      *                 GetVirtualMachinesFilterArgs.builder()
      *                     .name("template")
@@ -356,9 +359,6 @@ public final class VMFunctions {
      *                         "node_us_[1-3]",
      *                         "node_eu_[1-3]")
      *                     .build())
-     *             .tags(            
-     *                 "template",
-     *                 "latest")
      *             .build());
      * 
      *     }
@@ -404,6 +404,9 @@ public final class VMFunctions {
      *             .build());
      * 
      *         final var ubuntuTemplates = VMFunctions.getVirtualMachines(GetVirtualMachinesArgs.builder()
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
      *             .filters(            
      *                 GetVirtualMachinesFilterArgs.builder()
      *                     .name("template")
@@ -425,9 +428,6 @@ public final class VMFunctions {
      *                         "node_us_[1-3]",
      *                         "node_eu_[1-3]")
      *                     .build())
-     *             .tags(            
-     *                 "template",
-     *                 "latest")
      *             .build());
      * 
      *     }
@@ -473,6 +473,9 @@ public final class VMFunctions {
      *             .build());
      * 
      *         final var ubuntuTemplates = VMFunctions.getVirtualMachines(GetVirtualMachinesArgs.builder()
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
      *             .filters(            
      *                 GetVirtualMachinesFilterArgs.builder()
      *                     .name("template")
@@ -494,9 +497,6 @@ public final class VMFunctions {
      *                         "node_us_[1-3]",
      *                         "node_eu_[1-3]")
      *                     .build())
-     *             .tags(            
-     *                 "template",
-     *                 "latest")
      *             .build());
      * 
      *     }
@@ -542,6 +542,9 @@ public final class VMFunctions {
      *             .build());
      * 
      *         final var ubuntuTemplates = VMFunctions.getVirtualMachines(GetVirtualMachinesArgs.builder()
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
      *             .filters(            
      *                 GetVirtualMachinesFilterArgs.builder()
      *                     .name("template")
@@ -563,9 +566,6 @@ public final class VMFunctions {
      *                         "node_us_[1-3]",
      *                         "node_eu_[1-3]")
      *                     .build())
-     *             .tags(            
-     *                 "template",
-     *                 "latest")
      *             .build());
      * 
      *     }
@@ -611,6 +611,9 @@ public final class VMFunctions {
      *             .build());
      * 
      *         final var ubuntuTemplates = VMFunctions.getVirtualMachines(GetVirtualMachinesArgs.builder()
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
      *             .filters(            
      *                 GetVirtualMachinesFilterArgs.builder()
      *                     .name("template")
@@ -632,9 +635,6 @@ public final class VMFunctions {
      *                         "node_us_[1-3]",
      *                         "node_eu_[1-3]")
      *                     .build())
-     *             .tags(            
-     *                 "template",
-     *                 "latest")
      *             .build());
      * 
      *     }
@@ -680,6 +680,9 @@ public final class VMFunctions {
      *             .build());
      * 
      *         final var ubuntuTemplates = VMFunctions.getVirtualMachines(GetVirtualMachinesArgs.builder()
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
      *             .filters(            
      *                 GetVirtualMachinesFilterArgs.builder()
      *                     .name("template")
@@ -701,9 +704,6 @@ public final class VMFunctions {
      *                         "node_us_[1-3]",
      *                         "node_eu_[1-3]")
      *                     .build())
-     *             .tags(            
-     *                 "template",
-     *                 "latest")
      *             .build());
      * 
      *     }

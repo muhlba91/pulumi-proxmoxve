@@ -19,15 +19,15 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Use this resource to upload files to a Proxmox VE node. The file can be a backup, an ISO image, a Disk Image, a snippet, or a container template depending on the `content_type` attribute.
+ * Use this resource to upload files to a Proxmox VE node. The file can be a backup, an ISO image, a Disk Image, a snippet, or a container template depending on the &lt;span pulumi-lang-nodejs=&#34;`contentType`&#34; pulumi-lang-dotnet=&#34;`ContentType`&#34; pulumi-lang-go=&#34;`contentType`&#34; pulumi-lang-python=&#34;`content_type`&#34; pulumi-lang-yaml=&#34;`contentType`&#34; pulumi-lang-java=&#34;`contentType`&#34;&gt;`content_type`&lt;/span&gt; attribute.
  * 
  * ## Example Usage
  * 
- * ### Backups (`backup`)
+ * ### Backups (&lt;span pulumi-lang-nodejs=&#34;`backup`&#34; pulumi-lang-dotnet=&#34;`Backup`&#34; pulumi-lang-go=&#34;`backup`&#34; pulumi-lang-python=&#34;`backup`&#34; pulumi-lang-yaml=&#34;`backup`&#34; pulumi-lang-java=&#34;`backup`&#34;&gt;`backup`&lt;/span&gt;)
  * 
- * &gt; The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
+ * &gt; The resource with this content type uses SSH access to the node. You might need to configure the &lt;span pulumi-lang-nodejs=&#34;`ssh`&#34; pulumi-lang-dotnet=&#34;`Ssh`&#34; pulumi-lang-go=&#34;`ssh`&#34; pulumi-lang-python=&#34;`ssh`&#34; pulumi-lang-yaml=&#34;`ssh`&#34; pulumi-lang-java=&#34;`ssh`&#34;&gt;`ssh`&lt;/span&gt; option in the &lt;span pulumi-lang-nodejs=&#34;`provider`&#34; pulumi-lang-dotnet=&#34;`Provider`&#34; pulumi-lang-go=&#34;`provider`&#34; pulumi-lang-python=&#34;`provider`&#34; pulumi-lang-yaml=&#34;`provider`&#34; pulumi-lang-java=&#34;`provider`&#34;&gt;`provider`&lt;/span&gt; section.
  * 
- * &gt; The provider currently does not support restoring backups. You can use the Proxmox VE web interface or the `qmrestore` / `pct restore` command to restore VM / Container from a backup.
+ * &gt; The provider currently does not support restoring backups. You can use the Proxmox VE web interface or the &lt;span pulumi-lang-nodejs=&#34;`qmrestore`&#34; pulumi-lang-dotnet=&#34;`Qmrestore`&#34; pulumi-lang-go=&#34;`qmrestore`&#34; pulumi-lang-python=&#34;`qmrestore`&#34; pulumi-lang-yaml=&#34;`qmrestore`&#34; pulumi-lang-java=&#34;`qmrestore`&#34;&gt;`qmrestore`&lt;/span&gt; / `pct restore` command to restore VM / Container from a backup.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -70,9 +70,9 @@ import javax.annotation.Nullable;
  * 
  * ### Images
  * 
- * &gt; Consider using `proxmoxve.Download.File` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.
+ * &gt; Consider using &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-go=&#34;`Download.File`&#34; pulumi-lang-python=&#34;`Download.File`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-java=&#34;`proxmoxve.Download.File`&#34;&gt;`proxmoxve.Download.File`&lt;/span&gt; resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.
  * 
- * &gt; Importing Disks is not enabled by default in new Proxmox installations. You need to enable them in the &#39;Datacenter&gt;Storage&#39; section of the proxmox interface before first using this resource with `content_type = &#34;import&#34;`.
+ * &gt; Importing Disks is not enabled by default in new Proxmox installations. You need to enable them in the &#39;Datacenter&gt;Storage&#39; section of the proxmox interface before first using this resource with &lt;span pulumi-lang-nodejs=&#34;`contentType &#34; pulumi-lang-dotnet=&#34;`ContentType &#34; pulumi-lang-go=&#34;`contentType &#34; pulumi-lang-python=&#34;`content_type &#34; pulumi-lang-yaml=&#34;`contentType &#34; pulumi-lang-java=&#34;`contentType &#34;&gt;`content_type &lt;/span&gt;= &#34;import&#34;`.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -152,9 +152,123 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### Container Template (`vztmpl`)
+ * ### Snippets
  * 
- * &gt; Consider using `proxmoxve.Download.File` resource instead. Using this resource for container images is less efficient (requires to transfer uploaded image to node) though still supported.
+ * &gt; Snippets are not enabled by default in new Proxmox installations. You need to enable them in the &#39;Datacenter&gt;Storage&#39; section of the proxmox interface before first using this resource.
+ * 
+ * &gt; The resource with this content type uses SSH access to the node. You might need to configure the &lt;span pulumi-lang-nodejs=&#34;`ssh`&#34; pulumi-lang-dotnet=&#34;`Ssh`&#34; pulumi-lang-go=&#34;`ssh`&#34; pulumi-lang-python=&#34;`ssh`&#34; pulumi-lang-yaml=&#34;`ssh`&#34; pulumi-lang-java=&#34;`ssh`&#34;&gt;`ssh`&lt;/span&gt; option in the &lt;span pulumi-lang-nodejs=&#34;`provider`&#34; pulumi-lang-dotnet=&#34;`Provider`&#34; pulumi-lang-go=&#34;`provider`&#34; pulumi-lang-python=&#34;`provider`&#34; pulumi-lang-yaml=&#34;`provider`&#34; pulumi-lang-java=&#34;`provider`&#34;&gt;`provider`&lt;/span&gt; section.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.Storage.File;
+ * import io.muehlbachler.pulumi.proxmoxve.Storage.FileArgs;
+ * import com.pulumi.proxmoxve.Storage.inputs.FileSourceRawArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.TrimspaceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var cloudConfig = new File("cloudConfig", FileArgs.builder()
+ *             .contentType("snippets")
+ *             .datastoreId("local")
+ *             .nodeName("pve")
+ *             .sourceRaw(FileSourceRawArgs.builder()
+ *                 .data("""
+ * #cloud-config
+ * chpasswd:
+ *   list: |
+ *     ubuntu:example
+ *   expire: false
+ * hostname: example-hostname
+ * packages:
+ *   - qemu-guest-agent
+ * users:
+ *   - default
+ *   - name: ubuntu
+ *     groups: sudo
+ *     shell: /bin/bash
+ *     ssh-authorized-keys:
+ *       - %s
+ *     sudo: ALL=(ALL) NOPASSWD:ALL
+ * ", StdFunctions.trimspace(TrimspaceArgs.builder()
+ *                     .input(example.publicKeyOpenssh())
+ *                     .build()).result()))
+ *                 .fileName("example.cloud-config.yaml")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * The &lt;span pulumi-lang-nodejs=&#34;`fileMode`&#34; pulumi-lang-dotnet=&#34;`FileMode`&#34; pulumi-lang-go=&#34;`fileMode`&#34; pulumi-lang-python=&#34;`file_mode`&#34; pulumi-lang-yaml=&#34;`fileMode`&#34; pulumi-lang-java=&#34;`fileMode`&#34;&gt;`file_mode`&lt;/span&gt; attribute can be used to make a script file executable, e.g. when referencing the file in the &lt;span pulumi-lang-nodejs=&#34;`hookScriptFileId`&#34; pulumi-lang-dotnet=&#34;`HookScriptFileId`&#34; pulumi-lang-go=&#34;`hookScriptFileId`&#34; pulumi-lang-python=&#34;`hook_script_file_id`&#34; pulumi-lang-yaml=&#34;`hookScriptFileId`&#34; pulumi-lang-java=&#34;`hookScriptFileId`&#34;&gt;`hook_script_file_id`&lt;/span&gt; attribute of a container or a VM resource which is a requirement enforced by the Proxmox VE API.
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.Storage.File;
+ * import io.muehlbachler.pulumi.proxmoxve.Storage.FileArgs;
+ * import com.pulumi.proxmoxve.Storage.inputs.FileSourceRawArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var hookScript = new File("hookScript", FileArgs.builder()
+ *             .contentType("snippets")
+ *             .datastoreId("local")
+ *             .nodeName("pve")
+ *             .fileMode("0700")
+ *             .sourceRaw(FileSourceRawArgs.builder()
+ *                 .data("""
+ * #!/usr/bin/env bash
+ * 
+ * echo \"Running hook script\"
+ *                 """)
+ *                 .fileName("prepare-hook.sh")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Container Template (&lt;span pulumi-lang-nodejs=&#34;`vztmpl`&#34; pulumi-lang-dotnet=&#34;`Vztmpl`&#34; pulumi-lang-go=&#34;`vztmpl`&#34; pulumi-lang-python=&#34;`vztmpl`&#34; pulumi-lang-yaml=&#34;`vztmpl`&#34; pulumi-lang-java=&#34;`vztmpl`&#34;&gt;`vztmpl`&lt;/span&gt;)
+ * 
+ * &gt; Consider using &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-go=&#34;`Download.File`&#34; pulumi-lang-python=&#34;`Download.File`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-java=&#34;`proxmoxve.Download.File`&#34;&gt;`proxmoxve.Download.File`&lt;/span&gt; resource instead. Using this resource for container images is less efficient (requires to transfer uploaded image to node) though still supported.
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -208,7 +322,7 @@ import javax.annotation.Nullable;
  * By default, if the specified file already exists, the resource will
  * unconditionally replace it and take ownership of the resource. On destruction,
  * the file will be deleted as if it did not exist before. If you want to prevent
- * the resource from replacing the file, set `overwrite` to `false`.
+ * the resource from replacing the file, set &lt;span pulumi-lang-nodejs=&#34;`overwrite`&#34; pulumi-lang-dotnet=&#34;`Overwrite`&#34; pulumi-lang-go=&#34;`overwrite`&#34; pulumi-lang-python=&#34;`overwrite`&#34; pulumi-lang-yaml=&#34;`overwrite`&#34; pulumi-lang-java=&#34;`overwrite`&#34;&gt;`overwrite`&lt;/span&gt; to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
  * 
  * ## Import
  * 
@@ -262,14 +376,14 @@ public class File extends com.pulumi.resources.CustomResource {
         return this.datastoreId;
     }
     /**
-     * The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root{@literal @}pam` authenticated user.
+     * The file mode in octal format, e.g. &lt;span pulumi-lang-nodejs=&#34;`0700`&#34; pulumi-lang-dotnet=&#34;`0700`&#34; pulumi-lang-go=&#34;`0700`&#34; pulumi-lang-python=&#34;`0700`&#34; pulumi-lang-yaml=&#34;`0700`&#34; pulumi-lang-java=&#34;`0700`&#34;&gt;`0700`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`600`&#34; pulumi-lang-dotnet=&#34;`600`&#34; pulumi-lang-go=&#34;`600`&#34; pulumi-lang-python=&#34;`600`&#34; pulumi-lang-yaml=&#34;`600`&#34; pulumi-lang-java=&#34;`600`&#34;&gt;`600`&lt;/span&gt;. Note that the prefixes &lt;span pulumi-lang-nodejs=&#34;`0o`&#34; pulumi-lang-dotnet=&#34;`0o`&#34; pulumi-lang-go=&#34;`0o`&#34; pulumi-lang-python=&#34;`0o`&#34; pulumi-lang-yaml=&#34;`0o`&#34; pulumi-lang-java=&#34;`0o`&#34;&gt;`0o`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`0x`&#34; pulumi-lang-dotnet=&#34;`0x`&#34; pulumi-lang-go=&#34;`0x`&#34; pulumi-lang-python=&#34;`0x`&#34; pulumi-lang-yaml=&#34;`0x`&#34; pulumi-lang-java=&#34;`0x`&#34;&gt;`0x`&lt;/span&gt; is not supported! Setting this attribute is also only allowed for `root{@literal @}pam` authenticated user.
      * 
      */
     @Export(name="fileMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> fileMode;
 
     /**
-     * @return The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root{@literal @}pam` authenticated user.
+     * @return The file mode in octal format, e.g. &lt;span pulumi-lang-nodejs=&#34;`0700`&#34; pulumi-lang-dotnet=&#34;`0700`&#34; pulumi-lang-go=&#34;`0700`&#34; pulumi-lang-python=&#34;`0700`&#34; pulumi-lang-yaml=&#34;`0700`&#34; pulumi-lang-java=&#34;`0700`&#34;&gt;`0700`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`600`&#34; pulumi-lang-dotnet=&#34;`600`&#34; pulumi-lang-go=&#34;`600`&#34; pulumi-lang-python=&#34;`600`&#34; pulumi-lang-yaml=&#34;`600`&#34; pulumi-lang-java=&#34;`600`&#34;&gt;`600`&lt;/span&gt;. Note that the prefixes &lt;span pulumi-lang-nodejs=&#34;`0o`&#34; pulumi-lang-dotnet=&#34;`0o`&#34; pulumi-lang-go=&#34;`0o`&#34; pulumi-lang-python=&#34;`0o`&#34; pulumi-lang-yaml=&#34;`0o`&#34; pulumi-lang-java=&#34;`0o`&#34;&gt;`0o`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`0x`&#34; pulumi-lang-dotnet=&#34;`0x`&#34; pulumi-lang-go=&#34;`0x`&#34; pulumi-lang-python=&#34;`0x`&#34; pulumi-lang-yaml=&#34;`0x`&#34; pulumi-lang-java=&#34;`0x`&#34;&gt;`0x`&lt;/span&gt; is not supported! Setting this attribute is also only allowed for `root{@literal @}pam` authenticated user.
      * 
      */
     public Output<Optional<String>> fileMode() {
@@ -347,7 +461,7 @@ public class File extends com.pulumi.resources.CustomResource {
     }
     /**
      * Whether to overwrite an existing file (defaults to
-     * `true`).
+     * &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     @Export(name="overwrite", refs={Boolean.class}, tree="[0]")
@@ -355,14 +469,14 @@ public class File extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Whether to overwrite an existing file (defaults to
-     * `true`).
+     * &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Output<Optional<Boolean>> overwrite() {
         return Codegen.optional(this.overwrite);
     }
     /**
-     * The source file (conflicts with `source_raw`),
+     * The source file (conflicts with &lt;span pulumi-lang-nodejs=&#34;`sourceRaw`&#34; pulumi-lang-dotnet=&#34;`SourceRaw`&#34; pulumi-lang-go=&#34;`sourceRaw`&#34; pulumi-lang-python=&#34;`source_raw`&#34; pulumi-lang-yaml=&#34;`sourceRaw`&#34; pulumi-lang-java=&#34;`sourceRaw`&#34;&gt;`source_raw`&lt;/span&gt;),
      * could be a local file or a URL. If the source file is a URL, the file will
      * be downloaded and stored locally before uploading it to Proxmox VE.
      * 
@@ -371,7 +485,7 @@ public class File extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ FileSourceFile> sourceFile;
 
     /**
-     * @return The source file (conflicts with `source_raw`),
+     * @return The source file (conflicts with &lt;span pulumi-lang-nodejs=&#34;`sourceRaw`&#34; pulumi-lang-dotnet=&#34;`SourceRaw`&#34; pulumi-lang-go=&#34;`sourceRaw`&#34; pulumi-lang-python=&#34;`source_raw`&#34; pulumi-lang-yaml=&#34;`sourceRaw`&#34; pulumi-lang-java=&#34;`sourceRaw`&#34;&gt;`source_raw`&lt;/span&gt;),
      * could be a local file or a URL. If the source file is a URL, the file will
      * be downloaded and stored locally before uploading it to Proxmox VE.
      * 
@@ -380,14 +494,14 @@ public class File extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sourceFile);
     }
     /**
-     * The raw source (conflicts with `source_file`).
+     * The raw source (conflicts with &lt;span pulumi-lang-nodejs=&#34;`sourceFile`&#34; pulumi-lang-dotnet=&#34;`SourceFile`&#34; pulumi-lang-go=&#34;`sourceFile`&#34; pulumi-lang-python=&#34;`source_file`&#34; pulumi-lang-yaml=&#34;`sourceFile`&#34; pulumi-lang-java=&#34;`sourceFile`&#34;&gt;`source_file`&lt;/span&gt;).
      * 
      */
     @Export(name="sourceRaw", refs={FileSourceRaw.class}, tree="[0]")
     private Output</* @Nullable */ FileSourceRaw> sourceRaw;
 
     /**
-     * @return The raw source (conflicts with `source_file`).
+     * @return The raw source (conflicts with &lt;span pulumi-lang-nodejs=&#34;`sourceFile`&#34; pulumi-lang-dotnet=&#34;`SourceFile`&#34; pulumi-lang-go=&#34;`sourceFile`&#34; pulumi-lang-python=&#34;`source_file`&#34; pulumi-lang-yaml=&#34;`sourceFile`&#34; pulumi-lang-java=&#34;`sourceFile`&#34;&gt;`source_file`&lt;/span&gt;).
      * 
      */
     public Output<Optional<FileSourceRaw>> sourceRaw() {

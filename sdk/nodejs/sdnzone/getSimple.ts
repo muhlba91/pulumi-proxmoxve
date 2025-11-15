@@ -21,9 +21,9 @@ import * as utilities from "../utilities";
  *     nodes: example.then(example => example.nodes),
  *     mtu: example.then(example => example.mtu),
  *     dns: example.then(example => example.dns),
- *     dns_zone: example.then(example => example.dnsZone),
+ *     dnsZone: example.then(example => example.dnsZone),
  *     ipam: example.then(example => example.ipam),
- *     reverse_dns: example.then(example => example.reverseDns),
+ *     reverseDns: example.then(example => example.reverseDns),
  * };
  * ```
  */
@@ -48,6 +48,10 @@ export interface GetSimpleArgs {
  * A collection of values returned by getSimple.
  */
 export interface GetSimpleResult {
+    /**
+     * The type of the DHCP backend for this zone.
+     */
+    readonly dhcp: string;
     /**
      * DNS API server address.
      */
@@ -102,9 +106,9 @@ export interface GetSimpleResult {
  *     nodes: example.then(example => example.nodes),
  *     mtu: example.then(example => example.mtu),
  *     dns: example.then(example => example.dns),
- *     dns_zone: example.then(example => example.dnsZone),
+ *     dnsZone: example.then(example => example.dnsZone),
  *     ipam: example.then(example => example.ipam),
- *     reverse_dns: example.then(example => example.reverseDns),
+ *     reverseDns: example.then(example => example.reverseDns),
  * };
  * ```
  */

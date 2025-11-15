@@ -7,59 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Manages a virtual machine.
- *
- * ## High Availability
- *
- * When managing a virtual machine in a multi-node cluster, the VM's HA settings can
- * be managed using the `proxmoxve.HA.HAResource` resource.
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const ubuntuVmVirtualMachine = new proxmoxve.vm.VirtualMachine("ubuntuVmVirtualMachine", {vmId: 4321});
- * const ubuntuVmHAResource = new proxmoxve.ha.HAResource("ubuntuVmHAResource", {
- *     comment: "Managed by Pulumi",
- *     group: "node1",
- *     resourceId: pulumi.interpolate`vm:${ubuntuVmVirtualMachine.vmId}`,
- *     state: "started",
- * });
- * ```
- *
- * ## Important Notes
- *
- * ### `local-lvm` Datastore
- *
- * The `local-lvm` is the **default datastore** for many configuration blocks, including `initialization` and `tpmState`, which may not seem to be related to "storage".
- * If you do not have `local-lvm` configured in your environment, you may need to explicitly set the `datastoreId` in such blocks to a different value.
- *
- * ### Cloning
- *
- * When cloning an existing virtual machine, whether it's a template or not, the
- * resource will inherit the disks and other configuration from the source VM.
- *
- * *If* you modify any attributes of an existing disk in the clone, you also need to\
- * explicitly provide values for any other attributes that differ from the schema defaults\
- * in the source (e.g., `size`, `discard`, `cache`, `aio`).\
- * Otherwise, the schema defaults will take effect and override the source values.
- *
- * Furthermore, when cloning from one node to a different one, the behavior changes
- * depening on the datastores of the source VM. If at least one non-shared
- * datastore is used, the VM is first cloned to the source node before being
- * migrated to the target node. This circumvents a limitation in the Proxmox clone
- * API.
- *
- * Because the migration step after the clone tries to preserve the used
- * datastores by their name, it may fail if a datastore used in the source VM is
- * not available on the target node (e.g. `local-lvm` is used on the source node in
- * the VM but no `local-lvm` datastore is available on the target node). In this
- * case, it is recommended to set the `datastoreId` argument in the `clone` block
- * to force the migration step to migrate all disks to a specific datastore on the
- * target node. If you need certain disks to be on specific datastores, set
- * the `datastoreId` argument of the disks in the `disks` block to move the disks
- * to the correct datastore after the cloning and migrating succeeded.
- *
  * ## Import
  *
  * Instances can be imported using the `node_name` and the `vm_id`, e.g.,

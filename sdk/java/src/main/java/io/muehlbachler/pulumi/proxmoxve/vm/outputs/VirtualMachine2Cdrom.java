@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VirtualMachine2Cdrom {
     /**
-     * @return The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+     * @return The file ID of the CD-ROM, or `cdrom|none`. Defaults to &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34;&gt;`none`&lt;/span&gt; to leave the CD-ROM empty. Use &lt;span pulumi-lang-nodejs=&#34;`cdrom`&#34; pulumi-lang-dotnet=&#34;`Cdrom`&#34; pulumi-lang-go=&#34;`cdrom`&#34; pulumi-lang-python=&#34;`cdrom`&#34; pulumi-lang-yaml=&#34;`cdrom`&#34; pulumi-lang-java=&#34;`cdrom`&#34;&gt;`cdrom`&lt;/span&gt; to connect to the physical drive.
      * 
      */
     private @Nullable String fileId;
 
     private VirtualMachine2Cdrom() {}
     /**
-     * @return The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+     * @return The file ID of the CD-ROM, or `cdrom|none`. Defaults to &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34;&gt;`none`&lt;/span&gt; to leave the CD-ROM empty. Use &lt;span pulumi-lang-nodejs=&#34;`cdrom`&#34; pulumi-lang-dotnet=&#34;`Cdrom`&#34; pulumi-lang-go=&#34;`cdrom`&#34; pulumi-lang-python=&#34;`cdrom`&#34; pulumi-lang-yaml=&#34;`cdrom`&#34; pulumi-lang-java=&#34;`cdrom`&#34;&gt;`cdrom`&lt;/span&gt; to connect to the physical drive.
      * 
      */
     public Optional<String> fileId() {

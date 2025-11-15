@@ -421,7 +421,7 @@ class File(pulumi.CustomResource):
         import pulumi
         import pulumi_proxmoxve as proxmoxve
 
-        ubuntu_container_template = proxmoxve.storage.File("ubuntuContainerTemplate",
+        ubuntu_container_template = proxmoxve.storage.File("ubuntu_container_template",
             content_type="iso",
             datastore_id="local",
             node_name="pve",
@@ -434,12 +434,69 @@ class File(pulumi.CustomResource):
         import pulumi
         import pulumi_proxmoxve as proxmoxve
 
-        ubuntu_container_template = proxmoxve.storage.File("ubuntuContainerTemplate",
+        ubuntu_container_template = proxmoxve.storage.File("ubuntu_container_template",
             content_type="import",
             datastore_id="local",
             node_name="pve",
             source_file={
                 "path": "https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img",
+            })
+        ```
+
+        ### Snippets
+
+        > Snippets are not enabled by default in new Proxmox installations. You need to enable them in the 'Datacenter>Storage' section of the proxmox interface before first using this resource.
+
+        > The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+        import pulumi_std as std
+
+        cloud_config = proxmoxve.storage.File("cloud_config",
+            content_type="snippets",
+            datastore_id="local",
+            node_name="pve",
+            source_raw={
+                "data": f\"\"\"#cloud-config
+        chpasswd:
+          list: |
+            ubuntu:example
+          expire: false
+        hostname: example-hostname
+        packages:
+          - qemu-guest-agent
+        users:
+          - default
+          - name: ubuntu
+            groups: sudo
+            shell: /bin/bash
+            ssh-authorized-keys:
+              - {std.trimspace(input=example["publicKeyOpenssh"]).result}
+            sudo: ALL=(ALL) NOPASSWD:ALL
+        \"\"\",
+                "file_name": "example.cloud-config.yaml",
+            })
+        ```
+
+        The `file_mode` attribute can be used to make a script file executable, e.g. when referencing the file in the `hook_script_file_id` attribute of a container or a VM resource which is a requirement enforced by the Proxmox VE API.
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        hook_script = proxmoxve.storage.File("hook_script",
+            content_type="snippets",
+            datastore_id="local",
+            node_name="pve",
+            file_mode="0700",
+            source_raw={
+                "data": \"\"\"#!/usr/bin/env bash
+
+        echo \\"Running hook script\\"
+        \"\"\",
+                "file_name": "prepare-hook.sh",
             })
         ```
 
@@ -451,7 +508,7 @@ class File(pulumi.CustomResource):
         import pulumi
         import pulumi_proxmoxve as proxmoxve
 
-        ubuntu_container_template = proxmoxve.storage.File("ubuntuContainerTemplate",
+        ubuntu_container_template = proxmoxve.storage.File("ubuntu_container_template",
             content_type="vztmpl",
             datastore_id="local",
             node_name="first-node",
@@ -549,7 +606,7 @@ class File(pulumi.CustomResource):
         import pulumi
         import pulumi_proxmoxve as proxmoxve
 
-        ubuntu_container_template = proxmoxve.storage.File("ubuntuContainerTemplate",
+        ubuntu_container_template = proxmoxve.storage.File("ubuntu_container_template",
             content_type="iso",
             datastore_id="local",
             node_name="pve",
@@ -562,12 +619,69 @@ class File(pulumi.CustomResource):
         import pulumi
         import pulumi_proxmoxve as proxmoxve
 
-        ubuntu_container_template = proxmoxve.storage.File("ubuntuContainerTemplate",
+        ubuntu_container_template = proxmoxve.storage.File("ubuntu_container_template",
             content_type="import",
             datastore_id="local",
             node_name="pve",
             source_file={
                 "path": "https://cloud-images.ubuntu.com/jammy/20230929/jammy-server-cloudimg-amd64-disk-kvm.img",
+            })
+        ```
+
+        ### Snippets
+
+        > Snippets are not enabled by default in new Proxmox installations. You need to enable them in the 'Datacenter>Storage' section of the proxmox interface before first using this resource.
+
+        > The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+        import pulumi_std as std
+
+        cloud_config = proxmoxve.storage.File("cloud_config",
+            content_type="snippets",
+            datastore_id="local",
+            node_name="pve",
+            source_raw={
+                "data": f\"\"\"#cloud-config
+        chpasswd:
+          list: |
+            ubuntu:example
+          expire: false
+        hostname: example-hostname
+        packages:
+          - qemu-guest-agent
+        users:
+          - default
+          - name: ubuntu
+            groups: sudo
+            shell: /bin/bash
+            ssh-authorized-keys:
+              - {std.trimspace(input=example["publicKeyOpenssh"]).result}
+            sudo: ALL=(ALL) NOPASSWD:ALL
+        \"\"\",
+                "file_name": "example.cloud-config.yaml",
+            })
+        ```
+
+        The `file_mode` attribute can be used to make a script file executable, e.g. when referencing the file in the `hook_script_file_id` attribute of a container or a VM resource which is a requirement enforced by the Proxmox VE API.
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        hook_script = proxmoxve.storage.File("hook_script",
+            content_type="snippets",
+            datastore_id="local",
+            node_name="pve",
+            file_mode="0700",
+            source_raw={
+                "data": \"\"\"#!/usr/bin/env bash
+
+        echo \\"Running hook script\\"
+        \"\"\",
+                "file_name": "prepare-hook.sh",
             })
         ```
 
@@ -579,7 +693,7 @@ class File(pulumi.CustomResource):
         import pulumi
         import pulumi_proxmoxve as proxmoxve
 
-        ubuntu_container_template = proxmoxve.storage.File("ubuntuContainerTemplate",
+        ubuntu_container_template = proxmoxve.storage.File("ubuntu_container_template",
             content_type="vztmpl",
             datastore_id="local",
             node_name="first-node",

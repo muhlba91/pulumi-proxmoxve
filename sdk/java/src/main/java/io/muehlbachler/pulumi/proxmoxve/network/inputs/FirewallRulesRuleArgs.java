@@ -96,14 +96,14 @@ public final class FirewallRulesRuleArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Enable this rule. Defaults to `true`.
+     * Enable this rule. Defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Enable this rule. Defaults to `true`.
+     * @return Enable this rule. Defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -130,16 +130,16 @@ public final class FirewallRulesRuleArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Log level for this rule (`emerg`, `alert`, `crit`,
-     * `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+     * Log level for this rule (&lt;span pulumi-lang-nodejs=&#34;`emerg`&#34; pulumi-lang-dotnet=&#34;`Emerg`&#34; pulumi-lang-go=&#34;`emerg`&#34; pulumi-lang-python=&#34;`emerg`&#34; pulumi-lang-yaml=&#34;`emerg`&#34; pulumi-lang-java=&#34;`emerg`&#34;&gt;`emerg`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`alert`&#34; pulumi-lang-dotnet=&#34;`Alert`&#34; pulumi-lang-go=&#34;`alert`&#34; pulumi-lang-python=&#34;`alert`&#34; pulumi-lang-yaml=&#34;`alert`&#34; pulumi-lang-java=&#34;`alert`&#34;&gt;`alert`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`crit`&#34; pulumi-lang-dotnet=&#34;`Crit`&#34; pulumi-lang-go=&#34;`crit`&#34; pulumi-lang-python=&#34;`crit`&#34; pulumi-lang-yaml=&#34;`crit`&#34; pulumi-lang-java=&#34;`crit`&#34;&gt;`crit`&lt;/span&gt;,
+     * &lt;span pulumi-lang-nodejs=&#34;`err`&#34; pulumi-lang-dotnet=&#34;`Err`&#34; pulumi-lang-go=&#34;`err`&#34; pulumi-lang-python=&#34;`err`&#34; pulumi-lang-yaml=&#34;`err`&#34; pulumi-lang-java=&#34;`err`&#34;&gt;`err`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`warning`&#34; pulumi-lang-dotnet=&#34;`Warning`&#34; pulumi-lang-go=&#34;`warning`&#34; pulumi-lang-python=&#34;`warning`&#34; pulumi-lang-yaml=&#34;`warning`&#34; pulumi-lang-java=&#34;`warning`&#34;&gt;`warning`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`notice`&#34; pulumi-lang-dotnet=&#34;`Notice`&#34; pulumi-lang-go=&#34;`notice`&#34; pulumi-lang-python=&#34;`notice`&#34; pulumi-lang-yaml=&#34;`notice`&#34; pulumi-lang-java=&#34;`notice`&#34;&gt;`notice`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`info`&#34; pulumi-lang-dotnet=&#34;`Info`&#34; pulumi-lang-go=&#34;`info`&#34; pulumi-lang-python=&#34;`info`&#34; pulumi-lang-yaml=&#34;`info`&#34; pulumi-lang-java=&#34;`info`&#34;&gt;`info`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`debug`&#34; pulumi-lang-dotnet=&#34;`Debug`&#34; pulumi-lang-go=&#34;`debug`&#34; pulumi-lang-python=&#34;`debug`&#34; pulumi-lang-yaml=&#34;`debug`&#34; pulumi-lang-java=&#34;`debug`&#34;&gt;`debug`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`nolog`&#34; pulumi-lang-dotnet=&#34;`Nolog`&#34; pulumi-lang-go=&#34;`nolog`&#34; pulumi-lang-python=&#34;`nolog`&#34; pulumi-lang-yaml=&#34;`nolog`&#34; pulumi-lang-java=&#34;`nolog`&#34;&gt;`nolog`&lt;/span&gt;).
      * 
      */
     @Import(name="log")
     private @Nullable Output<String> log;
 
     /**
-     * @return Log level for this rule (`emerg`, `alert`, `crit`,
-     * `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+     * @return Log level for this rule (&lt;span pulumi-lang-nodejs=&#34;`emerg`&#34; pulumi-lang-dotnet=&#34;`Emerg`&#34; pulumi-lang-go=&#34;`emerg`&#34; pulumi-lang-python=&#34;`emerg`&#34; pulumi-lang-yaml=&#34;`emerg`&#34; pulumi-lang-java=&#34;`emerg`&#34;&gt;`emerg`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`alert`&#34; pulumi-lang-dotnet=&#34;`Alert`&#34; pulumi-lang-go=&#34;`alert`&#34; pulumi-lang-python=&#34;`alert`&#34; pulumi-lang-yaml=&#34;`alert`&#34; pulumi-lang-java=&#34;`alert`&#34;&gt;`alert`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`crit`&#34; pulumi-lang-dotnet=&#34;`Crit`&#34; pulumi-lang-go=&#34;`crit`&#34; pulumi-lang-python=&#34;`crit`&#34; pulumi-lang-yaml=&#34;`crit`&#34; pulumi-lang-java=&#34;`crit`&#34;&gt;`crit`&lt;/span&gt;,
+     * &lt;span pulumi-lang-nodejs=&#34;`err`&#34; pulumi-lang-dotnet=&#34;`Err`&#34; pulumi-lang-go=&#34;`err`&#34; pulumi-lang-python=&#34;`err`&#34; pulumi-lang-yaml=&#34;`err`&#34; pulumi-lang-java=&#34;`err`&#34;&gt;`err`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`warning`&#34; pulumi-lang-dotnet=&#34;`Warning`&#34; pulumi-lang-go=&#34;`warning`&#34; pulumi-lang-python=&#34;`warning`&#34; pulumi-lang-yaml=&#34;`warning`&#34; pulumi-lang-java=&#34;`warning`&#34;&gt;`warning`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`notice`&#34; pulumi-lang-dotnet=&#34;`Notice`&#34; pulumi-lang-go=&#34;`notice`&#34; pulumi-lang-python=&#34;`notice`&#34; pulumi-lang-yaml=&#34;`notice`&#34; pulumi-lang-java=&#34;`notice`&#34;&gt;`notice`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`info`&#34; pulumi-lang-dotnet=&#34;`Info`&#34; pulumi-lang-go=&#34;`info`&#34; pulumi-lang-python=&#34;`info`&#34; pulumi-lang-yaml=&#34;`info`&#34; pulumi-lang-java=&#34;`info`&#34;&gt;`info`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`debug`&#34; pulumi-lang-dotnet=&#34;`Debug`&#34; pulumi-lang-go=&#34;`debug`&#34; pulumi-lang-python=&#34;`debug`&#34; pulumi-lang-yaml=&#34;`debug`&#34; pulumi-lang-java=&#34;`debug`&#34;&gt;`debug`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`nolog`&#34; pulumi-lang-dotnet=&#34;`Nolog`&#34; pulumi-lang-go=&#34;`nolog`&#34; pulumi-lang-python=&#34;`nolog`&#34; pulumi-lang-yaml=&#34;`nolog`&#34; pulumi-lang-java=&#34;`nolog`&#34;&gt;`nolog`&lt;/span&gt;).
      * 
      */
     public Optional<Output<String>> log() {
@@ -261,14 +261,14 @@ public final class FirewallRulesRuleArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Rule type (`in`, `out`, `forward`).
+     * Rule type (&lt;span pulumi-lang-nodejs=&#34;`in`&#34; pulumi-lang-dotnet=&#34;`In`&#34; pulumi-lang-go=&#34;`in`&#34; pulumi-lang-python=&#34;`in`&#34; pulumi-lang-yaml=&#34;`in`&#34; pulumi-lang-java=&#34;`in`&#34;&gt;`in`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`out`&#34; pulumi-lang-dotnet=&#34;`Out`&#34; pulumi-lang-go=&#34;`out`&#34; pulumi-lang-python=&#34;`out`&#34; pulumi-lang-yaml=&#34;`out`&#34; pulumi-lang-java=&#34;`out`&#34;&gt;`out`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`forward`&#34; pulumi-lang-dotnet=&#34;`Forward`&#34; pulumi-lang-go=&#34;`forward`&#34; pulumi-lang-python=&#34;`forward`&#34; pulumi-lang-yaml=&#34;`forward`&#34; pulumi-lang-java=&#34;`forward`&#34;&gt;`forward`&lt;/span&gt;).
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Rule type (`in`, `out`, `forward`).
+     * @return Rule type (&lt;span pulumi-lang-nodejs=&#34;`in`&#34; pulumi-lang-dotnet=&#34;`In`&#34; pulumi-lang-go=&#34;`in`&#34; pulumi-lang-python=&#34;`in`&#34; pulumi-lang-yaml=&#34;`in`&#34; pulumi-lang-java=&#34;`in`&#34;&gt;`in`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`out`&#34; pulumi-lang-dotnet=&#34;`Out`&#34; pulumi-lang-go=&#34;`out`&#34; pulumi-lang-python=&#34;`out`&#34; pulumi-lang-yaml=&#34;`out`&#34; pulumi-lang-java=&#34;`out`&#34;&gt;`out`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`forward`&#34; pulumi-lang-dotnet=&#34;`Forward`&#34; pulumi-lang-go=&#34;`forward`&#34; pulumi-lang-python=&#34;`forward`&#34; pulumi-lang-yaml=&#34;`forward`&#34; pulumi-lang-java=&#34;`forward`&#34;&gt;`forward`&lt;/span&gt;).
      * 
      */
     public Optional<Output<String>> type() {
@@ -415,7 +415,7 @@ public final class FirewallRulesRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enabled Enable this rule. Defaults to `true`.
+         * @param enabled Enable this rule. Defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -426,7 +426,7 @@ public final class FirewallRulesRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enabled Enable this rule. Defaults to `true`.
+         * @param enabled Enable this rule. Defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -461,8 +461,8 @@ public final class FirewallRulesRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param log Log level for this rule (`emerg`, `alert`, `crit`,
-         * `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+         * @param log Log level for this rule (&lt;span pulumi-lang-nodejs=&#34;`emerg`&#34; pulumi-lang-dotnet=&#34;`Emerg`&#34; pulumi-lang-go=&#34;`emerg`&#34; pulumi-lang-python=&#34;`emerg`&#34; pulumi-lang-yaml=&#34;`emerg`&#34; pulumi-lang-java=&#34;`emerg`&#34;&gt;`emerg`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`alert`&#34; pulumi-lang-dotnet=&#34;`Alert`&#34; pulumi-lang-go=&#34;`alert`&#34; pulumi-lang-python=&#34;`alert`&#34; pulumi-lang-yaml=&#34;`alert`&#34; pulumi-lang-java=&#34;`alert`&#34;&gt;`alert`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`crit`&#34; pulumi-lang-dotnet=&#34;`Crit`&#34; pulumi-lang-go=&#34;`crit`&#34; pulumi-lang-python=&#34;`crit`&#34; pulumi-lang-yaml=&#34;`crit`&#34; pulumi-lang-java=&#34;`crit`&#34;&gt;`crit`&lt;/span&gt;,
+         * &lt;span pulumi-lang-nodejs=&#34;`err`&#34; pulumi-lang-dotnet=&#34;`Err`&#34; pulumi-lang-go=&#34;`err`&#34; pulumi-lang-python=&#34;`err`&#34; pulumi-lang-yaml=&#34;`err`&#34; pulumi-lang-java=&#34;`err`&#34;&gt;`err`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`warning`&#34; pulumi-lang-dotnet=&#34;`Warning`&#34; pulumi-lang-go=&#34;`warning`&#34; pulumi-lang-python=&#34;`warning`&#34; pulumi-lang-yaml=&#34;`warning`&#34; pulumi-lang-java=&#34;`warning`&#34;&gt;`warning`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`notice`&#34; pulumi-lang-dotnet=&#34;`Notice`&#34; pulumi-lang-go=&#34;`notice`&#34; pulumi-lang-python=&#34;`notice`&#34; pulumi-lang-yaml=&#34;`notice`&#34; pulumi-lang-java=&#34;`notice`&#34;&gt;`notice`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`info`&#34; pulumi-lang-dotnet=&#34;`Info`&#34; pulumi-lang-go=&#34;`info`&#34; pulumi-lang-python=&#34;`info`&#34; pulumi-lang-yaml=&#34;`info`&#34; pulumi-lang-java=&#34;`info`&#34;&gt;`info`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`debug`&#34; pulumi-lang-dotnet=&#34;`Debug`&#34; pulumi-lang-go=&#34;`debug`&#34; pulumi-lang-python=&#34;`debug`&#34; pulumi-lang-yaml=&#34;`debug`&#34; pulumi-lang-java=&#34;`debug`&#34;&gt;`debug`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`nolog`&#34; pulumi-lang-dotnet=&#34;`Nolog`&#34; pulumi-lang-go=&#34;`nolog`&#34; pulumi-lang-python=&#34;`nolog`&#34; pulumi-lang-yaml=&#34;`nolog`&#34; pulumi-lang-java=&#34;`nolog`&#34;&gt;`nolog`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -473,8 +473,8 @@ public final class FirewallRulesRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param log Log level for this rule (`emerg`, `alert`, `crit`,
-         * `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
+         * @param log Log level for this rule (&lt;span pulumi-lang-nodejs=&#34;`emerg`&#34; pulumi-lang-dotnet=&#34;`Emerg`&#34; pulumi-lang-go=&#34;`emerg`&#34; pulumi-lang-python=&#34;`emerg`&#34; pulumi-lang-yaml=&#34;`emerg`&#34; pulumi-lang-java=&#34;`emerg`&#34;&gt;`emerg`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`alert`&#34; pulumi-lang-dotnet=&#34;`Alert`&#34; pulumi-lang-go=&#34;`alert`&#34; pulumi-lang-python=&#34;`alert`&#34; pulumi-lang-yaml=&#34;`alert`&#34; pulumi-lang-java=&#34;`alert`&#34;&gt;`alert`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`crit`&#34; pulumi-lang-dotnet=&#34;`Crit`&#34; pulumi-lang-go=&#34;`crit`&#34; pulumi-lang-python=&#34;`crit`&#34; pulumi-lang-yaml=&#34;`crit`&#34; pulumi-lang-java=&#34;`crit`&#34;&gt;`crit`&lt;/span&gt;,
+         * &lt;span pulumi-lang-nodejs=&#34;`err`&#34; pulumi-lang-dotnet=&#34;`Err`&#34; pulumi-lang-go=&#34;`err`&#34; pulumi-lang-python=&#34;`err`&#34; pulumi-lang-yaml=&#34;`err`&#34; pulumi-lang-java=&#34;`err`&#34;&gt;`err`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`warning`&#34; pulumi-lang-dotnet=&#34;`Warning`&#34; pulumi-lang-go=&#34;`warning`&#34; pulumi-lang-python=&#34;`warning`&#34; pulumi-lang-yaml=&#34;`warning`&#34; pulumi-lang-java=&#34;`warning`&#34;&gt;`warning`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`notice`&#34; pulumi-lang-dotnet=&#34;`Notice`&#34; pulumi-lang-go=&#34;`notice`&#34; pulumi-lang-python=&#34;`notice`&#34; pulumi-lang-yaml=&#34;`notice`&#34; pulumi-lang-java=&#34;`notice`&#34;&gt;`notice`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`info`&#34; pulumi-lang-dotnet=&#34;`Info`&#34; pulumi-lang-go=&#34;`info`&#34; pulumi-lang-python=&#34;`info`&#34; pulumi-lang-yaml=&#34;`info`&#34; pulumi-lang-java=&#34;`info`&#34;&gt;`info`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`debug`&#34; pulumi-lang-dotnet=&#34;`Debug`&#34; pulumi-lang-go=&#34;`debug`&#34; pulumi-lang-python=&#34;`debug`&#34; pulumi-lang-yaml=&#34;`debug`&#34; pulumi-lang-java=&#34;`debug`&#34;&gt;`debug`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`nolog`&#34; pulumi-lang-dotnet=&#34;`Nolog`&#34; pulumi-lang-go=&#34;`nolog`&#34; pulumi-lang-python=&#34;`nolog`&#34; pulumi-lang-yaml=&#34;`nolog`&#34; pulumi-lang-java=&#34;`nolog`&#34;&gt;`nolog`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -634,7 +634,7 @@ public final class FirewallRulesRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type Rule type (`in`, `out`, `forward`).
+         * @param type Rule type (&lt;span pulumi-lang-nodejs=&#34;`in`&#34; pulumi-lang-dotnet=&#34;`In`&#34; pulumi-lang-go=&#34;`in`&#34; pulumi-lang-python=&#34;`in`&#34; pulumi-lang-yaml=&#34;`in`&#34; pulumi-lang-java=&#34;`in`&#34;&gt;`in`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`out`&#34; pulumi-lang-dotnet=&#34;`Out`&#34; pulumi-lang-go=&#34;`out`&#34; pulumi-lang-python=&#34;`out`&#34; pulumi-lang-yaml=&#34;`out`&#34; pulumi-lang-java=&#34;`out`&#34;&gt;`out`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`forward`&#34; pulumi-lang-dotnet=&#34;`Forward`&#34; pulumi-lang-go=&#34;`forward`&#34; pulumi-lang-python=&#34;`forward`&#34; pulumi-lang-yaml=&#34;`forward`&#34; pulumi-lang-java=&#34;`forward`&#34;&gt;`forward`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -645,7 +645,7 @@ public final class FirewallRulesRuleArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type Rule type (`in`, `out`, `forward`).
+         * @param type Rule type (&lt;span pulumi-lang-nodejs=&#34;`in`&#34; pulumi-lang-dotnet=&#34;`In`&#34; pulumi-lang-go=&#34;`in`&#34; pulumi-lang-python=&#34;`in`&#34; pulumi-lang-yaml=&#34;`in`&#34; pulumi-lang-java=&#34;`in`&#34;&gt;`in`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`out`&#34; pulumi-lang-dotnet=&#34;`Out`&#34; pulumi-lang-go=&#34;`out`&#34; pulumi-lang-python=&#34;`out`&#34; pulumi-lang-yaml=&#34;`out`&#34; pulumi-lang-java=&#34;`out`&#34;&gt;`out`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`forward`&#34; pulumi-lang-dotnet=&#34;`Forward`&#34; pulumi-lang-go=&#34;`forward`&#34; pulumi-lang-python=&#34;`forward`&#34; pulumi-lang-yaml=&#34;`forward`&#34; pulumi-lang-java=&#34;`forward`&#34;&gt;`forward`&lt;/span&gt;).
          * 
          * @return builder
          * 

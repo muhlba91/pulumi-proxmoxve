@@ -32,9 +32,9 @@ import (
 //				return err
 //			}
 //			ctx.Export("dataProxmoxVirtualEnvironmentVersion", pulumi.StringMap{
-//				"release":       example.Release,
-//				"repository_id": example.RepositoryId,
-//				"version":       example.Version,
+//				"release":      example.Release,
+//				"repositoryId": example.RepositoryId,
+//				"version":      example.Version,
 //			})
 //			return nil
 //		})

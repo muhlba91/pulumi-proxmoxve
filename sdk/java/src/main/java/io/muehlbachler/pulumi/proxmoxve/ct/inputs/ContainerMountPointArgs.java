@@ -35,7 +35,7 @@ public final class ContainerMountPointArgs extends com.pulumi.resources.Resource
 
     /**
      * Whether to include the mount point in backups (only
-     * used for volume mount points, defaults to `false`).
+     * used for volume mount points, defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Import(name="backup")
@@ -43,7 +43,7 @@ public final class ContainerMountPointArgs extends com.pulumi.resources.Resource
 
     /**
      * @return Whether to include the mount point in backups (only
-     * used for volume mount points, defaults to `false`).
+     * used for volume mount points, defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> backup() {
@@ -236,7 +236,7 @@ public final class ContainerMountPointArgs extends com.pulumi.resources.Resource
 
         /**
          * @param backup Whether to include the mount point in backups (only
-         * used for volume mount points, defaults to `false`).
+         * used for volume mount points, defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class ContainerMountPointArgs extends com.pulumi.resources.Resource
 
         /**
          * @param backup Whether to include the mount point in backups (only
-         * used for volume mount points, defaults to `false`).
+         * used for volume mount points, defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 

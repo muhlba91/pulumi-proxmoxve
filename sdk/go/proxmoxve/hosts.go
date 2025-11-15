@@ -14,6 +14,45 @@ import (
 
 // Manages the host entries on a specific node.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := proxmoxve.NewHosts(ctx, "first_node_host_entries", &proxmoxve.HostsArgs{
+//				NodeName: pulumi.String("first-node"),
+//				Entries: []map[string]interface{}{
+//					map[string]interface{}{
+//						"address": "127.0.0.1",
+//						"hostnames": []string{
+//							"localhost",
+//							"localhost.localdomain",
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Important Notes
+//
+// Be careful not to use this resource multiple times for the same node.
+//
 // ## Import
 //
 // Instances can be imported using the `node_name`, e.g.,

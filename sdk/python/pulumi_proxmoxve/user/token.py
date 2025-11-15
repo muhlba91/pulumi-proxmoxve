@@ -234,7 +234,7 @@ class Token(pulumi.CustomResource):
             enabled=True,
             expiration_date="2034-01-01T22:00:00Z",
             user_id="user@pve")
-        user_token = proxmoxve.user.Token("userToken",
+        user_token = proxmoxve.user.Token("user_token",
             comment="Managed by Pulumi",
             expiration_date="2033-01-01T22:00:00Z",
             token_name="tk1",
@@ -281,7 +281,7 @@ class Token(pulumi.CustomResource):
             enabled=True,
             expiration_date="2034-01-01T22:00:00Z",
             user_id="user@pve")
-        user_token = proxmoxve.user.Token("userToken",
+        user_token = proxmoxve.user.Token("user_token",
             comment="Managed by Pulumi",
             expiration_date="2033-01-01T22:00:00Z",
             token_name="tk1",

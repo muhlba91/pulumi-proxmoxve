@@ -80,14 +80,14 @@ public final class VirtualMachineNumaArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The NUMA policy (defaults to `preferred`).
+     * The NUMA policy (defaults to &lt;span pulumi-lang-nodejs=&#34;`preferred`&#34; pulumi-lang-dotnet=&#34;`Preferred`&#34; pulumi-lang-go=&#34;`preferred`&#34; pulumi-lang-python=&#34;`preferred`&#34; pulumi-lang-yaml=&#34;`preferred`&#34; pulumi-lang-java=&#34;`preferred`&#34;&gt;`preferred`&lt;/span&gt;).
      * 
      */
     @Import(name="policy")
     private @Nullable Output<String> policy;
 
     /**
-     * @return The NUMA policy (defaults to `preferred`).
+     * @return The NUMA policy (defaults to &lt;span pulumi-lang-nodejs=&#34;`preferred`&#34; pulumi-lang-dotnet=&#34;`Preferred`&#34; pulumi-lang-go=&#34;`preferred`&#34; pulumi-lang-python=&#34;`preferred`&#34; pulumi-lang-yaml=&#34;`preferred`&#34; pulumi-lang-java=&#34;`preferred`&#34;&gt;`preferred`&lt;/span&gt;).
      * 
      */
     public Optional<Output<String>> policy() {
@@ -209,7 +209,7 @@ public final class VirtualMachineNumaArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param policy The NUMA policy (defaults to `preferred`).
+         * @param policy The NUMA policy (defaults to &lt;span pulumi-lang-nodejs=&#34;`preferred`&#34; pulumi-lang-dotnet=&#34;`Preferred`&#34; pulumi-lang-go=&#34;`preferred`&#34; pulumi-lang-python=&#34;`preferred`&#34; pulumi-lang-yaml=&#34;`preferred`&#34; pulumi-lang-java=&#34;`preferred`&#34;&gt;`preferred`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class VirtualMachineNumaArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param policy The NUMA policy (defaults to `preferred`).
+         * @param policy The NUMA policy (defaults to &lt;span pulumi-lang-nodejs=&#34;`preferred`&#34; pulumi-lang-dotnet=&#34;`Preferred`&#34; pulumi-lang-go=&#34;`preferred`&#34; pulumi-lang-python=&#34;`preferred`&#34; pulumi-lang-yaml=&#34;`preferred`&#34; pulumi-lang-java=&#34;`preferred`&#34;&gt;`preferred`&lt;/span&gt;).
          * 
          * @return builder
          * 

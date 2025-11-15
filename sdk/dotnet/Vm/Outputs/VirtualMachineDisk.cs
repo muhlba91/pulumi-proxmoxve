@@ -14,15 +14,15 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     public sealed class VirtualMachineDisk
     {
         /// <summary>
-        /// The disk AIO mode (defaults to `io_uring`).
+        /// The disk AIO mode (defaults to `IoUring`).
         /// </summary>
         public readonly string? Aio;
         /// <summary>
-        /// Whether the drive should be included when making backups (defaults to `true`).
+        /// Whether the drive should be included when making backups (defaults to `True`).
         /// </summary>
         public readonly bool? Backup;
         /// <summary>
-        /// The cache type (defaults to `none`).
+        /// The cache type (defaults to `None`).
         /// </summary>
         public readonly string? Cache;
         /// <summary>
@@ -32,8 +32,8 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         public readonly string? DatastoreId;
         /// <summary>
         /// Whether to pass discard/trim requests to the
-        /// underlying storage. Supported values are `on`/`ignore` (defaults
-        /// to `ignore`).
+        /// underlying storage. Supported values are `On`/`Ignore` (defaults
+        /// to `Ignore`).
         /// </summary>
         public readonly string? Discard;
         /// <summary>
@@ -43,36 +43,36 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// <summary>
         /// The file ID for a disk image when importing a disk into VM. The ID format is
         /// `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`. Can be also taken from
-        /// `proxmoxve.Download.File` resource. *Deprecated*, use `import_from` instead.
+        /// `proxmoxve.Download.File` resource. *Deprecated*, use `ImportFrom` instead.
         /// </summary>
         public readonly string? FileId;
         /// <summary>
-        /// The file ID for a disk image to import into VM. The image must be of `import` content type.
+        /// The file ID for a disk image to import into VM. The image must be of `Import` content type.
         /// The ID format is `&lt;datastore_id&gt;:import/&lt;file_name&gt;`, for example `local:import/centos8.qcow2`. Can be also taken from
         /// `proxmoxve.Download.File` resource.
         /// </summary>
         public readonly string? ImportFrom;
         /// <summary>
-        /// The disk interface for Proxmox, currently `scsi`,
-        /// `sata` and `virtio` interfaces are supported. Append the disk index at
-        /// the end, for example, `virtio0` for the first virtio disk, `virtio1` for
+        /// The disk interface for Proxmox, currently `Scsi`,
+        /// `Sata` and `Virtio` interfaces are supported. Append the disk index at
+        /// the end, for example, `Virtio0` for the first virtio disk, `Virtio1` for
         /// the second, etc.
         /// </summary>
         public readonly string Interface;
         /// <summary>
         /// Whether to use iothreads for this disk (defaults
-        /// to `false`).
+        /// to `False`).
         /// </summary>
         public readonly bool? Iothread;
         /// <summary>
         /// The in-datastore path to the disk image.
         /// ***Experimental.***Use to attach another VM's disks,
-        /// or (as root only) host's filesystem paths (`datastore_id` empty string).
+        /// or (as root only) host's filesystem paths (`DatastoreId` empty string).
         /// See "*Example: Attached disks*".
         /// </summary>
         public readonly string? PathInDatastore;
         /// <summary>
-        /// Whether the drive should be considered for replication jobs (defaults to `true`).
+        /// Whether the drive should be considered for replication jobs (defaults to `True`).
         /// </summary>
         public readonly bool? Replicate;
         /// <summary>
@@ -89,7 +89,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         public readonly Outputs.VirtualMachineDiskSpeed? Speed;
         /// <summary>
         /// Whether to use an SSD emulation option for this disk (
-        /// defaults to `false`). Note that SSD emulation is not supported on VirtIO
+        /// defaults to `False`). Note that SSD emulation is not supported on VirtIO
         /// Block drives.
         /// </summary>
         public readonly bool? Ssd;

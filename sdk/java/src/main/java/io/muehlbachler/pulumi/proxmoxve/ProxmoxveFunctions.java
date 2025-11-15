@@ -275,6 +275,9 @@ public final class ProxmoxveFunctions {
      *             .build());
      * 
      *         final var ubuntuTemplates = ProxmoxveFunctions.getContainers(GetContainersArgs.builder()
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
      *             .filters(            
      *                 GetContainersFilterArgs.builder()
      *                     .name("template")
@@ -296,9 +299,6 @@ public final class ProxmoxveFunctions {
      *                         "node_us_[1-3]",
      *                         "node_eu_[1-3]")
      *                     .build())
-     *             .tags(            
-     *                 "template",
-     *                 "latest")
      *             .build());
      * 
      *     }
@@ -344,6 +344,9 @@ public final class ProxmoxveFunctions {
      *             .build());
      * 
      *         final var ubuntuTemplates = ProxmoxveFunctions.getContainers(GetContainersArgs.builder()
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
      *             .filters(            
      *                 GetContainersFilterArgs.builder()
      *                     .name("template")
@@ -365,9 +368,6 @@ public final class ProxmoxveFunctions {
      *                         "node_us_[1-3]",
      *                         "node_eu_[1-3]")
      *                     .build())
-     *             .tags(            
-     *                 "template",
-     *                 "latest")
      *             .build());
      * 
      *     }
@@ -413,6 +413,9 @@ public final class ProxmoxveFunctions {
      *             .build());
      * 
      *         final var ubuntuTemplates = ProxmoxveFunctions.getContainers(GetContainersArgs.builder()
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
      *             .filters(            
      *                 GetContainersFilterArgs.builder()
      *                     .name("template")
@@ -434,9 +437,6 @@ public final class ProxmoxveFunctions {
      *                         "node_us_[1-3]",
      *                         "node_eu_[1-3]")
      *                     .build())
-     *             .tags(            
-     *                 "template",
-     *                 "latest")
      *             .build());
      * 
      *     }
@@ -482,6 +482,9 @@ public final class ProxmoxveFunctions {
      *             .build());
      * 
      *         final var ubuntuTemplates = ProxmoxveFunctions.getContainers(GetContainersArgs.builder()
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
      *             .filters(            
      *                 GetContainersFilterArgs.builder()
      *                     .name("template")
@@ -503,9 +506,6 @@ public final class ProxmoxveFunctions {
      *                         "node_us_[1-3]",
      *                         "node_eu_[1-3]")
      *                     .build())
-     *             .tags(            
-     *                 "template",
-     *                 "latest")
      *             .build());
      * 
      *     }
@@ -551,6 +551,9 @@ public final class ProxmoxveFunctions {
      *             .build());
      * 
      *         final var ubuntuTemplates = ProxmoxveFunctions.getContainers(GetContainersArgs.builder()
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
      *             .filters(            
      *                 GetContainersFilterArgs.builder()
      *                     .name("template")
@@ -572,9 +575,6 @@ public final class ProxmoxveFunctions {
      *                         "node_us_[1-3]",
      *                         "node_eu_[1-3]")
      *                     .build())
-     *             .tags(            
-     *                 "template",
-     *                 "latest")
      *             .build());
      * 
      *     }
@@ -620,6 +620,9 @@ public final class ProxmoxveFunctions {
      *             .build());
      * 
      *         final var ubuntuTemplates = ProxmoxveFunctions.getContainers(GetContainersArgs.builder()
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
      *             .filters(            
      *                 GetContainersFilterArgs.builder()
      *                     .name("template")
@@ -641,9 +644,6 @@ public final class ProxmoxveFunctions {
      *                         "node_us_[1-3]",
      *                         "node_eu_[1-3]")
      *                     .build())
-     *             .tags(            
-     *                 "template",
-     *                 "latest")
      *             .build());
      * 
      *     }
@@ -689,6 +689,9 @@ public final class ProxmoxveFunctions {
      *             .build());
      * 
      *         final var ubuntuTemplates = ProxmoxveFunctions.getContainers(GetContainersArgs.builder()
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
      *             .filters(            
      *                 GetContainersFilterArgs.builder()
      *                     .name("template")
@@ -710,9 +713,6 @@ public final class ProxmoxveFunctions {
      *                         "node_us_[1-3]",
      *                         "node_eu_[1-3]")
      *                     .build())
-     *             .tags(            
-     *                 "template",
-     *                 "latest")
      *             .build());
      * 
      *     }

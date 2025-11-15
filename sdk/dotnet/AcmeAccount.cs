@@ -26,6 +26,7 @@ namespace Pulumi.ProxmoxVE
     /// {
     ///     var example = new ProxmoxVE.AcmeAccount("example", new()
     ///     {
+    ///         Name = "example",
     ///         Contact = "example@email.com",
     ///         Directory = "https://acme-staging-v02.api.letsencrypt.org/directory",
     ///         Tos = "https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf",

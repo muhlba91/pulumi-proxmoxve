@@ -34,6 +34,11 @@ namespace Pulumi.ProxmoxVE.VM
         /// 
         ///     var ubuntuTemplates = ProxmoxVE.VM.GetVirtualMachines.Invoke(new()
         ///     {
+        ///         Tags = new[]
+        ///         {
+        ///             "template",
+        ///             "latest",
+        ///         },
         ///         Filters = new[]
         ///         {
         ///             new ProxmoxVE.VM.Inputs.GetVirtualMachinesFilterInputArgs
@@ -71,11 +76,6 @@ namespace Pulumi.ProxmoxVE.VM
         ///                     "node_eu_[1-3]",
         ///                 },
         ///             },
-        ///         },
-        ///         Tags = new[]
-        ///         {
-        ///             "template",
-        ///             "latest",
         ///         },
         ///     });
         /// 
@@ -108,6 +108,11 @@ namespace Pulumi.ProxmoxVE.VM
         /// 
         ///     var ubuntuTemplates = ProxmoxVE.VM.GetVirtualMachines.Invoke(new()
         ///     {
+        ///         Tags = new[]
+        ///         {
+        ///             "template",
+        ///             "latest",
+        ///         },
         ///         Filters = new[]
         ///         {
         ///             new ProxmoxVE.VM.Inputs.GetVirtualMachinesFilterInputArgs
@@ -145,11 +150,6 @@ namespace Pulumi.ProxmoxVE.VM
         ///                     "node_eu_[1-3]",
         ///                 },
         ///             },
-        ///         },
-        ///         Tags = new[]
-        ///         {
-        ///             "template",
-        ///             "latest",
         ///         },
         ///     });
         /// 
@@ -182,6 +182,11 @@ namespace Pulumi.ProxmoxVE.VM
         /// 
         ///     var ubuntuTemplates = ProxmoxVE.VM.GetVirtualMachines.Invoke(new()
         ///     {
+        ///         Tags = new[]
+        ///         {
+        ///             "template",
+        ///             "latest",
+        ///         },
         ///         Filters = new[]
         ///         {
         ///             new ProxmoxVE.VM.Inputs.GetVirtualMachinesFilterInputArgs
@@ -219,11 +224,6 @@ namespace Pulumi.ProxmoxVE.VM
         ///                     "node_eu_[1-3]",
         ///                 },
         ///             },
-        ///         },
-        ///         Tags = new[]
-        ///         {
-        ///             "template",
-        ///             "latest",
         ///         },
         ///     });
         /// 

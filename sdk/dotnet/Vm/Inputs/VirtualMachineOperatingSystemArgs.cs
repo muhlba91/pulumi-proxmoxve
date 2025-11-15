@@ -13,7 +13,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
     public sealed class VirtualMachineOperatingSystemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The type (defaults to `other`).
+        /// The type (defaults to `Other`).
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

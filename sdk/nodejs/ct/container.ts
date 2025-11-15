@@ -9,6 +9,89 @@ import * as utilities from "../utilities";
 /**
  * Manages a container.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ * import * as random from "@pulumi/random";
+ * import * as std from "@pulumi/std";
+ * import * as tls from "@pulumi/tls";
+ *
+ * export = async () => {
+ *     const ubuntu2504LxcImg = new proxmoxve.download.File("ubuntu_2504_lxc_img", {
+ *         contentType: "vztmpl",
+ *         datastoreId: "local",
+ *         nodeName: "first-node",
+ *         url: "https://mirrors.servercentral.com/ubuntu-cloud-images/releases/25.04/release/ubuntu-25.04-server-cloudimg-amd64-root.tar.xz",
+ *     });
+ *     const ubuntuContainerPassword = new random.RandomPassword("ubuntu_container_password", {
+ *         length: 16,
+ *         overrideSpecial: "_%@",
+ *         special: true,
+ *     });
+ *     const ubuntuContainerKey = new tls.PrivateKey("ubuntu_container_key", {
+ *         algorithm: "RSA",
+ *         rsaBits: 2048,
+ *     });
+ *     const ubuntuContainer = new proxmoxve.ct.Container("ubuntu_container", {
+ *         description: "Managed by Pulumi",
+ *         nodeName: "first-node",
+ *         vmId: 1234,
+ *         unprivileged: true,
+ *         features: {
+ *             nesting: true,
+ *         },
+ *         initialization: {
+ *             hostname: "terraform-provider-proxmox-ubuntu-container",
+ *             ipConfigs: [{
+ *                 ipv4: {
+ *                     address: "dhcp",
+ *                 },
+ *             }],
+ *             userAccount: {
+ *                 keys: [std.trimspaceOutput({
+ *                     input: ubuntuContainerKey.publicKeyOpenssh,
+ *                 }).apply(invoke => invoke.result)],
+ *                 password: ubuntuContainerPassword.result,
+ *             },
+ *         },
+ *         networkInterfaces: [{
+ *             name: "veth0",
+ *         }],
+ *         disk: {
+ *             datastoreId: "local-lvm",
+ *             size: 4,
+ *         },
+ *         operatingSystem: {
+ *             templateFileId: ubuntu2504LxcImg.id,
+ *             type: "ubuntu",
+ *         },
+ *         mountPoints: [
+ *             {
+ *                 volume: "/mnt/bindmounts/shared",
+ *                 path: "/mnt/shared",
+ *             },
+ *             {
+ *                 volume: "local-lvm",
+ *                 size: "10G",
+ *                 path: "/mnt/volume",
+ *             },
+ *         ],
+ *         startup: {
+ *             order: 3,
+ *             upDelay: 60,
+ *             downDelay: 60,
+ *         },
+ *     });
+ *     return {
+ *         ubuntuContainerPassword: ubuntuContainerPassword.result,
+ *         ubuntuContainerPrivateKey: ubuntuContainerKey.privateKeyPem,
+ *         ubuntuContainerPublicKey: ubuntuContainerKey.publicKeyOpenssh,
+ *     };
+ * }
+ * ```
+ *
  * ## Import
  *
  * Instances can be imported using the `node_name` and the `vm_id`, e.g.,

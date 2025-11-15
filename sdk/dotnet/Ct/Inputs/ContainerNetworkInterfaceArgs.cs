@@ -14,21 +14,21 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
     {
         /// <summary>
         /// The name of the network bridge (defaults
-        /// to `vmbr0`).
+        /// to `Vmbr0`).
         /// </summary>
         [Input("bridge")]
         public Input<string>? Bridge { get; set; }
 
         /// <summary>
         /// Whether to enable the network device (defaults
-        /// to `true`).
+        /// to `True`).
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
         /// Whether this interface's firewall rules should be
-        /// used (defaults to `false`).
+        /// used (defaults to `False`).
         /// </summary>
         [Input("firewall")]
         public Input<bool>? Firewall { get; set; }

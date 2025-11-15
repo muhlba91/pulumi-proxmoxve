@@ -50,14 +50,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var vlan99 = new NetworkVlan("vlan99", NetworkVlanArgs.builder()
  *             .nodeName("pve")
+ *             .name("ens18.99")
  *             .build());
  * 
- *         //# or alternatively, use custom name:
- *         // name      = "vlan_lab"
- *         // interface = "eno0"
- *         // vlan      = 98
  *         var vmbr99 = new NetworkBridge("vmbr99", NetworkBridgeArgs.builder()
  *             .nodeName("pve")
+ *             .name("vmbr99")
  *             .address("99.99.99.99/16")
  *             .comment("vmbr99 comment")
  *             .ports("ens18.99")
@@ -113,14 +111,14 @@ public class NetworkBridge extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.address6);
     }
     /**
-     * Automatically start interface on boot (defaults to `true`).
+     * Automatically start interface on boot (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     @Export(name="autostart", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> autostart;
 
     /**
-     * @return Automatically start interface on boot (defaults to `true`).
+     * @return Automatically start interface on boot (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Output<Boolean> autostart() {
@@ -225,14 +223,14 @@ public class NetworkBridge extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ports);
     }
     /**
-     * Whether the interface bridge is VLAN aware (defaults to `false`).
+     * Whether the interface bridge is VLAN aware (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Export(name="vlanAware", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> vlanAware;
 
     /**
-     * @return Whether the interface bridge is VLAN aware (defaults to `false`).
+     * @return Whether the interface bridge is VLAN aware (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Output<Boolean> vlanAware() {

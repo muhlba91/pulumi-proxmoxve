@@ -48,7 +48,7 @@ public final class HostsState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The host entries (conversion of `addresses` and `hostnames` into
+     * The host entries (conversion of &lt;span pulumi-lang-nodejs=&#34;`addresses`&#34; pulumi-lang-dotnet=&#34;`Addresses`&#34; pulumi-lang-go=&#34;`addresses`&#34; pulumi-lang-python=&#34;`addresses`&#34; pulumi-lang-yaml=&#34;`addresses`&#34; pulumi-lang-java=&#34;`addresses`&#34;&gt;`addresses`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`hostnames`&#34; pulumi-lang-dotnet=&#34;`Hostnames`&#34; pulumi-lang-go=&#34;`hostnames`&#34; pulumi-lang-python=&#34;`hostnames`&#34; pulumi-lang-yaml=&#34;`hostnames`&#34; pulumi-lang-java=&#34;`hostnames`&#34;&gt;`hostnames`&lt;/span&gt; into
      * objects).
      * 
      */
@@ -56,7 +56,7 @@ public final class HostsState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<HostsEntryArgs>> entries;
 
     /**
-     * @return The host entries (conversion of `addresses` and `hostnames` into
+     * @return The host entries (conversion of &lt;span pulumi-lang-nodejs=&#34;`addresses`&#34; pulumi-lang-dotnet=&#34;`Addresses`&#34; pulumi-lang-go=&#34;`addresses`&#34; pulumi-lang-python=&#34;`addresses`&#34; pulumi-lang-yaml=&#34;`addresses`&#34; pulumi-lang-java=&#34;`addresses`&#34;&gt;`addresses`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`hostnames`&#34; pulumi-lang-dotnet=&#34;`Hostnames`&#34; pulumi-lang-go=&#34;`hostnames`&#34; pulumi-lang-python=&#34;`hostnames`&#34; pulumi-lang-yaml=&#34;`hostnames`&#34; pulumi-lang-java=&#34;`hostnames`&#34;&gt;`hostnames`&lt;/span&gt; into
      * objects).
      * 
      */
@@ -191,7 +191,7 @@ public final class HostsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entries The host entries (conversion of `addresses` and `hostnames` into
+         * @param entries The host entries (conversion of &lt;span pulumi-lang-nodejs=&#34;`addresses`&#34; pulumi-lang-dotnet=&#34;`Addresses`&#34; pulumi-lang-go=&#34;`addresses`&#34; pulumi-lang-python=&#34;`addresses`&#34; pulumi-lang-yaml=&#34;`addresses`&#34; pulumi-lang-java=&#34;`addresses`&#34;&gt;`addresses`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`hostnames`&#34; pulumi-lang-dotnet=&#34;`Hostnames`&#34; pulumi-lang-go=&#34;`hostnames`&#34; pulumi-lang-python=&#34;`hostnames`&#34; pulumi-lang-yaml=&#34;`hostnames`&#34; pulumi-lang-java=&#34;`hostnames`&#34;&gt;`hostnames`&lt;/span&gt; into
          * objects).
          * 
          * @return builder
@@ -203,7 +203,7 @@ public final class HostsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entries The host entries (conversion of `addresses` and `hostnames` into
+         * @param entries The host entries (conversion of &lt;span pulumi-lang-nodejs=&#34;`addresses`&#34; pulumi-lang-dotnet=&#34;`Addresses`&#34; pulumi-lang-go=&#34;`addresses`&#34; pulumi-lang-python=&#34;`addresses`&#34; pulumi-lang-yaml=&#34;`addresses`&#34; pulumi-lang-java=&#34;`addresses`&#34;&gt;`addresses`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`hostnames`&#34; pulumi-lang-dotnet=&#34;`Hostnames`&#34; pulumi-lang-go=&#34;`hostnames`&#34; pulumi-lang-python=&#34;`hostnames`&#34; pulumi-lang-yaml=&#34;`hostnames`&#34; pulumi-lang-java=&#34;`hostnames`&#34;&gt;`hostnames`&lt;/span&gt; into
          * objects).
          * 
          * @return builder
@@ -214,7 +214,7 @@ public final class HostsState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param entries The host entries (conversion of `addresses` and `hostnames` into
+         * @param entries The host entries (conversion of &lt;span pulumi-lang-nodejs=&#34;`addresses`&#34; pulumi-lang-dotnet=&#34;`Addresses`&#34; pulumi-lang-go=&#34;`addresses`&#34; pulumi-lang-python=&#34;`addresses`&#34; pulumi-lang-yaml=&#34;`addresses`&#34; pulumi-lang-java=&#34;`addresses`&#34;&gt;`addresses`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`hostnames`&#34; pulumi-lang-dotnet=&#34;`Hostnames`&#34; pulumi-lang-go=&#34;`hostnames`&#34; pulumi-lang-python=&#34;`hostnames`&#34; pulumi-lang-yaml=&#34;`hostnames`&#34; pulumi-lang-java=&#34;`hostnames`&#34;&gt;`hostnames`&lt;/span&gt; into
          * objects).
          * 
          * @return builder

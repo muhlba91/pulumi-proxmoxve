@@ -34,6 +34,11 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     var ubuntuTemplates = ProxmoxVE.GetContainers.Invoke(new()
         ///     {
+        ///         Tags = new[]
+        ///         {
+        ///             "template",
+        ///             "latest",
+        ///         },
         ///         Filters = new[]
         ///         {
         ///             new ProxmoxVE.Inputs.GetContainersFilterInputArgs
@@ -71,11 +76,6 @@ namespace Pulumi.ProxmoxVE
         ///                     "node_eu_[1-3]",
         ///                 },
         ///             },
-        ///         },
-        ///         Tags = new[]
-        ///         {
-        ///             "template",
-        ///             "latest",
         ///         },
         ///     });
         /// 
@@ -108,6 +108,11 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     var ubuntuTemplates = ProxmoxVE.GetContainers.Invoke(new()
         ///     {
+        ///         Tags = new[]
+        ///         {
+        ///             "template",
+        ///             "latest",
+        ///         },
         ///         Filters = new[]
         ///         {
         ///             new ProxmoxVE.Inputs.GetContainersFilterInputArgs
@@ -145,11 +150,6 @@ namespace Pulumi.ProxmoxVE
         ///                     "node_eu_[1-3]",
         ///                 },
         ///             },
-        ///         },
-        ///         Tags = new[]
-        ///         {
-        ///             "template",
-        ///             "latest",
         ///         },
         ///     });
         /// 
@@ -182,6 +182,11 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     var ubuntuTemplates = ProxmoxVE.GetContainers.Invoke(new()
         ///     {
+        ///         Tags = new[]
+        ///         {
+        ///             "template",
+        ///             "latest",
+        ///         },
         ///         Filters = new[]
         ///         {
         ///             new ProxmoxVE.Inputs.GetContainersFilterInputArgs
@@ -219,11 +224,6 @@ namespace Pulumi.ProxmoxVE
         ///                     "node_eu_[1-3]",
         ///                 },
         ///             },
-        ///         },
-        ///         Tags = new[]
-        ///         {
-        ///             "template",
-        ///             "latest",
         ///         },
         ///     });
         /// 

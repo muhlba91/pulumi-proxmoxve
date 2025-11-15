@@ -724,8 +724,8 @@ if not MYPY:
         """
         server: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The DNS server. The `server` attribute is
-        deprecated and will be removed in a future release. Please use
+        The DNS server.
+        The `server` attribute is deprecated and will be removed in a future release. Please use
         the `servers` attribute instead.
         """
         servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
@@ -743,8 +743,8 @@ class ContainerInitializationDnsArgs:
                  servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] domain: The DNS search domain.
-        :param pulumi.Input[_builtins.str] server: The DNS server. The `server` attribute is
-               deprecated and will be removed in a future release. Please use
+        :param pulumi.Input[_builtins.str] server: The DNS server.
+               The `server` attribute is deprecated and will be removed in a future release. Please use
                the `servers` attribute instead.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] servers: The list of DNS servers.
         """
@@ -775,8 +775,8 @@ class ContainerInitializationDnsArgs:
     @_utilities.deprecated("""The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""")
     def server(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The DNS server. The `server` attribute is
-        deprecated and will be removed in a future release. Please use
+        The DNS server.
+        The `server` attribute is deprecated and will be removed in a future release. Please use
         the `servers` attribute instead.
         """
         return pulumi.get(self, "server")
@@ -806,7 +806,7 @@ if not MYPY:
         """
         ipv6: NotRequired[pulumi.Input['ContainerInitializationIpConfigIpv6ArgsDict']]
         """
-        The IPv4 configuration.
+        The IPv6 configuration.
         """
 elif False:
     ContainerInitializationIpConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -818,7 +818,7 @@ class ContainerInitializationIpConfigArgs:
                  ipv6: Optional[pulumi.Input['ContainerInitializationIpConfigIpv6Args']] = None):
         """
         :param pulumi.Input['ContainerInitializationIpConfigIpv4Args'] ipv4: The IPv4 configuration.
-        :param pulumi.Input['ContainerInitializationIpConfigIpv6Args'] ipv6: The IPv4 configuration.
+        :param pulumi.Input['ContainerInitializationIpConfigIpv6Args'] ipv6: The IPv6 configuration.
         """
         if ipv4 is not None:
             pulumi.set(__self__, "ipv4", ipv4)
@@ -841,7 +841,7 @@ class ContainerInitializationIpConfigArgs:
     @pulumi.getter
     def ipv6(self) -> Optional[pulumi.Input['ContainerInitializationIpConfigIpv6Args']]:
         """
-        The IPv4 configuration.
+        The IPv6 configuration.
         """
         return pulumi.get(self, "ipv6")
 
@@ -854,7 +854,9 @@ if not MYPY:
     class ContainerInitializationIpConfigIpv4ArgsDict(TypedDict):
         address: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The IPv4 address (use `dhcp` for auto-discovery).
+        The IPv4 address in CIDR notation
+        (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
+        autodiscovery.
         """
         gateway: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -870,7 +872,9 @@ class ContainerInitializationIpConfigIpv4Args:
                  address: Optional[pulumi.Input[_builtins.str]] = None,
                  gateway: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] address: The IPv4 address (use `dhcp` for auto-discovery).
+        :param pulumi.Input[_builtins.str] address: The IPv4 address in CIDR notation
+               (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
+               autodiscovery.
         :param pulumi.Input[_builtins.str] gateway: The IPv4 gateway (must be omitted
                when `dhcp` is used as the address).
         """
@@ -883,7 +887,9 @@ class ContainerInitializationIpConfigIpv4Args:
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The IPv4 address (use `dhcp` for auto-discovery).
+        The IPv4 address in CIDR notation
+        (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
+        autodiscovery.
         """
         return pulumi.get(self, "address")
 
@@ -909,7 +915,9 @@ if not MYPY:
     class ContainerInitializationIpConfigIpv6ArgsDict(TypedDict):
         address: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The IPv6 address (use `dhcp` for auto-discovery).
+        The IPv6 address in CIDR notation
+        (e.g. fd1c::7334/64). Alternatively, set this
+        to `dhcp` for autodiscovery.
         """
         gateway: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -925,7 +933,9 @@ class ContainerInitializationIpConfigIpv6Args:
                  address: Optional[pulumi.Input[_builtins.str]] = None,
                  gateway: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] address: The IPv6 address (use `dhcp` for auto-discovery).
+        :param pulumi.Input[_builtins.str] address: The IPv6 address in CIDR notation
+               (e.g. fd1c::7334/64). Alternatively, set this
+               to `dhcp` for autodiscovery.
         :param pulumi.Input[_builtins.str] gateway: The IPv6 gateway (must be omitted
                when `dhcp` is used as the address).
         """
@@ -938,7 +948,9 @@ class ContainerInitializationIpConfigIpv6Args:
     @pulumi.getter
     def address(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The IPv6 address (use `dhcp` for auto-discovery).
+        The IPv6 address in CIDR notation
+        (e.g. fd1c::7334/64). Alternatively, set this
+        to `dhcp` for autodiscovery.
         """
         return pulumi.get(self, "address")
 

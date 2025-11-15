@@ -22,7 +22,7 @@ namespace Pulumi.ProxmoxVE.Acme.Outputs
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
-        /// The status of the account. Can be one of `valid`, `deactivated` or `revoked`.
+        /// The status of the account. Can be one of `Valid`, `Deactivated` or `Revoked`.
         /// </summary>
         public readonly string Status;
 

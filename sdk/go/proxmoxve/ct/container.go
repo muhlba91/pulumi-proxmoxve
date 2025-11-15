@@ -14,6 +14,118 @@ import (
 
 // Manages a container.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/ct"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/download"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi-tls/sdk/v5/go/tls"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			ubuntu2504LxcImg, err := download.NewFile(ctx, "ubuntu_2504_lxc_img", &download.FileArgs{
+//				ContentType: pulumi.String("vztmpl"),
+//				DatastoreId: pulumi.String("local"),
+//				NodeName:    pulumi.String("first-node"),
+//				Url:         pulumi.String("https://mirrors.servercentral.com/ubuntu-cloud-images/releases/25.04/release/ubuntu-25.04-server-cloudimg-amd64-root.tar.xz"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ubuntuContainerPassword, err := random.NewRandomPassword(ctx, "ubuntu_container_password", &random.RandomPasswordArgs{
+//				Length:          pulumi.Int(16),
+//				OverrideSpecial: pulumi.String("_%@"),
+//				Special:         pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ubuntuContainerKey, err := tls.NewPrivateKey(ctx, "ubuntu_container_key", &tls.PrivateKeyArgs{
+//				Algorithm: pulumi.String("RSA"),
+//				RsaBits:   pulumi.Int(2048),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ct.NewContainer(ctx, "ubuntu_container", &ct.ContainerArgs{
+//				Description:  pulumi.String("Managed by Pulumi"),
+//				NodeName:     pulumi.String("first-node"),
+//				VmId:         pulumi.Int(1234),
+//				Unprivileged: pulumi.Bool(true),
+//				Features: &ct.ContainerFeaturesArgs{
+//					Nesting: pulumi.Bool(true),
+//				},
+//				Initialization: &ct.ContainerInitializationArgs{
+//					Hostname: pulumi.String("terraform-provider-proxmox-ubuntu-container"),
+//					IpConfigs: ct.ContainerInitializationIpConfigArray{
+//						&ct.ContainerInitializationIpConfigArgs{
+//							Ipv4: &ct.ContainerInitializationIpConfigIpv4Args{
+//								Address: pulumi.String("dhcp"),
+//							},
+//						},
+//					},
+//					UserAccount: &ct.ContainerInitializationUserAccountArgs{
+//						Keys: pulumi.StringArray{
+//							std.TrimspaceOutput(ctx, std.TrimspaceOutputArgs{
+//								Input: ubuntuContainerKey.PublicKeyOpenssh,
+//							}, nil).ApplyT(func(invoke std.TrimspaceResult) (*string, error) {
+//								return invoke.Result, nil
+//							}).(pulumi.StringPtrOutput),
+//						},
+//						Password: ubuntuContainerPassword.Result,
+//					},
+//				},
+//				NetworkInterfaces: ct.ContainerNetworkInterfaceArray{
+//					&ct.ContainerNetworkInterfaceArgs{
+//						Name: pulumi.String("veth0"),
+//					},
+//				},
+//				Disk: &ct.ContainerDiskArgs{
+//					DatastoreId: pulumi.String("local-lvm"),
+//					Size:        pulumi.Int(4),
+//				},
+//				OperatingSystem: &ct.ContainerOperatingSystemArgs{
+//					TemplateFileId: ubuntu2504LxcImg.ID(),
+//					Type:           pulumi.String("ubuntu"),
+//				},
+//				MountPoints: ct.ContainerMountPointArray{
+//					&ct.ContainerMountPointArgs{
+//						Volume: pulumi.String("/mnt/bindmounts/shared"),
+//						Path:   pulumi.String("/mnt/shared"),
+//					},
+//					&ct.ContainerMountPointArgs{
+//						Volume: pulumi.String("local-lvm"),
+//						Size:   pulumi.String("10G"),
+//						Path:   pulumi.String("/mnt/volume"),
+//					},
+//				},
+//				Startup: &ct.ContainerStartupArgs{
+//					Order:     pulumi.Int(3),
+//					UpDelay:   pulumi.Int(60),
+//					DownDelay: pulumi.Int(60),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("ubuntuContainerPassword", ubuntuContainerPassword.Result)
+//			ctx.Export("ubuntuContainerPrivateKey", ubuntuContainerKey.PrivateKeyPem)
+//			ctx.Export("ubuntuContainerPublicKey", ubuntuContainerKey.PublicKeyOpenssh)
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Instances can be imported using the `node_name` and the `vm_id`, e.g.,

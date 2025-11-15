@@ -14,15 +14,15 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     public sealed class VirtualMachineWatchdog
     {
         /// <summary>
-        /// The action to perform if after activation the guest fails to poll the watchdog in time  (defaults to `none`).
+        /// The action to perform if after activation the guest fails to poll the watchdog in time  (defaults to `None`).
         /// </summary>
         public readonly string? Action;
         /// <summary>
-        /// Whether the watchdog is enabled (defaults to `false`).
+        /// Whether the watchdog is enabled (defaults to `False`).
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// The watchdog type to emulate (defaults to `i6300esb`).
+        /// The watchdog type to emulate (defaults to `I6300esb`).
         /// </summary>
         public readonly string? Model;
 

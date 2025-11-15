@@ -98,7 +98,7 @@ def get_version(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVers
     example = proxmoxve.Network.get_version()
     pulumi.export("dataProxmoxVirtualEnvironmentVersion", {
         "release": example.release,
-        "repository_id": example.repository_id,
+        "repositoryId": example.repository_id,
         "version": example.version,
     })
     ```
@@ -125,7 +125,7 @@ def get_version_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeO
     example = proxmoxve.Network.get_version()
     pulumi.export("dataProxmoxVirtualEnvironmentVersion", {
         "release": example.release,
-        "repository_id": example.repository_id,
+        "repositoryId": example.repository_id,
         "version": example.version,
     })
     ```

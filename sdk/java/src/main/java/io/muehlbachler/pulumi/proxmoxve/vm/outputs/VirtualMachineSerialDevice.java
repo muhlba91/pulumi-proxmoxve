@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VirtualMachineSerialDevice {
     /**
-     * @return The device (defaults to `socket`).
+     * @return The device (defaults to &lt;span pulumi-lang-nodejs=&#34;`socket`&#34; pulumi-lang-dotnet=&#34;`Socket`&#34; pulumi-lang-go=&#34;`socket`&#34; pulumi-lang-python=&#34;`socket`&#34; pulumi-lang-yaml=&#34;`socket`&#34; pulumi-lang-java=&#34;`socket`&#34;&gt;`socket`&lt;/span&gt;).
      * - `/dev/*` - A host serial device.
      * 
      */
@@ -20,7 +20,7 @@ public final class VirtualMachineSerialDevice {
 
     private VirtualMachineSerialDevice() {}
     /**
-     * @return The device (defaults to `socket`).
+     * @return The device (defaults to &lt;span pulumi-lang-nodejs=&#34;`socket`&#34; pulumi-lang-dotnet=&#34;`Socket`&#34; pulumi-lang-go=&#34;`socket`&#34; pulumi-lang-python=&#34;`socket`&#34; pulumi-lang-yaml=&#34;`socket`&#34; pulumi-lang-java=&#34;`socket`&#34;&gt;`socket`&lt;/span&gt;).
      * - `/dev/*` - A host serial device.
      * 
      */

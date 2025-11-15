@@ -46,16 +46,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Qinq("example", QinqArgs.builder()
- *             .bridge("vmbr0")
- *             .dns("1.1.1.1")
- *             .dnsZone("example.com")
  *             .zoneId("qinq1")
- *             .ipam("pve")
- *             .mtu(1496)
- *             .nodes("pve")
- *             .reverseDns("1.1.1.1")
+ *             .bridge("vmbr0")
  *             .serviceVlan(100)
  *             .serviceVlanProtocol("802.1ad")
+ *             .mtu(1496)
+ *             .dns("1.1.1.1")
+ *             .dnsZone("example.com")
+ *             .ipam("pve")
+ *             .reverseDns("1.1.1.1")
  *             .build());
  * 
  *     }
@@ -190,14 +189,14 @@ public class Qinq extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.reverseDns);
     }
     /**
-     * Service VLAN tag for QinQ. The tag must be between `1` and `4094`.
+     * Service VLAN tag for QinQ. The tag must be between &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`4094`&#34; pulumi-lang-dotnet=&#34;`4094`&#34; pulumi-lang-go=&#34;`4094`&#34; pulumi-lang-python=&#34;`4094`&#34; pulumi-lang-yaml=&#34;`4094`&#34; pulumi-lang-java=&#34;`4094`&#34;&gt;`4094`&lt;/span&gt;.
      * 
      */
     @Export(name="serviceVlan", refs={Integer.class}, tree="[0]")
     private Output<Integer> serviceVlan;
 
     /**
-     * @return Service VLAN tag for QinQ. The tag must be between `1` and `4094`.
+     * @return Service VLAN tag for QinQ. The tag must be between &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`4094`&#34; pulumi-lang-dotnet=&#34;`4094`&#34; pulumi-lang-go=&#34;`4094`&#34; pulumi-lang-python=&#34;`4094`&#34; pulumi-lang-yaml=&#34;`4094`&#34; pulumi-lang-java=&#34;`4094`&#34;&gt;`4094`&lt;/span&gt;.
      * 
      */
     public Output<Integer> serviceVlan() {

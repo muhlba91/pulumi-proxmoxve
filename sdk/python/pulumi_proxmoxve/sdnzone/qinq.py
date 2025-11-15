@@ -20,30 +20,29 @@ __all__ = ['QinqArgs', 'Qinq']
 class QinqArgs:
     def __init__(__self__, *,
                  bridge: pulumi.Input[_builtins.str],
-                 nodes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  service_vlan: pulumi.Input[_builtins.int],
                  zone_id: pulumi.Input[_builtins.str],
                  dns: Optional[pulumi.Input[_builtins.str]] = None,
                  dns_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  ipam: Optional[pulumi.Input[_builtins.str]] = None,
                  mtu: Optional[pulumi.Input[_builtins.int]] = None,
+                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  reverse_dns: Optional[pulumi.Input[_builtins.str]] = None,
                  service_vlan_protocol: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Qinq resource.
         :param pulumi.Input[_builtins.str] bridge: A local, VLAN-aware bridge that is already configured on each local node
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: The Proxmox nodes which the zone and associated VNets should be deployed on
         :param pulumi.Input[_builtins.int] service_vlan: Service VLAN tag for QinQ. The tag must be between `1` and `4094`.
         :param pulumi.Input[_builtins.str] zone_id: The unique identifier of the SDN zone.
         :param pulumi.Input[_builtins.str] dns: DNS API server address.
         :param pulumi.Input[_builtins.str] dns_zone: DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
         :param pulumi.Input[_builtins.str] ipam: IP Address Management system.
         :param pulumi.Input[_builtins.int] mtu: MTU value for the zone.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: The Proxmox nodes which the zone and associated VNets should be deployed on
         :param pulumi.Input[_builtins.str] reverse_dns: Reverse DNS API server address.
         :param pulumi.Input[_builtins.str] service_vlan_protocol: Service VLAN protocol for QinQ. The protocol must be `802.1ad` or `802.1q`.
         """
         pulumi.set(__self__, "bridge", bridge)
-        pulumi.set(__self__, "nodes", nodes)
         pulumi.set(__self__, "service_vlan", service_vlan)
         pulumi.set(__self__, "zone_id", zone_id)
         if dns is not None:
@@ -54,6 +53,8 @@ class QinqArgs:
             pulumi.set(__self__, "ipam", ipam)
         if mtu is not None:
             pulumi.set(__self__, "mtu", mtu)
+        if nodes is not None:
+            pulumi.set(__self__, "nodes", nodes)
         if reverse_dns is not None:
             pulumi.set(__self__, "reverse_dns", reverse_dns)
         if service_vlan_protocol is not None:
@@ -70,18 +71,6 @@ class QinqArgs:
     @bridge.setter
     def bridge(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "bridge", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def nodes(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        The Proxmox nodes which the zone and associated VNets should be deployed on
-        """
-        return pulumi.get(self, "nodes")
-
-    @nodes.setter
-    def nodes(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
-        pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceVlan")
@@ -154,6 +143,18 @@ class QinqArgs:
     @mtu.setter
     def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "mtu", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The Proxmox nodes which the zone and associated VNets should be deployed on
+        """
+        return pulumi.get(self, "nodes")
+
+    @nodes.setter
+    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter(name="reverseDns")
@@ -407,16 +408,15 @@ class Qinq(pulumi.CustomResource):
         import pulumi_proxmoxve as proxmoxve
 
         example = proxmoxve.sdnzone.Qinq("example",
+            zone_id="qinq1",
             bridge="vmbr0",
+            service_vlan=100,
+            service_vlan_protocol="802.1ad",
+            mtu=1496,
             dns="1.1.1.1",
             dns_zone="example.com",
-            zone_id="qinq1",
             ipam="pve",
-            mtu=1496,
-            nodes=["pve"],
-            reverse_dns="1.1.1.1",
-            service_vlan=100,
-            service_vlan_protocol="802.1ad")
+            reverse_dns="1.1.1.1")
         ```
 
         ## Import
@@ -458,16 +458,15 @@ class Qinq(pulumi.CustomResource):
         import pulumi_proxmoxve as proxmoxve
 
         example = proxmoxve.sdnzone.Qinq("example",
+            zone_id="qinq1",
             bridge="vmbr0",
+            service_vlan=100,
+            service_vlan_protocol="802.1ad",
+            mtu=1496,
             dns="1.1.1.1",
             dns_zone="example.com",
-            zone_id="qinq1",
             ipam="pve",
-            mtu=1496,
-            nodes=["pve"],
-            reverse_dns="1.1.1.1",
-            service_vlan=100,
-            service_vlan_protocol="802.1ad")
+            reverse_dns="1.1.1.1")
         ```
 
         ## Import
@@ -521,8 +520,6 @@ class Qinq(pulumi.CustomResource):
             __props__.__dict__["dns_zone"] = dns_zone
             __props__.__dict__["ipam"] = ipam
             __props__.__dict__["mtu"] = mtu
-            if nodes is None and not opts.urn:
-                raise TypeError("Missing required property 'nodes'")
             __props__.__dict__["nodes"] = nodes
             __props__.__dict__["reverse_dns"] = reverse_dns
             if service_vlan is None and not opts.urn:

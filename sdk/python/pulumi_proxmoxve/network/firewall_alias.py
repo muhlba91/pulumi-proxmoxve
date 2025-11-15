@@ -247,13 +247,15 @@ class FirewallAlias(pulumi.CustomResource):
         import pulumi
         import pulumi_proxmoxve as proxmoxve
 
-        local_network = proxmoxve.network.FirewallAlias("localNetwork",
-            node_name=proxmox_virtual_environment_vm["example"]["node_name"],
-            vm_id=proxmox_virtual_environment_vm["example"]["vm_id"],
+        local_network = proxmoxve.network.FirewallAlias("local_network",
+            node_name=example["nodeName"],
+            vm_id=example["vmId"],
+            name="local_network",
             cidr="192.168.0.0/23",
             comment="Managed by Pulumi",
-            opts = pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm["example"]]))
-        ubuntu_vm = proxmoxve.network.FirewallAlias("ubuntuVm",
+            opts = pulumi.ResourceOptions(depends_on=[example]))
+        ubuntu_vm = proxmoxve.network.FirewallAlias("ubuntu_vm",
+            name="ubuntu",
             cidr="192.168.0.1",
             comment="Managed by Pulumi")
         ```
@@ -284,13 +286,15 @@ class FirewallAlias(pulumi.CustomResource):
         import pulumi
         import pulumi_proxmoxve as proxmoxve
 
-        local_network = proxmoxve.network.FirewallAlias("localNetwork",
-            node_name=proxmox_virtual_environment_vm["example"]["node_name"],
-            vm_id=proxmox_virtual_environment_vm["example"]["vm_id"],
+        local_network = proxmoxve.network.FirewallAlias("local_network",
+            node_name=example["nodeName"],
+            vm_id=example["vmId"],
+            name="local_network",
             cidr="192.168.0.0/23",
             comment="Managed by Pulumi",
-            opts = pulumi.ResourceOptions(depends_on=[proxmox_virtual_environment_vm["example"]]))
-        ubuntu_vm = proxmoxve.network.FirewallAlias("ubuntuVm",
+            opts = pulumi.ResourceOptions(depends_on=[example]))
+        ubuntu_vm = proxmoxve.network.FirewallAlias("ubuntu_vm",
+            name="ubuntu",
             cidr="192.168.0.1",
             comment="Managed by Pulumi")
         ```

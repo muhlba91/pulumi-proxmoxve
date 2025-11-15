@@ -250,25 +250,26 @@ class FirewallSecurityGroup(pulumi.CustomResource):
         import pulumi_proxmoxve as proxmoxve
 
         webserver = proxmoxve.network.FirewallSecurityGroup("webserver",
+            name="webserver",
             comment="Managed by Pulumi",
             rules=[
                 {
+                    "type": "in",
                     "action": "ACCEPT",
                     "comment": "Allow HTTP",
                     "dest": "192.168.1.5",
                     "dport": "80",
-                    "log": "info",
                     "proto": "tcp",
-                    "type": "in",
+                    "log": "info",
                 },
                 {
+                    "type": "in",
                     "action": "ACCEPT",
                     "comment": "Allow HTTPS",
                     "dest": "192.168.1.5",
                     "dport": "443",
-                    "log": "info",
                     "proto": "tcp",
-                    "type": "in",
+                    "log": "info",
                 },
             ])
         ```
@@ -310,25 +311,26 @@ class FirewallSecurityGroup(pulumi.CustomResource):
         import pulumi_proxmoxve as proxmoxve
 
         webserver = proxmoxve.network.FirewallSecurityGroup("webserver",
+            name="webserver",
             comment="Managed by Pulumi",
             rules=[
                 {
+                    "type": "in",
                     "action": "ACCEPT",
                     "comment": "Allow HTTP",
                     "dest": "192.168.1.5",
                     "dport": "80",
-                    "log": "info",
                     "proto": "tcp",
-                    "type": "in",
+                    "log": "info",
                 },
                 {
+                    "type": "in",
                     "action": "ACCEPT",
                     "comment": "Allow HTTPS",
                     "dest": "192.168.1.5",
                     "dport": "443",
-                    "log": "info",
                     "proto": "tcp",
-                    "type": "in",
+                    "log": "info",
                 },
             ])
         ```

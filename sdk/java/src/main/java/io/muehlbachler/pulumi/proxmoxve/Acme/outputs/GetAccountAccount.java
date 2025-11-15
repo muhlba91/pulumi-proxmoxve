@@ -22,7 +22,7 @@ public final class GetAccountAccount {
      */
     private String createdAt;
     /**
-     * @return The status of the account. Can be one of `valid`, `deactivated` or `revoked`.
+     * @return The status of the account. Can be one of &lt;span pulumi-lang-nodejs=&#34;`valid`&#34; pulumi-lang-dotnet=&#34;`Valid`&#34; pulumi-lang-go=&#34;`valid`&#34; pulumi-lang-python=&#34;`valid`&#34; pulumi-lang-yaml=&#34;`valid`&#34; pulumi-lang-java=&#34;`valid`&#34;&gt;`valid`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`deactivated`&#34; pulumi-lang-dotnet=&#34;`Deactivated`&#34; pulumi-lang-go=&#34;`deactivated`&#34; pulumi-lang-python=&#34;`deactivated`&#34; pulumi-lang-yaml=&#34;`deactivated`&#34; pulumi-lang-java=&#34;`deactivated`&#34;&gt;`deactivated`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`revoked`&#34; pulumi-lang-dotnet=&#34;`Revoked`&#34; pulumi-lang-go=&#34;`revoked`&#34; pulumi-lang-python=&#34;`revoked`&#34; pulumi-lang-yaml=&#34;`revoked`&#34; pulumi-lang-java=&#34;`revoked`&#34;&gt;`revoked`&lt;/span&gt;.
      * 
      */
     private String status;
@@ -43,7 +43,7 @@ public final class GetAccountAccount {
         return this.createdAt;
     }
     /**
-     * @return The status of the account. Can be one of `valid`, `deactivated` or `revoked`.
+     * @return The status of the account. Can be one of &lt;span pulumi-lang-nodejs=&#34;`valid`&#34; pulumi-lang-dotnet=&#34;`Valid`&#34; pulumi-lang-go=&#34;`valid`&#34; pulumi-lang-python=&#34;`valid`&#34; pulumi-lang-yaml=&#34;`valid`&#34; pulumi-lang-java=&#34;`valid`&#34;&gt;`valid`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`deactivated`&#34; pulumi-lang-dotnet=&#34;`Deactivated`&#34; pulumi-lang-go=&#34;`deactivated`&#34; pulumi-lang-python=&#34;`deactivated`&#34; pulumi-lang-yaml=&#34;`deactivated`&#34; pulumi-lang-java=&#34;`deactivated`&#34;&gt;`deactivated`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`revoked`&#34; pulumi-lang-dotnet=&#34;`Revoked`&#34; pulumi-lang-go=&#34;`revoked`&#34; pulumi-lang-python=&#34;`revoked`&#34; pulumi-lang-yaml=&#34;`revoked`&#34; pulumi-lang-java=&#34;`revoked`&#34;&gt;`revoked`&lt;/span&gt;.
      * 
      */
     public String status() {

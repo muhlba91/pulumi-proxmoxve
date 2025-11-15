@@ -17,14 +17,14 @@ public final class VirtualMachineVgaArgs extends com.pulumi.resources.ResourceAr
     public static final VirtualMachineVgaArgs Empty = new VirtualMachineVgaArgs();
 
     /**
-     * Enable VNC clipboard by setting to `vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
+     * Enable VNC clipboard by setting to &lt;span pulumi-lang-nodejs=&#34;`vnc`&#34; pulumi-lang-dotnet=&#34;`Vnc`&#34; pulumi-lang-go=&#34;`vnc`&#34; pulumi-lang-python=&#34;`vnc`&#34; pulumi-lang-yaml=&#34;`vnc`&#34; pulumi-lang-java=&#34;`vnc`&#34;&gt;`vnc`&lt;/span&gt;. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
      * 
      */
     @Import(name="clipboard")
     private @Nullable Output<String> clipboard;
 
     /**
-     * @return Enable VNC clipboard by setting to `vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
+     * @return Enable VNC clipboard by setting to &lt;span pulumi-lang-nodejs=&#34;`vnc`&#34; pulumi-lang-dotnet=&#34;`Vnc`&#34; pulumi-lang-go=&#34;`vnc`&#34; pulumi-lang-python=&#34;`vnc`&#34; pulumi-lang-yaml=&#34;`vnc`&#34; pulumi-lang-java=&#34;`vnc`&#34;&gt;`vnc`&lt;/span&gt;. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
      * 
      */
     public Optional<Output<String>> clipboard() {
@@ -32,14 +32,14 @@ public final class VirtualMachineVgaArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The VGA memory in megabytes (defaults to `16`).
+     * The VGA memory in megabytes (defaults to &lt;span pulumi-lang-nodejs=&#34;`16`&#34; pulumi-lang-dotnet=&#34;`16`&#34; pulumi-lang-go=&#34;`16`&#34; pulumi-lang-python=&#34;`16`&#34; pulumi-lang-yaml=&#34;`16`&#34; pulumi-lang-java=&#34;`16`&#34;&gt;`16`&lt;/span&gt;).
      * 
      */
     @Import(name="memory")
     private @Nullable Output<Integer> memory;
 
     /**
-     * @return The VGA memory in megabytes (defaults to `16`).
+     * @return The VGA memory in megabytes (defaults to &lt;span pulumi-lang-nodejs=&#34;`16`&#34; pulumi-lang-dotnet=&#34;`16`&#34; pulumi-lang-go=&#34;`16`&#34; pulumi-lang-python=&#34;`16`&#34; pulumi-lang-yaml=&#34;`16`&#34; pulumi-lang-java=&#34;`16`&#34;&gt;`16`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Integer>> memory() {
@@ -47,14 +47,14 @@ public final class VirtualMachineVgaArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The VGA type (defaults to `std`).
+     * The VGA type (defaults to &lt;span pulumi-lang-nodejs=&#34;`std`&#34; pulumi-lang-dotnet=&#34;`Std`&#34; pulumi-lang-go=&#34;`std`&#34; pulumi-lang-python=&#34;`std`&#34; pulumi-lang-yaml=&#34;`std`&#34; pulumi-lang-java=&#34;`std`&#34;&gt;`std`&lt;/span&gt;).
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The VGA type (defaults to `std`).
+     * @return The VGA type (defaults to &lt;span pulumi-lang-nodejs=&#34;`std`&#34; pulumi-lang-dotnet=&#34;`Std`&#34; pulumi-lang-go=&#34;`std`&#34; pulumi-lang-python=&#34;`std`&#34; pulumi-lang-yaml=&#34;`std`&#34; pulumi-lang-java=&#34;`std`&#34;&gt;`std`&lt;/span&gt;).
      * 
      */
     public Optional<Output<String>> type() {
@@ -88,7 +88,7 @@ public final class VirtualMachineVgaArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param clipboard Enable VNC clipboard by setting to `vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
+         * @param clipboard Enable VNC clipboard by setting to &lt;span pulumi-lang-nodejs=&#34;`vnc`&#34; pulumi-lang-dotnet=&#34;`Vnc`&#34; pulumi-lang-go=&#34;`vnc`&#34; pulumi-lang-python=&#34;`vnc`&#34; pulumi-lang-yaml=&#34;`vnc`&#34; pulumi-lang-java=&#34;`vnc`&#34;&gt;`vnc`&lt;/span&gt;. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class VirtualMachineVgaArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param clipboard Enable VNC clipboard by setting to `vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
+         * @param clipboard Enable VNC clipboard by setting to &lt;span pulumi-lang-nodejs=&#34;`vnc`&#34; pulumi-lang-dotnet=&#34;`Vnc`&#34; pulumi-lang-go=&#34;`vnc`&#34; pulumi-lang-python=&#34;`vnc`&#34; pulumi-lang-yaml=&#34;`vnc`&#34; pulumi-lang-java=&#34;`vnc`&#34;&gt;`vnc`&lt;/span&gt;. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class VirtualMachineVgaArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param memory The VGA memory in megabytes (defaults to `16`).
+         * @param memory The VGA memory in megabytes (defaults to &lt;span pulumi-lang-nodejs=&#34;`16`&#34; pulumi-lang-dotnet=&#34;`16`&#34; pulumi-lang-go=&#34;`16`&#34; pulumi-lang-python=&#34;`16`&#34; pulumi-lang-yaml=&#34;`16`&#34; pulumi-lang-java=&#34;`16`&#34;&gt;`16`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class VirtualMachineVgaArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param memory The VGA memory in megabytes (defaults to `16`).
+         * @param memory The VGA memory in megabytes (defaults to &lt;span pulumi-lang-nodejs=&#34;`16`&#34; pulumi-lang-dotnet=&#34;`16`&#34; pulumi-lang-go=&#34;`16`&#34; pulumi-lang-python=&#34;`16`&#34; pulumi-lang-yaml=&#34;`16`&#34; pulumi-lang-java=&#34;`16`&#34;&gt;`16`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class VirtualMachineVgaArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type The VGA type (defaults to `std`).
+         * @param type The VGA type (defaults to &lt;span pulumi-lang-nodejs=&#34;`std`&#34; pulumi-lang-dotnet=&#34;`Std`&#34; pulumi-lang-go=&#34;`std`&#34; pulumi-lang-python=&#34;`std`&#34; pulumi-lang-yaml=&#34;`std`&#34; pulumi-lang-java=&#34;`std`&#34;&gt;`std`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class VirtualMachineVgaArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param type The VGA type (defaults to `std`).
+         * @param type The VGA type (defaults to &lt;span pulumi-lang-nodejs=&#34;`std`&#34; pulumi-lang-dotnet=&#34;`Std`&#34; pulumi-lang-go=&#34;`std`&#34; pulumi-lang-python=&#34;`std`&#34; pulumi-lang-yaml=&#34;`std`&#34; pulumi-lang-java=&#34;`std`&#34;&gt;`std`&lt;/span&gt;).
          * 
          * @return builder
          * 

@@ -38,7 +38,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<int> Memory { get; set; } = null!;
 
         /// <summary>
-        /// The NUMA policy (defaults to `preferred`).
+        /// The NUMA policy (defaults to `Preferred`).
         /// </summary>
         [Input("policy")]
         public Input<string>? Policy { get; set; }

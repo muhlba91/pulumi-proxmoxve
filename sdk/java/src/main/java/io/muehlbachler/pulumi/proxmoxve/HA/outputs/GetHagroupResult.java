@@ -34,7 +34,7 @@ public final class GetHAGroupResult {
      */
     private Boolean noFailback;
     /**
-     * @return The member nodes for this group. They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or `null` for unset priorities.
+     * @return The member nodes for this group. They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or &lt;span pulumi-lang-nodejs=&#34;`null`&#34; pulumi-lang-dotnet=&#34;`Null`&#34; pulumi-lang-go=&#34;`null`&#34; pulumi-lang-python=&#34;`null`&#34; pulumi-lang-yaml=&#34;`null`&#34; pulumi-lang-java=&#34;`null`&#34;&gt;`null`&lt;/span&gt; for unset priorities.
      * 
      */
     private Map<String,Integer> nodes;
@@ -74,7 +74,7 @@ public final class GetHAGroupResult {
         return this.noFailback;
     }
     /**
-     * @return The member nodes for this group. They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or `null` for unset priorities.
+     * @return The member nodes for this group. They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or &lt;span pulumi-lang-nodejs=&#34;`null`&#34; pulumi-lang-dotnet=&#34;`Null`&#34; pulumi-lang-go=&#34;`null`&#34; pulumi-lang-python=&#34;`null`&#34; pulumi-lang-yaml=&#34;`null`&#34; pulumi-lang-java=&#34;`null`&#34;&gt;`null`&lt;/span&gt; for unset priorities.
      * 
      */
     public Map<String,Integer> nodes() {

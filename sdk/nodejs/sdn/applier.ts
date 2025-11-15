@@ -6,42 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * **EXPERIMENTAL** Triggers Proxmox's SDN **Apply** (equivalent to `PUT /cluster/sdn`).Intended to be used with `replaceTriggeredBy` so it runs after SDN objects change.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const finalizer = new proxmoxve.sdn.Applier("finalizer", {});
- * // SDN Zone (Simple) - First zone for applier demonstration
- * const exampleZone1 = new proxmoxve.sdnzone.Simple("exampleZone1", {
- *     zoneId: "zone1",
- *     nodes: ["pve"],
- *     mtu: 1500,
- *     dns: "1.1.1.1",
- *     dnsZone: "example.com",
- *     ipam: "pve",
- *     reverseDns: "1.1.1.1",
- * }, {
- *     dependsOn: [finalizer],
- * });
- * // SDN Zone (Simple) - Second zone for applier demonstration
- * const exampleZone2 = new proxmoxve.sdnzone.Simple("exampleZone2", {
- *     zoneId: "zone2",
- *     nodes: ["pve"],
- *     mtu: 1500,
- * }, {
- *     dependsOn: [finalizer],
- * });
- * // SDN Applier - Applies SDN configuration changes
- * const exampleApplier = new proxmoxve.sdn.Applier("exampleApplier", {}, {
- *     dependsOn: [
- *         exampleZone1,
- *         exampleZone2,
- *     ],
- * });
- * ```
  */
 export class Applier extends pulumi.CustomResource {
     /**

@@ -41,88 +41,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Manages a virtual machine.
- * 
- * ## High Availability
- * 
- * When managing a virtual machine in a multi-node cluster, the VM&#39;s HA settings can
- * be managed using the `proxmoxve.HA.HAResource` resource.
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import io.muehlbachler.pulumi.proxmoxve.VM.VirtualMachine;
- * import io.muehlbachler.pulumi.proxmoxve.VM.VirtualMachineArgs;
- * import io.muehlbachler.pulumi.proxmoxve.HA.HAResource;
- * import io.muehlbachler.pulumi.proxmoxve.HA.HAResourceArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var ubuntuVmVirtualMachine = new VirtualMachine("ubuntuVmVirtualMachine", VirtualMachineArgs.builder()
- *             .vmId(4321)
- *             .build());
- * 
- *         var ubuntuVmHAResource = new HAResource("ubuntuVmHAResource", HAResourceArgs.builder()
- *             .comment("Managed by Pulumi")
- *             .group("node1")
- *             .resourceId(ubuntuVmVirtualMachine.vmId().applyValue(_vmId -> String.format("vm:%s", _vmId)))
- *             .state("started")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## Important Notes
- * 
- * ### `local-lvm` Datastore
- * 
- * The `local-lvm` is the **default datastore** for many configuration blocks, including `initialization` and `tpm_state`, which may not seem to be related to &#34;storage&#34;.
- * If you do not have `local-lvm` configured in your environment, you may need to explicitly set the `datastore_id` in such blocks to a different value.
- * 
- * ### Cloning
- * 
- * When cloning an existing virtual machine, whether it&#39;s a template or not, the
- * resource will inherit the disks and other configuration from the source VM.
- * 
- * *If* you modify any attributes of an existing disk in the clone, you also need to\
- * explicitly provide values for any other attributes that differ from the schema defaults\
- * in the source (e.g., `size`, `discard`, `cache`, `aio`).\
- * Otherwise, the schema defaults will take effect and override the source values.
- * 
- * Furthermore, when cloning from one node to a different one, the behavior changes
- * depening on the datastores of the source VM. If at least one non-shared
- * datastore is used, the VM is first cloned to the source node before being
- * migrated to the target node. This circumvents a limitation in the Proxmox clone
- * API.
- * 
- * Because the migration step after the clone tries to preserve the used
- * datastores by their name, it may fail if a datastore used in the source VM is
- * not available on the target node (e.g. `local-lvm` is used on the source node in
- * the VM but no `local-lvm` datastore is available on the target node). In this
- * case, it is recommended to set the `datastore_id` argument in the `clone` block
- * to force the migration step to migrate all disks to a specific datastore on the
- * target node. If you need certain disks to be on specific datastores, set
- * the `datastore_id` argument of the disks in the `disks` block to move the disks
- * to the correct datastore after the cloning and migrating succeeded.
- * 
  * ## Import
  * 
  * Instances can be imported using the `node_name` and the `vm_id`, e.g.,
@@ -137,14 +55,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="proxmoxve:VM/virtualMachine:VirtualMachine")
 public class VirtualMachine extends com.pulumi.resources.CustomResource {
     /**
-     * Whether to enable ACPI (defaults to `true`).
+     * Whether to enable ACPI (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     @Export(name="acpi", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> acpi;
 
     /**
-     * @return Whether to enable ACPI (defaults to `true`).
+     * @return Whether to enable ACPI (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Output<Optional<Boolean>> acpi() {
@@ -193,14 +111,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.audioDevice);
     }
     /**
-     * The BIOS implementation (defaults to `seabios`).
+     * The BIOS implementation (defaults to &lt;span pulumi-lang-nodejs=&#34;`seabios`&#34; pulumi-lang-dotnet=&#34;`Seabios`&#34; pulumi-lang-go=&#34;`seabios`&#34; pulumi-lang-python=&#34;`seabios`&#34; pulumi-lang-yaml=&#34;`seabios`&#34; pulumi-lang-java=&#34;`seabios`&#34;&gt;`seabios`&lt;/span&gt;).
      * 
      */
     @Export(name="bios", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> bios;
 
     /**
-     * @return The BIOS implementation (defaults to `seabios`).
+     * @return The BIOS implementation (defaults to &lt;span pulumi-lang-nodejs=&#34;`seabios`&#34; pulumi-lang-dotnet=&#34;`Seabios`&#34; pulumi-lang-go=&#34;`seabios`&#34; pulumi-lang-python=&#34;`seabios`&#34; pulumi-lang-yaml=&#34;`seabios`&#34; pulumi-lang-java=&#34;`seabios`&#34;&gt;`seabios`&lt;/span&gt;).
      * 
      */
     public Output<Optional<String>> bios() {
@@ -293,16 +211,16 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.disks);
     }
     /**
-     * The efi disk device (required if `bios` is set
-     * to `ovmf`)
+     * The efi disk device (required if &lt;span pulumi-lang-nodejs=&#34;`bios`&#34; pulumi-lang-dotnet=&#34;`Bios`&#34; pulumi-lang-go=&#34;`bios`&#34; pulumi-lang-python=&#34;`bios`&#34; pulumi-lang-yaml=&#34;`bios`&#34; pulumi-lang-java=&#34;`bios`&#34;&gt;`bios`&lt;/span&gt; is set
+     * to &lt;span pulumi-lang-nodejs=&#34;`ovmf`&#34; pulumi-lang-dotnet=&#34;`Ovmf`&#34; pulumi-lang-go=&#34;`ovmf`&#34; pulumi-lang-python=&#34;`ovmf`&#34; pulumi-lang-yaml=&#34;`ovmf`&#34; pulumi-lang-java=&#34;`ovmf`&#34;&gt;`ovmf`&lt;/span&gt;)
      * 
      */
     @Export(name="efiDisk", refs={VirtualMachineEfiDisk.class}, tree="[0]")
     private Output</* @Nullable */ VirtualMachineEfiDisk> efiDisk;
 
     /**
-     * @return The efi disk device (required if `bios` is set
-     * to `ovmf`)
+     * @return The efi disk device (required if &lt;span pulumi-lang-nodejs=&#34;`bios`&#34; pulumi-lang-dotnet=&#34;`Bios`&#34; pulumi-lang-go=&#34;`bios`&#34; pulumi-lang-python=&#34;`bios`&#34; pulumi-lang-yaml=&#34;`bios`&#34; pulumi-lang-java=&#34;`bios`&#34;&gt;`bios`&lt;/span&gt; is set
+     * to &lt;span pulumi-lang-nodejs=&#34;`ovmf`&#34; pulumi-lang-dotnet=&#34;`Ovmf`&#34; pulumi-lang-go=&#34;`ovmf`&#34; pulumi-lang-python=&#34;`ovmf`&#34; pulumi-lang-yaml=&#34;`ovmf`&#34; pulumi-lang-java=&#34;`ovmf`&#34;&gt;`ovmf`&lt;/span&gt;)
      * 
      */
     public Output<Optional<VirtualMachineEfiDisk>> efiDisk() {
@@ -352,7 +270,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
     }
     /**
      * The IPv4 addresses per network interface published by the
-     * QEMU agent (empty list when `agent.enabled` is `false`)
+     * QEMU agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
     @Export(name="ipv4Addresses", refs={List.class,String.class}, tree="[0,[0,1]]")
@@ -360,7 +278,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The IPv4 addresses per network interface published by the
-     * QEMU agent (empty list when `agent.enabled` is `false`)
+     * QEMU agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
     public Output<List<List<String>>> ipv4Addresses() {
@@ -368,7 +286,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
     }
     /**
      * The IPv6 addresses per network interface published by the
-     * QEMU agent (empty list when `agent.enabled` is `false`)
+     * QEMU agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
     @Export(name="ipv6Addresses", refs={List.class,String.class}, tree="[0,[0,1]]")
@@ -376,7 +294,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The IPv6 addresses per network interface published by the
-     * QEMU agent (empty list when `agent.enabled` is `false`)
+     * QEMU agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
     public Output<List<List<String>>> ipv6Addresses() {
@@ -427,14 +345,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return this.macAddresses;
     }
     /**
-     * The VM machine type (defaults to `pc`).
+     * The VM machine type (defaults to &lt;span pulumi-lang-nodejs=&#34;`pc`&#34; pulumi-lang-dotnet=&#34;`Pc`&#34; pulumi-lang-go=&#34;`pc`&#34; pulumi-lang-python=&#34;`pc`&#34; pulumi-lang-yaml=&#34;`pc`&#34; pulumi-lang-java=&#34;`pc`&#34;&gt;`pc`&lt;/span&gt;).
      * 
      */
     @Export(name="machine", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> machine;
 
     /**
-     * @return The VM machine type (defaults to `pc`).
+     * @return The VM machine type (defaults to &lt;span pulumi-lang-nodejs=&#34;`pc`&#34; pulumi-lang-dotnet=&#34;`Pc`&#34; pulumi-lang-go=&#34;`pc`&#34; pulumi-lang-python=&#34;`pc`&#34; pulumi-lang-yaml=&#34;`pc`&#34; pulumi-lang-java=&#34;`pc`&#34;&gt;`pc`&lt;/span&gt;).
      * 
      */
     public Output<Optional<String>> machine() {
@@ -456,7 +374,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
     }
     /**
      * Migrate the VM on node change instead of re-creating
-     * it (defaults to `false`).
+     * it (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Export(name="migrate", refs={Boolean.class}, tree="[0]")
@@ -464,7 +382,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Migrate the VM on node change instead of re-creating
-     * it (defaults to `false`).
+     * it (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Output<Optional<Boolean>> migrate() {
@@ -500,7 +418,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
     }
     /**
      * The network interface names published by the QEMU
-     * agent (empty list when `agent.enabled` is `false`)
+     * agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
     @Export(name="networkInterfaceNames", refs={List.class,String.class}, tree="[0,1]")
@@ -508,7 +426,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The network interface names published by the QEMU
-     * agent (empty list when `agent.enabled` is `false`)
+     * agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
     public Output<List<String>> networkInterfaceNames() {
@@ -546,7 +464,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
     }
     /**
      * Specifies whether a VM will be started during system
-     * boot. (defaults to `true`)
+     * boot. (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
      * 
      */
     @Export(name="onBoot", refs={Boolean.class}, tree="[0]")
@@ -554,7 +472,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specifies whether a VM will be started during system
-     * boot. (defaults to `true`)
+     * boot. (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
      * 
      */
     public Output<Optional<Boolean>> onBoot() {
@@ -589,42 +507,42 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.poolId);
     }
     /**
-     * Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+     * Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Export(name="protection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> protection;
 
     /**
-     * @return Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+     * @return Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Output<Optional<Boolean>> protection() {
         return Codegen.optional(this.protection);
     }
     /**
-     * Reboot the VM after initial creation (defaults to `false`).
+     * Reboot the VM after initial creation (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Export(name="reboot", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> reboot;
 
     /**
-     * @return Reboot the VM after initial creation (defaults to `false`).
+     * @return Reboot the VM after initial creation (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Output<Optional<Boolean>> reboot() {
         return Codegen.optional(this.reboot);
     }
     /**
-     * Reboot the VM after update if needed (defaults to `true`).
+     * Reboot the VM after update if needed (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     @Export(name="rebootAfterUpdate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> rebootAfterUpdate;
 
     /**
-     * @return Reboot the VM after update if needed (defaults to `true`).
+     * @return Reboot the VM after update if needed (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Output<Optional<Boolean>> rebootAfterUpdate() {
@@ -690,7 +608,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
     }
     /**
      * Whether to start the virtual machine (defaults
-     * to `true`).
+     * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     @Export(name="started", refs={Boolean.class}, tree="[0]")
@@ -698,7 +616,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Whether to start the virtual machine (defaults
-     * to `true`).
+     * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Output<Optional<Boolean>> started() {
@@ -719,14 +637,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.startup);
     }
     /**
-     * Whether to stop rather than shutdown on VM destroy (defaults to `false`)
+     * Whether to stop rather than shutdown on VM destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
     @Export(name="stopOnDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> stopOnDestroy;
 
     /**
-     * @return Whether to stop rather than shutdown on VM destroy (defaults to `false`)
+     * @return Whether to stop rather than shutdown on VM destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
     public Output<Optional<Boolean>> stopOnDestroy() {
@@ -734,7 +652,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
     }
     /**
      * Whether to enable the USB tablet device (defaults
-     * to `true`).
+     * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     @Export(name="tabletDevice", refs={Boolean.class}, tree="[0]")
@@ -742,7 +660,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Whether to enable the USB tablet device (defaults
-     * to `true`).
+     * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Output<Optional<Boolean>> tabletDevice() {
@@ -752,7 +670,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * A list of tags of the VM. This is only meta information (
      * defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
      * template is not sorted, then Proxmox will always report a difference on the
-     * resource. You may use the `ignore_changes` lifecycle meta-argument to ignore
+     * resource. You may use the &lt;span pulumi-lang-nodejs=&#34;`ignoreChanges`&#34; pulumi-lang-dotnet=&#34;`IgnoreChanges`&#34; pulumi-lang-go=&#34;`ignoreChanges`&#34; pulumi-lang-python=&#34;`ignore_changes`&#34; pulumi-lang-yaml=&#34;`ignoreChanges`&#34; pulumi-lang-java=&#34;`ignoreChanges`&#34;&gt;`ignore_changes`&lt;/span&gt; lifecycle meta-argument to ignore
      * changes to this attribute.
      * 
      */
@@ -763,7 +681,7 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * @return A list of tags of the VM. This is only meta information (
      * defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
      * template is not sorted, then Proxmox will always report a difference on the
-     * resource. You may use the `ignore_changes` lifecycle meta-argument to ignore
+     * resource. You may use the &lt;span pulumi-lang-nodejs=&#34;`ignoreChanges`&#34; pulumi-lang-dotnet=&#34;`IgnoreChanges`&#34; pulumi-lang-go=&#34;`ignoreChanges`&#34; pulumi-lang-python=&#34;`ignore_changes`&#34; pulumi-lang-yaml=&#34;`ignoreChanges`&#34; pulumi-lang-java=&#34;`ignoreChanges`&#34;&gt;`ignore_changes`&lt;/span&gt; lifecycle meta-argument to ignore
      * changes to this attribute.
      * 
      */
@@ -771,14 +689,14 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * Whether to create a template (defaults to `false`).
+     * Whether to create a template (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Export(name="template", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> template;
 
     /**
-     * @return Whether to create a template (defaults to `false`).
+     * @return Whether to create a template (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Output<Optional<Boolean>> template() {
@@ -836,10 +754,10 @@ public class VirtualMachine extends com.pulumi.resources.CustomResource {
      * MoveDisk timeout
      * 
      * @deprecated
-     * This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead.
+     * This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create /&lt;span pulumi-lang-nodejs=&#34; timeoutClone &#34; pulumi-lang-dotnet=&#34; TimeoutClone &#34; pulumi-lang-go=&#34; timeoutClone &#34; pulumi-lang-python=&#34; timeout_clone &#34; pulumi-lang-yaml=&#34; timeoutClone &#34; pulumi-lang-java=&#34; timeoutClone &#34;&gt; timeout_clone &lt;/span&gt;/ timeout_migrate) is used instead.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead. */
+    @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create /<span pulumi-lang-nodejs="" timeoutClone "" pulumi-lang-dotnet="" TimeoutClone "" pulumi-lang-go="" timeoutClone "" pulumi-lang-python="" timeout_clone "" pulumi-lang-yaml="" timeoutClone "" pulumi-lang-java="" timeoutClone ""> timeout_clone </span>/ timeout_migrate) is used instead. */
     @Export(name="timeoutMoveDisk", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeoutMoveDisk;
 

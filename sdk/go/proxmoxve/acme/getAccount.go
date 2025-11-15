@@ -14,30 +14,6 @@ import (
 // Retrieves information about a specific ACME account.
 //
 // ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/acme"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			all, err := acme.GetAccounts(ctx, map[string]interface{}{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			example := "TODO: For expression"
-//			ctx.Export("dataProxmoxVirtualEnvironmentAcmeAccount", example)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetAccount(ctx *pulumi.Context, args *GetAccountArgs, opts ...pulumi.InvokeOption) (*GetAccountResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountResult

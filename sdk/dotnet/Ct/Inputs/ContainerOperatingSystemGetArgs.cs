@@ -21,7 +21,7 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
         public Input<string> TemplateFileId { get; set; } = null!;
 
         /// <summary>
-        /// The type (defaults to `unmanaged`).
+        /// The type (defaults to `Unmanaged`).
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

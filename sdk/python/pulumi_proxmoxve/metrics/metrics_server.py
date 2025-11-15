@@ -573,13 +573,15 @@ class MetricsServer(pulumi.CustomResource):
         import pulumi
         import pulumi_proxmoxve as proxmoxve
 
-        influxdb_server = proxmoxve.metrics.MetricsServer("influxdbServer",
-            port=8089,
+        influxdb_server = proxmoxve.metrics.MetricsServer("influxdb_server",
+            name="example_influxdb_server",
             server="192.168.3.2",
+            port=8089,
             type="influxdb")
-        graphite_server = proxmoxve.metrics.MetricsServer("graphiteServer",
-            port=2003,
+        graphite_server = proxmoxve.metrics.MetricsServer("graphite_server",
+            name="example_graphite_server",
             server="192.168.4.2",
+            port=2003,
             type="graphite")
         ```
 
@@ -625,13 +627,15 @@ class MetricsServer(pulumi.CustomResource):
         import pulumi
         import pulumi_proxmoxve as proxmoxve
 
-        influxdb_server = proxmoxve.metrics.MetricsServer("influxdbServer",
-            port=8089,
+        influxdb_server = proxmoxve.metrics.MetricsServer("influxdb_server",
+            name="example_influxdb_server",
             server="192.168.3.2",
+            port=8089,
             type="influxdb")
-        graphite_server = proxmoxve.metrics.MetricsServer("graphiteServer",
-            port=2003,
+        graphite_server = proxmoxve.metrics.MetricsServer("graphite_server",
+            name="example_graphite_server",
             server="192.168.4.2",
+            port=2003,
             type="graphite")
         ```
 

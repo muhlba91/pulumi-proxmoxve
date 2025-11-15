@@ -34,7 +34,7 @@ public final class ContainerCloneArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The name of the source node (leave blank, if
-     * equal to the `node_name` argument).
+     * equal to the &lt;span pulumi-lang-nodejs=&#34;`nodeName`&#34; pulumi-lang-dotnet=&#34;`NodeName`&#34; pulumi-lang-go=&#34;`nodeName`&#34; pulumi-lang-python=&#34;`node_name`&#34; pulumi-lang-yaml=&#34;`nodeName`&#34; pulumi-lang-java=&#34;`nodeName`&#34;&gt;`node_name`&lt;/span&gt; argument).
      * 
      */
     @Import(name="nodeName")
@@ -42,7 +42,7 @@ public final class ContainerCloneArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The name of the source node (leave blank, if
-     * equal to the `node_name` argument).
+     * equal to the &lt;span pulumi-lang-nodejs=&#34;`nodeName`&#34; pulumi-lang-dotnet=&#34;`NodeName`&#34; pulumi-lang-go=&#34;`nodeName`&#34; pulumi-lang-python=&#34;`node_name`&#34; pulumi-lang-yaml=&#34;`nodeName`&#34; pulumi-lang-java=&#34;`nodeName`&#34;&gt;`node_name`&lt;/span&gt; argument).
      * 
      */
     public Optional<Output<String>> nodeName() {
@@ -113,7 +113,7 @@ public final class ContainerCloneArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param nodeName The name of the source node (leave blank, if
-         * equal to the `node_name` argument).
+         * equal to the &lt;span pulumi-lang-nodejs=&#34;`nodeName`&#34; pulumi-lang-dotnet=&#34;`NodeName`&#34; pulumi-lang-go=&#34;`nodeName`&#34; pulumi-lang-python=&#34;`node_name`&#34; pulumi-lang-yaml=&#34;`nodeName`&#34; pulumi-lang-java=&#34;`nodeName`&#34;&gt;`node_name`&lt;/span&gt; argument).
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class ContainerCloneArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param nodeName The name of the source node (leave blank, if
-         * equal to the `node_name` argument).
+         * equal to the &lt;span pulumi-lang-nodejs=&#34;`nodeName`&#34; pulumi-lang-dotnet=&#34;`NodeName`&#34; pulumi-lang-go=&#34;`nodeName`&#34; pulumi-lang-python=&#34;`node_name`&#34; pulumi-lang-yaml=&#34;`nodeName`&#34; pulumi-lang-java=&#34;`nodeName`&#34;&gt;`node_name`&lt;/span&gt; argument).
          * 
          * @return builder
          * 

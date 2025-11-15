@@ -14,7 +14,7 @@ namespace Pulumi.ProxmoxVE.Cluster.Outputs
     public sealed class OptionsNotify
     {
         /// <summary>
-        /// Cluster-wide notification settings for the HA fencing mode. Must be `always` | `never`.
+        /// Cluster-wide notification settings for the HA fencing mode. Must be `Always` | `Never`.
         /// </summary>
         public readonly string? HaFencingMode;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.ProxmoxVE.Cluster.Outputs
         /// </summary>
         public readonly string? HaFencingTarget;
         /// <summary>
-        /// Cluster-wide notification settings for package updates. Must be `auto` | `always` | `never`.
+        /// Cluster-wide notification settings for package updates. Must be `Auto` | `Always` | `Never`.
         /// </summary>
         public readonly string? PackageUpdates;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.ProxmoxVE.Cluster.Outputs
         /// </summary>
         public readonly string? PackageUpdatesTarget;
         /// <summary>
-        /// Cluster-wide notification settings for replication. Must be `always` | `never`.
+        /// Cluster-wide notification settings for replication. Must be `Always` | `Never`.
         /// </summary>
         public readonly string? Replication;
         /// <summary>

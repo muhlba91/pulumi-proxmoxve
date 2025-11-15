@@ -14,25 +14,25 @@ import javax.annotation.Nullable;
 public final class VirtualMachineCdrom {
     /**
      * @return Whether to enable the CD-ROM drive (defaults
-     * to `false`). *Deprecated*. The attribute will be removed in the next version of the provider.
-     * Set `file_id` to `none` to leave the CD-ROM drive empty.
+     * to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). *Deprecated*. The attribute will be removed in the next version of the provider.
+     * Set &lt;span pulumi-lang-nodejs=&#34;`fileId`&#34; pulumi-lang-dotnet=&#34;`FileId`&#34; pulumi-lang-go=&#34;`fileId`&#34; pulumi-lang-python=&#34;`file_id`&#34; pulumi-lang-yaml=&#34;`fileId`&#34; pulumi-lang-java=&#34;`fileId`&#34;&gt;`file_id`&lt;/span&gt; to &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34;&gt;`none`&lt;/span&gt; to leave the CD-ROM drive empty.
      * 
      * @deprecated
-     * Remove this attribute&#39;s configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `file_id` to `none` to leave the CDROM drive empty.
+     * Remove this attribute&#39;s configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set &lt;span pulumi-lang-nodejs=&#34;`fileId`&#34; pulumi-lang-dotnet=&#34;`FileId`&#34; pulumi-lang-go=&#34;`fileId`&#34; pulumi-lang-python=&#34;`file_id`&#34; pulumi-lang-yaml=&#34;`fileId`&#34; pulumi-lang-java=&#34;`fileId`&#34;&gt;`file_id`&lt;/span&gt; to &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34;&gt;`none`&lt;/span&gt; to leave the CDROM drive empty.
      * 
      */
-    @Deprecated /* Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `file_id` to `none` to leave the CDROM drive empty. */
+    @Deprecated /* Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set <span pulumi-lang-nodejs=""`fileId`"" pulumi-lang-dotnet=""`FileId`"" pulumi-lang-go=""`fileId`"" pulumi-lang-python=""`file_id`"" pulumi-lang-yaml=""`fileId`"" pulumi-lang-java=""`fileId`"">`file_id`</span> to <span pulumi-lang-nodejs=""`none`"" pulumi-lang-dotnet=""`None`"" pulumi-lang-go=""`none`"" pulumi-lang-python=""`none`"" pulumi-lang-yaml=""`none`"" pulumi-lang-java=""`none`"">`none`</span> to leave the CDROM drive empty. */
     private @Nullable Boolean enabled;
     /**
-     * @return A file ID for an ISO file (defaults to `cdrom` as
-     * in the physical drive). Use `none` to leave the CD-ROM drive empty.
+     * @return A file ID for an ISO file (defaults to &lt;span pulumi-lang-nodejs=&#34;`cdrom`&#34; pulumi-lang-dotnet=&#34;`Cdrom`&#34; pulumi-lang-go=&#34;`cdrom`&#34; pulumi-lang-python=&#34;`cdrom`&#34; pulumi-lang-yaml=&#34;`cdrom`&#34; pulumi-lang-java=&#34;`cdrom`&#34;&gt;`cdrom`&lt;/span&gt; as
+     * in the physical drive). Use &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34;&gt;`none`&lt;/span&gt; to leave the CD-ROM drive empty.
      * 
      */
     private @Nullable String fileId;
     /**
-     * @return A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
+     * @return A hardware interface to connect CD-ROM drive to (defaults to &lt;span pulumi-lang-nodejs=&#34;`ide3`&#34; pulumi-lang-dotnet=&#34;`Ide3`&#34; pulumi-lang-go=&#34;`ide3`&#34; pulumi-lang-python=&#34;`ide3`&#34; pulumi-lang-yaml=&#34;`ide3`&#34; pulumi-lang-java=&#34;`ide3`&#34;&gt;`ide3`&lt;/span&gt;).
      * &#34;Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. &#34; +
-     * &#34;Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+     * &#34;Note that &lt;span pulumi-lang-nodejs=&#34;`q35`&#34; pulumi-lang-dotnet=&#34;`Q35`&#34; pulumi-lang-go=&#34;`q35`&#34; pulumi-lang-python=&#34;`q35`&#34; pulumi-lang-yaml=&#34;`q35`&#34; pulumi-lang-java=&#34;`q35`&#34;&gt;`q35`&lt;/span&gt; machine type only supports &lt;span pulumi-lang-nodejs=&#34;`ide0`&#34; pulumi-lang-dotnet=&#34;`Ide0`&#34; pulumi-lang-go=&#34;`ide0`&#34; pulumi-lang-python=&#34;`ide0`&#34; pulumi-lang-yaml=&#34;`ide0`&#34; pulumi-lang-java=&#34;`ide0`&#34;&gt;`ide0`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`ide2`&#34; pulumi-lang-dotnet=&#34;`Ide2`&#34; pulumi-lang-go=&#34;`ide2`&#34; pulumi-lang-python=&#34;`ide2`&#34; pulumi-lang-yaml=&#34;`ide2`&#34; pulumi-lang-java=&#34;`ide2`&#34;&gt;`ide2`&lt;/span&gt; of IDE interfaces.
      * 
      */
     private @Nullable String interface_;
@@ -40,29 +40,29 @@ public final class VirtualMachineCdrom {
     private VirtualMachineCdrom() {}
     /**
      * @return Whether to enable the CD-ROM drive (defaults
-     * to `false`). *Deprecated*. The attribute will be removed in the next version of the provider.
-     * Set `file_id` to `none` to leave the CD-ROM drive empty.
+     * to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). *Deprecated*. The attribute will be removed in the next version of the provider.
+     * Set &lt;span pulumi-lang-nodejs=&#34;`fileId`&#34; pulumi-lang-dotnet=&#34;`FileId`&#34; pulumi-lang-go=&#34;`fileId`&#34; pulumi-lang-python=&#34;`file_id`&#34; pulumi-lang-yaml=&#34;`fileId`&#34; pulumi-lang-java=&#34;`fileId`&#34;&gt;`file_id`&lt;/span&gt; to &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34;&gt;`none`&lt;/span&gt; to leave the CD-ROM drive empty.
      * 
      * @deprecated
-     * Remove this attribute&#39;s configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `file_id` to `none` to leave the CDROM drive empty.
+     * Remove this attribute&#39;s configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set &lt;span pulumi-lang-nodejs=&#34;`fileId`&#34; pulumi-lang-dotnet=&#34;`FileId`&#34; pulumi-lang-go=&#34;`fileId`&#34; pulumi-lang-python=&#34;`file_id`&#34; pulumi-lang-yaml=&#34;`fileId`&#34; pulumi-lang-java=&#34;`fileId`&#34;&gt;`file_id`&lt;/span&gt; to &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34;&gt;`none`&lt;/span&gt; to leave the CDROM drive empty.
      * 
      */
-    @Deprecated /* Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `file_id` to `none` to leave the CDROM drive empty. */
+    @Deprecated /* Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set <span pulumi-lang-nodejs=""`fileId`"" pulumi-lang-dotnet=""`FileId`"" pulumi-lang-go=""`fileId`"" pulumi-lang-python=""`file_id`"" pulumi-lang-yaml=""`fileId`"" pulumi-lang-java=""`fileId`"">`file_id`</span> to <span pulumi-lang-nodejs=""`none`"" pulumi-lang-dotnet=""`None`"" pulumi-lang-go=""`none`"" pulumi-lang-python=""`none`"" pulumi-lang-yaml=""`none`"" pulumi-lang-java=""`none`"">`none`</span> to leave the CDROM drive empty. */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return A file ID for an ISO file (defaults to `cdrom` as
-     * in the physical drive). Use `none` to leave the CD-ROM drive empty.
+     * @return A file ID for an ISO file (defaults to &lt;span pulumi-lang-nodejs=&#34;`cdrom`&#34; pulumi-lang-dotnet=&#34;`Cdrom`&#34; pulumi-lang-go=&#34;`cdrom`&#34; pulumi-lang-python=&#34;`cdrom`&#34; pulumi-lang-yaml=&#34;`cdrom`&#34; pulumi-lang-java=&#34;`cdrom`&#34;&gt;`cdrom`&lt;/span&gt; as
+     * in the physical drive). Use &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34;&gt;`none`&lt;/span&gt; to leave the CD-ROM drive empty.
      * 
      */
     public Optional<String> fileId() {
         return Optional.ofNullable(this.fileId);
     }
     /**
-     * @return A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
+     * @return A hardware interface to connect CD-ROM drive to (defaults to &lt;span pulumi-lang-nodejs=&#34;`ide3`&#34; pulumi-lang-dotnet=&#34;`Ide3`&#34; pulumi-lang-go=&#34;`ide3`&#34; pulumi-lang-python=&#34;`ide3`&#34; pulumi-lang-yaml=&#34;`ide3`&#34; pulumi-lang-java=&#34;`ide3`&#34;&gt;`ide3`&lt;/span&gt;).
      * &#34;Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. &#34; +
-     * &#34;Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+     * &#34;Note that &lt;span pulumi-lang-nodejs=&#34;`q35`&#34; pulumi-lang-dotnet=&#34;`Q35`&#34; pulumi-lang-go=&#34;`q35`&#34; pulumi-lang-python=&#34;`q35`&#34; pulumi-lang-yaml=&#34;`q35`&#34; pulumi-lang-java=&#34;`q35`&#34;&gt;`q35`&lt;/span&gt; machine type only supports &lt;span pulumi-lang-nodejs=&#34;`ide0`&#34; pulumi-lang-dotnet=&#34;`Ide0`&#34; pulumi-lang-go=&#34;`ide0`&#34; pulumi-lang-python=&#34;`ide0`&#34; pulumi-lang-yaml=&#34;`ide0`&#34; pulumi-lang-java=&#34;`ide0`&#34;&gt;`ide0`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`ide2`&#34; pulumi-lang-dotnet=&#34;`Ide2`&#34; pulumi-lang-go=&#34;`ide2`&#34; pulumi-lang-python=&#34;`ide2`&#34; pulumi-lang-yaml=&#34;`ide2`&#34; pulumi-lang-java=&#34;`ide2`&#34;&gt;`ide2`&lt;/span&gt; of IDE interfaces.
      * 
      */
     public Optional<String> interface_() {

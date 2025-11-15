@@ -19,7 +19,7 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
         public readonly bool? Acl;
         /// <summary>
         /// The identifier for the datastore to create the
-        /// disk in (defaults to `local`).
+        /// disk in (defaults to `Local`).
         /// </summary>
         public readonly string? DatastoreId;
         /// <summary>
@@ -37,7 +37,7 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
         /// <summary>
         /// The size of the root filesystem in gigabytes (defaults
         /// to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.
-        /// Requires `datastore_id` to be set.
+        /// Requires `DatastoreId` to be set.
         /// </summary>
         public readonly int? Size;
 

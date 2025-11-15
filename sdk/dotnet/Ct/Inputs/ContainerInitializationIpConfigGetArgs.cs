@@ -19,7 +19,7 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
         public Input<Inputs.ContainerInitializationIpConfigIpv4GetArgs>? Ipv4 { get; set; }
 
         /// <summary>
-        /// The IPv4 configuration.
+        /// The IPv6 configuration.
         /// </summary>
         [Input("ipv6")]
         public Input<Inputs.ContainerInitializationIpConfigIpv6GetArgs>? Ipv6 { get; set; }

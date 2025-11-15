@@ -22,7 +22,7 @@ namespace Pulumi.ProxmoxVE.Network.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Entries marked as `nomatch` are skipped as if those
+        /// Entries marked as `Nomatch` are skipped as if those
         /// were not added to the set.
         /// </summary>
         public readonly bool? Nomatch;

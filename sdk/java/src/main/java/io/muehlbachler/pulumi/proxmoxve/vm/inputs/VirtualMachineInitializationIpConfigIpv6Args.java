@@ -17,8 +17,8 @@ public final class VirtualMachineInitializationIpConfigIpv6Args extends com.pulu
 
     /**
      * The IPv6 address in CIDR notation
-     * (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
-     * to `dhcp` for autodiscovery.
+     * (e.g. fd1c::7334/64). Alternatively, set this
+     * to &lt;span pulumi-lang-nodejs=&#34;`dhcp`&#34; pulumi-lang-dotnet=&#34;`Dhcp`&#34; pulumi-lang-go=&#34;`dhcp`&#34; pulumi-lang-python=&#34;`dhcp`&#34; pulumi-lang-yaml=&#34;`dhcp`&#34; pulumi-lang-java=&#34;`dhcp`&#34;&gt;`dhcp`&lt;/span&gt; for autodiscovery.
      * 
      */
     @Import(name="address")
@@ -26,8 +26,8 @@ public final class VirtualMachineInitializationIpConfigIpv6Args extends com.pulu
 
     /**
      * @return The IPv6 address in CIDR notation
-     * (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
-     * to `dhcp` for autodiscovery.
+     * (e.g. fd1c::7334/64). Alternatively, set this
+     * to &lt;span pulumi-lang-nodejs=&#34;`dhcp`&#34; pulumi-lang-dotnet=&#34;`Dhcp`&#34; pulumi-lang-go=&#34;`dhcp`&#34; pulumi-lang-python=&#34;`dhcp`&#34; pulumi-lang-yaml=&#34;`dhcp`&#34; pulumi-lang-java=&#34;`dhcp`&#34;&gt;`dhcp`&lt;/span&gt; for autodiscovery.
      * 
      */
     public Optional<Output<String>> address() {
@@ -36,7 +36,7 @@ public final class VirtualMachineInitializationIpConfigIpv6Args extends com.pulu
 
     /**
      * The IPv6 gateway (must be omitted
-     * when `dhcp` is used as the address).
+     * when &lt;span pulumi-lang-nodejs=&#34;`dhcp`&#34; pulumi-lang-dotnet=&#34;`Dhcp`&#34; pulumi-lang-go=&#34;`dhcp`&#34; pulumi-lang-python=&#34;`dhcp`&#34; pulumi-lang-yaml=&#34;`dhcp`&#34; pulumi-lang-java=&#34;`dhcp`&#34;&gt;`dhcp`&lt;/span&gt; is used as the address).
      * 
      */
     @Import(name="gateway")
@@ -44,7 +44,7 @@ public final class VirtualMachineInitializationIpConfigIpv6Args extends com.pulu
 
     /**
      * @return The IPv6 gateway (must be omitted
-     * when `dhcp` is used as the address).
+     * when &lt;span pulumi-lang-nodejs=&#34;`dhcp`&#34; pulumi-lang-dotnet=&#34;`Dhcp`&#34; pulumi-lang-go=&#34;`dhcp`&#34; pulumi-lang-python=&#34;`dhcp`&#34; pulumi-lang-yaml=&#34;`dhcp`&#34; pulumi-lang-java=&#34;`dhcp`&#34;&gt;`dhcp`&lt;/span&gt; is used as the address).
      * 
      */
     public Optional<Output<String>> gateway() {
@@ -78,8 +78,8 @@ public final class VirtualMachineInitializationIpConfigIpv6Args extends com.pulu
 
         /**
          * @param address The IPv6 address in CIDR notation
-         * (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
-         * to `dhcp` for autodiscovery.
+         * (e.g. fd1c::7334/64). Alternatively, set this
+         * to &lt;span pulumi-lang-nodejs=&#34;`dhcp`&#34; pulumi-lang-dotnet=&#34;`Dhcp`&#34; pulumi-lang-go=&#34;`dhcp`&#34; pulumi-lang-python=&#34;`dhcp`&#34; pulumi-lang-yaml=&#34;`dhcp`&#34; pulumi-lang-java=&#34;`dhcp`&#34;&gt;`dhcp`&lt;/span&gt; for autodiscovery.
          * 
          * @return builder
          * 
@@ -91,8 +91,8 @@ public final class VirtualMachineInitializationIpConfigIpv6Args extends com.pulu
 
         /**
          * @param address The IPv6 address in CIDR notation
-         * (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
-         * to `dhcp` for autodiscovery.
+         * (e.g. fd1c::7334/64). Alternatively, set this
+         * to &lt;span pulumi-lang-nodejs=&#34;`dhcp`&#34; pulumi-lang-dotnet=&#34;`Dhcp`&#34; pulumi-lang-go=&#34;`dhcp`&#34; pulumi-lang-python=&#34;`dhcp`&#34; pulumi-lang-yaml=&#34;`dhcp`&#34; pulumi-lang-java=&#34;`dhcp`&#34;&gt;`dhcp`&lt;/span&gt; for autodiscovery.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class VirtualMachineInitializationIpConfigIpv6Args extends com.pulu
 
         /**
          * @param gateway The IPv6 gateway (must be omitted
-         * when `dhcp` is used as the address).
+         * when &lt;span pulumi-lang-nodejs=&#34;`dhcp`&#34; pulumi-lang-dotnet=&#34;`Dhcp`&#34; pulumi-lang-go=&#34;`dhcp`&#34; pulumi-lang-python=&#34;`dhcp`&#34; pulumi-lang-yaml=&#34;`dhcp`&#34; pulumi-lang-java=&#34;`dhcp`&#34;&gt;`dhcp`&lt;/span&gt; is used as the address).
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class VirtualMachineInitializationIpConfigIpv6Args extends com.pulu
 
         /**
          * @param gateway The IPv6 gateway (must be omitted
-         * when `dhcp` is used as the address).
+         * when &lt;span pulumi-lang-nodejs=&#34;`dhcp`&#34; pulumi-lang-dotnet=&#34;`Dhcp`&#34; pulumi-lang-go=&#34;`dhcp`&#34; pulumi-lang-python=&#34;`dhcp`&#34; pulumi-lang-yaml=&#34;`dhcp`&#34; pulumi-lang-java=&#34;`dhcp`&#34;&gt;`dhcp`&lt;/span&gt; is used as the address).
          * 
          * @return builder
          * 

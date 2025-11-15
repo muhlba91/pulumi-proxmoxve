@@ -13,14 +13,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
- * const influxdbServer = new proxmoxve.metrics.MetricsServer("influxdbServer", {
- *     port: 8089,
+ * const influxdbServer = new proxmoxve.metrics.MetricsServer("influxdb_server", {
+ *     name: "example_influxdb_server",
  *     server: "192.168.3.2",
+ *     port: 8089,
  *     type: "influxdb",
  * });
- * const graphiteServer = new proxmoxve.metrics.MetricsServer("graphiteServer", {
- *     port: 2003,
+ * const graphiteServer = new proxmoxve.metrics.MetricsServer("graphite_server", {
+ *     name: "example_graphite_server",
  *     server: "192.168.4.2",
+ *     port: 2003,
  *     type: "graphite",
  * });
  * ```

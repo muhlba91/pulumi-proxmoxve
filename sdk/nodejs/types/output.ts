@@ -342,8 +342,8 @@ export namespace CT {
          */
         domain?: string;
         /**
-         * The DNS server. The `server` attribute is
-         * deprecated and will be removed in a future release. Please use
+         * The DNS server.
+         * The `server` attribute is deprecated and will be removed in a future release. Please use
          * the `servers` attribute instead.
          *
          * @deprecated The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
@@ -361,14 +361,16 @@ export namespace CT {
          */
         ipv4?: outputs.CT.ContainerInitializationIpConfigIpv4;
         /**
-         * The IPv4 configuration.
+         * The IPv6 configuration.
          */
         ipv6?: outputs.CT.ContainerInitializationIpConfigIpv6;
     }
 
     export interface ContainerInitializationIpConfigIpv4 {
         /**
-         * The IPv4 address (use `dhcp` for auto-discovery).
+         * The IPv4 address in CIDR notation
+         * (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
+         * autodiscovery.
          */
         address?: string;
         /**
@@ -380,7 +382,9 @@ export namespace CT {
 
     export interface ContainerInitializationIpConfigIpv6 {
         /**
-         * The IPv6 address (use `dhcp` for auto-discovery).
+         * The IPv6 address in CIDR notation
+         * (e.g. fd1c::7334/64). Alternatively, set this
+         * to `dhcp` for autodiscovery.
          */
         address?: string;
         /**
@@ -1815,7 +1819,7 @@ export namespace VM {
     export interface VirtualMachineInitializationIpConfigIpv6 {
         /**
          * The IPv6 address in CIDR notation
-         * (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
+         * (e.g. fd1c::7334/64). Alternatively, set this
          * to `dhcp` for autodiscovery.
          */
         address?: string;

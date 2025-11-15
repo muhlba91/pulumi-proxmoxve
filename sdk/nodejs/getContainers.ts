@@ -19,6 +19,10 @@ import * as utilities from "./utilities";
  *     tags: ["ubuntu"],
  * });
  * const ubuntuTemplates = proxmoxve.getContainers({
+ *     tags: [
+ *         "template",
+ *         "latest",
+ *     ],
  *     filters: [
  *         {
  *             name: "template",
@@ -41,10 +45,6 @@ import * as utilities from "./utilities";
  *                 "node_eu_[1-3]",
  *             ],
  *         },
- *     ],
- *     tags: [
- *         "template",
- *         "latest",
  *     ],
  * });
  * ```
@@ -113,6 +113,10 @@ export interface GetContainersResult {
  *     tags: ["ubuntu"],
  * });
  * const ubuntuTemplates = proxmoxve.getContainers({
+ *     tags: [
+ *         "template",
+ *         "latest",
+ *     ],
  *     filters: [
  *         {
  *             name: "template",
@@ -135,10 +139,6 @@ export interface GetContainersResult {
  *                 "node_eu_[1-3]",
  *             ],
  *         },
- *     ],
- *     tags: [
- *         "template",
- *         "latest",
  *     ],
  * });
  * ```

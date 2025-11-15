@@ -15,17 +15,17 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
     {
         /// <summary>
         /// The name of the network bridge (defaults
-        /// to `vmbr0`).
+        /// to `Vmbr0`).
         /// </summary>
         public readonly string? Bridge;
         /// <summary>
         /// Whether to enable the network device (defaults
-        /// to `true`).
+        /// to `True`).
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
         /// Whether this interface's firewall rules should be
-        /// used (defaults to `false`).
+        /// used (defaults to `False`).
         /// </summary>
         public readonly bool? Firewall;
         /// <summary>

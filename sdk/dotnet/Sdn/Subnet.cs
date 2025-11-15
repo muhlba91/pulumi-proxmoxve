@@ -12,6 +12,140 @@ namespace Pulumi.ProxmoxVE.Sdn
     /// <summary>
     /// Manages SDN Subnets in Proxmox VE.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var finalizer = new ProxmoxVE.Sdn.Applier("finalizer");
+    /// 
+    ///     // SDN Zone (Simple) - Basic zone for simple vnets
+    ///     var exampleZone1 = new ProxmoxVE.SDNZone.Simple("example_zone_1", new()
+    ///     {
+    ///         ZoneId = "zone1",
+    ///         Nodes = new[]
+    ///         {
+    ///             "pve",
+    ///         },
+    ///         Mtu = 1500,
+    ///         Dns = "1.1.1.1",
+    ///         DnsZone = "example.com",
+    ///         Ipam = "pve",
+    ///         ReverseDns = "1.1.1.1",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             finalizer,
+    ///         },
+    ///     });
+    /// 
+    ///     // SDN Zone (Simple) - Second zone for demonstration
+    ///     var exampleZone2 = new ProxmoxVE.SDNZone.Simple("example_zone_2", new()
+    ///     {
+    ///         ZoneId = "zone2",
+    ///         Nodes = new[]
+    ///         {
+    ///             "pve",
+    ///         },
+    ///         Mtu = 1500,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             finalizer,
+    ///         },
+    ///     });
+    /// 
+    ///     // SDN VNet - Basic vnet
+    ///     var exampleVnet1 = new ProxmoxVE.Sdn.Vnet("example_vnet_1", new()
+    ///     {
+    ///         VnetId = "vnet1",
+    ///         Zone = exampleZone1.ZoneId,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             finalizer,
+    ///         },
+    ///     });
+    /// 
+    ///     // SDN VNet - VNet with alias and port isolation
+    ///     var exampleVnet2 = new ProxmoxVE.Sdn.Vnet("example_vnet_2", new()
+    ///     {
+    ///         VnetId = "vnet2",
+    ///         Zone = exampleZone2.ZoneId,
+    ///         Alias = "Example VNet 2",
+    ///         IsolatePorts = true,
+    ///         VlanAware = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             finalizer,
+    ///         },
+    ///     });
+    /// 
+    ///     // Basic Subnet
+    ///     var basicSubnet = new ProxmoxVE.Sdn.Subnet("basic_subnet", new()
+    ///     {
+    ///         Cidr = "192.168.1.0/24",
+    ///         Vnet = exampleVnet1.VnetId,
+    ///         Gateway = "192.168.1.1",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             finalizer,
+    ///         },
+    ///     });
+    /// 
+    ///     // Subnet with DHCP Configuration
+    ///     var dhcpSubnet = new ProxmoxVE.Sdn.Subnet("dhcp_subnet", new()
+    ///     {
+    ///         Cidr = "192.168.2.0/24",
+    ///         Vnet = exampleVnet2.VnetId,
+    ///         Gateway = "192.168.2.1",
+    ///         DhcpDnsServer = "192.168.2.53",
+    ///         DnsZonePrefix = "internal.example.com",
+    ///         Snat = true,
+    ///         DhcpRange = new ProxmoxVE.Sdn.Inputs.SubnetDhcpRangeArgs
+    ///         {
+    ///             StartAddress = "192.168.2.10",
+    ///             EndAddress = "192.168.2.100",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             finalizer,
+    ///         },
+    ///     });
+    /// 
+    ///     // SDN Applier for all resources
+    ///     var subnetApplier = new ProxmoxVE.Sdn.Applier("subnet_applier", new()
+    ///     {
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             exampleZone1,
+    ///             exampleZone2,
+    ///             exampleVnet1,
+    ///             exampleVnet2,
+    ///             basicSubnet,
+    ///             dhcpSubnet,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// #!/usr/bin/env sh

@@ -10,15 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.Storage
 {
     /// <summary>
-    /// Use this resource to upload files to a Proxmox VE node. The file can be a backup, an ISO image, a Disk Image, a snippet, or a container template depending on the `content_type` attribute.
+    /// Use this resource to upload files to a Proxmox VE node. The file can be a backup, an ISO image, a Disk Image, a snippet, or a container template depending on the `ContentType` attribute.
     /// 
     /// ## Example Usage
     /// 
-    /// ### Backups (`backup`)
+    /// ### Backups (`Backup`)
     /// 
-    /// &gt; The resource with this content type uses SSH access to the node. You might need to configure the `ssh` option in the `provider` section.
+    /// &gt; The resource with this content type uses SSH access to the node. You might need to configure the `Ssh` option in the `Provider` section.
     /// 
-    /// &gt; The provider currently does not support restoring backups. You can use the Proxmox VE web interface or the `qmrestore` / `pct restore` command to restore VM / Container from a backup.
+    /// &gt; The provider currently does not support restoring backups. You can use the Proxmox VE web interface or the `Qmrestore` / `pct restore` command to restore VM / Container from a backup.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -46,7 +46,7 @@ namespace Pulumi.ProxmoxVE.Storage
     /// 
     /// &gt; Consider using `proxmoxve.Download.File` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.
     /// 
-    /// &gt; Importing Disks is not enabled by default in new Proxmox installations. You need to enable them in the 'Datacenter&gt;Storage' section of the proxmox interface before first using this resource with `content_type = "import"`.
+    /// &gt; Importing Disks is not enabled by default in new Proxmox installations. You need to enable them in the 'Datacenter&gt;Storage' section of the proxmox interface before first using this resource with `ContentType = "import"`.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -56,7 +56,7 @@ namespace Pulumi.ProxmoxVE.Storage
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ubuntuContainerTemplate = new ProxmoxVE.Storage.File("ubuntuContainerTemplate", new()
+    ///     var ubuntuContainerTemplate = new ProxmoxVE.Storage.File("ubuntu_container_template", new()
     ///     {
     ///         ContentType = "iso",
     ///         DatastoreId = "local",
@@ -78,7 +78,7 @@ namespace Pulumi.ProxmoxVE.Storage
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ubuntuContainerTemplate = new ProxmoxVE.Storage.File("ubuntuContainerTemplate", new()
+    ///     var ubuntuContainerTemplate = new ProxmoxVE.Storage.File("ubuntu_container_template", new()
     ///     {
     ///         ContentType = "import",
     ///         DatastoreId = "local",
@@ -92,7 +92,85 @@ namespace Pulumi.ProxmoxVE.Storage
     /// });
     /// ```
     /// 
-    /// ### Container Template (`vztmpl`)
+    /// ### Snippets
+    /// 
+    /// &gt; Snippets are not enabled by default in new Proxmox installations. You need to enable them in the 'Datacenter&gt;Storage' section of the proxmox interface before first using this resource.
+    /// 
+    /// &gt; The resource with this content type uses SSH access to the node. You might need to configure the `Ssh` option in the `Provider` section.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cloudConfig = new ProxmoxVE.Storage.File("cloud_config", new()
+    ///     {
+    ///         ContentType = "snippets",
+    ///         DatastoreId = "local",
+    ///         NodeName = "pve",
+    ///         SourceRaw = new ProxmoxVE.Storage.Inputs.FileSourceRawArgs
+    ///         {
+    ///             Data = Std.Trimspace.Invoke(new()
+    ///             {
+    ///                 Input = example.PublicKeyOpenssh,
+    ///             }).Apply(invoke =&gt; @$"#cloud-config
+    /// chpasswd:
+    ///   list: |
+    ///     ubuntu:example
+    ///   expire: false
+    /// hostname: example-hostname
+    /// packages:
+    ///   - qemu-guest-agent
+    /// users:
+    ///   - default
+    ///   - name: ubuntu
+    ///     groups: sudo
+    ///     shell: /bin/bash
+    ///     ssh-authorized-keys:
+    ///       - {invoke.Result}
+    ///     sudo: ALL=(ALL) NOPASSWD:ALL
+    /// "),
+    ///             FileName = "example.cloud-config.yaml",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// The `FileMode` attribute can be used to make a script file executable, e.g. when referencing the file in the `HookScriptFileId` attribute of a container or a VM resource which is a requirement enforced by the Proxmox VE API.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var hookScript = new ProxmoxVE.Storage.File("hook_script", new()
+    ///     {
+    ///         ContentType = "snippets",
+    ///         DatastoreId = "local",
+    ///         NodeName = "pve",
+    ///         FileMode = "0700",
+    ///         SourceRaw = new ProxmoxVE.Storage.Inputs.FileSourceRawArgs
+    ///         {
+    ///             Data = @"#!/usr/bin/env bash
+    /// 
+    /// echo \""Running hook script\""
+    /// ",
+    ///             FileName = "prepare-hook.sh",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Container Template (`Vztmpl`)
     /// 
     /// &gt; Consider using `proxmoxve.Download.File` resource instead. Using this resource for container images is less efficient (requires to transfer uploaded image to node) though still supported.
     /// 
@@ -104,7 +182,7 @@ namespace Pulumi.ProxmoxVE.Storage
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ubuntuContainerTemplate = new ProxmoxVE.Storage.File("ubuntuContainerTemplate", new()
+    ///     var ubuntuContainerTemplate = new ProxmoxVE.Storage.File("ubuntu_container_template", new()
     ///     {
     ///         ContentType = "vztmpl",
     ///         DatastoreId = "local",
@@ -131,7 +209,7 @@ namespace Pulumi.ProxmoxVE.Storage
     /// By default, if the specified file already exists, the resource will
     /// unconditionally replace it and take ownership of the resource. On destruction,
     /// the file will be deleted as if it did not exist before. If you want to prevent
-    /// the resource from replacing the file, set `overwrite` to `false`.
+    /// the resource from replacing the file, set `Overwrite` to `False`.
     /// 
     /// ## Import
     /// 
@@ -205,13 +283,13 @@ namespace Pulumi.ProxmoxVE.Storage
 
         /// <summary>
         /// Whether to overwrite an existing file (defaults to
-        /// `true`).
+        /// `True`).
         /// </summary>
         [Output("overwrite")]
         public Output<bool?> Overwrite { get; private set; } = null!;
 
         /// <summary>
-        /// The source file (conflicts with `source_raw`),
+        /// The source file (conflicts with `SourceRaw`),
         /// could be a local file or a URL. If the source file is a URL, the file will
         /// be downloaded and stored locally before uploading it to Proxmox VE.
         /// </summary>
@@ -219,7 +297,7 @@ namespace Pulumi.ProxmoxVE.Storage
         public Output<Outputs.FileSourceFile?> SourceFile { get; private set; } = null!;
 
         /// <summary>
-        /// The raw source (conflicts with `source_file`).
+        /// The raw source (conflicts with `SourceFile`).
         /// </summary>
         [Output("sourceRaw")]
         public Output<Outputs.FileSourceRaw?> SourceRaw { get; private set; } = null!;
@@ -305,13 +383,13 @@ namespace Pulumi.ProxmoxVE.Storage
 
         /// <summary>
         /// Whether to overwrite an existing file (defaults to
-        /// `true`).
+        /// `True`).
         /// </summary>
         [Input("overwrite")]
         public Input<bool>? Overwrite { get; set; }
 
         /// <summary>
-        /// The source file (conflicts with `source_raw`),
+        /// The source file (conflicts with `SourceRaw`),
         /// could be a local file or a URL. If the source file is a URL, the file will
         /// be downloaded and stored locally before uploading it to Proxmox VE.
         /// </summary>
@@ -319,7 +397,7 @@ namespace Pulumi.ProxmoxVE.Storage
         public Input<Inputs.FileSourceFileArgs>? SourceFile { get; set; }
 
         /// <summary>
-        /// The raw source (conflicts with `source_file`).
+        /// The raw source (conflicts with `SourceFile`).
         /// </summary>
         [Input("sourceRaw")]
         public Input<Inputs.FileSourceRawArgs>? SourceRaw { get; set; }
@@ -390,13 +468,13 @@ namespace Pulumi.ProxmoxVE.Storage
 
         /// <summary>
         /// Whether to overwrite an existing file (defaults to
-        /// `true`).
+        /// `True`).
         /// </summary>
         [Input("overwrite")]
         public Input<bool>? Overwrite { get; set; }
 
         /// <summary>
-        /// The source file (conflicts with `source_raw`),
+        /// The source file (conflicts with `SourceRaw`),
         /// could be a local file or a URL. If the source file is a URL, the file will
         /// be downloaded and stored locally before uploading it to Proxmox VE.
         /// </summary>
@@ -404,7 +482,7 @@ namespace Pulumi.ProxmoxVE.Storage
         public Input<Inputs.FileSourceFileGetArgs>? SourceFile { get; set; }
 
         /// <summary>
-        /// The raw source (conflicts with `source_file`).
+        /// The raw source (conflicts with `SourceFile`).
         /// </summary>
         [Input("sourceRaw")]
         public Input<Inputs.FileSourceRawGetArgs>? SourceRaw { get; set; }

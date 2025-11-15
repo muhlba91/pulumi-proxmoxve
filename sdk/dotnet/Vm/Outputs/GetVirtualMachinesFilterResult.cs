@@ -14,7 +14,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     public sealed class GetVirtualMachinesFilterResult
     {
         /// <summary>
-        /// Name of the VM attribute to filter on. One of [`name`, `template`, `status`, `node_name`]
+        /// Name of the VM attribute to filter on. One of [`Name`, `Template`, `Status`, `NodeName`]
         /// </summary>
         public readonly string Name;
         /// <summary>

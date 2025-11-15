@@ -26,14 +26,14 @@ public final class VirtualMachine2Args extends com.pulumi.resources.ResourceArgs
     public static final VirtualMachine2Args Empty = new VirtualMachine2Args();
 
     /**
-     * The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+     * The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that &lt;span pulumi-lang-nodejs=&#34;`q35`&#34; pulumi-lang-dotnet=&#34;`Q35`&#34; pulumi-lang-go=&#34;`q35`&#34; pulumi-lang-python=&#34;`q35`&#34; pulumi-lang-yaml=&#34;`q35`&#34; pulumi-lang-java=&#34;`q35`&#34;&gt;`q35`&lt;/span&gt; machine type only supports &lt;span pulumi-lang-nodejs=&#34;`ide0`&#34; pulumi-lang-dotnet=&#34;`Ide0`&#34; pulumi-lang-go=&#34;`ide0`&#34; pulumi-lang-python=&#34;`ide0`&#34; pulumi-lang-yaml=&#34;`ide0`&#34; pulumi-lang-java=&#34;`ide0`&#34;&gt;`ide0`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`ide2`&#34; pulumi-lang-dotnet=&#34;`Ide2`&#34; pulumi-lang-go=&#34;`ide2`&#34; pulumi-lang-python=&#34;`ide2`&#34; pulumi-lang-yaml=&#34;`ide2`&#34; pulumi-lang-java=&#34;`ide2`&#34;&gt;`ide2`&lt;/span&gt; of IDE interfaces.
      * 
      */
     @Import(name="cdrom")
     private @Nullable Output<Map<String,VirtualMachine2CdromArgs>> cdrom;
 
     /**
-     * @return The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+     * @return The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that &lt;span pulumi-lang-nodejs=&#34;`q35`&#34; pulumi-lang-dotnet=&#34;`Q35`&#34; pulumi-lang-go=&#34;`q35`&#34; pulumi-lang-python=&#34;`q35`&#34; pulumi-lang-yaml=&#34;`q35`&#34; pulumi-lang-java=&#34;`q35`&#34;&gt;`q35`&lt;/span&gt; machine type only supports &lt;span pulumi-lang-nodejs=&#34;`ide0`&#34; pulumi-lang-dotnet=&#34;`Ide0`&#34; pulumi-lang-go=&#34;`ide0`&#34; pulumi-lang-python=&#34;`ide0`&#34; pulumi-lang-yaml=&#34;`ide0`&#34; pulumi-lang-java=&#34;`ide0`&#34;&gt;`ide0`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`ide2`&#34; pulumi-lang-dotnet=&#34;`Ide2`&#34; pulumi-lang-go=&#34;`ide2`&#34; pulumi-lang-python=&#34;`ide2`&#34; pulumi-lang-yaml=&#34;`ide2`&#34; pulumi-lang-java=&#34;`ide2`&#34;&gt;`ide2`&lt;/span&gt; of IDE interfaces.
      * 
      */
     public Optional<Output<Map<String,VirtualMachine2CdromArgs>>> cdrom() {
@@ -131,14 +131,14 @@ public final class VirtualMachine2Args extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
+     * Set to true to stop (rather than shutdown) the VM on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Import(name="stopOnDestroy")
     private @Nullable Output<Boolean> stopOnDestroy;
 
     /**
-     * @return Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
+     * @return Set to true to stop (rather than shutdown) the VM on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> stopOnDestroy() {
@@ -183,14 +183,14 @@ public final class VirtualMachine2Args extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Configure the VGA Hardware. If you want to use high resolution modes (&gt;= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
+     * Configure the VGA Hardware. If you want to use high resolution modes (&gt;= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is &lt;span pulumi-lang-nodejs=&#34;`std`&#34; pulumi-lang-dotnet=&#34;`Std`&#34; pulumi-lang-go=&#34;`std`&#34; pulumi-lang-python=&#34;`std`&#34; pulumi-lang-yaml=&#34;`std`&#34; pulumi-lang-java=&#34;`std`&#34;&gt;`std`&lt;/span&gt; for all OS types besides some Windows versions (XP and older) which use &lt;span pulumi-lang-nodejs=&#34;`cirrus`&#34; pulumi-lang-dotnet=&#34;`Cirrus`&#34; pulumi-lang-go=&#34;`cirrus`&#34; pulumi-lang-python=&#34;`cirrus`&#34; pulumi-lang-yaml=&#34;`cirrus`&#34; pulumi-lang-java=&#34;`cirrus`&#34;&gt;`cirrus`&lt;/span&gt;. The &lt;span pulumi-lang-nodejs=&#34;`qxl`&#34; pulumi-lang-dotnet=&#34;`Qxl`&#34; pulumi-lang-go=&#34;`qxl`&#34; pulumi-lang-python=&#34;`qxl`&#34; pulumi-lang-yaml=&#34;`qxl`&#34; pulumi-lang-java=&#34;`qxl`&#34;&gt;`qxl`&lt;/span&gt; option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
      * 
      */
     @Import(name="vga")
     private @Nullable Output<VirtualMachine2VgaArgs> vga;
 
     /**
-     * @return Configure the VGA Hardware. If you want to use high resolution modes (&gt;= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
+     * @return Configure the VGA Hardware. If you want to use high resolution modes (&gt;= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is &lt;span pulumi-lang-nodejs=&#34;`std`&#34; pulumi-lang-dotnet=&#34;`Std`&#34; pulumi-lang-go=&#34;`std`&#34; pulumi-lang-python=&#34;`std`&#34; pulumi-lang-yaml=&#34;`std`&#34; pulumi-lang-java=&#34;`std`&#34;&gt;`std`&lt;/span&gt; for all OS types besides some Windows versions (XP and older) which use &lt;span pulumi-lang-nodejs=&#34;`cirrus`&#34; pulumi-lang-dotnet=&#34;`Cirrus`&#34; pulumi-lang-go=&#34;`cirrus`&#34; pulumi-lang-python=&#34;`cirrus`&#34; pulumi-lang-yaml=&#34;`cirrus`&#34; pulumi-lang-java=&#34;`cirrus`&#34;&gt;`cirrus`&lt;/span&gt;. The &lt;span pulumi-lang-nodejs=&#34;`qxl`&#34; pulumi-lang-dotnet=&#34;`Qxl`&#34; pulumi-lang-go=&#34;`qxl`&#34; pulumi-lang-python=&#34;`qxl`&#34; pulumi-lang-yaml=&#34;`qxl`&#34; pulumi-lang-java=&#34;`qxl`&#34;&gt;`qxl`&lt;/span&gt; option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
      * 
      */
     public Optional<Output<VirtualMachine2VgaArgs>> vga() {
@@ -233,7 +233,7 @@ public final class VirtualMachine2Args extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param cdrom The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+         * @param cdrom The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that &lt;span pulumi-lang-nodejs=&#34;`q35`&#34; pulumi-lang-dotnet=&#34;`Q35`&#34; pulumi-lang-go=&#34;`q35`&#34; pulumi-lang-python=&#34;`q35`&#34; pulumi-lang-yaml=&#34;`q35`&#34; pulumi-lang-java=&#34;`q35`&#34;&gt;`q35`&lt;/span&gt; machine type only supports &lt;span pulumi-lang-nodejs=&#34;`ide0`&#34; pulumi-lang-dotnet=&#34;`Ide0`&#34; pulumi-lang-go=&#34;`ide0`&#34; pulumi-lang-python=&#34;`ide0`&#34; pulumi-lang-yaml=&#34;`ide0`&#34; pulumi-lang-java=&#34;`ide0`&#34;&gt;`ide0`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`ide2`&#34; pulumi-lang-dotnet=&#34;`Ide2`&#34; pulumi-lang-go=&#34;`ide2`&#34; pulumi-lang-python=&#34;`ide2`&#34; pulumi-lang-yaml=&#34;`ide2`&#34; pulumi-lang-java=&#34;`ide2`&#34;&gt;`ide2`&lt;/span&gt; of IDE interfaces.
          * 
          * @return builder
          * 
@@ -244,7 +244,7 @@ public final class VirtualMachine2Args extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param cdrom The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+         * @param cdrom The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that &lt;span pulumi-lang-nodejs=&#34;`q35`&#34; pulumi-lang-dotnet=&#34;`Q35`&#34; pulumi-lang-go=&#34;`q35`&#34; pulumi-lang-python=&#34;`q35`&#34; pulumi-lang-yaml=&#34;`q35`&#34; pulumi-lang-java=&#34;`q35`&#34;&gt;`q35`&lt;/span&gt; machine type only supports &lt;span pulumi-lang-nodejs=&#34;`ide0`&#34; pulumi-lang-dotnet=&#34;`Ide0`&#34; pulumi-lang-go=&#34;`ide0`&#34; pulumi-lang-python=&#34;`ide0`&#34; pulumi-lang-yaml=&#34;`ide0`&#34; pulumi-lang-java=&#34;`ide0`&#34;&gt;`ide0`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`ide2`&#34; pulumi-lang-dotnet=&#34;`Ide2`&#34; pulumi-lang-go=&#34;`ide2`&#34; pulumi-lang-python=&#34;`ide2`&#34; pulumi-lang-yaml=&#34;`ide2`&#34; pulumi-lang-java=&#34;`ide2`&#34;&gt;`ide2`&lt;/span&gt; of IDE interfaces.
          * 
          * @return builder
          * 
@@ -380,7 +380,7 @@ public final class VirtualMachine2Args extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param stopOnDestroy Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
+         * @param stopOnDestroy Set to true to stop (rather than shutdown) the VM on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -391,7 +391,7 @@ public final class VirtualMachine2Args extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param stopOnDestroy Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
+         * @param stopOnDestroy Set to true to stop (rather than shutdown) the VM on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -462,7 +462,7 @@ public final class VirtualMachine2Args extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vga Configure the VGA Hardware. If you want to use high resolution modes (&gt;= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
+         * @param vga Configure the VGA Hardware. If you want to use high resolution modes (&gt;= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is &lt;span pulumi-lang-nodejs=&#34;`std`&#34; pulumi-lang-dotnet=&#34;`Std`&#34; pulumi-lang-go=&#34;`std`&#34; pulumi-lang-python=&#34;`std`&#34; pulumi-lang-yaml=&#34;`std`&#34; pulumi-lang-java=&#34;`std`&#34;&gt;`std`&lt;/span&gt; for all OS types besides some Windows versions (XP and older) which use &lt;span pulumi-lang-nodejs=&#34;`cirrus`&#34; pulumi-lang-dotnet=&#34;`Cirrus`&#34; pulumi-lang-go=&#34;`cirrus`&#34; pulumi-lang-python=&#34;`cirrus`&#34; pulumi-lang-yaml=&#34;`cirrus`&#34; pulumi-lang-java=&#34;`cirrus`&#34;&gt;`cirrus`&lt;/span&gt;. The &lt;span pulumi-lang-nodejs=&#34;`qxl`&#34; pulumi-lang-dotnet=&#34;`Qxl`&#34; pulumi-lang-go=&#34;`qxl`&#34; pulumi-lang-python=&#34;`qxl`&#34; pulumi-lang-yaml=&#34;`qxl`&#34; pulumi-lang-java=&#34;`qxl`&#34;&gt;`qxl`&lt;/span&gt; option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
          * 
          * @return builder
          * 
@@ -473,7 +473,7 @@ public final class VirtualMachine2Args extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vga Configure the VGA Hardware. If you want to use high resolution modes (&gt;= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
+         * @param vga Configure the VGA Hardware. If you want to use high resolution modes (&gt;= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is &lt;span pulumi-lang-nodejs=&#34;`std`&#34; pulumi-lang-dotnet=&#34;`Std`&#34; pulumi-lang-go=&#34;`std`&#34; pulumi-lang-python=&#34;`std`&#34; pulumi-lang-yaml=&#34;`std`&#34; pulumi-lang-java=&#34;`std`&#34;&gt;`std`&lt;/span&gt; for all OS types besides some Windows versions (XP and older) which use &lt;span pulumi-lang-nodejs=&#34;`cirrus`&#34; pulumi-lang-dotnet=&#34;`Cirrus`&#34; pulumi-lang-go=&#34;`cirrus`&#34; pulumi-lang-python=&#34;`cirrus`&#34; pulumi-lang-yaml=&#34;`cirrus`&#34; pulumi-lang-java=&#34;`cirrus`&#34;&gt;`cirrus`&lt;/span&gt;. The &lt;span pulumi-lang-nodejs=&#34;`qxl`&#34; pulumi-lang-dotnet=&#34;`Qxl`&#34; pulumi-lang-go=&#34;`qxl`&#34; pulumi-lang-python=&#34;`qxl`&#34; pulumi-lang-yaml=&#34;`qxl`&#34; pulumi-lang-java=&#34;`qxl`&#34;&gt;`qxl`&lt;/span&gt; option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
          * 
          * @return builder
          * 

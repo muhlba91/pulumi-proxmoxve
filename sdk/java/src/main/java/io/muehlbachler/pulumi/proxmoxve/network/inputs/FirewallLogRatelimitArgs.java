@@ -19,7 +19,7 @@ public final class FirewallLogRatelimitArgs extends com.pulumi.resources.Resourc
 
     /**
      * Initial burst of packages which will always get
-     * logged before the rate is applied (defaults to `5`).
+     * logged before the rate is applied (defaults to &lt;span pulumi-lang-nodejs=&#34;`5`&#34; pulumi-lang-dotnet=&#34;`5`&#34; pulumi-lang-go=&#34;`5`&#34; pulumi-lang-python=&#34;`5`&#34; pulumi-lang-yaml=&#34;`5`&#34; pulumi-lang-java=&#34;`5`&#34;&gt;`5`&lt;/span&gt;).
      * 
      */
     @Import(name="burst")
@@ -27,7 +27,7 @@ public final class FirewallLogRatelimitArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return Initial burst of packages which will always get
-     * logged before the rate is applied (defaults to `5`).
+     * logged before the rate is applied (defaults to &lt;span pulumi-lang-nodejs=&#34;`5`&#34; pulumi-lang-dotnet=&#34;`5`&#34; pulumi-lang-go=&#34;`5`&#34; pulumi-lang-python=&#34;`5`&#34; pulumi-lang-yaml=&#34;`5`&#34; pulumi-lang-java=&#34;`5`&#34;&gt;`5`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Integer>> burst() {
@@ -94,7 +94,7 @@ public final class FirewallLogRatelimitArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param burst Initial burst of packages which will always get
-         * logged before the rate is applied (defaults to `5`).
+         * logged before the rate is applied (defaults to &lt;span pulumi-lang-nodejs=&#34;`5`&#34; pulumi-lang-dotnet=&#34;`5`&#34; pulumi-lang-go=&#34;`5`&#34; pulumi-lang-python=&#34;`5`&#34; pulumi-lang-yaml=&#34;`5`&#34; pulumi-lang-java=&#34;`5`&#34;&gt;`5`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -106,7 +106,7 @@ public final class FirewallLogRatelimitArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param burst Initial burst of packages which will always get
-         * logged before the rate is applied (defaults to `5`).
+         * logged before the rate is applied (defaults to &lt;span pulumi-lang-nodejs=&#34;`5`&#34; pulumi-lang-dotnet=&#34;`5`&#34; pulumi-lang-go=&#34;`5`&#34; pulumi-lang-python=&#34;`5`&#34; pulumi-lang-yaml=&#34;`5`&#34; pulumi-lang-java=&#34;`5`&#34;&gt;`5`&lt;/span&gt;).
          * 
          * @return builder
          * 

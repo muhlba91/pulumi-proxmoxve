@@ -119,21 +119,24 @@ public final class SdnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // List all SDN zones
      *         final var all = SdnFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
+     *         // List only EVPN zones
      *         final var evpnOnly = SdnFunctions.getZones(GetZonesArgs.builder()
      *             .type("evpn")
      *             .build());
      * 
+     *         // List only Simple zones  
      *         final var simpleOnly = SdnFunctions.getZones(GetZonesArgs.builder()
      *             .type("simple")
      *             .build());
      * 
      *         ctx.export("dataProxmoxVirtualEnvironmentSdnZonesAll", Map.of("zones", all.zones()));
      *         ctx.export("dataProxmoxVirtualEnvironmentSdnZonesFiltered", Map.ofEntries(
-     *             Map.entry("evpn_zones", evpnOnly.zones()),
-     *             Map.entry("simple_zones", simpleOnly.zones())
+     *             Map.entry("evpnZones", evpnOnly.zones()),
+     *             Map.entry("simpleZones", simpleOnly.zones())
      *         ));
      *     }
      * }
@@ -173,21 +176,24 @@ public final class SdnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // List all SDN zones
      *         final var all = SdnFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
+     *         // List only EVPN zones
      *         final var evpnOnly = SdnFunctions.getZones(GetZonesArgs.builder()
      *             .type("evpn")
      *             .build());
      * 
+     *         // List only Simple zones  
      *         final var simpleOnly = SdnFunctions.getZones(GetZonesArgs.builder()
      *             .type("simple")
      *             .build());
      * 
      *         ctx.export("dataProxmoxVirtualEnvironmentSdnZonesAll", Map.of("zones", all.zones()));
      *         ctx.export("dataProxmoxVirtualEnvironmentSdnZonesFiltered", Map.ofEntries(
-     *             Map.entry("evpn_zones", evpnOnly.zones()),
-     *             Map.entry("simple_zones", simpleOnly.zones())
+     *             Map.entry("evpnZones", evpnOnly.zones()),
+     *             Map.entry("simpleZones", simpleOnly.zones())
      *         ));
      *     }
      * }
@@ -227,21 +233,24 @@ public final class SdnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // List all SDN zones
      *         final var all = SdnFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
+     *         // List only EVPN zones
      *         final var evpnOnly = SdnFunctions.getZones(GetZonesArgs.builder()
      *             .type("evpn")
      *             .build());
      * 
+     *         // List only Simple zones  
      *         final var simpleOnly = SdnFunctions.getZones(GetZonesArgs.builder()
      *             .type("simple")
      *             .build());
      * 
      *         ctx.export("dataProxmoxVirtualEnvironmentSdnZonesAll", Map.of("zones", all.zones()));
      *         ctx.export("dataProxmoxVirtualEnvironmentSdnZonesFiltered", Map.ofEntries(
-     *             Map.entry("evpn_zones", evpnOnly.zones()),
-     *             Map.entry("simple_zones", simpleOnly.zones())
+     *             Map.entry("evpnZones", evpnOnly.zones()),
+     *             Map.entry("simpleZones", simpleOnly.zones())
      *         ));
      *     }
      * }
@@ -281,21 +290,24 @@ public final class SdnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // List all SDN zones
      *         final var all = SdnFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
+     *         // List only EVPN zones
      *         final var evpnOnly = SdnFunctions.getZones(GetZonesArgs.builder()
      *             .type("evpn")
      *             .build());
      * 
+     *         // List only Simple zones  
      *         final var simpleOnly = SdnFunctions.getZones(GetZonesArgs.builder()
      *             .type("simple")
      *             .build());
      * 
      *         ctx.export("dataProxmoxVirtualEnvironmentSdnZonesAll", Map.of("zones", all.zones()));
      *         ctx.export("dataProxmoxVirtualEnvironmentSdnZonesFiltered", Map.ofEntries(
-     *             Map.entry("evpn_zones", evpnOnly.zones()),
-     *             Map.entry("simple_zones", simpleOnly.zones())
+     *             Map.entry("evpnZones", evpnOnly.zones()),
+     *             Map.entry("simpleZones", simpleOnly.zones())
      *         ));
      *     }
      * }
@@ -335,21 +347,24 @@ public final class SdnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // List all SDN zones
      *         final var all = SdnFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
+     *         // List only EVPN zones
      *         final var evpnOnly = SdnFunctions.getZones(GetZonesArgs.builder()
      *             .type("evpn")
      *             .build());
      * 
+     *         // List only Simple zones  
      *         final var simpleOnly = SdnFunctions.getZones(GetZonesArgs.builder()
      *             .type("simple")
      *             .build());
      * 
      *         ctx.export("dataProxmoxVirtualEnvironmentSdnZonesAll", Map.of("zones", all.zones()));
      *         ctx.export("dataProxmoxVirtualEnvironmentSdnZonesFiltered", Map.ofEntries(
-     *             Map.entry("evpn_zones", evpnOnly.zones()),
-     *             Map.entry("simple_zones", simpleOnly.zones())
+     *             Map.entry("evpnZones", evpnOnly.zones()),
+     *             Map.entry("simpleZones", simpleOnly.zones())
      *         ));
      *     }
      * }
@@ -389,21 +404,24 @@ public final class SdnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // List all SDN zones
      *         final var all = SdnFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
+     *         // List only EVPN zones
      *         final var evpnOnly = SdnFunctions.getZones(GetZonesArgs.builder()
      *             .type("evpn")
      *             .build());
      * 
+     *         // List only Simple zones  
      *         final var simpleOnly = SdnFunctions.getZones(GetZonesArgs.builder()
      *             .type("simple")
      *             .build());
      * 
      *         ctx.export("dataProxmoxVirtualEnvironmentSdnZonesAll", Map.of("zones", all.zones()));
      *         ctx.export("dataProxmoxVirtualEnvironmentSdnZonesFiltered", Map.ofEntries(
-     *             Map.entry("evpn_zones", evpnOnly.zones()),
-     *             Map.entry("simple_zones", simpleOnly.zones())
+     *             Map.entry("evpnZones", evpnOnly.zones()),
+     *             Map.entry("simpleZones", simpleOnly.zones())
      *         ));
      *     }
      * }
@@ -443,21 +461,24 @@ public final class SdnFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // List all SDN zones
      *         final var all = SdnFunctions.getZones(GetZonesArgs.builder()
      *             .build());
      * 
+     *         // List only EVPN zones
      *         final var evpnOnly = SdnFunctions.getZones(GetZonesArgs.builder()
      *             .type("evpn")
      *             .build());
      * 
+     *         // List only Simple zones  
      *         final var simpleOnly = SdnFunctions.getZones(GetZonesArgs.builder()
      *             .type("simple")
      *             .build());
      * 
      *         ctx.export("dataProxmoxVirtualEnvironmentSdnZonesAll", Map.of("zones", all.zones()));
      *         ctx.export("dataProxmoxVirtualEnvironmentSdnZonesFiltered", Map.ofEntries(
-     *             Map.entry("evpn_zones", evpnOnly.zones()),
-     *             Map.entry("simple_zones", simpleOnly.zones())
+     *             Map.entry("evpnZones", evpnOnly.zones()),
+     *             Map.entry("simpleZones", simpleOnly.zones())
      *         ));
      *     }
      * }

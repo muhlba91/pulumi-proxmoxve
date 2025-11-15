@@ -4339,7 +4339,7 @@ func (o VirtualMachineInitializationIpConfigIpv4PtrOutput) Gateway() pulumi.Stri
 
 type VirtualMachineInitializationIpConfigIpv6 struct {
 	// The IPv6 address in CIDR notation
-	// (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
+	// (e.g. fd1c::7334/64). Alternatively, set this
 	// to `dhcp` for autodiscovery.
 	Address *string `pulumi:"address"`
 	// The IPv6 gateway (must be omitted
@@ -4360,7 +4360,7 @@ type VirtualMachineInitializationIpConfigIpv6Input interface {
 
 type VirtualMachineInitializationIpConfigIpv6Args struct {
 	// The IPv6 address in CIDR notation
-	// (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
+	// (e.g. fd1c::7334/64). Alternatively, set this
 	// to `dhcp` for autodiscovery.
 	Address pulumi.StringPtrInput `pulumi:"address"`
 	// The IPv6 gateway (must be omitted
@@ -4446,7 +4446,7 @@ func (o VirtualMachineInitializationIpConfigIpv6Output) ToVirtualMachineInitiali
 }
 
 // The IPv6 address in CIDR notation
-// (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
+// (e.g. fd1c::7334/64). Alternatively, set this
 // to `dhcp` for autodiscovery.
 func (o VirtualMachineInitializationIpConfigIpv6Output) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationIpConfigIpv6) *string { return v.Address }).(pulumi.StringPtrOutput)
@@ -4483,7 +4483,7 @@ func (o VirtualMachineInitializationIpConfigIpv6PtrOutput) Elem() VirtualMachine
 }
 
 // The IPv6 address in CIDR notation
-// (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
+// (e.g. fd1c::7334/64). Alternatively, set this
 // to `dhcp` for autodiscovery.
 func (o VirtualMachineInitializationIpConfigIpv6PtrOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitializationIpConfigIpv6) *string {

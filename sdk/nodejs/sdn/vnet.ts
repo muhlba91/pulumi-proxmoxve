@@ -15,9 +15,8 @@ import * as utilities from "../utilities";
  *
  * const finalizer = new proxmoxve.sdn.Applier("finalizer", {});
  * // SDN Zone (Simple) - Basic zone for simple vnets
- * const exampleZone1 = new proxmoxve.sdnzone.Simple("exampleZone1", {
+ * const exampleZone1 = new proxmoxve.sdnzone.Simple("example_zone_1", {
  *     zoneId: "zone1",
- *     nodes: ["pve"],
  *     mtu: 1500,
  *     dns: "1.1.1.1",
  *     dnsZone: "example.com",
@@ -27,22 +26,21 @@ import * as utilities from "../utilities";
  *     dependsOn: [finalizer],
  * });
  * // SDN Zone (Simple) - Second zone for demonstration
- * const exampleZone2 = new proxmoxve.sdnzone.Simple("exampleZone2", {
+ * const exampleZone2 = new proxmoxve.sdnzone.Simple("example_zone_2", {
  *     zoneId: "zone2",
- *     nodes: ["pve"],
  *     mtu: 1500,
  * }, {
  *     dependsOn: [finalizer],
  * });
  * // Basic VNet (Simple)
- * const basicVnet = new proxmoxve.sdn.Vnet("basicVnet", {
+ * const basicVnet = new proxmoxve.sdn.Vnet("basic_vnet", {
  *     vnetId: "vnet1",
  *     zone: exampleZone1.zoneId,
  * }, {
  *     dependsOn: [finalizer],
  * });
  * // VNet with Alias and Port Isolation
- * const isolatedVnet = new proxmoxve.sdn.Vnet("isolatedVnet", {
+ * const isolatedVnet = new proxmoxve.sdn.Vnet("isolated_vnet", {
  *     vnetId: "vnet2",
  *     zone: exampleZone2.zoneId,
  *     alias: "Isolated VNet",
@@ -52,7 +50,7 @@ import * as utilities from "../utilities";
  *     dependsOn: [finalizer],
  * });
  * // SDN Applier for all resources
- * const vnetApplier = new proxmoxve.sdn.Applier("vnetApplier", {}, {
+ * const vnetApplier = new proxmoxve.sdn.Applier("vnet_applier", {}, {
  *     dependsOn: [
  *         exampleZone1,
  *         exampleZone2,

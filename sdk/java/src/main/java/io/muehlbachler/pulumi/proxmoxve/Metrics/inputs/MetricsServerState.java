@@ -18,14 +18,14 @@ public final class MetricsServerState extends com.pulumi.resources.ResourceArgs 
     public static final MetricsServerState Empty = new MetricsServerState();
 
     /**
-     * Set this to `true` to disable this metric server.
+     * Set this to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt; to disable this metric server.
      * 
      */
     @Import(name="disable")
     private @Nullable Output<Boolean> disable;
 
     /**
-     * @return Set this to `true` to disable this metric server.
+     * @return Set this to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt; to disable this metric server.
      * 
      */
     public Optional<Output<Boolean>> disable() {
@@ -48,14 +48,14 @@ public final class MetricsServerState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Protocol to send graphite data. Choice is between `udp` | `tcp`. If not set, PVE default is `udp`.
+     * Protocol to send graphite data. Choice is between &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`tcp`&#34; pulumi-lang-dotnet=&#34;`Tcp`&#34; pulumi-lang-go=&#34;`tcp`&#34; pulumi-lang-python=&#34;`tcp`&#34; pulumi-lang-yaml=&#34;`tcp`&#34; pulumi-lang-java=&#34;`tcp`&#34;&gt;`tcp`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt;.
      * 
      */
     @Import(name="graphiteProto")
     private @Nullable Output<String> graphiteProto;
 
     /**
-     * @return Protocol to send graphite data. Choice is between `udp` | `tcp`. If not set, PVE default is `udp`.
+     * @return Protocol to send graphite data. Choice is between &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`tcp`&#34; pulumi-lang-dotnet=&#34;`Tcp`&#34; pulumi-lang-go=&#34;`tcp`&#34; pulumi-lang-python=&#34;`tcp`&#34; pulumi-lang-yaml=&#34;`tcp`&#34; pulumi-lang-java=&#34;`tcp`&#34;&gt;`tcp`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt;.
      * 
      */
     public Optional<Output<String>> graphiteProto() {
@@ -93,14 +93,14 @@ public final class MetricsServerState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Protocol for InfluxDB. Choice is between `udp` | `http` | `https`. If not set, PVE default is `udp`.
+     * Protocol for InfluxDB. Choice is between &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`http`&#34; pulumi-lang-dotnet=&#34;`Http`&#34; pulumi-lang-go=&#34;`http`&#34; pulumi-lang-python=&#34;`http`&#34; pulumi-lang-yaml=&#34;`http`&#34; pulumi-lang-java=&#34;`http`&#34;&gt;`http`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`https`&#34; pulumi-lang-dotnet=&#34;`Https`&#34; pulumi-lang-go=&#34;`https`&#34; pulumi-lang-python=&#34;`https`&#34; pulumi-lang-yaml=&#34;`https`&#34; pulumi-lang-java=&#34;`https`&#34;&gt;`https`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt;.
      * 
      */
     @Import(name="influxDbProto")
     private @Nullable Output<String> influxDbProto;
 
     /**
-     * @return Protocol for InfluxDB. Choice is between `udp` | `http` | `https`. If not set, PVE default is `udp`.
+     * @return Protocol for InfluxDB. Choice is between &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`http`&#34; pulumi-lang-dotnet=&#34;`Http`&#34; pulumi-lang-go=&#34;`http`&#34; pulumi-lang-python=&#34;`http`&#34; pulumi-lang-yaml=&#34;`http`&#34; pulumi-lang-java=&#34;`http`&#34;&gt;`http`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`https`&#34; pulumi-lang-dotnet=&#34;`Https`&#34; pulumi-lang-go=&#34;`https`&#34; pulumi-lang-python=&#34;`https`&#34; pulumi-lang-yaml=&#34;`https`&#34; pulumi-lang-java=&#34;`https`&#34;&gt;`https`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt;.
      * 
      */
     public Optional<Output<String>> influxDbProto() {
@@ -108,14 +108,14 @@ public final class MetricsServerState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * InfluxDB max-body-size in bytes. Requests are batched up to this size. If not set, PVE default is `25000000`.
+     * InfluxDB max-body-size in bytes. Requests are batched up to this size. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`25000000`&#34; pulumi-lang-dotnet=&#34;`25000000`&#34; pulumi-lang-go=&#34;`25000000`&#34; pulumi-lang-python=&#34;`25000000`&#34; pulumi-lang-yaml=&#34;`25000000`&#34; pulumi-lang-java=&#34;`25000000`&#34;&gt;`25000000`&lt;/span&gt;.
      * 
      */
     @Import(name="influxMaxBodySize")
     private @Nullable Output<Integer> influxMaxBodySize;
 
     /**
-     * @return InfluxDB max-body-size in bytes. Requests are batched up to this size. If not set, PVE default is `25000000`.
+     * @return InfluxDB max-body-size in bytes. Requests are batched up to this size. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`25000000`&#34; pulumi-lang-dotnet=&#34;`25000000`&#34; pulumi-lang-go=&#34;`25000000`&#34; pulumi-lang-python=&#34;`25000000`&#34; pulumi-lang-yaml=&#34;`25000000`&#34; pulumi-lang-java=&#34;`25000000`&#34;&gt;`25000000`&lt;/span&gt;.
      * 
      */
     public Optional<Output<Integer>> influxMaxBodySize() {
@@ -153,14 +153,14 @@ public final class MetricsServerState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Set to `false` to disable certificate verification for https endpoints.
+     * Set to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt; to disable certificate verification for https endpoints.
      * 
      */
     @Import(name="influxVerify")
     private @Nullable Output<Boolean> influxVerify;
 
     /**
-     * @return Set to `false` to disable certificate verification for https endpoints.
+     * @return Set to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt; to disable certificate verification for https endpoints.
      * 
      */
     public Optional<Output<Boolean>> influxVerify() {
@@ -168,14 +168,14 @@ public final class MetricsServerState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
+     * MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`1500`&#34; pulumi-lang-dotnet=&#34;`1500`&#34; pulumi-lang-go=&#34;`1500`&#34; pulumi-lang-python=&#34;`1500`&#34; pulumi-lang-yaml=&#34;`1500`&#34; pulumi-lang-java=&#34;`1500`&#34;&gt;`1500`&lt;/span&gt; (allowed &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34;&gt;`512`&lt;/span&gt; - &lt;span pulumi-lang-nodejs=&#34;`65536`&#34; pulumi-lang-dotnet=&#34;`65536`&#34; pulumi-lang-go=&#34;`65536`&#34; pulumi-lang-python=&#34;`65536`&#34; pulumi-lang-yaml=&#34;`65536`&#34; pulumi-lang-java=&#34;`65536`&#34;&gt;`65536`&lt;/span&gt;).
      * 
      */
     @Import(name="mtu")
     private @Nullable Output<Integer> mtu;
 
     /**
-     * @return MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
+     * @return MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`1500`&#34; pulumi-lang-dotnet=&#34;`1500`&#34; pulumi-lang-go=&#34;`1500`&#34; pulumi-lang-python=&#34;`1500`&#34; pulumi-lang-yaml=&#34;`1500`&#34; pulumi-lang-java=&#34;`1500`&#34;&gt;`1500`&lt;/span&gt; (allowed &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34;&gt;`512`&lt;/span&gt; - &lt;span pulumi-lang-nodejs=&#34;`65536`&#34; pulumi-lang-dotnet=&#34;`65536`&#34; pulumi-lang-go=&#34;`65536`&#34; pulumi-lang-python=&#34;`65536`&#34; pulumi-lang-yaml=&#34;`65536`&#34; pulumi-lang-java=&#34;`65536`&#34;&gt;`65536`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Integer>> mtu() {
@@ -228,14 +228,14 @@ public final class MetricsServerState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * TCP socket timeout in seconds. If not set, PVE default is `1`.
+     * TCP socket timeout in seconds. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;.
      * 
      */
     @Import(name="timeout")
     private @Nullable Output<Integer> timeout;
 
     /**
-     * @return TCP socket timeout in seconds. If not set, PVE default is `1`.
+     * @return TCP socket timeout in seconds. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;.
      * 
      */
     public Optional<Output<Integer>> timeout() {
@@ -243,14 +243,14 @@ public final class MetricsServerState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Plugin type. Choice is between `graphite` | `influxdb`.
+     * Plugin type. Choice is between &lt;span pulumi-lang-nodejs=&#34;`graphite`&#34; pulumi-lang-dotnet=&#34;`Graphite`&#34; pulumi-lang-go=&#34;`graphite`&#34; pulumi-lang-python=&#34;`graphite`&#34; pulumi-lang-yaml=&#34;`graphite`&#34; pulumi-lang-java=&#34;`graphite`&#34;&gt;`graphite`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`influxdb`&#34; pulumi-lang-dotnet=&#34;`Influxdb`&#34; pulumi-lang-go=&#34;`influxdb`&#34; pulumi-lang-python=&#34;`influxdb`&#34; pulumi-lang-yaml=&#34;`influxdb`&#34; pulumi-lang-java=&#34;`influxdb`&#34;&gt;`influxdb`&lt;/span&gt;.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Plugin type. Choice is between `graphite` | `influxdb`.
+     * @return Plugin type. Choice is between &lt;span pulumi-lang-nodejs=&#34;`graphite`&#34; pulumi-lang-dotnet=&#34;`Graphite`&#34; pulumi-lang-go=&#34;`graphite`&#34; pulumi-lang-python=&#34;`graphite`&#34; pulumi-lang-yaml=&#34;`graphite`&#34; pulumi-lang-java=&#34;`graphite`&#34;&gt;`graphite`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`influxdb`&#34; pulumi-lang-dotnet=&#34;`Influxdb`&#34; pulumi-lang-go=&#34;`influxdb`&#34; pulumi-lang-python=&#34;`influxdb`&#34; pulumi-lang-yaml=&#34;`influxdb`&#34; pulumi-lang-java=&#34;`influxdb`&#34;&gt;`influxdb`&lt;/span&gt;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -297,7 +297,7 @@ public final class MetricsServerState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param disable Set this to `true` to disable this metric server.
+         * @param disable Set this to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt; to disable this metric server.
          * 
          * @return builder
          * 
@@ -308,7 +308,7 @@ public final class MetricsServerState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param disable Set this to `true` to disable this metric server.
+         * @param disable Set this to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt; to disable this metric server.
          * 
          * @return builder
          * 
@@ -339,7 +339,7 @@ public final class MetricsServerState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param graphiteProto Protocol to send graphite data. Choice is between `udp` | `tcp`. If not set, PVE default is `udp`.
+         * @param graphiteProto Protocol to send graphite data. Choice is between &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`tcp`&#34; pulumi-lang-dotnet=&#34;`Tcp`&#34; pulumi-lang-go=&#34;`tcp`&#34; pulumi-lang-python=&#34;`tcp`&#34; pulumi-lang-yaml=&#34;`tcp`&#34; pulumi-lang-java=&#34;`tcp`&#34;&gt;`tcp`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -350,7 +350,7 @@ public final class MetricsServerState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param graphiteProto Protocol to send graphite data. Choice is between `udp` | `tcp`. If not set, PVE default is `udp`.
+         * @param graphiteProto Protocol to send graphite data. Choice is between &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`tcp`&#34; pulumi-lang-dotnet=&#34;`Tcp`&#34; pulumi-lang-go=&#34;`tcp`&#34; pulumi-lang-python=&#34;`tcp`&#34; pulumi-lang-yaml=&#34;`tcp`&#34; pulumi-lang-java=&#34;`tcp`&#34;&gt;`tcp`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -402,7 +402,7 @@ public final class MetricsServerState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param influxDbProto Protocol for InfluxDB. Choice is between `udp` | `http` | `https`. If not set, PVE default is `udp`.
+         * @param influxDbProto Protocol for InfluxDB. Choice is between &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`http`&#34; pulumi-lang-dotnet=&#34;`Http`&#34; pulumi-lang-go=&#34;`http`&#34; pulumi-lang-python=&#34;`http`&#34; pulumi-lang-yaml=&#34;`http`&#34; pulumi-lang-java=&#34;`http`&#34;&gt;`http`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`https`&#34; pulumi-lang-dotnet=&#34;`Https`&#34; pulumi-lang-go=&#34;`https`&#34; pulumi-lang-python=&#34;`https`&#34; pulumi-lang-yaml=&#34;`https`&#34; pulumi-lang-java=&#34;`https`&#34;&gt;`https`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -413,7 +413,7 @@ public final class MetricsServerState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param influxDbProto Protocol for InfluxDB. Choice is between `udp` | `http` | `https`. If not set, PVE default is `udp`.
+         * @param influxDbProto Protocol for InfluxDB. Choice is between &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`http`&#34; pulumi-lang-dotnet=&#34;`Http`&#34; pulumi-lang-go=&#34;`http`&#34; pulumi-lang-python=&#34;`http`&#34; pulumi-lang-yaml=&#34;`http`&#34; pulumi-lang-java=&#34;`http`&#34;&gt;`http`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`https`&#34; pulumi-lang-dotnet=&#34;`Https`&#34; pulumi-lang-go=&#34;`https`&#34; pulumi-lang-python=&#34;`https`&#34; pulumi-lang-yaml=&#34;`https`&#34; pulumi-lang-java=&#34;`https`&#34;&gt;`https`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -423,7 +423,7 @@ public final class MetricsServerState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param influxMaxBodySize InfluxDB max-body-size in bytes. Requests are batched up to this size. If not set, PVE default is `25000000`.
+         * @param influxMaxBodySize InfluxDB max-body-size in bytes. Requests are batched up to this size. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`25000000`&#34; pulumi-lang-dotnet=&#34;`25000000`&#34; pulumi-lang-go=&#34;`25000000`&#34; pulumi-lang-python=&#34;`25000000`&#34; pulumi-lang-yaml=&#34;`25000000`&#34; pulumi-lang-java=&#34;`25000000`&#34;&gt;`25000000`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -434,7 +434,7 @@ public final class MetricsServerState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param influxMaxBodySize InfluxDB max-body-size in bytes. Requests are batched up to this size. If not set, PVE default is `25000000`.
+         * @param influxMaxBodySize InfluxDB max-body-size in bytes. Requests are batched up to this size. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`25000000`&#34; pulumi-lang-dotnet=&#34;`25000000`&#34; pulumi-lang-go=&#34;`25000000`&#34; pulumi-lang-python=&#34;`25000000`&#34; pulumi-lang-yaml=&#34;`25000000`&#34; pulumi-lang-java=&#34;`25000000`&#34;&gt;`25000000`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -486,7 +486,7 @@ public final class MetricsServerState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param influxVerify Set to `false` to disable certificate verification for https endpoints.
+         * @param influxVerify Set to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt; to disable certificate verification for https endpoints.
          * 
          * @return builder
          * 
@@ -497,7 +497,7 @@ public final class MetricsServerState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param influxVerify Set to `false` to disable certificate verification for https endpoints.
+         * @param influxVerify Set to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt; to disable certificate verification for https endpoints.
          * 
          * @return builder
          * 
@@ -507,7 +507,7 @@ public final class MetricsServerState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param mtu MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
+         * @param mtu MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`1500`&#34; pulumi-lang-dotnet=&#34;`1500`&#34; pulumi-lang-go=&#34;`1500`&#34; pulumi-lang-python=&#34;`1500`&#34; pulumi-lang-yaml=&#34;`1500`&#34; pulumi-lang-java=&#34;`1500`&#34;&gt;`1500`&lt;/span&gt; (allowed &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34;&gt;`512`&lt;/span&gt; - &lt;span pulumi-lang-nodejs=&#34;`65536`&#34; pulumi-lang-dotnet=&#34;`65536`&#34; pulumi-lang-go=&#34;`65536`&#34; pulumi-lang-python=&#34;`65536`&#34; pulumi-lang-yaml=&#34;`65536`&#34; pulumi-lang-java=&#34;`65536`&#34;&gt;`65536`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -518,7 +518,7 @@ public final class MetricsServerState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param mtu MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
+         * @param mtu MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`1500`&#34; pulumi-lang-dotnet=&#34;`1500`&#34; pulumi-lang-go=&#34;`1500`&#34; pulumi-lang-python=&#34;`1500`&#34; pulumi-lang-yaml=&#34;`1500`&#34; pulumi-lang-java=&#34;`1500`&#34;&gt;`1500`&lt;/span&gt; (allowed &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34;&gt;`512`&lt;/span&gt; - &lt;span pulumi-lang-nodejs=&#34;`65536`&#34; pulumi-lang-dotnet=&#34;`65536`&#34; pulumi-lang-go=&#34;`65536`&#34; pulumi-lang-python=&#34;`65536`&#34; pulumi-lang-yaml=&#34;`65536`&#34; pulumi-lang-java=&#34;`65536`&#34;&gt;`65536`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -591,7 +591,7 @@ public final class MetricsServerState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param timeout TCP socket timeout in seconds. If not set, PVE default is `1`.
+         * @param timeout TCP socket timeout in seconds. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -602,7 +602,7 @@ public final class MetricsServerState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param timeout TCP socket timeout in seconds. If not set, PVE default is `1`.
+         * @param timeout TCP socket timeout in seconds. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -612,7 +612,7 @@ public final class MetricsServerState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type Plugin type. Choice is between `graphite` | `influxdb`.
+         * @param type Plugin type. Choice is between &lt;span pulumi-lang-nodejs=&#34;`graphite`&#34; pulumi-lang-dotnet=&#34;`Graphite`&#34; pulumi-lang-go=&#34;`graphite`&#34; pulumi-lang-python=&#34;`graphite`&#34; pulumi-lang-yaml=&#34;`graphite`&#34; pulumi-lang-java=&#34;`graphite`&#34;&gt;`graphite`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`influxdb`&#34; pulumi-lang-dotnet=&#34;`Influxdb`&#34; pulumi-lang-go=&#34;`influxdb`&#34; pulumi-lang-python=&#34;`influxdb`&#34; pulumi-lang-yaml=&#34;`influxdb`&#34; pulumi-lang-java=&#34;`influxdb`&#34;&gt;`influxdb`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -623,7 +623,7 @@ public final class MetricsServerState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param type Plugin type. Choice is between `graphite` | `influxdb`.
+         * @param type Plugin type. Choice is between &lt;span pulumi-lang-nodejs=&#34;`graphite`&#34; pulumi-lang-dotnet=&#34;`Graphite`&#34; pulumi-lang-go=&#34;`graphite`&#34; pulumi-lang-python=&#34;`graphite`&#34; pulumi-lang-yaml=&#34;`graphite`&#34; pulumi-lang-java=&#34;`graphite`&#34;&gt;`graphite`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`influxdb`&#34; pulumi-lang-dotnet=&#34;`Influxdb`&#34; pulumi-lang-go=&#34;`influxdb`&#34; pulumi-lang-python=&#34;`influxdb`&#34; pulumi-lang-yaml=&#34;`influxdb`&#34; pulumi-lang-java=&#34;`influxdb`&#34;&gt;`influxdb`&lt;/span&gt;.
          * 
          * @return builder
          * 

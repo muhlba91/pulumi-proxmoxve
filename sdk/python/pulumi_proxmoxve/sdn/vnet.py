@@ -246,9 +246,8 @@ class Vnet(pulumi.CustomResource):
 
         finalizer = proxmoxve.sdn.Applier("finalizer")
         # SDN Zone (Simple) - Basic zone for simple vnets
-        example_zone1 = proxmoxve.sdnzone.Simple("exampleZone1",
+        example_zone1 = proxmoxve.sdnzone.Simple("example_zone_1",
             zone_id="zone1",
-            nodes=["pve"],
             mtu=1500,
             dns="1.1.1.1",
             dns_zone="example.com",
@@ -256,18 +255,17 @@ class Vnet(pulumi.CustomResource):
             reverse_dns="1.1.1.1",
             opts = pulumi.ResourceOptions(depends_on=[finalizer]))
         # SDN Zone (Simple) - Second zone for demonstration
-        example_zone2 = proxmoxve.sdnzone.Simple("exampleZone2",
+        example_zone2 = proxmoxve.sdnzone.Simple("example_zone_2",
             zone_id="zone2",
-            nodes=["pve"],
             mtu=1500,
             opts = pulumi.ResourceOptions(depends_on=[finalizer]))
         # Basic VNet (Simple)
-        basic_vnet = proxmoxve.sdn.Vnet("basicVnet",
+        basic_vnet = proxmoxve.sdn.Vnet("basic_vnet",
             vnet_id="vnet1",
             zone=example_zone1.zone_id,
             opts = pulumi.ResourceOptions(depends_on=[finalizer]))
         # VNet with Alias and Port Isolation
-        isolated_vnet = proxmoxve.sdn.Vnet("isolatedVnet",
+        isolated_vnet = proxmoxve.sdn.Vnet("isolated_vnet",
             vnet_id="vnet2",
             zone=example_zone2.zone_id,
             alias="Isolated VNet",
@@ -275,7 +273,7 @@ class Vnet(pulumi.CustomResource):
             vlan_aware=False,
             opts = pulumi.ResourceOptions(depends_on=[finalizer]))
         # SDN Applier for all resources
-        vnet_applier = proxmoxve.sdn.Applier("vnetApplier", opts = pulumi.ResourceOptions(depends_on=[
+        vnet_applier = proxmoxve.sdn.Applier("vnet_applier", opts = pulumi.ResourceOptions(depends_on=[
                 example_zone1,
                 example_zone2,
                 basic_vnet,
@@ -323,9 +321,8 @@ class Vnet(pulumi.CustomResource):
 
         finalizer = proxmoxve.sdn.Applier("finalizer")
         # SDN Zone (Simple) - Basic zone for simple vnets
-        example_zone1 = proxmoxve.sdnzone.Simple("exampleZone1",
+        example_zone1 = proxmoxve.sdnzone.Simple("example_zone_1",
             zone_id="zone1",
-            nodes=["pve"],
             mtu=1500,
             dns="1.1.1.1",
             dns_zone="example.com",
@@ -333,18 +330,17 @@ class Vnet(pulumi.CustomResource):
             reverse_dns="1.1.1.1",
             opts = pulumi.ResourceOptions(depends_on=[finalizer]))
         # SDN Zone (Simple) - Second zone for demonstration
-        example_zone2 = proxmoxve.sdnzone.Simple("exampleZone2",
+        example_zone2 = proxmoxve.sdnzone.Simple("example_zone_2",
             zone_id="zone2",
-            nodes=["pve"],
             mtu=1500,
             opts = pulumi.ResourceOptions(depends_on=[finalizer]))
         # Basic VNet (Simple)
-        basic_vnet = proxmoxve.sdn.Vnet("basicVnet",
+        basic_vnet = proxmoxve.sdn.Vnet("basic_vnet",
             vnet_id="vnet1",
             zone=example_zone1.zone_id,
             opts = pulumi.ResourceOptions(depends_on=[finalizer]))
         # VNet with Alias and Port Isolation
-        isolated_vnet = proxmoxve.sdn.Vnet("isolatedVnet",
+        isolated_vnet = proxmoxve.sdn.Vnet("isolated_vnet",
             vnet_id="vnet2",
             zone=example_zone2.zone_id,
             alias="Isolated VNet",
@@ -352,7 +348,7 @@ class Vnet(pulumi.CustomResource):
             vlan_aware=False,
             opts = pulumi.ResourceOptions(depends_on=[finalizer]))
         # SDN Applier for all resources
-        vnet_applier = proxmoxve.sdn.Applier("vnetApplier", opts = pulumi.ResourceOptions(depends_on=[
+        vnet_applier = proxmoxve.sdn.Applier("vnet_applier", opts = pulumi.ResourceOptions(depends_on=[
                 example_zone1,
                 example_zone2,
                 basic_vnet,

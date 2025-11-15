@@ -22,7 +22,7 @@ namespace Pulumi.ProxmoxVE.Permission
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var operationsMonitoring = new ProxmoxVE.Permission.Role("operationsMonitoring", new()
+    ///     var operationsMonitoring = new ProxmoxVE.Permission.Role("operations_monitoring", new()
     ///     {
     ///         RoleId = "operations-monitoring",
     ///         Privileges = new[]
@@ -31,7 +31,7 @@ namespace Pulumi.ProxmoxVE.Permission
     ///         },
     ///     });
     /// 
-    ///     var operationsAutomation = new ProxmoxVE.Permission.User("operationsAutomation", new()
+    ///     var operationsAutomation = new ProxmoxVE.Permission.User("operations_automation", new()
     ///     {
     ///         Acls = new[]
     ///         {

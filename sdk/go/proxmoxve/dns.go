@@ -14,6 +14,48 @@ import (
 
 // Manages the DNS configuration for a specific node.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/network"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			firstNodeDnsConfiguration, err := network.GetDNS(ctx, &network.GetDNSArgs{
+//				NodeName: "first-node",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = proxmoxve.NewDNS(ctx, "first_node_dns_configuration", &proxmoxve.DNSArgs{
+//				Domain:   pulumi.String(firstNodeDnsConfiguration.Domain),
+//				NodeName: pulumi.String(firstNodeDnsConfiguration.NodeName),
+//				Servers: pulumi.StringArray{
+//					pulumi.String("1.1.1.1"),
+//					pulumi.String("1.0.0.1"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Important Notes
+//
+// Be careful not to use this resource multiple times for the same node.
+//
 // ## Import
 //
 // Instances can be imported using the `node_name`, e.g.,

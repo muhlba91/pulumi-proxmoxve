@@ -15,15 +15,17 @@ import * as utilities from "../utilities";
  *
  * // using VLAN tag
  * const vlan99 = new proxmoxve.network.NetworkVlan("vlan99", {
- *     comment: "VLAN 99",
  *     nodeName: "pve",
+ *     name: "eno0.99",
+ *     comment: "VLAN 99",
  * });
  * // using custom network interface name
  * const vlan98 = new proxmoxve.network.NetworkVlan("vlan98", {
- *     comment: "VLAN 98",
- *     "interface": "eno0",
  *     nodeName: "pve",
+ *     name: "vlan_lab",
+ *     "interface": "eno0",
  *     vlan: 98,
+ *     comment: "VLAN 98",
  * });
  * ```
  *

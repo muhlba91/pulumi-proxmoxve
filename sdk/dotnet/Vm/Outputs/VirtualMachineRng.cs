@@ -14,11 +14,11 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     public sealed class VirtualMachineRng
     {
         /// <summary>
-        /// Maximum bytes of entropy allowed to get injected into the guest every `period` milliseconds (defaults to `1024`). Prefer a lower value when using `/dev/random` as source.
+        /// Maximum bytes of entropy allowed to get injected into the guest every `Period` milliseconds (defaults to `1024`). Prefer a lower value when using `/dev/random` as source.
         /// </summary>
         public readonly int? MaxBytes;
         /// <summary>
-        /// Every `period` milliseconds the entropy-injection quota is reset, allowing the guest to retrieve another `max_bytes` of entropy (defaults to `1000`).
+        /// Every `Period` milliseconds the entropy-injection quota is reset, allowing the guest to retrieve another `MaxBytes` of entropy (defaults to `1000`).
         /// </summary>
         public readonly int? Period;
         /// <summary>

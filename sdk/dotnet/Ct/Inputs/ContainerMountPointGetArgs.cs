@@ -20,7 +20,7 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
 
         /// <summary>
         /// Whether to include the mount point in backups (only
-        /// used for volume mount points, defaults to `false`).
+        /// used for volume mount points, defaults to `False`).
         /// </summary>
         [Input("backup")]
         public Input<bool>? Backup { get; set; }

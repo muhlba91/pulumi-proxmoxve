@@ -139,6 +139,26 @@ class DNS(pulumi.CustomResource):
         """
         Manages the DNS configuration for a specific node.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        first_node_dns_configuration = proxmoxve.Network.get_dns(node_name="first-node")
+        first_node_dns_configuration_dns = proxmoxve.DNS("first_node_dns_configuration",
+            domain=first_node_dns_configuration.domain,
+            node_name=first_node_dns_configuration.node_name,
+            servers=[
+                "1.1.1.1",
+                "1.0.0.1",
+            ])
+        ```
+
+        ## Important Notes
+
+        Be careful not to use this resource multiple times for the same node.
+
         ## Import
 
         Instances can be imported using the `node_name`, e.g.,
@@ -163,6 +183,26 @@ class DNS(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages the DNS configuration for a specific node.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        first_node_dns_configuration = proxmoxve.Network.get_dns(node_name="first-node")
+        first_node_dns_configuration_dns = proxmoxve.DNS("first_node_dns_configuration",
+            domain=first_node_dns_configuration.domain,
+            node_name=first_node_dns_configuration.node_name,
+            servers=[
+                "1.1.1.1",
+                "1.0.0.1",
+            ])
+        ```
+
+        ## Important Notes
+
+        Be careful not to use this resource multiple times for the same node.
 
         ## Import
 

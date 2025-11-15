@@ -14,24 +14,24 @@ import * as utilities from "../utilities";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
  * const example = new proxmoxve.sdnzone.Evpn("example", {
- *     advertiseSubnets: true,
+ *     zoneId: "evpn1",
+ *     nodes: ["pve"],
  *     controller: "evpn-controller1",
+ *     vrfVxlan: 4000,
+ *     advertiseSubnets: true,
  *     disableArpNdSuppression: false,
- *     dns: "1.1.1.1",
- *     dnsZone: "example.com",
  *     exitNodes: [
  *         "pve-exit1",
  *         "pve-exit2",
  *     ],
  *     exitNodesLocalRouting: true,
- *     zoneId: "evpn1",
- *     ipam: "pve",
- *     mtu: 1450,
- *     nodes: ["pve"],
  *     primaryExitNode: "pve-exit1",
- *     reverseDns: "1.1.1.1",
  *     rtImport: "65000:65000",
- *     vrfVxlan: 4000,
+ *     mtu: 1450,
+ *     dns: "1.1.1.1",
+ *     dnsZone: "example.com",
+ *     ipam: "pve",
+ *     reverseDns: "1.1.1.1",
  * });
  * ```
  *
@@ -176,9 +176,6 @@ export class Evpn extends pulumi.CustomResource {
             const args = argsOrState as EvpnArgs | undefined;
             if (args?.controller === undefined && !opts.urn) {
                 throw new Error("Missing required property 'controller'");
-            }
-            if (args?.nodes === undefined && !opts.urn) {
-                throw new Error("Missing required property 'nodes'");
             }
             if (args?.vrfVxlan === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vrfVxlan'");
@@ -326,7 +323,7 @@ export interface EvpnArgs {
     /**
      * The Proxmox nodes which the zone and associated VNets should be deployed on
      */
-    nodes: pulumi.Input<pulumi.Input<string>[]>;
+    nodes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Primary exit node for EVPN.
      */

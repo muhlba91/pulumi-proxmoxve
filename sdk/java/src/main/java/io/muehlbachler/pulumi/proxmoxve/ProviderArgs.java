@@ -112,10 +112,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      * The one-time password for the Proxmox VE API.
      * 
      * @deprecated
-     * The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.
+     * The &lt;span pulumi-lang-nodejs=&#34;`otp`&#34; pulumi-lang-dotnet=&#34;`Otp`&#34; pulumi-lang-go=&#34;`otp`&#34; pulumi-lang-python=&#34;`otp`&#34; pulumi-lang-yaml=&#34;`otp`&#34; pulumi-lang-java=&#34;`otp`&#34;&gt;`otp`&lt;/span&gt; attribute is deprecated and will be removed in a future release. Please use the &lt;span pulumi-lang-nodejs=&#34;`apiToken`&#34; pulumi-lang-dotnet=&#34;`ApiToken`&#34; pulumi-lang-go=&#34;`apiToken`&#34; pulumi-lang-python=&#34;`api_token`&#34; pulumi-lang-yaml=&#34;`apiToken`&#34; pulumi-lang-java=&#34;`apiToken`&#34;&gt;`api_token`&lt;/span&gt; attribute instead.
      * 
      */
-    @Deprecated /* The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead. */
+    @Deprecated /* The <span pulumi-lang-nodejs=""`otp`"" pulumi-lang-dotnet=""`Otp`"" pulumi-lang-go=""`otp`"" pulumi-lang-python=""`otp`"" pulumi-lang-yaml=""`otp`"" pulumi-lang-java=""`otp`"">`otp`</span> attribute is deprecated and will be removed in a future release. Please use the <span pulumi-lang-nodejs=""`apiToken`"" pulumi-lang-dotnet=""`ApiToken`"" pulumi-lang-go=""`apiToken`"" pulumi-lang-python=""`api_token`"" pulumi-lang-yaml=""`apiToken`"" pulumi-lang-java=""`apiToken`"">`api_token`</span> attribute instead. */
     @Import(name="otp")
     private @Nullable Output<String> otp;
 
@@ -123,10 +123,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      * @return The one-time password for the Proxmox VE API.
      * 
      * @deprecated
-     * The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.
+     * The &lt;span pulumi-lang-nodejs=&#34;`otp`&#34; pulumi-lang-dotnet=&#34;`Otp`&#34; pulumi-lang-go=&#34;`otp`&#34; pulumi-lang-python=&#34;`otp`&#34; pulumi-lang-yaml=&#34;`otp`&#34; pulumi-lang-java=&#34;`otp`&#34;&gt;`otp`&lt;/span&gt; attribute is deprecated and will be removed in a future release. Please use the &lt;span pulumi-lang-nodejs=&#34;`apiToken`&#34; pulumi-lang-dotnet=&#34;`ApiToken`&#34; pulumi-lang-go=&#34;`apiToken`&#34; pulumi-lang-python=&#34;`api_token`&#34; pulumi-lang-yaml=&#34;`apiToken`&#34; pulumi-lang-java=&#34;`apiToken`&#34;&gt;`api_token`&lt;/span&gt; attribute instead.
      * 
      */
-    @Deprecated /* The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead. */
+    @Deprecated /* The <span pulumi-lang-nodejs=""`otp`"" pulumi-lang-dotnet=""`Otp`"" pulumi-lang-go=""`otp`"" pulumi-lang-python=""`otp`"" pulumi-lang-yaml=""`otp`"" pulumi-lang-java=""`otp`"">`otp`</span> attribute is deprecated and will be removed in a future release. Please use the <span pulumi-lang-nodejs=""`apiToken`"" pulumi-lang-dotnet=""`ApiToken`"" pulumi-lang-go=""`apiToken`"" pulumi-lang-python=""`api_token`"" pulumi-lang-yaml=""`apiToken`"" pulumi-lang-java=""`apiToken`"">`api_token`</span> attribute instead. */
     public Optional<Output<String>> otp() {
         return Optional.ofNullable(this.otp);
     }
@@ -405,10 +405,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.
+         * The &lt;span pulumi-lang-nodejs=&#34;`otp`&#34; pulumi-lang-dotnet=&#34;`Otp`&#34; pulumi-lang-go=&#34;`otp`&#34; pulumi-lang-python=&#34;`otp`&#34; pulumi-lang-yaml=&#34;`otp`&#34; pulumi-lang-java=&#34;`otp`&#34;&gt;`otp`&lt;/span&gt; attribute is deprecated and will be removed in a future release. Please use the &lt;span pulumi-lang-nodejs=&#34;`apiToken`&#34; pulumi-lang-dotnet=&#34;`ApiToken`&#34; pulumi-lang-go=&#34;`apiToken`&#34; pulumi-lang-python=&#34;`api_token`&#34; pulumi-lang-yaml=&#34;`apiToken`&#34; pulumi-lang-java=&#34;`apiToken`&#34;&gt;`api_token`&lt;/span&gt; attribute instead.
          * 
          */
-        @Deprecated /* The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead. */
+        @Deprecated /* The <span pulumi-lang-nodejs=""`otp`"" pulumi-lang-dotnet=""`Otp`"" pulumi-lang-go=""`otp`"" pulumi-lang-python=""`otp`"" pulumi-lang-yaml=""`otp`"" pulumi-lang-java=""`otp`"">`otp`</span> attribute is deprecated and will be removed in a future release. Please use the <span pulumi-lang-nodejs=""`apiToken`"" pulumi-lang-dotnet=""`ApiToken`"" pulumi-lang-go=""`apiToken`"" pulumi-lang-python=""`api_token`"" pulumi-lang-yaml=""`apiToken`"" pulumi-lang-java=""`apiToken`"">`api_token`</span> attribute instead. */
         public Builder otp(@Nullable Output<String> otp) {
             $.otp = otp;
             return this;
@@ -420,10 +420,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.
+         * The &lt;span pulumi-lang-nodejs=&#34;`otp`&#34; pulumi-lang-dotnet=&#34;`Otp`&#34; pulumi-lang-go=&#34;`otp`&#34; pulumi-lang-python=&#34;`otp`&#34; pulumi-lang-yaml=&#34;`otp`&#34; pulumi-lang-java=&#34;`otp`&#34;&gt;`otp`&lt;/span&gt; attribute is deprecated and will be removed in a future release. Please use the &lt;span pulumi-lang-nodejs=&#34;`apiToken`&#34; pulumi-lang-dotnet=&#34;`ApiToken`&#34; pulumi-lang-go=&#34;`apiToken`&#34; pulumi-lang-python=&#34;`api_token`&#34; pulumi-lang-yaml=&#34;`apiToken`&#34; pulumi-lang-java=&#34;`apiToken`&#34;&gt;`api_token`&lt;/span&gt; attribute instead.
          * 
          */
-        @Deprecated /* The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead. */
+        @Deprecated /* The <span pulumi-lang-nodejs=""`otp`"" pulumi-lang-dotnet=""`Otp`"" pulumi-lang-go=""`otp`"" pulumi-lang-python=""`otp`"" pulumi-lang-yaml=""`otp`"" pulumi-lang-java=""`otp`"">`otp`</span> attribute is deprecated and will be removed in a future release. Please use the <span pulumi-lang-nodejs=""`apiToken`"" pulumi-lang-dotnet=""`ApiToken`"" pulumi-lang-go=""`apiToken`"" pulumi-lang-python=""`api_token`"" pulumi-lang-yaml=""`apiToken`"" pulumi-lang-java=""`apiToken`"">`api_token`</span> attribute instead. */
         public Builder otp(String otp) {
             return otp(Output.of(otp));
         }

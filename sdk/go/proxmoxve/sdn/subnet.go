@@ -14,6 +14,125 @@ import (
 
 // Manages SDN Subnets in Proxmox VE.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdn"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdnzone"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			finalizer, err := sdn.NewApplier(ctx, "finalizer", nil)
+//			if err != nil {
+//				return err
+//			}
+//			// SDN Zone (Simple) - Basic zone for simple vnets
+//			exampleZone1, err := sdnzone.NewSimple(ctx, "example_zone_1", &sdnzone.SimpleArgs{
+//				ZoneId: pulumi.String("zone1"),
+//				Nodes: pulumi.StringArray{
+//					pulumi.String("pve"),
+//				},
+//				Mtu:        pulumi.Int(1500),
+//				Dns:        pulumi.String("1.1.1.1"),
+//				DnsZone:    pulumi.String("example.com"),
+//				Ipam:       pulumi.String("pve"),
+//				ReverseDns: pulumi.String("1.1.1.1"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				finalizer,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			// SDN Zone (Simple) - Second zone for demonstration
+//			exampleZone2, err := sdnzone.NewSimple(ctx, "example_zone_2", &sdnzone.SimpleArgs{
+//				ZoneId: pulumi.String("zone2"),
+//				Nodes: pulumi.StringArray{
+//					pulumi.String("pve"),
+//				},
+//				Mtu: pulumi.Int(1500),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				finalizer,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			// SDN VNet - Basic vnet
+//			exampleVnet1, err := sdn.NewVnet(ctx, "example_vnet_1", &sdn.VnetArgs{
+//				VnetId: pulumi.String("vnet1"),
+//				Zone:   exampleZone1.ZoneId,
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				finalizer,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			// SDN VNet - VNet with alias and port isolation
+//			exampleVnet2, err := sdn.NewVnet(ctx, "example_vnet_2", &sdn.VnetArgs{
+//				VnetId:       pulumi.String("vnet2"),
+//				Zone:         exampleZone2.ZoneId,
+//				Alias:        pulumi.String("Example VNet 2"),
+//				IsolatePorts: pulumi.Bool(true),
+//				VlanAware:    pulumi.Bool(false),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				finalizer,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			// Basic Subnet
+//			basicSubnet, err := sdn.NewSubnet(ctx, "basic_subnet", &sdn.SubnetArgs{
+//				Cidr:    pulumi.String("192.168.1.0/24"),
+//				Vnet:    exampleVnet1.VnetId,
+//				Gateway: pulumi.String("192.168.1.1"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				finalizer,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			// Subnet with DHCP Configuration
+//			dhcpSubnet, err := sdn.NewSubnet(ctx, "dhcp_subnet", &sdn.SubnetArgs{
+//				Cidr:          pulumi.String("192.168.2.0/24"),
+//				Vnet:          exampleVnet2.VnetId,
+//				Gateway:       pulumi.String("192.168.2.1"),
+//				DhcpDnsServer: pulumi.String("192.168.2.53"),
+//				DnsZonePrefix: pulumi.String("internal.example.com"),
+//				Snat:          pulumi.Bool(true),
+//				DhcpRange: &sdn.SubnetDhcpRangeArgs{
+//					StartAddress: pulumi.String("192.168.2.10"),
+//					EndAddress:   pulumi.String("192.168.2.100"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				finalizer,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			// SDN Applier for all resources
+//			_, err = sdn.NewApplier(ctx, "subnet_applier", nil, pulumi.DependsOn([]pulumi.Resource{
+//				exampleZone1,
+//				exampleZone2,
+//				exampleVnet1,
+//				exampleVnet2,
+//				basicSubnet,
+//				dhcpSubnet,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // #!/usr/bin/env sh

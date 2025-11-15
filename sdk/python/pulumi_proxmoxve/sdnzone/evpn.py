@@ -20,7 +20,6 @@ __all__ = ['EvpnArgs', 'Evpn']
 class EvpnArgs:
     def __init__(__self__, *,
                  controller: pulumi.Input[_builtins.str],
-                 nodes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  vrf_vxlan: pulumi.Input[_builtins.int],
                  zone_id: pulumi.Input[_builtins.str],
                  advertise_subnets: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -31,13 +30,13 @@ class EvpnArgs:
                  exit_nodes_local_routing: Optional[pulumi.Input[_builtins.bool]] = None,
                  ipam: Optional[pulumi.Input[_builtins.str]] = None,
                  mtu: Optional[pulumi.Input[_builtins.int]] = None,
+                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  primary_exit_node: Optional[pulumi.Input[_builtins.str]] = None,
                  reverse_dns: Optional[pulumi.Input[_builtins.str]] = None,
                  rt_import: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Evpn resource.
         :param pulumi.Input[_builtins.str] controller: EVPN controller address.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: The Proxmox nodes which the zone and associated VNets should be deployed on
         :param pulumi.Input[_builtins.int] vrf_vxlan: VRF VXLAN-ID used for dedicated routing interconnect between VNets. It must be different than the VXLAN-ID of the VNets.
         :param pulumi.Input[_builtins.str] zone_id: The unique identifier of the SDN zone.
         :param pulumi.Input[_builtins.bool] advertise_subnets: Enable subnet advertisement for EVPN.
@@ -48,12 +47,12 @@ class EvpnArgs:
         :param pulumi.Input[_builtins.bool] exit_nodes_local_routing: Enable local routing for EVPN exit nodes.
         :param pulumi.Input[_builtins.str] ipam: IP Address Management system.
         :param pulumi.Input[_builtins.int] mtu: MTU value for the zone.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: The Proxmox nodes which the zone and associated VNets should be deployed on
         :param pulumi.Input[_builtins.str] primary_exit_node: Primary exit node for EVPN.
         :param pulumi.Input[_builtins.str] reverse_dns: Reverse DNS API server address.
         :param pulumi.Input[_builtins.str] rt_import: Route target import for EVPN.
         """
         pulumi.set(__self__, "controller", controller)
-        pulumi.set(__self__, "nodes", nodes)
         pulumi.set(__self__, "vrf_vxlan", vrf_vxlan)
         pulumi.set(__self__, "zone_id", zone_id)
         if advertise_subnets is not None:
@@ -72,6 +71,8 @@ class EvpnArgs:
             pulumi.set(__self__, "ipam", ipam)
         if mtu is not None:
             pulumi.set(__self__, "mtu", mtu)
+        if nodes is not None:
+            pulumi.set(__self__, "nodes", nodes)
         if primary_exit_node is not None:
             pulumi.set(__self__, "primary_exit_node", primary_exit_node)
         if reverse_dns is not None:
@@ -90,18 +91,6 @@ class EvpnArgs:
     @controller.setter
     def controller(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "controller", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def nodes(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        The Proxmox nodes which the zone and associated VNets should be deployed on
-        """
-        return pulumi.get(self, "nodes")
-
-    @nodes.setter
-    def nodes(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
-        pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter(name="vrfVxlan")
@@ -222,6 +211,18 @@ class EvpnArgs:
     @mtu.setter
     def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "mtu", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The Proxmox nodes which the zone and associated VNets should be deployed on
+        """
+        return pulumi.get(self, "nodes")
+
+    @nodes.setter
+    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryExitNode")
@@ -572,24 +573,24 @@ class Evpn(pulumi.CustomResource):
         import pulumi_proxmoxve as proxmoxve
 
         example = proxmoxve.sdnzone.Evpn("example",
-            advertise_subnets=True,
+            zone_id="evpn1",
+            nodes=["pve"],
             controller="evpn-controller1",
+            vrf_vxlan=4000,
+            advertise_subnets=True,
             disable_arp_nd_suppression=False,
-            dns="1.1.1.1",
-            dns_zone="example.com",
             exit_nodes=[
                 "pve-exit1",
                 "pve-exit2",
             ],
             exit_nodes_local_routing=True,
-            zone_id="evpn1",
-            ipam="pve",
-            mtu=1450,
-            nodes=["pve"],
             primary_exit_node="pve-exit1",
-            reverse_dns="1.1.1.1",
             rt_import="65000:65000",
-            vrf_vxlan=4000)
+            mtu=1450,
+            dns="1.1.1.1",
+            dns_zone="example.com",
+            ipam="pve",
+            reverse_dns="1.1.1.1")
         ```
 
         ## Import
@@ -636,24 +637,24 @@ class Evpn(pulumi.CustomResource):
         import pulumi_proxmoxve as proxmoxve
 
         example = proxmoxve.sdnzone.Evpn("example",
-            advertise_subnets=True,
+            zone_id="evpn1",
+            nodes=["pve"],
             controller="evpn-controller1",
+            vrf_vxlan=4000,
+            advertise_subnets=True,
             disable_arp_nd_suppression=False,
-            dns="1.1.1.1",
-            dns_zone="example.com",
             exit_nodes=[
                 "pve-exit1",
                 "pve-exit2",
             ],
             exit_nodes_local_routing=True,
-            zone_id="evpn1",
-            ipam="pve",
-            mtu=1450,
-            nodes=["pve"],
             primary_exit_node="pve-exit1",
-            reverse_dns="1.1.1.1",
             rt_import="65000:65000",
-            vrf_vxlan=4000)
+            mtu=1450,
+            dns="1.1.1.1",
+            dns_zone="example.com",
+            ipam="pve",
+            reverse_dns="1.1.1.1")
         ```
 
         ## Import
@@ -716,8 +717,6 @@ class Evpn(pulumi.CustomResource):
             __props__.__dict__["exit_nodes_local_routing"] = exit_nodes_local_routing
             __props__.__dict__["ipam"] = ipam
             __props__.__dict__["mtu"] = mtu
-            if nodes is None and not opts.urn:
-                raise TypeError("Missing required property 'nodes'")
             __props__.__dict__["nodes"] = nodes
             __props__.__dict__["primary_exit_node"] = primary_exit_node
             __props__.__dict__["reverse_dns"] = reverse_dns

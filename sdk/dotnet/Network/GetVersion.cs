@@ -31,7 +31,7 @@ namespace Pulumi.ProxmoxVE.Network
         ///         ["dataProxmoxVirtualEnvironmentVersion"] = 
         ///         {
         ///             { "release", example.Apply(getVersionResult =&gt; getVersionResult.Release) },
-        ///             { "repository_id", example.Apply(getVersionResult =&gt; getVersionResult.RepositoryId) },
+        ///             { "repositoryId", example.Apply(getVersionResult =&gt; getVersionResult.RepositoryId) },
         ///             { "version", example.Apply(getVersionResult =&gt; getVersionResult.Version) },
         ///         },
         ///     };
@@ -61,7 +61,7 @@ namespace Pulumi.ProxmoxVE.Network
         ///         ["dataProxmoxVirtualEnvironmentVersion"] = 
         ///         {
         ///             { "release", example.Apply(getVersionResult =&gt; getVersionResult.Release) },
-        ///             { "repository_id", example.Apply(getVersionResult =&gt; getVersionResult.RepositoryId) },
+        ///             { "repositoryId", example.Apply(getVersionResult =&gt; getVersionResult.RepositoryId) },
         ///             { "version", example.Apply(getVersionResult =&gt; getVersionResult.Version) },
         ///         },
         ///     };
@@ -91,7 +91,7 @@ namespace Pulumi.ProxmoxVE.Network
         ///         ["dataProxmoxVirtualEnvironmentVersion"] = 
         ///         {
         ///             { "release", example.Apply(getVersionResult =&gt; getVersionResult.Release) },
-        ///             { "repository_id", example.Apply(getVersionResult =&gt; getVersionResult.RepositoryId) },
+        ///             { "repositoryId", example.Apply(getVersionResult =&gt; getVersionResult.RepositoryId) },
         ///             { "version", example.Apply(getVersionResult =&gt; getVersionResult.Version) },
         ///         },
         ///     };

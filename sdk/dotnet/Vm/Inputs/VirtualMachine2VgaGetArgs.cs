@@ -13,7 +13,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
     public sealed class VirtualMachine2VgaGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+        /// Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `Vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
         /// </summary>
         [Input("clipboard")]
         public Input<string>? Clipboard { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<int>? Memory { get; set; }
 
         /// <summary>
-        /// The VGA type (defaults to `std`).
+        /// The VGA type (defaults to `Std`).
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

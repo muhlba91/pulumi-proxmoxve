@@ -34,7 +34,7 @@ import (
 //				Group:      pulumi.String("example"),
 //				Comment:    pulumi.String("Managed by Pulumi"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				proxmox_virtual_environment_hagroup.Example,
+//				exampleProxmoxVirtualEnvironmentHagroup,
 //			}))
 //			if err != nil {
 //				return err

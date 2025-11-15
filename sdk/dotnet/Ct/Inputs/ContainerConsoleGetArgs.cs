@@ -14,7 +14,7 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
     {
         /// <summary>
         /// Whether to enable the console device (defaults
-        /// to `true`).
+        /// to `True`).
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -26,7 +26,7 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
         public Input<int>? TtyCount { get; set; }
 
         /// <summary>
-        /// The console mode (defaults to `tty`).
+        /// The console mode (defaults to `Tty`).
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

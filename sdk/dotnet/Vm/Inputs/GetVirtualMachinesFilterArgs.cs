@@ -13,7 +13,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
     public sealed class GetVirtualMachinesFilterInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the VM attribute to filter on. One of [`name`, `template`, `status`, `node_name`]
+        /// Name of the VM attribute to filter on. One of [`Name`, `Template`, `Status`, `NodeName`]
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

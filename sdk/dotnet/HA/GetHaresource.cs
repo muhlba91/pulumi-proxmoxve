@@ -24,15 +24,11 @@ namespace Pulumi.ProxmoxVE.HA
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // This will fetch the set of all HA resource identifiers...
         ///     var all = ProxmoxVE.HA.GetHAResources.Invoke();
         /// 
-        ///     var example = .Select(__value =&gt; 
-        ///     {
-        ///         return ProxmoxVE.HA.GetHAResource.Invoke(new()
-        ///         {
-        ///             ResourceId = __value,
-        ///         });
-        ///     }).ToList();
+        ///     // ...which we will go through in order to fetch the whole record for each resource.
+        ///     var example = ;
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -57,15 +53,11 @@ namespace Pulumi.ProxmoxVE.HA
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // This will fetch the set of all HA resource identifiers...
         ///     var all = ProxmoxVE.HA.GetHAResources.Invoke();
         /// 
-        ///     var example = .Select(__value =&gt; 
-        ///     {
-        ///         return ProxmoxVE.HA.GetHAResource.Invoke(new()
-        ///         {
-        ///             ResourceId = __value,
-        ///         });
-        ///     }).ToList();
+        ///     // ...which we will go through in order to fetch the whole record for each resource.
+        ///     var example = ;
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -90,15 +82,11 @@ namespace Pulumi.ProxmoxVE.HA
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // This will fetch the set of all HA resource identifiers...
         ///     var all = ProxmoxVE.HA.GetHAResources.Invoke();
         /// 
-        ///     var example = .Select(__value =&gt; 
-        ///     {
-        ///         return ProxmoxVE.HA.GetHAResource.Invoke(new()
-        ///         {
-        ///             ResourceId = __value,
-        ///         });
-        ///     }).ToList();
+        ///     // ...which we will go through in order to fetch the whole record for each resource.
+        ///     var example = ;
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -173,7 +161,7 @@ namespace Pulumi.ProxmoxVE.HA
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// The type of High Availability resource (`vm` or `ct`).
+        /// The type of High Availability resource (`Vm` or `Ct`).
         /// </summary>
         public readonly string Type;
 

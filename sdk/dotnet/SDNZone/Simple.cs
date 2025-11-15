@@ -24,15 +24,15 @@ namespace Pulumi.ProxmoxVE.SDNZone
     /// {
     ///     var example = new ProxmoxVE.SDNZone.Simple("example", new()
     ///     {
-    ///         Dns = "1.1.1.1",
-    ///         DnsZone = "example.com",
     ///         ZoneId = "simple1",
-    ///         Ipam = "pve",
-    ///         Mtu = 1500,
     ///         Nodes = new[]
     ///         {
     ///             "pve",
     ///         },
+    ///         Mtu = 1500,
+    ///         Dns = "1.1.1.1",
+    ///         DnsZone = "example.com",
+    ///         Ipam = "pve",
     ///         ReverseDns = "1.1.1.1",
     ///     });
     /// 
@@ -53,7 +53,7 @@ namespace Pulumi.ProxmoxVE.SDNZone
     public partial class Simple : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
+        /// The type of the DHCP backend for this zone. Currently the only supported value is `Dnsmasq`.
         /// </summary>
         [Output("dhcp")]
         public Output<string?> Dhcp { get; private set; } = null!;
@@ -160,7 +160,7 @@ namespace Pulumi.ProxmoxVE.SDNZone
     public sealed class SimpleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
+        /// The type of the DHCP backend for this zone. Currently the only supported value is `Dnsmasq`.
         /// </summary>
         [Input("dhcp")]
         public Input<string>? Dhcp { get; set; }
@@ -189,7 +189,7 @@ namespace Pulumi.ProxmoxVE.SDNZone
         [Input("mtu")]
         public Input<int>? Mtu { get; set; }
 
-        [Input("nodes", required: true)]
+        [Input("nodes")]
         private InputList<string>? _nodes;
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace Pulumi.ProxmoxVE.SDNZone
     public sealed class SimpleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
+        /// The type of the DHCP backend for this zone. Currently the only supported value is `Dnsmasq`.
         /// </summary>
         [Input("dhcp")]
         public Input<string>? Dhcp { get; set; }

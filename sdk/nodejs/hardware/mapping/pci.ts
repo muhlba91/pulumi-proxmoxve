@@ -9,6 +9,27 @@ import * as utilities from "../../utilities";
 /**
  * Manages a PCI hardware mapping in a Proxmox VE cluster.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = new proxmoxve.hardware.mapping.Pci("example", {
+ *     comment: "This is a comment",
+ *     name: "example",
+ *     maps: [{
+ *         comment: "This is a device specific comment",
+ *         id: "8086:5916",
+ *         iommuGroup: 0,
+ *         node: "pve",
+ *         path: "0000:00:02.0",
+ *         subsystemId: "8086:2068",
+ *     }],
+ *     mediatedDevices: true,
+ * });
+ * ```
+ *
  * ## Import
  *
  * #!/usr/bin/env sh

@@ -31,25 +31,26 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := network.NewFirewallSecurityGroup(ctx, "webserver", &network.FirewallSecurityGroupArgs{
+//				Name:    pulumi.String("webserver"),
 //				Comment: pulumi.String("Managed by Pulumi"),
 //				Rules: network.FirewallSecurityGroupRuleArray{
 //					&network.FirewallSecurityGroupRuleArgs{
+//						Type:    pulumi.String("in"),
 //						Action:  pulumi.String("ACCEPT"),
 //						Comment: pulumi.String("Allow HTTP"),
 //						Dest:    pulumi.String("192.168.1.5"),
 //						Dport:   pulumi.String("80"),
-//						Log:     pulumi.String("info"),
 //						Proto:   pulumi.String("tcp"),
-//						Type:    pulumi.String("in"),
+//						Log:     pulumi.String("info"),
 //					},
 //					&network.FirewallSecurityGroupRuleArgs{
+//						Type:    pulumi.String("in"),
 //						Action:  pulumi.String("ACCEPT"),
 //						Comment: pulumi.String("Allow HTTPS"),
 //						Dest:    pulumi.String("192.168.1.5"),
 //						Dport:   pulumi.String("443"),
-//						Log:     pulumi.String("info"),
 //						Proto:   pulumi.String("tcp"),
-//						Type:    pulumi.String("in"),
+//						Log:     pulumi.String("info"),
 //					},
 //				},
 //			})

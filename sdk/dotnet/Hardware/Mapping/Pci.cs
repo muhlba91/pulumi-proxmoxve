@@ -12,6 +12,38 @@ namespace Pulumi.ProxmoxVE.Hardware.Mapping
     /// <summary>
     /// Manages a PCI hardware mapping in a Proxmox VE cluster.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new ProxmoxVE.Hardware.Mapping.Pci("example", new()
+    ///     {
+    ///         Comment = "This is a comment",
+    ///         Name = "example",
+    ///         Maps = new[]
+    ///         {
+    ///             new ProxmoxVE.Hardware.Mapping.Inputs.PciMapArgs
+    ///             {
+    ///                 Comment = "This is a device specific comment",
+    ///                 Id = "8086:5916",
+    ///                 IommuGroup = 0,
+    ///                 Node = "pve",
+    ///                 Path = "0000:00:02.0",
+    ///                 SubsystemId = "8086:2068",
+    ///             },
+    ///         },
+    ///         MediatedDevices = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// #!/usr/bin/env sh

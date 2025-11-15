@@ -110,7 +110,11 @@ def get_virtual_machines(filters: Optional[Sequence[Union['GetVirtualMachinesFil
     import pulumi_proxmoxve as proxmoxve
 
     ubuntu_vms = proxmoxve.VM.get_virtual_machines(tags=["ubuntu"])
-    ubuntu_templates = proxmoxve.VM.get_virtual_machines(filters=[
+    ubuntu_templates = proxmoxve.VM.get_virtual_machines(tags=[
+            "template",
+            "latest",
+        ],
+        filters=[
             {
                 "name": "template",
                 "values": ["true"],
@@ -132,10 +136,6 @@ def get_virtual_machines(filters: Optional[Sequence[Union['GetVirtualMachinesFil
                     "node_eu_[1-3]",
                 ],
             },
-        ],
-        tags=[
-            "template",
-            "latest",
         ])
     ```
 
@@ -172,7 +172,11 @@ def get_virtual_machines_output(filters: Optional[pulumi.Input[Optional[Sequence
     import pulumi_proxmoxve as proxmoxve
 
     ubuntu_vms = proxmoxve.VM.get_virtual_machines(tags=["ubuntu"])
-    ubuntu_templates = proxmoxve.VM.get_virtual_machines(filters=[
+    ubuntu_templates = proxmoxve.VM.get_virtual_machines(tags=[
+            "template",
+            "latest",
+        ],
+        filters=[
             {
                 "name": "template",
                 "values": ["true"],
@@ -194,10 +198,6 @@ def get_virtual_machines_output(filters: Optional[pulumi.Input[Optional[Sequence
                     "node_eu_[1-3]",
                 ],
             },
-        ],
-        tags=[
-            "template",
-            "latest",
         ])
     ```
 

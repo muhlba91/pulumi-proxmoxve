@@ -2718,7 +2718,7 @@ if not MYPY:
         address: NotRequired[pulumi.Input[_builtins.str]]
         """
         The IPv6 address in CIDR notation
-        (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
+        (e.g. fd1c::7334/64). Alternatively, set this
         to `dhcp` for autodiscovery.
         """
         gateway: NotRequired[pulumi.Input[_builtins.str]]
@@ -2736,7 +2736,7 @@ class VirtualMachineInitializationIpConfigIpv6Args:
                  gateway: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] address: The IPv6 address in CIDR notation
-               (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
+               (e.g. fd1c::7334/64). Alternatively, set this
                to `dhcp` for autodiscovery.
         :param pulumi.Input[_builtins.str] gateway: The IPv6 gateway (must be omitted
                when `dhcp` is used as the address).
@@ -2751,7 +2751,7 @@ class VirtualMachineInitializationIpConfigIpv6Args:
     def address(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The IPv6 address in CIDR notation
-        (e.g. fd1c:000:0000::0000:000:7334/64). Alternatively, set this
+        (e.g. fd1c::7334/64). Alternatively, set this
         to `dhcp` for autodiscovery.
         """
         return pulumi.get(self, "address")

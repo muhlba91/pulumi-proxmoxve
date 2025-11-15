@@ -13,7 +13,7 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
     public sealed class ContainerCpuGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The CPU architecture (defaults to `amd64`).
+        /// The CPU architecture (defaults to `Amd64`).
         /// </summary>
         [Input("architecture")]
         public Input<string>? Architecture { get; set; }

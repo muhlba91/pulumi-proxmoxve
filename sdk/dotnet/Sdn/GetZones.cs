@@ -24,13 +24,16 @@ namespace Pulumi.ProxmoxVE.Sdn
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // List all SDN zones
         ///     var all = ProxmoxVE.Sdn.GetZones.Invoke();
         /// 
+        ///     // List only EVPN zones
         ///     var evpnOnly = ProxmoxVE.Sdn.GetZones.Invoke(new()
         ///     {
         ///         Type = "evpn",
         ///     });
         /// 
+        ///     // List only Simple zones  
         ///     var simpleOnly = ProxmoxVE.Sdn.GetZones.Invoke(new()
         ///     {
         ///         Type = "simple",
@@ -44,8 +47,8 @@ namespace Pulumi.ProxmoxVE.Sdn
         ///         },
         ///         ["dataProxmoxVirtualEnvironmentSdnZonesFiltered"] = 
         ///         {
-        ///             { "evpn_zones", evpnOnly.Apply(getZonesResult =&gt; getZonesResult.Zones) },
-        ///             { "simple_zones", simpleOnly.Apply(getZonesResult =&gt; getZonesResult.Zones) },
+        ///             { "evpnZones", evpnOnly.Apply(getZonesResult =&gt; getZonesResult.Zones) },
+        ///             { "simpleZones", simpleOnly.Apply(getZonesResult =&gt; getZonesResult.Zones) },
         ///         },
         ///     };
         /// });
@@ -67,13 +70,16 @@ namespace Pulumi.ProxmoxVE.Sdn
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // List all SDN zones
         ///     var all = ProxmoxVE.Sdn.GetZones.Invoke();
         /// 
+        ///     // List only EVPN zones
         ///     var evpnOnly = ProxmoxVE.Sdn.GetZones.Invoke(new()
         ///     {
         ///         Type = "evpn",
         ///     });
         /// 
+        ///     // List only Simple zones  
         ///     var simpleOnly = ProxmoxVE.Sdn.GetZones.Invoke(new()
         ///     {
         ///         Type = "simple",
@@ -87,8 +93,8 @@ namespace Pulumi.ProxmoxVE.Sdn
         ///         },
         ///         ["dataProxmoxVirtualEnvironmentSdnZonesFiltered"] = 
         ///         {
-        ///             { "evpn_zones", evpnOnly.Apply(getZonesResult =&gt; getZonesResult.Zones) },
-        ///             { "simple_zones", simpleOnly.Apply(getZonesResult =&gt; getZonesResult.Zones) },
+        ///             { "evpnZones", evpnOnly.Apply(getZonesResult =&gt; getZonesResult.Zones) },
+        ///             { "simpleZones", simpleOnly.Apply(getZonesResult =&gt; getZonesResult.Zones) },
         ///         },
         ///     };
         /// });
@@ -110,13 +116,16 @@ namespace Pulumi.ProxmoxVE.Sdn
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // List all SDN zones
         ///     var all = ProxmoxVE.Sdn.GetZones.Invoke();
         /// 
+        ///     // List only EVPN zones
         ///     var evpnOnly = ProxmoxVE.Sdn.GetZones.Invoke(new()
         ///     {
         ///         Type = "evpn",
         ///     });
         /// 
+        ///     // List only Simple zones  
         ///     var simpleOnly = ProxmoxVE.Sdn.GetZones.Invoke(new()
         ///     {
         ///         Type = "simple",
@@ -130,8 +139,8 @@ namespace Pulumi.ProxmoxVE.Sdn
         ///         },
         ///         ["dataProxmoxVirtualEnvironmentSdnZonesFiltered"] = 
         ///         {
-        ///             { "evpn_zones", evpnOnly.Apply(getZonesResult =&gt; getZonesResult.Zones) },
-        ///             { "simple_zones", simpleOnly.Apply(getZonesResult =&gt; getZonesResult.Zones) },
+        ///             { "evpnZones", evpnOnly.Apply(getZonesResult =&gt; getZonesResult.Zones) },
+        ///             { "simpleZones", simpleOnly.Apply(getZonesResult =&gt; getZonesResult.Zones) },
         ///         },
         ///     };
         /// });

@@ -144,8 +144,10 @@ def get_ha_resource(resource_id: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
+    # This will fetch the set of all HA resource identifiers...
     all = proxmoxve.HA.get_ha_resources()
-    example = [proxmoxve.HA.get_ha_resource(resource_id=__value) for __key, __value in all.resource_ids]
+    # ...which we will go through in order to fetch the whole record for each resource.
+    example = {__key: proxmoxve.HA.get_ha_resource(resource_id=__value) for __key, __value in all.resource_ids}
     pulumi.export("proxmoxVirtualEnvironmentHaresourcesFull", example)
     ```
 
@@ -177,8 +179,10 @@ def get_ha_resource_output(resource_id: Optional[pulumi.Input[_builtins.str]] = 
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
+    # This will fetch the set of all HA resource identifiers...
     all = proxmoxve.HA.get_ha_resources()
-    example = [proxmoxve.HA.get_ha_resource(resource_id=__value) for __key, __value in all.resource_ids]
+    # ...which we will go through in order to fetch the whole record for each resource.
+    example = {__key: proxmoxve.HA.get_ha_resource(resource_id=__value) for __key, __value in all.resource_ids}
     pulumi.export("proxmoxVirtualEnvironmentHaresourcesFull", example)
     ```
 

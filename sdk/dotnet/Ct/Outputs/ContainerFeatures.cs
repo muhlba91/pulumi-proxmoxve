@@ -14,19 +14,19 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
     public sealed class ContainerFeatures
     {
         /// <summary>
-        /// Whether the container supports FUSE mounts (defaults to `false`)
+        /// Whether the container supports FUSE mounts (defaults to `False`)
         /// </summary>
         public readonly bool? Fuse;
         /// <summary>
-        /// Whether the container supports `keyctl()` system call (defaults to `false`)
+        /// Whether the container supports `keyctl()` system call (defaults to `False`)
         /// </summary>
         public readonly bool? Keyctl;
         /// <summary>
-        /// List of allowed mount types (`cifs` or `nfs`)
+        /// List of allowed mount types (`Cifs` or `Nfs`)
         /// </summary>
         public readonly ImmutableArray<string> Mounts;
         /// <summary>
-        /// Whether the container is nested (defaults to `false`)
+        /// Whether the container is nested (defaults to `False`)
         /// </summary>
         public readonly bool? Nesting;
 

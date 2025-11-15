@@ -16,7 +16,7 @@ import * as utilities from "../utilities";
  * const example = proxmoxve.Network.getVersion({});
  * export const dataProxmoxVirtualEnvironmentVersion = {
  *     release: example.then(example => example.release),
- *     repository_id: example.then(example => example.repositoryId),
+ *     repositoryId: example.then(example => example.repositoryId),
  *     version: example.then(example => example.version),
  * };
  * ```
@@ -60,7 +60,7 @@ export interface GetVersionResult {
  * const example = proxmoxve.Network.getVersion({});
  * export const dataProxmoxVirtualEnvironmentVersion = {
  *     release: example.then(example => example.release),
- *     repository_id: example.then(example => example.repositoryId),
+ *     repositoryId: example.then(example => example.repositoryId),
  *     version: example.then(example => example.version),
  * };
  * ```

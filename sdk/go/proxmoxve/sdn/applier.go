@@ -12,69 +12,6 @@ import (
 )
 
 // **EXPERIMENTAL** Triggers Proxmox's SDN **Apply** (equivalent to `PUT /cluster/sdn`).Intended to be used with `replaceTriggeredBy` so it runs after SDN objects change.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdn"
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdnzone"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			finalizer, err := sdn.NewApplier(ctx, "finalizer", nil)
-//			if err != nil {
-//				return err
-//			}
-//			// SDN Zone (Simple) - First zone for applier demonstration
-//			exampleZone1, err := sdnzone.NewSimple(ctx, "exampleZone1", &sdnzone.SimpleArgs{
-//				ZoneId: pulumi.String("zone1"),
-//				Nodes: pulumi.StringArray{
-//					pulumi.String("pve"),
-//				},
-//				Mtu:        pulumi.Int(1500),
-//				Dns:        pulumi.String("1.1.1.1"),
-//				DnsZone:    pulumi.String("example.com"),
-//				Ipam:       pulumi.String("pve"),
-//				ReverseDns: pulumi.String("1.1.1.1"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				finalizer,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			// SDN Zone (Simple) - Second zone for applier demonstration
-//			exampleZone2, err := sdnzone.NewSimple(ctx, "exampleZone2", &sdnzone.SimpleArgs{
-//				ZoneId: pulumi.String("zone2"),
-//				Nodes: pulumi.StringArray{
-//					pulumi.String("pve"),
-//				},
-//				Mtu: pulumi.Int(1500),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				finalizer,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			// SDN Applier - Applies SDN configuration changes
-//			_, err = sdn.NewApplier(ctx, "exampleApplier", nil, pulumi.DependsOn([]pulumi.Resource{
-//				exampleZone1,
-//				exampleZone2,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type Applier struct {
 	pulumi.CustomResourceState
 }

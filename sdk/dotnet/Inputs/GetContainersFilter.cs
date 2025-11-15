@@ -13,7 +13,7 @@ namespace Pulumi.ProxmoxVE.Inputs
     public sealed class GetContainersFilterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Name of the container attribute to filter on. One of [`name`, `template`, `status`, `node_name`]
+        /// Name of the container attribute to filter on. One of [`Name`, `Template`, `Status`, `NodeName`]
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;

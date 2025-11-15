@@ -126,7 +126,7 @@ namespace Pulumi.ProxmoxVE.Network
         /// </summary>
         public readonly string Digest;
         /// <summary>
-        /// The host entries (conversion of `addresses` and `hostnames` into
+        /// The host entries (conversion of `Addresses` and `Hostnames` into
         /// objects).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetHostsEntryResult> Entries;

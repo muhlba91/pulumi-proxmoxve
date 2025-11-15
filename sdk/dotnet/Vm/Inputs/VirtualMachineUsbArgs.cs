@@ -13,20 +13,20 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
     public sealed class VirtualMachineUsbArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Host USB device or port or the value `spice`. Use either this or `mapping`.
+        /// The Host USB device or port or the value `Spice`. Use either this or `Mapping`.
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
 
         /// <summary>
-        /// The cluster-wide resource mapping name of the device, for example "usbdevice". Use either this or `host`.
+        /// The cluster-wide resource mapping name of the device, for example "usbdevice". Use either this or `Host`.
         /// </summary>
         [Input("mapping")]
         public Input<string>? Mapping { get; set; }
 
         /// <summary>
         /// Makes the USB device a USB3 device for the VM
-        /// (defaults to `false`).
+        /// (defaults to `False`).
         /// </summary>
         [Input("usb3")]
         public Input<bool>? Usb3 { get; set; }

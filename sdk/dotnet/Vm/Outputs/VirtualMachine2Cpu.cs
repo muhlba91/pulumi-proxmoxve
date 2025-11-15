@@ -14,11 +14,11 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     public sealed class VirtualMachine2Cpu
     {
         /// <summary>
-        /// The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+        /// The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `Affinity` is only allowed for `root@pam` authenticated user.
         /// </summary>
         public readonly string? Affinity;
         /// <summary>
-        /// The CPU architecture `&lt;aarch64 | x86_64&gt;` (defaults to the host). Setting `affinity` is only allowed for `root@pam` authenticated user.
+        /// The CPU architecture `&lt;aarch64 | x86_64&gt;` (defaults to the host). Setting `Affinity` is only allowed for `root@pam` authenticated user.
         /// </summary>
         public readonly string? Architecture;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly int? Cores;
         /// <summary>
-        /// Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+        /// Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `Pcid`, `spec-ctrl`, `Ibpb`, `Ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `Pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `Aes`.
         /// </summary>
         public readonly ImmutableArray<string> Flags;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly int? Limit;
         /// <summary>
-        /// Enable NUMA (defaults to `false`).
+        /// Enable NUMA (defaults to `False`).
         /// </summary>
         public readonly bool? Numa;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly int? Sockets;
         /// <summary>
-        /// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+        /// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `Kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
         /// </summary>
         public readonly string? Type;
         /// <summary>

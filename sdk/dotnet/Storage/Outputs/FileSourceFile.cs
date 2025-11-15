@@ -29,7 +29,7 @@ namespace Pulumi.ProxmoxVE.Storage.Outputs
         public readonly string? FileName;
         /// <summary>
         /// Whether to skip the TLS verification step for
-        /// HTTPS sources (defaults to `false`).
+        /// HTTPS sources (defaults to `False`).
         /// </summary>
         public readonly bool? Insecure;
         /// <summary>

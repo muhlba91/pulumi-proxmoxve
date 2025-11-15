@@ -14,16 +14,15 @@ import * as utilities from "../utilities";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
  * const example = new proxmoxve.sdnzone.Qinq("example", {
- *     bridge: "vmbr0",
- *     dns: "1.1.1.1",
- *     dnsZone: "example.com",
  *     zoneId: "qinq1",
- *     ipam: "pve",
- *     mtu: 1496,
- *     nodes: ["pve"],
- *     reverseDns: "1.1.1.1",
+ *     bridge: "vmbr0",
  *     serviceVlan: 100,
  *     serviceVlanProtocol: "802.1ad",
+ *     mtu: 1496,
+ *     dns: "1.1.1.1",
+ *     dnsZone: "example.com",
+ *     ipam: "pve",
+ *     reverseDns: "1.1.1.1",
  * });
  * ```
  *
@@ -144,9 +143,6 @@ export class Qinq extends pulumi.CustomResource {
             if (args?.bridge === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bridge'");
             }
-            if (args?.nodes === undefined && !opts.urn) {
-                throw new Error("Missing required property 'nodes'");
-            }
             if (args?.serviceVlan === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceVlan'");
             }
@@ -252,7 +248,7 @@ export interface QinqArgs {
     /**
      * The Proxmox nodes which the zone and associated VNets should be deployed on
      */
-    nodes: pulumi.Input<pulumi.Input<string>[]>;
+    nodes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Reverse DNS API server address.
      */

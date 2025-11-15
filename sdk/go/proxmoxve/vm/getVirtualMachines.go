@@ -36,6 +36,10 @@ import (
 //				return err
 //			}
 //			_, err = vm.GetVirtualMachines(ctx, &vm.GetVirtualMachinesArgs{
+//				Tags: []string{
+//					"template",
+//					"latest",
+//				},
 //				Filters: []vm.GetVirtualMachinesFilter{
 //					{
 //						Name: "template",
@@ -64,10 +68,6 @@ import (
 //							"node_eu_[1-3]",
 //						},
 //					},
-//				},
-//				Tags: []string{
-//					"template",
-//					"latest",
 //				},
 //			}, nil)
 //			if err != nil {

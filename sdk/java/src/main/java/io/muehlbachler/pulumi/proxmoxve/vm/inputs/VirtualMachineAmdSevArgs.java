@@ -18,7 +18,7 @@ public final class VirtualMachineAmdSevArgs extends com.pulumi.resources.Resourc
 
     /**
      * Sets policy bit to allow Simultaneous Multi Threading (SMT)
-     * (Ignored unless for SEV-SNP) (defaults to `true`).
+     * (Ignored unless for SEV-SNP) (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     @Import(name="allowSmt")
@@ -26,7 +26,7 @@ public final class VirtualMachineAmdSevArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return Sets policy bit to allow Simultaneous Multi Threading (SMT)
-     * (Ignored unless for SEV-SNP) (defaults to `true`).
+     * (Ignored unless for SEV-SNP) (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> allowSmt() {
@@ -34,14 +34,14 @@ public final class VirtualMachineAmdSevArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Add kernel hashes to guest firmware for measured linux kernel launch (defaults to `false`).
+     * Add kernel hashes to guest firmware for measured linux kernel launch (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Import(name="kernelHashes")
     private @Nullable Output<Boolean> kernelHashes;
 
     /**
-     * @return Add kernel hashes to guest firmware for measured linux kernel launch (defaults to `false`).
+     * @return Add kernel hashes to guest firmware for measured linux kernel launch (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> kernelHashes() {
@@ -50,7 +50,7 @@ public final class VirtualMachineAmdSevArgs extends com.pulumi.resources.Resourc
 
     /**
      * Sets policy bit to disallow debugging of guest (defaults
-     * to `false`).
+     * to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Import(name="noDebug")
@@ -58,7 +58,7 @@ public final class VirtualMachineAmdSevArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return Sets policy bit to disallow debugging of guest (defaults
-     * to `false`).
+     * to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> noDebug() {
@@ -66,18 +66,18 @@ public final class VirtualMachineAmdSevArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to `false`).
+     * Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
-     * The `amd_sev` setting is only allowed for a `root{@literal @}pam` authenticated user.
+     * The &lt;span pulumi-lang-nodejs=&#34;`amdSev`&#34; pulumi-lang-dotnet=&#34;`AmdSev`&#34; pulumi-lang-go=&#34;`amdSev`&#34; pulumi-lang-python=&#34;`amd_sev`&#34; pulumi-lang-yaml=&#34;`amdSev`&#34; pulumi-lang-java=&#34;`amdSev`&#34;&gt;`amd_sev`&lt;/span&gt; setting is only allowed for a `root{@literal @}pam` authenticated user.
      * 
      */
     @Import(name="noKeySharing")
     private @Nullable Output<Boolean> noKeySharing;
 
     /**
-     * @return Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to `false`).
+     * @return Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
-     * The `amd_sev` setting is only allowed for a `root{@literal @}pam` authenticated user.
+     * The &lt;span pulumi-lang-nodejs=&#34;`amdSev`&#34; pulumi-lang-dotnet=&#34;`AmdSev`&#34; pulumi-lang-go=&#34;`amdSev`&#34; pulumi-lang-python=&#34;`amd_sev`&#34; pulumi-lang-yaml=&#34;`amdSev`&#34; pulumi-lang-java=&#34;`amdSev`&#34;&gt;`amd_sev`&lt;/span&gt; setting is only allowed for a `root{@literal @}pam` authenticated user.
      * 
      */
     public Optional<Output<Boolean>> noKeySharing() {
@@ -85,14 +85,14 @@ public final class VirtualMachineAmdSevArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Enable standard SEV with `std` or enable experimental SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option (defaults to `std`).
+     * Enable standard SEV with &lt;span pulumi-lang-nodejs=&#34;`std`&#34; pulumi-lang-dotnet=&#34;`Std`&#34; pulumi-lang-go=&#34;`std`&#34; pulumi-lang-python=&#34;`std`&#34; pulumi-lang-yaml=&#34;`std`&#34; pulumi-lang-java=&#34;`std`&#34;&gt;`std`&lt;/span&gt; or enable experimental SEV-ES with the &lt;span pulumi-lang-nodejs=&#34;`es`&#34; pulumi-lang-dotnet=&#34;`Es`&#34; pulumi-lang-go=&#34;`es`&#34; pulumi-lang-python=&#34;`es`&#34; pulumi-lang-yaml=&#34;`es`&#34; pulumi-lang-java=&#34;`es`&#34;&gt;`es`&lt;/span&gt; option or enable experimental SEV-SNP with the &lt;span pulumi-lang-nodejs=&#34;`snp`&#34; pulumi-lang-dotnet=&#34;`Snp`&#34; pulumi-lang-go=&#34;`snp`&#34; pulumi-lang-python=&#34;`snp`&#34; pulumi-lang-yaml=&#34;`snp`&#34; pulumi-lang-java=&#34;`snp`&#34;&gt;`snp`&lt;/span&gt; option (defaults to &lt;span pulumi-lang-nodejs=&#34;`std`&#34; pulumi-lang-dotnet=&#34;`Std`&#34; pulumi-lang-go=&#34;`std`&#34; pulumi-lang-python=&#34;`std`&#34; pulumi-lang-yaml=&#34;`std`&#34; pulumi-lang-java=&#34;`std`&#34;&gt;`std`&lt;/span&gt;).
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Enable standard SEV with `std` or enable experimental SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option (defaults to `std`).
+     * @return Enable standard SEV with &lt;span pulumi-lang-nodejs=&#34;`std`&#34; pulumi-lang-dotnet=&#34;`Std`&#34; pulumi-lang-go=&#34;`std`&#34; pulumi-lang-python=&#34;`std`&#34; pulumi-lang-yaml=&#34;`std`&#34; pulumi-lang-java=&#34;`std`&#34;&gt;`std`&lt;/span&gt; or enable experimental SEV-ES with the &lt;span pulumi-lang-nodejs=&#34;`es`&#34; pulumi-lang-dotnet=&#34;`Es`&#34; pulumi-lang-go=&#34;`es`&#34; pulumi-lang-python=&#34;`es`&#34; pulumi-lang-yaml=&#34;`es`&#34; pulumi-lang-java=&#34;`es`&#34;&gt;`es`&lt;/span&gt; option or enable experimental SEV-SNP with the &lt;span pulumi-lang-nodejs=&#34;`snp`&#34; pulumi-lang-dotnet=&#34;`Snp`&#34; pulumi-lang-go=&#34;`snp`&#34; pulumi-lang-python=&#34;`snp`&#34; pulumi-lang-yaml=&#34;`snp`&#34; pulumi-lang-java=&#34;`snp`&#34;&gt;`snp`&lt;/span&gt; option (defaults to &lt;span pulumi-lang-nodejs=&#34;`std`&#34; pulumi-lang-dotnet=&#34;`Std`&#34; pulumi-lang-go=&#34;`std`&#34; pulumi-lang-python=&#34;`std`&#34; pulumi-lang-yaml=&#34;`std`&#34; pulumi-lang-java=&#34;`std`&#34;&gt;`std`&lt;/span&gt;).
      * 
      */
     public Optional<Output<String>> type() {
@@ -129,7 +129,7 @@ public final class VirtualMachineAmdSevArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param allowSmt Sets policy bit to allow Simultaneous Multi Threading (SMT)
-         * (Ignored unless for SEV-SNP) (defaults to `true`).
+         * (Ignored unless for SEV-SNP) (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class VirtualMachineAmdSevArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param allowSmt Sets policy bit to allow Simultaneous Multi Threading (SMT)
-         * (Ignored unless for SEV-SNP) (defaults to `true`).
+         * (Ignored unless for SEV-SNP) (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class VirtualMachineAmdSevArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param kernelHashes Add kernel hashes to guest firmware for measured linux kernel launch (defaults to `false`).
+         * @param kernelHashes Add kernel hashes to guest firmware for measured linux kernel launch (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class VirtualMachineAmdSevArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param kernelHashes Add kernel hashes to guest firmware for measured linux kernel launch (defaults to `false`).
+         * @param kernelHashes Add kernel hashes to guest firmware for measured linux kernel launch (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class VirtualMachineAmdSevArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param noDebug Sets policy bit to disallow debugging of guest (defaults
-         * to `false`).
+         * to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class VirtualMachineAmdSevArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param noDebug Sets policy bit to disallow debugging of guest (defaults
-         * to `false`).
+         * to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -195,9 +195,9 @@ public final class VirtualMachineAmdSevArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param noKeySharing Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to `false`).
+         * @param noKeySharing Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
-         * The `amd_sev` setting is only allowed for a `root{@literal @}pam` authenticated user.
+         * The &lt;span pulumi-lang-nodejs=&#34;`amdSev`&#34; pulumi-lang-dotnet=&#34;`AmdSev`&#34; pulumi-lang-go=&#34;`amdSev`&#34; pulumi-lang-python=&#34;`amd_sev`&#34; pulumi-lang-yaml=&#34;`amdSev`&#34; pulumi-lang-java=&#34;`amdSev`&#34;&gt;`amd_sev`&lt;/span&gt; setting is only allowed for a `root{@literal @}pam` authenticated user.
          * 
          * @return builder
          * 
@@ -208,9 +208,9 @@ public final class VirtualMachineAmdSevArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param noKeySharing Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to `false`).
+         * @param noKeySharing Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
-         * The `amd_sev` setting is only allowed for a `root{@literal @}pam` authenticated user.
+         * The &lt;span pulumi-lang-nodejs=&#34;`amdSev`&#34; pulumi-lang-dotnet=&#34;`AmdSev`&#34; pulumi-lang-go=&#34;`amdSev`&#34; pulumi-lang-python=&#34;`amd_sev`&#34; pulumi-lang-yaml=&#34;`amdSev`&#34; pulumi-lang-java=&#34;`amdSev`&#34;&gt;`amd_sev`&lt;/span&gt; setting is only allowed for a `root{@literal @}pam` authenticated user.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class VirtualMachineAmdSevArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param type Enable standard SEV with `std` or enable experimental SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option (defaults to `std`).
+         * @param type Enable standard SEV with &lt;span pulumi-lang-nodejs=&#34;`std`&#34; pulumi-lang-dotnet=&#34;`Std`&#34; pulumi-lang-go=&#34;`std`&#34; pulumi-lang-python=&#34;`std`&#34; pulumi-lang-yaml=&#34;`std`&#34; pulumi-lang-java=&#34;`std`&#34;&gt;`std`&lt;/span&gt; or enable experimental SEV-ES with the &lt;span pulumi-lang-nodejs=&#34;`es`&#34; pulumi-lang-dotnet=&#34;`Es`&#34; pulumi-lang-go=&#34;`es`&#34; pulumi-lang-python=&#34;`es`&#34; pulumi-lang-yaml=&#34;`es`&#34; pulumi-lang-java=&#34;`es`&#34;&gt;`es`&lt;/span&gt; option or enable experimental SEV-SNP with the &lt;span pulumi-lang-nodejs=&#34;`snp`&#34; pulumi-lang-dotnet=&#34;`Snp`&#34; pulumi-lang-go=&#34;`snp`&#34; pulumi-lang-python=&#34;`snp`&#34; pulumi-lang-yaml=&#34;`snp`&#34; pulumi-lang-java=&#34;`snp`&#34;&gt;`snp`&lt;/span&gt; option (defaults to &lt;span pulumi-lang-nodejs=&#34;`std`&#34; pulumi-lang-dotnet=&#34;`Std`&#34; pulumi-lang-go=&#34;`std`&#34; pulumi-lang-python=&#34;`std`&#34; pulumi-lang-yaml=&#34;`std`&#34; pulumi-lang-java=&#34;`std`&#34;&gt;`std`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -231,7 +231,7 @@ public final class VirtualMachineAmdSevArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param type Enable standard SEV with `std` or enable experimental SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option (defaults to `std`).
+         * @param type Enable standard SEV with &lt;span pulumi-lang-nodejs=&#34;`std`&#34; pulumi-lang-dotnet=&#34;`Std`&#34; pulumi-lang-go=&#34;`std`&#34; pulumi-lang-python=&#34;`std`&#34; pulumi-lang-yaml=&#34;`std`&#34; pulumi-lang-java=&#34;`std`&#34;&gt;`std`&lt;/span&gt; or enable experimental SEV-ES with the &lt;span pulumi-lang-nodejs=&#34;`es`&#34; pulumi-lang-dotnet=&#34;`Es`&#34; pulumi-lang-go=&#34;`es`&#34; pulumi-lang-python=&#34;`es`&#34; pulumi-lang-yaml=&#34;`es`&#34; pulumi-lang-java=&#34;`es`&#34;&gt;`es`&lt;/span&gt; option or enable experimental SEV-SNP with the &lt;span pulumi-lang-nodejs=&#34;`snp`&#34; pulumi-lang-dotnet=&#34;`Snp`&#34; pulumi-lang-go=&#34;`snp`&#34; pulumi-lang-python=&#34;`snp`&#34; pulumi-lang-yaml=&#34;`snp`&#34; pulumi-lang-java=&#34;`snp`&#34;&gt;`snp`&lt;/span&gt; option (defaults to &lt;span pulumi-lang-nodejs=&#34;`std`&#34; pulumi-lang-dotnet=&#34;`Std`&#34; pulumi-lang-go=&#34;`std`&#34; pulumi-lang-python=&#34;`std`&#34; pulumi-lang-yaml=&#34;`std`&#34; pulumi-lang-java=&#34;`std`&#34;&gt;`std`&lt;/span&gt;).
          * 
          * @return builder
          * 

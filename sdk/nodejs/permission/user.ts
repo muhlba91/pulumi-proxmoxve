@@ -15,11 +15,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
- * const operationsMonitoring = new proxmoxve.permission.Role("operationsMonitoring", {
+ * const operationsMonitoring = new proxmoxve.permission.Role("operations_monitoring", {
  *     roleId: "operations-monitoring",
  *     privileges: ["VM.GuestAgent.Audit"],
  * });
- * const operationsAutomation = new proxmoxve.permission.User("operationsAutomation", {
+ * const operationsAutomation = new proxmoxve.permission.User("operations_automation", {
  *     acls: [{
  *         path: "/vms/1234",
  *         propagate: true,

@@ -47,6 +47,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new Usb("example", UsbArgs.builder()
  *             .comment("This is a comment")
+ *             .name("example")
  *             .maps(UsbMapArgs.builder()
  *                 .comment("This is a device specific comment")
  *                 .id("8087:0a2b")

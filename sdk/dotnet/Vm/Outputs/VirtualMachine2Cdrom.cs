@@ -14,7 +14,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     public sealed class VirtualMachine2Cdrom
     {
         /// <summary>
-        /// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+        /// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `None` to leave the CD-ROM empty. Use `Cdrom` to connect to the physical drive.
         /// </summary>
         public readonly string? FileId;
 

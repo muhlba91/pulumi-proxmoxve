@@ -31,6 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := proxmoxve.NewAcmeAccount(ctx, "example", &proxmoxve.AcmeAccountArgs{
+//				Name:      pulumi.String("example"),
 //				Contact:   pulumi.String("example@email.com"),
 //				Directory: pulumi.String("https://acme-staging-v02.api.letsencrypt.org/directory"),
 //				Tos:       pulumi.String("https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf"),

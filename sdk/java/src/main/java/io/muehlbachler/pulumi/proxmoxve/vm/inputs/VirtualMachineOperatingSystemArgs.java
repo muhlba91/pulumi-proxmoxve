@@ -16,14 +16,14 @@ public final class VirtualMachineOperatingSystemArgs extends com.pulumi.resource
     public static final VirtualMachineOperatingSystemArgs Empty = new VirtualMachineOperatingSystemArgs();
 
     /**
-     * The type (defaults to `other`).
+     * The type (defaults to &lt;span pulumi-lang-nodejs=&#34;`other`&#34; pulumi-lang-dotnet=&#34;`Other`&#34; pulumi-lang-go=&#34;`other`&#34; pulumi-lang-python=&#34;`other`&#34; pulumi-lang-yaml=&#34;`other`&#34; pulumi-lang-java=&#34;`other`&#34;&gt;`other`&lt;/span&gt;).
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type (defaults to `other`).
+     * @return The type (defaults to &lt;span pulumi-lang-nodejs=&#34;`other`&#34; pulumi-lang-dotnet=&#34;`Other`&#34; pulumi-lang-go=&#34;`other`&#34; pulumi-lang-python=&#34;`other`&#34; pulumi-lang-yaml=&#34;`other`&#34; pulumi-lang-java=&#34;`other`&#34;&gt;`other`&lt;/span&gt;).
      * 
      */
     public Optional<Output<String>> type() {
@@ -55,7 +55,7 @@ public final class VirtualMachineOperatingSystemArgs extends com.pulumi.resource
         }
 
         /**
-         * @param type The type (defaults to `other`).
+         * @param type The type (defaults to &lt;span pulumi-lang-nodejs=&#34;`other`&#34; pulumi-lang-dotnet=&#34;`Other`&#34; pulumi-lang-go=&#34;`other`&#34; pulumi-lang-python=&#34;`other`&#34; pulumi-lang-yaml=&#34;`other`&#34; pulumi-lang-java=&#34;`other`&#34;&gt;`other`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class VirtualMachineOperatingSystemArgs extends com.pulumi.resource
         }
 
         /**
-         * @param type The type (defaults to `other`).
+         * @param type The type (defaults to &lt;span pulumi-lang-nodejs=&#34;`other`&#34; pulumi-lang-dotnet=&#34;`Other`&#34; pulumi-lang-go=&#34;`other`&#34; pulumi-lang-python=&#34;`other`&#34; pulumi-lang-yaml=&#34;`other`&#34; pulumi-lang-java=&#34;`other`&#34;&gt;`other`&lt;/span&gt;).
          * 
          * @return builder
          * 

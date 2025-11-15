@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VirtualMachineOperatingSystem {
     /**
-     * @return The type (defaults to `other`).
+     * @return The type (defaults to &lt;span pulumi-lang-nodejs=&#34;`other`&#34; pulumi-lang-dotnet=&#34;`Other`&#34; pulumi-lang-go=&#34;`other`&#34; pulumi-lang-python=&#34;`other`&#34; pulumi-lang-yaml=&#34;`other`&#34; pulumi-lang-java=&#34;`other`&#34;&gt;`other`&lt;/span&gt;).
      * 
      */
     private @Nullable String type;
 
     private VirtualMachineOperatingSystem() {}
     /**
-     * @return The type (defaults to `other`).
+     * @return The type (defaults to &lt;span pulumi-lang-nodejs=&#34;`other`&#34; pulumi-lang-dotnet=&#34;`Other`&#34; pulumi-lang-go=&#34;`other`&#34; pulumi-lang-python=&#34;`other`&#34; pulumi-lang-yaml=&#34;`other`&#34; pulumi-lang-java=&#34;`other`&#34;&gt;`other`&lt;/span&gt;).
      * 
      */
     public Optional<String> type() {

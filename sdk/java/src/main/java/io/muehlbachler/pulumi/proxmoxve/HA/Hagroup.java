@@ -105,42 +105,42 @@ public class HAGroup extends com.pulumi.resources.CustomResource {
         return this.group;
     }
     /**
-     * A flag that indicates that failing back to a higher priority node is disabled for this HA group. Defaults to `false`.
+     * A flag that indicates that failing back to a higher priority node is disabled for this HA group. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
      * 
      */
     @Export(name="noFailback", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> noFailback;
 
     /**
-     * @return A flag that indicates that failing back to a higher priority node is disabled for this HA group. Defaults to `false`.
+     * @return A flag that indicates that failing back to a higher priority node is disabled for this HA group. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
      * 
      */
     public Output<Boolean> noFailback() {
         return this.noFailback;
     }
     /**
-     * The member nodes for this group. They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or `null` for unset priorities.
+     * The member nodes for this group. They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or &lt;span pulumi-lang-nodejs=&#34;`null`&#34; pulumi-lang-dotnet=&#34;`Null`&#34; pulumi-lang-go=&#34;`null`&#34; pulumi-lang-python=&#34;`null`&#34; pulumi-lang-yaml=&#34;`null`&#34; pulumi-lang-java=&#34;`null`&#34;&gt;`null`&lt;/span&gt; for unset priorities.
      * 
      */
     @Export(name="nodes", refs={Map.class,String.class,Integer.class}, tree="[0,1,2]")
     private Output<Map<String,Integer>> nodes;
 
     /**
-     * @return The member nodes for this group. They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or `null` for unset priorities.
+     * @return The member nodes for this group. They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or &lt;span pulumi-lang-nodejs=&#34;`null`&#34; pulumi-lang-dotnet=&#34;`Null`&#34; pulumi-lang-go=&#34;`null`&#34; pulumi-lang-python=&#34;`null`&#34; pulumi-lang-yaml=&#34;`null`&#34; pulumi-lang-java=&#34;`null`&#34;&gt;`null`&lt;/span&gt; for unset priorities.
      * 
      */
     public Output<Map<String,Integer>> nodes() {
         return this.nodes;
     }
     /**
-     * A flag that indicates that other nodes may not be used to run resources associated to this HA group. Defaults to `false`.
+     * A flag that indicates that other nodes may not be used to run resources associated to this HA group. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
      * 
      */
     @Export(name="restricted", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> restricted;
 
     /**
-     * @return A flag that indicates that other nodes may not be used to run resources associated to this HA group. Defaults to `false`.
+     * @return A flag that indicates that other nodes may not be used to run resources associated to this HA group. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
      * 
      */
     public Output<Boolean> restricted() {

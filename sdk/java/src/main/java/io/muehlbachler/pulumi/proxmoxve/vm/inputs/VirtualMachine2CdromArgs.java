@@ -16,14 +16,14 @@ public final class VirtualMachine2CdromArgs extends com.pulumi.resources.Resourc
     public static final VirtualMachine2CdromArgs Empty = new VirtualMachine2CdromArgs();
 
     /**
-     * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+     * The file ID of the CD-ROM, or `cdrom|none`. Defaults to &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34;&gt;`none`&lt;/span&gt; to leave the CD-ROM empty. Use &lt;span pulumi-lang-nodejs=&#34;`cdrom`&#34; pulumi-lang-dotnet=&#34;`Cdrom`&#34; pulumi-lang-go=&#34;`cdrom`&#34; pulumi-lang-python=&#34;`cdrom`&#34; pulumi-lang-yaml=&#34;`cdrom`&#34; pulumi-lang-java=&#34;`cdrom`&#34;&gt;`cdrom`&lt;/span&gt; to connect to the physical drive.
      * 
      */
     @Import(name="fileId")
     private @Nullable Output<String> fileId;
 
     /**
-     * @return The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+     * @return The file ID of the CD-ROM, or `cdrom|none`. Defaults to &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34;&gt;`none`&lt;/span&gt; to leave the CD-ROM empty. Use &lt;span pulumi-lang-nodejs=&#34;`cdrom`&#34; pulumi-lang-dotnet=&#34;`Cdrom`&#34; pulumi-lang-go=&#34;`cdrom`&#34; pulumi-lang-python=&#34;`cdrom`&#34; pulumi-lang-yaml=&#34;`cdrom`&#34; pulumi-lang-java=&#34;`cdrom`&#34;&gt;`cdrom`&lt;/span&gt; to connect to the physical drive.
      * 
      */
     public Optional<Output<String>> fileId() {
@@ -55,7 +55,7 @@ public final class VirtualMachine2CdromArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param fileId The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+         * @param fileId The file ID of the CD-ROM, or `cdrom|none`. Defaults to &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34;&gt;`none`&lt;/span&gt; to leave the CD-ROM empty. Use &lt;span pulumi-lang-nodejs=&#34;`cdrom`&#34; pulumi-lang-dotnet=&#34;`Cdrom`&#34; pulumi-lang-go=&#34;`cdrom`&#34; pulumi-lang-python=&#34;`cdrom`&#34; pulumi-lang-yaml=&#34;`cdrom`&#34; pulumi-lang-java=&#34;`cdrom`&#34;&gt;`cdrom`&lt;/span&gt; to connect to the physical drive.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class VirtualMachine2CdromArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param fileId The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+         * @param fileId The file ID of the CD-ROM, or `cdrom|none`. Defaults to &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34;&gt;`none`&lt;/span&gt; to leave the CD-ROM empty. Use &lt;span pulumi-lang-nodejs=&#34;`cdrom`&#34; pulumi-lang-dotnet=&#34;`Cdrom`&#34; pulumi-lang-go=&#34;`cdrom`&#34; pulumi-lang-python=&#34;`cdrom`&#34; pulumi-lang-yaml=&#34;`cdrom`&#34; pulumi-lang-java=&#34;`cdrom`&#34;&gt;`cdrom`&lt;/span&gt; to connect to the physical drive.
          * 
          * @return builder
          * 

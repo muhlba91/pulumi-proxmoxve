@@ -37,7 +37,7 @@ jobs:
       max-parallel: 4
       matrix:
         go-version: [1.25.x]
-        golangci-lint-version: [v2.4.0]
+        golangci-lint-version: [v2.6.2]
 
     steps:
       - name: Checkout repository

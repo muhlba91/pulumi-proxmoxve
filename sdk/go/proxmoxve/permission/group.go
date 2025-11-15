@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := permission.NewGroup(ctx, "operationsTeam", &permission.GroupArgs{
+//			_, err := permission.NewGroup(ctx, "operations_team", &permission.GroupArgs{
 //				Comment: pulumi.String("Managed by Pulumi"),
 //				GroupId: pulumi.String("operations-team"),
 //			})

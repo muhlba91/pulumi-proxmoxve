@@ -7,10 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * A security group is a collection of rules, defined at cluster level, which can
- * be used in all VMs' rules. For example, you can define a group named “webserver”
- * with rules to open the http and https ports. Rules can be created on the cluster
- * level, on VM / Container level.
+ * Manages cluster-level, node-level or VM/container-level firewall rules.
  *
  * ## Example Usage
  *
@@ -19,8 +16,8 @@ import * as utilities from "../utilities";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
  * const inbound = new proxmoxve.network.FirewallRules("inbound", {
- *     nodeName: proxmox_virtual_environment_vm.example.node_name,
- *     vmId: proxmox_virtual_environment_vm.example.vm_id,
+ *     nodeName: example.nodeName,
+ *     vmId: example.vmId,
  *     rules: [
  *         {
  *             type: "in",
@@ -41,17 +38,33 @@ import * as utilities from "../utilities";
  *             log: "info",
  *         },
  *         {
- *             securityGroup: proxmox_virtual_environment_cluster_firewall_security_group.example.name,
+ *             securityGroup: exampleProxmoxVirtualEnvironmentClusterFirewallSecurityGroup.name,
  *             comment: "From security group",
  *             iface: "net0",
  *         },
  *     ],
  * }, {
  *     dependsOn: [
- *         proxmox_virtual_environment_vm.example,
- *         proxmox_virtual_environment_cluster_firewall_security_group.example,
+ *         example,
+ *         exampleProxmoxVirtualEnvironmentClusterFirewallSecurityGroup,
  *     ],
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * ### Container Rules
+ *
+ * Use the import ID format: `container/<node_name>/<container_id>`
+ *
+ * Example uses node name `pve` and container ID `100`.
+ *
+ * **Example:**
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:Network/firewallRules:FirewallRules container_rules container/pve/100
  * ```
  */
 export class FirewallRules extends pulumi.CustomResource {
@@ -83,8 +96,7 @@ export class FirewallRules extends pulumi.CustomResource {
     }
 
     /**
-     * Container ID. Leave empty for cluster level
-     * rules.
+     * Container ID. Leave empty for node/cluster level rules.
      */
     declare public readonly containerId: pulumi.Output<number | undefined>;
     /**
@@ -98,7 +110,7 @@ export class FirewallRules extends pulumi.CustomResource {
      */
     declare public readonly rules: pulumi.Output<outputs.Network.FirewallRulesRule[]>;
     /**
-     * VM ID. Leave empty for cluster level rules.
+     * VM ID. Leave empty for node/cluster level rules.
      */
     declare public readonly vmId: pulumi.Output<number | undefined>;
 
@@ -139,8 +151,7 @@ export class FirewallRules extends pulumi.CustomResource {
  */
 export interface FirewallRulesState {
     /**
-     * Container ID. Leave empty for cluster level
-     * rules.
+     * Container ID. Leave empty for node/cluster level rules.
      */
     containerId?: pulumi.Input<number>;
     /**
@@ -154,7 +165,7 @@ export interface FirewallRulesState {
      */
     rules?: pulumi.Input<pulumi.Input<inputs.Network.FirewallRulesRule>[]>;
     /**
-     * VM ID. Leave empty for cluster level rules.
+     * VM ID. Leave empty for node/cluster level rules.
      */
     vmId?: pulumi.Input<number>;
 }
@@ -164,8 +175,7 @@ export interface FirewallRulesState {
  */
 export interface FirewallRulesArgs {
     /**
-     * Container ID. Leave empty for cluster level
-     * rules.
+     * Container ID. Leave empty for node/cluster level rules.
      */
     containerId?: pulumi.Input<number>;
     /**
@@ -179,7 +189,7 @@ export interface FirewallRulesArgs {
      */
     rules: pulumi.Input<pulumi.Input<inputs.Network.FirewallRulesRule>[]>;
     /**
-     * VM ID. Leave empty for cluster level rules.
+     * VM ID. Leave empty for node/cluster level rules.
      */
     vmId?: pulumi.Input<number>;
 }

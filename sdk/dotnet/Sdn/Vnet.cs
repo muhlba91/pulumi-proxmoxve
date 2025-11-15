@@ -25,13 +25,9 @@ namespace Pulumi.ProxmoxVE.Sdn
     ///     var finalizer = new ProxmoxVE.Sdn.Applier("finalizer");
     /// 
     ///     // SDN Zone (Simple) - Basic zone for simple vnets
-    ///     var exampleZone1 = new ProxmoxVE.SDNZone.Simple("exampleZone1", new()
+    ///     var exampleZone1 = new ProxmoxVE.SDNZone.Simple("example_zone_1", new()
     ///     {
     ///         ZoneId = "zone1",
-    ///         Nodes = new[]
-    ///         {
-    ///             "pve",
-    ///         },
     ///         Mtu = 1500,
     ///         Dns = "1.1.1.1",
     ///         DnsZone = "example.com",
@@ -46,13 +42,9 @@ namespace Pulumi.ProxmoxVE.Sdn
     ///     });
     /// 
     ///     // SDN Zone (Simple) - Second zone for demonstration
-    ///     var exampleZone2 = new ProxmoxVE.SDNZone.Simple("exampleZone2", new()
+    ///     var exampleZone2 = new ProxmoxVE.SDNZone.Simple("example_zone_2", new()
     ///     {
     ///         ZoneId = "zone2",
-    ///         Nodes = new[]
-    ///         {
-    ///             "pve",
-    ///         },
     ///         Mtu = 1500,
     ///     }, new CustomResourceOptions
     ///     {
@@ -63,7 +55,7 @@ namespace Pulumi.ProxmoxVE.Sdn
     ///     });
     /// 
     ///     // Basic VNet (Simple)
-    ///     var basicVnet = new ProxmoxVE.Sdn.Vnet("basicVnet", new()
+    ///     var basicVnet = new ProxmoxVE.Sdn.Vnet("basic_vnet", new()
     ///     {
     ///         VnetId = "vnet1",
     ///         Zone = exampleZone1.ZoneId,
@@ -76,7 +68,7 @@ namespace Pulumi.ProxmoxVE.Sdn
     ///     });
     /// 
     ///     // VNet with Alias and Port Isolation
-    ///     var isolatedVnet = new ProxmoxVE.Sdn.Vnet("isolatedVnet", new()
+    ///     var isolatedVnet = new ProxmoxVE.Sdn.Vnet("isolated_vnet", new()
     ///     {
     ///         VnetId = "vnet2",
     ///         Zone = exampleZone2.ZoneId,
@@ -92,7 +84,7 @@ namespace Pulumi.ProxmoxVE.Sdn
     ///     });
     /// 
     ///     // SDN Applier for all resources
-    ///     var vnetApplier = new ProxmoxVE.Sdn.Applier("vnetApplier", new()
+    ///     var vnetApplier = new ProxmoxVE.Sdn.Applier("vnet_applier", new()
     ///     {
     ///     }, new CustomResourceOptions
     ///     {

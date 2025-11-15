@@ -46,16 +46,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Firewall("example", FirewallArgs.builder()
- *             .ebtables(false)
  *             .enabled(false)
- *             .forwardPolicy("ACCEPT")
+ *             .ebtables(false)
  *             .inputPolicy("DROP")
+ *             .outputPolicy("ACCEPT")
+ *             .forwardPolicy("ACCEPT")
  *             .logRatelimit(FirewallLogRatelimitArgs.builder()
- *                 .burst(10)
  *                 .enabled(false)
+ *                 .burst(10)
  *                 .rate("5/second")
  *                 .build())
- *             .outputPolicy("ACCEPT")
  *             .build());
  * 
  *     }

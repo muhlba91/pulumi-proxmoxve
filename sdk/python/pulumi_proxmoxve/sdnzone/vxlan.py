@@ -19,26 +19,25 @@ __all__ = ['VxlanArgs', 'Vxlan']
 @pulumi.input_type
 class VxlanArgs:
     def __init__(__self__, *,
-                 nodes: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  peers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  zone_id: pulumi.Input[_builtins.str],
                  dns: Optional[pulumi.Input[_builtins.str]] = None,
                  dns_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  ipam: Optional[pulumi.Input[_builtins.str]] = None,
                  mtu: Optional[pulumi.Input[_builtins.int]] = None,
+                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  reverse_dns: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Vxlan resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: The Proxmox nodes which the zone and associated VNets should be deployed on
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] peers: A list of IP addresses of each node in the VXLAN zone. This can be external nodes reachable at this IP address. All nodes in the cluster need to be mentioned here
         :param pulumi.Input[_builtins.str] zone_id: The unique identifier of the SDN zone.
         :param pulumi.Input[_builtins.str] dns: DNS API server address.
         :param pulumi.Input[_builtins.str] dns_zone: DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
         :param pulumi.Input[_builtins.str] ipam: IP Address Management system.
         :param pulumi.Input[_builtins.int] mtu: MTU value for the zone.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: The Proxmox nodes which the zone and associated VNets should be deployed on
         :param pulumi.Input[_builtins.str] reverse_dns: Reverse DNS API server address.
         """
-        pulumi.set(__self__, "nodes", nodes)
         pulumi.set(__self__, "peers", peers)
         pulumi.set(__self__, "zone_id", zone_id)
         if dns is not None:
@@ -49,20 +48,10 @@ class VxlanArgs:
             pulumi.set(__self__, "ipam", ipam)
         if mtu is not None:
             pulumi.set(__self__, "mtu", mtu)
+        if nodes is not None:
+            pulumi.set(__self__, "nodes", nodes)
         if reverse_dns is not None:
             pulumi.set(__self__, "reverse_dns", reverse_dns)
-
-    @_builtins.property
-    @pulumi.getter
-    def nodes(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        The Proxmox nodes which the zone and associated VNets should be deployed on
-        """
-        return pulumi.get(self, "nodes")
-
-    @nodes.setter
-    def nodes(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
-        pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter
@@ -135,6 +124,18 @@ class VxlanArgs:
     @mtu.setter
     def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "mtu", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The Proxmox nodes which the zone and associated VNets should be deployed on
+        """
+        return pulumi.get(self, "nodes")
+
+    @nodes.setter
+    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter(name="reverseDns")
@@ -342,17 +343,16 @@ class Vxlan(pulumi.CustomResource):
         import pulumi_proxmoxve as proxmoxve
 
         example = proxmoxve.sdnzone.Vxlan("example",
-            dns="1.1.1.1",
-            dns_zone="example.com",
             zone_id="vxlan1",
-            ipam="pve",
-            mtu=1450,
-            nodes=["pve"],
             peers=[
                 "10.0.0.1",
                 "10.0.0.2",
                 "10.0.0.3",
             ],
+            mtu=1450,
+            dns="1.1.1.1",
+            dns_zone="example.com",
+            ipam="pve",
             reverse_dns="1.1.1.1")
         ```
 
@@ -393,17 +393,16 @@ class Vxlan(pulumi.CustomResource):
         import pulumi_proxmoxve as proxmoxve
 
         example = proxmoxve.sdnzone.Vxlan("example",
-            dns="1.1.1.1",
-            dns_zone="example.com",
             zone_id="vxlan1",
-            ipam="pve",
-            mtu=1450,
-            nodes=["pve"],
             peers=[
                 "10.0.0.1",
                 "10.0.0.2",
                 "10.0.0.3",
             ],
+            mtu=1450,
+            dns="1.1.1.1",
+            dns_zone="example.com",
+            ipam="pve",
             reverse_dns="1.1.1.1")
         ```
 
@@ -453,8 +452,6 @@ class Vxlan(pulumi.CustomResource):
             __props__.__dict__["dns_zone"] = dns_zone
             __props__.__dict__["ipam"] = ipam
             __props__.__dict__["mtu"] = mtu
-            if nodes is None and not opts.urn:
-                raise TypeError("Missing required property 'nodes'")
             __props__.__dict__["nodes"] = nodes
             if peers is None and not opts.urn:
                 raise TypeError("Missing required property 'peers'")

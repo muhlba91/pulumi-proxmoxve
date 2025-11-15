@@ -31,7 +31,7 @@ namespace Pulumi.ProxmoxVE.Storage.Inputs
         public string? Id { get; set; }
 
         /// <summary>
-        /// If `target` is different to `node_name`, then only lists shared stores which content is accessible on this node and the specified `target` node.
+        /// If `Target` is different to `NodeName`, then only lists shared stores which content is accessible on this node and the specified `Target` node.
         /// </summary>
         [Input("target")]
         public string? Target { get; set; }

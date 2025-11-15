@@ -108,14 +108,14 @@ public final class HAResourceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of HA resources to create. If unset, it will be deduced from the `resource_id`.
+     * The type of HA resources to create. If unset, it will be deduced from the &lt;span pulumi-lang-nodejs=&#34;`resourceId`&#34; pulumi-lang-dotnet=&#34;`ResourceId`&#34; pulumi-lang-go=&#34;`resourceId`&#34; pulumi-lang-python=&#34;`resource_id`&#34; pulumi-lang-yaml=&#34;`resourceId`&#34; pulumi-lang-java=&#34;`resourceId`&#34;&gt;`resource_id`&lt;/span&gt;.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of HA resources to create. If unset, it will be deduced from the `resource_id`.
+     * @return The type of HA resources to create. If unset, it will be deduced from the &lt;span pulumi-lang-nodejs=&#34;`resourceId`&#34; pulumi-lang-dotnet=&#34;`ResourceId`&#34; pulumi-lang-go=&#34;`resourceId`&#34; pulumi-lang-python=&#34;`resource_id`&#34; pulumi-lang-yaml=&#34;`resourceId`&#34; pulumi-lang-java=&#34;`resourceId`&#34;&gt;`resource_id`&lt;/span&gt;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -279,7 +279,7 @@ public final class HAResourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of HA resources to create. If unset, it will be deduced from the `resource_id`.
+         * @param type The type of HA resources to create. If unset, it will be deduced from the &lt;span pulumi-lang-nodejs=&#34;`resourceId`&#34; pulumi-lang-dotnet=&#34;`ResourceId`&#34; pulumi-lang-go=&#34;`resourceId`&#34; pulumi-lang-python=&#34;`resource_id`&#34; pulumi-lang-yaml=&#34;`resourceId`&#34; pulumi-lang-java=&#34;`resourceId`&#34;&gt;`resource_id`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class HAResourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of HA resources to create. If unset, it will be deduced from the `resource_id`.
+         * @param type The type of HA resources to create. If unset, it will be deduced from the &lt;span pulumi-lang-nodejs=&#34;`resourceId`&#34; pulumi-lang-dotnet=&#34;`ResourceId`&#34; pulumi-lang-go=&#34;`resourceId`&#34; pulumi-lang-python=&#34;`resource_id`&#34; pulumi-lang-yaml=&#34;`resourceId`&#34; pulumi-lang-java=&#34;`resourceId`&#34;&gt;`resource_id`&lt;/span&gt;.
          * 
          * @return builder
          * 

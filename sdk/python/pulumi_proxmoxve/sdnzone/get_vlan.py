@@ -175,9 +175,9 @@ def get_vlan(id: Optional[_builtins.str] = None,
         "bridge": example.bridge,
         "mtu": example.mtu,
         "dns": example.dns,
-        "dns_zone": example.dns_zone,
+        "dnsZone": example.dns_zone,
         "ipam": example.ipam,
-        "reverse_dns": example.reverse_dns,
+        "reverseDns": example.reverse_dns,
     })
     ```
 
@@ -218,9 +218,9 @@ def get_vlan_output(id: Optional[pulumi.Input[_builtins.str]] = None,
         "bridge": example.bridge,
         "mtu": example.mtu,
         "dns": example.dns,
-        "dns_zone": example.dns_zone,
+        "dnsZone": example.dns_zone,
         "ipam": example.ipam,
-        "reverse_dns": example.reverse_dns,
+        "reverseDns": example.reverse_dns,
     })
     ```
 

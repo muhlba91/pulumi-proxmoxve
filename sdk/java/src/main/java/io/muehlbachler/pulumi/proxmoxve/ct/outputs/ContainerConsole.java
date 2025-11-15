@@ -15,17 +15,17 @@ import javax.annotation.Nullable;
 public final class ContainerConsole {
     /**
      * @return Whether to enable the console device (defaults
-     * to `true`).
+     * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     private @Nullable Boolean enabled;
     /**
-     * @return The number of available TTY (defaults to `2`).
+     * @return The number of available TTY (defaults to &lt;span pulumi-lang-nodejs=&#34;`2`&#34; pulumi-lang-dotnet=&#34;`2`&#34; pulumi-lang-go=&#34;`2`&#34; pulumi-lang-python=&#34;`2`&#34; pulumi-lang-yaml=&#34;`2`&#34; pulumi-lang-java=&#34;`2`&#34;&gt;`2`&lt;/span&gt;).
      * 
      */
     private @Nullable Integer ttyCount;
     /**
-     * @return The console mode (defaults to `tty`).
+     * @return The console mode (defaults to &lt;span pulumi-lang-nodejs=&#34;`tty`&#34; pulumi-lang-dotnet=&#34;`Tty`&#34; pulumi-lang-go=&#34;`tty`&#34; pulumi-lang-python=&#34;`tty`&#34; pulumi-lang-yaml=&#34;`tty`&#34; pulumi-lang-java=&#34;`tty`&#34;&gt;`tty`&lt;/span&gt;).
      * 
      */
     private @Nullable String type;
@@ -33,21 +33,21 @@ public final class ContainerConsole {
     private ContainerConsole() {}
     /**
      * @return Whether to enable the console device (defaults
-     * to `true`).
+     * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
     /**
-     * @return The number of available TTY (defaults to `2`).
+     * @return The number of available TTY (defaults to &lt;span pulumi-lang-nodejs=&#34;`2`&#34; pulumi-lang-dotnet=&#34;`2`&#34; pulumi-lang-go=&#34;`2`&#34; pulumi-lang-python=&#34;`2`&#34; pulumi-lang-yaml=&#34;`2`&#34; pulumi-lang-java=&#34;`2`&#34;&gt;`2`&lt;/span&gt;).
      * 
      */
     public Optional<Integer> ttyCount() {
         return Optional.ofNullable(this.ttyCount);
     }
     /**
-     * @return The console mode (defaults to `tty`).
+     * @return The console mode (defaults to &lt;span pulumi-lang-nodejs=&#34;`tty`&#34; pulumi-lang-dotnet=&#34;`Tty`&#34; pulumi-lang-go=&#34;`tty`&#34; pulumi-lang-python=&#34;`tty`&#34; pulumi-lang-yaml=&#34;`tty`&#34; pulumi-lang-java=&#34;`tty`&#34;&gt;`tty`&lt;/span&gt;).
      * 
      */
     public Optional<String> type() {

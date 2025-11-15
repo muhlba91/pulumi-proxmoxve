@@ -40,7 +40,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = user.NewToken(ctx, "userToken", &user.TokenArgs{
+//			_, err = user.NewToken(ctx, "user_token", &user.TokenArgs{
 //				Comment:        pulumi.String("Managed by Pulumi"),
 //				ExpirationDate: pulumi.String("2033-01-01T22:00:00Z"),
 //				TokenName:      pulumi.String("tk1"),

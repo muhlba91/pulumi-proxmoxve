@@ -24,15 +24,11 @@ namespace Pulumi.ProxmoxVE.HA
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // This will fetch the set of HA group identifiers...
         ///     var all = ProxmoxVE.HA.GetHAGroups.Invoke();
         /// 
-        ///     var example = .Select(__value =&gt; 
-        ///     {
-        ///         return ProxmoxVE.HA.GetHAGroup.Invoke(new()
-        ///         {
-        ///             Group = __value,
-        ///         });
-        ///     }).ToList();
+        ///     // ...which we will go through in order to fetch the whole data on each group.
+        ///     var example = ;
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -57,15 +53,11 @@ namespace Pulumi.ProxmoxVE.HA
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // This will fetch the set of HA group identifiers...
         ///     var all = ProxmoxVE.HA.GetHAGroups.Invoke();
         /// 
-        ///     var example = .Select(__value =&gt; 
-        ///     {
-        ///         return ProxmoxVE.HA.GetHAGroup.Invoke(new()
-        ///         {
-        ///             Group = __value,
-        ///         });
-        ///     }).ToList();
+        ///     // ...which we will go through in order to fetch the whole data on each group.
+        ///     var example = ;
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -90,15 +82,11 @@ namespace Pulumi.ProxmoxVE.HA
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // This will fetch the set of HA group identifiers...
         ///     var all = ProxmoxVE.HA.GetHAGroups.Invoke();
         /// 
-        ///     var example = .Select(__value =&gt; 
-        ///     {
-        ///         return ProxmoxVE.HA.GetHAGroup.Invoke(new()
-        ///         {
-        ///             Group = __value,
-        ///         });
-        ///     }).ToList();
+        ///     // ...which we will go through in order to fetch the whole data on each group.
+        ///     var example = ;
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -161,7 +149,7 @@ namespace Pulumi.ProxmoxVE.HA
         /// </summary>
         public readonly bool NoFailback;
         /// <summary>
-        /// The member nodes for this group. They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or `null` for unset priorities.
+        /// The member nodes for this group. They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or `Null` for unset priorities.
         /// </summary>
         public readonly ImmutableDictionary<string, int> Nodes;
         /// <summary>

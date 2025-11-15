@@ -684,7 +684,7 @@ public final class NetworkFunctions {
      * 
      *         ctx.export("dataProxmoxVirtualEnvironmentVersion", Map.ofEntries(
      *             Map.entry("release", example.release()),
-     *             Map.entry("repository_id", example.repositoryId()),
+     *             Map.entry("repositoryId", example.repositoryId()),
      *             Map.entry("version", example.version())
      *         ));
      *     }
@@ -728,7 +728,7 @@ public final class NetworkFunctions {
      * 
      *         ctx.export("dataProxmoxVirtualEnvironmentVersion", Map.ofEntries(
      *             Map.entry("release", example.release()),
-     *             Map.entry("repository_id", example.repositoryId()),
+     *             Map.entry("repositoryId", example.repositoryId()),
      *             Map.entry("version", example.version())
      *         ));
      *     }
@@ -772,7 +772,7 @@ public final class NetworkFunctions {
      * 
      *         ctx.export("dataProxmoxVirtualEnvironmentVersion", Map.ofEntries(
      *             Map.entry("release", example.release()),
-     *             Map.entry("repository_id", example.repositoryId()),
+     *             Map.entry("repositoryId", example.repositoryId()),
      *             Map.entry("version", example.version())
      *         ));
      *     }
@@ -816,7 +816,7 @@ public final class NetworkFunctions {
      * 
      *         ctx.export("dataProxmoxVirtualEnvironmentVersion", Map.ofEntries(
      *             Map.entry("release", example.release()),
-     *             Map.entry("repository_id", example.repositoryId()),
+     *             Map.entry("repositoryId", example.repositoryId()),
      *             Map.entry("version", example.version())
      *         ));
      *     }
@@ -860,7 +860,7 @@ public final class NetworkFunctions {
      * 
      *         ctx.export("dataProxmoxVirtualEnvironmentVersion", Map.ofEntries(
      *             Map.entry("release", example.release()),
-     *             Map.entry("repository_id", example.repositoryId()),
+     *             Map.entry("repositoryId", example.repositoryId()),
      *             Map.entry("version", example.version())
      *         ));
      *     }
@@ -904,7 +904,7 @@ public final class NetworkFunctions {
      * 
      *         ctx.export("dataProxmoxVirtualEnvironmentVersion", Map.ofEntries(
      *             Map.entry("release", example.release()),
-     *             Map.entry("repository_id", example.repositoryId()),
+     *             Map.entry("repositoryId", example.repositoryId()),
      *             Map.entry("version", example.version())
      *         ));
      *     }
@@ -948,7 +948,7 @@ public final class NetworkFunctions {
      * 
      *         ctx.export("dataProxmoxVirtualEnvironmentVersion", Map.ofEntries(
      *             Map.entry("release", example.release()),
-     *             Map.entry("repository_id", example.repositoryId()),
+     *             Map.entry("repositoryId", example.repositoryId()),
      *             Map.entry("version", example.version())
      *         ));
      *     }

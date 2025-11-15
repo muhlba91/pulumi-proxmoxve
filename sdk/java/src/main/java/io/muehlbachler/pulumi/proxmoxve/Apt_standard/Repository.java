@@ -42,16 +42,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleRepository = new Repository("exampleRepository", RepositoryArgs.builder()
+ *         var example = new Repository("example", RepositoryArgs.builder()
  *             .handle("no-subscription")
  *             .node("pve")
  *             .build());
  * 
- *         var exampleApt_repositoryRepository = new Repository("exampleApt/repositoryRepository", RepositoryArgs.builder()
+ *         var exampleRepository = new Repository("exampleRepository", RepositoryArgs.builder()
  *             .enabled(true)
- *             .filePath(exampleRepository.filePath())
- *             .index(exampleRepository.index())
- *             .node(exampleRepository.node())
+ *             .filePath(example.filePath())
+ *             .index(example.index())
+ *             .node(example.node())
  *             .build());
  * 
  *     }
@@ -104,14 +104,14 @@ public class Repository extends com.pulumi.resources.CustomResource {
         return this.filePath;
     }
     /**
-     * The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `ceph-squid-enterprise` | `ceph-squid-no-subscription` | `ceph-squid-test` | `enterprise` | `no-subscription` | `test`.
+     * The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `ceph-squid-enterprise` | `ceph-squid-no-subscription` | `ceph-squid-test` | &lt;span pulumi-lang-nodejs=&#34;`enterprise`&#34; pulumi-lang-dotnet=&#34;`Enterprise`&#34; pulumi-lang-go=&#34;`enterprise`&#34; pulumi-lang-python=&#34;`enterprise`&#34; pulumi-lang-yaml=&#34;`enterprise`&#34; pulumi-lang-java=&#34;`enterprise`&#34;&gt;`enterprise`&lt;/span&gt; | `no-subscription` | &lt;span pulumi-lang-nodejs=&#34;`test`&#34; pulumi-lang-dotnet=&#34;`Test`&#34; pulumi-lang-go=&#34;`test`&#34; pulumi-lang-python=&#34;`test`&#34; pulumi-lang-yaml=&#34;`test`&#34; pulumi-lang-java=&#34;`test`&#34;&gt;`test`&lt;/span&gt;.
      * 
      */
     @Export(name="handle", refs={String.class}, tree="[0]")
     private Output<String> handle;
 
     /**
-     * @return The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `ceph-squid-enterprise` | `ceph-squid-no-subscription` | `ceph-squid-test` | `enterprise` | `no-subscription` | `test`.
+     * @return The handle of the APT standard repository. Must be `ceph-quincy-enterprise` | `ceph-quincy-no-subscription` | `ceph-quincy-test` | `ceph-reef-enterprise` | `ceph-reef-no-subscription` | `ceph-reef-test` | `ceph-squid-enterprise` | `ceph-squid-no-subscription` | `ceph-squid-test` | &lt;span pulumi-lang-nodejs=&#34;`enterprise`&#34; pulumi-lang-dotnet=&#34;`Enterprise`&#34; pulumi-lang-go=&#34;`enterprise`&#34; pulumi-lang-python=&#34;`enterprise`&#34; pulumi-lang-yaml=&#34;`enterprise`&#34; pulumi-lang-java=&#34;`enterprise`&#34;&gt;`enterprise`&lt;/span&gt; | `no-subscription` | &lt;span pulumi-lang-nodejs=&#34;`test`&#34; pulumi-lang-dotnet=&#34;`Test`&#34; pulumi-lang-go=&#34;`test`&#34; pulumi-lang-python=&#34;`test`&#34; pulumi-lang-yaml=&#34;`test`&#34; pulumi-lang-java=&#34;`test`&#34;&gt;`test`&lt;/span&gt;.
      * 
      */
     public Output<String> handle() {

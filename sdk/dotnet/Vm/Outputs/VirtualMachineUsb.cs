@@ -14,16 +14,16 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
     public sealed class VirtualMachineUsb
     {
         /// <summary>
-        /// The Host USB device or port or the value `spice`. Use either this or `mapping`.
+        /// The Host USB device or port or the value `Spice`. Use either this or `Mapping`.
         /// </summary>
         public readonly string? Host;
         /// <summary>
-        /// The cluster-wide resource mapping name of the device, for example "usbdevice". Use either this or `host`.
+        /// The cluster-wide resource mapping name of the device, for example "usbdevice". Use either this or `Host`.
         /// </summary>
         public readonly string? Mapping;
         /// <summary>
         /// Makes the USB device a USB3 device for the VM
-        /// (defaults to `false`).
+        /// (defaults to `False`).
         /// </summary>
         public readonly bool? Usb3;
 

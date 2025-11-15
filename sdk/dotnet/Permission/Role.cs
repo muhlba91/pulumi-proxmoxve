@@ -22,13 +22,13 @@ namespace Pulumi.ProxmoxVE.Permission
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var operationsMonitoring = new ProxmoxVE.Permission.Role("operationsMonitoring", new()
+    ///     var operationsMonitoring = new ProxmoxVE.Permission.Role("operations_monitoring", new()
     ///     {
+    ///         RoleId = "operations-monitoring",
     ///         Privileges = new[]
     ///         {
     ///             "VM.GuestAgent.Audit",
     ///         },
-    ///         RoleId = "operations-monitoring",
     ///     });
     /// 
     /// });

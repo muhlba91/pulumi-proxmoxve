@@ -20,7 +20,7 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
         /// </summary>
         public readonly string TemplateFileId;
         /// <summary>
-        /// The type (defaults to `unmanaged`).
+        /// The type (defaults to `Unmanaged`).
         /// </summary>
         public readonly string? Type;
 

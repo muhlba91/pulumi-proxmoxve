@@ -22,7 +22,7 @@ namespace Pulumi.ProxmoxVE.Storage.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// If `target` is different to `node_name`, then only lists shared stores which content is accessible on this node and the specified `target` node.
+        /// If `Target` is different to `NodeName`, then only lists shared stores which content is accessible on this node and the specified `Target` node.
         /// </summary>
         public readonly string? Target;
 

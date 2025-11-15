@@ -15,12 +15,12 @@ public final class ContainerOperatingSystem {
     /**
      * @return The identifier for an OS template file.
      * The ID format is `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`.
-     * Can be also taken from `proxmoxve.Download.File` resource, or from the output of `pvesm list &lt;storage&gt;`.
+     * Can be also taken from &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-go=&#34;`Download.File`&#34; pulumi-lang-python=&#34;`Download.File`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-java=&#34;`proxmoxve.Download.File`&#34;&gt;`proxmoxve.Download.File`&lt;/span&gt; resource, or from the output of `pvesm list &lt;storage&gt;`.
      * 
      */
     private String templateFileId;
     /**
-     * @return The type (defaults to `unmanaged`).
+     * @return The type (defaults to &lt;span pulumi-lang-nodejs=&#34;`unmanaged`&#34; pulumi-lang-dotnet=&#34;`Unmanaged`&#34; pulumi-lang-go=&#34;`unmanaged`&#34; pulumi-lang-python=&#34;`unmanaged`&#34; pulumi-lang-yaml=&#34;`unmanaged`&#34; pulumi-lang-java=&#34;`unmanaged`&#34;&gt;`unmanaged`&lt;/span&gt;).
      * 
      */
     private @Nullable String type;
@@ -29,14 +29,14 @@ public final class ContainerOperatingSystem {
     /**
      * @return The identifier for an OS template file.
      * The ID format is `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`.
-     * Can be also taken from `proxmoxve.Download.File` resource, or from the output of `pvesm list &lt;storage&gt;`.
+     * Can be also taken from &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-go=&#34;`Download.File`&#34; pulumi-lang-python=&#34;`Download.File`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-java=&#34;`proxmoxve.Download.File`&#34;&gt;`proxmoxve.Download.File`&lt;/span&gt; resource, or from the output of `pvesm list &lt;storage&gt;`.
      * 
      */
     public String templateFileId() {
         return this.templateFileId;
     }
     /**
-     * @return The type (defaults to `unmanaged`).
+     * @return The type (defaults to &lt;span pulumi-lang-nodejs=&#34;`unmanaged`&#34; pulumi-lang-dotnet=&#34;`Unmanaged`&#34; pulumi-lang-go=&#34;`unmanaged`&#34; pulumi-lang-python=&#34;`unmanaged`&#34; pulumi-lang-yaml=&#34;`unmanaged`&#34; pulumi-lang-java=&#34;`unmanaged`&#34;&gt;`unmanaged`&lt;/span&gt;).
      * 
      */
     public Optional<String> type() {

@@ -46,12 +46,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Simple("example", SimpleArgs.builder()
+ *             .zoneId("simple1")
+ *             .nodes("pve")
+ *             .mtu(1500)
  *             .dns("1.1.1.1")
  *             .dnsZone("example.com")
- *             .zoneId("simple1")
  *             .ipam("pve")
- *             .mtu(1500)
- *             .nodes("pve")
  *             .reverseDns("1.1.1.1")
  *             .build());
  * 
@@ -75,14 +75,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="proxmoxve:SDNZone/simple:Simple")
 public class Simple extends com.pulumi.resources.CustomResource {
     /**
-     * The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
+     * The type of the DHCP backend for this zone. Currently the only supported value is &lt;span pulumi-lang-nodejs=&#34;`dnsmasq`&#34; pulumi-lang-dotnet=&#34;`Dnsmasq`&#34; pulumi-lang-go=&#34;`dnsmasq`&#34; pulumi-lang-python=&#34;`dnsmasq`&#34; pulumi-lang-yaml=&#34;`dnsmasq`&#34; pulumi-lang-java=&#34;`dnsmasq`&#34;&gt;`dnsmasq`&lt;/span&gt;.
      * 
      */
     @Export(name="dhcp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dhcp;
 
     /**
-     * @return The type of the DHCP backend for this zone. Currently the only supported value is `dnsmasq`.
+     * @return The type of the DHCP backend for this zone. Currently the only supported value is &lt;span pulumi-lang-nodejs=&#34;`dnsmasq`&#34; pulumi-lang-dotnet=&#34;`Dnsmasq`&#34; pulumi-lang-go=&#34;`dnsmasq`&#34; pulumi-lang-python=&#34;`dnsmasq`&#34; pulumi-lang-yaml=&#34;`dnsmasq`&#34; pulumi-lang-java=&#34;`dnsmasq`&#34;&gt;`dnsmasq`&lt;/span&gt;.
      * 
      */
     public Output<Optional<String>> dhcp() {

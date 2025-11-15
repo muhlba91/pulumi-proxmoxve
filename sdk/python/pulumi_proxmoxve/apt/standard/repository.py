@@ -192,14 +192,14 @@ class Repository(pulumi.CustomResource):
         import pulumi
         import pulumi_proxmoxve as proxmoxve
 
-        example_repository = proxmoxve.apt.standard.Repository("exampleRepository",
+        example = proxmoxve.apt.standard.Repository("example",
             handle="no-subscription",
             node="pve")
-        example_apt_repository_repository = proxmoxve.apt.Repository("exampleApt/repositoryRepository",
+        example_repository = proxmoxve.apt.Repository("example",
             enabled=True,
-            file_path=example_repository.file_path,
-            index=example_repository.index,
-            node=example_repository.node)
+            file_path=example.file_path,
+            index=example.index,
+            node=example.node)
         ```
 
         ## Import
@@ -234,14 +234,14 @@ class Repository(pulumi.CustomResource):
         import pulumi
         import pulumi_proxmoxve as proxmoxve
 
-        example_repository = proxmoxve.apt.standard.Repository("exampleRepository",
+        example = proxmoxve.apt.standard.Repository("example",
             handle="no-subscription",
             node="pve")
-        example_apt_repository_repository = proxmoxve.apt.Repository("exampleApt/repositoryRepository",
+        example_repository = proxmoxve.apt.Repository("example",
             enabled=True,
-            file_path=example_repository.file_path,
-            index=example_repository.index,
-            node=example_repository.node)
+            file_path=example.file_path,
+            index=example.index,
+            node=example.node)
         ```
 
         ## Import
