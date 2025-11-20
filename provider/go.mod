@@ -8,7 +8,7 @@ require (
 	github.com/bpg/terraform-provider-proxmox v0.87.0
 	github.com/ettle/strcase v0.2.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.117.0
-	github.com/pulumi/pulumi/sdk/v3 v3.207.0
+	github.com/pulumi/pulumi/sdk/v3 v3.208.0
 )
 
 require (
