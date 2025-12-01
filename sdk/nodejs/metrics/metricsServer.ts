@@ -25,6 +25,14 @@ import * as utilities from "../utilities";
  *     port: 2003,
  *     type: "graphite",
  * });
+ * const opentelemetryServer = new proxmoxve.metrics.MetricsServer("opentelemetry_server", {
+ *     name: "example_opentelemetry_server",
+ *     server: "192.168.5.2",
+ *     port: 4318,
+ *     type: "opentelemetry",
+ *     opentelemetryProto: "http",
+ *     opentelemetryPath: "/v1/metrics",
+ * });
  * ```
  *
  * ## Import
@@ -112,6 +120,14 @@ export class MetricsServer extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * OpenTelemetry endpoint path (e.g., `/v1/metrics`).
+     */
+    declare public readonly opentelemetryPath: pulumi.Output<string | undefined>;
+    /**
+     * Protocol for OpenTelemetry. Choice is between `http` | `https`. If not set, PVE default is `http`.
+     */
+    declare public readonly opentelemetryProto: pulumi.Output<string | undefined>;
+    /**
      * Server network port.
      */
     declare public readonly port: pulumi.Output<number>;
@@ -124,7 +140,7 @@ export class MetricsServer extends pulumi.CustomResource {
      */
     declare public readonly timeout: pulumi.Output<number | undefined>;
     /**
-     * Plugin type. Choice is between `graphite` | `influxdb`.
+     * Plugin type. Choice is between `graphite` | `influxdb` | `opentelemetry`.
      */
     declare public readonly type: pulumi.Output<string>;
 
@@ -153,6 +169,8 @@ export class MetricsServer extends pulumi.CustomResource {
             resourceInputs["influxVerify"] = state?.influxVerify;
             resourceInputs["mtu"] = state?.mtu;
             resourceInputs["name"] = state?.name;
+            resourceInputs["opentelemetryPath"] = state?.opentelemetryPath;
+            resourceInputs["opentelemetryProto"] = state?.opentelemetryProto;
             resourceInputs["port"] = state?.port;
             resourceInputs["server"] = state?.server;
             resourceInputs["timeout"] = state?.timeout;
@@ -180,6 +198,8 @@ export class MetricsServer extends pulumi.CustomResource {
             resourceInputs["influxVerify"] = args?.influxVerify;
             resourceInputs["mtu"] = args?.mtu;
             resourceInputs["name"] = args?.name;
+            resourceInputs["opentelemetryPath"] = args?.opentelemetryPath;
+            resourceInputs["opentelemetryProto"] = args?.opentelemetryProto;
             resourceInputs["port"] = args?.port;
             resourceInputs["server"] = args?.server;
             resourceInputs["timeout"] = args?.timeout;
@@ -245,6 +265,14 @@ export interface MetricsServerState {
      */
     name?: pulumi.Input<string>;
     /**
+     * OpenTelemetry endpoint path (e.g., `/v1/metrics`).
+     */
+    opentelemetryPath?: pulumi.Input<string>;
+    /**
+     * Protocol for OpenTelemetry. Choice is between `http` | `https`. If not set, PVE default is `http`.
+     */
+    opentelemetryProto?: pulumi.Input<string>;
+    /**
      * Server network port.
      */
     port?: pulumi.Input<number>;
@@ -257,7 +285,7 @@ export interface MetricsServerState {
      */
     timeout?: pulumi.Input<number>;
     /**
-     * Plugin type. Choice is between `graphite` | `influxdb`.
+     * Plugin type. Choice is between `graphite` | `influxdb` | `opentelemetry`.
      */
     type?: pulumi.Input<string>;
 }
@@ -315,6 +343,14 @@ export interface MetricsServerArgs {
      */
     name?: pulumi.Input<string>;
     /**
+     * OpenTelemetry endpoint path (e.g., `/v1/metrics`).
+     */
+    opentelemetryPath?: pulumi.Input<string>;
+    /**
+     * Protocol for OpenTelemetry. Choice is between `http` | `https`. If not set, PVE default is `http`.
+     */
+    opentelemetryProto?: pulumi.Input<string>;
+    /**
      * Server network port.
      */
     port: pulumi.Input<number>;
@@ -327,7 +363,7 @@ export interface MetricsServerArgs {
      */
     timeout?: pulumi.Input<number>;
     /**
-     * Plugin type. Choice is between `graphite` | `influxdb`.
+     * Plugin type. Choice is between `graphite` | `influxdb` | `opentelemetry`.
      */
     type: pulumi.Input<string>;
 }

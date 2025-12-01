@@ -49,6 +49,8 @@ __all__ = [
     'ContainerOperatingSystemArgsDict',
     'ContainerStartupArgs',
     'ContainerStartupArgsDict',
+    'ContainerWaitForIpArgs',
+    'ContainerWaitForIpArgsDict',
 ]
 
 MYPY = False
@@ -917,12 +919,12 @@ if not MYPY:
         """
         The IPv6 address in CIDR notation
         (e.g. fd1c::7334/64). Alternatively, set this
-        to `dhcp` for autodiscovery.
+        to `dhcp` for DHCPv6, or `auto` for SLAAC.
         """
         gateway: NotRequired[pulumi.Input[_builtins.str]]
         """
         The IPv6 gateway (must be omitted
-        when `dhcp` is used as the address).
+        when `dhcp` or `auto` are used as the address).
         """
 elif False:
     ContainerInitializationIpConfigIpv6ArgsDict: TypeAlias = Mapping[str, Any]
@@ -935,9 +937,9 @@ class ContainerInitializationIpConfigIpv6Args:
         """
         :param pulumi.Input[_builtins.str] address: The IPv6 address in CIDR notation
                (e.g. fd1c::7334/64). Alternatively, set this
-               to `dhcp` for autodiscovery.
+               to `dhcp` for DHCPv6, or `auto` for SLAAC.
         :param pulumi.Input[_builtins.str] gateway: The IPv6 gateway (must be omitted
-               when `dhcp` is used as the address).
+               when `dhcp` or `auto` are used as the address).
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -950,7 +952,7 @@ class ContainerInitializationIpConfigIpv6Args:
         """
         The IPv6 address in CIDR notation
         (e.g. fd1c::7334/64). Alternatively, set this
-        to `dhcp` for autodiscovery.
+        to `dhcp` for DHCPv6, or `auto` for SLAAC.
         """
         return pulumi.get(self, "address")
 
@@ -963,7 +965,7 @@ class ContainerInitializationIpConfigIpv6Args:
     def gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The IPv6 gateway (must be omitted
-        when `dhcp` is used as the address).
+        when `dhcp` or `auto` are used as the address).
         """
         return pulumi.get(self, "gateway")
 
@@ -1626,5 +1628,63 @@ class ContainerStartupArgs:
     @up_delay.setter
     def up_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "up_delay", value)
+
+
+if not MYPY:
+    class ContainerWaitForIpArgsDict(TypedDict):
+        ipv4: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+        """
+        ipv6: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
+
+        When `wait_for_ip` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+        """
+elif False:
+    ContainerWaitForIpArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ContainerWaitForIpArgs:
+    def __init__(__self__, *,
+                 ipv4: Optional[pulumi.Input[_builtins.bool]] = None,
+                 ipv6: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] ipv4: Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+        :param pulumi.Input[_builtins.bool] ipv6: Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
+               
+               When `wait_for_ip` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+        """
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
+        if ipv6 is not None:
+            pulumi.set(__self__, "ipv6", ipv6)
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv4(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+        """
+        return pulumi.get(self, "ipv4")
+
+    @ipv4.setter
+    def ipv4(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "ipv4", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv6(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
+
+        When `wait_for_ip` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+        """
+        return pulumi.get(self, "ipv6")
+
+    @ipv6.setter
+    def ipv6(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "ipv6", value)
 
 

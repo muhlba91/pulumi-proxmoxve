@@ -59,6 +59,15 @@ import javax.annotation.Nullable;
  *             .type("graphite")
  *             .build());
  * 
+ *         var opentelemetryServer = new MetricsServer("opentelemetryServer", MetricsServerArgs.builder()
+ *             .name("example_opentelemetry_server")
+ *             .server("192.168.5.2")
+ *             .port(4318)
+ *             .type("opentelemetry")
+ *             .opentelemetryProto("http")
+ *             .opentelemetryPath("/v1/metrics")
+ *             .build());
+ * 
  *     }
  * }
  * }
@@ -245,6 +254,34 @@ public class MetricsServer extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * OpenTelemetry endpoint path (e.g., `/v1/metrics`).
+     * 
+     */
+    @Export(name="opentelemetryPath", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> opentelemetryPath;
+
+    /**
+     * @return OpenTelemetry endpoint path (e.g., `/v1/metrics`).
+     * 
+     */
+    public Output<Optional<String>> opentelemetryPath() {
+        return Codegen.optional(this.opentelemetryPath);
+    }
+    /**
+     * Protocol for OpenTelemetry. Choice is between &lt;span pulumi-lang-nodejs=&#34;`http`&#34; pulumi-lang-dotnet=&#34;`Http`&#34; pulumi-lang-go=&#34;`http`&#34; pulumi-lang-python=&#34;`http`&#34; pulumi-lang-yaml=&#34;`http`&#34; pulumi-lang-java=&#34;`http`&#34;&gt;`http`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`https`&#34; pulumi-lang-dotnet=&#34;`Https`&#34; pulumi-lang-go=&#34;`https`&#34; pulumi-lang-python=&#34;`https`&#34; pulumi-lang-yaml=&#34;`https`&#34; pulumi-lang-java=&#34;`https`&#34;&gt;`https`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`http`&#34; pulumi-lang-dotnet=&#34;`Http`&#34; pulumi-lang-go=&#34;`http`&#34; pulumi-lang-python=&#34;`http`&#34; pulumi-lang-yaml=&#34;`http`&#34; pulumi-lang-java=&#34;`http`&#34;&gt;`http`&lt;/span&gt;.
+     * 
+     */
+    @Export(name="opentelemetryProto", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> opentelemetryProto;
+
+    /**
+     * @return Protocol for OpenTelemetry. Choice is between &lt;span pulumi-lang-nodejs=&#34;`http`&#34; pulumi-lang-dotnet=&#34;`Http`&#34; pulumi-lang-go=&#34;`http`&#34; pulumi-lang-python=&#34;`http`&#34; pulumi-lang-yaml=&#34;`http`&#34; pulumi-lang-java=&#34;`http`&#34;&gt;`http`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`https`&#34; pulumi-lang-dotnet=&#34;`Https`&#34; pulumi-lang-go=&#34;`https`&#34; pulumi-lang-python=&#34;`https`&#34; pulumi-lang-yaml=&#34;`https`&#34; pulumi-lang-java=&#34;`https`&#34;&gt;`https`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`http`&#34; pulumi-lang-dotnet=&#34;`Http`&#34; pulumi-lang-go=&#34;`http`&#34; pulumi-lang-python=&#34;`http`&#34; pulumi-lang-yaml=&#34;`http`&#34; pulumi-lang-java=&#34;`http`&#34;&gt;`http`&lt;/span&gt;.
+     * 
+     */
+    public Output<Optional<String>> opentelemetryProto() {
+        return Codegen.optional(this.opentelemetryProto);
+    }
+    /**
      * Server network port.
      * 
      */
@@ -287,14 +324,14 @@ public class MetricsServer extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.timeout);
     }
     /**
-     * Plugin type. Choice is between &lt;span pulumi-lang-nodejs=&#34;`graphite`&#34; pulumi-lang-dotnet=&#34;`Graphite`&#34; pulumi-lang-go=&#34;`graphite`&#34; pulumi-lang-python=&#34;`graphite`&#34; pulumi-lang-yaml=&#34;`graphite`&#34; pulumi-lang-java=&#34;`graphite`&#34;&gt;`graphite`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`influxdb`&#34; pulumi-lang-dotnet=&#34;`Influxdb`&#34; pulumi-lang-go=&#34;`influxdb`&#34; pulumi-lang-python=&#34;`influxdb`&#34; pulumi-lang-yaml=&#34;`influxdb`&#34; pulumi-lang-java=&#34;`influxdb`&#34;&gt;`influxdb`&lt;/span&gt;.
+     * Plugin type. Choice is between &lt;span pulumi-lang-nodejs=&#34;`graphite`&#34; pulumi-lang-dotnet=&#34;`Graphite`&#34; pulumi-lang-go=&#34;`graphite`&#34; pulumi-lang-python=&#34;`graphite`&#34; pulumi-lang-yaml=&#34;`graphite`&#34; pulumi-lang-java=&#34;`graphite`&#34;&gt;`graphite`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`influxdb`&#34; pulumi-lang-dotnet=&#34;`Influxdb`&#34; pulumi-lang-go=&#34;`influxdb`&#34; pulumi-lang-python=&#34;`influxdb`&#34; pulumi-lang-yaml=&#34;`influxdb`&#34; pulumi-lang-java=&#34;`influxdb`&#34;&gt;`influxdb`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`opentelemetry`&#34; pulumi-lang-dotnet=&#34;`Opentelemetry`&#34; pulumi-lang-go=&#34;`opentelemetry`&#34; pulumi-lang-python=&#34;`opentelemetry`&#34; pulumi-lang-yaml=&#34;`opentelemetry`&#34; pulumi-lang-java=&#34;`opentelemetry`&#34;&gt;`opentelemetry`&lt;/span&gt;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Plugin type. Choice is between &lt;span pulumi-lang-nodejs=&#34;`graphite`&#34; pulumi-lang-dotnet=&#34;`Graphite`&#34; pulumi-lang-go=&#34;`graphite`&#34; pulumi-lang-python=&#34;`graphite`&#34; pulumi-lang-yaml=&#34;`graphite`&#34; pulumi-lang-java=&#34;`graphite`&#34;&gt;`graphite`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`influxdb`&#34; pulumi-lang-dotnet=&#34;`Influxdb`&#34; pulumi-lang-go=&#34;`influxdb`&#34; pulumi-lang-python=&#34;`influxdb`&#34; pulumi-lang-yaml=&#34;`influxdb`&#34; pulumi-lang-java=&#34;`influxdb`&#34;&gt;`influxdb`&lt;/span&gt;.
+     * @return Plugin type. Choice is between &lt;span pulumi-lang-nodejs=&#34;`graphite`&#34; pulumi-lang-dotnet=&#34;`Graphite`&#34; pulumi-lang-go=&#34;`graphite`&#34; pulumi-lang-python=&#34;`graphite`&#34; pulumi-lang-yaml=&#34;`graphite`&#34; pulumi-lang-java=&#34;`graphite`&#34;&gt;`graphite`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`influxdb`&#34; pulumi-lang-dotnet=&#34;`Influxdb`&#34; pulumi-lang-go=&#34;`influxdb`&#34; pulumi-lang-python=&#34;`influxdb`&#34; pulumi-lang-yaml=&#34;`influxdb`&#34; pulumi-lang-java=&#34;`influxdb`&#34;&gt;`influxdb`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`opentelemetry`&#34; pulumi-lang-dotnet=&#34;`Opentelemetry`&#34; pulumi-lang-go=&#34;`opentelemetry`&#34; pulumi-lang-python=&#34;`opentelemetry`&#34; pulumi-lang-yaml=&#34;`opentelemetry`&#34; pulumi-lang-java=&#34;`opentelemetry`&#34;&gt;`opentelemetry`&lt;/span&gt;.
      * 
      */
     public Output<String> type() {

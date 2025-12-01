@@ -6,6 +6,25 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves information about an existing SDN VNet.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = proxmoxve.Sdn.getVnet({
+ *     id: "vnet1",
+ * });
+ * export const dataProxmoxVirtualEnvironmentSdnVnet = {
+ *     id: example.then(example => example.id),
+ *     zone: example.then(example => example.zone),
+ *     alias: example.then(example => example.alias),
+ *     isolatePorts: example.then(example => example.isolatePorts),
+ *     tag: example.then(example => example.tag),
+ *     vlanAware: example.then(example => example.vlanAware),
+ * };
+ * ```
  */
 export function getVnet(args: GetVnetArgs, opts?: pulumi.InvokeOptions): Promise<GetVnetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -55,6 +74,25 @@ export interface GetVnetResult {
 }
 /**
  * Retrieves information about an existing SDN VNet.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = proxmoxve.Sdn.getVnet({
+ *     id: "vnet1",
+ * });
+ * export const dataProxmoxVirtualEnvironmentSdnVnet = {
+ *     id: example.then(example => example.id),
+ *     zone: example.then(example => example.zone),
+ *     alias: example.then(example => example.alias),
+ *     isolatePorts: example.then(example => example.isolatePorts),
+ *     tag: example.then(example => example.tag),
+ *     vlanAware: example.then(example => example.vlanAware),
+ * };
+ * ```
  */
 export function getVnetOutput(args: GetVnetOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVnetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -32,6 +32,10 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// The QEMU agent interface type (defaults to `Virtio`).
         /// </summary>
         public readonly string? Type;
+        /// <summary>
+        /// Configuration for waiting for specific IP address types when the VM starts.
+        /// </summary>
+        public readonly Outputs.VirtualMachineAgentWaitForIp? WaitForIp;
 
         [OutputConstructor]
         private VirtualMachineAgent(
@@ -41,12 +45,15 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
 
             bool? trim,
 
-            string? type)
+            string? type,
+
+            Outputs.VirtualMachineAgentWaitForIp? waitForIp)
         {
             Enabled = enabled;
             Timeout = timeout;
             Trim = trim;
             Type = type;
+            WaitForIp = waitForIp;
         }
     }
 }

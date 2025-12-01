@@ -28,6 +28,16 @@ public final class GetServerResult {
      */
     private String name;
     /**
+     * @return OpenTelemetry endpoint path (e.g., `/v1/metrics`).
+     * 
+     */
+    private String opentelemetryPath;
+    /**
+     * @return Protocol for OpenTelemetry. Choice is between &lt;span pulumi-lang-nodejs=&#34;`http`&#34; pulumi-lang-dotnet=&#34;`Http`&#34; pulumi-lang-go=&#34;`http`&#34; pulumi-lang-python=&#34;`http`&#34; pulumi-lang-yaml=&#34;`http`&#34; pulumi-lang-java=&#34;`http`&#34;&gt;`http`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`https`&#34; pulumi-lang-dotnet=&#34;`Https`&#34; pulumi-lang-go=&#34;`https`&#34; pulumi-lang-python=&#34;`https`&#34; pulumi-lang-yaml=&#34;`https`&#34; pulumi-lang-java=&#34;`https`&#34;&gt;`https`&lt;/span&gt;.
+     * 
+     */
+    private String opentelemetryProto;
+    /**
      * @return Server network port.
      * 
      */
@@ -38,7 +48,7 @@ public final class GetServerResult {
      */
     private String server;
     /**
-     * @return Plugin type. Either &lt;span pulumi-lang-nodejs=&#34;`graphite`&#34; pulumi-lang-dotnet=&#34;`Graphite`&#34; pulumi-lang-go=&#34;`graphite`&#34; pulumi-lang-python=&#34;`graphite`&#34; pulumi-lang-yaml=&#34;`graphite`&#34; pulumi-lang-java=&#34;`graphite`&#34;&gt;`graphite`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`influxdb`&#34; pulumi-lang-dotnet=&#34;`Influxdb`&#34; pulumi-lang-go=&#34;`influxdb`&#34; pulumi-lang-python=&#34;`influxdb`&#34; pulumi-lang-yaml=&#34;`influxdb`&#34; pulumi-lang-java=&#34;`influxdb`&#34;&gt;`influxdb`&lt;/span&gt;.
+     * @return Plugin type. Either &lt;span pulumi-lang-nodejs=&#34;`graphite`&#34; pulumi-lang-dotnet=&#34;`Graphite`&#34; pulumi-lang-go=&#34;`graphite`&#34; pulumi-lang-python=&#34;`graphite`&#34; pulumi-lang-yaml=&#34;`graphite`&#34; pulumi-lang-java=&#34;`graphite`&#34;&gt;`graphite`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`influxdb`&#34; pulumi-lang-dotnet=&#34;`Influxdb`&#34; pulumi-lang-go=&#34;`influxdb`&#34; pulumi-lang-python=&#34;`influxdb`&#34; pulumi-lang-yaml=&#34;`influxdb`&#34; pulumi-lang-java=&#34;`influxdb`&#34;&gt;`influxdb`&lt;/span&gt;, or &lt;span pulumi-lang-nodejs=&#34;`opentelemetry`&#34; pulumi-lang-dotnet=&#34;`Opentelemetry`&#34; pulumi-lang-go=&#34;`opentelemetry`&#34; pulumi-lang-python=&#34;`opentelemetry`&#34; pulumi-lang-yaml=&#34;`opentelemetry`&#34; pulumi-lang-java=&#34;`opentelemetry`&#34;&gt;`opentelemetry`&lt;/span&gt;.
      * 
      */
     private String type;
@@ -66,6 +76,20 @@ public final class GetServerResult {
         return this.name;
     }
     /**
+     * @return OpenTelemetry endpoint path (e.g., `/v1/metrics`).
+     * 
+     */
+    public String opentelemetryPath() {
+        return this.opentelemetryPath;
+    }
+    /**
+     * @return Protocol for OpenTelemetry. Choice is between &lt;span pulumi-lang-nodejs=&#34;`http`&#34; pulumi-lang-dotnet=&#34;`Http`&#34; pulumi-lang-go=&#34;`http`&#34; pulumi-lang-python=&#34;`http`&#34; pulumi-lang-yaml=&#34;`http`&#34; pulumi-lang-java=&#34;`http`&#34;&gt;`http`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`https`&#34; pulumi-lang-dotnet=&#34;`Https`&#34; pulumi-lang-go=&#34;`https`&#34; pulumi-lang-python=&#34;`https`&#34; pulumi-lang-yaml=&#34;`https`&#34; pulumi-lang-java=&#34;`https`&#34;&gt;`https`&lt;/span&gt;.
+     * 
+     */
+    public String opentelemetryProto() {
+        return this.opentelemetryProto;
+    }
+    /**
      * @return Server network port.
      * 
      */
@@ -80,7 +104,7 @@ public final class GetServerResult {
         return this.server;
     }
     /**
-     * @return Plugin type. Either &lt;span pulumi-lang-nodejs=&#34;`graphite`&#34; pulumi-lang-dotnet=&#34;`Graphite`&#34; pulumi-lang-go=&#34;`graphite`&#34; pulumi-lang-python=&#34;`graphite`&#34; pulumi-lang-yaml=&#34;`graphite`&#34; pulumi-lang-java=&#34;`graphite`&#34;&gt;`graphite`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`influxdb`&#34; pulumi-lang-dotnet=&#34;`Influxdb`&#34; pulumi-lang-go=&#34;`influxdb`&#34; pulumi-lang-python=&#34;`influxdb`&#34; pulumi-lang-yaml=&#34;`influxdb`&#34; pulumi-lang-java=&#34;`influxdb`&#34;&gt;`influxdb`&lt;/span&gt;.
+     * @return Plugin type. Either &lt;span pulumi-lang-nodejs=&#34;`graphite`&#34; pulumi-lang-dotnet=&#34;`Graphite`&#34; pulumi-lang-go=&#34;`graphite`&#34; pulumi-lang-python=&#34;`graphite`&#34; pulumi-lang-yaml=&#34;`graphite`&#34; pulumi-lang-java=&#34;`graphite`&#34;&gt;`graphite`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`influxdb`&#34; pulumi-lang-dotnet=&#34;`Influxdb`&#34; pulumi-lang-go=&#34;`influxdb`&#34; pulumi-lang-python=&#34;`influxdb`&#34; pulumi-lang-yaml=&#34;`influxdb`&#34; pulumi-lang-java=&#34;`influxdb`&#34;&gt;`influxdb`&lt;/span&gt;, or &lt;span pulumi-lang-nodejs=&#34;`opentelemetry`&#34; pulumi-lang-dotnet=&#34;`Opentelemetry`&#34; pulumi-lang-go=&#34;`opentelemetry`&#34; pulumi-lang-python=&#34;`opentelemetry`&#34; pulumi-lang-yaml=&#34;`opentelemetry`&#34; pulumi-lang-java=&#34;`opentelemetry`&#34;&gt;`opentelemetry`&lt;/span&gt;.
      * 
      */
     public String type() {
@@ -99,6 +123,8 @@ public final class GetServerResult {
         private Boolean disable;
         private String id;
         private String name;
+        private String opentelemetryPath;
+        private String opentelemetryProto;
         private Integer port;
         private String server;
         private String type;
@@ -108,6 +134,8 @@ public final class GetServerResult {
     	      this.disable = defaults.disable;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
+    	      this.opentelemetryPath = defaults.opentelemetryPath;
+    	      this.opentelemetryProto = defaults.opentelemetryProto;
     	      this.port = defaults.port;
     	      this.server = defaults.server;
     	      this.type = defaults.type;
@@ -135,6 +163,22 @@ public final class GetServerResult {
               throw new MissingRequiredPropertyException("GetServerResult", "name");
             }
             this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder opentelemetryPath(String opentelemetryPath) {
+            if (opentelemetryPath == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "opentelemetryPath");
+            }
+            this.opentelemetryPath = opentelemetryPath;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder opentelemetryProto(String opentelemetryProto) {
+            if (opentelemetryProto == null) {
+              throw new MissingRequiredPropertyException("GetServerResult", "opentelemetryProto");
+            }
+            this.opentelemetryProto = opentelemetryProto;
             return this;
         }
         @CustomType.Setter
@@ -166,6 +210,8 @@ public final class GetServerResult {
             _resultValue.disable = disable;
             _resultValue.id = id;
             _resultValue.name = name;
+            _resultValue.opentelemetryPath = opentelemetryPath;
+            _resultValue.opentelemetryProto = opentelemetryProto;
             _resultValue.port = port;
             _resultValue.server = server;
             _resultValue.type = type;

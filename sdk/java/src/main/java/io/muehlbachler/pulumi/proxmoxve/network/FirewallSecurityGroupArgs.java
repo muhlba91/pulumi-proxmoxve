@@ -5,7 +5,6 @@ package io.muehlbachler.pulumi.proxmoxve.Network;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import io.muehlbachler.pulumi.proxmoxve.Network.inputs.FirewallSecurityGroupRuleArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -83,15 +82,15 @@ public final class FirewallSecurityGroupArgs extends com.pulumi.resources.Resour
      * Firewall rule block (multiple blocks supported).
      * 
      */
-    @Import(name="rules", required=true)
-    private Output<List<FirewallSecurityGroupRuleArgs>> rules;
+    @Import(name="rules")
+    private @Nullable Output<List<FirewallSecurityGroupRuleArgs>> rules;
 
     /**
      * @return Firewall rule block (multiple blocks supported).
      * 
      */
-    public Output<List<FirewallSecurityGroupRuleArgs>> rules() {
-        return this.rules;
+    public Optional<Output<List<FirewallSecurityGroupRuleArgs>>> rules() {
+        return Optional.ofNullable(this.rules);
     }
 
     /**
@@ -228,7 +227,7 @@ public final class FirewallSecurityGroupArgs extends com.pulumi.resources.Resour
          * @return builder
          * 
          */
-        public Builder rules(Output<List<FirewallSecurityGroupRuleArgs>> rules) {
+        public Builder rules(@Nullable Output<List<FirewallSecurityGroupRuleArgs>> rules) {
             $.rules = rules;
             return this;
         }
@@ -275,9 +274,6 @@ public final class FirewallSecurityGroupArgs extends com.pulumi.resources.Resour
         }
 
         public FirewallSecurityGroupArgs build() {
-            if ($.rules == null) {
-                throw new MissingRequiredPropertyException("FirewallSecurityGroupArgs", "rules");
-            }
             return $;
         }
     }

@@ -39,6 +39,12 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        /// <summary>
+        /// Configuration for waiting for specific IP address types when the VM starts.
+        /// </summary>
+        [Input("waitForIp")]
+        public Input<Inputs.VirtualMachineAgentWaitForIpGetArgs>? WaitForIp { get; set; }
+
         public VirtualMachineAgentGetArgs()
         {
         }

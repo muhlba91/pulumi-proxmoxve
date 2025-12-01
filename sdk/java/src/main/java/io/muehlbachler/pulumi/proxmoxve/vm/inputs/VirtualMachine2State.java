@@ -70,6 +70,21 @@ public final class VirtualMachine2State extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Set to true to delete unreferenced disks on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * 
+     */
+    @Import(name="deleteUnreferencedDisksOnDestroy")
+    private @Nullable Output<Boolean> deleteUnreferencedDisksOnDestroy;
+
+    /**
+     * @return Set to true to delete unreferenced disks on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * 
+     */
+    public Optional<Output<Boolean>> deleteUnreferencedDisksOnDestroy() {
+        return Optional.ofNullable(this.deleteUnreferencedDisksOnDestroy);
+    }
+
+    /**
      * The description of the VM.
      * 
      */
@@ -112,6 +127,21 @@ public final class VirtualMachine2State extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> nodeName() {
         return Optional.ofNullable(this.nodeName);
+    }
+
+    /**
+     * Set to true to purge the VM from backup configurations on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * 
+     */
+    @Import(name="purgeOnDestroy")
+    private @Nullable Output<Boolean> purgeOnDestroy;
+
+    /**
+     * @return Set to true to purge the VM from backup configurations on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * 
+     */
+    public Optional<Output<Boolean>> purgeOnDestroy() {
+        return Optional.ofNullable(this.purgeOnDestroy);
     }
 
     /**
@@ -202,9 +232,11 @@ public final class VirtualMachine2State extends com.pulumi.resources.ResourceArg
         this.cdrom = $.cdrom;
         this.clone = $.clone;
         this.cpu = $.cpu;
+        this.deleteUnreferencedDisksOnDestroy = $.deleteUnreferencedDisksOnDestroy;
         this.description = $.description;
         this.name = $.name;
         this.nodeName = $.nodeName;
+        this.purgeOnDestroy = $.purgeOnDestroy;
         this.rng = $.rng;
         this.stopOnDestroy = $.stopOnDestroy;
         this.tags = $.tags;
@@ -295,6 +327,27 @@ public final class VirtualMachine2State extends com.pulumi.resources.ResourceArg
         }
 
         /**
+         * @param deleteUnreferencedDisksOnDestroy Set to true to delete unreferenced disks on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteUnreferencedDisksOnDestroy(@Nullable Output<Boolean> deleteUnreferencedDisksOnDestroy) {
+            $.deleteUnreferencedDisksOnDestroy = deleteUnreferencedDisksOnDestroy;
+            return this;
+        }
+
+        /**
+         * @param deleteUnreferencedDisksOnDestroy Set to true to delete unreferenced disks on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteUnreferencedDisksOnDestroy(Boolean deleteUnreferencedDisksOnDestroy) {
+            return deleteUnreferencedDisksOnDestroy(Output.of(deleteUnreferencedDisksOnDestroy));
+        }
+
+        /**
          * @param description The description of the VM.
          * 
          * @return builder
@@ -355,6 +408,27 @@ public final class VirtualMachine2State extends com.pulumi.resources.ResourceArg
          */
         public Builder nodeName(String nodeName) {
             return nodeName(Output.of(nodeName));
+        }
+
+        /**
+         * @param purgeOnDestroy Set to true to purge the VM from backup configurations on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder purgeOnDestroy(@Nullable Output<Boolean> purgeOnDestroy) {
+            $.purgeOnDestroy = purgeOnDestroy;
+            return this;
+        }
+
+        /**
+         * @param purgeOnDestroy Set to true to purge the VM from backup configurations on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder purgeOnDestroy(Boolean purgeOnDestroy) {
+            return purgeOnDestroy(Output.of(purgeOnDestroy));
         }
 
         /**

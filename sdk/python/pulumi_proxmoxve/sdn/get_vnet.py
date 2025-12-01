@@ -114,6 +114,23 @@ def get_vnet(id: Optional[_builtins.str] = None,
     """
     Retrieves information about an existing SDN VNet.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.Sdn.get_vnet(id="vnet1")
+    pulumi.export("dataProxmoxVirtualEnvironmentSdnVnet", {
+        "id": example.id,
+        "zone": example.zone,
+        "alias": example.alias,
+        "isolatePorts": example.isolate_ports,
+        "tag": example.tag,
+        "vlanAware": example.vlan_aware,
+    })
+    ```
+
 
     :param _builtins.str id: The unique identifier of the SDN VNet.
     """
@@ -133,6 +150,23 @@ def get_vnet_output(id: Optional[pulumi.Input[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVnetResult]:
     """
     Retrieves information about an existing SDN VNet.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.Sdn.get_vnet(id="vnet1")
+    pulumi.export("dataProxmoxVirtualEnvironmentSdnVnet", {
+        "id": example.id,
+        "zone": example.zone,
+        "alias": example.alias,
+        "isolatePorts": example.isolate_ports,
+        "tag": example.tag,
+        "vlanAware": example.vlan_aware,
+    })
+    ```
 
 
     :param _builtins.str id: The unique identifier of the SDN VNet.

@@ -52,6 +52,21 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
     }
 
     /**
+     * The file format.
+     * 
+     */
+    @Import(name="fileFormat")
+    private @Nullable Output<String> fileFormat;
+
+    /**
+     * @return The file format.
+     * 
+     */
+    public Optional<Output<String>> fileFormat() {
+        return Optional.ofNullable(this.fileFormat);
+    }
+
+    /**
      * The hardware interface to connect the cloud-init
      * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
      * detected if the setting is missing but a cloud-init image is present,
@@ -196,6 +211,7 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
     private VirtualMachineInitializationArgs(VirtualMachineInitializationArgs $) {
         this.datastoreId = $.datastoreId;
         this.dns = $.dns;
+        this.fileFormat = $.fileFormat;
         this.interface_ = $.interface_;
         this.ipConfigs = $.ipConfigs;
         this.metaDataFileId = $.metaDataFileId;
@@ -266,6 +282,27 @@ public final class VirtualMachineInitializationArgs extends com.pulumi.resources
          */
         public Builder dns(VirtualMachineInitializationDnsArgs dns) {
             return dns(Output.of(dns));
+        }
+
+        /**
+         * @param fileFormat The file format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fileFormat(@Nullable Output<String> fileFormat) {
+            $.fileFormat = fileFormat;
+            return this;
+        }
+
+        /**
+         * @param fileFormat The file format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fileFormat(String fileFormat) {
+            return fileFormat(Output.of(fileFormat));
         }
 
         /**

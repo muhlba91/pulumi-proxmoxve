@@ -100,7 +100,7 @@ export class FirewallSecurityGroup extends pulumi.CustomResource {
     /**
      * Firewall rule block (multiple blocks supported).
      */
-    declare public readonly rules: pulumi.Output<outputs.Network.FirewallSecurityGroupRule[]>;
+    declare public readonly rules: pulumi.Output<outputs.Network.FirewallSecurityGroupRule[] | undefined>;
     /**
      * The ID of the VM to manage the firewall for.
      */
@@ -113,7 +113,7 @@ export class FirewallSecurityGroup extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: FirewallSecurityGroupArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: FirewallSecurityGroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FirewallSecurityGroupArgs | FirewallSecurityGroupState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -127,9 +127,6 @@ export class FirewallSecurityGroup extends pulumi.CustomResource {
             resourceInputs["vmId"] = state?.vmId;
         } else {
             const args = argsOrState as FirewallSecurityGroupArgs | undefined;
-            if (args?.rules === undefined && !opts.urn) {
-                throw new Error("Missing required property 'rules'");
-            }
             resourceInputs["comment"] = args?.comment;
             resourceInputs["containerId"] = args?.containerId;
             resourceInputs["name"] = args?.name;
@@ -195,7 +192,7 @@ export interface FirewallSecurityGroupArgs {
     /**
      * Firewall rule block (multiple blocks supported).
      */
-    rules: pulumi.Input<pulumi.Input<inputs.Network.FirewallSecurityGroupRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.Network.FirewallSecurityGroupRule>[]>;
     /**
      * The ID of the VM to manage the firewall for.
      */

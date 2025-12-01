@@ -20,6 +20,9 @@ import javax.annotation.Nullable;
 /**
  * Manages cluster-level, node-level or VM/container-level firewall rules.
  * 
+ * &gt; **Note:** Before creating a new &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Network.FirewallRules`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Network.FirewallRules`&#34; pulumi-lang-go=&#34;`Network.FirewallRules`&#34; pulumi-lang-python=&#34;`Network.FirewallRules`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Network.FirewallRules`&#34; pulumi-lang-java=&#34;`proxmoxve.Network.FirewallRules`&#34;&gt;`proxmoxve.Network.FirewallRules`&lt;/span&gt; resource, verify that no rules already exist for the target (cluster, node, VM, or container).
+ * If rules are already configured, import them first using the appropriate import command.
+ * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -140,7 +143,7 @@ public class FirewallRules extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="rules", refs={List.class,FirewallRulesRule.class}, tree="[0,1]")
-    private Output<List<FirewallRulesRule>> rules;
+    private Output</* @Nullable */ List<FirewallRulesRule>> rules;
 
     /**
      * @return Firewall rule block (multiple blocks supported).
@@ -148,8 +151,8 @@ public class FirewallRules extends com.pulumi.resources.CustomResource {
      * - A rule definition block, which includes the following arguments:
      * 
      */
-    public Output<List<FirewallRulesRule>> rules() {
-        return this.rules;
+    public Output<Optional<List<FirewallRulesRule>>> rules() {
+        return Codegen.optional(this.rules);
     }
     /**
      * VM ID. Leave empty for node/cluster level rules.
@@ -178,7 +181,7 @@ public class FirewallRules extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public FirewallRules(java.lang.String name, FirewallRulesArgs args) {
+    public FirewallRules(java.lang.String name, @Nullable FirewallRulesArgs args) {
         this(name, args, null);
     }
     /**
@@ -187,7 +190,7 @@ public class FirewallRules extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public FirewallRules(java.lang.String name, FirewallRulesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public FirewallRules(java.lang.String name, @Nullable FirewallRulesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("proxmoxve:Network/firewallRules:FirewallRules", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -195,7 +198,7 @@ public class FirewallRules extends com.pulumi.resources.CustomResource {
         super("proxmoxve:Network/firewallRules:FirewallRules", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static FirewallRulesArgs makeArgs(FirewallRulesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static FirewallRulesArgs makeArgs(@Nullable FirewallRulesArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

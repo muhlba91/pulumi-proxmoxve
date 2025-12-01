@@ -12,6 +12,9 @@ namespace Pulumi.ProxmoxVE.Network
     /// <summary>
     /// Manages cluster-level, node-level or VM/container-level firewall rules.
     /// 
+    /// &gt; **Note:** Before creating a new `proxmoxve.Network.FirewallRules` resource, verify that no rules already exist for the target (cluster, node, VM, or container).
+    /// If rules are already configured, import them first using the appropriate import command.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -120,7 +123,7 @@ namespace Pulumi.ProxmoxVE.Network
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public FirewallRules(string name, FirewallRulesArgs args, CustomResourceOptions? options = null)
+        public FirewallRules(string name, FirewallRulesArgs? args = null, CustomResourceOptions? options = null)
             : base("proxmoxve:Network/firewallRules:FirewallRules", name, args ?? new FirewallRulesArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -171,7 +174,7 @@ namespace Pulumi.ProxmoxVE.Network
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
 
-        [Input("rules", required: true)]
+        [Input("rules")]
         private InputList<Inputs.FirewallRulesRuleArgs>? _rules;
 
         /// <summary>

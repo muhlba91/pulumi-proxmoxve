@@ -477,12 +477,12 @@ export namespace CT {
         /**
          * The IPv6 address in CIDR notation
          * (e.g. fd1c::7334/64). Alternatively, set this
-         * to `dhcp` for autodiscovery.
+         * to `dhcp` for DHCPv6, or `auto` for SLAAC.
          */
         address?: pulumi.Input<string>;
         /**
          * The IPv6 gateway (must be omitted
-         * when `dhcp` is used as the address).
+         * when `dhcp` or `auto` are used as the address).
          */
         gateway?: pulumi.Input<string>;
     }
@@ -627,6 +627,19 @@ export namespace CT {
          * seconds before the next container is started.
          */
         upDelay?: pulumi.Input<number>;
+    }
+
+    export interface ContainerWaitForIp {
+        /**
+         * Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+         */
+        ipv4?: pulumi.Input<boolean>;
+        /**
+         * Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
+         *
+         * When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+         */
+        ipv6?: pulumi.Input<boolean>;
     }
 }
 
@@ -1355,6 +1368,23 @@ export namespace VM {
          * The QEMU agent interface type (defaults to `virtio`).
          */
         type?: pulumi.Input<string>;
+        /**
+         * Configuration for waiting for specific IP address types when the VM starts.
+         */
+        waitForIp?: pulumi.Input<inputs.VM.VirtualMachineAgentWaitForIp>;
+    }
+
+    export interface VirtualMachineAgentWaitForIp {
+        /**
+         * Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+         */
+        ipv4?: pulumi.Input<boolean>;
+        /**
+         * Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
+         *
+         * When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+         */
+        ipv6?: pulumi.Input<boolean>;
     }
 
     export interface VirtualMachineAmdSev {
@@ -1558,7 +1588,7 @@ export namespace VM {
         /**
          * The file ID for a disk image to import into VM. The image must be of `import` content type.
          * The ID format is `<datastore_id>:import/<file_name>`, for example `local:import/centos8.qcow2`. Can be also taken from
-         * `proxmoxve.Download.File` resource.
+         * a disk replacement operation, which will require a VM reboot. Your original disks will remain as detached disks.
          */
         importFrom?: pulumi.Input<string>;
         /**
@@ -1722,6 +1752,10 @@ export namespace VM {
          */
         dns?: pulumi.Input<inputs.VM.VirtualMachineInitializationDns>;
         /**
+         * The file format.
+         */
+        fileFormat?: pulumi.Input<string>;
+        /**
          * The hardware interface to connect the cloud-init
          * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
          * detected if the setting is missing but a cloud-init image is present,
@@ -1805,12 +1839,12 @@ export namespace VM {
         /**
          * The IPv6 address in CIDR notation
          * (e.g. fd1c::7334/64). Alternatively, set this
-         * to `dhcp` for autodiscovery.
+         * to `dhcp` for DHCPv6, or `auto` for SLAAC.
          */
         address?: pulumi.Input<string>;
         /**
          * The IPv6 gateway (must be omitted
-         * when `dhcp` is used as the address).
+         * when `dhcp` or `auto` are used as the address).
          */
         gateway?: pulumi.Input<string>;
     }

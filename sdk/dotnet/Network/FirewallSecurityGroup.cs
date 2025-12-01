@@ -113,7 +113,7 @@ namespace Pulumi.ProxmoxVE.Network
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public FirewallSecurityGroup(string name, FirewallSecurityGroupArgs args, CustomResourceOptions? options = null)
+        public FirewallSecurityGroup(string name, FirewallSecurityGroupArgs? args = null, CustomResourceOptions? options = null)
             : base("proxmoxve:Network/firewallSecurityGroup:FirewallSecurityGroup", name, args ?? new FirewallSecurityGroupArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -176,7 +176,7 @@ namespace Pulumi.ProxmoxVE.Network
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
 
-        [Input("rules", required: true)]
+        [Input("rules")]
         private InputList<Inputs.FirewallSecurityGroupRuleArgs>? _rules;
 
         /// <summary>

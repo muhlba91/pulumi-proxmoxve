@@ -9,6 +9,9 @@ import * as utilities from "../utilities";
 /**
  * Manages cluster-level, node-level or VM/container-level firewall rules.
  *
+ * > **Note:** Before creating a new `proxmoxve.Network.FirewallRules` resource, verify that no rules already exist for the target (cluster, node, VM, or container).
+ * If rules are already configured, import them first using the appropriate import command.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -108,7 +111,7 @@ export class FirewallRules extends pulumi.CustomResource {
      * The provider supports two types of the `rule` blocks:
      * - A rule definition block, which includes the following arguments:
      */
-    declare public readonly rules: pulumi.Output<outputs.Network.FirewallRulesRule[]>;
+    declare public readonly rules: pulumi.Output<outputs.Network.FirewallRulesRule[] | undefined>;
     /**
      * VM ID. Leave empty for node/cluster level rules.
      */
@@ -121,7 +124,7 @@ export class FirewallRules extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: FirewallRulesArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: FirewallRulesArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: FirewallRulesArgs | FirewallRulesState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -133,9 +136,6 @@ export class FirewallRules extends pulumi.CustomResource {
             resourceInputs["vmId"] = state?.vmId;
         } else {
             const args = argsOrState as FirewallRulesArgs | undefined;
-            if (args?.rules === undefined && !opts.urn) {
-                throw new Error("Missing required property 'rules'");
-            }
             resourceInputs["containerId"] = args?.containerId;
             resourceInputs["nodeName"] = args?.nodeName;
             resourceInputs["rules"] = args?.rules;
@@ -187,7 +187,7 @@ export interface FirewallRulesArgs {
      * The provider supports two types of the `rule` blocks:
      * - A rule definition block, which includes the following arguments:
      */
-    rules: pulumi.Input<pulumi.Input<inputs.Network.FirewallRulesRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.Network.FirewallRulesRule>[]>;
     /**
      * VM ID. Leave empty for node/cluster level rules.
      */

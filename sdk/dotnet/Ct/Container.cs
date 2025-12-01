@@ -241,6 +241,7 @@ namespace Pulumi.ProxmoxVE.CT
 
         /// <summary>
         /// The identifier for a pool to assign the container to.
+        /// This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `proxmoxve.Pool.Membership` resource instead.
         /// </summary>
         [Output("poolId")]
         public Output<string?> PoolId { get; private set; } = null!;
@@ -327,6 +328,12 @@ namespace Pulumi.ProxmoxVE.CT
         /// </summary>
         [Output("vmId")]
         public Output<int> VmId { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for waiting for specific IP address types when the container starts.
+        /// </summary>
+        [Output("waitForIp")]
+        public Output<Outputs.ContainerWaitForIp?> WaitForIp { get; private set; } = null!;
 
 
         /// <summary>
@@ -480,6 +487,7 @@ namespace Pulumi.ProxmoxVE.CT
 
         /// <summary>
         /// The identifier for a pool to assign the container to.
+        /// This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `proxmoxve.Pool.Membership` resource instead.
         /// </summary>
         [Input("poolId")]
         public Input<string>? PoolId { get; set; }
@@ -572,6 +580,12 @@ namespace Pulumi.ProxmoxVE.CT
         /// </summary>
         [Input("vmId")]
         public Input<int>? VmId { get; set; }
+
+        /// <summary>
+        /// Configuration for waiting for specific IP address types when the container starts.
+        /// </summary>
+        [Input("waitForIp")]
+        public Input<Inputs.ContainerWaitForIpArgs>? WaitForIp { get; set; }
 
         public ContainerArgs()
         {
@@ -710,6 +724,7 @@ namespace Pulumi.ProxmoxVE.CT
 
         /// <summary>
         /// The identifier for a pool to assign the container to.
+        /// This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `proxmoxve.Pool.Membership` resource instead.
         /// </summary>
         [Input("poolId")]
         public Input<string>? PoolId { get; set; }
@@ -802,6 +817,12 @@ namespace Pulumi.ProxmoxVE.CT
         /// </summary>
         [Input("vmId")]
         public Input<int>? VmId { get; set; }
+
+        /// <summary>
+        /// Configuration for waiting for specific IP address types when the container starts.
+        /// </summary>
+        [Input("waitForIp")]
+        public Input<Inputs.ContainerWaitForIpGetArgs>? WaitForIp { get; set; }
 
         public ContainerState()
         {

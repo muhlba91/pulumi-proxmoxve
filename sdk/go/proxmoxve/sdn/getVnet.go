@@ -12,6 +12,40 @@ import (
 )
 
 // Retrieves information about an existing SDN VNet.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := sdn.GetVnet(ctx, &sdn.GetVnetArgs{
+//				Id: "vnet1",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("dataProxmoxVirtualEnvironmentSdnVnet", pulumi.Map{
+//				"id":           example.Id,
+//				"zone":         example.Zone,
+//				"alias":        example.Alias,
+//				"isolatePorts": example.IsolatePorts,
+//				"tag":          example.Tag,
+//				"vlanAware":    example.VlanAware,
+//			})
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupVnet(ctx *pulumi.Context, args *LookupVnetArgs, opts ...pulumi.InvokeOption) (*LookupVnetResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVnetResult

@@ -23,6 +23,10 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly Outputs.VirtualMachineInitializationDns? Dns;
         /// <summary>
+        /// The file format.
+        /// </summary>
+        public readonly string? FileFormat;
+        /// <summary>
         /// The hardware interface to connect the cloud-init
         /// image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
         /// detected if the setting is missing but a cloud-init image is present,
@@ -71,6 +75,8 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
 
             Outputs.VirtualMachineInitializationDns? dns,
 
+            string? fileFormat,
+
             string? @interface,
 
             ImmutableArray<Outputs.VirtualMachineInitializationIpConfig> ipConfigs,
@@ -89,6 +95,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         {
             DatastoreId = datastoreId;
             Dns = dns;
+            FileFormat = fileFormat;
             Interface = @interface;
             IpConfigs = ipConfigs;
             MetaDataFileId = metaDataFileId;

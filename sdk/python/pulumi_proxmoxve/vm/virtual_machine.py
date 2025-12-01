@@ -31,6 +31,7 @@ class VirtualMachineArgs:
                  cdrom: Optional[pulumi.Input['VirtualMachineCdromArgs']] = None,
                  clone: Optional[pulumi.Input['VirtualMachineCloneArgs']] = None,
                  cpu: Optional[pulumi.Input['VirtualMachineCpuArgs']] = None,
+                 delete_unreferenced_disks_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]] = None,
                  efi_disk: Optional[pulumi.Input['VirtualMachineEfiDiskArgs']] = None,
@@ -50,6 +51,7 @@ class VirtualMachineArgs:
                  operating_system: Optional[pulumi.Input['VirtualMachineOperatingSystemArgs']] = None,
                  pool_id: Optional[pulumi.Input[_builtins.str]] = None,
                  protection: Optional[pulumi.Input[_builtins.bool]] = None,
+                 purge_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  reboot: Optional[pulumi.Input[_builtins.bool]] = None,
                  reboot_after_update: Optional[pulumi.Input[_builtins.bool]] = None,
                  rngs: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineRngArgs']]]] = None,
@@ -85,11 +87,11 @@ class VirtualMachineArgs:
         :param pulumi.Input['VirtualMachineAmdSevArgs'] amd_sev: Secure Encrypted Virtualization (SEV) features by AMD CPUs.
         :param pulumi.Input['VirtualMachineAudioDeviceArgs'] audio_device: An audio device.
         :param pulumi.Input[_builtins.str] bios: The BIOS implementation (defaults to `seabios`).
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] boot_orders: Specify a list of devices to boot from in the order
-               they appear in the list (defaults to `[]`).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] boot_orders: Specify a list of devices to boot from in the order they appear in the list.
         :param pulumi.Input['VirtualMachineCdromArgs'] cdrom: The CD-ROM configuration.
         :param pulumi.Input['VirtualMachineCloneArgs'] clone: The cloning configuration.
         :param pulumi.Input['VirtualMachineCpuArgs'] cpu: The CPU configuration.
+        :param pulumi.Input[_builtins.bool] delete_unreferenced_disks_on_destroy: Whether to delete unreferenced disks on destroy (defaults to `true`)
         :param pulumi.Input[_builtins.str] description: The description.
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]] disks: A disk (multiple blocks supported).
         :param pulumi.Input['VirtualMachineEfiDiskArgs'] efi_disk: The efi disk device (required if `bios` is set
@@ -112,7 +114,9 @@ class VirtualMachineArgs:
                boot. (defaults to `true`)
         :param pulumi.Input['VirtualMachineOperatingSystemArgs'] operating_system: The Operating System configuration.
         :param pulumi.Input[_builtins.str] pool_id: The identifier for a pool to assign the virtual machine to.
+               This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `Pool.Membership` resource instead.
         :param pulumi.Input[_builtins.bool] protection: Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+        :param pulumi.Input[_builtins.bool] purge_on_destroy: Whether to purge the VM from backup configurations on destroy (defaults to `true`)
         :param pulumi.Input[_builtins.bool] reboot: Reboot the VM after initial creation (defaults to `false`).
         :param pulumi.Input[_builtins.bool] reboot_after_update: Reboot the VM after update if needed (defaults to `true`).
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineRngArgs']]] rngs: The random number generator configuration. Can only be set by `root@pam.`
@@ -138,7 +142,7 @@ class VirtualMachineArgs:
                1800).
         :param pulumi.Input[_builtins.int] timeout_migrate: Timeout for migrating the VM (defaults to
                1800).
-        :param pulumi.Input[_builtins.int] timeout_move_disk: MoveDisk timeout
+        :param pulumi.Input[_builtins.int] timeout_move_disk: Disk move timeout
         :param pulumi.Input[_builtins.int] timeout_reboot: Timeout for rebooting a VM in seconds (defaults
                to 1800).
         :param pulumi.Input[_builtins.int] timeout_shutdown_vm: Timeout for shutting down a VM in seconds (
@@ -173,6 +177,8 @@ class VirtualMachineArgs:
             pulumi.set(__self__, "clone", clone)
         if cpu is not None:
             pulumi.set(__self__, "cpu", cpu)
+        if delete_unreferenced_disks_on_destroy is not None:
+            pulumi.set(__self__, "delete_unreferenced_disks_on_destroy", delete_unreferenced_disks_on_destroy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disks is not None:
@@ -208,9 +214,14 @@ class VirtualMachineArgs:
         if operating_system is not None:
             pulumi.set(__self__, "operating_system", operating_system)
         if pool_id is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future release. To assign the VM to a pool, use `Pool.Membership` resource instead.""", DeprecationWarning)
+            pulumi.log.warn("""pool_id is deprecated: This field is deprecated and will be removed in a future release. To assign the VM to a pool, use `Pool.Membership` resource instead.""")
+        if pool_id is not None:
             pulumi.set(__self__, "pool_id", pool_id)
         if protection is not None:
             pulumi.set(__self__, "protection", protection)
+        if purge_on_destroy is not None:
+            pulumi.set(__self__, "purge_on_destroy", purge_on_destroy)
         if reboot is not None:
             pulumi.set(__self__, "reboot", reboot)
         if reboot_after_update is not None:
@@ -344,8 +355,7 @@ class VirtualMachineArgs:
     @pulumi.getter(name="bootOrders")
     def boot_orders(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Specify a list of devices to boot from in the order
-        they appear in the list (defaults to `[]`).
+        Specify a list of devices to boot from in the order they appear in the list.
         """
         return pulumi.get(self, "boot_orders")
 
@@ -388,6 +398,18 @@ class VirtualMachineArgs:
     @cpu.setter
     def cpu(self, value: Optional[pulumi.Input['VirtualMachineCpuArgs']]):
         pulumi.set(self, "cpu", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deleteUnreferencedDisksOnDestroy")
+    def delete_unreferenced_disks_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to delete unreferenced disks on destroy (defaults to `true`)
+        """
+        return pulumi.get(self, "delete_unreferenced_disks_on_destroy")
+
+    @delete_unreferenced_disks_on_destroy.setter
+    def delete_unreferenced_disks_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "delete_unreferenced_disks_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -599,9 +621,11 @@ class VirtualMachineArgs:
 
     @_builtins.property
     @pulumi.getter(name="poolId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release. To assign the VM to a pool, use `Pool.Membership` resource instead.""")
     def pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The identifier for a pool to assign the virtual machine to.
+        This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `Pool.Membership` resource instead.
         """
         return pulumi.get(self, "pool_id")
 
@@ -620,6 +644,18 @@ class VirtualMachineArgs:
     @protection.setter
     def protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "protection", value)
+
+    @_builtins.property
+    @pulumi.getter(name="purgeOnDestroy")
+    def purge_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to purge the VM from backup configurations on destroy (defaults to `true`)
+        """
+        return pulumi.get(self, "purge_on_destroy")
+
+    @purge_on_destroy.setter
+    def purge_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "purge_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -816,7 +852,7 @@ class VirtualMachineArgs:
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead.""")
     def timeout_move_disk(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        MoveDisk timeout
+        Disk move timeout
         """
         return pulumi.get(self, "timeout_move_disk")
 
@@ -961,6 +997,7 @@ class _VirtualMachineState:
                  cdrom: Optional[pulumi.Input['VirtualMachineCdromArgs']] = None,
                  clone: Optional[pulumi.Input['VirtualMachineCloneArgs']] = None,
                  cpu: Optional[pulumi.Input['VirtualMachineCpuArgs']] = None,
+                 delete_unreferenced_disks_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]]] = None,
                  efi_disk: Optional[pulumi.Input['VirtualMachineEfiDiskArgs']] = None,
@@ -984,6 +1021,7 @@ class _VirtualMachineState:
                  operating_system: Optional[pulumi.Input['VirtualMachineOperatingSystemArgs']] = None,
                  pool_id: Optional[pulumi.Input[_builtins.str]] = None,
                  protection: Optional[pulumi.Input[_builtins.bool]] = None,
+                 purge_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  reboot: Optional[pulumi.Input[_builtins.bool]] = None,
                  reboot_after_update: Optional[pulumi.Input[_builtins.bool]] = None,
                  rngs: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineRngArgs']]]] = None,
@@ -1017,11 +1055,11 @@ class _VirtualMachineState:
         :param pulumi.Input['VirtualMachineAmdSevArgs'] amd_sev: Secure Encrypted Virtualization (SEV) features by AMD CPUs.
         :param pulumi.Input['VirtualMachineAudioDeviceArgs'] audio_device: An audio device.
         :param pulumi.Input[_builtins.str] bios: The BIOS implementation (defaults to `seabios`).
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] boot_orders: Specify a list of devices to boot from in the order
-               they appear in the list (defaults to `[]`).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] boot_orders: Specify a list of devices to boot from in the order they appear in the list.
         :param pulumi.Input['VirtualMachineCdromArgs'] cdrom: The CD-ROM configuration.
         :param pulumi.Input['VirtualMachineCloneArgs'] clone: The cloning configuration.
         :param pulumi.Input['VirtualMachineCpuArgs'] cpu: The CPU configuration.
+        :param pulumi.Input[_builtins.bool] delete_unreferenced_disks_on_destroy: Whether to delete unreferenced disks on destroy (defaults to `true`)
         :param pulumi.Input[_builtins.str] description: The description.
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineDiskArgs']]] disks: A disk (multiple blocks supported).
         :param pulumi.Input['VirtualMachineEfiDiskArgs'] efi_disk: The efi disk device (required if `bios` is set
@@ -1052,7 +1090,9 @@ class _VirtualMachineState:
                boot. (defaults to `true`)
         :param pulumi.Input['VirtualMachineOperatingSystemArgs'] operating_system: The Operating System configuration.
         :param pulumi.Input[_builtins.str] pool_id: The identifier for a pool to assign the virtual machine to.
+               This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `Pool.Membership` resource instead.
         :param pulumi.Input[_builtins.bool] protection: Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+        :param pulumi.Input[_builtins.bool] purge_on_destroy: Whether to purge the VM from backup configurations on destroy (defaults to `true`)
         :param pulumi.Input[_builtins.bool] reboot: Reboot the VM after initial creation (defaults to `false`).
         :param pulumi.Input[_builtins.bool] reboot_after_update: Reboot the VM after update if needed (defaults to `true`).
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineRngArgs']]] rngs: The random number generator configuration. Can only be set by `root@pam.`
@@ -1078,7 +1118,7 @@ class _VirtualMachineState:
                1800).
         :param pulumi.Input[_builtins.int] timeout_migrate: Timeout for migrating the VM (defaults to
                1800).
-        :param pulumi.Input[_builtins.int] timeout_move_disk: MoveDisk timeout
+        :param pulumi.Input[_builtins.int] timeout_move_disk: Disk move timeout
         :param pulumi.Input[_builtins.int] timeout_reboot: Timeout for rebooting a VM in seconds (defaults
                to 1800).
         :param pulumi.Input[_builtins.int] timeout_shutdown_vm: Timeout for shutting down a VM in seconds (
@@ -1112,6 +1152,8 @@ class _VirtualMachineState:
             pulumi.set(__self__, "clone", clone)
         if cpu is not None:
             pulumi.set(__self__, "cpu", cpu)
+        if delete_unreferenced_disks_on_destroy is not None:
+            pulumi.set(__self__, "delete_unreferenced_disks_on_destroy", delete_unreferenced_disks_on_destroy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disks is not None:
@@ -1155,9 +1197,14 @@ class _VirtualMachineState:
         if operating_system is not None:
             pulumi.set(__self__, "operating_system", operating_system)
         if pool_id is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future release. To assign the VM to a pool, use `Pool.Membership` resource instead.""", DeprecationWarning)
+            pulumi.log.warn("""pool_id is deprecated: This field is deprecated and will be removed in a future release. To assign the VM to a pool, use `Pool.Membership` resource instead.""")
+        if pool_id is not None:
             pulumi.set(__self__, "pool_id", pool_id)
         if protection is not None:
             pulumi.set(__self__, "protection", protection)
+        if purge_on_destroy is not None:
+            pulumi.set(__self__, "purge_on_destroy", purge_on_destroy)
         if reboot is not None:
             pulumi.set(__self__, "reboot", reboot)
         if reboot_after_update is not None:
@@ -1278,8 +1325,7 @@ class _VirtualMachineState:
     @pulumi.getter(name="bootOrders")
     def boot_orders(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Specify a list of devices to boot from in the order
-        they appear in the list (defaults to `[]`).
+        Specify a list of devices to boot from in the order they appear in the list.
         """
         return pulumi.get(self, "boot_orders")
 
@@ -1322,6 +1368,18 @@ class _VirtualMachineState:
     @cpu.setter
     def cpu(self, value: Optional[pulumi.Input['VirtualMachineCpuArgs']]):
         pulumi.set(self, "cpu", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deleteUnreferencedDisksOnDestroy")
+    def delete_unreferenced_disks_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to delete unreferenced disks on destroy (defaults to `true`)
+        """
+        return pulumi.get(self, "delete_unreferenced_disks_on_destroy")
+
+    @delete_unreferenced_disks_on_destroy.setter
+    def delete_unreferenced_disks_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "delete_unreferenced_disks_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1585,9 +1643,11 @@ class _VirtualMachineState:
 
     @_builtins.property
     @pulumi.getter(name="poolId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release. To assign the VM to a pool, use `Pool.Membership` resource instead.""")
     def pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The identifier for a pool to assign the virtual machine to.
+        This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `Pool.Membership` resource instead.
         """
         return pulumi.get(self, "pool_id")
 
@@ -1606,6 +1666,18 @@ class _VirtualMachineState:
     @protection.setter
     def protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "protection", value)
+
+    @_builtins.property
+    @pulumi.getter(name="purgeOnDestroy")
+    def purge_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to purge the VM from backup configurations on destroy (defaults to `true`)
+        """
+        return pulumi.get(self, "purge_on_destroy")
+
+    @purge_on_destroy.setter
+    def purge_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "purge_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1802,7 +1874,7 @@ class _VirtualMachineState:
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead.""")
     def timeout_move_disk(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        MoveDisk timeout
+        Disk move timeout
         """
         return pulumi.get(self, "timeout_move_disk")
 
@@ -1950,6 +2022,7 @@ class VirtualMachine(pulumi.CustomResource):
                  cdrom: Optional[pulumi.Input[Union['VirtualMachineCdromArgs', 'VirtualMachineCdromArgsDict']]] = None,
                  clone: Optional[pulumi.Input[Union['VirtualMachineCloneArgs', 'VirtualMachineCloneArgsDict']]] = None,
                  cpu: Optional[pulumi.Input[Union['VirtualMachineCpuArgs', 'VirtualMachineCpuArgsDict']]] = None,
+                 delete_unreferenced_disks_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineDiskArgs', 'VirtualMachineDiskArgsDict']]]]] = None,
                  efi_disk: Optional[pulumi.Input[Union['VirtualMachineEfiDiskArgs', 'VirtualMachineEfiDiskArgsDict']]] = None,
@@ -1970,6 +2043,7 @@ class VirtualMachine(pulumi.CustomResource):
                  operating_system: Optional[pulumi.Input[Union['VirtualMachineOperatingSystemArgs', 'VirtualMachineOperatingSystemArgsDict']]] = None,
                  pool_id: Optional[pulumi.Input[_builtins.str]] = None,
                  protection: Optional[pulumi.Input[_builtins.bool]] = None,
+                 purge_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  reboot: Optional[pulumi.Input[_builtins.bool]] = None,
                  reboot_after_update: Optional[pulumi.Input[_builtins.bool]] = None,
                  rngs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineRngArgs', 'VirtualMachineRngArgsDict']]]]] = None,
@@ -2015,11 +2089,11 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[Union['VirtualMachineAmdSevArgs', 'VirtualMachineAmdSevArgsDict']] amd_sev: Secure Encrypted Virtualization (SEV) features by AMD CPUs.
         :param pulumi.Input[Union['VirtualMachineAudioDeviceArgs', 'VirtualMachineAudioDeviceArgsDict']] audio_device: An audio device.
         :param pulumi.Input[_builtins.str] bios: The BIOS implementation (defaults to `seabios`).
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] boot_orders: Specify a list of devices to boot from in the order
-               they appear in the list (defaults to `[]`).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] boot_orders: Specify a list of devices to boot from in the order they appear in the list.
         :param pulumi.Input[Union['VirtualMachineCdromArgs', 'VirtualMachineCdromArgsDict']] cdrom: The CD-ROM configuration.
         :param pulumi.Input[Union['VirtualMachineCloneArgs', 'VirtualMachineCloneArgsDict']] clone: The cloning configuration.
         :param pulumi.Input[Union['VirtualMachineCpuArgs', 'VirtualMachineCpuArgsDict']] cpu: The CPU configuration.
+        :param pulumi.Input[_builtins.bool] delete_unreferenced_disks_on_destroy: Whether to delete unreferenced disks on destroy (defaults to `true`)
         :param pulumi.Input[_builtins.str] description: The description.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineDiskArgs', 'VirtualMachineDiskArgsDict']]]] disks: A disk (multiple blocks supported).
         :param pulumi.Input[Union['VirtualMachineEfiDiskArgs', 'VirtualMachineEfiDiskArgsDict']] efi_disk: The efi disk device (required if `bios` is set
@@ -2044,7 +2118,9 @@ class VirtualMachine(pulumi.CustomResource):
                boot. (defaults to `true`)
         :param pulumi.Input[Union['VirtualMachineOperatingSystemArgs', 'VirtualMachineOperatingSystemArgsDict']] operating_system: The Operating System configuration.
         :param pulumi.Input[_builtins.str] pool_id: The identifier for a pool to assign the virtual machine to.
+               This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `Pool.Membership` resource instead.
         :param pulumi.Input[_builtins.bool] protection: Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+        :param pulumi.Input[_builtins.bool] purge_on_destroy: Whether to purge the VM from backup configurations on destroy (defaults to `true`)
         :param pulumi.Input[_builtins.bool] reboot: Reboot the VM after initial creation (defaults to `false`).
         :param pulumi.Input[_builtins.bool] reboot_after_update: Reboot the VM after update if needed (defaults to `true`).
         :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineRngArgs', 'VirtualMachineRngArgsDict']]]] rngs: The random number generator configuration. Can only be set by `root@pam.`
@@ -2070,7 +2146,7 @@ class VirtualMachine(pulumi.CustomResource):
                1800).
         :param pulumi.Input[_builtins.int] timeout_migrate: Timeout for migrating the VM (defaults to
                1800).
-        :param pulumi.Input[_builtins.int] timeout_move_disk: MoveDisk timeout
+        :param pulumi.Input[_builtins.int] timeout_move_disk: Disk move timeout
         :param pulumi.Input[_builtins.int] timeout_reboot: Timeout for rebooting a VM in seconds (defaults
                to 1800).
         :param pulumi.Input[_builtins.int] timeout_shutdown_vm: Timeout for shutting down a VM in seconds (
@@ -2127,6 +2203,7 @@ class VirtualMachine(pulumi.CustomResource):
                  cdrom: Optional[pulumi.Input[Union['VirtualMachineCdromArgs', 'VirtualMachineCdromArgsDict']]] = None,
                  clone: Optional[pulumi.Input[Union['VirtualMachineCloneArgs', 'VirtualMachineCloneArgsDict']]] = None,
                  cpu: Optional[pulumi.Input[Union['VirtualMachineCpuArgs', 'VirtualMachineCpuArgsDict']]] = None,
+                 delete_unreferenced_disks_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineDiskArgs', 'VirtualMachineDiskArgsDict']]]]] = None,
                  efi_disk: Optional[pulumi.Input[Union['VirtualMachineEfiDiskArgs', 'VirtualMachineEfiDiskArgsDict']]] = None,
@@ -2147,6 +2224,7 @@ class VirtualMachine(pulumi.CustomResource):
                  operating_system: Optional[pulumi.Input[Union['VirtualMachineOperatingSystemArgs', 'VirtualMachineOperatingSystemArgsDict']]] = None,
                  pool_id: Optional[pulumi.Input[_builtins.str]] = None,
                  protection: Optional[pulumi.Input[_builtins.bool]] = None,
+                 purge_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  reboot: Optional[pulumi.Input[_builtins.bool]] = None,
                  reboot_after_update: Optional[pulumi.Input[_builtins.bool]] = None,
                  rngs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineRngArgs', 'VirtualMachineRngArgsDict']]]]] = None,
@@ -2191,6 +2269,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["cdrom"] = cdrom
             __props__.__dict__["clone"] = clone
             __props__.__dict__["cpu"] = cpu
+            __props__.__dict__["delete_unreferenced_disks_on_destroy"] = delete_unreferenced_disks_on_destroy
             __props__.__dict__["description"] = description
             __props__.__dict__["disks"] = disks
             __props__.__dict__["efi_disk"] = efi_disk
@@ -2213,6 +2292,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["operating_system"] = operating_system
             __props__.__dict__["pool_id"] = pool_id
             __props__.__dict__["protection"] = protection
+            __props__.__dict__["purge_on_destroy"] = purge_on_destroy
             __props__.__dict__["reboot"] = reboot
             __props__.__dict__["reboot_after_update"] = reboot_after_update
             __props__.__dict__["rngs"] = rngs
@@ -2261,6 +2341,7 @@ class VirtualMachine(pulumi.CustomResource):
             cdrom: Optional[pulumi.Input[Union['VirtualMachineCdromArgs', 'VirtualMachineCdromArgsDict']]] = None,
             clone: Optional[pulumi.Input[Union['VirtualMachineCloneArgs', 'VirtualMachineCloneArgsDict']]] = None,
             cpu: Optional[pulumi.Input[Union['VirtualMachineCpuArgs', 'VirtualMachineCpuArgsDict']]] = None,
+            delete_unreferenced_disks_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineDiskArgs', 'VirtualMachineDiskArgsDict']]]]] = None,
             efi_disk: Optional[pulumi.Input[Union['VirtualMachineEfiDiskArgs', 'VirtualMachineEfiDiskArgsDict']]] = None,
@@ -2284,6 +2365,7 @@ class VirtualMachine(pulumi.CustomResource):
             operating_system: Optional[pulumi.Input[Union['VirtualMachineOperatingSystemArgs', 'VirtualMachineOperatingSystemArgsDict']]] = None,
             pool_id: Optional[pulumi.Input[_builtins.str]] = None,
             protection: Optional[pulumi.Input[_builtins.bool]] = None,
+            purge_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
             reboot: Optional[pulumi.Input[_builtins.bool]] = None,
             reboot_after_update: Optional[pulumi.Input[_builtins.bool]] = None,
             rngs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineRngArgs', 'VirtualMachineRngArgsDict']]]]] = None,
@@ -2322,11 +2404,11 @@ class VirtualMachine(pulumi.CustomResource):
         :param pulumi.Input[Union['VirtualMachineAmdSevArgs', 'VirtualMachineAmdSevArgsDict']] amd_sev: Secure Encrypted Virtualization (SEV) features by AMD CPUs.
         :param pulumi.Input[Union['VirtualMachineAudioDeviceArgs', 'VirtualMachineAudioDeviceArgsDict']] audio_device: An audio device.
         :param pulumi.Input[_builtins.str] bios: The BIOS implementation (defaults to `seabios`).
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] boot_orders: Specify a list of devices to boot from in the order
-               they appear in the list (defaults to `[]`).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] boot_orders: Specify a list of devices to boot from in the order they appear in the list.
         :param pulumi.Input[Union['VirtualMachineCdromArgs', 'VirtualMachineCdromArgsDict']] cdrom: The CD-ROM configuration.
         :param pulumi.Input[Union['VirtualMachineCloneArgs', 'VirtualMachineCloneArgsDict']] clone: The cloning configuration.
         :param pulumi.Input[Union['VirtualMachineCpuArgs', 'VirtualMachineCpuArgsDict']] cpu: The CPU configuration.
+        :param pulumi.Input[_builtins.bool] delete_unreferenced_disks_on_destroy: Whether to delete unreferenced disks on destroy (defaults to `true`)
         :param pulumi.Input[_builtins.str] description: The description.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineDiskArgs', 'VirtualMachineDiskArgsDict']]]] disks: A disk (multiple blocks supported).
         :param pulumi.Input[Union['VirtualMachineEfiDiskArgs', 'VirtualMachineEfiDiskArgsDict']] efi_disk: The efi disk device (required if `bios` is set
@@ -2357,7 +2439,9 @@ class VirtualMachine(pulumi.CustomResource):
                boot. (defaults to `true`)
         :param pulumi.Input[Union['VirtualMachineOperatingSystemArgs', 'VirtualMachineOperatingSystemArgsDict']] operating_system: The Operating System configuration.
         :param pulumi.Input[_builtins.str] pool_id: The identifier for a pool to assign the virtual machine to.
+               This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `Pool.Membership` resource instead.
         :param pulumi.Input[_builtins.bool] protection: Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
+        :param pulumi.Input[_builtins.bool] purge_on_destroy: Whether to purge the VM from backup configurations on destroy (defaults to `true`)
         :param pulumi.Input[_builtins.bool] reboot: Reboot the VM after initial creation (defaults to `false`).
         :param pulumi.Input[_builtins.bool] reboot_after_update: Reboot the VM after update if needed (defaults to `true`).
         :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineRngArgs', 'VirtualMachineRngArgsDict']]]] rngs: The random number generator configuration. Can only be set by `root@pam.`
@@ -2383,7 +2467,7 @@ class VirtualMachine(pulumi.CustomResource):
                1800).
         :param pulumi.Input[_builtins.int] timeout_migrate: Timeout for migrating the VM (defaults to
                1800).
-        :param pulumi.Input[_builtins.int] timeout_move_disk: MoveDisk timeout
+        :param pulumi.Input[_builtins.int] timeout_move_disk: Disk move timeout
         :param pulumi.Input[_builtins.int] timeout_reboot: Timeout for rebooting a VM in seconds (defaults
                to 1800).
         :param pulumi.Input[_builtins.int] timeout_shutdown_vm: Timeout for shutting down a VM in seconds (
@@ -2412,6 +2496,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__.__dict__["cdrom"] = cdrom
         __props__.__dict__["clone"] = clone
         __props__.__dict__["cpu"] = cpu
+        __props__.__dict__["delete_unreferenced_disks_on_destroy"] = delete_unreferenced_disks_on_destroy
         __props__.__dict__["description"] = description
         __props__.__dict__["disks"] = disks
         __props__.__dict__["efi_disk"] = efi_disk
@@ -2435,6 +2520,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__.__dict__["operating_system"] = operating_system
         __props__.__dict__["pool_id"] = pool_id
         __props__.__dict__["protection"] = protection
+        __props__.__dict__["purge_on_destroy"] = purge_on_destroy
         __props__.__dict__["reboot"] = reboot
         __props__.__dict__["reboot_after_update"] = reboot_after_update
         __props__.__dict__["rngs"] = rngs
@@ -2505,10 +2591,9 @@ class VirtualMachine(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="bootOrders")
-    def boot_orders(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
+    def boot_orders(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        Specify a list of devices to boot from in the order
-        they appear in the list (defaults to `[]`).
+        Specify a list of devices to boot from in the order they appear in the list.
         """
         return pulumi.get(self, "boot_orders")
 
@@ -2535,6 +2620,14 @@ class VirtualMachine(pulumi.CustomResource):
         The CPU configuration.
         """
         return pulumi.get(self, "cpu")
+
+    @_builtins.property
+    @pulumi.getter(name="deleteUnreferencedDisksOnDestroy")
+    def delete_unreferenced_disks_on_destroy(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to delete unreferenced disks on destroy (defaults to `true`)
+        """
+        return pulumi.get(self, "delete_unreferenced_disks_on_destroy")
 
     @_builtins.property
     @pulumi.getter
@@ -2714,9 +2807,11 @@ class VirtualMachine(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="poolId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release. To assign the VM to a pool, use `Pool.Membership` resource instead.""")
     def pool_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The identifier for a pool to assign the virtual machine to.
+        This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `Pool.Membership` resource instead.
         """
         return pulumi.get(self, "pool_id")
 
@@ -2727,6 +2822,14 @@ class VirtualMachine(pulumi.CustomResource):
         Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
         """
         return pulumi.get(self, "protection")
+
+    @_builtins.property
+    @pulumi.getter(name="purgeOnDestroy")
+    def purge_on_destroy(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to purge the VM from backup configurations on destroy (defaults to `true`)
+        """
+        return pulumi.get(self, "purge_on_destroy")
 
     @_builtins.property
     @pulumi.getter
@@ -2863,7 +2966,7 @@ class VirtualMachine(pulumi.CustomResource):
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeout_clone / timeout_migrate) is used instead.""")
     def timeout_move_disk(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        MoveDisk timeout
+        Disk move timeout
         """
         return pulumi.get(self, "timeout_move_disk")
 

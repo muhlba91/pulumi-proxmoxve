@@ -34,12 +34,14 @@ class MetricsServerArgs:
                  influx_verify: Optional[pulumi.Input[_builtins.bool]] = None,
                  mtu: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 opentelemetry_path: Optional[pulumi.Input[_builtins.str]] = None,
+                 opentelemetry_proto: Optional[pulumi.Input[_builtins.str]] = None,
                  timeout: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a MetricsServer resource.
         :param pulumi.Input[_builtins.int] port: Server network port.
         :param pulumi.Input[_builtins.str] server: Server dns name or IP address.
-        :param pulumi.Input[_builtins.str] type: Plugin type. Choice is between `graphite` | `influxdb`.
+        :param pulumi.Input[_builtins.str] type: Plugin type. Choice is between `graphite` | `influxdb` | `opentelemetry`.
         :param pulumi.Input[_builtins.bool] disable: Set this to `true` to disable this metric server.
         :param pulumi.Input[_builtins.str] graphite_path: Root graphite path (ex: `proxmox.mycluster.mykey`).
         :param pulumi.Input[_builtins.str] graphite_proto: Protocol to send graphite data. Choice is between `udp` | `tcp`. If not set, PVE default is `udp`.
@@ -52,6 +54,8 @@ class MetricsServerArgs:
         :param pulumi.Input[_builtins.bool] influx_verify: Set to `false` to disable certificate verification for https endpoints.
         :param pulumi.Input[_builtins.int] mtu: MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
         :param pulumi.Input[_builtins.str] name: Unique name that will be ID of this metric server in PVE.
+        :param pulumi.Input[_builtins.str] opentelemetry_path: OpenTelemetry endpoint path (e.g., `/v1/metrics`).
+        :param pulumi.Input[_builtins.str] opentelemetry_proto: Protocol for OpenTelemetry. Choice is between `http` | `https`. If not set, PVE default is `http`.
         :param pulumi.Input[_builtins.int] timeout: TCP socket timeout in seconds. If not set, PVE default is `1`.
         """
         pulumi.set(__self__, "port", port)
@@ -81,6 +85,10 @@ class MetricsServerArgs:
             pulumi.set(__self__, "mtu", mtu)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if opentelemetry_path is not None:
+            pulumi.set(__self__, "opentelemetry_path", opentelemetry_path)
+        if opentelemetry_proto is not None:
+            pulumi.set(__self__, "opentelemetry_proto", opentelemetry_proto)
         if timeout is not None:
             pulumi.set(__self__, "timeout", timeout)
 
@@ -112,7 +120,7 @@ class MetricsServerArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
         """
-        Plugin type. Choice is between `graphite` | `influxdb`.
+        Plugin type. Choice is between `graphite` | `influxdb` | `opentelemetry`.
         """
         return pulumi.get(self, "type")
 
@@ -265,6 +273,30 @@ class MetricsServerArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="opentelemetryPath")
+    def opentelemetry_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        OpenTelemetry endpoint path (e.g., `/v1/metrics`).
+        """
+        return pulumi.get(self, "opentelemetry_path")
+
+    @opentelemetry_path.setter
+    def opentelemetry_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "opentelemetry_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="opentelemetryProto")
+    def opentelemetry_proto(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Protocol for OpenTelemetry. Choice is between `http` | `https`. If not set, PVE default is `http`.
+        """
+        return pulumi.get(self, "opentelemetry_proto")
+
+    @opentelemetry_proto.setter
+    def opentelemetry_proto(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "opentelemetry_proto", value)
+
+    @_builtins.property
     @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -292,6 +324,8 @@ class _MetricsServerState:
                  influx_verify: Optional[pulumi.Input[_builtins.bool]] = None,
                  mtu: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 opentelemetry_path: Optional[pulumi.Input[_builtins.str]] = None,
+                 opentelemetry_proto: Optional[pulumi.Input[_builtins.str]] = None,
                  port: Optional[pulumi.Input[_builtins.int]] = None,
                  server: Optional[pulumi.Input[_builtins.str]] = None,
                  timeout: Optional[pulumi.Input[_builtins.int]] = None,
@@ -310,10 +344,12 @@ class _MetricsServerState:
         :param pulumi.Input[_builtins.bool] influx_verify: Set to `false` to disable certificate verification for https endpoints.
         :param pulumi.Input[_builtins.int] mtu: MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
         :param pulumi.Input[_builtins.str] name: Unique name that will be ID of this metric server in PVE.
+        :param pulumi.Input[_builtins.str] opentelemetry_path: OpenTelemetry endpoint path (e.g., `/v1/metrics`).
+        :param pulumi.Input[_builtins.str] opentelemetry_proto: Protocol for OpenTelemetry. Choice is between `http` | `https`. If not set, PVE default is `http`.
         :param pulumi.Input[_builtins.int] port: Server network port.
         :param pulumi.Input[_builtins.str] server: Server dns name or IP address.
         :param pulumi.Input[_builtins.int] timeout: TCP socket timeout in seconds. If not set, PVE default is `1`.
-        :param pulumi.Input[_builtins.str] type: Plugin type. Choice is between `graphite` | `influxdb`.
+        :param pulumi.Input[_builtins.str] type: Plugin type. Choice is between `graphite` | `influxdb` | `opentelemetry`.
         """
         if disable is not None:
             pulumi.set(__self__, "disable", disable)
@@ -339,6 +375,10 @@ class _MetricsServerState:
             pulumi.set(__self__, "mtu", mtu)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if opentelemetry_path is not None:
+            pulumi.set(__self__, "opentelemetry_path", opentelemetry_path)
+        if opentelemetry_proto is not None:
+            pulumi.set(__self__, "opentelemetry_proto", opentelemetry_proto)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if server is not None:
@@ -493,6 +533,30 @@ class _MetricsServerState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="opentelemetryPath")
+    def opentelemetry_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        OpenTelemetry endpoint path (e.g., `/v1/metrics`).
+        """
+        return pulumi.get(self, "opentelemetry_path")
+
+    @opentelemetry_path.setter
+    def opentelemetry_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "opentelemetry_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="opentelemetryProto")
+    def opentelemetry_proto(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Protocol for OpenTelemetry. Choice is between `http` | `https`. If not set, PVE default is `http`.
+        """
+        return pulumi.get(self, "opentelemetry_proto")
+
+    @opentelemetry_proto.setter
+    def opentelemetry_proto(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "opentelemetry_proto", value)
+
+    @_builtins.property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -532,7 +596,7 @@ class _MetricsServerState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Plugin type. Choice is between `graphite` | `influxdb`.
+        Plugin type. Choice is between `graphite` | `influxdb` | `opentelemetry`.
         """
         return pulumi.get(self, "type")
 
@@ -559,6 +623,8 @@ class MetricsServer(pulumi.CustomResource):
                  influx_verify: Optional[pulumi.Input[_builtins.bool]] = None,
                  mtu: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 opentelemetry_path: Optional[pulumi.Input[_builtins.str]] = None,
+                 opentelemetry_proto: Optional[pulumi.Input[_builtins.str]] = None,
                  port: Optional[pulumi.Input[_builtins.int]] = None,
                  server: Optional[pulumi.Input[_builtins.str]] = None,
                  timeout: Optional[pulumi.Input[_builtins.int]] = None,
@@ -583,6 +649,13 @@ class MetricsServer(pulumi.CustomResource):
             server="192.168.4.2",
             port=2003,
             type="graphite")
+        opentelemetry_server = proxmoxve.metrics.MetricsServer("opentelemetry_server",
+            name="example_opentelemetry_server",
+            server="192.168.5.2",
+            port=4318,
+            type="opentelemetry",
+            opentelemetry_proto="http",
+            opentelemetry_path="/v1/metrics")
         ```
 
         ## Import
@@ -607,10 +680,12 @@ class MetricsServer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] influx_verify: Set to `false` to disable certificate verification for https endpoints.
         :param pulumi.Input[_builtins.int] mtu: MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
         :param pulumi.Input[_builtins.str] name: Unique name that will be ID of this metric server in PVE.
+        :param pulumi.Input[_builtins.str] opentelemetry_path: OpenTelemetry endpoint path (e.g., `/v1/metrics`).
+        :param pulumi.Input[_builtins.str] opentelemetry_proto: Protocol for OpenTelemetry. Choice is between `http` | `https`. If not set, PVE default is `http`.
         :param pulumi.Input[_builtins.int] port: Server network port.
         :param pulumi.Input[_builtins.str] server: Server dns name or IP address.
         :param pulumi.Input[_builtins.int] timeout: TCP socket timeout in seconds. If not set, PVE default is `1`.
-        :param pulumi.Input[_builtins.str] type: Plugin type. Choice is between `graphite` | `influxdb`.
+        :param pulumi.Input[_builtins.str] type: Plugin type. Choice is between `graphite` | `influxdb` | `opentelemetry`.
         """
         ...
     @overload
@@ -637,6 +712,13 @@ class MetricsServer(pulumi.CustomResource):
             server="192.168.4.2",
             port=2003,
             type="graphite")
+        opentelemetry_server = proxmoxve.metrics.MetricsServer("opentelemetry_server",
+            name="example_opentelemetry_server",
+            server="192.168.5.2",
+            port=4318,
+            type="opentelemetry",
+            opentelemetry_proto="http",
+            opentelemetry_path="/v1/metrics")
         ```
 
         ## Import
@@ -674,6 +756,8 @@ class MetricsServer(pulumi.CustomResource):
                  influx_verify: Optional[pulumi.Input[_builtins.bool]] = None,
                  mtu: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 opentelemetry_path: Optional[pulumi.Input[_builtins.str]] = None,
+                 opentelemetry_proto: Optional[pulumi.Input[_builtins.str]] = None,
                  port: Optional[pulumi.Input[_builtins.int]] = None,
                  server: Optional[pulumi.Input[_builtins.str]] = None,
                  timeout: Optional[pulumi.Input[_builtins.int]] = None,
@@ -699,6 +783,8 @@ class MetricsServer(pulumi.CustomResource):
             __props__.__dict__["influx_verify"] = influx_verify
             __props__.__dict__["mtu"] = mtu
             __props__.__dict__["name"] = name
+            __props__.__dict__["opentelemetry_path"] = opentelemetry_path
+            __props__.__dict__["opentelemetry_proto"] = opentelemetry_proto
             if port is None and not opts.urn:
                 raise TypeError("Missing required property 'port'")
             __props__.__dict__["port"] = port
@@ -733,6 +819,8 @@ class MetricsServer(pulumi.CustomResource):
             influx_verify: Optional[pulumi.Input[_builtins.bool]] = None,
             mtu: Optional[pulumi.Input[_builtins.int]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            opentelemetry_path: Optional[pulumi.Input[_builtins.str]] = None,
+            opentelemetry_proto: Optional[pulumi.Input[_builtins.str]] = None,
             port: Optional[pulumi.Input[_builtins.int]] = None,
             server: Optional[pulumi.Input[_builtins.str]] = None,
             timeout: Optional[pulumi.Input[_builtins.int]] = None,
@@ -756,10 +844,12 @@ class MetricsServer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] influx_verify: Set to `false` to disable certificate verification for https endpoints.
         :param pulumi.Input[_builtins.int] mtu: MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
         :param pulumi.Input[_builtins.str] name: Unique name that will be ID of this metric server in PVE.
+        :param pulumi.Input[_builtins.str] opentelemetry_path: OpenTelemetry endpoint path (e.g., `/v1/metrics`).
+        :param pulumi.Input[_builtins.str] opentelemetry_proto: Protocol for OpenTelemetry. Choice is between `http` | `https`. If not set, PVE default is `http`.
         :param pulumi.Input[_builtins.int] port: Server network port.
         :param pulumi.Input[_builtins.str] server: Server dns name or IP address.
         :param pulumi.Input[_builtins.int] timeout: TCP socket timeout in seconds. If not set, PVE default is `1`.
-        :param pulumi.Input[_builtins.str] type: Plugin type. Choice is between `graphite` | `influxdb`.
+        :param pulumi.Input[_builtins.str] type: Plugin type. Choice is between `graphite` | `influxdb` | `opentelemetry`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -777,6 +867,8 @@ class MetricsServer(pulumi.CustomResource):
         __props__.__dict__["influx_verify"] = influx_verify
         __props__.__dict__["mtu"] = mtu
         __props__.__dict__["name"] = name
+        __props__.__dict__["opentelemetry_path"] = opentelemetry_path
+        __props__.__dict__["opentelemetry_proto"] = opentelemetry_proto
         __props__.__dict__["port"] = port
         __props__.__dict__["server"] = server
         __props__.__dict__["timeout"] = timeout
@@ -880,6 +972,22 @@ class MetricsServer(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="opentelemetryPath")
+    def opentelemetry_path(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        OpenTelemetry endpoint path (e.g., `/v1/metrics`).
+        """
+        return pulumi.get(self, "opentelemetry_path")
+
+    @_builtins.property
+    @pulumi.getter(name="opentelemetryProto")
+    def opentelemetry_proto(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Protocol for OpenTelemetry. Choice is between `http` | `https`. If not set, PVE default is `http`.
+        """
+        return pulumi.get(self, "opentelemetry_proto")
+
+    @_builtins.property
     @pulumi.getter
     def port(self) -> pulumi.Output[_builtins.int]:
         """
@@ -907,7 +1015,7 @@ class MetricsServer(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        Plugin type. Choice is between `graphite` | `influxdb`.
+        Plugin type. Choice is between `graphite` | `influxdb` | `opentelemetry`.
         """
         return pulumi.get(self, "type")
 

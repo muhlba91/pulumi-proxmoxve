@@ -38,6 +38,16 @@ namespace Pulumi.ProxmoxVE.Metrics
     ///         Type = "graphite",
     ///     });
     /// 
+    ///     var opentelemetryServer = new ProxmoxVE.Metrics.MetricsServer("opentelemetry_server", new()
+    ///     {
+    ///         Name = "example_opentelemetry_server",
+    ///         Server = "192.168.5.2",
+    ///         Port = 4318,
+    ///         Type = "opentelemetry",
+    ///         OpentelemetryProto = "http",
+    ///         OpentelemetryPath = "/v1/metrics",
+    ///     });
+    /// 
     /// });
     /// ```
     /// 
@@ -125,6 +135,18 @@ namespace Pulumi.ProxmoxVE.Metrics
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// OpenTelemetry endpoint path (e.g., `/v1/metrics`).
+        /// </summary>
+        [Output("opentelemetryPath")]
+        public Output<string?> OpentelemetryPath { get; private set; } = null!;
+
+        /// <summary>
+        /// Protocol for OpenTelemetry. Choice is between `Http` | `Https`. If not set, PVE default is `Http`.
+        /// </summary>
+        [Output("opentelemetryProto")]
+        public Output<string?> OpentelemetryProto { get; private set; } = null!;
+
+        /// <summary>
         /// Server network port.
         /// </summary>
         [Output("port")]
@@ -143,7 +165,7 @@ namespace Pulumi.ProxmoxVE.Metrics
         public Output<int?> Timeout { get; private set; } = null!;
 
         /// <summary>
-        /// Plugin type. Choice is between `Graphite` | `Influxdb`.
+        /// Plugin type. Choice is between `Graphite` | `Influxdb` | `Opentelemetry`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -282,6 +304,18 @@ namespace Pulumi.ProxmoxVE.Metrics
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// OpenTelemetry endpoint path (e.g., `/v1/metrics`).
+        /// </summary>
+        [Input("opentelemetryPath")]
+        public Input<string>? OpentelemetryPath { get; set; }
+
+        /// <summary>
+        /// Protocol for OpenTelemetry. Choice is between `Http` | `Https`. If not set, PVE default is `Http`.
+        /// </summary>
+        [Input("opentelemetryProto")]
+        public Input<string>? OpentelemetryProto { get; set; }
+
+        /// <summary>
         /// Server network port.
         /// </summary>
         [Input("port", required: true)]
@@ -300,7 +334,7 @@ namespace Pulumi.ProxmoxVE.Metrics
         public Input<int>? Timeout { get; set; }
 
         /// <summary>
-        /// Plugin type. Choice is between `Graphite` | `Influxdb`.
+        /// Plugin type. Choice is between `Graphite` | `Influxdb` | `Opentelemetry`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -396,6 +430,18 @@ namespace Pulumi.ProxmoxVE.Metrics
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// OpenTelemetry endpoint path (e.g., `/v1/metrics`).
+        /// </summary>
+        [Input("opentelemetryPath")]
+        public Input<string>? OpentelemetryPath { get; set; }
+
+        /// <summary>
+        /// Protocol for OpenTelemetry. Choice is between `Http` | `Https`. If not set, PVE default is `Http`.
+        /// </summary>
+        [Input("opentelemetryProto")]
+        public Input<string>? OpentelemetryProto { get; set; }
+
+        /// <summary>
         /// Server network port.
         /// </summary>
         [Input("port")]
@@ -414,7 +460,7 @@ namespace Pulumi.ProxmoxVE.Metrics
         public Input<int>? Timeout { get; set; }
 
         /// <summary>
-        /// Plugin type. Choice is between `Graphite` | `Influxdb`.
+        /// Plugin type. Choice is between `Graphite` | `Influxdb` | `Opentelemetry`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

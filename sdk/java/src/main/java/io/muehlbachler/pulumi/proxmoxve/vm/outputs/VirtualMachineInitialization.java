@@ -27,6 +27,11 @@ public final class VirtualMachineInitialization {
      */
     private @Nullable VirtualMachineInitializationDns dns;
     /**
+     * @return The file format.
+     * 
+     */
+    private @Nullable String fileFormat;
+    /**
      * @return The hardware interface to connect the cloud-init
      * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
      * detected if the setting is missing but a cloud-init image is present,
@@ -92,6 +97,13 @@ public final class VirtualMachineInitialization {
      */
     public Optional<VirtualMachineInitializationDns> dns() {
         return Optional.ofNullable(this.dns);
+    }
+    /**
+     * @return The file format.
+     * 
+     */
+    public Optional<String> fileFormat() {
+        return Optional.ofNullable(this.fileFormat);
     }
     /**
      * @return The hardware interface to connect the cloud-init
@@ -171,6 +183,7 @@ public final class VirtualMachineInitialization {
     public static final class Builder {
         private @Nullable String datastoreId;
         private @Nullable VirtualMachineInitializationDns dns;
+        private @Nullable String fileFormat;
         private @Nullable String interface_;
         private @Nullable List<VirtualMachineInitializationIpConfig> ipConfigs;
         private @Nullable String metaDataFileId;
@@ -184,6 +197,7 @@ public final class VirtualMachineInitialization {
     	      Objects.requireNonNull(defaults);
     	      this.datastoreId = defaults.datastoreId;
     	      this.dns = defaults.dns;
+    	      this.fileFormat = defaults.fileFormat;
     	      this.interface_ = defaults.interface_;
     	      this.ipConfigs = defaults.ipConfigs;
     	      this.metaDataFileId = defaults.metaDataFileId;
@@ -204,6 +218,12 @@ public final class VirtualMachineInitialization {
         public Builder dns(@Nullable VirtualMachineInitializationDns dns) {
 
             this.dns = dns;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder fileFormat(@Nullable String fileFormat) {
+
+            this.fileFormat = fileFormat;
             return this;
         }
         @CustomType.Setter("interface")
@@ -261,6 +281,7 @@ public final class VirtualMachineInitialization {
             final var _resultValue = new VirtualMachineInitialization();
             _resultValue.datastoreId = datastoreId;
             _resultValue.dns = dns;
+            _resultValue.fileFormat = fileFormat;
             _resultValue.interface_ = interface_;
             _resultValue.ipConfigs = ipConfigs;
             _resultValue.metaDataFileId = metaDataFileId;

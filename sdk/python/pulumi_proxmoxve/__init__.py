@@ -46,6 +46,8 @@ if typing.TYPE_CHECKING:
     network = __network
     import pulumi_proxmoxve.permission as __permission
     permission = __permission
+    import pulumi_proxmoxve.pool as __pool
+    pool = __pool
     import pulumi_proxmoxve.sdn as __sdn
     sdn = __sdn
     import pulumi_proxmoxve.sdnzone as __sdnzone
@@ -68,6 +70,7 @@ else:
     metrics = _utilities.lazy_import('pulumi_proxmoxve.metrics')
     network = _utilities.lazy_import('pulumi_proxmoxve.network')
     permission = _utilities.lazy_import('pulumi_proxmoxve.permission')
+    pool = _utilities.lazy_import('pulumi_proxmoxve.pool')
     sdn = _utilities.lazy_import('pulumi_proxmoxve.sdn')
     sdnzone = _utilities.lazy_import('pulumi_proxmoxve.sdnzone')
     storage = _utilities.lazy_import('pulumi_proxmoxve.storage')
@@ -259,6 +262,14 @@ _utilities.register(
   "fqn": "pulumi_proxmoxve.permission",
   "classes": {
    "proxmoxve:Permission/user:User": "User"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "Pool/membership",
+  "fqn": "pulumi_proxmoxve.pool",
+  "classes": {
+   "proxmoxve:Pool/membership:Membership": "Membership"
   }
  },
  {

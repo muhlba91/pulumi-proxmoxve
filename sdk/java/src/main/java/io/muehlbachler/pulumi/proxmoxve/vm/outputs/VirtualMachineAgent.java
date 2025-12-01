@@ -4,6 +4,7 @@
 package io.muehlbachler.pulumi.proxmoxve.VM.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachineAgentWaitForIp;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -35,6 +36,11 @@ public final class VirtualMachineAgent {
      * 
      */
     private @Nullable String type;
+    /**
+     * @return Configuration for waiting for specific IP address types when the VM starts.
+     * 
+     */
+    private @Nullable VirtualMachineAgentWaitForIp waitForIp;
 
     private VirtualMachineAgent() {}
     /**
@@ -68,6 +74,13 @@ public final class VirtualMachineAgent {
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
+    /**
+     * @return Configuration for waiting for specific IP address types when the VM starts.
+     * 
+     */
+    public Optional<VirtualMachineAgentWaitForIp> waitForIp() {
+        return Optional.ofNullable(this.waitForIp);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -82,6 +95,7 @@ public final class VirtualMachineAgent {
         private @Nullable String timeout;
         private @Nullable Boolean trim;
         private @Nullable String type;
+        private @Nullable VirtualMachineAgentWaitForIp waitForIp;
         public Builder() {}
         public Builder(VirtualMachineAgent defaults) {
     	      Objects.requireNonNull(defaults);
@@ -89,6 +103,7 @@ public final class VirtualMachineAgent {
     	      this.timeout = defaults.timeout;
     	      this.trim = defaults.trim;
     	      this.type = defaults.type;
+    	      this.waitForIp = defaults.waitForIp;
         }
 
         @CustomType.Setter
@@ -115,12 +130,19 @@ public final class VirtualMachineAgent {
             this.type = type;
             return this;
         }
+        @CustomType.Setter
+        public Builder waitForIp(@Nullable VirtualMachineAgentWaitForIp waitForIp) {
+
+            this.waitForIp = waitForIp;
+            return this;
+        }
         public VirtualMachineAgent build() {
             final var _resultValue = new VirtualMachineAgent();
             _resultValue.enabled = enabled;
             _resultValue.timeout = timeout;
             _resultValue.trim = trim;
             _resultValue.type = type;
+            _resultValue.waitForIp = waitForIp;
             return _resultValue;
         }
     }

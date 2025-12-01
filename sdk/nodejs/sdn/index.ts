@@ -20,6 +20,11 @@ export const getVnet: typeof import("./getVnet").getVnet = null as any;
 export const getVnetOutput: typeof import("./getVnet").getVnetOutput = null as any;
 utilities.lazyLoad(exports, ["getVnet","getVnetOutput"], () => require("./getVnet"));
 
+export { GetVnetsResult } from "./getVnets";
+export const getVnets: typeof import("./getVnets").getVnets = null as any;
+export const getVnetsOutput: typeof import("./getVnets").getVnetsOutput = null as any;
+utilities.lazyLoad(exports, ["getVnets","getVnetsOutput"], () => require("./getVnets"));
+
 export { GetZonesArgs, GetZonesResult, GetZonesOutputArgs } from "./getZones";
 export const getZones: typeof import("./getZones").getZones = null as any;
 export const getZonesOutput: typeof import("./getZones").getZonesOutput = null as any;

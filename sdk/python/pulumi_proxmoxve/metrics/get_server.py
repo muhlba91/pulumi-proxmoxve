@@ -26,7 +26,7 @@ class GetServerResult:
     """
     A collection of values returned by getServer.
     """
-    def __init__(__self__, disable=None, id=None, name=None, port=None, server=None, type=None):
+    def __init__(__self__, disable=None, id=None, name=None, opentelemetry_path=None, opentelemetry_proto=None, port=None, server=None, type=None):
         if disable and not isinstance(disable, bool):
             raise TypeError("Expected argument 'disable' to be a bool")
         pulumi.set(__self__, "disable", disable)
@@ -36,6 +36,12 @@ class GetServerResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if opentelemetry_path and not isinstance(opentelemetry_path, str):
+            raise TypeError("Expected argument 'opentelemetry_path' to be a str")
+        pulumi.set(__self__, "opentelemetry_path", opentelemetry_path)
+        if opentelemetry_proto and not isinstance(opentelemetry_proto, str):
+            raise TypeError("Expected argument 'opentelemetry_proto' to be a str")
+        pulumi.set(__self__, "opentelemetry_proto", opentelemetry_proto)
         if port and not isinstance(port, int):
             raise TypeError("Expected argument 'port' to be a int")
         pulumi.set(__self__, "port", port)
@@ -71,6 +77,22 @@ class GetServerResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="opentelemetryPath")
+    def opentelemetry_path(self) -> _builtins.str:
+        """
+        OpenTelemetry endpoint path (e.g., `/v1/metrics`).
+        """
+        return pulumi.get(self, "opentelemetry_path")
+
+    @_builtins.property
+    @pulumi.getter(name="opentelemetryProto")
+    def opentelemetry_proto(self) -> _builtins.str:
+        """
+        Protocol for OpenTelemetry. Choice is between `http` | `https`.
+        """
+        return pulumi.get(self, "opentelemetry_proto")
+
+    @_builtins.property
     @pulumi.getter
     def port(self) -> _builtins.int:
         """
@@ -90,7 +112,7 @@ class GetServerResult:
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        Plugin type. Either `graphite` or `influxdb`.
+        Plugin type. Either `graphite`, `influxdb`, or `opentelemetry`.
         """
         return pulumi.get(self, "type")
 
@@ -104,6 +126,8 @@ class AwaitableGetServerResult(GetServerResult):
             disable=self.disable,
             id=self.id,
             name=self.name,
+            opentelemetry_path=self.opentelemetry_path,
+            opentelemetry_proto=self.opentelemetry_proto,
             port=self.port,
             server=self.server,
             type=self.type)
@@ -139,6 +163,8 @@ def get_server(name: Optional[_builtins.str] = None,
         disable=pulumi.get(__ret__, 'disable'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
+        opentelemetry_path=pulumi.get(__ret__, 'opentelemetry_path'),
+        opentelemetry_proto=pulumi.get(__ret__, 'opentelemetry_proto'),
         port=pulumi.get(__ret__, 'port'),
         server=pulumi.get(__ret__, 'server'),
         type=pulumi.get(__ret__, 'type'))
@@ -171,6 +197,8 @@ def get_server_output(name: Optional[pulumi.Input[_builtins.str]] = None,
         disable=pulumi.get(__response__, 'disable'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
+        opentelemetry_path=pulumi.get(__response__, 'opentelemetry_path'),
+        opentelemetry_proto=pulumi.get(__response__, 'opentelemetry_proto'),
         port=pulumi.get(__response__, 'port'),
         server=pulumi.get(__response__, 'server'),
         type=pulumi.get(__response__, 'type')))

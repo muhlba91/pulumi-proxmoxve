@@ -42,6 +42,12 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<Outputs.VirtualMachine2Cpu> Cpu { get; private set; } = null!;
 
         /// <summary>
+        /// Set to true to delete unreferenced disks on destroy (defaults to `True`).
+        /// </summary>
+        [Output("deleteUnreferencedDisksOnDestroy")]
+        public Output<bool> DeleteUnreferencedDisksOnDestroy { get; private set; } = null!;
+
+        /// <summary>
         /// The description of the VM.
         /// </summary>
         [Output("description")]
@@ -58,6 +64,12 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Output("nodeName")]
         public Output<string> NodeName { get; private set; } = null!;
+
+        /// <summary>
+        /// Set to true to purge the VM from backup configurations on destroy (defaults to `True`).
+        /// </summary>
+        [Output("purgeOnDestroy")]
+        public Output<bool> PurgeOnDestroy { get; private set; } = null!;
 
         /// <summary>
         /// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
@@ -164,6 +176,12 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<Inputs.VirtualMachine2CpuArgs>? Cpu { get; set; }
 
         /// <summary>
+        /// Set to true to delete unreferenced disks on destroy (defaults to `True`).
+        /// </summary>
+        [Input("deleteUnreferencedDisksOnDestroy")]
+        public Input<bool>? DeleteUnreferencedDisksOnDestroy { get; set; }
+
+        /// <summary>
         /// The description of the VM.
         /// </summary>
         [Input("description")]
@@ -180,6 +198,12 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("nodeName", required: true)]
         public Input<string> NodeName { get; set; } = null!;
+
+        /// <summary>
+        /// Set to true to purge the VM from backup configurations on destroy (defaults to `True`).
+        /// </summary>
+        [Input("purgeOnDestroy")]
+        public Input<bool>? PurgeOnDestroy { get; set; }
 
         /// <summary>
         /// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
@@ -253,6 +277,12 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<Inputs.VirtualMachine2CpuGetArgs>? Cpu { get; set; }
 
         /// <summary>
+        /// Set to true to delete unreferenced disks on destroy (defaults to `True`).
+        /// </summary>
+        [Input("deleteUnreferencedDisksOnDestroy")]
+        public Input<bool>? DeleteUnreferencedDisksOnDestroy { get; set; }
+
+        /// <summary>
         /// The description of the VM.
         /// </summary>
         [Input("description")]
@@ -269,6 +299,12 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
+
+        /// <summary>
+        /// Set to true to purge the VM from backup configurations on destroy (defaults to `True`).
+        /// </summary>
+        [Input("purgeOnDestroy")]
+        public Input<bool>? PurgeOnDestroy { get; set; }
 
         /// <summary>
         /// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.

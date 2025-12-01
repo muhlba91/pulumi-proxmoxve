@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -93,12 +92,9 @@ type FirewallSecurityGroup struct {
 func NewFirewallSecurityGroup(ctx *pulumi.Context,
 	name string, args *FirewallSecurityGroupArgs, opts ...pulumi.ResourceOption) (*FirewallSecurityGroup, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &FirewallSecurityGroupArgs{}
 	}
 
-	if args.Rules == nil {
-		return nil, errors.New("invalid value for required argument 'Rules'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FirewallSecurityGroup
 	err := ctx.RegisterResource("proxmoxve:Network/firewallSecurityGroup:FirewallSecurityGroup", name, args, &resource, opts...)

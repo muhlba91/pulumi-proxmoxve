@@ -17,6 +17,7 @@ from .. import _utilities
 __all__ = [
     'SubnetDhcpRange',
     'GetSubnetDhcpRangeResult',
+    'GetVnetsVnetResult',
     'GetZonesZoneResult',
 ]
 
@@ -95,6 +96,53 @@ class GetSubnetDhcpRangeResult(dict):
         Start of the DHCP range.
         """
         return pulumi.get(self, "start_address")
+
+
+@pulumi.output_type
+class GetVnetsVnetResult(dict):
+    def __init__(__self__, *,
+                 alias: _builtins.str,
+                 id: _builtins.str,
+                 isolate_ports: _builtins.bool,
+                 tag: _builtins.int,
+                 vlan_aware: _builtins.bool,
+                 zone: _builtins.str):
+        pulumi.set(__self__, "alias", alias)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "isolate_ports", isolate_ports)
+        pulumi.set(__self__, "tag", tag)
+        pulumi.set(__self__, "vlan_aware", vlan_aware)
+        pulumi.set(__self__, "zone", zone)
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> _builtins.str:
+        return pulumi.get(self, "alias")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="isolatePorts")
+    def isolate_ports(self) -> _builtins.bool:
+        return pulumi.get(self, "isolate_ports")
+
+    @_builtins.property
+    @pulumi.getter
+    def tag(self) -> _builtins.int:
+        return pulumi.get(self, "tag")
+
+    @_builtins.property
+    @pulumi.getter(name="vlanAware")
+    def vlan_aware(self) -> _builtins.bool:
+        return pulumi.get(self, "vlan_aware")
+
+    @_builtins.property
+    @pulumi.getter
+    def zone(self) -> _builtins.str:
+        return pulumi.get(self, "zone")
 
 
 @pulumi.output_type

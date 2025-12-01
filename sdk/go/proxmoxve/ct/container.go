@@ -172,6 +172,9 @@ type Container struct {
 	// The Operating System configuration.
 	OperatingSystem ContainerOperatingSystemPtrOutput `pulumi:"operatingSystem"`
 	// The identifier for a pool to assign the container to.
+	// This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `Pool.Membership` resource instead.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release. To assign the container to a pool, use `Pool.Membership` resource instead
 	PoolId pulumi.StringPtrOutput `pulumi:"poolId"`
 	// Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
 	Protection pulumi.BoolPtrOutput `pulumi:"protection"`
@@ -206,6 +209,8 @@ type Container struct {
 	Unprivileged pulumi.BoolPtrOutput `pulumi:"unprivileged"`
 	// The container identifier
 	VmId pulumi.IntOutput `pulumi:"vmId"`
+	// Configuration for waiting for specific IP address types when the container starts.
+	WaitForIp ContainerWaitForIpPtrOutput `pulumi:"waitForIp"`
 }
 
 // NewContainer registers a new resource with the given unique name, arguments, and options.
@@ -275,6 +280,9 @@ type containerState struct {
 	// The Operating System configuration.
 	OperatingSystem *ContainerOperatingSystem `pulumi:"operatingSystem"`
 	// The identifier for a pool to assign the container to.
+	// This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `Pool.Membership` resource instead.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release. To assign the container to a pool, use `Pool.Membership` resource instead
 	PoolId *string `pulumi:"poolId"`
 	// Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
 	Protection *bool `pulumi:"protection"`
@@ -309,6 +317,8 @@ type containerState struct {
 	Unprivileged *bool `pulumi:"unprivileged"`
 	// The container identifier
 	VmId *int `pulumi:"vmId"`
+	// Configuration for waiting for specific IP address types when the container starts.
+	WaitForIp *ContainerWaitForIp `pulumi:"waitForIp"`
 }
 
 type ContainerState struct {
@@ -346,6 +356,9 @@ type ContainerState struct {
 	// The Operating System configuration.
 	OperatingSystem ContainerOperatingSystemPtrInput
 	// The identifier for a pool to assign the container to.
+	// This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `Pool.Membership` resource instead.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release. To assign the container to a pool, use `Pool.Membership` resource instead
 	PoolId pulumi.StringPtrInput
 	// Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
 	Protection pulumi.BoolPtrInput
@@ -380,6 +393,8 @@ type ContainerState struct {
 	Unprivileged pulumi.BoolPtrInput
 	// The container identifier
 	VmId pulumi.IntPtrInput
+	// Configuration for waiting for specific IP address types when the container starts.
+	WaitForIp ContainerWaitForIpPtrInput
 }
 
 func (ContainerState) ElementType() reflect.Type {
@@ -417,6 +432,9 @@ type containerArgs struct {
 	// The Operating System configuration.
 	OperatingSystem *ContainerOperatingSystem `pulumi:"operatingSystem"`
 	// The identifier for a pool to assign the container to.
+	// This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `Pool.Membership` resource instead.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release. To assign the container to a pool, use `Pool.Membership` resource instead
 	PoolId *string `pulumi:"poolId"`
 	// Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
 	Protection *bool `pulumi:"protection"`
@@ -451,6 +469,8 @@ type containerArgs struct {
 	Unprivileged *bool `pulumi:"unprivileged"`
 	// The container identifier
 	VmId *int `pulumi:"vmId"`
+	// Configuration for waiting for specific IP address types when the container starts.
+	WaitForIp *ContainerWaitForIp `pulumi:"waitForIp"`
 }
 
 // The set of arguments for constructing a Container resource.
@@ -485,6 +505,9 @@ type ContainerArgs struct {
 	// The Operating System configuration.
 	OperatingSystem ContainerOperatingSystemPtrInput
 	// The identifier for a pool to assign the container to.
+	// This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `Pool.Membership` resource instead.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release. To assign the container to a pool, use `Pool.Membership` resource instead
 	PoolId pulumi.StringPtrInput
 	// Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
 	Protection pulumi.BoolPtrInput
@@ -519,6 +542,8 @@ type ContainerArgs struct {
 	Unprivileged pulumi.BoolPtrInput
 	// The container identifier
 	VmId pulumi.IntPtrInput
+	// Configuration for waiting for specific IP address types when the container starts.
+	WaitForIp ContainerWaitForIpPtrInput
 }
 
 func (ContainerArgs) ElementType() reflect.Type {
@@ -690,6 +715,9 @@ func (o ContainerOutput) OperatingSystem() ContainerOperatingSystemPtrOutput {
 }
 
 // The identifier for a pool to assign the container to.
+// This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `Pool.Membership` resource instead.
+//
+// Deprecated: This field is deprecated and will be removed in a future release. To assign the container to a pool, use `Pool.Membership` resource instead
 func (o ContainerOutput) PoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Container) pulumi.StringPtrOutput { return v.PoolId }).(pulumi.StringPtrOutput)
 }
@@ -764,6 +792,11 @@ func (o ContainerOutput) Unprivileged() pulumi.BoolPtrOutput {
 // The container identifier
 func (o ContainerOutput) VmId() pulumi.IntOutput {
 	return o.ApplyT(func(v *Container) pulumi.IntOutput { return v.VmId }).(pulumi.IntOutput)
+}
+
+// Configuration for waiting for specific IP address types when the container starts.
+func (o ContainerOutput) WaitForIp() ContainerWaitForIpPtrOutput {
+	return o.ApplyT(func(v *Container) ContainerWaitForIpPtrOutput { return v.WaitForIp }).(ContainerWaitForIpPtrOutput)
 }
 
 type ContainerArrayOutput struct{ *pulumi.OutputState }

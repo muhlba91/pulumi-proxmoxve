@@ -48,7 +48,8 @@ class ContainerArgs:
                  timeout_start: Optional[pulumi.Input[_builtins.int]] = None,
                  timeout_update: Optional[pulumi.Input[_builtins.int]] = None,
                  unprivileged: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 vm_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 wait_for_ip: Optional[pulumi.Input['ContainerWaitForIpArgs']] = None):
         """
         The set of arguments for constructing a Container resource.
         :param pulumi.Input[_builtins.str] node_name: The name of the node to assign the container to.
@@ -67,6 +68,7 @@ class ContainerArgs:
                supported).
         :param pulumi.Input['ContainerOperatingSystemArgs'] operating_system: The Operating System configuration.
         :param pulumi.Input[_builtins.str] pool_id: The identifier for a pool to assign the container to.
+               This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `Pool.Membership` resource instead.
         :param pulumi.Input[_builtins.bool] protection: Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
         :param pulumi.Input[_builtins.bool] start_on_boot: Automatically start container when the host
                system boots (defaults to `true`).
@@ -85,6 +87,7 @@ class ContainerArgs:
         :param pulumi.Input[_builtins.int] timeout_update: Timeout for updating a container in seconds (defaults to 1800).
         :param pulumi.Input[_builtins.bool] unprivileged: Whether the container runs as unprivileged on the host (defaults to `false`).
         :param pulumi.Input[_builtins.int] vm_id: The container identifier
+        :param pulumi.Input['ContainerWaitForIpArgs'] wait_for_ip: Configuration for waiting for specific IP address types when the container starts.
         """
         pulumi.set(__self__, "node_name", node_name)
         if clone is not None:
@@ -113,6 +116,9 @@ class ContainerArgs:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
         if operating_system is not None:
             pulumi.set(__self__, "operating_system", operating_system)
+        if pool_id is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future release. To assign the container to a pool, use `Pool.Membership` resource instead""", DeprecationWarning)
+            pulumi.log.warn("""pool_id is deprecated: This field is deprecated and will be removed in a future release. To assign the container to a pool, use `Pool.Membership` resource instead""")
         if pool_id is not None:
             pulumi.set(__self__, "pool_id", pool_id)
         if protection is not None:
@@ -144,6 +150,8 @@ class ContainerArgs:
             pulumi.set(__self__, "unprivileged", unprivileged)
         if vm_id is not None:
             pulumi.set(__self__, "vm_id", vm_id)
+        if wait_for_ip is not None:
+            pulumi.set(__self__, "wait_for_ip", wait_for_ip)
 
     @_builtins.property
     @pulumi.getter(name="nodeName")
@@ -316,9 +324,11 @@ class ContainerArgs:
 
     @_builtins.property
     @pulumi.getter(name="poolId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release. To assign the container to a pool, use `Pool.Membership` resource instead""")
     def pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The identifier for a pool to assign the container to.
+        This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `Pool.Membership` resource instead.
         """
         return pulumi.get(self, "pool_id")
 
@@ -488,6 +498,18 @@ class ContainerArgs:
     def vm_id(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "vm_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="waitForIp")
+    def wait_for_ip(self) -> Optional[pulumi.Input['ContainerWaitForIpArgs']]:
+        """
+        Configuration for waiting for specific IP address types when the container starts.
+        """
+        return pulumi.get(self, "wait_for_ip")
+
+    @wait_for_ip.setter
+    def wait_for_ip(self, value: Optional[pulumi.Input['ContainerWaitForIpArgs']]):
+        pulumi.set(self, "wait_for_ip", value)
+
 
 @pulumi.input_type
 class _ContainerState:
@@ -521,7 +543,8 @@ class _ContainerState:
                  timeout_start: Optional[pulumi.Input[_builtins.int]] = None,
                  timeout_update: Optional[pulumi.Input[_builtins.int]] = None,
                  unprivileged: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 vm_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 wait_for_ip: Optional[pulumi.Input['ContainerWaitForIpArgs']] = None):
         """
         Input properties used for looking up and filtering Container resources.
         :param pulumi.Input['ContainerCloneArgs'] clone: The cloning configuration.
@@ -542,6 +565,7 @@ class _ContainerState:
         :param pulumi.Input[_builtins.str] node_name: The name of the node to assign the container to.
         :param pulumi.Input['ContainerOperatingSystemArgs'] operating_system: The Operating System configuration.
         :param pulumi.Input[_builtins.str] pool_id: The identifier for a pool to assign the container to.
+               This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `Pool.Membership` resource instead.
         :param pulumi.Input[_builtins.bool] protection: Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
         :param pulumi.Input[_builtins.bool] start_on_boot: Automatically start container when the host
                system boots (defaults to `true`).
@@ -560,6 +584,7 @@ class _ContainerState:
         :param pulumi.Input[_builtins.int] timeout_update: Timeout for updating a container in seconds (defaults to 1800).
         :param pulumi.Input[_builtins.bool] unprivileged: Whether the container runs as unprivileged on the host (defaults to `false`).
         :param pulumi.Input[_builtins.int] vm_id: The container identifier
+        :param pulumi.Input['ContainerWaitForIpArgs'] wait_for_ip: Configuration for waiting for specific IP address types when the container starts.
         """
         if clone is not None:
             pulumi.set(__self__, "clone", clone)
@@ -594,6 +619,9 @@ class _ContainerState:
         if operating_system is not None:
             pulumi.set(__self__, "operating_system", operating_system)
         if pool_id is not None:
+            warnings.warn("""This field is deprecated and will be removed in a future release. To assign the container to a pool, use `Pool.Membership` resource instead""", DeprecationWarning)
+            pulumi.log.warn("""pool_id is deprecated: This field is deprecated and will be removed in a future release. To assign the container to a pool, use `Pool.Membership` resource instead""")
+        if pool_id is not None:
             pulumi.set(__self__, "pool_id", pool_id)
         if protection is not None:
             pulumi.set(__self__, "protection", protection)
@@ -624,6 +652,8 @@ class _ContainerState:
             pulumi.set(__self__, "unprivileged", unprivileged)
         if vm_id is not None:
             pulumi.set(__self__, "vm_id", vm_id)
+        if wait_for_ip is not None:
+            pulumi.set(__self__, "wait_for_ip", wait_for_ip)
 
     @_builtins.property
     @pulumi.getter
@@ -820,9 +850,11 @@ class _ContainerState:
 
     @_builtins.property
     @pulumi.getter(name="poolId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release. To assign the container to a pool, use `Pool.Membership` resource instead""")
     def pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The identifier for a pool to assign the container to.
+        This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `Pool.Membership` resource instead.
         """
         return pulumi.get(self, "pool_id")
 
@@ -992,6 +1024,18 @@ class _ContainerState:
     def vm_id(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "vm_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="waitForIp")
+    def wait_for_ip(self) -> Optional[pulumi.Input['ContainerWaitForIpArgs']]:
+        """
+        Configuration for waiting for specific IP address types when the container starts.
+        """
+        return pulumi.get(self, "wait_for_ip")
+
+    @wait_for_ip.setter
+    def wait_for_ip(self, value: Optional[pulumi.Input['ContainerWaitForIpArgs']]):
+        pulumi.set(self, "wait_for_ip", value)
+
 
 @pulumi.type_token("proxmoxve:CT/container:Container")
 class Container(pulumi.CustomResource):
@@ -1027,6 +1071,7 @@ class Container(pulumi.CustomResource):
                  timeout_update: Optional[pulumi.Input[_builtins.int]] = None,
                  unprivileged: Optional[pulumi.Input[_builtins.bool]] = None,
                  vm_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 wait_for_ip: Optional[pulumi.Input[Union['ContainerWaitForIpArgs', 'ContainerWaitForIpArgsDict']]] = None,
                  __props__=None):
         """
         Manages a container.
@@ -1132,6 +1177,7 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] node_name: The name of the node to assign the container to.
         :param pulumi.Input[Union['ContainerOperatingSystemArgs', 'ContainerOperatingSystemArgsDict']] operating_system: The Operating System configuration.
         :param pulumi.Input[_builtins.str] pool_id: The identifier for a pool to assign the container to.
+               This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `Pool.Membership` resource instead.
         :param pulumi.Input[_builtins.bool] protection: Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
         :param pulumi.Input[_builtins.bool] start_on_boot: Automatically start container when the host
                system boots (defaults to `true`).
@@ -1150,6 +1196,7 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] timeout_update: Timeout for updating a container in seconds (defaults to 1800).
         :param pulumi.Input[_builtins.bool] unprivileged: Whether the container runs as unprivileged on the host (defaults to `false`).
         :param pulumi.Input[_builtins.int] vm_id: The container identifier
+        :param pulumi.Input[Union['ContainerWaitForIpArgs', 'ContainerWaitForIpArgsDict']] wait_for_ip: Configuration for waiting for specific IP address types when the container starts.
         """
         ...
     @overload
@@ -1286,6 +1333,7 @@ class Container(pulumi.CustomResource):
                  timeout_update: Optional[pulumi.Input[_builtins.int]] = None,
                  unprivileged: Optional[pulumi.Input[_builtins.bool]] = None,
                  vm_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 wait_for_ip: Optional[pulumi.Input[Union['ContainerWaitForIpArgs', 'ContainerWaitForIpArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1325,6 +1373,7 @@ class Container(pulumi.CustomResource):
             __props__.__dict__["timeout_update"] = timeout_update
             __props__.__dict__["unprivileged"] = unprivileged
             __props__.__dict__["vm_id"] = vm_id
+            __props__.__dict__["wait_for_ip"] = wait_for_ip
             __props__.__dict__["ipv4"] = None
             __props__.__dict__["ipv6"] = None
         super(Container, __self__).__init__(
@@ -1366,7 +1415,8 @@ class Container(pulumi.CustomResource):
             timeout_start: Optional[pulumi.Input[_builtins.int]] = None,
             timeout_update: Optional[pulumi.Input[_builtins.int]] = None,
             unprivileged: Optional[pulumi.Input[_builtins.bool]] = None,
-            vm_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'Container':
+            vm_id: Optional[pulumi.Input[_builtins.int]] = None,
+            wait_for_ip: Optional[pulumi.Input[Union['ContainerWaitForIpArgs', 'ContainerWaitForIpArgsDict']]] = None) -> 'Container':
         """
         Get an existing Container resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1392,6 +1442,7 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] node_name: The name of the node to assign the container to.
         :param pulumi.Input[Union['ContainerOperatingSystemArgs', 'ContainerOperatingSystemArgsDict']] operating_system: The Operating System configuration.
         :param pulumi.Input[_builtins.str] pool_id: The identifier for a pool to assign the container to.
+               This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `Pool.Membership` resource instead.
         :param pulumi.Input[_builtins.bool] protection: Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
         :param pulumi.Input[_builtins.bool] start_on_boot: Automatically start container when the host
                system boots (defaults to `true`).
@@ -1410,6 +1461,7 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] timeout_update: Timeout for updating a container in seconds (defaults to 1800).
         :param pulumi.Input[_builtins.bool] unprivileged: Whether the container runs as unprivileged on the host (defaults to `false`).
         :param pulumi.Input[_builtins.int] vm_id: The container identifier
+        :param pulumi.Input[Union['ContainerWaitForIpArgs', 'ContainerWaitForIpArgsDict']] wait_for_ip: Configuration for waiting for specific IP address types when the container starts.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1445,6 +1497,7 @@ class Container(pulumi.CustomResource):
         __props__.__dict__["timeout_update"] = timeout_update
         __props__.__dict__["unprivileged"] = unprivileged
         __props__.__dict__["vm_id"] = vm_id
+        __props__.__dict__["wait_for_ip"] = wait_for_ip
         return Container(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -1578,9 +1631,11 @@ class Container(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="poolId")
+    @_utilities.deprecated("""This field is deprecated and will be removed in a future release. To assign the container to a pool, use `Pool.Membership` resource instead""")
     def pool_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The identifier for a pool to assign the container to.
+        This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `Pool.Membership` resource instead.
         """
         return pulumi.get(self, "pool_id")
 
@@ -1693,4 +1748,12 @@ class Container(pulumi.CustomResource):
         The container identifier
         """
         return pulumi.get(self, "vm_id")
+
+    @_builtins.property
+    @pulumi.getter(name="waitForIp")
+    def wait_for_ip(self) -> pulumi.Output[Optional['outputs.ContainerWaitForIp']]:
+        """
+        Configuration for waiting for specific IP address types when the container starts.
+        """
+        return pulumi.get(self, "wait_for_ip")
 

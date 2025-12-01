@@ -54,8 +54,7 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<string?> Bios { get; private set; } = null!;
 
         /// <summary>
-        /// Specify a list of devices to boot from in the order
-        /// they appear in the list (defaults to `[]`).
+        /// Specify a list of devices to boot from in the order they appear in the list.
         /// </summary>
         [Output("bootOrders")]
         public Output<ImmutableArray<string>> BootOrders { get; private set; } = null!;
@@ -77,6 +76,12 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Output("cpu")]
         public Output<Outputs.VirtualMachineCpu?> Cpu { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to delete unreferenced disks on destroy (defaults to `True`)
+        /// </summary>
+        [Output("deleteUnreferencedDisksOnDestroy")]
+        public Output<bool?> DeleteUnreferencedDisksOnDestroy { get; private set; } = null!;
 
         /// <summary>
         /// The description.
@@ -214,6 +219,7 @@ namespace Pulumi.ProxmoxVE.VM
 
         /// <summary>
         /// The identifier for a pool to assign the virtual machine to.
+        /// This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `proxmoxve.Pool.Membership` resource instead.
         /// </summary>
         [Output("poolId")]
         public Output<string?> PoolId { get; private set; } = null!;
@@ -223,6 +229,12 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Output("protection")]
         public Output<bool?> Protection { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to purge the VM from backup configurations on destroy (defaults to `True`)
+        /// </summary>
+        [Output("purgeOnDestroy")]
+        public Output<bool?> PurgeOnDestroy { get; private set; } = null!;
 
         /// <summary>
         /// Reboot the VM after initial creation (defaults to `False`).
@@ -325,7 +337,7 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<int?> TimeoutMigrate { get; private set; } = null!;
 
         /// <summary>
-        /// MoveDisk timeout
+        /// Disk move timeout
         /// </summary>
         [Output("timeoutMoveDisk")]
         public Output<int?> TimeoutMoveDisk { get; private set; } = null!;
@@ -475,8 +487,7 @@ namespace Pulumi.ProxmoxVE.VM
         private InputList<string>? _bootOrders;
 
         /// <summary>
-        /// Specify a list of devices to boot from in the order
-        /// they appear in the list (defaults to `[]`).
+        /// Specify a list of devices to boot from in the order they appear in the list.
         /// </summary>
         public InputList<string> BootOrders
         {
@@ -501,6 +512,12 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("cpu")]
         public Input<Inputs.VirtualMachineCpuArgs>? Cpu { get; set; }
+
+        /// <summary>
+        /// Whether to delete unreferenced disks on destroy (defaults to `True`)
+        /// </summary>
+        [Input("deleteUnreferencedDisksOnDestroy")]
+        public Input<bool>? DeleteUnreferencedDisksOnDestroy { get; set; }
 
         /// <summary>
         /// The description.
@@ -647,6 +664,7 @@ namespace Pulumi.ProxmoxVE.VM
 
         /// <summary>
         /// The identifier for a pool to assign the virtual machine to.
+        /// This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `proxmoxve.Pool.Membership` resource instead.
         /// </summary>
         [Input("poolId")]
         public Input<string>? PoolId { get; set; }
@@ -656,6 +674,12 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("protection")]
         public Input<bool>? Protection { get; set; }
+
+        /// <summary>
+        /// Whether to purge the VM from backup configurations on destroy (defaults to `True`)
+        /// </summary>
+        [Input("purgeOnDestroy")]
+        public Input<bool>? PurgeOnDestroy { get; set; }
 
         /// <summary>
         /// Reboot the VM after initial creation (defaults to `False`).
@@ -776,7 +800,7 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<int>? TimeoutMigrate { get; set; }
 
         /// <summary>
-        /// MoveDisk timeout
+        /// Disk move timeout
         /// </summary>
         [Input("timeoutMoveDisk")]
         public Input<int>? TimeoutMoveDisk { get; set; }
@@ -899,8 +923,7 @@ namespace Pulumi.ProxmoxVE.VM
         private InputList<string>? _bootOrders;
 
         /// <summary>
-        /// Specify a list of devices to boot from in the order
-        /// they appear in the list (defaults to `[]`).
+        /// Specify a list of devices to boot from in the order they appear in the list.
         /// </summary>
         public InputList<string> BootOrders
         {
@@ -925,6 +948,12 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("cpu")]
         public Input<Inputs.VirtualMachineCpuGetArgs>? Cpu { get; set; }
+
+        /// <summary>
+        /// Whether to delete unreferenced disks on destroy (defaults to `True`)
+        /// </summary>
+        [Input("deleteUnreferencedDisksOnDestroy")]
+        public Input<bool>? DeleteUnreferencedDisksOnDestroy { get; set; }
 
         /// <summary>
         /// The description.
@@ -1110,6 +1139,7 @@ namespace Pulumi.ProxmoxVE.VM
 
         /// <summary>
         /// The identifier for a pool to assign the virtual machine to.
+        /// This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `proxmoxve.Pool.Membership` resource instead.
         /// </summary>
         [Input("poolId")]
         public Input<string>? PoolId { get; set; }
@@ -1119,6 +1149,12 @@ namespace Pulumi.ProxmoxVE.VM
         /// </summary>
         [Input("protection")]
         public Input<bool>? Protection { get; set; }
+
+        /// <summary>
+        /// Whether to purge the VM from backup configurations on destroy (defaults to `True`)
+        /// </summary>
+        [Input("purgeOnDestroy")]
+        public Input<bool>? PurgeOnDestroy { get; set; }
 
         /// <summary>
         /// Reboot the VM after initial creation (defaults to `False`).
@@ -1239,7 +1275,7 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<int>? TimeoutMigrate { get; set; }
 
         /// <summary>
-        /// MoveDisk timeout
+        /// Disk move timeout
         /// </summary>
         [Input("timeoutMoveDisk")]
         public Input<int>? TimeoutMoveDisk { get; set; }

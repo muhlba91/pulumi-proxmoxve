@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve.VM.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachineAgentWaitForIpArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -82,6 +83,21 @@ public final class VirtualMachineAgentArgs extends com.pulumi.resources.Resource
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * Configuration for waiting for specific IP address types when the VM starts.
+     * 
+     */
+    @Import(name="waitForIp")
+    private @Nullable Output<VirtualMachineAgentWaitForIpArgs> waitForIp;
+
+    /**
+     * @return Configuration for waiting for specific IP address types when the VM starts.
+     * 
+     */
+    public Optional<Output<VirtualMachineAgentWaitForIpArgs>> waitForIp() {
+        return Optional.ofNullable(this.waitForIp);
+    }
+
     private VirtualMachineAgentArgs() {}
 
     private VirtualMachineAgentArgs(VirtualMachineAgentArgs $) {
@@ -89,6 +105,7 @@ public final class VirtualMachineAgentArgs extends com.pulumi.resources.Resource
         this.timeout = $.timeout;
         this.trim = $.trim;
         this.type = $.type;
+        this.waitForIp = $.waitForIp;
     }
 
     public static Builder builder() {
@@ -197,6 +214,27 @@ public final class VirtualMachineAgentArgs extends com.pulumi.resources.Resource
          */
         public Builder type(String type) {
             return type(Output.of(type));
+        }
+
+        /**
+         * @param waitForIp Configuration for waiting for specific IP address types when the VM starts.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder waitForIp(@Nullable Output<VirtualMachineAgentWaitForIpArgs> waitForIp) {
+            $.waitForIp = waitForIp;
+            return this;
+        }
+
+        /**
+         * @param waitForIp Configuration for waiting for specific IP address types when the VM starts.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder waitForIp(VirtualMachineAgentWaitForIpArgs waitForIp) {
+            return waitForIp(Output.of(waitForIp));
         }
 
         public VirtualMachineAgentArgs build() {

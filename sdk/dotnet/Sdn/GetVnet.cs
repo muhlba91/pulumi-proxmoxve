@@ -13,18 +13,108 @@ namespace Pulumi.ProxmoxVE.Sdn
     {
         /// <summary>
         /// Retrieves information about an existing SDN VNet.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = ProxmoxVE.Sdn.GetVnet.Invoke(new()
+        ///     {
+        ///         Id = "vnet1",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxVirtualEnvironmentSdnVnet"] = 
+        ///         {
+        ///             { "id", example.Apply(getVnetResult =&gt; getVnetResult.Id) },
+        ///             { "zone", example.Apply(getVnetResult =&gt; getVnetResult.Zone) },
+        ///             { "alias", example.Apply(getVnetResult =&gt; getVnetResult.Alias) },
+        ///             { "isolatePorts", example.Apply(getVnetResult =&gt; getVnetResult.IsolatePorts) },
+        ///             { "tag", example.Apply(getVnetResult =&gt; getVnetResult.Tag) },
+        ///             { "vlanAware", example.Apply(getVnetResult =&gt; getVnetResult.VlanAware) },
+        ///         },
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetVnetResult> InvokeAsync(GetVnetArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVnetResult>("proxmoxve:Sdn/getVnet:getVnet", args ?? new GetVnetArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about an existing SDN VNet.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = ProxmoxVE.Sdn.GetVnet.Invoke(new()
+        ///     {
+        ///         Id = "vnet1",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxVirtualEnvironmentSdnVnet"] = 
+        ///         {
+        ///             { "id", example.Apply(getVnetResult =&gt; getVnetResult.Id) },
+        ///             { "zone", example.Apply(getVnetResult =&gt; getVnetResult.Zone) },
+        ///             { "alias", example.Apply(getVnetResult =&gt; getVnetResult.Alias) },
+        ///             { "isolatePorts", example.Apply(getVnetResult =&gt; getVnetResult.IsolatePorts) },
+        ///             { "tag", example.Apply(getVnetResult =&gt; getVnetResult.Tag) },
+        ///             { "vlanAware", example.Apply(getVnetResult =&gt; getVnetResult.VlanAware) },
+        ///         },
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetVnetResult> Invoke(GetVnetInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVnetResult>("proxmoxve:Sdn/getVnet:getVnet", args ?? new GetVnetInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about an existing SDN VNet.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = ProxmoxVE.Sdn.GetVnet.Invoke(new()
+        ///     {
+        ///         Id = "vnet1",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxVirtualEnvironmentSdnVnet"] = 
+        ///         {
+        ///             { "id", example.Apply(getVnetResult =&gt; getVnetResult.Id) },
+        ///             { "zone", example.Apply(getVnetResult =&gt; getVnetResult.Zone) },
+        ///             { "alias", example.Apply(getVnetResult =&gt; getVnetResult.Alias) },
+        ///             { "isolatePorts", example.Apply(getVnetResult =&gt; getVnetResult.IsolatePorts) },
+        ///             { "tag", example.Apply(getVnetResult =&gt; getVnetResult.Tag) },
+        ///             { "vlanAware", example.Apply(getVnetResult =&gt; getVnetResult.VlanAware) },
+        ///         },
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetVnetResult> Invoke(GetVnetInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetVnetResult>("proxmoxve:Sdn/getVnet:getVnet", args ?? new GetVnetInvokeArgs(), options.WithDefaults());

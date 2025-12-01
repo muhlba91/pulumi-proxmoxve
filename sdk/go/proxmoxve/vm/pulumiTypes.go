@@ -1130,6 +1130,8 @@ type VirtualMachineAgent struct {
 	Trim *bool `pulumi:"trim"`
 	// The QEMU agent interface type (defaults to `virtio`).
 	Type *string `pulumi:"type"`
+	// Configuration for waiting for specific IP address types when the VM starts.
+	WaitForIp *VirtualMachineAgentWaitForIp `pulumi:"waitForIp"`
 }
 
 // VirtualMachineAgentInput is an input type that accepts VirtualMachineAgentArgs and VirtualMachineAgentOutput values.
@@ -1155,6 +1157,8 @@ type VirtualMachineAgentArgs struct {
 	Trim pulumi.BoolPtrInput `pulumi:"trim"`
 	// The QEMU agent interface type (defaults to `virtio`).
 	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Configuration for waiting for specific IP address types when the VM starts.
+	WaitForIp VirtualMachineAgentWaitForIpPtrInput `pulumi:"waitForIp"`
 }
 
 func (VirtualMachineAgentArgs) ElementType() reflect.Type {
@@ -1257,6 +1261,11 @@ func (o VirtualMachineAgentOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineAgent) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// Configuration for waiting for specific IP address types when the VM starts.
+func (o VirtualMachineAgentOutput) WaitForIp() VirtualMachineAgentWaitForIpPtrOutput {
+	return o.ApplyT(func(v VirtualMachineAgent) *VirtualMachineAgentWaitForIp { return v.WaitForIp }).(VirtualMachineAgentWaitForIpPtrOutput)
+}
+
 type VirtualMachineAgentPtrOutput struct{ *pulumi.OutputState }
 
 func (VirtualMachineAgentPtrOutput) ElementType() reflect.Type {
@@ -1322,6 +1331,180 @@ func (o VirtualMachineAgentPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for waiting for specific IP address types when the VM starts.
+func (o VirtualMachineAgentPtrOutput) WaitForIp() VirtualMachineAgentWaitForIpPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineAgent) *VirtualMachineAgentWaitForIp {
+		if v == nil {
+			return nil
+		}
+		return v.WaitForIp
+	}).(VirtualMachineAgentWaitForIpPtrOutput)
+}
+
+type VirtualMachineAgentWaitForIp struct {
+	// Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+	Ipv4 *bool `pulumi:"ipv4"`
+	// Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
+	//
+	// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+	Ipv6 *bool `pulumi:"ipv6"`
+}
+
+// VirtualMachineAgentWaitForIpInput is an input type that accepts VirtualMachineAgentWaitForIpArgs and VirtualMachineAgentWaitForIpOutput values.
+// You can construct a concrete instance of `VirtualMachineAgentWaitForIpInput` via:
+//
+//	VirtualMachineAgentWaitForIpArgs{...}
+type VirtualMachineAgentWaitForIpInput interface {
+	pulumi.Input
+
+	ToVirtualMachineAgentWaitForIpOutput() VirtualMachineAgentWaitForIpOutput
+	ToVirtualMachineAgentWaitForIpOutputWithContext(context.Context) VirtualMachineAgentWaitForIpOutput
+}
+
+type VirtualMachineAgentWaitForIpArgs struct {
+	// Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+	Ipv4 pulumi.BoolPtrInput `pulumi:"ipv4"`
+	// Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
+	//
+	// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+	Ipv6 pulumi.BoolPtrInput `pulumi:"ipv6"`
+}
+
+func (VirtualMachineAgentWaitForIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineAgentWaitForIp)(nil)).Elem()
+}
+
+func (i VirtualMachineAgentWaitForIpArgs) ToVirtualMachineAgentWaitForIpOutput() VirtualMachineAgentWaitForIpOutput {
+	return i.ToVirtualMachineAgentWaitForIpOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineAgentWaitForIpArgs) ToVirtualMachineAgentWaitForIpOutputWithContext(ctx context.Context) VirtualMachineAgentWaitForIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineAgentWaitForIpOutput)
+}
+
+func (i VirtualMachineAgentWaitForIpArgs) ToVirtualMachineAgentWaitForIpPtrOutput() VirtualMachineAgentWaitForIpPtrOutput {
+	return i.ToVirtualMachineAgentWaitForIpPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualMachineAgentWaitForIpArgs) ToVirtualMachineAgentWaitForIpPtrOutputWithContext(ctx context.Context) VirtualMachineAgentWaitForIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineAgentWaitForIpOutput).ToVirtualMachineAgentWaitForIpPtrOutputWithContext(ctx)
+}
+
+// VirtualMachineAgentWaitForIpPtrInput is an input type that accepts VirtualMachineAgentWaitForIpArgs, VirtualMachineAgentWaitForIpPtr and VirtualMachineAgentWaitForIpPtrOutput values.
+// You can construct a concrete instance of `VirtualMachineAgentWaitForIpPtrInput` via:
+//
+//	        VirtualMachineAgentWaitForIpArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualMachineAgentWaitForIpPtrInput interface {
+	pulumi.Input
+
+	ToVirtualMachineAgentWaitForIpPtrOutput() VirtualMachineAgentWaitForIpPtrOutput
+	ToVirtualMachineAgentWaitForIpPtrOutputWithContext(context.Context) VirtualMachineAgentWaitForIpPtrOutput
+}
+
+type virtualMachineAgentWaitForIpPtrType VirtualMachineAgentWaitForIpArgs
+
+func VirtualMachineAgentWaitForIpPtr(v *VirtualMachineAgentWaitForIpArgs) VirtualMachineAgentWaitForIpPtrInput {
+	return (*virtualMachineAgentWaitForIpPtrType)(v)
+}
+
+func (*virtualMachineAgentWaitForIpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineAgentWaitForIp)(nil)).Elem()
+}
+
+func (i *virtualMachineAgentWaitForIpPtrType) ToVirtualMachineAgentWaitForIpPtrOutput() VirtualMachineAgentWaitForIpPtrOutput {
+	return i.ToVirtualMachineAgentWaitForIpPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualMachineAgentWaitForIpPtrType) ToVirtualMachineAgentWaitForIpPtrOutputWithContext(ctx context.Context) VirtualMachineAgentWaitForIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachineAgentWaitForIpPtrOutput)
+}
+
+type VirtualMachineAgentWaitForIpOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineAgentWaitForIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualMachineAgentWaitForIp)(nil)).Elem()
+}
+
+func (o VirtualMachineAgentWaitForIpOutput) ToVirtualMachineAgentWaitForIpOutput() VirtualMachineAgentWaitForIpOutput {
+	return o
+}
+
+func (o VirtualMachineAgentWaitForIpOutput) ToVirtualMachineAgentWaitForIpOutputWithContext(ctx context.Context) VirtualMachineAgentWaitForIpOutput {
+	return o
+}
+
+func (o VirtualMachineAgentWaitForIpOutput) ToVirtualMachineAgentWaitForIpPtrOutput() VirtualMachineAgentWaitForIpPtrOutput {
+	return o.ToVirtualMachineAgentWaitForIpPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualMachineAgentWaitForIpOutput) ToVirtualMachineAgentWaitForIpPtrOutputWithContext(ctx context.Context) VirtualMachineAgentWaitForIpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachineAgentWaitForIp) *VirtualMachineAgentWaitForIp {
+		return &v
+	}).(VirtualMachineAgentWaitForIpPtrOutput)
+}
+
+// Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+func (o VirtualMachineAgentWaitForIpOutput) Ipv4() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineAgentWaitForIp) *bool { return v.Ipv4 }).(pulumi.BoolPtrOutput)
+}
+
+// Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
+//
+// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+func (o VirtualMachineAgentWaitForIpOutput) Ipv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VirtualMachineAgentWaitForIp) *bool { return v.Ipv6 }).(pulumi.BoolPtrOutput)
+}
+
+type VirtualMachineAgentWaitForIpPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualMachineAgentWaitForIpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualMachineAgentWaitForIp)(nil)).Elem()
+}
+
+func (o VirtualMachineAgentWaitForIpPtrOutput) ToVirtualMachineAgentWaitForIpPtrOutput() VirtualMachineAgentWaitForIpPtrOutput {
+	return o
+}
+
+func (o VirtualMachineAgentWaitForIpPtrOutput) ToVirtualMachineAgentWaitForIpPtrOutputWithContext(ctx context.Context) VirtualMachineAgentWaitForIpPtrOutput {
+	return o
+}
+
+func (o VirtualMachineAgentWaitForIpPtrOutput) Elem() VirtualMachineAgentWaitForIpOutput {
+	return o.ApplyT(func(v *VirtualMachineAgentWaitForIp) VirtualMachineAgentWaitForIp {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualMachineAgentWaitForIp
+		return ret
+	}).(VirtualMachineAgentWaitForIpOutput)
+}
+
+// Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+func (o VirtualMachineAgentWaitForIpPtrOutput) Ipv4() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineAgentWaitForIp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv4
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
+//
+// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+func (o VirtualMachineAgentWaitForIpPtrOutput) Ipv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineAgentWaitForIp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6
+	}).(pulumi.BoolPtrOutput)
 }
 
 type VirtualMachineAmdSev struct {
@@ -2610,7 +2793,7 @@ type VirtualMachineDisk struct {
 	FileId *string `pulumi:"fileId"`
 	// The file ID for a disk image to import into VM. The image must be of `import` content type.
 	// The ID format is `<datastore_id>:import/<file_name>`, for example `local:import/centos8.qcow2`. Can be also taken from
-	// `Download.File` resource.
+	// a disk replacement operation, which will require a VM reboot. Your original disks will remain as detached disks.
 	ImportFrom *string `pulumi:"importFrom"`
 	// The disk interface for Proxmox, currently `scsi`,
 	// `sata` and `virtio` interfaces are supported. Append the disk index at
@@ -2672,7 +2855,7 @@ type VirtualMachineDiskArgs struct {
 	FileId pulumi.StringPtrInput `pulumi:"fileId"`
 	// The file ID for a disk image to import into VM. The image must be of `import` content type.
 	// The ID format is `<datastore_id>:import/<file_name>`, for example `local:import/centos8.qcow2`. Can be also taken from
-	// `Download.File` resource.
+	// a disk replacement operation, which will require a VM reboot. Your original disks will remain as detached disks.
 	ImportFrom pulumi.StringPtrInput `pulumi:"importFrom"`
 	// The disk interface for Proxmox, currently `scsi`,
 	// `sata` and `virtio` interfaces are supported. Append the disk index at
@@ -2794,7 +2977,7 @@ func (o VirtualMachineDiskOutput) FileId() pulumi.StringPtrOutput {
 
 // The file ID for a disk image to import into VM. The image must be of `import` content type.
 // The ID format is `<datastore_id>:import/<file_name>`, for example `local:import/centos8.qcow2`. Can be also taken from
-// `Download.File` resource.
+// a disk replacement operation, which will require a VM reboot. Your original disks will remain as detached disks.
 func (o VirtualMachineDiskOutput) ImportFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.ImportFrom }).(pulumi.StringPtrOutput)
 }
@@ -3561,6 +3744,8 @@ type VirtualMachineInitialization struct {
 	DatastoreId *string `pulumi:"datastoreId"`
 	// The DNS configuration.
 	Dns *VirtualMachineInitializationDns `pulumi:"dns"`
+	// The file format.
+	FileFormat *string `pulumi:"fileFormat"`
 	// The hardware interface to connect the cloud-init
 	// image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
 	// detected if the setting is missing but a cloud-init image is present,
@@ -3606,6 +3791,8 @@ type VirtualMachineInitializationArgs struct {
 	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
 	// The DNS configuration.
 	Dns VirtualMachineInitializationDnsPtrInput `pulumi:"dns"`
+	// The file format.
+	FileFormat pulumi.StringPtrInput `pulumi:"fileFormat"`
 	// The hardware interface to connect the cloud-init
 	// image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
 	// detected if the setting is missing but a cloud-init image is present,
@@ -3722,6 +3909,11 @@ func (o VirtualMachineInitializationOutput) Dns() VirtualMachineInitializationDn
 	return o.ApplyT(func(v VirtualMachineInitialization) *VirtualMachineInitializationDns { return v.Dns }).(VirtualMachineInitializationDnsPtrOutput)
 }
 
+// The file format.
+func (o VirtualMachineInitializationOutput) FileFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineInitialization) *string { return v.FileFormat }).(pulumi.StringPtrOutput)
+}
+
 // The hardware interface to connect the cloud-init
 // image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
 // detected if the setting is missing but a cloud-init image is present,
@@ -3815,6 +4007,16 @@ func (o VirtualMachineInitializationPtrOutput) Dns() VirtualMachineInitializatio
 		}
 		return v.Dns
 	}).(VirtualMachineInitializationDnsPtrOutput)
+}
+
+// The file format.
+func (o VirtualMachineInitializationPtrOutput) FileFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineInitialization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FileFormat
+	}).(pulumi.StringPtrOutput)
 }
 
 // The hardware interface to connect the cloud-init
@@ -4340,10 +4542,10 @@ func (o VirtualMachineInitializationIpConfigIpv4PtrOutput) Gateway() pulumi.Stri
 type VirtualMachineInitializationIpConfigIpv6 struct {
 	// The IPv6 address in CIDR notation
 	// (e.g. fd1c::7334/64). Alternatively, set this
-	// to `dhcp` for autodiscovery.
+	// to `dhcp` for DHCPv6, or `auto` for SLAAC.
 	Address *string `pulumi:"address"`
 	// The IPv6 gateway (must be omitted
-	// when `dhcp` is used as the address).
+	// when `dhcp` or `auto` are used as the address).
 	Gateway *string `pulumi:"gateway"`
 }
 
@@ -4361,10 +4563,10 @@ type VirtualMachineInitializationIpConfigIpv6Input interface {
 type VirtualMachineInitializationIpConfigIpv6Args struct {
 	// The IPv6 address in CIDR notation
 	// (e.g. fd1c::7334/64). Alternatively, set this
-	// to `dhcp` for autodiscovery.
+	// to `dhcp` for DHCPv6, or `auto` for SLAAC.
 	Address pulumi.StringPtrInput `pulumi:"address"`
 	// The IPv6 gateway (must be omitted
-	// when `dhcp` is used as the address).
+	// when `dhcp` or `auto` are used as the address).
 	Gateway pulumi.StringPtrInput `pulumi:"gateway"`
 }
 
@@ -4447,13 +4649,13 @@ func (o VirtualMachineInitializationIpConfigIpv6Output) ToVirtualMachineInitiali
 
 // The IPv6 address in CIDR notation
 // (e.g. fd1c::7334/64). Alternatively, set this
-// to `dhcp` for autodiscovery.
+// to `dhcp` for DHCPv6, or `auto` for SLAAC.
 func (o VirtualMachineInitializationIpConfigIpv6Output) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationIpConfigIpv6) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
 
 // The IPv6 gateway (must be omitted
-// when `dhcp` is used as the address).
+// when `dhcp` or `auto` are used as the address).
 func (o VirtualMachineInitializationIpConfigIpv6Output) Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineInitializationIpConfigIpv6) *string { return v.Gateway }).(pulumi.StringPtrOutput)
 }
@@ -4484,7 +4686,7 @@ func (o VirtualMachineInitializationIpConfigIpv6PtrOutput) Elem() VirtualMachine
 
 // The IPv6 address in CIDR notation
 // (e.g. fd1c::7334/64). Alternatively, set this
-// to `dhcp` for autodiscovery.
+// to `dhcp` for DHCPv6, or `auto` for SLAAC.
 func (o VirtualMachineInitializationIpConfigIpv6PtrOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitializationIpConfigIpv6) *string {
 		if v == nil {
@@ -4495,7 +4697,7 @@ func (o VirtualMachineInitializationIpConfigIpv6PtrOutput) Address() pulumi.Stri
 }
 
 // The IPv6 gateway (must be omitted
-// when `dhcp` is used as the address).
+// when `dhcp` or `auto` are used as the address).
 func (o VirtualMachineInitializationIpConfigIpv6PtrOutput) Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineInitializationIpConfigIpv6) *string {
 		if v == nil {
@@ -7072,6 +7274,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachine2VgaPtrInput)(nil)).Elem(), VirtualMachine2VgaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineAgentInput)(nil)).Elem(), VirtualMachineAgentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineAgentPtrInput)(nil)).Elem(), VirtualMachineAgentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineAgentWaitForIpInput)(nil)).Elem(), VirtualMachineAgentWaitForIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineAgentWaitForIpPtrInput)(nil)).Elem(), VirtualMachineAgentWaitForIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineAmdSevInput)(nil)).Elem(), VirtualMachineAmdSevArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineAmdSevPtrInput)(nil)).Elem(), VirtualMachineAmdSevArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachineAudioDeviceInput)(nil)).Elem(), VirtualMachineAudioDeviceArgs{})
@@ -7146,6 +7350,8 @@ func init() {
 	pulumi.RegisterOutputType(VirtualMachine2VgaPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineAgentOutput{})
 	pulumi.RegisterOutputType(VirtualMachineAgentPtrOutput{})
+	pulumi.RegisterOutputType(VirtualMachineAgentWaitForIpOutput{})
+	pulumi.RegisterOutputType(VirtualMachineAgentWaitForIpPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineAmdSevOutput{})
 	pulumi.RegisterOutputType(VirtualMachineAmdSevPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachineAudioDeviceOutput{})

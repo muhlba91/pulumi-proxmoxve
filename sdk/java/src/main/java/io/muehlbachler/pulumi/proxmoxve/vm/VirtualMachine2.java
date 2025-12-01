@@ -80,6 +80,20 @@ public class VirtualMachine2 extends com.pulumi.resources.CustomResource {
         return this.cpu;
     }
     /**
+     * Set to true to delete unreferenced disks on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * 
+     */
+    @Export(name="deleteUnreferencedDisksOnDestroy", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> deleteUnreferencedDisksOnDestroy;
+
+    /**
+     * @return Set to true to delete unreferenced disks on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * 
+     */
+    public Output<Boolean> deleteUnreferencedDisksOnDestroy() {
+        return this.deleteUnreferencedDisksOnDestroy;
+    }
+    /**
      * The description of the VM.
      * 
      */
@@ -120,6 +134,20 @@ public class VirtualMachine2 extends com.pulumi.resources.CustomResource {
      */
     public Output<String> nodeName() {
         return this.nodeName;
+    }
+    /**
+     * Set to true to purge the VM from backup configurations on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * 
+     */
+    @Export(name="purgeOnDestroy", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> purgeOnDestroy;
+
+    /**
+     * @return Set to true to purge the VM from backup configurations on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * 
+     */
+    public Output<Boolean> purgeOnDestroy() {
+        return this.purgeOnDestroy;
     }
     /**
      * Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root{@literal @}pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.

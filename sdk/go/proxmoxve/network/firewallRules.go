@@ -7,12 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Manages cluster-level, node-level or VM/container-level firewall rules.
+//
+// > **Note:** Before creating a new `Network.FirewallRules` resource, verify that no rules already exist for the target (cluster, node, VM, or container).
+// If rules are already configured, import them first using the appropriate import command.
 //
 // ## Example Usage
 //
@@ -103,12 +105,9 @@ type FirewallRules struct {
 func NewFirewallRules(ctx *pulumi.Context,
 	name string, args *FirewallRulesArgs, opts ...pulumi.ResourceOption) (*FirewallRules, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &FirewallRulesArgs{}
 	}
 
-	if args.Rules == nil {
-		return nil, errors.New("invalid value for required argument 'Rules'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource FirewallRules
 	err := ctx.RegisterResource("proxmoxve:Network/firewallRules:FirewallRules", name, args, &resource, opts...)

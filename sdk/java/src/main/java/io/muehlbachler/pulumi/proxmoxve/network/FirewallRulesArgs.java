@@ -5,7 +5,6 @@ package io.muehlbachler.pulumi.proxmoxve.Network;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import io.muehlbachler.pulumi.proxmoxve.Network.inputs.FirewallRulesRuleArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -55,8 +54,8 @@ public final class FirewallRulesArgs extends com.pulumi.resources.ResourceArgs {
      * - A rule definition block, which includes the following arguments:
      * 
      */
-    @Import(name="rules", required=true)
-    private Output<List<FirewallRulesRuleArgs>> rules;
+    @Import(name="rules")
+    private @Nullable Output<List<FirewallRulesRuleArgs>> rules;
 
     /**
      * @return Firewall rule block (multiple blocks supported).
@@ -64,8 +63,8 @@ public final class FirewallRulesArgs extends com.pulumi.resources.ResourceArgs {
      * - A rule definition block, which includes the following arguments:
      * 
      */
-    public Output<List<FirewallRulesRuleArgs>> rules() {
-        return this.rules;
+    public Optional<Output<List<FirewallRulesRuleArgs>>> rules() {
+        return Optional.ofNullable(this.rules);
     }
 
     /**
@@ -160,7 +159,7 @@ public final class FirewallRulesArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder rules(Output<List<FirewallRulesRuleArgs>> rules) {
+        public Builder rules(@Nullable Output<List<FirewallRulesRuleArgs>> rules) {
             $.rules = rules;
             return this;
         }
@@ -211,9 +210,6 @@ public final class FirewallRulesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FirewallRulesArgs build() {
-            if ($.rules == null) {
-                throw new MissingRequiredPropertyException("FirewallRulesArgs", "rules");
-            }
             return $;
         }
     }

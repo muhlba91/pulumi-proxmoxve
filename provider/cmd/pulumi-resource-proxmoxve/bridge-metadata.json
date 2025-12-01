@@ -166,6 +166,9 @@
                     },
                     "tags": {
                         "maxItemsOne": false
+                    },
+                    "wait_for_ip": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -328,6 +331,10 @@
                     }
                 }
             },
+            "proxmox_virtual_environment_pool_membership": {
+                "current": "proxmoxve:Pool/membership:Membership",
+                "majorVersion": 7
+            },
             "proxmox_virtual_environment_role": {
                 "current": "proxmoxve:Permission/role:Role",
                 "majorVersion": 7,
@@ -425,7 +432,14 @@
                 "majorVersion": 7,
                 "fields": {
                     "agent": {
-                        "maxItemsOne": true
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "wait_for_ip": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     },
                     "amd_sev": {
                         "maxItemsOne": true
@@ -927,6 +941,15 @@
                 "current": "proxmoxve:Sdn/getVnet:getVnet",
                 "majorVersion": 7
             },
+            "proxmox_virtual_environment_sdn_vnets": {
+                "current": "proxmoxve:Sdn/getVnets:getVnets",
+                "majorVersion": 7,
+                "fields": {
+                    "vnets": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "proxmox_virtual_environment_sdn_zone_evpn": {
                 "current": "proxmoxve:SDNZone/getEvpn:getEvpn",
                 "majorVersion": 7,
@@ -1138,6 +1161,7 @@
             "proxmoxve:Permission/pool:Pool": 0,
             "proxmoxve:Permission/role:Role": 0,
             "proxmoxve:Permission/user:User": 0,
+            "proxmoxve:Pool/membership:Membership": 1,
             "proxmoxve:SDNZone/evpn:Evpn": 1,
             "proxmoxve:SDNZone/qinq:Qinq": 1,
             "proxmoxve:SDNZone/simple:Simple": 1,
@@ -1194,6 +1218,7 @@
             "proxmoxve:SDNZone/getVxlan:getVxlan": 1,
             "proxmoxve:Sdn/getSubnet:getSubnet": 1,
             "proxmoxve:Sdn/getVnet:getVnet": 1,
+            "proxmoxve:Sdn/getVnets:getVnets": 1,
             "proxmoxve:Sdn/getZones:getZones": 1,
             "proxmoxve:Storage/getDatastores:getDatastores": 1,
             "proxmoxve:VM/getVirtualMachine:getVirtualMachine": 0,

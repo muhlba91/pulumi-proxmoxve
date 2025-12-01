@@ -66,10 +66,9 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     declare public readonly bios: pulumi.Output<string | undefined>;
     /**
-     * Specify a list of devices to boot from in the order
-     * they appear in the list (defaults to `[]`).
+     * Specify a list of devices to boot from in the order they appear in the list.
      */
-    declare public readonly bootOrders: pulumi.Output<string[] | undefined>;
+    declare public readonly bootOrders: pulumi.Output<string[]>;
     /**
      * The CD-ROM configuration.
      */
@@ -82,6 +81,10 @@ export class VirtualMachine extends pulumi.CustomResource {
      * The CPU configuration.
      */
     declare public readonly cpu: pulumi.Output<outputs.VM.VirtualMachineCpu | undefined>;
+    /**
+     * Whether to delete unreferenced disks on destroy (defaults to `true`)
+     */
+    declare public readonly deleteUnreferencedDisksOnDestroy: pulumi.Output<boolean | undefined>;
     /**
      * The description.
      */
@@ -176,12 +179,19 @@ export class VirtualMachine extends pulumi.CustomResource {
     declare public readonly operatingSystem: pulumi.Output<outputs.VM.VirtualMachineOperatingSystem | undefined>;
     /**
      * The identifier for a pool to assign the virtual machine to.
+     * This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `proxmoxve.Pool.Membership` resource instead.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release. To assign the VM to a pool, use `proxmoxve.Pool.Membership` resource instead.
      */
     declare public readonly poolId: pulumi.Output<string | undefined>;
     /**
      * Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
      */
     declare public readonly protection: pulumi.Output<boolean | undefined>;
+    /**
+     * Whether to purge the VM from backup configurations on destroy (defaults to `true`)
+     */
+    declare public readonly purgeOnDestroy: pulumi.Output<boolean | undefined>;
     /**
      * Reboot the VM after initial creation (defaults to `false`).
      */
@@ -253,7 +263,7 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     declare public readonly timeoutMigrate: pulumi.Output<number | undefined>;
     /**
-     * MoveDisk timeout
+     * Disk move timeout
      *
      * @deprecated This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead.
      */
@@ -325,6 +335,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["cdrom"] = state?.cdrom;
             resourceInputs["clone"] = state?.clone;
             resourceInputs["cpu"] = state?.cpu;
+            resourceInputs["deleteUnreferencedDisksOnDestroy"] = state?.deleteUnreferencedDisksOnDestroy;
             resourceInputs["description"] = state?.description;
             resourceInputs["disks"] = state?.disks;
             resourceInputs["efiDisk"] = state?.efiDisk;
@@ -348,6 +359,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["operatingSystem"] = state?.operatingSystem;
             resourceInputs["poolId"] = state?.poolId;
             resourceInputs["protection"] = state?.protection;
+            resourceInputs["purgeOnDestroy"] = state?.purgeOnDestroy;
             resourceInputs["reboot"] = state?.reboot;
             resourceInputs["rebootAfterUpdate"] = state?.rebootAfterUpdate;
             resourceInputs["rngs"] = state?.rngs;
@@ -388,6 +400,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["cdrom"] = args?.cdrom;
             resourceInputs["clone"] = args?.clone;
             resourceInputs["cpu"] = args?.cpu;
+            resourceInputs["deleteUnreferencedDisksOnDestroy"] = args?.deleteUnreferencedDisksOnDestroy;
             resourceInputs["description"] = args?.description;
             resourceInputs["disks"] = args?.disks;
             resourceInputs["efiDisk"] = args?.efiDisk;
@@ -408,6 +421,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["operatingSystem"] = args?.operatingSystem;
             resourceInputs["poolId"] = args?.poolId;
             resourceInputs["protection"] = args?.protection;
+            resourceInputs["purgeOnDestroy"] = args?.purgeOnDestroy;
             resourceInputs["reboot"] = args?.reboot;
             resourceInputs["rebootAfterUpdate"] = args?.rebootAfterUpdate;
             resourceInputs["rngs"] = args?.rngs;
@@ -468,8 +482,7 @@ export interface VirtualMachineState {
      */
     bios?: pulumi.Input<string>;
     /**
-     * Specify a list of devices to boot from in the order
-     * they appear in the list (defaults to `[]`).
+     * Specify a list of devices to boot from in the order they appear in the list.
      */
     bootOrders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -484,6 +497,10 @@ export interface VirtualMachineState {
      * The CPU configuration.
      */
     cpu?: pulumi.Input<inputs.VM.VirtualMachineCpu>;
+    /**
+     * Whether to delete unreferenced disks on destroy (defaults to `true`)
+     */
+    deleteUnreferencedDisksOnDestroy?: pulumi.Input<boolean>;
     /**
      * The description.
      */
@@ -578,12 +595,19 @@ export interface VirtualMachineState {
     operatingSystem?: pulumi.Input<inputs.VM.VirtualMachineOperatingSystem>;
     /**
      * The identifier for a pool to assign the virtual machine to.
+     * This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `proxmoxve.Pool.Membership` resource instead.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release. To assign the VM to a pool, use `proxmoxve.Pool.Membership` resource instead.
      */
     poolId?: pulumi.Input<string>;
     /**
      * Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
      */
     protection?: pulumi.Input<boolean>;
+    /**
+     * Whether to purge the VM from backup configurations on destroy (defaults to `true`)
+     */
+    purgeOnDestroy?: pulumi.Input<boolean>;
     /**
      * Reboot the VM after initial creation (defaults to `false`).
      */
@@ -655,7 +679,7 @@ export interface VirtualMachineState {
      */
     timeoutMigrate?: pulumi.Input<number>;
     /**
-     * MoveDisk timeout
+     * Disk move timeout
      *
      * @deprecated This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead.
      */
@@ -731,8 +755,7 @@ export interface VirtualMachineArgs {
      */
     bios?: pulumi.Input<string>;
     /**
-     * Specify a list of devices to boot from in the order
-     * they appear in the list (defaults to `[]`).
+     * Specify a list of devices to boot from in the order they appear in the list.
      */
     bootOrders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -747,6 +770,10 @@ export interface VirtualMachineArgs {
      * The CPU configuration.
      */
     cpu?: pulumi.Input<inputs.VM.VirtualMachineCpu>;
+    /**
+     * Whether to delete unreferenced disks on destroy (defaults to `true`)
+     */
+    deleteUnreferencedDisksOnDestroy?: pulumi.Input<boolean>;
     /**
      * The description.
      */
@@ -826,12 +853,19 @@ export interface VirtualMachineArgs {
     operatingSystem?: pulumi.Input<inputs.VM.VirtualMachineOperatingSystem>;
     /**
      * The identifier for a pool to assign the virtual machine to.
+     * This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `proxmoxve.Pool.Membership` resource instead.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release. To assign the VM to a pool, use `proxmoxve.Pool.Membership` resource instead.
      */
     poolId?: pulumi.Input<string>;
     /**
      * Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
      */
     protection?: pulumi.Input<boolean>;
+    /**
+     * Whether to purge the VM from backup configurations on destroy (defaults to `true`)
+     */
+    purgeOnDestroy?: pulumi.Input<boolean>;
     /**
      * Reboot the VM after initial creation (defaults to `false`).
      */
@@ -903,7 +937,7 @@ export interface VirtualMachineArgs {
      */
     timeoutMigrate?: pulumi.Input<number>;
     /**
-     * MoveDisk timeout
+     * Disk move timeout
      *
      * @deprecated This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead.
      */

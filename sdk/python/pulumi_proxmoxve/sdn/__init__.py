@@ -9,6 +9,7 @@ import typing
 from .applier import *
 from .get_subnet import *
 from .get_vnet import *
+from .get_vnets import *
 from .get_zones import *
 from .subnet import *
 from .vnet import *

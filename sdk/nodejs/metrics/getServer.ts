@@ -56,6 +56,14 @@ export interface GetServerResult {
      */
     readonly name: string;
     /**
+     * OpenTelemetry endpoint path (e.g., `/v1/metrics`).
+     */
+    readonly opentelemetryPath: string;
+    /**
+     * Protocol for OpenTelemetry. Choice is between `http` | `https`.
+     */
+    readonly opentelemetryProto: string;
+    /**
      * Server network port.
      */
     readonly port: number;
@@ -64,7 +72,7 @@ export interface GetServerResult {
      */
     readonly server: string;
     /**
-     * Plugin type. Either `graphite` or `influxdb`.
+     * Plugin type. Either `graphite`, `influxdb`, or `opentelemetry`.
      */
     readonly type: string;
 }

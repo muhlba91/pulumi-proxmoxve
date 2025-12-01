@@ -21,22 +21,21 @@ __all__ = ['FirewallSecurityGroupArgs', 'FirewallSecurityGroup']
 @pulumi.input_type
 class FirewallSecurityGroupArgs:
     def __init__(__self__, *,
-                 rules: pulumi.Input[Sequence[pulumi.Input['FirewallSecurityGroupRuleArgs']]],
                  comment: Optional[pulumi.Input[_builtins.str]] = None,
                  container_id: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  node_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallSecurityGroupRuleArgs']]]] = None,
                  vm_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a FirewallSecurityGroup resource.
-        :param pulumi.Input[Sequence[pulumi.Input['FirewallSecurityGroupRuleArgs']]] rules: Firewall rule block (multiple blocks supported).
         :param pulumi.Input[_builtins.str] comment: Security group comment.
         :param pulumi.Input[_builtins.int] container_id: The ID of the container to manage the firewall for.
         :param pulumi.Input[_builtins.str] name: Security group name.
         :param pulumi.Input[_builtins.str] node_name: The name of the node.
+        :param pulumi.Input[Sequence[pulumi.Input['FirewallSecurityGroupRuleArgs']]] rules: Firewall rule block (multiple blocks supported).
         :param pulumi.Input[_builtins.int] vm_id: The ID of the VM to manage the firewall for.
         """
-        pulumi.set(__self__, "rules", rules)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
         if container_id is not None:
@@ -45,20 +44,10 @@ class FirewallSecurityGroupArgs:
             pulumi.set(__self__, "name", name)
         if node_name is not None:
             pulumi.set(__self__, "node_name", node_name)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
         if vm_id is not None:
             pulumi.set(__self__, "vm_id", vm_id)
-
-    @_builtins.property
-    @pulumi.getter
-    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['FirewallSecurityGroupRuleArgs']]]:
-        """
-        Firewall rule block (multiple blocks supported).
-        """
-        return pulumi.get(self, "rules")
-
-    @rules.setter
-    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['FirewallSecurityGroupRuleArgs']]]):
-        pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter
@@ -107,6 +96,18 @@ class FirewallSecurityGroupArgs:
     @node_name.setter
     def node_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "node_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallSecurityGroupRuleArgs']]]]:
+        """
+        Firewall rule block (multiple blocks supported).
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallSecurityGroupRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter(name="vmId")
@@ -297,7 +298,7 @@ class FirewallSecurityGroup(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: FirewallSecurityGroupArgs,
+                 args: Optional[FirewallSecurityGroupArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         A security group is a collection of rules, defined at cluster level, which can
@@ -379,8 +380,6 @@ class FirewallSecurityGroup(pulumi.CustomResource):
             __props__.__dict__["container_id"] = container_id
             __props__.__dict__["name"] = name
             __props__.__dict__["node_name"] = node_name
-            if rules is None and not opts.urn:
-                raise TypeError("Missing required property 'rules'")
             __props__.__dict__["rules"] = rules
             __props__.__dict__["vm_id"] = vm_id
         super(FirewallSecurityGroup, __self__).__init__(
@@ -459,7 +458,7 @@ class FirewallSecurityGroup(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> pulumi.Output[Sequence['outputs.FirewallSecurityGroupRule']]:
+    def rules(self) -> pulumi.Output[Optional[Sequence['outputs.FirewallSecurityGroupRule']]]:
         """
         Firewall rule block (multiple blocks supported).
         """

@@ -62,7 +62,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         /// <summary>
         /// The file ID for a disk image to import into VM. The image must be of `Import` content type.
         /// The ID format is `&lt;datastore_id&gt;:import/&lt;file_name&gt;`, for example `local:import/centos8.qcow2`. Can be also taken from
-        /// `proxmoxve.Download.File` resource.
+        /// a disk replacement operation, which will require a VM reboot. Your original disks will remain as detached disks.
         /// </summary>
         [Input("importFrom")]
         public Input<string>? ImportFrom { get; set; }

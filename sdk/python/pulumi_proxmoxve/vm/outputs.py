@@ -23,6 +23,7 @@ __all__ = [
     'VirtualMachine2Timeouts',
     'VirtualMachine2Vga',
     'VirtualMachineAgent',
+    'VirtualMachineAgentWaitForIp',
     'VirtualMachineAmdSev',
     'VirtualMachineAudioDevice',
     'VirtualMachineCdrom',
@@ -408,11 +409,29 @@ class VirtualMachine2Vga(dict):
 
 @pulumi.output_type
 class VirtualMachineAgent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "waitForIp":
+            suggest = "wait_for_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineAgent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VirtualMachineAgent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VirtualMachineAgent.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enabled: Optional[_builtins.bool] = None,
                  timeout: Optional[_builtins.str] = None,
                  trim: Optional[_builtins.bool] = None,
-                 type: Optional[_builtins.str] = None):
+                 type: Optional[_builtins.str] = None,
+                 wait_for_ip: Optional['outputs.VirtualMachineAgentWaitForIp'] = None):
         """
         :param _builtins.bool enabled: Whether to enable the QEMU agent (defaults
                to `false`).
@@ -421,6 +440,7 @@ class VirtualMachineAgent(dict):
         :param _builtins.bool trim: Whether to enable the FSTRIM feature in the QEMU agent
                (defaults to `false`).
         :param _builtins.str type: The QEMU agent interface type (defaults to `virtio`).
+        :param 'VirtualMachineAgentWaitForIpArgs' wait_for_ip: Configuration for waiting for specific IP address types when the VM starts.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -430,6 +450,8 @@ class VirtualMachineAgent(dict):
             pulumi.set(__self__, "trim", trim)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if wait_for_ip is not None:
+            pulumi.set(__self__, "wait_for_ip", wait_for_ip)
 
     @_builtins.property
     @pulumi.getter
@@ -465,6 +487,49 @@ class VirtualMachineAgent(dict):
         The QEMU agent interface type (defaults to `virtio`).
         """
         return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="waitForIp")
+    def wait_for_ip(self) -> Optional['outputs.VirtualMachineAgentWaitForIp']:
+        """
+        Configuration for waiting for specific IP address types when the VM starts.
+        """
+        return pulumi.get(self, "wait_for_ip")
+
+
+@pulumi.output_type
+class VirtualMachineAgentWaitForIp(dict):
+    def __init__(__self__, *,
+                 ipv4: Optional[_builtins.bool] = None,
+                 ipv6: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool ipv4: Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+        :param _builtins.bool ipv6: Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
+               
+               When `wait_for_ip` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+        """
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
+        if ipv6 is not None:
+            pulumi.set(__self__, "ipv6", ipv6)
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv4(self) -> Optional[_builtins.bool]:
+        """
+        Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+        """
+        return pulumi.get(self, "ipv4")
+
+    @_builtins.property
+    @pulumi.getter
+    def ipv6(self) -> Optional[_builtins.bool]:
+        """
+        Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
+
+        When `wait_for_ip` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+        """
+        return pulumi.get(self, "ipv6")
 
 
 @pulumi.output_type
@@ -1024,7 +1089,7 @@ class VirtualMachineDisk(dict):
                `Download.File` resource. *Deprecated*, use `import_from` instead.
         :param _builtins.str import_from: The file ID for a disk image to import into VM. The image must be of `import` content type.
                The ID format is `<datastore_id>:import/<file_name>`, for example `local:import/centos8.qcow2`. Can be also taken from
-               `Download.File` resource.
+               a disk replacement operation, which will require a VM reboot. Your original disks will remain as detached disks.
         :param _builtins.bool iothread: Whether to use iothreads for this disk (defaults
                to `false`).
         :param _builtins.str path_in_datastore: The in-datastore path to the disk image.
@@ -1149,7 +1214,7 @@ class VirtualMachineDisk(dict):
         """
         The file ID for a disk image to import into VM. The image must be of `import` content type.
         The ID format is `<datastore_id>:import/<file_name>`, for example `local:import/centos8.qcow2`. Can be also taken from
-        `Download.File` resource.
+        a disk replacement operation, which will require a VM reboot. Your original disks will remain as detached disks.
         """
         return pulumi.get(self, "import_from")
 
@@ -1584,6 +1649,8 @@ class VirtualMachineInitialization(dict):
         suggest = None
         if key == "datastoreId":
             suggest = "datastore_id"
+        elif key == "fileFormat":
+            suggest = "file_format"
         elif key == "ipConfigs":
             suggest = "ip_configs"
         elif key == "metaDataFileId":
@@ -1611,6 +1678,7 @@ class VirtualMachineInitialization(dict):
     def __init__(__self__, *,
                  datastore_id: Optional[_builtins.str] = None,
                  dns: Optional['outputs.VirtualMachineInitializationDns'] = None,
+                 file_format: Optional[_builtins.str] = None,
                  interface: Optional[_builtins.str] = None,
                  ip_configs: Optional[Sequence['outputs.VirtualMachineInitializationIpConfig']] = None,
                  meta_data_file_id: Optional[_builtins.str] = None,
@@ -1623,6 +1691,7 @@ class VirtualMachineInitialization(dict):
         :param _builtins.str datastore_id: The identifier for the datastore to create the
                cloud-init disk in (defaults to `local-lvm`).
         :param 'VirtualMachineInitializationDnsArgs' dns: The DNS configuration.
+        :param _builtins.str file_format: The file format.
         :param _builtins.str interface: The hardware interface to connect the cloud-init
                image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
                detected if the setting is missing but a cloud-init image is present,
@@ -1646,6 +1715,8 @@ class VirtualMachineInitialization(dict):
             pulumi.set(__self__, "datastore_id", datastore_id)
         if dns is not None:
             pulumi.set(__self__, "dns", dns)
+        if file_format is not None:
+            pulumi.set(__self__, "file_format", file_format)
         if interface is not None:
             pulumi.set(__self__, "interface", interface)
         if ip_configs is not None:
@@ -1679,6 +1750,14 @@ class VirtualMachineInitialization(dict):
         The DNS configuration.
         """
         return pulumi.get(self, "dns")
+
+    @_builtins.property
+    @pulumi.getter(name="fileFormat")
+    def file_format(self) -> Optional[_builtins.str]:
+        """
+        The file format.
+        """
+        return pulumi.get(self, "file_format")
 
     @_builtins.property
     @pulumi.getter
@@ -1862,9 +1941,9 @@ class VirtualMachineInitializationIpConfigIpv6(dict):
         """
         :param _builtins.str address: The IPv6 address in CIDR notation
                (e.g. fd1c::7334/64). Alternatively, set this
-               to `dhcp` for autodiscovery.
+               to `dhcp` for DHCPv6, or `auto` for SLAAC.
         :param _builtins.str gateway: The IPv6 gateway (must be omitted
-               when `dhcp` is used as the address).
+               when `dhcp` or `auto` are used as the address).
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -1877,7 +1956,7 @@ class VirtualMachineInitializationIpConfigIpv6(dict):
         """
         The IPv6 address in CIDR notation
         (e.g. fd1c::7334/64). Alternatively, set this
-        to `dhcp` for autodiscovery.
+        to `dhcp` for DHCPv6, or `auto` for SLAAC.
         """
         return pulumi.get(self, "address")
 
@@ -1886,7 +1965,7 @@ class VirtualMachineInitializationIpConfigIpv6(dict):
     def gateway(self) -> Optional[_builtins.str]:
         """
         The IPv6 gateway (must be omitted
-        when `dhcp` is used as the address).
+        when `dhcp` or `auto` are used as the address).
         """
         return pulumi.get(self, "gateway")
 

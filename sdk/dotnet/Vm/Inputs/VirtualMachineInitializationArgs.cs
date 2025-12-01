@@ -26,6 +26,12 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<Inputs.VirtualMachineInitializationDnsArgs>? Dns { get; set; }
 
         /// <summary>
+        /// The file format.
+        /// </summary>
+        [Input("fileFormat")]
+        public Input<string>? FileFormat { get; set; }
+
+        /// <summary>
         /// The hardware interface to connect the cloud-init
         /// image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
         /// detected if the setting is missing but a cloud-init image is present,

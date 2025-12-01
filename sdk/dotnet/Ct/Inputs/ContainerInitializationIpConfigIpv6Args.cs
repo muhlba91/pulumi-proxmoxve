@@ -15,14 +15,14 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
         /// <summary>
         /// The IPv6 address in CIDR notation
         /// (e.g. fd1c::7334/64). Alternatively, set this
-        /// to `Dhcp` for autodiscovery.
+        /// to `Dhcp` for DHCPv6, or `Auto` for SLAAC.
         /// </summary>
         [Input("address")]
         public Input<string>? Address { get; set; }
 
         /// <summary>
         /// The IPv6 gateway (must be omitted
-        /// when `Dhcp` is used as the address).
+        /// when `Dhcp` or `Auto` are used as the address).
         /// </summary>
         [Input("gateway")]
         public Input<string>? Gateway { get; set; }

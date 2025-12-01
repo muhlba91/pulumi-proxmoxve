@@ -25,8 +25,10 @@ class VirtualMachine2Args:
                  cdrom: Optional[pulumi.Input[Mapping[str, pulumi.Input['VirtualMachine2CdromArgs']]]] = None,
                  clone: Optional[pulumi.Input['VirtualMachine2CloneArgs']] = None,
                  cpu: Optional[pulumi.Input['VirtualMachine2CpuArgs']] = None,
+                 delete_unreferenced_disks_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 purge_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  rng: Optional[pulumi.Input['VirtualMachine2RngArgs']] = None,
                  stop_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -39,8 +41,10 @@ class VirtualMachine2Args:
         :param pulumi.Input[Mapping[str, pulumi.Input['VirtualMachine2CdromArgs']]] cdrom: The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
         :param pulumi.Input['VirtualMachine2CloneArgs'] clone: The cloning configuration.
         :param pulumi.Input['VirtualMachine2CpuArgs'] cpu: The CPU configuration.
+        :param pulumi.Input[_builtins.bool] delete_unreferenced_disks_on_destroy: Set to true to delete unreferenced disks on destroy (defaults to `true`).
         :param pulumi.Input[_builtins.str] description: The description of the VM.
         :param pulumi.Input[_builtins.str] name: The name of the VM. Doesn't have to be unique.
+        :param pulumi.Input[_builtins.bool] purge_on_destroy: Set to true to purge the VM from backup configurations on destroy (defaults to `true`).
         :param pulumi.Input['VirtualMachine2RngArgs'] rng: Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
         :param pulumi.Input[_builtins.bool] stop_on_destroy: Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The tags assigned to the VM.
@@ -54,10 +58,14 @@ class VirtualMachine2Args:
             pulumi.set(__self__, "clone", clone)
         if cpu is not None:
             pulumi.set(__self__, "cpu", cpu)
+        if delete_unreferenced_disks_on_destroy is not None:
+            pulumi.set(__self__, "delete_unreferenced_disks_on_destroy", delete_unreferenced_disks_on_destroy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if purge_on_destroy is not None:
+            pulumi.set(__self__, "purge_on_destroy", purge_on_destroy)
         if rng is not None:
             pulumi.set(__self__, "rng", rng)
         if stop_on_destroy is not None:
@@ -120,6 +128,18 @@ class VirtualMachine2Args:
         pulumi.set(self, "cpu", value)
 
     @_builtins.property
+    @pulumi.getter(name="deleteUnreferencedDisksOnDestroy")
+    def delete_unreferenced_disks_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Set to true to delete unreferenced disks on destroy (defaults to `true`).
+        """
+        return pulumi.get(self, "delete_unreferenced_disks_on_destroy")
+
+    @delete_unreferenced_disks_on_destroy.setter
+    def delete_unreferenced_disks_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "delete_unreferenced_disks_on_destroy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -142,6 +162,18 @@ class VirtualMachine2Args:
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="purgeOnDestroy")
+    def purge_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Set to true to purge the VM from backup configurations on destroy (defaults to `true`).
+        """
+        return pulumi.get(self, "purge_on_destroy")
+
+    @purge_on_destroy.setter
+    def purge_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "purge_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -219,9 +251,11 @@ class _VirtualMachine2State:
                  cdrom: Optional[pulumi.Input[Mapping[str, pulumi.Input['VirtualMachine2CdromArgs']]]] = None,
                  clone: Optional[pulumi.Input['VirtualMachine2CloneArgs']] = None,
                  cpu: Optional[pulumi.Input['VirtualMachine2CpuArgs']] = None,
+                 delete_unreferenced_disks_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  node_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 purge_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  rng: Optional[pulumi.Input['VirtualMachine2RngArgs']] = None,
                  stop_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -233,9 +267,11 @@ class _VirtualMachine2State:
         :param pulumi.Input[Mapping[str, pulumi.Input['VirtualMachine2CdromArgs']]] cdrom: The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
         :param pulumi.Input['VirtualMachine2CloneArgs'] clone: The cloning configuration.
         :param pulumi.Input['VirtualMachine2CpuArgs'] cpu: The CPU configuration.
+        :param pulumi.Input[_builtins.bool] delete_unreferenced_disks_on_destroy: Set to true to delete unreferenced disks on destroy (defaults to `true`).
         :param pulumi.Input[_builtins.str] description: The description of the VM.
         :param pulumi.Input[_builtins.str] name: The name of the VM. Doesn't have to be unique.
         :param pulumi.Input[_builtins.str] node_name: The name of the node where the VM is provisioned.
+        :param pulumi.Input[_builtins.bool] purge_on_destroy: Set to true to purge the VM from backup configurations on destroy (defaults to `true`).
         :param pulumi.Input['VirtualMachine2RngArgs'] rng: Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
         :param pulumi.Input[_builtins.bool] stop_on_destroy: Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The tags assigned to the VM.
@@ -248,12 +284,16 @@ class _VirtualMachine2State:
             pulumi.set(__self__, "clone", clone)
         if cpu is not None:
             pulumi.set(__self__, "cpu", cpu)
+        if delete_unreferenced_disks_on_destroy is not None:
+            pulumi.set(__self__, "delete_unreferenced_disks_on_destroy", delete_unreferenced_disks_on_destroy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if node_name is not None:
             pulumi.set(__self__, "node_name", node_name)
+        if purge_on_destroy is not None:
+            pulumi.set(__self__, "purge_on_destroy", purge_on_destroy)
         if rng is not None:
             pulumi.set(__self__, "rng", rng)
         if stop_on_destroy is not None:
@@ -304,6 +344,18 @@ class _VirtualMachine2State:
         pulumi.set(self, "cpu", value)
 
     @_builtins.property
+    @pulumi.getter(name="deleteUnreferencedDisksOnDestroy")
+    def delete_unreferenced_disks_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Set to true to delete unreferenced disks on destroy (defaults to `true`).
+        """
+        return pulumi.get(self, "delete_unreferenced_disks_on_destroy")
+
+    @delete_unreferenced_disks_on_destroy.setter
+    def delete_unreferenced_disks_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "delete_unreferenced_disks_on_destroy", value)
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -338,6 +390,18 @@ class _VirtualMachine2State:
     @node_name.setter
     def node_name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "node_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="purgeOnDestroy")
+    def purge_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Set to true to purge the VM from backup configurations on destroy (defaults to `true`).
+        """
+        return pulumi.get(self, "purge_on_destroy")
+
+    @purge_on_destroy.setter
+    def purge_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "purge_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -418,9 +482,11 @@ class VirtualMachine2(pulumi.CustomResource):
                  cdrom: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['VirtualMachine2CdromArgs', 'VirtualMachine2CdromArgsDict']]]]] = None,
                  clone: Optional[pulumi.Input[Union['VirtualMachine2CloneArgs', 'VirtualMachine2CloneArgsDict']]] = None,
                  cpu: Optional[pulumi.Input[Union['VirtualMachine2CpuArgs', 'VirtualMachine2CpuArgsDict']]] = None,
+                 delete_unreferenced_disks_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  node_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 purge_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  rng: Optional[pulumi.Input[Union['VirtualMachine2RngArgs', 'VirtualMachine2RngArgsDict']]] = None,
                  stop_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -444,9 +510,11 @@ class VirtualMachine2(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['VirtualMachine2CdromArgs', 'VirtualMachine2CdromArgsDict']]]] cdrom: The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
         :param pulumi.Input[Union['VirtualMachine2CloneArgs', 'VirtualMachine2CloneArgsDict']] clone: The cloning configuration.
         :param pulumi.Input[Union['VirtualMachine2CpuArgs', 'VirtualMachine2CpuArgsDict']] cpu: The CPU configuration.
+        :param pulumi.Input[_builtins.bool] delete_unreferenced_disks_on_destroy: Set to true to delete unreferenced disks on destroy (defaults to `true`).
         :param pulumi.Input[_builtins.str] description: The description of the VM.
         :param pulumi.Input[_builtins.str] name: The name of the VM. Doesn't have to be unique.
         :param pulumi.Input[_builtins.str] node_name: The name of the node where the VM is provisioned.
+        :param pulumi.Input[_builtins.bool] purge_on_destroy: Set to true to purge the VM from backup configurations on destroy (defaults to `true`).
         :param pulumi.Input[Union['VirtualMachine2RngArgs', 'VirtualMachine2RngArgsDict']] rng: Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
         :param pulumi.Input[_builtins.bool] stop_on_destroy: Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The tags assigned to the VM.
@@ -488,9 +556,11 @@ class VirtualMachine2(pulumi.CustomResource):
                  cdrom: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['VirtualMachine2CdromArgs', 'VirtualMachine2CdromArgsDict']]]]] = None,
                  clone: Optional[pulumi.Input[Union['VirtualMachine2CloneArgs', 'VirtualMachine2CloneArgsDict']]] = None,
                  cpu: Optional[pulumi.Input[Union['VirtualMachine2CpuArgs', 'VirtualMachine2CpuArgsDict']]] = None,
+                 delete_unreferenced_disks_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  node_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 purge_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  rng: Optional[pulumi.Input[Union['VirtualMachine2RngArgs', 'VirtualMachine2RngArgsDict']]] = None,
                  stop_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -509,11 +579,13 @@ class VirtualMachine2(pulumi.CustomResource):
             __props__.__dict__["cdrom"] = cdrom
             __props__.__dict__["clone"] = clone
             __props__.__dict__["cpu"] = cpu
+            __props__.__dict__["delete_unreferenced_disks_on_destroy"] = delete_unreferenced_disks_on_destroy
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             if node_name is None and not opts.urn:
                 raise TypeError("Missing required property 'node_name'")
             __props__.__dict__["node_name"] = node_name
+            __props__.__dict__["purge_on_destroy"] = purge_on_destroy
             __props__.__dict__["rng"] = rng
             __props__.__dict__["stop_on_destroy"] = stop_on_destroy
             __props__.__dict__["tags"] = tags
@@ -533,9 +605,11 @@ class VirtualMachine2(pulumi.CustomResource):
             cdrom: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['VirtualMachine2CdromArgs', 'VirtualMachine2CdromArgsDict']]]]] = None,
             clone: Optional[pulumi.Input[Union['VirtualMachine2CloneArgs', 'VirtualMachine2CloneArgsDict']]] = None,
             cpu: Optional[pulumi.Input[Union['VirtualMachine2CpuArgs', 'VirtualMachine2CpuArgsDict']]] = None,
+            delete_unreferenced_disks_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             node_name: Optional[pulumi.Input[_builtins.str]] = None,
+            purge_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
             rng: Optional[pulumi.Input[Union['VirtualMachine2RngArgs', 'VirtualMachine2RngArgsDict']]] = None,
             stop_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -552,9 +626,11 @@ class VirtualMachine2(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['VirtualMachine2CdromArgs', 'VirtualMachine2CdromArgsDict']]]] cdrom: The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
         :param pulumi.Input[Union['VirtualMachine2CloneArgs', 'VirtualMachine2CloneArgsDict']] clone: The cloning configuration.
         :param pulumi.Input[Union['VirtualMachine2CpuArgs', 'VirtualMachine2CpuArgsDict']] cpu: The CPU configuration.
+        :param pulumi.Input[_builtins.bool] delete_unreferenced_disks_on_destroy: Set to true to delete unreferenced disks on destroy (defaults to `true`).
         :param pulumi.Input[_builtins.str] description: The description of the VM.
         :param pulumi.Input[_builtins.str] name: The name of the VM. Doesn't have to be unique.
         :param pulumi.Input[_builtins.str] node_name: The name of the node where the VM is provisioned.
+        :param pulumi.Input[_builtins.bool] purge_on_destroy: Set to true to purge the VM from backup configurations on destroy (defaults to `true`).
         :param pulumi.Input[Union['VirtualMachine2RngArgs', 'VirtualMachine2RngArgsDict']] rng: Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
         :param pulumi.Input[_builtins.bool] stop_on_destroy: Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The tags assigned to the VM.
@@ -568,9 +644,11 @@ class VirtualMachine2(pulumi.CustomResource):
         __props__.__dict__["cdrom"] = cdrom
         __props__.__dict__["clone"] = clone
         __props__.__dict__["cpu"] = cpu
+        __props__.__dict__["delete_unreferenced_disks_on_destroy"] = delete_unreferenced_disks_on_destroy
         __props__.__dict__["description"] = description
         __props__.__dict__["name"] = name
         __props__.__dict__["node_name"] = node_name
+        __props__.__dict__["purge_on_destroy"] = purge_on_destroy
         __props__.__dict__["rng"] = rng
         __props__.__dict__["stop_on_destroy"] = stop_on_destroy
         __props__.__dict__["tags"] = tags
@@ -604,6 +682,14 @@ class VirtualMachine2(pulumi.CustomResource):
         return pulumi.get(self, "cpu")
 
     @_builtins.property
+    @pulumi.getter(name="deleteUnreferencedDisksOnDestroy")
+    def delete_unreferenced_disks_on_destroy(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Set to true to delete unreferenced disks on destroy (defaults to `true`).
+        """
+        return pulumi.get(self, "delete_unreferenced_disks_on_destroy")
+
+    @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
@@ -626,6 +712,14 @@ class VirtualMachine2(pulumi.CustomResource):
         The name of the node where the VM is provisioned.
         """
         return pulumi.get(self, "node_name")
+
+    @_builtins.property
+    @pulumi.getter(name="purgeOnDestroy")
+    def purge_on_destroy(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Set to true to purge the VM from backup configurations on destroy (defaults to `true`).
+        """
+        return pulumi.get(self, "purge_on_destroy")
 
     @_builtins.property
     @pulumi.getter

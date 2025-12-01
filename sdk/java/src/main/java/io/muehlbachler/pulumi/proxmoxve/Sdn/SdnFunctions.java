@@ -8,6 +8,7 @@ import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.deployment.InvokeOutputOptions;
+import com.pulumi.resources.InvokeArgs;
 import io.muehlbachler.pulumi.proxmoxve.Sdn.inputs.GetSubnetArgs;
 import io.muehlbachler.pulumi.proxmoxve.Sdn.inputs.GetSubnetPlainArgs;
 import io.muehlbachler.pulumi.proxmoxve.Sdn.inputs.GetVnetArgs;
@@ -16,6 +17,7 @@ import io.muehlbachler.pulumi.proxmoxve.Sdn.inputs.GetZonesArgs;
 import io.muehlbachler.pulumi.proxmoxve.Sdn.inputs.GetZonesPlainArgs;
 import io.muehlbachler.pulumi.proxmoxve.Sdn.outputs.GetSubnetResult;
 import io.muehlbachler.pulumi.proxmoxve.Sdn.outputs.GetVnetResult;
+import io.muehlbachler.pulumi.proxmoxve.Sdn.outputs.GetVnetsResult;
 import io.muehlbachler.pulumi.proxmoxve.Sdn.outputs.GetZonesResult;
 import io.muehlbachler.pulumi.proxmoxve.Utilities;
 import java.util.concurrent.CompletableFuture;
@@ -59,12 +61,98 @@ public final class SdnFunctions {
     /**
      * Retrieves information about an existing SDN VNet.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Sdn.SdnFunctions;
+     * import com.pulumi.proxmoxve.Sdn.inputs.GetVnetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SdnFunctions.getVnet(GetVnetArgs.builder()
+     *             .id("vnet1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentSdnVnet", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("zone", example.zone()),
+     *             Map.entry("alias", example.alias()),
+     *             Map.entry("isolatePorts", example.isolatePorts()),
+     *             Map.entry("tag", example.tag()),
+     *             Map.entry("vlanAware", example.vlanAware())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetVnetResult> getVnet(GetVnetArgs args) {
         return getVnet(args, InvokeOptions.Empty);
     }
     /**
      * Retrieves information about an existing SDN VNet.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Sdn.SdnFunctions;
+     * import com.pulumi.proxmoxve.Sdn.inputs.GetVnetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SdnFunctions.getVnet(GetVnetArgs.builder()
+     *             .id("vnet1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentSdnVnet", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("zone", example.zone()),
+     *             Map.entry("alias", example.alias()),
+     *             Map.entry("isolatePorts", example.isolatePorts()),
+     *             Map.entry("tag", example.tag()),
+     *             Map.entry("vlanAware", example.vlanAware())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVnetResult> getVnetPlain(GetVnetPlainArgs args) {
@@ -73,12 +161,98 @@ public final class SdnFunctions {
     /**
      * Retrieves information about an existing SDN VNet.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Sdn.SdnFunctions;
+     * import com.pulumi.proxmoxve.Sdn.inputs.GetVnetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SdnFunctions.getVnet(GetVnetArgs.builder()
+     *             .id("vnet1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentSdnVnet", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("zone", example.zone()),
+     *             Map.entry("alias", example.alias()),
+     *             Map.entry("isolatePorts", example.isolatePorts()),
+     *             Map.entry("tag", example.tag()),
+     *             Map.entry("vlanAware", example.vlanAware())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetVnetResult> getVnet(GetVnetArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:Sdn/getVnet:getVnet", TypeShape.of(GetVnetResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves information about an existing SDN VNet.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Sdn.SdnFunctions;
+     * import com.pulumi.proxmoxve.Sdn.inputs.GetVnetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SdnFunctions.getVnet(GetVnetArgs.builder()
+     *             .id("vnet1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentSdnVnet", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("zone", example.zone()),
+     *             Map.entry("alias", example.alias()),
+     *             Map.entry("isolatePorts", example.isolatePorts()),
+     *             Map.entry("tag", example.tag()),
+     *             Map.entry("vlanAware", example.vlanAware())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetVnetResult> getVnet(GetVnetArgs args, InvokeOutputOptions options) {
@@ -87,9 +261,339 @@ public final class SdnFunctions {
     /**
      * Retrieves information about an existing SDN VNet.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Sdn.SdnFunctions;
+     * import com.pulumi.proxmoxve.Sdn.inputs.GetVnetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SdnFunctions.getVnet(GetVnetArgs.builder()
+     *             .id("vnet1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentSdnVnet", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("zone", example.zone()),
+     *             Map.entry("alias", example.alias()),
+     *             Map.entry("isolatePorts", example.isolatePorts()),
+     *             Map.entry("tag", example.tag()),
+     *             Map.entry("vlanAware", example.vlanAware())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static CompletableFuture<GetVnetResult> getVnetPlain(GetVnetPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("proxmoxve:Sdn/getVnet:getVnet", TypeShape.of(GetVnetResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Sdn.SdnFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all SDN VNets
+     *         final var all = SdnFunctions.getVnets(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentSdnVnetsAll", Map.of("vnets", all.vnets()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVnetsResult> getVnets() {
+        return getVnets(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Sdn.SdnFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all SDN VNets
+     *         final var all = SdnFunctions.getVnets(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentSdnVnetsAll", Map.of("vnets", all.vnets()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetVnetsResult> getVnetsPlain() {
+        return getVnetsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Sdn.SdnFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all SDN VNets
+     *         final var all = SdnFunctions.getVnets(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentSdnVnetsAll", Map.of("vnets", all.vnets()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVnetsResult> getVnets(InvokeArgs args) {
+        return getVnets(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Sdn.SdnFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all SDN VNets
+     *         final var all = SdnFunctions.getVnets(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentSdnVnetsAll", Map.of("vnets", all.vnets()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetVnetsResult> getVnetsPlain(InvokeArgs args) {
+        return getVnetsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Sdn.SdnFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all SDN VNets
+     *         final var all = SdnFunctions.getVnets(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentSdnVnetsAll", Map.of("vnets", all.vnets()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVnetsResult> getVnets(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:Sdn/getVnets:getVnets", TypeShape.of(GetVnetsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Sdn.SdnFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all SDN VNets
+     *         final var all = SdnFunctions.getVnets(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentSdnVnetsAll", Map.of("vnets", all.vnets()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVnetsResult> getVnets(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:Sdn/getVnets:getVnets", TypeShape.of(GetVnetsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.Sdn.SdnFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all SDN VNets
+     *         final var all = SdnFunctions.getVnets(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentSdnVnetsAll", Map.of("vnets", all.vnets()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetVnetsResult> getVnetsPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("proxmoxve:Sdn/getVnets:getVnets", TypeShape.of(GetVnetsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves information about all SDN Zones in Proxmox. This data source can optionally filter zones by type.

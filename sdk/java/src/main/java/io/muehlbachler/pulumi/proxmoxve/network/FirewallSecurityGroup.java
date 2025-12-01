@@ -152,14 +152,14 @@ public class FirewallSecurityGroup extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="rules", refs={List.class,FirewallSecurityGroupRule.class}, tree="[0,1]")
-    private Output<List<FirewallSecurityGroupRule>> rules;
+    private Output</* @Nullable */ List<FirewallSecurityGroupRule>> rules;
 
     /**
      * @return Firewall rule block (multiple blocks supported).
      * 
      */
-    public Output<List<FirewallSecurityGroupRule>> rules() {
-        return this.rules;
+    public Output<Optional<List<FirewallSecurityGroupRule>>> rules() {
+        return Codegen.optional(this.rules);
     }
     /**
      * The ID of the VM to manage the firewall for.
@@ -188,7 +188,7 @@ public class FirewallSecurityGroup extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public FirewallSecurityGroup(java.lang.String name, FirewallSecurityGroupArgs args) {
+    public FirewallSecurityGroup(java.lang.String name, @Nullable FirewallSecurityGroupArgs args) {
         this(name, args, null);
     }
     /**
@@ -197,7 +197,7 @@ public class FirewallSecurityGroup extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public FirewallSecurityGroup(java.lang.String name, FirewallSecurityGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public FirewallSecurityGroup(java.lang.String name, @Nullable FirewallSecurityGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("proxmoxve:Network/firewallSecurityGroup:FirewallSecurityGroup", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
@@ -205,7 +205,7 @@ public class FirewallSecurityGroup extends com.pulumi.resources.CustomResource {
         super("proxmoxve:Network/firewallSecurityGroup:FirewallSecurityGroup", name, state, makeResourceOptions(options, id), false);
     }
 
-    private static FirewallSecurityGroupArgs makeArgs(FirewallSecurityGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    private static FirewallSecurityGroupArgs makeArgs(@Nullable FirewallSecurityGroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         if (options != null && options.getUrn().isPresent()) {
             return null;
         }

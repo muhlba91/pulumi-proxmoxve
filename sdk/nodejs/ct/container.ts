@@ -197,6 +197,9 @@ export class Container extends pulumi.CustomResource {
     declare public readonly operatingSystem: pulumi.Output<outputs.CT.ContainerOperatingSystem | undefined>;
     /**
      * The identifier for a pool to assign the container to.
+     * This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `proxmoxve.Pool.Membership` resource instead.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release. To assign the container to a pool, use `proxmoxve.Pool.Membership` resource instead
      */
     declare public readonly poolId: pulumi.Output<string | undefined>;
     /**
@@ -258,6 +261,10 @@ export class Container extends pulumi.CustomResource {
      * The container identifier
      */
     declare public readonly vmId: pulumi.Output<number>;
+    /**
+     * Configuration for waiting for specific IP address types when the container starts.
+     */
+    declare public readonly waitForIp: pulumi.Output<outputs.CT.ContainerWaitForIp | undefined>;
 
     /**
      * Create a Container resource with the given unique name, arguments, and options.
@@ -302,6 +309,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["timeoutUpdate"] = state?.timeoutUpdate;
             resourceInputs["unprivileged"] = state?.unprivileged;
             resourceInputs["vmId"] = state?.vmId;
+            resourceInputs["waitForIp"] = state?.waitForIp;
         } else {
             const args = argsOrState as ContainerArgs | undefined;
             if (args?.nodeName === undefined && !opts.urn) {
@@ -335,6 +343,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["timeoutUpdate"] = args?.timeoutUpdate;
             resourceInputs["unprivileged"] = args?.unprivileged;
             resourceInputs["vmId"] = args?.vmId;
+            resourceInputs["waitForIp"] = args?.waitForIp;
             resourceInputs["ipv4"] = undefined /*out*/;
             resourceInputs["ipv6"] = undefined /*out*/;
         }
@@ -414,6 +423,9 @@ export interface ContainerState {
     operatingSystem?: pulumi.Input<inputs.CT.ContainerOperatingSystem>;
     /**
      * The identifier for a pool to assign the container to.
+     * This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `proxmoxve.Pool.Membership` resource instead.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release. To assign the container to a pool, use `proxmoxve.Pool.Membership` resource instead
      */
     poolId?: pulumi.Input<string>;
     /**
@@ -475,6 +487,10 @@ export interface ContainerState {
      * The container identifier
      */
     vmId?: pulumi.Input<number>;
+    /**
+     * Configuration for waiting for specific IP address types when the container starts.
+     */
+    waitForIp?: pulumi.Input<inputs.CT.ContainerWaitForIp>;
 }
 
 /**
@@ -540,6 +556,9 @@ export interface ContainerArgs {
     operatingSystem?: pulumi.Input<inputs.CT.ContainerOperatingSystem>;
     /**
      * The identifier for a pool to assign the container to.
+     * This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `proxmoxve.Pool.Membership` resource instead.
+     *
+     * @deprecated This field is deprecated and will be removed in a future release. To assign the container to a pool, use `proxmoxve.Pool.Membership` resource instead
      */
     poolId?: pulumi.Input<string>;
     /**
@@ -601,4 +620,8 @@ export interface ContainerArgs {
      * The container identifier
      */
     vmId?: pulumi.Input<number>;
+    /**
+     * Configuration for waiting for specific IP address types when the container starts.
+     */
+    waitForIp?: pulumi.Input<inputs.CT.ContainerWaitForIp>;
 }

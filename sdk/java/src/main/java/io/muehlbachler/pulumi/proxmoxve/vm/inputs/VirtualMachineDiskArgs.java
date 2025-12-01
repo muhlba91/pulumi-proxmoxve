@@ -137,7 +137,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     /**
      * The file ID for a disk image to import into VM. The image must be of &lt;span pulumi-lang-nodejs=&#34;`import`&#34; pulumi-lang-dotnet=&#34;`Import`&#34; pulumi-lang-go=&#34;`import`&#34; pulumi-lang-python=&#34;`import`&#34; pulumi-lang-yaml=&#34;`import`&#34; pulumi-lang-java=&#34;`import`&#34;&gt;`import`&lt;/span&gt; content type.
      * The ID format is `&lt;datastore_id&gt;:import/&lt;file_name&gt;`, for example `local:import/centos8.qcow2`. Can be also taken from
-     * &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-go=&#34;`Download.File`&#34; pulumi-lang-python=&#34;`Download.File`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-java=&#34;`proxmoxve.Download.File`&#34;&gt;`proxmoxve.Download.File`&lt;/span&gt; resource.
+     * a disk replacement operation, which will require a VM reboot. Your original disks will remain as detached disks.
      * 
      */
     @Import(name="importFrom")
@@ -146,7 +146,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
     /**
      * @return The file ID for a disk image to import into VM. The image must be of &lt;span pulumi-lang-nodejs=&#34;`import`&#34; pulumi-lang-dotnet=&#34;`Import`&#34; pulumi-lang-go=&#34;`import`&#34; pulumi-lang-python=&#34;`import`&#34; pulumi-lang-yaml=&#34;`import`&#34; pulumi-lang-java=&#34;`import`&#34;&gt;`import`&lt;/span&gt; content type.
      * The ID format is `&lt;datastore_id&gt;:import/&lt;file_name&gt;`, for example `local:import/centos8.qcow2`. Can be also taken from
-     * &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-go=&#34;`Download.File`&#34; pulumi-lang-python=&#34;`Download.File`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-java=&#34;`proxmoxve.Download.File`&#34;&gt;`proxmoxve.Download.File`&lt;/span&gt; resource.
+     * a disk replacement operation, which will require a VM reboot. Your original disks will remain as detached disks.
      * 
      */
     public Optional<Output<String>> importFrom() {
@@ -490,7 +490,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         /**
          * @param importFrom The file ID for a disk image to import into VM. The image must be of &lt;span pulumi-lang-nodejs=&#34;`import`&#34; pulumi-lang-dotnet=&#34;`Import`&#34; pulumi-lang-go=&#34;`import`&#34; pulumi-lang-python=&#34;`import`&#34; pulumi-lang-yaml=&#34;`import`&#34; pulumi-lang-java=&#34;`import`&#34;&gt;`import`&lt;/span&gt; content type.
          * The ID format is `&lt;datastore_id&gt;:import/&lt;file_name&gt;`, for example `local:import/centos8.qcow2`. Can be also taken from
-         * &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-go=&#34;`Download.File`&#34; pulumi-lang-python=&#34;`Download.File`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-java=&#34;`proxmoxve.Download.File`&#34;&gt;`proxmoxve.Download.File`&lt;/span&gt; resource.
+         * a disk replacement operation, which will require a VM reboot. Your original disks will remain as detached disks.
          * 
          * @return builder
          * 
@@ -503,7 +503,7 @@ public final class VirtualMachineDiskArgs extends com.pulumi.resources.ResourceA
         /**
          * @param importFrom The file ID for a disk image to import into VM. The image must be of &lt;span pulumi-lang-nodejs=&#34;`import`&#34; pulumi-lang-dotnet=&#34;`Import`&#34; pulumi-lang-go=&#34;`import`&#34; pulumi-lang-python=&#34;`import`&#34; pulumi-lang-yaml=&#34;`import`&#34; pulumi-lang-java=&#34;`import`&#34;&gt;`import`&lt;/span&gt; content type.
          * The ID format is `&lt;datastore_id&gt;:import/&lt;file_name&gt;`, for example `local:import/centos8.qcow2`. Can be also taken from
-         * &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-go=&#34;`Download.File`&#34; pulumi-lang-python=&#34;`Download.File`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Download.File`&#34; pulumi-lang-java=&#34;`proxmoxve.Download.File`&#34;&gt;`proxmoxve.Download.File`&lt;/span&gt; resource.
+         * a disk replacement operation, which will require a VM reboot. Your original disks will remain as detached disks.
          * 
          * @return builder
          * 

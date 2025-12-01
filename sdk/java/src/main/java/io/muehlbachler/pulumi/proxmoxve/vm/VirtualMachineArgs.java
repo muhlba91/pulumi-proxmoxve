@@ -118,16 +118,14 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Specify a list of devices to boot from in the order
-     * they appear in the list (defaults to `[]`).
+     * Specify a list of devices to boot from in the order they appear in the list.
      * 
      */
     @Import(name="bootOrders")
     private @Nullable Output<List<String>> bootOrders;
 
     /**
-     * @return Specify a list of devices to boot from in the order
-     * they appear in the list (defaults to `[]`).
+     * @return Specify a list of devices to boot from in the order they appear in the list.
      * 
      */
     public Optional<Output<List<String>>> bootOrders() {
@@ -177,6 +175,21 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<VirtualMachineCpuArgs>> cpu() {
         return Optional.ofNullable(this.cpu);
+    }
+
+    /**
+     * Whether to delete unreferenced disks on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
+     * 
+     */
+    @Import(name="deleteUnreferencedDisksOnDestroy")
+    private @Nullable Output<Boolean> deleteUnreferencedDisksOnDestroy;
+
+    /**
+     * @return Whether to delete unreferenced disks on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
+     * 
+     */
+    public Optional<Output<Boolean>> deleteUnreferencedDisksOnDestroy() {
+        return Optional.ofNullable(this.deleteUnreferencedDisksOnDestroy);
     }
 
     /**
@@ -461,15 +474,25 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The identifier for a pool to assign the virtual machine to.
+     * This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-go=&#34;`Pool.Membership`&#34; pulumi-lang-python=&#34;`Pool.Membership`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-java=&#34;`proxmoxve.Pool.Membership`&#34;&gt;`proxmoxve.Pool.Membership`&lt;/span&gt; resource instead.
+     * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release. To assign the VM to a pool, use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-go=&#34;`Pool.Membership`&#34; pulumi-lang-python=&#34;`Pool.Membership`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-java=&#34;`proxmoxve.Pool.Membership`&#34;&gt;`proxmoxve.Pool.Membership`&lt;/span&gt; resource instead.
      * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future release. To assign the VM to a pool, use <span pulumi-lang-nodejs=""`proxmoxve.Pool.Membership`"" pulumi-lang-dotnet=""`proxmoxve.Pool.Membership`"" pulumi-lang-go=""`Pool.Membership`"" pulumi-lang-python=""`Pool.Membership`"" pulumi-lang-yaml=""`proxmoxve.Pool.Membership`"" pulumi-lang-java=""`proxmoxve.Pool.Membership`"">`proxmoxve.Pool.Membership`</span> resource instead. */
     @Import(name="poolId")
     private @Nullable Output<String> poolId;
 
     /**
      * @return The identifier for a pool to assign the virtual machine to.
+     * This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-go=&#34;`Pool.Membership`&#34; pulumi-lang-python=&#34;`Pool.Membership`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-java=&#34;`proxmoxve.Pool.Membership`&#34;&gt;`proxmoxve.Pool.Membership`&lt;/span&gt; resource instead.
+     * 
+     * @deprecated
+     * This field is deprecated and will be removed in a future release. To assign the VM to a pool, use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-go=&#34;`Pool.Membership`&#34; pulumi-lang-python=&#34;`Pool.Membership`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-java=&#34;`proxmoxve.Pool.Membership`&#34;&gt;`proxmoxve.Pool.Membership`&lt;/span&gt; resource instead.
      * 
      */
+    @Deprecated /* This field is deprecated and will be removed in a future release. To assign the VM to a pool, use <span pulumi-lang-nodejs=""`proxmoxve.Pool.Membership`"" pulumi-lang-dotnet=""`proxmoxve.Pool.Membership`"" pulumi-lang-go=""`Pool.Membership`"" pulumi-lang-python=""`Pool.Membership`"" pulumi-lang-yaml=""`proxmoxve.Pool.Membership`"" pulumi-lang-java=""`proxmoxve.Pool.Membership`"">`proxmoxve.Pool.Membership`</span> resource instead. */
     public Optional<Output<String>> poolId() {
         return Optional.ofNullable(this.poolId);
     }
@@ -487,6 +510,21 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
      */
     public Optional<Output<Boolean>> protection() {
         return Optional.ofNullable(this.protection);
+    }
+
+    /**
+     * Whether to purge the VM from backup configurations on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
+     * 
+     */
+    @Import(name="purgeOnDestroy")
+    private @Nullable Output<Boolean> purgeOnDestroy;
+
+    /**
+     * @return Whether to purge the VM from backup configurations on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
+     * 
+     */
+    public Optional<Output<Boolean>> purgeOnDestroy() {
+        return Optional.ofNullable(this.purgeOnDestroy);
     }
 
     /**
@@ -735,7 +773,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * MoveDisk timeout
+     * Disk move timeout
      * 
      * @deprecated
      * This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create /&lt;span pulumi-lang-nodejs=&#34; timeoutClone &#34; pulumi-lang-dotnet=&#34; TimeoutClone &#34; pulumi-lang-go=&#34; timeoutClone &#34; pulumi-lang-python=&#34; timeout_clone &#34; pulumi-lang-yaml=&#34; timeoutClone &#34; pulumi-lang-java=&#34; timeoutClone &#34;&gt; timeout_clone &lt;/span&gt;/ timeout_migrate) is used instead.
@@ -746,7 +784,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     private @Nullable Output<Integer> timeoutMoveDisk;
 
     /**
-     * @return MoveDisk timeout
+     * @return Disk move timeout
      * 
      * @deprecated
      * This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create /&lt;span pulumi-lang-nodejs=&#34; timeoutClone &#34; pulumi-lang-dotnet=&#34; TimeoutClone &#34; pulumi-lang-go=&#34; timeoutClone &#34; pulumi-lang-python=&#34; timeout_clone &#34; pulumi-lang-yaml=&#34; timeoutClone &#34; pulumi-lang-java=&#34; timeoutClone &#34;&gt; timeout_clone &lt;/span&gt;/ timeout_migrate) is used instead.
@@ -927,6 +965,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         this.cdrom = $.cdrom;
         this.clone = $.clone;
         this.cpu = $.cpu;
+        this.deleteUnreferencedDisksOnDestroy = $.deleteUnreferencedDisksOnDestroy;
         this.description = $.description;
         this.disks = $.disks;
         this.efiDisk = $.efiDisk;
@@ -947,6 +986,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         this.operatingSystem = $.operatingSystem;
         this.poolId = $.poolId;
         this.protection = $.protection;
+        this.purgeOnDestroy = $.purgeOnDestroy;
         this.reboot = $.reboot;
         this.rebootAfterUpdate = $.rebootAfterUpdate;
         this.rngs = $.rngs;
@@ -1099,8 +1139,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param bootOrders Specify a list of devices to boot from in the order
-         * they appear in the list (defaults to `[]`).
+         * @param bootOrders Specify a list of devices to boot from in the order they appear in the list.
          * 
          * @return builder
          * 
@@ -1111,8 +1150,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param bootOrders Specify a list of devices to boot from in the order
-         * they appear in the list (defaults to `[]`).
+         * @param bootOrders Specify a list of devices to boot from in the order they appear in the list.
          * 
          * @return builder
          * 
@@ -1122,8 +1160,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param bootOrders Specify a list of devices to boot from in the order
-         * they appear in the list (defaults to `[]`).
+         * @param bootOrders Specify a list of devices to boot from in the order they appear in the list.
          * 
          * @return builder
          * 
@@ -1193,6 +1230,27 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder cpu(VirtualMachineCpuArgs cpu) {
             return cpu(Output.of(cpu));
+        }
+
+        /**
+         * @param deleteUnreferencedDisksOnDestroy Whether to delete unreferenced disks on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteUnreferencedDisksOnDestroy(@Nullable Output<Boolean> deleteUnreferencedDisksOnDestroy) {
+            $.deleteUnreferencedDisksOnDestroy = deleteUnreferencedDisksOnDestroy;
+            return this;
+        }
+
+        /**
+         * @param deleteUnreferencedDisksOnDestroy Whether to delete unreferenced disks on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deleteUnreferencedDisksOnDestroy(Boolean deleteUnreferencedDisksOnDestroy) {
+            return deleteUnreferencedDisksOnDestroy(Output.of(deleteUnreferencedDisksOnDestroy));
         }
 
         /**
@@ -1636,10 +1694,15 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param poolId The identifier for a pool to assign the virtual machine to.
+         * This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-go=&#34;`Pool.Membership`&#34; pulumi-lang-python=&#34;`Pool.Membership`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-java=&#34;`proxmoxve.Pool.Membership`&#34;&gt;`proxmoxve.Pool.Membership`&lt;/span&gt; resource instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future release. To assign the VM to a pool, use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-go=&#34;`Pool.Membership`&#34; pulumi-lang-python=&#34;`Pool.Membership`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-java=&#34;`proxmoxve.Pool.Membership`&#34;&gt;`proxmoxve.Pool.Membership`&lt;/span&gt; resource instead.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in a future release. To assign the VM to a pool, use <span pulumi-lang-nodejs=""`proxmoxve.Pool.Membership`"" pulumi-lang-dotnet=""`proxmoxve.Pool.Membership`"" pulumi-lang-go=""`Pool.Membership`"" pulumi-lang-python=""`Pool.Membership`"" pulumi-lang-yaml=""`proxmoxve.Pool.Membership`"" pulumi-lang-java=""`proxmoxve.Pool.Membership`"">`proxmoxve.Pool.Membership`</span> resource instead. */
         public Builder poolId(@Nullable Output<String> poolId) {
             $.poolId = poolId;
             return this;
@@ -1647,10 +1710,15 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param poolId The identifier for a pool to assign the virtual machine to.
+         * This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-go=&#34;`Pool.Membership`&#34; pulumi-lang-python=&#34;`Pool.Membership`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-java=&#34;`proxmoxve.Pool.Membership`&#34;&gt;`proxmoxve.Pool.Membership`&lt;/span&gt; resource instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * This field is deprecated and will be removed in a future release. To assign the VM to a pool, use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-go=&#34;`Pool.Membership`&#34; pulumi-lang-python=&#34;`Pool.Membership`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-java=&#34;`proxmoxve.Pool.Membership`&#34;&gt;`proxmoxve.Pool.Membership`&lt;/span&gt; resource instead.
+         * 
          */
+        @Deprecated /* This field is deprecated and will be removed in a future release. To assign the VM to a pool, use <span pulumi-lang-nodejs=""`proxmoxve.Pool.Membership`"" pulumi-lang-dotnet=""`proxmoxve.Pool.Membership`"" pulumi-lang-go=""`Pool.Membership`"" pulumi-lang-python=""`Pool.Membership`"" pulumi-lang-yaml=""`proxmoxve.Pool.Membership`"" pulumi-lang-java=""`proxmoxve.Pool.Membership`"">`proxmoxve.Pool.Membership`</span> resource instead. */
         public Builder poolId(String poolId) {
             return poolId(Output.of(poolId));
         }
@@ -1674,6 +1742,27 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder protection(Boolean protection) {
             return protection(Output.of(protection));
+        }
+
+        /**
+         * @param purgeOnDestroy Whether to purge the VM from backup configurations on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder purgeOnDestroy(@Nullable Output<Boolean> purgeOnDestroy) {
+            $.purgeOnDestroy = purgeOnDestroy;
+            return this;
+        }
+
+        /**
+         * @param purgeOnDestroy Whether to purge the VM from backup configurations on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder purgeOnDestroy(Boolean purgeOnDestroy) {
+            return purgeOnDestroy(Output.of(purgeOnDestroy));
         }
 
         /**
@@ -2046,7 +2135,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param timeoutMoveDisk MoveDisk timeout
+         * @param timeoutMoveDisk Disk move timeout
          * 
          * @return builder
          * 
@@ -2061,7 +2150,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param timeoutMoveDisk MoveDisk timeout
+         * @param timeoutMoveDisk Disk move timeout
          * 
          * @return builder
          * 

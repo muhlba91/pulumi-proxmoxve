@@ -14,13 +14,13 @@ public final class VirtualMachineInitializationIpConfigIpv6 {
     /**
      * @return The IPv6 address in CIDR notation
      * (e.g. fd1c::7334/64). Alternatively, set this
-     * to &lt;span pulumi-lang-nodejs=&#34;`dhcp`&#34; pulumi-lang-dotnet=&#34;`Dhcp`&#34; pulumi-lang-go=&#34;`dhcp`&#34; pulumi-lang-python=&#34;`dhcp`&#34; pulumi-lang-yaml=&#34;`dhcp`&#34; pulumi-lang-java=&#34;`dhcp`&#34;&gt;`dhcp`&lt;/span&gt; for autodiscovery.
+     * to &lt;span pulumi-lang-nodejs=&#34;`dhcp`&#34; pulumi-lang-dotnet=&#34;`Dhcp`&#34; pulumi-lang-go=&#34;`dhcp`&#34; pulumi-lang-python=&#34;`dhcp`&#34; pulumi-lang-yaml=&#34;`dhcp`&#34; pulumi-lang-java=&#34;`dhcp`&#34;&gt;`dhcp`&lt;/span&gt; for DHCPv6, or &lt;span pulumi-lang-nodejs=&#34;`auto`&#34; pulumi-lang-dotnet=&#34;`Auto`&#34; pulumi-lang-go=&#34;`auto`&#34; pulumi-lang-python=&#34;`auto`&#34; pulumi-lang-yaml=&#34;`auto`&#34; pulumi-lang-java=&#34;`auto`&#34;&gt;`auto`&lt;/span&gt; for SLAAC.
      * 
      */
     private @Nullable String address;
     /**
      * @return The IPv6 gateway (must be omitted
-     * when &lt;span pulumi-lang-nodejs=&#34;`dhcp`&#34; pulumi-lang-dotnet=&#34;`Dhcp`&#34; pulumi-lang-go=&#34;`dhcp`&#34; pulumi-lang-python=&#34;`dhcp`&#34; pulumi-lang-yaml=&#34;`dhcp`&#34; pulumi-lang-java=&#34;`dhcp`&#34;&gt;`dhcp`&lt;/span&gt; is used as the address).
+     * when &lt;span pulumi-lang-nodejs=&#34;`dhcp`&#34; pulumi-lang-dotnet=&#34;`Dhcp`&#34; pulumi-lang-go=&#34;`dhcp`&#34; pulumi-lang-python=&#34;`dhcp`&#34; pulumi-lang-yaml=&#34;`dhcp`&#34; pulumi-lang-java=&#34;`dhcp`&#34;&gt;`dhcp`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`auto`&#34; pulumi-lang-dotnet=&#34;`Auto`&#34; pulumi-lang-go=&#34;`auto`&#34; pulumi-lang-python=&#34;`auto`&#34; pulumi-lang-yaml=&#34;`auto`&#34; pulumi-lang-java=&#34;`auto`&#34;&gt;`auto`&lt;/span&gt; are used as the address).
      * 
      */
     private @Nullable String gateway;
@@ -29,7 +29,7 @@ public final class VirtualMachineInitializationIpConfigIpv6 {
     /**
      * @return The IPv6 address in CIDR notation
      * (e.g. fd1c::7334/64). Alternatively, set this
-     * to &lt;span pulumi-lang-nodejs=&#34;`dhcp`&#34; pulumi-lang-dotnet=&#34;`Dhcp`&#34; pulumi-lang-go=&#34;`dhcp`&#34; pulumi-lang-python=&#34;`dhcp`&#34; pulumi-lang-yaml=&#34;`dhcp`&#34; pulumi-lang-java=&#34;`dhcp`&#34;&gt;`dhcp`&lt;/span&gt; for autodiscovery.
+     * to &lt;span pulumi-lang-nodejs=&#34;`dhcp`&#34; pulumi-lang-dotnet=&#34;`Dhcp`&#34; pulumi-lang-go=&#34;`dhcp`&#34; pulumi-lang-python=&#34;`dhcp`&#34; pulumi-lang-yaml=&#34;`dhcp`&#34; pulumi-lang-java=&#34;`dhcp`&#34;&gt;`dhcp`&lt;/span&gt; for DHCPv6, or &lt;span pulumi-lang-nodejs=&#34;`auto`&#34; pulumi-lang-dotnet=&#34;`Auto`&#34; pulumi-lang-go=&#34;`auto`&#34; pulumi-lang-python=&#34;`auto`&#34; pulumi-lang-yaml=&#34;`auto`&#34; pulumi-lang-java=&#34;`auto`&#34;&gt;`auto`&lt;/span&gt; for SLAAC.
      * 
      */
     public Optional<String> address() {
@@ -37,7 +37,7 @@ public final class VirtualMachineInitializationIpConfigIpv6 {
     }
     /**
      * @return The IPv6 gateway (must be omitted
-     * when &lt;span pulumi-lang-nodejs=&#34;`dhcp`&#34; pulumi-lang-dotnet=&#34;`Dhcp`&#34; pulumi-lang-go=&#34;`dhcp`&#34; pulumi-lang-python=&#34;`dhcp`&#34; pulumi-lang-yaml=&#34;`dhcp`&#34; pulumi-lang-java=&#34;`dhcp`&#34;&gt;`dhcp`&lt;/span&gt; is used as the address).
+     * when &lt;span pulumi-lang-nodejs=&#34;`dhcp`&#34; pulumi-lang-dotnet=&#34;`Dhcp`&#34; pulumi-lang-go=&#34;`dhcp`&#34; pulumi-lang-python=&#34;`dhcp`&#34; pulumi-lang-yaml=&#34;`dhcp`&#34; pulumi-lang-java=&#34;`dhcp`&#34;&gt;`dhcp`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`auto`&#34; pulumi-lang-dotnet=&#34;`Auto`&#34; pulumi-lang-go=&#34;`auto`&#34; pulumi-lang-python=&#34;`auto`&#34; pulumi-lang-yaml=&#34;`auto`&#34; pulumi-lang-java=&#34;`auto`&#34;&gt;`auto`&lt;/span&gt; are used as the address).
      * 
      */
     public Optional<String> gateway() {

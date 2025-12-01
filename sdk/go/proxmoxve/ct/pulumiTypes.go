@@ -1786,10 +1786,10 @@ func (o ContainerInitializationIpConfigIpv4PtrOutput) Gateway() pulumi.StringPtr
 type ContainerInitializationIpConfigIpv6 struct {
 	// The IPv6 address in CIDR notation
 	// (e.g. fd1c::7334/64). Alternatively, set this
-	// to `dhcp` for autodiscovery.
+	// to `dhcp` for DHCPv6, or `auto` for SLAAC.
 	Address *string `pulumi:"address"`
 	// The IPv6 gateway (must be omitted
-	// when `dhcp` is used as the address).
+	// when `dhcp` or `auto` are used as the address).
 	Gateway *string `pulumi:"gateway"`
 }
 
@@ -1807,10 +1807,10 @@ type ContainerInitializationIpConfigIpv6Input interface {
 type ContainerInitializationIpConfigIpv6Args struct {
 	// The IPv6 address in CIDR notation
 	// (e.g. fd1c::7334/64). Alternatively, set this
-	// to `dhcp` for autodiscovery.
+	// to `dhcp` for DHCPv6, or `auto` for SLAAC.
 	Address pulumi.StringPtrInput `pulumi:"address"`
 	// The IPv6 gateway (must be omitted
-	// when `dhcp` is used as the address).
+	// when `dhcp` or `auto` are used as the address).
 	Gateway pulumi.StringPtrInput `pulumi:"gateway"`
 }
 
@@ -1893,13 +1893,13 @@ func (o ContainerInitializationIpConfigIpv6Output) ToContainerInitializationIpCo
 
 // The IPv6 address in CIDR notation
 // (e.g. fd1c::7334/64). Alternatively, set this
-// to `dhcp` for autodiscovery.
+// to `dhcp` for DHCPv6, or `auto` for SLAAC.
 func (o ContainerInitializationIpConfigIpv6Output) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerInitializationIpConfigIpv6) *string { return v.Address }).(pulumi.StringPtrOutput)
 }
 
 // The IPv6 gateway (must be omitted
-// when `dhcp` is used as the address).
+// when `dhcp` or `auto` are used as the address).
 func (o ContainerInitializationIpConfigIpv6Output) Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerInitializationIpConfigIpv6) *string { return v.Gateway }).(pulumi.StringPtrOutput)
 }
@@ -1930,7 +1930,7 @@ func (o ContainerInitializationIpConfigIpv6PtrOutput) Elem() ContainerInitializa
 
 // The IPv6 address in CIDR notation
 // (e.g. fd1c::7334/64). Alternatively, set this
-// to `dhcp` for autodiscovery.
+// to `dhcp` for DHCPv6, or `auto` for SLAAC.
 func (o ContainerInitializationIpConfigIpv6PtrOutput) Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerInitializationIpConfigIpv6) *string {
 		if v == nil {
@@ -1941,7 +1941,7 @@ func (o ContainerInitializationIpConfigIpv6PtrOutput) Address() pulumi.StringPtr
 }
 
 // The IPv6 gateway (must be omitted
-// when `dhcp` is used as the address).
+// when `dhcp` or `auto` are used as the address).
 func (o ContainerInitializationIpConfigIpv6PtrOutput) Gateway() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerInitializationIpConfigIpv6) *string {
 		if v == nil {
@@ -2986,6 +2986,170 @@ func (o ContainerStartupPtrOutput) UpDelay() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type ContainerWaitForIp struct {
+	// Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+	Ipv4 *bool `pulumi:"ipv4"`
+	// Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
+	//
+	// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+	Ipv6 *bool `pulumi:"ipv6"`
+}
+
+// ContainerWaitForIpInput is an input type that accepts ContainerWaitForIpArgs and ContainerWaitForIpOutput values.
+// You can construct a concrete instance of `ContainerWaitForIpInput` via:
+//
+//	ContainerWaitForIpArgs{...}
+type ContainerWaitForIpInput interface {
+	pulumi.Input
+
+	ToContainerWaitForIpOutput() ContainerWaitForIpOutput
+	ToContainerWaitForIpOutputWithContext(context.Context) ContainerWaitForIpOutput
+}
+
+type ContainerWaitForIpArgs struct {
+	// Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+	Ipv4 pulumi.BoolPtrInput `pulumi:"ipv4"`
+	// Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
+	//
+	// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+	Ipv6 pulumi.BoolPtrInput `pulumi:"ipv6"`
+}
+
+func (ContainerWaitForIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerWaitForIp)(nil)).Elem()
+}
+
+func (i ContainerWaitForIpArgs) ToContainerWaitForIpOutput() ContainerWaitForIpOutput {
+	return i.ToContainerWaitForIpOutputWithContext(context.Background())
+}
+
+func (i ContainerWaitForIpArgs) ToContainerWaitForIpOutputWithContext(ctx context.Context) ContainerWaitForIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerWaitForIpOutput)
+}
+
+func (i ContainerWaitForIpArgs) ToContainerWaitForIpPtrOutput() ContainerWaitForIpPtrOutput {
+	return i.ToContainerWaitForIpPtrOutputWithContext(context.Background())
+}
+
+func (i ContainerWaitForIpArgs) ToContainerWaitForIpPtrOutputWithContext(ctx context.Context) ContainerWaitForIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerWaitForIpOutput).ToContainerWaitForIpPtrOutputWithContext(ctx)
+}
+
+// ContainerWaitForIpPtrInput is an input type that accepts ContainerWaitForIpArgs, ContainerWaitForIpPtr and ContainerWaitForIpPtrOutput values.
+// You can construct a concrete instance of `ContainerWaitForIpPtrInput` via:
+//
+//	        ContainerWaitForIpArgs{...}
+//
+//	or:
+//
+//	        nil
+type ContainerWaitForIpPtrInput interface {
+	pulumi.Input
+
+	ToContainerWaitForIpPtrOutput() ContainerWaitForIpPtrOutput
+	ToContainerWaitForIpPtrOutputWithContext(context.Context) ContainerWaitForIpPtrOutput
+}
+
+type containerWaitForIpPtrType ContainerWaitForIpArgs
+
+func ContainerWaitForIpPtr(v *ContainerWaitForIpArgs) ContainerWaitForIpPtrInput {
+	return (*containerWaitForIpPtrType)(v)
+}
+
+func (*containerWaitForIpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerWaitForIp)(nil)).Elem()
+}
+
+func (i *containerWaitForIpPtrType) ToContainerWaitForIpPtrOutput() ContainerWaitForIpPtrOutput {
+	return i.ToContainerWaitForIpPtrOutputWithContext(context.Background())
+}
+
+func (i *containerWaitForIpPtrType) ToContainerWaitForIpPtrOutputWithContext(ctx context.Context) ContainerWaitForIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerWaitForIpPtrOutput)
+}
+
+type ContainerWaitForIpOutput struct{ *pulumi.OutputState }
+
+func (ContainerWaitForIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerWaitForIp)(nil)).Elem()
+}
+
+func (o ContainerWaitForIpOutput) ToContainerWaitForIpOutput() ContainerWaitForIpOutput {
+	return o
+}
+
+func (o ContainerWaitForIpOutput) ToContainerWaitForIpOutputWithContext(ctx context.Context) ContainerWaitForIpOutput {
+	return o
+}
+
+func (o ContainerWaitForIpOutput) ToContainerWaitForIpPtrOutput() ContainerWaitForIpPtrOutput {
+	return o.ToContainerWaitForIpPtrOutputWithContext(context.Background())
+}
+
+func (o ContainerWaitForIpOutput) ToContainerWaitForIpPtrOutputWithContext(ctx context.Context) ContainerWaitForIpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerWaitForIp) *ContainerWaitForIp {
+		return &v
+	}).(ContainerWaitForIpPtrOutput)
+}
+
+// Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+func (o ContainerWaitForIpOutput) Ipv4() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerWaitForIp) *bool { return v.Ipv4 }).(pulumi.BoolPtrOutput)
+}
+
+// Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
+//
+// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+func (o ContainerWaitForIpOutput) Ipv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerWaitForIp) *bool { return v.Ipv6 }).(pulumi.BoolPtrOutput)
+}
+
+type ContainerWaitForIpPtrOutput struct{ *pulumi.OutputState }
+
+func (ContainerWaitForIpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerWaitForIp)(nil)).Elem()
+}
+
+func (o ContainerWaitForIpPtrOutput) ToContainerWaitForIpPtrOutput() ContainerWaitForIpPtrOutput {
+	return o
+}
+
+func (o ContainerWaitForIpPtrOutput) ToContainerWaitForIpPtrOutputWithContext(ctx context.Context) ContainerWaitForIpPtrOutput {
+	return o
+}
+
+func (o ContainerWaitForIpPtrOutput) Elem() ContainerWaitForIpOutput {
+	return o.ApplyT(func(v *ContainerWaitForIp) ContainerWaitForIp {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerWaitForIp
+		return ret
+	}).(ContainerWaitForIpOutput)
+}
+
+// Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+func (o ContainerWaitForIpPtrOutput) Ipv4() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ContainerWaitForIp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv4
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
+//
+// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+func (o ContainerWaitForIpPtrOutput) Ipv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ContainerWaitForIp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6
+	}).(pulumi.BoolPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerCloneInput)(nil)).Elem(), ContainerCloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerClonePtrInput)(nil)).Elem(), ContainerCloneArgs{})
@@ -3021,6 +3185,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerOperatingSystemPtrInput)(nil)).Elem(), ContainerOperatingSystemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerStartupInput)(nil)).Elem(), ContainerStartupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerStartupPtrInput)(nil)).Elem(), ContainerStartupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerWaitForIpInput)(nil)).Elem(), ContainerWaitForIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerWaitForIpPtrInput)(nil)).Elem(), ContainerWaitForIpArgs{})
 	pulumi.RegisterOutputType(ContainerCloneOutput{})
 	pulumi.RegisterOutputType(ContainerClonePtrOutput{})
 	pulumi.RegisterOutputType(ContainerConsoleOutput{})
@@ -3055,4 +3221,6 @@ func init() {
 	pulumi.RegisterOutputType(ContainerOperatingSystemPtrOutput{})
 	pulumi.RegisterOutputType(ContainerStartupOutput{})
 	pulumi.RegisterOutputType(ContainerStartupPtrOutput{})
+	pulumi.RegisterOutputType(ContainerWaitForIpOutput{})
+	pulumi.RegisterOutputType(ContainerWaitForIpPtrOutput{})
 }

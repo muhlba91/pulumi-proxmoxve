@@ -425,11 +425,11 @@
             "properties": {
                 "address": {
                     "type": "string",
-                    "description": "The IPv6 address in CIDR notation\n(e.g. fd1c::7334/64). Alternatively, set this\nto \u003cspan pulumi-lang-nodejs=\"`dhcp`\" pulumi-lang-dotnet=\"`Dhcp`\" pulumi-lang-go=\"`dhcp`\" pulumi-lang-python=\"`dhcp`\" pulumi-lang-yaml=\"`dhcp`\" pulumi-lang-java=\"`dhcp`\"\u003e`dhcp`\u003c/span\u003e for autodiscovery.\n"
+                    "description": "The IPv6 address in CIDR notation\n(e.g. fd1c::7334/64). Alternatively, set this\nto \u003cspan pulumi-lang-nodejs=\"`dhcp`\" pulumi-lang-dotnet=\"`Dhcp`\" pulumi-lang-go=\"`dhcp`\" pulumi-lang-python=\"`dhcp`\" pulumi-lang-yaml=\"`dhcp`\" pulumi-lang-java=\"`dhcp`\"\u003e`dhcp`\u003c/span\u003e for DHCPv6, or \u003cspan pulumi-lang-nodejs=\"`auto`\" pulumi-lang-dotnet=\"`Auto`\" pulumi-lang-go=\"`auto`\" pulumi-lang-python=\"`auto`\" pulumi-lang-yaml=\"`auto`\" pulumi-lang-java=\"`auto`\"\u003e`auto`\u003c/span\u003e for SLAAC.\n"
                 },
                 "gateway": {
                     "type": "string",
-                    "description": "The IPv6 gateway (must be omitted\nwhen \u003cspan pulumi-lang-nodejs=\"`dhcp`\" pulumi-lang-dotnet=\"`Dhcp`\" pulumi-lang-go=\"`dhcp`\" pulumi-lang-python=\"`dhcp`\" pulumi-lang-yaml=\"`dhcp`\" pulumi-lang-java=\"`dhcp`\"\u003e`dhcp`\u003c/span\u003e is used as the address).\n"
+                    "description": "The IPv6 gateway (must be omitted\nwhen \u003cspan pulumi-lang-nodejs=\"`dhcp`\" pulumi-lang-dotnet=\"`Dhcp`\" pulumi-lang-go=\"`dhcp`\" pulumi-lang-python=\"`dhcp`\" pulumi-lang-yaml=\"`dhcp`\" pulumi-lang-java=\"`dhcp`\"\u003e`dhcp`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`auto`\" pulumi-lang-dotnet=\"`Auto`\" pulumi-lang-go=\"`auto`\" pulumi-lang-python=\"`auto`\" pulumi-lang-yaml=\"`auto`\" pulumi-lang-java=\"`auto`\"\u003e`auto`\u003c/span\u003e are used as the address).\n"
                 }
             },
             "type": "object"
@@ -596,6 +596,19 @@
                 "upDelay": {
                     "type": "integer",
                     "description": "A non-negative number defining the delay in\nseconds before the next container is started.\n"
+                }
+            },
+            "type": "object"
+        },
+        "proxmoxve:CT/ContainerWaitForIp:ContainerWaitForIp": {
+            "properties": {
+                "ipv4": {
+                    "type": "boolean",
+                    "description": "Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e).\n"
+                },
+                "ipv6": {
+                    "type": "boolean",
+                    "description": "Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e).\n\nWhen \u003cspan pulumi-lang-nodejs=\"`waitForIp`\" pulumi-lang-dotnet=\"`WaitForIp`\" pulumi-lang-go=\"`waitForIp`\" pulumi-lang-python=\"`wait_for_ip`\" pulumi-lang-yaml=\"`waitForIp`\" pulumi-lang-java=\"`waitForIp`\"\u003e`wait_for_ip`\u003c/span\u003e is not specified or both \u003cspan pulumi-lang-nodejs=\"`ipv4`\" pulumi-lang-dotnet=\"`Ipv4`\" pulumi-lang-go=\"`ipv4`\" pulumi-lang-python=\"`ipv4`\" pulumi-lang-yaml=\"`ipv4`\" pulumi-lang-java=\"`ipv4`\"\u003e`ipv4`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`ipv6`\" pulumi-lang-dotnet=\"`Ipv6`\" pulumi-lang-go=\"`ipv6`\" pulumi-lang-python=\"`ipv6`\" pulumi-lang-yaml=\"`ipv6`\" pulumi-lang-java=\"`ipv6`\"\u003e`ipv6`\u003c/span\u003e are \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.\n"
                 }
             },
             "type": "object"
@@ -925,8 +938,7 @@
                 },
                 "securityGroup": {
                     "type": "string",
-                    "description": "Security group name.\n",
-                    "willReplaceOnChanges": true
+                    "description": "Security group name.\n"
                 },
                 "source": {
                     "type": "string",
@@ -994,8 +1006,7 @@
                 },
                 "securityGroup": {
                     "type": "string",
-                    "description": "Security group name\n",
-                    "willReplaceOnChanges": true
+                    "description": "Security group name\n"
                 },
                 "source": {
                     "type": "string",
@@ -1245,6 +1256,42 @@
             "required": [
                 "endAddress",
                 "startAddress"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "proxmoxve:Sdn/getVnetsVnet:getVnetsVnet": {
+            "properties": {
+                "alias": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "isolatePorts": {
+                    "type": "boolean"
+                },
+                "tag": {
+                    "type": "integer"
+                },
+                "vlanAware": {
+                    "type": "boolean"
+                },
+                "zone": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "alias",
+                "id",
+                "isolatePorts",
+                "tag",
+                "vlanAware",
+                "zone"
             ],
             "language": {
                 "nodejs": {
@@ -1699,6 +1746,23 @@
                 "type": {
                     "type": "string",
                     "description": "The QEMU agent interface type (defaults to \u003cspan pulumi-lang-nodejs=\"`virtio`\" pulumi-lang-dotnet=\"`Virtio`\" pulumi-lang-go=\"`virtio`\" pulumi-lang-python=\"`virtio`\" pulumi-lang-yaml=\"`virtio`\" pulumi-lang-java=\"`virtio`\"\u003e`virtio`\u003c/span\u003e).\n"
+                },
+                "waitForIp": {
+                    "$ref": "#/types/proxmoxve:VM/VirtualMachineAgentWaitForIp:VirtualMachineAgentWaitForIp",
+                    "description": "Configuration for waiting for specific IP address types when the VM starts.\n"
+                }
+            },
+            "type": "object"
+        },
+        "proxmoxve:VM/VirtualMachineAgentWaitForIp:VirtualMachineAgentWaitForIp": {
+            "properties": {
+                "ipv4": {
+                    "type": "boolean",
+                    "description": "Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e).\n"
+                },
+                "ipv6": {
+                    "type": "boolean",
+                    "description": "Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e).\n\nWhen \u003cspan pulumi-lang-nodejs=\"`waitForIp`\" pulumi-lang-dotnet=\"`WaitForIp`\" pulumi-lang-go=\"`waitForIp`\" pulumi-lang-python=\"`wait_for_ip`\" pulumi-lang-yaml=\"`waitForIp`\" pulumi-lang-java=\"`waitForIp`\"\u003e`wait_for_ip`\u003c/span\u003e is not specified or both \u003cspan pulumi-lang-nodejs=\"`ipv4`\" pulumi-lang-dotnet=\"`Ipv4`\" pulumi-lang-go=\"`ipv4`\" pulumi-lang-python=\"`ipv4`\" pulumi-lang-yaml=\"`ipv4`\" pulumi-lang-java=\"`ipv4`\"\u003e`ipv4`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`ipv6`\" pulumi-lang-dotnet=\"`Ipv6`\" pulumi-lang-go=\"`ipv6`\" pulumi-lang-python=\"`ipv6`\" pulumi-lang-yaml=\"`ipv6`\" pulumi-lang-java=\"`ipv6`\"\u003e`ipv6`\u003c/span\u003e are \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.\n"
                 }
             },
             "type": "object"
@@ -1877,7 +1941,7 @@
                 },
                 "importFrom": {
                     "type": "string",
-                    "description": "The file ID for a disk image to import into VM. The image must be of \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e content type.\nThe ID format is `\u003cdatastore_id\u003e:import/\u003cfile_name\u003e`, for example `local:import/centos8.qcow2`. Can be also taken from\n\u003cspan pulumi-lang-nodejs=\"`proxmoxve.Download.File`\" pulumi-lang-dotnet=\"`proxmoxve.Download.File`\" pulumi-lang-go=\"`Download.File`\" pulumi-lang-python=\"`Download.File`\" pulumi-lang-yaml=\"`proxmoxve.Download.File`\" pulumi-lang-java=\"`proxmoxve.Download.File`\"\u003e`proxmoxve.Download.File`\u003c/span\u003e resource.\n"
+                    "description": "The file ID for a disk image to import into VM. The image must be of \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e content type.\nThe ID format is `\u003cdatastore_id\u003e:import/\u003cfile_name\u003e`, for example `local:import/centos8.qcow2`. Can be also taken from\na disk replacement operation, which will require a VM reboot. Your original disks will remain as detached disks.\n"
                 },
                 "interface": {
                     "type": "string",
@@ -2044,6 +2108,10 @@
                     "$ref": "#/types/proxmoxve:VM/VirtualMachineInitializationDns:VirtualMachineInitializationDns",
                     "description": "The DNS configuration.\n"
                 },
+                "fileFormat": {
+                    "type": "string",
+                    "description": "The file format.\n"
+                },
                 "interface": {
                     "type": "string",
                     "description": "The hardware interface to connect the cloud-init\nimage to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be\ndetected if the setting is missing but a cloud-init image is present,\notherwise defaults to \u003cspan pulumi-lang-nodejs=\"`ide2`\" pulumi-lang-dotnet=\"`Ide2`\" pulumi-lang-go=\"`ide2`\" pulumi-lang-python=\"`ide2`\" pulumi-lang-yaml=\"`ide2`\" pulumi-lang-java=\"`ide2`\"\u003e`ide2`\u003c/span\u003e.\n"
@@ -2089,6 +2157,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "fileFormat",
                         "metaDataFileId",
                         "networkDataFileId",
                         "type",
@@ -2144,11 +2213,11 @@
             "properties": {
                 "address": {
                     "type": "string",
-                    "description": "The IPv6 address in CIDR notation\n(e.g. fd1c::7334/64). Alternatively, set this\nto \u003cspan pulumi-lang-nodejs=\"`dhcp`\" pulumi-lang-dotnet=\"`Dhcp`\" pulumi-lang-go=\"`dhcp`\" pulumi-lang-python=\"`dhcp`\" pulumi-lang-yaml=\"`dhcp`\" pulumi-lang-java=\"`dhcp`\"\u003e`dhcp`\u003c/span\u003e for autodiscovery.\n"
+                    "description": "The IPv6 address in CIDR notation\n(e.g. fd1c::7334/64). Alternatively, set this\nto \u003cspan pulumi-lang-nodejs=\"`dhcp`\" pulumi-lang-dotnet=\"`Dhcp`\" pulumi-lang-go=\"`dhcp`\" pulumi-lang-python=\"`dhcp`\" pulumi-lang-yaml=\"`dhcp`\" pulumi-lang-java=\"`dhcp`\"\u003e`dhcp`\u003c/span\u003e for DHCPv6, or \u003cspan pulumi-lang-nodejs=\"`auto`\" pulumi-lang-dotnet=\"`Auto`\" pulumi-lang-go=\"`auto`\" pulumi-lang-python=\"`auto`\" pulumi-lang-yaml=\"`auto`\" pulumi-lang-java=\"`auto`\"\u003e`auto`\u003c/span\u003e for SLAAC.\n"
                 },
                 "gateway": {
                     "type": "string",
-                    "description": "The IPv6 gateway (must be omitted\nwhen \u003cspan pulumi-lang-nodejs=\"`dhcp`\" pulumi-lang-dotnet=\"`Dhcp`\" pulumi-lang-go=\"`dhcp`\" pulumi-lang-python=\"`dhcp`\" pulumi-lang-yaml=\"`dhcp`\" pulumi-lang-java=\"`dhcp`\"\u003e`dhcp`\u003c/span\u003e is used as the address).\n"
+                    "description": "The IPv6 gateway (must be omitted\nwhen \u003cspan pulumi-lang-nodejs=\"`dhcp`\" pulumi-lang-dotnet=\"`Dhcp`\" pulumi-lang-go=\"`dhcp`\" pulumi-lang-python=\"`dhcp`\" pulumi-lang-yaml=\"`dhcp`\" pulumi-lang-java=\"`dhcp`\"\u003e`dhcp`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`auto`\" pulumi-lang-dotnet=\"`Auto`\" pulumi-lang-go=\"`auto`\" pulumi-lang-python=\"`auto`\" pulumi-lang-yaml=\"`auto`\" pulumi-lang-java=\"`auto`\"\u003e`auto`\u003c/span\u003e are used as the address).\n"
                 }
             },
             "type": "object"
@@ -3400,7 +3469,8 @@
                 },
                 "poolId": {
                     "type": "string",
-                    "description": "The identifier for a pool to assign the container to.\n"
+                    "description": "The identifier for a pool to assign the container to.\nThis field is deprecated and will be removed in a future release. To assign the container to a pool, use the \u003cspan pulumi-lang-nodejs=\"`proxmoxve.Pool.Membership`\" pulumi-lang-dotnet=\"`proxmoxve.Pool.Membership`\" pulumi-lang-go=\"`Pool.Membership`\" pulumi-lang-python=\"`Pool.Membership`\" pulumi-lang-yaml=\"`proxmoxve.Pool.Membership`\" pulumi-lang-java=\"`proxmoxve.Pool.Membership`\"\u003e`proxmoxve.Pool.Membership`\u003c/span\u003e resource instead.\n",
+                    "deprecationMessage": "This field is deprecated and will be removed in a future release. To assign the container to a pool, use \u003cspan pulumi-lang-nodejs=\"`proxmoxve.Pool.Membership`\" pulumi-lang-dotnet=\"`proxmoxve.Pool.Membership`\" pulumi-lang-go=\"`Pool.Membership`\" pulumi-lang-python=\"`Pool.Membership`\" pulumi-lang-yaml=\"`proxmoxve.Pool.Membership`\" pulumi-lang-java=\"`proxmoxve.Pool.Membership`\"\u003e`proxmoxve.Pool.Membership`\u003c/span\u003e resource instead"
                 },
                 "protection": {
                     "type": "boolean",
@@ -3457,6 +3527,10 @@
                 "vmId": {
                     "type": "integer",
                     "description": "The container identifier\n"
+                },
+                "waitForIp": {
+                    "$ref": "#/types/proxmoxve:CT/ContainerWaitForIp:ContainerWaitForIp",
+                    "description": "Configuration for waiting for specific IP address types when the container starts.\n"
                 }
             },
             "required": [
@@ -3536,7 +3610,8 @@
                 },
                 "poolId": {
                     "type": "string",
-                    "description": "The identifier for a pool to assign the container to.\n",
+                    "description": "The identifier for a pool to assign the container to.\nThis field is deprecated and will be removed in a future release. To assign the container to a pool, use the \u003cspan pulumi-lang-nodejs=\"`proxmoxve.Pool.Membership`\" pulumi-lang-dotnet=\"`proxmoxve.Pool.Membership`\" pulumi-lang-go=\"`Pool.Membership`\" pulumi-lang-python=\"`Pool.Membership`\" pulumi-lang-yaml=\"`proxmoxve.Pool.Membership`\" pulumi-lang-java=\"`proxmoxve.Pool.Membership`\"\u003e`proxmoxve.Pool.Membership`\u003c/span\u003e resource instead.\n",
+                    "deprecationMessage": "This field is deprecated and will be removed in a future release. To assign the container to a pool, use \u003cspan pulumi-lang-nodejs=\"`proxmoxve.Pool.Membership`\" pulumi-lang-dotnet=\"`proxmoxve.Pool.Membership`\" pulumi-lang-go=\"`Pool.Membership`\" pulumi-lang-python=\"`Pool.Membership`\" pulumi-lang-yaml=\"`proxmoxve.Pool.Membership`\" pulumi-lang-java=\"`proxmoxve.Pool.Membership`\"\u003e`proxmoxve.Pool.Membership`\u003c/span\u003e resource instead",
                     "willReplaceOnChanges": true
                 },
                 "protection": {
@@ -3596,6 +3671,10 @@
                 "vmId": {
                     "type": "integer",
                     "description": "The container identifier\n"
+                },
+                "waitForIp": {
+                    "$ref": "#/types/proxmoxve:CT/ContainerWaitForIp:ContainerWaitForIp",
+                    "description": "Configuration for waiting for specific IP address types when the container starts.\n"
                 }
             },
             "requiredInputs": [
@@ -3688,7 +3767,8 @@
                     },
                     "poolId": {
                         "type": "string",
-                        "description": "The identifier for a pool to assign the container to.\n",
+                        "description": "The identifier for a pool to assign the container to.\nThis field is deprecated and will be removed in a future release. To assign the container to a pool, use the \u003cspan pulumi-lang-nodejs=\"`proxmoxve.Pool.Membership`\" pulumi-lang-dotnet=\"`proxmoxve.Pool.Membership`\" pulumi-lang-go=\"`Pool.Membership`\" pulumi-lang-python=\"`Pool.Membership`\" pulumi-lang-yaml=\"`proxmoxve.Pool.Membership`\" pulumi-lang-java=\"`proxmoxve.Pool.Membership`\"\u003e`proxmoxve.Pool.Membership`\u003c/span\u003e resource instead.\n",
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release. To assign the container to a pool, use \u003cspan pulumi-lang-nodejs=\"`proxmoxve.Pool.Membership`\" pulumi-lang-dotnet=\"`proxmoxve.Pool.Membership`\" pulumi-lang-go=\"`Pool.Membership`\" pulumi-lang-python=\"`Pool.Membership`\" pulumi-lang-yaml=\"`proxmoxve.Pool.Membership`\" pulumi-lang-java=\"`proxmoxve.Pool.Membership`\"\u003e`proxmoxve.Pool.Membership`\u003c/span\u003e resource instead",
                         "willReplaceOnChanges": true
                     },
                     "protection": {
@@ -3748,6 +3828,10 @@
                     "vmId": {
                         "type": "integer",
                         "description": "The container identifier\n"
+                    },
+                    "waitForIp": {
+                        "$ref": "#/types/proxmoxve:CT/ContainerWaitForIp:ContainerWaitForIp",
+                        "description": "Configuration for waiting for specific IP address types when the container starts.\n"
                     }
                 },
                 "type": "object"
@@ -4599,7 +4683,7 @@
             }
         },
         "proxmoxve:Metrics/metricsServer:MetricsServer": {
-            "description": "Manages PVE metrics server.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst influxdbServer = new proxmoxve.metrics.MetricsServer(\"influxdb_server\", {\n    name: \"example_influxdb_server\",\n    server: \"192.168.3.2\",\n    port: 8089,\n    type: \"influxdb\",\n});\nconst graphiteServer = new proxmoxve.metrics.MetricsServer(\"graphite_server\", {\n    name: \"example_graphite_server\",\n    server: \"192.168.4.2\",\n    port: 2003,\n    type: \"graphite\",\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\ninfluxdb_server = proxmoxve.metrics.MetricsServer(\"influxdb_server\",\n    name=\"example_influxdb_server\",\n    server=\"192.168.3.2\",\n    port=8089,\n    type=\"influxdb\")\ngraphite_server = proxmoxve.metrics.MetricsServer(\"graphite_server\",\n    name=\"example_graphite_server\",\n    server=\"192.168.4.2\",\n    port=2003,\n    type=\"graphite\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var influxdbServer = new ProxmoxVE.Metrics.MetricsServer(\"influxdb_server\", new()\n    {\n        Name = \"example_influxdb_server\",\n        Server = \"192.168.3.2\",\n        Port = 8089,\n        Type = \"influxdb\",\n    });\n\n    var graphiteServer = new ProxmoxVE.Metrics.MetricsServer(\"graphite_server\", new()\n    {\n        Name = \"example_graphite_server\",\n        Server = \"192.168.4.2\",\n        Port = 2003,\n        Type = \"graphite\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/metrics\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := metrics.NewMetricsServer(ctx, \"influxdb_server\", \u0026metrics.MetricsServerArgs{\n\t\t\tName:   pulumi.String(\"example_influxdb_server\"),\n\t\t\tServer: pulumi.String(\"192.168.3.2\"),\n\t\t\tPort:   pulumi.Int(8089),\n\t\t\tType:   pulumi.String(\"influxdb\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = metrics.NewMetricsServer(ctx, \"graphite_server\", \u0026metrics.MetricsServerArgs{\n\t\t\tName:   pulumi.String(\"example_graphite_server\"),\n\t\t\tServer: pulumi.String(\"192.168.4.2\"),\n\t\t\tPort:   pulumi.Int(2003),\n\t\t\tType:   pulumi.String(\"graphite\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport io.muehlbachler.pulumi.proxmoxve.Metrics.MetricsServer;\nimport io.muehlbachler.pulumi.proxmoxve.Metrics.MetricsServerArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var influxdbServer = new MetricsServer(\"influxdbServer\", MetricsServerArgs.builder()\n            .name(\"example_influxdb_server\")\n            .server(\"192.168.3.2\")\n            .port(8089)\n            .type(\"influxdb\")\n            .build());\n\n        var graphiteServer = new MetricsServer(\"graphiteServer\", MetricsServerArgs.builder()\n            .name(\"example_graphite_server\")\n            .server(\"192.168.4.2\")\n            .port(2003)\n            .type(\"graphite\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  influxdbServer:\n    type: proxmoxve:Metrics:MetricsServer\n    name: influxdb_server\n    properties:\n      name: example_influxdb_server\n      server: 192.168.3.2\n      port: 8089\n      type: influxdb\n  graphiteServer:\n    type: proxmoxve:Metrics:MetricsServer\n    name: graphite_server\n    properties:\n      name: example_graphite_server\n      server: 192.168.4.2\n      port: 2003\n      type: graphite\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n#!/usr/bin/env sh\n\n```sh\n$ pulumi import proxmoxve:Metrics/metricsServer:MetricsServer example example\n```\n\n",
+            "description": "Manages PVE metrics server.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst influxdbServer = new proxmoxve.metrics.MetricsServer(\"influxdb_server\", {\n    name: \"example_influxdb_server\",\n    server: \"192.168.3.2\",\n    port: 8089,\n    type: \"influxdb\",\n});\nconst graphiteServer = new proxmoxve.metrics.MetricsServer(\"graphite_server\", {\n    name: \"example_graphite_server\",\n    server: \"192.168.4.2\",\n    port: 2003,\n    type: \"graphite\",\n});\nconst opentelemetryServer = new proxmoxve.metrics.MetricsServer(\"opentelemetry_server\", {\n    name: \"example_opentelemetry_server\",\n    server: \"192.168.5.2\",\n    port: 4318,\n    type: \"opentelemetry\",\n    opentelemetryProto: \"http\",\n    opentelemetryPath: \"/v1/metrics\",\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\ninfluxdb_server = proxmoxve.metrics.MetricsServer(\"influxdb_server\",\n    name=\"example_influxdb_server\",\n    server=\"192.168.3.2\",\n    port=8089,\n    type=\"influxdb\")\ngraphite_server = proxmoxve.metrics.MetricsServer(\"graphite_server\",\n    name=\"example_graphite_server\",\n    server=\"192.168.4.2\",\n    port=2003,\n    type=\"graphite\")\nopentelemetry_server = proxmoxve.metrics.MetricsServer(\"opentelemetry_server\",\n    name=\"example_opentelemetry_server\",\n    server=\"192.168.5.2\",\n    port=4318,\n    type=\"opentelemetry\",\n    opentelemetry_proto=\"http\",\n    opentelemetry_path=\"/v1/metrics\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var influxdbServer = new ProxmoxVE.Metrics.MetricsServer(\"influxdb_server\", new()\n    {\n        Name = \"example_influxdb_server\",\n        Server = \"192.168.3.2\",\n        Port = 8089,\n        Type = \"influxdb\",\n    });\n\n    var graphiteServer = new ProxmoxVE.Metrics.MetricsServer(\"graphite_server\", new()\n    {\n        Name = \"example_graphite_server\",\n        Server = \"192.168.4.2\",\n        Port = 2003,\n        Type = \"graphite\",\n    });\n\n    var opentelemetryServer = new ProxmoxVE.Metrics.MetricsServer(\"opentelemetry_server\", new()\n    {\n        Name = \"example_opentelemetry_server\",\n        Server = \"192.168.5.2\",\n        Port = 4318,\n        Type = \"opentelemetry\",\n        OpentelemetryProto = \"http\",\n        OpentelemetryPath = \"/v1/metrics\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/metrics\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := metrics.NewMetricsServer(ctx, \"influxdb_server\", \u0026metrics.MetricsServerArgs{\n\t\t\tName:   pulumi.String(\"example_influxdb_server\"),\n\t\t\tServer: pulumi.String(\"192.168.3.2\"),\n\t\t\tPort:   pulumi.Int(8089),\n\t\t\tType:   pulumi.String(\"influxdb\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = metrics.NewMetricsServer(ctx, \"graphite_server\", \u0026metrics.MetricsServerArgs{\n\t\t\tName:   pulumi.String(\"example_graphite_server\"),\n\t\t\tServer: pulumi.String(\"192.168.4.2\"),\n\t\t\tPort:   pulumi.Int(2003),\n\t\t\tType:   pulumi.String(\"graphite\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = metrics.NewMetricsServer(ctx, \"opentelemetry_server\", \u0026metrics.MetricsServerArgs{\n\t\t\tName:               pulumi.String(\"example_opentelemetry_server\"),\n\t\t\tServer:             pulumi.String(\"192.168.5.2\"),\n\t\t\tPort:               pulumi.Int(4318),\n\t\t\tType:               pulumi.String(\"opentelemetry\"),\n\t\t\tOpentelemetryProto: pulumi.String(\"http\"),\n\t\t\tOpentelemetryPath:  pulumi.String(\"/v1/metrics\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport io.muehlbachler.pulumi.proxmoxve.Metrics.MetricsServer;\nimport io.muehlbachler.pulumi.proxmoxve.Metrics.MetricsServerArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var influxdbServer = new MetricsServer(\"influxdbServer\", MetricsServerArgs.builder()\n            .name(\"example_influxdb_server\")\n            .server(\"192.168.3.2\")\n            .port(8089)\n            .type(\"influxdb\")\n            .build());\n\n        var graphiteServer = new MetricsServer(\"graphiteServer\", MetricsServerArgs.builder()\n            .name(\"example_graphite_server\")\n            .server(\"192.168.4.2\")\n            .port(2003)\n            .type(\"graphite\")\n            .build());\n\n        var opentelemetryServer = new MetricsServer(\"opentelemetryServer\", MetricsServerArgs.builder()\n            .name(\"example_opentelemetry_server\")\n            .server(\"192.168.5.2\")\n            .port(4318)\n            .type(\"opentelemetry\")\n            .opentelemetryProto(\"http\")\n            .opentelemetryPath(\"/v1/metrics\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  influxdbServer:\n    type: proxmoxve:Metrics:MetricsServer\n    name: influxdb_server\n    properties:\n      name: example_influxdb_server\n      server: 192.168.3.2\n      port: 8089\n      type: influxdb\n  graphiteServer:\n    type: proxmoxve:Metrics:MetricsServer\n    name: graphite_server\n    properties:\n      name: example_graphite_server\n      server: 192.168.4.2\n      port: 2003\n      type: graphite\n  opentelemetryServer:\n    type: proxmoxve:Metrics:MetricsServer\n    name: opentelemetry_server\n    properties:\n      name: example_opentelemetry_server\n      server: 192.168.5.2\n      port: 4318\n      type: opentelemetry\n      opentelemetryProto: http\n      opentelemetryPath: /v1/metrics\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n#!/usr/bin/env sh\n\n```sh\n$ pulumi import proxmoxve:Metrics/metricsServer:MetricsServer example example\n```\n\n",
             "properties": {
                 "disable": {
                     "type": "boolean",
@@ -4650,6 +4734,14 @@
                     "type": "string",
                     "description": "Unique name that will be ID of this metric server in PVE.\n"
                 },
+                "opentelemetryPath": {
+                    "type": "string",
+                    "description": "OpenTelemetry endpoint path (e.g., `/v1/metrics`).\n"
+                },
+                "opentelemetryProto": {
+                    "type": "string",
+                    "description": "Protocol for OpenTelemetry. Choice is between \u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\"\u003e`http`\u003c/span\u003e | \u003cspan pulumi-lang-nodejs=\"`https`\" pulumi-lang-dotnet=\"`Https`\" pulumi-lang-go=\"`https`\" pulumi-lang-python=\"`https`\" pulumi-lang-yaml=\"`https`\" pulumi-lang-java=\"`https`\"\u003e`https`\u003c/span\u003e. If not set, PVE default is \u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\"\u003e`http`\u003c/span\u003e.\n"
+                },
                 "port": {
                     "type": "integer",
                     "description": "Server network port.\n"
@@ -4664,7 +4756,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Plugin type. Choice is between \u003cspan pulumi-lang-nodejs=\"`graphite`\" pulumi-lang-dotnet=\"`Graphite`\" pulumi-lang-go=\"`graphite`\" pulumi-lang-python=\"`graphite`\" pulumi-lang-yaml=\"`graphite`\" pulumi-lang-java=\"`graphite`\"\u003e`graphite`\u003c/span\u003e | \u003cspan pulumi-lang-nodejs=\"`influxdb`\" pulumi-lang-dotnet=\"`Influxdb`\" pulumi-lang-go=\"`influxdb`\" pulumi-lang-python=\"`influxdb`\" pulumi-lang-yaml=\"`influxdb`\" pulumi-lang-java=\"`influxdb`\"\u003e`influxdb`\u003c/span\u003e.\n"
+                    "description": "Plugin type. Choice is between \u003cspan pulumi-lang-nodejs=\"`graphite`\" pulumi-lang-dotnet=\"`Graphite`\" pulumi-lang-go=\"`graphite`\" pulumi-lang-python=\"`graphite`\" pulumi-lang-yaml=\"`graphite`\" pulumi-lang-java=\"`graphite`\"\u003e`graphite`\u003c/span\u003e | \u003cspan pulumi-lang-nodejs=\"`influxdb`\" pulumi-lang-dotnet=\"`Influxdb`\" pulumi-lang-go=\"`influxdb`\" pulumi-lang-python=\"`influxdb`\" pulumi-lang-yaml=\"`influxdb`\" pulumi-lang-java=\"`influxdb`\"\u003e`influxdb`\u003c/span\u003e | \u003cspan pulumi-lang-nodejs=\"`opentelemetry`\" pulumi-lang-dotnet=\"`Opentelemetry`\" pulumi-lang-go=\"`opentelemetry`\" pulumi-lang-python=\"`opentelemetry`\" pulumi-lang-yaml=\"`opentelemetry`\" pulumi-lang-java=\"`opentelemetry`\"\u003e`opentelemetry`\u003c/span\u003e.\n"
                 }
             },
             "required": [
@@ -4723,6 +4815,14 @@
                     "type": "string",
                     "description": "Unique name that will be ID of this metric server in PVE.\n"
                 },
+                "opentelemetryPath": {
+                    "type": "string",
+                    "description": "OpenTelemetry endpoint path (e.g., `/v1/metrics`).\n"
+                },
+                "opentelemetryProto": {
+                    "type": "string",
+                    "description": "Protocol for OpenTelemetry. Choice is between \u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\"\u003e`http`\u003c/span\u003e | \u003cspan pulumi-lang-nodejs=\"`https`\" pulumi-lang-dotnet=\"`Https`\" pulumi-lang-go=\"`https`\" pulumi-lang-python=\"`https`\" pulumi-lang-yaml=\"`https`\" pulumi-lang-java=\"`https`\"\u003e`https`\u003c/span\u003e. If not set, PVE default is \u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\"\u003e`http`\u003c/span\u003e.\n"
+                },
                 "port": {
                     "type": "integer",
                     "description": "Server network port.\n"
@@ -4737,7 +4837,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Plugin type. Choice is between \u003cspan pulumi-lang-nodejs=\"`graphite`\" pulumi-lang-dotnet=\"`Graphite`\" pulumi-lang-go=\"`graphite`\" pulumi-lang-python=\"`graphite`\" pulumi-lang-yaml=\"`graphite`\" pulumi-lang-java=\"`graphite`\"\u003e`graphite`\u003c/span\u003e | \u003cspan pulumi-lang-nodejs=\"`influxdb`\" pulumi-lang-dotnet=\"`Influxdb`\" pulumi-lang-go=\"`influxdb`\" pulumi-lang-python=\"`influxdb`\" pulumi-lang-yaml=\"`influxdb`\" pulumi-lang-java=\"`influxdb`\"\u003e`influxdb`\u003c/span\u003e.\n"
+                    "description": "Plugin type. Choice is between \u003cspan pulumi-lang-nodejs=\"`graphite`\" pulumi-lang-dotnet=\"`Graphite`\" pulumi-lang-go=\"`graphite`\" pulumi-lang-python=\"`graphite`\" pulumi-lang-yaml=\"`graphite`\" pulumi-lang-java=\"`graphite`\"\u003e`graphite`\u003c/span\u003e | \u003cspan pulumi-lang-nodejs=\"`influxdb`\" pulumi-lang-dotnet=\"`Influxdb`\" pulumi-lang-go=\"`influxdb`\" pulumi-lang-python=\"`influxdb`\" pulumi-lang-yaml=\"`influxdb`\" pulumi-lang-java=\"`influxdb`\"\u003e`influxdb`\u003c/span\u003e | \u003cspan pulumi-lang-nodejs=\"`opentelemetry`\" pulumi-lang-dotnet=\"`Opentelemetry`\" pulumi-lang-go=\"`opentelemetry`\" pulumi-lang-python=\"`opentelemetry`\" pulumi-lang-yaml=\"`opentelemetry`\" pulumi-lang-java=\"`opentelemetry`\"\u003e`opentelemetry`\u003c/span\u003e.\n"
                 }
             },
             "requiredInputs": [
@@ -4797,6 +4897,14 @@
                         "type": "string",
                         "description": "Unique name that will be ID of this metric server in PVE.\n"
                     },
+                    "opentelemetryPath": {
+                        "type": "string",
+                        "description": "OpenTelemetry endpoint path (e.g., `/v1/metrics`).\n"
+                    },
+                    "opentelemetryProto": {
+                        "type": "string",
+                        "description": "Protocol for OpenTelemetry. Choice is between \u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\"\u003e`http`\u003c/span\u003e | \u003cspan pulumi-lang-nodejs=\"`https`\" pulumi-lang-dotnet=\"`Https`\" pulumi-lang-go=\"`https`\" pulumi-lang-python=\"`https`\" pulumi-lang-yaml=\"`https`\" pulumi-lang-java=\"`https`\"\u003e`https`\u003c/span\u003e. If not set, PVE default is \u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\"\u003e`http`\u003c/span\u003e.\n"
+                    },
                     "port": {
                         "type": "integer",
                         "description": "Server network port.\n"
@@ -4811,7 +4919,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "Plugin type. Choice is between \u003cspan pulumi-lang-nodejs=\"`graphite`\" pulumi-lang-dotnet=\"`Graphite`\" pulumi-lang-go=\"`graphite`\" pulumi-lang-python=\"`graphite`\" pulumi-lang-yaml=\"`graphite`\" pulumi-lang-java=\"`graphite`\"\u003e`graphite`\u003c/span\u003e | \u003cspan pulumi-lang-nodejs=\"`influxdb`\" pulumi-lang-dotnet=\"`Influxdb`\" pulumi-lang-go=\"`influxdb`\" pulumi-lang-python=\"`influxdb`\" pulumi-lang-yaml=\"`influxdb`\" pulumi-lang-java=\"`influxdb`\"\u003e`influxdb`\u003c/span\u003e.\n"
+                        "description": "Plugin type. Choice is between \u003cspan pulumi-lang-nodejs=\"`graphite`\" pulumi-lang-dotnet=\"`Graphite`\" pulumi-lang-go=\"`graphite`\" pulumi-lang-python=\"`graphite`\" pulumi-lang-yaml=\"`graphite`\" pulumi-lang-java=\"`graphite`\"\u003e`graphite`\u003c/span\u003e | \u003cspan pulumi-lang-nodejs=\"`influxdb`\" pulumi-lang-dotnet=\"`Influxdb`\" pulumi-lang-go=\"`influxdb`\" pulumi-lang-python=\"`influxdb`\" pulumi-lang-yaml=\"`influxdb`\" pulumi-lang-java=\"`influxdb`\"\u003e`influxdb`\u003c/span\u003e | \u003cspan pulumi-lang-nodejs=\"`opentelemetry`\" pulumi-lang-dotnet=\"`Opentelemetry`\" pulumi-lang-go=\"`opentelemetry`\" pulumi-lang-python=\"`opentelemetry`\" pulumi-lang-yaml=\"`opentelemetry`\" pulumi-lang-java=\"`opentelemetry`\"\u003e`opentelemetry`\u003c/span\u003e.\n"
                     }
                 },
                 "type": "object"
@@ -5269,7 +5377,7 @@
             }
         },
         "proxmoxve:Network/firewallRules:FirewallRules": {
-            "description": "Manages cluster-level, node-level or VM/container-level firewall rules.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst inbound = new proxmoxve.network.FirewallRules(\"inbound\", {\n    nodeName: example.nodeName,\n    vmId: example.vmId,\n    rules: [\n        {\n            type: \"in\",\n            action: \"ACCEPT\",\n            comment: \"Allow HTTP\",\n            dest: \"192.168.1.5\",\n            dport: \"80\",\n            proto: \"tcp\",\n            log: \"info\",\n        },\n        {\n            type: \"in\",\n            action: \"ACCEPT\",\n            comment: \"Allow HTTPS\",\n            dest: \"192.168.1.5\",\n            dport: \"443\",\n            proto: \"tcp\",\n            log: \"info\",\n        },\n        {\n            securityGroup: exampleProxmoxVirtualEnvironmentClusterFirewallSecurityGroup.name,\n            comment: \"From security group\",\n            iface: \"net0\",\n        },\n    ],\n}, {\n    dependsOn: [\n        example,\n        exampleProxmoxVirtualEnvironmentClusterFirewallSecurityGroup,\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\ninbound = proxmoxve.network.FirewallRules(\"inbound\",\n    node_name=example[\"nodeName\"],\n    vm_id=example[\"vmId\"],\n    rules=[\n        {\n            \"type\": \"in\",\n            \"action\": \"ACCEPT\",\n            \"comment\": \"Allow HTTP\",\n            \"dest\": \"192.168.1.5\",\n            \"dport\": \"80\",\n            \"proto\": \"tcp\",\n            \"log\": \"info\",\n        },\n        {\n            \"type\": \"in\",\n            \"action\": \"ACCEPT\",\n            \"comment\": \"Allow HTTPS\",\n            \"dest\": \"192.168.1.5\",\n            \"dport\": \"443\",\n            \"proto\": \"tcp\",\n            \"log\": \"info\",\n        },\n        {\n            \"security_group\": example_proxmox_virtual_environment_cluster_firewall_security_group[\"name\"],\n            \"comment\": \"From security group\",\n            \"iface\": \"net0\",\n        },\n    ],\n    opts = pulumi.ResourceOptions(depends_on=[\n            example,\n            example_proxmox_virtual_environment_cluster_firewall_security_group,\n        ]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var inbound = new ProxmoxVE.Network.FirewallRules(\"inbound\", new()\n    {\n        NodeName = example.NodeName,\n        VmId = example.VmId,\n        Rules = new[]\n        {\n            new ProxmoxVE.Network.Inputs.FirewallRulesRuleArgs\n            {\n                Type = \"in\",\n                Action = \"ACCEPT\",\n                Comment = \"Allow HTTP\",\n                Dest = \"192.168.1.5\",\n                Dport = \"80\",\n                Proto = \"tcp\",\n                Log = \"info\",\n            },\n            new ProxmoxVE.Network.Inputs.FirewallRulesRuleArgs\n            {\n                Type = \"in\",\n                Action = \"ACCEPT\",\n                Comment = \"Allow HTTPS\",\n                Dest = \"192.168.1.5\",\n                Dport = \"443\",\n                Proto = \"tcp\",\n                Log = \"info\",\n            },\n            new ProxmoxVE.Network.Inputs.FirewallRulesRuleArgs\n            {\n                SecurityGroup = exampleProxmoxVirtualEnvironmentClusterFirewallSecurityGroup.Name,\n                Comment = \"From security group\",\n                Iface = \"net0\",\n            },\n        },\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            example,\n            exampleProxmoxVirtualEnvironmentClusterFirewallSecurityGroup,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/network\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := network.NewFirewallRules(ctx, \"inbound\", \u0026network.FirewallRulesArgs{\n\t\t\tNodeName: pulumi.Any(example.NodeName),\n\t\t\tVmId:     pulumi.Any(example.VmId),\n\t\t\tRules: network.FirewallRulesRuleArray{\n\t\t\t\t\u0026network.FirewallRulesRuleArgs{\n\t\t\t\t\tType:    pulumi.String(\"in\"),\n\t\t\t\t\tAction:  pulumi.String(\"ACCEPT\"),\n\t\t\t\t\tComment: pulumi.String(\"Allow HTTP\"),\n\t\t\t\t\tDest:    pulumi.String(\"192.168.1.5\"),\n\t\t\t\t\tDport:   pulumi.String(\"80\"),\n\t\t\t\t\tProto:   pulumi.String(\"tcp\"),\n\t\t\t\t\tLog:     pulumi.String(\"info\"),\n\t\t\t\t},\n\t\t\t\t\u0026network.FirewallRulesRuleArgs{\n\t\t\t\t\tType:    pulumi.String(\"in\"),\n\t\t\t\t\tAction:  pulumi.String(\"ACCEPT\"),\n\t\t\t\t\tComment: pulumi.String(\"Allow HTTPS\"),\n\t\t\t\t\tDest:    pulumi.String(\"192.168.1.5\"),\n\t\t\t\t\tDport:   pulumi.String(\"443\"),\n\t\t\t\t\tProto:   pulumi.String(\"tcp\"),\n\t\t\t\t\tLog:     pulumi.String(\"info\"),\n\t\t\t\t},\n\t\t\t\t\u0026network.FirewallRulesRuleArgs{\n\t\t\t\t\tSecurityGroup: pulumi.Any(exampleProxmoxVirtualEnvironmentClusterFirewallSecurityGroup.Name),\n\t\t\t\t\tComment:       pulumi.String(\"From security group\"),\n\t\t\t\t\tIface:         pulumi.String(\"net0\"),\n\t\t\t\t},\n\t\t\t},\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\texample,\n\t\t\texampleProxmoxVirtualEnvironmentClusterFirewallSecurityGroup,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport io.muehlbachler.pulumi.proxmoxve.Network.FirewallRules;\nimport io.muehlbachler.pulumi.proxmoxve.Network.FirewallRulesArgs;\nimport com.pulumi.proxmoxve.Network.inputs.FirewallRulesRuleArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var inbound = new FirewallRules(\"inbound\", FirewallRulesArgs.builder()\n            .nodeName(example.nodeName())\n            .vmId(example.vmId())\n            .rules(            \n                FirewallRulesRuleArgs.builder()\n                    .type(\"in\")\n                    .action(\"ACCEPT\")\n                    .comment(\"Allow HTTP\")\n                    .dest(\"192.168.1.5\")\n                    .dport(\"80\")\n                    .proto(\"tcp\")\n                    .log(\"info\")\n                    .build(),\n                FirewallRulesRuleArgs.builder()\n                    .type(\"in\")\n                    .action(\"ACCEPT\")\n                    .comment(\"Allow HTTPS\")\n                    .dest(\"192.168.1.5\")\n                    .dport(\"443\")\n                    .proto(\"tcp\")\n                    .log(\"info\")\n                    .build(),\n                FirewallRulesRuleArgs.builder()\n                    .securityGroup(exampleProxmoxVirtualEnvironmentClusterFirewallSecurityGroup.name())\n                    .comment(\"From security group\")\n                    .iface(\"net0\")\n                    .build())\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(                \n                    example,\n                    exampleProxmoxVirtualEnvironmentClusterFirewallSecurityGroup)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  inbound:\n    type: proxmoxve:Network:FirewallRules\n    properties:\n      nodeName: ${example.nodeName}\n      vmId: ${example.vmId}\n      rules:\n        - type: in\n          action: ACCEPT\n          comment: Allow HTTP\n          dest: 192.168.1.5\n          dport: '80'\n          proto: tcp\n          log: info\n        - type: in\n          action: ACCEPT\n          comment: Allow HTTPS\n          dest: 192.168.1.5\n          dport: '443'\n          proto: tcp\n          log: info\n        - securityGroup: ${exampleProxmoxVirtualEnvironmentClusterFirewallSecurityGroup.name}\n          comment: From security group\n          iface: net0\n    options:\n      dependsOn:\n        - ${example}\n        - ${exampleProxmoxVirtualEnvironmentClusterFirewallSecurityGroup}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n### Container Rules\n\nUse the import ID format: `container/\u003cnode_name\u003e/\u003ccontainer_id\u003e`\n\nExample uses node name `pve` and container ID `100`.\n\n**Example:**\n\nbash\n\n```sh\n$ pulumi import proxmoxve:Network/firewallRules:FirewallRules container_rules container/pve/100\n```\n\n",
+            "description": "Manages cluster-level, node-level or VM/container-level firewall rules.\n\n\u003e **Note:** Before creating a new \u003cspan pulumi-lang-nodejs=\"`proxmoxve.Network.FirewallRules`\" pulumi-lang-dotnet=\"`proxmoxve.Network.FirewallRules`\" pulumi-lang-go=\"`Network.FirewallRules`\" pulumi-lang-python=\"`Network.FirewallRules`\" pulumi-lang-yaml=\"`proxmoxve.Network.FirewallRules`\" pulumi-lang-java=\"`proxmoxve.Network.FirewallRules`\"\u003e`proxmoxve.Network.FirewallRules`\u003c/span\u003e resource, verify that no rules already exist for the target (cluster, node, VM, or container).\n\u003e If rules are already configured, import them first using the appropriate import command.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst inbound = new proxmoxve.network.FirewallRules(\"inbound\", {\n    nodeName: example.nodeName,\n    vmId: example.vmId,\n    rules: [\n        {\n            type: \"in\",\n            action: \"ACCEPT\",\n            comment: \"Allow HTTP\",\n            dest: \"192.168.1.5\",\n            dport: \"80\",\n            proto: \"tcp\",\n            log: \"info\",\n        },\n        {\n            type: \"in\",\n            action: \"ACCEPT\",\n            comment: \"Allow HTTPS\",\n            dest: \"192.168.1.5\",\n            dport: \"443\",\n            proto: \"tcp\",\n            log: \"info\",\n        },\n        {\n            securityGroup: exampleProxmoxVirtualEnvironmentClusterFirewallSecurityGroup.name,\n            comment: \"From security group\",\n            iface: \"net0\",\n        },\n    ],\n}, {\n    dependsOn: [\n        example,\n        exampleProxmoxVirtualEnvironmentClusterFirewallSecurityGroup,\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\ninbound = proxmoxve.network.FirewallRules(\"inbound\",\n    node_name=example[\"nodeName\"],\n    vm_id=example[\"vmId\"],\n    rules=[\n        {\n            \"type\": \"in\",\n            \"action\": \"ACCEPT\",\n            \"comment\": \"Allow HTTP\",\n            \"dest\": \"192.168.1.5\",\n            \"dport\": \"80\",\n            \"proto\": \"tcp\",\n            \"log\": \"info\",\n        },\n        {\n            \"type\": \"in\",\n            \"action\": \"ACCEPT\",\n            \"comment\": \"Allow HTTPS\",\n            \"dest\": \"192.168.1.5\",\n            \"dport\": \"443\",\n            \"proto\": \"tcp\",\n            \"log\": \"info\",\n        },\n        {\n            \"security_group\": example_proxmox_virtual_environment_cluster_firewall_security_group[\"name\"],\n            \"comment\": \"From security group\",\n            \"iface\": \"net0\",\n        },\n    ],\n    opts = pulumi.ResourceOptions(depends_on=[\n            example,\n            example_proxmox_virtual_environment_cluster_firewall_security_group,\n        ]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var inbound = new ProxmoxVE.Network.FirewallRules(\"inbound\", new()\n    {\n        NodeName = example.NodeName,\n        VmId = example.VmId,\n        Rules = new[]\n        {\n            new ProxmoxVE.Network.Inputs.FirewallRulesRuleArgs\n            {\n                Type = \"in\",\n                Action = \"ACCEPT\",\n                Comment = \"Allow HTTP\",\n                Dest = \"192.168.1.5\",\n                Dport = \"80\",\n                Proto = \"tcp\",\n                Log = \"info\",\n            },\n            new ProxmoxVE.Network.Inputs.FirewallRulesRuleArgs\n            {\n                Type = \"in\",\n                Action = \"ACCEPT\",\n                Comment = \"Allow HTTPS\",\n                Dest = \"192.168.1.5\",\n                Dport = \"443\",\n                Proto = \"tcp\",\n                Log = \"info\",\n            },\n            new ProxmoxVE.Network.Inputs.FirewallRulesRuleArgs\n            {\n                SecurityGroup = exampleProxmoxVirtualEnvironmentClusterFirewallSecurityGroup.Name,\n                Comment = \"From security group\",\n                Iface = \"net0\",\n            },\n        },\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            example,\n            exampleProxmoxVirtualEnvironmentClusterFirewallSecurityGroup,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/network\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := network.NewFirewallRules(ctx, \"inbound\", \u0026network.FirewallRulesArgs{\n\t\t\tNodeName: pulumi.Any(example.NodeName),\n\t\t\tVmId:     pulumi.Any(example.VmId),\n\t\t\tRules: network.FirewallRulesRuleArray{\n\t\t\t\t\u0026network.FirewallRulesRuleArgs{\n\t\t\t\t\tType:    pulumi.String(\"in\"),\n\t\t\t\t\tAction:  pulumi.String(\"ACCEPT\"),\n\t\t\t\t\tComment: pulumi.String(\"Allow HTTP\"),\n\t\t\t\t\tDest:    pulumi.String(\"192.168.1.5\"),\n\t\t\t\t\tDport:   pulumi.String(\"80\"),\n\t\t\t\t\tProto:   pulumi.String(\"tcp\"),\n\t\t\t\t\tLog:     pulumi.String(\"info\"),\n\t\t\t\t},\n\t\t\t\t\u0026network.FirewallRulesRuleArgs{\n\t\t\t\t\tType:    pulumi.String(\"in\"),\n\t\t\t\t\tAction:  pulumi.String(\"ACCEPT\"),\n\t\t\t\t\tComment: pulumi.String(\"Allow HTTPS\"),\n\t\t\t\t\tDest:    pulumi.String(\"192.168.1.5\"),\n\t\t\t\t\tDport:   pulumi.String(\"443\"),\n\t\t\t\t\tProto:   pulumi.String(\"tcp\"),\n\t\t\t\t\tLog:     pulumi.String(\"info\"),\n\t\t\t\t},\n\t\t\t\t\u0026network.FirewallRulesRuleArgs{\n\t\t\t\t\tSecurityGroup: pulumi.Any(exampleProxmoxVirtualEnvironmentClusterFirewallSecurityGroup.Name),\n\t\t\t\t\tComment:       pulumi.String(\"From security group\"),\n\t\t\t\t\tIface:         pulumi.String(\"net0\"),\n\t\t\t\t},\n\t\t\t},\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\texample,\n\t\t\texampleProxmoxVirtualEnvironmentClusterFirewallSecurityGroup,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport io.muehlbachler.pulumi.proxmoxve.Network.FirewallRules;\nimport io.muehlbachler.pulumi.proxmoxve.Network.FirewallRulesArgs;\nimport com.pulumi.proxmoxve.Network.inputs.FirewallRulesRuleArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var inbound = new FirewallRules(\"inbound\", FirewallRulesArgs.builder()\n            .nodeName(example.nodeName())\n            .vmId(example.vmId())\n            .rules(            \n                FirewallRulesRuleArgs.builder()\n                    .type(\"in\")\n                    .action(\"ACCEPT\")\n                    .comment(\"Allow HTTP\")\n                    .dest(\"192.168.1.5\")\n                    .dport(\"80\")\n                    .proto(\"tcp\")\n                    .log(\"info\")\n                    .build(),\n                FirewallRulesRuleArgs.builder()\n                    .type(\"in\")\n                    .action(\"ACCEPT\")\n                    .comment(\"Allow HTTPS\")\n                    .dest(\"192.168.1.5\")\n                    .dport(\"443\")\n                    .proto(\"tcp\")\n                    .log(\"info\")\n                    .build(),\n                FirewallRulesRuleArgs.builder()\n                    .securityGroup(exampleProxmoxVirtualEnvironmentClusterFirewallSecurityGroup.name())\n                    .comment(\"From security group\")\n                    .iface(\"net0\")\n                    .build())\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(                \n                    example,\n                    exampleProxmoxVirtualEnvironmentClusterFirewallSecurityGroup)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  inbound:\n    type: proxmoxve:Network:FirewallRules\n    properties:\n      nodeName: ${example.nodeName}\n      vmId: ${example.vmId}\n      rules:\n        - type: in\n          action: ACCEPT\n          comment: Allow HTTP\n          dest: 192.168.1.5\n          dport: '80'\n          proto: tcp\n          log: info\n        - type: in\n          action: ACCEPT\n          comment: Allow HTTPS\n          dest: 192.168.1.5\n          dport: '443'\n          proto: tcp\n          log: info\n        - securityGroup: ${exampleProxmoxVirtualEnvironmentClusterFirewallSecurityGroup.name}\n          comment: From security group\n          iface: net0\n    options:\n      dependsOn:\n        - ${example}\n        - ${exampleProxmoxVirtualEnvironmentClusterFirewallSecurityGroup}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n### Container Rules\n\nUse the import ID format: `container/\u003cnode_name\u003e/\u003ccontainer_id\u003e`\n\nExample uses node name `pve` and container ID `100`.\n\n**Example:**\n\nbash\n\n```sh\n$ pulumi import proxmoxve:Network/firewallRules:FirewallRules container_rules container/pve/100\n```\n\n",
             "properties": {
                 "containerId": {
                     "type": "integer",
@@ -5291,9 +5399,6 @@
                     "description": "VM ID. Leave empty for node/cluster level rules.\n"
                 }
             },
-            "required": [
-                "rules"
-            ],
             "inputProperties": {
                 "containerId": {
                     "type": "integer",
@@ -5308,17 +5413,13 @@
                     "items": {
                         "$ref": "#/types/proxmoxve:Network/FirewallRulesRule:FirewallRulesRule"
                     },
-                    "description": "Firewall rule block (multiple blocks supported).\nThe provider supports two types of the \u003cspan pulumi-lang-nodejs=\"`rule`\" pulumi-lang-dotnet=\"`Rule`\" pulumi-lang-go=\"`rule`\" pulumi-lang-python=\"`rule`\" pulumi-lang-yaml=\"`rule`\" pulumi-lang-java=\"`rule`\"\u003e`rule`\u003c/span\u003e blocks:\n- A rule definition block, which includes the following arguments:\n",
-                    "willReplaceOnChanges": true
+                    "description": "Firewall rule block (multiple blocks supported).\nThe provider supports two types of the \u003cspan pulumi-lang-nodejs=\"`rule`\" pulumi-lang-dotnet=\"`Rule`\" pulumi-lang-go=\"`rule`\" pulumi-lang-python=\"`rule`\" pulumi-lang-yaml=\"`rule`\" pulumi-lang-java=\"`rule`\"\u003e`rule`\u003c/span\u003e blocks:\n- A rule definition block, which includes the following arguments:\n"
                 },
                 "vmId": {
                     "type": "integer",
                     "description": "VM ID. Leave empty for node/cluster level rules.\n"
                 }
             },
-            "requiredInputs": [
-                "rules"
-            ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering FirewallRules resources.\n",
                 "properties": {
@@ -5335,8 +5436,7 @@
                         "items": {
                             "$ref": "#/types/proxmoxve:Network/FirewallRulesRule:FirewallRulesRule"
                         },
-                        "description": "Firewall rule block (multiple blocks supported).\nThe provider supports two types of the \u003cspan pulumi-lang-nodejs=\"`rule`\" pulumi-lang-dotnet=\"`Rule`\" pulumi-lang-go=\"`rule`\" pulumi-lang-python=\"`rule`\" pulumi-lang-yaml=\"`rule`\" pulumi-lang-java=\"`rule`\"\u003e`rule`\u003c/span\u003e blocks:\n- A rule definition block, which includes the following arguments:\n",
-                        "willReplaceOnChanges": true
+                        "description": "Firewall rule block (multiple blocks supported).\nThe provider supports two types of the \u003cspan pulumi-lang-nodejs=\"`rule`\" pulumi-lang-dotnet=\"`Rule`\" pulumi-lang-go=\"`rule`\" pulumi-lang-python=\"`rule`\" pulumi-lang-yaml=\"`rule`\" pulumi-lang-java=\"`rule`\"\u003e`rule`\u003c/span\u003e blocks:\n- A rule definition block, which includes the following arguments:\n"
                     },
                     "vmId": {
                         "type": "integer",
@@ -5378,8 +5478,7 @@
                 }
             },
             "required": [
-                "name",
-                "rules"
+                "name"
             ],
             "inputProperties": {
                 "comment": {
@@ -5403,17 +5502,13 @@
                     "items": {
                         "$ref": "#/types/proxmoxve:Network/FirewallSecurityGroupRule:FirewallSecurityGroupRule"
                     },
-                    "description": "Firewall rule block (multiple blocks supported).\n",
-                    "willReplaceOnChanges": true
+                    "description": "Firewall rule block (multiple blocks supported).\n"
                 },
                 "vmId": {
                     "type": "integer",
                     "description": "The ID of the VM to manage the firewall for."
                 }
             },
-            "requiredInputs": [
-                "rules"
-            ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering FirewallSecurityGroup resources.\n",
                 "properties": {
@@ -5438,8 +5533,7 @@
                         "items": {
                             "$ref": "#/types/proxmoxve:Network/FirewallSecurityGroupRule:FirewallSecurityGroupRule"
                         },
-                        "description": "Firewall rule block (multiple blocks supported).\n",
-                        "willReplaceOnChanges": true
+                        "description": "Firewall rule block (multiple blocks supported).\n"
                     },
                     "vmId": {
                         "type": "integer",
@@ -6133,6 +6227,70 @@
                         "type": "string",
                         "description": "The user identifier.\n",
                         "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "proxmoxve:Pool/membership:Membership": {
+            "description": "Manages resource pool memberships for containers, virtual machines and storages\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst testVm1 = new proxmoxve.vm.VirtualMachine(\"test_vm1\", {\n    vmId: 1234,\n    nodeName: \"pve\",\n    started: false,\n});\nconst testPool = new proxmoxve.permission.Pool(\"test_pool\", {poolId: \"test-pool\"});\nconst vmMembership = new proxmoxve.pool.Membership(\"vm_membership\", {\n    poolId: testPool.id,\n    vmId: testVm1.id,\n});\nconst storageMembership = new proxmoxve.pool.Membership(\"storage_membership\", {\n    poolId: testPool.id,\n    storageId: \"local-lvm\",\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\ntest_vm1 = proxmoxve.vm.VirtualMachine(\"test_vm1\",\n    vm_id=1234,\n    node_name=\"pve\",\n    started=False)\ntest_pool = proxmoxve.permission.Pool(\"test_pool\", pool_id=\"test-pool\")\nvm_membership = proxmoxve.pool.Membership(\"vm_membership\",\n    pool_id=test_pool.id,\n    vm_id=test_vm1.id)\nstorage_membership = proxmoxve.pool.Membership(\"storage_membership\",\n    pool_id=test_pool.id,\n    storage_id=\"local-lvm\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testVm1 = new ProxmoxVE.VM.VirtualMachine(\"test_vm1\", new()\n    {\n        VmId = 1234,\n        NodeName = \"pve\",\n        Started = false,\n    });\n\n    var testPool = new ProxmoxVE.Permission.Pool(\"test_pool\", new()\n    {\n        PoolId = \"test-pool\",\n    });\n\n    var vmMembership = new ProxmoxVE.Pool.Membership(\"vm_membership\", new()\n    {\n        PoolId = testPool.Id,\n        VmId = testVm1.Id,\n    });\n\n    var storageMembership = new ProxmoxVE.Pool.Membership(\"storage_membership\", new()\n    {\n        PoolId = testPool.Id,\n        StorageId = \"local-lvm\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/permission\"\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/pool\"\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/vm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttestVm1, err := vm.NewVirtualMachine(ctx, \"test_vm1\", \u0026vm.VirtualMachineArgs{\n\t\t\tVmId:     pulumi.Int(1234),\n\t\t\tNodeName: pulumi.String(\"pve\"),\n\t\t\tStarted:  pulumi.Bool(false),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttestPool, err := permission.NewPool(ctx, \"test_pool\", \u0026permission.PoolArgs{\n\t\t\tPoolId: pulumi.String(\"test-pool\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = pool.NewMembership(ctx, \"vm_membership\", \u0026pool.MembershipArgs{\n\t\t\tPoolId: testPool.ID(),\n\t\t\tVmId:   testVm1.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = pool.NewMembership(ctx, \"storage_membership\", \u0026pool.MembershipArgs{\n\t\t\tPoolId:    testPool.ID(),\n\t\t\tStorageId: pulumi.String(\"local-lvm\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport io.muehlbachler.pulumi.proxmoxve.VM.VirtualMachine;\nimport io.muehlbachler.pulumi.proxmoxve.VM.VirtualMachineArgs;\nimport io.muehlbachler.pulumi.proxmoxve.Permission.Pool;\nimport io.muehlbachler.pulumi.proxmoxve.Permission.PoolArgs;\nimport io.muehlbachler.pulumi.proxmoxve.Pool.Membership;\nimport io.muehlbachler.pulumi.proxmoxve.Pool.MembershipArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testVm1 = new VirtualMachine(\"testVm1\", VirtualMachineArgs.builder()\n            .vmId(1234)\n            .nodeName(\"pve\")\n            .started(false)\n            .build());\n\n        var testPool = new Pool(\"testPool\", PoolArgs.builder()\n            .poolId(\"test-pool\")\n            .build());\n\n        var vmMembership = new Membership(\"vmMembership\", MembershipArgs.builder()\n            .poolId(testPool.id())\n            .vmId(testVm1.id())\n            .build());\n\n        var storageMembership = new Membership(\"storageMembership\", MembershipArgs.builder()\n            .poolId(testPool.id())\n            .storageId(\"local-lvm\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testVm1:\n    type: proxmoxve:VM:VirtualMachine\n    name: test_vm1\n    properties:\n      vmId: 1234\n      nodeName: pve\n      started: false\n  testPool:\n    type: proxmoxve:Permission:Pool\n    name: test_pool\n    properties:\n      poolId: test-pool\n  vmMembership:\n    type: proxmoxve:Pool:Membership\n    name: vm_membership\n    properties:\n      poolId: ${testPool.id}\n      vmId: ${testVm1.id}\n  storageMembership:\n    type: proxmoxve:Pool:Membership\n    name: storage_membership\n    properties:\n      poolId: ${testPool.id}\n      storageId: local-lvm\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n#!/usr/bin/env sh\n\nResource pool membership can be imported using its unique identifier, e.g.: {pool_id}/{type}/{member_id}\n\n```sh\n$ pulumi import proxmoxve:Pool/membership:Membership example_membership test-pool/vm/102\n```\n\n",
+            "properties": {
+                "poolId": {
+                    "type": "string",
+                    "description": "Resource pool id\n"
+                },
+                "storageId": {
+                    "type": "string",
+                    "description": "Storage id\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Resource pool membership type (can be \u003cspan pulumi-lang-nodejs=\"`vm`\" pulumi-lang-dotnet=\"`Vm`\" pulumi-lang-go=\"`vm`\" pulumi-lang-python=\"`vm`\" pulumi-lang-yaml=\"`vm`\" pulumi-lang-java=\"`vm`\"\u003e`vm`\u003c/span\u003e for VMs and CTs or \u003cspan pulumi-lang-nodejs=\"`storage`\" pulumi-lang-dotnet=\"`Storage`\" pulumi-lang-go=\"`storage`\" pulumi-lang-python=\"`storage`\" pulumi-lang-yaml=\"`storage`\" pulumi-lang-java=\"`storage`\"\u003e`storage`\u003c/span\u003e for storages)\n"
+                },
+                "vmId": {
+                    "type": "integer",
+                    "description": "VM or CT id\n"
+                }
+            },
+            "required": [
+                "poolId",
+                "type"
+            ],
+            "inputProperties": {
+                "poolId": {
+                    "type": "string",
+                    "description": "Resource pool id\n"
+                },
+                "storageId": {
+                    "type": "string",
+                    "description": "Storage id\n"
+                },
+                "vmId": {
+                    "type": "integer",
+                    "description": "VM or CT id\n"
+                }
+            },
+            "requiredInputs": [
+                "poolId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Membership resources.\n",
+                "properties": {
+                    "poolId": {
+                        "type": "string",
+                        "description": "Resource pool id\n"
+                    },
+                    "storageId": {
+                        "type": "string",
+                        "description": "Storage id\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Resource pool membership type (can be \u003cspan pulumi-lang-nodejs=\"`vm`\" pulumi-lang-dotnet=\"`Vm`\" pulumi-lang-go=\"`vm`\" pulumi-lang-python=\"`vm`\" pulumi-lang-yaml=\"`vm`\" pulumi-lang-java=\"`vm`\"\u003e`vm`\u003c/span\u003e for VMs and CTs or \u003cspan pulumi-lang-nodejs=\"`storage`\" pulumi-lang-dotnet=\"`Storage`\" pulumi-lang-go=\"`storage`\" pulumi-lang-python=\"`storage`\" pulumi-lang-yaml=\"`storage`\" pulumi-lang-java=\"`storage`\"\u003e`storage`\u003c/span\u003e for storages)\n"
+                    },
+                    "vmId": {
+                        "type": "integer",
+                        "description": "VM or CT id\n"
                     }
                 },
                 "type": "object"
@@ -7477,6 +7635,10 @@
                     "$ref": "#/types/proxmoxve:VM/VirtualMachine2Cpu:VirtualMachine2Cpu",
                     "description": "The CPU configuration.\n"
                 },
+                "deleteUnreferencedDisksOnDestroy": {
+                    "type": "boolean",
+                    "description": "Set to true to delete unreferenced disks on destroy (defaults to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e).\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "The description of the VM.\n"
@@ -7488,6 +7650,10 @@
                 "nodeName": {
                     "type": "string",
                     "description": "The name of the node where the VM is provisioned.\n"
+                },
+                "purgeOnDestroy": {
+                    "type": "boolean",
+                    "description": "Set to true to purge the VM from backup configurations on destroy (defaults to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e).\n"
                 },
                 "rng": {
                     "$ref": "#/types/proxmoxve:VM/VirtualMachine2Rng:VirtualMachine2Rng",
@@ -7519,8 +7685,10 @@
             "required": [
                 "cdrom",
                 "cpu",
+                "deleteUnreferencedDisksOnDestroy",
                 "name",
                 "nodeName",
+                "purgeOnDestroy",
                 "rng",
                 "stopOnDestroy",
                 "tags",
@@ -7542,6 +7710,10 @@
                     "$ref": "#/types/proxmoxve:VM/VirtualMachine2Cpu:VirtualMachine2Cpu",
                     "description": "The CPU configuration.\n"
                 },
+                "deleteUnreferencedDisksOnDestroy": {
+                    "type": "boolean",
+                    "description": "Set to true to delete unreferenced disks on destroy (defaults to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e).\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "The description of the VM.\n"
@@ -7553,6 +7725,10 @@
                 "nodeName": {
                     "type": "string",
                     "description": "The name of the node where the VM is provisioned.\n"
+                },
+                "purgeOnDestroy": {
+                    "type": "boolean",
+                    "description": "Set to true to purge the VM from backup configurations on destroy (defaults to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e).\n"
                 },
                 "rng": {
                     "$ref": "#/types/proxmoxve:VM/VirtualMachine2Rng:VirtualMachine2Rng",
@@ -7602,6 +7778,10 @@
                         "$ref": "#/types/proxmoxve:VM/VirtualMachine2Cpu:VirtualMachine2Cpu",
                         "description": "The CPU configuration.\n"
                     },
+                    "deleteUnreferencedDisksOnDestroy": {
+                        "type": "boolean",
+                        "description": "Set to true to delete unreferenced disks on destroy (defaults to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e).\n"
+                    },
                     "description": {
                         "type": "string",
                         "description": "The description of the VM.\n"
@@ -7613,6 +7793,10 @@
                     "nodeName": {
                         "type": "string",
                         "description": "The name of the node where the VM is provisioned.\n"
+                    },
+                    "purgeOnDestroy": {
+                        "type": "boolean",
+                        "description": "Set to true to purge the VM from backup configurations on destroy (defaults to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e).\n"
                     },
                     "rng": {
                         "$ref": "#/types/proxmoxve:VM/VirtualMachine2Rng:VirtualMachine2Rng",
@@ -7672,7 +7856,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Specify a list of devices to boot from in the order\nthey appear in the list (defaults to `[]`).\n"
+                    "description": "Specify a list of devices to boot from in the order they appear in the list.\n"
                 },
                 "cdrom": {
                     "$ref": "#/types/proxmoxve:VM/VirtualMachineCdrom:VirtualMachineCdrom",
@@ -7685,6 +7869,10 @@
                 "cpu": {
                     "$ref": "#/types/proxmoxve:VM/VirtualMachineCpu:VirtualMachineCpu",
                     "description": "The CPU configuration.\n"
+                },
+                "deleteUnreferencedDisksOnDestroy": {
+                    "type": "boolean",
+                    "description": "Whether to delete unreferenced disks on destroy (defaults to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e)\n"
                 },
                 "description": {
                     "type": "string",
@@ -7802,11 +7990,16 @@
                 },
                 "poolId": {
                     "type": "string",
-                    "description": "The identifier for a pool to assign the virtual machine to.\n"
+                    "description": "The identifier for a pool to assign the virtual machine to.\nThis field is deprecated and will be removed in a future release. To assign the VM to a pool, use the \u003cspan pulumi-lang-nodejs=\"`proxmoxve.Pool.Membership`\" pulumi-lang-dotnet=\"`proxmoxve.Pool.Membership`\" pulumi-lang-go=\"`Pool.Membership`\" pulumi-lang-python=\"`Pool.Membership`\" pulumi-lang-yaml=\"`proxmoxve.Pool.Membership`\" pulumi-lang-java=\"`proxmoxve.Pool.Membership`\"\u003e`proxmoxve.Pool.Membership`\u003c/span\u003e resource instead.\n",
+                    "deprecationMessage": "This field is deprecated and will be removed in a future release. To assign the VM to a pool, use \u003cspan pulumi-lang-nodejs=\"`proxmoxve.Pool.Membership`\" pulumi-lang-dotnet=\"`proxmoxve.Pool.Membership`\" pulumi-lang-go=\"`Pool.Membership`\" pulumi-lang-python=\"`Pool.Membership`\" pulumi-lang-yaml=\"`proxmoxve.Pool.Membership`\" pulumi-lang-java=\"`proxmoxve.Pool.Membership`\"\u003e`proxmoxve.Pool.Membership`\u003c/span\u003e resource instead."
                 },
                 "protection": {
                     "type": "boolean",
                     "description": "Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e).\n"
+                },
+                "purgeOnDestroy": {
+                    "type": "boolean",
+                    "description": "Whether to purge the VM from backup configurations on destroy (defaults to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e)\n"
                 },
                 "reboot": {
                     "type": "boolean",
@@ -7879,7 +8072,7 @@
                 },
                 "timeoutMoveDisk": {
                     "type": "integer",
-                    "description": "MoveDisk timeout",
+                    "description": "Disk move timeout",
                     "deprecationMessage": "This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create /\u003cspan pulumi-lang-nodejs=\" timeoutClone \" pulumi-lang-dotnet=\" TimeoutClone \" pulumi-lang-go=\" timeoutClone \" pulumi-lang-python=\" timeout_clone \" pulumi-lang-yaml=\" timeoutClone \" pulumi-lang-java=\" timeoutClone \"\u003e timeout_clone \u003c/span\u003e/ timeout_migrate) is used instead."
                 },
                 "timeoutReboot": {
@@ -7930,6 +8123,7 @@
                 }
             },
             "required": [
+                "bootOrders",
                 "ipv4Addresses",
                 "ipv6Addresses",
                 "macAddresses",
@@ -7967,7 +8161,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Specify a list of devices to boot from in the order\nthey appear in the list (defaults to `[]`).\n"
+                    "description": "Specify a list of devices to boot from in the order they appear in the list.\n"
                 },
                 "cdrom": {
                     "$ref": "#/types/proxmoxve:VM/VirtualMachineCdrom:VirtualMachineCdrom",
@@ -7980,6 +8174,10 @@
                 "cpu": {
                     "$ref": "#/types/proxmoxve:VM/VirtualMachineCpu:VirtualMachineCpu",
                     "description": "The CPU configuration.\n"
+                },
+                "deleteUnreferencedDisksOnDestroy": {
+                    "type": "boolean",
+                    "description": "Whether to delete unreferenced disks on destroy (defaults to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e)\n"
                 },
                 "description": {
                     "type": "string",
@@ -8071,11 +8269,16 @@
                 },
                 "poolId": {
                     "type": "string",
-                    "description": "The identifier for a pool to assign the virtual machine to.\n"
+                    "description": "The identifier for a pool to assign the virtual machine to.\nThis field is deprecated and will be removed in a future release. To assign the VM to a pool, use the \u003cspan pulumi-lang-nodejs=\"`proxmoxve.Pool.Membership`\" pulumi-lang-dotnet=\"`proxmoxve.Pool.Membership`\" pulumi-lang-go=\"`Pool.Membership`\" pulumi-lang-python=\"`Pool.Membership`\" pulumi-lang-yaml=\"`proxmoxve.Pool.Membership`\" pulumi-lang-java=\"`proxmoxve.Pool.Membership`\"\u003e`proxmoxve.Pool.Membership`\u003c/span\u003e resource instead.\n",
+                    "deprecationMessage": "This field is deprecated and will be removed in a future release. To assign the VM to a pool, use \u003cspan pulumi-lang-nodejs=\"`proxmoxve.Pool.Membership`\" pulumi-lang-dotnet=\"`proxmoxve.Pool.Membership`\" pulumi-lang-go=\"`Pool.Membership`\" pulumi-lang-python=\"`Pool.Membership`\" pulumi-lang-yaml=\"`proxmoxve.Pool.Membership`\" pulumi-lang-java=\"`proxmoxve.Pool.Membership`\"\u003e`proxmoxve.Pool.Membership`\u003c/span\u003e resource instead."
                 },
                 "protection": {
                     "type": "boolean",
                     "description": "Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e).\n"
+                },
+                "purgeOnDestroy": {
+                    "type": "boolean",
+                    "description": "Whether to purge the VM from backup configurations on destroy (defaults to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e)\n"
                 },
                 "reboot": {
                     "type": "boolean",
@@ -8149,7 +8352,7 @@
                 },
                 "timeoutMoveDisk": {
                     "type": "integer",
-                    "description": "MoveDisk timeout",
+                    "description": "Disk move timeout",
                     "deprecationMessage": "This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create /\u003cspan pulumi-lang-nodejs=\" timeoutClone \" pulumi-lang-dotnet=\" TimeoutClone \" pulumi-lang-go=\" timeoutClone \" pulumi-lang-python=\" timeout_clone \" pulumi-lang-yaml=\" timeoutClone \" pulumi-lang-java=\" timeoutClone \"\u003e timeout_clone \u003c/span\u003e/ timeout_migrate) is used instead."
                 },
                 "timeoutReboot": {
@@ -8232,7 +8435,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Specify a list of devices to boot from in the order\nthey appear in the list (defaults to `[]`).\n"
+                        "description": "Specify a list of devices to boot from in the order they appear in the list.\n"
                     },
                     "cdrom": {
                         "$ref": "#/types/proxmoxve:VM/VirtualMachineCdrom:VirtualMachineCdrom",
@@ -8245,6 +8448,10 @@
                     "cpu": {
                         "$ref": "#/types/proxmoxve:VM/VirtualMachineCpu:VirtualMachineCpu",
                         "description": "The CPU configuration.\n"
+                    },
+                    "deleteUnreferencedDisksOnDestroy": {
+                        "type": "boolean",
+                        "description": "Whether to delete unreferenced disks on destroy (defaults to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e)\n"
                     },
                     "description": {
                         "type": "string",
@@ -8363,11 +8570,16 @@
                     },
                     "poolId": {
                         "type": "string",
-                        "description": "The identifier for a pool to assign the virtual machine to.\n"
+                        "description": "The identifier for a pool to assign the virtual machine to.\nThis field is deprecated and will be removed in a future release. To assign the VM to a pool, use the \u003cspan pulumi-lang-nodejs=\"`proxmoxve.Pool.Membership`\" pulumi-lang-dotnet=\"`proxmoxve.Pool.Membership`\" pulumi-lang-go=\"`Pool.Membership`\" pulumi-lang-python=\"`Pool.Membership`\" pulumi-lang-yaml=\"`proxmoxve.Pool.Membership`\" pulumi-lang-java=\"`proxmoxve.Pool.Membership`\"\u003e`proxmoxve.Pool.Membership`\u003c/span\u003e resource instead.\n",
+                        "deprecationMessage": "This field is deprecated and will be removed in a future release. To assign the VM to a pool, use \u003cspan pulumi-lang-nodejs=\"`proxmoxve.Pool.Membership`\" pulumi-lang-dotnet=\"`proxmoxve.Pool.Membership`\" pulumi-lang-go=\"`Pool.Membership`\" pulumi-lang-python=\"`Pool.Membership`\" pulumi-lang-yaml=\"`proxmoxve.Pool.Membership`\" pulumi-lang-java=\"`proxmoxve.Pool.Membership`\"\u003e`proxmoxve.Pool.Membership`\u003c/span\u003e resource instead."
                     },
                     "protection": {
                         "type": "boolean",
                         "description": "Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e).\n"
+                    },
+                    "purgeOnDestroy": {
+                        "type": "boolean",
+                        "description": "Whether to purge the VM from backup configurations on destroy (defaults to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e)\n"
                     },
                     "reboot": {
                         "type": "boolean",
@@ -8441,7 +8653,7 @@
                     },
                     "timeoutMoveDisk": {
                         "type": "integer",
-                        "description": "MoveDisk timeout",
+                        "description": "Disk move timeout",
                         "deprecationMessage": "This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create /\u003cspan pulumi-lang-nodejs=\" timeoutClone \" pulumi-lang-dotnet=\" TimeoutClone \" pulumi-lang-go=\" timeoutClone \" pulumi-lang-python=\" timeout_clone \" pulumi-lang-yaml=\" timeoutClone \" pulumi-lang-java=\" timeoutClone \"\u003e timeout_clone \u003c/span\u003e/ timeout_migrate) is used instead."
                     },
                     "timeoutReboot": {
@@ -10060,6 +10272,14 @@
                         "description": "Unique name that will be ID of this metric server in PVE.\n",
                         "type": "string"
                     },
+                    "opentelemetryPath": {
+                        "description": "OpenTelemetry endpoint path (e.g., `/v1/metrics`).\n",
+                        "type": "string"
+                    },
+                    "opentelemetryProto": {
+                        "description": "Protocol for OpenTelemetry. Choice is between \u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\"\u003e`http`\u003c/span\u003e | \u003cspan pulumi-lang-nodejs=\"`https`\" pulumi-lang-dotnet=\"`Https`\" pulumi-lang-go=\"`https`\" pulumi-lang-python=\"`https`\" pulumi-lang-yaml=\"`https`\" pulumi-lang-java=\"`https`\"\u003e`https`\u003c/span\u003e.\n",
+                        "type": "string"
+                    },
                     "port": {
                         "description": "Server network port.\n",
                         "type": "integer"
@@ -10069,7 +10289,7 @@
                         "type": "string"
                     },
                     "type": {
-                        "description": "Plugin type. Either \u003cspan pulumi-lang-nodejs=\"`graphite`\" pulumi-lang-dotnet=\"`Graphite`\" pulumi-lang-go=\"`graphite`\" pulumi-lang-python=\"`graphite`\" pulumi-lang-yaml=\"`graphite`\" pulumi-lang-java=\"`graphite`\"\u003e`graphite`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`influxdb`\" pulumi-lang-dotnet=\"`Influxdb`\" pulumi-lang-go=\"`influxdb`\" pulumi-lang-python=\"`influxdb`\" pulumi-lang-yaml=\"`influxdb`\" pulumi-lang-java=\"`influxdb`\"\u003e`influxdb`\u003c/span\u003e.\n",
+                        "description": "Plugin type. Either \u003cspan pulumi-lang-nodejs=\"`graphite`\" pulumi-lang-dotnet=\"`Graphite`\" pulumi-lang-go=\"`graphite`\" pulumi-lang-python=\"`graphite`\" pulumi-lang-yaml=\"`graphite`\" pulumi-lang-java=\"`graphite`\"\u003e`graphite`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`influxdb`\" pulumi-lang-dotnet=\"`Influxdb`\" pulumi-lang-go=\"`influxdb`\" pulumi-lang-python=\"`influxdb`\" pulumi-lang-yaml=\"`influxdb`\" pulumi-lang-java=\"`influxdb`\"\u003e`influxdb`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`opentelemetry`\" pulumi-lang-dotnet=\"`Opentelemetry`\" pulumi-lang-go=\"`opentelemetry`\" pulumi-lang-python=\"`opentelemetry`\" pulumi-lang-yaml=\"`opentelemetry`\" pulumi-lang-java=\"`opentelemetry`\"\u003e`opentelemetry`\u003c/span\u003e.\n",
                         "type": "string"
                     }
                 },
@@ -10077,6 +10297,8 @@
                     "disable",
                     "id",
                     "name",
+                    "opentelemetryPath",
+                    "opentelemetryProto",
                     "port",
                     "server",
                     "type"
@@ -11199,7 +11421,7 @@
             }
         },
         "proxmoxve:Sdn/getVnet:getVnet": {
-            "description": "Retrieves information about an existing SDN VNet.\n",
+            "description": "Retrieves information about an existing SDN VNet.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst example = proxmoxve.Sdn.getVnet({\n    id: \"vnet1\",\n});\nexport const dataProxmoxVirtualEnvironmentSdnVnet = {\n    id: example.then(example =\u003e example.id),\n    zone: example.then(example =\u003e example.zone),\n    alias: example.then(example =\u003e example.alias),\n    isolatePorts: example.then(example =\u003e example.isolatePorts),\n    tag: example.then(example =\u003e example.tag),\n    vlanAware: example.then(example =\u003e example.vlanAware),\n};\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nexample = proxmoxve.Sdn.get_vnet(id=\"vnet1\")\npulumi.export(\"dataProxmoxVirtualEnvironmentSdnVnet\", {\n    \"id\": example.id,\n    \"zone\": example.zone,\n    \"alias\": example.alias,\n    \"isolatePorts\": example.isolate_ports,\n    \"tag\": example.tag,\n    \"vlanAware\": example.vlan_aware,\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = ProxmoxVE.Sdn.GetVnet.Invoke(new()\n    {\n        Id = \"vnet1\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"dataProxmoxVirtualEnvironmentSdnVnet\"] = \n        {\n            { \"id\", example.Apply(getVnetResult =\u003e getVnetResult.Id) },\n            { \"zone\", example.Apply(getVnetResult =\u003e getVnetResult.Zone) },\n            { \"alias\", example.Apply(getVnetResult =\u003e getVnetResult.Alias) },\n            { \"isolatePorts\", example.Apply(getVnetResult =\u003e getVnetResult.IsolatePorts) },\n            { \"tag\", example.Apply(getVnetResult =\u003e getVnetResult.Tag) },\n            { \"vlanAware\", example.Apply(getVnetResult =\u003e getVnetResult.VlanAware) },\n        },\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdn\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := sdn.GetVnet(ctx, \u0026sdn.GetVnetArgs{\n\t\t\tId: \"vnet1\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"dataProxmoxVirtualEnvironmentSdnVnet\", pulumi.Map{\n\t\t\t\"id\":           example.Id,\n\t\t\t\"zone\":         example.Zone,\n\t\t\t\"alias\":        example.Alias,\n\t\t\t\"isolatePorts\": example.IsolatePorts,\n\t\t\t\"tag\":          example.Tag,\n\t\t\t\"vlanAware\":    example.VlanAware,\n\t\t})\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Sdn.SdnFunctions;\nimport com.pulumi.proxmoxve.Sdn.inputs.GetVnetArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = SdnFunctions.getVnet(GetVnetArgs.builder()\n            .id(\"vnet1\")\n            .build());\n\n        ctx.export(\"dataProxmoxVirtualEnvironmentSdnVnet\", Map.ofEntries(\n            Map.entry(\"id\", example.id()),\n            Map.entry(\"zone\", example.zone()),\n            Map.entry(\"alias\", example.alias()),\n            Map.entry(\"isolatePorts\", example.isolatePorts()),\n            Map.entry(\"tag\", example.tag()),\n            Map.entry(\"vlanAware\", example.vlanAware())\n        ));\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: proxmoxve:Sdn:getVnet\n      arguments:\n        id: vnet1\noutputs:\n  dataProxmoxVirtualEnvironmentSdnVnet:\n    id: ${example.id}\n    zone: ${example.zone}\n    alias: ${example.alias}\n    isolatePorts: ${example.isolatePorts}\n    tag: ${example.tag}\n    vlanAware: ${example.vlanAware}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getVnet.\n",
                 "properties": {
@@ -11248,6 +11470,30 @@
                     "tag",
                     "vlanAware",
                     "zone"
+                ],
+                "type": "object"
+            }
+        },
+        "proxmoxve:Sdn/getVnets:getVnets": {
+            "description": "Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\n// List all SDN VNets\nconst all = proxmoxve.Sdn.getVnets({});\nexport const dataProxmoxVirtualEnvironmentSdnVnetsAll = {\n    vnets: all.then(all =\u003e all.vnets),\n};\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\n# List all SDN VNets\nall = proxmoxve.Sdn.get_vnets()\npulumi.export(\"dataProxmoxVirtualEnvironmentSdnVnetsAll\", {\n    \"vnets\": all.vnets,\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // List all SDN VNets\n    var all = ProxmoxVE.Sdn.GetVnets.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"dataProxmoxVirtualEnvironmentSdnVnetsAll\"] = \n        {\n            { \"vnets\", all.Apply(getVnetsResult =\u003e getVnetsResult.Vnets) },\n        },\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdn\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// List all SDN VNets\n\t\tall, err := sdn.GetVnets(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"dataProxmoxVirtualEnvironmentSdnVnetsAll\", []sdn.GetVnetsVnetMap{\n\t\t\t\"vnets\": all.Vnets,\n\t\t})\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.proxmoxve.Sdn.SdnFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // List all SDN VNets\n        final var all = SdnFunctions.getVnets(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);\n\n        ctx.export(\"dataProxmoxVirtualEnvironmentSdnVnetsAll\", Map.of(\"vnets\", all.vnets()));\n    }\n}\n```\n```yaml\nvariables:\n  # List all SDN VNets\n  all:\n    fn::invoke:\n      function: proxmoxve:Sdn:getVnets\n      arguments: {}\noutputs:\n  dataProxmoxVirtualEnvironmentSdnVnetsAll:\n    vnets: ${all.vnets}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "outputs": {
+                "description": "A collection of values returned by getVnets.\n",
+                "properties": {
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "vnets": {
+                        "description": "List of SDN VNets.\n",
+                        "items": {
+                            "$ref": "#/types/proxmoxve:Sdn/getVnetsVnet:getVnetsVnet"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "vnets",
+                    "id"
                 ],
                 "type": "object"
             }

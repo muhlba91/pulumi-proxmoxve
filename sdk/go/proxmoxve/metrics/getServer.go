@@ -66,11 +66,15 @@ type GetServerResult struct {
 	Id string `pulumi:"id"`
 	// Unique name that will be ID of this metric server in PVE.
 	Name string `pulumi:"name"`
+	// OpenTelemetry endpoint path (e.g., `/v1/metrics`).
+	OpentelemetryPath string `pulumi:"opentelemetryPath"`
+	// Protocol for OpenTelemetry. Choice is between `http` | `https`.
+	OpentelemetryProto string `pulumi:"opentelemetryProto"`
 	// Server network port.
 	Port int `pulumi:"port"`
 	// Server dns name or IP address.
 	Server string `pulumi:"server"`
-	// Plugin type. Either `graphite` or `influxdb`.
+	// Plugin type. Either `graphite`, `influxdb`, or `opentelemetry`.
 	Type string `pulumi:"type"`
 }
 
@@ -123,6 +127,16 @@ func (o GetServerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// OpenTelemetry endpoint path (e.g., `/v1/metrics`).
+func (o GetServerResultOutput) OpentelemetryPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerResult) string { return v.OpentelemetryPath }).(pulumi.StringOutput)
+}
+
+// Protocol for OpenTelemetry. Choice is between `http` | `https`.
+func (o GetServerResultOutput) OpentelemetryProto() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServerResult) string { return v.OpentelemetryProto }).(pulumi.StringOutput)
+}
+
 // Server network port.
 func (o GetServerResultOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServerResult) int { return v.Port }).(pulumi.IntOutput)
@@ -133,7 +147,7 @@ func (o GetServerResultOutput) Server() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerResult) string { return v.Server }).(pulumi.StringOutput)
 }
 
-// Plugin type. Either `graphite` or `influxdb`.
+// Plugin type. Either `graphite`, `influxdb`, or `opentelemetry`.
 func (o GetServerResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerResult) string { return v.Type }).(pulumi.StringOutput)
 }

@@ -325,6 +325,130 @@ func (o GetSubnetDhcpRangePtrOutput) StartAddress() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetVnetsVnet struct {
+	Alias        string `pulumi:"alias"`
+	Id           string `pulumi:"id"`
+	IsolatePorts bool   `pulumi:"isolatePorts"`
+	Tag          int    `pulumi:"tag"`
+	VlanAware    bool   `pulumi:"vlanAware"`
+	Zone         string `pulumi:"zone"`
+}
+
+// GetVnetsVnetInput is an input type that accepts GetVnetsVnetArgs and GetVnetsVnetOutput values.
+// You can construct a concrete instance of `GetVnetsVnetInput` via:
+//
+//	GetVnetsVnetArgs{...}
+type GetVnetsVnetInput interface {
+	pulumi.Input
+
+	ToGetVnetsVnetOutput() GetVnetsVnetOutput
+	ToGetVnetsVnetOutputWithContext(context.Context) GetVnetsVnetOutput
+}
+
+type GetVnetsVnetArgs struct {
+	Alias        pulumi.StringInput `pulumi:"alias"`
+	Id           pulumi.StringInput `pulumi:"id"`
+	IsolatePorts pulumi.BoolInput   `pulumi:"isolatePorts"`
+	Tag          pulumi.IntInput    `pulumi:"tag"`
+	VlanAware    pulumi.BoolInput   `pulumi:"vlanAware"`
+	Zone         pulumi.StringInput `pulumi:"zone"`
+}
+
+func (GetVnetsVnetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVnetsVnet)(nil)).Elem()
+}
+
+func (i GetVnetsVnetArgs) ToGetVnetsVnetOutput() GetVnetsVnetOutput {
+	return i.ToGetVnetsVnetOutputWithContext(context.Background())
+}
+
+func (i GetVnetsVnetArgs) ToGetVnetsVnetOutputWithContext(ctx context.Context) GetVnetsVnetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVnetsVnetOutput)
+}
+
+// GetVnetsVnetArrayInput is an input type that accepts GetVnetsVnetArray and GetVnetsVnetArrayOutput values.
+// You can construct a concrete instance of `GetVnetsVnetArrayInput` via:
+//
+//	GetVnetsVnetArray{ GetVnetsVnetArgs{...} }
+type GetVnetsVnetArrayInput interface {
+	pulumi.Input
+
+	ToGetVnetsVnetArrayOutput() GetVnetsVnetArrayOutput
+	ToGetVnetsVnetArrayOutputWithContext(context.Context) GetVnetsVnetArrayOutput
+}
+
+type GetVnetsVnetArray []GetVnetsVnetInput
+
+func (GetVnetsVnetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVnetsVnet)(nil)).Elem()
+}
+
+func (i GetVnetsVnetArray) ToGetVnetsVnetArrayOutput() GetVnetsVnetArrayOutput {
+	return i.ToGetVnetsVnetArrayOutputWithContext(context.Background())
+}
+
+func (i GetVnetsVnetArray) ToGetVnetsVnetArrayOutputWithContext(ctx context.Context) GetVnetsVnetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVnetsVnetArrayOutput)
+}
+
+type GetVnetsVnetOutput struct{ *pulumi.OutputState }
+
+func (GetVnetsVnetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVnetsVnet)(nil)).Elem()
+}
+
+func (o GetVnetsVnetOutput) ToGetVnetsVnetOutput() GetVnetsVnetOutput {
+	return o
+}
+
+func (o GetVnetsVnetOutput) ToGetVnetsVnetOutputWithContext(ctx context.Context) GetVnetsVnetOutput {
+	return o
+}
+
+func (o GetVnetsVnetOutput) Alias() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVnetsVnet) string { return v.Alias }).(pulumi.StringOutput)
+}
+
+func (o GetVnetsVnetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVnetsVnet) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetVnetsVnetOutput) IsolatePorts() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetVnetsVnet) bool { return v.IsolatePorts }).(pulumi.BoolOutput)
+}
+
+func (o GetVnetsVnetOutput) Tag() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVnetsVnet) int { return v.Tag }).(pulumi.IntOutput)
+}
+
+func (o GetVnetsVnetOutput) VlanAware() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetVnetsVnet) bool { return v.VlanAware }).(pulumi.BoolOutput)
+}
+
+func (o GetVnetsVnetOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVnetsVnet) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+type GetVnetsVnetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVnetsVnetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVnetsVnet)(nil)).Elem()
+}
+
+func (o GetVnetsVnetArrayOutput) ToGetVnetsVnetArrayOutput() GetVnetsVnetArrayOutput {
+	return o
+}
+
+func (o GetVnetsVnetArrayOutput) ToGetVnetsVnetArrayOutputWithContext(ctx context.Context) GetVnetsVnetArrayOutput {
+	return o
+}
+
+func (o GetVnetsVnetArrayOutput) Index(i pulumi.IntInput) GetVnetsVnetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVnetsVnet {
+		return vs[0].([]GetVnetsVnet)[vs[1].(int)]
+	}).(GetVnetsVnetOutput)
+}
+
 type GetZonesZone struct {
 	AdvertiseSubnets        bool     `pulumi:"advertiseSubnets"`
 	Bridge                  string   `pulumi:"bridge"`
@@ -556,12 +680,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetDhcpRangePtrInput)(nil)).Elem(), SubnetDhcpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetDhcpRangeInput)(nil)).Elem(), GetSubnetDhcpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetDhcpRangePtrInput)(nil)).Elem(), GetSubnetDhcpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVnetsVnetInput)(nil)).Elem(), GetVnetsVnetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVnetsVnetArrayInput)(nil)).Elem(), GetVnetsVnetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterOutputType(SubnetDhcpRangeOutput{})
 	pulumi.RegisterOutputType(SubnetDhcpRangePtrOutput{})
 	pulumi.RegisterOutputType(GetSubnetDhcpRangeOutput{})
 	pulumi.RegisterOutputType(GetSubnetDhcpRangePtrOutput{})
+	pulumi.RegisterOutputType(GetVnetsVnetOutput{})
+	pulumi.RegisterOutputType(GetVnetsVnetArrayOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneArrayOutput{})
 }

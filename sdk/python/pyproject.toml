@@ -5,7 +5,7 @@
   keywords = ["pulumi", "proxmox", "proxmoxve"]
   readme = "README.md"
   requires-python = ">=3.9"
-  version = "7.8.0a1763203377+4db12998"
+  version = "7.9.0a1764581063+12e0f5d5.dirty"
   [project.license]
     text = "Apache-2.0"
   [project.urls]

@@ -34,8 +34,7 @@ type VirtualMachine struct {
 	AudioDevice VirtualMachineAudioDevicePtrOutput `pulumi:"audioDevice"`
 	// The BIOS implementation (defaults to `seabios`).
 	Bios pulumi.StringPtrOutput `pulumi:"bios"`
-	// Specify a list of devices to boot from in the order
-	// they appear in the list (defaults to `[]`).
+	// Specify a list of devices to boot from in the order they appear in the list.
 	BootOrders pulumi.StringArrayOutput `pulumi:"bootOrders"`
 	// The CD-ROM configuration.
 	Cdrom VirtualMachineCdromPtrOutput `pulumi:"cdrom"`
@@ -43,6 +42,8 @@ type VirtualMachine struct {
 	Clone VirtualMachineClonePtrOutput `pulumi:"clone"`
 	// The CPU configuration.
 	Cpu VirtualMachineCpuPtrOutput `pulumi:"cpu"`
+	// Whether to delete unreferenced disks on destroy (defaults to `true`)
+	DeleteUnreferencedDisksOnDestroy pulumi.BoolPtrOutput `pulumi:"deleteUnreferencedDisksOnDestroy"`
 	// The description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A disk (multiple blocks supported).
@@ -94,9 +95,14 @@ type VirtualMachine struct {
 	// The Operating System configuration.
 	OperatingSystem VirtualMachineOperatingSystemPtrOutput `pulumi:"operatingSystem"`
 	// The identifier for a pool to assign the virtual machine to.
+	// This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `Pool.Membership` resource instead.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release. To assign the VM to a pool, use `Pool.Membership` resource instead.
 	PoolId pulumi.StringPtrOutput `pulumi:"poolId"`
 	// Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
 	Protection pulumi.BoolPtrOutput `pulumi:"protection"`
+	// Whether to purge the VM from backup configurations on destroy (defaults to `true`)
+	PurgeOnDestroy pulumi.BoolPtrOutput `pulumi:"purgeOnDestroy"`
 	// Reboot the VM after initial creation (defaults to `false`).
 	Reboot pulumi.BoolPtrOutput `pulumi:"reboot"`
 	// Reboot the VM after update if needed (defaults to `true`).
@@ -137,7 +143,7 @@ type VirtualMachine struct {
 	// Timeout for migrating the VM (defaults to
 	// 1800).
 	TimeoutMigrate pulumi.IntPtrOutput `pulumi:"timeoutMigrate"`
-	// MoveDisk timeout
+	// Disk move timeout
 	//
 	// Deprecated: This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead.
 	TimeoutMoveDisk pulumi.IntPtrOutput `pulumi:"timeoutMoveDisk"`
@@ -210,8 +216,7 @@ type virtualMachineState struct {
 	AudioDevice *VirtualMachineAudioDevice `pulumi:"audioDevice"`
 	// The BIOS implementation (defaults to `seabios`).
 	Bios *string `pulumi:"bios"`
-	// Specify a list of devices to boot from in the order
-	// they appear in the list (defaults to `[]`).
+	// Specify a list of devices to boot from in the order they appear in the list.
 	BootOrders []string `pulumi:"bootOrders"`
 	// The CD-ROM configuration.
 	Cdrom *VirtualMachineCdrom `pulumi:"cdrom"`
@@ -219,6 +224,8 @@ type virtualMachineState struct {
 	Clone *VirtualMachineClone `pulumi:"clone"`
 	// The CPU configuration.
 	Cpu *VirtualMachineCpu `pulumi:"cpu"`
+	// Whether to delete unreferenced disks on destroy (defaults to `true`)
+	DeleteUnreferencedDisksOnDestroy *bool `pulumi:"deleteUnreferencedDisksOnDestroy"`
 	// The description.
 	Description *string `pulumi:"description"`
 	// A disk (multiple blocks supported).
@@ -270,9 +277,14 @@ type virtualMachineState struct {
 	// The Operating System configuration.
 	OperatingSystem *VirtualMachineOperatingSystem `pulumi:"operatingSystem"`
 	// The identifier for a pool to assign the virtual machine to.
+	// This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `Pool.Membership` resource instead.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release. To assign the VM to a pool, use `Pool.Membership` resource instead.
 	PoolId *string `pulumi:"poolId"`
 	// Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
 	Protection *bool `pulumi:"protection"`
+	// Whether to purge the VM from backup configurations on destroy (defaults to `true`)
+	PurgeOnDestroy *bool `pulumi:"purgeOnDestroy"`
 	// Reboot the VM after initial creation (defaults to `false`).
 	Reboot *bool `pulumi:"reboot"`
 	// Reboot the VM after update if needed (defaults to `true`).
@@ -313,7 +325,7 @@ type virtualMachineState struct {
 	// Timeout for migrating the VM (defaults to
 	// 1800).
 	TimeoutMigrate *int `pulumi:"timeoutMigrate"`
-	// MoveDisk timeout
+	// Disk move timeout
 	//
 	// Deprecated: This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead.
 	TimeoutMoveDisk *int `pulumi:"timeoutMoveDisk"`
@@ -354,8 +366,7 @@ type VirtualMachineState struct {
 	AudioDevice VirtualMachineAudioDevicePtrInput
 	// The BIOS implementation (defaults to `seabios`).
 	Bios pulumi.StringPtrInput
-	// Specify a list of devices to boot from in the order
-	// they appear in the list (defaults to `[]`).
+	// Specify a list of devices to boot from in the order they appear in the list.
 	BootOrders pulumi.StringArrayInput
 	// The CD-ROM configuration.
 	Cdrom VirtualMachineCdromPtrInput
@@ -363,6 +374,8 @@ type VirtualMachineState struct {
 	Clone VirtualMachineClonePtrInput
 	// The CPU configuration.
 	Cpu VirtualMachineCpuPtrInput
+	// Whether to delete unreferenced disks on destroy (defaults to `true`)
+	DeleteUnreferencedDisksOnDestroy pulumi.BoolPtrInput
 	// The description.
 	Description pulumi.StringPtrInput
 	// A disk (multiple blocks supported).
@@ -414,9 +427,14 @@ type VirtualMachineState struct {
 	// The Operating System configuration.
 	OperatingSystem VirtualMachineOperatingSystemPtrInput
 	// The identifier for a pool to assign the virtual machine to.
+	// This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `Pool.Membership` resource instead.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release. To assign the VM to a pool, use `Pool.Membership` resource instead.
 	PoolId pulumi.StringPtrInput
 	// Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
 	Protection pulumi.BoolPtrInput
+	// Whether to purge the VM from backup configurations on destroy (defaults to `true`)
+	PurgeOnDestroy pulumi.BoolPtrInput
 	// Reboot the VM after initial creation (defaults to `false`).
 	Reboot pulumi.BoolPtrInput
 	// Reboot the VM after update if needed (defaults to `true`).
@@ -457,7 +475,7 @@ type VirtualMachineState struct {
 	// Timeout for migrating the VM (defaults to
 	// 1800).
 	TimeoutMigrate pulumi.IntPtrInput
-	// MoveDisk timeout
+	// Disk move timeout
 	//
 	// Deprecated: This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead.
 	TimeoutMoveDisk pulumi.IntPtrInput
@@ -502,8 +520,7 @@ type virtualMachineArgs struct {
 	AudioDevice *VirtualMachineAudioDevice `pulumi:"audioDevice"`
 	// The BIOS implementation (defaults to `seabios`).
 	Bios *string `pulumi:"bios"`
-	// Specify a list of devices to boot from in the order
-	// they appear in the list (defaults to `[]`).
+	// Specify a list of devices to boot from in the order they appear in the list.
 	BootOrders []string `pulumi:"bootOrders"`
 	// The CD-ROM configuration.
 	Cdrom *VirtualMachineCdrom `pulumi:"cdrom"`
@@ -511,6 +528,8 @@ type virtualMachineArgs struct {
 	Clone *VirtualMachineClone `pulumi:"clone"`
 	// The CPU configuration.
 	Cpu *VirtualMachineCpu `pulumi:"cpu"`
+	// Whether to delete unreferenced disks on destroy (defaults to `true`)
+	DeleteUnreferencedDisksOnDestroy *bool `pulumi:"deleteUnreferencedDisksOnDestroy"`
 	// The description.
 	Description *string `pulumi:"description"`
 	// A disk (multiple blocks supported).
@@ -553,9 +572,14 @@ type virtualMachineArgs struct {
 	// The Operating System configuration.
 	OperatingSystem *VirtualMachineOperatingSystem `pulumi:"operatingSystem"`
 	// The identifier for a pool to assign the virtual machine to.
+	// This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `Pool.Membership` resource instead.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release. To assign the VM to a pool, use `Pool.Membership` resource instead.
 	PoolId *string `pulumi:"poolId"`
 	// Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
 	Protection *bool `pulumi:"protection"`
+	// Whether to purge the VM from backup configurations on destroy (defaults to `true`)
+	PurgeOnDestroy *bool `pulumi:"purgeOnDestroy"`
 	// Reboot the VM after initial creation (defaults to `false`).
 	Reboot *bool `pulumi:"reboot"`
 	// Reboot the VM after update if needed (defaults to `true`).
@@ -596,7 +620,7 @@ type virtualMachineArgs struct {
 	// Timeout for migrating the VM (defaults to
 	// 1800).
 	TimeoutMigrate *int `pulumi:"timeoutMigrate"`
-	// MoveDisk timeout
+	// Disk move timeout
 	//
 	// Deprecated: This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead.
 	TimeoutMoveDisk *int `pulumi:"timeoutMoveDisk"`
@@ -638,8 +662,7 @@ type VirtualMachineArgs struct {
 	AudioDevice VirtualMachineAudioDevicePtrInput
 	// The BIOS implementation (defaults to `seabios`).
 	Bios pulumi.StringPtrInput
-	// Specify a list of devices to boot from in the order
-	// they appear in the list (defaults to `[]`).
+	// Specify a list of devices to boot from in the order they appear in the list.
 	BootOrders pulumi.StringArrayInput
 	// The CD-ROM configuration.
 	Cdrom VirtualMachineCdromPtrInput
@@ -647,6 +670,8 @@ type VirtualMachineArgs struct {
 	Clone VirtualMachineClonePtrInput
 	// The CPU configuration.
 	Cpu VirtualMachineCpuPtrInput
+	// Whether to delete unreferenced disks on destroy (defaults to `true`)
+	DeleteUnreferencedDisksOnDestroy pulumi.BoolPtrInput
 	// The description.
 	Description pulumi.StringPtrInput
 	// A disk (multiple blocks supported).
@@ -689,9 +714,14 @@ type VirtualMachineArgs struct {
 	// The Operating System configuration.
 	OperatingSystem VirtualMachineOperatingSystemPtrInput
 	// The identifier for a pool to assign the virtual machine to.
+	// This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `Pool.Membership` resource instead.
+	//
+	// Deprecated: This field is deprecated and will be removed in a future release. To assign the VM to a pool, use `Pool.Membership` resource instead.
 	PoolId pulumi.StringPtrInput
 	// Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
 	Protection pulumi.BoolPtrInput
+	// Whether to purge the VM from backup configurations on destroy (defaults to `true`)
+	PurgeOnDestroy pulumi.BoolPtrInput
 	// Reboot the VM after initial creation (defaults to `false`).
 	Reboot pulumi.BoolPtrInput
 	// Reboot the VM after update if needed (defaults to `true`).
@@ -732,7 +762,7 @@ type VirtualMachineArgs struct {
 	// Timeout for migrating the VM (defaults to
 	// 1800).
 	TimeoutMigrate pulumi.IntPtrInput
-	// MoveDisk timeout
+	// Disk move timeout
 	//
 	// Deprecated: This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead.
 	TimeoutMoveDisk pulumi.IntPtrInput
@@ -874,8 +904,7 @@ func (o VirtualMachineOutput) Bios() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.Bios }).(pulumi.StringPtrOutput)
 }
 
-// Specify a list of devices to boot from in the order
-// they appear in the list (defaults to `[]`).
+// Specify a list of devices to boot from in the order they appear in the list.
 func (o VirtualMachineOutput) BootOrders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringArrayOutput { return v.BootOrders }).(pulumi.StringArrayOutput)
 }
@@ -893,6 +922,11 @@ func (o VirtualMachineOutput) Clone() VirtualMachineClonePtrOutput {
 // The CPU configuration.
 func (o VirtualMachineOutput) Cpu() VirtualMachineCpuPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineCpuPtrOutput { return v.Cpu }).(VirtualMachineCpuPtrOutput)
+}
+
+// Whether to delete unreferenced disks on destroy (defaults to `true`)
+func (o VirtualMachineOutput) DeleteUnreferencedDisksOnDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.DeleteUnreferencedDisksOnDestroy }).(pulumi.BoolPtrOutput)
 }
 
 // The description.
@@ -1009,6 +1043,9 @@ func (o VirtualMachineOutput) OperatingSystem() VirtualMachineOperatingSystemPtr
 }
 
 // The identifier for a pool to assign the virtual machine to.
+// This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `Pool.Membership` resource instead.
+//
+// Deprecated: This field is deprecated and will be removed in a future release. To assign the VM to a pool, use `Pool.Membership` resource instead.
 func (o VirtualMachineOutput) PoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.PoolId }).(pulumi.StringPtrOutput)
 }
@@ -1016,6 +1053,11 @@ func (o VirtualMachineOutput) PoolId() pulumi.StringPtrOutput {
 // Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
 func (o VirtualMachineOutput) Protection() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.Protection }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to purge the VM from backup configurations on destroy (defaults to `true`)
+func (o VirtualMachineOutput) PurgeOnDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VirtualMachine) pulumi.BoolPtrOutput { return v.PurgeOnDestroy }).(pulumi.BoolPtrOutput)
 }
 
 // Reboot the VM after initial creation (defaults to `false`).
@@ -1103,7 +1145,7 @@ func (o VirtualMachineOutput) TimeoutMigrate() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.TimeoutMigrate }).(pulumi.IntPtrOutput)
 }
 
-// MoveDisk timeout
+// Disk move timeout
 //
 // Deprecated: This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create / timeoutClone / timeout_migrate) is used instead.
 func (o VirtualMachineOutput) TimeoutMoveDisk() pulumi.IntPtrOutput {

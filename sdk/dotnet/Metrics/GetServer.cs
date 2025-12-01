@@ -154,6 +154,14 @@ namespace Pulumi.ProxmoxVE.Metrics
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// OpenTelemetry endpoint path (e.g., `/v1/metrics`).
+        /// </summary>
+        public readonly string OpentelemetryPath;
+        /// <summary>
+        /// Protocol for OpenTelemetry. Choice is between `Http` | `Https`.
+        /// </summary>
+        public readonly string OpentelemetryProto;
+        /// <summary>
         /// Server network port.
         /// </summary>
         public readonly int Port;
@@ -162,7 +170,7 @@ namespace Pulumi.ProxmoxVE.Metrics
         /// </summary>
         public readonly string Server;
         /// <summary>
-        /// Plugin type. Either `Graphite` or `Influxdb`.
+        /// Plugin type. Either `Graphite`, `Influxdb`, or `Opentelemetry`.
         /// </summary>
         public readonly string Type;
 
@@ -174,6 +182,10 @@ namespace Pulumi.ProxmoxVE.Metrics
 
             string name,
 
+            string opentelemetryPath,
+
+            string opentelemetryProto,
+
             int port,
 
             string server,
@@ -183,6 +195,8 @@ namespace Pulumi.ProxmoxVE.Metrics
             Disable = disable;
             Id = id;
             Name = name;
+            OpentelemetryPath = opentelemetryPath;
+            OpentelemetryProto = opentelemetryProto;
             Port = port;
             Server = server;
             Type = type;

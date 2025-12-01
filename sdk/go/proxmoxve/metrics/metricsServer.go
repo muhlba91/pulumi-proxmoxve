@@ -46,6 +46,17 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			_, err = metrics.NewMetricsServer(ctx, "opentelemetry_server", &metrics.MetricsServerArgs{
+//				Name:               pulumi.String("example_opentelemetry_server"),
+//				Server:             pulumi.String("192.168.5.2"),
+//				Port:               pulumi.Int(4318),
+//				Type:               pulumi.String("opentelemetry"),
+//				OpentelemetryProto: pulumi.String("http"),
+//				OpentelemetryPath:  pulumi.String("/v1/metrics"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			return nil
 //		})
 //	}
@@ -86,13 +97,17 @@ type MetricsServer struct {
 	Mtu pulumi.IntPtrOutput `pulumi:"mtu"`
 	// Unique name that will be ID of this metric server in PVE.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// OpenTelemetry endpoint path (e.g., `/v1/metrics`).
+	OpentelemetryPath pulumi.StringPtrOutput `pulumi:"opentelemetryPath"`
+	// Protocol for OpenTelemetry. Choice is between `http` | `https`. If not set, PVE default is `http`.
+	OpentelemetryProto pulumi.StringPtrOutput `pulumi:"opentelemetryProto"`
 	// Server network port.
 	Port pulumi.IntOutput `pulumi:"port"`
 	// Server dns name or IP address.
 	Server pulumi.StringOutput `pulumi:"server"`
 	// TCP socket timeout in seconds. If not set, PVE default is `1`.
 	Timeout pulumi.IntPtrOutput `pulumi:"timeout"`
-	// Plugin type. Choice is between `graphite` | `influxdb`.
+	// Plugin type. Choice is between `graphite` | `influxdb` | `opentelemetry`.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -166,13 +181,17 @@ type metricsServerState struct {
 	Mtu *int `pulumi:"mtu"`
 	// Unique name that will be ID of this metric server in PVE.
 	Name *string `pulumi:"name"`
+	// OpenTelemetry endpoint path (e.g., `/v1/metrics`).
+	OpentelemetryPath *string `pulumi:"opentelemetryPath"`
+	// Protocol for OpenTelemetry. Choice is between `http` | `https`. If not set, PVE default is `http`.
+	OpentelemetryProto *string `pulumi:"opentelemetryProto"`
 	// Server network port.
 	Port *int `pulumi:"port"`
 	// Server dns name or IP address.
 	Server *string `pulumi:"server"`
 	// TCP socket timeout in seconds. If not set, PVE default is `1`.
 	Timeout *int `pulumi:"timeout"`
-	// Plugin type. Choice is between `graphite` | `influxdb`.
+	// Plugin type. Choice is between `graphite` | `influxdb` | `opentelemetry`.
 	Type *string `pulumi:"type"`
 }
 
@@ -201,13 +220,17 @@ type MetricsServerState struct {
 	Mtu pulumi.IntPtrInput
 	// Unique name that will be ID of this metric server in PVE.
 	Name pulumi.StringPtrInput
+	// OpenTelemetry endpoint path (e.g., `/v1/metrics`).
+	OpentelemetryPath pulumi.StringPtrInput
+	// Protocol for OpenTelemetry. Choice is between `http` | `https`. If not set, PVE default is `http`.
+	OpentelemetryProto pulumi.StringPtrInput
 	// Server network port.
 	Port pulumi.IntPtrInput
 	// Server dns name or IP address.
 	Server pulumi.StringPtrInput
 	// TCP socket timeout in seconds. If not set, PVE default is `1`.
 	Timeout pulumi.IntPtrInput
-	// Plugin type. Choice is between `graphite` | `influxdb`.
+	// Plugin type. Choice is between `graphite` | `influxdb` | `opentelemetry`.
 	Type pulumi.StringPtrInput
 }
 
@@ -240,13 +263,17 @@ type metricsServerArgs struct {
 	Mtu *int `pulumi:"mtu"`
 	// Unique name that will be ID of this metric server in PVE.
 	Name *string `pulumi:"name"`
+	// OpenTelemetry endpoint path (e.g., `/v1/metrics`).
+	OpentelemetryPath *string `pulumi:"opentelemetryPath"`
+	// Protocol for OpenTelemetry. Choice is between `http` | `https`. If not set, PVE default is `http`.
+	OpentelemetryProto *string `pulumi:"opentelemetryProto"`
 	// Server network port.
 	Port int `pulumi:"port"`
 	// Server dns name or IP address.
 	Server string `pulumi:"server"`
 	// TCP socket timeout in seconds. If not set, PVE default is `1`.
 	Timeout *int `pulumi:"timeout"`
-	// Plugin type. Choice is between `graphite` | `influxdb`.
+	// Plugin type. Choice is between `graphite` | `influxdb` | `opentelemetry`.
 	Type string `pulumi:"type"`
 }
 
@@ -276,13 +303,17 @@ type MetricsServerArgs struct {
 	Mtu pulumi.IntPtrInput
 	// Unique name that will be ID of this metric server in PVE.
 	Name pulumi.StringPtrInput
+	// OpenTelemetry endpoint path (e.g., `/v1/metrics`).
+	OpentelemetryPath pulumi.StringPtrInput
+	// Protocol for OpenTelemetry. Choice is between `http` | `https`. If not set, PVE default is `http`.
+	OpentelemetryProto pulumi.StringPtrInput
 	// Server network port.
 	Port pulumi.IntInput
 	// Server dns name or IP address.
 	Server pulumi.StringInput
 	// TCP socket timeout in seconds. If not set, PVE default is `1`.
 	Timeout pulumi.IntPtrInput
-	// Plugin type. Choice is between `graphite` | `influxdb`.
+	// Plugin type. Choice is between `graphite` | `influxdb` | `opentelemetry`.
 	Type pulumi.StringInput
 }
 
@@ -433,6 +464,16 @@ func (o MetricsServerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetricsServer) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// OpenTelemetry endpoint path (e.g., `/v1/metrics`).
+func (o MetricsServerOutput) OpentelemetryPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricsServer) pulumi.StringPtrOutput { return v.OpentelemetryPath }).(pulumi.StringPtrOutput)
+}
+
+// Protocol for OpenTelemetry. Choice is between `http` | `https`. If not set, PVE default is `http`.
+func (o MetricsServerOutput) OpentelemetryProto() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MetricsServer) pulumi.StringPtrOutput { return v.OpentelemetryProto }).(pulumi.StringPtrOutput)
+}
+
 // Server network port.
 func (o MetricsServerOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v *MetricsServer) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
@@ -448,7 +489,7 @@ func (o MetricsServerOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *MetricsServer) pulumi.IntPtrOutput { return v.Timeout }).(pulumi.IntPtrOutput)
 }
 
-// Plugin type. Choice is between `graphite` | `influxdb`.
+// Plugin type. Choice is between `graphite` | `influxdb` | `opentelemetry`.
 func (o MetricsServerOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *MetricsServer) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
