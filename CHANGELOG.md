@@ -1,6 +1,29 @@
 # Changelog
 
 
+## [7.9.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.8.1...v7.9.0) (2025-12-01)
+
+
+### Features
+
+* prepare for upstream release v0.88.0 ([c3b4cca](https://github.com/muhlba91/pulumi-proxmoxve/commit/c3b4ccafc32047140ec6c05e3d0ef566e9a24f88))
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/checkout action to v5.0.1 ([665a3bd](https://github.com/muhlba91/pulumi-proxmoxve/commit/665a3bd4582461def2864f1b7bce5d847c08fca1))
+* **deps:** update actions/checkout action to v6 ([fae7427](https://github.com/muhlba91/pulumi-proxmoxve/commit/fae7427039034d0025393442e5eef258e9749a14))
+* **deps:** update actions/setup-dotnet action to v5.0.1 ([85501b8](https://github.com/muhlba91/pulumi-proxmoxve/commit/85501b85eecb2422f3a9add11edd3e2f522e84af))
+* **deps:** update actions/setup-go action to v6.1.0 ([66f6b42](https://github.com/muhlba91/pulumi-proxmoxve/commit/66f6b4235a700f6bc6de551c204b18737228746a))
+* **deps:** update actions/setup-python action to v6.1.0 ([5973aff](https://github.com/muhlba91/pulumi-proxmoxve/commit/5973affa3dbcaf897571399c355d4707ea2b7cf6))
+* **deps:** update anchore/sbom-action action to v0.20.10 ([6b5da10](https://github.com/muhlba91/pulumi-proxmoxve/commit/6b5da10714c8330d9a1b023f50daa712c2a82bbe))
+* **deps:** update github/codeql-action action to v4.31.4 ([0c2b9f5](https://github.com/muhlba91/pulumi-proxmoxve/commit/0c2b9f579de154db5a745de97d8d3d478d66afff))
+* **deps:** update github/codeql-action action to v4.31.5 ([d65b7f3](https://github.com/muhlba91/pulumi-proxmoxve/commit/d65b7f37bf344916de9ad852ec6e369f7faccbc2))
+* **deps:** update golangci/golangci-lint-action action to v9.1.0 ([d555c81](https://github.com/muhlba91/pulumi-proxmoxve/commit/d555c81f5a20c81f130b140a2edbc809289fa44a))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.87.0 ([e4ae615](https://github.com/muhlba91/pulumi-proxmoxve/commit/e4ae615b0cd444eb826765536bc1afc5b952dec4))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.88.0 ([12e0f5d](https://github.com/muhlba91/pulumi-proxmoxve/commit/12e0f5d595406e454d8f53460bfd4e161ae9ca0d))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.208.0 ([2b54067](https://github.com/muhlba91/pulumi-proxmoxve/commit/2b5406782a37e082dc79a92678abd7761784097f))
+
 ## [7.8.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.8.0...v7.8.1) (2025-11-15)
 
 
