@@ -1,6 +1,23 @@
 # Changelog
 
 
+## [7.9.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.9.0...v7.9.1) (2025-12-06)
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/checkout action to v6.0.1 ([647898a](https://github.com/muhlba91/pulumi-proxmoxve/commit/647898a5acff94046b229da9947ca7aa66cdf35c))
+* **deps:** update actions/setup-java action to v5.1.0 ([2bf8524](https://github.com/muhlba91/pulumi-proxmoxve/commit/2bf8524f649b5a4eda6d0cbd6d0bddbb6df7e373))
+* **deps:** update actions/setup-node action to v6.1.0 ([1496e03](https://github.com/muhlba91/pulumi-proxmoxve/commit/1496e03a55efdd561a120a88f6a40f164f56e726))
+* **deps:** update dependency go to v1.25.5 ([9dcb63b](https://github.com/muhlba91/pulumi-proxmoxve/commit/9dcb63b470f2ab89a6f5000bf5e3137cc8ce254a))
+* **deps:** update github/codeql-action action to v4.31.6 ([714fb93](https://github.com/muhlba91/pulumi-proxmoxve/commit/714fb93d20182a15270b6af10f3b731c270837f0))
+* **deps:** update github/codeql-action action to v4.31.7 ([162cb04](https://github.com/muhlba91/pulumi-proxmoxve/commit/162cb04e9e68011578fb7ef4fd0cf8b5325ecdf2))
+* **deps:** update golangci/golangci-lint-action action to v9.2.0 ([f12f808](https://github.com/muhlba91/pulumi-proxmoxve/commit/f12f808044c936b8670d665b61b28a644dd32c89))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.89.0 ([4f80524](https://github.com/muhlba91/pulumi-proxmoxve/commit/4f8052481569f8a008891c6ffb2cbadfc2af093d))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/v3 to v3.118.0 ([73c9ef6](https://github.com/muhlba91/pulumi-proxmoxve/commit/73c9ef6ef122cadf81710a6f8743660d7d7340d7))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.210.0 ([7f6b880](https://github.com/muhlba91/pulumi-proxmoxve/commit/7f6b88046f238e98088660908b4869bb54c0a265))
+* **deps:** update step-security/harden-runner action to v2.13.3 ([25de3be](https://github.com/muhlba91/pulumi-proxmoxve/commit/25de3be3121161d7834555569bdb5c3abe82c28f))
+
 ## [7.9.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.8.1...v7.9.0) (2025-12-01)
 
 
