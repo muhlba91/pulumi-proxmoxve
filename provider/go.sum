@@ -2233,6 +2233,8 @@ github.com/pulumi/pulumi/sdk/v3 v3.210.0 h1:QMNdfQfB7jCa/ZoY8aIfwOwApuvhnOoIH8s4
 github.com/pulumi/pulumi/sdk/v3 v3.210.0/go.mod h1:0qnUzUV5ypAcdoPNOX426wV4ePMnkDvGlPBZqlizHmU=
 github.com/pulumi/pulumi/sdk/v3 v3.211.0 h1:l1aPBoCqz44TFy7w059/bdL+cVlmh5OSsAGPuO3DnHI=
 github.com/pulumi/pulumi/sdk/v3 v3.211.0/go.mod h1:FSp694SjBYWvFq9FvXMNGh/0REa/DmMCv92CYCOIhN4=
+github.com/pulumi/pulumi/sdk/v3 v3.212.0 h1:YQKFamkd+3sqcbFUi+sq50DejdymayYbqaz+OQnSvug=
+github.com/pulumi/pulumi/sdk/v3 v3.212.0/go.mod h1:Bn5Z9Rzp1lPqdAccaB+F2ivUBiamEl2TNR3Gg/h7iLs=
 github.com/pulumi/schema-tools v0.1.2 h1:Fd9xvUjgck4NA+7/jSk7InqCUT4Kj940+EcnbQKpfZo=
 github.com/pulumi/schema-tools v0.1.2/go.mod h1:62lgj52Tzq11eqWTIaKd+EVyYAu5dEcDJxMhTjvMO/k=
 github.com/pulumi/terraform-diff-reader v0.0.2 h1:kTE4nEXU3/SYXESvAIem+wyHMI3abqkI3OhJ0G04LLI=
