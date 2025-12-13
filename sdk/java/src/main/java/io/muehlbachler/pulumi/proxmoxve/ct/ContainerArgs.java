@@ -23,6 +23,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -120,6 +121,21 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<ContainerDiskArgs>> disk() {
         return Optional.ofNullable(this.disk);
+    }
+
+    /**
+     * A map of runtime environment variables for the container init process.
+     * 
+     */
+    @Import(name="environmentVariables")
+    private @Nullable Output<Map<String,String>> environmentVariables;
+
+    /**
+     * @return A map of runtime environment variables for the container init process.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> environmentVariables() {
+        return Optional.ofNullable(this.environmentVariables);
     }
 
     /**
@@ -246,25 +262,15 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The identifier for a pool to assign the container to.
-     * This field is deprecated and will be removed in a future release. To assign the container to a pool, use the &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-go=&#34;`Pool.Membership`&#34; pulumi-lang-python=&#34;`Pool.Membership`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-java=&#34;`proxmoxve.Pool.Membership`&#34;&gt;`proxmoxve.Pool.Membership`&lt;/span&gt; resource instead.
-     * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release. To assign the container to a pool, use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-go=&#34;`Pool.Membership`&#34; pulumi-lang-python=&#34;`Pool.Membership`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-java=&#34;`proxmoxve.Pool.Membership`&#34;&gt;`proxmoxve.Pool.Membership`&lt;/span&gt; resource instead
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. To assign the container to a pool, use <span pulumi-lang-nodejs=""`proxmoxve.Pool.Membership`"" pulumi-lang-dotnet=""`proxmoxve.Pool.Membership`"" pulumi-lang-go=""`Pool.Membership`"" pulumi-lang-python=""`Pool.Membership`"" pulumi-lang-yaml=""`proxmoxve.Pool.Membership`"" pulumi-lang-java=""`proxmoxve.Pool.Membership`"">`proxmoxve.Pool.Membership`</span> resource instead */
     @Import(name="poolId")
     private @Nullable Output<String> poolId;
 
     /**
      * @return The identifier for a pool to assign the container to.
-     * This field is deprecated and will be removed in a future release. To assign the container to a pool, use the &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-go=&#34;`Pool.Membership`&#34; pulumi-lang-python=&#34;`Pool.Membership`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-java=&#34;`proxmoxve.Pool.Membership`&#34;&gt;`proxmoxve.Pool.Membership`&lt;/span&gt; resource instead.
-     * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release. To assign the container to a pool, use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-go=&#34;`Pool.Membership`&#34; pulumi-lang-python=&#34;`Pool.Membership`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-java=&#34;`proxmoxve.Pool.Membership`&#34;&gt;`proxmoxve.Pool.Membership`&lt;/span&gt; resource instead
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. To assign the container to a pool, use <span pulumi-lang-nodejs=""`proxmoxve.Pool.Membership`"" pulumi-lang-dotnet=""`proxmoxve.Pool.Membership`"" pulumi-lang-go=""`Pool.Membership`"" pulumi-lang-python=""`Pool.Membership`"" pulumi-lang-yaml=""`proxmoxve.Pool.Membership`"" pulumi-lang-java=""`proxmoxve.Pool.Membership`"">`proxmoxve.Pool.Membership`</span> resource instead */
     public Optional<Output<String>> poolId() {
         return Optional.ofNullable(this.poolId);
     }
@@ -506,6 +512,7 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.devicePassthroughs = $.devicePassthroughs;
         this.disk = $.disk;
+        this.environmentVariables = $.environmentVariables;
         this.features = $.features;
         this.hookScriptFileId = $.hookScriptFileId;
         this.initialization = $.initialization;
@@ -683,6 +690,27 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder disk(ContainerDiskArgs disk) {
             return disk(Output.of(disk));
+        }
+
+        /**
+         * @param environmentVariables A map of runtime environment variables for the container init process.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder environmentVariables(@Nullable Output<Map<String,String>> environmentVariables) {
+            $.environmentVariables = environmentVariables;
+            return this;
+        }
+
+        /**
+         * @param environmentVariables A map of runtime environment variables for the container init process.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder environmentVariables(Map<String,String> environmentVariables) {
+            return environmentVariables(Output.of(environmentVariables));
         }
 
         /**
@@ -878,15 +906,10 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param poolId The identifier for a pool to assign the container to.
-         * This field is deprecated and will be removed in a future release. To assign the container to a pool, use the &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-go=&#34;`Pool.Membership`&#34; pulumi-lang-python=&#34;`Pool.Membership`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-java=&#34;`proxmoxve.Pool.Membership`&#34;&gt;`proxmoxve.Pool.Membership`&lt;/span&gt; resource instead.
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in a future release. To assign the container to a pool, use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-go=&#34;`Pool.Membership`&#34; pulumi-lang-python=&#34;`Pool.Membership`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-java=&#34;`proxmoxve.Pool.Membership`&#34;&gt;`proxmoxve.Pool.Membership`&lt;/span&gt; resource instead
-         * 
          */
-        @Deprecated /* This field is deprecated and will be removed in a future release. To assign the container to a pool, use <span pulumi-lang-nodejs=""`proxmoxve.Pool.Membership`"" pulumi-lang-dotnet=""`proxmoxve.Pool.Membership`"" pulumi-lang-go=""`Pool.Membership`"" pulumi-lang-python=""`Pool.Membership`"" pulumi-lang-yaml=""`proxmoxve.Pool.Membership`"" pulumi-lang-java=""`proxmoxve.Pool.Membership`"">`proxmoxve.Pool.Membership`</span> resource instead */
         public Builder poolId(@Nullable Output<String> poolId) {
             $.poolId = poolId;
             return this;
@@ -894,15 +917,10 @@ public final class ContainerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param poolId The identifier for a pool to assign the container to.
-         * This field is deprecated and will be removed in a future release. To assign the container to a pool, use the &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-go=&#34;`Pool.Membership`&#34; pulumi-lang-python=&#34;`Pool.Membership`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-java=&#34;`proxmoxve.Pool.Membership`&#34;&gt;`proxmoxve.Pool.Membership`&lt;/span&gt; resource instead.
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in a future release. To assign the container to a pool, use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-go=&#34;`Pool.Membership`&#34; pulumi-lang-python=&#34;`Pool.Membership`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-java=&#34;`proxmoxve.Pool.Membership`&#34;&gt;`proxmoxve.Pool.Membership`&lt;/span&gt; resource instead
-         * 
          */
-        @Deprecated /* This field is deprecated and will be removed in a future release. To assign the container to a pool, use <span pulumi-lang-nodejs=""`proxmoxve.Pool.Membership`"" pulumi-lang-dotnet=""`proxmoxve.Pool.Membership`"" pulumi-lang-go=""`Pool.Membership`"" pulumi-lang-python=""`Pool.Membership`"" pulumi-lang-yaml=""`proxmoxve.Pool.Membership`"" pulumi-lang-java=""`proxmoxve.Pool.Membership`"">`proxmoxve.Pool.Membership`</span> resource instead */
         public Builder poolId(String poolId) {
             return poolId(Output.of(poolId));
         }

@@ -100,7 +100,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The CPU units (defaults to `1024`).
+        /// The CPU units. PVE default is `1024` for cgroups v1 and `100` for cgroups v2.
         /// </summary>
         [Input("units")]
         public Input<int>? Units { get; set; }

@@ -35,6 +35,14 @@ export class Applier extends pulumi.CustomResource {
         return obj['__pulumiType'] === Applier.__pulumiType;
     }
 
+    /**
+     * Whether to apply SDN configuration on resource creation. Defaults to true.
+     */
+    declare public readonly onCreate: pulumi.Output<boolean>;
+    /**
+     * Whether to apply SDN configuration on resource destruction. Defaults to true.
+     */
+    declare public readonly onDestroy: pulumi.Output<boolean>;
 
     /**
      * Create a Applier resource with the given unique name, arguments, and options.
@@ -49,8 +57,12 @@ export class Applier extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplierState | undefined;
+            resourceInputs["onCreate"] = state?.onCreate;
+            resourceInputs["onDestroy"] = state?.onDestroy;
         } else {
             const args = argsOrState as ApplierArgs | undefined;
+            resourceInputs["onCreate"] = args?.onCreate;
+            resourceInputs["onDestroy"] = args?.onDestroy;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Applier.__pulumiType, name, resourceInputs, opts);
@@ -61,10 +73,26 @@ export class Applier extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Applier resources.
  */
 export interface ApplierState {
+    /**
+     * Whether to apply SDN configuration on resource creation. Defaults to true.
+     */
+    onCreate?: pulumi.Input<boolean>;
+    /**
+     * Whether to apply SDN configuration on resource destruction. Defaults to true.
+     */
+    onDestroy?: pulumi.Input<boolean>;
 }
 
 /**
  * The set of arguments for constructing a Applier resource.
  */
 export interface ApplierArgs {
+    /**
+     * Whether to apply SDN configuration on resource creation. Defaults to true.
+     */
+    onCreate?: pulumi.Input<boolean>;
+    /**
+     * Whether to apply SDN configuration on resource destruction. Defaults to true.
+     */
+    onDestroy?: pulumi.Input<boolean>;
 }

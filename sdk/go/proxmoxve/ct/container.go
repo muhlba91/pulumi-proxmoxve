@@ -150,6 +150,8 @@ type Container struct {
 	DevicePassthroughs ContainerDevicePassthroughArrayOutput `pulumi:"devicePassthroughs"`
 	// The disk configuration.
 	Disk ContainerDiskPtrOutput `pulumi:"disk"`
+	// A map of runtime environment variables for the container init process.
+	EnvironmentVariables pulumi.StringMapOutput `pulumi:"environmentVariables"`
 	// The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
 	Features ContainerFeaturesPtrOutput `pulumi:"features"`
 	// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
@@ -172,9 +174,6 @@ type Container struct {
 	// The Operating System configuration.
 	OperatingSystem ContainerOperatingSystemPtrOutput `pulumi:"operatingSystem"`
 	// The identifier for a pool to assign the container to.
-	// This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `Pool.Membership` resource instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release. To assign the container to a pool, use `Pool.Membership` resource instead
 	PoolId pulumi.StringPtrOutput `pulumi:"poolId"`
 	// Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
 	Protection pulumi.BoolPtrOutput `pulumi:"protection"`
@@ -258,6 +257,8 @@ type containerState struct {
 	DevicePassthroughs []ContainerDevicePassthrough `pulumi:"devicePassthroughs"`
 	// The disk configuration.
 	Disk *ContainerDisk `pulumi:"disk"`
+	// A map of runtime environment variables for the container init process.
+	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
 	// The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
 	Features *ContainerFeatures `pulumi:"features"`
 	// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
@@ -280,9 +281,6 @@ type containerState struct {
 	// The Operating System configuration.
 	OperatingSystem *ContainerOperatingSystem `pulumi:"operatingSystem"`
 	// The identifier for a pool to assign the container to.
-	// This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `Pool.Membership` resource instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release. To assign the container to a pool, use `Pool.Membership` resource instead
 	PoolId *string `pulumi:"poolId"`
 	// Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
 	Protection *bool `pulumi:"protection"`
@@ -334,6 +332,8 @@ type ContainerState struct {
 	DevicePassthroughs ContainerDevicePassthroughArrayInput
 	// The disk configuration.
 	Disk ContainerDiskPtrInput
+	// A map of runtime environment variables for the container init process.
+	EnvironmentVariables pulumi.StringMapInput
 	// The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
 	Features ContainerFeaturesPtrInput
 	// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
@@ -356,9 +356,6 @@ type ContainerState struct {
 	// The Operating System configuration.
 	OperatingSystem ContainerOperatingSystemPtrInput
 	// The identifier for a pool to assign the container to.
-	// This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `Pool.Membership` resource instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release. To assign the container to a pool, use `Pool.Membership` resource instead
 	PoolId pulumi.StringPtrInput
 	// Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
 	Protection pulumi.BoolPtrInput
@@ -414,6 +411,8 @@ type containerArgs struct {
 	DevicePassthroughs []ContainerDevicePassthrough `pulumi:"devicePassthroughs"`
 	// The disk configuration.
 	Disk *ContainerDisk `pulumi:"disk"`
+	// A map of runtime environment variables for the container init process.
+	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
 	// The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
 	Features *ContainerFeatures `pulumi:"features"`
 	// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
@@ -432,9 +431,6 @@ type containerArgs struct {
 	// The Operating System configuration.
 	OperatingSystem *ContainerOperatingSystem `pulumi:"operatingSystem"`
 	// The identifier for a pool to assign the container to.
-	// This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `Pool.Membership` resource instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release. To assign the container to a pool, use `Pool.Membership` resource instead
 	PoolId *string `pulumi:"poolId"`
 	// Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
 	Protection *bool `pulumi:"protection"`
@@ -487,6 +483,8 @@ type ContainerArgs struct {
 	DevicePassthroughs ContainerDevicePassthroughArrayInput
 	// The disk configuration.
 	Disk ContainerDiskPtrInput
+	// A map of runtime environment variables for the container init process.
+	EnvironmentVariables pulumi.StringMapInput
 	// The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
 	Features ContainerFeaturesPtrInput
 	// The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
@@ -505,9 +503,6 @@ type ContainerArgs struct {
 	// The Operating System configuration.
 	OperatingSystem ContainerOperatingSystemPtrInput
 	// The identifier for a pool to assign the container to.
-	// This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `Pool.Membership` resource instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release. To assign the container to a pool, use `Pool.Membership` resource instead
 	PoolId pulumi.StringPtrInput
 	// Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
 	Protection pulumi.BoolPtrInput
@@ -663,6 +658,11 @@ func (o ContainerOutput) Disk() ContainerDiskPtrOutput {
 	return o.ApplyT(func(v *Container) ContainerDiskPtrOutput { return v.Disk }).(ContainerDiskPtrOutput)
 }
 
+// A map of runtime environment variables for the container init process.
+func (o ContainerOutput) EnvironmentVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Container) pulumi.StringMapOutput { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
+}
+
 // The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
 func (o ContainerOutput) Features() ContainerFeaturesPtrOutput {
 	return o.ApplyT(func(v *Container) ContainerFeaturesPtrOutput { return v.Features }).(ContainerFeaturesPtrOutput)
@@ -715,9 +715,6 @@ func (o ContainerOutput) OperatingSystem() ContainerOperatingSystemPtrOutput {
 }
 
 // The identifier for a pool to assign the container to.
-// This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `Pool.Membership` resource instead.
-//
-// Deprecated: This field is deprecated and will be removed in a future release. To assign the container to a pool, use `Pool.Membership` resource instead
 func (o ContainerOutput) PoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Container) pulumi.StringPtrOutput { return v.PoolId }).(pulumi.StringPtrOutput)
 }

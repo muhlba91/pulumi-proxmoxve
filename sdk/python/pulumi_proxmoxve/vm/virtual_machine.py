@@ -114,7 +114,6 @@ class VirtualMachineArgs:
                boot. (defaults to `true`)
         :param pulumi.Input['VirtualMachineOperatingSystemArgs'] operating_system: The Operating System configuration.
         :param pulumi.Input[_builtins.str] pool_id: The identifier for a pool to assign the virtual machine to.
-               This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `Pool.Membership` resource instead.
         :param pulumi.Input[_builtins.bool] protection: Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
         :param pulumi.Input[_builtins.bool] purge_on_destroy: Whether to purge the VM from backup configurations on destroy (defaults to `true`)
         :param pulumi.Input[_builtins.bool] reboot: Reboot the VM after initial creation (defaults to `false`).
@@ -213,9 +212,6 @@ class VirtualMachineArgs:
             pulumi.set(__self__, "on_boot", on_boot)
         if operating_system is not None:
             pulumi.set(__self__, "operating_system", operating_system)
-        if pool_id is not None:
-            warnings.warn("""This field is deprecated and will be removed in a future release. To assign the VM to a pool, use `Pool.Membership` resource instead.""", DeprecationWarning)
-            pulumi.log.warn("""pool_id is deprecated: This field is deprecated and will be removed in a future release. To assign the VM to a pool, use `Pool.Membership` resource instead.""")
         if pool_id is not None:
             pulumi.set(__self__, "pool_id", pool_id)
         if protection is not None:
@@ -621,11 +617,9 @@ class VirtualMachineArgs:
 
     @_builtins.property
     @pulumi.getter(name="poolId")
-    @_utilities.deprecated("""This field is deprecated and will be removed in a future release. To assign the VM to a pool, use `Pool.Membership` resource instead.""")
     def pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The identifier for a pool to assign the virtual machine to.
-        This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `Pool.Membership` resource instead.
         """
         return pulumi.get(self, "pool_id")
 
@@ -1090,7 +1084,6 @@ class _VirtualMachineState:
                boot. (defaults to `true`)
         :param pulumi.Input['VirtualMachineOperatingSystemArgs'] operating_system: The Operating System configuration.
         :param pulumi.Input[_builtins.str] pool_id: The identifier for a pool to assign the virtual machine to.
-               This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `Pool.Membership` resource instead.
         :param pulumi.Input[_builtins.bool] protection: Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
         :param pulumi.Input[_builtins.bool] purge_on_destroy: Whether to purge the VM from backup configurations on destroy (defaults to `true`)
         :param pulumi.Input[_builtins.bool] reboot: Reboot the VM after initial creation (defaults to `false`).
@@ -1196,9 +1189,6 @@ class _VirtualMachineState:
             pulumi.set(__self__, "on_boot", on_boot)
         if operating_system is not None:
             pulumi.set(__self__, "operating_system", operating_system)
-        if pool_id is not None:
-            warnings.warn("""This field is deprecated and will be removed in a future release. To assign the VM to a pool, use `Pool.Membership` resource instead.""", DeprecationWarning)
-            pulumi.log.warn("""pool_id is deprecated: This field is deprecated and will be removed in a future release. To assign the VM to a pool, use `Pool.Membership` resource instead.""")
         if pool_id is not None:
             pulumi.set(__self__, "pool_id", pool_id)
         if protection is not None:
@@ -1643,11 +1633,9 @@ class _VirtualMachineState:
 
     @_builtins.property
     @pulumi.getter(name="poolId")
-    @_utilities.deprecated("""This field is deprecated and will be removed in a future release. To assign the VM to a pool, use `Pool.Membership` resource instead.""")
     def pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The identifier for a pool to assign the virtual machine to.
-        This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `Pool.Membership` resource instead.
         """
         return pulumi.get(self, "pool_id")
 
@@ -2118,7 +2106,6 @@ class VirtualMachine(pulumi.CustomResource):
                boot. (defaults to `true`)
         :param pulumi.Input[Union['VirtualMachineOperatingSystemArgs', 'VirtualMachineOperatingSystemArgsDict']] operating_system: The Operating System configuration.
         :param pulumi.Input[_builtins.str] pool_id: The identifier for a pool to assign the virtual machine to.
-               This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `Pool.Membership` resource instead.
         :param pulumi.Input[_builtins.bool] protection: Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
         :param pulumi.Input[_builtins.bool] purge_on_destroy: Whether to purge the VM from backup configurations on destroy (defaults to `true`)
         :param pulumi.Input[_builtins.bool] reboot: Reboot the VM after initial creation (defaults to `false`).
@@ -2439,7 +2426,6 @@ class VirtualMachine(pulumi.CustomResource):
                boot. (defaults to `true`)
         :param pulumi.Input[Union['VirtualMachineOperatingSystemArgs', 'VirtualMachineOperatingSystemArgsDict']] operating_system: The Operating System configuration.
         :param pulumi.Input[_builtins.str] pool_id: The identifier for a pool to assign the virtual machine to.
-               This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `Pool.Membership` resource instead.
         :param pulumi.Input[_builtins.bool] protection: Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
         :param pulumi.Input[_builtins.bool] purge_on_destroy: Whether to purge the VM from backup configurations on destroy (defaults to `true`)
         :param pulumi.Input[_builtins.bool] reboot: Reboot the VM after initial creation (defaults to `false`).
@@ -2807,11 +2793,9 @@ class VirtualMachine(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="poolId")
-    @_utilities.deprecated("""This field is deprecated and will be removed in a future release. To assign the VM to a pool, use `Pool.Membership` resource instead.""")
     def pool_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The identifier for a pool to assign the virtual machine to.
-        This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `Pool.Membership` resource instead.
         """
         return pulumi.get(self, "pool_id")
 

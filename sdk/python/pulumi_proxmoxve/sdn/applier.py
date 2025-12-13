@@ -18,11 +18,82 @@ __all__ = ['ApplierArgs', 'Applier']
 
 @pulumi.input_type
 class ApplierArgs:
-    def __init__(__self__):
+    def __init__(__self__, *,
+                 on_create: Optional[pulumi.Input[_builtins.bool]] = None,
+                 on_destroy: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Applier resource.
+        :param pulumi.Input[_builtins.bool] on_create: Whether to apply SDN configuration on resource creation. Defaults to true.
+        :param pulumi.Input[_builtins.bool] on_destroy: Whether to apply SDN configuration on resource destruction. Defaults to true.
         """
-        pass
+        if on_create is not None:
+            pulumi.set(__self__, "on_create", on_create)
+        if on_destroy is not None:
+            pulumi.set(__self__, "on_destroy", on_destroy)
+
+    @_builtins.property
+    @pulumi.getter(name="onCreate")
+    def on_create(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to apply SDN configuration on resource creation. Defaults to true.
+        """
+        return pulumi.get(self, "on_create")
+
+    @on_create.setter
+    def on_create(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "on_create", value)
+
+    @_builtins.property
+    @pulumi.getter(name="onDestroy")
+    def on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to apply SDN configuration on resource destruction. Defaults to true.
+        """
+        return pulumi.get(self, "on_destroy")
+
+    @on_destroy.setter
+    def on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "on_destroy", value)
+
+
+@pulumi.input_type
+class _ApplierState:
+    def __init__(__self__, *,
+                 on_create: Optional[pulumi.Input[_builtins.bool]] = None,
+                 on_destroy: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        Input properties used for looking up and filtering Applier resources.
+        :param pulumi.Input[_builtins.bool] on_create: Whether to apply SDN configuration on resource creation. Defaults to true.
+        :param pulumi.Input[_builtins.bool] on_destroy: Whether to apply SDN configuration on resource destruction. Defaults to true.
+        """
+        if on_create is not None:
+            pulumi.set(__self__, "on_create", on_create)
+        if on_destroy is not None:
+            pulumi.set(__self__, "on_destroy", on_destroy)
+
+    @_builtins.property
+    @pulumi.getter(name="onCreate")
+    def on_create(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to apply SDN configuration on resource creation. Defaults to true.
+        """
+        return pulumi.get(self, "on_create")
+
+    @on_create.setter
+    def on_create(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "on_create", value)
+
+    @_builtins.property
+    @pulumi.getter(name="onDestroy")
+    def on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to apply SDN configuration on resource destruction. Defaults to true.
+        """
+        return pulumi.get(self, "on_destroy")
+
+    @on_destroy.setter
+    def on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "on_destroy", value)
 
 
 @pulumi.type_token("proxmoxve:Sdn/applier:Applier")
@@ -31,12 +102,16 @@ class Applier(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 on_create: Optional[pulumi.Input[_builtins.bool]] = None,
+                 on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
         **EXPERIMENTAL** Triggers Proxmox's SDN **Apply** (equivalent to `PUT /cluster/sdn`).Intended to be used with `replace_triggered_by` so it runs after SDN objects change.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] on_create: Whether to apply SDN configuration on resource creation. Defaults to true.
+        :param pulumi.Input[_builtins.bool] on_destroy: Whether to apply SDN configuration on resource destruction. Defaults to true.
         """
         ...
     @overload
@@ -62,6 +137,8 @@ class Applier(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 on_create: Optional[pulumi.Input[_builtins.bool]] = None,
+                 on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -71,6 +148,8 @@ class Applier(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ApplierArgs.__new__(ApplierArgs)
 
+            __props__.__dict__["on_create"] = on_create
+            __props__.__dict__["on_destroy"] = on_destroy
         super(Applier, __self__).__init__(
             'proxmoxve:Sdn/applier:Applier',
             resource_name,
@@ -80,7 +159,9 @@ class Applier(pulumi.CustomResource):
     @staticmethod
     def get(resource_name: str,
             id: pulumi.Input[str],
-            opts: Optional[pulumi.ResourceOptions] = None) -> 'Applier':
+            opts: Optional[pulumi.ResourceOptions] = None,
+            on_create: Optional[pulumi.Input[_builtins.bool]] = None,
+            on_destroy: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Applier':
         """
         Get an existing Applier resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -88,10 +169,30 @@ class Applier(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] on_create: Whether to apply SDN configuration on resource creation. Defaults to true.
+        :param pulumi.Input[_builtins.bool] on_destroy: Whether to apply SDN configuration on resource destruction. Defaults to true.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = ApplierArgs.__new__(ApplierArgs)
+        __props__ = _ApplierState.__new__(_ApplierState)
 
+        __props__.__dict__["on_create"] = on_create
+        __props__.__dict__["on_destroy"] = on_destroy
         return Applier(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="onCreate")
+    def on_create(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether to apply SDN configuration on resource creation. Defaults to true.
+        """
+        return pulumi.get(self, "on_create")
+
+    @_builtins.property
+    @pulumi.getter(name="onDestroy")
+    def on_destroy(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether to apply SDN configuration on resource destruction. Defaults to true.
+        """
+        return pulumi.get(self, "on_destroy")
 

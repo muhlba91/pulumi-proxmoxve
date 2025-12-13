@@ -16,6 +16,19 @@ namespace Pulumi.ProxmoxVE.Sdn
     public partial class Applier : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Whether to apply SDN configuration on resource creation. Defaults to true.
+        /// </summary>
+        [Output("onCreate")]
+        public Output<bool> OnCreate { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to apply SDN configuration on resource destruction. Defaults to true.
+        /// </summary>
+        [Output("onDestroy")]
+        public Output<bool> OnDestroy { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Applier resource with the given unique name, arguments, and options.
         /// </summary>
         ///
@@ -61,6 +74,18 @@ namespace Pulumi.ProxmoxVE.Sdn
 
     public sealed class ApplierArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to apply SDN configuration on resource creation. Defaults to true.
+        /// </summary>
+        [Input("onCreate")]
+        public Input<bool>? OnCreate { get; set; }
+
+        /// <summary>
+        /// Whether to apply SDN configuration on resource destruction. Defaults to true.
+        /// </summary>
+        [Input("onDestroy")]
+        public Input<bool>? OnDestroy { get; set; }
+
         public ApplierArgs()
         {
         }
@@ -69,6 +94,18 @@ namespace Pulumi.ProxmoxVE.Sdn
 
     public sealed class ApplierState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether to apply SDN configuration on resource creation. Defaults to true.
+        /// </summary>
+        [Input("onCreate")]
+        public Input<bool>? OnCreate { get; set; }
+
+        /// <summary>
+        /// Whether to apply SDN configuration on resource destruction. Defaults to true.
+        /// </summary>
+        [Input("onDestroy")]
+        public Input<bool>? OnDestroy { get; set; }
+
         public ApplierState()
         {
         }

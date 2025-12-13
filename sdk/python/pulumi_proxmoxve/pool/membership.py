@@ -156,6 +156,8 @@ class Membership(pulumi.CustomResource):
         """
         Manages resource pool memberships for containers, virtual machines and storages
 
+        > This resource requires the `Pool.Allocate` permission on the pool path (e.g., `/pool/{poolid}`).
+
         ## Example Usage
 
         ```python
@@ -199,6 +201,8 @@ class Membership(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages resource pool memberships for containers, virtual machines and storages
+
+        > This resource requires the `Pool.Allocate` permission on the pool path (e.g., `/pool/{poolid}`).
 
         ## Example Usage
 

@@ -155,6 +155,10 @@ export class Container extends pulumi.CustomResource {
      */
     declare public readonly disk: pulumi.Output<outputs.CT.ContainerDisk | undefined>;
     /**
+     * A map of runtime environment variables for the container init process.
+     */
+    declare public readonly environmentVariables: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
      */
     declare public readonly features: pulumi.Output<outputs.CT.ContainerFeatures | undefined>;
@@ -197,9 +201,6 @@ export class Container extends pulumi.CustomResource {
     declare public readonly operatingSystem: pulumi.Output<outputs.CT.ContainerOperatingSystem | undefined>;
     /**
      * The identifier for a pool to assign the container to.
-     * This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `proxmoxve.Pool.Membership` resource instead.
-     *
-     * @deprecated This field is deprecated and will be removed in a future release. To assign the container to a pool, use `proxmoxve.Pool.Membership` resource instead
      */
     declare public readonly poolId: pulumi.Output<string | undefined>;
     /**
@@ -285,6 +286,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["description"] = state?.description;
             resourceInputs["devicePassthroughs"] = state?.devicePassthroughs;
             resourceInputs["disk"] = state?.disk;
+            resourceInputs["environmentVariables"] = state?.environmentVariables;
             resourceInputs["features"] = state?.features;
             resourceInputs["hookScriptFileId"] = state?.hookScriptFileId;
             resourceInputs["initialization"] = state?.initialization;
@@ -321,6 +323,7 @@ export class Container extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["devicePassthroughs"] = args?.devicePassthroughs;
             resourceInputs["disk"] = args?.disk;
+            resourceInputs["environmentVariables"] = args?.environmentVariables;
             resourceInputs["features"] = args?.features;
             resourceInputs["hookScriptFileId"] = args?.hookScriptFileId;
             resourceInputs["initialization"] = args?.initialization;
@@ -381,6 +384,10 @@ export interface ContainerState {
      */
     disk?: pulumi.Input<inputs.CT.ContainerDisk>;
     /**
+     * A map of runtime environment variables for the container init process.
+     */
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
      */
     features?: pulumi.Input<inputs.CT.ContainerFeatures>;
@@ -423,9 +430,6 @@ export interface ContainerState {
     operatingSystem?: pulumi.Input<inputs.CT.ContainerOperatingSystem>;
     /**
      * The identifier for a pool to assign the container to.
-     * This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `proxmoxve.Pool.Membership` resource instead.
-     *
-     * @deprecated This field is deprecated and will be removed in a future release. To assign the container to a pool, use `proxmoxve.Pool.Membership` resource instead
      */
     poolId?: pulumi.Input<string>;
     /**
@@ -522,6 +526,10 @@ export interface ContainerArgs {
      */
     disk?: pulumi.Input<inputs.CT.ContainerDisk>;
     /**
+     * A map of runtime environment variables for the container init process.
+     */
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
      */
     features?: pulumi.Input<inputs.CT.ContainerFeatures>;
@@ -556,9 +564,6 @@ export interface ContainerArgs {
     operatingSystem?: pulumi.Input<inputs.CT.ContainerOperatingSystem>;
     /**
      * The identifier for a pool to assign the container to.
-     * This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `proxmoxve.Pool.Membership` resource instead.
-     *
-     * @deprecated This field is deprecated and will be removed in a future release. To assign the container to a pool, use `proxmoxve.Pool.Membership` resource instead
      */
     poolId?: pulumi.Input<string>;
     /**

@@ -95,9 +95,6 @@ type VirtualMachine struct {
 	// The Operating System configuration.
 	OperatingSystem VirtualMachineOperatingSystemPtrOutput `pulumi:"operatingSystem"`
 	// The identifier for a pool to assign the virtual machine to.
-	// This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `Pool.Membership` resource instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release. To assign the VM to a pool, use `Pool.Membership` resource instead.
 	PoolId pulumi.StringPtrOutput `pulumi:"poolId"`
 	// Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
 	Protection pulumi.BoolPtrOutput `pulumi:"protection"`
@@ -277,9 +274,6 @@ type virtualMachineState struct {
 	// The Operating System configuration.
 	OperatingSystem *VirtualMachineOperatingSystem `pulumi:"operatingSystem"`
 	// The identifier for a pool to assign the virtual machine to.
-	// This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `Pool.Membership` resource instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release. To assign the VM to a pool, use `Pool.Membership` resource instead.
 	PoolId *string `pulumi:"poolId"`
 	// Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
 	Protection *bool `pulumi:"protection"`
@@ -427,9 +421,6 @@ type VirtualMachineState struct {
 	// The Operating System configuration.
 	OperatingSystem VirtualMachineOperatingSystemPtrInput
 	// The identifier for a pool to assign the virtual machine to.
-	// This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `Pool.Membership` resource instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release. To assign the VM to a pool, use `Pool.Membership` resource instead.
 	PoolId pulumi.StringPtrInput
 	// Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
 	Protection pulumi.BoolPtrInput
@@ -572,9 +563,6 @@ type virtualMachineArgs struct {
 	// The Operating System configuration.
 	OperatingSystem *VirtualMachineOperatingSystem `pulumi:"operatingSystem"`
 	// The identifier for a pool to assign the virtual machine to.
-	// This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `Pool.Membership` resource instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release. To assign the VM to a pool, use `Pool.Membership` resource instead.
 	PoolId *string `pulumi:"poolId"`
 	// Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
 	Protection *bool `pulumi:"protection"`
@@ -714,9 +702,6 @@ type VirtualMachineArgs struct {
 	// The Operating System configuration.
 	OperatingSystem VirtualMachineOperatingSystemPtrInput
 	// The identifier for a pool to assign the virtual machine to.
-	// This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `Pool.Membership` resource instead.
-	//
-	// Deprecated: This field is deprecated and will be removed in a future release. To assign the VM to a pool, use `Pool.Membership` resource instead.
 	PoolId pulumi.StringPtrInput
 	// Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to `false`).
 	Protection pulumi.BoolPtrInput
@@ -1043,9 +1028,6 @@ func (o VirtualMachineOutput) OperatingSystem() VirtualMachineOperatingSystemPtr
 }
 
 // The identifier for a pool to assign the virtual machine to.
-// This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `Pool.Membership` resource instead.
-//
-// Deprecated: This field is deprecated and will be removed in a future release. To assign the VM to a pool, use `Pool.Membership` resource instead.
 func (o VirtualMachineOutput) PoolId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringPtrOutput { return v.PoolId }).(pulumi.StringPtrOutput)
 }

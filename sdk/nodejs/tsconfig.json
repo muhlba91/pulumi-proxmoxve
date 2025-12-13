@@ -77,6 +77,8 @@
         "network/index.ts",
         "network/networkBridge.ts",
         "network/networkVlan.ts",
+        "oci/image.ts",
+        "oci/index.ts",
         "permission/getGroup.ts",
         "permission/getGroups.ts",
         "permission/getPool.ts",

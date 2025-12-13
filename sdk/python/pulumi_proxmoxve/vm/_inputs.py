@@ -1289,7 +1289,7 @@ if not MYPY:
         """
         units: NotRequired[pulumi.Input[_builtins.int]]
         """
-        The CPU units (defaults to `1024`).
+        The CPU units. PVE default is `1024` for cgroups v1 and `100` for cgroups v2.
         """
 elif False:
     VirtualMachineCpuArgsDict: TypeAlias = Mapping[str, Any]
@@ -1344,7 +1344,7 @@ class VirtualMachineCpuArgs:
         :param pulumi.Input[_builtins.int] sockets: The number of CPU sockets (defaults to `1`).
         :param pulumi.Input[_builtins.str] type: The emulated CPU type, it's recommended to
                use `x86-64-v2-AES` (defaults to `qemu64`).
-        :param pulumi.Input[_builtins.int] units: The CPU units (defaults to `1024`).
+        :param pulumi.Input[_builtins.int] units: The CPU units. PVE default is `1024` for cgroups v1 and `100` for cgroups v2.
         """
         if affinity is not None:
             pulumi.set(__self__, "affinity", affinity)
@@ -1506,7 +1506,7 @@ class VirtualMachineCpuArgs:
     @pulumi.getter
     def units(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The CPU units (defaults to `1024`).
+        The CPU units. PVE default is `1024` for cgroups v1 and `100` for cgroups v2.
         """
         return pulumi.get(self, "units")
 

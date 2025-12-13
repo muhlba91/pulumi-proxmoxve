@@ -322,6 +322,10 @@
                 "current": "proxmoxve:Network/networkVlan:NetworkVlan",
                 "majorVersion": 7
             },
+            "proxmox_virtual_environment_oci_image": {
+                "current": "proxmoxve:Oci/image:Image",
+                "majorVersion": 7
+            },
             "proxmox_virtual_environment_pool": {
                 "current": "proxmoxve:Permission/pool:Pool",
                 "majorVersion": 7,
@@ -1157,6 +1161,7 @@
             "proxmoxve:Network/firewallSecurityGroup:FirewallSecurityGroup": 0,
             "proxmoxve:Network/networkBridge:NetworkBridge": 1,
             "proxmoxve:Network/networkVlan:NetworkVlan": 1,
+            "proxmoxve:Oci/image:Image": 1,
             "proxmoxve:Permission/group:Group": 0,
             "proxmoxve:Permission/pool:Pool": 0,
             "proxmoxve:Permission/role:Role": 0,

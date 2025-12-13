@@ -179,6 +179,12 @@ namespace Pulumi.ProxmoxVE.CT
         public Output<Outputs.ContainerDisk?> Disk { get; private set; } = null!;
 
         /// <summary>
+        /// A map of runtime environment variables for the container init process.
+        /// </summary>
+        [Output("environmentVariables")]
+        public Output<ImmutableDictionary<string, string>?> EnvironmentVariables { get; private set; } = null!;
+
+        /// <summary>
         /// The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
         /// </summary>
         [Output("features")]
@@ -241,7 +247,6 @@ namespace Pulumi.ProxmoxVE.CT
 
         /// <summary>
         /// The identifier for a pool to assign the container to.
-        /// This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `proxmoxve.Pool.Membership` resource instead.
         /// </summary>
         [Output("poolId")]
         public Output<string?> PoolId { get; private set; } = null!;
@@ -424,6 +429,18 @@ namespace Pulumi.ProxmoxVE.CT
         [Input("disk")]
         public Input<Inputs.ContainerDiskArgs>? Disk { get; set; }
 
+        [Input("environmentVariables")]
+        private InputMap<string>? _environmentVariables;
+
+        /// <summary>
+        /// A map of runtime environment variables for the container init process.
+        /// </summary>
+        public InputMap<string> EnvironmentVariables
+        {
+            get => _environmentVariables ?? (_environmentVariables = new InputMap<string>());
+            set => _environmentVariables = value;
+        }
+
         /// <summary>
         /// The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
         /// </summary>
@@ -487,7 +504,6 @@ namespace Pulumi.ProxmoxVE.CT
 
         /// <summary>
         /// The identifier for a pool to assign the container to.
-        /// This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `proxmoxve.Pool.Membership` resource instead.
         /// </summary>
         [Input("poolId")]
         public Input<string>? PoolId { get; set; }
@@ -637,6 +653,18 @@ namespace Pulumi.ProxmoxVE.CT
         [Input("disk")]
         public Input<Inputs.ContainerDiskGetArgs>? Disk { get; set; }
 
+        [Input("environmentVariables")]
+        private InputMap<string>? _environmentVariables;
+
+        /// <summary>
+        /// A map of runtime environment variables for the container init process.
+        /// </summary>
+        public InputMap<string> EnvironmentVariables
+        {
+            get => _environmentVariables ?? (_environmentVariables = new InputMap<string>());
+            set => _environmentVariables = value;
+        }
+
         /// <summary>
         /// The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
         /// </summary>
@@ -724,7 +752,6 @@ namespace Pulumi.ProxmoxVE.CT
 
         /// <summary>
         /// The identifier for a pool to assign the container to.
-        /// This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `proxmoxve.Pool.Membership` resource instead.
         /// </summary>
         [Input("poolId")]
         public Input<string>? PoolId { get; set; }

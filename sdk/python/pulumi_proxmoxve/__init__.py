@@ -44,6 +44,8 @@ if typing.TYPE_CHECKING:
     metrics = __metrics
     import pulumi_proxmoxve.network as __network
     network = __network
+    import pulumi_proxmoxve.oci as __oci
+    oci = __oci
     import pulumi_proxmoxve.permission as __permission
     permission = __permission
     import pulumi_proxmoxve.pool as __pool
@@ -69,6 +71,7 @@ else:
     hardware = _utilities.lazy_import('pulumi_proxmoxve.hardware')
     metrics = _utilities.lazy_import('pulumi_proxmoxve.metrics')
     network = _utilities.lazy_import('pulumi_proxmoxve.network')
+    oci = _utilities.lazy_import('pulumi_proxmoxve.oci')
     permission = _utilities.lazy_import('pulumi_proxmoxve.permission')
     pool = _utilities.lazy_import('pulumi_proxmoxve.pool')
     sdn = _utilities.lazy_import('pulumi_proxmoxve.sdn')
@@ -230,6 +233,14 @@ _utilities.register(
   "fqn": "pulumi_proxmoxve.network",
   "classes": {
    "proxmoxve:Network/networkVlan:NetworkVlan": "NetworkVlan"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "Oci/image",
+  "fqn": "pulumi_proxmoxve.oci",
+  "classes": {
+   "proxmoxve:Oci/image:Image": "Image"
   }
  },
  {

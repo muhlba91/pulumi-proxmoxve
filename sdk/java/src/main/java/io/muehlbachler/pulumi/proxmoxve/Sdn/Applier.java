@@ -4,11 +4,13 @@
 package io.muehlbachler.pulumi.proxmoxve.Sdn;
 
 import com.pulumi.core.Output;
+import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import io.muehlbachler.pulumi.proxmoxve.Sdn.ApplierArgs;
 import io.muehlbachler.pulumi.proxmoxve.Sdn.inputs.ApplierState;
 import io.muehlbachler.pulumi.proxmoxve.Utilities;
+import java.lang.Boolean;
 import javax.annotation.Nullable;
 
 /**
@@ -17,6 +19,35 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="proxmoxve:Sdn/applier:Applier")
 public class Applier extends com.pulumi.resources.CustomResource {
+    /**
+     * Whether to apply SDN configuration on resource creation. Defaults to true.
+     * 
+     */
+    @Export(name="onCreate", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> onCreate;
+
+    /**
+     * @return Whether to apply SDN configuration on resource creation. Defaults to true.
+     * 
+     */
+    public Output<Boolean> onCreate() {
+        return this.onCreate;
+    }
+    /**
+     * Whether to apply SDN configuration on resource destruction. Defaults to true.
+     * 
+     */
+    @Export(name="onDestroy", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> onDestroy;
+
+    /**
+     * @return Whether to apply SDN configuration on resource destruction. Defaults to true.
+     * 
+     */
+    public Output<Boolean> onDestroy() {
+        return this.onDestroy;
+    }
+
     /**
      *
      * @param name The _unique_ name of the resulting resource.

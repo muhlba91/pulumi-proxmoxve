@@ -219,7 +219,6 @@ namespace Pulumi.ProxmoxVE.VM
 
         /// <summary>
         /// The identifier for a pool to assign the virtual machine to.
-        /// This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `proxmoxve.Pool.Membership` resource instead.
         /// </summary>
         [Output("poolId")]
         public Output<string?> PoolId { get; private set; } = null!;
@@ -664,7 +663,6 @@ namespace Pulumi.ProxmoxVE.VM
 
         /// <summary>
         /// The identifier for a pool to assign the virtual machine to.
-        /// This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `proxmoxve.Pool.Membership` resource instead.
         /// </summary>
         [Input("poolId")]
         public Input<string>? PoolId { get; set; }
@@ -1139,7 +1137,6 @@ namespace Pulumi.ProxmoxVE.VM
 
         /// <summary>
         /// The identifier for a pool to assign the virtual machine to.
-        /// This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `proxmoxve.Pool.Membership` resource instead.
         /// </summary>
         [Input("poolId")]
         public Input<string>? PoolId { get; set; }

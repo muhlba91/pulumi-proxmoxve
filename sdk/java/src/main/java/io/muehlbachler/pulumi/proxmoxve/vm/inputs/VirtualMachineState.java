@@ -524,25 +524,15 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
 
     /**
      * The identifier for a pool to assign the virtual machine to.
-     * This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-go=&#34;`Pool.Membership`&#34; pulumi-lang-python=&#34;`Pool.Membership`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-java=&#34;`proxmoxve.Pool.Membership`&#34;&gt;`proxmoxve.Pool.Membership`&lt;/span&gt; resource instead.
-     * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release. To assign the VM to a pool, use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-go=&#34;`Pool.Membership`&#34; pulumi-lang-python=&#34;`Pool.Membership`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-java=&#34;`proxmoxve.Pool.Membership`&#34;&gt;`proxmoxve.Pool.Membership`&lt;/span&gt; resource instead.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. To assign the VM to a pool, use <span pulumi-lang-nodejs=""`proxmoxve.Pool.Membership`"" pulumi-lang-dotnet=""`proxmoxve.Pool.Membership`"" pulumi-lang-go=""`Pool.Membership`"" pulumi-lang-python=""`Pool.Membership`"" pulumi-lang-yaml=""`proxmoxve.Pool.Membership`"" pulumi-lang-java=""`proxmoxve.Pool.Membership`"">`proxmoxve.Pool.Membership`</span> resource instead. */
     @Import(name="poolId")
     private @Nullable Output<String> poolId;
 
     /**
      * @return The identifier for a pool to assign the virtual machine to.
-     * This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-go=&#34;`Pool.Membership`&#34; pulumi-lang-python=&#34;`Pool.Membership`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-java=&#34;`proxmoxve.Pool.Membership`&#34;&gt;`proxmoxve.Pool.Membership`&lt;/span&gt; resource instead.
-     * 
-     * @deprecated
-     * This field is deprecated and will be removed in a future release. To assign the VM to a pool, use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-go=&#34;`Pool.Membership`&#34; pulumi-lang-python=&#34;`Pool.Membership`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-java=&#34;`proxmoxve.Pool.Membership`&#34;&gt;`proxmoxve.Pool.Membership`&lt;/span&gt; resource instead.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. To assign the VM to a pool, use <span pulumi-lang-nodejs=""`proxmoxve.Pool.Membership`"" pulumi-lang-dotnet=""`proxmoxve.Pool.Membership`"" pulumi-lang-go=""`Pool.Membership`"" pulumi-lang-python=""`Pool.Membership`"" pulumi-lang-yaml=""`proxmoxve.Pool.Membership`"" pulumi-lang-java=""`proxmoxve.Pool.Membership`"">`proxmoxve.Pool.Membership`</span> resource instead. */
     public Optional<Output<String>> poolId() {
         return Optional.ofNullable(this.poolId);
     }
@@ -1849,15 +1839,10 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param poolId The identifier for a pool to assign the virtual machine to.
-         * This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-go=&#34;`Pool.Membership`&#34; pulumi-lang-python=&#34;`Pool.Membership`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-java=&#34;`proxmoxve.Pool.Membership`&#34;&gt;`proxmoxve.Pool.Membership`&lt;/span&gt; resource instead.
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in a future release. To assign the VM to a pool, use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-go=&#34;`Pool.Membership`&#34; pulumi-lang-python=&#34;`Pool.Membership`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-java=&#34;`proxmoxve.Pool.Membership`&#34;&gt;`proxmoxve.Pool.Membership`&lt;/span&gt; resource instead.
-         * 
          */
-        @Deprecated /* This field is deprecated and will be removed in a future release. To assign the VM to a pool, use <span pulumi-lang-nodejs=""`proxmoxve.Pool.Membership`"" pulumi-lang-dotnet=""`proxmoxve.Pool.Membership`"" pulumi-lang-go=""`Pool.Membership`"" pulumi-lang-python=""`Pool.Membership`"" pulumi-lang-yaml=""`proxmoxve.Pool.Membership`"" pulumi-lang-java=""`proxmoxve.Pool.Membership`"">`proxmoxve.Pool.Membership`</span> resource instead. */
         public Builder poolId(@Nullable Output<String> poolId) {
             $.poolId = poolId;
             return this;
@@ -1865,15 +1850,10 @@ public final class VirtualMachineState extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param poolId The identifier for a pool to assign the virtual machine to.
-         * This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-go=&#34;`Pool.Membership`&#34; pulumi-lang-python=&#34;`Pool.Membership`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-java=&#34;`proxmoxve.Pool.Membership`&#34;&gt;`proxmoxve.Pool.Membership`&lt;/span&gt; resource instead.
          * 
          * @return builder
          * 
-         * @deprecated
-         * This field is deprecated and will be removed in a future release. To assign the VM to a pool, use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-go=&#34;`Pool.Membership`&#34; pulumi-lang-python=&#34;`Pool.Membership`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Pool.Membership`&#34; pulumi-lang-java=&#34;`proxmoxve.Pool.Membership`&#34;&gt;`proxmoxve.Pool.Membership`&lt;/span&gt; resource instead.
-         * 
          */
-        @Deprecated /* This field is deprecated and will be removed in a future release. To assign the VM to a pool, use <span pulumi-lang-nodejs=""`proxmoxve.Pool.Membership`"" pulumi-lang-dotnet=""`proxmoxve.Pool.Membership`"" pulumi-lang-go=""`Pool.Membership`"" pulumi-lang-python=""`Pool.Membership`"" pulumi-lang-yaml=""`proxmoxve.Pool.Membership`"" pulumi-lang-java=""`proxmoxve.Pool.Membership`"">`proxmoxve.Pool.Membership`</span> resource instead. */
         public Builder poolId(String poolId) {
             return poolId(Output.of(poolId));
         }

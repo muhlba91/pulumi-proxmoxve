@@ -87,7 +87,7 @@ public final class VirtualMachineCpu {
      */
     private @Nullable String type;
     /**
-     * @return The CPU units (defaults to &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt;).
+     * @return The CPU units. PVE default is &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt; for cgroups v1 and &lt;span pulumi-lang-nodejs=&#34;`100`&#34; pulumi-lang-dotnet=&#34;`100`&#34; pulumi-lang-go=&#34;`100`&#34; pulumi-lang-python=&#34;`100`&#34; pulumi-lang-yaml=&#34;`100`&#34; pulumi-lang-java=&#34;`100`&#34;&gt;`100`&lt;/span&gt; for cgroups v2.
      * 
      */
     private @Nullable Integer units;
@@ -184,7 +184,7 @@ public final class VirtualMachineCpu {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return The CPU units (defaults to &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt;).
+     * @return The CPU units. PVE default is &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt; for cgroups v1 and &lt;span pulumi-lang-nodejs=&#34;`100`&#34; pulumi-lang-dotnet=&#34;`100`&#34; pulumi-lang-go=&#34;`100`&#34; pulumi-lang-python=&#34;`100`&#34; pulumi-lang-yaml=&#34;`100`&#34; pulumi-lang-java=&#34;`100`&#34;&gt;`100`&lt;/span&gt; for cgroups v2.
      * 
      */
     public Optional<Integer> units() {

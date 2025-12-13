@@ -1903,10 +1903,17 @@
                 },
                 "units": {
                     "type": "integer",
-                    "description": "The CPU units (defaults to \u003cspan pulumi-lang-nodejs=\"`1024`\" pulumi-lang-dotnet=\"`1024`\" pulumi-lang-go=\"`1024`\" pulumi-lang-python=\"`1024`\" pulumi-lang-yaml=\"`1024`\" pulumi-lang-java=\"`1024`\"\u003e`1024`\u003c/span\u003e).\n"
+                    "description": "The CPU units. PVE default is \u003cspan pulumi-lang-nodejs=\"`1024`\" pulumi-lang-dotnet=\"`1024`\" pulumi-lang-go=\"`1024`\" pulumi-lang-python=\"`1024`\" pulumi-lang-yaml=\"`1024`\" pulumi-lang-java=\"`1024`\"\u003e`1024`\u003c/span\u003e for cgroups v1 and \u003cspan pulumi-lang-nodejs=\"`100`\" pulumi-lang-dotnet=\"`100`\" pulumi-lang-go=\"`100`\" pulumi-lang-python=\"`100`\" pulumi-lang-yaml=\"`100`\" pulumi-lang-java=\"`100`\"\u003e`100`\u003c/span\u003e for cgroups v2.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "units"
+                    ]
+                }
+            }
         },
         "proxmoxve:VM/VirtualMachineDisk:VirtualMachineDisk": {
             "properties": {
@@ -2035,13 +2042,11 @@
                 },
                 "fileFormat": {
                     "type": "string",
-                    "description": "The file format (defaults to \u003cspan pulumi-lang-nodejs=\"`raw`\" pulumi-lang-dotnet=\"`Raw`\" pulumi-lang-go=\"`raw`\" pulumi-lang-python=\"`raw`\" pulumi-lang-yaml=\"`raw`\" pulumi-lang-java=\"`raw`\"\u003e`raw`\u003c/span\u003e).\n",
-                    "willReplaceOnChanges": true
+                    "description": "The file format (defaults to \u003cspan pulumi-lang-nodejs=\"`raw`\" pulumi-lang-dotnet=\"`Raw`\" pulumi-lang-go=\"`raw`\" pulumi-lang-python=\"`raw`\" pulumi-lang-yaml=\"`raw`\" pulumi-lang-java=\"`raw`\"\u003e`raw`\u003c/span\u003e).\n"
                 },
                 "preEnrolledKeys": {
                     "type": "boolean",
-                    "description": "Use am EFI vars template with\ndistribution-specific and Microsoft Standard keys enrolled, if used with\nEFI type=\u003cspan pulumi-lang-nodejs=\"`4m`\" pulumi-lang-dotnet=\"`4m`\" pulumi-lang-go=\"`4m`\" pulumi-lang-python=\"`4m`\" pulumi-lang-yaml=\"`4m`\" pulumi-lang-java=\"`4m`\"\u003e`4m`\u003c/span\u003e. Ignored for VMs with cpu.architecture=\u003cspan pulumi-lang-nodejs=\"`aarch64`\" pulumi-lang-dotnet=\"`Aarch64`\" pulumi-lang-go=\"`aarch64`\" pulumi-lang-python=\"`aarch64`\" pulumi-lang-yaml=\"`aarch64`\" pulumi-lang-java=\"`aarch64`\"\u003e`aarch64`\u003c/span\u003e (defaults\nto \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e).\n",
-                    "willReplaceOnChanges": true
+                    "description": "Use am EFI vars template with\ndistribution-specific and Microsoft Standard keys enrolled, if used with\nEFI type=\u003cspan pulumi-lang-nodejs=\"`4m`\" pulumi-lang-dotnet=\"`4m`\" pulumi-lang-go=\"`4m`\" pulumi-lang-python=\"`4m`\" pulumi-lang-yaml=\"`4m`\" pulumi-lang-java=\"`4m`\"\u003e`4m`\u003c/span\u003e. Ignored for VMs with cpu.architecture=\u003cspan pulumi-lang-nodejs=\"`aarch64`\" pulumi-lang-dotnet=\"`Aarch64`\" pulumi-lang-go=\"`aarch64`\" pulumi-lang-python=\"`aarch64`\" pulumi-lang-yaml=\"`aarch64`\" pulumi-lang-java=\"`aarch64`\"\u003e`aarch64`\u003c/span\u003e (defaults\nto \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e).\n"
                 },
                 "type": {
                     "type": "string",
@@ -3415,6 +3420,13 @@
                     "$ref": "#/types/proxmoxve:CT/ContainerDisk:ContainerDisk",
                     "description": "The disk configuration.\n"
                 },
+                "environmentVariables": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of runtime environment variables for the container init process.\n"
+                },
                 "features": {
                     "$ref": "#/types/proxmoxve:CT/ContainerFeatures:ContainerFeatures",
                     "description": "The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.\n"
@@ -3469,8 +3481,7 @@
                 },
                 "poolId": {
                     "type": "string",
-                    "description": "The identifier for a pool to assign the container to.\nThis field is deprecated and will be removed in a future release. To assign the container to a pool, use the \u003cspan pulumi-lang-nodejs=\"`proxmoxve.Pool.Membership`\" pulumi-lang-dotnet=\"`proxmoxve.Pool.Membership`\" pulumi-lang-go=\"`Pool.Membership`\" pulumi-lang-python=\"`Pool.Membership`\" pulumi-lang-yaml=\"`proxmoxve.Pool.Membership`\" pulumi-lang-java=\"`proxmoxve.Pool.Membership`\"\u003e`proxmoxve.Pool.Membership`\u003c/span\u003e resource instead.\n",
-                    "deprecationMessage": "This field is deprecated and will be removed in a future release. To assign the container to a pool, use \u003cspan pulumi-lang-nodejs=\"`proxmoxve.Pool.Membership`\" pulumi-lang-dotnet=\"`proxmoxve.Pool.Membership`\" pulumi-lang-go=\"`Pool.Membership`\" pulumi-lang-python=\"`Pool.Membership`\" pulumi-lang-yaml=\"`proxmoxve.Pool.Membership`\" pulumi-lang-java=\"`proxmoxve.Pool.Membership`\"\u003e`proxmoxve.Pool.Membership`\u003c/span\u003e resource instead"
+                    "description": "The identifier for a pool to assign the container to.\n"
                 },
                 "protection": {
                     "type": "boolean",
@@ -3568,6 +3579,13 @@
                     "description": "The disk configuration.\n",
                     "willReplaceOnChanges": true
                 },
+                "environmentVariables": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of runtime environment variables for the container init process.\n"
+                },
                 "features": {
                     "$ref": "#/types/proxmoxve:CT/ContainerFeatures:ContainerFeatures",
                     "description": "The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.\n"
@@ -3610,8 +3628,7 @@
                 },
                 "poolId": {
                     "type": "string",
-                    "description": "The identifier for a pool to assign the container to.\nThis field is deprecated and will be removed in a future release. To assign the container to a pool, use the \u003cspan pulumi-lang-nodejs=\"`proxmoxve.Pool.Membership`\" pulumi-lang-dotnet=\"`proxmoxve.Pool.Membership`\" pulumi-lang-go=\"`Pool.Membership`\" pulumi-lang-python=\"`Pool.Membership`\" pulumi-lang-yaml=\"`proxmoxve.Pool.Membership`\" pulumi-lang-java=\"`proxmoxve.Pool.Membership`\"\u003e`proxmoxve.Pool.Membership`\u003c/span\u003e resource instead.\n",
-                    "deprecationMessage": "This field is deprecated and will be removed in a future release. To assign the container to a pool, use \u003cspan pulumi-lang-nodejs=\"`proxmoxve.Pool.Membership`\" pulumi-lang-dotnet=\"`proxmoxve.Pool.Membership`\" pulumi-lang-go=\"`Pool.Membership`\" pulumi-lang-python=\"`Pool.Membership`\" pulumi-lang-yaml=\"`proxmoxve.Pool.Membership`\" pulumi-lang-java=\"`proxmoxve.Pool.Membership`\"\u003e`proxmoxve.Pool.Membership`\u003c/span\u003e resource instead",
+                    "description": "The identifier for a pool to assign the container to.\n",
                     "willReplaceOnChanges": true
                 },
                 "protection": {
@@ -3711,6 +3728,13 @@
                         "description": "The disk configuration.\n",
                         "willReplaceOnChanges": true
                     },
+                    "environmentVariables": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "A map of runtime environment variables for the container init process.\n"
+                    },
                     "features": {
                         "$ref": "#/types/proxmoxve:CT/ContainerFeatures:ContainerFeatures",
                         "description": "The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.\n"
@@ -3767,8 +3791,7 @@
                     },
                     "poolId": {
                         "type": "string",
-                        "description": "The identifier for a pool to assign the container to.\nThis field is deprecated and will be removed in a future release. To assign the container to a pool, use the \u003cspan pulumi-lang-nodejs=\"`proxmoxve.Pool.Membership`\" pulumi-lang-dotnet=\"`proxmoxve.Pool.Membership`\" pulumi-lang-go=\"`Pool.Membership`\" pulumi-lang-python=\"`Pool.Membership`\" pulumi-lang-yaml=\"`proxmoxve.Pool.Membership`\" pulumi-lang-java=\"`proxmoxve.Pool.Membership`\"\u003e`proxmoxve.Pool.Membership`\u003c/span\u003e resource instead.\n",
-                        "deprecationMessage": "This field is deprecated and will be removed in a future release. To assign the container to a pool, use \u003cspan pulumi-lang-nodejs=\"`proxmoxve.Pool.Membership`\" pulumi-lang-dotnet=\"`proxmoxve.Pool.Membership`\" pulumi-lang-go=\"`Pool.Membership`\" pulumi-lang-python=\"`Pool.Membership`\" pulumi-lang-yaml=\"`proxmoxve.Pool.Membership`\" pulumi-lang-java=\"`proxmoxve.Pool.Membership`\"\u003e`proxmoxve.Pool.Membership`\u003c/span\u003e resource instead",
+                        "description": "The identifier for a pool to assign the container to.\n",
                         "willReplaceOnChanges": true
                     },
                     "protection": {
@@ -5861,6 +5884,126 @@
                 "type": "object"
             }
         },
+        "proxmoxve:Oci/image:Image": {
+            "description": "Manages OCI images pulled from OCI registries using PVE oci-registry-pull API. Pulls OCI container images and stores them as tar files in Proxmox VE datastores.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst ubuntuLatest = new proxmoxve.oci.Image(\"ubuntu_latest\", {\n    nodeName: \"pve\",\n    datastoreId: \"local\",\n    reference: \"docker.io/library/ubuntu:latest\",\n});\nconst nginx = new proxmoxve.oci.Image(\"nginx\", {\n    nodeName: \"pve\",\n    datastoreId: \"local\",\n    reference: \"docker.io/library/nginx:alpine\",\n    fileName: \"custom_image_name.tar\",\n});\nconst debian = new proxmoxve.oci.Image(\"debian\", {\n    nodeName: \"pve\",\n    datastoreId: \"local\",\n    reference: \"docker.io/library/debian:bookworm\",\n    uploadTimeout: 900,\n    overwrite: false,\n    overwriteUnmanaged: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\nubuntu_latest = proxmoxve.oci.Image(\"ubuntu_latest\",\n    node_name=\"pve\",\n    datastore_id=\"local\",\n    reference=\"docker.io/library/ubuntu:latest\")\nnginx = proxmoxve.oci.Image(\"nginx\",\n    node_name=\"pve\",\n    datastore_id=\"local\",\n    reference=\"docker.io/library/nginx:alpine\",\n    file_name=\"custom_image_name.tar\")\ndebian = proxmoxve.oci.Image(\"debian\",\n    node_name=\"pve\",\n    datastore_id=\"local\",\n    reference=\"docker.io/library/debian:bookworm\",\n    upload_timeout=900,\n    overwrite=False,\n    overwrite_unmanaged=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var ubuntuLatest = new ProxmoxVE.Oci.Image(\"ubuntu_latest\", new()\n    {\n        NodeName = \"pve\",\n        DatastoreId = \"local\",\n        Reference = \"docker.io/library/ubuntu:latest\",\n    });\n\n    var nginx = new ProxmoxVE.Oci.Image(\"nginx\", new()\n    {\n        NodeName = \"pve\",\n        DatastoreId = \"local\",\n        Reference = \"docker.io/library/nginx:alpine\",\n        FileName = \"custom_image_name.tar\",\n    });\n\n    var debian = new ProxmoxVE.Oci.Image(\"debian\", new()\n    {\n        NodeName = \"pve\",\n        DatastoreId = \"local\",\n        Reference = \"docker.io/library/debian:bookworm\",\n        UploadTimeout = 900,\n        Overwrite = false,\n        OverwriteUnmanaged = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/oci\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := oci.NewImage(ctx, \"ubuntu_latest\", \u0026oci.ImageArgs{\n\t\t\tNodeName:    pulumi.String(\"pve\"),\n\t\t\tDatastoreId: pulumi.String(\"local\"),\n\t\t\tReference:   pulumi.String(\"docker.io/library/ubuntu:latest\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = oci.NewImage(ctx, \"nginx\", \u0026oci.ImageArgs{\n\t\t\tNodeName:    pulumi.String(\"pve\"),\n\t\t\tDatastoreId: pulumi.String(\"local\"),\n\t\t\tReference:   pulumi.String(\"docker.io/library/nginx:alpine\"),\n\t\t\tFileName:    pulumi.String(\"custom_image_name.tar\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = oci.NewImage(ctx, \"debian\", \u0026oci.ImageArgs{\n\t\t\tNodeName:           pulumi.String(\"pve\"),\n\t\t\tDatastoreId:        pulumi.String(\"local\"),\n\t\t\tReference:          pulumi.String(\"docker.io/library/debian:bookworm\"),\n\t\t\tUploadTimeout:      pulumi.Int(900),\n\t\t\tOverwrite:          pulumi.Bool(false),\n\t\t\tOverwriteUnmanaged: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport io.muehlbachler.pulumi.proxmoxve.Oci.Image;\nimport io.muehlbachler.pulumi.proxmoxve.Oci.ImageArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var ubuntuLatest = new Image(\"ubuntuLatest\", ImageArgs.builder()\n            .nodeName(\"pve\")\n            .datastoreId(\"local\")\n            .reference(\"docker.io/library/ubuntu:latest\")\n            .build());\n\n        var nginx = new Image(\"nginx\", ImageArgs.builder()\n            .nodeName(\"pve\")\n            .datastoreId(\"local\")\n            .reference(\"docker.io/library/nginx:alpine\")\n            .fileName(\"custom_image_name.tar\")\n            .build());\n\n        var debian = new Image(\"debian\", ImageArgs.builder()\n            .nodeName(\"pve\")\n            .datastoreId(\"local\")\n            .reference(\"docker.io/library/debian:bookworm\")\n            .uploadTimeout(900)\n            .overwrite(false)\n            .overwriteUnmanaged(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  ubuntuLatest:\n    type: proxmoxve:Oci:Image\n    name: ubuntu_latest\n    properties:\n      nodeName: pve\n      datastoreId: local\n      reference: docker.io/library/ubuntu:latest\n  nginx:\n    type: proxmoxve:Oci:Image\n    properties:\n      nodeName: pve\n      datastoreId: local\n      reference: docker.io/library/nginx:alpine\n      fileName: custom_image_name.tar\n  debian:\n    type: proxmoxve:Oci:Image\n    properties:\n      nodeName: pve\n      datastoreId: local\n      reference: docker.io/library/debian:bookworm\n      uploadTimeout: 900\n      overwrite: false\n      overwriteUnmanaged: true\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "datastoreId": {
+                    "type": "string",
+                    "description": "The identifier for the target datastore.\n"
+                },
+                "fileName": {
+                    "type": "string",
+                    "description": "The file name for the pulled OCI image. If not provided, it will be generated automatically. The file will be stored as a .tar file.\n"
+                },
+                "nodeName": {
+                    "type": "string",
+                    "description": "The node name.\n"
+                },
+                "overwrite": {
+                    "type": "boolean",
+                    "description": "By default \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e. If \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e and the OCI image size has changed in the datastore, it will be replaced. If \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e, there will be no check.\n"
+                },
+                "overwriteUnmanaged": {
+                    "type": "boolean",
+                    "description": "If \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e and an OCI image with the same name already exists in the datastore, it will be deleted and the new image will be pulled. If \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e and the image already exists, an error will be returned.\n"
+                },
+                "reference": {
+                    "type": "string",
+                    "description": "The reference to the OCI image.\n"
+                },
+                "size": {
+                    "type": "integer",
+                    "description": "The image size in PVE.\n"
+                },
+                "uploadTimeout": {
+                    "type": "integer",
+                    "description": "The OCI image pull timeout in seconds. Default is 600 (10min).\n"
+                }
+            },
+            "required": [
+                "datastoreId",
+                "fileName",
+                "nodeName",
+                "overwrite",
+                "overwriteUnmanaged",
+                "reference",
+                "size",
+                "uploadTimeout"
+            ],
+            "inputProperties": {
+                "datastoreId": {
+                    "type": "string",
+                    "description": "The identifier for the target datastore.\n"
+                },
+                "fileName": {
+                    "type": "string",
+                    "description": "The file name for the pulled OCI image. If not provided, it will be generated automatically. The file will be stored as a .tar file.\n"
+                },
+                "nodeName": {
+                    "type": "string",
+                    "description": "The node name.\n"
+                },
+                "overwrite": {
+                    "type": "boolean",
+                    "description": "By default \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e. If \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e and the OCI image size has changed in the datastore, it will be replaced. If \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e, there will be no check.\n"
+                },
+                "overwriteUnmanaged": {
+                    "type": "boolean",
+                    "description": "If \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e and an OCI image with the same name already exists in the datastore, it will be deleted and the new image will be pulled. If \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e and the image already exists, an error will be returned.\n"
+                },
+                "reference": {
+                    "type": "string",
+                    "description": "The reference to the OCI image.\n"
+                },
+                "uploadTimeout": {
+                    "type": "integer",
+                    "description": "The OCI image pull timeout in seconds. Default is 600 (10min).\n"
+                }
+            },
+            "requiredInputs": [
+                "datastoreId",
+                "nodeName",
+                "reference"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Image resources.\n",
+                "properties": {
+                    "datastoreId": {
+                        "type": "string",
+                        "description": "The identifier for the target datastore.\n"
+                    },
+                    "fileName": {
+                        "type": "string",
+                        "description": "The file name for the pulled OCI image. If not provided, it will be generated automatically. The file will be stored as a .tar file.\n"
+                    },
+                    "nodeName": {
+                        "type": "string",
+                        "description": "The node name.\n"
+                    },
+                    "overwrite": {
+                        "type": "boolean",
+                        "description": "By default \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e. If \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e and the OCI image size has changed in the datastore, it will be replaced. If \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e, there will be no check.\n"
+                    },
+                    "overwriteUnmanaged": {
+                        "type": "boolean",
+                        "description": "If \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e and an OCI image with the same name already exists in the datastore, it will be deleted and the new image will be pulled. If \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e and the image already exists, an error will be returned.\n"
+                    },
+                    "reference": {
+                        "type": "string",
+                        "description": "The reference to the OCI image.\n"
+                    },
+                    "size": {
+                        "type": "integer",
+                        "description": "The image size in PVE.\n"
+                    },
+                    "uploadTimeout": {
+                        "type": "integer",
+                        "description": "The OCI image pull timeout in seconds. Default is 600 (10min).\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "proxmoxve:Permission/group:Group": {
             "description": "Manages a user group.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst operationsTeam = new proxmoxve.permission.Group(\"operations_team\", {\n    comment: \"Managed by Pulumi\",\n    groupId: \"operations-team\",\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\noperations_team = proxmoxve.permission.Group(\"operations_team\",\n    comment=\"Managed by Pulumi\",\n    group_id=\"operations-team\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var operationsTeam = new ProxmoxVE.Permission.Group(\"operations_team\", new()\n    {\n        Comment = \"Managed by Pulumi\",\n        GroupId = \"operations-team\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/permission\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := permission.NewGroup(ctx, \"operations_team\", \u0026permission.GroupArgs{\n\t\t\tComment: pulumi.String(\"Managed by Pulumi\"),\n\t\t\tGroupId: pulumi.String(\"operations-team\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport io.muehlbachler.pulumi.proxmoxve.Permission.Group;\nimport io.muehlbachler.pulumi.proxmoxve.Permission.GroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var operationsTeam = new Group(\"operationsTeam\", GroupArgs.builder()\n            .comment(\"Managed by Pulumi\")\n            .groupId(\"operations-team\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  operationsTeam:\n    type: proxmoxve:Permission:Group\n    name: operations_team\n    properties:\n      comment: Managed by Pulumi\n      groupId: operations-team\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nInstances can be imported using the `group_id`, e.g.,\n\nbash\n\n```sh\n$ pulumi import proxmoxve:Permission/group:Group operations_team operations-team\n```\n\n",
             "properties": {
@@ -6233,7 +6376,7 @@
             }
         },
         "proxmoxve:Pool/membership:Membership": {
-            "description": "Manages resource pool memberships for containers, virtual machines and storages\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst testVm1 = new proxmoxve.vm.VirtualMachine(\"test_vm1\", {\n    vmId: 1234,\n    nodeName: \"pve\",\n    started: false,\n});\nconst testPool = new proxmoxve.permission.Pool(\"test_pool\", {poolId: \"test-pool\"});\nconst vmMembership = new proxmoxve.pool.Membership(\"vm_membership\", {\n    poolId: testPool.id,\n    vmId: testVm1.id,\n});\nconst storageMembership = new proxmoxve.pool.Membership(\"storage_membership\", {\n    poolId: testPool.id,\n    storageId: \"local-lvm\",\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\ntest_vm1 = proxmoxve.vm.VirtualMachine(\"test_vm1\",\n    vm_id=1234,\n    node_name=\"pve\",\n    started=False)\ntest_pool = proxmoxve.permission.Pool(\"test_pool\", pool_id=\"test-pool\")\nvm_membership = proxmoxve.pool.Membership(\"vm_membership\",\n    pool_id=test_pool.id,\n    vm_id=test_vm1.id)\nstorage_membership = proxmoxve.pool.Membership(\"storage_membership\",\n    pool_id=test_pool.id,\n    storage_id=\"local-lvm\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testVm1 = new ProxmoxVE.VM.VirtualMachine(\"test_vm1\", new()\n    {\n        VmId = 1234,\n        NodeName = \"pve\",\n        Started = false,\n    });\n\n    var testPool = new ProxmoxVE.Permission.Pool(\"test_pool\", new()\n    {\n        PoolId = \"test-pool\",\n    });\n\n    var vmMembership = new ProxmoxVE.Pool.Membership(\"vm_membership\", new()\n    {\n        PoolId = testPool.Id,\n        VmId = testVm1.Id,\n    });\n\n    var storageMembership = new ProxmoxVE.Pool.Membership(\"storage_membership\", new()\n    {\n        PoolId = testPool.Id,\n        StorageId = \"local-lvm\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/permission\"\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/pool\"\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/vm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttestVm1, err := vm.NewVirtualMachine(ctx, \"test_vm1\", \u0026vm.VirtualMachineArgs{\n\t\t\tVmId:     pulumi.Int(1234),\n\t\t\tNodeName: pulumi.String(\"pve\"),\n\t\t\tStarted:  pulumi.Bool(false),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttestPool, err := permission.NewPool(ctx, \"test_pool\", \u0026permission.PoolArgs{\n\t\t\tPoolId: pulumi.String(\"test-pool\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = pool.NewMembership(ctx, \"vm_membership\", \u0026pool.MembershipArgs{\n\t\t\tPoolId: testPool.ID(),\n\t\t\tVmId:   testVm1.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = pool.NewMembership(ctx, \"storage_membership\", \u0026pool.MembershipArgs{\n\t\t\tPoolId:    testPool.ID(),\n\t\t\tStorageId: pulumi.String(\"local-lvm\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport io.muehlbachler.pulumi.proxmoxve.VM.VirtualMachine;\nimport io.muehlbachler.pulumi.proxmoxve.VM.VirtualMachineArgs;\nimport io.muehlbachler.pulumi.proxmoxve.Permission.Pool;\nimport io.muehlbachler.pulumi.proxmoxve.Permission.PoolArgs;\nimport io.muehlbachler.pulumi.proxmoxve.Pool.Membership;\nimport io.muehlbachler.pulumi.proxmoxve.Pool.MembershipArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testVm1 = new VirtualMachine(\"testVm1\", VirtualMachineArgs.builder()\n            .vmId(1234)\n            .nodeName(\"pve\")\n            .started(false)\n            .build());\n\n        var testPool = new Pool(\"testPool\", PoolArgs.builder()\n            .poolId(\"test-pool\")\n            .build());\n\n        var vmMembership = new Membership(\"vmMembership\", MembershipArgs.builder()\n            .poolId(testPool.id())\n            .vmId(testVm1.id())\n            .build());\n\n        var storageMembership = new Membership(\"storageMembership\", MembershipArgs.builder()\n            .poolId(testPool.id())\n            .storageId(\"local-lvm\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testVm1:\n    type: proxmoxve:VM:VirtualMachine\n    name: test_vm1\n    properties:\n      vmId: 1234\n      nodeName: pve\n      started: false\n  testPool:\n    type: proxmoxve:Permission:Pool\n    name: test_pool\n    properties:\n      poolId: test-pool\n  vmMembership:\n    type: proxmoxve:Pool:Membership\n    name: vm_membership\n    properties:\n      poolId: ${testPool.id}\n      vmId: ${testVm1.id}\n  storageMembership:\n    type: proxmoxve:Pool:Membership\n    name: storage_membership\n    properties:\n      poolId: ${testPool.id}\n      storageId: local-lvm\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n#!/usr/bin/env sh\n\nResource pool membership can be imported using its unique identifier, e.g.: {pool_id}/{type}/{member_id}\n\n```sh\n$ pulumi import proxmoxve:Pool/membership:Membership example_membership test-pool/vm/102\n```\n\n",
+            "description": "Manages resource pool memberships for containers, virtual machines and storages\n\n\u003e This resource requires the `Pool.Allocate` permission on the pool path (e.g., `/pool/{poolid}`).\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as proxmoxve from \"@muhlba91/pulumi-proxmoxve\";\n\nconst testVm1 = new proxmoxve.vm.VirtualMachine(\"test_vm1\", {\n    vmId: 1234,\n    nodeName: \"pve\",\n    started: false,\n});\nconst testPool = new proxmoxve.permission.Pool(\"test_pool\", {poolId: \"test-pool\"});\nconst vmMembership = new proxmoxve.pool.Membership(\"vm_membership\", {\n    poolId: testPool.id,\n    vmId: testVm1.id,\n});\nconst storageMembership = new proxmoxve.pool.Membership(\"storage_membership\", {\n    poolId: testPool.id,\n    storageId: \"local-lvm\",\n});\n```\n```python\nimport pulumi\nimport pulumi_proxmoxve as proxmoxve\n\ntest_vm1 = proxmoxve.vm.VirtualMachine(\"test_vm1\",\n    vm_id=1234,\n    node_name=\"pve\",\n    started=False)\ntest_pool = proxmoxve.permission.Pool(\"test_pool\", pool_id=\"test-pool\")\nvm_membership = proxmoxve.pool.Membership(\"vm_membership\",\n    pool_id=test_pool.id,\n    vm_id=test_vm1.id)\nstorage_membership = proxmoxve.pool.Membership(\"storage_membership\",\n    pool_id=test_pool.id,\n    storage_id=\"local-lvm\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing ProxmoxVE = Pulumi.ProxmoxVE;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var testVm1 = new ProxmoxVE.VM.VirtualMachine(\"test_vm1\", new()\n    {\n        VmId = 1234,\n        NodeName = \"pve\",\n        Started = false,\n    });\n\n    var testPool = new ProxmoxVE.Permission.Pool(\"test_pool\", new()\n    {\n        PoolId = \"test-pool\",\n    });\n\n    var vmMembership = new ProxmoxVE.Pool.Membership(\"vm_membership\", new()\n    {\n        PoolId = testPool.Id,\n        VmId = testVm1.Id,\n    });\n\n    var storageMembership = new ProxmoxVE.Pool.Membership(\"storage_membership\", new()\n    {\n        PoolId = testPool.Id,\n        StorageId = \"local-lvm\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/permission\"\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/pool\"\n\t\"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/vm\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\ttestVm1, err := vm.NewVirtualMachine(ctx, \"test_vm1\", \u0026vm.VirtualMachineArgs{\n\t\t\tVmId:     pulumi.Int(1234),\n\t\t\tNodeName: pulumi.String(\"pve\"),\n\t\t\tStarted:  pulumi.Bool(false),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\ttestPool, err := permission.NewPool(ctx, \"test_pool\", \u0026permission.PoolArgs{\n\t\t\tPoolId: pulumi.String(\"test-pool\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = pool.NewMembership(ctx, \"vm_membership\", \u0026pool.MembershipArgs{\n\t\t\tPoolId: testPool.ID(),\n\t\t\tVmId:   testVm1.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = pool.NewMembership(ctx, \"storage_membership\", \u0026pool.MembershipArgs{\n\t\t\tPoolId:    testPool.ID(),\n\t\t\tStorageId: pulumi.String(\"local-lvm\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport io.muehlbachler.pulumi.proxmoxve.VM.VirtualMachine;\nimport io.muehlbachler.pulumi.proxmoxve.VM.VirtualMachineArgs;\nimport io.muehlbachler.pulumi.proxmoxve.Permission.Pool;\nimport io.muehlbachler.pulumi.proxmoxve.Permission.PoolArgs;\nimport io.muehlbachler.pulumi.proxmoxve.Pool.Membership;\nimport io.muehlbachler.pulumi.proxmoxve.Pool.MembershipArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var testVm1 = new VirtualMachine(\"testVm1\", VirtualMachineArgs.builder()\n            .vmId(1234)\n            .nodeName(\"pve\")\n            .started(false)\n            .build());\n\n        var testPool = new Pool(\"testPool\", PoolArgs.builder()\n            .poolId(\"test-pool\")\n            .build());\n\n        var vmMembership = new Membership(\"vmMembership\", MembershipArgs.builder()\n            .poolId(testPool.id())\n            .vmId(testVm1.id())\n            .build());\n\n        var storageMembership = new Membership(\"storageMembership\", MembershipArgs.builder()\n            .poolId(testPool.id())\n            .storageId(\"local-lvm\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  testVm1:\n    type: proxmoxve:VM:VirtualMachine\n    name: test_vm1\n    properties:\n      vmId: 1234\n      nodeName: pve\n      started: false\n  testPool:\n    type: proxmoxve:Permission:Pool\n    name: test_pool\n    properties:\n      poolId: test-pool\n  vmMembership:\n    type: proxmoxve:Pool:Membership\n    name: vm_membership\n    properties:\n      poolId: ${testPool.id}\n      vmId: ${testVm1.id}\n  storageMembership:\n    type: proxmoxve:Pool:Membership\n    name: storage_membership\n    properties:\n      poolId: ${testPool.id}\n      storageId: local-lvm\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\n#!/usr/bin/env sh\n\nResource pool membership can be imported using its unique identifier, e.g.: {pool_id}/{type}/{member_id}\n\n```sh\n$ pulumi import proxmoxve:Pool/membership:Membership example_membership test-pool/vm/102\n```\n\n",
             "properties": {
                 "poolId": {
                     "type": "string",
@@ -7152,8 +7295,42 @@
         },
         "proxmoxve:Sdn/applier:Applier": {
             "description": "**EXPERIMENTAL** Triggers Proxmox's SDN **Apply** (equivalent to `PUT /cluster/sdn`).Intended to be used with \u003cspan pulumi-lang-nodejs=\"`replaceTriggeredBy`\" pulumi-lang-dotnet=\"`ReplaceTriggeredBy`\" pulumi-lang-go=\"`replaceTriggeredBy`\" pulumi-lang-python=\"`replace_triggered_by`\" pulumi-lang-yaml=\"`replaceTriggeredBy`\" pulumi-lang-java=\"`replaceTriggeredBy`\"\u003e`replace_triggered_by`\u003c/span\u003e so it runs after SDN objects change.\n\n",
+            "properties": {
+                "onCreate": {
+                    "type": "boolean",
+                    "description": "Whether to apply SDN configuration on resource creation. Defaults to true.\n"
+                },
+                "onDestroy": {
+                    "type": "boolean",
+                    "description": "Whether to apply SDN configuration on resource destruction. Defaults to true.\n"
+                }
+            },
+            "required": [
+                "onCreate",
+                "onDestroy"
+            ],
+            "inputProperties": {
+                "onCreate": {
+                    "type": "boolean",
+                    "description": "Whether to apply SDN configuration on resource creation. Defaults to true.\n"
+                },
+                "onDestroy": {
+                    "type": "boolean",
+                    "description": "Whether to apply SDN configuration on resource destruction. Defaults to true.\n"
+                }
+            },
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Applier resources.\n",
+                "properties": {
+                    "onCreate": {
+                        "type": "boolean",
+                        "description": "Whether to apply SDN configuration on resource creation. Defaults to true.\n"
+                    },
+                    "onDestroy": {
+                        "type": "boolean",
+                        "description": "Whether to apply SDN configuration on resource destruction. Defaults to true.\n"
+                    }
+                },
                 "type": "object"
             }
         },
@@ -7990,8 +8167,7 @@
                 },
                 "poolId": {
                     "type": "string",
-                    "description": "The identifier for a pool to assign the virtual machine to.\nThis field is deprecated and will be removed in a future release. To assign the VM to a pool, use the \u003cspan pulumi-lang-nodejs=\"`proxmoxve.Pool.Membership`\" pulumi-lang-dotnet=\"`proxmoxve.Pool.Membership`\" pulumi-lang-go=\"`Pool.Membership`\" pulumi-lang-python=\"`Pool.Membership`\" pulumi-lang-yaml=\"`proxmoxve.Pool.Membership`\" pulumi-lang-java=\"`proxmoxve.Pool.Membership`\"\u003e`proxmoxve.Pool.Membership`\u003c/span\u003e resource instead.\n",
-                    "deprecationMessage": "This field is deprecated and will be removed in a future release. To assign the VM to a pool, use \u003cspan pulumi-lang-nodejs=\"`proxmoxve.Pool.Membership`\" pulumi-lang-dotnet=\"`proxmoxve.Pool.Membership`\" pulumi-lang-go=\"`Pool.Membership`\" pulumi-lang-python=\"`Pool.Membership`\" pulumi-lang-yaml=\"`proxmoxve.Pool.Membership`\" pulumi-lang-java=\"`proxmoxve.Pool.Membership`\"\u003e`proxmoxve.Pool.Membership`\u003c/span\u003e resource instead."
+                    "description": "The identifier for a pool to assign the virtual machine to.\n"
                 },
                 "protection": {
                     "type": "boolean",
@@ -8192,8 +8368,7 @@
                 },
                 "efiDisk": {
                     "$ref": "#/types/proxmoxve:VM/VirtualMachineEfiDisk:VirtualMachineEfiDisk",
-                    "description": "The efi disk device (required if \u003cspan pulumi-lang-nodejs=\"`bios`\" pulumi-lang-dotnet=\"`Bios`\" pulumi-lang-go=\"`bios`\" pulumi-lang-python=\"`bios`\" pulumi-lang-yaml=\"`bios`\" pulumi-lang-java=\"`bios`\"\u003e`bios`\u003c/span\u003e is set\nto \u003cspan pulumi-lang-nodejs=\"`ovmf`\" pulumi-lang-dotnet=\"`Ovmf`\" pulumi-lang-go=\"`ovmf`\" pulumi-lang-python=\"`ovmf`\" pulumi-lang-yaml=\"`ovmf`\" pulumi-lang-java=\"`ovmf`\"\u003e`ovmf`\u003c/span\u003e)\n",
-                    "willReplaceOnChanges": true
+                    "description": "The efi disk device (required if \u003cspan pulumi-lang-nodejs=\"`bios`\" pulumi-lang-dotnet=\"`Bios`\" pulumi-lang-go=\"`bios`\" pulumi-lang-python=\"`bios`\" pulumi-lang-yaml=\"`bios`\" pulumi-lang-java=\"`bios`\"\u003e`bios`\u003c/span\u003e is set\nto \u003cspan pulumi-lang-nodejs=\"`ovmf`\" pulumi-lang-dotnet=\"`Ovmf`\" pulumi-lang-go=\"`ovmf`\" pulumi-lang-python=\"`ovmf`\" pulumi-lang-yaml=\"`ovmf`\" pulumi-lang-java=\"`ovmf`\"\u003e`ovmf`\u003c/span\u003e)\n"
                 },
                 "hookScriptFileId": {
                     "type": "string",
@@ -8269,8 +8444,7 @@
                 },
                 "poolId": {
                     "type": "string",
-                    "description": "The identifier for a pool to assign the virtual machine to.\nThis field is deprecated and will be removed in a future release. To assign the VM to a pool, use the \u003cspan pulumi-lang-nodejs=\"`proxmoxve.Pool.Membership`\" pulumi-lang-dotnet=\"`proxmoxve.Pool.Membership`\" pulumi-lang-go=\"`Pool.Membership`\" pulumi-lang-python=\"`Pool.Membership`\" pulumi-lang-yaml=\"`proxmoxve.Pool.Membership`\" pulumi-lang-java=\"`proxmoxve.Pool.Membership`\"\u003e`proxmoxve.Pool.Membership`\u003c/span\u003e resource instead.\n",
-                    "deprecationMessage": "This field is deprecated and will be removed in a future release. To assign the VM to a pool, use \u003cspan pulumi-lang-nodejs=\"`proxmoxve.Pool.Membership`\" pulumi-lang-dotnet=\"`proxmoxve.Pool.Membership`\" pulumi-lang-go=\"`Pool.Membership`\" pulumi-lang-python=\"`Pool.Membership`\" pulumi-lang-yaml=\"`proxmoxve.Pool.Membership`\" pulumi-lang-java=\"`proxmoxve.Pool.Membership`\"\u003e`proxmoxve.Pool.Membership`\u003c/span\u003e resource instead."
+                    "description": "The identifier for a pool to assign the virtual machine to.\n"
                 },
                 "protection": {
                     "type": "boolean",
@@ -8466,8 +8640,7 @@
                     },
                     "efiDisk": {
                         "$ref": "#/types/proxmoxve:VM/VirtualMachineEfiDisk:VirtualMachineEfiDisk",
-                        "description": "The efi disk device (required if \u003cspan pulumi-lang-nodejs=\"`bios`\" pulumi-lang-dotnet=\"`Bios`\" pulumi-lang-go=\"`bios`\" pulumi-lang-python=\"`bios`\" pulumi-lang-yaml=\"`bios`\" pulumi-lang-java=\"`bios`\"\u003e`bios`\u003c/span\u003e is set\nto \u003cspan pulumi-lang-nodejs=\"`ovmf`\" pulumi-lang-dotnet=\"`Ovmf`\" pulumi-lang-go=\"`ovmf`\" pulumi-lang-python=\"`ovmf`\" pulumi-lang-yaml=\"`ovmf`\" pulumi-lang-java=\"`ovmf`\"\u003e`ovmf`\u003c/span\u003e)\n",
-                        "willReplaceOnChanges": true
+                        "description": "The efi disk device (required if \u003cspan pulumi-lang-nodejs=\"`bios`\" pulumi-lang-dotnet=\"`Bios`\" pulumi-lang-go=\"`bios`\" pulumi-lang-python=\"`bios`\" pulumi-lang-yaml=\"`bios`\" pulumi-lang-java=\"`bios`\"\u003e`bios`\u003c/span\u003e is set\nto \u003cspan pulumi-lang-nodejs=\"`ovmf`\" pulumi-lang-dotnet=\"`Ovmf`\" pulumi-lang-go=\"`ovmf`\" pulumi-lang-python=\"`ovmf`\" pulumi-lang-yaml=\"`ovmf`\" pulumi-lang-java=\"`ovmf`\"\u003e`ovmf`\u003c/span\u003e)\n"
                     },
                     "hookScriptFileId": {
                         "type": "string",
@@ -8570,8 +8743,7 @@
                     },
                     "poolId": {
                         "type": "string",
-                        "description": "The identifier for a pool to assign the virtual machine to.\nThis field is deprecated and will be removed in a future release. To assign the VM to a pool, use the \u003cspan pulumi-lang-nodejs=\"`proxmoxve.Pool.Membership`\" pulumi-lang-dotnet=\"`proxmoxve.Pool.Membership`\" pulumi-lang-go=\"`Pool.Membership`\" pulumi-lang-python=\"`Pool.Membership`\" pulumi-lang-yaml=\"`proxmoxve.Pool.Membership`\" pulumi-lang-java=\"`proxmoxve.Pool.Membership`\"\u003e`proxmoxve.Pool.Membership`\u003c/span\u003e resource instead.\n",
-                        "deprecationMessage": "This field is deprecated and will be removed in a future release. To assign the VM to a pool, use \u003cspan pulumi-lang-nodejs=\"`proxmoxve.Pool.Membership`\" pulumi-lang-dotnet=\"`proxmoxve.Pool.Membership`\" pulumi-lang-go=\"`Pool.Membership`\" pulumi-lang-python=\"`Pool.Membership`\" pulumi-lang-yaml=\"`proxmoxve.Pool.Membership`\" pulumi-lang-java=\"`proxmoxve.Pool.Membership`\"\u003e`proxmoxve.Pool.Membership`\u003c/span\u003e resource instead."
+                        "description": "The identifier for a pool to assign the virtual machine to.\n"
                     },
                     "protection": {
                         "type": "boolean",

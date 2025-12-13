@@ -14,6 +14,11 @@ import (
 // **EXPERIMENTAL** Triggers Proxmox's SDN **Apply** (equivalent to `PUT /cluster/sdn`).Intended to be used with `replaceTriggeredBy` so it runs after SDN objects change.
 type Applier struct {
 	pulumi.CustomResourceState
+
+	// Whether to apply SDN configuration on resource creation. Defaults to true.
+	OnCreate pulumi.BoolOutput `pulumi:"onCreate"`
+	// Whether to apply SDN configuration on resource destruction. Defaults to true.
+	OnDestroy pulumi.BoolOutput `pulumi:"onDestroy"`
 }
 
 // NewApplier registers a new resource with the given unique name, arguments, and options.
@@ -46,9 +51,17 @@ func GetApplier(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Applier resources.
 type applierState struct {
+	// Whether to apply SDN configuration on resource creation. Defaults to true.
+	OnCreate *bool `pulumi:"onCreate"`
+	// Whether to apply SDN configuration on resource destruction. Defaults to true.
+	OnDestroy *bool `pulumi:"onDestroy"`
 }
 
 type ApplierState struct {
+	// Whether to apply SDN configuration on resource creation. Defaults to true.
+	OnCreate pulumi.BoolPtrInput
+	// Whether to apply SDN configuration on resource destruction. Defaults to true.
+	OnDestroy pulumi.BoolPtrInput
 }
 
 func (ApplierState) ElementType() reflect.Type {
@@ -56,10 +69,18 @@ func (ApplierState) ElementType() reflect.Type {
 }
 
 type applierArgs struct {
+	// Whether to apply SDN configuration on resource creation. Defaults to true.
+	OnCreate *bool `pulumi:"onCreate"`
+	// Whether to apply SDN configuration on resource destruction. Defaults to true.
+	OnDestroy *bool `pulumi:"onDestroy"`
 }
 
 // The set of arguments for constructing a Applier resource.
 type ApplierArgs struct {
+	// Whether to apply SDN configuration on resource creation. Defaults to true.
+	OnCreate pulumi.BoolPtrInput
+	// Whether to apply SDN configuration on resource destruction. Defaults to true.
+	OnDestroy pulumi.BoolPtrInput
 }
 
 func (ApplierArgs) ElementType() reflect.Type {
@@ -147,6 +168,16 @@ func (o ApplierOutput) ToApplierOutput() ApplierOutput {
 
 func (o ApplierOutput) ToApplierOutputWithContext(ctx context.Context) ApplierOutput {
 	return o
+}
+
+// Whether to apply SDN configuration on resource creation. Defaults to true.
+func (o ApplierOutput) OnCreate() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Applier) pulumi.BoolOutput { return v.OnCreate }).(pulumi.BoolOutput)
+}
+
+// Whether to apply SDN configuration on resource destruction. Defaults to true.
+func (o ApplierOutput) OnDestroy() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Applier) pulumi.BoolOutput { return v.OnDestroy }).(pulumi.BoolOutput)
 }
 
 type ApplierArrayOutput struct{ *pulumi.OutputState }

@@ -28,6 +28,7 @@ class ContainerArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  device_passthroughs: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerDevicePassthroughArgs']]]] = None,
                  disk: Optional[pulumi.Input['ContainerDiskArgs']] = None,
+                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  features: Optional[pulumi.Input['ContainerFeaturesArgs']] = None,
                  hook_script_file_id: Optional[pulumi.Input[_builtins.str]] = None,
                  initialization: Optional[pulumi.Input['ContainerInitializationArgs']] = None,
@@ -59,6 +60,7 @@ class ContainerArgs:
         :param pulumi.Input[_builtins.str] description: The description.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerDevicePassthroughArgs']]] device_passthroughs: Device to pass through to the container (multiple blocks supported).
         :param pulumi.Input['ContainerDiskArgs'] disk: The disk configuration.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] environment_variables: A map of runtime environment variables for the container init process.
         :param pulumi.Input['ContainerFeaturesArgs'] features: The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
         :param pulumi.Input[_builtins.str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
         :param pulumi.Input['ContainerInitializationArgs'] initialization: The initialization configuration.
@@ -68,7 +70,6 @@ class ContainerArgs:
                supported).
         :param pulumi.Input['ContainerOperatingSystemArgs'] operating_system: The Operating System configuration.
         :param pulumi.Input[_builtins.str] pool_id: The identifier for a pool to assign the container to.
-               This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `Pool.Membership` resource instead.
         :param pulumi.Input[_builtins.bool] protection: Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
         :param pulumi.Input[_builtins.bool] start_on_boot: Automatically start container when the host
                system boots (defaults to `true`).
@@ -102,6 +103,8 @@ class ContainerArgs:
             pulumi.set(__self__, "device_passthroughs", device_passthroughs)
         if disk is not None:
             pulumi.set(__self__, "disk", disk)
+        if environment_variables is not None:
+            pulumi.set(__self__, "environment_variables", environment_variables)
         if features is not None:
             pulumi.set(__self__, "features", features)
         if hook_script_file_id is not None:
@@ -116,9 +119,6 @@ class ContainerArgs:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
         if operating_system is not None:
             pulumi.set(__self__, "operating_system", operating_system)
-        if pool_id is not None:
-            warnings.warn("""This field is deprecated and will be removed in a future release. To assign the container to a pool, use `Pool.Membership` resource instead""", DeprecationWarning)
-            pulumi.log.warn("""pool_id is deprecated: This field is deprecated and will be removed in a future release. To assign the container to a pool, use `Pool.Membership` resource instead""")
         if pool_id is not None:
             pulumi.set(__self__, "pool_id", pool_id)
         if protection is not None:
@@ -238,6 +238,18 @@ class ContainerArgs:
         pulumi.set(self, "disk", value)
 
     @_builtins.property
+    @pulumi.getter(name="environmentVariables")
+    def environment_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of runtime environment variables for the container init process.
+        """
+        return pulumi.get(self, "environment_variables")
+
+    @environment_variables.setter
+    def environment_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "environment_variables", value)
+
+    @_builtins.property
     @pulumi.getter
     def features(self) -> Optional[pulumi.Input['ContainerFeaturesArgs']]:
         """
@@ -324,11 +336,9 @@ class ContainerArgs:
 
     @_builtins.property
     @pulumi.getter(name="poolId")
-    @_utilities.deprecated("""This field is deprecated and will be removed in a future release. To assign the container to a pool, use `Pool.Membership` resource instead""")
     def pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The identifier for a pool to assign the container to.
-        This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `Pool.Membership` resource instead.
         """
         return pulumi.get(self, "pool_id")
 
@@ -520,6 +530,7 @@ class _ContainerState:
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  device_passthroughs: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerDevicePassthroughArgs']]]] = None,
                  disk: Optional[pulumi.Input['ContainerDiskArgs']] = None,
+                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  features: Optional[pulumi.Input['ContainerFeaturesArgs']] = None,
                  hook_script_file_id: Optional[pulumi.Input[_builtins.str]] = None,
                  initialization: Optional[pulumi.Input['ContainerInitializationArgs']] = None,
@@ -553,6 +564,7 @@ class _ContainerState:
         :param pulumi.Input[_builtins.str] description: The description.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerDevicePassthroughArgs']]] device_passthroughs: Device to pass through to the container (multiple blocks supported).
         :param pulumi.Input['ContainerDiskArgs'] disk: The disk configuration.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] environment_variables: A map of runtime environment variables for the container init process.
         :param pulumi.Input['ContainerFeaturesArgs'] features: The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
         :param pulumi.Input[_builtins.str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
         :param pulumi.Input['ContainerInitializationArgs'] initialization: The initialization configuration.
@@ -565,7 +577,6 @@ class _ContainerState:
         :param pulumi.Input[_builtins.str] node_name: The name of the node to assign the container to.
         :param pulumi.Input['ContainerOperatingSystemArgs'] operating_system: The Operating System configuration.
         :param pulumi.Input[_builtins.str] pool_id: The identifier for a pool to assign the container to.
-               This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `Pool.Membership` resource instead.
         :param pulumi.Input[_builtins.bool] protection: Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
         :param pulumi.Input[_builtins.bool] start_on_boot: Automatically start container when the host
                system boots (defaults to `true`).
@@ -598,6 +609,8 @@ class _ContainerState:
             pulumi.set(__self__, "device_passthroughs", device_passthroughs)
         if disk is not None:
             pulumi.set(__self__, "disk", disk)
+        if environment_variables is not None:
+            pulumi.set(__self__, "environment_variables", environment_variables)
         if features is not None:
             pulumi.set(__self__, "features", features)
         if hook_script_file_id is not None:
@@ -618,9 +631,6 @@ class _ContainerState:
             pulumi.set(__self__, "node_name", node_name)
         if operating_system is not None:
             pulumi.set(__self__, "operating_system", operating_system)
-        if pool_id is not None:
-            warnings.warn("""This field is deprecated and will be removed in a future release. To assign the container to a pool, use `Pool.Membership` resource instead""", DeprecationWarning)
-            pulumi.log.warn("""pool_id is deprecated: This field is deprecated and will be removed in a future release. To assign the container to a pool, use `Pool.Membership` resource instead""")
         if pool_id is not None:
             pulumi.set(__self__, "pool_id", pool_id)
         if protection is not None:
@@ -726,6 +736,18 @@ class _ContainerState:
     @disk.setter
     def disk(self, value: Optional[pulumi.Input['ContainerDiskArgs']]):
         pulumi.set(self, "disk", value)
+
+    @_builtins.property
+    @pulumi.getter(name="environmentVariables")
+    def environment_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of runtime environment variables for the container init process.
+        """
+        return pulumi.get(self, "environment_variables")
+
+    @environment_variables.setter
+    def environment_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "environment_variables", value)
 
     @_builtins.property
     @pulumi.getter
@@ -850,11 +872,9 @@ class _ContainerState:
 
     @_builtins.property
     @pulumi.getter(name="poolId")
-    @_utilities.deprecated("""This field is deprecated and will be removed in a future release. To assign the container to a pool, use `Pool.Membership` resource instead""")
     def pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The identifier for a pool to assign the container to.
-        This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `Pool.Membership` resource instead.
         """
         return pulumi.get(self, "pool_id")
 
@@ -1049,6 +1069,7 @@ class Container(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  device_passthroughs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerDevicePassthroughArgs', 'ContainerDevicePassthroughArgsDict']]]]] = None,
                  disk: Optional[pulumi.Input[Union['ContainerDiskArgs', 'ContainerDiskArgsDict']]] = None,
+                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  features: Optional[pulumi.Input[Union['ContainerFeaturesArgs', 'ContainerFeaturesArgsDict']]] = None,
                  hook_script_file_id: Optional[pulumi.Input[_builtins.str]] = None,
                  initialization: Optional[pulumi.Input[Union['ContainerInitializationArgs', 'ContainerInitializationArgsDict']]] = None,
@@ -1167,6 +1188,7 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerDevicePassthroughArgs', 'ContainerDevicePassthroughArgsDict']]]] device_passthroughs: Device to pass through to the container (multiple blocks supported).
         :param pulumi.Input[Union['ContainerDiskArgs', 'ContainerDiskArgsDict']] disk: The disk configuration.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] environment_variables: A map of runtime environment variables for the container init process.
         :param pulumi.Input[Union['ContainerFeaturesArgs', 'ContainerFeaturesArgsDict']] features: The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
         :param pulumi.Input[_builtins.str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
         :param pulumi.Input[Union['ContainerInitializationArgs', 'ContainerInitializationArgsDict']] initialization: The initialization configuration.
@@ -1177,7 +1199,6 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] node_name: The name of the node to assign the container to.
         :param pulumi.Input[Union['ContainerOperatingSystemArgs', 'ContainerOperatingSystemArgsDict']] operating_system: The Operating System configuration.
         :param pulumi.Input[_builtins.str] pool_id: The identifier for a pool to assign the container to.
-               This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `Pool.Membership` resource instead.
         :param pulumi.Input[_builtins.bool] protection: Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
         :param pulumi.Input[_builtins.bool] start_on_boot: Automatically start container when the host
                system boots (defaults to `true`).
@@ -1311,6 +1332,7 @@ class Container(pulumi.CustomResource):
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  device_passthroughs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerDevicePassthroughArgs', 'ContainerDevicePassthroughArgsDict']]]]] = None,
                  disk: Optional[pulumi.Input[Union['ContainerDiskArgs', 'ContainerDiskArgsDict']]] = None,
+                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  features: Optional[pulumi.Input[Union['ContainerFeaturesArgs', 'ContainerFeaturesArgsDict']]] = None,
                  hook_script_file_id: Optional[pulumi.Input[_builtins.str]] = None,
                  initialization: Optional[pulumi.Input[Union['ContainerInitializationArgs', 'ContainerInitializationArgsDict']]] = None,
@@ -1349,6 +1371,7 @@ class Container(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["device_passthroughs"] = device_passthroughs
             __props__.__dict__["disk"] = disk
+            __props__.__dict__["environment_variables"] = environment_variables
             __props__.__dict__["features"] = features
             __props__.__dict__["hook_script_file_id"] = hook_script_file_id
             __props__.__dict__["initialization"] = initialization
@@ -1392,6 +1415,7 @@ class Container(pulumi.CustomResource):
             description: Optional[pulumi.Input[_builtins.str]] = None,
             device_passthroughs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerDevicePassthroughArgs', 'ContainerDevicePassthroughArgsDict']]]]] = None,
             disk: Optional[pulumi.Input[Union['ContainerDiskArgs', 'ContainerDiskArgsDict']]] = None,
+            environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             features: Optional[pulumi.Input[Union['ContainerFeaturesArgs', 'ContainerFeaturesArgsDict']]] = None,
             hook_script_file_id: Optional[pulumi.Input[_builtins.str]] = None,
             initialization: Optional[pulumi.Input[Union['ContainerInitializationArgs', 'ContainerInitializationArgsDict']]] = None,
@@ -1430,6 +1454,7 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerDevicePassthroughArgs', 'ContainerDevicePassthroughArgsDict']]]] device_passthroughs: Device to pass through to the container (multiple blocks supported).
         :param pulumi.Input[Union['ContainerDiskArgs', 'ContainerDiskArgsDict']] disk: The disk configuration.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] environment_variables: A map of runtime environment variables for the container init process.
         :param pulumi.Input[Union['ContainerFeaturesArgs', 'ContainerFeaturesArgsDict']] features: The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
         :param pulumi.Input[_builtins.str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
         :param pulumi.Input[Union['ContainerInitializationArgs', 'ContainerInitializationArgsDict']] initialization: The initialization configuration.
@@ -1442,7 +1467,6 @@ class Container(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] node_name: The name of the node to assign the container to.
         :param pulumi.Input[Union['ContainerOperatingSystemArgs', 'ContainerOperatingSystemArgsDict']] operating_system: The Operating System configuration.
         :param pulumi.Input[_builtins.str] pool_id: The identifier for a pool to assign the container to.
-               This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `Pool.Membership` resource instead.
         :param pulumi.Input[_builtins.bool] protection: Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
         :param pulumi.Input[_builtins.bool] start_on_boot: Automatically start container when the host
                system boots (defaults to `true`).
@@ -1473,6 +1497,7 @@ class Container(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["device_passthroughs"] = device_passthroughs
         __props__.__dict__["disk"] = disk
+        __props__.__dict__["environment_variables"] = environment_variables
         __props__.__dict__["features"] = features
         __props__.__dict__["hook_script_file_id"] = hook_script_file_id
         __props__.__dict__["initialization"] = initialization
@@ -1547,6 +1572,14 @@ class Container(pulumi.CustomResource):
         The disk configuration.
         """
         return pulumi.get(self, "disk")
+
+    @_builtins.property
+    @pulumi.getter(name="environmentVariables")
+    def environment_variables(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        A map of runtime environment variables for the container init process.
+        """
+        return pulumi.get(self, "environment_variables")
 
     @_builtins.property
     @pulumi.getter
@@ -1631,11 +1664,9 @@ class Container(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="poolId")
-    @_utilities.deprecated("""This field is deprecated and will be removed in a future release. To assign the container to a pool, use `Pool.Membership` resource instead""")
     def pool_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         The identifier for a pool to assign the container to.
-        This field is deprecated and will be removed in a future release. To assign the container to a pool, use the `Pool.Membership` resource instead.
         """
         return pulumi.get(self, "pool_id")
 

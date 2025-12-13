@@ -77,7 +77,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// The CPU units (defaults to `1024`).
+        /// The CPU units. PVE default is `1024` for cgroups v1 and `100` for cgroups v2.
         /// </summary>
         public readonly int? Units;
 

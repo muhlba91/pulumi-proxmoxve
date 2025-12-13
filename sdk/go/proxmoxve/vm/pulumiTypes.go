@@ -2401,7 +2401,7 @@ type VirtualMachineCpu struct {
 	// The emulated CPU type, it's recommended to
 	// use `x86-64-v2-AES` (defaults to `qemu64`).
 	Type *string `pulumi:"type"`
-	// The CPU units (defaults to `1024`).
+	// The CPU units. PVE default is `1024` for cgroups v1 and `100` for cgroups v2.
 	Units *int `pulumi:"units"`
 }
 
@@ -2462,7 +2462,7 @@ type VirtualMachineCpuArgs struct {
 	// The emulated CPU type, it's recommended to
 	// use `x86-64-v2-AES` (defaults to `qemu64`).
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The CPU units (defaults to `1024`).
+	// The CPU units. PVE default is `1024` for cgroups v1 and `100` for cgroups v2.
 	Units pulumi.IntPtrInput `pulumi:"units"`
 }
 
@@ -2615,7 +2615,7 @@ func (o VirtualMachineCpuOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCpu) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The CPU units (defaults to `1024`).
+// The CPU units. PVE default is `1024` for cgroups v1 and `100` for cgroups v2.
 func (o VirtualMachineCpuOutput) Units() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VirtualMachineCpu) *int { return v.Units }).(pulumi.IntPtrOutput)
 }
@@ -2761,7 +2761,7 @@ func (o VirtualMachineCpuPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The CPU units (defaults to `1024`).
+// The CPU units. PVE default is `1024` for cgroups v1 and `100` for cgroups v2.
 func (o VirtualMachineCpuPtrOutput) Units() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineCpu) *int {
 		if v == nil {

@@ -3,15 +3,60 @@
 
 package io.muehlbachler.pulumi.proxmoxve.Sdn;
 
-
+import com.pulumi.core.Output;
+import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
+import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ApplierArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ApplierArgs Empty = new ApplierArgs();
 
+    /**
+     * Whether to apply SDN configuration on resource creation. Defaults to true.
+     * 
+     */
+    @Import(name="onCreate")
+    private @Nullable Output<Boolean> onCreate;
+
+    /**
+     * @return Whether to apply SDN configuration on resource creation. Defaults to true.
+     * 
+     */
+    public Optional<Output<Boolean>> onCreate() {
+        return Optional.ofNullable(this.onCreate);
+    }
+
+    /**
+     * Whether to apply SDN configuration on resource destruction. Defaults to true.
+     * 
+     */
+    @Import(name="onDestroy")
+    private @Nullable Output<Boolean> onDestroy;
+
+    /**
+     * @return Whether to apply SDN configuration on resource destruction. Defaults to true.
+     * 
+     */
+    public Optional<Output<Boolean>> onDestroy() {
+        return Optional.ofNullable(this.onDestroy);
+    }
+
+    private ApplierArgs() {}
+
+    private ApplierArgs(ApplierArgs $) {
+        this.onCreate = $.onCreate;
+        this.onDestroy = $.onDestroy;
+    }
+
     public static Builder builder() {
         return new Builder();
+    }
+    public static Builder builder(ApplierArgs defaults) {
+        return new Builder(defaults);
     }
 
     public static final class Builder {
@@ -20,6 +65,53 @@ public final class ApplierArgs extends com.pulumi.resources.ResourceArgs {
         public Builder() {
             $ = new ApplierArgs();
         }
+
+        public Builder(ApplierArgs defaults) {
+            $ = new ApplierArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param onCreate Whether to apply SDN configuration on resource creation. Defaults to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onCreate(@Nullable Output<Boolean> onCreate) {
+            $.onCreate = onCreate;
+            return this;
+        }
+
+        /**
+         * @param onCreate Whether to apply SDN configuration on resource creation. Defaults to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onCreate(Boolean onCreate) {
+            return onCreate(Output.of(onCreate));
+        }
+
+        /**
+         * @param onDestroy Whether to apply SDN configuration on resource destruction. Defaults to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onDestroy(@Nullable Output<Boolean> onDestroy) {
+            $.onDestroy = onDestroy;
+            return this;
+        }
+
+        /**
+         * @param onDestroy Whether to apply SDN configuration on resource destruction. Defaults to true.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onDestroy(Boolean onDestroy) {
+            return onDestroy(Output.of(onDestroy));
+        }
+
         public ApplierArgs build() {
             return $;
         }

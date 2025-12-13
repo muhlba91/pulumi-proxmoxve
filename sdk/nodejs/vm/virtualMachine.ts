@@ -179,9 +179,6 @@ export class VirtualMachine extends pulumi.CustomResource {
     declare public readonly operatingSystem: pulumi.Output<outputs.VM.VirtualMachineOperatingSystem | undefined>;
     /**
      * The identifier for a pool to assign the virtual machine to.
-     * This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `proxmoxve.Pool.Membership` resource instead.
-     *
-     * @deprecated This field is deprecated and will be removed in a future release. To assign the VM to a pool, use `proxmoxve.Pool.Membership` resource instead.
      */
     declare public readonly poolId: pulumi.Output<string | undefined>;
     /**
@@ -595,9 +592,6 @@ export interface VirtualMachineState {
     operatingSystem?: pulumi.Input<inputs.VM.VirtualMachineOperatingSystem>;
     /**
      * The identifier for a pool to assign the virtual machine to.
-     * This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `proxmoxve.Pool.Membership` resource instead.
-     *
-     * @deprecated This field is deprecated and will be removed in a future release. To assign the VM to a pool, use `proxmoxve.Pool.Membership` resource instead.
      */
     poolId?: pulumi.Input<string>;
     /**
@@ -853,9 +847,6 @@ export interface VirtualMachineArgs {
     operatingSystem?: pulumi.Input<inputs.VM.VirtualMachineOperatingSystem>;
     /**
      * The identifier for a pool to assign the virtual machine to.
-     * This field is deprecated and will be removed in a future release. To assign the VM to a pool, use the `proxmoxve.Pool.Membership` resource instead.
-     *
-     * @deprecated This field is deprecated and will be removed in a future release. To assign the VM to a pool, use `proxmoxve.Pool.Membership` resource instead.
      */
     poolId?: pulumi.Input<string>;
     /**

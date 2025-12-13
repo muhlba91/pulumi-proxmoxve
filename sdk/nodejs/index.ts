@@ -80,6 +80,7 @@ import * as ha from "./ha";
 import * as hardware from "./hardware";
 import * as metrics from "./metrics";
 import * as network from "./network";
+import * as oci from "./oci";
 import * as permission from "./permission";
 import * as pool from "./pool";
 import * as sdn from "./sdn";
@@ -100,6 +101,7 @@ export {
     hardware,
     metrics,
     network,
+    oci,
     permission,
     pool,
     sdn,

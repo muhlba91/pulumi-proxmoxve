@@ -7,6 +7,8 @@ import * as utilities from "../utilities";
 /**
  * Manages resource pool memberships for containers, virtual machines and storages
  *
+ * > This resource requires the `Pool.Allocate` permission on the pool path (e.g., `/pool/{poolid}`).
+ *
  * ## Example Usage
  *
  * ```typescript

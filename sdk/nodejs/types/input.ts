@@ -1546,7 +1546,7 @@ export namespace VM {
          */
         type?: pulumi.Input<string>;
         /**
-         * The CPU units (defaults to `1024`).
+         * The CPU units. PVE default is `1024` for cgroups v1 and `100` for cgroups v2.
          */
         units?: pulumi.Input<number>;
     }
