@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [7.11.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.10.0...v7.11.0) (2025-12-13)
+
+
+### Features
+
+* **ci:** remove npm classic token ([fc876a8](https://github.com/muhlba91/pulumi-proxmoxve/commit/fc876a819db7db1770826a2110133f9916cad1b7))
+
 ## [7.10.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.9.0...v7.10.0) (2025-12-13)
 
 
