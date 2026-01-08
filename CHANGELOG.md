@@ -1,6 +1,17 @@
 # Changelog
 
 
+## [7.11.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.11.0...v7.11.1) (2026-01-08)
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/attest-build-provenance action to v3.1.0 ([c927698](https://github.com/muhlba91/pulumi-proxmoxve/commit/c927698579f331fe153d419a26ee56bb196aaf7a))
+* **deps:** update anchore/sbom-action action to v0.21.0 ([f88ceaa](https://github.com/muhlba91/pulumi-proxmoxve/commit/f88ceaa62146f9df7c138d6693c3414123b30761))
+* **deps:** update anchore/sbom-action action to v0.21.1 ([9050721](https://github.com/muhlba91/pulumi-proxmoxve/commit/90507218a18f01dfd3c92618784ad2e6e71071c0))
+* **deps:** update github/codeql-action action to v4.31.9 ([d52c538](https://github.com/muhlba91/pulumi-proxmoxve/commit/d52c5381c65b41d02784c2fa233caa36894008a0))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/v3 to v3.119.0 ([cf914f1](https://github.com/muhlba91/pulumi-proxmoxve/commit/cf914f1eab2fb615bfe8db6b675d389cfedb2725))
+
 ## [7.11.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.10.0...v7.11.0) (2025-12-13)
 
 
