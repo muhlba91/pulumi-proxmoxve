@@ -38,6 +38,13 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
         }
 
         /// <summary>
+        /// The in-datastore path to the disk image.
+        /// Use this attribute for cross-resource references.
+        /// </summary>
+        [Input("pathInDatastore")]
+        public Input<string>? PathInDatastore { get; set; }
+
+        /// <summary>
         /// Enable user quotas for the container rootfs
         /// </summary>
         [Input("quota")]

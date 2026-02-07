@@ -48,17 +48,6 @@ export interface GetContainersFilter {
     values: string[];
 }
 
-export interface GetVm2Clone {
-    /**
-     * The ID of the VM to clone.
-     */
-    id: number;
-    /**
-     * The number of retries to perform when cloning the VM (default: 3).
-     */
-    retries: number;
-}
-
 export interface GetVm2Cpu {
     /**
      * List of host cores used to execute guest processes, for example: '0,5,8-11'
@@ -151,6 +140,21 @@ export interface HostsEntry {
 }
 
 export namespace Acme {
+    export interface CertificateDomain {
+        /**
+         * An optional alias domain for DNS validation. This allows you to validate the domain using a different domain's DNS records.
+         */
+        alias?: string;
+        /**
+         * The domain name to include in the certificate.
+         */
+        domain: string;
+        /**
+         * The DNS plugin to use for DNS-01 challenge validation. If not specified, the standalone HTTP-01 challenge will be used.
+         */
+        plugin?: string;
+    }
+
     export interface GetAccountAccount {
         /**
          * An array of contact email addresses.
@@ -281,6 +285,11 @@ export namespace CT {
          * List of extra mount options.
          */
         mountOptions?: string[];
+        /**
+         * The in-datastore path to the disk image.
+         * Use this attribute for cross-resource references.
+         */
+        pathInDatastore: string;
         /**
          * Enable user quotas for the container rootfs
          */
@@ -436,6 +445,11 @@ export namespace CT {
          * container.
          */
         path: string;
+        /**
+         * The in-datastore path to the mount point volume.
+         * Use this attribute for cross-resource references instead of `volume`.
+         */
+        pathInDatastore: string;
         /**
          * Enable user quotas inside the container (not supported
          * with ZFS subvolumes).
@@ -1108,6 +1122,76 @@ export namespace Sdn {
 }
 
 export namespace Storage {
+    export interface CIFSBackups {
+        /**
+         * Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+         */
+        keepAll: boolean;
+        /**
+         * The number of daily backups to keep. Older backups will be removed.
+         */
+        keepDaily?: number;
+        /**
+         * The number of hourly backups to keep. Older backups will be removed.
+         */
+        keepHourly?: number;
+        /**
+         * Specifies the number of the most recent backups to keep, regardless of their age.
+         */
+        keepLast?: number;
+        /**
+         * The number of monthly backups to keep. Older backups will be removed.
+         */
+        keepMonthly?: number;
+        /**
+         * The number of weekly backups to keep. Older backups will be removed.
+         */
+        keepWeekly?: number;
+        /**
+         * The number of yearly backups to keep. Older backups will be removed.
+         */
+        keepYearly?: number;
+        /**
+         * The maximum number of protected backups per guest. Use '-1' for unlimited.
+         */
+        maxProtectedBackups?: number;
+    }
+
+    export interface DirectoryBackups {
+        /**
+         * Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+         */
+        keepAll: boolean;
+        /**
+         * The number of daily backups to keep. Older backups will be removed.
+         */
+        keepDaily?: number;
+        /**
+         * The number of hourly backups to keep. Older backups will be removed.
+         */
+        keepHourly?: number;
+        /**
+         * Specifies the number of the most recent backups to keep, regardless of their age.
+         */
+        keepLast?: number;
+        /**
+         * The number of monthly backups to keep. Older backups will be removed.
+         */
+        keepMonthly?: number;
+        /**
+         * The number of weekly backups to keep. Older backups will be removed.
+         */
+        keepWeekly?: number;
+        /**
+         * The number of yearly backups to keep. Older backups will be removed.
+         */
+        keepYearly?: number;
+        /**
+         * The maximum number of protected backups per guest. Use '-1' for unlimited.
+         */
+        maxProtectedBackups?: number;
+    }
+
     export interface FileSourceFile {
         /**
          * Whether the source file has changed since the last run
@@ -1216,9 +1300,358 @@ export namespace Storage {
         target?: string;
     }
 
+    export interface NFSBackups {
+        /**
+         * Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+         */
+        keepAll: boolean;
+        /**
+         * The number of daily backups to keep. Older backups will be removed.
+         */
+        keepDaily?: number;
+        /**
+         * The number of hourly backups to keep. Older backups will be removed.
+         */
+        keepHourly?: number;
+        /**
+         * Specifies the number of the most recent backups to keep, regardless of their age.
+         */
+        keepLast?: number;
+        /**
+         * The number of monthly backups to keep. Older backups will be removed.
+         */
+        keepMonthly?: number;
+        /**
+         * The number of weekly backups to keep. Older backups will be removed.
+         */
+        keepWeekly?: number;
+        /**
+         * The number of yearly backups to keep. Older backups will be removed.
+         */
+        keepYearly?: number;
+        /**
+         * The maximum number of protected backups per guest. Use '-1' for unlimited.
+         */
+        maxProtectedBackups?: number;
+    }
+
+    export interface PBSBackups {
+        /**
+         * Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+         */
+        keepAll: boolean;
+        /**
+         * The number of daily backups to keep. Older backups will be removed.
+         */
+        keepDaily?: number;
+        /**
+         * The number of hourly backups to keep. Older backups will be removed.
+         */
+        keepHourly?: number;
+        /**
+         * Specifies the number of the most recent backups to keep, regardless of their age.
+         */
+        keepLast?: number;
+        /**
+         * The number of monthly backups to keep. Older backups will be removed.
+         */
+        keepMonthly?: number;
+        /**
+         * The number of weekly backups to keep. Older backups will be removed.
+         */
+        keepWeekly?: number;
+        /**
+         * The number of yearly backups to keep. Older backups will be removed.
+         */
+        keepYearly?: number;
+        /**
+         * The maximum number of protected backups per guest. Use '-1' for unlimited.
+         */
+        maxProtectedBackups?: number;
+    }
+
 }
 
 export namespace VM {
+    export interface ClonedVirtualMachineCdrom {
+        /**
+         * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+         */
+        fileId?: string;
+    }
+
+    export interface ClonedVirtualMachineClone {
+        /**
+         * Clone bandwidth limit in MB/s.
+         */
+        bandwidthLimit?: number;
+        /**
+         * Perform a full clone (true) or linked clone (false).
+         */
+        full: boolean;
+        /**
+         * Pool to assign the cloned VM to.
+         */
+        poolId?: string;
+        /**
+         * Number of retries for clone operations.
+         */
+        retries: number;
+        /**
+         * Snapshot name to clone from.
+         */
+        snapshotName?: string;
+        /**
+         * Source node of the VM/template. Defaults to target node if unset.
+         */
+        sourceNodeName?: string;
+        /**
+         * Source VM/template ID to clone from.
+         */
+        sourceVmId: number;
+        /**
+         * Target datastore for cloned disks.
+         */
+        targetDatastore?: string;
+        /**
+         * Target disk format for clone (e.g., raw, qcow2).
+         */
+        targetFormat?: string;
+    }
+
+    export interface ClonedVirtualMachineCpu {
+        /**
+         * The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+         */
+        affinity?: string;
+        /**
+         * The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
+         */
+        architecture?: string;
+        /**
+         * The number of CPU cores per socket (defaults to `1`).
+         */
+        cores?: number;
+        /**
+         * Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+         */
+        flags?: string[];
+        /**
+         * The number of hotplugged vCPUs (defaults to `0`).
+         */
+        hotplugged?: number;
+        /**
+         * Limit of CPU usage (defaults to `0` which means no limit).
+         */
+        limit?: number;
+        /**
+         * Enable NUMA (defaults to `false`).
+         */
+        numa?: boolean;
+        /**
+         * The number of CPU sockets (defaults to `1`).
+         */
+        sockets?: number;
+        /**
+         * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+         */
+        type?: string;
+        /**
+         * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+         */
+        units?: number;
+    }
+
+    export interface ClonedVirtualMachineDelete {
+        /**
+         * Disk slots to delete (e.g., scsi2).
+         */
+        disks?: string[];
+        /**
+         * Network slots to delete (e.g., net1).
+         */
+        networks?: string[];
+    }
+
+    export interface ClonedVirtualMachineDisk {
+        /**
+         * AIO mode (io_uring, native, threads).
+         */
+        aio?: string;
+        /**
+         * Include disk in backups.
+         */
+        backup?: boolean;
+        /**
+         * Cache mode.
+         */
+        cache?: string;
+        /**
+         * Target datastore for new disks when file is not provided.
+         */
+        datastoreId?: string;
+        /**
+         * Discard/trim behavior.
+         */
+        discard?: string;
+        /**
+         * Existing volume reference (e.g., local-lvm:vm-100-disk-0).
+         */
+        file?: string;
+        /**
+         * Disk format (raw, qcow2, vmdk).
+         */
+        format?: string;
+        /**
+         * Import source volume/file id.
+         */
+        importFrom?: string;
+        /**
+         * Use IO thread.
+         */
+        iothread?: boolean;
+        /**
+         * Disk media (e.g., disk, cdrom).
+         */
+        media?: string;
+        /**
+         * Consider disk for replication.
+         */
+        replicate?: boolean;
+        /**
+         * Disk serial number.
+         */
+        serial?: string;
+        /**
+         * Disk size (GiB) when creating new disks. **Note:** Disk shrinking is not supported. Attempting to set `sizeGb` to a value smaller than the current disk size will result in an error. Only disk expansion is allowed.
+         */
+        sizeGb?: number;
+        /**
+         * Mark disk as SSD.
+         */
+        ssd?: boolean;
+    }
+
+    export interface ClonedVirtualMachineMemory {
+        /**
+         * Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely (defaults to `0`).
+         */
+        balloon?: number;
+        /**
+         * Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses. 
+         *
+         * **Options:**
+         * - `2` - Use 2 MiB hugepages
+         * - `1024` - Use 1 GiB hugepages
+         * - `any` - Use any available hugepage size
+         */
+        hugepages?: string;
+        /**
+         * Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup (defaults to `false`).
+         */
+        keepHugepages?: boolean;
+        /**
+         * CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs (defaults to `1000`).
+         */
+        shares?: number;
+        /**
+         * Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM (defaults to `512` MiB).
+         */
+        size?: number;
+    }
+
+    export interface ClonedVirtualMachineNetwork {
+        /**
+         * Bridge name.
+         */
+        bridge?: string;
+        /**
+         * Enable firewall on this interface.
+         */
+        firewall?: boolean;
+        /**
+         * Keep link down.
+         */
+        linkDown?: boolean;
+        /**
+         * MAC address (computed if omitted).
+         */
+        macAddress?: string;
+        /**
+         * NIC model (e.g., virtio, e1000).
+         */
+        model?: string;
+        /**
+         * Interface MTU.
+         */
+        mtu?: number;
+        /**
+         * Number of multiqueue NIC queues.
+         */
+        queues?: number;
+        /**
+         * Rate limit (MB/s).
+         */
+        rateLimit?: number;
+        /**
+         * VLAN tag.
+         */
+        tag?: number;
+        /**
+         * Trunk VLAN IDs.
+         */
+        trunks?: number[];
+    }
+
+    export interface ClonedVirtualMachineRng {
+        /**
+         * Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+         */
+        maxBytes?: number;
+        /**
+         * Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+         */
+        period?: number;
+        /**
+         * The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+         */
+        source?: string;
+    }
+
+    export interface ClonedVirtualMachineTimeouts {
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        create?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+         */
+        delete?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+         */
+        read?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        update?: string;
+    }
+
+    export interface ClonedVirtualMachineVga {
+        /**
+         * Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+         */
+        clipboard?: string;
+        /**
+         * The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+         */
+        memory?: number;
+        /**
+         * The VGA type (defaults to `std`).
+         */
+        type?: string;
+    }
+
     export interface GetVirtualMachinesFilter {
         /**
          * Name of the VM attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
@@ -1269,24 +1702,13 @@ export namespace VM {
         fileId: string;
     }
 
-    export interface VirtualMachine2Clone {
-        /**
-         * The ID of the VM to clone.
-         */
-        id: number;
-        /**
-         * The number of retries to perform when cloning the VM (default: 3).
-         */
-        retries: number;
-    }
-
     export interface VirtualMachine2Cpu {
         /**
          * The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
          */
         affinity: string;
         /**
-         * The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `affinity` is only allowed for `root@pam` authenticated user.
+         * The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
          */
         architecture: string;
         /**
@@ -1606,13 +2028,17 @@ export namespace VM {
         /**
          * The file ID for a disk image when importing a disk into VM. The ID format is
          * `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
-         * `proxmoxve.Download.File` resource. *Deprecated*, use `importFrom` instead.
+         * `proxmoxve.Download.File` resource. Prefer `importFrom` for uncompressed images.
+         * Use `fileId` when working with compressed cloud images (e.g., `.qcow2.xz`) that were downloaded
+         * with `contentType = "iso"` and `decompressionAlgorithm` set. See the
+         * Create a VM from a Cloud Image guide for examples.
          */
         fileId?: string;
         /**
-         * The file ID for a disk image to import into VM. The image must be of `import` content type.
-         * The ID format is `<datastore_id>:import/<file_name>`, for example `local:import/centos8.qcow2`. Can be also taken from
-         * a disk replacement operation, which will require a VM reboot. Your original disks will remain as detached disks.
+         * The file ID for a disk image to import into VM. The image must be of `import` content type
+         * (uncompressed images only). The ID format is `<datastore_id>:import/<file_name>`, for example `local:import/centos8.qcow2`.
+         * Can be also taken from `proxmoxve.Download.File` resource. Note: compressed images downloaded with
+         * `decompressionAlgorithm` cannot use `importFrom`; use `fileId` instead.
          */
         importFrom?: string;
         /**

@@ -54,15 +54,19 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         /// <summary>
         /// The file ID for a disk image when importing a disk into VM. The ID format is
         /// `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/centos8.img`. Can be also taken from
-        /// `proxmoxve.Download.File` resource. *Deprecated*, use `ImportFrom` instead.
+        /// `proxmoxve.Download.File` resource. Prefer `ImportFrom` for uncompressed images.
+        /// Use `FileId` when working with compressed cloud images (e.g., `.qcow2.xz`) that were downloaded
+        /// with `ContentType = "iso"` and `DecompressionAlgorithm` set. See the
+        /// Create a VM from a Cloud Image guide for examples.
         /// </summary>
         [Input("fileId")]
         public Input<string>? FileId { get; set; }
 
         /// <summary>
-        /// The file ID for a disk image to import into VM. The image must be of `Import` content type.
-        /// The ID format is `&lt;datastore_id&gt;:import/&lt;file_name&gt;`, for example `local:import/centos8.qcow2`. Can be also taken from
-        /// a disk replacement operation, which will require a VM reboot. Your original disks will remain as detached disks.
+        /// The file ID for a disk image to import into VM. The image must be of `Import` content type
+        /// (uncompressed images only). The ID format is `&lt;datastore_id&gt;:import/&lt;file_name&gt;`, for example `local:import/centos8.qcow2`.
+        /// Can be also taken from `proxmoxve.Download.File` resource. Note: compressed images downloaded with
+        /// `DecompressionAlgorithm` cannot use `ImportFrom`; use `FileId` instead.
         /// </summary>
         [Input("importFrom")]
         public Input<string>? ImportFrom { get; set; }

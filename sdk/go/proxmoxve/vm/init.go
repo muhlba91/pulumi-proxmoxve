@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "proxmoxve:VM/clonedVirtualMachine:ClonedVirtualMachine":
+		r = &ClonedVirtualMachine{}
 	case "proxmoxve:VM/virtualMachine2:VirtualMachine2":
 		r = &VirtualMachine2{}
 	case "proxmoxve:VM/virtualMachine:VirtualMachine":
@@ -38,6 +40,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"VM/clonedVirtualMachine",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
 		"VM/virtualMachine",

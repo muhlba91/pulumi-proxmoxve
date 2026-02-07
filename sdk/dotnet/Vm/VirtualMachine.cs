@@ -115,6 +115,14 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<ImmutableArray<Outputs.VirtualMachineHostpci>> Hostpcis { get; private set; } = null!;
 
         /// <summary>
+        /// Selectively enable hotplug features. Supported values
+        /// are `Cpu`, `Disk`, `Memory`, `Network`, and `Usb`. Use `0` to disable all,
+        /// or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+        /// </summary>
+        [Output("hotplug")]
+        public Output<string> Hotplug { get; private set; } = null!;
+
+        /// <summary>
         /// The cloud-init configuration.
         /// </summary>
         [Output("initialization")]
@@ -370,7 +378,10 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<int?> TimeoutStopVm { get; private set; } = null!;
 
         /// <summary>
-        /// The TPM state device.
+        /// The TPM state device. The VM must be stopped before
+        /// adding, removing, or moving a TPM state device; the provider automatically
+        /// handles the shutdown/start cycle. Changing `Version` requires recreating the
+        /// VM because Proxmox only supports setting the TPM version at creation time.
         /// </summary>
         [Output("tpmState")]
         public Output<Outputs.VirtualMachineTpmState?> TpmState { get; private set; } = null!;
@@ -560,6 +571,14 @@ namespace Pulumi.ProxmoxVE.VM
             get => _hostpcis ?? (_hostpcis = new InputList<Inputs.VirtualMachineHostpciArgs>());
             set => _hostpcis = value;
         }
+
+        /// <summary>
+        /// Selectively enable hotplug features. Supported values
+        /// are `Cpu`, `Disk`, `Memory`, `Network`, and `Usb`. Use `0` to disable all,
+        /// or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+        /// </summary>
+        [Input("hotplug")]
+        public Input<string>? Hotplug { get; set; }
 
         /// <summary>
         /// The cloud-init configuration.
@@ -832,7 +851,10 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<int>? TimeoutStopVm { get; set; }
 
         /// <summary>
-        /// The TPM state device.
+        /// The TPM state device. The VM must be stopped before
+        /// adding, removing, or moving a TPM state device; the provider automatically
+        /// handles the shutdown/start cycle. Changing `Version` requires recreating the
+        /// VM because Proxmox only supports setting the TPM version at creation time.
         /// </summary>
         [Input("tpmState")]
         public Input<Inputs.VirtualMachineTpmStateArgs>? TpmState { get; set; }
@@ -995,6 +1017,14 @@ namespace Pulumi.ProxmoxVE.VM
             get => _hostpcis ?? (_hostpcis = new InputList<Inputs.VirtualMachineHostpciGetArgs>());
             set => _hostpcis = value;
         }
+
+        /// <summary>
+        /// Selectively enable hotplug features. Supported values
+        /// are `Cpu`, `Disk`, `Memory`, `Network`, and `Usb`. Use `0` to disable all,
+        /// or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+        /// </summary>
+        [Input("hotplug")]
+        public Input<string>? Hotplug { get; set; }
 
         /// <summary>
         /// The cloud-init configuration.
@@ -1306,7 +1336,10 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<int>? TimeoutStopVm { get; set; }
 
         /// <summary>
-        /// The TPM state device.
+        /// The TPM state device. The VM must be stopped before
+        /// adding, removing, or moving a TPM state device; the provider automatically
+        /// handles the shutdown/start cycle. Changing `Version` requires recreating the
+        /// VM because Proxmox only supports setting the TPM version at creation time.
         /// </summary>
         [Input("tpmState")]
         public Input<Inputs.VirtualMachineTpmStateGetArgs>? TpmState { get; set; }

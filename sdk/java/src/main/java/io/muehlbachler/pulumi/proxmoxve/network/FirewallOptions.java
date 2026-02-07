@@ -88,14 +88,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="proxmoxve:Network/firewallOptions:FirewallOptions")
 public class FirewallOptions extends com.pulumi.resources.CustomResource {
     /**
-     * Container ID.
+     * Container ID. **Exactly one of &lt;span pulumi-lang-nodejs=&#34;`vmId`&#34; pulumi-lang-dotnet=&#34;`VmId`&#34; pulumi-lang-go=&#34;`vmId`&#34; pulumi-lang-python=&#34;`vm_id`&#34; pulumi-lang-yaml=&#34;`vmId`&#34; pulumi-lang-java=&#34;`vmId`&#34;&gt;`vm_id`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`containerId`&#34; pulumi-lang-dotnet=&#34;`ContainerId`&#34; pulumi-lang-go=&#34;`containerId`&#34; pulumi-lang-python=&#34;`container_id`&#34; pulumi-lang-yaml=&#34;`containerId`&#34; pulumi-lang-java=&#34;`containerId`&#34;&gt;`container_id`&lt;/span&gt; must be specified.**
      * 
      */
     @Export(name="containerId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> containerId;
 
     /**
-     * @return Container ID.
+     * @return Container ID. **Exactly one of &lt;span pulumi-lang-nodejs=&#34;`vmId`&#34; pulumi-lang-dotnet=&#34;`VmId`&#34; pulumi-lang-go=&#34;`vmId`&#34; pulumi-lang-python=&#34;`vm_id`&#34; pulumi-lang-yaml=&#34;`vmId`&#34; pulumi-lang-java=&#34;`vmId`&#34;&gt;`vm_id`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`containerId`&#34; pulumi-lang-dotnet=&#34;`ContainerId`&#34; pulumi-lang-go=&#34;`containerId`&#34; pulumi-lang-python=&#34;`container_id`&#34; pulumi-lang-yaml=&#34;`containerId`&#34; pulumi-lang-java=&#34;`containerId`&#34;&gt;`container_id`&lt;/span&gt; must be specified.**
      * 
      */
     public Output<Optional<Integer>> containerId() {
@@ -276,14 +276,14 @@ public class FirewallOptions extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.radv);
     }
     /**
-     * VM ID.
+     * VM ID. **Exactly one of &lt;span pulumi-lang-nodejs=&#34;`vmId`&#34; pulumi-lang-dotnet=&#34;`VmId`&#34; pulumi-lang-go=&#34;`vmId`&#34; pulumi-lang-python=&#34;`vm_id`&#34; pulumi-lang-yaml=&#34;`vmId`&#34; pulumi-lang-java=&#34;`vmId`&#34;&gt;`vm_id`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`containerId`&#34; pulumi-lang-dotnet=&#34;`ContainerId`&#34; pulumi-lang-go=&#34;`containerId`&#34; pulumi-lang-python=&#34;`container_id`&#34; pulumi-lang-yaml=&#34;`containerId`&#34; pulumi-lang-java=&#34;`containerId`&#34;&gt;`container_id`&lt;/span&gt; must be specified.**
      * 
      */
     @Export(name="vmId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> vmId;
 
     /**
-     * @return VM ID.
+     * @return VM ID. **Exactly one of &lt;span pulumi-lang-nodejs=&#34;`vmId`&#34; pulumi-lang-dotnet=&#34;`VmId`&#34; pulumi-lang-go=&#34;`vmId`&#34; pulumi-lang-python=&#34;`vm_id`&#34; pulumi-lang-yaml=&#34;`vmId`&#34; pulumi-lang-java=&#34;`vmId`&#34;&gt;`vm_id`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`containerId`&#34; pulumi-lang-dotnet=&#34;`ContainerId`&#34; pulumi-lang-go=&#34;`containerId`&#34; pulumi-lang-python=&#34;`container_id`&#34; pulumi-lang-yaml=&#34;`containerId`&#34; pulumi-lang-java=&#34;`containerId`&#34;&gt;`container_id`&lt;/span&gt; must be specified.**
      * 
      */
     public Output<Optional<Integer>> vmId() {

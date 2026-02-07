@@ -76,7 +76,7 @@ export class Evpn extends pulumi.CustomResource {
     /**
      * Enable subnet advertisement for EVPN.
      */
-    declare public readonly advertiseSubnets: pulumi.Output<boolean | undefined>;
+    declare public readonly advertiseSubnets: pulumi.Output<boolean>;
     /**
      * EVPN controller address.
      */
@@ -84,7 +84,7 @@ export class Evpn extends pulumi.CustomResource {
     /**
      * Disable ARP/ND suppression for EVPN.
      */
-    declare public readonly disableArpNdSuppression: pulumi.Output<boolean | undefined>;
+    declare public readonly disableArpNdSuppression: pulumi.Output<boolean>;
     /**
      * DNS API server address.
      */
@@ -100,15 +100,15 @@ export class Evpn extends pulumi.CustomResource {
     /**
      * Enable local routing for EVPN exit nodes.
      */
-    declare public readonly exitNodesLocalRouting: pulumi.Output<boolean | undefined>;
+    declare public readonly exitNodesLocalRouting: pulumi.Output<boolean>;
     /**
      * IP Address Management system.
      */
     declare public readonly ipam: pulumi.Output<string | undefined>;
     /**
-     * MTU value for the zone.
+     * MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
      */
-    declare public readonly mtu: pulumi.Output<number | undefined>;
+    declare public readonly mtu: pulumi.Output<number>;
     /**
      * The Proxmox nodes which the zone and associated VNets should be deployed on
      */
@@ -243,7 +243,7 @@ export interface EvpnState {
      */
     ipam?: pulumi.Input<string>;
     /**
-     * MTU value for the zone.
+     * MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
      */
     mtu?: pulumi.Input<number>;
     /**
@@ -317,7 +317,7 @@ export interface EvpnArgs {
      */
     ipam?: pulumi.Input<string>;
     /**
-     * MTU value for the zone.
+     * MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
      */
     mtu?: pulumi.Input<number>;
     /**

@@ -23,8 +23,6 @@ __all__ = [
     'ProviderSshNodeArgsDict',
     'GetContainersFilterArgs',
     'GetContainersFilterArgsDict',
-    'GetVm2CloneArgs',
-    'GetVm2CloneArgsDict',
     'GetVm2CpuArgs',
     'GetVm2CpuArgsDict',
     'GetVm2RngArgs',
@@ -437,56 +435,6 @@ class GetContainersFilterArgs:
     @regex.setter
     def regex(self, value: Optional[_builtins.bool]):
         pulumi.set(self, "regex", value)
-
-
-if not MYPY:
-    class GetVm2CloneArgsDict(TypedDict):
-        id: _builtins.int
-        """
-        The ID of the VM to clone.
-        """
-        retries: _builtins.int
-        """
-        The number of retries to perform when cloning the VM (default: 3).
-        """
-elif False:
-    GetVm2CloneArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GetVm2CloneArgs:
-    def __init__(__self__, *,
-                 id: _builtins.int,
-                 retries: _builtins.int):
-        """
-        :param _builtins.int id: The ID of the VM to clone.
-        :param _builtins.int retries: The number of retries to perform when cloning the VM (default: 3).
-        """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "retries", retries)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.int:
-        """
-        The ID of the VM to clone.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: _builtins.int):
-        pulumi.set(self, "id", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def retries(self) -> _builtins.int:
-        """
-        The number of retries to perform when cloning the VM (default: 3).
-        """
-        return pulumi.get(self, "retries")
-
-    @retries.setter
-    def retries(self, value: _builtins.int):
-        pulumi.set(self, "retries", value)
 
 
 if not MYPY:

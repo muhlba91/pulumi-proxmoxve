@@ -83,6 +83,23 @@ public final class ContainerMountPointArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * The in-datastore path to the mount point volume.
+     * Use this attribute for cross-resource references instead of &lt;span pulumi-lang-nodejs=&#34;`volume`&#34; pulumi-lang-dotnet=&#34;`Volume`&#34; pulumi-lang-go=&#34;`volume`&#34; pulumi-lang-python=&#34;`volume`&#34; pulumi-lang-yaml=&#34;`volume`&#34; pulumi-lang-java=&#34;`volume`&#34;&gt;`volume`&lt;/span&gt;.
+     * 
+     */
+    @Import(name="pathInDatastore")
+    private @Nullable Output<String> pathInDatastore;
+
+    /**
+     * @return The in-datastore path to the mount point volume.
+     * Use this attribute for cross-resource references instead of &lt;span pulumi-lang-nodejs=&#34;`volume`&#34; pulumi-lang-dotnet=&#34;`Volume`&#34; pulumi-lang-go=&#34;`volume`&#34; pulumi-lang-python=&#34;`volume`&#34; pulumi-lang-yaml=&#34;`volume`&#34; pulumi-lang-java=&#34;`volume`&#34;&gt;`volume`&lt;/span&gt;.
+     * 
+     */
+    public Optional<Output<String>> pathInDatastore() {
+        return Optional.ofNullable(this.pathInDatastore);
+    }
+
+    /**
      * Enable user quotas inside the container (not supported
      * with ZFS subvolumes).
      * 
@@ -187,6 +204,7 @@ public final class ContainerMountPointArgs extends com.pulumi.resources.Resource
         this.backup = $.backup;
         this.mountOptions = $.mountOptions;
         this.path = $.path;
+        this.pathInDatastore = $.pathInDatastore;
         this.quota = $.quota;
         this.readOnly = $.readOnly;
         this.replicate = $.replicate;
@@ -309,6 +327,29 @@ public final class ContainerMountPointArgs extends com.pulumi.resources.Resource
          */
         public Builder path(String path) {
             return path(Output.of(path));
+        }
+
+        /**
+         * @param pathInDatastore The in-datastore path to the mount point volume.
+         * Use this attribute for cross-resource references instead of &lt;span pulumi-lang-nodejs=&#34;`volume`&#34; pulumi-lang-dotnet=&#34;`Volume`&#34; pulumi-lang-go=&#34;`volume`&#34; pulumi-lang-python=&#34;`volume`&#34; pulumi-lang-yaml=&#34;`volume`&#34; pulumi-lang-java=&#34;`volume`&#34;&gt;`volume`&lt;/span&gt;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pathInDatastore(@Nullable Output<String> pathInDatastore) {
+            $.pathInDatastore = pathInDatastore;
+            return this;
+        }
+
+        /**
+         * @param pathInDatastore The in-datastore path to the mount point volume.
+         * Use this attribute for cross-resource references instead of &lt;span pulumi-lang-nodejs=&#34;`volume`&#34; pulumi-lang-dotnet=&#34;`Volume`&#34; pulumi-lang-go=&#34;`volume`&#34; pulumi-lang-python=&#34;`volume`&#34; pulumi-lang-yaml=&#34;`volume`&#34; pulumi-lang-java=&#34;`volume`&#34;&gt;`volume`&lt;/span&gt;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pathInDatastore(String pathInDatastore) {
+            return pathInDatastore(Output.of(pathInDatastore));
         }
 
         /**

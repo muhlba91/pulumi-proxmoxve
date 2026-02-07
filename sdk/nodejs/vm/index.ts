@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { ClonedVirtualMachineArgs, ClonedVirtualMachineState } from "./clonedVirtualMachine";
+export type ClonedVirtualMachine = import("./clonedVirtualMachine").ClonedVirtualMachine;
+export const ClonedVirtualMachine: typeof import("./clonedVirtualMachine").ClonedVirtualMachine = null as any;
+utilities.lazyLoad(exports, ["ClonedVirtualMachine"], () => require("./clonedVirtualMachine"));
+
 export { GetVirtualMachineArgs, GetVirtualMachineResult, GetVirtualMachineOutputArgs } from "./getVirtualMachine";
 export const getVirtualMachine: typeof import("./getVirtualMachine").getVirtualMachine = null as any;
 export const getVirtualMachineOutput: typeof import("./getVirtualMachine").getVirtualMachineOutput = null as any;
@@ -30,6 +35,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "proxmoxve:VM/clonedVirtualMachine:ClonedVirtualMachine":
+                return new ClonedVirtualMachine(name, <any>undefined, { urn })
             case "proxmoxve:VM/virtualMachine2:VirtualMachine2":
                 return new VirtualMachine2(name, <any>undefined, { urn })
             case "proxmoxve:VM/virtualMachine:VirtualMachine":
@@ -39,5 +46,6 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("proxmoxve", "VM/clonedVirtualMachine", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "VM/virtualMachine", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "VM/virtualMachine2", _module)

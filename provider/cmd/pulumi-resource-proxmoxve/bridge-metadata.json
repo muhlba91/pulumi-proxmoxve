@@ -9,6 +9,18 @@
                 "current": "proxmoxve:index/acmeAccount:AcmeAccount",
                 "majorVersion": 7
             },
+            "proxmox_virtual_environment_acme_certificate": {
+                "current": "proxmoxve:Acme/certificate:Certificate",
+                "majorVersion": 7,
+                "fields": {
+                    "domains": {
+                        "maxItemsOne": false
+                    },
+                    "subject_alternative_names": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "proxmox_virtual_environment_acme_dns_plugin": {
                 "current": "proxmoxve:index/acmeDnsPlugin:AcmeDnsPlugin",
                 "majorVersion": 7
@@ -40,6 +52,41 @@
                 "majorVersion": 7,
                 "fields": {
                     "subject_alternative_names": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_cloned_vm": {
+                "current": "proxmoxve:VM/clonedVirtualMachine:ClonedVirtualMachine",
+                "majorVersion": 7,
+                "fields": {
+                    "cpu": {
+                        "fields": {
+                            "flags": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "delete": {
+                        "fields": {
+                            "disk": {
+                                "maxItemsOne": false
+                            },
+                            "network": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "network": {
+                        "elem": {
+                            "fields": {
+                                "trunks": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
                         "maxItemsOne": false
                     }
                 }
@@ -322,6 +369,10 @@
                 "current": "proxmoxve:Network/networkVlan:NetworkVlan",
                 "majorVersion": 7
             },
+            "proxmox_virtual_environment_node_firewall": {
+                "current": "proxmoxve:Node/firewall:Firewall",
+                "majorVersion": 7
+            },
             "proxmox_virtual_environment_oci_image": {
                 "current": "proxmoxve:Oci/image:Image",
                 "majorVersion": 7
@@ -339,6 +390,14 @@
                 "current": "proxmoxve:Pool/membership:Membership",
                 "majorVersion": 7
             },
+            "proxmox_virtual_environment_realm_ldap": {
+                "current": "proxmoxve:Realm/ldap:Ldap",
+                "majorVersion": 7
+            },
+            "proxmox_virtual_environment_realm_sync": {
+                "current": "proxmoxve:Realm/sync:Sync",
+                "majorVersion": 7
+            },
             "proxmox_virtual_environment_role": {
                 "current": "proxmoxve:Permission/role:Role",
                 "majorVersion": 7,
@@ -350,6 +409,32 @@
             },
             "proxmox_virtual_environment_sdn_applier": {
                 "current": "proxmoxve:Sdn/applier:Applier",
+                "majorVersion": 7
+            },
+            "proxmox_virtual_environment_sdn_fabric_node_openfabric": {
+                "current": "proxmoxve:Sdn/fabric/node/openfabric:Openfabric",
+                "majorVersion": 7,
+                "fields": {
+                    "interface_names": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_sdn_fabric_node_ospf": {
+                "current": "proxmoxve:Sdn/fabric/node/ospf:Ospf",
+                "majorVersion": 7,
+                "fields": {
+                    "interface_names": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_sdn_fabric_openfabric": {
+                "current": "proxmoxve:SDNFabric/openFabric:OpenFabric",
+                "majorVersion": 7
+            },
+            "proxmox_virtual_environment_sdn_fabric_ospf": {
+                "current": "proxmoxve:SDNFabric/oSPF:OSPF",
                 "majorVersion": 7
             },
             "proxmox_virtual_environment_sdn_subnet": {
@@ -407,6 +492,90 @@
                         "maxItemsOne": false
                     },
                     "peers": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_storage_cifs": {
+                "current": "proxmoxve:Storage/cIFS:CIFS",
+                "majorVersion": 7,
+                "fields": {
+                    "content": {
+                        "maxItemsOne": false
+                    },
+                    "nodes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_storage_directory": {
+                "current": "proxmoxve:Storage/directory:Directory",
+                "majorVersion": 7,
+                "fields": {
+                    "content": {
+                        "maxItemsOne": false
+                    },
+                    "nodes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_storage_lvm": {
+                "current": "proxmoxve:Storage/lVM:LVM",
+                "majorVersion": 7,
+                "fields": {
+                    "content": {
+                        "maxItemsOne": false
+                    },
+                    "nodes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_storage_lvmthin": {
+                "current": "proxmoxve:Storage/lVMThin:LVMThin",
+                "majorVersion": 7,
+                "fields": {
+                    "content": {
+                        "maxItemsOne": false
+                    },
+                    "nodes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_storage_nfs": {
+                "current": "proxmoxve:Storage/nFS:NFS",
+                "majorVersion": 7,
+                "fields": {
+                    "content": {
+                        "maxItemsOne": false
+                    },
+                    "nodes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_storage_pbs": {
+                "current": "proxmoxve:Storage/pBS:PBS",
+                "majorVersion": 7,
+                "fields": {
+                    "content": {
+                        "maxItemsOne": false
+                    },
+                    "nodes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_storage_zfspool": {
+                "current": "proxmoxve:Storage/zFSPool:ZFSPool",
+                "majorVersion": 7,
+                "fields": {
+                    "content": {
+                        "maxItemsOne": false
+                    },
+                    "nodes": {
                         "maxItemsOne": false
                     }
                 }
@@ -937,6 +1106,32 @@
                     }
                 }
             },
+            "proxmox_virtual_environment_sdn_fabric_node_openfabric": {
+                "current": "proxmoxve:Sdn/fabric/node/getOpenfabric:getOpenfabric",
+                "majorVersion": 7,
+                "fields": {
+                    "interface_names": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_sdn_fabric_node_ospf": {
+                "current": "proxmoxve:Sdn/fabric/node/getOspf:getOspf",
+                "majorVersion": 7,
+                "fields": {
+                    "interface_names": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "proxmox_virtual_environment_sdn_fabric_openfabric": {
+                "current": "proxmoxve:Sdn/fabric/getOpenfabric:getOpenfabric",
+                "majorVersion": 7
+            },
+            "proxmox_virtual_environment_sdn_fabric_ospf": {
+                "current": "proxmoxve:Sdn/fabric/getOspf:getOspf",
+                "majorVersion": 7
+            },
             "proxmox_virtual_environment_sdn_subnet": {
                 "current": "proxmoxve:Sdn/getSubnet:getSubnet",
                 "majorVersion": 7
@@ -1142,6 +1337,7 @@
     "auto-settings": {},
     "mux": {
         "resources": {
+            "proxmoxve:Acme/certificate:Certificate": 1,
             "proxmoxve:Apt/repository:Repository": 1,
             "proxmoxve:Apt/standard/repository:Repository": 1,
             "proxmoxve:CT/container:Container": 0,
@@ -1161,22 +1357,37 @@
             "proxmoxve:Network/firewallSecurityGroup:FirewallSecurityGroup": 0,
             "proxmoxve:Network/networkBridge:NetworkBridge": 1,
             "proxmoxve:Network/networkVlan:NetworkVlan": 1,
+            "proxmoxve:Node/firewall:Firewall": 1,
             "proxmoxve:Oci/image:Image": 1,
             "proxmoxve:Permission/group:Group": 0,
             "proxmoxve:Permission/pool:Pool": 0,
             "proxmoxve:Permission/role:Role": 0,
             "proxmoxve:Permission/user:User": 0,
             "proxmoxve:Pool/membership:Membership": 1,
+            "proxmoxve:Realm/ldap:Ldap": 1,
+            "proxmoxve:Realm/sync:Sync": 1,
+            "proxmoxve:SDNFabric/oSPF:OSPF": 1,
+            "proxmoxve:SDNFabric/openFabric:OpenFabric": 1,
             "proxmoxve:SDNZone/evpn:Evpn": 1,
             "proxmoxve:SDNZone/qinq:Qinq": 1,
             "proxmoxve:SDNZone/simple:Simple": 1,
             "proxmoxve:SDNZone/vlan:Vlan": 1,
             "proxmoxve:SDNZone/vxlan:Vxlan": 1,
             "proxmoxve:Sdn/applier:Applier": 1,
+            "proxmoxve:Sdn/fabric/node/openfabric:Openfabric": 1,
+            "proxmoxve:Sdn/fabric/node/ospf:Ospf": 1,
             "proxmoxve:Sdn/subnet:Subnet": 1,
             "proxmoxve:Sdn/vnet:Vnet": 1,
+            "proxmoxve:Storage/cIFS:CIFS": 1,
+            "proxmoxve:Storage/directory:Directory": 1,
             "proxmoxve:Storage/file:File": 0,
+            "proxmoxve:Storage/lVM:LVM": 1,
+            "proxmoxve:Storage/lVMThin:LVMThin": 1,
+            "proxmoxve:Storage/nFS:NFS": 1,
+            "proxmoxve:Storage/pBS:PBS": 1,
+            "proxmoxve:Storage/zFSPool:ZFSPool": 1,
             "proxmoxve:User/token:Token": 1,
+            "proxmoxve:VM/clonedVirtualMachine:ClonedVirtualMachine": 1,
             "proxmoxve:VM/virtualMachine2:VirtualMachine2": 1,
             "proxmoxve:VM/virtualMachine:VirtualMachine": 0,
             "proxmoxve:index/acl:Acl": 1,
@@ -1221,6 +1432,10 @@
             "proxmoxve:SDNZone/getSimple:getSimple": 1,
             "proxmoxve:SDNZone/getVlan:getVlan": 1,
             "proxmoxve:SDNZone/getVxlan:getVxlan": 1,
+            "proxmoxve:Sdn/fabric/getOpenfabric:getOpenfabric": 1,
+            "proxmoxve:Sdn/fabric/getOspf:getOspf": 1,
+            "proxmoxve:Sdn/fabric/node/getOpenfabric:getOpenfabric": 1,
+            "proxmoxve:Sdn/fabric/node/getOspf:getOspf": 1,
             "proxmoxve:Sdn/getSubnet:getSubnet": 1,
             "proxmoxve:Sdn/getVnet:getVnet": 1,
             "proxmoxve:Sdn/getVnets:getVnets": 1,

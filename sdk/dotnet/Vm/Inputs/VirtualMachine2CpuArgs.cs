@@ -19,7 +19,7 @@ namespace Pulumi.ProxmoxVE.VM.Inputs
         public Input<string>? Affinity { get; set; }
 
         /// <summary>
-        /// The CPU architecture `&lt;aarch64 | x86_64&gt;` (defaults to the host). Setting `Affinity` is only allowed for `root@pam` authenticated user.
+        /// The CPU architecture `&lt;aarch64 | x86_64&gt;` (defaults to the host). Setting `Architecture` is only allowed for `root@pam` authenticated user.
         /// </summary>
         [Input("architecture")]
         public Input<string>? Architecture { get; set; }

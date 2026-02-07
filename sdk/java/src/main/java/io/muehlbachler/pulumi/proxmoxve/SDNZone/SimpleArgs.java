@@ -79,14 +79,14 @@ public final class SimpleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * MTU value for the zone.
+     * MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
      * 
      */
     @Import(name="mtu")
     private @Nullable Output<Integer> mtu;
 
     /**
-     * @return MTU value for the zone.
+     * @return MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
      * 
      */
     public Optional<Output<Integer>> mtu() {
@@ -254,7 +254,7 @@ public final class SimpleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mtu MTU value for the zone.
+         * @param mtu MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
          * 
          * @return builder
          * 
@@ -265,7 +265,7 @@ public final class SimpleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mtu MTU value for the zone.
+         * @param mtu MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
          * 
          * @return builder
          * 

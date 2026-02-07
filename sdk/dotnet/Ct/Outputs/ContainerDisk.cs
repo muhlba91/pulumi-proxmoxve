@@ -27,6 +27,11 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
         /// </summary>
         public readonly ImmutableArray<string> MountOptions;
         /// <summary>
+        /// The in-datastore path to the disk image.
+        /// Use this attribute for cross-resource references.
+        /// </summary>
+        public readonly string? PathInDatastore;
+        /// <summary>
         /// Enable user quotas for the container rootfs
         /// </summary>
         public readonly bool? Quota;
@@ -49,6 +54,8 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
 
             ImmutableArray<string> mountOptions,
 
+            string? pathInDatastore,
+
             bool? quota,
 
             bool? replicate,
@@ -58,6 +65,7 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
             Acl = acl;
             DatastoreId = datastoreId;
             MountOptions = mountOptions;
+            PathInDatastore = pathInDatastore;
             Quota = quota;
             Replicate = replicate;
             Size = size;

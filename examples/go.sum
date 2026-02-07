@@ -1,0 +1,6 @@
+github.com/blang/semver v3.5.1+incompatible h1:cQNTCjp13qL8KC3Nbxr/y2Bqb63oX6wdnnjpJbkM4JQ=
+github.com/blang/semver v3.5.1+incompatible/go.mod h1:kRBLl5iJ+tD4TcOOxsy/0fnwebNt5EWlYSAyrTnjyyk=
+github.com/pulumi/pulumi/pkg/v3 v3.218.0 h1:eiPdauXfMRAxnmJgaah5Ms7vQ9KSHj4732qE5ScXQH0=
+github.com/pulumi/pulumi/pkg/v3 v3.218.0/go.mod h1:ww7sWw6SW3D0PfCU+65/VwxXDodvChXNya8/Darr7S8=
+github.com/pulumi/pulumi/sdk/v3 v3.218.0 h1:kRad759G31wo6GrIM0azt0nPyKw/738P8gmK4ogf5JA=
+github.com/pulumi/pulumi/sdk/v3 v3.218.0/go.mod h1:ZOBPPC2NZOZf729AdCX+CctfNc5SN6aJh0bdqNdzQC4=

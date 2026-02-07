@@ -149,9 +149,6 @@ namespace Pulumi.ProxmoxVE.Download
         [Output("nodeName")]
         public Output<string> NodeName { get; private set; } = null!;
 
-        /// <summary>
-        /// By default `True`. If `True` and file size has changed in the datastore, it will be replaced. If `False`, there will be no check.
-        /// </summary>
         [Output("overwrite")]
         public Output<bool> Overwrite { get; private set; } = null!;
 
@@ -274,9 +271,6 @@ namespace Pulumi.ProxmoxVE.Download
         [Input("nodeName", required: true)]
         public Input<string> NodeName { get; set; } = null!;
 
-        /// <summary>
-        /// By default `True`. If `True` and file size has changed in the datastore, it will be replaced. If `False`, there will be no check.
-        /// </summary>
         [Input("overwrite")]
         public Input<bool>? Overwrite { get; set; }
 
@@ -354,9 +348,6 @@ namespace Pulumi.ProxmoxVE.Download
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
 
-        /// <summary>
-        /// By default `True`. If `True` and file size has changed in the datastore, it will be replaced. If `False`, there will be no check.
-        /// </summary>
         [Input("overwrite")]
         public Input<bool>? Overwrite { get; set; }
 

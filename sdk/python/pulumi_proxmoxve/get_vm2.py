@@ -28,10 +28,7 @@ class GetVm2Result:
     """
     A collection of values returned by getVm2.
     """
-    def __init__(__self__, clone=None, cpu=None, description=None, id=None, name=None, node_name=None, rng=None, tags=None, template=None, timeouts=None, vga=None):
-        if clone and not isinstance(clone, dict):
-            raise TypeError("Expected argument 'clone' to be a dict")
-        pulumi.set(__self__, "clone", clone)
+    def __init__(__self__, cpu=None, description=None, id=None, name=None, node_name=None, rng=None, tags=None, template=None, timeouts=None, vga=None):
         if cpu and not isinstance(cpu, dict):
             raise TypeError("Expected argument 'cpu' to be a dict")
         pulumi.set(__self__, "cpu", cpu)
@@ -62,14 +59,6 @@ class GetVm2Result:
         if vga and not isinstance(vga, dict):
             raise TypeError("Expected argument 'vga' to be a dict")
         pulumi.set(__self__, "vga", vga)
-
-    @_builtins.property
-    @pulumi.getter
-    def clone(self) -> Optional['outputs.GetVm2CloneResult']:
-        """
-        The cloning configuration.
-        """
-        return pulumi.get(self, "clone")
 
     @_builtins.property
     @pulumi.getter
@@ -155,7 +144,6 @@ class AwaitableGetVm2Result(GetVm2Result):
         if False:
             yield self
         return GetVm2Result(
-            clone=self.clone,
             cpu=self.cpu,
             description=self.description,
             id=self.id,
@@ -168,8 +156,7 @@ class AwaitableGetVm2Result(GetVm2Result):
             vga=self.vga)
 
 
-def get_vm2(clone: Optional[Union['GetVm2CloneArgs', 'GetVm2CloneArgsDict']] = None,
-            cpu: Optional[Union['GetVm2CpuArgs', 'GetVm2CpuArgsDict']] = None,
+def get_vm2(cpu: Optional[Union['GetVm2CpuArgs', 'GetVm2CpuArgsDict']] = None,
             description: Optional[_builtins.str] = None,
             id: Optional[_builtins.int] = None,
             name: Optional[_builtins.str] = None,
@@ -185,7 +172,6 @@ def get_vm2(clone: Optional[Union['GetVm2CloneArgs', 'GetVm2CloneArgsDict']] = N
     This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
 
 
-    :param Union['GetVm2CloneArgs', 'GetVm2CloneArgsDict'] clone: The cloning configuration.
     :param Union['GetVm2CpuArgs', 'GetVm2CpuArgsDict'] cpu: The CPU configuration.
     :param _builtins.str description: The description of the VM.
     :param _builtins.int id: The unique identifier of the VM in the Proxmox cluster.
@@ -197,7 +183,6 @@ def get_vm2(clone: Optional[Union['GetVm2CloneArgs', 'GetVm2CloneArgsDict']] = N
     :param Union['GetVm2VgaArgs', 'GetVm2VgaArgsDict'] vga: The VGA configuration.
     """
     __args__ = dict()
-    __args__['clone'] = clone
     __args__['cpu'] = cpu
     __args__['description'] = description
     __args__['id'] = id
@@ -212,7 +197,6 @@ def get_vm2(clone: Optional[Union['GetVm2CloneArgs', 'GetVm2CloneArgsDict']] = N
     __ret__ = pulumi.runtime.invoke('proxmoxve:index/getVm2:getVm2', __args__, opts=opts, typ=GetVm2Result).value
 
     return AwaitableGetVm2Result(
-        clone=pulumi.get(__ret__, 'clone'),
         cpu=pulumi.get(__ret__, 'cpu'),
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
@@ -223,8 +207,7 @@ def get_vm2(clone: Optional[Union['GetVm2CloneArgs', 'GetVm2CloneArgsDict']] = N
         template=pulumi.get(__ret__, 'template'),
         timeouts=pulumi.get(__ret__, 'timeouts'),
         vga=pulumi.get(__ret__, 'vga'))
-def get_vm2_output(clone: Optional[pulumi.Input[Optional[Union['GetVm2CloneArgs', 'GetVm2CloneArgsDict']]]] = None,
-                   cpu: Optional[pulumi.Input[Optional[Union['GetVm2CpuArgs', 'GetVm2CpuArgsDict']]]] = None,
+def get_vm2_output(cpu: Optional[pulumi.Input[Optional[Union['GetVm2CpuArgs', 'GetVm2CpuArgsDict']]]] = None,
                    description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                    id: Optional[pulumi.Input[_builtins.int]] = None,
                    name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
@@ -240,7 +223,6 @@ def get_vm2_output(clone: Optional[pulumi.Input[Optional[Union['GetVm2CloneArgs'
     This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
 
 
-    :param Union['GetVm2CloneArgs', 'GetVm2CloneArgsDict'] clone: The cloning configuration.
     :param Union['GetVm2CpuArgs', 'GetVm2CpuArgsDict'] cpu: The CPU configuration.
     :param _builtins.str description: The description of the VM.
     :param _builtins.int id: The unique identifier of the VM in the Proxmox cluster.
@@ -252,7 +234,6 @@ def get_vm2_output(clone: Optional[pulumi.Input[Optional[Union['GetVm2CloneArgs'
     :param Union['GetVm2VgaArgs', 'GetVm2VgaArgsDict'] vga: The VGA configuration.
     """
     __args__ = dict()
-    __args__['clone'] = clone
     __args__['cpu'] = cpu
     __args__['description'] = description
     __args__['id'] = id
@@ -266,7 +247,6 @@ def get_vm2_output(clone: Optional[pulumi.Input[Optional[Union['GetVm2CloneArgs'
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:index/getVm2:getVm2', __args__, opts=opts, typ=GetVm2Result)
     return __ret__.apply(lambda __response__: GetVm2Result(
-        clone=pulumi.get(__response__, 'clone'),
         cpu=pulumi.get(__response__, 'cpu'),
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),

@@ -68,8 +68,8 @@ type Vxlan struct {
 	DnsZone pulumi.StringPtrOutput `pulumi:"dnsZone"`
 	// IP Address Management system.
 	Ipam pulumi.StringPtrOutput `pulumi:"ipam"`
-	// MTU value for the zone.
-	Mtu pulumi.IntPtrOutput `pulumi:"mtu"`
+	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+	Mtu pulumi.IntOutput `pulumi:"mtu"`
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes pulumi.StringArrayOutput `pulumi:"nodes"`
 	// A list of IP addresses of each node in the VXLAN zone. This can be external nodes reachable at this IP address. All nodes in the cluster need to be mentioned here
@@ -126,7 +126,7 @@ type vxlanState struct {
 	DnsZone *string `pulumi:"dnsZone"`
 	// IP Address Management system.
 	Ipam *string `pulumi:"ipam"`
-	// MTU value for the zone.
+	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
 	Mtu *int `pulumi:"mtu"`
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes []string `pulumi:"nodes"`
@@ -149,7 +149,7 @@ type VxlanState struct {
 	DnsZone pulumi.StringPtrInput
 	// IP Address Management system.
 	Ipam pulumi.StringPtrInput
-	// MTU value for the zone.
+	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
 	Mtu pulumi.IntPtrInput
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes pulumi.StringArrayInput
@@ -176,7 +176,7 @@ type vxlanArgs struct {
 	DnsZone *string `pulumi:"dnsZone"`
 	// IP Address Management system.
 	Ipam *string `pulumi:"ipam"`
-	// MTU value for the zone.
+	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
 	Mtu *int `pulumi:"mtu"`
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes []string `pulumi:"nodes"`
@@ -196,7 +196,7 @@ type VxlanArgs struct {
 	DnsZone pulumi.StringPtrInput
 	// IP Address Management system.
 	Ipam pulumi.StringPtrInput
-	// MTU value for the zone.
+	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
 	Mtu pulumi.IntPtrInput
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes pulumi.StringArrayInput
@@ -310,9 +310,9 @@ func (o VxlanOutput) Ipam() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Vxlan) pulumi.StringPtrOutput { return v.Ipam }).(pulumi.StringPtrOutput)
 }
 
-// MTU value for the zone.
-func (o VxlanOutput) Mtu() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Vxlan) pulumi.IntPtrOutput { return v.Mtu }).(pulumi.IntPtrOutput)
+// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+func (o VxlanOutput) Mtu() pulumi.IntOutput {
+	return o.ApplyT(func(v *Vxlan) pulumi.IntOutput { return v.Mtu }).(pulumi.IntOutput)
 }
 
 // The Proxmox nodes which the zone and associated VNets should be deployed on

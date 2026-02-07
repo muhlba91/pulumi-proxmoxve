@@ -71,7 +71,7 @@ import (
 type FirewallOptions struct {
 	pulumi.CustomResourceState
 
-	// Container ID.
+	// Container ID. **Exactly one of `vmId` or `containerId` must be specified.**
 	ContainerId pulumi.IntPtrOutput `pulumi:"containerId"`
 	// Enable DHCP.
 	Dhcp pulumi.BoolPtrOutput `pulumi:"dhcp"`
@@ -105,7 +105,7 @@ type FirewallOptions struct {
 	OutputPolicy pulumi.StringPtrOutput `pulumi:"outputPolicy"`
 	// Enable Router Advertisement.
 	Radv pulumi.BoolPtrOutput `pulumi:"radv"`
-	// VM ID.
+	// VM ID. **Exactly one of `vmId` or `containerId` must be specified.**
 	VmId pulumi.IntPtrOutput `pulumi:"vmId"`
 }
 
@@ -142,7 +142,7 @@ func GetFirewallOptions(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FirewallOptions resources.
 type firewallOptionsState struct {
-	// Container ID.
+	// Container ID. **Exactly one of `vmId` or `containerId` must be specified.**
 	ContainerId *int `pulumi:"containerId"`
 	// Enable DHCP.
 	Dhcp *bool `pulumi:"dhcp"`
@@ -176,12 +176,12 @@ type firewallOptionsState struct {
 	OutputPolicy *string `pulumi:"outputPolicy"`
 	// Enable Router Advertisement.
 	Radv *bool `pulumi:"radv"`
-	// VM ID.
+	// VM ID. **Exactly one of `vmId` or `containerId` must be specified.**
 	VmId *int `pulumi:"vmId"`
 }
 
 type FirewallOptionsState struct {
-	// Container ID.
+	// Container ID. **Exactly one of `vmId` or `containerId` must be specified.**
 	ContainerId pulumi.IntPtrInput
 	// Enable DHCP.
 	Dhcp pulumi.BoolPtrInput
@@ -215,7 +215,7 @@ type FirewallOptionsState struct {
 	OutputPolicy pulumi.StringPtrInput
 	// Enable Router Advertisement.
 	Radv pulumi.BoolPtrInput
-	// VM ID.
+	// VM ID. **Exactly one of `vmId` or `containerId` must be specified.**
 	VmId pulumi.IntPtrInput
 }
 
@@ -224,7 +224,7 @@ func (FirewallOptionsState) ElementType() reflect.Type {
 }
 
 type firewallOptionsArgs struct {
-	// Container ID.
+	// Container ID. **Exactly one of `vmId` or `containerId` must be specified.**
 	ContainerId *int `pulumi:"containerId"`
 	// Enable DHCP.
 	Dhcp *bool `pulumi:"dhcp"`
@@ -258,13 +258,13 @@ type firewallOptionsArgs struct {
 	OutputPolicy *string `pulumi:"outputPolicy"`
 	// Enable Router Advertisement.
 	Radv *bool `pulumi:"radv"`
-	// VM ID.
+	// VM ID. **Exactly one of `vmId` or `containerId` must be specified.**
 	VmId *int `pulumi:"vmId"`
 }
 
 // The set of arguments for constructing a FirewallOptions resource.
 type FirewallOptionsArgs struct {
-	// Container ID.
+	// Container ID. **Exactly one of `vmId` or `containerId` must be specified.**
 	ContainerId pulumi.IntPtrInput
 	// Enable DHCP.
 	Dhcp pulumi.BoolPtrInput
@@ -298,7 +298,7 @@ type FirewallOptionsArgs struct {
 	OutputPolicy pulumi.StringPtrInput
 	// Enable Router Advertisement.
 	Radv pulumi.BoolPtrInput
-	// VM ID.
+	// VM ID. **Exactly one of `vmId` or `containerId` must be specified.**
 	VmId pulumi.IntPtrInput
 }
 
@@ -389,7 +389,7 @@ func (o FirewallOptionsOutput) ToFirewallOptionsOutputWithContext(ctx context.Co
 	return o
 }
 
-// Container ID.
+// Container ID. **Exactly one of `vmId` or `containerId` must be specified.**
 func (o FirewallOptionsOutput) ContainerId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FirewallOptions) pulumi.IntPtrOutput { return v.ContainerId }).(pulumi.IntPtrOutput)
 }
@@ -459,7 +459,7 @@ func (o FirewallOptionsOutput) Radv() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FirewallOptions) pulumi.BoolPtrOutput { return v.Radv }).(pulumi.BoolPtrOutput)
 }
 
-// VM ID.
+// VM ID. **Exactly one of `vmId` or `containerId` must be specified.**
 func (o FirewallOptionsOutput) VmId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FirewallOptions) pulumi.IntPtrOutput { return v.VmId }).(pulumi.IntPtrOutput)
 }

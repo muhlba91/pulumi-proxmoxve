@@ -13,6 +13,546 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type CIFSBackups struct {
+	// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+	KeepAll *bool `pulumi:"keepAll"`
+	// The number of daily backups to keep. Older backups will be removed.
+	KeepDaily *int `pulumi:"keepDaily"`
+	// The number of hourly backups to keep. Older backups will be removed.
+	KeepHourly *int `pulumi:"keepHourly"`
+	// Specifies the number of the most recent backups to keep, regardless of their age.
+	KeepLast *int `pulumi:"keepLast"`
+	// The number of monthly backups to keep. Older backups will be removed.
+	KeepMonthly *int `pulumi:"keepMonthly"`
+	// The number of weekly backups to keep. Older backups will be removed.
+	KeepWeekly *int `pulumi:"keepWeekly"`
+	// The number of yearly backups to keep. Older backups will be removed.
+	KeepYearly *int `pulumi:"keepYearly"`
+	// The maximum number of protected backups per guest. Use '-1' for unlimited.
+	MaxProtectedBackups *int `pulumi:"maxProtectedBackups"`
+}
+
+// CIFSBackupsInput is an input type that accepts CIFSBackupsArgs and CIFSBackupsOutput values.
+// You can construct a concrete instance of `CIFSBackupsInput` via:
+//
+//	CIFSBackupsArgs{...}
+type CIFSBackupsInput interface {
+	pulumi.Input
+
+	ToCIFSBackupsOutput() CIFSBackupsOutput
+	ToCIFSBackupsOutputWithContext(context.Context) CIFSBackupsOutput
+}
+
+type CIFSBackupsArgs struct {
+	// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+	KeepAll pulumi.BoolPtrInput `pulumi:"keepAll"`
+	// The number of daily backups to keep. Older backups will be removed.
+	KeepDaily pulumi.IntPtrInput `pulumi:"keepDaily"`
+	// The number of hourly backups to keep. Older backups will be removed.
+	KeepHourly pulumi.IntPtrInput `pulumi:"keepHourly"`
+	// Specifies the number of the most recent backups to keep, regardless of their age.
+	KeepLast pulumi.IntPtrInput `pulumi:"keepLast"`
+	// The number of monthly backups to keep. Older backups will be removed.
+	KeepMonthly pulumi.IntPtrInput `pulumi:"keepMonthly"`
+	// The number of weekly backups to keep. Older backups will be removed.
+	KeepWeekly pulumi.IntPtrInput `pulumi:"keepWeekly"`
+	// The number of yearly backups to keep. Older backups will be removed.
+	KeepYearly pulumi.IntPtrInput `pulumi:"keepYearly"`
+	// The maximum number of protected backups per guest. Use '-1' for unlimited.
+	MaxProtectedBackups pulumi.IntPtrInput `pulumi:"maxProtectedBackups"`
+}
+
+func (CIFSBackupsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CIFSBackups)(nil)).Elem()
+}
+
+func (i CIFSBackupsArgs) ToCIFSBackupsOutput() CIFSBackupsOutput {
+	return i.ToCIFSBackupsOutputWithContext(context.Background())
+}
+
+func (i CIFSBackupsArgs) ToCIFSBackupsOutputWithContext(ctx context.Context) CIFSBackupsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CIFSBackupsOutput)
+}
+
+func (i CIFSBackupsArgs) ToCIFSBackupsPtrOutput() CIFSBackupsPtrOutput {
+	return i.ToCIFSBackupsPtrOutputWithContext(context.Background())
+}
+
+func (i CIFSBackupsArgs) ToCIFSBackupsPtrOutputWithContext(ctx context.Context) CIFSBackupsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CIFSBackupsOutput).ToCIFSBackupsPtrOutputWithContext(ctx)
+}
+
+// CIFSBackupsPtrInput is an input type that accepts CIFSBackupsArgs, CIFSBackupsPtr and CIFSBackupsPtrOutput values.
+// You can construct a concrete instance of `CIFSBackupsPtrInput` via:
+//
+//	        CIFSBackupsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CIFSBackupsPtrInput interface {
+	pulumi.Input
+
+	ToCIFSBackupsPtrOutput() CIFSBackupsPtrOutput
+	ToCIFSBackupsPtrOutputWithContext(context.Context) CIFSBackupsPtrOutput
+}
+
+type cifsbackupsPtrType CIFSBackupsArgs
+
+func CIFSBackupsPtr(v *CIFSBackupsArgs) CIFSBackupsPtrInput {
+	return (*cifsbackupsPtrType)(v)
+}
+
+func (*cifsbackupsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CIFSBackups)(nil)).Elem()
+}
+
+func (i *cifsbackupsPtrType) ToCIFSBackupsPtrOutput() CIFSBackupsPtrOutput {
+	return i.ToCIFSBackupsPtrOutputWithContext(context.Background())
+}
+
+func (i *cifsbackupsPtrType) ToCIFSBackupsPtrOutputWithContext(ctx context.Context) CIFSBackupsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CIFSBackupsPtrOutput)
+}
+
+type CIFSBackupsOutput struct{ *pulumi.OutputState }
+
+func (CIFSBackupsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CIFSBackups)(nil)).Elem()
+}
+
+func (o CIFSBackupsOutput) ToCIFSBackupsOutput() CIFSBackupsOutput {
+	return o
+}
+
+func (o CIFSBackupsOutput) ToCIFSBackupsOutputWithContext(ctx context.Context) CIFSBackupsOutput {
+	return o
+}
+
+func (o CIFSBackupsOutput) ToCIFSBackupsPtrOutput() CIFSBackupsPtrOutput {
+	return o.ToCIFSBackupsPtrOutputWithContext(context.Background())
+}
+
+func (o CIFSBackupsOutput) ToCIFSBackupsPtrOutputWithContext(ctx context.Context) CIFSBackupsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CIFSBackups) *CIFSBackups {
+		return &v
+	}).(CIFSBackupsPtrOutput)
+}
+
+// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+func (o CIFSBackupsOutput) KeepAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CIFSBackups) *bool { return v.KeepAll }).(pulumi.BoolPtrOutput)
+}
+
+// The number of daily backups to keep. Older backups will be removed.
+func (o CIFSBackupsOutput) KeepDaily() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CIFSBackups) *int { return v.KeepDaily }).(pulumi.IntPtrOutput)
+}
+
+// The number of hourly backups to keep. Older backups will be removed.
+func (o CIFSBackupsOutput) KeepHourly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CIFSBackups) *int { return v.KeepHourly }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the number of the most recent backups to keep, regardless of their age.
+func (o CIFSBackupsOutput) KeepLast() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CIFSBackups) *int { return v.KeepLast }).(pulumi.IntPtrOutput)
+}
+
+// The number of monthly backups to keep. Older backups will be removed.
+func (o CIFSBackupsOutput) KeepMonthly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CIFSBackups) *int { return v.KeepMonthly }).(pulumi.IntPtrOutput)
+}
+
+// The number of weekly backups to keep. Older backups will be removed.
+func (o CIFSBackupsOutput) KeepWeekly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CIFSBackups) *int { return v.KeepWeekly }).(pulumi.IntPtrOutput)
+}
+
+// The number of yearly backups to keep. Older backups will be removed.
+func (o CIFSBackupsOutput) KeepYearly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CIFSBackups) *int { return v.KeepYearly }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of protected backups per guest. Use '-1' for unlimited.
+func (o CIFSBackupsOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CIFSBackups) *int { return v.MaxProtectedBackups }).(pulumi.IntPtrOutput)
+}
+
+type CIFSBackupsPtrOutput struct{ *pulumi.OutputState }
+
+func (CIFSBackupsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CIFSBackups)(nil)).Elem()
+}
+
+func (o CIFSBackupsPtrOutput) ToCIFSBackupsPtrOutput() CIFSBackupsPtrOutput {
+	return o
+}
+
+func (o CIFSBackupsPtrOutput) ToCIFSBackupsPtrOutputWithContext(ctx context.Context) CIFSBackupsPtrOutput {
+	return o
+}
+
+func (o CIFSBackupsPtrOutput) Elem() CIFSBackupsOutput {
+	return o.ApplyT(func(v *CIFSBackups) CIFSBackups {
+		if v != nil {
+			return *v
+		}
+		var ret CIFSBackups
+		return ret
+	}).(CIFSBackupsOutput)
+}
+
+// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+func (o CIFSBackupsPtrOutput) KeepAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CIFSBackups) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.KeepAll
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The number of daily backups to keep. Older backups will be removed.
+func (o CIFSBackupsPtrOutput) KeepDaily() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CIFSBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepDaily
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of hourly backups to keep. Older backups will be removed.
+func (o CIFSBackupsPtrOutput) KeepHourly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CIFSBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepHourly
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the number of the most recent backups to keep, regardless of their age.
+func (o CIFSBackupsPtrOutput) KeepLast() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CIFSBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepLast
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of monthly backups to keep. Older backups will be removed.
+func (o CIFSBackupsPtrOutput) KeepMonthly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CIFSBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepMonthly
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of weekly backups to keep. Older backups will be removed.
+func (o CIFSBackupsPtrOutput) KeepWeekly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CIFSBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepWeekly
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of yearly backups to keep. Older backups will be removed.
+func (o CIFSBackupsPtrOutput) KeepYearly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CIFSBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepYearly
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of protected backups per guest. Use '-1' for unlimited.
+func (o CIFSBackupsPtrOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CIFSBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxProtectedBackups
+	}).(pulumi.IntPtrOutput)
+}
+
+type DirectoryBackups struct {
+	// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+	KeepAll *bool `pulumi:"keepAll"`
+	// The number of daily backups to keep. Older backups will be removed.
+	KeepDaily *int `pulumi:"keepDaily"`
+	// The number of hourly backups to keep. Older backups will be removed.
+	KeepHourly *int `pulumi:"keepHourly"`
+	// Specifies the number of the most recent backups to keep, regardless of their age.
+	KeepLast *int `pulumi:"keepLast"`
+	// The number of monthly backups to keep. Older backups will be removed.
+	KeepMonthly *int `pulumi:"keepMonthly"`
+	// The number of weekly backups to keep. Older backups will be removed.
+	KeepWeekly *int `pulumi:"keepWeekly"`
+	// The number of yearly backups to keep. Older backups will be removed.
+	KeepYearly *int `pulumi:"keepYearly"`
+	// The maximum number of protected backups per guest. Use '-1' for unlimited.
+	MaxProtectedBackups *int `pulumi:"maxProtectedBackups"`
+}
+
+// DirectoryBackupsInput is an input type that accepts DirectoryBackupsArgs and DirectoryBackupsOutput values.
+// You can construct a concrete instance of `DirectoryBackupsInput` via:
+//
+//	DirectoryBackupsArgs{...}
+type DirectoryBackupsInput interface {
+	pulumi.Input
+
+	ToDirectoryBackupsOutput() DirectoryBackupsOutput
+	ToDirectoryBackupsOutputWithContext(context.Context) DirectoryBackupsOutput
+}
+
+type DirectoryBackupsArgs struct {
+	// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+	KeepAll pulumi.BoolPtrInput `pulumi:"keepAll"`
+	// The number of daily backups to keep. Older backups will be removed.
+	KeepDaily pulumi.IntPtrInput `pulumi:"keepDaily"`
+	// The number of hourly backups to keep. Older backups will be removed.
+	KeepHourly pulumi.IntPtrInput `pulumi:"keepHourly"`
+	// Specifies the number of the most recent backups to keep, regardless of their age.
+	KeepLast pulumi.IntPtrInput `pulumi:"keepLast"`
+	// The number of monthly backups to keep. Older backups will be removed.
+	KeepMonthly pulumi.IntPtrInput `pulumi:"keepMonthly"`
+	// The number of weekly backups to keep. Older backups will be removed.
+	KeepWeekly pulumi.IntPtrInput `pulumi:"keepWeekly"`
+	// The number of yearly backups to keep. Older backups will be removed.
+	KeepYearly pulumi.IntPtrInput `pulumi:"keepYearly"`
+	// The maximum number of protected backups per guest. Use '-1' for unlimited.
+	MaxProtectedBackups pulumi.IntPtrInput `pulumi:"maxProtectedBackups"`
+}
+
+func (DirectoryBackupsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DirectoryBackups)(nil)).Elem()
+}
+
+func (i DirectoryBackupsArgs) ToDirectoryBackupsOutput() DirectoryBackupsOutput {
+	return i.ToDirectoryBackupsOutputWithContext(context.Background())
+}
+
+func (i DirectoryBackupsArgs) ToDirectoryBackupsOutputWithContext(ctx context.Context) DirectoryBackupsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirectoryBackupsOutput)
+}
+
+func (i DirectoryBackupsArgs) ToDirectoryBackupsPtrOutput() DirectoryBackupsPtrOutput {
+	return i.ToDirectoryBackupsPtrOutputWithContext(context.Background())
+}
+
+func (i DirectoryBackupsArgs) ToDirectoryBackupsPtrOutputWithContext(ctx context.Context) DirectoryBackupsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirectoryBackupsOutput).ToDirectoryBackupsPtrOutputWithContext(ctx)
+}
+
+// DirectoryBackupsPtrInput is an input type that accepts DirectoryBackupsArgs, DirectoryBackupsPtr and DirectoryBackupsPtrOutput values.
+// You can construct a concrete instance of `DirectoryBackupsPtrInput` via:
+//
+//	        DirectoryBackupsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DirectoryBackupsPtrInput interface {
+	pulumi.Input
+
+	ToDirectoryBackupsPtrOutput() DirectoryBackupsPtrOutput
+	ToDirectoryBackupsPtrOutputWithContext(context.Context) DirectoryBackupsPtrOutput
+}
+
+type directoryBackupsPtrType DirectoryBackupsArgs
+
+func DirectoryBackupsPtr(v *DirectoryBackupsArgs) DirectoryBackupsPtrInput {
+	return (*directoryBackupsPtrType)(v)
+}
+
+func (*directoryBackupsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DirectoryBackups)(nil)).Elem()
+}
+
+func (i *directoryBackupsPtrType) ToDirectoryBackupsPtrOutput() DirectoryBackupsPtrOutput {
+	return i.ToDirectoryBackupsPtrOutputWithContext(context.Background())
+}
+
+func (i *directoryBackupsPtrType) ToDirectoryBackupsPtrOutputWithContext(ctx context.Context) DirectoryBackupsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirectoryBackupsPtrOutput)
+}
+
+type DirectoryBackupsOutput struct{ *pulumi.OutputState }
+
+func (DirectoryBackupsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DirectoryBackups)(nil)).Elem()
+}
+
+func (o DirectoryBackupsOutput) ToDirectoryBackupsOutput() DirectoryBackupsOutput {
+	return o
+}
+
+func (o DirectoryBackupsOutput) ToDirectoryBackupsOutputWithContext(ctx context.Context) DirectoryBackupsOutput {
+	return o
+}
+
+func (o DirectoryBackupsOutput) ToDirectoryBackupsPtrOutput() DirectoryBackupsPtrOutput {
+	return o.ToDirectoryBackupsPtrOutputWithContext(context.Background())
+}
+
+func (o DirectoryBackupsOutput) ToDirectoryBackupsPtrOutputWithContext(ctx context.Context) DirectoryBackupsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DirectoryBackups) *DirectoryBackups {
+		return &v
+	}).(DirectoryBackupsPtrOutput)
+}
+
+// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+func (o DirectoryBackupsOutput) KeepAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DirectoryBackups) *bool { return v.KeepAll }).(pulumi.BoolPtrOutput)
+}
+
+// The number of daily backups to keep. Older backups will be removed.
+func (o DirectoryBackupsOutput) KeepDaily() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DirectoryBackups) *int { return v.KeepDaily }).(pulumi.IntPtrOutput)
+}
+
+// The number of hourly backups to keep. Older backups will be removed.
+func (o DirectoryBackupsOutput) KeepHourly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DirectoryBackups) *int { return v.KeepHourly }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the number of the most recent backups to keep, regardless of their age.
+func (o DirectoryBackupsOutput) KeepLast() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DirectoryBackups) *int { return v.KeepLast }).(pulumi.IntPtrOutput)
+}
+
+// The number of monthly backups to keep. Older backups will be removed.
+func (o DirectoryBackupsOutput) KeepMonthly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DirectoryBackups) *int { return v.KeepMonthly }).(pulumi.IntPtrOutput)
+}
+
+// The number of weekly backups to keep. Older backups will be removed.
+func (o DirectoryBackupsOutput) KeepWeekly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DirectoryBackups) *int { return v.KeepWeekly }).(pulumi.IntPtrOutput)
+}
+
+// The number of yearly backups to keep. Older backups will be removed.
+func (o DirectoryBackupsOutput) KeepYearly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DirectoryBackups) *int { return v.KeepYearly }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of protected backups per guest. Use '-1' for unlimited.
+func (o DirectoryBackupsOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DirectoryBackups) *int { return v.MaxProtectedBackups }).(pulumi.IntPtrOutput)
+}
+
+type DirectoryBackupsPtrOutput struct{ *pulumi.OutputState }
+
+func (DirectoryBackupsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DirectoryBackups)(nil)).Elem()
+}
+
+func (o DirectoryBackupsPtrOutput) ToDirectoryBackupsPtrOutput() DirectoryBackupsPtrOutput {
+	return o
+}
+
+func (o DirectoryBackupsPtrOutput) ToDirectoryBackupsPtrOutputWithContext(ctx context.Context) DirectoryBackupsPtrOutput {
+	return o
+}
+
+func (o DirectoryBackupsPtrOutput) Elem() DirectoryBackupsOutput {
+	return o.ApplyT(func(v *DirectoryBackups) DirectoryBackups {
+		if v != nil {
+			return *v
+		}
+		var ret DirectoryBackups
+		return ret
+	}).(DirectoryBackupsOutput)
+}
+
+// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+func (o DirectoryBackupsPtrOutput) KeepAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DirectoryBackups) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.KeepAll
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The number of daily backups to keep. Older backups will be removed.
+func (o DirectoryBackupsPtrOutput) KeepDaily() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DirectoryBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepDaily
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of hourly backups to keep. Older backups will be removed.
+func (o DirectoryBackupsPtrOutput) KeepHourly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DirectoryBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepHourly
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the number of the most recent backups to keep, regardless of their age.
+func (o DirectoryBackupsPtrOutput) KeepLast() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DirectoryBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepLast
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of monthly backups to keep. Older backups will be removed.
+func (o DirectoryBackupsPtrOutput) KeepMonthly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DirectoryBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepMonthly
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of weekly backups to keep. Older backups will be removed.
+func (o DirectoryBackupsPtrOutput) KeepWeekly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DirectoryBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepWeekly
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of yearly backups to keep. Older backups will be removed.
+func (o DirectoryBackupsPtrOutput) KeepYearly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DirectoryBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepYearly
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of protected backups per guest. Use '-1' for unlimited.
+func (o DirectoryBackupsPtrOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DirectoryBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxProtectedBackups
+	}).(pulumi.IntPtrOutput)
+}
+
 type FileSourceFile struct {
 	// Whether the source file has changed since the last run
 	Changed *bool `pulumi:"changed"`
@@ -436,6 +976,546 @@ func (o FileSourceRawPtrOutput) Resize() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type NFSBackups struct {
+	// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+	KeepAll *bool `pulumi:"keepAll"`
+	// The number of daily backups to keep. Older backups will be removed.
+	KeepDaily *int `pulumi:"keepDaily"`
+	// The number of hourly backups to keep. Older backups will be removed.
+	KeepHourly *int `pulumi:"keepHourly"`
+	// Specifies the number of the most recent backups to keep, regardless of their age.
+	KeepLast *int `pulumi:"keepLast"`
+	// The number of monthly backups to keep. Older backups will be removed.
+	KeepMonthly *int `pulumi:"keepMonthly"`
+	// The number of weekly backups to keep. Older backups will be removed.
+	KeepWeekly *int `pulumi:"keepWeekly"`
+	// The number of yearly backups to keep. Older backups will be removed.
+	KeepYearly *int `pulumi:"keepYearly"`
+	// The maximum number of protected backups per guest. Use '-1' for unlimited.
+	MaxProtectedBackups *int `pulumi:"maxProtectedBackups"`
+}
+
+// NFSBackupsInput is an input type that accepts NFSBackupsArgs and NFSBackupsOutput values.
+// You can construct a concrete instance of `NFSBackupsInput` via:
+//
+//	NFSBackupsArgs{...}
+type NFSBackupsInput interface {
+	pulumi.Input
+
+	ToNFSBackupsOutput() NFSBackupsOutput
+	ToNFSBackupsOutputWithContext(context.Context) NFSBackupsOutput
+}
+
+type NFSBackupsArgs struct {
+	// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+	KeepAll pulumi.BoolPtrInput `pulumi:"keepAll"`
+	// The number of daily backups to keep. Older backups will be removed.
+	KeepDaily pulumi.IntPtrInput `pulumi:"keepDaily"`
+	// The number of hourly backups to keep. Older backups will be removed.
+	KeepHourly pulumi.IntPtrInput `pulumi:"keepHourly"`
+	// Specifies the number of the most recent backups to keep, regardless of their age.
+	KeepLast pulumi.IntPtrInput `pulumi:"keepLast"`
+	// The number of monthly backups to keep. Older backups will be removed.
+	KeepMonthly pulumi.IntPtrInput `pulumi:"keepMonthly"`
+	// The number of weekly backups to keep. Older backups will be removed.
+	KeepWeekly pulumi.IntPtrInput `pulumi:"keepWeekly"`
+	// The number of yearly backups to keep. Older backups will be removed.
+	KeepYearly pulumi.IntPtrInput `pulumi:"keepYearly"`
+	// The maximum number of protected backups per guest. Use '-1' for unlimited.
+	MaxProtectedBackups pulumi.IntPtrInput `pulumi:"maxProtectedBackups"`
+}
+
+func (NFSBackupsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NFSBackups)(nil)).Elem()
+}
+
+func (i NFSBackupsArgs) ToNFSBackupsOutput() NFSBackupsOutput {
+	return i.ToNFSBackupsOutputWithContext(context.Background())
+}
+
+func (i NFSBackupsArgs) ToNFSBackupsOutputWithContext(ctx context.Context) NFSBackupsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NFSBackupsOutput)
+}
+
+func (i NFSBackupsArgs) ToNFSBackupsPtrOutput() NFSBackupsPtrOutput {
+	return i.ToNFSBackupsPtrOutputWithContext(context.Background())
+}
+
+func (i NFSBackupsArgs) ToNFSBackupsPtrOutputWithContext(ctx context.Context) NFSBackupsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NFSBackupsOutput).ToNFSBackupsPtrOutputWithContext(ctx)
+}
+
+// NFSBackupsPtrInput is an input type that accepts NFSBackupsArgs, NFSBackupsPtr and NFSBackupsPtrOutput values.
+// You can construct a concrete instance of `NFSBackupsPtrInput` via:
+//
+//	        NFSBackupsArgs{...}
+//
+//	or:
+//
+//	        nil
+type NFSBackupsPtrInput interface {
+	pulumi.Input
+
+	ToNFSBackupsPtrOutput() NFSBackupsPtrOutput
+	ToNFSBackupsPtrOutputWithContext(context.Context) NFSBackupsPtrOutput
+}
+
+type nfsbackupsPtrType NFSBackupsArgs
+
+func NFSBackupsPtr(v *NFSBackupsArgs) NFSBackupsPtrInput {
+	return (*nfsbackupsPtrType)(v)
+}
+
+func (*nfsbackupsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NFSBackups)(nil)).Elem()
+}
+
+func (i *nfsbackupsPtrType) ToNFSBackupsPtrOutput() NFSBackupsPtrOutput {
+	return i.ToNFSBackupsPtrOutputWithContext(context.Background())
+}
+
+func (i *nfsbackupsPtrType) ToNFSBackupsPtrOutputWithContext(ctx context.Context) NFSBackupsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NFSBackupsPtrOutput)
+}
+
+type NFSBackupsOutput struct{ *pulumi.OutputState }
+
+func (NFSBackupsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NFSBackups)(nil)).Elem()
+}
+
+func (o NFSBackupsOutput) ToNFSBackupsOutput() NFSBackupsOutput {
+	return o
+}
+
+func (o NFSBackupsOutput) ToNFSBackupsOutputWithContext(ctx context.Context) NFSBackupsOutput {
+	return o
+}
+
+func (o NFSBackupsOutput) ToNFSBackupsPtrOutput() NFSBackupsPtrOutput {
+	return o.ToNFSBackupsPtrOutputWithContext(context.Background())
+}
+
+func (o NFSBackupsOutput) ToNFSBackupsPtrOutputWithContext(ctx context.Context) NFSBackupsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NFSBackups) *NFSBackups {
+		return &v
+	}).(NFSBackupsPtrOutput)
+}
+
+// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+func (o NFSBackupsOutput) KeepAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NFSBackups) *bool { return v.KeepAll }).(pulumi.BoolPtrOutput)
+}
+
+// The number of daily backups to keep. Older backups will be removed.
+func (o NFSBackupsOutput) KeepDaily() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NFSBackups) *int { return v.KeepDaily }).(pulumi.IntPtrOutput)
+}
+
+// The number of hourly backups to keep. Older backups will be removed.
+func (o NFSBackupsOutput) KeepHourly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NFSBackups) *int { return v.KeepHourly }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the number of the most recent backups to keep, regardless of their age.
+func (o NFSBackupsOutput) KeepLast() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NFSBackups) *int { return v.KeepLast }).(pulumi.IntPtrOutput)
+}
+
+// The number of monthly backups to keep. Older backups will be removed.
+func (o NFSBackupsOutput) KeepMonthly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NFSBackups) *int { return v.KeepMonthly }).(pulumi.IntPtrOutput)
+}
+
+// The number of weekly backups to keep. Older backups will be removed.
+func (o NFSBackupsOutput) KeepWeekly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NFSBackups) *int { return v.KeepWeekly }).(pulumi.IntPtrOutput)
+}
+
+// The number of yearly backups to keep. Older backups will be removed.
+func (o NFSBackupsOutput) KeepYearly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NFSBackups) *int { return v.KeepYearly }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of protected backups per guest. Use '-1' for unlimited.
+func (o NFSBackupsOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NFSBackups) *int { return v.MaxProtectedBackups }).(pulumi.IntPtrOutput)
+}
+
+type NFSBackupsPtrOutput struct{ *pulumi.OutputState }
+
+func (NFSBackupsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NFSBackups)(nil)).Elem()
+}
+
+func (o NFSBackupsPtrOutput) ToNFSBackupsPtrOutput() NFSBackupsPtrOutput {
+	return o
+}
+
+func (o NFSBackupsPtrOutput) ToNFSBackupsPtrOutputWithContext(ctx context.Context) NFSBackupsPtrOutput {
+	return o
+}
+
+func (o NFSBackupsPtrOutput) Elem() NFSBackupsOutput {
+	return o.ApplyT(func(v *NFSBackups) NFSBackups {
+		if v != nil {
+			return *v
+		}
+		var ret NFSBackups
+		return ret
+	}).(NFSBackupsOutput)
+}
+
+// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+func (o NFSBackupsPtrOutput) KeepAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NFSBackups) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.KeepAll
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The number of daily backups to keep. Older backups will be removed.
+func (o NFSBackupsPtrOutput) KeepDaily() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NFSBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepDaily
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of hourly backups to keep. Older backups will be removed.
+func (o NFSBackupsPtrOutput) KeepHourly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NFSBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepHourly
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the number of the most recent backups to keep, regardless of their age.
+func (o NFSBackupsPtrOutput) KeepLast() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NFSBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepLast
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of monthly backups to keep. Older backups will be removed.
+func (o NFSBackupsPtrOutput) KeepMonthly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NFSBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepMonthly
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of weekly backups to keep. Older backups will be removed.
+func (o NFSBackupsPtrOutput) KeepWeekly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NFSBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepWeekly
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of yearly backups to keep. Older backups will be removed.
+func (o NFSBackupsPtrOutput) KeepYearly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NFSBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepYearly
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of protected backups per guest. Use '-1' for unlimited.
+func (o NFSBackupsPtrOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NFSBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxProtectedBackups
+	}).(pulumi.IntPtrOutput)
+}
+
+type PBSBackups struct {
+	// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+	KeepAll *bool `pulumi:"keepAll"`
+	// The number of daily backups to keep. Older backups will be removed.
+	KeepDaily *int `pulumi:"keepDaily"`
+	// The number of hourly backups to keep. Older backups will be removed.
+	KeepHourly *int `pulumi:"keepHourly"`
+	// Specifies the number of the most recent backups to keep, regardless of their age.
+	KeepLast *int `pulumi:"keepLast"`
+	// The number of monthly backups to keep. Older backups will be removed.
+	KeepMonthly *int `pulumi:"keepMonthly"`
+	// The number of weekly backups to keep. Older backups will be removed.
+	KeepWeekly *int `pulumi:"keepWeekly"`
+	// The number of yearly backups to keep. Older backups will be removed.
+	KeepYearly *int `pulumi:"keepYearly"`
+	// The maximum number of protected backups per guest. Use '-1' for unlimited.
+	MaxProtectedBackups *int `pulumi:"maxProtectedBackups"`
+}
+
+// PBSBackupsInput is an input type that accepts PBSBackupsArgs and PBSBackupsOutput values.
+// You can construct a concrete instance of `PBSBackupsInput` via:
+//
+//	PBSBackupsArgs{...}
+type PBSBackupsInput interface {
+	pulumi.Input
+
+	ToPBSBackupsOutput() PBSBackupsOutput
+	ToPBSBackupsOutputWithContext(context.Context) PBSBackupsOutput
+}
+
+type PBSBackupsArgs struct {
+	// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+	KeepAll pulumi.BoolPtrInput `pulumi:"keepAll"`
+	// The number of daily backups to keep. Older backups will be removed.
+	KeepDaily pulumi.IntPtrInput `pulumi:"keepDaily"`
+	// The number of hourly backups to keep. Older backups will be removed.
+	KeepHourly pulumi.IntPtrInput `pulumi:"keepHourly"`
+	// Specifies the number of the most recent backups to keep, regardless of their age.
+	KeepLast pulumi.IntPtrInput `pulumi:"keepLast"`
+	// The number of monthly backups to keep. Older backups will be removed.
+	KeepMonthly pulumi.IntPtrInput `pulumi:"keepMonthly"`
+	// The number of weekly backups to keep. Older backups will be removed.
+	KeepWeekly pulumi.IntPtrInput `pulumi:"keepWeekly"`
+	// The number of yearly backups to keep. Older backups will be removed.
+	KeepYearly pulumi.IntPtrInput `pulumi:"keepYearly"`
+	// The maximum number of protected backups per guest. Use '-1' for unlimited.
+	MaxProtectedBackups pulumi.IntPtrInput `pulumi:"maxProtectedBackups"`
+}
+
+func (PBSBackupsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PBSBackups)(nil)).Elem()
+}
+
+func (i PBSBackupsArgs) ToPBSBackupsOutput() PBSBackupsOutput {
+	return i.ToPBSBackupsOutputWithContext(context.Background())
+}
+
+func (i PBSBackupsArgs) ToPBSBackupsOutputWithContext(ctx context.Context) PBSBackupsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PBSBackupsOutput)
+}
+
+func (i PBSBackupsArgs) ToPBSBackupsPtrOutput() PBSBackupsPtrOutput {
+	return i.ToPBSBackupsPtrOutputWithContext(context.Background())
+}
+
+func (i PBSBackupsArgs) ToPBSBackupsPtrOutputWithContext(ctx context.Context) PBSBackupsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PBSBackupsOutput).ToPBSBackupsPtrOutputWithContext(ctx)
+}
+
+// PBSBackupsPtrInput is an input type that accepts PBSBackupsArgs, PBSBackupsPtr and PBSBackupsPtrOutput values.
+// You can construct a concrete instance of `PBSBackupsPtrInput` via:
+//
+//	        PBSBackupsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PBSBackupsPtrInput interface {
+	pulumi.Input
+
+	ToPBSBackupsPtrOutput() PBSBackupsPtrOutput
+	ToPBSBackupsPtrOutputWithContext(context.Context) PBSBackupsPtrOutput
+}
+
+type pbsbackupsPtrType PBSBackupsArgs
+
+func PBSBackupsPtr(v *PBSBackupsArgs) PBSBackupsPtrInput {
+	return (*pbsbackupsPtrType)(v)
+}
+
+func (*pbsbackupsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PBSBackups)(nil)).Elem()
+}
+
+func (i *pbsbackupsPtrType) ToPBSBackupsPtrOutput() PBSBackupsPtrOutput {
+	return i.ToPBSBackupsPtrOutputWithContext(context.Background())
+}
+
+func (i *pbsbackupsPtrType) ToPBSBackupsPtrOutputWithContext(ctx context.Context) PBSBackupsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PBSBackupsPtrOutput)
+}
+
+type PBSBackupsOutput struct{ *pulumi.OutputState }
+
+func (PBSBackupsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PBSBackups)(nil)).Elem()
+}
+
+func (o PBSBackupsOutput) ToPBSBackupsOutput() PBSBackupsOutput {
+	return o
+}
+
+func (o PBSBackupsOutput) ToPBSBackupsOutputWithContext(ctx context.Context) PBSBackupsOutput {
+	return o
+}
+
+func (o PBSBackupsOutput) ToPBSBackupsPtrOutput() PBSBackupsPtrOutput {
+	return o.ToPBSBackupsPtrOutputWithContext(context.Background())
+}
+
+func (o PBSBackupsOutput) ToPBSBackupsPtrOutputWithContext(ctx context.Context) PBSBackupsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PBSBackups) *PBSBackups {
+		return &v
+	}).(PBSBackupsPtrOutput)
+}
+
+// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+func (o PBSBackupsOutput) KeepAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PBSBackups) *bool { return v.KeepAll }).(pulumi.BoolPtrOutput)
+}
+
+// The number of daily backups to keep. Older backups will be removed.
+func (o PBSBackupsOutput) KeepDaily() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PBSBackups) *int { return v.KeepDaily }).(pulumi.IntPtrOutput)
+}
+
+// The number of hourly backups to keep. Older backups will be removed.
+func (o PBSBackupsOutput) KeepHourly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PBSBackups) *int { return v.KeepHourly }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the number of the most recent backups to keep, regardless of their age.
+func (o PBSBackupsOutput) KeepLast() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PBSBackups) *int { return v.KeepLast }).(pulumi.IntPtrOutput)
+}
+
+// The number of monthly backups to keep. Older backups will be removed.
+func (o PBSBackupsOutput) KeepMonthly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PBSBackups) *int { return v.KeepMonthly }).(pulumi.IntPtrOutput)
+}
+
+// The number of weekly backups to keep. Older backups will be removed.
+func (o PBSBackupsOutput) KeepWeekly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PBSBackups) *int { return v.KeepWeekly }).(pulumi.IntPtrOutput)
+}
+
+// The number of yearly backups to keep. Older backups will be removed.
+func (o PBSBackupsOutput) KeepYearly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PBSBackups) *int { return v.KeepYearly }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of protected backups per guest. Use '-1' for unlimited.
+func (o PBSBackupsOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PBSBackups) *int { return v.MaxProtectedBackups }).(pulumi.IntPtrOutput)
+}
+
+type PBSBackupsPtrOutput struct{ *pulumi.OutputState }
+
+func (PBSBackupsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PBSBackups)(nil)).Elem()
+}
+
+func (o PBSBackupsPtrOutput) ToPBSBackupsPtrOutput() PBSBackupsPtrOutput {
+	return o
+}
+
+func (o PBSBackupsPtrOutput) ToPBSBackupsPtrOutputWithContext(ctx context.Context) PBSBackupsPtrOutput {
+	return o
+}
+
+func (o PBSBackupsPtrOutput) Elem() PBSBackupsOutput {
+	return o.ApplyT(func(v *PBSBackups) PBSBackups {
+		if v != nil {
+			return *v
+		}
+		var ret PBSBackups
+		return ret
+	}).(PBSBackupsOutput)
+}
+
+// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+func (o PBSBackupsPtrOutput) KeepAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PBSBackups) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.KeepAll
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The number of daily backups to keep. Older backups will be removed.
+func (o PBSBackupsPtrOutput) KeepDaily() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PBSBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepDaily
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of hourly backups to keep. Older backups will be removed.
+func (o PBSBackupsPtrOutput) KeepHourly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PBSBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepHourly
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the number of the most recent backups to keep, regardless of their age.
+func (o PBSBackupsPtrOutput) KeepLast() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PBSBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepLast
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of monthly backups to keep. Older backups will be removed.
+func (o PBSBackupsPtrOutput) KeepMonthly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PBSBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepMonthly
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of weekly backups to keep. Older backups will be removed.
+func (o PBSBackupsPtrOutput) KeepWeekly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PBSBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepWeekly
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of yearly backups to keep. Older backups will be removed.
+func (o PBSBackupsPtrOutput) KeepYearly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PBSBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepYearly
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of protected backups per guest. Use '-1' for unlimited.
+func (o PBSBackupsPtrOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PBSBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxProtectedBackups
+	}).(pulumi.IntPtrOutput)
+}
+
 type GetDatastoresDatastore struct {
 	// Whether the store is active.
 	Active *bool `pulumi:"active"`
@@ -799,18 +1879,34 @@ func (o GetDatastoresFiltersPtrOutput) Target() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CIFSBackupsInput)(nil)).Elem(), CIFSBackupsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CIFSBackupsPtrInput)(nil)).Elem(), CIFSBackupsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryBackupsInput)(nil)).Elem(), DirectoryBackupsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryBackupsPtrInput)(nil)).Elem(), DirectoryBackupsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileSourceFileInput)(nil)).Elem(), FileSourceFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileSourceFilePtrInput)(nil)).Elem(), FileSourceFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileSourceRawInput)(nil)).Elem(), FileSourceRawArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FileSourceRawPtrInput)(nil)).Elem(), FileSourceRawArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NFSBackupsInput)(nil)).Elem(), NFSBackupsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NFSBackupsPtrInput)(nil)).Elem(), NFSBackupsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PBSBackupsInput)(nil)).Elem(), PBSBackupsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PBSBackupsPtrInput)(nil)).Elem(), PBSBackupsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatastoresDatastoreInput)(nil)).Elem(), GetDatastoresDatastoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatastoresDatastoreArrayInput)(nil)).Elem(), GetDatastoresDatastoreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatastoresFiltersInput)(nil)).Elem(), GetDatastoresFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatastoresFiltersPtrInput)(nil)).Elem(), GetDatastoresFiltersArgs{})
+	pulumi.RegisterOutputType(CIFSBackupsOutput{})
+	pulumi.RegisterOutputType(CIFSBackupsPtrOutput{})
+	pulumi.RegisterOutputType(DirectoryBackupsOutput{})
+	pulumi.RegisterOutputType(DirectoryBackupsPtrOutput{})
 	pulumi.RegisterOutputType(FileSourceFileOutput{})
 	pulumi.RegisterOutputType(FileSourceFilePtrOutput{})
 	pulumi.RegisterOutputType(FileSourceRawOutput{})
 	pulumi.RegisterOutputType(FileSourceRawPtrOutput{})
+	pulumi.RegisterOutputType(NFSBackupsOutput{})
+	pulumi.RegisterOutputType(NFSBackupsPtrOutput{})
+	pulumi.RegisterOutputType(PBSBackupsOutput{})
+	pulumi.RegisterOutputType(PBSBackupsPtrOutput{})
 	pulumi.RegisterOutputType(GetDatastoresDatastoreOutput{})
 	pulumi.RegisterOutputType(GetDatastoresDatastoreArrayOutput{})
 	pulumi.RegisterOutputType(GetDatastoresFiltersOutput{})

@@ -16,8 +16,17 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'ClonedVirtualMachineCdrom',
+    'ClonedVirtualMachineClone',
+    'ClonedVirtualMachineCpu',
+    'ClonedVirtualMachineDelete',
+    'ClonedVirtualMachineDisk',
+    'ClonedVirtualMachineMemory',
+    'ClonedVirtualMachineNetwork',
+    'ClonedVirtualMachineRng',
+    'ClonedVirtualMachineTimeouts',
+    'ClonedVirtualMachineVga',
     'VirtualMachine2Cdrom',
-    'VirtualMachine2Clone',
     'VirtualMachine2Cpu',
     'VirtualMachine2Rng',
     'VirtualMachine2Timeouts',
@@ -57,7 +66,7 @@ __all__ = [
 ]
 
 @pulumi.output_type
-class VirtualMachine2Cdrom(dict):
+class ClonedVirtualMachineCdrom(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -65,14 +74,14 @@ class VirtualMachine2Cdrom(dict):
             suggest = "file_id"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in VirtualMachine2Cdrom. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in ClonedVirtualMachineCdrom. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        VirtualMachine2Cdrom.__key_warning(key)
+        ClonedVirtualMachineCdrom.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        VirtualMachine2Cdrom.__key_warning(key)
+        ClonedVirtualMachineCdrom.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -93,37 +102,150 @@ class VirtualMachine2Cdrom(dict):
 
 
 @pulumi.output_type
-class VirtualMachine2Clone(dict):
+class ClonedVirtualMachineClone(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceVmId":
+            suggest = "source_vm_id"
+        elif key == "bandwidthLimit":
+            suggest = "bandwidth_limit"
+        elif key == "poolId":
+            suggest = "pool_id"
+        elif key == "snapshotName":
+            suggest = "snapshot_name"
+        elif key == "sourceNodeName":
+            suggest = "source_node_name"
+        elif key == "targetDatastore":
+            suggest = "target_datastore"
+        elif key == "targetFormat":
+            suggest = "target_format"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClonedVirtualMachineClone. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClonedVirtualMachineClone.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClonedVirtualMachineClone.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 id: _builtins.int,
-                 retries: Optional[_builtins.int] = None):
+                 source_vm_id: _builtins.int,
+                 bandwidth_limit: Optional[_builtins.int] = None,
+                 full: Optional[_builtins.bool] = None,
+                 pool_id: Optional[_builtins.str] = None,
+                 retries: Optional[_builtins.int] = None,
+                 snapshot_name: Optional[_builtins.str] = None,
+                 source_node_name: Optional[_builtins.str] = None,
+                 target_datastore: Optional[_builtins.str] = None,
+                 target_format: Optional[_builtins.str] = None):
         """
-        :param _builtins.int id: The ID of the VM to clone.
-        :param _builtins.int retries: The number of retries to perform when cloning the VM (default: 3).
+        :param _builtins.int source_vm_id: Source VM/template ID to clone from.
+        :param _builtins.int bandwidth_limit: Clone bandwidth limit in MB/s.
+        :param _builtins.bool full: Perform a full clone (true) or linked clone (false).
+        :param _builtins.str pool_id: Pool to assign the cloned VM to.
+        :param _builtins.int retries: Number of retries for clone operations.
+        :param _builtins.str snapshot_name: Snapshot name to clone from.
+        :param _builtins.str source_node_name: Source node of the VM/template. Defaults to target node if unset.
+        :param _builtins.str target_datastore: Target datastore for cloned disks.
+        :param _builtins.str target_format: Target disk format for clone (e.g., raw, qcow2).
         """
-        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "source_vm_id", source_vm_id)
+        if bandwidth_limit is not None:
+            pulumi.set(__self__, "bandwidth_limit", bandwidth_limit)
+        if full is not None:
+            pulumi.set(__self__, "full", full)
+        if pool_id is not None:
+            pulumi.set(__self__, "pool_id", pool_id)
         if retries is not None:
             pulumi.set(__self__, "retries", retries)
+        if snapshot_name is not None:
+            pulumi.set(__self__, "snapshot_name", snapshot_name)
+        if source_node_name is not None:
+            pulumi.set(__self__, "source_node_name", source_node_name)
+        if target_datastore is not None:
+            pulumi.set(__self__, "target_datastore", target_datastore)
+        if target_format is not None:
+            pulumi.set(__self__, "target_format", target_format)
+
+    @_builtins.property
+    @pulumi.getter(name="sourceVmId")
+    def source_vm_id(self) -> _builtins.int:
+        """
+        Source VM/template ID to clone from.
+        """
+        return pulumi.get(self, "source_vm_id")
+
+    @_builtins.property
+    @pulumi.getter(name="bandwidthLimit")
+    def bandwidth_limit(self) -> Optional[_builtins.int]:
+        """
+        Clone bandwidth limit in MB/s.
+        """
+        return pulumi.get(self, "bandwidth_limit")
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> _builtins.int:
+    def full(self) -> Optional[_builtins.bool]:
         """
-        The ID of the VM to clone.
+        Perform a full clone (true) or linked clone (false).
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "full")
+
+    @_builtins.property
+    @pulumi.getter(name="poolId")
+    def pool_id(self) -> Optional[_builtins.str]:
+        """
+        Pool to assign the cloned VM to.
+        """
+        return pulumi.get(self, "pool_id")
 
     @_builtins.property
     @pulumi.getter
     def retries(self) -> Optional[_builtins.int]:
         """
-        The number of retries to perform when cloning the VM (default: 3).
+        Number of retries for clone operations.
         """
         return pulumi.get(self, "retries")
 
+    @_builtins.property
+    @pulumi.getter(name="snapshotName")
+    def snapshot_name(self) -> Optional[_builtins.str]:
+        """
+        Snapshot name to clone from.
+        """
+        return pulumi.get(self, "snapshot_name")
+
+    @_builtins.property
+    @pulumi.getter(name="sourceNodeName")
+    def source_node_name(self) -> Optional[_builtins.str]:
+        """
+        Source node of the VM/template. Defaults to target node if unset.
+        """
+        return pulumi.get(self, "source_node_name")
+
+    @_builtins.property
+    @pulumi.getter(name="targetDatastore")
+    def target_datastore(self) -> Optional[_builtins.str]:
+        """
+        Target datastore for cloned disks.
+        """
+        return pulumi.get(self, "target_datastore")
+
+    @_builtins.property
+    @pulumi.getter(name="targetFormat")
+    def target_format(self) -> Optional[_builtins.str]:
+        """
+        Target disk format for clone (e.g., raw, qcow2).
+        """
+        return pulumi.get(self, "target_format")
+
 
 @pulumi.output_type
-class VirtualMachine2Cpu(dict):
+class ClonedVirtualMachineCpu(dict):
     def __init__(__self__, *,
                  affinity: Optional[_builtins.str] = None,
                  architecture: Optional[_builtins.str] = None,
@@ -137,7 +259,7 @@ class VirtualMachine2Cpu(dict):
                  units: Optional[_builtins.int] = None):
         """
         :param _builtins.str affinity: The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
-        :param _builtins.str architecture: The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `affinity` is only allowed for `root@pam` authenticated user.
+        :param _builtins.str architecture: The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
         :param _builtins.int cores: The number of CPU cores per socket (defaults to `1`).
         :param Sequence[_builtins.str] flags: Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
         :param _builtins.int hotplugged: The number of hotplugged vCPUs (defaults to `0`).
@@ -180,7 +302,797 @@ class VirtualMachine2Cpu(dict):
     @pulumi.getter
     def architecture(self) -> Optional[_builtins.str]:
         """
-        The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `affinity` is only allowed for `root@pam` authenticated user.
+        The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
+        """
+        return pulumi.get(self, "architecture")
+
+    @_builtins.property
+    @pulumi.getter
+    def cores(self) -> Optional[_builtins.int]:
+        """
+        The number of CPU cores per socket (defaults to `1`).
+        """
+        return pulumi.get(self, "cores")
+
+    @_builtins.property
+    @pulumi.getter
+    def flags(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+        """
+        return pulumi.get(self, "flags")
+
+    @_builtins.property
+    @pulumi.getter
+    def hotplugged(self) -> Optional[_builtins.int]:
+        """
+        The number of hotplugged vCPUs (defaults to `0`).
+        """
+        return pulumi.get(self, "hotplugged")
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.int]:
+        """
+        Limit of CPU usage (defaults to `0` which means no limit).
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def numa(self) -> Optional[_builtins.bool]:
+        """
+        Enable NUMA (defaults to `false`).
+        """
+        return pulumi.get(self, "numa")
+
+    @_builtins.property
+    @pulumi.getter
+    def sockets(self) -> Optional[_builtins.int]:
+        """
+        The number of CPU sockets (defaults to `1`).
+        """
+        return pulumi.get(self, "sockets")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def units(self) -> Optional[_builtins.int]:
+        """
+        CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+        """
+        return pulumi.get(self, "units")
+
+
+@pulumi.output_type
+class ClonedVirtualMachineDelete(dict):
+    def __init__(__self__, *,
+                 disks: Optional[Sequence[_builtins.str]] = None,
+                 networks: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param Sequence[_builtins.str] disks: Disk slots to delete (e.g., scsi2).
+        :param Sequence[_builtins.str] networks: Network slots to delete (e.g., net1).
+        """
+        if disks is not None:
+            pulumi.set(__self__, "disks", disks)
+        if networks is not None:
+            pulumi.set(__self__, "networks", networks)
+
+    @_builtins.property
+    @pulumi.getter
+    def disks(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Disk slots to delete (e.g., scsi2).
+        """
+        return pulumi.get(self, "disks")
+
+    @_builtins.property
+    @pulumi.getter
+    def networks(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Network slots to delete (e.g., net1).
+        """
+        return pulumi.get(self, "networks")
+
+
+@pulumi.output_type
+class ClonedVirtualMachineDisk(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datastoreId":
+            suggest = "datastore_id"
+        elif key == "importFrom":
+            suggest = "import_from"
+        elif key == "sizeGb":
+            suggest = "size_gb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClonedVirtualMachineDisk. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClonedVirtualMachineDisk.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClonedVirtualMachineDisk.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 aio: Optional[_builtins.str] = None,
+                 backup: Optional[_builtins.bool] = None,
+                 cache: Optional[_builtins.str] = None,
+                 datastore_id: Optional[_builtins.str] = None,
+                 discard: Optional[_builtins.str] = None,
+                 file: Optional[_builtins.str] = None,
+                 format: Optional[_builtins.str] = None,
+                 import_from: Optional[_builtins.str] = None,
+                 iothread: Optional[_builtins.bool] = None,
+                 media: Optional[_builtins.str] = None,
+                 replicate: Optional[_builtins.bool] = None,
+                 serial: Optional[_builtins.str] = None,
+                 size_gb: Optional[_builtins.int] = None,
+                 ssd: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.str aio: AIO mode (io_uring, native, threads).
+        :param _builtins.bool backup: Include disk in backups.
+        :param _builtins.str cache: Cache mode.
+        :param _builtins.str datastore_id: Target datastore for new disks when file is not provided.
+        :param _builtins.str discard: Discard/trim behavior.
+        :param _builtins.str file: Existing volume reference (e.g., local-lvm:vm-100-disk-0).
+        :param _builtins.str format: Disk format (raw, qcow2, vmdk).
+        :param _builtins.str import_from: Import source volume/file id.
+        :param _builtins.bool iothread: Use IO thread.
+        :param _builtins.str media: Disk media (e.g., disk, cdrom).
+        :param _builtins.bool replicate: Consider disk for replication.
+        :param _builtins.str serial: Disk serial number.
+        :param _builtins.int size_gb: Disk size (GiB) when creating new disks. **Note:** Disk shrinking is not supported. Attempting to set `size_gb` to a value smaller than the current disk size will result in an error. Only disk expansion is allowed.
+        :param _builtins.bool ssd: Mark disk as SSD.
+        """
+        if aio is not None:
+            pulumi.set(__self__, "aio", aio)
+        if backup is not None:
+            pulumi.set(__self__, "backup", backup)
+        if cache is not None:
+            pulumi.set(__self__, "cache", cache)
+        if datastore_id is not None:
+            pulumi.set(__self__, "datastore_id", datastore_id)
+        if discard is not None:
+            pulumi.set(__self__, "discard", discard)
+        if file is not None:
+            pulumi.set(__self__, "file", file)
+        if format is not None:
+            pulumi.set(__self__, "format", format)
+        if import_from is not None:
+            pulumi.set(__self__, "import_from", import_from)
+        if iothread is not None:
+            pulumi.set(__self__, "iothread", iothread)
+        if media is not None:
+            pulumi.set(__self__, "media", media)
+        if replicate is not None:
+            pulumi.set(__self__, "replicate", replicate)
+        if serial is not None:
+            pulumi.set(__self__, "serial", serial)
+        if size_gb is not None:
+            pulumi.set(__self__, "size_gb", size_gb)
+        if ssd is not None:
+            pulumi.set(__self__, "ssd", ssd)
+
+    @_builtins.property
+    @pulumi.getter
+    def aio(self) -> Optional[_builtins.str]:
+        """
+        AIO mode (io_uring, native, threads).
+        """
+        return pulumi.get(self, "aio")
+
+    @_builtins.property
+    @pulumi.getter
+    def backup(self) -> Optional[_builtins.bool]:
+        """
+        Include disk in backups.
+        """
+        return pulumi.get(self, "backup")
+
+    @_builtins.property
+    @pulumi.getter
+    def cache(self) -> Optional[_builtins.str]:
+        """
+        Cache mode.
+        """
+        return pulumi.get(self, "cache")
+
+    @_builtins.property
+    @pulumi.getter(name="datastoreId")
+    def datastore_id(self) -> Optional[_builtins.str]:
+        """
+        Target datastore for new disks when file is not provided.
+        """
+        return pulumi.get(self, "datastore_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def discard(self) -> Optional[_builtins.str]:
+        """
+        Discard/trim behavior.
+        """
+        return pulumi.get(self, "discard")
+
+    @_builtins.property
+    @pulumi.getter
+    def file(self) -> Optional[_builtins.str]:
+        """
+        Existing volume reference (e.g., local-lvm:vm-100-disk-0).
+        """
+        return pulumi.get(self, "file")
+
+    @_builtins.property
+    @pulumi.getter
+    def format(self) -> Optional[_builtins.str]:
+        """
+        Disk format (raw, qcow2, vmdk).
+        """
+        return pulumi.get(self, "format")
+
+    @_builtins.property
+    @pulumi.getter(name="importFrom")
+    def import_from(self) -> Optional[_builtins.str]:
+        """
+        Import source volume/file id.
+        """
+        return pulumi.get(self, "import_from")
+
+    @_builtins.property
+    @pulumi.getter
+    def iothread(self) -> Optional[_builtins.bool]:
+        """
+        Use IO thread.
+        """
+        return pulumi.get(self, "iothread")
+
+    @_builtins.property
+    @pulumi.getter
+    def media(self) -> Optional[_builtins.str]:
+        """
+        Disk media (e.g., disk, cdrom).
+        """
+        return pulumi.get(self, "media")
+
+    @_builtins.property
+    @pulumi.getter
+    def replicate(self) -> Optional[_builtins.bool]:
+        """
+        Consider disk for replication.
+        """
+        return pulumi.get(self, "replicate")
+
+    @_builtins.property
+    @pulumi.getter
+    def serial(self) -> Optional[_builtins.str]:
+        """
+        Disk serial number.
+        """
+        return pulumi.get(self, "serial")
+
+    @_builtins.property
+    @pulumi.getter(name="sizeGb")
+    def size_gb(self) -> Optional[_builtins.int]:
+        """
+        Disk size (GiB) when creating new disks. **Note:** Disk shrinking is not supported. Attempting to set `size_gb` to a value smaller than the current disk size will result in an error. Only disk expansion is allowed.
+        """
+        return pulumi.get(self, "size_gb")
+
+    @_builtins.property
+    @pulumi.getter
+    def ssd(self) -> Optional[_builtins.bool]:
+        """
+        Mark disk as SSD.
+        """
+        return pulumi.get(self, "ssd")
+
+
+@pulumi.output_type
+class ClonedVirtualMachineMemory(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keepHugepages":
+            suggest = "keep_hugepages"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClonedVirtualMachineMemory. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClonedVirtualMachineMemory.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClonedVirtualMachineMemory.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 balloon: Optional[_builtins.int] = None,
+                 hugepages: Optional[_builtins.str] = None,
+                 keep_hugepages: Optional[_builtins.bool] = None,
+                 shares: Optional[_builtins.int] = None,
+                 size: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int balloon: Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely (defaults to `0`).
+        :param _builtins.str hugepages: Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses. 
+               
+               **Options:**
+               - `2` - Use 2 MiB hugepages
+               - `1024` - Use 1 GiB hugepages
+               - `any` - Use any available hugepage size
+        :param _builtins.bool keep_hugepages: Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup (defaults to `false`).
+        :param _builtins.int shares: CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs (defaults to `1000`).
+        :param _builtins.int size: Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM (defaults to `512` MiB).
+        """
+        if balloon is not None:
+            pulumi.set(__self__, "balloon", balloon)
+        if hugepages is not None:
+            pulumi.set(__self__, "hugepages", hugepages)
+        if keep_hugepages is not None:
+            pulumi.set(__self__, "keep_hugepages", keep_hugepages)
+        if shares is not None:
+            pulumi.set(__self__, "shares", shares)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+
+    @_builtins.property
+    @pulumi.getter
+    def balloon(self) -> Optional[_builtins.int]:
+        """
+        Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely (defaults to `0`).
+        """
+        return pulumi.get(self, "balloon")
+
+    @_builtins.property
+    @pulumi.getter
+    def hugepages(self) -> Optional[_builtins.str]:
+        """
+        Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses. 
+
+        **Options:**
+        - `2` - Use 2 MiB hugepages
+        - `1024` - Use 1 GiB hugepages
+        - `any` - Use any available hugepage size
+        """
+        return pulumi.get(self, "hugepages")
+
+    @_builtins.property
+    @pulumi.getter(name="keepHugepages")
+    def keep_hugepages(self) -> Optional[_builtins.bool]:
+        """
+        Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup (defaults to `false`).
+        """
+        return pulumi.get(self, "keep_hugepages")
+
+    @_builtins.property
+    @pulumi.getter
+    def shares(self) -> Optional[_builtins.int]:
+        """
+        CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs (defaults to `1000`).
+        """
+        return pulumi.get(self, "shares")
+
+    @_builtins.property
+    @pulumi.getter
+    def size(self) -> Optional[_builtins.int]:
+        """
+        Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM (defaults to `512` MiB).
+        """
+        return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class ClonedVirtualMachineNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linkDown":
+            suggest = "link_down"
+        elif key == "macAddress":
+            suggest = "mac_address"
+        elif key == "rateLimit":
+            suggest = "rate_limit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClonedVirtualMachineNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClonedVirtualMachineNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClonedVirtualMachineNetwork.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bridge: Optional[_builtins.str] = None,
+                 firewall: Optional[_builtins.bool] = None,
+                 link_down: Optional[_builtins.bool] = None,
+                 mac_address: Optional[_builtins.str] = None,
+                 model: Optional[_builtins.str] = None,
+                 mtu: Optional[_builtins.int] = None,
+                 queues: Optional[_builtins.int] = None,
+                 rate_limit: Optional[_builtins.float] = None,
+                 tag: Optional[_builtins.int] = None,
+                 trunks: Optional[Sequence[_builtins.int]] = None):
+        """
+        :param _builtins.str bridge: Bridge name.
+        :param _builtins.bool firewall: Enable firewall on this interface.
+        :param _builtins.bool link_down: Keep link down.
+        :param _builtins.str mac_address: MAC address (computed if omitted).
+        :param _builtins.str model: NIC model (e.g., virtio, e1000).
+        :param _builtins.int mtu: Interface MTU.
+        :param _builtins.int queues: Number of multiqueue NIC queues.
+        :param _builtins.float rate_limit: Rate limit (MB/s).
+        :param _builtins.int tag: VLAN tag.
+        :param Sequence[_builtins.int] trunks: Trunk VLAN IDs.
+        """
+        if bridge is not None:
+            pulumi.set(__self__, "bridge", bridge)
+        if firewall is not None:
+            pulumi.set(__self__, "firewall", firewall)
+        if link_down is not None:
+            pulumi.set(__self__, "link_down", link_down)
+        if mac_address is not None:
+            pulumi.set(__self__, "mac_address", mac_address)
+        if model is not None:
+            pulumi.set(__self__, "model", model)
+        if mtu is not None:
+            pulumi.set(__self__, "mtu", mtu)
+        if queues is not None:
+            pulumi.set(__self__, "queues", queues)
+        if rate_limit is not None:
+            pulumi.set(__self__, "rate_limit", rate_limit)
+        if tag is not None:
+            pulumi.set(__self__, "tag", tag)
+        if trunks is not None:
+            pulumi.set(__self__, "trunks", trunks)
+
+    @_builtins.property
+    @pulumi.getter
+    def bridge(self) -> Optional[_builtins.str]:
+        """
+        Bridge name.
+        """
+        return pulumi.get(self, "bridge")
+
+    @_builtins.property
+    @pulumi.getter
+    def firewall(self) -> Optional[_builtins.bool]:
+        """
+        Enable firewall on this interface.
+        """
+        return pulumi.get(self, "firewall")
+
+    @_builtins.property
+    @pulumi.getter(name="linkDown")
+    def link_down(self) -> Optional[_builtins.bool]:
+        """
+        Keep link down.
+        """
+        return pulumi.get(self, "link_down")
+
+    @_builtins.property
+    @pulumi.getter(name="macAddress")
+    def mac_address(self) -> Optional[_builtins.str]:
+        """
+        MAC address (computed if omitted).
+        """
+        return pulumi.get(self, "mac_address")
+
+    @_builtins.property
+    @pulumi.getter
+    def model(self) -> Optional[_builtins.str]:
+        """
+        NIC model (e.g., virtio, e1000).
+        """
+        return pulumi.get(self, "model")
+
+    @_builtins.property
+    @pulumi.getter
+    def mtu(self) -> Optional[_builtins.int]:
+        """
+        Interface MTU.
+        """
+        return pulumi.get(self, "mtu")
+
+    @_builtins.property
+    @pulumi.getter
+    def queues(self) -> Optional[_builtins.int]:
+        """
+        Number of multiqueue NIC queues.
+        """
+        return pulumi.get(self, "queues")
+
+    @_builtins.property
+    @pulumi.getter(name="rateLimit")
+    def rate_limit(self) -> Optional[_builtins.float]:
+        """
+        Rate limit (MB/s).
+        """
+        return pulumi.get(self, "rate_limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def tag(self) -> Optional[_builtins.int]:
+        """
+        VLAN tag.
+        """
+        return pulumi.get(self, "tag")
+
+    @_builtins.property
+    @pulumi.getter
+    def trunks(self) -> Optional[Sequence[_builtins.int]]:
+        """
+        Trunk VLAN IDs.
+        """
+        return pulumi.get(self, "trunks")
+
+
+@pulumi.output_type
+class ClonedVirtualMachineRng(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxBytes":
+            suggest = "max_bytes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClonedVirtualMachineRng. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClonedVirtualMachineRng.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClonedVirtualMachineRng.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_bytes: Optional[_builtins.int] = None,
+                 period: Optional[_builtins.int] = None,
+                 source: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int max_bytes: Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+        :param _builtins.int period: Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+        :param _builtins.str source: The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+        """
+        if max_bytes is not None:
+            pulumi.set(__self__, "max_bytes", max_bytes)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+
+    @_builtins.property
+    @pulumi.getter(name="maxBytes")
+    def max_bytes(self) -> Optional[_builtins.int]:
+        """
+        Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+        """
+        return pulumi.get(self, "max_bytes")
+
+    @_builtins.property
+    @pulumi.getter
+    def period(self) -> Optional[_builtins.int]:
+        """
+        Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+        """
+        return pulumi.get(self, "period")
+
+    @_builtins.property
+    @pulumi.getter
+    def source(self) -> Optional[_builtins.str]:
+        """
+        The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+        """
+        return pulumi.get(self, "source")
+
+
+@pulumi.output_type
+class ClonedVirtualMachineTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class ClonedVirtualMachineVga(dict):
+    def __init__(__self__, *,
+                 clipboard: Optional[_builtins.str] = None,
+                 memory: Optional[_builtins.int] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str clipboard: Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+        :param _builtins.int memory: The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+        :param _builtins.str type: The VGA type (defaults to `std`).
+        """
+        if clipboard is not None:
+            pulumi.set(__self__, "clipboard", clipboard)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def clipboard(self) -> Optional[_builtins.str]:
+        """
+        Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+        """
+        return pulumi.get(self, "clipboard")
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> Optional[_builtins.int]:
+        """
+        The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+        """
+        return pulumi.get(self, "memory")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        The VGA type (defaults to `std`).
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class VirtualMachine2Cdrom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fileId":
+            suggest = "file_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VirtualMachine2Cdrom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VirtualMachine2Cdrom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VirtualMachine2Cdrom.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 file_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str file_id: The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+        """
+        if file_id is not None:
+            pulumi.set(__self__, "file_id", file_id)
+
+    @_builtins.property
+    @pulumi.getter(name="fileId")
+    def file_id(self) -> Optional[_builtins.str]:
+        """
+        The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+        """
+        return pulumi.get(self, "file_id")
+
+
+@pulumi.output_type
+class VirtualMachine2Cpu(dict):
+    def __init__(__self__, *,
+                 affinity: Optional[_builtins.str] = None,
+                 architecture: Optional[_builtins.str] = None,
+                 cores: Optional[_builtins.int] = None,
+                 flags: Optional[Sequence[_builtins.str]] = None,
+                 hotplugged: Optional[_builtins.int] = None,
+                 limit: Optional[_builtins.int] = None,
+                 numa: Optional[_builtins.bool] = None,
+                 sockets: Optional[_builtins.int] = None,
+                 type: Optional[_builtins.str] = None,
+                 units: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str affinity: The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+        :param _builtins.str architecture: The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
+        :param _builtins.int cores: The number of CPU cores per socket (defaults to `1`).
+        :param Sequence[_builtins.str] flags: Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+        :param _builtins.int hotplugged: The number of hotplugged vCPUs (defaults to `0`).
+        :param _builtins.int limit: Limit of CPU usage (defaults to `0` which means no limit).
+        :param _builtins.bool numa: Enable NUMA (defaults to `false`).
+        :param _builtins.int sockets: The number of CPU sockets (defaults to `1`).
+        :param _builtins.str type: Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+        :param _builtins.int units: CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+        """
+        if affinity is not None:
+            pulumi.set(__self__, "affinity", affinity)
+        if architecture is not None:
+            pulumi.set(__self__, "architecture", architecture)
+        if cores is not None:
+            pulumi.set(__self__, "cores", cores)
+        if flags is not None:
+            pulumi.set(__self__, "flags", flags)
+        if hotplugged is not None:
+            pulumi.set(__self__, "hotplugged", hotplugged)
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if numa is not None:
+            pulumi.set(__self__, "numa", numa)
+        if sockets is not None:
+            pulumi.set(__self__, "sockets", sockets)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if units is not None:
+            pulumi.set(__self__, "units", units)
+
+    @_builtins.property
+    @pulumi.getter
+    def affinity(self) -> Optional[_builtins.str]:
+        """
+        The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+        """
+        return pulumi.get(self, "affinity")
+
+    @_builtins.property
+    @pulumi.getter
+    def architecture(self) -> Optional[_builtins.str]:
+        """
+        The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
         """
         return pulumi.get(self, "architecture")
 
@@ -1086,10 +1998,14 @@ class VirtualMachineDisk(dict):
         :param _builtins.str file_format: The file format.
         :param _builtins.str file_id: The file ID for a disk image when importing a disk into VM. The ID format is
                `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
-               `Download.File` resource. *Deprecated*, use `import_from` instead.
-        :param _builtins.str import_from: The file ID for a disk image to import into VM. The image must be of `import` content type.
-               The ID format is `<datastore_id>:import/<file_name>`, for example `local:import/centos8.qcow2`. Can be also taken from
-               a disk replacement operation, which will require a VM reboot. Your original disks will remain as detached disks.
+               `Download.File` resource. Prefer `import_from` for uncompressed images.
+               Use `file_id` when working with compressed cloud images (e.g., `.qcow2.xz`) that were downloaded
+               with `content_type = "iso"` and `decompression_algorithm` set. See the
+               Create a VM from a Cloud Image guide for examples.
+        :param _builtins.str import_from: The file ID for a disk image to import into VM. The image must be of `import` content type
+               (uncompressed images only). The ID format is `<datastore_id>:import/<file_name>`, for example `local:import/centos8.qcow2`.
+               Can be also taken from `Download.File` resource. Note: compressed images downloaded with
+               `decompression_algorithm` cannot use `import_from`; use `file_id` instead.
         :param _builtins.bool iothread: Whether to use iothreads for this disk (defaults
                to `false`).
         :param _builtins.str path_in_datastore: The in-datastore path to the disk image.
@@ -1204,7 +2120,10 @@ class VirtualMachineDisk(dict):
         """
         The file ID for a disk image when importing a disk into VM. The ID format is
         `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
-        `Download.File` resource. *Deprecated*, use `import_from` instead.
+        `Download.File` resource. Prefer `import_from` for uncompressed images.
+        Use `file_id` when working with compressed cloud images (e.g., `.qcow2.xz`) that were downloaded
+        with `content_type = "iso"` and `decompression_algorithm` set. See the
+        Create a VM from a Cloud Image guide for examples.
         """
         return pulumi.get(self, "file_id")
 
@@ -1212,9 +2131,10 @@ class VirtualMachineDisk(dict):
     @pulumi.getter(name="importFrom")
     def import_from(self) -> Optional[_builtins.str]:
         """
-        The file ID for a disk image to import into VM. The image must be of `import` content type.
-        The ID format is `<datastore_id>:import/<file_name>`, for example `local:import/centos8.qcow2`. Can be also taken from
-        a disk replacement operation, which will require a VM reboot. Your original disks will remain as detached disks.
+        The file ID for a disk image to import into VM. The image must be of `import` content type
+        (uncompressed images only). The ID format is `<datastore_id>:import/<file_name>`, for example `local:import/centos8.qcow2`.
+        Can be also taken from `Download.File` resource. Note: compressed images downloaded with
+        `decompression_algorithm` cannot use `import_from`; use `file_id` instead.
         """
         return pulumi.get(self, "import_from")
 

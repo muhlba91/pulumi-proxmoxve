@@ -80,10 +80,13 @@ import * as ha from "./ha";
 import * as hardware from "./hardware";
 import * as metrics from "./metrics";
 import * as network from "./network";
+import * as node from "./node";
 import * as oci from "./oci";
 import * as permission from "./permission";
 import * as pool from "./pool";
+import * as realm from "./realm";
 import * as sdn from "./sdn";
+import * as sdnfabric from "./sdnfabric";
 import * as sdnzone from "./sdnzone";
 import * as storage from "./storage";
 import * as types from "./types";
@@ -101,10 +104,13 @@ export {
     hardware,
     metrics,
     network,
+    node,
     oci,
     permission,
     pool,
+    realm,
     sdn,
+    sdnfabric,
     sdnzone,
     storage,
     types,

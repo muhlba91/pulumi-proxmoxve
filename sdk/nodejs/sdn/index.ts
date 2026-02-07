@@ -41,6 +41,13 @@ export const Vnet: typeof import("./vnet").Vnet = null as any;
 utilities.lazyLoad(exports, ["Vnet"], () => require("./vnet"));
 
 
+// Export sub-modules:
+import * as fabric from "./fabric";
+
+export {
+    fabric,
+};
+
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {

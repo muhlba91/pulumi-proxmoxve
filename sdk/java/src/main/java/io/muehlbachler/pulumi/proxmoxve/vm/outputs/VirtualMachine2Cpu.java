@@ -20,7 +20,7 @@ public final class VirtualMachine2Cpu {
      */
     private @Nullable String affinity;
     /**
-     * @return The CPU architecture `&lt;aarch64 | x86_64&gt;` (defaults to the host). Setting &lt;span pulumi-lang-nodejs=&#34;`affinity`&#34; pulumi-lang-dotnet=&#34;`Affinity`&#34; pulumi-lang-go=&#34;`affinity`&#34; pulumi-lang-python=&#34;`affinity`&#34; pulumi-lang-yaml=&#34;`affinity`&#34; pulumi-lang-java=&#34;`affinity`&#34;&gt;`affinity`&lt;/span&gt; is only allowed for `root{@literal @}pam` authenticated user.
+     * @return The CPU architecture `&lt;aarch64 | x86_64&gt;` (defaults to the host). Setting &lt;span pulumi-lang-nodejs=&#34;`architecture`&#34; pulumi-lang-dotnet=&#34;`Architecture`&#34; pulumi-lang-go=&#34;`architecture`&#34; pulumi-lang-python=&#34;`architecture`&#34; pulumi-lang-yaml=&#34;`architecture`&#34; pulumi-lang-java=&#34;`architecture`&#34;&gt;`architecture`&lt;/span&gt; is only allowed for `root{@literal @}pam` authenticated user.
      * 
      */
     private @Nullable String architecture;
@@ -74,7 +74,7 @@ public final class VirtualMachine2Cpu {
         return Optional.ofNullable(this.affinity);
     }
     /**
-     * @return The CPU architecture `&lt;aarch64 | x86_64&gt;` (defaults to the host). Setting &lt;span pulumi-lang-nodejs=&#34;`affinity`&#34; pulumi-lang-dotnet=&#34;`Affinity`&#34; pulumi-lang-go=&#34;`affinity`&#34; pulumi-lang-python=&#34;`affinity`&#34; pulumi-lang-yaml=&#34;`affinity`&#34; pulumi-lang-java=&#34;`affinity`&#34;&gt;`affinity`&lt;/span&gt; is only allowed for `root{@literal @}pam` authenticated user.
+     * @return The CPU architecture `&lt;aarch64 | x86_64&gt;` (defaults to the host). Setting &lt;span pulumi-lang-nodejs=&#34;`architecture`&#34; pulumi-lang-dotnet=&#34;`Architecture`&#34; pulumi-lang-go=&#34;`architecture`&#34; pulumi-lang-python=&#34;`architecture`&#34; pulumi-lang-yaml=&#34;`architecture`&#34; pulumi-lang-java=&#34;`architecture`&#34;&gt;`architecture`&lt;/span&gt; is only allowed for `root{@literal @}pam` authenticated user.
      * 
      */
     public Optional<String> architecture() {

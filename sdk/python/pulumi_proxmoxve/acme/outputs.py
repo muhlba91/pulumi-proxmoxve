@@ -15,9 +15,52 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'CertificateDomain',
     'GetAccountAccountResult',
     'GetPluginsPluginResult',
 ]
+
+@pulumi.output_type
+class CertificateDomain(dict):
+    def __init__(__self__, *,
+                 domain: _builtins.str,
+                 alias: Optional[_builtins.str] = None,
+                 plugin: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str domain: The domain name to include in the certificate.
+        :param _builtins.str alias: An optional alias domain for DNS validation. This allows you to validate the domain using a different domain's DNS records.
+        :param _builtins.str plugin: The DNS plugin to use for DNS-01 challenge validation. If not specified, the standalone HTTP-01 challenge will be used.
+        """
+        pulumi.set(__self__, "domain", domain)
+        if alias is not None:
+            pulumi.set(__self__, "alias", alias)
+        if plugin is not None:
+            pulumi.set(__self__, "plugin", plugin)
+
+    @_builtins.property
+    @pulumi.getter
+    def domain(self) -> _builtins.str:
+        """
+        The domain name to include in the certificate.
+        """
+        return pulumi.get(self, "domain")
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> Optional[_builtins.str]:
+        """
+        An optional alias domain for DNS validation. This allows you to validate the domain using a different domain's DNS records.
+        """
+        return pulumi.get(self, "alias")
+
+    @_builtins.property
+    @pulumi.getter
+    def plugin(self) -> Optional[_builtins.str]:
+        """
+        The DNS plugin to use for DNS-01 challenge validation. If not specified, the standalone HTTP-01 challenge will be used.
+        """
+        return pulumi.get(self, "plugin")
+
 
 @pulumi.output_type
 class GetAccountAccountResult(dict):

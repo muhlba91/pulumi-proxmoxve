@@ -68,7 +68,7 @@ namespace Pulumi.ProxmoxVE.SDNZone
         /// Enable subnet advertisement for EVPN.
         /// </summary>
         [Output("advertiseSubnets")]
-        public Output<bool?> AdvertiseSubnets { get; private set; } = null!;
+        public Output<bool> AdvertiseSubnets { get; private set; } = null!;
 
         /// <summary>
         /// EVPN controller address.
@@ -80,7 +80,7 @@ namespace Pulumi.ProxmoxVE.SDNZone
         /// Disable ARP/ND suppression for EVPN.
         /// </summary>
         [Output("disableArpNdSuppression")]
-        public Output<bool?> DisableArpNdSuppression { get; private set; } = null!;
+        public Output<bool> DisableArpNdSuppression { get; private set; } = null!;
 
         /// <summary>
         /// DNS API server address.
@@ -104,7 +104,7 @@ namespace Pulumi.ProxmoxVE.SDNZone
         /// Enable local routing for EVPN exit nodes.
         /// </summary>
         [Output("exitNodesLocalRouting")]
-        public Output<bool?> ExitNodesLocalRouting { get; private set; } = null!;
+        public Output<bool> ExitNodesLocalRouting { get; private set; } = null!;
 
         /// <summary>
         /// IP Address Management system.
@@ -113,10 +113,10 @@ namespace Pulumi.ProxmoxVE.SDNZone
         public Output<string?> Ipam { get; private set; } = null!;
 
         /// <summary>
-        /// MTU value for the zone.
+        /// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
         /// </summary>
         [Output("mtu")]
-        public Output<int?> Mtu { get; private set; } = null!;
+        public Output<int> Mtu { get; private set; } = null!;
 
         /// <summary>
         /// The Proxmox nodes which the zone and associated VNets should be deployed on
@@ -268,7 +268,7 @@ namespace Pulumi.ProxmoxVE.SDNZone
         public Input<string>? Ipam { get; set; }
 
         /// <summary>
-        /// MTU value for the zone.
+        /// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
         /// </summary>
         [Input("mtu")]
         public Input<int>? Mtu { get; set; }
@@ -378,7 +378,7 @@ namespace Pulumi.ProxmoxVE.SDNZone
         public Input<string>? Ipam { get; set; }
 
         /// <summary>
-        /// MTU value for the zone.
+        /// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
         /// </summary>
         [Input("mtu")]
         public Input<int>? Mtu { get; set; }

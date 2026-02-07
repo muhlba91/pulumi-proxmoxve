@@ -5,7 +5,6 @@ package io.muehlbachler.pulumi.proxmoxve.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2Clone;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2Cpu;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2Rng;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2Timeouts;
@@ -22,21 +21,6 @@ import javax.annotation.Nullable;
 public final class GetVm2PlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetVm2PlainArgs Empty = new GetVm2PlainArgs();
-
-    /**
-     * The cloning configuration.
-     * 
-     */
-    @Import(name="clone")
-    private @Nullable GetVm2Clone clone;
-
-    /**
-     * @return The cloning configuration.
-     * 
-     */
-    public Optional<GetVm2Clone> clone_() {
-        return Optional.ofNullable(this.clone);
-    }
 
     /**
      * The CPU configuration.
@@ -183,7 +167,6 @@ public final class GetVm2PlainArgs extends com.pulumi.resources.InvokeArgs {
     private GetVm2PlainArgs() {}
 
     private GetVm2PlainArgs(GetVm2PlainArgs $) {
-        this.clone = $.clone;
         this.cpu = $.cpu;
         this.description = $.description;
         this.id = $.id;
@@ -212,17 +195,6 @@ public final class GetVm2PlainArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetVm2PlainArgs defaults) {
             $ = new GetVm2PlainArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param clone The cloning configuration.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder clone_(@Nullable GetVm2Clone clone) {
-            $.clone = clone;
-            return this;
         }
 
         /**

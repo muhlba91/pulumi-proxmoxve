@@ -31,6 +31,12 @@ public final class ContainerDisk {
      */
     private @Nullable List<String> mountOptions;
     /**
+     * @return The in-datastore path to the disk image.
+     * Use this attribute for cross-resource references.
+     * 
+     */
+    private @Nullable String pathInDatastore;
+    /**
      * @return Enable user quotas for the container rootfs
      * 
      */
@@ -72,6 +78,14 @@ public final class ContainerDisk {
         return this.mountOptions == null ? List.of() : this.mountOptions;
     }
     /**
+     * @return The in-datastore path to the disk image.
+     * Use this attribute for cross-resource references.
+     * 
+     */
+    public Optional<String> pathInDatastore() {
+        return Optional.ofNullable(this.pathInDatastore);
+    }
+    /**
      * @return Enable user quotas for the container rootfs
      * 
      */
@@ -107,6 +121,7 @@ public final class ContainerDisk {
         private @Nullable Boolean acl;
         private @Nullable String datastoreId;
         private @Nullable List<String> mountOptions;
+        private @Nullable String pathInDatastore;
         private @Nullable Boolean quota;
         private @Nullable Boolean replicate;
         private @Nullable Integer size;
@@ -116,6 +131,7 @@ public final class ContainerDisk {
     	      this.acl = defaults.acl;
     	      this.datastoreId = defaults.datastoreId;
     	      this.mountOptions = defaults.mountOptions;
+    	      this.pathInDatastore = defaults.pathInDatastore;
     	      this.quota = defaults.quota;
     	      this.replicate = defaults.replicate;
     	      this.size = defaults.size;
@@ -143,6 +159,12 @@ public final class ContainerDisk {
             return mountOptions(List.of(mountOptions));
         }
         @CustomType.Setter
+        public Builder pathInDatastore(@Nullable String pathInDatastore) {
+
+            this.pathInDatastore = pathInDatastore;
+            return this;
+        }
+        @CustomType.Setter
         public Builder quota(@Nullable Boolean quota) {
 
             this.quota = quota;
@@ -165,6 +187,7 @@ public final class ContainerDisk {
             _resultValue.acl = acl;
             _resultValue.datastoreId = datastoreId;
             _resultValue.mountOptions = mountOptions;
+            _resultValue.pathInDatastore = pathInDatastore;
             _resultValue.quota = quota;
             _resultValue.replicate = replicate;
             _resultValue.size = size;

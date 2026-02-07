@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
 export function getVm2(args: GetVm2Args, opts?: pulumi.InvokeOptions): Promise<GetVm2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("proxmoxve:index/getVm2:getVm2", {
-        "clone": args.clone,
         "cpu": args.cpu,
         "description": args.description,
         "id": args.id,
@@ -31,10 +30,6 @@ export function getVm2(args: GetVm2Args, opts?: pulumi.InvokeOptions): Promise<G
  * A collection of arguments for invoking getVm2.
  */
 export interface GetVm2Args {
-    /**
-     * The cloning configuration.
-     */
-    clone?: inputs.GetVm2Clone;
     /**
      * The CPU configuration.
      */
@@ -78,10 +73,6 @@ export interface GetVm2Args {
  * A collection of values returned by getVm2.
  */
 export interface GetVm2Result {
-    /**
-     * The cloning configuration.
-     */
-    readonly clone?: outputs.GetVm2Clone;
     /**
      * The CPU configuration.
      */
@@ -127,7 +118,6 @@ export interface GetVm2Result {
 export function getVm2Output(args: GetVm2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVm2Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("proxmoxve:index/getVm2:getVm2", {
-        "clone": args.clone,
         "cpu": args.cpu,
         "description": args.description,
         "id": args.id,
@@ -145,10 +135,6 @@ export function getVm2Output(args: GetVm2OutputArgs, opts?: pulumi.InvokeOutputO
  * A collection of arguments for invoking getVm2.
  */
 export interface GetVm2OutputArgs {
-    /**
-     * The cloning configuration.
-     */
-    clone?: pulumi.Input<inputs.GetVm2CloneArgs>;
     /**
      * The CPU configuration.
      */

@@ -13,6 +13,2025 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ClonedVirtualMachineCdrom struct {
+	// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+	FileId *string `pulumi:"fileId"`
+}
+
+// ClonedVirtualMachineCdromInput is an input type that accepts ClonedVirtualMachineCdromArgs and ClonedVirtualMachineCdromOutput values.
+// You can construct a concrete instance of `ClonedVirtualMachineCdromInput` via:
+//
+//	ClonedVirtualMachineCdromArgs{...}
+type ClonedVirtualMachineCdromInput interface {
+	pulumi.Input
+
+	ToClonedVirtualMachineCdromOutput() ClonedVirtualMachineCdromOutput
+	ToClonedVirtualMachineCdromOutputWithContext(context.Context) ClonedVirtualMachineCdromOutput
+}
+
+type ClonedVirtualMachineCdromArgs struct {
+	// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+	FileId pulumi.StringPtrInput `pulumi:"fileId"`
+}
+
+func (ClonedVirtualMachineCdromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClonedVirtualMachineCdrom)(nil)).Elem()
+}
+
+func (i ClonedVirtualMachineCdromArgs) ToClonedVirtualMachineCdromOutput() ClonedVirtualMachineCdromOutput {
+	return i.ToClonedVirtualMachineCdromOutputWithContext(context.Background())
+}
+
+func (i ClonedVirtualMachineCdromArgs) ToClonedVirtualMachineCdromOutputWithContext(ctx context.Context) ClonedVirtualMachineCdromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClonedVirtualMachineCdromOutput)
+}
+
+// ClonedVirtualMachineCdromMapInput is an input type that accepts ClonedVirtualMachineCdromMap and ClonedVirtualMachineCdromMapOutput values.
+// You can construct a concrete instance of `ClonedVirtualMachineCdromMapInput` via:
+//
+//	ClonedVirtualMachineCdromMap{ "key": ClonedVirtualMachineCdromArgs{...} }
+type ClonedVirtualMachineCdromMapInput interface {
+	pulumi.Input
+
+	ToClonedVirtualMachineCdromMapOutput() ClonedVirtualMachineCdromMapOutput
+	ToClonedVirtualMachineCdromMapOutputWithContext(context.Context) ClonedVirtualMachineCdromMapOutput
+}
+
+type ClonedVirtualMachineCdromMap map[string]ClonedVirtualMachineCdromInput
+
+func (ClonedVirtualMachineCdromMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ClonedVirtualMachineCdrom)(nil)).Elem()
+}
+
+func (i ClonedVirtualMachineCdromMap) ToClonedVirtualMachineCdromMapOutput() ClonedVirtualMachineCdromMapOutput {
+	return i.ToClonedVirtualMachineCdromMapOutputWithContext(context.Background())
+}
+
+func (i ClonedVirtualMachineCdromMap) ToClonedVirtualMachineCdromMapOutputWithContext(ctx context.Context) ClonedVirtualMachineCdromMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClonedVirtualMachineCdromMapOutput)
+}
+
+type ClonedVirtualMachineCdromOutput struct{ *pulumi.OutputState }
+
+func (ClonedVirtualMachineCdromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClonedVirtualMachineCdrom)(nil)).Elem()
+}
+
+func (o ClonedVirtualMachineCdromOutput) ToClonedVirtualMachineCdromOutput() ClonedVirtualMachineCdromOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineCdromOutput) ToClonedVirtualMachineCdromOutputWithContext(ctx context.Context) ClonedVirtualMachineCdromOutput {
+	return o
+}
+
+// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+func (o ClonedVirtualMachineCdromOutput) FileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineCdrom) *string { return v.FileId }).(pulumi.StringPtrOutput)
+}
+
+type ClonedVirtualMachineCdromMapOutput struct{ *pulumi.OutputState }
+
+func (ClonedVirtualMachineCdromMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ClonedVirtualMachineCdrom)(nil)).Elem()
+}
+
+func (o ClonedVirtualMachineCdromMapOutput) ToClonedVirtualMachineCdromMapOutput() ClonedVirtualMachineCdromMapOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineCdromMapOutput) ToClonedVirtualMachineCdromMapOutputWithContext(ctx context.Context) ClonedVirtualMachineCdromMapOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineCdromMapOutput) MapIndex(k pulumi.StringInput) ClonedVirtualMachineCdromOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClonedVirtualMachineCdrom {
+		return vs[0].(map[string]ClonedVirtualMachineCdrom)[vs[1].(string)]
+	}).(ClonedVirtualMachineCdromOutput)
+}
+
+type ClonedVirtualMachineClone struct {
+	// Clone bandwidth limit in MB/s.
+	BandwidthLimit *int `pulumi:"bandwidthLimit"`
+	// Perform a full clone (true) or linked clone (false).
+	Full *bool `pulumi:"full"`
+	// Pool to assign the cloned VM to.
+	PoolId *string `pulumi:"poolId"`
+	// Number of retries for clone operations.
+	Retries *int `pulumi:"retries"`
+	// Snapshot name to clone from.
+	SnapshotName *string `pulumi:"snapshotName"`
+	// Source node of the VM/template. Defaults to target node if unset.
+	SourceNodeName *string `pulumi:"sourceNodeName"`
+	// Source VM/template ID to clone from.
+	SourceVmId int `pulumi:"sourceVmId"`
+	// Target datastore for cloned disks.
+	TargetDatastore *string `pulumi:"targetDatastore"`
+	// Target disk format for clone (e.g., raw, qcow2).
+	TargetFormat *string `pulumi:"targetFormat"`
+}
+
+// ClonedVirtualMachineCloneInput is an input type that accepts ClonedVirtualMachineCloneArgs and ClonedVirtualMachineCloneOutput values.
+// You can construct a concrete instance of `ClonedVirtualMachineCloneInput` via:
+//
+//	ClonedVirtualMachineCloneArgs{...}
+type ClonedVirtualMachineCloneInput interface {
+	pulumi.Input
+
+	ToClonedVirtualMachineCloneOutput() ClonedVirtualMachineCloneOutput
+	ToClonedVirtualMachineCloneOutputWithContext(context.Context) ClonedVirtualMachineCloneOutput
+}
+
+type ClonedVirtualMachineCloneArgs struct {
+	// Clone bandwidth limit in MB/s.
+	BandwidthLimit pulumi.IntPtrInput `pulumi:"bandwidthLimit"`
+	// Perform a full clone (true) or linked clone (false).
+	Full pulumi.BoolPtrInput `pulumi:"full"`
+	// Pool to assign the cloned VM to.
+	PoolId pulumi.StringPtrInput `pulumi:"poolId"`
+	// Number of retries for clone operations.
+	Retries pulumi.IntPtrInput `pulumi:"retries"`
+	// Snapshot name to clone from.
+	SnapshotName pulumi.StringPtrInput `pulumi:"snapshotName"`
+	// Source node of the VM/template. Defaults to target node if unset.
+	SourceNodeName pulumi.StringPtrInput `pulumi:"sourceNodeName"`
+	// Source VM/template ID to clone from.
+	SourceVmId pulumi.IntInput `pulumi:"sourceVmId"`
+	// Target datastore for cloned disks.
+	TargetDatastore pulumi.StringPtrInput `pulumi:"targetDatastore"`
+	// Target disk format for clone (e.g., raw, qcow2).
+	TargetFormat pulumi.StringPtrInput `pulumi:"targetFormat"`
+}
+
+func (ClonedVirtualMachineCloneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClonedVirtualMachineClone)(nil)).Elem()
+}
+
+func (i ClonedVirtualMachineCloneArgs) ToClonedVirtualMachineCloneOutput() ClonedVirtualMachineCloneOutput {
+	return i.ToClonedVirtualMachineCloneOutputWithContext(context.Background())
+}
+
+func (i ClonedVirtualMachineCloneArgs) ToClonedVirtualMachineCloneOutputWithContext(ctx context.Context) ClonedVirtualMachineCloneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClonedVirtualMachineCloneOutput)
+}
+
+func (i ClonedVirtualMachineCloneArgs) ToClonedVirtualMachineClonePtrOutput() ClonedVirtualMachineClonePtrOutput {
+	return i.ToClonedVirtualMachineClonePtrOutputWithContext(context.Background())
+}
+
+func (i ClonedVirtualMachineCloneArgs) ToClonedVirtualMachineClonePtrOutputWithContext(ctx context.Context) ClonedVirtualMachineClonePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClonedVirtualMachineCloneOutput).ToClonedVirtualMachineClonePtrOutputWithContext(ctx)
+}
+
+// ClonedVirtualMachineClonePtrInput is an input type that accepts ClonedVirtualMachineCloneArgs, ClonedVirtualMachineClonePtr and ClonedVirtualMachineClonePtrOutput values.
+// You can construct a concrete instance of `ClonedVirtualMachineClonePtrInput` via:
+//
+//	        ClonedVirtualMachineCloneArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClonedVirtualMachineClonePtrInput interface {
+	pulumi.Input
+
+	ToClonedVirtualMachineClonePtrOutput() ClonedVirtualMachineClonePtrOutput
+	ToClonedVirtualMachineClonePtrOutputWithContext(context.Context) ClonedVirtualMachineClonePtrOutput
+}
+
+type clonedVirtualMachineClonePtrType ClonedVirtualMachineCloneArgs
+
+func ClonedVirtualMachineClonePtr(v *ClonedVirtualMachineCloneArgs) ClonedVirtualMachineClonePtrInput {
+	return (*clonedVirtualMachineClonePtrType)(v)
+}
+
+func (*clonedVirtualMachineClonePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClonedVirtualMachineClone)(nil)).Elem()
+}
+
+func (i *clonedVirtualMachineClonePtrType) ToClonedVirtualMachineClonePtrOutput() ClonedVirtualMachineClonePtrOutput {
+	return i.ToClonedVirtualMachineClonePtrOutputWithContext(context.Background())
+}
+
+func (i *clonedVirtualMachineClonePtrType) ToClonedVirtualMachineClonePtrOutputWithContext(ctx context.Context) ClonedVirtualMachineClonePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClonedVirtualMachineClonePtrOutput)
+}
+
+type ClonedVirtualMachineCloneOutput struct{ *pulumi.OutputState }
+
+func (ClonedVirtualMachineCloneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClonedVirtualMachineClone)(nil)).Elem()
+}
+
+func (o ClonedVirtualMachineCloneOutput) ToClonedVirtualMachineCloneOutput() ClonedVirtualMachineCloneOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineCloneOutput) ToClonedVirtualMachineCloneOutputWithContext(ctx context.Context) ClonedVirtualMachineCloneOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineCloneOutput) ToClonedVirtualMachineClonePtrOutput() ClonedVirtualMachineClonePtrOutput {
+	return o.ToClonedVirtualMachineClonePtrOutputWithContext(context.Background())
+}
+
+func (o ClonedVirtualMachineCloneOutput) ToClonedVirtualMachineClonePtrOutputWithContext(ctx context.Context) ClonedVirtualMachineClonePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClonedVirtualMachineClone) *ClonedVirtualMachineClone {
+		return &v
+	}).(ClonedVirtualMachineClonePtrOutput)
+}
+
+// Clone bandwidth limit in MB/s.
+func (o ClonedVirtualMachineCloneOutput) BandwidthLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineClone) *int { return v.BandwidthLimit }).(pulumi.IntPtrOutput)
+}
+
+// Perform a full clone (true) or linked clone (false).
+func (o ClonedVirtualMachineCloneOutput) Full() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineClone) *bool { return v.Full }).(pulumi.BoolPtrOutput)
+}
+
+// Pool to assign the cloned VM to.
+func (o ClonedVirtualMachineCloneOutput) PoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineClone) *string { return v.PoolId }).(pulumi.StringPtrOutput)
+}
+
+// Number of retries for clone operations.
+func (o ClonedVirtualMachineCloneOutput) Retries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineClone) *int { return v.Retries }).(pulumi.IntPtrOutput)
+}
+
+// Snapshot name to clone from.
+func (o ClonedVirtualMachineCloneOutput) SnapshotName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineClone) *string { return v.SnapshotName }).(pulumi.StringPtrOutput)
+}
+
+// Source node of the VM/template. Defaults to target node if unset.
+func (o ClonedVirtualMachineCloneOutput) SourceNodeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineClone) *string { return v.SourceNodeName }).(pulumi.StringPtrOutput)
+}
+
+// Source VM/template ID to clone from.
+func (o ClonedVirtualMachineCloneOutput) SourceVmId() pulumi.IntOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineClone) int { return v.SourceVmId }).(pulumi.IntOutput)
+}
+
+// Target datastore for cloned disks.
+func (o ClonedVirtualMachineCloneOutput) TargetDatastore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineClone) *string { return v.TargetDatastore }).(pulumi.StringPtrOutput)
+}
+
+// Target disk format for clone (e.g., raw, qcow2).
+func (o ClonedVirtualMachineCloneOutput) TargetFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineClone) *string { return v.TargetFormat }).(pulumi.StringPtrOutput)
+}
+
+type ClonedVirtualMachineClonePtrOutput struct{ *pulumi.OutputState }
+
+func (ClonedVirtualMachineClonePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClonedVirtualMachineClone)(nil)).Elem()
+}
+
+func (o ClonedVirtualMachineClonePtrOutput) ToClonedVirtualMachineClonePtrOutput() ClonedVirtualMachineClonePtrOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineClonePtrOutput) ToClonedVirtualMachineClonePtrOutputWithContext(ctx context.Context) ClonedVirtualMachineClonePtrOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineClonePtrOutput) Elem() ClonedVirtualMachineCloneOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineClone) ClonedVirtualMachineClone {
+		if v != nil {
+			return *v
+		}
+		var ret ClonedVirtualMachineClone
+		return ret
+	}).(ClonedVirtualMachineCloneOutput)
+}
+
+// Clone bandwidth limit in MB/s.
+func (o ClonedVirtualMachineClonePtrOutput) BandwidthLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineClone) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BandwidthLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// Perform a full clone (true) or linked clone (false).
+func (o ClonedVirtualMachineClonePtrOutput) Full() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineClone) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Full
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Pool to assign the cloned VM to.
+func (o ClonedVirtualMachineClonePtrOutput) PoolId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineClone) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PoolId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of retries for clone operations.
+func (o ClonedVirtualMachineClonePtrOutput) Retries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineClone) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Retries
+	}).(pulumi.IntPtrOutput)
+}
+
+// Snapshot name to clone from.
+func (o ClonedVirtualMachineClonePtrOutput) SnapshotName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineClone) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SnapshotName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Source node of the VM/template. Defaults to target node if unset.
+func (o ClonedVirtualMachineClonePtrOutput) SourceNodeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineClone) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceNodeName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Source VM/template ID to clone from.
+func (o ClonedVirtualMachineClonePtrOutput) SourceVmId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineClone) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceVmId
+	}).(pulumi.IntPtrOutput)
+}
+
+// Target datastore for cloned disks.
+func (o ClonedVirtualMachineClonePtrOutput) TargetDatastore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineClone) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetDatastore
+	}).(pulumi.StringPtrOutput)
+}
+
+// Target disk format for clone (e.g., raw, qcow2).
+func (o ClonedVirtualMachineClonePtrOutput) TargetFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineClone) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClonedVirtualMachineCpu struct {
+	// The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+	Affinity *string `pulumi:"affinity"`
+	// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
+	Architecture *string `pulumi:"architecture"`
+	// The number of CPU cores per socket (defaults to `1`).
+	Cores *int `pulumi:"cores"`
+	// Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+	Flags []string `pulumi:"flags"`
+	// The number of hotplugged vCPUs (defaults to `0`).
+	Hotplugged *int `pulumi:"hotplugged"`
+	// Limit of CPU usage (defaults to `0` which means no limit).
+	Limit *int `pulumi:"limit"`
+	// Enable NUMA (defaults to `false`).
+	Numa *bool `pulumi:"numa"`
+	// The number of CPU sockets (defaults to `1`).
+	Sockets *int `pulumi:"sockets"`
+	// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+	Type *string `pulumi:"type"`
+	// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+	Units *int `pulumi:"units"`
+}
+
+// ClonedVirtualMachineCpuInput is an input type that accepts ClonedVirtualMachineCpuArgs and ClonedVirtualMachineCpuOutput values.
+// You can construct a concrete instance of `ClonedVirtualMachineCpuInput` via:
+//
+//	ClonedVirtualMachineCpuArgs{...}
+type ClonedVirtualMachineCpuInput interface {
+	pulumi.Input
+
+	ToClonedVirtualMachineCpuOutput() ClonedVirtualMachineCpuOutput
+	ToClonedVirtualMachineCpuOutputWithContext(context.Context) ClonedVirtualMachineCpuOutput
+}
+
+type ClonedVirtualMachineCpuArgs struct {
+	// The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+	Affinity pulumi.StringPtrInput `pulumi:"affinity"`
+	// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
+	Architecture pulumi.StringPtrInput `pulumi:"architecture"`
+	// The number of CPU cores per socket (defaults to `1`).
+	Cores pulumi.IntPtrInput `pulumi:"cores"`
+	// Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+	Flags pulumi.StringArrayInput `pulumi:"flags"`
+	// The number of hotplugged vCPUs (defaults to `0`).
+	Hotplugged pulumi.IntPtrInput `pulumi:"hotplugged"`
+	// Limit of CPU usage (defaults to `0` which means no limit).
+	Limit pulumi.IntPtrInput `pulumi:"limit"`
+	// Enable NUMA (defaults to `false`).
+	Numa pulumi.BoolPtrInput `pulumi:"numa"`
+	// The number of CPU sockets (defaults to `1`).
+	Sockets pulumi.IntPtrInput `pulumi:"sockets"`
+	// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+	Units pulumi.IntPtrInput `pulumi:"units"`
+}
+
+func (ClonedVirtualMachineCpuArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClonedVirtualMachineCpu)(nil)).Elem()
+}
+
+func (i ClonedVirtualMachineCpuArgs) ToClonedVirtualMachineCpuOutput() ClonedVirtualMachineCpuOutput {
+	return i.ToClonedVirtualMachineCpuOutputWithContext(context.Background())
+}
+
+func (i ClonedVirtualMachineCpuArgs) ToClonedVirtualMachineCpuOutputWithContext(ctx context.Context) ClonedVirtualMachineCpuOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClonedVirtualMachineCpuOutput)
+}
+
+func (i ClonedVirtualMachineCpuArgs) ToClonedVirtualMachineCpuPtrOutput() ClonedVirtualMachineCpuPtrOutput {
+	return i.ToClonedVirtualMachineCpuPtrOutputWithContext(context.Background())
+}
+
+func (i ClonedVirtualMachineCpuArgs) ToClonedVirtualMachineCpuPtrOutputWithContext(ctx context.Context) ClonedVirtualMachineCpuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClonedVirtualMachineCpuOutput).ToClonedVirtualMachineCpuPtrOutputWithContext(ctx)
+}
+
+// ClonedVirtualMachineCpuPtrInput is an input type that accepts ClonedVirtualMachineCpuArgs, ClonedVirtualMachineCpuPtr and ClonedVirtualMachineCpuPtrOutput values.
+// You can construct a concrete instance of `ClonedVirtualMachineCpuPtrInput` via:
+//
+//	        ClonedVirtualMachineCpuArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClonedVirtualMachineCpuPtrInput interface {
+	pulumi.Input
+
+	ToClonedVirtualMachineCpuPtrOutput() ClonedVirtualMachineCpuPtrOutput
+	ToClonedVirtualMachineCpuPtrOutputWithContext(context.Context) ClonedVirtualMachineCpuPtrOutput
+}
+
+type clonedVirtualMachineCpuPtrType ClonedVirtualMachineCpuArgs
+
+func ClonedVirtualMachineCpuPtr(v *ClonedVirtualMachineCpuArgs) ClonedVirtualMachineCpuPtrInput {
+	return (*clonedVirtualMachineCpuPtrType)(v)
+}
+
+func (*clonedVirtualMachineCpuPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClonedVirtualMachineCpu)(nil)).Elem()
+}
+
+func (i *clonedVirtualMachineCpuPtrType) ToClonedVirtualMachineCpuPtrOutput() ClonedVirtualMachineCpuPtrOutput {
+	return i.ToClonedVirtualMachineCpuPtrOutputWithContext(context.Background())
+}
+
+func (i *clonedVirtualMachineCpuPtrType) ToClonedVirtualMachineCpuPtrOutputWithContext(ctx context.Context) ClonedVirtualMachineCpuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClonedVirtualMachineCpuPtrOutput)
+}
+
+type ClonedVirtualMachineCpuOutput struct{ *pulumi.OutputState }
+
+func (ClonedVirtualMachineCpuOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClonedVirtualMachineCpu)(nil)).Elem()
+}
+
+func (o ClonedVirtualMachineCpuOutput) ToClonedVirtualMachineCpuOutput() ClonedVirtualMachineCpuOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineCpuOutput) ToClonedVirtualMachineCpuOutputWithContext(ctx context.Context) ClonedVirtualMachineCpuOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineCpuOutput) ToClonedVirtualMachineCpuPtrOutput() ClonedVirtualMachineCpuPtrOutput {
+	return o.ToClonedVirtualMachineCpuPtrOutputWithContext(context.Background())
+}
+
+func (o ClonedVirtualMachineCpuOutput) ToClonedVirtualMachineCpuPtrOutputWithContext(ctx context.Context) ClonedVirtualMachineCpuPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClonedVirtualMachineCpu) *ClonedVirtualMachineCpu {
+		return &v
+	}).(ClonedVirtualMachineCpuPtrOutput)
+}
+
+// The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+func (o ClonedVirtualMachineCpuOutput) Affinity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineCpu) *string { return v.Affinity }).(pulumi.StringPtrOutput)
+}
+
+// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
+func (o ClonedVirtualMachineCpuOutput) Architecture() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineCpu) *string { return v.Architecture }).(pulumi.StringPtrOutput)
+}
+
+// The number of CPU cores per socket (defaults to `1`).
+func (o ClonedVirtualMachineCpuOutput) Cores() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineCpu) *int { return v.Cores }).(pulumi.IntPtrOutput)
+}
+
+// Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+func (o ClonedVirtualMachineCpuOutput) Flags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineCpu) []string { return v.Flags }).(pulumi.StringArrayOutput)
+}
+
+// The number of hotplugged vCPUs (defaults to `0`).
+func (o ClonedVirtualMachineCpuOutput) Hotplugged() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineCpu) *int { return v.Hotplugged }).(pulumi.IntPtrOutput)
+}
+
+// Limit of CPU usage (defaults to `0` which means no limit).
+func (o ClonedVirtualMachineCpuOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineCpu) *int { return v.Limit }).(pulumi.IntPtrOutput)
+}
+
+// Enable NUMA (defaults to `false`).
+func (o ClonedVirtualMachineCpuOutput) Numa() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineCpu) *bool { return v.Numa }).(pulumi.BoolPtrOutput)
+}
+
+// The number of CPU sockets (defaults to `1`).
+func (o ClonedVirtualMachineCpuOutput) Sockets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineCpu) *int { return v.Sockets }).(pulumi.IntPtrOutput)
+}
+
+// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+func (o ClonedVirtualMachineCpuOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineCpu) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+func (o ClonedVirtualMachineCpuOutput) Units() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineCpu) *int { return v.Units }).(pulumi.IntPtrOutput)
+}
+
+type ClonedVirtualMachineCpuPtrOutput struct{ *pulumi.OutputState }
+
+func (ClonedVirtualMachineCpuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClonedVirtualMachineCpu)(nil)).Elem()
+}
+
+func (o ClonedVirtualMachineCpuPtrOutput) ToClonedVirtualMachineCpuPtrOutput() ClonedVirtualMachineCpuPtrOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineCpuPtrOutput) ToClonedVirtualMachineCpuPtrOutputWithContext(ctx context.Context) ClonedVirtualMachineCpuPtrOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineCpuPtrOutput) Elem() ClonedVirtualMachineCpuOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineCpu) ClonedVirtualMachineCpu {
+		if v != nil {
+			return *v
+		}
+		var ret ClonedVirtualMachineCpu
+		return ret
+	}).(ClonedVirtualMachineCpuOutput)
+}
+
+// The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+func (o ClonedVirtualMachineCpuPtrOutput) Affinity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineCpu) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Affinity
+	}).(pulumi.StringPtrOutput)
+}
+
+// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
+func (o ClonedVirtualMachineCpuPtrOutput) Architecture() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineCpu) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Architecture
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of CPU cores per socket (defaults to `1`).
+func (o ClonedVirtualMachineCpuPtrOutput) Cores() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Cores
+	}).(pulumi.IntPtrOutput)
+}
+
+// Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+func (o ClonedVirtualMachineCpuPtrOutput) Flags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineCpu) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Flags
+	}).(pulumi.StringArrayOutput)
+}
+
+// The number of hotplugged vCPUs (defaults to `0`).
+func (o ClonedVirtualMachineCpuPtrOutput) Hotplugged() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hotplugged
+	}).(pulumi.IntPtrOutput)
+}
+
+// Limit of CPU usage (defaults to `0` which means no limit).
+func (o ClonedVirtualMachineCpuPtrOutput) Limit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Limit
+	}).(pulumi.IntPtrOutput)
+}
+
+// Enable NUMA (defaults to `false`).
+func (o ClonedVirtualMachineCpuPtrOutput) Numa() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineCpu) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Numa
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The number of CPU sockets (defaults to `1`).
+func (o ClonedVirtualMachineCpuPtrOutput) Sockets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Sockets
+	}).(pulumi.IntPtrOutput)
+}
+
+// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+func (o ClonedVirtualMachineCpuPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineCpu) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+func (o ClonedVirtualMachineCpuPtrOutput) Units() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Units
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClonedVirtualMachineDelete struct {
+	// Disk slots to delete (e.g., scsi2).
+	Disks []string `pulumi:"disks"`
+	// Network slots to delete (e.g., net1).
+	Networks []string `pulumi:"networks"`
+}
+
+// ClonedVirtualMachineDeleteInput is an input type that accepts ClonedVirtualMachineDeleteArgs and ClonedVirtualMachineDeleteOutput values.
+// You can construct a concrete instance of `ClonedVirtualMachineDeleteInput` via:
+//
+//	ClonedVirtualMachineDeleteArgs{...}
+type ClonedVirtualMachineDeleteInput interface {
+	pulumi.Input
+
+	ToClonedVirtualMachineDeleteOutput() ClonedVirtualMachineDeleteOutput
+	ToClonedVirtualMachineDeleteOutputWithContext(context.Context) ClonedVirtualMachineDeleteOutput
+}
+
+type ClonedVirtualMachineDeleteArgs struct {
+	// Disk slots to delete (e.g., scsi2).
+	Disks pulumi.StringArrayInput `pulumi:"disks"`
+	// Network slots to delete (e.g., net1).
+	Networks pulumi.StringArrayInput `pulumi:"networks"`
+}
+
+func (ClonedVirtualMachineDeleteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClonedVirtualMachineDelete)(nil)).Elem()
+}
+
+func (i ClonedVirtualMachineDeleteArgs) ToClonedVirtualMachineDeleteOutput() ClonedVirtualMachineDeleteOutput {
+	return i.ToClonedVirtualMachineDeleteOutputWithContext(context.Background())
+}
+
+func (i ClonedVirtualMachineDeleteArgs) ToClonedVirtualMachineDeleteOutputWithContext(ctx context.Context) ClonedVirtualMachineDeleteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClonedVirtualMachineDeleteOutput)
+}
+
+func (i ClonedVirtualMachineDeleteArgs) ToClonedVirtualMachineDeletePtrOutput() ClonedVirtualMachineDeletePtrOutput {
+	return i.ToClonedVirtualMachineDeletePtrOutputWithContext(context.Background())
+}
+
+func (i ClonedVirtualMachineDeleteArgs) ToClonedVirtualMachineDeletePtrOutputWithContext(ctx context.Context) ClonedVirtualMachineDeletePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClonedVirtualMachineDeleteOutput).ToClonedVirtualMachineDeletePtrOutputWithContext(ctx)
+}
+
+// ClonedVirtualMachineDeletePtrInput is an input type that accepts ClonedVirtualMachineDeleteArgs, ClonedVirtualMachineDeletePtr and ClonedVirtualMachineDeletePtrOutput values.
+// You can construct a concrete instance of `ClonedVirtualMachineDeletePtrInput` via:
+//
+//	        ClonedVirtualMachineDeleteArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClonedVirtualMachineDeletePtrInput interface {
+	pulumi.Input
+
+	ToClonedVirtualMachineDeletePtrOutput() ClonedVirtualMachineDeletePtrOutput
+	ToClonedVirtualMachineDeletePtrOutputWithContext(context.Context) ClonedVirtualMachineDeletePtrOutput
+}
+
+type clonedVirtualMachineDeletePtrType ClonedVirtualMachineDeleteArgs
+
+func ClonedVirtualMachineDeletePtr(v *ClonedVirtualMachineDeleteArgs) ClonedVirtualMachineDeletePtrInput {
+	return (*clonedVirtualMachineDeletePtrType)(v)
+}
+
+func (*clonedVirtualMachineDeletePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClonedVirtualMachineDelete)(nil)).Elem()
+}
+
+func (i *clonedVirtualMachineDeletePtrType) ToClonedVirtualMachineDeletePtrOutput() ClonedVirtualMachineDeletePtrOutput {
+	return i.ToClonedVirtualMachineDeletePtrOutputWithContext(context.Background())
+}
+
+func (i *clonedVirtualMachineDeletePtrType) ToClonedVirtualMachineDeletePtrOutputWithContext(ctx context.Context) ClonedVirtualMachineDeletePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClonedVirtualMachineDeletePtrOutput)
+}
+
+type ClonedVirtualMachineDeleteOutput struct{ *pulumi.OutputState }
+
+func (ClonedVirtualMachineDeleteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClonedVirtualMachineDelete)(nil)).Elem()
+}
+
+func (o ClonedVirtualMachineDeleteOutput) ToClonedVirtualMachineDeleteOutput() ClonedVirtualMachineDeleteOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineDeleteOutput) ToClonedVirtualMachineDeleteOutputWithContext(ctx context.Context) ClonedVirtualMachineDeleteOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineDeleteOutput) ToClonedVirtualMachineDeletePtrOutput() ClonedVirtualMachineDeletePtrOutput {
+	return o.ToClonedVirtualMachineDeletePtrOutputWithContext(context.Background())
+}
+
+func (o ClonedVirtualMachineDeleteOutput) ToClonedVirtualMachineDeletePtrOutputWithContext(ctx context.Context) ClonedVirtualMachineDeletePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClonedVirtualMachineDelete) *ClonedVirtualMachineDelete {
+		return &v
+	}).(ClonedVirtualMachineDeletePtrOutput)
+}
+
+// Disk slots to delete (e.g., scsi2).
+func (o ClonedVirtualMachineDeleteOutput) Disks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineDelete) []string { return v.Disks }).(pulumi.StringArrayOutput)
+}
+
+// Network slots to delete (e.g., net1).
+func (o ClonedVirtualMachineDeleteOutput) Networks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineDelete) []string { return v.Networks }).(pulumi.StringArrayOutput)
+}
+
+type ClonedVirtualMachineDeletePtrOutput struct{ *pulumi.OutputState }
+
+func (ClonedVirtualMachineDeletePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClonedVirtualMachineDelete)(nil)).Elem()
+}
+
+func (o ClonedVirtualMachineDeletePtrOutput) ToClonedVirtualMachineDeletePtrOutput() ClonedVirtualMachineDeletePtrOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineDeletePtrOutput) ToClonedVirtualMachineDeletePtrOutputWithContext(ctx context.Context) ClonedVirtualMachineDeletePtrOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineDeletePtrOutput) Elem() ClonedVirtualMachineDeleteOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineDelete) ClonedVirtualMachineDelete {
+		if v != nil {
+			return *v
+		}
+		var ret ClonedVirtualMachineDelete
+		return ret
+	}).(ClonedVirtualMachineDeleteOutput)
+}
+
+// Disk slots to delete (e.g., scsi2).
+func (o ClonedVirtualMachineDeletePtrOutput) Disks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineDelete) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Disks
+	}).(pulumi.StringArrayOutput)
+}
+
+// Network slots to delete (e.g., net1).
+func (o ClonedVirtualMachineDeletePtrOutput) Networks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineDelete) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Networks
+	}).(pulumi.StringArrayOutput)
+}
+
+type ClonedVirtualMachineDisk struct {
+	// AIO mode (io_uring, native, threads).
+	Aio *string `pulumi:"aio"`
+	// Include disk in backups.
+	Backup *bool `pulumi:"backup"`
+	// Cache mode.
+	Cache *string `pulumi:"cache"`
+	// Target datastore for new disks when file is not provided.
+	DatastoreId *string `pulumi:"datastoreId"`
+	// Discard/trim behavior.
+	Discard *string `pulumi:"discard"`
+	// Existing volume reference (e.g., local-lvm:vm-100-disk-0).
+	File *string `pulumi:"file"`
+	// Disk format (raw, qcow2, vmdk).
+	Format *string `pulumi:"format"`
+	// Import source volume/file id.
+	ImportFrom *string `pulumi:"importFrom"`
+	// Use IO thread.
+	Iothread *bool `pulumi:"iothread"`
+	// Disk media (e.g., disk, cdrom).
+	Media *string `pulumi:"media"`
+	// Consider disk for replication.
+	Replicate *bool `pulumi:"replicate"`
+	// Disk serial number.
+	Serial *string `pulumi:"serial"`
+	// Disk size (GiB) when creating new disks. **Note:** Disk shrinking is not supported. Attempting to set `sizeGb` to a value smaller than the current disk size will result in an error. Only disk expansion is allowed.
+	SizeGb *int `pulumi:"sizeGb"`
+	// Mark disk as SSD.
+	Ssd *bool `pulumi:"ssd"`
+}
+
+// ClonedVirtualMachineDiskInput is an input type that accepts ClonedVirtualMachineDiskArgs and ClonedVirtualMachineDiskOutput values.
+// You can construct a concrete instance of `ClonedVirtualMachineDiskInput` via:
+//
+//	ClonedVirtualMachineDiskArgs{...}
+type ClonedVirtualMachineDiskInput interface {
+	pulumi.Input
+
+	ToClonedVirtualMachineDiskOutput() ClonedVirtualMachineDiskOutput
+	ToClonedVirtualMachineDiskOutputWithContext(context.Context) ClonedVirtualMachineDiskOutput
+}
+
+type ClonedVirtualMachineDiskArgs struct {
+	// AIO mode (io_uring, native, threads).
+	Aio pulumi.StringPtrInput `pulumi:"aio"`
+	// Include disk in backups.
+	Backup pulumi.BoolPtrInput `pulumi:"backup"`
+	// Cache mode.
+	Cache pulumi.StringPtrInput `pulumi:"cache"`
+	// Target datastore for new disks when file is not provided.
+	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
+	// Discard/trim behavior.
+	Discard pulumi.StringPtrInput `pulumi:"discard"`
+	// Existing volume reference (e.g., local-lvm:vm-100-disk-0).
+	File pulumi.StringPtrInput `pulumi:"file"`
+	// Disk format (raw, qcow2, vmdk).
+	Format pulumi.StringPtrInput `pulumi:"format"`
+	// Import source volume/file id.
+	ImportFrom pulumi.StringPtrInput `pulumi:"importFrom"`
+	// Use IO thread.
+	Iothread pulumi.BoolPtrInput `pulumi:"iothread"`
+	// Disk media (e.g., disk, cdrom).
+	Media pulumi.StringPtrInput `pulumi:"media"`
+	// Consider disk for replication.
+	Replicate pulumi.BoolPtrInput `pulumi:"replicate"`
+	// Disk serial number.
+	Serial pulumi.StringPtrInput `pulumi:"serial"`
+	// Disk size (GiB) when creating new disks. **Note:** Disk shrinking is not supported. Attempting to set `sizeGb` to a value smaller than the current disk size will result in an error. Only disk expansion is allowed.
+	SizeGb pulumi.IntPtrInput `pulumi:"sizeGb"`
+	// Mark disk as SSD.
+	Ssd pulumi.BoolPtrInput `pulumi:"ssd"`
+}
+
+func (ClonedVirtualMachineDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClonedVirtualMachineDisk)(nil)).Elem()
+}
+
+func (i ClonedVirtualMachineDiskArgs) ToClonedVirtualMachineDiskOutput() ClonedVirtualMachineDiskOutput {
+	return i.ToClonedVirtualMachineDiskOutputWithContext(context.Background())
+}
+
+func (i ClonedVirtualMachineDiskArgs) ToClonedVirtualMachineDiskOutputWithContext(ctx context.Context) ClonedVirtualMachineDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClonedVirtualMachineDiskOutput)
+}
+
+// ClonedVirtualMachineDiskMapInput is an input type that accepts ClonedVirtualMachineDiskMap and ClonedVirtualMachineDiskMapOutput values.
+// You can construct a concrete instance of `ClonedVirtualMachineDiskMapInput` via:
+//
+//	ClonedVirtualMachineDiskMap{ "key": ClonedVirtualMachineDiskArgs{...} }
+type ClonedVirtualMachineDiskMapInput interface {
+	pulumi.Input
+
+	ToClonedVirtualMachineDiskMapOutput() ClonedVirtualMachineDiskMapOutput
+	ToClonedVirtualMachineDiskMapOutputWithContext(context.Context) ClonedVirtualMachineDiskMapOutput
+}
+
+type ClonedVirtualMachineDiskMap map[string]ClonedVirtualMachineDiskInput
+
+func (ClonedVirtualMachineDiskMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ClonedVirtualMachineDisk)(nil)).Elem()
+}
+
+func (i ClonedVirtualMachineDiskMap) ToClonedVirtualMachineDiskMapOutput() ClonedVirtualMachineDiskMapOutput {
+	return i.ToClonedVirtualMachineDiskMapOutputWithContext(context.Background())
+}
+
+func (i ClonedVirtualMachineDiskMap) ToClonedVirtualMachineDiskMapOutputWithContext(ctx context.Context) ClonedVirtualMachineDiskMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClonedVirtualMachineDiskMapOutput)
+}
+
+type ClonedVirtualMachineDiskOutput struct{ *pulumi.OutputState }
+
+func (ClonedVirtualMachineDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClonedVirtualMachineDisk)(nil)).Elem()
+}
+
+func (o ClonedVirtualMachineDiskOutput) ToClonedVirtualMachineDiskOutput() ClonedVirtualMachineDiskOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineDiskOutput) ToClonedVirtualMachineDiskOutputWithContext(ctx context.Context) ClonedVirtualMachineDiskOutput {
+	return o
+}
+
+// AIO mode (io_uring, native, threads).
+func (o ClonedVirtualMachineDiskOutput) Aio() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineDisk) *string { return v.Aio }).(pulumi.StringPtrOutput)
+}
+
+// Include disk in backups.
+func (o ClonedVirtualMachineDiskOutput) Backup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineDisk) *bool { return v.Backup }).(pulumi.BoolPtrOutput)
+}
+
+// Cache mode.
+func (o ClonedVirtualMachineDiskOutput) Cache() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineDisk) *string { return v.Cache }).(pulumi.StringPtrOutput)
+}
+
+// Target datastore for new disks when file is not provided.
+func (o ClonedVirtualMachineDiskOutput) DatastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineDisk) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
+}
+
+// Discard/trim behavior.
+func (o ClonedVirtualMachineDiskOutput) Discard() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineDisk) *string { return v.Discard }).(pulumi.StringPtrOutput)
+}
+
+// Existing volume reference (e.g., local-lvm:vm-100-disk-0).
+func (o ClonedVirtualMachineDiskOutput) File() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineDisk) *string { return v.File }).(pulumi.StringPtrOutput)
+}
+
+// Disk format (raw, qcow2, vmdk).
+func (o ClonedVirtualMachineDiskOutput) Format() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineDisk) *string { return v.Format }).(pulumi.StringPtrOutput)
+}
+
+// Import source volume/file id.
+func (o ClonedVirtualMachineDiskOutput) ImportFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineDisk) *string { return v.ImportFrom }).(pulumi.StringPtrOutput)
+}
+
+// Use IO thread.
+func (o ClonedVirtualMachineDiskOutput) Iothread() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineDisk) *bool { return v.Iothread }).(pulumi.BoolPtrOutput)
+}
+
+// Disk media (e.g., disk, cdrom).
+func (o ClonedVirtualMachineDiskOutput) Media() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineDisk) *string { return v.Media }).(pulumi.StringPtrOutput)
+}
+
+// Consider disk for replication.
+func (o ClonedVirtualMachineDiskOutput) Replicate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineDisk) *bool { return v.Replicate }).(pulumi.BoolPtrOutput)
+}
+
+// Disk serial number.
+func (o ClonedVirtualMachineDiskOutput) Serial() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineDisk) *string { return v.Serial }).(pulumi.StringPtrOutput)
+}
+
+// Disk size (GiB) when creating new disks. **Note:** Disk shrinking is not supported. Attempting to set `sizeGb` to a value smaller than the current disk size will result in an error. Only disk expansion is allowed.
+func (o ClonedVirtualMachineDiskOutput) SizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineDisk) *int { return v.SizeGb }).(pulumi.IntPtrOutput)
+}
+
+// Mark disk as SSD.
+func (o ClonedVirtualMachineDiskOutput) Ssd() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineDisk) *bool { return v.Ssd }).(pulumi.BoolPtrOutput)
+}
+
+type ClonedVirtualMachineDiskMapOutput struct{ *pulumi.OutputState }
+
+func (ClonedVirtualMachineDiskMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ClonedVirtualMachineDisk)(nil)).Elem()
+}
+
+func (o ClonedVirtualMachineDiskMapOutput) ToClonedVirtualMachineDiskMapOutput() ClonedVirtualMachineDiskMapOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineDiskMapOutput) ToClonedVirtualMachineDiskMapOutputWithContext(ctx context.Context) ClonedVirtualMachineDiskMapOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineDiskMapOutput) MapIndex(k pulumi.StringInput) ClonedVirtualMachineDiskOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClonedVirtualMachineDisk {
+		return vs[0].(map[string]ClonedVirtualMachineDisk)[vs[1].(string)]
+	}).(ClonedVirtualMachineDiskOutput)
+}
+
+type ClonedVirtualMachineMemory struct {
+	// Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely (defaults to `0`).
+	Balloon *int `pulumi:"balloon"`
+	// Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses.
+	//
+	// **Options:**
+	// - `2` - Use 2 MiB hugepages
+	// - `1024` - Use 1 GiB hugepages
+	// - `any` - Use any available hugepage size
+	Hugepages *string `pulumi:"hugepages"`
+	// Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup (defaults to `false`).
+	KeepHugepages *bool `pulumi:"keepHugepages"`
+	// CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs (defaults to `1000`).
+	Shares *int `pulumi:"shares"`
+	// Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM (defaults to `512` MiB).
+	Size *int `pulumi:"size"`
+}
+
+// ClonedVirtualMachineMemoryInput is an input type that accepts ClonedVirtualMachineMemoryArgs and ClonedVirtualMachineMemoryOutput values.
+// You can construct a concrete instance of `ClonedVirtualMachineMemoryInput` via:
+//
+//	ClonedVirtualMachineMemoryArgs{...}
+type ClonedVirtualMachineMemoryInput interface {
+	pulumi.Input
+
+	ToClonedVirtualMachineMemoryOutput() ClonedVirtualMachineMemoryOutput
+	ToClonedVirtualMachineMemoryOutputWithContext(context.Context) ClonedVirtualMachineMemoryOutput
+}
+
+type ClonedVirtualMachineMemoryArgs struct {
+	// Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely (defaults to `0`).
+	Balloon pulumi.IntPtrInput `pulumi:"balloon"`
+	// Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses.
+	//
+	// **Options:**
+	// - `2` - Use 2 MiB hugepages
+	// - `1024` - Use 1 GiB hugepages
+	// - `any` - Use any available hugepage size
+	Hugepages pulumi.StringPtrInput `pulumi:"hugepages"`
+	// Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup (defaults to `false`).
+	KeepHugepages pulumi.BoolPtrInput `pulumi:"keepHugepages"`
+	// CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs (defaults to `1000`).
+	Shares pulumi.IntPtrInput `pulumi:"shares"`
+	// Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM (defaults to `512` MiB).
+	Size pulumi.IntPtrInput `pulumi:"size"`
+}
+
+func (ClonedVirtualMachineMemoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClonedVirtualMachineMemory)(nil)).Elem()
+}
+
+func (i ClonedVirtualMachineMemoryArgs) ToClonedVirtualMachineMemoryOutput() ClonedVirtualMachineMemoryOutput {
+	return i.ToClonedVirtualMachineMemoryOutputWithContext(context.Background())
+}
+
+func (i ClonedVirtualMachineMemoryArgs) ToClonedVirtualMachineMemoryOutputWithContext(ctx context.Context) ClonedVirtualMachineMemoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClonedVirtualMachineMemoryOutput)
+}
+
+func (i ClonedVirtualMachineMemoryArgs) ToClonedVirtualMachineMemoryPtrOutput() ClonedVirtualMachineMemoryPtrOutput {
+	return i.ToClonedVirtualMachineMemoryPtrOutputWithContext(context.Background())
+}
+
+func (i ClonedVirtualMachineMemoryArgs) ToClonedVirtualMachineMemoryPtrOutputWithContext(ctx context.Context) ClonedVirtualMachineMemoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClonedVirtualMachineMemoryOutput).ToClonedVirtualMachineMemoryPtrOutputWithContext(ctx)
+}
+
+// ClonedVirtualMachineMemoryPtrInput is an input type that accepts ClonedVirtualMachineMemoryArgs, ClonedVirtualMachineMemoryPtr and ClonedVirtualMachineMemoryPtrOutput values.
+// You can construct a concrete instance of `ClonedVirtualMachineMemoryPtrInput` via:
+//
+//	        ClonedVirtualMachineMemoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClonedVirtualMachineMemoryPtrInput interface {
+	pulumi.Input
+
+	ToClonedVirtualMachineMemoryPtrOutput() ClonedVirtualMachineMemoryPtrOutput
+	ToClonedVirtualMachineMemoryPtrOutputWithContext(context.Context) ClonedVirtualMachineMemoryPtrOutput
+}
+
+type clonedVirtualMachineMemoryPtrType ClonedVirtualMachineMemoryArgs
+
+func ClonedVirtualMachineMemoryPtr(v *ClonedVirtualMachineMemoryArgs) ClonedVirtualMachineMemoryPtrInput {
+	return (*clonedVirtualMachineMemoryPtrType)(v)
+}
+
+func (*clonedVirtualMachineMemoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClonedVirtualMachineMemory)(nil)).Elem()
+}
+
+func (i *clonedVirtualMachineMemoryPtrType) ToClonedVirtualMachineMemoryPtrOutput() ClonedVirtualMachineMemoryPtrOutput {
+	return i.ToClonedVirtualMachineMemoryPtrOutputWithContext(context.Background())
+}
+
+func (i *clonedVirtualMachineMemoryPtrType) ToClonedVirtualMachineMemoryPtrOutputWithContext(ctx context.Context) ClonedVirtualMachineMemoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClonedVirtualMachineMemoryPtrOutput)
+}
+
+type ClonedVirtualMachineMemoryOutput struct{ *pulumi.OutputState }
+
+func (ClonedVirtualMachineMemoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClonedVirtualMachineMemory)(nil)).Elem()
+}
+
+func (o ClonedVirtualMachineMemoryOutput) ToClonedVirtualMachineMemoryOutput() ClonedVirtualMachineMemoryOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineMemoryOutput) ToClonedVirtualMachineMemoryOutputWithContext(ctx context.Context) ClonedVirtualMachineMemoryOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineMemoryOutput) ToClonedVirtualMachineMemoryPtrOutput() ClonedVirtualMachineMemoryPtrOutput {
+	return o.ToClonedVirtualMachineMemoryPtrOutputWithContext(context.Background())
+}
+
+func (o ClonedVirtualMachineMemoryOutput) ToClonedVirtualMachineMemoryPtrOutputWithContext(ctx context.Context) ClonedVirtualMachineMemoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClonedVirtualMachineMemory) *ClonedVirtualMachineMemory {
+		return &v
+	}).(ClonedVirtualMachineMemoryPtrOutput)
+}
+
+// Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely (defaults to `0`).
+func (o ClonedVirtualMachineMemoryOutput) Balloon() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineMemory) *int { return v.Balloon }).(pulumi.IntPtrOutput)
+}
+
+// Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses.
+//
+// **Options:**
+// - `2` - Use 2 MiB hugepages
+// - `1024` - Use 1 GiB hugepages
+// - `any` - Use any available hugepage size
+func (o ClonedVirtualMachineMemoryOutput) Hugepages() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineMemory) *string { return v.Hugepages }).(pulumi.StringPtrOutput)
+}
+
+// Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup (defaults to `false`).
+func (o ClonedVirtualMachineMemoryOutput) KeepHugepages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineMemory) *bool { return v.KeepHugepages }).(pulumi.BoolPtrOutput)
+}
+
+// CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs (defaults to `1000`).
+func (o ClonedVirtualMachineMemoryOutput) Shares() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineMemory) *int { return v.Shares }).(pulumi.IntPtrOutput)
+}
+
+// Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM (defaults to `512` MiB).
+func (o ClonedVirtualMachineMemoryOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineMemory) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+type ClonedVirtualMachineMemoryPtrOutput struct{ *pulumi.OutputState }
+
+func (ClonedVirtualMachineMemoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClonedVirtualMachineMemory)(nil)).Elem()
+}
+
+func (o ClonedVirtualMachineMemoryPtrOutput) ToClonedVirtualMachineMemoryPtrOutput() ClonedVirtualMachineMemoryPtrOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineMemoryPtrOutput) ToClonedVirtualMachineMemoryPtrOutputWithContext(ctx context.Context) ClonedVirtualMachineMemoryPtrOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineMemoryPtrOutput) Elem() ClonedVirtualMachineMemoryOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineMemory) ClonedVirtualMachineMemory {
+		if v != nil {
+			return *v
+		}
+		var ret ClonedVirtualMachineMemory
+		return ret
+	}).(ClonedVirtualMachineMemoryOutput)
+}
+
+// Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely (defaults to `0`).
+func (o ClonedVirtualMachineMemoryPtrOutput) Balloon() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineMemory) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Balloon
+	}).(pulumi.IntPtrOutput)
+}
+
+// Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses.
+//
+// **Options:**
+// - `2` - Use 2 MiB hugepages
+// - `1024` - Use 1 GiB hugepages
+// - `any` - Use any available hugepage size
+func (o ClonedVirtualMachineMemoryPtrOutput) Hugepages() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineMemory) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Hugepages
+	}).(pulumi.StringPtrOutput)
+}
+
+// Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup (defaults to `false`).
+func (o ClonedVirtualMachineMemoryPtrOutput) KeepHugepages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineMemory) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.KeepHugepages
+	}).(pulumi.BoolPtrOutput)
+}
+
+// CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs (defaults to `1000`).
+func (o ClonedVirtualMachineMemoryPtrOutput) Shares() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineMemory) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Shares
+	}).(pulumi.IntPtrOutput)
+}
+
+// Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM (defaults to `512` MiB).
+func (o ClonedVirtualMachineMemoryPtrOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineMemory) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClonedVirtualMachineNetwork struct {
+	// Bridge name.
+	Bridge *string `pulumi:"bridge"`
+	// Enable firewall on this interface.
+	Firewall *bool `pulumi:"firewall"`
+	// Keep link down.
+	LinkDown *bool `pulumi:"linkDown"`
+	// MAC address (computed if omitted).
+	MacAddress *string `pulumi:"macAddress"`
+	// NIC model (e.g., virtio, e1000).
+	Model *string `pulumi:"model"`
+	// Interface MTU.
+	Mtu *int `pulumi:"mtu"`
+	// Number of multiqueue NIC queues.
+	Queues *int `pulumi:"queues"`
+	// Rate limit (MB/s).
+	RateLimit *float64 `pulumi:"rateLimit"`
+	// VLAN tag.
+	Tag *int `pulumi:"tag"`
+	// Trunk VLAN IDs.
+	Trunks []int `pulumi:"trunks"`
+}
+
+// ClonedVirtualMachineNetworkInput is an input type that accepts ClonedVirtualMachineNetworkArgs and ClonedVirtualMachineNetworkOutput values.
+// You can construct a concrete instance of `ClonedVirtualMachineNetworkInput` via:
+//
+//	ClonedVirtualMachineNetworkArgs{...}
+type ClonedVirtualMachineNetworkInput interface {
+	pulumi.Input
+
+	ToClonedVirtualMachineNetworkOutput() ClonedVirtualMachineNetworkOutput
+	ToClonedVirtualMachineNetworkOutputWithContext(context.Context) ClonedVirtualMachineNetworkOutput
+}
+
+type ClonedVirtualMachineNetworkArgs struct {
+	// Bridge name.
+	Bridge pulumi.StringPtrInput `pulumi:"bridge"`
+	// Enable firewall on this interface.
+	Firewall pulumi.BoolPtrInput `pulumi:"firewall"`
+	// Keep link down.
+	LinkDown pulumi.BoolPtrInput `pulumi:"linkDown"`
+	// MAC address (computed if omitted).
+	MacAddress pulumi.StringPtrInput `pulumi:"macAddress"`
+	// NIC model (e.g., virtio, e1000).
+	Model pulumi.StringPtrInput `pulumi:"model"`
+	// Interface MTU.
+	Mtu pulumi.IntPtrInput `pulumi:"mtu"`
+	// Number of multiqueue NIC queues.
+	Queues pulumi.IntPtrInput `pulumi:"queues"`
+	// Rate limit (MB/s).
+	RateLimit pulumi.Float64PtrInput `pulumi:"rateLimit"`
+	// VLAN tag.
+	Tag pulumi.IntPtrInput `pulumi:"tag"`
+	// Trunk VLAN IDs.
+	Trunks pulumi.IntArrayInput `pulumi:"trunks"`
+}
+
+func (ClonedVirtualMachineNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClonedVirtualMachineNetwork)(nil)).Elem()
+}
+
+func (i ClonedVirtualMachineNetworkArgs) ToClonedVirtualMachineNetworkOutput() ClonedVirtualMachineNetworkOutput {
+	return i.ToClonedVirtualMachineNetworkOutputWithContext(context.Background())
+}
+
+func (i ClonedVirtualMachineNetworkArgs) ToClonedVirtualMachineNetworkOutputWithContext(ctx context.Context) ClonedVirtualMachineNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClonedVirtualMachineNetworkOutput)
+}
+
+// ClonedVirtualMachineNetworkMapInput is an input type that accepts ClonedVirtualMachineNetworkMap and ClonedVirtualMachineNetworkMapOutput values.
+// You can construct a concrete instance of `ClonedVirtualMachineNetworkMapInput` via:
+//
+//	ClonedVirtualMachineNetworkMap{ "key": ClonedVirtualMachineNetworkArgs{...} }
+type ClonedVirtualMachineNetworkMapInput interface {
+	pulumi.Input
+
+	ToClonedVirtualMachineNetworkMapOutput() ClonedVirtualMachineNetworkMapOutput
+	ToClonedVirtualMachineNetworkMapOutputWithContext(context.Context) ClonedVirtualMachineNetworkMapOutput
+}
+
+type ClonedVirtualMachineNetworkMap map[string]ClonedVirtualMachineNetworkInput
+
+func (ClonedVirtualMachineNetworkMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ClonedVirtualMachineNetwork)(nil)).Elem()
+}
+
+func (i ClonedVirtualMachineNetworkMap) ToClonedVirtualMachineNetworkMapOutput() ClonedVirtualMachineNetworkMapOutput {
+	return i.ToClonedVirtualMachineNetworkMapOutputWithContext(context.Background())
+}
+
+func (i ClonedVirtualMachineNetworkMap) ToClonedVirtualMachineNetworkMapOutputWithContext(ctx context.Context) ClonedVirtualMachineNetworkMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClonedVirtualMachineNetworkMapOutput)
+}
+
+type ClonedVirtualMachineNetworkOutput struct{ *pulumi.OutputState }
+
+func (ClonedVirtualMachineNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClonedVirtualMachineNetwork)(nil)).Elem()
+}
+
+func (o ClonedVirtualMachineNetworkOutput) ToClonedVirtualMachineNetworkOutput() ClonedVirtualMachineNetworkOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineNetworkOutput) ToClonedVirtualMachineNetworkOutputWithContext(ctx context.Context) ClonedVirtualMachineNetworkOutput {
+	return o
+}
+
+// Bridge name.
+func (o ClonedVirtualMachineNetworkOutput) Bridge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineNetwork) *string { return v.Bridge }).(pulumi.StringPtrOutput)
+}
+
+// Enable firewall on this interface.
+func (o ClonedVirtualMachineNetworkOutput) Firewall() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineNetwork) *bool { return v.Firewall }).(pulumi.BoolPtrOutput)
+}
+
+// Keep link down.
+func (o ClonedVirtualMachineNetworkOutput) LinkDown() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineNetwork) *bool { return v.LinkDown }).(pulumi.BoolPtrOutput)
+}
+
+// MAC address (computed if omitted).
+func (o ClonedVirtualMachineNetworkOutput) MacAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineNetwork) *string { return v.MacAddress }).(pulumi.StringPtrOutput)
+}
+
+// NIC model (e.g., virtio, e1000).
+func (o ClonedVirtualMachineNetworkOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineNetwork) *string { return v.Model }).(pulumi.StringPtrOutput)
+}
+
+// Interface MTU.
+func (o ClonedVirtualMachineNetworkOutput) Mtu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineNetwork) *int { return v.Mtu }).(pulumi.IntPtrOutput)
+}
+
+// Number of multiqueue NIC queues.
+func (o ClonedVirtualMachineNetworkOutput) Queues() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineNetwork) *int { return v.Queues }).(pulumi.IntPtrOutput)
+}
+
+// Rate limit (MB/s).
+func (o ClonedVirtualMachineNetworkOutput) RateLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineNetwork) *float64 { return v.RateLimit }).(pulumi.Float64PtrOutput)
+}
+
+// VLAN tag.
+func (o ClonedVirtualMachineNetworkOutput) Tag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineNetwork) *int { return v.Tag }).(pulumi.IntPtrOutput)
+}
+
+// Trunk VLAN IDs.
+func (o ClonedVirtualMachineNetworkOutput) Trunks() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineNetwork) []int { return v.Trunks }).(pulumi.IntArrayOutput)
+}
+
+type ClonedVirtualMachineNetworkMapOutput struct{ *pulumi.OutputState }
+
+func (ClonedVirtualMachineNetworkMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ClonedVirtualMachineNetwork)(nil)).Elem()
+}
+
+func (o ClonedVirtualMachineNetworkMapOutput) ToClonedVirtualMachineNetworkMapOutput() ClonedVirtualMachineNetworkMapOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineNetworkMapOutput) ToClonedVirtualMachineNetworkMapOutputWithContext(ctx context.Context) ClonedVirtualMachineNetworkMapOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineNetworkMapOutput) MapIndex(k pulumi.StringInput) ClonedVirtualMachineNetworkOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ClonedVirtualMachineNetwork {
+		return vs[0].(map[string]ClonedVirtualMachineNetwork)[vs[1].(string)]
+	}).(ClonedVirtualMachineNetworkOutput)
+}
+
+type ClonedVirtualMachineRng struct {
+	// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+	MaxBytes *int `pulumi:"maxBytes"`
+	// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+	Period *int `pulumi:"period"`
+	// The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+	Source *string `pulumi:"source"`
+}
+
+// ClonedVirtualMachineRngInput is an input type that accepts ClonedVirtualMachineRngArgs and ClonedVirtualMachineRngOutput values.
+// You can construct a concrete instance of `ClonedVirtualMachineRngInput` via:
+//
+//	ClonedVirtualMachineRngArgs{...}
+type ClonedVirtualMachineRngInput interface {
+	pulumi.Input
+
+	ToClonedVirtualMachineRngOutput() ClonedVirtualMachineRngOutput
+	ToClonedVirtualMachineRngOutputWithContext(context.Context) ClonedVirtualMachineRngOutput
+}
+
+type ClonedVirtualMachineRngArgs struct {
+	// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+	MaxBytes pulumi.IntPtrInput `pulumi:"maxBytes"`
+	// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+	Period pulumi.IntPtrInput `pulumi:"period"`
+	// The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+	Source pulumi.StringPtrInput `pulumi:"source"`
+}
+
+func (ClonedVirtualMachineRngArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClonedVirtualMachineRng)(nil)).Elem()
+}
+
+func (i ClonedVirtualMachineRngArgs) ToClonedVirtualMachineRngOutput() ClonedVirtualMachineRngOutput {
+	return i.ToClonedVirtualMachineRngOutputWithContext(context.Background())
+}
+
+func (i ClonedVirtualMachineRngArgs) ToClonedVirtualMachineRngOutputWithContext(ctx context.Context) ClonedVirtualMachineRngOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClonedVirtualMachineRngOutput)
+}
+
+func (i ClonedVirtualMachineRngArgs) ToClonedVirtualMachineRngPtrOutput() ClonedVirtualMachineRngPtrOutput {
+	return i.ToClonedVirtualMachineRngPtrOutputWithContext(context.Background())
+}
+
+func (i ClonedVirtualMachineRngArgs) ToClonedVirtualMachineRngPtrOutputWithContext(ctx context.Context) ClonedVirtualMachineRngPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClonedVirtualMachineRngOutput).ToClonedVirtualMachineRngPtrOutputWithContext(ctx)
+}
+
+// ClonedVirtualMachineRngPtrInput is an input type that accepts ClonedVirtualMachineRngArgs, ClonedVirtualMachineRngPtr and ClonedVirtualMachineRngPtrOutput values.
+// You can construct a concrete instance of `ClonedVirtualMachineRngPtrInput` via:
+//
+//	        ClonedVirtualMachineRngArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClonedVirtualMachineRngPtrInput interface {
+	pulumi.Input
+
+	ToClonedVirtualMachineRngPtrOutput() ClonedVirtualMachineRngPtrOutput
+	ToClonedVirtualMachineRngPtrOutputWithContext(context.Context) ClonedVirtualMachineRngPtrOutput
+}
+
+type clonedVirtualMachineRngPtrType ClonedVirtualMachineRngArgs
+
+func ClonedVirtualMachineRngPtr(v *ClonedVirtualMachineRngArgs) ClonedVirtualMachineRngPtrInput {
+	return (*clonedVirtualMachineRngPtrType)(v)
+}
+
+func (*clonedVirtualMachineRngPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClonedVirtualMachineRng)(nil)).Elem()
+}
+
+func (i *clonedVirtualMachineRngPtrType) ToClonedVirtualMachineRngPtrOutput() ClonedVirtualMachineRngPtrOutput {
+	return i.ToClonedVirtualMachineRngPtrOutputWithContext(context.Background())
+}
+
+func (i *clonedVirtualMachineRngPtrType) ToClonedVirtualMachineRngPtrOutputWithContext(ctx context.Context) ClonedVirtualMachineRngPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClonedVirtualMachineRngPtrOutput)
+}
+
+type ClonedVirtualMachineRngOutput struct{ *pulumi.OutputState }
+
+func (ClonedVirtualMachineRngOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClonedVirtualMachineRng)(nil)).Elem()
+}
+
+func (o ClonedVirtualMachineRngOutput) ToClonedVirtualMachineRngOutput() ClonedVirtualMachineRngOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineRngOutput) ToClonedVirtualMachineRngOutputWithContext(ctx context.Context) ClonedVirtualMachineRngOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineRngOutput) ToClonedVirtualMachineRngPtrOutput() ClonedVirtualMachineRngPtrOutput {
+	return o.ToClonedVirtualMachineRngPtrOutputWithContext(context.Background())
+}
+
+func (o ClonedVirtualMachineRngOutput) ToClonedVirtualMachineRngPtrOutputWithContext(ctx context.Context) ClonedVirtualMachineRngPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClonedVirtualMachineRng) *ClonedVirtualMachineRng {
+		return &v
+	}).(ClonedVirtualMachineRngPtrOutput)
+}
+
+// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+func (o ClonedVirtualMachineRngOutput) MaxBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineRng) *int { return v.MaxBytes }).(pulumi.IntPtrOutput)
+}
+
+// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+func (o ClonedVirtualMachineRngOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineRng) *int { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+func (o ClonedVirtualMachineRngOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineRng) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+type ClonedVirtualMachineRngPtrOutput struct{ *pulumi.OutputState }
+
+func (ClonedVirtualMachineRngPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClonedVirtualMachineRng)(nil)).Elem()
+}
+
+func (o ClonedVirtualMachineRngPtrOutput) ToClonedVirtualMachineRngPtrOutput() ClonedVirtualMachineRngPtrOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineRngPtrOutput) ToClonedVirtualMachineRngPtrOutputWithContext(ctx context.Context) ClonedVirtualMachineRngPtrOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineRngPtrOutput) Elem() ClonedVirtualMachineRngOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineRng) ClonedVirtualMachineRng {
+		if v != nil {
+			return *v
+		}
+		var ret ClonedVirtualMachineRng
+		return ret
+	}).(ClonedVirtualMachineRngOutput)
+}
+
+// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+func (o ClonedVirtualMachineRngPtrOutput) MaxBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineRng) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxBytes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+func (o ClonedVirtualMachineRngPtrOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineRng) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Period
+	}).(pulumi.IntPtrOutput)
+}
+
+// The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+func (o ClonedVirtualMachineRngPtrOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineRng) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Source
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClonedVirtualMachineTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// ClonedVirtualMachineTimeoutsInput is an input type that accepts ClonedVirtualMachineTimeoutsArgs and ClonedVirtualMachineTimeoutsOutput values.
+// You can construct a concrete instance of `ClonedVirtualMachineTimeoutsInput` via:
+//
+//	ClonedVirtualMachineTimeoutsArgs{...}
+type ClonedVirtualMachineTimeoutsInput interface {
+	pulumi.Input
+
+	ToClonedVirtualMachineTimeoutsOutput() ClonedVirtualMachineTimeoutsOutput
+	ToClonedVirtualMachineTimeoutsOutputWithContext(context.Context) ClonedVirtualMachineTimeoutsOutput
+}
+
+type ClonedVirtualMachineTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (ClonedVirtualMachineTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClonedVirtualMachineTimeouts)(nil)).Elem()
+}
+
+func (i ClonedVirtualMachineTimeoutsArgs) ToClonedVirtualMachineTimeoutsOutput() ClonedVirtualMachineTimeoutsOutput {
+	return i.ToClonedVirtualMachineTimeoutsOutputWithContext(context.Background())
+}
+
+func (i ClonedVirtualMachineTimeoutsArgs) ToClonedVirtualMachineTimeoutsOutputWithContext(ctx context.Context) ClonedVirtualMachineTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClonedVirtualMachineTimeoutsOutput)
+}
+
+func (i ClonedVirtualMachineTimeoutsArgs) ToClonedVirtualMachineTimeoutsPtrOutput() ClonedVirtualMachineTimeoutsPtrOutput {
+	return i.ToClonedVirtualMachineTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i ClonedVirtualMachineTimeoutsArgs) ToClonedVirtualMachineTimeoutsPtrOutputWithContext(ctx context.Context) ClonedVirtualMachineTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClonedVirtualMachineTimeoutsOutput).ToClonedVirtualMachineTimeoutsPtrOutputWithContext(ctx)
+}
+
+// ClonedVirtualMachineTimeoutsPtrInput is an input type that accepts ClonedVirtualMachineTimeoutsArgs, ClonedVirtualMachineTimeoutsPtr and ClonedVirtualMachineTimeoutsPtrOutput values.
+// You can construct a concrete instance of `ClonedVirtualMachineTimeoutsPtrInput` via:
+//
+//	        ClonedVirtualMachineTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClonedVirtualMachineTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToClonedVirtualMachineTimeoutsPtrOutput() ClonedVirtualMachineTimeoutsPtrOutput
+	ToClonedVirtualMachineTimeoutsPtrOutputWithContext(context.Context) ClonedVirtualMachineTimeoutsPtrOutput
+}
+
+type clonedVirtualMachineTimeoutsPtrType ClonedVirtualMachineTimeoutsArgs
+
+func ClonedVirtualMachineTimeoutsPtr(v *ClonedVirtualMachineTimeoutsArgs) ClonedVirtualMachineTimeoutsPtrInput {
+	return (*clonedVirtualMachineTimeoutsPtrType)(v)
+}
+
+func (*clonedVirtualMachineTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClonedVirtualMachineTimeouts)(nil)).Elem()
+}
+
+func (i *clonedVirtualMachineTimeoutsPtrType) ToClonedVirtualMachineTimeoutsPtrOutput() ClonedVirtualMachineTimeoutsPtrOutput {
+	return i.ToClonedVirtualMachineTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *clonedVirtualMachineTimeoutsPtrType) ToClonedVirtualMachineTimeoutsPtrOutputWithContext(ctx context.Context) ClonedVirtualMachineTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClonedVirtualMachineTimeoutsPtrOutput)
+}
+
+type ClonedVirtualMachineTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (ClonedVirtualMachineTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClonedVirtualMachineTimeouts)(nil)).Elem()
+}
+
+func (o ClonedVirtualMachineTimeoutsOutput) ToClonedVirtualMachineTimeoutsOutput() ClonedVirtualMachineTimeoutsOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineTimeoutsOutput) ToClonedVirtualMachineTimeoutsOutputWithContext(ctx context.Context) ClonedVirtualMachineTimeoutsOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineTimeoutsOutput) ToClonedVirtualMachineTimeoutsPtrOutput() ClonedVirtualMachineTimeoutsPtrOutput {
+	return o.ToClonedVirtualMachineTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o ClonedVirtualMachineTimeoutsOutput) ToClonedVirtualMachineTimeoutsPtrOutputWithContext(ctx context.Context) ClonedVirtualMachineTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClonedVirtualMachineTimeouts) *ClonedVirtualMachineTimeouts {
+		return &v
+	}).(ClonedVirtualMachineTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o ClonedVirtualMachineTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o ClonedVirtualMachineTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o ClonedVirtualMachineTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o ClonedVirtualMachineTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type ClonedVirtualMachineTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (ClonedVirtualMachineTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClonedVirtualMachineTimeouts)(nil)).Elem()
+}
+
+func (o ClonedVirtualMachineTimeoutsPtrOutput) ToClonedVirtualMachineTimeoutsPtrOutput() ClonedVirtualMachineTimeoutsPtrOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineTimeoutsPtrOutput) ToClonedVirtualMachineTimeoutsPtrOutputWithContext(ctx context.Context) ClonedVirtualMachineTimeoutsPtrOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineTimeoutsPtrOutput) Elem() ClonedVirtualMachineTimeoutsOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineTimeouts) ClonedVirtualMachineTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret ClonedVirtualMachineTimeouts
+		return ret
+	}).(ClonedVirtualMachineTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o ClonedVirtualMachineTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o ClonedVirtualMachineTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o ClonedVirtualMachineTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o ClonedVirtualMachineTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClonedVirtualMachineVga struct {
+	// Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+	Clipboard *string `pulumi:"clipboard"`
+	// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+	Memory *int `pulumi:"memory"`
+	// The VGA type (defaults to `std`).
+	Type *string `pulumi:"type"`
+}
+
+// ClonedVirtualMachineVgaInput is an input type that accepts ClonedVirtualMachineVgaArgs and ClonedVirtualMachineVgaOutput values.
+// You can construct a concrete instance of `ClonedVirtualMachineVgaInput` via:
+//
+//	ClonedVirtualMachineVgaArgs{...}
+type ClonedVirtualMachineVgaInput interface {
+	pulumi.Input
+
+	ToClonedVirtualMachineVgaOutput() ClonedVirtualMachineVgaOutput
+	ToClonedVirtualMachineVgaOutputWithContext(context.Context) ClonedVirtualMachineVgaOutput
+}
+
+type ClonedVirtualMachineVgaArgs struct {
+	// Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+	Clipboard pulumi.StringPtrInput `pulumi:"clipboard"`
+	// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+	Memory pulumi.IntPtrInput `pulumi:"memory"`
+	// The VGA type (defaults to `std`).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (ClonedVirtualMachineVgaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClonedVirtualMachineVga)(nil)).Elem()
+}
+
+func (i ClonedVirtualMachineVgaArgs) ToClonedVirtualMachineVgaOutput() ClonedVirtualMachineVgaOutput {
+	return i.ToClonedVirtualMachineVgaOutputWithContext(context.Background())
+}
+
+func (i ClonedVirtualMachineVgaArgs) ToClonedVirtualMachineVgaOutputWithContext(ctx context.Context) ClonedVirtualMachineVgaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClonedVirtualMachineVgaOutput)
+}
+
+func (i ClonedVirtualMachineVgaArgs) ToClonedVirtualMachineVgaPtrOutput() ClonedVirtualMachineVgaPtrOutput {
+	return i.ToClonedVirtualMachineVgaPtrOutputWithContext(context.Background())
+}
+
+func (i ClonedVirtualMachineVgaArgs) ToClonedVirtualMachineVgaPtrOutputWithContext(ctx context.Context) ClonedVirtualMachineVgaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClonedVirtualMachineVgaOutput).ToClonedVirtualMachineVgaPtrOutputWithContext(ctx)
+}
+
+// ClonedVirtualMachineVgaPtrInput is an input type that accepts ClonedVirtualMachineVgaArgs, ClonedVirtualMachineVgaPtr and ClonedVirtualMachineVgaPtrOutput values.
+// You can construct a concrete instance of `ClonedVirtualMachineVgaPtrInput` via:
+//
+//	        ClonedVirtualMachineVgaArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClonedVirtualMachineVgaPtrInput interface {
+	pulumi.Input
+
+	ToClonedVirtualMachineVgaPtrOutput() ClonedVirtualMachineVgaPtrOutput
+	ToClonedVirtualMachineVgaPtrOutputWithContext(context.Context) ClonedVirtualMachineVgaPtrOutput
+}
+
+type clonedVirtualMachineVgaPtrType ClonedVirtualMachineVgaArgs
+
+func ClonedVirtualMachineVgaPtr(v *ClonedVirtualMachineVgaArgs) ClonedVirtualMachineVgaPtrInput {
+	return (*clonedVirtualMachineVgaPtrType)(v)
+}
+
+func (*clonedVirtualMachineVgaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClonedVirtualMachineVga)(nil)).Elem()
+}
+
+func (i *clonedVirtualMachineVgaPtrType) ToClonedVirtualMachineVgaPtrOutput() ClonedVirtualMachineVgaPtrOutput {
+	return i.ToClonedVirtualMachineVgaPtrOutputWithContext(context.Background())
+}
+
+func (i *clonedVirtualMachineVgaPtrType) ToClonedVirtualMachineVgaPtrOutputWithContext(ctx context.Context) ClonedVirtualMachineVgaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClonedVirtualMachineVgaPtrOutput)
+}
+
+type ClonedVirtualMachineVgaOutput struct{ *pulumi.OutputState }
+
+func (ClonedVirtualMachineVgaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClonedVirtualMachineVga)(nil)).Elem()
+}
+
+func (o ClonedVirtualMachineVgaOutput) ToClonedVirtualMachineVgaOutput() ClonedVirtualMachineVgaOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineVgaOutput) ToClonedVirtualMachineVgaOutputWithContext(ctx context.Context) ClonedVirtualMachineVgaOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineVgaOutput) ToClonedVirtualMachineVgaPtrOutput() ClonedVirtualMachineVgaPtrOutput {
+	return o.ToClonedVirtualMachineVgaPtrOutputWithContext(context.Background())
+}
+
+func (o ClonedVirtualMachineVgaOutput) ToClonedVirtualMachineVgaPtrOutputWithContext(ctx context.Context) ClonedVirtualMachineVgaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClonedVirtualMachineVga) *ClonedVirtualMachineVga {
+		return &v
+	}).(ClonedVirtualMachineVgaPtrOutput)
+}
+
+// Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+func (o ClonedVirtualMachineVgaOutput) Clipboard() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineVga) *string { return v.Clipboard }).(pulumi.StringPtrOutput)
+}
+
+// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+func (o ClonedVirtualMachineVgaOutput) Memory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineVga) *int { return v.Memory }).(pulumi.IntPtrOutput)
+}
+
+// The VGA type (defaults to `std`).
+func (o ClonedVirtualMachineVgaOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClonedVirtualMachineVga) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ClonedVirtualMachineVgaPtrOutput struct{ *pulumi.OutputState }
+
+func (ClonedVirtualMachineVgaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClonedVirtualMachineVga)(nil)).Elem()
+}
+
+func (o ClonedVirtualMachineVgaPtrOutput) ToClonedVirtualMachineVgaPtrOutput() ClonedVirtualMachineVgaPtrOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineVgaPtrOutput) ToClonedVirtualMachineVgaPtrOutputWithContext(ctx context.Context) ClonedVirtualMachineVgaPtrOutput {
+	return o
+}
+
+func (o ClonedVirtualMachineVgaPtrOutput) Elem() ClonedVirtualMachineVgaOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineVga) ClonedVirtualMachineVga {
+		if v != nil {
+			return *v
+		}
+		var ret ClonedVirtualMachineVga
+		return ret
+	}).(ClonedVirtualMachineVgaOutput)
+}
+
+// Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+func (o ClonedVirtualMachineVgaPtrOutput) Clipboard() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineVga) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Clipboard
+	}).(pulumi.StringPtrOutput)
+}
+
+// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+func (o ClonedVirtualMachineVgaPtrOutput) Memory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineVga) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Memory
+	}).(pulumi.IntPtrOutput)
+}
+
+// The VGA type (defaults to `std`).
+func (o ClonedVirtualMachineVgaPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClonedVirtualMachineVga) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 type VirtualMachine2Cdrom struct {
 	// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
 	FileId *string `pulumi:"fileId"`
@@ -110,166 +2129,10 @@ func (o VirtualMachine2CdromMapOutput) MapIndex(k pulumi.StringInput) VirtualMac
 	}).(VirtualMachine2CdromOutput)
 }
 
-type VirtualMachine2Clone struct {
-	// The ID of the VM to clone.
-	Id int `pulumi:"id"`
-	// The number of retries to perform when cloning the VM (default: 3).
-	Retries *int `pulumi:"retries"`
-}
-
-// VirtualMachine2CloneInput is an input type that accepts VirtualMachine2CloneArgs and VirtualMachine2CloneOutput values.
-// You can construct a concrete instance of `VirtualMachine2CloneInput` via:
-//
-//	VirtualMachine2CloneArgs{...}
-type VirtualMachine2CloneInput interface {
-	pulumi.Input
-
-	ToVirtualMachine2CloneOutput() VirtualMachine2CloneOutput
-	ToVirtualMachine2CloneOutputWithContext(context.Context) VirtualMachine2CloneOutput
-}
-
-type VirtualMachine2CloneArgs struct {
-	// The ID of the VM to clone.
-	Id pulumi.IntInput `pulumi:"id"`
-	// The number of retries to perform when cloning the VM (default: 3).
-	Retries pulumi.IntPtrInput `pulumi:"retries"`
-}
-
-func (VirtualMachine2CloneArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualMachine2Clone)(nil)).Elem()
-}
-
-func (i VirtualMachine2CloneArgs) ToVirtualMachine2CloneOutput() VirtualMachine2CloneOutput {
-	return i.ToVirtualMachine2CloneOutputWithContext(context.Background())
-}
-
-func (i VirtualMachine2CloneArgs) ToVirtualMachine2CloneOutputWithContext(ctx context.Context) VirtualMachine2CloneOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachine2CloneOutput)
-}
-
-func (i VirtualMachine2CloneArgs) ToVirtualMachine2ClonePtrOutput() VirtualMachine2ClonePtrOutput {
-	return i.ToVirtualMachine2ClonePtrOutputWithContext(context.Background())
-}
-
-func (i VirtualMachine2CloneArgs) ToVirtualMachine2ClonePtrOutputWithContext(ctx context.Context) VirtualMachine2ClonePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachine2CloneOutput).ToVirtualMachine2ClonePtrOutputWithContext(ctx)
-}
-
-// VirtualMachine2ClonePtrInput is an input type that accepts VirtualMachine2CloneArgs, VirtualMachine2ClonePtr and VirtualMachine2ClonePtrOutput values.
-// You can construct a concrete instance of `VirtualMachine2ClonePtrInput` via:
-//
-//	        VirtualMachine2CloneArgs{...}
-//
-//	or:
-//
-//	        nil
-type VirtualMachine2ClonePtrInput interface {
-	pulumi.Input
-
-	ToVirtualMachine2ClonePtrOutput() VirtualMachine2ClonePtrOutput
-	ToVirtualMachine2ClonePtrOutputWithContext(context.Context) VirtualMachine2ClonePtrOutput
-}
-
-type virtualMachine2ClonePtrType VirtualMachine2CloneArgs
-
-func VirtualMachine2ClonePtr(v *VirtualMachine2CloneArgs) VirtualMachine2ClonePtrInput {
-	return (*virtualMachine2ClonePtrType)(v)
-}
-
-func (*virtualMachine2ClonePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**VirtualMachine2Clone)(nil)).Elem()
-}
-
-func (i *virtualMachine2ClonePtrType) ToVirtualMachine2ClonePtrOutput() VirtualMachine2ClonePtrOutput {
-	return i.ToVirtualMachine2ClonePtrOutputWithContext(context.Background())
-}
-
-func (i *virtualMachine2ClonePtrType) ToVirtualMachine2ClonePtrOutputWithContext(ctx context.Context) VirtualMachine2ClonePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(VirtualMachine2ClonePtrOutput)
-}
-
-type VirtualMachine2CloneOutput struct{ *pulumi.OutputState }
-
-func (VirtualMachine2CloneOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*VirtualMachine2Clone)(nil)).Elem()
-}
-
-func (o VirtualMachine2CloneOutput) ToVirtualMachine2CloneOutput() VirtualMachine2CloneOutput {
-	return o
-}
-
-func (o VirtualMachine2CloneOutput) ToVirtualMachine2CloneOutputWithContext(ctx context.Context) VirtualMachine2CloneOutput {
-	return o
-}
-
-func (o VirtualMachine2CloneOutput) ToVirtualMachine2ClonePtrOutput() VirtualMachine2ClonePtrOutput {
-	return o.ToVirtualMachine2ClonePtrOutputWithContext(context.Background())
-}
-
-func (o VirtualMachine2CloneOutput) ToVirtualMachine2ClonePtrOutputWithContext(ctx context.Context) VirtualMachine2ClonePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualMachine2Clone) *VirtualMachine2Clone {
-		return &v
-	}).(VirtualMachine2ClonePtrOutput)
-}
-
-// The ID of the VM to clone.
-func (o VirtualMachine2CloneOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v VirtualMachine2Clone) int { return v.Id }).(pulumi.IntOutput)
-}
-
-// The number of retries to perform when cloning the VM (default: 3).
-func (o VirtualMachine2CloneOutput) Retries() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v VirtualMachine2Clone) *int { return v.Retries }).(pulumi.IntPtrOutput)
-}
-
-type VirtualMachine2ClonePtrOutput struct{ *pulumi.OutputState }
-
-func (VirtualMachine2ClonePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**VirtualMachine2Clone)(nil)).Elem()
-}
-
-func (o VirtualMachine2ClonePtrOutput) ToVirtualMachine2ClonePtrOutput() VirtualMachine2ClonePtrOutput {
-	return o
-}
-
-func (o VirtualMachine2ClonePtrOutput) ToVirtualMachine2ClonePtrOutputWithContext(ctx context.Context) VirtualMachine2ClonePtrOutput {
-	return o
-}
-
-func (o VirtualMachine2ClonePtrOutput) Elem() VirtualMachine2CloneOutput {
-	return o.ApplyT(func(v *VirtualMachine2Clone) VirtualMachine2Clone {
-		if v != nil {
-			return *v
-		}
-		var ret VirtualMachine2Clone
-		return ret
-	}).(VirtualMachine2CloneOutput)
-}
-
-// The ID of the VM to clone.
-func (o VirtualMachine2ClonePtrOutput) Id() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *VirtualMachine2Clone) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.IntPtrOutput)
-}
-
-// The number of retries to perform when cloning the VM (default: 3).
-func (o VirtualMachine2ClonePtrOutput) Retries() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *VirtualMachine2Clone) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Retries
-	}).(pulumi.IntPtrOutput)
-}
-
 type VirtualMachine2Cpu struct {
 	// The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
 	Affinity *string `pulumi:"affinity"`
-	// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `affinity` is only allowed for `root@pam` authenticated user.
+	// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
 	Architecture *string `pulumi:"architecture"`
 	// The number of CPU cores per socket (defaults to `1`).
 	Cores *int `pulumi:"cores"`
@@ -303,7 +2166,7 @@ type VirtualMachine2CpuInput interface {
 type VirtualMachine2CpuArgs struct {
 	// The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
 	Affinity pulumi.StringPtrInput `pulumi:"affinity"`
-	// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `affinity` is only allowed for `root@pam` authenticated user.
+	// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
 	Architecture pulumi.StringPtrInput `pulumi:"architecture"`
 	// The number of CPU cores per socket (defaults to `1`).
 	Cores pulumi.IntPtrInput `pulumi:"cores"`
@@ -405,7 +2268,7 @@ func (o VirtualMachine2CpuOutput) Affinity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachine2Cpu) *string { return v.Affinity }).(pulumi.StringPtrOutput)
 }
 
-// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `affinity` is only allowed for `root@pam` authenticated user.
+// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
 func (o VirtualMachine2CpuOutput) Architecture() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachine2Cpu) *string { return v.Architecture }).(pulumi.StringPtrOutput)
 }
@@ -484,7 +2347,7 @@ func (o VirtualMachine2CpuPtrOutput) Affinity() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `affinity` is only allowed for `root@pam` authenticated user.
+// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
 func (o VirtualMachine2CpuPtrOutput) Architecture() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine2Cpu) *string {
 		if v == nil {
@@ -2789,11 +4652,15 @@ type VirtualMachineDisk struct {
 	FileFormat *string `pulumi:"fileFormat"`
 	// The file ID for a disk image when importing a disk into VM. The ID format is
 	// `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
-	// `Download.File` resource. *Deprecated*, use `importFrom` instead.
+	// `Download.File` resource. Prefer `importFrom` for uncompressed images.
+	// Use `fileId` when working with compressed cloud images (e.g., `.qcow2.xz`) that were downloaded
+	// with `contentType = "iso"` and `decompressionAlgorithm` set. See the
+	// Create a VM from a Cloud Image guide for examples.
 	FileId *string `pulumi:"fileId"`
-	// The file ID for a disk image to import into VM. The image must be of `import` content type.
-	// The ID format is `<datastore_id>:import/<file_name>`, for example `local:import/centos8.qcow2`. Can be also taken from
-	// a disk replacement operation, which will require a VM reboot. Your original disks will remain as detached disks.
+	// The file ID for a disk image to import into VM. The image must be of `import` content type
+	// (uncompressed images only). The ID format is `<datastore_id>:import/<file_name>`, for example `local:import/centos8.qcow2`.
+	// Can be also taken from `Download.File` resource. Note: compressed images downloaded with
+	// `decompressionAlgorithm` cannot use `importFrom`; use `fileId` instead.
 	ImportFrom *string `pulumi:"importFrom"`
 	// The disk interface for Proxmox, currently `scsi`,
 	// `sata` and `virtio` interfaces are supported. Append the disk index at
@@ -2851,11 +4718,15 @@ type VirtualMachineDiskArgs struct {
 	FileFormat pulumi.StringPtrInput `pulumi:"fileFormat"`
 	// The file ID for a disk image when importing a disk into VM. The ID format is
 	// `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
-	// `Download.File` resource. *Deprecated*, use `importFrom` instead.
+	// `Download.File` resource. Prefer `importFrom` for uncompressed images.
+	// Use `fileId` when working with compressed cloud images (e.g., `.qcow2.xz`) that were downloaded
+	// with `contentType = "iso"` and `decompressionAlgorithm` set. See the
+	// Create a VM from a Cloud Image guide for examples.
 	FileId pulumi.StringPtrInput `pulumi:"fileId"`
-	// The file ID for a disk image to import into VM. The image must be of `import` content type.
-	// The ID format is `<datastore_id>:import/<file_name>`, for example `local:import/centos8.qcow2`. Can be also taken from
-	// a disk replacement operation, which will require a VM reboot. Your original disks will remain as detached disks.
+	// The file ID for a disk image to import into VM. The image must be of `import` content type
+	// (uncompressed images only). The ID format is `<datastore_id>:import/<file_name>`, for example `local:import/centos8.qcow2`.
+	// Can be also taken from `Download.File` resource. Note: compressed images downloaded with
+	// `decompressionAlgorithm` cannot use `importFrom`; use `fileId` instead.
 	ImportFrom pulumi.StringPtrInput `pulumi:"importFrom"`
 	// The disk interface for Proxmox, currently `scsi`,
 	// `sata` and `virtio` interfaces are supported. Append the disk index at
@@ -2970,14 +4841,18 @@ func (o VirtualMachineDiskOutput) FileFormat() pulumi.StringPtrOutput {
 
 // The file ID for a disk image when importing a disk into VM. The ID format is
 // `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
-// `Download.File` resource. *Deprecated*, use `importFrom` instead.
+// `Download.File` resource. Prefer `importFrom` for uncompressed images.
+// Use `fileId` when working with compressed cloud images (e.g., `.qcow2.xz`) that were downloaded
+// with `contentType = "iso"` and `decompressionAlgorithm` set. See the
+// Create a VM from a Cloud Image guide for examples.
 func (o VirtualMachineDiskOutput) FileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.FileId }).(pulumi.StringPtrOutput)
 }
 
-// The file ID for a disk image to import into VM. The image must be of `import` content type.
-// The ID format is `<datastore_id>:import/<file_name>`, for example `local:import/centos8.qcow2`. Can be also taken from
-// a disk replacement operation, which will require a VM reboot. Your original disks will remain as detached disks.
+// The file ID for a disk image to import into VM. The image must be of `import` content type
+// (uncompressed images only). The ID format is `<datastore_id>:import/<file_name>`, for example `local:import/centos8.qcow2`.
+// Can be also taken from `Download.File` resource. Note: compressed images downloaded with
+// `decompressionAlgorithm` cannot use `importFrom`; use `fileId` instead.
 func (o VirtualMachineDiskOutput) ImportFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineDisk) *string { return v.ImportFrom }).(pulumi.StringPtrOutput)
 }
@@ -7260,10 +9135,28 @@ func (o GetVirtualMachinesVmArrayOutput) Index(i pulumi.IntInput) GetVirtualMach
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ClonedVirtualMachineCdromInput)(nil)).Elem(), ClonedVirtualMachineCdromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClonedVirtualMachineCdromMapInput)(nil)).Elem(), ClonedVirtualMachineCdromMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClonedVirtualMachineCloneInput)(nil)).Elem(), ClonedVirtualMachineCloneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClonedVirtualMachineClonePtrInput)(nil)).Elem(), ClonedVirtualMachineCloneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClonedVirtualMachineCpuInput)(nil)).Elem(), ClonedVirtualMachineCpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClonedVirtualMachineCpuPtrInput)(nil)).Elem(), ClonedVirtualMachineCpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClonedVirtualMachineDeleteInput)(nil)).Elem(), ClonedVirtualMachineDeleteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClonedVirtualMachineDeletePtrInput)(nil)).Elem(), ClonedVirtualMachineDeleteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClonedVirtualMachineDiskInput)(nil)).Elem(), ClonedVirtualMachineDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClonedVirtualMachineDiskMapInput)(nil)).Elem(), ClonedVirtualMachineDiskMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClonedVirtualMachineMemoryInput)(nil)).Elem(), ClonedVirtualMachineMemoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClonedVirtualMachineMemoryPtrInput)(nil)).Elem(), ClonedVirtualMachineMemoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClonedVirtualMachineNetworkInput)(nil)).Elem(), ClonedVirtualMachineNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClonedVirtualMachineNetworkMapInput)(nil)).Elem(), ClonedVirtualMachineNetworkMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClonedVirtualMachineRngInput)(nil)).Elem(), ClonedVirtualMachineRngArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClonedVirtualMachineRngPtrInput)(nil)).Elem(), ClonedVirtualMachineRngArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClonedVirtualMachineTimeoutsInput)(nil)).Elem(), ClonedVirtualMachineTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClonedVirtualMachineTimeoutsPtrInput)(nil)).Elem(), ClonedVirtualMachineTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClonedVirtualMachineVgaInput)(nil)).Elem(), ClonedVirtualMachineVgaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClonedVirtualMachineVgaPtrInput)(nil)).Elem(), ClonedVirtualMachineVgaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachine2CdromInput)(nil)).Elem(), VirtualMachine2CdromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachine2CdromMapInput)(nil)).Elem(), VirtualMachine2CdromMap{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachine2CloneInput)(nil)).Elem(), VirtualMachine2CloneArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachine2ClonePtrInput)(nil)).Elem(), VirtualMachine2CloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachine2CpuInput)(nil)).Elem(), VirtualMachine2CpuArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachine2CpuPtrInput)(nil)).Elem(), VirtualMachine2CpuArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualMachine2RngInput)(nil)).Elem(), VirtualMachine2RngArgs{})
@@ -7336,10 +9229,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachinesFilterArrayInput)(nil)).Elem(), GetVirtualMachinesFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachinesVmInput)(nil)).Elem(), GetVirtualMachinesVmArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVirtualMachinesVmArrayInput)(nil)).Elem(), GetVirtualMachinesVmArray{})
+	pulumi.RegisterOutputType(ClonedVirtualMachineCdromOutput{})
+	pulumi.RegisterOutputType(ClonedVirtualMachineCdromMapOutput{})
+	pulumi.RegisterOutputType(ClonedVirtualMachineCloneOutput{})
+	pulumi.RegisterOutputType(ClonedVirtualMachineClonePtrOutput{})
+	pulumi.RegisterOutputType(ClonedVirtualMachineCpuOutput{})
+	pulumi.RegisterOutputType(ClonedVirtualMachineCpuPtrOutput{})
+	pulumi.RegisterOutputType(ClonedVirtualMachineDeleteOutput{})
+	pulumi.RegisterOutputType(ClonedVirtualMachineDeletePtrOutput{})
+	pulumi.RegisterOutputType(ClonedVirtualMachineDiskOutput{})
+	pulumi.RegisterOutputType(ClonedVirtualMachineDiskMapOutput{})
+	pulumi.RegisterOutputType(ClonedVirtualMachineMemoryOutput{})
+	pulumi.RegisterOutputType(ClonedVirtualMachineMemoryPtrOutput{})
+	pulumi.RegisterOutputType(ClonedVirtualMachineNetworkOutput{})
+	pulumi.RegisterOutputType(ClonedVirtualMachineNetworkMapOutput{})
+	pulumi.RegisterOutputType(ClonedVirtualMachineRngOutput{})
+	pulumi.RegisterOutputType(ClonedVirtualMachineRngPtrOutput{})
+	pulumi.RegisterOutputType(ClonedVirtualMachineTimeoutsOutput{})
+	pulumi.RegisterOutputType(ClonedVirtualMachineTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(ClonedVirtualMachineVgaOutput{})
+	pulumi.RegisterOutputType(ClonedVirtualMachineVgaPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachine2CdromOutput{})
 	pulumi.RegisterOutputType(VirtualMachine2CdromMapOutput{})
-	pulumi.RegisterOutputType(VirtualMachine2CloneOutput{})
-	pulumi.RegisterOutputType(VirtualMachine2ClonePtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachine2CpuOutput{})
 	pulumi.RegisterOutputType(VirtualMachine2CpuPtrOutput{})
 	pulumi.RegisterOutputType(VirtualMachine2RngOutput{})

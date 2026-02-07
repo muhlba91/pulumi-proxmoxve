@@ -21,8 +21,22 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "proxmoxve:Storage/cIFS:CIFS":
+		r = &CIFS{}
+	case "proxmoxve:Storage/directory:Directory":
+		r = &Directory{}
 	case "proxmoxve:Storage/file:File":
 		r = &File{}
+	case "proxmoxve:Storage/lVM:LVM":
+		r = &LVM{}
+	case "proxmoxve:Storage/lVMThin:LVMThin":
+		r = &LVMThin{}
+	case "proxmoxve:Storage/nFS:NFS":
+		r = &NFS{}
+	case "proxmoxve:Storage/pBS:PBS":
+		r = &PBS{}
+	case "proxmoxve:Storage/zFSPool:ZFSPool":
+		r = &ZFSPool{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -38,7 +52,42 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
+		"Storage/cIFS",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"Storage/directory",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
 		"Storage/file",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"Storage/lVM",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"Storage/lVMThin",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"Storage/nFS",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"Storage/pBS",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"Storage/zFSPool",
 		&module{version},
 	)
 }

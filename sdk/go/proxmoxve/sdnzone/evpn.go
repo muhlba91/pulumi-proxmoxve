@@ -72,11 +72,11 @@ type Evpn struct {
 	pulumi.CustomResourceState
 
 	// Enable subnet advertisement for EVPN.
-	AdvertiseSubnets pulumi.BoolPtrOutput `pulumi:"advertiseSubnets"`
+	AdvertiseSubnets pulumi.BoolOutput `pulumi:"advertiseSubnets"`
 	// EVPN controller address.
 	Controller pulumi.StringOutput `pulumi:"controller"`
 	// Disable ARP/ND suppression for EVPN.
-	DisableArpNdSuppression pulumi.BoolPtrOutput `pulumi:"disableArpNdSuppression"`
+	DisableArpNdSuppression pulumi.BoolOutput `pulumi:"disableArpNdSuppression"`
 	// DNS API server address.
 	Dns pulumi.StringPtrOutput `pulumi:"dns"`
 	// DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
@@ -84,11 +84,11 @@ type Evpn struct {
 	// List of exit nodes for EVPN.
 	ExitNodes pulumi.StringArrayOutput `pulumi:"exitNodes"`
 	// Enable local routing for EVPN exit nodes.
-	ExitNodesLocalRouting pulumi.BoolPtrOutput `pulumi:"exitNodesLocalRouting"`
+	ExitNodesLocalRouting pulumi.BoolOutput `pulumi:"exitNodesLocalRouting"`
 	// IP Address Management system.
 	Ipam pulumi.StringPtrOutput `pulumi:"ipam"`
-	// MTU value for the zone.
-	Mtu pulumi.IntPtrOutput `pulumi:"mtu"`
+	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+	Mtu pulumi.IntOutput `pulumi:"mtu"`
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes pulumi.StringArrayOutput `pulumi:"nodes"`
 	// Indicates if the zone has pending configuration changes that need to be applied.
@@ -162,7 +162,7 @@ type evpnState struct {
 	ExitNodesLocalRouting *bool `pulumi:"exitNodesLocalRouting"`
 	// IP Address Management system.
 	Ipam *string `pulumi:"ipam"`
-	// MTU value for the zone.
+	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
 	Mtu *int `pulumi:"mtu"`
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes []string `pulumi:"nodes"`
@@ -199,7 +199,7 @@ type EvpnState struct {
 	ExitNodesLocalRouting pulumi.BoolPtrInput
 	// IP Address Management system.
 	Ipam pulumi.StringPtrInput
-	// MTU value for the zone.
+	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
 	Mtu pulumi.IntPtrInput
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes pulumi.StringArrayInput
@@ -240,7 +240,7 @@ type evpnArgs struct {
 	ExitNodesLocalRouting *bool `pulumi:"exitNodesLocalRouting"`
 	// IP Address Management system.
 	Ipam *string `pulumi:"ipam"`
-	// MTU value for the zone.
+	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
 	Mtu *int `pulumi:"mtu"`
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes []string `pulumi:"nodes"`
@@ -274,7 +274,7 @@ type EvpnArgs struct {
 	ExitNodesLocalRouting pulumi.BoolPtrInput
 	// IP Address Management system.
 	Ipam pulumi.StringPtrInput
-	// MTU value for the zone.
+	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
 	Mtu pulumi.IntPtrInput
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes pulumi.StringArrayInput
@@ -378,8 +378,8 @@ func (o EvpnOutput) ToEvpnOutputWithContext(ctx context.Context) EvpnOutput {
 }
 
 // Enable subnet advertisement for EVPN.
-func (o EvpnOutput) AdvertiseSubnets() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Evpn) pulumi.BoolPtrOutput { return v.AdvertiseSubnets }).(pulumi.BoolPtrOutput)
+func (o EvpnOutput) AdvertiseSubnets() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Evpn) pulumi.BoolOutput { return v.AdvertiseSubnets }).(pulumi.BoolOutput)
 }
 
 // EVPN controller address.
@@ -388,8 +388,8 @@ func (o EvpnOutput) Controller() pulumi.StringOutput {
 }
 
 // Disable ARP/ND suppression for EVPN.
-func (o EvpnOutput) DisableArpNdSuppression() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Evpn) pulumi.BoolPtrOutput { return v.DisableArpNdSuppression }).(pulumi.BoolPtrOutput)
+func (o EvpnOutput) DisableArpNdSuppression() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Evpn) pulumi.BoolOutput { return v.DisableArpNdSuppression }).(pulumi.BoolOutput)
 }
 
 // DNS API server address.
@@ -408,8 +408,8 @@ func (o EvpnOutput) ExitNodes() pulumi.StringArrayOutput {
 }
 
 // Enable local routing for EVPN exit nodes.
-func (o EvpnOutput) ExitNodesLocalRouting() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Evpn) pulumi.BoolPtrOutput { return v.ExitNodesLocalRouting }).(pulumi.BoolPtrOutput)
+func (o EvpnOutput) ExitNodesLocalRouting() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Evpn) pulumi.BoolOutput { return v.ExitNodesLocalRouting }).(pulumi.BoolOutput)
 }
 
 // IP Address Management system.
@@ -417,9 +417,9 @@ func (o EvpnOutput) Ipam() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Evpn) pulumi.StringPtrOutput { return v.Ipam }).(pulumi.StringPtrOutput)
 }
 
-// MTU value for the zone.
-func (o EvpnOutput) Mtu() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Evpn) pulumi.IntPtrOutput { return v.Mtu }).(pulumi.IntPtrOutput)
+// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+func (o EvpnOutput) Mtu() pulumi.IntOutput {
+	return o.ApplyT(func(v *Evpn) pulumi.IntOutput { return v.Mtu }).(pulumi.IntOutput)
 }
 
 // The Proxmox nodes which the zone and associated VNets should be deployed on

@@ -16,6 +16,8 @@ package proxmoxve
 
 import (
 	"context"
+	"strconv"
+
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
 	"fmt"
@@ -49,6 +51,7 @@ const (
 	downloadMod   = "download"
 	sdnMod        = "sdn"
 	sdnZoneMod    = "sdnzone"
+	sdnFabricMod  = "sdnfabric"
 	haMod         = "ha"
 )
 
@@ -189,8 +192,105 @@ func Provider() tfbridge.ProviderInfo {
 					return rpm, nil
 				},
 			},
+			"proxmox_virtual_environment_cloned_vm": {
+				Tok: tfbridge.MakeResource(mainPkg, "VM", "ClonedVirtualMachine"),
+				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
+					const resourceIDPropertyKey = resource.PropertyKey("id")
+					return resource.ID(strconv.Itoa(state[resourceIDPropertyKey].V.(int))), nil
+				},
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"id": {
+						Name: "vmId",
+						Type: "string",
+					},
+				},
+			},
 			// Storage
 			"proxmox_virtual_environment_file": {Tok: tfbridge.MakeResource(mainPkg, "Storage", "File")},
+			"proxmox_virtual_environment_storage_lvm": {
+				Tok: tfbridge.MakeResource(mainPkg, "Storage", "LVM"),
+				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
+					const resourceIDPropertyKey = resource.PropertyKey("id")
+					return resource.ID(state[resourceIDPropertyKey].V.(string)), nil
+				},
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"id": {
+						Name: "lvmId",
+					},
+				},
+			},
+			"proxmox_virtual_environment_storage_directory": {
+				Tok: tfbridge.MakeResource(mainPkg, "Storage", "Directory"),
+				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
+					const resourceIDPropertyKey = resource.PropertyKey("id")
+					return resource.ID(state[resourceIDPropertyKey].V.(string)), nil
+				},
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"id": {
+						Name: "directoryId",
+					},
+				},
+			},
+			"proxmox_virtual_environment_storage_nfs": {
+				Tok: tfbridge.MakeResource(mainPkg, "Storage", "NFS"),
+				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
+					const resourceIDPropertyKey = resource.PropertyKey("id")
+					return resource.ID(state[resourceIDPropertyKey].V.(string)), nil
+				},
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"id": {
+						Name: "nfsId",
+					},
+				},
+			},
+			"proxmox_virtual_environment_storage_zfspool": {
+				Tok: tfbridge.MakeResource(mainPkg, "Storage", "ZFSPool"),
+				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
+					const resourceIDPropertyKey = resource.PropertyKey("id")
+					return resource.ID(state[resourceIDPropertyKey].V.(string)), nil
+				},
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"id": {
+						Name: "zfsPoolId",
+					},
+				},
+			},
+			"proxmox_virtual_environment_storage_cifs": {
+				Tok: tfbridge.MakeResource(mainPkg, "Storage", "CIFS"),
+				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
+					const resourceIDPropertyKey = resource.PropertyKey("id")
+					return resource.ID(state[resourceIDPropertyKey].V.(string)), nil
+				},
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"id": {
+						Name: "cifsId",
+					},
+				},
+			},
+			"proxmox_virtual_environment_storage_lvmthin": {
+				Tok: tfbridge.MakeResource(mainPkg, "Storage", "LVMThin"),
+				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
+					const resourceIDPropertyKey = resource.PropertyKey("id")
+					return resource.ID(state[resourceIDPropertyKey].V.(string)), nil
+				},
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"id": {
+						Name: "lvmThinId",
+					},
+				},
+			},
+			"proxmox_virtual_environment_storage_pbs": {
+				Tok: tfbridge.MakeResource(mainPkg, "Storage", "PBS"),
+				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
+					const resourceIDPropertyKey = resource.PropertyKey("id")
+					return resource.ID(state[resourceIDPropertyKey].V.(string)), nil
+				},
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"id": {
+						Name: "pbsId",
+					},
+				},
+			},
 			// Environment
 			"proxmox_virtual_environment_dns":         {Tok: tfbridge.MakeResource(mainPkg, "index", "DNS")},
 			"proxmox_virtual_environment_certificate": {Tok: tfbridge.MakeResource(mainPkg, "index", "Certifi")},
@@ -216,6 +316,14 @@ func Provider() tfbridge.ProviderInfo {
 			"proxmox_virtual_environment_acme_dns_plugin": {
 				Tok:       tfbridge.MakeResource(mainPkg, "index", "AcmeDnsPlugin"),
 				ComputeID: tfbridge.DelegateIDField("plugin", "proxmoxve", "https://github.com/muhlba91/pulumi-proxmoxve"),
+			},
+			"proxmox_virtual_environment_acme_certificate": {
+				Tok: tfbridge.MakeResource(mainPkg, "Acme", "Certificate"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"certificate": {
+						CSharpName: "certificatePem",
+					},
+				},
 			},
 			// Metrics
 			"proxmox_virtual_environment_metrics_server": {Tok: tfbridge.MakeResource(mainPkg, "Metrics", "MetricsServer")},
@@ -289,6 +397,31 @@ func Provider() tfbridge.ProviderInfo {
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"id": {
 						Name: "vnetId",
+					},
+				},
+			},
+			// SDNFabric
+			"proxmox_virtual_environment_sdn_fabric_openfabric": {
+				Tok: tfbridge.MakeResource(mainPkg, "SDNFabric", "OpenFabric"),
+				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
+					const resourceIDPropertyKey = resource.PropertyKey("id")
+					return resource.ID(state[resourceIDPropertyKey].V.(string)), nil
+				},
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"id": {
+						Name: "fabricId",
+					},
+				},
+			},
+			"proxmox_virtual_environment_sdn_fabric_ospf": {
+				Tok: tfbridge.MakeResource(mainPkg, "SDNFabric", "OSPF"),
+				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
+					const resourceIDPropertyKey = resource.PropertyKey("id")
+					return resource.ID(state[resourceIDPropertyKey].V.(string)), nil
+				},
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"id": {
+						Name: "ospfId",
 					},
 				},
 			},

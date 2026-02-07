@@ -270,6 +270,25 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Selectively enable hotplug features. Supported values
+     * are &lt;span pulumi-lang-nodejs=&#34;`cpu`&#34; pulumi-lang-dotnet=&#34;`Cpu`&#34; pulumi-lang-go=&#34;`cpu`&#34; pulumi-lang-python=&#34;`cpu`&#34; pulumi-lang-yaml=&#34;`cpu`&#34; pulumi-lang-java=&#34;`cpu`&#34;&gt;`cpu`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`memory`&#34; pulumi-lang-dotnet=&#34;`Memory`&#34; pulumi-lang-go=&#34;`memory`&#34; pulumi-lang-python=&#34;`memory`&#34; pulumi-lang-yaml=&#34;`memory`&#34; pulumi-lang-java=&#34;`memory`&#34;&gt;`memory`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`network`&#34; pulumi-lang-dotnet=&#34;`Network`&#34; pulumi-lang-go=&#34;`network`&#34; pulumi-lang-python=&#34;`network`&#34; pulumi-lang-yaml=&#34;`network`&#34; pulumi-lang-java=&#34;`network`&#34;&gt;`network`&lt;/span&gt;, and &lt;span pulumi-lang-nodejs=&#34;`usb`&#34; pulumi-lang-dotnet=&#34;`Usb`&#34; pulumi-lang-go=&#34;`usb`&#34; pulumi-lang-python=&#34;`usb`&#34; pulumi-lang-yaml=&#34;`usb`&#34; pulumi-lang-java=&#34;`usb`&#34;&gt;`usb`&lt;/span&gt;. Use &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; to disable all,
+     * or &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt; to enable all. If not set, PVE defaults to `network,disk,usb`.
+     * 
+     */
+    @Import(name="hotplug")
+    private @Nullable Output<String> hotplug;
+
+    /**
+     * @return Selectively enable hotplug features. Supported values
+     * are &lt;span pulumi-lang-nodejs=&#34;`cpu`&#34; pulumi-lang-dotnet=&#34;`Cpu`&#34; pulumi-lang-go=&#34;`cpu`&#34; pulumi-lang-python=&#34;`cpu`&#34; pulumi-lang-yaml=&#34;`cpu`&#34; pulumi-lang-java=&#34;`cpu`&#34;&gt;`cpu`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`memory`&#34; pulumi-lang-dotnet=&#34;`Memory`&#34; pulumi-lang-go=&#34;`memory`&#34; pulumi-lang-python=&#34;`memory`&#34; pulumi-lang-yaml=&#34;`memory`&#34; pulumi-lang-java=&#34;`memory`&#34;&gt;`memory`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`network`&#34; pulumi-lang-dotnet=&#34;`Network`&#34; pulumi-lang-go=&#34;`network`&#34; pulumi-lang-python=&#34;`network`&#34; pulumi-lang-yaml=&#34;`network`&#34; pulumi-lang-java=&#34;`network`&#34;&gt;`network`&lt;/span&gt;, and &lt;span pulumi-lang-nodejs=&#34;`usb`&#34; pulumi-lang-dotnet=&#34;`Usb`&#34; pulumi-lang-go=&#34;`usb`&#34; pulumi-lang-python=&#34;`usb`&#34; pulumi-lang-yaml=&#34;`usb`&#34; pulumi-lang-java=&#34;`usb`&#34;&gt;`usb`&lt;/span&gt;. Use &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; to disable all,
+     * or &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt; to enable all. If not set, PVE defaults to `network,disk,usb`.
+     * 
+     */
+    public Optional<Output<String>> hotplug() {
+        return Optional.ofNullable(this.hotplug);
+    }
+
+    /**
      * The cloud-init configuration.
      * 
      */
@@ -854,14 +873,20 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The TPM state device.
+     * The TPM state device. The VM must be stopped before
+     * adding, removing, or moving a TPM state device; the provider automatically
+     * handles the shutdown/start cycle. Changing &lt;span pulumi-lang-nodejs=&#34;`version`&#34; pulumi-lang-dotnet=&#34;`Version`&#34; pulumi-lang-go=&#34;`version`&#34; pulumi-lang-python=&#34;`version`&#34; pulumi-lang-yaml=&#34;`version`&#34; pulumi-lang-java=&#34;`version`&#34;&gt;`version`&lt;/span&gt; requires recreating the
+     * VM because Proxmox only supports setting the TPM version at creation time.
      * 
      */
     @Import(name="tpmState")
     private @Nullable Output<VirtualMachineTpmStateArgs> tpmState;
 
     /**
-     * @return The TPM state device.
+     * @return The TPM state device. The VM must be stopped before
+     * adding, removing, or moving a TPM state device; the provider automatically
+     * handles the shutdown/start cycle. Changing &lt;span pulumi-lang-nodejs=&#34;`version`&#34; pulumi-lang-dotnet=&#34;`Version`&#34; pulumi-lang-go=&#34;`version`&#34; pulumi-lang-python=&#34;`version`&#34; pulumi-lang-yaml=&#34;`version`&#34; pulumi-lang-java=&#34;`version`&#34;&gt;`version`&lt;/span&gt; requires recreating the
+     * VM because Proxmox only supports setting the TPM version at creation time.
      * 
      */
     public Optional<Output<VirtualMachineTpmStateArgs>> tpmState() {
@@ -961,6 +986,7 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         this.efiDisk = $.efiDisk;
         this.hookScriptFileId = $.hookScriptFileId;
         this.hostpcis = $.hostpcis;
+        this.hotplug = $.hotplug;
         this.initialization = $.initialization;
         this.keyboardLayout = $.keyboardLayout;
         this.kvmArguments = $.kvmArguments;
@@ -1368,6 +1394,31 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder hostpcis(VirtualMachineHostpciArgs... hostpcis) {
             return hostpcis(List.of(hostpcis));
+        }
+
+        /**
+         * @param hotplug Selectively enable hotplug features. Supported values
+         * are &lt;span pulumi-lang-nodejs=&#34;`cpu`&#34; pulumi-lang-dotnet=&#34;`Cpu`&#34; pulumi-lang-go=&#34;`cpu`&#34; pulumi-lang-python=&#34;`cpu`&#34; pulumi-lang-yaml=&#34;`cpu`&#34; pulumi-lang-java=&#34;`cpu`&#34;&gt;`cpu`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`memory`&#34; pulumi-lang-dotnet=&#34;`Memory`&#34; pulumi-lang-go=&#34;`memory`&#34; pulumi-lang-python=&#34;`memory`&#34; pulumi-lang-yaml=&#34;`memory`&#34; pulumi-lang-java=&#34;`memory`&#34;&gt;`memory`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`network`&#34; pulumi-lang-dotnet=&#34;`Network`&#34; pulumi-lang-go=&#34;`network`&#34; pulumi-lang-python=&#34;`network`&#34; pulumi-lang-yaml=&#34;`network`&#34; pulumi-lang-java=&#34;`network`&#34;&gt;`network`&lt;/span&gt;, and &lt;span pulumi-lang-nodejs=&#34;`usb`&#34; pulumi-lang-dotnet=&#34;`Usb`&#34; pulumi-lang-go=&#34;`usb`&#34; pulumi-lang-python=&#34;`usb`&#34; pulumi-lang-yaml=&#34;`usb`&#34; pulumi-lang-java=&#34;`usb`&#34;&gt;`usb`&lt;/span&gt;. Use &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; to disable all,
+         * or &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt; to enable all. If not set, PVE defaults to `network,disk,usb`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hotplug(@Nullable Output<String> hotplug) {
+            $.hotplug = hotplug;
+            return this;
+        }
+
+        /**
+         * @param hotplug Selectively enable hotplug features. Supported values
+         * are &lt;span pulumi-lang-nodejs=&#34;`cpu`&#34; pulumi-lang-dotnet=&#34;`Cpu`&#34; pulumi-lang-go=&#34;`cpu`&#34; pulumi-lang-python=&#34;`cpu`&#34; pulumi-lang-yaml=&#34;`cpu`&#34; pulumi-lang-java=&#34;`cpu`&#34;&gt;`cpu`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`memory`&#34; pulumi-lang-dotnet=&#34;`Memory`&#34; pulumi-lang-go=&#34;`memory`&#34; pulumi-lang-python=&#34;`memory`&#34; pulumi-lang-yaml=&#34;`memory`&#34; pulumi-lang-java=&#34;`memory`&#34;&gt;`memory`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`network`&#34; pulumi-lang-dotnet=&#34;`Network`&#34; pulumi-lang-go=&#34;`network`&#34; pulumi-lang-python=&#34;`network`&#34; pulumi-lang-yaml=&#34;`network`&#34; pulumi-lang-java=&#34;`network`&#34;&gt;`network`&lt;/span&gt;, and &lt;span pulumi-lang-nodejs=&#34;`usb`&#34; pulumi-lang-dotnet=&#34;`Usb`&#34; pulumi-lang-go=&#34;`usb`&#34; pulumi-lang-python=&#34;`usb`&#34; pulumi-lang-yaml=&#34;`usb`&#34; pulumi-lang-java=&#34;`usb`&#34;&gt;`usb`&lt;/span&gt;. Use &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; to disable all,
+         * or &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt; to enable all. If not set, PVE defaults to `network,disk,usb`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hotplug(String hotplug) {
+            return hotplug(Output.of(hotplug));
         }
 
         /**
@@ -2236,7 +2287,10 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param tpmState The TPM state device.
+         * @param tpmState The TPM state device. The VM must be stopped before
+         * adding, removing, or moving a TPM state device; the provider automatically
+         * handles the shutdown/start cycle. Changing &lt;span pulumi-lang-nodejs=&#34;`version`&#34; pulumi-lang-dotnet=&#34;`Version`&#34; pulumi-lang-go=&#34;`version`&#34; pulumi-lang-python=&#34;`version`&#34; pulumi-lang-yaml=&#34;`version`&#34; pulumi-lang-java=&#34;`version`&#34;&gt;`version`&lt;/span&gt; requires recreating the
+         * VM because Proxmox only supports setting the TPM version at creation time.
          * 
          * @return builder
          * 
@@ -2247,7 +2301,10 @@ public final class VirtualMachineArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param tpmState The TPM state device.
+         * @param tpmState The TPM state device. The VM must be stopped before
+         * adding, removing, or moving a TPM state device; the provider automatically
+         * handles the shutdown/start cycle. Changing &lt;span pulumi-lang-nodejs=&#34;`version`&#34; pulumi-lang-dotnet=&#34;`Version`&#34; pulumi-lang-go=&#34;`version`&#34; pulumi-lang-python=&#34;`version`&#34; pulumi-lang-yaml=&#34;`version`&#34; pulumi-lang-java=&#34;`version`&#34;&gt;`version`&lt;/span&gt; requires recreating the
+         * VM because Proxmox only supports setting the TPM version at creation time.
          * 
          * @return builder
          * 

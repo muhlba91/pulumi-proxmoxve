@@ -134,9 +134,6 @@ export class File extends pulumi.CustomResource {
      * The node name.
      */
     declare public readonly nodeName: pulumi.Output<string>;
-    /**
-     * By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
-     */
     declare public readonly overwrite: pulumi.Output<boolean>;
     /**
      * If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
@@ -250,9 +247,6 @@ export interface FileState {
      * The node name.
      */
     nodeName?: pulumi.Input<string>;
-    /**
-     * By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
-     */
     overwrite?: pulumi.Input<boolean>;
     /**
      * If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
@@ -308,9 +302,6 @@ export interface FileArgs {
      * The node name.
      */
     nodeName: pulumi.Input<string>;
-    /**
-     * By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
-     */
     overwrite?: pulumi.Input<boolean>;
     /**
      * If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.

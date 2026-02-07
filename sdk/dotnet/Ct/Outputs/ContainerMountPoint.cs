@@ -32,6 +32,11 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
         /// </summary>
         public readonly string Path;
         /// <summary>
+        /// The in-datastore path to the mount point volume.
+        /// Use this attribute for cross-resource references instead of `Volume`.
+        /// </summary>
+        public readonly string? PathInDatastore;
+        /// <summary>
         /// Enable user quotas inside the container (not supported
         /// with ZFS subvolumes).
         /// </summary>
@@ -70,6 +75,8 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
 
             string path,
 
+            string? pathInDatastore,
+
             bool? quota,
 
             bool? readOnly,
@@ -86,6 +93,7 @@ namespace Pulumi.ProxmoxVE.CT.Outputs
             Backup = backup;
             MountOptions = mountOptions;
             Path = path;
+            PathInDatastore = pathInDatastore;
             Quota = quota;
             ReadOnly = readOnly;
             Replicate = replicate;

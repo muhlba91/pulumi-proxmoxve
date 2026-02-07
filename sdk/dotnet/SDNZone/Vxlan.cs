@@ -73,10 +73,10 @@ namespace Pulumi.ProxmoxVE.SDNZone
         public Output<string?> Ipam { get; private set; } = null!;
 
         /// <summary>
-        /// MTU value for the zone.
+        /// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
         /// </summary>
         [Output("mtu")]
-        public Output<int?> Mtu { get; private set; } = null!;
+        public Output<int> Mtu { get; private set; } = null!;
 
         /// <summary>
         /// The Proxmox nodes which the zone and associated VNets should be deployed on
@@ -180,7 +180,7 @@ namespace Pulumi.ProxmoxVE.SDNZone
         public Input<string>? Ipam { get; set; }
 
         /// <summary>
-        /// MTU value for the zone.
+        /// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
         /// </summary>
         [Input("mtu")]
         public Input<int>? Mtu { get; set; }
@@ -248,7 +248,7 @@ namespace Pulumi.ProxmoxVE.SDNZone
         public Input<string>? Ipam { get; set; }
 
         /// <summary>
-        /// MTU value for the zone.
+        /// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
         /// </summary>
         [Input("mtu")]
         public Input<int>? Mtu { get; set; }

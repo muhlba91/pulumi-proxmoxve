@@ -13,6 +13,121 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type CertificateDomain struct {
+	// An optional alias domain for DNS validation. This allows you to validate the domain using a different domain's DNS records.
+	Alias *string `pulumi:"alias"`
+	// The domain name to include in the certificate.
+	Domain string `pulumi:"domain"`
+	// The DNS plugin to use for DNS-01 challenge validation. If not specified, the standalone HTTP-01 challenge will be used.
+	Plugin *string `pulumi:"plugin"`
+}
+
+// CertificateDomainInput is an input type that accepts CertificateDomainArgs and CertificateDomainOutput values.
+// You can construct a concrete instance of `CertificateDomainInput` via:
+//
+//	CertificateDomainArgs{...}
+type CertificateDomainInput interface {
+	pulumi.Input
+
+	ToCertificateDomainOutput() CertificateDomainOutput
+	ToCertificateDomainOutputWithContext(context.Context) CertificateDomainOutput
+}
+
+type CertificateDomainArgs struct {
+	// An optional alias domain for DNS validation. This allows you to validate the domain using a different domain's DNS records.
+	Alias pulumi.StringPtrInput `pulumi:"alias"`
+	// The domain name to include in the certificate.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The DNS plugin to use for DNS-01 challenge validation. If not specified, the standalone HTTP-01 challenge will be used.
+	Plugin pulumi.StringPtrInput `pulumi:"plugin"`
+}
+
+func (CertificateDomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateDomain)(nil)).Elem()
+}
+
+func (i CertificateDomainArgs) ToCertificateDomainOutput() CertificateDomainOutput {
+	return i.ToCertificateDomainOutputWithContext(context.Background())
+}
+
+func (i CertificateDomainArgs) ToCertificateDomainOutputWithContext(ctx context.Context) CertificateDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateDomainOutput)
+}
+
+// CertificateDomainArrayInput is an input type that accepts CertificateDomainArray and CertificateDomainArrayOutput values.
+// You can construct a concrete instance of `CertificateDomainArrayInput` via:
+//
+//	CertificateDomainArray{ CertificateDomainArgs{...} }
+type CertificateDomainArrayInput interface {
+	pulumi.Input
+
+	ToCertificateDomainArrayOutput() CertificateDomainArrayOutput
+	ToCertificateDomainArrayOutputWithContext(context.Context) CertificateDomainArrayOutput
+}
+
+type CertificateDomainArray []CertificateDomainInput
+
+func (CertificateDomainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateDomain)(nil)).Elem()
+}
+
+func (i CertificateDomainArray) ToCertificateDomainArrayOutput() CertificateDomainArrayOutput {
+	return i.ToCertificateDomainArrayOutputWithContext(context.Background())
+}
+
+func (i CertificateDomainArray) ToCertificateDomainArrayOutputWithContext(ctx context.Context) CertificateDomainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateDomainArrayOutput)
+}
+
+type CertificateDomainOutput struct{ *pulumi.OutputState }
+
+func (CertificateDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateDomain)(nil)).Elem()
+}
+
+func (o CertificateDomainOutput) ToCertificateDomainOutput() CertificateDomainOutput {
+	return o
+}
+
+func (o CertificateDomainOutput) ToCertificateDomainOutputWithContext(ctx context.Context) CertificateDomainOutput {
+	return o
+}
+
+// An optional alias domain for DNS validation. This allows you to validate the domain using a different domain's DNS records.
+func (o CertificateDomainOutput) Alias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateDomain) *string { return v.Alias }).(pulumi.StringPtrOutput)
+}
+
+// The domain name to include in the certificate.
+func (o CertificateDomainOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateDomain) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The DNS plugin to use for DNS-01 challenge validation. If not specified, the standalone HTTP-01 challenge will be used.
+func (o CertificateDomainOutput) Plugin() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateDomain) *string { return v.Plugin }).(pulumi.StringPtrOutput)
+}
+
+type CertificateDomainArrayOutput struct{ *pulumi.OutputState }
+
+func (CertificateDomainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateDomain)(nil)).Elem()
+}
+
+func (o CertificateDomainArrayOutput) ToCertificateDomainArrayOutput() CertificateDomainArrayOutput {
+	return o
+}
+
+func (o CertificateDomainArrayOutput) ToCertificateDomainArrayOutputWithContext(ctx context.Context) CertificateDomainArrayOutput {
+	return o
+}
+
+func (o CertificateDomainArrayOutput) Index(i pulumi.IntInput) CertificateDomainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateDomain {
+		return vs[0].([]CertificateDomain)[vs[1].(int)]
+	}).(CertificateDomainOutput)
+}
+
 type GetAccountAccount struct {
 	// An array of contact email addresses.
 	Contacts []string `pulumi:"contacts"`
@@ -226,9 +341,13 @@ func (o GetPluginsPluginArrayOutput) Index(i pulumi.IntInput) GetPluginsPluginOu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateDomainInput)(nil)).Elem(), CertificateDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateDomainArrayInput)(nil)).Elem(), CertificateDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountAccountInput)(nil)).Elem(), GetAccountAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPluginsPluginInput)(nil)).Elem(), GetPluginsPluginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPluginsPluginArrayInput)(nil)).Elem(), GetPluginsPluginArray{})
+	pulumi.RegisterOutputType(CertificateDomainOutput{})
+	pulumi.RegisterOutputType(CertificateDomainArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountAccountOutput{})
 	pulumi.RegisterOutputType(GetPluginsPluginOutput{})
 	pulumi.RegisterOutputType(GetPluginsPluginArrayOutput{})

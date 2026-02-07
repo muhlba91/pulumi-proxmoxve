@@ -81,9 +81,9 @@ export class Qinq extends pulumi.CustomResource {
      */
     declare public readonly ipam: pulumi.Output<string | undefined>;
     /**
-     * MTU value for the zone.
+     * MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
      */
-    declare public readonly mtu: pulumi.Output<number | undefined>;
+    declare public readonly mtu: pulumi.Output<number>;
     /**
      * The Proxmox nodes which the zone and associated VNets should be deployed on
      */
@@ -103,7 +103,7 @@ export class Qinq extends pulumi.CustomResource {
     /**
      * Service VLAN protocol for QinQ. The protocol must be `802.1ad` or `802.1q`.
      */
-    declare public readonly serviceVlanProtocol: pulumi.Output<string | undefined>;
+    declare public readonly serviceVlanProtocol: pulumi.Output<string>;
     /**
      * Indicates the current state of the zone.
      */
@@ -188,7 +188,7 @@ export interface QinqState {
      */
     ipam?: pulumi.Input<string>;
     /**
-     * MTU value for the zone.
+     * MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
      */
     mtu?: pulumi.Input<number>;
     /**
@@ -242,7 +242,7 @@ export interface QinqArgs {
      */
     ipam?: pulumi.Input<string>;
     /**
-     * MTU value for the zone.
+     * MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
      */
     mtu?: pulumi.Input<number>;
     /**

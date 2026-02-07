@@ -67,7 +67,7 @@ namespace Pulumi.ProxmoxVE.Network
     public partial class FirewallOptions : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Container ID.
+        /// Container ID. **Exactly one of `VmId` or `ContainerId` must be specified.**
         /// </summary>
         [Output("containerId")]
         public Output<int?> ContainerId { get; private set; } = null!;
@@ -149,7 +149,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Output<bool?> Radv { get; private set; } = null!;
 
         /// <summary>
-        /// VM ID.
+        /// VM ID. **Exactly one of `VmId` or `ContainerId` must be specified.**
         /// </summary>
         [Output("vmId")]
         public Output<int?> VmId { get; private set; } = null!;
@@ -202,7 +202,7 @@ namespace Pulumi.ProxmoxVE.Network
     public sealed class FirewallOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Container ID.
+        /// Container ID. **Exactly one of `VmId` or `ContainerId` must be specified.**
         /// </summary>
         [Input("containerId")]
         public Input<int>? ContainerId { get; set; }
@@ -284,7 +284,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Input<bool>? Radv { get; set; }
 
         /// <summary>
-        /// VM ID.
+        /// VM ID. **Exactly one of `VmId` or `ContainerId` must be specified.**
         /// </summary>
         [Input("vmId")]
         public Input<int>? VmId { get; set; }
@@ -298,7 +298,7 @@ namespace Pulumi.ProxmoxVE.Network
     public sealed class FirewallOptionsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Container ID.
+        /// Container ID. **Exactly one of `VmId` or `ContainerId` must be specified.**
         /// </summary>
         [Input("containerId")]
         public Input<int>? ContainerId { get; set; }
@@ -380,7 +380,7 @@ namespace Pulumi.ProxmoxVE.Network
         public Input<bool>? Radv { get; set; }
 
         /// <summary>
-        /// VM ID.
+        /// VM ID. **Exactly one of `VmId` or `ContainerId` must be specified.**
         /// </summary>
         [Input("vmId")]
         public Input<int>? VmId { get; set; }

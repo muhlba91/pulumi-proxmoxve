@@ -12,8 +12,7 @@ namespace Pulumi.ProxmoxVE.Network
     /// <summary>
     /// Manages cluster-level, node-level or VM/container-level firewall rules.
     /// 
-    /// &gt; **Note:** Before creating a new `proxmoxve.Network.FirewallRules` resource, verify that no rules already exist for the target (cluster, node, VM, or container).
-    /// If rules are already configured, import them first using the appropriate import command.
+    /// &gt; Before creating a new `proxmoxve.Network.FirewallRules` resource, verify that no rules already exist for the target (cluster, node, VM, or container). If rules are already configured, import them first using the appropriate import command.
     /// 
     /// ## Example Usage
     /// 

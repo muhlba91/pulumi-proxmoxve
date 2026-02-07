@@ -46,7 +46,7 @@ class EvpnArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exit_nodes: List of exit nodes for EVPN.
         :param pulumi.Input[_builtins.bool] exit_nodes_local_routing: Enable local routing for EVPN exit nodes.
         :param pulumi.Input[_builtins.str] ipam: IP Address Management system.
-        :param pulumi.Input[_builtins.int] mtu: MTU value for the zone.
+        :param pulumi.Input[_builtins.int] mtu: MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: The Proxmox nodes which the zone and associated VNets should be deployed on
         :param pulumi.Input[_builtins.str] primary_exit_node: Primary exit node for EVPN.
         :param pulumi.Input[_builtins.str] reverse_dns: Reverse DNS API server address.
@@ -204,7 +204,7 @@ class EvpnArgs:
     @pulumi.getter
     def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        MTU value for the zone.
+        MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
         """
         return pulumi.get(self, "mtu")
 
@@ -291,7 +291,7 @@ class _EvpnState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exit_nodes: List of exit nodes for EVPN.
         :param pulumi.Input[_builtins.bool] exit_nodes_local_routing: Enable local routing for EVPN exit nodes.
         :param pulumi.Input[_builtins.str] ipam: IP Address Management system.
-        :param pulumi.Input[_builtins.int] mtu: MTU value for the zone.
+        :param pulumi.Input[_builtins.int] mtu: MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: The Proxmox nodes which the zone and associated VNets should be deployed on
         :param pulumi.Input[_builtins.bool] pending: Indicates if the zone has pending configuration changes that need to be applied.
         :param pulumi.Input[_builtins.str] primary_exit_node: Primary exit node for EVPN.
@@ -436,7 +436,7 @@ class _EvpnState:
     @pulumi.getter
     def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        MTU value for the zone.
+        MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
         """
         return pulumi.get(self, "mtu")
 
@@ -613,7 +613,7 @@ class Evpn(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exit_nodes: List of exit nodes for EVPN.
         :param pulumi.Input[_builtins.bool] exit_nodes_local_routing: Enable local routing for EVPN exit nodes.
         :param pulumi.Input[_builtins.str] ipam: IP Address Management system.
-        :param pulumi.Input[_builtins.int] mtu: MTU value for the zone.
+        :param pulumi.Input[_builtins.int] mtu: MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: The Proxmox nodes which the zone and associated VNets should be deployed on
         :param pulumi.Input[_builtins.str] primary_exit_node: Primary exit node for EVPN.
         :param pulumi.Input[_builtins.str] reverse_dns: Reverse DNS API server address.
@@ -771,7 +771,7 @@ class Evpn(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] exit_nodes: List of exit nodes for EVPN.
         :param pulumi.Input[_builtins.bool] exit_nodes_local_routing: Enable local routing for EVPN exit nodes.
         :param pulumi.Input[_builtins.str] ipam: IP Address Management system.
-        :param pulumi.Input[_builtins.int] mtu: MTU value for the zone.
+        :param pulumi.Input[_builtins.int] mtu: MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: The Proxmox nodes which the zone and associated VNets should be deployed on
         :param pulumi.Input[_builtins.bool] pending: Indicates if the zone has pending configuration changes that need to be applied.
         :param pulumi.Input[_builtins.str] primary_exit_node: Primary exit node for EVPN.
@@ -806,7 +806,7 @@ class Evpn(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="advertiseSubnets")
-    def advertise_subnets(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def advertise_subnets(self) -> pulumi.Output[_builtins.bool]:
         """
         Enable subnet advertisement for EVPN.
         """
@@ -822,7 +822,7 @@ class Evpn(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="disableArpNdSuppression")
-    def disable_arp_nd_suppression(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def disable_arp_nd_suppression(self) -> pulumi.Output[_builtins.bool]:
         """
         Disable ARP/ND suppression for EVPN.
         """
@@ -854,7 +854,7 @@ class Evpn(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="exitNodesLocalRouting")
-    def exit_nodes_local_routing(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def exit_nodes_local_routing(self) -> pulumi.Output[_builtins.bool]:
         """
         Enable local routing for EVPN exit nodes.
         """
@@ -870,9 +870,9 @@ class Evpn(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def mtu(self) -> pulumi.Output[Optional[_builtins.int]]:
+    def mtu(self) -> pulumi.Output[_builtins.int]:
         """
-        MTU value for the zone.
+        MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
         """
         return pulumi.get(self, "mtu")
 

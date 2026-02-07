@@ -690,6 +690,9 @@ type ContainerDisk struct {
 	DatastoreId *string `pulumi:"datastoreId"`
 	// List of extra mount options.
 	MountOptions []string `pulumi:"mountOptions"`
+	// The in-datastore path to the disk image.
+	// Use this attribute for cross-resource references.
+	PathInDatastore *string `pulumi:"pathInDatastore"`
 	// Enable user quotas for the container rootfs
 	Quota *bool `pulumi:"quota"`
 	// Will include this volume to a storage replica job
@@ -719,6 +722,9 @@ type ContainerDiskArgs struct {
 	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
 	// List of extra mount options.
 	MountOptions pulumi.StringArrayInput `pulumi:"mountOptions"`
+	// The in-datastore path to the disk image.
+	// Use this attribute for cross-resource references.
+	PathInDatastore pulumi.StringPtrInput `pulumi:"pathInDatastore"`
 	// Enable user quotas for the container rootfs
 	Quota pulumi.BoolPtrInput `pulumi:"quota"`
 	// Will include this volume to a storage replica job
@@ -822,6 +828,12 @@ func (o ContainerDiskOutput) MountOptions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ContainerDisk) []string { return v.MountOptions }).(pulumi.StringArrayOutput)
 }
 
+// The in-datastore path to the disk image.
+// Use this attribute for cross-resource references.
+func (o ContainerDiskOutput) PathInDatastore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerDisk) *string { return v.PathInDatastore }).(pulumi.StringPtrOutput)
+}
+
 // Enable user quotas for the container rootfs
 func (o ContainerDiskOutput) Quota() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerDisk) *bool { return v.Quota }).(pulumi.BoolPtrOutput)
@@ -892,6 +904,17 @@ func (o ContainerDiskPtrOutput) MountOptions() pulumi.StringArrayOutput {
 		}
 		return v.MountOptions
 	}).(pulumi.StringArrayOutput)
+}
+
+// The in-datastore path to the disk image.
+// Use this attribute for cross-resource references.
+func (o ContainerDiskPtrOutput) PathInDatastore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PathInDatastore
+	}).(pulumi.StringPtrOutput)
 }
 
 // Enable user quotas for the container rootfs
@@ -2278,6 +2301,9 @@ type ContainerMountPoint struct {
 	// Path to the mount point as seen from inside the
 	// container.
 	Path string `pulumi:"path"`
+	// The in-datastore path to the mount point volume.
+	// Use this attribute for cross-resource references instead of `volume`.
+	PathInDatastore *string `pulumi:"pathInDatastore"`
 	// Enable user quotas inside the container (not supported
 	// with ZFS subvolumes).
 	Quota *bool `pulumi:"quota"`
@@ -2318,6 +2344,9 @@ type ContainerMountPointArgs struct {
 	// Path to the mount point as seen from inside the
 	// container.
 	Path pulumi.StringInput `pulumi:"path"`
+	// The in-datastore path to the mount point volume.
+	// Use this attribute for cross-resource references instead of `volume`.
+	PathInDatastore pulumi.StringPtrInput `pulumi:"pathInDatastore"`
 	// Enable user quotas inside the container (not supported
 	// with ZFS subvolumes).
 	Quota pulumi.BoolPtrInput `pulumi:"quota"`
@@ -2407,6 +2436,12 @@ func (o ContainerMountPointOutput) MountOptions() pulumi.StringArrayOutput {
 // container.
 func (o ContainerMountPointOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerMountPoint) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// The in-datastore path to the mount point volume.
+// Use this attribute for cross-resource references instead of `volume`.
+func (o ContainerMountPointOutput) PathInDatastore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerMountPoint) *string { return v.PathInDatastore }).(pulumi.StringPtrOutput)
 }
 
 // Enable user quotas inside the container (not supported

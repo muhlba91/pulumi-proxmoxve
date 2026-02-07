@@ -68,8 +68,8 @@ type Qinq struct {
 	DnsZone pulumi.StringPtrOutput `pulumi:"dnsZone"`
 	// IP Address Management system.
 	Ipam pulumi.StringPtrOutput `pulumi:"ipam"`
-	// MTU value for the zone.
-	Mtu pulumi.IntPtrOutput `pulumi:"mtu"`
+	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+	Mtu pulumi.IntOutput `pulumi:"mtu"`
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes pulumi.StringArrayOutput `pulumi:"nodes"`
 	// Indicates if the zone has pending configuration changes that need to be applied.
@@ -79,7 +79,7 @@ type Qinq struct {
 	// Service VLAN tag for QinQ. The tag must be between `1` and `4094`.
 	ServiceVlan pulumi.IntOutput `pulumi:"serviceVlan"`
 	// Service VLAN protocol for QinQ. The protocol must be `802.1ad` or `802.1q`.
-	ServiceVlanProtocol pulumi.StringPtrOutput `pulumi:"serviceVlanProtocol"`
+	ServiceVlanProtocol pulumi.StringOutput `pulumi:"serviceVlanProtocol"`
 	// Indicates the current state of the zone.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The unique identifier of the SDN zone.
@@ -133,7 +133,7 @@ type qinqState struct {
 	DnsZone *string `pulumi:"dnsZone"`
 	// IP Address Management system.
 	Ipam *string `pulumi:"ipam"`
-	// MTU value for the zone.
+	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
 	Mtu *int `pulumi:"mtu"`
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes []string `pulumi:"nodes"`
@@ -160,7 +160,7 @@ type QinqState struct {
 	DnsZone pulumi.StringPtrInput
 	// IP Address Management system.
 	Ipam pulumi.StringPtrInput
-	// MTU value for the zone.
+	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
 	Mtu pulumi.IntPtrInput
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes pulumi.StringArrayInput
@@ -191,7 +191,7 @@ type qinqArgs struct {
 	DnsZone *string `pulumi:"dnsZone"`
 	// IP Address Management system.
 	Ipam *string `pulumi:"ipam"`
-	// MTU value for the zone.
+	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
 	Mtu *int `pulumi:"mtu"`
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes []string `pulumi:"nodes"`
@@ -215,7 +215,7 @@ type QinqArgs struct {
 	DnsZone pulumi.StringPtrInput
 	// IP Address Management system.
 	Ipam pulumi.StringPtrInput
-	// MTU value for the zone.
+	// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
 	Mtu pulumi.IntPtrInput
 	// The Proxmox nodes which the zone and associated VNets should be deployed on
 	Nodes pulumi.StringArrayInput
@@ -336,9 +336,9 @@ func (o QinqOutput) Ipam() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Qinq) pulumi.StringPtrOutput { return v.Ipam }).(pulumi.StringPtrOutput)
 }
 
-// MTU value for the zone.
-func (o QinqOutput) Mtu() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Qinq) pulumi.IntPtrOutput { return v.Mtu }).(pulumi.IntPtrOutput)
+// MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
+func (o QinqOutput) Mtu() pulumi.IntOutput {
+	return o.ApplyT(func(v *Qinq) pulumi.IntOutput { return v.Mtu }).(pulumi.IntOutput)
 }
 
 // The Proxmox nodes which the zone and associated VNets should be deployed on
@@ -362,8 +362,8 @@ func (o QinqOutput) ServiceVlan() pulumi.IntOutput {
 }
 
 // Service VLAN protocol for QinQ. The protocol must be `802.1ad` or `802.1q`.
-func (o QinqOutput) ServiceVlanProtocol() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Qinq) pulumi.StringPtrOutput { return v.ServiceVlanProtocol }).(pulumi.StringPtrOutput)
+func (o QinqOutput) ServiceVlanProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *Qinq) pulumi.StringOutput { return v.ServiceVlanProtocol }).(pulumi.StringOutput)
 }
 
 // Indicates the current state of the zone.
