@@ -802,162 +802,6 @@ func (o GetContainersFilterArrayOutput) Index(i pulumi.IntInput) GetContainersFi
 	}).(GetContainersFilterOutput)
 }
 
-type GetVm2Clone struct {
-	// The ID of the VM to clone.
-	Id int `pulumi:"id"`
-	// The number of retries to perform when cloning the VM (default: 3).
-	Retries int `pulumi:"retries"`
-}
-
-// GetVm2CloneInput is an input type that accepts GetVm2CloneArgs and GetVm2CloneOutput values.
-// You can construct a concrete instance of `GetVm2CloneInput` via:
-//
-//	GetVm2CloneArgs{...}
-type GetVm2CloneInput interface {
-	pulumi.Input
-
-	ToGetVm2CloneOutput() GetVm2CloneOutput
-	ToGetVm2CloneOutputWithContext(context.Context) GetVm2CloneOutput
-}
-
-type GetVm2CloneArgs struct {
-	// The ID of the VM to clone.
-	Id pulumi.IntInput `pulumi:"id"`
-	// The number of retries to perform when cloning the VM (default: 3).
-	Retries pulumi.IntInput `pulumi:"retries"`
-}
-
-func (GetVm2CloneArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVm2Clone)(nil)).Elem()
-}
-
-func (i GetVm2CloneArgs) ToGetVm2CloneOutput() GetVm2CloneOutput {
-	return i.ToGetVm2CloneOutputWithContext(context.Background())
-}
-
-func (i GetVm2CloneArgs) ToGetVm2CloneOutputWithContext(ctx context.Context) GetVm2CloneOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVm2CloneOutput)
-}
-
-func (i GetVm2CloneArgs) ToGetVm2ClonePtrOutput() GetVm2ClonePtrOutput {
-	return i.ToGetVm2ClonePtrOutputWithContext(context.Background())
-}
-
-func (i GetVm2CloneArgs) ToGetVm2ClonePtrOutputWithContext(ctx context.Context) GetVm2ClonePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVm2CloneOutput).ToGetVm2ClonePtrOutputWithContext(ctx)
-}
-
-// GetVm2ClonePtrInput is an input type that accepts GetVm2CloneArgs, GetVm2ClonePtr and GetVm2ClonePtrOutput values.
-// You can construct a concrete instance of `GetVm2ClonePtrInput` via:
-//
-//	        GetVm2CloneArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetVm2ClonePtrInput interface {
-	pulumi.Input
-
-	ToGetVm2ClonePtrOutput() GetVm2ClonePtrOutput
-	ToGetVm2ClonePtrOutputWithContext(context.Context) GetVm2ClonePtrOutput
-}
-
-type getVm2ClonePtrType GetVm2CloneArgs
-
-func GetVm2ClonePtr(v *GetVm2CloneArgs) GetVm2ClonePtrInput {
-	return (*getVm2ClonePtrType)(v)
-}
-
-func (*getVm2ClonePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetVm2Clone)(nil)).Elem()
-}
-
-func (i *getVm2ClonePtrType) ToGetVm2ClonePtrOutput() GetVm2ClonePtrOutput {
-	return i.ToGetVm2ClonePtrOutputWithContext(context.Background())
-}
-
-func (i *getVm2ClonePtrType) ToGetVm2ClonePtrOutputWithContext(ctx context.Context) GetVm2ClonePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVm2ClonePtrOutput)
-}
-
-type GetVm2CloneOutput struct{ *pulumi.OutputState }
-
-func (GetVm2CloneOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVm2Clone)(nil)).Elem()
-}
-
-func (o GetVm2CloneOutput) ToGetVm2CloneOutput() GetVm2CloneOutput {
-	return o
-}
-
-func (o GetVm2CloneOutput) ToGetVm2CloneOutputWithContext(ctx context.Context) GetVm2CloneOutput {
-	return o
-}
-
-func (o GetVm2CloneOutput) ToGetVm2ClonePtrOutput() GetVm2ClonePtrOutput {
-	return o.ToGetVm2ClonePtrOutputWithContext(context.Background())
-}
-
-func (o GetVm2CloneOutput) ToGetVm2ClonePtrOutputWithContext(ctx context.Context) GetVm2ClonePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVm2Clone) *GetVm2Clone {
-		return &v
-	}).(GetVm2ClonePtrOutput)
-}
-
-// The ID of the VM to clone.
-func (o GetVm2CloneOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v GetVm2Clone) int { return v.Id }).(pulumi.IntOutput)
-}
-
-// The number of retries to perform when cloning the VM (default: 3).
-func (o GetVm2CloneOutput) Retries() pulumi.IntOutput {
-	return o.ApplyT(func(v GetVm2Clone) int { return v.Retries }).(pulumi.IntOutput)
-}
-
-type GetVm2ClonePtrOutput struct{ *pulumi.OutputState }
-
-func (GetVm2ClonePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetVm2Clone)(nil)).Elem()
-}
-
-func (o GetVm2ClonePtrOutput) ToGetVm2ClonePtrOutput() GetVm2ClonePtrOutput {
-	return o
-}
-
-func (o GetVm2ClonePtrOutput) ToGetVm2ClonePtrOutputWithContext(ctx context.Context) GetVm2ClonePtrOutput {
-	return o
-}
-
-func (o GetVm2ClonePtrOutput) Elem() GetVm2CloneOutput {
-	return o.ApplyT(func(v *GetVm2Clone) GetVm2Clone {
-		if v != nil {
-			return *v
-		}
-		var ret GetVm2Clone
-		return ret
-	}).(GetVm2CloneOutput)
-}
-
-// The ID of the VM to clone.
-func (o GetVm2ClonePtrOutput) Id() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetVm2Clone) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Id
-	}).(pulumi.IntPtrOutput)
-}
-
-// The number of retries to perform when cloning the VM (default: 3).
-func (o GetVm2ClonePtrOutput) Retries() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetVm2Clone) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Retries
-	}).(pulumi.IntPtrOutput)
-}
-
 type GetVm2Cpu struct {
 	// List of host cores used to execute guest processes, for example: '0,5,8-11'
 	Affinity string `pulumi:"affinity"`
@@ -1764,8 +1608,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetContainersContainerArrayInput)(nil)).Elem(), GetContainersContainerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetContainersFilterInput)(nil)).Elem(), GetContainersFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetContainersFilterArrayInput)(nil)).Elem(), GetContainersFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2CloneInput)(nil)).Elem(), GetVm2CloneArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2ClonePtrInput)(nil)).Elem(), GetVm2CloneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2CpuInput)(nil)).Elem(), GetVm2CpuArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2CpuPtrInput)(nil)).Elem(), GetVm2CpuArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2RngInput)(nil)).Elem(), GetVm2RngArgs{})
@@ -1784,8 +1626,6 @@ func init() {
 	pulumi.RegisterOutputType(GetContainersContainerArrayOutput{})
 	pulumi.RegisterOutputType(GetContainersFilterOutput{})
 	pulumi.RegisterOutputType(GetContainersFilterArrayOutput{})
-	pulumi.RegisterOutputType(GetVm2CloneOutput{})
-	pulumi.RegisterOutputType(GetVm2ClonePtrOutput{})
 	pulumi.RegisterOutputType(GetVm2CpuOutput{})
 	pulumi.RegisterOutputType(GetVm2CpuPtrOutput{})
 	pulumi.RegisterOutputType(GetVm2RngOutput{})

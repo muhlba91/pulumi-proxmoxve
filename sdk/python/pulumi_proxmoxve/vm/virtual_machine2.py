@@ -23,7 +23,6 @@ class VirtualMachine2Args:
     def __init__(__self__, *,
                  node_name: pulumi.Input[_builtins.str],
                  cdrom: Optional[pulumi.Input[Mapping[str, pulumi.Input['VirtualMachine2CdromArgs']]]] = None,
-                 clone: Optional[pulumi.Input['VirtualMachine2CloneArgs']] = None,
                  cpu: Optional[pulumi.Input['VirtualMachine2CpuArgs']] = None,
                  delete_unreferenced_disks_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
@@ -39,13 +38,12 @@ class VirtualMachine2Args:
         The set of arguments for constructing a VirtualMachine2 resource.
         :param pulumi.Input[_builtins.str] node_name: The name of the node where the VM is provisioned.
         :param pulumi.Input[Mapping[str, pulumi.Input['VirtualMachine2CdromArgs']]] cdrom: The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
-        :param pulumi.Input['VirtualMachine2CloneArgs'] clone: The cloning configuration.
         :param pulumi.Input['VirtualMachine2CpuArgs'] cpu: The CPU configuration.
         :param pulumi.Input[_builtins.bool] delete_unreferenced_disks_on_destroy: Set to true to delete unreferenced disks on destroy (defaults to `true`).
         :param pulumi.Input[_builtins.str] description: The description of the VM.
         :param pulumi.Input[_builtins.str] name: The name of the VM. Doesn't have to be unique.
         :param pulumi.Input[_builtins.bool] purge_on_destroy: Set to true to purge the VM from backup configurations on destroy (defaults to `true`).
-        :param pulumi.Input['VirtualMachine2RngArgs'] rng: Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+        :param pulumi.Input['VirtualMachine2RngArgs'] rng: Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
         :param pulumi.Input[_builtins.bool] stop_on_destroy: Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The tags assigned to the VM.
         :param pulumi.Input[_builtins.bool] template: Set to true to create a VM template.
@@ -54,8 +52,6 @@ class VirtualMachine2Args:
         pulumi.set(__self__, "node_name", node_name)
         if cdrom is not None:
             pulumi.set(__self__, "cdrom", cdrom)
-        if clone is not None:
-            pulumi.set(__self__, "clone", clone)
         if cpu is not None:
             pulumi.set(__self__, "cpu", cpu)
         if delete_unreferenced_disks_on_destroy is not None:
@@ -102,18 +98,6 @@ class VirtualMachine2Args:
     @cdrom.setter
     def cdrom(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['VirtualMachine2CdromArgs']]]]):
         pulumi.set(self, "cdrom", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def clone(self) -> Optional[pulumi.Input['VirtualMachine2CloneArgs']]:
-        """
-        The cloning configuration.
-        """
-        return pulumi.get(self, "clone")
-
-    @clone.setter
-    def clone(self, value: Optional[pulumi.Input['VirtualMachine2CloneArgs']]):
-        pulumi.set(self, "clone", value)
 
     @_builtins.property
     @pulumi.getter
@@ -179,7 +163,7 @@ class VirtualMachine2Args:
     @pulumi.getter
     def rng(self) -> Optional[pulumi.Input['VirtualMachine2RngArgs']]:
         """
-        Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+        Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
         """
         return pulumi.get(self, "rng")
 
@@ -249,7 +233,6 @@ class VirtualMachine2Args:
 class _VirtualMachine2State:
     def __init__(__self__, *,
                  cdrom: Optional[pulumi.Input[Mapping[str, pulumi.Input['VirtualMachine2CdromArgs']]]] = None,
-                 clone: Optional[pulumi.Input['VirtualMachine2CloneArgs']] = None,
                  cpu: Optional[pulumi.Input['VirtualMachine2CpuArgs']] = None,
                  delete_unreferenced_disks_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
@@ -265,14 +248,13 @@ class _VirtualMachine2State:
         """
         Input properties used for looking up and filtering VirtualMachine2 resources.
         :param pulumi.Input[Mapping[str, pulumi.Input['VirtualMachine2CdromArgs']]] cdrom: The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
-        :param pulumi.Input['VirtualMachine2CloneArgs'] clone: The cloning configuration.
         :param pulumi.Input['VirtualMachine2CpuArgs'] cpu: The CPU configuration.
         :param pulumi.Input[_builtins.bool] delete_unreferenced_disks_on_destroy: Set to true to delete unreferenced disks on destroy (defaults to `true`).
         :param pulumi.Input[_builtins.str] description: The description of the VM.
         :param pulumi.Input[_builtins.str] name: The name of the VM. Doesn't have to be unique.
         :param pulumi.Input[_builtins.str] node_name: The name of the node where the VM is provisioned.
         :param pulumi.Input[_builtins.bool] purge_on_destroy: Set to true to purge the VM from backup configurations on destroy (defaults to `true`).
-        :param pulumi.Input['VirtualMachine2RngArgs'] rng: Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+        :param pulumi.Input['VirtualMachine2RngArgs'] rng: Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
         :param pulumi.Input[_builtins.bool] stop_on_destroy: Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The tags assigned to the VM.
         :param pulumi.Input[_builtins.bool] template: Set to true to create a VM template.
@@ -280,8 +262,6 @@ class _VirtualMachine2State:
         """
         if cdrom is not None:
             pulumi.set(__self__, "cdrom", cdrom)
-        if clone is not None:
-            pulumi.set(__self__, "clone", clone)
         if cpu is not None:
             pulumi.set(__self__, "cpu", cpu)
         if delete_unreferenced_disks_on_destroy is not None:
@@ -318,18 +298,6 @@ class _VirtualMachine2State:
     @cdrom.setter
     def cdrom(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['VirtualMachine2CdromArgs']]]]):
         pulumi.set(self, "cdrom", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def clone(self) -> Optional[pulumi.Input['VirtualMachine2CloneArgs']]:
-        """
-        The cloning configuration.
-        """
-        return pulumi.get(self, "clone")
-
-    @clone.setter
-    def clone(self, value: Optional[pulumi.Input['VirtualMachine2CloneArgs']]):
-        pulumi.set(self, "clone", value)
 
     @_builtins.property
     @pulumi.getter
@@ -407,7 +375,7 @@ class _VirtualMachine2State:
     @pulumi.getter
     def rng(self) -> Optional[pulumi.Input['VirtualMachine2RngArgs']]:
         """
-        Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+        Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
         """
         return pulumi.get(self, "rng")
 
@@ -480,7 +448,6 @@ class VirtualMachine2(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cdrom: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['VirtualMachine2CdromArgs', 'VirtualMachine2CdromArgsDict']]]]] = None,
-                 clone: Optional[pulumi.Input[Union['VirtualMachine2CloneArgs', 'VirtualMachine2CloneArgsDict']]] = None,
                  cpu: Optional[pulumi.Input[Union['VirtualMachine2CpuArgs', 'VirtualMachine2CpuArgsDict']]] = None,
                  delete_unreferenced_disks_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
@@ -508,14 +475,13 @@ class VirtualMachine2(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['VirtualMachine2CdromArgs', 'VirtualMachine2CdromArgsDict']]]] cdrom: The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
-        :param pulumi.Input[Union['VirtualMachine2CloneArgs', 'VirtualMachine2CloneArgsDict']] clone: The cloning configuration.
         :param pulumi.Input[Union['VirtualMachine2CpuArgs', 'VirtualMachine2CpuArgsDict']] cpu: The CPU configuration.
         :param pulumi.Input[_builtins.bool] delete_unreferenced_disks_on_destroy: Set to true to delete unreferenced disks on destroy (defaults to `true`).
         :param pulumi.Input[_builtins.str] description: The description of the VM.
         :param pulumi.Input[_builtins.str] name: The name of the VM. Doesn't have to be unique.
         :param pulumi.Input[_builtins.str] node_name: The name of the node where the VM is provisioned.
         :param pulumi.Input[_builtins.bool] purge_on_destroy: Set to true to purge the VM from backup configurations on destroy (defaults to `true`).
-        :param pulumi.Input[Union['VirtualMachine2RngArgs', 'VirtualMachine2RngArgsDict']] rng: Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+        :param pulumi.Input[Union['VirtualMachine2RngArgs', 'VirtualMachine2RngArgsDict']] rng: Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
         :param pulumi.Input[_builtins.bool] stop_on_destroy: Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The tags assigned to the VM.
         :param pulumi.Input[_builtins.bool] template: Set to true to create a VM template.
@@ -554,7 +520,6 @@ class VirtualMachine2(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cdrom: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['VirtualMachine2CdromArgs', 'VirtualMachine2CdromArgsDict']]]]] = None,
-                 clone: Optional[pulumi.Input[Union['VirtualMachine2CloneArgs', 'VirtualMachine2CloneArgsDict']]] = None,
                  cpu: Optional[pulumi.Input[Union['VirtualMachine2CpuArgs', 'VirtualMachine2CpuArgsDict']]] = None,
                  delete_unreferenced_disks_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
@@ -577,7 +542,6 @@ class VirtualMachine2(pulumi.CustomResource):
             __props__ = VirtualMachine2Args.__new__(VirtualMachine2Args)
 
             __props__.__dict__["cdrom"] = cdrom
-            __props__.__dict__["clone"] = clone
             __props__.__dict__["cpu"] = cpu
             __props__.__dict__["delete_unreferenced_disks_on_destroy"] = delete_unreferenced_disks_on_destroy
             __props__.__dict__["description"] = description
@@ -603,7 +567,6 @@ class VirtualMachine2(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             cdrom: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['VirtualMachine2CdromArgs', 'VirtualMachine2CdromArgsDict']]]]] = None,
-            clone: Optional[pulumi.Input[Union['VirtualMachine2CloneArgs', 'VirtualMachine2CloneArgsDict']]] = None,
             cpu: Optional[pulumi.Input[Union['VirtualMachine2CpuArgs', 'VirtualMachine2CpuArgsDict']]] = None,
             delete_unreferenced_disks_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
@@ -624,14 +587,13 @@ class VirtualMachine2(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['VirtualMachine2CdromArgs', 'VirtualMachine2CdromArgsDict']]]] cdrom: The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
-        :param pulumi.Input[Union['VirtualMachine2CloneArgs', 'VirtualMachine2CloneArgsDict']] clone: The cloning configuration.
         :param pulumi.Input[Union['VirtualMachine2CpuArgs', 'VirtualMachine2CpuArgsDict']] cpu: The CPU configuration.
         :param pulumi.Input[_builtins.bool] delete_unreferenced_disks_on_destroy: Set to true to delete unreferenced disks on destroy (defaults to `true`).
         :param pulumi.Input[_builtins.str] description: The description of the VM.
         :param pulumi.Input[_builtins.str] name: The name of the VM. Doesn't have to be unique.
         :param pulumi.Input[_builtins.str] node_name: The name of the node where the VM is provisioned.
         :param pulumi.Input[_builtins.bool] purge_on_destroy: Set to true to purge the VM from backup configurations on destroy (defaults to `true`).
-        :param pulumi.Input[Union['VirtualMachine2RngArgs', 'VirtualMachine2RngArgsDict']] rng: Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+        :param pulumi.Input[Union['VirtualMachine2RngArgs', 'VirtualMachine2RngArgsDict']] rng: Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
         :param pulumi.Input[_builtins.bool] stop_on_destroy: Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: The tags assigned to the VM.
         :param pulumi.Input[_builtins.bool] template: Set to true to create a VM template.
@@ -642,7 +604,6 @@ class VirtualMachine2(pulumi.CustomResource):
         __props__ = _VirtualMachine2State.__new__(_VirtualMachine2State)
 
         __props__.__dict__["cdrom"] = cdrom
-        __props__.__dict__["clone"] = clone
         __props__.__dict__["cpu"] = cpu
         __props__.__dict__["delete_unreferenced_disks_on_destroy"] = delete_unreferenced_disks_on_destroy
         __props__.__dict__["description"] = description
@@ -664,14 +625,6 @@ class VirtualMachine2(pulumi.CustomResource):
         The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
         """
         return pulumi.get(self, "cdrom")
-
-    @_builtins.property
-    @pulumi.getter
-    def clone(self) -> pulumi.Output[Optional['outputs.VirtualMachine2Clone']]:
-        """
-        The cloning configuration.
-        """
-        return pulumi.get(self, "clone")
 
     @_builtins.property
     @pulumi.getter
@@ -725,7 +678,7 @@ class VirtualMachine2(pulumi.CustomResource):
     @pulumi.getter
     def rng(self) -> pulumi.Output['outputs.VirtualMachine2Rng']:
         """
-        Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+        Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
         """
         return pulumi.get(self, "rng")
 

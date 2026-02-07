@@ -18,7 +18,7 @@ namespace Pulumi.ProxmoxVE.VM.Outputs
         /// </summary>
         public readonly string? Affinity;
         /// <summary>
-        /// The CPU architecture `&lt;aarch64 | x86_64&gt;` (defaults to the host). Setting `Affinity` is only allowed for `root@pam` authenticated user.
+        /// The CPU architecture `&lt;aarch64 | x86_64&gt;` (defaults to the host). Setting `Architecture` is only allowed for `root@pam` authenticated user.
         /// </summary>
         public readonly string? Architecture;
         /// <summary>

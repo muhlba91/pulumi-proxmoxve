@@ -37,12 +37,6 @@ namespace Pulumi.ProxmoxVE
     public sealed class GetVm2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The cloning configuration.
-        /// </summary>
-        [Input("clone")]
-        public Inputs.GetVm2CloneArgs? Clone { get; set; }
-
-        /// <summary>
         /// The CPU configuration.
         /// </summary>
         [Input("cpu")]
@@ -113,12 +107,6 @@ namespace Pulumi.ProxmoxVE
 
     public sealed class GetVm2InvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The cloning configuration.
-        /// </summary>
-        [Input("clone")]
-        public Input<Inputs.GetVm2CloneInputArgs>? Clone { get; set; }
-
         /// <summary>
         /// The CPU configuration.
         /// </summary>
@@ -193,10 +181,6 @@ namespace Pulumi.ProxmoxVE
     public sealed class GetVm2Result
     {
         /// <summary>
-        /// The cloning configuration.
-        /// </summary>
-        public readonly Outputs.GetVm2CloneResult? Clone;
-        /// <summary>
         /// The CPU configuration.
         /// </summary>
         public readonly Outputs.GetVm2CpuResult Cpu;
@@ -236,8 +220,6 @@ namespace Pulumi.ProxmoxVE
 
         [OutputConstructor]
         private GetVm2Result(
-            Outputs.GetVm2CloneResult? clone,
-
             Outputs.GetVm2CpuResult cpu,
 
             string? description,
@@ -258,7 +240,6 @@ namespace Pulumi.ProxmoxVE
 
             Outputs.GetVm2VgaResult vga)
         {
-            Clone = clone;
             Cpu = cpu;
             Description = description;
             Id = id;

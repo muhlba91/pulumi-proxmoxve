@@ -44,14 +44,20 @@ if typing.TYPE_CHECKING:
     metrics = __metrics
     import pulumi_proxmoxve.network as __network
     network = __network
+    import pulumi_proxmoxve.node as __node
+    node = __node
     import pulumi_proxmoxve.oci as __oci
     oci = __oci
     import pulumi_proxmoxve.permission as __permission
     permission = __permission
     import pulumi_proxmoxve.pool as __pool
     pool = __pool
+    import pulumi_proxmoxve.realm as __realm
+    realm = __realm
     import pulumi_proxmoxve.sdn as __sdn
     sdn = __sdn
+    import pulumi_proxmoxve.sdnfabric as __sdnfabric
+    sdnfabric = __sdnfabric
     import pulumi_proxmoxve.sdnzone as __sdnzone
     sdnzone = __sdnzone
     import pulumi_proxmoxve.storage as __storage
@@ -71,10 +77,13 @@ else:
     hardware = _utilities.lazy_import('pulumi_proxmoxve.hardware')
     metrics = _utilities.lazy_import('pulumi_proxmoxve.metrics')
     network = _utilities.lazy_import('pulumi_proxmoxve.network')
+    node = _utilities.lazy_import('pulumi_proxmoxve.node')
     oci = _utilities.lazy_import('pulumi_proxmoxve.oci')
     permission = _utilities.lazy_import('pulumi_proxmoxve.permission')
     pool = _utilities.lazy_import('pulumi_proxmoxve.pool')
+    realm = _utilities.lazy_import('pulumi_proxmoxve.realm')
     sdn = _utilities.lazy_import('pulumi_proxmoxve.sdn')
+    sdnfabric = _utilities.lazy_import('pulumi_proxmoxve.sdnfabric')
     sdnzone = _utilities.lazy_import('pulumi_proxmoxve.sdnzone')
     storage = _utilities.lazy_import('pulumi_proxmoxve.storage')
     user = _utilities.lazy_import('pulumi_proxmoxve.user')
@@ -83,6 +92,14 @@ else:
 _utilities.register(
     resource_modules="""
 [
+ {
+  "pkg": "proxmoxve",
+  "mod": "Acme/certificate",
+  "fqn": "pulumi_proxmoxve.acme",
+  "classes": {
+   "proxmoxve:Acme/certificate:Certificate": "Certificate"
+  }
+ },
  {
   "pkg": "proxmoxve",
   "mod": "Apt/repository",
@@ -237,6 +254,14 @@ _utilities.register(
  },
  {
   "pkg": "proxmoxve",
+  "mod": "Node/firewall",
+  "fqn": "pulumi_proxmoxve.node",
+  "classes": {
+   "proxmoxve:Node/firewall:Firewall": "Firewall"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
   "mod": "Oci/image",
   "fqn": "pulumi_proxmoxve.oci",
   "classes": {
@@ -281,6 +306,38 @@ _utilities.register(
   "fqn": "pulumi_proxmoxve.pool",
   "classes": {
    "proxmoxve:Pool/membership:Membership": "Membership"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "Realm/ldap",
+  "fqn": "pulumi_proxmoxve.realm",
+  "classes": {
+   "proxmoxve:Realm/ldap:Ldap": "Ldap"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "Realm/sync",
+  "fqn": "pulumi_proxmoxve.realm",
+  "classes": {
+   "proxmoxve:Realm/sync:Sync": "Sync"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "SDNFabric/oSPF",
+  "fqn": "pulumi_proxmoxve.sdnfabric",
+  "classes": {
+   "proxmoxve:SDNFabric/oSPF:OSPF": "OSPF"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "SDNFabric/openFabric",
+  "fqn": "pulumi_proxmoxve.sdnfabric",
+  "classes": {
+   "proxmoxve:SDNFabric/openFabric:OpenFabric": "OpenFabric"
   }
  },
  {
@@ -333,6 +390,22 @@ _utilities.register(
  },
  {
   "pkg": "proxmoxve",
+  "mod": "Sdn/fabric/node/openfabric",
+  "fqn": "pulumi_proxmoxve.sdn.fabric.node",
+  "classes": {
+   "proxmoxve:Sdn/fabric/node/openfabric:Openfabric": "Openfabric"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "Sdn/fabric/node/ospf",
+  "fqn": "pulumi_proxmoxve.sdn.fabric.node",
+  "classes": {
+   "proxmoxve:Sdn/fabric/node/ospf:Ospf": "Ospf"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
   "mod": "Sdn/subnet",
   "fqn": "pulumi_proxmoxve.sdn",
   "classes": {
@@ -349,6 +422,22 @@ _utilities.register(
  },
  {
   "pkg": "proxmoxve",
+  "mod": "Storage/cIFS",
+  "fqn": "pulumi_proxmoxve.storage",
+  "classes": {
+   "proxmoxve:Storage/cIFS:CIFS": "CIFS"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "Storage/directory",
+  "fqn": "pulumi_proxmoxve.storage",
+  "classes": {
+   "proxmoxve:Storage/directory:Directory": "Directory"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
   "mod": "Storage/file",
   "fqn": "pulumi_proxmoxve.storage",
   "classes": {
@@ -357,10 +446,58 @@ _utilities.register(
  },
  {
   "pkg": "proxmoxve",
+  "mod": "Storage/lVM",
+  "fqn": "pulumi_proxmoxve.storage",
+  "classes": {
+   "proxmoxve:Storage/lVM:LVM": "LVM"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "Storage/lVMThin",
+  "fqn": "pulumi_proxmoxve.storage",
+  "classes": {
+   "proxmoxve:Storage/lVMThin:LVMThin": "LVMThin"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "Storage/nFS",
+  "fqn": "pulumi_proxmoxve.storage",
+  "classes": {
+   "proxmoxve:Storage/nFS:NFS": "NFS"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "Storage/pBS",
+  "fqn": "pulumi_proxmoxve.storage",
+  "classes": {
+   "proxmoxve:Storage/pBS:PBS": "PBS"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "Storage/zFSPool",
+  "fqn": "pulumi_proxmoxve.storage",
+  "classes": {
+   "proxmoxve:Storage/zFSPool:ZFSPool": "ZFSPool"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
   "mod": "User/token",
   "fqn": "pulumi_proxmoxve.user",
   "classes": {
    "proxmoxve:User/token:Token": "Token"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "VM/clonedVirtualMachine",
+  "fqn": "pulumi_proxmoxve.vm",
+  "classes": {
+   "proxmoxve:VM/clonedVirtualMachine:ClonedVirtualMachine": "ClonedVirtualMachine"
   }
  },
  {

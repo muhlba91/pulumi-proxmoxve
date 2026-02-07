@@ -15,3 +15,11 @@ from .subnet import *
 from .vnet import *
 from ._inputs import *
 from . import outputs
+
+# Make subpackages available:
+if typing.TYPE_CHECKING:
+    import pulumi_proxmoxve.sdn.fabric as __fabric
+    fabric = __fabric
+else:
+    fabric = _utilities.lazy_import('pulumi_proxmoxve.sdn.fabric')
+

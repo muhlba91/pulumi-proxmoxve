@@ -133,18 +133,18 @@ public class Qinq extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ipam);
     }
     /**
-     * MTU value for the zone.
+     * MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
      * 
      */
     @Export(name="mtu", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> mtu;
+    private Output<Integer> mtu;
 
     /**
-     * @return MTU value for the zone.
+     * @return MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
      * 
      */
-    public Output<Optional<Integer>> mtu() {
-        return Codegen.optional(this.mtu);
+    public Output<Integer> mtu() {
+        return this.mtu;
     }
     /**
      * The Proxmox nodes which the zone and associated VNets should be deployed on
@@ -207,14 +207,14 @@ public class Qinq extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="serviceVlanProtocol", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> serviceVlanProtocol;
+    private Output<String> serviceVlanProtocol;
 
     /**
      * @return Service VLAN protocol for QinQ. The protocol must be `802.1ad` or `802.1q`.
      * 
      */
-    public Output<Optional<String>> serviceVlanProtocol() {
-        return Codegen.optional(this.serviceVlanProtocol);
+    public Output<String> serviceVlanProtocol() {
+        return this.serviceVlanProtocol;
     }
     /**
      * Indicates the current state of the zone.

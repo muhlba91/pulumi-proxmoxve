@@ -5,7 +5,6 @@ package io.muehlbachler.pulumi.proxmoxve.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import io.muehlbachler.pulumi.proxmoxve.outputs.GetVm2Clone;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetVm2Cpu;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetVm2Rng;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetVm2Timeouts;
@@ -20,11 +19,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetVm2Result {
-    /**
-     * @return The cloning configuration.
-     * 
-     */
-    private @Nullable GetVm2Clone clone;
     /**
      * @return The CPU configuration.
      * 
@@ -73,13 +67,6 @@ public final class GetVm2Result {
     private GetVm2Vga vga;
 
     private GetVm2Result() {}
-    /**
-     * @return The cloning configuration.
-     * 
-     */
-    public Optional<GetVm2Clone> clone_() {
-        return Optional.ofNullable(this.clone);
-    }
     /**
      * @return The CPU configuration.
      * 
@@ -156,7 +143,6 @@ public final class GetVm2Result {
     }
     @CustomType.Builder
     public static final class Builder {
-        private @Nullable GetVm2Clone clone;
         private GetVm2Cpu cpu;
         private @Nullable String description;
         private Integer id;
@@ -170,7 +156,6 @@ public final class GetVm2Result {
         public Builder() {}
         public Builder(GetVm2Result defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.clone = defaults.clone;
     	      this.cpu = defaults.cpu;
     	      this.description = defaults.description;
     	      this.id = defaults.id;
@@ -183,12 +168,6 @@ public final class GetVm2Result {
     	      this.vga = defaults.vga;
         }
 
-        @CustomType.Setter("clone")
-        public Builder clone_(@Nullable GetVm2Clone clone) {
-
-            this.clone = clone;
-            return this;
-        }
         @CustomType.Setter
         public Builder cpu(GetVm2Cpu cpu) {
             if (cpu == null) {
@@ -266,7 +245,6 @@ public final class GetVm2Result {
         }
         public GetVm2Result build() {
             final var _resultValue = new GetVm2Result();
-            _resultValue.clone = clone;
             _resultValue.cpu = cpu;
             _resultValue.description = description;
             _resultValue.id = id;

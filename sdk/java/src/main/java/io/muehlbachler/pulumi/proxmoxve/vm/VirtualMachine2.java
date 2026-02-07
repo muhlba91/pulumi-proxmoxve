@@ -11,7 +11,6 @@ import io.muehlbachler.pulumi.proxmoxve.Utilities;
 import io.muehlbachler.pulumi.proxmoxve.VM.VirtualMachine2Args;
 import io.muehlbachler.pulumi.proxmoxve.VM.inputs.VirtualMachine2State;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachine2Cdrom;
-import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachine2Clone;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachine2Cpu;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachine2Rng;
 import io.muehlbachler.pulumi.proxmoxve.VM.outputs.VirtualMachine2Timeouts;
@@ -50,20 +49,6 @@ public class VirtualMachine2 extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,VirtualMachine2Cdrom>> cdrom() {
         return this.cdrom;
-    }
-    /**
-     * The cloning configuration.
-     * 
-     */
-    @Export(name="clone", refs={VirtualMachine2Clone.class}, tree="[0]")
-    private Output</* @Nullable */ VirtualMachine2Clone> clone;
-
-    /**
-     * @return The cloning configuration.
-     * 
-     */
-    public Output<Optional<VirtualMachine2Clone>> clone_() {
-        return Codegen.optional(this.clone);
     }
     /**
      * The CPU configuration.
@@ -150,14 +135,14 @@ public class VirtualMachine2 extends com.pulumi.resources.CustomResource {
         return this.purgeOnDestroy;
     }
     /**
-     * Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root{@literal @}pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+     * Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root{@literal @}pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
      * 
      */
     @Export(name="rng", refs={VirtualMachine2Rng.class}, tree="[0]")
     private Output<VirtualMachine2Rng> rng;
 
     /**
-     * @return Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root{@literal @}pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+     * @return Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root{@literal @}pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
      * 
      */
     public Output<VirtualMachine2Rng> rng() {

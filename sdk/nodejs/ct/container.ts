@@ -77,6 +77,11 @@ import * as utilities from "../utilities";
  *                 size: "10G",
  *                 path: "/mnt/volume",
  *             },
+ *             {
+ *                 volume: "local-lvm:subvol-108-disk-101",
+ *                 size: "10G",
+ *                 path: "/mnt/data",
+ *             },
  *         ],
  *         startup: {
  *             order: 3,

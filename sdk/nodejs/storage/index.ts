@@ -5,6 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { CIFSArgs, CIFSState } from "./cifs";
+export type CIFS = import("./cifs").CIFS;
+export const CIFS: typeof import("./cifs").CIFS = null as any;
+utilities.lazyLoad(exports, ["CIFS"], () => require("./cifs"));
+
+export { DirectoryArgs, DirectoryState } from "./directory";
+export type Directory = import("./directory").Directory;
+export const Directory: typeof import("./directory").Directory = null as any;
+utilities.lazyLoad(exports, ["Directory"], () => require("./directory"));
+
 export { FileArgs, FileState } from "./file";
 export type File = import("./file").File;
 export const File: typeof import("./file").File = null as any;
@@ -15,16 +25,62 @@ export const getDatastores: typeof import("./getDatastores").getDatastores = nul
 export const getDatastoresOutput: typeof import("./getDatastores").getDatastoresOutput = null as any;
 utilities.lazyLoad(exports, ["getDatastores","getDatastoresOutput"], () => require("./getDatastores"));
 
+export { LVMArgs, LVMState } from "./lvm";
+export type LVM = import("./lvm").LVM;
+export const LVM: typeof import("./lvm").LVM = null as any;
+utilities.lazyLoad(exports, ["LVM"], () => require("./lvm"));
+
+export { LVMThinArgs, LVMThinState } from "./lvmthin";
+export type LVMThin = import("./lvmthin").LVMThin;
+export const LVMThin: typeof import("./lvmthin").LVMThin = null as any;
+utilities.lazyLoad(exports, ["LVMThin"], () => require("./lvmthin"));
+
+export { NFSArgs, NFSState } from "./nfs";
+export type NFS = import("./nfs").NFS;
+export const NFS: typeof import("./nfs").NFS = null as any;
+utilities.lazyLoad(exports, ["NFS"], () => require("./nfs"));
+
+export { PBSArgs, PBSState } from "./pbs";
+export type PBS = import("./pbs").PBS;
+export const PBS: typeof import("./pbs").PBS = null as any;
+utilities.lazyLoad(exports, ["PBS"], () => require("./pbs"));
+
+export { ZFSPoolArgs, ZFSPoolState } from "./zfspool";
+export type ZFSPool = import("./zfspool").ZFSPool;
+export const ZFSPool: typeof import("./zfspool").ZFSPool = null as any;
+utilities.lazyLoad(exports, ["ZFSPool"], () => require("./zfspool"));
+
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "proxmoxve:Storage/cIFS:CIFS":
+                return new CIFS(name, <any>undefined, { urn })
+            case "proxmoxve:Storage/directory:Directory":
+                return new Directory(name, <any>undefined, { urn })
             case "proxmoxve:Storage/file:File":
                 return new File(name, <any>undefined, { urn })
+            case "proxmoxve:Storage/lVM:LVM":
+                return new LVM(name, <any>undefined, { urn })
+            case "proxmoxve:Storage/lVMThin:LVMThin":
+                return new LVMThin(name, <any>undefined, { urn })
+            case "proxmoxve:Storage/nFS:NFS":
+                return new NFS(name, <any>undefined, { urn })
+            case "proxmoxve:Storage/pBS:PBS":
+                return new PBS(name, <any>undefined, { urn })
+            case "proxmoxve:Storage/zFSPool:ZFSPool":
+                return new ZFSPool(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
+pulumi.runtime.registerResourceModule("proxmoxve", "Storage/cIFS", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "Storage/directory", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "Storage/file", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "Storage/lVM", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "Storage/lVMThin", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "Storage/nFS", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "Storage/pBS", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "Storage/zFSPool", _module)

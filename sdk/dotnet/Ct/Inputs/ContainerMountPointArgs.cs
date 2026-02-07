@@ -45,6 +45,13 @@ namespace Pulumi.ProxmoxVE.CT.Inputs
         public Input<string> Path { get; set; } = null!;
 
         /// <summary>
+        /// The in-datastore path to the mount point volume.
+        /// Use this attribute for cross-resource references instead of `Volume`.
+        /// </summary>
+        [Input("pathInDatastore")]
+        public Input<string>? PathInDatastore { get; set; }
+
+        /// <summary>
         /// Enable user quotas inside the container (not supported
         /// with ZFS subvolumes).
         /// </summary>

@@ -26,8 +26,6 @@ type VirtualMachine2 struct {
 
 	// The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
 	Cdrom VirtualMachine2CdromMapOutput `pulumi:"cdrom"`
-	// The cloning configuration.
-	Clone VirtualMachine2ClonePtrOutput `pulumi:"clone"`
 	// The CPU configuration.
 	Cpu VirtualMachine2CpuOutput `pulumi:"cpu"`
 	// Set to true to delete unreferenced disks on destroy (defaults to `true`).
@@ -40,7 +38,7 @@ type VirtualMachine2 struct {
 	NodeName pulumi.StringOutput `pulumi:"nodeName"`
 	// Set to true to purge the VM from backup configurations on destroy (defaults to `true`).
 	PurgeOnDestroy pulumi.BoolOutput `pulumi:"purgeOnDestroy"`
-	// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+	// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
 	Rng VirtualMachine2RngOutput `pulumi:"rng"`
 	// Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
 	StopOnDestroy pulumi.BoolOutput `pulumi:"stopOnDestroy"`
@@ -88,8 +86,6 @@ func GetVirtualMachine2(ctx *pulumi.Context,
 type virtualMachine2State struct {
 	// The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
 	Cdrom map[string]VirtualMachine2Cdrom `pulumi:"cdrom"`
-	// The cloning configuration.
-	Clone *VirtualMachine2Clone `pulumi:"clone"`
 	// The CPU configuration.
 	Cpu *VirtualMachine2Cpu `pulumi:"cpu"`
 	// Set to true to delete unreferenced disks on destroy (defaults to `true`).
@@ -102,7 +98,7 @@ type virtualMachine2State struct {
 	NodeName *string `pulumi:"nodeName"`
 	// Set to true to purge the VM from backup configurations on destroy (defaults to `true`).
 	PurgeOnDestroy *bool `pulumi:"purgeOnDestroy"`
-	// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+	// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
 	Rng *VirtualMachine2Rng `pulumi:"rng"`
 	// Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
 	StopOnDestroy *bool `pulumi:"stopOnDestroy"`
@@ -118,8 +114,6 @@ type virtualMachine2State struct {
 type VirtualMachine2State struct {
 	// The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
 	Cdrom VirtualMachine2CdromMapInput
-	// The cloning configuration.
-	Clone VirtualMachine2ClonePtrInput
 	// The CPU configuration.
 	Cpu VirtualMachine2CpuPtrInput
 	// Set to true to delete unreferenced disks on destroy (defaults to `true`).
@@ -132,7 +126,7 @@ type VirtualMachine2State struct {
 	NodeName pulumi.StringPtrInput
 	// Set to true to purge the VM from backup configurations on destroy (defaults to `true`).
 	PurgeOnDestroy pulumi.BoolPtrInput
-	// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+	// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
 	Rng VirtualMachine2RngPtrInput
 	// Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
 	StopOnDestroy pulumi.BoolPtrInput
@@ -152,8 +146,6 @@ func (VirtualMachine2State) ElementType() reflect.Type {
 type virtualMachine2Args struct {
 	// The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
 	Cdrom map[string]VirtualMachine2Cdrom `pulumi:"cdrom"`
-	// The cloning configuration.
-	Clone *VirtualMachine2Clone `pulumi:"clone"`
 	// The CPU configuration.
 	Cpu *VirtualMachine2Cpu `pulumi:"cpu"`
 	// Set to true to delete unreferenced disks on destroy (defaults to `true`).
@@ -166,7 +158,7 @@ type virtualMachine2Args struct {
 	NodeName string `pulumi:"nodeName"`
 	// Set to true to purge the VM from backup configurations on destroy (defaults to `true`).
 	PurgeOnDestroy *bool `pulumi:"purgeOnDestroy"`
-	// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+	// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
 	Rng *VirtualMachine2Rng `pulumi:"rng"`
 	// Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
 	StopOnDestroy *bool `pulumi:"stopOnDestroy"`
@@ -183,8 +175,6 @@ type virtualMachine2Args struct {
 type VirtualMachine2Args struct {
 	// The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
 	Cdrom VirtualMachine2CdromMapInput
-	// The cloning configuration.
-	Clone VirtualMachine2ClonePtrInput
 	// The CPU configuration.
 	Cpu VirtualMachine2CpuPtrInput
 	// Set to true to delete unreferenced disks on destroy (defaults to `true`).
@@ -197,7 +187,7 @@ type VirtualMachine2Args struct {
 	NodeName pulumi.StringInput
 	// Set to true to purge the VM from backup configurations on destroy (defaults to `true`).
 	PurgeOnDestroy pulumi.BoolPtrInput
-	// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+	// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
 	Rng VirtualMachine2RngPtrInput
 	// Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
 	StopOnDestroy pulumi.BoolPtrInput
@@ -302,11 +292,6 @@ func (o VirtualMachine2Output) Cdrom() VirtualMachine2CdromMapOutput {
 	return o.ApplyT(func(v *VirtualMachine2) VirtualMachine2CdromMapOutput { return v.Cdrom }).(VirtualMachine2CdromMapOutput)
 }
 
-// The cloning configuration.
-func (o VirtualMachine2Output) Clone() VirtualMachine2ClonePtrOutput {
-	return o.ApplyT(func(v *VirtualMachine2) VirtualMachine2ClonePtrOutput { return v.Clone }).(VirtualMachine2ClonePtrOutput)
-}
-
 // The CPU configuration.
 func (o VirtualMachine2Output) Cpu() VirtualMachine2CpuOutput {
 	return o.ApplyT(func(v *VirtualMachine2) VirtualMachine2CpuOutput { return v.Cpu }).(VirtualMachine2CpuOutput)
@@ -337,7 +322,7 @@ func (o VirtualMachine2Output) PurgeOnDestroy() pulumi.BoolOutput {
 	return o.ApplyT(func(v *VirtualMachine2) pulumi.BoolOutput { return v.PurgeOnDestroy }).(pulumi.BoolOutput)
 }
 
-// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
 func (o VirtualMachine2Output) Rng() VirtualMachine2RngOutput {
 	return o.ApplyT(func(v *VirtualMachine2) VirtualMachine2RngOutput { return v.Rng }).(VirtualMachine2RngOutput)
 }

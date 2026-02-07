@@ -19,14 +19,14 @@ public final class FirewallOptionsArgs extends com.pulumi.resources.ResourceArgs
     public static final FirewallOptionsArgs Empty = new FirewallOptionsArgs();
 
     /**
-     * Container ID.
+     * Container ID. **Exactly one of &lt;span pulumi-lang-nodejs=&#34;`vmId`&#34; pulumi-lang-dotnet=&#34;`VmId`&#34; pulumi-lang-go=&#34;`vmId`&#34; pulumi-lang-python=&#34;`vm_id`&#34; pulumi-lang-yaml=&#34;`vmId`&#34; pulumi-lang-java=&#34;`vmId`&#34;&gt;`vm_id`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`containerId`&#34; pulumi-lang-dotnet=&#34;`ContainerId`&#34; pulumi-lang-go=&#34;`containerId`&#34; pulumi-lang-python=&#34;`container_id`&#34; pulumi-lang-yaml=&#34;`containerId`&#34; pulumi-lang-java=&#34;`containerId`&#34;&gt;`container_id`&lt;/span&gt; must be specified.**
      * 
      */
     @Import(name="containerId")
     private @Nullable Output<Integer> containerId;
 
     /**
-     * @return Container ID.
+     * @return Container ID. **Exactly one of &lt;span pulumi-lang-nodejs=&#34;`vmId`&#34; pulumi-lang-dotnet=&#34;`VmId`&#34; pulumi-lang-go=&#34;`vmId`&#34; pulumi-lang-python=&#34;`vm_id`&#34; pulumi-lang-yaml=&#34;`vmId`&#34; pulumi-lang-java=&#34;`vmId`&#34;&gt;`vm_id`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`containerId`&#34; pulumi-lang-dotnet=&#34;`ContainerId`&#34; pulumi-lang-go=&#34;`containerId`&#34; pulumi-lang-python=&#34;`container_id`&#34; pulumi-lang-yaml=&#34;`containerId`&#34; pulumi-lang-java=&#34;`containerId`&#34;&gt;`container_id`&lt;/span&gt; must be specified.**
      * 
      */
     public Optional<Output<Integer>> containerId() {
@@ -219,14 +219,14 @@ public final class FirewallOptionsArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * VM ID.
+     * VM ID. **Exactly one of &lt;span pulumi-lang-nodejs=&#34;`vmId`&#34; pulumi-lang-dotnet=&#34;`VmId`&#34; pulumi-lang-go=&#34;`vmId`&#34; pulumi-lang-python=&#34;`vm_id`&#34; pulumi-lang-yaml=&#34;`vmId`&#34; pulumi-lang-java=&#34;`vmId`&#34;&gt;`vm_id`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`containerId`&#34; pulumi-lang-dotnet=&#34;`ContainerId`&#34; pulumi-lang-go=&#34;`containerId`&#34; pulumi-lang-python=&#34;`container_id`&#34; pulumi-lang-yaml=&#34;`containerId`&#34; pulumi-lang-java=&#34;`containerId`&#34;&gt;`container_id`&lt;/span&gt; must be specified.**
      * 
      */
     @Import(name="vmId")
     private @Nullable Output<Integer> vmId;
 
     /**
-     * @return VM ID.
+     * @return VM ID. **Exactly one of &lt;span pulumi-lang-nodejs=&#34;`vmId`&#34; pulumi-lang-dotnet=&#34;`VmId`&#34; pulumi-lang-go=&#34;`vmId`&#34; pulumi-lang-python=&#34;`vm_id`&#34; pulumi-lang-yaml=&#34;`vmId`&#34; pulumi-lang-java=&#34;`vmId`&#34;&gt;`vm_id`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`containerId`&#34; pulumi-lang-dotnet=&#34;`ContainerId`&#34; pulumi-lang-go=&#34;`containerId`&#34; pulumi-lang-python=&#34;`container_id`&#34; pulumi-lang-yaml=&#34;`containerId`&#34; pulumi-lang-java=&#34;`containerId`&#34;&gt;`container_id`&lt;/span&gt; must be specified.**
      * 
      */
     public Optional<Output<Integer>> vmId() {
@@ -270,7 +270,7 @@ public final class FirewallOptionsArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param containerId Container ID.
+         * @param containerId Container ID. **Exactly one of &lt;span pulumi-lang-nodejs=&#34;`vmId`&#34; pulumi-lang-dotnet=&#34;`VmId`&#34; pulumi-lang-go=&#34;`vmId`&#34; pulumi-lang-python=&#34;`vm_id`&#34; pulumi-lang-yaml=&#34;`vmId`&#34; pulumi-lang-java=&#34;`vmId`&#34;&gt;`vm_id`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`containerId`&#34; pulumi-lang-dotnet=&#34;`ContainerId`&#34; pulumi-lang-go=&#34;`containerId`&#34; pulumi-lang-python=&#34;`container_id`&#34; pulumi-lang-yaml=&#34;`containerId`&#34; pulumi-lang-java=&#34;`containerId`&#34;&gt;`container_id`&lt;/span&gt; must be specified.**
          * 
          * @return builder
          * 
@@ -281,7 +281,7 @@ public final class FirewallOptionsArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param containerId Container ID.
+         * @param containerId Container ID. **Exactly one of &lt;span pulumi-lang-nodejs=&#34;`vmId`&#34; pulumi-lang-dotnet=&#34;`VmId`&#34; pulumi-lang-go=&#34;`vmId`&#34; pulumi-lang-python=&#34;`vm_id`&#34; pulumi-lang-yaml=&#34;`vmId`&#34; pulumi-lang-java=&#34;`vmId`&#34;&gt;`vm_id`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`containerId`&#34; pulumi-lang-dotnet=&#34;`ContainerId`&#34; pulumi-lang-go=&#34;`containerId`&#34; pulumi-lang-python=&#34;`container_id`&#34; pulumi-lang-yaml=&#34;`containerId`&#34; pulumi-lang-java=&#34;`containerId`&#34;&gt;`container_id`&lt;/span&gt; must be specified.**
          * 
          * @return builder
          * 
@@ -542,7 +542,7 @@ public final class FirewallOptionsArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vmId VM ID.
+         * @param vmId VM ID. **Exactly one of &lt;span pulumi-lang-nodejs=&#34;`vmId`&#34; pulumi-lang-dotnet=&#34;`VmId`&#34; pulumi-lang-go=&#34;`vmId`&#34; pulumi-lang-python=&#34;`vm_id`&#34; pulumi-lang-yaml=&#34;`vmId`&#34; pulumi-lang-java=&#34;`vmId`&#34;&gt;`vm_id`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`containerId`&#34; pulumi-lang-dotnet=&#34;`ContainerId`&#34; pulumi-lang-go=&#34;`containerId`&#34; pulumi-lang-python=&#34;`container_id`&#34; pulumi-lang-yaml=&#34;`containerId`&#34; pulumi-lang-java=&#34;`containerId`&#34;&gt;`container_id`&lt;/span&gt; must be specified.**
          * 
          * @return builder
          * 
@@ -553,7 +553,7 @@ public final class FirewallOptionsArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param vmId VM ID.
+         * @param vmId VM ID. **Exactly one of &lt;span pulumi-lang-nodejs=&#34;`vmId`&#34; pulumi-lang-dotnet=&#34;`VmId`&#34; pulumi-lang-go=&#34;`vmId`&#34; pulumi-lang-python=&#34;`vm_id`&#34; pulumi-lang-yaml=&#34;`vmId`&#34; pulumi-lang-java=&#34;`vmId`&#34;&gt;`vm_id`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`containerId`&#34; pulumi-lang-dotnet=&#34;`ContainerId`&#34; pulumi-lang-go=&#34;`containerId`&#34; pulumi-lang-python=&#34;`container_id`&#34; pulumi-lang-yaml=&#34;`containerId`&#34; pulumi-lang-java=&#34;`containerId`&#34;&gt;`container_id`&lt;/span&gt; must be specified.**
          * 
          * @return builder
          * 

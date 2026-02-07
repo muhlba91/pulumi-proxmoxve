@@ -1159,6 +1159,11 @@ class Container(pulumi.CustomResource):
                     "size": "10G",
                     "path": "/mnt/volume",
                 },
+                {
+                    "volume": "local-lvm:subvol-108-disk-101",
+                    "size": "10G",
+                    "path": "/mnt/data",
+                },
             ],
             startup={
                 "order": 3,
@@ -1289,6 +1294,11 @@ class Container(pulumi.CustomResource):
                     "volume": "local-lvm",
                     "size": "10G",
                     "path": "/mnt/volume",
+                },
+                {
+                    "volume": "local-lvm:subvol-108-disk-101",
+                    "size": "10G",
+                    "path": "/mnt/data",
                 },
             ],
             startup={

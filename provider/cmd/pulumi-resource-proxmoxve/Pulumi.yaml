@@ -1,0 +1,3 @@
+name: proxmoxve
+description: A Pulumi resource provider for proxmoxve.
+language: schema

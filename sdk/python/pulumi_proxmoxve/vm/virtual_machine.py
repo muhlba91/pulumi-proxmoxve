@@ -37,6 +37,7 @@ class VirtualMachineArgs:
                  efi_disk: Optional[pulumi.Input['VirtualMachineEfiDiskArgs']] = None,
                  hook_script_file_id: Optional[pulumi.Input[_builtins.str]] = None,
                  hostpcis: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]]] = None,
+                 hotplug: Optional[pulumi.Input[_builtins.str]] = None,
                  initialization: Optional[pulumi.Input['VirtualMachineInitializationArgs']] = None,
                  keyboard_layout: Optional[pulumi.Input[_builtins.str]] = None,
                  kvm_arguments: Optional[pulumi.Input[_builtins.str]] = None,
@@ -98,6 +99,9 @@ class VirtualMachineArgs:
                to `ovmf`)
         :param pulumi.Input[_builtins.str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]] hostpcis: A host PCI device mapping (multiple blocks supported).
+        :param pulumi.Input[_builtins.str] hotplug: Selectively enable hotplug features. Supported values
+               are `cpu`, `disk`, `memory`, `network`, and `usb`. Use `0` to disable all,
+               or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
         :param pulumi.Input['VirtualMachineInitializationArgs'] initialization: The cloud-init configuration.
         :param pulumi.Input[_builtins.str] keyboard_layout: The keyboard layout (defaults to `en-us`).
         :param pulumi.Input[_builtins.str] kvm_arguments: Arbitrary arguments passed to kvm.
@@ -150,7 +154,10 @@ class VirtualMachineArgs:
                to 1800).
         :param pulumi.Input[_builtins.int] timeout_stop_vm: Timeout for stopping a VM in seconds (defaults
                to 300).
-        :param pulumi.Input['VirtualMachineTpmStateArgs'] tpm_state: The TPM state device.
+        :param pulumi.Input['VirtualMachineTpmStateArgs'] tpm_state: The TPM state device. The VM must be stopped before
+               adding, removing, or moving a TPM state device; the provider automatically
+               handles the shutdown/start cycle. Changing `version` requires recreating the
+               VM because Proxmox only supports setting the TPM version at creation time.
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineUsbArgs']]] usbs: A host USB device mapping (multiple blocks supported).
         :param pulumi.Input['VirtualMachineVgaArgs'] vga: The VGA configuration.
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineVirtiofArgs']]] virtiofs: Virtiofs share
@@ -188,6 +195,8 @@ class VirtualMachineArgs:
             pulumi.set(__self__, "hook_script_file_id", hook_script_file_id)
         if hostpcis is not None:
             pulumi.set(__self__, "hostpcis", hostpcis)
+        if hotplug is not None:
+            pulumi.set(__self__, "hotplug", hotplug)
         if initialization is not None:
             pulumi.set(__self__, "initialization", initialization)
         if keyboard_layout is not None:
@@ -467,6 +476,20 @@ class VirtualMachineArgs:
     @hostpcis.setter
     def hostpcis(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]]]):
         pulumi.set(self, "hostpcis", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def hotplug(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Selectively enable hotplug features. Supported values
+        are `cpu`, `disk`, `memory`, `network`, and `usb`. Use `0` to disable all,
+        or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+        """
+        return pulumi.get(self, "hotplug")
+
+    @hotplug.setter
+    def hotplug(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "hotplug", value)
 
     @_builtins.property
     @pulumi.getter
@@ -910,7 +933,10 @@ class VirtualMachineArgs:
     @pulumi.getter(name="tpmState")
     def tpm_state(self) -> Optional[pulumi.Input['VirtualMachineTpmStateArgs']]:
         """
-        The TPM state device.
+        The TPM state device. The VM must be stopped before
+        adding, removing, or moving a TPM state device; the provider automatically
+        handles the shutdown/start cycle. Changing `version` requires recreating the
+        VM because Proxmox only supports setting the TPM version at creation time.
         """
         return pulumi.get(self, "tpm_state")
 
@@ -997,6 +1023,7 @@ class _VirtualMachineState:
                  efi_disk: Optional[pulumi.Input['VirtualMachineEfiDiskArgs']] = None,
                  hook_script_file_id: Optional[pulumi.Input[_builtins.str]] = None,
                  hostpcis: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]]] = None,
+                 hotplug: Optional[pulumi.Input[_builtins.str]] = None,
                  initialization: Optional[pulumi.Input['VirtualMachineInitializationArgs']] = None,
                  ipv4_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
                  ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
@@ -1060,6 +1087,9 @@ class _VirtualMachineState:
                to `ovmf`)
         :param pulumi.Input[_builtins.str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]] hostpcis: A host PCI device mapping (multiple blocks supported).
+        :param pulumi.Input[_builtins.str] hotplug: Selectively enable hotplug features. Supported values
+               are `cpu`, `disk`, `memory`, `network`, and `usb`. Use `0` to disable all,
+               or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
         :param pulumi.Input['VirtualMachineInitializationArgs'] initialization: The cloud-init configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] ipv4_addresses: The IPv4 addresses per network interface published by the
                QEMU agent (empty list when `agent.enabled` is `false`)
@@ -1120,7 +1150,10 @@ class _VirtualMachineState:
                to 1800).
         :param pulumi.Input[_builtins.int] timeout_stop_vm: Timeout for stopping a VM in seconds (defaults
                to 300).
-        :param pulumi.Input['VirtualMachineTpmStateArgs'] tpm_state: The TPM state device.
+        :param pulumi.Input['VirtualMachineTpmStateArgs'] tpm_state: The TPM state device. The VM must be stopped before
+               adding, removing, or moving a TPM state device; the provider automatically
+               handles the shutdown/start cycle. Changing `version` requires recreating the
+               VM because Proxmox only supports setting the TPM version at creation time.
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineUsbArgs']]] usbs: A host USB device mapping (multiple blocks supported).
         :param pulumi.Input['VirtualMachineVgaArgs'] vga: The VGA configuration.
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineVirtiofArgs']]] virtiofs: Virtiofs share
@@ -1157,6 +1190,8 @@ class _VirtualMachineState:
             pulumi.set(__self__, "hook_script_file_id", hook_script_file_id)
         if hostpcis is not None:
             pulumi.set(__self__, "hostpcis", hostpcis)
+        if hotplug is not None:
+            pulumi.set(__self__, "hotplug", hotplug)
         if initialization is not None:
             pulumi.set(__self__, "initialization", initialization)
         if ipv4_addresses is not None:
@@ -1431,6 +1466,20 @@ class _VirtualMachineState:
     @hostpcis.setter
     def hostpcis(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]]]):
         pulumi.set(self, "hostpcis", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def hotplug(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Selectively enable hotplug features. Supported values
+        are `cpu`, `disk`, `memory`, `network`, and `usb`. Use `0` to disable all,
+        or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+        """
+        return pulumi.get(self, "hotplug")
+
+    @hotplug.setter
+    def hotplug(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "hotplug", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1926,7 +1975,10 @@ class _VirtualMachineState:
     @pulumi.getter(name="tpmState")
     def tpm_state(self) -> Optional[pulumi.Input['VirtualMachineTpmStateArgs']]:
         """
-        The TPM state device.
+        The TPM state device. The VM must be stopped before
+        adding, removing, or moving a TPM state device; the provider automatically
+        handles the shutdown/start cycle. Changing `version` requires recreating the
+        VM because Proxmox only supports setting the TPM version at creation time.
         """
         return pulumi.get(self, "tpm_state")
 
@@ -2016,6 +2068,7 @@ class VirtualMachine(pulumi.CustomResource):
                  efi_disk: Optional[pulumi.Input[Union['VirtualMachineEfiDiskArgs', 'VirtualMachineEfiDiskArgsDict']]] = None,
                  hook_script_file_id: Optional[pulumi.Input[_builtins.str]] = None,
                  hostpcis: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineHostpciArgs', 'VirtualMachineHostpciArgsDict']]]]] = None,
+                 hotplug: Optional[pulumi.Input[_builtins.str]] = None,
                  initialization: Optional[pulumi.Input[Union['VirtualMachineInitializationArgs', 'VirtualMachineInitializationArgsDict']]] = None,
                  keyboard_layout: Optional[pulumi.Input[_builtins.str]] = None,
                  kvm_arguments: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2088,6 +2141,9 @@ class VirtualMachine(pulumi.CustomResource):
                to `ovmf`)
         :param pulumi.Input[_builtins.str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
         :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineHostpciArgs', 'VirtualMachineHostpciArgsDict']]]] hostpcis: A host PCI device mapping (multiple blocks supported).
+        :param pulumi.Input[_builtins.str] hotplug: Selectively enable hotplug features. Supported values
+               are `cpu`, `disk`, `memory`, `network`, and `usb`. Use `0` to disable all,
+               or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
         :param pulumi.Input[Union['VirtualMachineInitializationArgs', 'VirtualMachineInitializationArgsDict']] initialization: The cloud-init configuration.
         :param pulumi.Input[_builtins.str] keyboard_layout: The keyboard layout (defaults to `en-us`).
         :param pulumi.Input[_builtins.str] kvm_arguments: Arbitrary arguments passed to kvm.
@@ -2142,7 +2198,10 @@ class VirtualMachine(pulumi.CustomResource):
                to 1800).
         :param pulumi.Input[_builtins.int] timeout_stop_vm: Timeout for stopping a VM in seconds (defaults
                to 300).
-        :param pulumi.Input[Union['VirtualMachineTpmStateArgs', 'VirtualMachineTpmStateArgsDict']] tpm_state: The TPM state device.
+        :param pulumi.Input[Union['VirtualMachineTpmStateArgs', 'VirtualMachineTpmStateArgsDict']] tpm_state: The TPM state device. The VM must be stopped before
+               adding, removing, or moving a TPM state device; the provider automatically
+               handles the shutdown/start cycle. Changing `version` requires recreating the
+               VM because Proxmox only supports setting the TPM version at creation time.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineUsbArgs', 'VirtualMachineUsbArgsDict']]]] usbs: A host USB device mapping (multiple blocks supported).
         :param pulumi.Input[Union['VirtualMachineVgaArgs', 'VirtualMachineVgaArgsDict']] vga: The VGA configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineVirtiofArgs', 'VirtualMachineVirtiofArgsDict']]]] virtiofs: Virtiofs share
@@ -2196,6 +2255,7 @@ class VirtualMachine(pulumi.CustomResource):
                  efi_disk: Optional[pulumi.Input[Union['VirtualMachineEfiDiskArgs', 'VirtualMachineEfiDiskArgsDict']]] = None,
                  hook_script_file_id: Optional[pulumi.Input[_builtins.str]] = None,
                  hostpcis: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineHostpciArgs', 'VirtualMachineHostpciArgsDict']]]]] = None,
+                 hotplug: Optional[pulumi.Input[_builtins.str]] = None,
                  initialization: Optional[pulumi.Input[Union['VirtualMachineInitializationArgs', 'VirtualMachineInitializationArgsDict']]] = None,
                  keyboard_layout: Optional[pulumi.Input[_builtins.str]] = None,
                  kvm_arguments: Optional[pulumi.Input[_builtins.str]] = None,
@@ -2262,6 +2322,7 @@ class VirtualMachine(pulumi.CustomResource):
             __props__.__dict__["efi_disk"] = efi_disk
             __props__.__dict__["hook_script_file_id"] = hook_script_file_id
             __props__.__dict__["hostpcis"] = hostpcis
+            __props__.__dict__["hotplug"] = hotplug
             __props__.__dict__["initialization"] = initialization
             __props__.__dict__["keyboard_layout"] = keyboard_layout
             __props__.__dict__["kvm_arguments"] = kvm_arguments
@@ -2334,6 +2395,7 @@ class VirtualMachine(pulumi.CustomResource):
             efi_disk: Optional[pulumi.Input[Union['VirtualMachineEfiDiskArgs', 'VirtualMachineEfiDiskArgsDict']]] = None,
             hook_script_file_id: Optional[pulumi.Input[_builtins.str]] = None,
             hostpcis: Optional[pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineHostpciArgs', 'VirtualMachineHostpciArgsDict']]]]] = None,
+            hotplug: Optional[pulumi.Input[_builtins.str]] = None,
             initialization: Optional[pulumi.Input[Union['VirtualMachineInitializationArgs', 'VirtualMachineInitializationArgsDict']]] = None,
             ipv4_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
             ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
@@ -2402,6 +2464,9 @@ class VirtualMachine(pulumi.CustomResource):
                to `ovmf`)
         :param pulumi.Input[_builtins.str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
         :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineHostpciArgs', 'VirtualMachineHostpciArgsDict']]]] hostpcis: A host PCI device mapping (multiple blocks supported).
+        :param pulumi.Input[_builtins.str] hotplug: Selectively enable hotplug features. Supported values
+               are `cpu`, `disk`, `memory`, `network`, and `usb`. Use `0` to disable all,
+               or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
         :param pulumi.Input[Union['VirtualMachineInitializationArgs', 'VirtualMachineInitializationArgsDict']] initialization: The cloud-init configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] ipv4_addresses: The IPv4 addresses per network interface published by the
                QEMU agent (empty list when `agent.enabled` is `false`)
@@ -2462,7 +2527,10 @@ class VirtualMachine(pulumi.CustomResource):
                to 1800).
         :param pulumi.Input[_builtins.int] timeout_stop_vm: Timeout for stopping a VM in seconds (defaults
                to 300).
-        :param pulumi.Input[Union['VirtualMachineTpmStateArgs', 'VirtualMachineTpmStateArgsDict']] tpm_state: The TPM state device.
+        :param pulumi.Input[Union['VirtualMachineTpmStateArgs', 'VirtualMachineTpmStateArgsDict']] tpm_state: The TPM state device. The VM must be stopped before
+               adding, removing, or moving a TPM state device; the provider automatically
+               handles the shutdown/start cycle. Changing `version` requires recreating the
+               VM because Proxmox only supports setting the TPM version at creation time.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineUsbArgs', 'VirtualMachineUsbArgsDict']]]] usbs: A host USB device mapping (multiple blocks supported).
         :param pulumi.Input[Union['VirtualMachineVgaArgs', 'VirtualMachineVgaArgsDict']] vga: The VGA configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineVirtiofArgs', 'VirtualMachineVirtiofArgsDict']]]] virtiofs: Virtiofs share
@@ -2488,6 +2556,7 @@ class VirtualMachine(pulumi.CustomResource):
         __props__.__dict__["efi_disk"] = efi_disk
         __props__.__dict__["hook_script_file_id"] = hook_script_file_id
         __props__.__dict__["hostpcis"] = hostpcis
+        __props__.__dict__["hotplug"] = hotplug
         __props__.__dict__["initialization"] = initialization
         __props__.__dict__["ipv4_addresses"] = ipv4_addresses
         __props__.__dict__["ipv6_addresses"] = ipv6_addresses
@@ -2655,6 +2724,16 @@ class VirtualMachine(pulumi.CustomResource):
         A host PCI device mapping (multiple blocks supported).
         """
         return pulumi.get(self, "hostpcis")
+
+    @_builtins.property
+    @pulumi.getter
+    def hotplug(self) -> pulumi.Output[_builtins.str]:
+        """
+        Selectively enable hotplug features. Supported values
+        are `cpu`, `disk`, `memory`, `network`, and `usb`. Use `0` to disable all,
+        or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+        """
+        return pulumi.get(self, "hotplug")
 
     @_builtins.property
     @pulumi.getter
@@ -2994,7 +3073,10 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter(name="tpmState")
     def tpm_state(self) -> pulumi.Output[Optional['outputs.VirtualMachineTpmState']]:
         """
-        The TPM state device.
+        The TPM state device. The VM must be stopped before
+        adding, removing, or moving a TPM state device; the provider automatically
+        handles the shutdown/start cycle. Changing `version` requires recreating the
+        VM because Proxmox only supports setting the TPM version at creation time.
         """
         return pulumi.get(self, "tpm_state")
 

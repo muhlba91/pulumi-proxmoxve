@@ -107,6 +107,12 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     declare public readonly hostpcis: pulumi.Output<outputs.VM.VirtualMachineHostpci[] | undefined>;
     /**
+     * Selectively enable hotplug features. Supported values
+     * are `cpu`, `disk`, `memory`, `network`, and `usb`. Use `0` to disable all,
+     * or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+     */
+    declare public readonly hotplug: pulumi.Output<string>;
+    /**
      * The cloud-init configuration.
      */
     declare public readonly initialization: pulumi.Output<outputs.VM.VirtualMachineInitialization | undefined>;
@@ -286,7 +292,10 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     declare public readonly timeoutStopVm: pulumi.Output<number | undefined>;
     /**
-     * The TPM state device.
+     * The TPM state device. The VM must be stopped before
+     * adding, removing, or moving a TPM state device; the provider automatically
+     * handles the shutdown/start cycle. Changing `version` requires recreating the
+     * VM because Proxmox only supports setting the TPM version at creation time.
      */
     declare public readonly tpmState: pulumi.Output<outputs.VM.VirtualMachineTpmState | undefined>;
     /**
@@ -338,6 +347,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["efiDisk"] = state?.efiDisk;
             resourceInputs["hookScriptFileId"] = state?.hookScriptFileId;
             resourceInputs["hostpcis"] = state?.hostpcis;
+            resourceInputs["hotplug"] = state?.hotplug;
             resourceInputs["initialization"] = state?.initialization;
             resourceInputs["ipv4Addresses"] = state?.ipv4Addresses;
             resourceInputs["ipv6Addresses"] = state?.ipv6Addresses;
@@ -403,6 +413,7 @@ export class VirtualMachine extends pulumi.CustomResource {
             resourceInputs["efiDisk"] = args?.efiDisk;
             resourceInputs["hookScriptFileId"] = args?.hookScriptFileId;
             resourceInputs["hostpcis"] = args?.hostpcis;
+            resourceInputs["hotplug"] = args?.hotplug;
             resourceInputs["initialization"] = args?.initialization;
             resourceInputs["keyboardLayout"] = args?.keyboardLayout;
             resourceInputs["kvmArguments"] = args?.kvmArguments;
@@ -519,6 +530,12 @@ export interface VirtualMachineState {
      * A host PCI device mapping (multiple blocks supported).
      */
     hostpcis?: pulumi.Input<pulumi.Input<inputs.VM.VirtualMachineHostpci>[]>;
+    /**
+     * Selectively enable hotplug features. Supported values
+     * are `cpu`, `disk`, `memory`, `network`, and `usb`. Use `0` to disable all,
+     * or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+     */
+    hotplug?: pulumi.Input<string>;
     /**
      * The cloud-init configuration.
      */
@@ -699,7 +716,10 @@ export interface VirtualMachineState {
      */
     timeoutStopVm?: pulumi.Input<number>;
     /**
-     * The TPM state device.
+     * The TPM state device. The VM must be stopped before
+     * adding, removing, or moving a TPM state device; the provider automatically
+     * handles the shutdown/start cycle. Changing `version` requires recreating the
+     * VM because Proxmox only supports setting the TPM version at creation time.
      */
     tpmState?: pulumi.Input<inputs.VM.VirtualMachineTpmState>;
     /**
@@ -789,6 +809,12 @@ export interface VirtualMachineArgs {
      * A host PCI device mapping (multiple blocks supported).
      */
     hostpcis?: pulumi.Input<pulumi.Input<inputs.VM.VirtualMachineHostpci>[]>;
+    /**
+     * Selectively enable hotplug features. Supported values
+     * are `cpu`, `disk`, `memory`, `network`, and `usb`. Use `0` to disable all,
+     * or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+     */
+    hotplug?: pulumi.Input<string>;
     /**
      * The cloud-init configuration.
      */
@@ -954,7 +980,10 @@ export interface VirtualMachineArgs {
      */
     timeoutStopVm?: pulumi.Input<number>;
     /**
-     * The TPM state device.
+     * The TPM state device. The VM must be stopped before
+     * adding, removing, or moving a TPM state device; the provider automatically
+     * handles the shutdown/start cycle. Changing `version` requires recreating the
+     * VM because Proxmox only supports setting the TPM version at creation time.
      */
     tpmState?: pulumi.Input<inputs.VM.VirtualMachineTpmState>;
     /**

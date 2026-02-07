@@ -55,6 +55,10 @@ type VirtualMachine struct {
 	HookScriptFileId pulumi.StringPtrOutput `pulumi:"hookScriptFileId"`
 	// A host PCI device mapping (multiple blocks supported).
 	Hostpcis VirtualMachineHostpciArrayOutput `pulumi:"hostpcis"`
+	// Selectively enable hotplug features. Supported values
+	// are `cpu`, `disk`, `memory`, `network`, and `usb`. Use `0` to disable all,
+	// or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+	Hotplug pulumi.StringOutput `pulumi:"hotplug"`
 	// The cloud-init configuration.
 	Initialization VirtualMachineInitializationPtrOutput `pulumi:"initialization"`
 	// The IPv4 addresses per network interface published by the
@@ -156,7 +160,10 @@ type VirtualMachine struct {
 	// Timeout for stopping a VM in seconds (defaults
 	// to 300).
 	TimeoutStopVm pulumi.IntPtrOutput `pulumi:"timeoutStopVm"`
-	// The TPM state device.
+	// The TPM state device. The VM must be stopped before
+	// adding, removing, or moving a TPM state device; the provider automatically
+	// handles the shutdown/start cycle. Changing `version` requires recreating the
+	// VM because Proxmox only supports setting the TPM version at creation time.
 	TpmState VirtualMachineTpmStatePtrOutput `pulumi:"tpmState"`
 	// A host USB device mapping (multiple blocks supported).
 	Usbs VirtualMachineUsbArrayOutput `pulumi:"usbs"`
@@ -234,6 +241,10 @@ type virtualMachineState struct {
 	HookScriptFileId *string `pulumi:"hookScriptFileId"`
 	// A host PCI device mapping (multiple blocks supported).
 	Hostpcis []VirtualMachineHostpci `pulumi:"hostpcis"`
+	// Selectively enable hotplug features. Supported values
+	// are `cpu`, `disk`, `memory`, `network`, and `usb`. Use `0` to disable all,
+	// or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+	Hotplug *string `pulumi:"hotplug"`
 	// The cloud-init configuration.
 	Initialization *VirtualMachineInitialization `pulumi:"initialization"`
 	// The IPv4 addresses per network interface published by the
@@ -335,7 +346,10 @@ type virtualMachineState struct {
 	// Timeout for stopping a VM in seconds (defaults
 	// to 300).
 	TimeoutStopVm *int `pulumi:"timeoutStopVm"`
-	// The TPM state device.
+	// The TPM state device. The VM must be stopped before
+	// adding, removing, or moving a TPM state device; the provider automatically
+	// handles the shutdown/start cycle. Changing `version` requires recreating the
+	// VM because Proxmox only supports setting the TPM version at creation time.
 	TpmState *VirtualMachineTpmState `pulumi:"tpmState"`
 	// A host USB device mapping (multiple blocks supported).
 	Usbs []VirtualMachineUsb `pulumi:"usbs"`
@@ -381,6 +395,10 @@ type VirtualMachineState struct {
 	HookScriptFileId pulumi.StringPtrInput
 	// A host PCI device mapping (multiple blocks supported).
 	Hostpcis VirtualMachineHostpciArrayInput
+	// Selectively enable hotplug features. Supported values
+	// are `cpu`, `disk`, `memory`, `network`, and `usb`. Use `0` to disable all,
+	// or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+	Hotplug pulumi.StringPtrInput
 	// The cloud-init configuration.
 	Initialization VirtualMachineInitializationPtrInput
 	// The IPv4 addresses per network interface published by the
@@ -482,7 +500,10 @@ type VirtualMachineState struct {
 	// Timeout for stopping a VM in seconds (defaults
 	// to 300).
 	TimeoutStopVm pulumi.IntPtrInput
-	// The TPM state device.
+	// The TPM state device. The VM must be stopped before
+	// adding, removing, or moving a TPM state device; the provider automatically
+	// handles the shutdown/start cycle. Changing `version` requires recreating the
+	// VM because Proxmox only supports setting the TPM version at creation time.
 	TpmState VirtualMachineTpmStatePtrInput
 	// A host USB device mapping (multiple blocks supported).
 	Usbs VirtualMachineUsbArrayInput
@@ -532,6 +553,10 @@ type virtualMachineArgs struct {
 	HookScriptFileId *string `pulumi:"hookScriptFileId"`
 	// A host PCI device mapping (multiple blocks supported).
 	Hostpcis []VirtualMachineHostpci `pulumi:"hostpcis"`
+	// Selectively enable hotplug features. Supported values
+	// are `cpu`, `disk`, `memory`, `network`, and `usb`. Use `0` to disable all,
+	// or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+	Hotplug *string `pulumi:"hotplug"`
 	// The cloud-init configuration.
 	Initialization *VirtualMachineInitialization `pulumi:"initialization"`
 	// The keyboard layout (defaults to `en-us`).
@@ -624,7 +649,10 @@ type virtualMachineArgs struct {
 	// Timeout for stopping a VM in seconds (defaults
 	// to 300).
 	TimeoutStopVm *int `pulumi:"timeoutStopVm"`
-	// The TPM state device.
+	// The TPM state device. The VM must be stopped before
+	// adding, removing, or moving a TPM state device; the provider automatically
+	// handles the shutdown/start cycle. Changing `version` requires recreating the
+	// VM because Proxmox only supports setting the TPM version at creation time.
 	TpmState *VirtualMachineTpmState `pulumi:"tpmState"`
 	// A host USB device mapping (multiple blocks supported).
 	Usbs []VirtualMachineUsb `pulumi:"usbs"`
@@ -671,6 +699,10 @@ type VirtualMachineArgs struct {
 	HookScriptFileId pulumi.StringPtrInput
 	// A host PCI device mapping (multiple blocks supported).
 	Hostpcis VirtualMachineHostpciArrayInput
+	// Selectively enable hotplug features. Supported values
+	// are `cpu`, `disk`, `memory`, `network`, and `usb`. Use `0` to disable all,
+	// or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+	Hotplug pulumi.StringPtrInput
 	// The cloud-init configuration.
 	Initialization VirtualMachineInitializationPtrInput
 	// The keyboard layout (defaults to `en-us`).
@@ -763,7 +795,10 @@ type VirtualMachineArgs struct {
 	// Timeout for stopping a VM in seconds (defaults
 	// to 300).
 	TimeoutStopVm pulumi.IntPtrInput
-	// The TPM state device.
+	// The TPM state device. The VM must be stopped before
+	// adding, removing, or moving a TPM state device; the provider automatically
+	// handles the shutdown/start cycle. Changing `version` requires recreating the
+	// VM because Proxmox only supports setting the TPM version at creation time.
 	TpmState VirtualMachineTpmStatePtrInput
 	// A host USB device mapping (multiple blocks supported).
 	Usbs VirtualMachineUsbArrayInput
@@ -938,6 +973,13 @@ func (o VirtualMachineOutput) HookScriptFileId() pulumi.StringPtrOutput {
 // A host PCI device mapping (multiple blocks supported).
 func (o VirtualMachineOutput) Hostpcis() VirtualMachineHostpciArrayOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineHostpciArrayOutput { return v.Hostpcis }).(VirtualMachineHostpciArrayOutput)
+}
+
+// Selectively enable hotplug features. Supported values
+// are `cpu`, `disk`, `memory`, `network`, and `usb`. Use `0` to disable all,
+// or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+func (o VirtualMachineOutput) Hotplug() pulumi.StringOutput {
+	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.Hotplug }).(pulumi.StringOutput)
 }
 
 // The cloud-init configuration.
@@ -1158,7 +1200,10 @@ func (o VirtualMachineOutput) TimeoutStopVm() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.IntPtrOutput { return v.TimeoutStopVm }).(pulumi.IntPtrOutput)
 }
 
-// The TPM state device.
+// The TPM state device. The VM must be stopped before
+// adding, removing, or moving a TPM state device; the provider automatically
+// handles the shutdown/start cycle. Changing `version` requires recreating the
+// VM because Proxmox only supports setting the TPM version at creation time.
 func (o VirtualMachineOutput) TpmState() VirtualMachineTpmStatePtrOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineTpmStatePtrOutput { return v.TpmState }).(VirtualMachineTpmStatePtrOutput)
 }

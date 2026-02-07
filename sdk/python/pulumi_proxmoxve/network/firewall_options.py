@@ -35,7 +35,7 @@ class FirewallOptionsArgs:
         """
         The set of arguments for constructing a FirewallOptions resource.
         :param pulumi.Input[_builtins.str] node_name: Node name.
-        :param pulumi.Input[_builtins.int] container_id: Container ID.
+        :param pulumi.Input[_builtins.int] container_id: Container ID. **Exactly one of `vm_id` or `container_id` must be specified.**
         :param pulumi.Input[_builtins.bool] dhcp: Enable DHCP.
         :param pulumi.Input[_builtins.bool] enabled: Enable or disable the firewall.
         :param pulumi.Input[_builtins.str] input_policy: The default input
@@ -56,7 +56,7 @@ class FirewallOptionsArgs:
         :param pulumi.Input[_builtins.str] output_policy: The default output
                policy (`ACCEPT`, `DROP`, `REJECT`).
         :param pulumi.Input[_builtins.bool] radv: Enable Router Advertisement.
-        :param pulumi.Input[_builtins.int] vm_id: VM ID.
+        :param pulumi.Input[_builtins.int] vm_id: VM ID. **Exactly one of `vm_id` or `container_id` must be specified.**
         """
         pulumi.set(__self__, "node_name", node_name)
         if container_id is not None:
@@ -100,7 +100,7 @@ class FirewallOptionsArgs:
     @pulumi.getter(name="containerId")
     def container_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Container ID.
+        Container ID. **Exactly one of `vm_id` or `container_id` must be specified.**
         """
         return pulumi.get(self, "container_id")
 
@@ -242,7 +242,7 @@ class FirewallOptionsArgs:
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        VM ID.
+        VM ID. **Exactly one of `vm_id` or `container_id` must be specified.**
         """
         return pulumi.get(self, "vm_id")
 
@@ -269,7 +269,7 @@ class _FirewallOptionsState:
                  vm_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering FirewallOptions resources.
-        :param pulumi.Input[_builtins.int] container_id: Container ID.
+        :param pulumi.Input[_builtins.int] container_id: Container ID. **Exactly one of `vm_id` or `container_id` must be specified.**
         :param pulumi.Input[_builtins.bool] dhcp: Enable DHCP.
         :param pulumi.Input[_builtins.bool] enabled: Enable or disable the firewall.
         :param pulumi.Input[_builtins.str] input_policy: The default input
@@ -291,7 +291,7 @@ class _FirewallOptionsState:
         :param pulumi.Input[_builtins.str] output_policy: The default output
                policy (`ACCEPT`, `DROP`, `REJECT`).
         :param pulumi.Input[_builtins.bool] radv: Enable Router Advertisement.
-        :param pulumi.Input[_builtins.int] vm_id: VM ID.
+        :param pulumi.Input[_builtins.int] vm_id: VM ID. **Exactly one of `vm_id` or `container_id` must be specified.**
         """
         if container_id is not None:
             pulumi.set(__self__, "container_id", container_id)
@@ -324,7 +324,7 @@ class _FirewallOptionsState:
     @pulumi.getter(name="containerId")
     def container_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Container ID.
+        Container ID. **Exactly one of `vm_id` or `container_id` must be specified.**
         """
         return pulumi.get(self, "container_id")
 
@@ -478,7 +478,7 @@ class _FirewallOptionsState:
     @pulumi.getter(name="vmId")
     def vm_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        VM ID.
+        VM ID. **Exactly one of `vm_id` or `container_id` must be specified.**
         """
         return pulumi.get(self, "vm_id")
 
@@ -550,7 +550,7 @@ class FirewallOptions(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] container_id: Container ID.
+        :param pulumi.Input[_builtins.int] container_id: Container ID. **Exactly one of `vm_id` or `container_id` must be specified.**
         :param pulumi.Input[_builtins.bool] dhcp: Enable DHCP.
         :param pulumi.Input[_builtins.bool] enabled: Enable or disable the firewall.
         :param pulumi.Input[_builtins.str] input_policy: The default input
@@ -572,7 +572,7 @@ class FirewallOptions(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] output_policy: The default output
                policy (`ACCEPT`, `DROP`, `REJECT`).
         :param pulumi.Input[_builtins.bool] radv: Enable Router Advertisement.
-        :param pulumi.Input[_builtins.int] vm_id: VM ID.
+        :param pulumi.Input[_builtins.int] vm_id: VM ID. **Exactly one of `vm_id` or `container_id` must be specified.**
         """
         ...
     @overload
@@ -703,7 +703,7 @@ class FirewallOptions(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.int] container_id: Container ID.
+        :param pulumi.Input[_builtins.int] container_id: Container ID. **Exactly one of `vm_id` or `container_id` must be specified.**
         :param pulumi.Input[_builtins.bool] dhcp: Enable DHCP.
         :param pulumi.Input[_builtins.bool] enabled: Enable or disable the firewall.
         :param pulumi.Input[_builtins.str] input_policy: The default input
@@ -725,7 +725,7 @@ class FirewallOptions(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] output_policy: The default output
                policy (`ACCEPT`, `DROP`, `REJECT`).
         :param pulumi.Input[_builtins.bool] radv: Enable Router Advertisement.
-        :param pulumi.Input[_builtins.int] vm_id: VM ID.
+        :param pulumi.Input[_builtins.int] vm_id: VM ID. **Exactly one of `vm_id` or `container_id` must be specified.**
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -750,7 +750,7 @@ class FirewallOptions(pulumi.CustomResource):
     @pulumi.getter(name="containerId")
     def container_id(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        Container ID.
+        Container ID. **Exactly one of `vm_id` or `container_id` must be specified.**
         """
         return pulumi.get(self, "container_id")
 
@@ -856,7 +856,7 @@ class FirewallOptions(pulumi.CustomResource):
     @pulumi.getter(name="vmId")
     def vm_id(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
-        VM ID.
+        VM ID. **Exactly one of `vm_id` or `container_id` must be specified.**
         """
         return pulumi.get(self, "vm_id")
 

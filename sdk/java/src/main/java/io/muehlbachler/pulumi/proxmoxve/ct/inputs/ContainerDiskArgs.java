@@ -66,6 +66,23 @@ public final class ContainerDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The in-datastore path to the disk image.
+     * Use this attribute for cross-resource references.
+     * 
+     */
+    @Import(name="pathInDatastore")
+    private @Nullable Output<String> pathInDatastore;
+
+    /**
+     * @return The in-datastore path to the disk image.
+     * Use this attribute for cross-resource references.
+     * 
+     */
+    public Optional<Output<String>> pathInDatastore() {
+        return Optional.ofNullable(this.pathInDatastore);
+    }
+
+    /**
      * Enable user quotas for the container rootfs
      * 
      */
@@ -120,6 +137,7 @@ public final class ContainerDiskArgs extends com.pulumi.resources.ResourceArgs {
         this.acl = $.acl;
         this.datastoreId = $.datastoreId;
         this.mountOptions = $.mountOptions;
+        this.pathInDatastore = $.pathInDatastore;
         this.quota = $.quota;
         this.replicate = $.replicate;
         this.size = $.size;
@@ -216,6 +234,29 @@ public final class ContainerDiskArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder mountOptions(String... mountOptions) {
             return mountOptions(List.of(mountOptions));
+        }
+
+        /**
+         * @param pathInDatastore The in-datastore path to the disk image.
+         * Use this attribute for cross-resource references.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pathInDatastore(@Nullable Output<String> pathInDatastore) {
+            $.pathInDatastore = pathInDatastore;
+            return this;
+        }
+
+        /**
+         * @param pathInDatastore The in-datastore path to the disk image.
+         * Use this attribute for cross-resource references.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pathInDatastore(String pathInDatastore) {
+            return pathInDatastore(Output.of(pathInDatastore));
         }
 
         /**

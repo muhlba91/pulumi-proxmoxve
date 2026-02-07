@@ -34,7 +34,7 @@ class SimpleArgs:
         :param pulumi.Input[_builtins.str] dns: DNS API server address.
         :param pulumi.Input[_builtins.str] dns_zone: DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
         :param pulumi.Input[_builtins.str] ipam: IP Address Management system.
-        :param pulumi.Input[_builtins.int] mtu: MTU value for the zone.
+        :param pulumi.Input[_builtins.int] mtu: MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: The Proxmox nodes which the zone and associated VNets should be deployed on
         :param pulumi.Input[_builtins.str] reverse_dns: Reverse DNS API server address.
         """
@@ -118,7 +118,7 @@ class SimpleArgs:
     @pulumi.getter
     def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        MTU value for the zone.
+        MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
         """
         return pulumi.get(self, "mtu")
 
@@ -170,7 +170,7 @@ class _SimpleState:
         :param pulumi.Input[_builtins.str] dns: DNS API server address.
         :param pulumi.Input[_builtins.str] dns_zone: DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
         :param pulumi.Input[_builtins.str] ipam: IP Address Management system.
-        :param pulumi.Input[_builtins.int] mtu: MTU value for the zone.
+        :param pulumi.Input[_builtins.int] mtu: MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: The Proxmox nodes which the zone and associated VNets should be deployed on
         :param pulumi.Input[_builtins.bool] pending: Indicates if the zone has pending configuration changes that need to be applied.
         :param pulumi.Input[_builtins.str] reverse_dns: Reverse DNS API server address.
@@ -250,7 +250,7 @@ class _SimpleState:
     @pulumi.getter
     def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        MTU value for the zone.
+        MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
         """
         return pulumi.get(self, "mtu")
 
@@ -369,7 +369,7 @@ class Simple(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] dns: DNS API server address.
         :param pulumi.Input[_builtins.str] dns_zone: DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
         :param pulumi.Input[_builtins.str] ipam: IP Address Management system.
-        :param pulumi.Input[_builtins.int] mtu: MTU value for the zone.
+        :param pulumi.Input[_builtins.int] mtu: MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: The Proxmox nodes which the zone and associated VNets should be deployed on
         :param pulumi.Input[_builtins.str] reverse_dns: Reverse DNS API server address.
         :param pulumi.Input[_builtins.str] zone_id: The unique identifier of the SDN zone.
@@ -484,7 +484,7 @@ class Simple(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] dns: DNS API server address.
         :param pulumi.Input[_builtins.str] dns_zone: DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
         :param pulumi.Input[_builtins.str] ipam: IP Address Management system.
-        :param pulumi.Input[_builtins.int] mtu: MTU value for the zone.
+        :param pulumi.Input[_builtins.int] mtu: MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: The Proxmox nodes which the zone and associated VNets should be deployed on
         :param pulumi.Input[_builtins.bool] pending: Indicates if the zone has pending configuration changes that need to be applied.
         :param pulumi.Input[_builtins.str] reverse_dns: Reverse DNS API server address.
@@ -541,9 +541,9 @@ class Simple(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def mtu(self) -> pulumi.Output[Optional[_builtins.int]]:
+    def mtu(self) -> pulumi.Output[_builtins.int]:
         """
-        MTU value for the zone.
+        MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
         """
         return pulumi.get(self, "mtu")
 

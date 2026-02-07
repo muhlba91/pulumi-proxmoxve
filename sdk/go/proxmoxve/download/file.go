@@ -136,9 +136,8 @@ type File struct {
 	// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
 	FileName pulumi.StringOutput `pulumi:"fileName"`
 	// The node name.
-	NodeName pulumi.StringOutput `pulumi:"nodeName"`
-	// By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
-	Overwrite pulumi.BoolOutput `pulumi:"overwrite"`
+	NodeName  pulumi.StringOutput `pulumi:"nodeName"`
+	Overwrite pulumi.BoolOutput   `pulumi:"overwrite"`
 	// If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
 	OverwriteUnmanaged pulumi.BoolOutput `pulumi:"overwriteUnmanaged"`
 	// The file size in PVE.
@@ -206,9 +205,8 @@ type fileState struct {
 	// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
 	FileName *string `pulumi:"fileName"`
 	// The node name.
-	NodeName *string `pulumi:"nodeName"`
-	// By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
-	Overwrite *bool `pulumi:"overwrite"`
+	NodeName  *string `pulumi:"nodeName"`
+	Overwrite *bool   `pulumi:"overwrite"`
 	// If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
 	OverwriteUnmanaged *bool `pulumi:"overwriteUnmanaged"`
 	// The file size in PVE.
@@ -235,8 +233,7 @@ type FileState struct {
 	// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
 	FileName pulumi.StringPtrInput
 	// The node name.
-	NodeName pulumi.StringPtrInput
-	// By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
+	NodeName  pulumi.StringPtrInput
 	Overwrite pulumi.BoolPtrInput
 	// If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
 	OverwriteUnmanaged pulumi.BoolPtrInput
@@ -268,9 +265,8 @@ type fileArgs struct {
 	// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
 	FileName *string `pulumi:"fileName"`
 	// The node name.
-	NodeName string `pulumi:"nodeName"`
-	// By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
-	Overwrite *bool `pulumi:"overwrite"`
+	NodeName  string `pulumi:"nodeName"`
+	Overwrite *bool  `pulumi:"overwrite"`
 	// If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
 	OverwriteUnmanaged *bool `pulumi:"overwriteUnmanaged"`
 	// The file download timeout seconds. Default is 600 (10min).
@@ -296,8 +292,7 @@ type FileArgs struct {
 	// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
 	FileName pulumi.StringPtrInput
 	// The node name.
-	NodeName pulumi.StringInput
-	// By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
+	NodeName  pulumi.StringInput
 	Overwrite pulumi.BoolPtrInput
 	// If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
 	OverwriteUnmanaged pulumi.BoolPtrInput
@@ -431,7 +426,6 @@ func (o FileOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v *File) pulumi.StringOutput { return v.NodeName }).(pulumi.StringOutput)
 }
 
-// By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
 func (o FileOutput) Overwrite() pulumi.BoolOutput {
 	return o.ApplyT(func(v *File) pulumi.BoolOutput { return v.Overwrite }).(pulumi.BoolOutput)
 }

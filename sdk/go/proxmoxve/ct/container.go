@@ -107,6 +107,11 @@ import (
 //						Size:   pulumi.String("10G"),
 //						Path:   pulumi.String("/mnt/volume"),
 //					},
+//					&ct.ContainerMountPointArgs{
+//						Volume: pulumi.String("local-lvm:subvol-108-disk-101"),
+//						Size:   pulumi.String("10G"),
+//						Path:   pulumi.String("/mnt/data"),
+//					},
 //				},
 //				Startup: &ct.ContainerStartupArgs{
 //					Order:     pulumi.Int(3),

@@ -6,6 +6,7 @@ import builtins as _builtins
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .cloned_virtual_machine import *
 from .get_virtual_machine import *
 from .get_virtual_machines import *
 from .virtual_machine import *

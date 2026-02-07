@@ -18,7 +18,6 @@ __all__ = [
     'HostsEntry',
     'GetContainersContainerResult',
     'GetContainersFilterResult',
-    'GetVm2CloneResult',
     'GetVm2CpuResult',
     'GetVm2RngResult',
     'GetVm2TimeoutsResult',
@@ -170,35 +169,6 @@ class GetContainersFilterResult(dict):
         Treat values as regex patterns
         """
         return pulumi.get(self, "regex")
-
-
-@pulumi.output_type
-class GetVm2CloneResult(dict):
-    def __init__(__self__, *,
-                 id: _builtins.int,
-                 retries: _builtins.int):
-        """
-        :param _builtins.int id: The ID of the VM to clone.
-        :param _builtins.int retries: The number of retries to perform when cloning the VM (default: 3).
-        """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "retries", retries)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.int:
-        """
-        The ID of the VM to clone.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
-    def retries(self) -> _builtins.int:
-        """
-        The number of retries to perform when cloning the VM (default: 3).
-        """
-        return pulumi.get(self, "retries")
 
 
 @pulumi.output_type

@@ -6,7 +6,14 @@ import builtins as _builtins
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .cifs import *
+from .directory import *
 from .file import *
 from .get_datastores import *
+from .lvm import *
+from .lvm_thin import *
+from .nfs import *
+from .pbs import *
+from .zfs_pool import *
 from ._inputs import *
 from . import outputs

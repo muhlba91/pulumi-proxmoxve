@@ -13,8 +13,7 @@ import (
 
 // Manages cluster-level, node-level or VM/container-level firewall rules.
 //
-// > **Note:** Before creating a new `Network.FirewallRules` resource, verify that no rules already exist for the target (cluster, node, VM, or container).
-// If rules are already configured, import them first using the appropriate import command.
+// > Before creating a new `Network.FirewallRules` resource, verify that no rules already exist for the target (cluster, node, VM, or container). If rules are already configured, import them first using the appropriate import command.
 //
 // ## Example Usage
 //

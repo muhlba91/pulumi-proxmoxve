@@ -50,10 +50,6 @@ export class VirtualMachine2 extends pulumi.CustomResource {
      */
     declare public readonly cdrom: pulumi.Output<{[key: string]: outputs.VM.VirtualMachine2Cdrom}>;
     /**
-     * The cloning configuration.
-     */
-    declare public readonly clone: pulumi.Output<outputs.VM.VirtualMachine2Clone | undefined>;
-    /**
      * The CPU configuration.
      */
     declare public readonly cpu: pulumi.Output<outputs.VM.VirtualMachine2Cpu>;
@@ -78,7 +74,7 @@ export class VirtualMachine2 extends pulumi.CustomResource {
      */
     declare public readonly purgeOnDestroy: pulumi.Output<boolean>;
     /**
-     * Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+     * Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
      */
     declare public readonly rng: pulumi.Output<outputs.VM.VirtualMachine2Rng>;
     /**
@@ -113,7 +109,6 @@ export class VirtualMachine2 extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as VirtualMachine2State | undefined;
             resourceInputs["cdrom"] = state?.cdrom;
-            resourceInputs["clone"] = state?.clone;
             resourceInputs["cpu"] = state?.cpu;
             resourceInputs["deleteUnreferencedDisksOnDestroy"] = state?.deleteUnreferencedDisksOnDestroy;
             resourceInputs["description"] = state?.description;
@@ -132,7 +127,6 @@ export class VirtualMachine2 extends pulumi.CustomResource {
                 throw new Error("Missing required property 'nodeName'");
             }
             resourceInputs["cdrom"] = args?.cdrom;
-            resourceInputs["clone"] = args?.clone;
             resourceInputs["cpu"] = args?.cpu;
             resourceInputs["deleteUnreferencedDisksOnDestroy"] = args?.deleteUnreferencedDisksOnDestroy;
             resourceInputs["description"] = args?.description;
@@ -160,10 +154,6 @@ export interface VirtualMachine2State {
      */
     cdrom?: pulumi.Input<{[key: string]: pulumi.Input<inputs.VM.VirtualMachine2Cdrom>}>;
     /**
-     * The cloning configuration.
-     */
-    clone?: pulumi.Input<inputs.VM.VirtualMachine2Clone>;
-    /**
      * The CPU configuration.
      */
     cpu?: pulumi.Input<inputs.VM.VirtualMachine2Cpu>;
@@ -188,7 +178,7 @@ export interface VirtualMachine2State {
      */
     purgeOnDestroy?: pulumi.Input<boolean>;
     /**
-     * Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+     * Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
      */
     rng?: pulumi.Input<inputs.VM.VirtualMachine2Rng>;
     /**
@@ -219,10 +209,6 @@ export interface VirtualMachine2Args {
      */
     cdrom?: pulumi.Input<{[key: string]: pulumi.Input<inputs.VM.VirtualMachine2Cdrom>}>;
     /**
-     * The cloning configuration.
-     */
-    clone?: pulumi.Input<inputs.VM.VirtualMachine2Clone>;
-    /**
      * The CPU configuration.
      */
     cpu?: pulumi.Input<inputs.VM.VirtualMachine2Cpu>;
@@ -247,7 +233,7 @@ export interface VirtualMachine2Args {
      */
     purgeOnDestroy?: pulumi.Input<boolean>;
     /**
-     * Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+     * Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
      */
     rng?: pulumi.Input<inputs.VM.VirtualMachine2Rng>;
     /**

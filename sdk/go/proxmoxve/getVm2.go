@@ -25,8 +25,6 @@ func GetVm2(ctx *pulumi.Context, args *GetVm2Args, opts ...pulumi.InvokeOption) 
 
 // A collection of arguments for invoking getVm2.
 type GetVm2Args struct {
-	// The cloning configuration.
-	Clone *GetVm2Clone `pulumi:"clone"`
 	// The CPU configuration.
 	Cpu *GetVm2Cpu `pulumi:"cpu"`
 	// The description of the VM.
@@ -50,8 +48,6 @@ type GetVm2Args struct {
 
 // A collection of values returned by getVm2.
 type GetVm2Result struct {
-	// The cloning configuration.
-	Clone *GetVm2Clone `pulumi:"clone"`
 	// The CPU configuration.
 	Cpu GetVm2Cpu `pulumi:"cpu"`
 	// The description of the VM.
@@ -84,8 +80,6 @@ func GetVm2Output(ctx *pulumi.Context, args GetVm2OutputArgs, opts ...pulumi.Inv
 
 // A collection of arguments for invoking getVm2.
 type GetVm2OutputArgs struct {
-	// The cloning configuration.
-	Clone GetVm2ClonePtrInput `pulumi:"clone"`
 	// The CPU configuration.
 	Cpu GetVm2CpuPtrInput `pulumi:"cpu"`
 	// The description of the VM.
@@ -124,11 +118,6 @@ func (o GetVm2ResultOutput) ToGetVm2ResultOutput() GetVm2ResultOutput {
 
 func (o GetVm2ResultOutput) ToGetVm2ResultOutputWithContext(ctx context.Context) GetVm2ResultOutput {
 	return o
-}
-
-// The cloning configuration.
-func (o GetVm2ResultOutput) Clone() GetVm2ClonePtrOutput {
-	return o.ApplyT(func(v GetVm2Result) *GetVm2Clone { return v.Clone }).(GetVm2ClonePtrOutput)
 }
 
 // The CPU configuration.

@@ -30,12 +30,6 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<ImmutableDictionary<string, Outputs.VirtualMachine2Cdrom>> Cdrom { get; private set; } = null!;
 
         /// <summary>
-        /// The cloning configuration.
-        /// </summary>
-        [Output("clone")]
-        public Output<Outputs.VirtualMachine2Clone?> Clone { get; private set; } = null!;
-
-        /// <summary>
         /// The CPU configuration.
         /// </summary>
         [Output("cpu")]
@@ -72,7 +66,7 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<bool> PurgeOnDestroy { get; private set; } = null!;
 
         /// <summary>
-        /// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+        /// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
         /// </summary>
         [Output("rng")]
         public Output<Outputs.VirtualMachine2Rng> Rng { get; private set; } = null!;
@@ -164,12 +158,6 @@ namespace Pulumi.ProxmoxVE.VM
         }
 
         /// <summary>
-        /// The cloning configuration.
-        /// </summary>
-        [Input("clone")]
-        public Input<Inputs.VirtualMachine2CloneArgs>? Clone { get; set; }
-
-        /// <summary>
         /// The CPU configuration.
         /// </summary>
         [Input("cpu")]
@@ -206,7 +194,7 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<bool>? PurgeOnDestroy { get; set; }
 
         /// <summary>
-        /// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+        /// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
         /// </summary>
         [Input("rng")]
         public Input<Inputs.VirtualMachine2RngArgs>? Rng { get; set; }
@@ -265,12 +253,6 @@ namespace Pulumi.ProxmoxVE.VM
         }
 
         /// <summary>
-        /// The cloning configuration.
-        /// </summary>
-        [Input("clone")]
-        public Input<Inputs.VirtualMachine2CloneGetArgs>? Clone { get; set; }
-
-        /// <summary>
         /// The CPU configuration.
         /// </summary>
         [Input("cpu")]
@@ -307,7 +289,7 @@ namespace Pulumi.ProxmoxVE.VM
         public Input<bool>? PurgeOnDestroy { get; set; }
 
         /// <summary>
-        /// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.`See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
+        /// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
         /// </summary>
         [Input("rng")]
         public Input<Inputs.VirtualMachine2RngGetArgs>? Rng { get; set; }

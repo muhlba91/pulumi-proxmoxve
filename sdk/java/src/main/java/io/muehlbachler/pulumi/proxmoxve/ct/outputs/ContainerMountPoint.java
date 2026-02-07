@@ -37,6 +37,12 @@ public final class ContainerMountPoint {
      */
     private String path;
     /**
+     * @return The in-datastore path to the mount point volume.
+     * Use this attribute for cross-resource references instead of &lt;span pulumi-lang-nodejs=&#34;`volume`&#34; pulumi-lang-dotnet=&#34;`Volume`&#34; pulumi-lang-go=&#34;`volume`&#34; pulumi-lang-python=&#34;`volume`&#34; pulumi-lang-yaml=&#34;`volume`&#34; pulumi-lang-java=&#34;`volume`&#34;&gt;`volume`&lt;/span&gt;.
+     * 
+     */
+    private @Nullable String pathInDatastore;
+    /**
      * @return Enable user quotas inside the container (not supported
      * with ZFS subvolumes).
      * 
@@ -103,6 +109,14 @@ public final class ContainerMountPoint {
         return this.path;
     }
     /**
+     * @return The in-datastore path to the mount point volume.
+     * Use this attribute for cross-resource references instead of &lt;span pulumi-lang-nodejs=&#34;`volume`&#34; pulumi-lang-dotnet=&#34;`Volume`&#34; pulumi-lang-go=&#34;`volume`&#34; pulumi-lang-python=&#34;`volume`&#34; pulumi-lang-yaml=&#34;`volume`&#34; pulumi-lang-java=&#34;`volume`&#34;&gt;`volume`&lt;/span&gt;.
+     * 
+     */
+    public Optional<String> pathInDatastore() {
+        return Optional.ofNullable(this.pathInDatastore);
+    }
+    /**
      * @return Enable user quotas inside the container (not supported
      * with ZFS subvolumes).
      * 
@@ -162,6 +176,7 @@ public final class ContainerMountPoint {
         private @Nullable Boolean backup;
         private @Nullable List<String> mountOptions;
         private String path;
+        private @Nullable String pathInDatastore;
         private @Nullable Boolean quota;
         private @Nullable Boolean readOnly;
         private @Nullable Boolean replicate;
@@ -175,6 +190,7 @@ public final class ContainerMountPoint {
     	      this.backup = defaults.backup;
     	      this.mountOptions = defaults.mountOptions;
     	      this.path = defaults.path;
+    	      this.pathInDatastore = defaults.pathInDatastore;
     	      this.quota = defaults.quota;
     	      this.readOnly = defaults.readOnly;
     	      this.replicate = defaults.replicate;
@@ -210,6 +226,12 @@ public final class ContainerMountPoint {
               throw new MissingRequiredPropertyException("ContainerMountPoint", "path");
             }
             this.path = path;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder pathInDatastore(@Nullable String pathInDatastore) {
+
+            this.pathInDatastore = pathInDatastore;
             return this;
         }
         @CustomType.Setter
@@ -256,6 +278,7 @@ public final class ContainerMountPoint {
             _resultValue.backup = backup;
             _resultValue.mountOptions = mountOptions;
             _resultValue.path = path;
+            _resultValue.pathInDatastore = pathInDatastore;
             _resultValue.quota = quota;
             _resultValue.readOnly = readOnly;
             _resultValue.replicate = replicate;

@@ -135,6 +135,11 @@ import javax.annotation.Nullable;
  *                     .volume("local-lvm")
  *                     .size("10G")
  *                     .path("/mnt/volume")
+ *                     .build(),
+ *                 ContainerMountPointArgs.builder()
+ *                     .volume("local-lvm:subvol-108-disk-101")
+ *                     .size("10G")
+ *                     .path("/mnt/data")
  *                     .build())
  *             .startup(ContainerStartupArgs.builder()
  *                 .order(3)

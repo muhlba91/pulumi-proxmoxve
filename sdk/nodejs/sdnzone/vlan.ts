@@ -79,9 +79,9 @@ export class Vlan extends pulumi.CustomResource {
      */
     declare public readonly ipam: pulumi.Output<string | undefined>;
     /**
-     * MTU value for the zone.
+     * MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
      */
-    declare public readonly mtu: pulumi.Output<number | undefined>;
+    declare public readonly mtu: pulumi.Output<number>;
     /**
      * The Proxmox nodes which the zone and associated VNets should be deployed on
      */
@@ -171,7 +171,7 @@ export interface VlanState {
      */
     ipam?: pulumi.Input<string>;
     /**
-     * MTU value for the zone.
+     * MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
      */
     mtu?: pulumi.Input<number>;
     /**
@@ -217,7 +217,7 @@ export interface VlanArgs {
      */
     ipam?: pulumi.Input<string>;
     /**
-     * MTU value for the zone.
+     * MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
      */
     mtu?: pulumi.Input<number>;
     /**

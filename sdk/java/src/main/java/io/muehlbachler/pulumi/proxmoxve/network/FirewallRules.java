@@ -20,8 +20,7 @@ import javax.annotation.Nullable;
 /**
  * Manages cluster-level, node-level or VM/container-level firewall rules.
  * 
- * &gt; **Note:** Before creating a new &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Network.FirewallRules`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Network.FirewallRules`&#34; pulumi-lang-go=&#34;`Network.FirewallRules`&#34; pulumi-lang-python=&#34;`Network.FirewallRules`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Network.FirewallRules`&#34; pulumi-lang-java=&#34;`proxmoxve.Network.FirewallRules`&#34;&gt;`proxmoxve.Network.FirewallRules`&lt;/span&gt; resource, verify that no rules already exist for the target (cluster, node, VM, or container).
- * If rules are already configured, import them first using the appropriate import command.
+ * &gt; Before creating a new &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Network.FirewallRules`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Network.FirewallRules`&#34; pulumi-lang-go=&#34;`Network.FirewallRules`&#34; pulumi-lang-python=&#34;`Network.FirewallRules`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Network.FirewallRules`&#34; pulumi-lang-java=&#34;`proxmoxve.Network.FirewallRules`&#34;&gt;`proxmoxve.Network.FirewallRules`&lt;/span&gt; resource, verify that no rules already exist for the target (cluster, node, VM, or container). If rules are already configured, import them first using the appropriate import command.
  * 
  * ## Example Usage
  * 

@@ -111,6 +111,12 @@ namespace Pulumi.ProxmoxVE.CT
     ///                 Size = "10G",
     ///                 Path = "/mnt/volume",
     ///             },
+    ///             new ProxmoxVE.CT.Inputs.ContainerMountPointArgs
+    ///             {
+    ///                 Volume = "local-lvm:subvol-108-disk-101",
+    ///                 Size = "10G",
+    ///                 Path = "/mnt/data",
+    ///             },
     ///         },
     ///         Startup = new ProxmoxVE.CT.Inputs.ContainerStartupArgs
     ///         {

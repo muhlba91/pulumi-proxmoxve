@@ -405,6 +405,11 @@ if not MYPY:
         """
         List of extra mount options.
         """
+        path_in_datastore: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The in-datastore path to the disk image.
+        Use this attribute for cross-resource references.
+        """
         quota: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Enable user quotas for the container rootfs
@@ -428,6 +433,7 @@ class ContainerDiskArgs:
                  acl: Optional[pulumi.Input[_builtins.bool]] = None,
                  datastore_id: Optional[pulumi.Input[_builtins.str]] = None,
                  mount_options: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 path_in_datastore: Optional[pulumi.Input[_builtins.str]] = None,
                  quota: Optional[pulumi.Input[_builtins.bool]] = None,
                  replicate: Optional[pulumi.Input[_builtins.bool]] = None,
                  size: Optional[pulumi.Input[_builtins.int]] = None):
@@ -436,6 +442,8 @@ class ContainerDiskArgs:
         :param pulumi.Input[_builtins.str] datastore_id: The identifier for the datastore to create the
                disk in (defaults to `local`).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mount_options: List of extra mount options.
+        :param pulumi.Input[_builtins.str] path_in_datastore: The in-datastore path to the disk image.
+               Use this attribute for cross-resource references.
         :param pulumi.Input[_builtins.bool] quota: Enable user quotas for the container rootfs
         :param pulumi.Input[_builtins.bool] replicate: Will include this volume to a storage replica job
         :param pulumi.Input[_builtins.int] size: The size of the root filesystem in gigabytes (defaults
@@ -448,6 +456,8 @@ class ContainerDiskArgs:
             pulumi.set(__self__, "datastore_id", datastore_id)
         if mount_options is not None:
             pulumi.set(__self__, "mount_options", mount_options)
+        if path_in_datastore is not None:
+            pulumi.set(__self__, "path_in_datastore", path_in_datastore)
         if quota is not None:
             pulumi.set(__self__, "quota", quota)
         if replicate is not None:
@@ -491,6 +501,19 @@ class ContainerDiskArgs:
     @mount_options.setter
     def mount_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "mount_options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pathInDatastore")
+    def path_in_datastore(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The in-datastore path to the disk image.
+        Use this attribute for cross-resource references.
+        """
+        return pulumi.get(self, "path_in_datastore")
+
+    @path_in_datastore.setter
+    def path_in_datastore(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "path_in_datastore", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1106,6 +1129,11 @@ if not MYPY:
         """
         List of extra mount options.
         """
+        path_in_datastore: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The in-datastore path to the mount point volume.
+        Use this attribute for cross-resource references instead of `volume`.
+        """
         quota: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Enable user quotas inside the container (not supported
@@ -1140,6 +1168,7 @@ class ContainerMountPointArgs:
                  acl: Optional[pulumi.Input[_builtins.bool]] = None,
                  backup: Optional[pulumi.Input[_builtins.bool]] = None,
                  mount_options: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 path_in_datastore: Optional[pulumi.Input[_builtins.str]] = None,
                  quota: Optional[pulumi.Input[_builtins.bool]] = None,
                  read_only: Optional[pulumi.Input[_builtins.bool]] = None,
                  replicate: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -1154,6 +1183,8 @@ class ContainerMountPointArgs:
         :param pulumi.Input[_builtins.bool] backup: Whether to include the mount point in backups (only
                used for volume mount points, defaults to `false`).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mount_options: List of extra mount options.
+        :param pulumi.Input[_builtins.str] path_in_datastore: The in-datastore path to the mount point volume.
+               Use this attribute for cross-resource references instead of `volume`.
         :param pulumi.Input[_builtins.bool] quota: Enable user quotas inside the container (not supported
                with ZFS subvolumes).
         :param pulumi.Input[_builtins.bool] read_only: Read-only mount point.
@@ -1171,6 +1202,8 @@ class ContainerMountPointArgs:
             pulumi.set(__self__, "backup", backup)
         if mount_options is not None:
             pulumi.set(__self__, "mount_options", mount_options)
+        if path_in_datastore is not None:
+            pulumi.set(__self__, "path_in_datastore", path_in_datastore)
         if quota is not None:
             pulumi.set(__self__, "quota", quota)
         if read_only is not None:
@@ -1244,6 +1277,19 @@ class ContainerMountPointArgs:
     @mount_options.setter
     def mount_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "mount_options", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pathInDatastore")
+    def path_in_datastore(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The in-datastore path to the mount point volume.
+        Use this attribute for cross-resource references instead of `volume`.
+        """
+        return pulumi.get(self, "path_in_datastore")
+
+    @path_in_datastore.setter
+    def path_in_datastore(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "path_in_datastore", value)
 
     @_builtins.property
     @pulumi.getter

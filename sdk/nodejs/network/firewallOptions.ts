@@ -76,7 +76,7 @@ export class FirewallOptions extends pulumi.CustomResource {
     }
 
     /**
-     * Container ID.
+     * Container ID. **Exactly one of `vmId` or `containerId` must be specified.**
      */
     declare public readonly containerId: pulumi.Output<number | undefined>;
     /**
@@ -134,7 +134,7 @@ export class FirewallOptions extends pulumi.CustomResource {
      */
     declare public readonly radv: pulumi.Output<boolean | undefined>;
     /**
-     * VM ID.
+     * VM ID. **Exactly one of `vmId` or `containerId` must be specified.**
      */
     declare public readonly vmId: pulumi.Output<number | undefined>;
 
@@ -193,7 +193,7 @@ export class FirewallOptions extends pulumi.CustomResource {
  */
 export interface FirewallOptionsState {
     /**
-     * Container ID.
+     * Container ID. **Exactly one of `vmId` or `containerId` must be specified.**
      */
     containerId?: pulumi.Input<number>;
     /**
@@ -251,7 +251,7 @@ export interface FirewallOptionsState {
      */
     radv?: pulumi.Input<boolean>;
     /**
-     * VM ID.
+     * VM ID. **Exactly one of `vmId` or `containerId` must be specified.**
      */
     vmId?: pulumi.Input<number>;
 }
@@ -261,7 +261,7 @@ export interface FirewallOptionsState {
  */
 export interface FirewallOptionsArgs {
     /**
-     * Container ID.
+     * Container ID. **Exactly one of `vmId` or `containerId` must be specified.**
      */
     containerId?: pulumi.Input<number>;
     /**
@@ -319,7 +319,7 @@ export interface FirewallOptionsArgs {
      */
     radv?: pulumi.Input<boolean>;
     /**
-     * VM ID.
+     * VM ID. **Exactly one of `vmId` or `containerId` must be specified.**
      */
     vmId?: pulumi.Input<number>;
 }

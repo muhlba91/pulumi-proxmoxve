@@ -89,14 +89,14 @@ public class Evpn extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="advertiseSubnets", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> advertiseSubnets;
+    private Output<Boolean> advertiseSubnets;
 
     /**
      * @return Enable subnet advertisement for EVPN.
      * 
      */
-    public Output<Optional<Boolean>> advertiseSubnets() {
-        return Codegen.optional(this.advertiseSubnets);
+    public Output<Boolean> advertiseSubnets() {
+        return this.advertiseSubnets;
     }
     /**
      * EVPN controller address.
@@ -117,14 +117,14 @@ public class Evpn extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="disableArpNdSuppression", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> disableArpNdSuppression;
+    private Output<Boolean> disableArpNdSuppression;
 
     /**
      * @return Disable ARP/ND suppression for EVPN.
      * 
      */
-    public Output<Optional<Boolean>> disableArpNdSuppression() {
-        return Codegen.optional(this.disableArpNdSuppression);
+    public Output<Boolean> disableArpNdSuppression() {
+        return this.disableArpNdSuppression;
     }
     /**
      * DNS API server address.
@@ -173,14 +173,14 @@ public class Evpn extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="exitNodesLocalRouting", refs={Boolean.class}, tree="[0]")
-    private Output</* @Nullable */ Boolean> exitNodesLocalRouting;
+    private Output<Boolean> exitNodesLocalRouting;
 
     /**
      * @return Enable local routing for EVPN exit nodes.
      * 
      */
-    public Output<Optional<Boolean>> exitNodesLocalRouting() {
-        return Codegen.optional(this.exitNodesLocalRouting);
+    public Output<Boolean> exitNodesLocalRouting() {
+        return this.exitNodesLocalRouting;
     }
     /**
      * IP Address Management system.
@@ -197,18 +197,18 @@ public class Evpn extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ipam);
     }
     /**
-     * MTU value for the zone.
+     * MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
      * 
      */
     @Export(name="mtu", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> mtu;
+    private Output<Integer> mtu;
 
     /**
-     * @return MTU value for the zone.
+     * @return MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
      * 
      */
-    public Output<Optional<Integer>> mtu() {
-        return Codegen.optional(this.mtu);
+    public Output<Integer> mtu() {
+        return this.mtu;
     }
     /**
      * The Proxmox nodes which the zone and associated VNets should be deployed on

@@ -41,7 +41,6 @@ class FileArgs:
         :param pulumi.Input[_builtins.str] checksum_algorithm: The algorithm to calculate the checksum of the file. Must be `md5` | `sha1` | `sha224` | `sha256` | `sha384` | `sha512`.
         :param pulumi.Input[_builtins.str] decompression_algorithm: Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
         :param pulumi.Input[_builtins.str] file_name: The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
-        :param pulumi.Input[_builtins.bool] overwrite: By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
         :param pulumi.Input[_builtins.bool] overwrite_unmanaged: If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
         :param pulumi.Input[_builtins.int] upload_timeout: The file download timeout seconds. Default is 600 (10min).
         :param pulumi.Input[_builtins.bool] verify: By default `true`. If `false`, no SSL/TLS certificates will be verified.
@@ -166,9 +165,6 @@ class FileArgs:
     @_builtins.property
     @pulumi.getter
     def overwrite(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
-        """
         return pulumi.get(self, "overwrite")
 
     @overwrite.setter
@@ -237,7 +233,6 @@ class _FileState:
         :param pulumi.Input[_builtins.str] decompression_algorithm: Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
         :param pulumi.Input[_builtins.str] file_name: The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
         :param pulumi.Input[_builtins.str] node_name: The node name.
-        :param pulumi.Input[_builtins.bool] overwrite: By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
         :param pulumi.Input[_builtins.bool] overwrite_unmanaged: If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
         :param pulumi.Input[_builtins.int] size: The file size in PVE.
         :param pulumi.Input[_builtins.int] upload_timeout: The file download timeout seconds. Default is 600 (10min).
@@ -358,9 +353,6 @@ class _FileState:
     @_builtins.property
     @pulumi.getter
     def overwrite(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
-        """
         return pulumi.get(self, "overwrite")
 
     @overwrite.setter
@@ -522,7 +514,6 @@ class File(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] decompression_algorithm: Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
         :param pulumi.Input[_builtins.str] file_name: The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
         :param pulumi.Input[_builtins.str] node_name: The node name.
-        :param pulumi.Input[_builtins.bool] overwrite: By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
         :param pulumi.Input[_builtins.bool] overwrite_unmanaged: If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
         :param pulumi.Input[_builtins.int] upload_timeout: The file download timeout seconds. Default is 600 (10min).
         :param pulumi.Input[_builtins.str] url: The URL to download the file from. Must match regex: `https?://.*`.
@@ -694,7 +685,6 @@ class File(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] decompression_algorithm: Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
         :param pulumi.Input[_builtins.str] file_name: The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
         :param pulumi.Input[_builtins.str] node_name: The node name.
-        :param pulumi.Input[_builtins.bool] overwrite: By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
         :param pulumi.Input[_builtins.bool] overwrite_unmanaged: If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
         :param pulumi.Input[_builtins.int] size: The file size in PVE.
         :param pulumi.Input[_builtins.int] upload_timeout: The file download timeout seconds. Default is 600 (10min).
@@ -779,9 +769,6 @@ class File(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def overwrite(self) -> pulumi.Output[_builtins.bool]:
-        """
-        By default `true`. If `true` and file size has changed in the datastore, it will be replaced. If `false`, there will be no check.
-        """
         return pulumi.get(self, "overwrite")
 
     @_builtins.property
