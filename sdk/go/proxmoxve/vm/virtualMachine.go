@@ -55,9 +55,10 @@ type VirtualMachine struct {
 	HookScriptFileId pulumi.StringPtrOutput `pulumi:"hookScriptFileId"`
 	// A host PCI device mapping (multiple blocks supported).
 	Hostpcis VirtualMachineHostpciArrayOutput `pulumi:"hostpcis"`
-	// Selectively enable hotplug features. Supported values
-	// are `cpu`, `disk`, `memory`, `network`, and `usb`. Use `0` to disable all,
-	// or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+	// Selectively enable hotplug features. Use `0` to
+	// disable, `1` to enable all. Valid features: `disk`, `network`, `usb`,
+	// `memory`, `cpu`. Memory hotplug requires NUMA to be enabled. If not set,
+	// PVE defaults to `network,disk,usb`.
 	Hotplug pulumi.StringOutput `pulumi:"hotplug"`
 	// The cloud-init configuration.
 	Initialization VirtualMachineInitializationPtrOutput `pulumi:"initialization"`
@@ -241,9 +242,10 @@ type virtualMachineState struct {
 	HookScriptFileId *string `pulumi:"hookScriptFileId"`
 	// A host PCI device mapping (multiple blocks supported).
 	Hostpcis []VirtualMachineHostpci `pulumi:"hostpcis"`
-	// Selectively enable hotplug features. Supported values
-	// are `cpu`, `disk`, `memory`, `network`, and `usb`. Use `0` to disable all,
-	// or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+	// Selectively enable hotplug features. Use `0` to
+	// disable, `1` to enable all. Valid features: `disk`, `network`, `usb`,
+	// `memory`, `cpu`. Memory hotplug requires NUMA to be enabled. If not set,
+	// PVE defaults to `network,disk,usb`.
 	Hotplug *string `pulumi:"hotplug"`
 	// The cloud-init configuration.
 	Initialization *VirtualMachineInitialization `pulumi:"initialization"`
@@ -395,9 +397,10 @@ type VirtualMachineState struct {
 	HookScriptFileId pulumi.StringPtrInput
 	// A host PCI device mapping (multiple blocks supported).
 	Hostpcis VirtualMachineHostpciArrayInput
-	// Selectively enable hotplug features. Supported values
-	// are `cpu`, `disk`, `memory`, `network`, and `usb`. Use `0` to disable all,
-	// or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+	// Selectively enable hotplug features. Use `0` to
+	// disable, `1` to enable all. Valid features: `disk`, `network`, `usb`,
+	// `memory`, `cpu`. Memory hotplug requires NUMA to be enabled. If not set,
+	// PVE defaults to `network,disk,usb`.
 	Hotplug pulumi.StringPtrInput
 	// The cloud-init configuration.
 	Initialization VirtualMachineInitializationPtrInput
@@ -553,9 +556,10 @@ type virtualMachineArgs struct {
 	HookScriptFileId *string `pulumi:"hookScriptFileId"`
 	// A host PCI device mapping (multiple blocks supported).
 	Hostpcis []VirtualMachineHostpci `pulumi:"hostpcis"`
-	// Selectively enable hotplug features. Supported values
-	// are `cpu`, `disk`, `memory`, `network`, and `usb`. Use `0` to disable all,
-	// or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+	// Selectively enable hotplug features. Use `0` to
+	// disable, `1` to enable all. Valid features: `disk`, `network`, `usb`,
+	// `memory`, `cpu`. Memory hotplug requires NUMA to be enabled. If not set,
+	// PVE defaults to `network,disk,usb`.
 	Hotplug *string `pulumi:"hotplug"`
 	// The cloud-init configuration.
 	Initialization *VirtualMachineInitialization `pulumi:"initialization"`
@@ -699,9 +703,10 @@ type VirtualMachineArgs struct {
 	HookScriptFileId pulumi.StringPtrInput
 	// A host PCI device mapping (multiple blocks supported).
 	Hostpcis VirtualMachineHostpciArrayInput
-	// Selectively enable hotplug features. Supported values
-	// are `cpu`, `disk`, `memory`, `network`, and `usb`. Use `0` to disable all,
-	// or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+	// Selectively enable hotplug features. Use `0` to
+	// disable, `1` to enable all. Valid features: `disk`, `network`, `usb`,
+	// `memory`, `cpu`. Memory hotplug requires NUMA to be enabled. If not set,
+	// PVE defaults to `network,disk,usb`.
 	Hotplug pulumi.StringPtrInput
 	// The cloud-init configuration.
 	Initialization VirtualMachineInitializationPtrInput
@@ -975,9 +980,10 @@ func (o VirtualMachineOutput) Hostpcis() VirtualMachineHostpciArrayOutput {
 	return o.ApplyT(func(v *VirtualMachine) VirtualMachineHostpciArrayOutput { return v.Hostpcis }).(VirtualMachineHostpciArrayOutput)
 }
 
-// Selectively enable hotplug features. Supported values
-// are `cpu`, `disk`, `memory`, `network`, and `usb`. Use `0` to disable all,
-// or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+// Selectively enable hotplug features. Use `0` to
+// disable, `1` to enable all. Valid features: `disk`, `network`, `usb`,
+// `memory`, `cpu`. Memory hotplug requires NUMA to be enabled. If not set,
+// PVE defaults to `network,disk,usb`.
 func (o VirtualMachineOutput) Hotplug() pulumi.StringOutput {
 	return o.ApplyT(func(v *VirtualMachine) pulumi.StringOutput { return v.Hotplug }).(pulumi.StringOutput)
 }

@@ -12,7 +12,7 @@ namespace Pulumi.ProxmoxVE.Cluster
     public static class GetNodes
     {
         /// <summary>
-        /// Retrieves information about all available nodes.
+        /// Retrieves information about all available Proxmox VE nodes.
         /// 
         /// ## Example Usage
         /// 
@@ -24,8 +24,17 @@ namespace Pulumi.ProxmoxVE.Cluster
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var availableNodes = ProxmoxVE.Cluster.GetNodes.Invoke();
+        ///     var example = ProxmoxVE.Cluster.GetNodes.Invoke();
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxVirtualEnvironmentNodes"] = 
+        ///         {
+        ///             { "names", example.Apply(getNodesResult =&gt; getNodesResult.Names) },
+        ///             { "cpuCount", example.Apply(getNodesResult =&gt; getNodesResult.CpuCounts) },
+        ///             { "online", example.Apply(getNodesResult =&gt; getNodesResult.Onlines) },
+        ///         },
+        ///     };
         /// });
         /// ```
         /// </summary>
@@ -33,7 +42,7 @@ namespace Pulumi.ProxmoxVE.Cluster
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodesResult>("proxmoxve:Cluster/getNodes:getNodes", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
-        /// Retrieves information about all available nodes.
+        /// Retrieves information about all available Proxmox VE nodes.
         /// 
         /// ## Example Usage
         /// 
@@ -45,8 +54,17 @@ namespace Pulumi.ProxmoxVE.Cluster
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var availableNodes = ProxmoxVE.Cluster.GetNodes.Invoke();
+        ///     var example = ProxmoxVE.Cluster.GetNodes.Invoke();
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxVirtualEnvironmentNodes"] = 
+        ///         {
+        ///             { "names", example.Apply(getNodesResult =&gt; getNodesResult.Names) },
+        ///             { "cpuCount", example.Apply(getNodesResult =&gt; getNodesResult.CpuCounts) },
+        ///             { "online", example.Apply(getNodesResult =&gt; getNodesResult.Onlines) },
+        ///         },
+        ///     };
         /// });
         /// ```
         /// </summary>
@@ -54,7 +72,7 @@ namespace Pulumi.ProxmoxVE.Cluster
             => global::Pulumi.Deployment.Instance.Invoke<GetNodesResult>("proxmoxve:Cluster/getNodes:getNodes", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
-        /// Retrieves information about all available nodes.
+        /// Retrieves information about all available Proxmox VE nodes.
         /// 
         /// ## Example Usage
         /// 
@@ -66,8 +84,17 @@ namespace Pulumi.ProxmoxVE.Cluster
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var availableNodes = ProxmoxVE.Cluster.GetNodes.Invoke();
+        ///     var example = ProxmoxVE.Cluster.GetNodes.Invoke();
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxVirtualEnvironmentNodes"] = 
+        ///         {
+        ///             { "names", example.Apply(getNodesResult =&gt; getNodesResult.Names) },
+        ///             { "cpuCount", example.Apply(getNodesResult =&gt; getNodesResult.CpuCounts) },
+        ///             { "online", example.Apply(getNodesResult =&gt; getNodesResult.Onlines) },
+        ///         },
+        ///     };
         /// });
         /// ```
         /// </summary>
@@ -80,11 +107,11 @@ namespace Pulumi.ProxmoxVE.Cluster
     public sealed class GetNodesResult
     {
         /// <summary>
-        /// The CPU count for each node.
+        /// The total number of logical CPUs on each node
         /// </summary>
         public readonly ImmutableArray<int> CpuCounts;
         /// <summary>
-        /// The CPU utilization on each node.
+        /// The CPU utilization on each node
         /// </summary>
         public readonly ImmutableArray<double> CpuUtilizations;
         /// <summary>
@@ -92,31 +119,31 @@ namespace Pulumi.ProxmoxVE.Cluster
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The memory available on each node.
+        /// The available memory in bytes on each node
         /// </summary>
         public readonly ImmutableArray<int> MemoryAvailables;
         /// <summary>
-        /// The memory used on each node.
+        /// The used memory in bytes on each node
         /// </summary>
         public readonly ImmutableArray<int> MemoryUseds;
         /// <summary>
-        /// The node names.
+        /// The node names
         /// </summary>
         public readonly ImmutableArray<string> Names;
         /// <summary>
-        /// Whether a node is online.
+        /// Whether a node is online
         /// </summary>
         public readonly ImmutableArray<bool> Onlines;
         /// <summary>
-        /// The SSL fingerprint for each node.
+        /// The SSL fingerprint for each node
         /// </summary>
         public readonly ImmutableArray<string> SslFingerprints;
         /// <summary>
-        /// The support level for each node.
+        /// The support level for each node
         /// </summary>
         public readonly ImmutableArray<string> SupportLevels;
         /// <summary>
-        /// The uptime in seconds for each node.
+        /// The uptime in seconds for each node
         /// </summary>
         public readonly ImmutableArray<int> Uptimes;
 

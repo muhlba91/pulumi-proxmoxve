@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *
  * > Consider using `proxmoxve.Download.File` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.
  *
- * > Importing Disks is not enabled by default in new Proxmox installations. You need to enable them in the 'Datacenter>Storage' section of the proxmox interface before first using this resource with `contentType = "import"`.
+ * > The `import` content type is not enabled by default on Proxmox VE storages. To use this resource with `contentType = "import"`, first add `Import` to the allowed content types on the target storage under 'Datacenter > Storage' in the Proxmox web interface.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

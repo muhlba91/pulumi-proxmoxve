@@ -107,9 +107,10 @@ export class VirtualMachine extends pulumi.CustomResource {
      */
     declare public readonly hostpcis: pulumi.Output<outputs.VM.VirtualMachineHostpci[] | undefined>;
     /**
-     * Selectively enable hotplug features. Supported values
-     * are `cpu`, `disk`, `memory`, `network`, and `usb`. Use `0` to disable all,
-     * or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+     * Selectively enable hotplug features. Use `0` to
+     * disable, `1` to enable all. Valid features: `disk`, `network`, `usb`,
+     * `memory`, `cpu`. Memory hotplug requires NUMA to be enabled. If not set,
+     * PVE defaults to `network,disk,usb`.
      */
     declare public readonly hotplug: pulumi.Output<string>;
     /**
@@ -531,9 +532,10 @@ export interface VirtualMachineState {
      */
     hostpcis?: pulumi.Input<pulumi.Input<inputs.VM.VirtualMachineHostpci>[]>;
     /**
-     * Selectively enable hotplug features. Supported values
-     * are `cpu`, `disk`, `memory`, `network`, and `usb`. Use `0` to disable all,
-     * or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+     * Selectively enable hotplug features. Use `0` to
+     * disable, `1` to enable all. Valid features: `disk`, `network`, `usb`,
+     * `memory`, `cpu`. Memory hotplug requires NUMA to be enabled. If not set,
+     * PVE defaults to `network,disk,usb`.
      */
     hotplug?: pulumi.Input<string>;
     /**
@@ -810,9 +812,10 @@ export interface VirtualMachineArgs {
      */
     hostpcis?: pulumi.Input<pulumi.Input<inputs.VM.VirtualMachineHostpci>[]>;
     /**
-     * Selectively enable hotplug features. Supported values
-     * are `cpu`, `disk`, `memory`, `network`, and `usb`. Use `0` to disable all,
-     * or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+     * Selectively enable hotplug features. Use `0` to
+     * disable, `1` to enable all. Valid features: `disk`, `network`, `usb`,
+     * `memory`, `cpu`. Memory hotplug requires NUMA to be enabled. If not set,
+     * PVE defaults to `network,disk,usb`.
      */
     hotplug?: pulumi.Input<string>;
     /**

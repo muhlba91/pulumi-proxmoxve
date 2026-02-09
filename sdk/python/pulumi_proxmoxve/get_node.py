@@ -26,7 +26,10 @@ class GetNodeResult:
     """
     A collection of values returned by getNode.
     """
-    def __init__(__self__, cpu_count=None, cpu_model=None, cpu_sockets=None, id=None, memory_available=None, memory_total=None, memory_used=None, node_name=None, uptime=None):
+    def __init__(__self__, cpu_cores=None, cpu_count=None, cpu_model=None, cpu_sockets=None, id=None, memory_available=None, memory_total=None, memory_used=None, node_name=None, uptime=None):
+        if cpu_cores and not isinstance(cpu_cores, int):
+            raise TypeError("Expected argument 'cpu_cores' to be a int")
+        pulumi.set(__self__, "cpu_cores", cpu_cores)
         if cpu_count and not isinstance(cpu_count, int):
             raise TypeError("Expected argument 'cpu_count' to be a int")
         pulumi.set(__self__, "cpu_count", cpu_count)
@@ -56,10 +59,18 @@ class GetNodeResult:
         pulumi.set(__self__, "uptime", uptime)
 
     @_builtins.property
+    @pulumi.getter(name="cpuCores")
+    def cpu_cores(self) -> _builtins.int:
+        """
+        The total number of physical CPU cores on the node
+        """
+        return pulumi.get(self, "cpu_cores")
+
+    @_builtins.property
     @pulumi.getter(name="cpuCount")
     def cpu_count(self) -> _builtins.int:
         """
-        The CPU count on the node.
+        The total number of logical CPUs on the node (sockets * cores * threads)
         """
         return pulumi.get(self, "cpu_count")
 
@@ -67,7 +78,7 @@ class GetNodeResult:
     @pulumi.getter(name="cpuModel")
     def cpu_model(self) -> _builtins.str:
         """
-        The CPU model on the node.
+        The CPU model on the node
         """
         return pulumi.get(self, "cpu_model")
 
@@ -75,7 +86,7 @@ class GetNodeResult:
     @pulumi.getter(name="cpuSockets")
     def cpu_sockets(self) -> _builtins.int:
         """
-        The CPU utilization on the node.
+        The number of CPU sockets on the node
         """
         return pulumi.get(self, "cpu_sockets")
 
@@ -91,7 +102,7 @@ class GetNodeResult:
     @pulumi.getter(name="memoryAvailable")
     def memory_available(self) -> _builtins.int:
         """
-        The memory available on the node.
+        The available memory in bytes on the node
         """
         return pulumi.get(self, "memory_available")
 
@@ -99,7 +110,7 @@ class GetNodeResult:
     @pulumi.getter(name="memoryTotal")
     def memory_total(self) -> _builtins.int:
         """
-        The total memory on the node.
+        The total memory in bytes on the node
         """
         return pulumi.get(self, "memory_total")
 
@@ -107,20 +118,23 @@ class GetNodeResult:
     @pulumi.getter(name="memoryUsed")
     def memory_used(self) -> _builtins.int:
         """
-        The memory used on the node.
+        The used memory in bytes on the node
         """
         return pulumi.get(self, "memory_used")
 
     @_builtins.property
     @pulumi.getter(name="nodeName")
     def node_name(self) -> _builtins.str:
+        """
+        The node name
+        """
         return pulumi.get(self, "node_name")
 
     @_builtins.property
     @pulumi.getter
     def uptime(self) -> _builtins.int:
         """
-        The uptime in seconds on the node.
+        The uptime in seconds on the node
         """
         return pulumi.get(self, "uptime")
 
@@ -131,6 +145,7 @@ class AwaitableGetNodeResult(GetNodeResult):
         if False:
             yield self
         return GetNodeResult(
+            cpu_cores=self.cpu_cores,
             cpu_count=self.cpu_count,
             cpu_model=self.cpu_model,
             cpu_sockets=self.cpu_sockets,
@@ -145,7 +160,7 @@ class AwaitableGetNodeResult(GetNodeResult):
 def get_node(node_name: Optional[_builtins.str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodeResult:
     """
-    Retrieves information about node.
+    Retrieves information about a specific Proxmox VE node.
 
     ## Example Usage
 
@@ -153,11 +168,19 @@ def get_node(node_name: Optional[_builtins.str] = None,
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
-    node = proxmoxve.get_node()
+    example = proxmoxve.get_node(node_name="pve")
+    pulumi.export("dataProxmoxVirtualEnvironmentNode", {
+        "cpuCores": example.cpu_cores,
+        "cpuCount": example.cpu_count,
+        "cpuSockets": example.cpu_sockets,
+        "cpuModel": example.cpu_model,
+        "memoryTotal": example.memory_total,
+        "uptime": example.uptime,
+    })
     ```
 
 
-    :param _builtins.str node_name: The node name.
+    :param _builtins.str node_name: The node name
     """
     __args__ = dict()
     __args__['nodeName'] = node_name
@@ -165,6 +188,7 @@ def get_node(node_name: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('proxmoxve:index/getNode:getNode', __args__, opts=opts, typ=GetNodeResult).value
 
     return AwaitableGetNodeResult(
+        cpu_cores=pulumi.get(__ret__, 'cpu_cores'),
         cpu_count=pulumi.get(__ret__, 'cpu_count'),
         cpu_model=pulumi.get(__ret__, 'cpu_model'),
         cpu_sockets=pulumi.get(__ret__, 'cpu_sockets'),
@@ -177,7 +201,7 @@ def get_node(node_name: Optional[_builtins.str] = None,
 def get_node_output(node_name: Optional[pulumi.Input[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodeResult]:
     """
-    Retrieves information about node.
+    Retrieves information about a specific Proxmox VE node.
 
     ## Example Usage
 
@@ -185,17 +209,26 @@ def get_node_output(node_name: Optional[pulumi.Input[_builtins.str]] = None,
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
-    node = proxmoxve.get_node()
+    example = proxmoxve.get_node(node_name="pve")
+    pulumi.export("dataProxmoxVirtualEnvironmentNode", {
+        "cpuCores": example.cpu_cores,
+        "cpuCount": example.cpu_count,
+        "cpuSockets": example.cpu_sockets,
+        "cpuModel": example.cpu_model,
+        "memoryTotal": example.memory_total,
+        "uptime": example.uptime,
+    })
     ```
 
 
-    :param _builtins.str node_name: The node name.
+    :param _builtins.str node_name: The node name
     """
     __args__ = dict()
     __args__['nodeName'] = node_name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:index/getNode:getNode', __args__, opts=opts, typ=GetNodeResult)
     return __ret__.apply(lambda __response__: GetNodeResult(
+        cpu_cores=pulumi.get(__response__, 'cpu_cores'),
         cpu_count=pulumi.get(__response__, 'cpu_count'),
         cpu_model=pulumi.get(__response__, 'cpu_model'),
         cpu_sockets=pulumi.get(__response__, 'cpu_sockets'),

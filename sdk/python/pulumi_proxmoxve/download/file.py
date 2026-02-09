@@ -445,6 +445,8 @@ class File(pulumi.CustomResource):
         > Besides the `Datastore.AllocateTemplate` privilege, this resource requires both the `Sys.Audit` and `Sys.Modify` privileges.<br><br>
         For more details, see the [`download-url`](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/storage/{storage}/download-url) API documentation under the "Required permissions" section.
 
+        > The `import` content type is not enabled by default on Proxmox VE storages. To use this resource with `content_type = "import"`, first add `Import` to the allowed content types on the target storage under 'Datacenter > Storage' in the Proxmox web interface.
+
         ## Example Usage
 
         ```python
@@ -530,6 +532,8 @@ class File(pulumi.CustomResource):
 
         > Besides the `Datastore.AllocateTemplate` privilege, this resource requires both the `Sys.Audit` and `Sys.Modify` privileges.<br><br>
         For more details, see the [`download-url`](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/storage/{storage}/download-url) API documentation under the "Required permissions" section.
+
+        > The `import` content type is not enabled by default on Proxmox VE storages. To use this resource with `content_type = "import"`, first add `Import` to the allowed content types on the target storage under 'Datacenter > Storage' in the Proxmox web interface.
 
         ## Example Usage
 

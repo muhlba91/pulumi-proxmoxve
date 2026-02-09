@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Retrieves information about all available nodes.
+ * Retrieves information about all available Proxmox VE nodes.
  *
  * ## Example Usage
  *
@@ -13,7 +13,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
- * const availableNodes = proxmoxve.Cluster.getNodes({});
+ * const example = proxmoxve.Cluster.getNodes({});
+ * export const dataProxmoxVirtualEnvironmentNodes = {
+ *     names: example.then(example => example.names),
+ *     cpuCount: example.then(example => example.cpuCounts),
+ *     online: example.then(example => example.onlines),
+ * };
  * ```
  */
 export function getNodes(opts?: pulumi.InvokeOptions): Promise<GetNodesResult> {
@@ -27,11 +32,11 @@ export function getNodes(opts?: pulumi.InvokeOptions): Promise<GetNodesResult> {
  */
 export interface GetNodesResult {
     /**
-     * The CPU count for each node.
+     * The total number of logical CPUs on each node
      */
     readonly cpuCounts: number[];
     /**
-     * The CPU utilization on each node.
+     * The CPU utilization on each node
      */
     readonly cpuUtilizations: number[];
     /**
@@ -39,36 +44,36 @@ export interface GetNodesResult {
      */
     readonly id: string;
     /**
-     * The memory available on each node.
+     * The available memory in bytes on each node
      */
     readonly memoryAvailables: number[];
     /**
-     * The memory used on each node.
+     * The used memory in bytes on each node
      */
     readonly memoryUseds: number[];
     /**
-     * The node names.
+     * The node names
      */
     readonly names: string[];
     /**
-     * Whether a node is online.
+     * Whether a node is online
      */
     readonly onlines: boolean[];
     /**
-     * The SSL fingerprint for each node.
+     * The SSL fingerprint for each node
      */
     readonly sslFingerprints: string[];
     /**
-     * The support level for each node.
+     * The support level for each node
      */
     readonly supportLevels: string[];
     /**
-     * The uptime in seconds for each node.
+     * The uptime in seconds for each node
      */
     readonly uptimes: number[];
 }
 /**
- * Retrieves information about all available nodes.
+ * Retrieves information about all available Proxmox VE nodes.
  *
  * ## Example Usage
  *
@@ -76,7 +81,12 @@ export interface GetNodesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
- * const availableNodes = proxmoxve.Cluster.getNodes({});
+ * const example = proxmoxve.Cluster.getNodes({});
+ * export const dataProxmoxVirtualEnvironmentNodes = {
+ *     names: example.then(example => example.names),
+ *     cpuCount: example.then(example => example.cpuCounts),
+ *     online: example.then(example => example.onlines),
+ * };
  * ```
  */
 export function getNodesOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNodesResult> {

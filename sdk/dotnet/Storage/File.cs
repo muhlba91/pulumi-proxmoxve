@@ -46,7 +46,7 @@ namespace Pulumi.ProxmoxVE.Storage
     /// 
     /// &gt; Consider using `proxmoxve.Download.File` resource instead. Using this resource for images is less efficient (requires to transfer uploaded image to node) though still supported.
     /// 
-    /// &gt; Importing Disks is not enabled by default in new Proxmox installations. You need to enable them in the 'Datacenter&gt;Storage' section of the proxmox interface before first using this resource with `ContentType = "import"`.
+    /// &gt; The `Import` content type is not enabled by default on Proxmox VE storages. To use this resource with `ContentType = "import"`, first add `Import` to the allowed content types on the target storage under 'Datacenter &gt; Storage' in the Proxmox web interface.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
