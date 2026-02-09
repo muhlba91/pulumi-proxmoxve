@@ -12,7 +12,7 @@ namespace Pulumi.ProxmoxVE
     public static class GetNode
     {
         /// <summary>
-        /// Retrieves information about node.
+        /// Retrieves information about a specific Proxmox VE node.
         /// 
         /// ## Example Usage
         /// 
@@ -24,8 +24,23 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var node = ProxmoxVE.GetNode.Invoke();
+        ///     var example = ProxmoxVE.GetNode.Invoke(new()
+        ///     {
+        ///         NodeName = "pve",
+        ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxVirtualEnvironmentNode"] = 
+        ///         {
+        ///             { "cpuCores", example.Apply(getNodeResult =&gt; getNodeResult.CpuCores) },
+        ///             { "cpuCount", example.Apply(getNodeResult =&gt; getNodeResult.CpuCount) },
+        ///             { "cpuSockets", example.Apply(getNodeResult =&gt; getNodeResult.CpuSockets) },
+        ///             { "cpuModel", example.Apply(getNodeResult =&gt; getNodeResult.CpuModel) },
+        ///             { "memoryTotal", example.Apply(getNodeResult =&gt; getNodeResult.MemoryTotal) },
+        ///             { "uptime", example.Apply(getNodeResult =&gt; getNodeResult.Uptime) },
+        ///         },
+        ///     };
         /// });
         /// ```
         /// </summary>
@@ -33,7 +48,7 @@ namespace Pulumi.ProxmoxVE
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodeResult>("proxmoxve:index/getNode:getNode", args ?? new GetNodeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Retrieves information about node.
+        /// Retrieves information about a specific Proxmox VE node.
         /// 
         /// ## Example Usage
         /// 
@@ -45,8 +60,23 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var node = ProxmoxVE.GetNode.Invoke();
+        ///     var example = ProxmoxVE.GetNode.Invoke(new()
+        ///     {
+        ///         NodeName = "pve",
+        ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxVirtualEnvironmentNode"] = 
+        ///         {
+        ///             { "cpuCores", example.Apply(getNodeResult =&gt; getNodeResult.CpuCores) },
+        ///             { "cpuCount", example.Apply(getNodeResult =&gt; getNodeResult.CpuCount) },
+        ///             { "cpuSockets", example.Apply(getNodeResult =&gt; getNodeResult.CpuSockets) },
+        ///             { "cpuModel", example.Apply(getNodeResult =&gt; getNodeResult.CpuModel) },
+        ///             { "memoryTotal", example.Apply(getNodeResult =&gt; getNodeResult.MemoryTotal) },
+        ///             { "uptime", example.Apply(getNodeResult =&gt; getNodeResult.Uptime) },
+        ///         },
+        ///     };
         /// });
         /// ```
         /// </summary>
@@ -54,7 +84,7 @@ namespace Pulumi.ProxmoxVE
             => global::Pulumi.Deployment.Instance.Invoke<GetNodeResult>("proxmoxve:index/getNode:getNode", args ?? new GetNodeInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Retrieves information about node.
+        /// Retrieves information about a specific Proxmox VE node.
         /// 
         /// ## Example Usage
         /// 
@@ -66,8 +96,23 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var node = ProxmoxVE.GetNode.Invoke();
+        ///     var example = ProxmoxVE.GetNode.Invoke(new()
+        ///     {
+        ///         NodeName = "pve",
+        ///     });
         /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxVirtualEnvironmentNode"] = 
+        ///         {
+        ///             { "cpuCores", example.Apply(getNodeResult =&gt; getNodeResult.CpuCores) },
+        ///             { "cpuCount", example.Apply(getNodeResult =&gt; getNodeResult.CpuCount) },
+        ///             { "cpuSockets", example.Apply(getNodeResult =&gt; getNodeResult.CpuSockets) },
+        ///             { "cpuModel", example.Apply(getNodeResult =&gt; getNodeResult.CpuModel) },
+        ///             { "memoryTotal", example.Apply(getNodeResult =&gt; getNodeResult.MemoryTotal) },
+        ///             { "uptime", example.Apply(getNodeResult =&gt; getNodeResult.Uptime) },
+        ///         },
+        ///     };
         /// });
         /// ```
         /// </summary>
@@ -79,7 +124,7 @@ namespace Pulumi.ProxmoxVE
     public sealed class GetNodeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The node name.
+        /// The node name
         /// </summary>
         [Input("nodeName", required: true)]
         public string NodeName { get; set; } = null!;
@@ -93,7 +138,7 @@ namespace Pulumi.ProxmoxVE
     public sealed class GetNodeInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The node name.
+        /// The node name
         /// </summary>
         [Input("nodeName", required: true)]
         public Input<string> NodeName { get; set; } = null!;
@@ -109,15 +154,19 @@ namespace Pulumi.ProxmoxVE
     public sealed class GetNodeResult
     {
         /// <summary>
-        /// The CPU count on the node.
+        /// The total number of physical CPU cores on the node
+        /// </summary>
+        public readonly int CpuCores;
+        /// <summary>
+        /// The total number of logical CPUs on the node (sockets * cores * threads)
         /// </summary>
         public readonly int CpuCount;
         /// <summary>
-        /// The CPU model on the node.
+        /// The CPU model on the node
         /// </summary>
         public readonly string CpuModel;
         /// <summary>
-        /// The CPU utilization on the node.
+        /// The number of CPU sockets on the node
         /// </summary>
         public readonly int CpuSockets;
         /// <summary>
@@ -125,25 +174,30 @@ namespace Pulumi.ProxmoxVE
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The memory available on the node.
+        /// The available memory in bytes on the node
         /// </summary>
         public readonly int MemoryAvailable;
         /// <summary>
-        /// The total memory on the node.
+        /// The total memory in bytes on the node
         /// </summary>
         public readonly int MemoryTotal;
         /// <summary>
-        /// The memory used on the node.
+        /// The used memory in bytes on the node
         /// </summary>
         public readonly int MemoryUsed;
+        /// <summary>
+        /// The node name
+        /// </summary>
         public readonly string NodeName;
         /// <summary>
-        /// The uptime in seconds on the node.
+        /// The uptime in seconds on the node
         /// </summary>
         public readonly int Uptime;
 
         [OutputConstructor]
         private GetNodeResult(
+            int cpuCores,
+
             int cpuCount,
 
             string cpuModel,
@@ -162,6 +216,7 @@ namespace Pulumi.ProxmoxVE
 
             int uptime)
         {
+            CpuCores = cpuCores;
             CpuCount = cpuCount;
             CpuModel = cpuModel;
             CpuSockets = cpuSockets;

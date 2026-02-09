@@ -14,14 +14,14 @@ public final class GetNodePlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetNodePlainArgs Empty = new GetNodePlainArgs();
 
     /**
-     * The node name.
+     * The node name
      * 
      */
     @Import(name="nodeName", required=true)
     private String nodeName;
 
     /**
-     * @return The node name.
+     * @return The node name
      * 
      */
     public String nodeName() {
@@ -53,7 +53,7 @@ public final class GetNodePlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param nodeName The node name.
+         * @param nodeName The node name
          * 
          * @return builder
          * 

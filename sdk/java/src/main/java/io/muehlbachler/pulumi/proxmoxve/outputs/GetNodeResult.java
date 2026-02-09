@@ -12,17 +12,22 @@ import java.util.Objects;
 @CustomType
 public final class GetNodeResult {
     /**
-     * @return The CPU count on the node.
+     * @return The total number of physical CPU cores on the node
+     * 
+     */
+    private Integer cpuCores;
+    /**
+     * @return The total number of logical CPUs on the node (sockets * cores * threads)
      * 
      */
     private Integer cpuCount;
     /**
-     * @return The CPU model on the node.
+     * @return The CPU model on the node
      * 
      */
     private String cpuModel;
     /**
-     * @return The CPU utilization on the node.
+     * @return The number of CPU sockets on the node
      * 
      */
     private Integer cpuSockets;
@@ -32,44 +37,55 @@ public final class GetNodeResult {
      */
     private String id;
     /**
-     * @return The memory available on the node.
+     * @return The available memory in bytes on the node
      * 
      */
     private Integer memoryAvailable;
     /**
-     * @return The total memory on the node.
+     * @return The total memory in bytes on the node
      * 
      */
     private Integer memoryTotal;
     /**
-     * @return The memory used on the node.
+     * @return The used memory in bytes on the node
      * 
      */
     private Integer memoryUsed;
+    /**
+     * @return The node name
+     * 
+     */
     private String nodeName;
     /**
-     * @return The uptime in seconds on the node.
+     * @return The uptime in seconds on the node
      * 
      */
     private Integer uptime;
 
     private GetNodeResult() {}
     /**
-     * @return The CPU count on the node.
+     * @return The total number of physical CPU cores on the node
+     * 
+     */
+    public Integer cpuCores() {
+        return this.cpuCores;
+    }
+    /**
+     * @return The total number of logical CPUs on the node (sockets * cores * threads)
      * 
      */
     public Integer cpuCount() {
         return this.cpuCount;
     }
     /**
-     * @return The CPU model on the node.
+     * @return The CPU model on the node
      * 
      */
     public String cpuModel() {
         return this.cpuModel;
     }
     /**
-     * @return The CPU utilization on the node.
+     * @return The number of CPU sockets on the node
      * 
      */
     public Integer cpuSockets() {
@@ -83,31 +99,35 @@ public final class GetNodeResult {
         return this.id;
     }
     /**
-     * @return The memory available on the node.
+     * @return The available memory in bytes on the node
      * 
      */
     public Integer memoryAvailable() {
         return this.memoryAvailable;
     }
     /**
-     * @return The total memory on the node.
+     * @return The total memory in bytes on the node
      * 
      */
     public Integer memoryTotal() {
         return this.memoryTotal;
     }
     /**
-     * @return The memory used on the node.
+     * @return The used memory in bytes on the node
      * 
      */
     public Integer memoryUsed() {
         return this.memoryUsed;
     }
+    /**
+     * @return The node name
+     * 
+     */
     public String nodeName() {
         return this.nodeName;
     }
     /**
-     * @return The uptime in seconds on the node.
+     * @return The uptime in seconds on the node
      * 
      */
     public Integer uptime() {
@@ -123,6 +143,7 @@ public final class GetNodeResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Integer cpuCores;
         private Integer cpuCount;
         private String cpuModel;
         private Integer cpuSockets;
@@ -135,6 +156,7 @@ public final class GetNodeResult {
         public Builder() {}
         public Builder(GetNodeResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.cpuCores = defaults.cpuCores;
     	      this.cpuCount = defaults.cpuCount;
     	      this.cpuModel = defaults.cpuModel;
     	      this.cpuSockets = defaults.cpuSockets;
@@ -146,6 +168,14 @@ public final class GetNodeResult {
     	      this.uptime = defaults.uptime;
         }
 
+        @CustomType.Setter
+        public Builder cpuCores(Integer cpuCores) {
+            if (cpuCores == null) {
+              throw new MissingRequiredPropertyException("GetNodeResult", "cpuCores");
+            }
+            this.cpuCores = cpuCores;
+            return this;
+        }
         @CustomType.Setter
         public Builder cpuCount(Integer cpuCount) {
             if (cpuCount == null) {
@@ -220,6 +250,7 @@ public final class GetNodeResult {
         }
         public GetNodeResult build() {
             final var _resultValue = new GetNodeResult();
+            _resultValue.cpuCores = cpuCores;
             _resultValue.cpuCount = cpuCount;
             _resultValue.cpuModel = cpuModel;
             _resultValue.cpuSockets = cpuSockets;

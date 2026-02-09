@@ -1216,7 +1216,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:index/getFile:getFile", TypeShape.of(GetFileResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Retrieves information about node.
+     * Retrieves information about a specific Proxmox VE node.
      * 
      * ## Example Usage
      * 
@@ -1243,9 +1243,18 @@ public final class ProxmoxveFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var node = ProxmoxveFunctions.getNode(GetNodeArgs.builder()
+     *         final var example = ProxmoxveFunctions.getNode(GetNodeArgs.builder()
+     *             .nodeName("pve")
      *             .build());
      * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentNode", Map.ofEntries(
+     *             Map.entry("cpuCores", example.cpuCores()),
+     *             Map.entry("cpuCount", example.cpuCount()),
+     *             Map.entry("cpuSockets", example.cpuSockets()),
+     *             Map.entry("cpuModel", example.cpuModel()),
+     *             Map.entry("memoryTotal", example.memoryTotal()),
+     *             Map.entry("uptime", example.uptime())
+     *         ));
      *     }
      * }
      * }
@@ -1257,7 +1266,7 @@ public final class ProxmoxveFunctions {
         return getNode(args, InvokeOptions.Empty);
     }
     /**
-     * Retrieves information about node.
+     * Retrieves information about a specific Proxmox VE node.
      * 
      * ## Example Usage
      * 
@@ -1284,9 +1293,18 @@ public final class ProxmoxveFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var node = ProxmoxveFunctions.getNode(GetNodeArgs.builder()
+     *         final var example = ProxmoxveFunctions.getNode(GetNodeArgs.builder()
+     *             .nodeName("pve")
      *             .build());
      * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentNode", Map.ofEntries(
+     *             Map.entry("cpuCores", example.cpuCores()),
+     *             Map.entry("cpuCount", example.cpuCount()),
+     *             Map.entry("cpuSockets", example.cpuSockets()),
+     *             Map.entry("cpuModel", example.cpuModel()),
+     *             Map.entry("memoryTotal", example.memoryTotal()),
+     *             Map.entry("uptime", example.uptime())
+     *         ));
      *     }
      * }
      * }
@@ -1298,7 +1316,7 @@ public final class ProxmoxveFunctions {
         return getNodePlain(args, InvokeOptions.Empty);
     }
     /**
-     * Retrieves information about node.
+     * Retrieves information about a specific Proxmox VE node.
      * 
      * ## Example Usage
      * 
@@ -1325,9 +1343,18 @@ public final class ProxmoxveFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var node = ProxmoxveFunctions.getNode(GetNodeArgs.builder()
+     *         final var example = ProxmoxveFunctions.getNode(GetNodeArgs.builder()
+     *             .nodeName("pve")
      *             .build());
      * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentNode", Map.ofEntries(
+     *             Map.entry("cpuCores", example.cpuCores()),
+     *             Map.entry("cpuCount", example.cpuCount()),
+     *             Map.entry("cpuSockets", example.cpuSockets()),
+     *             Map.entry("cpuModel", example.cpuModel()),
+     *             Map.entry("memoryTotal", example.memoryTotal()),
+     *             Map.entry("uptime", example.uptime())
+     *         ));
      *     }
      * }
      * }
@@ -1339,7 +1366,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invoke("proxmoxve:index/getNode:getNode", TypeShape.of(GetNodeResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Retrieves information about node.
+     * Retrieves information about a specific Proxmox VE node.
      * 
      * ## Example Usage
      * 
@@ -1366,9 +1393,18 @@ public final class ProxmoxveFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var node = ProxmoxveFunctions.getNode(GetNodeArgs.builder()
+     *         final var example = ProxmoxveFunctions.getNode(GetNodeArgs.builder()
+     *             .nodeName("pve")
      *             .build());
      * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentNode", Map.ofEntries(
+     *             Map.entry("cpuCores", example.cpuCores()),
+     *             Map.entry("cpuCount", example.cpuCount()),
+     *             Map.entry("cpuSockets", example.cpuSockets()),
+     *             Map.entry("cpuModel", example.cpuModel()),
+     *             Map.entry("memoryTotal", example.memoryTotal()),
+     *             Map.entry("uptime", example.uptime())
+     *         ));
      *     }
      * }
      * }
@@ -1380,7 +1416,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invoke("proxmoxve:index/getNode:getNode", TypeShape.of(GetNodeResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Retrieves information about node.
+     * Retrieves information about a specific Proxmox VE node.
      * 
      * ## Example Usage
      * 
@@ -1407,9 +1443,18 @@ public final class ProxmoxveFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var node = ProxmoxveFunctions.getNode(GetNodeArgs.builder()
+     *         final var example = ProxmoxveFunctions.getNode(GetNodeArgs.builder()
+     *             .nodeName("pve")
      *             .build());
      * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentNode", Map.ofEntries(
+     *             Map.entry("cpuCores", example.cpuCores()),
+     *             Map.entry("cpuCount", example.cpuCount()),
+     *             Map.entry("cpuSockets", example.cpuSockets()),
+     *             Map.entry("cpuModel", example.cpuModel()),
+     *             Map.entry("memoryTotal", example.memoryTotal()),
+     *             Map.entry("uptime", example.uptime())
+     *         ));
      *     }
      * }
      * }

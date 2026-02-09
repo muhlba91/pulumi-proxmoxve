@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Retrieves information about node.
+// Retrieves information about a specific Proxmox VE node.
 //
 // ## Example Usage
 //
@@ -27,10 +27,20 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := proxmoxve.GetNode(ctx, &proxmoxve.GetNodeArgs{}, nil)
+//			example, err := proxmoxve.GetNode(ctx, &proxmoxve.GetNodeArgs{
+//				NodeName: "pve",
+//			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			ctx.Export("dataProxmoxVirtualEnvironmentNode", pulumi.Map{
+//				"cpuCores":    example.CpuCores,
+//				"cpuCount":    example.CpuCount,
+//				"cpuSockets":  example.CpuSockets,
+//				"cpuModel":    example.CpuModel,
+//				"memoryTotal": example.MemoryTotal,
+//				"uptime":      example.Uptime,
+//			})
 //			return nil
 //		})
 //	}
@@ -48,28 +58,31 @@ func GetNode(ctx *pulumi.Context, args *GetNodeArgs, opts ...pulumi.InvokeOption
 
 // A collection of arguments for invoking getNode.
 type GetNodeArgs struct {
-	// The node name.
+	// The node name
 	NodeName string `pulumi:"nodeName"`
 }
 
 // A collection of values returned by getNode.
 type GetNodeResult struct {
-	// The CPU count on the node.
+	// The total number of physical CPU cores on the node
+	CpuCores int `pulumi:"cpuCores"`
+	// The total number of logical CPUs on the node (sockets * cores * threads)
 	CpuCount int `pulumi:"cpuCount"`
-	// The CPU model on the node.
+	// The CPU model on the node
 	CpuModel string `pulumi:"cpuModel"`
-	// The CPU utilization on the node.
+	// The number of CPU sockets on the node
 	CpuSockets int `pulumi:"cpuSockets"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// The memory available on the node.
+	// The available memory in bytes on the node
 	MemoryAvailable int `pulumi:"memoryAvailable"`
-	// The total memory on the node.
+	// The total memory in bytes on the node
 	MemoryTotal int `pulumi:"memoryTotal"`
-	// The memory used on the node.
-	MemoryUsed int    `pulumi:"memoryUsed"`
-	NodeName   string `pulumi:"nodeName"`
-	// The uptime in seconds on the node.
+	// The used memory in bytes on the node
+	MemoryUsed int `pulumi:"memoryUsed"`
+	// The node name
+	NodeName string `pulumi:"nodeName"`
+	// The uptime in seconds on the node
 	Uptime int `pulumi:"uptime"`
 }
 
@@ -84,7 +97,7 @@ func GetNodeOutput(ctx *pulumi.Context, args GetNodeOutputArgs, opts ...pulumi.I
 
 // A collection of arguments for invoking getNode.
 type GetNodeOutputArgs struct {
-	// The node name.
+	// The node name
 	NodeName pulumi.StringInput `pulumi:"nodeName"`
 }
 
@@ -107,17 +120,22 @@ func (o GetNodeResultOutput) ToGetNodeResultOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The CPU count on the node.
+// The total number of physical CPU cores on the node
+func (o GetNodeResultOutput) CpuCores() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNodeResult) int { return v.CpuCores }).(pulumi.IntOutput)
+}
+
+// The total number of logical CPUs on the node (sockets * cores * threads)
 func (o GetNodeResultOutput) CpuCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetNodeResult) int { return v.CpuCount }).(pulumi.IntOutput)
 }
 
-// The CPU model on the node.
+// The CPU model on the node
 func (o GetNodeResultOutput) CpuModel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodeResult) string { return v.CpuModel }).(pulumi.StringOutput)
 }
 
-// The CPU utilization on the node.
+// The number of CPU sockets on the node
 func (o GetNodeResultOutput) CpuSockets() pulumi.IntOutput {
 	return o.ApplyT(func(v GetNodeResult) int { return v.CpuSockets }).(pulumi.IntOutput)
 }
@@ -127,26 +145,27 @@ func (o GetNodeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodeResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The memory available on the node.
+// The available memory in bytes on the node
 func (o GetNodeResultOutput) MemoryAvailable() pulumi.IntOutput {
 	return o.ApplyT(func(v GetNodeResult) int { return v.MemoryAvailable }).(pulumi.IntOutput)
 }
 
-// The total memory on the node.
+// The total memory in bytes on the node
 func (o GetNodeResultOutput) MemoryTotal() pulumi.IntOutput {
 	return o.ApplyT(func(v GetNodeResult) int { return v.MemoryTotal }).(pulumi.IntOutput)
 }
 
-// The memory used on the node.
+// The used memory in bytes on the node
 func (o GetNodeResultOutput) MemoryUsed() pulumi.IntOutput {
 	return o.ApplyT(func(v GetNodeResult) int { return v.MemoryUsed }).(pulumi.IntOutput)
 }
 
+// The node name
 func (o GetNodeResultOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodeResult) string { return v.NodeName }).(pulumi.StringOutput)
 }
 
-// The uptime in seconds on the node.
+// The uptime in seconds on the node
 func (o GetNodeResultOutput) Uptime() pulumi.IntOutput {
 	return o.ApplyT(func(v GetNodeResult) int { return v.Uptime }).(pulumi.IntOutput)
 }

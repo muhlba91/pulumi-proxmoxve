@@ -115,9 +115,10 @@ namespace Pulumi.ProxmoxVE.VM
         public Output<ImmutableArray<Outputs.VirtualMachineHostpci>> Hostpcis { get; private set; } = null!;
 
         /// <summary>
-        /// Selectively enable hotplug features. Supported values
-        /// are `Cpu`, `Disk`, `Memory`, `Network`, and `Usb`. Use `0` to disable all,
-        /// or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+        /// Selectively enable hotplug features. Use `0` to
+        /// disable, `1` to enable all. Valid features: `Disk`, `Network`, `Usb`,
+        /// `Memory`, `Cpu`. Memory hotplug requires NUMA to be enabled. If not set,
+        /// PVE defaults to `network,disk,usb`.
         /// </summary>
         [Output("hotplug")]
         public Output<string> Hotplug { get; private set; } = null!;
@@ -573,9 +574,10 @@ namespace Pulumi.ProxmoxVE.VM
         }
 
         /// <summary>
-        /// Selectively enable hotplug features. Supported values
-        /// are `Cpu`, `Disk`, `Memory`, `Network`, and `Usb`. Use `0` to disable all,
-        /// or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+        /// Selectively enable hotplug features. Use `0` to
+        /// disable, `1` to enable all. Valid features: `Disk`, `Network`, `Usb`,
+        /// `Memory`, `Cpu`. Memory hotplug requires NUMA to be enabled. If not set,
+        /// PVE defaults to `network,disk,usb`.
         /// </summary>
         [Input("hotplug")]
         public Input<string>? Hotplug { get; set; }
@@ -1019,9 +1021,10 @@ namespace Pulumi.ProxmoxVE.VM
         }
 
         /// <summary>
-        /// Selectively enable hotplug features. Supported values
-        /// are `Cpu`, `Disk`, `Memory`, `Network`, and `Usb`. Use `0` to disable all,
-        /// or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+        /// Selectively enable hotplug features. Use `0` to
+        /// disable, `1` to enable all. Valid features: `Disk`, `Network`, `Usb`,
+        /// `Memory`, `Cpu`. Memory hotplug requires NUMA to be enabled. If not set,
+        /// PVE defaults to `network,disk,usb`.
         /// </summary>
         [Input("hotplug")]
         public Input<string>? Hotplug { get; set; }

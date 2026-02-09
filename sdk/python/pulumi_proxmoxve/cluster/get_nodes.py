@@ -62,7 +62,7 @@ class GetNodesResult:
     @pulumi.getter(name="cpuCounts")
     def cpu_counts(self) -> Sequence[_builtins.int]:
         """
-        The CPU count for each node.
+        The total number of logical CPUs on each node
         """
         return pulumi.get(self, "cpu_counts")
 
@@ -70,7 +70,7 @@ class GetNodesResult:
     @pulumi.getter(name="cpuUtilizations")
     def cpu_utilizations(self) -> Sequence[_builtins.float]:
         """
-        The CPU utilization on each node.
+        The CPU utilization on each node
         """
         return pulumi.get(self, "cpu_utilizations")
 
@@ -86,7 +86,7 @@ class GetNodesResult:
     @pulumi.getter(name="memoryAvailables")
     def memory_availables(self) -> Sequence[_builtins.int]:
         """
-        The memory available on each node.
+        The available memory in bytes on each node
         """
         return pulumi.get(self, "memory_availables")
 
@@ -94,7 +94,7 @@ class GetNodesResult:
     @pulumi.getter(name="memoryUseds")
     def memory_useds(self) -> Sequence[_builtins.int]:
         """
-        The memory used on each node.
+        The used memory in bytes on each node
         """
         return pulumi.get(self, "memory_useds")
 
@@ -102,7 +102,7 @@ class GetNodesResult:
     @pulumi.getter
     def names(self) -> Sequence[_builtins.str]:
         """
-        The node names.
+        The node names
         """
         return pulumi.get(self, "names")
 
@@ -110,7 +110,7 @@ class GetNodesResult:
     @pulumi.getter
     def onlines(self) -> Sequence[_builtins.bool]:
         """
-        Whether a node is online.
+        Whether a node is online
         """
         return pulumi.get(self, "onlines")
 
@@ -118,7 +118,7 @@ class GetNodesResult:
     @pulumi.getter(name="sslFingerprints")
     def ssl_fingerprints(self) -> Sequence[_builtins.str]:
         """
-        The SSL fingerprint for each node.
+        The SSL fingerprint for each node
         """
         return pulumi.get(self, "ssl_fingerprints")
 
@@ -126,7 +126,7 @@ class GetNodesResult:
     @pulumi.getter(name="supportLevels")
     def support_levels(self) -> Sequence[_builtins.str]:
         """
-        The support level for each node.
+        The support level for each node
         """
         return pulumi.get(self, "support_levels")
 
@@ -134,7 +134,7 @@ class GetNodesResult:
     @pulumi.getter
     def uptimes(self) -> Sequence[_builtins.int]:
         """
-        The uptime in seconds for each node.
+        The uptime in seconds for each node
         """
         return pulumi.get(self, "uptimes")
 
@@ -159,7 +159,7 @@ class AwaitableGetNodesResult(GetNodesResult):
 
 def get_nodes(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodesResult:
     """
-    Retrieves information about all available nodes.
+    Retrieves information about all available Proxmox VE nodes.
 
     ## Example Usage
 
@@ -167,7 +167,12 @@ def get_nodes(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodesR
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
-    available_nodes = proxmoxve.Cluster.get_nodes()
+    example = proxmoxve.Cluster.get_nodes()
+    pulumi.export("dataProxmoxVirtualEnvironmentNodes", {
+        "names": example.names,
+        "cpuCount": example.cpu_counts,
+        "online": example.onlines,
+    })
     ```
     """
     __args__ = dict()
@@ -187,7 +192,7 @@ def get_nodes(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodesR
         uptimes=pulumi.get(__ret__, 'uptimes'))
 def get_nodes_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodesResult]:
     """
-    Retrieves information about all available nodes.
+    Retrieves information about all available Proxmox VE nodes.
 
     ## Example Usage
 
@@ -195,7 +200,12 @@ def get_nodes_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOut
     import pulumi
     import pulumi_proxmoxve as proxmoxve
 
-    available_nodes = proxmoxve.Cluster.get_nodes()
+    example = proxmoxve.Cluster.get_nodes()
+    pulumi.export("dataProxmoxVirtualEnvironmentNodes", {
+        "names": example.names,
+        "cpuCount": example.cpu_counts,
+        "online": example.onlines,
+    })
     ```
     """
     __args__ = dict()

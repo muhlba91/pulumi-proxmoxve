@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Retrieves information about node.
+ * Retrieves information about a specific Proxmox VE node.
  *
  * ## Example Usage
  *
@@ -13,7 +13,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
- * const node = proxmoxve.getNode({});
+ * const example = proxmoxve.getNode({
+ *     nodeName: "pve",
+ * });
+ * export const dataProxmoxVirtualEnvironmentNode = {
+ *     cpuCores: example.then(example => example.cpuCores),
+ *     cpuCount: example.then(example => example.cpuCount),
+ *     cpuSockets: example.then(example => example.cpuSockets),
+ *     cpuModel: example.then(example => example.cpuModel),
+ *     memoryTotal: example.then(example => example.memoryTotal),
+ *     uptime: example.then(example => example.uptime),
+ * };
  * ```
  */
 export function getNode(args: GetNodeArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeResult> {
@@ -28,7 +38,7 @@ export function getNode(args: GetNodeArgs, opts?: pulumi.InvokeOptions): Promise
  */
 export interface GetNodeArgs {
     /**
-     * The node name.
+     * The node name
      */
     nodeName: string;
 }
@@ -38,15 +48,19 @@ export interface GetNodeArgs {
  */
 export interface GetNodeResult {
     /**
-     * The CPU count on the node.
+     * The total number of physical CPU cores on the node
+     */
+    readonly cpuCores: number;
+    /**
+     * The total number of logical CPUs on the node (sockets * cores * threads)
      */
     readonly cpuCount: number;
     /**
-     * The CPU model on the node.
+     * The CPU model on the node
      */
     readonly cpuModel: string;
     /**
-     * The CPU utilization on the node.
+     * The number of CPU sockets on the node
      */
     readonly cpuSockets: number;
     /**
@@ -54,25 +68,28 @@ export interface GetNodeResult {
      */
     readonly id: string;
     /**
-     * The memory available on the node.
+     * The available memory in bytes on the node
      */
     readonly memoryAvailable: number;
     /**
-     * The total memory on the node.
+     * The total memory in bytes on the node
      */
     readonly memoryTotal: number;
     /**
-     * The memory used on the node.
+     * The used memory in bytes on the node
      */
     readonly memoryUsed: number;
+    /**
+     * The node name
+     */
     readonly nodeName: string;
     /**
-     * The uptime in seconds on the node.
+     * The uptime in seconds on the node
      */
     readonly uptime: number;
 }
 /**
- * Retrieves information about node.
+ * Retrieves information about a specific Proxmox VE node.
  *
  * ## Example Usage
  *
@@ -80,7 +97,17 @@ export interface GetNodeResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
- * const node = proxmoxve.getNode({});
+ * const example = proxmoxve.getNode({
+ *     nodeName: "pve",
+ * });
+ * export const dataProxmoxVirtualEnvironmentNode = {
+ *     cpuCores: example.then(example => example.cpuCores),
+ *     cpuCount: example.then(example => example.cpuCount),
+ *     cpuSockets: example.then(example => example.cpuSockets),
+ *     cpuModel: example.then(example => example.cpuModel),
+ *     memoryTotal: example.then(example => example.memoryTotal),
+ *     uptime: example.then(example => example.uptime),
+ * };
  * ```
  */
 export function getNodeOutput(args: GetNodeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNodeResult> {
@@ -95,7 +122,7 @@ export function getNodeOutput(args: GetNodeOutputArgs, opts?: pulumi.InvokeOutpu
  */
 export interface GetNodeOutputArgs {
     /**
-     * The node name.
+     * The node name
      */
     nodeName: pulumi.Input<string>;
 }

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Retrieves information about all available nodes.
+// Retrieves information about all available Proxmox VE nodes.
 //
 // ## Example Usage
 //
@@ -24,17 +24,21 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cluster.GetNodes(ctx, map[string]interface{}{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// example, err := cluster.GetNodes(ctx, map[string]interface{}{
+// }, nil);
+// if err != nil {
+// return err
+// }
+// ctx.Export("dataProxmoxVirtualEnvironmentNodes", interface{}Map{
+// "names": example.Names,
+// "cpuCount": example.CpuCounts,
+// "online": example.Onlines,
+// })
+// return nil
+// })
+// }
 // ```
 func GetNodes(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetNodesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
@@ -48,25 +52,25 @@ func GetNodes(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetNodesResult
 
 // A collection of values returned by getNodes.
 type GetNodesResult struct {
-	// The CPU count for each node.
+	// The total number of logical CPUs on each node
 	CpuCounts []int `pulumi:"cpuCounts"`
-	// The CPU utilization on each node.
+	// The CPU utilization on each node
 	CpuUtilizations []float64 `pulumi:"cpuUtilizations"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// The memory available on each node.
+	// The available memory in bytes on each node
 	MemoryAvailables []int `pulumi:"memoryAvailables"`
-	// The memory used on each node.
+	// The used memory in bytes on each node
 	MemoryUseds []int `pulumi:"memoryUseds"`
-	// The node names.
+	// The node names
 	Names []string `pulumi:"names"`
-	// Whether a node is online.
+	// Whether a node is online
 	Onlines []bool `pulumi:"onlines"`
-	// The SSL fingerprint for each node.
+	// The SSL fingerprint for each node
 	SslFingerprints []string `pulumi:"sslFingerprints"`
-	// The support level for each node.
+	// The support level for each node
 	SupportLevels []string `pulumi:"supportLevels"`
-	// The uptime in seconds for each node.
+	// The uptime in seconds for each node
 	Uptimes []int `pulumi:"uptimes"`
 }
 
@@ -92,12 +96,12 @@ func (o GetNodesResultOutput) ToGetNodesResultOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The CPU count for each node.
+// The total number of logical CPUs on each node
 func (o GetNodesResultOutput) CpuCounts() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetNodesResult) []int { return v.CpuCounts }).(pulumi.IntArrayOutput)
 }
 
-// The CPU utilization on each node.
+// The CPU utilization on each node
 func (o GetNodesResultOutput) CpuUtilizations() pulumi.Float64ArrayOutput {
 	return o.ApplyT(func(v GetNodesResult) []float64 { return v.CpuUtilizations }).(pulumi.Float64ArrayOutput)
 }
@@ -107,37 +111,37 @@ func (o GetNodesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNodesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The memory available on each node.
+// The available memory in bytes on each node
 func (o GetNodesResultOutput) MemoryAvailables() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetNodesResult) []int { return v.MemoryAvailables }).(pulumi.IntArrayOutput)
 }
 
-// The memory used on each node.
+// The used memory in bytes on each node
 func (o GetNodesResultOutput) MemoryUseds() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetNodesResult) []int { return v.MemoryUseds }).(pulumi.IntArrayOutput)
 }
 
-// The node names.
+// The node names
 func (o GetNodesResultOutput) Names() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNodesResult) []string { return v.Names }).(pulumi.StringArrayOutput)
 }
 
-// Whether a node is online.
+// Whether a node is online
 func (o GetNodesResultOutput) Onlines() pulumi.BoolArrayOutput {
 	return o.ApplyT(func(v GetNodesResult) []bool { return v.Onlines }).(pulumi.BoolArrayOutput)
 }
 
-// The SSL fingerprint for each node.
+// The SSL fingerprint for each node
 func (o GetNodesResultOutput) SslFingerprints() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNodesResult) []string { return v.SslFingerprints }).(pulumi.StringArrayOutput)
 }
 
-// The support level for each node.
+// The support level for each node
 func (o GetNodesResultOutput) SupportLevels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNodesResult) []string { return v.SupportLevels }).(pulumi.StringArrayOutput)
 }
 
-// The uptime in seconds for each node.
+// The uptime in seconds for each node
 func (o GetNodesResultOutput) Uptimes() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v GetNodesResult) []int { return v.Uptimes }).(pulumi.IntArrayOutput)
 }

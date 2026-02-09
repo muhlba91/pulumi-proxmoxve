@@ -15,7 +15,7 @@ import java.util.concurrent.CompletableFuture;
 
 public final class ClusterFunctions {
     /**
-     * Retrieves information about all available nodes.
+     * Retrieves information about all available Proxmox VE nodes.
      * 
      * ## Example Usage
      * 
@@ -41,8 +41,13 @@ public final class ClusterFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableNodes = ClusterFunctions.getNodes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var example = ClusterFunctions.getNodes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentNodes", Map.ofEntries(
+     *             Map.entry("names", example.names()),
+     *             Map.entry("cpuCount", example.cpuCounts()),
+     *             Map.entry("online", example.onlines())
+     *         ));
      *     }
      * }
      * }
@@ -54,7 +59,7 @@ public final class ClusterFunctions {
         return getNodes(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Retrieves information about all available nodes.
+     * Retrieves information about all available Proxmox VE nodes.
      * 
      * ## Example Usage
      * 
@@ -80,8 +85,13 @@ public final class ClusterFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableNodes = ClusterFunctions.getNodes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var example = ClusterFunctions.getNodes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentNodes", Map.ofEntries(
+     *             Map.entry("names", example.names()),
+     *             Map.entry("cpuCount", example.cpuCounts()),
+     *             Map.entry("online", example.onlines())
+     *         ));
      *     }
      * }
      * }
@@ -93,7 +103,7 @@ public final class ClusterFunctions {
         return getNodesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Retrieves information about all available nodes.
+     * Retrieves information about all available Proxmox VE nodes.
      * 
      * ## Example Usage
      * 
@@ -119,8 +129,13 @@ public final class ClusterFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableNodes = ClusterFunctions.getNodes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var example = ClusterFunctions.getNodes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentNodes", Map.ofEntries(
+     *             Map.entry("names", example.names()),
+     *             Map.entry("cpuCount", example.cpuCounts()),
+     *             Map.entry("online", example.onlines())
+     *         ));
      *     }
      * }
      * }
@@ -132,7 +147,7 @@ public final class ClusterFunctions {
         return getNodes(args, InvokeOptions.Empty);
     }
     /**
-     * Retrieves information about all available nodes.
+     * Retrieves information about all available Proxmox VE nodes.
      * 
      * ## Example Usage
      * 
@@ -158,8 +173,13 @@ public final class ClusterFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableNodes = ClusterFunctions.getNodes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var example = ClusterFunctions.getNodes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentNodes", Map.ofEntries(
+     *             Map.entry("names", example.names()),
+     *             Map.entry("cpuCount", example.cpuCounts()),
+     *             Map.entry("online", example.onlines())
+     *         ));
      *     }
      * }
      * }
@@ -171,7 +191,7 @@ public final class ClusterFunctions {
         return getNodesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Retrieves information about all available nodes.
+     * Retrieves information about all available Proxmox VE nodes.
      * 
      * ## Example Usage
      * 
@@ -197,8 +217,13 @@ public final class ClusterFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableNodes = ClusterFunctions.getNodes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var example = ClusterFunctions.getNodes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentNodes", Map.ofEntries(
+     *             Map.entry("names", example.names()),
+     *             Map.entry("cpuCount", example.cpuCounts()),
+     *             Map.entry("online", example.onlines())
+     *         ));
      *     }
      * }
      * }
@@ -210,7 +235,7 @@ public final class ClusterFunctions {
         return Deployment.getInstance().invoke("proxmoxve:Cluster/getNodes:getNodes", TypeShape.of(GetNodesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Retrieves information about all available nodes.
+     * Retrieves information about all available Proxmox VE nodes.
      * 
      * ## Example Usage
      * 
@@ -236,8 +261,13 @@ public final class ClusterFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableNodes = ClusterFunctions.getNodes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var example = ClusterFunctions.getNodes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentNodes", Map.ofEntries(
+     *             Map.entry("names", example.names()),
+     *             Map.entry("cpuCount", example.cpuCounts()),
+     *             Map.entry("online", example.onlines())
+     *         ));
      *     }
      * }
      * }
@@ -249,7 +279,7 @@ public final class ClusterFunctions {
         return Deployment.getInstance().invoke("proxmoxve:Cluster/getNodes:getNodes", TypeShape.of(GetNodesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Retrieves information about all available nodes.
+     * Retrieves information about all available Proxmox VE nodes.
      * 
      * ## Example Usage
      * 
@@ -275,8 +305,13 @@ public final class ClusterFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var availableNodes = ClusterFunctions.getNodes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     *         final var example = ClusterFunctions.getNodes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentNodes", Map.ofEntries(
+     *             Map.entry("names", example.names()),
+     *             Map.entry("cpuCount", example.cpuCounts()),
+     *             Map.entry("online", example.onlines())
+     *         ));
      *     }
      * }
      * }

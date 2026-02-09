@@ -99,9 +99,10 @@ class VirtualMachineArgs:
                to `ovmf`)
         :param pulumi.Input[_builtins.str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]] hostpcis: A host PCI device mapping (multiple blocks supported).
-        :param pulumi.Input[_builtins.str] hotplug: Selectively enable hotplug features. Supported values
-               are `cpu`, `disk`, `memory`, `network`, and `usb`. Use `0` to disable all,
-               or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+        :param pulumi.Input[_builtins.str] hotplug: Selectively enable hotplug features. Use `0` to
+               disable, `1` to enable all. Valid features: `disk`, `network`, `usb`,
+               `memory`, `cpu`. Memory hotplug requires NUMA to be enabled. If not set,
+               PVE defaults to `network,disk,usb`.
         :param pulumi.Input['VirtualMachineInitializationArgs'] initialization: The cloud-init configuration.
         :param pulumi.Input[_builtins.str] keyboard_layout: The keyboard layout (defaults to `en-us`).
         :param pulumi.Input[_builtins.str] kvm_arguments: Arbitrary arguments passed to kvm.
@@ -481,9 +482,10 @@ class VirtualMachineArgs:
     @pulumi.getter
     def hotplug(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Selectively enable hotplug features. Supported values
-        are `cpu`, `disk`, `memory`, `network`, and `usb`. Use `0` to disable all,
-        or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+        Selectively enable hotplug features. Use `0` to
+        disable, `1` to enable all. Valid features: `disk`, `network`, `usb`,
+        `memory`, `cpu`. Memory hotplug requires NUMA to be enabled. If not set,
+        PVE defaults to `network,disk,usb`.
         """
         return pulumi.get(self, "hotplug")
 
@@ -1087,9 +1089,10 @@ class _VirtualMachineState:
                to `ovmf`)
         :param pulumi.Input[_builtins.str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
         :param pulumi.Input[Sequence[pulumi.Input['VirtualMachineHostpciArgs']]] hostpcis: A host PCI device mapping (multiple blocks supported).
-        :param pulumi.Input[_builtins.str] hotplug: Selectively enable hotplug features. Supported values
-               are `cpu`, `disk`, `memory`, `network`, and `usb`. Use `0` to disable all,
-               or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+        :param pulumi.Input[_builtins.str] hotplug: Selectively enable hotplug features. Use `0` to
+               disable, `1` to enable all. Valid features: `disk`, `network`, `usb`,
+               `memory`, `cpu`. Memory hotplug requires NUMA to be enabled. If not set,
+               PVE defaults to `network,disk,usb`.
         :param pulumi.Input['VirtualMachineInitializationArgs'] initialization: The cloud-init configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] ipv4_addresses: The IPv4 addresses per network interface published by the
                QEMU agent (empty list when `agent.enabled` is `false`)
@@ -1471,9 +1474,10 @@ class _VirtualMachineState:
     @pulumi.getter
     def hotplug(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Selectively enable hotplug features. Supported values
-        are `cpu`, `disk`, `memory`, `network`, and `usb`. Use `0` to disable all,
-        or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+        Selectively enable hotplug features. Use `0` to
+        disable, `1` to enable all. Valid features: `disk`, `network`, `usb`,
+        `memory`, `cpu`. Memory hotplug requires NUMA to be enabled. If not set,
+        PVE defaults to `network,disk,usb`.
         """
         return pulumi.get(self, "hotplug")
 
@@ -2141,9 +2145,10 @@ class VirtualMachine(pulumi.CustomResource):
                to `ovmf`)
         :param pulumi.Input[_builtins.str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
         :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineHostpciArgs', 'VirtualMachineHostpciArgsDict']]]] hostpcis: A host PCI device mapping (multiple blocks supported).
-        :param pulumi.Input[_builtins.str] hotplug: Selectively enable hotplug features. Supported values
-               are `cpu`, `disk`, `memory`, `network`, and `usb`. Use `0` to disable all,
-               or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+        :param pulumi.Input[_builtins.str] hotplug: Selectively enable hotplug features. Use `0` to
+               disable, `1` to enable all. Valid features: `disk`, `network`, `usb`,
+               `memory`, `cpu`. Memory hotplug requires NUMA to be enabled. If not set,
+               PVE defaults to `network,disk,usb`.
         :param pulumi.Input[Union['VirtualMachineInitializationArgs', 'VirtualMachineInitializationArgsDict']] initialization: The cloud-init configuration.
         :param pulumi.Input[_builtins.str] keyboard_layout: The keyboard layout (defaults to `en-us`).
         :param pulumi.Input[_builtins.str] kvm_arguments: Arbitrary arguments passed to kvm.
@@ -2464,9 +2469,10 @@ class VirtualMachine(pulumi.CustomResource):
                to `ovmf`)
         :param pulumi.Input[_builtins.str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
         :param pulumi.Input[Sequence[pulumi.Input[Union['VirtualMachineHostpciArgs', 'VirtualMachineHostpciArgsDict']]]] hostpcis: A host PCI device mapping (multiple blocks supported).
-        :param pulumi.Input[_builtins.str] hotplug: Selectively enable hotplug features. Supported values
-               are `cpu`, `disk`, `memory`, `network`, and `usb`. Use `0` to disable all,
-               or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+        :param pulumi.Input[_builtins.str] hotplug: Selectively enable hotplug features. Use `0` to
+               disable, `1` to enable all. Valid features: `disk`, `network`, `usb`,
+               `memory`, `cpu`. Memory hotplug requires NUMA to be enabled. If not set,
+               PVE defaults to `network,disk,usb`.
         :param pulumi.Input[Union['VirtualMachineInitializationArgs', 'VirtualMachineInitializationArgsDict']] initialization: The cloud-init configuration.
         :param pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] ipv4_addresses: The IPv4 addresses per network interface published by the
                QEMU agent (empty list when `agent.enabled` is `false`)
@@ -2729,9 +2735,10 @@ class VirtualMachine(pulumi.CustomResource):
     @pulumi.getter
     def hotplug(self) -> pulumi.Output[_builtins.str]:
         """
-        Selectively enable hotplug features. Supported values
-        are `cpu`, `disk`, `memory`, `network`, and `usb`. Use `0` to disable all,
-        or `1` to enable all. If not set, PVE defaults to `network,disk,usb`.
+        Selectively enable hotplug features. Use `0` to
+        disable, `1` to enable all. Valid features: `disk`, `network`, `usb`,
+        `memory`, `cpu`. Memory hotplug requires NUMA to be enabled. If not set,
+        PVE defaults to `network,disk,usb`.
         """
         return pulumi.get(self, "hotplug")
 
