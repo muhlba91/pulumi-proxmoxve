@@ -1,6 +1,19 @@
 # Changelog
 
 
+## [7.13.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.12.0...v7.13.0) (2026-02-10)
+
+
+### Features
+
+* prepare for upstream v0.95.0 ([b5f8c27](https://github.com/muhlba91/pulumi-proxmoxve/commit/b5f8c27ce8fba60feaa4c4c37dceb8f088b159e0))
+* upgrade to upstream v0.95.0 ([34f32d5](https://github.com/muhlba91/pulumi-proxmoxve/commit/34f32d51db7168f411225e835604bb550393e587))
+
+
+### Miscellaneous Chores
+
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.95.0 ([5256e83](https://github.com/muhlba91/pulumi-proxmoxve/commit/5256e8355597ba4c936abd716a115fdbfe747adf))
+
 ## [7.12.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.11.0...v7.12.0) (2026-02-07)
 
 
