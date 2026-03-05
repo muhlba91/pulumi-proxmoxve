@@ -129,7 +129,7 @@ jobs:
           repo: pulumi/pulumictl
       - uses: pulumi/actions@8582a9e8cc630786854029b4e09281acd6794b58 # v6.6.1
 
-      - uses: actions/setup-dotnet@baa11fbfe1d6520db94683bd5c7a3818018e4309 # v5.1.0
+      - uses: actions/setup-dotnet@c2fa09f4bde5ebb9d1777cf28262a3eb3db3ced7 # v5.2.0
         with:
           dotnet-version: "${{ matrix.dotnet-version }}"
         if: matrix.language == 'dotnet'
