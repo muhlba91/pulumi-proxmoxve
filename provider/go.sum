@@ -1524,6 +1524,8 @@ github.com/bpg/terraform-provider-proxmox v0.97.0 h1:oCCj3oNi6oSDBu+mHDbsUqwsJUU
 github.com/bpg/terraform-provider-proxmox v0.97.0/go.mod h1:ggjKzDvvxsJ7SVQgpg6P8t1cuVkL1jrbzsa666dmWCk=
 github.com/bpg/terraform-provider-proxmox v0.97.1 h1:VBY+cEqKLrH4oYL9LGbdHjtI7gezINAKRS6TVMcsNtQ=
 github.com/bpg/terraform-provider-proxmox v0.97.1/go.mod h1:3xwvO/FpiMEZm3XqGYAz6W096BzagpjEekCW3Htoogk=
+github.com/bpg/terraform-provider-proxmox v0.98.0 h1:/hA0ozAvnd9Jr35vGN1aOahNviD1kv5z615uFGtFyZA=
+github.com/bpg/terraform-provider-proxmox v0.98.0/go.mod h1:vVh8FF2qOrKQ+Xx5iBpt2W9myjkYUtNZ9sArFuQp3LY=
 github.com/brianvoe/gofakeit/v7 v7.14.0 h1:R8tmT/rTDJmD2ngpqBL9rAKydiL7Qr2u3CXPqRt59pk=
 github.com/brianvoe/gofakeit/v7 v7.14.0/go.mod h1:QXuPeBw164PJCzCUZVmgpgHJ3Llj49jSLVkKPMtxtxA=
 github.com/bufbuild/protocompile v0.14.1 h1:iA73zAf/fyljNjQKwYzUHD6AD4R8KMasmwa/FBatYVw=
