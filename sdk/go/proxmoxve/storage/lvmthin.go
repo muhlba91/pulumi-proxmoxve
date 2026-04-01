@@ -8,56 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Manages thin LVM-based storage in Proxmox VE.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/storage"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.NewLVMThin(ctx, "example", &storage.LVMThinArgs{
-//				LvmThinId: pulumi.String("example-lvmthin"),
-//				Nodes: pulumi.StringArray{
-//					pulumi.String("pve"),
-//				},
-//				VolumeGroup: pulumi.String("vg0"),
-//				ThinPool:    pulumi.String("data"),
-//				Contents: pulumi.StringArray{
-//					pulumi.String("images"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-type LVMThin struct {
+type Lvmthin struct {
 	pulumi.CustomResourceState
 
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents pulumi.StringArrayOutput `pulumi:"contents"`
 	// Whether the storage is disabled.
 	Disable pulumi.BoolOutput `pulumi:"disable"`
-	// The unique identifier of the storage.
-	LvmThinId pulumi.StringOutput `pulumi:"lvmThinId"`
 	// A list of nodes where this storage is available.
 	Nodes pulumi.StringArrayOutput `pulumi:"nodes"`
+	// The unique identifier of the storage.
+	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
 	// Whether the storage is shared across all nodes.
 	Shared pulumi.BoolOutput `pulumi:"shared"`
 	// The name of the LVM thin pool to use.
@@ -66,15 +32,15 @@ type LVMThin struct {
 	VolumeGroup pulumi.StringOutput `pulumi:"volumeGroup"`
 }
 
-// NewLVMThin registers a new resource with the given unique name, arguments, and options.
-func NewLVMThin(ctx *pulumi.Context,
-	name string, args *LVMThinArgs, opts ...pulumi.ResourceOption) (*LVMThin, error) {
+// NewLvmthin registers a new resource with the given unique name, arguments, and options.
+func NewLvmthin(ctx *pulumi.Context,
+	name string, args *LvmthinArgs, opts ...pulumi.ResourceOption) (*Lvmthin, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LvmThinId == nil {
-		return nil, errors.New("invalid value for required argument 'LvmThinId'")
+	if args.ResourceId == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceId'")
 	}
 	if args.ThinPool == nil {
 		return nil, errors.New("invalid value for required argument 'ThinPool'")
@@ -82,37 +48,43 @@ func NewLVMThin(ctx *pulumi.Context,
 	if args.VolumeGroup == nil {
 		return nil, errors.New("invalid value for required argument 'VolumeGroup'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("proxmox_virtual_environment_storage_lvmthin"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource LVMThin
-	err := ctx.RegisterResource("proxmoxve:Storage/lVMThin:LVMThin", name, args, &resource, opts...)
+	var resource Lvmthin
+	err := ctx.RegisterResource("proxmoxve:storage/lvmthin:Lvmthin", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetLVMThin gets an existing LVMThin resource's state with the given name, ID, and optional
+// GetLvmthin gets an existing Lvmthin resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetLVMThin(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *LVMThinState, opts ...pulumi.ResourceOption) (*LVMThin, error) {
-	var resource LVMThin
-	err := ctx.ReadResource("proxmoxve:Storage/lVMThin:LVMThin", name, id, state, &resource, opts...)
+func GetLvmthin(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *LvmthinState, opts ...pulumi.ResourceOption) (*Lvmthin, error) {
+	var resource Lvmthin
+	err := ctx.ReadResource("proxmoxve:storage/lvmthin:Lvmthin", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering LVMThin resources.
+// Input properties used for looking up and filtering Lvmthin resources.
 type lvmthinState struct {
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents []string `pulumi:"contents"`
 	// Whether the storage is disabled.
 	Disable *bool `pulumi:"disable"`
-	// The unique identifier of the storage.
-	LvmThinId *string `pulumi:"lvmThinId"`
 	// A list of nodes where this storage is available.
 	Nodes []string `pulumi:"nodes"`
+	// The unique identifier of the storage.
+	ResourceId *string `pulumi:"resourceId"`
 	// Whether the storage is shared across all nodes.
 	Shared *bool `pulumi:"shared"`
 	// The name of the LVM thin pool to use.
@@ -121,15 +93,15 @@ type lvmthinState struct {
 	VolumeGroup *string `pulumi:"volumeGroup"`
 }
 
-type LVMThinState struct {
+type LvmthinState struct {
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents pulumi.StringArrayInput
 	// Whether the storage is disabled.
 	Disable pulumi.BoolPtrInput
-	// The unique identifier of the storage.
-	LvmThinId pulumi.StringPtrInput
 	// A list of nodes where this storage is available.
 	Nodes pulumi.StringArrayInput
+	// The unique identifier of the storage.
+	ResourceId pulumi.StringPtrInput
 	// Whether the storage is shared across all nodes.
 	Shared pulumi.BoolPtrInput
 	// The name of the LVM thin pool to use.
@@ -138,7 +110,7 @@ type LVMThinState struct {
 	VolumeGroup pulumi.StringPtrInput
 }
 
-func (LVMThinState) ElementType() reflect.Type {
+func (LvmthinState) ElementType() reflect.Type {
 	return reflect.TypeOf((*lvmthinState)(nil)).Elem()
 }
 
@@ -147,199 +119,199 @@ type lvmthinArgs struct {
 	Contents []string `pulumi:"contents"`
 	// Whether the storage is disabled.
 	Disable *bool `pulumi:"disable"`
-	// The unique identifier of the storage.
-	LvmThinId string `pulumi:"lvmThinId"`
 	// A list of nodes where this storage is available.
 	Nodes []string `pulumi:"nodes"`
+	// The unique identifier of the storage.
+	ResourceId string `pulumi:"resourceId"`
 	// The name of the LVM thin pool to use.
 	ThinPool string `pulumi:"thinPool"`
 	// The name of the volume group to use.
 	VolumeGroup string `pulumi:"volumeGroup"`
 }
 
-// The set of arguments for constructing a LVMThin resource.
-type LVMThinArgs struct {
+// The set of arguments for constructing a Lvmthin resource.
+type LvmthinArgs struct {
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents pulumi.StringArrayInput
 	// Whether the storage is disabled.
 	Disable pulumi.BoolPtrInput
-	// The unique identifier of the storage.
-	LvmThinId pulumi.StringInput
 	// A list of nodes where this storage is available.
 	Nodes pulumi.StringArrayInput
+	// The unique identifier of the storage.
+	ResourceId pulumi.StringInput
 	// The name of the LVM thin pool to use.
 	ThinPool pulumi.StringInput
 	// The name of the volume group to use.
 	VolumeGroup pulumi.StringInput
 }
 
-func (LVMThinArgs) ElementType() reflect.Type {
+func (LvmthinArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*lvmthinArgs)(nil)).Elem()
 }
 
-type LVMThinInput interface {
+type LvmthinInput interface {
 	pulumi.Input
 
-	ToLVMThinOutput() LVMThinOutput
-	ToLVMThinOutputWithContext(ctx context.Context) LVMThinOutput
+	ToLvmthinOutput() LvmthinOutput
+	ToLvmthinOutputWithContext(ctx context.Context) LvmthinOutput
 }
 
-func (*LVMThin) ElementType() reflect.Type {
-	return reflect.TypeOf((**LVMThin)(nil)).Elem()
+func (*Lvmthin) ElementType() reflect.Type {
+	return reflect.TypeOf((**Lvmthin)(nil)).Elem()
 }
 
-func (i *LVMThin) ToLVMThinOutput() LVMThinOutput {
-	return i.ToLVMThinOutputWithContext(context.Background())
+func (i *Lvmthin) ToLvmthinOutput() LvmthinOutput {
+	return i.ToLvmthinOutputWithContext(context.Background())
 }
 
-func (i *LVMThin) ToLVMThinOutputWithContext(ctx context.Context) LVMThinOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LVMThinOutput)
+func (i *Lvmthin) ToLvmthinOutputWithContext(ctx context.Context) LvmthinOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LvmthinOutput)
 }
 
-// LVMThinArrayInput is an input type that accepts LVMThinArray and LVMThinArrayOutput values.
-// You can construct a concrete instance of `LVMThinArrayInput` via:
+// LvmthinArrayInput is an input type that accepts LvmthinArray and LvmthinArrayOutput values.
+// You can construct a concrete instance of `LvmthinArrayInput` via:
 //
-//	LVMThinArray{ LVMThinArgs{...} }
-type LVMThinArrayInput interface {
+//	LvmthinArray{ LvmthinArgs{...} }
+type LvmthinArrayInput interface {
 	pulumi.Input
 
-	ToLVMThinArrayOutput() LVMThinArrayOutput
-	ToLVMThinArrayOutputWithContext(context.Context) LVMThinArrayOutput
+	ToLvmthinArrayOutput() LvmthinArrayOutput
+	ToLvmthinArrayOutputWithContext(context.Context) LvmthinArrayOutput
 }
 
-type LVMThinArray []LVMThinInput
+type LvmthinArray []LvmthinInput
 
-func (LVMThinArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*LVMThin)(nil)).Elem()
+func (LvmthinArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*Lvmthin)(nil)).Elem()
 }
 
-func (i LVMThinArray) ToLVMThinArrayOutput() LVMThinArrayOutput {
-	return i.ToLVMThinArrayOutputWithContext(context.Background())
+func (i LvmthinArray) ToLvmthinArrayOutput() LvmthinArrayOutput {
+	return i.ToLvmthinArrayOutputWithContext(context.Background())
 }
 
-func (i LVMThinArray) ToLVMThinArrayOutputWithContext(ctx context.Context) LVMThinArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LVMThinArrayOutput)
+func (i LvmthinArray) ToLvmthinArrayOutputWithContext(ctx context.Context) LvmthinArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LvmthinArrayOutput)
 }
 
-// LVMThinMapInput is an input type that accepts LVMThinMap and LVMThinMapOutput values.
-// You can construct a concrete instance of `LVMThinMapInput` via:
+// LvmthinMapInput is an input type that accepts LvmthinMap and LvmthinMapOutput values.
+// You can construct a concrete instance of `LvmthinMapInput` via:
 //
-//	LVMThinMap{ "key": LVMThinArgs{...} }
-type LVMThinMapInput interface {
+//	LvmthinMap{ "key": LvmthinArgs{...} }
+type LvmthinMapInput interface {
 	pulumi.Input
 
-	ToLVMThinMapOutput() LVMThinMapOutput
-	ToLVMThinMapOutputWithContext(context.Context) LVMThinMapOutput
+	ToLvmthinMapOutput() LvmthinMapOutput
+	ToLvmthinMapOutputWithContext(context.Context) LvmthinMapOutput
 }
 
-type LVMThinMap map[string]LVMThinInput
+type LvmthinMap map[string]LvmthinInput
 
-func (LVMThinMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*LVMThin)(nil)).Elem()
+func (LvmthinMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*Lvmthin)(nil)).Elem()
 }
 
-func (i LVMThinMap) ToLVMThinMapOutput() LVMThinMapOutput {
-	return i.ToLVMThinMapOutputWithContext(context.Background())
+func (i LvmthinMap) ToLvmthinMapOutput() LvmthinMapOutput {
+	return i.ToLvmthinMapOutputWithContext(context.Background())
 }
 
-func (i LVMThinMap) ToLVMThinMapOutputWithContext(ctx context.Context) LVMThinMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LVMThinMapOutput)
+func (i LvmthinMap) ToLvmthinMapOutputWithContext(ctx context.Context) LvmthinMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LvmthinMapOutput)
 }
 
-type LVMThinOutput struct{ *pulumi.OutputState }
+type LvmthinOutput struct{ *pulumi.OutputState }
 
-func (LVMThinOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LVMThin)(nil)).Elem()
+func (LvmthinOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Lvmthin)(nil)).Elem()
 }
 
-func (o LVMThinOutput) ToLVMThinOutput() LVMThinOutput {
+func (o LvmthinOutput) ToLvmthinOutput() LvmthinOutput {
 	return o
 }
 
-func (o LVMThinOutput) ToLVMThinOutputWithContext(ctx context.Context) LVMThinOutput {
+func (o LvmthinOutput) ToLvmthinOutputWithContext(ctx context.Context) LvmthinOutput {
 	return o
 }
 
 // The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
-func (o LVMThinOutput) Contents() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *LVMThin) pulumi.StringArrayOutput { return v.Contents }).(pulumi.StringArrayOutput)
+func (o LvmthinOutput) Contents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Lvmthin) pulumi.StringArrayOutput { return v.Contents }).(pulumi.StringArrayOutput)
 }
 
 // Whether the storage is disabled.
-func (o LVMThinOutput) Disable() pulumi.BoolOutput {
-	return o.ApplyT(func(v *LVMThin) pulumi.BoolOutput { return v.Disable }).(pulumi.BoolOutput)
-}
-
-// The unique identifier of the storage.
-func (o LVMThinOutput) LvmThinId() pulumi.StringOutput {
-	return o.ApplyT(func(v *LVMThin) pulumi.StringOutput { return v.LvmThinId }).(pulumi.StringOutput)
+func (o LvmthinOutput) Disable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Lvmthin) pulumi.BoolOutput { return v.Disable }).(pulumi.BoolOutput)
 }
 
 // A list of nodes where this storage is available.
-func (o LVMThinOutput) Nodes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *LVMThin) pulumi.StringArrayOutput { return v.Nodes }).(pulumi.StringArrayOutput)
+func (o LvmthinOutput) Nodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Lvmthin) pulumi.StringArrayOutput { return v.Nodes }).(pulumi.StringArrayOutput)
+}
+
+// The unique identifier of the storage.
+func (o LvmthinOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Lvmthin) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
 }
 
 // Whether the storage is shared across all nodes.
-func (o LVMThinOutput) Shared() pulumi.BoolOutput {
-	return o.ApplyT(func(v *LVMThin) pulumi.BoolOutput { return v.Shared }).(pulumi.BoolOutput)
+func (o LvmthinOutput) Shared() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Lvmthin) pulumi.BoolOutput { return v.Shared }).(pulumi.BoolOutput)
 }
 
 // The name of the LVM thin pool to use.
-func (o LVMThinOutput) ThinPool() pulumi.StringOutput {
-	return o.ApplyT(func(v *LVMThin) pulumi.StringOutput { return v.ThinPool }).(pulumi.StringOutput)
+func (o LvmthinOutput) ThinPool() pulumi.StringOutput {
+	return o.ApplyT(func(v *Lvmthin) pulumi.StringOutput { return v.ThinPool }).(pulumi.StringOutput)
 }
 
 // The name of the volume group to use.
-func (o LVMThinOutput) VolumeGroup() pulumi.StringOutput {
-	return o.ApplyT(func(v *LVMThin) pulumi.StringOutput { return v.VolumeGroup }).(pulumi.StringOutput)
+func (o LvmthinOutput) VolumeGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v *Lvmthin) pulumi.StringOutput { return v.VolumeGroup }).(pulumi.StringOutput)
 }
 
-type LVMThinArrayOutput struct{ *pulumi.OutputState }
+type LvmthinArrayOutput struct{ *pulumi.OutputState }
 
-func (LVMThinArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*LVMThin)(nil)).Elem()
+func (LvmthinArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*Lvmthin)(nil)).Elem()
 }
 
-func (o LVMThinArrayOutput) ToLVMThinArrayOutput() LVMThinArrayOutput {
+func (o LvmthinArrayOutput) ToLvmthinArrayOutput() LvmthinArrayOutput {
 	return o
 }
 
-func (o LVMThinArrayOutput) ToLVMThinArrayOutputWithContext(ctx context.Context) LVMThinArrayOutput {
+func (o LvmthinArrayOutput) ToLvmthinArrayOutputWithContext(ctx context.Context) LvmthinArrayOutput {
 	return o
 }
 
-func (o LVMThinArrayOutput) Index(i pulumi.IntInput) LVMThinOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LVMThin {
-		return vs[0].([]*LVMThin)[vs[1].(int)]
-	}).(LVMThinOutput)
+func (o LvmthinArrayOutput) Index(i pulumi.IntInput) LvmthinOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Lvmthin {
+		return vs[0].([]*Lvmthin)[vs[1].(int)]
+	}).(LvmthinOutput)
 }
 
-type LVMThinMapOutput struct{ *pulumi.OutputState }
+type LvmthinMapOutput struct{ *pulumi.OutputState }
 
-func (LVMThinMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*LVMThin)(nil)).Elem()
+func (LvmthinMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*Lvmthin)(nil)).Elem()
 }
 
-func (o LVMThinMapOutput) ToLVMThinMapOutput() LVMThinMapOutput {
+func (o LvmthinMapOutput) ToLvmthinMapOutput() LvmthinMapOutput {
 	return o
 }
 
-func (o LVMThinMapOutput) ToLVMThinMapOutputWithContext(ctx context.Context) LVMThinMapOutput {
+func (o LvmthinMapOutput) ToLvmthinMapOutputWithContext(ctx context.Context) LvmthinMapOutput {
 	return o
 }
 
-func (o LVMThinMapOutput) MapIndex(k pulumi.StringInput) LVMThinOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *LVMThin {
-		return vs[0].(map[string]*LVMThin)[vs[1].(string)]
-	}).(LVMThinOutput)
+func (o LvmthinMapOutput) MapIndex(k pulumi.StringInput) LvmthinOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Lvmthin {
+		return vs[0].(map[string]*Lvmthin)[vs[1].(string)]
+	}).(LvmthinOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*LVMThinInput)(nil)).Elem(), &LVMThin{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LVMThinArrayInput)(nil)).Elem(), LVMThinArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LVMThinMapInput)(nil)).Elem(), LVMThinMap{})
-	pulumi.RegisterOutputType(LVMThinOutput{})
-	pulumi.RegisterOutputType(LVMThinArrayOutput{})
-	pulumi.RegisterOutputType(LVMThinMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LvmthinInput)(nil)).Elem(), &Lvmthin{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LvmthinArrayInput)(nil)).Elem(), LvmthinArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LvmthinMapInput)(nil)).Elem(), LvmthinMap{})
+	pulumi.RegisterOutputType(LvmthinOutput{})
+	pulumi.RegisterOutputType(LvmthinArrayOutput{})
+	pulumi.RegisterOutputType(LvmthinMapOutput{})
 }

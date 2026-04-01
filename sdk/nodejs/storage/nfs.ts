@@ -8,36 +8,10 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an NFS-based storage in Proxmox VE.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const example = new proxmoxve.storage.NFS("example", {
- *     nfsId: "example-nfs",
- *     nodes: ["pve"],
- *     server: "10.0.0.10",
- *     "export": "/exports/proxmox",
- *     contents: [
- *         "images",
- *         "iso",
- *         "backup",
- *     ],
- *     options: "vers=4.2",
- *     preallocation: "metadata",
- *     snapshotAsVolumeChain: true,
- *     backups: {
- *         maxProtectedBackups: 5,
- *         keepDaily: 7,
- *     },
- * });
- * ```
  */
-export class NFS extends pulumi.CustomResource {
+export class Nfs extends pulumi.CustomResource {
     /**
-     * Get an existing NFS resource's state with the given name, ID, and optional extra
+     * Get an existing Nfs resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -45,28 +19,28 @@ export class NFS extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: NFSState, opts?: pulumi.CustomResourceOptions): NFS {
-        return new NFS(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: NfsState, opts?: pulumi.CustomResourceOptions): Nfs {
+        return new Nfs(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'proxmoxve:Storage/nFS:NFS';
+    public static readonly __pulumiType = 'proxmoxve:storage/nfs:Nfs';
 
     /**
-     * Returns true if the given object is an instance of NFS.  This is designed to work even
+     * Returns true if the given object is an instance of Nfs.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is NFS {
+    public static isInstance(obj: any): obj is Nfs {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === NFS.__pulumiType;
+        return obj['__pulumiType'] === Nfs.__pulumiType;
     }
 
     /**
      * Configure backup retention settings for the storage type.
      */
-    declare public readonly backups: pulumi.Output<outputs.Storage.NFSBackups | undefined>;
+    declare public readonly backups: pulumi.Output<outputs.storage.NfsBackups | undefined>;
     /**
      * The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
      */
@@ -80,10 +54,6 @@ export class NFS extends pulumi.CustomResource {
      */
     declare public readonly export: pulumi.Output<string>;
     /**
-     * The unique identifier of the storage.
-     */
-    declare public readonly nfsId: pulumi.Output<string>;
-    /**
      * A list of nodes where this storage is available.
      */
     declare public readonly nodes: pulumi.Output<string[]>;
@@ -95,6 +65,10 @@ export class NFS extends pulumi.CustomResource {
      * The preallocation mode for raw and qcow2 images.
      */
     declare public readonly preallocation: pulumi.Output<string | undefined>;
+    /**
+     * The unique identifier of the storage.
+     */
+    declare public readonly resourceId: pulumi.Output<string>;
     /**
      * The IP address or DNS name of the NFS server.
      */
@@ -109,36 +83,36 @@ export class NFS extends pulumi.CustomResource {
     declare public readonly snapshotAsVolumeChain: pulumi.Output<boolean | undefined>;
 
     /**
-     * Create a NFS resource with the given unique name, arguments, and options.
+     * Create a Nfs resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: NFSArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: NFSArgs | NFSState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: NfsArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: NfsArgs | NfsState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as NFSState | undefined;
+            const state = argsOrState as NfsState | undefined;
             resourceInputs["backups"] = state?.backups;
             resourceInputs["contents"] = state?.contents;
             resourceInputs["disable"] = state?.disable;
             resourceInputs["export"] = state?.export;
-            resourceInputs["nfsId"] = state?.nfsId;
             resourceInputs["nodes"] = state?.nodes;
             resourceInputs["options"] = state?.options;
             resourceInputs["preallocation"] = state?.preallocation;
+            resourceInputs["resourceId"] = state?.resourceId;
             resourceInputs["server"] = state?.server;
             resourceInputs["shared"] = state?.shared;
             resourceInputs["snapshotAsVolumeChain"] = state?.snapshotAsVolumeChain;
         } else {
-            const args = argsOrState as NFSArgs | undefined;
+            const args = argsOrState as NfsArgs | undefined;
             if (args?.export === undefined && !opts.urn) {
                 throw new Error("Missing required property 'export'");
             }
-            if (args?.nfsId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'nfsId'");
+            if (args?.resourceId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'resourceId'");
             }
             if (args?.server === undefined && !opts.urn) {
                 throw new Error("Missing required property 'server'");
@@ -147,27 +121,29 @@ export class NFS extends pulumi.CustomResource {
             resourceInputs["contents"] = args?.contents;
             resourceInputs["disable"] = args?.disable;
             resourceInputs["export"] = args?.export;
-            resourceInputs["nfsId"] = args?.nfsId;
             resourceInputs["nodes"] = args?.nodes;
             resourceInputs["options"] = args?.options;
             resourceInputs["preallocation"] = args?.preallocation;
+            resourceInputs["resourceId"] = args?.resourceId;
             resourceInputs["server"] = args?.server;
             resourceInputs["snapshotAsVolumeChain"] = args?.snapshotAsVolumeChain;
             resourceInputs["shared"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(NFS.__pulumiType, name, resourceInputs, opts);
+        const aliasOpts = { aliases: [{ type: "proxmox_virtual_environment_storage_nfs" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
+        super(Nfs.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering NFS resources.
+ * Input properties used for looking up and filtering Nfs resources.
  */
-export interface NFSState {
+export interface NfsState {
     /**
      * Configure backup retention settings for the storage type.
      */
-    backups?: pulumi.Input<inputs.Storage.NFSBackups>;
+    backups?: pulumi.Input<inputs.storage.NfsBackups>;
     /**
      * The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
      */
@@ -181,10 +157,6 @@ export interface NFSState {
      */
     export?: pulumi.Input<string>;
     /**
-     * The unique identifier of the storage.
-     */
-    nfsId?: pulumi.Input<string>;
-    /**
      * A list of nodes where this storage is available.
      */
     nodes?: pulumi.Input<pulumi.Input<string>[]>;
@@ -196,6 +168,10 @@ export interface NFSState {
      * The preallocation mode for raw and qcow2 images.
      */
     preallocation?: pulumi.Input<string>;
+    /**
+     * The unique identifier of the storage.
+     */
+    resourceId?: pulumi.Input<string>;
     /**
      * The IP address or DNS name of the NFS server.
      */
@@ -211,13 +187,13 @@ export interface NFSState {
 }
 
 /**
- * The set of arguments for constructing a NFS resource.
+ * The set of arguments for constructing a Nfs resource.
  */
-export interface NFSArgs {
+export interface NfsArgs {
     /**
      * Configure backup retention settings for the storage type.
      */
-    backups?: pulumi.Input<inputs.Storage.NFSBackups>;
+    backups?: pulumi.Input<inputs.storage.NfsBackups>;
     /**
      * The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
      */
@@ -231,10 +207,6 @@ export interface NFSArgs {
      */
     export: pulumi.Input<string>;
     /**
-     * The unique identifier of the storage.
-     */
-    nfsId: pulumi.Input<string>;
-    /**
      * A list of nodes where this storage is available.
      */
     nodes?: pulumi.Input<pulumi.Input<string>[]>;
@@ -246,6 +218,10 @@ export interface NFSArgs {
      * The preallocation mode for raw and qcow2 images.
      */
     preallocation?: pulumi.Input<string>;
+    /**
+     * The unique identifier of the storage.
+     */
+    resourceId: pulumi.Input<string>;
     /**
      * The IP address or DNS name of the NFS server.
      */

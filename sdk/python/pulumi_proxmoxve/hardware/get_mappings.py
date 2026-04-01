@@ -104,22 +104,6 @@ def get_mappings(check_node: Optional[_builtins.str] = None,
     """
     Retrieves a list of hardware mapping resources.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    example_dir = proxmoxve.Hardware.get_mappings(check_node="pve",
-        type="dir")
-    example_pci = proxmoxve.Hardware.get_mappings(check_node="pve",
-        type="pci")
-    example_usb = proxmoxve.Hardware.get_mappings(check_node="pve",
-        type="usb")
-    pulumi.export("dataProxmoxVirtualEnvironmentHardwareMappingsPci", example_pci)
-    pulumi.export("dataProxmoxVirtualEnvironmentHardwareMappingsUsb", example_usb)
-    ```
-
 
     :param _builtins.str check_node: The name of the node whose configurations should be checked for correctness.
     :param _builtins.str type: The type of the hardware mappings.
@@ -128,7 +112,7 @@ def get_mappings(check_node: Optional[_builtins.str] = None,
     __args__['checkNode'] = check_node
     __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('proxmoxve:Hardware/getMappings:getMappings', __args__, opts=opts, typ=GetMappingsResult).value
+    __ret__ = pulumi.runtime.invoke('proxmoxve:hardware/getMappings:getMappings', __args__, opts=opts, typ=GetMappingsResult).value
 
     return AwaitableGetMappingsResult(
         check_node=pulumi.get(__ret__, 'check_node'),
@@ -142,22 +126,6 @@ def get_mappings_output(check_node: Optional[pulumi.Input[Optional[_builtins.str
     """
     Retrieves a list of hardware mapping resources.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    example_dir = proxmoxve.Hardware.get_mappings(check_node="pve",
-        type="dir")
-    example_pci = proxmoxve.Hardware.get_mappings(check_node="pve",
-        type="pci")
-    example_usb = proxmoxve.Hardware.get_mappings(check_node="pve",
-        type="usb")
-    pulumi.export("dataProxmoxVirtualEnvironmentHardwareMappingsPci", example_pci)
-    pulumi.export("dataProxmoxVirtualEnvironmentHardwareMappingsUsb", example_usb)
-    ```
-
 
     :param _builtins.str check_node: The name of the node whose configurations should be checked for correctness.
     :param _builtins.str type: The type of the hardware mappings.
@@ -166,7 +134,7 @@ def get_mappings_output(check_node: Optional[pulumi.Input[Optional[_builtins.str
     __args__['checkNode'] = check_node
     __args__['type'] = type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Hardware/getMappings:getMappings', __args__, opts=opts, typ=GetMappingsResult)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:hardware/getMappings:getMappings', __args__, opts=opts, typ=GetMappingsResult)
     return __ret__.apply(lambda __response__: GetMappingsResult(
         check_node=pulumi.get(__response__, 'check_node'),
         checks=pulumi.get(__response__, 'checks'),

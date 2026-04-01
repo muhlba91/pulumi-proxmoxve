@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -128,6 +128,121 @@ func (o CertificateDomainArrayOutput) Index(i pulumi.IntInput) CertificateDomain
 	}).(CertificateDomainOutput)
 }
 
+type CertificateLegacyDomain struct {
+	// An optional alias domain for DNS validation. This allows you to validate the domain using a different domain's DNS records.
+	Alias *string `pulumi:"alias"`
+	// The domain name to include in the certificate.
+	Domain string `pulumi:"domain"`
+	// The DNS plugin to use for DNS-01 challenge validation. If not specified, the standalone HTTP-01 challenge will be used.
+	Plugin *string `pulumi:"plugin"`
+}
+
+// CertificateLegacyDomainInput is an input type that accepts CertificateLegacyDomainArgs and CertificateLegacyDomainOutput values.
+// You can construct a concrete instance of `CertificateLegacyDomainInput` via:
+//
+//	CertificateLegacyDomainArgs{...}
+type CertificateLegacyDomainInput interface {
+	pulumi.Input
+
+	ToCertificateLegacyDomainOutput() CertificateLegacyDomainOutput
+	ToCertificateLegacyDomainOutputWithContext(context.Context) CertificateLegacyDomainOutput
+}
+
+type CertificateLegacyDomainArgs struct {
+	// An optional alias domain for DNS validation. This allows you to validate the domain using a different domain's DNS records.
+	Alias pulumi.StringPtrInput `pulumi:"alias"`
+	// The domain name to include in the certificate.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// The DNS plugin to use for DNS-01 challenge validation. If not specified, the standalone HTTP-01 challenge will be used.
+	Plugin pulumi.StringPtrInput `pulumi:"plugin"`
+}
+
+func (CertificateLegacyDomainArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateLegacyDomain)(nil)).Elem()
+}
+
+func (i CertificateLegacyDomainArgs) ToCertificateLegacyDomainOutput() CertificateLegacyDomainOutput {
+	return i.ToCertificateLegacyDomainOutputWithContext(context.Background())
+}
+
+func (i CertificateLegacyDomainArgs) ToCertificateLegacyDomainOutputWithContext(ctx context.Context) CertificateLegacyDomainOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateLegacyDomainOutput)
+}
+
+// CertificateLegacyDomainArrayInput is an input type that accepts CertificateLegacyDomainArray and CertificateLegacyDomainArrayOutput values.
+// You can construct a concrete instance of `CertificateLegacyDomainArrayInput` via:
+//
+//	CertificateLegacyDomainArray{ CertificateLegacyDomainArgs{...} }
+type CertificateLegacyDomainArrayInput interface {
+	pulumi.Input
+
+	ToCertificateLegacyDomainArrayOutput() CertificateLegacyDomainArrayOutput
+	ToCertificateLegacyDomainArrayOutputWithContext(context.Context) CertificateLegacyDomainArrayOutput
+}
+
+type CertificateLegacyDomainArray []CertificateLegacyDomainInput
+
+func (CertificateLegacyDomainArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateLegacyDomain)(nil)).Elem()
+}
+
+func (i CertificateLegacyDomainArray) ToCertificateLegacyDomainArrayOutput() CertificateLegacyDomainArrayOutput {
+	return i.ToCertificateLegacyDomainArrayOutputWithContext(context.Background())
+}
+
+func (i CertificateLegacyDomainArray) ToCertificateLegacyDomainArrayOutputWithContext(ctx context.Context) CertificateLegacyDomainArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CertificateLegacyDomainArrayOutput)
+}
+
+type CertificateLegacyDomainOutput struct{ *pulumi.OutputState }
+
+func (CertificateLegacyDomainOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateLegacyDomain)(nil)).Elem()
+}
+
+func (o CertificateLegacyDomainOutput) ToCertificateLegacyDomainOutput() CertificateLegacyDomainOutput {
+	return o
+}
+
+func (o CertificateLegacyDomainOutput) ToCertificateLegacyDomainOutputWithContext(ctx context.Context) CertificateLegacyDomainOutput {
+	return o
+}
+
+// An optional alias domain for DNS validation. This allows you to validate the domain using a different domain's DNS records.
+func (o CertificateLegacyDomainOutput) Alias() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateLegacyDomain) *string { return v.Alias }).(pulumi.StringPtrOutput)
+}
+
+// The domain name to include in the certificate.
+func (o CertificateLegacyDomainOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v CertificateLegacyDomain) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The DNS plugin to use for DNS-01 challenge validation. If not specified, the standalone HTTP-01 challenge will be used.
+func (o CertificateLegacyDomainOutput) Plugin() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CertificateLegacyDomain) *string { return v.Plugin }).(pulumi.StringPtrOutput)
+}
+
+type CertificateLegacyDomainArrayOutput struct{ *pulumi.OutputState }
+
+func (CertificateLegacyDomainArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CertificateLegacyDomain)(nil)).Elem()
+}
+
+func (o CertificateLegacyDomainArrayOutput) ToCertificateLegacyDomainArrayOutput() CertificateLegacyDomainArrayOutput {
+	return o
+}
+
+func (o CertificateLegacyDomainArrayOutput) ToCertificateLegacyDomainArrayOutputWithContext(ctx context.Context) CertificateLegacyDomainArrayOutput {
+	return o
+}
+
+func (o CertificateLegacyDomainArrayOutput) Index(i pulumi.IntInput) CertificateLegacyDomainOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CertificateLegacyDomain {
+		return vs[0].([]CertificateLegacyDomain)[vs[1].(int)]
+	}).(CertificateLegacyDomainOutput)
+}
+
 type GetAccountAccount struct {
 	// An array of contact email addresses.
 	Contacts []string `pulumi:"contacts"`
@@ -196,6 +311,218 @@ func (o GetAccountAccountOutput) CreatedAt() pulumi.StringOutput {
 // The status of the account. Can be one of `valid`, `deactivated` or `revoked`.
 func (o GetAccountAccountOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountAccount) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetAccountLegacyAccount struct {
+	// An array of contact email addresses.
+	Contacts []string `pulumi:"contacts"`
+	// The timestamp of the account creation.
+	CreatedAt string `pulumi:"createdAt"`
+	// The status of the account. Can be one of `valid`, `deactivated` or `revoked`.
+	Status string `pulumi:"status"`
+}
+
+// GetAccountLegacyAccountInput is an input type that accepts GetAccountLegacyAccountArgs and GetAccountLegacyAccountOutput values.
+// You can construct a concrete instance of `GetAccountLegacyAccountInput` via:
+//
+//	GetAccountLegacyAccountArgs{...}
+type GetAccountLegacyAccountInput interface {
+	pulumi.Input
+
+	ToGetAccountLegacyAccountOutput() GetAccountLegacyAccountOutput
+	ToGetAccountLegacyAccountOutputWithContext(context.Context) GetAccountLegacyAccountOutput
+}
+
+type GetAccountLegacyAccountArgs struct {
+	// An array of contact email addresses.
+	Contacts pulumi.StringArrayInput `pulumi:"contacts"`
+	// The timestamp of the account creation.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// The status of the account. Can be one of `valid`, `deactivated` or `revoked`.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetAccountLegacyAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountLegacyAccount)(nil)).Elem()
+}
+
+func (i GetAccountLegacyAccountArgs) ToGetAccountLegacyAccountOutput() GetAccountLegacyAccountOutput {
+	return i.ToGetAccountLegacyAccountOutputWithContext(context.Background())
+}
+
+func (i GetAccountLegacyAccountArgs) ToGetAccountLegacyAccountOutputWithContext(ctx context.Context) GetAccountLegacyAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAccountLegacyAccountOutput)
+}
+
+type GetAccountLegacyAccountOutput struct{ *pulumi.OutputState }
+
+func (GetAccountLegacyAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAccountLegacyAccount)(nil)).Elem()
+}
+
+func (o GetAccountLegacyAccountOutput) ToGetAccountLegacyAccountOutput() GetAccountLegacyAccountOutput {
+	return o
+}
+
+func (o GetAccountLegacyAccountOutput) ToGetAccountLegacyAccountOutputWithContext(ctx context.Context) GetAccountLegacyAccountOutput {
+	return o
+}
+
+// An array of contact email addresses.
+func (o GetAccountLegacyAccountOutput) Contacts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAccountLegacyAccount) []string { return v.Contacts }).(pulumi.StringArrayOutput)
+}
+
+// The timestamp of the account creation.
+func (o GetAccountLegacyAccountOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountLegacyAccount) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The status of the account. Can be one of `valid`, `deactivated` or `revoked`.
+func (o GetAccountLegacyAccountOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAccountLegacyAccount) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetPluginsLegacyPlugin struct {
+	// API plugin name.
+	Api string `pulumi:"api"`
+	// DNS plugin data.
+	Data map[string]string `pulumi:"data"`
+	// Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
+	Digest string `pulumi:"digest"`
+	// ACME Plugin ID name.
+	Plugin string `pulumi:"plugin"`
+	// ACME challenge type (dns, standalone).
+	Type string `pulumi:"type"`
+	// Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records (0 - 172800).
+	ValidationDelay int `pulumi:"validationDelay"`
+}
+
+// GetPluginsLegacyPluginInput is an input type that accepts GetPluginsLegacyPluginArgs and GetPluginsLegacyPluginOutput values.
+// You can construct a concrete instance of `GetPluginsLegacyPluginInput` via:
+//
+//	GetPluginsLegacyPluginArgs{...}
+type GetPluginsLegacyPluginInput interface {
+	pulumi.Input
+
+	ToGetPluginsLegacyPluginOutput() GetPluginsLegacyPluginOutput
+	ToGetPluginsLegacyPluginOutputWithContext(context.Context) GetPluginsLegacyPluginOutput
+}
+
+type GetPluginsLegacyPluginArgs struct {
+	// API plugin name.
+	Api pulumi.StringInput `pulumi:"api"`
+	// DNS plugin data.
+	Data pulumi.StringMapInput `pulumi:"data"`
+	// Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
+	Digest pulumi.StringInput `pulumi:"digest"`
+	// ACME Plugin ID name.
+	Plugin pulumi.StringInput `pulumi:"plugin"`
+	// ACME challenge type (dns, standalone).
+	Type pulumi.StringInput `pulumi:"type"`
+	// Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records (0 - 172800).
+	ValidationDelay pulumi.IntInput `pulumi:"validationDelay"`
+}
+
+func (GetPluginsLegacyPluginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPluginsLegacyPlugin)(nil)).Elem()
+}
+
+func (i GetPluginsLegacyPluginArgs) ToGetPluginsLegacyPluginOutput() GetPluginsLegacyPluginOutput {
+	return i.ToGetPluginsLegacyPluginOutputWithContext(context.Background())
+}
+
+func (i GetPluginsLegacyPluginArgs) ToGetPluginsLegacyPluginOutputWithContext(ctx context.Context) GetPluginsLegacyPluginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPluginsLegacyPluginOutput)
+}
+
+// GetPluginsLegacyPluginArrayInput is an input type that accepts GetPluginsLegacyPluginArray and GetPluginsLegacyPluginArrayOutput values.
+// You can construct a concrete instance of `GetPluginsLegacyPluginArrayInput` via:
+//
+//	GetPluginsLegacyPluginArray{ GetPluginsLegacyPluginArgs{...} }
+type GetPluginsLegacyPluginArrayInput interface {
+	pulumi.Input
+
+	ToGetPluginsLegacyPluginArrayOutput() GetPluginsLegacyPluginArrayOutput
+	ToGetPluginsLegacyPluginArrayOutputWithContext(context.Context) GetPluginsLegacyPluginArrayOutput
+}
+
+type GetPluginsLegacyPluginArray []GetPluginsLegacyPluginInput
+
+func (GetPluginsLegacyPluginArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPluginsLegacyPlugin)(nil)).Elem()
+}
+
+func (i GetPluginsLegacyPluginArray) ToGetPluginsLegacyPluginArrayOutput() GetPluginsLegacyPluginArrayOutput {
+	return i.ToGetPluginsLegacyPluginArrayOutputWithContext(context.Background())
+}
+
+func (i GetPluginsLegacyPluginArray) ToGetPluginsLegacyPluginArrayOutputWithContext(ctx context.Context) GetPluginsLegacyPluginArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPluginsLegacyPluginArrayOutput)
+}
+
+type GetPluginsLegacyPluginOutput struct{ *pulumi.OutputState }
+
+func (GetPluginsLegacyPluginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPluginsLegacyPlugin)(nil)).Elem()
+}
+
+func (o GetPluginsLegacyPluginOutput) ToGetPluginsLegacyPluginOutput() GetPluginsLegacyPluginOutput {
+	return o
+}
+
+func (o GetPluginsLegacyPluginOutput) ToGetPluginsLegacyPluginOutputWithContext(ctx context.Context) GetPluginsLegacyPluginOutput {
+	return o
+}
+
+// API plugin name.
+func (o GetPluginsLegacyPluginOutput) Api() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPluginsLegacyPlugin) string { return v.Api }).(pulumi.StringOutput)
+}
+
+// DNS plugin data.
+func (o GetPluginsLegacyPluginOutput) Data() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetPluginsLegacyPlugin) map[string]string { return v.Data }).(pulumi.StringMapOutput)
+}
+
+// Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
+func (o GetPluginsLegacyPluginOutput) Digest() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPluginsLegacyPlugin) string { return v.Digest }).(pulumi.StringOutput)
+}
+
+// ACME Plugin ID name.
+func (o GetPluginsLegacyPluginOutput) Plugin() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPluginsLegacyPlugin) string { return v.Plugin }).(pulumi.StringOutput)
+}
+
+// ACME challenge type (dns, standalone).
+func (o GetPluginsLegacyPluginOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPluginsLegacyPlugin) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records (0 - 172800).
+func (o GetPluginsLegacyPluginOutput) ValidationDelay() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPluginsLegacyPlugin) int { return v.ValidationDelay }).(pulumi.IntOutput)
+}
+
+type GetPluginsLegacyPluginArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPluginsLegacyPluginArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPluginsLegacyPlugin)(nil)).Elem()
+}
+
+func (o GetPluginsLegacyPluginArrayOutput) ToGetPluginsLegacyPluginArrayOutput() GetPluginsLegacyPluginArrayOutput {
+	return o
+}
+
+func (o GetPluginsLegacyPluginArrayOutput) ToGetPluginsLegacyPluginArrayOutputWithContext(ctx context.Context) GetPluginsLegacyPluginArrayOutput {
+	return o
+}
+
+func (o GetPluginsLegacyPluginArrayOutput) Index(i pulumi.IntInput) GetPluginsLegacyPluginOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPluginsLegacyPlugin {
+		return vs[0].([]GetPluginsLegacyPlugin)[vs[1].(int)]
+	}).(GetPluginsLegacyPluginOutput)
 }
 
 type GetPluginsPlugin struct {
@@ -343,12 +670,22 @@ func (o GetPluginsPluginArrayOutput) Index(i pulumi.IntInput) GetPluginsPluginOu
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateDomainInput)(nil)).Elem(), CertificateDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CertificateDomainArrayInput)(nil)).Elem(), CertificateDomainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateLegacyDomainInput)(nil)).Elem(), CertificateLegacyDomainArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CertificateLegacyDomainArrayInput)(nil)).Elem(), CertificateLegacyDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountAccountInput)(nil)).Elem(), GetAccountAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAccountLegacyAccountInput)(nil)).Elem(), GetAccountLegacyAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPluginsLegacyPluginInput)(nil)).Elem(), GetPluginsLegacyPluginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPluginsLegacyPluginArrayInput)(nil)).Elem(), GetPluginsLegacyPluginArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPluginsPluginInput)(nil)).Elem(), GetPluginsPluginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPluginsPluginArrayInput)(nil)).Elem(), GetPluginsPluginArray{})
 	pulumi.RegisterOutputType(CertificateDomainOutput{})
 	pulumi.RegisterOutputType(CertificateDomainArrayOutput{})
+	pulumi.RegisterOutputType(CertificateLegacyDomainOutput{})
+	pulumi.RegisterOutputType(CertificateLegacyDomainArrayOutput{})
 	pulumi.RegisterOutputType(GetAccountAccountOutput{})
+	pulumi.RegisterOutputType(GetAccountLegacyAccountOutput{})
+	pulumi.RegisterOutputType(GetPluginsLegacyPluginOutput{})
+	pulumi.RegisterOutputType(GetPluginsLegacyPluginArrayOutput{})
 	pulumi.RegisterOutputType(GetPluginsPluginOutput{})
 	pulumi.RegisterOutputType(GetPluginsPluginArrayOutput{})
 }

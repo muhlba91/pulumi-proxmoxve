@@ -16,17 +16,17 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['PBSArgs', 'PBS']
+__all__ = ['PbsArgs', 'Pbs']
 
 @pulumi.input_type
-class PBSArgs:
+class PbsArgs:
     def __init__(__self__, *,
                  datastore: pulumi.Input[_builtins.str],
                  password: pulumi.Input[_builtins.str],
-                 pbs_id: pulumi.Input[_builtins.str],
+                 resource_id: pulumi.Input[_builtins.str],
                  server: pulumi.Input[_builtins.str],
                  username: pulumi.Input[_builtins.str],
-                 backups: Optional[pulumi.Input['PBSBackupsArgs']] = None,
+                 backups: Optional[pulumi.Input['PbsBackupsArgs']] = None,
                  contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  disable: Optional[pulumi.Input[_builtins.bool]] = None,
                  encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
@@ -35,13 +35,14 @@ class PBSArgs:
                  namespace: Optional[pulumi.Input[_builtins.str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
-        The set of arguments for constructing a PBS resource.
+        The set of arguments for constructing a Pbs resource.
+
         :param pulumi.Input[_builtins.str] datastore: The name of the datastore on the Proxmox Backup Server.
         :param pulumi.Input[_builtins.str] password: The password for authenticating with the Proxmox Backup Server.
-        :param pulumi.Input[_builtins.str] pbs_id: The unique identifier of the storage.
+        :param pulumi.Input[_builtins.str] resource_id: The unique identifier of the storage.
         :param pulumi.Input[_builtins.str] server: The IP address or DNS name of the Proxmox Backup Server.
         :param pulumi.Input[_builtins.str] username: The username for authenticating with the Proxmox Backup Server.
-        :param pulumi.Input['PBSBackupsArgs'] backups: Configure backup retention settings for the storage type.
+        :param pulumi.Input['PbsBackupsArgs'] backups: Configure backup retention settings for the storage type.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contents: The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
         :param pulumi.Input[_builtins.bool] disable: Whether the storage is disabled.
         :param pulumi.Input[_builtins.str] encryption_key: An existing encryption key for the datastore. This is a sensitive value. Conflicts with `generate_encryption_key`.
@@ -52,7 +53,7 @@ class PBSArgs:
         """
         pulumi.set(__self__, "datastore", datastore)
         pulumi.set(__self__, "password", password)
-        pulumi.set(__self__, "pbs_id", pbs_id)
+        pulumi.set(__self__, "resource_id", resource_id)
         pulumi.set(__self__, "server", server)
         pulumi.set(__self__, "username", username)
         if backups is not None:
@@ -97,16 +98,16 @@ class PBSArgs:
         pulumi.set(self, "password", value)
 
     @_builtins.property
-    @pulumi.getter(name="pbsId")
-    def pbs_id(self) -> pulumi.Input[_builtins.str]:
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> pulumi.Input[_builtins.str]:
         """
         The unique identifier of the storage.
         """
-        return pulumi.get(self, "pbs_id")
+        return pulumi.get(self, "resource_id")
 
-    @pbs_id.setter
-    def pbs_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "pbs_id", value)
+    @resource_id.setter
+    def resource_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -134,14 +135,14 @@ class PBSArgs:
 
     @_builtins.property
     @pulumi.getter
-    def backups(self) -> Optional[pulumi.Input['PBSBackupsArgs']]:
+    def backups(self) -> Optional[pulumi.Input['PbsBackupsArgs']]:
         """
         Configure backup retention settings for the storage type.
         """
         return pulumi.get(self, "backups")
 
     @backups.setter
-    def backups(self, value: Optional[pulumi.Input['PBSBackupsArgs']]):
+    def backups(self, value: Optional[pulumi.Input['PbsBackupsArgs']]):
         pulumi.set(self, "backups", value)
 
     @_builtins.property
@@ -230,9 +231,9 @@ class PBSArgs:
 
 
 @pulumi.input_type
-class _PBSState:
+class _PbsState:
     def __init__(__self__, *,
-                 backups: Optional[pulumi.Input['PBSBackupsArgs']] = None,
+                 backups: Optional[pulumi.Input['PbsBackupsArgs']] = None,
                  contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  datastore: Optional[pulumi.Input[_builtins.str]] = None,
                  disable: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -244,13 +245,14 @@ class _PBSState:
                  namespace: Optional[pulumi.Input[_builtins.str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
-                 pbs_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  server: Optional[pulumi.Input[_builtins.str]] = None,
                  shared: Optional[pulumi.Input[_builtins.bool]] = None,
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        Input properties used for looking up and filtering PBS resources.
-        :param pulumi.Input['PBSBackupsArgs'] backups: Configure backup retention settings for the storage type.
+        Input properties used for looking up and filtering Pbs resources.
+
+        :param pulumi.Input['PbsBackupsArgs'] backups: Configure backup retention settings for the storage type.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contents: The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
         :param pulumi.Input[_builtins.str] datastore: The name of the datastore on the Proxmox Backup Server.
         :param pulumi.Input[_builtins.bool] disable: Whether the storage is disabled.
@@ -262,7 +264,7 @@ class _PBSState:
         :param pulumi.Input[_builtins.str] namespace: The namespace to use on the Proxmox Backup Server.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: A list of nodes where this storage is available.
         :param pulumi.Input[_builtins.str] password: The password for authenticating with the Proxmox Backup Server.
-        :param pulumi.Input[_builtins.str] pbs_id: The unique identifier of the storage.
+        :param pulumi.Input[_builtins.str] resource_id: The unique identifier of the storage.
         :param pulumi.Input[_builtins.str] server: The IP address or DNS name of the Proxmox Backup Server.
         :param pulumi.Input[_builtins.bool] shared: Whether the storage is shared across all nodes.
         :param pulumi.Input[_builtins.str] username: The username for authenticating with the Proxmox Backup Server.
@@ -291,8 +293,8 @@ class _PBSState:
             pulumi.set(__self__, "nodes", nodes)
         if password is not None:
             pulumi.set(__self__, "password", password)
-        if pbs_id is not None:
-            pulumi.set(__self__, "pbs_id", pbs_id)
+        if resource_id is not None:
+            pulumi.set(__self__, "resource_id", resource_id)
         if server is not None:
             pulumi.set(__self__, "server", server)
         if shared is not None:
@@ -302,14 +304,14 @@ class _PBSState:
 
     @_builtins.property
     @pulumi.getter
-    def backups(self) -> Optional[pulumi.Input['PBSBackupsArgs']]:
+    def backups(self) -> Optional[pulumi.Input['PbsBackupsArgs']]:
         """
         Configure backup retention settings for the storage type.
         """
         return pulumi.get(self, "backups")
 
     @backups.setter
-    def backups(self, value: Optional[pulumi.Input['PBSBackupsArgs']]):
+    def backups(self, value: Optional[pulumi.Input['PbsBackupsArgs']]):
         pulumi.set(self, "backups", value)
 
     @_builtins.property
@@ -445,16 +447,16 @@ class _PBSState:
         pulumi.set(self, "password", value)
 
     @_builtins.property
-    @pulumi.getter(name="pbsId")
-    def pbs_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The unique identifier of the storage.
         """
-        return pulumi.get(self, "pbs_id")
+        return pulumi.get(self, "resource_id")
 
-    @pbs_id.setter
-    def pbs_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "pbs_id", value)
+    @resource_id.setter
+    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -493,13 +495,13 @@ class _PBSState:
         pulumi.set(self, "username", value)
 
 
-@pulumi.type_token("proxmoxve:Storage/pBS:PBS")
-class PBS(pulumi.CustomResource):
+@pulumi.type_token("proxmoxve:storage/pbs:Pbs")
+class Pbs(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backups: Optional[pulumi.Input[Union['PBSBackupsArgs', 'PBSBackupsArgsDict']]] = None,
+                 backups: Optional[pulumi.Input[Union['PbsBackupsArgs', 'PbsBackupsArgsDict']]] = None,
                  contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  datastore: Optional[pulumi.Input[_builtins.str]] = None,
                  disable: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -509,34 +511,17 @@ class PBS(pulumi.CustomResource):
                  namespace: Optional[pulumi.Input[_builtins.str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
-                 pbs_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  server: Optional[pulumi.Input[_builtins.str]] = None,
                  username: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a Proxmox Backup Server (PBS) storage in Proxmox VE.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        example = proxmoxve.storage.PBS("example",
-            pbs_id="example-pbs",
-            nodes=["pve"],
-            server="pbs.example.local",
-            datastore="backup",
-            username="pbs-user",
-            password="pbs-password",
-            fingerprint="AA:BB:CC:DD:EE:FF",
-            contents=["backup"],
-            generate_encryption_key=True)
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['PBSBackupsArgs', 'PBSBackupsArgsDict']] backups: Configure backup retention settings for the storage type.
+        :param pulumi.Input[Union['PbsBackupsArgs', 'PbsBackupsArgsDict']] backups: Configure backup retention settings for the storage type.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contents: The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
         :param pulumi.Input[_builtins.str] datastore: The name of the datastore on the Proxmox Backup Server.
         :param pulumi.Input[_builtins.bool] disable: Whether the storage is disabled.
@@ -546,7 +531,7 @@ class PBS(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] namespace: The namespace to use on the Proxmox Backup Server.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: A list of nodes where this storage is available.
         :param pulumi.Input[_builtins.str] password: The password for authenticating with the Proxmox Backup Server.
-        :param pulumi.Input[_builtins.str] pbs_id: The unique identifier of the storage.
+        :param pulumi.Input[_builtins.str] resource_id: The unique identifier of the storage.
         :param pulumi.Input[_builtins.str] server: The IP address or DNS name of the Proxmox Backup Server.
         :param pulumi.Input[_builtins.str] username: The username for authenticating with the Proxmox Backup Server.
         """
@@ -554,36 +539,19 @@ class PBS(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: PBSArgs,
+                 args: PbsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Proxmox Backup Server (PBS) storage in Proxmox VE.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        example = proxmoxve.storage.PBS("example",
-            pbs_id="example-pbs",
-            nodes=["pve"],
-            server="pbs.example.local",
-            datastore="backup",
-            username="pbs-user",
-            password="pbs-password",
-            fingerprint="AA:BB:CC:DD:EE:FF",
-            contents=["backup"],
-            generate_encryption_key=True)
-        ```
 
         :param str resource_name: The name of the resource.
-        :param PBSArgs args: The arguments to use to populate this resource's properties.
+        :param PbsArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(PBSArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(PbsArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -592,7 +560,7 @@ class PBS(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backups: Optional[pulumi.Input[Union['PBSBackupsArgs', 'PBSBackupsArgsDict']]] = None,
+                 backups: Optional[pulumi.Input[Union['PbsBackupsArgs', 'PbsBackupsArgsDict']]] = None,
                  contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  datastore: Optional[pulumi.Input[_builtins.str]] = None,
                  disable: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -602,7 +570,7 @@ class PBS(pulumi.CustomResource):
                  namespace: Optional[pulumi.Input[_builtins.str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
-                 pbs_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  server: Optional[pulumi.Input[_builtins.str]] = None,
                  username: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -612,7 +580,7 @@ class PBS(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = PBSArgs.__new__(PBSArgs)
+            __props__ = PbsArgs.__new__(PbsArgs)
 
             __props__.__dict__["backups"] = backups
             __props__.__dict__["contents"] = contents
@@ -628,9 +596,9 @@ class PBS(pulumi.CustomResource):
             if password is None and not opts.urn:
                 raise TypeError("Missing required property 'password'")
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
-            if pbs_id is None and not opts.urn:
-                raise TypeError("Missing required property 'pbs_id'")
-            __props__.__dict__["pbs_id"] = pbs_id
+            if resource_id is None and not opts.urn:
+                raise TypeError("Missing required property 'resource_id'")
+            __props__.__dict__["resource_id"] = resource_id
             if server is None and not opts.urn:
                 raise TypeError("Missing required property 'server'")
             __props__.__dict__["server"] = server
@@ -640,10 +608,12 @@ class PBS(pulumi.CustomResource):
             __props__.__dict__["encryption_key_fingerprint"] = None
             __props__.__dict__["generated_encryption_key"] = None
             __props__.__dict__["shared"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="proxmox_virtual_environment_storage_pbs")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["encryptionKey", "generatedEncryptionKey", "password"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
-        super(PBS, __self__).__init__(
-            'proxmoxve:Storage/pBS:PBS',
+        super(Pbs, __self__).__init__(
+            'proxmoxve:storage/pbs:Pbs',
             resource_name,
             __props__,
             opts)
@@ -652,7 +622,7 @@ class PBS(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backups: Optional[pulumi.Input[Union['PBSBackupsArgs', 'PBSBackupsArgsDict']]] = None,
+            backups: Optional[pulumi.Input[Union['PbsBackupsArgs', 'PbsBackupsArgsDict']]] = None,
             contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             datastore: Optional[pulumi.Input[_builtins.str]] = None,
             disable: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -664,18 +634,18 @@ class PBS(pulumi.CustomResource):
             namespace: Optional[pulumi.Input[_builtins.str]] = None,
             nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             password: Optional[pulumi.Input[_builtins.str]] = None,
-            pbs_id: Optional[pulumi.Input[_builtins.str]] = None,
+            resource_id: Optional[pulumi.Input[_builtins.str]] = None,
             server: Optional[pulumi.Input[_builtins.str]] = None,
             shared: Optional[pulumi.Input[_builtins.bool]] = None,
-            username: Optional[pulumi.Input[_builtins.str]] = None) -> 'PBS':
+            username: Optional[pulumi.Input[_builtins.str]] = None) -> 'Pbs':
         """
-        Get an existing PBS resource's state with the given name, id, and optional extra
+        Get an existing Pbs resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['PBSBackupsArgs', 'PBSBackupsArgsDict']] backups: Configure backup retention settings for the storage type.
+        :param pulumi.Input[Union['PbsBackupsArgs', 'PbsBackupsArgsDict']] backups: Configure backup retention settings for the storage type.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contents: The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
         :param pulumi.Input[_builtins.str] datastore: The name of the datastore on the Proxmox Backup Server.
         :param pulumi.Input[_builtins.bool] disable: Whether the storage is disabled.
@@ -687,14 +657,14 @@ class PBS(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] namespace: The namespace to use on the Proxmox Backup Server.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: A list of nodes where this storage is available.
         :param pulumi.Input[_builtins.str] password: The password for authenticating with the Proxmox Backup Server.
-        :param pulumi.Input[_builtins.str] pbs_id: The unique identifier of the storage.
+        :param pulumi.Input[_builtins.str] resource_id: The unique identifier of the storage.
         :param pulumi.Input[_builtins.str] server: The IP address or DNS name of the Proxmox Backup Server.
         :param pulumi.Input[_builtins.bool] shared: Whether the storage is shared across all nodes.
         :param pulumi.Input[_builtins.str] username: The username for authenticating with the Proxmox Backup Server.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _PBSState.__new__(_PBSState)
+        __props__ = _PbsState.__new__(_PbsState)
 
         __props__.__dict__["backups"] = backups
         __props__.__dict__["contents"] = contents
@@ -708,15 +678,15 @@ class PBS(pulumi.CustomResource):
         __props__.__dict__["namespace"] = namespace
         __props__.__dict__["nodes"] = nodes
         __props__.__dict__["password"] = password
-        __props__.__dict__["pbs_id"] = pbs_id
+        __props__.__dict__["resource_id"] = resource_id
         __props__.__dict__["server"] = server
         __props__.__dict__["shared"] = shared
         __props__.__dict__["username"] = username
-        return PBS(resource_name, opts=opts, __props__=__props__)
+        return Pbs(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter
-    def backups(self) -> pulumi.Output[Optional['outputs.PBSBackups']]:
+    def backups(self) -> pulumi.Output[Optional['outputs.PbsBackups']]:
         """
         Configure backup retention settings for the storage type.
         """
@@ -811,12 +781,12 @@ class PBS(pulumi.CustomResource):
         return pulumi.get(self, "password")
 
     @_builtins.property
-    @pulumi.getter(name="pbsId")
-    def pbs_id(self) -> pulumi.Output[_builtins.str]:
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> pulumi.Output[_builtins.str]:
         """
         The unique identifier of the storage.
         """
-        return pulumi.get(self, "pbs_id")
+        return pulumi.get(self, "resource_id")
 
     @_builtins.property
     @pulumi.getter

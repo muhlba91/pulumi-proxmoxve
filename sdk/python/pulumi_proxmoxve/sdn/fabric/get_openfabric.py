@@ -102,22 +102,13 @@ def get_openfabric(id: Optional[_builtins.str] = None,
     """
     OpenFabric Fabric in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    main = proxmoxve.Sdn.fabric.get_openfabric(id="main-fabric")
-    ```
-
 
     :param _builtins.str id: The unique identifier of the SDN fabric.
     """
     __args__ = dict()
     __args__['id'] = id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('proxmoxve:Sdn/fabric/getOpenfabric:getOpenfabric', __args__, opts=opts, typ=GetOpenfabricResult).value
+    __ret__ = pulumi.runtime.invoke('proxmoxve:sdn/fabric/getOpenfabric:getOpenfabric', __args__, opts=opts, typ=GetOpenfabricResult).value
 
     return AwaitableGetOpenfabricResult(
         csnp_interval=pulumi.get(__ret__, 'csnp_interval'),
@@ -130,22 +121,13 @@ def get_openfabric_output(id: Optional[pulumi.Input[_builtins.str]] = None,
     """
     OpenFabric Fabric in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    main = proxmoxve.Sdn.fabric.get_openfabric(id="main-fabric")
-    ```
-
 
     :param _builtins.str id: The unique identifier of the SDN fabric.
     """
     __args__ = dict()
     __args__['id'] = id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Sdn/fabric/getOpenfabric:getOpenfabric', __args__, opts=opts, typ=GetOpenfabricResult)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:sdn/fabric/getOpenfabric:getOpenfabric', __args__, opts=opts, typ=GetOpenfabricResult)
     return __ret__.apply(lambda __response__: GetOpenfabricResult(
         csnp_interval=pulumi.get(__response__, 'csnp_interval'),
         hello_interval=pulumi.get(__response__, 'hello_interval'),

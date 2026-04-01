@@ -7,104 +7,11 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * Manages ACME SSL certificates for Proxmox VE nodes. This resource orders and renews certificates from an ACME Certificate Authority for a specific node.
+ * Manages ACME SSL certificates for Proxmox VE nodes.
  *
- * ## Example Usage
- *
- * ### Basic ACME Certificate with HTTP-01 Challenge
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * // First, create an ACME account
- * const example = new proxmoxve.AcmeAccount("example", {
- *     name: "production",
- *     contact: "admin@example.com",
- *     directory: "https://acme-v02.api.letsencrypt.org/directory",
- *     tos: "https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf",
- * });
- * // Order a certificate for the node
- * const exampleCertificate = new proxmoxve.acme.Certificate("example", {
- *     nodeName: "pve",
- *     account: example.name,
- *     domains: [{
- *         domain: "pve.example.com",
- *     }],
- * });
- * ```
- *
- * ### ACME Certificate with DNS-01 Challenge
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * // Create an ACME account
- * const example = new proxmoxve.AcmeAccount("example", {
- *     name: "production",
- *     contact: "admin@example.com",
- *     directory: "https://acme-v02.api.letsencrypt.org/directory",
- *     tos: "https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf",
- * });
- * // Configure a DNS plugin (Desec example)
- * const desec = new proxmoxve.AcmeDnsPlugin("desec", {
- *     plugin: "desec",
- *     api: "desec",
- *     data: {
- *         DEDYN_TOKEN: dedynToken,
- *     },
- * });
- * // Order a certificate using the DNS plugin
- * const test = new proxmoxve.acme.Certificate("test", {
- *     nodeName: "pve",
- *     account: example.name,
- *     force: false,
- *     domains: [{
- *         domain: "pve.example.dedyn.io",
- *         plugin: desec.plugin,
- *     }],
- * }, {
- *     dependsOn: [
- *         example,
- *         desec,
- *     ],
- * });
- * ```
- *
- * ### Force Certificate Renewal
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const exampleForce = new proxmoxve.acme.Certificate("example_force", {
- *     nodeName: "pve",
- *     account: example.name,
- *     force: true,
- *     domains: [{
- *         domain: "pve.example.com",
- *     }],
- * });
- * ```
- *
- * ## Related Resources
- *
- * - `proxmoxve.AcmeAccount` - Manages ACME accounts
- * - `proxmoxve.AcmeDnsPlugin` - Manages ACME DNS plugins for DNS-01 challenges
- * - `proxmoxve.Certifi` - Manages custom SSL/TLS certificates (non-ACME)
- *
- * ## Import
- *
- * ACME certificates can be imported using the node name:
- *
- * #!/usr/bin/env sh
- *
- * ACME certificates can be imported using the node name, e.g.:
- *
- * ```sh
- * $ pulumi import proxmoxve:Acme/certificate:Certificate example pve
- * ```
+ * This resource orders and renews certificates from an ACME Certificate Authority (like Let's Encrypt) for a specific node. Before using this resource, ensure that:
+ * - An ACME account is configured (using `proxmoxve.acme.Account`)
+ * - DNS plugins are configured if using DNS-01 challenge (using `proxmoxve.acme/dns.Plugin`)
  */
 export class Certificate extends pulumi.CustomResource {
     /**
@@ -121,7 +28,7 @@ export class Certificate extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'proxmoxve:Acme/certificate:Certificate';
+    public static readonly __pulumiType = 'proxmoxve:acme/certificate:Certificate';
 
     /**
      * Returns true if the given object is an instance of Certificate.  This is designed to work even
@@ -145,7 +52,7 @@ export class Certificate extends pulumi.CustomResource {
     /**
      * The list of domains to include in the certificate. At least one domain is required.
      */
-    declare public readonly domains: pulumi.Output<outputs.Acme.CertificateDomain[]>;
+    declare public readonly domains: pulumi.Output<outputs.acme.CertificateDomain[]>;
     /**
      * The certificate fingerprint.
      */
@@ -246,7 +153,7 @@ export interface CertificateState {
     /**
      * The list of domains to include in the certificate. At least one domain is required.
      */
-    domains?: pulumi.Input<pulumi.Input<inputs.Acme.CertificateDomain>[]>;
+    domains?: pulumi.Input<pulumi.Input<inputs.acme.CertificateDomain>[]>;
     /**
      * The certificate fingerprint.
      */
@@ -292,7 +199,7 @@ export interface CertificateArgs {
     /**
      * The list of domains to include in the certificate. At least one domain is required.
      */
-    domains: pulumi.Input<pulumi.Input<inputs.Acme.CertificateDomain>[]>;
+    domains: pulumi.Input<pulumi.Input<inputs.acme.CertificateDomain>[]>;
     /**
      * Force certificate renewal even if the certificate is not due for renewal yet. Setting this to true will trigger a new certificate order on every apply.
      */

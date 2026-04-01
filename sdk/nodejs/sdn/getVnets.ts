@@ -8,23 +8,10 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * // List all SDN VNets
- * const all = proxmoxve.Sdn.getVnets({});
- * export const dataProxmoxVirtualEnvironmentSdnVnetsAll = {
- *     vnets: all.then(all => all.vnets),
- * };
- * ```
  */
 export function getVnets(opts?: pulumi.InvokeOptions): Promise<GetVnetsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("proxmoxve:Sdn/getVnets:getVnets", {
+    return pulumi.runtime.invoke("proxmoxve:sdn/getVnets:getVnets", {
     }, opts);
 }
 
@@ -39,26 +26,13 @@ export interface GetVnetsResult {
     /**
      * List of SDN VNets.
      */
-    readonly vnets: outputs.Sdn.GetVnetsVnet[];
+    readonly vnets: outputs.sdn.GetVnetsVnet[];
 }
 /**
  * Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * // List all SDN VNets
- * const all = proxmoxve.Sdn.getVnets({});
- * export const dataProxmoxVirtualEnvironmentSdnVnetsAll = {
- *     vnets: all.then(all => all.vnets),
- * };
- * ```
  */
 export function getVnetsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVnetsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("proxmoxve:Sdn/getVnets:getVnets", {
+    return pulumi.runtime.invokeOutput("proxmoxve:sdn/getVnets:getVnets", {
     }, opts);
 }

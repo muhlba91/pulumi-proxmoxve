@@ -8,35 +8,10 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an SMB/CIFS based storage server in Proxmox VE.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const example = new proxmoxve.storage.CIFS("example", {
- *     cifsId: "example-cifs",
- *     nodes: ["pve"],
- *     server: "10.0.0.20",
- *     share: "proxmox",
- *     username: "cifs-user",
- *     password: "cifs-password",
- *     contents: ["images"],
- *     domain: "WORKGROUP",
- *     subdirectory: "terraform",
- *     preallocation: "metadata",
- *     snapshotAsVolumeChain: true,
- *     backups: {
- *         maxProtectedBackups: 5,
- *         keepDaily: 7,
- *     },
- * });
- * ```
  */
-export class CIFS extends pulumi.CustomResource {
+export class Cifs extends pulumi.CustomResource {
     /**
-     * Get an existing CIFS resource's state with the given name, ID, and optional extra
+     * Get an existing Cifs resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -44,32 +19,28 @@ export class CIFS extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: CIFSState, opts?: pulumi.CustomResourceOptions): CIFS {
-        return new CIFS(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: CifsState, opts?: pulumi.CustomResourceOptions): Cifs {
+        return new Cifs(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'proxmoxve:Storage/cIFS:CIFS';
+    public static readonly __pulumiType = 'proxmoxve:storage/cifs:Cifs';
 
     /**
-     * Returns true if the given object is an instance of CIFS.  This is designed to work even
+     * Returns true if the given object is an instance of Cifs.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is CIFS {
+    public static isInstance(obj: any): obj is Cifs {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === CIFS.__pulumiType;
+        return obj['__pulumiType'] === Cifs.__pulumiType;
     }
 
     /**
      * Configure backup retention settings for the storage type.
      */
-    declare public readonly backups: pulumi.Output<outputs.Storage.CIFSBackups | undefined>;
-    /**
-     * The unique identifier of the storage.
-     */
-    declare public readonly cifsId: pulumi.Output<string>;
+    declare public readonly backups: pulumi.Output<outputs.storage.CifsBackups | undefined>;
     /**
      * The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
      */
@@ -94,6 +65,10 @@ export class CIFS extends pulumi.CustomResource {
      * The preallocation mode for raw and qcow2 images.
      */
     declare public readonly preallocation: pulumi.Output<string | undefined>;
+    /**
+     * The unique identifier of the storage.
+     */
+    declare public readonly resourceId: pulumi.Output<string>;
     /**
      * The IP address or DNS name of the SMB/CIFS server.
      */
@@ -120,26 +95,26 @@ export class CIFS extends pulumi.CustomResource {
     declare public readonly username: pulumi.Output<string>;
 
     /**
-     * Create a CIFS resource with the given unique name, arguments, and options.
+     * Create a Cifs resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: CIFSArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: CIFSArgs | CIFSState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: CifsArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: CifsArgs | CifsState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as CIFSState | undefined;
+            const state = argsOrState as CifsState | undefined;
             resourceInputs["backups"] = state?.backups;
-            resourceInputs["cifsId"] = state?.cifsId;
             resourceInputs["contents"] = state?.contents;
             resourceInputs["disable"] = state?.disable;
             resourceInputs["domain"] = state?.domain;
             resourceInputs["nodes"] = state?.nodes;
             resourceInputs["password"] = state?.password;
             resourceInputs["preallocation"] = state?.preallocation;
+            resourceInputs["resourceId"] = state?.resourceId;
             resourceInputs["server"] = state?.server;
             resourceInputs["share"] = state?.share;
             resourceInputs["shared"] = state?.shared;
@@ -147,12 +122,12 @@ export class CIFS extends pulumi.CustomResource {
             resourceInputs["subdirectory"] = state?.subdirectory;
             resourceInputs["username"] = state?.username;
         } else {
-            const args = argsOrState as CIFSArgs | undefined;
-            if (args?.cifsId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'cifsId'");
-            }
+            const args = argsOrState as CifsArgs | undefined;
             if (args?.password === undefined && !opts.urn) {
                 throw new Error("Missing required property 'password'");
+            }
+            if (args?.resourceId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'resourceId'");
             }
             if (args?.server === undefined && !opts.urn) {
                 throw new Error("Missing required property 'server'");
@@ -164,13 +139,13 @@ export class CIFS extends pulumi.CustomResource {
                 throw new Error("Missing required property 'username'");
             }
             resourceInputs["backups"] = args?.backups;
-            resourceInputs["cifsId"] = args?.cifsId;
             resourceInputs["contents"] = args?.contents;
             resourceInputs["disable"] = args?.disable;
             resourceInputs["domain"] = args?.domain;
             resourceInputs["nodes"] = args?.nodes;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["preallocation"] = args?.preallocation;
+            resourceInputs["resourceId"] = args?.resourceId;
             resourceInputs["server"] = args?.server;
             resourceInputs["share"] = args?.share;
             resourceInputs["snapshotAsVolumeChain"] = args?.snapshotAsVolumeChain;
@@ -179,24 +154,22 @@ export class CIFS extends pulumi.CustomResource {
             resourceInputs["shared"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "proxmox_virtual_environment_storage_cifs" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         const secretOpts = { additionalSecretOutputs: ["password"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(CIFS.__pulumiType, name, resourceInputs, opts);
+        super(Cifs.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering CIFS resources.
+ * Input properties used for looking up and filtering Cifs resources.
  */
-export interface CIFSState {
+export interface CifsState {
     /**
      * Configure backup retention settings for the storage type.
      */
-    backups?: pulumi.Input<inputs.Storage.CIFSBackups>;
-    /**
-     * The unique identifier of the storage.
-     */
-    cifsId?: pulumi.Input<string>;
+    backups?: pulumi.Input<inputs.storage.CifsBackups>;
     /**
      * The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
      */
@@ -221,6 +194,10 @@ export interface CIFSState {
      * The preallocation mode for raw and qcow2 images.
      */
     preallocation?: pulumi.Input<string>;
+    /**
+     * The unique identifier of the storage.
+     */
+    resourceId?: pulumi.Input<string>;
     /**
      * The IP address or DNS name of the SMB/CIFS server.
      */
@@ -248,17 +225,13 @@ export interface CIFSState {
 }
 
 /**
- * The set of arguments for constructing a CIFS resource.
+ * The set of arguments for constructing a Cifs resource.
  */
-export interface CIFSArgs {
+export interface CifsArgs {
     /**
      * Configure backup retention settings for the storage type.
      */
-    backups?: pulumi.Input<inputs.Storage.CIFSBackups>;
-    /**
-     * The unique identifier of the storage.
-     */
-    cifsId: pulumi.Input<string>;
+    backups?: pulumi.Input<inputs.storage.CifsBackups>;
     /**
      * The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
      */
@@ -283,6 +256,10 @@ export interface CIFSArgs {
      * The preallocation mode for raw and qcow2 images.
      */
     preallocation?: pulumi.Input<string>;
+    /**
+     * The unique identifier of the storage.
+     */
+    resourceId: pulumi.Input<string>;
     /**
      * The IP address or DNS name of the SMB/CIFS server.
      */

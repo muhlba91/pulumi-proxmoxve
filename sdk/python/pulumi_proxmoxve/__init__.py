@@ -7,18 +7,39 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .acl import *
-from .acme_account import *
-from .acme_dns_plugin import *
-from .certifi import *
-from .dns import *
-from .get_container import *
-from .get_containers import *
+from .acl_legacy import *
+from .get_datastores import *
+from .get_datastores_legacy import *
 from .get_file import *
-from .get_node import *
-from .get_vm2 import *
-from .hosts import *
+from .get_file_legacy import *
+from .get_files import *
+from .get_hagroup import *
+from .get_hagroup_legacy import *
+from .get_hagroups import *
+from .get_hagroups_legacy import *
+from .get_haresource import *
+from .get_haresource_legacy import *
+from .get_haresources import *
+from .get_haresources_legacy import *
+from .get_replication import *
+from .get_replication_legacy import *
+from .get_replications import *
+from .get_replications_legacy import *
+from .get_version import *
+from .get_version_legacy import *
+from .get_vm import *
+from .get_vm2_legacy import *
+from .hagroup import *
+from .hagroup_legacy import *
+from .haresource import *
+from .haresource_legacy import *
+from .harule import *
+from .harule_legacy import *
 from .provider import *
-from .time import *
+from .replication import *
+from .replication_legacy import *
+from .vm import *
+from .vm2_legacy import *
 from ._inputs import *
 from . import outputs
 
@@ -28,16 +49,16 @@ if typing.TYPE_CHECKING:
     acme = __acme
     import pulumi_proxmoxve.apt as __apt
     apt = __apt
+    import pulumi_proxmoxve.backup as __backup
+    backup = __backup
+    import pulumi_proxmoxve.cloned as __cloned
+    cloned = __cloned
     import pulumi_proxmoxve.cluster as __cluster
     cluster = __cluster
     import pulumi_proxmoxve.config as __config
     config = __config
-    import pulumi_proxmoxve.ct as __ct
-    ct = __ct
     import pulumi_proxmoxve.download as __download
     download = __download
-    import pulumi_proxmoxve.ha as __ha
-    ha = __ha
     import pulumi_proxmoxve.hardware as __hardware
     hardware = __hardware
     import pulumi_proxmoxve.metrics as __metrics
@@ -48,472 +69,220 @@ if typing.TYPE_CHECKING:
     node = __node
     import pulumi_proxmoxve.oci as __oci
     oci = __oci
-    import pulumi_proxmoxve.permission as __permission
-    permission = __permission
     import pulumi_proxmoxve.pool as __pool
     pool = __pool
     import pulumi_proxmoxve.realm as __realm
     realm = __realm
     import pulumi_proxmoxve.sdn as __sdn
     sdn = __sdn
-    import pulumi_proxmoxve.sdnfabric as __sdnfabric
-    sdnfabric = __sdnfabric
-    import pulumi_proxmoxve.sdnzone as __sdnzone
-    sdnzone = __sdnzone
     import pulumi_proxmoxve.storage as __storage
     storage = __storage
     import pulumi_proxmoxve.user as __user
     user = __user
-    import pulumi_proxmoxve.vm as __vm
-    vm = __vm
 else:
     acme = _utilities.lazy_import('pulumi_proxmoxve.acme')
     apt = _utilities.lazy_import('pulumi_proxmoxve.apt')
+    backup = _utilities.lazy_import('pulumi_proxmoxve.backup')
+    cloned = _utilities.lazy_import('pulumi_proxmoxve.cloned')
     cluster = _utilities.lazy_import('pulumi_proxmoxve.cluster')
     config = _utilities.lazy_import('pulumi_proxmoxve.config')
-    ct = _utilities.lazy_import('pulumi_proxmoxve.ct')
     download = _utilities.lazy_import('pulumi_proxmoxve.download')
-    ha = _utilities.lazy_import('pulumi_proxmoxve.ha')
     hardware = _utilities.lazy_import('pulumi_proxmoxve.hardware')
     metrics = _utilities.lazy_import('pulumi_proxmoxve.metrics')
     network = _utilities.lazy_import('pulumi_proxmoxve.network')
     node = _utilities.lazy_import('pulumi_proxmoxve.node')
     oci = _utilities.lazy_import('pulumi_proxmoxve.oci')
-    permission = _utilities.lazy_import('pulumi_proxmoxve.permission')
     pool = _utilities.lazy_import('pulumi_proxmoxve.pool')
     realm = _utilities.lazy_import('pulumi_proxmoxve.realm')
     sdn = _utilities.lazy_import('pulumi_proxmoxve.sdn')
-    sdnfabric = _utilities.lazy_import('pulumi_proxmoxve.sdnfabric')
-    sdnzone = _utilities.lazy_import('pulumi_proxmoxve.sdnzone')
     storage = _utilities.lazy_import('pulumi_proxmoxve.storage')
     user = _utilities.lazy_import('pulumi_proxmoxve.user')
-    vm = _utilities.lazy_import('pulumi_proxmoxve.vm')
 
 _utilities.register(
     resource_modules="""
 [
  {
   "pkg": "proxmoxve",
-  "mod": "Acme/certificate",
+  "mod": "acme/account",
   "fqn": "pulumi_proxmoxve.acme",
   "classes": {
-   "proxmoxve:Acme/certificate:Certificate": "Certificate"
+   "proxmoxve:acme/account:Account": "Account"
   }
  },
  {
   "pkg": "proxmoxve",
-  "mod": "Apt/repository",
+  "mod": "acme/accountLegacy",
+  "fqn": "pulumi_proxmoxve.acme",
+  "classes": {
+   "proxmoxve:acme/accountLegacy:AccountLegacy": "AccountLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "acme/certificate",
+  "fqn": "pulumi_proxmoxve.acme",
+  "classes": {
+   "proxmoxve:acme/certificate:Certificate": "Certificate"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "acme/certificateLegacy",
+  "fqn": "pulumi_proxmoxve.acme",
+  "classes": {
+   "proxmoxve:acme/certificateLegacy:CertificateLegacy": "CertificateLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "acme/dns/plugin",
+  "fqn": "pulumi_proxmoxve.acme.dns",
+  "classes": {
+   "proxmoxve:acme/dns/plugin:Plugin": "Plugin"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "acme/dns/pluginLegacy",
+  "fqn": "pulumi_proxmoxve.acme.dns",
+  "classes": {
+   "proxmoxve:acme/dns/pluginLegacy:PluginLegacy": "PluginLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "apt/repository",
   "fqn": "pulumi_proxmoxve.apt",
   "classes": {
-   "proxmoxve:Apt/repository:Repository": "Repository"
+   "proxmoxve:apt/repository:Repository": "Repository"
   }
  },
  {
   "pkg": "proxmoxve",
-  "mod": "Apt/standard/repository",
+  "mod": "apt/repositoryLegacy",
+  "fqn": "pulumi_proxmoxve.apt",
+  "classes": {
+   "proxmoxve:apt/repositoryLegacy:RepositoryLegacy": "RepositoryLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "apt/standard/repository",
   "fqn": "pulumi_proxmoxve.apt.standard",
   "classes": {
-   "proxmoxve:Apt/standard/repository:Repository": "Repository"
+   "proxmoxve:apt/standard/repository:Repository": "Repository"
   }
  },
  {
   "pkg": "proxmoxve",
-  "mod": "CT/container",
-  "fqn": "pulumi_proxmoxve.ct",
+  "mod": "apt/standard/repositoryLegacy",
+  "fqn": "pulumi_proxmoxve.apt.standard",
   "classes": {
-   "proxmoxve:CT/container:Container": "Container"
+   "proxmoxve:apt/standard/repositoryLegacy:RepositoryLegacy": "RepositoryLegacy"
   }
  },
  {
   "pkg": "proxmoxve",
-  "mod": "Cluster/options",
+  "mod": "backup/job",
+  "fqn": "pulumi_proxmoxve.backup",
+  "classes": {
+   "proxmoxve:backup/job:Job": "Job"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "cloned/vm",
+  "fqn": "pulumi_proxmoxve.cloned",
+  "classes": {
+   "proxmoxve:cloned/vm:Vm": "Vm"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "cloned/vmLegacy",
+  "fqn": "pulumi_proxmoxve.cloned",
+  "classes": {
+   "proxmoxve:cloned/vmLegacy:VmLegacy": "VmLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "cluster/options",
   "fqn": "pulumi_proxmoxve.cluster",
   "classes": {
-   "proxmoxve:Cluster/options:Options": "Options"
+   "proxmoxve:cluster/options:Options": "Options"
   }
  },
  {
   "pkg": "proxmoxve",
-  "mod": "Download/file",
+  "mod": "cluster/optionsLegacy",
+  "fqn": "pulumi_proxmoxve.cluster",
+  "classes": {
+   "proxmoxve:cluster/optionsLegacy:OptionsLegacy": "OptionsLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "download/file",
   "fqn": "pulumi_proxmoxve.download",
   "classes": {
-   "proxmoxve:Download/file:File": "File"
+   "proxmoxve:download/file:File": "File"
   }
  },
  {
   "pkg": "proxmoxve",
-  "mod": "HA/hAGroup",
-  "fqn": "pulumi_proxmoxve.ha",
+  "mod": "download/fileLegacy",
+  "fqn": "pulumi_proxmoxve.download",
   "classes": {
-   "proxmoxve:HA/hAGroup:HAGroup": "HAGroup"
+   "proxmoxve:download/fileLegacy:FileLegacy": "FileLegacy"
   }
  },
  {
   "pkg": "proxmoxve",
-  "mod": "HA/hAResource",
-  "fqn": "pulumi_proxmoxve.ha",
-  "classes": {
-   "proxmoxve:HA/hAResource:HAResource": "HAResource"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "Hardware/mapping/dir",
+  "mod": "hardware/mapping/dir",
   "fqn": "pulumi_proxmoxve.hardware.mapping",
   "classes": {
-   "proxmoxve:Hardware/mapping/dir:Dir": "Dir"
+   "proxmoxve:hardware/mapping/dir:Dir": "Dir"
   }
  },
  {
   "pkg": "proxmoxve",
-  "mod": "Hardware/mapping/pci",
+  "mod": "hardware/mapping/dirLegacy",
   "fqn": "pulumi_proxmoxve.hardware.mapping",
   "classes": {
-   "proxmoxve:Hardware/mapping/pci:Pci": "Pci"
+   "proxmoxve:hardware/mapping/dirLegacy:DirLegacy": "DirLegacy"
   }
  },
  {
   "pkg": "proxmoxve",
-  "mod": "Hardware/mapping/usb",
+  "mod": "hardware/mapping/pci",
   "fqn": "pulumi_proxmoxve.hardware.mapping",
   "classes": {
-   "proxmoxve:Hardware/mapping/usb:Usb": "Usb"
+   "proxmoxve:hardware/mapping/pci:Pci": "Pci"
   }
  },
  {
   "pkg": "proxmoxve",
-  "mod": "Metrics/metricsServer",
-  "fqn": "pulumi_proxmoxve.metrics",
+  "mod": "hardware/mapping/pciLegacy",
+  "fqn": "pulumi_proxmoxve.hardware.mapping",
   "classes": {
-   "proxmoxve:Metrics/metricsServer:MetricsServer": "MetricsServer"
+   "proxmoxve:hardware/mapping/pciLegacy:PciLegacy": "PciLegacy"
   }
  },
  {
   "pkg": "proxmoxve",
-  "mod": "Network/firewall",
-  "fqn": "pulumi_proxmoxve.network",
+  "mod": "hardware/mapping/usb",
+  "fqn": "pulumi_proxmoxve.hardware.mapping",
   "classes": {
-   "proxmoxve:Network/firewall:Firewall": "Firewall"
+   "proxmoxve:hardware/mapping/usb:Usb": "Usb"
   }
  },
  {
   "pkg": "proxmoxve",
-  "mod": "Network/firewallAlias",
-  "fqn": "pulumi_proxmoxve.network",
+  "mod": "hardware/mapping/usbLegacy",
+  "fqn": "pulumi_proxmoxve.hardware.mapping",
   "classes": {
-   "proxmoxve:Network/firewallAlias:FirewallAlias": "FirewallAlias"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "Network/firewallIPSet",
-  "fqn": "pulumi_proxmoxve.network",
-  "classes": {
-   "proxmoxve:Network/firewallIPSet:FirewallIPSet": "FirewallIPSet"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "Network/firewallOptions",
-  "fqn": "pulumi_proxmoxve.network",
-  "classes": {
-   "proxmoxve:Network/firewallOptions:FirewallOptions": "FirewallOptions"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "Network/firewallRules",
-  "fqn": "pulumi_proxmoxve.network",
-  "classes": {
-   "proxmoxve:Network/firewallRules:FirewallRules": "FirewallRules"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "Network/firewallSecurityGroup",
-  "fqn": "pulumi_proxmoxve.network",
-  "classes": {
-   "proxmoxve:Network/firewallSecurityGroup:FirewallSecurityGroup": "FirewallSecurityGroup"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "Network/networkBridge",
-  "fqn": "pulumi_proxmoxve.network",
-  "classes": {
-   "proxmoxve:Network/networkBridge:NetworkBridge": "NetworkBridge"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "Network/networkVlan",
-  "fqn": "pulumi_proxmoxve.network",
-  "classes": {
-   "proxmoxve:Network/networkVlan:NetworkVlan": "NetworkVlan"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "Node/firewall",
-  "fqn": "pulumi_proxmoxve.node",
-  "classes": {
-   "proxmoxve:Node/firewall:Firewall": "Firewall"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "Oci/image",
-  "fqn": "pulumi_proxmoxve.oci",
-  "classes": {
-   "proxmoxve:Oci/image:Image": "Image"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "Permission/group",
-  "fqn": "pulumi_proxmoxve.permission",
-  "classes": {
-   "proxmoxve:Permission/group:Group": "Group"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "Permission/pool",
-  "fqn": "pulumi_proxmoxve.permission",
-  "classes": {
-   "proxmoxve:Permission/pool:Pool": "Pool"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "Permission/role",
-  "fqn": "pulumi_proxmoxve.permission",
-  "classes": {
-   "proxmoxve:Permission/role:Role": "Role"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "Permission/user",
-  "fqn": "pulumi_proxmoxve.permission",
-  "classes": {
-   "proxmoxve:Permission/user:User": "User"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "Pool/membership",
-  "fqn": "pulumi_proxmoxve.pool",
-  "classes": {
-   "proxmoxve:Pool/membership:Membership": "Membership"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "Realm/ldap",
-  "fqn": "pulumi_proxmoxve.realm",
-  "classes": {
-   "proxmoxve:Realm/ldap:Ldap": "Ldap"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "Realm/sync",
-  "fqn": "pulumi_proxmoxve.realm",
-  "classes": {
-   "proxmoxve:Realm/sync:Sync": "Sync"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "SDNFabric/oSPF",
-  "fqn": "pulumi_proxmoxve.sdnfabric",
-  "classes": {
-   "proxmoxve:SDNFabric/oSPF:OSPF": "OSPF"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "SDNFabric/openFabric",
-  "fqn": "pulumi_proxmoxve.sdnfabric",
-  "classes": {
-   "proxmoxve:SDNFabric/openFabric:OpenFabric": "OpenFabric"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "SDNZone/evpn",
-  "fqn": "pulumi_proxmoxve.sdnzone",
-  "classes": {
-   "proxmoxve:SDNZone/evpn:Evpn": "Evpn"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "SDNZone/qinq",
-  "fqn": "pulumi_proxmoxve.sdnzone",
-  "classes": {
-   "proxmoxve:SDNZone/qinq:Qinq": "Qinq"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "SDNZone/simple",
-  "fqn": "pulumi_proxmoxve.sdnzone",
-  "classes": {
-   "proxmoxve:SDNZone/simple:Simple": "Simple"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "SDNZone/vlan",
-  "fqn": "pulumi_proxmoxve.sdnzone",
-  "classes": {
-   "proxmoxve:SDNZone/vlan:Vlan": "Vlan"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "SDNZone/vxlan",
-  "fqn": "pulumi_proxmoxve.sdnzone",
-  "classes": {
-   "proxmoxve:SDNZone/vxlan:Vxlan": "Vxlan"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "Sdn/applier",
-  "fqn": "pulumi_proxmoxve.sdn",
-  "classes": {
-   "proxmoxve:Sdn/applier:Applier": "Applier"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "Sdn/fabric/node/openfabric",
-  "fqn": "pulumi_proxmoxve.sdn.fabric.node",
-  "classes": {
-   "proxmoxve:Sdn/fabric/node/openfabric:Openfabric": "Openfabric"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "Sdn/fabric/node/ospf",
-  "fqn": "pulumi_proxmoxve.sdn.fabric.node",
-  "classes": {
-   "proxmoxve:Sdn/fabric/node/ospf:Ospf": "Ospf"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "Sdn/subnet",
-  "fqn": "pulumi_proxmoxve.sdn",
-  "classes": {
-   "proxmoxve:Sdn/subnet:Subnet": "Subnet"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "Sdn/vnet",
-  "fqn": "pulumi_proxmoxve.sdn",
-  "classes": {
-   "proxmoxve:Sdn/vnet:Vnet": "Vnet"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "Storage/cIFS",
-  "fqn": "pulumi_proxmoxve.storage",
-  "classes": {
-   "proxmoxve:Storage/cIFS:CIFS": "CIFS"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "Storage/directory",
-  "fqn": "pulumi_proxmoxve.storage",
-  "classes": {
-   "proxmoxve:Storage/directory:Directory": "Directory"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "Storage/file",
-  "fqn": "pulumi_proxmoxve.storage",
-  "classes": {
-   "proxmoxve:Storage/file:File": "File"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "Storage/lVM",
-  "fqn": "pulumi_proxmoxve.storage",
-  "classes": {
-   "proxmoxve:Storage/lVM:LVM": "LVM"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "Storage/lVMThin",
-  "fqn": "pulumi_proxmoxve.storage",
-  "classes": {
-   "proxmoxve:Storage/lVMThin:LVMThin": "LVMThin"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "Storage/nFS",
-  "fqn": "pulumi_proxmoxve.storage",
-  "classes": {
-   "proxmoxve:Storage/nFS:NFS": "NFS"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "Storage/pBS",
-  "fqn": "pulumi_proxmoxve.storage",
-  "classes": {
-   "proxmoxve:Storage/pBS:PBS": "PBS"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "Storage/zFSPool",
-  "fqn": "pulumi_proxmoxve.storage",
-  "classes": {
-   "proxmoxve:Storage/zFSPool:ZFSPool": "ZFSPool"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "User/token",
-  "fqn": "pulumi_proxmoxve.user",
-  "classes": {
-   "proxmoxve:User/token:Token": "Token"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "VM/clonedVirtualMachine",
-  "fqn": "pulumi_proxmoxve.vm",
-  "classes": {
-   "proxmoxve:VM/clonedVirtualMachine:ClonedVirtualMachine": "ClonedVirtualMachine"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "VM/virtualMachine",
-  "fqn": "pulumi_proxmoxve.vm",
-  "classes": {
-   "proxmoxve:VM/virtualMachine:VirtualMachine": "VirtualMachine"
-  }
- },
- {
-  "pkg": "proxmoxve",
-  "mod": "VM/virtualMachine2",
-  "fqn": "pulumi_proxmoxve.vm",
-  "classes": {
-   "proxmoxve:VM/virtualMachine2:VirtualMachine2": "VirtualMachine2"
+   "proxmoxve:hardware/mapping/usbLegacy:UsbLegacy": "UsbLegacy"
   }
  },
  {
@@ -526,50 +295,554 @@ _utilities.register(
  },
  {
   "pkg": "proxmoxve",
-  "mod": "index/acmeAccount",
+  "mod": "index/aclLegacy",
   "fqn": "pulumi_proxmoxve",
   "classes": {
-   "proxmoxve:index/acmeAccount:AcmeAccount": "AcmeAccount"
+   "proxmoxve:index/aclLegacy:AclLegacy": "AclLegacy"
   }
  },
  {
   "pkg": "proxmoxve",
-  "mod": "index/acmeDnsPlugin",
+  "mod": "index/hagroup",
   "fqn": "pulumi_proxmoxve",
   "classes": {
-   "proxmoxve:index/acmeDnsPlugin:AcmeDnsPlugin": "AcmeDnsPlugin"
+   "proxmoxve:index/hagroup:Hagroup": "Hagroup"
   }
  },
  {
   "pkg": "proxmoxve",
-  "mod": "index/certifi",
+  "mod": "index/hagroupLegacy",
   "fqn": "pulumi_proxmoxve",
   "classes": {
-   "proxmoxve:index/certifi:Certifi": "Certifi"
+   "proxmoxve:index/hagroupLegacy:HagroupLegacy": "HagroupLegacy"
   }
  },
  {
   "pkg": "proxmoxve",
-  "mod": "index/dNS",
+  "mod": "index/haresource",
   "fqn": "pulumi_proxmoxve",
   "classes": {
-   "proxmoxve:index/dNS:DNS": "DNS"
+   "proxmoxve:index/haresource:Haresource": "Haresource"
   }
  },
  {
   "pkg": "proxmoxve",
-  "mod": "index/hosts",
+  "mod": "index/haresourceLegacy",
   "fqn": "pulumi_proxmoxve",
   "classes": {
-   "proxmoxve:index/hosts:Hosts": "Hosts"
+   "proxmoxve:index/haresourceLegacy:HaresourceLegacy": "HaresourceLegacy"
   }
  },
  {
   "pkg": "proxmoxve",
-  "mod": "index/time",
+  "mod": "index/harule",
   "fqn": "pulumi_proxmoxve",
   "classes": {
-   "proxmoxve:index/time:Time": "Time"
+   "proxmoxve:index/harule:Harule": "Harule"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "index/haruleLegacy",
+  "fqn": "pulumi_proxmoxve",
+  "classes": {
+   "proxmoxve:index/haruleLegacy:HaruleLegacy": "HaruleLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "index/replication",
+  "fqn": "pulumi_proxmoxve",
+  "classes": {
+   "proxmoxve:index/replication:Replication": "Replication"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "index/replicationLegacy",
+  "fqn": "pulumi_proxmoxve",
+  "classes": {
+   "proxmoxve:index/replicationLegacy:ReplicationLegacy": "ReplicationLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "index/vm",
+  "fqn": "pulumi_proxmoxve",
+  "classes": {
+   "proxmoxve:index/vm:Vm": "Vm"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "index/vm2Legacy",
+  "fqn": "pulumi_proxmoxve",
+  "classes": {
+   "proxmoxve:index/vm2Legacy:Vm2Legacy": "Vm2Legacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "metrics/server",
+  "fqn": "pulumi_proxmoxve.metrics",
+  "classes": {
+   "proxmoxve:metrics/server:Server": "Server"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "metrics/serverLegacy",
+  "fqn": "pulumi_proxmoxve.metrics",
+  "classes": {
+   "proxmoxve:metrics/serverLegacy:ServerLegacy": "ServerLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "network/linux/bridge",
+  "fqn": "pulumi_proxmoxve.network.linux",
+  "classes": {
+   "proxmoxve:network/linux/bridge:Bridge": "Bridge"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "network/linux/bridgeLegacy",
+  "fqn": "pulumi_proxmoxve.network.linux",
+  "classes": {
+   "proxmoxve:network/linux/bridgeLegacy:BridgeLegacy": "BridgeLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "network/linux/vlan",
+  "fqn": "pulumi_proxmoxve.network.linux",
+  "classes": {
+   "proxmoxve:network/linux/vlan:Vlan": "Vlan"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "network/linux/vlanLegacy",
+  "fqn": "pulumi_proxmoxve.network.linux",
+  "classes": {
+   "proxmoxve:network/linux/vlanLegacy:VlanLegacy": "VlanLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "node/firewall",
+  "fqn": "pulumi_proxmoxve.node",
+  "classes": {
+   "proxmoxve:node/firewall:Firewall": "Firewall"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "node/firewallLegacy",
+  "fqn": "pulumi_proxmoxve.node",
+  "classes": {
+   "proxmoxve:node/firewallLegacy:FirewallLegacy": "FirewallLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "oci/image",
+  "fqn": "pulumi_proxmoxve.oci",
+  "classes": {
+   "proxmoxve:oci/image:Image": "Image"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "oci/imageLegacy",
+  "fqn": "pulumi_proxmoxve.oci",
+  "classes": {
+   "proxmoxve:oci/imageLegacy:ImageLegacy": "ImageLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "pool/membership",
+  "fqn": "pulumi_proxmoxve.pool",
+  "classes": {
+   "proxmoxve:pool/membership:Membership": "Membership"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "pool/membershipLegacy",
+  "fqn": "pulumi_proxmoxve.pool",
+  "classes": {
+   "proxmoxve:pool/membershipLegacy:MembershipLegacy": "MembershipLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "realm/ldap",
+  "fqn": "pulumi_proxmoxve.realm",
+  "classes": {
+   "proxmoxve:realm/ldap:Ldap": "Ldap"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "realm/ldapLegacy",
+  "fqn": "pulumi_proxmoxve.realm",
+  "classes": {
+   "proxmoxve:realm/ldapLegacy:LdapLegacy": "LdapLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "realm/openid",
+  "fqn": "pulumi_proxmoxve.realm",
+  "classes": {
+   "proxmoxve:realm/openid:Openid": "Openid"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "realm/openidLegacy",
+  "fqn": "pulumi_proxmoxve.realm",
+  "classes": {
+   "proxmoxve:realm/openidLegacy:OpenidLegacy": "OpenidLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "realm/sync",
+  "fqn": "pulumi_proxmoxve.realm",
+  "classes": {
+   "proxmoxve:realm/sync:Sync": "Sync"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "realm/syncLegacy",
+  "fqn": "pulumi_proxmoxve.realm",
+  "classes": {
+   "proxmoxve:realm/syncLegacy:SyncLegacy": "SyncLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "sdn/applier",
+  "fqn": "pulumi_proxmoxve.sdn",
+  "classes": {
+   "proxmoxve:sdn/applier:Applier": "Applier"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "sdn/applierLegacy",
+  "fqn": "pulumi_proxmoxve.sdn",
+  "classes": {
+   "proxmoxve:sdn/applierLegacy:ApplierLegacy": "ApplierLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "sdn/fabric/node/openfabric",
+  "fqn": "pulumi_proxmoxve.sdn.fabric.node",
+  "classes": {
+   "proxmoxve:sdn/fabric/node/openfabric:Openfabric": "Openfabric"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "sdn/fabric/node/openfabricLegacy",
+  "fqn": "pulumi_proxmoxve.sdn.fabric.node",
+  "classes": {
+   "proxmoxve:sdn/fabric/node/openfabricLegacy:OpenfabricLegacy": "OpenfabricLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "sdn/fabric/node/ospf",
+  "fqn": "pulumi_proxmoxve.sdn.fabric.node",
+  "classes": {
+   "proxmoxve:sdn/fabric/node/ospf:Ospf": "Ospf"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "sdn/fabric/node/ospfLegacy",
+  "fqn": "pulumi_proxmoxve.sdn.fabric.node",
+  "classes": {
+   "proxmoxve:sdn/fabric/node/ospfLegacy:OspfLegacy": "OspfLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "sdn/fabric/openfabric",
+  "fqn": "pulumi_proxmoxve.sdn.fabric",
+  "classes": {
+   "proxmoxve:sdn/fabric/openfabric:Openfabric": "Openfabric"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "sdn/fabric/openfabricLegacy",
+  "fqn": "pulumi_proxmoxve.sdn.fabric",
+  "classes": {
+   "proxmoxve:sdn/fabric/openfabricLegacy:OpenfabricLegacy": "OpenfabricLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "sdn/fabric/ospf",
+  "fqn": "pulumi_proxmoxve.sdn.fabric",
+  "classes": {
+   "proxmoxve:sdn/fabric/ospf:Ospf": "Ospf"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "sdn/fabric/ospfLegacy",
+  "fqn": "pulumi_proxmoxve.sdn.fabric",
+  "classes": {
+   "proxmoxve:sdn/fabric/ospfLegacy:OspfLegacy": "OspfLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "sdn/subnet",
+  "fqn": "pulumi_proxmoxve.sdn",
+  "classes": {
+   "proxmoxve:sdn/subnet:Subnet": "Subnet"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "sdn/subnetLegacy",
+  "fqn": "pulumi_proxmoxve.sdn",
+  "classes": {
+   "proxmoxve:sdn/subnetLegacy:SubnetLegacy": "SubnetLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "sdn/vnet",
+  "fqn": "pulumi_proxmoxve.sdn",
+  "classes": {
+   "proxmoxve:sdn/vnet:Vnet": "Vnet"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "sdn/vnetLegacy",
+  "fqn": "pulumi_proxmoxve.sdn",
+  "classes": {
+   "proxmoxve:sdn/vnetLegacy:VnetLegacy": "VnetLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "sdn/zone/evpn",
+  "fqn": "pulumi_proxmoxve.sdn.zone",
+  "classes": {
+   "proxmoxve:sdn/zone/evpn:Evpn": "Evpn"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "sdn/zone/evpnLegacy",
+  "fqn": "pulumi_proxmoxve.sdn.zone",
+  "classes": {
+   "proxmoxve:sdn/zone/evpnLegacy:EvpnLegacy": "EvpnLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "sdn/zone/qinq",
+  "fqn": "pulumi_proxmoxve.sdn.zone",
+  "classes": {
+   "proxmoxve:sdn/zone/qinq:Qinq": "Qinq"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "sdn/zone/qinqLegacy",
+  "fqn": "pulumi_proxmoxve.sdn.zone",
+  "classes": {
+   "proxmoxve:sdn/zone/qinqLegacy:QinqLegacy": "QinqLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "sdn/zone/simple",
+  "fqn": "pulumi_proxmoxve.sdn.zone",
+  "classes": {
+   "proxmoxve:sdn/zone/simple:Simple": "Simple"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "sdn/zone/simpleLegacy",
+  "fqn": "pulumi_proxmoxve.sdn.zone",
+  "classes": {
+   "proxmoxve:sdn/zone/simpleLegacy:SimpleLegacy": "SimpleLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "sdn/zone/vlan",
+  "fqn": "pulumi_proxmoxve.sdn.zone",
+  "classes": {
+   "proxmoxve:sdn/zone/vlan:Vlan": "Vlan"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "sdn/zone/vlanLegacy",
+  "fqn": "pulumi_proxmoxve.sdn.zone",
+  "classes": {
+   "proxmoxve:sdn/zone/vlanLegacy:VlanLegacy": "VlanLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "sdn/zone/vxlan",
+  "fqn": "pulumi_proxmoxve.sdn.zone",
+  "classes": {
+   "proxmoxve:sdn/zone/vxlan:Vxlan": "Vxlan"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "sdn/zone/vxlanLegacy",
+  "fqn": "pulumi_proxmoxve.sdn.zone",
+  "classes": {
+   "proxmoxve:sdn/zone/vxlanLegacy:VxlanLegacy": "VxlanLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "storage/cifs",
+  "fqn": "pulumi_proxmoxve.storage",
+  "classes": {
+   "proxmoxve:storage/cifs:Cifs": "Cifs"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "storage/cifsLegacy",
+  "fqn": "pulumi_proxmoxve.storage",
+  "classes": {
+   "proxmoxve:storage/cifsLegacy:CifsLegacy": "CifsLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "storage/directory",
+  "fqn": "pulumi_proxmoxve.storage",
+  "classes": {
+   "proxmoxve:storage/directory:Directory": "Directory"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "storage/directoryLegacy",
+  "fqn": "pulumi_proxmoxve.storage",
+  "classes": {
+   "proxmoxve:storage/directoryLegacy:DirectoryLegacy": "DirectoryLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "storage/lvm",
+  "fqn": "pulumi_proxmoxve.storage",
+  "classes": {
+   "proxmoxve:storage/lvm:Lvm": "Lvm"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "storage/lvmLegacy",
+  "fqn": "pulumi_proxmoxve.storage",
+  "classes": {
+   "proxmoxve:storage/lvmLegacy:LvmLegacy": "LvmLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "storage/lvmthin",
+  "fqn": "pulumi_proxmoxve.storage",
+  "classes": {
+   "proxmoxve:storage/lvmthin:Lvmthin": "Lvmthin"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "storage/lvmthinLegacy",
+  "fqn": "pulumi_proxmoxve.storage",
+  "classes": {
+   "proxmoxve:storage/lvmthinLegacy:LvmthinLegacy": "LvmthinLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "storage/nfs",
+  "fqn": "pulumi_proxmoxve.storage",
+  "classes": {
+   "proxmoxve:storage/nfs:Nfs": "Nfs"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "storage/nfsLegacy",
+  "fqn": "pulumi_proxmoxve.storage",
+  "classes": {
+   "proxmoxve:storage/nfsLegacy:NfsLegacy": "NfsLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "storage/pbs",
+  "fqn": "pulumi_proxmoxve.storage",
+  "classes": {
+   "proxmoxve:storage/pbs:Pbs": "Pbs"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "storage/pbsLegacy",
+  "fqn": "pulumi_proxmoxve.storage",
+  "classes": {
+   "proxmoxve:storage/pbsLegacy:PbsLegacy": "PbsLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "storage/zfspool",
+  "fqn": "pulumi_proxmoxve.storage",
+  "classes": {
+   "proxmoxve:storage/zfspool:Zfspool": "Zfspool"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "storage/zfspoolLegacy",
+  "fqn": "pulumi_proxmoxve.storage",
+  "classes": {
+   "proxmoxve:storage/zfspoolLegacy:ZfspoolLegacy": "ZfspoolLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "user/token",
+  "fqn": "pulumi_proxmoxve.user",
+  "classes": {
+   "proxmoxve:user/token:Token": "Token"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "user/tokenLegacy",
+  "fqn": "pulumi_proxmoxve.user",
+  "classes": {
+   "proxmoxve:user/tokenLegacy:TokenLegacy": "TokenLegacy"
   }
  }
 ]

@@ -8,56 +8,22 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Manages LVM-based storage in Proxmox VE.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/storage"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.NewLVM(ctx, "example", &storage.LVMArgs{
-//				LvmId: pulumi.String("example-lvm"),
-//				Nodes: pulumi.StringArray{
-//					pulumi.String("pve"),
-//				},
-//				VolumeGroup: pulumi.String("vg0"),
-//				Contents: pulumi.StringArray{
-//					pulumi.String("images"),
-//				},
-//				WipeRemovedVolumes: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-type LVM struct {
+type Lvm struct {
 	pulumi.CustomResourceState
 
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents pulumi.StringArrayOutput `pulumi:"contents"`
 	// Whether the storage is disabled.
 	Disable pulumi.BoolOutput `pulumi:"disable"`
-	// The unique identifier of the storage.
-	LvmId pulumi.StringOutput `pulumi:"lvmId"`
 	// A list of nodes where this storage is available.
 	Nodes pulumi.StringArrayOutput `pulumi:"nodes"`
+	// The unique identifier of the storage.
+	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
 	// Whether the storage is shared across all nodes.
 	Shared pulumi.BoolOutput `pulumi:"shared"`
 	// The name of the volume group to use.
@@ -66,50 +32,56 @@ type LVM struct {
 	WipeRemovedVolumes pulumi.BoolOutput `pulumi:"wipeRemovedVolumes"`
 }
 
-// NewLVM registers a new resource with the given unique name, arguments, and options.
-func NewLVM(ctx *pulumi.Context,
-	name string, args *LVMArgs, opts ...pulumi.ResourceOption) (*LVM, error) {
+// NewLvm registers a new resource with the given unique name, arguments, and options.
+func NewLvm(ctx *pulumi.Context,
+	name string, args *LvmArgs, opts ...pulumi.ResourceOption) (*Lvm, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LvmId == nil {
-		return nil, errors.New("invalid value for required argument 'LvmId'")
+	if args.ResourceId == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceId'")
 	}
 	if args.VolumeGroup == nil {
 		return nil, errors.New("invalid value for required argument 'VolumeGroup'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("proxmox_virtual_environment_storage_lvm"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource LVM
-	err := ctx.RegisterResource("proxmoxve:Storage/lVM:LVM", name, args, &resource, opts...)
+	var resource Lvm
+	err := ctx.RegisterResource("proxmoxve:storage/lvm:Lvm", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetLVM gets an existing LVM resource's state with the given name, ID, and optional
+// GetLvm gets an existing Lvm resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetLVM(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *LVMState, opts ...pulumi.ResourceOption) (*LVM, error) {
-	var resource LVM
-	err := ctx.ReadResource("proxmoxve:Storage/lVM:LVM", name, id, state, &resource, opts...)
+func GetLvm(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *LvmState, opts ...pulumi.ResourceOption) (*Lvm, error) {
+	var resource Lvm
+	err := ctx.ReadResource("proxmoxve:storage/lvm:Lvm", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering LVM resources.
+// Input properties used for looking up and filtering Lvm resources.
 type lvmState struct {
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents []string `pulumi:"contents"`
 	// Whether the storage is disabled.
 	Disable *bool `pulumi:"disable"`
-	// The unique identifier of the storage.
-	LvmId *string `pulumi:"lvmId"`
 	// A list of nodes where this storage is available.
 	Nodes []string `pulumi:"nodes"`
+	// The unique identifier of the storage.
+	ResourceId *string `pulumi:"resourceId"`
 	// Whether the storage is shared across all nodes.
 	Shared *bool `pulumi:"shared"`
 	// The name of the volume group to use.
@@ -118,15 +90,15 @@ type lvmState struct {
 	WipeRemovedVolumes *bool `pulumi:"wipeRemovedVolumes"`
 }
 
-type LVMState struct {
+type LvmState struct {
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents pulumi.StringArrayInput
 	// Whether the storage is disabled.
 	Disable pulumi.BoolPtrInput
-	// The unique identifier of the storage.
-	LvmId pulumi.StringPtrInput
 	// A list of nodes where this storage is available.
 	Nodes pulumi.StringArrayInput
+	// The unique identifier of the storage.
+	ResourceId pulumi.StringPtrInput
 	// Whether the storage is shared across all nodes.
 	Shared pulumi.BoolPtrInput
 	// The name of the volume group to use.
@@ -135,7 +107,7 @@ type LVMState struct {
 	WipeRemovedVolumes pulumi.BoolPtrInput
 }
 
-func (LVMState) ElementType() reflect.Type {
+func (LvmState) ElementType() reflect.Type {
 	return reflect.TypeOf((*lvmState)(nil)).Elem()
 }
 
@@ -144,10 +116,10 @@ type lvmArgs struct {
 	Contents []string `pulumi:"contents"`
 	// Whether the storage is disabled.
 	Disable *bool `pulumi:"disable"`
-	// The unique identifier of the storage.
-	LvmId string `pulumi:"lvmId"`
 	// A list of nodes where this storage is available.
 	Nodes []string `pulumi:"nodes"`
+	// The unique identifier of the storage.
+	ResourceId string `pulumi:"resourceId"`
 	// Whether the storage is shared across all nodes.
 	Shared *bool `pulumi:"shared"`
 	// The name of the volume group to use.
@@ -156,16 +128,16 @@ type lvmArgs struct {
 	WipeRemovedVolumes *bool `pulumi:"wipeRemovedVolumes"`
 }
 
-// The set of arguments for constructing a LVM resource.
-type LVMArgs struct {
+// The set of arguments for constructing a Lvm resource.
+type LvmArgs struct {
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents pulumi.StringArrayInput
 	// Whether the storage is disabled.
 	Disable pulumi.BoolPtrInput
-	// The unique identifier of the storage.
-	LvmId pulumi.StringInput
 	// A list of nodes where this storage is available.
 	Nodes pulumi.StringArrayInput
+	// The unique identifier of the storage.
+	ResourceId pulumi.StringInput
 	// Whether the storage is shared across all nodes.
 	Shared pulumi.BoolPtrInput
 	// The name of the volume group to use.
@@ -174,173 +146,173 @@ type LVMArgs struct {
 	WipeRemovedVolumes pulumi.BoolPtrInput
 }
 
-func (LVMArgs) ElementType() reflect.Type {
+func (LvmArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*lvmArgs)(nil)).Elem()
 }
 
-type LVMInput interface {
+type LvmInput interface {
 	pulumi.Input
 
-	ToLVMOutput() LVMOutput
-	ToLVMOutputWithContext(ctx context.Context) LVMOutput
+	ToLvmOutput() LvmOutput
+	ToLvmOutputWithContext(ctx context.Context) LvmOutput
 }
 
-func (*LVM) ElementType() reflect.Type {
-	return reflect.TypeOf((**LVM)(nil)).Elem()
+func (*Lvm) ElementType() reflect.Type {
+	return reflect.TypeOf((**Lvm)(nil)).Elem()
 }
 
-func (i *LVM) ToLVMOutput() LVMOutput {
-	return i.ToLVMOutputWithContext(context.Background())
+func (i *Lvm) ToLvmOutput() LvmOutput {
+	return i.ToLvmOutputWithContext(context.Background())
 }
 
-func (i *LVM) ToLVMOutputWithContext(ctx context.Context) LVMOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LVMOutput)
+func (i *Lvm) ToLvmOutputWithContext(ctx context.Context) LvmOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LvmOutput)
 }
 
-// LVMArrayInput is an input type that accepts LVMArray and LVMArrayOutput values.
-// You can construct a concrete instance of `LVMArrayInput` via:
+// LvmArrayInput is an input type that accepts LvmArray and LvmArrayOutput values.
+// You can construct a concrete instance of `LvmArrayInput` via:
 //
-//	LVMArray{ LVMArgs{...} }
-type LVMArrayInput interface {
+//	LvmArray{ LvmArgs{...} }
+type LvmArrayInput interface {
 	pulumi.Input
 
-	ToLVMArrayOutput() LVMArrayOutput
-	ToLVMArrayOutputWithContext(context.Context) LVMArrayOutput
+	ToLvmArrayOutput() LvmArrayOutput
+	ToLvmArrayOutputWithContext(context.Context) LvmArrayOutput
 }
 
-type LVMArray []LVMInput
+type LvmArray []LvmInput
 
-func (LVMArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*LVM)(nil)).Elem()
+func (LvmArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*Lvm)(nil)).Elem()
 }
 
-func (i LVMArray) ToLVMArrayOutput() LVMArrayOutput {
-	return i.ToLVMArrayOutputWithContext(context.Background())
+func (i LvmArray) ToLvmArrayOutput() LvmArrayOutput {
+	return i.ToLvmArrayOutputWithContext(context.Background())
 }
 
-func (i LVMArray) ToLVMArrayOutputWithContext(ctx context.Context) LVMArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LVMArrayOutput)
+func (i LvmArray) ToLvmArrayOutputWithContext(ctx context.Context) LvmArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LvmArrayOutput)
 }
 
-// LVMMapInput is an input type that accepts LVMMap and LVMMapOutput values.
-// You can construct a concrete instance of `LVMMapInput` via:
+// LvmMapInput is an input type that accepts LvmMap and LvmMapOutput values.
+// You can construct a concrete instance of `LvmMapInput` via:
 //
-//	LVMMap{ "key": LVMArgs{...} }
-type LVMMapInput interface {
+//	LvmMap{ "key": LvmArgs{...} }
+type LvmMapInput interface {
 	pulumi.Input
 
-	ToLVMMapOutput() LVMMapOutput
-	ToLVMMapOutputWithContext(context.Context) LVMMapOutput
+	ToLvmMapOutput() LvmMapOutput
+	ToLvmMapOutputWithContext(context.Context) LvmMapOutput
 }
 
-type LVMMap map[string]LVMInput
+type LvmMap map[string]LvmInput
 
-func (LVMMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*LVM)(nil)).Elem()
+func (LvmMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*Lvm)(nil)).Elem()
 }
 
-func (i LVMMap) ToLVMMapOutput() LVMMapOutput {
-	return i.ToLVMMapOutputWithContext(context.Background())
+func (i LvmMap) ToLvmMapOutput() LvmMapOutput {
+	return i.ToLvmMapOutputWithContext(context.Background())
 }
 
-func (i LVMMap) ToLVMMapOutputWithContext(ctx context.Context) LVMMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(LVMMapOutput)
+func (i LvmMap) ToLvmMapOutputWithContext(ctx context.Context) LvmMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LvmMapOutput)
 }
 
-type LVMOutput struct{ *pulumi.OutputState }
+type LvmOutput struct{ *pulumi.OutputState }
 
-func (LVMOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**LVM)(nil)).Elem()
+func (LvmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Lvm)(nil)).Elem()
 }
 
-func (o LVMOutput) ToLVMOutput() LVMOutput {
+func (o LvmOutput) ToLvmOutput() LvmOutput {
 	return o
 }
 
-func (o LVMOutput) ToLVMOutputWithContext(ctx context.Context) LVMOutput {
+func (o LvmOutput) ToLvmOutputWithContext(ctx context.Context) LvmOutput {
 	return o
 }
 
 // The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
-func (o LVMOutput) Contents() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *LVM) pulumi.StringArrayOutput { return v.Contents }).(pulumi.StringArrayOutput)
+func (o LvmOutput) Contents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Lvm) pulumi.StringArrayOutput { return v.Contents }).(pulumi.StringArrayOutput)
 }
 
 // Whether the storage is disabled.
-func (o LVMOutput) Disable() pulumi.BoolOutput {
-	return o.ApplyT(func(v *LVM) pulumi.BoolOutput { return v.Disable }).(pulumi.BoolOutput)
-}
-
-// The unique identifier of the storage.
-func (o LVMOutput) LvmId() pulumi.StringOutput {
-	return o.ApplyT(func(v *LVM) pulumi.StringOutput { return v.LvmId }).(pulumi.StringOutput)
+func (o LvmOutput) Disable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Lvm) pulumi.BoolOutput { return v.Disable }).(pulumi.BoolOutput)
 }
 
 // A list of nodes where this storage is available.
-func (o LVMOutput) Nodes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *LVM) pulumi.StringArrayOutput { return v.Nodes }).(pulumi.StringArrayOutput)
+func (o LvmOutput) Nodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Lvm) pulumi.StringArrayOutput { return v.Nodes }).(pulumi.StringArrayOutput)
+}
+
+// The unique identifier of the storage.
+func (o LvmOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Lvm) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
 }
 
 // Whether the storage is shared across all nodes.
-func (o LVMOutput) Shared() pulumi.BoolOutput {
-	return o.ApplyT(func(v *LVM) pulumi.BoolOutput { return v.Shared }).(pulumi.BoolOutput)
+func (o LvmOutput) Shared() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Lvm) pulumi.BoolOutput { return v.Shared }).(pulumi.BoolOutput)
 }
 
 // The name of the volume group to use.
-func (o LVMOutput) VolumeGroup() pulumi.StringOutput {
-	return o.ApplyT(func(v *LVM) pulumi.StringOutput { return v.VolumeGroup }).(pulumi.StringOutput)
+func (o LvmOutput) VolumeGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v *Lvm) pulumi.StringOutput { return v.VolumeGroup }).(pulumi.StringOutput)
 }
 
 // Whether to zero-out data when removing LVMs.
-func (o LVMOutput) WipeRemovedVolumes() pulumi.BoolOutput {
-	return o.ApplyT(func(v *LVM) pulumi.BoolOutput { return v.WipeRemovedVolumes }).(pulumi.BoolOutput)
+func (o LvmOutput) WipeRemovedVolumes() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Lvm) pulumi.BoolOutput { return v.WipeRemovedVolumes }).(pulumi.BoolOutput)
 }
 
-type LVMArrayOutput struct{ *pulumi.OutputState }
+type LvmArrayOutput struct{ *pulumi.OutputState }
 
-func (LVMArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*LVM)(nil)).Elem()
+func (LvmArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*Lvm)(nil)).Elem()
 }
 
-func (o LVMArrayOutput) ToLVMArrayOutput() LVMArrayOutput {
+func (o LvmArrayOutput) ToLvmArrayOutput() LvmArrayOutput {
 	return o
 }
 
-func (o LVMArrayOutput) ToLVMArrayOutputWithContext(ctx context.Context) LVMArrayOutput {
+func (o LvmArrayOutput) ToLvmArrayOutputWithContext(ctx context.Context) LvmArrayOutput {
 	return o
 }
 
-func (o LVMArrayOutput) Index(i pulumi.IntInput) LVMOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LVM {
-		return vs[0].([]*LVM)[vs[1].(int)]
-	}).(LVMOutput)
+func (o LvmArrayOutput) Index(i pulumi.IntInput) LvmOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Lvm {
+		return vs[0].([]*Lvm)[vs[1].(int)]
+	}).(LvmOutput)
 }
 
-type LVMMapOutput struct{ *pulumi.OutputState }
+type LvmMapOutput struct{ *pulumi.OutputState }
 
-func (LVMMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*LVM)(nil)).Elem()
+func (LvmMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*Lvm)(nil)).Elem()
 }
 
-func (o LVMMapOutput) ToLVMMapOutput() LVMMapOutput {
+func (o LvmMapOutput) ToLvmMapOutput() LvmMapOutput {
 	return o
 }
 
-func (o LVMMapOutput) ToLVMMapOutputWithContext(ctx context.Context) LVMMapOutput {
+func (o LvmMapOutput) ToLvmMapOutputWithContext(ctx context.Context) LvmMapOutput {
 	return o
 }
 
-func (o LVMMapOutput) MapIndex(k pulumi.StringInput) LVMOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *LVM {
-		return vs[0].(map[string]*LVM)[vs[1].(string)]
-	}).(LVMOutput)
+func (o LvmMapOutput) MapIndex(k pulumi.StringInput) LvmOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Lvm {
+		return vs[0].(map[string]*Lvm)[vs[1].(string)]
+	}).(LvmOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*LVMInput)(nil)).Elem(), &LVM{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LVMArrayInput)(nil)).Elem(), LVMArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*LVMMapInput)(nil)).Elem(), LVMMap{})
-	pulumi.RegisterOutputType(LVMOutput{})
-	pulumi.RegisterOutputType(LVMArrayOutput{})
-	pulumi.RegisterOutputType(LVMMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LvmInput)(nil)).Elem(), &Lvm{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LvmArrayInput)(nil)).Elem(), LvmArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LvmMapInput)(nil)).Elem(), LvmMap{})
+	pulumi.RegisterOutputType(LvmOutput{})
+	pulumi.RegisterOutputType(LvmArrayOutput{})
+	pulumi.RegisterOutputType(LvmMapOutput{})
 }

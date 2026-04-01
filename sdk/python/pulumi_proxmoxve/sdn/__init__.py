@@ -7,12 +7,19 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .applier import *
+from .applier_legacy import *
 from .get_subnet import *
+from .get_subnet_legacy import *
 from .get_vnet import *
+from .get_vnet_legacy import *
 from .get_vnets import *
+from .get_vnets_legacy import *
 from .get_zones import *
+from .get_zones_legacy import *
 from .subnet import *
+from .subnet_legacy import *
 from .vnet import *
+from .vnet_legacy import *
 from ._inputs import *
 from . import outputs
 
@@ -20,6 +27,9 @@ from . import outputs
 if typing.TYPE_CHECKING:
     import pulumi_proxmoxve.sdn.fabric as __fabric
     fabric = __fabric
+    import pulumi_proxmoxve.sdn.zone as __zone
+    zone = __zone
 else:
     fabric = _utilities.lazy_import('pulumi_proxmoxve.sdn.fabric')
+    zone = _utilities.lazy_import('pulumi_proxmoxve.sdn.zone')
 

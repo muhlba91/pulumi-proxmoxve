@@ -8,22 +8,10 @@ import * as utilities from "../../utilities";
 
 /**
  * Retrieves a USB hardware mapping from a Proxmox VE cluster.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const example = proxmoxve.Hardware.mapping.getUsb({
- *     name: "example",
- * });
- * export const dataProxmoxVirtualEnvironmentHardwareMappingUsb = example;
- * ```
  */
 export function getUsb(args: GetUsbArgs, opts?: pulumi.InvokeOptions): Promise<GetUsbResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("proxmoxve:Hardware/mapping/getUsb:getUsb", {
+    return pulumi.runtime.invoke("proxmoxve:hardware/mapping/getUsb:getUsb", {
         "name": args.name,
     }, opts);
 }
@@ -53,7 +41,7 @@ export interface GetUsbResult {
     /**
      * The actual map of devices for the hardware mapping.
      */
-    readonly maps: outputs.Hardware.mapping.GetUsbMap[];
+    readonly maps: outputs.hardware.mapping.GetUsbMap[];
     /**
      * The name of this USB hardware mapping.
      */
@@ -61,22 +49,10 @@ export interface GetUsbResult {
 }
 /**
  * Retrieves a USB hardware mapping from a Proxmox VE cluster.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const example = proxmoxve.Hardware.mapping.getUsb({
- *     name: "example",
- * });
- * export const dataProxmoxVirtualEnvironmentHardwareMappingUsb = example;
- * ```
  */
 export function getUsbOutput(args: GetUsbOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUsbResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("proxmoxve:Hardware/mapping/getUsb:getUsb", {
+    return pulumi.runtime.invokeOutput("proxmoxve:hardware/mapping/getUsb:getUsb", {
         "name": args.name,
     }, opts);
 }

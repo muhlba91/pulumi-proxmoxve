@@ -6,10 +6,25 @@ import builtins as _builtins
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .account import *
+from .account_legacy import *
 from .certificate import *
+from .certificate_legacy import *
 from .get_account import *
+from .get_account_legacy import *
 from .get_accounts import *
+from .get_accounts_legacy import *
 from .get_plugin import *
+from .get_plugin_legacy import *
 from .get_plugins import *
+from .get_plugins_legacy import *
 from ._inputs import *
 from . import outputs
+
+# Make subpackages available:
+if typing.TYPE_CHECKING:
+    import pulumi_proxmoxve.acme.dns as __dns
+    dns = __dns
+else:
+    dns = _utilities.lazy_import('pulumi_proxmoxve.acme.dns')
+

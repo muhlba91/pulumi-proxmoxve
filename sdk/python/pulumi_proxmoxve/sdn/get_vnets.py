@@ -65,23 +65,10 @@ class AwaitableGetVnetsResult(GetVnetsResult):
 def get_vnets(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVnetsResult:
     """
     Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    # List all SDN VNets
-    all = proxmoxve.Sdn.get_vnets()
-    pulumi.export("dataProxmoxVirtualEnvironmentSdnVnetsAll", {
-        "vnets": all.vnets,
-    })
-    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('proxmoxve:Sdn/getVnets:getVnets', __args__, opts=opts, typ=GetVnetsResult).value
+    __ret__ = pulumi.runtime.invoke('proxmoxve:sdn/getVnets:getVnets', __args__, opts=opts, typ=GetVnetsResult).value
 
     return AwaitableGetVnetsResult(
         id=pulumi.get(__ret__, 'id'),
@@ -89,23 +76,10 @@ def get_vnets(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVnetsR
 def get_vnets_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVnetsResult]:
     """
     Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    # List all SDN VNets
-    all = proxmoxve.Sdn.get_vnets()
-    pulumi.export("dataProxmoxVirtualEnvironmentSdnVnetsAll", {
-        "vnets": all.vnets,
-    })
-    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Sdn/getVnets:getVnets', __args__, opts=opts, typ=GetVnetsResult)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:sdn/getVnets:getVnets', __args__, opts=opts, typ=GetVnetsResult)
     return __ret__.apply(lambda __response__: GetVnetsResult(
         id=pulumi.get(__response__, 'id'),
         vnets=pulumi.get(__response__, 'vnets')))

@@ -6,73 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages Proxmox VE SDN VNet.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const finalizer = new proxmoxve.sdn.Applier("finalizer", {});
- * // SDN Zone (Simple) - Basic zone for simple vnets
- * const exampleZone1 = new proxmoxve.sdnzone.Simple("example_zone_1", {
- *     zoneId: "zone1",
- *     mtu: 1500,
- *     dns: "1.1.1.1",
- *     dnsZone: "example.com",
- *     ipam: "pve",
- *     reverseDns: "1.1.1.1",
- * }, {
- *     dependsOn: [finalizer],
- * });
- * // SDN Zone (Simple) - Second zone for demonstration
- * const exampleZone2 = new proxmoxve.sdnzone.Simple("example_zone_2", {
- *     zoneId: "zone2",
- *     mtu: 1500,
- * }, {
- *     dependsOn: [finalizer],
- * });
- * // Basic VNet (Simple)
- * const basicVnet = new proxmoxve.sdn.Vnet("basic_vnet", {
- *     vnetId: "vnet1",
- *     zone: exampleZone1.zoneId,
- * }, {
- *     dependsOn: [finalizer],
- * });
- * // VNet with Alias and Port Isolation
- * const isolatedVnet = new proxmoxve.sdn.Vnet("isolated_vnet", {
- *     vnetId: "vnet2",
- *     zone: exampleZone2.zoneId,
- *     alias: "Isolated VNet",
- *     isolatePorts: true,
- *     vlanAware: false,
- * }, {
- *     dependsOn: [finalizer],
- * });
- * // SDN Applier for all resources
- * const vnetApplier = new proxmoxve.sdn.Applier("vnet_applier", {}, {
- *     dependsOn: [
- *         exampleZone1,
- *         exampleZone2,
- *         basicVnet,
- *         isolatedVnet,
- *     ],
- * });
- * ```
- *
- * ## Import
- *
- * #!/usr/bin/env sh
- *
- * SDN vnet can be imported using its unique identifier (vnet ID)
- *
- * ```sh
- * $ pulumi import proxmoxve:Sdn/vnet:Vnet basic_vnet vnet1
- * ```
- *
- * ```sh
- * $ pulumi import proxmoxve:Sdn/vnet:Vnet isolated_vnet vnet2
- * ```
  */
 export class Vnet extends pulumi.CustomResource {
     /**
@@ -89,7 +22,7 @@ export class Vnet extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'proxmoxve:Sdn/vnet:Vnet';
+    public static readonly __pulumiType = 'proxmoxve:sdn/vnet:Vnet';
 
     /**
      * Returns true if the given object is an instance of Vnet.  This is designed to work even
@@ -111,6 +44,10 @@ export class Vnet extends pulumi.CustomResource {
      */
     declare public readonly isolatePorts: pulumi.Output<boolean | undefined>;
     /**
+     * The unique identifier of the SDN VNet.
+     */
+    declare public readonly resourceId: pulumi.Output<string>;
+    /**
      * Tag value for VLAN/VXLAN (can't be used with other zone types).
      */
     declare public readonly tag: pulumi.Output<number | undefined>;
@@ -118,10 +55,6 @@ export class Vnet extends pulumi.CustomResource {
      * Allow VM VLANs to pass through this VNet.
      */
     declare public readonly vlanAware: pulumi.Output<boolean | undefined>;
-    /**
-     * The unique identifier of the SDN VNet.
-     */
-    declare public readonly vnetId: pulumi.Output<string>;
     /**
      * The zone to which this VNet belongs.
      */
@@ -142,26 +75,28 @@ export class Vnet extends pulumi.CustomResource {
             const state = argsOrState as VnetState | undefined;
             resourceInputs["alias"] = state?.alias;
             resourceInputs["isolatePorts"] = state?.isolatePorts;
+            resourceInputs["resourceId"] = state?.resourceId;
             resourceInputs["tag"] = state?.tag;
             resourceInputs["vlanAware"] = state?.vlanAware;
-            resourceInputs["vnetId"] = state?.vnetId;
             resourceInputs["zone"] = state?.zone;
         } else {
             const args = argsOrState as VnetArgs | undefined;
-            if (args?.vnetId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'vnetId'");
+            if (args?.resourceId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'resourceId'");
             }
             if (args?.zone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
             }
             resourceInputs["alias"] = args?.alias;
             resourceInputs["isolatePorts"] = args?.isolatePorts;
+            resourceInputs["resourceId"] = args?.resourceId;
             resourceInputs["tag"] = args?.tag;
             resourceInputs["vlanAware"] = args?.vlanAware;
-            resourceInputs["vnetId"] = args?.vnetId;
             resourceInputs["zone"] = args?.zone;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "proxmox_virtual_environment_sdn_vnet" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Vnet.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -179,6 +114,10 @@ export interface VnetState {
      */
     isolatePorts?: pulumi.Input<boolean>;
     /**
+     * The unique identifier of the SDN VNet.
+     */
+    resourceId?: pulumi.Input<string>;
+    /**
      * Tag value for VLAN/VXLAN (can't be used with other zone types).
      */
     tag?: pulumi.Input<number>;
@@ -186,10 +125,6 @@ export interface VnetState {
      * Allow VM VLANs to pass through this VNet.
      */
     vlanAware?: pulumi.Input<boolean>;
-    /**
-     * The unique identifier of the SDN VNet.
-     */
-    vnetId?: pulumi.Input<string>;
     /**
      * The zone to which this VNet belongs.
      */
@@ -209,6 +144,10 @@ export interface VnetArgs {
      */
     isolatePorts?: pulumi.Input<boolean>;
     /**
+     * The unique identifier of the SDN VNet.
+     */
+    resourceId: pulumi.Input<string>;
+    /**
      * Tag value for VLAN/VXLAN (can't be used with other zone types).
      */
     tag?: pulumi.Input<number>;
@@ -216,10 +155,6 @@ export interface VnetArgs {
      * Allow VM VLANs to pass through this VNet.
      */
     vlanAware?: pulumi.Input<boolean>;
-    /**
-     * The unique identifier of the SDN VNet.
-     */
-    vnetId: pulumi.Input<string>;
     /**
      * The zone to which this VNet belongs.
      */

@@ -6,24 +6,10 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves an APT repository from a Proxmox VE cluster.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const example = proxmoxve.Apt.getRepository({
- *     filePath: "/etc/apt/sources.list",
- *     index: 0,
- *     node: "pve",
- * });
- * export const proxmoxVirtualEnvironmentAptRepository = example;
- * ```
  */
 export function getRepository(args: GetRepositoryArgs, opts?: pulumi.InvokeOptions): Promise<GetRepositoryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("proxmoxve:Apt/getRepository:getRepository", {
+    return pulumi.runtime.invoke("proxmoxve:apt/getRepository:getRepository", {
         "filePath": args.filePath,
         "index": args.index,
         "node": args.node,
@@ -99,24 +85,10 @@ export interface GetRepositoryResult {
 }
 /**
  * Retrieves an APT repository from a Proxmox VE cluster.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const example = proxmoxve.Apt.getRepository({
- *     filePath: "/etc/apt/sources.list",
- *     index: 0,
- *     node: "pve",
- * });
- * export const proxmoxVirtualEnvironmentAptRepository = example;
- * ```
  */
 export function getRepositoryOutput(args: GetRepositoryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRepositoryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("proxmoxve:Apt/getRepository:getRepository", {
+    return pulumi.runtime.invokeOutput("proxmoxve:apt/getRepository:getRepository", {
         "filePath": args.filePath,
         "index": args.index,
         "node": args.node,

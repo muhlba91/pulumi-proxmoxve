@@ -19,7 +19,7 @@ __all__ = ['VnetArgs', 'Vnet']
 @pulumi.input_type
 class VnetArgs:
     def __init__(__self__, *,
-                 vnet_id: pulumi.Input[_builtins.str],
+                 resource_id: pulumi.Input[_builtins.str],
                  zone: pulumi.Input[_builtins.str],
                  alias: Optional[pulumi.Input[_builtins.str]] = None,
                  isolate_ports: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -27,14 +27,15 @@ class VnetArgs:
                  vlan_aware: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Vnet resource.
-        :param pulumi.Input[_builtins.str] vnet_id: The unique identifier of the SDN VNet.
+
+        :param pulumi.Input[_builtins.str] resource_id: The unique identifier of the SDN VNet.
         :param pulumi.Input[_builtins.str] zone: The zone to which this VNet belongs.
         :param pulumi.Input[_builtins.str] alias: An optional alias for this VNet.
         :param pulumi.Input[_builtins.bool] isolate_ports: Isolate ports within this VNet.
         :param pulumi.Input[_builtins.int] tag: Tag value for VLAN/VXLAN (can't be used with other zone types).
         :param pulumi.Input[_builtins.bool] vlan_aware: Allow VM VLANs to pass through this VNet.
         """
-        pulumi.set(__self__, "vnet_id", vnet_id)
+        pulumi.set(__self__, "resource_id", resource_id)
         pulumi.set(__self__, "zone", zone)
         if alias is not None:
             pulumi.set(__self__, "alias", alias)
@@ -46,16 +47,16 @@ class VnetArgs:
             pulumi.set(__self__, "vlan_aware", vlan_aware)
 
     @_builtins.property
-    @pulumi.getter(name="vnetId")
-    def vnet_id(self) -> pulumi.Input[_builtins.str]:
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> pulumi.Input[_builtins.str]:
         """
         The unique identifier of the SDN VNet.
         """
-        return pulumi.get(self, "vnet_id")
+        return pulumi.get(self, "resource_id")
 
-    @vnet_id.setter
-    def vnet_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "vnet_id", value)
+    @resource_id.setter
+    def resource_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -123,29 +124,30 @@ class _VnetState:
     def __init__(__self__, *,
                  alias: Optional[pulumi.Input[_builtins.str]] = None,
                  isolate_ports: Optional[pulumi.Input[_builtins.bool]] = None,
+                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tag: Optional[pulumi.Input[_builtins.int]] = None,
                  vlan_aware: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vnet_id: Optional[pulumi.Input[_builtins.str]] = None,
                  zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Vnet resources.
+
         :param pulumi.Input[_builtins.str] alias: An optional alias for this VNet.
         :param pulumi.Input[_builtins.bool] isolate_ports: Isolate ports within this VNet.
+        :param pulumi.Input[_builtins.str] resource_id: The unique identifier of the SDN VNet.
         :param pulumi.Input[_builtins.int] tag: Tag value for VLAN/VXLAN (can't be used with other zone types).
         :param pulumi.Input[_builtins.bool] vlan_aware: Allow VM VLANs to pass through this VNet.
-        :param pulumi.Input[_builtins.str] vnet_id: The unique identifier of the SDN VNet.
         :param pulumi.Input[_builtins.str] zone: The zone to which this VNet belongs.
         """
         if alias is not None:
             pulumi.set(__self__, "alias", alias)
         if isolate_ports is not None:
             pulumi.set(__self__, "isolate_ports", isolate_ports)
+        if resource_id is not None:
+            pulumi.set(__self__, "resource_id", resource_id)
         if tag is not None:
             pulumi.set(__self__, "tag", tag)
         if vlan_aware is not None:
             pulumi.set(__self__, "vlan_aware", vlan_aware)
-        if vnet_id is not None:
-            pulumi.set(__self__, "vnet_id", vnet_id)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
 
@@ -174,6 +176,18 @@ class _VnetState:
         pulumi.set(self, "isolate_ports", value)
 
     @_builtins.property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The unique identifier of the SDN VNet.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @resource_id.setter
+    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def tag(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
@@ -198,18 +212,6 @@ class _VnetState:
         pulumi.set(self, "vlan_aware", value)
 
     @_builtins.property
-    @pulumi.getter(name="vnetId")
-    def vnet_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The unique identifier of the SDN VNet.
-        """
-        return pulumi.get(self, "vnet_id")
-
-    @vnet_id.setter
-    def vnet_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "vnet_id", value)
-
-    @_builtins.property
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -222,7 +224,7 @@ class _VnetState:
         pulumi.set(self, "zone", value)
 
 
-@pulumi.type_token("proxmoxve:Sdn/vnet:Vnet")
+@pulumi.type_token("proxmoxve:sdn/vnet:Vnet")
 class Vnet(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -230,78 +232,22 @@ class Vnet(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alias: Optional[pulumi.Input[_builtins.str]] = None,
                  isolate_ports: Optional[pulumi.Input[_builtins.bool]] = None,
+                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tag: Optional[pulumi.Input[_builtins.int]] = None,
                  vlan_aware: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vnet_id: Optional[pulumi.Input[_builtins.str]] = None,
                  zone: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         Manages Proxmox VE SDN VNet.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        finalizer = proxmoxve.sdn.Applier("finalizer")
-        # SDN Zone (Simple) - Basic zone for simple vnets
-        example_zone1 = proxmoxve.sdnzone.Simple("example_zone_1",
-            zone_id="zone1",
-            mtu=1500,
-            dns="1.1.1.1",
-            dns_zone="example.com",
-            ipam="pve",
-            reverse_dns="1.1.1.1",
-            opts = pulumi.ResourceOptions(depends_on=[finalizer]))
-        # SDN Zone (Simple) - Second zone for demonstration
-        example_zone2 = proxmoxve.sdnzone.Simple("example_zone_2",
-            zone_id="zone2",
-            mtu=1500,
-            opts = pulumi.ResourceOptions(depends_on=[finalizer]))
-        # Basic VNet (Simple)
-        basic_vnet = proxmoxve.sdn.Vnet("basic_vnet",
-            vnet_id="vnet1",
-            zone=example_zone1.zone_id,
-            opts = pulumi.ResourceOptions(depends_on=[finalizer]))
-        # VNet with Alias and Port Isolation
-        isolated_vnet = proxmoxve.sdn.Vnet("isolated_vnet",
-            vnet_id="vnet2",
-            zone=example_zone2.zone_id,
-            alias="Isolated VNet",
-            isolate_ports=True,
-            vlan_aware=False,
-            opts = pulumi.ResourceOptions(depends_on=[finalizer]))
-        # SDN Applier for all resources
-        vnet_applier = proxmoxve.sdn.Applier("vnet_applier", opts = pulumi.ResourceOptions(depends_on=[
-                example_zone1,
-                example_zone2,
-                basic_vnet,
-                isolated_vnet,
-            ]))
-        ```
-
-        ## Import
-
-        #!/usr/bin/env sh
-
-        SDN vnet can be imported using its unique identifier (vnet ID)
-
-        ```sh
-        $ pulumi import proxmoxve:Sdn/vnet:Vnet basic_vnet vnet1
-        ```
-
-        ```sh
-        $ pulumi import proxmoxve:Sdn/vnet:Vnet isolated_vnet vnet2
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alias: An optional alias for this VNet.
         :param pulumi.Input[_builtins.bool] isolate_ports: Isolate ports within this VNet.
+        :param pulumi.Input[_builtins.str] resource_id: The unique identifier of the SDN VNet.
         :param pulumi.Input[_builtins.int] tag: Tag value for VLAN/VXLAN (can't be used with other zone types).
         :param pulumi.Input[_builtins.bool] vlan_aware: Allow VM VLANs to pass through this VNet.
-        :param pulumi.Input[_builtins.str] vnet_id: The unique identifier of the SDN VNet.
         :param pulumi.Input[_builtins.str] zone: The zone to which this VNet belongs.
         """
         ...
@@ -313,62 +259,6 @@ class Vnet(pulumi.CustomResource):
         """
         Manages Proxmox VE SDN VNet.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        finalizer = proxmoxve.sdn.Applier("finalizer")
-        # SDN Zone (Simple) - Basic zone for simple vnets
-        example_zone1 = proxmoxve.sdnzone.Simple("example_zone_1",
-            zone_id="zone1",
-            mtu=1500,
-            dns="1.1.1.1",
-            dns_zone="example.com",
-            ipam="pve",
-            reverse_dns="1.1.1.1",
-            opts = pulumi.ResourceOptions(depends_on=[finalizer]))
-        # SDN Zone (Simple) - Second zone for demonstration
-        example_zone2 = proxmoxve.sdnzone.Simple("example_zone_2",
-            zone_id="zone2",
-            mtu=1500,
-            opts = pulumi.ResourceOptions(depends_on=[finalizer]))
-        # Basic VNet (Simple)
-        basic_vnet = proxmoxve.sdn.Vnet("basic_vnet",
-            vnet_id="vnet1",
-            zone=example_zone1.zone_id,
-            opts = pulumi.ResourceOptions(depends_on=[finalizer]))
-        # VNet with Alias and Port Isolation
-        isolated_vnet = proxmoxve.sdn.Vnet("isolated_vnet",
-            vnet_id="vnet2",
-            zone=example_zone2.zone_id,
-            alias="Isolated VNet",
-            isolate_ports=True,
-            vlan_aware=False,
-            opts = pulumi.ResourceOptions(depends_on=[finalizer]))
-        # SDN Applier for all resources
-        vnet_applier = proxmoxve.sdn.Applier("vnet_applier", opts = pulumi.ResourceOptions(depends_on=[
-                example_zone1,
-                example_zone2,
-                basic_vnet,
-                isolated_vnet,
-            ]))
-        ```
-
-        ## Import
-
-        #!/usr/bin/env sh
-
-        SDN vnet can be imported using its unique identifier (vnet ID)
-
-        ```sh
-        $ pulumi import proxmoxve:Sdn/vnet:Vnet basic_vnet vnet1
-        ```
-
-        ```sh
-        $ pulumi import proxmoxve:Sdn/vnet:Vnet isolated_vnet vnet2
-        ```
 
         :param str resource_name: The name of the resource.
         :param VnetArgs args: The arguments to use to populate this resource's properties.
@@ -387,9 +277,9 @@ class Vnet(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alias: Optional[pulumi.Input[_builtins.str]] = None,
                  isolate_ports: Optional[pulumi.Input[_builtins.bool]] = None,
+                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  tag: Optional[pulumi.Input[_builtins.int]] = None,
                  vlan_aware: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vnet_id: Optional[pulumi.Input[_builtins.str]] = None,
                  zone: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -402,16 +292,18 @@ class Vnet(pulumi.CustomResource):
 
             __props__.__dict__["alias"] = alias
             __props__.__dict__["isolate_ports"] = isolate_ports
+            if resource_id is None and not opts.urn:
+                raise TypeError("Missing required property 'resource_id'")
+            __props__.__dict__["resource_id"] = resource_id
             __props__.__dict__["tag"] = tag
             __props__.__dict__["vlan_aware"] = vlan_aware
-            if vnet_id is None and not opts.urn:
-                raise TypeError("Missing required property 'vnet_id'")
-            __props__.__dict__["vnet_id"] = vnet_id
             if zone is None and not opts.urn:
                 raise TypeError("Missing required property 'zone'")
             __props__.__dict__["zone"] = zone
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="proxmox_virtual_environment_sdn_vnet")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Vnet, __self__).__init__(
-            'proxmoxve:Sdn/vnet:Vnet',
+            'proxmoxve:sdn/vnet:Vnet',
             resource_name,
             __props__,
             opts)
@@ -422,9 +314,9 @@ class Vnet(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             alias: Optional[pulumi.Input[_builtins.str]] = None,
             isolate_ports: Optional[pulumi.Input[_builtins.bool]] = None,
+            resource_id: Optional[pulumi.Input[_builtins.str]] = None,
             tag: Optional[pulumi.Input[_builtins.int]] = None,
             vlan_aware: Optional[pulumi.Input[_builtins.bool]] = None,
-            vnet_id: Optional[pulumi.Input[_builtins.str]] = None,
             zone: Optional[pulumi.Input[_builtins.str]] = None) -> 'Vnet':
         """
         Get an existing Vnet resource's state with the given name, id, and optional extra
@@ -435,9 +327,9 @@ class Vnet(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alias: An optional alias for this VNet.
         :param pulumi.Input[_builtins.bool] isolate_ports: Isolate ports within this VNet.
+        :param pulumi.Input[_builtins.str] resource_id: The unique identifier of the SDN VNet.
         :param pulumi.Input[_builtins.int] tag: Tag value for VLAN/VXLAN (can't be used with other zone types).
         :param pulumi.Input[_builtins.bool] vlan_aware: Allow VM VLANs to pass through this VNet.
-        :param pulumi.Input[_builtins.str] vnet_id: The unique identifier of the SDN VNet.
         :param pulumi.Input[_builtins.str] zone: The zone to which this VNet belongs.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -446,9 +338,9 @@ class Vnet(pulumi.CustomResource):
 
         __props__.__dict__["alias"] = alias
         __props__.__dict__["isolate_ports"] = isolate_ports
+        __props__.__dict__["resource_id"] = resource_id
         __props__.__dict__["tag"] = tag
         __props__.__dict__["vlan_aware"] = vlan_aware
-        __props__.__dict__["vnet_id"] = vnet_id
         __props__.__dict__["zone"] = zone
         return Vnet(resource_name, opts=opts, __props__=__props__)
 
@@ -469,6 +361,14 @@ class Vnet(pulumi.CustomResource):
         return pulumi.get(self, "isolate_ports")
 
     @_builtins.property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The unique identifier of the SDN VNet.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @_builtins.property
     @pulumi.getter
     def tag(self) -> pulumi.Output[Optional[_builtins.int]]:
         """
@@ -483,14 +383,6 @@ class Vnet(pulumi.CustomResource):
         Allow VM VLANs to pass through this VNet.
         """
         return pulumi.get(self, "vlan_aware")
-
-    @_builtins.property
-    @pulumi.getter(name="vnetId")
-    def vnet_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The unique identifier of the SDN VNet.
-        """
-        return pulumi.get(self, "vnet_id")
 
     @_builtins.property
     @pulumi.getter

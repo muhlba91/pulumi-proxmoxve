@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -22,7 +22,7 @@ type Ssh struct {
 	AgentSocket *string `pulumi:"agentSocket"`
 	// Overrides for SSH connection configuration for a Proxmox VE node.
 	Nodes []SshNode `pulumi:"nodes"`
-	// The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
+	// The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block when using username/password authentication. Default has no effect when using API token authentication, as there is no password to inherit. Can also be sourced from `PROXMOX_VE_SSH_PASSWORD`.
 	Password *string `pulumi:"password"`
 	// The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
 	PrivateKey *string `pulumi:"privateKey"`
@@ -56,7 +56,7 @@ type SshArgs struct {
 	AgentSocket pulumi.StringPtrInput `pulumi:"agentSocket"`
 	// Overrides for SSH connection configuration for a Proxmox VE node.
 	Nodes SshNodeArrayInput `pulumi:"nodes"`
-	// The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
+	// The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block when using username/password authentication. Default has no effect when using API token authentication, as there is no password to inherit. Can also be sourced from `PROXMOX_VE_SSH_PASSWORD`.
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
 	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
@@ -116,7 +116,7 @@ func (o SshOutput) Nodes() SshNodeArrayOutput {
 	return o.ApplyT(func(v Ssh) []SshNode { return v.Nodes }).(SshNodeArrayOutput)
 }
 
-// The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
+// The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block when using username/password authentication. Default has no effect when using API token authentication, as there is no password to inherit. Can also be sourced from `PROXMOX_VE_SSH_PASSWORD`.
 func (o SshOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Ssh) *string { return v.Password }).(pulumi.StringPtrOutput)
 }

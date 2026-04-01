@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,7 +15,7 @@ import (
 func LookupSubnet(ctx *pulumi.Context, args *LookupSubnetArgs, opts ...pulumi.InvokeOption) (*LookupSubnetResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSubnetResult
-	err := ctx.Invoke("proxmoxve:Sdn/getSubnet:getSubnet", args, &rv, opts...)
+	err := ctx.Invoke("proxmoxve:sdn/getSubnet:getSubnet", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -57,7 +57,7 @@ func LookupSubnetOutput(ctx *pulumi.Context, args LookupSubnetOutputArgs, opts .
 		ApplyT(func(v interface{}) (LookupSubnetResultOutput, error) {
 			args := v.(LookupSubnetArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:Sdn/getSubnet:getSubnet", args, LookupSubnetResultOutput{}, options).(LookupSubnetResultOutput), nil
+			return ctx.InvokeOutput("proxmoxve:sdn/getSubnet:getSubnet", args, LookupSubnetResultOutput{}, options).(LookupSubnetResultOutput), nil
 		}).(LookupSubnetResultOutput)
 }
 

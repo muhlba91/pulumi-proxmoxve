@@ -6,22 +6,10 @@ import * as utilities from "../../../utilities";
 
 /**
  * OpenFabric Fabric Node in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const main = proxmoxve.Sdn.fabric.node.getOpenfabric({
- *     fabricId: "main-fabric",
- *     nodeId: "pve",
- * });
- * ```
  */
 export function getOpenfabric(args: GetOpenfabricArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenfabricResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("proxmoxve:Sdn/fabric/node/getOpenfabric:getOpenfabric", {
+    return pulumi.runtime.invoke("proxmoxve:sdn/fabric/node/getOpenfabric:getOpenfabric", {
         "fabricId": args.fabricId,
         "nodeId": args.nodeId,
     }, opts);
@@ -49,6 +37,9 @@ export interface GetOpenfabricResult {
      * The unique identifier of the SDN fabric.
      */
     readonly fabricId: string;
+    /**
+     * The unique identifier of the SDN fabric node, in the format \n\n/\n\n.
+     */
     readonly id: string;
     /**
      * Set of interface names associated with the fabric node.
@@ -69,22 +60,10 @@ export interface GetOpenfabricResult {
 }
 /**
  * OpenFabric Fabric Node in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const main = proxmoxve.Sdn.fabric.node.getOpenfabric({
- *     fabricId: "main-fabric",
- *     nodeId: "pve",
- * });
- * ```
  */
 export function getOpenfabricOutput(args: GetOpenfabricOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOpenfabricResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("proxmoxve:Sdn/fabric/node/getOpenfabric:getOpenfabric", {
+    return pulumi.runtime.invokeOutput("proxmoxve:sdn/fabric/node/getOpenfabric:getOpenfabric", {
         "fabricId": args.fabricId,
         "nodeId": args.nodeId,
     }, opts);

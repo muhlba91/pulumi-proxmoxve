@@ -16,10 +16,51 @@ from .. import _utilities
 
 __all__ = [
     'GetMappingsCheckResult',
+    'GetMappingsLegacyCheckResult',
 ]
 
 @pulumi.output_type
 class GetMappingsCheckResult(dict):
+    def __init__(__self__, *,
+                 mapping_id: _builtins.str,
+                 message: _builtins.str,
+                 severity: _builtins.str):
+        """
+        :param _builtins.str mapping_id: The corresponding hardware mapping ID of the node check diagnostic entry.
+        :param _builtins.str message: The message of the node check diagnostic entry.
+        :param _builtins.str severity: The severity of the node check diagnostic entry.
+        """
+        pulumi.set(__self__, "mapping_id", mapping_id)
+        pulumi.set(__self__, "message", message)
+        pulumi.set(__self__, "severity", severity)
+
+    @_builtins.property
+    @pulumi.getter(name="mappingId")
+    def mapping_id(self) -> _builtins.str:
+        """
+        The corresponding hardware mapping ID of the node check diagnostic entry.
+        """
+        return pulumi.get(self, "mapping_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def message(self) -> _builtins.str:
+        """
+        The message of the node check diagnostic entry.
+        """
+        return pulumi.get(self, "message")
+
+    @_builtins.property
+    @pulumi.getter
+    def severity(self) -> _builtins.str:
+        """
+        The severity of the node check diagnostic entry.
+        """
+        return pulumi.get(self, "severity")
+
+
+@pulumi.output_type
+class GetMappingsLegacyCheckResult(dict):
     def __init__(__self__, *,
                  mapping_id: _builtins.str,
                  message: _builtins.str,

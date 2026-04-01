@@ -7,58 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves a list of hardware mapping resources.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/hardware"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := hardware.GetMappings(ctx, &hardware.GetMappingsArgs{
-//				CheckNode: pulumi.StringRef("pve"),
-//				Type:      "dir",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			example_pci, err := hardware.GetMappings(ctx, &hardware.GetMappingsArgs{
-//				CheckNode: pulumi.StringRef("pve"),
-//				Type:      "pci",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			example_usb, err := hardware.GetMappings(ctx, &hardware.GetMappingsArgs{
-//				CheckNode: pulumi.StringRef("pve"),
-//				Type:      "usb",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("dataProxmoxVirtualEnvironmentHardwareMappingsPci", example_pci)
-//			ctx.Export("dataProxmoxVirtualEnvironmentHardwareMappingsUsb", example_usb)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetMappings(ctx *pulumi.Context, args *GetMappingsArgs, opts ...pulumi.InvokeOption) (*GetMappingsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMappingsResult
-	err := ctx.Invoke("proxmoxve:Hardware/getMappings:getMappings", args, &rv, opts...)
+	err := ctx.Invoke("proxmoxve:hardware/getMappings:getMappings", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -92,7 +49,7 @@ func GetMappingsOutput(ctx *pulumi.Context, args GetMappingsOutputArgs, opts ...
 		ApplyT(func(v interface{}) (GetMappingsResultOutput, error) {
 			args := v.(GetMappingsArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:Hardware/getMappings:getMappings", args, GetMappingsResultOutput{}, options).(GetMappingsResultOutput), nil
+			return ctx.InvokeOutput("proxmoxve:hardware/getMappings:getMappings", args, GetMappingsResultOutput{}, options).(GetMappingsResultOutput), nil
 		}).(GetMappingsResultOutput)
 }
 

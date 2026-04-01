@@ -11,46 +11,8 @@ namespace Pulumi.ProxmoxVE.Oci
 {
     /// <summary>
     /// Manages OCI images pulled from OCI registries using PVE oci-registry-pull API. Pulls OCI container images and stores them as tar files in Proxmox VE datastores.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using ProxmoxVE = Pulumi.ProxmoxVE;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var ubuntuLatest = new ProxmoxVE.Oci.Image("ubuntu_latest", new()
-    ///     {
-    ///         NodeName = "pve",
-    ///         DatastoreId = "local",
-    ///         Reference = "docker.io/library/ubuntu:latest",
-    ///     });
-    /// 
-    ///     var nginx = new ProxmoxVE.Oci.Image("nginx", new()
-    ///     {
-    ///         NodeName = "pve",
-    ///         DatastoreId = "local",
-    ///         Reference = "docker.io/library/nginx:alpine",
-    ///         FileName = "custom_image_name.tar",
-    ///     });
-    /// 
-    ///     var debian = new ProxmoxVE.Oci.Image("debian", new()
-    ///     {
-    ///         NodeName = "pve",
-    ///         DatastoreId = "local",
-    ///         Reference = "docker.io/library/debian:bookworm",
-    ///         UploadTimeout = 900,
-    ///         Overwrite = false,
-    ///         OverwriteUnmanaged = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
-    [ProxmoxVEResourceType("proxmoxve:Oci/image:Image")]
+    [ProxmoxVEResourceType("proxmoxve:oci/image:Image")]
     public partial class Image : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -110,12 +72,12 @@ namespace Pulumi.ProxmoxVE.Oci
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Image(string name, ImageArgs args, CustomResourceOptions? options = null)
-            : base("proxmoxve:Oci/image:Image", name, args ?? new ImageArgs(), MakeResourceOptions(options, ""))
+            : base("proxmoxve:oci/image:Image", name, args ?? new ImageArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Image(string name, Input<string> id, ImageState? state = null, CustomResourceOptions? options = null)
-            : base("proxmoxve:Oci/image:Image", name, state, MakeResourceOptions(options, id))
+            : base("proxmoxve:oci/image:Image", name, state, MakeResourceOptions(options, id))
         {
         }
 

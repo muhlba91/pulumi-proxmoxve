@@ -11,57 +11,8 @@ namespace Pulumi.ProxmoxVE.Cluster
 {
     /// <summary>
     /// Manages Proxmox VE Cluster Datacenter options.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using ProxmoxVE = Pulumi.ProxmoxVE;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var options = new ProxmoxVE.Cluster.Options("options", new()
-    ///     {
-    ///         Language = "en",
-    ///         Keyboard = "pl",
-    ///         EmailFrom = "ged@gont.earthsea",
-    ///         BandwidthLimitMigration = 555555,
-    ///         BandwidthLimitDefault = 666666,
-    ///         MaxWorkers = 5,
-    ///         MigrationCidr = "10.0.0.0/8",
-    ///         MigrationType = "secure",
-    ///         NextId = new ProxmoxVE.Cluster.Inputs.OptionsNextIdArgs
-    ///         {
-    ///             Lower = 100,
-    ///             Upper = 999999999,
-    ///         },
-    ///         Notify = new ProxmoxVE.Cluster.Inputs.OptionsNotifyArgs
-    ///         {
-    ///             HaFencingMode = "never",
-    ///             HaFencingTarget = "default-matcher",
-    ///             PackageUpdates = "always",
-    ///             PackageUpdatesTarget = "default-matcher",
-    ///             PackageReplication = "always",
-    ///             PackageReplicationTarget = "default-matcher",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// #!/usr/bin/env sh
-    /// 
-    /// Cluster options are global and can be imported using e.g.:
-    /// 
-    /// ```sh
-    /// $ pulumi import proxmoxve:Cluster/options:Options options cluster
-    /// ```
     /// </summary>
-    [ProxmoxVEResourceType("proxmoxve:Cluster/options:Options")]
+    [ProxmoxVEResourceType("proxmoxve:cluster/options:Options")]
     public partial class Options : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -125,7 +76,7 @@ namespace Pulumi.ProxmoxVE.Cluster
         public Output<string?> EmailFrom { get; private set; } = null!;
 
         /// <summary>
-        /// Cluster wide HA shutdown policy (). Must be `Freeze` | `Failover` | `Migrate` | `Conditional` (default is `Conditional`).
+        /// Cluster wide HA shutdown policy. Must be `Freeze` | `Failover` | `Migrate` | `Conditional` (default is `Conditional`).
         /// </summary>
         [Output("haShutdownPolicy")]
         public Output<string?> HaShutdownPolicy { get; private set; } = null!;
@@ -193,12 +144,12 @@ namespace Pulumi.ProxmoxVE.Cluster
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Options(string name, OptionsArgs? args = null, CustomResourceOptions? options = null)
-            : base("proxmoxve:Cluster/options:Options", name, args ?? new OptionsArgs(), MakeResourceOptions(options, ""))
+            : base("proxmoxve:cluster/options:Options", name, args ?? new OptionsArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Options(string name, Input<string> id, OptionsState? state = null, CustomResourceOptions? options = null)
-            : base("proxmoxve:Cluster/options:Options", name, state, MakeResourceOptions(options, id))
+            : base("proxmoxve:cluster/options:Options", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -292,7 +243,7 @@ namespace Pulumi.ProxmoxVE.Cluster
         public Input<string>? EmailFrom { get; set; }
 
         /// <summary>
-        /// Cluster wide HA shutdown policy (). Must be `Freeze` | `Failover` | `Migrate` | `Conditional` (default is `Conditional`).
+        /// Cluster wide HA shutdown policy. Must be `Freeze` | `Failover` | `Migrate` | `Conditional` (default is `Conditional`).
         /// </summary>
         [Input("haShutdownPolicy")]
         public Input<string>? HaShutdownPolicy { get; set; }
@@ -420,7 +371,7 @@ namespace Pulumi.ProxmoxVE.Cluster
         public Input<string>? EmailFrom { get; set; }
 
         /// <summary>
-        /// Cluster wide HA shutdown policy (). Must be `Freeze` | `Failover` | `Migrate` | `Conditional` (default is `Conditional`).
+        /// Cluster wide HA shutdown policy. Must be `Freeze` | `Failover` | `Migrate` | `Conditional` (default is `Conditional`).
         /// </summary>
         [Input("haShutdownPolicy")]
         public Input<string>? HaShutdownPolicy { get; set; }

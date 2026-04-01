@@ -7,10 +7,16 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from .dir import *
+from .dir_legacy import *
 from .get_dir import *
+from .get_dir_legacy import *
 from .get_pci import *
+from .get_pci_legacy import *
 from .get_usb import *
+from .get_usb_legacy import *
 from .pci import *
+from .pci_legacy import *
 from .usb import *
+from .usb_legacy import *
 from ._inputs import *
 from . import outputs

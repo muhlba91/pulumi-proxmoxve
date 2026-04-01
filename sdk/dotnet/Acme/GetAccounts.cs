@@ -13,78 +13,21 @@ namespace Pulumi.ProxmoxVE.Acme
     {
         /// <summary>
         /// Retrieves the list of ACME accounts.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using ProxmoxVE = Pulumi.ProxmoxVE;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = ProxmoxVE.Acme.GetAccounts.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["dataProxmoxVirtualEnvironmentAcmeAccounts"] = example.Apply(getAccountsResult =&gt; getAccountsResult.Accounts),
-        ///     };
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetAccountsResult> InvokeAsync(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountsResult>("proxmoxve:Acme/getAccounts:getAccounts", InvokeArgs.Empty, options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountsResult>("proxmoxve:acme/getAccounts:getAccounts", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
         /// Retrieves the list of ACME accounts.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using ProxmoxVE = Pulumi.ProxmoxVE;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = ProxmoxVE.Acme.GetAccounts.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["dataProxmoxVirtualEnvironmentAcmeAccounts"] = example.Apply(getAccountsResult =&gt; getAccountsResult.Accounts),
-        ///     };
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetAccountsResult> Invoke(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetAccountsResult>("proxmoxve:Acme/getAccounts:getAccounts", InvokeArgs.Empty, options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountsResult>("proxmoxve:acme/getAccounts:getAccounts", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
         /// Retrieves the list of ACME accounts.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using ProxmoxVE = Pulumi.ProxmoxVE;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = ProxmoxVE.Acme.GetAccounts.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["dataProxmoxVirtualEnvironmentAcmeAccounts"] = example.Apply(getAccountsResult =&gt; getAccountsResult.Accounts),
-        ///     };
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetAccountsResult> Invoke(InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetAccountsResult>("proxmoxve:Acme/getAccounts:getAccounts", InvokeArgs.Empty, options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountsResult>("proxmoxve:acme/getAccounts:getAccounts", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

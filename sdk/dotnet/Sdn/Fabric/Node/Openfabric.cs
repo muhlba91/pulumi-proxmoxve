@@ -11,39 +11,8 @@ namespace Pulumi.ProxmoxVE.Sdn.Fabric.Node
 {
     /// <summary>
     /// OpenFabric Fabric Node in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using ProxmoxVE = Pulumi.ProxmoxVE;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var main = new ProxmoxVE.SDNFabric.OpenFabric("main", new()
-    ///     {
-    ///         FabricId = "main-fabric",
-    ///         IpPrefix = "10.0.0.0/16",
-    ///     });
-    /// 
-    ///     var mainOpenfabric = new ProxmoxVE.Sdn.Fabric.Node.Openfabric("main", new()
-    ///     {
-    ///         FabricId = main.FabricId,
-    ///         NodeId = "pve",
-    ///         Ip = "10.0.0.1",
-    ///         InterfaceNames = new[]
-    ///         {
-    ///             "nic0",
-    ///             "nic1",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
-    [ProxmoxVEResourceType("proxmoxve:Sdn/fabric/node/openfabric:Openfabric")]
+    [ProxmoxVEResourceType("proxmoxve:sdn/fabric/node/openfabric:Openfabric")]
     public partial class Openfabric : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -71,7 +40,7 @@ namespace Pulumi.ProxmoxVE.Sdn.Fabric.Node
         public Output<string?> Ip6 { get; private set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the SDN fabric.
+        /// The unique identifier of the SDN fabric node.
         /// </summary>
         [Output("nodeId")]
         public Output<string> NodeId { get; private set; } = null!;
@@ -85,12 +54,12 @@ namespace Pulumi.ProxmoxVE.Sdn.Fabric.Node
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Openfabric(string name, OpenfabricArgs args, CustomResourceOptions? options = null)
-            : base("proxmoxve:Sdn/fabric/node/openfabric:Openfabric", name, args ?? new OpenfabricArgs(), MakeResourceOptions(options, ""))
+            : base("proxmoxve:sdn/fabric/node/openfabric:Openfabric", name, args ?? new OpenfabricArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Openfabric(string name, Input<string> id, OpenfabricState? state = null, CustomResourceOptions? options = null)
-            : base("proxmoxve:Sdn/fabric/node/openfabric:Openfabric", name, state, MakeResourceOptions(options, id))
+            : base("proxmoxve:sdn/fabric/node/openfabric:Openfabric", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -154,7 +123,7 @@ namespace Pulumi.ProxmoxVE.Sdn.Fabric.Node
         public Input<string>? Ip6 { get; set; }
 
         /// <summary>
-        /// The unique identifier of the SDN fabric.
+        /// The unique identifier of the SDN fabric node.
         /// </summary>
         [Input("nodeId", required: true)]
         public Input<string> NodeId { get; set; } = null!;
@@ -198,7 +167,7 @@ namespace Pulumi.ProxmoxVE.Sdn.Fabric.Node
         public Input<string>? Ip6 { get; set; }
 
         /// <summary>
-        /// The unique identifier of the SDN fabric.
+        /// The unique identifier of the SDN fabric node.
         /// </summary>
         [Input("nodeId")]
         public Input<string>? NodeId { get; set; }

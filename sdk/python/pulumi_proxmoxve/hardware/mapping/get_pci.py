@@ -103,23 +103,13 @@ def get_pci(name: Optional[_builtins.str] = None,
     """
     Retrieves a PCI hardware mapping from a Proxmox VE cluster.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    example = proxmoxve.Hardware.mapping.get_pci(name="example")
-    pulumi.export("dataProxmoxVirtualEnvironmentHardwareMappingPci", example)
-    ```
-
 
     :param _builtins.str name: The name of this PCI hardware mapping.
     """
     __args__ = dict()
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('proxmoxve:Hardware/mapping/getPci:getPci', __args__, opts=opts, typ=GetPciResult).value
+    __ret__ = pulumi.runtime.invoke('proxmoxve:hardware/mapping/getPci:getPci', __args__, opts=opts, typ=GetPciResult).value
 
     return AwaitableGetPciResult(
         comment=pulumi.get(__ret__, 'comment'),
@@ -132,23 +122,13 @@ def get_pci_output(name: Optional[pulumi.Input[_builtins.str]] = None,
     """
     Retrieves a PCI hardware mapping from a Proxmox VE cluster.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    example = proxmoxve.Hardware.mapping.get_pci(name="example")
-    pulumi.export("dataProxmoxVirtualEnvironmentHardwareMappingPci", example)
-    ```
-
 
     :param _builtins.str name: The name of this PCI hardware mapping.
     """
     __args__ = dict()
     __args__['name'] = name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Hardware/mapping/getPci:getPci', __args__, opts=opts, typ=GetPciResult)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:hardware/mapping/getPci:getPci', __args__, opts=opts, typ=GetPciResult)
     return __ret__.apply(lambda __response__: GetPciResult(
         comment=pulumi.get(__response__, 'comment'),
         id=pulumi.get(__response__, 'id'),

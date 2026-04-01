@@ -8,120 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages files upload using PVE download-url API. It can be fully compatible and faster replacement for image files created using `Storage.File`. Supports images for VMs (ISO and disk images) and LXC (CT Templates).
+// Manages files upload using PVE download-url API. It can be fully compatible and faster replacement for image files created using `getFileLegacy`. Supports images for VMs (ISO and disk images) and LXC (CT Templates).
 //
 // > Besides the `Datastore.AllocateTemplate` privilege, this resource requires both the `Sys.Audit` and `Sys.Modify` privileges.<br><br>
 // For more details, see the [`download-url`](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/storage/{storage}/download-url) API documentation under the "Required permissions" section.
 //
 // > The `import` content type is not enabled by default on Proxmox VE storages. To use this resource with `contentType = "import"`, first add `Import` to the allowed content types on the target storage under 'Datacenter > Storage' in the Proxmox web interface.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/download"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := download.NewFile(ctx, "release_20231228_debian_12_bookworm_qcow2_img", &download.FileArgs{
-//				ContentType:       pulumi.String("iso"),
-//				DatastoreId:       pulumi.String("local"),
-//				FileName:          pulumi.String("debian-12-generic-amd64-20231228-1609.img"),
-//				NodeName:          pulumi.String("pve"),
-//				Url:               pulumi.String("https://cloud.debian.org/images/cloud/bookworm/20231228-1609/debian-12-generic-amd64-20231228-1609.qcow2"),
-//				Checksum:          pulumi.String("d2fbcf11fb28795842e91364d8c7b69f1870db09ff299eb94e4fbbfa510eb78d141e74c1f4bf6dfa0b7e33d0c3b66e6751886feadb4e9916f778bab1776bdf1b"),
-//				ChecksumAlgorithm: pulumi.String("sha512"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = download.NewFile(ctx, "release_20231228_debian_12_bookworm_qcow2", &download.FileArgs{
-//				ContentType:       pulumi.String("import"),
-//				DatastoreId:       pulumi.String("local"),
-//				FileName:          pulumi.String("debian-12-generic-amd64-20231228-1609.qcow2"),
-//				NodeName:          pulumi.String("pve"),
-//				Url:               pulumi.String("https://cloud.debian.org/images/cloud/bookworm/20231228-1609/debian-12-generic-amd64-20231228-1609.qcow2"),
-//				Checksum:          pulumi.String("d2fbcf11fb28795842e91364d8c7b69f1870db09ff299eb94e4fbbfa510eb78d141e74c1f4bf6dfa0b7e33d0c3b66e6751886feadb4e9916f778bab1776bdf1b"),
-//				ChecksumAlgorithm: pulumi.String("sha512"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = download.NewFile(ctx, "latest_debian_12_bookworm_qcow2_img", &download.FileArgs{
-//				ContentType: pulumi.String("iso"),
-//				DatastoreId: pulumi.String("local"),
-//				FileName:    pulumi.String("debian-12-generic-amd64.qcow2.img"),
-//				NodeName:    pulumi.String("pve"),
-//				Url:         pulumi.String("https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = download.NewFile(ctx, "latest_debian_12_bookworm_qcow2", &download.FileArgs{
-//				ContentType: pulumi.String("import"),
-//				DatastoreId: pulumi.String("local"),
-//				FileName:    pulumi.String("debian-12-generic-amd64.qcow2"),
-//				NodeName:    pulumi.String("pve"),
-//				Url:         pulumi.String("https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = download.NewFile(ctx, "latest_ubuntu_22_jammy_qcow2_img", &download.FileArgs{
-//				ContentType: pulumi.String("iso"),
-//				DatastoreId: pulumi.String("local"),
-//				NodeName:    pulumi.String("pve"),
-//				Url:         pulumi.String("https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = download.NewFile(ctx, "latest_static_ubuntu_24_noble_qcow2_img", &download.FileArgs{
-//				ContentType: pulumi.String("iso"),
-//				DatastoreId: pulumi.String("local"),
-//				NodeName:    pulumi.String("pve"),
-//				Url:         pulumi.String("https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img"),
-//				Overwrite:   pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = download.NewFile(ctx, "release_20231211_ubuntu_22_jammy_lxc_img", &download.FileArgs{
-//				ContentType:       pulumi.String("vztmpl"),
-//				DatastoreId:       pulumi.String("local"),
-//				NodeName:          pulumi.String("pve"),
-//				Url:               pulumi.String("https://cloud-images.ubuntu.com/releases/22.04/release-20231211/ubuntu-22.04-server-cloudimg-amd64-root.tar.xz"),
-//				Checksum:          pulumi.String("c9997dcfea5d826fd04871f960c513665f2e87dd7450bba99f68a97e60e4586e"),
-//				ChecksumAlgorithm: pulumi.String("sha256"),
-//				UploadTimeout:     pulumi.Int(4444),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = download.NewFile(ctx, "latest_ubuntu_22_jammy_lxc_img", &download.FileArgs{
-//				ContentType: pulumi.String("vztmpl"),
-//				DatastoreId: pulumi.String("local"),
-//				NodeName:    pulumi.String("pve"),
-//				Url:         pulumi.String("https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.tar.gz"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type File struct {
 	pulumi.CustomResourceState
 
@@ -138,8 +34,9 @@ type File struct {
 	// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
 	FileName pulumi.StringOutput `pulumi:"fileName"`
 	// The node name.
-	NodeName  pulumi.StringOutput `pulumi:"nodeName"`
-	Overwrite pulumi.BoolOutput   `pulumi:"overwrite"`
+	NodeName pulumi.StringOutput `pulumi:"nodeName"`
+	// By default `true`. If `true`, the file will be replaced when either: (1) the file size in the datastore has changed outside of Terraform, or (2) the file size reported by the URL differs from the downloaded file (detecting upstream updates like new cloud image versions). If `false`, no size checks are performed and the file is never automatically replaced.
+	Overwrite pulumi.BoolOutput `pulumi:"overwrite"`
 	// If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
 	OverwriteUnmanaged pulumi.BoolOutput `pulumi:"overwriteUnmanaged"`
 	// The file size in PVE.
@@ -173,7 +70,7 @@ func NewFile(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource File
-	err := ctx.RegisterResource("proxmoxve:Download/file:File", name, args, &resource, opts...)
+	err := ctx.RegisterResource("proxmoxve:download/file:File", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -185,7 +82,7 @@ func NewFile(ctx *pulumi.Context,
 func GetFile(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *FileState, opts ...pulumi.ResourceOption) (*File, error) {
 	var resource File
-	err := ctx.ReadResource("proxmoxve:Download/file:File", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("proxmoxve:download/file:File", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -207,8 +104,9 @@ type fileState struct {
 	// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
 	FileName *string `pulumi:"fileName"`
 	// The node name.
-	NodeName  *string `pulumi:"nodeName"`
-	Overwrite *bool   `pulumi:"overwrite"`
+	NodeName *string `pulumi:"nodeName"`
+	// By default `true`. If `true`, the file will be replaced when either: (1) the file size in the datastore has changed outside of Terraform, or (2) the file size reported by the URL differs from the downloaded file (detecting upstream updates like new cloud image versions). If `false`, no size checks are performed and the file is never automatically replaced.
+	Overwrite *bool `pulumi:"overwrite"`
 	// If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
 	OverwriteUnmanaged *bool `pulumi:"overwriteUnmanaged"`
 	// The file size in PVE.
@@ -235,7 +133,8 @@ type FileState struct {
 	// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
 	FileName pulumi.StringPtrInput
 	// The node name.
-	NodeName  pulumi.StringPtrInput
+	NodeName pulumi.StringPtrInput
+	// By default `true`. If `true`, the file will be replaced when either: (1) the file size in the datastore has changed outside of Terraform, or (2) the file size reported by the URL differs from the downloaded file (detecting upstream updates like new cloud image versions). If `false`, no size checks are performed and the file is never automatically replaced.
 	Overwrite pulumi.BoolPtrInput
 	// If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
 	OverwriteUnmanaged pulumi.BoolPtrInput
@@ -267,8 +166,9 @@ type fileArgs struct {
 	// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
 	FileName *string `pulumi:"fileName"`
 	// The node name.
-	NodeName  string `pulumi:"nodeName"`
-	Overwrite *bool  `pulumi:"overwrite"`
+	NodeName string `pulumi:"nodeName"`
+	// By default `true`. If `true`, the file will be replaced when either: (1) the file size in the datastore has changed outside of Terraform, or (2) the file size reported by the URL differs from the downloaded file (detecting upstream updates like new cloud image versions). If `false`, no size checks are performed and the file is never automatically replaced.
+	Overwrite *bool `pulumi:"overwrite"`
 	// If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
 	OverwriteUnmanaged *bool `pulumi:"overwriteUnmanaged"`
 	// The file download timeout seconds. Default is 600 (10min).
@@ -294,7 +194,8 @@ type FileArgs struct {
 	// The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
 	FileName pulumi.StringPtrInput
 	// The node name.
-	NodeName  pulumi.StringInput
+	NodeName pulumi.StringInput
+	// By default `true`. If `true`, the file will be replaced when either: (1) the file size in the datastore has changed outside of Terraform, or (2) the file size reported by the URL differs from the downloaded file (detecting upstream updates like new cloud image versions). If `false`, no size checks are performed and the file is never automatically replaced.
 	Overwrite pulumi.BoolPtrInput
 	// If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
 	OverwriteUnmanaged pulumi.BoolPtrInput
@@ -428,6 +329,7 @@ func (o FileOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v *File) pulumi.StringOutput { return v.NodeName }).(pulumi.StringOutput)
 }
 
+// By default `true`. If `true`, the file will be replaced when either: (1) the file size in the datastore has changed outside of Terraform, or (2) the file size reported by the URL differs from the downloaded file (detecting upstream updates like new cloud image versions). If `false`, no size checks are performed and the file is never automatically replaced.
 func (o FileOutput) Overwrite() pulumi.BoolOutput {
 	return o.ApplyT(func(v *File) pulumi.BoolOutput { return v.Overwrite }).(pulumi.BoolOutput)
 }

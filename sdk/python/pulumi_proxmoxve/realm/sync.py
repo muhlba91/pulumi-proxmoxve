@@ -28,6 +28,7 @@ class SyncArgs:
                  scope: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Sync resource.
+
         :param pulumi.Input[_builtins.str] realm: Name of the realm to synchronize.
         :param pulumi.Input[_builtins.bool] dry_run: Only simulate the sync without applying changes.
         :param pulumi.Input[_builtins.bool] enable_new: Enable newly synced users.
@@ -155,6 +156,7 @@ class _SyncState:
                  scope: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Sync resources.
+
         :param pulumi.Input[_builtins.bool] dry_run: Only simulate the sync without applying changes.
         :param pulumi.Input[_builtins.bool] enable_new: Enable newly synced users.
         :param pulumi.Input[_builtins.bool] full: Perform a full sync.
@@ -271,7 +273,7 @@ class _SyncState:
         pulumi.set(self, "scope", value)
 
 
-@pulumi.type_token("proxmoxve:Realm/sync:Sync")
+@pulumi.type_token("proxmoxve:realm/sync:Sync")
 class Sync(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -286,19 +288,21 @@ class Sync(pulumi.CustomResource):
                  scope: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        ## Import
+        Triggers synchronization of an existing authentication realm using `/access/domains/{realm}/sync`. This resource represents the last requested sync configuration; deleting it does not undo the sync.
 
-        #!/usr/bin/env sh
+        This resource wraps the `/access/domains/{realm}/sync` API and is intended to be
+        used alongside realm configuration resources such as
+        `realm.Ldap`.
 
-        Realm sync resources can be imported by realm name, e.g.:
+        ## Behavior Notes
 
-        ```sh
-        $ pulumi import proxmoxve:Realm/sync:Sync example example.com
-        ```
+        - The sync operation is **one-shot**: applying the resource runs the sync
+          with the specified options. Proxmox does not expose a persistent sync
+          object, so this resource only records the last requested sync
+          configuration in Terraform state.
+        - Destroying the resource does **not** undo any previously performed sync;
+          it simply removes the resource from Terraform state.
 
-        Importing only populates the `realm` and `id` attributes; other fields must
-
-        be set in configuration.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -317,19 +321,21 @@ class Sync(pulumi.CustomResource):
                  args: SyncArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Import
+        Triggers synchronization of an existing authentication realm using `/access/domains/{realm}/sync`. This resource represents the last requested sync configuration; deleting it does not undo the sync.
 
-        #!/usr/bin/env sh
+        This resource wraps the `/access/domains/{realm}/sync` API and is intended to be
+        used alongside realm configuration resources such as
+        `realm.Ldap`.
 
-        Realm sync resources can be imported by realm name, e.g.:
+        ## Behavior Notes
 
-        ```sh
-        $ pulumi import proxmoxve:Realm/sync:Sync example example.com
-        ```
+        - The sync operation is **one-shot**: applying the resource runs the sync
+          with the specified options. Proxmox does not expose a persistent sync
+          object, so this resource only records the last requested sync
+          configuration in Terraform state.
+        - Destroying the resource does **not** undo any previously performed sync;
+          it simply removes the resource from Terraform state.
 
-        Importing only populates the `realm` and `id` attributes; other fields must
-
-        be set in configuration.
 
         :param str resource_name: The name of the resource.
         :param SyncArgs args: The arguments to use to populate this resource's properties.
@@ -372,7 +378,7 @@ class Sync(pulumi.CustomResource):
             __props__.__dict__["remove_vanished"] = remove_vanished
             __props__.__dict__["scope"] = scope
         super(Sync, __self__).__init__(
-            'proxmoxve:Realm/sync:Sync',
+            'proxmoxve:realm/sync:Sync',
             resource_name,
             __props__,
             opts)

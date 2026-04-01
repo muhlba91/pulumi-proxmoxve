@@ -10,34 +10,60 @@ export const getOpenfabric: typeof import("./getOpenfabric").getOpenfabric = nul
 export const getOpenfabricOutput: typeof import("./getOpenfabric").getOpenfabricOutput = null as any;
 utilities.lazyLoad(exports, ["getOpenfabric","getOpenfabricOutput"], () => require("./getOpenfabric"));
 
+export { GetOpenfabricLegacyArgs, GetOpenfabricLegacyResult, GetOpenfabricLegacyOutputArgs } from "./getOpenfabricLegacy";
+export const getOpenfabricLegacy: typeof import("./getOpenfabricLegacy").getOpenfabricLegacy = null as any;
+export const getOpenfabricLegacyOutput: typeof import("./getOpenfabricLegacy").getOpenfabricLegacyOutput = null as any;
+utilities.lazyLoad(exports, ["getOpenfabricLegacy","getOpenfabricLegacyOutput"], () => require("./getOpenfabricLegacy"));
+
 export { GetOspfArgs, GetOspfResult, GetOspfOutputArgs } from "./getOspf";
 export const getOspf: typeof import("./getOspf").getOspf = null as any;
 export const getOspfOutput: typeof import("./getOspf").getOspfOutput = null as any;
 utilities.lazyLoad(exports, ["getOspf","getOspfOutput"], () => require("./getOspf"));
+
+export { GetOspfLegacyArgs, GetOspfLegacyResult, GetOspfLegacyOutputArgs } from "./getOspfLegacy";
+export const getOspfLegacy: typeof import("./getOspfLegacy").getOspfLegacy = null as any;
+export const getOspfLegacyOutput: typeof import("./getOspfLegacy").getOspfLegacyOutput = null as any;
+utilities.lazyLoad(exports, ["getOspfLegacy","getOspfLegacyOutput"], () => require("./getOspfLegacy"));
 
 export { OpenfabricArgs, OpenfabricState } from "./openfabric";
 export type Openfabric = import("./openfabric").Openfabric;
 export const Openfabric: typeof import("./openfabric").Openfabric = null as any;
 utilities.lazyLoad(exports, ["Openfabric"], () => require("./openfabric"));
 
+export { OpenfabricLegacyArgs, OpenfabricLegacyState } from "./openfabricLegacy";
+export type OpenfabricLegacy = import("./openfabricLegacy").OpenfabricLegacy;
+export const OpenfabricLegacy: typeof import("./openfabricLegacy").OpenfabricLegacy = null as any;
+utilities.lazyLoad(exports, ["OpenfabricLegacy"], () => require("./openfabricLegacy"));
+
 export { OspfArgs, OspfState } from "./ospf";
 export type Ospf = import("./ospf").Ospf;
 export const Ospf: typeof import("./ospf").Ospf = null as any;
 utilities.lazyLoad(exports, ["Ospf"], () => require("./ospf"));
+
+export { OspfLegacyArgs, OspfLegacyState } from "./ospfLegacy";
+export type OspfLegacy = import("./ospfLegacy").OspfLegacy;
+export const OspfLegacy: typeof import("./ospfLegacy").OspfLegacy = null as any;
+utilities.lazyLoad(exports, ["OspfLegacy"], () => require("./ospfLegacy"));
 
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "proxmoxve:Sdn/fabric/node/openfabric:Openfabric":
+            case "proxmoxve:sdn/fabric/node/openfabric:Openfabric":
                 return new Openfabric(name, <any>undefined, { urn })
-            case "proxmoxve:Sdn/fabric/node/ospf:Ospf":
+            case "proxmoxve:sdn/fabric/node/openfabricLegacy:OpenfabricLegacy":
+                return new OpenfabricLegacy(name, <any>undefined, { urn })
+            case "proxmoxve:sdn/fabric/node/ospf:Ospf":
                 return new Ospf(name, <any>undefined, { urn })
+            case "proxmoxve:sdn/fabric/node/ospfLegacy:OspfLegacy":
+                return new OspfLegacy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("proxmoxve", "Sdn/fabric/node/openfabric", _module)
-pulumi.runtime.registerResourceModule("proxmoxve", "Sdn/fabric/node/ospf", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "sdn/fabric/node/openfabric", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "sdn/fabric/node/openfabricLegacy", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "sdn/fabric/node/ospf", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "sdn/fabric/node/ospfLegacy", _module)

@@ -5,41 +5,92 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AccountArgs, AccountState } from "./account";
+export type Account = import("./account").Account;
+export const Account: typeof import("./account").Account = null as any;
+utilities.lazyLoad(exports, ["Account"], () => require("./account"));
+
+export { AccountLegacyArgs, AccountLegacyState } from "./accountLegacy";
+export type AccountLegacy = import("./accountLegacy").AccountLegacy;
+export const AccountLegacy: typeof import("./accountLegacy").AccountLegacy = null as any;
+utilities.lazyLoad(exports, ["AccountLegacy"], () => require("./accountLegacy"));
+
 export { CertificateArgs, CertificateState } from "./certificate";
 export type Certificate = import("./certificate").Certificate;
 export const Certificate: typeof import("./certificate").Certificate = null as any;
 utilities.lazyLoad(exports, ["Certificate"], () => require("./certificate"));
+
+export { CertificateLegacyArgs, CertificateLegacyState } from "./certificateLegacy";
+export type CertificateLegacy = import("./certificateLegacy").CertificateLegacy;
+export const CertificateLegacy: typeof import("./certificateLegacy").CertificateLegacy = null as any;
+utilities.lazyLoad(exports, ["CertificateLegacy"], () => require("./certificateLegacy"));
 
 export { GetAccountArgs, GetAccountResult, GetAccountOutputArgs } from "./getAccount";
 export const getAccount: typeof import("./getAccount").getAccount = null as any;
 export const getAccountOutput: typeof import("./getAccount").getAccountOutput = null as any;
 utilities.lazyLoad(exports, ["getAccount","getAccountOutput"], () => require("./getAccount"));
 
+export { GetAccountLegacyArgs, GetAccountLegacyResult, GetAccountLegacyOutputArgs } from "./getAccountLegacy";
+export const getAccountLegacy: typeof import("./getAccountLegacy").getAccountLegacy = null as any;
+export const getAccountLegacyOutput: typeof import("./getAccountLegacy").getAccountLegacyOutput = null as any;
+utilities.lazyLoad(exports, ["getAccountLegacy","getAccountLegacyOutput"], () => require("./getAccountLegacy"));
+
 export { GetAccountsResult } from "./getAccounts";
 export const getAccounts: typeof import("./getAccounts").getAccounts = null as any;
 export const getAccountsOutput: typeof import("./getAccounts").getAccountsOutput = null as any;
 utilities.lazyLoad(exports, ["getAccounts","getAccountsOutput"], () => require("./getAccounts"));
+
+export { GetAccountsLegacyResult } from "./getAccountsLegacy";
+export const getAccountsLegacy: typeof import("./getAccountsLegacy").getAccountsLegacy = null as any;
+export const getAccountsLegacyOutput: typeof import("./getAccountsLegacy").getAccountsLegacyOutput = null as any;
+utilities.lazyLoad(exports, ["getAccountsLegacy","getAccountsLegacyOutput"], () => require("./getAccountsLegacy"));
 
 export { GetPluginArgs, GetPluginResult, GetPluginOutputArgs } from "./getPlugin";
 export const getPlugin: typeof import("./getPlugin").getPlugin = null as any;
 export const getPluginOutput: typeof import("./getPlugin").getPluginOutput = null as any;
 utilities.lazyLoad(exports, ["getPlugin","getPluginOutput"], () => require("./getPlugin"));
 
+export { GetPluginLegacyArgs, GetPluginLegacyResult, GetPluginLegacyOutputArgs } from "./getPluginLegacy";
+export const getPluginLegacy: typeof import("./getPluginLegacy").getPluginLegacy = null as any;
+export const getPluginLegacyOutput: typeof import("./getPluginLegacy").getPluginLegacyOutput = null as any;
+utilities.lazyLoad(exports, ["getPluginLegacy","getPluginLegacyOutput"], () => require("./getPluginLegacy"));
+
 export { GetPluginsResult } from "./getPlugins";
 export const getPlugins: typeof import("./getPlugins").getPlugins = null as any;
 export const getPluginsOutput: typeof import("./getPlugins").getPluginsOutput = null as any;
 utilities.lazyLoad(exports, ["getPlugins","getPluginsOutput"], () => require("./getPlugins"));
 
+export { GetPluginsLegacyResult } from "./getPluginsLegacy";
+export const getPluginsLegacy: typeof import("./getPluginsLegacy").getPluginsLegacy = null as any;
+export const getPluginsLegacyOutput: typeof import("./getPluginsLegacy").getPluginsLegacyOutput = null as any;
+utilities.lazyLoad(exports, ["getPluginsLegacy","getPluginsLegacyOutput"], () => require("./getPluginsLegacy"));
+
+
+// Export sub-modules:
+import * as dns from "./dns";
+
+export {
+    dns,
+};
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "proxmoxve:Acme/certificate:Certificate":
+            case "proxmoxve:acme/account:Account":
+                return new Account(name, <any>undefined, { urn })
+            case "proxmoxve:acme/accountLegacy:AccountLegacy":
+                return new AccountLegacy(name, <any>undefined, { urn })
+            case "proxmoxve:acme/certificate:Certificate":
                 return new Certificate(name, <any>undefined, { urn })
+            case "proxmoxve:acme/certificateLegacy:CertificateLegacy":
+                return new CertificateLegacy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("proxmoxve", "Acme/certificate", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "acme/account", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "acme/accountLegacy", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "acme/certificate", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "acme/certificateLegacy", _module)

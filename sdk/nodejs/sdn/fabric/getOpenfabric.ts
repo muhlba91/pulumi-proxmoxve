@@ -6,21 +6,10 @@ import * as utilities from "../../utilities";
 
 /**
  * OpenFabric Fabric in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const main = proxmoxve.Sdn.fabric.getOpenfabric({
- *     id: "main-fabric",
- * });
- * ```
  */
 export function getOpenfabric(args: GetOpenfabricArgs, opts?: pulumi.InvokeOptions): Promise<GetOpenfabricResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("proxmoxve:Sdn/fabric/getOpenfabric:getOpenfabric", {
+    return pulumi.runtime.invoke("proxmoxve:sdn/fabric/getOpenfabric:getOpenfabric", {
         "id": args.id,
     }, opts);
 }
@@ -62,21 +51,10 @@ export interface GetOpenfabricResult {
 }
 /**
  * OpenFabric Fabric in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const main = proxmoxve.Sdn.fabric.getOpenfabric({
- *     id: "main-fabric",
- * });
- * ```
  */
 export function getOpenfabricOutput(args: GetOpenfabricOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOpenfabricResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("proxmoxve:Sdn/fabric/getOpenfabric:getOpenfabric", {
+    return pulumi.runtime.invokeOutput("proxmoxve:sdn/fabric/getOpenfabric:getOpenfabric", {
         "id": args.id,
     }, opts);
 }

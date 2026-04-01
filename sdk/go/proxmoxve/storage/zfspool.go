@@ -8,47 +8,12 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Manages ZFS-based storage in Proxmox VE.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/storage"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.NewZFSPool(ctx, "example", &storage.ZFSPoolArgs{
-//				ZfsPoolId: pulumi.String("example-zfs"),
-//				Nodes: pulumi.StringArray{
-//					pulumi.String("pve"),
-//				},
-//				ZfsPool: pulumi.String("rpool/data"),
-//				Contents: pulumi.StringArray{
-//					pulumi.String("images"),
-//				},
-//				ThinProvision: pulumi.Bool(true),
-//				Blocksize:     pulumi.String("64k"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-type ZFSPool struct {
+type Zfspool struct {
 	pulumi.CustomResourceState
 
 	// Block size for newly created volumes (e.g. `4k`, `8k`, `16k`). Larger values may improve throughput for large I/O, while smaller values optimize space efficiency.
@@ -59,51 +24,57 @@ type ZFSPool struct {
 	Disable pulumi.BoolOutput `pulumi:"disable"`
 	// A list of nodes where this storage is available.
 	Nodes pulumi.StringArrayOutput `pulumi:"nodes"`
+	// The unique identifier of the storage.
+	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
 	// Whether the storage is shared across all nodes.
 	Shared pulumi.BoolOutput `pulumi:"shared"`
 	// Whether to enable thin provisioning (`on` or `off`). Thin provisioning allows flexible disk allocation without pre-allocating full space.
 	ThinProvision pulumi.BoolPtrOutput `pulumi:"thinProvision"`
 	// The name of the ZFS storage pool to use (e.g. `tank`, `rpool/data`).
 	ZfsPool pulumi.StringOutput `pulumi:"zfsPool"`
-	// The unique identifier of the storage.
-	ZfsPoolId pulumi.StringOutput `pulumi:"zfsPoolId"`
 }
 
-// NewZFSPool registers a new resource with the given unique name, arguments, and options.
-func NewZFSPool(ctx *pulumi.Context,
-	name string, args *ZFSPoolArgs, opts ...pulumi.ResourceOption) (*ZFSPool, error) {
+// NewZfspool registers a new resource with the given unique name, arguments, and options.
+func NewZfspool(ctx *pulumi.Context,
+	name string, args *ZfspoolArgs, opts ...pulumi.ResourceOption) (*Zfspool, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ResourceId == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceId'")
+	}
 	if args.ZfsPool == nil {
 		return nil, errors.New("invalid value for required argument 'ZfsPool'")
 	}
-	if args.ZfsPoolId == nil {
-		return nil, errors.New("invalid value for required argument 'ZfsPoolId'")
-	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("proxmox_virtual_environment_storage_zfspool"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource ZFSPool
-	err := ctx.RegisterResource("proxmoxve:Storage/zFSPool:ZFSPool", name, args, &resource, opts...)
+	var resource Zfspool
+	err := ctx.RegisterResource("proxmoxve:storage/zfspool:Zfspool", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetZFSPool gets an existing ZFSPool resource's state with the given name, ID, and optional
+// GetZfspool gets an existing Zfspool resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetZFSPool(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *ZFSPoolState, opts ...pulumi.ResourceOption) (*ZFSPool, error) {
-	var resource ZFSPool
-	err := ctx.ReadResource("proxmoxve:Storage/zFSPool:ZFSPool", name, id, state, &resource, opts...)
+func GetZfspool(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *ZfspoolState, opts ...pulumi.ResourceOption) (*Zfspool, error) {
+	var resource Zfspool
+	err := ctx.ReadResource("proxmoxve:storage/zfspool:Zfspool", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering ZFSPool resources.
+// Input properties used for looking up and filtering Zfspool resources.
 type zfspoolState struct {
 	// Block size for newly created volumes (e.g. `4k`, `8k`, `16k`). Larger values may improve throughput for large I/O, while smaller values optimize space efficiency.
 	Blocksize *string `pulumi:"blocksize"`
@@ -113,17 +84,17 @@ type zfspoolState struct {
 	Disable *bool `pulumi:"disable"`
 	// A list of nodes where this storage is available.
 	Nodes []string `pulumi:"nodes"`
+	// The unique identifier of the storage.
+	ResourceId *string `pulumi:"resourceId"`
 	// Whether the storage is shared across all nodes.
 	Shared *bool `pulumi:"shared"`
 	// Whether to enable thin provisioning (`on` or `off`). Thin provisioning allows flexible disk allocation without pre-allocating full space.
 	ThinProvision *bool `pulumi:"thinProvision"`
 	// The name of the ZFS storage pool to use (e.g. `tank`, `rpool/data`).
 	ZfsPool *string `pulumi:"zfsPool"`
-	// The unique identifier of the storage.
-	ZfsPoolId *string `pulumi:"zfsPoolId"`
 }
 
-type ZFSPoolState struct {
+type ZfspoolState struct {
 	// Block size for newly created volumes (e.g. `4k`, `8k`, `16k`). Larger values may improve throughput for large I/O, while smaller values optimize space efficiency.
 	Blocksize pulumi.StringPtrInput
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
@@ -132,17 +103,17 @@ type ZFSPoolState struct {
 	Disable pulumi.BoolPtrInput
 	// A list of nodes where this storage is available.
 	Nodes pulumi.StringArrayInput
+	// The unique identifier of the storage.
+	ResourceId pulumi.StringPtrInput
 	// Whether the storage is shared across all nodes.
 	Shared pulumi.BoolPtrInput
 	// Whether to enable thin provisioning (`on` or `off`). Thin provisioning allows flexible disk allocation without pre-allocating full space.
 	ThinProvision pulumi.BoolPtrInput
 	// The name of the ZFS storage pool to use (e.g. `tank`, `rpool/data`).
 	ZfsPool pulumi.StringPtrInput
-	// The unique identifier of the storage.
-	ZfsPoolId pulumi.StringPtrInput
 }
 
-func (ZFSPoolState) ElementType() reflect.Type {
+func (ZfspoolState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zfspoolState)(nil)).Elem()
 }
 
@@ -155,16 +126,16 @@ type zfspoolArgs struct {
 	Disable *bool `pulumi:"disable"`
 	// A list of nodes where this storage is available.
 	Nodes []string `pulumi:"nodes"`
+	// The unique identifier of the storage.
+	ResourceId string `pulumi:"resourceId"`
 	// Whether to enable thin provisioning (`on` or `off`). Thin provisioning allows flexible disk allocation without pre-allocating full space.
 	ThinProvision *bool `pulumi:"thinProvision"`
 	// The name of the ZFS storage pool to use (e.g. `tank`, `rpool/data`).
 	ZfsPool string `pulumi:"zfsPool"`
-	// The unique identifier of the storage.
-	ZfsPoolId string `pulumi:"zfsPoolId"`
 }
 
-// The set of arguments for constructing a ZFSPool resource.
-type ZFSPoolArgs struct {
+// The set of arguments for constructing a Zfspool resource.
+type ZfspoolArgs struct {
 	// Block size for newly created volumes (e.g. `4k`, `8k`, `16k`). Larger values may improve throughput for large I/O, while smaller values optimize space efficiency.
 	Blocksize pulumi.StringPtrInput
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
@@ -173,186 +144,186 @@ type ZFSPoolArgs struct {
 	Disable pulumi.BoolPtrInput
 	// A list of nodes where this storage is available.
 	Nodes pulumi.StringArrayInput
+	// The unique identifier of the storage.
+	ResourceId pulumi.StringInput
 	// Whether to enable thin provisioning (`on` or `off`). Thin provisioning allows flexible disk allocation without pre-allocating full space.
 	ThinProvision pulumi.BoolPtrInput
 	// The name of the ZFS storage pool to use (e.g. `tank`, `rpool/data`).
 	ZfsPool pulumi.StringInput
-	// The unique identifier of the storage.
-	ZfsPoolId pulumi.StringInput
 }
 
-func (ZFSPoolArgs) ElementType() reflect.Type {
+func (ZfspoolArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*zfspoolArgs)(nil)).Elem()
 }
 
-type ZFSPoolInput interface {
+type ZfspoolInput interface {
 	pulumi.Input
 
-	ToZFSPoolOutput() ZFSPoolOutput
-	ToZFSPoolOutputWithContext(ctx context.Context) ZFSPoolOutput
+	ToZfspoolOutput() ZfspoolOutput
+	ToZfspoolOutputWithContext(ctx context.Context) ZfspoolOutput
 }
 
-func (*ZFSPool) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZFSPool)(nil)).Elem()
+func (*Zfspool) ElementType() reflect.Type {
+	return reflect.TypeOf((**Zfspool)(nil)).Elem()
 }
 
-func (i *ZFSPool) ToZFSPoolOutput() ZFSPoolOutput {
-	return i.ToZFSPoolOutputWithContext(context.Background())
+func (i *Zfspool) ToZfspoolOutput() ZfspoolOutput {
+	return i.ToZfspoolOutputWithContext(context.Background())
 }
 
-func (i *ZFSPool) ToZFSPoolOutputWithContext(ctx context.Context) ZFSPoolOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZFSPoolOutput)
+func (i *Zfspool) ToZfspoolOutputWithContext(ctx context.Context) ZfspoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZfspoolOutput)
 }
 
-// ZFSPoolArrayInput is an input type that accepts ZFSPoolArray and ZFSPoolArrayOutput values.
-// You can construct a concrete instance of `ZFSPoolArrayInput` via:
+// ZfspoolArrayInput is an input type that accepts ZfspoolArray and ZfspoolArrayOutput values.
+// You can construct a concrete instance of `ZfspoolArrayInput` via:
 //
-//	ZFSPoolArray{ ZFSPoolArgs{...} }
-type ZFSPoolArrayInput interface {
+//	ZfspoolArray{ ZfspoolArgs{...} }
+type ZfspoolArrayInput interface {
 	pulumi.Input
 
-	ToZFSPoolArrayOutput() ZFSPoolArrayOutput
-	ToZFSPoolArrayOutputWithContext(context.Context) ZFSPoolArrayOutput
+	ToZfspoolArrayOutput() ZfspoolArrayOutput
+	ToZfspoolArrayOutputWithContext(context.Context) ZfspoolArrayOutput
 }
 
-type ZFSPoolArray []ZFSPoolInput
+type ZfspoolArray []ZfspoolInput
 
-func (ZFSPoolArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*ZFSPool)(nil)).Elem()
+func (ZfspoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*Zfspool)(nil)).Elem()
 }
 
-func (i ZFSPoolArray) ToZFSPoolArrayOutput() ZFSPoolArrayOutput {
-	return i.ToZFSPoolArrayOutputWithContext(context.Background())
+func (i ZfspoolArray) ToZfspoolArrayOutput() ZfspoolArrayOutput {
+	return i.ToZfspoolArrayOutputWithContext(context.Background())
 }
 
-func (i ZFSPoolArray) ToZFSPoolArrayOutputWithContext(ctx context.Context) ZFSPoolArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZFSPoolArrayOutput)
+func (i ZfspoolArray) ToZfspoolArrayOutputWithContext(ctx context.Context) ZfspoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZfspoolArrayOutput)
 }
 
-// ZFSPoolMapInput is an input type that accepts ZFSPoolMap and ZFSPoolMapOutput values.
-// You can construct a concrete instance of `ZFSPoolMapInput` via:
+// ZfspoolMapInput is an input type that accepts ZfspoolMap and ZfspoolMapOutput values.
+// You can construct a concrete instance of `ZfspoolMapInput` via:
 //
-//	ZFSPoolMap{ "key": ZFSPoolArgs{...} }
-type ZFSPoolMapInput interface {
+//	ZfspoolMap{ "key": ZfspoolArgs{...} }
+type ZfspoolMapInput interface {
 	pulumi.Input
 
-	ToZFSPoolMapOutput() ZFSPoolMapOutput
-	ToZFSPoolMapOutputWithContext(context.Context) ZFSPoolMapOutput
+	ToZfspoolMapOutput() ZfspoolMapOutput
+	ToZfspoolMapOutputWithContext(context.Context) ZfspoolMapOutput
 }
 
-type ZFSPoolMap map[string]ZFSPoolInput
+type ZfspoolMap map[string]ZfspoolInput
 
-func (ZFSPoolMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*ZFSPool)(nil)).Elem()
+func (ZfspoolMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*Zfspool)(nil)).Elem()
 }
 
-func (i ZFSPoolMap) ToZFSPoolMapOutput() ZFSPoolMapOutput {
-	return i.ToZFSPoolMapOutputWithContext(context.Background())
+func (i ZfspoolMap) ToZfspoolMapOutput() ZfspoolMapOutput {
+	return i.ToZfspoolMapOutputWithContext(context.Background())
 }
 
-func (i ZFSPoolMap) ToZFSPoolMapOutputWithContext(ctx context.Context) ZFSPoolMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ZFSPoolMapOutput)
+func (i ZfspoolMap) ToZfspoolMapOutputWithContext(ctx context.Context) ZfspoolMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ZfspoolMapOutput)
 }
 
-type ZFSPoolOutput struct{ *pulumi.OutputState }
+type ZfspoolOutput struct{ *pulumi.OutputState }
 
-func (ZFSPoolOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ZFSPool)(nil)).Elem()
+func (ZfspoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Zfspool)(nil)).Elem()
 }
 
-func (o ZFSPoolOutput) ToZFSPoolOutput() ZFSPoolOutput {
+func (o ZfspoolOutput) ToZfspoolOutput() ZfspoolOutput {
 	return o
 }
 
-func (o ZFSPoolOutput) ToZFSPoolOutputWithContext(ctx context.Context) ZFSPoolOutput {
+func (o ZfspoolOutput) ToZfspoolOutputWithContext(ctx context.Context) ZfspoolOutput {
 	return o
 }
 
 // Block size for newly created volumes (e.g. `4k`, `8k`, `16k`). Larger values may improve throughput for large I/O, while smaller values optimize space efficiency.
-func (o ZFSPoolOutput) Blocksize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZFSPool) pulumi.StringPtrOutput { return v.Blocksize }).(pulumi.StringPtrOutput)
+func (o ZfspoolOutput) Blocksize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Zfspool) pulumi.StringPtrOutput { return v.Blocksize }).(pulumi.StringPtrOutput)
 }
 
 // The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
-func (o ZFSPoolOutput) Contents() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ZFSPool) pulumi.StringArrayOutput { return v.Contents }).(pulumi.StringArrayOutput)
+func (o ZfspoolOutput) Contents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Zfspool) pulumi.StringArrayOutput { return v.Contents }).(pulumi.StringArrayOutput)
 }
 
 // Whether the storage is disabled.
-func (o ZFSPoolOutput) Disable() pulumi.BoolOutput {
-	return o.ApplyT(func(v *ZFSPool) pulumi.BoolOutput { return v.Disable }).(pulumi.BoolOutput)
+func (o ZfspoolOutput) Disable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Zfspool) pulumi.BoolOutput { return v.Disable }).(pulumi.BoolOutput)
 }
 
 // A list of nodes where this storage is available.
-func (o ZFSPoolOutput) Nodes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ZFSPool) pulumi.StringArrayOutput { return v.Nodes }).(pulumi.StringArrayOutput)
-}
-
-// Whether the storage is shared across all nodes.
-func (o ZFSPoolOutput) Shared() pulumi.BoolOutput {
-	return o.ApplyT(func(v *ZFSPool) pulumi.BoolOutput { return v.Shared }).(pulumi.BoolOutput)
-}
-
-// Whether to enable thin provisioning (`on` or `off`). Thin provisioning allows flexible disk allocation without pre-allocating full space.
-func (o ZFSPoolOutput) ThinProvision() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ZFSPool) pulumi.BoolPtrOutput { return v.ThinProvision }).(pulumi.BoolPtrOutput)
-}
-
-// The name of the ZFS storage pool to use (e.g. `tank`, `rpool/data`).
-func (o ZFSPoolOutput) ZfsPool() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZFSPool) pulumi.StringOutput { return v.ZfsPool }).(pulumi.StringOutput)
+func (o ZfspoolOutput) Nodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Zfspool) pulumi.StringArrayOutput { return v.Nodes }).(pulumi.StringArrayOutput)
 }
 
 // The unique identifier of the storage.
-func (o ZFSPoolOutput) ZfsPoolId() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZFSPool) pulumi.StringOutput { return v.ZfsPoolId }).(pulumi.StringOutput)
+func (o ZfspoolOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Zfspool) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
 }
 
-type ZFSPoolArrayOutput struct{ *pulumi.OutputState }
-
-func (ZFSPoolArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*ZFSPool)(nil)).Elem()
+// Whether the storage is shared across all nodes.
+func (o ZfspoolOutput) Shared() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Zfspool) pulumi.BoolOutput { return v.Shared }).(pulumi.BoolOutput)
 }
 
-func (o ZFSPoolArrayOutput) ToZFSPoolArrayOutput() ZFSPoolArrayOutput {
+// Whether to enable thin provisioning (`on` or `off`). Thin provisioning allows flexible disk allocation without pre-allocating full space.
+func (o ZfspoolOutput) ThinProvision() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Zfspool) pulumi.BoolPtrOutput { return v.ThinProvision }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the ZFS storage pool to use (e.g. `tank`, `rpool/data`).
+func (o ZfspoolOutput) ZfsPool() pulumi.StringOutput {
+	return o.ApplyT(func(v *Zfspool) pulumi.StringOutput { return v.ZfsPool }).(pulumi.StringOutput)
+}
+
+type ZfspoolArrayOutput struct{ *pulumi.OutputState }
+
+func (ZfspoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*Zfspool)(nil)).Elem()
+}
+
+func (o ZfspoolArrayOutput) ToZfspoolArrayOutput() ZfspoolArrayOutput {
 	return o
 }
 
-func (o ZFSPoolArrayOutput) ToZFSPoolArrayOutputWithContext(ctx context.Context) ZFSPoolArrayOutput {
+func (o ZfspoolArrayOutput) ToZfspoolArrayOutputWithContext(ctx context.Context) ZfspoolArrayOutput {
 	return o
 }
 
-func (o ZFSPoolArrayOutput) Index(i pulumi.IntInput) ZFSPoolOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ZFSPool {
-		return vs[0].([]*ZFSPool)[vs[1].(int)]
-	}).(ZFSPoolOutput)
+func (o ZfspoolArrayOutput) Index(i pulumi.IntInput) ZfspoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Zfspool {
+		return vs[0].([]*Zfspool)[vs[1].(int)]
+	}).(ZfspoolOutput)
 }
 
-type ZFSPoolMapOutput struct{ *pulumi.OutputState }
+type ZfspoolMapOutput struct{ *pulumi.OutputState }
 
-func (ZFSPoolMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*ZFSPool)(nil)).Elem()
+func (ZfspoolMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*Zfspool)(nil)).Elem()
 }
 
-func (o ZFSPoolMapOutput) ToZFSPoolMapOutput() ZFSPoolMapOutput {
+func (o ZfspoolMapOutput) ToZfspoolMapOutput() ZfspoolMapOutput {
 	return o
 }
 
-func (o ZFSPoolMapOutput) ToZFSPoolMapOutputWithContext(ctx context.Context) ZFSPoolMapOutput {
+func (o ZfspoolMapOutput) ToZfspoolMapOutputWithContext(ctx context.Context) ZfspoolMapOutput {
 	return o
 }
 
-func (o ZFSPoolMapOutput) MapIndex(k pulumi.StringInput) ZFSPoolOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ZFSPool {
-		return vs[0].(map[string]*ZFSPool)[vs[1].(string)]
-	}).(ZFSPoolOutput)
+func (o ZfspoolMapOutput) MapIndex(k pulumi.StringInput) ZfspoolOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Zfspool {
+		return vs[0].(map[string]*Zfspool)[vs[1].(string)]
+	}).(ZfspoolOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*ZFSPoolInput)(nil)).Elem(), &ZFSPool{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZFSPoolArrayInput)(nil)).Elem(), ZFSPoolArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ZFSPoolMapInput)(nil)).Elem(), ZFSPoolMap{})
-	pulumi.RegisterOutputType(ZFSPoolOutput{})
-	pulumi.RegisterOutputType(ZFSPoolArrayOutput{})
-	pulumi.RegisterOutputType(ZFSPoolMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZfspoolInput)(nil)).Elem(), &Zfspool{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZfspoolArrayInput)(nil)).Elem(), ZfspoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ZfspoolMapInput)(nil)).Elem(), ZfspoolMap{})
+	pulumi.RegisterOutputType(ZfspoolOutput{})
+	pulumi.RegisterOutputType(ZfspoolArrayOutput{})
+	pulumi.RegisterOutputType(ZfspoolMapOutput{})
 }

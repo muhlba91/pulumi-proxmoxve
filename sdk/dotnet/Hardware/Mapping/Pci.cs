@@ -11,50 +11,8 @@ namespace Pulumi.ProxmoxVE.Hardware.Mapping
 {
     /// <summary>
     /// Manages a PCI hardware mapping in a Proxmox VE cluster.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using ProxmoxVE = Pulumi.ProxmoxVE;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new ProxmoxVE.Hardware.Mapping.Pci("example", new()
-    ///     {
-    ///         Comment = "This is a comment",
-    ///         Name = "example",
-    ///         Maps = new[]
-    ///         {
-    ///             new ProxmoxVE.Hardware.Mapping.Inputs.PciMapArgs
-    ///             {
-    ///                 Comment = "This is a device specific comment",
-    ///                 Id = "8086:5916",
-    ///                 IommuGroup = 0,
-    ///                 Node = "pve",
-    ///                 Path = "0000:00:02.0",
-    ///                 SubsystemId = "8086:2068",
-    ///             },
-    ///         },
-    ///         MediatedDevices = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// #!/usr/bin/env sh
-    /// 
-    /// A PCI hardware mapping can be imported using their name, e.g.:
-    /// 
-    /// ```sh
-    /// $ pulumi import proxmoxve:Hardware/mapping/pci:Pci example example
-    /// ```
     /// </summary>
-    [ProxmoxVEResourceType("proxmoxve:Hardware/mapping/pci:Pci")]
+    [ProxmoxVEResourceType("proxmoxve:hardware/mapping/pci:Pci")]
     public partial class Pci : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -90,12 +48,12 @@ namespace Pulumi.ProxmoxVE.Hardware.Mapping
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Pci(string name, PciArgs args, CustomResourceOptions? options = null)
-            : base("proxmoxve:Hardware/mapping/pci:Pci", name, args ?? new PciArgs(), MakeResourceOptions(options, ""))
+            : base("proxmoxve:hardware/mapping/pci:Pci", name, args ?? new PciArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Pci(string name, Input<string> id, PciState? state = null, CustomResourceOptions? options = null)
-            : base("proxmoxve:Hardware/mapping/pci:Pci", name, state, MakeResourceOptions(options, id))
+            : base("proxmoxve:hardware/mapping/pci:Pci", name, state, MakeResourceOptions(options, id))
         {
         }
 

@@ -8,73 +8,13 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Manages resource pool memberships for containers, virtual machines and storages
 //
 // > This resource requires the `Pool.Allocate` permission on the pool path (e.g., `/pool/{poolid}`).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/permission"
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/pool"
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/vm"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			testVm1, err := vm.NewVirtualMachine(ctx, "test_vm1", &vm.VirtualMachineArgs{
-//				VmId:     pulumi.Int(1234),
-//				NodeName: pulumi.String("pve"),
-//				Started:  pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			testPool, err := permission.NewPool(ctx, "test_pool", &permission.PoolArgs{
-//				PoolId: pulumi.String("test-pool"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = pool.NewMembership(ctx, "vm_membership", &pool.MembershipArgs{
-//				PoolId: testPool.ID(),
-//				VmId:   testVm1.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = pool.NewMembership(ctx, "storage_membership", &pool.MembershipArgs{
-//				PoolId:    testPool.ID(),
-//				StorageId: pulumi.String("local-lvm"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// #!/usr/bin/env sh
-//
-// Resource pool membership can be imported using its unique identifier, e.g.: {pool_id}/{type}/{member_id}
-//
-// ```sh
-// $ pulumi import proxmoxve:Pool/membership:Membership example_membership test-pool/vm/102
-// ```
 type Membership struct {
 	pulumi.CustomResourceState
 
@@ -100,7 +40,7 @@ func NewMembership(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Membership
-	err := ctx.RegisterResource("proxmoxve:Pool/membership:Membership", name, args, &resource, opts...)
+	err := ctx.RegisterResource("proxmoxve:pool/membership:Membership", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -112,7 +52,7 @@ func NewMembership(ctx *pulumi.Context,
 func GetMembership(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *MembershipState, opts ...pulumi.ResourceOption) (*Membership, error) {
 	var resource Membership
-	err := ctx.ReadResource("proxmoxve:Pool/membership:Membership", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("proxmoxve:pool/membership:Membership", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

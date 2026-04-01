@@ -5,26 +5,29 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export { GetNodesResult } from "./getNodes";
-export const getNodes: typeof import("./getNodes").getNodes = null as any;
-export const getNodesOutput: typeof import("./getNodes").getNodesOutput = null as any;
-utilities.lazyLoad(exports, ["getNodes","getNodesOutput"], () => require("./getNodes"));
-
 export { OptionsArgs, OptionsState } from "./options";
 export type Options = import("./options").Options;
 export const Options: typeof import("./options").Options = null as any;
 utilities.lazyLoad(exports, ["Options"], () => require("./options"));
+
+export { OptionsLegacyArgs, OptionsLegacyState } from "./optionsLegacy";
+export type OptionsLegacy = import("./optionsLegacy").OptionsLegacy;
+export const OptionsLegacy: typeof import("./optionsLegacy").OptionsLegacy = null as any;
+utilities.lazyLoad(exports, ["OptionsLegacy"], () => require("./optionsLegacy"));
 
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "proxmoxve:Cluster/options:Options":
+            case "proxmoxve:cluster/options:Options":
                 return new Options(name, <any>undefined, { urn })
+            case "proxmoxve:cluster/optionsLegacy:OptionsLegacy":
+                return new OptionsLegacy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("proxmoxve", "Cluster/options", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "cluster/options", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "cluster/optionsLegacy", _module)

@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -23,18 +23,28 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "proxmoxve:index/acl:Acl":
 		r = &Acl{}
-	case "proxmoxve:index/acmeAccount:AcmeAccount":
-		r = &AcmeAccount{}
-	case "proxmoxve:index/acmeDnsPlugin:AcmeDnsPlugin":
-		r = &AcmeDnsPlugin{}
-	case "proxmoxve:index/certifi:Certifi":
-		r = &Certifi{}
-	case "proxmoxve:index/dNS:DNS":
-		r = &DNS{}
-	case "proxmoxve:index/hosts:Hosts":
-		r = &Hosts{}
-	case "proxmoxve:index/time:Time":
-		r = &Time{}
+	case "proxmoxve:index/aclLegacy:AclLegacy":
+		r = &AclLegacy{}
+	case "proxmoxve:index/hagroup:Hagroup":
+		r = &Hagroup{}
+	case "proxmoxve:index/hagroupLegacy:HagroupLegacy":
+		r = &HagroupLegacy{}
+	case "proxmoxve:index/haresource:Haresource":
+		r = &Haresource{}
+	case "proxmoxve:index/haresourceLegacy:HaresourceLegacy":
+		r = &HaresourceLegacy{}
+	case "proxmoxve:index/harule:Harule":
+		r = &Harule{}
+	case "proxmoxve:index/haruleLegacy:HaruleLegacy":
+		r = &HaruleLegacy{}
+	case "proxmoxve:index/replication:Replication":
+		r = &Replication{}
+	case "proxmoxve:index/replicationLegacy:ReplicationLegacy":
+		r = &ReplicationLegacy{}
+	case "proxmoxve:index/vm2Legacy:Vm2Legacy":
+		r = &Vm2Legacy{}
+	case "proxmoxve:index/vm:Vm":
+		r = &Vm{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -73,32 +83,57 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
-		"index/acmeAccount",
+		"index/aclLegacy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
-		"index/acmeDnsPlugin",
+		"index/hagroup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
-		"index/certifi",
+		"index/hagroupLegacy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
-		"index/dNS",
+		"index/haresource",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
-		"index/hosts",
+		"index/haresourceLegacy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
-		"index/time",
+		"index/harule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"index/haruleLegacy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"index/replication",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"index/replicationLegacy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"index/vm",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"index/vm2Legacy",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

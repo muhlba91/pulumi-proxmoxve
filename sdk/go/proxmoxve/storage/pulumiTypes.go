@@ -7,13 +7,13 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = internal.GetEnvOrDefault
 
-type CIFSBackups struct {
+type CifsBackups struct {
 	// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
 	KeepAll *bool `pulumi:"keepAll"`
 	// The number of daily backups to keep. Older backups will be removed.
@@ -32,18 +32,18 @@ type CIFSBackups struct {
 	MaxProtectedBackups *int `pulumi:"maxProtectedBackups"`
 }
 
-// CIFSBackupsInput is an input type that accepts CIFSBackupsArgs and CIFSBackupsOutput values.
-// You can construct a concrete instance of `CIFSBackupsInput` via:
+// CifsBackupsInput is an input type that accepts CifsBackupsArgs and CifsBackupsOutput values.
+// You can construct a concrete instance of `CifsBackupsInput` via:
 //
-//	CIFSBackupsArgs{...}
-type CIFSBackupsInput interface {
+//	CifsBackupsArgs{...}
+type CifsBackupsInput interface {
 	pulumi.Input
 
-	ToCIFSBackupsOutput() CIFSBackupsOutput
-	ToCIFSBackupsOutputWithContext(context.Context) CIFSBackupsOutput
+	ToCifsBackupsOutput() CifsBackupsOutput
+	ToCifsBackupsOutputWithContext(context.Context) CifsBackupsOutput
 }
 
-type CIFSBackupsArgs struct {
+type CifsBackupsArgs struct {
 	// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
 	KeepAll pulumi.BoolPtrInput `pulumi:"keepAll"`
 	// The number of daily backups to keep. Older backups will be removed.
@@ -62,150 +62,150 @@ type CIFSBackupsArgs struct {
 	MaxProtectedBackups pulumi.IntPtrInput `pulumi:"maxProtectedBackups"`
 }
 
-func (CIFSBackupsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*CIFSBackups)(nil)).Elem()
+func (CifsBackupsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CifsBackups)(nil)).Elem()
 }
 
-func (i CIFSBackupsArgs) ToCIFSBackupsOutput() CIFSBackupsOutput {
-	return i.ToCIFSBackupsOutputWithContext(context.Background())
+func (i CifsBackupsArgs) ToCifsBackupsOutput() CifsBackupsOutput {
+	return i.ToCifsBackupsOutputWithContext(context.Background())
 }
 
-func (i CIFSBackupsArgs) ToCIFSBackupsOutputWithContext(ctx context.Context) CIFSBackupsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CIFSBackupsOutput)
+func (i CifsBackupsArgs) ToCifsBackupsOutputWithContext(ctx context.Context) CifsBackupsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CifsBackupsOutput)
 }
 
-func (i CIFSBackupsArgs) ToCIFSBackupsPtrOutput() CIFSBackupsPtrOutput {
-	return i.ToCIFSBackupsPtrOutputWithContext(context.Background())
+func (i CifsBackupsArgs) ToCifsBackupsPtrOutput() CifsBackupsPtrOutput {
+	return i.ToCifsBackupsPtrOutputWithContext(context.Background())
 }
 
-func (i CIFSBackupsArgs) ToCIFSBackupsPtrOutputWithContext(ctx context.Context) CIFSBackupsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CIFSBackupsOutput).ToCIFSBackupsPtrOutputWithContext(ctx)
+func (i CifsBackupsArgs) ToCifsBackupsPtrOutputWithContext(ctx context.Context) CifsBackupsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CifsBackupsOutput).ToCifsBackupsPtrOutputWithContext(ctx)
 }
 
-// CIFSBackupsPtrInput is an input type that accepts CIFSBackupsArgs, CIFSBackupsPtr and CIFSBackupsPtrOutput values.
-// You can construct a concrete instance of `CIFSBackupsPtrInput` via:
+// CifsBackupsPtrInput is an input type that accepts CifsBackupsArgs, CifsBackupsPtr and CifsBackupsPtrOutput values.
+// You can construct a concrete instance of `CifsBackupsPtrInput` via:
 //
-//	        CIFSBackupsArgs{...}
+//	        CifsBackupsArgs{...}
 //
 //	or:
 //
 //	        nil
-type CIFSBackupsPtrInput interface {
+type CifsBackupsPtrInput interface {
 	pulumi.Input
 
-	ToCIFSBackupsPtrOutput() CIFSBackupsPtrOutput
-	ToCIFSBackupsPtrOutputWithContext(context.Context) CIFSBackupsPtrOutput
+	ToCifsBackupsPtrOutput() CifsBackupsPtrOutput
+	ToCifsBackupsPtrOutputWithContext(context.Context) CifsBackupsPtrOutput
 }
 
-type cifsbackupsPtrType CIFSBackupsArgs
+type cifsBackupsPtrType CifsBackupsArgs
 
-func CIFSBackupsPtr(v *CIFSBackupsArgs) CIFSBackupsPtrInput {
-	return (*cifsbackupsPtrType)(v)
+func CifsBackupsPtr(v *CifsBackupsArgs) CifsBackupsPtrInput {
+	return (*cifsBackupsPtrType)(v)
 }
 
-func (*cifsbackupsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**CIFSBackups)(nil)).Elem()
+func (*cifsBackupsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CifsBackups)(nil)).Elem()
 }
 
-func (i *cifsbackupsPtrType) ToCIFSBackupsPtrOutput() CIFSBackupsPtrOutput {
-	return i.ToCIFSBackupsPtrOutputWithContext(context.Background())
+func (i *cifsBackupsPtrType) ToCifsBackupsPtrOutput() CifsBackupsPtrOutput {
+	return i.ToCifsBackupsPtrOutputWithContext(context.Background())
 }
 
-func (i *cifsbackupsPtrType) ToCIFSBackupsPtrOutputWithContext(ctx context.Context) CIFSBackupsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CIFSBackupsPtrOutput)
+func (i *cifsBackupsPtrType) ToCifsBackupsPtrOutputWithContext(ctx context.Context) CifsBackupsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CifsBackupsPtrOutput)
 }
 
-type CIFSBackupsOutput struct{ *pulumi.OutputState }
+type CifsBackupsOutput struct{ *pulumi.OutputState }
 
-func (CIFSBackupsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*CIFSBackups)(nil)).Elem()
+func (CifsBackupsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CifsBackups)(nil)).Elem()
 }
 
-func (o CIFSBackupsOutput) ToCIFSBackupsOutput() CIFSBackupsOutput {
+func (o CifsBackupsOutput) ToCifsBackupsOutput() CifsBackupsOutput {
 	return o
 }
 
-func (o CIFSBackupsOutput) ToCIFSBackupsOutputWithContext(ctx context.Context) CIFSBackupsOutput {
+func (o CifsBackupsOutput) ToCifsBackupsOutputWithContext(ctx context.Context) CifsBackupsOutput {
 	return o
 }
 
-func (o CIFSBackupsOutput) ToCIFSBackupsPtrOutput() CIFSBackupsPtrOutput {
-	return o.ToCIFSBackupsPtrOutputWithContext(context.Background())
+func (o CifsBackupsOutput) ToCifsBackupsPtrOutput() CifsBackupsPtrOutput {
+	return o.ToCifsBackupsPtrOutputWithContext(context.Background())
 }
 
-func (o CIFSBackupsOutput) ToCIFSBackupsPtrOutputWithContext(ctx context.Context) CIFSBackupsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v CIFSBackups) *CIFSBackups {
+func (o CifsBackupsOutput) ToCifsBackupsPtrOutputWithContext(ctx context.Context) CifsBackupsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CifsBackups) *CifsBackups {
 		return &v
-	}).(CIFSBackupsPtrOutput)
+	}).(CifsBackupsPtrOutput)
 }
 
 // Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
-func (o CIFSBackupsOutput) KeepAll() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v CIFSBackups) *bool { return v.KeepAll }).(pulumi.BoolPtrOutput)
+func (o CifsBackupsOutput) KeepAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CifsBackups) *bool { return v.KeepAll }).(pulumi.BoolPtrOutput)
 }
 
 // The number of daily backups to keep. Older backups will be removed.
-func (o CIFSBackupsOutput) KeepDaily() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v CIFSBackups) *int { return v.KeepDaily }).(pulumi.IntPtrOutput)
+func (o CifsBackupsOutput) KeepDaily() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CifsBackups) *int { return v.KeepDaily }).(pulumi.IntPtrOutput)
 }
 
 // The number of hourly backups to keep. Older backups will be removed.
-func (o CIFSBackupsOutput) KeepHourly() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v CIFSBackups) *int { return v.KeepHourly }).(pulumi.IntPtrOutput)
+func (o CifsBackupsOutput) KeepHourly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CifsBackups) *int { return v.KeepHourly }).(pulumi.IntPtrOutput)
 }
 
 // Specifies the number of the most recent backups to keep, regardless of their age.
-func (o CIFSBackupsOutput) KeepLast() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v CIFSBackups) *int { return v.KeepLast }).(pulumi.IntPtrOutput)
+func (o CifsBackupsOutput) KeepLast() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CifsBackups) *int { return v.KeepLast }).(pulumi.IntPtrOutput)
 }
 
 // The number of monthly backups to keep. Older backups will be removed.
-func (o CIFSBackupsOutput) KeepMonthly() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v CIFSBackups) *int { return v.KeepMonthly }).(pulumi.IntPtrOutput)
+func (o CifsBackupsOutput) KeepMonthly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CifsBackups) *int { return v.KeepMonthly }).(pulumi.IntPtrOutput)
 }
 
 // The number of weekly backups to keep. Older backups will be removed.
-func (o CIFSBackupsOutput) KeepWeekly() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v CIFSBackups) *int { return v.KeepWeekly }).(pulumi.IntPtrOutput)
+func (o CifsBackupsOutput) KeepWeekly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CifsBackups) *int { return v.KeepWeekly }).(pulumi.IntPtrOutput)
 }
 
 // The number of yearly backups to keep. Older backups will be removed.
-func (o CIFSBackupsOutput) KeepYearly() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v CIFSBackups) *int { return v.KeepYearly }).(pulumi.IntPtrOutput)
+func (o CifsBackupsOutput) KeepYearly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CifsBackups) *int { return v.KeepYearly }).(pulumi.IntPtrOutput)
 }
 
 // The maximum number of protected backups per guest. Use '-1' for unlimited.
-func (o CIFSBackupsOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v CIFSBackups) *int { return v.MaxProtectedBackups }).(pulumi.IntPtrOutput)
+func (o CifsBackupsOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CifsBackups) *int { return v.MaxProtectedBackups }).(pulumi.IntPtrOutput)
 }
 
-type CIFSBackupsPtrOutput struct{ *pulumi.OutputState }
+type CifsBackupsPtrOutput struct{ *pulumi.OutputState }
 
-func (CIFSBackupsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CIFSBackups)(nil)).Elem()
+func (CifsBackupsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CifsBackups)(nil)).Elem()
 }
 
-func (o CIFSBackupsPtrOutput) ToCIFSBackupsPtrOutput() CIFSBackupsPtrOutput {
+func (o CifsBackupsPtrOutput) ToCifsBackupsPtrOutput() CifsBackupsPtrOutput {
 	return o
 }
 
-func (o CIFSBackupsPtrOutput) ToCIFSBackupsPtrOutputWithContext(ctx context.Context) CIFSBackupsPtrOutput {
+func (o CifsBackupsPtrOutput) ToCifsBackupsPtrOutputWithContext(ctx context.Context) CifsBackupsPtrOutput {
 	return o
 }
 
-func (o CIFSBackupsPtrOutput) Elem() CIFSBackupsOutput {
-	return o.ApplyT(func(v *CIFSBackups) CIFSBackups {
+func (o CifsBackupsPtrOutput) Elem() CifsBackupsOutput {
+	return o.ApplyT(func(v *CifsBackups) CifsBackups {
 		if v != nil {
 			return *v
 		}
-		var ret CIFSBackups
+		var ret CifsBackups
 		return ret
-	}).(CIFSBackupsOutput)
+	}).(CifsBackupsOutput)
 }
 
 // Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
-func (o CIFSBackupsPtrOutput) KeepAll() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *CIFSBackups) *bool {
+func (o CifsBackupsPtrOutput) KeepAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CifsBackups) *bool {
 		if v == nil {
 			return nil
 		}
@@ -214,8 +214,8 @@ func (o CIFSBackupsPtrOutput) KeepAll() pulumi.BoolPtrOutput {
 }
 
 // The number of daily backups to keep. Older backups will be removed.
-func (o CIFSBackupsPtrOutput) KeepDaily() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *CIFSBackups) *int {
+func (o CifsBackupsPtrOutput) KeepDaily() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CifsBackups) *int {
 		if v == nil {
 			return nil
 		}
@@ -224,8 +224,8 @@ func (o CIFSBackupsPtrOutput) KeepDaily() pulumi.IntPtrOutput {
 }
 
 // The number of hourly backups to keep. Older backups will be removed.
-func (o CIFSBackupsPtrOutput) KeepHourly() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *CIFSBackups) *int {
+func (o CifsBackupsPtrOutput) KeepHourly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CifsBackups) *int {
 		if v == nil {
 			return nil
 		}
@@ -234,8 +234,8 @@ func (o CIFSBackupsPtrOutput) KeepHourly() pulumi.IntPtrOutput {
 }
 
 // Specifies the number of the most recent backups to keep, regardless of their age.
-func (o CIFSBackupsPtrOutput) KeepLast() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *CIFSBackups) *int {
+func (o CifsBackupsPtrOutput) KeepLast() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CifsBackups) *int {
 		if v == nil {
 			return nil
 		}
@@ -244,8 +244,8 @@ func (o CIFSBackupsPtrOutput) KeepLast() pulumi.IntPtrOutput {
 }
 
 // The number of monthly backups to keep. Older backups will be removed.
-func (o CIFSBackupsPtrOutput) KeepMonthly() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *CIFSBackups) *int {
+func (o CifsBackupsPtrOutput) KeepMonthly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CifsBackups) *int {
 		if v == nil {
 			return nil
 		}
@@ -254,8 +254,8 @@ func (o CIFSBackupsPtrOutput) KeepMonthly() pulumi.IntPtrOutput {
 }
 
 // The number of weekly backups to keep. Older backups will be removed.
-func (o CIFSBackupsPtrOutput) KeepWeekly() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *CIFSBackups) *int {
+func (o CifsBackupsPtrOutput) KeepWeekly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CifsBackups) *int {
 		if v == nil {
 			return nil
 		}
@@ -264,8 +264,8 @@ func (o CIFSBackupsPtrOutput) KeepWeekly() pulumi.IntPtrOutput {
 }
 
 // The number of yearly backups to keep. Older backups will be removed.
-func (o CIFSBackupsPtrOutput) KeepYearly() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *CIFSBackups) *int {
+func (o CifsBackupsPtrOutput) KeepYearly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CifsBackups) *int {
 		if v == nil {
 			return nil
 		}
@@ -274,8 +274,278 @@ func (o CIFSBackupsPtrOutput) KeepYearly() pulumi.IntPtrOutput {
 }
 
 // The maximum number of protected backups per guest. Use '-1' for unlimited.
-func (o CIFSBackupsPtrOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *CIFSBackups) *int {
+func (o CifsBackupsPtrOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CifsBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxProtectedBackups
+	}).(pulumi.IntPtrOutput)
+}
+
+type CifsLegacyBackups struct {
+	// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+	KeepAll *bool `pulumi:"keepAll"`
+	// The number of daily backups to keep. Older backups will be removed.
+	KeepDaily *int `pulumi:"keepDaily"`
+	// The number of hourly backups to keep. Older backups will be removed.
+	KeepHourly *int `pulumi:"keepHourly"`
+	// Specifies the number of the most recent backups to keep, regardless of their age.
+	KeepLast *int `pulumi:"keepLast"`
+	// The number of monthly backups to keep. Older backups will be removed.
+	KeepMonthly *int `pulumi:"keepMonthly"`
+	// The number of weekly backups to keep. Older backups will be removed.
+	KeepWeekly *int `pulumi:"keepWeekly"`
+	// The number of yearly backups to keep. Older backups will be removed.
+	KeepYearly *int `pulumi:"keepYearly"`
+	// The maximum number of protected backups per guest. Use '-1' for unlimited.
+	MaxProtectedBackups *int `pulumi:"maxProtectedBackups"`
+}
+
+// CifsLegacyBackupsInput is an input type that accepts CifsLegacyBackupsArgs and CifsLegacyBackupsOutput values.
+// You can construct a concrete instance of `CifsLegacyBackupsInput` via:
+//
+//	CifsLegacyBackupsArgs{...}
+type CifsLegacyBackupsInput interface {
+	pulumi.Input
+
+	ToCifsLegacyBackupsOutput() CifsLegacyBackupsOutput
+	ToCifsLegacyBackupsOutputWithContext(context.Context) CifsLegacyBackupsOutput
+}
+
+type CifsLegacyBackupsArgs struct {
+	// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+	KeepAll pulumi.BoolPtrInput `pulumi:"keepAll"`
+	// The number of daily backups to keep. Older backups will be removed.
+	KeepDaily pulumi.IntPtrInput `pulumi:"keepDaily"`
+	// The number of hourly backups to keep. Older backups will be removed.
+	KeepHourly pulumi.IntPtrInput `pulumi:"keepHourly"`
+	// Specifies the number of the most recent backups to keep, regardless of their age.
+	KeepLast pulumi.IntPtrInput `pulumi:"keepLast"`
+	// The number of monthly backups to keep. Older backups will be removed.
+	KeepMonthly pulumi.IntPtrInput `pulumi:"keepMonthly"`
+	// The number of weekly backups to keep. Older backups will be removed.
+	KeepWeekly pulumi.IntPtrInput `pulumi:"keepWeekly"`
+	// The number of yearly backups to keep. Older backups will be removed.
+	KeepYearly pulumi.IntPtrInput `pulumi:"keepYearly"`
+	// The maximum number of protected backups per guest. Use '-1' for unlimited.
+	MaxProtectedBackups pulumi.IntPtrInput `pulumi:"maxProtectedBackups"`
+}
+
+func (CifsLegacyBackupsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CifsLegacyBackups)(nil)).Elem()
+}
+
+func (i CifsLegacyBackupsArgs) ToCifsLegacyBackupsOutput() CifsLegacyBackupsOutput {
+	return i.ToCifsLegacyBackupsOutputWithContext(context.Background())
+}
+
+func (i CifsLegacyBackupsArgs) ToCifsLegacyBackupsOutputWithContext(ctx context.Context) CifsLegacyBackupsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CifsLegacyBackupsOutput)
+}
+
+func (i CifsLegacyBackupsArgs) ToCifsLegacyBackupsPtrOutput() CifsLegacyBackupsPtrOutput {
+	return i.ToCifsLegacyBackupsPtrOutputWithContext(context.Background())
+}
+
+func (i CifsLegacyBackupsArgs) ToCifsLegacyBackupsPtrOutputWithContext(ctx context.Context) CifsLegacyBackupsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CifsLegacyBackupsOutput).ToCifsLegacyBackupsPtrOutputWithContext(ctx)
+}
+
+// CifsLegacyBackupsPtrInput is an input type that accepts CifsLegacyBackupsArgs, CifsLegacyBackupsPtr and CifsLegacyBackupsPtrOutput values.
+// You can construct a concrete instance of `CifsLegacyBackupsPtrInput` via:
+//
+//	        CifsLegacyBackupsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CifsLegacyBackupsPtrInput interface {
+	pulumi.Input
+
+	ToCifsLegacyBackupsPtrOutput() CifsLegacyBackupsPtrOutput
+	ToCifsLegacyBackupsPtrOutputWithContext(context.Context) CifsLegacyBackupsPtrOutput
+}
+
+type cifsLegacyBackupsPtrType CifsLegacyBackupsArgs
+
+func CifsLegacyBackupsPtr(v *CifsLegacyBackupsArgs) CifsLegacyBackupsPtrInput {
+	return (*cifsLegacyBackupsPtrType)(v)
+}
+
+func (*cifsLegacyBackupsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CifsLegacyBackups)(nil)).Elem()
+}
+
+func (i *cifsLegacyBackupsPtrType) ToCifsLegacyBackupsPtrOutput() CifsLegacyBackupsPtrOutput {
+	return i.ToCifsLegacyBackupsPtrOutputWithContext(context.Background())
+}
+
+func (i *cifsLegacyBackupsPtrType) ToCifsLegacyBackupsPtrOutputWithContext(ctx context.Context) CifsLegacyBackupsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CifsLegacyBackupsPtrOutput)
+}
+
+type CifsLegacyBackupsOutput struct{ *pulumi.OutputState }
+
+func (CifsLegacyBackupsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CifsLegacyBackups)(nil)).Elem()
+}
+
+func (o CifsLegacyBackupsOutput) ToCifsLegacyBackupsOutput() CifsLegacyBackupsOutput {
+	return o
+}
+
+func (o CifsLegacyBackupsOutput) ToCifsLegacyBackupsOutputWithContext(ctx context.Context) CifsLegacyBackupsOutput {
+	return o
+}
+
+func (o CifsLegacyBackupsOutput) ToCifsLegacyBackupsPtrOutput() CifsLegacyBackupsPtrOutput {
+	return o.ToCifsLegacyBackupsPtrOutputWithContext(context.Background())
+}
+
+func (o CifsLegacyBackupsOutput) ToCifsLegacyBackupsPtrOutputWithContext(ctx context.Context) CifsLegacyBackupsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CifsLegacyBackups) *CifsLegacyBackups {
+		return &v
+	}).(CifsLegacyBackupsPtrOutput)
+}
+
+// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+func (o CifsLegacyBackupsOutput) KeepAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CifsLegacyBackups) *bool { return v.KeepAll }).(pulumi.BoolPtrOutput)
+}
+
+// The number of daily backups to keep. Older backups will be removed.
+func (o CifsLegacyBackupsOutput) KeepDaily() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CifsLegacyBackups) *int { return v.KeepDaily }).(pulumi.IntPtrOutput)
+}
+
+// The number of hourly backups to keep. Older backups will be removed.
+func (o CifsLegacyBackupsOutput) KeepHourly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CifsLegacyBackups) *int { return v.KeepHourly }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the number of the most recent backups to keep, regardless of their age.
+func (o CifsLegacyBackupsOutput) KeepLast() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CifsLegacyBackups) *int { return v.KeepLast }).(pulumi.IntPtrOutput)
+}
+
+// The number of monthly backups to keep. Older backups will be removed.
+func (o CifsLegacyBackupsOutput) KeepMonthly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CifsLegacyBackups) *int { return v.KeepMonthly }).(pulumi.IntPtrOutput)
+}
+
+// The number of weekly backups to keep. Older backups will be removed.
+func (o CifsLegacyBackupsOutput) KeepWeekly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CifsLegacyBackups) *int { return v.KeepWeekly }).(pulumi.IntPtrOutput)
+}
+
+// The number of yearly backups to keep. Older backups will be removed.
+func (o CifsLegacyBackupsOutput) KeepYearly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CifsLegacyBackups) *int { return v.KeepYearly }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of protected backups per guest. Use '-1' for unlimited.
+func (o CifsLegacyBackupsOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CifsLegacyBackups) *int { return v.MaxProtectedBackups }).(pulumi.IntPtrOutput)
+}
+
+type CifsLegacyBackupsPtrOutput struct{ *pulumi.OutputState }
+
+func (CifsLegacyBackupsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CifsLegacyBackups)(nil)).Elem()
+}
+
+func (o CifsLegacyBackupsPtrOutput) ToCifsLegacyBackupsPtrOutput() CifsLegacyBackupsPtrOutput {
+	return o
+}
+
+func (o CifsLegacyBackupsPtrOutput) ToCifsLegacyBackupsPtrOutputWithContext(ctx context.Context) CifsLegacyBackupsPtrOutput {
+	return o
+}
+
+func (o CifsLegacyBackupsPtrOutput) Elem() CifsLegacyBackupsOutput {
+	return o.ApplyT(func(v *CifsLegacyBackups) CifsLegacyBackups {
+		if v != nil {
+			return *v
+		}
+		var ret CifsLegacyBackups
+		return ret
+	}).(CifsLegacyBackupsOutput)
+}
+
+// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+func (o CifsLegacyBackupsPtrOutput) KeepAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CifsLegacyBackups) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.KeepAll
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The number of daily backups to keep. Older backups will be removed.
+func (o CifsLegacyBackupsPtrOutput) KeepDaily() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CifsLegacyBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepDaily
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of hourly backups to keep. Older backups will be removed.
+func (o CifsLegacyBackupsPtrOutput) KeepHourly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CifsLegacyBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepHourly
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the number of the most recent backups to keep, regardless of their age.
+func (o CifsLegacyBackupsPtrOutput) KeepLast() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CifsLegacyBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepLast
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of monthly backups to keep. Older backups will be removed.
+func (o CifsLegacyBackupsPtrOutput) KeepMonthly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CifsLegacyBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepMonthly
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of weekly backups to keep. Older backups will be removed.
+func (o CifsLegacyBackupsPtrOutput) KeepWeekly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CifsLegacyBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepWeekly
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of yearly backups to keep. Older backups will be removed.
+func (o CifsLegacyBackupsPtrOutput) KeepYearly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CifsLegacyBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepYearly
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of protected backups per guest. Use '-1' for unlimited.
+func (o CifsLegacyBackupsPtrOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CifsLegacyBackups) *int {
 		if v == nil {
 			return nil
 		}
@@ -553,430 +823,7 @@ func (o DirectoryBackupsPtrOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-type FileSourceFile struct {
-	// Whether the source file has changed since the last run
-	Changed *bool `pulumi:"changed"`
-	// The SHA256 checksum of the source file.
-	Checksum *string `pulumi:"checksum"`
-	// The file name to use instead of the source file
-	// name. Useful when the source file does not have a valid file extension,
-	// for example when the source file is a URL referencing a `.qcow2` image.
-	FileName *string `pulumi:"fileName"`
-	// Whether to skip the TLS verification step for
-	// HTTPS sources (defaults to `false`).
-	Insecure *bool `pulumi:"insecure"`
-	// The minimum required TLS version for HTTPS
-	// sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
-	MinTls *string `pulumi:"minTls"`
-	// A path to a local file or a URL.
-	Path string `pulumi:"path"`
-}
-
-// FileSourceFileInput is an input type that accepts FileSourceFileArgs and FileSourceFileOutput values.
-// You can construct a concrete instance of `FileSourceFileInput` via:
-//
-//	FileSourceFileArgs{...}
-type FileSourceFileInput interface {
-	pulumi.Input
-
-	ToFileSourceFileOutput() FileSourceFileOutput
-	ToFileSourceFileOutputWithContext(context.Context) FileSourceFileOutput
-}
-
-type FileSourceFileArgs struct {
-	// Whether the source file has changed since the last run
-	Changed pulumi.BoolPtrInput `pulumi:"changed"`
-	// The SHA256 checksum of the source file.
-	Checksum pulumi.StringPtrInput `pulumi:"checksum"`
-	// The file name to use instead of the source file
-	// name. Useful when the source file does not have a valid file extension,
-	// for example when the source file is a URL referencing a `.qcow2` image.
-	FileName pulumi.StringPtrInput `pulumi:"fileName"`
-	// Whether to skip the TLS verification step for
-	// HTTPS sources (defaults to `false`).
-	Insecure pulumi.BoolPtrInput `pulumi:"insecure"`
-	// The minimum required TLS version for HTTPS
-	// sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
-	MinTls pulumi.StringPtrInput `pulumi:"minTls"`
-	// A path to a local file or a URL.
-	Path pulumi.StringInput `pulumi:"path"`
-}
-
-func (FileSourceFileArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FileSourceFile)(nil)).Elem()
-}
-
-func (i FileSourceFileArgs) ToFileSourceFileOutput() FileSourceFileOutput {
-	return i.ToFileSourceFileOutputWithContext(context.Background())
-}
-
-func (i FileSourceFileArgs) ToFileSourceFileOutputWithContext(ctx context.Context) FileSourceFileOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FileSourceFileOutput)
-}
-
-func (i FileSourceFileArgs) ToFileSourceFilePtrOutput() FileSourceFilePtrOutput {
-	return i.ToFileSourceFilePtrOutputWithContext(context.Background())
-}
-
-func (i FileSourceFileArgs) ToFileSourceFilePtrOutputWithContext(ctx context.Context) FileSourceFilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FileSourceFileOutput).ToFileSourceFilePtrOutputWithContext(ctx)
-}
-
-// FileSourceFilePtrInput is an input type that accepts FileSourceFileArgs, FileSourceFilePtr and FileSourceFilePtrOutput values.
-// You can construct a concrete instance of `FileSourceFilePtrInput` via:
-//
-//	        FileSourceFileArgs{...}
-//
-//	or:
-//
-//	        nil
-type FileSourceFilePtrInput interface {
-	pulumi.Input
-
-	ToFileSourceFilePtrOutput() FileSourceFilePtrOutput
-	ToFileSourceFilePtrOutputWithContext(context.Context) FileSourceFilePtrOutput
-}
-
-type fileSourceFilePtrType FileSourceFileArgs
-
-func FileSourceFilePtr(v *FileSourceFileArgs) FileSourceFilePtrInput {
-	return (*fileSourceFilePtrType)(v)
-}
-
-func (*fileSourceFilePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FileSourceFile)(nil)).Elem()
-}
-
-func (i *fileSourceFilePtrType) ToFileSourceFilePtrOutput() FileSourceFilePtrOutput {
-	return i.ToFileSourceFilePtrOutputWithContext(context.Background())
-}
-
-func (i *fileSourceFilePtrType) ToFileSourceFilePtrOutputWithContext(ctx context.Context) FileSourceFilePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FileSourceFilePtrOutput)
-}
-
-type FileSourceFileOutput struct{ *pulumi.OutputState }
-
-func (FileSourceFileOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FileSourceFile)(nil)).Elem()
-}
-
-func (o FileSourceFileOutput) ToFileSourceFileOutput() FileSourceFileOutput {
-	return o
-}
-
-func (o FileSourceFileOutput) ToFileSourceFileOutputWithContext(ctx context.Context) FileSourceFileOutput {
-	return o
-}
-
-func (o FileSourceFileOutput) ToFileSourceFilePtrOutput() FileSourceFilePtrOutput {
-	return o.ToFileSourceFilePtrOutputWithContext(context.Background())
-}
-
-func (o FileSourceFileOutput) ToFileSourceFilePtrOutputWithContext(ctx context.Context) FileSourceFilePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileSourceFile) *FileSourceFile {
-		return &v
-	}).(FileSourceFilePtrOutput)
-}
-
-// Whether the source file has changed since the last run
-func (o FileSourceFileOutput) Changed() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v FileSourceFile) *bool { return v.Changed }).(pulumi.BoolPtrOutput)
-}
-
-// The SHA256 checksum of the source file.
-func (o FileSourceFileOutput) Checksum() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FileSourceFile) *string { return v.Checksum }).(pulumi.StringPtrOutput)
-}
-
-// The file name to use instead of the source file
-// name. Useful when the source file does not have a valid file extension,
-// for example when the source file is a URL referencing a `.qcow2` image.
-func (o FileSourceFileOutput) FileName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FileSourceFile) *string { return v.FileName }).(pulumi.StringPtrOutput)
-}
-
-// Whether to skip the TLS verification step for
-// HTTPS sources (defaults to `false`).
-func (o FileSourceFileOutput) Insecure() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v FileSourceFile) *bool { return v.Insecure }).(pulumi.BoolPtrOutput)
-}
-
-// The minimum required TLS version for HTTPS
-// sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
-func (o FileSourceFileOutput) MinTls() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v FileSourceFile) *string { return v.MinTls }).(pulumi.StringPtrOutput)
-}
-
-// A path to a local file or a URL.
-func (o FileSourceFileOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func(v FileSourceFile) string { return v.Path }).(pulumi.StringOutput)
-}
-
-type FileSourceFilePtrOutput struct{ *pulumi.OutputState }
-
-func (FileSourceFilePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FileSourceFile)(nil)).Elem()
-}
-
-func (o FileSourceFilePtrOutput) ToFileSourceFilePtrOutput() FileSourceFilePtrOutput {
-	return o
-}
-
-func (o FileSourceFilePtrOutput) ToFileSourceFilePtrOutputWithContext(ctx context.Context) FileSourceFilePtrOutput {
-	return o
-}
-
-func (o FileSourceFilePtrOutput) Elem() FileSourceFileOutput {
-	return o.ApplyT(func(v *FileSourceFile) FileSourceFile {
-		if v != nil {
-			return *v
-		}
-		var ret FileSourceFile
-		return ret
-	}).(FileSourceFileOutput)
-}
-
-// Whether the source file has changed since the last run
-func (o FileSourceFilePtrOutput) Changed() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *FileSourceFile) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Changed
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The SHA256 checksum of the source file.
-func (o FileSourceFilePtrOutput) Checksum() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FileSourceFile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Checksum
-	}).(pulumi.StringPtrOutput)
-}
-
-// The file name to use instead of the source file
-// name. Useful when the source file does not have a valid file extension,
-// for example when the source file is a URL referencing a `.qcow2` image.
-func (o FileSourceFilePtrOutput) FileName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FileSourceFile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.FileName
-	}).(pulumi.StringPtrOutput)
-}
-
-// Whether to skip the TLS verification step for
-// HTTPS sources (defaults to `false`).
-func (o FileSourceFilePtrOutput) Insecure() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *FileSourceFile) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.Insecure
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The minimum required TLS version for HTTPS
-// sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
-func (o FileSourceFilePtrOutput) MinTls() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FileSourceFile) *string {
-		if v == nil {
-			return nil
-		}
-		return v.MinTls
-	}).(pulumi.StringPtrOutput)
-}
-
-// A path to a local file or a URL.
-func (o FileSourceFilePtrOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FileSourceFile) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Path
-	}).(pulumi.StringPtrOutput)
-}
-
-type FileSourceRaw struct {
-	// The raw data.
-	Data string `pulumi:"data"`
-	// The file name.
-	FileName string `pulumi:"fileName"`
-	// The number of bytes to resize the file to.
-	Resize *int `pulumi:"resize"`
-}
-
-// FileSourceRawInput is an input type that accepts FileSourceRawArgs and FileSourceRawOutput values.
-// You can construct a concrete instance of `FileSourceRawInput` via:
-//
-//	FileSourceRawArgs{...}
-type FileSourceRawInput interface {
-	pulumi.Input
-
-	ToFileSourceRawOutput() FileSourceRawOutput
-	ToFileSourceRawOutputWithContext(context.Context) FileSourceRawOutput
-}
-
-type FileSourceRawArgs struct {
-	// The raw data.
-	Data pulumi.StringInput `pulumi:"data"`
-	// The file name.
-	FileName pulumi.StringInput `pulumi:"fileName"`
-	// The number of bytes to resize the file to.
-	Resize pulumi.IntPtrInput `pulumi:"resize"`
-}
-
-func (FileSourceRawArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*FileSourceRaw)(nil)).Elem()
-}
-
-func (i FileSourceRawArgs) ToFileSourceRawOutput() FileSourceRawOutput {
-	return i.ToFileSourceRawOutputWithContext(context.Background())
-}
-
-func (i FileSourceRawArgs) ToFileSourceRawOutputWithContext(ctx context.Context) FileSourceRawOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FileSourceRawOutput)
-}
-
-func (i FileSourceRawArgs) ToFileSourceRawPtrOutput() FileSourceRawPtrOutput {
-	return i.ToFileSourceRawPtrOutputWithContext(context.Background())
-}
-
-func (i FileSourceRawArgs) ToFileSourceRawPtrOutputWithContext(ctx context.Context) FileSourceRawPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FileSourceRawOutput).ToFileSourceRawPtrOutputWithContext(ctx)
-}
-
-// FileSourceRawPtrInput is an input type that accepts FileSourceRawArgs, FileSourceRawPtr and FileSourceRawPtrOutput values.
-// You can construct a concrete instance of `FileSourceRawPtrInput` via:
-//
-//	        FileSourceRawArgs{...}
-//
-//	or:
-//
-//	        nil
-type FileSourceRawPtrInput interface {
-	pulumi.Input
-
-	ToFileSourceRawPtrOutput() FileSourceRawPtrOutput
-	ToFileSourceRawPtrOutputWithContext(context.Context) FileSourceRawPtrOutput
-}
-
-type fileSourceRawPtrType FileSourceRawArgs
-
-func FileSourceRawPtr(v *FileSourceRawArgs) FileSourceRawPtrInput {
-	return (*fileSourceRawPtrType)(v)
-}
-
-func (*fileSourceRawPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**FileSourceRaw)(nil)).Elem()
-}
-
-func (i *fileSourceRawPtrType) ToFileSourceRawPtrOutput() FileSourceRawPtrOutput {
-	return i.ToFileSourceRawPtrOutputWithContext(context.Background())
-}
-
-func (i *fileSourceRawPtrType) ToFileSourceRawPtrOutputWithContext(ctx context.Context) FileSourceRawPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(FileSourceRawPtrOutput)
-}
-
-type FileSourceRawOutput struct{ *pulumi.OutputState }
-
-func (FileSourceRawOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*FileSourceRaw)(nil)).Elem()
-}
-
-func (o FileSourceRawOutput) ToFileSourceRawOutput() FileSourceRawOutput {
-	return o
-}
-
-func (o FileSourceRawOutput) ToFileSourceRawOutputWithContext(ctx context.Context) FileSourceRawOutput {
-	return o
-}
-
-func (o FileSourceRawOutput) ToFileSourceRawPtrOutput() FileSourceRawPtrOutput {
-	return o.ToFileSourceRawPtrOutputWithContext(context.Background())
-}
-
-func (o FileSourceRawOutput) ToFileSourceRawPtrOutputWithContext(ctx context.Context) FileSourceRawPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileSourceRaw) *FileSourceRaw {
-		return &v
-	}).(FileSourceRawPtrOutput)
-}
-
-// The raw data.
-func (o FileSourceRawOutput) Data() pulumi.StringOutput {
-	return o.ApplyT(func(v FileSourceRaw) string { return v.Data }).(pulumi.StringOutput)
-}
-
-// The file name.
-func (o FileSourceRawOutput) FileName() pulumi.StringOutput {
-	return o.ApplyT(func(v FileSourceRaw) string { return v.FileName }).(pulumi.StringOutput)
-}
-
-// The number of bytes to resize the file to.
-func (o FileSourceRawOutput) Resize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v FileSourceRaw) *int { return v.Resize }).(pulumi.IntPtrOutput)
-}
-
-type FileSourceRawPtrOutput struct{ *pulumi.OutputState }
-
-func (FileSourceRawPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**FileSourceRaw)(nil)).Elem()
-}
-
-func (o FileSourceRawPtrOutput) ToFileSourceRawPtrOutput() FileSourceRawPtrOutput {
-	return o
-}
-
-func (o FileSourceRawPtrOutput) ToFileSourceRawPtrOutputWithContext(ctx context.Context) FileSourceRawPtrOutput {
-	return o
-}
-
-func (o FileSourceRawPtrOutput) Elem() FileSourceRawOutput {
-	return o.ApplyT(func(v *FileSourceRaw) FileSourceRaw {
-		if v != nil {
-			return *v
-		}
-		var ret FileSourceRaw
-		return ret
-	}).(FileSourceRawOutput)
-}
-
-// The raw data.
-func (o FileSourceRawPtrOutput) Data() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FileSourceRaw) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Data
-	}).(pulumi.StringPtrOutput)
-}
-
-// The file name.
-func (o FileSourceRawPtrOutput) FileName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *FileSourceRaw) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.FileName
-	}).(pulumi.StringPtrOutput)
-}
-
-// The number of bytes to resize the file to.
-func (o FileSourceRawPtrOutput) Resize() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *FileSourceRaw) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Resize
-	}).(pulumi.IntPtrOutput)
-}
-
-type NFSBackups struct {
+type DirectoryLegacyBackups struct {
 	// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
 	KeepAll *bool `pulumi:"keepAll"`
 	// The number of daily backups to keep. Older backups will be removed.
@@ -995,18 +842,18 @@ type NFSBackups struct {
 	MaxProtectedBackups *int `pulumi:"maxProtectedBackups"`
 }
 
-// NFSBackupsInput is an input type that accepts NFSBackupsArgs and NFSBackupsOutput values.
-// You can construct a concrete instance of `NFSBackupsInput` via:
+// DirectoryLegacyBackupsInput is an input type that accepts DirectoryLegacyBackupsArgs and DirectoryLegacyBackupsOutput values.
+// You can construct a concrete instance of `DirectoryLegacyBackupsInput` via:
 //
-//	NFSBackupsArgs{...}
-type NFSBackupsInput interface {
+//	DirectoryLegacyBackupsArgs{...}
+type DirectoryLegacyBackupsInput interface {
 	pulumi.Input
 
-	ToNFSBackupsOutput() NFSBackupsOutput
-	ToNFSBackupsOutputWithContext(context.Context) NFSBackupsOutput
+	ToDirectoryLegacyBackupsOutput() DirectoryLegacyBackupsOutput
+	ToDirectoryLegacyBackupsOutputWithContext(context.Context) DirectoryLegacyBackupsOutput
 }
 
-type NFSBackupsArgs struct {
+type DirectoryLegacyBackupsArgs struct {
 	// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
 	KeepAll pulumi.BoolPtrInput `pulumi:"keepAll"`
 	// The number of daily backups to keep. Older backups will be removed.
@@ -1025,150 +872,150 @@ type NFSBackupsArgs struct {
 	MaxProtectedBackups pulumi.IntPtrInput `pulumi:"maxProtectedBackups"`
 }
 
-func (NFSBackupsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NFSBackups)(nil)).Elem()
+func (DirectoryLegacyBackupsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DirectoryLegacyBackups)(nil)).Elem()
 }
 
-func (i NFSBackupsArgs) ToNFSBackupsOutput() NFSBackupsOutput {
-	return i.ToNFSBackupsOutputWithContext(context.Background())
+func (i DirectoryLegacyBackupsArgs) ToDirectoryLegacyBackupsOutput() DirectoryLegacyBackupsOutput {
+	return i.ToDirectoryLegacyBackupsOutputWithContext(context.Background())
 }
 
-func (i NFSBackupsArgs) ToNFSBackupsOutputWithContext(ctx context.Context) NFSBackupsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NFSBackupsOutput)
+func (i DirectoryLegacyBackupsArgs) ToDirectoryLegacyBackupsOutputWithContext(ctx context.Context) DirectoryLegacyBackupsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirectoryLegacyBackupsOutput)
 }
 
-func (i NFSBackupsArgs) ToNFSBackupsPtrOutput() NFSBackupsPtrOutput {
-	return i.ToNFSBackupsPtrOutputWithContext(context.Background())
+func (i DirectoryLegacyBackupsArgs) ToDirectoryLegacyBackupsPtrOutput() DirectoryLegacyBackupsPtrOutput {
+	return i.ToDirectoryLegacyBackupsPtrOutputWithContext(context.Background())
 }
 
-func (i NFSBackupsArgs) ToNFSBackupsPtrOutputWithContext(ctx context.Context) NFSBackupsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NFSBackupsOutput).ToNFSBackupsPtrOutputWithContext(ctx)
+func (i DirectoryLegacyBackupsArgs) ToDirectoryLegacyBackupsPtrOutputWithContext(ctx context.Context) DirectoryLegacyBackupsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirectoryLegacyBackupsOutput).ToDirectoryLegacyBackupsPtrOutputWithContext(ctx)
 }
 
-// NFSBackupsPtrInput is an input type that accepts NFSBackupsArgs, NFSBackupsPtr and NFSBackupsPtrOutput values.
-// You can construct a concrete instance of `NFSBackupsPtrInput` via:
+// DirectoryLegacyBackupsPtrInput is an input type that accepts DirectoryLegacyBackupsArgs, DirectoryLegacyBackupsPtr and DirectoryLegacyBackupsPtrOutput values.
+// You can construct a concrete instance of `DirectoryLegacyBackupsPtrInput` via:
 //
-//	        NFSBackupsArgs{...}
+//	        DirectoryLegacyBackupsArgs{...}
 //
 //	or:
 //
 //	        nil
-type NFSBackupsPtrInput interface {
+type DirectoryLegacyBackupsPtrInput interface {
 	pulumi.Input
 
-	ToNFSBackupsPtrOutput() NFSBackupsPtrOutput
-	ToNFSBackupsPtrOutputWithContext(context.Context) NFSBackupsPtrOutput
+	ToDirectoryLegacyBackupsPtrOutput() DirectoryLegacyBackupsPtrOutput
+	ToDirectoryLegacyBackupsPtrOutputWithContext(context.Context) DirectoryLegacyBackupsPtrOutput
 }
 
-type nfsbackupsPtrType NFSBackupsArgs
+type directoryLegacyBackupsPtrType DirectoryLegacyBackupsArgs
 
-func NFSBackupsPtr(v *NFSBackupsArgs) NFSBackupsPtrInput {
-	return (*nfsbackupsPtrType)(v)
+func DirectoryLegacyBackupsPtr(v *DirectoryLegacyBackupsArgs) DirectoryLegacyBackupsPtrInput {
+	return (*directoryLegacyBackupsPtrType)(v)
 }
 
-func (*nfsbackupsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NFSBackups)(nil)).Elem()
+func (*directoryLegacyBackupsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DirectoryLegacyBackups)(nil)).Elem()
 }
 
-func (i *nfsbackupsPtrType) ToNFSBackupsPtrOutput() NFSBackupsPtrOutput {
-	return i.ToNFSBackupsPtrOutputWithContext(context.Background())
+func (i *directoryLegacyBackupsPtrType) ToDirectoryLegacyBackupsPtrOutput() DirectoryLegacyBackupsPtrOutput {
+	return i.ToDirectoryLegacyBackupsPtrOutputWithContext(context.Background())
 }
 
-func (i *nfsbackupsPtrType) ToNFSBackupsPtrOutputWithContext(ctx context.Context) NFSBackupsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NFSBackupsPtrOutput)
+func (i *directoryLegacyBackupsPtrType) ToDirectoryLegacyBackupsPtrOutputWithContext(ctx context.Context) DirectoryLegacyBackupsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirectoryLegacyBackupsPtrOutput)
 }
 
-type NFSBackupsOutput struct{ *pulumi.OutputState }
+type DirectoryLegacyBackupsOutput struct{ *pulumi.OutputState }
 
-func (NFSBackupsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NFSBackups)(nil)).Elem()
+func (DirectoryLegacyBackupsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DirectoryLegacyBackups)(nil)).Elem()
 }
 
-func (o NFSBackupsOutput) ToNFSBackupsOutput() NFSBackupsOutput {
+func (o DirectoryLegacyBackupsOutput) ToDirectoryLegacyBackupsOutput() DirectoryLegacyBackupsOutput {
 	return o
 }
 
-func (o NFSBackupsOutput) ToNFSBackupsOutputWithContext(ctx context.Context) NFSBackupsOutput {
+func (o DirectoryLegacyBackupsOutput) ToDirectoryLegacyBackupsOutputWithContext(ctx context.Context) DirectoryLegacyBackupsOutput {
 	return o
 }
 
-func (o NFSBackupsOutput) ToNFSBackupsPtrOutput() NFSBackupsPtrOutput {
-	return o.ToNFSBackupsPtrOutputWithContext(context.Background())
+func (o DirectoryLegacyBackupsOutput) ToDirectoryLegacyBackupsPtrOutput() DirectoryLegacyBackupsPtrOutput {
+	return o.ToDirectoryLegacyBackupsPtrOutputWithContext(context.Background())
 }
 
-func (o NFSBackupsOutput) ToNFSBackupsPtrOutputWithContext(ctx context.Context) NFSBackupsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NFSBackups) *NFSBackups {
+func (o DirectoryLegacyBackupsOutput) ToDirectoryLegacyBackupsPtrOutputWithContext(ctx context.Context) DirectoryLegacyBackupsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DirectoryLegacyBackups) *DirectoryLegacyBackups {
 		return &v
-	}).(NFSBackupsPtrOutput)
+	}).(DirectoryLegacyBackupsPtrOutput)
 }
 
 // Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
-func (o NFSBackupsOutput) KeepAll() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v NFSBackups) *bool { return v.KeepAll }).(pulumi.BoolPtrOutput)
+func (o DirectoryLegacyBackupsOutput) KeepAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DirectoryLegacyBackups) *bool { return v.KeepAll }).(pulumi.BoolPtrOutput)
 }
 
 // The number of daily backups to keep. Older backups will be removed.
-func (o NFSBackupsOutput) KeepDaily() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NFSBackups) *int { return v.KeepDaily }).(pulumi.IntPtrOutput)
+func (o DirectoryLegacyBackupsOutput) KeepDaily() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DirectoryLegacyBackups) *int { return v.KeepDaily }).(pulumi.IntPtrOutput)
 }
 
 // The number of hourly backups to keep. Older backups will be removed.
-func (o NFSBackupsOutput) KeepHourly() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NFSBackups) *int { return v.KeepHourly }).(pulumi.IntPtrOutput)
+func (o DirectoryLegacyBackupsOutput) KeepHourly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DirectoryLegacyBackups) *int { return v.KeepHourly }).(pulumi.IntPtrOutput)
 }
 
 // Specifies the number of the most recent backups to keep, regardless of their age.
-func (o NFSBackupsOutput) KeepLast() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NFSBackups) *int { return v.KeepLast }).(pulumi.IntPtrOutput)
+func (o DirectoryLegacyBackupsOutput) KeepLast() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DirectoryLegacyBackups) *int { return v.KeepLast }).(pulumi.IntPtrOutput)
 }
 
 // The number of monthly backups to keep. Older backups will be removed.
-func (o NFSBackupsOutput) KeepMonthly() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NFSBackups) *int { return v.KeepMonthly }).(pulumi.IntPtrOutput)
+func (o DirectoryLegacyBackupsOutput) KeepMonthly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DirectoryLegacyBackups) *int { return v.KeepMonthly }).(pulumi.IntPtrOutput)
 }
 
 // The number of weekly backups to keep. Older backups will be removed.
-func (o NFSBackupsOutput) KeepWeekly() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NFSBackups) *int { return v.KeepWeekly }).(pulumi.IntPtrOutput)
+func (o DirectoryLegacyBackupsOutput) KeepWeekly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DirectoryLegacyBackups) *int { return v.KeepWeekly }).(pulumi.IntPtrOutput)
 }
 
 // The number of yearly backups to keep. Older backups will be removed.
-func (o NFSBackupsOutput) KeepYearly() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NFSBackups) *int { return v.KeepYearly }).(pulumi.IntPtrOutput)
+func (o DirectoryLegacyBackupsOutput) KeepYearly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DirectoryLegacyBackups) *int { return v.KeepYearly }).(pulumi.IntPtrOutput)
 }
 
 // The maximum number of protected backups per guest. Use '-1' for unlimited.
-func (o NFSBackupsOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NFSBackups) *int { return v.MaxProtectedBackups }).(pulumi.IntPtrOutput)
+func (o DirectoryLegacyBackupsOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DirectoryLegacyBackups) *int { return v.MaxProtectedBackups }).(pulumi.IntPtrOutput)
 }
 
-type NFSBackupsPtrOutput struct{ *pulumi.OutputState }
+type DirectoryLegacyBackupsPtrOutput struct{ *pulumi.OutputState }
 
-func (NFSBackupsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NFSBackups)(nil)).Elem()
+func (DirectoryLegacyBackupsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DirectoryLegacyBackups)(nil)).Elem()
 }
 
-func (o NFSBackupsPtrOutput) ToNFSBackupsPtrOutput() NFSBackupsPtrOutput {
+func (o DirectoryLegacyBackupsPtrOutput) ToDirectoryLegacyBackupsPtrOutput() DirectoryLegacyBackupsPtrOutput {
 	return o
 }
 
-func (o NFSBackupsPtrOutput) ToNFSBackupsPtrOutputWithContext(ctx context.Context) NFSBackupsPtrOutput {
+func (o DirectoryLegacyBackupsPtrOutput) ToDirectoryLegacyBackupsPtrOutputWithContext(ctx context.Context) DirectoryLegacyBackupsPtrOutput {
 	return o
 }
 
-func (o NFSBackupsPtrOutput) Elem() NFSBackupsOutput {
-	return o.ApplyT(func(v *NFSBackups) NFSBackups {
+func (o DirectoryLegacyBackupsPtrOutput) Elem() DirectoryLegacyBackupsOutput {
+	return o.ApplyT(func(v *DirectoryLegacyBackups) DirectoryLegacyBackups {
 		if v != nil {
 			return *v
 		}
-		var ret NFSBackups
+		var ret DirectoryLegacyBackups
 		return ret
-	}).(NFSBackupsOutput)
+	}).(DirectoryLegacyBackupsOutput)
 }
 
 // Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
-func (o NFSBackupsPtrOutput) KeepAll() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *NFSBackups) *bool {
+func (o DirectoryLegacyBackupsPtrOutput) KeepAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DirectoryLegacyBackups) *bool {
 		if v == nil {
 			return nil
 		}
@@ -1177,8 +1024,8 @@ func (o NFSBackupsPtrOutput) KeepAll() pulumi.BoolPtrOutput {
 }
 
 // The number of daily backups to keep. Older backups will be removed.
-func (o NFSBackupsPtrOutput) KeepDaily() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *NFSBackups) *int {
+func (o DirectoryLegacyBackupsPtrOutput) KeepDaily() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DirectoryLegacyBackups) *int {
 		if v == nil {
 			return nil
 		}
@@ -1187,8 +1034,8 @@ func (o NFSBackupsPtrOutput) KeepDaily() pulumi.IntPtrOutput {
 }
 
 // The number of hourly backups to keep. Older backups will be removed.
-func (o NFSBackupsPtrOutput) KeepHourly() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *NFSBackups) *int {
+func (o DirectoryLegacyBackupsPtrOutput) KeepHourly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DirectoryLegacyBackups) *int {
 		if v == nil {
 			return nil
 		}
@@ -1197,8 +1044,8 @@ func (o NFSBackupsPtrOutput) KeepHourly() pulumi.IntPtrOutput {
 }
 
 // Specifies the number of the most recent backups to keep, regardless of their age.
-func (o NFSBackupsPtrOutput) KeepLast() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *NFSBackups) *int {
+func (o DirectoryLegacyBackupsPtrOutput) KeepLast() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DirectoryLegacyBackups) *int {
 		if v == nil {
 			return nil
 		}
@@ -1207,8 +1054,8 @@ func (o NFSBackupsPtrOutput) KeepLast() pulumi.IntPtrOutput {
 }
 
 // The number of monthly backups to keep. Older backups will be removed.
-func (o NFSBackupsPtrOutput) KeepMonthly() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *NFSBackups) *int {
+func (o DirectoryLegacyBackupsPtrOutput) KeepMonthly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DirectoryLegacyBackups) *int {
 		if v == nil {
 			return nil
 		}
@@ -1217,8 +1064,8 @@ func (o NFSBackupsPtrOutput) KeepMonthly() pulumi.IntPtrOutput {
 }
 
 // The number of weekly backups to keep. Older backups will be removed.
-func (o NFSBackupsPtrOutput) KeepWeekly() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *NFSBackups) *int {
+func (o DirectoryLegacyBackupsPtrOutput) KeepWeekly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DirectoryLegacyBackups) *int {
 		if v == nil {
 			return nil
 		}
@@ -1227,8 +1074,8 @@ func (o NFSBackupsPtrOutput) KeepWeekly() pulumi.IntPtrOutput {
 }
 
 // The number of yearly backups to keep. Older backups will be removed.
-func (o NFSBackupsPtrOutput) KeepYearly() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *NFSBackups) *int {
+func (o DirectoryLegacyBackupsPtrOutput) KeepYearly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DirectoryLegacyBackups) *int {
 		if v == nil {
 			return nil
 		}
@@ -1237,8 +1084,8 @@ func (o NFSBackupsPtrOutput) KeepYearly() pulumi.IntPtrOutput {
 }
 
 // The maximum number of protected backups per guest. Use '-1' for unlimited.
-func (o NFSBackupsPtrOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *NFSBackups) *int {
+func (o DirectoryLegacyBackupsPtrOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DirectoryLegacyBackups) *int {
 		if v == nil {
 			return nil
 		}
@@ -1246,7 +1093,7 @@ func (o NFSBackupsPtrOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-type PBSBackups struct {
+type NfsBackups struct {
 	// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
 	KeepAll *bool `pulumi:"keepAll"`
 	// The number of daily backups to keep. Older backups will be removed.
@@ -1265,18 +1112,18 @@ type PBSBackups struct {
 	MaxProtectedBackups *int `pulumi:"maxProtectedBackups"`
 }
 
-// PBSBackupsInput is an input type that accepts PBSBackupsArgs and PBSBackupsOutput values.
-// You can construct a concrete instance of `PBSBackupsInput` via:
+// NfsBackupsInput is an input type that accepts NfsBackupsArgs and NfsBackupsOutput values.
+// You can construct a concrete instance of `NfsBackupsInput` via:
 //
-//	PBSBackupsArgs{...}
-type PBSBackupsInput interface {
+//	NfsBackupsArgs{...}
+type NfsBackupsInput interface {
 	pulumi.Input
 
-	ToPBSBackupsOutput() PBSBackupsOutput
-	ToPBSBackupsOutputWithContext(context.Context) PBSBackupsOutput
+	ToNfsBackupsOutput() NfsBackupsOutput
+	ToNfsBackupsOutputWithContext(context.Context) NfsBackupsOutput
 }
 
-type PBSBackupsArgs struct {
+type NfsBackupsArgs struct {
 	// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
 	KeepAll pulumi.BoolPtrInput `pulumi:"keepAll"`
 	// The number of daily backups to keep. Older backups will be removed.
@@ -1295,150 +1142,150 @@ type PBSBackupsArgs struct {
 	MaxProtectedBackups pulumi.IntPtrInput `pulumi:"maxProtectedBackups"`
 }
 
-func (PBSBackupsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*PBSBackups)(nil)).Elem()
+func (NfsBackupsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NfsBackups)(nil)).Elem()
 }
 
-func (i PBSBackupsArgs) ToPBSBackupsOutput() PBSBackupsOutput {
-	return i.ToPBSBackupsOutputWithContext(context.Background())
+func (i NfsBackupsArgs) ToNfsBackupsOutput() NfsBackupsOutput {
+	return i.ToNfsBackupsOutputWithContext(context.Background())
 }
 
-func (i PBSBackupsArgs) ToPBSBackupsOutputWithContext(ctx context.Context) PBSBackupsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PBSBackupsOutput)
+func (i NfsBackupsArgs) ToNfsBackupsOutputWithContext(ctx context.Context) NfsBackupsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NfsBackupsOutput)
 }
 
-func (i PBSBackupsArgs) ToPBSBackupsPtrOutput() PBSBackupsPtrOutput {
-	return i.ToPBSBackupsPtrOutputWithContext(context.Background())
+func (i NfsBackupsArgs) ToNfsBackupsPtrOutput() NfsBackupsPtrOutput {
+	return i.ToNfsBackupsPtrOutputWithContext(context.Background())
 }
 
-func (i PBSBackupsArgs) ToPBSBackupsPtrOutputWithContext(ctx context.Context) PBSBackupsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PBSBackupsOutput).ToPBSBackupsPtrOutputWithContext(ctx)
+func (i NfsBackupsArgs) ToNfsBackupsPtrOutputWithContext(ctx context.Context) NfsBackupsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NfsBackupsOutput).ToNfsBackupsPtrOutputWithContext(ctx)
 }
 
-// PBSBackupsPtrInput is an input type that accepts PBSBackupsArgs, PBSBackupsPtr and PBSBackupsPtrOutput values.
-// You can construct a concrete instance of `PBSBackupsPtrInput` via:
+// NfsBackupsPtrInput is an input type that accepts NfsBackupsArgs, NfsBackupsPtr and NfsBackupsPtrOutput values.
+// You can construct a concrete instance of `NfsBackupsPtrInput` via:
 //
-//	        PBSBackupsArgs{...}
+//	        NfsBackupsArgs{...}
 //
 //	or:
 //
 //	        nil
-type PBSBackupsPtrInput interface {
+type NfsBackupsPtrInput interface {
 	pulumi.Input
 
-	ToPBSBackupsPtrOutput() PBSBackupsPtrOutput
-	ToPBSBackupsPtrOutputWithContext(context.Context) PBSBackupsPtrOutput
+	ToNfsBackupsPtrOutput() NfsBackupsPtrOutput
+	ToNfsBackupsPtrOutputWithContext(context.Context) NfsBackupsPtrOutput
 }
 
-type pbsbackupsPtrType PBSBackupsArgs
+type nfsBackupsPtrType NfsBackupsArgs
 
-func PBSBackupsPtr(v *PBSBackupsArgs) PBSBackupsPtrInput {
-	return (*pbsbackupsPtrType)(v)
+func NfsBackupsPtr(v *NfsBackupsArgs) NfsBackupsPtrInput {
+	return (*nfsBackupsPtrType)(v)
 }
 
-func (*pbsbackupsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**PBSBackups)(nil)).Elem()
+func (*nfsBackupsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NfsBackups)(nil)).Elem()
 }
 
-func (i *pbsbackupsPtrType) ToPBSBackupsPtrOutput() PBSBackupsPtrOutput {
-	return i.ToPBSBackupsPtrOutputWithContext(context.Background())
+func (i *nfsBackupsPtrType) ToNfsBackupsPtrOutput() NfsBackupsPtrOutput {
+	return i.ToNfsBackupsPtrOutputWithContext(context.Background())
 }
 
-func (i *pbsbackupsPtrType) ToPBSBackupsPtrOutputWithContext(ctx context.Context) PBSBackupsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PBSBackupsPtrOutput)
+func (i *nfsBackupsPtrType) ToNfsBackupsPtrOutputWithContext(ctx context.Context) NfsBackupsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NfsBackupsPtrOutput)
 }
 
-type PBSBackupsOutput struct{ *pulumi.OutputState }
+type NfsBackupsOutput struct{ *pulumi.OutputState }
 
-func (PBSBackupsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*PBSBackups)(nil)).Elem()
+func (NfsBackupsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NfsBackups)(nil)).Elem()
 }
 
-func (o PBSBackupsOutput) ToPBSBackupsOutput() PBSBackupsOutput {
+func (o NfsBackupsOutput) ToNfsBackupsOutput() NfsBackupsOutput {
 	return o
 }
 
-func (o PBSBackupsOutput) ToPBSBackupsOutputWithContext(ctx context.Context) PBSBackupsOutput {
+func (o NfsBackupsOutput) ToNfsBackupsOutputWithContext(ctx context.Context) NfsBackupsOutput {
 	return o
 }
 
-func (o PBSBackupsOutput) ToPBSBackupsPtrOutput() PBSBackupsPtrOutput {
-	return o.ToPBSBackupsPtrOutputWithContext(context.Background())
+func (o NfsBackupsOutput) ToNfsBackupsPtrOutput() NfsBackupsPtrOutput {
+	return o.ToNfsBackupsPtrOutputWithContext(context.Background())
 }
 
-func (o PBSBackupsOutput) ToPBSBackupsPtrOutputWithContext(ctx context.Context) PBSBackupsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v PBSBackups) *PBSBackups {
+func (o NfsBackupsOutput) ToNfsBackupsPtrOutputWithContext(ctx context.Context) NfsBackupsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NfsBackups) *NfsBackups {
 		return &v
-	}).(PBSBackupsPtrOutput)
+	}).(NfsBackupsPtrOutput)
 }
 
 // Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
-func (o PBSBackupsOutput) KeepAll() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v PBSBackups) *bool { return v.KeepAll }).(pulumi.BoolPtrOutput)
+func (o NfsBackupsOutput) KeepAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NfsBackups) *bool { return v.KeepAll }).(pulumi.BoolPtrOutput)
 }
 
 // The number of daily backups to keep. Older backups will be removed.
-func (o PBSBackupsOutput) KeepDaily() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v PBSBackups) *int { return v.KeepDaily }).(pulumi.IntPtrOutput)
+func (o NfsBackupsOutput) KeepDaily() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NfsBackups) *int { return v.KeepDaily }).(pulumi.IntPtrOutput)
 }
 
 // The number of hourly backups to keep. Older backups will be removed.
-func (o PBSBackupsOutput) KeepHourly() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v PBSBackups) *int { return v.KeepHourly }).(pulumi.IntPtrOutput)
+func (o NfsBackupsOutput) KeepHourly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NfsBackups) *int { return v.KeepHourly }).(pulumi.IntPtrOutput)
 }
 
 // Specifies the number of the most recent backups to keep, regardless of their age.
-func (o PBSBackupsOutput) KeepLast() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v PBSBackups) *int { return v.KeepLast }).(pulumi.IntPtrOutput)
+func (o NfsBackupsOutput) KeepLast() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NfsBackups) *int { return v.KeepLast }).(pulumi.IntPtrOutput)
 }
 
 // The number of monthly backups to keep. Older backups will be removed.
-func (o PBSBackupsOutput) KeepMonthly() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v PBSBackups) *int { return v.KeepMonthly }).(pulumi.IntPtrOutput)
+func (o NfsBackupsOutput) KeepMonthly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NfsBackups) *int { return v.KeepMonthly }).(pulumi.IntPtrOutput)
 }
 
 // The number of weekly backups to keep. Older backups will be removed.
-func (o PBSBackupsOutput) KeepWeekly() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v PBSBackups) *int { return v.KeepWeekly }).(pulumi.IntPtrOutput)
+func (o NfsBackupsOutput) KeepWeekly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NfsBackups) *int { return v.KeepWeekly }).(pulumi.IntPtrOutput)
 }
 
 // The number of yearly backups to keep. Older backups will be removed.
-func (o PBSBackupsOutput) KeepYearly() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v PBSBackups) *int { return v.KeepYearly }).(pulumi.IntPtrOutput)
+func (o NfsBackupsOutput) KeepYearly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NfsBackups) *int { return v.KeepYearly }).(pulumi.IntPtrOutput)
 }
 
 // The maximum number of protected backups per guest. Use '-1' for unlimited.
-func (o PBSBackupsOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v PBSBackups) *int { return v.MaxProtectedBackups }).(pulumi.IntPtrOutput)
+func (o NfsBackupsOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NfsBackups) *int { return v.MaxProtectedBackups }).(pulumi.IntPtrOutput)
 }
 
-type PBSBackupsPtrOutput struct{ *pulumi.OutputState }
+type NfsBackupsPtrOutput struct{ *pulumi.OutputState }
 
-func (PBSBackupsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PBSBackups)(nil)).Elem()
+func (NfsBackupsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NfsBackups)(nil)).Elem()
 }
 
-func (o PBSBackupsPtrOutput) ToPBSBackupsPtrOutput() PBSBackupsPtrOutput {
+func (o NfsBackupsPtrOutput) ToNfsBackupsPtrOutput() NfsBackupsPtrOutput {
 	return o
 }
 
-func (o PBSBackupsPtrOutput) ToPBSBackupsPtrOutputWithContext(ctx context.Context) PBSBackupsPtrOutput {
+func (o NfsBackupsPtrOutput) ToNfsBackupsPtrOutputWithContext(ctx context.Context) NfsBackupsPtrOutput {
 	return o
 }
 
-func (o PBSBackupsPtrOutput) Elem() PBSBackupsOutput {
-	return o.ApplyT(func(v *PBSBackups) PBSBackups {
+func (o NfsBackupsPtrOutput) Elem() NfsBackupsOutput {
+	return o.ApplyT(func(v *NfsBackups) NfsBackups {
 		if v != nil {
 			return *v
 		}
-		var ret PBSBackups
+		var ret NfsBackups
 		return ret
-	}).(PBSBackupsOutput)
+	}).(NfsBackupsOutput)
 }
 
 // Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
-func (o PBSBackupsPtrOutput) KeepAll() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PBSBackups) *bool {
+func (o NfsBackupsPtrOutput) KeepAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NfsBackups) *bool {
 		if v == nil {
 			return nil
 		}
@@ -1447,8 +1294,8 @@ func (o PBSBackupsPtrOutput) KeepAll() pulumi.BoolPtrOutput {
 }
 
 // The number of daily backups to keep. Older backups will be removed.
-func (o PBSBackupsPtrOutput) KeepDaily() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *PBSBackups) *int {
+func (o NfsBackupsPtrOutput) KeepDaily() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NfsBackups) *int {
 		if v == nil {
 			return nil
 		}
@@ -1457,8 +1304,8 @@ func (o PBSBackupsPtrOutput) KeepDaily() pulumi.IntPtrOutput {
 }
 
 // The number of hourly backups to keep. Older backups will be removed.
-func (o PBSBackupsPtrOutput) KeepHourly() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *PBSBackups) *int {
+func (o NfsBackupsPtrOutput) KeepHourly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NfsBackups) *int {
 		if v == nil {
 			return nil
 		}
@@ -1467,8 +1314,8 @@ func (o PBSBackupsPtrOutput) KeepHourly() pulumi.IntPtrOutput {
 }
 
 // Specifies the number of the most recent backups to keep, regardless of their age.
-func (o PBSBackupsPtrOutput) KeepLast() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *PBSBackups) *int {
+func (o NfsBackupsPtrOutput) KeepLast() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NfsBackups) *int {
 		if v == nil {
 			return nil
 		}
@@ -1477,8 +1324,8 @@ func (o PBSBackupsPtrOutput) KeepLast() pulumi.IntPtrOutput {
 }
 
 // The number of monthly backups to keep. Older backups will be removed.
-func (o PBSBackupsPtrOutput) KeepMonthly() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *PBSBackups) *int {
+func (o NfsBackupsPtrOutput) KeepMonthly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NfsBackups) *int {
 		if v == nil {
 			return nil
 		}
@@ -1487,8 +1334,8 @@ func (o PBSBackupsPtrOutput) KeepMonthly() pulumi.IntPtrOutput {
 }
 
 // The number of weekly backups to keep. Older backups will be removed.
-func (o PBSBackupsPtrOutput) KeepWeekly() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *PBSBackups) *int {
+func (o NfsBackupsPtrOutput) KeepWeekly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NfsBackups) *int {
 		if v == nil {
 			return nil
 		}
@@ -1497,8 +1344,8 @@ func (o PBSBackupsPtrOutput) KeepWeekly() pulumi.IntPtrOutput {
 }
 
 // The number of yearly backups to keep. Older backups will be removed.
-func (o PBSBackupsPtrOutput) KeepYearly() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *PBSBackups) *int {
+func (o NfsBackupsPtrOutput) KeepYearly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NfsBackups) *int {
 		if v == nil {
 			return nil
 		}
@@ -1507,8 +1354,8 @@ func (o PBSBackupsPtrOutput) KeepYearly() pulumi.IntPtrOutput {
 }
 
 // The maximum number of protected backups per guest. Use '-1' for unlimited.
-func (o PBSBackupsPtrOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *PBSBackups) *int {
+func (o NfsBackupsPtrOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NfsBackups) *int {
 		if v == nil {
 			return nil
 		}
@@ -1516,399 +1363,847 @@ func (o PBSBackupsPtrOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-type GetDatastoresDatastore struct {
-	// Whether the store is active.
-	Active *bool `pulumi:"active"`
-	// Allowed store content types.
-	ContentTypes []string `pulumi:"contentTypes"`
-	// Whether the store is enabled.
-	Enabled *bool `pulumi:"enabled"`
-	// The ID of the store.
-	Id string `pulumi:"id"`
-	// The name of the node the store is on.
-	NodeName string `pulumi:"nodeName"`
-	// Shared flag from store configuration.
-	Shared *bool `pulumi:"shared"`
-	// Available store space in bytes.
-	SpaceAvailable *int `pulumi:"spaceAvailable"`
-	// Total store space in bytes.
-	SpaceTotal *int `pulumi:"spaceTotal"`
-	// Used store space in bytes.
-	SpaceUsed *int `pulumi:"spaceUsed"`
-	// Used fraction (used/total).
-	SpaceUsedFraction *float64 `pulumi:"spaceUsedFraction"`
-	// Store type.
-	Type string `pulumi:"type"`
+type NfsLegacyBackups struct {
+	// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+	KeepAll *bool `pulumi:"keepAll"`
+	// The number of daily backups to keep. Older backups will be removed.
+	KeepDaily *int `pulumi:"keepDaily"`
+	// The number of hourly backups to keep. Older backups will be removed.
+	KeepHourly *int `pulumi:"keepHourly"`
+	// Specifies the number of the most recent backups to keep, regardless of their age.
+	KeepLast *int `pulumi:"keepLast"`
+	// The number of monthly backups to keep. Older backups will be removed.
+	KeepMonthly *int `pulumi:"keepMonthly"`
+	// The number of weekly backups to keep. Older backups will be removed.
+	KeepWeekly *int `pulumi:"keepWeekly"`
+	// The number of yearly backups to keep. Older backups will be removed.
+	KeepYearly *int `pulumi:"keepYearly"`
+	// The maximum number of protected backups per guest. Use '-1' for unlimited.
+	MaxProtectedBackups *int `pulumi:"maxProtectedBackups"`
 }
 
-// GetDatastoresDatastoreInput is an input type that accepts GetDatastoresDatastoreArgs and GetDatastoresDatastoreOutput values.
-// You can construct a concrete instance of `GetDatastoresDatastoreInput` via:
+// NfsLegacyBackupsInput is an input type that accepts NfsLegacyBackupsArgs and NfsLegacyBackupsOutput values.
+// You can construct a concrete instance of `NfsLegacyBackupsInput` via:
 //
-//	GetDatastoresDatastoreArgs{...}
-type GetDatastoresDatastoreInput interface {
+//	NfsLegacyBackupsArgs{...}
+type NfsLegacyBackupsInput interface {
 	pulumi.Input
 
-	ToGetDatastoresDatastoreOutput() GetDatastoresDatastoreOutput
-	ToGetDatastoresDatastoreOutputWithContext(context.Context) GetDatastoresDatastoreOutput
+	ToNfsLegacyBackupsOutput() NfsLegacyBackupsOutput
+	ToNfsLegacyBackupsOutputWithContext(context.Context) NfsLegacyBackupsOutput
 }
 
-type GetDatastoresDatastoreArgs struct {
-	// Whether the store is active.
-	Active pulumi.BoolPtrInput `pulumi:"active"`
-	// Allowed store content types.
-	ContentTypes pulumi.StringArrayInput `pulumi:"contentTypes"`
-	// Whether the store is enabled.
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// The ID of the store.
-	Id pulumi.StringInput `pulumi:"id"`
-	// The name of the node the store is on.
-	NodeName pulumi.StringInput `pulumi:"nodeName"`
-	// Shared flag from store configuration.
-	Shared pulumi.BoolPtrInput `pulumi:"shared"`
-	// Available store space in bytes.
-	SpaceAvailable pulumi.IntPtrInput `pulumi:"spaceAvailable"`
-	// Total store space in bytes.
-	SpaceTotal pulumi.IntPtrInput `pulumi:"spaceTotal"`
-	// Used store space in bytes.
-	SpaceUsed pulumi.IntPtrInput `pulumi:"spaceUsed"`
-	// Used fraction (used/total).
-	SpaceUsedFraction pulumi.Float64PtrInput `pulumi:"spaceUsedFraction"`
-	// Store type.
-	Type pulumi.StringInput `pulumi:"type"`
+type NfsLegacyBackupsArgs struct {
+	// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+	KeepAll pulumi.BoolPtrInput `pulumi:"keepAll"`
+	// The number of daily backups to keep. Older backups will be removed.
+	KeepDaily pulumi.IntPtrInput `pulumi:"keepDaily"`
+	// The number of hourly backups to keep. Older backups will be removed.
+	KeepHourly pulumi.IntPtrInput `pulumi:"keepHourly"`
+	// Specifies the number of the most recent backups to keep, regardless of their age.
+	KeepLast pulumi.IntPtrInput `pulumi:"keepLast"`
+	// The number of monthly backups to keep. Older backups will be removed.
+	KeepMonthly pulumi.IntPtrInput `pulumi:"keepMonthly"`
+	// The number of weekly backups to keep. Older backups will be removed.
+	KeepWeekly pulumi.IntPtrInput `pulumi:"keepWeekly"`
+	// The number of yearly backups to keep. Older backups will be removed.
+	KeepYearly pulumi.IntPtrInput `pulumi:"keepYearly"`
+	// The maximum number of protected backups per guest. Use '-1' for unlimited.
+	MaxProtectedBackups pulumi.IntPtrInput `pulumi:"maxProtectedBackups"`
 }
 
-func (GetDatastoresDatastoreArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDatastoresDatastore)(nil)).Elem()
+func (NfsLegacyBackupsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NfsLegacyBackups)(nil)).Elem()
 }
 
-func (i GetDatastoresDatastoreArgs) ToGetDatastoresDatastoreOutput() GetDatastoresDatastoreOutput {
-	return i.ToGetDatastoresDatastoreOutputWithContext(context.Background())
+func (i NfsLegacyBackupsArgs) ToNfsLegacyBackupsOutput() NfsLegacyBackupsOutput {
+	return i.ToNfsLegacyBackupsOutputWithContext(context.Background())
 }
 
-func (i GetDatastoresDatastoreArgs) ToGetDatastoresDatastoreOutputWithContext(ctx context.Context) GetDatastoresDatastoreOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDatastoresDatastoreOutput)
+func (i NfsLegacyBackupsArgs) ToNfsLegacyBackupsOutputWithContext(ctx context.Context) NfsLegacyBackupsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NfsLegacyBackupsOutput)
 }
 
-// GetDatastoresDatastoreArrayInput is an input type that accepts GetDatastoresDatastoreArray and GetDatastoresDatastoreArrayOutput values.
-// You can construct a concrete instance of `GetDatastoresDatastoreArrayInput` via:
+func (i NfsLegacyBackupsArgs) ToNfsLegacyBackupsPtrOutput() NfsLegacyBackupsPtrOutput {
+	return i.ToNfsLegacyBackupsPtrOutputWithContext(context.Background())
+}
+
+func (i NfsLegacyBackupsArgs) ToNfsLegacyBackupsPtrOutputWithContext(ctx context.Context) NfsLegacyBackupsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NfsLegacyBackupsOutput).ToNfsLegacyBackupsPtrOutputWithContext(ctx)
+}
+
+// NfsLegacyBackupsPtrInput is an input type that accepts NfsLegacyBackupsArgs, NfsLegacyBackupsPtr and NfsLegacyBackupsPtrOutput values.
+// You can construct a concrete instance of `NfsLegacyBackupsPtrInput` via:
 //
-//	GetDatastoresDatastoreArray{ GetDatastoresDatastoreArgs{...} }
-type GetDatastoresDatastoreArrayInput interface {
-	pulumi.Input
-
-	ToGetDatastoresDatastoreArrayOutput() GetDatastoresDatastoreArrayOutput
-	ToGetDatastoresDatastoreArrayOutputWithContext(context.Context) GetDatastoresDatastoreArrayOutput
-}
-
-type GetDatastoresDatastoreArray []GetDatastoresDatastoreInput
-
-func (GetDatastoresDatastoreArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDatastoresDatastore)(nil)).Elem()
-}
-
-func (i GetDatastoresDatastoreArray) ToGetDatastoresDatastoreArrayOutput() GetDatastoresDatastoreArrayOutput {
-	return i.ToGetDatastoresDatastoreArrayOutputWithContext(context.Background())
-}
-
-func (i GetDatastoresDatastoreArray) ToGetDatastoresDatastoreArrayOutputWithContext(ctx context.Context) GetDatastoresDatastoreArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDatastoresDatastoreArrayOutput)
-}
-
-type GetDatastoresDatastoreOutput struct{ *pulumi.OutputState }
-
-func (GetDatastoresDatastoreOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDatastoresDatastore)(nil)).Elem()
-}
-
-func (o GetDatastoresDatastoreOutput) ToGetDatastoresDatastoreOutput() GetDatastoresDatastoreOutput {
-	return o
-}
-
-func (o GetDatastoresDatastoreOutput) ToGetDatastoresDatastoreOutputWithContext(ctx context.Context) GetDatastoresDatastoreOutput {
-	return o
-}
-
-// Whether the store is active.
-func (o GetDatastoresDatastoreOutput) Active() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetDatastoresDatastore) *bool { return v.Active }).(pulumi.BoolPtrOutput)
-}
-
-// Allowed store content types.
-func (o GetDatastoresDatastoreOutput) ContentTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetDatastoresDatastore) []string { return v.ContentTypes }).(pulumi.StringArrayOutput)
-}
-
-// Whether the store is enabled.
-func (o GetDatastoresDatastoreOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetDatastoresDatastore) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
-}
-
-// The ID of the store.
-func (o GetDatastoresDatastoreOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatastoresDatastore) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// The name of the node the store is on.
-func (o GetDatastoresDatastoreOutput) NodeName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatastoresDatastore) string { return v.NodeName }).(pulumi.StringOutput)
-}
-
-// Shared flag from store configuration.
-func (o GetDatastoresDatastoreOutput) Shared() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetDatastoresDatastore) *bool { return v.Shared }).(pulumi.BoolPtrOutput)
-}
-
-// Available store space in bytes.
-func (o GetDatastoresDatastoreOutput) SpaceAvailable() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetDatastoresDatastore) *int { return v.SpaceAvailable }).(pulumi.IntPtrOutput)
-}
-
-// Total store space in bytes.
-func (o GetDatastoresDatastoreOutput) SpaceTotal() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetDatastoresDatastore) *int { return v.SpaceTotal }).(pulumi.IntPtrOutput)
-}
-
-// Used store space in bytes.
-func (o GetDatastoresDatastoreOutput) SpaceUsed() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetDatastoresDatastore) *int { return v.SpaceUsed }).(pulumi.IntPtrOutput)
-}
-
-// Used fraction (used/total).
-func (o GetDatastoresDatastoreOutput) SpaceUsedFraction() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GetDatastoresDatastore) *float64 { return v.SpaceUsedFraction }).(pulumi.Float64PtrOutput)
-}
-
-// Store type.
-func (o GetDatastoresDatastoreOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatastoresDatastore) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetDatastoresDatastoreArrayOutput struct{ *pulumi.OutputState }
-
-func (GetDatastoresDatastoreArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetDatastoresDatastore)(nil)).Elem()
-}
-
-func (o GetDatastoresDatastoreArrayOutput) ToGetDatastoresDatastoreArrayOutput() GetDatastoresDatastoreArrayOutput {
-	return o
-}
-
-func (o GetDatastoresDatastoreArrayOutput) ToGetDatastoresDatastoreArrayOutputWithContext(ctx context.Context) GetDatastoresDatastoreArrayOutput {
-	return o
-}
-
-func (o GetDatastoresDatastoreArrayOutput) Index(i pulumi.IntInput) GetDatastoresDatastoreOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatastoresDatastore {
-		return vs[0].([]GetDatastoresDatastore)[vs[1].(int)]
-	}).(GetDatastoresDatastoreOutput)
-}
-
-type GetDatastoresFilters struct {
-	// Only list stores with the given content types.
-	ContentTypes []string `pulumi:"contentTypes"`
-	// Only list stores with the given ID.
-	Id *string `pulumi:"id"`
-	// If `target` is different to `nodeName`, then only lists shared stores which content is accessible on this node and the specified `target` node.
-	Target *string `pulumi:"target"`
-}
-
-// GetDatastoresFiltersInput is an input type that accepts GetDatastoresFiltersArgs and GetDatastoresFiltersOutput values.
-// You can construct a concrete instance of `GetDatastoresFiltersInput` via:
-//
-//	GetDatastoresFiltersArgs{...}
-type GetDatastoresFiltersInput interface {
-	pulumi.Input
-
-	ToGetDatastoresFiltersOutput() GetDatastoresFiltersOutput
-	ToGetDatastoresFiltersOutputWithContext(context.Context) GetDatastoresFiltersOutput
-}
-
-type GetDatastoresFiltersArgs struct {
-	// Only list stores with the given content types.
-	ContentTypes pulumi.StringArrayInput `pulumi:"contentTypes"`
-	// Only list stores with the given ID.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// If `target` is different to `nodeName`, then only lists shared stores which content is accessible on this node and the specified `target` node.
-	Target pulumi.StringPtrInput `pulumi:"target"`
-}
-
-func (GetDatastoresFiltersArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDatastoresFilters)(nil)).Elem()
-}
-
-func (i GetDatastoresFiltersArgs) ToGetDatastoresFiltersOutput() GetDatastoresFiltersOutput {
-	return i.ToGetDatastoresFiltersOutputWithContext(context.Background())
-}
-
-func (i GetDatastoresFiltersArgs) ToGetDatastoresFiltersOutputWithContext(ctx context.Context) GetDatastoresFiltersOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDatastoresFiltersOutput)
-}
-
-func (i GetDatastoresFiltersArgs) ToGetDatastoresFiltersPtrOutput() GetDatastoresFiltersPtrOutput {
-	return i.ToGetDatastoresFiltersPtrOutputWithContext(context.Background())
-}
-
-func (i GetDatastoresFiltersArgs) ToGetDatastoresFiltersPtrOutputWithContext(ctx context.Context) GetDatastoresFiltersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDatastoresFiltersOutput).ToGetDatastoresFiltersPtrOutputWithContext(ctx)
-}
-
-// GetDatastoresFiltersPtrInput is an input type that accepts GetDatastoresFiltersArgs, GetDatastoresFiltersPtr and GetDatastoresFiltersPtrOutput values.
-// You can construct a concrete instance of `GetDatastoresFiltersPtrInput` via:
-//
-//	        GetDatastoresFiltersArgs{...}
+//	        NfsLegacyBackupsArgs{...}
 //
 //	or:
 //
 //	        nil
-type GetDatastoresFiltersPtrInput interface {
+type NfsLegacyBackupsPtrInput interface {
 	pulumi.Input
 
-	ToGetDatastoresFiltersPtrOutput() GetDatastoresFiltersPtrOutput
-	ToGetDatastoresFiltersPtrOutputWithContext(context.Context) GetDatastoresFiltersPtrOutput
+	ToNfsLegacyBackupsPtrOutput() NfsLegacyBackupsPtrOutput
+	ToNfsLegacyBackupsPtrOutputWithContext(context.Context) NfsLegacyBackupsPtrOutput
 }
 
-type getDatastoresFiltersPtrType GetDatastoresFiltersArgs
+type nfsLegacyBackupsPtrType NfsLegacyBackupsArgs
 
-func GetDatastoresFiltersPtr(v *GetDatastoresFiltersArgs) GetDatastoresFiltersPtrInput {
-	return (*getDatastoresFiltersPtrType)(v)
+func NfsLegacyBackupsPtr(v *NfsLegacyBackupsArgs) NfsLegacyBackupsPtrInput {
+	return (*nfsLegacyBackupsPtrType)(v)
 }
 
-func (*getDatastoresFiltersPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetDatastoresFilters)(nil)).Elem()
+func (*nfsLegacyBackupsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NfsLegacyBackups)(nil)).Elem()
 }
 
-func (i *getDatastoresFiltersPtrType) ToGetDatastoresFiltersPtrOutput() GetDatastoresFiltersPtrOutput {
-	return i.ToGetDatastoresFiltersPtrOutputWithContext(context.Background())
+func (i *nfsLegacyBackupsPtrType) ToNfsLegacyBackupsPtrOutput() NfsLegacyBackupsPtrOutput {
+	return i.ToNfsLegacyBackupsPtrOutputWithContext(context.Background())
 }
 
-func (i *getDatastoresFiltersPtrType) ToGetDatastoresFiltersPtrOutputWithContext(ctx context.Context) GetDatastoresFiltersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetDatastoresFiltersPtrOutput)
+func (i *nfsLegacyBackupsPtrType) ToNfsLegacyBackupsPtrOutputWithContext(ctx context.Context) NfsLegacyBackupsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NfsLegacyBackupsPtrOutput)
 }
 
-type GetDatastoresFiltersOutput struct{ *pulumi.OutputState }
+type NfsLegacyBackupsOutput struct{ *pulumi.OutputState }
 
-func (GetDatastoresFiltersOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetDatastoresFilters)(nil)).Elem()
+func (NfsLegacyBackupsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NfsLegacyBackups)(nil)).Elem()
 }
 
-func (o GetDatastoresFiltersOutput) ToGetDatastoresFiltersOutput() GetDatastoresFiltersOutput {
+func (o NfsLegacyBackupsOutput) ToNfsLegacyBackupsOutput() NfsLegacyBackupsOutput {
 	return o
 }
 
-func (o GetDatastoresFiltersOutput) ToGetDatastoresFiltersOutputWithContext(ctx context.Context) GetDatastoresFiltersOutput {
+func (o NfsLegacyBackupsOutput) ToNfsLegacyBackupsOutputWithContext(ctx context.Context) NfsLegacyBackupsOutput {
 	return o
 }
 
-func (o GetDatastoresFiltersOutput) ToGetDatastoresFiltersPtrOutput() GetDatastoresFiltersPtrOutput {
-	return o.ToGetDatastoresFiltersPtrOutputWithContext(context.Background())
+func (o NfsLegacyBackupsOutput) ToNfsLegacyBackupsPtrOutput() NfsLegacyBackupsPtrOutput {
+	return o.ToNfsLegacyBackupsPtrOutputWithContext(context.Background())
 }
 
-func (o GetDatastoresFiltersOutput) ToGetDatastoresFiltersPtrOutputWithContext(ctx context.Context) GetDatastoresFiltersPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetDatastoresFilters) *GetDatastoresFilters {
+func (o NfsLegacyBackupsOutput) ToNfsLegacyBackupsPtrOutputWithContext(ctx context.Context) NfsLegacyBackupsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NfsLegacyBackups) *NfsLegacyBackups {
 		return &v
-	}).(GetDatastoresFiltersPtrOutput)
+	}).(NfsLegacyBackupsPtrOutput)
 }
 
-// Only list stores with the given content types.
-func (o GetDatastoresFiltersOutput) ContentTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetDatastoresFilters) []string { return v.ContentTypes }).(pulumi.StringArrayOutput)
+// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+func (o NfsLegacyBackupsOutput) KeepAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NfsLegacyBackups) *bool { return v.KeepAll }).(pulumi.BoolPtrOutput)
 }
 
-// Only list stores with the given ID.
-func (o GetDatastoresFiltersOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetDatastoresFilters) *string { return v.Id }).(pulumi.StringPtrOutput)
+// The number of daily backups to keep. Older backups will be removed.
+func (o NfsLegacyBackupsOutput) KeepDaily() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NfsLegacyBackups) *int { return v.KeepDaily }).(pulumi.IntPtrOutput)
 }
 
-// If `target` is different to `nodeName`, then only lists shared stores which content is accessible on this node and the specified `target` node.
-func (o GetDatastoresFiltersOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetDatastoresFilters) *string { return v.Target }).(pulumi.StringPtrOutput)
+// The number of hourly backups to keep. Older backups will be removed.
+func (o NfsLegacyBackupsOutput) KeepHourly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NfsLegacyBackups) *int { return v.KeepHourly }).(pulumi.IntPtrOutput)
 }
 
-type GetDatastoresFiltersPtrOutput struct{ *pulumi.OutputState }
-
-func (GetDatastoresFiltersPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetDatastoresFilters)(nil)).Elem()
+// Specifies the number of the most recent backups to keep, regardless of their age.
+func (o NfsLegacyBackupsOutput) KeepLast() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NfsLegacyBackups) *int { return v.KeepLast }).(pulumi.IntPtrOutput)
 }
 
-func (o GetDatastoresFiltersPtrOutput) ToGetDatastoresFiltersPtrOutput() GetDatastoresFiltersPtrOutput {
+// The number of monthly backups to keep. Older backups will be removed.
+func (o NfsLegacyBackupsOutput) KeepMonthly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NfsLegacyBackups) *int { return v.KeepMonthly }).(pulumi.IntPtrOutput)
+}
+
+// The number of weekly backups to keep. Older backups will be removed.
+func (o NfsLegacyBackupsOutput) KeepWeekly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NfsLegacyBackups) *int { return v.KeepWeekly }).(pulumi.IntPtrOutput)
+}
+
+// The number of yearly backups to keep. Older backups will be removed.
+func (o NfsLegacyBackupsOutput) KeepYearly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NfsLegacyBackups) *int { return v.KeepYearly }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of protected backups per guest. Use '-1' for unlimited.
+func (o NfsLegacyBackupsOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NfsLegacyBackups) *int { return v.MaxProtectedBackups }).(pulumi.IntPtrOutput)
+}
+
+type NfsLegacyBackupsPtrOutput struct{ *pulumi.OutputState }
+
+func (NfsLegacyBackupsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NfsLegacyBackups)(nil)).Elem()
+}
+
+func (o NfsLegacyBackupsPtrOutput) ToNfsLegacyBackupsPtrOutput() NfsLegacyBackupsPtrOutput {
 	return o
 }
 
-func (o GetDatastoresFiltersPtrOutput) ToGetDatastoresFiltersPtrOutputWithContext(ctx context.Context) GetDatastoresFiltersPtrOutput {
+func (o NfsLegacyBackupsPtrOutput) ToNfsLegacyBackupsPtrOutputWithContext(ctx context.Context) NfsLegacyBackupsPtrOutput {
 	return o
 }
 
-func (o GetDatastoresFiltersPtrOutput) Elem() GetDatastoresFiltersOutput {
-	return o.ApplyT(func(v *GetDatastoresFilters) GetDatastoresFilters {
+func (o NfsLegacyBackupsPtrOutput) Elem() NfsLegacyBackupsOutput {
+	return o.ApplyT(func(v *NfsLegacyBackups) NfsLegacyBackups {
 		if v != nil {
 			return *v
 		}
-		var ret GetDatastoresFilters
+		var ret NfsLegacyBackups
 		return ret
-	}).(GetDatastoresFiltersOutput)
+	}).(NfsLegacyBackupsOutput)
 }
 
-// Only list stores with the given content types.
-func (o GetDatastoresFiltersPtrOutput) ContentTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GetDatastoresFilters) []string {
+// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+func (o NfsLegacyBackupsPtrOutput) KeepAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NfsLegacyBackups) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.ContentTypes
-	}).(pulumi.StringArrayOutput)
+		return v.KeepAll
+	}).(pulumi.BoolPtrOutput)
 }
 
-// Only list stores with the given ID.
-func (o GetDatastoresFiltersPtrOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetDatastoresFilters) *string {
+// The number of daily backups to keep. Older backups will be removed.
+func (o NfsLegacyBackupsPtrOutput) KeepDaily() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NfsLegacyBackups) *int {
 		if v == nil {
 			return nil
 		}
-		return v.Id
-	}).(pulumi.StringPtrOutput)
+		return v.KeepDaily
+	}).(pulumi.IntPtrOutput)
 }
 
-// If `target` is different to `nodeName`, then only lists shared stores which content is accessible on this node and the specified `target` node.
-func (o GetDatastoresFiltersPtrOutput) Target() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetDatastoresFilters) *string {
+// The number of hourly backups to keep. Older backups will be removed.
+func (o NfsLegacyBackupsPtrOutput) KeepHourly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NfsLegacyBackups) *int {
 		if v == nil {
 			return nil
 		}
-		return v.Target
-	}).(pulumi.StringPtrOutput)
+		return v.KeepHourly
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the number of the most recent backups to keep, regardless of their age.
+func (o NfsLegacyBackupsPtrOutput) KeepLast() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NfsLegacyBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepLast
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of monthly backups to keep. Older backups will be removed.
+func (o NfsLegacyBackupsPtrOutput) KeepMonthly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NfsLegacyBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepMonthly
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of weekly backups to keep. Older backups will be removed.
+func (o NfsLegacyBackupsPtrOutput) KeepWeekly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NfsLegacyBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepWeekly
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of yearly backups to keep. Older backups will be removed.
+func (o NfsLegacyBackupsPtrOutput) KeepYearly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NfsLegacyBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepYearly
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of protected backups per guest. Use '-1' for unlimited.
+func (o NfsLegacyBackupsPtrOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NfsLegacyBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxProtectedBackups
+	}).(pulumi.IntPtrOutput)
+}
+
+type PbsBackups struct {
+	// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+	KeepAll *bool `pulumi:"keepAll"`
+	// The number of daily backups to keep. Older backups will be removed.
+	KeepDaily *int `pulumi:"keepDaily"`
+	// The number of hourly backups to keep. Older backups will be removed.
+	KeepHourly *int `pulumi:"keepHourly"`
+	// Specifies the number of the most recent backups to keep, regardless of their age.
+	KeepLast *int `pulumi:"keepLast"`
+	// The number of monthly backups to keep. Older backups will be removed.
+	KeepMonthly *int `pulumi:"keepMonthly"`
+	// The number of weekly backups to keep. Older backups will be removed.
+	KeepWeekly *int `pulumi:"keepWeekly"`
+	// The number of yearly backups to keep. Older backups will be removed.
+	KeepYearly *int `pulumi:"keepYearly"`
+	// The maximum number of protected backups per guest. Use '-1' for unlimited.
+	MaxProtectedBackups *int `pulumi:"maxProtectedBackups"`
+}
+
+// PbsBackupsInput is an input type that accepts PbsBackupsArgs and PbsBackupsOutput values.
+// You can construct a concrete instance of `PbsBackupsInput` via:
+//
+//	PbsBackupsArgs{...}
+type PbsBackupsInput interface {
+	pulumi.Input
+
+	ToPbsBackupsOutput() PbsBackupsOutput
+	ToPbsBackupsOutputWithContext(context.Context) PbsBackupsOutput
+}
+
+type PbsBackupsArgs struct {
+	// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+	KeepAll pulumi.BoolPtrInput `pulumi:"keepAll"`
+	// The number of daily backups to keep. Older backups will be removed.
+	KeepDaily pulumi.IntPtrInput `pulumi:"keepDaily"`
+	// The number of hourly backups to keep. Older backups will be removed.
+	KeepHourly pulumi.IntPtrInput `pulumi:"keepHourly"`
+	// Specifies the number of the most recent backups to keep, regardless of their age.
+	KeepLast pulumi.IntPtrInput `pulumi:"keepLast"`
+	// The number of monthly backups to keep. Older backups will be removed.
+	KeepMonthly pulumi.IntPtrInput `pulumi:"keepMonthly"`
+	// The number of weekly backups to keep. Older backups will be removed.
+	KeepWeekly pulumi.IntPtrInput `pulumi:"keepWeekly"`
+	// The number of yearly backups to keep. Older backups will be removed.
+	KeepYearly pulumi.IntPtrInput `pulumi:"keepYearly"`
+	// The maximum number of protected backups per guest. Use '-1' for unlimited.
+	MaxProtectedBackups pulumi.IntPtrInput `pulumi:"maxProtectedBackups"`
+}
+
+func (PbsBackupsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PbsBackups)(nil)).Elem()
+}
+
+func (i PbsBackupsArgs) ToPbsBackupsOutput() PbsBackupsOutput {
+	return i.ToPbsBackupsOutputWithContext(context.Background())
+}
+
+func (i PbsBackupsArgs) ToPbsBackupsOutputWithContext(ctx context.Context) PbsBackupsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PbsBackupsOutput)
+}
+
+func (i PbsBackupsArgs) ToPbsBackupsPtrOutput() PbsBackupsPtrOutput {
+	return i.ToPbsBackupsPtrOutputWithContext(context.Background())
+}
+
+func (i PbsBackupsArgs) ToPbsBackupsPtrOutputWithContext(ctx context.Context) PbsBackupsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PbsBackupsOutput).ToPbsBackupsPtrOutputWithContext(ctx)
+}
+
+// PbsBackupsPtrInput is an input type that accepts PbsBackupsArgs, PbsBackupsPtr and PbsBackupsPtrOutput values.
+// You can construct a concrete instance of `PbsBackupsPtrInput` via:
+//
+//	        PbsBackupsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PbsBackupsPtrInput interface {
+	pulumi.Input
+
+	ToPbsBackupsPtrOutput() PbsBackupsPtrOutput
+	ToPbsBackupsPtrOutputWithContext(context.Context) PbsBackupsPtrOutput
+}
+
+type pbsBackupsPtrType PbsBackupsArgs
+
+func PbsBackupsPtr(v *PbsBackupsArgs) PbsBackupsPtrInput {
+	return (*pbsBackupsPtrType)(v)
+}
+
+func (*pbsBackupsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PbsBackups)(nil)).Elem()
+}
+
+func (i *pbsBackupsPtrType) ToPbsBackupsPtrOutput() PbsBackupsPtrOutput {
+	return i.ToPbsBackupsPtrOutputWithContext(context.Background())
+}
+
+func (i *pbsBackupsPtrType) ToPbsBackupsPtrOutputWithContext(ctx context.Context) PbsBackupsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PbsBackupsPtrOutput)
+}
+
+type PbsBackupsOutput struct{ *pulumi.OutputState }
+
+func (PbsBackupsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PbsBackups)(nil)).Elem()
+}
+
+func (o PbsBackupsOutput) ToPbsBackupsOutput() PbsBackupsOutput {
+	return o
+}
+
+func (o PbsBackupsOutput) ToPbsBackupsOutputWithContext(ctx context.Context) PbsBackupsOutput {
+	return o
+}
+
+func (o PbsBackupsOutput) ToPbsBackupsPtrOutput() PbsBackupsPtrOutput {
+	return o.ToPbsBackupsPtrOutputWithContext(context.Background())
+}
+
+func (o PbsBackupsOutput) ToPbsBackupsPtrOutputWithContext(ctx context.Context) PbsBackupsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PbsBackups) *PbsBackups {
+		return &v
+	}).(PbsBackupsPtrOutput)
+}
+
+// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+func (o PbsBackupsOutput) KeepAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PbsBackups) *bool { return v.KeepAll }).(pulumi.BoolPtrOutput)
+}
+
+// The number of daily backups to keep. Older backups will be removed.
+func (o PbsBackupsOutput) KeepDaily() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PbsBackups) *int { return v.KeepDaily }).(pulumi.IntPtrOutput)
+}
+
+// The number of hourly backups to keep. Older backups will be removed.
+func (o PbsBackupsOutput) KeepHourly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PbsBackups) *int { return v.KeepHourly }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the number of the most recent backups to keep, regardless of their age.
+func (o PbsBackupsOutput) KeepLast() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PbsBackups) *int { return v.KeepLast }).(pulumi.IntPtrOutput)
+}
+
+// The number of monthly backups to keep. Older backups will be removed.
+func (o PbsBackupsOutput) KeepMonthly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PbsBackups) *int { return v.KeepMonthly }).(pulumi.IntPtrOutput)
+}
+
+// The number of weekly backups to keep. Older backups will be removed.
+func (o PbsBackupsOutput) KeepWeekly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PbsBackups) *int { return v.KeepWeekly }).(pulumi.IntPtrOutput)
+}
+
+// The number of yearly backups to keep. Older backups will be removed.
+func (o PbsBackupsOutput) KeepYearly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PbsBackups) *int { return v.KeepYearly }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of protected backups per guest. Use '-1' for unlimited.
+func (o PbsBackupsOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PbsBackups) *int { return v.MaxProtectedBackups }).(pulumi.IntPtrOutput)
+}
+
+type PbsBackupsPtrOutput struct{ *pulumi.OutputState }
+
+func (PbsBackupsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PbsBackups)(nil)).Elem()
+}
+
+func (o PbsBackupsPtrOutput) ToPbsBackupsPtrOutput() PbsBackupsPtrOutput {
+	return o
+}
+
+func (o PbsBackupsPtrOutput) ToPbsBackupsPtrOutputWithContext(ctx context.Context) PbsBackupsPtrOutput {
+	return o
+}
+
+func (o PbsBackupsPtrOutput) Elem() PbsBackupsOutput {
+	return o.ApplyT(func(v *PbsBackups) PbsBackups {
+		if v != nil {
+			return *v
+		}
+		var ret PbsBackups
+		return ret
+	}).(PbsBackupsOutput)
+}
+
+// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+func (o PbsBackupsPtrOutput) KeepAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PbsBackups) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.KeepAll
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The number of daily backups to keep. Older backups will be removed.
+func (o PbsBackupsPtrOutput) KeepDaily() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PbsBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepDaily
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of hourly backups to keep. Older backups will be removed.
+func (o PbsBackupsPtrOutput) KeepHourly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PbsBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepHourly
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the number of the most recent backups to keep, regardless of their age.
+func (o PbsBackupsPtrOutput) KeepLast() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PbsBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepLast
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of monthly backups to keep. Older backups will be removed.
+func (o PbsBackupsPtrOutput) KeepMonthly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PbsBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepMonthly
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of weekly backups to keep. Older backups will be removed.
+func (o PbsBackupsPtrOutput) KeepWeekly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PbsBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepWeekly
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of yearly backups to keep. Older backups will be removed.
+func (o PbsBackupsPtrOutput) KeepYearly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PbsBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepYearly
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of protected backups per guest. Use '-1' for unlimited.
+func (o PbsBackupsPtrOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PbsBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxProtectedBackups
+	}).(pulumi.IntPtrOutput)
+}
+
+type PbsLegacyBackups struct {
+	// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+	KeepAll *bool `pulumi:"keepAll"`
+	// The number of daily backups to keep. Older backups will be removed.
+	KeepDaily *int `pulumi:"keepDaily"`
+	// The number of hourly backups to keep. Older backups will be removed.
+	KeepHourly *int `pulumi:"keepHourly"`
+	// Specifies the number of the most recent backups to keep, regardless of their age.
+	KeepLast *int `pulumi:"keepLast"`
+	// The number of monthly backups to keep. Older backups will be removed.
+	KeepMonthly *int `pulumi:"keepMonthly"`
+	// The number of weekly backups to keep. Older backups will be removed.
+	KeepWeekly *int `pulumi:"keepWeekly"`
+	// The number of yearly backups to keep. Older backups will be removed.
+	KeepYearly *int `pulumi:"keepYearly"`
+	// The maximum number of protected backups per guest. Use '-1' for unlimited.
+	MaxProtectedBackups *int `pulumi:"maxProtectedBackups"`
+}
+
+// PbsLegacyBackupsInput is an input type that accepts PbsLegacyBackupsArgs and PbsLegacyBackupsOutput values.
+// You can construct a concrete instance of `PbsLegacyBackupsInput` via:
+//
+//	PbsLegacyBackupsArgs{...}
+type PbsLegacyBackupsInput interface {
+	pulumi.Input
+
+	ToPbsLegacyBackupsOutput() PbsLegacyBackupsOutput
+	ToPbsLegacyBackupsOutputWithContext(context.Context) PbsLegacyBackupsOutput
+}
+
+type PbsLegacyBackupsArgs struct {
+	// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+	KeepAll pulumi.BoolPtrInput `pulumi:"keepAll"`
+	// The number of daily backups to keep. Older backups will be removed.
+	KeepDaily pulumi.IntPtrInput `pulumi:"keepDaily"`
+	// The number of hourly backups to keep. Older backups will be removed.
+	KeepHourly pulumi.IntPtrInput `pulumi:"keepHourly"`
+	// Specifies the number of the most recent backups to keep, regardless of their age.
+	KeepLast pulumi.IntPtrInput `pulumi:"keepLast"`
+	// The number of monthly backups to keep. Older backups will be removed.
+	KeepMonthly pulumi.IntPtrInput `pulumi:"keepMonthly"`
+	// The number of weekly backups to keep. Older backups will be removed.
+	KeepWeekly pulumi.IntPtrInput `pulumi:"keepWeekly"`
+	// The number of yearly backups to keep. Older backups will be removed.
+	KeepYearly pulumi.IntPtrInput `pulumi:"keepYearly"`
+	// The maximum number of protected backups per guest. Use '-1' for unlimited.
+	MaxProtectedBackups pulumi.IntPtrInput `pulumi:"maxProtectedBackups"`
+}
+
+func (PbsLegacyBackupsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PbsLegacyBackups)(nil)).Elem()
+}
+
+func (i PbsLegacyBackupsArgs) ToPbsLegacyBackupsOutput() PbsLegacyBackupsOutput {
+	return i.ToPbsLegacyBackupsOutputWithContext(context.Background())
+}
+
+func (i PbsLegacyBackupsArgs) ToPbsLegacyBackupsOutputWithContext(ctx context.Context) PbsLegacyBackupsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PbsLegacyBackupsOutput)
+}
+
+func (i PbsLegacyBackupsArgs) ToPbsLegacyBackupsPtrOutput() PbsLegacyBackupsPtrOutput {
+	return i.ToPbsLegacyBackupsPtrOutputWithContext(context.Background())
+}
+
+func (i PbsLegacyBackupsArgs) ToPbsLegacyBackupsPtrOutputWithContext(ctx context.Context) PbsLegacyBackupsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PbsLegacyBackupsOutput).ToPbsLegacyBackupsPtrOutputWithContext(ctx)
+}
+
+// PbsLegacyBackupsPtrInput is an input type that accepts PbsLegacyBackupsArgs, PbsLegacyBackupsPtr and PbsLegacyBackupsPtrOutput values.
+// You can construct a concrete instance of `PbsLegacyBackupsPtrInput` via:
+//
+//	        PbsLegacyBackupsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PbsLegacyBackupsPtrInput interface {
+	pulumi.Input
+
+	ToPbsLegacyBackupsPtrOutput() PbsLegacyBackupsPtrOutput
+	ToPbsLegacyBackupsPtrOutputWithContext(context.Context) PbsLegacyBackupsPtrOutput
+}
+
+type pbsLegacyBackupsPtrType PbsLegacyBackupsArgs
+
+func PbsLegacyBackupsPtr(v *PbsLegacyBackupsArgs) PbsLegacyBackupsPtrInput {
+	return (*pbsLegacyBackupsPtrType)(v)
+}
+
+func (*pbsLegacyBackupsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PbsLegacyBackups)(nil)).Elem()
+}
+
+func (i *pbsLegacyBackupsPtrType) ToPbsLegacyBackupsPtrOutput() PbsLegacyBackupsPtrOutput {
+	return i.ToPbsLegacyBackupsPtrOutputWithContext(context.Background())
+}
+
+func (i *pbsLegacyBackupsPtrType) ToPbsLegacyBackupsPtrOutputWithContext(ctx context.Context) PbsLegacyBackupsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PbsLegacyBackupsPtrOutput)
+}
+
+type PbsLegacyBackupsOutput struct{ *pulumi.OutputState }
+
+func (PbsLegacyBackupsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PbsLegacyBackups)(nil)).Elem()
+}
+
+func (o PbsLegacyBackupsOutput) ToPbsLegacyBackupsOutput() PbsLegacyBackupsOutput {
+	return o
+}
+
+func (o PbsLegacyBackupsOutput) ToPbsLegacyBackupsOutputWithContext(ctx context.Context) PbsLegacyBackupsOutput {
+	return o
+}
+
+func (o PbsLegacyBackupsOutput) ToPbsLegacyBackupsPtrOutput() PbsLegacyBackupsPtrOutput {
+	return o.ToPbsLegacyBackupsPtrOutputWithContext(context.Background())
+}
+
+func (o PbsLegacyBackupsOutput) ToPbsLegacyBackupsPtrOutputWithContext(ctx context.Context) PbsLegacyBackupsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PbsLegacyBackups) *PbsLegacyBackups {
+		return &v
+	}).(PbsLegacyBackupsPtrOutput)
+}
+
+// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+func (o PbsLegacyBackupsOutput) KeepAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PbsLegacyBackups) *bool { return v.KeepAll }).(pulumi.BoolPtrOutput)
+}
+
+// The number of daily backups to keep. Older backups will be removed.
+func (o PbsLegacyBackupsOutput) KeepDaily() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PbsLegacyBackups) *int { return v.KeepDaily }).(pulumi.IntPtrOutput)
+}
+
+// The number of hourly backups to keep. Older backups will be removed.
+func (o PbsLegacyBackupsOutput) KeepHourly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PbsLegacyBackups) *int { return v.KeepHourly }).(pulumi.IntPtrOutput)
+}
+
+// Specifies the number of the most recent backups to keep, regardless of their age.
+func (o PbsLegacyBackupsOutput) KeepLast() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PbsLegacyBackups) *int { return v.KeepLast }).(pulumi.IntPtrOutput)
+}
+
+// The number of monthly backups to keep. Older backups will be removed.
+func (o PbsLegacyBackupsOutput) KeepMonthly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PbsLegacyBackups) *int { return v.KeepMonthly }).(pulumi.IntPtrOutput)
+}
+
+// The number of weekly backups to keep. Older backups will be removed.
+func (o PbsLegacyBackupsOutput) KeepWeekly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PbsLegacyBackups) *int { return v.KeepWeekly }).(pulumi.IntPtrOutput)
+}
+
+// The number of yearly backups to keep. Older backups will be removed.
+func (o PbsLegacyBackupsOutput) KeepYearly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PbsLegacyBackups) *int { return v.KeepYearly }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of protected backups per guest. Use '-1' for unlimited.
+func (o PbsLegacyBackupsOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PbsLegacyBackups) *int { return v.MaxProtectedBackups }).(pulumi.IntPtrOutput)
+}
+
+type PbsLegacyBackupsPtrOutput struct{ *pulumi.OutputState }
+
+func (PbsLegacyBackupsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PbsLegacyBackups)(nil)).Elem()
+}
+
+func (o PbsLegacyBackupsPtrOutput) ToPbsLegacyBackupsPtrOutput() PbsLegacyBackupsPtrOutput {
+	return o
+}
+
+func (o PbsLegacyBackupsPtrOutput) ToPbsLegacyBackupsPtrOutputWithContext(ctx context.Context) PbsLegacyBackupsPtrOutput {
+	return o
+}
+
+func (o PbsLegacyBackupsPtrOutput) Elem() PbsLegacyBackupsOutput {
+	return o.ApplyT(func(v *PbsLegacyBackups) PbsLegacyBackups {
+		if v != nil {
+			return *v
+		}
+		var ret PbsLegacyBackups
+		return ret
+	}).(PbsLegacyBackupsOutput)
+}
+
+// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+func (o PbsLegacyBackupsPtrOutput) KeepAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PbsLegacyBackups) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.KeepAll
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The number of daily backups to keep. Older backups will be removed.
+func (o PbsLegacyBackupsPtrOutput) KeepDaily() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PbsLegacyBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepDaily
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of hourly backups to keep. Older backups will be removed.
+func (o PbsLegacyBackupsPtrOutput) KeepHourly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PbsLegacyBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepHourly
+	}).(pulumi.IntPtrOutput)
+}
+
+// Specifies the number of the most recent backups to keep, regardless of their age.
+func (o PbsLegacyBackupsPtrOutput) KeepLast() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PbsLegacyBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepLast
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of monthly backups to keep. Older backups will be removed.
+func (o PbsLegacyBackupsPtrOutput) KeepMonthly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PbsLegacyBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepMonthly
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of weekly backups to keep. Older backups will be removed.
+func (o PbsLegacyBackupsPtrOutput) KeepWeekly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PbsLegacyBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepWeekly
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of yearly backups to keep. Older backups will be removed.
+func (o PbsLegacyBackupsPtrOutput) KeepYearly() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PbsLegacyBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KeepYearly
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of protected backups per guest. Use '-1' for unlimited.
+func (o PbsLegacyBackupsPtrOutput) MaxProtectedBackups() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PbsLegacyBackups) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxProtectedBackups
+	}).(pulumi.IntPtrOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*CIFSBackupsInput)(nil)).Elem(), CIFSBackupsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CIFSBackupsPtrInput)(nil)).Elem(), CIFSBackupsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CifsBackupsInput)(nil)).Elem(), CifsBackupsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CifsBackupsPtrInput)(nil)).Elem(), CifsBackupsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CifsLegacyBackupsInput)(nil)).Elem(), CifsLegacyBackupsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CifsLegacyBackupsPtrInput)(nil)).Elem(), CifsLegacyBackupsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryBackupsInput)(nil)).Elem(), DirectoryBackupsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryBackupsPtrInput)(nil)).Elem(), DirectoryBackupsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FileSourceFileInput)(nil)).Elem(), FileSourceFileArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FileSourceFilePtrInput)(nil)).Elem(), FileSourceFileArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FileSourceRawInput)(nil)).Elem(), FileSourceRawArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*FileSourceRawPtrInput)(nil)).Elem(), FileSourceRawArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NFSBackupsInput)(nil)).Elem(), NFSBackupsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NFSBackupsPtrInput)(nil)).Elem(), NFSBackupsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PBSBackupsInput)(nil)).Elem(), PBSBackupsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PBSBackupsPtrInput)(nil)).Elem(), PBSBackupsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDatastoresDatastoreInput)(nil)).Elem(), GetDatastoresDatastoreArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDatastoresDatastoreArrayInput)(nil)).Elem(), GetDatastoresDatastoreArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDatastoresFiltersInput)(nil)).Elem(), GetDatastoresFiltersArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetDatastoresFiltersPtrInput)(nil)).Elem(), GetDatastoresFiltersArgs{})
-	pulumi.RegisterOutputType(CIFSBackupsOutput{})
-	pulumi.RegisterOutputType(CIFSBackupsPtrOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryLegacyBackupsInput)(nil)).Elem(), DirectoryLegacyBackupsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryLegacyBackupsPtrInput)(nil)).Elem(), DirectoryLegacyBackupsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NfsBackupsInput)(nil)).Elem(), NfsBackupsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NfsBackupsPtrInput)(nil)).Elem(), NfsBackupsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NfsLegacyBackupsInput)(nil)).Elem(), NfsLegacyBackupsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NfsLegacyBackupsPtrInput)(nil)).Elem(), NfsLegacyBackupsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PbsBackupsInput)(nil)).Elem(), PbsBackupsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PbsBackupsPtrInput)(nil)).Elem(), PbsBackupsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PbsLegacyBackupsInput)(nil)).Elem(), PbsLegacyBackupsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PbsLegacyBackupsPtrInput)(nil)).Elem(), PbsLegacyBackupsArgs{})
+	pulumi.RegisterOutputType(CifsBackupsOutput{})
+	pulumi.RegisterOutputType(CifsBackupsPtrOutput{})
+	pulumi.RegisterOutputType(CifsLegacyBackupsOutput{})
+	pulumi.RegisterOutputType(CifsLegacyBackupsPtrOutput{})
 	pulumi.RegisterOutputType(DirectoryBackupsOutput{})
 	pulumi.RegisterOutputType(DirectoryBackupsPtrOutput{})
-	pulumi.RegisterOutputType(FileSourceFileOutput{})
-	pulumi.RegisterOutputType(FileSourceFilePtrOutput{})
-	pulumi.RegisterOutputType(FileSourceRawOutput{})
-	pulumi.RegisterOutputType(FileSourceRawPtrOutput{})
-	pulumi.RegisterOutputType(NFSBackupsOutput{})
-	pulumi.RegisterOutputType(NFSBackupsPtrOutput{})
-	pulumi.RegisterOutputType(PBSBackupsOutput{})
-	pulumi.RegisterOutputType(PBSBackupsPtrOutput{})
-	pulumi.RegisterOutputType(GetDatastoresDatastoreOutput{})
-	pulumi.RegisterOutputType(GetDatastoresDatastoreArrayOutput{})
-	pulumi.RegisterOutputType(GetDatastoresFiltersOutput{})
-	pulumi.RegisterOutputType(GetDatastoresFiltersPtrOutput{})
+	pulumi.RegisterOutputType(DirectoryLegacyBackupsOutput{})
+	pulumi.RegisterOutputType(DirectoryLegacyBackupsPtrOutput{})
+	pulumi.RegisterOutputType(NfsBackupsOutput{})
+	pulumi.RegisterOutputType(NfsBackupsPtrOutput{})
+	pulumi.RegisterOutputType(NfsLegacyBackupsOutput{})
+	pulumi.RegisterOutputType(NfsLegacyBackupsPtrOutput{})
+	pulumi.RegisterOutputType(PbsBackupsOutput{})
+	pulumi.RegisterOutputType(PbsBackupsPtrOutput{})
+	pulumi.RegisterOutputType(PbsLegacyBackupsOutput{})
+	pulumi.RegisterOutputType(PbsLegacyBackupsPtrOutput{})
 }

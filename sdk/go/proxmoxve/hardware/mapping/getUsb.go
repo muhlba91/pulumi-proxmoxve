@@ -7,42 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves a USB hardware mapping from a Proxmox VE cluster.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/hardware"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := hardware.GetUsb(ctx, &mapping.GetUsbArgs{
-//				Name: "example",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("dataProxmoxVirtualEnvironmentHardwareMappingUsb", example)
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupUsb(ctx *pulumi.Context, args *LookupUsbArgs, opts ...pulumi.InvokeOption) (*LookupUsbResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupUsbResult
-	err := ctx.Invoke("proxmoxve:Hardware/mapping/getUsb:getUsb", args, &rv, opts...)
+	err := ctx.Invoke("proxmoxve:hardware/mapping/getUsb:getUsb", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -72,7 +45,7 @@ func LookupUsbOutput(ctx *pulumi.Context, args LookupUsbOutputArgs, opts ...pulu
 		ApplyT(func(v interface{}) (LookupUsbResultOutput, error) {
 			args := v.(LookupUsbArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:Hardware/mapping/getUsb:getUsb", args, LookupUsbResultOutput{}, options).(LookupUsbResultOutput), nil
+			return ctx.InvokeOutput("proxmoxve:hardware/mapping/getUsb:getUsb", args, LookupUsbResultOutput{}, options).(LookupUsbResultOutput), nil
 		}).(LookupUsbResultOutput)
 }
 

@@ -11,47 +11,15 @@ namespace Pulumi.ProxmoxVE.Storage
 {
     /// <summary>
     /// Manages a Proxmox Backup Server (PBS) storage in Proxmox VE.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using ProxmoxVE = Pulumi.ProxmoxVE;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new ProxmoxVE.Storage.PBS("example", new()
-    ///     {
-    ///         PbsId = "example-pbs",
-    ///         Nodes = new[]
-    ///         {
-    ///             "pve",
-    ///         },
-    ///         Server = "pbs.example.local",
-    ///         Datastore = "backup",
-    ///         Username = "pbs-user",
-    ///         Password = "pbs-password",
-    ///         Fingerprint = "AA:BB:CC:DD:EE:FF",
-    ///         Contents = new[]
-    ///         {
-    ///             "backup",
-    ///         },
-    ///         GenerateEncryptionKey = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
-    [ProxmoxVEResourceType("proxmoxve:Storage/pBS:PBS")]
-    public partial class PBS : global::Pulumi.CustomResource
+    [ProxmoxVEResourceType("proxmoxve:storage/pbs:Pbs")]
+    public partial class Pbs : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Configure backup retention settings for the storage type.
         /// </summary>
         [Output("backups")]
-        public Output<Outputs.PBSBackups?> Backups { get; private set; } = null!;
+        public Output<Outputs.PbsBackups?> Backups { get; private set; } = null!;
 
         /// <summary>
         /// The content types that can be stored on this storage. Valid values: `Backup` (VM backups), `Images` (VM disk images), `Import` (VM disk images for import), `Iso` (ISO images), `Rootdir` (container root directories), `Snippets` (cloud-init, hook scripts, etc.), `Vztmpl` (container templates).
@@ -122,8 +90,8 @@ namespace Pulumi.ProxmoxVE.Storage
         /// <summary>
         /// The unique identifier of the storage.
         /// </summary>
-        [Output("pbsId")]
-        public Output<string> PbsId { get; private set; } = null!;
+        [Output("resourceId")]
+        public Output<string> ResourceId { get; private set; } = null!;
 
         /// <summary>
         /// The IP address or DNS name of the Proxmox Backup Server.
@@ -145,19 +113,19 @@ namespace Pulumi.ProxmoxVE.Storage
 
 
         /// <summary>
-        /// Create a PBS resource with the given unique name, arguments, and options.
+        /// Create a Pbs resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public PBS(string name, PBSArgs args, CustomResourceOptions? options = null)
-            : base("proxmoxve:Storage/pBS:PBS", name, args ?? new PBSArgs(), MakeResourceOptions(options, ""))
+        public Pbs(string name, PbsArgs args, CustomResourceOptions? options = null)
+            : base("proxmoxve:storage/pbs:Pbs", name, args ?? new PbsArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private PBS(string name, Input<string> id, PBSState? state = null, CustomResourceOptions? options = null)
-            : base("proxmoxve:Storage/pBS:PBS", name, state, MakeResourceOptions(options, id))
+        private Pbs(string name, Input<string> id, PbsState? state = null, CustomResourceOptions? options = null)
+            : base("proxmoxve:storage/pbs:Pbs", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -167,6 +135,10 @@ namespace Pulumi.ProxmoxVE.Storage
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/muhlba91/pulumi-proxmoxve",
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "proxmox_virtual_environment_storage_pbs" },
+                },
                 AdditionalSecretOutputs =
                 {
                     "encryptionKey",
@@ -180,7 +152,7 @@ namespace Pulumi.ProxmoxVE.Storage
             return merged;
         }
         /// <summary>
-        /// Get an existing PBS resource's state with the given name, ID, and optional extra
+        /// Get an existing Pbs resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -188,19 +160,19 @@ namespace Pulumi.ProxmoxVE.Storage
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static PBS Get(string name, Input<string> id, PBSState? state = null, CustomResourceOptions? options = null)
+        public static Pbs Get(string name, Input<string> id, PbsState? state = null, CustomResourceOptions? options = null)
         {
-            return new PBS(name, id, state, options);
+            return new Pbs(name, id, state, options);
         }
     }
 
-    public sealed class PBSArgs : global::Pulumi.ResourceArgs
+    public sealed class PbsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configure backup retention settings for the storage type.
         /// </summary>
         [Input("backups")]
-        public Input<Inputs.PBSBackupsArgs>? Backups { get; set; }
+        public Input<Inputs.PbsBackupsArgs>? Backups { get; set; }
 
         [Input("contents")]
         private InputList<string>? _contents;
@@ -291,8 +263,8 @@ namespace Pulumi.ProxmoxVE.Storage
         /// <summary>
         /// The unique identifier of the storage.
         /// </summary>
-        [Input("pbsId", required: true)]
-        public Input<string> PbsId { get; set; } = null!;
+        [Input("resourceId", required: true)]
+        public Input<string> ResourceId { get; set; } = null!;
 
         /// <summary>
         /// The IP address or DNS name of the Proxmox Backup Server.
@@ -306,19 +278,19 @@ namespace Pulumi.ProxmoxVE.Storage
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
 
-        public PBSArgs()
+        public PbsArgs()
         {
         }
-        public static new PBSArgs Empty => new PBSArgs();
+        public static new PbsArgs Empty => new PbsArgs();
     }
 
-    public sealed class PBSState : global::Pulumi.ResourceArgs
+    public sealed class PbsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configure backup retention settings for the storage type.
         /// </summary>
         [Input("backups")]
-        public Input<Inputs.PBSBackupsGetArgs>? Backups { get; set; }
+        public Input<Inputs.PbsBackupsGetArgs>? Backups { get; set; }
 
         [Input("contents")]
         private InputList<string>? _contents;
@@ -431,8 +403,8 @@ namespace Pulumi.ProxmoxVE.Storage
         /// <summary>
         /// The unique identifier of the storage.
         /// </summary>
-        [Input("pbsId")]
-        public Input<string>? PbsId { get; set; }
+        [Input("resourceId")]
+        public Input<string>? ResourceId { get; set; }
 
         /// <summary>
         /// The IP address or DNS name of the Proxmox Backup Server.
@@ -452,9 +424,9 @@ namespace Pulumi.ProxmoxVE.Storage
         [Input("username")]
         public Input<string>? Username { get; set; }
 
-        public PBSState()
+        public PbsState()
         {
         }
-        public static new PBSState Empty => new PBSState();
+        public static new PbsState Empty => new PbsState();
     }
 }

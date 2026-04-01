@@ -5,50 +5,186 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
-export interface GetContainersContainer {
+export interface GetDatastoresDatastore {
     /**
-     * The container name.
+     * Whether the store is active.
      */
-    name: string;
+    active?: boolean;
     /**
-     * The node name. All cluster nodes will be queried in case this is omitted
+     * Allowed store content types.
+     */
+    contentTypes: string[];
+    /**
+     * Whether the store is enabled.
+     */
+    enabled?: boolean;
+    /**
+     * The ID of the store.
+     */
+    id: string;
+    /**
+     * The name of the node the store is on.
      */
     nodeName: string;
     /**
-     * The status of the container.
+     * Shared flag from store configuration.
      */
-    status?: string;
+    shared?: boolean;
     /**
-     * A list of tags to filter the containers. The container must have all
-     * the tags to be included in the result.
+     * Available store space in bytes.
      */
-    tags: string[];
+    spaceAvailable?: number;
     /**
-     * Whether the container is a template.
+     * Total store space in bytes.
      */
-    template?: boolean;
+    spaceTotal?: number;
     /**
-     * The container identifier.
+     * Used store space in bytes.
      */
-    vmId: number;
+    spaceUsed?: number;
+    /**
+     * Used fraction (used/total).
+     */
+    spaceUsedFraction?: number;
+    /**
+     * Store type.
+     */
+    type: string;
 }
 
-export interface GetContainersFilter {
+export interface GetDatastoresFilters {
     /**
-     * Name of the container attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
+     * Only list stores with the given content types.
      */
-    name: string;
+    contentTypes?: string[];
     /**
-     * Treat values as regex patterns
+     * Only list stores with the given ID.
      */
-    regex?: boolean;
+    id?: string;
     /**
-     * List of values to pass the filter. Container's attribute should match at least one value in the list.
+     * If `target` is different to `nodeName`, then only lists shared stores which content is accessible on this node and the specified `target` node.
      */
-    values: string[];
+    target?: string;
 }
 
-export interface GetVm2Cpu {
+export interface GetDatastoresLegacyDatastore {
+    /**
+     * Whether the store is active.
+     */
+    active?: boolean;
+    /**
+     * Allowed store content types.
+     */
+    contentTypes: string[];
+    /**
+     * Whether the store is enabled.
+     */
+    enabled?: boolean;
+    /**
+     * The ID of the store.
+     */
+    id: string;
+    /**
+     * The name of the node the store is on.
+     */
+    nodeName: string;
+    /**
+     * Shared flag from store configuration.
+     */
+    shared?: boolean;
+    /**
+     * Available store space in bytes.
+     */
+    spaceAvailable?: number;
+    /**
+     * Total store space in bytes.
+     */
+    spaceTotal?: number;
+    /**
+     * Used store space in bytes.
+     */
+    spaceUsed?: number;
+    /**
+     * Used fraction (used/total).
+     */
+    spaceUsedFraction?: number;
+    /**
+     * Store type.
+     */
+    type: string;
+}
+
+export interface GetDatastoresLegacyFilters {
+    /**
+     * Only list stores with the given content types.
+     */
+    contentTypes?: string[];
+    /**
+     * Only list stores with the given ID.
+     */
+    id?: string;
+    /**
+     * If `target` is different to `nodeName`, then only lists shared stores which content is accessible on this node and the specified `target` node.
+     */
+    target?: string;
+}
+
+export interface GetFilesFile {
+    /**
+     * The content type of the file.
+     */
+    contentType: string;
+    /**
+     * The format of the file.
+     */
+    fileFormat: string;
+    /**
+     * The name of the file.
+     */
+    fileName: string;
+    /**
+     * The size of the file in bytes.
+     */
+    fileSize: number;
+    /**
+     * The unique identifier of the file (volume ID), e.g. `local:iso/ubuntu.iso`.
+     */
+    id: string;
+    /**
+     * The VM ID associated with the file, if applicable.
+     */
+    vmid: number;
+}
+
+export interface GetReplicationsLegacyReplication {
+    comment: string;
+    disable: boolean;
+    guest: number;
+    id: string;
+    jobnum: number;
+    rate: number;
+    removeJob: string;
+    schedule: string;
+    source: string;
+    target: string;
+    type: string;
+}
+
+export interface GetReplicationsReplication {
+    comment: string;
+    disable: boolean;
+    guest: number;
+    id: string;
+    jobnum: number;
+    rate: number;
+    removeJob: string;
+    schedule: string;
+    source: string;
+    target: string;
+    type: string;
+}
+
+export interface GetVm2LegacyCpu {
     /**
      * List of host cores used to execute guest processes, for example: '0,5,8-11'
      */
@@ -91,7 +227,7 @@ export interface GetVm2Cpu {
     units: number;
 }
 
-export interface GetVm2Rng {
+export interface GetVm2LegacyRng {
     /**
      * Maximum bytes of entropy allowed to get injected into the guest every period.
      */
@@ -106,14 +242,14 @@ export interface GetVm2Rng {
     source: string;
 }
 
-export interface GetVm2Timeouts {
+export interface GetVm2LegacyTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
     read?: string;
 }
 
-export interface GetVm2Vga {
+export interface GetVm2LegacyVga {
     /**
      * Enable a specific clipboard.
      */
@@ -128,19 +264,301 @@ export interface GetVm2Vga {
     type: string;
 }
 
-export interface HostsEntry {
+export interface GetVmCpu {
     /**
-     * The IP address.
+     * List of host cores used to execute guest processes, for example: '0,5,8-11'
      */
-    address: string;
+    affinity: string;
     /**
-     * The hostnames.
+     * The CPU architecture.
      */
-    hostnames: string[];
+    architecture: string;
+    /**
+     * The number of CPU cores per socket.
+     */
+    cores: number;
+    /**
+     * Set of additional CPU flags.
+     */
+    flags: string[];
+    /**
+     * The number of hotplugged vCPUs.
+     */
+    hotplugged: number;
+    /**
+     * Limit of CPU usage.
+     */
+    limit: number;
+    /**
+     * Enable NUMA.
+     */
+    numa: boolean;
+    /**
+     * The number of CPU sockets.
+     */
+    sockets: number;
+    /**
+     * Emulated CPU type.
+     */
+    type: string;
+    /**
+     * CPU weight for a VM
+     */
+    units: number;
 }
 
-export namespace Acme {
+export interface GetVmRng {
+    /**
+     * Maximum bytes of entropy allowed to get injected into the guest every period.
+     */
+    maxBytes: number;
+    /**
+     * Period in milliseconds to limit entropy injection to the guest.
+     */
+    period: number;
+    /**
+     * The entropy source for the RNG device.
+     */
+    source: string;
+}
+
+export interface GetVmTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+}
+
+export interface GetVmVga {
+    /**
+     * Enable a specific clipboard.
+     */
+    clipboard: string;
+    /**
+     * The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+     */
+    memory: number;
+    /**
+     * The VGA type.
+     */
+    type: string;
+}
+
+export interface Vm2LegacyCdrom {
+    /**
+     * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+     */
+    fileId: string;
+}
+
+export interface Vm2LegacyCpu {
+    /**
+     * The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+     */
+    affinity: string;
+    /**
+     * The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
+     */
+    architecture: string;
+    /**
+     * The number of CPU cores per socket (defaults to `1`).
+     */
+    cores: number;
+    /**
+     * Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+     */
+    flags: string[];
+    /**
+     * The number of hotplugged vCPUs (defaults to `0`).
+     */
+    hotplugged: number;
+    /**
+     * Limit of CPU usage (defaults to `0` which means no limit).
+     */
+    limit: number;
+    /**
+     * Enable NUMA (defaults to `false`).
+     */
+    numa: boolean;
+    /**
+     * The number of CPU sockets (defaults to `1`).
+     */
+    sockets: number;
+    /**
+     * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+     */
+    type: string;
+    /**
+     * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+     */
+    units: number;
+}
+
+export interface Vm2LegacyRng {
+    /**
+     * Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+     */
+    maxBytes: number;
+    /**
+     * Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+     */
+    period: number;
+    /**
+     * The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+     */
+    source: string;
+}
+
+export interface Vm2LegacyTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
+export interface Vm2LegacyVga {
+    /**
+     * Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+     */
+    clipboard: string;
+    /**
+     * The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+     */
+    memory: number;
+    /**
+     * The VGA type (defaults to `std`).
+     */
+    type: string;
+}
+
+export interface VmCdrom {
+    /**
+     * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+     */
+    fileId: string;
+}
+
+export interface VmCpu {
+    /**
+     * The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+     */
+    affinity: string;
+    /**
+     * The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
+     */
+    architecture: string;
+    /**
+     * The number of CPU cores per socket (defaults to `1`).
+     */
+    cores: number;
+    /**
+     * Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+     */
+    flags: string[];
+    /**
+     * The number of hotplugged vCPUs (defaults to `0`).
+     */
+    hotplugged: number;
+    /**
+     * Limit of CPU usage (defaults to `0` which means no limit).
+     */
+    limit: number;
+    /**
+     * Enable NUMA (defaults to `false`).
+     */
+    numa: boolean;
+    /**
+     * The number of CPU sockets (defaults to `1`).
+     */
+    sockets: number;
+    /**
+     * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+     */
+    type: string;
+    /**
+     * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+     */
+    units: number;
+}
+
+export interface VmRng {
+    /**
+     * Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+     */
+    maxBytes: number;
+    /**
+     * Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+     */
+    period: number;
+    /**
+     * The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+     */
+    source: string;
+}
+
+export interface VmTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
+export interface VmVga {
+    /**
+     * Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+     */
+    clipboard: string;
+    /**
+     * The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+     */
+    memory: number;
+    /**
+     * The VGA type (defaults to `std`).
+     */
+    type: string;
+}
+
+export namespace acme {
     export interface CertificateDomain {
+        /**
+         * An optional alias domain for DNS validation. This allows you to validate the domain using a different domain's DNS records.
+         */
+        alias?: string;
+        /**
+         * The domain name to include in the certificate.
+         */
+        domain: string;
+        /**
+         * The DNS plugin to use for DNS-01 challenge validation. If not specified, the standalone HTTP-01 challenge will be used.
+         */
+        plugin?: string;
+    }
+
+    export interface CertificateLegacyDomain {
         /**
          * An optional alias domain for DNS validation. This allows you to validate the domain using a different domain's DNS records.
          */
@@ -168,6 +586,48 @@ export namespace Acme {
          * The status of the account. Can be one of `valid`, `deactivated` or `revoked`.
          */
         status: string;
+    }
+
+    export interface GetAccountLegacyAccount {
+        /**
+         * An array of contact email addresses.
+         */
+        contacts: string[];
+        /**
+         * The timestamp of the account creation.
+         */
+        createdAt: string;
+        /**
+         * The status of the account. Can be one of `valid`, `deactivated` or `revoked`.
+         */
+        status: string;
+    }
+
+    export interface GetPluginsLegacyPlugin {
+        /**
+         * API plugin name.
+         */
+        api: string;
+        /**
+         * DNS plugin data.
+         */
+        data: {[key: string]: string};
+        /**
+         * Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
+         */
+        digest: string;
+        /**
+         * ACME Plugin ID name.
+         */
+        plugin: string;
+        /**
+         * ACME challenge type (dns, standalone).
+         */
+        type: string;
+        /**
+         * Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records (0 - 172800).
+         */
+        validationDelay: number;
     }
 
     export interface GetPluginsPlugin {
@@ -199,373 +659,694 @@ export namespace Acme {
 
 }
 
-export namespace CT {
-    export interface ContainerClone {
+export namespace backup {
+    export interface GetJobsJob {
         /**
-         * The identifier for the target datastore.
+         * Indicates whether all VMs and CTs are backed up.
          */
-        datastoreId?: string;
+        all: boolean;
         /**
-         * The name of the source node (leave blank, if
-         * equal to the `nodeName` argument).
+         * Compression algorithm used for the backup.
          */
-        nodeName?: string;
+        compress: string;
         /**
-         * The identifier for the source container.
+         * Indicates whether the backup job is enabled.
          */
-        vmId: number;
+        enabled: boolean;
+        /**
+         * Unique identifier of the backup job.
+         */
+        id: string;
+        /**
+         * When to send email notifications (always or failure).
+         */
+        mailnotification: string;
+        /**
+         * List of email addresses for notifications.
+         */
+        mailtos: string[];
+        /**
+         * Backup mode (e.g. snapshot, suspend, stop).
+         */
+        mode: string;
+        /**
+         * Node on which the backup job runs.
+         */
+        node: string;
+        /**
+         * Template for backup notes.
+         */
+        notesTemplate: string;
+        /**
+         * Pool whose members are backed up.
+         */
+        pool: string;
+        /**
+         * Indicates whether backups created by this job are protected from pruning.
+         */
+        protected: boolean;
+        /**
+         * Retention options as a map of keep policies (e.g. keep-last = "3", keep-weekly = "2").
+         */
+        pruneBackups: {[key: string]: string};
+        /**
+         * Backup schedule in systemd calendar format.
+         */
+        schedule: string;
+        /**
+         * Target storage for the backup.
+         */
+        storage: string;
+        /**
+         * List of VM/CT IDs included in the backup job.
+         */
+        vmids: string[];
     }
 
-    export interface ContainerConsole {
+    export interface JobFleecing {
         /**
-         * Whether to enable the console device (defaults
-         * to `true`).
+         * Whether fleecing is enabled.
          */
-        enabled?: boolean;
+        enabled: boolean;
         /**
-         * The number of available TTY (defaults to `2`).
+         * The storage identifier for fleecing.
          */
-        ttyCount?: number;
-        /**
-         * The console mode (defaults to `tty`).
-         */
-        type?: string;
+        storage?: string;
     }
 
-    export interface ContainerCpu {
+    export interface JobPerformance {
         /**
-         * The CPU architecture (defaults to `amd64`).
+         * Maximum number of workers for parallel backup.
          */
-        architecture?: string;
+        maxWorkers?: number;
         /**
-         * The number of CPU cores (defaults to `1`).
+         * Maximum number of entries for PBS catalog.
          */
-        cores?: number;
-        /**
-         * The CPU units (defaults to `1024`).
-         */
-        units?: number;
-    }
-
-    export interface ContainerDevicePassthrough {
-        /**
-         * Deny the container to write to the device (defaults to `false`).
-         */
-        denyWrite?: boolean;
-        /**
-         * Group ID to be assigned to the device node.
-         */
-        gid?: number;
-        /**
-         * Access mode to be set on the device node. Must be a
-         * 4-digit octal number.
-         */
-        mode?: string;
-        /**
-         * Device to pass through to the container (e.g. `/dev/sda`).
-         */
-        path: string;
-        /**
-         * User ID to be assigned to the device node.
-         */
-        uid?: number;
-    }
-
-    export interface ContainerDisk {
-        /**
-         * Explicitly enable or disable ACL support
-         */
-        acl?: boolean;
-        /**
-         * The identifier for the datastore to create the
-         * disk in (defaults to `local`).
-         */
-        datastoreId?: string;
-        /**
-         * List of extra mount options.
-         */
-        mountOptions?: string[];
-        /**
-         * The in-datastore path to the disk image.
-         * Use this attribute for cross-resource references.
-         */
-        pathInDatastore: string;
-        /**
-         * Enable user quotas for the container rootfs
-         */
-        quota?: boolean;
-        /**
-         * Will include this volume to a storage replica job
-         */
-        replicate?: boolean;
-        /**
-         * The size of the root filesystem in gigabytes (defaults
-         * to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.
-         * Requires `datastoreId` to be set.
-         */
-        size?: number;
-    }
-
-    export interface ContainerFeatures {
-        /**
-         * Whether the container supports FUSE mounts (defaults to `false`)
-         */
-        fuse?: boolean;
-        /**
-         * Whether the container supports `keyctl()` system call (defaults to `false`)
-         */
-        keyctl?: boolean;
-        /**
-         * List of allowed mount types (`cifs` or `nfs`)
-         */
-        mounts?: string[];
-        /**
-         * Whether the container is nested (defaults to `false`)
-         */
-        nesting?: boolean;
-    }
-
-    export interface ContainerInitialization {
-        /**
-         * The DNS configuration.
-         */
-        dns?: outputs.CT.ContainerInitializationDns;
-        /**
-         * The hostname.
-         */
-        hostname?: string;
-        /**
-         * The IP configuration (one block per network
-         * device).
-         */
-        ipConfigs?: outputs.CT.ContainerInitializationIpConfig[];
-        /**
-         * The user account configuration.
-         */
-        userAccount?: outputs.CT.ContainerInitializationUserAccount;
-    }
-
-    export interface ContainerInitializationDns {
-        /**
-         * The DNS search domain.
-         */
-        domain?: string;
-        /**
-         * The DNS server.
-         * The `server` attribute is deprecated and will be removed in a future release. Please use
-         * the `servers` attribute instead.
-         *
-         * @deprecated The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
-         */
-        server?: string;
-        /**
-         * The list of DNS servers.
-         */
-        servers?: string[];
-    }
-
-    export interface ContainerInitializationIpConfig {
-        /**
-         * The IPv4 configuration.
-         */
-        ipv4?: outputs.CT.ContainerInitializationIpConfigIpv4;
-        /**
-         * The IPv6 configuration.
-         */
-        ipv6?: outputs.CT.ContainerInitializationIpConfigIpv6;
-    }
-
-    export interface ContainerInitializationIpConfigIpv4 {
-        /**
-         * The IPv4 address in CIDR notation
-         * (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
-         * autodiscovery.
-         */
-        address?: string;
-        /**
-         * The IPv4 gateway (must be omitted
-         * when `dhcp` is used as the address).
-         */
-        gateway?: string;
-    }
-
-    export interface ContainerInitializationIpConfigIpv6 {
-        /**
-         * The IPv6 address in CIDR notation
-         * (e.g. fd1c::7334/64). Alternatively, set this
-         * to `dhcp` for DHCPv6, or `auto` for SLAAC.
-         */
-        address?: string;
-        /**
-         * The IPv6 gateway (must be omitted
-         * when `dhcp` or `auto` are used as the address).
-         */
-        gateway?: string;
-    }
-
-    export interface ContainerInitializationUserAccount {
-        /**
-         * The SSH keys for the root account.
-         */
-        keys?: string[];
-        /**
-         * The password for the root account.
-         */
-        password?: string;
-    }
-
-    export interface ContainerMemory {
-        /**
-         * The dedicated memory in megabytes (defaults
-         * to `512`).
-         */
-        dedicated?: number;
-        /**
-         * The swap size in megabytes (defaults to `0`).
-         */
-        swap?: number;
-    }
-
-    export interface ContainerMountPoint {
-        /**
-         * Explicitly enable or disable ACL support.
-         */
-        acl?: boolean;
-        /**
-         * Whether to include the mount point in backups (only
-         * used for volume mount points, defaults to `false`).
-         */
-        backup?: boolean;
-        /**
-         * List of extra mount options.
-         */
-        mountOptions?: string[];
-        /**
-         * Path to the mount point as seen from inside the
-         * container.
-         */
-        path: string;
-        /**
-         * The in-datastore path to the mount point volume.
-         * Use this attribute for cross-resource references instead of `volume`.
-         */
-        pathInDatastore: string;
-        /**
-         * Enable user quotas inside the container (not supported
-         * with ZFS subvolumes).
-         */
-        quota?: boolean;
-        /**
-         * Read-only mount point.
-         */
-        readOnly?: boolean;
-        /**
-         * Will include this volume to a storage replica job.
-         */
-        replicate?: boolean;
-        /**
-         * Mark this non-volume mount point as available on all
-         * nodes.
-         */
-        shared?: boolean;
-        /**
-         * Volume size (only for volume mount points).
-         * Can be specified with a unit suffix (e.g. `10G`).
-         */
-        size?: string;
-        /**
-         * Volume, device or directory to mount into the
-         * container.
-         */
-        volume: string;
-    }
-
-    export interface ContainerNetworkInterface {
-        /**
-         * The name of the network bridge (defaults
-         * to `vmbr0`).
-         */
-        bridge?: string;
-        /**
-         * Whether to enable the network device (defaults
-         * to `true`).
-         */
-        enabled?: boolean;
-        /**
-         * Whether this interface's firewall rules should be
-         * used (defaults to `false`).
-         */
-        firewall?: boolean;
-        /**
-         * The MAC address.
-         */
-        macAddress: string;
-        /**
-         * Maximum transfer unit of the interface. Cannot be
-         * larger than the bridge's MTU.
-         */
-        mtu?: number;
-        /**
-         * The network interface name.
-         */
-        name: string;
-        /**
-         * The rate limit in megabytes per second.
-         */
-        rateLimit?: number;
-        /**
-         * The VLAN identifier.
-         */
-        vlanId?: number;
-    }
-
-    export interface ContainerOperatingSystem {
-        /**
-         * The identifier for an OS template file.
-         * The ID format is `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`.
-         * Can be also taken from `proxmoxve.Download.File` resource, or from the output of `pvesm list <storage>`.
-         */
-        templateFileId: string;
-        /**
-         * The type (defaults to `unmanaged`).
-         */
-        type?: string;
-    }
-
-    export interface ContainerStartup {
-        /**
-         * A non-negative number defining the delay in
-         * seconds before the next container is shut down.
-         */
-        downDelay?: number;
-        /**
-         * A non-negative number defining the general startup
-         * order.
-         */
-        order?: number;
-        /**
-         * A non-negative number defining the delay in
-         * seconds before the next container is started.
-         */
-        upDelay?: number;
-    }
-
-    export interface ContainerWaitForIp {
-        /**
-         * Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
-         */
-        ipv4?: boolean;
-        /**
-         * Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
-         *
-         * When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
-         */
-        ipv6?: boolean;
+        pbsEntriesMax?: number;
     }
 
 }
 
-export namespace Cluster {
+export namespace cloned {
+    export interface VmCdrom {
+        /**
+         * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+         */
+        fileId?: string;
+    }
+
+    export interface VmClone {
+        /**
+         * Clone bandwidth limit in MB/s.
+         */
+        bandwidthLimit?: number;
+        /**
+         * Perform a full clone (true) or linked clone (false).
+         */
+        full: boolean;
+        /**
+         * Pool to assign the cloned VM to.
+         */
+        poolId?: string;
+        /**
+         * Number of retries for clone operations.
+         */
+        retries: number;
+        /**
+         * Snapshot name to clone from.
+         */
+        snapshotName?: string;
+        /**
+         * Source node of the VM/template. Defaults to target node if unset.
+         */
+        sourceNodeName?: string;
+        /**
+         * Source VM/template ID to clone from.
+         */
+        sourceVmId: number;
+        /**
+         * Target datastore for cloned disks.
+         */
+        targetDatastore?: string;
+        /**
+         * Target disk format for clone (e.g., raw, qcow2).
+         */
+        targetFormat?: string;
+    }
+
+    export interface VmCpu {
+        /**
+         * The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+         */
+        affinity?: string;
+        /**
+         * The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
+         */
+        architecture?: string;
+        /**
+         * The number of CPU cores per socket (defaults to `1`).
+         */
+        cores?: number;
+        /**
+         * Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+         */
+        flags?: string[];
+        /**
+         * The number of hotplugged vCPUs (defaults to `0`).
+         */
+        hotplugged?: number;
+        /**
+         * Limit of CPU usage (defaults to `0` which means no limit).
+         */
+        limit?: number;
+        /**
+         * Enable NUMA (defaults to `false`).
+         */
+        numa?: boolean;
+        /**
+         * The number of CPU sockets (defaults to `1`).
+         */
+        sockets?: number;
+        /**
+         * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+         */
+        type?: string;
+        /**
+         * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+         */
+        units?: number;
+    }
+
+    export interface VmDelete {
+        /**
+         * Disk slots to delete (e.g., scsi2).
+         */
+        disks?: string[];
+        /**
+         * Network slots to delete (e.g., net1).
+         */
+        networks?: string[];
+    }
+
+    export interface VmDisk {
+        /**
+         * AIO mode (io_uring, native, threads).
+         */
+        aio?: string;
+        /**
+         * Include disk in backups.
+         */
+        backup?: boolean;
+        /**
+         * Cache mode.
+         */
+        cache?: string;
+        /**
+         * Target datastore for new disks when file is not provided.
+         */
+        datastoreId?: string;
+        /**
+         * Discard/trim behavior.
+         */
+        discard?: string;
+        /**
+         * Existing volume reference (e.g., local-lvm:vm-100-disk-0).
+         */
+        file?: string;
+        /**
+         * Disk format (raw, qcow2, vmdk).
+         */
+        format?: string;
+        /**
+         * Import source volume/file id.
+         */
+        importFrom?: string;
+        /**
+         * Use IO thread.
+         */
+        iothread?: boolean;
+        /**
+         * Disk media (e.g., disk, cdrom).
+         */
+        media?: string;
+        /**
+         * Consider disk for replication.
+         */
+        replicate?: boolean;
+        /**
+         * Disk serial number.
+         */
+        serial?: string;
+        /**
+         * Disk size (GiB) when creating new disks. **Note:** Disk shrinking is not supported. Attempting to set `sizeGb` to a value smaller than the current disk size will result in an error. Only disk expansion is allowed.
+         */
+        sizeGb?: number;
+        /**
+         * Mark disk as SSD.
+         */
+        ssd?: boolean;
+    }
+
+    export interface VmLegacyCdrom {
+        /**
+         * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+         */
+        fileId?: string;
+    }
+
+    export interface VmLegacyClone {
+        /**
+         * Clone bandwidth limit in MB/s.
+         */
+        bandwidthLimit?: number;
+        /**
+         * Perform a full clone (true) or linked clone (false).
+         */
+        full: boolean;
+        /**
+         * Pool to assign the cloned VM to.
+         */
+        poolId?: string;
+        /**
+         * Number of retries for clone operations.
+         */
+        retries: number;
+        /**
+         * Snapshot name to clone from.
+         */
+        snapshotName?: string;
+        /**
+         * Source node of the VM/template. Defaults to target node if unset.
+         */
+        sourceNodeName?: string;
+        /**
+         * Source VM/template ID to clone from.
+         */
+        sourceVmId: number;
+        /**
+         * Target datastore for cloned disks.
+         */
+        targetDatastore?: string;
+        /**
+         * Target disk format for clone (e.g., raw, qcow2).
+         */
+        targetFormat?: string;
+    }
+
+    export interface VmLegacyCpu {
+        /**
+         * The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+         */
+        affinity?: string;
+        /**
+         * The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
+         */
+        architecture?: string;
+        /**
+         * The number of CPU cores per socket (defaults to `1`).
+         */
+        cores?: number;
+        /**
+         * Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+         */
+        flags?: string[];
+        /**
+         * The number of hotplugged vCPUs (defaults to `0`).
+         */
+        hotplugged?: number;
+        /**
+         * Limit of CPU usage (defaults to `0` which means no limit).
+         */
+        limit?: number;
+        /**
+         * Enable NUMA (defaults to `false`).
+         */
+        numa?: boolean;
+        /**
+         * The number of CPU sockets (defaults to `1`).
+         */
+        sockets?: number;
+        /**
+         * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+         */
+        type?: string;
+        /**
+         * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+         */
+        units?: number;
+    }
+
+    export interface VmLegacyDelete {
+        /**
+         * Disk slots to delete (e.g., scsi2).
+         */
+        disks?: string[];
+        /**
+         * Network slots to delete (e.g., net1).
+         */
+        networks?: string[];
+    }
+
+    export interface VmLegacyDisk {
+        /**
+         * AIO mode (io_uring, native, threads).
+         */
+        aio?: string;
+        /**
+         * Include disk in backups.
+         */
+        backup?: boolean;
+        /**
+         * Cache mode.
+         */
+        cache?: string;
+        /**
+         * Target datastore for new disks when file is not provided.
+         */
+        datastoreId?: string;
+        /**
+         * Discard/trim behavior.
+         */
+        discard?: string;
+        /**
+         * Existing volume reference (e.g., local-lvm:vm-100-disk-0).
+         */
+        file?: string;
+        /**
+         * Disk format (raw, qcow2, vmdk).
+         */
+        format?: string;
+        /**
+         * Import source volume/file id.
+         */
+        importFrom?: string;
+        /**
+         * Use IO thread.
+         */
+        iothread?: boolean;
+        /**
+         * Disk media (e.g., disk, cdrom).
+         */
+        media?: string;
+        /**
+         * Consider disk for replication.
+         */
+        replicate?: boolean;
+        /**
+         * Disk serial number.
+         */
+        serial?: string;
+        /**
+         * Disk size (GiB) when creating new disks. **Note:** Disk shrinking is not supported. Attempting to set `sizeGb` to a value smaller than the current disk size will result in an error. Only disk expansion is allowed.
+         */
+        sizeGb?: number;
+        /**
+         * Mark disk as SSD.
+         */
+        ssd?: boolean;
+    }
+
+    export interface VmLegacyMemory {
+        /**
+         * Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely (defaults to `0`).
+         */
+        balloon?: number;
+        /**
+         * Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses. 
+         *
+         * **Options:**
+         * - `2` - Use 2 MiB hugepages
+         * - `1024` - Use 1 GiB hugepages
+         * - `any` - Use any available hugepage size
+         */
+        hugepages?: string;
+        /**
+         * Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup (defaults to `false`).
+         */
+        keepHugepages?: boolean;
+        /**
+         * CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs (defaults to `1000`).
+         */
+        shares?: number;
+        /**
+         * Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM (defaults to `512` MiB).
+         */
+        size?: number;
+    }
+
+    export interface VmLegacyNetwork {
+        /**
+         * Bridge name.
+         */
+        bridge?: string;
+        /**
+         * Enable firewall on this interface.
+         */
+        firewall?: boolean;
+        /**
+         * Keep link down.
+         */
+        linkDown?: boolean;
+        /**
+         * MAC address (computed if omitted).
+         */
+        macAddress?: string;
+        /**
+         * NIC model (e.g., virtio, e1000).
+         */
+        model?: string;
+        /**
+         * Interface MTU.
+         */
+        mtu?: number;
+        /**
+         * Number of multiqueue NIC queues.
+         */
+        queues?: number;
+        /**
+         * Rate limit (MB/s).
+         */
+        rateLimit?: number;
+        /**
+         * VLAN tag.
+         */
+        tag?: number;
+        /**
+         * Trunk VLAN IDs.
+         */
+        trunks?: number[];
+    }
+
+    export interface VmLegacyRng {
+        /**
+         * Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+         */
+        maxBytes?: number;
+        /**
+         * Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+         */
+        period?: number;
+        /**
+         * The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+         */
+        source?: string;
+    }
+
+    export interface VmLegacyTimeouts {
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        create?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+         */
+        delete?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+         */
+        read?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        update?: string;
+    }
+
+    export interface VmLegacyVga {
+        /**
+         * Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+         */
+        clipboard?: string;
+        /**
+         * The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+         */
+        memory?: number;
+        /**
+         * The VGA type (defaults to `std`).
+         */
+        type?: string;
+    }
+
+    export interface VmMemory {
+        /**
+         * Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely (defaults to `0`).
+         */
+        balloon?: number;
+        /**
+         * Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses. 
+         *
+         * **Options:**
+         * - `2` - Use 2 MiB hugepages
+         * - `1024` - Use 1 GiB hugepages
+         * - `any` - Use any available hugepage size
+         */
+        hugepages?: string;
+        /**
+         * Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup (defaults to `false`).
+         */
+        keepHugepages?: boolean;
+        /**
+         * CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs (defaults to `1000`).
+         */
+        shares?: number;
+        /**
+         * Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM (defaults to `512` MiB).
+         */
+        size?: number;
+    }
+
+    export interface VmNetwork {
+        /**
+         * Bridge name.
+         */
+        bridge?: string;
+        /**
+         * Enable firewall on this interface.
+         */
+        firewall?: boolean;
+        /**
+         * Keep link down.
+         */
+        linkDown?: boolean;
+        /**
+         * MAC address (computed if omitted).
+         */
+        macAddress?: string;
+        /**
+         * NIC model (e.g., virtio, e1000).
+         */
+        model?: string;
+        /**
+         * Interface MTU.
+         */
+        mtu?: number;
+        /**
+         * Number of multiqueue NIC queues.
+         */
+        queues?: number;
+        /**
+         * Rate limit (MB/s).
+         */
+        rateLimit?: number;
+        /**
+         * VLAN tag.
+         */
+        tag?: number;
+        /**
+         * Trunk VLAN IDs.
+         */
+        trunks?: number[];
+    }
+
+    export interface VmRng {
+        /**
+         * Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+         */
+        maxBytes?: number;
+        /**
+         * Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+         */
+        period?: number;
+        /**
+         * The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+         */
+        source?: string;
+    }
+
+    export interface VmTimeouts {
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        create?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+         */
+        delete?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+         */
+        read?: string;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        update?: string;
+    }
+
+    export interface VmVga {
+        /**
+         * Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+         */
+        clipboard?: string;
+        /**
+         * The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+         */
+        memory?: number;
+        /**
+         * The VGA type (defaults to `std`).
+         */
+        type?: string;
+    }
+
+}
+
+export namespace cluster {
+    export interface OptionsLegacyNextId {
+        /**
+         * The minimum number for the next free VM ID. Must be higher or equal to 100
+         */
+        lower?: number;
+        /**
+         * The maximum number for the next free VM ID. Must be less or equal to 999999999
+         */
+        upper?: number;
+    }
+
+    export interface OptionsLegacyNotify {
+        /**
+         * Cluster-wide notification settings for the HA fencing mode. Must be `always` | `never`.
+         */
+        haFencingMode?: string;
+        /**
+         * Cluster-wide notification settings for the HA fencing target.
+         */
+        haFencingTarget?: string;
+        /**
+         * Cluster-wide notification settings for package updates. Must be `auto` | `always` | `never`.
+         */
+        packageUpdates?: string;
+        /**
+         * Cluster-wide notification settings for the package updates target.
+         */
+        packageUpdatesTarget?: string;
+        /**
+         * Cluster-wide notification settings for replication. Must be `always` | `never`.
+         */
+        replication?: string;
+        /**
+         * Cluster-wide notification settings for the replication target.
+         */
+        replicationTarget?: string;
+    }
+
     export interface OptionsNextId {
         /**
          * The minimum number for the next free VM ID. Must be higher or equal to 100
@@ -606,7 +1387,68 @@ export namespace Cluster {
 
 }
 
-export namespace Hardware {
+export namespace config {
+    export interface Ssh {
+        /**
+         * Whether to use the SSH agent for authentication. Takes precedence over the `privateKey` and `password` fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or `false` if not set.
+         */
+        agent?: boolean;
+        /**
+         * Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or `false` if not set.
+         */
+        agentForwarding?: boolean;
+        /**
+         * The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
+         */
+        agentSocket?: string;
+        /**
+         * Overrides for SSH connection configuration for a Proxmox VE node.
+         */
+        nodes?: outputs.config.SshNode[];
+        /**
+         * The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block when using username/password authentication. Default has no effect when using API token authentication, as there is no password to inherit. Can also be sourced from `PROXMOX_VE_SSH_PASSWORD`.
+         */
+        password?: string;
+        /**
+         * The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
+         */
+        privateKey?: string;
+        /**
+         * The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
+         */
+        socks5Password?: string;
+        /**
+         * The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.
+         */
+        socks5Server?: string;
+        /**
+         * The username for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_USERNAME` environment variable.
+         */
+        socks5Username?: string;
+        /**
+         * The username used for the SSH connection. Defaults to the value of the `username` field of the `provider` block.
+         */
+        username?: string;
+    }
+
+    export interface SshNode {
+        /**
+         * The address of the Proxmox VE node.
+         */
+        address: string;
+        /**
+         * The name of the Proxmox VE node.
+         */
+        name: string;
+        /**
+         * The port of the Proxmox VE node.
+         */
+        port?: number;
+    }
+
+}
+
+export namespace hardware {
     export interface GetMappingsCheck {
         /**
          * The corresponding hardware mapping ID of the node check diagnostic entry.
@@ -622,7 +1464,33 @@ export namespace Hardware {
         severity: string;
     }
 
+    export interface GetMappingsLegacyCheck {
+        /**
+         * The corresponding hardware mapping ID of the node check diagnostic entry.
+         */
+        mappingId: string;
+        /**
+         * The message of the node check diagnostic entry.
+         */
+        message: string;
+        /**
+         * The severity of the node check diagnostic entry.
+         */
+        severity: string;
+    }
+
     export namespace mapping {
+        export interface DirLegacyMap {
+            /**
+             * The node this mapping applies to.
+             */
+            node: string;
+            /**
+             * The path of the map. For directory mappings the path is required and refers to the POSIX path of the directory as visible from the node.
+             */
+            path: string;
+        }
+
         export interface DirMap {
             /**
              * The node this mapping applies to.
@@ -630,6 +1498,17 @@ export namespace Hardware {
             node: string;
             /**
              * The path of the map. For directory mappings the path is required and refers to the POSIX path of the directory as visible from the node.
+             */
+            path: string;
+        }
+
+        export interface GetDirLegacyMap {
+            /**
+             * The node name attribute of the map.
+             */
+            node: string;
+            /**
+             * The path attribute of the map.
              */
             path: string;
         }
@@ -643,6 +1522,33 @@ export namespace Hardware {
              * The path attribute of the map.
              */
             path: string;
+        }
+
+        export interface GetPciLegacyMap {
+            /**
+             * The comment of the mapped PCI device.
+             */
+            comment: string;
+            /**
+             * The ID attribute of the map.
+             */
+            id: string;
+            /**
+             * The IOMMU group attribute of the map.
+             */
+            iommuGroup: number;
+            /**
+             * The node name attribute of the map.
+             */
+            node: string;
+            /**
+             * The path attribute of the map.
+             */
+            path: string;
+            /**
+             * The subsystem ID attribute of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
+             */
+            subsystemId: string;
         }
 
         export interface GetPciMap {
@@ -667,9 +1573,28 @@ export namespace Hardware {
              */
             path: string;
             /**
-             * The subsystem ID attribute of the map.Not mandatory for the Proxmox VE API call, but causes a PCI hardware mapping to be incomplete when not set.
+             * The subsystem ID attribute of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
              */
             subsystemId: string;
+        }
+
+        export interface GetUsbLegacyMap {
+            /**
+             * The comment of the mapped USB device.
+             */
+            comment: string;
+            /**
+             * The ID attribute of the map.
+             */
+            id: string;
+            /**
+             * The node name attribute of the map.
+             */
+            node: string;
+            /**
+             * The path attribute of the map.
+             */
+            path: string;
         }
 
         export interface GetUsbMap {
@@ -691,7 +1616,7 @@ export namespace Hardware {
             path: string;
         }
 
-        export interface PciMap {
+        export interface PciLegacyMap {
             /**
              * The comment of the mapped PCI device.
              */
@@ -701,7 +1626,7 @@ export namespace Hardware {
              */
             id: string;
             /**
-             * The IOMMU group of the map. Not mandatory for the Proxmox VE API call, but causes a PCI hardware mapping to be incomplete when not set
+             * The IOMMU group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
              */
             iommuGroup?: number;
             /**
@@ -713,9 +1638,55 @@ export namespace Hardware {
              */
             path: string;
             /**
-             * The subsystem ID group of the map. Not mandatory for the Proxmox VE API call, but causes a PCI hardware mapping to be incomplete when not set
+             * The subsystem ID group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
              */
             subsystemId?: string;
+        }
+
+        export interface PciMap {
+            /**
+             * The comment of the mapped PCI device.
+             */
+            comment?: string;
+            /**
+             * The ID of the map.
+             */
+            id: string;
+            /**
+             * The IOMMU group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
+             */
+            iommuGroup?: number;
+            /**
+             * The node name of the map.
+             */
+            node: string;
+            /**
+             * The path of the map.
+             */
+            path: string;
+            /**
+             * The subsystem ID group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
+             */
+            subsystemId?: string;
+        }
+
+        export interface UsbLegacyMap {
+            /**
+             * The comment of the mapped USB device.
+             */
+            comment?: string;
+            /**
+             * The ID of the map.
+             */
+            id: string;
+            /**
+             * The node name of the map.
+             */
+            node: string;
+            /**
+             * The path of the map. For USB hardware mappings, this is optional and indicates that the device is mapped via its device ID rather than ports.
+             */
+            path?: string;
         }
 
         export interface UsbMap {
@@ -732,7 +1703,7 @@ export namespace Hardware {
              */
             node: string;
             /**
-             * The path of the map. For hardware mappings of type USB the path is optional and indicates that the device is mapped through the device ID instead of ports.
+             * The path of the map. For USB hardware mappings, this is optional and indicates that the device is mapped via its device ID rather than ports.
              */
             path?: string;
         }
@@ -740,328 +1711,7 @@ export namespace Hardware {
     }
 }
 
-export namespace Network {
-    export interface FirewallIPSetCidr {
-        /**
-         * Arbitrary string annotation.
-         */
-        comment?: string;
-        /**
-         * Network/IP specification in CIDR format.
-         */
-        name: string;
-        /**
-         * Entries marked as `nomatch` are skipped as if those
-         * were not added to the set.
-         */
-        nomatch?: boolean;
-    }
-
-    export interface FirewallLogRatelimit {
-        /**
-         * Initial burst of packages which will always get
-         * logged before the rate is applied (defaults to `5`).
-         */
-        burst?: number;
-        /**
-         * Enable or disable the log rate limit.
-         */
-        enabled?: boolean;
-        /**
-         * Frequency with which the burst bucket gets refilled
-         * (defaults to `1/second`).
-         */
-        rate?: string;
-    }
-
-    export interface FirewallRulesRule {
-        /**
-         * Rule action (`ACCEPT`, `DROP`, `REJECT`).
-         */
-        action?: string;
-        /**
-         * Rule comment.
-         */
-        comment?: string;
-        /**
-         * Restrict packet destination address. This can
-         * refer to a single IP address, an IP set ('+ipsetname') or an IP
-         * alias definition. You can also specify an address range
-         * like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
-         * networks (entries are separated by comma). Please do not mix IPv4
-         * and IPv6 addresses inside such lists.
-         */
-        dest?: string;
-        /**
-         * Restrict TCP/UDP destination port. You can use
-         * service names or simple numbers (0-65535), as defined
-         * in `/etc/services`. Port ranges can be specified with '\d+:\d+', for
-         * example `80:85`, and you can use comma separated list to match
-         * several ports or ranges.
-         */
-        dport?: string;
-        /**
-         * Enable this rule. Defaults to `true`.
-         */
-        enabled?: boolean;
-        /**
-         * Network interface name. You have to use network
-         * configuration key names for VMs and containers ('net\d+'). Host
-         * related rules can use arbitrary strings.
-         */
-        iface?: string;
-        /**
-         * Log level for this rule (`emerg`, `alert`, `crit`,
-         * `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
-         */
-        log?: string;
-        /**
-         * Macro name. Use predefined standard macro
-         * from <https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions>
-         */
-        macro?: string;
-        /**
-         * Position of the rule in the list.
-         */
-        pos: number;
-        /**
-         * Restrict packet protocol. You can use protocol
-         * names as defined in '/etc/protocols'.
-         */
-        proto?: string;
-        /**
-         * Security group name.
-         */
-        securityGroup?: string;
-        /**
-         * Restrict packet source address. This can refer
-         * to a single IP address, an IP set ('+ipsetname') or an IP alias
-         * definition. You can also specify an address range
-         * like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
-         * networks (entries are separated by comma). Please do not mix IPv4
-         * and IPv6 addresses inside such lists.
-         */
-        source?: string;
-        /**
-         * Restrict TCP/UDP source port. You can use
-         * service names or simple numbers (0-65535), as defined
-         * in `/etc/services`. Port ranges can be specified with '\d+:\d+', for
-         * example `80:85`, and you can use comma separated list to match
-         * several ports or ranges.
-         * - a security group insertion block, which includes the following arguments:
-         */
-        sport?: string;
-        /**
-         * Rule type (`in`, `out`, `forward`).
-         */
-        type?: string;
-    }
-
-    export interface FirewallSecurityGroupRule {
-        /**
-         * Rule action (`ACCEPT`, `DROP`, `REJECT`).
-         */
-        action?: string;
-        /**
-         * Rule comment.
-         */
-        comment?: string;
-        /**
-         * Restrict packet destination address. This can refer to
-         * a single IP address, an IP set ('+ipsetname') or an IP alias
-         * definition. You can also specify an address range like
-         * `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks
-         * (entries are separated by comma). Please do not mix IPv4 and IPv6
-         * addresses inside such lists.
-         */
-        dest?: string;
-        /**
-         * Restrict TCP/UDP destination port. You can use
-         * service names or simple numbers (0-65535), as defined in '/etc/
-         * services'. Port ranges can be specified with '\d+:\d+', for example
-         * `80:85`, and you can use comma separated list to match several ports or
-         * ranges.
-         */
-        dport?: string;
-        /**
-         * Enable this rule. Defaults to `true`.
-         */
-        enabled?: boolean;
-        /**
-         * Network interface name. You have to use network
-         * configuration key names for VMs and containers ('net\d+'). Host related
-         * rules can use arbitrary strings.
-         */
-        iface?: string;
-        /**
-         * Log level for this rule (`emerg`, `alert`, `crit`,
-         * `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
-         */
-        log?: string;
-        /**
-         * Macro name. Use predefined standard macro
-         * from <https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions>
-         */
-        macro?: string;
-        /**
-         * Position of the rule in the list.
-         */
-        pos: number;
-        /**
-         * Restrict packet protocol. You can use protocol names
-         * as defined in '/etc/protocols'.
-         */
-        proto?: string;
-        /**
-         * Security group name
-         */
-        securityGroup?: string;
-        /**
-         * Restrict packet source address. This can refer
-         * to a single IP address, an IP set ('+ipsetname') or an IP alias
-         * definition. You can also specify an address range like
-         * `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks (
-         * entries are separated by comma). Please do not mix IPv4 and IPv6
-         * addresses inside such lists.
-         */
-        source?: string;
-        /**
-         * Restrict TCP/UDP source port. You can use
-         * service names or simple numbers (0-65535), as defined in '/etc/
-         * services'. Port ranges can be specified with '\d+:\d+', for example
-         * `80:85`, and you can use comma separated list to match several ports or
-         * ranges.
-         */
-        sport?: string;
-        /**
-         * Rule type (`in`, `out`, `forward`).
-         */
-        type?: string;
-    }
-
-    export interface GetHostsEntry {
-        /**
-         * The address
-         */
-        address: string;
-        /**
-         * The hostnames associated with each of the IP addresses.
-         */
-        hostnames: string[];
-    }
-
-}
-
-export namespace Permission {
-    export interface GetGroupAcl {
-        /**
-         * The path.
-         */
-        path: string;
-        /**
-         * Whether to propagate to child paths.
-         */
-        propagate: boolean;
-        /**
-         * The role identifier.
-         */
-        roleId: string;
-    }
-
-    export interface GetPoolMember {
-        /**
-         * The datastore identifier.
-         */
-        datastoreId: string;
-        /**
-         * The member identifier.
-         */
-        id: string;
-        /**
-         * The node name.
-         */
-        nodeName: string;
-        /**
-         * The member type.
-         */
-        type: string;
-        /**
-         * The virtual machine identifier.
-         */
-        vmId: number;
-    }
-
-    export interface GetUserAcl {
-        /**
-         * The path.
-         */
-        path: string;
-        /**
-         * Whether to propagate to child paths.
-         */
-        propagate: boolean;
-        /**
-         * The role identifier.
-         */
-        roleId: string;
-    }
-
-    export interface GroupAcl {
-        /**
-         * The path.
-         */
-        path: string;
-        /**
-         * Whether to propagate to child paths.
-         */
-        propagate?: boolean;
-        /**
-         * The role identifier.
-         */
-        roleId: string;
-    }
-
-    export interface PoolMember {
-        /**
-         * The datastore identifier.
-         */
-        datastoreId: string;
-        /**
-         * The member identifier.
-         */
-        id: string;
-        /**
-         * The node name.
-         */
-        nodeName: string;
-        /**
-         * The member type.
-         */
-        type: string;
-        /**
-         * The virtual machine identifier.
-         */
-        vmId: number;
-    }
-
-    export interface UserAcl {
-        /**
-         * The path.
-         */
-        path: string;
-        /**
-         * Whether to propagate to child paths.
-         */
-        propagate?: boolean;
-        /**
-         * The role identifier.
-         */
-        roleId: string;
-    }
-
-}
-
-export namespace Sdn {
+export namespace sdn {
     export interface GetSubnetDhcpRange {
         /**
          * End of the DHCP range.
@@ -1073,6 +1723,26 @@ export namespace Sdn {
         startAddress: string;
     }
 
+    export interface GetSubnetLegacyDhcpRange {
+        /**
+         * End of the DHCP range.
+         */
+        endAddress: string;
+        /**
+         * Start of the DHCP range.
+         */
+        startAddress: string;
+    }
+
+    export interface GetVnetsLegacyVnet {
+        alias: string;
+        id: string;
+        isolatePorts: boolean;
+        tag: number;
+        vlanAware: boolean;
+        zone: string;
+    }
+
     export interface GetVnetsVnet {
         alias: string;
         id: string;
@@ -1080,6 +1750,32 @@ export namespace Sdn {
         tag: number;
         vlanAware: boolean;
         zone: string;
+    }
+
+    export interface GetZonesLegacyZone {
+        advertiseSubnets: boolean;
+        bridge: string;
+        controller: string;
+        dhcp: string;
+        disableArpNdSuppression: boolean;
+        dns: string;
+        dnsZone: string;
+        exitNodes: string[];
+        exitNodesLocalRouting: boolean;
+        id: string;
+        ipam: string;
+        mtu: number;
+        nodes: string[];
+        peers: string[];
+        pending: boolean;
+        primaryExitNode: string;
+        reverseDns: string;
+        rtImport: string;
+        serviceVlan: number;
+        serviceVlanProtocol: string;
+        state: string;
+        type: string;
+        vrfVxlan: number;
     }
 
     export interface GetZonesZone {
@@ -1119,10 +1815,56 @@ export namespace Sdn {
         startAddress: string;
     }
 
+    export interface SubnetLegacyDhcpRange {
+        /**
+         * End of the DHCP range.
+         */
+        endAddress: string;
+        /**
+         * Start of the DHCP range.
+         */
+        startAddress: string;
+    }
+
 }
 
-export namespace Storage {
-    export interface CIFSBackups {
+export namespace storage {
+    export interface CifsBackups {
+        /**
+         * Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+         */
+        keepAll: boolean;
+        /**
+         * The number of daily backups to keep. Older backups will be removed.
+         */
+        keepDaily?: number;
+        /**
+         * The number of hourly backups to keep. Older backups will be removed.
+         */
+        keepHourly?: number;
+        /**
+         * Specifies the number of the most recent backups to keep, regardless of their age.
+         */
+        keepLast?: number;
+        /**
+         * The number of monthly backups to keep. Older backups will be removed.
+         */
+        keepMonthly?: number;
+        /**
+         * The number of weekly backups to keep. Older backups will be removed.
+         */
+        keepWeekly?: number;
+        /**
+         * The number of yearly backups to keep. Older backups will be removed.
+         */
+        keepYearly?: number;
+        /**
+         * The maximum number of protected backups per guest. Use '-1' for unlimited.
+         */
+        maxProtectedBackups?: number;
+    }
+
+    export interface CifsLegacyBackups {
         /**
          * Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
          */
@@ -1192,115 +1934,7 @@ export namespace Storage {
         maxProtectedBackups?: number;
     }
 
-    export interface FileSourceFile {
-        /**
-         * Whether the source file has changed since the last run
-         */
-        changed?: boolean;
-        /**
-         * The SHA256 checksum of the source file.
-         */
-        checksum?: string;
-        /**
-         * The file name to use instead of the source file
-         * name. Useful when the source file does not have a valid file extension,
-         * for example when the source file is a URL referencing a `.qcow2` image.
-         */
-        fileName?: string;
-        /**
-         * Whether to skip the TLS verification step for
-         * HTTPS sources (defaults to `false`).
-         */
-        insecure?: boolean;
-        /**
-         * The minimum required TLS version for HTTPS
-         * sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
-         */
-        minTls?: string;
-        /**
-         * A path to a local file or a URL.
-         */
-        path: string;
-    }
-
-    export interface FileSourceRaw {
-        /**
-         * The raw data.
-         */
-        data: string;
-        /**
-         * The file name.
-         */
-        fileName: string;
-        /**
-         * The number of bytes to resize the file to.
-         */
-        resize?: number;
-    }
-
-    export interface GetDatastoresDatastore {
-        /**
-         * Whether the store is active.
-         */
-        active?: boolean;
-        /**
-         * Allowed store content types.
-         */
-        contentTypes: string[];
-        /**
-         * Whether the store is enabled.
-         */
-        enabled?: boolean;
-        /**
-         * The ID of the store.
-         */
-        id: string;
-        /**
-         * The name of the node the store is on.
-         */
-        nodeName: string;
-        /**
-         * Shared flag from store configuration.
-         */
-        shared?: boolean;
-        /**
-         * Available store space in bytes.
-         */
-        spaceAvailable?: number;
-        /**
-         * Total store space in bytes.
-         */
-        spaceTotal?: number;
-        /**
-         * Used store space in bytes.
-         */
-        spaceUsed?: number;
-        /**
-         * Used fraction (used/total).
-         */
-        spaceUsedFraction?: number;
-        /**
-         * Store type.
-         */
-        type: string;
-    }
-
-    export interface GetDatastoresFilters {
-        /**
-         * Only list stores with the given content types.
-         */
-        contentTypes?: string[];
-        /**
-         * Only list stores with the given ID.
-         */
-        id?: string;
-        /**
-         * If `target` is different to `nodeName`, then only lists shared stores which content is accessible on this node and the specified `target` node.
-         */
-        target?: string;
-    }
-
-    export interface NFSBackups {
+    export interface DirectoryLegacyBackups {
         /**
          * Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
          */
@@ -1335,7 +1969,7 @@ export namespace Storage {
         maxProtectedBackups?: number;
     }
 
-    export interface PBSBackups {
+    export interface NfsBackups {
         /**
          * Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
          */
@@ -1370,1271 +2004,109 @@ export namespace Storage {
         maxProtectedBackups?: number;
     }
 
-}
-
-export namespace VM {
-    export interface ClonedVirtualMachineCdrom {
+    export interface NfsLegacyBackups {
         /**
-         * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+         * Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
          */
-        fileId?: string;
+        keepAll: boolean;
+        /**
+         * The number of daily backups to keep. Older backups will be removed.
+         */
+        keepDaily?: number;
+        /**
+         * The number of hourly backups to keep. Older backups will be removed.
+         */
+        keepHourly?: number;
+        /**
+         * Specifies the number of the most recent backups to keep, regardless of their age.
+         */
+        keepLast?: number;
+        /**
+         * The number of monthly backups to keep. Older backups will be removed.
+         */
+        keepMonthly?: number;
+        /**
+         * The number of weekly backups to keep. Older backups will be removed.
+         */
+        keepWeekly?: number;
+        /**
+         * The number of yearly backups to keep. Older backups will be removed.
+         */
+        keepYearly?: number;
+        /**
+         * The maximum number of protected backups per guest. Use '-1' for unlimited.
+         */
+        maxProtectedBackups?: number;
     }
 
-    export interface ClonedVirtualMachineClone {
+    export interface PbsBackups {
         /**
-         * Clone bandwidth limit in MB/s.
+         * Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
          */
-        bandwidthLimit?: number;
+        keepAll: boolean;
         /**
-         * Perform a full clone (true) or linked clone (false).
+         * The number of daily backups to keep. Older backups will be removed.
          */
-        full: boolean;
+        keepDaily?: number;
         /**
-         * Pool to assign the cloned VM to.
+         * The number of hourly backups to keep. Older backups will be removed.
          */
-        poolId?: string;
+        keepHourly?: number;
         /**
-         * Number of retries for clone operations.
+         * Specifies the number of the most recent backups to keep, regardless of their age.
          */
-        retries: number;
+        keepLast?: number;
         /**
-         * Snapshot name to clone from.
+         * The number of monthly backups to keep. Older backups will be removed.
          */
-        snapshotName?: string;
+        keepMonthly?: number;
         /**
-         * Source node of the VM/template. Defaults to target node if unset.
+         * The number of weekly backups to keep. Older backups will be removed.
          */
-        sourceNodeName?: string;
+        keepWeekly?: number;
         /**
-         * Source VM/template ID to clone from.
+         * The number of yearly backups to keep. Older backups will be removed.
          */
-        sourceVmId: number;
+        keepYearly?: number;
         /**
-         * Target datastore for cloned disks.
+         * The maximum number of protected backups per guest. Use '-1' for unlimited.
          */
-        targetDatastore?: string;
-        /**
-         * Target disk format for clone (e.g., raw, qcow2).
-         */
-        targetFormat?: string;
+        maxProtectedBackups?: number;
     }
 
-    export interface ClonedVirtualMachineCpu {
+    export interface PbsLegacyBackups {
         /**
-         * The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+         * Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
          */
-        affinity?: string;
+        keepAll: boolean;
         /**
-         * The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
+         * The number of daily backups to keep. Older backups will be removed.
          */
-        architecture?: string;
+        keepDaily?: number;
         /**
-         * The number of CPU cores per socket (defaults to `1`).
+         * The number of hourly backups to keep. Older backups will be removed.
          */
-        cores?: number;
+        keepHourly?: number;
         /**
-         * Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+         * Specifies the number of the most recent backups to keep, regardless of their age.
          */
-        flags?: string[];
+        keepLast?: number;
         /**
-         * The number of hotplugged vCPUs (defaults to `0`).
+         * The number of monthly backups to keep. Older backups will be removed.
          */
-        hotplugged?: number;
+        keepMonthly?: number;
         /**
-         * Limit of CPU usage (defaults to `0` which means no limit).
+         * The number of weekly backups to keep. Older backups will be removed.
          */
-        limit?: number;
+        keepWeekly?: number;
         /**
-         * Enable NUMA (defaults to `false`).
+         * The number of yearly backups to keep. Older backups will be removed.
          */
-        numa?: boolean;
+        keepYearly?: number;
         /**
-         * The number of CPU sockets (defaults to `1`).
+         * The maximum number of protected backups per guest. Use '-1' for unlimited.
          */
-        sockets?: number;
-        /**
-         * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
-         */
-        type?: string;
-        /**
-         * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
-         */
-        units?: number;
-    }
-
-    export interface ClonedVirtualMachineDelete {
-        /**
-         * Disk slots to delete (e.g., scsi2).
-         */
-        disks?: string[];
-        /**
-         * Network slots to delete (e.g., net1).
-         */
-        networks?: string[];
-    }
-
-    export interface ClonedVirtualMachineDisk {
-        /**
-         * AIO mode (io_uring, native, threads).
-         */
-        aio?: string;
-        /**
-         * Include disk in backups.
-         */
-        backup?: boolean;
-        /**
-         * Cache mode.
-         */
-        cache?: string;
-        /**
-         * Target datastore for new disks when file is not provided.
-         */
-        datastoreId?: string;
-        /**
-         * Discard/trim behavior.
-         */
-        discard?: string;
-        /**
-         * Existing volume reference (e.g., local-lvm:vm-100-disk-0).
-         */
-        file?: string;
-        /**
-         * Disk format (raw, qcow2, vmdk).
-         */
-        format?: string;
-        /**
-         * Import source volume/file id.
-         */
-        importFrom?: string;
-        /**
-         * Use IO thread.
-         */
-        iothread?: boolean;
-        /**
-         * Disk media (e.g., disk, cdrom).
-         */
-        media?: string;
-        /**
-         * Consider disk for replication.
-         */
-        replicate?: boolean;
-        /**
-         * Disk serial number.
-         */
-        serial?: string;
-        /**
-         * Disk size (GiB) when creating new disks. **Note:** Disk shrinking is not supported. Attempting to set `sizeGb` to a value smaller than the current disk size will result in an error. Only disk expansion is allowed.
-         */
-        sizeGb?: number;
-        /**
-         * Mark disk as SSD.
-         */
-        ssd?: boolean;
-    }
-
-    export interface ClonedVirtualMachineMemory {
-        /**
-         * Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely (defaults to `0`).
-         */
-        balloon?: number;
-        /**
-         * Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses. 
-         *
-         * **Options:**
-         * - `2` - Use 2 MiB hugepages
-         * - `1024` - Use 1 GiB hugepages
-         * - `any` - Use any available hugepage size
-         */
-        hugepages?: string;
-        /**
-         * Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup (defaults to `false`).
-         */
-        keepHugepages?: boolean;
-        /**
-         * CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs (defaults to `1000`).
-         */
-        shares?: number;
-        /**
-         * Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM (defaults to `512` MiB).
-         */
-        size?: number;
-    }
-
-    export interface ClonedVirtualMachineNetwork {
-        /**
-         * Bridge name.
-         */
-        bridge?: string;
-        /**
-         * Enable firewall on this interface.
-         */
-        firewall?: boolean;
-        /**
-         * Keep link down.
-         */
-        linkDown?: boolean;
-        /**
-         * MAC address (computed if omitted).
-         */
-        macAddress?: string;
-        /**
-         * NIC model (e.g., virtio, e1000).
-         */
-        model?: string;
-        /**
-         * Interface MTU.
-         */
-        mtu?: number;
-        /**
-         * Number of multiqueue NIC queues.
-         */
-        queues?: number;
-        /**
-         * Rate limit (MB/s).
-         */
-        rateLimit?: number;
-        /**
-         * VLAN tag.
-         */
-        tag?: number;
-        /**
-         * Trunk VLAN IDs.
-         */
-        trunks?: number[];
-    }
-
-    export interface ClonedVirtualMachineRng {
-        /**
-         * Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
-         */
-        maxBytes?: number;
-        /**
-         * Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
-         */
-        period?: number;
-        /**
-         * The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
-         */
-        source?: string;
-    }
-
-    export interface ClonedVirtualMachineTimeouts {
-        /**
-         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-         */
-        create?: string;
-        /**
-         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-         */
-        delete?: string;
-        /**
-         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-         */
-        read?: string;
-        /**
-         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-         */
-        update?: string;
-    }
-
-    export interface ClonedVirtualMachineVga {
-        /**
-         * Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
-         */
-        clipboard?: string;
-        /**
-         * The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
-         */
-        memory?: number;
-        /**
-         * The VGA type (defaults to `std`).
-         */
-        type?: string;
-    }
-
-    export interface GetVirtualMachinesFilter {
-        /**
-         * Name of the VM attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
-         */
-        name: string;
-        /**
-         * Treat values as regex patterns
-         */
-        regex?: boolean;
-        /**
-         * List of values to pass the filter. VM's attribute should match at least one value in the list.
-         */
-        values: string[];
-    }
-
-    export interface GetVirtualMachinesVm {
-        /**
-         * The virtual machine name.
-         */
-        name: string;
-        /**
-         * The node name. All cluster nodes will be queried in case this is omitted
-         */
-        nodeName: string;
-        /**
-         * The status of the VM.
-         */
-        status?: string;
-        /**
-         * A list of tags to filter the VMs. The VM must have all
-         * the tags to be included in the result.
-         */
-        tags: string[];
-        /**
-         * Whether the VM is a template.
-         */
-        template?: boolean;
-        /**
-         * The VM identifier.
-         */
-        vmId: number;
-    }
-
-    export interface VirtualMachine2Cdrom {
-        /**
-         * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
-         */
-        fileId: string;
-    }
-
-    export interface VirtualMachine2Cpu {
-        /**
-         * The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
-         */
-        affinity: string;
-        /**
-         * The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
-         */
-        architecture: string;
-        /**
-         * The number of CPU cores per socket (defaults to `1`).
-         */
-        cores: number;
-        /**
-         * Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
-         */
-        flags: string[];
-        /**
-         * The number of hotplugged vCPUs (defaults to `0`).
-         */
-        hotplugged: number;
-        /**
-         * Limit of CPU usage (defaults to `0` which means no limit).
-         */
-        limit: number;
-        /**
-         * Enable NUMA (defaults to `false`).
-         */
-        numa: boolean;
-        /**
-         * The number of CPU sockets (defaults to `1`).
-         */
-        sockets: number;
-        /**
-         * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
-         */
-        type: string;
-        /**
-         * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
-         */
-        units: number;
-    }
-
-    export interface VirtualMachine2Rng {
-        /**
-         * Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
-         */
-        maxBytes: number;
-        /**
-         * Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
-         */
-        period: number;
-        /**
-         * The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
-         */
-        source: string;
-    }
-
-    export interface VirtualMachine2Timeouts {
-        /**
-         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-         */
-        create?: string;
-        /**
-         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-         */
-        delete?: string;
-        /**
-         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-         */
-        read?: string;
-        /**
-         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-         */
-        update?: string;
-    }
-
-    export interface VirtualMachine2Vga {
-        /**
-         * Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
-         */
-        clipboard: string;
-        /**
-         * The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
-         */
-        memory: number;
-        /**
-         * The VGA type (defaults to `std`).
-         */
-        type: string;
-    }
-
-    export interface VirtualMachineAgent {
-        /**
-         * Whether to enable the QEMU agent (defaults
-         * to `false`).
-         */
-        enabled?: boolean;
-        /**
-         * The maximum amount of time to wait for data from
-         * the QEMU agent to become available ( defaults to `15m`).
-         */
-        timeout?: string;
-        /**
-         * Whether to enable the FSTRIM feature in the QEMU agent
-         * (defaults to `false`).
-         */
-        trim?: boolean;
-        /**
-         * The QEMU agent interface type (defaults to `virtio`).
-         */
-        type?: string;
-        /**
-         * Configuration for waiting for specific IP address types when the VM starts.
-         */
-        waitForIp?: outputs.VM.VirtualMachineAgentWaitForIp;
-    }
-
-    export interface VirtualMachineAgentWaitForIp {
-        /**
-         * Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
-         */
-        ipv4?: boolean;
-        /**
-         * Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
-         *
-         * When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
-         */
-        ipv6?: boolean;
-    }
-
-    export interface VirtualMachineAmdSev {
-        /**
-         * Sets policy bit to allow Simultaneous Multi Threading (SMT)
-         * (Ignored unless for SEV-SNP) (defaults to `true`).
-         */
-        allowSmt?: boolean;
-        /**
-         * Add kernel hashes to guest firmware for measured linux kernel launch (defaults to `false`).
-         */
-        kernelHashes?: boolean;
-        /**
-         * Sets policy bit to disallow debugging of guest (defaults
-         * to `false`).
-         */
-        noDebug?: boolean;
-        /**
-         * Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to `false`).
-         *
-         * The `amdSev` setting is only allowed for a `root@pam` authenticated user.
-         */
-        noKeySharing?: boolean;
-        /**
-         * Enable standard SEV with `std` or enable experimental SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option (defaults to `std`).
-         */
-        type?: string;
-    }
-
-    export interface VirtualMachineAudioDevice {
-        /**
-         * The device (defaults to `intel-hda`).
-         * - `AC97` - Intel 82801AA AC97 Audio.
-         * - `ich9-intel-hda` - Intel HD Audio Controller (ich9).
-         * - `intel-hda` - Intel HD Audio.
-         */
-        device?: string;
-        /**
-         * The driver (defaults to `spice`).
-         */
-        driver?: string;
-        /**
-         * Whether to enable the audio device (defaults
-         * to `true`).
-         */
-        enabled?: boolean;
-    }
-
-    export interface VirtualMachineCdrom {
-        /**
-         * Whether to enable the CD-ROM drive (defaults
-         * to `false`). *Deprecated*. The attribute will be removed in the next version of the provider.
-         * Set `fileId` to `none` to leave the CD-ROM drive empty.
-         *
-         * @deprecated Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `fileId` to `none` to leave the CDROM drive empty.
-         */
-        enabled?: boolean;
-        /**
-         * A file ID for an ISO file (defaults to `cdrom` as
-         * in the physical drive). Use `none` to leave the CD-ROM drive empty.
-         */
-        fileId?: string;
-        /**
-         * A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
-         * "Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. " +
-         * "Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
-         */
-        interface?: string;
-    }
-
-    export interface VirtualMachineClone {
-        /**
-         * The identifier for the target datastore.
-         */
-        datastoreId?: string;
-        /**
-         * Full or linked clone (defaults to `true`).
-         */
-        full?: boolean;
-        /**
-         * The name of the source node (leave blank, if
-         * equal to the `nodeName` argument).
-         */
-        nodeName?: string;
-        /**
-         * Number of retries in Proxmox for clone vm.
-         * Sometimes Proxmox errors with timeout when creating multiple clones at
-         * once.
-         */
-        retries?: number;
-        /**
-         * The identifier for the source VM.
-         */
-        vmId: number;
-    }
-
-    export interface VirtualMachineCpu {
-        /**
-         * The CPU cores that are used to run the VM’s vCPU. The
-         * value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
-         * For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four
-         * CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
-         */
-        affinity?: string;
-        /**
-         * The CPU architecture (defaults to `x8664`).
-         */
-        architecture?: string;
-        /**
-         * The number of CPU cores (defaults to `1`).
-         */
-        cores?: number;
-        /**
-         * The CPU flags.
-         * - `+aes`/`-aes` - Activate AES instruction set for HW acceleration.
-         * - `+amd-no-ssb`/`-amd-no-ssb` - Notifies guest OS that host is not
-         * vulnerable for Spectre on AMD CPUs.
-         * - `+amd-ssbd`/`-amd-ssbd` - Improves Spectre mitigation performance with
-         * AMD CPUs, best used with "virt-ssbd".
-         * - `+hv-evmcs`/`-hv-evmcs` - Improve performance for nested
-         * virtualization (only supported on Intel CPUs).
-         * - `+hv-tlbflush`/`-hv-tlbflush` - Improve performance in overcommitted
-         * Windows guests (may lead to guest BSOD on old CPUs).
-         * - `+ibpb`/`-ibpb` - Allows improved Spectre mitigation on AMD CPUs.
-         * - `+md-clear`/`-md-clear` - Required to let the guest OS know if MDS is
-         * mitigated correctly.
-         * - `+pcid`/`-pcid` - Meltdown fix cost reduction on Westmere, Sandy- and
-         * Ivy Bridge Intel CPUs.
-         * - `+pdpe1gb`/`-pdpe1gb` - Allows guest OS to use 1 GB size pages, if
-         * host HW supports it.
-         * - `+spec-ctrl`/`-spec-ctrl` - Allows improved Spectre mitigation with
-         * Intel CPUs.
-         * - `+ssbd`/`-ssbd` - Protection for "Speculative Store Bypass" for Intel
-         * models.
-         * - `+virt-ssbd`/`-virt-ssbd` - Basis for "Speculative Store Bypass"
-         * protection for AMD models.
-         */
-        flags?: string[];
-        /**
-         * The number of hotplugged vCPUs (defaults
-         * to `0`).
-         */
-        hotplugged?: number;
-        /**
-         * Limit of CPU usage, `0...128`. (defaults to `0` -- no limit).
-         */
-        limit?: number;
-        /**
-         * Enable/disable NUMA. (default to `false`)
-         */
-        numa?: boolean;
-        /**
-         * The number of CPU sockets (defaults to `1`).
-         */
-        sockets?: number;
-        /**
-         * The emulated CPU type, it's recommended to
-         * use `x86-64-v2-AES` (defaults to `qemu64`).
-         */
-        type?: string;
-        /**
-         * The CPU units. PVE default is `1024` for cgroups v1 and `100` for cgroups v2.
-         */
-        units: number;
-    }
-
-    export interface VirtualMachineDisk {
-        /**
-         * The disk AIO mode (defaults to `ioUring`).
-         */
-        aio?: string;
-        /**
-         * Whether the drive should be included when making backups (defaults to `true`).
-         */
-        backup?: boolean;
-        /**
-         * The cache type (defaults to `none`).
-         */
-        cache?: string;
-        /**
-         * The identifier for the datastore to create
-         * the disk in (defaults to `local-lvm`).
-         */
-        datastoreId?: string;
-        /**
-         * Whether to pass discard/trim requests to the
-         * underlying storage. Supported values are `on`/`ignore` (defaults
-         * to `ignore`).
-         */
-        discard?: string;
-        /**
-         * The file format.
-         */
-        fileFormat: string;
-        /**
-         * The file ID for a disk image when importing a disk into VM. The ID format is
-         * `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
-         * `proxmoxve.Download.File` resource. Prefer `importFrom` for uncompressed images.
-         * Use `fileId` when working with compressed cloud images (e.g., `.qcow2.xz`) that were downloaded
-         * with `contentType = "iso"` and `decompressionAlgorithm` set. See the
-         * Create a VM from a Cloud Image guide for examples.
-         */
-        fileId?: string;
-        /**
-         * The file ID for a disk image to import into VM. The image must be of `import` content type
-         * (uncompressed images only). The ID format is `<datastore_id>:import/<file_name>`, for example `local:import/centos8.qcow2`.
-         * Can be also taken from `proxmoxve.Download.File` resource. Note: compressed images downloaded with
-         * `decompressionAlgorithm` cannot use `importFrom`; use `fileId` instead.
-         */
-        importFrom?: string;
-        /**
-         * The disk interface for Proxmox, currently `scsi`,
-         * `sata` and `virtio` interfaces are supported. Append the disk index at
-         * the end, for example, `virtio0` for the first virtio disk, `virtio1` for
-         * the second, etc.
-         */
-        interface: string;
-        /**
-         * Whether to use iothreads for this disk (defaults
-         * to `false`).
-         */
-        iothread?: boolean;
-        /**
-         * The in-datastore path to the disk image.
-         * ***Experimental.***Use to attach another VM's disks,
-         * or (as root only) host's filesystem paths (`datastoreId` empty string).
-         * See "*Example: Attached disks*".
-         */
-        pathInDatastore: string;
-        /**
-         * Whether the drive should be considered for replication jobs (defaults to `true`).
-         */
-        replicate?: boolean;
-        /**
-         * The serial number of the disk, up to 20 bytes long.
-         */
-        serial?: string;
-        /**
-         * The disk size in gigabytes (defaults to `8`).
-         */
-        size?: number;
-        /**
-         * The speed limits.
-         */
-        speed?: outputs.VM.VirtualMachineDiskSpeed;
-        /**
-         * Whether to use an SSD emulation option for this disk (
-         * defaults to `false`). Note that SSD emulation is not supported on VirtIO
-         * Block drives.
-         */
-        ssd?: boolean;
-    }
-
-    export interface VirtualMachineDiskSpeed {
-        /**
-         * The maximum read I/O in operations per second.
-         */
-        iopsRead?: number;
-        /**
-         * The maximum unthrottled read I/O pool in operations per second.
-         */
-        iopsReadBurstable?: number;
-        /**
-         * The maximum write I/O in operations per second.
-         */
-        iopsWrite?: number;
-        /**
-         * The maximum unthrottled write I/O pool in operations per second.
-         */
-        iopsWriteBurstable?: number;
-        /**
-         * The maximum read speed in megabytes per second.
-         */
-        read?: number;
-        /**
-         * The maximum burstable read speed in
-         * megabytes per second.
-         */
-        readBurstable?: number;
-        /**
-         * The maximum write speed in megabytes per second.
-         */
-        write?: number;
-        /**
-         * The maximum burstable write speed in
-         * megabytes per second.
-         */
-        writeBurstable?: number;
-    }
-
-    export interface VirtualMachineEfiDisk {
-        /**
-         * The identifier for the datastore to create
-         * the disk in (defaults to `local-lvm`).
-         */
-        datastoreId?: string;
-        /**
-         * The file format (defaults to `raw`).
-         */
-        fileFormat: string;
-        /**
-         * Use am EFI vars template with
-         * distribution-specific and Microsoft Standard keys enrolled, if used with
-         * EFI type=`4m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
-         * to `false`).
-         */
-        preEnrolledKeys?: boolean;
-        /**
-         * Size and type of the OVMF EFI disk. `4m` is newer and
-         * recommended, and required for Secure Boot. For backwards compatibility
-         * use `2m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
-         * to `2m`).
-         */
-        type?: string;
-    }
-
-    export interface VirtualMachineHostpci {
-        /**
-         * The PCI device name for Proxmox, in form
-         * of `hostpciX` where `X` is a sequential number from 0 to 15.
-         */
-        device: string;
-        /**
-         * The PCI device ID. This parameter is not compatible
-         * with `apiToken` and requires the root `username` and `password`
-         * configured in the proxmox provider. Use either this or `mapping`.
-         */
-        id?: string;
-        /**
-         * The resource mapping name of the device, for
-         * example gpu. Use either this or `id`.
-         */
-        mapping?: string;
-        /**
-         * The mediated device ID to use.
-         */
-        mdev?: string;
-        /**
-         * Tells Proxmox to use a PCIe or PCI port. Some
-         * guests/device combination require PCIe rather than PCI. PCIe is only
-         * available for q35 machine types.
-         */
-        pcie?: boolean;
-        /**
-         * A path to a ROM file for the device to use. This
-         * is a relative path under `/usr/share/kvm/`.
-         */
-        romFile?: string;
-        /**
-         * Makes the firmware ROM visible for the VM (defaults
-         * to `true`).
-         */
-        rombar?: boolean;
-        /**
-         * Marks the PCI(e) device as the primary GPU of the VM.
-         * With this enabled the `vga` configuration argument will be ignored.
-         */
-        xvga?: boolean;
-    }
-
-    export interface VirtualMachineInitialization {
-        /**
-         * The identifier for the datastore to create the
-         * cloud-init disk in (defaults to `local-lvm`).
-         */
-        datastoreId?: string;
-        /**
-         * The DNS configuration.
-         */
-        dns?: outputs.VM.VirtualMachineInitializationDns;
-        /**
-         * The file format.
-         */
-        fileFormat: string;
-        /**
-         * The hardware interface to connect the cloud-init
-         * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
-         * detected if the setting is missing but a cloud-init image is present,
-         * otherwise defaults to `ide2`.
-         */
-        interface?: string;
-        /**
-         * The IP configuration (one block per network
-         * device).
-         */
-        ipConfigs?: outputs.VM.VirtualMachineInitializationIpConfig[];
-        /**
-         * The identifier for a file containing
-         * all meta data passed to the VM via cloud-init.
-         */
-        metaDataFileId: string;
-        /**
-         * The identifier for a file containing
-         * network configuration data passed to the VM via cloud-init (conflicts
-         * with `ipConfig`).
-         */
-        networkDataFileId: string;
-        /**
-         * The cloud-init configuration format
-         */
-        type: string;
-        /**
-         * The user account configuration (conflicts
-         * with `userDataFileId`).
-         */
-        userAccount?: outputs.VM.VirtualMachineInitializationUserAccount;
-        /**
-         * The identifier for a file containing
-         * custom user data (conflicts with `userAccount`).
-         */
-        userDataFileId: string;
-        /**
-         * The identifier for a file containing
-         * all vendor data passed to the VM via cloud-init.
-         */
-        vendorDataFileId: string;
-    }
-
-    export interface VirtualMachineInitializationDns {
-        /**
-         * The DNS search domain.
-         */
-        domain?: string;
-        /**
-         * The list of DNS servers.
-         */
-        servers?: string[];
-    }
-
-    export interface VirtualMachineInitializationIpConfig {
-        /**
-         * The IPv4 configuration.
-         */
-        ipv4?: outputs.VM.VirtualMachineInitializationIpConfigIpv4;
-        /**
-         * The IPv6 configuration.
-         */
-        ipv6?: outputs.VM.VirtualMachineInitializationIpConfigIpv6;
-    }
-
-    export interface VirtualMachineInitializationIpConfigIpv4 {
-        /**
-         * The IPv4 address in CIDR notation
-         * (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
-         * autodiscovery.
-         */
-        address?: string;
-        /**
-         * The IPv4 gateway (must be omitted
-         * when `dhcp` is used as the address).
-         */
-        gateway?: string;
-    }
-
-    export interface VirtualMachineInitializationIpConfigIpv6 {
-        /**
-         * The IPv6 address in CIDR notation
-         * (e.g. fd1c::7334/64). Alternatively, set this
-         * to `dhcp` for DHCPv6, or `auto` for SLAAC.
-         */
-        address?: string;
-        /**
-         * The IPv6 gateway (must be omitted
-         * when `dhcp` or `auto` are used as the address).
-         */
-        gateway?: string;
-    }
-
-    export interface VirtualMachineInitializationUserAccount {
-        /**
-         * The SSH keys.
-         */
-        keys?: string[];
-        /**
-         * The SSH password.
-         */
-        password?: string;
-        /**
-         * The SSH username.
-         */
-        username?: string;
-    }
-
-    export interface VirtualMachineMemory {
-        /**
-         * The dedicated memory in megabytes (defaults to `512`).
-         */
-        dedicated?: number;
-        /**
-         * The floating memory in megabytes. The default is `0`, which disables "ballooning device" for the VM.
-         * Please note that Proxmox has ballooning enabled by default. To enable it, set `floating` to the same value as `dedicated`.
-         * See [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_memory) section 10.2.6 for more information.
-         */
-        floating?: number;
-        /**
-         * Enable/disable hugepages memory (defaults to disable).
-         */
-        hugepages?: string;
-        /**
-         * Keep hugepages memory after the VM is stopped (defaults to `false`).
-         *
-         * Settings `hugepages` and `keepHugepages` are only allowed for `root@pam` authenticated user.
-         * And required `cpu.numa` to be enabled.
-         */
-        keepHugepages?: boolean;
-        /**
-         * The shared memory in megabytes (defaults to `0`).
-         */
-        shared?: number;
-    }
-
-    export interface VirtualMachineNetworkDevice {
-        /**
-         * The name of the network bridge (defaults to `vmbr0`).
-         */
-        bridge?: string;
-        /**
-         * Whether to disconnect the network device from the network (defaults to `false`).
-         */
-        disconnected?: boolean;
-        /**
-         * Whether to enable the network device (defaults to `true`).
-         */
-        enabled?: boolean;
-        /**
-         * Whether this interface's firewall rules should be used (defaults to `false`).
-         */
-        firewall?: boolean;
-        /**
-         * The MAC address.
-         */
-        macAddress: string;
-        /**
-         * The network device model (defaults to `virtio`).
-         */
-        model?: string;
-        /**
-         * Force MTU, for VirtIO only. Set to 1 to use the bridge MTU. Cannot be larger than the bridge MTU.
-         */
-        mtu?: number;
-        /**
-         * The number of queues for VirtIO (1..64).
-         */
-        queues?: number;
-        /**
-         * The rate limit in megabytes per second.
-         */
-        rateLimit?: number;
-        /**
-         * String containing a `;` separated list of VLAN trunks
-         * ("10;20;30"). Note that the VLAN-aware feature need to be enabled on the PVE
-         * Linux Bridge to use trunks.
-         */
-        trunks?: string;
-        /**
-         * The VLAN identifier.
-         */
-        vlanId?: number;
-    }
-
-    export interface VirtualMachineNuma {
-        /**
-         * The CPU cores to assign to the NUMA node (format is `0-7;16-31`).
-         */
-        cpus: string;
-        /**
-         * The NUMA device name for Proxmox, in form
-         * of `numaX` where `X` is a sequential number from 0 to 7.
-         */
-        device: string;
-        /**
-         * The NUMA host nodes.
-         */
-        hostnodes?: string;
-        /**
-         * The memory in megabytes to assign to the NUMA node.
-         */
-        memory: number;
-        /**
-         * The NUMA policy (defaults to `preferred`).
-         */
-        policy?: string;
-    }
-
-    export interface VirtualMachineOperatingSystem {
-        /**
-         * The type (defaults to `other`).
-         */
-        type?: string;
-    }
-
-    export interface VirtualMachineRng {
-        /**
-         * Maximum bytes of entropy allowed to get injected into the guest every `period` milliseconds (defaults to `1024`). Prefer a lower value when using `/dev/random` as source.
-         */
-        maxBytes: number;
-        /**
-         * Every `period` milliseconds the entropy-injection quota is reset, allowing the guest to retrieve another `maxBytes` of entropy (defaults to `1000`).
-         */
-        period: number;
-        /**
-         * The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
-         */
-        source: string;
-    }
-
-    export interface VirtualMachineSerialDevice {
-        /**
-         * The device (defaults to `socket`).
-         * - `/dev/*` - A host serial device.
-         */
-        device?: string;
-    }
-
-    export interface VirtualMachineSmbios {
-        /**
-         * The family string.
-         */
-        family?: string;
-        /**
-         * The manufacturer.
-         */
-        manufacturer?: string;
-        /**
-         * The product ID.
-         */
-        product?: string;
-        /**
-         * The serial number.
-         */
-        serial?: string;
-        /**
-         * The SKU number.
-         */
-        sku?: string;
-        /**
-         * The UUID (defaults to randomly generated UUID).
-         */
-        uuid: string;
-        /**
-         * The version.
-         */
-        version?: string;
-    }
-
-    export interface VirtualMachineStartup {
-        /**
-         * A non-negative number defining the delay in
-         * seconds before the next VM is shut down.
-         */
-        downDelay?: number;
-        /**
-         * A non-negative number defining the general startup
-         * order.
-         */
-        order?: number;
-        /**
-         * A non-negative number defining the delay in
-         * seconds before the next VM is started.
-         */
-        upDelay?: number;
-    }
-
-    export interface VirtualMachineTpmState {
-        /**
-         * The identifier for the datastore to create
-         * the disk in (defaults to `local-lvm`).
-         */
-        datastoreId?: string;
-        /**
-         * TPM state device version. Can be `v1.2` or `v2.0`.
-         * (defaults to `v2.0`).
-         */
-        version?: string;
-    }
-
-    export interface VirtualMachineUsb {
-        /**
-         * The Host USB device or port or the value `spice`. Use either this or `mapping`.
-         */
-        host?: string;
-        /**
-         * The cluster-wide resource mapping name of the device, for example "usbdevice". Use either this or `host`.
-         */
-        mapping?: string;
-        /**
-         * Makes the USB device a USB3 device for the VM
-         * (defaults to `false`).
-         */
-        usb3?: boolean;
-    }
-
-    export interface VirtualMachineVga {
-        /**
-         * Enable VNC clipboard by setting to `vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
-         */
-        clipboard?: string;
-        /**
-         * The VGA memory in megabytes (defaults to `16`).
-         */
-        memory?: number;
-        /**
-         * The VGA type (defaults to `std`).
-         */
-        type?: string;
-    }
-
-    export interface VirtualMachineVirtiof {
-        /**
-         * The caching mode
-         */
-        cache?: string;
-        /**
-         * Whether to allow direct io
-         */
-        directIo?: boolean;
-        /**
-         * Enable POSIX ACLs, implies xattr support
-         */
-        exposeAcl?: boolean;
-        /**
-         * Enable support for extended attributes
-         */
-        exposeXattr?: boolean;
-        /**
-         * Identifier of the directory mapping
-         */
-        mapping: string;
-    }
-
-    export interface VirtualMachineWatchdog {
-        /**
-         * The action to perform if after activation the guest fails to poll the watchdog in time  (defaults to `none`).
-         */
-        action?: string;
-        /**
-         * Whether the watchdog is enabled (defaults to `false`).
-         */
-        enabled?: boolean;
-        /**
-         * The watchdog type to emulate (defaults to `i6300esb`).
-         */
-        model?: string;
-    }
-
-}
-
-export namespace config {
-    export interface Ssh {
-        /**
-         * Whether to use the SSH agent for authentication. Takes precedence over the `privateKey` and `password` fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or `false` if not set.
-         */
-        agent?: boolean;
-        /**
-         * Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or `false` if not set.
-         */
-        agentForwarding?: boolean;
-        /**
-         * The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
-         */
-        agentSocket?: string;
-        /**
-         * Overrides for SSH connection configuration for a Proxmox VE node.
-         */
-        nodes?: outputs.config.SshNode[];
-        /**
-         * The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
-         */
-        password?: string;
-        /**
-         * The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
-         */
-        privateKey?: string;
-        /**
-         * The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
-         */
-        socks5Password?: string;
-        /**
-         * The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.
-         */
-        socks5Server?: string;
-        /**
-         * The username for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_USERNAME` environment variable.
-         */
-        socks5Username?: string;
-        /**
-         * The username used for the SSH connection. Defaults to the value of the `username` field of the `provider` block.
-         */
-        username?: string;
-    }
-
-    export interface SshNode {
-        /**
-         * The address of the Proxmox VE node.
-         */
-        address: string;
-        /**
-         * The name of the Proxmox VE node.
-         */
-        name: string;
-        /**
-         * The port of the Proxmox VE node.
-         */
-        port?: number;
+        maxProtectedBackups?: number;
     }
 
 }

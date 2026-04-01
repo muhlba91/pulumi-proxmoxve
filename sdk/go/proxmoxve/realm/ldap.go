@@ -8,21 +8,144 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Import
+// Manages an LDAP authentication realm in Proxmox VE.
 //
-// #!/usr/bin/env sh
+// LDAP realms allow Proxmox to authenticate users against an LDAP directory service.
 //
-// LDAP realms can be imported using the realm identifier, e.g.:
+// ## Privileges Required
 //
-// ```sh
-// $ pulumi import proxmoxve:Realm/ldap:Ldap example example.com
+// | Path | Attribute |
+// |-----------------|----------------|
+// | /access/domains | Realm.Allocate |
+//
+// ## Notes
+//
+// ### Password Security
+//
+// The `bindPassword` is sent to Proxmox and stored securely, but it's never returned by the API. This means:
+// - Terraform cannot detect if the password was changed outside of Terraform
+// - You must maintain the password in your Terraform configuration or use a variable
+// - The password will be marked as sensitive in Terraform state
+//
+// ### LDAP vs LDAPS
+//
+// - **LDAP (port 389)**: Unencrypted connection. Not recommended for production.
+// - **LDAPS (port 636)**: Encrypted connection using SSL/TLS. Recommended for production.
+// - **LDAP+StartTLS**: Upgrades plain LDAP connection to TLS. Alternative to LDAPS.
+//
+// ### User Synchronization
+//
+// To trigger synchronization, use the `realm.Sync` resource.
+//
+// ### Common Configuration Scenarios
+//
+// #### Anonymous Binding
+// For testing or public LDAP servers, omit `bindDn` and `bindPassword` to use anonymous binding:
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/realm"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := realm.NewLdap(ctx, "anonymous", &realm.LdapArgs{
+//				Realm:    pulumi.String("public-ldap"),
+//				Server1:  pulumi.String("ldap.example.com"),
+//				BaseDn:   pulumi.String("ou=users,dc=example,dc=com"),
+//				UserAttr: pulumi.String("uid"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
-// -> When importing, the `bind_password` attribute cannot be imported since it's not returned by the Proxmox API. You'll need to set this attribute in your Terraform configuration after the import to manage it with Terraform.
+// #### Secure LDAPS with Failover
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/realm"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := realm.NewLdap(ctx, "secure", &realm.LdapArgs{
+//				Realm:        pulumi.String("secure-ldap"),
+//				Server1:      pulumi.String("ldap1.example.com"),
+//				Server2:      pulumi.String("ldap2.example.com"),
+//				Port:         pulumi.Int(636),
+//				BaseDn:       pulumi.String("ou=users,dc=example,dc=com"),
+//				BindDn:       pulumi.String("cn=readonly,dc=example,dc=com"),
+//				BindPassword: pulumi.Any(ldapPassword),
+//				Mode:         pulumi.String("ldaps"),
+//				Verify:       pulumi.Bool(true),
+//				CaPath:       pulumi.String("/etc/pve/priv/ca.crt"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// #### With Group Synchronization
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/realm"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := realm.NewLdap(ctx, "with_groups", &realm.LdapArgs{
+//				Realm:               pulumi.String("corporate-ldap"),
+//				Server1:             pulumi.String("ldap.corp.example.com"),
+//				BaseDn:              pulumi.String("ou=users,dc=corp,dc=example,dc=com"),
+//				BindDn:              pulumi.String("cn=svc_ldap,ou=services,dc=corp,dc=example,dc=com"),
+//				BindPassword:        pulumi.Any(ldapPassword),
+//				Mode:                pulumi.String("ldap+starttls"),
+//				GroupDn:             pulumi.String("ou=groups,dc=corp,dc=example,dc=com"),
+//				GroupFilter:         pulumi.String("(objectClass=groupOfNames)"),
+//				GroupNameAttr:       pulumi.String("cn"),
+//				SyncAttributes:      pulumi.String("email=mail,firstname=givenName,lastname=sn"),
+//				SyncDefaultsOptions: pulumi.String("scope=both,enable-new=1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## See Also
+//
+// - [Proxmox VE User Management](https://pve.proxmox.com/wiki/User_Management)
+// - [Proxmox VE LDAP Authentication](https://pve.proxmox.com/wiki/User_Management#pveum_ldap)
+// - [Proxmox API: /access/domains](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/domains)
 type Ldap struct {
 	pulumi.CustomResourceState
 
@@ -107,7 +230,7 @@ func NewLdap(ctx *pulumi.Context,
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Ldap
-	err := ctx.RegisterResource("proxmoxve:Realm/ldap:Ldap", name, args, &resource, opts...)
+	err := ctx.RegisterResource("proxmoxve:realm/ldap:Ldap", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -119,7 +242,7 @@ func NewLdap(ctx *pulumi.Context,
 func GetLdap(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *LdapState, opts ...pulumi.ResourceOption) (*Ldap, error) {
 	var resource Ldap
-	err := ctx.ReadResource("proxmoxve:Realm/ldap:Ldap", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("proxmoxve:realm/ldap:Ldap", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

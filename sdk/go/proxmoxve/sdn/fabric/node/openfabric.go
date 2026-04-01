@@ -8,51 +8,11 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // OpenFabric Fabric Node in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdn"
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdnfabric"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			main, err := sdnfabric.NewOpenFabric(ctx, "main", &sdnfabric.OpenFabricArgs{
-//				FabricId: pulumi.String("main-fabric"),
-//				IpPrefix: pulumi.String("10.0.0.0/16"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = sdn.NewOpenfabric(ctx, "main", &sdn.OpenfabricArgs{
-//				FabricId: main.FabricId,
-//				NodeId:   pulumi.String("pve"),
-//				Ip:       pulumi.String("10.0.0.1"),
-//				InterfaceNames: pulumi.StringArray{
-//					pulumi.String("nic0"),
-//					pulumi.String("nic1"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type Openfabric struct {
 	pulumi.CustomResourceState
 
@@ -64,7 +24,7 @@ type Openfabric struct {
 	Ip pulumi.StringPtrOutput `pulumi:"ip"`
 	// IPv6 address for the fabric node.
 	Ip6 pulumi.StringPtrOutput `pulumi:"ip6"`
-	// The unique identifier of the SDN fabric.
+	// The unique identifier of the SDN fabric node.
 	NodeId pulumi.StringOutput `pulumi:"nodeId"`
 }
 
@@ -86,7 +46,7 @@ func NewOpenfabric(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Openfabric
-	err := ctx.RegisterResource("proxmoxve:Sdn/fabric/node/openfabric:Openfabric", name, args, &resource, opts...)
+	err := ctx.RegisterResource("proxmoxve:sdn/fabric/node/openfabric:Openfabric", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -98,7 +58,7 @@ func NewOpenfabric(ctx *pulumi.Context,
 func GetOpenfabric(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *OpenfabricState, opts ...pulumi.ResourceOption) (*Openfabric, error) {
 	var resource Openfabric
-	err := ctx.ReadResource("proxmoxve:Sdn/fabric/node/openfabric:Openfabric", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("proxmoxve:sdn/fabric/node/openfabric:Openfabric", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -115,7 +75,7 @@ type openfabricState struct {
 	Ip *string `pulumi:"ip"`
 	// IPv6 address for the fabric node.
 	Ip6 *string `pulumi:"ip6"`
-	// The unique identifier of the SDN fabric.
+	// The unique identifier of the SDN fabric node.
 	NodeId *string `pulumi:"nodeId"`
 }
 
@@ -128,7 +88,7 @@ type OpenfabricState struct {
 	Ip pulumi.StringPtrInput
 	// IPv6 address for the fabric node.
 	Ip6 pulumi.StringPtrInput
-	// The unique identifier of the SDN fabric.
+	// The unique identifier of the SDN fabric node.
 	NodeId pulumi.StringPtrInput
 }
 
@@ -145,7 +105,7 @@ type openfabricArgs struct {
 	Ip *string `pulumi:"ip"`
 	// IPv6 address for the fabric node.
 	Ip6 *string `pulumi:"ip6"`
-	// The unique identifier of the SDN fabric.
+	// The unique identifier of the SDN fabric node.
 	NodeId string `pulumi:"nodeId"`
 }
 
@@ -159,7 +119,7 @@ type OpenfabricArgs struct {
 	Ip pulumi.StringPtrInput
 	// IPv6 address for the fabric node.
 	Ip6 pulumi.StringPtrInput
-	// The unique identifier of the SDN fabric.
+	// The unique identifier of the SDN fabric node.
 	NodeId pulumi.StringInput
 }
 
@@ -270,7 +230,7 @@ func (o OpenfabricOutput) Ip6() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Openfabric) pulumi.StringPtrOutput { return v.Ip6 }).(pulumi.StringPtrOutput)
 }
 
-// The unique identifier of the SDN fabric.
+// The unique identifier of the SDN fabric node.
 func (o OpenfabricOutput) NodeId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Openfabric) pulumi.StringOutput { return v.NodeId }).(pulumi.StringOutput)
 }

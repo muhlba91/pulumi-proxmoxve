@@ -7,4 +7,8 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .ldap import *
+from .ldap_legacy import *
+from .openid import *
+from .openid_legacy import *
 from .sync import *
+from .sync_legacy import *

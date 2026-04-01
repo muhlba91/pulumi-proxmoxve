@@ -13,75 +13,21 @@ namespace Pulumi.ProxmoxVE.Sdn.Fabric
     {
         /// <summary>
         /// OpenFabric Fabric in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using ProxmoxVE = Pulumi.ProxmoxVE;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var main = ProxmoxVE.Sdn.Fabric.GetOpenfabric.Invoke(new()
-        ///     {
-        ///         Id = "main-fabric",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetOpenfabricResult> InvokeAsync(GetOpenfabricArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetOpenfabricResult>("proxmoxve:Sdn/fabric/getOpenfabric:getOpenfabric", args ?? new GetOpenfabricArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetOpenfabricResult>("proxmoxve:sdn/fabric/getOpenfabric:getOpenfabric", args ?? new GetOpenfabricArgs(), options.WithDefaults());
 
         /// <summary>
         /// OpenFabric Fabric in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using ProxmoxVE = Pulumi.ProxmoxVE;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var main = ProxmoxVE.Sdn.Fabric.GetOpenfabric.Invoke(new()
-        ///     {
-        ///         Id = "main-fabric",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetOpenfabricResult> Invoke(GetOpenfabricInvokeArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetOpenfabricResult>("proxmoxve:Sdn/fabric/getOpenfabric:getOpenfabric", args ?? new GetOpenfabricInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetOpenfabricResult>("proxmoxve:sdn/fabric/getOpenfabric:getOpenfabric", args ?? new GetOpenfabricInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// OpenFabric Fabric in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using ProxmoxVE = Pulumi.ProxmoxVE;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var main = ProxmoxVE.Sdn.Fabric.GetOpenfabric.Invoke(new()
-        ///     {
-        ///         Id = "main-fabric",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetOpenfabricResult> Invoke(GetOpenfabricInvokeArgs args, InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetOpenfabricResult>("proxmoxve:Sdn/fabric/getOpenfabric:getOpenfabric", args ?? new GetOpenfabricInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetOpenfabricResult>("proxmoxve:sdn/fabric/getOpenfabric:getOpenfabric", args ?? new GetOpenfabricInvokeArgs(), options.WithDefaults());
     }
 
 

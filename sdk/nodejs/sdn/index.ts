@@ -10,59 +10,105 @@ export type Applier = import("./applier").Applier;
 export const Applier: typeof import("./applier").Applier = null as any;
 utilities.lazyLoad(exports, ["Applier"], () => require("./applier"));
 
+export { ApplierLegacyArgs, ApplierLegacyState } from "./applierLegacy";
+export type ApplierLegacy = import("./applierLegacy").ApplierLegacy;
+export const ApplierLegacy: typeof import("./applierLegacy").ApplierLegacy = null as any;
+utilities.lazyLoad(exports, ["ApplierLegacy"], () => require("./applierLegacy"));
+
 export { GetSubnetArgs, GetSubnetResult, GetSubnetOutputArgs } from "./getSubnet";
 export const getSubnet: typeof import("./getSubnet").getSubnet = null as any;
 export const getSubnetOutput: typeof import("./getSubnet").getSubnetOutput = null as any;
 utilities.lazyLoad(exports, ["getSubnet","getSubnetOutput"], () => require("./getSubnet"));
+
+export { GetSubnetLegacyArgs, GetSubnetLegacyResult, GetSubnetLegacyOutputArgs } from "./getSubnetLegacy";
+export const getSubnetLegacy: typeof import("./getSubnetLegacy").getSubnetLegacy = null as any;
+export const getSubnetLegacyOutput: typeof import("./getSubnetLegacy").getSubnetLegacyOutput = null as any;
+utilities.lazyLoad(exports, ["getSubnetLegacy","getSubnetLegacyOutput"], () => require("./getSubnetLegacy"));
 
 export { GetVnetArgs, GetVnetResult, GetVnetOutputArgs } from "./getVnet";
 export const getVnet: typeof import("./getVnet").getVnet = null as any;
 export const getVnetOutput: typeof import("./getVnet").getVnetOutput = null as any;
 utilities.lazyLoad(exports, ["getVnet","getVnetOutput"], () => require("./getVnet"));
 
+export { GetVnetLegacyArgs, GetVnetLegacyResult, GetVnetLegacyOutputArgs } from "./getVnetLegacy";
+export const getVnetLegacy: typeof import("./getVnetLegacy").getVnetLegacy = null as any;
+export const getVnetLegacyOutput: typeof import("./getVnetLegacy").getVnetLegacyOutput = null as any;
+utilities.lazyLoad(exports, ["getVnetLegacy","getVnetLegacyOutput"], () => require("./getVnetLegacy"));
+
 export { GetVnetsResult } from "./getVnets";
 export const getVnets: typeof import("./getVnets").getVnets = null as any;
 export const getVnetsOutput: typeof import("./getVnets").getVnetsOutput = null as any;
 utilities.lazyLoad(exports, ["getVnets","getVnetsOutput"], () => require("./getVnets"));
+
+export { GetVnetsLegacyResult } from "./getVnetsLegacy";
+export const getVnetsLegacy: typeof import("./getVnetsLegacy").getVnetsLegacy = null as any;
+export const getVnetsLegacyOutput: typeof import("./getVnetsLegacy").getVnetsLegacyOutput = null as any;
+utilities.lazyLoad(exports, ["getVnetsLegacy","getVnetsLegacyOutput"], () => require("./getVnetsLegacy"));
 
 export { GetZonesArgs, GetZonesResult, GetZonesOutputArgs } from "./getZones";
 export const getZones: typeof import("./getZones").getZones = null as any;
 export const getZonesOutput: typeof import("./getZones").getZonesOutput = null as any;
 utilities.lazyLoad(exports, ["getZones","getZonesOutput"], () => require("./getZones"));
 
+export { GetZonesLegacyArgs, GetZonesLegacyResult, GetZonesLegacyOutputArgs } from "./getZonesLegacy";
+export const getZonesLegacy: typeof import("./getZonesLegacy").getZonesLegacy = null as any;
+export const getZonesLegacyOutput: typeof import("./getZonesLegacy").getZonesLegacyOutput = null as any;
+utilities.lazyLoad(exports, ["getZonesLegacy","getZonesLegacyOutput"], () => require("./getZonesLegacy"));
+
 export { SubnetArgs, SubnetState } from "./subnet";
 export type Subnet = import("./subnet").Subnet;
 export const Subnet: typeof import("./subnet").Subnet = null as any;
 utilities.lazyLoad(exports, ["Subnet"], () => require("./subnet"));
+
+export { SubnetLegacyArgs, SubnetLegacyState } from "./subnetLegacy";
+export type SubnetLegacy = import("./subnetLegacy").SubnetLegacy;
+export const SubnetLegacy: typeof import("./subnetLegacy").SubnetLegacy = null as any;
+utilities.lazyLoad(exports, ["SubnetLegacy"], () => require("./subnetLegacy"));
 
 export { VnetArgs, VnetState } from "./vnet";
 export type Vnet = import("./vnet").Vnet;
 export const Vnet: typeof import("./vnet").Vnet = null as any;
 utilities.lazyLoad(exports, ["Vnet"], () => require("./vnet"));
 
+export { VnetLegacyArgs, VnetLegacyState } from "./vnetLegacy";
+export type VnetLegacy = import("./vnetLegacy").VnetLegacy;
+export const VnetLegacy: typeof import("./vnetLegacy").VnetLegacy = null as any;
+utilities.lazyLoad(exports, ["VnetLegacy"], () => require("./vnetLegacy"));
+
 
 // Export sub-modules:
 import * as fabric from "./fabric";
+import * as zone from "./zone";
 
 export {
     fabric,
+    zone,
 };
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "proxmoxve:Sdn/applier:Applier":
+            case "proxmoxve:sdn/applier:Applier":
                 return new Applier(name, <any>undefined, { urn })
-            case "proxmoxve:Sdn/subnet:Subnet":
+            case "proxmoxve:sdn/applierLegacy:ApplierLegacy":
+                return new ApplierLegacy(name, <any>undefined, { urn })
+            case "proxmoxve:sdn/subnet:Subnet":
                 return new Subnet(name, <any>undefined, { urn })
-            case "proxmoxve:Sdn/vnet:Vnet":
+            case "proxmoxve:sdn/subnetLegacy:SubnetLegacy":
+                return new SubnetLegacy(name, <any>undefined, { urn })
+            case "proxmoxve:sdn/vnet:Vnet":
                 return new Vnet(name, <any>undefined, { urn })
+            case "proxmoxve:sdn/vnetLegacy:VnetLegacy":
+                return new VnetLegacy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("proxmoxve", "Sdn/applier", _module)
-pulumi.runtime.registerResourceModule("proxmoxve", "Sdn/subnet", _module)
-pulumi.runtime.registerResourceModule("proxmoxve", "Sdn/vnet", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "sdn/applier", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "sdn/applierLegacy", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "sdn/subnet", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "sdn/subnetLegacy", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "sdn/vnet", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "sdn/vnetLegacy", _module)

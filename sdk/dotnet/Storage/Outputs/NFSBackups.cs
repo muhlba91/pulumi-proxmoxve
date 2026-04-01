@@ -11,7 +11,7 @@ namespace Pulumi.ProxmoxVE.Storage.Outputs
 {
 
     [OutputType]
-    public sealed class NFSBackups
+    public sealed class NfsBackups
     {
         /// <summary>
         /// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
@@ -47,7 +47,7 @@ namespace Pulumi.ProxmoxVE.Storage.Outputs
         public readonly int? MaxProtectedBackups;
 
         [OutputConstructor]
-        private NFSBackups(
+        private NfsBackups(
             bool? keepAll,
 
             int? keepDaily,

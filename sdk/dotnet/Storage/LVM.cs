@@ -11,37 +11,9 @@ namespace Pulumi.ProxmoxVE.Storage
 {
     /// <summary>
     /// Manages LVM-based storage in Proxmox VE.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using ProxmoxVE = Pulumi.ProxmoxVE;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new ProxmoxVE.Storage.LVM("example", new()
-    ///     {
-    ///         LvmId = "example-lvm",
-    ///         Nodes = new[]
-    ///         {
-    ///             "pve",
-    ///         },
-    ///         VolumeGroup = "vg0",
-    ///         Contents = new[]
-    ///         {
-    ///             "images",
-    ///         },
-    ///         WipeRemovedVolumes = false,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
-    [ProxmoxVEResourceType("proxmoxve:Storage/lVM:LVM")]
-    public partial class LVM : global::Pulumi.CustomResource
+    [ProxmoxVEResourceType("proxmoxve:storage/lvm:Lvm")]
+    public partial class Lvm : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The content types that can be stored on this storage. Valid values: `Backup` (VM backups), `Images` (VM disk images), `Import` (VM disk images for import), `Iso` (ISO images), `Rootdir` (container root directories), `Snippets` (cloud-init, hook scripts, etc.), `Vztmpl` (container templates).
@@ -56,16 +28,16 @@ namespace Pulumi.ProxmoxVE.Storage
         public Output<bool> Disable { get; private set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the storage.
-        /// </summary>
-        [Output("lvmId")]
-        public Output<string> LvmId { get; private set; } = null!;
-
-        /// <summary>
         /// A list of nodes where this storage is available.
         /// </summary>
         [Output("nodes")]
         public Output<ImmutableArray<string>> Nodes { get; private set; } = null!;
+
+        /// <summary>
+        /// The unique identifier of the storage.
+        /// </summary>
+        [Output("resourceId")]
+        public Output<string> ResourceId { get; private set; } = null!;
 
         /// <summary>
         /// Whether the storage is shared across all nodes.
@@ -87,19 +59,19 @@ namespace Pulumi.ProxmoxVE.Storage
 
 
         /// <summary>
-        /// Create a LVM resource with the given unique name, arguments, and options.
+        /// Create a Lvm resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public LVM(string name, LVMArgs args, CustomResourceOptions? options = null)
-            : base("proxmoxve:Storage/lVM:LVM", name, args ?? new LVMArgs(), MakeResourceOptions(options, ""))
+        public Lvm(string name, LvmArgs args, CustomResourceOptions? options = null)
+            : base("proxmoxve:storage/lvm:Lvm", name, args ?? new LvmArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private LVM(string name, Input<string> id, LVMState? state = null, CustomResourceOptions? options = null)
-            : base("proxmoxve:Storage/lVM:LVM", name, state, MakeResourceOptions(options, id))
+        private Lvm(string name, Input<string> id, LvmState? state = null, CustomResourceOptions? options = null)
+            : base("proxmoxve:storage/lvm:Lvm", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -109,6 +81,10 @@ namespace Pulumi.ProxmoxVE.Storage
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/muhlba91/pulumi-proxmoxve",
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "proxmox_virtual_environment_storage_lvm" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -116,7 +92,7 @@ namespace Pulumi.ProxmoxVE.Storage
             return merged;
         }
         /// <summary>
-        /// Get an existing LVM resource's state with the given name, ID, and optional extra
+        /// Get an existing Lvm resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -124,13 +100,13 @@ namespace Pulumi.ProxmoxVE.Storage
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static LVM Get(string name, Input<string> id, LVMState? state = null, CustomResourceOptions? options = null)
+        public static Lvm Get(string name, Input<string> id, LvmState? state = null, CustomResourceOptions? options = null)
         {
-            return new LVM(name, id, state, options);
+            return new Lvm(name, id, state, options);
         }
     }
 
-    public sealed class LVMArgs : global::Pulumi.ResourceArgs
+    public sealed class LvmArgs : global::Pulumi.ResourceArgs
     {
         [Input("contents")]
         private InputList<string>? _contents;
@@ -150,12 +126,6 @@ namespace Pulumi.ProxmoxVE.Storage
         [Input("disable")]
         public Input<bool>? Disable { get; set; }
 
-        /// <summary>
-        /// The unique identifier of the storage.
-        /// </summary>
-        [Input("lvmId", required: true)]
-        public Input<string> LvmId { get; set; } = null!;
-
         [Input("nodes")]
         private InputList<string>? _nodes;
 
@@ -167,6 +137,12 @@ namespace Pulumi.ProxmoxVE.Storage
             get => _nodes ?? (_nodes = new InputList<string>());
             set => _nodes = value;
         }
+
+        /// <summary>
+        /// The unique identifier of the storage.
+        /// </summary>
+        [Input("resourceId", required: true)]
+        public Input<string> ResourceId { get; set; } = null!;
 
         /// <summary>
         /// Whether the storage is shared across all nodes.
@@ -186,13 +162,13 @@ namespace Pulumi.ProxmoxVE.Storage
         [Input("wipeRemovedVolumes")]
         public Input<bool>? WipeRemovedVolumes { get; set; }
 
-        public LVMArgs()
+        public LvmArgs()
         {
         }
-        public static new LVMArgs Empty => new LVMArgs();
+        public static new LvmArgs Empty => new LvmArgs();
     }
 
-    public sealed class LVMState : global::Pulumi.ResourceArgs
+    public sealed class LvmState : global::Pulumi.ResourceArgs
     {
         [Input("contents")]
         private InputList<string>? _contents;
@@ -212,12 +188,6 @@ namespace Pulumi.ProxmoxVE.Storage
         [Input("disable")]
         public Input<bool>? Disable { get; set; }
 
-        /// <summary>
-        /// The unique identifier of the storage.
-        /// </summary>
-        [Input("lvmId")]
-        public Input<string>? LvmId { get; set; }
-
         [Input("nodes")]
         private InputList<string>? _nodes;
 
@@ -229,6 +199,12 @@ namespace Pulumi.ProxmoxVE.Storage
             get => _nodes ?? (_nodes = new InputList<string>());
             set => _nodes = value;
         }
+
+        /// <summary>
+        /// The unique identifier of the storage.
+        /// </summary>
+        [Input("resourceId")]
+        public Input<string>? ResourceId { get; set; }
 
         /// <summary>
         /// Whether the storage is shared across all nodes.
@@ -248,9 +224,9 @@ namespace Pulumi.ProxmoxVE.Storage
         [Input("wipeRemovedVolumes")]
         public Input<bool>? WipeRemovedVolumes { get; set; }
 
-        public LVMState()
+        public LvmState()
         {
         }
-        public static new LVMState Empty => new LVMState();
+        public static new LvmState Empty => new LvmState();
     }
 }

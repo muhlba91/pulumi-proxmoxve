@@ -14,12 +14,12 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
-__all__ = ['LVMArgs', 'LVM']
+__all__ = ['LvmArgs', 'Lvm']
 
 @pulumi.input_type
-class LVMArgs:
+class LvmArgs:
     def __init__(__self__, *,
-                 lvm_id: pulumi.Input[_builtins.str],
+                 resource_id: pulumi.Input[_builtins.str],
                  volume_group: pulumi.Input[_builtins.str],
                  contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  disable: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -27,8 +27,9 @@ class LVMArgs:
                  shared: Optional[pulumi.Input[_builtins.bool]] = None,
                  wipe_removed_volumes: Optional[pulumi.Input[_builtins.bool]] = None):
         """
-        The set of arguments for constructing a LVM resource.
-        :param pulumi.Input[_builtins.str] lvm_id: The unique identifier of the storage.
+        The set of arguments for constructing a Lvm resource.
+
+        :param pulumi.Input[_builtins.str] resource_id: The unique identifier of the storage.
         :param pulumi.Input[_builtins.str] volume_group: The name of the volume group to use.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contents: The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
         :param pulumi.Input[_builtins.bool] disable: Whether the storage is disabled.
@@ -36,7 +37,7 @@ class LVMArgs:
         :param pulumi.Input[_builtins.bool] shared: Whether the storage is shared across all nodes.
         :param pulumi.Input[_builtins.bool] wipe_removed_volumes: Whether to zero-out data when removing LVMs.
         """
-        pulumi.set(__self__, "lvm_id", lvm_id)
+        pulumi.set(__self__, "resource_id", resource_id)
         pulumi.set(__self__, "volume_group", volume_group)
         if contents is not None:
             pulumi.set(__self__, "contents", contents)
@@ -50,16 +51,16 @@ class LVMArgs:
             pulumi.set(__self__, "wipe_removed_volumes", wipe_removed_volumes)
 
     @_builtins.property
-    @pulumi.getter(name="lvmId")
-    def lvm_id(self) -> pulumi.Input[_builtins.str]:
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> pulumi.Input[_builtins.str]:
         """
         The unique identifier of the storage.
         """
-        return pulumi.get(self, "lvm_id")
+        return pulumi.get(self, "resource_id")
 
-    @lvm_id.setter
-    def lvm_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "lvm_id", value)
+    @resource_id.setter
+    def resource_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeGroup")
@@ -135,21 +136,22 @@ class LVMArgs:
 
 
 @pulumi.input_type
-class _LVMState:
+class _LvmState:
     def __init__(__self__, *,
                  contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lvm_id: Optional[pulumi.Input[_builtins.str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  shared: Optional[pulumi.Input[_builtins.bool]] = None,
                  volume_group: Optional[pulumi.Input[_builtins.str]] = None,
                  wipe_removed_volumes: Optional[pulumi.Input[_builtins.bool]] = None):
         """
-        Input properties used for looking up and filtering LVM resources.
+        Input properties used for looking up and filtering Lvm resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contents: The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
         :param pulumi.Input[_builtins.bool] disable: Whether the storage is disabled.
-        :param pulumi.Input[_builtins.str] lvm_id: The unique identifier of the storage.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: A list of nodes where this storage is available.
+        :param pulumi.Input[_builtins.str] resource_id: The unique identifier of the storage.
         :param pulumi.Input[_builtins.bool] shared: Whether the storage is shared across all nodes.
         :param pulumi.Input[_builtins.str] volume_group: The name of the volume group to use.
         :param pulumi.Input[_builtins.bool] wipe_removed_volumes: Whether to zero-out data when removing LVMs.
@@ -158,10 +160,10 @@ class _LVMState:
             pulumi.set(__self__, "contents", contents)
         if disable is not None:
             pulumi.set(__self__, "disable", disable)
-        if lvm_id is not None:
-            pulumi.set(__self__, "lvm_id", lvm_id)
         if nodes is not None:
             pulumi.set(__self__, "nodes", nodes)
+        if resource_id is not None:
+            pulumi.set(__self__, "resource_id", resource_id)
         if shared is not None:
             pulumi.set(__self__, "shared", shared)
         if volume_group is not None:
@@ -194,18 +196,6 @@ class _LVMState:
         pulumi.set(self, "disable", value)
 
     @_builtins.property
-    @pulumi.getter(name="lvmId")
-    def lvm_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The unique identifier of the storage.
-        """
-        return pulumi.get(self, "lvm_id")
-
-    @lvm_id.setter
-    def lvm_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "lvm_id", value)
-
-    @_builtins.property
     @pulumi.getter
     def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -216,6 +206,18 @@ class _LVMState:
     @nodes.setter
     def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "nodes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The unique identifier of the storage.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @resource_id.setter
+    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -254,16 +256,16 @@ class _LVMState:
         pulumi.set(self, "wipe_removed_volumes", value)
 
 
-@pulumi.type_token("proxmoxve:Storage/lVM:LVM")
-class LVM(pulumi.CustomResource):
+@pulumi.type_token("proxmoxve:storage/lvm:Lvm")
+class Lvm(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lvm_id: Optional[pulumi.Input[_builtins.str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  shared: Optional[pulumi.Input[_builtins.bool]] = None,
                  volume_group: Optional[pulumi.Input[_builtins.str]] = None,
                  wipe_removed_volumes: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -271,26 +273,13 @@ class LVM(pulumi.CustomResource):
         """
         Manages LVM-based storage in Proxmox VE.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        example = proxmoxve.storage.LVM("example",
-            lvm_id="example-lvm",
-            nodes=["pve"],
-            volume_group="vg0",
-            contents=["images"],
-            wipe_removed_volumes=False)
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contents: The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
         :param pulumi.Input[_builtins.bool] disable: Whether the storage is disabled.
-        :param pulumi.Input[_builtins.str] lvm_id: The unique identifier of the storage.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: A list of nodes where this storage is available.
+        :param pulumi.Input[_builtins.str] resource_id: The unique identifier of the storage.
         :param pulumi.Input[_builtins.bool] shared: Whether the storage is shared across all nodes.
         :param pulumi.Input[_builtins.str] volume_group: The name of the volume group to use.
         :param pulumi.Input[_builtins.bool] wipe_removed_volumes: Whether to zero-out data when removing LVMs.
@@ -299,32 +288,19 @@ class LVM(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: LVMArgs,
+                 args: LvmArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages LVM-based storage in Proxmox VE.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        example = proxmoxve.storage.LVM("example",
-            lvm_id="example-lvm",
-            nodes=["pve"],
-            volume_group="vg0",
-            contents=["images"],
-            wipe_removed_volumes=False)
-        ```
 
         :param str resource_name: The name of the resource.
-        :param LVMArgs args: The arguments to use to populate this resource's properties.
+        :param LvmArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(LVMArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(LvmArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -335,8 +311,8 @@ class LVM(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lvm_id: Optional[pulumi.Input[_builtins.str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  shared: Optional[pulumi.Input[_builtins.bool]] = None,
                  volume_group: Optional[pulumi.Input[_builtins.str]] = None,
                  wipe_removed_volumes: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -347,21 +323,23 @@ class LVM(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = LVMArgs.__new__(LVMArgs)
+            __props__ = LvmArgs.__new__(LvmArgs)
 
             __props__.__dict__["contents"] = contents
             __props__.__dict__["disable"] = disable
-            if lvm_id is None and not opts.urn:
-                raise TypeError("Missing required property 'lvm_id'")
-            __props__.__dict__["lvm_id"] = lvm_id
             __props__.__dict__["nodes"] = nodes
+            if resource_id is None and not opts.urn:
+                raise TypeError("Missing required property 'resource_id'")
+            __props__.__dict__["resource_id"] = resource_id
             __props__.__dict__["shared"] = shared
             if volume_group is None and not opts.urn:
                 raise TypeError("Missing required property 'volume_group'")
             __props__.__dict__["volume_group"] = volume_group
             __props__.__dict__["wipe_removed_volumes"] = wipe_removed_volumes
-        super(LVM, __self__).__init__(
-            'proxmoxve:Storage/lVM:LVM',
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="proxmox_virtual_environment_storage_lvm")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
+        super(Lvm, __self__).__init__(
+            'proxmoxve:storage/lvm:Lvm',
             resource_name,
             __props__,
             opts)
@@ -372,13 +350,13 @@ class LVM(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             disable: Optional[pulumi.Input[_builtins.bool]] = None,
-            lvm_id: Optional[pulumi.Input[_builtins.str]] = None,
             nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            resource_id: Optional[pulumi.Input[_builtins.str]] = None,
             shared: Optional[pulumi.Input[_builtins.bool]] = None,
             volume_group: Optional[pulumi.Input[_builtins.str]] = None,
-            wipe_removed_volumes: Optional[pulumi.Input[_builtins.bool]] = None) -> 'LVM':
+            wipe_removed_volumes: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Lvm':
         """
-        Get an existing LVM resource's state with the given name, id, and optional extra
+        Get an existing Lvm resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -386,24 +364,24 @@ class LVM(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contents: The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
         :param pulumi.Input[_builtins.bool] disable: Whether the storage is disabled.
-        :param pulumi.Input[_builtins.str] lvm_id: The unique identifier of the storage.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: A list of nodes where this storage is available.
+        :param pulumi.Input[_builtins.str] resource_id: The unique identifier of the storage.
         :param pulumi.Input[_builtins.bool] shared: Whether the storage is shared across all nodes.
         :param pulumi.Input[_builtins.str] volume_group: The name of the volume group to use.
         :param pulumi.Input[_builtins.bool] wipe_removed_volumes: Whether to zero-out data when removing LVMs.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _LVMState.__new__(_LVMState)
+        __props__ = _LvmState.__new__(_LvmState)
 
         __props__.__dict__["contents"] = contents
         __props__.__dict__["disable"] = disable
-        __props__.__dict__["lvm_id"] = lvm_id
         __props__.__dict__["nodes"] = nodes
+        __props__.__dict__["resource_id"] = resource_id
         __props__.__dict__["shared"] = shared
         __props__.__dict__["volume_group"] = volume_group
         __props__.__dict__["wipe_removed_volumes"] = wipe_removed_volumes
-        return LVM(resource_name, opts=opts, __props__=__props__)
+        return Lvm(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter
@@ -422,20 +400,20 @@ class LVM(pulumi.CustomResource):
         return pulumi.get(self, "disable")
 
     @_builtins.property
-    @pulumi.getter(name="lvmId")
-    def lvm_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The unique identifier of the storage.
-        """
-        return pulumi.get(self, "lvm_id")
-
-    @_builtins.property
     @pulumi.getter
     def nodes(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
         A list of nodes where this storage is available.
         """
         return pulumi.get(self, "nodes")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The unique identifier of the storage.
+        """
+        return pulumi.get(self, "resource_id")
 
     @_builtins.property
     @pulumi.getter

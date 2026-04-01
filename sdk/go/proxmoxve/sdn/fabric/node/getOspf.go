@@ -7,42 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // OSPF Fabric Node in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdn"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdn.GetOspf(ctx, &fabric/node.GetOspfArgs{
-//				FabricId: "main-fabric",
-//				NodeId:   "pve",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupOspf(ctx *pulumi.Context, args *LookupOspfArgs, opts ...pulumi.InvokeOption) (*LookupOspfResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOspfResult
-	err := ctx.Invoke("proxmoxve:Sdn/fabric/node/getOspf:getOspf", args, &rv, opts...)
+	err := ctx.Invoke("proxmoxve:sdn/fabric/node/getOspf:getOspf", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -61,7 +34,8 @@ type LookupOspfArgs struct {
 type LookupOspfResult struct {
 	// The unique identifier of the SDN fabric.
 	FabricId string `pulumi:"fabricId"`
-	Id       string `pulumi:"id"`
+	// The unique identifier of the SDN fabric node, in the format \n\n/\n\n.
+	Id string `pulumi:"id"`
 	// Set of interface names associated with the fabric node.
 	InterfaceNames []string `pulumi:"interfaceNames"`
 	// IPv4 address for the fabric node.
@@ -75,7 +49,7 @@ func LookupOspfOutput(ctx *pulumi.Context, args LookupOspfOutputArgs, opts ...pu
 		ApplyT(func(v interface{}) (LookupOspfResultOutput, error) {
 			args := v.(LookupOspfArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:Sdn/fabric/node/getOspf:getOspf", args, LookupOspfResultOutput{}, options).(LookupOspfResultOutput), nil
+			return ctx.InvokeOutput("proxmoxve:sdn/fabric/node/getOspf:getOspf", args, LookupOspfResultOutput{}, options).(LookupOspfResultOutput), nil
 		}).(LookupOspfResultOutput)
 }
 
@@ -111,6 +85,7 @@ func (o LookupOspfResultOutput) FabricId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOspfResult) string { return v.FabricId }).(pulumi.StringOutput)
 }
 
+// The unique identifier of the SDN fabric node, in the format \n\n/\n\n.
 func (o LookupOspfResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOspfResult) string { return v.Id }).(pulumi.StringOutput)
 }

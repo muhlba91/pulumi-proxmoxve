@@ -10,21 +10,34 @@ export const getServer: typeof import("./getServer").getServer = null as any;
 export const getServerOutput: typeof import("./getServer").getServerOutput = null as any;
 utilities.lazyLoad(exports, ["getServer","getServerOutput"], () => require("./getServer"));
 
-export { MetricsServerArgs, MetricsServerState } from "./metricsServer";
-export type MetricsServer = import("./metricsServer").MetricsServer;
-export const MetricsServer: typeof import("./metricsServer").MetricsServer = null as any;
-utilities.lazyLoad(exports, ["MetricsServer"], () => require("./metricsServer"));
+export { GetServerLegacyArgs, GetServerLegacyResult, GetServerLegacyOutputArgs } from "./getServerLegacy";
+export const getServerLegacy: typeof import("./getServerLegacy").getServerLegacy = null as any;
+export const getServerLegacyOutput: typeof import("./getServerLegacy").getServerLegacyOutput = null as any;
+utilities.lazyLoad(exports, ["getServerLegacy","getServerLegacyOutput"], () => require("./getServerLegacy"));
+
+export { ServerArgs, ServerState } from "./server";
+export type Server = import("./server").Server;
+export const Server: typeof import("./server").Server = null as any;
+utilities.lazyLoad(exports, ["Server"], () => require("./server"));
+
+export { ServerLegacyArgs, ServerLegacyState } from "./serverLegacy";
+export type ServerLegacy = import("./serverLegacy").ServerLegacy;
+export const ServerLegacy: typeof import("./serverLegacy").ServerLegacy = null as any;
+utilities.lazyLoad(exports, ["ServerLegacy"], () => require("./serverLegacy"));
 
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "proxmoxve:Metrics/metricsServer:MetricsServer":
-                return new MetricsServer(name, <any>undefined, { urn })
+            case "proxmoxve:metrics/server:Server":
+                return new Server(name, <any>undefined, { urn })
+            case "proxmoxve:metrics/serverLegacy:ServerLegacy":
+                return new ServerLegacy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("proxmoxve", "Metrics/metricsServer", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "metrics/server", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "metrics/serverLegacy", _module)

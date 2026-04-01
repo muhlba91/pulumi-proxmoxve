@@ -54,6 +54,9 @@ class GetOspfResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The unique identifier of the SDN fabric node, in the format \\n\\n/\\n\\n.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -100,16 +103,6 @@ def get_ospf(fabric_id: Optional[_builtins.str] = None,
     """
     OSPF Fabric Node in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    main = proxmoxve.Sdn.fabric.node.get_ospf(fabric_id="main-fabric",
-        node_id="pve")
-    ```
-
 
     :param _builtins.str fabric_id: The unique identifier of the SDN fabric.
     :param _builtins.str node_id: The unique identifier of the SDN fabric node.
@@ -118,7 +111,7 @@ def get_ospf(fabric_id: Optional[_builtins.str] = None,
     __args__['fabricId'] = fabric_id
     __args__['nodeId'] = node_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('proxmoxve:Sdn/fabric/node/getOspf:getOspf', __args__, opts=opts, typ=GetOspfResult).value
+    __ret__ = pulumi.runtime.invoke('proxmoxve:sdn/fabric/node/getOspf:getOspf', __args__, opts=opts, typ=GetOspfResult).value
 
     return AwaitableGetOspfResult(
         fabric_id=pulumi.get(__ret__, 'fabric_id'),
@@ -132,16 +125,6 @@ def get_ospf_output(fabric_id: Optional[pulumi.Input[_builtins.str]] = None,
     """
     OSPF Fabric Node in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    main = proxmoxve.Sdn.fabric.node.get_ospf(fabric_id="main-fabric",
-        node_id="pve")
-    ```
-
 
     :param _builtins.str fabric_id: The unique identifier of the SDN fabric.
     :param _builtins.str node_id: The unique identifier of the SDN fabric node.
@@ -150,7 +133,7 @@ def get_ospf_output(fabric_id: Optional[pulumi.Input[_builtins.str]] = None,
     __args__['fabricId'] = fabric_id
     __args__['nodeId'] = node_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Sdn/fabric/node/getOspf:getOspf', __args__, opts=opts, typ=GetOspfResult)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:sdn/fabric/node/getOspf:getOspf', __args__, opts=opts, typ=GetOspfResult)
     return __ret__.apply(lambda __response__: GetOspfResult(
         fabric_id=pulumi.get(__response__, 'fabric_id'),
         id=pulumi.get(__response__, 'id'),

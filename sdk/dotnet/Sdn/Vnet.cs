@@ -11,110 +11,8 @@ namespace Pulumi.ProxmoxVE.Sdn
 {
     /// <summary>
     /// Manages Proxmox VE SDN VNet.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using ProxmoxVE = Pulumi.ProxmoxVE;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var finalizer = new ProxmoxVE.Sdn.Applier("finalizer");
-    /// 
-    ///     // SDN Zone (Simple) - Basic zone for simple vnets
-    ///     var exampleZone1 = new ProxmoxVE.SDNZone.Simple("example_zone_1", new()
-    ///     {
-    ///         ZoneId = "zone1",
-    ///         Mtu = 1500,
-    ///         Dns = "1.1.1.1",
-    ///         DnsZone = "example.com",
-    ///         Ipam = "pve",
-    ///         ReverseDns = "1.1.1.1",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             finalizer,
-    ///         },
-    ///     });
-    /// 
-    ///     // SDN Zone (Simple) - Second zone for demonstration
-    ///     var exampleZone2 = new ProxmoxVE.SDNZone.Simple("example_zone_2", new()
-    ///     {
-    ///         ZoneId = "zone2",
-    ///         Mtu = 1500,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             finalizer,
-    ///         },
-    ///     });
-    /// 
-    ///     // Basic VNet (Simple)
-    ///     var basicVnet = new ProxmoxVE.Sdn.Vnet("basic_vnet", new()
-    ///     {
-    ///         VnetId = "vnet1",
-    ///         Zone = exampleZone1.ZoneId,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             finalizer,
-    ///         },
-    ///     });
-    /// 
-    ///     // VNet with Alias and Port Isolation
-    ///     var isolatedVnet = new ProxmoxVE.Sdn.Vnet("isolated_vnet", new()
-    ///     {
-    ///         VnetId = "vnet2",
-    ///         Zone = exampleZone2.ZoneId,
-    ///         Alias = "Isolated VNet",
-    ///         IsolatePorts = true,
-    ///         VlanAware = false,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             finalizer,
-    ///         },
-    ///     });
-    /// 
-    ///     // SDN Applier for all resources
-    ///     var vnetApplier = new ProxmoxVE.Sdn.Applier("vnet_applier", new()
-    ///     {
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             exampleZone1,
-    ///             exampleZone2,
-    ///             basicVnet,
-    ///             isolatedVnet,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// #!/usr/bin/env sh
-    /// 
-    /// SDN vnet can be imported using its unique identifier (vnet ID)
-    /// 
-    /// ```sh
-    /// $ pulumi import proxmoxve:Sdn/vnet:Vnet basic_vnet vnet1
-    /// ```
-    /// 
-    /// ```sh
-    /// $ pulumi import proxmoxve:Sdn/vnet:Vnet isolated_vnet vnet2
-    /// ```
     /// </summary>
-    [ProxmoxVEResourceType("proxmoxve:Sdn/vnet:Vnet")]
+    [ProxmoxVEResourceType("proxmoxve:sdn/vnet:Vnet")]
     public partial class Vnet : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -130,6 +28,12 @@ namespace Pulumi.ProxmoxVE.Sdn
         public Output<bool?> IsolatePorts { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier of the SDN VNet.
+        /// </summary>
+        [Output("resourceId")]
+        public Output<string> ResourceId { get; private set; } = null!;
+
+        /// <summary>
         /// Tag value for VLAN/VXLAN (can't be used with other zone types).
         /// </summary>
         [Output("tag")]
@@ -140,12 +44,6 @@ namespace Pulumi.ProxmoxVE.Sdn
         /// </summary>
         [Output("vlanAware")]
         public Output<bool?> VlanAware { get; private set; } = null!;
-
-        /// <summary>
-        /// The unique identifier of the SDN VNet.
-        /// </summary>
-        [Output("vnetId")]
-        public Output<string> VnetId { get; private set; } = null!;
 
         /// <summary>
         /// The zone to which this VNet belongs.
@@ -162,12 +60,12 @@ namespace Pulumi.ProxmoxVE.Sdn
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Vnet(string name, VnetArgs args, CustomResourceOptions? options = null)
-            : base("proxmoxve:Sdn/vnet:Vnet", name, args ?? new VnetArgs(), MakeResourceOptions(options, ""))
+            : base("proxmoxve:sdn/vnet:Vnet", name, args ?? new VnetArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Vnet(string name, Input<string> id, VnetState? state = null, CustomResourceOptions? options = null)
-            : base("proxmoxve:Sdn/vnet:Vnet", name, state, MakeResourceOptions(options, id))
+            : base("proxmoxve:sdn/vnet:Vnet", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -177,6 +75,10 @@ namespace Pulumi.ProxmoxVE.Sdn
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/muhlba91/pulumi-proxmoxve",
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "proxmox_virtual_environment_sdn_vnet" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -213,6 +115,12 @@ namespace Pulumi.ProxmoxVE.Sdn
         public Input<bool>? IsolatePorts { get; set; }
 
         /// <summary>
+        /// The unique identifier of the SDN VNet.
+        /// </summary>
+        [Input("resourceId", required: true)]
+        public Input<string> ResourceId { get; set; } = null!;
+
+        /// <summary>
         /// Tag value for VLAN/VXLAN (can't be used with other zone types).
         /// </summary>
         [Input("tag")]
@@ -223,12 +131,6 @@ namespace Pulumi.ProxmoxVE.Sdn
         /// </summary>
         [Input("vlanAware")]
         public Input<bool>? VlanAware { get; set; }
-
-        /// <summary>
-        /// The unique identifier of the SDN VNet.
-        /// </summary>
-        [Input("vnetId", required: true)]
-        public Input<string> VnetId { get; set; } = null!;
 
         /// <summary>
         /// The zone to which this VNet belongs.
@@ -257,6 +159,12 @@ namespace Pulumi.ProxmoxVE.Sdn
         public Input<bool>? IsolatePorts { get; set; }
 
         /// <summary>
+        /// The unique identifier of the SDN VNet.
+        /// </summary>
+        [Input("resourceId")]
+        public Input<string>? ResourceId { get; set; }
+
+        /// <summary>
         /// Tag value for VLAN/VXLAN (can't be used with other zone types).
         /// </summary>
         [Input("tag")]
@@ -267,12 +175,6 @@ namespace Pulumi.ProxmoxVE.Sdn
         /// </summary>
         [Input("vlanAware")]
         public Input<bool>? VlanAware { get; set; }
-
-        /// <summary>
-        /// The unique identifier of the SDN VNet.
-        /// </summary>
-        [Input("vnetId")]
-        public Input<string>? VnetId { get; set; }
 
         /// <summary>
         /// The zone to which this VNet belongs.

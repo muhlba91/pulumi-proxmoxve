@@ -43,6 +43,7 @@ class OptionsArgs:
                  notify: Optional[pulumi.Input['OptionsNotifyArgs']] = None):
         """
         The set of arguments for constructing a Options resource.
+
         :param pulumi.Input[_builtins.int] bandwidth_limit_clone: Clone I/O bandwidth limit in KiB/s.
         :param pulumi.Input[_builtins.int] bandwidth_limit_default: Default I/O bandwidth limit in KiB/s.
         :param pulumi.Input[_builtins.int] bandwidth_limit_migration: Migration I/O bandwidth limit in KiB/s.
@@ -53,7 +54,7 @@ class OptionsArgs:
         :param pulumi.Input[_builtins.bool] crs_ha_rebalance_on_start: Cluster resource scheduling setting for HA rebalance on start.
         :param pulumi.Input[_builtins.str] description: Datacenter description. Shown in the web-interface datacenter notes panel. This is saved as comment inside the configuration file.
         :param pulumi.Input[_builtins.str] email_from: email address to send notification from (default is root@$hostname).
-        :param pulumi.Input[_builtins.str] ha_shutdown_policy: Cluster wide HA shutdown policy (). Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
+        :param pulumi.Input[_builtins.str] ha_shutdown_policy: Cluster wide HA shutdown policy. Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
         :param pulumi.Input[_builtins.str] http_proxy: Specify external http proxy which is used for downloads (example: `http://username:password@host:port/`).
         :param pulumi.Input[_builtins.str] keyboard: Default keyboard layout for vnc server. Must be `de` | `de-ch` | `da` | `en-gb` | `en-us` | `es` | `fi` | `fr` | `fr-be` | `fr-ca` | `fr-ch` | `hu` | `is` | `it` | `ja` | `lt` | `mk` | `nl` | `no` | `pl` | `pt` | `pt-br` | `sv` | `sl` | `tr`.
         :param pulumi.Input[_builtins.str] language: Default GUI language. Must be `ca` | `da` | `de` | `en` | `es` | `eu` | `fa` | `fr` | `he` | `it` | `ja` | `nb` | `nn` | `pl` | `pt_BR` | `ru` | `sl` | `sv` | `tr` | `zh_CN` | `zh_TW`.
@@ -229,7 +230,7 @@ class OptionsArgs:
     @pulumi.getter(name="haShutdownPolicy")
     def ha_shutdown_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Cluster wide HA shutdown policy (). Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
+        Cluster wide HA shutdown policy. Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
         """
         return pulumi.get(self, "ha_shutdown_policy")
 
@@ -371,6 +372,7 @@ class _OptionsState:
                  notify: Optional[pulumi.Input['OptionsNotifyArgs']] = None):
         """
         Input properties used for looking up and filtering Options resources.
+
         :param pulumi.Input[_builtins.int] bandwidth_limit_clone: Clone I/O bandwidth limit in KiB/s.
         :param pulumi.Input[_builtins.int] bandwidth_limit_default: Default I/O bandwidth limit in KiB/s.
         :param pulumi.Input[_builtins.int] bandwidth_limit_migration: Migration I/O bandwidth limit in KiB/s.
@@ -381,7 +383,7 @@ class _OptionsState:
         :param pulumi.Input[_builtins.bool] crs_ha_rebalance_on_start: Cluster resource scheduling setting for HA rebalance on start.
         :param pulumi.Input[_builtins.str] description: Datacenter description. Shown in the web-interface datacenter notes panel. This is saved as comment inside the configuration file.
         :param pulumi.Input[_builtins.str] email_from: email address to send notification from (default is root@$hostname).
-        :param pulumi.Input[_builtins.str] ha_shutdown_policy: Cluster wide HA shutdown policy (). Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
+        :param pulumi.Input[_builtins.str] ha_shutdown_policy: Cluster wide HA shutdown policy. Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
         :param pulumi.Input[_builtins.str] http_proxy: Specify external http proxy which is used for downloads (example: `http://username:password@host:port/`).
         :param pulumi.Input[_builtins.str] keyboard: Default keyboard layout for vnc server. Must be `de` | `de-ch` | `da` | `en-gb` | `en-us` | `es` | `fi` | `fr` | `fr-be` | `fr-ca` | `fr-ch` | `hu` | `is` | `it` | `ja` | `lt` | `mk` | `nl` | `no` | `pl` | `pt` | `pt-br` | `sv` | `sl` | `tr`.
         :param pulumi.Input[_builtins.str] language: Default GUI language. Must be `ca` | `da` | `de` | `en` | `es` | `eu` | `fa` | `fr` | `he` | `it` | `ja` | `nb` | `nn` | `pl` | `pt_BR` | `ru` | `sl` | `sv` | `tr` | `zh_CN` | `zh_TW`.
@@ -557,7 +559,7 @@ class _OptionsState:
     @pulumi.getter(name="haShutdownPolicy")
     def ha_shutdown_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Cluster wide HA shutdown policy (). Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
+        Cluster wide HA shutdown policy. Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
         """
         return pulumi.get(self, "ha_shutdown_policy")
 
@@ -674,7 +676,7 @@ class _OptionsState:
         pulumi.set(self, "notify", value)
 
 
-@pulumi.type_token("proxmoxve:Cluster/options:Options")
+@pulumi.type_token("proxmoxve:cluster/options:Options")
 class Options(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -704,44 +706,6 @@ class Options(pulumi.CustomResource):
         """
         Manages Proxmox VE Cluster Datacenter options.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        options = proxmoxve.cluster.Options("options",
-            language="en",
-            keyboard="pl",
-            email_from="ged@gont.earthsea",
-            bandwidth_limit_migration=555555,
-            bandwidth_limit_default=666666,
-            max_workers=5,
-            migration_cidr="10.0.0.0/8",
-            migration_type="secure",
-            next_id={
-                "lower": 100,
-                "upper": 999999999,
-            },
-            notify={
-                "ha_fencing_mode": "never",
-                "ha_fencing_target": "default-matcher",
-                "package_updates": "always",
-                "package_updates_target": "default-matcher",
-                "package_replication": "always",
-                "package_replication_target": "default-matcher",
-            })
-        ```
-
-        ## Import
-
-        #!/usr/bin/env sh
-
-        Cluster options are global and can be imported using e.g.:
-
-        ```sh
-        $ pulumi import proxmoxve:Cluster/options:Options options cluster
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -755,7 +719,7 @@ class Options(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] crs_ha_rebalance_on_start: Cluster resource scheduling setting for HA rebalance on start.
         :param pulumi.Input[_builtins.str] description: Datacenter description. Shown in the web-interface datacenter notes panel. This is saved as comment inside the configuration file.
         :param pulumi.Input[_builtins.str] email_from: email address to send notification from (default is root@$hostname).
-        :param pulumi.Input[_builtins.str] ha_shutdown_policy: Cluster wide HA shutdown policy (). Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
+        :param pulumi.Input[_builtins.str] ha_shutdown_policy: Cluster wide HA shutdown policy. Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
         :param pulumi.Input[_builtins.str] http_proxy: Specify external http proxy which is used for downloads (example: `http://username:password@host:port/`).
         :param pulumi.Input[_builtins.str] keyboard: Default keyboard layout for vnc server. Must be `de` | `de-ch` | `da` | `en-gb` | `en-us` | `es` | `fi` | `fr` | `fr-be` | `fr-ca` | `fr-ch` | `hu` | `is` | `it` | `ja` | `lt` | `mk` | `nl` | `no` | `pl` | `pt` | `pt-br` | `sv` | `sl` | `tr`.
         :param pulumi.Input[_builtins.str] language: Default GUI language. Must be `ca` | `da` | `de` | `en` | `es` | `eu` | `fa` | `fr` | `he` | `it` | `ja` | `nb` | `nn` | `pl` | `pt_BR` | `ru` | `sl` | `sv` | `tr` | `zh_CN` | `zh_TW`.
@@ -775,44 +739,6 @@ class Options(pulumi.CustomResource):
         """
         Manages Proxmox VE Cluster Datacenter options.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        options = proxmoxve.cluster.Options("options",
-            language="en",
-            keyboard="pl",
-            email_from="ged@gont.earthsea",
-            bandwidth_limit_migration=555555,
-            bandwidth_limit_default=666666,
-            max_workers=5,
-            migration_cidr="10.0.0.0/8",
-            migration_type="secure",
-            next_id={
-                "lower": 100,
-                "upper": 999999999,
-            },
-            notify={
-                "ha_fencing_mode": "never",
-                "ha_fencing_target": "default-matcher",
-                "package_updates": "always",
-                "package_updates_target": "default-matcher",
-                "package_replication": "always",
-                "package_replication_target": "default-matcher",
-            })
-        ```
-
-        ## Import
-
-        #!/usr/bin/env sh
-
-        Cluster options are global and can be imported using e.g.:
-
-        ```sh
-        $ pulumi import proxmoxve:Cluster/options:Options options cluster
-        ```
 
         :param str resource_name: The name of the resource.
         :param OptionsArgs args: The arguments to use to populate this resource's properties.
@@ -879,7 +805,7 @@ class Options(pulumi.CustomResource):
             __props__.__dict__["next_id"] = next_id
             __props__.__dict__["notify"] = notify
         super(Options, __self__).__init__(
-            'proxmoxve:Cluster/options:Options',
+            'proxmoxve:cluster/options:Options',
             resource_name,
             __props__,
             opts)
@@ -925,7 +851,7 @@ class Options(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] crs_ha_rebalance_on_start: Cluster resource scheduling setting for HA rebalance on start.
         :param pulumi.Input[_builtins.str] description: Datacenter description. Shown in the web-interface datacenter notes panel. This is saved as comment inside the configuration file.
         :param pulumi.Input[_builtins.str] email_from: email address to send notification from (default is root@$hostname).
-        :param pulumi.Input[_builtins.str] ha_shutdown_policy: Cluster wide HA shutdown policy (). Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
+        :param pulumi.Input[_builtins.str] ha_shutdown_policy: Cluster wide HA shutdown policy. Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
         :param pulumi.Input[_builtins.str] http_proxy: Specify external http proxy which is used for downloads (example: `http://username:password@host:port/`).
         :param pulumi.Input[_builtins.str] keyboard: Default keyboard layout for vnc server. Must be `de` | `de-ch` | `da` | `en-gb` | `en-us` | `es` | `fi` | `fr` | `fr-be` | `fr-ca` | `fr-ch` | `hu` | `is` | `it` | `ja` | `lt` | `mk` | `nl` | `no` | `pl` | `pt` | `pt-br` | `sv` | `sl` | `tr`.
         :param pulumi.Input[_builtins.str] language: Default GUI language. Must be `ca` | `da` | `de` | `en` | `es` | `eu` | `fa` | `fr` | `he` | `it` | `ja` | `nb` | `nn` | `pl` | `pt_BR` | `ru` | `sl` | `sv` | `tr` | `zh_CN` | `zh_TW`.
@@ -1046,7 +972,7 @@ class Options(pulumi.CustomResource):
     @pulumi.getter(name="haShutdownPolicy")
     def ha_shutdown_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Cluster wide HA shutdown policy (). Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
+        Cluster wide HA shutdown policy. Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
         """
         return pulumi.get(self, "ha_shutdown_policy")
 

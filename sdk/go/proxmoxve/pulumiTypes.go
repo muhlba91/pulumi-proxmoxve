@@ -7,117 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = internal.GetEnvOrDefault
-
-type HostsEntry struct {
-	// The IP address.
-	Address string `pulumi:"address"`
-	// The hostnames.
-	Hostnames []string `pulumi:"hostnames"`
-}
-
-// HostsEntryInput is an input type that accepts HostsEntryArgs and HostsEntryOutput values.
-// You can construct a concrete instance of `HostsEntryInput` via:
-//
-//	HostsEntryArgs{...}
-type HostsEntryInput interface {
-	pulumi.Input
-
-	ToHostsEntryOutput() HostsEntryOutput
-	ToHostsEntryOutputWithContext(context.Context) HostsEntryOutput
-}
-
-type HostsEntryArgs struct {
-	// The IP address.
-	Address pulumi.StringInput `pulumi:"address"`
-	// The hostnames.
-	Hostnames pulumi.StringArrayInput `pulumi:"hostnames"`
-}
-
-func (HostsEntryArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*HostsEntry)(nil)).Elem()
-}
-
-func (i HostsEntryArgs) ToHostsEntryOutput() HostsEntryOutput {
-	return i.ToHostsEntryOutputWithContext(context.Background())
-}
-
-func (i HostsEntryArgs) ToHostsEntryOutputWithContext(ctx context.Context) HostsEntryOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HostsEntryOutput)
-}
-
-// HostsEntryArrayInput is an input type that accepts HostsEntryArray and HostsEntryArrayOutput values.
-// You can construct a concrete instance of `HostsEntryArrayInput` via:
-//
-//	HostsEntryArray{ HostsEntryArgs{...} }
-type HostsEntryArrayInput interface {
-	pulumi.Input
-
-	ToHostsEntryArrayOutput() HostsEntryArrayOutput
-	ToHostsEntryArrayOutputWithContext(context.Context) HostsEntryArrayOutput
-}
-
-type HostsEntryArray []HostsEntryInput
-
-func (HostsEntryArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]HostsEntry)(nil)).Elem()
-}
-
-func (i HostsEntryArray) ToHostsEntryArrayOutput() HostsEntryArrayOutput {
-	return i.ToHostsEntryArrayOutputWithContext(context.Background())
-}
-
-func (i HostsEntryArray) ToHostsEntryArrayOutputWithContext(ctx context.Context) HostsEntryArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HostsEntryArrayOutput)
-}
-
-type HostsEntryOutput struct{ *pulumi.OutputState }
-
-func (HostsEntryOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HostsEntry)(nil)).Elem()
-}
-
-func (o HostsEntryOutput) ToHostsEntryOutput() HostsEntryOutput {
-	return o
-}
-
-func (o HostsEntryOutput) ToHostsEntryOutputWithContext(ctx context.Context) HostsEntryOutput {
-	return o
-}
-
-// The IP address.
-func (o HostsEntryOutput) Address() pulumi.StringOutput {
-	return o.ApplyT(func(v HostsEntry) string { return v.Address }).(pulumi.StringOutput)
-}
-
-// The hostnames.
-func (o HostsEntryOutput) Hostnames() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v HostsEntry) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
-}
-
-type HostsEntryArrayOutput struct{ *pulumi.OutputState }
-
-func (HostsEntryArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]HostsEntry)(nil)).Elem()
-}
-
-func (o HostsEntryArrayOutput) ToHostsEntryArrayOutput() HostsEntryArrayOutput {
-	return o
-}
-
-func (o HostsEntryArrayOutput) ToHostsEntryArrayOutputWithContext(ctx context.Context) HostsEntryArrayOutput {
-	return o
-}
-
-func (o HostsEntryArrayOutput) Index(i pulumi.IntInput) HostsEntryOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HostsEntry {
-		return vs[0].([]HostsEntry)[vs[1].(int)]
-	}).(HostsEntryOutput)
-}
 
 type ProviderSsh struct {
 	// Whether to use the SSH agent for authentication. Takes precedence over the `privateKey` and `password` fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or `false` if not set.
@@ -128,7 +22,7 @@ type ProviderSsh struct {
 	AgentSocket *string `pulumi:"agentSocket"`
 	// Overrides for SSH connection configuration for a Proxmox VE node.
 	Nodes []ProviderSshNode `pulumi:"nodes"`
-	// The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
+	// The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block when using username/password authentication. Default has no effect when using API token authentication, as there is no password to inherit. Can also be sourced from `PROXMOX_VE_SSH_PASSWORD`.
 	Password *string `pulumi:"password"`
 	// The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
 	PrivateKey *string `pulumi:"privateKey"`
@@ -162,7 +56,7 @@ type ProviderSshArgs struct {
 	AgentSocket pulumi.StringPtrInput `pulumi:"agentSocket"`
 	// Overrides for SSH connection configuration for a Proxmox VE node.
 	Nodes ProviderSshNodeArrayInput `pulumi:"nodes"`
-	// The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
+	// The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block when using username/password authentication. Default has no effect when using API token authentication, as there is no password to inherit. Can also be sourced from `PROXMOX_VE_SSH_PASSWORD`.
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
 	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
@@ -273,7 +167,7 @@ func (o ProviderSshOutput) Nodes() ProviderSshNodeArrayOutput {
 	return o.ApplyT(func(v ProviderSsh) []ProviderSshNode { return v.Nodes }).(ProviderSshNodeArrayOutput)
 }
 
-// The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
+// The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block when using username/password authentication. Default has no effect when using API token authentication, as there is no password to inherit. Can also be sourced from `PROXMOX_VE_SSH_PASSWORD`.
 func (o ProviderSshOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderSsh) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
@@ -367,7 +261,7 @@ func (o ProviderSshPtrOutput) Nodes() ProviderSshNodeArrayOutput {
 	}).(ProviderSshNodeArrayOutput)
 }
 
-// The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
+// The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block when using username/password authentication. Default has no effect when using API token authentication, as there is no password to inherit. Can also be sourced from `PROXMOX_VE_SSH_PASSWORD`.
 func (o ProviderSshPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ProviderSsh) *string {
 		if v == nil {
@@ -542,267 +436,3079 @@ func (o ProviderSshNodeArrayOutput) Index(i pulumi.IntInput) ProviderSshNodeOutp
 	}).(ProviderSshNodeOutput)
 }
 
-type GetContainersContainer struct {
-	// The container name.
-	Name string `pulumi:"name"`
-	// The node name. All cluster nodes will be queried in case this is omitted
+type Vm2LegacyCdrom struct {
+	// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+	FileId *string `pulumi:"fileId"`
+}
+
+// Vm2LegacyCdromInput is an input type that accepts Vm2LegacyCdromArgs and Vm2LegacyCdromOutput values.
+// You can construct a concrete instance of `Vm2LegacyCdromInput` via:
+//
+//	Vm2LegacyCdromArgs{...}
+type Vm2LegacyCdromInput interface {
+	pulumi.Input
+
+	ToVm2LegacyCdromOutput() Vm2LegacyCdromOutput
+	ToVm2LegacyCdromOutputWithContext(context.Context) Vm2LegacyCdromOutput
+}
+
+type Vm2LegacyCdromArgs struct {
+	// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+	FileId pulumi.StringPtrInput `pulumi:"fileId"`
+}
+
+func (Vm2LegacyCdromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vm2LegacyCdrom)(nil)).Elem()
+}
+
+func (i Vm2LegacyCdromArgs) ToVm2LegacyCdromOutput() Vm2LegacyCdromOutput {
+	return i.ToVm2LegacyCdromOutputWithContext(context.Background())
+}
+
+func (i Vm2LegacyCdromArgs) ToVm2LegacyCdromOutputWithContext(ctx context.Context) Vm2LegacyCdromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Vm2LegacyCdromOutput)
+}
+
+// Vm2LegacyCdromMapInput is an input type that accepts Vm2LegacyCdromMap and Vm2LegacyCdromMapOutput values.
+// You can construct a concrete instance of `Vm2LegacyCdromMapInput` via:
+//
+//	Vm2LegacyCdromMap{ "key": Vm2LegacyCdromArgs{...} }
+type Vm2LegacyCdromMapInput interface {
+	pulumi.Input
+
+	ToVm2LegacyCdromMapOutput() Vm2LegacyCdromMapOutput
+	ToVm2LegacyCdromMapOutputWithContext(context.Context) Vm2LegacyCdromMapOutput
+}
+
+type Vm2LegacyCdromMap map[string]Vm2LegacyCdromInput
+
+func (Vm2LegacyCdromMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Vm2LegacyCdrom)(nil)).Elem()
+}
+
+func (i Vm2LegacyCdromMap) ToVm2LegacyCdromMapOutput() Vm2LegacyCdromMapOutput {
+	return i.ToVm2LegacyCdromMapOutputWithContext(context.Background())
+}
+
+func (i Vm2LegacyCdromMap) ToVm2LegacyCdromMapOutputWithContext(ctx context.Context) Vm2LegacyCdromMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Vm2LegacyCdromMapOutput)
+}
+
+type Vm2LegacyCdromOutput struct{ *pulumi.OutputState }
+
+func (Vm2LegacyCdromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vm2LegacyCdrom)(nil)).Elem()
+}
+
+func (o Vm2LegacyCdromOutput) ToVm2LegacyCdromOutput() Vm2LegacyCdromOutput {
+	return o
+}
+
+func (o Vm2LegacyCdromOutput) ToVm2LegacyCdromOutputWithContext(ctx context.Context) Vm2LegacyCdromOutput {
+	return o
+}
+
+// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+func (o Vm2LegacyCdromOutput) FileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Vm2LegacyCdrom) *string { return v.FileId }).(pulumi.StringPtrOutput)
+}
+
+type Vm2LegacyCdromMapOutput struct{ *pulumi.OutputState }
+
+func (Vm2LegacyCdromMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]Vm2LegacyCdrom)(nil)).Elem()
+}
+
+func (o Vm2LegacyCdromMapOutput) ToVm2LegacyCdromMapOutput() Vm2LegacyCdromMapOutput {
+	return o
+}
+
+func (o Vm2LegacyCdromMapOutput) ToVm2LegacyCdromMapOutputWithContext(ctx context.Context) Vm2LegacyCdromMapOutput {
+	return o
+}
+
+func (o Vm2LegacyCdromMapOutput) MapIndex(k pulumi.StringInput) Vm2LegacyCdromOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) Vm2LegacyCdrom {
+		return vs[0].(map[string]Vm2LegacyCdrom)[vs[1].(string)]
+	}).(Vm2LegacyCdromOutput)
+}
+
+type Vm2LegacyCpu struct {
+	// The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+	Affinity *string `pulumi:"affinity"`
+	// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
+	Architecture *string `pulumi:"architecture"`
+	// The number of CPU cores per socket (defaults to `1`).
+	Cores *int `pulumi:"cores"`
+	// Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+	Flags []string `pulumi:"flags"`
+	// The number of hotplugged vCPUs (defaults to `0`).
+	Hotplugged *int `pulumi:"hotplugged"`
+	// Limit of CPU usage (defaults to `0` which means no limit).
+	Limit *float64 `pulumi:"limit"`
+	// Enable NUMA (defaults to `false`).
+	Numa *bool `pulumi:"numa"`
+	// The number of CPU sockets (defaults to `1`).
+	Sockets *int `pulumi:"sockets"`
+	// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+	Type *string `pulumi:"type"`
+	// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+	Units *int `pulumi:"units"`
+}
+
+// Vm2LegacyCpuInput is an input type that accepts Vm2LegacyCpuArgs and Vm2LegacyCpuOutput values.
+// You can construct a concrete instance of `Vm2LegacyCpuInput` via:
+//
+//	Vm2LegacyCpuArgs{...}
+type Vm2LegacyCpuInput interface {
+	pulumi.Input
+
+	ToVm2LegacyCpuOutput() Vm2LegacyCpuOutput
+	ToVm2LegacyCpuOutputWithContext(context.Context) Vm2LegacyCpuOutput
+}
+
+type Vm2LegacyCpuArgs struct {
+	// The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+	Affinity pulumi.StringPtrInput `pulumi:"affinity"`
+	// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
+	Architecture pulumi.StringPtrInput `pulumi:"architecture"`
+	// The number of CPU cores per socket (defaults to `1`).
+	Cores pulumi.IntPtrInput `pulumi:"cores"`
+	// Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+	Flags pulumi.StringArrayInput `pulumi:"flags"`
+	// The number of hotplugged vCPUs (defaults to `0`).
+	Hotplugged pulumi.IntPtrInput `pulumi:"hotplugged"`
+	// Limit of CPU usage (defaults to `0` which means no limit).
+	Limit pulumi.Float64PtrInput `pulumi:"limit"`
+	// Enable NUMA (defaults to `false`).
+	Numa pulumi.BoolPtrInput `pulumi:"numa"`
+	// The number of CPU sockets (defaults to `1`).
+	Sockets pulumi.IntPtrInput `pulumi:"sockets"`
+	// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+	Units pulumi.IntPtrInput `pulumi:"units"`
+}
+
+func (Vm2LegacyCpuArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vm2LegacyCpu)(nil)).Elem()
+}
+
+func (i Vm2LegacyCpuArgs) ToVm2LegacyCpuOutput() Vm2LegacyCpuOutput {
+	return i.ToVm2LegacyCpuOutputWithContext(context.Background())
+}
+
+func (i Vm2LegacyCpuArgs) ToVm2LegacyCpuOutputWithContext(ctx context.Context) Vm2LegacyCpuOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Vm2LegacyCpuOutput)
+}
+
+func (i Vm2LegacyCpuArgs) ToVm2LegacyCpuPtrOutput() Vm2LegacyCpuPtrOutput {
+	return i.ToVm2LegacyCpuPtrOutputWithContext(context.Background())
+}
+
+func (i Vm2LegacyCpuArgs) ToVm2LegacyCpuPtrOutputWithContext(ctx context.Context) Vm2LegacyCpuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Vm2LegacyCpuOutput).ToVm2LegacyCpuPtrOutputWithContext(ctx)
+}
+
+// Vm2LegacyCpuPtrInput is an input type that accepts Vm2LegacyCpuArgs, Vm2LegacyCpuPtr and Vm2LegacyCpuPtrOutput values.
+// You can construct a concrete instance of `Vm2LegacyCpuPtrInput` via:
+//
+//	        Vm2LegacyCpuArgs{...}
+//
+//	or:
+//
+//	        nil
+type Vm2LegacyCpuPtrInput interface {
+	pulumi.Input
+
+	ToVm2LegacyCpuPtrOutput() Vm2LegacyCpuPtrOutput
+	ToVm2LegacyCpuPtrOutputWithContext(context.Context) Vm2LegacyCpuPtrOutput
+}
+
+type vm2LegacyCpuPtrType Vm2LegacyCpuArgs
+
+func Vm2LegacyCpuPtr(v *Vm2LegacyCpuArgs) Vm2LegacyCpuPtrInput {
+	return (*vm2LegacyCpuPtrType)(v)
+}
+
+func (*vm2LegacyCpuPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Vm2LegacyCpu)(nil)).Elem()
+}
+
+func (i *vm2LegacyCpuPtrType) ToVm2LegacyCpuPtrOutput() Vm2LegacyCpuPtrOutput {
+	return i.ToVm2LegacyCpuPtrOutputWithContext(context.Background())
+}
+
+func (i *vm2LegacyCpuPtrType) ToVm2LegacyCpuPtrOutputWithContext(ctx context.Context) Vm2LegacyCpuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Vm2LegacyCpuPtrOutput)
+}
+
+type Vm2LegacyCpuOutput struct{ *pulumi.OutputState }
+
+func (Vm2LegacyCpuOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vm2LegacyCpu)(nil)).Elem()
+}
+
+func (o Vm2LegacyCpuOutput) ToVm2LegacyCpuOutput() Vm2LegacyCpuOutput {
+	return o
+}
+
+func (o Vm2LegacyCpuOutput) ToVm2LegacyCpuOutputWithContext(ctx context.Context) Vm2LegacyCpuOutput {
+	return o
+}
+
+func (o Vm2LegacyCpuOutput) ToVm2LegacyCpuPtrOutput() Vm2LegacyCpuPtrOutput {
+	return o.ToVm2LegacyCpuPtrOutputWithContext(context.Background())
+}
+
+func (o Vm2LegacyCpuOutput) ToVm2LegacyCpuPtrOutputWithContext(ctx context.Context) Vm2LegacyCpuPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Vm2LegacyCpu) *Vm2LegacyCpu {
+		return &v
+	}).(Vm2LegacyCpuPtrOutput)
+}
+
+// The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+func (o Vm2LegacyCpuOutput) Affinity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Vm2LegacyCpu) *string { return v.Affinity }).(pulumi.StringPtrOutput)
+}
+
+// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
+func (o Vm2LegacyCpuOutput) Architecture() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Vm2LegacyCpu) *string { return v.Architecture }).(pulumi.StringPtrOutput)
+}
+
+// The number of CPU cores per socket (defaults to `1`).
+func (o Vm2LegacyCpuOutput) Cores() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Vm2LegacyCpu) *int { return v.Cores }).(pulumi.IntPtrOutput)
+}
+
+// Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+func (o Vm2LegacyCpuOutput) Flags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Vm2LegacyCpu) []string { return v.Flags }).(pulumi.StringArrayOutput)
+}
+
+// The number of hotplugged vCPUs (defaults to `0`).
+func (o Vm2LegacyCpuOutput) Hotplugged() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Vm2LegacyCpu) *int { return v.Hotplugged }).(pulumi.IntPtrOutput)
+}
+
+// Limit of CPU usage (defaults to `0` which means no limit).
+func (o Vm2LegacyCpuOutput) Limit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v Vm2LegacyCpu) *float64 { return v.Limit }).(pulumi.Float64PtrOutput)
+}
+
+// Enable NUMA (defaults to `false`).
+func (o Vm2LegacyCpuOutput) Numa() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Vm2LegacyCpu) *bool { return v.Numa }).(pulumi.BoolPtrOutput)
+}
+
+// The number of CPU sockets (defaults to `1`).
+func (o Vm2LegacyCpuOutput) Sockets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Vm2LegacyCpu) *int { return v.Sockets }).(pulumi.IntPtrOutput)
+}
+
+// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+func (o Vm2LegacyCpuOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Vm2LegacyCpu) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+func (o Vm2LegacyCpuOutput) Units() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Vm2LegacyCpu) *int { return v.Units }).(pulumi.IntPtrOutput)
+}
+
+type Vm2LegacyCpuPtrOutput struct{ *pulumi.OutputState }
+
+func (Vm2LegacyCpuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Vm2LegacyCpu)(nil)).Elem()
+}
+
+func (o Vm2LegacyCpuPtrOutput) ToVm2LegacyCpuPtrOutput() Vm2LegacyCpuPtrOutput {
+	return o
+}
+
+func (o Vm2LegacyCpuPtrOutput) ToVm2LegacyCpuPtrOutputWithContext(ctx context.Context) Vm2LegacyCpuPtrOutput {
+	return o
+}
+
+func (o Vm2LegacyCpuPtrOutput) Elem() Vm2LegacyCpuOutput {
+	return o.ApplyT(func(v *Vm2LegacyCpu) Vm2LegacyCpu {
+		if v != nil {
+			return *v
+		}
+		var ret Vm2LegacyCpu
+		return ret
+	}).(Vm2LegacyCpuOutput)
+}
+
+// The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+func (o Vm2LegacyCpuPtrOutput) Affinity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Vm2LegacyCpu) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Affinity
+	}).(pulumi.StringPtrOutput)
+}
+
+// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
+func (o Vm2LegacyCpuPtrOutput) Architecture() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Vm2LegacyCpu) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Architecture
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of CPU cores per socket (defaults to `1`).
+func (o Vm2LegacyCpuPtrOutput) Cores() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Vm2LegacyCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Cores
+	}).(pulumi.IntPtrOutput)
+}
+
+// Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+func (o Vm2LegacyCpuPtrOutput) Flags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Vm2LegacyCpu) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Flags
+	}).(pulumi.StringArrayOutput)
+}
+
+// The number of hotplugged vCPUs (defaults to `0`).
+func (o Vm2LegacyCpuPtrOutput) Hotplugged() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Vm2LegacyCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hotplugged
+	}).(pulumi.IntPtrOutput)
+}
+
+// Limit of CPU usage (defaults to `0` which means no limit).
+func (o Vm2LegacyCpuPtrOutput) Limit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *Vm2LegacyCpu) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Limit
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Enable NUMA (defaults to `false`).
+func (o Vm2LegacyCpuPtrOutput) Numa() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Vm2LegacyCpu) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Numa
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The number of CPU sockets (defaults to `1`).
+func (o Vm2LegacyCpuPtrOutput) Sockets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Vm2LegacyCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Sockets
+	}).(pulumi.IntPtrOutput)
+}
+
+// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+func (o Vm2LegacyCpuPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Vm2LegacyCpu) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+func (o Vm2LegacyCpuPtrOutput) Units() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Vm2LegacyCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Units
+	}).(pulumi.IntPtrOutput)
+}
+
+type Vm2LegacyRng struct {
+	// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+	MaxBytes *int `pulumi:"maxBytes"`
+	// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+	Period *int `pulumi:"period"`
+	// The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+	Source *string `pulumi:"source"`
+}
+
+// Vm2LegacyRngInput is an input type that accepts Vm2LegacyRngArgs and Vm2LegacyRngOutput values.
+// You can construct a concrete instance of `Vm2LegacyRngInput` via:
+//
+//	Vm2LegacyRngArgs{...}
+type Vm2LegacyRngInput interface {
+	pulumi.Input
+
+	ToVm2LegacyRngOutput() Vm2LegacyRngOutput
+	ToVm2LegacyRngOutputWithContext(context.Context) Vm2LegacyRngOutput
+}
+
+type Vm2LegacyRngArgs struct {
+	// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+	MaxBytes pulumi.IntPtrInput `pulumi:"maxBytes"`
+	// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+	Period pulumi.IntPtrInput `pulumi:"period"`
+	// The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+	Source pulumi.StringPtrInput `pulumi:"source"`
+}
+
+func (Vm2LegacyRngArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vm2LegacyRng)(nil)).Elem()
+}
+
+func (i Vm2LegacyRngArgs) ToVm2LegacyRngOutput() Vm2LegacyRngOutput {
+	return i.ToVm2LegacyRngOutputWithContext(context.Background())
+}
+
+func (i Vm2LegacyRngArgs) ToVm2LegacyRngOutputWithContext(ctx context.Context) Vm2LegacyRngOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Vm2LegacyRngOutput)
+}
+
+func (i Vm2LegacyRngArgs) ToVm2LegacyRngPtrOutput() Vm2LegacyRngPtrOutput {
+	return i.ToVm2LegacyRngPtrOutputWithContext(context.Background())
+}
+
+func (i Vm2LegacyRngArgs) ToVm2LegacyRngPtrOutputWithContext(ctx context.Context) Vm2LegacyRngPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Vm2LegacyRngOutput).ToVm2LegacyRngPtrOutputWithContext(ctx)
+}
+
+// Vm2LegacyRngPtrInput is an input type that accepts Vm2LegacyRngArgs, Vm2LegacyRngPtr and Vm2LegacyRngPtrOutput values.
+// You can construct a concrete instance of `Vm2LegacyRngPtrInput` via:
+//
+//	        Vm2LegacyRngArgs{...}
+//
+//	or:
+//
+//	        nil
+type Vm2LegacyRngPtrInput interface {
+	pulumi.Input
+
+	ToVm2LegacyRngPtrOutput() Vm2LegacyRngPtrOutput
+	ToVm2LegacyRngPtrOutputWithContext(context.Context) Vm2LegacyRngPtrOutput
+}
+
+type vm2LegacyRngPtrType Vm2LegacyRngArgs
+
+func Vm2LegacyRngPtr(v *Vm2LegacyRngArgs) Vm2LegacyRngPtrInput {
+	return (*vm2LegacyRngPtrType)(v)
+}
+
+func (*vm2LegacyRngPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Vm2LegacyRng)(nil)).Elem()
+}
+
+func (i *vm2LegacyRngPtrType) ToVm2LegacyRngPtrOutput() Vm2LegacyRngPtrOutput {
+	return i.ToVm2LegacyRngPtrOutputWithContext(context.Background())
+}
+
+func (i *vm2LegacyRngPtrType) ToVm2LegacyRngPtrOutputWithContext(ctx context.Context) Vm2LegacyRngPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Vm2LegacyRngPtrOutput)
+}
+
+type Vm2LegacyRngOutput struct{ *pulumi.OutputState }
+
+func (Vm2LegacyRngOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vm2LegacyRng)(nil)).Elem()
+}
+
+func (o Vm2LegacyRngOutput) ToVm2LegacyRngOutput() Vm2LegacyRngOutput {
+	return o
+}
+
+func (o Vm2LegacyRngOutput) ToVm2LegacyRngOutputWithContext(ctx context.Context) Vm2LegacyRngOutput {
+	return o
+}
+
+func (o Vm2LegacyRngOutput) ToVm2LegacyRngPtrOutput() Vm2LegacyRngPtrOutput {
+	return o.ToVm2LegacyRngPtrOutputWithContext(context.Background())
+}
+
+func (o Vm2LegacyRngOutput) ToVm2LegacyRngPtrOutputWithContext(ctx context.Context) Vm2LegacyRngPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Vm2LegacyRng) *Vm2LegacyRng {
+		return &v
+	}).(Vm2LegacyRngPtrOutput)
+}
+
+// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+func (o Vm2LegacyRngOutput) MaxBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Vm2LegacyRng) *int { return v.MaxBytes }).(pulumi.IntPtrOutput)
+}
+
+// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+func (o Vm2LegacyRngOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Vm2LegacyRng) *int { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+func (o Vm2LegacyRngOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Vm2LegacyRng) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+type Vm2LegacyRngPtrOutput struct{ *pulumi.OutputState }
+
+func (Vm2LegacyRngPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Vm2LegacyRng)(nil)).Elem()
+}
+
+func (o Vm2LegacyRngPtrOutput) ToVm2LegacyRngPtrOutput() Vm2LegacyRngPtrOutput {
+	return o
+}
+
+func (o Vm2LegacyRngPtrOutput) ToVm2LegacyRngPtrOutputWithContext(ctx context.Context) Vm2LegacyRngPtrOutput {
+	return o
+}
+
+func (o Vm2LegacyRngPtrOutput) Elem() Vm2LegacyRngOutput {
+	return o.ApplyT(func(v *Vm2LegacyRng) Vm2LegacyRng {
+		if v != nil {
+			return *v
+		}
+		var ret Vm2LegacyRng
+		return ret
+	}).(Vm2LegacyRngOutput)
+}
+
+// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+func (o Vm2LegacyRngPtrOutput) MaxBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Vm2LegacyRng) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxBytes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+func (o Vm2LegacyRngPtrOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Vm2LegacyRng) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Period
+	}).(pulumi.IntPtrOutput)
+}
+
+// The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+func (o Vm2LegacyRngPtrOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Vm2LegacyRng) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Source
+	}).(pulumi.StringPtrOutput)
+}
+
+type Vm2LegacyTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// Vm2LegacyTimeoutsInput is an input type that accepts Vm2LegacyTimeoutsArgs and Vm2LegacyTimeoutsOutput values.
+// You can construct a concrete instance of `Vm2LegacyTimeoutsInput` via:
+//
+//	Vm2LegacyTimeoutsArgs{...}
+type Vm2LegacyTimeoutsInput interface {
+	pulumi.Input
+
+	ToVm2LegacyTimeoutsOutput() Vm2LegacyTimeoutsOutput
+	ToVm2LegacyTimeoutsOutputWithContext(context.Context) Vm2LegacyTimeoutsOutput
+}
+
+type Vm2LegacyTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (Vm2LegacyTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vm2LegacyTimeouts)(nil)).Elem()
+}
+
+func (i Vm2LegacyTimeoutsArgs) ToVm2LegacyTimeoutsOutput() Vm2LegacyTimeoutsOutput {
+	return i.ToVm2LegacyTimeoutsOutputWithContext(context.Background())
+}
+
+func (i Vm2LegacyTimeoutsArgs) ToVm2LegacyTimeoutsOutputWithContext(ctx context.Context) Vm2LegacyTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Vm2LegacyTimeoutsOutput)
+}
+
+func (i Vm2LegacyTimeoutsArgs) ToVm2LegacyTimeoutsPtrOutput() Vm2LegacyTimeoutsPtrOutput {
+	return i.ToVm2LegacyTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i Vm2LegacyTimeoutsArgs) ToVm2LegacyTimeoutsPtrOutputWithContext(ctx context.Context) Vm2LegacyTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Vm2LegacyTimeoutsOutput).ToVm2LegacyTimeoutsPtrOutputWithContext(ctx)
+}
+
+// Vm2LegacyTimeoutsPtrInput is an input type that accepts Vm2LegacyTimeoutsArgs, Vm2LegacyTimeoutsPtr and Vm2LegacyTimeoutsPtrOutput values.
+// You can construct a concrete instance of `Vm2LegacyTimeoutsPtrInput` via:
+//
+//	        Vm2LegacyTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type Vm2LegacyTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToVm2LegacyTimeoutsPtrOutput() Vm2LegacyTimeoutsPtrOutput
+	ToVm2LegacyTimeoutsPtrOutputWithContext(context.Context) Vm2LegacyTimeoutsPtrOutput
+}
+
+type vm2LegacyTimeoutsPtrType Vm2LegacyTimeoutsArgs
+
+func Vm2LegacyTimeoutsPtr(v *Vm2LegacyTimeoutsArgs) Vm2LegacyTimeoutsPtrInput {
+	return (*vm2LegacyTimeoutsPtrType)(v)
+}
+
+func (*vm2LegacyTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Vm2LegacyTimeouts)(nil)).Elem()
+}
+
+func (i *vm2LegacyTimeoutsPtrType) ToVm2LegacyTimeoutsPtrOutput() Vm2LegacyTimeoutsPtrOutput {
+	return i.ToVm2LegacyTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *vm2LegacyTimeoutsPtrType) ToVm2LegacyTimeoutsPtrOutputWithContext(ctx context.Context) Vm2LegacyTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Vm2LegacyTimeoutsPtrOutput)
+}
+
+type Vm2LegacyTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (Vm2LegacyTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vm2LegacyTimeouts)(nil)).Elem()
+}
+
+func (o Vm2LegacyTimeoutsOutput) ToVm2LegacyTimeoutsOutput() Vm2LegacyTimeoutsOutput {
+	return o
+}
+
+func (o Vm2LegacyTimeoutsOutput) ToVm2LegacyTimeoutsOutputWithContext(ctx context.Context) Vm2LegacyTimeoutsOutput {
+	return o
+}
+
+func (o Vm2LegacyTimeoutsOutput) ToVm2LegacyTimeoutsPtrOutput() Vm2LegacyTimeoutsPtrOutput {
+	return o.ToVm2LegacyTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o Vm2LegacyTimeoutsOutput) ToVm2LegacyTimeoutsPtrOutputWithContext(ctx context.Context) Vm2LegacyTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Vm2LegacyTimeouts) *Vm2LegacyTimeouts {
+		return &v
+	}).(Vm2LegacyTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o Vm2LegacyTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Vm2LegacyTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o Vm2LegacyTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Vm2LegacyTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o Vm2LegacyTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Vm2LegacyTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o Vm2LegacyTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Vm2LegacyTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type Vm2LegacyTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (Vm2LegacyTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Vm2LegacyTimeouts)(nil)).Elem()
+}
+
+func (o Vm2LegacyTimeoutsPtrOutput) ToVm2LegacyTimeoutsPtrOutput() Vm2LegacyTimeoutsPtrOutput {
+	return o
+}
+
+func (o Vm2LegacyTimeoutsPtrOutput) ToVm2LegacyTimeoutsPtrOutputWithContext(ctx context.Context) Vm2LegacyTimeoutsPtrOutput {
+	return o
+}
+
+func (o Vm2LegacyTimeoutsPtrOutput) Elem() Vm2LegacyTimeoutsOutput {
+	return o.ApplyT(func(v *Vm2LegacyTimeouts) Vm2LegacyTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret Vm2LegacyTimeouts
+		return ret
+	}).(Vm2LegacyTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o Vm2LegacyTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Vm2LegacyTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o Vm2LegacyTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Vm2LegacyTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o Vm2LegacyTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Vm2LegacyTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o Vm2LegacyTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Vm2LegacyTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
+type Vm2LegacyVga struct {
+	// Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+	Clipboard *string `pulumi:"clipboard"`
+	// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+	Memory *int `pulumi:"memory"`
+	// The VGA type (defaults to `std`).
+	Type *string `pulumi:"type"`
+}
+
+// Vm2LegacyVgaInput is an input type that accepts Vm2LegacyVgaArgs and Vm2LegacyVgaOutput values.
+// You can construct a concrete instance of `Vm2LegacyVgaInput` via:
+//
+//	Vm2LegacyVgaArgs{...}
+type Vm2LegacyVgaInput interface {
+	pulumi.Input
+
+	ToVm2LegacyVgaOutput() Vm2LegacyVgaOutput
+	ToVm2LegacyVgaOutputWithContext(context.Context) Vm2LegacyVgaOutput
+}
+
+type Vm2LegacyVgaArgs struct {
+	// Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+	Clipboard pulumi.StringPtrInput `pulumi:"clipboard"`
+	// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+	Memory pulumi.IntPtrInput `pulumi:"memory"`
+	// The VGA type (defaults to `std`).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (Vm2LegacyVgaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vm2LegacyVga)(nil)).Elem()
+}
+
+func (i Vm2LegacyVgaArgs) ToVm2LegacyVgaOutput() Vm2LegacyVgaOutput {
+	return i.ToVm2LegacyVgaOutputWithContext(context.Background())
+}
+
+func (i Vm2LegacyVgaArgs) ToVm2LegacyVgaOutputWithContext(ctx context.Context) Vm2LegacyVgaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Vm2LegacyVgaOutput)
+}
+
+func (i Vm2LegacyVgaArgs) ToVm2LegacyVgaPtrOutput() Vm2LegacyVgaPtrOutput {
+	return i.ToVm2LegacyVgaPtrOutputWithContext(context.Background())
+}
+
+func (i Vm2LegacyVgaArgs) ToVm2LegacyVgaPtrOutputWithContext(ctx context.Context) Vm2LegacyVgaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Vm2LegacyVgaOutput).ToVm2LegacyVgaPtrOutputWithContext(ctx)
+}
+
+// Vm2LegacyVgaPtrInput is an input type that accepts Vm2LegacyVgaArgs, Vm2LegacyVgaPtr and Vm2LegacyVgaPtrOutput values.
+// You can construct a concrete instance of `Vm2LegacyVgaPtrInput` via:
+//
+//	        Vm2LegacyVgaArgs{...}
+//
+//	or:
+//
+//	        nil
+type Vm2LegacyVgaPtrInput interface {
+	pulumi.Input
+
+	ToVm2LegacyVgaPtrOutput() Vm2LegacyVgaPtrOutput
+	ToVm2LegacyVgaPtrOutputWithContext(context.Context) Vm2LegacyVgaPtrOutput
+}
+
+type vm2LegacyVgaPtrType Vm2LegacyVgaArgs
+
+func Vm2LegacyVgaPtr(v *Vm2LegacyVgaArgs) Vm2LegacyVgaPtrInput {
+	return (*vm2LegacyVgaPtrType)(v)
+}
+
+func (*vm2LegacyVgaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Vm2LegacyVga)(nil)).Elem()
+}
+
+func (i *vm2LegacyVgaPtrType) ToVm2LegacyVgaPtrOutput() Vm2LegacyVgaPtrOutput {
+	return i.ToVm2LegacyVgaPtrOutputWithContext(context.Background())
+}
+
+func (i *vm2LegacyVgaPtrType) ToVm2LegacyVgaPtrOutputWithContext(ctx context.Context) Vm2LegacyVgaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Vm2LegacyVgaPtrOutput)
+}
+
+type Vm2LegacyVgaOutput struct{ *pulumi.OutputState }
+
+func (Vm2LegacyVgaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Vm2LegacyVga)(nil)).Elem()
+}
+
+func (o Vm2LegacyVgaOutput) ToVm2LegacyVgaOutput() Vm2LegacyVgaOutput {
+	return o
+}
+
+func (o Vm2LegacyVgaOutput) ToVm2LegacyVgaOutputWithContext(ctx context.Context) Vm2LegacyVgaOutput {
+	return o
+}
+
+func (o Vm2LegacyVgaOutput) ToVm2LegacyVgaPtrOutput() Vm2LegacyVgaPtrOutput {
+	return o.ToVm2LegacyVgaPtrOutputWithContext(context.Background())
+}
+
+func (o Vm2LegacyVgaOutput) ToVm2LegacyVgaPtrOutputWithContext(ctx context.Context) Vm2LegacyVgaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Vm2LegacyVga) *Vm2LegacyVga {
+		return &v
+	}).(Vm2LegacyVgaPtrOutput)
+}
+
+// Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+func (o Vm2LegacyVgaOutput) Clipboard() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Vm2LegacyVga) *string { return v.Clipboard }).(pulumi.StringPtrOutput)
+}
+
+// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+func (o Vm2LegacyVgaOutput) Memory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Vm2LegacyVga) *int { return v.Memory }).(pulumi.IntPtrOutput)
+}
+
+// The VGA type (defaults to `std`).
+func (o Vm2LegacyVgaOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Vm2LegacyVga) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type Vm2LegacyVgaPtrOutput struct{ *pulumi.OutputState }
+
+func (Vm2LegacyVgaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Vm2LegacyVga)(nil)).Elem()
+}
+
+func (o Vm2LegacyVgaPtrOutput) ToVm2LegacyVgaPtrOutput() Vm2LegacyVgaPtrOutput {
+	return o
+}
+
+func (o Vm2LegacyVgaPtrOutput) ToVm2LegacyVgaPtrOutputWithContext(ctx context.Context) Vm2LegacyVgaPtrOutput {
+	return o
+}
+
+func (o Vm2LegacyVgaPtrOutput) Elem() Vm2LegacyVgaOutput {
+	return o.ApplyT(func(v *Vm2LegacyVga) Vm2LegacyVga {
+		if v != nil {
+			return *v
+		}
+		var ret Vm2LegacyVga
+		return ret
+	}).(Vm2LegacyVgaOutput)
+}
+
+// Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+func (o Vm2LegacyVgaPtrOutput) Clipboard() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Vm2LegacyVga) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Clipboard
+	}).(pulumi.StringPtrOutput)
+}
+
+// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+func (o Vm2LegacyVgaPtrOutput) Memory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Vm2LegacyVga) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Memory
+	}).(pulumi.IntPtrOutput)
+}
+
+// The VGA type (defaults to `std`).
+func (o Vm2LegacyVgaPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Vm2LegacyVga) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type VmCdrom struct {
+	// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+	FileId *string `pulumi:"fileId"`
+}
+
+// VmCdromInput is an input type that accepts VmCdromArgs and VmCdromOutput values.
+// You can construct a concrete instance of `VmCdromInput` via:
+//
+//	VmCdromArgs{...}
+type VmCdromInput interface {
+	pulumi.Input
+
+	ToVmCdromOutput() VmCdromOutput
+	ToVmCdromOutputWithContext(context.Context) VmCdromOutput
+}
+
+type VmCdromArgs struct {
+	// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+	FileId pulumi.StringPtrInput `pulumi:"fileId"`
+}
+
+func (VmCdromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmCdrom)(nil)).Elem()
+}
+
+func (i VmCdromArgs) ToVmCdromOutput() VmCdromOutput {
+	return i.ToVmCdromOutputWithContext(context.Background())
+}
+
+func (i VmCdromArgs) ToVmCdromOutputWithContext(ctx context.Context) VmCdromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmCdromOutput)
+}
+
+// VmCdromMapInput is an input type that accepts VmCdromMap and VmCdromMapOutput values.
+// You can construct a concrete instance of `VmCdromMapInput` via:
+//
+//	VmCdromMap{ "key": VmCdromArgs{...} }
+type VmCdromMapInput interface {
+	pulumi.Input
+
+	ToVmCdromMapOutput() VmCdromMapOutput
+	ToVmCdromMapOutputWithContext(context.Context) VmCdromMapOutput
+}
+
+type VmCdromMap map[string]VmCdromInput
+
+func (VmCdromMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]VmCdrom)(nil)).Elem()
+}
+
+func (i VmCdromMap) ToVmCdromMapOutput() VmCdromMapOutput {
+	return i.ToVmCdromMapOutputWithContext(context.Background())
+}
+
+func (i VmCdromMap) ToVmCdromMapOutputWithContext(ctx context.Context) VmCdromMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmCdromMapOutput)
+}
+
+type VmCdromOutput struct{ *pulumi.OutputState }
+
+func (VmCdromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmCdrom)(nil)).Elem()
+}
+
+func (o VmCdromOutput) ToVmCdromOutput() VmCdromOutput {
+	return o
+}
+
+func (o VmCdromOutput) ToVmCdromOutputWithContext(ctx context.Context) VmCdromOutput {
+	return o
+}
+
+// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+func (o VmCdromOutput) FileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmCdrom) *string { return v.FileId }).(pulumi.StringPtrOutput)
+}
+
+type VmCdromMapOutput struct{ *pulumi.OutputState }
+
+func (VmCdromMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]VmCdrom)(nil)).Elem()
+}
+
+func (o VmCdromMapOutput) ToVmCdromMapOutput() VmCdromMapOutput {
+	return o
+}
+
+func (o VmCdromMapOutput) ToVmCdromMapOutputWithContext(ctx context.Context) VmCdromMapOutput {
+	return o
+}
+
+func (o VmCdromMapOutput) MapIndex(k pulumi.StringInput) VmCdromOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) VmCdrom {
+		return vs[0].(map[string]VmCdrom)[vs[1].(string)]
+	}).(VmCdromOutput)
+}
+
+type VmCpu struct {
+	// The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+	Affinity *string `pulumi:"affinity"`
+	// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
+	Architecture *string `pulumi:"architecture"`
+	// The number of CPU cores per socket (defaults to `1`).
+	Cores *int `pulumi:"cores"`
+	// Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+	Flags []string `pulumi:"flags"`
+	// The number of hotplugged vCPUs (defaults to `0`).
+	Hotplugged *int `pulumi:"hotplugged"`
+	// Limit of CPU usage (defaults to `0` which means no limit).
+	Limit *float64 `pulumi:"limit"`
+	// Enable NUMA (defaults to `false`).
+	Numa *bool `pulumi:"numa"`
+	// The number of CPU sockets (defaults to `1`).
+	Sockets *int `pulumi:"sockets"`
+	// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+	Type *string `pulumi:"type"`
+	// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+	Units *int `pulumi:"units"`
+}
+
+// VmCpuInput is an input type that accepts VmCpuArgs and VmCpuOutput values.
+// You can construct a concrete instance of `VmCpuInput` via:
+//
+//	VmCpuArgs{...}
+type VmCpuInput interface {
+	pulumi.Input
+
+	ToVmCpuOutput() VmCpuOutput
+	ToVmCpuOutputWithContext(context.Context) VmCpuOutput
+}
+
+type VmCpuArgs struct {
+	// The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+	Affinity pulumi.StringPtrInput `pulumi:"affinity"`
+	// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
+	Architecture pulumi.StringPtrInput `pulumi:"architecture"`
+	// The number of CPU cores per socket (defaults to `1`).
+	Cores pulumi.IntPtrInput `pulumi:"cores"`
+	// Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+	Flags pulumi.StringArrayInput `pulumi:"flags"`
+	// The number of hotplugged vCPUs (defaults to `0`).
+	Hotplugged pulumi.IntPtrInput `pulumi:"hotplugged"`
+	// Limit of CPU usage (defaults to `0` which means no limit).
+	Limit pulumi.Float64PtrInput `pulumi:"limit"`
+	// Enable NUMA (defaults to `false`).
+	Numa pulumi.BoolPtrInput `pulumi:"numa"`
+	// The number of CPU sockets (defaults to `1`).
+	Sockets pulumi.IntPtrInput `pulumi:"sockets"`
+	// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+	Units pulumi.IntPtrInput `pulumi:"units"`
+}
+
+func (VmCpuArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmCpu)(nil)).Elem()
+}
+
+func (i VmCpuArgs) ToVmCpuOutput() VmCpuOutput {
+	return i.ToVmCpuOutputWithContext(context.Background())
+}
+
+func (i VmCpuArgs) ToVmCpuOutputWithContext(ctx context.Context) VmCpuOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmCpuOutput)
+}
+
+func (i VmCpuArgs) ToVmCpuPtrOutput() VmCpuPtrOutput {
+	return i.ToVmCpuPtrOutputWithContext(context.Background())
+}
+
+func (i VmCpuArgs) ToVmCpuPtrOutputWithContext(ctx context.Context) VmCpuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmCpuOutput).ToVmCpuPtrOutputWithContext(ctx)
+}
+
+// VmCpuPtrInput is an input type that accepts VmCpuArgs, VmCpuPtr and VmCpuPtrOutput values.
+// You can construct a concrete instance of `VmCpuPtrInput` via:
+//
+//	        VmCpuArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmCpuPtrInput interface {
+	pulumi.Input
+
+	ToVmCpuPtrOutput() VmCpuPtrOutput
+	ToVmCpuPtrOutputWithContext(context.Context) VmCpuPtrOutput
+}
+
+type vmCpuPtrType VmCpuArgs
+
+func VmCpuPtr(v *VmCpuArgs) VmCpuPtrInput {
+	return (*vmCpuPtrType)(v)
+}
+
+func (*vmCpuPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmCpu)(nil)).Elem()
+}
+
+func (i *vmCpuPtrType) ToVmCpuPtrOutput() VmCpuPtrOutput {
+	return i.ToVmCpuPtrOutputWithContext(context.Background())
+}
+
+func (i *vmCpuPtrType) ToVmCpuPtrOutputWithContext(ctx context.Context) VmCpuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmCpuPtrOutput)
+}
+
+type VmCpuOutput struct{ *pulumi.OutputState }
+
+func (VmCpuOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmCpu)(nil)).Elem()
+}
+
+func (o VmCpuOutput) ToVmCpuOutput() VmCpuOutput {
+	return o
+}
+
+func (o VmCpuOutput) ToVmCpuOutputWithContext(ctx context.Context) VmCpuOutput {
+	return o
+}
+
+func (o VmCpuOutput) ToVmCpuPtrOutput() VmCpuPtrOutput {
+	return o.ToVmCpuPtrOutputWithContext(context.Background())
+}
+
+func (o VmCpuOutput) ToVmCpuPtrOutputWithContext(ctx context.Context) VmCpuPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmCpu) *VmCpu {
+		return &v
+	}).(VmCpuPtrOutput)
+}
+
+// The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+func (o VmCpuOutput) Affinity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmCpu) *string { return v.Affinity }).(pulumi.StringPtrOutput)
+}
+
+// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
+func (o VmCpuOutput) Architecture() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmCpu) *string { return v.Architecture }).(pulumi.StringPtrOutput)
+}
+
+// The number of CPU cores per socket (defaults to `1`).
+func (o VmCpuOutput) Cores() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmCpu) *int { return v.Cores }).(pulumi.IntPtrOutput)
+}
+
+// Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+func (o VmCpuOutput) Flags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VmCpu) []string { return v.Flags }).(pulumi.StringArrayOutput)
+}
+
+// The number of hotplugged vCPUs (defaults to `0`).
+func (o VmCpuOutput) Hotplugged() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmCpu) *int { return v.Hotplugged }).(pulumi.IntPtrOutput)
+}
+
+// Limit of CPU usage (defaults to `0` which means no limit).
+func (o VmCpuOutput) Limit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v VmCpu) *float64 { return v.Limit }).(pulumi.Float64PtrOutput)
+}
+
+// Enable NUMA (defaults to `false`).
+func (o VmCpuOutput) Numa() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmCpu) *bool { return v.Numa }).(pulumi.BoolPtrOutput)
+}
+
+// The number of CPU sockets (defaults to `1`).
+func (o VmCpuOutput) Sockets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmCpu) *int { return v.Sockets }).(pulumi.IntPtrOutput)
+}
+
+// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+func (o VmCpuOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmCpu) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+func (o VmCpuOutput) Units() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmCpu) *int { return v.Units }).(pulumi.IntPtrOutput)
+}
+
+type VmCpuPtrOutput struct{ *pulumi.OutputState }
+
+func (VmCpuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmCpu)(nil)).Elem()
+}
+
+func (o VmCpuPtrOutput) ToVmCpuPtrOutput() VmCpuPtrOutput {
+	return o
+}
+
+func (o VmCpuPtrOutput) ToVmCpuPtrOutputWithContext(ctx context.Context) VmCpuPtrOutput {
+	return o
+}
+
+func (o VmCpuPtrOutput) Elem() VmCpuOutput {
+	return o.ApplyT(func(v *VmCpu) VmCpu {
+		if v != nil {
+			return *v
+		}
+		var ret VmCpu
+		return ret
+	}).(VmCpuOutput)
+}
+
+// The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+func (o VmCpuPtrOutput) Affinity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmCpu) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Affinity
+	}).(pulumi.StringPtrOutput)
+}
+
+// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
+func (o VmCpuPtrOutput) Architecture() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmCpu) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Architecture
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of CPU cores per socket (defaults to `1`).
+func (o VmCpuPtrOutput) Cores() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Cores
+	}).(pulumi.IntPtrOutput)
+}
+
+// Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+func (o VmCpuPtrOutput) Flags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VmCpu) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Flags
+	}).(pulumi.StringArrayOutput)
+}
+
+// The number of hotplugged vCPUs (defaults to `0`).
+func (o VmCpuPtrOutput) Hotplugged() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hotplugged
+	}).(pulumi.IntPtrOutput)
+}
+
+// Limit of CPU usage (defaults to `0` which means no limit).
+func (o VmCpuPtrOutput) Limit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *VmCpu) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Limit
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Enable NUMA (defaults to `false`).
+func (o VmCpuPtrOutput) Numa() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VmCpu) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Numa
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The number of CPU sockets (defaults to `1`).
+func (o VmCpuPtrOutput) Sockets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Sockets
+	}).(pulumi.IntPtrOutput)
+}
+
+// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+func (o VmCpuPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmCpu) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+func (o VmCpuPtrOutput) Units() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Units
+	}).(pulumi.IntPtrOutput)
+}
+
+type VmRng struct {
+	// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+	MaxBytes *int `pulumi:"maxBytes"`
+	// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+	Period *int `pulumi:"period"`
+	// The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+	Source *string `pulumi:"source"`
+}
+
+// VmRngInput is an input type that accepts VmRngArgs and VmRngOutput values.
+// You can construct a concrete instance of `VmRngInput` via:
+//
+//	VmRngArgs{...}
+type VmRngInput interface {
+	pulumi.Input
+
+	ToVmRngOutput() VmRngOutput
+	ToVmRngOutputWithContext(context.Context) VmRngOutput
+}
+
+type VmRngArgs struct {
+	// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+	MaxBytes pulumi.IntPtrInput `pulumi:"maxBytes"`
+	// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+	Period pulumi.IntPtrInput `pulumi:"period"`
+	// The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+	Source pulumi.StringPtrInput `pulumi:"source"`
+}
+
+func (VmRngArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmRng)(nil)).Elem()
+}
+
+func (i VmRngArgs) ToVmRngOutput() VmRngOutput {
+	return i.ToVmRngOutputWithContext(context.Background())
+}
+
+func (i VmRngArgs) ToVmRngOutputWithContext(ctx context.Context) VmRngOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmRngOutput)
+}
+
+func (i VmRngArgs) ToVmRngPtrOutput() VmRngPtrOutput {
+	return i.ToVmRngPtrOutputWithContext(context.Background())
+}
+
+func (i VmRngArgs) ToVmRngPtrOutputWithContext(ctx context.Context) VmRngPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmRngOutput).ToVmRngPtrOutputWithContext(ctx)
+}
+
+// VmRngPtrInput is an input type that accepts VmRngArgs, VmRngPtr and VmRngPtrOutput values.
+// You can construct a concrete instance of `VmRngPtrInput` via:
+//
+//	        VmRngArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmRngPtrInput interface {
+	pulumi.Input
+
+	ToVmRngPtrOutput() VmRngPtrOutput
+	ToVmRngPtrOutputWithContext(context.Context) VmRngPtrOutput
+}
+
+type vmRngPtrType VmRngArgs
+
+func VmRngPtr(v *VmRngArgs) VmRngPtrInput {
+	return (*vmRngPtrType)(v)
+}
+
+func (*vmRngPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmRng)(nil)).Elem()
+}
+
+func (i *vmRngPtrType) ToVmRngPtrOutput() VmRngPtrOutput {
+	return i.ToVmRngPtrOutputWithContext(context.Background())
+}
+
+func (i *vmRngPtrType) ToVmRngPtrOutputWithContext(ctx context.Context) VmRngPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmRngPtrOutput)
+}
+
+type VmRngOutput struct{ *pulumi.OutputState }
+
+func (VmRngOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmRng)(nil)).Elem()
+}
+
+func (o VmRngOutput) ToVmRngOutput() VmRngOutput {
+	return o
+}
+
+func (o VmRngOutput) ToVmRngOutputWithContext(ctx context.Context) VmRngOutput {
+	return o
+}
+
+func (o VmRngOutput) ToVmRngPtrOutput() VmRngPtrOutput {
+	return o.ToVmRngPtrOutputWithContext(context.Background())
+}
+
+func (o VmRngOutput) ToVmRngPtrOutputWithContext(ctx context.Context) VmRngPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmRng) *VmRng {
+		return &v
+	}).(VmRngPtrOutput)
+}
+
+// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+func (o VmRngOutput) MaxBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmRng) *int { return v.MaxBytes }).(pulumi.IntPtrOutput)
+}
+
+// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+func (o VmRngOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmRng) *int { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+func (o VmRngOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmRng) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+type VmRngPtrOutput struct{ *pulumi.OutputState }
+
+func (VmRngPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmRng)(nil)).Elem()
+}
+
+func (o VmRngPtrOutput) ToVmRngPtrOutput() VmRngPtrOutput {
+	return o
+}
+
+func (o VmRngPtrOutput) ToVmRngPtrOutputWithContext(ctx context.Context) VmRngPtrOutput {
+	return o
+}
+
+func (o VmRngPtrOutput) Elem() VmRngOutput {
+	return o.ApplyT(func(v *VmRng) VmRng {
+		if v != nil {
+			return *v
+		}
+		var ret VmRng
+		return ret
+	}).(VmRngOutput)
+}
+
+// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+func (o VmRngPtrOutput) MaxBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmRng) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxBytes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+func (o VmRngPtrOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmRng) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Period
+	}).(pulumi.IntPtrOutput)
+}
+
+// The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+func (o VmRngPtrOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmRng) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Source
+	}).(pulumi.StringPtrOutput)
+}
+
+type VmTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// VmTimeoutsInput is an input type that accepts VmTimeoutsArgs and VmTimeoutsOutput values.
+// You can construct a concrete instance of `VmTimeoutsInput` via:
+//
+//	VmTimeoutsArgs{...}
+type VmTimeoutsInput interface {
+	pulumi.Input
+
+	ToVmTimeoutsOutput() VmTimeoutsOutput
+	ToVmTimeoutsOutputWithContext(context.Context) VmTimeoutsOutput
+}
+
+type VmTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (VmTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmTimeouts)(nil)).Elem()
+}
+
+func (i VmTimeoutsArgs) ToVmTimeoutsOutput() VmTimeoutsOutput {
+	return i.ToVmTimeoutsOutputWithContext(context.Background())
+}
+
+func (i VmTimeoutsArgs) ToVmTimeoutsOutputWithContext(ctx context.Context) VmTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmTimeoutsOutput)
+}
+
+func (i VmTimeoutsArgs) ToVmTimeoutsPtrOutput() VmTimeoutsPtrOutput {
+	return i.ToVmTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i VmTimeoutsArgs) ToVmTimeoutsPtrOutputWithContext(ctx context.Context) VmTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmTimeoutsOutput).ToVmTimeoutsPtrOutputWithContext(ctx)
+}
+
+// VmTimeoutsPtrInput is an input type that accepts VmTimeoutsArgs, VmTimeoutsPtr and VmTimeoutsPtrOutput values.
+// You can construct a concrete instance of `VmTimeoutsPtrInput` via:
+//
+//	        VmTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToVmTimeoutsPtrOutput() VmTimeoutsPtrOutput
+	ToVmTimeoutsPtrOutputWithContext(context.Context) VmTimeoutsPtrOutput
+}
+
+type vmTimeoutsPtrType VmTimeoutsArgs
+
+func VmTimeoutsPtr(v *VmTimeoutsArgs) VmTimeoutsPtrInput {
+	return (*vmTimeoutsPtrType)(v)
+}
+
+func (*vmTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmTimeouts)(nil)).Elem()
+}
+
+func (i *vmTimeoutsPtrType) ToVmTimeoutsPtrOutput() VmTimeoutsPtrOutput {
+	return i.ToVmTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *vmTimeoutsPtrType) ToVmTimeoutsPtrOutputWithContext(ctx context.Context) VmTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmTimeoutsPtrOutput)
+}
+
+type VmTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (VmTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmTimeouts)(nil)).Elem()
+}
+
+func (o VmTimeoutsOutput) ToVmTimeoutsOutput() VmTimeoutsOutput {
+	return o
+}
+
+func (o VmTimeoutsOutput) ToVmTimeoutsOutputWithContext(ctx context.Context) VmTimeoutsOutput {
+	return o
+}
+
+func (o VmTimeoutsOutput) ToVmTimeoutsPtrOutput() VmTimeoutsPtrOutput {
+	return o.ToVmTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o VmTimeoutsOutput) ToVmTimeoutsPtrOutputWithContext(ctx context.Context) VmTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmTimeouts) *VmTimeouts {
+		return &v
+	}).(VmTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VmTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o VmTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o VmTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VmTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type VmTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (VmTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmTimeouts)(nil)).Elem()
+}
+
+func (o VmTimeoutsPtrOutput) ToVmTimeoutsPtrOutput() VmTimeoutsPtrOutput {
+	return o
+}
+
+func (o VmTimeoutsPtrOutput) ToVmTimeoutsPtrOutputWithContext(ctx context.Context) VmTimeoutsPtrOutput {
+	return o
+}
+
+func (o VmTimeoutsPtrOutput) Elem() VmTimeoutsOutput {
+	return o.ApplyT(func(v *VmTimeouts) VmTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret VmTimeouts
+		return ret
+	}).(VmTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VmTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o VmTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o VmTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VmTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
+type VmVga struct {
+	// Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+	Clipboard *string `pulumi:"clipboard"`
+	// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+	Memory *int `pulumi:"memory"`
+	// The VGA type (defaults to `std`).
+	Type *string `pulumi:"type"`
+}
+
+// VmVgaInput is an input type that accepts VmVgaArgs and VmVgaOutput values.
+// You can construct a concrete instance of `VmVgaInput` via:
+//
+//	VmVgaArgs{...}
+type VmVgaInput interface {
+	pulumi.Input
+
+	ToVmVgaOutput() VmVgaOutput
+	ToVmVgaOutputWithContext(context.Context) VmVgaOutput
+}
+
+type VmVgaArgs struct {
+	// Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+	Clipboard pulumi.StringPtrInput `pulumi:"clipboard"`
+	// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+	Memory pulumi.IntPtrInput `pulumi:"memory"`
+	// The VGA type (defaults to `std`).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (VmVgaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmVga)(nil)).Elem()
+}
+
+func (i VmVgaArgs) ToVmVgaOutput() VmVgaOutput {
+	return i.ToVmVgaOutputWithContext(context.Background())
+}
+
+func (i VmVgaArgs) ToVmVgaOutputWithContext(ctx context.Context) VmVgaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmVgaOutput)
+}
+
+func (i VmVgaArgs) ToVmVgaPtrOutput() VmVgaPtrOutput {
+	return i.ToVmVgaPtrOutputWithContext(context.Background())
+}
+
+func (i VmVgaArgs) ToVmVgaPtrOutputWithContext(ctx context.Context) VmVgaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmVgaOutput).ToVmVgaPtrOutputWithContext(ctx)
+}
+
+// VmVgaPtrInput is an input type that accepts VmVgaArgs, VmVgaPtr and VmVgaPtrOutput values.
+// You can construct a concrete instance of `VmVgaPtrInput` via:
+//
+//	        VmVgaArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmVgaPtrInput interface {
+	pulumi.Input
+
+	ToVmVgaPtrOutput() VmVgaPtrOutput
+	ToVmVgaPtrOutputWithContext(context.Context) VmVgaPtrOutput
+}
+
+type vmVgaPtrType VmVgaArgs
+
+func VmVgaPtr(v *VmVgaArgs) VmVgaPtrInput {
+	return (*vmVgaPtrType)(v)
+}
+
+func (*vmVgaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmVga)(nil)).Elem()
+}
+
+func (i *vmVgaPtrType) ToVmVgaPtrOutput() VmVgaPtrOutput {
+	return i.ToVmVgaPtrOutputWithContext(context.Background())
+}
+
+func (i *vmVgaPtrType) ToVmVgaPtrOutputWithContext(ctx context.Context) VmVgaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmVgaPtrOutput)
+}
+
+type VmVgaOutput struct{ *pulumi.OutputState }
+
+func (VmVgaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmVga)(nil)).Elem()
+}
+
+func (o VmVgaOutput) ToVmVgaOutput() VmVgaOutput {
+	return o
+}
+
+func (o VmVgaOutput) ToVmVgaOutputWithContext(ctx context.Context) VmVgaOutput {
+	return o
+}
+
+func (o VmVgaOutput) ToVmVgaPtrOutput() VmVgaPtrOutput {
+	return o.ToVmVgaPtrOutputWithContext(context.Background())
+}
+
+func (o VmVgaOutput) ToVmVgaPtrOutputWithContext(ctx context.Context) VmVgaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmVga) *VmVga {
+		return &v
+	}).(VmVgaPtrOutput)
+}
+
+// Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+func (o VmVgaOutput) Clipboard() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmVga) *string { return v.Clipboard }).(pulumi.StringPtrOutput)
+}
+
+// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+func (o VmVgaOutput) Memory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmVga) *int { return v.Memory }).(pulumi.IntPtrOutput)
+}
+
+// The VGA type (defaults to `std`).
+func (o VmVgaOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmVga) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type VmVgaPtrOutput struct{ *pulumi.OutputState }
+
+func (VmVgaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmVga)(nil)).Elem()
+}
+
+func (o VmVgaPtrOutput) ToVmVgaPtrOutput() VmVgaPtrOutput {
+	return o
+}
+
+func (o VmVgaPtrOutput) ToVmVgaPtrOutputWithContext(ctx context.Context) VmVgaPtrOutput {
+	return o
+}
+
+func (o VmVgaPtrOutput) Elem() VmVgaOutput {
+	return o.ApplyT(func(v *VmVga) VmVga {
+		if v != nil {
+			return *v
+		}
+		var ret VmVga
+		return ret
+	}).(VmVgaOutput)
+}
+
+// Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+func (o VmVgaPtrOutput) Clipboard() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmVga) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Clipboard
+	}).(pulumi.StringPtrOutput)
+}
+
+// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+func (o VmVgaPtrOutput) Memory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmVga) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Memory
+	}).(pulumi.IntPtrOutput)
+}
+
+// The VGA type (defaults to `std`).
+func (o VmVgaPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmVga) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetDatastoresDatastore struct {
+	// Whether the store is active.
+	Active *bool `pulumi:"active"`
+	// Allowed store content types.
+	ContentTypes []string `pulumi:"contentTypes"`
+	// Whether the store is enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// The ID of the store.
+	Id string `pulumi:"id"`
+	// The name of the node the store is on.
 	NodeName string `pulumi:"nodeName"`
-	// The status of the container.
-	Status *string `pulumi:"status"`
-	// A list of tags to filter the containers. The container must have all
-	// the tags to be included in the result.
-	Tags []string `pulumi:"tags"`
-	// Whether the container is a template.
-	Template *bool `pulumi:"template"`
-	// The container identifier.
-	VmId int `pulumi:"vmId"`
+	// Shared flag from store configuration.
+	Shared *bool `pulumi:"shared"`
+	// Available store space in bytes.
+	SpaceAvailable *int `pulumi:"spaceAvailable"`
+	// Total store space in bytes.
+	SpaceTotal *int `pulumi:"spaceTotal"`
+	// Used store space in bytes.
+	SpaceUsed *int `pulumi:"spaceUsed"`
+	// Used fraction (used/total).
+	SpaceUsedFraction *float64 `pulumi:"spaceUsedFraction"`
+	// Store type.
+	Type string `pulumi:"type"`
 }
 
-// GetContainersContainerInput is an input type that accepts GetContainersContainerArgs and GetContainersContainerOutput values.
-// You can construct a concrete instance of `GetContainersContainerInput` via:
+// GetDatastoresDatastoreInput is an input type that accepts GetDatastoresDatastoreArgs and GetDatastoresDatastoreOutput values.
+// You can construct a concrete instance of `GetDatastoresDatastoreInput` via:
 //
-//	GetContainersContainerArgs{...}
-type GetContainersContainerInput interface {
+//	GetDatastoresDatastoreArgs{...}
+type GetDatastoresDatastoreInput interface {
 	pulumi.Input
 
-	ToGetContainersContainerOutput() GetContainersContainerOutput
-	ToGetContainersContainerOutputWithContext(context.Context) GetContainersContainerOutput
+	ToGetDatastoresDatastoreOutput() GetDatastoresDatastoreOutput
+	ToGetDatastoresDatastoreOutputWithContext(context.Context) GetDatastoresDatastoreOutput
 }
 
-type GetContainersContainerArgs struct {
-	// The container name.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The node name. All cluster nodes will be queried in case this is omitted
+type GetDatastoresDatastoreArgs struct {
+	// Whether the store is active.
+	Active pulumi.BoolPtrInput `pulumi:"active"`
+	// Allowed store content types.
+	ContentTypes pulumi.StringArrayInput `pulumi:"contentTypes"`
+	// Whether the store is enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The ID of the store.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the node the store is on.
 	NodeName pulumi.StringInput `pulumi:"nodeName"`
-	// The status of the container.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-	// A list of tags to filter the containers. The container must have all
-	// the tags to be included in the result.
-	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	// Whether the container is a template.
-	Template pulumi.BoolPtrInput `pulumi:"template"`
-	// The container identifier.
-	VmId pulumi.IntInput `pulumi:"vmId"`
+	// Shared flag from store configuration.
+	Shared pulumi.BoolPtrInput `pulumi:"shared"`
+	// Available store space in bytes.
+	SpaceAvailable pulumi.IntPtrInput `pulumi:"spaceAvailable"`
+	// Total store space in bytes.
+	SpaceTotal pulumi.IntPtrInput `pulumi:"spaceTotal"`
+	// Used store space in bytes.
+	SpaceUsed pulumi.IntPtrInput `pulumi:"spaceUsed"`
+	// Used fraction (used/total).
+	SpaceUsedFraction pulumi.Float64PtrInput `pulumi:"spaceUsedFraction"`
+	// Store type.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
-func (GetContainersContainerArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetContainersContainer)(nil)).Elem()
+func (GetDatastoresDatastoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatastoresDatastore)(nil)).Elem()
 }
 
-func (i GetContainersContainerArgs) ToGetContainersContainerOutput() GetContainersContainerOutput {
-	return i.ToGetContainersContainerOutputWithContext(context.Background())
+func (i GetDatastoresDatastoreArgs) ToGetDatastoresDatastoreOutput() GetDatastoresDatastoreOutput {
+	return i.ToGetDatastoresDatastoreOutputWithContext(context.Background())
 }
 
-func (i GetContainersContainerArgs) ToGetContainersContainerOutputWithContext(ctx context.Context) GetContainersContainerOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetContainersContainerOutput)
+func (i GetDatastoresDatastoreArgs) ToGetDatastoresDatastoreOutputWithContext(ctx context.Context) GetDatastoresDatastoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatastoresDatastoreOutput)
 }
 
-// GetContainersContainerArrayInput is an input type that accepts GetContainersContainerArray and GetContainersContainerArrayOutput values.
-// You can construct a concrete instance of `GetContainersContainerArrayInput` via:
+// GetDatastoresDatastoreArrayInput is an input type that accepts GetDatastoresDatastoreArray and GetDatastoresDatastoreArrayOutput values.
+// You can construct a concrete instance of `GetDatastoresDatastoreArrayInput` via:
 //
-//	GetContainersContainerArray{ GetContainersContainerArgs{...} }
-type GetContainersContainerArrayInput interface {
+//	GetDatastoresDatastoreArray{ GetDatastoresDatastoreArgs{...} }
+type GetDatastoresDatastoreArrayInput interface {
 	pulumi.Input
 
-	ToGetContainersContainerArrayOutput() GetContainersContainerArrayOutput
-	ToGetContainersContainerArrayOutputWithContext(context.Context) GetContainersContainerArrayOutput
+	ToGetDatastoresDatastoreArrayOutput() GetDatastoresDatastoreArrayOutput
+	ToGetDatastoresDatastoreArrayOutputWithContext(context.Context) GetDatastoresDatastoreArrayOutput
 }
 
-type GetContainersContainerArray []GetContainersContainerInput
+type GetDatastoresDatastoreArray []GetDatastoresDatastoreInput
 
-func (GetContainersContainerArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetContainersContainer)(nil)).Elem()
+func (GetDatastoresDatastoreArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatastoresDatastore)(nil)).Elem()
 }
 
-func (i GetContainersContainerArray) ToGetContainersContainerArrayOutput() GetContainersContainerArrayOutput {
-	return i.ToGetContainersContainerArrayOutputWithContext(context.Background())
+func (i GetDatastoresDatastoreArray) ToGetDatastoresDatastoreArrayOutput() GetDatastoresDatastoreArrayOutput {
+	return i.ToGetDatastoresDatastoreArrayOutputWithContext(context.Background())
 }
 
-func (i GetContainersContainerArray) ToGetContainersContainerArrayOutputWithContext(ctx context.Context) GetContainersContainerArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetContainersContainerArrayOutput)
+func (i GetDatastoresDatastoreArray) ToGetDatastoresDatastoreArrayOutputWithContext(ctx context.Context) GetDatastoresDatastoreArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatastoresDatastoreArrayOutput)
 }
 
-type GetContainersContainerOutput struct{ *pulumi.OutputState }
+type GetDatastoresDatastoreOutput struct{ *pulumi.OutputState }
 
-func (GetContainersContainerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetContainersContainer)(nil)).Elem()
+func (GetDatastoresDatastoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatastoresDatastore)(nil)).Elem()
 }
 
-func (o GetContainersContainerOutput) ToGetContainersContainerOutput() GetContainersContainerOutput {
+func (o GetDatastoresDatastoreOutput) ToGetDatastoresDatastoreOutput() GetDatastoresDatastoreOutput {
 	return o
 }
 
-func (o GetContainersContainerOutput) ToGetContainersContainerOutputWithContext(ctx context.Context) GetContainersContainerOutput {
+func (o GetDatastoresDatastoreOutput) ToGetDatastoresDatastoreOutputWithContext(ctx context.Context) GetDatastoresDatastoreOutput {
 	return o
 }
 
-// The container name.
-func (o GetContainersContainerOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetContainersContainer) string { return v.Name }).(pulumi.StringOutput)
+// Whether the store is active.
+func (o GetDatastoresDatastoreOutput) Active() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetDatastoresDatastore) *bool { return v.Active }).(pulumi.BoolPtrOutput)
 }
 
-// The node name. All cluster nodes will be queried in case this is omitted
-func (o GetContainersContainerOutput) NodeName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetContainersContainer) string { return v.NodeName }).(pulumi.StringOutput)
+// Allowed store content types.
+func (o GetDatastoresDatastoreOutput) ContentTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDatastoresDatastore) []string { return v.ContentTypes }).(pulumi.StringArrayOutput)
 }
 
-// The status of the container.
-func (o GetContainersContainerOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetContainersContainer) *string { return v.Status }).(pulumi.StringPtrOutput)
+// Whether the store is enabled.
+func (o GetDatastoresDatastoreOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetDatastoresDatastore) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// A list of tags to filter the containers. The container must have all
-// the tags to be included in the result.
-func (o GetContainersContainerOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetContainersContainer) []string { return v.Tags }).(pulumi.StringArrayOutput)
+// The ID of the store.
+func (o GetDatastoresDatastoreOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatastoresDatastore) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Whether the container is a template.
-func (o GetContainersContainerOutput) Template() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetContainersContainer) *bool { return v.Template }).(pulumi.BoolPtrOutput)
+// The name of the node the store is on.
+func (o GetDatastoresDatastoreOutput) NodeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatastoresDatastore) string { return v.NodeName }).(pulumi.StringOutput)
 }
 
-// The container identifier.
-func (o GetContainersContainerOutput) VmId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetContainersContainer) int { return v.VmId }).(pulumi.IntOutput)
+// Shared flag from store configuration.
+func (o GetDatastoresDatastoreOutput) Shared() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetDatastoresDatastore) *bool { return v.Shared }).(pulumi.BoolPtrOutput)
 }
 
-type GetContainersContainerArrayOutput struct{ *pulumi.OutputState }
-
-func (GetContainersContainerArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetContainersContainer)(nil)).Elem()
+// Available store space in bytes.
+func (o GetDatastoresDatastoreOutput) SpaceAvailable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetDatastoresDatastore) *int { return v.SpaceAvailable }).(pulumi.IntPtrOutput)
 }
 
-func (o GetContainersContainerArrayOutput) ToGetContainersContainerArrayOutput() GetContainersContainerArrayOutput {
+// Total store space in bytes.
+func (o GetDatastoresDatastoreOutput) SpaceTotal() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetDatastoresDatastore) *int { return v.SpaceTotal }).(pulumi.IntPtrOutput)
+}
+
+// Used store space in bytes.
+func (o GetDatastoresDatastoreOutput) SpaceUsed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetDatastoresDatastore) *int { return v.SpaceUsed }).(pulumi.IntPtrOutput)
+}
+
+// Used fraction (used/total).
+func (o GetDatastoresDatastoreOutput) SpaceUsedFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetDatastoresDatastore) *float64 { return v.SpaceUsedFraction }).(pulumi.Float64PtrOutput)
+}
+
+// Store type.
+func (o GetDatastoresDatastoreOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatastoresDatastore) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatastoresDatastoreArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatastoresDatastoreArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatastoresDatastore)(nil)).Elem()
+}
+
+func (o GetDatastoresDatastoreArrayOutput) ToGetDatastoresDatastoreArrayOutput() GetDatastoresDatastoreArrayOutput {
 	return o
 }
 
-func (o GetContainersContainerArrayOutput) ToGetContainersContainerArrayOutputWithContext(ctx context.Context) GetContainersContainerArrayOutput {
+func (o GetDatastoresDatastoreArrayOutput) ToGetDatastoresDatastoreArrayOutputWithContext(ctx context.Context) GetDatastoresDatastoreArrayOutput {
 	return o
 }
 
-func (o GetContainersContainerArrayOutput) Index(i pulumi.IntInput) GetContainersContainerOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetContainersContainer {
-		return vs[0].([]GetContainersContainer)[vs[1].(int)]
-	}).(GetContainersContainerOutput)
+func (o GetDatastoresDatastoreArrayOutput) Index(i pulumi.IntInput) GetDatastoresDatastoreOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatastoresDatastore {
+		return vs[0].([]GetDatastoresDatastore)[vs[1].(int)]
+	}).(GetDatastoresDatastoreOutput)
 }
 
-type GetContainersFilter struct {
-	// Name of the container attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
-	Name string `pulumi:"name"`
-	// Treat values as regex patterns
-	Regex *bool `pulumi:"regex"`
-	// List of values to pass the filter. Container's attribute should match at least one value in the list.
-	Values []string `pulumi:"values"`
+type GetDatastoresFilters struct {
+	// Only list stores with the given content types.
+	ContentTypes []string `pulumi:"contentTypes"`
+	// Only list stores with the given ID.
+	Id *string `pulumi:"id"`
+	// If `target` is different to `nodeName`, then only lists shared stores which content is accessible on this node and the specified `target` node.
+	Target *string `pulumi:"target"`
 }
 
-// GetContainersFilterInput is an input type that accepts GetContainersFilterArgs and GetContainersFilterOutput values.
-// You can construct a concrete instance of `GetContainersFilterInput` via:
+// GetDatastoresFiltersInput is an input type that accepts GetDatastoresFiltersArgs and GetDatastoresFiltersOutput values.
+// You can construct a concrete instance of `GetDatastoresFiltersInput` via:
 //
-//	GetContainersFilterArgs{...}
-type GetContainersFilterInput interface {
+//	GetDatastoresFiltersArgs{...}
+type GetDatastoresFiltersInput interface {
 	pulumi.Input
 
-	ToGetContainersFilterOutput() GetContainersFilterOutput
-	ToGetContainersFilterOutputWithContext(context.Context) GetContainersFilterOutput
+	ToGetDatastoresFiltersOutput() GetDatastoresFiltersOutput
+	ToGetDatastoresFiltersOutputWithContext(context.Context) GetDatastoresFiltersOutput
 }
 
-type GetContainersFilterArgs struct {
-	// Name of the container attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
-	Name pulumi.StringInput `pulumi:"name"`
-	// Treat values as regex patterns
-	Regex pulumi.BoolPtrInput `pulumi:"regex"`
-	// List of values to pass the filter. Container's attribute should match at least one value in the list.
-	Values pulumi.StringArrayInput `pulumi:"values"`
+type GetDatastoresFiltersArgs struct {
+	// Only list stores with the given content types.
+	ContentTypes pulumi.StringArrayInput `pulumi:"contentTypes"`
+	// Only list stores with the given ID.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// If `target` is different to `nodeName`, then only lists shared stores which content is accessible on this node and the specified `target` node.
+	Target pulumi.StringPtrInput `pulumi:"target"`
 }
 
-func (GetContainersFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetContainersFilter)(nil)).Elem()
+func (GetDatastoresFiltersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatastoresFilters)(nil)).Elem()
 }
 
-func (i GetContainersFilterArgs) ToGetContainersFilterOutput() GetContainersFilterOutput {
-	return i.ToGetContainersFilterOutputWithContext(context.Background())
+func (i GetDatastoresFiltersArgs) ToGetDatastoresFiltersOutput() GetDatastoresFiltersOutput {
+	return i.ToGetDatastoresFiltersOutputWithContext(context.Background())
 }
 
-func (i GetContainersFilterArgs) ToGetContainersFilterOutputWithContext(ctx context.Context) GetContainersFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetContainersFilterOutput)
+func (i GetDatastoresFiltersArgs) ToGetDatastoresFiltersOutputWithContext(ctx context.Context) GetDatastoresFiltersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatastoresFiltersOutput)
 }
 
-// GetContainersFilterArrayInput is an input type that accepts GetContainersFilterArray and GetContainersFilterArrayOutput values.
-// You can construct a concrete instance of `GetContainersFilterArrayInput` via:
+func (i GetDatastoresFiltersArgs) ToGetDatastoresFiltersPtrOutput() GetDatastoresFiltersPtrOutput {
+	return i.ToGetDatastoresFiltersPtrOutputWithContext(context.Background())
+}
+
+func (i GetDatastoresFiltersArgs) ToGetDatastoresFiltersPtrOutputWithContext(ctx context.Context) GetDatastoresFiltersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatastoresFiltersOutput).ToGetDatastoresFiltersPtrOutputWithContext(ctx)
+}
+
+// GetDatastoresFiltersPtrInput is an input type that accepts GetDatastoresFiltersArgs, GetDatastoresFiltersPtr and GetDatastoresFiltersPtrOutput values.
+// You can construct a concrete instance of `GetDatastoresFiltersPtrInput` via:
 //
-//	GetContainersFilterArray{ GetContainersFilterArgs{...} }
-type GetContainersFilterArrayInput interface {
+//	        GetDatastoresFiltersArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetDatastoresFiltersPtrInput interface {
 	pulumi.Input
 
-	ToGetContainersFilterArrayOutput() GetContainersFilterArrayOutput
-	ToGetContainersFilterArrayOutputWithContext(context.Context) GetContainersFilterArrayOutput
+	ToGetDatastoresFiltersPtrOutput() GetDatastoresFiltersPtrOutput
+	ToGetDatastoresFiltersPtrOutputWithContext(context.Context) GetDatastoresFiltersPtrOutput
 }
 
-type GetContainersFilterArray []GetContainersFilterInput
+type getDatastoresFiltersPtrType GetDatastoresFiltersArgs
 
-func (GetContainersFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetContainersFilter)(nil)).Elem()
+func GetDatastoresFiltersPtr(v *GetDatastoresFiltersArgs) GetDatastoresFiltersPtrInput {
+	return (*getDatastoresFiltersPtrType)(v)
 }
 
-func (i GetContainersFilterArray) ToGetContainersFilterArrayOutput() GetContainersFilterArrayOutput {
-	return i.ToGetContainersFilterArrayOutputWithContext(context.Background())
+func (*getDatastoresFiltersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetDatastoresFilters)(nil)).Elem()
 }
 
-func (i GetContainersFilterArray) ToGetContainersFilterArrayOutputWithContext(ctx context.Context) GetContainersFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetContainersFilterArrayOutput)
+func (i *getDatastoresFiltersPtrType) ToGetDatastoresFiltersPtrOutput() GetDatastoresFiltersPtrOutput {
+	return i.ToGetDatastoresFiltersPtrOutputWithContext(context.Background())
 }
 
-type GetContainersFilterOutput struct{ *pulumi.OutputState }
-
-func (GetContainersFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetContainersFilter)(nil)).Elem()
+func (i *getDatastoresFiltersPtrType) ToGetDatastoresFiltersPtrOutputWithContext(ctx context.Context) GetDatastoresFiltersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatastoresFiltersPtrOutput)
 }
 
-func (o GetContainersFilterOutput) ToGetContainersFilterOutput() GetContainersFilterOutput {
+type GetDatastoresFiltersOutput struct{ *pulumi.OutputState }
+
+func (GetDatastoresFiltersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatastoresFilters)(nil)).Elem()
+}
+
+func (o GetDatastoresFiltersOutput) ToGetDatastoresFiltersOutput() GetDatastoresFiltersOutput {
 	return o
 }
 
-func (o GetContainersFilterOutput) ToGetContainersFilterOutputWithContext(ctx context.Context) GetContainersFilterOutput {
+func (o GetDatastoresFiltersOutput) ToGetDatastoresFiltersOutputWithContext(ctx context.Context) GetDatastoresFiltersOutput {
 	return o
 }
 
-// Name of the container attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
-func (o GetContainersFilterOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetContainersFilter) string { return v.Name }).(pulumi.StringOutput)
+func (o GetDatastoresFiltersOutput) ToGetDatastoresFiltersPtrOutput() GetDatastoresFiltersPtrOutput {
+	return o.ToGetDatastoresFiltersPtrOutputWithContext(context.Background())
 }
 
-// Treat values as regex patterns
-func (o GetContainersFilterOutput) Regex() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetContainersFilter) *bool { return v.Regex }).(pulumi.BoolPtrOutput)
+func (o GetDatastoresFiltersOutput) ToGetDatastoresFiltersPtrOutputWithContext(ctx context.Context) GetDatastoresFiltersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetDatastoresFilters) *GetDatastoresFilters {
+		return &v
+	}).(GetDatastoresFiltersPtrOutput)
 }
 
-// List of values to pass the filter. Container's attribute should match at least one value in the list.
-func (o GetContainersFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetContainersFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+// Only list stores with the given content types.
+func (o GetDatastoresFiltersOutput) ContentTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDatastoresFilters) []string { return v.ContentTypes }).(pulumi.StringArrayOutput)
 }
 
-type GetContainersFilterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetContainersFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetContainersFilter)(nil)).Elem()
+// Only list stores with the given ID.
+func (o GetDatastoresFiltersOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDatastoresFilters) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-func (o GetContainersFilterArrayOutput) ToGetContainersFilterArrayOutput() GetContainersFilterArrayOutput {
+// If `target` is different to `nodeName`, then only lists shared stores which content is accessible on this node and the specified `target` node.
+func (o GetDatastoresFiltersOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDatastoresFilters) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+type GetDatastoresFiltersPtrOutput struct{ *pulumi.OutputState }
+
+func (GetDatastoresFiltersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetDatastoresFilters)(nil)).Elem()
+}
+
+func (o GetDatastoresFiltersPtrOutput) ToGetDatastoresFiltersPtrOutput() GetDatastoresFiltersPtrOutput {
 	return o
 }
 
-func (o GetContainersFilterArrayOutput) ToGetContainersFilterArrayOutputWithContext(ctx context.Context) GetContainersFilterArrayOutput {
+func (o GetDatastoresFiltersPtrOutput) ToGetDatastoresFiltersPtrOutputWithContext(ctx context.Context) GetDatastoresFiltersPtrOutput {
 	return o
 }
 
-func (o GetContainersFilterArrayOutput) Index(i pulumi.IntInput) GetContainersFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetContainersFilter {
-		return vs[0].([]GetContainersFilter)[vs[1].(int)]
-	}).(GetContainersFilterOutput)
+func (o GetDatastoresFiltersPtrOutput) Elem() GetDatastoresFiltersOutput {
+	return o.ApplyT(func(v *GetDatastoresFilters) GetDatastoresFilters {
+		if v != nil {
+			return *v
+		}
+		var ret GetDatastoresFilters
+		return ret
+	}).(GetDatastoresFiltersOutput)
 }
 
-type GetVm2Cpu struct {
+// Only list stores with the given content types.
+func (o GetDatastoresFiltersPtrOutput) ContentTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetDatastoresFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ContentTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Only list stores with the given ID.
+func (o GetDatastoresFiltersPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetDatastoresFilters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// If `target` is different to `nodeName`, then only lists shared stores which content is accessible on this node and the specified `target` node.
+func (o GetDatastoresFiltersPtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetDatastoresFilters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Target
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetDatastoresLegacyDatastore struct {
+	// Whether the store is active.
+	Active *bool `pulumi:"active"`
+	// Allowed store content types.
+	ContentTypes []string `pulumi:"contentTypes"`
+	// Whether the store is enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// The ID of the store.
+	Id string `pulumi:"id"`
+	// The name of the node the store is on.
+	NodeName string `pulumi:"nodeName"`
+	// Shared flag from store configuration.
+	Shared *bool `pulumi:"shared"`
+	// Available store space in bytes.
+	SpaceAvailable *int `pulumi:"spaceAvailable"`
+	// Total store space in bytes.
+	SpaceTotal *int `pulumi:"spaceTotal"`
+	// Used store space in bytes.
+	SpaceUsed *int `pulumi:"spaceUsed"`
+	// Used fraction (used/total).
+	SpaceUsedFraction *float64 `pulumi:"spaceUsedFraction"`
+	// Store type.
+	Type string `pulumi:"type"`
+}
+
+// GetDatastoresLegacyDatastoreInput is an input type that accepts GetDatastoresLegacyDatastoreArgs and GetDatastoresLegacyDatastoreOutput values.
+// You can construct a concrete instance of `GetDatastoresLegacyDatastoreInput` via:
+//
+//	GetDatastoresLegacyDatastoreArgs{...}
+type GetDatastoresLegacyDatastoreInput interface {
+	pulumi.Input
+
+	ToGetDatastoresLegacyDatastoreOutput() GetDatastoresLegacyDatastoreOutput
+	ToGetDatastoresLegacyDatastoreOutputWithContext(context.Context) GetDatastoresLegacyDatastoreOutput
+}
+
+type GetDatastoresLegacyDatastoreArgs struct {
+	// Whether the store is active.
+	Active pulumi.BoolPtrInput `pulumi:"active"`
+	// Allowed store content types.
+	ContentTypes pulumi.StringArrayInput `pulumi:"contentTypes"`
+	// Whether the store is enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The ID of the store.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The name of the node the store is on.
+	NodeName pulumi.StringInput `pulumi:"nodeName"`
+	// Shared flag from store configuration.
+	Shared pulumi.BoolPtrInput `pulumi:"shared"`
+	// Available store space in bytes.
+	SpaceAvailable pulumi.IntPtrInput `pulumi:"spaceAvailable"`
+	// Total store space in bytes.
+	SpaceTotal pulumi.IntPtrInput `pulumi:"spaceTotal"`
+	// Used store space in bytes.
+	SpaceUsed pulumi.IntPtrInput `pulumi:"spaceUsed"`
+	// Used fraction (used/total).
+	SpaceUsedFraction pulumi.Float64PtrInput `pulumi:"spaceUsedFraction"`
+	// Store type.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDatastoresLegacyDatastoreArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatastoresLegacyDatastore)(nil)).Elem()
+}
+
+func (i GetDatastoresLegacyDatastoreArgs) ToGetDatastoresLegacyDatastoreOutput() GetDatastoresLegacyDatastoreOutput {
+	return i.ToGetDatastoresLegacyDatastoreOutputWithContext(context.Background())
+}
+
+func (i GetDatastoresLegacyDatastoreArgs) ToGetDatastoresLegacyDatastoreOutputWithContext(ctx context.Context) GetDatastoresLegacyDatastoreOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatastoresLegacyDatastoreOutput)
+}
+
+// GetDatastoresLegacyDatastoreArrayInput is an input type that accepts GetDatastoresLegacyDatastoreArray and GetDatastoresLegacyDatastoreArrayOutput values.
+// You can construct a concrete instance of `GetDatastoresLegacyDatastoreArrayInput` via:
+//
+//	GetDatastoresLegacyDatastoreArray{ GetDatastoresLegacyDatastoreArgs{...} }
+type GetDatastoresLegacyDatastoreArrayInput interface {
+	pulumi.Input
+
+	ToGetDatastoresLegacyDatastoreArrayOutput() GetDatastoresLegacyDatastoreArrayOutput
+	ToGetDatastoresLegacyDatastoreArrayOutputWithContext(context.Context) GetDatastoresLegacyDatastoreArrayOutput
+}
+
+type GetDatastoresLegacyDatastoreArray []GetDatastoresLegacyDatastoreInput
+
+func (GetDatastoresLegacyDatastoreArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatastoresLegacyDatastore)(nil)).Elem()
+}
+
+func (i GetDatastoresLegacyDatastoreArray) ToGetDatastoresLegacyDatastoreArrayOutput() GetDatastoresLegacyDatastoreArrayOutput {
+	return i.ToGetDatastoresLegacyDatastoreArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatastoresLegacyDatastoreArray) ToGetDatastoresLegacyDatastoreArrayOutputWithContext(ctx context.Context) GetDatastoresLegacyDatastoreArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatastoresLegacyDatastoreArrayOutput)
+}
+
+type GetDatastoresLegacyDatastoreOutput struct{ *pulumi.OutputState }
+
+func (GetDatastoresLegacyDatastoreOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatastoresLegacyDatastore)(nil)).Elem()
+}
+
+func (o GetDatastoresLegacyDatastoreOutput) ToGetDatastoresLegacyDatastoreOutput() GetDatastoresLegacyDatastoreOutput {
+	return o
+}
+
+func (o GetDatastoresLegacyDatastoreOutput) ToGetDatastoresLegacyDatastoreOutputWithContext(ctx context.Context) GetDatastoresLegacyDatastoreOutput {
+	return o
+}
+
+// Whether the store is active.
+func (o GetDatastoresLegacyDatastoreOutput) Active() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetDatastoresLegacyDatastore) *bool { return v.Active }).(pulumi.BoolPtrOutput)
+}
+
+// Allowed store content types.
+func (o GetDatastoresLegacyDatastoreOutput) ContentTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDatastoresLegacyDatastore) []string { return v.ContentTypes }).(pulumi.StringArrayOutput)
+}
+
+// Whether the store is enabled.
+func (o GetDatastoresLegacyDatastoreOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetDatastoresLegacyDatastore) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the store.
+func (o GetDatastoresLegacyDatastoreOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatastoresLegacyDatastore) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The name of the node the store is on.
+func (o GetDatastoresLegacyDatastoreOutput) NodeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatastoresLegacyDatastore) string { return v.NodeName }).(pulumi.StringOutput)
+}
+
+// Shared flag from store configuration.
+func (o GetDatastoresLegacyDatastoreOutput) Shared() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetDatastoresLegacyDatastore) *bool { return v.Shared }).(pulumi.BoolPtrOutput)
+}
+
+// Available store space in bytes.
+func (o GetDatastoresLegacyDatastoreOutput) SpaceAvailable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetDatastoresLegacyDatastore) *int { return v.SpaceAvailable }).(pulumi.IntPtrOutput)
+}
+
+// Total store space in bytes.
+func (o GetDatastoresLegacyDatastoreOutput) SpaceTotal() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetDatastoresLegacyDatastore) *int { return v.SpaceTotal }).(pulumi.IntPtrOutput)
+}
+
+// Used store space in bytes.
+func (o GetDatastoresLegacyDatastoreOutput) SpaceUsed() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetDatastoresLegacyDatastore) *int { return v.SpaceUsed }).(pulumi.IntPtrOutput)
+}
+
+// Used fraction (used/total).
+func (o GetDatastoresLegacyDatastoreOutput) SpaceUsedFraction() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetDatastoresLegacyDatastore) *float64 { return v.SpaceUsedFraction }).(pulumi.Float64PtrOutput)
+}
+
+// Store type.
+func (o GetDatastoresLegacyDatastoreOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatastoresLegacyDatastore) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDatastoresLegacyDatastoreArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatastoresLegacyDatastoreArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatastoresLegacyDatastore)(nil)).Elem()
+}
+
+func (o GetDatastoresLegacyDatastoreArrayOutput) ToGetDatastoresLegacyDatastoreArrayOutput() GetDatastoresLegacyDatastoreArrayOutput {
+	return o
+}
+
+func (o GetDatastoresLegacyDatastoreArrayOutput) ToGetDatastoresLegacyDatastoreArrayOutputWithContext(ctx context.Context) GetDatastoresLegacyDatastoreArrayOutput {
+	return o
+}
+
+func (o GetDatastoresLegacyDatastoreArrayOutput) Index(i pulumi.IntInput) GetDatastoresLegacyDatastoreOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatastoresLegacyDatastore {
+		return vs[0].([]GetDatastoresLegacyDatastore)[vs[1].(int)]
+	}).(GetDatastoresLegacyDatastoreOutput)
+}
+
+type GetDatastoresLegacyFilters struct {
+	// Only list stores with the given content types.
+	ContentTypes []string `pulumi:"contentTypes"`
+	// Only list stores with the given ID.
+	Id *string `pulumi:"id"`
+	// If `target` is different to `nodeName`, then only lists shared stores which content is accessible on this node and the specified `target` node.
+	Target *string `pulumi:"target"`
+}
+
+// GetDatastoresLegacyFiltersInput is an input type that accepts GetDatastoresLegacyFiltersArgs and GetDatastoresLegacyFiltersOutput values.
+// You can construct a concrete instance of `GetDatastoresLegacyFiltersInput` via:
+//
+//	GetDatastoresLegacyFiltersArgs{...}
+type GetDatastoresLegacyFiltersInput interface {
+	pulumi.Input
+
+	ToGetDatastoresLegacyFiltersOutput() GetDatastoresLegacyFiltersOutput
+	ToGetDatastoresLegacyFiltersOutputWithContext(context.Context) GetDatastoresLegacyFiltersOutput
+}
+
+type GetDatastoresLegacyFiltersArgs struct {
+	// Only list stores with the given content types.
+	ContentTypes pulumi.StringArrayInput `pulumi:"contentTypes"`
+	// Only list stores with the given ID.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// If `target` is different to `nodeName`, then only lists shared stores which content is accessible on this node and the specified `target` node.
+	Target pulumi.StringPtrInput `pulumi:"target"`
+}
+
+func (GetDatastoresLegacyFiltersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatastoresLegacyFilters)(nil)).Elem()
+}
+
+func (i GetDatastoresLegacyFiltersArgs) ToGetDatastoresLegacyFiltersOutput() GetDatastoresLegacyFiltersOutput {
+	return i.ToGetDatastoresLegacyFiltersOutputWithContext(context.Background())
+}
+
+func (i GetDatastoresLegacyFiltersArgs) ToGetDatastoresLegacyFiltersOutputWithContext(ctx context.Context) GetDatastoresLegacyFiltersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatastoresLegacyFiltersOutput)
+}
+
+func (i GetDatastoresLegacyFiltersArgs) ToGetDatastoresLegacyFiltersPtrOutput() GetDatastoresLegacyFiltersPtrOutput {
+	return i.ToGetDatastoresLegacyFiltersPtrOutputWithContext(context.Background())
+}
+
+func (i GetDatastoresLegacyFiltersArgs) ToGetDatastoresLegacyFiltersPtrOutputWithContext(ctx context.Context) GetDatastoresLegacyFiltersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatastoresLegacyFiltersOutput).ToGetDatastoresLegacyFiltersPtrOutputWithContext(ctx)
+}
+
+// GetDatastoresLegacyFiltersPtrInput is an input type that accepts GetDatastoresLegacyFiltersArgs, GetDatastoresLegacyFiltersPtr and GetDatastoresLegacyFiltersPtrOutput values.
+// You can construct a concrete instance of `GetDatastoresLegacyFiltersPtrInput` via:
+//
+//	        GetDatastoresLegacyFiltersArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetDatastoresLegacyFiltersPtrInput interface {
+	pulumi.Input
+
+	ToGetDatastoresLegacyFiltersPtrOutput() GetDatastoresLegacyFiltersPtrOutput
+	ToGetDatastoresLegacyFiltersPtrOutputWithContext(context.Context) GetDatastoresLegacyFiltersPtrOutput
+}
+
+type getDatastoresLegacyFiltersPtrType GetDatastoresLegacyFiltersArgs
+
+func GetDatastoresLegacyFiltersPtr(v *GetDatastoresLegacyFiltersArgs) GetDatastoresLegacyFiltersPtrInput {
+	return (*getDatastoresLegacyFiltersPtrType)(v)
+}
+
+func (*getDatastoresLegacyFiltersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetDatastoresLegacyFilters)(nil)).Elem()
+}
+
+func (i *getDatastoresLegacyFiltersPtrType) ToGetDatastoresLegacyFiltersPtrOutput() GetDatastoresLegacyFiltersPtrOutput {
+	return i.ToGetDatastoresLegacyFiltersPtrOutputWithContext(context.Background())
+}
+
+func (i *getDatastoresLegacyFiltersPtrType) ToGetDatastoresLegacyFiltersPtrOutputWithContext(ctx context.Context) GetDatastoresLegacyFiltersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatastoresLegacyFiltersPtrOutput)
+}
+
+type GetDatastoresLegacyFiltersOutput struct{ *pulumi.OutputState }
+
+func (GetDatastoresLegacyFiltersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatastoresLegacyFilters)(nil)).Elem()
+}
+
+func (o GetDatastoresLegacyFiltersOutput) ToGetDatastoresLegacyFiltersOutput() GetDatastoresLegacyFiltersOutput {
+	return o
+}
+
+func (o GetDatastoresLegacyFiltersOutput) ToGetDatastoresLegacyFiltersOutputWithContext(ctx context.Context) GetDatastoresLegacyFiltersOutput {
+	return o
+}
+
+func (o GetDatastoresLegacyFiltersOutput) ToGetDatastoresLegacyFiltersPtrOutput() GetDatastoresLegacyFiltersPtrOutput {
+	return o.ToGetDatastoresLegacyFiltersPtrOutputWithContext(context.Background())
+}
+
+func (o GetDatastoresLegacyFiltersOutput) ToGetDatastoresLegacyFiltersPtrOutputWithContext(ctx context.Context) GetDatastoresLegacyFiltersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetDatastoresLegacyFilters) *GetDatastoresLegacyFilters {
+		return &v
+	}).(GetDatastoresLegacyFiltersPtrOutput)
+}
+
+// Only list stores with the given content types.
+func (o GetDatastoresLegacyFiltersOutput) ContentTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDatastoresLegacyFilters) []string { return v.ContentTypes }).(pulumi.StringArrayOutput)
+}
+
+// Only list stores with the given ID.
+func (o GetDatastoresLegacyFiltersOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDatastoresLegacyFilters) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// If `target` is different to `nodeName`, then only lists shared stores which content is accessible on this node and the specified `target` node.
+func (o GetDatastoresLegacyFiltersOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDatastoresLegacyFilters) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+type GetDatastoresLegacyFiltersPtrOutput struct{ *pulumi.OutputState }
+
+func (GetDatastoresLegacyFiltersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetDatastoresLegacyFilters)(nil)).Elem()
+}
+
+func (o GetDatastoresLegacyFiltersPtrOutput) ToGetDatastoresLegacyFiltersPtrOutput() GetDatastoresLegacyFiltersPtrOutput {
+	return o
+}
+
+func (o GetDatastoresLegacyFiltersPtrOutput) ToGetDatastoresLegacyFiltersPtrOutputWithContext(ctx context.Context) GetDatastoresLegacyFiltersPtrOutput {
+	return o
+}
+
+func (o GetDatastoresLegacyFiltersPtrOutput) Elem() GetDatastoresLegacyFiltersOutput {
+	return o.ApplyT(func(v *GetDatastoresLegacyFilters) GetDatastoresLegacyFilters {
+		if v != nil {
+			return *v
+		}
+		var ret GetDatastoresLegacyFilters
+		return ret
+	}).(GetDatastoresLegacyFiltersOutput)
+}
+
+// Only list stores with the given content types.
+func (o GetDatastoresLegacyFiltersPtrOutput) ContentTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetDatastoresLegacyFilters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ContentTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Only list stores with the given ID.
+func (o GetDatastoresLegacyFiltersPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetDatastoresLegacyFilters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// If `target` is different to `nodeName`, then only lists shared stores which content is accessible on this node and the specified `target` node.
+func (o GetDatastoresLegacyFiltersPtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetDatastoresLegacyFilters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Target
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetFilesFile struct {
+	// The content type of the file.
+	ContentType string `pulumi:"contentType"`
+	// The format of the file.
+	FileFormat string `pulumi:"fileFormat"`
+	// The name of the file.
+	FileName string `pulumi:"fileName"`
+	// The size of the file in bytes.
+	FileSize int `pulumi:"fileSize"`
+	// The unique identifier of the file (volume ID), e.g. `local:iso/ubuntu.iso`.
+	Id string `pulumi:"id"`
+	// The VM ID associated with the file, if applicable.
+	Vmid int `pulumi:"vmid"`
+}
+
+// GetFilesFileInput is an input type that accepts GetFilesFileArgs and GetFilesFileOutput values.
+// You can construct a concrete instance of `GetFilesFileInput` via:
+//
+//	GetFilesFileArgs{...}
+type GetFilesFileInput interface {
+	pulumi.Input
+
+	ToGetFilesFileOutput() GetFilesFileOutput
+	ToGetFilesFileOutputWithContext(context.Context) GetFilesFileOutput
+}
+
+type GetFilesFileArgs struct {
+	// The content type of the file.
+	ContentType pulumi.StringInput `pulumi:"contentType"`
+	// The format of the file.
+	FileFormat pulumi.StringInput `pulumi:"fileFormat"`
+	// The name of the file.
+	FileName pulumi.StringInput `pulumi:"fileName"`
+	// The size of the file in bytes.
+	FileSize pulumi.IntInput `pulumi:"fileSize"`
+	// The unique identifier of the file (volume ID), e.g. `local:iso/ubuntu.iso`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The VM ID associated with the file, if applicable.
+	Vmid pulumi.IntInput `pulumi:"vmid"`
+}
+
+func (GetFilesFileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFilesFile)(nil)).Elem()
+}
+
+func (i GetFilesFileArgs) ToGetFilesFileOutput() GetFilesFileOutput {
+	return i.ToGetFilesFileOutputWithContext(context.Background())
+}
+
+func (i GetFilesFileArgs) ToGetFilesFileOutputWithContext(ctx context.Context) GetFilesFileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFilesFileOutput)
+}
+
+// GetFilesFileArrayInput is an input type that accepts GetFilesFileArray and GetFilesFileArrayOutput values.
+// You can construct a concrete instance of `GetFilesFileArrayInput` via:
+//
+//	GetFilesFileArray{ GetFilesFileArgs{...} }
+type GetFilesFileArrayInput interface {
+	pulumi.Input
+
+	ToGetFilesFileArrayOutput() GetFilesFileArrayOutput
+	ToGetFilesFileArrayOutputWithContext(context.Context) GetFilesFileArrayOutput
+}
+
+type GetFilesFileArray []GetFilesFileInput
+
+func (GetFilesFileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFilesFile)(nil)).Elem()
+}
+
+func (i GetFilesFileArray) ToGetFilesFileArrayOutput() GetFilesFileArrayOutput {
+	return i.ToGetFilesFileArrayOutputWithContext(context.Background())
+}
+
+func (i GetFilesFileArray) ToGetFilesFileArrayOutputWithContext(ctx context.Context) GetFilesFileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFilesFileArrayOutput)
+}
+
+type GetFilesFileOutput struct{ *pulumi.OutputState }
+
+func (GetFilesFileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFilesFile)(nil)).Elem()
+}
+
+func (o GetFilesFileOutput) ToGetFilesFileOutput() GetFilesFileOutput {
+	return o
+}
+
+func (o GetFilesFileOutput) ToGetFilesFileOutputWithContext(ctx context.Context) GetFilesFileOutput {
+	return o
+}
+
+// The content type of the file.
+func (o GetFilesFileOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFilesFile) string { return v.ContentType }).(pulumi.StringOutput)
+}
+
+// The format of the file.
+func (o GetFilesFileOutput) FileFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFilesFile) string { return v.FileFormat }).(pulumi.StringOutput)
+}
+
+// The name of the file.
+func (o GetFilesFileOutput) FileName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFilesFile) string { return v.FileName }).(pulumi.StringOutput)
+}
+
+// The size of the file in bytes.
+func (o GetFilesFileOutput) FileSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFilesFile) int { return v.FileSize }).(pulumi.IntOutput)
+}
+
+// The unique identifier of the file (volume ID), e.g. `local:iso/ubuntu.iso`.
+func (o GetFilesFileOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFilesFile) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The VM ID associated with the file, if applicable.
+func (o GetFilesFileOutput) Vmid() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFilesFile) int { return v.Vmid }).(pulumi.IntOutput)
+}
+
+type GetFilesFileArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFilesFileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFilesFile)(nil)).Elem()
+}
+
+func (o GetFilesFileArrayOutput) ToGetFilesFileArrayOutput() GetFilesFileArrayOutput {
+	return o
+}
+
+func (o GetFilesFileArrayOutput) ToGetFilesFileArrayOutputWithContext(ctx context.Context) GetFilesFileArrayOutput {
+	return o
+}
+
+func (o GetFilesFileArrayOutput) Index(i pulumi.IntInput) GetFilesFileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFilesFile {
+		return vs[0].([]GetFilesFile)[vs[1].(int)]
+	}).(GetFilesFileOutput)
+}
+
+type GetReplicationsLegacyReplication struct {
+	Comment   string  `pulumi:"comment"`
+	Disable   bool    `pulumi:"disable"`
+	Guest     int     `pulumi:"guest"`
+	Id        string  `pulumi:"id"`
+	Jobnum    int     `pulumi:"jobnum"`
+	Rate      float64 `pulumi:"rate"`
+	RemoveJob string  `pulumi:"removeJob"`
+	Schedule  string  `pulumi:"schedule"`
+	Source    string  `pulumi:"source"`
+	Target    string  `pulumi:"target"`
+	Type      string  `pulumi:"type"`
+}
+
+// GetReplicationsLegacyReplicationInput is an input type that accepts GetReplicationsLegacyReplicationArgs and GetReplicationsLegacyReplicationOutput values.
+// You can construct a concrete instance of `GetReplicationsLegacyReplicationInput` via:
+//
+//	GetReplicationsLegacyReplicationArgs{...}
+type GetReplicationsLegacyReplicationInput interface {
+	pulumi.Input
+
+	ToGetReplicationsLegacyReplicationOutput() GetReplicationsLegacyReplicationOutput
+	ToGetReplicationsLegacyReplicationOutputWithContext(context.Context) GetReplicationsLegacyReplicationOutput
+}
+
+type GetReplicationsLegacyReplicationArgs struct {
+	Comment   pulumi.StringInput  `pulumi:"comment"`
+	Disable   pulumi.BoolInput    `pulumi:"disable"`
+	Guest     pulumi.IntInput     `pulumi:"guest"`
+	Id        pulumi.StringInput  `pulumi:"id"`
+	Jobnum    pulumi.IntInput     `pulumi:"jobnum"`
+	Rate      pulumi.Float64Input `pulumi:"rate"`
+	RemoveJob pulumi.StringInput  `pulumi:"removeJob"`
+	Schedule  pulumi.StringInput  `pulumi:"schedule"`
+	Source    pulumi.StringInput  `pulumi:"source"`
+	Target    pulumi.StringInput  `pulumi:"target"`
+	Type      pulumi.StringInput  `pulumi:"type"`
+}
+
+func (GetReplicationsLegacyReplicationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReplicationsLegacyReplication)(nil)).Elem()
+}
+
+func (i GetReplicationsLegacyReplicationArgs) ToGetReplicationsLegacyReplicationOutput() GetReplicationsLegacyReplicationOutput {
+	return i.ToGetReplicationsLegacyReplicationOutputWithContext(context.Background())
+}
+
+func (i GetReplicationsLegacyReplicationArgs) ToGetReplicationsLegacyReplicationOutputWithContext(ctx context.Context) GetReplicationsLegacyReplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReplicationsLegacyReplicationOutput)
+}
+
+// GetReplicationsLegacyReplicationArrayInput is an input type that accepts GetReplicationsLegacyReplicationArray and GetReplicationsLegacyReplicationArrayOutput values.
+// You can construct a concrete instance of `GetReplicationsLegacyReplicationArrayInput` via:
+//
+//	GetReplicationsLegacyReplicationArray{ GetReplicationsLegacyReplicationArgs{...} }
+type GetReplicationsLegacyReplicationArrayInput interface {
+	pulumi.Input
+
+	ToGetReplicationsLegacyReplicationArrayOutput() GetReplicationsLegacyReplicationArrayOutput
+	ToGetReplicationsLegacyReplicationArrayOutputWithContext(context.Context) GetReplicationsLegacyReplicationArrayOutput
+}
+
+type GetReplicationsLegacyReplicationArray []GetReplicationsLegacyReplicationInput
+
+func (GetReplicationsLegacyReplicationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReplicationsLegacyReplication)(nil)).Elem()
+}
+
+func (i GetReplicationsLegacyReplicationArray) ToGetReplicationsLegacyReplicationArrayOutput() GetReplicationsLegacyReplicationArrayOutput {
+	return i.ToGetReplicationsLegacyReplicationArrayOutputWithContext(context.Background())
+}
+
+func (i GetReplicationsLegacyReplicationArray) ToGetReplicationsLegacyReplicationArrayOutputWithContext(ctx context.Context) GetReplicationsLegacyReplicationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReplicationsLegacyReplicationArrayOutput)
+}
+
+type GetReplicationsLegacyReplicationOutput struct{ *pulumi.OutputState }
+
+func (GetReplicationsLegacyReplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReplicationsLegacyReplication)(nil)).Elem()
+}
+
+func (o GetReplicationsLegacyReplicationOutput) ToGetReplicationsLegacyReplicationOutput() GetReplicationsLegacyReplicationOutput {
+	return o
+}
+
+func (o GetReplicationsLegacyReplicationOutput) ToGetReplicationsLegacyReplicationOutputWithContext(ctx context.Context) GetReplicationsLegacyReplicationOutput {
+	return o
+}
+
+func (o GetReplicationsLegacyReplicationOutput) Comment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReplicationsLegacyReplication) string { return v.Comment }).(pulumi.StringOutput)
+}
+
+func (o GetReplicationsLegacyReplicationOutput) Disable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetReplicationsLegacyReplication) bool { return v.Disable }).(pulumi.BoolOutput)
+}
+
+func (o GetReplicationsLegacyReplicationOutput) Guest() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReplicationsLegacyReplication) int { return v.Guest }).(pulumi.IntOutput)
+}
+
+func (o GetReplicationsLegacyReplicationOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReplicationsLegacyReplication) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetReplicationsLegacyReplicationOutput) Jobnum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReplicationsLegacyReplication) int { return v.Jobnum }).(pulumi.IntOutput)
+}
+
+func (o GetReplicationsLegacyReplicationOutput) Rate() pulumi.Float64Output {
+	return o.ApplyT(func(v GetReplicationsLegacyReplication) float64 { return v.Rate }).(pulumi.Float64Output)
+}
+
+func (o GetReplicationsLegacyReplicationOutput) RemoveJob() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReplicationsLegacyReplication) string { return v.RemoveJob }).(pulumi.StringOutput)
+}
+
+func (o GetReplicationsLegacyReplicationOutput) Schedule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReplicationsLegacyReplication) string { return v.Schedule }).(pulumi.StringOutput)
+}
+
+func (o GetReplicationsLegacyReplicationOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReplicationsLegacyReplication) string { return v.Source }).(pulumi.StringOutput)
+}
+
+func (o GetReplicationsLegacyReplicationOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReplicationsLegacyReplication) string { return v.Target }).(pulumi.StringOutput)
+}
+
+func (o GetReplicationsLegacyReplicationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReplicationsLegacyReplication) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetReplicationsLegacyReplicationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReplicationsLegacyReplicationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReplicationsLegacyReplication)(nil)).Elem()
+}
+
+func (o GetReplicationsLegacyReplicationArrayOutput) ToGetReplicationsLegacyReplicationArrayOutput() GetReplicationsLegacyReplicationArrayOutput {
+	return o
+}
+
+func (o GetReplicationsLegacyReplicationArrayOutput) ToGetReplicationsLegacyReplicationArrayOutputWithContext(ctx context.Context) GetReplicationsLegacyReplicationArrayOutput {
+	return o
+}
+
+func (o GetReplicationsLegacyReplicationArrayOutput) Index(i pulumi.IntInput) GetReplicationsLegacyReplicationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReplicationsLegacyReplication {
+		return vs[0].([]GetReplicationsLegacyReplication)[vs[1].(int)]
+	}).(GetReplicationsLegacyReplicationOutput)
+}
+
+type GetReplicationsReplication struct {
+	Comment   string  `pulumi:"comment"`
+	Disable   bool    `pulumi:"disable"`
+	Guest     int     `pulumi:"guest"`
+	Id        string  `pulumi:"id"`
+	Jobnum    int     `pulumi:"jobnum"`
+	Rate      float64 `pulumi:"rate"`
+	RemoveJob string  `pulumi:"removeJob"`
+	Schedule  string  `pulumi:"schedule"`
+	Source    string  `pulumi:"source"`
+	Target    string  `pulumi:"target"`
+	Type      string  `pulumi:"type"`
+}
+
+// GetReplicationsReplicationInput is an input type that accepts GetReplicationsReplicationArgs and GetReplicationsReplicationOutput values.
+// You can construct a concrete instance of `GetReplicationsReplicationInput` via:
+//
+//	GetReplicationsReplicationArgs{...}
+type GetReplicationsReplicationInput interface {
+	pulumi.Input
+
+	ToGetReplicationsReplicationOutput() GetReplicationsReplicationOutput
+	ToGetReplicationsReplicationOutputWithContext(context.Context) GetReplicationsReplicationOutput
+}
+
+type GetReplicationsReplicationArgs struct {
+	Comment   pulumi.StringInput  `pulumi:"comment"`
+	Disable   pulumi.BoolInput    `pulumi:"disable"`
+	Guest     pulumi.IntInput     `pulumi:"guest"`
+	Id        pulumi.StringInput  `pulumi:"id"`
+	Jobnum    pulumi.IntInput     `pulumi:"jobnum"`
+	Rate      pulumi.Float64Input `pulumi:"rate"`
+	RemoveJob pulumi.StringInput  `pulumi:"removeJob"`
+	Schedule  pulumi.StringInput  `pulumi:"schedule"`
+	Source    pulumi.StringInput  `pulumi:"source"`
+	Target    pulumi.StringInput  `pulumi:"target"`
+	Type      pulumi.StringInput  `pulumi:"type"`
+}
+
+func (GetReplicationsReplicationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReplicationsReplication)(nil)).Elem()
+}
+
+func (i GetReplicationsReplicationArgs) ToGetReplicationsReplicationOutput() GetReplicationsReplicationOutput {
+	return i.ToGetReplicationsReplicationOutputWithContext(context.Background())
+}
+
+func (i GetReplicationsReplicationArgs) ToGetReplicationsReplicationOutputWithContext(ctx context.Context) GetReplicationsReplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReplicationsReplicationOutput)
+}
+
+// GetReplicationsReplicationArrayInput is an input type that accepts GetReplicationsReplicationArray and GetReplicationsReplicationArrayOutput values.
+// You can construct a concrete instance of `GetReplicationsReplicationArrayInput` via:
+//
+//	GetReplicationsReplicationArray{ GetReplicationsReplicationArgs{...} }
+type GetReplicationsReplicationArrayInput interface {
+	pulumi.Input
+
+	ToGetReplicationsReplicationArrayOutput() GetReplicationsReplicationArrayOutput
+	ToGetReplicationsReplicationArrayOutputWithContext(context.Context) GetReplicationsReplicationArrayOutput
+}
+
+type GetReplicationsReplicationArray []GetReplicationsReplicationInput
+
+func (GetReplicationsReplicationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReplicationsReplication)(nil)).Elem()
+}
+
+func (i GetReplicationsReplicationArray) ToGetReplicationsReplicationArrayOutput() GetReplicationsReplicationArrayOutput {
+	return i.ToGetReplicationsReplicationArrayOutputWithContext(context.Background())
+}
+
+func (i GetReplicationsReplicationArray) ToGetReplicationsReplicationArrayOutputWithContext(ctx context.Context) GetReplicationsReplicationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReplicationsReplicationArrayOutput)
+}
+
+type GetReplicationsReplicationOutput struct{ *pulumi.OutputState }
+
+func (GetReplicationsReplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReplicationsReplication)(nil)).Elem()
+}
+
+func (o GetReplicationsReplicationOutput) ToGetReplicationsReplicationOutput() GetReplicationsReplicationOutput {
+	return o
+}
+
+func (o GetReplicationsReplicationOutput) ToGetReplicationsReplicationOutputWithContext(ctx context.Context) GetReplicationsReplicationOutput {
+	return o
+}
+
+func (o GetReplicationsReplicationOutput) Comment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReplicationsReplication) string { return v.Comment }).(pulumi.StringOutput)
+}
+
+func (o GetReplicationsReplicationOutput) Disable() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetReplicationsReplication) bool { return v.Disable }).(pulumi.BoolOutput)
+}
+
+func (o GetReplicationsReplicationOutput) Guest() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReplicationsReplication) int { return v.Guest }).(pulumi.IntOutput)
+}
+
+func (o GetReplicationsReplicationOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReplicationsReplication) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetReplicationsReplicationOutput) Jobnum() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReplicationsReplication) int { return v.Jobnum }).(pulumi.IntOutput)
+}
+
+func (o GetReplicationsReplicationOutput) Rate() pulumi.Float64Output {
+	return o.ApplyT(func(v GetReplicationsReplication) float64 { return v.Rate }).(pulumi.Float64Output)
+}
+
+func (o GetReplicationsReplicationOutput) RemoveJob() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReplicationsReplication) string { return v.RemoveJob }).(pulumi.StringOutput)
+}
+
+func (o GetReplicationsReplicationOutput) Schedule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReplicationsReplication) string { return v.Schedule }).(pulumi.StringOutput)
+}
+
+func (o GetReplicationsReplicationOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReplicationsReplication) string { return v.Source }).(pulumi.StringOutput)
+}
+
+func (o GetReplicationsReplicationOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReplicationsReplication) string { return v.Target }).(pulumi.StringOutput)
+}
+
+func (o GetReplicationsReplicationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReplicationsReplication) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetReplicationsReplicationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReplicationsReplicationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReplicationsReplication)(nil)).Elem()
+}
+
+func (o GetReplicationsReplicationArrayOutput) ToGetReplicationsReplicationArrayOutput() GetReplicationsReplicationArrayOutput {
+	return o
+}
+
+func (o GetReplicationsReplicationArrayOutput) ToGetReplicationsReplicationArrayOutputWithContext(ctx context.Context) GetReplicationsReplicationArrayOutput {
+	return o
+}
+
+func (o GetReplicationsReplicationArrayOutput) Index(i pulumi.IntInput) GetReplicationsReplicationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReplicationsReplication {
+		return vs[0].([]GetReplicationsReplication)[vs[1].(int)]
+	}).(GetReplicationsReplicationOutput)
+}
+
+type GetVm2LegacyCpu struct {
 	// List of host cores used to execute guest processes, for example: '0,5,8-11'
 	Affinity string `pulumi:"affinity"`
 	// The CPU architecture.
@@ -814,7 +3520,7 @@ type GetVm2Cpu struct {
 	// The number of hotplugged vCPUs.
 	Hotplugged int `pulumi:"hotplugged"`
 	// Limit of CPU usage.
-	Limit int `pulumi:"limit"`
+	Limit float64 `pulumi:"limit"`
 	// Enable NUMA.
 	Numa bool `pulumi:"numa"`
 	// The number of CPU sockets.
@@ -825,18 +3531,18 @@ type GetVm2Cpu struct {
 	Units int `pulumi:"units"`
 }
 
-// GetVm2CpuInput is an input type that accepts GetVm2CpuArgs and GetVm2CpuOutput values.
-// You can construct a concrete instance of `GetVm2CpuInput` via:
+// GetVm2LegacyCpuInput is an input type that accepts GetVm2LegacyCpuArgs and GetVm2LegacyCpuOutput values.
+// You can construct a concrete instance of `GetVm2LegacyCpuInput` via:
 //
-//	GetVm2CpuArgs{...}
-type GetVm2CpuInput interface {
+//	GetVm2LegacyCpuArgs{...}
+type GetVm2LegacyCpuInput interface {
 	pulumi.Input
 
-	ToGetVm2CpuOutput() GetVm2CpuOutput
-	ToGetVm2CpuOutputWithContext(context.Context) GetVm2CpuOutput
+	ToGetVm2LegacyCpuOutput() GetVm2LegacyCpuOutput
+	ToGetVm2LegacyCpuOutputWithContext(context.Context) GetVm2LegacyCpuOutput
 }
 
-type GetVm2CpuArgs struct {
+type GetVm2LegacyCpuArgs struct {
 	// List of host cores used to execute guest processes, for example: '0,5,8-11'
 	Affinity pulumi.StringInput `pulumi:"affinity"`
 	// The CPU architecture.
@@ -848,7 +3554,7 @@ type GetVm2CpuArgs struct {
 	// The number of hotplugged vCPUs.
 	Hotplugged pulumi.IntInput `pulumi:"hotplugged"`
 	// Limit of CPU usage.
-	Limit pulumi.IntInput `pulumi:"limit"`
+	Limit pulumi.Float64Input `pulumi:"limit"`
 	// Enable NUMA.
 	Numa pulumi.BoolInput `pulumi:"numa"`
 	// The number of CPU sockets.
@@ -859,160 +3565,160 @@ type GetVm2CpuArgs struct {
 	Units pulumi.IntInput `pulumi:"units"`
 }
 
-func (GetVm2CpuArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVm2Cpu)(nil)).Elem()
+func (GetVm2LegacyCpuArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVm2LegacyCpu)(nil)).Elem()
 }
 
-func (i GetVm2CpuArgs) ToGetVm2CpuOutput() GetVm2CpuOutput {
-	return i.ToGetVm2CpuOutputWithContext(context.Background())
+func (i GetVm2LegacyCpuArgs) ToGetVm2LegacyCpuOutput() GetVm2LegacyCpuOutput {
+	return i.ToGetVm2LegacyCpuOutputWithContext(context.Background())
 }
 
-func (i GetVm2CpuArgs) ToGetVm2CpuOutputWithContext(ctx context.Context) GetVm2CpuOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVm2CpuOutput)
+func (i GetVm2LegacyCpuArgs) ToGetVm2LegacyCpuOutputWithContext(ctx context.Context) GetVm2LegacyCpuOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVm2LegacyCpuOutput)
 }
 
-func (i GetVm2CpuArgs) ToGetVm2CpuPtrOutput() GetVm2CpuPtrOutput {
-	return i.ToGetVm2CpuPtrOutputWithContext(context.Background())
+func (i GetVm2LegacyCpuArgs) ToGetVm2LegacyCpuPtrOutput() GetVm2LegacyCpuPtrOutput {
+	return i.ToGetVm2LegacyCpuPtrOutputWithContext(context.Background())
 }
 
-func (i GetVm2CpuArgs) ToGetVm2CpuPtrOutputWithContext(ctx context.Context) GetVm2CpuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVm2CpuOutput).ToGetVm2CpuPtrOutputWithContext(ctx)
+func (i GetVm2LegacyCpuArgs) ToGetVm2LegacyCpuPtrOutputWithContext(ctx context.Context) GetVm2LegacyCpuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVm2LegacyCpuOutput).ToGetVm2LegacyCpuPtrOutputWithContext(ctx)
 }
 
-// GetVm2CpuPtrInput is an input type that accepts GetVm2CpuArgs, GetVm2CpuPtr and GetVm2CpuPtrOutput values.
-// You can construct a concrete instance of `GetVm2CpuPtrInput` via:
+// GetVm2LegacyCpuPtrInput is an input type that accepts GetVm2LegacyCpuArgs, GetVm2LegacyCpuPtr and GetVm2LegacyCpuPtrOutput values.
+// You can construct a concrete instance of `GetVm2LegacyCpuPtrInput` via:
 //
-//	        GetVm2CpuArgs{...}
+//	        GetVm2LegacyCpuArgs{...}
 //
 //	or:
 //
 //	        nil
-type GetVm2CpuPtrInput interface {
+type GetVm2LegacyCpuPtrInput interface {
 	pulumi.Input
 
-	ToGetVm2CpuPtrOutput() GetVm2CpuPtrOutput
-	ToGetVm2CpuPtrOutputWithContext(context.Context) GetVm2CpuPtrOutput
+	ToGetVm2LegacyCpuPtrOutput() GetVm2LegacyCpuPtrOutput
+	ToGetVm2LegacyCpuPtrOutputWithContext(context.Context) GetVm2LegacyCpuPtrOutput
 }
 
-type getVm2CpuPtrType GetVm2CpuArgs
+type getVm2LegacyCpuPtrType GetVm2LegacyCpuArgs
 
-func GetVm2CpuPtr(v *GetVm2CpuArgs) GetVm2CpuPtrInput {
-	return (*getVm2CpuPtrType)(v)
+func GetVm2LegacyCpuPtr(v *GetVm2LegacyCpuArgs) GetVm2LegacyCpuPtrInput {
+	return (*getVm2LegacyCpuPtrType)(v)
 }
 
-func (*getVm2CpuPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetVm2Cpu)(nil)).Elem()
+func (*getVm2LegacyCpuPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVm2LegacyCpu)(nil)).Elem()
 }
 
-func (i *getVm2CpuPtrType) ToGetVm2CpuPtrOutput() GetVm2CpuPtrOutput {
-	return i.ToGetVm2CpuPtrOutputWithContext(context.Background())
+func (i *getVm2LegacyCpuPtrType) ToGetVm2LegacyCpuPtrOutput() GetVm2LegacyCpuPtrOutput {
+	return i.ToGetVm2LegacyCpuPtrOutputWithContext(context.Background())
 }
 
-func (i *getVm2CpuPtrType) ToGetVm2CpuPtrOutputWithContext(ctx context.Context) GetVm2CpuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVm2CpuPtrOutput)
+func (i *getVm2LegacyCpuPtrType) ToGetVm2LegacyCpuPtrOutputWithContext(ctx context.Context) GetVm2LegacyCpuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVm2LegacyCpuPtrOutput)
 }
 
-type GetVm2CpuOutput struct{ *pulumi.OutputState }
+type GetVm2LegacyCpuOutput struct{ *pulumi.OutputState }
 
-func (GetVm2CpuOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVm2Cpu)(nil)).Elem()
+func (GetVm2LegacyCpuOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVm2LegacyCpu)(nil)).Elem()
 }
 
-func (o GetVm2CpuOutput) ToGetVm2CpuOutput() GetVm2CpuOutput {
+func (o GetVm2LegacyCpuOutput) ToGetVm2LegacyCpuOutput() GetVm2LegacyCpuOutput {
 	return o
 }
 
-func (o GetVm2CpuOutput) ToGetVm2CpuOutputWithContext(ctx context.Context) GetVm2CpuOutput {
+func (o GetVm2LegacyCpuOutput) ToGetVm2LegacyCpuOutputWithContext(ctx context.Context) GetVm2LegacyCpuOutput {
 	return o
 }
 
-func (o GetVm2CpuOutput) ToGetVm2CpuPtrOutput() GetVm2CpuPtrOutput {
-	return o.ToGetVm2CpuPtrOutputWithContext(context.Background())
+func (o GetVm2LegacyCpuOutput) ToGetVm2LegacyCpuPtrOutput() GetVm2LegacyCpuPtrOutput {
+	return o.ToGetVm2LegacyCpuPtrOutputWithContext(context.Background())
 }
 
-func (o GetVm2CpuOutput) ToGetVm2CpuPtrOutputWithContext(ctx context.Context) GetVm2CpuPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVm2Cpu) *GetVm2Cpu {
+func (o GetVm2LegacyCpuOutput) ToGetVm2LegacyCpuPtrOutputWithContext(ctx context.Context) GetVm2LegacyCpuPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVm2LegacyCpu) *GetVm2LegacyCpu {
 		return &v
-	}).(GetVm2CpuPtrOutput)
+	}).(GetVm2LegacyCpuPtrOutput)
 }
 
 // List of host cores used to execute guest processes, for example: '0,5,8-11'
-func (o GetVm2CpuOutput) Affinity() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVm2Cpu) string { return v.Affinity }).(pulumi.StringOutput)
+func (o GetVm2LegacyCpuOutput) Affinity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVm2LegacyCpu) string { return v.Affinity }).(pulumi.StringOutput)
 }
 
 // The CPU architecture.
-func (o GetVm2CpuOutput) Architecture() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVm2Cpu) string { return v.Architecture }).(pulumi.StringOutput)
+func (o GetVm2LegacyCpuOutput) Architecture() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVm2LegacyCpu) string { return v.Architecture }).(pulumi.StringOutput)
 }
 
 // The number of CPU cores per socket.
-func (o GetVm2CpuOutput) Cores() pulumi.IntOutput {
-	return o.ApplyT(func(v GetVm2Cpu) int { return v.Cores }).(pulumi.IntOutput)
+func (o GetVm2LegacyCpuOutput) Cores() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVm2LegacyCpu) int { return v.Cores }).(pulumi.IntOutput)
 }
 
 // Set of additional CPU flags.
-func (o GetVm2CpuOutput) Flags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetVm2Cpu) []string { return v.Flags }).(pulumi.StringArrayOutput)
+func (o GetVm2LegacyCpuOutput) Flags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVm2LegacyCpu) []string { return v.Flags }).(pulumi.StringArrayOutput)
 }
 
 // The number of hotplugged vCPUs.
-func (o GetVm2CpuOutput) Hotplugged() pulumi.IntOutput {
-	return o.ApplyT(func(v GetVm2Cpu) int { return v.Hotplugged }).(pulumi.IntOutput)
+func (o GetVm2LegacyCpuOutput) Hotplugged() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVm2LegacyCpu) int { return v.Hotplugged }).(pulumi.IntOutput)
 }
 
 // Limit of CPU usage.
-func (o GetVm2CpuOutput) Limit() pulumi.IntOutput {
-	return o.ApplyT(func(v GetVm2Cpu) int { return v.Limit }).(pulumi.IntOutput)
+func (o GetVm2LegacyCpuOutput) Limit() pulumi.Float64Output {
+	return o.ApplyT(func(v GetVm2LegacyCpu) float64 { return v.Limit }).(pulumi.Float64Output)
 }
 
 // Enable NUMA.
-func (o GetVm2CpuOutput) Numa() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetVm2Cpu) bool { return v.Numa }).(pulumi.BoolOutput)
+func (o GetVm2LegacyCpuOutput) Numa() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetVm2LegacyCpu) bool { return v.Numa }).(pulumi.BoolOutput)
 }
 
 // The number of CPU sockets.
-func (o GetVm2CpuOutput) Sockets() pulumi.IntOutput {
-	return o.ApplyT(func(v GetVm2Cpu) int { return v.Sockets }).(pulumi.IntOutput)
+func (o GetVm2LegacyCpuOutput) Sockets() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVm2LegacyCpu) int { return v.Sockets }).(pulumi.IntOutput)
 }
 
 // Emulated CPU type.
-func (o GetVm2CpuOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVm2Cpu) string { return v.Type }).(pulumi.StringOutput)
+func (o GetVm2LegacyCpuOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVm2LegacyCpu) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // CPU weight for a VM
-func (o GetVm2CpuOutput) Units() pulumi.IntOutput {
-	return o.ApplyT(func(v GetVm2Cpu) int { return v.Units }).(pulumi.IntOutput)
+func (o GetVm2LegacyCpuOutput) Units() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVm2LegacyCpu) int { return v.Units }).(pulumi.IntOutput)
 }
 
-type GetVm2CpuPtrOutput struct{ *pulumi.OutputState }
+type GetVm2LegacyCpuPtrOutput struct{ *pulumi.OutputState }
 
-func (GetVm2CpuPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetVm2Cpu)(nil)).Elem()
+func (GetVm2LegacyCpuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVm2LegacyCpu)(nil)).Elem()
 }
 
-func (o GetVm2CpuPtrOutput) ToGetVm2CpuPtrOutput() GetVm2CpuPtrOutput {
+func (o GetVm2LegacyCpuPtrOutput) ToGetVm2LegacyCpuPtrOutput() GetVm2LegacyCpuPtrOutput {
 	return o
 }
 
-func (o GetVm2CpuPtrOutput) ToGetVm2CpuPtrOutputWithContext(ctx context.Context) GetVm2CpuPtrOutput {
+func (o GetVm2LegacyCpuPtrOutput) ToGetVm2LegacyCpuPtrOutputWithContext(ctx context.Context) GetVm2LegacyCpuPtrOutput {
 	return o
 }
 
-func (o GetVm2CpuPtrOutput) Elem() GetVm2CpuOutput {
-	return o.ApplyT(func(v *GetVm2Cpu) GetVm2Cpu {
+func (o GetVm2LegacyCpuPtrOutput) Elem() GetVm2LegacyCpuOutput {
+	return o.ApplyT(func(v *GetVm2LegacyCpu) GetVm2LegacyCpu {
 		if v != nil {
 			return *v
 		}
-		var ret GetVm2Cpu
+		var ret GetVm2LegacyCpu
 		return ret
-	}).(GetVm2CpuOutput)
+	}).(GetVm2LegacyCpuOutput)
 }
 
 // List of host cores used to execute guest processes, for example: '0,5,8-11'
-func (o GetVm2CpuPtrOutput) Affinity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVm2Cpu) *string {
+func (o GetVm2LegacyCpuPtrOutput) Affinity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVm2LegacyCpu) *string {
 		if v == nil {
 			return nil
 		}
@@ -1021,8 +3727,8 @@ func (o GetVm2CpuPtrOutput) Affinity() pulumi.StringPtrOutput {
 }
 
 // The CPU architecture.
-func (o GetVm2CpuPtrOutput) Architecture() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVm2Cpu) *string {
+func (o GetVm2LegacyCpuPtrOutput) Architecture() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVm2LegacyCpu) *string {
 		if v == nil {
 			return nil
 		}
@@ -1031,8 +3737,8 @@ func (o GetVm2CpuPtrOutput) Architecture() pulumi.StringPtrOutput {
 }
 
 // The number of CPU cores per socket.
-func (o GetVm2CpuPtrOutput) Cores() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetVm2Cpu) *int {
+func (o GetVm2LegacyCpuPtrOutput) Cores() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetVm2LegacyCpu) *int {
 		if v == nil {
 			return nil
 		}
@@ -1041,8 +3747,8 @@ func (o GetVm2CpuPtrOutput) Cores() pulumi.IntPtrOutput {
 }
 
 // Set of additional CPU flags.
-func (o GetVm2CpuPtrOutput) Flags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GetVm2Cpu) []string {
+func (o GetVm2LegacyCpuPtrOutput) Flags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetVm2LegacyCpu) []string {
 		if v == nil {
 			return nil
 		}
@@ -1051,8 +3757,8 @@ func (o GetVm2CpuPtrOutput) Flags() pulumi.StringArrayOutput {
 }
 
 // The number of hotplugged vCPUs.
-func (o GetVm2CpuPtrOutput) Hotplugged() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetVm2Cpu) *int {
+func (o GetVm2LegacyCpuPtrOutput) Hotplugged() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetVm2LegacyCpu) *int {
 		if v == nil {
 			return nil
 		}
@@ -1061,18 +3767,18 @@ func (o GetVm2CpuPtrOutput) Hotplugged() pulumi.IntPtrOutput {
 }
 
 // Limit of CPU usage.
-func (o GetVm2CpuPtrOutput) Limit() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetVm2Cpu) *int {
+func (o GetVm2LegacyCpuPtrOutput) Limit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetVm2LegacyCpu) *float64 {
 		if v == nil {
 			return nil
 		}
 		return &v.Limit
-	}).(pulumi.IntPtrOutput)
+	}).(pulumi.Float64PtrOutput)
 }
 
 // Enable NUMA.
-func (o GetVm2CpuPtrOutput) Numa() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetVm2Cpu) *bool {
+func (o GetVm2LegacyCpuPtrOutput) Numa() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetVm2LegacyCpu) *bool {
 		if v == nil {
 			return nil
 		}
@@ -1081,8 +3787,8 @@ func (o GetVm2CpuPtrOutput) Numa() pulumi.BoolPtrOutput {
 }
 
 // The number of CPU sockets.
-func (o GetVm2CpuPtrOutput) Sockets() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetVm2Cpu) *int {
+func (o GetVm2LegacyCpuPtrOutput) Sockets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetVm2LegacyCpu) *int {
 		if v == nil {
 			return nil
 		}
@@ -1091,8 +3797,8 @@ func (o GetVm2CpuPtrOutput) Sockets() pulumi.IntPtrOutput {
 }
 
 // Emulated CPU type.
-func (o GetVm2CpuPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVm2Cpu) *string {
+func (o GetVm2LegacyCpuPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVm2LegacyCpu) *string {
 		if v == nil {
 			return nil
 		}
@@ -1101,8 +3807,8 @@ func (o GetVm2CpuPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 // CPU weight for a VM
-func (o GetVm2CpuPtrOutput) Units() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetVm2Cpu) *int {
+func (o GetVm2LegacyCpuPtrOutput) Units() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetVm2LegacyCpu) *int {
 		if v == nil {
 			return nil
 		}
@@ -1110,7 +3816,7 @@ func (o GetVm2CpuPtrOutput) Units() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-type GetVm2Rng struct {
+type GetVm2LegacyRng struct {
 	// Maximum bytes of entropy allowed to get injected into the guest every period.
 	MaxBytes int `pulumi:"maxBytes"`
 	// Period in milliseconds to limit entropy injection to the guest.
@@ -1119,18 +3825,18 @@ type GetVm2Rng struct {
 	Source string `pulumi:"source"`
 }
 
-// GetVm2RngInput is an input type that accepts GetVm2RngArgs and GetVm2RngOutput values.
-// You can construct a concrete instance of `GetVm2RngInput` via:
+// GetVm2LegacyRngInput is an input type that accepts GetVm2LegacyRngArgs and GetVm2LegacyRngOutput values.
+// You can construct a concrete instance of `GetVm2LegacyRngInput` via:
 //
-//	GetVm2RngArgs{...}
-type GetVm2RngInput interface {
+//	GetVm2LegacyRngArgs{...}
+type GetVm2LegacyRngInput interface {
 	pulumi.Input
 
-	ToGetVm2RngOutput() GetVm2RngOutput
-	ToGetVm2RngOutputWithContext(context.Context) GetVm2RngOutput
+	ToGetVm2LegacyRngOutput() GetVm2LegacyRngOutput
+	ToGetVm2LegacyRngOutputWithContext(context.Context) GetVm2LegacyRngOutput
 }
 
-type GetVm2RngArgs struct {
+type GetVm2LegacyRngArgs struct {
 	// Maximum bytes of entropy allowed to get injected into the guest every period.
 	MaxBytes pulumi.IntInput `pulumi:"maxBytes"`
 	// Period in milliseconds to limit entropy injection to the guest.
@@ -1139,125 +3845,125 @@ type GetVm2RngArgs struct {
 	Source pulumi.StringInput `pulumi:"source"`
 }
 
-func (GetVm2RngArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVm2Rng)(nil)).Elem()
+func (GetVm2LegacyRngArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVm2LegacyRng)(nil)).Elem()
 }
 
-func (i GetVm2RngArgs) ToGetVm2RngOutput() GetVm2RngOutput {
-	return i.ToGetVm2RngOutputWithContext(context.Background())
+func (i GetVm2LegacyRngArgs) ToGetVm2LegacyRngOutput() GetVm2LegacyRngOutput {
+	return i.ToGetVm2LegacyRngOutputWithContext(context.Background())
 }
 
-func (i GetVm2RngArgs) ToGetVm2RngOutputWithContext(ctx context.Context) GetVm2RngOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVm2RngOutput)
+func (i GetVm2LegacyRngArgs) ToGetVm2LegacyRngOutputWithContext(ctx context.Context) GetVm2LegacyRngOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVm2LegacyRngOutput)
 }
 
-func (i GetVm2RngArgs) ToGetVm2RngPtrOutput() GetVm2RngPtrOutput {
-	return i.ToGetVm2RngPtrOutputWithContext(context.Background())
+func (i GetVm2LegacyRngArgs) ToGetVm2LegacyRngPtrOutput() GetVm2LegacyRngPtrOutput {
+	return i.ToGetVm2LegacyRngPtrOutputWithContext(context.Background())
 }
 
-func (i GetVm2RngArgs) ToGetVm2RngPtrOutputWithContext(ctx context.Context) GetVm2RngPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVm2RngOutput).ToGetVm2RngPtrOutputWithContext(ctx)
+func (i GetVm2LegacyRngArgs) ToGetVm2LegacyRngPtrOutputWithContext(ctx context.Context) GetVm2LegacyRngPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVm2LegacyRngOutput).ToGetVm2LegacyRngPtrOutputWithContext(ctx)
 }
 
-// GetVm2RngPtrInput is an input type that accepts GetVm2RngArgs, GetVm2RngPtr and GetVm2RngPtrOutput values.
-// You can construct a concrete instance of `GetVm2RngPtrInput` via:
+// GetVm2LegacyRngPtrInput is an input type that accepts GetVm2LegacyRngArgs, GetVm2LegacyRngPtr and GetVm2LegacyRngPtrOutput values.
+// You can construct a concrete instance of `GetVm2LegacyRngPtrInput` via:
 //
-//	        GetVm2RngArgs{...}
+//	        GetVm2LegacyRngArgs{...}
 //
 //	or:
 //
 //	        nil
-type GetVm2RngPtrInput interface {
+type GetVm2LegacyRngPtrInput interface {
 	pulumi.Input
 
-	ToGetVm2RngPtrOutput() GetVm2RngPtrOutput
-	ToGetVm2RngPtrOutputWithContext(context.Context) GetVm2RngPtrOutput
+	ToGetVm2LegacyRngPtrOutput() GetVm2LegacyRngPtrOutput
+	ToGetVm2LegacyRngPtrOutputWithContext(context.Context) GetVm2LegacyRngPtrOutput
 }
 
-type getVm2RngPtrType GetVm2RngArgs
+type getVm2LegacyRngPtrType GetVm2LegacyRngArgs
 
-func GetVm2RngPtr(v *GetVm2RngArgs) GetVm2RngPtrInput {
-	return (*getVm2RngPtrType)(v)
+func GetVm2LegacyRngPtr(v *GetVm2LegacyRngArgs) GetVm2LegacyRngPtrInput {
+	return (*getVm2LegacyRngPtrType)(v)
 }
 
-func (*getVm2RngPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetVm2Rng)(nil)).Elem()
+func (*getVm2LegacyRngPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVm2LegacyRng)(nil)).Elem()
 }
 
-func (i *getVm2RngPtrType) ToGetVm2RngPtrOutput() GetVm2RngPtrOutput {
-	return i.ToGetVm2RngPtrOutputWithContext(context.Background())
+func (i *getVm2LegacyRngPtrType) ToGetVm2LegacyRngPtrOutput() GetVm2LegacyRngPtrOutput {
+	return i.ToGetVm2LegacyRngPtrOutputWithContext(context.Background())
 }
 
-func (i *getVm2RngPtrType) ToGetVm2RngPtrOutputWithContext(ctx context.Context) GetVm2RngPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVm2RngPtrOutput)
+func (i *getVm2LegacyRngPtrType) ToGetVm2LegacyRngPtrOutputWithContext(ctx context.Context) GetVm2LegacyRngPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVm2LegacyRngPtrOutput)
 }
 
-type GetVm2RngOutput struct{ *pulumi.OutputState }
+type GetVm2LegacyRngOutput struct{ *pulumi.OutputState }
 
-func (GetVm2RngOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVm2Rng)(nil)).Elem()
+func (GetVm2LegacyRngOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVm2LegacyRng)(nil)).Elem()
 }
 
-func (o GetVm2RngOutput) ToGetVm2RngOutput() GetVm2RngOutput {
+func (o GetVm2LegacyRngOutput) ToGetVm2LegacyRngOutput() GetVm2LegacyRngOutput {
 	return o
 }
 
-func (o GetVm2RngOutput) ToGetVm2RngOutputWithContext(ctx context.Context) GetVm2RngOutput {
+func (o GetVm2LegacyRngOutput) ToGetVm2LegacyRngOutputWithContext(ctx context.Context) GetVm2LegacyRngOutput {
 	return o
 }
 
-func (o GetVm2RngOutput) ToGetVm2RngPtrOutput() GetVm2RngPtrOutput {
-	return o.ToGetVm2RngPtrOutputWithContext(context.Background())
+func (o GetVm2LegacyRngOutput) ToGetVm2LegacyRngPtrOutput() GetVm2LegacyRngPtrOutput {
+	return o.ToGetVm2LegacyRngPtrOutputWithContext(context.Background())
 }
 
-func (o GetVm2RngOutput) ToGetVm2RngPtrOutputWithContext(ctx context.Context) GetVm2RngPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVm2Rng) *GetVm2Rng {
+func (o GetVm2LegacyRngOutput) ToGetVm2LegacyRngPtrOutputWithContext(ctx context.Context) GetVm2LegacyRngPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVm2LegacyRng) *GetVm2LegacyRng {
 		return &v
-	}).(GetVm2RngPtrOutput)
+	}).(GetVm2LegacyRngPtrOutput)
 }
 
 // Maximum bytes of entropy allowed to get injected into the guest every period.
-func (o GetVm2RngOutput) MaxBytes() pulumi.IntOutput {
-	return o.ApplyT(func(v GetVm2Rng) int { return v.MaxBytes }).(pulumi.IntOutput)
+func (o GetVm2LegacyRngOutput) MaxBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVm2LegacyRng) int { return v.MaxBytes }).(pulumi.IntOutput)
 }
 
 // Period in milliseconds to limit entropy injection to the guest.
-func (o GetVm2RngOutput) Period() pulumi.IntOutput {
-	return o.ApplyT(func(v GetVm2Rng) int { return v.Period }).(pulumi.IntOutput)
+func (o GetVm2LegacyRngOutput) Period() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVm2LegacyRng) int { return v.Period }).(pulumi.IntOutput)
 }
 
 // The entropy source for the RNG device.
-func (o GetVm2RngOutput) Source() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVm2Rng) string { return v.Source }).(pulumi.StringOutput)
+func (o GetVm2LegacyRngOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVm2LegacyRng) string { return v.Source }).(pulumi.StringOutput)
 }
 
-type GetVm2RngPtrOutput struct{ *pulumi.OutputState }
+type GetVm2LegacyRngPtrOutput struct{ *pulumi.OutputState }
 
-func (GetVm2RngPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetVm2Rng)(nil)).Elem()
+func (GetVm2LegacyRngPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVm2LegacyRng)(nil)).Elem()
 }
 
-func (o GetVm2RngPtrOutput) ToGetVm2RngPtrOutput() GetVm2RngPtrOutput {
+func (o GetVm2LegacyRngPtrOutput) ToGetVm2LegacyRngPtrOutput() GetVm2LegacyRngPtrOutput {
 	return o
 }
 
-func (o GetVm2RngPtrOutput) ToGetVm2RngPtrOutputWithContext(ctx context.Context) GetVm2RngPtrOutput {
+func (o GetVm2LegacyRngPtrOutput) ToGetVm2LegacyRngPtrOutputWithContext(ctx context.Context) GetVm2LegacyRngPtrOutput {
 	return o
 }
 
-func (o GetVm2RngPtrOutput) Elem() GetVm2RngOutput {
-	return o.ApplyT(func(v *GetVm2Rng) GetVm2Rng {
+func (o GetVm2LegacyRngPtrOutput) Elem() GetVm2LegacyRngOutput {
+	return o.ApplyT(func(v *GetVm2LegacyRng) GetVm2LegacyRng {
 		if v != nil {
 			return *v
 		}
-		var ret GetVm2Rng
+		var ret GetVm2LegacyRng
 		return ret
-	}).(GetVm2RngOutput)
+	}).(GetVm2LegacyRngOutput)
 }
 
 // Maximum bytes of entropy allowed to get injected into the guest every period.
-func (o GetVm2RngPtrOutput) MaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetVm2Rng) *int {
+func (o GetVm2LegacyRngPtrOutput) MaxBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetVm2LegacyRng) *int {
 		if v == nil {
 			return nil
 		}
@@ -1266,8 +3972,8 @@ func (o GetVm2RngPtrOutput) MaxBytes() pulumi.IntPtrOutput {
 }
 
 // Period in milliseconds to limit entropy injection to the guest.
-func (o GetVm2RngPtrOutput) Period() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetVm2Rng) *int {
+func (o GetVm2LegacyRngPtrOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetVm2LegacyRng) *int {
 		if v == nil {
 			return nil
 		}
@@ -1276,8 +3982,8 @@ func (o GetVm2RngPtrOutput) Period() pulumi.IntPtrOutput {
 }
 
 // The entropy source for the RNG device.
-func (o GetVm2RngPtrOutput) Source() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVm2Rng) *string {
+func (o GetVm2LegacyRngPtrOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVm2LegacyRng) *string {
 		if v == nil {
 			return nil
 		}
@@ -1285,136 +3991,136 @@ func (o GetVm2RngPtrOutput) Source() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type GetVm2Timeouts struct {
+type GetVm2LegacyTimeouts struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
 	Read *string `pulumi:"read"`
 }
 
-// GetVm2TimeoutsInput is an input type that accepts GetVm2TimeoutsArgs and GetVm2TimeoutsOutput values.
-// You can construct a concrete instance of `GetVm2TimeoutsInput` via:
+// GetVm2LegacyTimeoutsInput is an input type that accepts GetVm2LegacyTimeoutsArgs and GetVm2LegacyTimeoutsOutput values.
+// You can construct a concrete instance of `GetVm2LegacyTimeoutsInput` via:
 //
-//	GetVm2TimeoutsArgs{...}
-type GetVm2TimeoutsInput interface {
+//	GetVm2LegacyTimeoutsArgs{...}
+type GetVm2LegacyTimeoutsInput interface {
 	pulumi.Input
 
-	ToGetVm2TimeoutsOutput() GetVm2TimeoutsOutput
-	ToGetVm2TimeoutsOutputWithContext(context.Context) GetVm2TimeoutsOutput
+	ToGetVm2LegacyTimeoutsOutput() GetVm2LegacyTimeoutsOutput
+	ToGetVm2LegacyTimeoutsOutputWithContext(context.Context) GetVm2LegacyTimeoutsOutput
 }
 
-type GetVm2TimeoutsArgs struct {
+type GetVm2LegacyTimeoutsArgs struct {
 	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
 	Read pulumi.StringPtrInput `pulumi:"read"`
 }
 
-func (GetVm2TimeoutsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVm2Timeouts)(nil)).Elem()
+func (GetVm2LegacyTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVm2LegacyTimeouts)(nil)).Elem()
 }
 
-func (i GetVm2TimeoutsArgs) ToGetVm2TimeoutsOutput() GetVm2TimeoutsOutput {
-	return i.ToGetVm2TimeoutsOutputWithContext(context.Background())
+func (i GetVm2LegacyTimeoutsArgs) ToGetVm2LegacyTimeoutsOutput() GetVm2LegacyTimeoutsOutput {
+	return i.ToGetVm2LegacyTimeoutsOutputWithContext(context.Background())
 }
 
-func (i GetVm2TimeoutsArgs) ToGetVm2TimeoutsOutputWithContext(ctx context.Context) GetVm2TimeoutsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVm2TimeoutsOutput)
+func (i GetVm2LegacyTimeoutsArgs) ToGetVm2LegacyTimeoutsOutputWithContext(ctx context.Context) GetVm2LegacyTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVm2LegacyTimeoutsOutput)
 }
 
-func (i GetVm2TimeoutsArgs) ToGetVm2TimeoutsPtrOutput() GetVm2TimeoutsPtrOutput {
-	return i.ToGetVm2TimeoutsPtrOutputWithContext(context.Background())
+func (i GetVm2LegacyTimeoutsArgs) ToGetVm2LegacyTimeoutsPtrOutput() GetVm2LegacyTimeoutsPtrOutput {
+	return i.ToGetVm2LegacyTimeoutsPtrOutputWithContext(context.Background())
 }
 
-func (i GetVm2TimeoutsArgs) ToGetVm2TimeoutsPtrOutputWithContext(ctx context.Context) GetVm2TimeoutsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVm2TimeoutsOutput).ToGetVm2TimeoutsPtrOutputWithContext(ctx)
+func (i GetVm2LegacyTimeoutsArgs) ToGetVm2LegacyTimeoutsPtrOutputWithContext(ctx context.Context) GetVm2LegacyTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVm2LegacyTimeoutsOutput).ToGetVm2LegacyTimeoutsPtrOutputWithContext(ctx)
 }
 
-// GetVm2TimeoutsPtrInput is an input type that accepts GetVm2TimeoutsArgs, GetVm2TimeoutsPtr and GetVm2TimeoutsPtrOutput values.
-// You can construct a concrete instance of `GetVm2TimeoutsPtrInput` via:
+// GetVm2LegacyTimeoutsPtrInput is an input type that accepts GetVm2LegacyTimeoutsArgs, GetVm2LegacyTimeoutsPtr and GetVm2LegacyTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetVm2LegacyTimeoutsPtrInput` via:
 //
-//	        GetVm2TimeoutsArgs{...}
+//	        GetVm2LegacyTimeoutsArgs{...}
 //
 //	or:
 //
 //	        nil
-type GetVm2TimeoutsPtrInput interface {
+type GetVm2LegacyTimeoutsPtrInput interface {
 	pulumi.Input
 
-	ToGetVm2TimeoutsPtrOutput() GetVm2TimeoutsPtrOutput
-	ToGetVm2TimeoutsPtrOutputWithContext(context.Context) GetVm2TimeoutsPtrOutput
+	ToGetVm2LegacyTimeoutsPtrOutput() GetVm2LegacyTimeoutsPtrOutput
+	ToGetVm2LegacyTimeoutsPtrOutputWithContext(context.Context) GetVm2LegacyTimeoutsPtrOutput
 }
 
-type getVm2TimeoutsPtrType GetVm2TimeoutsArgs
+type getVm2LegacyTimeoutsPtrType GetVm2LegacyTimeoutsArgs
 
-func GetVm2TimeoutsPtr(v *GetVm2TimeoutsArgs) GetVm2TimeoutsPtrInput {
-	return (*getVm2TimeoutsPtrType)(v)
+func GetVm2LegacyTimeoutsPtr(v *GetVm2LegacyTimeoutsArgs) GetVm2LegacyTimeoutsPtrInput {
+	return (*getVm2LegacyTimeoutsPtrType)(v)
 }
 
-func (*getVm2TimeoutsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetVm2Timeouts)(nil)).Elem()
+func (*getVm2LegacyTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVm2LegacyTimeouts)(nil)).Elem()
 }
 
-func (i *getVm2TimeoutsPtrType) ToGetVm2TimeoutsPtrOutput() GetVm2TimeoutsPtrOutput {
-	return i.ToGetVm2TimeoutsPtrOutputWithContext(context.Background())
+func (i *getVm2LegacyTimeoutsPtrType) ToGetVm2LegacyTimeoutsPtrOutput() GetVm2LegacyTimeoutsPtrOutput {
+	return i.ToGetVm2LegacyTimeoutsPtrOutputWithContext(context.Background())
 }
 
-func (i *getVm2TimeoutsPtrType) ToGetVm2TimeoutsPtrOutputWithContext(ctx context.Context) GetVm2TimeoutsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVm2TimeoutsPtrOutput)
+func (i *getVm2LegacyTimeoutsPtrType) ToGetVm2LegacyTimeoutsPtrOutputWithContext(ctx context.Context) GetVm2LegacyTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVm2LegacyTimeoutsPtrOutput)
 }
 
-type GetVm2TimeoutsOutput struct{ *pulumi.OutputState }
+type GetVm2LegacyTimeoutsOutput struct{ *pulumi.OutputState }
 
-func (GetVm2TimeoutsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVm2Timeouts)(nil)).Elem()
+func (GetVm2LegacyTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVm2LegacyTimeouts)(nil)).Elem()
 }
 
-func (o GetVm2TimeoutsOutput) ToGetVm2TimeoutsOutput() GetVm2TimeoutsOutput {
+func (o GetVm2LegacyTimeoutsOutput) ToGetVm2LegacyTimeoutsOutput() GetVm2LegacyTimeoutsOutput {
 	return o
 }
 
-func (o GetVm2TimeoutsOutput) ToGetVm2TimeoutsOutputWithContext(ctx context.Context) GetVm2TimeoutsOutput {
+func (o GetVm2LegacyTimeoutsOutput) ToGetVm2LegacyTimeoutsOutputWithContext(ctx context.Context) GetVm2LegacyTimeoutsOutput {
 	return o
 }
 
-func (o GetVm2TimeoutsOutput) ToGetVm2TimeoutsPtrOutput() GetVm2TimeoutsPtrOutput {
-	return o.ToGetVm2TimeoutsPtrOutputWithContext(context.Background())
+func (o GetVm2LegacyTimeoutsOutput) ToGetVm2LegacyTimeoutsPtrOutput() GetVm2LegacyTimeoutsPtrOutput {
+	return o.ToGetVm2LegacyTimeoutsPtrOutputWithContext(context.Background())
 }
 
-func (o GetVm2TimeoutsOutput) ToGetVm2TimeoutsPtrOutputWithContext(ctx context.Context) GetVm2TimeoutsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVm2Timeouts) *GetVm2Timeouts {
+func (o GetVm2LegacyTimeoutsOutput) ToGetVm2LegacyTimeoutsPtrOutputWithContext(ctx context.Context) GetVm2LegacyTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVm2LegacyTimeouts) *GetVm2LegacyTimeouts {
 		return &v
-	}).(GetVm2TimeoutsPtrOutput)
+	}).(GetVm2LegacyTimeoutsPtrOutput)
 }
 
 // A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-func (o GetVm2TimeoutsOutput) Read() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetVm2Timeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+func (o GetVm2LegacyTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVm2LegacyTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
 }
 
-type GetVm2TimeoutsPtrOutput struct{ *pulumi.OutputState }
+type GetVm2LegacyTimeoutsPtrOutput struct{ *pulumi.OutputState }
 
-func (GetVm2TimeoutsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetVm2Timeouts)(nil)).Elem()
+func (GetVm2LegacyTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVm2LegacyTimeouts)(nil)).Elem()
 }
 
-func (o GetVm2TimeoutsPtrOutput) ToGetVm2TimeoutsPtrOutput() GetVm2TimeoutsPtrOutput {
+func (o GetVm2LegacyTimeoutsPtrOutput) ToGetVm2LegacyTimeoutsPtrOutput() GetVm2LegacyTimeoutsPtrOutput {
 	return o
 }
 
-func (o GetVm2TimeoutsPtrOutput) ToGetVm2TimeoutsPtrOutputWithContext(ctx context.Context) GetVm2TimeoutsPtrOutput {
+func (o GetVm2LegacyTimeoutsPtrOutput) ToGetVm2LegacyTimeoutsPtrOutputWithContext(ctx context.Context) GetVm2LegacyTimeoutsPtrOutput {
 	return o
 }
 
-func (o GetVm2TimeoutsPtrOutput) Elem() GetVm2TimeoutsOutput {
-	return o.ApplyT(func(v *GetVm2Timeouts) GetVm2Timeouts {
+func (o GetVm2LegacyTimeoutsPtrOutput) Elem() GetVm2LegacyTimeoutsOutput {
+	return o.ApplyT(func(v *GetVm2LegacyTimeouts) GetVm2LegacyTimeouts {
 		if v != nil {
 			return *v
 		}
-		var ret GetVm2Timeouts
+		var ret GetVm2LegacyTimeouts
 		return ret
-	}).(GetVm2TimeoutsOutput)
+	}).(GetVm2LegacyTimeoutsOutput)
 }
 
 // A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-func (o GetVm2TimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVm2Timeouts) *string {
+func (o GetVm2LegacyTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVm2LegacyTimeouts) *string {
 		if v == nil {
 			return nil
 		}
@@ -1422,7 +4128,7 @@ func (o GetVm2TimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type GetVm2Vga struct {
+type GetVm2LegacyVga struct {
 	// Enable a specific clipboard.
 	Clipboard string `pulumi:"clipboard"`
 	// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
@@ -1431,18 +4137,18 @@ type GetVm2Vga struct {
 	Type string `pulumi:"type"`
 }
 
-// GetVm2VgaInput is an input type that accepts GetVm2VgaArgs and GetVm2VgaOutput values.
-// You can construct a concrete instance of `GetVm2VgaInput` via:
+// GetVm2LegacyVgaInput is an input type that accepts GetVm2LegacyVgaArgs and GetVm2LegacyVgaOutput values.
+// You can construct a concrete instance of `GetVm2LegacyVgaInput` via:
 //
-//	GetVm2VgaArgs{...}
-type GetVm2VgaInput interface {
+//	GetVm2LegacyVgaArgs{...}
+type GetVm2LegacyVgaInput interface {
 	pulumi.Input
 
-	ToGetVm2VgaOutput() GetVm2VgaOutput
-	ToGetVm2VgaOutputWithContext(context.Context) GetVm2VgaOutput
+	ToGetVm2LegacyVgaOutput() GetVm2LegacyVgaOutput
+	ToGetVm2LegacyVgaOutputWithContext(context.Context) GetVm2LegacyVgaOutput
 }
 
-type GetVm2VgaArgs struct {
+type GetVm2LegacyVgaArgs struct {
 	// Enable a specific clipboard.
 	Clipboard pulumi.StringInput `pulumi:"clipboard"`
 	// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
@@ -1451,125 +4157,125 @@ type GetVm2VgaArgs struct {
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
-func (GetVm2VgaArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVm2Vga)(nil)).Elem()
+func (GetVm2LegacyVgaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVm2LegacyVga)(nil)).Elem()
 }
 
-func (i GetVm2VgaArgs) ToGetVm2VgaOutput() GetVm2VgaOutput {
-	return i.ToGetVm2VgaOutputWithContext(context.Background())
+func (i GetVm2LegacyVgaArgs) ToGetVm2LegacyVgaOutput() GetVm2LegacyVgaOutput {
+	return i.ToGetVm2LegacyVgaOutputWithContext(context.Background())
 }
 
-func (i GetVm2VgaArgs) ToGetVm2VgaOutputWithContext(ctx context.Context) GetVm2VgaOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVm2VgaOutput)
+func (i GetVm2LegacyVgaArgs) ToGetVm2LegacyVgaOutputWithContext(ctx context.Context) GetVm2LegacyVgaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVm2LegacyVgaOutput)
 }
 
-func (i GetVm2VgaArgs) ToGetVm2VgaPtrOutput() GetVm2VgaPtrOutput {
-	return i.ToGetVm2VgaPtrOutputWithContext(context.Background())
+func (i GetVm2LegacyVgaArgs) ToGetVm2LegacyVgaPtrOutput() GetVm2LegacyVgaPtrOutput {
+	return i.ToGetVm2LegacyVgaPtrOutputWithContext(context.Background())
 }
 
-func (i GetVm2VgaArgs) ToGetVm2VgaPtrOutputWithContext(ctx context.Context) GetVm2VgaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVm2VgaOutput).ToGetVm2VgaPtrOutputWithContext(ctx)
+func (i GetVm2LegacyVgaArgs) ToGetVm2LegacyVgaPtrOutputWithContext(ctx context.Context) GetVm2LegacyVgaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVm2LegacyVgaOutput).ToGetVm2LegacyVgaPtrOutputWithContext(ctx)
 }
 
-// GetVm2VgaPtrInput is an input type that accepts GetVm2VgaArgs, GetVm2VgaPtr and GetVm2VgaPtrOutput values.
-// You can construct a concrete instance of `GetVm2VgaPtrInput` via:
+// GetVm2LegacyVgaPtrInput is an input type that accepts GetVm2LegacyVgaArgs, GetVm2LegacyVgaPtr and GetVm2LegacyVgaPtrOutput values.
+// You can construct a concrete instance of `GetVm2LegacyVgaPtrInput` via:
 //
-//	        GetVm2VgaArgs{...}
+//	        GetVm2LegacyVgaArgs{...}
 //
 //	or:
 //
 //	        nil
-type GetVm2VgaPtrInput interface {
+type GetVm2LegacyVgaPtrInput interface {
 	pulumi.Input
 
-	ToGetVm2VgaPtrOutput() GetVm2VgaPtrOutput
-	ToGetVm2VgaPtrOutputWithContext(context.Context) GetVm2VgaPtrOutput
+	ToGetVm2LegacyVgaPtrOutput() GetVm2LegacyVgaPtrOutput
+	ToGetVm2LegacyVgaPtrOutputWithContext(context.Context) GetVm2LegacyVgaPtrOutput
 }
 
-type getVm2VgaPtrType GetVm2VgaArgs
+type getVm2LegacyVgaPtrType GetVm2LegacyVgaArgs
 
-func GetVm2VgaPtr(v *GetVm2VgaArgs) GetVm2VgaPtrInput {
-	return (*getVm2VgaPtrType)(v)
+func GetVm2LegacyVgaPtr(v *GetVm2LegacyVgaArgs) GetVm2LegacyVgaPtrInput {
+	return (*getVm2LegacyVgaPtrType)(v)
 }
 
-func (*getVm2VgaPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetVm2Vga)(nil)).Elem()
+func (*getVm2LegacyVgaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVm2LegacyVga)(nil)).Elem()
 }
 
-func (i *getVm2VgaPtrType) ToGetVm2VgaPtrOutput() GetVm2VgaPtrOutput {
-	return i.ToGetVm2VgaPtrOutputWithContext(context.Background())
+func (i *getVm2LegacyVgaPtrType) ToGetVm2LegacyVgaPtrOutput() GetVm2LegacyVgaPtrOutput {
+	return i.ToGetVm2LegacyVgaPtrOutputWithContext(context.Background())
 }
 
-func (i *getVm2VgaPtrType) ToGetVm2VgaPtrOutputWithContext(ctx context.Context) GetVm2VgaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVm2VgaPtrOutput)
+func (i *getVm2LegacyVgaPtrType) ToGetVm2LegacyVgaPtrOutputWithContext(ctx context.Context) GetVm2LegacyVgaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVm2LegacyVgaPtrOutput)
 }
 
-type GetVm2VgaOutput struct{ *pulumi.OutputState }
+type GetVm2LegacyVgaOutput struct{ *pulumi.OutputState }
 
-func (GetVm2VgaOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVm2Vga)(nil)).Elem()
+func (GetVm2LegacyVgaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVm2LegacyVga)(nil)).Elem()
 }
 
-func (o GetVm2VgaOutput) ToGetVm2VgaOutput() GetVm2VgaOutput {
+func (o GetVm2LegacyVgaOutput) ToGetVm2LegacyVgaOutput() GetVm2LegacyVgaOutput {
 	return o
 }
 
-func (o GetVm2VgaOutput) ToGetVm2VgaOutputWithContext(ctx context.Context) GetVm2VgaOutput {
+func (o GetVm2LegacyVgaOutput) ToGetVm2LegacyVgaOutputWithContext(ctx context.Context) GetVm2LegacyVgaOutput {
 	return o
 }
 
-func (o GetVm2VgaOutput) ToGetVm2VgaPtrOutput() GetVm2VgaPtrOutput {
-	return o.ToGetVm2VgaPtrOutputWithContext(context.Background())
+func (o GetVm2LegacyVgaOutput) ToGetVm2LegacyVgaPtrOutput() GetVm2LegacyVgaPtrOutput {
+	return o.ToGetVm2LegacyVgaPtrOutputWithContext(context.Background())
 }
 
-func (o GetVm2VgaOutput) ToGetVm2VgaPtrOutputWithContext(ctx context.Context) GetVm2VgaPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVm2Vga) *GetVm2Vga {
+func (o GetVm2LegacyVgaOutput) ToGetVm2LegacyVgaPtrOutputWithContext(ctx context.Context) GetVm2LegacyVgaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVm2LegacyVga) *GetVm2LegacyVga {
 		return &v
-	}).(GetVm2VgaPtrOutput)
+	}).(GetVm2LegacyVgaPtrOutput)
 }
 
 // Enable a specific clipboard.
-func (o GetVm2VgaOutput) Clipboard() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVm2Vga) string { return v.Clipboard }).(pulumi.StringOutput)
+func (o GetVm2LegacyVgaOutput) Clipboard() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVm2LegacyVga) string { return v.Clipboard }).(pulumi.StringOutput)
 }
 
 // The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
-func (o GetVm2VgaOutput) Memory() pulumi.IntOutput {
-	return o.ApplyT(func(v GetVm2Vga) int { return v.Memory }).(pulumi.IntOutput)
+func (o GetVm2LegacyVgaOutput) Memory() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVm2LegacyVga) int { return v.Memory }).(pulumi.IntOutput)
 }
 
 // The VGA type.
-func (o GetVm2VgaOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVm2Vga) string { return v.Type }).(pulumi.StringOutput)
+func (o GetVm2LegacyVgaOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVm2LegacyVga) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type GetVm2VgaPtrOutput struct{ *pulumi.OutputState }
+type GetVm2LegacyVgaPtrOutput struct{ *pulumi.OutputState }
 
-func (GetVm2VgaPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetVm2Vga)(nil)).Elem()
+func (GetVm2LegacyVgaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVm2LegacyVga)(nil)).Elem()
 }
 
-func (o GetVm2VgaPtrOutput) ToGetVm2VgaPtrOutput() GetVm2VgaPtrOutput {
+func (o GetVm2LegacyVgaPtrOutput) ToGetVm2LegacyVgaPtrOutput() GetVm2LegacyVgaPtrOutput {
 	return o
 }
 
-func (o GetVm2VgaPtrOutput) ToGetVm2VgaPtrOutputWithContext(ctx context.Context) GetVm2VgaPtrOutput {
+func (o GetVm2LegacyVgaPtrOutput) ToGetVm2LegacyVgaPtrOutputWithContext(ctx context.Context) GetVm2LegacyVgaPtrOutput {
 	return o
 }
 
-func (o GetVm2VgaPtrOutput) Elem() GetVm2VgaOutput {
-	return o.ApplyT(func(v *GetVm2Vga) GetVm2Vga {
+func (o GetVm2LegacyVgaPtrOutput) Elem() GetVm2LegacyVgaOutput {
+	return o.ApplyT(func(v *GetVm2LegacyVga) GetVm2LegacyVga {
 		if v != nil {
 			return *v
 		}
-		var ret GetVm2Vga
+		var ret GetVm2LegacyVga
 		return ret
-	}).(GetVm2VgaOutput)
+	}).(GetVm2LegacyVgaOutput)
 }
 
 // Enable a specific clipboard.
-func (o GetVm2VgaPtrOutput) Clipboard() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVm2Vga) *string {
+func (o GetVm2LegacyVgaPtrOutput) Clipboard() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVm2LegacyVga) *string {
 		if v == nil {
 			return nil
 		}
@@ -1578,8 +4284,8 @@ func (o GetVm2VgaPtrOutput) Clipboard() pulumi.StringPtrOutput {
 }
 
 // The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
-func (o GetVm2VgaPtrOutput) Memory() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetVm2Vga) *int {
+func (o GetVm2LegacyVgaPtrOutput) Memory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetVm2LegacyVga) *int {
 		if v == nil {
 			return nil
 		}
@@ -1588,8 +4294,803 @@ func (o GetVm2VgaPtrOutput) Memory() pulumi.IntPtrOutput {
 }
 
 // The VGA type.
-func (o GetVm2VgaPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVm2Vga) *string {
+func (o GetVm2LegacyVgaPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVm2LegacyVga) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetVmCpu struct {
+	// List of host cores used to execute guest processes, for example: '0,5,8-11'
+	Affinity string `pulumi:"affinity"`
+	// The CPU architecture.
+	Architecture string `pulumi:"architecture"`
+	// The number of CPU cores per socket.
+	Cores int `pulumi:"cores"`
+	// Set of additional CPU flags.
+	Flags []string `pulumi:"flags"`
+	// The number of hotplugged vCPUs.
+	Hotplugged int `pulumi:"hotplugged"`
+	// Limit of CPU usage.
+	Limit float64 `pulumi:"limit"`
+	// Enable NUMA.
+	Numa bool `pulumi:"numa"`
+	// The number of CPU sockets.
+	Sockets int `pulumi:"sockets"`
+	// Emulated CPU type.
+	Type string `pulumi:"type"`
+	// CPU weight for a VM
+	Units int `pulumi:"units"`
+}
+
+// GetVmCpuInput is an input type that accepts GetVmCpuArgs and GetVmCpuOutput values.
+// You can construct a concrete instance of `GetVmCpuInput` via:
+//
+//	GetVmCpuArgs{...}
+type GetVmCpuInput interface {
+	pulumi.Input
+
+	ToGetVmCpuOutput() GetVmCpuOutput
+	ToGetVmCpuOutputWithContext(context.Context) GetVmCpuOutput
+}
+
+type GetVmCpuArgs struct {
+	// List of host cores used to execute guest processes, for example: '0,5,8-11'
+	Affinity pulumi.StringInput `pulumi:"affinity"`
+	// The CPU architecture.
+	Architecture pulumi.StringInput `pulumi:"architecture"`
+	// The number of CPU cores per socket.
+	Cores pulumi.IntInput `pulumi:"cores"`
+	// Set of additional CPU flags.
+	Flags pulumi.StringArrayInput `pulumi:"flags"`
+	// The number of hotplugged vCPUs.
+	Hotplugged pulumi.IntInput `pulumi:"hotplugged"`
+	// Limit of CPU usage.
+	Limit pulumi.Float64Input `pulumi:"limit"`
+	// Enable NUMA.
+	Numa pulumi.BoolInput `pulumi:"numa"`
+	// The number of CPU sockets.
+	Sockets pulumi.IntInput `pulumi:"sockets"`
+	// Emulated CPU type.
+	Type pulumi.StringInput `pulumi:"type"`
+	// CPU weight for a VM
+	Units pulumi.IntInput `pulumi:"units"`
+}
+
+func (GetVmCpuArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVmCpu)(nil)).Elem()
+}
+
+func (i GetVmCpuArgs) ToGetVmCpuOutput() GetVmCpuOutput {
+	return i.ToGetVmCpuOutputWithContext(context.Background())
+}
+
+func (i GetVmCpuArgs) ToGetVmCpuOutputWithContext(ctx context.Context) GetVmCpuOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVmCpuOutput)
+}
+
+func (i GetVmCpuArgs) ToGetVmCpuPtrOutput() GetVmCpuPtrOutput {
+	return i.ToGetVmCpuPtrOutputWithContext(context.Background())
+}
+
+func (i GetVmCpuArgs) ToGetVmCpuPtrOutputWithContext(ctx context.Context) GetVmCpuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVmCpuOutput).ToGetVmCpuPtrOutputWithContext(ctx)
+}
+
+// GetVmCpuPtrInput is an input type that accepts GetVmCpuArgs, GetVmCpuPtr and GetVmCpuPtrOutput values.
+// You can construct a concrete instance of `GetVmCpuPtrInput` via:
+//
+//	        GetVmCpuArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetVmCpuPtrInput interface {
+	pulumi.Input
+
+	ToGetVmCpuPtrOutput() GetVmCpuPtrOutput
+	ToGetVmCpuPtrOutputWithContext(context.Context) GetVmCpuPtrOutput
+}
+
+type getVmCpuPtrType GetVmCpuArgs
+
+func GetVmCpuPtr(v *GetVmCpuArgs) GetVmCpuPtrInput {
+	return (*getVmCpuPtrType)(v)
+}
+
+func (*getVmCpuPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVmCpu)(nil)).Elem()
+}
+
+func (i *getVmCpuPtrType) ToGetVmCpuPtrOutput() GetVmCpuPtrOutput {
+	return i.ToGetVmCpuPtrOutputWithContext(context.Background())
+}
+
+func (i *getVmCpuPtrType) ToGetVmCpuPtrOutputWithContext(ctx context.Context) GetVmCpuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVmCpuPtrOutput)
+}
+
+type GetVmCpuOutput struct{ *pulumi.OutputState }
+
+func (GetVmCpuOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVmCpu)(nil)).Elem()
+}
+
+func (o GetVmCpuOutput) ToGetVmCpuOutput() GetVmCpuOutput {
+	return o
+}
+
+func (o GetVmCpuOutput) ToGetVmCpuOutputWithContext(ctx context.Context) GetVmCpuOutput {
+	return o
+}
+
+func (o GetVmCpuOutput) ToGetVmCpuPtrOutput() GetVmCpuPtrOutput {
+	return o.ToGetVmCpuPtrOutputWithContext(context.Background())
+}
+
+func (o GetVmCpuOutput) ToGetVmCpuPtrOutputWithContext(ctx context.Context) GetVmCpuPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVmCpu) *GetVmCpu {
+		return &v
+	}).(GetVmCpuPtrOutput)
+}
+
+// List of host cores used to execute guest processes, for example: '0,5,8-11'
+func (o GetVmCpuOutput) Affinity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVmCpu) string { return v.Affinity }).(pulumi.StringOutput)
+}
+
+// The CPU architecture.
+func (o GetVmCpuOutput) Architecture() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVmCpu) string { return v.Architecture }).(pulumi.StringOutput)
+}
+
+// The number of CPU cores per socket.
+func (o GetVmCpuOutput) Cores() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVmCpu) int { return v.Cores }).(pulumi.IntOutput)
+}
+
+// Set of additional CPU flags.
+func (o GetVmCpuOutput) Flags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVmCpu) []string { return v.Flags }).(pulumi.StringArrayOutput)
+}
+
+// The number of hotplugged vCPUs.
+func (o GetVmCpuOutput) Hotplugged() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVmCpu) int { return v.Hotplugged }).(pulumi.IntOutput)
+}
+
+// Limit of CPU usage.
+func (o GetVmCpuOutput) Limit() pulumi.Float64Output {
+	return o.ApplyT(func(v GetVmCpu) float64 { return v.Limit }).(pulumi.Float64Output)
+}
+
+// Enable NUMA.
+func (o GetVmCpuOutput) Numa() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetVmCpu) bool { return v.Numa }).(pulumi.BoolOutput)
+}
+
+// The number of CPU sockets.
+func (o GetVmCpuOutput) Sockets() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVmCpu) int { return v.Sockets }).(pulumi.IntOutput)
+}
+
+// Emulated CPU type.
+func (o GetVmCpuOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVmCpu) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// CPU weight for a VM
+func (o GetVmCpuOutput) Units() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVmCpu) int { return v.Units }).(pulumi.IntOutput)
+}
+
+type GetVmCpuPtrOutput struct{ *pulumi.OutputState }
+
+func (GetVmCpuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVmCpu)(nil)).Elem()
+}
+
+func (o GetVmCpuPtrOutput) ToGetVmCpuPtrOutput() GetVmCpuPtrOutput {
+	return o
+}
+
+func (o GetVmCpuPtrOutput) ToGetVmCpuPtrOutputWithContext(ctx context.Context) GetVmCpuPtrOutput {
+	return o
+}
+
+func (o GetVmCpuPtrOutput) Elem() GetVmCpuOutput {
+	return o.ApplyT(func(v *GetVmCpu) GetVmCpu {
+		if v != nil {
+			return *v
+		}
+		var ret GetVmCpu
+		return ret
+	}).(GetVmCpuOutput)
+}
+
+// List of host cores used to execute guest processes, for example: '0,5,8-11'
+func (o GetVmCpuPtrOutput) Affinity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVmCpu) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Affinity
+	}).(pulumi.StringPtrOutput)
+}
+
+// The CPU architecture.
+func (o GetVmCpuPtrOutput) Architecture() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVmCpu) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Architecture
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of CPU cores per socket.
+func (o GetVmCpuPtrOutput) Cores() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetVmCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Cores
+	}).(pulumi.IntPtrOutput)
+}
+
+// Set of additional CPU flags.
+func (o GetVmCpuPtrOutput) Flags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetVmCpu) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Flags
+	}).(pulumi.StringArrayOutput)
+}
+
+// The number of hotplugged vCPUs.
+func (o GetVmCpuPtrOutput) Hotplugged() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetVmCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Hotplugged
+	}).(pulumi.IntPtrOutput)
+}
+
+// Limit of CPU usage.
+func (o GetVmCpuPtrOutput) Limit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GetVmCpu) *float64 {
+		if v == nil {
+			return nil
+		}
+		return &v.Limit
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Enable NUMA.
+func (o GetVmCpuPtrOutput) Numa() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetVmCpu) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Numa
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The number of CPU sockets.
+func (o GetVmCpuPtrOutput) Sockets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetVmCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Sockets
+	}).(pulumi.IntPtrOutput)
+}
+
+// Emulated CPU type.
+func (o GetVmCpuPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVmCpu) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// CPU weight for a VM
+func (o GetVmCpuPtrOutput) Units() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetVmCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Units
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetVmRng struct {
+	// Maximum bytes of entropy allowed to get injected into the guest every period.
+	MaxBytes int `pulumi:"maxBytes"`
+	// Period in milliseconds to limit entropy injection to the guest.
+	Period int `pulumi:"period"`
+	// The entropy source for the RNG device.
+	Source string `pulumi:"source"`
+}
+
+// GetVmRngInput is an input type that accepts GetVmRngArgs and GetVmRngOutput values.
+// You can construct a concrete instance of `GetVmRngInput` via:
+//
+//	GetVmRngArgs{...}
+type GetVmRngInput interface {
+	pulumi.Input
+
+	ToGetVmRngOutput() GetVmRngOutput
+	ToGetVmRngOutputWithContext(context.Context) GetVmRngOutput
+}
+
+type GetVmRngArgs struct {
+	// Maximum bytes of entropy allowed to get injected into the guest every period.
+	MaxBytes pulumi.IntInput `pulumi:"maxBytes"`
+	// Period in milliseconds to limit entropy injection to the guest.
+	Period pulumi.IntInput `pulumi:"period"`
+	// The entropy source for the RNG device.
+	Source pulumi.StringInput `pulumi:"source"`
+}
+
+func (GetVmRngArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVmRng)(nil)).Elem()
+}
+
+func (i GetVmRngArgs) ToGetVmRngOutput() GetVmRngOutput {
+	return i.ToGetVmRngOutputWithContext(context.Background())
+}
+
+func (i GetVmRngArgs) ToGetVmRngOutputWithContext(ctx context.Context) GetVmRngOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVmRngOutput)
+}
+
+func (i GetVmRngArgs) ToGetVmRngPtrOutput() GetVmRngPtrOutput {
+	return i.ToGetVmRngPtrOutputWithContext(context.Background())
+}
+
+func (i GetVmRngArgs) ToGetVmRngPtrOutputWithContext(ctx context.Context) GetVmRngPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVmRngOutput).ToGetVmRngPtrOutputWithContext(ctx)
+}
+
+// GetVmRngPtrInput is an input type that accepts GetVmRngArgs, GetVmRngPtr and GetVmRngPtrOutput values.
+// You can construct a concrete instance of `GetVmRngPtrInput` via:
+//
+//	        GetVmRngArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetVmRngPtrInput interface {
+	pulumi.Input
+
+	ToGetVmRngPtrOutput() GetVmRngPtrOutput
+	ToGetVmRngPtrOutputWithContext(context.Context) GetVmRngPtrOutput
+}
+
+type getVmRngPtrType GetVmRngArgs
+
+func GetVmRngPtr(v *GetVmRngArgs) GetVmRngPtrInput {
+	return (*getVmRngPtrType)(v)
+}
+
+func (*getVmRngPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVmRng)(nil)).Elem()
+}
+
+func (i *getVmRngPtrType) ToGetVmRngPtrOutput() GetVmRngPtrOutput {
+	return i.ToGetVmRngPtrOutputWithContext(context.Background())
+}
+
+func (i *getVmRngPtrType) ToGetVmRngPtrOutputWithContext(ctx context.Context) GetVmRngPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVmRngPtrOutput)
+}
+
+type GetVmRngOutput struct{ *pulumi.OutputState }
+
+func (GetVmRngOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVmRng)(nil)).Elem()
+}
+
+func (o GetVmRngOutput) ToGetVmRngOutput() GetVmRngOutput {
+	return o
+}
+
+func (o GetVmRngOutput) ToGetVmRngOutputWithContext(ctx context.Context) GetVmRngOutput {
+	return o
+}
+
+func (o GetVmRngOutput) ToGetVmRngPtrOutput() GetVmRngPtrOutput {
+	return o.ToGetVmRngPtrOutputWithContext(context.Background())
+}
+
+func (o GetVmRngOutput) ToGetVmRngPtrOutputWithContext(ctx context.Context) GetVmRngPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVmRng) *GetVmRng {
+		return &v
+	}).(GetVmRngPtrOutput)
+}
+
+// Maximum bytes of entropy allowed to get injected into the guest every period.
+func (o GetVmRngOutput) MaxBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVmRng) int { return v.MaxBytes }).(pulumi.IntOutput)
+}
+
+// Period in milliseconds to limit entropy injection to the guest.
+func (o GetVmRngOutput) Period() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVmRng) int { return v.Period }).(pulumi.IntOutput)
+}
+
+// The entropy source for the RNG device.
+func (o GetVmRngOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVmRng) string { return v.Source }).(pulumi.StringOutput)
+}
+
+type GetVmRngPtrOutput struct{ *pulumi.OutputState }
+
+func (GetVmRngPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVmRng)(nil)).Elem()
+}
+
+func (o GetVmRngPtrOutput) ToGetVmRngPtrOutput() GetVmRngPtrOutput {
+	return o
+}
+
+func (o GetVmRngPtrOutput) ToGetVmRngPtrOutputWithContext(ctx context.Context) GetVmRngPtrOutput {
+	return o
+}
+
+func (o GetVmRngPtrOutput) Elem() GetVmRngOutput {
+	return o.ApplyT(func(v *GetVmRng) GetVmRng {
+		if v != nil {
+			return *v
+		}
+		var ret GetVmRng
+		return ret
+	}).(GetVmRngOutput)
+}
+
+// Maximum bytes of entropy allowed to get injected into the guest every period.
+func (o GetVmRngPtrOutput) MaxBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetVmRng) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxBytes
+	}).(pulumi.IntPtrOutput)
+}
+
+// Period in milliseconds to limit entropy injection to the guest.
+func (o GetVmRngPtrOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetVmRng) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Period
+	}).(pulumi.IntPtrOutput)
+}
+
+// The entropy source for the RNG device.
+func (o GetVmRngPtrOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVmRng) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Source
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetVmTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+}
+
+// GetVmTimeoutsInput is an input type that accepts GetVmTimeoutsArgs and GetVmTimeoutsOutput values.
+// You can construct a concrete instance of `GetVmTimeoutsInput` via:
+//
+//	GetVmTimeoutsArgs{...}
+type GetVmTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetVmTimeoutsOutput() GetVmTimeoutsOutput
+	ToGetVmTimeoutsOutputWithContext(context.Context) GetVmTimeoutsOutput
+}
+
+type GetVmTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetVmTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVmTimeouts)(nil)).Elem()
+}
+
+func (i GetVmTimeoutsArgs) ToGetVmTimeoutsOutput() GetVmTimeoutsOutput {
+	return i.ToGetVmTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetVmTimeoutsArgs) ToGetVmTimeoutsOutputWithContext(ctx context.Context) GetVmTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVmTimeoutsOutput)
+}
+
+func (i GetVmTimeoutsArgs) ToGetVmTimeoutsPtrOutput() GetVmTimeoutsPtrOutput {
+	return i.ToGetVmTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetVmTimeoutsArgs) ToGetVmTimeoutsPtrOutputWithContext(ctx context.Context) GetVmTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVmTimeoutsOutput).ToGetVmTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetVmTimeoutsPtrInput is an input type that accepts GetVmTimeoutsArgs, GetVmTimeoutsPtr and GetVmTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetVmTimeoutsPtrInput` via:
+//
+//	        GetVmTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetVmTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetVmTimeoutsPtrOutput() GetVmTimeoutsPtrOutput
+	ToGetVmTimeoutsPtrOutputWithContext(context.Context) GetVmTimeoutsPtrOutput
+}
+
+type getVmTimeoutsPtrType GetVmTimeoutsArgs
+
+func GetVmTimeoutsPtr(v *GetVmTimeoutsArgs) GetVmTimeoutsPtrInput {
+	return (*getVmTimeoutsPtrType)(v)
+}
+
+func (*getVmTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVmTimeouts)(nil)).Elem()
+}
+
+func (i *getVmTimeoutsPtrType) ToGetVmTimeoutsPtrOutput() GetVmTimeoutsPtrOutput {
+	return i.ToGetVmTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getVmTimeoutsPtrType) ToGetVmTimeoutsPtrOutputWithContext(ctx context.Context) GetVmTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVmTimeoutsPtrOutput)
+}
+
+type GetVmTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetVmTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVmTimeouts)(nil)).Elem()
+}
+
+func (o GetVmTimeoutsOutput) ToGetVmTimeoutsOutput() GetVmTimeoutsOutput {
+	return o
+}
+
+func (o GetVmTimeoutsOutput) ToGetVmTimeoutsOutputWithContext(ctx context.Context) GetVmTimeoutsOutput {
+	return o
+}
+
+func (o GetVmTimeoutsOutput) ToGetVmTimeoutsPtrOutput() GetVmTimeoutsPtrOutput {
+	return o.ToGetVmTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetVmTimeoutsOutput) ToGetVmTimeoutsPtrOutputWithContext(ctx context.Context) GetVmTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVmTimeouts) *GetVmTimeouts {
+		return &v
+	}).(GetVmTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o GetVmTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVmTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetVmTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetVmTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVmTimeouts)(nil)).Elem()
+}
+
+func (o GetVmTimeoutsPtrOutput) ToGetVmTimeoutsPtrOutput() GetVmTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetVmTimeoutsPtrOutput) ToGetVmTimeoutsPtrOutputWithContext(ctx context.Context) GetVmTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetVmTimeoutsPtrOutput) Elem() GetVmTimeoutsOutput {
+	return o.ApplyT(func(v *GetVmTimeouts) GetVmTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetVmTimeouts
+		return ret
+	}).(GetVmTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o GetVmTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVmTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetVmVga struct {
+	// Enable a specific clipboard.
+	Clipboard string `pulumi:"clipboard"`
+	// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+	Memory int `pulumi:"memory"`
+	// The VGA type.
+	Type string `pulumi:"type"`
+}
+
+// GetVmVgaInput is an input type that accepts GetVmVgaArgs and GetVmVgaOutput values.
+// You can construct a concrete instance of `GetVmVgaInput` via:
+//
+//	GetVmVgaArgs{...}
+type GetVmVgaInput interface {
+	pulumi.Input
+
+	ToGetVmVgaOutput() GetVmVgaOutput
+	ToGetVmVgaOutputWithContext(context.Context) GetVmVgaOutput
+}
+
+type GetVmVgaArgs struct {
+	// Enable a specific clipboard.
+	Clipboard pulumi.StringInput `pulumi:"clipboard"`
+	// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+	Memory pulumi.IntInput `pulumi:"memory"`
+	// The VGA type.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetVmVgaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVmVga)(nil)).Elem()
+}
+
+func (i GetVmVgaArgs) ToGetVmVgaOutput() GetVmVgaOutput {
+	return i.ToGetVmVgaOutputWithContext(context.Background())
+}
+
+func (i GetVmVgaArgs) ToGetVmVgaOutputWithContext(ctx context.Context) GetVmVgaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVmVgaOutput)
+}
+
+func (i GetVmVgaArgs) ToGetVmVgaPtrOutput() GetVmVgaPtrOutput {
+	return i.ToGetVmVgaPtrOutputWithContext(context.Background())
+}
+
+func (i GetVmVgaArgs) ToGetVmVgaPtrOutputWithContext(ctx context.Context) GetVmVgaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVmVgaOutput).ToGetVmVgaPtrOutputWithContext(ctx)
+}
+
+// GetVmVgaPtrInput is an input type that accepts GetVmVgaArgs, GetVmVgaPtr and GetVmVgaPtrOutput values.
+// You can construct a concrete instance of `GetVmVgaPtrInput` via:
+//
+//	        GetVmVgaArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetVmVgaPtrInput interface {
+	pulumi.Input
+
+	ToGetVmVgaPtrOutput() GetVmVgaPtrOutput
+	ToGetVmVgaPtrOutputWithContext(context.Context) GetVmVgaPtrOutput
+}
+
+type getVmVgaPtrType GetVmVgaArgs
+
+func GetVmVgaPtr(v *GetVmVgaArgs) GetVmVgaPtrInput {
+	return (*getVmVgaPtrType)(v)
+}
+
+func (*getVmVgaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVmVga)(nil)).Elem()
+}
+
+func (i *getVmVgaPtrType) ToGetVmVgaPtrOutput() GetVmVgaPtrOutput {
+	return i.ToGetVmVgaPtrOutputWithContext(context.Background())
+}
+
+func (i *getVmVgaPtrType) ToGetVmVgaPtrOutputWithContext(ctx context.Context) GetVmVgaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVmVgaPtrOutput)
+}
+
+type GetVmVgaOutput struct{ *pulumi.OutputState }
+
+func (GetVmVgaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVmVga)(nil)).Elem()
+}
+
+func (o GetVmVgaOutput) ToGetVmVgaOutput() GetVmVgaOutput {
+	return o
+}
+
+func (o GetVmVgaOutput) ToGetVmVgaOutputWithContext(ctx context.Context) GetVmVgaOutput {
+	return o
+}
+
+func (o GetVmVgaOutput) ToGetVmVgaPtrOutput() GetVmVgaPtrOutput {
+	return o.ToGetVmVgaPtrOutputWithContext(context.Background())
+}
+
+func (o GetVmVgaOutput) ToGetVmVgaPtrOutputWithContext(ctx context.Context) GetVmVgaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVmVga) *GetVmVga {
+		return &v
+	}).(GetVmVgaPtrOutput)
+}
+
+// Enable a specific clipboard.
+func (o GetVmVgaOutput) Clipboard() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVmVga) string { return v.Clipboard }).(pulumi.StringOutput)
+}
+
+// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+func (o GetVmVgaOutput) Memory() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVmVga) int { return v.Memory }).(pulumi.IntOutput)
+}
+
+// The VGA type.
+func (o GetVmVgaOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVmVga) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetVmVgaPtrOutput struct{ *pulumi.OutputState }
+
+func (GetVmVgaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVmVga)(nil)).Elem()
+}
+
+func (o GetVmVgaPtrOutput) ToGetVmVgaPtrOutput() GetVmVgaPtrOutput {
+	return o
+}
+
+func (o GetVmVgaPtrOutput) ToGetVmVgaPtrOutputWithContext(ctx context.Context) GetVmVgaPtrOutput {
+	return o
+}
+
+func (o GetVmVgaPtrOutput) Elem() GetVmVgaOutput {
+	return o.ApplyT(func(v *GetVmVga) GetVmVga {
+		if v != nil {
+			return *v
+		}
+		var ret GetVmVga
+		return ret
+	}).(GetVmVgaOutput)
+}
+
+// Enable a specific clipboard.
+func (o GetVmVgaPtrOutput) Clipboard() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVmVga) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Clipboard
+	}).(pulumi.StringPtrOutput)
+}
+
+// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+func (o GetVmVgaPtrOutput) Memory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetVmVga) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Memory
+	}).(pulumi.IntPtrOutput)
+}
+
+// The VGA type.
+func (o GetVmVgaPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVmVga) *string {
 		if v == nil {
 			return nil
 		}
@@ -1598,40 +5099,112 @@ func (o GetVm2VgaPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*HostsEntryInput)(nil)).Elem(), HostsEntryArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HostsEntryArrayInput)(nil)).Elem(), HostsEntryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSshInput)(nil)).Elem(), ProviderSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSshPtrInput)(nil)).Elem(), ProviderSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSshNodeInput)(nil)).Elem(), ProviderSshNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSshNodeArrayInput)(nil)).Elem(), ProviderSshNodeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetContainersContainerInput)(nil)).Elem(), GetContainersContainerArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetContainersContainerArrayInput)(nil)).Elem(), GetContainersContainerArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetContainersFilterInput)(nil)).Elem(), GetContainersFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetContainersFilterArrayInput)(nil)).Elem(), GetContainersFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2CpuInput)(nil)).Elem(), GetVm2CpuArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2CpuPtrInput)(nil)).Elem(), GetVm2CpuArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2RngInput)(nil)).Elem(), GetVm2RngArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2RngPtrInput)(nil)).Elem(), GetVm2RngArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2TimeoutsInput)(nil)).Elem(), GetVm2TimeoutsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2TimeoutsPtrInput)(nil)).Elem(), GetVm2TimeoutsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2VgaInput)(nil)).Elem(), GetVm2VgaArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2VgaPtrInput)(nil)).Elem(), GetVm2VgaArgs{})
-	pulumi.RegisterOutputType(HostsEntryOutput{})
-	pulumi.RegisterOutputType(HostsEntryArrayOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Vm2LegacyCdromInput)(nil)).Elem(), Vm2LegacyCdromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Vm2LegacyCdromMapInput)(nil)).Elem(), Vm2LegacyCdromMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Vm2LegacyCpuInput)(nil)).Elem(), Vm2LegacyCpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Vm2LegacyCpuPtrInput)(nil)).Elem(), Vm2LegacyCpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Vm2LegacyRngInput)(nil)).Elem(), Vm2LegacyRngArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Vm2LegacyRngPtrInput)(nil)).Elem(), Vm2LegacyRngArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Vm2LegacyTimeoutsInput)(nil)).Elem(), Vm2LegacyTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Vm2LegacyTimeoutsPtrInput)(nil)).Elem(), Vm2LegacyTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Vm2LegacyVgaInput)(nil)).Elem(), Vm2LegacyVgaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*Vm2LegacyVgaPtrInput)(nil)).Elem(), Vm2LegacyVgaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmCdromInput)(nil)).Elem(), VmCdromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmCdromMapInput)(nil)).Elem(), VmCdromMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmCpuInput)(nil)).Elem(), VmCpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmCpuPtrInput)(nil)).Elem(), VmCpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmRngInput)(nil)).Elem(), VmRngArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmRngPtrInput)(nil)).Elem(), VmRngArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmTimeoutsInput)(nil)).Elem(), VmTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmTimeoutsPtrInput)(nil)).Elem(), VmTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmVgaInput)(nil)).Elem(), VmVgaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmVgaPtrInput)(nil)).Elem(), VmVgaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatastoresDatastoreInput)(nil)).Elem(), GetDatastoresDatastoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatastoresDatastoreArrayInput)(nil)).Elem(), GetDatastoresDatastoreArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatastoresFiltersInput)(nil)).Elem(), GetDatastoresFiltersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatastoresFiltersPtrInput)(nil)).Elem(), GetDatastoresFiltersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatastoresLegacyDatastoreInput)(nil)).Elem(), GetDatastoresLegacyDatastoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatastoresLegacyDatastoreArrayInput)(nil)).Elem(), GetDatastoresLegacyDatastoreArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatastoresLegacyFiltersInput)(nil)).Elem(), GetDatastoresLegacyFiltersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatastoresLegacyFiltersPtrInput)(nil)).Elem(), GetDatastoresLegacyFiltersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFilesFileInput)(nil)).Elem(), GetFilesFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFilesFileArrayInput)(nil)).Elem(), GetFilesFileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReplicationsLegacyReplicationInput)(nil)).Elem(), GetReplicationsLegacyReplicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReplicationsLegacyReplicationArrayInput)(nil)).Elem(), GetReplicationsLegacyReplicationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReplicationsReplicationInput)(nil)).Elem(), GetReplicationsReplicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReplicationsReplicationArrayInput)(nil)).Elem(), GetReplicationsReplicationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2LegacyCpuInput)(nil)).Elem(), GetVm2LegacyCpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2LegacyCpuPtrInput)(nil)).Elem(), GetVm2LegacyCpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2LegacyRngInput)(nil)).Elem(), GetVm2LegacyRngArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2LegacyRngPtrInput)(nil)).Elem(), GetVm2LegacyRngArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2LegacyTimeoutsInput)(nil)).Elem(), GetVm2LegacyTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2LegacyTimeoutsPtrInput)(nil)).Elem(), GetVm2LegacyTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2LegacyVgaInput)(nil)).Elem(), GetVm2LegacyVgaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2LegacyVgaPtrInput)(nil)).Elem(), GetVm2LegacyVgaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVmCpuInput)(nil)).Elem(), GetVmCpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVmCpuPtrInput)(nil)).Elem(), GetVmCpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVmRngInput)(nil)).Elem(), GetVmRngArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVmRngPtrInput)(nil)).Elem(), GetVmRngArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVmTimeoutsInput)(nil)).Elem(), GetVmTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVmTimeoutsPtrInput)(nil)).Elem(), GetVmTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVmVgaInput)(nil)).Elem(), GetVmVgaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVmVgaPtrInput)(nil)).Elem(), GetVmVgaArgs{})
 	pulumi.RegisterOutputType(ProviderSshOutput{})
 	pulumi.RegisterOutputType(ProviderSshPtrOutput{})
 	pulumi.RegisterOutputType(ProviderSshNodeOutput{})
 	pulumi.RegisterOutputType(ProviderSshNodeArrayOutput{})
-	pulumi.RegisterOutputType(GetContainersContainerOutput{})
-	pulumi.RegisterOutputType(GetContainersContainerArrayOutput{})
-	pulumi.RegisterOutputType(GetContainersFilterOutput{})
-	pulumi.RegisterOutputType(GetContainersFilterArrayOutput{})
-	pulumi.RegisterOutputType(GetVm2CpuOutput{})
-	pulumi.RegisterOutputType(GetVm2CpuPtrOutput{})
-	pulumi.RegisterOutputType(GetVm2RngOutput{})
-	pulumi.RegisterOutputType(GetVm2RngPtrOutput{})
-	pulumi.RegisterOutputType(GetVm2TimeoutsOutput{})
-	pulumi.RegisterOutputType(GetVm2TimeoutsPtrOutput{})
-	pulumi.RegisterOutputType(GetVm2VgaOutput{})
-	pulumi.RegisterOutputType(GetVm2VgaPtrOutput{})
+	pulumi.RegisterOutputType(Vm2LegacyCdromOutput{})
+	pulumi.RegisterOutputType(Vm2LegacyCdromMapOutput{})
+	pulumi.RegisterOutputType(Vm2LegacyCpuOutput{})
+	pulumi.RegisterOutputType(Vm2LegacyCpuPtrOutput{})
+	pulumi.RegisterOutputType(Vm2LegacyRngOutput{})
+	pulumi.RegisterOutputType(Vm2LegacyRngPtrOutput{})
+	pulumi.RegisterOutputType(Vm2LegacyTimeoutsOutput{})
+	pulumi.RegisterOutputType(Vm2LegacyTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(Vm2LegacyVgaOutput{})
+	pulumi.RegisterOutputType(Vm2LegacyVgaPtrOutput{})
+	pulumi.RegisterOutputType(VmCdromOutput{})
+	pulumi.RegisterOutputType(VmCdromMapOutput{})
+	pulumi.RegisterOutputType(VmCpuOutput{})
+	pulumi.RegisterOutputType(VmCpuPtrOutput{})
+	pulumi.RegisterOutputType(VmRngOutput{})
+	pulumi.RegisterOutputType(VmRngPtrOutput{})
+	pulumi.RegisterOutputType(VmTimeoutsOutput{})
+	pulumi.RegisterOutputType(VmTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(VmVgaOutput{})
+	pulumi.RegisterOutputType(VmVgaPtrOutput{})
+	pulumi.RegisterOutputType(GetDatastoresDatastoreOutput{})
+	pulumi.RegisterOutputType(GetDatastoresDatastoreArrayOutput{})
+	pulumi.RegisterOutputType(GetDatastoresFiltersOutput{})
+	pulumi.RegisterOutputType(GetDatastoresFiltersPtrOutput{})
+	pulumi.RegisterOutputType(GetDatastoresLegacyDatastoreOutput{})
+	pulumi.RegisterOutputType(GetDatastoresLegacyDatastoreArrayOutput{})
+	pulumi.RegisterOutputType(GetDatastoresLegacyFiltersOutput{})
+	pulumi.RegisterOutputType(GetDatastoresLegacyFiltersPtrOutput{})
+	pulumi.RegisterOutputType(GetFilesFileOutput{})
+	pulumi.RegisterOutputType(GetFilesFileArrayOutput{})
+	pulumi.RegisterOutputType(GetReplicationsLegacyReplicationOutput{})
+	pulumi.RegisterOutputType(GetReplicationsLegacyReplicationArrayOutput{})
+	pulumi.RegisterOutputType(GetReplicationsReplicationOutput{})
+	pulumi.RegisterOutputType(GetReplicationsReplicationArrayOutput{})
+	pulumi.RegisterOutputType(GetVm2LegacyCpuOutput{})
+	pulumi.RegisterOutputType(GetVm2LegacyCpuPtrOutput{})
+	pulumi.RegisterOutputType(GetVm2LegacyRngOutput{})
+	pulumi.RegisterOutputType(GetVm2LegacyRngPtrOutput{})
+	pulumi.RegisterOutputType(GetVm2LegacyTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetVm2LegacyTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetVm2LegacyVgaOutput{})
+	pulumi.RegisterOutputType(GetVm2LegacyVgaPtrOutput{})
+	pulumi.RegisterOutputType(GetVmCpuOutput{})
+	pulumi.RegisterOutputType(GetVmCpuPtrOutput{})
+	pulumi.RegisterOutputType(GetVmRngOutput{})
+	pulumi.RegisterOutputType(GetVmRngPtrOutput{})
+	pulumi.RegisterOutputType(GetVmTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetVmTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetVmVgaOutput{})
+	pulumi.RegisterOutputType(GetVmVgaPtrOutput{})
 }

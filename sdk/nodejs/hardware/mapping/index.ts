@@ -10,47 +10,86 @@ export type Dir = import("./dir").Dir;
 export const Dir: typeof import("./dir").Dir = null as any;
 utilities.lazyLoad(exports, ["Dir"], () => require("./dir"));
 
+export { DirLegacyArgs, DirLegacyState } from "./dirLegacy";
+export type DirLegacy = import("./dirLegacy").DirLegacy;
+export const DirLegacy: typeof import("./dirLegacy").DirLegacy = null as any;
+utilities.lazyLoad(exports, ["DirLegacy"], () => require("./dirLegacy"));
+
 export { GetDirArgs, GetDirResult, GetDirOutputArgs } from "./getDir";
 export const getDir: typeof import("./getDir").getDir = null as any;
 export const getDirOutput: typeof import("./getDir").getDirOutput = null as any;
 utilities.lazyLoad(exports, ["getDir","getDirOutput"], () => require("./getDir"));
+
+export { GetDirLegacyArgs, GetDirLegacyResult, GetDirLegacyOutputArgs } from "./getDirLegacy";
+export const getDirLegacy: typeof import("./getDirLegacy").getDirLegacy = null as any;
+export const getDirLegacyOutput: typeof import("./getDirLegacy").getDirLegacyOutput = null as any;
+utilities.lazyLoad(exports, ["getDirLegacy","getDirLegacyOutput"], () => require("./getDirLegacy"));
 
 export { GetPciArgs, GetPciResult, GetPciOutputArgs } from "./getPci";
 export const getPci: typeof import("./getPci").getPci = null as any;
 export const getPciOutput: typeof import("./getPci").getPciOutput = null as any;
 utilities.lazyLoad(exports, ["getPci","getPciOutput"], () => require("./getPci"));
 
+export { GetPciLegacyArgs, GetPciLegacyResult, GetPciLegacyOutputArgs } from "./getPciLegacy";
+export const getPciLegacy: typeof import("./getPciLegacy").getPciLegacy = null as any;
+export const getPciLegacyOutput: typeof import("./getPciLegacy").getPciLegacyOutput = null as any;
+utilities.lazyLoad(exports, ["getPciLegacy","getPciLegacyOutput"], () => require("./getPciLegacy"));
+
 export { GetUsbArgs, GetUsbResult, GetUsbOutputArgs } from "./getUsb";
 export const getUsb: typeof import("./getUsb").getUsb = null as any;
 export const getUsbOutput: typeof import("./getUsb").getUsbOutput = null as any;
 utilities.lazyLoad(exports, ["getUsb","getUsbOutput"], () => require("./getUsb"));
+
+export { GetUsbLegacyArgs, GetUsbLegacyResult, GetUsbLegacyOutputArgs } from "./getUsbLegacy";
+export const getUsbLegacy: typeof import("./getUsbLegacy").getUsbLegacy = null as any;
+export const getUsbLegacyOutput: typeof import("./getUsbLegacy").getUsbLegacyOutput = null as any;
+utilities.lazyLoad(exports, ["getUsbLegacy","getUsbLegacyOutput"], () => require("./getUsbLegacy"));
 
 export { PciArgs, PciState } from "./pci";
 export type Pci = import("./pci").Pci;
 export const Pci: typeof import("./pci").Pci = null as any;
 utilities.lazyLoad(exports, ["Pci"], () => require("./pci"));
 
+export { PciLegacyArgs, PciLegacyState } from "./pciLegacy";
+export type PciLegacy = import("./pciLegacy").PciLegacy;
+export const PciLegacy: typeof import("./pciLegacy").PciLegacy = null as any;
+utilities.lazyLoad(exports, ["PciLegacy"], () => require("./pciLegacy"));
+
 export { UsbArgs, UsbState } from "./usb";
 export type Usb = import("./usb").Usb;
 export const Usb: typeof import("./usb").Usb = null as any;
 utilities.lazyLoad(exports, ["Usb"], () => require("./usb"));
+
+export { UsbLegacyArgs, UsbLegacyState } from "./usbLegacy";
+export type UsbLegacy = import("./usbLegacy").UsbLegacy;
+export const UsbLegacy: typeof import("./usbLegacy").UsbLegacy = null as any;
+utilities.lazyLoad(exports, ["UsbLegacy"], () => require("./usbLegacy"));
 
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "proxmoxve:Hardware/mapping/dir:Dir":
+            case "proxmoxve:hardware/mapping/dir:Dir":
                 return new Dir(name, <any>undefined, { urn })
-            case "proxmoxve:Hardware/mapping/pci:Pci":
+            case "proxmoxve:hardware/mapping/dirLegacy:DirLegacy":
+                return new DirLegacy(name, <any>undefined, { urn })
+            case "proxmoxve:hardware/mapping/pci:Pci":
                 return new Pci(name, <any>undefined, { urn })
-            case "proxmoxve:Hardware/mapping/usb:Usb":
+            case "proxmoxve:hardware/mapping/pciLegacy:PciLegacy":
+                return new PciLegacy(name, <any>undefined, { urn })
+            case "proxmoxve:hardware/mapping/usb:Usb":
                 return new Usb(name, <any>undefined, { urn })
+            case "proxmoxve:hardware/mapping/usbLegacy:UsbLegacy":
+                return new UsbLegacy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("proxmoxve", "Hardware/mapping/dir", _module)
-pulumi.runtime.registerResourceModule("proxmoxve", "Hardware/mapping/pci", _module)
-pulumi.runtime.registerResourceModule("proxmoxve", "Hardware/mapping/usb", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "hardware/mapping/dir", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "hardware/mapping/dirLegacy", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "hardware/mapping/pci", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "hardware/mapping/pciLegacy", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "hardware/mapping/usb", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "hardware/mapping/usbLegacy", _module)

@@ -10,16 +10,24 @@ export type Membership = import("./membership").Membership;
 export const Membership: typeof import("./membership").Membership = null as any;
 utilities.lazyLoad(exports, ["Membership"], () => require("./membership"));
 
+export { MembershipLegacyArgs, MembershipLegacyState } from "./membershipLegacy";
+export type MembershipLegacy = import("./membershipLegacy").MembershipLegacy;
+export const MembershipLegacy: typeof import("./membershipLegacy").MembershipLegacy = null as any;
+utilities.lazyLoad(exports, ["MembershipLegacy"], () => require("./membershipLegacy"));
+
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "proxmoxve:Pool/membership:Membership":
+            case "proxmoxve:pool/membership:Membership":
                 return new Membership(name, <any>undefined, { urn })
+            case "proxmoxve:pool/membershipLegacy:MembershipLegacy":
+                return new MembershipLegacy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("proxmoxve", "Pool/membership", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "pool/membership", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "pool/membershipLegacy", _module)

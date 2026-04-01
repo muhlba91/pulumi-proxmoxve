@@ -7,3 +7,4 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .file import *
+from .file_legacy import *

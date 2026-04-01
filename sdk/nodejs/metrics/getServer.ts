@@ -6,25 +6,10 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves information about a specific PVE metric server.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const example = proxmoxve.Metrics.getServer({
- *     name: "example_influxdb",
- * });
- * export const dataProxmoxVirtualEnvironmentMetricsServer = {
- *     server: example.then(example => example.server),
- *     port: example.then(example => example.port),
- * };
- * ```
  */
 export function getServer(args: GetServerArgs, opts?: pulumi.InvokeOptions): Promise<GetServerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("proxmoxve:Metrics/getServer:getServer", {
+    return pulumi.runtime.invoke("proxmoxve:metrics/getServer:getServer", {
         "name": args.name,
     }, opts);
 }
@@ -56,6 +41,18 @@ export interface GetServerResult {
      */
     readonly name: string;
     /**
+     * OpenTelemetry compression algorithm for requests.
+     */
+    readonly opentelemetryCompression: string;
+    /**
+     * OpenTelemetry custom HTTP headers as JSON, base64 encoded.
+     */
+    readonly opentelemetryHeaders: string;
+    /**
+     * OpenTelemetry maximum request body size in bytes.
+     */
+    readonly opentelemetryMaxBodySize: number;
+    /**
      * OpenTelemetry endpoint path (e.g., `/v1/metrics`).
      */
     readonly opentelemetryPath: string;
@@ -63,6 +60,18 @@ export interface GetServerResult {
      * Protocol for OpenTelemetry. Choice is between `http` | `https`.
      */
     readonly opentelemetryProto: string;
+    /**
+     * OpenTelemetry additional resource attributes as JSON, base64 encoded.
+     */
+    readonly opentelemetryResourceAttributes: string;
+    /**
+     * OpenTelemetry HTTP request timeout in seconds.
+     */
+    readonly opentelemetryTimeout: number;
+    /**
+     * OpenTelemetry verify SSL certificates.
+     */
+    readonly opentelemetryVerifySsl: boolean;
     /**
      * Server network port.
      */
@@ -78,25 +87,10 @@ export interface GetServerResult {
 }
 /**
  * Retrieves information about a specific PVE metric server.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const example = proxmoxve.Metrics.getServer({
- *     name: "example_influxdb",
- * });
- * export const dataProxmoxVirtualEnvironmentMetricsServer = {
- *     server: example.then(example => example.server),
- *     port: example.then(example => example.port),
- * };
- * ```
  */
 export function getServerOutput(args: GetServerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("proxmoxve:Metrics/getServer:getServer", {
+    return pulumi.runtime.invokeOutput("proxmoxve:metrics/getServer:getServer", {
         "name": args.name,
     }, opts);
 }

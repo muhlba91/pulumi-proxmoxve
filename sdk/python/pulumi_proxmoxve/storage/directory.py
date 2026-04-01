@@ -21,8 +21,8 @@ __all__ = ['DirectoryArgs', 'Directory']
 @pulumi.input_type
 class DirectoryArgs:
     def __init__(__self__, *,
-                 directory_id: pulumi.Input[_builtins.str],
                  path: pulumi.Input[_builtins.str],
+                 resource_id: pulumi.Input[_builtins.str],
                  backups: Optional[pulumi.Input['DirectoryBackupsArgs']] = None,
                  contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  disable: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -31,8 +31,9 @@ class DirectoryArgs:
                  shared: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Directory resource.
-        :param pulumi.Input[_builtins.str] directory_id: The unique identifier of the storage.
+
         :param pulumi.Input[_builtins.str] path: The path to the directory on the Proxmox node.
+        :param pulumi.Input[_builtins.str] resource_id: The unique identifier of the storage.
         :param pulumi.Input['DirectoryBackupsArgs'] backups: Configure backup retention settings for the storage type.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contents: The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
         :param pulumi.Input[_builtins.bool] disable: Whether the storage is disabled.
@@ -40,8 +41,8 @@ class DirectoryArgs:
         :param pulumi.Input[_builtins.str] preallocation: The preallocation mode for raw and qcow2 images.
         :param pulumi.Input[_builtins.bool] shared: Whether the storage is shared across all nodes.
         """
-        pulumi.set(__self__, "directory_id", directory_id)
         pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "resource_id", resource_id)
         if backups is not None:
             pulumi.set(__self__, "backups", backups)
         if contents is not None:
@@ -56,18 +57,6 @@ class DirectoryArgs:
             pulumi.set(__self__, "shared", shared)
 
     @_builtins.property
-    @pulumi.getter(name="directoryId")
-    def directory_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        The unique identifier of the storage.
-        """
-        return pulumi.get(self, "directory_id")
-
-    @directory_id.setter
-    def directory_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "directory_id", value)
-
-    @_builtins.property
     @pulumi.getter
     def path(self) -> pulumi.Input[_builtins.str]:
         """
@@ -78,6 +67,18 @@ class DirectoryArgs:
     @path.setter
     def path(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The unique identifier of the storage.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @resource_id.setter
+    def resource_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -157,29 +158,28 @@ class _DirectoryState:
     def __init__(__self__, *,
                  backups: Optional[pulumi.Input['DirectoryBackupsArgs']] = None,
                  contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 directory_id: Optional[pulumi.Input[_builtins.str]] = None,
                  disable: Optional[pulumi.Input[_builtins.bool]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
                  preallocation: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  shared: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Directory resources.
+
         :param pulumi.Input['DirectoryBackupsArgs'] backups: Configure backup retention settings for the storage type.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contents: The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
-        :param pulumi.Input[_builtins.str] directory_id: The unique identifier of the storage.
         :param pulumi.Input[_builtins.bool] disable: Whether the storage is disabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: A list of nodes where this storage is available.
         :param pulumi.Input[_builtins.str] path: The path to the directory on the Proxmox node.
         :param pulumi.Input[_builtins.str] preallocation: The preallocation mode for raw and qcow2 images.
+        :param pulumi.Input[_builtins.str] resource_id: The unique identifier of the storage.
         :param pulumi.Input[_builtins.bool] shared: Whether the storage is shared across all nodes.
         """
         if backups is not None:
             pulumi.set(__self__, "backups", backups)
         if contents is not None:
             pulumi.set(__self__, "contents", contents)
-        if directory_id is not None:
-            pulumi.set(__self__, "directory_id", directory_id)
         if disable is not None:
             pulumi.set(__self__, "disable", disable)
         if nodes is not None:
@@ -188,6 +188,8 @@ class _DirectoryState:
             pulumi.set(__self__, "path", path)
         if preallocation is not None:
             pulumi.set(__self__, "preallocation", preallocation)
+        if resource_id is not None:
+            pulumi.set(__self__, "resource_id", resource_id)
         if shared is not None:
             pulumi.set(__self__, "shared", shared)
 
@@ -214,18 +216,6 @@ class _DirectoryState:
     @contents.setter
     def contents(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "contents", value)
-
-    @_builtins.property
-    @pulumi.getter(name="directoryId")
-    def directory_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The unique identifier of the storage.
-        """
-        return pulumi.get(self, "directory_id")
-
-    @directory_id.setter
-    def directory_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "directory_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -276,6 +266,18 @@ class _DirectoryState:
         pulumi.set(self, "preallocation", value)
 
     @_builtins.property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The unique identifier of the storage.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @resource_id.setter
+    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def shared(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -288,7 +290,7 @@ class _DirectoryState:
         pulumi.set(self, "shared", value)
 
 
-@pulumi.type_token("proxmoxve:Storage/directory:Directory")
+@pulumi.type_token("proxmoxve:storage/directory:Directory")
 class Directory(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -296,44 +298,26 @@ class Directory(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backups: Optional[pulumi.Input[Union['DirectoryBackupsArgs', 'DirectoryBackupsArgsDict']]] = None,
                  contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 directory_id: Optional[pulumi.Input[_builtins.str]] = None,
                  disable: Optional[pulumi.Input[_builtins.bool]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
                  preallocation: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  shared: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
         Manages directory-based storage in Proxmox VE.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        example = proxmoxve.storage.Directory("example",
-            directory_id="example-dir",
-            path="/var/lib/vz",
-            nodes=["pve"],
-            contents=["images"],
-            shared=True,
-            disable=False,
-            backups={
-                "max_protected_backups": 5,
-                "keep_daily": 7,
-            })
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['DirectoryBackupsArgs', 'DirectoryBackupsArgsDict']] backups: Configure backup retention settings for the storage type.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contents: The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
-        :param pulumi.Input[_builtins.str] directory_id: The unique identifier of the storage.
         :param pulumi.Input[_builtins.bool] disable: Whether the storage is disabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: A list of nodes where this storage is available.
         :param pulumi.Input[_builtins.str] path: The path to the directory on the Proxmox node.
         :param pulumi.Input[_builtins.str] preallocation: The preallocation mode for raw and qcow2 images.
+        :param pulumi.Input[_builtins.str] resource_id: The unique identifier of the storage.
         :param pulumi.Input[_builtins.bool] shared: Whether the storage is shared across all nodes.
         """
         ...
@@ -345,24 +329,6 @@ class Directory(pulumi.CustomResource):
         """
         Manages directory-based storage in Proxmox VE.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        example = proxmoxve.storage.Directory("example",
-            directory_id="example-dir",
-            path="/var/lib/vz",
-            nodes=["pve"],
-            contents=["images"],
-            shared=True,
-            disable=False,
-            backups={
-                "max_protected_backups": 5,
-                "keep_daily": 7,
-            })
-        ```
 
         :param str resource_name: The name of the resource.
         :param DirectoryArgs args: The arguments to use to populate this resource's properties.
@@ -381,11 +347,11 @@ class Directory(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backups: Optional[pulumi.Input[Union['DirectoryBackupsArgs', 'DirectoryBackupsArgsDict']]] = None,
                  contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 directory_id: Optional[pulumi.Input[_builtins.str]] = None,
                  disable: Optional[pulumi.Input[_builtins.bool]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  path: Optional[pulumi.Input[_builtins.str]] = None,
                  preallocation: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  shared: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -398,18 +364,20 @@ class Directory(pulumi.CustomResource):
 
             __props__.__dict__["backups"] = backups
             __props__.__dict__["contents"] = contents
-            if directory_id is None and not opts.urn:
-                raise TypeError("Missing required property 'directory_id'")
-            __props__.__dict__["directory_id"] = directory_id
             __props__.__dict__["disable"] = disable
             __props__.__dict__["nodes"] = nodes
             if path is None and not opts.urn:
                 raise TypeError("Missing required property 'path'")
             __props__.__dict__["path"] = path
             __props__.__dict__["preallocation"] = preallocation
+            if resource_id is None and not opts.urn:
+                raise TypeError("Missing required property 'resource_id'")
+            __props__.__dict__["resource_id"] = resource_id
             __props__.__dict__["shared"] = shared
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="proxmox_virtual_environment_storage_directory")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(Directory, __self__).__init__(
-            'proxmoxve:Storage/directory:Directory',
+            'proxmoxve:storage/directory:Directory',
             resource_name,
             __props__,
             opts)
@@ -420,11 +388,11 @@ class Directory(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             backups: Optional[pulumi.Input[Union['DirectoryBackupsArgs', 'DirectoryBackupsArgsDict']]] = None,
             contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            directory_id: Optional[pulumi.Input[_builtins.str]] = None,
             disable: Optional[pulumi.Input[_builtins.bool]] = None,
             nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             path: Optional[pulumi.Input[_builtins.str]] = None,
             preallocation: Optional[pulumi.Input[_builtins.str]] = None,
+            resource_id: Optional[pulumi.Input[_builtins.str]] = None,
             shared: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Directory':
         """
         Get an existing Directory resource's state with the given name, id, and optional extra
@@ -435,11 +403,11 @@ class Directory(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['DirectoryBackupsArgs', 'DirectoryBackupsArgsDict']] backups: Configure backup retention settings for the storage type.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contents: The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
-        :param pulumi.Input[_builtins.str] directory_id: The unique identifier of the storage.
         :param pulumi.Input[_builtins.bool] disable: Whether the storage is disabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: A list of nodes where this storage is available.
         :param pulumi.Input[_builtins.str] path: The path to the directory on the Proxmox node.
         :param pulumi.Input[_builtins.str] preallocation: The preallocation mode for raw and qcow2 images.
+        :param pulumi.Input[_builtins.str] resource_id: The unique identifier of the storage.
         :param pulumi.Input[_builtins.bool] shared: Whether the storage is shared across all nodes.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -448,11 +416,11 @@ class Directory(pulumi.CustomResource):
 
         __props__.__dict__["backups"] = backups
         __props__.__dict__["contents"] = contents
-        __props__.__dict__["directory_id"] = directory_id
         __props__.__dict__["disable"] = disable
         __props__.__dict__["nodes"] = nodes
         __props__.__dict__["path"] = path
         __props__.__dict__["preallocation"] = preallocation
+        __props__.__dict__["resource_id"] = resource_id
         __props__.__dict__["shared"] = shared
         return Directory(resource_name, opts=opts, __props__=__props__)
 
@@ -471,14 +439,6 @@ class Directory(pulumi.CustomResource):
         The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
         """
         return pulumi.get(self, "contents")
-
-    @_builtins.property
-    @pulumi.getter(name="directoryId")
-    def directory_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The unique identifier of the storage.
-        """
-        return pulumi.get(self, "directory_id")
 
     @_builtins.property
     @pulumi.getter
@@ -511,6 +471,14 @@ class Directory(pulumi.CustomResource):
         The preallocation mode for raw and qcow2 images.
         """
         return pulumi.get(self, "preallocation")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The unique identifier of the storage.
+        """
+        return pulumi.get(self, "resource_id")
 
     @_builtins.property
     @pulumi.getter

@@ -8,37 +8,6 @@ import * as utilities from "../../utilities";
 
 /**
  * Manages a PCI hardware mapping in a Proxmox VE cluster.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const example = new proxmoxve.hardware.mapping.Pci("example", {
- *     comment: "This is a comment",
- *     name: "example",
- *     maps: [{
- *         comment: "This is a device specific comment",
- *         id: "8086:5916",
- *         iommuGroup: 0,
- *         node: "pve",
- *         path: "0000:00:02.0",
- *         subsystemId: "8086:2068",
- *     }],
- *     mediatedDevices: true,
- * });
- * ```
- *
- * ## Import
- *
- * #!/usr/bin/env sh
- *
- * A PCI hardware mapping can be imported using their name, e.g.:
- *
- * ```sh
- * $ pulumi import proxmoxve:Hardware/mapping/pci:Pci example example
- * ```
  */
 export class Pci extends pulumi.CustomResource {
     /**
@@ -55,7 +24,7 @@ export class Pci extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'proxmoxve:Hardware/mapping/pci:Pci';
+    public static readonly __pulumiType = 'proxmoxve:hardware/mapping/pci:Pci';
 
     /**
      * Returns true if the given object is an instance of Pci.  This is designed to work even
@@ -75,7 +44,7 @@ export class Pci extends pulumi.CustomResource {
     /**
      * The actual map of devices for the PCI hardware mapping.
      */
-    declare public readonly maps: pulumi.Output<outputs.Hardware.mapping.PciMap[]>;
+    declare public readonly maps: pulumi.Output<outputs.hardware.mapping.PciMap[]>;
     /**
      * Indicates whether to enable mediated devices.
      */
@@ -128,7 +97,7 @@ export interface PciState {
     /**
      * The actual map of devices for the PCI hardware mapping.
      */
-    maps?: pulumi.Input<pulumi.Input<inputs.Hardware.mapping.PciMap>[]>;
+    maps?: pulumi.Input<pulumi.Input<inputs.hardware.mapping.PciMap>[]>;
     /**
      * Indicates whether to enable mediated devices.
      */
@@ -150,7 +119,7 @@ export interface PciArgs {
     /**
      * The actual map of devices for the PCI hardware mapping.
      */
-    maps: pulumi.Input<pulumi.Input<inputs.Hardware.mapping.PciMap>[]>;
+    maps: pulumi.Input<pulumi.Input<inputs.hardware.mapping.PciMap>[]>;
     /**
      * Indicates whether to enable mediated devices.
      */

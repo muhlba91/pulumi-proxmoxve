@@ -8,54 +8,11 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Manages a directory mapping in a Proxmox VE cluster.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/hardware"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := hardware.NewDir(ctx, "example", &hardware.DirArgs{
-//				Comment: pulumi.String("This is a comment"),
-//				Name:    pulumi.String("example"),
-//				Maps: mapping.DirMapTypeArray{
-//					&mapping.DirMapTypeArgs{
-//						Node: pulumi.String("pve"),
-//						Path: pulumi.String("/mnt/data"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// #!/usr/bin/env sh
-//
-// A directory mapping can be imported using their name, e.g.:
-//
-// ```sh
-// $ pulumi import proxmoxve:Hardware/mapping/dir:Dir example example
-// ```
 type Dir struct {
 	pulumi.CustomResourceState
 
@@ -79,7 +36,7 @@ func NewDir(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Dir
-	err := ctx.RegisterResource("proxmoxve:Hardware/mapping/dir:Dir", name, args, &resource, opts...)
+	err := ctx.RegisterResource("proxmoxve:hardware/mapping/dir:Dir", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -91,7 +48,7 @@ func NewDir(ctx *pulumi.Context,
 func GetDir(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *DirState, opts ...pulumi.ResourceOption) (*Dir, error) {
 	var resource Dir
-	err := ctx.ReadResource("proxmoxve:Hardware/mapping/dir:Dir", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("proxmoxve:hardware/mapping/dir:Dir", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -10,148 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.Acme
 {
     /// <summary>
-    /// Manages ACME SSL certificates for Proxmox VE nodes. This resource orders and renews certificates from an ACME Certificate Authority for a specific node.
+    /// Manages ACME SSL certificates for Proxmox VE nodes.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Basic ACME Certificate with HTTP-01 Challenge
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using ProxmoxVE = Pulumi.ProxmoxVE;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // First, create an ACME account
-    ///     var example = new ProxmoxVE.AcmeAccount("example", new()
-    ///     {
-    ///         Name = "production",
-    ///         Contact = "admin@example.com",
-    ///         Directory = "https://acme-v02.api.letsencrypt.org/directory",
-    ///         Tos = "https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf",
-    ///     });
-    /// 
-    ///     // Order a certificate for the node
-    ///     var exampleCertificate = new ProxmoxVE.Acme.Certificate("example", new()
-    ///     {
-    ///         NodeName = "pve",
-    ///         Account = example.Name,
-    ///         Domains = new[]
-    ///         {
-    ///             new ProxmoxVE.Acme.Inputs.CertificateDomainArgs
-    ///             {
-    ///                 Domain = "pve.example.com",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ### ACME Certificate with DNS-01 Challenge
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using ProxmoxVE = Pulumi.ProxmoxVE;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Create an ACME account
-    ///     var example = new ProxmoxVE.AcmeAccount("example", new()
-    ///     {
-    ///         Name = "production",
-    ///         Contact = "admin@example.com",
-    ///         Directory = "https://acme-v02.api.letsencrypt.org/directory",
-    ///         Tos = "https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf",
-    ///     });
-    /// 
-    ///     // Configure a DNS plugin (Desec example)
-    ///     var desec = new ProxmoxVE.AcmeDnsPlugin("desec", new()
-    ///     {
-    ///         Plugin = "desec",
-    ///         Api = "desec",
-    ///         Data = 
-    ///         {
-    ///             { "DEDYN_TOKEN", dedynToken },
-    ///         },
-    ///     });
-    /// 
-    ///     // Order a certificate using the DNS plugin
-    ///     var test = new ProxmoxVE.Acme.Certificate("test", new()
-    ///     {
-    ///         NodeName = "pve",
-    ///         Account = example.Name,
-    ///         Force = false,
-    ///         Domains = new[]
-    ///         {
-    ///             new ProxmoxVE.Acme.Inputs.CertificateDomainArgs
-    ///             {
-    ///                 Domain = "pve.example.dedyn.io",
-    ///                 Plugin = desec.Plugin,
-    ///             },
-    ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             example,
-    ///             desec,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ### Force Certificate Renewal
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using ProxmoxVE = Pulumi.ProxmoxVE;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleForce = new ProxmoxVE.Acme.Certificate("example_force", new()
-    ///     {
-    ///         NodeName = "pve",
-    ///         Account = example.Name,
-    ///         Force = true,
-    ///         Domains = new[]
-    ///         {
-    ///             new ProxmoxVE.Acme.Inputs.CertificateDomainArgs
-    ///             {
-    ///                 Domain = "pve.example.com",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Related Resources
-    /// 
-    /// - `proxmoxve.AcmeAccount` - Manages ACME accounts
-    /// - `proxmoxve.AcmeDnsPlugin` - Manages ACME DNS plugins for DNS-01 challenges
-    /// - `proxmoxve.Certifi` - Manages custom SSL/TLS certificates (non-ACME)
-    /// 
-    /// ## Import
-    /// 
-    /// ACME certificates can be imported using the node name:
-    /// 
-    /// #!/usr/bin/env sh
-    /// 
-    /// ACME certificates can be imported using the node name, e.g.:
-    /// 
-    /// ```sh
-    /// $ pulumi import proxmoxve:Acme/certificate:Certificate example pve
-    /// ```
+    /// This resource orders and renews certificates from an ACME Certificate Authority (like Let's Encrypt) for a specific node. Before using this resource, ensure that:
+    /// - An ACME account is configured (using `proxmoxve.acme.Account`)
+    /// - DNS plugins are configured if using DNS-01 challenge (using `proxmoxve.acme/dns.Plugin`)
     /// </summary>
-    [ProxmoxVEResourceType("proxmoxve:Acme/certificate:Certificate")]
+    [ProxmoxVEResourceType("proxmoxve:acme/certificate:Certificate")]
     public partial class Certificate : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -229,12 +94,12 @@ namespace Pulumi.ProxmoxVE.Acme
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Certificate(string name, CertificateArgs args, CustomResourceOptions? options = null)
-            : base("proxmoxve:Acme/certificate:Certificate", name, args ?? new CertificateArgs(), MakeResourceOptions(options, ""))
+            : base("proxmoxve:acme/certificate:Certificate", name, args ?? new CertificateArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Certificate(string name, Input<string> id, CertificateState? state = null, CustomResourceOptions? options = null)
-            : base("proxmoxve:Acme/certificate:Certificate", name, state, MakeResourceOptions(options, id))
+            : base("proxmoxve:acme/certificate:Certificate", name, state, MakeResourceOptions(options, id))
         {
         }
 

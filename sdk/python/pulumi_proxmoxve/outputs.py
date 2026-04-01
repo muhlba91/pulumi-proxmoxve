@@ -15,171 +15,1277 @@ else:
 from . import _utilities
 
 __all__ = [
-    'HostsEntry',
-    'GetContainersContainerResult',
-    'GetContainersFilterResult',
-    'GetVm2CpuResult',
-    'GetVm2RngResult',
-    'GetVm2TimeoutsResult',
-    'GetVm2VgaResult',
+    'Vm2LegacyCdrom',
+    'Vm2LegacyCpu',
+    'Vm2LegacyRng',
+    'Vm2LegacyTimeouts',
+    'Vm2LegacyVga',
+    'VmCdrom',
+    'VmCpu',
+    'VmRng',
+    'VmTimeouts',
+    'VmVga',
+    'GetDatastoresDatastoreResult',
+    'GetDatastoresFiltersResult',
+    'GetDatastoresLegacyDatastoreResult',
+    'GetDatastoresLegacyFiltersResult',
+    'GetFilesFileResult',
+    'GetReplicationsLegacyReplicationResult',
+    'GetReplicationsReplicationResult',
+    'GetVm2LegacyCpuResult',
+    'GetVm2LegacyRngResult',
+    'GetVm2LegacyTimeoutsResult',
+    'GetVm2LegacyVgaResult',
+    'GetVmCpuResult',
+    'GetVmRngResult',
+    'GetVmTimeoutsResult',
+    'GetVmVgaResult',
 ]
 
 @pulumi.output_type
-class HostsEntry(dict):
+class Vm2LegacyCdrom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fileId":
+            suggest = "file_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in Vm2LegacyCdrom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        Vm2LegacyCdrom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        Vm2LegacyCdrom.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 address: _builtins.str,
-                 hostnames: Sequence[_builtins.str]):
+                 file_id: Optional[_builtins.str] = None):
         """
-        :param _builtins.str address: The IP address.
-        :param Sequence[_builtins.str] hostnames: The hostnames.
+        :param _builtins.str file_id: The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
         """
-        pulumi.set(__self__, "address", address)
-        pulumi.set(__self__, "hostnames", hostnames)
+        if file_id is not None:
+            pulumi.set(__self__, "file_id", file_id)
 
     @_builtins.property
-    @pulumi.getter
-    def address(self) -> _builtins.str:
+    @pulumi.getter(name="fileId")
+    def file_id(self) -> Optional[_builtins.str]:
         """
-        The IP address.
+        The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
         """
-        return pulumi.get(self, "address")
-
-    @_builtins.property
-    @pulumi.getter
-    def hostnames(self) -> Sequence[_builtins.str]:
-        """
-        The hostnames.
-        """
-        return pulumi.get(self, "hostnames")
+        return pulumi.get(self, "file_id")
 
 
 @pulumi.output_type
-class GetContainersContainerResult(dict):
+class Vm2LegacyCpu(dict):
     def __init__(__self__, *,
-                 name: _builtins.str,
-                 node_name: _builtins.str,
-                 tags: Sequence[_builtins.str],
-                 vm_id: _builtins.int,
-                 status: Optional[_builtins.str] = None,
-                 template: Optional[_builtins.bool] = None):
+                 affinity: Optional[_builtins.str] = None,
+                 architecture: Optional[_builtins.str] = None,
+                 cores: Optional[_builtins.int] = None,
+                 flags: Optional[Sequence[_builtins.str]] = None,
+                 hotplugged: Optional[_builtins.int] = None,
+                 limit: Optional[_builtins.float] = None,
+                 numa: Optional[_builtins.bool] = None,
+                 sockets: Optional[_builtins.int] = None,
+                 type: Optional[_builtins.str] = None,
+                 units: Optional[_builtins.int] = None):
         """
-        :param _builtins.str name: The container name.
-        :param _builtins.str node_name: The node name. All cluster nodes will be queried in case this is omitted
-        :param Sequence[_builtins.str] tags: A list of tags to filter the containers. The container must have all
-               the tags to be included in the result.
-        :param _builtins.int vm_id: The container identifier.
-        :param _builtins.str status: The status of the container.
-        :param _builtins.bool template: Whether the container is a template.
+        :param _builtins.str affinity: The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+        :param _builtins.str architecture: The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
+        :param _builtins.int cores: The number of CPU cores per socket (defaults to `1`).
+        :param Sequence[_builtins.str] flags: Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+        :param _builtins.int hotplugged: The number of hotplugged vCPUs (defaults to `0`).
+        :param _builtins.float limit: Limit of CPU usage (defaults to `0` which means no limit).
+        :param _builtins.bool numa: Enable NUMA (defaults to `false`).
+        :param _builtins.int sockets: The number of CPU sockets (defaults to `1`).
+        :param _builtins.str type: Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+        :param _builtins.int units: CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "node_name", node_name)
-        pulumi.set(__self__, "tags", tags)
-        pulumi.set(__self__, "vm_id", vm_id)
-        if status is not None:
-            pulumi.set(__self__, "status", status)
-        if template is not None:
-            pulumi.set(__self__, "template", template)
+        if affinity is not None:
+            pulumi.set(__self__, "affinity", affinity)
+        if architecture is not None:
+            pulumi.set(__self__, "architecture", architecture)
+        if cores is not None:
+            pulumi.set(__self__, "cores", cores)
+        if flags is not None:
+            pulumi.set(__self__, "flags", flags)
+        if hotplugged is not None:
+            pulumi.set(__self__, "hotplugged", hotplugged)
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if numa is not None:
+            pulumi.set(__self__, "numa", numa)
+        if sockets is not None:
+            pulumi.set(__self__, "sockets", sockets)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if units is not None:
+            pulumi.set(__self__, "units", units)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> _builtins.str:
+    def affinity(self) -> Optional[_builtins.str]:
         """
-        The container name.
+        The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
         """
-        return pulumi.get(self, "name")
+        return pulumi.get(self, "affinity")
+
+    @_builtins.property
+    @pulumi.getter
+    def architecture(self) -> Optional[_builtins.str]:
+        """
+        The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
+        """
+        return pulumi.get(self, "architecture")
+
+    @_builtins.property
+    @pulumi.getter
+    def cores(self) -> Optional[_builtins.int]:
+        """
+        The number of CPU cores per socket (defaults to `1`).
+        """
+        return pulumi.get(self, "cores")
+
+    @_builtins.property
+    @pulumi.getter
+    def flags(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+        """
+        return pulumi.get(self, "flags")
+
+    @_builtins.property
+    @pulumi.getter
+    def hotplugged(self) -> Optional[_builtins.int]:
+        """
+        The number of hotplugged vCPUs (defaults to `0`).
+        """
+        return pulumi.get(self, "hotplugged")
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.float]:
+        """
+        Limit of CPU usage (defaults to `0` which means no limit).
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def numa(self) -> Optional[_builtins.bool]:
+        """
+        Enable NUMA (defaults to `false`).
+        """
+        return pulumi.get(self, "numa")
+
+    @_builtins.property
+    @pulumi.getter
+    def sockets(self) -> Optional[_builtins.int]:
+        """
+        The number of CPU sockets (defaults to `1`).
+        """
+        return pulumi.get(self, "sockets")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def units(self) -> Optional[_builtins.int]:
+        """
+        CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+        """
+        return pulumi.get(self, "units")
+
+
+@pulumi.output_type
+class Vm2LegacyRng(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxBytes":
+            suggest = "max_bytes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in Vm2LegacyRng. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        Vm2LegacyRng.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        Vm2LegacyRng.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_bytes: Optional[_builtins.int] = None,
+                 period: Optional[_builtins.int] = None,
+                 source: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int max_bytes: Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+        :param _builtins.int period: Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+        :param _builtins.str source: The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+        """
+        if max_bytes is not None:
+            pulumi.set(__self__, "max_bytes", max_bytes)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+
+    @_builtins.property
+    @pulumi.getter(name="maxBytes")
+    def max_bytes(self) -> Optional[_builtins.int]:
+        """
+        Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+        """
+        return pulumi.get(self, "max_bytes")
+
+    @_builtins.property
+    @pulumi.getter
+    def period(self) -> Optional[_builtins.int]:
+        """
+        Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+        """
+        return pulumi.get(self, "period")
+
+    @_builtins.property
+    @pulumi.getter
+    def source(self) -> Optional[_builtins.str]:
+        """
+        The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+        """
+        return pulumi.get(self, "source")
+
+
+@pulumi.output_type
+class Vm2LegacyTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class Vm2LegacyVga(dict):
+    def __init__(__self__, *,
+                 clipboard: Optional[_builtins.str] = None,
+                 memory: Optional[_builtins.int] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str clipboard: Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+        :param _builtins.int memory: The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+        :param _builtins.str type: The VGA type (defaults to `std`).
+        """
+        if clipboard is not None:
+            pulumi.set(__self__, "clipboard", clipboard)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def clipboard(self) -> Optional[_builtins.str]:
+        """
+        Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+        """
+        return pulumi.get(self, "clipboard")
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> Optional[_builtins.int]:
+        """
+        The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+        """
+        return pulumi.get(self, "memory")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        The VGA type (defaults to `std`).
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class VmCdrom(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fileId":
+            suggest = "file_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VmCdrom. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VmCdrom.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VmCdrom.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 file_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str file_id: The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+        """
+        if file_id is not None:
+            pulumi.set(__self__, "file_id", file_id)
+
+    @_builtins.property
+    @pulumi.getter(name="fileId")
+    def file_id(self) -> Optional[_builtins.str]:
+        """
+        The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+        """
+        return pulumi.get(self, "file_id")
+
+
+@pulumi.output_type
+class VmCpu(dict):
+    def __init__(__self__, *,
+                 affinity: Optional[_builtins.str] = None,
+                 architecture: Optional[_builtins.str] = None,
+                 cores: Optional[_builtins.int] = None,
+                 flags: Optional[Sequence[_builtins.str]] = None,
+                 hotplugged: Optional[_builtins.int] = None,
+                 limit: Optional[_builtins.float] = None,
+                 numa: Optional[_builtins.bool] = None,
+                 sockets: Optional[_builtins.int] = None,
+                 type: Optional[_builtins.str] = None,
+                 units: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str affinity: The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+        :param _builtins.str architecture: The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
+        :param _builtins.int cores: The number of CPU cores per socket (defaults to `1`).
+        :param Sequence[_builtins.str] flags: Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+        :param _builtins.int hotplugged: The number of hotplugged vCPUs (defaults to `0`).
+        :param _builtins.float limit: Limit of CPU usage (defaults to `0` which means no limit).
+        :param _builtins.bool numa: Enable NUMA (defaults to `false`).
+        :param _builtins.int sockets: The number of CPU sockets (defaults to `1`).
+        :param _builtins.str type: Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+        :param _builtins.int units: CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+        """
+        if affinity is not None:
+            pulumi.set(__self__, "affinity", affinity)
+        if architecture is not None:
+            pulumi.set(__self__, "architecture", architecture)
+        if cores is not None:
+            pulumi.set(__self__, "cores", cores)
+        if flags is not None:
+            pulumi.set(__self__, "flags", flags)
+        if hotplugged is not None:
+            pulumi.set(__self__, "hotplugged", hotplugged)
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if numa is not None:
+            pulumi.set(__self__, "numa", numa)
+        if sockets is not None:
+            pulumi.set(__self__, "sockets", sockets)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if units is not None:
+            pulumi.set(__self__, "units", units)
+
+    @_builtins.property
+    @pulumi.getter
+    def affinity(self) -> Optional[_builtins.str]:
+        """
+        The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+        """
+        return pulumi.get(self, "affinity")
+
+    @_builtins.property
+    @pulumi.getter
+    def architecture(self) -> Optional[_builtins.str]:
+        """
+        The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
+        """
+        return pulumi.get(self, "architecture")
+
+    @_builtins.property
+    @pulumi.getter
+    def cores(self) -> Optional[_builtins.int]:
+        """
+        The number of CPU cores per socket (defaults to `1`).
+        """
+        return pulumi.get(self, "cores")
+
+    @_builtins.property
+    @pulumi.getter
+    def flags(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+        """
+        return pulumi.get(self, "flags")
+
+    @_builtins.property
+    @pulumi.getter
+    def hotplugged(self) -> Optional[_builtins.int]:
+        """
+        The number of hotplugged vCPUs (defaults to `0`).
+        """
+        return pulumi.get(self, "hotplugged")
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.float]:
+        """
+        Limit of CPU usage (defaults to `0` which means no limit).
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def numa(self) -> Optional[_builtins.bool]:
+        """
+        Enable NUMA (defaults to `false`).
+        """
+        return pulumi.get(self, "numa")
+
+    @_builtins.property
+    @pulumi.getter
+    def sockets(self) -> Optional[_builtins.int]:
+        """
+        The number of CPU sockets (defaults to `1`).
+        """
+        return pulumi.get(self, "sockets")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def units(self) -> Optional[_builtins.int]:
+        """
+        CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+        """
+        return pulumi.get(self, "units")
+
+
+@pulumi.output_type
+class VmRng(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxBytes":
+            suggest = "max_bytes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VmRng. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VmRng.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VmRng.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_bytes: Optional[_builtins.int] = None,
+                 period: Optional[_builtins.int] = None,
+                 source: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int max_bytes: Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+        :param _builtins.int period: Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+        :param _builtins.str source: The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+        """
+        if max_bytes is not None:
+            pulumi.set(__self__, "max_bytes", max_bytes)
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+
+    @_builtins.property
+    @pulumi.getter(name="maxBytes")
+    def max_bytes(self) -> Optional[_builtins.int]:
+        """
+        Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+        """
+        return pulumi.get(self, "max_bytes")
+
+    @_builtins.property
+    @pulumi.getter
+    def period(self) -> Optional[_builtins.int]:
+        """
+        Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+        """
+        return pulumi.get(self, "period")
+
+    @_builtins.property
+    @pulumi.getter
+    def source(self) -> Optional[_builtins.str]:
+        """
+        The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+        """
+        return pulumi.get(self, "source")
+
+
+@pulumi.output_type
+class VmTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class VmVga(dict):
+    def __init__(__self__, *,
+                 clipboard: Optional[_builtins.str] = None,
+                 memory: Optional[_builtins.int] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str clipboard: Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+        :param _builtins.int memory: The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+        :param _builtins.str type: The VGA type (defaults to `std`).
+        """
+        if clipboard is not None:
+            pulumi.set(__self__, "clipboard", clipboard)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def clipboard(self) -> Optional[_builtins.str]:
+        """
+        Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+        """
+        return pulumi.get(self, "clipboard")
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> Optional[_builtins.int]:
+        """
+        The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+        """
+        return pulumi.get(self, "memory")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        The VGA type (defaults to `std`).
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDatastoresDatastoreResult(dict):
+    def __init__(__self__, *,
+                 content_types: Sequence[_builtins.str],
+                 id: _builtins.str,
+                 node_name: _builtins.str,
+                 type: _builtins.str,
+                 active: Optional[_builtins.bool] = None,
+                 enabled: Optional[_builtins.bool] = None,
+                 shared: Optional[_builtins.bool] = None,
+                 space_available: Optional[_builtins.int] = None,
+                 space_total: Optional[_builtins.int] = None,
+                 space_used: Optional[_builtins.int] = None,
+                 space_used_fraction: Optional[_builtins.float] = None):
+        """
+        :param Sequence[_builtins.str] content_types: Allowed store content types.
+        :param _builtins.str id: The ID of the store.
+        :param _builtins.str node_name: The name of the node the store is on.
+        :param _builtins.str type: Store type.
+        :param _builtins.bool active: Whether the store is active.
+        :param _builtins.bool enabled: Whether the store is enabled.
+        :param _builtins.bool shared: Shared flag from store configuration.
+        :param _builtins.int space_available: Available store space in bytes.
+        :param _builtins.int space_total: Total store space in bytes.
+        :param _builtins.int space_used: Used store space in bytes.
+        :param _builtins.float space_used_fraction: Used fraction (used/total).
+        """
+        pulumi.set(__self__, "content_types", content_types)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "node_name", node_name)
+        pulumi.set(__self__, "type", type)
+        if active is not None:
+            pulumi.set(__self__, "active", active)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if shared is not None:
+            pulumi.set(__self__, "shared", shared)
+        if space_available is not None:
+            pulumi.set(__self__, "space_available", space_available)
+        if space_total is not None:
+            pulumi.set(__self__, "space_total", space_total)
+        if space_used is not None:
+            pulumi.set(__self__, "space_used", space_used)
+        if space_used_fraction is not None:
+            pulumi.set(__self__, "space_used_fraction", space_used_fraction)
+
+    @_builtins.property
+    @pulumi.getter(name="contentTypes")
+    def content_types(self) -> Sequence[_builtins.str]:
+        """
+        Allowed store content types.
+        """
+        return pulumi.get(self, "content_types")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the store.
+        """
+        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="nodeName")
     def node_name(self) -> _builtins.str:
         """
-        The node name. All cluster nodes will be queried in case this is omitted
+        The name of the node the store is on.
         """
         return pulumi.get(self, "node_name")
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Sequence[_builtins.str]:
+    def type(self) -> _builtins.str:
         """
-        A list of tags to filter the containers. The container must have all
-        the tags to be included in the result.
+        Store type.
         """
-        return pulumi.get(self, "tags")
-
-    @_builtins.property
-    @pulumi.getter(name="vmId")
-    def vm_id(self) -> _builtins.int:
-        """
-        The container identifier.
-        """
-        return pulumi.get(self, "vm_id")
+        return pulumi.get(self, "type")
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[_builtins.str]:
+    def active(self) -> Optional[_builtins.bool]:
         """
-        The status of the container.
+        Whether the store is active.
         """
-        return pulumi.get(self, "status")
+        return pulumi.get(self, "active")
 
     @_builtins.property
     @pulumi.getter
-    def template(self) -> Optional[_builtins.bool]:
+    def enabled(self) -> Optional[_builtins.bool]:
         """
-        Whether the container is a template.
+        Whether the store is enabled.
         """
-        return pulumi.get(self, "template")
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def shared(self) -> Optional[_builtins.bool]:
+        """
+        Shared flag from store configuration.
+        """
+        return pulumi.get(self, "shared")
+
+    @_builtins.property
+    @pulumi.getter(name="spaceAvailable")
+    def space_available(self) -> Optional[_builtins.int]:
+        """
+        Available store space in bytes.
+        """
+        return pulumi.get(self, "space_available")
+
+    @_builtins.property
+    @pulumi.getter(name="spaceTotal")
+    def space_total(self) -> Optional[_builtins.int]:
+        """
+        Total store space in bytes.
+        """
+        return pulumi.get(self, "space_total")
+
+    @_builtins.property
+    @pulumi.getter(name="spaceUsed")
+    def space_used(self) -> Optional[_builtins.int]:
+        """
+        Used store space in bytes.
+        """
+        return pulumi.get(self, "space_used")
+
+    @_builtins.property
+    @pulumi.getter(name="spaceUsedFraction")
+    def space_used_fraction(self) -> Optional[_builtins.float]:
+        """
+        Used fraction (used/total).
+        """
+        return pulumi.get(self, "space_used_fraction")
 
 
 @pulumi.output_type
-class GetContainersFilterResult(dict):
+class GetDatastoresFiltersResult(dict):
     def __init__(__self__, *,
-                 name: _builtins.str,
-                 values: Sequence[_builtins.str],
-                 regex: Optional[_builtins.bool] = None):
+                 content_types: Optional[Sequence[_builtins.str]] = None,
+                 id: Optional[_builtins.str] = None,
+                 target: Optional[_builtins.str] = None):
         """
-        :param _builtins.str name: Name of the container attribute to filter on. One of [`name`, `template`, `status`, `node_name`]
-        :param Sequence[_builtins.str] values: List of values to pass the filter. Container's attribute should match at least one value in the list.
-        :param _builtins.bool regex: Treat values as regex patterns
+        :param Sequence[_builtins.str] content_types: Only list stores with the given content types.
+        :param _builtins.str id: Only list stores with the given ID.
+        :param _builtins.str target: If `target` is different to `node_name`, then only lists shared stores which content is accessible on this node and the specified `target` node.
         """
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "values", values)
-        if regex is not None:
-            pulumi.set(__self__, "regex", regex)
+        if content_types is not None:
+            pulumi.set(__self__, "content_types", content_types)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
+
+    @_builtins.property
+    @pulumi.getter(name="contentTypes")
+    def content_types(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Only list stores with the given content types.
+        """
+        return pulumi.get(self, "content_types")
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> _builtins.str:
+    def id(self) -> Optional[_builtins.str]:
         """
-        Name of the container attribute to filter on. One of [`name`, `template`, `status`, `node_name`]
+        Only list stores with the given ID.
         """
-        return pulumi.get(self, "name")
+        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
-    def values(self) -> Sequence[_builtins.str]:
+    def target(self) -> Optional[_builtins.str]:
         """
-        List of values to pass the filter. Container's attribute should match at least one value in the list.
+        If `target` is different to `node_name`, then only lists shared stores which content is accessible on this node and the specified `target` node.
         """
-        return pulumi.get(self, "values")
-
-    @_builtins.property
-    @pulumi.getter
-    def regex(self) -> Optional[_builtins.bool]:
-        """
-        Treat values as regex patterns
-        """
-        return pulumi.get(self, "regex")
+        return pulumi.get(self, "target")
 
 
 @pulumi.output_type
-class GetVm2CpuResult(dict):
+class GetDatastoresLegacyDatastoreResult(dict):
+    def __init__(__self__, *,
+                 content_types: Sequence[_builtins.str],
+                 id: _builtins.str,
+                 node_name: _builtins.str,
+                 type: _builtins.str,
+                 active: Optional[_builtins.bool] = None,
+                 enabled: Optional[_builtins.bool] = None,
+                 shared: Optional[_builtins.bool] = None,
+                 space_available: Optional[_builtins.int] = None,
+                 space_total: Optional[_builtins.int] = None,
+                 space_used: Optional[_builtins.int] = None,
+                 space_used_fraction: Optional[_builtins.float] = None):
+        """
+        :param Sequence[_builtins.str] content_types: Allowed store content types.
+        :param _builtins.str id: The ID of the store.
+        :param _builtins.str node_name: The name of the node the store is on.
+        :param _builtins.str type: Store type.
+        :param _builtins.bool active: Whether the store is active.
+        :param _builtins.bool enabled: Whether the store is enabled.
+        :param _builtins.bool shared: Shared flag from store configuration.
+        :param _builtins.int space_available: Available store space in bytes.
+        :param _builtins.int space_total: Total store space in bytes.
+        :param _builtins.int space_used: Used store space in bytes.
+        :param _builtins.float space_used_fraction: Used fraction (used/total).
+        """
+        pulumi.set(__self__, "content_types", content_types)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "node_name", node_name)
+        pulumi.set(__self__, "type", type)
+        if active is not None:
+            pulumi.set(__self__, "active", active)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if shared is not None:
+            pulumi.set(__self__, "shared", shared)
+        if space_available is not None:
+            pulumi.set(__self__, "space_available", space_available)
+        if space_total is not None:
+            pulumi.set(__self__, "space_total", space_total)
+        if space_used is not None:
+            pulumi.set(__self__, "space_used", space_used)
+        if space_used_fraction is not None:
+            pulumi.set(__self__, "space_used_fraction", space_used_fraction)
+
+    @_builtins.property
+    @pulumi.getter(name="contentTypes")
+    def content_types(self) -> Sequence[_builtins.str]:
+        """
+        Allowed store content types.
+        """
+        return pulumi.get(self, "content_types")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the store.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeName")
+    def node_name(self) -> _builtins.str:
+        """
+        The name of the node the store is on.
+        """
+        return pulumi.get(self, "node_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Store type.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def active(self) -> Optional[_builtins.bool]:
+        """
+        Whether the store is active.
+        """
+        return pulumi.get(self, "active")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether the store is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def shared(self) -> Optional[_builtins.bool]:
+        """
+        Shared flag from store configuration.
+        """
+        return pulumi.get(self, "shared")
+
+    @_builtins.property
+    @pulumi.getter(name="spaceAvailable")
+    def space_available(self) -> Optional[_builtins.int]:
+        """
+        Available store space in bytes.
+        """
+        return pulumi.get(self, "space_available")
+
+    @_builtins.property
+    @pulumi.getter(name="spaceTotal")
+    def space_total(self) -> Optional[_builtins.int]:
+        """
+        Total store space in bytes.
+        """
+        return pulumi.get(self, "space_total")
+
+    @_builtins.property
+    @pulumi.getter(name="spaceUsed")
+    def space_used(self) -> Optional[_builtins.int]:
+        """
+        Used store space in bytes.
+        """
+        return pulumi.get(self, "space_used")
+
+    @_builtins.property
+    @pulumi.getter(name="spaceUsedFraction")
+    def space_used_fraction(self) -> Optional[_builtins.float]:
+        """
+        Used fraction (used/total).
+        """
+        return pulumi.get(self, "space_used_fraction")
+
+
+@pulumi.output_type
+class GetDatastoresLegacyFiltersResult(dict):
+    def __init__(__self__, *,
+                 content_types: Optional[Sequence[_builtins.str]] = None,
+                 id: Optional[_builtins.str] = None,
+                 target: Optional[_builtins.str] = None):
+        """
+        :param Sequence[_builtins.str] content_types: Only list stores with the given content types.
+        :param _builtins.str id: Only list stores with the given ID.
+        :param _builtins.str target: If `target` is different to `node_name`, then only lists shared stores which content is accessible on this node and the specified `target` node.
+        """
+        if content_types is not None:
+            pulumi.set(__self__, "content_types", content_types)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if target is not None:
+            pulumi.set(__self__, "target", target)
+
+    @_builtins.property
+    @pulumi.getter(name="contentTypes")
+    def content_types(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Only list stores with the given content types.
+        """
+        return pulumi.get(self, "content_types")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        Only list stores with the given ID.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def target(self) -> Optional[_builtins.str]:
+        """
+        If `target` is different to `node_name`, then only lists shared stores which content is accessible on this node and the specified `target` node.
+        """
+        return pulumi.get(self, "target")
+
+
+@pulumi.output_type
+class GetFilesFileResult(dict):
+    def __init__(__self__, *,
+                 content_type: _builtins.str,
+                 file_format: _builtins.str,
+                 file_name: _builtins.str,
+                 file_size: _builtins.int,
+                 id: _builtins.str,
+                 vmid: _builtins.int):
+        """
+        :param _builtins.str content_type: The content type of the file.
+        :param _builtins.str file_format: The format of the file.
+        :param _builtins.str file_name: The name of the file.
+        :param _builtins.int file_size: The size of the file in bytes.
+        :param _builtins.str id: The unique identifier of the file (volume ID), e.g. `local:iso/ubuntu.iso`.
+        :param _builtins.int vmid: The VM ID associated with the file, if applicable.
+        """
+        pulumi.set(__self__, "content_type", content_type)
+        pulumi.set(__self__, "file_format", file_format)
+        pulumi.set(__self__, "file_name", file_name)
+        pulumi.set(__self__, "file_size", file_size)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "vmid", vmid)
+
+    @_builtins.property
+    @pulumi.getter(name="contentType")
+    def content_type(self) -> _builtins.str:
+        """
+        The content type of the file.
+        """
+        return pulumi.get(self, "content_type")
+
+    @_builtins.property
+    @pulumi.getter(name="fileFormat")
+    def file_format(self) -> _builtins.str:
+        """
+        The format of the file.
+        """
+        return pulumi.get(self, "file_format")
+
+    @_builtins.property
+    @pulumi.getter(name="fileName")
+    def file_name(self) -> _builtins.str:
+        """
+        The name of the file.
+        """
+        return pulumi.get(self, "file_name")
+
+    @_builtins.property
+    @pulumi.getter(name="fileSize")
+    def file_size(self) -> _builtins.int:
+        """
+        The size of the file in bytes.
+        """
+        return pulumi.get(self, "file_size")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The unique identifier of the file (volume ID), e.g. `local:iso/ubuntu.iso`.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def vmid(self) -> _builtins.int:
+        """
+        The VM ID associated with the file, if applicable.
+        """
+        return pulumi.get(self, "vmid")
+
+
+@pulumi.output_type
+class GetReplicationsLegacyReplicationResult(dict):
+    def __init__(__self__, *,
+                 comment: _builtins.str,
+                 disable: _builtins.bool,
+                 guest: _builtins.int,
+                 id: _builtins.str,
+                 jobnum: _builtins.int,
+                 rate: _builtins.float,
+                 remove_job: _builtins.str,
+                 schedule: _builtins.str,
+                 source: _builtins.str,
+                 target: _builtins.str,
+                 type: _builtins.str):
+        pulumi.set(__self__, "comment", comment)
+        pulumi.set(__self__, "disable", disable)
+        pulumi.set(__self__, "guest", guest)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "jobnum", jobnum)
+        pulumi.set(__self__, "rate", rate)
+        pulumi.set(__self__, "remove_job", remove_job)
+        pulumi.set(__self__, "schedule", schedule)
+        pulumi.set(__self__, "source", source)
+        pulumi.set(__self__, "target", target)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> _builtins.str:
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter
+    def disable(self) -> _builtins.bool:
+        return pulumi.get(self, "disable")
+
+    @_builtins.property
+    @pulumi.getter
+    def guest(self) -> _builtins.int:
+        return pulumi.get(self, "guest")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def jobnum(self) -> _builtins.int:
+        return pulumi.get(self, "jobnum")
+
+    @_builtins.property
+    @pulumi.getter
+    def rate(self) -> _builtins.float:
+        return pulumi.get(self, "rate")
+
+    @_builtins.property
+    @pulumi.getter(name="removeJob")
+    def remove_job(self) -> _builtins.str:
+        return pulumi.get(self, "remove_job")
+
+    @_builtins.property
+    @pulumi.getter
+    def schedule(self) -> _builtins.str:
+        return pulumi.get(self, "schedule")
+
+    @_builtins.property
+    @pulumi.getter
+    def source(self) -> _builtins.str:
+        return pulumi.get(self, "source")
+
+    @_builtins.property
+    @pulumi.getter
+    def target(self) -> _builtins.str:
+        return pulumi.get(self, "target")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetReplicationsReplicationResult(dict):
+    def __init__(__self__, *,
+                 comment: _builtins.str,
+                 disable: _builtins.bool,
+                 guest: _builtins.int,
+                 id: _builtins.str,
+                 jobnum: _builtins.int,
+                 rate: _builtins.float,
+                 remove_job: _builtins.str,
+                 schedule: _builtins.str,
+                 source: _builtins.str,
+                 target: _builtins.str,
+                 type: _builtins.str):
+        pulumi.set(__self__, "comment", comment)
+        pulumi.set(__self__, "disable", disable)
+        pulumi.set(__self__, "guest", guest)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "jobnum", jobnum)
+        pulumi.set(__self__, "rate", rate)
+        pulumi.set(__self__, "remove_job", remove_job)
+        pulumi.set(__self__, "schedule", schedule)
+        pulumi.set(__self__, "source", source)
+        pulumi.set(__self__, "target", target)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> _builtins.str:
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter
+    def disable(self) -> _builtins.bool:
+        return pulumi.get(self, "disable")
+
+    @_builtins.property
+    @pulumi.getter
+    def guest(self) -> _builtins.int:
+        return pulumi.get(self, "guest")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def jobnum(self) -> _builtins.int:
+        return pulumi.get(self, "jobnum")
+
+    @_builtins.property
+    @pulumi.getter
+    def rate(self) -> _builtins.float:
+        return pulumi.get(self, "rate")
+
+    @_builtins.property
+    @pulumi.getter(name="removeJob")
+    def remove_job(self) -> _builtins.str:
+        return pulumi.get(self, "remove_job")
+
+    @_builtins.property
+    @pulumi.getter
+    def schedule(self) -> _builtins.str:
+        return pulumi.get(self, "schedule")
+
+    @_builtins.property
+    @pulumi.getter
+    def source(self) -> _builtins.str:
+        return pulumi.get(self, "source")
+
+    @_builtins.property
+    @pulumi.getter
+    def target(self) -> _builtins.str:
+        return pulumi.get(self, "target")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetVm2LegacyCpuResult(dict):
     def __init__(__self__, *,
                  affinity: _builtins.str,
                  architecture: _builtins.str,
                  cores: _builtins.int,
                  flags: Sequence[_builtins.str],
                  hotplugged: _builtins.int,
-                 limit: _builtins.int,
+                 limit: _builtins.float,
                  numa: _builtins.bool,
                  sockets: _builtins.int,
                  type: _builtins.str,
@@ -190,7 +1296,7 @@ class GetVm2CpuResult(dict):
         :param _builtins.int cores: The number of CPU cores per socket.
         :param Sequence[_builtins.str] flags: Set of additional CPU flags.
         :param _builtins.int hotplugged: The number of hotplugged vCPUs.
-        :param _builtins.int limit: Limit of CPU usage.
+        :param _builtins.float limit: Limit of CPU usage.
         :param _builtins.bool numa: Enable NUMA.
         :param _builtins.int sockets: The number of CPU sockets.
         :param _builtins.str type: Emulated CPU type.
@@ -249,7 +1355,7 @@ class GetVm2CpuResult(dict):
 
     @_builtins.property
     @pulumi.getter
-    def limit(self) -> _builtins.int:
+    def limit(self) -> _builtins.float:
         """
         Limit of CPU usage.
         """
@@ -289,7 +1395,7 @@ class GetVm2CpuResult(dict):
 
 
 @pulumi.output_type
-class GetVm2RngResult(dict):
+class GetVm2LegacyRngResult(dict):
     def __init__(__self__, *,
                  max_bytes: _builtins.int,
                  period: _builtins.int,
@@ -329,7 +1435,7 @@ class GetVm2RngResult(dict):
 
 
 @pulumi.output_type
-class GetVm2TimeoutsResult(dict):
+class GetVm2LegacyTimeoutsResult(dict):
     def __init__(__self__, *,
                  read: Optional[_builtins.str] = None):
         """
@@ -348,7 +1454,223 @@ class GetVm2TimeoutsResult(dict):
 
 
 @pulumi.output_type
-class GetVm2VgaResult(dict):
+class GetVm2LegacyVgaResult(dict):
+    def __init__(__self__, *,
+                 clipboard: _builtins.str,
+                 memory: _builtins.int,
+                 type: _builtins.str):
+        """
+        :param _builtins.str clipboard: Enable a specific clipboard.
+        :param _builtins.int memory: The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+        :param _builtins.str type: The VGA type.
+        """
+        pulumi.set(__self__, "clipboard", clipboard)
+        pulumi.set(__self__, "memory", memory)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def clipboard(self) -> _builtins.str:
+        """
+        Enable a specific clipboard.
+        """
+        return pulumi.get(self, "clipboard")
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> _builtins.int:
+        """
+        The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+        """
+        return pulumi.get(self, "memory")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The VGA type.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetVmCpuResult(dict):
+    def __init__(__self__, *,
+                 affinity: _builtins.str,
+                 architecture: _builtins.str,
+                 cores: _builtins.int,
+                 flags: Sequence[_builtins.str],
+                 hotplugged: _builtins.int,
+                 limit: _builtins.float,
+                 numa: _builtins.bool,
+                 sockets: _builtins.int,
+                 type: _builtins.str,
+                 units: _builtins.int):
+        """
+        :param _builtins.str affinity: List of host cores used to execute guest processes, for example: '0,5,8-11'
+        :param _builtins.str architecture: The CPU architecture.
+        :param _builtins.int cores: The number of CPU cores per socket.
+        :param Sequence[_builtins.str] flags: Set of additional CPU flags.
+        :param _builtins.int hotplugged: The number of hotplugged vCPUs.
+        :param _builtins.float limit: Limit of CPU usage.
+        :param _builtins.bool numa: Enable NUMA.
+        :param _builtins.int sockets: The number of CPU sockets.
+        :param _builtins.str type: Emulated CPU type.
+        :param _builtins.int units: CPU weight for a VM
+        """
+        pulumi.set(__self__, "affinity", affinity)
+        pulumi.set(__self__, "architecture", architecture)
+        pulumi.set(__self__, "cores", cores)
+        pulumi.set(__self__, "flags", flags)
+        pulumi.set(__self__, "hotplugged", hotplugged)
+        pulumi.set(__self__, "limit", limit)
+        pulumi.set(__self__, "numa", numa)
+        pulumi.set(__self__, "sockets", sockets)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "units", units)
+
+    @_builtins.property
+    @pulumi.getter
+    def affinity(self) -> _builtins.str:
+        """
+        List of host cores used to execute guest processes, for example: '0,5,8-11'
+        """
+        return pulumi.get(self, "affinity")
+
+    @_builtins.property
+    @pulumi.getter
+    def architecture(self) -> _builtins.str:
+        """
+        The CPU architecture.
+        """
+        return pulumi.get(self, "architecture")
+
+    @_builtins.property
+    @pulumi.getter
+    def cores(self) -> _builtins.int:
+        """
+        The number of CPU cores per socket.
+        """
+        return pulumi.get(self, "cores")
+
+    @_builtins.property
+    @pulumi.getter
+    def flags(self) -> Sequence[_builtins.str]:
+        """
+        Set of additional CPU flags.
+        """
+        return pulumi.get(self, "flags")
+
+    @_builtins.property
+    @pulumi.getter
+    def hotplugged(self) -> _builtins.int:
+        """
+        The number of hotplugged vCPUs.
+        """
+        return pulumi.get(self, "hotplugged")
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> _builtins.float:
+        """
+        Limit of CPU usage.
+        """
+        return pulumi.get(self, "limit")
+
+    @_builtins.property
+    @pulumi.getter
+    def numa(self) -> _builtins.bool:
+        """
+        Enable NUMA.
+        """
+        return pulumi.get(self, "numa")
+
+    @_builtins.property
+    @pulumi.getter
+    def sockets(self) -> _builtins.int:
+        """
+        The number of CPU sockets.
+        """
+        return pulumi.get(self, "sockets")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Emulated CPU type.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def units(self) -> _builtins.int:
+        """
+        CPU weight for a VM
+        """
+        return pulumi.get(self, "units")
+
+
+@pulumi.output_type
+class GetVmRngResult(dict):
+    def __init__(__self__, *,
+                 max_bytes: _builtins.int,
+                 period: _builtins.int,
+                 source: _builtins.str):
+        """
+        :param _builtins.int max_bytes: Maximum bytes of entropy allowed to get injected into the guest every period.
+        :param _builtins.int period: Period in milliseconds to limit entropy injection to the guest.
+        :param _builtins.str source: The entropy source for the RNG device.
+        """
+        pulumi.set(__self__, "max_bytes", max_bytes)
+        pulumi.set(__self__, "period", period)
+        pulumi.set(__self__, "source", source)
+
+    @_builtins.property
+    @pulumi.getter(name="maxBytes")
+    def max_bytes(self) -> _builtins.int:
+        """
+        Maximum bytes of entropy allowed to get injected into the guest every period.
+        """
+        return pulumi.get(self, "max_bytes")
+
+    @_builtins.property
+    @pulumi.getter
+    def period(self) -> _builtins.int:
+        """
+        Period in milliseconds to limit entropy injection to the guest.
+        """
+        return pulumi.get(self, "period")
+
+    @_builtins.property
+    @pulumi.getter
+    def source(self) -> _builtins.str:
+        """
+        The entropy source for the RNG device.
+        """
+        return pulumi.get(self, "source")
+
+
+@pulumi.output_type
+class GetVmTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
+class GetVmVgaResult(dict):
     def __init__(__self__, *,
                  clipboard: _builtins.str,
                  memory: _builtins.int,

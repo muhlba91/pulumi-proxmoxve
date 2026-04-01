@@ -65,20 +65,10 @@ class AwaitableGetPluginsResult(GetPluginsResult):
 def get_plugins(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPluginsResult:
     """
     Retrieves the list of ACME plugins.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    example = proxmoxve.Acme.get_plugins()
-    pulumi.export("dataProxmoxVirtualEnvironmentAcmePlugins", example.plugins)
-    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('proxmoxve:Acme/getPlugins:getPlugins', __args__, opts=opts, typ=GetPluginsResult).value
+    __ret__ = pulumi.runtime.invoke('proxmoxve:acme/getPlugins:getPlugins', __args__, opts=opts, typ=GetPluginsResult).value
 
     return AwaitableGetPluginsResult(
         id=pulumi.get(__ret__, 'id'),
@@ -86,20 +76,10 @@ def get_plugins(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPlug
 def get_plugins_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPluginsResult]:
     """
     Retrieves the list of ACME plugins.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    example = proxmoxve.Acme.get_plugins()
-    pulumi.export("dataProxmoxVirtualEnvironmentAcmePlugins", example.plugins)
-    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Acme/getPlugins:getPlugins', __args__, opts=opts, typ=GetPluginsResult)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:acme/getPlugins:getPlugins', __args__, opts=opts, typ=GetPluginsResult)
     return __ret__.apply(lambda __response__: GetPluginsResult(
         id=pulumi.get(__response__, 'id'),
         plugins=pulumi.get(__response__, 'plugins')))

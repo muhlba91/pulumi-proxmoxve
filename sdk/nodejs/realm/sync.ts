@@ -5,19 +5,20 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * ## Import
+ * Triggers synchronization of an existing authentication realm using `/access/domains/{realm}/sync`. This resource represents the last requested sync configuration; deleting it does not undo the sync.
  *
- * #!/usr/bin/env sh
+ * This resource wraps the `/access/domains/{realm}/sync` API and is intended to be
+ * used alongside realm configuration resources such as
+ * `proxmoxve.realm.Ldap`.
  *
- * Realm sync resources can be imported by realm name, e.g.:
+ * ## Behavior Notes
  *
- * ```sh
- * $ pulumi import proxmoxve:Realm/sync:Sync example example.com
- * ```
- *
- * Importing only populates the `realm` and `id` attributes; other fields must
- *
- * be set in configuration.
+ * - The sync operation is **one-shot**: applying the resource runs the sync
+ *   with the specified options. Proxmox does not expose a persistent sync
+ *   object, so this resource only records the last requested sync
+ *   configuration in Terraform state.
+ * - Destroying the resource does **not** undo any previously performed sync;
+ *   it simply removes the resource from Terraform state.
  */
 export class Sync extends pulumi.CustomResource {
     /**
@@ -34,7 +35,7 @@ export class Sync extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'proxmoxve:Realm/sync:Sync';
+    public static readonly __pulumiType = 'proxmoxve:realm/sync:Sync';
 
     /**
      * Returns true if the given object is an instance of Sync.  This is designed to work even

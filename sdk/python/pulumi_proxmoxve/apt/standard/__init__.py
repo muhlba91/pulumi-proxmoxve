@@ -7,4 +7,6 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from .get_repository import *
+from .get_repository_legacy import *
 from .repository import *
+from .repository_legacy import *

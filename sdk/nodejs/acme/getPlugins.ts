@@ -8,20 +8,10 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves the list of ACME plugins.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const example = proxmoxve.Acme.getPlugins({});
- * export const dataProxmoxVirtualEnvironmentAcmePlugins = example.then(example => example.plugins);
- * ```
  */
 export function getPlugins(opts?: pulumi.InvokeOptions): Promise<GetPluginsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("proxmoxve:Acme/getPlugins:getPlugins", {
+    return pulumi.runtime.invoke("proxmoxve:acme/getPlugins:getPlugins", {
     }, opts);
 }
 
@@ -36,23 +26,13 @@ export interface GetPluginsResult {
     /**
      * List of ACME plugins
      */
-    readonly plugins: outputs.Acme.GetPluginsPlugin[];
+    readonly plugins: outputs.acme.GetPluginsPlugin[];
 }
 /**
  * Retrieves the list of ACME plugins.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const example = proxmoxve.Acme.getPlugins({});
- * export const dataProxmoxVirtualEnvironmentAcmePlugins = example.then(example => example.plugins);
- * ```
  */
 export function getPluginsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPluginsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("proxmoxve:Acme/getPlugins:getPlugins", {
+    return pulumi.runtime.invokeOutput("proxmoxve:acme/getPlugins:getPlugins", {
     }, opts);
 }

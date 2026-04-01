@@ -34,7 +34,7 @@ namespace Pulumi.ProxmoxVE.Hardware.Mapping.Outputs
         /// </summary>
         public readonly string Path;
         /// <summary>
-        /// The subsystem ID attribute of the map.Not mandatory for the Proxmox VE API call, but causes a PCI hardware mapping to be incomplete when not set.
+        /// The subsystem ID attribute of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
         /// </summary>
         public readonly string SubsystemId;
 

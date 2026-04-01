@@ -6,25 +6,10 @@ import * as utilities from "../utilities";
 
 /**
  * Manages thin LVM-based storage in Proxmox VE.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const example = new proxmoxve.storage.LVMThin("example", {
- *     lvmThinId: "example-lvmthin",
- *     nodes: ["pve"],
- *     volumeGroup: "vg0",
- *     thinPool: "data",
- *     contents: ["images"],
- * });
- * ```
  */
-export class LVMThin extends pulumi.CustomResource {
+export class Lvmthin extends pulumi.CustomResource {
     /**
-     * Get an existing LVMThin resource's state with the given name, ID, and optional extra
+     * Get an existing Lvmthin resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -32,22 +17,22 @@ export class LVMThin extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: LVMThinState, opts?: pulumi.CustomResourceOptions): LVMThin {
-        return new LVMThin(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: LvmthinState, opts?: pulumi.CustomResourceOptions): Lvmthin {
+        return new Lvmthin(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'proxmoxve:Storage/lVMThin:LVMThin';
+    public static readonly __pulumiType = 'proxmoxve:storage/lvmthin:Lvmthin';
 
     /**
-     * Returns true if the given object is an instance of LVMThin.  This is designed to work even
+     * Returns true if the given object is an instance of Lvmthin.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is LVMThin {
+    public static isInstance(obj: any): obj is Lvmthin {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === LVMThin.__pulumiType;
+        return obj['__pulumiType'] === Lvmthin.__pulumiType;
     }
 
     /**
@@ -59,13 +44,13 @@ export class LVMThin extends pulumi.CustomResource {
      */
     declare public readonly disable: pulumi.Output<boolean>;
     /**
-     * The unique identifier of the storage.
-     */
-    declare public readonly lvmThinId: pulumi.Output<string>;
-    /**
      * A list of nodes where this storage is available.
      */
     declare public readonly nodes: pulumi.Output<string[]>;
+    /**
+     * The unique identifier of the storage.
+     */
+    declare public readonly resourceId: pulumi.Output<string>;
     /**
      * Whether the storage is shared across all nodes.
      */
@@ -80,29 +65,29 @@ export class LVMThin extends pulumi.CustomResource {
     declare public readonly volumeGroup: pulumi.Output<string>;
 
     /**
-     * Create a LVMThin resource with the given unique name, arguments, and options.
+     * Create a Lvmthin resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: LVMThinArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: LVMThinArgs | LVMThinState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: LvmthinArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: LvmthinArgs | LvmthinState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as LVMThinState | undefined;
+            const state = argsOrState as LvmthinState | undefined;
             resourceInputs["contents"] = state?.contents;
             resourceInputs["disable"] = state?.disable;
-            resourceInputs["lvmThinId"] = state?.lvmThinId;
             resourceInputs["nodes"] = state?.nodes;
+            resourceInputs["resourceId"] = state?.resourceId;
             resourceInputs["shared"] = state?.shared;
             resourceInputs["thinPool"] = state?.thinPool;
             resourceInputs["volumeGroup"] = state?.volumeGroup;
         } else {
-            const args = argsOrState as LVMThinArgs | undefined;
-            if (args?.lvmThinId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'lvmThinId'");
+            const args = argsOrState as LvmthinArgs | undefined;
+            if (args?.resourceId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'resourceId'");
             }
             if (args?.thinPool === undefined && !opts.urn) {
                 throw new Error("Missing required property 'thinPool'");
@@ -112,21 +97,23 @@ export class LVMThin extends pulumi.CustomResource {
             }
             resourceInputs["contents"] = args?.contents;
             resourceInputs["disable"] = args?.disable;
-            resourceInputs["lvmThinId"] = args?.lvmThinId;
             resourceInputs["nodes"] = args?.nodes;
+            resourceInputs["resourceId"] = args?.resourceId;
             resourceInputs["thinPool"] = args?.thinPool;
             resourceInputs["volumeGroup"] = args?.volumeGroup;
             resourceInputs["shared"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(LVMThin.__pulumiType, name, resourceInputs, opts);
+        const aliasOpts = { aliases: [{ type: "proxmox_virtual_environment_storage_lvmthin" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
+        super(Lvmthin.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering LVMThin resources.
+ * Input properties used for looking up and filtering Lvmthin resources.
  */
-export interface LVMThinState {
+export interface LvmthinState {
     /**
      * The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
      */
@@ -136,13 +123,13 @@ export interface LVMThinState {
      */
     disable?: pulumi.Input<boolean>;
     /**
-     * The unique identifier of the storage.
-     */
-    lvmThinId?: pulumi.Input<string>;
-    /**
      * A list of nodes where this storage is available.
      */
     nodes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The unique identifier of the storage.
+     */
+    resourceId?: pulumi.Input<string>;
     /**
      * Whether the storage is shared across all nodes.
      */
@@ -158,9 +145,9 @@ export interface LVMThinState {
 }
 
 /**
- * The set of arguments for constructing a LVMThin resource.
+ * The set of arguments for constructing a Lvmthin resource.
  */
-export interface LVMThinArgs {
+export interface LvmthinArgs {
     /**
      * The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
      */
@@ -170,13 +157,13 @@ export interface LVMThinArgs {
      */
     disable?: pulumi.Input<boolean>;
     /**
-     * The unique identifier of the storage.
-     */
-    lvmThinId: pulumi.Input<string>;
-    /**
      * A list of nodes where this storage is available.
      */
     nodes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The unique identifier of the storage.
+     */
+    resourceId: pulumi.Input<string>;
     /**
      * The name of the LVM thin pool to use.
      */

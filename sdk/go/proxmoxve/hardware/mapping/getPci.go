@@ -7,42 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves a PCI hardware mapping from a Proxmox VE cluster.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/hardware"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := hardware.GetPci(ctx, &mapping.GetPciArgs{
-//				Name: "example",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("dataProxmoxVirtualEnvironmentHardwareMappingPci", example)
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupPci(ctx *pulumi.Context, args *LookupPciArgs, opts ...pulumi.InvokeOption) (*LookupPciResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPciResult
-	err := ctx.Invoke("proxmoxve:Hardware/mapping/getPci:getPci", args, &rv, opts...)
+	err := ctx.Invoke("proxmoxve:hardware/mapping/getPci:getPci", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -74,7 +47,7 @@ func LookupPciOutput(ctx *pulumi.Context, args LookupPciOutputArgs, opts ...pulu
 		ApplyT(func(v interface{}) (LookupPciResultOutput, error) {
 			args := v.(LookupPciArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:Hardware/mapping/getPci:getPci", args, LookupPciResultOutput{}, options).(LookupPciResultOutput), nil
+			return ctx.InvokeOutput("proxmoxve:hardware/mapping/getPci:getPci", args, LookupPciResultOutput{}, options).(LookupPciResultOutput), nil
 		}).(LookupPciResultOutput)
 }
 

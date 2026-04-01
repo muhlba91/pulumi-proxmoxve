@@ -10,16 +10,24 @@ export type Image = import("./image").Image;
 export const Image: typeof import("./image").Image = null as any;
 utilities.lazyLoad(exports, ["Image"], () => require("./image"));
 
+export { ImageLegacyArgs, ImageLegacyState } from "./imageLegacy";
+export type ImageLegacy = import("./imageLegacy").ImageLegacy;
+export const ImageLegacy: typeof import("./imageLegacy").ImageLegacy = null as any;
+utilities.lazyLoad(exports, ["ImageLegacy"], () => require("./imageLegacy"));
+
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "proxmoxve:Oci/image:Image":
+            case "proxmoxve:oci/image:Image":
                 return new Image(name, <any>undefined, { urn })
+            case "proxmoxve:oci/imageLegacy:ImageLegacy":
+                return new ImageLegacy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("proxmoxve", "Oci/image", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "oci/image", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "oci/imageLegacy", _module)

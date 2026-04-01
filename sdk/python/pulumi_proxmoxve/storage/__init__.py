@@ -7,13 +7,18 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .cifs import *
+from .cifs_legacy import *
 from .directory import *
-from .file import *
-from .get_datastores import *
+from .directory_legacy import *
 from .lvm import *
-from .lvm_thin import *
+from .lvm_legacy import *
+from .lvmthin import *
+from .lvmthin_legacy import *
 from .nfs import *
+from .nfs_legacy import *
 from .pbs import *
-from .zfs_pool import *
+from .pbs_legacy import *
+from .zfspool import *
+from .zfspool_legacy import *
 from ._inputs import *
 from . import outputs

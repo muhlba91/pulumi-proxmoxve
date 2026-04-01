@@ -10,16 +10,24 @@ export type Firewall = import("./firewall").Firewall;
 export const Firewall: typeof import("./firewall").Firewall = null as any;
 utilities.lazyLoad(exports, ["Firewall"], () => require("./firewall"));
 
+export { FirewallLegacyArgs, FirewallLegacyState } from "./firewallLegacy";
+export type FirewallLegacy = import("./firewallLegacy").FirewallLegacy;
+export const FirewallLegacy: typeof import("./firewallLegacy").FirewallLegacy = null as any;
+utilities.lazyLoad(exports, ["FirewallLegacy"], () => require("./firewallLegacy"));
+
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "proxmoxve:Node/firewall:Firewall":
+            case "proxmoxve:node/firewall:Firewall":
                 return new Firewall(name, <any>undefined, { urn })
+            case "proxmoxve:node/firewallLegacy:FirewallLegacy":
+                return new FirewallLegacy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("proxmoxve", "Node/firewall", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "node/firewall", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "node/firewallLegacy", _module)

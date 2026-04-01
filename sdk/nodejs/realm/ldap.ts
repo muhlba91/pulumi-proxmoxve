@@ -5,17 +5,95 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * ## Import
+ * Manages an LDAP authentication realm in Proxmox VE.
  *
- * #!/usr/bin/env sh
+ * LDAP realms allow Proxmox to authenticate users against an LDAP directory service.
  *
- * LDAP realms can be imported using the realm identifier, e.g.:
+ * ## Privileges Required
  *
- * ```sh
- * $ pulumi import proxmoxve:Realm/ldap:Ldap example example.com
+ * | Path | Attribute |
+ * |-----------------|----------------|
+ * | /access/domains | Realm.Allocate |
+ *
+ * ## Notes
+ *
+ * ### Password Security
+ *
+ * The `bindPassword` is sent to Proxmox and stored securely, but it's never returned by the API. This means:
+ * - Terraform cannot detect if the password was changed outside of Terraform
+ * - You must maintain the password in your Terraform configuration or use a variable
+ * - The password will be marked as sensitive in Terraform state
+ *
+ * ### LDAP vs LDAPS
+ *
+ * - **LDAP (port 389)**: Unencrypted connection. Not recommended for production.
+ * - **LDAPS (port 636)**: Encrypted connection using SSL/TLS. Recommended for production.
+ * - **LDAP+StartTLS**: Upgrades plain LDAP connection to TLS. Alternative to LDAPS.
+ *
+ * ### User Synchronization
+ *
+ * To trigger synchronization, use the `proxmoxve.realm.Sync` resource.
+ *
+ * ### Common Configuration Scenarios
+ *
+ * #### Anonymous Binding
+ * For testing or public LDAP servers, omit `bindDn` and `bindPassword` to use anonymous binding:
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const anonymous = new proxmoxve.realm.Ldap("anonymous", {
+ *     realm: "public-ldap",
+ *     server1: "ldap.example.com",
+ *     baseDn: "ou=users,dc=example,dc=com",
+ *     userAttr: "uid",
+ * });
  * ```
  *
- * -> When importing, the `bind_password` attribute cannot be imported since it's not returned by the Proxmox API. You'll need to set this attribute in your Terraform configuration after the import to manage it with Terraform.
+ * #### Secure LDAPS with Failover
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const secure = new proxmoxve.realm.Ldap("secure", {
+ *     realm: "secure-ldap",
+ *     server1: "ldap1.example.com",
+ *     server2: "ldap2.example.com",
+ *     port: 636,
+ *     baseDn: "ou=users,dc=example,dc=com",
+ *     bindDn: "cn=readonly,dc=example,dc=com",
+ *     bindPassword: ldapPassword,
+ *     mode: "ldaps",
+ *     verify: true,
+ *     caPath: "/etc/pve/priv/ca.crt",
+ * });
+ * ```
+ *
+ * #### With Group Synchronization
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const withGroups = new proxmoxve.realm.Ldap("with_groups", {
+ *     realm: "corporate-ldap",
+ *     server1: "ldap.corp.example.com",
+ *     baseDn: "ou=users,dc=corp,dc=example,dc=com",
+ *     bindDn: "cn=svc_ldap,ou=services,dc=corp,dc=example,dc=com",
+ *     bindPassword: ldapPassword,
+ *     mode: "ldap+starttls",
+ *     groupDn: "ou=groups,dc=corp,dc=example,dc=com",
+ *     groupFilter: "(objectClass=groupOfNames)",
+ *     groupNameAttr: "cn",
+ *     syncAttributes: "email=mail,firstname=givenName,lastname=sn",
+ *     syncDefaultsOptions: "scope=both,enable-new=1",
+ * });
+ * ```
+ *
+ * ## See Also
+ *
+ * - [Proxmox VE User Management](https://pve.proxmox.com/wiki/User_Management)
+ * - [Proxmox VE LDAP Authentication](https://pve.proxmox.com/wiki/User_Management#pveum_ldap)
+ * - [Proxmox API: /access/domains](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/domains)
  */
 export class Ldap extends pulumi.CustomResource {
     /**
@@ -32,7 +110,7 @@ export class Ldap extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'proxmoxve:Realm/ldap:Ldap';
+    public static readonly __pulumiType = 'proxmoxve:realm/ldap:Ldap';
 
     /**
      * Returns true if the given object is an instance of Ldap.  This is designed to work even

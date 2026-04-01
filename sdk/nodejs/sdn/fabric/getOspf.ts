@@ -6,21 +6,10 @@ import * as utilities from "../../utilities";
 
 /**
  * OSPF Fabric in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const main = proxmoxve.Sdn.fabric.getOspf({
- *     id: "main-fabric",
- * });
- * ```
  */
 export function getOspf(args: GetOspfArgs, opts?: pulumi.InvokeOptions): Promise<GetOspfResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("proxmoxve:Sdn/fabric/getOspf:getOspf", {
+    return pulumi.runtime.invoke("proxmoxve:sdn/fabric/getOspf:getOspf", {
         "id": args.id,
     }, opts);
 }
@@ -54,21 +43,10 @@ export interface GetOspfResult {
 }
 /**
  * OSPF Fabric in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const main = proxmoxve.Sdn.fabric.getOspf({
- *     id: "main-fabric",
- * });
- * ```
  */
 export function getOspfOutput(args: GetOspfOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOspfResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("proxmoxve:Sdn/fabric/getOspf:getOspf", {
+    return pulumi.runtime.invokeOutput("proxmoxve:sdn/fabric/getOspf:getOspf", {
         "id": args.id,
     }, opts);
 }

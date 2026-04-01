@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,10 +21,14 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "proxmoxve:Sdn/fabric/node/openfabric:Openfabric":
+	case "proxmoxve:sdn/fabric/node/openfabric:Openfabric":
 		r = &Openfabric{}
-	case "proxmoxve:Sdn/fabric/node/ospf:Ospf":
+	case "proxmoxve:sdn/fabric/node/openfabricLegacy:OpenfabricLegacy":
+		r = &OpenfabricLegacy{}
+	case "proxmoxve:sdn/fabric/node/ospf:Ospf":
 		r = &Ospf{}
+	case "proxmoxve:sdn/fabric/node/ospfLegacy:OspfLegacy":
+		r = &OspfLegacy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -40,12 +44,22 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
-		"Sdn/fabric/node/openfabric",
+		"sdn/fabric/node/openfabric",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
-		"Sdn/fabric/node/ospf",
+		"sdn/fabric/node/openfabricLegacy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"sdn/fabric/node/ospf",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"sdn/fabric/node/ospfLegacy",
 		&module{version},
 	)
 }

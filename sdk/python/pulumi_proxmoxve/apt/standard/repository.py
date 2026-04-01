@@ -23,6 +23,7 @@ class RepositoryArgs:
                  node: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a Repository resource.
+
         :param pulumi.Input[_builtins.str] handle: The handle of the APT standard repository. Must be `ceph-squid-enterprise` | `ceph-squid-no-subscription` | `ceph-squid-test` | `enterprise` | `no-subscription` | `test`.
         :param pulumi.Input[_builtins.str] node: The name of the target Proxmox VE node.
         """
@@ -66,6 +67,7 @@ class _RepositoryState:
                  status: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Repository resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the APT standard repository.
         :param pulumi.Input[_builtins.str] file_path: The absolute path of the source list file that contains this standard repository.
         :param pulumi.Input[_builtins.str] handle: The handle of the APT standard repository. Must be `ceph-squid-enterprise` | `ceph-squid-no-subscription` | `ceph-squid-test` | `enterprise` | `no-subscription` | `test`.
@@ -174,7 +176,7 @@ class _RepositoryState:
         pulumi.set(self, "status", value)
 
 
-@pulumi.type_token("proxmoxve:Apt/standard/repository:Repository")
+@pulumi.type_token("proxmoxve:apt/standard/repository:Repository")
 class Repository(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -186,33 +188,6 @@ class Repository(pulumi.CustomResource):
         """
         Manages an APT standard repository of a Proxmox VE node.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        example = proxmoxve.apt.standard.Repository("example",
-            handle="no-subscription",
-            node="pve")
-        example_repository = proxmoxve.apt.Repository("example",
-            enabled=True,
-            file_path=example.file_path,
-            index=example.index,
-            node=example.node)
-        ```
-
-        ## Import
-
-        #!/usr/bin/env sh
-
-        An APT standard repository can be imported using a comma-separated list consisting of the name of the Proxmox VE node,
-
-        and the standard repository handle in the exact same order, e.g.:
-
-        ```sh
-        $ pulumi import proxmoxve:Apt/standard/repository:Repository example pve,no-subscription
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -228,33 +203,6 @@ class Repository(pulumi.CustomResource):
         """
         Manages an APT standard repository of a Proxmox VE node.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        example = proxmoxve.apt.standard.Repository("example",
-            handle="no-subscription",
-            node="pve")
-        example_repository = proxmoxve.apt.Repository("example",
-            enabled=True,
-            file_path=example.file_path,
-            index=example.index,
-            node=example.node)
-        ```
-
-        ## Import
-
-        #!/usr/bin/env sh
-
-        An APT standard repository can be imported using a comma-separated list consisting of the name of the Proxmox VE node,
-
-        and the standard repository handle in the exact same order, e.g.:
-
-        ```sh
-        $ pulumi import proxmoxve:Apt/standard/repository:Repository example pve,no-subscription
-        ```
 
         :param str resource_name: The name of the resource.
         :param RepositoryArgs args: The arguments to use to populate this resource's properties.
@@ -294,7 +242,7 @@ class Repository(pulumi.CustomResource):
             __props__.__dict__["name"] = None
             __props__.__dict__["status"] = None
         super(Repository, __self__).__init__(
-            'proxmoxve:Apt/standard/repository:Repository',
+            'proxmoxve:apt/standard/repository:Repository',
             resource_name,
             __props__,
             opts)

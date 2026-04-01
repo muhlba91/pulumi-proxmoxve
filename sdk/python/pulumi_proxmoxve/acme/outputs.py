@@ -16,12 +16,57 @@ from .. import _utilities
 
 __all__ = [
     'CertificateDomain',
+    'CertificateLegacyDomain',
     'GetAccountAccountResult',
+    'GetAccountLegacyAccountResult',
+    'GetPluginsLegacyPluginResult',
     'GetPluginsPluginResult',
 ]
 
 @pulumi.output_type
 class CertificateDomain(dict):
+    def __init__(__self__, *,
+                 domain: _builtins.str,
+                 alias: Optional[_builtins.str] = None,
+                 plugin: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str domain: The domain name to include in the certificate.
+        :param _builtins.str alias: An optional alias domain for DNS validation. This allows you to validate the domain using a different domain's DNS records.
+        :param _builtins.str plugin: The DNS plugin to use for DNS-01 challenge validation. If not specified, the standalone HTTP-01 challenge will be used.
+        """
+        pulumi.set(__self__, "domain", domain)
+        if alias is not None:
+            pulumi.set(__self__, "alias", alias)
+        if plugin is not None:
+            pulumi.set(__self__, "plugin", plugin)
+
+    @_builtins.property
+    @pulumi.getter
+    def domain(self) -> _builtins.str:
+        """
+        The domain name to include in the certificate.
+        """
+        return pulumi.get(self, "domain")
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> Optional[_builtins.str]:
+        """
+        An optional alias domain for DNS validation. This allows you to validate the domain using a different domain's DNS records.
+        """
+        return pulumi.get(self, "alias")
+
+    @_builtins.property
+    @pulumi.getter
+    def plugin(self) -> Optional[_builtins.str]:
+        """
+        The DNS plugin to use for DNS-01 challenge validation. If not specified, the standalone HTTP-01 challenge will be used.
+        """
+        return pulumi.get(self, "plugin")
+
+
+@pulumi.output_type
+class CertificateLegacyDomain(dict):
     def __init__(__self__, *,
                  domain: _builtins.str,
                  alias: Optional[_builtins.str] = None,
@@ -100,6 +145,119 @@ class GetAccountAccountResult(dict):
         The status of the account. Can be one of `valid`, `deactivated` or `revoked`.
         """
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetAccountLegacyAccountResult(dict):
+    def __init__(__self__, *,
+                 contacts: Sequence[_builtins.str],
+                 created_at: _builtins.str,
+                 status: _builtins.str):
+        """
+        :param Sequence[_builtins.str] contacts: An array of contact email addresses.
+        :param _builtins.str created_at: The timestamp of the account creation.
+        :param _builtins.str status: The status of the account. Can be one of `valid`, `deactivated` or `revoked`.
+        """
+        pulumi.set(__self__, "contacts", contacts)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def contacts(self) -> Sequence[_builtins.str]:
+        """
+        An array of contact email addresses.
+        """
+        return pulumi.get(self, "contacts")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        The timestamp of the account creation.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The status of the account. Can be one of `valid`, `deactivated` or `revoked`.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetPluginsLegacyPluginResult(dict):
+    def __init__(__self__, *,
+                 api: _builtins.str,
+                 data: Mapping[str, _builtins.str],
+                 digest: _builtins.str,
+                 plugin: _builtins.str,
+                 type: _builtins.str,
+                 validation_delay: _builtins.int):
+        """
+        :param _builtins.str api: API plugin name.
+        :param Mapping[str, _builtins.str] data: DNS plugin data.
+        :param _builtins.str digest: Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
+        :param _builtins.str plugin: ACME Plugin ID name.
+        :param _builtins.str type: ACME challenge type (dns, standalone).
+        :param _builtins.int validation_delay: Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records (0 - 172800).
+        """
+        pulumi.set(__self__, "api", api)
+        pulumi.set(__self__, "data", data)
+        pulumi.set(__self__, "digest", digest)
+        pulumi.set(__self__, "plugin", plugin)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "validation_delay", validation_delay)
+
+    @_builtins.property
+    @pulumi.getter
+    def api(self) -> _builtins.str:
+        """
+        API plugin name.
+        """
+        return pulumi.get(self, "api")
+
+    @_builtins.property
+    @pulumi.getter
+    def data(self) -> Mapping[str, _builtins.str]:
+        """
+        DNS plugin data.
+        """
+        return pulumi.get(self, "data")
+
+    @_builtins.property
+    @pulumi.getter
+    def digest(self) -> _builtins.str:
+        """
+        Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
+        """
+        return pulumi.get(self, "digest")
+
+    @_builtins.property
+    @pulumi.getter
+    def plugin(self) -> _builtins.str:
+        """
+        ACME Plugin ID name.
+        """
+        return pulumi.get(self, "plugin")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        ACME challenge type (dns, standalone).
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="validationDelay")
+    def validation_delay(self) -> _builtins.int:
+        """
+        Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records (0 - 172800).
+        """
+        return pulumi.get(self, "validation_delay")
 
 
 @pulumi.output_type

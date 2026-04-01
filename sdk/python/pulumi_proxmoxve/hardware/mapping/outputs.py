@@ -15,13 +15,48 @@ else:
 from ... import _utilities
 
 __all__ = [
+    'DirLegacyMap',
     'DirMap',
+    'PciLegacyMap',
     'PciMap',
+    'UsbLegacyMap',
     'UsbMap',
+    'GetDirLegacyMapResult',
     'GetDirMapResult',
+    'GetPciLegacyMapResult',
     'GetPciMapResult',
+    'GetUsbLegacyMapResult',
     'GetUsbMapResult',
 ]
+
+@pulumi.output_type
+class DirLegacyMap(dict):
+    def __init__(__self__, *,
+                 node: _builtins.str,
+                 path: _builtins.str):
+        """
+        :param _builtins.str node: The node this mapping applies to.
+        :param _builtins.str path: The path of the map. For directory mappings the path is required and refers to the POSIX path of the directory as visible from the node.
+        """
+        pulumi.set(__self__, "node", node)
+        pulumi.set(__self__, "path", path)
+
+    @_builtins.property
+    @pulumi.getter
+    def node(self) -> _builtins.str:
+        """
+        The node this mapping applies to.
+        """
+        return pulumi.get(self, "node")
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> _builtins.str:
+        """
+        The path of the map. For directory mappings the path is required and refers to the POSIX path of the directory as visible from the node.
+        """
+        return pulumi.get(self, "path")
+
 
 @pulumi.output_type
 class DirMap(dict):
@@ -53,7 +88,7 @@ class DirMap(dict):
 
 
 @pulumi.output_type
-class PciMap(dict):
+class PciLegacyMap(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -63,14 +98,14 @@ class PciMap(dict):
             suggest = "subsystem_id"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PciMap. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in PciLegacyMap. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        PciMap.__key_warning(key)
+        PciLegacyMap.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        PciMap.__key_warning(key)
+        PciLegacyMap.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -85,8 +120,8 @@ class PciMap(dict):
         :param _builtins.str node: The node name of the map.
         :param _builtins.str path: The path of the map.
         :param _builtins.str comment: The comment of the mapped PCI device.
-        :param _builtins.int iommu_group: The IOMMU group of the map. Not mandatory for the Proxmox VE API call, but causes a PCI hardware mapping to be incomplete when not set
-        :param _builtins.str subsystem_id: The subsystem ID group of the map. Not mandatory for the Proxmox VE API call, but causes a PCI hardware mapping to be incomplete when not set
+        :param _builtins.int iommu_group: The IOMMU group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
+        :param _builtins.str subsystem_id: The subsystem ID group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "node", node)
@@ -134,7 +169,7 @@ class PciMap(dict):
     @pulumi.getter(name="iommuGroup")
     def iommu_group(self) -> Optional[_builtins.int]:
         """
-        The IOMMU group of the map. Not mandatory for the Proxmox VE API call, but causes a PCI hardware mapping to be incomplete when not set
+        The IOMMU group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
         """
         return pulumi.get(self, "iommu_group")
 
@@ -142,13 +177,108 @@ class PciMap(dict):
     @pulumi.getter(name="subsystemId")
     def subsystem_id(self) -> Optional[_builtins.str]:
         """
-        The subsystem ID group of the map. Not mandatory for the Proxmox VE API call, but causes a PCI hardware mapping to be incomplete when not set
+        The subsystem ID group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
         """
         return pulumi.get(self, "subsystem_id")
 
 
 @pulumi.output_type
-class UsbMap(dict):
+class PciMap(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "iommuGroup":
+            suggest = "iommu_group"
+        elif key == "subsystemId":
+            suggest = "subsystem_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PciMap. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PciMap.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PciMap.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 node: _builtins.str,
+                 path: _builtins.str,
+                 comment: Optional[_builtins.str] = None,
+                 iommu_group: Optional[_builtins.int] = None,
+                 subsystem_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str id: The ID of the map.
+        :param _builtins.str node: The node name of the map.
+        :param _builtins.str path: The path of the map.
+        :param _builtins.str comment: The comment of the mapped PCI device.
+        :param _builtins.int iommu_group: The IOMMU group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
+        :param _builtins.str subsystem_id: The subsystem ID group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "node", node)
+        pulumi.set(__self__, "path", path)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if iommu_group is not None:
+            pulumi.set(__self__, "iommu_group", iommu_group)
+        if subsystem_id is not None:
+            pulumi.set(__self__, "subsystem_id", subsystem_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the map.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def node(self) -> _builtins.str:
+        """
+        The node name of the map.
+        """
+        return pulumi.get(self, "node")
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> _builtins.str:
+        """
+        The path of the map.
+        """
+        return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[_builtins.str]:
+        """
+        The comment of the mapped PCI device.
+        """
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter(name="iommuGroup")
+    def iommu_group(self) -> Optional[_builtins.int]:
+        """
+        The IOMMU group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
+        """
+        return pulumi.get(self, "iommu_group")
+
+    @_builtins.property
+    @pulumi.getter(name="subsystemId")
+    def subsystem_id(self) -> Optional[_builtins.str]:
+        """
+        The subsystem ID group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
+        """
+        return pulumi.get(self, "subsystem_id")
+
+
+@pulumi.output_type
+class UsbLegacyMap(dict):
     def __init__(__self__, *,
                  id: _builtins.str,
                  node: _builtins.str,
@@ -158,7 +288,7 @@ class UsbMap(dict):
         :param _builtins.str id: The ID of the map.
         :param _builtins.str node: The node name of the map.
         :param _builtins.str comment: The comment of the mapped USB device.
-        :param _builtins.str path: The path of the map. For hardware mappings of type USB the path is optional and indicates that the device is mapped through the device ID instead of ports.
+        :param _builtins.str path: The path of the map. For USB hardware mappings, this is optional and indicates that the device is mapped via its device ID rather than ports.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "node", node)
@@ -195,7 +325,89 @@ class UsbMap(dict):
     @pulumi.getter
     def path(self) -> Optional[_builtins.str]:
         """
-        The path of the map. For hardware mappings of type USB the path is optional and indicates that the device is mapped through the device ID instead of ports.
+        The path of the map. For USB hardware mappings, this is optional and indicates that the device is mapped via its device ID rather than ports.
+        """
+        return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class UsbMap(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 node: _builtins.str,
+                 comment: Optional[_builtins.str] = None,
+                 path: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str id: The ID of the map.
+        :param _builtins.str node: The node name of the map.
+        :param _builtins.str comment: The comment of the mapped USB device.
+        :param _builtins.str path: The path of the map. For USB hardware mappings, this is optional and indicates that the device is mapped via its device ID rather than ports.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "node", node)
+        if comment is not None:
+            pulumi.set(__self__, "comment", comment)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID of the map.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def node(self) -> _builtins.str:
+        """
+        The node name of the map.
+        """
+        return pulumi.get(self, "node")
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> Optional[_builtins.str]:
+        """
+        The comment of the mapped USB device.
+        """
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> Optional[_builtins.str]:
+        """
+        The path of the map. For USB hardware mappings, this is optional and indicates that the device is mapped via its device ID rather than ports.
+        """
+        return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class GetDirLegacyMapResult(dict):
+    def __init__(__self__, *,
+                 node: _builtins.str,
+                 path: _builtins.str):
+        """
+        :param _builtins.str node: The node name attribute of the map.
+        :param _builtins.str path: The path attribute of the map.
+        """
+        pulumi.set(__self__, "node", node)
+        pulumi.set(__self__, "path", path)
+
+    @_builtins.property
+    @pulumi.getter
+    def node(self) -> _builtins.str:
+        """
+        The node name attribute of the map.
+        """
+        return pulumi.get(self, "node")
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> _builtins.str:
+        """
+        The path attribute of the map.
         """
         return pulumi.get(self, "path")
 
@@ -230,7 +442,7 @@ class GetDirMapResult(dict):
 
 
 @pulumi.output_type
-class GetPciMapResult(dict):
+class GetPciLegacyMapResult(dict):
     def __init__(__self__, *,
                  comment: _builtins.str,
                  id: _builtins.str,
@@ -244,7 +456,7 @@ class GetPciMapResult(dict):
         :param _builtins.int iommu_group: The IOMMU group attribute of the map.
         :param _builtins.str node: The node name attribute of the map.
         :param _builtins.str path: The path attribute of the map.
-        :param _builtins.str subsystem_id: The subsystem ID attribute of the map.Not mandatory for the Proxmox VE API call, but causes a PCI hardware mapping to be incomplete when not set.
+        :param _builtins.str subsystem_id: The subsystem ID attribute of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
         """
         pulumi.set(__self__, "comment", comment)
         pulumi.set(__self__, "id", id)
@@ -297,9 +509,133 @@ class GetPciMapResult(dict):
     @pulumi.getter(name="subsystemId")
     def subsystem_id(self) -> _builtins.str:
         """
-        The subsystem ID attribute of the map.Not mandatory for the Proxmox VE API call, but causes a PCI hardware mapping to be incomplete when not set.
+        The subsystem ID attribute of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
         """
         return pulumi.get(self, "subsystem_id")
+
+
+@pulumi.output_type
+class GetPciMapResult(dict):
+    def __init__(__self__, *,
+                 comment: _builtins.str,
+                 id: _builtins.str,
+                 iommu_group: _builtins.int,
+                 node: _builtins.str,
+                 path: _builtins.str,
+                 subsystem_id: _builtins.str):
+        """
+        :param _builtins.str comment: The comment of the mapped PCI device.
+        :param _builtins.str id: The ID attribute of the map.
+        :param _builtins.int iommu_group: The IOMMU group attribute of the map.
+        :param _builtins.str node: The node name attribute of the map.
+        :param _builtins.str path: The path attribute of the map.
+        :param _builtins.str subsystem_id: The subsystem ID attribute of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
+        """
+        pulumi.set(__self__, "comment", comment)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "iommu_group", iommu_group)
+        pulumi.set(__self__, "node", node)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "subsystem_id", subsystem_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> _builtins.str:
+        """
+        The comment of the mapped PCI device.
+        """
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID attribute of the map.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="iommuGroup")
+    def iommu_group(self) -> _builtins.int:
+        """
+        The IOMMU group attribute of the map.
+        """
+        return pulumi.get(self, "iommu_group")
+
+    @_builtins.property
+    @pulumi.getter
+    def node(self) -> _builtins.str:
+        """
+        The node name attribute of the map.
+        """
+        return pulumi.get(self, "node")
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> _builtins.str:
+        """
+        The path attribute of the map.
+        """
+        return pulumi.get(self, "path")
+
+    @_builtins.property
+    @pulumi.getter(name="subsystemId")
+    def subsystem_id(self) -> _builtins.str:
+        """
+        The subsystem ID attribute of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
+        """
+        return pulumi.get(self, "subsystem_id")
+
+
+@pulumi.output_type
+class GetUsbLegacyMapResult(dict):
+    def __init__(__self__, *,
+                 comment: _builtins.str,
+                 id: _builtins.str,
+                 node: _builtins.str,
+                 path: _builtins.str):
+        """
+        :param _builtins.str comment: The comment of the mapped USB device.
+        :param _builtins.str id: The ID attribute of the map.
+        :param _builtins.str node: The node name attribute of the map.
+        :param _builtins.str path: The path attribute of the map.
+        """
+        pulumi.set(__self__, "comment", comment)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "node", node)
+        pulumi.set(__self__, "path", path)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> _builtins.str:
+        """
+        The comment of the mapped USB device.
+        """
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The ID attribute of the map.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def node(self) -> _builtins.str:
+        """
+        The node name attribute of the map.
+        """
+        return pulumi.get(self, "node")
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> _builtins.str:
+        """
+        The path attribute of the map.
+        """
+        return pulumi.get(self, "path")
 
 
 @pulumi.output_type

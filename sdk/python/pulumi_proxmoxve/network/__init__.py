@@ -5,18 +5,11 @@
 import builtins as _builtins
 from .. import _utilities
 import typing
-# Export this package's modules as members:
-from .firewall import *
-from .firewall_alias import *
-from .firewall_ip_set import *
-from .firewall_options import *
-from .firewall_rules import *
-from .firewall_security_group import *
-from .get_dns import *
-from .get_hosts import *
-from .get_time import *
-from .get_version import *
-from .network_bridge import *
-from .network_vlan import *
-from ._inputs import *
-from . import outputs
+
+# Make subpackages available:
+if typing.TYPE_CHECKING:
+    import pulumi_proxmoxve.network.linux as __linux
+    linux = __linux
+else:
+    linux = _utilities.lazy_import('pulumi_proxmoxve.network.linux')
+

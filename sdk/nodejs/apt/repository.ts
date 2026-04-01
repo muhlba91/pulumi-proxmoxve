@@ -6,32 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an APT repository of a Proxmox VE node.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const example = new proxmoxve.apt.Repository("example", {
- *     enabled: true,
- *     filePath: "/etc/apt/sources.list",
- *     index: 0,
- *     node: "pve",
- * });
- * ```
- *
- * ## Import
- *
- * #!/usr/bin/env sh
- *
- * An APT repository can be imported using a comma-separated list consisting of the name of the Proxmox VE node,
- *
- * the absolute source list file path, and the index in the exact same order, e.g.:
- *
- * ```sh
- * $ pulumi import proxmoxve:Apt/repository:Repository example pve,/etc/apt/sources.list,0
- * ```
  */
 export class Repository extends pulumi.CustomResource {
     /**
@@ -48,7 +22,7 @@ export class Repository extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'proxmoxve:Apt/repository:Repository';
+    public static readonly __pulumiType = 'proxmoxve:apt/repository:Repository';
 
     /**
      * Returns true if the given object is an instance of Repository.  This is designed to work even

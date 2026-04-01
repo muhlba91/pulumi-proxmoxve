@@ -8,36 +8,11 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves information about all SDN Zones in Proxmox. This data source can optionally filter zones by type.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * // List all SDN zones
- * const all = proxmoxve.Sdn.getZones({});
- * // List only EVPN zones
- * const evpnOnly = proxmoxve.Sdn.getZones({
- *     type: "evpn",
- * });
- * // List only Simple zones  
- * const simpleOnly = proxmoxve.Sdn.getZones({
- *     type: "simple",
- * });
- * export const dataProxmoxVirtualEnvironmentSdnZonesAll = {
- *     zones: all.then(all => all.zones),
- * };
- * export const dataProxmoxVirtualEnvironmentSdnZonesFiltered = {
- *     evpnZones: evpnOnly.then(evpnOnly => evpnOnly.zones),
- *     simpleZones: simpleOnly.then(simpleOnly => simpleOnly.zones),
- * };
- * ```
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("proxmoxve:Sdn/getZones:getZones", {
+    return pulumi.runtime.invoke("proxmoxve:sdn/getZones:getZones", {
         "type": args.type,
     }, opts);
 }
@@ -67,40 +42,15 @@ export interface GetZonesResult {
     /**
      * List of SDN zones.
      */
-    readonly zones: outputs.Sdn.GetZonesZone[];
+    readonly zones: outputs.sdn.GetZonesZone[];
 }
 /**
  * Retrieves information about all SDN Zones in Proxmox. This data source can optionally filter zones by type.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * // List all SDN zones
- * const all = proxmoxve.Sdn.getZones({});
- * // List only EVPN zones
- * const evpnOnly = proxmoxve.Sdn.getZones({
- *     type: "evpn",
- * });
- * // List only Simple zones  
- * const simpleOnly = proxmoxve.Sdn.getZones({
- *     type: "simple",
- * });
- * export const dataProxmoxVirtualEnvironmentSdnZonesAll = {
- *     zones: all.then(all => all.zones),
- * };
- * export const dataProxmoxVirtualEnvironmentSdnZonesFiltered = {
- *     evpnZones: evpnOnly.then(evpnOnly => evpnOnly.zones),
- *     simpleZones: simpleOnly.then(simpleOnly => simpleOnly.zones),
- * };
- * ```
  */
 export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZonesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("proxmoxve:Sdn/getZones:getZones", {
+    return pulumi.runtime.invokeOutput("proxmoxve:sdn/getZones:getZones", {
         "type": args.type,
     }, opts);
 }

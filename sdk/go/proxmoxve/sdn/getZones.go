@@ -7,61 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves information about all SDN Zones in Proxmox. This data source can optionally filter zones by type.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdn"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// List all SDN zones
-//			all, err := sdn.GetZones(ctx, &sdn.GetZonesArgs{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			// List only EVPN zones
-//			evpnOnly, err := sdn.GetZones(ctx, &sdn.GetZonesArgs{
-//				Type: pulumi.StringRef("evpn"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			// List only Simple zones
-//			simpleOnly, err := sdn.GetZones(ctx, &sdn.GetZonesArgs{
-//				Type: pulumi.StringRef("simple"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("dataProxmoxVirtualEnvironmentSdnZonesAll", []sdn.GetZonesZoneMap{
-//				"zones": all.Zones,
-//			})
-//			ctx.Export("dataProxmoxVirtualEnvironmentSdnZonesFiltered", []sdn.GetZonesZoneMap{
-//				"evpnZones":   evpnOnly.Zones,
-//				"simpleZones": simpleOnly.Zones,
-//			})
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOption) (*GetZonesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetZonesResult
-	err := ctx.Invoke("proxmoxve:Sdn/getZones:getZones", args, &rv, opts...)
+	err := ctx.Invoke("proxmoxve:sdn/getZones:getZones", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -89,7 +43,7 @@ func GetZonesOutput(ctx *pulumi.Context, args GetZonesOutputArgs, opts ...pulumi
 		ApplyT(func(v interface{}) (GetZonesResultOutput, error) {
 			args := v.(GetZonesArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:Sdn/getZones:getZones", args, GetZonesResultOutput{}, options).(GetZonesResultOutput), nil
+			return ctx.InvokeOutput("proxmoxve:sdn/getZones:getZones", args, GetZonesResultOutput{}, options).(GetZonesResultOutput), nil
 		}).(GetZonesResultOutput)
 }
 

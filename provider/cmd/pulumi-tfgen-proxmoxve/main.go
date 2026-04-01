@@ -20,5 +20,5 @@ import (
 )
 
 func main() {
-	tfgen.MainWithMuxer("proxmoxve", proxmoxve.Provider())
+	tfgen.Main("proxmoxve", proxmoxve.Provider())
 }

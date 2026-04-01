@@ -26,6 +26,7 @@ class DirArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Dir resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['DirMapArgs']]] maps: The actual map of devices for the hardware mapping.
         :param pulumi.Input[_builtins.str] comment: The comment of this directory mapping.
         :param pulumi.Input[_builtins.str] name: The name of this directory mapping.
@@ -81,6 +82,7 @@ class _DirState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Dir resources.
+
         :param pulumi.Input[_builtins.str] comment: The comment of this directory mapping.
         :param pulumi.Input[Sequence[pulumi.Input['DirMapArgs']]] maps: The actual map of devices for the hardware mapping.
         :param pulumi.Input[_builtins.str] name: The name of this directory mapping.
@@ -129,7 +131,7 @@ class _DirState:
         pulumi.set(self, "name", value)
 
 
-@pulumi.type_token("proxmoxve:Hardware/mapping/dir:Dir")
+@pulumi.type_token("proxmoxve:hardware/mapping/dir:Dir")
 class Dir(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -142,30 +144,6 @@ class Dir(pulumi.CustomResource):
         """
         Manages a directory mapping in a Proxmox VE cluster.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        example = proxmoxve.hardware.mapping.Dir("example",
-            comment="This is a comment",
-            name="example",
-            maps=[{
-                "node": "pve",
-                "path": "/mnt/data",
-            }])
-        ```
-
-        ## Import
-
-        #!/usr/bin/env sh
-
-        A directory mapping can be imported using their name, e.g.:
-
-        ```sh
-        $ pulumi import proxmoxve:Hardware/mapping/dir:Dir example example
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -182,30 +160,6 @@ class Dir(pulumi.CustomResource):
         """
         Manages a directory mapping in a Proxmox VE cluster.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        example = proxmoxve.hardware.mapping.Dir("example",
-            comment="This is a comment",
-            name="example",
-            maps=[{
-                "node": "pve",
-                "path": "/mnt/data",
-            }])
-        ```
-
-        ## Import
-
-        #!/usr/bin/env sh
-
-        A directory mapping can be imported using their name, e.g.:
-
-        ```sh
-        $ pulumi import proxmoxve:Hardware/mapping/dir:Dir example example
-        ```
 
         :param str resource_name: The name of the resource.
         :param DirArgs args: The arguments to use to populate this resource's properties.
@@ -240,7 +194,7 @@ class Dir(pulumi.CustomResource):
             __props__.__dict__["maps"] = maps
             __props__.__dict__["name"] = name
         super(Dir, __self__).__init__(
-            'proxmoxve:Hardware/mapping/dir:Dir',
+            'proxmoxve:hardware/mapping/dir:Dir',
             resource_name,
             __props__,
             opts)

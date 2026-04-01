@@ -194,7 +194,7 @@ namespace Pulumi.ProxmoxVE
             /// </summary>
                 public ImmutableArray<Pulumi.ProxmoxVE.Config.Types.SshNode> Nodes { get; set; }
             /// <summary>
-            /// The password used for the SSH connection. Defaults to the value of the `Password` field of the `Provider` block.
+            /// The password used for the SSH connection. Defaults to the value of the `Password` field of the `Provider` block when using username/password authentication. Default has no effect when using API token authentication, as there is no password to inherit. Can also be sourced from `PROXMOX_VE_SSH_PASSWORD`.
             /// </summary>
                 public string? Password { get; set; } = null!;
             /// <summary>

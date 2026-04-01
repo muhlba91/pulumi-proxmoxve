@@ -10,21 +10,34 @@ export const getRepository: typeof import("./getRepository").getRepository = nul
 export const getRepositoryOutput: typeof import("./getRepository").getRepositoryOutput = null as any;
 utilities.lazyLoad(exports, ["getRepository","getRepositoryOutput"], () => require("./getRepository"));
 
+export { GetRepositoryLegacyArgs, GetRepositoryLegacyResult, GetRepositoryLegacyOutputArgs } from "./getRepositoryLegacy";
+export const getRepositoryLegacy: typeof import("./getRepositoryLegacy").getRepositoryLegacy = null as any;
+export const getRepositoryLegacyOutput: typeof import("./getRepositoryLegacy").getRepositoryLegacyOutput = null as any;
+utilities.lazyLoad(exports, ["getRepositoryLegacy","getRepositoryLegacyOutput"], () => require("./getRepositoryLegacy"));
+
 export { RepositoryArgs, RepositoryState } from "./repository";
 export type Repository = import("./repository").Repository;
 export const Repository: typeof import("./repository").Repository = null as any;
 utilities.lazyLoad(exports, ["Repository"], () => require("./repository"));
+
+export { RepositoryLegacyArgs, RepositoryLegacyState } from "./repositoryLegacy";
+export type RepositoryLegacy = import("./repositoryLegacy").RepositoryLegacy;
+export const RepositoryLegacy: typeof import("./repositoryLegacy").RepositoryLegacy = null as any;
+utilities.lazyLoad(exports, ["RepositoryLegacy"], () => require("./repositoryLegacy"));
 
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "proxmoxve:Apt/standard/repository:Repository":
+            case "proxmoxve:apt/standard/repository:Repository":
                 return new Repository(name, <any>undefined, { urn })
+            case "proxmoxve:apt/standard/repositoryLegacy:RepositoryLegacy":
+                return new RepositoryLegacy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("proxmoxve", "Apt/standard/repository", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "apt/standard/repository", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "apt/standard/repositoryLegacy", _module)

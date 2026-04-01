@@ -64,20 +64,10 @@ class AwaitableGetAccountsResult(GetAccountsResult):
 def get_accounts(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountsResult:
     """
     Retrieves the list of ACME accounts.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    example = proxmoxve.Acme.get_accounts()
-    pulumi.export("dataProxmoxVirtualEnvironmentAcmeAccounts", example.accounts)
-    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('proxmoxve:Acme/getAccounts:getAccounts', __args__, opts=opts, typ=GetAccountsResult).value
+    __ret__ = pulumi.runtime.invoke('proxmoxve:acme/getAccounts:getAccounts', __args__, opts=opts, typ=GetAccountsResult).value
 
     return AwaitableGetAccountsResult(
         accounts=pulumi.get(__ret__, 'accounts'),
@@ -85,20 +75,10 @@ def get_accounts(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAcc
 def get_accounts_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountsResult]:
     """
     Retrieves the list of ACME accounts.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    example = proxmoxve.Acme.get_accounts()
-    pulumi.export("dataProxmoxVirtualEnvironmentAcmeAccounts", example.accounts)
-    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Acme/getAccounts:getAccounts', __args__, opts=opts, typ=GetAccountsResult)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:acme/getAccounts:getAccounts', __args__, opts=opts, typ=GetAccountsResult)
     return __ret__.apply(lambda __response__: GetAccountsResult(
         accounts=pulumi.get(__response__, 'accounts'),
         id=pulumi.get(__response__, 'id')))

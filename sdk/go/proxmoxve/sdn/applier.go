@@ -7,11 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// **EXPERIMENTAL** Triggers Proxmox's SDN **Apply** (equivalent to `PUT /cluster/sdn`).Intended to be used with `replaceTriggeredBy` so it runs after SDN objects change.
+// **EXPERIMENTAL** Triggers Proxmox's SDN **Apply** (equivalent to `PUT /cluster/sdn`). Intended to be used with `replaceTriggeredBy` so it runs after SDN objects change.
 type Applier struct {
 	pulumi.CustomResourceState
 
@@ -30,7 +30,7 @@ func NewApplier(ctx *pulumi.Context,
 
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Applier
-	err := ctx.RegisterResource("proxmoxve:Sdn/applier:Applier", name, args, &resource, opts...)
+	err := ctx.RegisterResource("proxmoxve:sdn/applier:Applier", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -42,7 +42,7 @@ func NewApplier(ctx *pulumi.Context,
 func GetApplier(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *ApplierState, opts ...pulumi.ResourceOption) (*Applier, error) {
 	var resource Applier
-	err := ctx.ReadResource("proxmoxve:Sdn/applier:Applier", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("proxmoxve:sdn/applier:Applier", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

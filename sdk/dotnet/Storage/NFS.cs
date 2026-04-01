@@ -11,53 +11,15 @@ namespace Pulumi.ProxmoxVE.Storage
 {
     /// <summary>
     /// Manages an NFS-based storage in Proxmox VE.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using ProxmoxVE = Pulumi.ProxmoxVE;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new ProxmoxVE.Storage.NFS("example", new()
-    ///     {
-    ///         NfsId = "example-nfs",
-    ///         Nodes = new[]
-    ///         {
-    ///             "pve",
-    ///         },
-    ///         Server = "10.0.0.10",
-    ///         Export = "/exports/proxmox",
-    ///         Contents = new[]
-    ///         {
-    ///             "images",
-    ///             "iso",
-    ///             "backup",
-    ///         },
-    ///         Options = "vers=4.2",
-    ///         Preallocation = "metadata",
-    ///         SnapshotAsVolumeChain = true,
-    ///         Backups = new ProxmoxVE.Storage.Inputs.NFSBackupsArgs
-    ///         {
-    ///             MaxProtectedBackups = 5,
-    ///             KeepDaily = 7,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
-    [ProxmoxVEResourceType("proxmoxve:Storage/nFS:NFS")]
-    public partial class NFS : global::Pulumi.CustomResource
+    [ProxmoxVEResourceType("proxmoxve:storage/nfs:Nfs")]
+    public partial class Nfs : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Configure backup retention settings for the storage type.
         /// </summary>
         [Output("backups")]
-        public Output<Outputs.NFSBackups?> Backups { get; private set; } = null!;
+        public Output<Outputs.NfsBackups?> Backups { get; private set; } = null!;
 
         /// <summary>
         /// The content types that can be stored on this storage. Valid values: `Backup` (VM backups), `Images` (VM disk images), `Import` (VM disk images for import), `Iso` (ISO images), `Rootdir` (container root directories), `Snippets` (cloud-init, hook scripts, etc.), `Vztmpl` (container templates).
@@ -78,12 +40,6 @@ namespace Pulumi.ProxmoxVE.Storage
         public Output<string> Export { get; private set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the storage.
-        /// </summary>
-        [Output("nfsId")]
-        public Output<string> NfsId { get; private set; } = null!;
-
-        /// <summary>
         /// A list of nodes where this storage is available.
         /// </summary>
         [Output("nodes")]
@@ -100,6 +56,12 @@ namespace Pulumi.ProxmoxVE.Storage
         /// </summary>
         [Output("preallocation")]
         public Output<string?> Preallocation { get; private set; } = null!;
+
+        /// <summary>
+        /// The unique identifier of the storage.
+        /// </summary>
+        [Output("resourceId")]
+        public Output<string> ResourceId { get; private set; } = null!;
 
         /// <summary>
         /// The IP address or DNS name of the NFS server.
@@ -121,19 +83,19 @@ namespace Pulumi.ProxmoxVE.Storage
 
 
         /// <summary>
-        /// Create a NFS resource with the given unique name, arguments, and options.
+        /// Create a Nfs resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public NFS(string name, NFSArgs args, CustomResourceOptions? options = null)
-            : base("proxmoxve:Storage/nFS:NFS", name, args ?? new NFSArgs(), MakeResourceOptions(options, ""))
+        public Nfs(string name, NfsArgs args, CustomResourceOptions? options = null)
+            : base("proxmoxve:storage/nfs:Nfs", name, args ?? new NfsArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private NFS(string name, Input<string> id, NFSState? state = null, CustomResourceOptions? options = null)
-            : base("proxmoxve:Storage/nFS:NFS", name, state, MakeResourceOptions(options, id))
+        private Nfs(string name, Input<string> id, NfsState? state = null, CustomResourceOptions? options = null)
+            : base("proxmoxve:storage/nfs:Nfs", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -143,6 +105,10 @@ namespace Pulumi.ProxmoxVE.Storage
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/muhlba91/pulumi-proxmoxve",
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "proxmox_virtual_environment_storage_nfs" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -150,7 +116,7 @@ namespace Pulumi.ProxmoxVE.Storage
             return merged;
         }
         /// <summary>
-        /// Get an existing NFS resource's state with the given name, ID, and optional extra
+        /// Get an existing Nfs resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -158,19 +124,19 @@ namespace Pulumi.ProxmoxVE.Storage
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static NFS Get(string name, Input<string> id, NFSState? state = null, CustomResourceOptions? options = null)
+        public static Nfs Get(string name, Input<string> id, NfsState? state = null, CustomResourceOptions? options = null)
         {
-            return new NFS(name, id, state, options);
+            return new Nfs(name, id, state, options);
         }
     }
 
-    public sealed class NFSArgs : global::Pulumi.ResourceArgs
+    public sealed class NfsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configure backup retention settings for the storage type.
         /// </summary>
         [Input("backups")]
-        public Input<Inputs.NFSBackupsArgs>? Backups { get; set; }
+        public Input<Inputs.NfsBackupsArgs>? Backups { get; set; }
 
         [Input("contents")]
         private InputList<string>? _contents;
@@ -196,12 +162,6 @@ namespace Pulumi.ProxmoxVE.Storage
         [Input("export", required: true)]
         public Input<string> Export { get; set; } = null!;
 
-        /// <summary>
-        /// The unique identifier of the storage.
-        /// </summary>
-        [Input("nfsId", required: true)]
-        public Input<string> NfsId { get; set; } = null!;
-
         [Input("nodes")]
         private InputList<string>? _nodes;
 
@@ -227,6 +187,12 @@ namespace Pulumi.ProxmoxVE.Storage
         public Input<string>? Preallocation { get; set; }
 
         /// <summary>
+        /// The unique identifier of the storage.
+        /// </summary>
+        [Input("resourceId", required: true)]
+        public Input<string> ResourceId { get; set; } = null!;
+
+        /// <summary>
         /// The IP address or DNS name of the NFS server.
         /// </summary>
         [Input("server", required: true)]
@@ -238,19 +204,19 @@ namespace Pulumi.ProxmoxVE.Storage
         [Input("snapshotAsVolumeChain")]
         public Input<bool>? SnapshotAsVolumeChain { get; set; }
 
-        public NFSArgs()
+        public NfsArgs()
         {
         }
-        public static new NFSArgs Empty => new NFSArgs();
+        public static new NfsArgs Empty => new NfsArgs();
     }
 
-    public sealed class NFSState : global::Pulumi.ResourceArgs
+    public sealed class NfsState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configure backup retention settings for the storage type.
         /// </summary>
         [Input("backups")]
-        public Input<Inputs.NFSBackupsGetArgs>? Backups { get; set; }
+        public Input<Inputs.NfsBackupsGetArgs>? Backups { get; set; }
 
         [Input("contents")]
         private InputList<string>? _contents;
@@ -276,12 +242,6 @@ namespace Pulumi.ProxmoxVE.Storage
         [Input("export")]
         public Input<string>? Export { get; set; }
 
-        /// <summary>
-        /// The unique identifier of the storage.
-        /// </summary>
-        [Input("nfsId")]
-        public Input<string>? NfsId { get; set; }
-
         [Input("nodes")]
         private InputList<string>? _nodes;
 
@@ -307,6 +267,12 @@ namespace Pulumi.ProxmoxVE.Storage
         public Input<string>? Preallocation { get; set; }
 
         /// <summary>
+        /// The unique identifier of the storage.
+        /// </summary>
+        [Input("resourceId")]
+        public Input<string>? ResourceId { get; set; }
+
+        /// <summary>
         /// The IP address or DNS name of the NFS server.
         /// </summary>
         [Input("server")]
@@ -324,9 +290,9 @@ namespace Pulumi.ProxmoxVE.Storage
         [Input("snapshotAsVolumeChain")]
         public Input<bool>? SnapshotAsVolumeChain { get; set; }
 
-        public NFSState()
+        public NfsState()
         {
         }
-        public static new NFSState Empty => new NFSState();
+        public static new NfsState Empty => new NfsState();
     }
 }

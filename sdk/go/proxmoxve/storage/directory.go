@@ -8,50 +8,11 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Manages directory-based storage in Proxmox VE.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/storage"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.NewDirectory(ctx, "example", &storage.DirectoryArgs{
-//				DirectoryId: pulumi.String("example-dir"),
-//				Path:        pulumi.String("/var/lib/vz"),
-//				Nodes: pulumi.StringArray{
-//					pulumi.String("pve"),
-//				},
-//				Contents: pulumi.StringArray{
-//					pulumi.String("images"),
-//				},
-//				Shared:  pulumi.Bool(true),
-//				Disable: pulumi.Bool(false),
-//				Backups: &storage.DirectoryBackupsArgs{
-//					MaxProtectedBackups: pulumi.Int(5),
-//					KeepDaily:           pulumi.Int(7),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type Directory struct {
 	pulumi.CustomResourceState
 
@@ -59,8 +20,6 @@ type Directory struct {
 	Backups DirectoryBackupsPtrOutput `pulumi:"backups"`
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents pulumi.StringArrayOutput `pulumi:"contents"`
-	// The unique identifier of the storage.
-	DirectoryId pulumi.StringOutput `pulumi:"directoryId"`
 	// Whether the storage is disabled.
 	Disable pulumi.BoolOutput `pulumi:"disable"`
 	// A list of nodes where this storage is available.
@@ -69,6 +28,8 @@ type Directory struct {
 	Path pulumi.StringOutput `pulumi:"path"`
 	// The preallocation mode for raw and qcow2 images.
 	Preallocation pulumi.StringPtrOutput `pulumi:"preallocation"`
+	// The unique identifier of the storage.
+	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
 	// Whether the storage is shared across all nodes.
 	Shared pulumi.BoolOutput `pulumi:"shared"`
 }
@@ -80,15 +41,21 @@ func NewDirectory(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DirectoryId == nil {
-		return nil, errors.New("invalid value for required argument 'DirectoryId'")
-	}
 	if args.Path == nil {
 		return nil, errors.New("invalid value for required argument 'Path'")
 	}
+	if args.ResourceId == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceId'")
+	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("proxmox_virtual_environment_storage_directory"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Directory
-	err := ctx.RegisterResource("proxmoxve:Storage/directory:Directory", name, args, &resource, opts...)
+	err := ctx.RegisterResource("proxmoxve:storage/directory:Directory", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -100,7 +67,7 @@ func NewDirectory(ctx *pulumi.Context,
 func GetDirectory(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *DirectoryState, opts ...pulumi.ResourceOption) (*Directory, error) {
 	var resource Directory
-	err := ctx.ReadResource("proxmoxve:Storage/directory:Directory", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("proxmoxve:storage/directory:Directory", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -113,8 +80,6 @@ type directoryState struct {
 	Backups *DirectoryBackups `pulumi:"backups"`
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents []string `pulumi:"contents"`
-	// The unique identifier of the storage.
-	DirectoryId *string `pulumi:"directoryId"`
 	// Whether the storage is disabled.
 	Disable *bool `pulumi:"disable"`
 	// A list of nodes where this storage is available.
@@ -123,6 +88,8 @@ type directoryState struct {
 	Path *string `pulumi:"path"`
 	// The preallocation mode for raw and qcow2 images.
 	Preallocation *string `pulumi:"preallocation"`
+	// The unique identifier of the storage.
+	ResourceId *string `pulumi:"resourceId"`
 	// Whether the storage is shared across all nodes.
 	Shared *bool `pulumi:"shared"`
 }
@@ -132,8 +99,6 @@ type DirectoryState struct {
 	Backups DirectoryBackupsPtrInput
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents pulumi.StringArrayInput
-	// The unique identifier of the storage.
-	DirectoryId pulumi.StringPtrInput
 	// Whether the storage is disabled.
 	Disable pulumi.BoolPtrInput
 	// A list of nodes where this storage is available.
@@ -142,6 +107,8 @@ type DirectoryState struct {
 	Path pulumi.StringPtrInput
 	// The preallocation mode for raw and qcow2 images.
 	Preallocation pulumi.StringPtrInput
+	// The unique identifier of the storage.
+	ResourceId pulumi.StringPtrInput
 	// Whether the storage is shared across all nodes.
 	Shared pulumi.BoolPtrInput
 }
@@ -155,8 +122,6 @@ type directoryArgs struct {
 	Backups *DirectoryBackups `pulumi:"backups"`
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents []string `pulumi:"contents"`
-	// The unique identifier of the storage.
-	DirectoryId string `pulumi:"directoryId"`
 	// Whether the storage is disabled.
 	Disable *bool `pulumi:"disable"`
 	// A list of nodes where this storage is available.
@@ -165,6 +130,8 @@ type directoryArgs struct {
 	Path string `pulumi:"path"`
 	// The preallocation mode for raw and qcow2 images.
 	Preallocation *string `pulumi:"preallocation"`
+	// The unique identifier of the storage.
+	ResourceId string `pulumi:"resourceId"`
 	// Whether the storage is shared across all nodes.
 	Shared *bool `pulumi:"shared"`
 }
@@ -175,8 +142,6 @@ type DirectoryArgs struct {
 	Backups DirectoryBackupsPtrInput
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents pulumi.StringArrayInput
-	// The unique identifier of the storage.
-	DirectoryId pulumi.StringInput
 	// Whether the storage is disabled.
 	Disable pulumi.BoolPtrInput
 	// A list of nodes where this storage is available.
@@ -185,6 +150,8 @@ type DirectoryArgs struct {
 	Path pulumi.StringInput
 	// The preallocation mode for raw and qcow2 images.
 	Preallocation pulumi.StringPtrInput
+	// The unique identifier of the storage.
+	ResourceId pulumi.StringInput
 	// Whether the storage is shared across all nodes.
 	Shared pulumi.BoolPtrInput
 }
@@ -286,11 +253,6 @@ func (o DirectoryOutput) Contents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Directory) pulumi.StringArrayOutput { return v.Contents }).(pulumi.StringArrayOutput)
 }
 
-// The unique identifier of the storage.
-func (o DirectoryOutput) DirectoryId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Directory) pulumi.StringOutput { return v.DirectoryId }).(pulumi.StringOutput)
-}
-
 // Whether the storage is disabled.
 func (o DirectoryOutput) Disable() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Directory) pulumi.BoolOutput { return v.Disable }).(pulumi.BoolOutput)
@@ -309,6 +271,11 @@ func (o DirectoryOutput) Path() pulumi.StringOutput {
 // The preallocation mode for raw and qcow2 images.
 func (o DirectoryOutput) Preallocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Directory) pulumi.StringPtrOutput { return v.Preallocation }).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of the storage.
+func (o DirectoryOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Directory) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
 }
 
 // Whether the storage is shared across all nodes.

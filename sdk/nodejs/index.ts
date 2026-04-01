@@ -10,112 +10,209 @@ export type Acl = import("./acl").Acl;
 export const Acl: typeof import("./acl").Acl = null as any;
 utilities.lazyLoad(exports, ["Acl"], () => require("./acl"));
 
-export { AcmeAccountArgs, AcmeAccountState } from "./acmeAccount";
-export type AcmeAccount = import("./acmeAccount").AcmeAccount;
-export const AcmeAccount: typeof import("./acmeAccount").AcmeAccount = null as any;
-utilities.lazyLoad(exports, ["AcmeAccount"], () => require("./acmeAccount"));
+export { AclLegacyArgs, AclLegacyState } from "./aclLegacy";
+export type AclLegacy = import("./aclLegacy").AclLegacy;
+export const AclLegacy: typeof import("./aclLegacy").AclLegacy = null as any;
+utilities.lazyLoad(exports, ["AclLegacy"], () => require("./aclLegacy"));
 
-export { AcmeDnsPluginArgs, AcmeDnsPluginState } from "./acmeDnsPlugin";
-export type AcmeDnsPlugin = import("./acmeDnsPlugin").AcmeDnsPlugin;
-export const AcmeDnsPlugin: typeof import("./acmeDnsPlugin").AcmeDnsPlugin = null as any;
-utilities.lazyLoad(exports, ["AcmeDnsPlugin"], () => require("./acmeDnsPlugin"));
+export { GetDatastoresArgs, GetDatastoresResult, GetDatastoresOutputArgs } from "./getDatastores";
+export const getDatastores: typeof import("./getDatastores").getDatastores = null as any;
+export const getDatastoresOutput: typeof import("./getDatastores").getDatastoresOutput = null as any;
+utilities.lazyLoad(exports, ["getDatastores","getDatastoresOutput"], () => require("./getDatastores"));
 
-export { CertifiArgs, CertifiState } from "./certifi";
-export type Certifi = import("./certifi").Certifi;
-export const Certifi: typeof import("./certifi").Certifi = null as any;
-utilities.lazyLoad(exports, ["Certifi"], () => require("./certifi"));
-
-export { DNSArgs, DNSState } from "./dns";
-export type DNS = import("./dns").DNS;
-export const DNS: typeof import("./dns").DNS = null as any;
-utilities.lazyLoad(exports, ["DNS"], () => require("./dns"));
-
-export { GetContainerArgs, GetContainerResult, GetContainerOutputArgs } from "./getContainer";
-export const getContainer: typeof import("./getContainer").getContainer = null as any;
-export const getContainerOutput: typeof import("./getContainer").getContainerOutput = null as any;
-utilities.lazyLoad(exports, ["getContainer","getContainerOutput"], () => require("./getContainer"));
-
-export { GetContainersArgs, GetContainersResult, GetContainersOutputArgs } from "./getContainers";
-export const getContainers: typeof import("./getContainers").getContainers = null as any;
-export const getContainersOutput: typeof import("./getContainers").getContainersOutput = null as any;
-utilities.lazyLoad(exports, ["getContainers","getContainersOutput"], () => require("./getContainers"));
+export { GetDatastoresLegacyArgs, GetDatastoresLegacyResult, GetDatastoresLegacyOutputArgs } from "./getDatastoresLegacy";
+export const getDatastoresLegacy: typeof import("./getDatastoresLegacy").getDatastoresLegacy = null as any;
+export const getDatastoresLegacyOutput: typeof import("./getDatastoresLegacy").getDatastoresLegacyOutput = null as any;
+utilities.lazyLoad(exports, ["getDatastoresLegacy","getDatastoresLegacyOutput"], () => require("./getDatastoresLegacy"));
 
 export { GetFileArgs, GetFileResult, GetFileOutputArgs } from "./getFile";
 export const getFile: typeof import("./getFile").getFile = null as any;
 export const getFileOutput: typeof import("./getFile").getFileOutput = null as any;
 utilities.lazyLoad(exports, ["getFile","getFileOutput"], () => require("./getFile"));
 
-export { GetNodeArgs, GetNodeResult, GetNodeOutputArgs } from "./getNode";
-export const getNode: typeof import("./getNode").getNode = null as any;
-export const getNodeOutput: typeof import("./getNode").getNodeOutput = null as any;
-utilities.lazyLoad(exports, ["getNode","getNodeOutput"], () => require("./getNode"));
+export { GetFileLegacyArgs, GetFileLegacyResult, GetFileLegacyOutputArgs } from "./getFileLegacy";
+export const getFileLegacy: typeof import("./getFileLegacy").getFileLegacy = null as any;
+export const getFileLegacyOutput: typeof import("./getFileLegacy").getFileLegacyOutput = null as any;
+utilities.lazyLoad(exports, ["getFileLegacy","getFileLegacyOutput"], () => require("./getFileLegacy"));
 
-export { GetVm2Args, GetVm2Result, GetVm2OutputArgs } from "./getVm2";
-export const getVm2: typeof import("./getVm2").getVm2 = null as any;
-export const getVm2Output: typeof import("./getVm2").getVm2Output = null as any;
-utilities.lazyLoad(exports, ["getVm2","getVm2Output"], () => require("./getVm2"));
+export { GetFilesArgs, GetFilesResult, GetFilesOutputArgs } from "./getFiles";
+export const getFiles: typeof import("./getFiles").getFiles = null as any;
+export const getFilesOutput: typeof import("./getFiles").getFilesOutput = null as any;
+utilities.lazyLoad(exports, ["getFiles","getFilesOutput"], () => require("./getFiles"));
 
-export { HostsArgs, HostsState } from "./hosts";
-export type Hosts = import("./hosts").Hosts;
-export const Hosts: typeof import("./hosts").Hosts = null as any;
-utilities.lazyLoad(exports, ["Hosts"], () => require("./hosts"));
+export { GetHagroupArgs, GetHagroupResult, GetHagroupOutputArgs } from "./getHagroup";
+export const getHagroup: typeof import("./getHagroup").getHagroup = null as any;
+export const getHagroupOutput: typeof import("./getHagroup").getHagroupOutput = null as any;
+utilities.lazyLoad(exports, ["getHagroup","getHagroupOutput"], () => require("./getHagroup"));
+
+export { GetHagroupLegacyArgs, GetHagroupLegacyResult, GetHagroupLegacyOutputArgs } from "./getHagroupLegacy";
+export const getHagroupLegacy: typeof import("./getHagroupLegacy").getHagroupLegacy = null as any;
+export const getHagroupLegacyOutput: typeof import("./getHagroupLegacy").getHagroupLegacyOutput = null as any;
+utilities.lazyLoad(exports, ["getHagroupLegacy","getHagroupLegacyOutput"], () => require("./getHagroupLegacy"));
+
+export { GetHagroupsResult } from "./getHagroups";
+export const getHagroups: typeof import("./getHagroups").getHagroups = null as any;
+export const getHagroupsOutput: typeof import("./getHagroups").getHagroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getHagroups","getHagroupsOutput"], () => require("./getHagroups"));
+
+export { GetHagroupsLegacyResult } from "./getHagroupsLegacy";
+export const getHagroupsLegacy: typeof import("./getHagroupsLegacy").getHagroupsLegacy = null as any;
+export const getHagroupsLegacyOutput: typeof import("./getHagroupsLegacy").getHagroupsLegacyOutput = null as any;
+utilities.lazyLoad(exports, ["getHagroupsLegacy","getHagroupsLegacyOutput"], () => require("./getHagroupsLegacy"));
+
+export { GetHaresourceArgs, GetHaresourceResult, GetHaresourceOutputArgs } from "./getHaresource";
+export const getHaresource: typeof import("./getHaresource").getHaresource = null as any;
+export const getHaresourceOutput: typeof import("./getHaresource").getHaresourceOutput = null as any;
+utilities.lazyLoad(exports, ["getHaresource","getHaresourceOutput"], () => require("./getHaresource"));
+
+export { GetHaresourceLegacyArgs, GetHaresourceLegacyResult, GetHaresourceLegacyOutputArgs } from "./getHaresourceLegacy";
+export const getHaresourceLegacy: typeof import("./getHaresourceLegacy").getHaresourceLegacy = null as any;
+export const getHaresourceLegacyOutput: typeof import("./getHaresourceLegacy").getHaresourceLegacyOutput = null as any;
+utilities.lazyLoad(exports, ["getHaresourceLegacy","getHaresourceLegacyOutput"], () => require("./getHaresourceLegacy"));
+
+export { GetHaresourcesArgs, GetHaresourcesResult, GetHaresourcesOutputArgs } from "./getHaresources";
+export const getHaresources: typeof import("./getHaresources").getHaresources = null as any;
+export const getHaresourcesOutput: typeof import("./getHaresources").getHaresourcesOutput = null as any;
+utilities.lazyLoad(exports, ["getHaresources","getHaresourcesOutput"], () => require("./getHaresources"));
+
+export { GetHaresourcesLegacyArgs, GetHaresourcesLegacyResult, GetHaresourcesLegacyOutputArgs } from "./getHaresourcesLegacy";
+export const getHaresourcesLegacy: typeof import("./getHaresourcesLegacy").getHaresourcesLegacy = null as any;
+export const getHaresourcesLegacyOutput: typeof import("./getHaresourcesLegacy").getHaresourcesLegacyOutput = null as any;
+utilities.lazyLoad(exports, ["getHaresourcesLegacy","getHaresourcesLegacyOutput"], () => require("./getHaresourcesLegacy"));
+
+export { GetReplicationArgs, GetReplicationResult, GetReplicationOutputArgs } from "./getReplication";
+export const getReplication: typeof import("./getReplication").getReplication = null as any;
+export const getReplicationOutput: typeof import("./getReplication").getReplicationOutput = null as any;
+utilities.lazyLoad(exports, ["getReplication","getReplicationOutput"], () => require("./getReplication"));
+
+export { GetReplicationLegacyArgs, GetReplicationLegacyResult, GetReplicationLegacyOutputArgs } from "./getReplicationLegacy";
+export const getReplicationLegacy: typeof import("./getReplicationLegacy").getReplicationLegacy = null as any;
+export const getReplicationLegacyOutput: typeof import("./getReplicationLegacy").getReplicationLegacyOutput = null as any;
+utilities.lazyLoad(exports, ["getReplicationLegacy","getReplicationLegacyOutput"], () => require("./getReplicationLegacy"));
+
+export { GetReplicationsResult } from "./getReplications";
+export const getReplications: typeof import("./getReplications").getReplications = null as any;
+export const getReplicationsOutput: typeof import("./getReplications").getReplicationsOutput = null as any;
+utilities.lazyLoad(exports, ["getReplications","getReplicationsOutput"], () => require("./getReplications"));
+
+export { GetReplicationsLegacyResult } from "./getReplicationsLegacy";
+export const getReplicationsLegacy: typeof import("./getReplicationsLegacy").getReplicationsLegacy = null as any;
+export const getReplicationsLegacyOutput: typeof import("./getReplicationsLegacy").getReplicationsLegacyOutput = null as any;
+utilities.lazyLoad(exports, ["getReplicationsLegacy","getReplicationsLegacyOutput"], () => require("./getReplicationsLegacy"));
+
+export { GetVersionResult } from "./getVersion";
+export const getVersion: typeof import("./getVersion").getVersion = null as any;
+export const getVersionOutput: typeof import("./getVersion").getVersionOutput = null as any;
+utilities.lazyLoad(exports, ["getVersion","getVersionOutput"], () => require("./getVersion"));
+
+export { GetVersionLegacyResult } from "./getVersionLegacy";
+export const getVersionLegacy: typeof import("./getVersionLegacy").getVersionLegacy = null as any;
+export const getVersionLegacyOutput: typeof import("./getVersionLegacy").getVersionLegacyOutput = null as any;
+utilities.lazyLoad(exports, ["getVersionLegacy","getVersionLegacyOutput"], () => require("./getVersionLegacy"));
+
+export { GetVmArgs, GetVmResult, GetVmOutputArgs } from "./getVm";
+export const getVm: typeof import("./getVm").getVm = null as any;
+export const getVmOutput: typeof import("./getVm").getVmOutput = null as any;
+utilities.lazyLoad(exports, ["getVm","getVmOutput"], () => require("./getVm"));
+
+export { GetVm2LegacyArgs, GetVm2LegacyResult, GetVm2LegacyOutputArgs } from "./getVm2Legacy";
+export const getVm2Legacy: typeof import("./getVm2Legacy").getVm2Legacy = null as any;
+export const getVm2LegacyOutput: typeof import("./getVm2Legacy").getVm2LegacyOutput = null as any;
+utilities.lazyLoad(exports, ["getVm2Legacy","getVm2LegacyOutput"], () => require("./getVm2Legacy"));
+
+export { HagroupArgs, HagroupState } from "./hagroup";
+export type Hagroup = import("./hagroup").Hagroup;
+export const Hagroup: typeof import("./hagroup").Hagroup = null as any;
+utilities.lazyLoad(exports, ["Hagroup"], () => require("./hagroup"));
+
+export { HagroupLegacyArgs, HagroupLegacyState } from "./hagroupLegacy";
+export type HagroupLegacy = import("./hagroupLegacy").HagroupLegacy;
+export const HagroupLegacy: typeof import("./hagroupLegacy").HagroupLegacy = null as any;
+utilities.lazyLoad(exports, ["HagroupLegacy"], () => require("./hagroupLegacy"));
+
+export { HaresourceArgs, HaresourceState } from "./haresource";
+export type Haresource = import("./haresource").Haresource;
+export const Haresource: typeof import("./haresource").Haresource = null as any;
+utilities.lazyLoad(exports, ["Haresource"], () => require("./haresource"));
+
+export { HaresourceLegacyArgs, HaresourceLegacyState } from "./haresourceLegacy";
+export type HaresourceLegacy = import("./haresourceLegacy").HaresourceLegacy;
+export const HaresourceLegacy: typeof import("./haresourceLegacy").HaresourceLegacy = null as any;
+utilities.lazyLoad(exports, ["HaresourceLegacy"], () => require("./haresourceLegacy"));
+
+export { HaruleArgs, HaruleState } from "./harule";
+export type Harule = import("./harule").Harule;
+export const Harule: typeof import("./harule").Harule = null as any;
+utilities.lazyLoad(exports, ["Harule"], () => require("./harule"));
+
+export { HaruleLegacyArgs, HaruleLegacyState } from "./haruleLegacy";
+export type HaruleLegacy = import("./haruleLegacy").HaruleLegacy;
+export const HaruleLegacy: typeof import("./haruleLegacy").HaruleLegacy = null as any;
+utilities.lazyLoad(exports, ["HaruleLegacy"], () => require("./haruleLegacy"));
 
 export * from "./provider";
 import { Provider } from "./provider";
 
-export { TimeArgs, TimeState } from "./time";
-export type Time = import("./time").Time;
-export const Time: typeof import("./time").Time = null as any;
-utilities.lazyLoad(exports, ["Time"], () => require("./time"));
+export { ReplicationArgs, ReplicationState } from "./replication";
+export type Replication = import("./replication").Replication;
+export const Replication: typeof import("./replication").Replication = null as any;
+utilities.lazyLoad(exports, ["Replication"], () => require("./replication"));
+
+export { ReplicationLegacyArgs, ReplicationLegacyState } from "./replicationLegacy";
+export type ReplicationLegacy = import("./replicationLegacy").ReplicationLegacy;
+export const ReplicationLegacy: typeof import("./replicationLegacy").ReplicationLegacy = null as any;
+utilities.lazyLoad(exports, ["ReplicationLegacy"], () => require("./replicationLegacy"));
+
+export { VmArgs, VmState } from "./vm";
+export type Vm = import("./vm").Vm;
+export const Vm: typeof import("./vm").Vm = null as any;
+utilities.lazyLoad(exports, ["Vm"], () => require("./vm"));
+
+export { Vm2LegacyArgs, Vm2LegacyState } from "./vm2Legacy";
+export type Vm2Legacy = import("./vm2Legacy").Vm2Legacy;
+export const Vm2Legacy: typeof import("./vm2Legacy").Vm2Legacy = null as any;
+utilities.lazyLoad(exports, ["Vm2Legacy"], () => require("./vm2Legacy"));
 
 
 // Export sub-modules:
 import * as acme from "./acme";
 import * as apt from "./apt";
+import * as backup from "./backup";
+import * as cloned from "./cloned";
 import * as cluster from "./cluster";
 import * as config from "./config";
-import * as ct from "./ct";
 import * as download from "./download";
-import * as ha from "./ha";
 import * as hardware from "./hardware";
 import * as metrics from "./metrics";
 import * as network from "./network";
 import * as node from "./node";
 import * as oci from "./oci";
-import * as permission from "./permission";
 import * as pool from "./pool";
 import * as realm from "./realm";
 import * as sdn from "./sdn";
-import * as sdnfabric from "./sdnfabric";
-import * as sdnzone from "./sdnzone";
 import * as storage from "./storage";
 import * as types from "./types";
 import * as user from "./user";
-import * as vm from "./vm";
 
 export {
     acme,
     apt,
+    backup,
+    cloned,
     cluster,
     config,
-    ct,
     download,
-    ha,
     hardware,
     metrics,
     network,
     node,
     oci,
-    permission,
     pool,
     realm,
     sdn,
-    sdnfabric,
-    sdnzone,
     storage,
     types,
     user,
-    vm,
 };
 
 const _module = {
@@ -124,30 +221,45 @@ const _module = {
         switch (type) {
             case "proxmoxve:index/acl:Acl":
                 return new Acl(name, <any>undefined, { urn })
-            case "proxmoxve:index/acmeAccount:AcmeAccount":
-                return new AcmeAccount(name, <any>undefined, { urn })
-            case "proxmoxve:index/acmeDnsPlugin:AcmeDnsPlugin":
-                return new AcmeDnsPlugin(name, <any>undefined, { urn })
-            case "proxmoxve:index/certifi:Certifi":
-                return new Certifi(name, <any>undefined, { urn })
-            case "proxmoxve:index/dNS:DNS":
-                return new DNS(name, <any>undefined, { urn })
-            case "proxmoxve:index/hosts:Hosts":
-                return new Hosts(name, <any>undefined, { urn })
-            case "proxmoxve:index/time:Time":
-                return new Time(name, <any>undefined, { urn })
+            case "proxmoxve:index/aclLegacy:AclLegacy":
+                return new AclLegacy(name, <any>undefined, { urn })
+            case "proxmoxve:index/hagroup:Hagroup":
+                return new Hagroup(name, <any>undefined, { urn })
+            case "proxmoxve:index/hagroupLegacy:HagroupLegacy":
+                return new HagroupLegacy(name, <any>undefined, { urn })
+            case "proxmoxve:index/haresource:Haresource":
+                return new Haresource(name, <any>undefined, { urn })
+            case "proxmoxve:index/haresourceLegacy:HaresourceLegacy":
+                return new HaresourceLegacy(name, <any>undefined, { urn })
+            case "proxmoxve:index/harule:Harule":
+                return new Harule(name, <any>undefined, { urn })
+            case "proxmoxve:index/haruleLegacy:HaruleLegacy":
+                return new HaruleLegacy(name, <any>undefined, { urn })
+            case "proxmoxve:index/replication:Replication":
+                return new Replication(name, <any>undefined, { urn })
+            case "proxmoxve:index/replicationLegacy:ReplicationLegacy":
+                return new ReplicationLegacy(name, <any>undefined, { urn })
+            case "proxmoxve:index/vm2Legacy:Vm2Legacy":
+                return new Vm2Legacy(name, <any>undefined, { urn })
+            case "proxmoxve:index/vm:Vm":
+                return new Vm(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("proxmoxve", "index/acl", _module)
-pulumi.runtime.registerResourceModule("proxmoxve", "index/acmeAccount", _module)
-pulumi.runtime.registerResourceModule("proxmoxve", "index/acmeDnsPlugin", _module)
-pulumi.runtime.registerResourceModule("proxmoxve", "index/certifi", _module)
-pulumi.runtime.registerResourceModule("proxmoxve", "index/dNS", _module)
-pulumi.runtime.registerResourceModule("proxmoxve", "index/hosts", _module)
-pulumi.runtime.registerResourceModule("proxmoxve", "index/time", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "index/aclLegacy", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "index/hagroup", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "index/hagroupLegacy", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "index/haresource", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "index/haresourceLegacy", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "index/harule", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "index/haruleLegacy", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "index/replication", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "index/replicationLegacy", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "index/vm", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "index/vm2Legacy", _module)
 pulumi.runtime.registerResourcePackage("proxmoxve", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

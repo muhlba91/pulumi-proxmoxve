@@ -47,6 +47,7 @@ class LdapArgs:
                  verify: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Ldap resource.
+
         :param pulumi.Input[_builtins.str] base_dn: LDAP base DN for user searches (e.g., 'ou=users,dc=example,dc=com').
         :param pulumi.Input[_builtins.str] realm: Realm identifier (e.g., 'example.com').
         :param pulumi.Input[_builtins.str] server1: Primary LDAP server hostname or IP address.
@@ -472,6 +473,7 @@ class _LdapState:
                  verify: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Ldap resources.
+
         :param pulumi.Input[_builtins.str] base_dn: LDAP base DN for user searches (e.g., 'ou=users,dc=example,dc=com').
         :param pulumi.Input[_builtins.str] bind_dn: LDAP bind DN for authentication (e.g., 'cn=admin,dc=example,dc=com').
         :param pulumi.Input[_builtins.str] bind_password: Password for the bind DN. Note: stored in Proxmox but not returned by API.
@@ -869,7 +871,7 @@ class _LdapState:
         pulumi.set(self, "verify", value)
 
 
-@pulumi.type_token("proxmoxve:Realm/ldap:Ldap")
+@pulumi.type_token("proxmoxve:realm/ldap:Ldap")
 class Ldap(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -903,17 +905,93 @@ class Ldap(pulumi.CustomResource):
                  verify: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
-        ## Import
+        Manages an LDAP authentication realm in Proxmox VE.
 
-        #!/usr/bin/env sh
+        LDAP realms allow Proxmox to authenticate users against an LDAP directory service.
 
-        LDAP realms can be imported using the realm identifier, e.g.:
+        ## Privileges Required
 
-        ```sh
-        $ pulumi import proxmoxve:Realm/ldap:Ldap example example.com
+        | Path | Attribute |
+        |-----------------|----------------|
+        | /access/domains | Realm.Allocate |
+
+        ## Notes
+
+        ### Password Security
+
+        The `bind_password` is sent to Proxmox and stored securely, but it's never returned by the API. This means:
+        - Terraform cannot detect if the password was changed outside of Terraform
+        - You must maintain the password in your Terraform configuration or use a variable
+        - The password will be marked as sensitive in Terraform state
+
+        ### LDAP vs LDAPS
+
+        - **LDAP (port 389)**: Unencrypted connection. Not recommended for production.
+        - **LDAPS (port 636)**: Encrypted connection using SSL/TLS. Recommended for production.
+        - **LDAP+StartTLS**: Upgrades plain LDAP connection to TLS. Alternative to LDAPS.
+
+        ### User Synchronization
+
+        To trigger synchronization, use the `realm.Sync` resource.
+
+        ### Common Configuration Scenarios
+
+        #### Anonymous Binding
+        For testing or public LDAP servers, omit `bind_dn` and `bind_password` to use anonymous binding:
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        anonymous = proxmoxve.realm.Ldap("anonymous",
+            realm="public-ldap",
+            server1="ldap.example.com",
+            base_dn="ou=users,dc=example,dc=com",
+            user_attr="uid")
         ```
 
-        -> When importing, the `bind_password` attribute cannot be imported since it's not returned by the Proxmox API. You'll need to set this attribute in your Terraform configuration after the import to manage it with Terraform.
+        #### Secure LDAPS with Failover
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        secure = proxmoxve.realm.Ldap("secure",
+            realm="secure-ldap",
+            server1="ldap1.example.com",
+            server2="ldap2.example.com",
+            port=636,
+            base_dn="ou=users,dc=example,dc=com",
+            bind_dn="cn=readonly,dc=example,dc=com",
+            bind_password=ldap_password,
+            mode="ldaps",
+            verify=True,
+            ca_path="/etc/pve/priv/ca.crt")
+        ```
+
+        #### With Group Synchronization
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        with_groups = proxmoxve.realm.Ldap("with_groups",
+            realm="corporate-ldap",
+            server1="ldap.corp.example.com",
+            base_dn="ou=users,dc=corp,dc=example,dc=com",
+            bind_dn="cn=svc_ldap,ou=services,dc=corp,dc=example,dc=com",
+            bind_password=ldap_password,
+            mode="ldap+starttls",
+            group_dn="ou=groups,dc=corp,dc=example,dc=com",
+            group_filter="(objectClass=groupOfNames)",
+            group_name_attr="cn",
+            sync_attributes="email=mail,firstname=givenName,lastname=sn",
+            sync_defaults_options="scope=both,enable-new=1")
+        ```
+
+        ## See Also
+
+        - [Proxmox VE User Management](https://pve.proxmox.com/wiki/User_Management)
+        - [Proxmox VE LDAP Authentication](https://pve.proxmox.com/wiki/User_Management#pveum_ldap)
+        - [Proxmox API: /access/domains](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/domains)
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -951,17 +1029,93 @@ class Ldap(pulumi.CustomResource):
                  args: LdapArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Import
+        Manages an LDAP authentication realm in Proxmox VE.
 
-        #!/usr/bin/env sh
+        LDAP realms allow Proxmox to authenticate users against an LDAP directory service.
 
-        LDAP realms can be imported using the realm identifier, e.g.:
+        ## Privileges Required
 
-        ```sh
-        $ pulumi import proxmoxve:Realm/ldap:Ldap example example.com
+        | Path | Attribute |
+        |-----------------|----------------|
+        | /access/domains | Realm.Allocate |
+
+        ## Notes
+
+        ### Password Security
+
+        The `bind_password` is sent to Proxmox and stored securely, but it's never returned by the API. This means:
+        - Terraform cannot detect if the password was changed outside of Terraform
+        - You must maintain the password in your Terraform configuration or use a variable
+        - The password will be marked as sensitive in Terraform state
+
+        ### LDAP vs LDAPS
+
+        - **LDAP (port 389)**: Unencrypted connection. Not recommended for production.
+        - **LDAPS (port 636)**: Encrypted connection using SSL/TLS. Recommended for production.
+        - **LDAP+StartTLS**: Upgrades plain LDAP connection to TLS. Alternative to LDAPS.
+
+        ### User Synchronization
+
+        To trigger synchronization, use the `realm.Sync` resource.
+
+        ### Common Configuration Scenarios
+
+        #### Anonymous Binding
+        For testing or public LDAP servers, omit `bind_dn` and `bind_password` to use anonymous binding:
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        anonymous = proxmoxve.realm.Ldap("anonymous",
+            realm="public-ldap",
+            server1="ldap.example.com",
+            base_dn="ou=users,dc=example,dc=com",
+            user_attr="uid")
         ```
 
-        -> When importing, the `bind_password` attribute cannot be imported since it's not returned by the Proxmox API. You'll need to set this attribute in your Terraform configuration after the import to manage it with Terraform.
+        #### Secure LDAPS with Failover
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        secure = proxmoxve.realm.Ldap("secure",
+            realm="secure-ldap",
+            server1="ldap1.example.com",
+            server2="ldap2.example.com",
+            port=636,
+            base_dn="ou=users,dc=example,dc=com",
+            bind_dn="cn=readonly,dc=example,dc=com",
+            bind_password=ldap_password,
+            mode="ldaps",
+            verify=True,
+            ca_path="/etc/pve/priv/ca.crt")
+        ```
+
+        #### With Group Synchronization
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        with_groups = proxmoxve.realm.Ldap("with_groups",
+            realm="corporate-ldap",
+            server1="ldap.corp.example.com",
+            base_dn="ou=users,dc=corp,dc=example,dc=com",
+            bind_dn="cn=svc_ldap,ou=services,dc=corp,dc=example,dc=com",
+            bind_password=ldap_password,
+            mode="ldap+starttls",
+            group_dn="ou=groups,dc=corp,dc=example,dc=com",
+            group_filter="(objectClass=groupOfNames)",
+            group_name_attr="cn",
+            sync_attributes="email=mail,firstname=givenName,lastname=sn",
+            sync_defaults_options="scope=both,enable-new=1")
+        ```
+
+        ## See Also
+
+        - [Proxmox VE User Management](https://pve.proxmox.com/wiki/User_Management)
+        - [Proxmox VE LDAP Authentication](https://pve.proxmox.com/wiki/User_Management#pveum_ldap)
+        - [Proxmox API: /access/domains](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/domains)
+
 
         :param str resource_name: The name of the resource.
         :param LdapArgs args: The arguments to use to populate this resource's properties.
@@ -1048,7 +1202,7 @@ class Ldap(pulumi.CustomResource):
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["bindPassword"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Ldap, __self__).__init__(
-            'proxmoxve:Realm/ldap:Ldap',
+            'proxmoxve:realm/ldap:Ldap',
             resource_name,
             __props__,
             opts)

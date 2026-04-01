@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -16,63 +16,6 @@ import (
 //
 // ACLs are used to control access to resources in the Proxmox cluster.
 // Each ACL consists of a path, a user, group or token, a role, and a flag to allow propagation of permissions.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve"
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/permission"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			operationsAutomation, err := permission.NewUser(ctx, "operations_automation", &permission.UserArgs{
-//				Comment:  pulumi.String("Managed by Pulumi"),
-//				Password: pulumi.String("a-strong-password"),
-//				UserId:   pulumi.String("operations-automation@pve"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			operationsMonitoring, err := permission.NewRole(ctx, "operations_monitoring", &permission.RoleArgs{
-//				RoleId: pulumi.String("operations-monitoring"),
-//				Privileges: pulumi.StringArray{
-//					pulumi.String("VM.GuestAgent.Audit"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = proxmoxve.NewAcl(ctx, "operations_automation_monitoring", &proxmoxve.AclArgs{
-//				UserId:    operationsAutomation.UserId,
-//				RoleId:    operationsMonitoring.RoleId,
-//				Path:      pulumi.String("/vms/1234"),
-//				Propagate: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// #!/usr/bin/env sh
-//
-// ACL can be imported using its unique identifier, e.g.: {path}?{group|user@realm|user@realm!token}?{role}
-//
-// ```sh
-// $ pulumi import proxmoxve:index/acl:Acl operations_automation_monitoring /?monitor@pve?operations-monitoring
-// ```
 type Acl struct {
 	pulumi.CustomResourceState
 

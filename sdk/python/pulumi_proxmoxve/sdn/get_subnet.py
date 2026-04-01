@@ -152,7 +152,7 @@ def get_subnet(cidr: Optional[_builtins.str] = None,
     __args__['dhcpRange'] = dhcp_range
     __args__['vnet'] = vnet
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('proxmoxve:Sdn/getSubnet:getSubnet', __args__, opts=opts, typ=GetSubnetResult).value
+    __ret__ = pulumi.runtime.invoke('proxmoxve:sdn/getSubnet:getSubnet', __args__, opts=opts, typ=GetSubnetResult).value
 
     return AwaitableGetSubnetResult(
         cidr=pulumi.get(__ret__, 'cidr'),
@@ -180,7 +180,7 @@ def get_subnet_output(cidr: Optional[pulumi.Input[_builtins.str]] = None,
     __args__['dhcpRange'] = dhcp_range
     __args__['vnet'] = vnet
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Sdn/getSubnet:getSubnet', __args__, opts=opts, typ=GetSubnetResult)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:sdn/getSubnet:getSubnet', __args__, opts=opts, typ=GetSubnetResult)
     return __ret__.apply(lambda __response__: GetSubnetResult(
         cidr=pulumi.get(__response__, 'cidr'),
         dhcp_dns_server=pulumi.get(__response__, 'dhcp_dns_server'),

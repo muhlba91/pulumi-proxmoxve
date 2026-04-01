@@ -10,16 +10,24 @@ export type File = import("./file").File;
 export const File: typeof import("./file").File = null as any;
 utilities.lazyLoad(exports, ["File"], () => require("./file"));
 
+export { FileLegacyArgs, FileLegacyState } from "./fileLegacy";
+export type FileLegacy = import("./fileLegacy").FileLegacy;
+export const FileLegacy: typeof import("./fileLegacy").FileLegacy = null as any;
+utilities.lazyLoad(exports, ["FileLegacy"], () => require("./fileLegacy"));
+
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "proxmoxve:Download/file:File":
+            case "proxmoxve:download/file:File":
                 return new File(name, <any>undefined, { urn })
+            case "proxmoxve:download/fileLegacy:FileLegacy":
+                return new FileLegacy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("proxmoxve", "Download/file", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "download/file", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "download/fileLegacy", _module)

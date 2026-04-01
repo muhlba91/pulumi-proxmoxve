@@ -115,26 +115,13 @@ def get_account(name: Optional[_builtins.str] = None,
     """
     Retrieves information about a specific ACME account.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    # This will fetch all ACME accounts...
-    all = proxmoxve.Acme.get_accounts()
-    # ...which we will go through in order to fetch the whole data on each account.
-    example = {__key: proxmoxve.Acme.get_account(name=__value) for __key, __value in all.accounts}
-    pulumi.export("dataProxmoxVirtualEnvironmentAcmeAccount", example)
-    ```
-
 
     :param _builtins.str name: The identifier of the ACME account to read.
     """
     __args__ = dict()
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('proxmoxve:Acme/getAccount:getAccount', __args__, opts=opts, typ=GetAccountResult).value
+    __ret__ = pulumi.runtime.invoke('proxmoxve:acme/getAccount:getAccount', __args__, opts=opts, typ=GetAccountResult).value
 
     return AwaitableGetAccountResult(
         account=pulumi.get(__ret__, 'account'),
@@ -148,26 +135,13 @@ def get_account_output(name: Optional[pulumi.Input[Optional[_builtins.str]]] = N
     """
     Retrieves information about a specific ACME account.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    # This will fetch all ACME accounts...
-    all = proxmoxve.Acme.get_accounts()
-    # ...which we will go through in order to fetch the whole data on each account.
-    example = {__key: proxmoxve.Acme.get_account(name=__value) for __key, __value in all.accounts}
-    pulumi.export("dataProxmoxVirtualEnvironmentAcmeAccount", example)
-    ```
-
 
     :param _builtins.str name: The identifier of the ACME account to read.
     """
     __args__ = dict()
     __args__['name'] = name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Acme/getAccount:getAccount', __args__, opts=opts, typ=GetAccountResult)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:acme/getAccount:getAccount', __args__, opts=opts, typ=GetAccountResult)
     return __ret__.apply(lambda __response__: GetAccountResult(
         account=pulumi.get(__response__, 'account'),
         directory=pulumi.get(__response__, 'directory'),

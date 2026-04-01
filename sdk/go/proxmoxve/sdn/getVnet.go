@@ -7,49 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves information about an existing SDN VNet.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdn"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := sdn.GetVnet(ctx, &sdn.GetVnetArgs{
-//				Id: "vnet1",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("dataProxmoxVirtualEnvironmentSdnVnet", pulumi.Map{
-//				"id":           example.Id,
-//				"zone":         example.Zone,
-//				"alias":        example.Alias,
-//				"isolatePorts": example.IsolatePorts,
-//				"tag":          example.Tag,
-//				"vlanAware":    example.VlanAware,
-//			})
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupVnet(ctx *pulumi.Context, args *LookupVnetArgs, opts ...pulumi.InvokeOption) (*LookupVnetResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVnetResult
-	err := ctx.Invoke("proxmoxve:Sdn/getVnet:getVnet", args, &rv, opts...)
+	err := ctx.Invoke("proxmoxve:sdn/getVnet:getVnet", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -83,7 +49,7 @@ func LookupVnetOutput(ctx *pulumi.Context, args LookupVnetOutputArgs, opts ...pu
 		ApplyT(func(v interface{}) (LookupVnetResultOutput, error) {
 			args := v.(LookupVnetArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:Sdn/getVnet:getVnet", args, LookupVnetResultOutput{}, options).(LookupVnetResultOutput), nil
+			return ctx.InvokeOutput("proxmoxve:sdn/getVnet:getVnet", args, LookupVnetResultOutput{}, options).(LookupVnetResultOutput), nil
 		}).(LookupVnetResultOutput)
 }
 

@@ -7,45 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves information about a specific PVE metric server.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/metrics"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := metrics.GetServer(ctx, &metrics.GetServerArgs{
-//				Name: "example_influxdb",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("dataProxmoxVirtualEnvironmentMetricsServer", pulumi.Map{
-//				"server": example.Server,
-//				"port":   example.Port,
-//			})
-//			return nil
-//		})
-//	}
-//
-// ```
-func GetServer(ctx *pulumi.Context, args *GetServerArgs, opts ...pulumi.InvokeOption) (*GetServerResult, error) {
+func LookupServer(ctx *pulumi.Context, args *LookupServerArgs, opts ...pulumi.InvokeOption) (*LookupServerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetServerResult
-	err := ctx.Invoke("proxmoxve:Metrics/getServer:getServer", args, &rv, opts...)
+	var rv LookupServerResult
+	err := ctx.Invoke("proxmoxve:metrics/getServer:getServer", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -53,23 +23,35 @@ func GetServer(ctx *pulumi.Context, args *GetServerArgs, opts ...pulumi.InvokeOp
 }
 
 // A collection of arguments for invoking getServer.
-type GetServerArgs struct {
+type LookupServerArgs struct {
 	// Unique name that will be ID of this metric server in PVE.
 	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getServer.
-type GetServerResult struct {
+type LookupServerResult struct {
 	// Indicates if the metric server is disabled.
 	Disable bool `pulumi:"disable"`
 	// The unique identifier of this resource.
 	Id string `pulumi:"id"`
 	// Unique name that will be ID of this metric server in PVE.
 	Name string `pulumi:"name"`
+	// OpenTelemetry compression algorithm for requests.
+	OpentelemetryCompression string `pulumi:"opentelemetryCompression"`
+	// OpenTelemetry custom HTTP headers as JSON, base64 encoded.
+	OpentelemetryHeaders string `pulumi:"opentelemetryHeaders"`
+	// OpenTelemetry maximum request body size in bytes.
+	OpentelemetryMaxBodySize int `pulumi:"opentelemetryMaxBodySize"`
 	// OpenTelemetry endpoint path (e.g., `/v1/metrics`).
 	OpentelemetryPath string `pulumi:"opentelemetryPath"`
 	// Protocol for OpenTelemetry. Choice is between `http` | `https`.
 	OpentelemetryProto string `pulumi:"opentelemetryProto"`
+	// OpenTelemetry additional resource attributes as JSON, base64 encoded.
+	OpentelemetryResourceAttributes string `pulumi:"opentelemetryResourceAttributes"`
+	// OpenTelemetry HTTP request timeout in seconds.
+	OpentelemetryTimeout int `pulumi:"opentelemetryTimeout"`
+	// OpenTelemetry verify SSL certificates.
+	OpentelemetryVerifySsl bool `pulumi:"opentelemetryVerifySsl"`
 	// Server network port.
 	Port int `pulumi:"port"`
 	// Server dns name or IP address.
@@ -78,80 +60,110 @@ type GetServerResult struct {
 	Type string `pulumi:"type"`
 }
 
-func GetServerOutput(ctx *pulumi.Context, args GetServerOutputArgs, opts ...pulumi.InvokeOption) GetServerResultOutput {
+func LookupServerOutput(ctx *pulumi.Context, args LookupServerOutputArgs, opts ...pulumi.InvokeOption) LookupServerResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetServerResultOutput, error) {
-			args := v.(GetServerArgs)
+		ApplyT(func(v interface{}) (LookupServerResultOutput, error) {
+			args := v.(LookupServerArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:Metrics/getServer:getServer", args, GetServerResultOutput{}, options).(GetServerResultOutput), nil
-		}).(GetServerResultOutput)
+			return ctx.InvokeOutput("proxmoxve:metrics/getServer:getServer", args, LookupServerResultOutput{}, options).(LookupServerResultOutput), nil
+		}).(LookupServerResultOutput)
 }
 
 // A collection of arguments for invoking getServer.
-type GetServerOutputArgs struct {
+type LookupServerOutputArgs struct {
 	// Unique name that will be ID of this metric server in PVE.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
-func (GetServerOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServerArgs)(nil)).Elem()
+func (LookupServerOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupServerArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getServer.
-type GetServerResultOutput struct{ *pulumi.OutputState }
+type LookupServerResultOutput struct{ *pulumi.OutputState }
 
-func (GetServerResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServerResult)(nil)).Elem()
+func (LookupServerResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupServerResult)(nil)).Elem()
 }
 
-func (o GetServerResultOutput) ToGetServerResultOutput() GetServerResultOutput {
+func (o LookupServerResultOutput) ToLookupServerResultOutput() LookupServerResultOutput {
 	return o
 }
 
-func (o GetServerResultOutput) ToGetServerResultOutputWithContext(ctx context.Context) GetServerResultOutput {
+func (o LookupServerResultOutput) ToLookupServerResultOutputWithContext(ctx context.Context) LookupServerResultOutput {
 	return o
 }
 
 // Indicates if the metric server is disabled.
-func (o GetServerResultOutput) Disable() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetServerResult) bool { return v.Disable }).(pulumi.BoolOutput)
+func (o LookupServerResultOutput) Disable() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupServerResult) bool { return v.Disable }).(pulumi.BoolOutput)
 }
 
 // The unique identifier of this resource.
-func (o GetServerResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServerResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupServerResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Unique name that will be ID of this metric server in PVE.
-func (o GetServerResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServerResult) string { return v.Name }).(pulumi.StringOutput)
+func (o LookupServerResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// OpenTelemetry compression algorithm for requests.
+func (o LookupServerResultOutput) OpentelemetryCompression() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerResult) string { return v.OpentelemetryCompression }).(pulumi.StringOutput)
+}
+
+// OpenTelemetry custom HTTP headers as JSON, base64 encoded.
+func (o LookupServerResultOutput) OpentelemetryHeaders() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerResult) string { return v.OpentelemetryHeaders }).(pulumi.StringOutput)
+}
+
+// OpenTelemetry maximum request body size in bytes.
+func (o LookupServerResultOutput) OpentelemetryMaxBodySize() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupServerResult) int { return v.OpentelemetryMaxBodySize }).(pulumi.IntOutput)
 }
 
 // OpenTelemetry endpoint path (e.g., `/v1/metrics`).
-func (o GetServerResultOutput) OpentelemetryPath() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServerResult) string { return v.OpentelemetryPath }).(pulumi.StringOutput)
+func (o LookupServerResultOutput) OpentelemetryPath() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerResult) string { return v.OpentelemetryPath }).(pulumi.StringOutput)
 }
 
 // Protocol for OpenTelemetry. Choice is between `http` | `https`.
-func (o GetServerResultOutput) OpentelemetryProto() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServerResult) string { return v.OpentelemetryProto }).(pulumi.StringOutput)
+func (o LookupServerResultOutput) OpentelemetryProto() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerResult) string { return v.OpentelemetryProto }).(pulumi.StringOutput)
+}
+
+// OpenTelemetry additional resource attributes as JSON, base64 encoded.
+func (o LookupServerResultOutput) OpentelemetryResourceAttributes() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerResult) string { return v.OpentelemetryResourceAttributes }).(pulumi.StringOutput)
+}
+
+// OpenTelemetry HTTP request timeout in seconds.
+func (o LookupServerResultOutput) OpentelemetryTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupServerResult) int { return v.OpentelemetryTimeout }).(pulumi.IntOutput)
+}
+
+// OpenTelemetry verify SSL certificates.
+func (o LookupServerResultOutput) OpentelemetryVerifySsl() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupServerResult) bool { return v.OpentelemetryVerifySsl }).(pulumi.BoolOutput)
 }
 
 // Server network port.
-func (o GetServerResultOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v GetServerResult) int { return v.Port }).(pulumi.IntOutput)
+func (o LookupServerResultOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupServerResult) int { return v.Port }).(pulumi.IntOutput)
 }
 
 // Server dns name or IP address.
-func (o GetServerResultOutput) Server() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServerResult) string { return v.Server }).(pulumi.StringOutput)
+func (o LookupServerResultOutput) Server() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerResult) string { return v.Server }).(pulumi.StringOutput)
 }
 
 // Plugin type. Either `graphite`, `influxdb`, or `opentelemetry`.
-func (o GetServerResultOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServerResult) string { return v.Type }).(pulumi.StringOutput)
+func (o LookupServerResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServerResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetServerResultOutput{})
+	pulumi.RegisterOutputType(LookupServerResultOutput{})
 }

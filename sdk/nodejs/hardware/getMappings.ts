@@ -8,32 +8,10 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves a list of hardware mapping resources.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const example_dir = proxmoxve.Hardware.getMappings({
- *     checkNode: "pve",
- *     type: "dir",
- * });
- * const example_pci = proxmoxve.Hardware.getMappings({
- *     checkNode: "pve",
- *     type: "pci",
- * });
- * const example_usb = proxmoxve.Hardware.getMappings({
- *     checkNode: "pve",
- *     type: "usb",
- * });
- * export const dataProxmoxVirtualEnvironmentHardwareMappingsPci = example_pci;
- * export const dataProxmoxVirtualEnvironmentHardwareMappingsUsb = example_usb;
- * ```
  */
 export function getMappings(args: GetMappingsArgs, opts?: pulumi.InvokeOptions): Promise<GetMappingsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("proxmoxve:Hardware/getMappings:getMappings", {
+    return pulumi.runtime.invoke("proxmoxve:hardware/getMappings:getMappings", {
         "checkNode": args.checkNode,
         "type": args.type,
     }, opts);
@@ -64,7 +42,7 @@ export interface GetMappingsResult {
     /**
      * Might contain relevant diagnostics about incorrect configurations.
      */
-    readonly checks: outputs.Hardware.GetMappingsCheck[];
+    readonly checks: outputs.hardware.GetMappingsCheck[];
     /**
      * The unique identifier of this hardware mappings data source.
      */
@@ -80,32 +58,10 @@ export interface GetMappingsResult {
 }
 /**
  * Retrieves a list of hardware mapping resources.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const example_dir = proxmoxve.Hardware.getMappings({
- *     checkNode: "pve",
- *     type: "dir",
- * });
- * const example_pci = proxmoxve.Hardware.getMappings({
- *     checkNode: "pve",
- *     type: "pci",
- * });
- * const example_usb = proxmoxve.Hardware.getMappings({
- *     checkNode: "pve",
- *     type: "usb",
- * });
- * export const dataProxmoxVirtualEnvironmentHardwareMappingsPci = example_pci;
- * export const dataProxmoxVirtualEnvironmentHardwareMappingsUsb = example_usb;
- * ```
  */
 export function getMappingsOutput(args: GetMappingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMappingsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("proxmoxve:Hardware/getMappings:getMappings", {
+    return pulumi.runtime.invokeOutput("proxmoxve:hardware/getMappings:getMappings", {
         "checkNode": args.checkNode,
         "type": args.type,
     }, opts);

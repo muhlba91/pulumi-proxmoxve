@@ -8,61 +8,13 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Manages Proxmox VE Node Firewall options.
 //
 // > This resource in fact updates existing node firewall configuration created by PVE on bootstrap. All optional attributes have explicit defaults for deterministic behavior (PVE may change defaults in the future). See [API documentation](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/firewall/options).
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/node"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := node.NewFirewall(ctx, "node-pve1", &node.FirewallArgs{
-//				NodeName: pulumi.String("pve1"),
-//				Enabled:  pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = node.NewFirewall(ctx, "pve2", &node.FirewallArgs{
-//				NodeName:         pulumi.String("pve2"),
-//				Enabled:          pulumi.Bool(true),
-//				LogLevelIn:       pulumi.String("alert"),
-//				LogLevelOut:      pulumi.String("alert"),
-//				LogLevelForward:  pulumi.String("alert"),
-//				Ndp:              pulumi.Bool(true),
-//				Nftables:         pulumi.Bool(true),
-//				Nosmurfs:         pulumi.Bool(true),
-//				SmurfLogLevel:    pulumi.String("alert"),
-//				TcpFlagsLogLevel: pulumi.String("alert"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// ```sh
-// $ pulumi import proxmoxve:Node/firewall:Firewall node-pve1 pve1
-// ```
 type Firewall struct {
 	pulumi.CustomResourceState
 
@@ -104,7 +56,7 @@ func NewFirewall(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Firewall
-	err := ctx.RegisterResource("proxmoxve:Node/firewall:Firewall", name, args, &resource, opts...)
+	err := ctx.RegisterResource("proxmoxve:node/firewall:Firewall", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -116,7 +68,7 @@ func NewFirewall(ctx *pulumi.Context,
 func GetFirewall(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *FirewallState, opts ...pulumi.ResourceOption) (*Firewall, error) {
 	var resource Firewall
-	err := ctx.ReadResource("proxmoxve:Node/firewall:Firewall", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("proxmoxve:node/firewall:Firewall", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

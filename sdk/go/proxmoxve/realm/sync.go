@@ -8,23 +8,24 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Import
+// Triggers synchronization of an existing authentication realm using `/access/domains/{realm}/sync`. This resource represents the last requested sync configuration; deleting it does not undo the sync.
 //
-// #!/usr/bin/env sh
+// This resource wraps the `/access/domains/{realm}/sync` API and is intended to be
+// used alongside realm configuration resources such as
+// `realm.Ldap`.
 //
-// Realm sync resources can be imported by realm name, e.g.:
+// ## Behavior Notes
 //
-// ```sh
-// $ pulumi import proxmoxve:Realm/sync:Sync example example.com
-// ```
-//
-// Importing only populates the `realm` and `id` attributes; other fields must
-//
-// be set in configuration.
+//   - The sync operation is **one-shot**: applying the resource runs the sync
+//     with the specified options. Proxmox does not expose a persistent sync
+//     object, so this resource only records the last requested sync
+//     configuration in Terraform state.
+//   - Destroying the resource does **not** undo any previously performed sync;
+//     it simply removes the resource from Terraform state.
 type Sync struct {
 	pulumi.CustomResourceState
 
@@ -60,7 +61,7 @@ func NewSync(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Sync
-	err := ctx.RegisterResource("proxmoxve:Realm/sync:Sync", name, args, &resource, opts...)
+	err := ctx.RegisterResource("proxmoxve:realm/sync:Sync", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -72,7 +73,7 @@ func NewSync(ctx *pulumi.Context,
 func GetSync(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *SyncState, opts ...pulumi.ResourceOption) (*Sync, error) {
 	var resource Sync
-	err := ctx.ReadResource("proxmoxve:Realm/sync:Sync", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("proxmoxve:realm/sync:Sync", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

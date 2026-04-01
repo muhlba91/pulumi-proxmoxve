@@ -10,21 +10,22 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.Realm
 {
     /// <summary>
-    /// ## Import
+    /// Triggers synchronization of an existing authentication realm using `/access/domains/{realm}/sync`. This resource represents the last requested sync configuration; deleting it does not undo the sync.
     /// 
-    /// #!/usr/bin/env sh
+    /// This resource wraps the `/access/domains/{realm}/sync` API and is intended to be
+    /// used alongside realm configuration resources such as
+    /// `proxmoxve.realm.Ldap`.
     /// 
-    /// Realm sync resources can be imported by realm name, e.g.:
+    /// ## Behavior Notes
     /// 
-    /// ```sh
-    /// $ pulumi import proxmoxve:Realm/sync:Sync example example.com
-    /// ```
-    /// 
-    /// Importing only populates the `realm` and `id` attributes; other fields must
-    /// 
-    /// be set in configuration.
+    /// - The sync operation is **one-shot**: applying the resource runs the sync
+    ///   with the specified options. Proxmox does not expose a persistent sync
+    ///   object, so this resource only records the last requested sync
+    ///   configuration in Terraform state.
+    /// - Destroying the resource does **not** undo any previously performed sync;
+    ///   it simply removes the resource from Terraform state.
     /// </summary>
-    [ProxmoxVEResourceType("proxmoxve:Realm/sync:Sync")]
+    [ProxmoxVEResourceType("proxmoxve:realm/sync:Sync")]
     public partial class Sync : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -78,12 +79,12 @@ namespace Pulumi.ProxmoxVE.Realm
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Sync(string name, SyncArgs args, CustomResourceOptions? options = null)
-            : base("proxmoxve:Realm/sync:Sync", name, args ?? new SyncArgs(), MakeResourceOptions(options, ""))
+            : base("proxmoxve:realm/sync:Sync", name, args ?? new SyncArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Sync(string name, Input<string> id, SyncState? state = null, CustomResourceOptions? options = null)
-            : base("proxmoxve:Realm/sync:Sync", name, state, MakeResourceOptions(options, id))
+            : base("proxmoxve:realm/sync:Sync", name, state, MakeResourceOptions(options, id))
         {
         }
 

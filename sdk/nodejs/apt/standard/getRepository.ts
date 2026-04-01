@@ -6,23 +6,10 @@ import * as utilities from "../../utilities";
 
 /**
  * Retrieves an APT standard repository from a Proxmox VE cluster.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const example = proxmoxve.Apt.standard.getRepository({
- *     handle: "no-subscription",
- *     node: "pve",
- * });
- * export const proxmoxVirtualEnvironmentAptStandardRepository = example;
- * ```
  */
 export function getRepository(args: GetRepositoryArgs, opts?: pulumi.InvokeOptions): Promise<GetRepositoryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("proxmoxve:Apt/standard/getRepository:getRepository", {
+    return pulumi.runtime.invoke("proxmoxve:apt/standard/getRepository:getRepository", {
         "handle": args.handle,
         "node": args.node,
     }, opts);
@@ -81,23 +68,10 @@ export interface GetRepositoryResult {
 }
 /**
  * Retrieves an APT standard repository from a Proxmox VE cluster.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const example = proxmoxve.Apt.standard.getRepository({
- *     handle: "no-subscription",
- *     node: "pve",
- * });
- * export const proxmoxVirtualEnvironmentAptStandardRepository = example;
- * ```
  */
 export function getRepositoryOutput(args: GetRepositoryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRepositoryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("proxmoxve:Apt/standard/getRepository:getRepository", {
+    return pulumi.runtime.invokeOutput("proxmoxve:apt/standard/getRepository:getRepository", {
         "handle": args.handle,
         "node": args.node,
     }, opts);

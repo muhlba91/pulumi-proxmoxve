@@ -10,16 +10,24 @@ export type Token = import("./token").Token;
 export const Token: typeof import("./token").Token = null as any;
 utilities.lazyLoad(exports, ["Token"], () => require("./token"));
 
+export { TokenLegacyArgs, TokenLegacyState } from "./tokenLegacy";
+export type TokenLegacy = import("./tokenLegacy").TokenLegacy;
+export const TokenLegacy: typeof import("./tokenLegacy").TokenLegacy = null as any;
+utilities.lazyLoad(exports, ["TokenLegacy"], () => require("./tokenLegacy"));
+
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "proxmoxve:User/token:Token":
+            case "proxmoxve:user/token:Token":
                 return new Token(name, <any>undefined, { urn })
+            case "proxmoxve:user/tokenLegacy:TokenLegacy":
+                return new TokenLegacy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("proxmoxve", "User/token", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "user/token", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "user/tokenLegacy", _module)

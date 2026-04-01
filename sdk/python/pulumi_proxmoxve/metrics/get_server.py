@@ -26,7 +26,7 @@ class GetServerResult:
     """
     A collection of values returned by getServer.
     """
-    def __init__(__self__, disable=None, id=None, name=None, opentelemetry_path=None, opentelemetry_proto=None, port=None, server=None, type=None):
+    def __init__(__self__, disable=None, id=None, name=None, opentelemetry_compression=None, opentelemetry_headers=None, opentelemetry_max_body_size=None, opentelemetry_path=None, opentelemetry_proto=None, opentelemetry_resource_attributes=None, opentelemetry_timeout=None, opentelemetry_verify_ssl=None, port=None, server=None, type=None):
         if disable and not isinstance(disable, bool):
             raise TypeError("Expected argument 'disable' to be a bool")
         pulumi.set(__self__, "disable", disable)
@@ -36,12 +36,30 @@ class GetServerResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if opentelemetry_compression and not isinstance(opentelemetry_compression, str):
+            raise TypeError("Expected argument 'opentelemetry_compression' to be a str")
+        pulumi.set(__self__, "opentelemetry_compression", opentelemetry_compression)
+        if opentelemetry_headers and not isinstance(opentelemetry_headers, str):
+            raise TypeError("Expected argument 'opentelemetry_headers' to be a str")
+        pulumi.set(__self__, "opentelemetry_headers", opentelemetry_headers)
+        if opentelemetry_max_body_size and not isinstance(opentelemetry_max_body_size, int):
+            raise TypeError("Expected argument 'opentelemetry_max_body_size' to be a int")
+        pulumi.set(__self__, "opentelemetry_max_body_size", opentelemetry_max_body_size)
         if opentelemetry_path and not isinstance(opentelemetry_path, str):
             raise TypeError("Expected argument 'opentelemetry_path' to be a str")
         pulumi.set(__self__, "opentelemetry_path", opentelemetry_path)
         if opentelemetry_proto and not isinstance(opentelemetry_proto, str):
             raise TypeError("Expected argument 'opentelemetry_proto' to be a str")
         pulumi.set(__self__, "opentelemetry_proto", opentelemetry_proto)
+        if opentelemetry_resource_attributes and not isinstance(opentelemetry_resource_attributes, str):
+            raise TypeError("Expected argument 'opentelemetry_resource_attributes' to be a str")
+        pulumi.set(__self__, "opentelemetry_resource_attributes", opentelemetry_resource_attributes)
+        if opentelemetry_timeout and not isinstance(opentelemetry_timeout, int):
+            raise TypeError("Expected argument 'opentelemetry_timeout' to be a int")
+        pulumi.set(__self__, "opentelemetry_timeout", opentelemetry_timeout)
+        if opentelemetry_verify_ssl and not isinstance(opentelemetry_verify_ssl, bool):
+            raise TypeError("Expected argument 'opentelemetry_verify_ssl' to be a bool")
+        pulumi.set(__self__, "opentelemetry_verify_ssl", opentelemetry_verify_ssl)
         if port and not isinstance(port, int):
             raise TypeError("Expected argument 'port' to be a int")
         pulumi.set(__self__, "port", port)
@@ -77,6 +95,30 @@ class GetServerResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="opentelemetryCompression")
+    def opentelemetry_compression(self) -> _builtins.str:
+        """
+        OpenTelemetry compression algorithm for requests.
+        """
+        return pulumi.get(self, "opentelemetry_compression")
+
+    @_builtins.property
+    @pulumi.getter(name="opentelemetryHeaders")
+    def opentelemetry_headers(self) -> _builtins.str:
+        """
+        OpenTelemetry custom HTTP headers as JSON, base64 encoded.
+        """
+        return pulumi.get(self, "opentelemetry_headers")
+
+    @_builtins.property
+    @pulumi.getter(name="opentelemetryMaxBodySize")
+    def opentelemetry_max_body_size(self) -> _builtins.int:
+        """
+        OpenTelemetry maximum request body size in bytes.
+        """
+        return pulumi.get(self, "opentelemetry_max_body_size")
+
+    @_builtins.property
     @pulumi.getter(name="opentelemetryPath")
     def opentelemetry_path(self) -> _builtins.str:
         """
@@ -91,6 +133,30 @@ class GetServerResult:
         Protocol for OpenTelemetry. Choice is between `http` | `https`.
         """
         return pulumi.get(self, "opentelemetry_proto")
+
+    @_builtins.property
+    @pulumi.getter(name="opentelemetryResourceAttributes")
+    def opentelemetry_resource_attributes(self) -> _builtins.str:
+        """
+        OpenTelemetry additional resource attributes as JSON, base64 encoded.
+        """
+        return pulumi.get(self, "opentelemetry_resource_attributes")
+
+    @_builtins.property
+    @pulumi.getter(name="opentelemetryTimeout")
+    def opentelemetry_timeout(self) -> _builtins.int:
+        """
+        OpenTelemetry HTTP request timeout in seconds.
+        """
+        return pulumi.get(self, "opentelemetry_timeout")
+
+    @_builtins.property
+    @pulumi.getter(name="opentelemetryVerifySsl")
+    def opentelemetry_verify_ssl(self) -> _builtins.bool:
+        """
+        OpenTelemetry verify SSL certificates.
+        """
+        return pulumi.get(self, "opentelemetry_verify_ssl")
 
     @_builtins.property
     @pulumi.getter
@@ -126,8 +192,14 @@ class AwaitableGetServerResult(GetServerResult):
             disable=self.disable,
             id=self.id,
             name=self.name,
+            opentelemetry_compression=self.opentelemetry_compression,
+            opentelemetry_headers=self.opentelemetry_headers,
+            opentelemetry_max_body_size=self.opentelemetry_max_body_size,
             opentelemetry_path=self.opentelemetry_path,
             opentelemetry_proto=self.opentelemetry_proto,
+            opentelemetry_resource_attributes=self.opentelemetry_resource_attributes,
+            opentelemetry_timeout=self.opentelemetry_timeout,
+            opentelemetry_verify_ssl=self.opentelemetry_verify_ssl,
             port=self.port,
             server=self.server,
             type=self.type)
@@ -138,33 +210,26 @@ def get_server(name: Optional[_builtins.str] = None,
     """
     Retrieves information about a specific PVE metric server.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    example = proxmoxve.Metrics.get_server(name="example_influxdb")
-    pulumi.export("dataProxmoxVirtualEnvironmentMetricsServer", {
-        "server": example.server,
-        "port": example.port,
-    })
-    ```
-
 
     :param _builtins.str name: Unique name that will be ID of this metric server in PVE.
     """
     __args__ = dict()
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('proxmoxve:Metrics/getServer:getServer', __args__, opts=opts, typ=GetServerResult).value
+    __ret__ = pulumi.runtime.invoke('proxmoxve:metrics/getServer:getServer', __args__, opts=opts, typ=GetServerResult).value
 
     return AwaitableGetServerResult(
         disable=pulumi.get(__ret__, 'disable'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
+        opentelemetry_compression=pulumi.get(__ret__, 'opentelemetry_compression'),
+        opentelemetry_headers=pulumi.get(__ret__, 'opentelemetry_headers'),
+        opentelemetry_max_body_size=pulumi.get(__ret__, 'opentelemetry_max_body_size'),
         opentelemetry_path=pulumi.get(__ret__, 'opentelemetry_path'),
         opentelemetry_proto=pulumi.get(__ret__, 'opentelemetry_proto'),
+        opentelemetry_resource_attributes=pulumi.get(__ret__, 'opentelemetry_resource_attributes'),
+        opentelemetry_timeout=pulumi.get(__ret__, 'opentelemetry_timeout'),
+        opentelemetry_verify_ssl=pulumi.get(__ret__, 'opentelemetry_verify_ssl'),
         port=pulumi.get(__ret__, 'port'),
         server=pulumi.get(__ret__, 'server'),
         type=pulumi.get(__ret__, 'type'))
@@ -173,32 +238,25 @@ def get_server_output(name: Optional[pulumi.Input[_builtins.str]] = None,
     """
     Retrieves information about a specific PVE metric server.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    example = proxmoxve.Metrics.get_server(name="example_influxdb")
-    pulumi.export("dataProxmoxVirtualEnvironmentMetricsServer", {
-        "server": example.server,
-        "port": example.port,
-    })
-    ```
-
 
     :param _builtins.str name: Unique name that will be ID of this metric server in PVE.
     """
     __args__ = dict()
     __args__['name'] = name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Metrics/getServer:getServer', __args__, opts=opts, typ=GetServerResult)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:metrics/getServer:getServer', __args__, opts=opts, typ=GetServerResult)
     return __ret__.apply(lambda __response__: GetServerResult(
         disable=pulumi.get(__response__, 'disable'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
+        opentelemetry_compression=pulumi.get(__response__, 'opentelemetry_compression'),
+        opentelemetry_headers=pulumi.get(__response__, 'opentelemetry_headers'),
+        opentelemetry_max_body_size=pulumi.get(__response__, 'opentelemetry_max_body_size'),
         opentelemetry_path=pulumi.get(__response__, 'opentelemetry_path'),
         opentelemetry_proto=pulumi.get(__response__, 'opentelemetry_proto'),
+        opentelemetry_resource_attributes=pulumi.get(__response__, 'opentelemetry_resource_attributes'),
+        opentelemetry_timeout=pulumi.get(__response__, 'opentelemetry_timeout'),
+        opentelemetry_verify_ssl=pulumi.get(__response__, 'opentelemetry_verify_ssl'),
         port=pulumi.get(__response__, 'port'),
         server=pulumi.get(__response__, 'server'),
         type=pulumi.get(__response__, 'type')))

@@ -8,168 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages ACME SSL certificates for Proxmox VE nodes. This resource orders and renews certificates from an ACME Certificate Authority for a specific node.
+// Manages ACME SSL certificates for Proxmox VE nodes.
 //
-// ## Example Usage
-//
-// ### Basic ACME Certificate with HTTP-01 Challenge
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve"
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/acme"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// First, create an ACME account
-//			example, err := proxmoxve.NewAcmeAccount(ctx, "example", &proxmoxve.AcmeAccountArgs{
-//				Name:      pulumi.String("production"),
-//				Contact:   pulumi.String("admin@example.com"),
-//				Directory: pulumi.String("https://acme-v02.api.letsencrypt.org/directory"),
-//				Tos:       pulumi.String("https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Order a certificate for the node
-//			_, err = acme.NewCertificate(ctx, "example", &acme.CertificateArgs{
-//				NodeName: pulumi.String("pve"),
-//				Account:  example.Name,
-//				Domains: acme.CertificateDomainArray{
-//					&acme.CertificateDomainArgs{
-//						Domain: pulumi.String("pve.example.com"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### ACME Certificate with DNS-01 Challenge
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve"
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/acme"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Create an ACME account
-//			example, err := proxmoxve.NewAcmeAccount(ctx, "example", &proxmoxve.AcmeAccountArgs{
-//				Name:      pulumi.String("production"),
-//				Contact:   pulumi.String("admin@example.com"),
-//				Directory: pulumi.String("https://acme-v02.api.letsencrypt.org/directory"),
-//				Tos:       pulumi.String("https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Configure a DNS plugin (Desec example)
-//			desec, err := proxmoxve.NewAcmeDnsPlugin(ctx, "desec", &proxmoxve.AcmeDnsPluginArgs{
-//				Plugin: pulumi.String("desec"),
-//				Api:    pulumi.String("desec"),
-//				Data: pulumi.StringMap{
-//					"DEDYN_TOKEN": pulumi.Any(dedynToken),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Order a certificate using the DNS plugin
-//			_, err = acme.NewCertificate(ctx, "test", &acme.CertificateArgs{
-//				NodeName: pulumi.String("pve"),
-//				Account:  example.Name,
-//				Force:    pulumi.Bool(false),
-//				Domains: acme.CertificateDomainArray{
-//					&acme.CertificateDomainArgs{
-//						Domain: pulumi.String("pve.example.dedyn.io"),
-//						Plugin: desec.Plugin,
-//					},
-//				},
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				example,
-//				desec,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ### Force Certificate Renewal
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/acme"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := acme.NewCertificate(ctx, "example_force", &acme.CertificateArgs{
-//				NodeName: pulumi.String("pve"),
-//				Account:  pulumi.Any(example.Name),
-//				Force:    pulumi.Bool(true),
-//				Domains: acme.CertificateDomainArray{
-//					&acme.CertificateDomainArgs{
-//						Domain: pulumi.String("pve.example.com"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Related Resources
-//
-// - `AcmeAccount` - Manages ACME accounts
-// - `AcmeDnsPlugin` - Manages ACME DNS plugins for DNS-01 challenges
-// - `Certifi` - Manages custom SSL/TLS certificates (non-ACME)
-//
-// ## Import
-//
-// ACME certificates can be imported using the node name:
-//
-// #!/usr/bin/env sh
-//
-// ACME certificates can be imported using the node name, e.g.:
-//
-// ```sh
-// $ pulumi import proxmoxve:Acme/certificate:Certificate example pve
-// ```
+// This resource orders and renews certificates from an ACME Certificate Authority (like Let's Encrypt) for a specific node. Before using this resource, ensure that:
+// - An ACME account is configured (using `acme.Account`)
+// - DNS plugins are configured if using DNS-01 challenge (using `acme/dns.Plugin`)
 type Certificate struct {
 	pulumi.CustomResourceState
 
@@ -215,7 +62,7 @@ func NewCertificate(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Certificate
-	err := ctx.RegisterResource("proxmoxve:Acme/certificate:Certificate", name, args, &resource, opts...)
+	err := ctx.RegisterResource("proxmoxve:acme/certificate:Certificate", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -227,7 +74,7 @@ func NewCertificate(ctx *pulumi.Context,
 func GetCertificate(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *CertificateState, opts ...pulumi.ResourceOption) (*Certificate, error) {
 	var resource Certificate
-	err := ctx.ReadResource("proxmoxve:Acme/certificate:Certificate", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("proxmoxve:acme/certificate:Certificate", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

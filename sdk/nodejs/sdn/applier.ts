@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * **EXPERIMENTAL** Triggers Proxmox's SDN **Apply** (equivalent to `PUT /cluster/sdn`).Intended to be used with `replaceTriggeredBy` so it runs after SDN objects change.
+ * **EXPERIMENTAL** Triggers Proxmox's SDN **Apply** (equivalent to `PUT /cluster/sdn`). Intended to be used with `replaceTriggeredBy` so it runs after SDN objects change.
  */
 export class Applier extends pulumi.CustomResource {
     /**
@@ -22,7 +22,7 @@ export class Applier extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'proxmoxve:Sdn/applier:Applier';
+    public static readonly __pulumiType = 'proxmoxve:sdn/applier:Applier';
 
     /**
      * Returns true if the given object is an instance of Applier.  This is designed to work even

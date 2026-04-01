@@ -26,6 +26,7 @@ class TokenArgs:
                  privileges_separation: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Token resource.
+
         :param pulumi.Input[_builtins.str] token_name: User-specific token identifier.
         :param pulumi.Input[_builtins.str] user_id: User identifier.
         :param pulumi.Input[_builtins.str] comment: Comment for the token.
@@ -113,6 +114,7 @@ class _TokenState:
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Token resources.
+
         :param pulumi.Input[_builtins.str] comment: Comment for the token.
         :param pulumi.Input[_builtins.str] expiration_date: Expiration date for the token.
         :param pulumi.Input[_builtins.bool] privileges_separation: Restrict API token privileges with separate ACLs (default), or give full privileges of corresponding user.
@@ -206,7 +208,7 @@ class _TokenState:
         pulumi.set(self, "value", value)
 
 
-@pulumi.type_token("proxmoxve:User/token:Token")
+@pulumi.type_token("proxmoxve:user/token:Token")
 class Token(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -221,35 +223,6 @@ class Token(pulumi.CustomResource):
         """
         User API tokens.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        # if creating a user token, the user must be created first
-        user = proxmoxve.permission.User("user",
-            comment="Managed by Pulumi",
-            email="user@pve",
-            enabled=True,
-            expiration_date="2034-01-01T22:00:00Z",
-            user_id="user@pve")
-        user_token = proxmoxve.user.Token("user_token",
-            comment="Managed by Pulumi",
-            expiration_date="2033-01-01T22:00:00Z",
-            token_name="tk1",
-            user_id=user.user_id)
-        ```
-
-        ## Import
-
-        #!/usr/bin/env sh
-
-        #Tokens can be imported using they identifiers in format `user_id!token_name` format, e.g.:
-
-        ```sh
-        $ pulumi import proxmoxve:User/token:Token token1 user@pve!token1
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -268,35 +241,6 @@ class Token(pulumi.CustomResource):
         """
         User API tokens.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        # if creating a user token, the user must be created first
-        user = proxmoxve.permission.User("user",
-            comment="Managed by Pulumi",
-            email="user@pve",
-            enabled=True,
-            expiration_date="2034-01-01T22:00:00Z",
-            user_id="user@pve")
-        user_token = proxmoxve.user.Token("user_token",
-            comment="Managed by Pulumi",
-            expiration_date="2033-01-01T22:00:00Z",
-            token_name="tk1",
-            user_id=user.user_id)
-        ```
-
-        ## Import
-
-        #!/usr/bin/env sh
-
-        #Tokens can be imported using they identifiers in format `user_id!token_name` format, e.g.:
-
-        ```sh
-        $ pulumi import proxmoxve:User/token:Token token1 user@pve!token1
-        ```
 
         :param str resource_name: The name of the resource.
         :param TokenArgs args: The arguments to use to populate this resource's properties.
@@ -340,7 +284,7 @@ class Token(pulumi.CustomResource):
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["value"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Token, __self__).__init__(
-            'proxmoxve:User/token:Token',
+            'proxmoxve:user/token:Token',
             resource_name,
             __props__,
             opts)

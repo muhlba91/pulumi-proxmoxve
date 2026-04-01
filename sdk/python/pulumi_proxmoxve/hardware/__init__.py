@@ -7,6 +7,7 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .get_mappings import *
+from .get_mappings_legacy import *
 from . import outputs
 
 # Make subpackages available:
