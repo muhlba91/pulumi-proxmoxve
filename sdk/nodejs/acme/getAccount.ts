@@ -8,26 +8,11 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves information about a specific ACME account.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * // This will fetch all ACME accounts...
- * const all = proxmoxve.Acme.getAccounts({});
- * // ...which we will go through in order to fetch the whole data on each account.
- * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: proxmoxve.Acme.getAccount({
- *     name: __value,
- * }) })));
- * export const dataProxmoxVirtualEnvironmentAcmeAccount = example;
- * ```
  */
 export function getAccount(args?: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("proxmoxve:Acme/getAccount:getAccount", {
+    return pulumi.runtime.invoke("proxmoxve:acme/getAccount:getAccount", {
         "name": args.name,
     }, opts);
 }
@@ -49,7 +34,7 @@ export interface GetAccountResult {
     /**
      * The ACME account information.
      */
-    readonly account: outputs.Acme.GetAccountAccount;
+    readonly account: outputs.acme.GetAccountAccount;
     /**
      * The directory URL of the ACME account.
      */
@@ -73,26 +58,11 @@ export interface GetAccountResult {
 }
 /**
  * Retrieves information about a specific ACME account.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * // This will fetch all ACME accounts...
- * const all = proxmoxve.Acme.getAccounts({});
- * // ...which we will go through in order to fetch the whole data on each account.
- * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: proxmoxve.Acme.getAccount({
- *     name: __value,
- * }) })));
- * export const dataProxmoxVirtualEnvironmentAcmeAccount = example;
- * ```
  */
 export function getAccountOutput(args?: GetAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("proxmoxve:Acme/getAccount:getAccount", {
+    return pulumi.runtime.invokeOutput("proxmoxve:acme/getAccount:getAccount", {
         "name": args.name,
     }, opts);
 }

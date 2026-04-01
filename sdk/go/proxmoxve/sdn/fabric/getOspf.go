@@ -7,41 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // OSPF Fabric in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdn"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdn.GetOspf(ctx, &fabric.GetOspfArgs{
-//				Id: "main-fabric",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-func GetOspf(ctx *pulumi.Context, args *GetOspfArgs, opts ...pulumi.InvokeOption) (*GetOspfResult, error) {
+func LookupOspf(ctx *pulumi.Context, args *LookupOspfArgs, opts ...pulumi.InvokeOption) (*LookupOspfResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetOspfResult
-	err := ctx.Invoke("proxmoxve:Sdn/fabric/getOspf:getOspf", args, &rv, opts...)
+	var rv LookupOspfResult
+	err := ctx.Invoke("proxmoxve:sdn/fabric/getOspf:getOspf", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -49,13 +23,13 @@ func GetOspf(ctx *pulumi.Context, args *GetOspfArgs, opts ...pulumi.InvokeOption
 }
 
 // A collection of arguments for invoking getOspf.
-type GetOspfArgs struct {
+type LookupOspfArgs struct {
 	// The unique identifier of the SDN fabric.
 	Id string `pulumi:"id"`
 }
 
 // A collection of values returned by getOspf.
-type GetOspfResult struct {
+type LookupOspfResult struct {
 	// OSPF area. Either a IPv4 address or a 32-bit number. Gets validated in rust.
 	Area string `pulumi:"area"`
 	// The unique identifier of the SDN fabric.
@@ -64,55 +38,55 @@ type GetOspfResult struct {
 	IpPrefix string `pulumi:"ipPrefix"`
 }
 
-func GetOspfOutput(ctx *pulumi.Context, args GetOspfOutputArgs, opts ...pulumi.InvokeOption) GetOspfResultOutput {
+func LookupOspfOutput(ctx *pulumi.Context, args LookupOspfOutputArgs, opts ...pulumi.InvokeOption) LookupOspfResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetOspfResultOutput, error) {
-			args := v.(GetOspfArgs)
+		ApplyT(func(v interface{}) (LookupOspfResultOutput, error) {
+			args := v.(LookupOspfArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:Sdn/fabric/getOspf:getOspf", args, GetOspfResultOutput{}, options).(GetOspfResultOutput), nil
-		}).(GetOspfResultOutput)
+			return ctx.InvokeOutput("proxmoxve:sdn/fabric/getOspf:getOspf", args, LookupOspfResultOutput{}, options).(LookupOspfResultOutput), nil
+		}).(LookupOspfResultOutput)
 }
 
 // A collection of arguments for invoking getOspf.
-type GetOspfOutputArgs struct {
+type LookupOspfOutputArgs struct {
 	// The unique identifier of the SDN fabric.
 	Id pulumi.StringInput `pulumi:"id"`
 }
 
-func (GetOspfOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOspfArgs)(nil)).Elem()
+func (LookupOspfOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupOspfArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getOspf.
-type GetOspfResultOutput struct{ *pulumi.OutputState }
+type LookupOspfResultOutput struct{ *pulumi.OutputState }
 
-func (GetOspfResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOspfResult)(nil)).Elem()
+func (LookupOspfResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupOspfResult)(nil)).Elem()
 }
 
-func (o GetOspfResultOutput) ToGetOspfResultOutput() GetOspfResultOutput {
+func (o LookupOspfResultOutput) ToLookupOspfResultOutput() LookupOspfResultOutput {
 	return o
 }
 
-func (o GetOspfResultOutput) ToGetOspfResultOutputWithContext(ctx context.Context) GetOspfResultOutput {
+func (o LookupOspfResultOutput) ToLookupOspfResultOutputWithContext(ctx context.Context) LookupOspfResultOutput {
 	return o
 }
 
 // OSPF area. Either a IPv4 address or a 32-bit number. Gets validated in rust.
-func (o GetOspfResultOutput) Area() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOspfResult) string { return v.Area }).(pulumi.StringOutput)
+func (o LookupOspfResultOutput) Area() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOspfResult) string { return v.Area }).(pulumi.StringOutput)
 }
 
 // The unique identifier of the SDN fabric.
-func (o GetOspfResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOspfResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupOspfResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOspfResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // IPv4 prefix cidr for the fabric.
-func (o GetOspfResultOutput) IpPrefix() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOspfResult) string { return v.IpPrefix }).(pulumi.StringOutput)
+func (o LookupOspfResultOutput) IpPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOspfResult) string { return v.IpPrefix }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetOspfResultOutput{})
+	pulumi.RegisterOutputType(LookupOspfResultOutput{})
 }

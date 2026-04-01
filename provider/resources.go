@@ -16,83 +16,91 @@ package proxmoxve
 
 import (
 	"context"
+	"fmt"
+	"path"
 	"strconv"
 
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
-	"fmt"
-	"path/filepath"
 	"strings"
 	"unicode"
 
 	"github.com/bpg/terraform-provider-proxmox/fwprovider"
-	"github.com/bpg/terraform-provider-proxmox/proxmoxtf/provider"
 	"github.com/ettle/strcase"
 	"github.com/muhlba91/pulumi-proxmoxve/provider/pkg/version"
-	pf "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
+	pfbridge "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
-	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/info"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 )
 
 const (
-	mainPkg       = "proxmoxve"
-	mainMod       = "index"
-	vmMod         = "vm"
-	containerMod  = "ct"
-	clusterMod    = "cluster"
-	permissionMod = "permission"
-	storageMod    = "storage"
-	networkMod    = "network"
-	firewallMod   = "firewall"
-	downloadMod   = "download"
-	sdnMod        = "sdn"
-	sdnZoneMod    = "sdnzone"
-	sdnFabricMod  = "sdnfabric"
-	haMod         = "ha"
+	mainPkg = "proxmoxve"
+	mainMod = "index"
 )
+
+var resourceIDOverrides = map[string][]string{
+	"proxmox_storage_pbs":           {"proxmox_virtual_environment_storage_pbs"},
+	"proxmox_sdn_fabric_ospf":       {"proxmox_virtual_environment_sdn_fabric_ospf"},
+	"proxmox_storage_lvmthin":       {"proxmox_virtual_environment_storage_lvmthin"},
+	"proxmox_sdn_zone_qinq":         {"proxmox_virtual_environment_sdn_zone_qinq"},
+	"proxmox_sdn_zone_vlan":         {"proxmox_virtual_environment_sdn_zone_vlan"},
+	"proxmox_storage_cifs":          {"proxmox_virtual_environment_storage_cifs"},
+	"proxmox_storage_nfs":           {"proxmox_virtual_environment_storage_nfs"},
+	"proxmox_sdn_vnet":              {"proxmox_virtual_environment_sdn_vnet"},
+	"proxmox_storage_lvm":           {"proxmox_virtual_environment_storage_lvm"},
+	"proxmox_storage_zfspool":       {"proxmox_virtual_environment_storage_zfspool"},
+	"proxmox_sdn_zone_evpn":         {"proxmox_virtual_environment_sdn_zone_evpn"},
+	"proxmox_vm":                    {"proxmox_virtual_environment_vm2"},
+	"proxmox_sdn_zone_vxlan":        {"proxmox_virtual_environment_sdn_zone_vxlan"},
+	"proxmox_cloned_vm":             {"proxmox_virtual_environment_cloned_vm"},
+	"proxmox_replication":           {"proxmox_virtual_environment_replication"},
+	"proxmox_sdn_zone_simple":       {"proxmox_virtual_environment_sdn_zone_simple"},
+	"proxmox_storage_directory":     {"proxmox_virtual_environment_storage_directory"},
+	"proxmox_sdn_fabric_openfabric": {"proxmox_virtual_environment_sdn_fabric_openfabric"},
+	"proxmox_backup_job":            {},
+}
+
+var resourceFieldNameCSharpOverrides = map[string]map[string]string{
+	"proxmox_virtual_environment_acme_certificate": {
+		"certificate": "certificatePem",
+	},
+	"proxmox_acme_certificate": {
+		"certificate": "certificatePem",
+	},
+	"proxmox_virtual_environment_acme_dns_plugin": {
+		"plugin": "pluginName",
+	},
+	"proxmox_acme_dns_plugin": {
+		"plugin": "pluginName",
+	},
+	"proxmox_virtual_environment_network_linux_vlan": {
+		"vlan": "vlanId",
+	},
+	"proxmox_network_linux_vlan": {
+		"vlan": "vlanId",
+	},
+	"proxmox_virtual_environment_metrics_server": {
+		"server": "serverAddress",
+	},
+	"proxmox_metrics_server": {
+		"server": "serverAddress",
+	},
+}
 
 //go:embed cmd/pulumi-resource-proxmoxve/bridge-metadata.json
 var metadata []byte
 
-// needed to keep backwards compatibility of resource module naming
-var moduleOverrides = map[string]string{
-	"Index":                     mainMod,
-	"Vm":                        "VM",
-	"Ct":                        "CT",
-	"Ha":                        "HA",
-	"Cluster/firewall/security": "Network",
-	"Network/linux":             "Network",
-}
-
-// needed to keep backwards compatibility of resource module naming
-var moduleNameOverrides = map[string]string{
-	"index/hagroup":     haMod,
-	"index/hagroups":    haMod,
-	"index/haresource":  haMod,
-	"index/haresources": haMod,
-}
-
-// needed to keep backwards compatibility of resource naming
-var nameNameOverrides = map[string]string{
-	"network/linux/vlan":   "network_vlan",
-	"network/linux/alias":  "network_alias",
-	"network/linux/bridge": "network_bridge",
-	"index/hagroup":        "h_a_group",
-	"index/hagroups":       "h_a_groups",
-	"index/haresource":     "h_a_resource",
-	"index/haresources":    "h_a_resources",
-}
-
-func preConfigureCallback(_ resource.PropertyMap, _ shim.ResourceConfig) error {
-	return nil
-}
-
 func convertName(tfname string) (module string, name string) {
-	tfNameItems := strings.Split(strings.ReplaceAll(tfname, "proxmox_virtual_environment_", "proxmoxve_"), "_")
+	legacy := false
+	if strings.Contains(tfname, "proxmox_virtual_environment_") {
+		legacy = true
+		tfname = strings.ReplaceAll(tfname, "proxmox_virtual_environment_", "proxmoxve_")
+	}
+	tfname = strings.ReplaceAll(tfname, "proxmox_", "proxmoxve_")
+	tfNameItems := strings.Split(tfname, "_")
 
 	contract.Assertf(len(tfNameItems) >= 2, "Invalid snake case name %s", tfname)
 	contract.Assertf(tfNameItems[0] == "proxmoxve", "Invalid snake case name %s. Does not start with proxmoxve", tfname)
@@ -105,24 +113,15 @@ func convertName(tfname string) (module string, name string) {
 		name = tfNameItems[len(tfNameItems)-1]
 	}
 
-	// apply overrides for backwards compatibility
-	moduleName := strings.Join([]string{module, name}, "/")
-	if v, ok := moduleNameOverrides[moduleName]; ok {
-		module = v
-	}
-	if v, ok := nameNameOverrides[moduleName]; ok {
-		name = v
-	}
-	module = strcase.ToPascal(module)
-	if v, ok := moduleOverrides[module]; ok {
-		module = v
-	}
-
 	contract.Assertf(!unicode.IsDigit(rune(module[0])), "Pulumi namespace must not start with a digit: %s", name)
 	contract.Assertf(!unicode.IsDigit(rune(name[0])), "Pulumi name must not start with a digit: %s", name)
 
+	if legacy {
+		name = fmt.Sprintf("%sLegacy", name)
+	}
+
 	name = strcase.ToPascal(name)
-	return
+	return module, name
 }
 
 func makeDataSource(ds string) tokens.ModuleMember {
@@ -152,337 +151,118 @@ func moduleComputeStrategy() tfbridge.Strategy {
 	}
 }
 
-func Provider() tfbridge.ProviderInfo {
-	p := pf.MuxShimWithPF(context.Background(), shimv2.NewProvider(provider.ProxmoxVirtualEnvironment()), fwprovider.New(version.Version)())
+func resourceComputeIDOverride() func(context.Context, resource.PropertyMap) (resource.ID, error) {
+	return func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
+		const resourceIDPropertyKey = resource.PropertyKey("id")
+		return resource.ID(strconv.Itoa(state[resourceIDPropertyKey].V.(int))), nil
+	}
+}
 
+func resourceFieldIDOverride(fields map[string]*tfbridge.SchemaInfo) map[string]*tfbridge.SchemaInfo {
+	fields["id"] = &tfbridge.SchemaInfo{
+		Name: "resourceId",
+		Type: "string",
+	}
+	return fields
+}
+
+func resourceFieldsCustomOverride(fields map[string]*tfbridge.SchemaInfo, name string) map[string]*tfbridge.SchemaInfo {
+	if override, ok := resourceFieldNameCSharpOverrides[name]; ok {
+		for fieldName, csharpName := range override {
+			fields[fieldName] = &tfbridge.SchemaInfo{
+				CSharpName: csharpName,
+			}
+		}
+	}
+	return fields
+}
+
+func resourceFieldsOverride(name string, overrideID bool) map[string]*tfbridge.SchemaInfo {
+	fields := map[string]*tfbridge.SchemaInfo{}
+
+	if overrideID {
+		resourceFieldIDOverride(fields)
+	}
+	resourceFieldsCustomOverride(fields, name)
+
+	return fields
+}
+
+func resourceOverrides() map[string]*tfbridge.ResourceInfo {
+	overrides := map[string]*tfbridge.ResourceInfo{}
+
+	for name, aliases := range resourceIDOverrides {
+		aliasList := []info.Alias{}
+		for _, alias := range aliases {
+			if alias != "" {
+				aliasList = append(aliasList, info.Alias{
+					Type: &alias,
+				})
+			}
+
+			overrides[alias] = &tfbridge.ResourceInfo{
+				Fields:    resourceFieldsOverride(alias, true),
+				ComputeID: resourceComputeIDOverride(),
+			}
+		}
+
+		overrides[name] = &tfbridge.ResourceInfo{
+			Fields:    resourceFieldsOverride(name, true),
+			ComputeID: resourceComputeIDOverride(),
+			Aliases:   aliasList,
+		}
+	}
+
+	for name := range resourceFieldNameCSharpOverrides {
+		if _, ok := overrides[name]; !ok {
+			overrides[name] = &tfbridge.ResourceInfo{
+				Fields: resourceFieldsOverride(name, false),
+			}
+		}
+	}
+
+	return overrides
+}
+
+func Provider() tfbridge.ProviderInfo {
 	prov := tfbridge.ProviderInfo{
-		P:                    p,
-		Name:                 "proxmox",
-		DisplayName:          "Proxmox Virtual Environment (Proxmox VE)",
-		Description:          "A Pulumi package for creating and managing Proxmox Virtual Environment cloud resources.",
-		Publisher:            "Daniel Muehlbachler-Pietrzykowski",
-		Keywords:             []string{"pulumi", "proxmox", "proxmoxve"},
-		License:              "Apache-2.0",
-		Homepage:             "https://github.com/muhlba91/pulumi-proxmoxve",
-		Repository:           "https://github.com/muhlba91/pulumi-proxmoxve",
-		LogoURL:              "https://raw.githubusercontent.com/muhlba91/pulumi-proxmoxve/main/assets/proxmox-logo.png",
-		GitHubOrg:            "bpg",
-		PluginDownloadURL:    "github://api.github.com/muhlba91/pulumi-proxmoxve",
-		Version:              version.Version,
-		Config:               map[string]*tfbridge.SchemaInfo{},
-		PreConfigureCallback: preConfigureCallback,
-		MuxWith:              []tfbridge.MuxProvider{},
-		Resources: map[string]*tfbridge.ResourceInfo{
-			// VM/CT
-			"proxmox_virtual_environment_vm": {Tok: tfbridge.MakeResource(mainPkg, "VM", "VirtualMachine")},
-			"proxmox_virtual_environment_vm2": {
-				Tok: tfbridge.MakeResource(mainPkg, "VM", "VirtualMachine2"),
-				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
-					const vm2ResourceIDPropertyKey = resource.PropertyKey("id")
-					return resource.ID(state[vm2ResourceIDPropertyKey].V.(string)), nil
-				},
-			},
-			"proxmox_virtual_environment_container": {
-				Tok: tfbridge.MakeResource(mainPkg, "CT", "Container"),
-				TransformOutputs: func(_ context.Context, rpm resource.PropertyMap) (resource.PropertyMap, error) {
-					const containerResourceContainerFeaturesPropertyKey = resource.PropertyKey("features")
-					if !rpm.HasValue(containerResourceContainerFeaturesPropertyKey) {
-						rpm[containerResourceContainerFeaturesPropertyKey] = resource.NewPropertyValue(resource.NewPropertyValue(""))
-					}
-					return rpm, nil
-				},
-			},
-			"proxmox_virtual_environment_cloned_vm": {
-				Tok: tfbridge.MakeResource(mainPkg, "VM", "ClonedVirtualMachine"),
-				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
-					const resourceIDPropertyKey = resource.PropertyKey("id")
-					return resource.ID(strconv.Itoa(state[resourceIDPropertyKey].V.(int))), nil
-				},
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"id": {
-						Name: "vmId",
-						Type: "string",
-					},
-				},
-			},
-			// Storage
-			"proxmox_virtual_environment_file": {Tok: tfbridge.MakeResource(mainPkg, "Storage", "File")},
-			"proxmox_virtual_environment_storage_lvm": {
-				Tok: tfbridge.MakeResource(mainPkg, "Storage", "LVM"),
-				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
-					const resourceIDPropertyKey = resource.PropertyKey("id")
-					return resource.ID(state[resourceIDPropertyKey].V.(string)), nil
-				},
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"id": {
-						Name: "lvmId",
-					},
-				},
-			},
-			"proxmox_virtual_environment_storage_directory": {
-				Tok: tfbridge.MakeResource(mainPkg, "Storage", "Directory"),
-				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
-					const resourceIDPropertyKey = resource.PropertyKey("id")
-					return resource.ID(state[resourceIDPropertyKey].V.(string)), nil
-				},
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"id": {
-						Name: "directoryId",
-					},
-				},
-			},
-			"proxmox_virtual_environment_storage_nfs": {
-				Tok: tfbridge.MakeResource(mainPkg, "Storage", "NFS"),
-				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
-					const resourceIDPropertyKey = resource.PropertyKey("id")
-					return resource.ID(state[resourceIDPropertyKey].V.(string)), nil
-				},
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"id": {
-						Name: "nfsId",
-					},
-				},
-			},
-			"proxmox_virtual_environment_storage_zfspool": {
-				Tok: tfbridge.MakeResource(mainPkg, "Storage", "ZFSPool"),
-				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
-					const resourceIDPropertyKey = resource.PropertyKey("id")
-					return resource.ID(state[resourceIDPropertyKey].V.(string)), nil
-				},
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"id": {
-						Name: "zfsPoolId",
-					},
-				},
-			},
-			"proxmox_virtual_environment_storage_cifs": {
-				Tok: tfbridge.MakeResource(mainPkg, "Storage", "CIFS"),
-				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
-					const resourceIDPropertyKey = resource.PropertyKey("id")
-					return resource.ID(state[resourceIDPropertyKey].V.(string)), nil
-				},
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"id": {
-						Name: "cifsId",
-					},
-				},
-			},
-			"proxmox_virtual_environment_storage_lvmthin": {
-				Tok: tfbridge.MakeResource(mainPkg, "Storage", "LVMThin"),
-				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
-					const resourceIDPropertyKey = resource.PropertyKey("id")
-					return resource.ID(state[resourceIDPropertyKey].V.(string)), nil
-				},
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"id": {
-						Name: "lvmThinId",
-					},
-				},
-			},
-			"proxmox_virtual_environment_storage_pbs": {
-				Tok: tfbridge.MakeResource(mainPkg, "Storage", "PBS"),
-				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
-					const resourceIDPropertyKey = resource.PropertyKey("id")
-					return resource.ID(state[resourceIDPropertyKey].V.(string)), nil
-				},
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"id": {
-						Name: "pbsId",
-					},
-				},
-			},
-			// Environment
-			"proxmox_virtual_environment_dns":         {Tok: tfbridge.MakeResource(mainPkg, "index", "DNS")},
-			"proxmox_virtual_environment_certificate": {Tok: tfbridge.MakeResource(mainPkg, "index", "Certifi")},
-			"proxmox_virtual_environment_hosts":       {Tok: tfbridge.MakeResource(mainPkg, "index", "Hosts")},
-			"proxmox_virtual_environment_time":        {Tok: tfbridge.MakeResource(mainPkg, "index", "Time")},
-			// Permission
-			"proxmox_virtual_environment_user":  {Tok: tfbridge.MakeResource(mainPkg, "Permission", "User")},
-			"proxmox_virtual_environment_group": {Tok: tfbridge.MakeResource(mainPkg, "Permission", "Group")},
-			"proxmox_virtual_environment_pool":  {Tok: tfbridge.MakeResource(mainPkg, "Permission", "Pool")},
-			"proxmox_virtual_environment_role":  {Tok: tfbridge.MakeResource(mainPkg, "Permission", "Role")},
-			// Network
-			"proxmox_virtual_environment_cluster_firewall":                {Tok: tfbridge.MakeResource(mainPkg, "Network", "Firewall")},
-			"proxmox_virtual_environment_cluster_firewall_security_group": {Tok: tfbridge.MakeResource(mainPkg, "Network", "FirewallSecurityGroup")},
-			"proxmox_virtual_environment_firewall_alias":                  {Tok: tfbridge.MakeResource(mainPkg, "Network", "FirewallAlias")},
-			"proxmox_virtual_environment_firewall_ipset":                  {Tok: tfbridge.MakeResource(mainPkg, "Network", "FirewallIPSet")},
-			"proxmox_virtual_environment_firewall_options":                {Tok: tfbridge.MakeResource(mainPkg, "Network", "FirewallOptions")},
-			"proxmox_virtual_environment_firewall_rules":                  {Tok: tfbridge.MakeResource(mainPkg, "Network", "FirewallRules")},
-			// ACME
-			"proxmox_virtual_environment_acme_account": {
-				Tok:       tfbridge.MakeResource(mainPkg, "index", "AcmeAccount"),
-				ComputeID: tfbridge.DelegateIDField("name", "proxmoxve", "https://github.com/muhlba91/pulumi-proxmoxve"),
-			},
-			"proxmox_virtual_environment_acme_dns_plugin": {
-				Tok:       tfbridge.MakeResource(mainPkg, "index", "AcmeDnsPlugin"),
-				ComputeID: tfbridge.DelegateIDField("plugin", "proxmoxve", "https://github.com/muhlba91/pulumi-proxmoxve"),
-			},
-			"proxmox_virtual_environment_acme_certificate": {
-				Tok: tfbridge.MakeResource(mainPkg, "Acme", "Certificate"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"certificate": {
-						CSharpName: "certificatePem",
-					},
-				},
-			},
-			// Metrics
-			"proxmox_virtual_environment_metrics_server": {Tok: tfbridge.MakeResource(mainPkg, "Metrics", "MetricsServer")},
-			// SDNZone
-			"proxmox_virtual_environment_sdn_zone_qinq": {
-				Tok: tfbridge.MakeResource(mainPkg, "SDNZone", "Qinq"),
-				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
-					const resourceIDPropertyKey = resource.PropertyKey("id")
-					return resource.ID(state[resourceIDPropertyKey].V.(string)), nil
-				},
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"id": {
-						Name: "zoneId",
-					},
-				},
-			},
-			"proxmox_virtual_environment_sdn_zone_vlan": {
-				Tok: tfbridge.MakeResource(mainPkg, "SDNZone", "Vlan"),
-				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
-					const resourceIDPropertyKey = resource.PropertyKey("id")
-					return resource.ID(state[resourceIDPropertyKey].V.(string)), nil
-				},
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"id": {
-						Name: "zoneId",
-					},
-				},
-			},
-			"proxmox_virtual_environment_sdn_zone_vxlan": {
-				Tok: tfbridge.MakeResource(mainPkg, "SDNZone", "Vxlan"),
-				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
-					const resourceIDPropertyKey = resource.PropertyKey("id")
-					return resource.ID(state[resourceIDPropertyKey].V.(string)), nil
-				},
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"id": {
-						Name: "zoneId",
-					},
-				},
-			},
-			"proxmox_virtual_environment_sdn_zone_evpn": {
-				Tok: tfbridge.MakeResource(mainPkg, "SDNZone", "Evpn"),
-				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
-					const resourceIDPropertyKey = resource.PropertyKey("id")
-					return resource.ID(state[resourceIDPropertyKey].V.(string)), nil
-				},
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"id": {
-						Name: "zoneId",
-					},
-				},
-			},
-			"proxmox_virtual_environment_sdn_zone_simple": {
-				Tok: tfbridge.MakeResource(mainPkg, "SDNZone", "Simple"),
-				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
-					const resourceIDPropertyKey = resource.PropertyKey("id")
-					return resource.ID(state[resourceIDPropertyKey].V.(string)), nil
-				},
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"id": {
-						Name: "zoneId",
-					},
-				},
-			},
-			"proxmox_virtual_environment_sdn_vnet": {
-				Tok: tfbridge.MakeResource(mainPkg, "Sdn", "Vnet"),
-				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
-					const resourceIDPropertyKey = resource.PropertyKey("id")
-					return resource.ID(state[resourceIDPropertyKey].V.(string)), nil
-				},
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"id": {
-						Name: "vnetId",
-					},
-				},
-			},
-			// SDNFabric
-			"proxmox_virtual_environment_sdn_fabric_openfabric": {
-				Tok: tfbridge.MakeResource(mainPkg, "SDNFabric", "OpenFabric"),
-				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
-					const resourceIDPropertyKey = resource.PropertyKey("id")
-					return resource.ID(state[resourceIDPropertyKey].V.(string)), nil
-				},
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"id": {
-						Name: "fabricId",
-					},
-				},
-			},
-			"proxmox_virtual_environment_sdn_fabric_ospf": {
-				Tok: tfbridge.MakeResource(mainPkg, "SDNFabric", "OSPF"),
-				ComputeID: func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
-					const resourceIDPropertyKey = resource.PropertyKey("id")
-					return resource.ID(state[resourceIDPropertyKey].V.(string)), nil
-				},
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"id": {
-						Name: "ospfId",
-					},
-				},
-			},
-		},
-		DataSources: map[string]*tfbridge.DataSourceInfo{
-			// Cluster
-			"proxmox_virtual_environment_nodes": {Tok: tfbridge.MakeDataSource(mainPkg, "Cluster", "getNodes")},
-			// VM/CT
-			"proxmox_virtual_environment_vm":  {Tok: tfbridge.MakeDataSource(mainPkg, "VM", "getVirtualMachine")},
-			"proxmox_virtual_environment_vms": {Tok: tfbridge.MakeDataSource(mainPkg, "VM", "getVirtualMachines")},
-			// Storage
-			"proxmox_virtual_environment_datastores": {Tok: tfbridge.MakeDataSource(mainPkg, "Storage", "getDatastores")},
-			// Environment
-			"proxmox_virtual_environment_dns":     {Tok: tfbridge.MakeDataSource(mainPkg, "Network", "getDNS")},
-			"proxmox_virtual_environment_time":    {Tok: tfbridge.MakeDataSource(mainPkg, "Network", "getTime")},
-			"proxmox_virtual_environment_hosts":   {Tok: tfbridge.MakeDataSource(mainPkg, "Network", "getHosts")},
-			"proxmox_virtual_environment_version": {Tok: tfbridge.MakeDataSource(mainPkg, "Network", "getVersion")},
-			// Permissions
-			"proxmox_virtual_environment_user":   {Tok: tfbridge.MakeDataSource(mainPkg, "Permission", "getUser")},
-			"proxmox_virtual_environment_users":  {Tok: tfbridge.MakeDataSource(mainPkg, "Permission", "getUsers")},
-			"proxmox_virtual_environment_group":  {Tok: tfbridge.MakeDataSource(mainPkg, "Permission", "getGroup")},
-			"proxmox_virtual_environment_groups": {Tok: tfbridge.MakeDataSource(mainPkg, "Permission", "getGroups")},
-			"proxmox_virtual_environment_pool":   {Tok: tfbridge.MakeDataSource(mainPkg, "Permission", "getPool")},
-			"proxmox_virtual_environment_pools":  {Tok: tfbridge.MakeDataSource(mainPkg, "Permission", "getPools")},
-			"proxmox_virtual_environment_role":   {Tok: tfbridge.MakeDataSource(mainPkg, "Permission", "getRole")},
-			"proxmox_virtual_environment_roles":  {Tok: tfbridge.MakeDataSource(mainPkg, "Permission", "getRoles")},
-			// SDNZone
-			"proxmox_virtual_environment_sdn_zone_qinq":   {Tok: tfbridge.MakeDataSource(mainPkg, "SDNZone", "getQinq")},
-			"proxmox_virtual_environment_sdn_zone_vlan":   {Tok: tfbridge.MakeDataSource(mainPkg, "SDNZone", "getVlan")},
-			"proxmox_virtual_environment_sdn_zone_vxlan":  {Tok: tfbridge.MakeDataSource(mainPkg, "SDNZone", "getVxlan")},
-			"proxmox_virtual_environment_sdn_zone_evpn":   {Tok: tfbridge.MakeDataSource(mainPkg, "SDNZone", "getEvpn")},
-			"proxmox_virtual_environment_sdn_zone_simple": {Tok: tfbridge.MakeDataSource(mainPkg, "SDNZone", "getSimple")},
-		},
+		P:                 pfbridge.ShimProvider(fwprovider.New(version.Version)()),
+		Name:              "proxmox",
+		DisplayName:       "Proxmox Virtual Environment (Proxmox VE)",
+		Description:       "A Pulumi package for creating and managing Proxmox Virtual Environment cloud resources.",
+		Publisher:         "Daniel Muehlbachler-Pietrzykowski",
+		Keywords:          []string{"proxmox", "proxmoxve", "category/infrastructure"},
+		License:           "Apache-2.0",
+		Homepage:          "https://github.com/muhlba91/pulumi-proxmoxve",
+		Repository:        "https://github.com/muhlba91/pulumi-proxmoxve",
+		LogoURL:           "https://raw.githubusercontent.com/muhlba91/pulumi-proxmoxve/main/assets/proxmox-logo.png",
+		GitHubOrg:         "bpg",
+		PluginDownloadURL: "github://api.github.com/muhlba91/pulumi-proxmoxve",
+		Version:           version.Version,
+		Config:            map[string]*tfbridge.SchemaInfo{},
+		Resources:         resourceOverrides(),
+		DataSources:       map[string]*tfbridge.DataSourceInfo{},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			PackageName: "@muhlba91/pulumi-proxmoxve",
-			Dependencies: map[string]string{
-				"@pulumi/pulumi": "^3.0.0",
-			},
-			DevDependencies: map[string]string{
-				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
-				"@types/mime": "^2.0.0",
-			},
 		},
 		Python: &tfbridge.PythonInfo{
-			PackageName: "pulumi_proxmoxve",
-			Requires: map[string]string{
-				"pulumi": ">=3.0.0,<4.0.0",
-			},
+			PackageName:          "pulumi_proxmoxve",
 			RespectSchemaVersion: true,
 			PyProject:            struct{ Enabled bool }{true},
 		},
 		Golang: &tfbridge.GolangInfo{
-			ImportBasePath: filepath.Join(
-				fmt.Sprintf("github.com/muhlba91/pulumi-%[1]s/sdk/", mainPkg),
+			ImportBasePath: path.Join(
+				"github.com/pulumi/pulumi-proxmoxve/sdk/",
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
 				mainPkg,
 			),
 			GenerateResourceContainerTypes: true,
+			GenerateExtraInputTypes:        true,
+			RespectSchemaVersion:           true,
 		},
 		CSharp: &tfbridge.CSharpInfo{
+			RespectSchemaVersion: true,
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
 			},
@@ -492,16 +272,12 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Java: &tfbridge.JavaInfo{
 			BasePackage: "io.muehlbachler.pulumi",
+			BuildFiles:  "gradle",
 		},
 		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 	}
 
 	prov.MustComputeTokens(moduleComputeStrategy())
-	prov.MustApplyAutoAliases()
-	err := tfbridge.ApplyAutoAliases(&prov)
-	contract.AssertNoErrorf(err, "auto aliasing apply failed")
-	err = tfbridge.ApplyAutoAliases(&prov)
-	contract.AssertNoErrorf(err, "auto aliasing apply failed")
 	prov.SetAutonaming(255, "-")
 
 	return prov

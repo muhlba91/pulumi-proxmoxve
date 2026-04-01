@@ -7,43 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdn"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// List all SDN VNets
-//			all, err := sdn.GetVnets(ctx, map[string]interface{}{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("dataProxmoxVirtualEnvironmentSdnVnetsAll", []sdn.GetVnetsVnetMap{
-//				"vnets": all.Vnets,
-//			})
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetVnets(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetVnetsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVnetsResult
-	err := ctx.Invoke("proxmoxve:Sdn/getVnets:getVnets", nil, &rv, opts...)
+	err := ctx.Invoke("proxmoxve:sdn/getVnets:getVnets", nil, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -61,7 +33,7 @@ type GetVnetsResult struct {
 func GetVnetsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetVnetsResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetVnetsResultOutput, error) {
 		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("proxmoxve:Sdn/getVnets:getVnets", nil, GetVnetsResultOutput{}, options).(GetVnetsResultOutput), nil
+		return ctx.InvokeOutput("proxmoxve:sdn/getVnets:getVnets", nil, GetVnetsResultOutput{}, options).(GetVnetsResultOutput), nil
 	}).(GetVnetsResultOutput)
 }
 

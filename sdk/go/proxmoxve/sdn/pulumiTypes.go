@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -162,6 +162,162 @@ func (o SubnetDhcpRangePtrOutput) EndAddress() pulumi.StringPtrOutput {
 // Start of the DHCP range.
 func (o SubnetDhcpRangePtrOutput) StartAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SubnetDhcpRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+type SubnetLegacyDhcpRange struct {
+	// End of the DHCP range.
+	EndAddress string `pulumi:"endAddress"`
+	// Start of the DHCP range.
+	StartAddress string `pulumi:"startAddress"`
+}
+
+// SubnetLegacyDhcpRangeInput is an input type that accepts SubnetLegacyDhcpRangeArgs and SubnetLegacyDhcpRangeOutput values.
+// You can construct a concrete instance of `SubnetLegacyDhcpRangeInput` via:
+//
+//	SubnetLegacyDhcpRangeArgs{...}
+type SubnetLegacyDhcpRangeInput interface {
+	pulumi.Input
+
+	ToSubnetLegacyDhcpRangeOutput() SubnetLegacyDhcpRangeOutput
+	ToSubnetLegacyDhcpRangeOutputWithContext(context.Context) SubnetLegacyDhcpRangeOutput
+}
+
+type SubnetLegacyDhcpRangeArgs struct {
+	// End of the DHCP range.
+	EndAddress pulumi.StringInput `pulumi:"endAddress"`
+	// Start of the DHCP range.
+	StartAddress pulumi.StringInput `pulumi:"startAddress"`
+}
+
+func (SubnetLegacyDhcpRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetLegacyDhcpRange)(nil)).Elem()
+}
+
+func (i SubnetLegacyDhcpRangeArgs) ToSubnetLegacyDhcpRangeOutput() SubnetLegacyDhcpRangeOutput {
+	return i.ToSubnetLegacyDhcpRangeOutputWithContext(context.Background())
+}
+
+func (i SubnetLegacyDhcpRangeArgs) ToSubnetLegacyDhcpRangeOutputWithContext(ctx context.Context) SubnetLegacyDhcpRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetLegacyDhcpRangeOutput)
+}
+
+func (i SubnetLegacyDhcpRangeArgs) ToSubnetLegacyDhcpRangePtrOutput() SubnetLegacyDhcpRangePtrOutput {
+	return i.ToSubnetLegacyDhcpRangePtrOutputWithContext(context.Background())
+}
+
+func (i SubnetLegacyDhcpRangeArgs) ToSubnetLegacyDhcpRangePtrOutputWithContext(ctx context.Context) SubnetLegacyDhcpRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetLegacyDhcpRangeOutput).ToSubnetLegacyDhcpRangePtrOutputWithContext(ctx)
+}
+
+// SubnetLegacyDhcpRangePtrInput is an input type that accepts SubnetLegacyDhcpRangeArgs, SubnetLegacyDhcpRangePtr and SubnetLegacyDhcpRangePtrOutput values.
+// You can construct a concrete instance of `SubnetLegacyDhcpRangePtrInput` via:
+//
+//	        SubnetLegacyDhcpRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type SubnetLegacyDhcpRangePtrInput interface {
+	pulumi.Input
+
+	ToSubnetLegacyDhcpRangePtrOutput() SubnetLegacyDhcpRangePtrOutput
+	ToSubnetLegacyDhcpRangePtrOutputWithContext(context.Context) SubnetLegacyDhcpRangePtrOutput
+}
+
+type subnetLegacyDhcpRangePtrType SubnetLegacyDhcpRangeArgs
+
+func SubnetLegacyDhcpRangePtr(v *SubnetLegacyDhcpRangeArgs) SubnetLegacyDhcpRangePtrInput {
+	return (*subnetLegacyDhcpRangePtrType)(v)
+}
+
+func (*subnetLegacyDhcpRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubnetLegacyDhcpRange)(nil)).Elem()
+}
+
+func (i *subnetLegacyDhcpRangePtrType) ToSubnetLegacyDhcpRangePtrOutput() SubnetLegacyDhcpRangePtrOutput {
+	return i.ToSubnetLegacyDhcpRangePtrOutputWithContext(context.Background())
+}
+
+func (i *subnetLegacyDhcpRangePtrType) ToSubnetLegacyDhcpRangePtrOutputWithContext(ctx context.Context) SubnetLegacyDhcpRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetLegacyDhcpRangePtrOutput)
+}
+
+type SubnetLegacyDhcpRangeOutput struct{ *pulumi.OutputState }
+
+func (SubnetLegacyDhcpRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetLegacyDhcpRange)(nil)).Elem()
+}
+
+func (o SubnetLegacyDhcpRangeOutput) ToSubnetLegacyDhcpRangeOutput() SubnetLegacyDhcpRangeOutput {
+	return o
+}
+
+func (o SubnetLegacyDhcpRangeOutput) ToSubnetLegacyDhcpRangeOutputWithContext(ctx context.Context) SubnetLegacyDhcpRangeOutput {
+	return o
+}
+
+func (o SubnetLegacyDhcpRangeOutput) ToSubnetLegacyDhcpRangePtrOutput() SubnetLegacyDhcpRangePtrOutput {
+	return o.ToSubnetLegacyDhcpRangePtrOutputWithContext(context.Background())
+}
+
+func (o SubnetLegacyDhcpRangeOutput) ToSubnetLegacyDhcpRangePtrOutputWithContext(ctx context.Context) SubnetLegacyDhcpRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SubnetLegacyDhcpRange) *SubnetLegacyDhcpRange {
+		return &v
+	}).(SubnetLegacyDhcpRangePtrOutput)
+}
+
+// End of the DHCP range.
+func (o SubnetLegacyDhcpRangeOutput) EndAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v SubnetLegacyDhcpRange) string { return v.EndAddress }).(pulumi.StringOutput)
+}
+
+// Start of the DHCP range.
+func (o SubnetLegacyDhcpRangeOutput) StartAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v SubnetLegacyDhcpRange) string { return v.StartAddress }).(pulumi.StringOutput)
+}
+
+type SubnetLegacyDhcpRangePtrOutput struct{ *pulumi.OutputState }
+
+func (SubnetLegacyDhcpRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SubnetLegacyDhcpRange)(nil)).Elem()
+}
+
+func (o SubnetLegacyDhcpRangePtrOutput) ToSubnetLegacyDhcpRangePtrOutput() SubnetLegacyDhcpRangePtrOutput {
+	return o
+}
+
+func (o SubnetLegacyDhcpRangePtrOutput) ToSubnetLegacyDhcpRangePtrOutputWithContext(ctx context.Context) SubnetLegacyDhcpRangePtrOutput {
+	return o
+}
+
+func (o SubnetLegacyDhcpRangePtrOutput) Elem() SubnetLegacyDhcpRangeOutput {
+	return o.ApplyT(func(v *SubnetLegacyDhcpRange) SubnetLegacyDhcpRange {
+		if v != nil {
+			return *v
+		}
+		var ret SubnetLegacyDhcpRange
+		return ret
+	}).(SubnetLegacyDhcpRangeOutput)
+}
+
+// End of the DHCP range.
+func (o SubnetLegacyDhcpRangePtrOutput) EndAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetLegacyDhcpRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// Start of the DHCP range.
+func (o SubnetLegacyDhcpRangePtrOutput) StartAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SubnetLegacyDhcpRange) *string {
 		if v == nil {
 			return nil
 		}
@@ -325,6 +481,286 @@ func (o GetSubnetDhcpRangePtrOutput) StartAddress() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetSubnetLegacyDhcpRange struct {
+	// End of the DHCP range.
+	EndAddress string `pulumi:"endAddress"`
+	// Start of the DHCP range.
+	StartAddress string `pulumi:"startAddress"`
+}
+
+// GetSubnetLegacyDhcpRangeInput is an input type that accepts GetSubnetLegacyDhcpRangeArgs and GetSubnetLegacyDhcpRangeOutput values.
+// You can construct a concrete instance of `GetSubnetLegacyDhcpRangeInput` via:
+//
+//	GetSubnetLegacyDhcpRangeArgs{...}
+type GetSubnetLegacyDhcpRangeInput interface {
+	pulumi.Input
+
+	ToGetSubnetLegacyDhcpRangeOutput() GetSubnetLegacyDhcpRangeOutput
+	ToGetSubnetLegacyDhcpRangeOutputWithContext(context.Context) GetSubnetLegacyDhcpRangeOutput
+}
+
+type GetSubnetLegacyDhcpRangeArgs struct {
+	// End of the DHCP range.
+	EndAddress pulumi.StringInput `pulumi:"endAddress"`
+	// Start of the DHCP range.
+	StartAddress pulumi.StringInput `pulumi:"startAddress"`
+}
+
+func (GetSubnetLegacyDhcpRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubnetLegacyDhcpRange)(nil)).Elem()
+}
+
+func (i GetSubnetLegacyDhcpRangeArgs) ToGetSubnetLegacyDhcpRangeOutput() GetSubnetLegacyDhcpRangeOutput {
+	return i.ToGetSubnetLegacyDhcpRangeOutputWithContext(context.Background())
+}
+
+func (i GetSubnetLegacyDhcpRangeArgs) ToGetSubnetLegacyDhcpRangeOutputWithContext(ctx context.Context) GetSubnetLegacyDhcpRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubnetLegacyDhcpRangeOutput)
+}
+
+func (i GetSubnetLegacyDhcpRangeArgs) ToGetSubnetLegacyDhcpRangePtrOutput() GetSubnetLegacyDhcpRangePtrOutput {
+	return i.ToGetSubnetLegacyDhcpRangePtrOutputWithContext(context.Background())
+}
+
+func (i GetSubnetLegacyDhcpRangeArgs) ToGetSubnetLegacyDhcpRangePtrOutputWithContext(ctx context.Context) GetSubnetLegacyDhcpRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubnetLegacyDhcpRangeOutput).ToGetSubnetLegacyDhcpRangePtrOutputWithContext(ctx)
+}
+
+// GetSubnetLegacyDhcpRangePtrInput is an input type that accepts GetSubnetLegacyDhcpRangeArgs, GetSubnetLegacyDhcpRangePtr and GetSubnetLegacyDhcpRangePtrOutput values.
+// You can construct a concrete instance of `GetSubnetLegacyDhcpRangePtrInput` via:
+//
+//	        GetSubnetLegacyDhcpRangeArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetSubnetLegacyDhcpRangePtrInput interface {
+	pulumi.Input
+
+	ToGetSubnetLegacyDhcpRangePtrOutput() GetSubnetLegacyDhcpRangePtrOutput
+	ToGetSubnetLegacyDhcpRangePtrOutputWithContext(context.Context) GetSubnetLegacyDhcpRangePtrOutput
+}
+
+type getSubnetLegacyDhcpRangePtrType GetSubnetLegacyDhcpRangeArgs
+
+func GetSubnetLegacyDhcpRangePtr(v *GetSubnetLegacyDhcpRangeArgs) GetSubnetLegacyDhcpRangePtrInput {
+	return (*getSubnetLegacyDhcpRangePtrType)(v)
+}
+
+func (*getSubnetLegacyDhcpRangePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSubnetLegacyDhcpRange)(nil)).Elem()
+}
+
+func (i *getSubnetLegacyDhcpRangePtrType) ToGetSubnetLegacyDhcpRangePtrOutput() GetSubnetLegacyDhcpRangePtrOutput {
+	return i.ToGetSubnetLegacyDhcpRangePtrOutputWithContext(context.Background())
+}
+
+func (i *getSubnetLegacyDhcpRangePtrType) ToGetSubnetLegacyDhcpRangePtrOutputWithContext(ctx context.Context) GetSubnetLegacyDhcpRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubnetLegacyDhcpRangePtrOutput)
+}
+
+type GetSubnetLegacyDhcpRangeOutput struct{ *pulumi.OutputState }
+
+func (GetSubnetLegacyDhcpRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubnetLegacyDhcpRange)(nil)).Elem()
+}
+
+func (o GetSubnetLegacyDhcpRangeOutput) ToGetSubnetLegacyDhcpRangeOutput() GetSubnetLegacyDhcpRangeOutput {
+	return o
+}
+
+func (o GetSubnetLegacyDhcpRangeOutput) ToGetSubnetLegacyDhcpRangeOutputWithContext(ctx context.Context) GetSubnetLegacyDhcpRangeOutput {
+	return o
+}
+
+func (o GetSubnetLegacyDhcpRangeOutput) ToGetSubnetLegacyDhcpRangePtrOutput() GetSubnetLegacyDhcpRangePtrOutput {
+	return o.ToGetSubnetLegacyDhcpRangePtrOutputWithContext(context.Background())
+}
+
+func (o GetSubnetLegacyDhcpRangeOutput) ToGetSubnetLegacyDhcpRangePtrOutputWithContext(ctx context.Context) GetSubnetLegacyDhcpRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetSubnetLegacyDhcpRange) *GetSubnetLegacyDhcpRange {
+		return &v
+	}).(GetSubnetLegacyDhcpRangePtrOutput)
+}
+
+// End of the DHCP range.
+func (o GetSubnetLegacyDhcpRangeOutput) EndAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubnetLegacyDhcpRange) string { return v.EndAddress }).(pulumi.StringOutput)
+}
+
+// Start of the DHCP range.
+func (o GetSubnetLegacyDhcpRangeOutput) StartAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubnetLegacyDhcpRange) string { return v.StartAddress }).(pulumi.StringOutput)
+}
+
+type GetSubnetLegacyDhcpRangePtrOutput struct{ *pulumi.OutputState }
+
+func (GetSubnetLegacyDhcpRangePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSubnetLegacyDhcpRange)(nil)).Elem()
+}
+
+func (o GetSubnetLegacyDhcpRangePtrOutput) ToGetSubnetLegacyDhcpRangePtrOutput() GetSubnetLegacyDhcpRangePtrOutput {
+	return o
+}
+
+func (o GetSubnetLegacyDhcpRangePtrOutput) ToGetSubnetLegacyDhcpRangePtrOutputWithContext(ctx context.Context) GetSubnetLegacyDhcpRangePtrOutput {
+	return o
+}
+
+func (o GetSubnetLegacyDhcpRangePtrOutput) Elem() GetSubnetLegacyDhcpRangeOutput {
+	return o.ApplyT(func(v *GetSubnetLegacyDhcpRange) GetSubnetLegacyDhcpRange {
+		if v != nil {
+			return *v
+		}
+		var ret GetSubnetLegacyDhcpRange
+		return ret
+	}).(GetSubnetLegacyDhcpRangeOutput)
+}
+
+// End of the DHCP range.
+func (o GetSubnetLegacyDhcpRangePtrOutput) EndAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSubnetLegacyDhcpRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// Start of the DHCP range.
+func (o GetSubnetLegacyDhcpRangePtrOutput) StartAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSubnetLegacyDhcpRange) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetVnetsLegacyVnet struct {
+	Alias        string `pulumi:"alias"`
+	Id           string `pulumi:"id"`
+	IsolatePorts bool   `pulumi:"isolatePorts"`
+	Tag          int    `pulumi:"tag"`
+	VlanAware    bool   `pulumi:"vlanAware"`
+	Zone         string `pulumi:"zone"`
+}
+
+// GetVnetsLegacyVnetInput is an input type that accepts GetVnetsLegacyVnetArgs and GetVnetsLegacyVnetOutput values.
+// You can construct a concrete instance of `GetVnetsLegacyVnetInput` via:
+//
+//	GetVnetsLegacyVnetArgs{...}
+type GetVnetsLegacyVnetInput interface {
+	pulumi.Input
+
+	ToGetVnetsLegacyVnetOutput() GetVnetsLegacyVnetOutput
+	ToGetVnetsLegacyVnetOutputWithContext(context.Context) GetVnetsLegacyVnetOutput
+}
+
+type GetVnetsLegacyVnetArgs struct {
+	Alias        pulumi.StringInput `pulumi:"alias"`
+	Id           pulumi.StringInput `pulumi:"id"`
+	IsolatePorts pulumi.BoolInput   `pulumi:"isolatePorts"`
+	Tag          pulumi.IntInput    `pulumi:"tag"`
+	VlanAware    pulumi.BoolInput   `pulumi:"vlanAware"`
+	Zone         pulumi.StringInput `pulumi:"zone"`
+}
+
+func (GetVnetsLegacyVnetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVnetsLegacyVnet)(nil)).Elem()
+}
+
+func (i GetVnetsLegacyVnetArgs) ToGetVnetsLegacyVnetOutput() GetVnetsLegacyVnetOutput {
+	return i.ToGetVnetsLegacyVnetOutputWithContext(context.Background())
+}
+
+func (i GetVnetsLegacyVnetArgs) ToGetVnetsLegacyVnetOutputWithContext(ctx context.Context) GetVnetsLegacyVnetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVnetsLegacyVnetOutput)
+}
+
+// GetVnetsLegacyVnetArrayInput is an input type that accepts GetVnetsLegacyVnetArray and GetVnetsLegacyVnetArrayOutput values.
+// You can construct a concrete instance of `GetVnetsLegacyVnetArrayInput` via:
+//
+//	GetVnetsLegacyVnetArray{ GetVnetsLegacyVnetArgs{...} }
+type GetVnetsLegacyVnetArrayInput interface {
+	pulumi.Input
+
+	ToGetVnetsLegacyVnetArrayOutput() GetVnetsLegacyVnetArrayOutput
+	ToGetVnetsLegacyVnetArrayOutputWithContext(context.Context) GetVnetsLegacyVnetArrayOutput
+}
+
+type GetVnetsLegacyVnetArray []GetVnetsLegacyVnetInput
+
+func (GetVnetsLegacyVnetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVnetsLegacyVnet)(nil)).Elem()
+}
+
+func (i GetVnetsLegacyVnetArray) ToGetVnetsLegacyVnetArrayOutput() GetVnetsLegacyVnetArrayOutput {
+	return i.ToGetVnetsLegacyVnetArrayOutputWithContext(context.Background())
+}
+
+func (i GetVnetsLegacyVnetArray) ToGetVnetsLegacyVnetArrayOutputWithContext(ctx context.Context) GetVnetsLegacyVnetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVnetsLegacyVnetArrayOutput)
+}
+
+type GetVnetsLegacyVnetOutput struct{ *pulumi.OutputState }
+
+func (GetVnetsLegacyVnetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVnetsLegacyVnet)(nil)).Elem()
+}
+
+func (o GetVnetsLegacyVnetOutput) ToGetVnetsLegacyVnetOutput() GetVnetsLegacyVnetOutput {
+	return o
+}
+
+func (o GetVnetsLegacyVnetOutput) ToGetVnetsLegacyVnetOutputWithContext(ctx context.Context) GetVnetsLegacyVnetOutput {
+	return o
+}
+
+func (o GetVnetsLegacyVnetOutput) Alias() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVnetsLegacyVnet) string { return v.Alias }).(pulumi.StringOutput)
+}
+
+func (o GetVnetsLegacyVnetOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVnetsLegacyVnet) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetVnetsLegacyVnetOutput) IsolatePorts() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetVnetsLegacyVnet) bool { return v.IsolatePorts }).(pulumi.BoolOutput)
+}
+
+func (o GetVnetsLegacyVnetOutput) Tag() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVnetsLegacyVnet) int { return v.Tag }).(pulumi.IntOutput)
+}
+
+func (o GetVnetsLegacyVnetOutput) VlanAware() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetVnetsLegacyVnet) bool { return v.VlanAware }).(pulumi.BoolOutput)
+}
+
+func (o GetVnetsLegacyVnetOutput) Zone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVnetsLegacyVnet) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+type GetVnetsLegacyVnetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVnetsLegacyVnetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVnetsLegacyVnet)(nil)).Elem()
+}
+
+func (o GetVnetsLegacyVnetArrayOutput) ToGetVnetsLegacyVnetArrayOutput() GetVnetsLegacyVnetArrayOutput {
+	return o
+}
+
+func (o GetVnetsLegacyVnetArrayOutput) ToGetVnetsLegacyVnetArrayOutputWithContext(ctx context.Context) GetVnetsLegacyVnetArrayOutput {
+	return o
+}
+
+func (o GetVnetsLegacyVnetArrayOutput) Index(i pulumi.IntInput) GetVnetsLegacyVnetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVnetsLegacyVnet {
+		return vs[0].([]GetVnetsLegacyVnet)[vs[1].(int)]
+	}).(GetVnetsLegacyVnetOutput)
+}
+
 type GetVnetsVnet struct {
 	Alias        string `pulumi:"alias"`
 	Id           string `pulumi:"id"`
@@ -447,6 +883,232 @@ func (o GetVnetsVnetArrayOutput) Index(i pulumi.IntInput) GetVnetsVnetOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVnetsVnet {
 		return vs[0].([]GetVnetsVnet)[vs[1].(int)]
 	}).(GetVnetsVnetOutput)
+}
+
+type GetZonesLegacyZone struct {
+	AdvertiseSubnets        bool     `pulumi:"advertiseSubnets"`
+	Bridge                  string   `pulumi:"bridge"`
+	Controller              string   `pulumi:"controller"`
+	Dhcp                    string   `pulumi:"dhcp"`
+	DisableArpNdSuppression bool     `pulumi:"disableArpNdSuppression"`
+	Dns                     string   `pulumi:"dns"`
+	DnsZone                 string   `pulumi:"dnsZone"`
+	ExitNodes               []string `pulumi:"exitNodes"`
+	ExitNodesLocalRouting   bool     `pulumi:"exitNodesLocalRouting"`
+	Id                      string   `pulumi:"id"`
+	Ipam                    string   `pulumi:"ipam"`
+	Mtu                     int      `pulumi:"mtu"`
+	Nodes                   []string `pulumi:"nodes"`
+	Peers                   []string `pulumi:"peers"`
+	Pending                 bool     `pulumi:"pending"`
+	PrimaryExitNode         string   `pulumi:"primaryExitNode"`
+	ReverseDns              string   `pulumi:"reverseDns"`
+	RtImport                string   `pulumi:"rtImport"`
+	ServiceVlan             int      `pulumi:"serviceVlan"`
+	ServiceVlanProtocol     string   `pulumi:"serviceVlanProtocol"`
+	State                   string   `pulumi:"state"`
+	Type                    string   `pulumi:"type"`
+	VrfVxlan                int      `pulumi:"vrfVxlan"`
+}
+
+// GetZonesLegacyZoneInput is an input type that accepts GetZonesLegacyZoneArgs and GetZonesLegacyZoneOutput values.
+// You can construct a concrete instance of `GetZonesLegacyZoneInput` via:
+//
+//	GetZonesLegacyZoneArgs{...}
+type GetZonesLegacyZoneInput interface {
+	pulumi.Input
+
+	ToGetZonesLegacyZoneOutput() GetZonesLegacyZoneOutput
+	ToGetZonesLegacyZoneOutputWithContext(context.Context) GetZonesLegacyZoneOutput
+}
+
+type GetZonesLegacyZoneArgs struct {
+	AdvertiseSubnets        pulumi.BoolInput        `pulumi:"advertiseSubnets"`
+	Bridge                  pulumi.StringInput      `pulumi:"bridge"`
+	Controller              pulumi.StringInput      `pulumi:"controller"`
+	Dhcp                    pulumi.StringInput      `pulumi:"dhcp"`
+	DisableArpNdSuppression pulumi.BoolInput        `pulumi:"disableArpNdSuppression"`
+	Dns                     pulumi.StringInput      `pulumi:"dns"`
+	DnsZone                 pulumi.StringInput      `pulumi:"dnsZone"`
+	ExitNodes               pulumi.StringArrayInput `pulumi:"exitNodes"`
+	ExitNodesLocalRouting   pulumi.BoolInput        `pulumi:"exitNodesLocalRouting"`
+	Id                      pulumi.StringInput      `pulumi:"id"`
+	Ipam                    pulumi.StringInput      `pulumi:"ipam"`
+	Mtu                     pulumi.IntInput         `pulumi:"mtu"`
+	Nodes                   pulumi.StringArrayInput `pulumi:"nodes"`
+	Peers                   pulumi.StringArrayInput `pulumi:"peers"`
+	Pending                 pulumi.BoolInput        `pulumi:"pending"`
+	PrimaryExitNode         pulumi.StringInput      `pulumi:"primaryExitNode"`
+	ReverseDns              pulumi.StringInput      `pulumi:"reverseDns"`
+	RtImport                pulumi.StringInput      `pulumi:"rtImport"`
+	ServiceVlan             pulumi.IntInput         `pulumi:"serviceVlan"`
+	ServiceVlanProtocol     pulumi.StringInput      `pulumi:"serviceVlanProtocol"`
+	State                   pulumi.StringInput      `pulumi:"state"`
+	Type                    pulumi.StringInput      `pulumi:"type"`
+	VrfVxlan                pulumi.IntInput         `pulumi:"vrfVxlan"`
+}
+
+func (GetZonesLegacyZoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesLegacyZone)(nil)).Elem()
+}
+
+func (i GetZonesLegacyZoneArgs) ToGetZonesLegacyZoneOutput() GetZonesLegacyZoneOutput {
+	return i.ToGetZonesLegacyZoneOutputWithContext(context.Background())
+}
+
+func (i GetZonesLegacyZoneArgs) ToGetZonesLegacyZoneOutputWithContext(ctx context.Context) GetZonesLegacyZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZonesLegacyZoneOutput)
+}
+
+// GetZonesLegacyZoneArrayInput is an input type that accepts GetZonesLegacyZoneArray and GetZonesLegacyZoneArrayOutput values.
+// You can construct a concrete instance of `GetZonesLegacyZoneArrayInput` via:
+//
+//	GetZonesLegacyZoneArray{ GetZonesLegacyZoneArgs{...} }
+type GetZonesLegacyZoneArrayInput interface {
+	pulumi.Input
+
+	ToGetZonesLegacyZoneArrayOutput() GetZonesLegacyZoneArrayOutput
+	ToGetZonesLegacyZoneArrayOutputWithContext(context.Context) GetZonesLegacyZoneArrayOutput
+}
+
+type GetZonesLegacyZoneArray []GetZonesLegacyZoneInput
+
+func (GetZonesLegacyZoneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZonesLegacyZone)(nil)).Elem()
+}
+
+func (i GetZonesLegacyZoneArray) ToGetZonesLegacyZoneArrayOutput() GetZonesLegacyZoneArrayOutput {
+	return i.ToGetZonesLegacyZoneArrayOutputWithContext(context.Background())
+}
+
+func (i GetZonesLegacyZoneArray) ToGetZonesLegacyZoneArrayOutputWithContext(ctx context.Context) GetZonesLegacyZoneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetZonesLegacyZoneArrayOutput)
+}
+
+type GetZonesLegacyZoneOutput struct{ *pulumi.OutputState }
+
+func (GetZonesLegacyZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetZonesLegacyZone)(nil)).Elem()
+}
+
+func (o GetZonesLegacyZoneOutput) ToGetZonesLegacyZoneOutput() GetZonesLegacyZoneOutput {
+	return o
+}
+
+func (o GetZonesLegacyZoneOutput) ToGetZonesLegacyZoneOutputWithContext(ctx context.Context) GetZonesLegacyZoneOutput {
+	return o
+}
+
+func (o GetZonesLegacyZoneOutput) AdvertiseSubnets() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZonesLegacyZone) bool { return v.AdvertiseSubnets }).(pulumi.BoolOutput)
+}
+
+func (o GetZonesLegacyZoneOutput) Bridge() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesLegacyZone) string { return v.Bridge }).(pulumi.StringOutput)
+}
+
+func (o GetZonesLegacyZoneOutput) Controller() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesLegacyZone) string { return v.Controller }).(pulumi.StringOutput)
+}
+
+func (o GetZonesLegacyZoneOutput) Dhcp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesLegacyZone) string { return v.Dhcp }).(pulumi.StringOutput)
+}
+
+func (o GetZonesLegacyZoneOutput) DisableArpNdSuppression() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZonesLegacyZone) bool { return v.DisableArpNdSuppression }).(pulumi.BoolOutput)
+}
+
+func (o GetZonesLegacyZoneOutput) Dns() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesLegacyZone) string { return v.Dns }).(pulumi.StringOutput)
+}
+
+func (o GetZonesLegacyZoneOutput) DnsZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesLegacyZone) string { return v.DnsZone }).(pulumi.StringOutput)
+}
+
+func (o GetZonesLegacyZoneOutput) ExitNodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetZonesLegacyZone) []string { return v.ExitNodes }).(pulumi.StringArrayOutput)
+}
+
+func (o GetZonesLegacyZoneOutput) ExitNodesLocalRouting() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZonesLegacyZone) bool { return v.ExitNodesLocalRouting }).(pulumi.BoolOutput)
+}
+
+func (o GetZonesLegacyZoneOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesLegacyZone) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetZonesLegacyZoneOutput) Ipam() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesLegacyZone) string { return v.Ipam }).(pulumi.StringOutput)
+}
+
+func (o GetZonesLegacyZoneOutput) Mtu() pulumi.IntOutput {
+	return o.ApplyT(func(v GetZonesLegacyZone) int { return v.Mtu }).(pulumi.IntOutput)
+}
+
+func (o GetZonesLegacyZoneOutput) Nodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetZonesLegacyZone) []string { return v.Nodes }).(pulumi.StringArrayOutput)
+}
+
+func (o GetZonesLegacyZoneOutput) Peers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetZonesLegacyZone) []string { return v.Peers }).(pulumi.StringArrayOutput)
+}
+
+func (o GetZonesLegacyZoneOutput) Pending() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetZonesLegacyZone) bool { return v.Pending }).(pulumi.BoolOutput)
+}
+
+func (o GetZonesLegacyZoneOutput) PrimaryExitNode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesLegacyZone) string { return v.PrimaryExitNode }).(pulumi.StringOutput)
+}
+
+func (o GetZonesLegacyZoneOutput) ReverseDns() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesLegacyZone) string { return v.ReverseDns }).(pulumi.StringOutput)
+}
+
+func (o GetZonesLegacyZoneOutput) RtImport() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesLegacyZone) string { return v.RtImport }).(pulumi.StringOutput)
+}
+
+func (o GetZonesLegacyZoneOutput) ServiceVlan() pulumi.IntOutput {
+	return o.ApplyT(func(v GetZonesLegacyZone) int { return v.ServiceVlan }).(pulumi.IntOutput)
+}
+
+func (o GetZonesLegacyZoneOutput) ServiceVlanProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesLegacyZone) string { return v.ServiceVlanProtocol }).(pulumi.StringOutput)
+}
+
+func (o GetZonesLegacyZoneOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesLegacyZone) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o GetZonesLegacyZoneOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetZonesLegacyZone) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o GetZonesLegacyZoneOutput) VrfVxlan() pulumi.IntOutput {
+	return o.ApplyT(func(v GetZonesLegacyZone) int { return v.VrfVxlan }).(pulumi.IntOutput)
+}
+
+type GetZonesLegacyZoneArrayOutput struct{ *pulumi.OutputState }
+
+func (GetZonesLegacyZoneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetZonesLegacyZone)(nil)).Elem()
+}
+
+func (o GetZonesLegacyZoneArrayOutput) ToGetZonesLegacyZoneArrayOutput() GetZonesLegacyZoneArrayOutput {
+	return o
+}
+
+func (o GetZonesLegacyZoneArrayOutput) ToGetZonesLegacyZoneArrayOutputWithContext(ctx context.Context) GetZonesLegacyZoneArrayOutput {
+	return o
+}
+
+func (o GetZonesLegacyZoneArrayOutput) Index(i pulumi.IntInput) GetZonesLegacyZoneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetZonesLegacyZone {
+		return vs[0].([]GetZonesLegacyZone)[vs[1].(int)]
+	}).(GetZonesLegacyZoneOutput)
 }
 
 type GetZonesZone struct {
@@ -678,18 +1340,34 @@ func (o GetZonesZoneArrayOutput) Index(i pulumi.IntInput) GetZonesZoneOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetDhcpRangeInput)(nil)).Elem(), SubnetDhcpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetDhcpRangePtrInput)(nil)).Elem(), SubnetDhcpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetLegacyDhcpRangeInput)(nil)).Elem(), SubnetLegacyDhcpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetLegacyDhcpRangePtrInput)(nil)).Elem(), SubnetLegacyDhcpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetDhcpRangeInput)(nil)).Elem(), GetSubnetDhcpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetDhcpRangePtrInput)(nil)).Elem(), GetSubnetDhcpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetLegacyDhcpRangeInput)(nil)).Elem(), GetSubnetLegacyDhcpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetLegacyDhcpRangePtrInput)(nil)).Elem(), GetSubnetLegacyDhcpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVnetsLegacyVnetInput)(nil)).Elem(), GetVnetsLegacyVnetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVnetsLegacyVnetArrayInput)(nil)).Elem(), GetVnetsLegacyVnetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVnetsVnetInput)(nil)).Elem(), GetVnetsVnetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVnetsVnetArrayInput)(nil)).Elem(), GetVnetsVnetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesLegacyZoneInput)(nil)).Elem(), GetZonesLegacyZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesLegacyZoneArrayInput)(nil)).Elem(), GetZonesLegacyZoneArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneInput)(nil)).Elem(), GetZonesZoneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetZonesZoneArrayInput)(nil)).Elem(), GetZonesZoneArray{})
 	pulumi.RegisterOutputType(SubnetDhcpRangeOutput{})
 	pulumi.RegisterOutputType(SubnetDhcpRangePtrOutput{})
+	pulumi.RegisterOutputType(SubnetLegacyDhcpRangeOutput{})
+	pulumi.RegisterOutputType(SubnetLegacyDhcpRangePtrOutput{})
 	pulumi.RegisterOutputType(GetSubnetDhcpRangeOutput{})
 	pulumi.RegisterOutputType(GetSubnetDhcpRangePtrOutput{})
+	pulumi.RegisterOutputType(GetSubnetLegacyDhcpRangeOutput{})
+	pulumi.RegisterOutputType(GetSubnetLegacyDhcpRangePtrOutput{})
+	pulumi.RegisterOutputType(GetVnetsLegacyVnetOutput{})
+	pulumi.RegisterOutputType(GetVnetsLegacyVnetArrayOutput{})
 	pulumi.RegisterOutputType(GetVnetsVnetOutput{})
 	pulumi.RegisterOutputType(GetVnetsVnetArrayOutput{})
+	pulumi.RegisterOutputType(GetZonesLegacyZoneOutput{})
+	pulumi.RegisterOutputType(GetZonesLegacyZoneArrayOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneOutput{})
 	pulumi.RegisterOutputType(GetZonesZoneArrayOutput{})
 }

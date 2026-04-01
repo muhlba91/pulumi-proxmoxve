@@ -7,42 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves a single ACME plugin by plugin ID name.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/acme"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := acme.GetPlugin(ctx, &acme.GetPluginArgs{
-//				Plugin: "standalone",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("dataProxmoxVirtualEnvironmentAcmePlugin", example)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetPlugin(ctx *pulumi.Context, args *GetPluginArgs, opts ...pulumi.InvokeOption) (*GetPluginResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPluginResult
-	err := ctx.Invoke("proxmoxve:Acme/getPlugin:getPlugin", args, &rv, opts...)
+	err := ctx.Invoke("proxmoxve:acme/getPlugin:getPlugin", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -78,7 +51,7 @@ func GetPluginOutput(ctx *pulumi.Context, args GetPluginOutputArgs, opts ...pulu
 		ApplyT(func(v interface{}) (GetPluginResultOutput, error) {
 			args := v.(GetPluginArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:Acme/getPlugin:getPlugin", args, GetPluginResultOutput{}, options).(GetPluginResultOutput), nil
+			return ctx.InvokeOutput("proxmoxve:acme/getPlugin:getPlugin", args, GetPluginResultOutput{}, options).(GetPluginResultOutput), nil
 		}).(GetPluginResultOutput)
 }
 

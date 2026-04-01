@@ -6,28 +6,6 @@ import * as utilities from "../../../utilities";
 
 /**
  * OSPF Fabric Node in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const main = new proxmoxve.sdnfabric.OSPF("main", {
- *     ospfId: "main-fabric",
- *     ipPrefix: "10.0.0.0/16",
- *     area: "0",
- * });
- * const mainOspf = new proxmoxve.sdn.fabric.node.Ospf("main", {
- *     fabricId: main.ospfId,
- *     nodeId: "pve",
- *     ip: "10.0.0.1",
- *     interfaceNames: [
- *         "nic0",
- *         "nic1",
- *     ],
- * });
- * ```
  */
 export class Ospf extends pulumi.CustomResource {
     /**
@@ -44,7 +22,7 @@ export class Ospf extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'proxmoxve:Sdn/fabric/node/ospf:Ospf';
+    public static readonly __pulumiType = 'proxmoxve:sdn/fabric/node/ospf:Ospf';
 
     /**
      * Returns true if the given object is an instance of Ospf.  This is designed to work even

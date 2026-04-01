@@ -8,59 +8,11 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Manages an APT standard repository of a Proxmox VE node.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/apt"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := apt.NewRepository(ctx, "example", &apt.RepositoryArgs{
-//				Handle: pulumi.String("no-subscription"),
-//				Node:   pulumi.String("pve"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = apt.NewRepository(ctx, "example", &apt.RepositoryArgs{
-//				Enabled:  pulumi.Bool(true),
-//				FilePath: example.FilePath,
-//				Index:    example.Index,
-//				Node:     example.Node,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// #!/usr/bin/env sh
-//
-// An APT standard repository can be imported using a comma-separated list consisting of the name of the Proxmox VE node,
-//
-// and the standard repository handle in the exact same order, e.g.:
-//
-// ```sh
-// $ pulumi import proxmoxve:Apt/standard/repository:Repository example pve,no-subscription
-// ```
 type Repository struct {
 	pulumi.CustomResourceState
 
@@ -95,7 +47,7 @@ func NewRepository(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Repository
-	err := ctx.RegisterResource("proxmoxve:Apt/standard/repository:Repository", name, args, &resource, opts...)
+	err := ctx.RegisterResource("proxmoxve:apt/standard/repository:Repository", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -107,7 +59,7 @@ func NewRepository(ctx *pulumi.Context,
 func GetRepository(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *RepositoryState, opts ...pulumi.ResourceOption) (*Repository, error) {
 	var resource Repository
-	err := ctx.ReadResource("proxmoxve:Apt/standard/repository:Repository", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("proxmoxve:apt/standard/repository:Repository", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

@@ -15,18 +15,18 @@ else:
 from .. import _utilities
 
 __all__ = [
-    'CIFSBackups',
+    'CifsBackups',
+    'CifsLegacyBackups',
     'DirectoryBackups',
-    'FileSourceFile',
-    'FileSourceRaw',
-    'NFSBackups',
-    'PBSBackups',
-    'GetDatastoresDatastoreResult',
-    'GetDatastoresFiltersResult',
+    'DirectoryLegacyBackups',
+    'NfsBackups',
+    'NfsLegacyBackups',
+    'PbsBackups',
+    'PbsLegacyBackups',
 ]
 
 @pulumi.output_type
-class CIFSBackups(dict):
+class CifsBackups(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -48,14 +48,148 @@ class CIFSBackups(dict):
             suggest = "max_protected_backups"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in CIFSBackups. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in CifsBackups. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        CIFSBackups.__key_warning(key)
+        CifsBackups.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        CIFSBackups.__key_warning(key)
+        CifsBackups.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 keep_all: Optional[_builtins.bool] = None,
+                 keep_daily: Optional[_builtins.int] = None,
+                 keep_hourly: Optional[_builtins.int] = None,
+                 keep_last: Optional[_builtins.int] = None,
+                 keep_monthly: Optional[_builtins.int] = None,
+                 keep_weekly: Optional[_builtins.int] = None,
+                 keep_yearly: Optional[_builtins.int] = None,
+                 max_protected_backups: Optional[_builtins.int] = None):
+        """
+        :param _builtins.bool keep_all: Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+        :param _builtins.int keep_daily: The number of daily backups to keep. Older backups will be removed.
+        :param _builtins.int keep_hourly: The number of hourly backups to keep. Older backups will be removed.
+        :param _builtins.int keep_last: Specifies the number of the most recent backups to keep, regardless of their age.
+        :param _builtins.int keep_monthly: The number of monthly backups to keep. Older backups will be removed.
+        :param _builtins.int keep_weekly: The number of weekly backups to keep. Older backups will be removed.
+        :param _builtins.int keep_yearly: The number of yearly backups to keep. Older backups will be removed.
+        :param _builtins.int max_protected_backups: The maximum number of protected backups per guest. Use '-1' for unlimited.
+        """
+        if keep_all is not None:
+            pulumi.set(__self__, "keep_all", keep_all)
+        if keep_daily is not None:
+            pulumi.set(__self__, "keep_daily", keep_daily)
+        if keep_hourly is not None:
+            pulumi.set(__self__, "keep_hourly", keep_hourly)
+        if keep_last is not None:
+            pulumi.set(__self__, "keep_last", keep_last)
+        if keep_monthly is not None:
+            pulumi.set(__self__, "keep_monthly", keep_monthly)
+        if keep_weekly is not None:
+            pulumi.set(__self__, "keep_weekly", keep_weekly)
+        if keep_yearly is not None:
+            pulumi.set(__self__, "keep_yearly", keep_yearly)
+        if max_protected_backups is not None:
+            pulumi.set(__self__, "max_protected_backups", max_protected_backups)
+
+    @_builtins.property
+    @pulumi.getter(name="keepAll")
+    def keep_all(self) -> Optional[_builtins.bool]:
+        """
+        Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+        """
+        return pulumi.get(self, "keep_all")
+
+    @_builtins.property
+    @pulumi.getter(name="keepDaily")
+    def keep_daily(self) -> Optional[_builtins.int]:
+        """
+        The number of daily backups to keep. Older backups will be removed.
+        """
+        return pulumi.get(self, "keep_daily")
+
+    @_builtins.property
+    @pulumi.getter(name="keepHourly")
+    def keep_hourly(self) -> Optional[_builtins.int]:
+        """
+        The number of hourly backups to keep. Older backups will be removed.
+        """
+        return pulumi.get(self, "keep_hourly")
+
+    @_builtins.property
+    @pulumi.getter(name="keepLast")
+    def keep_last(self) -> Optional[_builtins.int]:
+        """
+        Specifies the number of the most recent backups to keep, regardless of their age.
+        """
+        return pulumi.get(self, "keep_last")
+
+    @_builtins.property
+    @pulumi.getter(name="keepMonthly")
+    def keep_monthly(self) -> Optional[_builtins.int]:
+        """
+        The number of monthly backups to keep. Older backups will be removed.
+        """
+        return pulumi.get(self, "keep_monthly")
+
+    @_builtins.property
+    @pulumi.getter(name="keepWeekly")
+    def keep_weekly(self) -> Optional[_builtins.int]:
+        """
+        The number of weekly backups to keep. Older backups will be removed.
+        """
+        return pulumi.get(self, "keep_weekly")
+
+    @_builtins.property
+    @pulumi.getter(name="keepYearly")
+    def keep_yearly(self) -> Optional[_builtins.int]:
+        """
+        The number of yearly backups to keep. Older backups will be removed.
+        """
+        return pulumi.get(self, "keep_yearly")
+
+    @_builtins.property
+    @pulumi.getter(name="maxProtectedBackups")
+    def max_protected_backups(self) -> Optional[_builtins.int]:
+        """
+        The maximum number of protected backups per guest. Use '-1' for unlimited.
+        """
+        return pulumi.get(self, "max_protected_backups")
+
+
+@pulumi.output_type
+class CifsLegacyBackups(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keepAll":
+            suggest = "keep_all"
+        elif key == "keepDaily":
+            suggest = "keep_daily"
+        elif key == "keepHourly":
+            suggest = "keep_hourly"
+        elif key == "keepLast":
+            suggest = "keep_last"
+        elif key == "keepMonthly":
+            suggest = "keep_monthly"
+        elif key == "keepWeekly":
+            suggest = "keep_weekly"
+        elif key == "keepYearly":
+            suggest = "keep_yearly"
+        elif key == "maxProtectedBackups":
+            suggest = "max_protected_backups"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CifsLegacyBackups. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CifsLegacyBackups.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CifsLegacyBackups.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -294,170 +428,7 @@ class DirectoryBackups(dict):
 
 
 @pulumi.output_type
-class FileSourceFile(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fileName":
-            suggest = "file_name"
-        elif key == "minTls":
-            suggest = "min_tls"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FileSourceFile. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FileSourceFile.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FileSourceFile.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 path: _builtins.str,
-                 changed: Optional[_builtins.bool] = None,
-                 checksum: Optional[_builtins.str] = None,
-                 file_name: Optional[_builtins.str] = None,
-                 insecure: Optional[_builtins.bool] = None,
-                 min_tls: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str path: A path to a local file or a URL.
-        :param _builtins.bool changed: Whether the source file has changed since the last run
-        :param _builtins.str checksum: The SHA256 checksum of the source file.
-        :param _builtins.str file_name: The file name to use instead of the source file
-               name. Useful when the source file does not have a valid file extension,
-               for example when the source file is a URL referencing a `.qcow2` image.
-        :param _builtins.bool insecure: Whether to skip the TLS verification step for
-               HTTPS sources (defaults to `false`).
-        :param _builtins.str min_tls: The minimum required TLS version for HTTPS
-               sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
-        """
-        pulumi.set(__self__, "path", path)
-        if changed is not None:
-            pulumi.set(__self__, "changed", changed)
-        if checksum is not None:
-            pulumi.set(__self__, "checksum", checksum)
-        if file_name is not None:
-            pulumi.set(__self__, "file_name", file_name)
-        if insecure is not None:
-            pulumi.set(__self__, "insecure", insecure)
-        if min_tls is not None:
-            pulumi.set(__self__, "min_tls", min_tls)
-
-    @_builtins.property
-    @pulumi.getter
-    def path(self) -> _builtins.str:
-        """
-        A path to a local file or a URL.
-        """
-        return pulumi.get(self, "path")
-
-    @_builtins.property
-    @pulumi.getter
-    def changed(self) -> Optional[_builtins.bool]:
-        """
-        Whether the source file has changed since the last run
-        """
-        return pulumi.get(self, "changed")
-
-    @_builtins.property
-    @pulumi.getter
-    def checksum(self) -> Optional[_builtins.str]:
-        """
-        The SHA256 checksum of the source file.
-        """
-        return pulumi.get(self, "checksum")
-
-    @_builtins.property
-    @pulumi.getter(name="fileName")
-    def file_name(self) -> Optional[_builtins.str]:
-        """
-        The file name to use instead of the source file
-        name. Useful when the source file does not have a valid file extension,
-        for example when the source file is a URL referencing a `.qcow2` image.
-        """
-        return pulumi.get(self, "file_name")
-
-    @_builtins.property
-    @pulumi.getter
-    def insecure(self) -> Optional[_builtins.bool]:
-        """
-        Whether to skip the TLS verification step for
-        HTTPS sources (defaults to `false`).
-        """
-        return pulumi.get(self, "insecure")
-
-    @_builtins.property
-    @pulumi.getter(name="minTls")
-    def min_tls(self) -> Optional[_builtins.str]:
-        """
-        The minimum required TLS version for HTTPS
-        sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
-        """
-        return pulumi.get(self, "min_tls")
-
-
-@pulumi.output_type
-class FileSourceRaw(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "fileName":
-            suggest = "file_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in FileSourceRaw. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        FileSourceRaw.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        FileSourceRaw.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 data: _builtins.str,
-                 file_name: _builtins.str,
-                 resize: Optional[_builtins.int] = None):
-        """
-        :param _builtins.str data: The raw data.
-        :param _builtins.str file_name: The file name.
-        :param _builtins.int resize: The number of bytes to resize the file to.
-        """
-        pulumi.set(__self__, "data", data)
-        pulumi.set(__self__, "file_name", file_name)
-        if resize is not None:
-            pulumi.set(__self__, "resize", resize)
-
-    @_builtins.property
-    @pulumi.getter
-    def data(self) -> _builtins.str:
-        """
-        The raw data.
-        """
-        return pulumi.get(self, "data")
-
-    @_builtins.property
-    @pulumi.getter(name="fileName")
-    def file_name(self) -> _builtins.str:
-        """
-        The file name.
-        """
-        return pulumi.get(self, "file_name")
-
-    @_builtins.property
-    @pulumi.getter
-    def resize(self) -> Optional[_builtins.int]:
-        """
-        The number of bytes to resize the file to.
-        """
-        return pulumi.get(self, "resize")
-
-
-@pulumi.output_type
-class NFSBackups(dict):
+class DirectoryLegacyBackups(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -479,14 +450,14 @@ class NFSBackups(dict):
             suggest = "max_protected_backups"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NFSBackups. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in DirectoryLegacyBackups. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        NFSBackups.__key_warning(key)
+        DirectoryLegacyBackups.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        NFSBackups.__key_warning(key)
+        DirectoryLegacyBackups.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -591,7 +562,7 @@ class NFSBackups(dict):
 
 
 @pulumi.output_type
-class PBSBackups(dict):
+class NfsBackups(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -613,14 +584,14 @@ class PBSBackups(dict):
             suggest = "max_protected_backups"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in PBSBackups. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in NfsBackups. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        PBSBackups.__key_warning(key)
+        NfsBackups.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        PBSBackups.__key_warning(key)
+        NfsBackups.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -725,180 +696,404 @@ class PBSBackups(dict):
 
 
 @pulumi.output_type
-class GetDatastoresDatastoreResult(dict):
+class NfsLegacyBackups(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keepAll":
+            suggest = "keep_all"
+        elif key == "keepDaily":
+            suggest = "keep_daily"
+        elif key == "keepHourly":
+            suggest = "keep_hourly"
+        elif key == "keepLast":
+            suggest = "keep_last"
+        elif key == "keepMonthly":
+            suggest = "keep_monthly"
+        elif key == "keepWeekly":
+            suggest = "keep_weekly"
+        elif key == "keepYearly":
+            suggest = "keep_yearly"
+        elif key == "maxProtectedBackups":
+            suggest = "max_protected_backups"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NfsLegacyBackups. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NfsLegacyBackups.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NfsLegacyBackups.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 content_types: Sequence[_builtins.str],
-                 id: _builtins.str,
-                 node_name: _builtins.str,
-                 type: _builtins.str,
-                 active: Optional[_builtins.bool] = None,
-                 enabled: Optional[_builtins.bool] = None,
-                 shared: Optional[_builtins.bool] = None,
-                 space_available: Optional[_builtins.int] = None,
-                 space_total: Optional[_builtins.int] = None,
-                 space_used: Optional[_builtins.int] = None,
-                 space_used_fraction: Optional[_builtins.float] = None):
+                 keep_all: Optional[_builtins.bool] = None,
+                 keep_daily: Optional[_builtins.int] = None,
+                 keep_hourly: Optional[_builtins.int] = None,
+                 keep_last: Optional[_builtins.int] = None,
+                 keep_monthly: Optional[_builtins.int] = None,
+                 keep_weekly: Optional[_builtins.int] = None,
+                 keep_yearly: Optional[_builtins.int] = None,
+                 max_protected_backups: Optional[_builtins.int] = None):
         """
-        :param Sequence[_builtins.str] content_types: Allowed store content types.
-        :param _builtins.str id: The ID of the store.
-        :param _builtins.str node_name: The name of the node the store is on.
-        :param _builtins.str type: Store type.
-        :param _builtins.bool active: Whether the store is active.
-        :param _builtins.bool enabled: Whether the store is enabled.
-        :param _builtins.bool shared: Shared flag from store configuration.
-        :param _builtins.int space_available: Available store space in bytes.
-        :param _builtins.int space_total: Total store space in bytes.
-        :param _builtins.int space_used: Used store space in bytes.
-        :param _builtins.float space_used_fraction: Used fraction (used/total).
+        :param _builtins.bool keep_all: Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+        :param _builtins.int keep_daily: The number of daily backups to keep. Older backups will be removed.
+        :param _builtins.int keep_hourly: The number of hourly backups to keep. Older backups will be removed.
+        :param _builtins.int keep_last: Specifies the number of the most recent backups to keep, regardless of their age.
+        :param _builtins.int keep_monthly: The number of monthly backups to keep. Older backups will be removed.
+        :param _builtins.int keep_weekly: The number of weekly backups to keep. Older backups will be removed.
+        :param _builtins.int keep_yearly: The number of yearly backups to keep. Older backups will be removed.
+        :param _builtins.int max_protected_backups: The maximum number of protected backups per guest. Use '-1' for unlimited.
         """
-        pulumi.set(__self__, "content_types", content_types)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "node_name", node_name)
-        pulumi.set(__self__, "type", type)
-        if active is not None:
-            pulumi.set(__self__, "active", active)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-        if shared is not None:
-            pulumi.set(__self__, "shared", shared)
-        if space_available is not None:
-            pulumi.set(__self__, "space_available", space_available)
-        if space_total is not None:
-            pulumi.set(__self__, "space_total", space_total)
-        if space_used is not None:
-            pulumi.set(__self__, "space_used", space_used)
-        if space_used_fraction is not None:
-            pulumi.set(__self__, "space_used_fraction", space_used_fraction)
+        if keep_all is not None:
+            pulumi.set(__self__, "keep_all", keep_all)
+        if keep_daily is not None:
+            pulumi.set(__self__, "keep_daily", keep_daily)
+        if keep_hourly is not None:
+            pulumi.set(__self__, "keep_hourly", keep_hourly)
+        if keep_last is not None:
+            pulumi.set(__self__, "keep_last", keep_last)
+        if keep_monthly is not None:
+            pulumi.set(__self__, "keep_monthly", keep_monthly)
+        if keep_weekly is not None:
+            pulumi.set(__self__, "keep_weekly", keep_weekly)
+        if keep_yearly is not None:
+            pulumi.set(__self__, "keep_yearly", keep_yearly)
+        if max_protected_backups is not None:
+            pulumi.set(__self__, "max_protected_backups", max_protected_backups)
 
     @_builtins.property
-    @pulumi.getter(name="contentTypes")
-    def content_types(self) -> Sequence[_builtins.str]:
+    @pulumi.getter(name="keepAll")
+    def keep_all(self) -> Optional[_builtins.bool]:
         """
-        Allowed store content types.
+        Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
         """
-        return pulumi.get(self, "content_types")
+        return pulumi.get(self, "keep_all")
 
     @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
+    @pulumi.getter(name="keepDaily")
+    def keep_daily(self) -> Optional[_builtins.int]:
         """
-        The ID of the store.
+        The number of daily backups to keep. Older backups will be removed.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "keep_daily")
 
     @_builtins.property
-    @pulumi.getter(name="nodeName")
-    def node_name(self) -> _builtins.str:
+    @pulumi.getter(name="keepHourly")
+    def keep_hourly(self) -> Optional[_builtins.int]:
         """
-        The name of the node the store is on.
+        The number of hourly backups to keep. Older backups will be removed.
         """
-        return pulumi.get(self, "node_name")
+        return pulumi.get(self, "keep_hourly")
 
     @_builtins.property
-    @pulumi.getter
-    def type(self) -> _builtins.str:
+    @pulumi.getter(name="keepLast")
+    def keep_last(self) -> Optional[_builtins.int]:
         """
-        Store type.
+        Specifies the number of the most recent backups to keep, regardless of their age.
         """
-        return pulumi.get(self, "type")
+        return pulumi.get(self, "keep_last")
 
     @_builtins.property
-    @pulumi.getter
-    def active(self) -> Optional[_builtins.bool]:
+    @pulumi.getter(name="keepMonthly")
+    def keep_monthly(self) -> Optional[_builtins.int]:
         """
-        Whether the store is active.
+        The number of monthly backups to keep. Older backups will be removed.
         """
-        return pulumi.get(self, "active")
+        return pulumi.get(self, "keep_monthly")
 
     @_builtins.property
-    @pulumi.getter
-    def enabled(self) -> Optional[_builtins.bool]:
+    @pulumi.getter(name="keepWeekly")
+    def keep_weekly(self) -> Optional[_builtins.int]:
         """
-        Whether the store is enabled.
+        The number of weekly backups to keep. Older backups will be removed.
         """
-        return pulumi.get(self, "enabled")
+        return pulumi.get(self, "keep_weekly")
 
     @_builtins.property
-    @pulumi.getter
-    def shared(self) -> Optional[_builtins.bool]:
+    @pulumi.getter(name="keepYearly")
+    def keep_yearly(self) -> Optional[_builtins.int]:
         """
-        Shared flag from store configuration.
+        The number of yearly backups to keep. Older backups will be removed.
         """
-        return pulumi.get(self, "shared")
+        return pulumi.get(self, "keep_yearly")
 
     @_builtins.property
-    @pulumi.getter(name="spaceAvailable")
-    def space_available(self) -> Optional[_builtins.int]:
+    @pulumi.getter(name="maxProtectedBackups")
+    def max_protected_backups(self) -> Optional[_builtins.int]:
         """
-        Available store space in bytes.
+        The maximum number of protected backups per guest. Use '-1' for unlimited.
         """
-        return pulumi.get(self, "space_available")
-
-    @_builtins.property
-    @pulumi.getter(name="spaceTotal")
-    def space_total(self) -> Optional[_builtins.int]:
-        """
-        Total store space in bytes.
-        """
-        return pulumi.get(self, "space_total")
-
-    @_builtins.property
-    @pulumi.getter(name="spaceUsed")
-    def space_used(self) -> Optional[_builtins.int]:
-        """
-        Used store space in bytes.
-        """
-        return pulumi.get(self, "space_used")
-
-    @_builtins.property
-    @pulumi.getter(name="spaceUsedFraction")
-    def space_used_fraction(self) -> Optional[_builtins.float]:
-        """
-        Used fraction (used/total).
-        """
-        return pulumi.get(self, "space_used_fraction")
+        return pulumi.get(self, "max_protected_backups")
 
 
 @pulumi.output_type
-class GetDatastoresFiltersResult(dict):
+class PbsBackups(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keepAll":
+            suggest = "keep_all"
+        elif key == "keepDaily":
+            suggest = "keep_daily"
+        elif key == "keepHourly":
+            suggest = "keep_hourly"
+        elif key == "keepLast":
+            suggest = "keep_last"
+        elif key == "keepMonthly":
+            suggest = "keep_monthly"
+        elif key == "keepWeekly":
+            suggest = "keep_weekly"
+        elif key == "keepYearly":
+            suggest = "keep_yearly"
+        elif key == "maxProtectedBackups":
+            suggest = "max_protected_backups"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PbsBackups. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PbsBackups.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PbsBackups.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 content_types: Optional[Sequence[_builtins.str]] = None,
-                 id: Optional[_builtins.str] = None,
-                 target: Optional[_builtins.str] = None):
+                 keep_all: Optional[_builtins.bool] = None,
+                 keep_daily: Optional[_builtins.int] = None,
+                 keep_hourly: Optional[_builtins.int] = None,
+                 keep_last: Optional[_builtins.int] = None,
+                 keep_monthly: Optional[_builtins.int] = None,
+                 keep_weekly: Optional[_builtins.int] = None,
+                 keep_yearly: Optional[_builtins.int] = None,
+                 max_protected_backups: Optional[_builtins.int] = None):
         """
-        :param Sequence[_builtins.str] content_types: Only list stores with the given content types.
-        :param _builtins.str id: Only list stores with the given ID.
-        :param _builtins.str target: If `target` is different to `node_name`, then only lists shared stores which content is accessible on this node and the specified `target` node.
+        :param _builtins.bool keep_all: Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+        :param _builtins.int keep_daily: The number of daily backups to keep. Older backups will be removed.
+        :param _builtins.int keep_hourly: The number of hourly backups to keep. Older backups will be removed.
+        :param _builtins.int keep_last: Specifies the number of the most recent backups to keep, regardless of their age.
+        :param _builtins.int keep_monthly: The number of monthly backups to keep. Older backups will be removed.
+        :param _builtins.int keep_weekly: The number of weekly backups to keep. Older backups will be removed.
+        :param _builtins.int keep_yearly: The number of yearly backups to keep. Older backups will be removed.
+        :param _builtins.int max_protected_backups: The maximum number of protected backups per guest. Use '-1' for unlimited.
         """
-        if content_types is not None:
-            pulumi.set(__self__, "content_types", content_types)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if target is not None:
-            pulumi.set(__self__, "target", target)
+        if keep_all is not None:
+            pulumi.set(__self__, "keep_all", keep_all)
+        if keep_daily is not None:
+            pulumi.set(__self__, "keep_daily", keep_daily)
+        if keep_hourly is not None:
+            pulumi.set(__self__, "keep_hourly", keep_hourly)
+        if keep_last is not None:
+            pulumi.set(__self__, "keep_last", keep_last)
+        if keep_monthly is not None:
+            pulumi.set(__self__, "keep_monthly", keep_monthly)
+        if keep_weekly is not None:
+            pulumi.set(__self__, "keep_weekly", keep_weekly)
+        if keep_yearly is not None:
+            pulumi.set(__self__, "keep_yearly", keep_yearly)
+        if max_protected_backups is not None:
+            pulumi.set(__self__, "max_protected_backups", max_protected_backups)
 
     @_builtins.property
-    @pulumi.getter(name="contentTypes")
-    def content_types(self) -> Optional[Sequence[_builtins.str]]:
+    @pulumi.getter(name="keepAll")
+    def keep_all(self) -> Optional[_builtins.bool]:
         """
-        Only list stores with the given content types.
+        Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
         """
-        return pulumi.get(self, "content_types")
+        return pulumi.get(self, "keep_all")
 
     @_builtins.property
-    @pulumi.getter
-    def id(self) -> Optional[_builtins.str]:
+    @pulumi.getter(name="keepDaily")
+    def keep_daily(self) -> Optional[_builtins.int]:
         """
-        Only list stores with the given ID.
+        The number of daily backups to keep. Older backups will be removed.
         """
-        return pulumi.get(self, "id")
+        return pulumi.get(self, "keep_daily")
 
     @_builtins.property
-    @pulumi.getter
-    def target(self) -> Optional[_builtins.str]:
+    @pulumi.getter(name="keepHourly")
+    def keep_hourly(self) -> Optional[_builtins.int]:
         """
-        If `target` is different to `node_name`, then only lists shared stores which content is accessible on this node and the specified `target` node.
+        The number of hourly backups to keep. Older backups will be removed.
         """
-        return pulumi.get(self, "target")
+        return pulumi.get(self, "keep_hourly")
+
+    @_builtins.property
+    @pulumi.getter(name="keepLast")
+    def keep_last(self) -> Optional[_builtins.int]:
+        """
+        Specifies the number of the most recent backups to keep, regardless of their age.
+        """
+        return pulumi.get(self, "keep_last")
+
+    @_builtins.property
+    @pulumi.getter(name="keepMonthly")
+    def keep_monthly(self) -> Optional[_builtins.int]:
+        """
+        The number of monthly backups to keep. Older backups will be removed.
+        """
+        return pulumi.get(self, "keep_monthly")
+
+    @_builtins.property
+    @pulumi.getter(name="keepWeekly")
+    def keep_weekly(self) -> Optional[_builtins.int]:
+        """
+        The number of weekly backups to keep. Older backups will be removed.
+        """
+        return pulumi.get(self, "keep_weekly")
+
+    @_builtins.property
+    @pulumi.getter(name="keepYearly")
+    def keep_yearly(self) -> Optional[_builtins.int]:
+        """
+        The number of yearly backups to keep. Older backups will be removed.
+        """
+        return pulumi.get(self, "keep_yearly")
+
+    @_builtins.property
+    @pulumi.getter(name="maxProtectedBackups")
+    def max_protected_backups(self) -> Optional[_builtins.int]:
+        """
+        The maximum number of protected backups per guest. Use '-1' for unlimited.
+        """
+        return pulumi.get(self, "max_protected_backups")
+
+
+@pulumi.output_type
+class PbsLegacyBackups(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keepAll":
+            suggest = "keep_all"
+        elif key == "keepDaily":
+            suggest = "keep_daily"
+        elif key == "keepHourly":
+            suggest = "keep_hourly"
+        elif key == "keepLast":
+            suggest = "keep_last"
+        elif key == "keepMonthly":
+            suggest = "keep_monthly"
+        elif key == "keepWeekly":
+            suggest = "keep_weekly"
+        elif key == "keepYearly":
+            suggest = "keep_yearly"
+        elif key == "maxProtectedBackups":
+            suggest = "max_protected_backups"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PbsLegacyBackups. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PbsLegacyBackups.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PbsLegacyBackups.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 keep_all: Optional[_builtins.bool] = None,
+                 keep_daily: Optional[_builtins.int] = None,
+                 keep_hourly: Optional[_builtins.int] = None,
+                 keep_last: Optional[_builtins.int] = None,
+                 keep_monthly: Optional[_builtins.int] = None,
+                 keep_weekly: Optional[_builtins.int] = None,
+                 keep_yearly: Optional[_builtins.int] = None,
+                 max_protected_backups: Optional[_builtins.int] = None):
+        """
+        :param _builtins.bool keep_all: Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+        :param _builtins.int keep_daily: The number of daily backups to keep. Older backups will be removed.
+        :param _builtins.int keep_hourly: The number of hourly backups to keep. Older backups will be removed.
+        :param _builtins.int keep_last: Specifies the number of the most recent backups to keep, regardless of their age.
+        :param _builtins.int keep_monthly: The number of monthly backups to keep. Older backups will be removed.
+        :param _builtins.int keep_weekly: The number of weekly backups to keep. Older backups will be removed.
+        :param _builtins.int keep_yearly: The number of yearly backups to keep. Older backups will be removed.
+        :param _builtins.int max_protected_backups: The maximum number of protected backups per guest. Use '-1' for unlimited.
+        """
+        if keep_all is not None:
+            pulumi.set(__self__, "keep_all", keep_all)
+        if keep_daily is not None:
+            pulumi.set(__self__, "keep_daily", keep_daily)
+        if keep_hourly is not None:
+            pulumi.set(__self__, "keep_hourly", keep_hourly)
+        if keep_last is not None:
+            pulumi.set(__self__, "keep_last", keep_last)
+        if keep_monthly is not None:
+            pulumi.set(__self__, "keep_monthly", keep_monthly)
+        if keep_weekly is not None:
+            pulumi.set(__self__, "keep_weekly", keep_weekly)
+        if keep_yearly is not None:
+            pulumi.set(__self__, "keep_yearly", keep_yearly)
+        if max_protected_backups is not None:
+            pulumi.set(__self__, "max_protected_backups", max_protected_backups)
+
+    @_builtins.property
+    @pulumi.getter(name="keepAll")
+    def keep_all(self) -> Optional[_builtins.bool]:
+        """
+        Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+        """
+        return pulumi.get(self, "keep_all")
+
+    @_builtins.property
+    @pulumi.getter(name="keepDaily")
+    def keep_daily(self) -> Optional[_builtins.int]:
+        """
+        The number of daily backups to keep. Older backups will be removed.
+        """
+        return pulumi.get(self, "keep_daily")
+
+    @_builtins.property
+    @pulumi.getter(name="keepHourly")
+    def keep_hourly(self) -> Optional[_builtins.int]:
+        """
+        The number of hourly backups to keep. Older backups will be removed.
+        """
+        return pulumi.get(self, "keep_hourly")
+
+    @_builtins.property
+    @pulumi.getter(name="keepLast")
+    def keep_last(self) -> Optional[_builtins.int]:
+        """
+        Specifies the number of the most recent backups to keep, regardless of their age.
+        """
+        return pulumi.get(self, "keep_last")
+
+    @_builtins.property
+    @pulumi.getter(name="keepMonthly")
+    def keep_monthly(self) -> Optional[_builtins.int]:
+        """
+        The number of monthly backups to keep. Older backups will be removed.
+        """
+        return pulumi.get(self, "keep_monthly")
+
+    @_builtins.property
+    @pulumi.getter(name="keepWeekly")
+    def keep_weekly(self) -> Optional[_builtins.int]:
+        """
+        The number of weekly backups to keep. Older backups will be removed.
+        """
+        return pulumi.get(self, "keep_weekly")
+
+    @_builtins.property
+    @pulumi.getter(name="keepYearly")
+    def keep_yearly(self) -> Optional[_builtins.int]:
+        """
+        The number of yearly backups to keep. Older backups will be removed.
+        """
+        return pulumi.get(self, "keep_yearly")
+
+    @_builtins.property
+    @pulumi.getter(name="maxProtectedBackups")
+    def max_protected_backups(self) -> Optional[_builtins.int]:
+        """
+        The maximum number of protected backups per guest. Use '-1' for unlimited.
+        """
+        return pulumi.get(self, "max_protected_backups")
 
 

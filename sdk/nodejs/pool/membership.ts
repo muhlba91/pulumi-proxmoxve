@@ -8,38 +8,6 @@ import * as utilities from "../utilities";
  * Manages resource pool memberships for containers, virtual machines and storages
  *
  * > This resource requires the `Pool.Allocate` permission on the pool path (e.g., `/pool/{poolid}`).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const testVm1 = new proxmoxve.vm.VirtualMachine("test_vm1", {
- *     vmId: 1234,
- *     nodeName: "pve",
- *     started: false,
- * });
- * const testPool = new proxmoxve.permission.Pool("test_pool", {poolId: "test-pool"});
- * const vmMembership = new proxmoxve.pool.Membership("vm_membership", {
- *     poolId: testPool.id,
- *     vmId: testVm1.id,
- * });
- * const storageMembership = new proxmoxve.pool.Membership("storage_membership", {
- *     poolId: testPool.id,
- *     storageId: "local-lvm",
- * });
- * ```
- *
- * ## Import
- *
- * #!/usr/bin/env sh
- *
- * Resource pool membership can be imported using its unique identifier, e.g.: {pool_id}/{type}/{member_id}
- *
- * ```sh
- * $ pulumi import proxmoxve:Pool/membership:Membership example_membership test-pool/vm/102
- * ```
  */
 export class Membership extends pulumi.CustomResource {
     /**
@@ -56,7 +24,7 @@ export class Membership extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'proxmoxve:Pool/membership:Membership';
+    public static readonly __pulumiType = 'proxmoxve:pool/membership:Membership';
 
     /**
      * Returns true if the given object is an instance of Membership.  This is designed to work even

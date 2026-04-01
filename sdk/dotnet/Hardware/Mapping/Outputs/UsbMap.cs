@@ -26,7 +26,7 @@ namespace Pulumi.ProxmoxVE.Hardware.Mapping.Outputs
         /// </summary>
         public readonly string Node;
         /// <summary>
-        /// The path of the map. For hardware mappings of type USB the path is optional and indicates that the device is mapped through the device ID instead of ports.
+        /// The path of the map. For USB hardware mappings, this is optional and indicates that the device is mapped via its device ID rather than ports.
         /// </summary>
         public readonly string? Path;
 

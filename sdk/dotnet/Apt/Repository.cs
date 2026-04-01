@@ -11,41 +11,8 @@ namespace Pulumi.ProxmoxVE.Apt
 {
     /// <summary>
     /// Manages an APT repository of a Proxmox VE node.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using ProxmoxVE = Pulumi.ProxmoxVE;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new ProxmoxVE.Apt.Repository("example", new()
-    ///     {
-    ///         Enabled = true,
-    ///         FilePath = "/etc/apt/sources.list",
-    ///         Index = 0,
-    ///         Node = "pve",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// #!/usr/bin/env sh
-    /// 
-    /// An APT repository can be imported using a comma-separated list consisting of the name of the Proxmox VE node,
-    /// 
-    /// the absolute source list file path, and the index in the exact same order, e.g.:
-    /// 
-    /// ```sh
-    /// $ pulumi import proxmoxve:Apt/repository:Repository example pve,/etc/apt/sources.list,0
-    /// ```
     /// </summary>
-    [ProxmoxVEResourceType("proxmoxve:Apt/repository:Repository")]
+    [ProxmoxVEResourceType("proxmoxve:apt/repository:Repository")]
     public partial class Repository : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -117,12 +84,12 @@ namespace Pulumi.ProxmoxVE.Apt
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Repository(string name, RepositoryArgs args, CustomResourceOptions? options = null)
-            : base("proxmoxve:Apt/repository:Repository", name, args ?? new RepositoryArgs(), MakeResourceOptions(options, ""))
+            : base("proxmoxve:apt/repository:Repository", name, args ?? new RepositoryArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Repository(string name, Input<string> id, RepositoryState? state = null, CustomResourceOptions? options = null)
-            : base("proxmoxve:Apt/repository:Repository", name, state, MakeResourceOptions(options, id))
+            : base("proxmoxve:apt/repository:Repository", name, state, MakeResourceOptions(options, id))
         {
         }
 

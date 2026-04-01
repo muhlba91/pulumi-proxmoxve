@@ -26,9 +26,10 @@ class OpenfabricArgs:
                  ip6: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Openfabric resource.
+
         :param pulumi.Input[_builtins.str] fabric_id: The unique identifier of the SDN fabric.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] interface_names: Set of interfaces associated with the fabric node.
-        :param pulumi.Input[_builtins.str] node_id: The unique identifier of the SDN fabric.
+        :param pulumi.Input[_builtins.str] node_id: The unique identifier of the SDN fabric node.
         :param pulumi.Input[_builtins.str] ip: IPv4 address for the fabric node.
         :param pulumi.Input[_builtins.str] ip6: IPv6 address for the fabric node.
         """
@@ -68,7 +69,7 @@ class OpenfabricArgs:
     @pulumi.getter(name="nodeId")
     def node_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The unique identifier of the SDN fabric.
+        The unique identifier of the SDN fabric node.
         """
         return pulumi.get(self, "node_id")
 
@@ -111,11 +112,12 @@ class _OpenfabricState:
                  node_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Openfabric resources.
+
         :param pulumi.Input[_builtins.str] fabric_id: The unique identifier of the SDN fabric.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] interface_names: Set of interfaces associated with the fabric node.
         :param pulumi.Input[_builtins.str] ip: IPv4 address for the fabric node.
         :param pulumi.Input[_builtins.str] ip6: IPv6 address for the fabric node.
-        :param pulumi.Input[_builtins.str] node_id: The unique identifier of the SDN fabric.
+        :param pulumi.Input[_builtins.str] node_id: The unique identifier of the SDN fabric node.
         """
         if fabric_id is not None:
             pulumi.set(__self__, "fabric_id", fabric_id)
@@ -180,7 +182,7 @@ class _OpenfabricState:
     @pulumi.getter(name="nodeId")
     def node_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The unique identifier of the SDN fabric.
+        The unique identifier of the SDN fabric node.
         """
         return pulumi.get(self, "node_id")
 
@@ -189,7 +191,7 @@ class _OpenfabricState:
         pulumi.set(self, "node_id", value)
 
 
-@pulumi.type_token("proxmoxve:Sdn/fabric/node/openfabric:Openfabric")
+@pulumi.type_token("proxmoxve:sdn/fabric/node/openfabric:Openfabric")
 class Openfabric(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -204,24 +206,6 @@ class Openfabric(pulumi.CustomResource):
         """
         OpenFabric Fabric Node in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        main = proxmoxve.sdnfabric.OpenFabric("main",
-            fabric_id="main-fabric",
-            ip_prefix="10.0.0.0/16")
-        main_openfabric = proxmoxve.sdn.fabric.node.Openfabric("main",
-            fabric_id=main.fabric_id,
-            node_id="pve",
-            ip="10.0.0.1",
-            interface_names=[
-                "nic0",
-                "nic1",
-            ])
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -229,7 +213,7 @@ class Openfabric(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] interface_names: Set of interfaces associated with the fabric node.
         :param pulumi.Input[_builtins.str] ip: IPv4 address for the fabric node.
         :param pulumi.Input[_builtins.str] ip6: IPv6 address for the fabric node.
-        :param pulumi.Input[_builtins.str] node_id: The unique identifier of the SDN fabric.
+        :param pulumi.Input[_builtins.str] node_id: The unique identifier of the SDN fabric node.
         """
         ...
     @overload
@@ -240,24 +224,6 @@ class Openfabric(pulumi.CustomResource):
         """
         OpenFabric Fabric Node in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        main = proxmoxve.sdnfabric.OpenFabric("main",
-            fabric_id="main-fabric",
-            ip_prefix="10.0.0.0/16")
-        main_openfabric = proxmoxve.sdn.fabric.node.Openfabric("main",
-            fabric_id=main.fabric_id,
-            node_id="pve",
-            ip="10.0.0.1",
-            interface_names=[
-                "nic0",
-                "nic1",
-            ])
-        ```
 
         :param str resource_name: The name of the resource.
         :param OpenfabricArgs args: The arguments to use to populate this resource's properties.
@@ -300,7 +266,7 @@ class Openfabric(pulumi.CustomResource):
                 raise TypeError("Missing required property 'node_id'")
             __props__.__dict__["node_id"] = node_id
         super(Openfabric, __self__).__init__(
-            'proxmoxve:Sdn/fabric/node/openfabric:Openfabric',
+            'proxmoxve:sdn/fabric/node/openfabric:Openfabric',
             resource_name,
             __props__,
             opts)
@@ -325,7 +291,7 @@ class Openfabric(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] interface_names: Set of interfaces associated with the fabric node.
         :param pulumi.Input[_builtins.str] ip: IPv4 address for the fabric node.
         :param pulumi.Input[_builtins.str] ip6: IPv6 address for the fabric node.
-        :param pulumi.Input[_builtins.str] node_id: The unique identifier of the SDN fabric.
+        :param pulumi.Input[_builtins.str] node_id: The unique identifier of the SDN fabric node.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -374,7 +340,7 @@ class Openfabric(pulumi.CustomResource):
     @pulumi.getter(name="nodeId")
     def node_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The unique identifier of the SDN fabric.
+        The unique identifier of the SDN fabric node.
         """
         return pulumi.get(self, "node_id")
 

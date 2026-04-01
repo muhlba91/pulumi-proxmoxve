@@ -8,36 +8,6 @@ import * as utilities from "../utilities";
  * Manages Proxmox VE Node Firewall options.
  *
  * > This resource in fact updates existing node firewall configuration created by PVE on bootstrap. All optional attributes have explicit defaults for deterministic behavior (PVE may change defaults in the future). See [API documentation](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/firewall/options).
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const node_pve1 = new proxmoxve.node.Firewall("node-pve1", {
- *     nodeName: "pve1",
- *     enabled: false,
- * });
- * const pve2 = new proxmoxve.node.Firewall("pve2", {
- *     nodeName: "pve2",
- *     enabled: true,
- *     logLevelIn: "alert",
- *     logLevelOut: "alert",
- *     logLevelForward: "alert",
- *     ndp: true,
- *     nftables: true,
- *     nosmurfs: true,
- *     smurfLogLevel: "alert",
- *     tcpFlagsLogLevel: "alert",
- * });
- * ```
- *
- * ## Import
- *
- * ```sh
- * $ pulumi import proxmoxve:Node/firewall:Firewall node-pve1 pve1
- * ```
  */
 export class Firewall extends pulumi.CustomResource {
     /**
@@ -54,7 +24,7 @@ export class Firewall extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'proxmoxve:Node/firewall:Firewall';
+    public static readonly __pulumiType = 'proxmoxve:node/firewall:Firewall';
 
     /**
      * Returns true if the given object is an instance of Firewall.  This is designed to work even

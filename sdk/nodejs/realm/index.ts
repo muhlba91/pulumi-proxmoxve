@@ -10,24 +10,56 @@ export type Ldap = import("./ldap").Ldap;
 export const Ldap: typeof import("./ldap").Ldap = null as any;
 utilities.lazyLoad(exports, ["Ldap"], () => require("./ldap"));
 
+export { LdapLegacyArgs, LdapLegacyState } from "./ldapLegacy";
+export type LdapLegacy = import("./ldapLegacy").LdapLegacy;
+export const LdapLegacy: typeof import("./ldapLegacy").LdapLegacy = null as any;
+utilities.lazyLoad(exports, ["LdapLegacy"], () => require("./ldapLegacy"));
+
+export { OpenidArgs, OpenidState } from "./openid";
+export type Openid = import("./openid").Openid;
+export const Openid: typeof import("./openid").Openid = null as any;
+utilities.lazyLoad(exports, ["Openid"], () => require("./openid"));
+
+export { OpenidLegacyArgs, OpenidLegacyState } from "./openidLegacy";
+export type OpenidLegacy = import("./openidLegacy").OpenidLegacy;
+export const OpenidLegacy: typeof import("./openidLegacy").OpenidLegacy = null as any;
+utilities.lazyLoad(exports, ["OpenidLegacy"], () => require("./openidLegacy"));
+
 export { SyncArgs, SyncState } from "./sync";
 export type Sync = import("./sync").Sync;
 export const Sync: typeof import("./sync").Sync = null as any;
 utilities.lazyLoad(exports, ["Sync"], () => require("./sync"));
+
+export { SyncLegacyArgs, SyncLegacyState } from "./syncLegacy";
+export type SyncLegacy = import("./syncLegacy").SyncLegacy;
+export const SyncLegacy: typeof import("./syncLegacy").SyncLegacy = null as any;
+utilities.lazyLoad(exports, ["SyncLegacy"], () => require("./syncLegacy"));
 
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "proxmoxve:Realm/ldap:Ldap":
+            case "proxmoxve:realm/ldap:Ldap":
                 return new Ldap(name, <any>undefined, { urn })
-            case "proxmoxve:Realm/sync:Sync":
+            case "proxmoxve:realm/ldapLegacy:LdapLegacy":
+                return new LdapLegacy(name, <any>undefined, { urn })
+            case "proxmoxve:realm/openid:Openid":
+                return new Openid(name, <any>undefined, { urn })
+            case "proxmoxve:realm/openidLegacy:OpenidLegacy":
+                return new OpenidLegacy(name, <any>undefined, { urn })
+            case "proxmoxve:realm/sync:Sync":
                 return new Sync(name, <any>undefined, { urn })
+            case "proxmoxve:realm/syncLegacy:SyncLegacy":
+                return new SyncLegacy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("proxmoxve", "Realm/ldap", _module)
-pulumi.runtime.registerResourceModule("proxmoxve", "Realm/sync", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "realm/ldap", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "realm/ldapLegacy", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "realm/openid", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "realm/openidLegacy", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "realm/sync", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "realm/syncLegacy", _module)

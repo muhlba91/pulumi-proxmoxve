@@ -11,47 +11,8 @@ namespace Pulumi.ProxmoxVE.Apt.Standard
 {
     /// <summary>
     /// Manages an APT standard repository of a Proxmox VE node.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using ProxmoxVE = Pulumi.ProxmoxVE;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new ProxmoxVE.Apt.Standard.Repository("example", new()
-    ///     {
-    ///         Handle = "no-subscription",
-    ///         Node = "pve",
-    ///     });
-    /// 
-    ///     var exampleRepository = new ProxmoxVE.Apt.Repository("example", new()
-    ///     {
-    ///         Enabled = true,
-    ///         FilePath = example.FilePath,
-    ///         Index = example.Index,
-    ///         Node = example.Node,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// #!/usr/bin/env sh
-    /// 
-    /// An APT standard repository can be imported using a comma-separated list consisting of the name of the Proxmox VE node,
-    /// 
-    /// and the standard repository handle in the exact same order, e.g.:
-    /// 
-    /// ```sh
-    /// $ pulumi import proxmoxve:Apt/standard/repository:Repository example pve,no-subscription
-    /// ```
     /// </summary>
-    [ProxmoxVEResourceType("proxmoxve:Apt/standard/repository:Repository")]
+    [ProxmoxVEResourceType("proxmoxve:apt/standard/repository:Repository")]
     public partial class Repository : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -105,12 +66,12 @@ namespace Pulumi.ProxmoxVE.Apt.Standard
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Repository(string name, RepositoryArgs args, CustomResourceOptions? options = null)
-            : base("proxmoxve:Apt/standard/repository:Repository", name, args ?? new RepositoryArgs(), MakeResourceOptions(options, ""))
+            : base("proxmoxve:apt/standard/repository:Repository", name, args ?? new RepositoryArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Repository(string name, Input<string> id, RepositoryState? state = null, CustomResourceOptions? options = null)
-            : base("proxmoxve:Apt/standard/repository:Repository", name, state, MakeResourceOptions(options, id))
+            : base("proxmoxve:apt/standard/repository:Repository", name, state, MakeResourceOptions(options, id))
         {
         }
 

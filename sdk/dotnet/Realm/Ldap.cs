@@ -10,19 +10,118 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.Realm
 {
     /// <summary>
-    /// ## Import
+    /// Manages an LDAP authentication realm in Proxmox VE.
     /// 
-    /// #!/usr/bin/env sh
+    /// LDAP realms allow Proxmox to authenticate users against an LDAP directory service.
     /// 
-    /// LDAP realms can be imported using the realm identifier, e.g.:
+    /// ## Privileges Required
     /// 
-    /// ```sh
-    /// $ pulumi import proxmoxve:Realm/ldap:Ldap example example.com
+    /// | Path | Attribute |
+    /// |-----------------|----------------|
+    /// | /access/domains | Realm.Allocate |
+    /// 
+    /// ## Notes
+    /// 
+    /// ### Password Security
+    /// 
+    /// The `BindPassword` is sent to Proxmox and stored securely, but it's never returned by the API. This means:
+    /// - Terraform cannot detect if the password was changed outside of Terraform
+    /// - You must maintain the password in your Terraform configuration or use a variable
+    /// - The password will be marked as sensitive in Terraform state
+    /// 
+    /// ### LDAP vs LDAPS
+    /// 
+    /// - **LDAP (port 389)**: Unencrypted connection. Not recommended for production.
+    /// - **LDAPS (port 636)**: Encrypted connection using SSL/TLS. Recommended for production.
+    /// - **LDAP+StartTLS**: Upgrades plain LDAP connection to TLS. Alternative to LDAPS.
+    /// 
+    /// ### User Synchronization
+    /// 
+    /// To trigger synchronization, use the `proxmoxve.realm.Sync` resource.
+    /// 
+    /// ### Common Configuration Scenarios
+    /// 
+    /// #### Anonymous Binding
+    /// For testing or public LDAP servers, omit `BindDn` and `BindPassword` to use anonymous binding:
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var anonymous = new ProxmoxVE.Realm.Ldap("anonymous", new()
+    ///     {
+    ///         Realm = "public-ldap",
+    ///         Server1 = "ldap.example.com",
+    ///         BaseDn = "ou=users,dc=example,dc=com",
+    ///         UserAttr = "uid",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
-    /// -&gt; When importing, the `bind_password` attribute cannot be imported since it's not returned by the Proxmox API. You'll need to set this attribute in your Terraform configuration after the import to manage it with Terraform.
+    /// #### Secure LDAPS with Failover
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var secure = new ProxmoxVE.Realm.Ldap("secure", new()
+    ///     {
+    ///         Realm = "secure-ldap",
+    ///         Server1 = "ldap1.example.com",
+    ///         Server2 = "ldap2.example.com",
+    ///         Port = 636,
+    ///         BaseDn = "ou=users,dc=example,dc=com",
+    ///         BindDn = "cn=readonly,dc=example,dc=com",
+    ///         BindPassword = ldapPassword,
+    ///         Mode = "ldaps",
+    ///         Verify = true,
+    ///         CaPath = "/etc/pve/priv/ca.crt",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// #### With Group Synchronization
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var withGroups = new ProxmoxVE.Realm.Ldap("with_groups", new()
+    ///     {
+    ///         Realm = "corporate-ldap",
+    ///         Server1 = "ldap.corp.example.com",
+    ///         BaseDn = "ou=users,dc=corp,dc=example,dc=com",
+    ///         BindDn = "cn=svc_ldap,ou=services,dc=corp,dc=example,dc=com",
+    ///         BindPassword = ldapPassword,
+    ///         Mode = "ldap+starttls",
+    ///         GroupDn = "ou=groups,dc=corp,dc=example,dc=com",
+    ///         GroupFilter = "(objectClass=groupOfNames)",
+    ///         GroupNameAttr = "cn",
+    ///         SyncAttributes = "email=mail,firstname=givenName,lastname=sn",
+    ///         SyncDefaultsOptions = "scope=both,enable-new=1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## See Also
+    /// 
+    /// - [Proxmox VE User Management](https://pve.proxmox.com/wiki/User_Management)
+    /// - [Proxmox VE LDAP Authentication](https://pve.proxmox.com/wiki/User_Management#pveum_ldap)
+    /// - [Proxmox API: /access/domains](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/domains)
     /// </summary>
-    [ProxmoxVEResourceType("proxmoxve:Realm/ldap:Ldap")]
+    [ProxmoxVEResourceType("proxmoxve:realm/ldap:Ldap")]
     public partial class Ldap : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -190,12 +289,12 @@ namespace Pulumi.ProxmoxVE.Realm
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Ldap(string name, LdapArgs args, CustomResourceOptions? options = null)
-            : base("proxmoxve:Realm/ldap:Ldap", name, args ?? new LdapArgs(), MakeResourceOptions(options, ""))
+            : base("proxmoxve:realm/ldap:Ldap", name, args ?? new LdapArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Ldap(string name, Input<string> id, LdapState? state = null, CustomResourceOptions? options = null)
-            : base("proxmoxve:Realm/ldap:Ldap", name, state, MakeResourceOptions(options, id))
+            : base("proxmoxve:realm/ldap:Ldap", name, state, MakeResourceOptions(options, id))
         {
         }
 

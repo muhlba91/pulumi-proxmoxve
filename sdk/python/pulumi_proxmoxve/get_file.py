@@ -141,53 +141,6 @@ def get_file(content_type: Optional[_builtins.str] = None,
     """
     Retrieves information about an existing file in a Proxmox Virtual Environment node.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    ubuntu_iso = proxmoxve.get_file(node_name="pve",
-        datastore_id="local",
-        content_type="iso",
-        file_name="ubuntu-22.04.3-live-server-amd64.iso")
-    ubuntu_container_template = proxmoxve.get_file(node_name="pve",
-        datastore_id="local",
-        content_type="vztmpl",
-        file_name="ubuntu-22.04-standard_22.04-1_amd64.tar.zst")
-    cloud_init_snippet = proxmoxve.get_file(node_name="pve",
-        datastore_id="local",
-        content_type="snippets",
-        file_name="cloud-init-config.yaml")
-    imported_file = proxmoxve.get_file(node_name="pve",
-        datastore_id="local",
-        content_type="import",
-        file_name="imported-config.yaml")
-    pulumi.export("ubuntuIsoId", ubuntu_iso.id)
-    pulumi.export("ubuntuIsoSize", ubuntu_iso.file_size)
-    pulumi.export("containerTemplateFormat", ubuntu_container_template.file_format)
-    example = proxmoxve.vm.VirtualMachine("example",
-        node_name="pve",
-        vm_id=100,
-        cdrom={
-            "file_id": ubuntu_iso.id,
-        },
-        cpu={
-            "cores": 2,
-        },
-        memory={
-            "dedicated": 2048,
-        },
-        disks=[{
-            "datastore_id": "local-lvm",
-            "file_format": "qcow2",
-            "size": 20,
-        }],
-        network_devices=[{
-            "bridge": "vmbr0",
-        }])
-    ```
-
 
     :param _builtins.str content_type: The content type of the file.
     :param _builtins.str datastore_id: The identifier of the datastore.
@@ -218,53 +171,6 @@ def get_file_output(content_type: Optional[pulumi.Input[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFileResult]:
     """
     Retrieves information about an existing file in a Proxmox Virtual Environment node.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    ubuntu_iso = proxmoxve.get_file(node_name="pve",
-        datastore_id="local",
-        content_type="iso",
-        file_name="ubuntu-22.04.3-live-server-amd64.iso")
-    ubuntu_container_template = proxmoxve.get_file(node_name="pve",
-        datastore_id="local",
-        content_type="vztmpl",
-        file_name="ubuntu-22.04-standard_22.04-1_amd64.tar.zst")
-    cloud_init_snippet = proxmoxve.get_file(node_name="pve",
-        datastore_id="local",
-        content_type="snippets",
-        file_name="cloud-init-config.yaml")
-    imported_file = proxmoxve.get_file(node_name="pve",
-        datastore_id="local",
-        content_type="import",
-        file_name="imported-config.yaml")
-    pulumi.export("ubuntuIsoId", ubuntu_iso.id)
-    pulumi.export("ubuntuIsoSize", ubuntu_iso.file_size)
-    pulumi.export("containerTemplateFormat", ubuntu_container_template.file_format)
-    example = proxmoxve.vm.VirtualMachine("example",
-        node_name="pve",
-        vm_id=100,
-        cdrom={
-            "file_id": ubuntu_iso.id,
-        },
-        cpu={
-            "cores": 2,
-        },
-        memory={
-            "dedicated": 2048,
-        },
-        disks=[{
-            "datastore_id": "local-lvm",
-            "file_format": "qcow2",
-            "size": 20,
-        }],
-        network_devices=[{
-            "bridge": "vmbr0",
-        }])
-    ```
 
 
     :param _builtins.str content_type: The content type of the file.

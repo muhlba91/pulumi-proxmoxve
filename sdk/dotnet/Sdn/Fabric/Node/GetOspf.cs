@@ -13,78 +13,21 @@ namespace Pulumi.ProxmoxVE.Sdn.Fabric.Node
     {
         /// <summary>
         /// OSPF Fabric Node in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using ProxmoxVE = Pulumi.ProxmoxVE;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var main = ProxmoxVE.Sdn.Fabric.Node.GetOspf.Invoke(new()
-        ///     {
-        ///         FabricId = "main-fabric",
-        ///         NodeId = "pve",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetOspfResult> InvokeAsync(GetOspfArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetOspfResult>("proxmoxve:Sdn/fabric/node/getOspf:getOspf", args ?? new GetOspfArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetOspfResult>("proxmoxve:sdn/fabric/node/getOspf:getOspf", args ?? new GetOspfArgs(), options.WithDefaults());
 
         /// <summary>
         /// OSPF Fabric Node in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using ProxmoxVE = Pulumi.ProxmoxVE;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var main = ProxmoxVE.Sdn.Fabric.Node.GetOspf.Invoke(new()
-        ///     {
-        ///         FabricId = "main-fabric",
-        ///         NodeId = "pve",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetOspfResult> Invoke(GetOspfInvokeArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetOspfResult>("proxmoxve:Sdn/fabric/node/getOspf:getOspf", args ?? new GetOspfInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetOspfResult>("proxmoxve:sdn/fabric/node/getOspf:getOspf", args ?? new GetOspfInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// OSPF Fabric Node in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using ProxmoxVE = Pulumi.ProxmoxVE;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var main = ProxmoxVE.Sdn.Fabric.Node.GetOspf.Invoke(new()
-        ///     {
-        ///         FabricId = "main-fabric",
-        ///         NodeId = "pve",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetOspfResult> Invoke(GetOspfInvokeArgs args, InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetOspfResult>("proxmoxve:Sdn/fabric/node/getOspf:getOspf", args ?? new GetOspfInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetOspfResult>("proxmoxve:sdn/fabric/node/getOspf:getOspf", args ?? new GetOspfInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -136,6 +79,9 @@ namespace Pulumi.ProxmoxVE.Sdn.Fabric.Node
         /// The unique identifier of the SDN fabric.
         /// </summary>
         public readonly string FabricId;
+        /// <summary>
+        /// The unique identifier of the SDN fabric node, in the format \n\n/\n\n.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Set of interface names associated with the fabric node.

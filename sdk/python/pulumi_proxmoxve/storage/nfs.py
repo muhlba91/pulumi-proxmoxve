@@ -16,15 +16,15 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['NFSArgs', 'NFS']
+__all__ = ['NfsArgs', 'Nfs']
 
 @pulumi.input_type
-class NFSArgs:
+class NfsArgs:
     def __init__(__self__, *,
                  export: pulumi.Input[_builtins.str],
-                 nfs_id: pulumi.Input[_builtins.str],
+                 resource_id: pulumi.Input[_builtins.str],
                  server: pulumi.Input[_builtins.str],
-                 backups: Optional[pulumi.Input['NFSBackupsArgs']] = None,
+                 backups: Optional[pulumi.Input['NfsBackupsArgs']] = None,
                  contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  disable: Optional[pulumi.Input[_builtins.bool]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -32,11 +32,12 @@ class NFSArgs:
                  preallocation: Optional[pulumi.Input[_builtins.str]] = None,
                  snapshot_as_volume_chain: Optional[pulumi.Input[_builtins.bool]] = None):
         """
-        The set of arguments for constructing a NFS resource.
+        The set of arguments for constructing a Nfs resource.
+
         :param pulumi.Input[_builtins.str] export: The path of the NFS export.
-        :param pulumi.Input[_builtins.str] nfs_id: The unique identifier of the storage.
+        :param pulumi.Input[_builtins.str] resource_id: The unique identifier of the storage.
         :param pulumi.Input[_builtins.str] server: The IP address or DNS name of the NFS server.
-        :param pulumi.Input['NFSBackupsArgs'] backups: Configure backup retention settings for the storage type.
+        :param pulumi.Input['NfsBackupsArgs'] backups: Configure backup retention settings for the storage type.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contents: The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
         :param pulumi.Input[_builtins.bool] disable: Whether the storage is disabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: A list of nodes where this storage is available.
@@ -45,7 +46,7 @@ class NFSArgs:
         :param pulumi.Input[_builtins.bool] snapshot_as_volume_chain: Enable support for creating snapshots through volume backing-chains.
         """
         pulumi.set(__self__, "export", export)
-        pulumi.set(__self__, "nfs_id", nfs_id)
+        pulumi.set(__self__, "resource_id", resource_id)
         pulumi.set(__self__, "server", server)
         if backups is not None:
             pulumi.set(__self__, "backups", backups)
@@ -75,16 +76,16 @@ class NFSArgs:
         pulumi.set(self, "export", value)
 
     @_builtins.property
-    @pulumi.getter(name="nfsId")
-    def nfs_id(self) -> pulumi.Input[_builtins.str]:
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> pulumi.Input[_builtins.str]:
         """
         The unique identifier of the storage.
         """
-        return pulumi.get(self, "nfs_id")
+        return pulumi.get(self, "resource_id")
 
-    @nfs_id.setter
-    def nfs_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "nfs_id", value)
+    @resource_id.setter
+    def resource_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -100,14 +101,14 @@ class NFSArgs:
 
     @_builtins.property
     @pulumi.getter
-    def backups(self) -> Optional[pulumi.Input['NFSBackupsArgs']]:
+    def backups(self) -> Optional[pulumi.Input['NfsBackupsArgs']]:
         """
         Configure backup retention settings for the storage type.
         """
         return pulumi.get(self, "backups")
 
     @backups.setter
-    def backups(self, value: Optional[pulumi.Input['NFSBackupsArgs']]):
+    def backups(self, value: Optional[pulumi.Input['NfsBackupsArgs']]):
         pulumi.set(self, "backups", value)
 
     @_builtins.property
@@ -184,29 +185,30 @@ class NFSArgs:
 
 
 @pulumi.input_type
-class _NFSState:
+class _NfsState:
     def __init__(__self__, *,
-                 backups: Optional[pulumi.Input['NFSBackupsArgs']] = None,
+                 backups: Optional[pulumi.Input['NfsBackupsArgs']] = None,
                  contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  disable: Optional[pulumi.Input[_builtins.bool]] = None,
                  export: Optional[pulumi.Input[_builtins.str]] = None,
-                 nfs_id: Optional[pulumi.Input[_builtins.str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  options: Optional[pulumi.Input[_builtins.str]] = None,
                  preallocation: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  server: Optional[pulumi.Input[_builtins.str]] = None,
                  shared: Optional[pulumi.Input[_builtins.bool]] = None,
                  snapshot_as_volume_chain: Optional[pulumi.Input[_builtins.bool]] = None):
         """
-        Input properties used for looking up and filtering NFS resources.
-        :param pulumi.Input['NFSBackupsArgs'] backups: Configure backup retention settings for the storage type.
+        Input properties used for looking up and filtering Nfs resources.
+
+        :param pulumi.Input['NfsBackupsArgs'] backups: Configure backup retention settings for the storage type.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contents: The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
         :param pulumi.Input[_builtins.bool] disable: Whether the storage is disabled.
         :param pulumi.Input[_builtins.str] export: The path of the NFS export.
-        :param pulumi.Input[_builtins.str] nfs_id: The unique identifier of the storage.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: A list of nodes where this storage is available.
         :param pulumi.Input[_builtins.str] options: The options to pass to the NFS service.
         :param pulumi.Input[_builtins.str] preallocation: The preallocation mode for raw and qcow2 images.
+        :param pulumi.Input[_builtins.str] resource_id: The unique identifier of the storage.
         :param pulumi.Input[_builtins.str] server: The IP address or DNS name of the NFS server.
         :param pulumi.Input[_builtins.bool] shared: Whether the storage is shared across all nodes.
         :param pulumi.Input[_builtins.bool] snapshot_as_volume_chain: Enable support for creating snapshots through volume backing-chains.
@@ -219,14 +221,14 @@ class _NFSState:
             pulumi.set(__self__, "disable", disable)
         if export is not None:
             pulumi.set(__self__, "export", export)
-        if nfs_id is not None:
-            pulumi.set(__self__, "nfs_id", nfs_id)
         if nodes is not None:
             pulumi.set(__self__, "nodes", nodes)
         if options is not None:
             pulumi.set(__self__, "options", options)
         if preallocation is not None:
             pulumi.set(__self__, "preallocation", preallocation)
+        if resource_id is not None:
+            pulumi.set(__self__, "resource_id", resource_id)
         if server is not None:
             pulumi.set(__self__, "server", server)
         if shared is not None:
@@ -236,14 +238,14 @@ class _NFSState:
 
     @_builtins.property
     @pulumi.getter
-    def backups(self) -> Optional[pulumi.Input['NFSBackupsArgs']]:
+    def backups(self) -> Optional[pulumi.Input['NfsBackupsArgs']]:
         """
         Configure backup retention settings for the storage type.
         """
         return pulumi.get(self, "backups")
 
     @backups.setter
-    def backups(self, value: Optional[pulumi.Input['NFSBackupsArgs']]):
+    def backups(self, value: Optional[pulumi.Input['NfsBackupsArgs']]):
         pulumi.set(self, "backups", value)
 
     @_builtins.property
@@ -283,18 +285,6 @@ class _NFSState:
         pulumi.set(self, "export", value)
 
     @_builtins.property
-    @pulumi.getter(name="nfsId")
-    def nfs_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The unique identifier of the storage.
-        """
-        return pulumi.get(self, "nfs_id")
-
-    @nfs_id.setter
-    def nfs_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "nfs_id", value)
-
-    @_builtins.property
     @pulumi.getter
     def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
@@ -329,6 +319,18 @@ class _NFSState:
     @preallocation.setter
     def preallocation(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "preallocation", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The unique identifier of the storage.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @resource_id.setter
+    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -367,61 +369,37 @@ class _NFSState:
         pulumi.set(self, "snapshot_as_volume_chain", value)
 
 
-@pulumi.type_token("proxmoxve:Storage/nFS:NFS")
-class NFS(pulumi.CustomResource):
+@pulumi.type_token("proxmoxve:storage/nfs:Nfs")
+class Nfs(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backups: Optional[pulumi.Input[Union['NFSBackupsArgs', 'NFSBackupsArgsDict']]] = None,
+                 backups: Optional[pulumi.Input[Union['NfsBackupsArgs', 'NfsBackupsArgsDict']]] = None,
                  contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  disable: Optional[pulumi.Input[_builtins.bool]] = None,
                  export: Optional[pulumi.Input[_builtins.str]] = None,
-                 nfs_id: Optional[pulumi.Input[_builtins.str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  options: Optional[pulumi.Input[_builtins.str]] = None,
                  preallocation: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  server: Optional[pulumi.Input[_builtins.str]] = None,
                  snapshot_as_volume_chain: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
         Manages an NFS-based storage in Proxmox VE.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        example = proxmoxve.storage.NFS("example",
-            nfs_id="example-nfs",
-            nodes=["pve"],
-            server="10.0.0.10",
-            export="/exports/proxmox",
-            contents=[
-                "images",
-                "iso",
-                "backup",
-            ],
-            options="vers=4.2",
-            preallocation="metadata",
-            snapshot_as_volume_chain=True,
-            backups={
-                "max_protected_backups": 5,
-                "keep_daily": 7,
-            })
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['NFSBackupsArgs', 'NFSBackupsArgsDict']] backups: Configure backup retention settings for the storage type.
+        :param pulumi.Input[Union['NfsBackupsArgs', 'NfsBackupsArgsDict']] backups: Configure backup retention settings for the storage type.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contents: The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
         :param pulumi.Input[_builtins.bool] disable: Whether the storage is disabled.
         :param pulumi.Input[_builtins.str] export: The path of the NFS export.
-        :param pulumi.Input[_builtins.str] nfs_id: The unique identifier of the storage.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: A list of nodes where this storage is available.
         :param pulumi.Input[_builtins.str] options: The options to pass to the NFS service.
         :param pulumi.Input[_builtins.str] preallocation: The preallocation mode for raw and qcow2 images.
+        :param pulumi.Input[_builtins.str] resource_id: The unique identifier of the storage.
         :param pulumi.Input[_builtins.str] server: The IP address or DNS name of the NFS server.
         :param pulumi.Input[_builtins.bool] snapshot_as_volume_chain: Enable support for creating snapshots through volume backing-chains.
         """
@@ -429,43 +407,19 @@ class NFS(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: NFSArgs,
+                 args: NfsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages an NFS-based storage in Proxmox VE.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        example = proxmoxve.storage.NFS("example",
-            nfs_id="example-nfs",
-            nodes=["pve"],
-            server="10.0.0.10",
-            export="/exports/proxmox",
-            contents=[
-                "images",
-                "iso",
-                "backup",
-            ],
-            options="vers=4.2",
-            preallocation="metadata",
-            snapshot_as_volume_chain=True,
-            backups={
-                "max_protected_backups": 5,
-                "keep_daily": 7,
-            })
-        ```
 
         :param str resource_name: The name of the resource.
-        :param NFSArgs args: The arguments to use to populate this resource's properties.
+        :param NfsArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(NFSArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(NfsArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -474,14 +428,14 @@ class NFS(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backups: Optional[pulumi.Input[Union['NFSBackupsArgs', 'NFSBackupsArgsDict']]] = None,
+                 backups: Optional[pulumi.Input[Union['NfsBackupsArgs', 'NfsBackupsArgsDict']]] = None,
                  contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  disable: Optional[pulumi.Input[_builtins.bool]] = None,
                  export: Optional[pulumi.Input[_builtins.str]] = None,
-                 nfs_id: Optional[pulumi.Input[_builtins.str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  options: Optional[pulumi.Input[_builtins.str]] = None,
                  preallocation: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  server: Optional[pulumi.Input[_builtins.str]] = None,
                  snapshot_as_volume_chain: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
@@ -491,7 +445,7 @@ class NFS(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = NFSArgs.__new__(NFSArgs)
+            __props__ = NfsArgs.__new__(NfsArgs)
 
             __props__.__dict__["backups"] = backups
             __props__.__dict__["contents"] = contents
@@ -499,19 +453,21 @@ class NFS(pulumi.CustomResource):
             if export is None and not opts.urn:
                 raise TypeError("Missing required property 'export'")
             __props__.__dict__["export"] = export
-            if nfs_id is None and not opts.urn:
-                raise TypeError("Missing required property 'nfs_id'")
-            __props__.__dict__["nfs_id"] = nfs_id
             __props__.__dict__["nodes"] = nodes
             __props__.__dict__["options"] = options
             __props__.__dict__["preallocation"] = preallocation
+            if resource_id is None and not opts.urn:
+                raise TypeError("Missing required property 'resource_id'")
+            __props__.__dict__["resource_id"] = resource_id
             if server is None and not opts.urn:
                 raise TypeError("Missing required property 'server'")
             __props__.__dict__["server"] = server
             __props__.__dict__["snapshot_as_volume_chain"] = snapshot_as_volume_chain
             __props__.__dict__["shared"] = None
-        super(NFS, __self__).__init__(
-            'proxmoxve:Storage/nFS:NFS',
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="proxmox_virtual_environment_storage_nfs")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
+        super(Nfs, __self__).__init__(
+            'proxmoxve:storage/nfs:Nfs',
             resource_name,
             __props__,
             opts)
@@ -520,56 +476,56 @@ class NFS(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backups: Optional[pulumi.Input[Union['NFSBackupsArgs', 'NFSBackupsArgsDict']]] = None,
+            backups: Optional[pulumi.Input[Union['NfsBackupsArgs', 'NfsBackupsArgsDict']]] = None,
             contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             disable: Optional[pulumi.Input[_builtins.bool]] = None,
             export: Optional[pulumi.Input[_builtins.str]] = None,
-            nfs_id: Optional[pulumi.Input[_builtins.str]] = None,
             nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             options: Optional[pulumi.Input[_builtins.str]] = None,
             preallocation: Optional[pulumi.Input[_builtins.str]] = None,
+            resource_id: Optional[pulumi.Input[_builtins.str]] = None,
             server: Optional[pulumi.Input[_builtins.str]] = None,
             shared: Optional[pulumi.Input[_builtins.bool]] = None,
-            snapshot_as_volume_chain: Optional[pulumi.Input[_builtins.bool]] = None) -> 'NFS':
+            snapshot_as_volume_chain: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Nfs':
         """
-        Get an existing NFS resource's state with the given name, id, and optional extra
+        Get an existing Nfs resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['NFSBackupsArgs', 'NFSBackupsArgsDict']] backups: Configure backup retention settings for the storage type.
+        :param pulumi.Input[Union['NfsBackupsArgs', 'NfsBackupsArgsDict']] backups: Configure backup retention settings for the storage type.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contents: The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
         :param pulumi.Input[_builtins.bool] disable: Whether the storage is disabled.
         :param pulumi.Input[_builtins.str] export: The path of the NFS export.
-        :param pulumi.Input[_builtins.str] nfs_id: The unique identifier of the storage.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: A list of nodes where this storage is available.
         :param pulumi.Input[_builtins.str] options: The options to pass to the NFS service.
         :param pulumi.Input[_builtins.str] preallocation: The preallocation mode for raw and qcow2 images.
+        :param pulumi.Input[_builtins.str] resource_id: The unique identifier of the storage.
         :param pulumi.Input[_builtins.str] server: The IP address or DNS name of the NFS server.
         :param pulumi.Input[_builtins.bool] shared: Whether the storage is shared across all nodes.
         :param pulumi.Input[_builtins.bool] snapshot_as_volume_chain: Enable support for creating snapshots through volume backing-chains.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _NFSState.__new__(_NFSState)
+        __props__ = _NfsState.__new__(_NfsState)
 
         __props__.__dict__["backups"] = backups
         __props__.__dict__["contents"] = contents
         __props__.__dict__["disable"] = disable
         __props__.__dict__["export"] = export
-        __props__.__dict__["nfs_id"] = nfs_id
         __props__.__dict__["nodes"] = nodes
         __props__.__dict__["options"] = options
         __props__.__dict__["preallocation"] = preallocation
+        __props__.__dict__["resource_id"] = resource_id
         __props__.__dict__["server"] = server
         __props__.__dict__["shared"] = shared
         __props__.__dict__["snapshot_as_volume_chain"] = snapshot_as_volume_chain
-        return NFS(resource_name, opts=opts, __props__=__props__)
+        return Nfs(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter
-    def backups(self) -> pulumi.Output[Optional['outputs.NFSBackups']]:
+    def backups(self) -> pulumi.Output[Optional['outputs.NfsBackups']]:
         """
         Configure backup retention settings for the storage type.
         """
@@ -600,14 +556,6 @@ class NFS(pulumi.CustomResource):
         return pulumi.get(self, "export")
 
     @_builtins.property
-    @pulumi.getter(name="nfsId")
-    def nfs_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The unique identifier of the storage.
-        """
-        return pulumi.get(self, "nfs_id")
-
-    @_builtins.property
     @pulumi.getter
     def nodes(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
@@ -630,6 +578,14 @@ class NFS(pulumi.CustomResource):
         The preallocation mode for raw and qcow2 images.
         """
         return pulumi.get(self, "preallocation")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The unique identifier of the storage.
+        """
+        return pulumi.get(self, "resource_id")
 
     @_builtins.property
     @pulumi.getter

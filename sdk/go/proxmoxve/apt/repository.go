@@ -8,52 +8,11 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Manages an APT repository of a Proxmox VE node.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/apt"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := apt.NewRepository(ctx, "example", &apt.RepositoryArgs{
-//				Enabled:  pulumi.Bool(true),
-//				FilePath: pulumi.String("/etc/apt/sources.list"),
-//				Index:    pulumi.Int(0),
-//				Node:     pulumi.String("pve"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// #!/usr/bin/env sh
-//
-// An APT repository can be imported using a comma-separated list consisting of the name of the Proxmox VE node,
-//
-// the absolute source list file path, and the index in the exact same order, e.g.:
-//
-// ```sh
-// $ pulumi import proxmoxve:Apt/repository:Repository example pve,/etc/apt/sources.list,0
-// ```
 type Repository struct {
 	pulumi.CustomResourceState
 
@@ -97,7 +56,7 @@ func NewRepository(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Repository
-	err := ctx.RegisterResource("proxmoxve:Apt/repository:Repository", name, args, &resource, opts...)
+	err := ctx.RegisterResource("proxmoxve:apt/repository:Repository", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -109,7 +68,7 @@ func NewRepository(ctx *pulumi.Context,
 func GetRepository(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *RepositoryState, opts ...pulumi.ResourceOption) (*Repository, error) {
 	var resource Repository
-	err := ctx.ReadResource("proxmoxve:Apt/repository:Repository", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("proxmoxve:apt/repository:Repository", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

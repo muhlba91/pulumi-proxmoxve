@@ -8,107 +8,11 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Manages Proxmox VE SDN VNet.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdn"
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdnzone"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			finalizer, err := sdn.NewApplier(ctx, "finalizer", nil)
-//			if err != nil {
-//				return err
-//			}
-//			// SDN Zone (Simple) - Basic zone for simple vnets
-//			exampleZone1, err := sdnzone.NewSimple(ctx, "example_zone_1", &sdnzone.SimpleArgs{
-//				ZoneId:     pulumi.String("zone1"),
-//				Mtu:        pulumi.Int(1500),
-//				Dns:        pulumi.String("1.1.1.1"),
-//				DnsZone:    pulumi.String("example.com"),
-//				Ipam:       pulumi.String("pve"),
-//				ReverseDns: pulumi.String("1.1.1.1"),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				finalizer,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			// SDN Zone (Simple) - Second zone for demonstration
-//			exampleZone2, err := sdnzone.NewSimple(ctx, "example_zone_2", &sdnzone.SimpleArgs{
-//				ZoneId: pulumi.String("zone2"),
-//				Mtu:    pulumi.Int(1500),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				finalizer,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			// Basic VNet (Simple)
-//			basicVnet, err := sdn.NewVnet(ctx, "basic_vnet", &sdn.VnetArgs{
-//				VnetId: pulumi.String("vnet1"),
-//				Zone:   exampleZone1.ZoneId,
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				finalizer,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			// VNet with Alias and Port Isolation
-//			isolatedVnet, err := sdn.NewVnet(ctx, "isolated_vnet", &sdn.VnetArgs{
-//				VnetId:       pulumi.String("vnet2"),
-//				Zone:         exampleZone2.ZoneId,
-//				Alias:        pulumi.String("Isolated VNet"),
-//				IsolatePorts: pulumi.Bool(true),
-//				VlanAware:    pulumi.Bool(false),
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				finalizer,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			// SDN Applier for all resources
-//			_, err = sdn.NewApplier(ctx, "vnet_applier", nil, pulumi.DependsOn([]pulumi.Resource{
-//				exampleZone1,
-//				exampleZone2,
-//				basicVnet,
-//				isolatedVnet,
-//			}))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// #!/usr/bin/env sh
-//
-// SDN vnet can be imported using its unique identifier (vnet ID)
-//
-// ```sh
-// $ pulumi import proxmoxve:Sdn/vnet:Vnet basic_vnet vnet1
-// ```
-//
-// ```sh
-// $ pulumi import proxmoxve:Sdn/vnet:Vnet isolated_vnet vnet2
-// ```
 type Vnet struct {
 	pulumi.CustomResourceState
 
@@ -116,12 +20,12 @@ type Vnet struct {
 	Alias pulumi.StringPtrOutput `pulumi:"alias"`
 	// Isolate ports within this VNet.
 	IsolatePorts pulumi.BoolPtrOutput `pulumi:"isolatePorts"`
+	// The unique identifier of the SDN VNet.
+	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
 	// Tag value for VLAN/VXLAN (can't be used with other zone types).
 	Tag pulumi.IntPtrOutput `pulumi:"tag"`
 	// Allow VM VLANs to pass through this VNet.
 	VlanAware pulumi.BoolPtrOutput `pulumi:"vlanAware"`
-	// The unique identifier of the SDN VNet.
-	VnetId pulumi.StringOutput `pulumi:"vnetId"`
 	// The zone to which this VNet belongs.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
@@ -133,15 +37,21 @@ func NewVnet(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.VnetId == nil {
-		return nil, errors.New("invalid value for required argument 'VnetId'")
+	if args.ResourceId == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceId'")
 	}
 	if args.Zone == nil {
 		return nil, errors.New("invalid value for required argument 'Zone'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("proxmox_virtual_environment_sdn_vnet"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Vnet
-	err := ctx.RegisterResource("proxmoxve:Sdn/vnet:Vnet", name, args, &resource, opts...)
+	err := ctx.RegisterResource("proxmoxve:sdn/vnet:Vnet", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -153,7 +63,7 @@ func NewVnet(ctx *pulumi.Context,
 func GetVnet(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *VnetState, opts ...pulumi.ResourceOption) (*Vnet, error) {
 	var resource Vnet
-	err := ctx.ReadResource("proxmoxve:Sdn/vnet:Vnet", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("proxmoxve:sdn/vnet:Vnet", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -166,12 +76,12 @@ type vnetState struct {
 	Alias *string `pulumi:"alias"`
 	// Isolate ports within this VNet.
 	IsolatePorts *bool `pulumi:"isolatePorts"`
+	// The unique identifier of the SDN VNet.
+	ResourceId *string `pulumi:"resourceId"`
 	// Tag value for VLAN/VXLAN (can't be used with other zone types).
 	Tag *int `pulumi:"tag"`
 	// Allow VM VLANs to pass through this VNet.
 	VlanAware *bool `pulumi:"vlanAware"`
-	// The unique identifier of the SDN VNet.
-	VnetId *string `pulumi:"vnetId"`
 	// The zone to which this VNet belongs.
 	Zone *string `pulumi:"zone"`
 }
@@ -181,12 +91,12 @@ type VnetState struct {
 	Alias pulumi.StringPtrInput
 	// Isolate ports within this VNet.
 	IsolatePorts pulumi.BoolPtrInput
+	// The unique identifier of the SDN VNet.
+	ResourceId pulumi.StringPtrInput
 	// Tag value for VLAN/VXLAN (can't be used with other zone types).
 	Tag pulumi.IntPtrInput
 	// Allow VM VLANs to pass through this VNet.
 	VlanAware pulumi.BoolPtrInput
-	// The unique identifier of the SDN VNet.
-	VnetId pulumi.StringPtrInput
 	// The zone to which this VNet belongs.
 	Zone pulumi.StringPtrInput
 }
@@ -200,12 +110,12 @@ type vnetArgs struct {
 	Alias *string `pulumi:"alias"`
 	// Isolate ports within this VNet.
 	IsolatePorts *bool `pulumi:"isolatePorts"`
+	// The unique identifier of the SDN VNet.
+	ResourceId string `pulumi:"resourceId"`
 	// Tag value for VLAN/VXLAN (can't be used with other zone types).
 	Tag *int `pulumi:"tag"`
 	// Allow VM VLANs to pass through this VNet.
 	VlanAware *bool `pulumi:"vlanAware"`
-	// The unique identifier of the SDN VNet.
-	VnetId string `pulumi:"vnetId"`
 	// The zone to which this VNet belongs.
 	Zone string `pulumi:"zone"`
 }
@@ -216,12 +126,12 @@ type VnetArgs struct {
 	Alias pulumi.StringPtrInput
 	// Isolate ports within this VNet.
 	IsolatePorts pulumi.BoolPtrInput
+	// The unique identifier of the SDN VNet.
+	ResourceId pulumi.StringInput
 	// Tag value for VLAN/VXLAN (can't be used with other zone types).
 	Tag pulumi.IntPtrInput
 	// Allow VM VLANs to pass through this VNet.
 	VlanAware pulumi.BoolPtrInput
-	// The unique identifier of the SDN VNet.
-	VnetId pulumi.StringInput
 	// The zone to which this VNet belongs.
 	Zone pulumi.StringInput
 }
@@ -323,6 +233,11 @@ func (o VnetOutput) IsolatePorts() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Vnet) pulumi.BoolPtrOutput { return v.IsolatePorts }).(pulumi.BoolPtrOutput)
 }
 
+// The unique identifier of the SDN VNet.
+func (o VnetOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Vnet) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
+}
+
 // Tag value for VLAN/VXLAN (can't be used with other zone types).
 func (o VnetOutput) Tag() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Vnet) pulumi.IntPtrOutput { return v.Tag }).(pulumi.IntPtrOutput)
@@ -331,11 +246,6 @@ func (o VnetOutput) Tag() pulumi.IntPtrOutput {
 // Allow VM VLANs to pass through this VNet.
 func (o VnetOutput) VlanAware() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Vnet) pulumi.BoolPtrOutput { return v.VlanAware }).(pulumi.BoolPtrOutput)
-}
-
-// The unique identifier of the SDN VNet.
-func (o VnetOutput) VnetId() pulumi.StringOutput {
-	return o.ApplyT(func(v *Vnet) pulumi.StringOutput { return v.VnetId }).(pulumi.StringOutput)
 }
 
 // The zone to which this VNet belongs.

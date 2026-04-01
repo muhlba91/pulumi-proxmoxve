@@ -114,30 +114,13 @@ def get_vnet(id: Optional[_builtins.str] = None,
     """
     Retrieves information about an existing SDN VNet.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    example = proxmoxve.Sdn.get_vnet(id="vnet1")
-    pulumi.export("dataProxmoxVirtualEnvironmentSdnVnet", {
-        "id": example.id,
-        "zone": example.zone,
-        "alias": example.alias,
-        "isolatePorts": example.isolate_ports,
-        "tag": example.tag,
-        "vlanAware": example.vlan_aware,
-    })
-    ```
-
 
     :param _builtins.str id: The unique identifier of the SDN VNet.
     """
     __args__ = dict()
     __args__['id'] = id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('proxmoxve:Sdn/getVnet:getVnet', __args__, opts=opts, typ=GetVnetResult).value
+    __ret__ = pulumi.runtime.invoke('proxmoxve:sdn/getVnet:getVnet', __args__, opts=opts, typ=GetVnetResult).value
 
     return AwaitableGetVnetResult(
         alias=pulumi.get(__ret__, 'alias'),
@@ -151,30 +134,13 @@ def get_vnet_output(id: Optional[pulumi.Input[_builtins.str]] = None,
     """
     Retrieves information about an existing SDN VNet.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    example = proxmoxve.Sdn.get_vnet(id="vnet1")
-    pulumi.export("dataProxmoxVirtualEnvironmentSdnVnet", {
-        "id": example.id,
-        "zone": example.zone,
-        "alias": example.alias,
-        "isolatePorts": example.isolate_ports,
-        "tag": example.tag,
-        "vlanAware": example.vlan_aware,
-    })
-    ```
-
 
     :param _builtins.str id: The unique identifier of the SDN VNet.
     """
     __args__ = dict()
     __args__['id'] = id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Sdn/getVnet:getVnet', __args__, opts=opts, typ=GetVnetResult)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:sdn/getVnet:getVnet', __args__, opts=opts, typ=GetVnetResult)
     return __ret__.apply(lambda __response__: GetVnetResult(
         alias=pulumi.get(__response__, 'alias'),
         id=pulumi.get(__response__, 'id'),

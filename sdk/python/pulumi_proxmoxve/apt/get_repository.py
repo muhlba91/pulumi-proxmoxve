@@ -176,18 +176,6 @@ def get_repository(file_path: Optional[_builtins.str] = None,
     """
     Retrieves an APT repository from a Proxmox VE cluster.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    example = proxmoxve.Apt.get_repository(file_path="/etc/apt/sources.list",
-        index=0,
-        node="pve")
-    pulumi.export("proxmoxVirtualEnvironmentAptRepository", example)
-    ```
-
 
     :param _builtins.str file_path: The absolute path of the source list file that contains this repository.
     :param _builtins.int index: The index within the defining source list file.
@@ -198,7 +186,7 @@ def get_repository(file_path: Optional[_builtins.str] = None,
     __args__['index'] = index
     __args__['node'] = node
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('proxmoxve:Apt/getRepository:getRepository', __args__, opts=opts, typ=GetRepositoryResult).value
+    __ret__ = pulumi.runtime.invoke('proxmoxve:apt/getRepository:getRepository', __args__, opts=opts, typ=GetRepositoryResult).value
 
     return AwaitableGetRepositoryResult(
         comment=pulumi.get(__ret__, 'comment'),
@@ -219,18 +207,6 @@ def get_repository_output(file_path: Optional[pulumi.Input[_builtins.str]] = Non
     """
     Retrieves an APT repository from a Proxmox VE cluster.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    example = proxmoxve.Apt.get_repository(file_path="/etc/apt/sources.list",
-        index=0,
-        node="pve")
-    pulumi.export("proxmoxVirtualEnvironmentAptRepository", example)
-    ```
-
 
     :param _builtins.str file_path: The absolute path of the source list file that contains this repository.
     :param _builtins.int index: The index within the defining source list file.
@@ -241,7 +217,7 @@ def get_repository_output(file_path: Optional[pulumi.Input[_builtins.str]] = Non
     __args__['index'] = index
     __args__['node'] = node
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Apt/getRepository:getRepository', __args__, opts=opts, typ=GetRepositoryResult)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:apt/getRepository:getRepository', __args__, opts=opts, typ=GetRepositoryResult)
     return __ret__.apply(lambda __response__: GetRepositoryResult(
         comment=pulumi.get(__response__, 'comment'),
         components=pulumi.get(__response__, 'components'),

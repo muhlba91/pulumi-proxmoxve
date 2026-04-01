@@ -79,34 +79,13 @@ def get_zones(type: Optional[_builtins.str] = None,
     """
     Retrieves information about all SDN Zones in Proxmox. This data source can optionally filter zones by type.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    # List all SDN zones
-    all = proxmoxve.Sdn.get_zones()
-    # List only EVPN zones
-    evpn_only = proxmoxve.Sdn.get_zones(type="evpn")
-    # List only Simple zones  
-    simple_only = proxmoxve.Sdn.get_zones(type="simple")
-    pulumi.export("dataProxmoxVirtualEnvironmentSdnZonesAll", {
-        "zones": all.zones,
-    })
-    pulumi.export("dataProxmoxVirtualEnvironmentSdnZonesFiltered", {
-        "evpnZones": evpn_only.zones,
-        "simpleZones": simple_only.zones,
-    })
-    ```
-
 
     :param _builtins.str type: Filter zones by type (simple, vlan, qinq, vxlan, evpn).
     """
     __args__ = dict()
     __args__['type'] = type
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('proxmoxve:Sdn/getZones:getZones', __args__, opts=opts, typ=GetZonesResult).value
+    __ret__ = pulumi.runtime.invoke('proxmoxve:sdn/getZones:getZones', __args__, opts=opts, typ=GetZonesResult).value
 
     return AwaitableGetZonesResult(
         id=pulumi.get(__ret__, 'id'),
@@ -117,34 +96,13 @@ def get_zones_output(type: Optional[pulumi.Input[Optional[_builtins.str]]] = Non
     """
     Retrieves information about all SDN Zones in Proxmox. This data source can optionally filter zones by type.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    # List all SDN zones
-    all = proxmoxve.Sdn.get_zones()
-    # List only EVPN zones
-    evpn_only = proxmoxve.Sdn.get_zones(type="evpn")
-    # List only Simple zones  
-    simple_only = proxmoxve.Sdn.get_zones(type="simple")
-    pulumi.export("dataProxmoxVirtualEnvironmentSdnZonesAll", {
-        "zones": all.zones,
-    })
-    pulumi.export("dataProxmoxVirtualEnvironmentSdnZonesFiltered", {
-        "evpnZones": evpn_only.zones,
-        "simpleZones": simple_only.zones,
-    })
-    ```
-
 
     :param _builtins.str type: Filter zones by type (simple, vlan, qinq, vxlan, evpn).
     """
     __args__ = dict()
     __args__['type'] = type
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Sdn/getZones:getZones', __args__, opts=opts, typ=GetZonesResult)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:sdn/getZones:getZones', __args__, opts=opts, typ=GetZonesResult)
     return __ret__.apply(lambda __response__: GetZonesResult(
         id=pulumi.get(__response__, 'id'),
         type=pulumi.get(__response__, 'type'),

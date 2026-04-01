@@ -23,6 +23,7 @@ class ApplierArgs:
                  on_destroy: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Applier resource.
+
         :param pulumi.Input[_builtins.bool] on_create: Whether to apply SDN configuration on resource creation. Defaults to true.
         :param pulumi.Input[_builtins.bool] on_destroy: Whether to apply SDN configuration on resource destruction. Defaults to true.
         """
@@ -63,6 +64,7 @@ class _ApplierState:
                  on_destroy: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Applier resources.
+
         :param pulumi.Input[_builtins.bool] on_create: Whether to apply SDN configuration on resource creation. Defaults to true.
         :param pulumi.Input[_builtins.bool] on_destroy: Whether to apply SDN configuration on resource destruction. Defaults to true.
         """
@@ -96,7 +98,7 @@ class _ApplierState:
         pulumi.set(self, "on_destroy", value)
 
 
-@pulumi.type_token("proxmoxve:Sdn/applier:Applier")
+@pulumi.type_token("proxmoxve:sdn/applier:Applier")
 class Applier(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -106,7 +108,8 @@ class Applier(pulumi.CustomResource):
                  on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
-        **EXPERIMENTAL** Triggers Proxmox's SDN **Apply** (equivalent to `PUT /cluster/sdn`).Intended to be used with `replace_triggered_by` so it runs after SDN objects change.
+        **EXPERIMENTAL** Triggers Proxmox's SDN **Apply** (equivalent to `PUT /cluster/sdn`). Intended to be used with `replace_triggered_by` so it runs after SDN objects change.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -120,7 +123,8 @@ class Applier(pulumi.CustomResource):
                  args: Optional[ApplierArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        **EXPERIMENTAL** Triggers Proxmox's SDN **Apply** (equivalent to `PUT /cluster/sdn`).Intended to be used with `replace_triggered_by` so it runs after SDN objects change.
+        **EXPERIMENTAL** Triggers Proxmox's SDN **Apply** (equivalent to `PUT /cluster/sdn`). Intended to be used with `replace_triggered_by` so it runs after SDN objects change.
+
 
         :param str resource_name: The name of the resource.
         :param ApplierArgs args: The arguments to use to populate this resource's properties.
@@ -151,7 +155,7 @@ class Applier(pulumi.CustomResource):
             __props__.__dict__["on_create"] = on_create
             __props__.__dict__["on_destroy"] = on_destroy
         super(Applier, __self__).__init__(
-            'proxmoxve:Sdn/applier:Applier',
+            'proxmoxve:sdn/applier:Applier',
             resource_name,
             __props__,
             opts)

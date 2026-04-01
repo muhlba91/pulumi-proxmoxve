@@ -91,23 +91,13 @@ def get_usb(name: Optional[_builtins.str] = None,
     """
     Retrieves a USB hardware mapping from a Proxmox VE cluster.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    example = proxmoxve.Hardware.mapping.get_usb(name="example")
-    pulumi.export("dataProxmoxVirtualEnvironmentHardwareMappingUsb", example)
-    ```
-
 
     :param _builtins.str name: The name of this USB hardware mapping.
     """
     __args__ = dict()
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('proxmoxve:Hardware/mapping/getUsb:getUsb', __args__, opts=opts, typ=GetUsbResult).value
+    __ret__ = pulumi.runtime.invoke('proxmoxve:hardware/mapping/getUsb:getUsb', __args__, opts=opts, typ=GetUsbResult).value
 
     return AwaitableGetUsbResult(
         comment=pulumi.get(__ret__, 'comment'),
@@ -119,23 +109,13 @@ def get_usb_output(name: Optional[pulumi.Input[_builtins.str]] = None,
     """
     Retrieves a USB hardware mapping from a Proxmox VE cluster.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    example = proxmoxve.Hardware.mapping.get_usb(name="example")
-    pulumi.export("dataProxmoxVirtualEnvironmentHardwareMappingUsb", example)
-    ```
-
 
     :param _builtins.str name: The name of this USB hardware mapping.
     """
     __args__ = dict()
     __args__['name'] = name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Hardware/mapping/getUsb:getUsb', __args__, opts=opts, typ=GetUsbResult)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:hardware/mapping/getUsb:getUsb', __args__, opts=opts, typ=GetUsbResult)
     return __ret__.apply(lambda __response__: GetUsbResult(
         comment=pulumi.get(__response__, 'comment'),
         id=pulumi.get(__response__, 'id'),

@@ -15,26 +15,203 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'OptionsLegacyNextIdArgs',
+    'OptionsLegacyNextIdArgsDict',
+    'OptionsLegacyNotifyArgs',
+    'OptionsLegacyNotifyArgsDict',
     'OptionsNextIdArgs',
     'OptionsNextIdArgsDict',
     'OptionsNotifyArgs',
     'OptionsNotifyArgsDict',
 ]
 
-MYPY = False
+class OptionsLegacyNextIdArgsDict(TypedDict):
+    lower: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The minimum number for the next free VM ID. Must be higher or equal to 100
+    """
+    upper: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number for the next free VM ID. Must be less or equal to 999999999
+    """
 
-if not MYPY:
-    class OptionsNextIdArgsDict(TypedDict):
-        lower: NotRequired[pulumi.Input[_builtins.int]]
+@pulumi.input_type
+class OptionsLegacyNextIdArgs:
+    def __init__(__self__, *,
+                 lower: Optional[pulumi.Input[_builtins.int]] = None,
+                 upper: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] lower: The minimum number for the next free VM ID. Must be higher or equal to 100
+        :param pulumi.Input[_builtins.int] upper: The maximum number for the next free VM ID. Must be less or equal to 999999999
+        """
+        if lower is not None:
+            pulumi.set(__self__, "lower", lower)
+        if upper is not None:
+            pulumi.set(__self__, "upper", upper)
+
+    @_builtins.property
+    @pulumi.getter
+    def lower(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The minimum number for the next free VM ID. Must be higher or equal to 100
         """
-        upper: NotRequired[pulumi.Input[_builtins.int]]
+        return pulumi.get(self, "lower")
+
+    @lower.setter
+    def lower(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "lower", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def upper(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         The maximum number for the next free VM ID. Must be less or equal to 999999999
         """
-elif False:
-    OptionsNextIdArgsDict: TypeAlias = Mapping[str, Any]
+        return pulumi.get(self, "upper")
+
+    @upper.setter
+    def upper(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "upper", value)
+
+
+class OptionsLegacyNotifyArgsDict(TypedDict):
+    ha_fencing_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cluster-wide notification settings for the HA fencing mode. Must be `always` | `never`.
+    """
+    ha_fencing_target: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cluster-wide notification settings for the HA fencing target.
+    """
+    package_updates: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cluster-wide notification settings for package updates. Must be `auto` | `always` | `never`.
+    """
+    package_updates_target: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cluster-wide notification settings for the package updates target.
+    """
+    replication: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cluster-wide notification settings for replication. Must be `always` | `never`.
+    """
+    replication_target: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cluster-wide notification settings for the replication target.
+    """
+
+@pulumi.input_type
+class OptionsLegacyNotifyArgs:
+    def __init__(__self__, *,
+                 ha_fencing_mode: Optional[pulumi.Input[_builtins.str]] = None,
+                 ha_fencing_target: Optional[pulumi.Input[_builtins.str]] = None,
+                 package_updates: Optional[pulumi.Input[_builtins.str]] = None,
+                 package_updates_target: Optional[pulumi.Input[_builtins.str]] = None,
+                 replication: Optional[pulumi.Input[_builtins.str]] = None,
+                 replication_target: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] ha_fencing_mode: Cluster-wide notification settings for the HA fencing mode. Must be `always` | `never`.
+        :param pulumi.Input[_builtins.str] ha_fencing_target: Cluster-wide notification settings for the HA fencing target.
+        :param pulumi.Input[_builtins.str] package_updates: Cluster-wide notification settings for package updates. Must be `auto` | `always` | `never`.
+        :param pulumi.Input[_builtins.str] package_updates_target: Cluster-wide notification settings for the package updates target.
+        :param pulumi.Input[_builtins.str] replication: Cluster-wide notification settings for replication. Must be `always` | `never`.
+        :param pulumi.Input[_builtins.str] replication_target: Cluster-wide notification settings for the replication target.
+        """
+        if ha_fencing_mode is not None:
+            pulumi.set(__self__, "ha_fencing_mode", ha_fencing_mode)
+        if ha_fencing_target is not None:
+            pulumi.set(__self__, "ha_fencing_target", ha_fencing_target)
+        if package_updates is not None:
+            pulumi.set(__self__, "package_updates", package_updates)
+        if package_updates_target is not None:
+            pulumi.set(__self__, "package_updates_target", package_updates_target)
+        if replication is not None:
+            pulumi.set(__self__, "replication", replication)
+        if replication_target is not None:
+            pulumi.set(__self__, "replication_target", replication_target)
+
+    @_builtins.property
+    @pulumi.getter(name="haFencingMode")
+    def ha_fencing_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Cluster-wide notification settings for the HA fencing mode. Must be `always` | `never`.
+        """
+        return pulumi.get(self, "ha_fencing_mode")
+
+    @ha_fencing_mode.setter
+    def ha_fencing_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ha_fencing_mode", value)
+
+    @_builtins.property
+    @pulumi.getter(name="haFencingTarget")
+    def ha_fencing_target(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Cluster-wide notification settings for the HA fencing target.
+        """
+        return pulumi.get(self, "ha_fencing_target")
+
+    @ha_fencing_target.setter
+    def ha_fencing_target(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "ha_fencing_target", value)
+
+    @_builtins.property
+    @pulumi.getter(name="packageUpdates")
+    def package_updates(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Cluster-wide notification settings for package updates. Must be `auto` | `always` | `never`.
+        """
+        return pulumi.get(self, "package_updates")
+
+    @package_updates.setter
+    def package_updates(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "package_updates", value)
+
+    @_builtins.property
+    @pulumi.getter(name="packageUpdatesTarget")
+    def package_updates_target(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Cluster-wide notification settings for the package updates target.
+        """
+        return pulumi.get(self, "package_updates_target")
+
+    @package_updates_target.setter
+    def package_updates_target(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "package_updates_target", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def replication(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Cluster-wide notification settings for replication. Must be `always` | `never`.
+        """
+        return pulumi.get(self, "replication")
+
+    @replication.setter
+    def replication(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "replication", value)
+
+    @_builtins.property
+    @pulumi.getter(name="replicationTarget")
+    def replication_target(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Cluster-wide notification settings for the replication target.
+        """
+        return pulumi.get(self, "replication_target")
+
+    @replication_target.setter
+    def replication_target(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "replication_target", value)
+
+
+class OptionsNextIdArgsDict(TypedDict):
+    lower: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The minimum number for the next free VM ID. Must be higher or equal to 100
+    """
+    upper: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number for the next free VM ID. Must be less or equal to 999999999
+    """
 
 @pulumi.input_type
 class OptionsNextIdArgs:
@@ -75,34 +252,31 @@ class OptionsNextIdArgs:
         pulumi.set(self, "upper", value)
 
 
-if not MYPY:
-    class OptionsNotifyArgsDict(TypedDict):
-        ha_fencing_mode: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Cluster-wide notification settings for the HA fencing mode. Must be `always` | `never`.
-        """
-        ha_fencing_target: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Cluster-wide notification settings for the HA fencing target.
-        """
-        package_updates: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Cluster-wide notification settings for package updates. Must be `auto` | `always` | `never`.
-        """
-        package_updates_target: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Cluster-wide notification settings for the package updates target.
-        """
-        replication: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Cluster-wide notification settings for replication. Must be `always` | `never`.
-        """
-        replication_target: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Cluster-wide notification settings for the replication target.
-        """
-elif False:
-    OptionsNotifyArgsDict: TypeAlias = Mapping[str, Any]
+class OptionsNotifyArgsDict(TypedDict):
+    ha_fencing_mode: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cluster-wide notification settings for the HA fencing mode. Must be `always` | `never`.
+    """
+    ha_fencing_target: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cluster-wide notification settings for the HA fencing target.
+    """
+    package_updates: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cluster-wide notification settings for package updates. Must be `auto` | `always` | `never`.
+    """
+    package_updates_target: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cluster-wide notification settings for the package updates target.
+    """
+    replication: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cluster-wide notification settings for replication. Must be `always` | `never`.
+    """
+    replication_target: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Cluster-wide notification settings for the replication target.
+    """
 
 @pulumi.input_type
 class OptionsNotifyArgs:

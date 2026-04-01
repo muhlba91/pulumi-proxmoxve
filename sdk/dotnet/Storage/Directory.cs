@@ -11,42 +11,8 @@ namespace Pulumi.ProxmoxVE.Storage
 {
     /// <summary>
     /// Manages directory-based storage in Proxmox VE.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using ProxmoxVE = Pulumi.ProxmoxVE;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new ProxmoxVE.Storage.Directory("example", new()
-    ///     {
-    ///         DirectoryId = "example-dir",
-    ///         Path = "/var/lib/vz",
-    ///         Nodes = new[]
-    ///         {
-    ///             "pve",
-    ///         },
-    ///         Contents = new[]
-    ///         {
-    ///             "images",
-    ///         },
-    ///         Shared = true,
-    ///         Disable = false,
-    ///         Backups = new ProxmoxVE.Storage.Inputs.DirectoryBackupsArgs
-    ///         {
-    ///             MaxProtectedBackups = 5,
-    ///             KeepDaily = 7,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
-    [ProxmoxVEResourceType("proxmoxve:Storage/directory:Directory")]
+    [ProxmoxVEResourceType("proxmoxve:storage/directory:Directory")]
     public partial class Directory : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -60,12 +26,6 @@ namespace Pulumi.ProxmoxVE.Storage
         /// </summary>
         [Output("contents")]
         public Output<ImmutableArray<string>> Contents { get; private set; } = null!;
-
-        /// <summary>
-        /// The unique identifier of the storage.
-        /// </summary>
-        [Output("directoryId")]
-        public Output<string> DirectoryId { get; private set; } = null!;
 
         /// <summary>
         /// Whether the storage is disabled.
@@ -92,6 +52,12 @@ namespace Pulumi.ProxmoxVE.Storage
         public Output<string?> Preallocation { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier of the storage.
+        /// </summary>
+        [Output("resourceId")]
+        public Output<string> ResourceId { get; private set; } = null!;
+
+        /// <summary>
         /// Whether the storage is shared across all nodes.
         /// </summary>
         [Output("shared")]
@@ -106,12 +72,12 @@ namespace Pulumi.ProxmoxVE.Storage
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Directory(string name, DirectoryArgs args, CustomResourceOptions? options = null)
-            : base("proxmoxve:Storage/directory:Directory", name, args ?? new DirectoryArgs(), MakeResourceOptions(options, ""))
+            : base("proxmoxve:storage/directory:Directory", name, args ?? new DirectoryArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Directory(string name, Input<string> id, DirectoryState? state = null, CustomResourceOptions? options = null)
-            : base("proxmoxve:Storage/directory:Directory", name, state, MakeResourceOptions(options, id))
+            : base("proxmoxve:storage/directory:Directory", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -121,6 +87,10 @@ namespace Pulumi.ProxmoxVE.Storage
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/muhlba91/pulumi-proxmoxve",
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "proxmox_virtual_environment_storage_directory" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -163,12 +133,6 @@ namespace Pulumi.ProxmoxVE.Storage
         }
 
         /// <summary>
-        /// The unique identifier of the storage.
-        /// </summary>
-        [Input("directoryId", required: true)]
-        public Input<string> DirectoryId { get; set; } = null!;
-
-        /// <summary>
         /// Whether the storage is disabled.
         /// </summary>
         [Input("disable")]
@@ -197,6 +161,12 @@ namespace Pulumi.ProxmoxVE.Storage
         /// </summary>
         [Input("preallocation")]
         public Input<string>? Preallocation { get; set; }
+
+        /// <summary>
+        /// The unique identifier of the storage.
+        /// </summary>
+        [Input("resourceId", required: true)]
+        public Input<string> ResourceId { get; set; } = null!;
 
         /// <summary>
         /// Whether the storage is shared across all nodes.
@@ -231,12 +201,6 @@ namespace Pulumi.ProxmoxVE.Storage
         }
 
         /// <summary>
-        /// The unique identifier of the storage.
-        /// </summary>
-        [Input("directoryId")]
-        public Input<string>? DirectoryId { get; set; }
-
-        /// <summary>
         /// Whether the storage is disabled.
         /// </summary>
         [Input("disable")]
@@ -265,6 +229,12 @@ namespace Pulumi.ProxmoxVE.Storage
         /// </summary>
         [Input("preallocation")]
         public Input<string>? Preallocation { get; set; }
+
+        /// <summary>
+        /// The unique identifier of the storage.
+        /// </summary>
+        [Input("resourceId")]
+        public Input<string>? ResourceId { get; set; }
 
         /// <summary>
         /// Whether the storage is shared across all nodes.

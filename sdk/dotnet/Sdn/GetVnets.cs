@@ -13,90 +13,21 @@ namespace Pulumi.ProxmoxVE.Sdn
     {
         /// <summary>
         /// Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using ProxmoxVE = Pulumi.ProxmoxVE;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     // List all SDN VNets
-        ///     var all = ProxmoxVE.Sdn.GetVnets.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["dataProxmoxVirtualEnvironmentSdnVnetsAll"] = 
-        ///         {
-        ///             { "vnets", all.Apply(getVnetsResult =&gt; getVnetsResult.Vnets) },
-        ///         },
-        ///     };
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetVnetsResult> InvokeAsync(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetVnetsResult>("proxmoxve:Sdn/getVnets:getVnets", InvokeArgs.Empty, options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetVnetsResult>("proxmoxve:sdn/getVnets:getVnets", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using ProxmoxVE = Pulumi.ProxmoxVE;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     // List all SDN VNets
-        ///     var all = ProxmoxVE.Sdn.GetVnets.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["dataProxmoxVirtualEnvironmentSdnVnetsAll"] = 
-        ///         {
-        ///             { "vnets", all.Apply(getVnetsResult =&gt; getVnetsResult.Vnets) },
-        ///         },
-        ///     };
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetVnetsResult> Invoke(InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetVnetsResult>("proxmoxve:Sdn/getVnets:getVnets", InvokeArgs.Empty, options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetVnetsResult>("proxmoxve:sdn/getVnets:getVnets", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using ProxmoxVE = Pulumi.ProxmoxVE;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     // List all SDN VNets
-        ///     var all = ProxmoxVE.Sdn.GetVnets.Invoke();
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["dataProxmoxVirtualEnvironmentSdnVnetsAll"] = 
-        ///         {
-        ///             { "vnets", all.Apply(getVnetsResult =&gt; getVnetsResult.Vnets) },
-        ///         },
-        ///     };
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetVnetsResult> Invoke(InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetVnetsResult>("proxmoxve:Sdn/getVnets:getVnets", InvokeArgs.Empty, options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetVnetsResult>("proxmoxve:sdn/getVnets:getVnets", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

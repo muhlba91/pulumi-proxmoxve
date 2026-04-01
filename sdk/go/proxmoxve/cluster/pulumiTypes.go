@@ -7,11 +7,399 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = internal.GetEnvOrDefault
+
+type OptionsLegacyNextId struct {
+	// The minimum number for the next free VM ID. Must be higher or equal to 100
+	Lower *int `pulumi:"lower"`
+	// The maximum number for the next free VM ID. Must be less or equal to 999999999
+	Upper *int `pulumi:"upper"`
+}
+
+// OptionsLegacyNextIdInput is an input type that accepts OptionsLegacyNextIdArgs and OptionsLegacyNextIdOutput values.
+// You can construct a concrete instance of `OptionsLegacyNextIdInput` via:
+//
+//	OptionsLegacyNextIdArgs{...}
+type OptionsLegacyNextIdInput interface {
+	pulumi.Input
+
+	ToOptionsLegacyNextIdOutput() OptionsLegacyNextIdOutput
+	ToOptionsLegacyNextIdOutputWithContext(context.Context) OptionsLegacyNextIdOutput
+}
+
+type OptionsLegacyNextIdArgs struct {
+	// The minimum number for the next free VM ID. Must be higher or equal to 100
+	Lower pulumi.IntPtrInput `pulumi:"lower"`
+	// The maximum number for the next free VM ID. Must be less or equal to 999999999
+	Upper pulumi.IntPtrInput `pulumi:"upper"`
+}
+
+func (OptionsLegacyNextIdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OptionsLegacyNextId)(nil)).Elem()
+}
+
+func (i OptionsLegacyNextIdArgs) ToOptionsLegacyNextIdOutput() OptionsLegacyNextIdOutput {
+	return i.ToOptionsLegacyNextIdOutputWithContext(context.Background())
+}
+
+func (i OptionsLegacyNextIdArgs) ToOptionsLegacyNextIdOutputWithContext(ctx context.Context) OptionsLegacyNextIdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OptionsLegacyNextIdOutput)
+}
+
+func (i OptionsLegacyNextIdArgs) ToOptionsLegacyNextIdPtrOutput() OptionsLegacyNextIdPtrOutput {
+	return i.ToOptionsLegacyNextIdPtrOutputWithContext(context.Background())
+}
+
+func (i OptionsLegacyNextIdArgs) ToOptionsLegacyNextIdPtrOutputWithContext(ctx context.Context) OptionsLegacyNextIdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OptionsLegacyNextIdOutput).ToOptionsLegacyNextIdPtrOutputWithContext(ctx)
+}
+
+// OptionsLegacyNextIdPtrInput is an input type that accepts OptionsLegacyNextIdArgs, OptionsLegacyNextIdPtr and OptionsLegacyNextIdPtrOutput values.
+// You can construct a concrete instance of `OptionsLegacyNextIdPtrInput` via:
+//
+//	        OptionsLegacyNextIdArgs{...}
+//
+//	or:
+//
+//	        nil
+type OptionsLegacyNextIdPtrInput interface {
+	pulumi.Input
+
+	ToOptionsLegacyNextIdPtrOutput() OptionsLegacyNextIdPtrOutput
+	ToOptionsLegacyNextIdPtrOutputWithContext(context.Context) OptionsLegacyNextIdPtrOutput
+}
+
+type optionsLegacyNextIdPtrType OptionsLegacyNextIdArgs
+
+func OptionsLegacyNextIdPtr(v *OptionsLegacyNextIdArgs) OptionsLegacyNextIdPtrInput {
+	return (*optionsLegacyNextIdPtrType)(v)
+}
+
+func (*optionsLegacyNextIdPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OptionsLegacyNextId)(nil)).Elem()
+}
+
+func (i *optionsLegacyNextIdPtrType) ToOptionsLegacyNextIdPtrOutput() OptionsLegacyNextIdPtrOutput {
+	return i.ToOptionsLegacyNextIdPtrOutputWithContext(context.Background())
+}
+
+func (i *optionsLegacyNextIdPtrType) ToOptionsLegacyNextIdPtrOutputWithContext(ctx context.Context) OptionsLegacyNextIdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OptionsLegacyNextIdPtrOutput)
+}
+
+type OptionsLegacyNextIdOutput struct{ *pulumi.OutputState }
+
+func (OptionsLegacyNextIdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OptionsLegacyNextId)(nil)).Elem()
+}
+
+func (o OptionsLegacyNextIdOutput) ToOptionsLegacyNextIdOutput() OptionsLegacyNextIdOutput {
+	return o
+}
+
+func (o OptionsLegacyNextIdOutput) ToOptionsLegacyNextIdOutputWithContext(ctx context.Context) OptionsLegacyNextIdOutput {
+	return o
+}
+
+func (o OptionsLegacyNextIdOutput) ToOptionsLegacyNextIdPtrOutput() OptionsLegacyNextIdPtrOutput {
+	return o.ToOptionsLegacyNextIdPtrOutputWithContext(context.Background())
+}
+
+func (o OptionsLegacyNextIdOutput) ToOptionsLegacyNextIdPtrOutputWithContext(ctx context.Context) OptionsLegacyNextIdPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OptionsLegacyNextId) *OptionsLegacyNextId {
+		return &v
+	}).(OptionsLegacyNextIdPtrOutput)
+}
+
+// The minimum number for the next free VM ID. Must be higher or equal to 100
+func (o OptionsLegacyNextIdOutput) Lower() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OptionsLegacyNextId) *int { return v.Lower }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number for the next free VM ID. Must be less or equal to 999999999
+func (o OptionsLegacyNextIdOutput) Upper() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OptionsLegacyNextId) *int { return v.Upper }).(pulumi.IntPtrOutput)
+}
+
+type OptionsLegacyNextIdPtrOutput struct{ *pulumi.OutputState }
+
+func (OptionsLegacyNextIdPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OptionsLegacyNextId)(nil)).Elem()
+}
+
+func (o OptionsLegacyNextIdPtrOutput) ToOptionsLegacyNextIdPtrOutput() OptionsLegacyNextIdPtrOutput {
+	return o
+}
+
+func (o OptionsLegacyNextIdPtrOutput) ToOptionsLegacyNextIdPtrOutputWithContext(ctx context.Context) OptionsLegacyNextIdPtrOutput {
+	return o
+}
+
+func (o OptionsLegacyNextIdPtrOutput) Elem() OptionsLegacyNextIdOutput {
+	return o.ApplyT(func(v *OptionsLegacyNextId) OptionsLegacyNextId {
+		if v != nil {
+			return *v
+		}
+		var ret OptionsLegacyNextId
+		return ret
+	}).(OptionsLegacyNextIdOutput)
+}
+
+// The minimum number for the next free VM ID. Must be higher or equal to 100
+func (o OptionsLegacyNextIdPtrOutput) Lower() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OptionsLegacyNextId) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Lower
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number for the next free VM ID. Must be less or equal to 999999999
+func (o OptionsLegacyNextIdPtrOutput) Upper() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OptionsLegacyNextId) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Upper
+	}).(pulumi.IntPtrOutput)
+}
+
+type OptionsLegacyNotify struct {
+	// Cluster-wide notification settings for the HA fencing mode. Must be `always` | `never`.
+	HaFencingMode *string `pulumi:"haFencingMode"`
+	// Cluster-wide notification settings for the HA fencing target.
+	HaFencingTarget *string `pulumi:"haFencingTarget"`
+	// Cluster-wide notification settings for package updates. Must be `auto` | `always` | `never`.
+	PackageUpdates *string `pulumi:"packageUpdates"`
+	// Cluster-wide notification settings for the package updates target.
+	PackageUpdatesTarget *string `pulumi:"packageUpdatesTarget"`
+	// Cluster-wide notification settings for replication. Must be `always` | `never`.
+	Replication *string `pulumi:"replication"`
+	// Cluster-wide notification settings for the replication target.
+	ReplicationTarget *string `pulumi:"replicationTarget"`
+}
+
+// OptionsLegacyNotifyInput is an input type that accepts OptionsLegacyNotifyArgs and OptionsLegacyNotifyOutput values.
+// You can construct a concrete instance of `OptionsLegacyNotifyInput` via:
+//
+//	OptionsLegacyNotifyArgs{...}
+type OptionsLegacyNotifyInput interface {
+	pulumi.Input
+
+	ToOptionsLegacyNotifyOutput() OptionsLegacyNotifyOutput
+	ToOptionsLegacyNotifyOutputWithContext(context.Context) OptionsLegacyNotifyOutput
+}
+
+type OptionsLegacyNotifyArgs struct {
+	// Cluster-wide notification settings for the HA fencing mode. Must be `always` | `never`.
+	HaFencingMode pulumi.StringPtrInput `pulumi:"haFencingMode"`
+	// Cluster-wide notification settings for the HA fencing target.
+	HaFencingTarget pulumi.StringPtrInput `pulumi:"haFencingTarget"`
+	// Cluster-wide notification settings for package updates. Must be `auto` | `always` | `never`.
+	PackageUpdates pulumi.StringPtrInput `pulumi:"packageUpdates"`
+	// Cluster-wide notification settings for the package updates target.
+	PackageUpdatesTarget pulumi.StringPtrInput `pulumi:"packageUpdatesTarget"`
+	// Cluster-wide notification settings for replication. Must be `always` | `never`.
+	Replication pulumi.StringPtrInput `pulumi:"replication"`
+	// Cluster-wide notification settings for the replication target.
+	ReplicationTarget pulumi.StringPtrInput `pulumi:"replicationTarget"`
+}
+
+func (OptionsLegacyNotifyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OptionsLegacyNotify)(nil)).Elem()
+}
+
+func (i OptionsLegacyNotifyArgs) ToOptionsLegacyNotifyOutput() OptionsLegacyNotifyOutput {
+	return i.ToOptionsLegacyNotifyOutputWithContext(context.Background())
+}
+
+func (i OptionsLegacyNotifyArgs) ToOptionsLegacyNotifyOutputWithContext(ctx context.Context) OptionsLegacyNotifyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OptionsLegacyNotifyOutput)
+}
+
+func (i OptionsLegacyNotifyArgs) ToOptionsLegacyNotifyPtrOutput() OptionsLegacyNotifyPtrOutput {
+	return i.ToOptionsLegacyNotifyPtrOutputWithContext(context.Background())
+}
+
+func (i OptionsLegacyNotifyArgs) ToOptionsLegacyNotifyPtrOutputWithContext(ctx context.Context) OptionsLegacyNotifyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OptionsLegacyNotifyOutput).ToOptionsLegacyNotifyPtrOutputWithContext(ctx)
+}
+
+// OptionsLegacyNotifyPtrInput is an input type that accepts OptionsLegacyNotifyArgs, OptionsLegacyNotifyPtr and OptionsLegacyNotifyPtrOutput values.
+// You can construct a concrete instance of `OptionsLegacyNotifyPtrInput` via:
+//
+//	        OptionsLegacyNotifyArgs{...}
+//
+//	or:
+//
+//	        nil
+type OptionsLegacyNotifyPtrInput interface {
+	pulumi.Input
+
+	ToOptionsLegacyNotifyPtrOutput() OptionsLegacyNotifyPtrOutput
+	ToOptionsLegacyNotifyPtrOutputWithContext(context.Context) OptionsLegacyNotifyPtrOutput
+}
+
+type optionsLegacyNotifyPtrType OptionsLegacyNotifyArgs
+
+func OptionsLegacyNotifyPtr(v *OptionsLegacyNotifyArgs) OptionsLegacyNotifyPtrInput {
+	return (*optionsLegacyNotifyPtrType)(v)
+}
+
+func (*optionsLegacyNotifyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OptionsLegacyNotify)(nil)).Elem()
+}
+
+func (i *optionsLegacyNotifyPtrType) ToOptionsLegacyNotifyPtrOutput() OptionsLegacyNotifyPtrOutput {
+	return i.ToOptionsLegacyNotifyPtrOutputWithContext(context.Background())
+}
+
+func (i *optionsLegacyNotifyPtrType) ToOptionsLegacyNotifyPtrOutputWithContext(ctx context.Context) OptionsLegacyNotifyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OptionsLegacyNotifyPtrOutput)
+}
+
+type OptionsLegacyNotifyOutput struct{ *pulumi.OutputState }
+
+func (OptionsLegacyNotifyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OptionsLegacyNotify)(nil)).Elem()
+}
+
+func (o OptionsLegacyNotifyOutput) ToOptionsLegacyNotifyOutput() OptionsLegacyNotifyOutput {
+	return o
+}
+
+func (o OptionsLegacyNotifyOutput) ToOptionsLegacyNotifyOutputWithContext(ctx context.Context) OptionsLegacyNotifyOutput {
+	return o
+}
+
+func (o OptionsLegacyNotifyOutput) ToOptionsLegacyNotifyPtrOutput() OptionsLegacyNotifyPtrOutput {
+	return o.ToOptionsLegacyNotifyPtrOutputWithContext(context.Background())
+}
+
+func (o OptionsLegacyNotifyOutput) ToOptionsLegacyNotifyPtrOutputWithContext(ctx context.Context) OptionsLegacyNotifyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OptionsLegacyNotify) *OptionsLegacyNotify {
+		return &v
+	}).(OptionsLegacyNotifyPtrOutput)
+}
+
+// Cluster-wide notification settings for the HA fencing mode. Must be `always` | `never`.
+func (o OptionsLegacyNotifyOutput) HaFencingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OptionsLegacyNotify) *string { return v.HaFencingMode }).(pulumi.StringPtrOutput)
+}
+
+// Cluster-wide notification settings for the HA fencing target.
+func (o OptionsLegacyNotifyOutput) HaFencingTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OptionsLegacyNotify) *string { return v.HaFencingTarget }).(pulumi.StringPtrOutput)
+}
+
+// Cluster-wide notification settings for package updates. Must be `auto` | `always` | `never`.
+func (o OptionsLegacyNotifyOutput) PackageUpdates() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OptionsLegacyNotify) *string { return v.PackageUpdates }).(pulumi.StringPtrOutput)
+}
+
+// Cluster-wide notification settings for the package updates target.
+func (o OptionsLegacyNotifyOutput) PackageUpdatesTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OptionsLegacyNotify) *string { return v.PackageUpdatesTarget }).(pulumi.StringPtrOutput)
+}
+
+// Cluster-wide notification settings for replication. Must be `always` | `never`.
+func (o OptionsLegacyNotifyOutput) Replication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OptionsLegacyNotify) *string { return v.Replication }).(pulumi.StringPtrOutput)
+}
+
+// Cluster-wide notification settings for the replication target.
+func (o OptionsLegacyNotifyOutput) ReplicationTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OptionsLegacyNotify) *string { return v.ReplicationTarget }).(pulumi.StringPtrOutput)
+}
+
+type OptionsLegacyNotifyPtrOutput struct{ *pulumi.OutputState }
+
+func (OptionsLegacyNotifyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OptionsLegacyNotify)(nil)).Elem()
+}
+
+func (o OptionsLegacyNotifyPtrOutput) ToOptionsLegacyNotifyPtrOutput() OptionsLegacyNotifyPtrOutput {
+	return o
+}
+
+func (o OptionsLegacyNotifyPtrOutput) ToOptionsLegacyNotifyPtrOutputWithContext(ctx context.Context) OptionsLegacyNotifyPtrOutput {
+	return o
+}
+
+func (o OptionsLegacyNotifyPtrOutput) Elem() OptionsLegacyNotifyOutput {
+	return o.ApplyT(func(v *OptionsLegacyNotify) OptionsLegacyNotify {
+		if v != nil {
+			return *v
+		}
+		var ret OptionsLegacyNotify
+		return ret
+	}).(OptionsLegacyNotifyOutput)
+}
+
+// Cluster-wide notification settings for the HA fencing mode. Must be `always` | `never`.
+func (o OptionsLegacyNotifyPtrOutput) HaFencingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OptionsLegacyNotify) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HaFencingMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cluster-wide notification settings for the HA fencing target.
+func (o OptionsLegacyNotifyPtrOutput) HaFencingTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OptionsLegacyNotify) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HaFencingTarget
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cluster-wide notification settings for package updates. Must be `auto` | `always` | `never`.
+func (o OptionsLegacyNotifyPtrOutput) PackageUpdates() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OptionsLegacyNotify) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PackageUpdates
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cluster-wide notification settings for the package updates target.
+func (o OptionsLegacyNotifyPtrOutput) PackageUpdatesTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OptionsLegacyNotify) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PackageUpdatesTarget
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cluster-wide notification settings for replication. Must be `always` | `never`.
+func (o OptionsLegacyNotifyPtrOutput) Replication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OptionsLegacyNotify) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Replication
+	}).(pulumi.StringPtrOutput)
+}
+
+// Cluster-wide notification settings for the replication target.
+func (o OptionsLegacyNotifyPtrOutput) ReplicationTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OptionsLegacyNotify) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicationTarget
+	}).(pulumi.StringPtrOutput)
+}
 
 type OptionsNextId struct {
 	// The minimum number for the next free VM ID. Must be higher or equal to 100
@@ -402,10 +790,18 @@ func (o OptionsNotifyPtrOutput) ReplicationTarget() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*OptionsLegacyNextIdInput)(nil)).Elem(), OptionsLegacyNextIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OptionsLegacyNextIdPtrInput)(nil)).Elem(), OptionsLegacyNextIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OptionsLegacyNotifyInput)(nil)).Elem(), OptionsLegacyNotifyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OptionsLegacyNotifyPtrInput)(nil)).Elem(), OptionsLegacyNotifyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OptionsNextIdInput)(nil)).Elem(), OptionsNextIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OptionsNextIdPtrInput)(nil)).Elem(), OptionsNextIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OptionsNotifyInput)(nil)).Elem(), OptionsNotifyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OptionsNotifyPtrInput)(nil)).Elem(), OptionsNotifyArgs{})
+	pulumi.RegisterOutputType(OptionsLegacyNextIdOutput{})
+	pulumi.RegisterOutputType(OptionsLegacyNextIdPtrOutput{})
+	pulumi.RegisterOutputType(OptionsLegacyNotifyOutput{})
+	pulumi.RegisterOutputType(OptionsLegacyNotifyPtrOutput{})
 	pulumi.RegisterOutputType(OptionsNextIdOutput{})
 	pulumi.RegisterOutputType(OptionsNextIdPtrOutput{})
 	pulumi.RegisterOutputType(OptionsNotifyOutput{})

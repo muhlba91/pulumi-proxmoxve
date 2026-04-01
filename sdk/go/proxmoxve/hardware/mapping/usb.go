@@ -8,56 +8,11 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Manages a USB hardware mapping in a Proxmox VE cluster.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/hardware"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := hardware.NewUsb(ctx, "example", &hardware.UsbArgs{
-//				Comment: pulumi.String("This is a comment"),
-//				Name:    pulumi.String("example"),
-//				Maps: mapping.UsbMapTypeArray{
-//					&mapping.UsbMapTypeArgs{
-//						Comment: pulumi.String("This is a device specific comment"),
-//						Id:      pulumi.String("8087:0a2b"),
-//						Node:    pulumi.String("pve"),
-//						Path:    pulumi.String("1-8.2"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// #!/usr/bin/env sh
-//
-// A USB hardware mapping can be imported using their name, e.g.:
-//
-// ```sh
-// $ pulumi import proxmoxve:Hardware/mapping/usb:Usb example example
-// ```
 type Usb struct {
 	pulumi.CustomResourceState
 
@@ -81,7 +36,7 @@ func NewUsb(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Usb
-	err := ctx.RegisterResource("proxmoxve:Hardware/mapping/usb:Usb", name, args, &resource, opts...)
+	err := ctx.RegisterResource("proxmoxve:hardware/mapping/usb:Usb", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -93,7 +48,7 @@ func NewUsb(ctx *pulumi.Context,
 func GetUsb(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *UsbState, opts ...pulumi.ResourceOption) (*Usb, error) {
 	var resource Usb
-	err := ctx.ReadResource("proxmoxve:Hardware/mapping/usb:Usb", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("proxmoxve:hardware/mapping/usb:Usb", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

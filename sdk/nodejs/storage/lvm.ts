@@ -6,25 +6,10 @@ import * as utilities from "../utilities";
 
 /**
  * Manages LVM-based storage in Proxmox VE.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const example = new proxmoxve.storage.LVM("example", {
- *     lvmId: "example-lvm",
- *     nodes: ["pve"],
- *     volumeGroup: "vg0",
- *     contents: ["images"],
- *     wipeRemovedVolumes: false,
- * });
- * ```
  */
-export class LVM extends pulumi.CustomResource {
+export class Lvm extends pulumi.CustomResource {
     /**
-     * Get an existing LVM resource's state with the given name, ID, and optional extra
+     * Get an existing Lvm resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -32,22 +17,22 @@ export class LVM extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: LVMState, opts?: pulumi.CustomResourceOptions): LVM {
-        return new LVM(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: LvmState, opts?: pulumi.CustomResourceOptions): Lvm {
+        return new Lvm(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'proxmoxve:Storage/lVM:LVM';
+    public static readonly __pulumiType = 'proxmoxve:storage/lvm:Lvm';
 
     /**
-     * Returns true if the given object is an instance of LVM.  This is designed to work even
+     * Returns true if the given object is an instance of Lvm.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is LVM {
+    public static isInstance(obj: any): obj is Lvm {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === LVM.__pulumiType;
+        return obj['__pulumiType'] === Lvm.__pulumiType;
     }
 
     /**
@@ -59,13 +44,13 @@ export class LVM extends pulumi.CustomResource {
      */
     declare public readonly disable: pulumi.Output<boolean>;
     /**
-     * The unique identifier of the storage.
-     */
-    declare public readonly lvmId: pulumi.Output<string>;
-    /**
      * A list of nodes where this storage is available.
      */
     declare public readonly nodes: pulumi.Output<string[]>;
+    /**
+     * The unique identifier of the storage.
+     */
+    declare public readonly resourceId: pulumi.Output<string>;
     /**
      * Whether the storage is shared across all nodes.
      */
@@ -80,50 +65,52 @@ export class LVM extends pulumi.CustomResource {
     declare public readonly wipeRemovedVolumes: pulumi.Output<boolean>;
 
     /**
-     * Create a LVM resource with the given unique name, arguments, and options.
+     * Create a Lvm resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: LVMArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: LVMArgs | LVMState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: LvmArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: LvmArgs | LvmState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as LVMState | undefined;
+            const state = argsOrState as LvmState | undefined;
             resourceInputs["contents"] = state?.contents;
             resourceInputs["disable"] = state?.disable;
-            resourceInputs["lvmId"] = state?.lvmId;
             resourceInputs["nodes"] = state?.nodes;
+            resourceInputs["resourceId"] = state?.resourceId;
             resourceInputs["shared"] = state?.shared;
             resourceInputs["volumeGroup"] = state?.volumeGroup;
             resourceInputs["wipeRemovedVolumes"] = state?.wipeRemovedVolumes;
         } else {
-            const args = argsOrState as LVMArgs | undefined;
-            if (args?.lvmId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'lvmId'");
+            const args = argsOrState as LvmArgs | undefined;
+            if (args?.resourceId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'resourceId'");
             }
             if (args?.volumeGroup === undefined && !opts.urn) {
                 throw new Error("Missing required property 'volumeGroup'");
             }
             resourceInputs["contents"] = args?.contents;
             resourceInputs["disable"] = args?.disable;
-            resourceInputs["lvmId"] = args?.lvmId;
             resourceInputs["nodes"] = args?.nodes;
+            resourceInputs["resourceId"] = args?.resourceId;
             resourceInputs["shared"] = args?.shared;
             resourceInputs["volumeGroup"] = args?.volumeGroup;
             resourceInputs["wipeRemovedVolumes"] = args?.wipeRemovedVolumes;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(LVM.__pulumiType, name, resourceInputs, opts);
+        const aliasOpts = { aliases: [{ type: "proxmox_virtual_environment_storage_lvm" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
+        super(Lvm.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering LVM resources.
+ * Input properties used for looking up and filtering Lvm resources.
  */
-export interface LVMState {
+export interface LvmState {
     /**
      * The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
      */
@@ -133,13 +120,13 @@ export interface LVMState {
      */
     disable?: pulumi.Input<boolean>;
     /**
-     * The unique identifier of the storage.
-     */
-    lvmId?: pulumi.Input<string>;
-    /**
      * A list of nodes where this storage is available.
      */
     nodes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The unique identifier of the storage.
+     */
+    resourceId?: pulumi.Input<string>;
     /**
      * Whether the storage is shared across all nodes.
      */
@@ -155,9 +142,9 @@ export interface LVMState {
 }
 
 /**
- * The set of arguments for constructing a LVM resource.
+ * The set of arguments for constructing a Lvm resource.
  */
-export interface LVMArgs {
+export interface LvmArgs {
     /**
      * The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
      */
@@ -167,13 +154,13 @@ export interface LVMArgs {
      */
     disable?: pulumi.Input<boolean>;
     /**
-     * The unique identifier of the storage.
-     */
-    lvmId: pulumi.Input<string>;
-    /**
      * A list of nodes where this storage is available.
      */
     nodes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The unique identifier of the storage.
+     */
+    resourceId: pulumi.Input<string>;
     /**
      * Whether the storage is shared across all nodes.
      */

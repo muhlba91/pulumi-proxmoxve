@@ -13,87 +13,21 @@ namespace Pulumi.ProxmoxVE.Hardware.Mapping
     {
         /// <summary>
         /// Retrieves a PCI hardware mapping from a Proxmox VE cluster.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using ProxmoxVE = Pulumi.ProxmoxVE;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = ProxmoxVE.Hardware.Mapping.GetPci.Invoke(new()
-        ///     {
-        ///         Name = "example",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["dataProxmoxVirtualEnvironmentHardwareMappingPci"] = example,
-        ///     };
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetPciResult> InvokeAsync(GetPciArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPciResult>("proxmoxve:Hardware/mapping/getPci:getPci", args ?? new GetPciArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPciResult>("proxmoxve:hardware/mapping/getPci:getPci", args ?? new GetPciArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves a PCI hardware mapping from a Proxmox VE cluster.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using ProxmoxVE = Pulumi.ProxmoxVE;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = ProxmoxVE.Hardware.Mapping.GetPci.Invoke(new()
-        ///     {
-        ///         Name = "example",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["dataProxmoxVirtualEnvironmentHardwareMappingPci"] = example,
-        ///     };
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetPciResult> Invoke(GetPciInvokeArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetPciResult>("proxmoxve:Hardware/mapping/getPci:getPci", args ?? new GetPciInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPciResult>("proxmoxve:hardware/mapping/getPci:getPci", args ?? new GetPciInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves a PCI hardware mapping from a Proxmox VE cluster.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using ProxmoxVE = Pulumi.ProxmoxVE;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = ProxmoxVE.Hardware.Mapping.GetPci.Invoke(new()
-        ///     {
-        ///         Name = "example",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["dataProxmoxVirtualEnvironmentHardwareMappingPci"] = example,
-        ///     };
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetPciResult> Invoke(GetPciInvokeArgs args, InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetPciResult>("proxmoxve:Hardware/mapping/getPci:getPci", args ?? new GetPciInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPciResult>("proxmoxve:hardware/mapping/getPci:getPci", args ?? new GetPciInvokeArgs(), options.WithDefaults());
     }
 
 

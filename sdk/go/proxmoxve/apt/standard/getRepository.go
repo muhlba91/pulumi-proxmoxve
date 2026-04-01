@@ -7,43 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves an APT standard repository from a Proxmox VE cluster.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/apt"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := apt.GetRepository(ctx, &standard.GetRepositoryArgs{
-//				Handle: "no-subscription",
-//				Node:   "pve",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("proxmoxVirtualEnvironmentAptStandardRepository", example)
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupRepository(ctx *pulumi.Context, args *LookupRepositoryArgs, opts ...pulumi.InvokeOption) (*LookupRepositoryResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRepositoryResult
-	err := ctx.Invoke("proxmoxve:Apt/standard/getRepository:getRepository", args, &rv, opts...)
+	err := ctx.Invoke("proxmoxve:apt/standard/getRepository:getRepository", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -83,7 +55,7 @@ func LookupRepositoryOutput(ctx *pulumi.Context, args LookupRepositoryOutputArgs
 		ApplyT(func(v interface{}) (LookupRepositoryResultOutput, error) {
 			args := v.(LookupRepositoryArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:Apt/standard/getRepository:getRepository", args, LookupRepositoryResultOutput{}, options).(LookupRepositoryResultOutput), nil
+			return ctx.InvokeOutput("proxmoxve:apt/standard/getRepository:getRepository", args, LookupRepositoryResultOutput{}, options).(LookupRepositoryResultOutput), nil
 		}).(LookupRepositoryResultOutput)
 }
 

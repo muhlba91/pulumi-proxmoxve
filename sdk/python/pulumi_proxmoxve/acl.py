@@ -27,6 +27,7 @@ class AclArgs:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Acl resource.
+
         :param pulumi.Input[_builtins.str] path: Access control path
         :param pulumi.Input[_builtins.str] role_id: The role to apply
         :param pulumi.Input[_builtins.str] group_id: The group the ACL should apply to (mutually exclusive with `token_id` and `user_id`)
@@ -129,6 +130,7 @@ class _AclState:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Acl resources.
+
         :param pulumi.Input[_builtins.str] group_id: The group the ACL should apply to (mutually exclusive with `token_id` and `user_id`)
         :param pulumi.Input[_builtins.str] path: Access control path
         :param pulumi.Input[_builtins.bool] propagate: Allow to propagate (inherit) permissions.
@@ -241,35 +243,6 @@ class Acl(pulumi.CustomResource):
         ACLs are used to control access to resources in the Proxmox cluster.
         Each ACL consists of a path, a user, group or token, a role, and a flag to allow propagation of permissions.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        operations_automation = proxmoxve.permission.User("operations_automation",
-            comment="Managed by Pulumi",
-            password="a-strong-password",
-            user_id="operations-automation@pve")
-        operations_monitoring = proxmoxve.permission.Role("operations_monitoring",
-            role_id="operations-monitoring",
-            privileges=["VM.GuestAgent.Audit"])
-        operations_automation_monitoring = proxmoxve.Acl("operations_automation_monitoring",
-            user_id=operations_automation.user_id,
-            role_id=operations_monitoring.role_id,
-            path="/vms/1234",
-            propagate=True)
-        ```
-
-        ## Import
-
-        #!/usr/bin/env sh
-
-        ACL can be imported using its unique identifier, e.g.: {path}?{group|user@realm|user@realm!token}?{role}
-
-        ```sh
-        $ pulumi import proxmoxve:index/acl:Acl operations_automation_monitoring /?monitor@pve?operations-monitoring
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -292,35 +265,6 @@ class Acl(pulumi.CustomResource):
         ACLs are used to control access to resources in the Proxmox cluster.
         Each ACL consists of a path, a user, group or token, a role, and a flag to allow propagation of permissions.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        operations_automation = proxmoxve.permission.User("operations_automation",
-            comment="Managed by Pulumi",
-            password="a-strong-password",
-            user_id="operations-automation@pve")
-        operations_monitoring = proxmoxve.permission.Role("operations_monitoring",
-            role_id="operations-monitoring",
-            privileges=["VM.GuestAgent.Audit"])
-        operations_automation_monitoring = proxmoxve.Acl("operations_automation_monitoring",
-            user_id=operations_automation.user_id,
-            role_id=operations_monitoring.role_id,
-            path="/vms/1234",
-            propagate=True)
-        ```
-
-        ## Import
-
-        #!/usr/bin/env sh
-
-        ACL can be imported using its unique identifier, e.g.: {path}?{group|user@realm|user@realm!token}?{role}
-
-        ```sh
-        $ pulumi import proxmoxve:index/acl:Acl operations_automation_monitoring /?monitor@pve?operations-monitoring
-        ```
 
         :param str resource_name: The name of the resource.
         :param AclArgs args: The arguments to use to populate this resource's properties.

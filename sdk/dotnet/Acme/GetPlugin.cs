@@ -13,87 +13,21 @@ namespace Pulumi.ProxmoxVE.Acme
     {
         /// <summary>
         /// Retrieves a single ACME plugin by plugin ID name.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using ProxmoxVE = Pulumi.ProxmoxVE;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = ProxmoxVE.Acme.GetPlugin.Invoke(new()
-        ///     {
-        ///         Plugin = "standalone",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["dataProxmoxVirtualEnvironmentAcmePlugin"] = example,
-        ///     };
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetPluginResult> InvokeAsync(GetPluginArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPluginResult>("proxmoxve:Acme/getPlugin:getPlugin", args ?? new GetPluginArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPluginResult>("proxmoxve:acme/getPlugin:getPlugin", args ?? new GetPluginArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves a single ACME plugin by plugin ID name.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using ProxmoxVE = Pulumi.ProxmoxVE;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = ProxmoxVE.Acme.GetPlugin.Invoke(new()
-        ///     {
-        ///         Plugin = "standalone",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["dataProxmoxVirtualEnvironmentAcmePlugin"] = example,
-        ///     };
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetPluginResult> Invoke(GetPluginInvokeArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetPluginResult>("proxmoxve:Acme/getPlugin:getPlugin", args ?? new GetPluginInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPluginResult>("proxmoxve:acme/getPlugin:getPlugin", args ?? new GetPluginInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves a single ACME plugin by plugin ID name.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using ProxmoxVE = Pulumi.ProxmoxVE;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = ProxmoxVE.Acme.GetPlugin.Invoke(new()
-        ///     {
-        ///         Plugin = "standalone",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["dataProxmoxVirtualEnvironmentAcmePlugin"] = example,
-        ///     };
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetPluginResult> Invoke(GetPluginInvokeArgs args, InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetPluginResult>("proxmoxve:Acme/getPlugin:getPlugin", args ?? new GetPluginInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPluginResult>("proxmoxve:acme/getPlugin:getPlugin", args ?? new GetPluginInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -13,78 +13,21 @@ namespace Pulumi.ProxmoxVE.Sdn.Fabric.Node
     {
         /// <summary>
         /// OpenFabric Fabric Node in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using ProxmoxVE = Pulumi.ProxmoxVE;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var main = ProxmoxVE.Sdn.Fabric.Node.GetOpenfabric.Invoke(new()
-        ///     {
-        ///         FabricId = "main-fabric",
-        ///         NodeId = "pve",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetOpenfabricResult> InvokeAsync(GetOpenfabricArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetOpenfabricResult>("proxmoxve:Sdn/fabric/node/getOpenfabric:getOpenfabric", args ?? new GetOpenfabricArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetOpenfabricResult>("proxmoxve:sdn/fabric/node/getOpenfabric:getOpenfabric", args ?? new GetOpenfabricArgs(), options.WithDefaults());
 
         /// <summary>
         /// OpenFabric Fabric Node in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using ProxmoxVE = Pulumi.ProxmoxVE;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var main = ProxmoxVE.Sdn.Fabric.Node.GetOpenfabric.Invoke(new()
-        ///     {
-        ///         FabricId = "main-fabric",
-        ///         NodeId = "pve",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetOpenfabricResult> Invoke(GetOpenfabricInvokeArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetOpenfabricResult>("proxmoxve:Sdn/fabric/node/getOpenfabric:getOpenfabric", args ?? new GetOpenfabricInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetOpenfabricResult>("proxmoxve:sdn/fabric/node/getOpenfabric:getOpenfabric", args ?? new GetOpenfabricInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// OpenFabric Fabric Node in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using ProxmoxVE = Pulumi.ProxmoxVE;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var main = ProxmoxVE.Sdn.Fabric.Node.GetOpenfabric.Invoke(new()
-        ///     {
-        ///         FabricId = "main-fabric",
-        ///         NodeId = "pve",
-        ///     });
-        /// 
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetOpenfabricResult> Invoke(GetOpenfabricInvokeArgs args, InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetOpenfabricResult>("proxmoxve:Sdn/fabric/node/getOpenfabric:getOpenfabric", args ?? new GetOpenfabricInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetOpenfabricResult>("proxmoxve:sdn/fabric/node/getOpenfabric:getOpenfabric", args ?? new GetOpenfabricInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -136,6 +79,9 @@ namespace Pulumi.ProxmoxVE.Sdn.Fabric.Node
         /// The unique identifier of the SDN fabric.
         /// </summary>
         public readonly string FabricId;
+        /// <summary>
+        /// The unique identifier of the SDN fabric node, in the format \n\n/\n\n.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Set of interface names associated with the fabric node.

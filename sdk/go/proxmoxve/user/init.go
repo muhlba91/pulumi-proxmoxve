@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,8 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "proxmoxve:User/token:Token":
+	case "proxmoxve:user/token:Token":
 		r = &Token{}
+	case "proxmoxve:user/tokenLegacy:TokenLegacy":
+		r = &TokenLegacy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -38,7 +40,12 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
-		"User/token",
+		"user/token",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"user/tokenLegacy",
 		&module{version},
 	)
 }

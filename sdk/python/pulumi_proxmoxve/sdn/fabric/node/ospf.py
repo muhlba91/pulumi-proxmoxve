@@ -25,6 +25,7 @@ class OspfArgs:
                  node_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a Ospf resource.
+
         :param pulumi.Input[_builtins.str] fabric_id: The unique identifier of the SDN fabric.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] interface_names: Set of interfaces associated with the fabric node.
         :param pulumi.Input[_builtins.str] ip: IPv4 address for the fabric node.
@@ -93,6 +94,7 @@ class _OspfState:
                  node_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Ospf resources.
+
         :param pulumi.Input[_builtins.str] fabric_id: The unique identifier of the SDN fabric.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] interface_names: Set of interfaces associated with the fabric node.
         :param pulumi.Input[_builtins.str] ip: IPv4 address for the fabric node.
@@ -156,7 +158,7 @@ class _OspfState:
         pulumi.set(self, "node_id", value)
 
 
-@pulumi.type_token("proxmoxve:Sdn/fabric/node/ospf:Ospf")
+@pulumi.type_token("proxmoxve:sdn/fabric/node/ospf:Ospf")
 class Ospf(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -170,25 +172,6 @@ class Ospf(pulumi.CustomResource):
         """
         OSPF Fabric Node in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        main = proxmoxve.sdnfabric.OSPF("main",
-            ospf_id="main-fabric",
-            ip_prefix="10.0.0.0/16",
-            area="0")
-        main_ospf = proxmoxve.sdn.fabric.node.Ospf("main",
-            fabric_id=main.ospf_id,
-            node_id="pve",
-            ip="10.0.0.1",
-            interface_names=[
-                "nic0",
-                "nic1",
-            ])
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -206,25 +189,6 @@ class Ospf(pulumi.CustomResource):
         """
         OSPF Fabric Node in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        main = proxmoxve.sdnfabric.OSPF("main",
-            ospf_id="main-fabric",
-            ip_prefix="10.0.0.0/16",
-            area="0")
-        main_ospf = proxmoxve.sdn.fabric.node.Ospf("main",
-            fabric_id=main.ospf_id,
-            node_id="pve",
-            ip="10.0.0.1",
-            interface_names=[
-                "nic0",
-                "nic1",
-            ])
-        ```
 
         :param str resource_name: The name of the resource.
         :param OspfArgs args: The arguments to use to populate this resource's properties.
@@ -267,7 +231,7 @@ class Ospf(pulumi.CustomResource):
                 raise TypeError("Missing required property 'node_id'")
             __props__.__dict__["node_id"] = node_id
         super(Ospf, __self__).__init__(
-            'proxmoxve:Sdn/fabric/node/ospf:Ospf',
+            'proxmoxve:sdn/fabric/node/ospf:Ospf',
             resource_name,
             __props__,
             opts)

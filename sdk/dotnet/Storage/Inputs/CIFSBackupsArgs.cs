@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.Storage.Inputs
 {
 
-    public sealed class CIFSBackupsArgs : global::Pulumi.ResourceArgs
+    public sealed class CifsBackupsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
@@ -60,9 +60,9 @@ namespace Pulumi.ProxmoxVE.Storage.Inputs
         [Input("maxProtectedBackups")]
         public Input<int>? MaxProtectedBackups { get; set; }
 
-        public CIFSBackupsArgs()
+        public CifsBackupsArgs()
         {
         }
-        public static new CIFSBackupsArgs Empty => new CIFSBackupsArgs();
+        public static new CifsBackupsArgs Empty => new CifsBackupsArgs();
     }
 }

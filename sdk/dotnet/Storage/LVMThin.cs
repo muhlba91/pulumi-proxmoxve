@@ -11,37 +11,9 @@ namespace Pulumi.ProxmoxVE.Storage
 {
     /// <summary>
     /// Manages thin LVM-based storage in Proxmox VE.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using ProxmoxVE = Pulumi.ProxmoxVE;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new ProxmoxVE.Storage.LVMThin("example", new()
-    ///     {
-    ///         LvmThinId = "example-lvmthin",
-    ///         Nodes = new[]
-    ///         {
-    ///             "pve",
-    ///         },
-    ///         VolumeGroup = "vg0",
-    ///         ThinPool = "data",
-    ///         Contents = new[]
-    ///         {
-    ///             "images",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
-    [ProxmoxVEResourceType("proxmoxve:Storage/lVMThin:LVMThin")]
-    public partial class LVMThin : global::Pulumi.CustomResource
+    [ProxmoxVEResourceType("proxmoxve:storage/lvmthin:Lvmthin")]
+    public partial class Lvmthin : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The content types that can be stored on this storage. Valid values: `Backup` (VM backups), `Images` (VM disk images), `Import` (VM disk images for import), `Iso` (ISO images), `Rootdir` (container root directories), `Snippets` (cloud-init, hook scripts, etc.), `Vztmpl` (container templates).
@@ -56,16 +28,16 @@ namespace Pulumi.ProxmoxVE.Storage
         public Output<bool> Disable { get; private set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the storage.
-        /// </summary>
-        [Output("lvmThinId")]
-        public Output<string> LvmThinId { get; private set; } = null!;
-
-        /// <summary>
         /// A list of nodes where this storage is available.
         /// </summary>
         [Output("nodes")]
         public Output<ImmutableArray<string>> Nodes { get; private set; } = null!;
+
+        /// <summary>
+        /// The unique identifier of the storage.
+        /// </summary>
+        [Output("resourceId")]
+        public Output<string> ResourceId { get; private set; } = null!;
 
         /// <summary>
         /// Whether the storage is shared across all nodes.
@@ -87,19 +59,19 @@ namespace Pulumi.ProxmoxVE.Storage
 
 
         /// <summary>
-        /// Create a LVMThin resource with the given unique name, arguments, and options.
+        /// Create a Lvmthin resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public LVMThin(string name, LVMThinArgs args, CustomResourceOptions? options = null)
-            : base("proxmoxve:Storage/lVMThin:LVMThin", name, args ?? new LVMThinArgs(), MakeResourceOptions(options, ""))
+        public Lvmthin(string name, LvmthinArgs args, CustomResourceOptions? options = null)
+            : base("proxmoxve:storage/lvmthin:Lvmthin", name, args ?? new LvmthinArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private LVMThin(string name, Input<string> id, LVMThinState? state = null, CustomResourceOptions? options = null)
-            : base("proxmoxve:Storage/lVMThin:LVMThin", name, state, MakeResourceOptions(options, id))
+        private Lvmthin(string name, Input<string> id, LvmthinState? state = null, CustomResourceOptions? options = null)
+            : base("proxmoxve:storage/lvmthin:Lvmthin", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -109,6 +81,10 @@ namespace Pulumi.ProxmoxVE.Storage
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/muhlba91/pulumi-proxmoxve",
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "proxmox_virtual_environment_storage_lvmthin" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -116,7 +92,7 @@ namespace Pulumi.ProxmoxVE.Storage
             return merged;
         }
         /// <summary>
-        /// Get an existing LVMThin resource's state with the given name, ID, and optional extra
+        /// Get an existing Lvmthin resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -124,13 +100,13 @@ namespace Pulumi.ProxmoxVE.Storage
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static LVMThin Get(string name, Input<string> id, LVMThinState? state = null, CustomResourceOptions? options = null)
+        public static Lvmthin Get(string name, Input<string> id, LvmthinState? state = null, CustomResourceOptions? options = null)
         {
-            return new LVMThin(name, id, state, options);
+            return new Lvmthin(name, id, state, options);
         }
     }
 
-    public sealed class LVMThinArgs : global::Pulumi.ResourceArgs
+    public sealed class LvmthinArgs : global::Pulumi.ResourceArgs
     {
         [Input("contents")]
         private InputList<string>? _contents;
@@ -150,12 +126,6 @@ namespace Pulumi.ProxmoxVE.Storage
         [Input("disable")]
         public Input<bool>? Disable { get; set; }
 
-        /// <summary>
-        /// The unique identifier of the storage.
-        /// </summary>
-        [Input("lvmThinId", required: true)]
-        public Input<string> LvmThinId { get; set; } = null!;
-
         [Input("nodes")]
         private InputList<string>? _nodes;
 
@@ -167,6 +137,12 @@ namespace Pulumi.ProxmoxVE.Storage
             get => _nodes ?? (_nodes = new InputList<string>());
             set => _nodes = value;
         }
+
+        /// <summary>
+        /// The unique identifier of the storage.
+        /// </summary>
+        [Input("resourceId", required: true)]
+        public Input<string> ResourceId { get; set; } = null!;
 
         /// <summary>
         /// The name of the LVM thin pool to use.
@@ -180,13 +156,13 @@ namespace Pulumi.ProxmoxVE.Storage
         [Input("volumeGroup", required: true)]
         public Input<string> VolumeGroup { get; set; } = null!;
 
-        public LVMThinArgs()
+        public LvmthinArgs()
         {
         }
-        public static new LVMThinArgs Empty => new LVMThinArgs();
+        public static new LvmthinArgs Empty => new LvmthinArgs();
     }
 
-    public sealed class LVMThinState : global::Pulumi.ResourceArgs
+    public sealed class LvmthinState : global::Pulumi.ResourceArgs
     {
         [Input("contents")]
         private InputList<string>? _contents;
@@ -206,12 +182,6 @@ namespace Pulumi.ProxmoxVE.Storage
         [Input("disable")]
         public Input<bool>? Disable { get; set; }
 
-        /// <summary>
-        /// The unique identifier of the storage.
-        /// </summary>
-        [Input("lvmThinId")]
-        public Input<string>? LvmThinId { get; set; }
-
         [Input("nodes")]
         private InputList<string>? _nodes;
 
@@ -223,6 +193,12 @@ namespace Pulumi.ProxmoxVE.Storage
             get => _nodes ?? (_nodes = new InputList<string>());
             set => _nodes = value;
         }
+
+        /// <summary>
+        /// The unique identifier of the storage.
+        /// </summary>
+        [Input("resourceId")]
+        public Input<string>? ResourceId { get; set; }
 
         /// <summary>
         /// Whether the storage is shared across all nodes.
@@ -242,9 +218,9 @@ namespace Pulumi.ProxmoxVE.Storage
         [Input("volumeGroup")]
         public Input<string>? VolumeGroup { get; set; }
 
-        public LVMThinState()
+        public LvmthinState()
         {
         }
-        public static new LVMThinState Empty => new LVMThinState();
+        public static new LvmthinState Empty => new LvmthinState();
     }
 }

@@ -7,11 +7,117 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = internal.GetEnvOrDefault
+
+type DirLegacyMapType struct {
+	// The node this mapping applies to.
+	Node string `pulumi:"node"`
+	// The path of the map. For directory mappings the path is required and refers to the POSIX path of the directory as visible from the node.
+	Path string `pulumi:"path"`
+}
+
+// DirLegacyMapTypeInput is an input type that accepts DirLegacyMapTypeArgs and DirLegacyMapTypeOutput values.
+// You can construct a concrete instance of `DirLegacyMapTypeInput` via:
+//
+//	DirLegacyMapTypeArgs{...}
+type DirLegacyMapTypeInput interface {
+	pulumi.Input
+
+	ToDirLegacyMapTypeOutput() DirLegacyMapTypeOutput
+	ToDirLegacyMapTypeOutputWithContext(context.Context) DirLegacyMapTypeOutput
+}
+
+type DirLegacyMapTypeArgs struct {
+	// The node this mapping applies to.
+	Node pulumi.StringInput `pulumi:"node"`
+	// The path of the map. For directory mappings the path is required and refers to the POSIX path of the directory as visible from the node.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (DirLegacyMapTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DirLegacyMapType)(nil)).Elem()
+}
+
+func (i DirLegacyMapTypeArgs) ToDirLegacyMapTypeOutput() DirLegacyMapTypeOutput {
+	return i.ToDirLegacyMapTypeOutputWithContext(context.Background())
+}
+
+func (i DirLegacyMapTypeArgs) ToDirLegacyMapTypeOutputWithContext(ctx context.Context) DirLegacyMapTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirLegacyMapTypeOutput)
+}
+
+// DirLegacyMapTypeArrayInput is an input type that accepts DirLegacyMapTypeArray and DirLegacyMapTypeArrayOutput values.
+// You can construct a concrete instance of `DirLegacyMapTypeArrayInput` via:
+//
+//	DirLegacyMapTypeArray{ DirLegacyMapTypeArgs{...} }
+type DirLegacyMapTypeArrayInput interface {
+	pulumi.Input
+
+	ToDirLegacyMapTypeArrayOutput() DirLegacyMapTypeArrayOutput
+	ToDirLegacyMapTypeArrayOutputWithContext(context.Context) DirLegacyMapTypeArrayOutput
+}
+
+type DirLegacyMapTypeArray []DirLegacyMapTypeInput
+
+func (DirLegacyMapTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DirLegacyMapType)(nil)).Elem()
+}
+
+func (i DirLegacyMapTypeArray) ToDirLegacyMapTypeArrayOutput() DirLegacyMapTypeArrayOutput {
+	return i.ToDirLegacyMapTypeArrayOutputWithContext(context.Background())
+}
+
+func (i DirLegacyMapTypeArray) ToDirLegacyMapTypeArrayOutputWithContext(ctx context.Context) DirLegacyMapTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DirLegacyMapTypeArrayOutput)
+}
+
+type DirLegacyMapTypeOutput struct{ *pulumi.OutputState }
+
+func (DirLegacyMapTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DirLegacyMapType)(nil)).Elem()
+}
+
+func (o DirLegacyMapTypeOutput) ToDirLegacyMapTypeOutput() DirLegacyMapTypeOutput {
+	return o
+}
+
+func (o DirLegacyMapTypeOutput) ToDirLegacyMapTypeOutputWithContext(ctx context.Context) DirLegacyMapTypeOutput {
+	return o
+}
+
+// The node this mapping applies to.
+func (o DirLegacyMapTypeOutput) Node() pulumi.StringOutput {
+	return o.ApplyT(func(v DirLegacyMapType) string { return v.Node }).(pulumi.StringOutput)
+}
+
+// The path of the map. For directory mappings the path is required and refers to the POSIX path of the directory as visible from the node.
+func (o DirLegacyMapTypeOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v DirLegacyMapType) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type DirLegacyMapTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (DirLegacyMapTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DirLegacyMapType)(nil)).Elem()
+}
+
+func (o DirLegacyMapTypeArrayOutput) ToDirLegacyMapTypeArrayOutput() DirLegacyMapTypeArrayOutput {
+	return o
+}
+
+func (o DirLegacyMapTypeArrayOutput) ToDirLegacyMapTypeArrayOutputWithContext(ctx context.Context) DirLegacyMapTypeArrayOutput {
+	return o
+}
+
+func (o DirLegacyMapTypeArrayOutput) Index(i pulumi.IntInput) DirLegacyMapTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DirLegacyMapType {
+		return vs[0].([]DirLegacyMapType)[vs[1].(int)]
+	}).(DirLegacyMapTypeOutput)
+}
 
 type DirMapType struct {
 	// The node this mapping applies to.
@@ -119,18 +225,160 @@ func (o DirMapTypeArrayOutput) Index(i pulumi.IntInput) DirMapTypeOutput {
 	}).(DirMapTypeOutput)
 }
 
-type PciMapType struct {
+type PciLegacyMapType struct {
 	// The comment of the mapped PCI device.
 	Comment *string `pulumi:"comment"`
 	// The ID of the map.
 	Id string `pulumi:"id"`
-	// The IOMMU group of the map. Not mandatory for the Proxmox VE API call, but causes a PCI hardware mapping to be incomplete when not set
+	// The IOMMU group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
 	IommuGroup *int `pulumi:"iommuGroup"`
 	// The node name of the map.
 	Node string `pulumi:"node"`
 	// The path of the map.
 	Path string `pulumi:"path"`
-	// The subsystem ID group of the map. Not mandatory for the Proxmox VE API call, but causes a PCI hardware mapping to be incomplete when not set
+	// The subsystem ID group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
+	SubsystemId *string `pulumi:"subsystemId"`
+}
+
+// PciLegacyMapTypeInput is an input type that accepts PciLegacyMapTypeArgs and PciLegacyMapTypeOutput values.
+// You can construct a concrete instance of `PciLegacyMapTypeInput` via:
+//
+//	PciLegacyMapTypeArgs{...}
+type PciLegacyMapTypeInput interface {
+	pulumi.Input
+
+	ToPciLegacyMapTypeOutput() PciLegacyMapTypeOutput
+	ToPciLegacyMapTypeOutputWithContext(context.Context) PciLegacyMapTypeOutput
+}
+
+type PciLegacyMapTypeArgs struct {
+	// The comment of the mapped PCI device.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// The ID of the map.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The IOMMU group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
+	IommuGroup pulumi.IntPtrInput `pulumi:"iommuGroup"`
+	// The node name of the map.
+	Node pulumi.StringInput `pulumi:"node"`
+	// The path of the map.
+	Path pulumi.StringInput `pulumi:"path"`
+	// The subsystem ID group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
+	SubsystemId pulumi.StringPtrInput `pulumi:"subsystemId"`
+}
+
+func (PciLegacyMapTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PciLegacyMapType)(nil)).Elem()
+}
+
+func (i PciLegacyMapTypeArgs) ToPciLegacyMapTypeOutput() PciLegacyMapTypeOutput {
+	return i.ToPciLegacyMapTypeOutputWithContext(context.Background())
+}
+
+func (i PciLegacyMapTypeArgs) ToPciLegacyMapTypeOutputWithContext(ctx context.Context) PciLegacyMapTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PciLegacyMapTypeOutput)
+}
+
+// PciLegacyMapTypeArrayInput is an input type that accepts PciLegacyMapTypeArray and PciLegacyMapTypeArrayOutput values.
+// You can construct a concrete instance of `PciLegacyMapTypeArrayInput` via:
+//
+//	PciLegacyMapTypeArray{ PciLegacyMapTypeArgs{...} }
+type PciLegacyMapTypeArrayInput interface {
+	pulumi.Input
+
+	ToPciLegacyMapTypeArrayOutput() PciLegacyMapTypeArrayOutput
+	ToPciLegacyMapTypeArrayOutputWithContext(context.Context) PciLegacyMapTypeArrayOutput
+}
+
+type PciLegacyMapTypeArray []PciLegacyMapTypeInput
+
+func (PciLegacyMapTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PciLegacyMapType)(nil)).Elem()
+}
+
+func (i PciLegacyMapTypeArray) ToPciLegacyMapTypeArrayOutput() PciLegacyMapTypeArrayOutput {
+	return i.ToPciLegacyMapTypeArrayOutputWithContext(context.Background())
+}
+
+func (i PciLegacyMapTypeArray) ToPciLegacyMapTypeArrayOutputWithContext(ctx context.Context) PciLegacyMapTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PciLegacyMapTypeArrayOutput)
+}
+
+type PciLegacyMapTypeOutput struct{ *pulumi.OutputState }
+
+func (PciLegacyMapTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PciLegacyMapType)(nil)).Elem()
+}
+
+func (o PciLegacyMapTypeOutput) ToPciLegacyMapTypeOutput() PciLegacyMapTypeOutput {
+	return o
+}
+
+func (o PciLegacyMapTypeOutput) ToPciLegacyMapTypeOutputWithContext(ctx context.Context) PciLegacyMapTypeOutput {
+	return o
+}
+
+// The comment of the mapped PCI device.
+func (o PciLegacyMapTypeOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PciLegacyMapType) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the map.
+func (o PciLegacyMapTypeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PciLegacyMapType) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The IOMMU group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
+func (o PciLegacyMapTypeOutput) IommuGroup() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PciLegacyMapType) *int { return v.IommuGroup }).(pulumi.IntPtrOutput)
+}
+
+// The node name of the map.
+func (o PciLegacyMapTypeOutput) Node() pulumi.StringOutput {
+	return o.ApplyT(func(v PciLegacyMapType) string { return v.Node }).(pulumi.StringOutput)
+}
+
+// The path of the map.
+func (o PciLegacyMapTypeOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v PciLegacyMapType) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// The subsystem ID group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
+func (o PciLegacyMapTypeOutput) SubsystemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PciLegacyMapType) *string { return v.SubsystemId }).(pulumi.StringPtrOutput)
+}
+
+type PciLegacyMapTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (PciLegacyMapTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PciLegacyMapType)(nil)).Elem()
+}
+
+func (o PciLegacyMapTypeArrayOutput) ToPciLegacyMapTypeArrayOutput() PciLegacyMapTypeArrayOutput {
+	return o
+}
+
+func (o PciLegacyMapTypeArrayOutput) ToPciLegacyMapTypeArrayOutputWithContext(ctx context.Context) PciLegacyMapTypeArrayOutput {
+	return o
+}
+
+func (o PciLegacyMapTypeArrayOutput) Index(i pulumi.IntInput) PciLegacyMapTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PciLegacyMapType {
+		return vs[0].([]PciLegacyMapType)[vs[1].(int)]
+	}).(PciLegacyMapTypeOutput)
+}
+
+type PciMapType struct {
+	// The comment of the mapped PCI device.
+	Comment *string `pulumi:"comment"`
+	// The ID of the map.
+	Id string `pulumi:"id"`
+	// The IOMMU group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
+	IommuGroup *int `pulumi:"iommuGroup"`
+	// The node name of the map.
+	Node string `pulumi:"node"`
+	// The path of the map.
+	Path string `pulumi:"path"`
+	// The subsystem ID group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
 	SubsystemId *string `pulumi:"subsystemId"`
 }
 
@@ -150,13 +398,13 @@ type PciMapTypeArgs struct {
 	Comment pulumi.StringPtrInput `pulumi:"comment"`
 	// The ID of the map.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The IOMMU group of the map. Not mandatory for the Proxmox VE API call, but causes a PCI hardware mapping to be incomplete when not set
+	// The IOMMU group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
 	IommuGroup pulumi.IntPtrInput `pulumi:"iommuGroup"`
 	// The node name of the map.
 	Node pulumi.StringInput `pulumi:"node"`
 	// The path of the map.
 	Path pulumi.StringInput `pulumi:"path"`
-	// The subsystem ID group of the map. Not mandatory for the Proxmox VE API call, but causes a PCI hardware mapping to be incomplete when not set
+	// The subsystem ID group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
 	SubsystemId pulumi.StringPtrInput `pulumi:"subsystemId"`
 }
 
@@ -221,7 +469,7 @@ func (o PciMapTypeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v PciMapType) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The IOMMU group of the map. Not mandatory for the Proxmox VE API call, but causes a PCI hardware mapping to be incomplete when not set
+// The IOMMU group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
 func (o PciMapTypeOutput) IommuGroup() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PciMapType) *int { return v.IommuGroup }).(pulumi.IntPtrOutput)
 }
@@ -236,7 +484,7 @@ func (o PciMapTypeOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v PciMapType) string { return v.Path }).(pulumi.StringOutput)
 }
 
-// The subsystem ID group of the map. Not mandatory for the Proxmox VE API call, but causes a PCI hardware mapping to be incomplete when not set
+// The subsystem ID group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
 func (o PciMapTypeOutput) SubsystemId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PciMapType) *string { return v.SubsystemId }).(pulumi.StringPtrOutput)
 }
@@ -261,6 +509,130 @@ func (o PciMapTypeArrayOutput) Index(i pulumi.IntInput) PciMapTypeOutput {
 	}).(PciMapTypeOutput)
 }
 
+type UsbLegacyMapType struct {
+	// The comment of the mapped USB device.
+	Comment *string `pulumi:"comment"`
+	// The ID of the map.
+	Id string `pulumi:"id"`
+	// The node name of the map.
+	Node string `pulumi:"node"`
+	// The path of the map. For USB hardware mappings, this is optional and indicates that the device is mapped via its device ID rather than ports.
+	Path *string `pulumi:"path"`
+}
+
+// UsbLegacyMapTypeInput is an input type that accepts UsbLegacyMapTypeArgs and UsbLegacyMapTypeOutput values.
+// You can construct a concrete instance of `UsbLegacyMapTypeInput` via:
+//
+//	UsbLegacyMapTypeArgs{...}
+type UsbLegacyMapTypeInput interface {
+	pulumi.Input
+
+	ToUsbLegacyMapTypeOutput() UsbLegacyMapTypeOutput
+	ToUsbLegacyMapTypeOutputWithContext(context.Context) UsbLegacyMapTypeOutput
+}
+
+type UsbLegacyMapTypeArgs struct {
+	// The comment of the mapped USB device.
+	Comment pulumi.StringPtrInput `pulumi:"comment"`
+	// The ID of the map.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The node name of the map.
+	Node pulumi.StringInput `pulumi:"node"`
+	// The path of the map. For USB hardware mappings, this is optional and indicates that the device is mapped via its device ID rather than ports.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+}
+
+func (UsbLegacyMapTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsbLegacyMapType)(nil)).Elem()
+}
+
+func (i UsbLegacyMapTypeArgs) ToUsbLegacyMapTypeOutput() UsbLegacyMapTypeOutput {
+	return i.ToUsbLegacyMapTypeOutputWithContext(context.Background())
+}
+
+func (i UsbLegacyMapTypeArgs) ToUsbLegacyMapTypeOutputWithContext(ctx context.Context) UsbLegacyMapTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsbLegacyMapTypeOutput)
+}
+
+// UsbLegacyMapTypeArrayInput is an input type that accepts UsbLegacyMapTypeArray and UsbLegacyMapTypeArrayOutput values.
+// You can construct a concrete instance of `UsbLegacyMapTypeArrayInput` via:
+//
+//	UsbLegacyMapTypeArray{ UsbLegacyMapTypeArgs{...} }
+type UsbLegacyMapTypeArrayInput interface {
+	pulumi.Input
+
+	ToUsbLegacyMapTypeArrayOutput() UsbLegacyMapTypeArrayOutput
+	ToUsbLegacyMapTypeArrayOutputWithContext(context.Context) UsbLegacyMapTypeArrayOutput
+}
+
+type UsbLegacyMapTypeArray []UsbLegacyMapTypeInput
+
+func (UsbLegacyMapTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UsbLegacyMapType)(nil)).Elem()
+}
+
+func (i UsbLegacyMapTypeArray) ToUsbLegacyMapTypeArrayOutput() UsbLegacyMapTypeArrayOutput {
+	return i.ToUsbLegacyMapTypeArrayOutputWithContext(context.Background())
+}
+
+func (i UsbLegacyMapTypeArray) ToUsbLegacyMapTypeArrayOutputWithContext(ctx context.Context) UsbLegacyMapTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UsbLegacyMapTypeArrayOutput)
+}
+
+type UsbLegacyMapTypeOutput struct{ *pulumi.OutputState }
+
+func (UsbLegacyMapTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsbLegacyMapType)(nil)).Elem()
+}
+
+func (o UsbLegacyMapTypeOutput) ToUsbLegacyMapTypeOutput() UsbLegacyMapTypeOutput {
+	return o
+}
+
+func (o UsbLegacyMapTypeOutput) ToUsbLegacyMapTypeOutputWithContext(ctx context.Context) UsbLegacyMapTypeOutput {
+	return o
+}
+
+// The comment of the mapped USB device.
+func (o UsbLegacyMapTypeOutput) Comment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UsbLegacyMapType) *string { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the map.
+func (o UsbLegacyMapTypeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v UsbLegacyMapType) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The node name of the map.
+func (o UsbLegacyMapTypeOutput) Node() pulumi.StringOutput {
+	return o.ApplyT(func(v UsbLegacyMapType) string { return v.Node }).(pulumi.StringOutput)
+}
+
+// The path of the map. For USB hardware mappings, this is optional and indicates that the device is mapped via its device ID rather than ports.
+func (o UsbLegacyMapTypeOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UsbLegacyMapType) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type UsbLegacyMapTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (UsbLegacyMapTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UsbLegacyMapType)(nil)).Elem()
+}
+
+func (o UsbLegacyMapTypeArrayOutput) ToUsbLegacyMapTypeArrayOutput() UsbLegacyMapTypeArrayOutput {
+	return o
+}
+
+func (o UsbLegacyMapTypeArrayOutput) ToUsbLegacyMapTypeArrayOutputWithContext(ctx context.Context) UsbLegacyMapTypeArrayOutput {
+	return o
+}
+
+func (o UsbLegacyMapTypeArrayOutput) Index(i pulumi.IntInput) UsbLegacyMapTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UsbLegacyMapType {
+		return vs[0].([]UsbLegacyMapType)[vs[1].(int)]
+	}).(UsbLegacyMapTypeOutput)
+}
+
 type UsbMapType struct {
 	// The comment of the mapped USB device.
 	Comment *string `pulumi:"comment"`
@@ -268,7 +640,7 @@ type UsbMapType struct {
 	Id string `pulumi:"id"`
 	// The node name of the map.
 	Node string `pulumi:"node"`
-	// The path of the map. For hardware mappings of type USB the path is optional and indicates that the device is mapped through the device ID instead of ports.
+	// The path of the map. For USB hardware mappings, this is optional and indicates that the device is mapped via its device ID rather than ports.
 	Path *string `pulumi:"path"`
 }
 
@@ -290,7 +662,7 @@ type UsbMapTypeArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The node name of the map.
 	Node pulumi.StringInput `pulumi:"node"`
-	// The path of the map. For hardware mappings of type USB the path is optional and indicates that the device is mapped through the device ID instead of ports.
+	// The path of the map. For USB hardware mappings, this is optional and indicates that the device is mapped via its device ID rather than ports.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 }
 
@@ -360,7 +732,7 @@ func (o UsbMapTypeOutput) Node() pulumi.StringOutput {
 	return o.ApplyT(func(v UsbMapType) string { return v.Node }).(pulumi.StringOutput)
 }
 
-// The path of the map. For hardware mappings of type USB the path is optional and indicates that the device is mapped through the device ID instead of ports.
+// The path of the map. For USB hardware mappings, this is optional and indicates that the device is mapped via its device ID rather than ports.
 func (o UsbMapTypeOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UsbMapType) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -383,6 +755,112 @@ func (o UsbMapTypeArrayOutput) Index(i pulumi.IntInput) UsbMapTypeOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UsbMapType {
 		return vs[0].([]UsbMapType)[vs[1].(int)]
 	}).(UsbMapTypeOutput)
+}
+
+type GetDirLegacyMap struct {
+	// The node name attribute of the map.
+	Node string `pulumi:"node"`
+	// The path attribute of the map.
+	Path string `pulumi:"path"`
+}
+
+// GetDirLegacyMapInput is an input type that accepts GetDirLegacyMap and GetDirLegacyMapOutput values.
+// You can construct a concrete instance of `GetDirLegacyMapInput` via:
+//
+//	GetDirLegacyMap{ "key": GetDirLegacyArgs{...} }
+type GetDirLegacyMapInput interface {
+	pulumi.Input
+
+	ToGetDirLegacyMapOutput() GetDirLegacyMapOutput
+	ToGetDirLegacyMapOutputWithContext(context.Context) GetDirLegacyMapOutput
+}
+
+type GetDirLegacyMapArgs struct {
+	// The node name attribute of the map.
+	Node pulumi.StringInput `pulumi:"node"`
+	// The path attribute of the map.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (GetDirLegacyMapArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDirLegacyMap)(nil)).Elem()
+}
+
+func (i GetDirLegacyMapArgs) ToGetDirLegacyMapOutput() GetDirLegacyMapOutput {
+	return i.ToGetDirLegacyMapOutputWithContext(context.Background())
+}
+
+func (i GetDirLegacyMapArgs) ToGetDirLegacyMapOutputWithContext(ctx context.Context) GetDirLegacyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDirLegacyMapOutput)
+}
+
+// GetDirLegacyMapArrayInput is an input type that accepts GetDirLegacyMapArray and GetDirLegacyMapArrayOutput values.
+// You can construct a concrete instance of `GetDirLegacyMapArrayInput` via:
+//
+//	GetDirLegacyMapArray{ GetDirLegacyMapArgs{...} }
+type GetDirLegacyMapArrayInput interface {
+	pulumi.Input
+
+	ToGetDirLegacyMapArrayOutput() GetDirLegacyMapArrayOutput
+	ToGetDirLegacyMapArrayOutputWithContext(context.Context) GetDirLegacyMapArrayOutput
+}
+
+type GetDirLegacyMapArray []GetDirLegacyMapInput
+
+func (GetDirLegacyMapArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDirLegacyMap)(nil)).Elem()
+}
+
+func (i GetDirLegacyMapArray) ToGetDirLegacyMapArrayOutput() GetDirLegacyMapArrayOutput {
+	return i.ToGetDirLegacyMapArrayOutputWithContext(context.Background())
+}
+
+func (i GetDirLegacyMapArray) ToGetDirLegacyMapArrayOutputWithContext(ctx context.Context) GetDirLegacyMapArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDirLegacyMapArrayOutput)
+}
+
+type GetDirLegacyMapOutput struct{ *pulumi.OutputState }
+
+func (GetDirLegacyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDirLegacyMap)(nil)).Elem()
+}
+
+func (o GetDirLegacyMapOutput) ToGetDirLegacyMapOutput() GetDirLegacyMapOutput {
+	return o
+}
+
+func (o GetDirLegacyMapOutput) ToGetDirLegacyMapOutputWithContext(ctx context.Context) GetDirLegacyMapOutput {
+	return o
+}
+
+// The node name attribute of the map.
+func (o GetDirLegacyMapOutput) Node() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDirLegacyMap) string { return v.Node }).(pulumi.StringOutput)
+}
+
+// The path attribute of the map.
+func (o GetDirLegacyMapOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDirLegacyMap) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type GetDirLegacyMapArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDirLegacyMapArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDirLegacyMap)(nil)).Elem()
+}
+
+func (o GetDirLegacyMapArrayOutput) ToGetDirLegacyMapArrayOutput() GetDirLegacyMapArrayOutput {
+	return o
+}
+
+func (o GetDirLegacyMapArrayOutput) ToGetDirLegacyMapArrayOutputWithContext(ctx context.Context) GetDirLegacyMapArrayOutput {
+	return o
+}
+
+func (o GetDirLegacyMapArrayOutput) Index(i pulumi.IntInput) GetDirLegacyMapOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDirLegacyMap {
+		return vs[0].([]GetDirLegacyMap)[vs[1].(int)]
+	}).(GetDirLegacyMapOutput)
 }
 
 type GetDirMap struct {
@@ -491,6 +969,148 @@ func (o GetDirMapArrayOutput) Index(i pulumi.IntInput) GetDirMapOutput {
 	}).(GetDirMapOutput)
 }
 
+type GetPciLegacyMap struct {
+	// The comment of the mapped PCI device.
+	Comment string `pulumi:"comment"`
+	// The ID attribute of the map.
+	Id string `pulumi:"id"`
+	// The IOMMU group attribute of the map.
+	IommuGroup int `pulumi:"iommuGroup"`
+	// The node name attribute of the map.
+	Node string `pulumi:"node"`
+	// The path attribute of the map.
+	Path string `pulumi:"path"`
+	// The subsystem ID attribute of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
+	SubsystemId string `pulumi:"subsystemId"`
+}
+
+// GetPciLegacyMapInput is an input type that accepts GetPciLegacyMap and GetPciLegacyMapOutput values.
+// You can construct a concrete instance of `GetPciLegacyMapInput` via:
+//
+//	GetPciLegacyMap{ "key": GetPciLegacyArgs{...} }
+type GetPciLegacyMapInput interface {
+	pulumi.Input
+
+	ToGetPciLegacyMapOutput() GetPciLegacyMapOutput
+	ToGetPciLegacyMapOutputWithContext(context.Context) GetPciLegacyMapOutput
+}
+
+type GetPciLegacyMapArgs struct {
+	// The comment of the mapped PCI device.
+	Comment pulumi.StringInput `pulumi:"comment"`
+	// The ID attribute of the map.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The IOMMU group attribute of the map.
+	IommuGroup pulumi.IntInput `pulumi:"iommuGroup"`
+	// The node name attribute of the map.
+	Node pulumi.StringInput `pulumi:"node"`
+	// The path attribute of the map.
+	Path pulumi.StringInput `pulumi:"path"`
+	// The subsystem ID attribute of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
+	SubsystemId pulumi.StringInput `pulumi:"subsystemId"`
+}
+
+func (GetPciLegacyMapArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPciLegacyMap)(nil)).Elem()
+}
+
+func (i GetPciLegacyMapArgs) ToGetPciLegacyMapOutput() GetPciLegacyMapOutput {
+	return i.ToGetPciLegacyMapOutputWithContext(context.Background())
+}
+
+func (i GetPciLegacyMapArgs) ToGetPciLegacyMapOutputWithContext(ctx context.Context) GetPciLegacyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPciLegacyMapOutput)
+}
+
+// GetPciLegacyMapArrayInput is an input type that accepts GetPciLegacyMapArray and GetPciLegacyMapArrayOutput values.
+// You can construct a concrete instance of `GetPciLegacyMapArrayInput` via:
+//
+//	GetPciLegacyMapArray{ GetPciLegacyMapArgs{...} }
+type GetPciLegacyMapArrayInput interface {
+	pulumi.Input
+
+	ToGetPciLegacyMapArrayOutput() GetPciLegacyMapArrayOutput
+	ToGetPciLegacyMapArrayOutputWithContext(context.Context) GetPciLegacyMapArrayOutput
+}
+
+type GetPciLegacyMapArray []GetPciLegacyMapInput
+
+func (GetPciLegacyMapArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPciLegacyMap)(nil)).Elem()
+}
+
+func (i GetPciLegacyMapArray) ToGetPciLegacyMapArrayOutput() GetPciLegacyMapArrayOutput {
+	return i.ToGetPciLegacyMapArrayOutputWithContext(context.Background())
+}
+
+func (i GetPciLegacyMapArray) ToGetPciLegacyMapArrayOutputWithContext(ctx context.Context) GetPciLegacyMapArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPciLegacyMapArrayOutput)
+}
+
+type GetPciLegacyMapOutput struct{ *pulumi.OutputState }
+
+func (GetPciLegacyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPciLegacyMap)(nil)).Elem()
+}
+
+func (o GetPciLegacyMapOutput) ToGetPciLegacyMapOutput() GetPciLegacyMapOutput {
+	return o
+}
+
+func (o GetPciLegacyMapOutput) ToGetPciLegacyMapOutputWithContext(ctx context.Context) GetPciLegacyMapOutput {
+	return o
+}
+
+// The comment of the mapped PCI device.
+func (o GetPciLegacyMapOutput) Comment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPciLegacyMap) string { return v.Comment }).(pulumi.StringOutput)
+}
+
+// The ID attribute of the map.
+func (o GetPciLegacyMapOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPciLegacyMap) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The IOMMU group attribute of the map.
+func (o GetPciLegacyMapOutput) IommuGroup() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPciLegacyMap) int { return v.IommuGroup }).(pulumi.IntOutput)
+}
+
+// The node name attribute of the map.
+func (o GetPciLegacyMapOutput) Node() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPciLegacyMap) string { return v.Node }).(pulumi.StringOutput)
+}
+
+// The path attribute of the map.
+func (o GetPciLegacyMapOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPciLegacyMap) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// The subsystem ID attribute of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
+func (o GetPciLegacyMapOutput) SubsystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPciLegacyMap) string { return v.SubsystemId }).(pulumi.StringOutput)
+}
+
+type GetPciLegacyMapArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPciLegacyMapArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPciLegacyMap)(nil)).Elem()
+}
+
+func (o GetPciLegacyMapArrayOutput) ToGetPciLegacyMapArrayOutput() GetPciLegacyMapArrayOutput {
+	return o
+}
+
+func (o GetPciLegacyMapArrayOutput) ToGetPciLegacyMapArrayOutputWithContext(ctx context.Context) GetPciLegacyMapArrayOutput {
+	return o
+}
+
+func (o GetPciLegacyMapArrayOutput) Index(i pulumi.IntInput) GetPciLegacyMapOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPciLegacyMap {
+		return vs[0].([]GetPciLegacyMap)[vs[1].(int)]
+	}).(GetPciLegacyMapOutput)
+}
+
 type GetPciMap struct {
 	// The comment of the mapped PCI device.
 	Comment string `pulumi:"comment"`
@@ -502,7 +1122,7 @@ type GetPciMap struct {
 	Node string `pulumi:"node"`
 	// The path attribute of the map.
 	Path string `pulumi:"path"`
-	// The subsystem ID attribute of the map.Not mandatory for the Proxmox VE API call, but causes a PCI hardware mapping to be incomplete when not set.
+	// The subsystem ID attribute of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
 	SubsystemId string `pulumi:"subsystemId"`
 }
 
@@ -528,7 +1148,7 @@ type GetPciMapArgs struct {
 	Node pulumi.StringInput `pulumi:"node"`
 	// The path attribute of the map.
 	Path pulumi.StringInput `pulumi:"path"`
-	// The subsystem ID attribute of the map.Not mandatory for the Proxmox VE API call, but causes a PCI hardware mapping to be incomplete when not set.
+	// The subsystem ID attribute of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
 	SubsystemId pulumi.StringInput `pulumi:"subsystemId"`
 }
 
@@ -608,7 +1228,7 @@ func (o GetPciMapOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPciMap) string { return v.Path }).(pulumi.StringOutput)
 }
 
-// The subsystem ID attribute of the map.Not mandatory for the Proxmox VE API call, but causes a PCI hardware mapping to be incomplete when not set.
+// The subsystem ID attribute of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
 func (o GetPciMapOutput) SubsystemId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPciMap) string { return v.SubsystemId }).(pulumi.StringOutput)
 }
@@ -631,6 +1251,130 @@ func (o GetPciMapArrayOutput) Index(i pulumi.IntInput) GetPciMapOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPciMap {
 		return vs[0].([]GetPciMap)[vs[1].(int)]
 	}).(GetPciMapOutput)
+}
+
+type GetUsbLegacyMap struct {
+	// The comment of the mapped USB device.
+	Comment string `pulumi:"comment"`
+	// The ID attribute of the map.
+	Id string `pulumi:"id"`
+	// The node name attribute of the map.
+	Node string `pulumi:"node"`
+	// The path attribute of the map.
+	Path string `pulumi:"path"`
+}
+
+// GetUsbLegacyMapInput is an input type that accepts GetUsbLegacyMap and GetUsbLegacyMapOutput values.
+// You can construct a concrete instance of `GetUsbLegacyMapInput` via:
+//
+//	GetUsbLegacyMap{ "key": GetUsbLegacyArgs{...} }
+type GetUsbLegacyMapInput interface {
+	pulumi.Input
+
+	ToGetUsbLegacyMapOutput() GetUsbLegacyMapOutput
+	ToGetUsbLegacyMapOutputWithContext(context.Context) GetUsbLegacyMapOutput
+}
+
+type GetUsbLegacyMapArgs struct {
+	// The comment of the mapped USB device.
+	Comment pulumi.StringInput `pulumi:"comment"`
+	// The ID attribute of the map.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The node name attribute of the map.
+	Node pulumi.StringInput `pulumi:"node"`
+	// The path attribute of the map.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (GetUsbLegacyMapArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsbLegacyMap)(nil)).Elem()
+}
+
+func (i GetUsbLegacyMapArgs) ToGetUsbLegacyMapOutput() GetUsbLegacyMapOutput {
+	return i.ToGetUsbLegacyMapOutputWithContext(context.Background())
+}
+
+func (i GetUsbLegacyMapArgs) ToGetUsbLegacyMapOutputWithContext(ctx context.Context) GetUsbLegacyMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUsbLegacyMapOutput)
+}
+
+// GetUsbLegacyMapArrayInput is an input type that accepts GetUsbLegacyMapArray and GetUsbLegacyMapArrayOutput values.
+// You can construct a concrete instance of `GetUsbLegacyMapArrayInput` via:
+//
+//	GetUsbLegacyMapArray{ GetUsbLegacyMapArgs{...} }
+type GetUsbLegacyMapArrayInput interface {
+	pulumi.Input
+
+	ToGetUsbLegacyMapArrayOutput() GetUsbLegacyMapArrayOutput
+	ToGetUsbLegacyMapArrayOutputWithContext(context.Context) GetUsbLegacyMapArrayOutput
+}
+
+type GetUsbLegacyMapArray []GetUsbLegacyMapInput
+
+func (GetUsbLegacyMapArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUsbLegacyMap)(nil)).Elem()
+}
+
+func (i GetUsbLegacyMapArray) ToGetUsbLegacyMapArrayOutput() GetUsbLegacyMapArrayOutput {
+	return i.ToGetUsbLegacyMapArrayOutputWithContext(context.Background())
+}
+
+func (i GetUsbLegacyMapArray) ToGetUsbLegacyMapArrayOutputWithContext(ctx context.Context) GetUsbLegacyMapArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUsbLegacyMapArrayOutput)
+}
+
+type GetUsbLegacyMapOutput struct{ *pulumi.OutputState }
+
+func (GetUsbLegacyMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsbLegacyMap)(nil)).Elem()
+}
+
+func (o GetUsbLegacyMapOutput) ToGetUsbLegacyMapOutput() GetUsbLegacyMapOutput {
+	return o
+}
+
+func (o GetUsbLegacyMapOutput) ToGetUsbLegacyMapOutputWithContext(ctx context.Context) GetUsbLegacyMapOutput {
+	return o
+}
+
+// The comment of the mapped USB device.
+func (o GetUsbLegacyMapOutput) Comment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsbLegacyMap) string { return v.Comment }).(pulumi.StringOutput)
+}
+
+// The ID attribute of the map.
+func (o GetUsbLegacyMapOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsbLegacyMap) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The node name attribute of the map.
+func (o GetUsbLegacyMapOutput) Node() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsbLegacyMap) string { return v.Node }).(pulumi.StringOutput)
+}
+
+// The path attribute of the map.
+func (o GetUsbLegacyMapOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsbLegacyMap) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type GetUsbLegacyMapArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUsbLegacyMapArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUsbLegacyMap)(nil)).Elem()
+}
+
+func (o GetUsbLegacyMapArrayOutput) ToGetUsbLegacyMapArrayOutput() GetUsbLegacyMapArrayOutput {
+	return o
+}
+
+func (o GetUsbLegacyMapArrayOutput) ToGetUsbLegacyMapArrayOutputWithContext(ctx context.Context) GetUsbLegacyMapArrayOutput {
+	return o
+}
+
+func (o GetUsbLegacyMapArrayOutput) Index(i pulumi.IntInput) GetUsbLegacyMapOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUsbLegacyMap {
+		return vs[0].([]GetUsbLegacyMap)[vs[1].(int)]
+	}).(GetUsbLegacyMapOutput)
 }
 
 type GetUsbMap struct {
@@ -758,28 +1502,52 @@ func (o GetUsbMapArrayOutput) Index(i pulumi.IntInput) GetUsbMapOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DirLegacyMapTypeInput)(nil)).Elem(), DirLegacyMapTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DirLegacyMapTypeArrayInput)(nil)).Elem(), DirLegacyMapTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DirMapTypeInput)(nil)).Elem(), DirMapTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DirMapTypeArrayInput)(nil)).Elem(), DirMapTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PciLegacyMapTypeInput)(nil)).Elem(), PciLegacyMapTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PciLegacyMapTypeArrayInput)(nil)).Elem(), PciLegacyMapTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PciMapTypeInput)(nil)).Elem(), PciMapTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PciMapTypeArrayInput)(nil)).Elem(), PciMapTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UsbLegacyMapTypeInput)(nil)).Elem(), UsbLegacyMapTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UsbLegacyMapTypeArrayInput)(nil)).Elem(), UsbLegacyMapTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UsbMapTypeInput)(nil)).Elem(), UsbMapTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UsbMapTypeArrayInput)(nil)).Elem(), UsbMapTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDirLegacyMapInput)(nil)).Elem(), GetDirLegacyMapArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDirLegacyMapArrayInput)(nil)).Elem(), GetDirLegacyMapArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDirMapInput)(nil)).Elem(), GetDirMapArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDirMapArrayInput)(nil)).Elem(), GetDirMapArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPciLegacyMapInput)(nil)).Elem(), GetPciLegacyMapArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPciLegacyMapArrayInput)(nil)).Elem(), GetPciLegacyMapArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPciMapInput)(nil)).Elem(), GetPciMapArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPciMapArrayInput)(nil)).Elem(), GetPciMapArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUsbLegacyMapInput)(nil)).Elem(), GetUsbLegacyMapArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUsbLegacyMapArrayInput)(nil)).Elem(), GetUsbLegacyMapArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsbMapInput)(nil)).Elem(), GetUsbMapArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsbMapArrayInput)(nil)).Elem(), GetUsbMapArray{})
+	pulumi.RegisterOutputType(DirLegacyMapTypeOutput{})
+	pulumi.RegisterOutputType(DirLegacyMapTypeArrayOutput{})
 	pulumi.RegisterOutputType(DirMapTypeOutput{})
 	pulumi.RegisterOutputType(DirMapTypeArrayOutput{})
+	pulumi.RegisterOutputType(PciLegacyMapTypeOutput{})
+	pulumi.RegisterOutputType(PciLegacyMapTypeArrayOutput{})
 	pulumi.RegisterOutputType(PciMapTypeOutput{})
 	pulumi.RegisterOutputType(PciMapTypeArrayOutput{})
+	pulumi.RegisterOutputType(UsbLegacyMapTypeOutput{})
+	pulumi.RegisterOutputType(UsbLegacyMapTypeArrayOutput{})
 	pulumi.RegisterOutputType(UsbMapTypeOutput{})
 	pulumi.RegisterOutputType(UsbMapTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetDirLegacyMapOutput{})
+	pulumi.RegisterOutputType(GetDirLegacyMapArrayOutput{})
 	pulumi.RegisterOutputType(GetDirMapOutput{})
 	pulumi.RegisterOutputType(GetDirMapArrayOutput{})
+	pulumi.RegisterOutputType(GetPciLegacyMapOutput{})
+	pulumi.RegisterOutputType(GetPciLegacyMapArrayOutput{})
 	pulumi.RegisterOutputType(GetPciMapOutput{})
 	pulumi.RegisterOutputType(GetPciMapArrayOutput{})
+	pulumi.RegisterOutputType(GetUsbLegacyMapOutput{})
+	pulumi.RegisterOutputType(GetUsbLegacyMapArrayOutput{})
 	pulumi.RegisterOutputType(GetUsbMapOutput{})
 	pulumi.RegisterOutputType(GetUsbMapArrayOutput{})
 }

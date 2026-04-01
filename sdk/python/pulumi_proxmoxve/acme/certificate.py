@@ -27,6 +27,7 @@ class CertificateArgs:
                  force: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Certificate resource.
+
         :param pulumi.Input[_builtins.str] account: The ACME account name to use for ordering the certificate.
         :param pulumi.Input[Sequence[pulumi.Input['CertificateDomainArgs']]] domains: The list of domains to include in the certificate. At least one domain is required.
         :param pulumi.Input[_builtins.str] node_name: The name of the Proxmox VE node for which to order/manage the ACME certificate.
@@ -103,6 +104,7 @@ class _CertificateState:
                  subject_alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Certificate resources.
+
         :param pulumi.Input[_builtins.str] account: The ACME account name to use for ordering the certificate.
         :param pulumi.Input[_builtins.str] certificate: The PEM-encoded certificate data.
         :param pulumi.Input[Sequence[pulumi.Input['CertificateDomainArgs']]] domains: The list of domains to include in the certificate. At least one domain is required.
@@ -271,7 +273,7 @@ class _CertificateState:
         pulumi.set(self, "subject_alternative_names", value)
 
 
-@pulumi.type_token("proxmoxve:Acme/certificate:Certificate")
+@pulumi.type_token("proxmoxve:acme/certificate:Certificate")
 class Certificate(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -283,97 +285,12 @@ class Certificate(pulumi.CustomResource):
                  node_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Manages ACME SSL certificates for Proxmox VE nodes. This resource orders and renews certificates from an ACME Certificate Authority for a specific node.
+        Manages ACME SSL certificates for Proxmox VE nodes.
 
-        ## Example Usage
+        This resource orders and renews certificates from an ACME Certificate Authority (like Let's Encrypt) for a specific node. Before using this resource, ensure that:
+        - An ACME account is configured (using `acme.Account`)
+        - DNS plugins are configured if using DNS-01 challenge (using `acme/dns.Plugin`)
 
-        ### Basic ACME Certificate with HTTP-01 Challenge
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        # First, create an ACME account
-        example = proxmoxve.AcmeAccount("example",
-            name="production",
-            contact="admin@example.com",
-            directory="https://acme-v02.api.letsencrypt.org/directory",
-            tos="https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf")
-        # Order a certificate for the node
-        example_certificate = proxmoxve.acme.Certificate("example",
-            node_name="pve",
-            account=example.name,
-            domains=[{
-                "domain": "pve.example.com",
-            }])
-        ```
-
-        ### ACME Certificate with DNS-01 Challenge
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        # Create an ACME account
-        example = proxmoxve.AcmeAccount("example",
-            name="production",
-            contact="admin@example.com",
-            directory="https://acme-v02.api.letsencrypt.org/directory",
-            tos="https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf")
-        # Configure a DNS plugin (Desec example)
-        desec = proxmoxve.AcmeDnsPlugin("desec",
-            plugin="desec",
-            api="desec",
-            data={
-                "DEDYN_TOKEN": dedyn_token,
-            })
-        # Order a certificate using the DNS plugin
-        test = proxmoxve.acme.Certificate("test",
-            node_name="pve",
-            account=example.name,
-            force=False,
-            domains=[{
-                "domain": "pve.example.dedyn.io",
-                "plugin": desec.plugin,
-            }],
-            opts = pulumi.ResourceOptions(depends_on=[
-                    example,
-                    desec,
-                ]))
-        ```
-
-        ### Force Certificate Renewal
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        example_force = proxmoxve.acme.Certificate("example_force",
-            node_name="pve",
-            account=example["name"],
-            force=True,
-            domains=[{
-                "domain": "pve.example.com",
-            }])
-        ```
-
-        ## Related Resources
-
-        - `AcmeAccount` - Manages ACME accounts
-        - `AcmeDnsPlugin` - Manages ACME DNS plugins for DNS-01 challenges
-        - `Certifi` - Manages custom SSL/TLS certificates (non-ACME)
-
-        ## Import
-
-        ACME certificates can be imported using the node name:
-
-        #!/usr/bin/env sh
-
-        ACME certificates can be imported using the node name, e.g.:
-
-        ```sh
-        $ pulumi import proxmoxve:Acme/certificate:Certificate example pve
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -389,97 +306,12 @@ class Certificate(pulumi.CustomResource):
                  args: CertificateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages ACME SSL certificates for Proxmox VE nodes. This resource orders and renews certificates from an ACME Certificate Authority for a specific node.
+        Manages ACME SSL certificates for Proxmox VE nodes.
 
-        ## Example Usage
+        This resource orders and renews certificates from an ACME Certificate Authority (like Let's Encrypt) for a specific node. Before using this resource, ensure that:
+        - An ACME account is configured (using `acme.Account`)
+        - DNS plugins are configured if using DNS-01 challenge (using `acme/dns.Plugin`)
 
-        ### Basic ACME Certificate with HTTP-01 Challenge
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        # First, create an ACME account
-        example = proxmoxve.AcmeAccount("example",
-            name="production",
-            contact="admin@example.com",
-            directory="https://acme-v02.api.letsencrypt.org/directory",
-            tos="https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf")
-        # Order a certificate for the node
-        example_certificate = proxmoxve.acme.Certificate("example",
-            node_name="pve",
-            account=example.name,
-            domains=[{
-                "domain": "pve.example.com",
-            }])
-        ```
-
-        ### ACME Certificate with DNS-01 Challenge
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        # Create an ACME account
-        example = proxmoxve.AcmeAccount("example",
-            name="production",
-            contact="admin@example.com",
-            directory="https://acme-v02.api.letsencrypt.org/directory",
-            tos="https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf")
-        # Configure a DNS plugin (Desec example)
-        desec = proxmoxve.AcmeDnsPlugin("desec",
-            plugin="desec",
-            api="desec",
-            data={
-                "DEDYN_TOKEN": dedyn_token,
-            })
-        # Order a certificate using the DNS plugin
-        test = proxmoxve.acme.Certificate("test",
-            node_name="pve",
-            account=example.name,
-            force=False,
-            domains=[{
-                "domain": "pve.example.dedyn.io",
-                "plugin": desec.plugin,
-            }],
-            opts = pulumi.ResourceOptions(depends_on=[
-                    example,
-                    desec,
-                ]))
-        ```
-
-        ### Force Certificate Renewal
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        example_force = proxmoxve.acme.Certificate("example_force",
-            node_name="pve",
-            account=example["name"],
-            force=True,
-            domains=[{
-                "domain": "pve.example.com",
-            }])
-        ```
-
-        ## Related Resources
-
-        - `AcmeAccount` - Manages ACME accounts
-        - `AcmeDnsPlugin` - Manages ACME DNS plugins for DNS-01 challenges
-        - `Certifi` - Manages custom SSL/TLS certificates (non-ACME)
-
-        ## Import
-
-        ACME certificates can be imported using the node name:
-
-        #!/usr/bin/env sh
-
-        ACME certificates can be imported using the node name, e.g.:
-
-        ```sh
-        $ pulumi import proxmoxve:Acme/certificate:Certificate example pve
-        ```
 
         :param str resource_name: The name of the resource.
         :param CertificateArgs args: The arguments to use to populate this resource's properties.
@@ -527,7 +359,7 @@ class Certificate(pulumi.CustomResource):
             __props__.__dict__["subject"] = None
             __props__.__dict__["subject_alternative_names"] = None
         super(Certificate, __self__).__init__(
-            'proxmoxve:Acme/certificate:Certificate',
+            'proxmoxve:acme/certificate:Certificate',
             resource_name,
             __props__,
             opts)

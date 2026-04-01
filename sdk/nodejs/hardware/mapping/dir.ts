@@ -8,32 +8,6 @@ import * as utilities from "../../utilities";
 
 /**
  * Manages a directory mapping in a Proxmox VE cluster.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const example = new proxmoxve.hardware.mapping.Dir("example", {
- *     comment: "This is a comment",
- *     name: "example",
- *     maps: [{
- *         node: "pve",
- *         path: "/mnt/data",
- *     }],
- * });
- * ```
- *
- * ## Import
- *
- * #!/usr/bin/env sh
- *
- * A directory mapping can be imported using their name, e.g.:
- *
- * ```sh
- * $ pulumi import proxmoxve:Hardware/mapping/dir:Dir example example
- * ```
  */
 export class Dir extends pulumi.CustomResource {
     /**
@@ -50,7 +24,7 @@ export class Dir extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'proxmoxve:Hardware/mapping/dir:Dir';
+    public static readonly __pulumiType = 'proxmoxve:hardware/mapping/dir:Dir';
 
     /**
      * Returns true if the given object is an instance of Dir.  This is designed to work even
@@ -70,7 +44,7 @@ export class Dir extends pulumi.CustomResource {
     /**
      * The actual map of devices for the hardware mapping.
      */
-    declare public readonly maps: pulumi.Output<outputs.Hardware.mapping.DirMap[]>;
+    declare public readonly maps: pulumi.Output<outputs.hardware.mapping.DirMap[]>;
     /**
      * The name of this directory mapping.
      */
@@ -117,7 +91,7 @@ export interface DirState {
     /**
      * The actual map of devices for the hardware mapping.
      */
-    maps?: pulumi.Input<pulumi.Input<inputs.Hardware.mapping.DirMap>[]>;
+    maps?: pulumi.Input<pulumi.Input<inputs.hardware.mapping.DirMap>[]>;
     /**
      * The name of this directory mapping.
      */
@@ -135,7 +109,7 @@ export interface DirArgs {
     /**
      * The actual map of devices for the hardware mapping.
      */
-    maps: pulumi.Input<pulumi.Input<inputs.Hardware.mapping.DirMap>[]>;
+    maps: pulumi.Input<pulumi.Input<inputs.hardware.mapping.DirMap>[]>;
     /**
      * The name of this directory mapping.
      */

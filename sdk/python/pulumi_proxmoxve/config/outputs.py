@@ -38,7 +38,7 @@ class Ssh(dict):
         :param _builtins.bool agent_forwarding: Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or `false` if not set.
         :param _builtins.str agent_socket: The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
         :param Sequence['SshNodeArgs'] nodes: Overrides for SSH connection configuration for a Proxmox VE node.
-        :param _builtins.str password: The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
+        :param _builtins.str password: The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block when using username/password authentication. Default has no effect when using API token authentication, as there is no password to inherit. Can also be sourced from `PROXMOX_VE_SSH_PASSWORD`.
         :param _builtins.str private_key: The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
         :param _builtins.str socks5_password: The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
         :param _builtins.str socks5_server: The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.
@@ -102,7 +102,7 @@ class Ssh(dict):
     @pulumi.getter
     def password(self) -> Optional[_builtins.str]:
         """
-        The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
+        The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block when using username/password authentication. Default has no effect when using API token authentication, as there is no password to inherit. Can also be sourced from `PROXMOX_VE_SSH_PASSWORD`.
         """
         return pulumi.get(self, "password")
 

@@ -16,8 +16,12 @@ from .. import _utilities
 
 __all__ = [
     'SubnetDhcpRange',
+    'SubnetLegacyDhcpRange',
     'GetSubnetDhcpRangeResult',
+    'GetSubnetLegacyDhcpRangeResult',
+    'GetVnetsLegacyVnetResult',
     'GetVnetsVnetResult',
+    'GetZonesLegacyZoneResult',
     'GetZonesZoneResult',
 ]
 
@@ -40,6 +44,54 @@ class SubnetDhcpRange(dict):
 
     def get(self, key: str, default = None) -> Any:
         SubnetDhcpRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end_address: _builtins.str,
+                 start_address: _builtins.str):
+        """
+        :param _builtins.str end_address: End of the DHCP range.
+        :param _builtins.str start_address: Start of the DHCP range.
+        """
+        pulumi.set(__self__, "end_address", end_address)
+        pulumi.set(__self__, "start_address", start_address)
+
+    @_builtins.property
+    @pulumi.getter(name="endAddress")
+    def end_address(self) -> _builtins.str:
+        """
+        End of the DHCP range.
+        """
+        return pulumi.get(self, "end_address")
+
+    @_builtins.property
+    @pulumi.getter(name="startAddress")
+    def start_address(self) -> _builtins.str:
+        """
+        Start of the DHCP range.
+        """
+        return pulumi.get(self, "start_address")
+
+
+@pulumi.output_type
+class SubnetLegacyDhcpRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endAddress":
+            suggest = "end_address"
+        elif key == "startAddress":
+            suggest = "start_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SubnetLegacyDhcpRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SubnetLegacyDhcpRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SubnetLegacyDhcpRange.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -99,6 +151,82 @@ class GetSubnetDhcpRangeResult(dict):
 
 
 @pulumi.output_type
+class GetSubnetLegacyDhcpRangeResult(dict):
+    def __init__(__self__, *,
+                 end_address: _builtins.str,
+                 start_address: _builtins.str):
+        """
+        :param _builtins.str end_address: End of the DHCP range.
+        :param _builtins.str start_address: Start of the DHCP range.
+        """
+        pulumi.set(__self__, "end_address", end_address)
+        pulumi.set(__self__, "start_address", start_address)
+
+    @_builtins.property
+    @pulumi.getter(name="endAddress")
+    def end_address(self) -> _builtins.str:
+        """
+        End of the DHCP range.
+        """
+        return pulumi.get(self, "end_address")
+
+    @_builtins.property
+    @pulumi.getter(name="startAddress")
+    def start_address(self) -> _builtins.str:
+        """
+        Start of the DHCP range.
+        """
+        return pulumi.get(self, "start_address")
+
+
+@pulumi.output_type
+class GetVnetsLegacyVnetResult(dict):
+    def __init__(__self__, *,
+                 alias: _builtins.str,
+                 id: _builtins.str,
+                 isolate_ports: _builtins.bool,
+                 tag: _builtins.int,
+                 vlan_aware: _builtins.bool,
+                 zone: _builtins.str):
+        pulumi.set(__self__, "alias", alias)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "isolate_ports", isolate_ports)
+        pulumi.set(__self__, "tag", tag)
+        pulumi.set(__self__, "vlan_aware", vlan_aware)
+        pulumi.set(__self__, "zone", zone)
+
+    @_builtins.property
+    @pulumi.getter
+    def alias(self) -> _builtins.str:
+        return pulumi.get(self, "alias")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="isolatePorts")
+    def isolate_ports(self) -> _builtins.bool:
+        return pulumi.get(self, "isolate_ports")
+
+    @_builtins.property
+    @pulumi.getter
+    def tag(self) -> _builtins.int:
+        return pulumi.get(self, "tag")
+
+    @_builtins.property
+    @pulumi.getter(name="vlanAware")
+    def vlan_aware(self) -> _builtins.bool:
+        return pulumi.get(self, "vlan_aware")
+
+    @_builtins.property
+    @pulumi.getter
+    def zone(self) -> _builtins.str:
+        return pulumi.get(self, "zone")
+
+
+@pulumi.output_type
 class GetVnetsVnetResult(dict):
     def __init__(__self__, *,
                  alias: _builtins.str,
@@ -143,6 +271,172 @@ class GetVnetsVnetResult(dict):
     @pulumi.getter
     def zone(self) -> _builtins.str:
         return pulumi.get(self, "zone")
+
+
+@pulumi.output_type
+class GetZonesLegacyZoneResult(dict):
+    def __init__(__self__, *,
+                 advertise_subnets: _builtins.bool,
+                 bridge: _builtins.str,
+                 controller: _builtins.str,
+                 dhcp: _builtins.str,
+                 disable_arp_nd_suppression: _builtins.bool,
+                 dns: _builtins.str,
+                 dns_zone: _builtins.str,
+                 exit_nodes: Sequence[_builtins.str],
+                 exit_nodes_local_routing: _builtins.bool,
+                 id: _builtins.str,
+                 ipam: _builtins.str,
+                 mtu: _builtins.int,
+                 nodes: Sequence[_builtins.str],
+                 peers: Sequence[_builtins.str],
+                 pending: _builtins.bool,
+                 primary_exit_node: _builtins.str,
+                 reverse_dns: _builtins.str,
+                 rt_import: _builtins.str,
+                 service_vlan: _builtins.int,
+                 service_vlan_protocol: _builtins.str,
+                 state: _builtins.str,
+                 type: _builtins.str,
+                 vrf_vxlan: _builtins.int):
+        pulumi.set(__self__, "advertise_subnets", advertise_subnets)
+        pulumi.set(__self__, "bridge", bridge)
+        pulumi.set(__self__, "controller", controller)
+        pulumi.set(__self__, "dhcp", dhcp)
+        pulumi.set(__self__, "disable_arp_nd_suppression", disable_arp_nd_suppression)
+        pulumi.set(__self__, "dns", dns)
+        pulumi.set(__self__, "dns_zone", dns_zone)
+        pulumi.set(__self__, "exit_nodes", exit_nodes)
+        pulumi.set(__self__, "exit_nodes_local_routing", exit_nodes_local_routing)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ipam", ipam)
+        pulumi.set(__self__, "mtu", mtu)
+        pulumi.set(__self__, "nodes", nodes)
+        pulumi.set(__self__, "peers", peers)
+        pulumi.set(__self__, "pending", pending)
+        pulumi.set(__self__, "primary_exit_node", primary_exit_node)
+        pulumi.set(__self__, "reverse_dns", reverse_dns)
+        pulumi.set(__self__, "rt_import", rt_import)
+        pulumi.set(__self__, "service_vlan", service_vlan)
+        pulumi.set(__self__, "service_vlan_protocol", service_vlan_protocol)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "vrf_vxlan", vrf_vxlan)
+
+    @_builtins.property
+    @pulumi.getter(name="advertiseSubnets")
+    def advertise_subnets(self) -> _builtins.bool:
+        return pulumi.get(self, "advertise_subnets")
+
+    @_builtins.property
+    @pulumi.getter
+    def bridge(self) -> _builtins.str:
+        return pulumi.get(self, "bridge")
+
+    @_builtins.property
+    @pulumi.getter
+    def controller(self) -> _builtins.str:
+        return pulumi.get(self, "controller")
+
+    @_builtins.property
+    @pulumi.getter
+    def dhcp(self) -> _builtins.str:
+        return pulumi.get(self, "dhcp")
+
+    @_builtins.property
+    @pulumi.getter(name="disableArpNdSuppression")
+    def disable_arp_nd_suppression(self) -> _builtins.bool:
+        return pulumi.get(self, "disable_arp_nd_suppression")
+
+    @_builtins.property
+    @pulumi.getter
+    def dns(self) -> _builtins.str:
+        return pulumi.get(self, "dns")
+
+    @_builtins.property
+    @pulumi.getter(name="dnsZone")
+    def dns_zone(self) -> _builtins.str:
+        return pulumi.get(self, "dns_zone")
+
+    @_builtins.property
+    @pulumi.getter(name="exitNodes")
+    def exit_nodes(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "exit_nodes")
+
+    @_builtins.property
+    @pulumi.getter(name="exitNodesLocalRouting")
+    def exit_nodes_local_routing(self) -> _builtins.bool:
+        return pulumi.get(self, "exit_nodes_local_routing")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def ipam(self) -> _builtins.str:
+        return pulumi.get(self, "ipam")
+
+    @_builtins.property
+    @pulumi.getter
+    def mtu(self) -> _builtins.int:
+        return pulumi.get(self, "mtu")
+
+    @_builtins.property
+    @pulumi.getter
+    def nodes(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "nodes")
+
+    @_builtins.property
+    @pulumi.getter
+    def peers(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "peers")
+
+    @_builtins.property
+    @pulumi.getter
+    def pending(self) -> _builtins.bool:
+        return pulumi.get(self, "pending")
+
+    @_builtins.property
+    @pulumi.getter(name="primaryExitNode")
+    def primary_exit_node(self) -> _builtins.str:
+        return pulumi.get(self, "primary_exit_node")
+
+    @_builtins.property
+    @pulumi.getter(name="reverseDns")
+    def reverse_dns(self) -> _builtins.str:
+        return pulumi.get(self, "reverse_dns")
+
+    @_builtins.property
+    @pulumi.getter(name="rtImport")
+    def rt_import(self) -> _builtins.str:
+        return pulumi.get(self, "rt_import")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceVlan")
+    def service_vlan(self) -> _builtins.int:
+        return pulumi.get(self, "service_vlan")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceVlanProtocol")
+    def service_vlan_protocol(self) -> _builtins.str:
+        return pulumi.get(self, "service_vlan_protocol")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="vrfVxlan")
+    def vrf_vxlan(self) -> _builtins.int:
+        return pulumi.get(self, "vrf_vxlan")
 
 
 @pulumi.output_type

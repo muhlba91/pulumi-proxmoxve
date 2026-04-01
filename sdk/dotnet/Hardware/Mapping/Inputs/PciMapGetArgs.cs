@@ -25,7 +25,7 @@ namespace Pulumi.ProxmoxVE.Hardware.Mapping.Inputs
         public Input<string> Id { get; set; } = null!;
 
         /// <summary>
-        /// The IOMMU group of the map. Not mandatory for the Proxmox VE API call, but causes a PCI hardware mapping to be incomplete when not set
+        /// The IOMMU group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
         /// </summary>
         [Input("iommuGroup")]
         public Input<int>? IommuGroup { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.ProxmoxVE.Hardware.Mapping.Inputs
         public Input<string> Path { get; set; } = null!;
 
         /// <summary>
-        /// The subsystem ID group of the map. Not mandatory for the Proxmox VE API call, but causes a PCI hardware mapping to be incomplete when not set
+        /// The subsystem ID group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
         /// </summary>
         [Input("subsystemId")]
         public Input<string>? SubsystemId { get; set; }

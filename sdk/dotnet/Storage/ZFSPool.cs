@@ -11,38 +11,9 @@ namespace Pulumi.ProxmoxVE.Storage
 {
     /// <summary>
     /// Manages ZFS-based storage in Proxmox VE.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using ProxmoxVE = Pulumi.ProxmoxVE;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new ProxmoxVE.Storage.ZFSPool("example", new()
-    ///     {
-    ///         ZfsPoolId = "example-zfs",
-    ///         Nodes = new[]
-    ///         {
-    ///             "pve",
-    ///         },
-    ///         ZfsPool = "rpool/data",
-    ///         Contents = new[]
-    ///         {
-    ///             "images",
-    ///         },
-    ///         ThinProvision = true,
-    ///         Blocksize = "64k",
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
-    [ProxmoxVEResourceType("proxmoxve:Storage/zFSPool:ZFSPool")]
-    public partial class ZFSPool : global::Pulumi.CustomResource
+    [ProxmoxVEResourceType("proxmoxve:storage/zfspool:Zfspool")]
+    public partial class Zfspool : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Block size for newly created volumes (e.g. `4k`, `8k`, `16k`). Larger values may improve throughput for large I/O, while smaller values optimize space efficiency.
@@ -69,6 +40,12 @@ namespace Pulumi.ProxmoxVE.Storage
         public Output<ImmutableArray<string>> Nodes { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier of the storage.
+        /// </summary>
+        [Output("resourceId")]
+        public Output<string> ResourceId { get; private set; } = null!;
+
+        /// <summary>
         /// Whether the storage is shared across all nodes.
         /// </summary>
         [Output("shared")]
@@ -86,27 +63,21 @@ namespace Pulumi.ProxmoxVE.Storage
         [Output("zfsPool")]
         public Output<string> ZfsPool { get; private set; } = null!;
 
-        /// <summary>
-        /// The unique identifier of the storage.
-        /// </summary>
-        [Output("zfsPoolId")]
-        public Output<string> ZfsPoolId { get; private set; } = null!;
-
 
         /// <summary>
-        /// Create a ZFSPool resource with the given unique name, arguments, and options.
+        /// Create a Zfspool resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public ZFSPool(string name, ZFSPoolArgs args, CustomResourceOptions? options = null)
-            : base("proxmoxve:Storage/zFSPool:ZFSPool", name, args ?? new ZFSPoolArgs(), MakeResourceOptions(options, ""))
+        public Zfspool(string name, ZfspoolArgs args, CustomResourceOptions? options = null)
+            : base("proxmoxve:storage/zfspool:Zfspool", name, args ?? new ZfspoolArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private ZFSPool(string name, Input<string> id, ZFSPoolState? state = null, CustomResourceOptions? options = null)
-            : base("proxmoxve:Storage/zFSPool:ZFSPool", name, state, MakeResourceOptions(options, id))
+        private Zfspool(string name, Input<string> id, ZfspoolState? state = null, CustomResourceOptions? options = null)
+            : base("proxmoxve:storage/zfspool:Zfspool", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -116,6 +87,10 @@ namespace Pulumi.ProxmoxVE.Storage
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/muhlba91/pulumi-proxmoxve",
+                Aliases =
+                {
+                    new global::Pulumi.Alias { Type = "proxmox_virtual_environment_storage_zfspool" },
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -123,7 +98,7 @@ namespace Pulumi.ProxmoxVE.Storage
             return merged;
         }
         /// <summary>
-        /// Get an existing ZFSPool resource's state with the given name, ID, and optional extra
+        /// Get an existing Zfspool resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -131,13 +106,13 @@ namespace Pulumi.ProxmoxVE.Storage
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static ZFSPool Get(string name, Input<string> id, ZFSPoolState? state = null, CustomResourceOptions? options = null)
+        public static Zfspool Get(string name, Input<string> id, ZfspoolState? state = null, CustomResourceOptions? options = null)
         {
-            return new ZFSPool(name, id, state, options);
+            return new Zfspool(name, id, state, options);
         }
     }
 
-    public sealed class ZFSPoolArgs : global::Pulumi.ResourceArgs
+    public sealed class ZfspoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Block size for newly created volumes (e.g. `4k`, `8k`, `16k`). Larger values may improve throughput for large I/O, while smaller values optimize space efficiency.
@@ -174,6 +149,12 @@ namespace Pulumi.ProxmoxVE.Storage
             get => _nodes ?? (_nodes = new InputList<string>());
             set => _nodes = value;
         }
+
+        /// <summary>
+        /// The unique identifier of the storage.
+        /// </summary>
+        [Input("resourceId", required: true)]
+        public Input<string> ResourceId { get; set; } = null!;
 
         /// <summary>
         /// Whether to enable thin provisioning (`On` or `Off`). Thin provisioning allows flexible disk allocation without pre-allocating full space.
@@ -187,19 +168,13 @@ namespace Pulumi.ProxmoxVE.Storage
         [Input("zfsPool", required: true)]
         public Input<string> ZfsPool { get; set; } = null!;
 
-        /// <summary>
-        /// The unique identifier of the storage.
-        /// </summary>
-        [Input("zfsPoolId", required: true)]
-        public Input<string> ZfsPoolId { get; set; } = null!;
-
-        public ZFSPoolArgs()
+        public ZfspoolArgs()
         {
         }
-        public static new ZFSPoolArgs Empty => new ZFSPoolArgs();
+        public static new ZfspoolArgs Empty => new ZfspoolArgs();
     }
 
-    public sealed class ZFSPoolState : global::Pulumi.ResourceArgs
+    public sealed class ZfspoolState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Block size for newly created volumes (e.g. `4k`, `8k`, `16k`). Larger values may improve throughput for large I/O, while smaller values optimize space efficiency.
@@ -236,6 +211,12 @@ namespace Pulumi.ProxmoxVE.Storage
             get => _nodes ?? (_nodes = new InputList<string>());
             set => _nodes = value;
         }
+
+        /// <summary>
+        /// The unique identifier of the storage.
+        /// </summary>
+        [Input("resourceId")]
+        public Input<string>? ResourceId { get; set; }
 
         /// <summary>
         /// Whether the storage is shared across all nodes.
@@ -255,15 +236,9 @@ namespace Pulumi.ProxmoxVE.Storage
         [Input("zfsPool")]
         public Input<string>? ZfsPool { get; set; }
 
-        /// <summary>
-        /// The unique identifier of the storage.
-        /// </summary>
-        [Input("zfsPoolId")]
-        public Input<string>? ZfsPoolId { get; set; }
-
-        public ZFSPoolState()
+        public ZfspoolState()
         {
         }
-        public static new ZFSPoolState Empty => new ZFSPoolState();
+        public static new ZfspoolState Empty => new ZfspoolState();
     }
 }

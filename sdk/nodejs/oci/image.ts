@@ -6,33 +6,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages OCI images pulled from OCI registries using PVE oci-registry-pull API. Pulls OCI container images and stores them as tar files in Proxmox VE datastores.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const ubuntuLatest = new proxmoxve.oci.Image("ubuntu_latest", {
- *     nodeName: "pve",
- *     datastoreId: "local",
- *     reference: "docker.io/library/ubuntu:latest",
- * });
- * const nginx = new proxmoxve.oci.Image("nginx", {
- *     nodeName: "pve",
- *     datastoreId: "local",
- *     reference: "docker.io/library/nginx:alpine",
- *     fileName: "custom_image_name.tar",
- * });
- * const debian = new proxmoxve.oci.Image("debian", {
- *     nodeName: "pve",
- *     datastoreId: "local",
- *     reference: "docker.io/library/debian:bookworm",
- *     uploadTimeout: 900,
- *     overwrite: false,
- *     overwriteUnmanaged: true,
- * });
- * ```
  */
 export class Image extends pulumi.CustomResource {
     /**
@@ -49,7 +22,7 @@ export class Image extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'proxmoxve:Oci/image:Image';
+    public static readonly __pulumiType = 'proxmoxve:oci/image:Image';
 
     /**
      * Returns true if the given object is an instance of Image.  This is designed to work even

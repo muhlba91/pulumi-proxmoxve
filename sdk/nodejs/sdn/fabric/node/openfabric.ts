@@ -6,27 +6,6 @@ import * as utilities from "../../../utilities";
 
 /**
  * OpenFabric Fabric Node in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const main = new proxmoxve.sdnfabric.OpenFabric("main", {
- *     fabricId: "main-fabric",
- *     ipPrefix: "10.0.0.0/16",
- * });
- * const mainOpenfabric = new proxmoxve.sdn.fabric.node.Openfabric("main", {
- *     fabricId: main.fabricId,
- *     nodeId: "pve",
- *     ip: "10.0.0.1",
- *     interfaceNames: [
- *         "nic0",
- *         "nic1",
- *     ],
- * });
- * ```
  */
 export class Openfabric extends pulumi.CustomResource {
     /**
@@ -43,7 +22,7 @@ export class Openfabric extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'proxmoxve:Sdn/fabric/node/openfabric:Openfabric';
+    public static readonly __pulumiType = 'proxmoxve:sdn/fabric/node/openfabric:Openfabric';
 
     /**
      * Returns true if the given object is an instance of Openfabric.  This is designed to work even
@@ -73,7 +52,7 @@ export class Openfabric extends pulumi.CustomResource {
      */
     declare public readonly ip6: pulumi.Output<string | undefined>;
     /**
-     * The unique identifier of the SDN fabric.
+     * The unique identifier of the SDN fabric node.
      */
     declare public readonly nodeId: pulumi.Output<string>;
 
@@ -138,7 +117,7 @@ export interface OpenfabricState {
      */
     ip6?: pulumi.Input<string>;
     /**
-     * The unique identifier of the SDN fabric.
+     * The unique identifier of the SDN fabric node.
      */
     nodeId?: pulumi.Input<string>;
 }
@@ -164,7 +143,7 @@ export interface OpenfabricArgs {
      */
     ip6?: pulumi.Input<string>;
     /**
-     * The unique identifier of the SDN fabric.
+     * The unique identifier of the SDN fabric node.
      */
     nodeId: pulumi.Input<string>;
 }

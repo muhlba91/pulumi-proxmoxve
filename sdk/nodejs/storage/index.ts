@@ -5,82 +5,125 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export { CIFSArgs, CIFSState } from "./cifs";
-export type CIFS = import("./cifs").CIFS;
-export const CIFS: typeof import("./cifs").CIFS = null as any;
-utilities.lazyLoad(exports, ["CIFS"], () => require("./cifs"));
+export { CifsArgs, CifsState } from "./cifs";
+export type Cifs = import("./cifs").Cifs;
+export const Cifs: typeof import("./cifs").Cifs = null as any;
+utilities.lazyLoad(exports, ["Cifs"], () => require("./cifs"));
+
+export { CifsLegacyArgs, CifsLegacyState } from "./cifsLegacy";
+export type CifsLegacy = import("./cifsLegacy").CifsLegacy;
+export const CifsLegacy: typeof import("./cifsLegacy").CifsLegacy = null as any;
+utilities.lazyLoad(exports, ["CifsLegacy"], () => require("./cifsLegacy"));
 
 export { DirectoryArgs, DirectoryState } from "./directory";
 export type Directory = import("./directory").Directory;
 export const Directory: typeof import("./directory").Directory = null as any;
 utilities.lazyLoad(exports, ["Directory"], () => require("./directory"));
 
-export { FileArgs, FileState } from "./file";
-export type File = import("./file").File;
-export const File: typeof import("./file").File = null as any;
-utilities.lazyLoad(exports, ["File"], () => require("./file"));
+export { DirectoryLegacyArgs, DirectoryLegacyState } from "./directoryLegacy";
+export type DirectoryLegacy = import("./directoryLegacy").DirectoryLegacy;
+export const DirectoryLegacy: typeof import("./directoryLegacy").DirectoryLegacy = null as any;
+utilities.lazyLoad(exports, ["DirectoryLegacy"], () => require("./directoryLegacy"));
 
-export { GetDatastoresArgs, GetDatastoresResult, GetDatastoresOutputArgs } from "./getDatastores";
-export const getDatastores: typeof import("./getDatastores").getDatastores = null as any;
-export const getDatastoresOutput: typeof import("./getDatastores").getDatastoresOutput = null as any;
-utilities.lazyLoad(exports, ["getDatastores","getDatastoresOutput"], () => require("./getDatastores"));
+export { LvmArgs, LvmState } from "./lvm";
+export type Lvm = import("./lvm").Lvm;
+export const Lvm: typeof import("./lvm").Lvm = null as any;
+utilities.lazyLoad(exports, ["Lvm"], () => require("./lvm"));
 
-export { LVMArgs, LVMState } from "./lvm";
-export type LVM = import("./lvm").LVM;
-export const LVM: typeof import("./lvm").LVM = null as any;
-utilities.lazyLoad(exports, ["LVM"], () => require("./lvm"));
+export { LvmLegacyArgs, LvmLegacyState } from "./lvmLegacy";
+export type LvmLegacy = import("./lvmLegacy").LvmLegacy;
+export const LvmLegacy: typeof import("./lvmLegacy").LvmLegacy = null as any;
+utilities.lazyLoad(exports, ["LvmLegacy"], () => require("./lvmLegacy"));
 
-export { LVMThinArgs, LVMThinState } from "./lvmthin";
-export type LVMThin = import("./lvmthin").LVMThin;
-export const LVMThin: typeof import("./lvmthin").LVMThin = null as any;
-utilities.lazyLoad(exports, ["LVMThin"], () => require("./lvmthin"));
+export { LvmthinArgs, LvmthinState } from "./lvmthin";
+export type Lvmthin = import("./lvmthin").Lvmthin;
+export const Lvmthin: typeof import("./lvmthin").Lvmthin = null as any;
+utilities.lazyLoad(exports, ["Lvmthin"], () => require("./lvmthin"));
 
-export { NFSArgs, NFSState } from "./nfs";
-export type NFS = import("./nfs").NFS;
-export const NFS: typeof import("./nfs").NFS = null as any;
-utilities.lazyLoad(exports, ["NFS"], () => require("./nfs"));
+export { LvmthinLegacyArgs, LvmthinLegacyState } from "./lvmthinLegacy";
+export type LvmthinLegacy = import("./lvmthinLegacy").LvmthinLegacy;
+export const LvmthinLegacy: typeof import("./lvmthinLegacy").LvmthinLegacy = null as any;
+utilities.lazyLoad(exports, ["LvmthinLegacy"], () => require("./lvmthinLegacy"));
 
-export { PBSArgs, PBSState } from "./pbs";
-export type PBS = import("./pbs").PBS;
-export const PBS: typeof import("./pbs").PBS = null as any;
-utilities.lazyLoad(exports, ["PBS"], () => require("./pbs"));
+export { NfsArgs, NfsState } from "./nfs";
+export type Nfs = import("./nfs").Nfs;
+export const Nfs: typeof import("./nfs").Nfs = null as any;
+utilities.lazyLoad(exports, ["Nfs"], () => require("./nfs"));
 
-export { ZFSPoolArgs, ZFSPoolState } from "./zfspool";
-export type ZFSPool = import("./zfspool").ZFSPool;
-export const ZFSPool: typeof import("./zfspool").ZFSPool = null as any;
-utilities.lazyLoad(exports, ["ZFSPool"], () => require("./zfspool"));
+export { NfsLegacyArgs, NfsLegacyState } from "./nfsLegacy";
+export type NfsLegacy = import("./nfsLegacy").NfsLegacy;
+export const NfsLegacy: typeof import("./nfsLegacy").NfsLegacy = null as any;
+utilities.lazyLoad(exports, ["NfsLegacy"], () => require("./nfsLegacy"));
+
+export { PbsArgs, PbsState } from "./pbs";
+export type Pbs = import("./pbs").Pbs;
+export const Pbs: typeof import("./pbs").Pbs = null as any;
+utilities.lazyLoad(exports, ["Pbs"], () => require("./pbs"));
+
+export { PbsLegacyArgs, PbsLegacyState } from "./pbsLegacy";
+export type PbsLegacy = import("./pbsLegacy").PbsLegacy;
+export const PbsLegacy: typeof import("./pbsLegacy").PbsLegacy = null as any;
+utilities.lazyLoad(exports, ["PbsLegacy"], () => require("./pbsLegacy"));
+
+export { ZfspoolArgs, ZfspoolState } from "./zfspool";
+export type Zfspool = import("./zfspool").Zfspool;
+export const Zfspool: typeof import("./zfspool").Zfspool = null as any;
+utilities.lazyLoad(exports, ["Zfspool"], () => require("./zfspool"));
+
+export { ZfspoolLegacyArgs, ZfspoolLegacyState } from "./zfspoolLegacy";
+export type ZfspoolLegacy = import("./zfspoolLegacy").ZfspoolLegacy;
+export const ZfspoolLegacy: typeof import("./zfspoolLegacy").ZfspoolLegacy = null as any;
+utilities.lazyLoad(exports, ["ZfspoolLegacy"], () => require("./zfspoolLegacy"));
 
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "proxmoxve:Storage/cIFS:CIFS":
-                return new CIFS(name, <any>undefined, { urn })
-            case "proxmoxve:Storage/directory:Directory":
+            case "proxmoxve:storage/cifs:Cifs":
+                return new Cifs(name, <any>undefined, { urn })
+            case "proxmoxve:storage/cifsLegacy:CifsLegacy":
+                return new CifsLegacy(name, <any>undefined, { urn })
+            case "proxmoxve:storage/directory:Directory":
                 return new Directory(name, <any>undefined, { urn })
-            case "proxmoxve:Storage/file:File":
-                return new File(name, <any>undefined, { urn })
-            case "proxmoxve:Storage/lVM:LVM":
-                return new LVM(name, <any>undefined, { urn })
-            case "proxmoxve:Storage/lVMThin:LVMThin":
-                return new LVMThin(name, <any>undefined, { urn })
-            case "proxmoxve:Storage/nFS:NFS":
-                return new NFS(name, <any>undefined, { urn })
-            case "proxmoxve:Storage/pBS:PBS":
-                return new PBS(name, <any>undefined, { urn })
-            case "proxmoxve:Storage/zFSPool:ZFSPool":
-                return new ZFSPool(name, <any>undefined, { urn })
+            case "proxmoxve:storage/directoryLegacy:DirectoryLegacy":
+                return new DirectoryLegacy(name, <any>undefined, { urn })
+            case "proxmoxve:storage/lvm:Lvm":
+                return new Lvm(name, <any>undefined, { urn })
+            case "proxmoxve:storage/lvmLegacy:LvmLegacy":
+                return new LvmLegacy(name, <any>undefined, { urn })
+            case "proxmoxve:storage/lvmthin:Lvmthin":
+                return new Lvmthin(name, <any>undefined, { urn })
+            case "proxmoxve:storage/lvmthinLegacy:LvmthinLegacy":
+                return new LvmthinLegacy(name, <any>undefined, { urn })
+            case "proxmoxve:storage/nfs:Nfs":
+                return new Nfs(name, <any>undefined, { urn })
+            case "proxmoxve:storage/nfsLegacy:NfsLegacy":
+                return new NfsLegacy(name, <any>undefined, { urn })
+            case "proxmoxve:storage/pbs:Pbs":
+                return new Pbs(name, <any>undefined, { urn })
+            case "proxmoxve:storage/pbsLegacy:PbsLegacy":
+                return new PbsLegacy(name, <any>undefined, { urn })
+            case "proxmoxve:storage/zfspool:Zfspool":
+                return new Zfspool(name, <any>undefined, { urn })
+            case "proxmoxve:storage/zfspoolLegacy:ZfspoolLegacy":
+                return new ZfspoolLegacy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("proxmoxve", "Storage/cIFS", _module)
-pulumi.runtime.registerResourceModule("proxmoxve", "Storage/directory", _module)
-pulumi.runtime.registerResourceModule("proxmoxve", "Storage/file", _module)
-pulumi.runtime.registerResourceModule("proxmoxve", "Storage/lVM", _module)
-pulumi.runtime.registerResourceModule("proxmoxve", "Storage/lVMThin", _module)
-pulumi.runtime.registerResourceModule("proxmoxve", "Storage/nFS", _module)
-pulumi.runtime.registerResourceModule("proxmoxve", "Storage/pBS", _module)
-pulumi.runtime.registerResourceModule("proxmoxve", "Storage/zFSPool", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "storage/cifs", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "storage/cifsLegacy", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "storage/directory", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "storage/directoryLegacy", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "storage/lvm", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "storage/lvmLegacy", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "storage/lvmthin", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "storage/lvmthinLegacy", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "storage/nfs", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "storage/nfsLegacy", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "storage/pbs", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "storage/pbsLegacy", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "storage/zfspool", _module)
+pulumi.runtime.registerResourceModule("proxmoxve", "storage/zfspoolLegacy", _module)

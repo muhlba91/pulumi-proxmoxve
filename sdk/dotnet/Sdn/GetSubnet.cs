@@ -15,19 +15,19 @@ namespace Pulumi.ProxmoxVE.Sdn
         /// Retrieve details about a specific SDN Subnet in Proxmox VE.
         /// </summary>
         public static Task<GetSubnetResult> InvokeAsync(GetSubnetArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSubnetResult>("proxmoxve:Sdn/getSubnet:getSubnet", args ?? new GetSubnetArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSubnetResult>("proxmoxve:sdn/getSubnet:getSubnet", args ?? new GetSubnetArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieve details about a specific SDN Subnet in Proxmox VE.
         /// </summary>
         public static Output<GetSubnetResult> Invoke(GetSubnetInvokeArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetSubnetResult>("proxmoxve:Sdn/getSubnet:getSubnet", args ?? new GetSubnetInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSubnetResult>("proxmoxve:sdn/getSubnet:getSubnet", args ?? new GetSubnetInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieve details about a specific SDN Subnet in Proxmox VE.
         /// </summary>
         public static Output<GetSubnetResult> Invoke(GetSubnetInvokeArgs args, InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetSubnetResult>("proxmoxve:Sdn/getSubnet:getSubnet", args ?? new GetSubnetInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSubnetResult>("proxmoxve:sdn/getSubnet:getSubnet", args ?? new GetSubnetInvokeArgs(), options.WithDefaults());
     }
 
 

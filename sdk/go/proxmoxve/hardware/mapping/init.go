@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,12 +21,18 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "proxmoxve:Hardware/mapping/dir:Dir":
+	case "proxmoxve:hardware/mapping/dir:Dir":
 		r = &Dir{}
-	case "proxmoxve:Hardware/mapping/pci:Pci":
+	case "proxmoxve:hardware/mapping/dirLegacy:DirLegacy":
+		r = &DirLegacy{}
+	case "proxmoxve:hardware/mapping/pci:Pci":
 		r = &Pci{}
-	case "proxmoxve:Hardware/mapping/usb:Usb":
+	case "proxmoxve:hardware/mapping/pciLegacy:PciLegacy":
+		r = &PciLegacy{}
+	case "proxmoxve:hardware/mapping/usb:Usb":
 		r = &Usb{}
+	case "proxmoxve:hardware/mapping/usbLegacy:UsbLegacy":
+		r = &UsbLegacy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -42,17 +48,32 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
-		"Hardware/mapping/dir",
+		"hardware/mapping/dir",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
-		"Hardware/mapping/pci",
+		"hardware/mapping/dirLegacy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
-		"Hardware/mapping/usb",
+		"hardware/mapping/pci",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"hardware/mapping/pciLegacy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"hardware/mapping/usb",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"hardware/mapping/usbLegacy",
 		&module{version},
 	)
 }

@@ -7,42 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves a directory mapping from a Proxmox VE cluster.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/hardware"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := hardware.GetDir(ctx, &mapping.GetDirArgs{
-//				Name: "example",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("dataProxmoxVirtualEnvironmentHardwareMappingDir", example)
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupDir(ctx *pulumi.Context, args *LookupDirArgs, opts ...pulumi.InvokeOption) (*LookupDirResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDirResult
-	err := ctx.Invoke("proxmoxve:Hardware/mapping/getDir:getDir", args, &rv, opts...)
+	err := ctx.Invoke("proxmoxve:hardware/mapping/getDir:getDir", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -72,7 +45,7 @@ func LookupDirOutput(ctx *pulumi.Context, args LookupDirOutputArgs, opts ...pulu
 		ApplyT(func(v interface{}) (LookupDirResultOutput, error) {
 			args := v.(LookupDirArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:Hardware/mapping/getDir:getDir", args, LookupDirResultOutput{}, options).(LookupDirResultOutput), nil
+			return ctx.InvokeOutput("proxmoxve:hardware/mapping/getDir:getDir", args, LookupDirResultOutput{}, options).(LookupDirResultOutput), nil
 		}).(LookupDirResultOutput)
 }
 

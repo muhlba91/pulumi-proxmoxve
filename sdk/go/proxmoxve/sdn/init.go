@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,12 +21,18 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "proxmoxve:Sdn/applier:Applier":
+	case "proxmoxve:sdn/applier:Applier":
 		r = &Applier{}
-	case "proxmoxve:Sdn/subnet:Subnet":
+	case "proxmoxve:sdn/applierLegacy:ApplierLegacy":
+		r = &ApplierLegacy{}
+	case "proxmoxve:sdn/subnet:Subnet":
 		r = &Subnet{}
-	case "proxmoxve:Sdn/vnet:Vnet":
+	case "proxmoxve:sdn/subnetLegacy:SubnetLegacy":
+		r = &SubnetLegacy{}
+	case "proxmoxve:sdn/vnet:Vnet":
 		r = &Vnet{}
+	case "proxmoxve:sdn/vnetLegacy:VnetLegacy":
+		r = &VnetLegacy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -42,17 +48,32 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
-		"Sdn/applier",
+		"sdn/applier",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
-		"Sdn/subnet",
+		"sdn/applierLegacy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
-		"Sdn/vnet",
+		"sdn/subnet",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"sdn/subnetLegacy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"sdn/vnet",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"sdn/vnetLegacy",
 		&module{version},
 	)
 }

@@ -7,40 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the list of ACME plugins.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/acme"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := acme.GetPlugins(ctx, map[string]interface{}{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("dataProxmoxVirtualEnvironmentAcmePlugins", example.Plugins)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetPlugins(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetPluginsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPluginsResult
-	err := ctx.Invoke("proxmoxve:Acme/getPlugins:getPlugins", nil, &rv, opts...)
+	err := ctx.Invoke("proxmoxve:acme/getPlugins:getPlugins", nil, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -58,7 +33,7 @@ type GetPluginsResult struct {
 func GetPluginsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetPluginsResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetPluginsResultOutput, error) {
 		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("proxmoxve:Acme/getPlugins:getPlugins", nil, GetPluginsResultOutput{}, options).(GetPluginsResultOutput), nil
+		return ctx.InvokeOutput("proxmoxve:acme/getPlugins:getPlugins", nil, GetPluginsResultOutput{}, options).(GetPluginsResultOutput), nil
 	}).(GetPluginsResultOutput)
 }
 

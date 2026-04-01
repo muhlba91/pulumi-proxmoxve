@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -128,9 +128,128 @@ func (o GetMappingsCheckArrayOutput) Index(i pulumi.IntInput) GetMappingsCheckOu
 	}).(GetMappingsCheckOutput)
 }
 
+type GetMappingsLegacyCheck struct {
+	// The corresponding hardware mapping ID of the node check diagnostic entry.
+	MappingId string `pulumi:"mappingId"`
+	// The message of the node check diagnostic entry.
+	Message string `pulumi:"message"`
+	// The severity of the node check diagnostic entry.
+	Severity string `pulumi:"severity"`
+}
+
+// GetMappingsLegacyCheckInput is an input type that accepts GetMappingsLegacyCheckArgs and GetMappingsLegacyCheckOutput values.
+// You can construct a concrete instance of `GetMappingsLegacyCheckInput` via:
+//
+//	GetMappingsLegacyCheckArgs{...}
+type GetMappingsLegacyCheckInput interface {
+	pulumi.Input
+
+	ToGetMappingsLegacyCheckOutput() GetMappingsLegacyCheckOutput
+	ToGetMappingsLegacyCheckOutputWithContext(context.Context) GetMappingsLegacyCheckOutput
+}
+
+type GetMappingsLegacyCheckArgs struct {
+	// The corresponding hardware mapping ID of the node check diagnostic entry.
+	MappingId pulumi.StringInput `pulumi:"mappingId"`
+	// The message of the node check diagnostic entry.
+	Message pulumi.StringInput `pulumi:"message"`
+	// The severity of the node check diagnostic entry.
+	Severity pulumi.StringInput `pulumi:"severity"`
+}
+
+func (GetMappingsLegacyCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMappingsLegacyCheck)(nil)).Elem()
+}
+
+func (i GetMappingsLegacyCheckArgs) ToGetMappingsLegacyCheckOutput() GetMappingsLegacyCheckOutput {
+	return i.ToGetMappingsLegacyCheckOutputWithContext(context.Background())
+}
+
+func (i GetMappingsLegacyCheckArgs) ToGetMappingsLegacyCheckOutputWithContext(ctx context.Context) GetMappingsLegacyCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMappingsLegacyCheckOutput)
+}
+
+// GetMappingsLegacyCheckArrayInput is an input type that accepts GetMappingsLegacyCheckArray and GetMappingsLegacyCheckArrayOutput values.
+// You can construct a concrete instance of `GetMappingsLegacyCheckArrayInput` via:
+//
+//	GetMappingsLegacyCheckArray{ GetMappingsLegacyCheckArgs{...} }
+type GetMappingsLegacyCheckArrayInput interface {
+	pulumi.Input
+
+	ToGetMappingsLegacyCheckArrayOutput() GetMappingsLegacyCheckArrayOutput
+	ToGetMappingsLegacyCheckArrayOutputWithContext(context.Context) GetMappingsLegacyCheckArrayOutput
+}
+
+type GetMappingsLegacyCheckArray []GetMappingsLegacyCheckInput
+
+func (GetMappingsLegacyCheckArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMappingsLegacyCheck)(nil)).Elem()
+}
+
+func (i GetMappingsLegacyCheckArray) ToGetMappingsLegacyCheckArrayOutput() GetMappingsLegacyCheckArrayOutput {
+	return i.ToGetMappingsLegacyCheckArrayOutputWithContext(context.Background())
+}
+
+func (i GetMappingsLegacyCheckArray) ToGetMappingsLegacyCheckArrayOutputWithContext(ctx context.Context) GetMappingsLegacyCheckArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMappingsLegacyCheckArrayOutput)
+}
+
+type GetMappingsLegacyCheckOutput struct{ *pulumi.OutputState }
+
+func (GetMappingsLegacyCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMappingsLegacyCheck)(nil)).Elem()
+}
+
+func (o GetMappingsLegacyCheckOutput) ToGetMappingsLegacyCheckOutput() GetMappingsLegacyCheckOutput {
+	return o
+}
+
+func (o GetMappingsLegacyCheckOutput) ToGetMappingsLegacyCheckOutputWithContext(ctx context.Context) GetMappingsLegacyCheckOutput {
+	return o
+}
+
+// The corresponding hardware mapping ID of the node check diagnostic entry.
+func (o GetMappingsLegacyCheckOutput) MappingId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMappingsLegacyCheck) string { return v.MappingId }).(pulumi.StringOutput)
+}
+
+// The message of the node check diagnostic entry.
+func (o GetMappingsLegacyCheckOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMappingsLegacyCheck) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// The severity of the node check diagnostic entry.
+func (o GetMappingsLegacyCheckOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMappingsLegacyCheck) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+type GetMappingsLegacyCheckArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMappingsLegacyCheckArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMappingsLegacyCheck)(nil)).Elem()
+}
+
+func (o GetMappingsLegacyCheckArrayOutput) ToGetMappingsLegacyCheckArrayOutput() GetMappingsLegacyCheckArrayOutput {
+	return o
+}
+
+func (o GetMappingsLegacyCheckArrayOutput) ToGetMappingsLegacyCheckArrayOutputWithContext(ctx context.Context) GetMappingsLegacyCheckArrayOutput {
+	return o
+}
+
+func (o GetMappingsLegacyCheckArrayOutput) Index(i pulumi.IntInput) GetMappingsLegacyCheckOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMappingsLegacyCheck {
+		return vs[0].([]GetMappingsLegacyCheck)[vs[1].(int)]
+	}).(GetMappingsLegacyCheckOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMappingsCheckInput)(nil)).Elem(), GetMappingsCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMappingsCheckArrayInput)(nil)).Elem(), GetMappingsCheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMappingsLegacyCheckInput)(nil)).Elem(), GetMappingsLegacyCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMappingsLegacyCheckArrayInput)(nil)).Elem(), GetMappingsLegacyCheckArray{})
 	pulumi.RegisterOutputType(GetMappingsCheckOutput{})
 	pulumi.RegisterOutputType(GetMappingsCheckArrayOutput{})
+	pulumi.RegisterOutputType(GetMappingsLegacyCheckOutput{})
+	pulumi.RegisterOutputType(GetMappingsLegacyCheckArrayOutput{})
 }

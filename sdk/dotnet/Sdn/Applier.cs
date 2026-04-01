@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE.Sdn
 {
     /// <summary>
-    /// **EXPERIMENTAL** Triggers Proxmox's SDN **Apply** (equivalent to `PUT /cluster/sdn`).Intended to be used with `ReplaceTriggeredBy` so it runs after SDN objects change.
+    /// **EXPERIMENTAL** Triggers Proxmox's SDN **Apply** (equivalent to `PUT /cluster/sdn`). Intended to be used with `ReplaceTriggeredBy` so it runs after SDN objects change.
     /// </summary>
-    [ProxmoxVEResourceType("proxmoxve:Sdn/applier:Applier")]
+    [ProxmoxVEResourceType("proxmoxve:sdn/applier:Applier")]
     public partial class Applier : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -36,12 +36,12 @@ namespace Pulumi.ProxmoxVE.Sdn
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Applier(string name, ApplierArgs? args = null, CustomResourceOptions? options = null)
-            : base("proxmoxve:Sdn/applier:Applier", name, args ?? new ApplierArgs(), MakeResourceOptions(options, ""))
+            : base("proxmoxve:sdn/applier:Applier", name, args ?? new ApplierArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Applier(string name, Input<string> id, ApplierState? state = null, CustomResourceOptions? options = null)
-            : base("proxmoxve:Sdn/applier:Applier", name, state, MakeResourceOptions(options, id))
+            : base("proxmoxve:sdn/applier:Applier", name, state, MakeResourceOptions(options, id))
         {
         }
 

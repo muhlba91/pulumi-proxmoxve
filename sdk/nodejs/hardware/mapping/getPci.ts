@@ -8,22 +8,10 @@ import * as utilities from "../../utilities";
 
 /**
  * Retrieves a PCI hardware mapping from a Proxmox VE cluster.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const example = proxmoxve.Hardware.mapping.getPci({
- *     name: "example",
- * });
- * export const dataProxmoxVirtualEnvironmentHardwareMappingPci = example;
- * ```
  */
 export function getPci(args: GetPciArgs, opts?: pulumi.InvokeOptions): Promise<GetPciResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("proxmoxve:Hardware/mapping/getPci:getPci", {
+    return pulumi.runtime.invoke("proxmoxve:hardware/mapping/getPci:getPci", {
         "name": args.name,
     }, opts);
 }
@@ -53,7 +41,7 @@ export interface GetPciResult {
     /**
      * The actual map of devices for the hardware mapping.
      */
-    readonly maps: outputs.Hardware.mapping.GetPciMap[];
+    readonly maps: outputs.hardware.mapping.GetPciMap[];
     /**
      * Indicates whether to use with mediated devices.
      */
@@ -65,22 +53,10 @@ export interface GetPciResult {
 }
 /**
  * Retrieves a PCI hardware mapping from a Proxmox VE cluster.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const example = proxmoxve.Hardware.mapping.getPci({
- *     name: "example",
- * });
- * export const dataProxmoxVirtualEnvironmentHardwareMappingPci = example;
- * ```
  */
 export function getPciOutput(args: GetPciOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPciResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("proxmoxve:Hardware/mapping/getPci:getPci", {
+    return pulumi.runtime.invokeOutput("proxmoxve:hardware/mapping/getPci:getPci", {
         "name": args.name,
     }, opts);
 }

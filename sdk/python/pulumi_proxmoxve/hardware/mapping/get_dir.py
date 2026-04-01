@@ -91,23 +91,13 @@ def get_dir(name: Optional[_builtins.str] = None,
     """
     Retrieves a directory mapping from a Proxmox VE cluster.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    example = proxmoxve.Hardware.mapping.get_dir(name="example")
-    pulumi.export("dataProxmoxVirtualEnvironmentHardwareMappingDir", example)
-    ```
-
 
     :param _builtins.str name: The name of this directory mapping.
     """
     __args__ = dict()
     __args__['name'] = name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('proxmoxve:Hardware/mapping/getDir:getDir', __args__, opts=opts, typ=GetDirResult).value
+    __ret__ = pulumi.runtime.invoke('proxmoxve:hardware/mapping/getDir:getDir', __args__, opts=opts, typ=GetDirResult).value
 
     return AwaitableGetDirResult(
         comment=pulumi.get(__ret__, 'comment'),
@@ -119,23 +109,13 @@ def get_dir_output(name: Optional[pulumi.Input[_builtins.str]] = None,
     """
     Retrieves a directory mapping from a Proxmox VE cluster.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    example = proxmoxve.Hardware.mapping.get_dir(name="example")
-    pulumi.export("dataProxmoxVirtualEnvironmentHardwareMappingDir", example)
-    ```
-
 
     :param _builtins.str name: The name of this directory mapping.
     """
     __args__ = dict()
     __args__['name'] = name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Hardware/mapping/getDir:getDir', __args__, opts=opts, typ=GetDirResult)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:hardware/mapping/getDir:getDir', __args__, opts=opts, typ=GetDirResult)
     return __ret__.apply(lambda __response__: GetDirResult(
         comment=pulumi.get(__response__, 'comment'),
         id=pulumi.get(__response__, 'id'),

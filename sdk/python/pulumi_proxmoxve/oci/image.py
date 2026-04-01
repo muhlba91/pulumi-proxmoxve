@@ -28,6 +28,7 @@ class ImageArgs:
                  upload_timeout: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Image resource.
+
         :param pulumi.Input[_builtins.str] datastore_id: The identifier for the target datastore.
         :param pulumi.Input[_builtins.str] node_name: The node name.
         :param pulumi.Input[_builtins.str] reference: The reference to the OCI image.
@@ -146,6 +147,7 @@ class _ImageState:
                  upload_timeout: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Image resources.
+
         :param pulumi.Input[_builtins.str] datastore_id: The identifier for the target datastore.
         :param pulumi.Input[_builtins.str] file_name: The file name for the pulled OCI image. If not provided, it will be generated automatically. The file will be stored as a .tar file.
         :param pulumi.Input[_builtins.str] node_name: The node name.
@@ -269,7 +271,7 @@ class _ImageState:
         pulumi.set(self, "upload_timeout", value)
 
 
-@pulumi.type_token("proxmoxve:Oci/image:Image")
+@pulumi.type_token("proxmoxve:oci/image:Image")
 class Image(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -286,29 +288,6 @@ class Image(pulumi.CustomResource):
         """
         Manages OCI images pulled from OCI registries using PVE oci-registry-pull API. Pulls OCI container images and stores them as tar files in Proxmox VE datastores.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        ubuntu_latest = proxmoxve.oci.Image("ubuntu_latest",
-            node_name="pve",
-            datastore_id="local",
-            reference="docker.io/library/ubuntu:latest")
-        nginx = proxmoxve.oci.Image("nginx",
-            node_name="pve",
-            datastore_id="local",
-            reference="docker.io/library/nginx:alpine",
-            file_name="custom_image_name.tar")
-        debian = proxmoxve.oci.Image("debian",
-            node_name="pve",
-            datastore_id="local",
-            reference="docker.io/library/debian:bookworm",
-            upload_timeout=900,
-            overwrite=False,
-            overwrite_unmanaged=True)
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -329,29 +308,6 @@ class Image(pulumi.CustomResource):
         """
         Manages OCI images pulled from OCI registries using PVE oci-registry-pull API. Pulls OCI container images and stores them as tar files in Proxmox VE datastores.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        ubuntu_latest = proxmoxve.oci.Image("ubuntu_latest",
-            node_name="pve",
-            datastore_id="local",
-            reference="docker.io/library/ubuntu:latest")
-        nginx = proxmoxve.oci.Image("nginx",
-            node_name="pve",
-            datastore_id="local",
-            reference="docker.io/library/nginx:alpine",
-            file_name="custom_image_name.tar")
-        debian = proxmoxve.oci.Image("debian",
-            node_name="pve",
-            datastore_id="local",
-            reference="docker.io/library/debian:bookworm",
-            upload_timeout=900,
-            overwrite=False,
-            overwrite_unmanaged=True)
-        ```
 
         :param str resource_name: The name of the resource.
         :param ImageArgs args: The arguments to use to populate this resource's properties.
@@ -399,7 +355,7 @@ class Image(pulumi.CustomResource):
             __props__.__dict__["upload_timeout"] = upload_timeout
             __props__.__dict__["size"] = None
         super(Image, __self__).__init__(
-            'proxmoxve:Oci/image:Image',
+            'proxmoxve:oci/image:Image',
             resource_name,
             __props__,
             opts)

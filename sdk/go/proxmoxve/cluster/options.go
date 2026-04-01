@@ -7,66 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Manages Proxmox VE Cluster Datacenter options.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/cluster"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cluster.NewOptions(ctx, "options", &cluster.OptionsArgs{
-//				Language:                pulumi.String("en"),
-//				Keyboard:                pulumi.String("pl"),
-//				EmailFrom:               pulumi.String("ged@gont.earthsea"),
-//				BandwidthLimitMigration: pulumi.Int(555555),
-//				BandwidthLimitDefault:   pulumi.Int(666666),
-//				MaxWorkers:              pulumi.Int(5),
-//				MigrationCidr:           pulumi.String("10.0.0.0/8"),
-//				MigrationType:           pulumi.String("secure"),
-//				NextId: &cluster.OptionsNextIdArgs{
-//					Lower: pulumi.Int(100),
-//					Upper: pulumi.Int(999999999),
-//				},
-//				Notify: &cluster.OptionsNotifyArgs{
-//					HaFencingMode:            pulumi.String("never"),
-//					HaFencingTarget:          pulumi.String("default-matcher"),
-//					PackageUpdates:           pulumi.String("always"),
-//					PackageUpdatesTarget:     pulumi.String("default-matcher"),
-//					PackageReplication:       "always",
-//					PackageReplicationTarget: "default-matcher",
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// #!/usr/bin/env sh
-//
-// Cluster options are global and can be imported using e.g.:
-//
-// ```sh
-// $ pulumi import proxmoxve:Cluster/options:Options options cluster
-// ```
 type Options struct {
 	pulumi.CustomResourceState
 
@@ -90,7 +35,7 @@ type Options struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// email address to send notification from (default is root@$hostname).
 	EmailFrom pulumi.StringPtrOutput `pulumi:"emailFrom"`
-	// Cluster wide HA shutdown policy (). Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
+	// Cluster wide HA shutdown policy. Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
 	HaShutdownPolicy pulumi.StringPtrOutput `pulumi:"haShutdownPolicy"`
 	// Specify external http proxy which is used for downloads (example: `http://username:password@host:port/`).
 	HttpProxy pulumi.StringPtrOutput `pulumi:"httpProxy"`
@@ -121,7 +66,7 @@ func NewOptions(ctx *pulumi.Context,
 
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Options
-	err := ctx.RegisterResource("proxmoxve:Cluster/options:Options", name, args, &resource, opts...)
+	err := ctx.RegisterResource("proxmoxve:cluster/options:Options", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -133,7 +78,7 @@ func NewOptions(ctx *pulumi.Context,
 func GetOptions(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *OptionsState, opts ...pulumi.ResourceOption) (*Options, error) {
 	var resource Options
-	err := ctx.ReadResource("proxmoxve:Cluster/options:Options", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("proxmoxve:cluster/options:Options", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -162,7 +107,7 @@ type optionsState struct {
 	Description *string `pulumi:"description"`
 	// email address to send notification from (default is root@$hostname).
 	EmailFrom *string `pulumi:"emailFrom"`
-	// Cluster wide HA shutdown policy (). Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
+	// Cluster wide HA shutdown policy. Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
 	HaShutdownPolicy *string `pulumi:"haShutdownPolicy"`
 	// Specify external http proxy which is used for downloads (example: `http://username:password@host:port/`).
 	HttpProxy *string `pulumi:"httpProxy"`
@@ -205,7 +150,7 @@ type OptionsState struct {
 	Description pulumi.StringPtrInput
 	// email address to send notification from (default is root@$hostname).
 	EmailFrom pulumi.StringPtrInput
-	// Cluster wide HA shutdown policy (). Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
+	// Cluster wide HA shutdown policy. Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
 	HaShutdownPolicy pulumi.StringPtrInput
 	// Specify external http proxy which is used for downloads (example: `http://username:password@host:port/`).
 	HttpProxy pulumi.StringPtrInput
@@ -252,7 +197,7 @@ type optionsArgs struct {
 	Description *string `pulumi:"description"`
 	// email address to send notification from (default is root@$hostname).
 	EmailFrom *string `pulumi:"emailFrom"`
-	// Cluster wide HA shutdown policy (). Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
+	// Cluster wide HA shutdown policy. Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
 	HaShutdownPolicy *string `pulumi:"haShutdownPolicy"`
 	// Specify external http proxy which is used for downloads (example: `http://username:password@host:port/`).
 	HttpProxy *string `pulumi:"httpProxy"`
@@ -296,7 +241,7 @@ type OptionsArgs struct {
 	Description pulumi.StringPtrInput
 	// email address to send notification from (default is root@$hostname).
 	EmailFrom pulumi.StringPtrInput
-	// Cluster wide HA shutdown policy (). Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
+	// Cluster wide HA shutdown policy. Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
 	HaShutdownPolicy pulumi.StringPtrInput
 	// Specify external http proxy which is used for downloads (example: `http://username:password@host:port/`).
 	HttpProxy pulumi.StringPtrInput
@@ -455,7 +400,7 @@ func (o OptionsOutput) EmailFrom() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Options) pulumi.StringPtrOutput { return v.EmailFrom }).(pulumi.StringPtrOutput)
 }
 
-// Cluster wide HA shutdown policy (). Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
+// Cluster wide HA shutdown policy. Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
 func (o OptionsOutput) HaShutdownPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Options) pulumi.StringPtrOutput { return v.HaShutdownPolicy }).(pulumi.StringPtrOutput)
 }

@@ -126,23 +126,13 @@ def get_plugin(plugin: Optional[_builtins.str] = None,
     """
     Retrieves a single ACME plugin by plugin ID name.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    example = proxmoxve.Acme.get_plugin(plugin="standalone")
-    pulumi.export("dataProxmoxVirtualEnvironmentAcmePlugin", example)
-    ```
-
 
     :param _builtins.str plugin: ACME Plugin ID name.
     """
     __args__ = dict()
     __args__['plugin'] = plugin
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('proxmoxve:Acme/getPlugin:getPlugin', __args__, opts=opts, typ=GetPluginResult).value
+    __ret__ = pulumi.runtime.invoke('proxmoxve:acme/getPlugin:getPlugin', __args__, opts=opts, typ=GetPluginResult).value
 
     return AwaitableGetPluginResult(
         api=pulumi.get(__ret__, 'api'),
@@ -157,23 +147,13 @@ def get_plugin_output(plugin: Optional[pulumi.Input[_builtins.str]] = None,
     """
     Retrieves a single ACME plugin by plugin ID name.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    example = proxmoxve.Acme.get_plugin(plugin="standalone")
-    pulumi.export("dataProxmoxVirtualEnvironmentAcmePlugin", example)
-    ```
-
 
     :param _builtins.str plugin: ACME Plugin ID name.
     """
     __args__ = dict()
     __args__['plugin'] = plugin
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Acme/getPlugin:getPlugin', __args__, opts=opts, typ=GetPluginResult)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:acme/getPlugin:getPlugin', __args__, opts=opts, typ=GetPluginResult)
     return __ret__.apply(lambda __response__: GetPluginResult(
         api=pulumi.get(__response__, 'api'),
         data=pulumi.get(__response__, 'data'),

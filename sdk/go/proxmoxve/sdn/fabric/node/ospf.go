@@ -8,52 +8,11 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // OSPF Fabric Node in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdn"
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdnfabric"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			main, err := sdnfabric.NewOSPF(ctx, "main", &sdnfabric.OSPFArgs{
-//				OspfId:   pulumi.String("main-fabric"),
-//				IpPrefix: pulumi.String("10.0.0.0/16"),
-//				Area:     pulumi.String("0"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = sdn.NewOspf(ctx, "main", &sdn.OspfArgs{
-//				FabricId: main.OspfId,
-//				NodeId:   pulumi.String("pve"),
-//				Ip:       pulumi.String("10.0.0.1"),
-//				InterfaceNames: pulumi.StringArray{
-//					pulumi.String("nic0"),
-//					pulumi.String("nic1"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type Ospf struct {
 	pulumi.CustomResourceState
 
@@ -88,7 +47,7 @@ func NewOspf(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Ospf
-	err := ctx.RegisterResource("proxmoxve:Sdn/fabric/node/ospf:Ospf", name, args, &resource, opts...)
+	err := ctx.RegisterResource("proxmoxve:sdn/fabric/node/ospf:Ospf", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -100,7 +59,7 @@ func NewOspf(ctx *pulumi.Context,
 func GetOspf(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *OspfState, opts ...pulumi.ResourceOption) (*Ospf, error) {
 	var resource Ospf
-	err := ctx.ReadResource("proxmoxve:Sdn/fabric/node/ospf:Ospf", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("proxmoxve:sdn/fabric/node/ospf:Ospf", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

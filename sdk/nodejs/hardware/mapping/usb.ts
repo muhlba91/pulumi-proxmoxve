@@ -8,34 +8,6 @@ import * as utilities from "../../utilities";
 
 /**
  * Manages a USB hardware mapping in a Proxmox VE cluster.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const example = new proxmoxve.hardware.mapping.Usb("example", {
- *     comment: "This is a comment",
- *     name: "example",
- *     maps: [{
- *         comment: "This is a device specific comment",
- *         id: "8087:0a2b",
- *         node: "pve",
- *         path: "1-8.2",
- *     }],
- * });
- * ```
- *
- * ## Import
- *
- * #!/usr/bin/env sh
- *
- * A USB hardware mapping can be imported using their name, e.g.:
- *
- * ```sh
- * $ pulumi import proxmoxve:Hardware/mapping/usb:Usb example example
- * ```
  */
 export class Usb extends pulumi.CustomResource {
     /**
@@ -52,7 +24,7 @@ export class Usb extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'proxmoxve:Hardware/mapping/usb:Usb';
+    public static readonly __pulumiType = 'proxmoxve:hardware/mapping/usb:Usb';
 
     /**
      * Returns true if the given object is an instance of Usb.  This is designed to work even
@@ -72,7 +44,7 @@ export class Usb extends pulumi.CustomResource {
     /**
      * The actual map of devices for the hardware mapping.
      */
-    declare public readonly maps: pulumi.Output<outputs.Hardware.mapping.UsbMap[]>;
+    declare public readonly maps: pulumi.Output<outputs.hardware.mapping.UsbMap[]>;
     /**
      * The name of this hardware mapping.
      */
@@ -119,7 +91,7 @@ export interface UsbState {
     /**
      * The actual map of devices for the hardware mapping.
      */
-    maps?: pulumi.Input<pulumi.Input<inputs.Hardware.mapping.UsbMap>[]>;
+    maps?: pulumi.Input<pulumi.Input<inputs.hardware.mapping.UsbMap>[]>;
     /**
      * The name of this hardware mapping.
      */
@@ -137,7 +109,7 @@ export interface UsbArgs {
     /**
      * The actual map of devices for the hardware mapping.
      */
-    maps: pulumi.Input<pulumi.Input<inputs.Hardware.mapping.UsbMap>[]>;
+    maps: pulumi.Input<pulumi.Input<inputs.hardware.mapping.UsbMap>[]>;
     /**
      * The name of this hardware mapping.
      */

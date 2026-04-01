@@ -8,54 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Manages a Proxmox Backup Server (PBS) storage in Proxmox VE.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/storage"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.NewPBS(ctx, "example", &storage.PBSArgs{
-//				PbsId: pulumi.String("example-pbs"),
-//				Nodes: pulumi.StringArray{
-//					pulumi.String("pve"),
-//				},
-//				Server:      pulumi.String("pbs.example.local"),
-//				Datastore:   pulumi.String("backup"),
-//				Username:    pulumi.String("pbs-user"),
-//				Password:    pulumi.String("pbs-password"),
-//				Fingerprint: pulumi.String("AA:BB:CC:DD:EE:FF"),
-//				Contents: pulumi.StringArray{
-//					pulumi.String("backup"),
-//				},
-//				GenerateEncryptionKey: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-type PBS struct {
+type Pbs struct {
 	pulumi.CustomResourceState
 
 	// Configure backup retention settings for the storage type.
-	Backups PBSBackupsPtrOutput `pulumi:"backups"`
+	Backups PbsBackupsPtrOutput `pulumi:"backups"`
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents pulumi.StringArrayOutput `pulumi:"contents"`
 	// The name of the datastore on the Proxmox Backup Server.
@@ -79,7 +41,7 @@ type PBS struct {
 	// The password for authenticating with the Proxmox Backup Server.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// The unique identifier of the storage.
-	PbsId pulumi.StringOutput `pulumi:"pbsId"`
+	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
 	// The IP address or DNS name of the Proxmox Backup Server.
 	Server pulumi.StringOutput `pulumi:"server"`
 	// Whether the storage is shared across all nodes.
@@ -88,9 +50,9 @@ type PBS struct {
 	Username pulumi.StringOutput `pulumi:"username"`
 }
 
-// NewPBS registers a new resource with the given unique name, arguments, and options.
-func NewPBS(ctx *pulumi.Context,
-	name string, args *PBSArgs, opts ...pulumi.ResourceOption) (*PBS, error) {
+// NewPbs registers a new resource with the given unique name, arguments, and options.
+func NewPbs(ctx *pulumi.Context,
+	name string, args *PbsArgs, opts ...pulumi.ResourceOption) (*Pbs, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -101,8 +63,8 @@ func NewPBS(ctx *pulumi.Context,
 	if args.Password == nil {
 		return nil, errors.New("invalid value for required argument 'Password'")
 	}
-	if args.PbsId == nil {
-		return nil, errors.New("invalid value for required argument 'PbsId'")
+	if args.ResourceId == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceId'")
 	}
 	if args.Server == nil {
 		return nil, errors.New("invalid value for required argument 'Server'")
@@ -110,6 +72,12 @@ func NewPBS(ctx *pulumi.Context,
 	if args.Username == nil {
 		return nil, errors.New("invalid value for required argument 'Username'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("proxmox_virtual_environment_storage_pbs"),
+		},
+	})
+	opts = append(opts, aliases)
 	if args.EncryptionKey != nil {
 		args.EncryptionKey = pulumi.ToSecret(args.EncryptionKey).(pulumi.StringPtrInput)
 	}
@@ -123,30 +91,30 @@ func NewPBS(ctx *pulumi.Context,
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource PBS
-	err := ctx.RegisterResource("proxmoxve:Storage/pBS:PBS", name, args, &resource, opts...)
+	var resource Pbs
+	err := ctx.RegisterResource("proxmoxve:storage/pbs:Pbs", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetPBS gets an existing PBS resource's state with the given name, ID, and optional
+// GetPbs gets an existing Pbs resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetPBS(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *PBSState, opts ...pulumi.ResourceOption) (*PBS, error) {
-	var resource PBS
-	err := ctx.ReadResource("proxmoxve:Storage/pBS:PBS", name, id, state, &resource, opts...)
+func GetPbs(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *PbsState, opts ...pulumi.ResourceOption) (*Pbs, error) {
+	var resource Pbs
+	err := ctx.ReadResource("proxmoxve:storage/pbs:Pbs", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering PBS resources.
+// Input properties used for looking up and filtering Pbs resources.
 type pbsState struct {
 	// Configure backup retention settings for the storage type.
-	Backups *PBSBackups `pulumi:"backups"`
+	Backups *PbsBackups `pulumi:"backups"`
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents []string `pulumi:"contents"`
 	// The name of the datastore on the Proxmox Backup Server.
@@ -170,7 +138,7 @@ type pbsState struct {
 	// The password for authenticating with the Proxmox Backup Server.
 	Password *string `pulumi:"password"`
 	// The unique identifier of the storage.
-	PbsId *string `pulumi:"pbsId"`
+	ResourceId *string `pulumi:"resourceId"`
 	// The IP address or DNS name of the Proxmox Backup Server.
 	Server *string `pulumi:"server"`
 	// Whether the storage is shared across all nodes.
@@ -179,9 +147,9 @@ type pbsState struct {
 	Username *string `pulumi:"username"`
 }
 
-type PBSState struct {
+type PbsState struct {
 	// Configure backup retention settings for the storage type.
-	Backups PBSBackupsPtrInput
+	Backups PbsBackupsPtrInput
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents pulumi.StringArrayInput
 	// The name of the datastore on the Proxmox Backup Server.
@@ -205,7 +173,7 @@ type PBSState struct {
 	// The password for authenticating with the Proxmox Backup Server.
 	Password pulumi.StringPtrInput
 	// The unique identifier of the storage.
-	PbsId pulumi.StringPtrInput
+	ResourceId pulumi.StringPtrInput
 	// The IP address or DNS name of the Proxmox Backup Server.
 	Server pulumi.StringPtrInput
 	// Whether the storage is shared across all nodes.
@@ -214,13 +182,13 @@ type PBSState struct {
 	Username pulumi.StringPtrInput
 }
 
-func (PBSState) ElementType() reflect.Type {
+func (PbsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*pbsState)(nil)).Elem()
 }
 
 type pbsArgs struct {
 	// Configure backup retention settings for the storage type.
-	Backups *PBSBackups `pulumi:"backups"`
+	Backups *PbsBackups `pulumi:"backups"`
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents []string `pulumi:"contents"`
 	// The name of the datastore on the Proxmox Backup Server.
@@ -240,17 +208,17 @@ type pbsArgs struct {
 	// The password for authenticating with the Proxmox Backup Server.
 	Password string `pulumi:"password"`
 	// The unique identifier of the storage.
-	PbsId string `pulumi:"pbsId"`
+	ResourceId string `pulumi:"resourceId"`
 	// The IP address or DNS name of the Proxmox Backup Server.
 	Server string `pulumi:"server"`
 	// The username for authenticating with the Proxmox Backup Server.
 	Username string `pulumi:"username"`
 }
 
-// The set of arguments for constructing a PBS resource.
-type PBSArgs struct {
+// The set of arguments for constructing a Pbs resource.
+type PbsArgs struct {
 	// Configure backup retention settings for the storage type.
-	Backups PBSBackupsPtrInput
+	Backups PbsBackupsPtrInput
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents pulumi.StringArrayInput
 	// The name of the datastore on the Proxmox Backup Server.
@@ -270,225 +238,225 @@ type PBSArgs struct {
 	// The password for authenticating with the Proxmox Backup Server.
 	Password pulumi.StringInput
 	// The unique identifier of the storage.
-	PbsId pulumi.StringInput
+	ResourceId pulumi.StringInput
 	// The IP address or DNS name of the Proxmox Backup Server.
 	Server pulumi.StringInput
 	// The username for authenticating with the Proxmox Backup Server.
 	Username pulumi.StringInput
 }
 
-func (PBSArgs) ElementType() reflect.Type {
+func (PbsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*pbsArgs)(nil)).Elem()
 }
 
-type PBSInput interface {
+type PbsInput interface {
 	pulumi.Input
 
-	ToPBSOutput() PBSOutput
-	ToPBSOutputWithContext(ctx context.Context) PBSOutput
+	ToPbsOutput() PbsOutput
+	ToPbsOutputWithContext(ctx context.Context) PbsOutput
 }
 
-func (*PBS) ElementType() reflect.Type {
-	return reflect.TypeOf((**PBS)(nil)).Elem()
+func (*Pbs) ElementType() reflect.Type {
+	return reflect.TypeOf((**Pbs)(nil)).Elem()
 }
 
-func (i *PBS) ToPBSOutput() PBSOutput {
-	return i.ToPBSOutputWithContext(context.Background())
+func (i *Pbs) ToPbsOutput() PbsOutput {
+	return i.ToPbsOutputWithContext(context.Background())
 }
 
-func (i *PBS) ToPBSOutputWithContext(ctx context.Context) PBSOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PBSOutput)
+func (i *Pbs) ToPbsOutputWithContext(ctx context.Context) PbsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PbsOutput)
 }
 
-// PBSArrayInput is an input type that accepts PBSArray and PBSArrayOutput values.
-// You can construct a concrete instance of `PBSArrayInput` via:
+// PbsArrayInput is an input type that accepts PbsArray and PbsArrayOutput values.
+// You can construct a concrete instance of `PbsArrayInput` via:
 //
-//	PBSArray{ PBSArgs{...} }
-type PBSArrayInput interface {
+//	PbsArray{ PbsArgs{...} }
+type PbsArrayInput interface {
 	pulumi.Input
 
-	ToPBSArrayOutput() PBSArrayOutput
-	ToPBSArrayOutputWithContext(context.Context) PBSArrayOutput
+	ToPbsArrayOutput() PbsArrayOutput
+	ToPbsArrayOutputWithContext(context.Context) PbsArrayOutput
 }
 
-type PBSArray []PBSInput
+type PbsArray []PbsInput
 
-func (PBSArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*PBS)(nil)).Elem()
+func (PbsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*Pbs)(nil)).Elem()
 }
 
-func (i PBSArray) ToPBSArrayOutput() PBSArrayOutput {
-	return i.ToPBSArrayOutputWithContext(context.Background())
+func (i PbsArray) ToPbsArrayOutput() PbsArrayOutput {
+	return i.ToPbsArrayOutputWithContext(context.Background())
 }
 
-func (i PBSArray) ToPBSArrayOutputWithContext(ctx context.Context) PBSArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PBSArrayOutput)
+func (i PbsArray) ToPbsArrayOutputWithContext(ctx context.Context) PbsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PbsArrayOutput)
 }
 
-// PBSMapInput is an input type that accepts PBSMap and PBSMapOutput values.
-// You can construct a concrete instance of `PBSMapInput` via:
+// PbsMapInput is an input type that accepts PbsMap and PbsMapOutput values.
+// You can construct a concrete instance of `PbsMapInput` via:
 //
-//	PBSMap{ "key": PBSArgs{...} }
-type PBSMapInput interface {
+//	PbsMap{ "key": PbsArgs{...} }
+type PbsMapInput interface {
 	pulumi.Input
 
-	ToPBSMapOutput() PBSMapOutput
-	ToPBSMapOutputWithContext(context.Context) PBSMapOutput
+	ToPbsMapOutput() PbsMapOutput
+	ToPbsMapOutputWithContext(context.Context) PbsMapOutput
 }
 
-type PBSMap map[string]PBSInput
+type PbsMap map[string]PbsInput
 
-func (PBSMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*PBS)(nil)).Elem()
+func (PbsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*Pbs)(nil)).Elem()
 }
 
-func (i PBSMap) ToPBSMapOutput() PBSMapOutput {
-	return i.ToPBSMapOutputWithContext(context.Background())
+func (i PbsMap) ToPbsMapOutput() PbsMapOutput {
+	return i.ToPbsMapOutputWithContext(context.Background())
 }
 
-func (i PBSMap) ToPBSMapOutputWithContext(ctx context.Context) PBSMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(PBSMapOutput)
+func (i PbsMap) ToPbsMapOutputWithContext(ctx context.Context) PbsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PbsMapOutput)
 }
 
-type PBSOutput struct{ *pulumi.OutputState }
+type PbsOutput struct{ *pulumi.OutputState }
 
-func (PBSOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**PBS)(nil)).Elem()
+func (PbsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Pbs)(nil)).Elem()
 }
 
-func (o PBSOutput) ToPBSOutput() PBSOutput {
+func (o PbsOutput) ToPbsOutput() PbsOutput {
 	return o
 }
 
-func (o PBSOutput) ToPBSOutputWithContext(ctx context.Context) PBSOutput {
+func (o PbsOutput) ToPbsOutputWithContext(ctx context.Context) PbsOutput {
 	return o
 }
 
 // Configure backup retention settings for the storage type.
-func (o PBSOutput) Backups() PBSBackupsPtrOutput {
-	return o.ApplyT(func(v *PBS) PBSBackupsPtrOutput { return v.Backups }).(PBSBackupsPtrOutput)
+func (o PbsOutput) Backups() PbsBackupsPtrOutput {
+	return o.ApplyT(func(v *Pbs) PbsBackupsPtrOutput { return v.Backups }).(PbsBackupsPtrOutput)
 }
 
 // The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
-func (o PBSOutput) Contents() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *PBS) pulumi.StringArrayOutput { return v.Contents }).(pulumi.StringArrayOutput)
+func (o PbsOutput) Contents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Pbs) pulumi.StringArrayOutput { return v.Contents }).(pulumi.StringArrayOutput)
 }
 
 // The name of the datastore on the Proxmox Backup Server.
-func (o PBSOutput) Datastore() pulumi.StringOutput {
-	return o.ApplyT(func(v *PBS) pulumi.StringOutput { return v.Datastore }).(pulumi.StringOutput)
+func (o PbsOutput) Datastore() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pbs) pulumi.StringOutput { return v.Datastore }).(pulumi.StringOutput)
 }
 
 // Whether the storage is disabled.
-func (o PBSOutput) Disable() pulumi.BoolOutput {
-	return o.ApplyT(func(v *PBS) pulumi.BoolOutput { return v.Disable }).(pulumi.BoolOutput)
+func (o PbsOutput) Disable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Pbs) pulumi.BoolOutput { return v.Disable }).(pulumi.BoolOutput)
 }
 
 // An existing encryption key for the datastore. This is a sensitive value. Conflicts with `generateEncryptionKey`.
-func (o PBSOutput) EncryptionKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PBS) pulumi.StringPtrOutput { return v.EncryptionKey }).(pulumi.StringPtrOutput)
+func (o PbsOutput) EncryptionKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Pbs) pulumi.StringPtrOutput { return v.EncryptionKey }).(pulumi.StringPtrOutput)
 }
 
 // The SHA256 fingerprint of the encryption key currently in use.
-func (o PBSOutput) EncryptionKeyFingerprint() pulumi.StringOutput {
-	return o.ApplyT(func(v *PBS) pulumi.StringOutput { return v.EncryptionKeyFingerprint }).(pulumi.StringOutput)
+func (o PbsOutput) EncryptionKeyFingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pbs) pulumi.StringOutput { return v.EncryptionKeyFingerprint }).(pulumi.StringOutput)
 }
 
 // The SHA256 fingerprint of the Proxmox Backup Server's certificate.
-func (o PBSOutput) Fingerprint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PBS) pulumi.StringPtrOutput { return v.Fingerprint }).(pulumi.StringPtrOutput)
+func (o PbsOutput) Fingerprint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Pbs) pulumi.StringPtrOutput { return v.Fingerprint }).(pulumi.StringPtrOutput)
 }
 
 // If set to true, Proxmox will generate a new encryption key. The key will be stored in the `generatedEncryptionKey` attribute. Conflicts with `encryptionKey`.
-func (o PBSOutput) GenerateEncryptionKey() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *PBS) pulumi.BoolPtrOutput { return v.GenerateEncryptionKey }).(pulumi.BoolPtrOutput)
+func (o PbsOutput) GenerateEncryptionKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Pbs) pulumi.BoolPtrOutput { return v.GenerateEncryptionKey }).(pulumi.BoolPtrOutput)
 }
 
 // The encryption key returned by Proxmox when `generateEncryptionKey` is true.
-func (o PBSOutput) GeneratedEncryptionKey() pulumi.StringOutput {
-	return o.ApplyT(func(v *PBS) pulumi.StringOutput { return v.GeneratedEncryptionKey }).(pulumi.StringOutput)
+func (o PbsOutput) GeneratedEncryptionKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pbs) pulumi.StringOutput { return v.GeneratedEncryptionKey }).(pulumi.StringOutput)
 }
 
 // The namespace to use on the Proxmox Backup Server.
-func (o PBSOutput) Namespace() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PBS) pulumi.StringPtrOutput { return v.Namespace }).(pulumi.StringPtrOutput)
+func (o PbsOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Pbs) pulumi.StringPtrOutput { return v.Namespace }).(pulumi.StringPtrOutput)
 }
 
 // A list of nodes where this storage is available.
-func (o PBSOutput) Nodes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *PBS) pulumi.StringArrayOutput { return v.Nodes }).(pulumi.StringArrayOutput)
+func (o PbsOutput) Nodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Pbs) pulumi.StringArrayOutput { return v.Nodes }).(pulumi.StringArrayOutput)
 }
 
 // The password for authenticating with the Proxmox Backup Server.
-func (o PBSOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func(v *PBS) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
+func (o PbsOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pbs) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
 // The unique identifier of the storage.
-func (o PBSOutput) PbsId() pulumi.StringOutput {
-	return o.ApplyT(func(v *PBS) pulumi.StringOutput { return v.PbsId }).(pulumi.StringOutput)
+func (o PbsOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pbs) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
 }
 
 // The IP address or DNS name of the Proxmox Backup Server.
-func (o PBSOutput) Server() pulumi.StringOutput {
-	return o.ApplyT(func(v *PBS) pulumi.StringOutput { return v.Server }).(pulumi.StringOutput)
+func (o PbsOutput) Server() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pbs) pulumi.StringOutput { return v.Server }).(pulumi.StringOutput)
 }
 
 // Whether the storage is shared across all nodes.
-func (o PBSOutput) Shared() pulumi.BoolOutput {
-	return o.ApplyT(func(v *PBS) pulumi.BoolOutput { return v.Shared }).(pulumi.BoolOutput)
+func (o PbsOutput) Shared() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Pbs) pulumi.BoolOutput { return v.Shared }).(pulumi.BoolOutput)
 }
 
 // The username for authenticating with the Proxmox Backup Server.
-func (o PBSOutput) Username() pulumi.StringOutput {
-	return o.ApplyT(func(v *PBS) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
+func (o PbsOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pbs) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }
 
-type PBSArrayOutput struct{ *pulumi.OutputState }
+type PbsArrayOutput struct{ *pulumi.OutputState }
 
-func (PBSArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*PBS)(nil)).Elem()
+func (PbsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*Pbs)(nil)).Elem()
 }
 
-func (o PBSArrayOutput) ToPBSArrayOutput() PBSArrayOutput {
+func (o PbsArrayOutput) ToPbsArrayOutput() PbsArrayOutput {
 	return o
 }
 
-func (o PBSArrayOutput) ToPBSArrayOutputWithContext(ctx context.Context) PBSArrayOutput {
+func (o PbsArrayOutput) ToPbsArrayOutputWithContext(ctx context.Context) PbsArrayOutput {
 	return o
 }
 
-func (o PBSArrayOutput) Index(i pulumi.IntInput) PBSOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *PBS {
-		return vs[0].([]*PBS)[vs[1].(int)]
-	}).(PBSOutput)
+func (o PbsArrayOutput) Index(i pulumi.IntInput) PbsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Pbs {
+		return vs[0].([]*Pbs)[vs[1].(int)]
+	}).(PbsOutput)
 }
 
-type PBSMapOutput struct{ *pulumi.OutputState }
+type PbsMapOutput struct{ *pulumi.OutputState }
 
-func (PBSMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*PBS)(nil)).Elem()
+func (PbsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*Pbs)(nil)).Elem()
 }
 
-func (o PBSMapOutput) ToPBSMapOutput() PBSMapOutput {
+func (o PbsMapOutput) ToPbsMapOutput() PbsMapOutput {
 	return o
 }
 
-func (o PBSMapOutput) ToPBSMapOutputWithContext(ctx context.Context) PBSMapOutput {
+func (o PbsMapOutput) ToPbsMapOutputWithContext(ctx context.Context) PbsMapOutput {
 	return o
 }
 
-func (o PBSMapOutput) MapIndex(k pulumi.StringInput) PBSOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *PBS {
-		return vs[0].(map[string]*PBS)[vs[1].(string)]
-	}).(PBSOutput)
+func (o PbsMapOutput) MapIndex(k pulumi.StringInput) PbsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Pbs {
+		return vs[0].(map[string]*Pbs)[vs[1].(string)]
+	}).(PbsOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*PBSInput)(nil)).Elem(), &PBS{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PBSArrayInput)(nil)).Elem(), PBSArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*PBSMapInput)(nil)).Elem(), PBSMap{})
-	pulumi.RegisterOutputType(PBSOutput{})
-	pulumi.RegisterOutputType(PBSArrayOutput{})
-	pulumi.RegisterOutputType(PBSMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PbsInput)(nil)).Elem(), &Pbs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PbsArrayInput)(nil)).Elem(), PbsArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PbsMapInput)(nil)).Elem(), PbsMap{})
+	pulumi.RegisterOutputType(PbsOutput{})
+	pulumi.RegisterOutputType(PbsArrayOutput{})
+	pulumi.RegisterOutputType(PbsMapOutput{})
 }

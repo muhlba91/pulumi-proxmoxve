@@ -7,6 +7,10 @@ from .... import _utilities
 import typing
 # Export this package's modules as members:
 from .get_openfabric import *
+from .get_openfabric_legacy import *
 from .get_ospf import *
+from .get_ospf_legacy import *
 from .openfabric import *
+from .openfabric_legacy import *
 from .ospf import *
+from .ospf_legacy import *

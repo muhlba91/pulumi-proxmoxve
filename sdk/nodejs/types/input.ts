@@ -5,37 +5,255 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
-export interface GetContainersFilter {
+export interface GetDatastoresDatastore {
     /**
-     * Name of the container attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
+     * Whether the store is active.
      */
-    name: string;
+    active?: boolean;
     /**
-     * Treat values as regex patterns
+     * Allowed store content types.
      */
-    regex?: boolean;
+    contentTypes: string[];
     /**
-     * List of values to pass the filter. Container's attribute should match at least one value in the list.
+     * Whether the store is enabled.
      */
-    values: string[];
+    enabled?: boolean;
+    /**
+     * The ID of the store.
+     */
+    id: string;
+    /**
+     * The name of the node the store is on.
+     */
+    nodeName: string;
+    /**
+     * Shared flag from store configuration.
+     */
+    shared?: boolean;
+    /**
+     * Available store space in bytes.
+     */
+    spaceAvailable?: number;
+    /**
+     * Total store space in bytes.
+     */
+    spaceTotal?: number;
+    /**
+     * Used store space in bytes.
+     */
+    spaceUsed?: number;
+    /**
+     * Used fraction (used/total).
+     */
+    spaceUsedFraction?: number;
+    /**
+     * Store type.
+     */
+    type: string;
 }
 
-export interface GetContainersFilterArgs {
+export interface GetDatastoresDatastoreArgs {
     /**
-     * Name of the container attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
+     * Whether the store is active.
      */
-    name: pulumi.Input<string>;
+    active?: pulumi.Input<boolean>;
     /**
-     * Treat values as regex patterns
+     * Allowed store content types.
      */
-    regex?: pulumi.Input<boolean>;
+    contentTypes: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of values to pass the filter. Container's attribute should match at least one value in the list.
+     * Whether the store is enabled.
      */
-    values: pulumi.Input<pulumi.Input<string>[]>;
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * The ID of the store.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The name of the node the store is on.
+     */
+    nodeName: pulumi.Input<string>;
+    /**
+     * Shared flag from store configuration.
+     */
+    shared?: pulumi.Input<boolean>;
+    /**
+     * Available store space in bytes.
+     */
+    spaceAvailable?: pulumi.Input<number>;
+    /**
+     * Total store space in bytes.
+     */
+    spaceTotal?: pulumi.Input<number>;
+    /**
+     * Used store space in bytes.
+     */
+    spaceUsed?: pulumi.Input<number>;
+    /**
+     * Used fraction (used/total).
+     */
+    spaceUsedFraction?: pulumi.Input<number>;
+    /**
+     * Store type.
+     */
+    type: pulumi.Input<string>;
 }
 
-export interface GetVm2Cpu {
+export interface GetDatastoresFilters {
+    /**
+     * Only list stores with the given content types.
+     */
+    contentTypes?: string[];
+    /**
+     * Only list stores with the given ID.
+     */
+    id?: string;
+    /**
+     * If `target` is different to `nodeName`, then only lists shared stores which content is accessible on this node and the specified `target` node.
+     */
+    target?: string;
+}
+
+export interface GetDatastoresFiltersArgs {
+    /**
+     * Only list stores with the given content types.
+     */
+    contentTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Only list stores with the given ID.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * If `target` is different to `nodeName`, then only lists shared stores which content is accessible on this node and the specified `target` node.
+     */
+    target?: pulumi.Input<string>;
+}
+
+export interface GetDatastoresLegacyDatastore {
+    /**
+     * Whether the store is active.
+     */
+    active?: boolean;
+    /**
+     * Allowed store content types.
+     */
+    contentTypes: string[];
+    /**
+     * Whether the store is enabled.
+     */
+    enabled?: boolean;
+    /**
+     * The ID of the store.
+     */
+    id: string;
+    /**
+     * The name of the node the store is on.
+     */
+    nodeName: string;
+    /**
+     * Shared flag from store configuration.
+     */
+    shared?: boolean;
+    /**
+     * Available store space in bytes.
+     */
+    spaceAvailable?: number;
+    /**
+     * Total store space in bytes.
+     */
+    spaceTotal?: number;
+    /**
+     * Used store space in bytes.
+     */
+    spaceUsed?: number;
+    /**
+     * Used fraction (used/total).
+     */
+    spaceUsedFraction?: number;
+    /**
+     * Store type.
+     */
+    type: string;
+}
+
+export interface GetDatastoresLegacyDatastoreArgs {
+    /**
+     * Whether the store is active.
+     */
+    active?: pulumi.Input<boolean>;
+    /**
+     * Allowed store content types.
+     */
+    contentTypes: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether the store is enabled.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * The ID of the store.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * The name of the node the store is on.
+     */
+    nodeName: pulumi.Input<string>;
+    /**
+     * Shared flag from store configuration.
+     */
+    shared?: pulumi.Input<boolean>;
+    /**
+     * Available store space in bytes.
+     */
+    spaceAvailable?: pulumi.Input<number>;
+    /**
+     * Total store space in bytes.
+     */
+    spaceTotal?: pulumi.Input<number>;
+    /**
+     * Used store space in bytes.
+     */
+    spaceUsed?: pulumi.Input<number>;
+    /**
+     * Used fraction (used/total).
+     */
+    spaceUsedFraction?: pulumi.Input<number>;
+    /**
+     * Store type.
+     */
+    type: pulumi.Input<string>;
+}
+
+export interface GetDatastoresLegacyFilters {
+    /**
+     * Only list stores with the given content types.
+     */
+    contentTypes?: string[];
+    /**
+     * Only list stores with the given ID.
+     */
+    id?: string;
+    /**
+     * If `target` is different to `nodeName`, then only lists shared stores which content is accessible on this node and the specified `target` node.
+     */
+    target?: string;
+}
+
+export interface GetDatastoresLegacyFiltersArgs {
+    /**
+     * Only list stores with the given content types.
+     */
+    contentTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Only list stores with the given ID.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * If `target` is different to `nodeName`, then only lists shared stores which content is accessible on this node and the specified `target` node.
+     */
+    target?: pulumi.Input<string>;
+}
+
+export interface GetVm2LegacyCpu {
     /**
      * List of host cores used to execute guest processes, for example: '0,5,8-11'
      */
@@ -78,7 +296,7 @@ export interface GetVm2Cpu {
     units?: number;
 }
 
-export interface GetVm2CpuArgs {
+export interface GetVm2LegacyCpuArgs {
     /**
      * List of host cores used to execute guest processes, for example: '0,5,8-11'
      */
@@ -121,7 +339,7 @@ export interface GetVm2CpuArgs {
     units?: pulumi.Input<number>;
 }
 
-export interface GetVm2Rng {
+export interface GetVm2LegacyRng {
     /**
      * Maximum bytes of entropy allowed to get injected into the guest every period.
      */
@@ -136,7 +354,7 @@ export interface GetVm2Rng {
     source?: string;
 }
 
-export interface GetVm2RngArgs {
+export interface GetVm2LegacyRngArgs {
     /**
      * Maximum bytes of entropy allowed to get injected into the guest every period.
      */
@@ -151,21 +369,21 @@ export interface GetVm2RngArgs {
     source?: pulumi.Input<string>;
 }
 
-export interface GetVm2Timeouts {
+export interface GetVm2LegacyTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
     read?: string;
 }
 
-export interface GetVm2TimeoutsArgs {
+export interface GetVm2LegacyTimeoutsArgs {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
     read?: pulumi.Input<string>;
 }
 
-export interface GetVm2Vga {
+export interface GetVm2LegacyVga {
     /**
      * Enable a specific clipboard.
      */
@@ -180,7 +398,7 @@ export interface GetVm2Vga {
     type?: string;
 }
 
-export interface GetVm2VgaArgs {
+export interface GetVm2LegacyVgaArgs {
     /**
      * Enable a specific clipboard.
      */
@@ -195,15 +413,164 @@ export interface GetVm2VgaArgs {
     type?: pulumi.Input<string>;
 }
 
-export interface HostsEntry {
+export interface GetVmCpu {
     /**
-     * The IP address.
+     * List of host cores used to execute guest processes, for example: '0,5,8-11'
      */
-    address: pulumi.Input<string>;
+    affinity?: string;
     /**
-     * The hostnames.
+     * The CPU architecture.
      */
-    hostnames: pulumi.Input<pulumi.Input<string>[]>;
+    architecture?: string;
+    /**
+     * The number of CPU cores per socket.
+     */
+    cores?: number;
+    /**
+     * Set of additional CPU flags.
+     */
+    flags?: string[];
+    /**
+     * The number of hotplugged vCPUs.
+     */
+    hotplugged?: number;
+    /**
+     * Limit of CPU usage.
+     */
+    limit?: number;
+    /**
+     * Enable NUMA.
+     */
+    numa?: boolean;
+    /**
+     * The number of CPU sockets.
+     */
+    sockets?: number;
+    /**
+     * Emulated CPU type.
+     */
+    type?: string;
+    /**
+     * CPU weight for a VM
+     */
+    units?: number;
+}
+
+export interface GetVmCpuArgs {
+    /**
+     * List of host cores used to execute guest processes, for example: '0,5,8-11'
+     */
+    affinity?: pulumi.Input<string>;
+    /**
+     * The CPU architecture.
+     */
+    architecture?: pulumi.Input<string>;
+    /**
+     * The number of CPU cores per socket.
+     */
+    cores?: pulumi.Input<number>;
+    /**
+     * Set of additional CPU flags.
+     */
+    flags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The number of hotplugged vCPUs.
+     */
+    hotplugged?: pulumi.Input<number>;
+    /**
+     * Limit of CPU usage.
+     */
+    limit?: pulumi.Input<number>;
+    /**
+     * Enable NUMA.
+     */
+    numa?: pulumi.Input<boolean>;
+    /**
+     * The number of CPU sockets.
+     */
+    sockets?: pulumi.Input<number>;
+    /**
+     * Emulated CPU type.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * CPU weight for a VM
+     */
+    units?: pulumi.Input<number>;
+}
+
+export interface GetVmRng {
+    /**
+     * Maximum bytes of entropy allowed to get injected into the guest every period.
+     */
+    maxBytes?: number;
+    /**
+     * Period in milliseconds to limit entropy injection to the guest.
+     */
+    period?: number;
+    /**
+     * The entropy source for the RNG device.
+     */
+    source?: string;
+}
+
+export interface GetVmRngArgs {
+    /**
+     * Maximum bytes of entropy allowed to get injected into the guest every period.
+     */
+    maxBytes?: pulumi.Input<number>;
+    /**
+     * Period in milliseconds to limit entropy injection to the guest.
+     */
+    period?: pulumi.Input<number>;
+    /**
+     * The entropy source for the RNG device.
+     */
+    source?: pulumi.Input<string>;
+}
+
+export interface GetVmTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+}
+
+export interface GetVmTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+}
+
+export interface GetVmVga {
+    /**
+     * Enable a specific clipboard.
+     */
+    clipboard?: string;
+    /**
+     * The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+     */
+    memory?: number;
+    /**
+     * The VGA type.
+     */
+    type?: string;
+}
+
+export interface GetVmVgaArgs {
+    /**
+     * Enable a specific clipboard.
+     */
+    clipboard?: pulumi.Input<string>;
+    /**
+     * The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+     */
+    memory?: pulumi.Input<number>;
+    /**
+     * The VGA type.
+     */
+    type?: pulumi.Input<string>;
 }
 
 export interface ProviderSsh {
@@ -224,7 +591,7 @@ export interface ProviderSsh {
      */
     nodes?: pulumi.Input<pulumi.Input<inputs.ProviderSshNode>[]>;
     /**
-     * The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block.
+     * The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block when using username/password authentication. Default has no effect when using API token authentication, as there is no password to inherit. Can also be sourced from `PROXMOX_VE_SSH_PASSWORD`.
      */
     password?: pulumi.Input<string>;
     /**
@@ -263,8 +630,221 @@ export interface ProviderSshNode {
      */
     port?: pulumi.Input<number>;
 }
-export namespace Acme {
+
+export interface Vm2LegacyCdrom {
+    /**
+     * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+     */
+    fileId?: pulumi.Input<string>;
+}
+
+export interface Vm2LegacyCpu {
+    /**
+     * The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+     */
+    affinity?: pulumi.Input<string>;
+    /**
+     * The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
+     */
+    architecture?: pulumi.Input<string>;
+    /**
+     * The number of CPU cores per socket (defaults to `1`).
+     */
+    cores?: pulumi.Input<number>;
+    /**
+     * Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+     */
+    flags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The number of hotplugged vCPUs (defaults to `0`).
+     */
+    hotplugged?: pulumi.Input<number>;
+    /**
+     * Limit of CPU usage (defaults to `0` which means no limit).
+     */
+    limit?: pulumi.Input<number>;
+    /**
+     * Enable NUMA (defaults to `false`).
+     */
+    numa?: pulumi.Input<boolean>;
+    /**
+     * The number of CPU sockets (defaults to `1`).
+     */
+    sockets?: pulumi.Input<number>;
+    /**
+     * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+     */
+    units?: pulumi.Input<number>;
+}
+
+export interface Vm2LegacyRng {
+    /**
+     * Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+     */
+    maxBytes?: pulumi.Input<number>;
+    /**
+     * Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+     */
+    period?: pulumi.Input<number>;
+    /**
+     * The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+     */
+    source?: pulumi.Input<string>;
+}
+
+export interface Vm2LegacyTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
+export interface Vm2LegacyVga {
+    /**
+     * Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+     */
+    clipboard?: pulumi.Input<string>;
+    /**
+     * The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+     */
+    memory?: pulumi.Input<number>;
+    /**
+     * The VGA type (defaults to `std`).
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface VmCdrom {
+    /**
+     * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+     */
+    fileId?: pulumi.Input<string>;
+}
+
+export interface VmCpu {
+    /**
+     * The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+     */
+    affinity?: pulumi.Input<string>;
+    /**
+     * The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
+     */
+    architecture?: pulumi.Input<string>;
+    /**
+     * The number of CPU cores per socket (defaults to `1`).
+     */
+    cores?: pulumi.Input<number>;
+    /**
+     * Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+     */
+    flags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The number of hotplugged vCPUs (defaults to `0`).
+     */
+    hotplugged?: pulumi.Input<number>;
+    /**
+     * Limit of CPU usage (defaults to `0` which means no limit).
+     */
+    limit?: pulumi.Input<number>;
+    /**
+     * Enable NUMA (defaults to `false`).
+     */
+    numa?: pulumi.Input<boolean>;
+    /**
+     * The number of CPU sockets (defaults to `1`).
+     */
+    sockets?: pulumi.Input<number>;
+    /**
+     * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+     */
+    units?: pulumi.Input<number>;
+}
+
+export interface VmRng {
+    /**
+     * Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+     */
+    maxBytes?: pulumi.Input<number>;
+    /**
+     * Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+     */
+    period?: pulumi.Input<number>;
+    /**
+     * The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+     */
+    source?: pulumi.Input<string>;
+}
+
+export interface VmTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
+export interface VmVga {
+    /**
+     * Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+     */
+    clipboard?: pulumi.Input<string>;
+    /**
+     * The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+     */
+    memory?: pulumi.Input<number>;
+    /**
+     * The VGA type (defaults to `std`).
+     */
+    type?: pulumi.Input<string>;
+}
+export namespace acme {
     export interface CertificateDomain {
+        /**
+         * An optional alias domain for DNS validation. This allows you to validate the domain using a different domain's DNS records.
+         */
+        alias?: pulumi.Input<string>;
+        /**
+         * The domain name to include in the certificate.
+         */
+        domain: pulumi.Input<string>;
+        /**
+         * The DNS plugin to use for DNS-01 challenge validation. If not specified, the standalone HTTP-01 challenge will be used.
+         */
+        plugin?: pulumi.Input<string>;
+    }
+
+    export interface CertificateLegacyDomain {
         /**
          * An optional alias domain for DNS validation. This allows you to validate the domain using a different domain's DNS records.
          */
@@ -281,372 +861,629 @@ export namespace Acme {
 
 }
 
-export namespace CT {
-    export interface ContainerClone {
+export namespace backup {
+    export interface JobFleecing {
         /**
-         * The identifier for the target datastore.
-         */
-        datastoreId?: pulumi.Input<string>;
-        /**
-         * The name of the source node (leave blank, if
-         * equal to the `nodeName` argument).
-         */
-        nodeName?: pulumi.Input<string>;
-        /**
-         * The identifier for the source container.
-         */
-        vmId: pulumi.Input<number>;
-    }
-
-    export interface ContainerConsole {
-        /**
-         * Whether to enable the console device (defaults
-         * to `true`).
+         * Whether fleecing is enabled.
          */
         enabled?: pulumi.Input<boolean>;
         /**
-         * The number of available TTY (defaults to `2`).
+         * The storage identifier for fleecing.
          */
-        ttyCount?: pulumi.Input<number>;
-        /**
-         * The console mode (defaults to `tty`).
-         */
-        type?: pulumi.Input<string>;
+        storage?: pulumi.Input<string>;
     }
 
-    export interface ContainerCpu {
+    export interface JobPerformance {
         /**
-         * The CPU architecture (defaults to `amd64`).
+         * Maximum number of workers for parallel backup.
+         */
+        maxWorkers?: pulumi.Input<number>;
+        /**
+         * Maximum number of entries for PBS catalog.
+         */
+        pbsEntriesMax?: pulumi.Input<number>;
+    }
+}
+
+export namespace cloned {
+    export interface VmCdrom {
+        /**
+         * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+         */
+        fileId?: pulumi.Input<string>;
+    }
+
+    export interface VmClone {
+        /**
+         * Clone bandwidth limit in MB/s.
+         */
+        bandwidthLimit?: pulumi.Input<number>;
+        /**
+         * Perform a full clone (true) or linked clone (false).
+         */
+        full?: pulumi.Input<boolean>;
+        /**
+         * Pool to assign the cloned VM to.
+         */
+        poolId?: pulumi.Input<string>;
+        /**
+         * Number of retries for clone operations.
+         */
+        retries?: pulumi.Input<number>;
+        /**
+         * Snapshot name to clone from.
+         */
+        snapshotName?: pulumi.Input<string>;
+        /**
+         * Source node of the VM/template. Defaults to target node if unset.
+         */
+        sourceNodeName?: pulumi.Input<string>;
+        /**
+         * Source VM/template ID to clone from.
+         */
+        sourceVmId: pulumi.Input<number>;
+        /**
+         * Target datastore for cloned disks.
+         */
+        targetDatastore?: pulumi.Input<string>;
+        /**
+         * Target disk format for clone (e.g., raw, qcow2).
+         */
+        targetFormat?: pulumi.Input<string>;
+    }
+
+    export interface VmCpu {
+        /**
+         * The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+         */
+        affinity?: pulumi.Input<string>;
+        /**
+         * The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
          */
         architecture?: pulumi.Input<string>;
         /**
-         * The number of CPU cores (defaults to `1`).
+         * The number of CPU cores per socket (defaults to `1`).
          */
         cores?: pulumi.Input<number>;
         /**
-         * The CPU units (defaults to `1024`).
+         * Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+         */
+        flags?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The number of hotplugged vCPUs (defaults to `0`).
+         */
+        hotplugged?: pulumi.Input<number>;
+        /**
+         * Limit of CPU usage (defaults to `0` which means no limit).
+         */
+        limit?: pulumi.Input<number>;
+        /**
+         * Enable NUMA (defaults to `false`).
+         */
+        numa?: pulumi.Input<boolean>;
+        /**
+         * The number of CPU sockets (defaults to `1`).
+         */
+        sockets?: pulumi.Input<number>;
+        /**
+         * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
          */
         units?: pulumi.Input<number>;
     }
 
-    export interface ContainerDevicePassthrough {
+    export interface VmDelete {
         /**
-         * Deny the container to write to the device (defaults to `false`).
+         * Disk slots to delete (e.g., scsi2).
          */
-        denyWrite?: pulumi.Input<boolean>;
+        disks?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Group ID to be assigned to the device node.
+         * Network slots to delete (e.g., net1).
          */
-        gid?: pulumi.Input<number>;
-        /**
-         * Access mode to be set on the device node. Must be a
-         * 4-digit octal number.
-         */
-        mode?: pulumi.Input<string>;
-        /**
-         * Device to pass through to the container (e.g. `/dev/sda`).
-         */
-        path: pulumi.Input<string>;
-        /**
-         * User ID to be assigned to the device node.
-         */
-        uid?: pulumi.Input<number>;
+        networks?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
-    export interface ContainerDisk {
+    export interface VmDisk {
         /**
-         * Explicitly enable or disable ACL support
+         * AIO mode (io_uring, native, threads).
          */
-        acl?: pulumi.Input<boolean>;
+        aio?: pulumi.Input<string>;
         /**
-         * The identifier for the datastore to create the
-         * disk in (defaults to `local`).
+         * Include disk in backups.
+         */
+        backup?: pulumi.Input<boolean>;
+        /**
+         * Cache mode.
+         */
+        cache?: pulumi.Input<string>;
+        /**
+         * Target datastore for new disks when file is not provided.
          */
         datastoreId?: pulumi.Input<string>;
         /**
-         * List of extra mount options.
+         * Discard/trim behavior.
          */
-        mountOptions?: pulumi.Input<pulumi.Input<string>[]>;
+        discard?: pulumi.Input<string>;
         /**
-         * The in-datastore path to the disk image.
-         * Use this attribute for cross-resource references.
+         * Existing volume reference (e.g., local-lvm:vm-100-disk-0).
          */
-        pathInDatastore?: pulumi.Input<string>;
+        file?: pulumi.Input<string>;
         /**
-         * Enable user quotas for the container rootfs
+         * Disk format (raw, qcow2, vmdk).
          */
-        quota?: pulumi.Input<boolean>;
+        format?: pulumi.Input<string>;
         /**
-         * Will include this volume to a storage replica job
+         * Import source volume/file id.
+         */
+        importFrom?: pulumi.Input<string>;
+        /**
+         * Use IO thread.
+         */
+        iothread?: pulumi.Input<boolean>;
+        /**
+         * Disk media (e.g., disk, cdrom).
+         */
+        media?: pulumi.Input<string>;
+        /**
+         * Consider disk for replication.
          */
         replicate?: pulumi.Input<boolean>;
         /**
-         * The size of the root filesystem in gigabytes (defaults
-         * to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.
-         * Requires `datastoreId` to be set.
+         * Disk serial number.
+         */
+        serial?: pulumi.Input<string>;
+        /**
+         * Disk size (GiB) when creating new disks. **Note:** Disk shrinking is not supported. Attempting to set `sizeGb` to a value smaller than the current disk size will result in an error. Only disk expansion is allowed.
+         */
+        sizeGb?: pulumi.Input<number>;
+        /**
+         * Mark disk as SSD.
+         */
+        ssd?: pulumi.Input<boolean>;
+    }
+
+    export interface VmLegacyCdrom {
+        /**
+         * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+         */
+        fileId?: pulumi.Input<string>;
+    }
+
+    export interface VmLegacyClone {
+        /**
+         * Clone bandwidth limit in MB/s.
+         */
+        bandwidthLimit?: pulumi.Input<number>;
+        /**
+         * Perform a full clone (true) or linked clone (false).
+         */
+        full?: pulumi.Input<boolean>;
+        /**
+         * Pool to assign the cloned VM to.
+         */
+        poolId?: pulumi.Input<string>;
+        /**
+         * Number of retries for clone operations.
+         */
+        retries?: pulumi.Input<number>;
+        /**
+         * Snapshot name to clone from.
+         */
+        snapshotName?: pulumi.Input<string>;
+        /**
+         * Source node of the VM/template. Defaults to target node if unset.
+         */
+        sourceNodeName?: pulumi.Input<string>;
+        /**
+         * Source VM/template ID to clone from.
+         */
+        sourceVmId: pulumi.Input<number>;
+        /**
+         * Target datastore for cloned disks.
+         */
+        targetDatastore?: pulumi.Input<string>;
+        /**
+         * Target disk format for clone (e.g., raw, qcow2).
+         */
+        targetFormat?: pulumi.Input<string>;
+    }
+
+    export interface VmLegacyCpu {
+        /**
+         * The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+         */
+        affinity?: pulumi.Input<string>;
+        /**
+         * The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
+         */
+        architecture?: pulumi.Input<string>;
+        /**
+         * The number of CPU cores per socket (defaults to `1`).
+         */
+        cores?: pulumi.Input<number>;
+        /**
+         * Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+         */
+        flags?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The number of hotplugged vCPUs (defaults to `0`).
+         */
+        hotplugged?: pulumi.Input<number>;
+        /**
+         * Limit of CPU usage (defaults to `0` which means no limit).
+         */
+        limit?: pulumi.Input<number>;
+        /**
+         * Enable NUMA (defaults to `false`).
+         */
+        numa?: pulumi.Input<boolean>;
+        /**
+         * The number of CPU sockets (defaults to `1`).
+         */
+        sockets?: pulumi.Input<number>;
+        /**
+         * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+         */
+        units?: pulumi.Input<number>;
+    }
+
+    export interface VmLegacyDelete {
+        /**
+         * Disk slots to delete (e.g., scsi2).
+         */
+        disks?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Network slots to delete (e.g., net1).
+         */
+        networks?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface VmLegacyDisk {
+        /**
+         * AIO mode (io_uring, native, threads).
+         */
+        aio?: pulumi.Input<string>;
+        /**
+         * Include disk in backups.
+         */
+        backup?: pulumi.Input<boolean>;
+        /**
+         * Cache mode.
+         */
+        cache?: pulumi.Input<string>;
+        /**
+         * Target datastore for new disks when file is not provided.
+         */
+        datastoreId?: pulumi.Input<string>;
+        /**
+         * Discard/trim behavior.
+         */
+        discard?: pulumi.Input<string>;
+        /**
+         * Existing volume reference (e.g., local-lvm:vm-100-disk-0).
+         */
+        file?: pulumi.Input<string>;
+        /**
+         * Disk format (raw, qcow2, vmdk).
+         */
+        format?: pulumi.Input<string>;
+        /**
+         * Import source volume/file id.
+         */
+        importFrom?: pulumi.Input<string>;
+        /**
+         * Use IO thread.
+         */
+        iothread?: pulumi.Input<boolean>;
+        /**
+         * Disk media (e.g., disk, cdrom).
+         */
+        media?: pulumi.Input<string>;
+        /**
+         * Consider disk for replication.
+         */
+        replicate?: pulumi.Input<boolean>;
+        /**
+         * Disk serial number.
+         */
+        serial?: pulumi.Input<string>;
+        /**
+         * Disk size (GiB) when creating new disks. **Note:** Disk shrinking is not supported. Attempting to set `sizeGb` to a value smaller than the current disk size will result in an error. Only disk expansion is allowed.
+         */
+        sizeGb?: pulumi.Input<number>;
+        /**
+         * Mark disk as SSD.
+         */
+        ssd?: pulumi.Input<boolean>;
+    }
+
+    export interface VmLegacyMemory {
+        /**
+         * Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely (defaults to `0`).
+         */
+        balloon?: pulumi.Input<number>;
+        /**
+         * Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses. 
+         *
+         * **Options:**
+         * - `2` - Use 2 MiB hugepages
+         * - `1024` - Use 1 GiB hugepages
+         * - `any` - Use any available hugepage size
+         */
+        hugepages?: pulumi.Input<string>;
+        /**
+         * Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup (defaults to `false`).
+         */
+        keepHugepages?: pulumi.Input<boolean>;
+        /**
+         * CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs (defaults to `1000`).
+         */
+        shares?: pulumi.Input<number>;
+        /**
+         * Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM (defaults to `512` MiB).
          */
         size?: pulumi.Input<number>;
     }
 
-    export interface ContainerFeatures {
+    export interface VmLegacyNetwork {
         /**
-         * Whether the container supports FUSE mounts (defaults to `false`)
-         */
-        fuse?: pulumi.Input<boolean>;
-        /**
-         * Whether the container supports `keyctl()` system call (defaults to `false`)
-         */
-        keyctl?: pulumi.Input<boolean>;
-        /**
-         * List of allowed mount types (`cifs` or `nfs`)
-         */
-        mounts?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * Whether the container is nested (defaults to `false`)
-         */
-        nesting?: pulumi.Input<boolean>;
-    }
-
-    export interface ContainerInitialization {
-        /**
-         * The DNS configuration.
-         */
-        dns?: pulumi.Input<inputs.CT.ContainerInitializationDns>;
-        /**
-         * The hostname.
-         */
-        hostname?: pulumi.Input<string>;
-        /**
-         * The IP configuration (one block per network
-         * device).
-         */
-        ipConfigs?: pulumi.Input<pulumi.Input<inputs.CT.ContainerInitializationIpConfig>[]>;
-        /**
-         * The user account configuration.
-         */
-        userAccount?: pulumi.Input<inputs.CT.ContainerInitializationUserAccount>;
-    }
-
-    export interface ContainerInitializationDns {
-        /**
-         * The DNS search domain.
-         */
-        domain?: pulumi.Input<string>;
-        /**
-         * The DNS server.
-         * The `server` attribute is deprecated and will be removed in a future release. Please use
-         * the `servers` attribute instead.
-         *
-         * @deprecated The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
-         */
-        server?: pulumi.Input<string>;
-        /**
-         * The list of DNS servers.
-         */
-        servers?: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
-    export interface ContainerInitializationIpConfig {
-        /**
-         * The IPv4 configuration.
-         */
-        ipv4?: pulumi.Input<inputs.CT.ContainerInitializationIpConfigIpv4>;
-        /**
-         * The IPv6 configuration.
-         */
-        ipv6?: pulumi.Input<inputs.CT.ContainerInitializationIpConfigIpv6>;
-    }
-
-    export interface ContainerInitializationIpConfigIpv4 {
-        /**
-         * The IPv4 address in CIDR notation
-         * (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
-         * autodiscovery.
-         */
-        address?: pulumi.Input<string>;
-        /**
-         * The IPv4 gateway (must be omitted
-         * when `dhcp` is used as the address).
-         */
-        gateway?: pulumi.Input<string>;
-    }
-
-    export interface ContainerInitializationIpConfigIpv6 {
-        /**
-         * The IPv6 address in CIDR notation
-         * (e.g. fd1c::7334/64). Alternatively, set this
-         * to `dhcp` for DHCPv6, or `auto` for SLAAC.
-         */
-        address?: pulumi.Input<string>;
-        /**
-         * The IPv6 gateway (must be omitted
-         * when `dhcp` or `auto` are used as the address).
-         */
-        gateway?: pulumi.Input<string>;
-    }
-
-    export interface ContainerInitializationUserAccount {
-        /**
-         * The SSH keys for the root account.
-         */
-        keys?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * The password for the root account.
-         */
-        password?: pulumi.Input<string>;
-    }
-
-    export interface ContainerMemory {
-        /**
-         * The dedicated memory in megabytes (defaults
-         * to `512`).
-         */
-        dedicated?: pulumi.Input<number>;
-        /**
-         * The swap size in megabytes (defaults to `0`).
-         */
-        swap?: pulumi.Input<number>;
-    }
-
-    export interface ContainerMountPoint {
-        /**
-         * Explicitly enable or disable ACL support.
-         */
-        acl?: pulumi.Input<boolean>;
-        /**
-         * Whether to include the mount point in backups (only
-         * used for volume mount points, defaults to `false`).
-         */
-        backup?: pulumi.Input<boolean>;
-        /**
-         * List of extra mount options.
-         */
-        mountOptions?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * Path to the mount point as seen from inside the
-         * container.
-         */
-        path: pulumi.Input<string>;
-        /**
-         * The in-datastore path to the mount point volume.
-         * Use this attribute for cross-resource references instead of `volume`.
-         */
-        pathInDatastore?: pulumi.Input<string>;
-        /**
-         * Enable user quotas inside the container (not supported
-         * with ZFS subvolumes).
-         */
-        quota?: pulumi.Input<boolean>;
-        /**
-         * Read-only mount point.
-         */
-        readOnly?: pulumi.Input<boolean>;
-        /**
-         * Will include this volume to a storage replica job.
-         */
-        replicate?: pulumi.Input<boolean>;
-        /**
-         * Mark this non-volume mount point as available on all
-         * nodes.
-         */
-        shared?: pulumi.Input<boolean>;
-        /**
-         * Volume size (only for volume mount points).
-         * Can be specified with a unit suffix (e.g. `10G`).
-         */
-        size?: pulumi.Input<string>;
-        /**
-         * Volume, device or directory to mount into the
-         * container.
-         */
-        volume: pulumi.Input<string>;
-    }
-
-    export interface ContainerNetworkInterface {
-        /**
-         * The name of the network bridge (defaults
-         * to `vmbr0`).
+         * Bridge name.
          */
         bridge?: pulumi.Input<string>;
         /**
-         * Whether to enable the network device (defaults
-         * to `true`).
-         */
-        enabled?: pulumi.Input<boolean>;
-        /**
-         * Whether this interface's firewall rules should be
-         * used (defaults to `false`).
+         * Enable firewall on this interface.
          */
         firewall?: pulumi.Input<boolean>;
         /**
-         * The MAC address.
+         * Keep link down.
+         */
+        linkDown?: pulumi.Input<boolean>;
+        /**
+         * MAC address (computed if omitted).
          */
         macAddress?: pulumi.Input<string>;
         /**
-         * Maximum transfer unit of the interface. Cannot be
-         * larger than the bridge's MTU.
+         * NIC model (e.g., virtio, e1000).
+         */
+        model?: pulumi.Input<string>;
+        /**
+         * Interface MTU.
          */
         mtu?: pulumi.Input<number>;
         /**
-         * The network interface name.
+         * Number of multiqueue NIC queues.
          */
-        name: pulumi.Input<string>;
+        queues?: pulumi.Input<number>;
         /**
-         * The rate limit in megabytes per second.
+         * Rate limit (MB/s).
          */
         rateLimit?: pulumi.Input<number>;
         /**
-         * The VLAN identifier.
+         * VLAN tag.
          */
-        vlanId?: pulumi.Input<number>;
+        tag?: pulumi.Input<number>;
+        /**
+         * Trunk VLAN IDs.
+         */
+        trunks?: pulumi.Input<pulumi.Input<number>[]>;
     }
 
-    export interface ContainerOperatingSystem {
+    export interface VmLegacyRng {
         /**
-         * The identifier for an OS template file.
-         * The ID format is `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`.
-         * Can be also taken from `proxmoxve.Download.File` resource, or from the output of `pvesm list <storage>`.
+         * Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
          */
-        templateFileId: pulumi.Input<string>;
+        maxBytes?: pulumi.Input<number>;
         /**
-         * The type (defaults to `unmanaged`).
+         * Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+         */
+        period?: pulumi.Input<number>;
+        /**
+         * The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+         */
+        source?: pulumi.Input<string>;
+    }
+
+    export interface VmLegacyTimeouts {
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        create?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+         */
+        delete?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+         */
+        read?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        update?: pulumi.Input<string>;
+    }
+
+    export interface VmLegacyVga {
+        /**
+         * Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+         */
+        clipboard?: pulumi.Input<string>;
+        /**
+         * The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+         */
+        memory?: pulumi.Input<number>;
+        /**
+         * The VGA type (defaults to `std`).
          */
         type?: pulumi.Input<string>;
     }
 
-    export interface ContainerStartup {
+    export interface VmMemory {
         /**
-         * A non-negative number defining the delay in
-         * seconds before the next container is shut down.
+         * Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely (defaults to `0`).
          */
-        downDelay?: pulumi.Input<number>;
+        balloon?: pulumi.Input<number>;
         /**
-         * A non-negative number defining the general startup
-         * order.
+         * Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses. 
+         *
+         * **Options:**
+         * - `2` - Use 2 MiB hugepages
+         * - `1024` - Use 1 GiB hugepages
+         * - `any` - Use any available hugepage size
          */
-        order?: pulumi.Input<number>;
+        hugepages?: pulumi.Input<string>;
         /**
-         * A non-negative number defining the delay in
-         * seconds before the next container is started.
+         * Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup (defaults to `false`).
          */
-        upDelay?: pulumi.Input<number>;
+        keepHugepages?: pulumi.Input<boolean>;
+        /**
+         * CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs (defaults to `1000`).
+         */
+        shares?: pulumi.Input<number>;
+        /**
+         * Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM (defaults to `512` MiB).
+         */
+        size?: pulumi.Input<number>;
     }
 
-    export interface ContainerWaitForIp {
+    export interface VmNetwork {
         /**
-         * Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+         * Bridge name.
          */
-        ipv4?: pulumi.Input<boolean>;
+        bridge?: pulumi.Input<string>;
         /**
-         * Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
-         *
-         * When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+         * Enable firewall on this interface.
          */
-        ipv6?: pulumi.Input<boolean>;
+        firewall?: pulumi.Input<boolean>;
+        /**
+         * Keep link down.
+         */
+        linkDown?: pulumi.Input<boolean>;
+        /**
+         * MAC address (computed if omitted).
+         */
+        macAddress?: pulumi.Input<string>;
+        /**
+         * NIC model (e.g., virtio, e1000).
+         */
+        model?: pulumi.Input<string>;
+        /**
+         * Interface MTU.
+         */
+        mtu?: pulumi.Input<number>;
+        /**
+         * Number of multiqueue NIC queues.
+         */
+        queues?: pulumi.Input<number>;
+        /**
+         * Rate limit (MB/s).
+         */
+        rateLimit?: pulumi.Input<number>;
+        /**
+         * VLAN tag.
+         */
+        tag?: pulumi.Input<number>;
+        /**
+         * Trunk VLAN IDs.
+         */
+        trunks?: pulumi.Input<pulumi.Input<number>[]>;
+    }
+
+    export interface VmRng {
+        /**
+         * Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+         */
+        maxBytes?: pulumi.Input<number>;
+        /**
+         * Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+         */
+        period?: pulumi.Input<number>;
+        /**
+         * The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+         */
+        source?: pulumi.Input<string>;
+    }
+
+    export interface VmTimeouts {
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        create?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+         */
+        delete?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+         */
+        read?: pulumi.Input<string>;
+        /**
+         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+         */
+        update?: pulumi.Input<string>;
+    }
+
+    export interface VmVga {
+        /**
+         * Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
+         */
+        clipboard?: pulumi.Input<string>;
+        /**
+         * The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
+         */
+        memory?: pulumi.Input<number>;
+        /**
+         * The VGA type (defaults to `std`).
+         */
+        type?: pulumi.Input<string>;
     }
 }
 
-export namespace Cluster {
+export namespace cluster {
+    export interface OptionsLegacyNextId {
+        /**
+         * The minimum number for the next free VM ID. Must be higher or equal to 100
+         */
+        lower?: pulumi.Input<number>;
+        /**
+         * The maximum number for the next free VM ID. Must be less or equal to 999999999
+         */
+        upper?: pulumi.Input<number>;
+    }
+
+    export interface OptionsLegacyNotify {
+        /**
+         * Cluster-wide notification settings for the HA fencing mode. Must be `always` | `never`.
+         */
+        haFencingMode?: pulumi.Input<string>;
+        /**
+         * Cluster-wide notification settings for the HA fencing target.
+         */
+        haFencingTarget?: pulumi.Input<string>;
+        /**
+         * Cluster-wide notification settings for package updates. Must be `auto` | `always` | `never`.
+         */
+        packageUpdates?: pulumi.Input<string>;
+        /**
+         * Cluster-wide notification settings for the package updates target.
+         */
+        packageUpdatesTarget?: pulumi.Input<string>;
+        /**
+         * Cluster-wide notification settings for replication. Must be `always` | `never`.
+         */
+        replication?: pulumi.Input<string>;
+        /**
+         * Cluster-wide notification settings for the replication target.
+         */
+        replicationTarget?: pulumi.Input<string>;
+    }
+
     export interface OptionsNextId {
         /**
          * The minimum number for the next free VM ID. Must be higher or equal to 100
@@ -686,8 +1523,22 @@ export namespace Cluster {
     }
 }
 
-export namespace Hardware {
+export namespace config {
+}
+
+export namespace hardware {
     export namespace mapping {
+        export interface DirLegacyMap {
+            /**
+             * The node this mapping applies to.
+             */
+            node: pulumi.Input<string>;
+            /**
+             * The path of the map. For directory mappings the path is required and refers to the POSIX path of the directory as visible from the node.
+             */
+            path: pulumi.Input<string>;
+        }
+
         export interface DirMap {
             /**
              * The node this mapping applies to.
@@ -697,6 +1548,33 @@ export namespace Hardware {
              * The path of the map. For directory mappings the path is required and refers to the POSIX path of the directory as visible from the node.
              */
             path: pulumi.Input<string>;
+        }
+
+        export interface PciLegacyMap {
+            /**
+             * The comment of the mapped PCI device.
+             */
+            comment?: pulumi.Input<string>;
+            /**
+             * The ID of the map.
+             */
+            id: pulumi.Input<string>;
+            /**
+             * The IOMMU group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
+             */
+            iommuGroup?: pulumi.Input<number>;
+            /**
+             * The node name of the map.
+             */
+            node: pulumi.Input<string>;
+            /**
+             * The path of the map.
+             */
+            path: pulumi.Input<string>;
+            /**
+             * The subsystem ID group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
+             */
+            subsystemId?: pulumi.Input<string>;
         }
 
         export interface PciMap {
@@ -709,7 +1587,7 @@ export namespace Hardware {
              */
             id: pulumi.Input<string>;
             /**
-             * The IOMMU group of the map. Not mandatory for the Proxmox VE API call, but causes a PCI hardware mapping to be incomplete when not set
+             * The IOMMU group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
              */
             iommuGroup?: pulumi.Input<number>;
             /**
@@ -721,9 +1599,28 @@ export namespace Hardware {
              */
             path: pulumi.Input<string>;
             /**
-             * The subsystem ID group of the map. Not mandatory for the Proxmox VE API call, but causes a PCI hardware mapping to be incomplete when not set
+             * The subsystem ID group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
              */
             subsystemId?: pulumi.Input<string>;
+        }
+
+        export interface UsbLegacyMap {
+            /**
+             * The comment of the mapped USB device.
+             */
+            comment?: pulumi.Input<string>;
+            /**
+             * The ID of the map.
+             */
+            id: pulumi.Input<string>;
+            /**
+             * The node name of the map.
+             */
+            node: pulumi.Input<string>;
+            /**
+             * The path of the map. For USB hardware mappings, this is optional and indicates that the device is mapped via its device ID rather than ports.
+             */
+            path?: pulumi.Input<string>;
         }
 
         export interface UsbMap {
@@ -740,270 +1637,14 @@ export namespace Hardware {
              */
             node: pulumi.Input<string>;
             /**
-             * The path of the map. For hardware mappings of type USB the path is optional and indicates that the device is mapped through the device ID instead of ports.
+             * The path of the map. For USB hardware mappings, this is optional and indicates that the device is mapped via its device ID rather than ports.
              */
             path?: pulumi.Input<string>;
         }
     }
 }
 
-export namespace Network {
-    export interface FirewallIPSetCidr {
-        /**
-         * Arbitrary string annotation.
-         */
-        comment?: pulumi.Input<string>;
-        /**
-         * Network/IP specification in CIDR format.
-         */
-        name: pulumi.Input<string>;
-        /**
-         * Entries marked as `nomatch` are skipped as if those
-         * were not added to the set.
-         */
-        nomatch?: pulumi.Input<boolean>;
-    }
-
-    export interface FirewallLogRatelimit {
-        /**
-         * Initial burst of packages which will always get
-         * logged before the rate is applied (defaults to `5`).
-         */
-        burst?: pulumi.Input<number>;
-        /**
-         * Enable or disable the log rate limit.
-         */
-        enabled?: pulumi.Input<boolean>;
-        /**
-         * Frequency with which the burst bucket gets refilled
-         * (defaults to `1/second`).
-         */
-        rate?: pulumi.Input<string>;
-    }
-
-    export interface FirewallRulesRule {
-        /**
-         * Rule action (`ACCEPT`, `DROP`, `REJECT`).
-         */
-        action?: pulumi.Input<string>;
-        /**
-         * Rule comment.
-         */
-        comment?: pulumi.Input<string>;
-        /**
-         * Restrict packet destination address. This can
-         * refer to a single IP address, an IP set ('+ipsetname') or an IP
-         * alias definition. You can also specify an address range
-         * like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
-         * networks (entries are separated by comma). Please do not mix IPv4
-         * and IPv6 addresses inside such lists.
-         */
-        dest?: pulumi.Input<string>;
-        /**
-         * Restrict TCP/UDP destination port. You can use
-         * service names or simple numbers (0-65535), as defined
-         * in `/etc/services`. Port ranges can be specified with '\d+:\d+', for
-         * example `80:85`, and you can use comma separated list to match
-         * several ports or ranges.
-         */
-        dport?: pulumi.Input<string>;
-        /**
-         * Enable this rule. Defaults to `true`.
-         */
-        enabled?: pulumi.Input<boolean>;
-        /**
-         * Network interface name. You have to use network
-         * configuration key names for VMs and containers ('net\d+'). Host
-         * related rules can use arbitrary strings.
-         */
-        iface?: pulumi.Input<string>;
-        /**
-         * Log level for this rule (`emerg`, `alert`, `crit`,
-         * `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
-         */
-        log?: pulumi.Input<string>;
-        /**
-         * Macro name. Use predefined standard macro
-         * from <https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions>
-         */
-        macro?: pulumi.Input<string>;
-        /**
-         * Position of the rule in the list.
-         */
-        pos?: pulumi.Input<number>;
-        /**
-         * Restrict packet protocol. You can use protocol
-         * names as defined in '/etc/protocols'.
-         */
-        proto?: pulumi.Input<string>;
-        /**
-         * Security group name.
-         */
-        securityGroup?: pulumi.Input<string>;
-        /**
-         * Restrict packet source address. This can refer
-         * to a single IP address, an IP set ('+ipsetname') or an IP alias
-         * definition. You can also specify an address range
-         * like `20.34.101.207-201.3.9.99`, or a list of IP addresses and
-         * networks (entries are separated by comma). Please do not mix IPv4
-         * and IPv6 addresses inside such lists.
-         */
-        source?: pulumi.Input<string>;
-        /**
-         * Restrict TCP/UDP source port. You can use
-         * service names or simple numbers (0-65535), as defined
-         * in `/etc/services`. Port ranges can be specified with '\d+:\d+', for
-         * example `80:85`, and you can use comma separated list to match
-         * several ports or ranges.
-         * - a security group insertion block, which includes the following arguments:
-         */
-        sport?: pulumi.Input<string>;
-        /**
-         * Rule type (`in`, `out`, `forward`).
-         */
-        type?: pulumi.Input<string>;
-    }
-
-    export interface FirewallSecurityGroupRule {
-        /**
-         * Rule action (`ACCEPT`, `DROP`, `REJECT`).
-         */
-        action?: pulumi.Input<string>;
-        /**
-         * Rule comment.
-         */
-        comment?: pulumi.Input<string>;
-        /**
-         * Restrict packet destination address. This can refer to
-         * a single IP address, an IP set ('+ipsetname') or an IP alias
-         * definition. You can also specify an address range like
-         * `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks
-         * (entries are separated by comma). Please do not mix IPv4 and IPv6
-         * addresses inside such lists.
-         */
-        dest?: pulumi.Input<string>;
-        /**
-         * Restrict TCP/UDP destination port. You can use
-         * service names or simple numbers (0-65535), as defined in '/etc/
-         * services'. Port ranges can be specified with '\d+:\d+', for example
-         * `80:85`, and you can use comma separated list to match several ports or
-         * ranges.
-         */
-        dport?: pulumi.Input<string>;
-        /**
-         * Enable this rule. Defaults to `true`.
-         */
-        enabled?: pulumi.Input<boolean>;
-        /**
-         * Network interface name. You have to use network
-         * configuration key names for VMs and containers ('net\d+'). Host related
-         * rules can use arbitrary strings.
-         */
-        iface?: pulumi.Input<string>;
-        /**
-         * Log level for this rule (`emerg`, `alert`, `crit`,
-         * `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
-         */
-        log?: pulumi.Input<string>;
-        /**
-         * Macro name. Use predefined standard macro
-         * from <https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions>
-         */
-        macro?: pulumi.Input<string>;
-        /**
-         * Position of the rule in the list.
-         */
-        pos?: pulumi.Input<number>;
-        /**
-         * Restrict packet protocol. You can use protocol names
-         * as defined in '/etc/protocols'.
-         */
-        proto?: pulumi.Input<string>;
-        /**
-         * Security group name
-         */
-        securityGroup?: pulumi.Input<string>;
-        /**
-         * Restrict packet source address. This can refer
-         * to a single IP address, an IP set ('+ipsetname') or an IP alias
-         * definition. You can also specify an address range like
-         * `20.34.101.207-201.3.9.99`, or a list of IP addresses and networks (
-         * entries are separated by comma). Please do not mix IPv4 and IPv6
-         * addresses inside such lists.
-         */
-        source?: pulumi.Input<string>;
-        /**
-         * Restrict TCP/UDP source port. You can use
-         * service names or simple numbers (0-65535), as defined in '/etc/
-         * services'. Port ranges can be specified with '\d+:\d+', for example
-         * `80:85`, and you can use comma separated list to match several ports or
-         * ranges.
-         */
-        sport?: pulumi.Input<string>;
-        /**
-         * Rule type (`in`, `out`, `forward`).
-         */
-        type?: pulumi.Input<string>;
-    }
-
-}
-
-export namespace Permission {
-    export interface GroupAcl {
-        /**
-         * The path.
-         */
-        path: pulumi.Input<string>;
-        /**
-         * Whether to propagate to child paths.
-         */
-        propagate?: pulumi.Input<boolean>;
-        /**
-         * The role identifier.
-         */
-        roleId: pulumi.Input<string>;
-    }
-
-    export interface PoolMember {
-        /**
-         * The datastore identifier.
-         */
-        datastoreId?: pulumi.Input<string>;
-        /**
-         * The member identifier.
-         */
-        id?: pulumi.Input<string>;
-        /**
-         * The node name.
-         */
-        nodeName?: pulumi.Input<string>;
-        /**
-         * The member type.
-         */
-        type?: pulumi.Input<string>;
-        /**
-         * The virtual machine identifier.
-         */
-        vmId?: pulumi.Input<number>;
-    }
-
-    export interface UserAcl {
-        /**
-         * The path.
-         */
-        path: pulumi.Input<string>;
-        /**
-         * Whether to propagate to child paths.
-         */
-        propagate?: pulumi.Input<boolean>;
-        /**
-         * The role identifier.
-         */
-        roleId: pulumi.Input<string>;
-    }
-}
-
-export namespace Sdn {
+export namespace sdn {
     export interface GetSubnetDhcpRange {
         /**
          * End of the DHCP range.
@@ -1026,7 +1667,40 @@ export namespace Sdn {
         startAddress?: pulumi.Input<string>;
     }
 
+    export interface GetSubnetLegacyDhcpRange {
+        /**
+         * End of the DHCP range.
+         */
+        endAddress?: string;
+        /**
+         * Start of the DHCP range.
+         */
+        startAddress?: string;
+    }
+
+    export interface GetSubnetLegacyDhcpRangeArgs {
+        /**
+         * End of the DHCP range.
+         */
+        endAddress?: pulumi.Input<string>;
+        /**
+         * Start of the DHCP range.
+         */
+        startAddress?: pulumi.Input<string>;
+    }
+
     export interface SubnetDhcpRange {
+        /**
+         * End of the DHCP range.
+         */
+        endAddress: pulumi.Input<string>;
+        /**
+         * Start of the DHCP range.
+         */
+        startAddress: pulumi.Input<string>;
+    }
+
+    export interface SubnetLegacyDhcpRange {
         /**
          * End of the DHCP range.
          */
@@ -1038,8 +1712,43 @@ export namespace Sdn {
     }
 }
 
-export namespace Storage {
-    export interface CIFSBackups {
+export namespace storage {
+    export interface CifsBackups {
+        /**
+         * Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
+         */
+        keepAll?: pulumi.Input<boolean>;
+        /**
+         * The number of daily backups to keep. Older backups will be removed.
+         */
+        keepDaily?: pulumi.Input<number>;
+        /**
+         * The number of hourly backups to keep. Older backups will be removed.
+         */
+        keepHourly?: pulumi.Input<number>;
+        /**
+         * Specifies the number of the most recent backups to keep, regardless of their age.
+         */
+        keepLast?: pulumi.Input<number>;
+        /**
+         * The number of monthly backups to keep. Older backups will be removed.
+         */
+        keepMonthly?: pulumi.Input<number>;
+        /**
+         * The number of weekly backups to keep. Older backups will be removed.
+         */
+        keepWeekly?: pulumi.Input<number>;
+        /**
+         * The number of yearly backups to keep. Older backups will be removed.
+         */
+        keepYearly?: pulumi.Input<number>;
+        /**
+         * The maximum number of protected backups per guest. Use '-1' for unlimited.
+         */
+        maxProtectedBackups?: pulumi.Input<number>;
+    }
+
+    export interface CifsLegacyBackups {
         /**
          * Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
          */
@@ -1109,177 +1818,7 @@ export namespace Storage {
         maxProtectedBackups?: pulumi.Input<number>;
     }
 
-    export interface FileSourceFile {
-        /**
-         * Whether the source file has changed since the last run
-         */
-        changed?: pulumi.Input<boolean>;
-        /**
-         * The SHA256 checksum of the source file.
-         */
-        checksum?: pulumi.Input<string>;
-        /**
-         * The file name to use instead of the source file
-         * name. Useful when the source file does not have a valid file extension,
-         * for example when the source file is a URL referencing a `.qcow2` image.
-         */
-        fileName?: pulumi.Input<string>;
-        /**
-         * Whether to skip the TLS verification step for
-         * HTTPS sources (defaults to `false`).
-         */
-        insecure?: pulumi.Input<boolean>;
-        /**
-         * The minimum required TLS version for HTTPS
-         * sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
-         */
-        minTls?: pulumi.Input<string>;
-        /**
-         * A path to a local file or a URL.
-         */
-        path: pulumi.Input<string>;
-    }
-
-    export interface FileSourceRaw {
-        /**
-         * The raw data.
-         */
-        data: pulumi.Input<string>;
-        /**
-         * The file name.
-         */
-        fileName: pulumi.Input<string>;
-        /**
-         * The number of bytes to resize the file to.
-         */
-        resize?: pulumi.Input<number>;
-    }
-
-    export interface GetDatastoresDatastore {
-        /**
-         * Whether the store is active.
-         */
-        active?: boolean;
-        /**
-         * Allowed store content types.
-         */
-        contentTypes: string[];
-        /**
-         * Whether the store is enabled.
-         */
-        enabled?: boolean;
-        /**
-         * The ID of the store.
-         */
-        id: string;
-        /**
-         * The name of the node the store is on.
-         */
-        nodeName: string;
-        /**
-         * Shared flag from store configuration.
-         */
-        shared?: boolean;
-        /**
-         * Available store space in bytes.
-         */
-        spaceAvailable?: number;
-        /**
-         * Total store space in bytes.
-         */
-        spaceTotal?: number;
-        /**
-         * Used store space in bytes.
-         */
-        spaceUsed?: number;
-        /**
-         * Used fraction (used/total).
-         */
-        spaceUsedFraction?: number;
-        /**
-         * Store type.
-         */
-        type: string;
-    }
-
-    export interface GetDatastoresDatastoreArgs {
-        /**
-         * Whether the store is active.
-         */
-        active?: pulumi.Input<boolean>;
-        /**
-         * Allowed store content types.
-         */
-        contentTypes: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * Whether the store is enabled.
-         */
-        enabled?: pulumi.Input<boolean>;
-        /**
-         * The ID of the store.
-         */
-        id: pulumi.Input<string>;
-        /**
-         * The name of the node the store is on.
-         */
-        nodeName: pulumi.Input<string>;
-        /**
-         * Shared flag from store configuration.
-         */
-        shared?: pulumi.Input<boolean>;
-        /**
-         * Available store space in bytes.
-         */
-        spaceAvailable?: pulumi.Input<number>;
-        /**
-         * Total store space in bytes.
-         */
-        spaceTotal?: pulumi.Input<number>;
-        /**
-         * Used store space in bytes.
-         */
-        spaceUsed?: pulumi.Input<number>;
-        /**
-         * Used fraction (used/total).
-         */
-        spaceUsedFraction?: pulumi.Input<number>;
-        /**
-         * Store type.
-         */
-        type: pulumi.Input<string>;
-    }
-
-    export interface GetDatastoresFilters {
-        /**
-         * Only list stores with the given content types.
-         */
-        contentTypes?: string[];
-        /**
-         * Only list stores with the given ID.
-         */
-        id?: string;
-        /**
-         * If `target` is different to `nodeName`, then only lists shared stores which content is accessible on this node and the specified `target` node.
-         */
-        target?: string;
-    }
-
-    export interface GetDatastoresFiltersArgs {
-        /**
-         * Only list stores with the given content types.
-         */
-        contentTypes?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * Only list stores with the given ID.
-         */
-        id?: pulumi.Input<string>;
-        /**
-         * If `target` is different to `nodeName`, then only lists shared stores which content is accessible on this node and the specified `target` node.
-         */
-        target?: pulumi.Input<string>;
-    }
-
-    export interface NFSBackups {
+    export interface DirectoryLegacyBackups {
         /**
          * Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
          */
@@ -1314,7 +1853,7 @@ export namespace Storage {
         maxProtectedBackups?: pulumi.Input<number>;
     }
 
-    export interface PBSBackups {
+    export interface NfsBackups {
         /**
          * Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
          */
@@ -1348,1199 +1887,109 @@ export namespace Storage {
          */
         maxProtectedBackups?: pulumi.Input<number>;
     }
-}
 
-export namespace VM {
-    export interface ClonedVirtualMachineCdrom {
+    export interface NfsLegacyBackups {
         /**
-         * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+         * Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
          */
-        fileId?: pulumi.Input<string>;
+        keepAll?: pulumi.Input<boolean>;
+        /**
+         * The number of daily backups to keep. Older backups will be removed.
+         */
+        keepDaily?: pulumi.Input<number>;
+        /**
+         * The number of hourly backups to keep. Older backups will be removed.
+         */
+        keepHourly?: pulumi.Input<number>;
+        /**
+         * Specifies the number of the most recent backups to keep, regardless of their age.
+         */
+        keepLast?: pulumi.Input<number>;
+        /**
+         * The number of monthly backups to keep. Older backups will be removed.
+         */
+        keepMonthly?: pulumi.Input<number>;
+        /**
+         * The number of weekly backups to keep. Older backups will be removed.
+         */
+        keepWeekly?: pulumi.Input<number>;
+        /**
+         * The number of yearly backups to keep. Older backups will be removed.
+         */
+        keepYearly?: pulumi.Input<number>;
+        /**
+         * The maximum number of protected backups per guest. Use '-1' for unlimited.
+         */
+        maxProtectedBackups?: pulumi.Input<number>;
     }
 
-    export interface ClonedVirtualMachineClone {
+    export interface PbsBackups {
         /**
-         * Clone bandwidth limit in MB/s.
+         * Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
          */
-        bandwidthLimit?: pulumi.Input<number>;
+        keepAll?: pulumi.Input<boolean>;
         /**
-         * Perform a full clone (true) or linked clone (false).
+         * The number of daily backups to keep. Older backups will be removed.
          */
-        full?: pulumi.Input<boolean>;
+        keepDaily?: pulumi.Input<number>;
         /**
-         * Pool to assign the cloned VM to.
+         * The number of hourly backups to keep. Older backups will be removed.
          */
-        poolId?: pulumi.Input<string>;
+        keepHourly?: pulumi.Input<number>;
         /**
-         * Number of retries for clone operations.
+         * Specifies the number of the most recent backups to keep, regardless of their age.
          */
-        retries?: pulumi.Input<number>;
+        keepLast?: pulumi.Input<number>;
         /**
-         * Snapshot name to clone from.
+         * The number of monthly backups to keep. Older backups will be removed.
          */
-        snapshotName?: pulumi.Input<string>;
+        keepMonthly?: pulumi.Input<number>;
         /**
-         * Source node of the VM/template. Defaults to target node if unset.
+         * The number of weekly backups to keep. Older backups will be removed.
          */
-        sourceNodeName?: pulumi.Input<string>;
+        keepWeekly?: pulumi.Input<number>;
         /**
-         * Source VM/template ID to clone from.
+         * The number of yearly backups to keep. Older backups will be removed.
          */
-        sourceVmId: pulumi.Input<number>;
+        keepYearly?: pulumi.Input<number>;
         /**
-         * Target datastore for cloned disks.
+         * The maximum number of protected backups per guest. Use '-1' for unlimited.
          */
-        targetDatastore?: pulumi.Input<string>;
-        /**
-         * Target disk format for clone (e.g., raw, qcow2).
-         */
-        targetFormat?: pulumi.Input<string>;
+        maxProtectedBackups?: pulumi.Input<number>;
     }
 
-    export interface ClonedVirtualMachineCpu {
+    export interface PbsLegacyBackups {
         /**
-         * The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+         * Specifies if all backups should be kept, regardless of their age. When set to true, other keep_* attributes must not be set.
          */
-        affinity?: pulumi.Input<string>;
+        keepAll?: pulumi.Input<boolean>;
         /**
-         * The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
+         * The number of daily backups to keep. Older backups will be removed.
          */
-        architecture?: pulumi.Input<string>;
+        keepDaily?: pulumi.Input<number>;
         /**
-         * The number of CPU cores per socket (defaults to `1`).
+         * The number of hourly backups to keep. Older backups will be removed.
          */
-        cores?: pulumi.Input<number>;
+        keepHourly?: pulumi.Input<number>;
         /**
-         * Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
+         * Specifies the number of the most recent backups to keep, regardless of their age.
          */
-        flags?: pulumi.Input<pulumi.Input<string>[]>;
+        keepLast?: pulumi.Input<number>;
         /**
-         * The number of hotplugged vCPUs (defaults to `0`).
+         * The number of monthly backups to keep. Older backups will be removed.
          */
-        hotplugged?: pulumi.Input<number>;
+        keepMonthly?: pulumi.Input<number>;
         /**
-         * Limit of CPU usage (defaults to `0` which means no limit).
+         * The number of weekly backups to keep. Older backups will be removed.
          */
-        limit?: pulumi.Input<number>;
+        keepWeekly?: pulumi.Input<number>;
         /**
-         * Enable NUMA (defaults to `false`).
+         * The number of yearly backups to keep. Older backups will be removed.
          */
-        numa?: pulumi.Input<boolean>;
+        keepYearly?: pulumi.Input<number>;
         /**
-         * The number of CPU sockets (defaults to `1`).
+         * The maximum number of protected backups per guest. Use '-1' for unlimited.
          */
-        sockets?: pulumi.Input<number>;
-        /**
-         * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
-         */
-        type?: pulumi.Input<string>;
-        /**
-         * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
-         */
-        units?: pulumi.Input<number>;
+        maxProtectedBackups?: pulumi.Input<number>;
     }
-
-    export interface ClonedVirtualMachineDelete {
-        /**
-         * Disk slots to delete (e.g., scsi2).
-         */
-        disks?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * Network slots to delete (e.g., net1).
-         */
-        networks?: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
-    export interface ClonedVirtualMachineDisk {
-        /**
-         * AIO mode (io_uring, native, threads).
-         */
-        aio?: pulumi.Input<string>;
-        /**
-         * Include disk in backups.
-         */
-        backup?: pulumi.Input<boolean>;
-        /**
-         * Cache mode.
-         */
-        cache?: pulumi.Input<string>;
-        /**
-         * Target datastore for new disks when file is not provided.
-         */
-        datastoreId?: pulumi.Input<string>;
-        /**
-         * Discard/trim behavior.
-         */
-        discard?: pulumi.Input<string>;
-        /**
-         * Existing volume reference (e.g., local-lvm:vm-100-disk-0).
-         */
-        file?: pulumi.Input<string>;
-        /**
-         * Disk format (raw, qcow2, vmdk).
-         */
-        format?: pulumi.Input<string>;
-        /**
-         * Import source volume/file id.
-         */
-        importFrom?: pulumi.Input<string>;
-        /**
-         * Use IO thread.
-         */
-        iothread?: pulumi.Input<boolean>;
-        /**
-         * Disk media (e.g., disk, cdrom).
-         */
-        media?: pulumi.Input<string>;
-        /**
-         * Consider disk for replication.
-         */
-        replicate?: pulumi.Input<boolean>;
-        /**
-         * Disk serial number.
-         */
-        serial?: pulumi.Input<string>;
-        /**
-         * Disk size (GiB) when creating new disks. **Note:** Disk shrinking is not supported. Attempting to set `sizeGb` to a value smaller than the current disk size will result in an error. Only disk expansion is allowed.
-         */
-        sizeGb?: pulumi.Input<number>;
-        /**
-         * Mark disk as SSD.
-         */
-        ssd?: pulumi.Input<boolean>;
-    }
-
-    export interface ClonedVirtualMachineMemory {
-        /**
-         * Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely (defaults to `0`).
-         */
-        balloon?: pulumi.Input<number>;
-        /**
-         * Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses. 
-         *
-         * **Options:**
-         * - `2` - Use 2 MiB hugepages
-         * - `1024` - Use 1 GiB hugepages
-         * - `any` - Use any available hugepage size
-         */
-        hugepages?: pulumi.Input<string>;
-        /**
-         * Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup (defaults to `false`).
-         */
-        keepHugepages?: pulumi.Input<boolean>;
-        /**
-         * CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs (defaults to `1000`).
-         */
-        shares?: pulumi.Input<number>;
-        /**
-         * Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM (defaults to `512` MiB).
-         */
-        size?: pulumi.Input<number>;
-    }
-
-    export interface ClonedVirtualMachineNetwork {
-        /**
-         * Bridge name.
-         */
-        bridge?: pulumi.Input<string>;
-        /**
-         * Enable firewall on this interface.
-         */
-        firewall?: pulumi.Input<boolean>;
-        /**
-         * Keep link down.
-         */
-        linkDown?: pulumi.Input<boolean>;
-        /**
-         * MAC address (computed if omitted).
-         */
-        macAddress?: pulumi.Input<string>;
-        /**
-         * NIC model (e.g., virtio, e1000).
-         */
-        model?: pulumi.Input<string>;
-        /**
-         * Interface MTU.
-         */
-        mtu?: pulumi.Input<number>;
-        /**
-         * Number of multiqueue NIC queues.
-         */
-        queues?: pulumi.Input<number>;
-        /**
-         * Rate limit (MB/s).
-         */
-        rateLimit?: pulumi.Input<number>;
-        /**
-         * VLAN tag.
-         */
-        tag?: pulumi.Input<number>;
-        /**
-         * Trunk VLAN IDs.
-         */
-        trunks?: pulumi.Input<pulumi.Input<number>[]>;
-    }
-
-    export interface ClonedVirtualMachineRng {
-        /**
-         * Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
-         */
-        maxBytes?: pulumi.Input<number>;
-        /**
-         * Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
-         */
-        period?: pulumi.Input<number>;
-        /**
-         * The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
-         */
-        source?: pulumi.Input<string>;
-    }
-
-    export interface ClonedVirtualMachineTimeouts {
-        /**
-         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-         */
-        create?: pulumi.Input<string>;
-        /**
-         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-         */
-        delete?: pulumi.Input<string>;
-        /**
-         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-         */
-        read?: pulumi.Input<string>;
-        /**
-         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-         */
-        update?: pulumi.Input<string>;
-    }
-
-    export interface ClonedVirtualMachineVga {
-        /**
-         * Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
-         */
-        clipboard?: pulumi.Input<string>;
-        /**
-         * The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
-         */
-        memory?: pulumi.Input<number>;
-        /**
-         * The VGA type (defaults to `std`).
-         */
-        type?: pulumi.Input<string>;
-    }
-
-    export interface GetVirtualMachinesFilter {
-        /**
-         * Name of the VM attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
-         */
-        name: string;
-        /**
-         * Treat values as regex patterns
-         */
-        regex?: boolean;
-        /**
-         * List of values to pass the filter. VM's attribute should match at least one value in the list.
-         */
-        values: string[];
-    }
-
-    export interface GetVirtualMachinesFilterArgs {
-        /**
-         * Name of the VM attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
-         */
-        name: pulumi.Input<string>;
-        /**
-         * Treat values as regex patterns
-         */
-        regex?: pulumi.Input<boolean>;
-        /**
-         * List of values to pass the filter. VM's attribute should match at least one value in the list.
-         */
-        values: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
-    export interface VirtualMachine2Cdrom {
-        /**
-         * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
-         */
-        fileId?: pulumi.Input<string>;
-    }
-
-    export interface VirtualMachine2Cpu {
-        /**
-         * The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
-         */
-        affinity?: pulumi.Input<string>;
-        /**
-         * The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
-         */
-        architecture?: pulumi.Input<string>;
-        /**
-         * The number of CPU cores per socket (defaults to `1`).
-         */
-        cores?: pulumi.Input<number>;
-        /**
-         * Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
-         */
-        flags?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * The number of hotplugged vCPUs (defaults to `0`).
-         */
-        hotplugged?: pulumi.Input<number>;
-        /**
-         * Limit of CPU usage (defaults to `0` which means no limit).
-         */
-        limit?: pulumi.Input<number>;
-        /**
-         * Enable NUMA (defaults to `false`).
-         */
-        numa?: pulumi.Input<boolean>;
-        /**
-         * The number of CPU sockets (defaults to `1`).
-         */
-        sockets?: pulumi.Input<number>;
-        /**
-         * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
-         */
-        type?: pulumi.Input<string>;
-        /**
-         * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
-         */
-        units?: pulumi.Input<number>;
-    }
-
-    export interface VirtualMachine2Rng {
-        /**
-         * Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
-         */
-        maxBytes?: pulumi.Input<number>;
-        /**
-         * Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
-         */
-        period?: pulumi.Input<number>;
-        /**
-         * The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
-         */
-        source?: pulumi.Input<string>;
-    }
-
-    export interface VirtualMachine2Timeouts {
-        /**
-         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-         */
-        create?: pulumi.Input<string>;
-        /**
-         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
-         */
-        delete?: pulumi.Input<string>;
-        /**
-         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
-         */
-        read?: pulumi.Input<string>;
-        /**
-         * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-         */
-        update?: pulumi.Input<string>;
-    }
-
-    export interface VirtualMachine2Vga {
-        /**
-         * Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
-         */
-        clipboard?: pulumi.Input<string>;
-        /**
-         * The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
-         */
-        memory?: pulumi.Input<number>;
-        /**
-         * The VGA type (defaults to `std`).
-         */
-        type?: pulumi.Input<string>;
-    }
-
-    export interface VirtualMachineAgent {
-        /**
-         * Whether to enable the QEMU agent (defaults
-         * to `false`).
-         */
-        enabled?: pulumi.Input<boolean>;
-        /**
-         * The maximum amount of time to wait for data from
-         * the QEMU agent to become available ( defaults to `15m`).
-         */
-        timeout?: pulumi.Input<string>;
-        /**
-         * Whether to enable the FSTRIM feature in the QEMU agent
-         * (defaults to `false`).
-         */
-        trim?: pulumi.Input<boolean>;
-        /**
-         * The QEMU agent interface type (defaults to `virtio`).
-         */
-        type?: pulumi.Input<string>;
-        /**
-         * Configuration for waiting for specific IP address types when the VM starts.
-         */
-        waitForIp?: pulumi.Input<inputs.VM.VirtualMachineAgentWaitForIp>;
-    }
-
-    export interface VirtualMachineAgentWaitForIp {
-        /**
-         * Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
-         */
-        ipv4?: pulumi.Input<boolean>;
-        /**
-         * Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
-         *
-         * When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
-         */
-        ipv6?: pulumi.Input<boolean>;
-    }
-
-    export interface VirtualMachineAmdSev {
-        /**
-         * Sets policy bit to allow Simultaneous Multi Threading (SMT)
-         * (Ignored unless for SEV-SNP) (defaults to `true`).
-         */
-        allowSmt?: pulumi.Input<boolean>;
-        /**
-         * Add kernel hashes to guest firmware for measured linux kernel launch (defaults to `false`).
-         */
-        kernelHashes?: pulumi.Input<boolean>;
-        /**
-         * Sets policy bit to disallow debugging of guest (defaults
-         * to `false`).
-         */
-        noDebug?: pulumi.Input<boolean>;
-        /**
-         * Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to `false`).
-         *
-         * The `amdSev` setting is only allowed for a `root@pam` authenticated user.
-         */
-        noKeySharing?: pulumi.Input<boolean>;
-        /**
-         * Enable standard SEV with `std` or enable experimental SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option (defaults to `std`).
-         */
-        type?: pulumi.Input<string>;
-    }
-
-    export interface VirtualMachineAudioDevice {
-        /**
-         * The device (defaults to `intel-hda`).
-         * - `AC97` - Intel 82801AA AC97 Audio.
-         * - `ich9-intel-hda` - Intel HD Audio Controller (ich9).
-         * - `intel-hda` - Intel HD Audio.
-         */
-        device?: pulumi.Input<string>;
-        /**
-         * The driver (defaults to `spice`).
-         */
-        driver?: pulumi.Input<string>;
-        /**
-         * Whether to enable the audio device (defaults
-         * to `true`).
-         */
-        enabled?: pulumi.Input<boolean>;
-    }
-
-    export interface VirtualMachineCdrom {
-        /**
-         * Whether to enable the CD-ROM drive (defaults
-         * to `false`). *Deprecated*. The attribute will be removed in the next version of the provider.
-         * Set `fileId` to `none` to leave the CD-ROM drive empty.
-         *
-         * @deprecated Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `fileId` to `none` to leave the CDROM drive empty.
-         */
-        enabled?: pulumi.Input<boolean>;
-        /**
-         * A file ID for an ISO file (defaults to `cdrom` as
-         * in the physical drive). Use `none` to leave the CD-ROM drive empty.
-         */
-        fileId?: pulumi.Input<string>;
-        /**
-         * A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
-         * "Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. " +
-         * "Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
-         */
-        interface?: pulumi.Input<string>;
-    }
-
-    export interface VirtualMachineClone {
-        /**
-         * The identifier for the target datastore.
-         */
-        datastoreId?: pulumi.Input<string>;
-        /**
-         * Full or linked clone (defaults to `true`).
-         */
-        full?: pulumi.Input<boolean>;
-        /**
-         * The name of the source node (leave blank, if
-         * equal to the `nodeName` argument).
-         */
-        nodeName?: pulumi.Input<string>;
-        /**
-         * Number of retries in Proxmox for clone vm.
-         * Sometimes Proxmox errors with timeout when creating multiple clones at
-         * once.
-         */
-        retries?: pulumi.Input<number>;
-        /**
-         * The identifier for the source VM.
-         */
-        vmId: pulumi.Input<number>;
-    }
-
-    export interface VirtualMachineCpu {
-        /**
-         * The CPU cores that are used to run the VM’s vCPU. The
-         * value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
-         * For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four
-         * CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
-         */
-        affinity?: pulumi.Input<string>;
-        /**
-         * The CPU architecture (defaults to `x8664`).
-         */
-        architecture?: pulumi.Input<string>;
-        /**
-         * The number of CPU cores (defaults to `1`).
-         */
-        cores?: pulumi.Input<number>;
-        /**
-         * The CPU flags.
-         * - `+aes`/`-aes` - Activate AES instruction set for HW acceleration.
-         * - `+amd-no-ssb`/`-amd-no-ssb` - Notifies guest OS that host is not
-         * vulnerable for Spectre on AMD CPUs.
-         * - `+amd-ssbd`/`-amd-ssbd` - Improves Spectre mitigation performance with
-         * AMD CPUs, best used with "virt-ssbd".
-         * - `+hv-evmcs`/`-hv-evmcs` - Improve performance for nested
-         * virtualization (only supported on Intel CPUs).
-         * - `+hv-tlbflush`/`-hv-tlbflush` - Improve performance in overcommitted
-         * Windows guests (may lead to guest BSOD on old CPUs).
-         * - `+ibpb`/`-ibpb` - Allows improved Spectre mitigation on AMD CPUs.
-         * - `+md-clear`/`-md-clear` - Required to let the guest OS know if MDS is
-         * mitigated correctly.
-         * - `+pcid`/`-pcid` - Meltdown fix cost reduction on Westmere, Sandy- and
-         * Ivy Bridge Intel CPUs.
-         * - `+pdpe1gb`/`-pdpe1gb` - Allows guest OS to use 1 GB size pages, if
-         * host HW supports it.
-         * - `+spec-ctrl`/`-spec-ctrl` - Allows improved Spectre mitigation with
-         * Intel CPUs.
-         * - `+ssbd`/`-ssbd` - Protection for "Speculative Store Bypass" for Intel
-         * models.
-         * - `+virt-ssbd`/`-virt-ssbd` - Basis for "Speculative Store Bypass"
-         * protection for AMD models.
-         */
-        flags?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * The number of hotplugged vCPUs (defaults
-         * to `0`).
-         */
-        hotplugged?: pulumi.Input<number>;
-        /**
-         * Limit of CPU usage, `0...128`. (defaults to `0` -- no limit).
-         */
-        limit?: pulumi.Input<number>;
-        /**
-         * Enable/disable NUMA. (default to `false`)
-         */
-        numa?: pulumi.Input<boolean>;
-        /**
-         * The number of CPU sockets (defaults to `1`).
-         */
-        sockets?: pulumi.Input<number>;
-        /**
-         * The emulated CPU type, it's recommended to
-         * use `x86-64-v2-AES` (defaults to `qemu64`).
-         */
-        type?: pulumi.Input<string>;
-        /**
-         * The CPU units. PVE default is `1024` for cgroups v1 and `100` for cgroups v2.
-         */
-        units?: pulumi.Input<number>;
-    }
-
-    export interface VirtualMachineDisk {
-        /**
-         * The disk AIO mode (defaults to `ioUring`).
-         */
-        aio?: pulumi.Input<string>;
-        /**
-         * Whether the drive should be included when making backups (defaults to `true`).
-         */
-        backup?: pulumi.Input<boolean>;
-        /**
-         * The cache type (defaults to `none`).
-         */
-        cache?: pulumi.Input<string>;
-        /**
-         * The identifier for the datastore to create
-         * the disk in (defaults to `local-lvm`).
-         */
-        datastoreId?: pulumi.Input<string>;
-        /**
-         * Whether to pass discard/trim requests to the
-         * underlying storage. Supported values are `on`/`ignore` (defaults
-         * to `ignore`).
-         */
-        discard?: pulumi.Input<string>;
-        /**
-         * The file format.
-         */
-        fileFormat?: pulumi.Input<string>;
-        /**
-         * The file ID for a disk image when importing a disk into VM. The ID format is
-         * `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
-         * `proxmoxve.Download.File` resource. Prefer `importFrom` for uncompressed images.
-         * Use `fileId` when working with compressed cloud images (e.g., `.qcow2.xz`) that were downloaded
-         * with `contentType = "iso"` and `decompressionAlgorithm` set. See the
-         * Create a VM from a Cloud Image guide for examples.
-         */
-        fileId?: pulumi.Input<string>;
-        /**
-         * The file ID for a disk image to import into VM. The image must be of `import` content type
-         * (uncompressed images only). The ID format is `<datastore_id>:import/<file_name>`, for example `local:import/centos8.qcow2`.
-         * Can be also taken from `proxmoxve.Download.File` resource. Note: compressed images downloaded with
-         * `decompressionAlgorithm` cannot use `importFrom`; use `fileId` instead.
-         */
-        importFrom?: pulumi.Input<string>;
-        /**
-         * The disk interface for Proxmox, currently `scsi`,
-         * `sata` and `virtio` interfaces are supported. Append the disk index at
-         * the end, for example, `virtio0` for the first virtio disk, `virtio1` for
-         * the second, etc.
-         */
-        interface: pulumi.Input<string>;
-        /**
-         * Whether to use iothreads for this disk (defaults
-         * to `false`).
-         */
-        iothread?: pulumi.Input<boolean>;
-        /**
-         * The in-datastore path to the disk image.
-         * ***Experimental.***Use to attach another VM's disks,
-         * or (as root only) host's filesystem paths (`datastoreId` empty string).
-         * See "*Example: Attached disks*".
-         */
-        pathInDatastore?: pulumi.Input<string>;
-        /**
-         * Whether the drive should be considered for replication jobs (defaults to `true`).
-         */
-        replicate?: pulumi.Input<boolean>;
-        /**
-         * The serial number of the disk, up to 20 bytes long.
-         */
-        serial?: pulumi.Input<string>;
-        /**
-         * The disk size in gigabytes (defaults to `8`).
-         */
-        size?: pulumi.Input<number>;
-        /**
-         * The speed limits.
-         */
-        speed?: pulumi.Input<inputs.VM.VirtualMachineDiskSpeed>;
-        /**
-         * Whether to use an SSD emulation option for this disk (
-         * defaults to `false`). Note that SSD emulation is not supported on VirtIO
-         * Block drives.
-         */
-        ssd?: pulumi.Input<boolean>;
-    }
-
-    export interface VirtualMachineDiskSpeed {
-        /**
-         * The maximum read I/O in operations per second.
-         */
-        iopsRead?: pulumi.Input<number>;
-        /**
-         * The maximum unthrottled read I/O pool in operations per second.
-         */
-        iopsReadBurstable?: pulumi.Input<number>;
-        /**
-         * The maximum write I/O in operations per second.
-         */
-        iopsWrite?: pulumi.Input<number>;
-        /**
-         * The maximum unthrottled write I/O pool in operations per second.
-         */
-        iopsWriteBurstable?: pulumi.Input<number>;
-        /**
-         * The maximum read speed in megabytes per second.
-         */
-        read?: pulumi.Input<number>;
-        /**
-         * The maximum burstable read speed in
-         * megabytes per second.
-         */
-        readBurstable?: pulumi.Input<number>;
-        /**
-         * The maximum write speed in megabytes per second.
-         */
-        write?: pulumi.Input<number>;
-        /**
-         * The maximum burstable write speed in
-         * megabytes per second.
-         */
-        writeBurstable?: pulumi.Input<number>;
-    }
-
-    export interface VirtualMachineEfiDisk {
-        /**
-         * The identifier for the datastore to create
-         * the disk in (defaults to `local-lvm`).
-         */
-        datastoreId?: pulumi.Input<string>;
-        /**
-         * The file format (defaults to `raw`).
-         */
-        fileFormat?: pulumi.Input<string>;
-        /**
-         * Use am EFI vars template with
-         * distribution-specific and Microsoft Standard keys enrolled, if used with
-         * EFI type=`4m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
-         * to `false`).
-         */
-        preEnrolledKeys?: pulumi.Input<boolean>;
-        /**
-         * Size and type of the OVMF EFI disk. `4m` is newer and
-         * recommended, and required for Secure Boot. For backwards compatibility
-         * use `2m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
-         * to `2m`).
-         */
-        type?: pulumi.Input<string>;
-    }
-
-    export interface VirtualMachineHostpci {
-        /**
-         * The PCI device name for Proxmox, in form
-         * of `hostpciX` where `X` is a sequential number from 0 to 15.
-         */
-        device: pulumi.Input<string>;
-        /**
-         * The PCI device ID. This parameter is not compatible
-         * with `apiToken` and requires the root `username` and `password`
-         * configured in the proxmox provider. Use either this or `mapping`.
-         */
-        id?: pulumi.Input<string>;
-        /**
-         * The resource mapping name of the device, for
-         * example gpu. Use either this or `id`.
-         */
-        mapping?: pulumi.Input<string>;
-        /**
-         * The mediated device ID to use.
-         */
-        mdev?: pulumi.Input<string>;
-        /**
-         * Tells Proxmox to use a PCIe or PCI port. Some
-         * guests/device combination require PCIe rather than PCI. PCIe is only
-         * available for q35 machine types.
-         */
-        pcie?: pulumi.Input<boolean>;
-        /**
-         * A path to a ROM file for the device to use. This
-         * is a relative path under `/usr/share/kvm/`.
-         */
-        romFile?: pulumi.Input<string>;
-        /**
-         * Makes the firmware ROM visible for the VM (defaults
-         * to `true`).
-         */
-        rombar?: pulumi.Input<boolean>;
-        /**
-         * Marks the PCI(e) device as the primary GPU of the VM.
-         * With this enabled the `vga` configuration argument will be ignored.
-         */
-        xvga?: pulumi.Input<boolean>;
-    }
-
-    export interface VirtualMachineInitialization {
-        /**
-         * The identifier for the datastore to create the
-         * cloud-init disk in (defaults to `local-lvm`).
-         */
-        datastoreId?: pulumi.Input<string>;
-        /**
-         * The DNS configuration.
-         */
-        dns?: pulumi.Input<inputs.VM.VirtualMachineInitializationDns>;
-        /**
-         * The file format.
-         */
-        fileFormat?: pulumi.Input<string>;
-        /**
-         * The hardware interface to connect the cloud-init
-         * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
-         * detected if the setting is missing but a cloud-init image is present,
-         * otherwise defaults to `ide2`.
-         */
-        interface?: pulumi.Input<string>;
-        /**
-         * The IP configuration (one block per network
-         * device).
-         */
-        ipConfigs?: pulumi.Input<pulumi.Input<inputs.VM.VirtualMachineInitializationIpConfig>[]>;
-        /**
-         * The identifier for a file containing
-         * all meta data passed to the VM via cloud-init.
-         */
-        metaDataFileId?: pulumi.Input<string>;
-        /**
-         * The identifier for a file containing
-         * network configuration data passed to the VM via cloud-init (conflicts
-         * with `ipConfig`).
-         */
-        networkDataFileId?: pulumi.Input<string>;
-        /**
-         * The cloud-init configuration format
-         */
-        type?: pulumi.Input<string>;
-        /**
-         * The user account configuration (conflicts
-         * with `userDataFileId`).
-         */
-        userAccount?: pulumi.Input<inputs.VM.VirtualMachineInitializationUserAccount>;
-        /**
-         * The identifier for a file containing
-         * custom user data (conflicts with `userAccount`).
-         */
-        userDataFileId?: pulumi.Input<string>;
-        /**
-         * The identifier for a file containing
-         * all vendor data passed to the VM via cloud-init.
-         */
-        vendorDataFileId?: pulumi.Input<string>;
-    }
-
-    export interface VirtualMachineInitializationDns {
-        /**
-         * The DNS search domain.
-         */
-        domain?: pulumi.Input<string>;
-        /**
-         * The list of DNS servers.
-         */
-        servers?: pulumi.Input<pulumi.Input<string>[]>;
-    }
-
-    export interface VirtualMachineInitializationIpConfig {
-        /**
-         * The IPv4 configuration.
-         */
-        ipv4?: pulumi.Input<inputs.VM.VirtualMachineInitializationIpConfigIpv4>;
-        /**
-         * The IPv6 configuration.
-         */
-        ipv6?: pulumi.Input<inputs.VM.VirtualMachineInitializationIpConfigIpv6>;
-    }
-
-    export interface VirtualMachineInitializationIpConfigIpv4 {
-        /**
-         * The IPv4 address in CIDR notation
-         * (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
-         * autodiscovery.
-         */
-        address?: pulumi.Input<string>;
-        /**
-         * The IPv4 gateway (must be omitted
-         * when `dhcp` is used as the address).
-         */
-        gateway?: pulumi.Input<string>;
-    }
-
-    export interface VirtualMachineInitializationIpConfigIpv6 {
-        /**
-         * The IPv6 address in CIDR notation
-         * (e.g. fd1c::7334/64). Alternatively, set this
-         * to `dhcp` for DHCPv6, or `auto` for SLAAC.
-         */
-        address?: pulumi.Input<string>;
-        /**
-         * The IPv6 gateway (must be omitted
-         * when `dhcp` or `auto` are used as the address).
-         */
-        gateway?: pulumi.Input<string>;
-    }
-
-    export interface VirtualMachineInitializationUserAccount {
-        /**
-         * The SSH keys.
-         */
-        keys?: pulumi.Input<pulumi.Input<string>[]>;
-        /**
-         * The SSH password.
-         */
-        password?: pulumi.Input<string>;
-        /**
-         * The SSH username.
-         */
-        username?: pulumi.Input<string>;
-    }
-
-    export interface VirtualMachineMemory {
-        /**
-         * The dedicated memory in megabytes (defaults to `512`).
-         */
-        dedicated?: pulumi.Input<number>;
-        /**
-         * The floating memory in megabytes. The default is `0`, which disables "ballooning device" for the VM.
-         * Please note that Proxmox has ballooning enabled by default. To enable it, set `floating` to the same value as `dedicated`.
-         * See [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_memory) section 10.2.6 for more information.
-         */
-        floating?: pulumi.Input<number>;
-        /**
-         * Enable/disable hugepages memory (defaults to disable).
-         */
-        hugepages?: pulumi.Input<string>;
-        /**
-         * Keep hugepages memory after the VM is stopped (defaults to `false`).
-         *
-         * Settings `hugepages` and `keepHugepages` are only allowed for `root@pam` authenticated user.
-         * And required `cpu.numa` to be enabled.
-         */
-        keepHugepages?: pulumi.Input<boolean>;
-        /**
-         * The shared memory in megabytes (defaults to `0`).
-         */
-        shared?: pulumi.Input<number>;
-    }
-
-    export interface VirtualMachineNetworkDevice {
-        /**
-         * The name of the network bridge (defaults to `vmbr0`).
-         */
-        bridge?: pulumi.Input<string>;
-        /**
-         * Whether to disconnect the network device from the network (defaults to `false`).
-         */
-        disconnected?: pulumi.Input<boolean>;
-        /**
-         * Whether to enable the network device (defaults to `true`).
-         */
-        enabled?: pulumi.Input<boolean>;
-        /**
-         * Whether this interface's firewall rules should be used (defaults to `false`).
-         */
-        firewall?: pulumi.Input<boolean>;
-        /**
-         * The MAC address.
-         */
-        macAddress?: pulumi.Input<string>;
-        /**
-         * The network device model (defaults to `virtio`).
-         */
-        model?: pulumi.Input<string>;
-        /**
-         * Force MTU, for VirtIO only. Set to 1 to use the bridge MTU. Cannot be larger than the bridge MTU.
-         */
-        mtu?: pulumi.Input<number>;
-        /**
-         * The number of queues for VirtIO (1..64).
-         */
-        queues?: pulumi.Input<number>;
-        /**
-         * The rate limit in megabytes per second.
-         */
-        rateLimit?: pulumi.Input<number>;
-        /**
-         * String containing a `;` separated list of VLAN trunks
-         * ("10;20;30"). Note that the VLAN-aware feature need to be enabled on the PVE
-         * Linux Bridge to use trunks.
-         */
-        trunks?: pulumi.Input<string>;
-        /**
-         * The VLAN identifier.
-         */
-        vlanId?: pulumi.Input<number>;
-    }
-
-    export interface VirtualMachineNuma {
-        /**
-         * The CPU cores to assign to the NUMA node (format is `0-7;16-31`).
-         */
-        cpus: pulumi.Input<string>;
-        /**
-         * The NUMA device name for Proxmox, in form
-         * of `numaX` where `X` is a sequential number from 0 to 7.
-         */
-        device: pulumi.Input<string>;
-        /**
-         * The NUMA host nodes.
-         */
-        hostnodes?: pulumi.Input<string>;
-        /**
-         * The memory in megabytes to assign to the NUMA node.
-         */
-        memory: pulumi.Input<number>;
-        /**
-         * The NUMA policy (defaults to `preferred`).
-         */
-        policy?: pulumi.Input<string>;
-    }
-
-    export interface VirtualMachineOperatingSystem {
-        /**
-         * The type (defaults to `other`).
-         */
-        type?: pulumi.Input<string>;
-    }
-
-    export interface VirtualMachineRng {
-        /**
-         * Maximum bytes of entropy allowed to get injected into the guest every `period` milliseconds (defaults to `1024`). Prefer a lower value when using `/dev/random` as source.
-         */
-        maxBytes?: pulumi.Input<number>;
-        /**
-         * Every `period` milliseconds the entropy-injection quota is reset, allowing the guest to retrieve another `maxBytes` of entropy (defaults to `1000`).
-         */
-        period?: pulumi.Input<number>;
-        /**
-         * The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
-         */
-        source: pulumi.Input<string>;
-    }
-
-    export interface VirtualMachineSerialDevice {
-        /**
-         * The device (defaults to `socket`).
-         * - `/dev/*` - A host serial device.
-         */
-        device?: pulumi.Input<string>;
-    }
-
-    export interface VirtualMachineSmbios {
-        /**
-         * The family string.
-         */
-        family?: pulumi.Input<string>;
-        /**
-         * The manufacturer.
-         */
-        manufacturer?: pulumi.Input<string>;
-        /**
-         * The product ID.
-         */
-        product?: pulumi.Input<string>;
-        /**
-         * The serial number.
-         */
-        serial?: pulumi.Input<string>;
-        /**
-         * The SKU number.
-         */
-        sku?: pulumi.Input<string>;
-        /**
-         * The UUID (defaults to randomly generated UUID).
-         */
-        uuid?: pulumi.Input<string>;
-        /**
-         * The version.
-         */
-        version?: pulumi.Input<string>;
-    }
-
-    export interface VirtualMachineStartup {
-        /**
-         * A non-negative number defining the delay in
-         * seconds before the next VM is shut down.
-         */
-        downDelay?: pulumi.Input<number>;
-        /**
-         * A non-negative number defining the general startup
-         * order.
-         */
-        order?: pulumi.Input<number>;
-        /**
-         * A non-negative number defining the delay in
-         * seconds before the next VM is started.
-         */
-        upDelay?: pulumi.Input<number>;
-    }
-
-    export interface VirtualMachineTpmState {
-        /**
-         * The identifier for the datastore to create
-         * the disk in (defaults to `local-lvm`).
-         */
-        datastoreId?: pulumi.Input<string>;
-        /**
-         * TPM state device version. Can be `v1.2` or `v2.0`.
-         * (defaults to `v2.0`).
-         */
-        version?: pulumi.Input<string>;
-    }
-
-    export interface VirtualMachineUsb {
-        /**
-         * The Host USB device or port or the value `spice`. Use either this or `mapping`.
-         */
-        host?: pulumi.Input<string>;
-        /**
-         * The cluster-wide resource mapping name of the device, for example "usbdevice". Use either this or `host`.
-         */
-        mapping?: pulumi.Input<string>;
-        /**
-         * Makes the USB device a USB3 device for the VM
-         * (defaults to `false`).
-         */
-        usb3?: pulumi.Input<boolean>;
-    }
-
-    export interface VirtualMachineVga {
-        /**
-         * Enable VNC clipboard by setting to `vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
-         */
-        clipboard?: pulumi.Input<string>;
-        /**
-         * The VGA memory in megabytes (defaults to `16`).
-         */
-        memory?: pulumi.Input<number>;
-        /**
-         * The VGA type (defaults to `std`).
-         */
-        type?: pulumi.Input<string>;
-    }
-
-    export interface VirtualMachineVirtiof {
-        /**
-         * The caching mode
-         */
-        cache?: pulumi.Input<string>;
-        /**
-         * Whether to allow direct io
-         */
-        directIo?: pulumi.Input<boolean>;
-        /**
-         * Enable POSIX ACLs, implies xattr support
-         */
-        exposeAcl?: pulumi.Input<boolean>;
-        /**
-         * Enable support for extended attributes
-         */
-        exposeXattr?: pulumi.Input<boolean>;
-        /**
-         * Identifier of the directory mapping
-         */
-        mapping: pulumi.Input<string>;
-    }
-
-    export interface VirtualMachineWatchdog {
-        /**
-         * The action to perform if after activation the guest fails to poll the watchdog in time  (defaults to `none`).
-         */
-        action?: pulumi.Input<string>;
-        /**
-         * Whether the watchdog is enabled (defaults to `false`).
-         */
-        enabled?: pulumi.Input<boolean>;
-        /**
-         * The watchdog type to emulate (defaults to `i6300esb`).
-         */
-        model?: pulumi.Input<string>;
-    }
-}
-
-export namespace config {
 }

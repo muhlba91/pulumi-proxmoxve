@@ -21,81 +21,18 @@ import javax.annotation.Nullable;
  * ACLs are used to control access to resources in the Proxmox cluster.
  * Each ACL consists of a path, a user, group or token, a role, and a flag to allow propagation of permissions.
  * 
- * ## Example Usage
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import io.muehlbachler.pulumi.proxmoxve.Permission.User;
- * import io.muehlbachler.pulumi.proxmoxve.Permission.UserArgs;
- * import io.muehlbachler.pulumi.proxmoxve.Permission.Role;
- * import io.muehlbachler.pulumi.proxmoxve.Permission.RoleArgs;
- * import io.muehlbachler.pulumi.proxmoxve.Acl;
- * import io.muehlbachler.pulumi.proxmoxve.AclArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
- *         Pulumi.run(App::stack);
- *     }}{@code
- * 
- *     public static void stack(Context ctx) }{{@code
- *         var operationsAutomation = new User("operationsAutomation", UserArgs.builder()
- *             .comment("Managed by Pulumi")
- *             .password("a-strong-password")
- *             .userId("operations-automation}{@literal @}{@code pve")
- *             .build());
- * 
- *         var operationsMonitoring = new Role("operationsMonitoring", RoleArgs.builder()
- *             .roleId("operations-monitoring")
- *             .privileges("VM.GuestAgent.Audit")
- *             .build());
- * 
- *         var operationsAutomationMonitoring = new Acl("operationsAutomationMonitoring", AclArgs.builder()
- *             .userId(operationsAutomation.userId())
- *             .roleId(operationsMonitoring.roleId())
- *             .path("/vms/1234")
- *             .propagate(true)
- *             .build());
- * 
- *     }}{@code
- * }}{@code
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * ## Import
- * 
- * #!/usr/bin/env sh
- * 
- * ACL can be imported using its unique identifier, e.g.: {path}?{group|user{@literal @}realm|user{@literal @}realm!token}?{role}
- * 
- * ```sh
- * $ pulumi import proxmoxve:index/acl:Acl operations_automation_monitoring /?monitor{@literal @}pve?operations-monitoring
- * ```
- * 
  */
 @ResourceType(type="proxmoxve:index/acl:Acl")
 public class Acl extends com.pulumi.resources.CustomResource {
     /**
-     * The group the ACL should apply to (mutually exclusive with &lt;span pulumi-lang-nodejs=&#34;`tokenId`&#34; pulumi-lang-dotnet=&#34;`TokenId`&#34; pulumi-lang-go=&#34;`tokenId`&#34; pulumi-lang-python=&#34;`token_id`&#34; pulumi-lang-yaml=&#34;`tokenId`&#34; pulumi-lang-java=&#34;`tokenId`&#34;&gt;`token_id`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`userId`&#34; pulumi-lang-dotnet=&#34;`UserId`&#34; pulumi-lang-go=&#34;`userId`&#34; pulumi-lang-python=&#34;`user_id`&#34; pulumi-lang-yaml=&#34;`userId`&#34; pulumi-lang-java=&#34;`userId`&#34;&gt;`user_id`&lt;/span&gt;)
+     * The group the ACL should apply to (mutually exclusive with &lt;span pulumi-lang-nodejs=&#34;`tokenId`&#34; pulumi-lang-dotnet=&#34;`TokenId`&#34; pulumi-lang-go=&#34;`tokenId`&#34; pulumi-lang-python=&#34;`token_id`&#34; pulumi-lang-yaml=&#34;`tokenId`&#34; pulumi-lang-java=&#34;`tokenId`&#34;&gt;`tokenId`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`userId`&#34; pulumi-lang-dotnet=&#34;`UserId`&#34; pulumi-lang-go=&#34;`userId`&#34; pulumi-lang-python=&#34;`user_id`&#34; pulumi-lang-yaml=&#34;`userId`&#34; pulumi-lang-java=&#34;`userId`&#34;&gt;`userId`&lt;/span&gt;)
      * 
      */
     @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> groupId;
 
     /**
-     * @return The group the ACL should apply to (mutually exclusive with &lt;span pulumi-lang-nodejs=&#34;`tokenId`&#34; pulumi-lang-dotnet=&#34;`TokenId`&#34; pulumi-lang-go=&#34;`tokenId`&#34; pulumi-lang-python=&#34;`token_id`&#34; pulumi-lang-yaml=&#34;`tokenId`&#34; pulumi-lang-java=&#34;`tokenId`&#34;&gt;`token_id`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`userId`&#34; pulumi-lang-dotnet=&#34;`UserId`&#34; pulumi-lang-go=&#34;`userId`&#34; pulumi-lang-python=&#34;`user_id`&#34; pulumi-lang-yaml=&#34;`userId`&#34; pulumi-lang-java=&#34;`userId`&#34;&gt;`user_id`&lt;/span&gt;)
+     * @return The group the ACL should apply to (mutually exclusive with &lt;span pulumi-lang-nodejs=&#34;`tokenId`&#34; pulumi-lang-dotnet=&#34;`TokenId`&#34; pulumi-lang-go=&#34;`tokenId`&#34; pulumi-lang-python=&#34;`token_id`&#34; pulumi-lang-yaml=&#34;`tokenId`&#34; pulumi-lang-java=&#34;`tokenId`&#34;&gt;`tokenId`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`userId`&#34; pulumi-lang-dotnet=&#34;`UserId`&#34; pulumi-lang-go=&#34;`userId`&#34; pulumi-lang-python=&#34;`user_id`&#34; pulumi-lang-yaml=&#34;`userId`&#34; pulumi-lang-java=&#34;`userId`&#34;&gt;`userId`&lt;/span&gt;)
      * 
      */
     public Output<Optional<String>> groupId() {
@@ -144,28 +81,28 @@ public class Acl extends com.pulumi.resources.CustomResource {
         return this.roleId;
     }
     /**
-     * The token the ACL should apply to (mutually exclusive with &lt;span pulumi-lang-nodejs=&#34;`groupId`&#34; pulumi-lang-dotnet=&#34;`GroupId`&#34; pulumi-lang-go=&#34;`groupId`&#34; pulumi-lang-python=&#34;`group_id`&#34; pulumi-lang-yaml=&#34;`groupId`&#34; pulumi-lang-java=&#34;`groupId`&#34;&gt;`group_id`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`userId`&#34; pulumi-lang-dotnet=&#34;`UserId`&#34; pulumi-lang-go=&#34;`userId`&#34; pulumi-lang-python=&#34;`user_id`&#34; pulumi-lang-yaml=&#34;`userId`&#34; pulumi-lang-java=&#34;`userId`&#34;&gt;`user_id`&lt;/span&gt;)
+     * The token the ACL should apply to (mutually exclusive with &lt;span pulumi-lang-nodejs=&#34;`groupId`&#34; pulumi-lang-dotnet=&#34;`GroupId`&#34; pulumi-lang-go=&#34;`groupId`&#34; pulumi-lang-python=&#34;`group_id`&#34; pulumi-lang-yaml=&#34;`groupId`&#34; pulumi-lang-java=&#34;`groupId`&#34;&gt;`groupId`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`userId`&#34; pulumi-lang-dotnet=&#34;`UserId`&#34; pulumi-lang-go=&#34;`userId`&#34; pulumi-lang-python=&#34;`user_id`&#34; pulumi-lang-yaml=&#34;`userId`&#34; pulumi-lang-java=&#34;`userId`&#34;&gt;`userId`&lt;/span&gt;)
      * 
      */
     @Export(name="tokenId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tokenId;
 
     /**
-     * @return The token the ACL should apply to (mutually exclusive with &lt;span pulumi-lang-nodejs=&#34;`groupId`&#34; pulumi-lang-dotnet=&#34;`GroupId`&#34; pulumi-lang-go=&#34;`groupId`&#34; pulumi-lang-python=&#34;`group_id`&#34; pulumi-lang-yaml=&#34;`groupId`&#34; pulumi-lang-java=&#34;`groupId`&#34;&gt;`group_id`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`userId`&#34; pulumi-lang-dotnet=&#34;`UserId`&#34; pulumi-lang-go=&#34;`userId`&#34; pulumi-lang-python=&#34;`user_id`&#34; pulumi-lang-yaml=&#34;`userId`&#34; pulumi-lang-java=&#34;`userId`&#34;&gt;`user_id`&lt;/span&gt;)
+     * @return The token the ACL should apply to (mutually exclusive with &lt;span pulumi-lang-nodejs=&#34;`groupId`&#34; pulumi-lang-dotnet=&#34;`GroupId`&#34; pulumi-lang-go=&#34;`groupId`&#34; pulumi-lang-python=&#34;`group_id`&#34; pulumi-lang-yaml=&#34;`groupId`&#34; pulumi-lang-java=&#34;`groupId`&#34;&gt;`groupId`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`userId`&#34; pulumi-lang-dotnet=&#34;`UserId`&#34; pulumi-lang-go=&#34;`userId`&#34; pulumi-lang-python=&#34;`user_id`&#34; pulumi-lang-yaml=&#34;`userId`&#34; pulumi-lang-java=&#34;`userId`&#34;&gt;`userId`&lt;/span&gt;)
      * 
      */
     public Output<Optional<String>> tokenId() {
         return Codegen.optional(this.tokenId);
     }
     /**
-     * The user the ACL should apply to (mutually exclusive with &lt;span pulumi-lang-nodejs=&#34;`groupId`&#34; pulumi-lang-dotnet=&#34;`GroupId`&#34; pulumi-lang-go=&#34;`groupId`&#34; pulumi-lang-python=&#34;`group_id`&#34; pulumi-lang-yaml=&#34;`groupId`&#34; pulumi-lang-java=&#34;`groupId`&#34;&gt;`group_id`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`tokenId`&#34; pulumi-lang-dotnet=&#34;`TokenId`&#34; pulumi-lang-go=&#34;`tokenId`&#34; pulumi-lang-python=&#34;`token_id`&#34; pulumi-lang-yaml=&#34;`tokenId`&#34; pulumi-lang-java=&#34;`tokenId`&#34;&gt;`token_id`&lt;/span&gt;)
+     * The user the ACL should apply to (mutually exclusive with &lt;span pulumi-lang-nodejs=&#34;`groupId`&#34; pulumi-lang-dotnet=&#34;`GroupId`&#34; pulumi-lang-go=&#34;`groupId`&#34; pulumi-lang-python=&#34;`group_id`&#34; pulumi-lang-yaml=&#34;`groupId`&#34; pulumi-lang-java=&#34;`groupId`&#34;&gt;`groupId`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`tokenId`&#34; pulumi-lang-dotnet=&#34;`TokenId`&#34; pulumi-lang-go=&#34;`tokenId`&#34; pulumi-lang-python=&#34;`token_id`&#34; pulumi-lang-yaml=&#34;`tokenId`&#34; pulumi-lang-java=&#34;`tokenId`&#34;&gt;`tokenId`&lt;/span&gt;)
      * 
      */
     @Export(name="userId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userId;
 
     /**
-     * @return The user the ACL should apply to (mutually exclusive with &lt;span pulumi-lang-nodejs=&#34;`groupId`&#34; pulumi-lang-dotnet=&#34;`GroupId`&#34; pulumi-lang-go=&#34;`groupId`&#34; pulumi-lang-python=&#34;`group_id`&#34; pulumi-lang-yaml=&#34;`groupId`&#34; pulumi-lang-java=&#34;`groupId`&#34;&gt;`group_id`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`tokenId`&#34; pulumi-lang-dotnet=&#34;`TokenId`&#34; pulumi-lang-go=&#34;`tokenId`&#34; pulumi-lang-python=&#34;`token_id`&#34; pulumi-lang-yaml=&#34;`tokenId`&#34; pulumi-lang-java=&#34;`tokenId`&#34;&gt;`token_id`&lt;/span&gt;)
+     * @return The user the ACL should apply to (mutually exclusive with &lt;span pulumi-lang-nodejs=&#34;`groupId`&#34; pulumi-lang-dotnet=&#34;`GroupId`&#34; pulumi-lang-go=&#34;`groupId`&#34; pulumi-lang-python=&#34;`group_id`&#34; pulumi-lang-yaml=&#34;`groupId`&#34; pulumi-lang-java=&#34;`groupId`&#34;&gt;`groupId`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`tokenId`&#34; pulumi-lang-dotnet=&#34;`TokenId`&#34; pulumi-lang-go=&#34;`tokenId`&#34; pulumi-lang-python=&#34;`token_id`&#34; pulumi-lang-yaml=&#34;`tokenId`&#34; pulumi-lang-java=&#34;`tokenId`&#34;&gt;`tokenId`&lt;/span&gt;)
      * 
      */
     public Output<Optional<String>> userId() {

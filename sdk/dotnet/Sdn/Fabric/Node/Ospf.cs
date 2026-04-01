@@ -11,40 +11,8 @@ namespace Pulumi.ProxmoxVE.Sdn.Fabric.Node
 {
     /// <summary>
     /// OSPF Fabric Node in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using ProxmoxVE = Pulumi.ProxmoxVE;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var main = new ProxmoxVE.SDNFabric.OSPF("main", new()
-    ///     {
-    ///         OspfId = "main-fabric",
-    ///         IpPrefix = "10.0.0.0/16",
-    ///         Area = "0",
-    ///     });
-    /// 
-    ///     var mainOspf = new ProxmoxVE.Sdn.Fabric.Node.Ospf("main", new()
-    ///     {
-    ///         FabricId = main.OspfId,
-    ///         NodeId = "pve",
-    ///         Ip = "10.0.0.1",
-    ///         InterfaceNames = new[]
-    ///         {
-    ///             "nic0",
-    ///             "nic1",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
-    [ProxmoxVEResourceType("proxmoxve:Sdn/fabric/node/ospf:Ospf")]
+    [ProxmoxVEResourceType("proxmoxve:sdn/fabric/node/ospf:Ospf")]
     public partial class Ospf : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -80,12 +48,12 @@ namespace Pulumi.ProxmoxVE.Sdn.Fabric.Node
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Ospf(string name, OspfArgs args, CustomResourceOptions? options = null)
-            : base("proxmoxve:Sdn/fabric/node/ospf:Ospf", name, args ?? new OspfArgs(), MakeResourceOptions(options, ""))
+            : base("proxmoxve:sdn/fabric/node/ospf:Ospf", name, args ?? new OspfArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Ospf(string name, Input<string> id, OspfState? state = null, CustomResourceOptions? options = null)
-            : base("proxmoxve:Sdn/fabric/node/ospf:Ospf", name, state, MakeResourceOptions(options, id))
+            : base("proxmoxve:sdn/fabric/node/ospf:Ospf", name, state, MakeResourceOptions(options, id))
         {
         }
 

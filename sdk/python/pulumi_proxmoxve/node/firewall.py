@@ -33,6 +33,7 @@ class FirewallArgs:
                  tcp_flags_log_level: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Firewall resource.
+
         :param pulumi.Input[_builtins.str] node_name: The cluster node name.
         :param pulumi.Input[_builtins.bool] enabled: Enable host firewall rules (defaults to `true`).
         :param pulumi.Input[_builtins.str] log_level_forward: Log level for forwarded traffic. Must be one of: `emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` (defaults to `nolog`).
@@ -232,6 +233,7 @@ class _FirewallState:
                  tcp_flags_log_level: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Firewall resources.
+
         :param pulumi.Input[_builtins.bool] enabled: Enable host firewall rules (defaults to `true`).
         :param pulumi.Input[_builtins.str] log_level_forward: Log level for forwarded traffic. Must be one of: `emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` (defaults to `nolog`).
         :param pulumi.Input[_builtins.str] log_level_in: Log level for incoming traffic. Must be one of: `emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` (defaults to `nolog`).
@@ -415,7 +417,7 @@ class _FirewallState:
         pulumi.set(self, "tcp_flags_log_level", value)
 
 
-@pulumi.type_token("proxmoxve:Node/firewall:Firewall")
+@pulumi.type_token("proxmoxve:node/firewall:Firewall")
 class Firewall(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -439,33 +441,6 @@ class Firewall(pulumi.CustomResource):
 
         > This resource in fact updates existing node firewall configuration created by PVE on bootstrap. All optional attributes have explicit defaults for deterministic behavior (PVE may change defaults in the future). See [API documentation](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/firewall/options).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        node_pve1 = proxmoxve.node.Firewall("node-pve1",
-            node_name="pve1",
-            enabled=False)
-        pve2 = proxmoxve.node.Firewall("pve2",
-            node_name="pve2",
-            enabled=True,
-            log_level_in="alert",
-            log_level_out="alert",
-            log_level_forward="alert",
-            ndp=True,
-            nftables=True,
-            nosmurfs=True,
-            smurf_log_level="alert",
-            tcp_flags_log_level="alert")
-        ```
-
-        ## Import
-
-        ```sh
-        $ pulumi import proxmoxve:Node/firewall:Firewall node-pve1 pve1
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -493,33 +468,6 @@ class Firewall(pulumi.CustomResource):
 
         > This resource in fact updates existing node firewall configuration created by PVE on bootstrap. All optional attributes have explicit defaults for deterministic behavior (PVE may change defaults in the future). See [API documentation](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/firewall/options).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        node_pve1 = proxmoxve.node.Firewall("node-pve1",
-            node_name="pve1",
-            enabled=False)
-        pve2 = proxmoxve.node.Firewall("pve2",
-            node_name="pve2",
-            enabled=True,
-            log_level_in="alert",
-            log_level_out="alert",
-            log_level_forward="alert",
-            ndp=True,
-            nftables=True,
-            nosmurfs=True,
-            smurf_log_level="alert",
-            tcp_flags_log_level="alert")
-        ```
-
-        ## Import
-
-        ```sh
-        $ pulumi import proxmoxve:Node/firewall:Firewall node-pve1 pve1
-        ```
 
         :param str resource_name: The name of the resource.
         :param FirewallArgs args: The arguments to use to populate this resource's properties.
@@ -572,7 +520,7 @@ class Firewall(pulumi.CustomResource):
             __props__.__dict__["smurf_log_level"] = smurf_log_level
             __props__.__dict__["tcp_flags_log_level"] = tcp_flags_log_level
         super(Firewall, __self__).__init__(
-            'proxmoxve:Node/firewall:Firewall',
+            'proxmoxve:node/firewall:Firewall',
             resource_name,
             __props__,
             opts)

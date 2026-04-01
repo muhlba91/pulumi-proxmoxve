@@ -8,73 +8,30 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Manages an NFS-based storage in Proxmox VE.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/storage"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.NewNFS(ctx, "example", &storage.NFSArgs{
-//				NfsId: pulumi.String("example-nfs"),
-//				Nodes: pulumi.StringArray{
-//					pulumi.String("pve"),
-//				},
-//				Server: pulumi.String("10.0.0.10"),
-//				Export: pulumi.String("/exports/proxmox"),
-//				Contents: pulumi.StringArray{
-//					pulumi.String("images"),
-//					pulumi.String("iso"),
-//					pulumi.String("backup"),
-//				},
-//				Options:               pulumi.String("vers=4.2"),
-//				Preallocation:         pulumi.String("metadata"),
-//				SnapshotAsVolumeChain: pulumi.Bool(true),
-//				Backups: &storage.NFSBackupsArgs{
-//					MaxProtectedBackups: pulumi.Int(5),
-//					KeepDaily:           pulumi.Int(7),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-type NFS struct {
+type Nfs struct {
 	pulumi.CustomResourceState
 
 	// Configure backup retention settings for the storage type.
-	Backups NFSBackupsPtrOutput `pulumi:"backups"`
+	Backups NfsBackupsPtrOutput `pulumi:"backups"`
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents pulumi.StringArrayOutput `pulumi:"contents"`
 	// Whether the storage is disabled.
 	Disable pulumi.BoolOutput `pulumi:"disable"`
 	// The path of the NFS export.
 	Export pulumi.StringOutput `pulumi:"export"`
-	// The unique identifier of the storage.
-	NfsId pulumi.StringOutput `pulumi:"nfsId"`
 	// A list of nodes where this storage is available.
 	Nodes pulumi.StringArrayOutput `pulumi:"nodes"`
 	// The options to pass to the NFS service.
 	Options pulumi.StringPtrOutput `pulumi:"options"`
 	// The preallocation mode for raw and qcow2 images.
 	Preallocation pulumi.StringPtrOutput `pulumi:"preallocation"`
+	// The unique identifier of the storage.
+	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
 	// The IP address or DNS name of the NFS server.
 	Server pulumi.StringOutput `pulumi:"server"`
 	// Whether the storage is shared across all nodes.
@@ -83,9 +40,9 @@ type NFS struct {
 	SnapshotAsVolumeChain pulumi.BoolPtrOutput `pulumi:"snapshotAsVolumeChain"`
 }
 
-// NewNFS registers a new resource with the given unique name, arguments, and options.
-func NewNFS(ctx *pulumi.Context,
-	name string, args *NFSArgs, opts ...pulumi.ResourceOption) (*NFS, error) {
+// NewNfs registers a new resource with the given unique name, arguments, and options.
+func NewNfs(ctx *pulumi.Context,
+	name string, args *NfsArgs, opts ...pulumi.ResourceOption) (*Nfs, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
@@ -93,51 +50,57 @@ func NewNFS(ctx *pulumi.Context,
 	if args.Export == nil {
 		return nil, errors.New("invalid value for required argument 'Export'")
 	}
-	if args.NfsId == nil {
-		return nil, errors.New("invalid value for required argument 'NfsId'")
+	if args.ResourceId == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceId'")
 	}
 	if args.Server == nil {
 		return nil, errors.New("invalid value for required argument 'Server'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("proxmox_virtual_environment_storage_nfs"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource NFS
-	err := ctx.RegisterResource("proxmoxve:Storage/nFS:NFS", name, args, &resource, opts...)
+	var resource Nfs
+	err := ctx.RegisterResource("proxmoxve:storage/nfs:Nfs", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetNFS gets an existing NFS resource's state with the given name, ID, and optional
+// GetNfs gets an existing Nfs resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetNFS(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *NFSState, opts ...pulumi.ResourceOption) (*NFS, error) {
-	var resource NFS
-	err := ctx.ReadResource("proxmoxve:Storage/nFS:NFS", name, id, state, &resource, opts...)
+func GetNfs(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *NfsState, opts ...pulumi.ResourceOption) (*Nfs, error) {
+	var resource Nfs
+	err := ctx.ReadResource("proxmoxve:storage/nfs:Nfs", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering NFS resources.
+// Input properties used for looking up and filtering Nfs resources.
 type nfsState struct {
 	// Configure backup retention settings for the storage type.
-	Backups *NFSBackups `pulumi:"backups"`
+	Backups *NfsBackups `pulumi:"backups"`
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents []string `pulumi:"contents"`
 	// Whether the storage is disabled.
 	Disable *bool `pulumi:"disable"`
 	// The path of the NFS export.
 	Export *string `pulumi:"export"`
-	// The unique identifier of the storage.
-	NfsId *string `pulumi:"nfsId"`
 	// A list of nodes where this storage is available.
 	Nodes []string `pulumi:"nodes"`
 	// The options to pass to the NFS service.
 	Options *string `pulumi:"options"`
 	// The preallocation mode for raw and qcow2 images.
 	Preallocation *string `pulumi:"preallocation"`
+	// The unique identifier of the storage.
+	ResourceId *string `pulumi:"resourceId"`
 	// The IP address or DNS name of the NFS server.
 	Server *string `pulumi:"server"`
 	// Whether the storage is shared across all nodes.
@@ -146,23 +109,23 @@ type nfsState struct {
 	SnapshotAsVolumeChain *bool `pulumi:"snapshotAsVolumeChain"`
 }
 
-type NFSState struct {
+type NfsState struct {
 	// Configure backup retention settings for the storage type.
-	Backups NFSBackupsPtrInput
+	Backups NfsBackupsPtrInput
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents pulumi.StringArrayInput
 	// Whether the storage is disabled.
 	Disable pulumi.BoolPtrInput
 	// The path of the NFS export.
 	Export pulumi.StringPtrInput
-	// The unique identifier of the storage.
-	NfsId pulumi.StringPtrInput
 	// A list of nodes where this storage is available.
 	Nodes pulumi.StringArrayInput
 	// The options to pass to the NFS service.
 	Options pulumi.StringPtrInput
 	// The preallocation mode for raw and qcow2 images.
 	Preallocation pulumi.StringPtrInput
+	// The unique identifier of the storage.
+	ResourceId pulumi.StringPtrInput
 	// The IP address or DNS name of the NFS server.
 	Server pulumi.StringPtrInput
 	// Whether the storage is shared across all nodes.
@@ -171,244 +134,244 @@ type NFSState struct {
 	SnapshotAsVolumeChain pulumi.BoolPtrInput
 }
 
-func (NFSState) ElementType() reflect.Type {
+func (NfsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*nfsState)(nil)).Elem()
 }
 
 type nfsArgs struct {
 	// Configure backup retention settings for the storage type.
-	Backups *NFSBackups `pulumi:"backups"`
+	Backups *NfsBackups `pulumi:"backups"`
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents []string `pulumi:"contents"`
 	// Whether the storage is disabled.
 	Disable *bool `pulumi:"disable"`
 	// The path of the NFS export.
 	Export string `pulumi:"export"`
-	// The unique identifier of the storage.
-	NfsId string `pulumi:"nfsId"`
 	// A list of nodes where this storage is available.
 	Nodes []string `pulumi:"nodes"`
 	// The options to pass to the NFS service.
 	Options *string `pulumi:"options"`
 	// The preallocation mode for raw and qcow2 images.
 	Preallocation *string `pulumi:"preallocation"`
+	// The unique identifier of the storage.
+	ResourceId string `pulumi:"resourceId"`
 	// The IP address or DNS name of the NFS server.
 	Server string `pulumi:"server"`
 	// Enable support for creating snapshots through volume backing-chains.
 	SnapshotAsVolumeChain *bool `pulumi:"snapshotAsVolumeChain"`
 }
 
-// The set of arguments for constructing a NFS resource.
-type NFSArgs struct {
+// The set of arguments for constructing a Nfs resource.
+type NfsArgs struct {
 	// Configure backup retention settings for the storage type.
-	Backups NFSBackupsPtrInput
+	Backups NfsBackupsPtrInput
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents pulumi.StringArrayInput
 	// Whether the storage is disabled.
 	Disable pulumi.BoolPtrInput
 	// The path of the NFS export.
 	Export pulumi.StringInput
-	// The unique identifier of the storage.
-	NfsId pulumi.StringInput
 	// A list of nodes where this storage is available.
 	Nodes pulumi.StringArrayInput
 	// The options to pass to the NFS service.
 	Options pulumi.StringPtrInput
 	// The preallocation mode for raw and qcow2 images.
 	Preallocation pulumi.StringPtrInput
+	// The unique identifier of the storage.
+	ResourceId pulumi.StringInput
 	// The IP address or DNS name of the NFS server.
 	Server pulumi.StringInput
 	// Enable support for creating snapshots through volume backing-chains.
 	SnapshotAsVolumeChain pulumi.BoolPtrInput
 }
 
-func (NFSArgs) ElementType() reflect.Type {
+func (NfsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*nfsArgs)(nil)).Elem()
 }
 
-type NFSInput interface {
+type NfsInput interface {
 	pulumi.Input
 
-	ToNFSOutput() NFSOutput
-	ToNFSOutputWithContext(ctx context.Context) NFSOutput
+	ToNfsOutput() NfsOutput
+	ToNfsOutputWithContext(ctx context.Context) NfsOutput
 }
 
-func (*NFS) ElementType() reflect.Type {
-	return reflect.TypeOf((**NFS)(nil)).Elem()
+func (*Nfs) ElementType() reflect.Type {
+	return reflect.TypeOf((**Nfs)(nil)).Elem()
 }
 
-func (i *NFS) ToNFSOutput() NFSOutput {
-	return i.ToNFSOutputWithContext(context.Background())
+func (i *Nfs) ToNfsOutput() NfsOutput {
+	return i.ToNfsOutputWithContext(context.Background())
 }
 
-func (i *NFS) ToNFSOutputWithContext(ctx context.Context) NFSOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NFSOutput)
+func (i *Nfs) ToNfsOutputWithContext(ctx context.Context) NfsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NfsOutput)
 }
 
-// NFSArrayInput is an input type that accepts NFSArray and NFSArrayOutput values.
-// You can construct a concrete instance of `NFSArrayInput` via:
+// NfsArrayInput is an input type that accepts NfsArray and NfsArrayOutput values.
+// You can construct a concrete instance of `NfsArrayInput` via:
 //
-//	NFSArray{ NFSArgs{...} }
-type NFSArrayInput interface {
+//	NfsArray{ NfsArgs{...} }
+type NfsArrayInput interface {
 	pulumi.Input
 
-	ToNFSArrayOutput() NFSArrayOutput
-	ToNFSArrayOutputWithContext(context.Context) NFSArrayOutput
+	ToNfsArrayOutput() NfsArrayOutput
+	ToNfsArrayOutputWithContext(context.Context) NfsArrayOutput
 }
 
-type NFSArray []NFSInput
+type NfsArray []NfsInput
 
-func (NFSArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*NFS)(nil)).Elem()
+func (NfsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*Nfs)(nil)).Elem()
 }
 
-func (i NFSArray) ToNFSArrayOutput() NFSArrayOutput {
-	return i.ToNFSArrayOutputWithContext(context.Background())
+func (i NfsArray) ToNfsArrayOutput() NfsArrayOutput {
+	return i.ToNfsArrayOutputWithContext(context.Background())
 }
 
-func (i NFSArray) ToNFSArrayOutputWithContext(ctx context.Context) NFSArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NFSArrayOutput)
+func (i NfsArray) ToNfsArrayOutputWithContext(ctx context.Context) NfsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NfsArrayOutput)
 }
 
-// NFSMapInput is an input type that accepts NFSMap and NFSMapOutput values.
-// You can construct a concrete instance of `NFSMapInput` via:
+// NfsMapInput is an input type that accepts NfsMap and NfsMapOutput values.
+// You can construct a concrete instance of `NfsMapInput` via:
 //
-//	NFSMap{ "key": NFSArgs{...} }
-type NFSMapInput interface {
+//	NfsMap{ "key": NfsArgs{...} }
+type NfsMapInput interface {
 	pulumi.Input
 
-	ToNFSMapOutput() NFSMapOutput
-	ToNFSMapOutputWithContext(context.Context) NFSMapOutput
+	ToNfsMapOutput() NfsMapOutput
+	ToNfsMapOutputWithContext(context.Context) NfsMapOutput
 }
 
-type NFSMap map[string]NFSInput
+type NfsMap map[string]NfsInput
 
-func (NFSMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*NFS)(nil)).Elem()
+func (NfsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*Nfs)(nil)).Elem()
 }
 
-func (i NFSMap) ToNFSMapOutput() NFSMapOutput {
-	return i.ToNFSMapOutputWithContext(context.Background())
+func (i NfsMap) ToNfsMapOutput() NfsMapOutput {
+	return i.ToNfsMapOutputWithContext(context.Background())
 }
 
-func (i NFSMap) ToNFSMapOutputWithContext(ctx context.Context) NFSMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NFSMapOutput)
+func (i NfsMap) ToNfsMapOutputWithContext(ctx context.Context) NfsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NfsMapOutput)
 }
 
-type NFSOutput struct{ *pulumi.OutputState }
+type NfsOutput struct{ *pulumi.OutputState }
 
-func (NFSOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NFS)(nil)).Elem()
+func (NfsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Nfs)(nil)).Elem()
 }
 
-func (o NFSOutput) ToNFSOutput() NFSOutput {
+func (o NfsOutput) ToNfsOutput() NfsOutput {
 	return o
 }
 
-func (o NFSOutput) ToNFSOutputWithContext(ctx context.Context) NFSOutput {
+func (o NfsOutput) ToNfsOutputWithContext(ctx context.Context) NfsOutput {
 	return o
 }
 
 // Configure backup retention settings for the storage type.
-func (o NFSOutput) Backups() NFSBackupsPtrOutput {
-	return o.ApplyT(func(v *NFS) NFSBackupsPtrOutput { return v.Backups }).(NFSBackupsPtrOutput)
+func (o NfsOutput) Backups() NfsBackupsPtrOutput {
+	return o.ApplyT(func(v *Nfs) NfsBackupsPtrOutput { return v.Backups }).(NfsBackupsPtrOutput)
 }
 
 // The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
-func (o NFSOutput) Contents() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *NFS) pulumi.StringArrayOutput { return v.Contents }).(pulumi.StringArrayOutput)
+func (o NfsOutput) Contents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Nfs) pulumi.StringArrayOutput { return v.Contents }).(pulumi.StringArrayOutput)
 }
 
 // Whether the storage is disabled.
-func (o NFSOutput) Disable() pulumi.BoolOutput {
-	return o.ApplyT(func(v *NFS) pulumi.BoolOutput { return v.Disable }).(pulumi.BoolOutput)
+func (o NfsOutput) Disable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Nfs) pulumi.BoolOutput { return v.Disable }).(pulumi.BoolOutput)
 }
 
 // The path of the NFS export.
-func (o NFSOutput) Export() pulumi.StringOutput {
-	return o.ApplyT(func(v *NFS) pulumi.StringOutput { return v.Export }).(pulumi.StringOutput)
-}
-
-// The unique identifier of the storage.
-func (o NFSOutput) NfsId() pulumi.StringOutput {
-	return o.ApplyT(func(v *NFS) pulumi.StringOutput { return v.NfsId }).(pulumi.StringOutput)
+func (o NfsOutput) Export() pulumi.StringOutput {
+	return o.ApplyT(func(v *Nfs) pulumi.StringOutput { return v.Export }).(pulumi.StringOutput)
 }
 
 // A list of nodes where this storage is available.
-func (o NFSOutput) Nodes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *NFS) pulumi.StringArrayOutput { return v.Nodes }).(pulumi.StringArrayOutput)
+func (o NfsOutput) Nodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Nfs) pulumi.StringArrayOutput { return v.Nodes }).(pulumi.StringArrayOutput)
 }
 
 // The options to pass to the NFS service.
-func (o NFSOutput) Options() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NFS) pulumi.StringPtrOutput { return v.Options }).(pulumi.StringPtrOutput)
+func (o NfsOutput) Options() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Nfs) pulumi.StringPtrOutput { return v.Options }).(pulumi.StringPtrOutput)
 }
 
 // The preallocation mode for raw and qcow2 images.
-func (o NFSOutput) Preallocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NFS) pulumi.StringPtrOutput { return v.Preallocation }).(pulumi.StringPtrOutput)
+func (o NfsOutput) Preallocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Nfs) pulumi.StringPtrOutput { return v.Preallocation }).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of the storage.
+func (o NfsOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Nfs) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
 }
 
 // The IP address or DNS name of the NFS server.
-func (o NFSOutput) Server() pulumi.StringOutput {
-	return o.ApplyT(func(v *NFS) pulumi.StringOutput { return v.Server }).(pulumi.StringOutput)
+func (o NfsOutput) Server() pulumi.StringOutput {
+	return o.ApplyT(func(v *Nfs) pulumi.StringOutput { return v.Server }).(pulumi.StringOutput)
 }
 
 // Whether the storage is shared across all nodes.
-func (o NFSOutput) Shared() pulumi.BoolOutput {
-	return o.ApplyT(func(v *NFS) pulumi.BoolOutput { return v.Shared }).(pulumi.BoolOutput)
+func (o NfsOutput) Shared() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Nfs) pulumi.BoolOutput { return v.Shared }).(pulumi.BoolOutput)
 }
 
 // Enable support for creating snapshots through volume backing-chains.
-func (o NFSOutput) SnapshotAsVolumeChain() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *NFS) pulumi.BoolPtrOutput { return v.SnapshotAsVolumeChain }).(pulumi.BoolPtrOutput)
+func (o NfsOutput) SnapshotAsVolumeChain() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Nfs) pulumi.BoolPtrOutput { return v.SnapshotAsVolumeChain }).(pulumi.BoolPtrOutput)
 }
 
-type NFSArrayOutput struct{ *pulumi.OutputState }
+type NfsArrayOutput struct{ *pulumi.OutputState }
 
-func (NFSArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*NFS)(nil)).Elem()
+func (NfsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*Nfs)(nil)).Elem()
 }
 
-func (o NFSArrayOutput) ToNFSArrayOutput() NFSArrayOutput {
+func (o NfsArrayOutput) ToNfsArrayOutput() NfsArrayOutput {
 	return o
 }
 
-func (o NFSArrayOutput) ToNFSArrayOutputWithContext(ctx context.Context) NFSArrayOutput {
+func (o NfsArrayOutput) ToNfsArrayOutputWithContext(ctx context.Context) NfsArrayOutput {
 	return o
 }
 
-func (o NFSArrayOutput) Index(i pulumi.IntInput) NFSOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NFS {
-		return vs[0].([]*NFS)[vs[1].(int)]
-	}).(NFSOutput)
+func (o NfsArrayOutput) Index(i pulumi.IntInput) NfsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Nfs {
+		return vs[0].([]*Nfs)[vs[1].(int)]
+	}).(NfsOutput)
 }
 
-type NFSMapOutput struct{ *pulumi.OutputState }
+type NfsMapOutput struct{ *pulumi.OutputState }
 
-func (NFSMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*NFS)(nil)).Elem()
+func (NfsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*Nfs)(nil)).Elem()
 }
 
-func (o NFSMapOutput) ToNFSMapOutput() NFSMapOutput {
+func (o NfsMapOutput) ToNfsMapOutput() NfsMapOutput {
 	return o
 }
 
-func (o NFSMapOutput) ToNFSMapOutputWithContext(ctx context.Context) NFSMapOutput {
+func (o NfsMapOutput) ToNfsMapOutputWithContext(ctx context.Context) NfsMapOutput {
 	return o
 }
 
-func (o NFSMapOutput) MapIndex(k pulumi.StringInput) NFSOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *NFS {
-		return vs[0].(map[string]*NFS)[vs[1].(string)]
-	}).(NFSOutput)
+func (o NfsMapOutput) MapIndex(k pulumi.StringInput) NfsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Nfs {
+		return vs[0].(map[string]*Nfs)[vs[1].(string)]
+	}).(NfsOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*NFSInput)(nil)).Elem(), &NFS{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NFSArrayInput)(nil)).Elem(), NFSArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NFSMapInput)(nil)).Elem(), NFSMap{})
-	pulumi.RegisterOutputType(NFSOutput{})
-	pulumi.RegisterOutputType(NFSArrayOutput{})
-	pulumi.RegisterOutputType(NFSMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NfsInput)(nil)).Elem(), &Nfs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NfsArrayInput)(nil)).Elem(), NfsArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NfsMapInput)(nil)).Elem(), NfsMap{})
+	pulumi.RegisterOutputType(NfsOutput{})
+	pulumi.RegisterOutputType(NfsArrayOutput{})
+	pulumi.RegisterOutputType(NfsMapOutput{})
 }

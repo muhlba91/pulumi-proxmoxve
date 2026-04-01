@@ -8,26 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages directory-based storage in Proxmox VE.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const example = new proxmoxve.storage.Directory("example", {
- *     directoryId: "example-dir",
- *     path: "/var/lib/vz",
- *     nodes: ["pve"],
- *     contents: ["images"],
- *     shared: true,
- *     disable: false,
- *     backups: {
- *         maxProtectedBackups: 5,
- *         keepDaily: 7,
- *     },
- * });
- * ```
  */
 export class Directory extends pulumi.CustomResource {
     /**
@@ -44,7 +24,7 @@ export class Directory extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'proxmoxve:Storage/directory:Directory';
+    public static readonly __pulumiType = 'proxmoxve:storage/directory:Directory';
 
     /**
      * Returns true if the given object is an instance of Directory.  This is designed to work even
@@ -60,15 +40,11 @@ export class Directory extends pulumi.CustomResource {
     /**
      * Configure backup retention settings for the storage type.
      */
-    declare public readonly backups: pulumi.Output<outputs.Storage.DirectoryBackups | undefined>;
+    declare public readonly backups: pulumi.Output<outputs.storage.DirectoryBackups | undefined>;
     /**
      * The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
      */
     declare public readonly contents: pulumi.Output<string[]>;
-    /**
-     * The unique identifier of the storage.
-     */
-    declare public readonly directoryId: pulumi.Output<string>;
     /**
      * Whether the storage is disabled.
      */
@@ -85,6 +61,10 @@ export class Directory extends pulumi.CustomResource {
      * The preallocation mode for raw and qcow2 images.
      */
     declare public readonly preallocation: pulumi.Output<string | undefined>;
+    /**
+     * The unique identifier of the storage.
+     */
+    declare public readonly resourceId: pulumi.Output<string>;
     /**
      * Whether the storage is shared across all nodes.
      */
@@ -105,30 +85,32 @@ export class Directory extends pulumi.CustomResource {
             const state = argsOrState as DirectoryState | undefined;
             resourceInputs["backups"] = state?.backups;
             resourceInputs["contents"] = state?.contents;
-            resourceInputs["directoryId"] = state?.directoryId;
             resourceInputs["disable"] = state?.disable;
             resourceInputs["nodes"] = state?.nodes;
             resourceInputs["path"] = state?.path;
             resourceInputs["preallocation"] = state?.preallocation;
+            resourceInputs["resourceId"] = state?.resourceId;
             resourceInputs["shared"] = state?.shared;
         } else {
             const args = argsOrState as DirectoryArgs | undefined;
-            if (args?.directoryId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'directoryId'");
-            }
             if (args?.path === undefined && !opts.urn) {
                 throw new Error("Missing required property 'path'");
             }
+            if (args?.resourceId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'resourceId'");
+            }
             resourceInputs["backups"] = args?.backups;
             resourceInputs["contents"] = args?.contents;
-            resourceInputs["directoryId"] = args?.directoryId;
             resourceInputs["disable"] = args?.disable;
             resourceInputs["nodes"] = args?.nodes;
             resourceInputs["path"] = args?.path;
             resourceInputs["preallocation"] = args?.preallocation;
+            resourceInputs["resourceId"] = args?.resourceId;
             resourceInputs["shared"] = args?.shared;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "proxmox_virtual_environment_storage_directory" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(Directory.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -140,15 +122,11 @@ export interface DirectoryState {
     /**
      * Configure backup retention settings for the storage type.
      */
-    backups?: pulumi.Input<inputs.Storage.DirectoryBackups>;
+    backups?: pulumi.Input<inputs.storage.DirectoryBackups>;
     /**
      * The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
      */
     contents?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The unique identifier of the storage.
-     */
-    directoryId?: pulumi.Input<string>;
     /**
      * Whether the storage is disabled.
      */
@@ -166,6 +144,10 @@ export interface DirectoryState {
      */
     preallocation?: pulumi.Input<string>;
     /**
+     * The unique identifier of the storage.
+     */
+    resourceId?: pulumi.Input<string>;
+    /**
      * Whether the storage is shared across all nodes.
      */
     shared?: pulumi.Input<boolean>;
@@ -178,15 +160,11 @@ export interface DirectoryArgs {
     /**
      * Configure backup retention settings for the storage type.
      */
-    backups?: pulumi.Input<inputs.Storage.DirectoryBackups>;
+    backups?: pulumi.Input<inputs.storage.DirectoryBackups>;
     /**
      * The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
      */
     contents?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The unique identifier of the storage.
-     */
-    directoryId: pulumi.Input<string>;
     /**
      * Whether the storage is disabled.
      */
@@ -203,6 +181,10 @@ export interface DirectoryArgs {
      * The preallocation mode for raw and qcow2 images.
      */
     preallocation?: pulumi.Input<string>;
+    /**
+     * The unique identifier of the storage.
+     */
+    resourceId: pulumi.Input<string>;
     /**
      * Whether the storage is shared across all nodes.
      */

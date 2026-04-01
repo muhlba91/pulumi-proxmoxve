@@ -11,45 +11,8 @@ namespace Pulumi.ProxmoxVE.Hardware.Mapping
 {
     /// <summary>
     /// Manages a directory mapping in a Proxmox VE cluster.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using ProxmoxVE = Pulumi.ProxmoxVE;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new ProxmoxVE.Hardware.Mapping.Dir("example", new()
-    ///     {
-    ///         Comment = "This is a comment",
-    ///         Name = "example",
-    ///         Maps = new[]
-    ///         {
-    ///             new ProxmoxVE.Hardware.Mapping.Inputs.DirMapArgs
-    ///             {
-    ///                 Node = "pve",
-    ///                 Path = "/mnt/data",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// #!/usr/bin/env sh
-    /// 
-    /// A directory mapping can be imported using their name, e.g.:
-    /// 
-    /// ```sh
-    /// $ pulumi import proxmoxve:Hardware/mapping/dir:Dir example example
-    /// ```
     /// </summary>
-    [ProxmoxVEResourceType("proxmoxve:Hardware/mapping/dir:Dir")]
+    [ProxmoxVEResourceType("proxmoxve:hardware/mapping/dir:Dir")]
     public partial class Dir : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -79,12 +42,12 @@ namespace Pulumi.ProxmoxVE.Hardware.Mapping
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Dir(string name, DirArgs args, CustomResourceOptions? options = null)
-            : base("proxmoxve:Hardware/mapping/dir:Dir", name, args ?? new DirArgs(), MakeResourceOptions(options, ""))
+            : base("proxmoxve:hardware/mapping/dir:Dir", name, args ?? new DirArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Dir(string name, Input<string> id, DirState? state = null, CustomResourceOptions? options = null)
-            : base("proxmoxve:Hardware/mapping/dir:Dir", name, state, MakeResourceOptions(options, id))
+            : base("proxmoxve:hardware/mapping/dir:Dir", name, state, MakeResourceOptions(options, id))
         {
         }
 

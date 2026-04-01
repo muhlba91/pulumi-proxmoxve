@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,10 +21,18 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "proxmoxve:Realm/ldap:Ldap":
+	case "proxmoxve:realm/ldap:Ldap":
 		r = &Ldap{}
-	case "proxmoxve:Realm/sync:Sync":
+	case "proxmoxve:realm/ldapLegacy:LdapLegacy":
+		r = &LdapLegacy{}
+	case "proxmoxve:realm/openid:Openid":
+		r = &Openid{}
+	case "proxmoxve:realm/openidLegacy:OpenidLegacy":
+		r = &OpenidLegacy{}
+	case "proxmoxve:realm/sync:Sync":
 		r = &Sync{}
+	case "proxmoxve:realm/syncLegacy:SyncLegacy":
+		r = &SyncLegacy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -40,12 +48,32 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
-		"Realm/ldap",
+		"realm/ldap",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
-		"Realm/sync",
+		"realm/ldapLegacy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"realm/openid",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"realm/openidLegacy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"realm/sync",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"realm/syncLegacy",
 		&module{version},
 	)
 }

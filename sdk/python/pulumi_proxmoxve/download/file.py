@@ -33,6 +33,7 @@ class FileArgs:
                  verify: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a File resource.
+
         :param pulumi.Input[_builtins.str] content_type: The file content type. Must be `iso` or `import` for VM images or `vztmpl` for LXC images.
         :param pulumi.Input[_builtins.str] datastore_id: The identifier for the target datastore.
         :param pulumi.Input[_builtins.str] node_name: The node name.
@@ -41,6 +42,7 @@ class FileArgs:
         :param pulumi.Input[_builtins.str] checksum_algorithm: The algorithm to calculate the checksum of the file. Must be `md5` | `sha1` | `sha224` | `sha256` | `sha384` | `sha512`.
         :param pulumi.Input[_builtins.str] decompression_algorithm: Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
         :param pulumi.Input[_builtins.str] file_name: The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
+        :param pulumi.Input[_builtins.bool] overwrite: By default `true`. If `true`, the file will be replaced when either: (1) the file size in the datastore has changed outside of Terraform, or (2) the file size reported by the URL differs from the downloaded file (detecting upstream updates like new cloud image versions). If `false`, no size checks are performed and the file is never automatically replaced.
         :param pulumi.Input[_builtins.bool] overwrite_unmanaged: If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
         :param pulumi.Input[_builtins.int] upload_timeout: The file download timeout seconds. Default is 600 (10min).
         :param pulumi.Input[_builtins.bool] verify: By default `true`. If `false`, no SSL/TLS certificates will be verified.
@@ -165,6 +167,9 @@ class FileArgs:
     @_builtins.property
     @pulumi.getter
     def overwrite(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        By default `true`. If `true`, the file will be replaced when either: (1) the file size in the datastore has changed outside of Terraform, or (2) the file size reported by the URL differs from the downloaded file (detecting upstream updates like new cloud image versions). If `false`, no size checks are performed and the file is never automatically replaced.
+        """
         return pulumi.get(self, "overwrite")
 
     @overwrite.setter
@@ -226,6 +231,7 @@ class _FileState:
                  verify: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering File resources.
+
         :param pulumi.Input[_builtins.str] checksum: The expected checksum of the file.
         :param pulumi.Input[_builtins.str] checksum_algorithm: The algorithm to calculate the checksum of the file. Must be `md5` | `sha1` | `sha224` | `sha256` | `sha384` | `sha512`.
         :param pulumi.Input[_builtins.str] content_type: The file content type. Must be `iso` or `import` for VM images or `vztmpl` for LXC images.
@@ -233,6 +239,7 @@ class _FileState:
         :param pulumi.Input[_builtins.str] decompression_algorithm: Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
         :param pulumi.Input[_builtins.str] file_name: The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
         :param pulumi.Input[_builtins.str] node_name: The node name.
+        :param pulumi.Input[_builtins.bool] overwrite: By default `true`. If `true`, the file will be replaced when either: (1) the file size in the datastore has changed outside of Terraform, or (2) the file size reported by the URL differs from the downloaded file (detecting upstream updates like new cloud image versions). If `false`, no size checks are performed and the file is never automatically replaced.
         :param pulumi.Input[_builtins.bool] overwrite_unmanaged: If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
         :param pulumi.Input[_builtins.int] size: The file size in PVE.
         :param pulumi.Input[_builtins.int] upload_timeout: The file download timeout seconds. Default is 600 (10min).
@@ -353,6 +360,9 @@ class _FileState:
     @_builtins.property
     @pulumi.getter
     def overwrite(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        By default `true`. If `true`, the file will be replaced when either: (1) the file size in the datastore has changed outside of Terraform, or (2) the file size reported by the URL differs from the downloaded file (detecting upstream updates like new cloud image versions). If `false`, no size checks are performed and the file is never automatically replaced.
+        """
         return pulumi.get(self, "overwrite")
 
     @overwrite.setter
@@ -420,7 +430,7 @@ class _FileState:
         pulumi.set(self, "verify", value)
 
 
-@pulumi.type_token("proxmoxve:Download/file:File")
+@pulumi.type_token("proxmoxve:download/file:File")
 class File(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -440,72 +450,13 @@ class File(pulumi.CustomResource):
                  verify: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
-        Manages files upload using PVE download-url API. It can be fully compatible and faster replacement for image files created using `Storage.File`. Supports images for VMs (ISO and disk images) and LXC (CT Templates).
+        Manages files upload using PVE download-url API. It can be fully compatible and faster replacement for image files created using `get_file_legacy`. Supports images for VMs (ISO and disk images) and LXC (CT Templates).
 
         > Besides the `Datastore.AllocateTemplate` privilege, this resource requires both the `Sys.Audit` and `Sys.Modify` privileges.<br><br>
         For more details, see the [`download-url`](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/storage/{storage}/download-url) API documentation under the "Required permissions" section.
 
         > The `import` content type is not enabled by default on Proxmox VE storages. To use this resource with `content_type = "import"`, first add `Import` to the allowed content types on the target storage under 'Datacenter > Storage' in the Proxmox web interface.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        release20231228_debian12_bookworm_qcow2_img = proxmoxve.download.File("release_20231228_debian_12_bookworm_qcow2_img",
-            content_type="iso",
-            datastore_id="local",
-            file_name="debian-12-generic-amd64-20231228-1609.img",
-            node_name="pve",
-            url="https://cloud.debian.org/images/cloud/bookworm/20231228-1609/debian-12-generic-amd64-20231228-1609.qcow2",
-            checksum="d2fbcf11fb28795842e91364d8c7b69f1870db09ff299eb94e4fbbfa510eb78d141e74c1f4bf6dfa0b7e33d0c3b66e6751886feadb4e9916f778bab1776bdf1b",
-            checksum_algorithm="sha512")
-        release20231228_debian12_bookworm_qcow2 = proxmoxve.download.File("release_20231228_debian_12_bookworm_qcow2",
-            content_type="import",
-            datastore_id="local",
-            file_name="debian-12-generic-amd64-20231228-1609.qcow2",
-            node_name="pve",
-            url="https://cloud.debian.org/images/cloud/bookworm/20231228-1609/debian-12-generic-amd64-20231228-1609.qcow2",
-            checksum="d2fbcf11fb28795842e91364d8c7b69f1870db09ff299eb94e4fbbfa510eb78d141e74c1f4bf6dfa0b7e33d0c3b66e6751886feadb4e9916f778bab1776bdf1b",
-            checksum_algorithm="sha512")
-        latest_debian12_bookworm_qcow2_img = proxmoxve.download.File("latest_debian_12_bookworm_qcow2_img",
-            content_type="iso",
-            datastore_id="local",
-            file_name="debian-12-generic-amd64.qcow2.img",
-            node_name="pve",
-            url="https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2")
-        latest_debian12_bookworm_qcow2 = proxmoxve.download.File("latest_debian_12_bookworm_qcow2",
-            content_type="import",
-            datastore_id="local",
-            file_name="debian-12-generic-amd64.qcow2",
-            node_name="pve",
-            url="https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2")
-        latest_ubuntu22_jammy_qcow2_img = proxmoxve.download.File("latest_ubuntu_22_jammy_qcow2_img",
-            content_type="iso",
-            datastore_id="local",
-            node_name="pve",
-            url="https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img")
-        latest_static_ubuntu24_noble_qcow2_img = proxmoxve.download.File("latest_static_ubuntu_24_noble_qcow2_img",
-            content_type="iso",
-            datastore_id="local",
-            node_name="pve",
-            url="https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img",
-            overwrite=False)
-        release20231211_ubuntu22_jammy_lxc_img = proxmoxve.download.File("release_20231211_ubuntu_22_jammy_lxc_img",
-            content_type="vztmpl",
-            datastore_id="local",
-            node_name="pve",
-            url="https://cloud-images.ubuntu.com/releases/22.04/release-20231211/ubuntu-22.04-server-cloudimg-amd64-root.tar.xz",
-            checksum="c9997dcfea5d826fd04871f960c513665f2e87dd7450bba99f68a97e60e4586e",
-            checksum_algorithm="sha256",
-            upload_timeout=4444)
-        latest_ubuntu22_jammy_lxc_img = proxmoxve.download.File("latest_ubuntu_22_jammy_lxc_img",
-            content_type="vztmpl",
-            datastore_id="local",
-            node_name="pve",
-            url="https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.tar.gz")
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -516,6 +467,7 @@ class File(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] decompression_algorithm: Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
         :param pulumi.Input[_builtins.str] file_name: The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
         :param pulumi.Input[_builtins.str] node_name: The node name.
+        :param pulumi.Input[_builtins.bool] overwrite: By default `true`. If `true`, the file will be replaced when either: (1) the file size in the datastore has changed outside of Terraform, or (2) the file size reported by the URL differs from the downloaded file (detecting upstream updates like new cloud image versions). If `false`, no size checks are performed and the file is never automatically replaced.
         :param pulumi.Input[_builtins.bool] overwrite_unmanaged: If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
         :param pulumi.Input[_builtins.int] upload_timeout: The file download timeout seconds. Default is 600 (10min).
         :param pulumi.Input[_builtins.str] url: The URL to download the file from. Must match regex: `https?://.*`.
@@ -528,72 +480,13 @@ class File(pulumi.CustomResource):
                  args: FileArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages files upload using PVE download-url API. It can be fully compatible and faster replacement for image files created using `Storage.File`. Supports images for VMs (ISO and disk images) and LXC (CT Templates).
+        Manages files upload using PVE download-url API. It can be fully compatible and faster replacement for image files created using `get_file_legacy`. Supports images for VMs (ISO and disk images) and LXC (CT Templates).
 
         > Besides the `Datastore.AllocateTemplate` privilege, this resource requires both the `Sys.Audit` and `Sys.Modify` privileges.<br><br>
         For more details, see the [`download-url`](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/storage/{storage}/download-url) API documentation under the "Required permissions" section.
 
         > The `import` content type is not enabled by default on Proxmox VE storages. To use this resource with `content_type = "import"`, first add `Import` to the allowed content types on the target storage under 'Datacenter > Storage' in the Proxmox web interface.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        release20231228_debian12_bookworm_qcow2_img = proxmoxve.download.File("release_20231228_debian_12_bookworm_qcow2_img",
-            content_type="iso",
-            datastore_id="local",
-            file_name="debian-12-generic-amd64-20231228-1609.img",
-            node_name="pve",
-            url="https://cloud.debian.org/images/cloud/bookworm/20231228-1609/debian-12-generic-amd64-20231228-1609.qcow2",
-            checksum="d2fbcf11fb28795842e91364d8c7b69f1870db09ff299eb94e4fbbfa510eb78d141e74c1f4bf6dfa0b7e33d0c3b66e6751886feadb4e9916f778bab1776bdf1b",
-            checksum_algorithm="sha512")
-        release20231228_debian12_bookworm_qcow2 = proxmoxve.download.File("release_20231228_debian_12_bookworm_qcow2",
-            content_type="import",
-            datastore_id="local",
-            file_name="debian-12-generic-amd64-20231228-1609.qcow2",
-            node_name="pve",
-            url="https://cloud.debian.org/images/cloud/bookworm/20231228-1609/debian-12-generic-amd64-20231228-1609.qcow2",
-            checksum="d2fbcf11fb28795842e91364d8c7b69f1870db09ff299eb94e4fbbfa510eb78d141e74c1f4bf6dfa0b7e33d0c3b66e6751886feadb4e9916f778bab1776bdf1b",
-            checksum_algorithm="sha512")
-        latest_debian12_bookworm_qcow2_img = proxmoxve.download.File("latest_debian_12_bookworm_qcow2_img",
-            content_type="iso",
-            datastore_id="local",
-            file_name="debian-12-generic-amd64.qcow2.img",
-            node_name="pve",
-            url="https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2")
-        latest_debian12_bookworm_qcow2 = proxmoxve.download.File("latest_debian_12_bookworm_qcow2",
-            content_type="import",
-            datastore_id="local",
-            file_name="debian-12-generic-amd64.qcow2",
-            node_name="pve",
-            url="https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2")
-        latest_ubuntu22_jammy_qcow2_img = proxmoxve.download.File("latest_ubuntu_22_jammy_qcow2_img",
-            content_type="iso",
-            datastore_id="local",
-            node_name="pve",
-            url="https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img")
-        latest_static_ubuntu24_noble_qcow2_img = proxmoxve.download.File("latest_static_ubuntu_24_noble_qcow2_img",
-            content_type="iso",
-            datastore_id="local",
-            node_name="pve",
-            url="https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img",
-            overwrite=False)
-        release20231211_ubuntu22_jammy_lxc_img = proxmoxve.download.File("release_20231211_ubuntu_22_jammy_lxc_img",
-            content_type="vztmpl",
-            datastore_id="local",
-            node_name="pve",
-            url="https://cloud-images.ubuntu.com/releases/22.04/release-20231211/ubuntu-22.04-server-cloudimg-amd64-root.tar.xz",
-            checksum="c9997dcfea5d826fd04871f960c513665f2e87dd7450bba99f68a97e60e4586e",
-            checksum_algorithm="sha256",
-            upload_timeout=4444)
-        latest_ubuntu22_jammy_lxc_img = proxmoxve.download.File("latest_ubuntu_22_jammy_lxc_img",
-            content_type="vztmpl",
-            datastore_id="local",
-            node_name="pve",
-            url="https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.tar.gz")
-        ```
 
         :param str resource_name: The name of the resource.
         :param FileArgs args: The arguments to use to populate this resource's properties.
@@ -653,7 +546,7 @@ class File(pulumi.CustomResource):
             __props__.__dict__["verify"] = verify
             __props__.__dict__["size"] = None
         super(File, __self__).__init__(
-            'proxmoxve:Download/file:File',
+            'proxmoxve:download/file:File',
             resource_name,
             __props__,
             opts)
@@ -689,6 +582,7 @@ class File(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] decompression_algorithm: Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
         :param pulumi.Input[_builtins.str] file_name: The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
         :param pulumi.Input[_builtins.str] node_name: The node name.
+        :param pulumi.Input[_builtins.bool] overwrite: By default `true`. If `true`, the file will be replaced when either: (1) the file size in the datastore has changed outside of Terraform, or (2) the file size reported by the URL differs from the downloaded file (detecting upstream updates like new cloud image versions). If `false`, no size checks are performed and the file is never automatically replaced.
         :param pulumi.Input[_builtins.bool] overwrite_unmanaged: If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
         :param pulumi.Input[_builtins.int] size: The file size in PVE.
         :param pulumi.Input[_builtins.int] upload_timeout: The file download timeout seconds. Default is 600 (10min).
@@ -773,6 +667,9 @@ class File(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def overwrite(self) -> pulumi.Output[_builtins.bool]:
+        """
+        By default `true`. If `true`, the file will be replaced when either: (1) the file size in the datastore has changed outside of Terraform, or (2) the file size reported by the URL differs from the downloaded file (detecting upstream updates like new cloud image versions). If `false`, no size checks are performed and the file is never automatically replaced.
+        """
         return pulumi.get(self, "overwrite")
 
     @_builtins.property

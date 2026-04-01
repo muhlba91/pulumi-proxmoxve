@@ -9,6 +9,11 @@ export const getMappings: typeof import("./getMappings").getMappings = null as a
 export const getMappingsOutput: typeof import("./getMappings").getMappingsOutput = null as any;
 utilities.lazyLoad(exports, ["getMappings","getMappingsOutput"], () => require("./getMappings"));
 
+export { GetMappingsLegacyArgs, GetMappingsLegacyResult, GetMappingsLegacyOutputArgs } from "./getMappingsLegacy";
+export const getMappingsLegacy: typeof import("./getMappingsLegacy").getMappingsLegacy = null as any;
+export const getMappingsLegacyOutput: typeof import("./getMappingsLegacy").getMappingsLegacyOutput = null as any;
+utilities.lazyLoad(exports, ["getMappingsLegacy","getMappingsLegacyOutput"], () => require("./getMappingsLegacy"));
+
 
 // Export sub-modules:
 import * as mapping from "./mapping";

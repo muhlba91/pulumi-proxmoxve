@@ -7,40 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves the list of ACME accounts.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/acme"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := acme.GetAccounts(ctx, map[string]interface{}{}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("dataProxmoxVirtualEnvironmentAcmeAccounts", example.Accounts)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetAccounts(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAccountsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountsResult
-	err := ctx.Invoke("proxmoxve:Acme/getAccounts:getAccounts", nil, &rv, opts...)
+	err := ctx.Invoke("proxmoxve:acme/getAccounts:getAccounts", nil, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -58,7 +33,7 @@ type GetAccountsResult struct {
 func GetAccountsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetAccountsResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetAccountsResultOutput, error) {
 		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("proxmoxve:Acme/getAccounts:getAccounts", nil, GetAccountsResultOutput{}, options).(GetAccountsResultOutput), nil
+		return ctx.InvokeOutput("proxmoxve:acme/getAccounts:getAccounts", nil, GetAccountsResultOutput{}, options).(GetAccountsResultOutput), nil
 	}).(GetAccountsResultOutput)
 }
 

@@ -8,29 +8,10 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Proxmox Backup Server (PBS) storage in Proxmox VE.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const example = new proxmoxve.storage.PBS("example", {
- *     pbsId: "example-pbs",
- *     nodes: ["pve"],
- *     server: "pbs.example.local",
- *     datastore: "backup",
- *     username: "pbs-user",
- *     password: "pbs-password",
- *     fingerprint: "AA:BB:CC:DD:EE:FF",
- *     contents: ["backup"],
- *     generateEncryptionKey: true,
- * });
- * ```
  */
-export class PBS extends pulumi.CustomResource {
+export class Pbs extends pulumi.CustomResource {
     /**
-     * Get an existing PBS resource's state with the given name, ID, and optional extra
+     * Get an existing Pbs resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -38,28 +19,28 @@ export class PBS extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: PBSState, opts?: pulumi.CustomResourceOptions): PBS {
-        return new PBS(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: PbsState, opts?: pulumi.CustomResourceOptions): Pbs {
+        return new Pbs(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'proxmoxve:Storage/pBS:PBS';
+    public static readonly __pulumiType = 'proxmoxve:storage/pbs:Pbs';
 
     /**
-     * Returns true if the given object is an instance of PBS.  This is designed to work even
+     * Returns true if the given object is an instance of Pbs.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is PBS {
+    public static isInstance(obj: any): obj is Pbs {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === PBS.__pulumiType;
+        return obj['__pulumiType'] === Pbs.__pulumiType;
     }
 
     /**
      * Configure backup retention settings for the storage type.
      */
-    declare public readonly backups: pulumi.Output<outputs.Storage.PBSBackups | undefined>;
+    declare public readonly backups: pulumi.Output<outputs.storage.PbsBackups | undefined>;
     /**
      * The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
      */
@@ -107,7 +88,7 @@ export class PBS extends pulumi.CustomResource {
     /**
      * The unique identifier of the storage.
      */
-    declare public readonly pbsId: pulumi.Output<string>;
+    declare public readonly resourceId: pulumi.Output<string>;
     /**
      * The IP address or DNS name of the Proxmox Backup Server.
      */
@@ -122,18 +103,18 @@ export class PBS extends pulumi.CustomResource {
     declare public readonly username: pulumi.Output<string>;
 
     /**
-     * Create a PBS resource with the given unique name, arguments, and options.
+     * Create a Pbs resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: PBSArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: PBSArgs | PBSState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: PbsArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: PbsArgs | PbsState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as PBSState | undefined;
+            const state = argsOrState as PbsState | undefined;
             resourceInputs["backups"] = state?.backups;
             resourceInputs["contents"] = state?.contents;
             resourceInputs["datastore"] = state?.datastore;
@@ -146,20 +127,20 @@ export class PBS extends pulumi.CustomResource {
             resourceInputs["namespace"] = state?.namespace;
             resourceInputs["nodes"] = state?.nodes;
             resourceInputs["password"] = state?.password;
-            resourceInputs["pbsId"] = state?.pbsId;
+            resourceInputs["resourceId"] = state?.resourceId;
             resourceInputs["server"] = state?.server;
             resourceInputs["shared"] = state?.shared;
             resourceInputs["username"] = state?.username;
         } else {
-            const args = argsOrState as PBSArgs | undefined;
+            const args = argsOrState as PbsArgs | undefined;
             if (args?.datastore === undefined && !opts.urn) {
                 throw new Error("Missing required property 'datastore'");
             }
             if (args?.password === undefined && !opts.urn) {
                 throw new Error("Missing required property 'password'");
             }
-            if (args?.pbsId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'pbsId'");
+            if (args?.resourceId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'resourceId'");
             }
             if (args?.server === undefined && !opts.urn) {
                 throw new Error("Missing required property 'server'");
@@ -177,7 +158,7 @@ export class PBS extends pulumi.CustomResource {
             resourceInputs["namespace"] = args?.namespace;
             resourceInputs["nodes"] = args?.nodes;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
-            resourceInputs["pbsId"] = args?.pbsId;
+            resourceInputs["resourceId"] = args?.resourceId;
             resourceInputs["server"] = args?.server;
             resourceInputs["username"] = args?.username;
             resourceInputs["encryptionKeyFingerprint"] = undefined /*out*/;
@@ -185,20 +166,22 @@ export class PBS extends pulumi.CustomResource {
             resourceInputs["shared"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "proxmox_virtual_environment_storage_pbs" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         const secretOpts = { additionalSecretOutputs: ["encryptionKey", "generatedEncryptionKey", "password"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
-        super(PBS.__pulumiType, name, resourceInputs, opts);
+        super(Pbs.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering PBS resources.
+ * Input properties used for looking up and filtering Pbs resources.
  */
-export interface PBSState {
+export interface PbsState {
     /**
      * Configure backup retention settings for the storage type.
      */
-    backups?: pulumi.Input<inputs.Storage.PBSBackups>;
+    backups?: pulumi.Input<inputs.storage.PbsBackups>;
     /**
      * The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
      */
@@ -246,7 +229,7 @@ export interface PBSState {
     /**
      * The unique identifier of the storage.
      */
-    pbsId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string>;
     /**
      * The IP address or DNS name of the Proxmox Backup Server.
      */
@@ -262,13 +245,13 @@ export interface PBSState {
 }
 
 /**
- * The set of arguments for constructing a PBS resource.
+ * The set of arguments for constructing a Pbs resource.
  */
-export interface PBSArgs {
+export interface PbsArgs {
     /**
      * Configure backup retention settings for the storage type.
      */
-    backups?: pulumi.Input<inputs.Storage.PBSBackups>;
+    backups?: pulumi.Input<inputs.storage.PbsBackups>;
     /**
      * The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
      */
@@ -308,7 +291,7 @@ export interface PBSArgs {
     /**
      * The unique identifier of the storage.
      */
-    pbsId: pulumi.Input<string>;
+    resourceId: pulumi.Input<string>;
     /**
      * The IP address or DNS name of the Proxmox Backup Server.
      */

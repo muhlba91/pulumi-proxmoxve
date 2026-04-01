@@ -13,99 +13,21 @@ namespace Pulumi.ProxmoxVE.Metrics
     {
         /// <summary>
         /// Retrieves information about a specific PVE metric server.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using ProxmoxVE = Pulumi.ProxmoxVE;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = ProxmoxVE.Metrics.GetServer.Invoke(new()
-        ///     {
-        ///         Name = "example_influxdb",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["dataProxmoxVirtualEnvironmentMetricsServer"] = 
-        ///         {
-        ///             { "server", example.Apply(getServerResult =&gt; getServerResult.Server) },
-        ///             { "port", example.Apply(getServerResult =&gt; getServerResult.Port) },
-        ///         },
-        ///     };
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetServerResult> InvokeAsync(GetServerArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerResult>("proxmoxve:Metrics/getServer:getServer", args ?? new GetServerArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerResult>("proxmoxve:metrics/getServer:getServer", args ?? new GetServerArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about a specific PVE metric server.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using ProxmoxVE = Pulumi.ProxmoxVE;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = ProxmoxVE.Metrics.GetServer.Invoke(new()
-        ///     {
-        ///         Name = "example_influxdb",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["dataProxmoxVirtualEnvironmentMetricsServer"] = 
-        ///         {
-        ///             { "server", example.Apply(getServerResult =&gt; getServerResult.Server) },
-        ///             { "port", example.Apply(getServerResult =&gt; getServerResult.Port) },
-        ///         },
-        ///     };
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetServerResult> Invoke(GetServerInvokeArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetServerResult>("proxmoxve:Metrics/getServer:getServer", args ?? new GetServerInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetServerResult>("proxmoxve:metrics/getServer:getServer", args ?? new GetServerInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about a specific PVE metric server.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using ProxmoxVE = Pulumi.ProxmoxVE;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = ProxmoxVE.Metrics.GetServer.Invoke(new()
-        ///     {
-        ///         Name = "example_influxdb",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["dataProxmoxVirtualEnvironmentMetricsServer"] = 
-        ///         {
-        ///             { "server", example.Apply(getServerResult =&gt; getServerResult.Server) },
-        ///             { "port", example.Apply(getServerResult =&gt; getServerResult.Port) },
-        ///         },
-        ///     };
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetServerResult> Invoke(GetServerInvokeArgs args, InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetServerResult>("proxmoxve:Metrics/getServer:getServer", args ?? new GetServerInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetServerResult>("proxmoxve:metrics/getServer:getServer", args ?? new GetServerInvokeArgs(), options.WithDefaults());
     }
 
 
@@ -154,6 +76,18 @@ namespace Pulumi.ProxmoxVE.Metrics
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// OpenTelemetry compression algorithm for requests.
+        /// </summary>
+        public readonly string OpentelemetryCompression;
+        /// <summary>
+        /// OpenTelemetry custom HTTP headers as JSON, base64 encoded.
+        /// </summary>
+        public readonly string OpentelemetryHeaders;
+        /// <summary>
+        /// OpenTelemetry maximum request body size in bytes.
+        /// </summary>
+        public readonly int OpentelemetryMaxBodySize;
+        /// <summary>
         /// OpenTelemetry endpoint path (e.g., `/v1/metrics`).
         /// </summary>
         public readonly string OpentelemetryPath;
@@ -161,6 +95,18 @@ namespace Pulumi.ProxmoxVE.Metrics
         /// Protocol for OpenTelemetry. Choice is between `Http` | `Https`.
         /// </summary>
         public readonly string OpentelemetryProto;
+        /// <summary>
+        /// OpenTelemetry additional resource attributes as JSON, base64 encoded.
+        /// </summary>
+        public readonly string OpentelemetryResourceAttributes;
+        /// <summary>
+        /// OpenTelemetry HTTP request timeout in seconds.
+        /// </summary>
+        public readonly int OpentelemetryTimeout;
+        /// <summary>
+        /// OpenTelemetry verify SSL certificates.
+        /// </summary>
+        public readonly bool OpentelemetryVerifySsl;
         /// <summary>
         /// Server network port.
         /// </summary>
@@ -182,9 +128,21 @@ namespace Pulumi.ProxmoxVE.Metrics
 
             string name,
 
+            string opentelemetryCompression,
+
+            string opentelemetryHeaders,
+
+            int opentelemetryMaxBodySize,
+
             string opentelemetryPath,
 
             string opentelemetryProto,
+
+            string opentelemetryResourceAttributes,
+
+            int opentelemetryTimeout,
+
+            bool opentelemetryVerifySsl,
 
             int port,
 
@@ -195,8 +153,14 @@ namespace Pulumi.ProxmoxVE.Metrics
             Disable = disable;
             Id = id;
             Name = name;
+            OpentelemetryCompression = opentelemetryCompression;
+            OpentelemetryHeaders = opentelemetryHeaders;
+            OpentelemetryMaxBodySize = opentelemetryMaxBodySize;
             OpentelemetryPath = opentelemetryPath;
             OpentelemetryProto = opentelemetryProto;
+            OpentelemetryResourceAttributes = opentelemetryResourceAttributes;
+            OpentelemetryTimeout = opentelemetryTimeout;
+            OpentelemetryVerifySsl = opentelemetryVerifySsl;
             Port = port;
             Server = server;
             Type = type;

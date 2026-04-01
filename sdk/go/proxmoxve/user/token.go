@@ -8,62 +8,11 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // User API tokens.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/permission"
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/user"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// if creating a user token, the user must be created first
-//			user, err := permission.NewUser(ctx, "user", &permission.UserArgs{
-//				Comment:        pulumi.String("Managed by Pulumi"),
-//				Email:          pulumi.String("user@pve"),
-//				Enabled:        pulumi.Bool(true),
-//				ExpirationDate: pulumi.String("2034-01-01T22:00:00Z"),
-//				UserId:         pulumi.String("user@pve"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = user.NewToken(ctx, "user_token", &user.TokenArgs{
-//				Comment:        pulumi.String("Managed by Pulumi"),
-//				ExpirationDate: pulumi.String("2033-01-01T22:00:00Z"),
-//				TokenName:      pulumi.String("tk1"),
-//				UserId:         user.UserId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// #!/usr/bin/env sh
-//
-// #Tokens can be imported using they identifiers in format `user_id!token_name` format, e.g.:
-//
-// ```sh
-// $ pulumi import proxmoxve:User/token:Token token1 user@pve!token1
-// ```
 type Token struct {
 	pulumi.CustomResourceState
 
@@ -100,7 +49,7 @@ func NewToken(ctx *pulumi.Context,
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Token
-	err := ctx.RegisterResource("proxmoxve:User/token:Token", name, args, &resource, opts...)
+	err := ctx.RegisterResource("proxmoxve:user/token:Token", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -112,7 +61,7 @@ func NewToken(ctx *pulumi.Context,
 func GetToken(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *TokenState, opts ...pulumi.ResourceOption) (*Token, error) {
 	var resource Token
-	err := ctx.ReadResource("proxmoxve:User/token:Token", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("proxmoxve:user/token:Token", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

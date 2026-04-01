@@ -24,6 +24,7 @@ class MembershipArgs:
                  vm_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Membership resource.
+
         :param pulumi.Input[_builtins.str] pool_id: Resource pool id
         :param pulumi.Input[_builtins.str] storage_id: Storage id
         :param pulumi.Input[_builtins.int] vm_id: VM or CT id
@@ -80,6 +81,7 @@ class _MembershipState:
                  vm_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Membership resources.
+
         :param pulumi.Input[_builtins.str] pool_id: Resource pool id
         :param pulumi.Input[_builtins.str] storage_id: Storage id
         :param pulumi.Input[_builtins.str] type: Resource pool membership type (can be `vm` for VMs and CTs or `storage` for storages)
@@ -143,7 +145,7 @@ class _MembershipState:
         pulumi.set(self, "vm_id", value)
 
 
-@pulumi.type_token("proxmoxve:Pool/membership:Membership")
+@pulumi.type_token("proxmoxve:pool/membership:Membership")
 class Membership(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -158,34 +160,6 @@ class Membership(pulumi.CustomResource):
 
         > This resource requires the `Pool.Allocate` permission on the pool path (e.g., `/pool/{poolid}`).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        test_vm1 = proxmoxve.vm.VirtualMachine("test_vm1",
-            vm_id=1234,
-            node_name="pve",
-            started=False)
-        test_pool = proxmoxve.permission.Pool("test_pool", pool_id="test-pool")
-        vm_membership = proxmoxve.pool.Membership("vm_membership",
-            pool_id=test_pool.id,
-            vm_id=test_vm1.id)
-        storage_membership = proxmoxve.pool.Membership("storage_membership",
-            pool_id=test_pool.id,
-            storage_id="local-lvm")
-        ```
-
-        ## Import
-
-        #!/usr/bin/env sh
-
-        Resource pool membership can be imported using its unique identifier, e.g.: {pool_id}/{type}/{member_id}
-
-        ```sh
-        $ pulumi import proxmoxve:Pool/membership:Membership example_membership test-pool/vm/102
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -204,34 +178,6 @@ class Membership(pulumi.CustomResource):
 
         > This resource requires the `Pool.Allocate` permission on the pool path (e.g., `/pool/{poolid}`).
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        test_vm1 = proxmoxve.vm.VirtualMachine("test_vm1",
-            vm_id=1234,
-            node_name="pve",
-            started=False)
-        test_pool = proxmoxve.permission.Pool("test_pool", pool_id="test-pool")
-        vm_membership = proxmoxve.pool.Membership("vm_membership",
-            pool_id=test_pool.id,
-            vm_id=test_vm1.id)
-        storage_membership = proxmoxve.pool.Membership("storage_membership",
-            pool_id=test_pool.id,
-            storage_id="local-lvm")
-        ```
-
-        ## Import
-
-        #!/usr/bin/env sh
-
-        Resource pool membership can be imported using its unique identifier, e.g.: {pool_id}/{type}/{member_id}
-
-        ```sh
-        $ pulumi import proxmoxve:Pool/membership:Membership example_membership test-pool/vm/102
-        ```
 
         :param str resource_name: The name of the resource.
         :param MembershipArgs args: The arguments to use to populate this resource's properties.
@@ -267,7 +213,7 @@ class Membership(pulumi.CustomResource):
             __props__.__dict__["vm_id"] = vm_id
             __props__.__dict__["type"] = None
         super(Membership, __self__).__init__(
-            'proxmoxve:Pool/membership:Membership',
+            'proxmoxve:pool/membership:Membership',
             resource_name,
             __props__,
             opts)

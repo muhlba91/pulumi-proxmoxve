@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,22 +21,34 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "proxmoxve:Storage/cIFS:CIFS":
-		r = &CIFS{}
-	case "proxmoxve:Storage/directory:Directory":
+	case "proxmoxve:storage/cifs:Cifs":
+		r = &Cifs{}
+	case "proxmoxve:storage/cifsLegacy:CifsLegacy":
+		r = &CifsLegacy{}
+	case "proxmoxve:storage/directory:Directory":
 		r = &Directory{}
-	case "proxmoxve:Storage/file:File":
-		r = &File{}
-	case "proxmoxve:Storage/lVM:LVM":
-		r = &LVM{}
-	case "proxmoxve:Storage/lVMThin:LVMThin":
-		r = &LVMThin{}
-	case "proxmoxve:Storage/nFS:NFS":
-		r = &NFS{}
-	case "proxmoxve:Storage/pBS:PBS":
-		r = &PBS{}
-	case "proxmoxve:Storage/zFSPool:ZFSPool":
-		r = &ZFSPool{}
+	case "proxmoxve:storage/directoryLegacy:DirectoryLegacy":
+		r = &DirectoryLegacy{}
+	case "proxmoxve:storage/lvm:Lvm":
+		r = &Lvm{}
+	case "proxmoxve:storage/lvmLegacy:LvmLegacy":
+		r = &LvmLegacy{}
+	case "proxmoxve:storage/lvmthin:Lvmthin":
+		r = &Lvmthin{}
+	case "proxmoxve:storage/lvmthinLegacy:LvmthinLegacy":
+		r = &LvmthinLegacy{}
+	case "proxmoxve:storage/nfs:Nfs":
+		r = &Nfs{}
+	case "proxmoxve:storage/nfsLegacy:NfsLegacy":
+		r = &NfsLegacy{}
+	case "proxmoxve:storage/pbs:Pbs":
+		r = &Pbs{}
+	case "proxmoxve:storage/pbsLegacy:PbsLegacy":
+		r = &PbsLegacy{}
+	case "proxmoxve:storage/zfspool:Zfspool":
+		r = &Zfspool{}
+	case "proxmoxve:storage/zfspoolLegacy:ZfspoolLegacy":
+		r = &ZfspoolLegacy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -52,42 +64,72 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
-		"Storage/cIFS",
+		"storage/cifs",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
-		"Storage/directory",
+		"storage/cifsLegacy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
-		"Storage/file",
+		"storage/directory",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
-		"Storage/lVM",
+		"storage/directoryLegacy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
-		"Storage/lVMThin",
+		"storage/lvm",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
-		"Storage/nFS",
+		"storage/lvmLegacy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
-		"Storage/pBS",
+		"storage/lvmthin",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
-		"Storage/zFSPool",
+		"storage/lvmthinLegacy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"storage/nfs",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"storage/nfsLegacy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"storage/pbs",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"storage/pbsLegacy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"storage/zfspool",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"storage/zfspoolLegacy",
 		&module{version},
 	)
 }

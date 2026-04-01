@@ -8,22 +8,10 @@ import * as utilities from "../../utilities";
 
 /**
  * Retrieves a directory mapping from a Proxmox VE cluster.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const example = proxmoxve.Hardware.mapping.getDir({
- *     name: "example",
- * });
- * export const dataProxmoxVirtualEnvironmentHardwareMappingDir = example;
- * ```
  */
 export function getDir(args: GetDirArgs, opts?: pulumi.InvokeOptions): Promise<GetDirResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("proxmoxve:Hardware/mapping/getDir:getDir", {
+    return pulumi.runtime.invoke("proxmoxve:hardware/mapping/getDir:getDir", {
         "name": args.name,
     }, opts);
 }
@@ -53,7 +41,7 @@ export interface GetDirResult {
     /**
      * The actual map of devices for the directory mapping.
      */
-    readonly maps: outputs.Hardware.mapping.GetDirMap[];
+    readonly maps: outputs.hardware.mapping.GetDirMap[];
     /**
      * The name of this directory mapping.
      */
@@ -61,22 +49,10 @@ export interface GetDirResult {
 }
 /**
  * Retrieves a directory mapping from a Proxmox VE cluster.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const example = proxmoxve.Hardware.mapping.getDir({
- *     name: "example",
- * });
- * export const dataProxmoxVirtualEnvironmentHardwareMappingDir = example;
- * ```
  */
 export function getDirOutput(args: GetDirOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDirResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("proxmoxve:Hardware/mapping/getDir:getDir", {
+    return pulumi.runtime.invokeOutput("proxmoxve:hardware/mapping/getDir:getDir", {
         "name": args.name,
     }, opts);
 }

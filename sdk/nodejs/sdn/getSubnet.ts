@@ -11,7 +11,7 @@ import * as utilities from "../utilities";
  */
 export function getSubnet(args: GetSubnetArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invoke("proxmoxve:Sdn/getSubnet:getSubnet", {
+    return pulumi.runtime.invoke("proxmoxve:sdn/getSubnet:getSubnet", {
         "cidr": args.cidr,
         "dhcpRange": args.dhcpRange,
         "vnet": args.vnet,
@@ -29,7 +29,7 @@ export interface GetSubnetArgs {
     /**
      * DHCP range (start and end IPs).
      */
-    dhcpRange?: inputs.Sdn.GetSubnetDhcpRange;
+    dhcpRange?: inputs.sdn.GetSubnetDhcpRange;
     /**
      * The VNet this subnet belongs to.
      */
@@ -51,7 +51,7 @@ export interface GetSubnetResult {
     /**
      * DHCP range (start and end IPs).
      */
-    readonly dhcpRange: outputs.Sdn.GetSubnetDhcpRange;
+    readonly dhcpRange: outputs.sdn.GetSubnetDhcpRange;
     /**
      * Prefix used for DNS zone delegation.
      */
@@ -78,7 +78,7 @@ export interface GetSubnetResult {
  */
 export function getSubnetOutput(args: GetSubnetOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSubnetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
-    return pulumi.runtime.invokeOutput("proxmoxve:Sdn/getSubnet:getSubnet", {
+    return pulumi.runtime.invokeOutput("proxmoxve:sdn/getSubnet:getSubnet", {
         "cidr": args.cidr,
         "dhcpRange": args.dhcpRange,
         "vnet": args.vnet,
@@ -96,7 +96,7 @@ export interface GetSubnetOutputArgs {
     /**
      * DHCP range (start and end IPs).
      */
-    dhcpRange?: pulumi.Input<inputs.Sdn.GetSubnetDhcpRangeArgs>;
+    dhcpRange?: pulumi.Input<inputs.sdn.GetSubnetDhcpRangeArgs>;
     /**
      * The VNet this subnet belongs to.
      */

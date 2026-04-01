@@ -8,46 +8,6 @@ import * as utilities from "../utilities";
 
 /**
  * Manages Proxmox VE Cluster Datacenter options.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const options = new proxmoxve.cluster.Options("options", {
- *     language: "en",
- *     keyboard: "pl",
- *     emailFrom: "ged@gont.earthsea",
- *     bandwidthLimitMigration: 555555,
- *     bandwidthLimitDefault: 666666,
- *     maxWorkers: 5,
- *     migrationCidr: "10.0.0.0/8",
- *     migrationType: "secure",
- *     nextId: {
- *         lower: 100,
- *         upper: 999999999,
- *     },
- *     notify: {
- *         haFencingMode: "never",
- *         haFencingTarget: "default-matcher",
- *         packageUpdates: "always",
- *         packageUpdatesTarget: "default-matcher",
- *         packageReplication: "always",
- *         packageReplicationTarget: "default-matcher",
- *     },
- * });
- * ```
- *
- * ## Import
- *
- * #!/usr/bin/env sh
- *
- * Cluster options are global and can be imported using e.g.:
- *
- * ```sh
- * $ pulumi import proxmoxve:Cluster/options:Options options cluster
- * ```
  */
 export class Options extends pulumi.CustomResource {
     /**
@@ -64,7 +24,7 @@ export class Options extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'proxmoxve:Cluster/options:Options';
+    public static readonly __pulumiType = 'proxmoxve:cluster/options:Options';
 
     /**
      * Returns true if the given object is an instance of Options.  This is designed to work even
@@ -118,7 +78,7 @@ export class Options extends pulumi.CustomResource {
      */
     declare public readonly emailFrom: pulumi.Output<string | undefined>;
     /**
-     * Cluster wide HA shutdown policy (). Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
+     * Cluster wide HA shutdown policy. Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
      */
     declare public readonly haShutdownPolicy: pulumi.Output<string | undefined>;
     /**
@@ -152,11 +112,11 @@ export class Options extends pulumi.CustomResource {
     /**
      * The ranges for the next free VM ID auto-selection pool.
      */
-    declare public readonly nextId: pulumi.Output<outputs.Cluster.OptionsNextId | undefined>;
+    declare public readonly nextId: pulumi.Output<outputs.cluster.OptionsNextId | undefined>;
     /**
      * Cluster-wide notification settings.
      */
-    declare public readonly notify: pulumi.Output<outputs.Cluster.OptionsNotify | undefined>;
+    declare public readonly notify: pulumi.Output<outputs.cluster.OptionsNotify | undefined>;
 
     /**
      * Create a Options resource with the given unique name, arguments, and options.
@@ -264,7 +224,7 @@ export interface OptionsState {
      */
     emailFrom?: pulumi.Input<string>;
     /**
-     * Cluster wide HA shutdown policy (). Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
+     * Cluster wide HA shutdown policy. Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
      */
     haShutdownPolicy?: pulumi.Input<string>;
     /**
@@ -298,11 +258,11 @@ export interface OptionsState {
     /**
      * The ranges for the next free VM ID auto-selection pool.
      */
-    nextId?: pulumi.Input<inputs.Cluster.OptionsNextId>;
+    nextId?: pulumi.Input<inputs.cluster.OptionsNextId>;
     /**
      * Cluster-wide notification settings.
      */
-    notify?: pulumi.Input<inputs.Cluster.OptionsNotify>;
+    notify?: pulumi.Input<inputs.cluster.OptionsNotify>;
 }
 
 /**
@@ -350,7 +310,7 @@ export interface OptionsArgs {
      */
     emailFrom?: pulumi.Input<string>;
     /**
-     * Cluster wide HA shutdown policy (). Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
+     * Cluster wide HA shutdown policy. Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
      */
     haShutdownPolicy?: pulumi.Input<string>;
     /**
@@ -384,9 +344,9 @@ export interface OptionsArgs {
     /**
      * The ranges for the next free VM ID auto-selection pool.
      */
-    nextId?: pulumi.Input<inputs.Cluster.OptionsNextId>;
+    nextId?: pulumi.Input<inputs.cluster.OptionsNextId>;
     /**
      * Cluster-wide notification settings.
      */
-    notify?: pulumi.Input<inputs.Cluster.OptionsNotify>;
+    notify?: pulumi.Input<inputs.cluster.OptionsNotify>;
 }

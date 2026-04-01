@@ -8,62 +8,16 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Manages an SMB/CIFS based storage server in Proxmox VE.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/storage"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.NewCIFS(ctx, "example", &storage.CIFSArgs{
-//				CifsId: pulumi.String("example-cifs"),
-//				Nodes: pulumi.StringArray{
-//					pulumi.String("pve"),
-//				},
-//				Server:   pulumi.String("10.0.0.20"),
-//				Share:    pulumi.String("proxmox"),
-//				Username: pulumi.String("cifs-user"),
-//				Password: pulumi.String("cifs-password"),
-//				Contents: pulumi.StringArray{
-//					pulumi.String("images"),
-//				},
-//				Domain:                pulumi.String("WORKGROUP"),
-//				Subdirectory:          pulumi.String("terraform"),
-//				Preallocation:         pulumi.String("metadata"),
-//				SnapshotAsVolumeChain: pulumi.Bool(true),
-//				Backups: &storage.CIFSBackupsArgs{
-//					MaxProtectedBackups: pulumi.Int(5),
-//					KeepDaily:           pulumi.Int(7),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-type CIFS struct {
+type Cifs struct {
 	pulumi.CustomResourceState
 
 	// Configure backup retention settings for the storage type.
-	Backups CIFSBackupsPtrOutput `pulumi:"backups"`
-	// The unique identifier of the storage.
-	CifsId pulumi.StringOutput `pulumi:"cifsId"`
+	Backups CifsBackupsPtrOutput `pulumi:"backups"`
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents pulumi.StringArrayOutput `pulumi:"contents"`
 	// Whether the storage is disabled.
@@ -76,6 +30,8 @@ type CIFS struct {
 	Password pulumi.StringOutput `pulumi:"password"`
 	// The preallocation mode for raw and qcow2 images.
 	Preallocation pulumi.StringPtrOutput `pulumi:"preallocation"`
+	// The unique identifier of the storage.
+	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
 	// The IP address or DNS name of the SMB/CIFS server.
 	Server pulumi.StringOutput `pulumi:"server"`
 	// The name of the SMB/CIFS share.
@@ -90,18 +46,18 @@ type CIFS struct {
 	Username pulumi.StringOutput `pulumi:"username"`
 }
 
-// NewCIFS registers a new resource with the given unique name, arguments, and options.
-func NewCIFS(ctx *pulumi.Context,
-	name string, args *CIFSArgs, opts ...pulumi.ResourceOption) (*CIFS, error) {
+// NewCifs registers a new resource with the given unique name, arguments, and options.
+func NewCifs(ctx *pulumi.Context,
+	name string, args *CifsArgs, opts ...pulumi.ResourceOption) (*Cifs, error) {
 	if args == nil {
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.CifsId == nil {
-		return nil, errors.New("invalid value for required argument 'CifsId'")
-	}
 	if args.Password == nil {
 		return nil, errors.New("invalid value for required argument 'Password'")
+	}
+	if args.ResourceId == nil {
+		return nil, errors.New("invalid value for required argument 'ResourceId'")
 	}
 	if args.Server == nil {
 		return nil, errors.New("invalid value for required argument 'Server'")
@@ -112,6 +68,12 @@ func NewCIFS(ctx *pulumi.Context,
 	if args.Username == nil {
 		return nil, errors.New("invalid value for required argument 'Username'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("proxmox_virtual_environment_storage_cifs"),
+		},
+	})
+	opts = append(opts, aliases)
 	if args.Password != nil {
 		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringInput)
 	}
@@ -120,32 +82,30 @@ func NewCIFS(ctx *pulumi.Context,
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
-	var resource CIFS
-	err := ctx.RegisterResource("proxmoxve:Storage/cIFS:CIFS", name, args, &resource, opts...)
+	var resource Cifs
+	err := ctx.RegisterResource("proxmoxve:storage/cifs:Cifs", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// GetCIFS gets an existing CIFS resource's state with the given name, ID, and optional
+// GetCifs gets an existing Cifs resource's state with the given name, ID, and optional
 // state properties that are used to uniquely qualify the lookup (nil if not required).
-func GetCIFS(ctx *pulumi.Context,
-	name string, id pulumi.IDInput, state *CIFSState, opts ...pulumi.ResourceOption) (*CIFS, error) {
-	var resource CIFS
-	err := ctx.ReadResource("proxmoxve:Storage/cIFS:CIFS", name, id, state, &resource, opts...)
+func GetCifs(ctx *pulumi.Context,
+	name string, id pulumi.IDInput, state *CifsState, opts ...pulumi.ResourceOption) (*Cifs, error) {
+	var resource Cifs
+	err := ctx.ReadResource("proxmoxve:storage/cifs:Cifs", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return &resource, nil
 }
 
-// Input properties used for looking up and filtering CIFS resources.
+// Input properties used for looking up and filtering Cifs resources.
 type cifsState struct {
 	// Configure backup retention settings for the storage type.
-	Backups *CIFSBackups `pulumi:"backups"`
-	// The unique identifier of the storage.
-	CifsId *string `pulumi:"cifsId"`
+	Backups *CifsBackups `pulumi:"backups"`
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents []string `pulumi:"contents"`
 	// Whether the storage is disabled.
@@ -158,6 +118,8 @@ type cifsState struct {
 	Password *string `pulumi:"password"`
 	// The preallocation mode for raw and qcow2 images.
 	Preallocation *string `pulumi:"preallocation"`
+	// The unique identifier of the storage.
+	ResourceId *string `pulumi:"resourceId"`
 	// The IP address or DNS name of the SMB/CIFS server.
 	Server *string `pulumi:"server"`
 	// The name of the SMB/CIFS share.
@@ -172,11 +134,9 @@ type cifsState struct {
 	Username *string `pulumi:"username"`
 }
 
-type CIFSState struct {
+type CifsState struct {
 	// Configure backup retention settings for the storage type.
-	Backups CIFSBackupsPtrInput
-	// The unique identifier of the storage.
-	CifsId pulumi.StringPtrInput
+	Backups CifsBackupsPtrInput
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents pulumi.StringArrayInput
 	// Whether the storage is disabled.
@@ -189,6 +149,8 @@ type CIFSState struct {
 	Password pulumi.StringPtrInput
 	// The preallocation mode for raw and qcow2 images.
 	Preallocation pulumi.StringPtrInput
+	// The unique identifier of the storage.
+	ResourceId pulumi.StringPtrInput
 	// The IP address or DNS name of the SMB/CIFS server.
 	Server pulumi.StringPtrInput
 	// The name of the SMB/CIFS share.
@@ -203,15 +165,13 @@ type CIFSState struct {
 	Username pulumi.StringPtrInput
 }
 
-func (CIFSState) ElementType() reflect.Type {
+func (CifsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cifsState)(nil)).Elem()
 }
 
 type cifsArgs struct {
 	// Configure backup retention settings for the storage type.
-	Backups *CIFSBackups `pulumi:"backups"`
-	// The unique identifier of the storage.
-	CifsId string `pulumi:"cifsId"`
+	Backups *CifsBackups `pulumi:"backups"`
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents []string `pulumi:"contents"`
 	// Whether the storage is disabled.
@@ -224,6 +184,8 @@ type cifsArgs struct {
 	Password string `pulumi:"password"`
 	// The preallocation mode for raw and qcow2 images.
 	Preallocation *string `pulumi:"preallocation"`
+	// The unique identifier of the storage.
+	ResourceId string `pulumi:"resourceId"`
 	// The IP address or DNS name of the SMB/CIFS server.
 	Server string `pulumi:"server"`
 	// The name of the SMB/CIFS share.
@@ -236,12 +198,10 @@ type cifsArgs struct {
 	Username string `pulumi:"username"`
 }
 
-// The set of arguments for constructing a CIFS resource.
-type CIFSArgs struct {
+// The set of arguments for constructing a Cifs resource.
+type CifsArgs struct {
 	// Configure backup retention settings for the storage type.
-	Backups CIFSBackupsPtrInput
-	// The unique identifier of the storage.
-	CifsId pulumi.StringInput
+	Backups CifsBackupsPtrInput
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents pulumi.StringArrayInput
 	// Whether the storage is disabled.
@@ -254,6 +214,8 @@ type CIFSArgs struct {
 	Password pulumi.StringInput
 	// The preallocation mode for raw and qcow2 images.
 	Preallocation pulumi.StringPtrInput
+	// The unique identifier of the storage.
+	ResourceId pulumi.StringInput
 	// The IP address or DNS name of the SMB/CIFS server.
 	Server pulumi.StringInput
 	// The name of the SMB/CIFS share.
@@ -266,208 +228,208 @@ type CIFSArgs struct {
 	Username pulumi.StringInput
 }
 
-func (CIFSArgs) ElementType() reflect.Type {
+func (CifsArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*cifsArgs)(nil)).Elem()
 }
 
-type CIFSInput interface {
+type CifsInput interface {
 	pulumi.Input
 
-	ToCIFSOutput() CIFSOutput
-	ToCIFSOutputWithContext(ctx context.Context) CIFSOutput
+	ToCifsOutput() CifsOutput
+	ToCifsOutputWithContext(ctx context.Context) CifsOutput
 }
 
-func (*CIFS) ElementType() reflect.Type {
-	return reflect.TypeOf((**CIFS)(nil)).Elem()
+func (*Cifs) ElementType() reflect.Type {
+	return reflect.TypeOf((**Cifs)(nil)).Elem()
 }
 
-func (i *CIFS) ToCIFSOutput() CIFSOutput {
-	return i.ToCIFSOutputWithContext(context.Background())
+func (i *Cifs) ToCifsOutput() CifsOutput {
+	return i.ToCifsOutputWithContext(context.Background())
 }
 
-func (i *CIFS) ToCIFSOutputWithContext(ctx context.Context) CIFSOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CIFSOutput)
+func (i *Cifs) ToCifsOutputWithContext(ctx context.Context) CifsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CifsOutput)
 }
 
-// CIFSArrayInput is an input type that accepts CIFSArray and CIFSArrayOutput values.
-// You can construct a concrete instance of `CIFSArrayInput` via:
+// CifsArrayInput is an input type that accepts CifsArray and CifsArrayOutput values.
+// You can construct a concrete instance of `CifsArrayInput` via:
 //
-//	CIFSArray{ CIFSArgs{...} }
-type CIFSArrayInput interface {
+//	CifsArray{ CifsArgs{...} }
+type CifsArrayInput interface {
 	pulumi.Input
 
-	ToCIFSArrayOutput() CIFSArrayOutput
-	ToCIFSArrayOutputWithContext(context.Context) CIFSArrayOutput
+	ToCifsArrayOutput() CifsArrayOutput
+	ToCifsArrayOutputWithContext(context.Context) CifsArrayOutput
 }
 
-type CIFSArray []CIFSInput
+type CifsArray []CifsInput
 
-func (CIFSArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*CIFS)(nil)).Elem()
+func (CifsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*Cifs)(nil)).Elem()
 }
 
-func (i CIFSArray) ToCIFSArrayOutput() CIFSArrayOutput {
-	return i.ToCIFSArrayOutputWithContext(context.Background())
+func (i CifsArray) ToCifsArrayOutput() CifsArrayOutput {
+	return i.ToCifsArrayOutputWithContext(context.Background())
 }
 
-func (i CIFSArray) ToCIFSArrayOutputWithContext(ctx context.Context) CIFSArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CIFSArrayOutput)
+func (i CifsArray) ToCifsArrayOutputWithContext(ctx context.Context) CifsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CifsArrayOutput)
 }
 
-// CIFSMapInput is an input type that accepts CIFSMap and CIFSMapOutput values.
-// You can construct a concrete instance of `CIFSMapInput` via:
+// CifsMapInput is an input type that accepts CifsMap and CifsMapOutput values.
+// You can construct a concrete instance of `CifsMapInput` via:
 //
-//	CIFSMap{ "key": CIFSArgs{...} }
-type CIFSMapInput interface {
+//	CifsMap{ "key": CifsArgs{...} }
+type CifsMapInput interface {
 	pulumi.Input
 
-	ToCIFSMapOutput() CIFSMapOutput
-	ToCIFSMapOutputWithContext(context.Context) CIFSMapOutput
+	ToCifsMapOutput() CifsMapOutput
+	ToCifsMapOutputWithContext(context.Context) CifsMapOutput
 }
 
-type CIFSMap map[string]CIFSInput
+type CifsMap map[string]CifsInput
 
-func (CIFSMap) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*CIFS)(nil)).Elem()
+func (CifsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*Cifs)(nil)).Elem()
 }
 
-func (i CIFSMap) ToCIFSMapOutput() CIFSMapOutput {
-	return i.ToCIFSMapOutputWithContext(context.Background())
+func (i CifsMap) ToCifsMapOutput() CifsMapOutput {
+	return i.ToCifsMapOutputWithContext(context.Background())
 }
 
-func (i CIFSMap) ToCIFSMapOutputWithContext(ctx context.Context) CIFSMapOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(CIFSMapOutput)
+func (i CifsMap) ToCifsMapOutputWithContext(ctx context.Context) CifsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CifsMapOutput)
 }
 
-type CIFSOutput struct{ *pulumi.OutputState }
+type CifsOutput struct{ *pulumi.OutputState }
 
-func (CIFSOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**CIFS)(nil)).Elem()
+func (CifsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Cifs)(nil)).Elem()
 }
 
-func (o CIFSOutput) ToCIFSOutput() CIFSOutput {
+func (o CifsOutput) ToCifsOutput() CifsOutput {
 	return o
 }
 
-func (o CIFSOutput) ToCIFSOutputWithContext(ctx context.Context) CIFSOutput {
+func (o CifsOutput) ToCifsOutputWithContext(ctx context.Context) CifsOutput {
 	return o
 }
 
 // Configure backup retention settings for the storage type.
-func (o CIFSOutput) Backups() CIFSBackupsPtrOutput {
-	return o.ApplyT(func(v *CIFS) CIFSBackupsPtrOutput { return v.Backups }).(CIFSBackupsPtrOutput)
-}
-
-// The unique identifier of the storage.
-func (o CIFSOutput) CifsId() pulumi.StringOutput {
-	return o.ApplyT(func(v *CIFS) pulumi.StringOutput { return v.CifsId }).(pulumi.StringOutput)
+func (o CifsOutput) Backups() CifsBackupsPtrOutput {
+	return o.ApplyT(func(v *Cifs) CifsBackupsPtrOutput { return v.Backups }).(CifsBackupsPtrOutput)
 }
 
 // The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
-func (o CIFSOutput) Contents() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *CIFS) pulumi.StringArrayOutput { return v.Contents }).(pulumi.StringArrayOutput)
+func (o CifsOutput) Contents() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Cifs) pulumi.StringArrayOutput { return v.Contents }).(pulumi.StringArrayOutput)
 }
 
 // Whether the storage is disabled.
-func (o CIFSOutput) Disable() pulumi.BoolOutput {
-	return o.ApplyT(func(v *CIFS) pulumi.BoolOutput { return v.Disable }).(pulumi.BoolOutput)
+func (o CifsOutput) Disable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Cifs) pulumi.BoolOutput { return v.Disable }).(pulumi.BoolOutput)
 }
 
 // The SMB/CIFS domain.
-func (o CIFSOutput) Domain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CIFS) pulumi.StringPtrOutput { return v.Domain }).(pulumi.StringPtrOutput)
+func (o CifsOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cifs) pulumi.StringPtrOutput { return v.Domain }).(pulumi.StringPtrOutput)
 }
 
 // A list of nodes where this storage is available.
-func (o CIFSOutput) Nodes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *CIFS) pulumi.StringArrayOutput { return v.Nodes }).(pulumi.StringArrayOutput)
+func (o CifsOutput) Nodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Cifs) pulumi.StringArrayOutput { return v.Nodes }).(pulumi.StringArrayOutput)
 }
 
 // The password for authenticating with the SMB/CIFS server.
-func (o CIFSOutput) Password() pulumi.StringOutput {
-	return o.ApplyT(func(v *CIFS) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
+func (o CifsOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cifs) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
 // The preallocation mode for raw and qcow2 images.
-func (o CIFSOutput) Preallocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CIFS) pulumi.StringPtrOutput { return v.Preallocation }).(pulumi.StringPtrOutput)
+func (o CifsOutput) Preallocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cifs) pulumi.StringPtrOutput { return v.Preallocation }).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier of the storage.
+func (o CifsOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cifs) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
 }
 
 // The IP address or DNS name of the SMB/CIFS server.
-func (o CIFSOutput) Server() pulumi.StringOutput {
-	return o.ApplyT(func(v *CIFS) pulumi.StringOutput { return v.Server }).(pulumi.StringOutput)
+func (o CifsOutput) Server() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cifs) pulumi.StringOutput { return v.Server }).(pulumi.StringOutput)
 }
 
 // The name of the SMB/CIFS share.
-func (o CIFSOutput) Share() pulumi.StringOutput {
-	return o.ApplyT(func(v *CIFS) pulumi.StringOutput { return v.Share }).(pulumi.StringOutput)
+func (o CifsOutput) Share() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cifs) pulumi.StringOutput { return v.Share }).(pulumi.StringOutput)
 }
 
 // Whether the storage is shared across all nodes.
-func (o CIFSOutput) Shared() pulumi.BoolOutput {
-	return o.ApplyT(func(v *CIFS) pulumi.BoolOutput { return v.Shared }).(pulumi.BoolOutput)
+func (o CifsOutput) Shared() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Cifs) pulumi.BoolOutput { return v.Shared }).(pulumi.BoolOutput)
 }
 
 // Enable support for creating snapshots through volume backing-chains.
-func (o CIFSOutput) SnapshotAsVolumeChain() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *CIFS) pulumi.BoolPtrOutput { return v.SnapshotAsVolumeChain }).(pulumi.BoolPtrOutput)
+func (o CifsOutput) SnapshotAsVolumeChain() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cifs) pulumi.BoolPtrOutput { return v.SnapshotAsVolumeChain }).(pulumi.BoolPtrOutput)
 }
 
 // A subdirectory to mount within the share.
-func (o CIFSOutput) Subdirectory() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CIFS) pulumi.StringPtrOutput { return v.Subdirectory }).(pulumi.StringPtrOutput)
+func (o CifsOutput) Subdirectory() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cifs) pulumi.StringPtrOutput { return v.Subdirectory }).(pulumi.StringPtrOutput)
 }
 
 // The username for authenticating with the SMB/CIFS server.
-func (o CIFSOutput) Username() pulumi.StringOutput {
-	return o.ApplyT(func(v *CIFS) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
+func (o CifsOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v *Cifs) pulumi.StringOutput { return v.Username }).(pulumi.StringOutput)
 }
 
-type CIFSArrayOutput struct{ *pulumi.OutputState }
+type CifsArrayOutput struct{ *pulumi.OutputState }
 
-func (CIFSArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]*CIFS)(nil)).Elem()
+func (CifsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]*Cifs)(nil)).Elem()
 }
 
-func (o CIFSArrayOutput) ToCIFSArrayOutput() CIFSArrayOutput {
+func (o CifsArrayOutput) ToCifsArrayOutput() CifsArrayOutput {
 	return o
 }
 
-func (o CIFSArrayOutput) ToCIFSArrayOutputWithContext(ctx context.Context) CIFSArrayOutput {
+func (o CifsArrayOutput) ToCifsArrayOutputWithContext(ctx context.Context) CifsArrayOutput {
 	return o
 }
 
-func (o CIFSArrayOutput) Index(i pulumi.IntInput) CIFSOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *CIFS {
-		return vs[0].([]*CIFS)[vs[1].(int)]
-	}).(CIFSOutput)
+func (o CifsArrayOutput) Index(i pulumi.IntInput) CifsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Cifs {
+		return vs[0].([]*Cifs)[vs[1].(int)]
+	}).(CifsOutput)
 }
 
-type CIFSMapOutput struct{ *pulumi.OutputState }
+type CifsMapOutput struct{ *pulumi.OutputState }
 
-func (CIFSMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]*CIFS)(nil)).Elem()
+func (CifsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]*Cifs)(nil)).Elem()
 }
 
-func (o CIFSMapOutput) ToCIFSMapOutput() CIFSMapOutput {
+func (o CifsMapOutput) ToCifsMapOutput() CifsMapOutput {
 	return o
 }
 
-func (o CIFSMapOutput) ToCIFSMapOutputWithContext(ctx context.Context) CIFSMapOutput {
+func (o CifsMapOutput) ToCifsMapOutputWithContext(ctx context.Context) CifsMapOutput {
 	return o
 }
 
-func (o CIFSMapOutput) MapIndex(k pulumi.StringInput) CIFSOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *CIFS {
-		return vs[0].(map[string]*CIFS)[vs[1].(string)]
-	}).(CIFSOutput)
+func (o CifsMapOutput) MapIndex(k pulumi.StringInput) CifsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *Cifs {
+		return vs[0].(map[string]*Cifs)[vs[1].(string)]
+	}).(CifsOutput)
 }
 
 func init() {
-	pulumi.RegisterInputType(reflect.TypeOf((*CIFSInput)(nil)).Elem(), &CIFS{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CIFSArrayInput)(nil)).Elem(), CIFSArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*CIFSMapInput)(nil)).Elem(), CIFSMap{})
-	pulumi.RegisterOutputType(CIFSOutput{})
-	pulumi.RegisterOutputType(CIFSArrayOutput{})
-	pulumi.RegisterOutputType(CIFSMapOutput{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CifsInput)(nil)).Elem(), &Cifs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CifsArrayInput)(nil)).Elem(), CifsArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CifsMapInput)(nil)).Elem(), CifsMap{})
+	pulumi.RegisterOutputType(CifsOutput{})
+	pulumi.RegisterOutputType(CifsArrayOutput{})
+	pulumi.RegisterOutputType(CifsMapOutput{})
 }

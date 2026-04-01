@@ -11,47 +11,8 @@ namespace Pulumi.ProxmoxVE.Hardware.Mapping
 {
     /// <summary>
     /// Manages a USB hardware mapping in a Proxmox VE cluster.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using ProxmoxVE = Pulumi.ProxmoxVE;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new ProxmoxVE.Hardware.Mapping.Usb("example", new()
-    ///     {
-    ///         Comment = "This is a comment",
-    ///         Name = "example",
-    ///         Maps = new[]
-    ///         {
-    ///             new ProxmoxVE.Hardware.Mapping.Inputs.UsbMapArgs
-    ///             {
-    ///                 Comment = "This is a device specific comment",
-    ///                 Id = "8087:0a2b",
-    ///                 Node = "pve",
-    ///                 Path = "1-8.2",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// #!/usr/bin/env sh
-    /// 
-    /// A USB hardware mapping can be imported using their name, e.g.:
-    /// 
-    /// ```sh
-    /// $ pulumi import proxmoxve:Hardware/mapping/usb:Usb example example
-    /// ```
     /// </summary>
-    [ProxmoxVEResourceType("proxmoxve:Hardware/mapping/usb:Usb")]
+    [ProxmoxVEResourceType("proxmoxve:hardware/mapping/usb:Usb")]
     public partial class Usb : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -81,12 +42,12 @@ namespace Pulumi.ProxmoxVE.Hardware.Mapping
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Usb(string name, UsbArgs args, CustomResourceOptions? options = null)
-            : base("proxmoxve:Hardware/mapping/usb:Usb", name, args ?? new UsbArgs(), MakeResourceOptions(options, ""))
+            : base("proxmoxve:hardware/mapping/usb:Usb", name, args ?? new UsbArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Usb(string name, Input<string> id, UsbState? state = null, CustomResourceOptions? options = null)
-            : base("proxmoxve:Hardware/mapping/usb:Usb", name, state, MakeResourceOptions(options, id))
+            : base("proxmoxve:hardware/mapping/usb:Usb", name, state, MakeResourceOptions(options, id))
         {
         }
 

@@ -17,24 +17,23 @@ from .. import _utilities
 __all__ = [
     'SubnetDhcpRangeArgs',
     'SubnetDhcpRangeArgsDict',
+    'SubnetLegacyDhcpRangeArgs',
+    'SubnetLegacyDhcpRangeArgsDict',
     'GetSubnetDhcpRangeArgs',
     'GetSubnetDhcpRangeArgsDict',
+    'GetSubnetLegacyDhcpRangeArgs',
+    'GetSubnetLegacyDhcpRangeArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class SubnetDhcpRangeArgsDict(TypedDict):
-        end_address: pulumi.Input[_builtins.str]
-        """
-        End of the DHCP range.
-        """
-        start_address: pulumi.Input[_builtins.str]
-        """
-        Start of the DHCP range.
-        """
-elif False:
-    SubnetDhcpRangeArgsDict: TypeAlias = Mapping[str, Any]
+class SubnetDhcpRangeArgsDict(TypedDict):
+    end_address: pulumi.Input[_builtins.str]
+    """
+    End of the DHCP range.
+    """
+    start_address: pulumi.Input[_builtins.str]
+    """
+    Start of the DHCP range.
+    """
 
 @pulumi.input_type
 class SubnetDhcpRangeArgs:
@@ -73,21 +72,112 @@ class SubnetDhcpRangeArgs:
         pulumi.set(self, "start_address", value)
 
 
-if not MYPY:
-    class GetSubnetDhcpRangeArgsDict(TypedDict):
-        end_address: _builtins.str
+class SubnetLegacyDhcpRangeArgsDict(TypedDict):
+    end_address: pulumi.Input[_builtins.str]
+    """
+    End of the DHCP range.
+    """
+    start_address: pulumi.Input[_builtins.str]
+    """
+    Start of the DHCP range.
+    """
+
+@pulumi.input_type
+class SubnetLegacyDhcpRangeArgs:
+    def __init__(__self__, *,
+                 end_address: pulumi.Input[_builtins.str],
+                 start_address: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] end_address: End of the DHCP range.
+        :param pulumi.Input[_builtins.str] start_address: Start of the DHCP range.
+        """
+        pulumi.set(__self__, "end_address", end_address)
+        pulumi.set(__self__, "start_address", start_address)
+
+    @_builtins.property
+    @pulumi.getter(name="endAddress")
+    def end_address(self) -> pulumi.Input[_builtins.str]:
         """
         End of the DHCP range.
         """
-        start_address: _builtins.str
+        return pulumi.get(self, "end_address")
+
+    @end_address.setter
+    def end_address(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "end_address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startAddress")
+    def start_address(self) -> pulumi.Input[_builtins.str]:
         """
         Start of the DHCP range.
         """
-elif False:
-    GetSubnetDhcpRangeArgsDict: TypeAlias = Mapping[str, Any]
+        return pulumi.get(self, "start_address")
+
+    @start_address.setter
+    def start_address(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "start_address", value)
+
+
+class GetSubnetDhcpRangeArgsDict(TypedDict):
+    end_address: _builtins.str
+    """
+    End of the DHCP range.
+    """
+    start_address: _builtins.str
+    """
+    Start of the DHCP range.
+    """
 
 @pulumi.input_type
 class GetSubnetDhcpRangeArgs:
+    def __init__(__self__, *,
+                 end_address: _builtins.str,
+                 start_address: _builtins.str):
+        """
+        :param _builtins.str end_address: End of the DHCP range.
+        :param _builtins.str start_address: Start of the DHCP range.
+        """
+        pulumi.set(__self__, "end_address", end_address)
+        pulumi.set(__self__, "start_address", start_address)
+
+    @_builtins.property
+    @pulumi.getter(name="endAddress")
+    def end_address(self) -> _builtins.str:
+        """
+        End of the DHCP range.
+        """
+        return pulumi.get(self, "end_address")
+
+    @end_address.setter
+    def end_address(self, value: _builtins.str):
+        pulumi.set(self, "end_address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startAddress")
+    def start_address(self) -> _builtins.str:
+        """
+        Start of the DHCP range.
+        """
+        return pulumi.get(self, "start_address")
+
+    @start_address.setter
+    def start_address(self, value: _builtins.str):
+        pulumi.set(self, "start_address", value)
+
+
+class GetSubnetLegacyDhcpRangeArgsDict(TypedDict):
+    end_address: _builtins.str
+    """
+    End of the DHCP range.
+    """
+    start_address: _builtins.str
+    """
+    Start of the DHCP range.
+    """
+
+@pulumi.input_type
+class GetSubnetLegacyDhcpRangeArgs:
     def __init__(__self__, *,
                  end_address: _builtins.str,
                  start_address: _builtins.str):

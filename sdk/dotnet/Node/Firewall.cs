@@ -13,47 +13,8 @@ namespace Pulumi.ProxmoxVE.Node
     /// Manages Proxmox VE Node Firewall options.
     /// 
     /// &gt; This resource in fact updates existing node firewall configuration created by PVE on bootstrap. All optional attributes have explicit defaults for deterministic behavior (PVE may change defaults in the future). See [API documentation](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/firewall/options).
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using ProxmoxVE = Pulumi.ProxmoxVE;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var node_pve1 = new ProxmoxVE.Node.Firewall("node-pve1", new()
-    ///     {
-    ///         NodeName = "pve1",
-    ///         Enabled = false,
-    ///     });
-    /// 
-    ///     var pve2 = new ProxmoxVE.Node.Firewall("pve2", new()
-    ///     {
-    ///         NodeName = "pve2",
-    ///         Enabled = true,
-    ///         LogLevelIn = "alert",
-    ///         LogLevelOut = "alert",
-    ///         LogLevelForward = "alert",
-    ///         Ndp = true,
-    ///         Nftables = true,
-    ///         Nosmurfs = true,
-    ///         SmurfLogLevel = "alert",
-    ///         TcpFlagsLogLevel = "alert",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// ```sh
-    /// $ pulumi import proxmoxve:Node/firewall:Firewall node-pve1 pve1
-    /// ```
     /// </summary>
-    [ProxmoxVEResourceType("proxmoxve:Node/firewall:Firewall")]
+    [ProxmoxVEResourceType("proxmoxve:node/firewall:Firewall")]
     public partial class Firewall : global::Pulumi.CustomResource
     {
         /// <summary>
@@ -137,12 +98,12 @@ namespace Pulumi.ProxmoxVE.Node
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Firewall(string name, FirewallArgs args, CustomResourceOptions? options = null)
-            : base("proxmoxve:Node/firewall:Firewall", name, args ?? new FirewallArgs(), MakeResourceOptions(options, ""))
+            : base("proxmoxve:node/firewall:Firewall", name, args ?? new FirewallArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Firewall(string name, Input<string> id, FirewallState? state = null, CustomResourceOptions? options = null)
-            : base("proxmoxve:Node/firewall:Firewall", name, state, MakeResourceOptions(options, id))
+            : base("proxmoxve:node/firewall:Firewall", name, state, MakeResourceOptions(options, id))
         {
         }
 

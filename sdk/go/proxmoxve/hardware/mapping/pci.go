@@ -8,59 +8,11 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Manages a PCI hardware mapping in a Proxmox VE cluster.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/hardware"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := hardware.NewPci(ctx, "example", &hardware.PciArgs{
-//				Comment: pulumi.String("This is a comment"),
-//				Name:    pulumi.String("example"),
-//				Maps: mapping.PciMapTypeArray{
-//					&mapping.PciMapTypeArgs{
-//						Comment:     pulumi.String("This is a device specific comment"),
-//						Id:          pulumi.String("8086:5916"),
-//						IommuGroup:  pulumi.Int(0),
-//						Node:        pulumi.String("pve"),
-//						Path:        pulumi.String("0000:00:02.0"),
-//						SubsystemId: pulumi.String("8086:2068"),
-//					},
-//				},
-//				MediatedDevices: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// #!/usr/bin/env sh
-//
-// A PCI hardware mapping can be imported using their name, e.g.:
-//
-// ```sh
-// $ pulumi import proxmoxve:Hardware/mapping/pci:Pci example example
-// ```
 type Pci struct {
 	pulumi.CustomResourceState
 
@@ -86,7 +38,7 @@ func NewPci(ctx *pulumi.Context,
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Pci
-	err := ctx.RegisterResource("proxmoxve:Hardware/mapping/pci:Pci", name, args, &resource, opts...)
+	err := ctx.RegisterResource("proxmoxve:hardware/mapping/pci:Pci", name, args, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -98,7 +50,7 @@ func NewPci(ctx *pulumi.Context,
 func GetPci(ctx *pulumi.Context,
 	name string, id pulumi.IDInput, state *PciState, opts ...pulumi.ResourceOption) (*Pci, error) {
 	var resource Pci
-	err := ctx.ReadResource("proxmoxve:Hardware/mapping/pci:Pci", name, id, state, &resource, opts...)
+	err := ctx.ReadResource("proxmoxve:hardware/mapping/pci:Pci", name, id, state, &resource, opts...)
 	if err != nil {
 		return nil, err
 	}

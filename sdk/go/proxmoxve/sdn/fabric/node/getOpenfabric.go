@@ -7,42 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // OpenFabric Fabric Node in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/sdn"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := sdn.GetOpenfabric(ctx, &fabric/node.GetOpenfabricArgs{
-//				FabricId: "main-fabric",
-//				NodeId:   "pve",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func LookupOpenfabric(ctx *pulumi.Context, args *LookupOpenfabricArgs, opts ...pulumi.InvokeOption) (*LookupOpenfabricResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupOpenfabricResult
-	err := ctx.Invoke("proxmoxve:Sdn/fabric/node/getOpenfabric:getOpenfabric", args, &rv, opts...)
+	err := ctx.Invoke("proxmoxve:sdn/fabric/node/getOpenfabric:getOpenfabric", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -61,7 +34,8 @@ type LookupOpenfabricArgs struct {
 type LookupOpenfabricResult struct {
 	// The unique identifier of the SDN fabric.
 	FabricId string `pulumi:"fabricId"`
-	Id       string `pulumi:"id"`
+	// The unique identifier of the SDN fabric node, in the format \n\n/\n\n.
+	Id string `pulumi:"id"`
 	// Set of interface names associated with the fabric node.
 	InterfaceNames []string `pulumi:"interfaceNames"`
 	// IPv4 address for the fabric node.
@@ -77,7 +51,7 @@ func LookupOpenfabricOutput(ctx *pulumi.Context, args LookupOpenfabricOutputArgs
 		ApplyT(func(v interface{}) (LookupOpenfabricResultOutput, error) {
 			args := v.(LookupOpenfabricArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:Sdn/fabric/node/getOpenfabric:getOpenfabric", args, LookupOpenfabricResultOutput{}, options).(LookupOpenfabricResultOutput), nil
+			return ctx.InvokeOutput("proxmoxve:sdn/fabric/node/getOpenfabric:getOpenfabric", args, LookupOpenfabricResultOutput{}, options).(LookupOpenfabricResultOutput), nil
 		}).(LookupOpenfabricResultOutput)
 }
 
@@ -113,6 +87,7 @@ func (o LookupOpenfabricResultOutput) FabricId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpenfabricResult) string { return v.FabricId }).(pulumi.StringOutput)
 }
 
+// The unique identifier of the SDN fabric node, in the format \n\n/\n\n.
 func (o LookupOpenfabricResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpenfabricResult) string { return v.Id }).(pulumi.StringOutput)
 }

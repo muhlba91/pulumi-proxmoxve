@@ -7,17 +7,15 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves information about a specific ACME account.
-//
-// ## Example Usage
-func GetAccount(ctx *pulumi.Context, args *GetAccountArgs, opts ...pulumi.InvokeOption) (*GetAccountResult, error) {
+func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetAccountResult
-	err := ctx.Invoke("proxmoxve:Acme/getAccount:getAccount", args, &rv, opts...)
+	var rv LookupAccountResult
+	err := ctx.Invoke("proxmoxve:acme/getAccount:getAccount", args, &rv, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -25,13 +23,13 @@ func GetAccount(ctx *pulumi.Context, args *GetAccountArgs, opts ...pulumi.Invoke
 }
 
 // A collection of arguments for invoking getAccount.
-type GetAccountArgs struct {
+type LookupAccountArgs struct {
 	// The identifier of the ACME account to read.
 	Name *string `pulumi:"name"`
 }
 
 // A collection of values returned by getAccount.
-type GetAccountResult struct {
+type LookupAccountResult struct {
 	// The ACME account information.
 	Account GetAccountAccount `pulumi:"account"`
 	// The directory URL of the ACME account.
@@ -46,70 +44,70 @@ type GetAccountResult struct {
 	Tos string `pulumi:"tos"`
 }
 
-func GetAccountOutput(ctx *pulumi.Context, args GetAccountOutputArgs, opts ...pulumi.InvokeOption) GetAccountResultOutput {
+func LookupAccountOutput(ctx *pulumi.Context, args LookupAccountOutputArgs, opts ...pulumi.InvokeOption) LookupAccountResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetAccountResultOutput, error) {
-			args := v.(GetAccountArgs)
+		ApplyT(func(v interface{}) (LookupAccountResultOutput, error) {
+			args := v.(LookupAccountArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:Acme/getAccount:getAccount", args, GetAccountResultOutput{}, options).(GetAccountResultOutput), nil
-		}).(GetAccountResultOutput)
+			return ctx.InvokeOutput("proxmoxve:acme/getAccount:getAccount", args, LookupAccountResultOutput{}, options).(LookupAccountResultOutput), nil
+		}).(LookupAccountResultOutput)
 }
 
 // A collection of arguments for invoking getAccount.
-type GetAccountOutputArgs struct {
+type LookupAccountOutputArgs struct {
 	// The identifier of the ACME account to read.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
-func (GetAccountOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountArgs)(nil)).Elem()
+func (LookupAccountOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAccountArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getAccount.
-type GetAccountResultOutput struct{ *pulumi.OutputState }
+type LookupAccountResultOutput struct{ *pulumi.OutputState }
 
-func (GetAccountResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetAccountResult)(nil)).Elem()
+func (LookupAccountResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupAccountResult)(nil)).Elem()
 }
 
-func (o GetAccountResultOutput) ToGetAccountResultOutput() GetAccountResultOutput {
+func (o LookupAccountResultOutput) ToLookupAccountResultOutput() LookupAccountResultOutput {
 	return o
 }
 
-func (o GetAccountResultOutput) ToGetAccountResultOutputWithContext(ctx context.Context) GetAccountResultOutput {
+func (o LookupAccountResultOutput) ToLookupAccountResultOutputWithContext(ctx context.Context) LookupAccountResultOutput {
 	return o
 }
 
 // The ACME account information.
-func (o GetAccountResultOutput) Account() GetAccountAccountOutput {
-	return o.ApplyT(func(v GetAccountResult) GetAccountAccount { return v.Account }).(GetAccountAccountOutput)
+func (o LookupAccountResultOutput) Account() GetAccountAccountOutput {
+	return o.ApplyT(func(v LookupAccountResult) GetAccountAccount { return v.Account }).(GetAccountAccountOutput)
 }
 
 // The directory URL of the ACME account.
-func (o GetAccountResultOutput) Directory() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAccountResult) string { return v.Directory }).(pulumi.StringOutput)
+func (o LookupAccountResultOutput) Directory() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountResult) string { return v.Directory }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
-func (o GetAccountResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAccountResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupAccountResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The location URL of the ACME account.
-func (o GetAccountResultOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAccountResult) string { return v.Location }).(pulumi.StringOutput)
+func (o LookupAccountResultOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountResult) string { return v.Location }).(pulumi.StringOutput)
 }
 
 // The identifier of the ACME account to read.
-func (o GetAccountResultOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetAccountResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o LookupAccountResultOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAccountResult) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // The URL of the terms of service of the ACME account.
-func (o GetAccountResultOutput) Tos() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAccountResult) string { return v.Tos }).(pulumi.StringOutput)
+func (o LookupAccountResultOutput) Tos() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupAccountResult) string { return v.Tos }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetAccountResultOutput{})
+	pulumi.RegisterOutputType(LookupAccountResultOutput{})
 }

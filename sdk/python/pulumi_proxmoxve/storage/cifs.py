@@ -16,17 +16,17 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['CIFSArgs', 'CIFS']
+__all__ = ['CifsArgs', 'Cifs']
 
 @pulumi.input_type
-class CIFSArgs:
+class CifsArgs:
     def __init__(__self__, *,
-                 cifs_id: pulumi.Input[_builtins.str],
                  password: pulumi.Input[_builtins.str],
+                 resource_id: pulumi.Input[_builtins.str],
                  server: pulumi.Input[_builtins.str],
                  share: pulumi.Input[_builtins.str],
                  username: pulumi.Input[_builtins.str],
-                 backups: Optional[pulumi.Input['CIFSBackupsArgs']] = None,
+                 backups: Optional[pulumi.Input['CifsBackupsArgs']] = None,
                  contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  disable: Optional[pulumi.Input[_builtins.bool]] = None,
                  domain: Optional[pulumi.Input[_builtins.str]] = None,
@@ -35,13 +35,14 @@ class CIFSArgs:
                  snapshot_as_volume_chain: Optional[pulumi.Input[_builtins.bool]] = None,
                  subdirectory: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        The set of arguments for constructing a CIFS resource.
-        :param pulumi.Input[_builtins.str] cifs_id: The unique identifier of the storage.
+        The set of arguments for constructing a Cifs resource.
+
         :param pulumi.Input[_builtins.str] password: The password for authenticating with the SMB/CIFS server.
+        :param pulumi.Input[_builtins.str] resource_id: The unique identifier of the storage.
         :param pulumi.Input[_builtins.str] server: The IP address or DNS name of the SMB/CIFS server.
         :param pulumi.Input[_builtins.str] share: The name of the SMB/CIFS share.
         :param pulumi.Input[_builtins.str] username: The username for authenticating with the SMB/CIFS server.
-        :param pulumi.Input['CIFSBackupsArgs'] backups: Configure backup retention settings for the storage type.
+        :param pulumi.Input['CifsBackupsArgs'] backups: Configure backup retention settings for the storage type.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contents: The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
         :param pulumi.Input[_builtins.bool] disable: Whether the storage is disabled.
         :param pulumi.Input[_builtins.str] domain: The SMB/CIFS domain.
@@ -50,8 +51,8 @@ class CIFSArgs:
         :param pulumi.Input[_builtins.bool] snapshot_as_volume_chain: Enable support for creating snapshots through volume backing-chains.
         :param pulumi.Input[_builtins.str] subdirectory: A subdirectory to mount within the share.
         """
-        pulumi.set(__self__, "cifs_id", cifs_id)
         pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "resource_id", resource_id)
         pulumi.set(__self__, "server", server)
         pulumi.set(__self__, "share", share)
         pulumi.set(__self__, "username", username)
@@ -73,18 +74,6 @@ class CIFSArgs:
             pulumi.set(__self__, "subdirectory", subdirectory)
 
     @_builtins.property
-    @pulumi.getter(name="cifsId")
-    def cifs_id(self) -> pulumi.Input[_builtins.str]:
-        """
-        The unique identifier of the storage.
-        """
-        return pulumi.get(self, "cifs_id")
-
-    @cifs_id.setter
-    def cifs_id(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "cifs_id", value)
-
-    @_builtins.property
     @pulumi.getter
     def password(self) -> pulumi.Input[_builtins.str]:
         """
@@ -95,6 +84,18 @@ class CIFSArgs:
     @password.setter
     def password(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The unique identifier of the storage.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @resource_id.setter
+    def resource_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -134,14 +135,14 @@ class CIFSArgs:
 
     @_builtins.property
     @pulumi.getter
-    def backups(self) -> Optional[pulumi.Input['CIFSBackupsArgs']]:
+    def backups(self) -> Optional[pulumi.Input['CifsBackupsArgs']]:
         """
         Configure backup retention settings for the storage type.
         """
         return pulumi.get(self, "backups")
 
     @backups.setter
-    def backups(self, value: Optional[pulumi.Input['CIFSBackupsArgs']]):
+    def backups(self, value: Optional[pulumi.Input['CifsBackupsArgs']]):
         pulumi.set(self, "backups", value)
 
     @_builtins.property
@@ -230,16 +231,16 @@ class CIFSArgs:
 
 
 @pulumi.input_type
-class _CIFSState:
+class _CifsState:
     def __init__(__self__, *,
-                 backups: Optional[pulumi.Input['CIFSBackupsArgs']] = None,
-                 cifs_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 backups: Optional[pulumi.Input['CifsBackupsArgs']] = None,
                  contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  disable: Optional[pulumi.Input[_builtins.bool]] = None,
                  domain: Optional[pulumi.Input[_builtins.str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
                  preallocation: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  server: Optional[pulumi.Input[_builtins.str]] = None,
                  share: Optional[pulumi.Input[_builtins.str]] = None,
                  shared: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -247,15 +248,16 @@ class _CIFSState:
                  subdirectory: Optional[pulumi.Input[_builtins.str]] = None,
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        Input properties used for looking up and filtering CIFS resources.
-        :param pulumi.Input['CIFSBackupsArgs'] backups: Configure backup retention settings for the storage type.
-        :param pulumi.Input[_builtins.str] cifs_id: The unique identifier of the storage.
+        Input properties used for looking up and filtering Cifs resources.
+
+        :param pulumi.Input['CifsBackupsArgs'] backups: Configure backup retention settings for the storage type.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contents: The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
         :param pulumi.Input[_builtins.bool] disable: Whether the storage is disabled.
         :param pulumi.Input[_builtins.str] domain: The SMB/CIFS domain.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: A list of nodes where this storage is available.
         :param pulumi.Input[_builtins.str] password: The password for authenticating with the SMB/CIFS server.
         :param pulumi.Input[_builtins.str] preallocation: The preallocation mode for raw and qcow2 images.
+        :param pulumi.Input[_builtins.str] resource_id: The unique identifier of the storage.
         :param pulumi.Input[_builtins.str] server: The IP address or DNS name of the SMB/CIFS server.
         :param pulumi.Input[_builtins.str] share: The name of the SMB/CIFS share.
         :param pulumi.Input[_builtins.bool] shared: Whether the storage is shared across all nodes.
@@ -265,8 +267,6 @@ class _CIFSState:
         """
         if backups is not None:
             pulumi.set(__self__, "backups", backups)
-        if cifs_id is not None:
-            pulumi.set(__self__, "cifs_id", cifs_id)
         if contents is not None:
             pulumi.set(__self__, "contents", contents)
         if disable is not None:
@@ -279,6 +279,8 @@ class _CIFSState:
             pulumi.set(__self__, "password", password)
         if preallocation is not None:
             pulumi.set(__self__, "preallocation", preallocation)
+        if resource_id is not None:
+            pulumi.set(__self__, "resource_id", resource_id)
         if server is not None:
             pulumi.set(__self__, "server", server)
         if share is not None:
@@ -294,27 +296,15 @@ class _CIFSState:
 
     @_builtins.property
     @pulumi.getter
-    def backups(self) -> Optional[pulumi.Input['CIFSBackupsArgs']]:
+    def backups(self) -> Optional[pulumi.Input['CifsBackupsArgs']]:
         """
         Configure backup retention settings for the storage type.
         """
         return pulumi.get(self, "backups")
 
     @backups.setter
-    def backups(self, value: Optional[pulumi.Input['CIFSBackupsArgs']]):
+    def backups(self, value: Optional[pulumi.Input['CifsBackupsArgs']]):
         pulumi.set(self, "backups", value)
-
-    @_builtins.property
-    @pulumi.getter(name="cifsId")
-    def cifs_id(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The unique identifier of the storage.
-        """
-        return pulumi.get(self, "cifs_id")
-
-    @cifs_id.setter
-    def cifs_id(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "cifs_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -389,6 +379,18 @@ class _CIFSState:
         pulumi.set(self, "preallocation", value)
 
     @_builtins.property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The unique identifier of the storage.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @resource_id.setter
+    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "resource_id", value)
+
+    @_builtins.property
     @pulumi.getter
     def server(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -461,20 +463,20 @@ class _CIFSState:
         pulumi.set(self, "username", value)
 
 
-@pulumi.type_token("proxmoxve:Storage/cIFS:CIFS")
-class CIFS(pulumi.CustomResource):
+@pulumi.type_token("proxmoxve:storage/cifs:Cifs")
+class Cifs(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backups: Optional[pulumi.Input[Union['CIFSBackupsArgs', 'CIFSBackupsArgsDict']]] = None,
-                 cifs_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 backups: Optional[pulumi.Input[Union['CifsBackupsArgs', 'CifsBackupsArgsDict']]] = None,
                  contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  disable: Optional[pulumi.Input[_builtins.bool]] = None,
                  domain: Optional[pulumi.Input[_builtins.str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
                  preallocation: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  server: Optional[pulumi.Input[_builtins.str]] = None,
                  share: Optional[pulumi.Input[_builtins.str]] = None,
                  snapshot_as_volume_chain: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -484,40 +486,17 @@ class CIFS(pulumi.CustomResource):
         """
         Manages an SMB/CIFS based storage server in Proxmox VE.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        example = proxmoxve.storage.CIFS("example",
-            cifs_id="example-cifs",
-            nodes=["pve"],
-            server="10.0.0.20",
-            share="proxmox",
-            username="cifs-user",
-            password="cifs-password",
-            contents=["images"],
-            domain="WORKGROUP",
-            subdirectory="terraform",
-            preallocation="metadata",
-            snapshot_as_volume_chain=True,
-            backups={
-                "max_protected_backups": 5,
-                "keep_daily": 7,
-            })
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['CIFSBackupsArgs', 'CIFSBackupsArgsDict']] backups: Configure backup retention settings for the storage type.
-        :param pulumi.Input[_builtins.str] cifs_id: The unique identifier of the storage.
+        :param pulumi.Input[Union['CifsBackupsArgs', 'CifsBackupsArgsDict']] backups: Configure backup retention settings for the storage type.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contents: The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
         :param pulumi.Input[_builtins.bool] disable: Whether the storage is disabled.
         :param pulumi.Input[_builtins.str] domain: The SMB/CIFS domain.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: A list of nodes where this storage is available.
         :param pulumi.Input[_builtins.str] password: The password for authenticating with the SMB/CIFS server.
         :param pulumi.Input[_builtins.str] preallocation: The preallocation mode for raw and qcow2 images.
+        :param pulumi.Input[_builtins.str] resource_id: The unique identifier of the storage.
         :param pulumi.Input[_builtins.str] server: The IP address or DNS name of the SMB/CIFS server.
         :param pulumi.Input[_builtins.str] share: The name of the SMB/CIFS share.
         :param pulumi.Input[_builtins.bool] snapshot_as_volume_chain: Enable support for creating snapshots through volume backing-chains.
@@ -528,42 +507,19 @@ class CIFS(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: CIFSArgs,
+                 args: CifsArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages an SMB/CIFS based storage server in Proxmox VE.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_proxmoxve as proxmoxve
-
-        example = proxmoxve.storage.CIFS("example",
-            cifs_id="example-cifs",
-            nodes=["pve"],
-            server="10.0.0.20",
-            share="proxmox",
-            username="cifs-user",
-            password="cifs-password",
-            contents=["images"],
-            domain="WORKGROUP",
-            subdirectory="terraform",
-            preallocation="metadata",
-            snapshot_as_volume_chain=True,
-            backups={
-                "max_protected_backups": 5,
-                "keep_daily": 7,
-            })
-        ```
 
         :param str resource_name: The name of the resource.
-        :param CIFSArgs args: The arguments to use to populate this resource's properties.
+        :param CifsArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(CIFSArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(CifsArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -572,14 +528,14 @@ class CIFS(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backups: Optional[pulumi.Input[Union['CIFSBackupsArgs', 'CIFSBackupsArgsDict']]] = None,
-                 cifs_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 backups: Optional[pulumi.Input[Union['CifsBackupsArgs', 'CifsBackupsArgsDict']]] = None,
                  contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  disable: Optional[pulumi.Input[_builtins.bool]] = None,
                  domain: Optional[pulumi.Input[_builtins.str]] = None,
                  nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
                  preallocation: Optional[pulumi.Input[_builtins.str]] = None,
+                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  server: Optional[pulumi.Input[_builtins.str]] = None,
                  share: Optional[pulumi.Input[_builtins.str]] = None,
                  snapshot_as_volume_chain: Optional[pulumi.Input[_builtins.bool]] = None,
@@ -592,12 +548,9 @@ class CIFS(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = CIFSArgs.__new__(CIFSArgs)
+            __props__ = CifsArgs.__new__(CifsArgs)
 
             __props__.__dict__["backups"] = backups
-            if cifs_id is None and not opts.urn:
-                raise TypeError("Missing required property 'cifs_id'")
-            __props__.__dict__["cifs_id"] = cifs_id
             __props__.__dict__["contents"] = contents
             __props__.__dict__["disable"] = disable
             __props__.__dict__["domain"] = domain
@@ -606,6 +559,9 @@ class CIFS(pulumi.CustomResource):
                 raise TypeError("Missing required property 'password'")
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["preallocation"] = preallocation
+            if resource_id is None and not opts.urn:
+                raise TypeError("Missing required property 'resource_id'")
+            __props__.__dict__["resource_id"] = resource_id
             if server is None and not opts.urn:
                 raise TypeError("Missing required property 'server'")
             __props__.__dict__["server"] = server
@@ -618,10 +574,12 @@ class CIFS(pulumi.CustomResource):
                 raise TypeError("Missing required property 'username'")
             __props__.__dict__["username"] = username
             __props__.__dict__["shared"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="proxmox_virtual_environment_storage_cifs")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
-        super(CIFS, __self__).__init__(
-            'proxmoxve:Storage/cIFS:CIFS',
+        super(Cifs, __self__).__init__(
+            'proxmoxve:storage/cifs:Cifs',
             resource_name,
             __props__,
             opts)
@@ -630,35 +588,35 @@ class CIFS(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backups: Optional[pulumi.Input[Union['CIFSBackupsArgs', 'CIFSBackupsArgsDict']]] = None,
-            cifs_id: Optional[pulumi.Input[_builtins.str]] = None,
+            backups: Optional[pulumi.Input[Union['CifsBackupsArgs', 'CifsBackupsArgsDict']]] = None,
             contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             disable: Optional[pulumi.Input[_builtins.bool]] = None,
             domain: Optional[pulumi.Input[_builtins.str]] = None,
             nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             password: Optional[pulumi.Input[_builtins.str]] = None,
             preallocation: Optional[pulumi.Input[_builtins.str]] = None,
+            resource_id: Optional[pulumi.Input[_builtins.str]] = None,
             server: Optional[pulumi.Input[_builtins.str]] = None,
             share: Optional[pulumi.Input[_builtins.str]] = None,
             shared: Optional[pulumi.Input[_builtins.bool]] = None,
             snapshot_as_volume_chain: Optional[pulumi.Input[_builtins.bool]] = None,
             subdirectory: Optional[pulumi.Input[_builtins.str]] = None,
-            username: Optional[pulumi.Input[_builtins.str]] = None) -> 'CIFS':
+            username: Optional[pulumi.Input[_builtins.str]] = None) -> 'Cifs':
         """
-        Get an existing CIFS resource's state with the given name, id, and optional extra
+        Get an existing Cifs resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['CIFSBackupsArgs', 'CIFSBackupsArgsDict']] backups: Configure backup retention settings for the storage type.
-        :param pulumi.Input[_builtins.str] cifs_id: The unique identifier of the storage.
+        :param pulumi.Input[Union['CifsBackupsArgs', 'CifsBackupsArgsDict']] backups: Configure backup retention settings for the storage type.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contents: The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
         :param pulumi.Input[_builtins.bool] disable: Whether the storage is disabled.
         :param pulumi.Input[_builtins.str] domain: The SMB/CIFS domain.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: A list of nodes where this storage is available.
         :param pulumi.Input[_builtins.str] password: The password for authenticating with the SMB/CIFS server.
         :param pulumi.Input[_builtins.str] preallocation: The preallocation mode for raw and qcow2 images.
+        :param pulumi.Input[_builtins.str] resource_id: The unique identifier of the storage.
         :param pulumi.Input[_builtins.str] server: The IP address or DNS name of the SMB/CIFS server.
         :param pulumi.Input[_builtins.str] share: The name of the SMB/CIFS share.
         :param pulumi.Input[_builtins.bool] shared: Whether the storage is shared across all nodes.
@@ -668,39 +626,31 @@ class CIFS(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _CIFSState.__new__(_CIFSState)
+        __props__ = _CifsState.__new__(_CifsState)
 
         __props__.__dict__["backups"] = backups
-        __props__.__dict__["cifs_id"] = cifs_id
         __props__.__dict__["contents"] = contents
         __props__.__dict__["disable"] = disable
         __props__.__dict__["domain"] = domain
         __props__.__dict__["nodes"] = nodes
         __props__.__dict__["password"] = password
         __props__.__dict__["preallocation"] = preallocation
+        __props__.__dict__["resource_id"] = resource_id
         __props__.__dict__["server"] = server
         __props__.__dict__["share"] = share
         __props__.__dict__["shared"] = shared
         __props__.__dict__["snapshot_as_volume_chain"] = snapshot_as_volume_chain
         __props__.__dict__["subdirectory"] = subdirectory
         __props__.__dict__["username"] = username
-        return CIFS(resource_name, opts=opts, __props__=__props__)
+        return Cifs(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter
-    def backups(self) -> pulumi.Output[Optional['outputs.CIFSBackups']]:
+    def backups(self) -> pulumi.Output[Optional['outputs.CifsBackups']]:
         """
         Configure backup retention settings for the storage type.
         """
         return pulumi.get(self, "backups")
-
-    @_builtins.property
-    @pulumi.getter(name="cifsId")
-    def cifs_id(self) -> pulumi.Output[_builtins.str]:
-        """
-        The unique identifier of the storage.
-        """
-        return pulumi.get(self, "cifs_id")
 
     @_builtins.property
     @pulumi.getter
@@ -749,6 +699,14 @@ class CIFS(pulumi.CustomResource):
         The preallocation mode for raw and qcow2 images.
         """
         return pulumi.get(self, "preallocation")
+
+    @_builtins.property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The unique identifier of the storage.
+        """
+        return pulumi.get(self, "resource_id")
 
     @_builtins.property
     @pulumi.getter

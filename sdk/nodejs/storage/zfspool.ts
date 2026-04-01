@@ -6,26 +6,10 @@ import * as utilities from "../utilities";
 
 /**
  * Manages ZFS-based storage in Proxmox VE.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
- *
- * const example = new proxmoxve.storage.ZFSPool("example", {
- *     zfsPoolId: "example-zfs",
- *     nodes: ["pve"],
- *     zfsPool: "rpool/data",
- *     contents: ["images"],
- *     thinProvision: true,
- *     blocksize: "64k",
- * });
- * ```
  */
-export class ZFSPool extends pulumi.CustomResource {
+export class Zfspool extends pulumi.CustomResource {
     /**
-     * Get an existing ZFSPool resource's state with the given name, ID, and optional extra
+     * Get an existing Zfspool resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -33,22 +17,22 @@ export class ZFSPool extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZFSPoolState, opts?: pulumi.CustomResourceOptions): ZFSPool {
-        return new ZFSPool(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZfspoolState, opts?: pulumi.CustomResourceOptions): Zfspool {
+        return new Zfspool(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'proxmoxve:Storage/zFSPool:ZFSPool';
+    public static readonly __pulumiType = 'proxmoxve:storage/zfspool:Zfspool';
 
     /**
-     * Returns true if the given object is an instance of ZFSPool.  This is designed to work even
+     * Returns true if the given object is an instance of Zfspool.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is ZFSPool {
+    public static isInstance(obj: any): obj is Zfspool {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === ZFSPool.__pulumiType;
+        return obj['__pulumiType'] === Zfspool.__pulumiType;
     }
 
     /**
@@ -68,6 +52,10 @@ export class ZFSPool extends pulumi.CustomResource {
      */
     declare public readonly nodes: pulumi.Output<string[]>;
     /**
+     * The unique identifier of the storage.
+     */
+    declare public readonly resourceId: pulumi.Output<string>;
+    /**
      * Whether the storage is shared across all nodes.
      */
     declare public /*out*/ readonly shared: pulumi.Output<boolean>;
@@ -79,58 +67,56 @@ export class ZFSPool extends pulumi.CustomResource {
      * The name of the ZFS storage pool to use (e.g. `tank`, `rpool/data`).
      */
     declare public readonly zfsPool: pulumi.Output<string>;
-    /**
-     * The unique identifier of the storage.
-     */
-    declare public readonly zfsPoolId: pulumi.Output<string>;
 
     /**
-     * Create a ZFSPool resource with the given unique name, arguments, and options.
+     * Create a Zfspool resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ZFSPoolArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: ZFSPoolArgs | ZFSPoolState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: ZfspoolArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: ZfspoolArgs | ZfspoolState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as ZFSPoolState | undefined;
+            const state = argsOrState as ZfspoolState | undefined;
             resourceInputs["blocksize"] = state?.blocksize;
             resourceInputs["contents"] = state?.contents;
             resourceInputs["disable"] = state?.disable;
             resourceInputs["nodes"] = state?.nodes;
+            resourceInputs["resourceId"] = state?.resourceId;
             resourceInputs["shared"] = state?.shared;
             resourceInputs["thinProvision"] = state?.thinProvision;
             resourceInputs["zfsPool"] = state?.zfsPool;
-            resourceInputs["zfsPoolId"] = state?.zfsPoolId;
         } else {
-            const args = argsOrState as ZFSPoolArgs | undefined;
+            const args = argsOrState as ZfspoolArgs | undefined;
+            if (args?.resourceId === undefined && !opts.urn) {
+                throw new Error("Missing required property 'resourceId'");
+            }
             if (args?.zfsPool === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zfsPool'");
-            }
-            if (args?.zfsPoolId === undefined && !opts.urn) {
-                throw new Error("Missing required property 'zfsPoolId'");
             }
             resourceInputs["blocksize"] = args?.blocksize;
             resourceInputs["contents"] = args?.contents;
             resourceInputs["disable"] = args?.disable;
             resourceInputs["nodes"] = args?.nodes;
+            resourceInputs["resourceId"] = args?.resourceId;
             resourceInputs["thinProvision"] = args?.thinProvision;
             resourceInputs["zfsPool"] = args?.zfsPool;
-            resourceInputs["zfsPoolId"] = args?.zfsPoolId;
             resourceInputs["shared"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(ZFSPool.__pulumiType, name, resourceInputs, opts);
+        const aliasOpts = { aliases: [{ type: "proxmox_virtual_environment_storage_zfspool" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
+        super(Zfspool.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering ZFSPool resources.
+ * Input properties used for looking up and filtering Zfspool resources.
  */
-export interface ZFSPoolState {
+export interface ZfspoolState {
     /**
      * Block size for newly created volumes (e.g. `4k`, `8k`, `16k`). Larger values may improve throughput for large I/O, while smaller values optimize space efficiency.
      */
@@ -147,6 +133,10 @@ export interface ZFSPoolState {
      * A list of nodes where this storage is available.
      */
     nodes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The unique identifier of the storage.
+     */
+    resourceId?: pulumi.Input<string>;
     /**
      * Whether the storage is shared across all nodes.
      */
@@ -159,16 +149,12 @@ export interface ZFSPoolState {
      * The name of the ZFS storage pool to use (e.g. `tank`, `rpool/data`).
      */
     zfsPool?: pulumi.Input<string>;
-    /**
-     * The unique identifier of the storage.
-     */
-    zfsPoolId?: pulumi.Input<string>;
 }
 
 /**
- * The set of arguments for constructing a ZFSPool resource.
+ * The set of arguments for constructing a Zfspool resource.
  */
-export interface ZFSPoolArgs {
+export interface ZfspoolArgs {
     /**
      * Block size for newly created volumes (e.g. `4k`, `8k`, `16k`). Larger values may improve throughput for large I/O, while smaller values optimize space efficiency.
      */
@@ -186,6 +172,10 @@ export interface ZFSPoolArgs {
      */
     nodes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The unique identifier of the storage.
+     */
+    resourceId: pulumi.Input<string>;
+    /**
      * Whether to enable thin provisioning (`on` or `off`). Thin provisioning allows flexible disk allocation without pre-allocating full space.
      */
     thinProvision?: pulumi.Input<boolean>;
@@ -193,8 +183,4 @@ export interface ZFSPoolArgs {
      * The name of the ZFS storage pool to use (e.g. `tank`, `rpool/data`).
      */
     zfsPool: pulumi.Input<string>;
-    /**
-     * The unique identifier of the storage.
-     */
-    zfsPoolId: pulumi.Input<string>;
 }

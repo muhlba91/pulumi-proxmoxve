@@ -7,99 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Retrieves information about an existing file in a Proxmox Virtual Environment node.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve"
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/vm"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ubuntuIso, err := proxmoxve.GetFile(ctx, &proxmoxve.GetFileArgs{
-//				NodeName:    "pve",
-//				DatastoreId: "local",
-//				ContentType: "iso",
-//				FileName:    "ubuntu-22.04.3-live-server-amd64.iso",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ubuntuContainerTemplate, err := proxmoxve.GetFile(ctx, &proxmoxve.GetFileArgs{
-//				NodeName:    "pve",
-//				DatastoreId: "local",
-//				ContentType: "vztmpl",
-//				FileName:    "ubuntu-22.04-standard_22.04-1_amd64.tar.zst",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = proxmoxve.GetFile(ctx, &proxmoxve.GetFileArgs{
-//				NodeName:    "pve",
-//				DatastoreId: "local",
-//				ContentType: "snippets",
-//				FileName:    "cloud-init-config.yaml",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = proxmoxve.GetFile(ctx, &proxmoxve.GetFileArgs{
-//				NodeName:    "pve",
-//				DatastoreId: "local",
-//				ContentType: "import",
-//				FileName:    "imported-config.yaml",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("ubuntuIsoId", ubuntuIso.Id)
-//			ctx.Export("ubuntuIsoSize", ubuntuIso.FileSize)
-//			ctx.Export("containerTemplateFormat", ubuntuContainerTemplate.FileFormat)
-//			_, err = vm.NewVirtualMachine(ctx, "example", &vm.VirtualMachineArgs{
-//				NodeName: pulumi.String("pve"),
-//				VmId:     pulumi.Int(100),
-//				Cdrom: &vm.VirtualMachineCdromArgs{
-//					FileId: pulumi.String(ubuntuIso.Id),
-//				},
-//				Cpu: &vm.VirtualMachineCpuArgs{
-//					Cores: pulumi.Int(2),
-//				},
-//				Memory: &vm.VirtualMachineMemoryArgs{
-//					Dedicated: pulumi.Int(2048),
-//				},
-//				Disks: vm.VirtualMachineDiskArray{
-//					&vm.VirtualMachineDiskArgs{
-//						DatastoreId: pulumi.String("local-lvm"),
-//						FileFormat:  pulumi.String("qcow2"),
-//						Size:        pulumi.Int(20),
-//					},
-//				},
-//				NetworkDevices: vm.VirtualMachineNetworkDeviceArray{
-//					&vm.VirtualMachineNetworkDeviceArgs{
-//						Bridge: pulumi.String("vmbr0"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetFile(ctx *pulumi.Context, args *GetFileArgs, opts ...pulumi.InvokeOption) (*GetFileResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFileResult

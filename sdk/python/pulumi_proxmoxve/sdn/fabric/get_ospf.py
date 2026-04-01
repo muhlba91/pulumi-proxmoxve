@@ -78,22 +78,13 @@ def get_ospf(id: Optional[_builtins.str] = None,
     """
     OSPF Fabric in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    main = proxmoxve.Sdn.fabric.get_ospf(id="main-fabric")
-    ```
-
 
     :param _builtins.str id: The unique identifier of the SDN fabric.
     """
     __args__ = dict()
     __args__['id'] = id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke('proxmoxve:Sdn/fabric/getOspf:getOspf', __args__, opts=opts, typ=GetOspfResult).value
+    __ret__ = pulumi.runtime.invoke('proxmoxve:sdn/fabric/getOspf:getOspf', __args__, opts=opts, typ=GetOspfResult).value
 
     return AwaitableGetOspfResult(
         area=pulumi.get(__ret__, 'area'),
@@ -104,22 +95,13 @@ def get_ospf_output(id: Optional[pulumi.Input[_builtins.str]] = None,
     """
     OSPF Fabric in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
 
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_proxmoxve as proxmoxve
-
-    main = proxmoxve.Sdn.fabric.get_ospf(id="main-fabric")
-    ```
-
 
     :param _builtins.str id: The unique identifier of the SDN fabric.
     """
     __args__ = dict()
     __args__['id'] = id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
-    __ret__ = pulumi.runtime.invoke_output('proxmoxve:Sdn/fabric/getOspf:getOspf', __args__, opts=opts, typ=GetOspfResult)
+    __ret__ = pulumi.runtime.invoke_output('proxmoxve:sdn/fabric/getOspf:getOspf', __args__, opts=opts, typ=GetOspfResult)
     return __ret__.apply(lambda __response__: GetOspfResult(
         area=pulumi.get(__response__, 'area'),
         id=pulumi.get(__response__, 'id'),

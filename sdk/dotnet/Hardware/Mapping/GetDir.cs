@@ -13,87 +13,21 @@ namespace Pulumi.ProxmoxVE.Hardware.Mapping
     {
         /// <summary>
         /// Retrieves a directory mapping from a Proxmox VE cluster.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using ProxmoxVE = Pulumi.ProxmoxVE;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = ProxmoxVE.Hardware.Mapping.GetDir.Invoke(new()
-        ///     {
-        ///         Name = "example",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["dataProxmoxVirtualEnvironmentHardwareMappingDir"] = example,
-        ///     };
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetDirResult> InvokeAsync(GetDirArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDirResult>("proxmoxve:Hardware/mapping/getDir:getDir", args ?? new GetDirArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDirResult>("proxmoxve:hardware/mapping/getDir:getDir", args ?? new GetDirArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves a directory mapping from a Proxmox VE cluster.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using ProxmoxVE = Pulumi.ProxmoxVE;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = ProxmoxVE.Hardware.Mapping.GetDir.Invoke(new()
-        ///     {
-        ///         Name = "example",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["dataProxmoxVirtualEnvironmentHardwareMappingDir"] = example,
-        ///     };
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetDirResult> Invoke(GetDirInvokeArgs args, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetDirResult>("proxmoxve:Hardware/mapping/getDir:getDir", args ?? new GetDirInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDirResult>("proxmoxve:hardware/mapping/getDir:getDir", args ?? new GetDirInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves a directory mapping from a Proxmox VE cluster.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using ProxmoxVE = Pulumi.ProxmoxVE;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = ProxmoxVE.Hardware.Mapping.GetDir.Invoke(new()
-        ///     {
-        ///         Name = "example",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["dataProxmoxVirtualEnvironmentHardwareMappingDir"] = example,
-        ///     };
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetDirResult> Invoke(GetDirInvokeArgs args, InvokeOutputOptions options)
-            => global::Pulumi.Deployment.Instance.Invoke<GetDirResult>("proxmoxve:Hardware/mapping/getDir:getDir", args ?? new GetDirInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDirResult>("proxmoxve:hardware/mapping/getDir:getDir", args ?? new GetDirInvokeArgs(), options.WithDefaults());
     }
 
 
