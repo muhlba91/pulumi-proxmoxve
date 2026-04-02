@@ -11,4 +11,3 @@ pluginManagement {
 }
 
 rootProject.name = "io.muehlbachler.pulumi.proxmoxve"
-include("lib")
