@@ -263,7 +263,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Golang: &tfbridge.GolangInfo{
 			ImportBasePath: path.Join(
-				"github.com/pulumi/pulumi-proxmoxve/sdk/",
+				"github.com/muhlba91/pulumi-proxmoxve/sdk/",
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
 				mainPkg,

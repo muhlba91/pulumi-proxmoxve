@@ -1,4 +1,4 @@
-# Proxmox VE Resource Provider
+# Pulumi Proxmox VE Provider
 
 [![](https://img.shields.io/github/license/muhlba91/pulumi-proxmoxve?style=for-the-badge)](LICENSE)
 [![](https://img.shields.io/github/actions/workflow/status/muhlba91/pulumi-proxmoxve/verify.yml?style=for-the-badge)](https://github.com/muhlba91/pulumi-proxmoxve/actions/workflows/verify.yml)
@@ -13,38 +13,21 @@
 [![](https://img.shields.io/github/all-contributors/muhlba91/pulumi-proxmoxve?color=ee8449&style=for-the-badge)](#contributors)
 <a href="https://www.buymeacoffee.com/muhlba91" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="28" width="150"></a>
 
-The Proxmox VE Resource Provider for [Pulumi](https://www.pulumi.com) lets you manage [Proxmox VE](http://proxmox.com) resources.
+A [Pulumi](https://www.pulumi.com) package to manage [Proxmox Virtual Environment](http://proxmox.com) (Proxmox VE) resources. This provider is built on the [Terraform Proxmox Provider](https://github.com/bpg/terraform-provider-proxmox).
 
-The provider is built on https://github.com/bpg/terraform-provider-proxmox.
+## Installation
 
-## Installing
-
-This package is available in many languages in the standard packaging formats.
-
-### Installing the Plugin
-
-1. Download the appropriate archive file from the Releases page:
-   `wget https://github.com/muhlba91/pulumi-proxmoxve/releases/download/vX.Y.Z/pulumi-resource-proxmoxve-vX.Y.Z-OPERATING_SYSTEM-ARCH.tar.gz`
-2. Add the plugin to Pulumi:
-   `pulumi plugin install resource proxmoxve X.Y.Z -f ./pulumi-resource-proxmoxve-vX.Y.Z-OPERATING_SYSTEM-ARCH.tar.gz`
+This package is available for multiple programming languages. Install using your preferred package manager:
 
 ### Node.js (JavaScript/TypeScript)
 
-To use from JavaScript or TypeScript in Node.js, install using either `npm`:
-
 ```bash
 npm install @muhlba91/pulumi-proxmoxve
-```
-
-or `yarn`:
-
-```bash
+# or
 yarn add @muhlba91/pulumi-proxmoxve
 ```
 
 ### Python
-
-To use from Python, install using `pip`:
 
 ```bash
 pip install pulumi-proxmoxve
@@ -52,15 +35,11 @@ pip install pulumi-proxmoxve
 
 ### Go
 
-To use from Go, use `go get` to grab the latest version of the library:
-
 ```bash
-go get github.com/muhlba91/pulumi-proxmoxve/sdk/go/...
+go get github.com/muhlba91/pulumi-proxmoxve/sdk/v6/go/proxmoxve
 ```
 
 ### .NET
-
-To use from .NET, install using `dotnet add package`:
 
 ```bash
 dotnet add package Pulumi.ProxmoxVE
@@ -68,37 +47,61 @@ dotnet add package Pulumi.ProxmoxVE
 
 ## Configuration
 
-Unfortunately, configuration via environment variables is not (yet) working.
-To configure the provider you must create and pass it through.
+You must configure the provider with your Proxmox VE API credentials. Currently, you must explicitly pass configuration values to the provider constructor. You can use environment variables to manage these secrets:
 
-Example for *Typescript*:
+| Variable               | Description                                                                       |
+|------------------------|-----------------------------------------------------------------------------------|
+| `PROXMOX_VE_ENDPOINT`  | The API endpoint of your Proxmox VE server (e.g., `https://pve.example.com:8006`) |
+| `PROXMOX_VE_USERNAME`  | Your Proxmox VE username                                                          |
+| `PROXMOX_VE_PASSWORD`  | Your Proxmox VE password or API token                                             |
+| `PROXMOX_VE_INSECURE`  | Set to `true` to skip TLS certificate verification                                |
+
+## Example Usage
+
+### TypeScript
 
 ```typescript
+import * as pulumi from '@pulumi/pulumi';
 import * as proxmox from '@muhlba91/pulumi-proxmoxve';
 
+// Initialize the Proxmox provider
 const provider = new proxmox.Provider('proxmoxve', {
   endpoint: process.env.PROXMOX_VE_ENDPOINT,
-  insecure: process.env.PROXMOX_VE_INSECURE,
   username: process.env.PROXMOX_VE_USERNAME,
-  password: process.env.PROXMOX_VE_PASSWORD
+  password: process.env.PROXMOX_VE_PASSWORD,
+  insecure: process.env.PROXMOX_VE_INSECURE === 'true',
 });
 
-const args = {};
-const vm = new proxmox.vm.VirtualMachine(
-  'vm',
-  args,
-  {
-    provider: provider,
-  },
-);
+// Create a Virtual Machine
+const vm = new proxmox.vm.VirtualMachine('my-vm', {
+  nodeName: 'pve-node-1',
+  // ... further configuration
+}, { provider });
+```
+
+## Migration
+
+### v7 to v8 (Breaking Changes)
+
+Version 8 introduces a breaking change in how resources are named to align with the upstream Terraform provider's transition to the modern provider framework.
+
+- **Standardized Resource Names**: Due to the upstream provider introducing the `proxmox_` prefix and standardizing resource identification, custom resource name and ID changes have been deprecated.
+- **Legacy Namespacing**: Resources that previously started with `proxmox_virtual_environment_` have been moved to a `Legacy` naming format (e.g., `proxmoxve:VM/virtualMachine:VirtualMachine` is now `proxmoxve:index/vmLegacy:VmLegacy`).
+
+You can migrate your existing stack by exporting the state, updating the resource tokens, and re-importing:
+
+```bash
+pulumi stack export > stack.json
+# Example: updating the VirtualMachine resource token
+sed -i 's/proxmoxve:VM\/virtualMachine:VirtualMachine/proxmoxve:index\/vmLegacy:VmLegacy/g' stack.json
+pulumi stack import < stack.json
 ```
 
 ## Reference
 
-For detailed reference documentation, please visit the upstream Terraform provider's documentation at: https://registry.terraform.io/providers/bpg/proxmox/latest.
-
-Some input parameters are required as per the [Proxmox API Viewer](https://pve.proxmox.com/pve-docs/api-viewer/index.html).
-Please refer to this documentation for more information regarding required parameters for your Proxmox VE version.
+- **Upstream Provider Reference**: [Terraform Proxmox Provider Documentation](https://registry.terraform.io/providers/bpg/proxmox/latest/docs)
+- **Proxmox API**: [Proxmox VE API Viewer](https://pve.proxmox.com/pve-docs/api-viewer/index.html)
+- **Official Documentation**: [Proxmox VE Documentation](https://pve.proxmox.com/pve-docs/)
 
 ## Contributors
 
