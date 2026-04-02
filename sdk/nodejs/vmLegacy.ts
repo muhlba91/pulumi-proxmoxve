@@ -26,12 +26,12 @@ import * as utilities from "./utilities";
  *         url: "https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img",
  *         fileName: "jammy-server-cloudimg-amd64.qcow2",
  *     });
- *     const ubuntuVmPassword = new random.index.Password("ubuntu_vm_password", {
+ *     const ubuntuVmPassword = new random.RandomPassword("ubuntu_vm_password", {
  *         length: 16,
  *         overrideSpecial: "_%@",
  *         special: true,
  *     });
- *     const ubuntuVmKey = new tls.index.PrivateKey("ubuntu_vm_key", {
+ *     const ubuntuVmKey = new tls.PrivateKey("ubuntu_vm_key", {
  *         algorithm: "RSA",
  *         rsaBits: 2048,
  *     });
@@ -74,9 +74,9 @@ import * as utilities from "./utilities";
  *                 },
  *             }],
  *             userAccount: {
- *                 keys: [std.index.trimspace({
+ *                 keys: [std.trimspaceOutput({
  *                     input: ubuntuVmKey.publicKeyOpenssh,
- *                 }).result],
+ *                 }).apply(invoke => invoke.result)],
  *                 password: ubuntuVmPassword.result,
  *                 username: "ubuntu",
  *             },

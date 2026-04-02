@@ -34,6 +34,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.tls.PrivateKeyArgs;
  * import com.pulumi.tls.SelfSignedCert;
  * import com.pulumi.tls.SelfSignedCertArgs;
+ * import com.pulumi.tls.inputs.SelfSignedCertSubjectArgs;
  * import io.muehlbachler.pulumi.proxmoxve.CertificateLegacy;
  * import io.muehlbachler.pulumi.proxmoxve.CertificateLegacyArgs;
  * import java.util.List;
@@ -57,15 +58,15 @@ import javax.annotation.Nullable;
  *         var proxmoxVirtualEnvironmentCertificateSelfSignedCert = new SelfSignedCert("proxmoxVirtualEnvironmentCertificateSelfSignedCert", SelfSignedCertArgs.builder()
  *             .keyAlgorithm(proxmoxVirtualEnvironmentCertificate.algorithm())
  *             .privateKeyPem(proxmoxVirtualEnvironmentCertificate.privateKeyPem())
- *             .subject(List.of(Map.ofEntries(
- *                 Map.entry("commonName", "example.com"),
- *                 Map.entry("organization", "Terraform Provider for Proxmox")
- *             )))
+ *             .subject(SelfSignedCertSubjectArgs.builder()
+ *                 .commonName("example.com")
+ *                 .organization("Terraform Provider for Proxmox")
+ *                 .build())
  *             .validityPeriodHours(8760)
- *             .allowedUses(List.of(            
+ *             .allowedUses(            
  *                 "key_encipherment",
  *                 "digital_signature",
- *                 "server_auth"))
+ *                 "server_auth")
  *             .build());
  * 
  *         var example = new CertificateLegacy("example", CertificateLegacyArgs.builder()

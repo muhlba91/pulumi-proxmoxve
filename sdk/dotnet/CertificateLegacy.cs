@@ -23,23 +23,20 @@ namespace Pulumi.ProxmoxVE
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var proxmoxVirtualEnvironmentCertificate = new Tls.Index.PrivateKey("proxmox_virtual_environment_certificate", new()
+    ///     var proxmoxVirtualEnvironmentCertificate = new Tls.PrivateKey("proxmox_virtual_environment_certificate", new()
     ///     {
     ///         Algorithm = "RSA",
     ///         RsaBits = 2048,
     ///     });
     /// 
-    ///     var proxmoxVirtualEnvironmentCertificateSelfSignedCert = new Tls.Index.SelfSignedCert("proxmox_virtual_environment_certificate", new()
+    ///     var proxmoxVirtualEnvironmentCertificateSelfSignedCert = new Tls.SelfSignedCert("proxmox_virtual_environment_certificate", new()
     ///     {
     ///         KeyAlgorithm = proxmoxVirtualEnvironmentCertificate.Algorithm,
     ///         PrivateKeyPem = proxmoxVirtualEnvironmentCertificate.PrivateKeyPem,
-    ///         Subject = new[]
+    ///         Subject = new Tls.Inputs.SelfSignedCertSubjectArgs
     ///         {
-    ///             
-    ///             {
-    ///                 { "commonName", "example.com" },
-    ///                 { "organization", "Terraform Provider for Proxmox" },
-    ///             },
+    ///             CommonName = "example.com",
+    ///             Organization = "Terraform Provider for Proxmox",
     ///         },
     ///         ValidityPeriodHours = 8760,
     ///         AllowedUses = new[]

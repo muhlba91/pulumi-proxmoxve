@@ -475,7 +475,7 @@ class FileLegacy(pulumi.CustomResource):
             groups: sudo
             shell: /bin/bash
             ssh-authorized-keys:
-              - {std.index.trimspace(input=example["publicKeyOpenssh"])["result"]}
+              - {std.trimspace(input=example["publicKeyOpenssh"]).result}
             sudo: ALL=(ALL) NOPASSWD:ALL
         \"\"\",
                 "file_name": "example.cloud-config.yaml",
@@ -654,7 +654,7 @@ class FileLegacy(pulumi.CustomResource):
             groups: sudo
             shell: /bin/bash
             ssh-authorized-keys:
-              - {std.index.trimspace(input=example["publicKeyOpenssh"])["result"]}
+              - {std.trimspace(input=example["publicKeyOpenssh"]).result}
             sudo: ALL=(ALL) NOPASSWD:ALL
         \"\"\",
                 "file_name": "example.cloud-config.yaml",

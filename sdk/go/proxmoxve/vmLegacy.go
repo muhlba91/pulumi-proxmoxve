@@ -23,9 +23,9 @@ import (
 //
 //	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve"
 //	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/download"
-//	"github.com/pulumi/pulumi-random/sdk/go/random"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi-tls/sdk/go/tls"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi-std/sdk/v2/go/std"
+//	"github.com/pulumi/pulumi-tls/sdk/v5/go/tls"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -42,24 +42,18 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ubuntuVmPassword, err := random.NewPassword(ctx, "ubuntu_vm_password", &random.PasswordArgs{
-//				Length:          16,
-//				OverrideSpecial: "_%@",
-//				Special:         true,
+//			ubuntuVmPassword, err := random.NewRandomPassword(ctx, "ubuntu_vm_password", &random.RandomPasswordArgs{
+//				Length:          pulumi.Int(16),
+//				OverrideSpecial: pulumi.String("_%@"),
+//				Special:         pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			ubuntuVmKey, err := tls.NewPrivateKey(ctx, "ubuntu_vm_key", &tls.PrivateKeyArgs{
-//				Algorithm: "RSA",
-//				RsaBits:   2048,
+//				Algorithm: pulumi.String("RSA"),
+//				RsaBits:   pulumi.Int(2048),
 //			})
-//			if err != nil {
-//				return err
-//			}
-//			invokeTrimspace, err := std.Trimspace(ctx, map[string]interface{}{
-//				"input": ubuntuVmKey.PublicKeyOpenssh,
-//			}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -109,7 +103,11 @@ import (
 //					},
 //					UserAccount: &proxmoxve.VmLegacyInitializationUserAccountArgs{
 //						Keys: pulumi.StringArray{
-//							invokeTrimspace.Result,
+//							std.TrimspaceOutput(ctx, std.TrimspaceOutputArgs{
+//								Input: ubuntuVmKey.PublicKeyOpenssh,
+//							}, nil).ApplyT(func(invoke std.TrimspaceResult) (*string, error) {
+//								return invoke.Result, nil
+//							}).(pulumi.StringPtrOutput),
 //						},
 //						Password: ubuntuVmPassword.Result,
 //						Username: pulumi.String("ubuntu"),
@@ -138,9 +136,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("ubuntuVmPassword", pulumi.Any(ubuntuVmPassword.Result))
-//			ctx.Export("ubuntuVmPrivateKey", pulumi.Any(ubuntuVmKey.PrivateKeyPem))
-//			ctx.Export("ubuntuVmPublicKey", pulumi.Any(ubuntuVmKey.PublicKeyOpenssh))
+//			ctx.Export("ubuntuVmPassword", ubuntuVmPassword.Result)
+//			ctx.Export("ubuntuVmPrivateKey", ubuntuVmKey.PrivateKeyPem)
+//			ctx.Export("ubuntuVmPublicKey", ubuntuVmKey.PublicKeyOpenssh)
 //			return nil
 //		})
 //	}

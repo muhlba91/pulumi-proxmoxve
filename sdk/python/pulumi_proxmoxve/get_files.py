@@ -115,7 +115,7 @@ def get_files(content_type: Optional[_builtins.str] = None,
     iso_files = proxmoxve.get_files(node_name="pve",
         datastore_id="local",
         content_type="iso")
-    image_exists = std.index.anytrue(input=[f.file_name == "noble-server-cloudimg-amd64.img" for f in iso_files.files])["result"]
+    image_exists = std.anytrue(input=[f.file_name == "noble-server-cloudimg-amd64.img" for f in iso_files.files]).result
     # Only download if the image doesn't already exist
     ubuntu_noble = []
     for range in [{"value": i} for i in range(0, 0 if image_exists else 1)]:
@@ -166,7 +166,7 @@ def get_files_output(content_type: Optional[pulumi.Input[Optional[_builtins.str]
     iso_files = proxmoxve.get_files(node_name="pve",
         datastore_id="local",
         content_type="iso")
-    image_exists = std.index.anytrue(input=[f.file_name == "noble-server-cloudimg-amd64.img" for f in iso_files.files])["result"]
+    image_exists = std.anytrue(input=[f.file_name == "noble-server-cloudimg-amd64.img" for f in iso_files.files]).result
     # Only download if the image doesn't already exist
     ubuntu_noble = []
     for range in [{"value": i} for i in range(0, 0 if image_exists else 1)]:

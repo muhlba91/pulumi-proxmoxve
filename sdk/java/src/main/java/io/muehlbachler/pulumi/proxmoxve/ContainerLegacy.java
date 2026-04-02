@@ -47,8 +47,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import io.muehlbachler.pulumi.proxmoxve.download.FileLegacy;
  * import io.muehlbachler.pulumi.proxmoxve.download.FileLegacyArgs;
- * import com.pulumi.random.Password;
- * import com.pulumi.random.PasswordArgs;
+ * import com.pulumi.random.RandomPassword;
+ * import com.pulumi.random.RandomPasswordArgs;
  * import com.pulumi.tls.PrivateKey;
  * import com.pulumi.tls.PrivateKeyArgs;
  * import io.muehlbachler.pulumi.proxmoxve.ContainerLegacy;
@@ -62,6 +62,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.proxmoxve.inputs.ContainerLegacyMountPointArgs;
  * import com.pulumi.proxmoxve.inputs.ContainerLegacyStartupArgs;
  * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.TrimspaceArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -82,7 +83,7 @@ import javax.annotation.Nullable;
  *             .url("https://mirrors.servercentral.com/ubuntu-cloud-images/releases/25.04/release/ubuntu-25.04-server-cloudimg-amd64-root.tar.xz")
  *             .build());
  * 
- *         var ubuntuContainerPassword = new Password("ubuntuContainerPassword", PasswordArgs.builder()
+ *         var ubuntuContainerPassword = new RandomPassword("ubuntuContainerPassword", RandomPasswordArgs.builder()
  *             .length(16)
  *             .overrideSpecial("_%}{@literal @}{@code ")
  *             .special(true)
@@ -109,7 +110,9 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .userAccount(ContainerLegacyInitializationUserAccountArgs.builder()
- *                     .keys(StdFunctions.trimspace(Map.of("input", ubuntuContainerKey.publicKeyOpenssh())).result())
+ *                     .keys(StdFunctions.trimspace(TrimspaceArgs.builder()
+ *                         .input(ubuntuContainerKey.publicKeyOpenssh())
+ *                         .build()).applyValue(_invoke -> _invoke.result()))
  *                     .password(ubuntuContainerPassword.result())
  *                     .build())
  *                 .build())

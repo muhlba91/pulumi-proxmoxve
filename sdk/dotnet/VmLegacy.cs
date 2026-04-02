@@ -34,14 +34,14 @@ namespace Pulumi.ProxmoxVE
     ///         FileName = "jammy-server-cloudimg-amd64.qcow2",
     ///     });
     /// 
-    ///     var ubuntuVmPassword = new Random.Index.Password("ubuntu_vm_password", new()
+    ///     var ubuntuVmPassword = new Random.RandomPassword("ubuntu_vm_password", new()
     ///     {
     ///         Length = 16,
     ///         OverrideSpecial = "_%@",
     ///         Special = true,
     ///     });
     /// 
-    ///     var ubuntuVmKey = new Tls.Index.PrivateKey("ubuntu_vm_key", new()
+    ///     var ubuntuVmKey = new Tls.PrivateKey("ubuntu_vm_key", new()
     ///     {
     ///         Algorithm = "RSA",
     ///         RsaBits = 2048,
@@ -108,10 +108,10 @@ namespace Pulumi.ProxmoxVE
     ///             {
     ///                 Keys = new[]
     ///                 {
-    ///                     Std.Index.Trimspace.Invoke(new()
+    ///                     Std.Trimspace.Invoke(new()
     ///                     {
     ///                         Input = ubuntuVmKey.PublicKeyOpenssh,
-    ///                     }).Result,
+    ///                     }).Apply(invoke =&gt; invoke.Result),
     ///                 },
     ///                 Password = ubuntuVmPassword.Result,
     ///                 Username = "ubuntu",

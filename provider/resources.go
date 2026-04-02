@@ -247,12 +247,19 @@ func Provider() tfbridge.ProviderInfo {
 		Resources:         resourceOverrides(),
 		DataSources:       map[string]*tfbridge.DataSourceInfo{},
 		JavaScript: &tfbridge.JavaScriptInfo{
-			PackageName: "@muhlba91/pulumi-proxmoxve",
+			PackageName:          "@muhlba91/pulumi-proxmoxve",
+			RespectSchemaVersion: true,
+			Dependencies: map[string]string{
+				"@pulumi/pulumi": "^3.0.0",
+			},
 		},
 		Python: &tfbridge.PythonInfo{
 			PackageName:          "pulumi_proxmoxve",
 			RespectSchemaVersion: true,
-			PyProject:            struct{ Enabled bool }{true},
+			Requires: map[string]string{
+				"pulumi": ">=3.0.0,<4.0.0",
+			},
+			PyProject: struct{ Enabled bool }{true},
 		},
 		Golang: &tfbridge.GolangInfo{
 			ImportBasePath: path.Join(

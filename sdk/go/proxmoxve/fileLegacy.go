@@ -127,15 +127,15 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
+//	"github.com/pulumi/pulumi-std/sdk/v2/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			invokeTrimspace, err := std.Trimspace(ctx, map[string]interface{}{
-//				"input": example.PublicKeyOpenssh,
+//			invokeTrimspace, err := std.Trimspace(ctx, &std.TrimspaceArgs{
+//				Input: example.PublicKeyOpenssh,
 //			}, nil)
 //			if err != nil {
 //				return err

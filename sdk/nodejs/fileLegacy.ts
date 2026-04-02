@@ -81,7 +81,9 @@ import * as utilities from "./utilities";
  *     datastoreId: "local",
  *     nodeName: "pve",
  *     sourceRaw: {
- *         data: `#cloud-config
+ *         data: std.trimspace({
+ *             input: example.publicKeyOpenssh,
+ *         }).then(invoke => `#cloud-config
  * chpasswd:
  *   list: |
  *     ubuntu:example
@@ -95,11 +97,9 @@ import * as utilities from "./utilities";
  *     groups: sudo
  *     shell: /bin/bash
  *     ssh-authorized-keys:
- *       - ${std.index.trimspace({
- *             input: example.publicKeyOpenssh,
- *         }).result}
+ *       - ${invoke.result}
  *     sudo: ALL=(ALL) NOPASSWD:ALL
- * `,
+ * `),
  *         fileName: "example.cloud-config.yaml",
  *     },
  * });

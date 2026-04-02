@@ -22,7 +22,7 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve"
-//	"github.com/pulumi/pulumi-tls/sdk/go/tls"
+//	"github.com/pulumi/pulumi-tls/sdk/v5/go/tls"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -30,8 +30,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			proxmoxVirtualEnvironmentCertificate, err := tls.NewPrivateKey(ctx, "proxmox_virtual_environment_certificate", &tls.PrivateKeyArgs{
-//				Algorithm: "RSA",
-//				RsaBits:   2048,
+//				Algorithm: pulumi.String("RSA"),
+//				RsaBits:   pulumi.Int(2048),
 //			})
 //			if err != nil {
 //				return err
@@ -39,17 +39,15 @@ import (
 //			proxmoxVirtualEnvironmentCertificateSelfSignedCert, err := tls.NewSelfSignedCert(ctx, "proxmox_virtual_environment_certificate", &tls.SelfSignedCertArgs{
 //				KeyAlgorithm:  proxmoxVirtualEnvironmentCertificate.Algorithm,
 //				PrivateKeyPem: proxmoxVirtualEnvironmentCertificate.PrivateKeyPem,
-//				Subject: []map[string]interface{}{
-//					map[string]interface{}{
-//						"commonName":   "example.com",
-//						"organization": "Terraform Provider for Proxmox",
-//					},
+//				Subject: &tls.SelfSignedCertSubjectArgs{
+//					CommonName:   pulumi.String("example.com"),
+//					Organization: pulumi.String("Terraform Provider for Proxmox"),
 //				},
-//				ValidityPeriodHours: 8760,
-//				AllowedUses: []string{
-//					"key_encipherment",
-//					"digital_signature",
-//					"server_auth",
+//				ValidityPeriodHours: pulumi.Int(8760),
+//				AllowedUses: pulumi.StringArray{
+//					pulumi.String("key_encipherment"),
+//					pulumi.String("digital_signature"),
+//					pulumi.String("server_auth"),
 //				},
 //			})
 //			if err != nil {

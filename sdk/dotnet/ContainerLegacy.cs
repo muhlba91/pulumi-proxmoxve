@@ -33,14 +33,14 @@ namespace Pulumi.ProxmoxVE
     ///         Url = "https://mirrors.servercentral.com/ubuntu-cloud-images/releases/25.04/release/ubuntu-25.04-server-cloudimg-amd64-root.tar.xz",
     ///     });
     /// 
-    ///     var ubuntuContainerPassword = new Random.Index.Password("ubuntu_container_password", new()
+    ///     var ubuntuContainerPassword = new Random.RandomPassword("ubuntu_container_password", new()
     ///     {
     ///         Length = 16,
     ///         OverrideSpecial = "_%@",
     ///         Special = true,
     ///     });
     /// 
-    ///     var ubuntuContainerKey = new Tls.Index.PrivateKey("ubuntu_container_key", new()
+    ///     var ubuntuContainerKey = new Tls.PrivateKey("ubuntu_container_key", new()
     ///     {
     ///         Algorithm = "RSA",
     ///         RsaBits = 2048,
@@ -73,10 +73,10 @@ namespace Pulumi.ProxmoxVE
     ///             {
     ///                 Keys = new[]
     ///                 {
-    ///                     Std.Index.Trimspace.Invoke(new()
+    ///                     Std.Trimspace.Invoke(new()
     ///                     {
     ///                         Input = ubuntuContainerKey.PublicKeyOpenssh,
-    ///                     }).Result,
+    ///                     }).Apply(invoke =&gt; invoke.Result),
     ///                 },
     ///                 Password = ubuntuContainerPassword.Result,
     ///             },

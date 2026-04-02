@@ -357,26 +357,26 @@ class CertificateLegacy(pulumi.CustomResource):
         import pulumi_proxmoxve as proxmoxve
         import pulumi_tls as tls
 
-        proxmox_virtual_environment_certificate = tls.index.PrivateKey("proxmox_virtual_environment_certificate",
-            algorithm=RSA,
+        proxmox_virtual_environment_certificate = tls.PrivateKey("proxmox_virtual_environment_certificate",
+            algorithm="RSA",
             rsa_bits=2048)
-        proxmox_virtual_environment_certificate_self_signed_cert = tls.index.SelfSignedCert("proxmox_virtual_environment_certificate",
+        proxmox_virtual_environment_certificate_self_signed_cert = tls.SelfSignedCert("proxmox_virtual_environment_certificate",
             key_algorithm=proxmox_virtual_environment_certificate.algorithm,
             private_key_pem=proxmox_virtual_environment_certificate.private_key_pem,
-            subject=[{
-                commonName: example.com,
-                organization: Terraform Provider for Proxmox,
-            }],
+            subject={
+                "common_name": "example.com",
+                "organization": "Terraform Provider for Proxmox",
+            },
             validity_period_hours=8760,
             allowed_uses=[
-                key_encipherment,
-                digital_signature,
-                server_auth,
+                "key_encipherment",
+                "digital_signature",
+                "server_auth",
             ])
         example = proxmoxve.CertificateLegacy("example",
-            certificate=proxmox_virtual_environment_certificate_self_signed_cert["certPem"],
+            certificate=proxmox_virtual_environment_certificate_self_signed_cert.cert_pem,
             node_name="first-node",
-            private_key=proxmox_virtual_environment_certificate["privateKeyPem"])
+            private_key=proxmox_virtual_environment_certificate.private_key_pem)
         ```
 
 
@@ -404,26 +404,26 @@ class CertificateLegacy(pulumi.CustomResource):
         import pulumi_proxmoxve as proxmoxve
         import pulumi_tls as tls
 
-        proxmox_virtual_environment_certificate = tls.index.PrivateKey("proxmox_virtual_environment_certificate",
-            algorithm=RSA,
+        proxmox_virtual_environment_certificate = tls.PrivateKey("proxmox_virtual_environment_certificate",
+            algorithm="RSA",
             rsa_bits=2048)
-        proxmox_virtual_environment_certificate_self_signed_cert = tls.index.SelfSignedCert("proxmox_virtual_environment_certificate",
+        proxmox_virtual_environment_certificate_self_signed_cert = tls.SelfSignedCert("proxmox_virtual_environment_certificate",
             key_algorithm=proxmox_virtual_environment_certificate.algorithm,
             private_key_pem=proxmox_virtual_environment_certificate.private_key_pem,
-            subject=[{
-                commonName: example.com,
-                organization: Terraform Provider for Proxmox,
-            }],
+            subject={
+                "common_name": "example.com",
+                "organization": "Terraform Provider for Proxmox",
+            },
             validity_period_hours=8760,
             allowed_uses=[
-                key_encipherment,
-                digital_signature,
-                server_auth,
+                "key_encipherment",
+                "digital_signature",
+                "server_auth",
             ])
         example = proxmoxve.CertificateLegacy("example",
-            certificate=proxmox_virtual_environment_certificate_self_signed_cert["certPem"],
+            certificate=proxmox_virtual_environment_certificate_self_signed_cert.cert_pem,
             node_name="first-node",
-            private_key=proxmox_virtual_environment_certificate["privateKeyPem"])
+            private_key=proxmox_virtual_environment_certificate.private_key_pem)
         ```
 
 

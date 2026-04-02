@@ -14,17 +14,17 @@ import * as utilities from "./utilities";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  * import * as tls from "@pulumi/tls";
  *
- * const proxmoxVirtualEnvironmentCertificate = new tls.index.PrivateKey("proxmox_virtual_environment_certificate", {
+ * const proxmoxVirtualEnvironmentCertificate = new tls.PrivateKey("proxmox_virtual_environment_certificate", {
  *     algorithm: "RSA",
  *     rsaBits: 2048,
  * });
- * const proxmoxVirtualEnvironmentCertificateSelfSignedCert = new tls.index.SelfSignedCert("proxmox_virtual_environment_certificate", {
+ * const proxmoxVirtualEnvironmentCertificateSelfSignedCert = new tls.SelfSignedCert("proxmox_virtual_environment_certificate", {
  *     keyAlgorithm: proxmoxVirtualEnvironmentCertificate.algorithm,
  *     privateKeyPem: proxmoxVirtualEnvironmentCertificate.privateKeyPem,
- *     subject: [{
+ *     subject: {
  *         commonName: "example.com",
  *         organization: "Terraform Provider for Proxmox",
- *     }],
+ *     },
  *     validityPeriodHours: 8760,
  *     allowedUses: [
  *         "key_encipherment",

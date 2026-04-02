@@ -1,6 +1,6 @@
 {
     "name": "@muhlba91/pulumi-proxmoxve",
-    "version": "${VERSION}",
+    "version": "7.14.0-alpha.1775111061+56d9f5cc.dirty",
     "description": "A Pulumi package for creating and managing Proxmox Virtual Environment cloud resources.",
     "keywords": [
         "proxmox",
@@ -14,7 +14,7 @@
         "build": "tsc"
     },
     "dependencies": {
-        "@pulumi/pulumi": "^3.142.0"
+        "@pulumi/pulumi": "^3.0.0"
     },
     "devDependencies": {
         "@types/node": "^18",
@@ -23,6 +23,7 @@
     "pulumi": {
         "resource": true,
         "name": "proxmoxve",
+        "version": "7.14.0-alpha.1775111061+56d9f5cc.dirty",
         "server": "github://api.github.com/muhlba91/pulumi-proxmoxve"
     }
 }

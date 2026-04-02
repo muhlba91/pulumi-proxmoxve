@@ -170,6 +170,7 @@ import javax.annotation.Nullable;
  * import io.muehlbachler.pulumi.proxmoxve.FileLegacyArgs;
  * import com.pulumi.proxmoxve.inputs.FileLegacySourceRawArgs;
  * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.TrimspaceArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -205,7 +206,9 @@ import javax.annotation.Nullable;
  *     ssh-authorized-keys:
  *       - %s
  *     sudo: ALL=(ALL) NOPASSWD:ALL
- * ", StdFunctions.trimspace(Map.of("input", example.publicKeyOpenssh())).result()))
+ * ", StdFunctions.trimspace(TrimspaceArgs.builder()
+ *                     .input(example.publicKeyOpenssh())
+ *                     .build()).result()))
  *                 .fileName("example.cloud-config.yaml")
  *                 .build())
  *             .build());

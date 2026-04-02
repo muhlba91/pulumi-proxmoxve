@@ -114,7 +114,10 @@ namespace Pulumi.ProxmoxVE
     ///         NodeName = "pve",
     ///         SourceRaw = new ProxmoxVE.Inputs.FileLegacySourceRawArgs
     ///         {
-    ///             Data = @$"#cloud-config
+    ///             Data = Std.Trimspace.Invoke(new()
+    ///             {
+    ///                 Input = example.PublicKeyOpenssh,
+    ///             }).Apply(invoke =&gt; @$"#cloud-config
     /// chpasswd:
     ///   list: |
     ///     ubuntu:example
@@ -128,12 +131,9 @@ namespace Pulumi.ProxmoxVE
     ///     groups: sudo
     ///     shell: /bin/bash
     ///     ssh-authorized-keys:
-    ///       - {Std.Index.Trimspace.Invoke(new()
-    ///             {
-    ///                 Input = example.PublicKeyOpenssh,
-    ///             }).Result}
+    ///       - {invoke.Result}
     ///     sudo: ALL=(ALL) NOPASSWD:ALL
-    /// ",
+    /// "),
     ///             FileName = "example.cloud-config.yaml",
     ///         },
     ///     });

@@ -2180,12 +2180,12 @@ class VmLegacy(pulumi.CustomResource):
             node_name="pve",
             url="https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img",
             file_name="jammy-server-cloudimg-amd64.qcow2")
-        ubuntu_vm_password = random.index.Password("ubuntu_vm_password",
+        ubuntu_vm_password = random.RandomPassword("ubuntu_vm_password",
             length=16,
-            override_special=_%@,
+            override_special="_%@",
             special=True)
-        ubuntu_vm_key = tls.index.PrivateKey("ubuntu_vm_key",
-            algorithm=RSA,
+        ubuntu_vm_key = tls.PrivateKey("ubuntu_vm_key",
+            algorithm="RSA",
             rsa_bits=2048)
         ubuntu_vm = proxmoxve.VmLegacy("ubuntu_vm",
             serial_devices=[{}],
@@ -2226,8 +2226,8 @@ class VmLegacy(pulumi.CustomResource):
                     },
                 }],
                 "user_account": {
-                    "keys": [std.index.trimspace(input=ubuntu_vm_key["publicKeyOpenssh"])["result"]],
-                    "password": ubuntu_vm_password["result"],
+                    "keys": [std.trimspace_output(input=ubuntu_vm_key.public_key_openssh).apply(lambda invoke: invoke.result)],
+                    "password": ubuntu_vm_password.result,
                     "username": "ubuntu",
                 },
                 "user_data_file_id": cloud_config["id"],
@@ -2246,9 +2246,9 @@ class VmLegacy(pulumi.CustomResource):
                 "cache": "always",
                 "direct_io": True,
             }])
-        pulumi.export("ubuntuVmPassword", ubuntu_vm_password["result"])
-        pulumi.export("ubuntuVmPrivateKey", ubuntu_vm_key["privateKeyPem"])
-        pulumi.export("ubuntuVmPublicKey", ubuntu_vm_key["publicKeyOpenssh"])
+        pulumi.export("ubuntuVmPassword", ubuntu_vm_password.result)
+        pulumi.export("ubuntuVmPrivateKey", ubuntu_vm_key.private_key_pem)
+        pulumi.export("ubuntuVmPublicKey", ubuntu_vm_key.public_key_openssh)
         ```
 
         ## Qemu guest agent
@@ -2503,12 +2503,12 @@ class VmLegacy(pulumi.CustomResource):
             node_name="pve",
             url="https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img",
             file_name="jammy-server-cloudimg-amd64.qcow2")
-        ubuntu_vm_password = random.index.Password("ubuntu_vm_password",
+        ubuntu_vm_password = random.RandomPassword("ubuntu_vm_password",
             length=16,
-            override_special=_%@,
+            override_special="_%@",
             special=True)
-        ubuntu_vm_key = tls.index.PrivateKey("ubuntu_vm_key",
-            algorithm=RSA,
+        ubuntu_vm_key = tls.PrivateKey("ubuntu_vm_key",
+            algorithm="RSA",
             rsa_bits=2048)
         ubuntu_vm = proxmoxve.VmLegacy("ubuntu_vm",
             serial_devices=[{}],
@@ -2549,8 +2549,8 @@ class VmLegacy(pulumi.CustomResource):
                     },
                 }],
                 "user_account": {
-                    "keys": [std.index.trimspace(input=ubuntu_vm_key["publicKeyOpenssh"])["result"]],
-                    "password": ubuntu_vm_password["result"],
+                    "keys": [std.trimspace_output(input=ubuntu_vm_key.public_key_openssh).apply(lambda invoke: invoke.result)],
+                    "password": ubuntu_vm_password.result,
                     "username": "ubuntu",
                 },
                 "user_data_file_id": cloud_config["id"],
@@ -2569,9 +2569,9 @@ class VmLegacy(pulumi.CustomResource):
                 "cache": "always",
                 "direct_io": True,
             }])
-        pulumi.export("ubuntuVmPassword", ubuntu_vm_password["result"])
-        pulumi.export("ubuntuVmPrivateKey", ubuntu_vm_key["privateKeyPem"])
-        pulumi.export("ubuntuVmPublicKey", ubuntu_vm_key["publicKeyOpenssh"])
+        pulumi.export("ubuntuVmPassword", ubuntu_vm_password.result)
+        pulumi.export("ubuntuVmPrivateKey", ubuntu_vm_key.private_key_pem)
+        pulumi.export("ubuntuVmPublicKey", ubuntu_vm_key.public_key_openssh)
         ```
 
         ## Qemu guest agent

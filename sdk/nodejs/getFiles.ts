@@ -16,31 +16,35 @@ import * as utilities from "./utilities";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  * import * as std from "@pulumi/std";
  *
- * const isoFiles = proxmoxve.getFiles({
- *     nodeName: "pve",
- *     datastoreId: "local",
- *     contentType: "iso",
- * });
- * const imageExists = std.index.anytrue({
- *     input: isoFiles.then(isoFiles => .map(f => (f.fileName == "noble-server-cloudimg-amd64.img"))),
- * }).result;
- * // Only download if the image doesn't already exist
- * const ubuntuNoble: proxmoxve.download.FileLegacy[] = [];
- * for (const range = {value: 0}; range.value < (imageExists ? 0 : 1); range.value++) {
- *     ubuntuNoble.push(new proxmoxve.download.FileLegacy(`ubuntu_noble-${range.value}`, {
- *         datastoreId: "local",
+ * export = async () => {
+ *     const isoFiles = await proxmoxve.getFiles({
  *         nodeName: "pve",
+ *         datastoreId: "local",
  *         contentType: "iso",
- *         url: "https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img",
- *     }));
+ *     });
+ *     const imageExists = (await std.anytrue({
+ *         input: .map(f => (f.fileName == "noble-server-cloudimg-amd64.img")),
+ *     })).result;
+ *     // Only download if the image doesn't already exist
+ *     const ubuntuNoble: proxmoxve.download.FileLegacy[] = [];
+ *     for (const range = {value: 0}; range.value < (imageExists ? 0 : 1); range.value++) {
+ *         ubuntuNoble.push(new proxmoxve.download.FileLegacy(`ubuntu_noble-${range.value}`, {
+ *             datastoreId: "local",
+ *             nodeName: "pve",
+ *             contentType: "iso",
+ *             url: "https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img",
+ *         }));
+ *     }
+ *     // List all files without filtering
+ *     const allFiles = await proxmoxve.getFiles({
+ *         nodeName: "pve",
+ *         datastoreId: "local",
+ *     });
+ *     return {
+ *         isoFileCount: isoFiles.files.length,
+ *         allFileNames: .map(f => (f.fileName)),
+ *     };
  * }
- * // List all files without filtering
- * const allFiles = proxmoxve.getFiles({
- *     nodeName: "pve",
- *     datastoreId: "local",
- * });
- * export const isoFileCount = isoFiles.then(isoFiles => isoFiles.files).length;
- * export const allFileNames = allFiles.then(allFiles => .map(f => (f.fileName)));
  * ```
  */
 export function getFiles(args: GetFilesArgs, opts?: pulumi.InvokeOptions): Promise<GetFilesResult> {
@@ -105,31 +109,35 @@ export interface GetFilesResult {
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  * import * as std from "@pulumi/std";
  *
- * const isoFiles = proxmoxve.getFiles({
- *     nodeName: "pve",
- *     datastoreId: "local",
- *     contentType: "iso",
- * });
- * const imageExists = std.index.anytrue({
- *     input: isoFiles.then(isoFiles => .map(f => (f.fileName == "noble-server-cloudimg-amd64.img"))),
- * }).result;
- * // Only download if the image doesn't already exist
- * const ubuntuNoble: proxmoxve.download.FileLegacy[] = [];
- * for (const range = {value: 0}; range.value < (imageExists ? 0 : 1); range.value++) {
- *     ubuntuNoble.push(new proxmoxve.download.FileLegacy(`ubuntu_noble-${range.value}`, {
- *         datastoreId: "local",
+ * export = async () => {
+ *     const isoFiles = await proxmoxve.getFiles({
  *         nodeName: "pve",
+ *         datastoreId: "local",
  *         contentType: "iso",
- *         url: "https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img",
- *     }));
+ *     });
+ *     const imageExists = (await std.anytrue({
+ *         input: .map(f => (f.fileName == "noble-server-cloudimg-amd64.img")),
+ *     })).result;
+ *     // Only download if the image doesn't already exist
+ *     const ubuntuNoble: proxmoxve.download.FileLegacy[] = [];
+ *     for (const range = {value: 0}; range.value < (imageExists ? 0 : 1); range.value++) {
+ *         ubuntuNoble.push(new proxmoxve.download.FileLegacy(`ubuntu_noble-${range.value}`, {
+ *             datastoreId: "local",
+ *             nodeName: "pve",
+ *             contentType: "iso",
+ *             url: "https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img",
+ *         }));
+ *     }
+ *     // List all files without filtering
+ *     const allFiles = await proxmoxve.getFiles({
+ *         nodeName: "pve",
+ *         datastoreId: "local",
+ *     });
+ *     return {
+ *         isoFileCount: isoFiles.files.length,
+ *         allFileNames: .map(f => (f.fileName)),
+ *     };
  * }
- * // List all files without filtering
- * const allFiles = proxmoxve.getFiles({
- *     nodeName: "pve",
- *     datastoreId: "local",
- * });
- * export const isoFileCount = isoFiles.then(isoFiles => isoFiles.files).length;
- * export const allFileNames = allFiles.then(allFiles => .map(f => (f.fileName)));
  * ```
  */
 export function getFilesOutput(args: GetFilesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFilesResult> {

@@ -23,9 +23,9 @@ import (
 //
 //	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve"
 //	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/download"
-//	"github.com/pulumi/pulumi-random/sdk/go/random"
-//	"github.com/pulumi/pulumi-std/sdk/go/std"
-//	"github.com/pulumi/pulumi-tls/sdk/go/tls"
+//	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
+//	"github.com/pulumi/pulumi-std/sdk/v2/go/std"
+//	"github.com/pulumi/pulumi-tls/sdk/v5/go/tls"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -41,24 +41,18 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ubuntuContainerPassword, err := random.NewPassword(ctx, "ubuntu_container_password", &random.PasswordArgs{
-//				Length:          16,
-//				OverrideSpecial: "_%@",
-//				Special:         true,
+//			ubuntuContainerPassword, err := random.NewRandomPassword(ctx, "ubuntu_container_password", &random.RandomPasswordArgs{
+//				Length:          pulumi.Int(16),
+//				OverrideSpecial: pulumi.String("_%@"),
+//				Special:         pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			ubuntuContainerKey, err := tls.NewPrivateKey(ctx, "ubuntu_container_key", &tls.PrivateKeyArgs{
-//				Algorithm: "RSA",
-//				RsaBits:   2048,
+//				Algorithm: pulumi.String("RSA"),
+//				RsaBits:   pulumi.Int(2048),
 //			})
-//			if err != nil {
-//				return err
-//			}
-//			invokeTrimspace, err := std.Trimspace(ctx, map[string]interface{}{
-//				"input": ubuntuContainerKey.PublicKeyOpenssh,
-//			}, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -81,7 +75,11 @@ import (
 //					},
 //					UserAccount: &proxmoxve.ContainerLegacyInitializationUserAccountArgs{
 //						Keys: pulumi.StringArray{
-//							invokeTrimspace.Result,
+//							std.TrimspaceOutput(ctx, std.TrimspaceOutputArgs{
+//								Input: ubuntuContainerKey.PublicKeyOpenssh,
+//							}, nil).ApplyT(func(invoke std.TrimspaceResult) (*string, error) {
+//								return invoke.Result, nil
+//							}).(pulumi.StringPtrOutput),
 //						},
 //						Password: ubuntuContainerPassword.Result,
 //					},
@@ -124,9 +122,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("ubuntuContainerPassword", pulumi.Any(ubuntuContainerPassword.Result))
-//			ctx.Export("ubuntuContainerPrivateKey", pulumi.Any(ubuntuContainerKey.PrivateKeyPem))
-//			ctx.Export("ubuntuContainerPublicKey", pulumi.Any(ubuntuContainerKey.PublicKeyOpenssh))
+//			ctx.Export("ubuntuContainerPassword", ubuntuContainerPassword.Result)
+//			ctx.Export("ubuntuContainerPrivateKey", ubuntuContainerKey.PrivateKeyPem)
+//			ctx.Export("ubuntuContainerPublicKey", ubuntuContainerKey.PublicKeyOpenssh)
 //			return nil
 //		})
 //	}

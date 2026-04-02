@@ -55,8 +55,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import io.muehlbachler.pulumi.proxmoxve.download.FileLegacy;
  * import io.muehlbachler.pulumi.proxmoxve.download.FileLegacyArgs;
- * import com.pulumi.random.Password;
- * import com.pulumi.random.PasswordArgs;
+ * import com.pulumi.random.RandomPassword;
+ * import com.pulumi.random.RandomPasswordArgs;
  * import com.pulumi.tls.PrivateKey;
  * import com.pulumi.tls.PrivateKeyArgs;
  * import io.muehlbachler.pulumi.proxmoxve.VmLegacy;
@@ -74,6 +74,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.proxmoxve.inputs.VmLegacyTpmStateArgs;
  * import com.pulumi.proxmoxve.inputs.VmLegacyVirtiofArgs;
  * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.TrimspaceArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -95,7 +96,7 @@ import javax.annotation.Nullable;
  *             .fileName("jammy-server-cloudimg-amd64.qcow2")
  *             .build());
  * 
- *         var ubuntuVmPassword = new Password("ubuntuVmPassword", PasswordArgs.builder()
+ *         var ubuntuVmPassword = new RandomPassword("ubuntuVmPassword", RandomPasswordArgs.builder()
  *             .length(16)
  *             .overrideSpecial("_%}{@literal @}{@code ")
  *             .special(true)
@@ -145,7 +146,9 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *                 .userAccount(VmLegacyInitializationUserAccountArgs.builder()
- *                     .keys(StdFunctions.trimspace(Map.of("input", ubuntuVmKey.publicKeyOpenssh())).result())
+ *                     .keys(StdFunctions.trimspace(TrimspaceArgs.builder()
+ *                         .input(ubuntuVmKey.publicKeyOpenssh())
+ *                         .build()).applyValue(_invoke -> _invoke.result()))
  *                     .password(ubuntuVmPassword.result())
  *                     .username("ubuntu")
  *                     .build())

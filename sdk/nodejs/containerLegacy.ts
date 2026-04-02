@@ -25,12 +25,12 @@ import * as utilities from "./utilities";
  *         nodeName: "first-node",
  *         url: "https://mirrors.servercentral.com/ubuntu-cloud-images/releases/25.04/release/ubuntu-25.04-server-cloudimg-amd64-root.tar.xz",
  *     });
- *     const ubuntuContainerPassword = new random.index.Password("ubuntu_container_password", {
+ *     const ubuntuContainerPassword = new random.RandomPassword("ubuntu_container_password", {
  *         length: 16,
  *         overrideSpecial: "_%@",
  *         special: true,
  *     });
- *     const ubuntuContainerKey = new tls.index.PrivateKey("ubuntu_container_key", {
+ *     const ubuntuContainerKey = new tls.PrivateKey("ubuntu_container_key", {
  *         algorithm: "RSA",
  *         rsaBits: 2048,
  *     });
@@ -50,9 +50,9 @@ import * as utilities from "./utilities";
  *                 },
  *             }],
  *             userAccount: {
- *                 keys: [std.index.trimspace({
+ *                 keys: [std.trimspaceOutput({
  *                     input: ubuntuContainerKey.publicKeyOpenssh,
- *                 }).result],
+ *                 }).apply(invoke => invoke.result)],
  *                 password: ubuntuContainerPassword.result,
  *             },
  *         },

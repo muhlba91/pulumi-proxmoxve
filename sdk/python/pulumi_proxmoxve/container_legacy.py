@@ -1158,12 +1158,12 @@ class ContainerLegacy(pulumi.CustomResource):
             datastore_id="local",
             node_name="first-node",
             url="https://mirrors.servercentral.com/ubuntu-cloud-images/releases/25.04/release/ubuntu-25.04-server-cloudimg-amd64-root.tar.xz")
-        ubuntu_container_password = random.index.Password("ubuntu_container_password",
+        ubuntu_container_password = random.RandomPassword("ubuntu_container_password",
             length=16,
-            override_special=_%@,
+            override_special="_%@",
             special=True)
-        ubuntu_container_key = tls.index.PrivateKey("ubuntu_container_key",
-            algorithm=RSA,
+        ubuntu_container_key = tls.PrivateKey("ubuntu_container_key",
+            algorithm="RSA",
             rsa_bits=2048)
         ubuntu_container = proxmoxve.ContainerLegacy("ubuntu_container",
             description="Managed by Pulumi",
@@ -1181,8 +1181,8 @@ class ContainerLegacy(pulumi.CustomResource):
                     },
                 }],
                 "user_account": {
-                    "keys": [std.index.trimspace(input=ubuntu_container_key["publicKeyOpenssh"])["result"]],
-                    "password": ubuntu_container_password["result"],
+                    "keys": [std.trimspace_output(input=ubuntu_container_key.public_key_openssh).apply(lambda invoke: invoke.result)],
+                    "password": ubuntu_container_password.result,
                 },
             },
             network_interfaces=[{
@@ -1217,9 +1217,9 @@ class ContainerLegacy(pulumi.CustomResource):
                 "up_delay": 60,
                 "down_delay": 60,
             })
-        pulumi.export("ubuntuContainerPassword", ubuntu_container_password["result"])
-        pulumi.export("ubuntuContainerPrivateKey", ubuntu_container_key["privateKeyPem"])
-        pulumi.export("ubuntuContainerPublicKey", ubuntu_container_key["publicKeyOpenssh"])
+        pulumi.export("ubuntuContainerPassword", ubuntu_container_password.result)
+        pulumi.export("ubuntuContainerPrivateKey", ubuntu_container_key.private_key_pem)
+        pulumi.export("ubuntuContainerPublicKey", ubuntu_container_key.public_key_openssh)
         ```
 
         ## Import
@@ -1297,12 +1297,12 @@ class ContainerLegacy(pulumi.CustomResource):
             datastore_id="local",
             node_name="first-node",
             url="https://mirrors.servercentral.com/ubuntu-cloud-images/releases/25.04/release/ubuntu-25.04-server-cloudimg-amd64-root.tar.xz")
-        ubuntu_container_password = random.index.Password("ubuntu_container_password",
+        ubuntu_container_password = random.RandomPassword("ubuntu_container_password",
             length=16,
-            override_special=_%@,
+            override_special="_%@",
             special=True)
-        ubuntu_container_key = tls.index.PrivateKey("ubuntu_container_key",
-            algorithm=RSA,
+        ubuntu_container_key = tls.PrivateKey("ubuntu_container_key",
+            algorithm="RSA",
             rsa_bits=2048)
         ubuntu_container = proxmoxve.ContainerLegacy("ubuntu_container",
             description="Managed by Pulumi",
@@ -1320,8 +1320,8 @@ class ContainerLegacy(pulumi.CustomResource):
                     },
                 }],
                 "user_account": {
-                    "keys": [std.index.trimspace(input=ubuntu_container_key["publicKeyOpenssh"])["result"]],
-                    "password": ubuntu_container_password["result"],
+                    "keys": [std.trimspace_output(input=ubuntu_container_key.public_key_openssh).apply(lambda invoke: invoke.result)],
+                    "password": ubuntu_container_password.result,
                 },
             },
             network_interfaces=[{
@@ -1356,9 +1356,9 @@ class ContainerLegacy(pulumi.CustomResource):
                 "up_delay": 60,
                 "down_delay": 60,
             })
-        pulumi.export("ubuntuContainerPassword", ubuntu_container_password["result"])
-        pulumi.export("ubuntuContainerPrivateKey", ubuntu_container_key["privateKeyPem"])
-        pulumi.export("ubuntuContainerPublicKey", ubuntu_container_key["publicKeyOpenssh"])
+        pulumi.export("ubuntuContainerPassword", ubuntu_container_password.result)
+        pulumi.export("ubuntuContainerPrivateKey", ubuntu_container_key.private_key_pem)
+        pulumi.export("ubuntuContainerPublicKey", ubuntu_container_key.public_key_openssh)
         ```
 
         ## Import

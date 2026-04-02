@@ -19,30 +19,28 @@ namespace Pulumi.ProxmoxVE
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
+        /// using System.Threading.Tasks;
         /// using Pulumi;
         /// using ProxmoxVE = Pulumi.ProxmoxVE;
         /// using Std = Pulumi.Std;
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
+        /// return await Deployment.RunAsync(async() =&gt; 
         /// {
-        ///     var isoFiles = ProxmoxVE.GetFiles.Invoke(new()
+        ///     var isoFiles = await ProxmoxVE.GetFiles.InvokeAsync(new()
         ///     {
         ///         NodeName = "pve",
         ///         DatastoreId = "local",
         ///         ContentType = "iso",
         ///     });
         /// 
-        ///     var imageExists = Std.Index.Anytrue.Invoke(new()
+        ///     var imageExists = (await Std.Anytrue.InvokeAsync(new()
         ///     {
-        ///         Input = .Select(f =&gt; 
-        ///         {
-        ///             return f.FileName == "noble-server-cloudimg-amd64.img";
-        ///         }).ToList(),
-        ///     }).Result;
+        ///         Input = ,
+        ///     })).Result;
         /// 
         ///     // Only download if the image doesn't already exist
         ///     var ubuntuNoble = new List&lt;ProxmoxVE.Download.FileLegacy&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; (imageExists ? 0 : 1); rangeIndex++)
+        ///     for (var rangeIndex = 0; rangeIndex &lt; imageExists ? 0 : 1; rangeIndex++)
         ///     {
         ///         var range = new { Value = rangeIndex };
         ///         ubuntuNoble.Add(new ProxmoxVE.Download.FileLegacy($"ubuntu_noble-{range.Value}", new()
@@ -54,7 +52,7 @@ namespace Pulumi.ProxmoxVE
         ///         }));
         ///     }
         ///     // List all files without filtering
-        ///     var allFiles = ProxmoxVE.GetFiles.Invoke(new()
+        ///     var allFiles = await ProxmoxVE.GetFiles.InvokeAsync(new()
         ///     {
         ///         NodeName = "pve",
         ///         DatastoreId = "local",
@@ -62,11 +60,8 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["isoFileCount"] = isoFiles.Apply(getFilesResult =&gt; getFilesResult.Files).Length,
-        ///         ["allFileNames"] = .Select(f =&gt; 
-        ///         {
-        ///             return f.FileName;
-        ///         }).ToList(),
+        ///         ["isoFileCount"] = isoFiles.Files.Length,
+        ///         ["allFileNames"] = ,
         ///     };
         /// });
         /// ```
@@ -82,30 +77,28 @@ namespace Pulumi.ProxmoxVE
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
+        /// using System.Threading.Tasks;
         /// using Pulumi;
         /// using ProxmoxVE = Pulumi.ProxmoxVE;
         /// using Std = Pulumi.Std;
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
+        /// return await Deployment.RunAsync(async() =&gt; 
         /// {
-        ///     var isoFiles = ProxmoxVE.GetFiles.Invoke(new()
+        ///     var isoFiles = await ProxmoxVE.GetFiles.InvokeAsync(new()
         ///     {
         ///         NodeName = "pve",
         ///         DatastoreId = "local",
         ///         ContentType = "iso",
         ///     });
         /// 
-        ///     var imageExists = Std.Index.Anytrue.Invoke(new()
+        ///     var imageExists = (await Std.Anytrue.InvokeAsync(new()
         ///     {
-        ///         Input = .Select(f =&gt; 
-        ///         {
-        ///             return f.FileName == "noble-server-cloudimg-amd64.img";
-        ///         }).ToList(),
-        ///     }).Result;
+        ///         Input = ,
+        ///     })).Result;
         /// 
         ///     // Only download if the image doesn't already exist
         ///     var ubuntuNoble = new List&lt;ProxmoxVE.Download.FileLegacy&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; (imageExists ? 0 : 1); rangeIndex++)
+        ///     for (var rangeIndex = 0; rangeIndex &lt; imageExists ? 0 : 1; rangeIndex++)
         ///     {
         ///         var range = new { Value = rangeIndex };
         ///         ubuntuNoble.Add(new ProxmoxVE.Download.FileLegacy($"ubuntu_noble-{range.Value}", new()
@@ -117,7 +110,7 @@ namespace Pulumi.ProxmoxVE
         ///         }));
         ///     }
         ///     // List all files without filtering
-        ///     var allFiles = ProxmoxVE.GetFiles.Invoke(new()
+        ///     var allFiles = await ProxmoxVE.GetFiles.InvokeAsync(new()
         ///     {
         ///         NodeName = "pve",
         ///         DatastoreId = "local",
@@ -125,11 +118,8 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["isoFileCount"] = isoFiles.Apply(getFilesResult =&gt; getFilesResult.Files).Length,
-        ///         ["allFileNames"] = .Select(f =&gt; 
-        ///         {
-        ///             return f.FileName;
-        ///         }).ToList(),
+        ///         ["isoFileCount"] = isoFiles.Files.Length,
+        ///         ["allFileNames"] = ,
         ///     };
         /// });
         /// ```
@@ -145,30 +135,28 @@ namespace Pulumi.ProxmoxVE
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
+        /// using System.Threading.Tasks;
         /// using Pulumi;
         /// using ProxmoxVE = Pulumi.ProxmoxVE;
         /// using Std = Pulumi.Std;
         /// 
-        /// return await Deployment.RunAsync(() =&gt; 
+        /// return await Deployment.RunAsync(async() =&gt; 
         /// {
-        ///     var isoFiles = ProxmoxVE.GetFiles.Invoke(new()
+        ///     var isoFiles = await ProxmoxVE.GetFiles.InvokeAsync(new()
         ///     {
         ///         NodeName = "pve",
         ///         DatastoreId = "local",
         ///         ContentType = "iso",
         ///     });
         /// 
-        ///     var imageExists = Std.Index.Anytrue.Invoke(new()
+        ///     var imageExists = (await Std.Anytrue.InvokeAsync(new()
         ///     {
-        ///         Input = .Select(f =&gt; 
-        ///         {
-        ///             return f.FileName == "noble-server-cloudimg-amd64.img";
-        ///         }).ToList(),
-        ///     }).Result;
+        ///         Input = ,
+        ///     })).Result;
         /// 
         ///     // Only download if the image doesn't already exist
         ///     var ubuntuNoble = new List&lt;ProxmoxVE.Download.FileLegacy&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; (imageExists ? 0 : 1); rangeIndex++)
+        ///     for (var rangeIndex = 0; rangeIndex &lt; imageExists ? 0 : 1; rangeIndex++)
         ///     {
         ///         var range = new { Value = rangeIndex };
         ///         ubuntuNoble.Add(new ProxmoxVE.Download.FileLegacy($"ubuntu_noble-{range.Value}", new()
@@ -180,7 +168,7 @@ namespace Pulumi.ProxmoxVE
         ///         }));
         ///     }
         ///     // List all files without filtering
-        ///     var allFiles = ProxmoxVE.GetFiles.Invoke(new()
+        ///     var allFiles = await ProxmoxVE.GetFiles.InvokeAsync(new()
         ///     {
         ///         NodeName = "pve",
         ///         DatastoreId = "local",
@@ -188,11 +176,8 @@ namespace Pulumi.ProxmoxVE
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["isoFileCount"] = isoFiles.Apply(getFilesResult =&gt; getFilesResult.Files).Length,
-        ///         ["allFileNames"] = .Select(f =&gt; 
-        ///         {
-        ///             return f.FileName;
-        ///         }).ToList(),
+        ///         ["isoFileCount"] = isoFiles.Files.Length,
+        ///         ["allFileNames"] = ,
         ///     };
         /// });
         /// ```
