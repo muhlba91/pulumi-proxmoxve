@@ -26,7 +26,6 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-proxmox/sdk/go/proxmox"
 //	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -34,18 +33,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			operationsAutomation, err := proxmox.NewVirtualEnvironmentUser(ctx, "operations_automation", &proxmox.VirtualEnvironmentUserArgs{
-//				Comment:  "Managed by Pulumi",
-//				Password: "a-strong-password",
-//				UserId:   "operations-automation@pve",
+//			operationsAutomation, err := proxmoxve.NewUserLegacy(ctx, "operations_automation", &proxmoxve.UserLegacyArgs{
+//				Comment:  pulumi.String("Managed by Pulumi"),
+//				Password: pulumi.String("a-strong-password"),
+//				UserId:   pulumi.String("operations-automation@pve"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			operationsMonitoring, err := proxmox.NewVirtualEnvironmentRole(ctx, "operations_monitoring", &proxmox.VirtualEnvironmentRoleArgs{
-//				RoleId: "operations-monitoring",
-//				Privileges: []string{
-//					"VM.GuestAgent.Audit",
+//			operationsMonitoring, err := proxmoxve.NewRoleLegacy(ctx, "operations_monitoring", &proxmoxve.RoleLegacyArgs{
+//				RoleId: pulumi.String("operations-monitoring"),
+//				Privileges: pulumi.StringArray{
+//					pulumi.String("VM.GuestAgent.Audit"),
 //				},
 //			})
 //			if err != nil {

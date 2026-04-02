@@ -229,21 +229,20 @@ class TokenLegacy(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_proxmox as proxmox
         import pulumi_proxmoxve as proxmoxve
 
         # if creating a user token, the user must be created first
-        user = proxmox.index.VirtualEnvironmentUser("user",
-            comment=Managed by Pulumi,
-            email=user@pve,
+        user = proxmoxve.UserLegacy("user",
+            comment="Managed by Pulumi",
+            email="user@pve",
             enabled=True,
-            expiration_date=2034-01-01T22:00:00Z,
-            user_id=user@pve)
+            expiration_date="2034-01-01T22:00:00Z",
+            user_id="user@pve")
         user_token = proxmoxve.user.TokenLegacy("user_token",
             comment="Managed by Pulumi",
             expiration_date="2033-01-01T22:00:00Z",
             token_name="tk1",
-            user_id=user["userId"])
+            user_id=user.user_id)
         ```
 
         ## Import
@@ -279,21 +278,20 @@ class TokenLegacy(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_proxmox as proxmox
         import pulumi_proxmoxve as proxmoxve
 
         # if creating a user token, the user must be created first
-        user = proxmox.index.VirtualEnvironmentUser("user",
-            comment=Managed by Pulumi,
-            email=user@pve,
+        user = proxmoxve.UserLegacy("user",
+            comment="Managed by Pulumi",
+            email="user@pve",
             enabled=True,
-            expiration_date=2034-01-01T22:00:00Z,
-            user_id=user@pve)
+            expiration_date="2034-01-01T22:00:00Z",
+            user_id="user@pve")
         user_token = proxmoxve.user.TokenLegacy("user_token",
             comment="Managed by Pulumi",
             expiration_date="2033-01-01T22:00:00Z",
             token_name="tk1",
-            user_id=user["userId"])
+            user_id=user.user_id)
         ```
 
         ## Import

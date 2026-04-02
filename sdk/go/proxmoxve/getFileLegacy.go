@@ -23,14 +23,13 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve"
-//	"github.com/pulumi/pulumi-terraform-provider/sdks/go/proxmox/proxmox"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ubuntuIso, err := proxmoxve.GetFileLegacy(ctx, &proxmoxve.GetFileLegacyArgs{
+//			ubuntuIso, err := proxmoxve.LookupFileLegacy(ctx, &proxmoxve.LookupFileLegacyArgs{
 //				NodeName:    "pve",
 //				DatastoreId: "local",
 //				ContentType: "iso",
@@ -39,7 +38,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ubuntuContainerTemplate, err := proxmoxve.GetFileLegacy(ctx, &proxmoxve.GetFileLegacyArgs{
+//			ubuntuContainerTemplate, err := proxmoxve.LookupFileLegacy(ctx, &proxmoxve.LookupFileLegacyArgs{
 //				NodeName:    "pve",
 //				DatastoreId: "local",
 //				ContentType: "vztmpl",
@@ -48,7 +47,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = proxmoxve.GetFileLegacy(ctx, &proxmoxve.GetFileLegacyArgs{
+//			_, err = proxmoxve.LookupFileLegacy(ctx, &proxmoxve.LookupFileLegacyArgs{
 //				NodeName:    "pve",
 //				DatastoreId: "local",
 //				ContentType: "snippets",
@@ -57,7 +56,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = proxmoxve.GetFileLegacy(ctx, &proxmoxve.GetFileLegacyArgs{
+//			_, err = proxmoxve.LookupFileLegacy(ctx, &proxmoxve.LookupFileLegacyArgs{
 //				NodeName:    "pve",
 //				DatastoreId: "local",
 //				ContentType: "import",
@@ -69,34 +68,28 @@ import (
 //			ctx.Export("ubuntuIsoId", ubuntuIso.Id)
 //			ctx.Export("ubuntuIsoSize", ubuntuIso.FileSize)
 //			ctx.Export("containerTemplateFormat", ubuntuContainerTemplate.FileFormat)
-//			_, err = proxmox.NewVirtualEnvironmentVm(ctx, "example", &proxmox.VirtualEnvironmentVmArgs{
+//			_, err = proxmoxve.NewVmLegacy(ctx, "example", &proxmoxve.VmLegacyArgs{
 //				NodeName: pulumi.String("pve"),
-//				VmId:     pulumi.Float64(100),
-//				Cdrom: proxmox.VirtualEnvironmentVmCdromArgs{
-//					map[string]interface{}{
-//						"fileId": ubuntuIso.Id,
+//				VmId:     pulumi.Int(100),
+//				Cdrom: &proxmoxve.VmLegacyCdromArgs{
+//					FileId: pulumi.String(ubuntuIso.Id),
+//				},
+//				Cpu: &proxmoxve.VmLegacyCpuArgs{
+//					Cores: pulumi.Int(2),
+//				},
+//				Memory: &proxmoxve.VmLegacyMemoryArgs{
+//					Dedicated: pulumi.Int(2048),
+//				},
+//				Disks: proxmoxve.VmLegacyDiskArray{
+//					&proxmoxve.VmLegacyDiskArgs{
+//						DatastoreId: pulumi.String("local-lvm"),
+//						FileFormat:  pulumi.String("qcow2"),
+//						Size:        pulumi.Int(20),
 //					},
 //				},
-//				Cpu: proxmox.VirtualEnvironmentVmCpuArgs{
-//					map[string]interface{}{
-//						"cores": 2,
-//					},
-//				},
-//				Memory: proxmox.VirtualEnvironmentVmMemoryArgs{
-//					map[string]interface{}{
-//						"dedicated": 2048,
-//					},
-//				},
-//				Disk: []map[string]interface{}{
-//					map[string]interface{}{
-//						"datastoreId": "local-lvm",
-//						"fileFormat":  "qcow2",
-//						"size":        20,
-//					},
-//				},
-//				NetworkDevice: []map[string]interface{}{
-//					map[string]interface{}{
-//						"bridge": "vmbr0",
+//				NetworkDevices: proxmoxve.VmLegacyNetworkDeviceArray{
+//					&proxmoxve.VmLegacyNetworkDeviceArgs{
+//						Bridge: pulumi.String("vmbr0"),
 //					},
 //				},
 //			})
@@ -108,9 +101,9 @@ import (
 //	}
 //
 // ```
-func GetFileLegacy(ctx *pulumi.Context, args *GetFileLegacyArgs, opts ...pulumi.InvokeOption) (*GetFileLegacyResult, error) {
+func LookupFileLegacy(ctx *pulumi.Context, args *LookupFileLegacyArgs, opts ...pulumi.InvokeOption) (*LookupFileLegacyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetFileLegacyResult
+	var rv LookupFileLegacyResult
 	err := ctx.Invoke("proxmoxve:index/getFileLegacy:getFileLegacy", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -119,7 +112,7 @@ func GetFileLegacy(ctx *pulumi.Context, args *GetFileLegacyArgs, opts ...pulumi.
 }
 
 // A collection of arguments for invoking getFileLegacy.
-type GetFileLegacyArgs struct {
+type LookupFileLegacyArgs struct {
 	// The content type of the file.
 	ContentType string `pulumi:"contentType"`
 	// The identifier of the datastore.
@@ -131,7 +124,7 @@ type GetFileLegacyArgs struct {
 }
 
 // A collection of values returned by getFileLegacy.
-type GetFileLegacyResult struct {
+type LookupFileLegacyResult struct {
 	// The content type of the file.
 	ContentType string `pulumi:"contentType"`
 	// The identifier of the datastore.
@@ -150,17 +143,17 @@ type GetFileLegacyResult struct {
 	Vmid int `pulumi:"vmid"`
 }
 
-func GetFileLegacyOutput(ctx *pulumi.Context, args GetFileLegacyOutputArgs, opts ...pulumi.InvokeOption) GetFileLegacyResultOutput {
+func LookupFileLegacyOutput(ctx *pulumi.Context, args LookupFileLegacyOutputArgs, opts ...pulumi.InvokeOption) LookupFileLegacyResultOutput {
 	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetFileLegacyResultOutput, error) {
-			args := v.(GetFileLegacyArgs)
+		ApplyT(func(v interface{}) (LookupFileLegacyResultOutput, error) {
+			args := v.(LookupFileLegacyArgs)
 			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:index/getFileLegacy:getFileLegacy", args, GetFileLegacyResultOutput{}, options).(GetFileLegacyResultOutput), nil
-		}).(GetFileLegacyResultOutput)
+			return ctx.InvokeOutput("proxmoxve:index/getFileLegacy:getFileLegacy", args, LookupFileLegacyResultOutput{}, options).(LookupFileLegacyResultOutput), nil
+		}).(LookupFileLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getFileLegacy.
-type GetFileLegacyOutputArgs struct {
+type LookupFileLegacyOutputArgs struct {
 	// The content type of the file.
 	ContentType pulumi.StringInput `pulumi:"contentType"`
 	// The identifier of the datastore.
@@ -171,65 +164,65 @@ type GetFileLegacyOutputArgs struct {
 	NodeName pulumi.StringInput `pulumi:"nodeName"`
 }
 
-func (GetFileLegacyOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetFileLegacyArgs)(nil)).Elem()
+func (LookupFileLegacyOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupFileLegacyArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getFileLegacy.
-type GetFileLegacyResultOutput struct{ *pulumi.OutputState }
+type LookupFileLegacyResultOutput struct{ *pulumi.OutputState }
 
-func (GetFileLegacyResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetFileLegacyResult)(nil)).Elem()
+func (LookupFileLegacyResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupFileLegacyResult)(nil)).Elem()
 }
 
-func (o GetFileLegacyResultOutput) ToGetFileLegacyResultOutput() GetFileLegacyResultOutput {
+func (o LookupFileLegacyResultOutput) ToLookupFileLegacyResultOutput() LookupFileLegacyResultOutput {
 	return o
 }
 
-func (o GetFileLegacyResultOutput) ToGetFileLegacyResultOutputWithContext(ctx context.Context) GetFileLegacyResultOutput {
+func (o LookupFileLegacyResultOutput) ToLookupFileLegacyResultOutputWithContext(ctx context.Context) LookupFileLegacyResultOutput {
 	return o
 }
 
 // The content type of the file.
-func (o GetFileLegacyResultOutput) ContentType() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFileLegacyResult) string { return v.ContentType }).(pulumi.StringOutput)
+func (o LookupFileLegacyResultOutput) ContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFileLegacyResult) string { return v.ContentType }).(pulumi.StringOutput)
 }
 
 // The identifier of the datastore.
-func (o GetFileLegacyResultOutput) DatastoreId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFileLegacyResult) string { return v.DatastoreId }).(pulumi.StringOutput)
+func (o LookupFileLegacyResultOutput) DatastoreId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFileLegacyResult) string { return v.DatastoreId }).(pulumi.StringOutput)
 }
 
 // The format of the file.
-func (o GetFileLegacyResultOutput) FileFormat() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFileLegacyResult) string { return v.FileFormat }).(pulumi.StringOutput)
+func (o LookupFileLegacyResultOutput) FileFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFileLegacyResult) string { return v.FileFormat }).(pulumi.StringOutput)
 }
 
 // The name of the file.
-func (o GetFileLegacyResultOutput) FileName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFileLegacyResult) string { return v.FileName }).(pulumi.StringOutput)
+func (o LookupFileLegacyResultOutput) FileName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFileLegacyResult) string { return v.FileName }).(pulumi.StringOutput)
 }
 
 // The size of the file in bytes.
-func (o GetFileLegacyResultOutput) FileSize() pulumi.IntOutput {
-	return o.ApplyT(func(v GetFileLegacyResult) int { return v.FileSize }).(pulumi.IntOutput)
+func (o LookupFileLegacyResultOutput) FileSize() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupFileLegacyResult) int { return v.FileSize }).(pulumi.IntOutput)
 }
 
 // The unique identifier of the file (volume ID).
-func (o GetFileLegacyResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFileLegacyResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupFileLegacyResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFileLegacyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The name of the node.
-func (o GetFileLegacyResultOutput) NodeName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFileLegacyResult) string { return v.NodeName }).(pulumi.StringOutput)
+func (o LookupFileLegacyResultOutput) NodeName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFileLegacyResult) string { return v.NodeName }).(pulumi.StringOutput)
 }
 
 // The VM ID associated with the file (if applicable).
-func (o GetFileLegacyResultOutput) Vmid() pulumi.IntOutput {
-	return o.ApplyT(func(v GetFileLegacyResult) int { return v.Vmid }).(pulumi.IntOutput)
+func (o LookupFileLegacyResultOutput) Vmid() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupFileLegacyResult) int { return v.Vmid }).(pulumi.IntOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetFileLegacyResultOutput{})
+	pulumi.RegisterOutputType(LookupFileLegacyResultOutput{})
 }

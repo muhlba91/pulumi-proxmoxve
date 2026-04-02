@@ -15,11 +15,59 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'FirewallLegacyLogRatelimit',
     'OptionsLegacyNextId',
     'OptionsLegacyNotify',
     'OptionsNextId',
     'OptionsNotify',
 ]
+
+@pulumi.output_type
+class FirewallLegacyLogRatelimit(dict):
+    def __init__(__self__, *,
+                 burst: Optional[_builtins.int] = None,
+                 enabled: Optional[_builtins.bool] = None,
+                 rate: Optional[_builtins.str] = None):
+        """
+        :param _builtins.int burst: Initial burst of packages which will always get
+               logged before the rate is applied (defaults to `5`).
+        :param _builtins.bool enabled: Enable or disable the log rate limit.
+        :param _builtins.str rate: Frequency with which the burst bucket gets refilled
+               (defaults to `1/second`).
+        """
+        if burst is not None:
+            pulumi.set(__self__, "burst", burst)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if rate is not None:
+            pulumi.set(__self__, "rate", rate)
+
+    @_builtins.property
+    @pulumi.getter
+    def burst(self) -> Optional[_builtins.int]:
+        """
+        Initial burst of packages which will always get
+        logged before the rate is applied (defaults to `5`).
+        """
+        return pulumi.get(self, "burst")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Enable or disable the log rate limit.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def rate(self) -> Optional[_builtins.str]:
+        """
+        Frequency with which the burst bucket gets refilled
+        (defaults to `1/second`).
+        """
+        return pulumi.get(self, "rate")
+
 
 @pulumi.output_type
 class OptionsLegacyNextId(dict):

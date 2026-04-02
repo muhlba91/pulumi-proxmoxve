@@ -16,15 +16,14 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmox from "@pulumi/proxmox";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
- * const operationsAutomation = new proxmox.index.VirtualEnvironmentUser("operations_automation", {
+ * const operationsAutomation = new proxmoxve.UserLegacy("operations_automation", {
  *     comment: "Managed by Pulumi",
  *     password: "a-strong-password",
  *     userId: "operations-automation@pve",
  * });
- * const operationsMonitoring = new proxmox.index.VirtualEnvironmentRole("operations_monitoring", {
+ * const operationsMonitoring = new proxmoxve.RoleLegacy("operations_monitoring", {
  *     roleId: "operations-monitoring",
  *     privileges: ["VM.GuestAgent.Audit"],
  * });

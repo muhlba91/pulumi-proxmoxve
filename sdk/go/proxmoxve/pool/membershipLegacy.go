@@ -25,7 +25,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-proxmox/sdk/go/proxmox"
+//	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve"
 //	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/pool"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -33,29 +33,29 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			testVm1, err := proxmox.NewVirtualEnvironmentVm(ctx, "test_vm1", &proxmox.VirtualEnvironmentVmArgs{
-//				VmId:     1234,
-//				NodeName: "pve",
-//				Started:  false,
+//			testVm1, err := proxmoxve.NewVmLegacy(ctx, "test_vm1", &proxmoxve.VmLegacyArgs{
+//				VmId:     pulumi.Int(1234),
+//				NodeName: pulumi.String("pve"),
+//				Started:  pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			testPool, err := proxmox.NewVirtualEnvironmentPool(ctx, "test_pool", &proxmox.VirtualEnvironmentPoolArgs{
-//				PoolId: "test-pool",
+//			testPool, err := proxmoxve.NewPoolLegacy(ctx, "test_pool", &proxmoxve.PoolLegacyArgs{
+//				PoolId: pulumi.String("test-pool"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = pool.NewMembershipLegacy(ctx, "vm_membership", &pool.MembershipLegacyArgs{
-//				PoolId: testPool.Id,
-//				VmId:   testVm1.Id,
+//				PoolId: testPool.ID(),
+//				VmId:   testVm1.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = pool.NewMembershipLegacy(ctx, "storage_membership", &pool.MembershipLegacyArgs{
-//				PoolId:    testPool.Id,
+//				PoolId:    testPool.ID(),
 //				StorageId: pulumi.String("local-lvm"),
 //			})
 //			if err != nil {

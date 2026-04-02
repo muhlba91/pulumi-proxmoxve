@@ -32,10 +32,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.proxmox.VirtualEnvironmentVm;
- * import com.pulumi.proxmox.VirtualEnvironmentVmArgs;
- * import com.pulumi.proxmox.VirtualEnvironmentPool;
- * import com.pulumi.proxmox.VirtualEnvironmentPoolArgs;
+ * import io.muehlbachler.pulumi.proxmoxve.VmLegacy;
+ * import io.muehlbachler.pulumi.proxmoxve.VmLegacyArgs;
+ * import io.muehlbachler.pulumi.proxmoxve.PoolLegacy;
+ * import io.muehlbachler.pulumi.proxmoxve.PoolLegacyArgs;
  * import io.muehlbachler.pulumi.proxmoxve.pool.MembershipLegacy;
  * import io.muehlbachler.pulumi.proxmoxve.pool.MembershipLegacyArgs;
  * import java.util.List;
@@ -51,13 +51,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var testVm1 = new VirtualEnvironmentVm("testVm1", VirtualEnvironmentVmArgs.builder()
+ *         var testVm1 = new VmLegacy("testVm1", VmLegacyArgs.builder()
  *             .vmId(1234)
  *             .nodeName("pve")
  *             .started(false)
  *             .build());
  * 
- *         var testPool = new VirtualEnvironmentPool("testPool", VirtualEnvironmentPoolArgs.builder()
+ *         var testPool = new PoolLegacy("testPool", PoolLegacyArgs.builder()
  *             .poolId("test-pool")
  *             .build());
  * 

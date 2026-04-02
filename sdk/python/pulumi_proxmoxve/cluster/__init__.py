@@ -6,7 +6,16 @@ import builtins as _builtins
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .firewall_legacy import *
 from .options import *
 from .options_legacy import *
 from ._inputs import *
 from . import outputs
+
+# Make subpackages available:
+if typing.TYPE_CHECKING:
+    import pulumi_proxmoxve.cluster.firewall as __firewall
+    firewall = __firewall
+else:
+    firewall = _utilities.lazy_import('pulumi_proxmoxve.cluster.firewall')
+

@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { FirewallLegacyArgs, FirewallLegacyState } from "./firewallLegacy";
+export type FirewallLegacy = import("./firewallLegacy").FirewallLegacy;
+export const FirewallLegacy: typeof import("./firewallLegacy").FirewallLegacy = null as any;
+utilities.lazyLoad(exports, ["FirewallLegacy"], () => require("./firewallLegacy"));
+
 export { OptionsArgs, OptionsState } from "./options";
 export type Options = import("./options").Options;
 export const Options: typeof import("./options").Options = null as any;
@@ -16,10 +21,19 @@ export const OptionsLegacy: typeof import("./optionsLegacy").OptionsLegacy = nul
 utilities.lazyLoad(exports, ["OptionsLegacy"], () => require("./optionsLegacy"));
 
 
+// Export sub-modules:
+import * as firewall from "./firewall";
+
+export {
+    firewall,
+};
+
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "proxmoxve:cluster/firewallLegacy:FirewallLegacy":
+                return new FirewallLegacy(name, <any>undefined, { urn })
             case "proxmoxve:cluster/options:Options":
                 return new Options(name, <any>undefined, { urn })
             case "proxmoxve:cluster/optionsLegacy:OptionsLegacy":
@@ -29,5 +43,6 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("proxmoxve", "cluster/firewallLegacy", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "cluster/options", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "cluster/optionsLegacy", _module)

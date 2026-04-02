@@ -16,7 +16,7 @@ namespace Pulumi.ProxmoxVE.Cloned
     /// 
     /// ## Limitations
     /// 
-    /// This resource intentionally manages only a subset of VM configuration. The following are currently not managed and must be inherited from the source template (or managed via `ProxmoxVirtualEnvironmentVm` with a `Clone` block):
+    /// This resource intentionally manages only a subset of VM configuration. The following are currently not managed and must be inherited from the source template (or managed via `proxmoxve.VmLegacy` with a `Clone` block):
     /// 
     /// - BIOS / machine / boot order
     /// - EFI disk / secure boot settings

@@ -166,19 +166,18 @@ class MembershipLegacy(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_proxmox as proxmox
         import pulumi_proxmoxve as proxmoxve
 
-        test_vm1 = proxmox.index.VirtualEnvironmentVm("test_vm1",
+        test_vm1 = proxmoxve.VmLegacy("test_vm1",
             vm_id=1234,
-            node_name=pve,
+            node_name="pve",
             started=False)
-        test_pool = proxmox.index.VirtualEnvironmentPool("test_pool", pool_id=test-pool)
+        test_pool = proxmoxve.PoolLegacy("test_pool", pool_id="test-pool")
         vm_membership = proxmoxve.pool.MembershipLegacy("vm_membership",
-            pool_id=test_pool["id"],
-            vm_id=test_vm1["id"])
+            pool_id=test_pool.id,
+            vm_id=test_vm1.id)
         storage_membership = proxmoxve.pool.MembershipLegacy("storage_membership",
-            pool_id=test_pool["id"],
+            pool_id=test_pool.id,
             storage_id="local-lvm")
         ```
 
@@ -215,19 +214,18 @@ class MembershipLegacy(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_proxmox as proxmox
         import pulumi_proxmoxve as proxmoxve
 
-        test_vm1 = proxmox.index.VirtualEnvironmentVm("test_vm1",
+        test_vm1 = proxmoxve.VmLegacy("test_vm1",
             vm_id=1234,
-            node_name=pve,
+            node_name="pve",
             started=False)
-        test_pool = proxmox.index.VirtualEnvironmentPool("test_pool", pool_id=test-pool)
+        test_pool = proxmoxve.PoolLegacy("test_pool", pool_id="test-pool")
         vm_membership = proxmoxve.pool.MembershipLegacy("vm_membership",
-            pool_id=test_pool["id"],
-            vm_id=test_vm1["id"])
+            pool_id=test_pool.id,
+            vm_id=test_vm1.id)
         storage_membership = proxmoxve.pool.MembershipLegacy("storage_membership",
-            pool_id=test_pool["id"],
+            pool_id=test_pool.id,
             storage_id="local-lvm")
         ```
 

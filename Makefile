@@ -130,7 +130,7 @@ install_python_sdk::
 install_go_sdk::
 
 install_nodejs_sdk::
-	yarn link --cwd $(WORKING_DIR)/sdk/nodejs/bin
+	yarn --cwd $(WORKING_DIR)/sdk/nodejs/bin link
 
 install_java_sdk::
 

@@ -35,7 +35,7 @@ import javax.annotation.Nullable;
  * 
  * ## Limitations
  * 
- * This resource intentionally manages only a subset of VM configuration. The following are currently not managed and must be inherited from the source template (or managed via &lt;span pulumi-lang-nodejs=&#34;`proxmoxVirtualEnvironmentVm`&#34; pulumi-lang-dotnet=&#34;`ProxmoxVirtualEnvironmentVm`&#34; pulumi-lang-go=&#34;`proxmoxVirtualEnvironmentVm`&#34; pulumi-lang-python=&#34;`proxmox_virtual_environment_vm`&#34; pulumi-lang-yaml=&#34;`proxmoxVirtualEnvironmentVm`&#34; pulumi-lang-java=&#34;`proxmoxVirtualEnvironmentVm`&#34;&gt;`proxmoxVirtualEnvironmentVm`&lt;/span&gt; with a &lt;span pulumi-lang-nodejs=&#34;`clone`&#34; pulumi-lang-dotnet=&#34;`Clone`&#34; pulumi-lang-go=&#34;`clone`&#34; pulumi-lang-python=&#34;`clone`&#34; pulumi-lang-yaml=&#34;`clone`&#34; pulumi-lang-java=&#34;`clone`&#34;&gt;`clone`&lt;/span&gt; block):
+ * This resource intentionally manages only a subset of VM configuration. The following are currently not managed and must be inherited from the source template (or managed via &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.VmLegacy`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.VmLegacy`&#34; pulumi-lang-go=&#34;`VmLegacy`&#34; pulumi-lang-python=&#34;`VmLegacy`&#34; pulumi-lang-yaml=&#34;`proxmoxve.VmLegacy`&#34; pulumi-lang-java=&#34;`proxmoxve.VmLegacy`&#34;&gt;`proxmoxve.VmLegacy`&lt;/span&gt; with a &lt;span pulumi-lang-nodejs=&#34;`clone`&#34; pulumi-lang-dotnet=&#34;`Clone`&#34; pulumi-lang-go=&#34;`clone`&#34; pulumi-lang-python=&#34;`clone`&#34; pulumi-lang-yaml=&#34;`clone`&#34; pulumi-lang-java=&#34;`clone`&#34;&gt;`clone`&lt;/span&gt; block):
  * 
  * - BIOS / machine / boot order
  * - EFI disk / secure boot settings

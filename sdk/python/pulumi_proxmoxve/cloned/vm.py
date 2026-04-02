@@ -667,7 +667,7 @@ class Vm(pulumi.CustomResource):
 
         ## Limitations
 
-        This resource intentionally manages only a subset of VM configuration. The following are currently not managed and must be inherited from the source template (or managed via `proxmox_virtual_environment_vm` with a `clone` block):
+        This resource intentionally manages only a subset of VM configuration. The following are currently not managed and must be inherited from the source template (or managed via `VmLegacy` with a `clone` block):
 
         - BIOS / machine / boot order
         - EFI disk / secure boot settings
@@ -711,7 +711,7 @@ class Vm(pulumi.CustomResource):
 
         ## Limitations
 
-        This resource intentionally manages only a subset of VM configuration. The following are currently not managed and must be inherited from the source template (or managed via `proxmox_virtual_environment_vm` with a `clone` block):
+        This resource intentionally manages only a subset of VM configuration. The following are currently not managed and must be inherited from the source template (or managed via `VmLegacy` with a `clone` block):
 
         - BIOS / machine / boot order
         - EFI disk / secure boot settings

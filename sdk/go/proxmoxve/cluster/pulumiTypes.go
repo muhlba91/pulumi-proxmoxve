@@ -13,6 +13,189 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type FirewallLegacyLogRatelimit struct {
+	// Initial burst of packages which will always get
+	// logged before the rate is applied (defaults to `5`).
+	Burst *int `pulumi:"burst"`
+	// Enable or disable the log rate limit.
+	Enabled *bool `pulumi:"enabled"`
+	// Frequency with which the burst bucket gets refilled
+	// (defaults to `1/second`).
+	Rate *string `pulumi:"rate"`
+}
+
+// FirewallLegacyLogRatelimitInput is an input type that accepts FirewallLegacyLogRatelimitArgs and FirewallLegacyLogRatelimitOutput values.
+// You can construct a concrete instance of `FirewallLegacyLogRatelimitInput` via:
+//
+//	FirewallLegacyLogRatelimitArgs{...}
+type FirewallLegacyLogRatelimitInput interface {
+	pulumi.Input
+
+	ToFirewallLegacyLogRatelimitOutput() FirewallLegacyLogRatelimitOutput
+	ToFirewallLegacyLogRatelimitOutputWithContext(context.Context) FirewallLegacyLogRatelimitOutput
+}
+
+type FirewallLegacyLogRatelimitArgs struct {
+	// Initial burst of packages which will always get
+	// logged before the rate is applied (defaults to `5`).
+	Burst pulumi.IntPtrInput `pulumi:"burst"`
+	// Enable or disable the log rate limit.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Frequency with which the burst bucket gets refilled
+	// (defaults to `1/second`).
+	Rate pulumi.StringPtrInput `pulumi:"rate"`
+}
+
+func (FirewallLegacyLogRatelimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallLegacyLogRatelimit)(nil)).Elem()
+}
+
+func (i FirewallLegacyLogRatelimitArgs) ToFirewallLegacyLogRatelimitOutput() FirewallLegacyLogRatelimitOutput {
+	return i.ToFirewallLegacyLogRatelimitOutputWithContext(context.Background())
+}
+
+func (i FirewallLegacyLogRatelimitArgs) ToFirewallLegacyLogRatelimitOutputWithContext(ctx context.Context) FirewallLegacyLogRatelimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallLegacyLogRatelimitOutput)
+}
+
+func (i FirewallLegacyLogRatelimitArgs) ToFirewallLegacyLogRatelimitPtrOutput() FirewallLegacyLogRatelimitPtrOutput {
+	return i.ToFirewallLegacyLogRatelimitPtrOutputWithContext(context.Background())
+}
+
+func (i FirewallLegacyLogRatelimitArgs) ToFirewallLegacyLogRatelimitPtrOutputWithContext(ctx context.Context) FirewallLegacyLogRatelimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallLegacyLogRatelimitOutput).ToFirewallLegacyLogRatelimitPtrOutputWithContext(ctx)
+}
+
+// FirewallLegacyLogRatelimitPtrInput is an input type that accepts FirewallLegacyLogRatelimitArgs, FirewallLegacyLogRatelimitPtr and FirewallLegacyLogRatelimitPtrOutput values.
+// You can construct a concrete instance of `FirewallLegacyLogRatelimitPtrInput` via:
+//
+//	        FirewallLegacyLogRatelimitArgs{...}
+//
+//	or:
+//
+//	        nil
+type FirewallLegacyLogRatelimitPtrInput interface {
+	pulumi.Input
+
+	ToFirewallLegacyLogRatelimitPtrOutput() FirewallLegacyLogRatelimitPtrOutput
+	ToFirewallLegacyLogRatelimitPtrOutputWithContext(context.Context) FirewallLegacyLogRatelimitPtrOutput
+}
+
+type firewallLegacyLogRatelimitPtrType FirewallLegacyLogRatelimitArgs
+
+func FirewallLegacyLogRatelimitPtr(v *FirewallLegacyLogRatelimitArgs) FirewallLegacyLogRatelimitPtrInput {
+	return (*firewallLegacyLogRatelimitPtrType)(v)
+}
+
+func (*firewallLegacyLogRatelimitPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallLegacyLogRatelimit)(nil)).Elem()
+}
+
+func (i *firewallLegacyLogRatelimitPtrType) ToFirewallLegacyLogRatelimitPtrOutput() FirewallLegacyLogRatelimitPtrOutput {
+	return i.ToFirewallLegacyLogRatelimitPtrOutputWithContext(context.Background())
+}
+
+func (i *firewallLegacyLogRatelimitPtrType) ToFirewallLegacyLogRatelimitPtrOutputWithContext(ctx context.Context) FirewallLegacyLogRatelimitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FirewallLegacyLogRatelimitPtrOutput)
+}
+
+type FirewallLegacyLogRatelimitOutput struct{ *pulumi.OutputState }
+
+func (FirewallLegacyLogRatelimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FirewallLegacyLogRatelimit)(nil)).Elem()
+}
+
+func (o FirewallLegacyLogRatelimitOutput) ToFirewallLegacyLogRatelimitOutput() FirewallLegacyLogRatelimitOutput {
+	return o
+}
+
+func (o FirewallLegacyLogRatelimitOutput) ToFirewallLegacyLogRatelimitOutputWithContext(ctx context.Context) FirewallLegacyLogRatelimitOutput {
+	return o
+}
+
+func (o FirewallLegacyLogRatelimitOutput) ToFirewallLegacyLogRatelimitPtrOutput() FirewallLegacyLogRatelimitPtrOutput {
+	return o.ToFirewallLegacyLogRatelimitPtrOutputWithContext(context.Background())
+}
+
+func (o FirewallLegacyLogRatelimitOutput) ToFirewallLegacyLogRatelimitPtrOutputWithContext(ctx context.Context) FirewallLegacyLogRatelimitPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FirewallLegacyLogRatelimit) *FirewallLegacyLogRatelimit {
+		return &v
+	}).(FirewallLegacyLogRatelimitPtrOutput)
+}
+
+// Initial burst of packages which will always get
+// logged before the rate is applied (defaults to `5`).
+func (o FirewallLegacyLogRatelimitOutput) Burst() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FirewallLegacyLogRatelimit) *int { return v.Burst }).(pulumi.IntPtrOutput)
+}
+
+// Enable or disable the log rate limit.
+func (o FirewallLegacyLogRatelimitOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FirewallLegacyLogRatelimit) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Frequency with which the burst bucket gets refilled
+// (defaults to `1/second`).
+func (o FirewallLegacyLogRatelimitOutput) Rate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FirewallLegacyLogRatelimit) *string { return v.Rate }).(pulumi.StringPtrOutput)
+}
+
+type FirewallLegacyLogRatelimitPtrOutput struct{ *pulumi.OutputState }
+
+func (FirewallLegacyLogRatelimitPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FirewallLegacyLogRatelimit)(nil)).Elem()
+}
+
+func (o FirewallLegacyLogRatelimitPtrOutput) ToFirewallLegacyLogRatelimitPtrOutput() FirewallLegacyLogRatelimitPtrOutput {
+	return o
+}
+
+func (o FirewallLegacyLogRatelimitPtrOutput) ToFirewallLegacyLogRatelimitPtrOutputWithContext(ctx context.Context) FirewallLegacyLogRatelimitPtrOutput {
+	return o
+}
+
+func (o FirewallLegacyLogRatelimitPtrOutput) Elem() FirewallLegacyLogRatelimitOutput {
+	return o.ApplyT(func(v *FirewallLegacyLogRatelimit) FirewallLegacyLogRatelimit {
+		if v != nil {
+			return *v
+		}
+		var ret FirewallLegacyLogRatelimit
+		return ret
+	}).(FirewallLegacyLogRatelimitOutput)
+}
+
+// Initial burst of packages which will always get
+// logged before the rate is applied (defaults to `5`).
+func (o FirewallLegacyLogRatelimitPtrOutput) Burst() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FirewallLegacyLogRatelimit) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Burst
+	}).(pulumi.IntPtrOutput)
+}
+
+// Enable or disable the log rate limit.
+func (o FirewallLegacyLogRatelimitPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FirewallLegacyLogRatelimit) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Frequency with which the burst bucket gets refilled
+// (defaults to `1/second`).
+func (o FirewallLegacyLogRatelimitPtrOutput) Rate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FirewallLegacyLogRatelimit) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Rate
+	}).(pulumi.StringPtrOutput)
+}
+
 type OptionsLegacyNextId struct {
 	// The minimum number for the next free VM ID. Must be higher or equal to 100
 	Lower *int `pulumi:"lower"`
@@ -790,6 +973,8 @@ func (o OptionsNotifyPtrOutput) ReplicationTarget() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallLegacyLogRatelimitInput)(nil)).Elem(), FirewallLegacyLogRatelimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FirewallLegacyLogRatelimitPtrInput)(nil)).Elem(), FirewallLegacyLogRatelimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OptionsLegacyNextIdInput)(nil)).Elem(), OptionsLegacyNextIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OptionsLegacyNextIdPtrInput)(nil)).Elem(), OptionsLegacyNextIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OptionsLegacyNotifyInput)(nil)).Elem(), OptionsLegacyNotifyArgs{})
@@ -798,6 +983,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OptionsNextIdPtrInput)(nil)).Elem(), OptionsNextIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OptionsNotifyInput)(nil)).Elem(), OptionsNotifyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OptionsNotifyPtrInput)(nil)).Elem(), OptionsNotifyArgs{})
+	pulumi.RegisterOutputType(FirewallLegacyLogRatelimitOutput{})
+	pulumi.RegisterOutputType(FirewallLegacyLogRatelimitPtrOutput{})
 	pulumi.RegisterOutputType(OptionsLegacyNextIdOutput{})
 	pulumi.RegisterOutputType(OptionsLegacyNextIdPtrOutput{})
 	pulumi.RegisterOutputType(OptionsLegacyNotifyOutput{})

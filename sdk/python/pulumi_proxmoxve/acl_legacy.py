@@ -249,19 +249,18 @@ class AclLegacy(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_proxmox as proxmox
         import pulumi_proxmoxve as proxmoxve
 
-        operations_automation = proxmox.index.VirtualEnvironmentUser("operations_automation",
-            comment=Managed by Pulumi,
-            password=a-strong-password,
-            user_id=operations-automation@pve)
-        operations_monitoring = proxmox.index.VirtualEnvironmentRole("operations_monitoring",
-            role_id=operations-monitoring,
-            privileges=[VM.GuestAgent.Audit])
+        operations_automation = proxmoxve.UserLegacy("operations_automation",
+            comment="Managed by Pulumi",
+            password="a-strong-password",
+            user_id="operations-automation@pve")
+        operations_monitoring = proxmoxve.RoleLegacy("operations_monitoring",
+            role_id="operations-monitoring",
+            privileges=["VM.GuestAgent.Audit"])
         operations_automation_monitoring = proxmoxve.AclLegacy("operations_automation_monitoring",
-            user_id=operations_automation["userId"],
-            role_id=operations_monitoring["roleId"],
+            user_id=operations_automation.user_id,
+            role_id=operations_monitoring.role_id,
             path="/vms/1234",
             propagate=True)
         ```
@@ -303,19 +302,18 @@ class AclLegacy(pulumi.CustomResource):
 
         ```python
         import pulumi
-        import pulumi_proxmox as proxmox
         import pulumi_proxmoxve as proxmoxve
 
-        operations_automation = proxmox.index.VirtualEnvironmentUser("operations_automation",
-            comment=Managed by Pulumi,
-            password=a-strong-password,
-            user_id=operations-automation@pve)
-        operations_monitoring = proxmox.index.VirtualEnvironmentRole("operations_monitoring",
-            role_id=operations-monitoring,
-            privileges=[VM.GuestAgent.Audit])
+        operations_automation = proxmoxve.UserLegacy("operations_automation",
+            comment="Managed by Pulumi",
+            password="a-strong-password",
+            user_id="operations-automation@pve")
+        operations_monitoring = proxmoxve.RoleLegacy("operations_monitoring",
+            role_id="operations-monitoring",
+            privileges=["VM.GuestAgent.Audit"])
         operations_automation_monitoring = proxmoxve.AclLegacy("operations_automation_monitoring",
-            user_id=operations_automation["userId"],
-            role_id=operations_monitoring["roleId"],
+            user_id=operations_automation.user_id,
+            role_id=operations_monitoring.role_id,
             path="/vms/1234",
             propagate=True)
         ```

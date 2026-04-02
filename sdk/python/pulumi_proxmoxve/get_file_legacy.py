@@ -147,7 +147,6 @@ def get_file_legacy(content_type: Optional[_builtins.str] = None,
 
     ```python
     import pulumi
-    import pulumi_proxmox as proxmox
     import pulumi_proxmoxve as proxmoxve
 
     ubuntu_iso = proxmoxve.get_file_legacy(node_name="pve",
@@ -169,24 +168,24 @@ def get_file_legacy(content_type: Optional[_builtins.str] = None,
     pulumi.export("ubuntuIsoId", ubuntu_iso.id)
     pulumi.export("ubuntuIsoSize", ubuntu_iso.file_size)
     pulumi.export("containerTemplateFormat", ubuntu_container_template.file_format)
-    example = proxmox.VirtualEnvironmentVm("example",
+    example = proxmoxve.VmLegacy("example",
         node_name="pve",
         vm_id=100,
-        cdrom=[{
-            "fileId": ubuntu_iso.id,
-        }],
-        cpu=[{
+        cdrom={
+            "file_id": ubuntu_iso.id,
+        },
+        cpu={
             "cores": 2,
-        }],
-        memory=[{
+        },
+        memory={
             "dedicated": 2048,
-        }],
-        disk=[{
-            "datastoreId": "local-lvm",
-            "fileFormat": "qcow2",
+        },
+        disks=[{
+            "datastore_id": "local-lvm",
+            "file_format": "qcow2",
             "size": 20,
         }],
-        network_device=[{
+        network_devices=[{
             "bridge": "vmbr0",
         }])
     ```
@@ -228,7 +227,6 @@ def get_file_legacy_output(content_type: Optional[pulumi.Input[_builtins.str]] =
 
     ```python
     import pulumi
-    import pulumi_proxmox as proxmox
     import pulumi_proxmoxve as proxmoxve
 
     ubuntu_iso = proxmoxve.get_file_legacy(node_name="pve",
@@ -250,24 +248,24 @@ def get_file_legacy_output(content_type: Optional[pulumi.Input[_builtins.str]] =
     pulumi.export("ubuntuIsoId", ubuntu_iso.id)
     pulumi.export("ubuntuIsoSize", ubuntu_iso.file_size)
     pulumi.export("containerTemplateFormat", ubuntu_container_template.file_format)
-    example = proxmox.VirtualEnvironmentVm("example",
+    example = proxmoxve.VmLegacy("example",
         node_name="pve",
         vm_id=100,
-        cdrom=[{
-            "fileId": ubuntu_iso.id,
-        }],
-        cpu=[{
+        cdrom={
+            "file_id": ubuntu_iso.id,
+        },
+        cpu={
             "cores": 2,
-        }],
-        memory=[{
+        },
+        memory={
             "dedicated": 2048,
-        }],
-        disk=[{
-            "datastoreId": "local-lvm",
-            "fileFormat": "qcow2",
+        },
+        disks=[{
+            "datastore_id": "local-lvm",
+            "file_format": "qcow2",
             "size": 20,
         }],
-        network_device=[{
+        network_devices=[{
             "bridge": "vmbr0",
         }])
     ```

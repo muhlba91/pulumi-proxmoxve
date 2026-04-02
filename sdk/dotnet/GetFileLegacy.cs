@@ -22,7 +22,6 @@ namespace Pulumi.ProxmoxVE
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Proxmox = Pulumi.Proxmox;
         /// using ProxmoxVE = Pulumi.ProxmoxVE;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
@@ -59,45 +58,36 @@ namespace Pulumi.ProxmoxVE
         ///         FileName = "imported-config.yaml",
         ///     });
         /// 
-        ///     var example = new Proxmox.VirtualEnvironmentVm("example", new()
+        ///     var example = new ProxmoxVE.VmLegacy("example", new()
         ///     {
         ///         NodeName = "pve",
         ///         VmId = 100,
-        ///         Cdrom = new[]
+        ///         Cdrom = new ProxmoxVE.Inputs.VmLegacyCdromArgs
         ///         {
-        ///             
+        ///             FileId = ubuntuIso.Apply(getFileLegacyResult =&gt; getFileLegacyResult.Id),
+        ///         },
+        ///         Cpu = new ProxmoxVE.Inputs.VmLegacyCpuArgs
+        ///         {
+        ///             Cores = 2,
+        ///         },
+        ///         Memory = new ProxmoxVE.Inputs.VmLegacyMemoryArgs
+        ///         {
+        ///             Dedicated = 2048,
+        ///         },
+        ///         Disks = new[]
+        ///         {
+        ///             new ProxmoxVE.Inputs.VmLegacyDiskArgs
         ///             {
-        ///                 { "fileId", ubuntuIso.Apply(getFileLegacyResult =&gt; getFileLegacyResult.Id) },
+        ///                 DatastoreId = "local-lvm",
+        ///                 FileFormat = "qcow2",
+        ///                 Size = 20,
         ///             },
         ///         },
-        ///         Cpu = new[]
+        ///         NetworkDevices = new[]
         ///         {
-        ///             
+        ///             new ProxmoxVE.Inputs.VmLegacyNetworkDeviceArgs
         ///             {
-        ///                 { "cores", 2 },
-        ///             },
-        ///         },
-        ///         Memory = new[]
-        ///         {
-        ///             
-        ///             {
-        ///                 { "dedicated", 2048 },
-        ///             },
-        ///         },
-        ///         Disk = new[]
-        ///         {
-        ///             
-        ///             {
-        ///                 { "datastoreId", "local-lvm" },
-        ///                 { "fileFormat", "qcow2" },
-        ///                 { "size", 20 },
-        ///             },
-        ///         },
-        ///         NetworkDevice = new[]
-        ///         {
-        ///             
-        ///             {
-        ///                 { "bridge", "vmbr0" },
+        ///                 Bridge = "vmbr0",
         ///             },
         ///         },
         ///     });
@@ -125,7 +115,6 @@ namespace Pulumi.ProxmoxVE
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Proxmox = Pulumi.Proxmox;
         /// using ProxmoxVE = Pulumi.ProxmoxVE;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
@@ -162,45 +151,36 @@ namespace Pulumi.ProxmoxVE
         ///         FileName = "imported-config.yaml",
         ///     });
         /// 
-        ///     var example = new Proxmox.VirtualEnvironmentVm("example", new()
+        ///     var example = new ProxmoxVE.VmLegacy("example", new()
         ///     {
         ///         NodeName = "pve",
         ///         VmId = 100,
-        ///         Cdrom = new[]
+        ///         Cdrom = new ProxmoxVE.Inputs.VmLegacyCdromArgs
         ///         {
-        ///             
+        ///             FileId = ubuntuIso.Apply(getFileLegacyResult =&gt; getFileLegacyResult.Id),
+        ///         },
+        ///         Cpu = new ProxmoxVE.Inputs.VmLegacyCpuArgs
+        ///         {
+        ///             Cores = 2,
+        ///         },
+        ///         Memory = new ProxmoxVE.Inputs.VmLegacyMemoryArgs
+        ///         {
+        ///             Dedicated = 2048,
+        ///         },
+        ///         Disks = new[]
+        ///         {
+        ///             new ProxmoxVE.Inputs.VmLegacyDiskArgs
         ///             {
-        ///                 { "fileId", ubuntuIso.Apply(getFileLegacyResult =&gt; getFileLegacyResult.Id) },
+        ///                 DatastoreId = "local-lvm",
+        ///                 FileFormat = "qcow2",
+        ///                 Size = 20,
         ///             },
         ///         },
-        ///         Cpu = new[]
+        ///         NetworkDevices = new[]
         ///         {
-        ///             
+        ///             new ProxmoxVE.Inputs.VmLegacyNetworkDeviceArgs
         ///             {
-        ///                 { "cores", 2 },
-        ///             },
-        ///         },
-        ///         Memory = new[]
-        ///         {
-        ///             
-        ///             {
-        ///                 { "dedicated", 2048 },
-        ///             },
-        ///         },
-        ///         Disk = new[]
-        ///         {
-        ///             
-        ///             {
-        ///                 { "datastoreId", "local-lvm" },
-        ///                 { "fileFormat", "qcow2" },
-        ///                 { "size", 20 },
-        ///             },
-        ///         },
-        ///         NetworkDevice = new[]
-        ///         {
-        ///             
-        ///             {
-        ///                 { "bridge", "vmbr0" },
+        ///                 Bridge = "vmbr0",
         ///             },
         ///         },
         ///     });
@@ -228,7 +208,6 @@ namespace Pulumi.ProxmoxVE
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
-        /// using Proxmox = Pulumi.Proxmox;
         /// using ProxmoxVE = Pulumi.ProxmoxVE;
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
@@ -265,45 +244,36 @@ namespace Pulumi.ProxmoxVE
         ///         FileName = "imported-config.yaml",
         ///     });
         /// 
-        ///     var example = new Proxmox.VirtualEnvironmentVm("example", new()
+        ///     var example = new ProxmoxVE.VmLegacy("example", new()
         ///     {
         ///         NodeName = "pve",
         ///         VmId = 100,
-        ///         Cdrom = new[]
+        ///         Cdrom = new ProxmoxVE.Inputs.VmLegacyCdromArgs
         ///         {
-        ///             
+        ///             FileId = ubuntuIso.Apply(getFileLegacyResult =&gt; getFileLegacyResult.Id),
+        ///         },
+        ///         Cpu = new ProxmoxVE.Inputs.VmLegacyCpuArgs
+        ///         {
+        ///             Cores = 2,
+        ///         },
+        ///         Memory = new ProxmoxVE.Inputs.VmLegacyMemoryArgs
+        ///         {
+        ///             Dedicated = 2048,
+        ///         },
+        ///         Disks = new[]
+        ///         {
+        ///             new ProxmoxVE.Inputs.VmLegacyDiskArgs
         ///             {
-        ///                 { "fileId", ubuntuIso.Apply(getFileLegacyResult =&gt; getFileLegacyResult.Id) },
+        ///                 DatastoreId = "local-lvm",
+        ///                 FileFormat = "qcow2",
+        ///                 Size = 20,
         ///             },
         ///         },
-        ///         Cpu = new[]
+        ///         NetworkDevices = new[]
         ///         {
-        ///             
+        ///             new ProxmoxVE.Inputs.VmLegacyNetworkDeviceArgs
         ///             {
-        ///                 { "cores", 2 },
-        ///             },
-        ///         },
-        ///         Memory = new[]
-        ///         {
-        ///             
-        ///             {
-        ///                 { "dedicated", 2048 },
-        ///             },
-        ///         },
-        ///         Disk = new[]
-        ///         {
-        ///             
-        ///             {
-        ///                 { "datastoreId", "local-lvm" },
-        ///                 { "fileFormat", "qcow2" },
-        ///                 { "size", 20 },
-        ///             },
-        ///         },
-        ///         NetworkDevice = new[]
-        ///         {
-        ///             
-        ///             {
-        ///                 { "bridge", "vmbr0" },
+        ///                 Bridge = "vmbr0",
         ///             },
         ///         },
         ///     });

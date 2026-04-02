@@ -15,15 +15,14 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmox from "@pulumi/proxmox";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
- * const testVm1 = new proxmox.index.VirtualEnvironmentVm("test_vm1", {
+ * const testVm1 = new proxmoxve.VmLegacy("test_vm1", {
  *     vmId: 1234,
  *     nodeName: "pve",
  *     started: false,
  * });
- * const testPool = new proxmox.index.VirtualEnvironmentPool("test_pool", {poolId: "test-pool"});
+ * const testPool = new proxmoxve.PoolLegacy("test_pool", {poolId: "test-pool"});
  * const vmMembership = new proxmoxve.pool.MembershipLegacy("vm_membership", {
  *     poolId: testPool.id,
  *     vmId: testVm1.id,

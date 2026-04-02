@@ -28,5 +28,6 @@ import (
 var pulumiSchema []byte
 
 func main() {
-	tfbridge.Main(context.Background(), "proxmoxve", proxmoxve.Provider(), tfbridge.ProviderMetadata{PackageSchema: pulumiSchema})
+	tfbridge.MainWithMuxer(context.Background(), "proxmoxve", proxmoxve.Provider(), pulumiSchema)
+	// tfbridge.Main(context.Background(), "proxmoxve", proxmoxve.Provider(), tfbridge.ProviderMetadata{PackageSchema: pulumiSchema})
 }

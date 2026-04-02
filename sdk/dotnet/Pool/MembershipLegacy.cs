@@ -22,19 +22,18 @@ namespace Pulumi.ProxmoxVE.Pool
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Proxmox = Pulumi.Proxmox;
     /// using ProxmoxVE = Pulumi.ProxmoxVE;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testVm1 = new Proxmox.Index.VirtualEnvironmentVm("test_vm1", new()
+    ///     var testVm1 = new ProxmoxVE.VmLegacy("test_vm1", new()
     ///     {
     ///         VmId = 1234,
     ///         NodeName = "pve",
     ///         Started = false,
     ///     });
     /// 
-    ///     var testPool = new Proxmox.Index.VirtualEnvironmentPool("test_pool", new()
+    ///     var testPool = new ProxmoxVE.PoolLegacy("test_pool", new()
     ///     {
     ///         PoolId = "test-pool",
     ///     });

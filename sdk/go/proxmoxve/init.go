@@ -25,6 +25,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Acl{}
 	case "proxmoxve:index/aclLegacy:AclLegacy":
 		r = &AclLegacy{}
+	case "proxmoxve:index/certificateLegacy:CertificateLegacy":
+		r = &CertificateLegacy{}
+	case "proxmoxve:index/containerLegacy:ContainerLegacy":
+		r = &ContainerLegacy{}
+	case "proxmoxve:index/dnsLegacy:DnsLegacy":
+		r = &DnsLegacy{}
+	case "proxmoxve:index/fileLegacy:FileLegacy":
+		r = &FileLegacy{}
+	case "proxmoxve:index/groupLegacy:GroupLegacy":
+		r = &GroupLegacy{}
 	case "proxmoxve:index/hagroup:Hagroup":
 		r = &Hagroup{}
 	case "proxmoxve:index/hagroupLegacy:HagroupLegacy":
@@ -37,14 +47,26 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Harule{}
 	case "proxmoxve:index/haruleLegacy:HaruleLegacy":
 		r = &HaruleLegacy{}
+	case "proxmoxve:index/hostsLegacy:HostsLegacy":
+		r = &HostsLegacy{}
+	case "proxmoxve:index/poolLegacy:PoolLegacy":
+		r = &PoolLegacy{}
 	case "proxmoxve:index/replication:Replication":
 		r = &Replication{}
 	case "proxmoxve:index/replicationLegacy:ReplicationLegacy":
 		r = &ReplicationLegacy{}
+	case "proxmoxve:index/roleLegacy:RoleLegacy":
+		r = &RoleLegacy{}
+	case "proxmoxve:index/timeLegacy:TimeLegacy":
+		r = &TimeLegacy{}
+	case "proxmoxve:index/userLegacy:UserLegacy":
+		r = &UserLegacy{}
 	case "proxmoxve:index/vm2Legacy:Vm2Legacy":
 		r = &Vm2Legacy{}
 	case "proxmoxve:index/vm:Vm":
 		r = &Vm{}
+	case "proxmoxve:index/vmLegacy:VmLegacy":
+		r = &VmLegacy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -88,6 +110,31 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
+		"index/certificateLegacy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"index/containerLegacy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"index/dnsLegacy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"index/fileLegacy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"index/groupLegacy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
 		"index/hagroup",
 		&module{version},
 	)
@@ -118,6 +165,16 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
+		"index/hostsLegacy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"index/poolLegacy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
 		"index/replication",
 		&module{version},
 	)
@@ -128,12 +185,32 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
+		"index/roleLegacy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"index/timeLegacy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"index/userLegacy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
 		"index/vm",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
 		"index/vm2Legacy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"index/vmLegacy",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

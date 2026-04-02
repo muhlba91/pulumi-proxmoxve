@@ -10,16 +10,24 @@ import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.resources.InvokeArgs;
 import io.muehlbachler.pulumi.proxmoxve.Utilities;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetContainerLegacyArgs;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetContainerLegacyPlainArgs;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetContainersLegacyArgs;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetContainersLegacyPlainArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetDatastoresArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetDatastoresLegacyArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetDatastoresLegacyPlainArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetDatastoresPlainArgs;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetDnsLegacyArgs;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetDnsLegacyPlainArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetFileArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetFileLegacyArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetFileLegacyPlainArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetFilePlainArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetFilesArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetFilesPlainArgs;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetGroupLegacyArgs;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetGroupLegacyPlainArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetHagroupArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetHagroupLegacyArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetHagroupLegacyPlainArgs;
@@ -32,19 +40,40 @@ import io.muehlbachler.pulumi.proxmoxve.inputs.GetHaresourcesArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetHaresourcesLegacyArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetHaresourcesLegacyPlainArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetHaresourcesPlainArgs;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetHostsLegacyArgs;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetHostsLegacyPlainArgs;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetNodeLegacyArgs;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetNodeLegacyPlainArgs;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetPoolLegacyArgs;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetPoolLegacyPlainArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetReplicationArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetReplicationLegacyArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetReplicationLegacyPlainArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetReplicationPlainArgs;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetRoleLegacyArgs;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetRoleLegacyPlainArgs;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetTimeLegacyArgs;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetTimeLegacyPlainArgs;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetUserLegacyArgs;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetUserLegacyPlainArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2LegacyArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2LegacyPlainArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetVmArgs;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetVmLegacyArgs;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetVmLegacyPlainArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetVmPlainArgs;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetVmsLegacyArgs;
+import io.muehlbachler.pulumi.proxmoxve.inputs.GetVmsLegacyPlainArgs;
+import io.muehlbachler.pulumi.proxmoxve.outputs.GetContainerLegacyResult;
+import io.muehlbachler.pulumi.proxmoxve.outputs.GetContainersLegacyResult;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetDatastoresLegacyResult;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetDatastoresResult;
+import io.muehlbachler.pulumi.proxmoxve.outputs.GetDnsLegacyResult;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetFileLegacyResult;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetFileResult;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetFilesResult;
+import io.muehlbachler.pulumi.proxmoxve.outputs.GetGroupLegacyResult;
+import io.muehlbachler.pulumi.proxmoxve.outputs.GetGroupsLegacyResult;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetHagroupLegacyResult;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetHagroupResult;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetHagroupsLegacyResult;
@@ -53,17 +82,727 @@ import io.muehlbachler.pulumi.proxmoxve.outputs.GetHaresourceLegacyResult;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetHaresourceResult;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetHaresourcesLegacyResult;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetHaresourcesResult;
+import io.muehlbachler.pulumi.proxmoxve.outputs.GetHostsLegacyResult;
+import io.muehlbachler.pulumi.proxmoxve.outputs.GetNodeLegacyResult;
+import io.muehlbachler.pulumi.proxmoxve.outputs.GetNodesLegacyResult;
+import io.muehlbachler.pulumi.proxmoxve.outputs.GetPoolLegacyResult;
+import io.muehlbachler.pulumi.proxmoxve.outputs.GetPoolsLegacyResult;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetReplicationLegacyResult;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetReplicationResult;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetReplicationsLegacyResult;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetReplicationsResult;
+import io.muehlbachler.pulumi.proxmoxve.outputs.GetRoleLegacyResult;
+import io.muehlbachler.pulumi.proxmoxve.outputs.GetRolesLegacyResult;
+import io.muehlbachler.pulumi.proxmoxve.outputs.GetTimeLegacyResult;
+import io.muehlbachler.pulumi.proxmoxve.outputs.GetUserLegacyResult;
+import io.muehlbachler.pulumi.proxmoxve.outputs.GetUsersLegacyResult;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetVersionLegacyResult;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetVersionResult;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetVm2LegacyResult;
+import io.muehlbachler.pulumi.proxmoxve.outputs.GetVmLegacyResult;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetVmResult;
+import io.muehlbachler.pulumi.proxmoxve.outputs.GetVmsLegacyResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class ProxmoxveFunctions {
+    /**
+     * Retrieves information about a specific Container.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetContainerLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testContainer = ProxmoxveFunctions.getContainerLegacy(GetContainerLegacyArgs.builder()
+     *             .nodeName("test")
+     *             .vmId(100)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetContainerLegacyResult> getContainerLegacy(GetContainerLegacyArgs args) {
+        return getContainerLegacy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about a specific Container.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetContainerLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testContainer = ProxmoxveFunctions.getContainerLegacy(GetContainerLegacyArgs.builder()
+     *             .nodeName("test")
+     *             .vmId(100)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetContainerLegacyResult> getContainerLegacyPlain(GetContainerLegacyPlainArgs args) {
+        return getContainerLegacyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about a specific Container.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetContainerLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testContainer = ProxmoxveFunctions.getContainerLegacy(GetContainerLegacyArgs.builder()
+     *             .nodeName("test")
+     *             .vmId(100)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetContainerLegacyResult> getContainerLegacy(GetContainerLegacyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getContainerLegacy:getContainerLegacy", TypeShape.of(GetContainerLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about a specific Container.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetContainerLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testContainer = ProxmoxveFunctions.getContainerLegacy(GetContainerLegacyArgs.builder()
+     *             .nodeName("test")
+     *             .vmId(100)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetContainerLegacyResult> getContainerLegacy(GetContainerLegacyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getContainerLegacy:getContainerLegacy", TypeShape.of(GetContainerLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about a specific Container.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetContainerLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testContainer = ProxmoxveFunctions.getContainerLegacy(GetContainerLegacyArgs.builder()
+     *             .nodeName("test")
+     *             .vmId(100)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetContainerLegacyResult> getContainerLegacyPlain(GetContainerLegacyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("proxmoxve:index/getContainerLegacy:getContainerLegacy", TypeShape.of(GetContainerLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about all containers in the Proxmox cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetContainersLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuContainers = ProxmoxveFunctions.getContainersLegacy(GetContainersLegacyArgs.builder()
+     *             .tags("ubuntu")
+     *             .build());
+     * 
+     *         final var ubuntuTemplates = ProxmoxveFunctions.getContainersLegacy(GetContainersLegacyArgs.builder()
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
+     *             .filters(            
+     *                 GetContainersLegacyFilterArgs.builder()
+     *                     .name("template")
+     *                     .values("true")
+     *                     .build(),
+     *                 GetContainersLegacyFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("stopped")
+     *                     .build(),
+     *                 GetContainersLegacyFilterArgs.builder()
+     *                     .name("name")
+     *                     .regex(true)
+     *                     .values("^ubuntu-20.*$")
+     *                     .build(),
+     *                 GetContainersLegacyFilterArgs.builder()
+     *                     .name("node_name")
+     *                     .regex(true)
+     *                     .values(                    
+     *                         "node_us_[1-3]",
+     *                         "node_eu_[1-3]")
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetContainersLegacyResult> getContainersLegacy() {
+        return getContainersLegacy(GetContainersLegacyArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about all containers in the Proxmox cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetContainersLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuContainers = ProxmoxveFunctions.getContainersLegacy(GetContainersLegacyArgs.builder()
+     *             .tags("ubuntu")
+     *             .build());
+     * 
+     *         final var ubuntuTemplates = ProxmoxveFunctions.getContainersLegacy(GetContainersLegacyArgs.builder()
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
+     *             .filters(            
+     *                 GetContainersLegacyFilterArgs.builder()
+     *                     .name("template")
+     *                     .values("true")
+     *                     .build(),
+     *                 GetContainersLegacyFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("stopped")
+     *                     .build(),
+     *                 GetContainersLegacyFilterArgs.builder()
+     *                     .name("name")
+     *                     .regex(true)
+     *                     .values("^ubuntu-20.*$")
+     *                     .build(),
+     *                 GetContainersLegacyFilterArgs.builder()
+     *                     .name("node_name")
+     *                     .regex(true)
+     *                     .values(                    
+     *                         "node_us_[1-3]",
+     *                         "node_eu_[1-3]")
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetContainersLegacyResult> getContainersLegacyPlain() {
+        return getContainersLegacyPlain(GetContainersLegacyPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about all containers in the Proxmox cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetContainersLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuContainers = ProxmoxveFunctions.getContainersLegacy(GetContainersLegacyArgs.builder()
+     *             .tags("ubuntu")
+     *             .build());
+     * 
+     *         final var ubuntuTemplates = ProxmoxveFunctions.getContainersLegacy(GetContainersLegacyArgs.builder()
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
+     *             .filters(            
+     *                 GetContainersLegacyFilterArgs.builder()
+     *                     .name("template")
+     *                     .values("true")
+     *                     .build(),
+     *                 GetContainersLegacyFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("stopped")
+     *                     .build(),
+     *                 GetContainersLegacyFilterArgs.builder()
+     *                     .name("name")
+     *                     .regex(true)
+     *                     .values("^ubuntu-20.*$")
+     *                     .build(),
+     *                 GetContainersLegacyFilterArgs.builder()
+     *                     .name("node_name")
+     *                     .regex(true)
+     *                     .values(                    
+     *                         "node_us_[1-3]",
+     *                         "node_eu_[1-3]")
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetContainersLegacyResult> getContainersLegacy(GetContainersLegacyArgs args) {
+        return getContainersLegacy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about all containers in the Proxmox cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetContainersLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuContainers = ProxmoxveFunctions.getContainersLegacy(GetContainersLegacyArgs.builder()
+     *             .tags("ubuntu")
+     *             .build());
+     * 
+     *         final var ubuntuTemplates = ProxmoxveFunctions.getContainersLegacy(GetContainersLegacyArgs.builder()
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
+     *             .filters(            
+     *                 GetContainersLegacyFilterArgs.builder()
+     *                     .name("template")
+     *                     .values("true")
+     *                     .build(),
+     *                 GetContainersLegacyFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("stopped")
+     *                     .build(),
+     *                 GetContainersLegacyFilterArgs.builder()
+     *                     .name("name")
+     *                     .regex(true)
+     *                     .values("^ubuntu-20.*$")
+     *                     .build(),
+     *                 GetContainersLegacyFilterArgs.builder()
+     *                     .name("node_name")
+     *                     .regex(true)
+     *                     .values(                    
+     *                         "node_us_[1-3]",
+     *                         "node_eu_[1-3]")
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetContainersLegacyResult> getContainersLegacyPlain(GetContainersLegacyPlainArgs args) {
+        return getContainersLegacyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about all containers in the Proxmox cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetContainersLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuContainers = ProxmoxveFunctions.getContainersLegacy(GetContainersLegacyArgs.builder()
+     *             .tags("ubuntu")
+     *             .build());
+     * 
+     *         final var ubuntuTemplates = ProxmoxveFunctions.getContainersLegacy(GetContainersLegacyArgs.builder()
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
+     *             .filters(            
+     *                 GetContainersLegacyFilterArgs.builder()
+     *                     .name("template")
+     *                     .values("true")
+     *                     .build(),
+     *                 GetContainersLegacyFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("stopped")
+     *                     .build(),
+     *                 GetContainersLegacyFilterArgs.builder()
+     *                     .name("name")
+     *                     .regex(true)
+     *                     .values("^ubuntu-20.*$")
+     *                     .build(),
+     *                 GetContainersLegacyFilterArgs.builder()
+     *                     .name("node_name")
+     *                     .regex(true)
+     *                     .values(                    
+     *                         "node_us_[1-3]",
+     *                         "node_eu_[1-3]")
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetContainersLegacyResult> getContainersLegacy(GetContainersLegacyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getContainersLegacy:getContainersLegacy", TypeShape.of(GetContainersLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about all containers in the Proxmox cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetContainersLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuContainers = ProxmoxveFunctions.getContainersLegacy(GetContainersLegacyArgs.builder()
+     *             .tags("ubuntu")
+     *             .build());
+     * 
+     *         final var ubuntuTemplates = ProxmoxveFunctions.getContainersLegacy(GetContainersLegacyArgs.builder()
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
+     *             .filters(            
+     *                 GetContainersLegacyFilterArgs.builder()
+     *                     .name("template")
+     *                     .values("true")
+     *                     .build(),
+     *                 GetContainersLegacyFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("stopped")
+     *                     .build(),
+     *                 GetContainersLegacyFilterArgs.builder()
+     *                     .name("name")
+     *                     .regex(true)
+     *                     .values("^ubuntu-20.*$")
+     *                     .build(),
+     *                 GetContainersLegacyFilterArgs.builder()
+     *                     .name("node_name")
+     *                     .regex(true)
+     *                     .values(                    
+     *                         "node_us_[1-3]",
+     *                         "node_eu_[1-3]")
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetContainersLegacyResult> getContainersLegacy(GetContainersLegacyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getContainersLegacy:getContainersLegacy", TypeShape.of(GetContainersLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about all containers in the Proxmox cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetContainersLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuContainers = ProxmoxveFunctions.getContainersLegacy(GetContainersLegacyArgs.builder()
+     *             .tags("ubuntu")
+     *             .build());
+     * 
+     *         final var ubuntuTemplates = ProxmoxveFunctions.getContainersLegacy(GetContainersLegacyArgs.builder()
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
+     *             .filters(            
+     *                 GetContainersLegacyFilterArgs.builder()
+     *                     .name("template")
+     *                     .values("true")
+     *                     .build(),
+     *                 GetContainersLegacyFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("stopped")
+     *                     .build(),
+     *                 GetContainersLegacyFilterArgs.builder()
+     *                     .name("name")
+     *                     .regex(true)
+     *                     .values("^ubuntu-20.*$")
+     *                     .build(),
+     *                 GetContainersLegacyFilterArgs.builder()
+     *                     .name("node_name")
+     *                     .regex(true)
+     *                     .values(                    
+     *                         "node_us_[1-3]",
+     *                         "node_eu_[1-3]")
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetContainersLegacyResult> getContainersLegacyPlain(GetContainersLegacyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("proxmoxve:index/getContainersLegacy:getContainersLegacy", TypeShape.of(GetContainersLegacyResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Retrieves information about all the datastores available to a specific node.
      * 
@@ -145,6 +884,216 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:index/getDatastoresLegacy:getDatastoresLegacy", TypeShape.of(GetDatastoresLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves the DNS configuration for a specific node.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetDnsLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNode = ProxmoxveFunctions.getDnsLegacy(GetDnsLegacyArgs.builder()
+     *             .nodeName("first-node")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDnsLegacyResult> getDnsLegacy(GetDnsLegacyArgs args) {
+        return getDnsLegacy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the DNS configuration for a specific node.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetDnsLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNode = ProxmoxveFunctions.getDnsLegacy(GetDnsLegacyArgs.builder()
+     *             .nodeName("first-node")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDnsLegacyResult> getDnsLegacyPlain(GetDnsLegacyPlainArgs args) {
+        return getDnsLegacyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the DNS configuration for a specific node.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetDnsLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNode = ProxmoxveFunctions.getDnsLegacy(GetDnsLegacyArgs.builder()
+     *             .nodeName("first-node")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDnsLegacyResult> getDnsLegacy(GetDnsLegacyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getDnsLegacy:getDnsLegacy", TypeShape.of(GetDnsLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the DNS configuration for a specific node.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetDnsLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNode = ProxmoxveFunctions.getDnsLegacy(GetDnsLegacyArgs.builder()
+     *             .nodeName("first-node")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDnsLegacyResult> getDnsLegacy(GetDnsLegacyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getDnsLegacy:getDnsLegacy", TypeShape.of(GetDnsLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the DNS configuration for a specific node.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetDnsLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNode = ProxmoxveFunctions.getDnsLegacy(GetDnsLegacyArgs.builder()
+     *             .nodeName("first-node")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDnsLegacyResult> getDnsLegacyPlain(GetDnsLegacyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("proxmoxve:index/getDnsLegacy:getDnsLegacy", TypeShape.of(GetDnsLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Retrieves information about an existing file in a Proxmox Virtual Environment node.
      * 
      */
@@ -196,8 +1145,13 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetFileLegacyArgs;
-     * import com.pulumi.proxmox.VirtualEnvironmentVm;
-     * import com.pulumi.proxmox.VirtualEnvironmentVmArgs;
+     * import io.muehlbachler.pulumi.proxmoxve.VmLegacy;
+     * import io.muehlbachler.pulumi.proxmoxve.VmLegacyArgs;
+     * import com.pulumi.proxmoxve.inputs.VmLegacyCdromArgs;
+     * import com.pulumi.proxmoxve.inputs.VmLegacyCpuArgs;
+     * import com.pulumi.proxmoxve.inputs.VmLegacyMemoryArgs;
+     * import com.pulumi.proxmoxve.inputs.VmLegacyDiskArgs;
+     * import com.pulumi.proxmoxve.inputs.VmLegacyNetworkDeviceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -242,24 +1196,26 @@ public final class ProxmoxveFunctions {
      *         ctx.export("ubuntuIsoId", ubuntuIso.id());
      *         ctx.export("ubuntuIsoSize", ubuntuIso.fileSize());
      *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
-     *         var example = new VirtualEnvironmentVm("example", VirtualEnvironmentVmArgs.builder()
+     *         var example = new VmLegacy("example", VmLegacyArgs.builder()
      *             .nodeName("pve")
-     *             .vmId(100.0)
-     *             .cdrom(VirtualEnvironmentVmCdromArgs.builder()
+     *             .vmId(100)
+     *             .cdrom(VmLegacyCdromArgs.builder()
      *                 .fileId(ubuntuIso.id())
      *                 .build())
-     *             .cpu(VirtualEnvironmentVmCpuArgs.builder()
+     *             .cpu(VmLegacyCpuArgs.builder()
      *                 .cores(2)
      *                 .build())
-     *             .memory(VirtualEnvironmentVmMemoryArgs.builder()
+     *             .memory(VmLegacyMemoryArgs.builder()
      *                 .dedicated(2048)
      *                 .build())
-     *             .disk(List.of(Map.ofEntries(
-     *                 Map.entry("datastoreId", "local-lvm"),
-     *                 Map.entry("fileFormat", "qcow2"),
-     *                 Map.entry("size", 20)
-     *             )))
-     *             .networkDevice(List.of(Map.of("bridge", "vmbr0")))
+     *             .disks(VmLegacyDiskArgs.builder()
+     *                 .datastoreId("local-lvm")
+     *                 .fileFormat("qcow2")
+     *                 .size(20)
+     *                 .build())
+     *             .networkDevices(VmLegacyNetworkDeviceArgs.builder()
+     *                 .bridge("vmbr0")
+     *                 .build())
      *             .build());
      * 
      *     }
@@ -289,8 +1245,13 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetFileLegacyArgs;
-     * import com.pulumi.proxmox.VirtualEnvironmentVm;
-     * import com.pulumi.proxmox.VirtualEnvironmentVmArgs;
+     * import io.muehlbachler.pulumi.proxmoxve.VmLegacy;
+     * import io.muehlbachler.pulumi.proxmoxve.VmLegacyArgs;
+     * import com.pulumi.proxmoxve.inputs.VmLegacyCdromArgs;
+     * import com.pulumi.proxmoxve.inputs.VmLegacyCpuArgs;
+     * import com.pulumi.proxmoxve.inputs.VmLegacyMemoryArgs;
+     * import com.pulumi.proxmoxve.inputs.VmLegacyDiskArgs;
+     * import com.pulumi.proxmoxve.inputs.VmLegacyNetworkDeviceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -335,24 +1296,26 @@ public final class ProxmoxveFunctions {
      *         ctx.export("ubuntuIsoId", ubuntuIso.id());
      *         ctx.export("ubuntuIsoSize", ubuntuIso.fileSize());
      *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
-     *         var example = new VirtualEnvironmentVm("example", VirtualEnvironmentVmArgs.builder()
+     *         var example = new VmLegacy("example", VmLegacyArgs.builder()
      *             .nodeName("pve")
-     *             .vmId(100.0)
-     *             .cdrom(VirtualEnvironmentVmCdromArgs.builder()
+     *             .vmId(100)
+     *             .cdrom(VmLegacyCdromArgs.builder()
      *                 .fileId(ubuntuIso.id())
      *                 .build())
-     *             .cpu(VirtualEnvironmentVmCpuArgs.builder()
+     *             .cpu(VmLegacyCpuArgs.builder()
      *                 .cores(2)
      *                 .build())
-     *             .memory(VirtualEnvironmentVmMemoryArgs.builder()
+     *             .memory(VmLegacyMemoryArgs.builder()
      *                 .dedicated(2048)
      *                 .build())
-     *             .disk(List.of(Map.ofEntries(
-     *                 Map.entry("datastoreId", "local-lvm"),
-     *                 Map.entry("fileFormat", "qcow2"),
-     *                 Map.entry("size", 20)
-     *             )))
-     *             .networkDevice(List.of(Map.of("bridge", "vmbr0")))
+     *             .disks(VmLegacyDiskArgs.builder()
+     *                 .datastoreId("local-lvm")
+     *                 .fileFormat("qcow2")
+     *                 .size(20)
+     *                 .build())
+     *             .networkDevices(VmLegacyNetworkDeviceArgs.builder()
+     *                 .bridge("vmbr0")
+     *                 .build())
      *             .build());
      * 
      *     }
@@ -382,8 +1345,13 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetFileLegacyArgs;
-     * import com.pulumi.proxmox.VirtualEnvironmentVm;
-     * import com.pulumi.proxmox.VirtualEnvironmentVmArgs;
+     * import io.muehlbachler.pulumi.proxmoxve.VmLegacy;
+     * import io.muehlbachler.pulumi.proxmoxve.VmLegacyArgs;
+     * import com.pulumi.proxmoxve.inputs.VmLegacyCdromArgs;
+     * import com.pulumi.proxmoxve.inputs.VmLegacyCpuArgs;
+     * import com.pulumi.proxmoxve.inputs.VmLegacyMemoryArgs;
+     * import com.pulumi.proxmoxve.inputs.VmLegacyDiskArgs;
+     * import com.pulumi.proxmoxve.inputs.VmLegacyNetworkDeviceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -428,24 +1396,26 @@ public final class ProxmoxveFunctions {
      *         ctx.export("ubuntuIsoId", ubuntuIso.id());
      *         ctx.export("ubuntuIsoSize", ubuntuIso.fileSize());
      *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
-     *         var example = new VirtualEnvironmentVm("example", VirtualEnvironmentVmArgs.builder()
+     *         var example = new VmLegacy("example", VmLegacyArgs.builder()
      *             .nodeName("pve")
-     *             .vmId(100.0)
-     *             .cdrom(VirtualEnvironmentVmCdromArgs.builder()
+     *             .vmId(100)
+     *             .cdrom(VmLegacyCdromArgs.builder()
      *                 .fileId(ubuntuIso.id())
      *                 .build())
-     *             .cpu(VirtualEnvironmentVmCpuArgs.builder()
+     *             .cpu(VmLegacyCpuArgs.builder()
      *                 .cores(2)
      *                 .build())
-     *             .memory(VirtualEnvironmentVmMemoryArgs.builder()
+     *             .memory(VmLegacyMemoryArgs.builder()
      *                 .dedicated(2048)
      *                 .build())
-     *             .disk(List.of(Map.ofEntries(
-     *                 Map.entry("datastoreId", "local-lvm"),
-     *                 Map.entry("fileFormat", "qcow2"),
-     *                 Map.entry("size", 20)
-     *             )))
-     *             .networkDevice(List.of(Map.of("bridge", "vmbr0")))
+     *             .disks(VmLegacyDiskArgs.builder()
+     *                 .datastoreId("local-lvm")
+     *                 .fileFormat("qcow2")
+     *                 .size(20)
+     *                 .build())
+     *             .networkDevices(VmLegacyNetworkDeviceArgs.builder()
+     *                 .bridge("vmbr0")
+     *                 .build())
      *             .build());
      * 
      *     }
@@ -475,8 +1445,13 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetFileLegacyArgs;
-     * import com.pulumi.proxmox.VirtualEnvironmentVm;
-     * import com.pulumi.proxmox.VirtualEnvironmentVmArgs;
+     * import io.muehlbachler.pulumi.proxmoxve.VmLegacy;
+     * import io.muehlbachler.pulumi.proxmoxve.VmLegacyArgs;
+     * import com.pulumi.proxmoxve.inputs.VmLegacyCdromArgs;
+     * import com.pulumi.proxmoxve.inputs.VmLegacyCpuArgs;
+     * import com.pulumi.proxmoxve.inputs.VmLegacyMemoryArgs;
+     * import com.pulumi.proxmoxve.inputs.VmLegacyDiskArgs;
+     * import com.pulumi.proxmoxve.inputs.VmLegacyNetworkDeviceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -521,24 +1496,26 @@ public final class ProxmoxveFunctions {
      *         ctx.export("ubuntuIsoId", ubuntuIso.id());
      *         ctx.export("ubuntuIsoSize", ubuntuIso.fileSize());
      *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
-     *         var example = new VirtualEnvironmentVm("example", VirtualEnvironmentVmArgs.builder()
+     *         var example = new VmLegacy("example", VmLegacyArgs.builder()
      *             .nodeName("pve")
-     *             .vmId(100.0)
-     *             .cdrom(VirtualEnvironmentVmCdromArgs.builder()
+     *             .vmId(100)
+     *             .cdrom(VmLegacyCdromArgs.builder()
      *                 .fileId(ubuntuIso.id())
      *                 .build())
-     *             .cpu(VirtualEnvironmentVmCpuArgs.builder()
+     *             .cpu(VmLegacyCpuArgs.builder()
      *                 .cores(2)
      *                 .build())
-     *             .memory(VirtualEnvironmentVmMemoryArgs.builder()
+     *             .memory(VmLegacyMemoryArgs.builder()
      *                 .dedicated(2048)
      *                 .build())
-     *             .disk(List.of(Map.ofEntries(
-     *                 Map.entry("datastoreId", "local-lvm"),
-     *                 Map.entry("fileFormat", "qcow2"),
-     *                 Map.entry("size", 20)
-     *             )))
-     *             .networkDevice(List.of(Map.of("bridge", "vmbr0")))
+     *             .disks(VmLegacyDiskArgs.builder()
+     *                 .datastoreId("local-lvm")
+     *                 .fileFormat("qcow2")
+     *                 .size(20)
+     *                 .build())
+     *             .networkDevices(VmLegacyNetworkDeviceArgs.builder()
+     *                 .bridge("vmbr0")
+     *                 .build())
      *             .build());
      * 
      *     }
@@ -568,8 +1545,13 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetFileLegacyArgs;
-     * import com.pulumi.proxmox.VirtualEnvironmentVm;
-     * import com.pulumi.proxmox.VirtualEnvironmentVmArgs;
+     * import io.muehlbachler.pulumi.proxmoxve.VmLegacy;
+     * import io.muehlbachler.pulumi.proxmoxve.VmLegacyArgs;
+     * import com.pulumi.proxmoxve.inputs.VmLegacyCdromArgs;
+     * import com.pulumi.proxmoxve.inputs.VmLegacyCpuArgs;
+     * import com.pulumi.proxmoxve.inputs.VmLegacyMemoryArgs;
+     * import com.pulumi.proxmoxve.inputs.VmLegacyDiskArgs;
+     * import com.pulumi.proxmoxve.inputs.VmLegacyNetworkDeviceArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -614,24 +1596,26 @@ public final class ProxmoxveFunctions {
      *         ctx.export("ubuntuIsoId", ubuntuIso.id());
      *         ctx.export("ubuntuIsoSize", ubuntuIso.fileSize());
      *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
-     *         var example = new VirtualEnvironmentVm("example", VirtualEnvironmentVmArgs.builder()
+     *         var example = new VmLegacy("example", VmLegacyArgs.builder()
      *             .nodeName("pve")
-     *             .vmId(100.0)
-     *             .cdrom(VirtualEnvironmentVmCdromArgs.builder()
+     *             .vmId(100)
+     *             .cdrom(VmLegacyCdromArgs.builder()
      *                 .fileId(ubuntuIso.id())
      *                 .build())
-     *             .cpu(VirtualEnvironmentVmCpuArgs.builder()
+     *             .cpu(VmLegacyCpuArgs.builder()
      *                 .cores(2)
      *                 .build())
-     *             .memory(VirtualEnvironmentVmMemoryArgs.builder()
+     *             .memory(VmLegacyMemoryArgs.builder()
      *                 .dedicated(2048)
      *                 .build())
-     *             .disk(List.of(Map.ofEntries(
-     *                 Map.entry("datastoreId", "local-lvm"),
-     *                 Map.entry("fileFormat", "qcow2"),
-     *                 Map.entry("size", 20)
-     *             )))
-     *             .networkDevice(List.of(Map.of("bridge", "vmbr0")))
+     *             .disks(VmLegacyDiskArgs.builder()
+     *                 .datastoreId("local-lvm")
+     *                 .fileFormat("qcow2")
+     *                 .size(20)
+     *                 .build())
+     *             .networkDevices(VmLegacyNetworkDeviceArgs.builder()
+     *                 .bridge("vmbr0")
+     *                 .build())
      *             .build());
      * 
      *     }
@@ -703,6 +1687,489 @@ public final class ProxmoxveFunctions {
      */
     public static CompletableFuture<GetFilesResult> getFilesPlain(GetFilesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("proxmoxve:index/getFiles:getFiles", TypeShape.of(GetFilesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about a specific user group.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetGroupLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var operationsTeam = ProxmoxveFunctions.getGroupLegacy(GetGroupLegacyArgs.builder()
+     *             .groupId("operations-team")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGroupLegacyResult> getGroupLegacy(GetGroupLegacyArgs args) {
+        return getGroupLegacy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about a specific user group.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetGroupLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var operationsTeam = ProxmoxveFunctions.getGroupLegacy(GetGroupLegacyArgs.builder()
+     *             .groupId("operations-team")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetGroupLegacyResult> getGroupLegacyPlain(GetGroupLegacyPlainArgs args) {
+        return getGroupLegacyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about a specific user group.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetGroupLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var operationsTeam = ProxmoxveFunctions.getGroupLegacy(GetGroupLegacyArgs.builder()
+     *             .groupId("operations-team")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGroupLegacyResult> getGroupLegacy(GetGroupLegacyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getGroupLegacy:getGroupLegacy", TypeShape.of(GetGroupLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about a specific user group.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetGroupLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var operationsTeam = ProxmoxveFunctions.getGroupLegacy(GetGroupLegacyArgs.builder()
+     *             .groupId("operations-team")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGroupLegacyResult> getGroupLegacy(GetGroupLegacyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getGroupLegacy:getGroupLegacy", TypeShape.of(GetGroupLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about a specific user group.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetGroupLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var operationsTeam = ProxmoxveFunctions.getGroupLegacy(GetGroupLegacyArgs.builder()
+     *             .groupId("operations-team")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetGroupLegacyResult> getGroupLegacyPlain(GetGroupLegacyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("proxmoxve:index/getGroupLegacy:getGroupLegacy", TypeShape.of(GetGroupLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves basic information about all available user groups.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableGroups = ProxmoxveFunctions.getGroupsLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGroupsLegacyResult> getGroupsLegacy() {
+        return getGroupsLegacy(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves basic information about all available user groups.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableGroups = ProxmoxveFunctions.getGroupsLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetGroupsLegacyResult> getGroupsLegacyPlain() {
+        return getGroupsLegacyPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves basic information about all available user groups.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableGroups = ProxmoxveFunctions.getGroupsLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGroupsLegacyResult> getGroupsLegacy(InvokeArgs args) {
+        return getGroupsLegacy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves basic information about all available user groups.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableGroups = ProxmoxveFunctions.getGroupsLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetGroupsLegacyResult> getGroupsLegacyPlain(InvokeArgs args) {
+        return getGroupsLegacyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves basic information about all available user groups.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableGroups = ProxmoxveFunctions.getGroupsLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGroupsLegacyResult> getGroupsLegacy(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getGroupsLegacy:getGroupsLegacy", TypeShape.of(GetGroupsLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves basic information about all available user groups.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableGroups = ProxmoxveFunctions.getGroupsLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGroupsLegacyResult> getGroupsLegacy(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getGroupsLegacy:getGroupsLegacy", TypeShape.of(GetGroupsLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves basic information about all available user groups.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableGroups = ProxmoxveFunctions.getGroupsLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetGroupsLegacyResult> getGroupsLegacyPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("proxmoxve:index/getGroupsLegacy:getGroupsLegacy", TypeShape.of(GetGroupsLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves information about a specific High Availability group.
@@ -1678,6 +3145,1257 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:index/getHaresourcesLegacy:getHaresourcesLegacy", TypeShape.of(GetHaresourcesLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves all the host entries from a specific node.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetHostsLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNodeHostEntries = ProxmoxveFunctions.getHostsLegacy(GetHostsLegacyArgs.builder()
+     *             .nodeName("first-node")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetHostsLegacyResult> getHostsLegacy(GetHostsLegacyArgs args) {
+        return getHostsLegacy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves all the host entries from a specific node.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetHostsLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNodeHostEntries = ProxmoxveFunctions.getHostsLegacy(GetHostsLegacyArgs.builder()
+     *             .nodeName("first-node")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetHostsLegacyResult> getHostsLegacyPlain(GetHostsLegacyPlainArgs args) {
+        return getHostsLegacyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves all the host entries from a specific node.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetHostsLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNodeHostEntries = ProxmoxveFunctions.getHostsLegacy(GetHostsLegacyArgs.builder()
+     *             .nodeName("first-node")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetHostsLegacyResult> getHostsLegacy(GetHostsLegacyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getHostsLegacy:getHostsLegacy", TypeShape.of(GetHostsLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves all the host entries from a specific node.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetHostsLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNodeHostEntries = ProxmoxveFunctions.getHostsLegacy(GetHostsLegacyArgs.builder()
+     *             .nodeName("first-node")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetHostsLegacyResult> getHostsLegacy(GetHostsLegacyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getHostsLegacy:getHostsLegacy", TypeShape.of(GetHostsLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves all the host entries from a specific node.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetHostsLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNodeHostEntries = ProxmoxveFunctions.getHostsLegacy(GetHostsLegacyArgs.builder()
+     *             .nodeName("first-node")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetHostsLegacyResult> getHostsLegacyPlain(GetHostsLegacyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("proxmoxve:index/getHostsLegacy:getHostsLegacy", TypeShape.of(GetHostsLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about a specific Proxmox VE node.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetNodeLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getNodeLegacy(GetNodeLegacyArgs.builder()
+     *             .nodeName("pve")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentNode", Map.ofEntries(
+     *             Map.entry("cpuCores", example.cpuCores()),
+     *             Map.entry("cpuCount", example.cpuCount()),
+     *             Map.entry("cpuSockets", example.cpuSockets()),
+     *             Map.entry("cpuModel", example.cpuModel()),
+     *             Map.entry("memoryTotal", example.memoryTotal()),
+     *             Map.entry("uptime", example.uptime())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNodeLegacyResult> getNodeLegacy(GetNodeLegacyArgs args) {
+        return getNodeLegacy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about a specific Proxmox VE node.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetNodeLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getNodeLegacy(GetNodeLegacyArgs.builder()
+     *             .nodeName("pve")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentNode", Map.ofEntries(
+     *             Map.entry("cpuCores", example.cpuCores()),
+     *             Map.entry("cpuCount", example.cpuCount()),
+     *             Map.entry("cpuSockets", example.cpuSockets()),
+     *             Map.entry("cpuModel", example.cpuModel()),
+     *             Map.entry("memoryTotal", example.memoryTotal()),
+     *             Map.entry("uptime", example.uptime())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetNodeLegacyResult> getNodeLegacyPlain(GetNodeLegacyPlainArgs args) {
+        return getNodeLegacyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about a specific Proxmox VE node.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetNodeLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getNodeLegacy(GetNodeLegacyArgs.builder()
+     *             .nodeName("pve")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentNode", Map.ofEntries(
+     *             Map.entry("cpuCores", example.cpuCores()),
+     *             Map.entry("cpuCount", example.cpuCount()),
+     *             Map.entry("cpuSockets", example.cpuSockets()),
+     *             Map.entry("cpuModel", example.cpuModel()),
+     *             Map.entry("memoryTotal", example.memoryTotal()),
+     *             Map.entry("uptime", example.uptime())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNodeLegacyResult> getNodeLegacy(GetNodeLegacyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getNodeLegacy:getNodeLegacy", TypeShape.of(GetNodeLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about a specific Proxmox VE node.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetNodeLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getNodeLegacy(GetNodeLegacyArgs.builder()
+     *             .nodeName("pve")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentNode", Map.ofEntries(
+     *             Map.entry("cpuCores", example.cpuCores()),
+     *             Map.entry("cpuCount", example.cpuCount()),
+     *             Map.entry("cpuSockets", example.cpuSockets()),
+     *             Map.entry("cpuModel", example.cpuModel()),
+     *             Map.entry("memoryTotal", example.memoryTotal()),
+     *             Map.entry("uptime", example.uptime())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNodeLegacyResult> getNodeLegacy(GetNodeLegacyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getNodeLegacy:getNodeLegacy", TypeShape.of(GetNodeLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about a specific Proxmox VE node.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetNodeLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getNodeLegacy(GetNodeLegacyArgs.builder()
+     *             .nodeName("pve")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentNode", Map.ofEntries(
+     *             Map.entry("cpuCores", example.cpuCores()),
+     *             Map.entry("cpuCount", example.cpuCount()),
+     *             Map.entry("cpuSockets", example.cpuSockets()),
+     *             Map.entry("cpuModel", example.cpuModel()),
+     *             Map.entry("memoryTotal", example.memoryTotal()),
+     *             Map.entry("uptime", example.uptime())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetNodeLegacyResult> getNodeLegacyPlain(GetNodeLegacyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("proxmoxve:index/getNodeLegacy:getNodeLegacy", TypeShape.of(GetNodeLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about all available Proxmox VE nodes.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getNodesLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentNodes", Map.ofEntries(
+     *             Map.entry("names", example.names()),
+     *             Map.entry("cpuCount", example.cpuCounts()),
+     *             Map.entry("online", example.onlines())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNodesLegacyResult> getNodesLegacy() {
+        return getNodesLegacy(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about all available Proxmox VE nodes.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getNodesLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentNodes", Map.ofEntries(
+     *             Map.entry("names", example.names()),
+     *             Map.entry("cpuCount", example.cpuCounts()),
+     *             Map.entry("online", example.onlines())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetNodesLegacyResult> getNodesLegacyPlain() {
+        return getNodesLegacyPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about all available Proxmox VE nodes.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getNodesLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentNodes", Map.ofEntries(
+     *             Map.entry("names", example.names()),
+     *             Map.entry("cpuCount", example.cpuCounts()),
+     *             Map.entry("online", example.onlines())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNodesLegacyResult> getNodesLegacy(InvokeArgs args) {
+        return getNodesLegacy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about all available Proxmox VE nodes.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getNodesLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentNodes", Map.ofEntries(
+     *             Map.entry("names", example.names()),
+     *             Map.entry("cpuCount", example.cpuCounts()),
+     *             Map.entry("online", example.onlines())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetNodesLegacyResult> getNodesLegacyPlain(InvokeArgs args) {
+        return getNodesLegacyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about all available Proxmox VE nodes.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getNodesLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentNodes", Map.ofEntries(
+     *             Map.entry("names", example.names()),
+     *             Map.entry("cpuCount", example.cpuCounts()),
+     *             Map.entry("online", example.onlines())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNodesLegacyResult> getNodesLegacy(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getNodesLegacy:getNodesLegacy", TypeShape.of(GetNodesLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about all available Proxmox VE nodes.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getNodesLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentNodes", Map.ofEntries(
+     *             Map.entry("names", example.names()),
+     *             Map.entry("cpuCount", example.cpuCounts()),
+     *             Map.entry("online", example.onlines())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetNodesLegacyResult> getNodesLegacy(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getNodesLegacy:getNodesLegacy", TypeShape.of(GetNodesLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about all available Proxmox VE nodes.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getNodesLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxVirtualEnvironmentNodes", Map.ofEntries(
+     *             Map.entry("names", example.names()),
+     *             Map.entry("cpuCount", example.cpuCounts()),
+     *             Map.entry("online", example.onlines())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetNodesLegacyResult> getNodesLegacyPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("proxmoxve:index/getNodesLegacy:getNodesLegacy", TypeShape.of(GetNodesLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about a specific resource pool.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetPoolLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var operationsPool = ProxmoxveFunctions.getPoolLegacy(GetPoolLegacyArgs.builder()
+     *             .poolId("operations")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPoolLegacyResult> getPoolLegacy(GetPoolLegacyArgs args) {
+        return getPoolLegacy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about a specific resource pool.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetPoolLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var operationsPool = ProxmoxveFunctions.getPoolLegacy(GetPoolLegacyArgs.builder()
+     *             .poolId("operations")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetPoolLegacyResult> getPoolLegacyPlain(GetPoolLegacyPlainArgs args) {
+        return getPoolLegacyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about a specific resource pool.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetPoolLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var operationsPool = ProxmoxveFunctions.getPoolLegacy(GetPoolLegacyArgs.builder()
+     *             .poolId("operations")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPoolLegacyResult> getPoolLegacy(GetPoolLegacyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getPoolLegacy:getPoolLegacy", TypeShape.of(GetPoolLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about a specific resource pool.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetPoolLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var operationsPool = ProxmoxveFunctions.getPoolLegacy(GetPoolLegacyArgs.builder()
+     *             .poolId("operations")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPoolLegacyResult> getPoolLegacy(GetPoolLegacyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getPoolLegacy:getPoolLegacy", TypeShape.of(GetPoolLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about a specific resource pool.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetPoolLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var operationsPool = ProxmoxveFunctions.getPoolLegacy(GetPoolLegacyArgs.builder()
+     *             .poolId("operations")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetPoolLegacyResult> getPoolLegacyPlain(GetPoolLegacyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("proxmoxve:index/getPoolLegacy:getPoolLegacy", TypeShape.of(GetPoolLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the identifiers for all the available resource pools.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availablePools = ProxmoxveFunctions.getPoolsLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPoolsLegacyResult> getPoolsLegacy() {
+        return getPoolsLegacy(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the identifiers for all the available resource pools.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availablePools = ProxmoxveFunctions.getPoolsLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetPoolsLegacyResult> getPoolsLegacyPlain() {
+        return getPoolsLegacyPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the identifiers for all the available resource pools.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availablePools = ProxmoxveFunctions.getPoolsLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPoolsLegacyResult> getPoolsLegacy(InvokeArgs args) {
+        return getPoolsLegacy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the identifiers for all the available resource pools.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availablePools = ProxmoxveFunctions.getPoolsLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetPoolsLegacyResult> getPoolsLegacyPlain(InvokeArgs args) {
+        return getPoolsLegacyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the identifiers for all the available resource pools.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availablePools = ProxmoxveFunctions.getPoolsLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPoolsLegacyResult> getPoolsLegacy(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getPoolsLegacy:getPoolsLegacy", TypeShape.of(GetPoolsLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the identifiers for all the available resource pools.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availablePools = ProxmoxveFunctions.getPoolsLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPoolsLegacyResult> getPoolsLegacy(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getPoolsLegacy:getPoolsLegacy", TypeShape.of(GetPoolsLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the identifiers for all the available resource pools.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availablePools = ProxmoxveFunctions.getPoolsLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetPoolsLegacyResult> getPoolsLegacyPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("proxmoxve:index/getPoolsLegacy:getPoolsLegacy", TypeShape.of(GetPoolsLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Retrieves information about an existing Replication.
      * 
      */
@@ -2318,6 +5036,1182 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:index/getReplicationsLegacy:getReplicationsLegacy", TypeShape.of(GetReplicationsLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Retrieves information about a specific role.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetRoleLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var operationsRole = ProxmoxveFunctions.getRoleLegacy(GetRoleLegacyArgs.builder()
+     *             .roleId("operations")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRoleLegacyResult> getRoleLegacy(GetRoleLegacyArgs args) {
+        return getRoleLegacy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about a specific role.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetRoleLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var operationsRole = ProxmoxveFunctions.getRoleLegacy(GetRoleLegacyArgs.builder()
+     *             .roleId("operations")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRoleLegacyResult> getRoleLegacyPlain(GetRoleLegacyPlainArgs args) {
+        return getRoleLegacyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about a specific role.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetRoleLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var operationsRole = ProxmoxveFunctions.getRoleLegacy(GetRoleLegacyArgs.builder()
+     *             .roleId("operations")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRoleLegacyResult> getRoleLegacy(GetRoleLegacyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getRoleLegacy:getRoleLegacy", TypeShape.of(GetRoleLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about a specific role.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetRoleLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var operationsRole = ProxmoxveFunctions.getRoleLegacy(GetRoleLegacyArgs.builder()
+     *             .roleId("operations")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRoleLegacyResult> getRoleLegacy(GetRoleLegacyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getRoleLegacy:getRoleLegacy", TypeShape.of(GetRoleLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about a specific role.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetRoleLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var operationsRole = ProxmoxveFunctions.getRoleLegacy(GetRoleLegacyArgs.builder()
+     *             .roleId("operations")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRoleLegacyResult> getRoleLegacyPlain(GetRoleLegacyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("proxmoxve:index/getRoleLegacy:getRoleLegacy", TypeShape.of(GetRoleLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about all the available roles.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableRoles = ProxmoxveFunctions.getRolesLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRolesLegacyResult> getRolesLegacy() {
+        return getRolesLegacy(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about all the available roles.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableRoles = ProxmoxveFunctions.getRolesLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRolesLegacyResult> getRolesLegacyPlain() {
+        return getRolesLegacyPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about all the available roles.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableRoles = ProxmoxveFunctions.getRolesLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRolesLegacyResult> getRolesLegacy(InvokeArgs args) {
+        return getRolesLegacy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about all the available roles.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableRoles = ProxmoxveFunctions.getRolesLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRolesLegacyResult> getRolesLegacyPlain(InvokeArgs args) {
+        return getRolesLegacyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about all the available roles.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableRoles = ProxmoxveFunctions.getRolesLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRolesLegacyResult> getRolesLegacy(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getRolesLegacy:getRolesLegacy", TypeShape.of(GetRolesLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about all the available roles.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableRoles = ProxmoxveFunctions.getRolesLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRolesLegacyResult> getRolesLegacy(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getRolesLegacy:getRolesLegacy", TypeShape.of(GetRolesLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about all the available roles.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableRoles = ProxmoxveFunctions.getRolesLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetRolesLegacyResult> getRolesLegacyPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("proxmoxve:index/getRolesLegacy:getRolesLegacy", TypeShape.of(GetRolesLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current time for a specific node.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetTimeLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNodeTime = ProxmoxveFunctions.getTimeLegacy(GetTimeLegacyArgs.builder()
+     *             .nodeName("first-node")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTimeLegacyResult> getTimeLegacy(GetTimeLegacyArgs args) {
+        return getTimeLegacy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current time for a specific node.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetTimeLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNodeTime = ProxmoxveFunctions.getTimeLegacy(GetTimeLegacyArgs.builder()
+     *             .nodeName("first-node")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetTimeLegacyResult> getTimeLegacyPlain(GetTimeLegacyPlainArgs args) {
+        return getTimeLegacyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current time for a specific node.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetTimeLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNodeTime = ProxmoxveFunctions.getTimeLegacy(GetTimeLegacyArgs.builder()
+     *             .nodeName("first-node")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTimeLegacyResult> getTimeLegacy(GetTimeLegacyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getTimeLegacy:getTimeLegacy", TypeShape.of(GetTimeLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current time for a specific node.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetTimeLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNodeTime = ProxmoxveFunctions.getTimeLegacy(GetTimeLegacyArgs.builder()
+     *             .nodeName("first-node")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTimeLegacyResult> getTimeLegacy(GetTimeLegacyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getTimeLegacy:getTimeLegacy", TypeShape.of(GetTimeLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current time for a specific node.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetTimeLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var firstNodeTime = ProxmoxveFunctions.getTimeLegacy(GetTimeLegacyArgs.builder()
+     *             .nodeName("first-node")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetTimeLegacyResult> getTimeLegacyPlain(GetTimeLegacyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("proxmoxve:index/getTimeLegacy:getTimeLegacy", TypeShape.of(GetTimeLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about a specific user.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetUserLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         final var operationsUser = ProxmoxveFunctions.getUserLegacy(GetUserLegacyArgs.builder()
+     *             .userId("operation}{@literal @}{@code pam")
+     *             .build());
+     * 
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetUserLegacyResult> getUserLegacy(GetUserLegacyArgs args) {
+        return getUserLegacy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about a specific user.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetUserLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         final var operationsUser = ProxmoxveFunctions.getUserLegacy(GetUserLegacyArgs.builder()
+     *             .userId("operation}{@literal @}{@code pam")
+     *             .build());
+     * 
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetUserLegacyResult> getUserLegacyPlain(GetUserLegacyPlainArgs args) {
+        return getUserLegacyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about a specific user.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetUserLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         final var operationsUser = ProxmoxveFunctions.getUserLegacy(GetUserLegacyArgs.builder()
+     *             .userId("operation}{@literal @}{@code pam")
+     *             .build());
+     * 
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetUserLegacyResult> getUserLegacy(GetUserLegacyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getUserLegacy:getUserLegacy", TypeShape.of(GetUserLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about a specific user.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetUserLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         final var operationsUser = ProxmoxveFunctions.getUserLegacy(GetUserLegacyArgs.builder()
+     *             .userId("operation}{@literal @}{@code pam")
+     *             .build());
+     * 
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetUserLegacyResult> getUserLegacy(GetUserLegacyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getUserLegacy:getUserLegacy", TypeShape.of(GetUserLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about a specific user.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetUserLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         final var operationsUser = ProxmoxveFunctions.getUserLegacy(GetUserLegacyArgs.builder()
+     *             .userId("operation}{@literal @}{@code pam")
+     *             .build());
+     * 
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetUserLegacyResult> getUserLegacyPlain(GetUserLegacyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("proxmoxve:index/getUserLegacy:getUserLegacy", TypeShape.of(GetUserLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about all the available users.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableUsers = ProxmoxveFunctions.getUsersLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetUsersLegacyResult> getUsersLegacy() {
+        return getUsersLegacy(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about all the available users.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableUsers = ProxmoxveFunctions.getUsersLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetUsersLegacyResult> getUsersLegacyPlain() {
+        return getUsersLegacyPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about all the available users.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableUsers = ProxmoxveFunctions.getUsersLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetUsersLegacyResult> getUsersLegacy(InvokeArgs args) {
+        return getUsersLegacy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about all the available users.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableUsers = ProxmoxveFunctions.getUsersLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetUsersLegacyResult> getUsersLegacyPlain(InvokeArgs args) {
+        return getUsersLegacyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about all the available users.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableUsers = ProxmoxveFunctions.getUsersLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetUsersLegacyResult> getUsersLegacy(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getUsersLegacy:getUsersLegacy", TypeShape.of(GetUsersLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about all the available users.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableUsers = ProxmoxveFunctions.getUsersLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetUsersLegacyResult> getUsersLegacy(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getUsersLegacy:getUsersLegacy", TypeShape.of(GetUsersLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about all the available users.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var availableUsers = ProxmoxveFunctions.getUsersLegacy(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetUsersLegacyResult> getUsersLegacyPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("proxmoxve:index/getUsersLegacy:getUsersLegacy", TypeShape.of(GetUsersLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Retrieves API version details.
      * 
      */
@@ -2777,5 +6671,703 @@ public final class ProxmoxveFunctions {
      */
     public static CompletableFuture<GetVmResult> getVmPlain(GetVmPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("proxmoxve:index/getVm:getVm", TypeShape.of(GetVmResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about a specific VM.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetVmLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testVm = ProxmoxveFunctions.getVmLegacy(GetVmLegacyArgs.builder()
+     *             .nodeName("test")
+     *             .vmId(100)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVmLegacyResult> getVmLegacy(GetVmLegacyArgs args) {
+        return getVmLegacy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about a specific VM.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetVmLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testVm = ProxmoxveFunctions.getVmLegacy(GetVmLegacyArgs.builder()
+     *             .nodeName("test")
+     *             .vmId(100)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetVmLegacyResult> getVmLegacyPlain(GetVmLegacyPlainArgs args) {
+        return getVmLegacyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about a specific VM.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetVmLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testVm = ProxmoxveFunctions.getVmLegacy(GetVmLegacyArgs.builder()
+     *             .nodeName("test")
+     *             .vmId(100)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVmLegacyResult> getVmLegacy(GetVmLegacyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getVmLegacy:getVmLegacy", TypeShape.of(GetVmLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about a specific VM.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetVmLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testVm = ProxmoxveFunctions.getVmLegacy(GetVmLegacyArgs.builder()
+     *             .nodeName("test")
+     *             .vmId(100)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVmLegacyResult> getVmLegacy(GetVmLegacyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getVmLegacy:getVmLegacy", TypeShape.of(GetVmLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about a specific VM.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetVmLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var testVm = ProxmoxveFunctions.getVmLegacy(GetVmLegacyArgs.builder()
+     *             .nodeName("test")
+     *             .vmId(100)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetVmLegacyResult> getVmLegacyPlain(GetVmLegacyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("proxmoxve:index/getVmLegacy:getVmLegacy", TypeShape.of(GetVmLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about all VMs in the Proxmox cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetVmsLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuVms = ProxmoxveFunctions.getVmsLegacy(GetVmsLegacyArgs.builder()
+     *             .tags("ubuntu")
+     *             .build());
+     * 
+     *         final var ubuntuTemplates = ProxmoxveFunctions.getVmsLegacy(GetVmsLegacyArgs.builder()
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
+     *             .filters(            
+     *                 GetVmsLegacyFilterArgs.builder()
+     *                     .name("template")
+     *                     .values("true")
+     *                     .build(),
+     *                 GetVmsLegacyFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("stopped")
+     *                     .build(),
+     *                 GetVmsLegacyFilterArgs.builder()
+     *                     .name("name")
+     *                     .regex(true)
+     *                     .values("^ubuntu-20.*$")
+     *                     .build(),
+     *                 GetVmsLegacyFilterArgs.builder()
+     *                     .name("node_name")
+     *                     .regex(true)
+     *                     .values(                    
+     *                         "node_us_[1-3]",
+     *                         "node_eu_[1-3]")
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVmsLegacyResult> getVmsLegacy() {
+        return getVmsLegacy(GetVmsLegacyArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about all VMs in the Proxmox cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetVmsLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuVms = ProxmoxveFunctions.getVmsLegacy(GetVmsLegacyArgs.builder()
+     *             .tags("ubuntu")
+     *             .build());
+     * 
+     *         final var ubuntuTemplates = ProxmoxveFunctions.getVmsLegacy(GetVmsLegacyArgs.builder()
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
+     *             .filters(            
+     *                 GetVmsLegacyFilterArgs.builder()
+     *                     .name("template")
+     *                     .values("true")
+     *                     .build(),
+     *                 GetVmsLegacyFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("stopped")
+     *                     .build(),
+     *                 GetVmsLegacyFilterArgs.builder()
+     *                     .name("name")
+     *                     .regex(true)
+     *                     .values("^ubuntu-20.*$")
+     *                     .build(),
+     *                 GetVmsLegacyFilterArgs.builder()
+     *                     .name("node_name")
+     *                     .regex(true)
+     *                     .values(                    
+     *                         "node_us_[1-3]",
+     *                         "node_eu_[1-3]")
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetVmsLegacyResult> getVmsLegacyPlain() {
+        return getVmsLegacyPlain(GetVmsLegacyPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about all VMs in the Proxmox cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetVmsLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuVms = ProxmoxveFunctions.getVmsLegacy(GetVmsLegacyArgs.builder()
+     *             .tags("ubuntu")
+     *             .build());
+     * 
+     *         final var ubuntuTemplates = ProxmoxveFunctions.getVmsLegacy(GetVmsLegacyArgs.builder()
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
+     *             .filters(            
+     *                 GetVmsLegacyFilterArgs.builder()
+     *                     .name("template")
+     *                     .values("true")
+     *                     .build(),
+     *                 GetVmsLegacyFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("stopped")
+     *                     .build(),
+     *                 GetVmsLegacyFilterArgs.builder()
+     *                     .name("name")
+     *                     .regex(true)
+     *                     .values("^ubuntu-20.*$")
+     *                     .build(),
+     *                 GetVmsLegacyFilterArgs.builder()
+     *                     .name("node_name")
+     *                     .regex(true)
+     *                     .values(                    
+     *                         "node_us_[1-3]",
+     *                         "node_eu_[1-3]")
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVmsLegacyResult> getVmsLegacy(GetVmsLegacyArgs args) {
+        return getVmsLegacy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about all VMs in the Proxmox cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetVmsLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuVms = ProxmoxveFunctions.getVmsLegacy(GetVmsLegacyArgs.builder()
+     *             .tags("ubuntu")
+     *             .build());
+     * 
+     *         final var ubuntuTemplates = ProxmoxveFunctions.getVmsLegacy(GetVmsLegacyArgs.builder()
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
+     *             .filters(            
+     *                 GetVmsLegacyFilterArgs.builder()
+     *                     .name("template")
+     *                     .values("true")
+     *                     .build(),
+     *                 GetVmsLegacyFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("stopped")
+     *                     .build(),
+     *                 GetVmsLegacyFilterArgs.builder()
+     *                     .name("name")
+     *                     .regex(true)
+     *                     .values("^ubuntu-20.*$")
+     *                     .build(),
+     *                 GetVmsLegacyFilterArgs.builder()
+     *                     .name("node_name")
+     *                     .regex(true)
+     *                     .values(                    
+     *                         "node_us_[1-3]",
+     *                         "node_eu_[1-3]")
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetVmsLegacyResult> getVmsLegacyPlain(GetVmsLegacyPlainArgs args) {
+        return getVmsLegacyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves information about all VMs in the Proxmox cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetVmsLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuVms = ProxmoxveFunctions.getVmsLegacy(GetVmsLegacyArgs.builder()
+     *             .tags("ubuntu")
+     *             .build());
+     * 
+     *         final var ubuntuTemplates = ProxmoxveFunctions.getVmsLegacy(GetVmsLegacyArgs.builder()
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
+     *             .filters(            
+     *                 GetVmsLegacyFilterArgs.builder()
+     *                     .name("template")
+     *                     .values("true")
+     *                     .build(),
+     *                 GetVmsLegacyFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("stopped")
+     *                     .build(),
+     *                 GetVmsLegacyFilterArgs.builder()
+     *                     .name("name")
+     *                     .regex(true)
+     *                     .values("^ubuntu-20.*$")
+     *                     .build(),
+     *                 GetVmsLegacyFilterArgs.builder()
+     *                     .name("node_name")
+     *                     .regex(true)
+     *                     .values(                    
+     *                         "node_us_[1-3]",
+     *                         "node_eu_[1-3]")
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVmsLegacyResult> getVmsLegacy(GetVmsLegacyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getVmsLegacy:getVmsLegacy", TypeShape.of(GetVmsLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about all VMs in the Proxmox cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetVmsLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuVms = ProxmoxveFunctions.getVmsLegacy(GetVmsLegacyArgs.builder()
+     *             .tags("ubuntu")
+     *             .build());
+     * 
+     *         final var ubuntuTemplates = ProxmoxveFunctions.getVmsLegacy(GetVmsLegacyArgs.builder()
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
+     *             .filters(            
+     *                 GetVmsLegacyFilterArgs.builder()
+     *                     .name("template")
+     *                     .values("true")
+     *                     .build(),
+     *                 GetVmsLegacyFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("stopped")
+     *                     .build(),
+     *                 GetVmsLegacyFilterArgs.builder()
+     *                     .name("name")
+     *                     .regex(true)
+     *                     .values("^ubuntu-20.*$")
+     *                     .build(),
+     *                 GetVmsLegacyFilterArgs.builder()
+     *                     .name("node_name")
+     *                     .regex(true)
+     *                     .values(                    
+     *                         "node_us_[1-3]",
+     *                         "node_eu_[1-3]")
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVmsLegacyResult> getVmsLegacy(GetVmsLegacyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:index/getVmsLegacy:getVmsLegacy", TypeShape.of(GetVmsLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves information about all VMs in the Proxmox cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetVmsLegacyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuVms = ProxmoxveFunctions.getVmsLegacy(GetVmsLegacyArgs.builder()
+     *             .tags("ubuntu")
+     *             .build());
+     * 
+     *         final var ubuntuTemplates = ProxmoxveFunctions.getVmsLegacy(GetVmsLegacyArgs.builder()
+     *             .tags(            
+     *                 "template",
+     *                 "latest")
+     *             .filters(            
+     *                 GetVmsLegacyFilterArgs.builder()
+     *                     .name("template")
+     *                     .values("true")
+     *                     .build(),
+     *                 GetVmsLegacyFilterArgs.builder()
+     *                     .name("status")
+     *                     .values("stopped")
+     *                     .build(),
+     *                 GetVmsLegacyFilterArgs.builder()
+     *                     .name("name")
+     *                     .regex(true)
+     *                     .values("^ubuntu-20.*$")
+     *                     .build(),
+     *                 GetVmsLegacyFilterArgs.builder()
+     *                     .name("node_name")
+     *                     .regex(true)
+     *                     .values(                    
+     *                         "node_us_[1-3]",
+     *                         "node_eu_[1-3]")
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetVmsLegacyResult> getVmsLegacyPlain(GetVmsLegacyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("proxmoxve:index/getVmsLegacy:getVmsLegacy", TypeShape.of(GetVmsLegacyResult.class), args, Utilities.withVersion(options));
     }
 }

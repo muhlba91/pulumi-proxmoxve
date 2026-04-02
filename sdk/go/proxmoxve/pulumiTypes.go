@@ -13,6 +13,4102 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ContainerLegacyClone struct {
+	// The identifier for the target datastore.
+	DatastoreId *string `pulumi:"datastoreId"`
+	// The name of the source node (leave blank, if
+	// equal to the `nodeName` argument).
+	NodeName *string `pulumi:"nodeName"`
+	// The identifier for the source container.
+	VmId int `pulumi:"vmId"`
+}
+
+// ContainerLegacyCloneInput is an input type that accepts ContainerLegacyCloneArgs and ContainerLegacyCloneOutput values.
+// You can construct a concrete instance of `ContainerLegacyCloneInput` via:
+//
+//	ContainerLegacyCloneArgs{...}
+type ContainerLegacyCloneInput interface {
+	pulumi.Input
+
+	ToContainerLegacyCloneOutput() ContainerLegacyCloneOutput
+	ToContainerLegacyCloneOutputWithContext(context.Context) ContainerLegacyCloneOutput
+}
+
+type ContainerLegacyCloneArgs struct {
+	// The identifier for the target datastore.
+	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
+	// The name of the source node (leave blank, if
+	// equal to the `nodeName` argument).
+	NodeName pulumi.StringPtrInput `pulumi:"nodeName"`
+	// The identifier for the source container.
+	VmId pulumi.IntInput `pulumi:"vmId"`
+}
+
+func (ContainerLegacyCloneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyClone)(nil)).Elem()
+}
+
+func (i ContainerLegacyCloneArgs) ToContainerLegacyCloneOutput() ContainerLegacyCloneOutput {
+	return i.ToContainerLegacyCloneOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyCloneArgs) ToContainerLegacyCloneOutputWithContext(ctx context.Context) ContainerLegacyCloneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyCloneOutput)
+}
+
+func (i ContainerLegacyCloneArgs) ToContainerLegacyClonePtrOutput() ContainerLegacyClonePtrOutput {
+	return i.ToContainerLegacyClonePtrOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyCloneArgs) ToContainerLegacyClonePtrOutputWithContext(ctx context.Context) ContainerLegacyClonePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyCloneOutput).ToContainerLegacyClonePtrOutputWithContext(ctx)
+}
+
+// ContainerLegacyClonePtrInput is an input type that accepts ContainerLegacyCloneArgs, ContainerLegacyClonePtr and ContainerLegacyClonePtrOutput values.
+// You can construct a concrete instance of `ContainerLegacyClonePtrInput` via:
+//
+//	        ContainerLegacyCloneArgs{...}
+//
+//	or:
+//
+//	        nil
+type ContainerLegacyClonePtrInput interface {
+	pulumi.Input
+
+	ToContainerLegacyClonePtrOutput() ContainerLegacyClonePtrOutput
+	ToContainerLegacyClonePtrOutputWithContext(context.Context) ContainerLegacyClonePtrOutput
+}
+
+type containerLegacyClonePtrType ContainerLegacyCloneArgs
+
+func ContainerLegacyClonePtr(v *ContainerLegacyCloneArgs) ContainerLegacyClonePtrInput {
+	return (*containerLegacyClonePtrType)(v)
+}
+
+func (*containerLegacyClonePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerLegacyClone)(nil)).Elem()
+}
+
+func (i *containerLegacyClonePtrType) ToContainerLegacyClonePtrOutput() ContainerLegacyClonePtrOutput {
+	return i.ToContainerLegacyClonePtrOutputWithContext(context.Background())
+}
+
+func (i *containerLegacyClonePtrType) ToContainerLegacyClonePtrOutputWithContext(ctx context.Context) ContainerLegacyClonePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyClonePtrOutput)
+}
+
+type ContainerLegacyCloneOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyCloneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyClone)(nil)).Elem()
+}
+
+func (o ContainerLegacyCloneOutput) ToContainerLegacyCloneOutput() ContainerLegacyCloneOutput {
+	return o
+}
+
+func (o ContainerLegacyCloneOutput) ToContainerLegacyCloneOutputWithContext(ctx context.Context) ContainerLegacyCloneOutput {
+	return o
+}
+
+func (o ContainerLegacyCloneOutput) ToContainerLegacyClonePtrOutput() ContainerLegacyClonePtrOutput {
+	return o.ToContainerLegacyClonePtrOutputWithContext(context.Background())
+}
+
+func (o ContainerLegacyCloneOutput) ToContainerLegacyClonePtrOutputWithContext(ctx context.Context) ContainerLegacyClonePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerLegacyClone) *ContainerLegacyClone {
+		return &v
+	}).(ContainerLegacyClonePtrOutput)
+}
+
+// The identifier for the target datastore.
+func (o ContainerLegacyCloneOutput) DatastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyClone) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
+}
+
+// The name of the source node (leave blank, if
+// equal to the `nodeName` argument).
+func (o ContainerLegacyCloneOutput) NodeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyClone) *string { return v.NodeName }).(pulumi.StringPtrOutput)
+}
+
+// The identifier for the source container.
+func (o ContainerLegacyCloneOutput) VmId() pulumi.IntOutput {
+	return o.ApplyT(func(v ContainerLegacyClone) int { return v.VmId }).(pulumi.IntOutput)
+}
+
+type ContainerLegacyClonePtrOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyClonePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerLegacyClone)(nil)).Elem()
+}
+
+func (o ContainerLegacyClonePtrOutput) ToContainerLegacyClonePtrOutput() ContainerLegacyClonePtrOutput {
+	return o
+}
+
+func (o ContainerLegacyClonePtrOutput) ToContainerLegacyClonePtrOutputWithContext(ctx context.Context) ContainerLegacyClonePtrOutput {
+	return o
+}
+
+func (o ContainerLegacyClonePtrOutput) Elem() ContainerLegacyCloneOutput {
+	return o.ApplyT(func(v *ContainerLegacyClone) ContainerLegacyClone {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerLegacyClone
+		return ret
+	}).(ContainerLegacyCloneOutput)
+}
+
+// The identifier for the target datastore.
+func (o ContainerLegacyClonePtrOutput) DatastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyClone) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DatastoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the source node (leave blank, if
+// equal to the `nodeName` argument).
+func (o ContainerLegacyClonePtrOutput) NodeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyClone) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The identifier for the source container.
+func (o ContainerLegacyClonePtrOutput) VmId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyClone) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.VmId
+	}).(pulumi.IntPtrOutput)
+}
+
+type ContainerLegacyConsole struct {
+	// Whether to enable the console device (defaults
+	// to `true`).
+	Enabled *bool `pulumi:"enabled"`
+	// The number of available TTY (defaults to `2`).
+	TtyCount *int `pulumi:"ttyCount"`
+	// The console mode (defaults to `tty`).
+	Type *string `pulumi:"type"`
+}
+
+// ContainerLegacyConsoleInput is an input type that accepts ContainerLegacyConsoleArgs and ContainerLegacyConsoleOutput values.
+// You can construct a concrete instance of `ContainerLegacyConsoleInput` via:
+//
+//	ContainerLegacyConsoleArgs{...}
+type ContainerLegacyConsoleInput interface {
+	pulumi.Input
+
+	ToContainerLegacyConsoleOutput() ContainerLegacyConsoleOutput
+	ToContainerLegacyConsoleOutputWithContext(context.Context) ContainerLegacyConsoleOutput
+}
+
+type ContainerLegacyConsoleArgs struct {
+	// Whether to enable the console device (defaults
+	// to `true`).
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The number of available TTY (defaults to `2`).
+	TtyCount pulumi.IntPtrInput `pulumi:"ttyCount"`
+	// The console mode (defaults to `tty`).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (ContainerLegacyConsoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyConsole)(nil)).Elem()
+}
+
+func (i ContainerLegacyConsoleArgs) ToContainerLegacyConsoleOutput() ContainerLegacyConsoleOutput {
+	return i.ToContainerLegacyConsoleOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyConsoleArgs) ToContainerLegacyConsoleOutputWithContext(ctx context.Context) ContainerLegacyConsoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyConsoleOutput)
+}
+
+func (i ContainerLegacyConsoleArgs) ToContainerLegacyConsolePtrOutput() ContainerLegacyConsolePtrOutput {
+	return i.ToContainerLegacyConsolePtrOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyConsoleArgs) ToContainerLegacyConsolePtrOutputWithContext(ctx context.Context) ContainerLegacyConsolePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyConsoleOutput).ToContainerLegacyConsolePtrOutputWithContext(ctx)
+}
+
+// ContainerLegacyConsolePtrInput is an input type that accepts ContainerLegacyConsoleArgs, ContainerLegacyConsolePtr and ContainerLegacyConsolePtrOutput values.
+// You can construct a concrete instance of `ContainerLegacyConsolePtrInput` via:
+//
+//	        ContainerLegacyConsoleArgs{...}
+//
+//	or:
+//
+//	        nil
+type ContainerLegacyConsolePtrInput interface {
+	pulumi.Input
+
+	ToContainerLegacyConsolePtrOutput() ContainerLegacyConsolePtrOutput
+	ToContainerLegacyConsolePtrOutputWithContext(context.Context) ContainerLegacyConsolePtrOutput
+}
+
+type containerLegacyConsolePtrType ContainerLegacyConsoleArgs
+
+func ContainerLegacyConsolePtr(v *ContainerLegacyConsoleArgs) ContainerLegacyConsolePtrInput {
+	return (*containerLegacyConsolePtrType)(v)
+}
+
+func (*containerLegacyConsolePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerLegacyConsole)(nil)).Elem()
+}
+
+func (i *containerLegacyConsolePtrType) ToContainerLegacyConsolePtrOutput() ContainerLegacyConsolePtrOutput {
+	return i.ToContainerLegacyConsolePtrOutputWithContext(context.Background())
+}
+
+func (i *containerLegacyConsolePtrType) ToContainerLegacyConsolePtrOutputWithContext(ctx context.Context) ContainerLegacyConsolePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyConsolePtrOutput)
+}
+
+type ContainerLegacyConsoleOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyConsoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyConsole)(nil)).Elem()
+}
+
+func (o ContainerLegacyConsoleOutput) ToContainerLegacyConsoleOutput() ContainerLegacyConsoleOutput {
+	return o
+}
+
+func (o ContainerLegacyConsoleOutput) ToContainerLegacyConsoleOutputWithContext(ctx context.Context) ContainerLegacyConsoleOutput {
+	return o
+}
+
+func (o ContainerLegacyConsoleOutput) ToContainerLegacyConsolePtrOutput() ContainerLegacyConsolePtrOutput {
+	return o.ToContainerLegacyConsolePtrOutputWithContext(context.Background())
+}
+
+func (o ContainerLegacyConsoleOutput) ToContainerLegacyConsolePtrOutputWithContext(ctx context.Context) ContainerLegacyConsolePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerLegacyConsole) *ContainerLegacyConsole {
+		return &v
+	}).(ContainerLegacyConsolePtrOutput)
+}
+
+// Whether to enable the console device (defaults
+// to `true`).
+func (o ContainerLegacyConsoleOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyConsole) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The number of available TTY (defaults to `2`).
+func (o ContainerLegacyConsoleOutput) TtyCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyConsole) *int { return v.TtyCount }).(pulumi.IntPtrOutput)
+}
+
+// The console mode (defaults to `tty`).
+func (o ContainerLegacyConsoleOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyConsole) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ContainerLegacyConsolePtrOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyConsolePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerLegacyConsole)(nil)).Elem()
+}
+
+func (o ContainerLegacyConsolePtrOutput) ToContainerLegacyConsolePtrOutput() ContainerLegacyConsolePtrOutput {
+	return o
+}
+
+func (o ContainerLegacyConsolePtrOutput) ToContainerLegacyConsolePtrOutputWithContext(ctx context.Context) ContainerLegacyConsolePtrOutput {
+	return o
+}
+
+func (o ContainerLegacyConsolePtrOutput) Elem() ContainerLegacyConsoleOutput {
+	return o.ApplyT(func(v *ContainerLegacyConsole) ContainerLegacyConsole {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerLegacyConsole
+		return ret
+	}).(ContainerLegacyConsoleOutput)
+}
+
+// Whether to enable the console device (defaults
+// to `true`).
+func (o ContainerLegacyConsolePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyConsole) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The number of available TTY (defaults to `2`).
+func (o ContainerLegacyConsolePtrOutput) TtyCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyConsole) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TtyCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The console mode (defaults to `tty`).
+func (o ContainerLegacyConsolePtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyConsole) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type ContainerLegacyCpu struct {
+	// The CPU architecture (defaults to `amd64`).
+	Architecture *string `pulumi:"architecture"`
+	// The number of CPU cores (defaults to `1`).
+	Cores *int `pulumi:"cores"`
+	// The CPU units (defaults to `1024`).
+	Units *int `pulumi:"units"`
+}
+
+// ContainerLegacyCpuInput is an input type that accepts ContainerLegacyCpuArgs and ContainerLegacyCpuOutput values.
+// You can construct a concrete instance of `ContainerLegacyCpuInput` via:
+//
+//	ContainerLegacyCpuArgs{...}
+type ContainerLegacyCpuInput interface {
+	pulumi.Input
+
+	ToContainerLegacyCpuOutput() ContainerLegacyCpuOutput
+	ToContainerLegacyCpuOutputWithContext(context.Context) ContainerLegacyCpuOutput
+}
+
+type ContainerLegacyCpuArgs struct {
+	// The CPU architecture (defaults to `amd64`).
+	Architecture pulumi.StringPtrInput `pulumi:"architecture"`
+	// The number of CPU cores (defaults to `1`).
+	Cores pulumi.IntPtrInput `pulumi:"cores"`
+	// The CPU units (defaults to `1024`).
+	Units pulumi.IntPtrInput `pulumi:"units"`
+}
+
+func (ContainerLegacyCpuArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyCpu)(nil)).Elem()
+}
+
+func (i ContainerLegacyCpuArgs) ToContainerLegacyCpuOutput() ContainerLegacyCpuOutput {
+	return i.ToContainerLegacyCpuOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyCpuArgs) ToContainerLegacyCpuOutputWithContext(ctx context.Context) ContainerLegacyCpuOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyCpuOutput)
+}
+
+func (i ContainerLegacyCpuArgs) ToContainerLegacyCpuPtrOutput() ContainerLegacyCpuPtrOutput {
+	return i.ToContainerLegacyCpuPtrOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyCpuArgs) ToContainerLegacyCpuPtrOutputWithContext(ctx context.Context) ContainerLegacyCpuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyCpuOutput).ToContainerLegacyCpuPtrOutputWithContext(ctx)
+}
+
+// ContainerLegacyCpuPtrInput is an input type that accepts ContainerLegacyCpuArgs, ContainerLegacyCpuPtr and ContainerLegacyCpuPtrOutput values.
+// You can construct a concrete instance of `ContainerLegacyCpuPtrInput` via:
+//
+//	        ContainerLegacyCpuArgs{...}
+//
+//	or:
+//
+//	        nil
+type ContainerLegacyCpuPtrInput interface {
+	pulumi.Input
+
+	ToContainerLegacyCpuPtrOutput() ContainerLegacyCpuPtrOutput
+	ToContainerLegacyCpuPtrOutputWithContext(context.Context) ContainerLegacyCpuPtrOutput
+}
+
+type containerLegacyCpuPtrType ContainerLegacyCpuArgs
+
+func ContainerLegacyCpuPtr(v *ContainerLegacyCpuArgs) ContainerLegacyCpuPtrInput {
+	return (*containerLegacyCpuPtrType)(v)
+}
+
+func (*containerLegacyCpuPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerLegacyCpu)(nil)).Elem()
+}
+
+func (i *containerLegacyCpuPtrType) ToContainerLegacyCpuPtrOutput() ContainerLegacyCpuPtrOutput {
+	return i.ToContainerLegacyCpuPtrOutputWithContext(context.Background())
+}
+
+func (i *containerLegacyCpuPtrType) ToContainerLegacyCpuPtrOutputWithContext(ctx context.Context) ContainerLegacyCpuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyCpuPtrOutput)
+}
+
+type ContainerLegacyCpuOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyCpuOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyCpu)(nil)).Elem()
+}
+
+func (o ContainerLegacyCpuOutput) ToContainerLegacyCpuOutput() ContainerLegacyCpuOutput {
+	return o
+}
+
+func (o ContainerLegacyCpuOutput) ToContainerLegacyCpuOutputWithContext(ctx context.Context) ContainerLegacyCpuOutput {
+	return o
+}
+
+func (o ContainerLegacyCpuOutput) ToContainerLegacyCpuPtrOutput() ContainerLegacyCpuPtrOutput {
+	return o.ToContainerLegacyCpuPtrOutputWithContext(context.Background())
+}
+
+func (o ContainerLegacyCpuOutput) ToContainerLegacyCpuPtrOutputWithContext(ctx context.Context) ContainerLegacyCpuPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerLegacyCpu) *ContainerLegacyCpu {
+		return &v
+	}).(ContainerLegacyCpuPtrOutput)
+}
+
+// The CPU architecture (defaults to `amd64`).
+func (o ContainerLegacyCpuOutput) Architecture() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyCpu) *string { return v.Architecture }).(pulumi.StringPtrOutput)
+}
+
+// The number of CPU cores (defaults to `1`).
+func (o ContainerLegacyCpuOutput) Cores() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyCpu) *int { return v.Cores }).(pulumi.IntPtrOutput)
+}
+
+// The CPU units (defaults to `1024`).
+func (o ContainerLegacyCpuOutput) Units() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyCpu) *int { return v.Units }).(pulumi.IntPtrOutput)
+}
+
+type ContainerLegacyCpuPtrOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyCpuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerLegacyCpu)(nil)).Elem()
+}
+
+func (o ContainerLegacyCpuPtrOutput) ToContainerLegacyCpuPtrOutput() ContainerLegacyCpuPtrOutput {
+	return o
+}
+
+func (o ContainerLegacyCpuPtrOutput) ToContainerLegacyCpuPtrOutputWithContext(ctx context.Context) ContainerLegacyCpuPtrOutput {
+	return o
+}
+
+func (o ContainerLegacyCpuPtrOutput) Elem() ContainerLegacyCpuOutput {
+	return o.ApplyT(func(v *ContainerLegacyCpu) ContainerLegacyCpu {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerLegacyCpu
+		return ret
+	}).(ContainerLegacyCpuOutput)
+}
+
+// The CPU architecture (defaults to `amd64`).
+func (o ContainerLegacyCpuPtrOutput) Architecture() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyCpu) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Architecture
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of CPU cores (defaults to `1`).
+func (o ContainerLegacyCpuPtrOutput) Cores() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Cores
+	}).(pulumi.IntPtrOutput)
+}
+
+// The CPU units (defaults to `1024`).
+func (o ContainerLegacyCpuPtrOutput) Units() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Units
+	}).(pulumi.IntPtrOutput)
+}
+
+type ContainerLegacyDevicePassthrough struct {
+	// Deny the container to write to the device (defaults to `false`).
+	DenyWrite *bool `pulumi:"denyWrite"`
+	// Group ID to be assigned to the device node.
+	Gid *int `pulumi:"gid"`
+	// Access mode to be set on the device node. Must be a
+	// 4-digit octal number.
+	Mode *string `pulumi:"mode"`
+	// Device to pass through to the container (e.g. `/dev/sda`).
+	Path string `pulumi:"path"`
+	// User ID to be assigned to the device node.
+	Uid *int `pulumi:"uid"`
+}
+
+// ContainerLegacyDevicePassthroughInput is an input type that accepts ContainerLegacyDevicePassthroughArgs and ContainerLegacyDevicePassthroughOutput values.
+// You can construct a concrete instance of `ContainerLegacyDevicePassthroughInput` via:
+//
+//	ContainerLegacyDevicePassthroughArgs{...}
+type ContainerLegacyDevicePassthroughInput interface {
+	pulumi.Input
+
+	ToContainerLegacyDevicePassthroughOutput() ContainerLegacyDevicePassthroughOutput
+	ToContainerLegacyDevicePassthroughOutputWithContext(context.Context) ContainerLegacyDevicePassthroughOutput
+}
+
+type ContainerLegacyDevicePassthroughArgs struct {
+	// Deny the container to write to the device (defaults to `false`).
+	DenyWrite pulumi.BoolPtrInput `pulumi:"denyWrite"`
+	// Group ID to be assigned to the device node.
+	Gid pulumi.IntPtrInput `pulumi:"gid"`
+	// Access mode to be set on the device node. Must be a
+	// 4-digit octal number.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// Device to pass through to the container (e.g. `/dev/sda`).
+	Path pulumi.StringInput `pulumi:"path"`
+	// User ID to be assigned to the device node.
+	Uid pulumi.IntPtrInput `pulumi:"uid"`
+}
+
+func (ContainerLegacyDevicePassthroughArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyDevicePassthrough)(nil)).Elem()
+}
+
+func (i ContainerLegacyDevicePassthroughArgs) ToContainerLegacyDevicePassthroughOutput() ContainerLegacyDevicePassthroughOutput {
+	return i.ToContainerLegacyDevicePassthroughOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyDevicePassthroughArgs) ToContainerLegacyDevicePassthroughOutputWithContext(ctx context.Context) ContainerLegacyDevicePassthroughOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyDevicePassthroughOutput)
+}
+
+// ContainerLegacyDevicePassthroughArrayInput is an input type that accepts ContainerLegacyDevicePassthroughArray and ContainerLegacyDevicePassthroughArrayOutput values.
+// You can construct a concrete instance of `ContainerLegacyDevicePassthroughArrayInput` via:
+//
+//	ContainerLegacyDevicePassthroughArray{ ContainerLegacyDevicePassthroughArgs{...} }
+type ContainerLegacyDevicePassthroughArrayInput interface {
+	pulumi.Input
+
+	ToContainerLegacyDevicePassthroughArrayOutput() ContainerLegacyDevicePassthroughArrayOutput
+	ToContainerLegacyDevicePassthroughArrayOutputWithContext(context.Context) ContainerLegacyDevicePassthroughArrayOutput
+}
+
+type ContainerLegacyDevicePassthroughArray []ContainerLegacyDevicePassthroughInput
+
+func (ContainerLegacyDevicePassthroughArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerLegacyDevicePassthrough)(nil)).Elem()
+}
+
+func (i ContainerLegacyDevicePassthroughArray) ToContainerLegacyDevicePassthroughArrayOutput() ContainerLegacyDevicePassthroughArrayOutput {
+	return i.ToContainerLegacyDevicePassthroughArrayOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyDevicePassthroughArray) ToContainerLegacyDevicePassthroughArrayOutputWithContext(ctx context.Context) ContainerLegacyDevicePassthroughArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyDevicePassthroughArrayOutput)
+}
+
+type ContainerLegacyDevicePassthroughOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyDevicePassthroughOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyDevicePassthrough)(nil)).Elem()
+}
+
+func (o ContainerLegacyDevicePassthroughOutput) ToContainerLegacyDevicePassthroughOutput() ContainerLegacyDevicePassthroughOutput {
+	return o
+}
+
+func (o ContainerLegacyDevicePassthroughOutput) ToContainerLegacyDevicePassthroughOutputWithContext(ctx context.Context) ContainerLegacyDevicePassthroughOutput {
+	return o
+}
+
+// Deny the container to write to the device (defaults to `false`).
+func (o ContainerLegacyDevicePassthroughOutput) DenyWrite() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyDevicePassthrough) *bool { return v.DenyWrite }).(pulumi.BoolPtrOutput)
+}
+
+// Group ID to be assigned to the device node.
+func (o ContainerLegacyDevicePassthroughOutput) Gid() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyDevicePassthrough) *int { return v.Gid }).(pulumi.IntPtrOutput)
+}
+
+// Access mode to be set on the device node. Must be a
+// 4-digit octal number.
+func (o ContainerLegacyDevicePassthroughOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyDevicePassthrough) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// Device to pass through to the container (e.g. `/dev/sda`).
+func (o ContainerLegacyDevicePassthroughOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerLegacyDevicePassthrough) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// User ID to be assigned to the device node.
+func (o ContainerLegacyDevicePassthroughOutput) Uid() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyDevicePassthrough) *int { return v.Uid }).(pulumi.IntPtrOutput)
+}
+
+type ContainerLegacyDevicePassthroughArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyDevicePassthroughArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerLegacyDevicePassthrough)(nil)).Elem()
+}
+
+func (o ContainerLegacyDevicePassthroughArrayOutput) ToContainerLegacyDevicePassthroughArrayOutput() ContainerLegacyDevicePassthroughArrayOutput {
+	return o
+}
+
+func (o ContainerLegacyDevicePassthroughArrayOutput) ToContainerLegacyDevicePassthroughArrayOutputWithContext(ctx context.Context) ContainerLegacyDevicePassthroughArrayOutput {
+	return o
+}
+
+func (o ContainerLegacyDevicePassthroughArrayOutput) Index(i pulumi.IntInput) ContainerLegacyDevicePassthroughOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerLegacyDevicePassthrough {
+		return vs[0].([]ContainerLegacyDevicePassthrough)[vs[1].(int)]
+	}).(ContainerLegacyDevicePassthroughOutput)
+}
+
+type ContainerLegacyDisk struct {
+	// Explicitly enable or disable ACL support
+	Acl *bool `pulumi:"acl"`
+	// The identifier for the datastore to create the
+	// disk in (defaults to `local`).
+	DatastoreId *string `pulumi:"datastoreId"`
+	// List of extra mount options.
+	MountOptions []string `pulumi:"mountOptions"`
+	// The in-datastore path to the disk image.
+	// Use this attribute for cross-resource references.
+	PathInDatastore *string `pulumi:"pathInDatastore"`
+	// Enable user quotas for the container rootfs
+	Quota *bool `pulumi:"quota"`
+	// Will include this volume to a storage replica job
+	Replicate *bool `pulumi:"replicate"`
+	// The size of the root filesystem in gigabytes (defaults
+	// to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.
+	// Requires `datastoreId` to be set.
+	Size *int `pulumi:"size"`
+}
+
+// ContainerLegacyDiskInput is an input type that accepts ContainerLegacyDiskArgs and ContainerLegacyDiskOutput values.
+// You can construct a concrete instance of `ContainerLegacyDiskInput` via:
+//
+//	ContainerLegacyDiskArgs{...}
+type ContainerLegacyDiskInput interface {
+	pulumi.Input
+
+	ToContainerLegacyDiskOutput() ContainerLegacyDiskOutput
+	ToContainerLegacyDiskOutputWithContext(context.Context) ContainerLegacyDiskOutput
+}
+
+type ContainerLegacyDiskArgs struct {
+	// Explicitly enable or disable ACL support
+	Acl pulumi.BoolPtrInput `pulumi:"acl"`
+	// The identifier for the datastore to create the
+	// disk in (defaults to `local`).
+	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
+	// List of extra mount options.
+	MountOptions pulumi.StringArrayInput `pulumi:"mountOptions"`
+	// The in-datastore path to the disk image.
+	// Use this attribute for cross-resource references.
+	PathInDatastore pulumi.StringPtrInput `pulumi:"pathInDatastore"`
+	// Enable user quotas for the container rootfs
+	Quota pulumi.BoolPtrInput `pulumi:"quota"`
+	// Will include this volume to a storage replica job
+	Replicate pulumi.BoolPtrInput `pulumi:"replicate"`
+	// The size of the root filesystem in gigabytes (defaults
+	// to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.
+	// Requires `datastoreId` to be set.
+	Size pulumi.IntPtrInput `pulumi:"size"`
+}
+
+func (ContainerLegacyDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyDisk)(nil)).Elem()
+}
+
+func (i ContainerLegacyDiskArgs) ToContainerLegacyDiskOutput() ContainerLegacyDiskOutput {
+	return i.ToContainerLegacyDiskOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyDiskArgs) ToContainerLegacyDiskOutputWithContext(ctx context.Context) ContainerLegacyDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyDiskOutput)
+}
+
+func (i ContainerLegacyDiskArgs) ToContainerLegacyDiskPtrOutput() ContainerLegacyDiskPtrOutput {
+	return i.ToContainerLegacyDiskPtrOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyDiskArgs) ToContainerLegacyDiskPtrOutputWithContext(ctx context.Context) ContainerLegacyDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyDiskOutput).ToContainerLegacyDiskPtrOutputWithContext(ctx)
+}
+
+// ContainerLegacyDiskPtrInput is an input type that accepts ContainerLegacyDiskArgs, ContainerLegacyDiskPtr and ContainerLegacyDiskPtrOutput values.
+// You can construct a concrete instance of `ContainerLegacyDiskPtrInput` via:
+//
+//	        ContainerLegacyDiskArgs{...}
+//
+//	or:
+//
+//	        nil
+type ContainerLegacyDiskPtrInput interface {
+	pulumi.Input
+
+	ToContainerLegacyDiskPtrOutput() ContainerLegacyDiskPtrOutput
+	ToContainerLegacyDiskPtrOutputWithContext(context.Context) ContainerLegacyDiskPtrOutput
+}
+
+type containerLegacyDiskPtrType ContainerLegacyDiskArgs
+
+func ContainerLegacyDiskPtr(v *ContainerLegacyDiskArgs) ContainerLegacyDiskPtrInput {
+	return (*containerLegacyDiskPtrType)(v)
+}
+
+func (*containerLegacyDiskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerLegacyDisk)(nil)).Elem()
+}
+
+func (i *containerLegacyDiskPtrType) ToContainerLegacyDiskPtrOutput() ContainerLegacyDiskPtrOutput {
+	return i.ToContainerLegacyDiskPtrOutputWithContext(context.Background())
+}
+
+func (i *containerLegacyDiskPtrType) ToContainerLegacyDiskPtrOutputWithContext(ctx context.Context) ContainerLegacyDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyDiskPtrOutput)
+}
+
+type ContainerLegacyDiskOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyDisk)(nil)).Elem()
+}
+
+func (o ContainerLegacyDiskOutput) ToContainerLegacyDiskOutput() ContainerLegacyDiskOutput {
+	return o
+}
+
+func (o ContainerLegacyDiskOutput) ToContainerLegacyDiskOutputWithContext(ctx context.Context) ContainerLegacyDiskOutput {
+	return o
+}
+
+func (o ContainerLegacyDiskOutput) ToContainerLegacyDiskPtrOutput() ContainerLegacyDiskPtrOutput {
+	return o.ToContainerLegacyDiskPtrOutputWithContext(context.Background())
+}
+
+func (o ContainerLegacyDiskOutput) ToContainerLegacyDiskPtrOutputWithContext(ctx context.Context) ContainerLegacyDiskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerLegacyDisk) *ContainerLegacyDisk {
+		return &v
+	}).(ContainerLegacyDiskPtrOutput)
+}
+
+// Explicitly enable or disable ACL support
+func (o ContainerLegacyDiskOutput) Acl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyDisk) *bool { return v.Acl }).(pulumi.BoolPtrOutput)
+}
+
+// The identifier for the datastore to create the
+// disk in (defaults to `local`).
+func (o ContainerLegacyDiskOutput) DatastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyDisk) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
+}
+
+// List of extra mount options.
+func (o ContainerLegacyDiskOutput) MountOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ContainerLegacyDisk) []string { return v.MountOptions }).(pulumi.StringArrayOutput)
+}
+
+// The in-datastore path to the disk image.
+// Use this attribute for cross-resource references.
+func (o ContainerLegacyDiskOutput) PathInDatastore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyDisk) *string { return v.PathInDatastore }).(pulumi.StringPtrOutput)
+}
+
+// Enable user quotas for the container rootfs
+func (o ContainerLegacyDiskOutput) Quota() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyDisk) *bool { return v.Quota }).(pulumi.BoolPtrOutput)
+}
+
+// Will include this volume to a storage replica job
+func (o ContainerLegacyDiskOutput) Replicate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyDisk) *bool { return v.Replicate }).(pulumi.BoolPtrOutput)
+}
+
+// The size of the root filesystem in gigabytes (defaults
+// to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.
+// Requires `datastoreId` to be set.
+func (o ContainerLegacyDiskOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+type ContainerLegacyDiskPtrOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyDiskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerLegacyDisk)(nil)).Elem()
+}
+
+func (o ContainerLegacyDiskPtrOutput) ToContainerLegacyDiskPtrOutput() ContainerLegacyDiskPtrOutput {
+	return o
+}
+
+func (o ContainerLegacyDiskPtrOutput) ToContainerLegacyDiskPtrOutputWithContext(ctx context.Context) ContainerLegacyDiskPtrOutput {
+	return o
+}
+
+func (o ContainerLegacyDiskPtrOutput) Elem() ContainerLegacyDiskOutput {
+	return o.ApplyT(func(v *ContainerLegacyDisk) ContainerLegacyDisk {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerLegacyDisk
+		return ret
+	}).(ContainerLegacyDiskOutput)
+}
+
+// Explicitly enable or disable ACL support
+func (o ContainerLegacyDiskPtrOutput) Acl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyDisk) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Acl
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The identifier for the datastore to create the
+// disk in (defaults to `local`).
+func (o ContainerLegacyDiskPtrOutput) DatastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DatastoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of extra mount options.
+func (o ContainerLegacyDiskPtrOutput) MountOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ContainerLegacyDisk) []string {
+		if v == nil {
+			return nil
+		}
+		return v.MountOptions
+	}).(pulumi.StringArrayOutput)
+}
+
+// The in-datastore path to the disk image.
+// Use this attribute for cross-resource references.
+func (o ContainerLegacyDiskPtrOutput) PathInDatastore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PathInDatastore
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enable user quotas for the container rootfs
+func (o ContainerLegacyDiskPtrOutput) Quota() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyDisk) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Quota
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Will include this volume to a storage replica job
+func (o ContainerLegacyDiskPtrOutput) Replicate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyDisk) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Replicate
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The size of the root filesystem in gigabytes (defaults
+// to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.
+// Requires `datastoreId` to be set.
+func (o ContainerLegacyDiskPtrOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyDisk) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Size
+	}).(pulumi.IntPtrOutput)
+}
+
+type ContainerLegacyFeatures struct {
+	// Whether the container supports FUSE mounts (defaults to `false`)
+	Fuse *bool `pulumi:"fuse"`
+	// Whether the container supports `keyctl()` system call (defaults to `false`)
+	Keyctl *bool `pulumi:"keyctl"`
+	// List of allowed mount types (`cifs` or `nfs`)
+	Mounts []string `pulumi:"mounts"`
+	// Whether the container is nested (defaults to `false`)
+	Nesting *bool `pulumi:"nesting"`
+}
+
+// ContainerLegacyFeaturesInput is an input type that accepts ContainerLegacyFeaturesArgs and ContainerLegacyFeaturesOutput values.
+// You can construct a concrete instance of `ContainerLegacyFeaturesInput` via:
+//
+//	ContainerLegacyFeaturesArgs{...}
+type ContainerLegacyFeaturesInput interface {
+	pulumi.Input
+
+	ToContainerLegacyFeaturesOutput() ContainerLegacyFeaturesOutput
+	ToContainerLegacyFeaturesOutputWithContext(context.Context) ContainerLegacyFeaturesOutput
+}
+
+type ContainerLegacyFeaturesArgs struct {
+	// Whether the container supports FUSE mounts (defaults to `false`)
+	Fuse pulumi.BoolPtrInput `pulumi:"fuse"`
+	// Whether the container supports `keyctl()` system call (defaults to `false`)
+	Keyctl pulumi.BoolPtrInput `pulumi:"keyctl"`
+	// List of allowed mount types (`cifs` or `nfs`)
+	Mounts pulumi.StringArrayInput `pulumi:"mounts"`
+	// Whether the container is nested (defaults to `false`)
+	Nesting pulumi.BoolPtrInput `pulumi:"nesting"`
+}
+
+func (ContainerLegacyFeaturesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyFeatures)(nil)).Elem()
+}
+
+func (i ContainerLegacyFeaturesArgs) ToContainerLegacyFeaturesOutput() ContainerLegacyFeaturesOutput {
+	return i.ToContainerLegacyFeaturesOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyFeaturesArgs) ToContainerLegacyFeaturesOutputWithContext(ctx context.Context) ContainerLegacyFeaturesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyFeaturesOutput)
+}
+
+func (i ContainerLegacyFeaturesArgs) ToContainerLegacyFeaturesPtrOutput() ContainerLegacyFeaturesPtrOutput {
+	return i.ToContainerLegacyFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyFeaturesArgs) ToContainerLegacyFeaturesPtrOutputWithContext(ctx context.Context) ContainerLegacyFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyFeaturesOutput).ToContainerLegacyFeaturesPtrOutputWithContext(ctx)
+}
+
+// ContainerLegacyFeaturesPtrInput is an input type that accepts ContainerLegacyFeaturesArgs, ContainerLegacyFeaturesPtr and ContainerLegacyFeaturesPtrOutput values.
+// You can construct a concrete instance of `ContainerLegacyFeaturesPtrInput` via:
+//
+//	        ContainerLegacyFeaturesArgs{...}
+//
+//	or:
+//
+//	        nil
+type ContainerLegacyFeaturesPtrInput interface {
+	pulumi.Input
+
+	ToContainerLegacyFeaturesPtrOutput() ContainerLegacyFeaturesPtrOutput
+	ToContainerLegacyFeaturesPtrOutputWithContext(context.Context) ContainerLegacyFeaturesPtrOutput
+}
+
+type containerLegacyFeaturesPtrType ContainerLegacyFeaturesArgs
+
+func ContainerLegacyFeaturesPtr(v *ContainerLegacyFeaturesArgs) ContainerLegacyFeaturesPtrInput {
+	return (*containerLegacyFeaturesPtrType)(v)
+}
+
+func (*containerLegacyFeaturesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerLegacyFeatures)(nil)).Elem()
+}
+
+func (i *containerLegacyFeaturesPtrType) ToContainerLegacyFeaturesPtrOutput() ContainerLegacyFeaturesPtrOutput {
+	return i.ToContainerLegacyFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (i *containerLegacyFeaturesPtrType) ToContainerLegacyFeaturesPtrOutputWithContext(ctx context.Context) ContainerLegacyFeaturesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyFeaturesPtrOutput)
+}
+
+type ContainerLegacyFeaturesOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyFeaturesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyFeatures)(nil)).Elem()
+}
+
+func (o ContainerLegacyFeaturesOutput) ToContainerLegacyFeaturesOutput() ContainerLegacyFeaturesOutput {
+	return o
+}
+
+func (o ContainerLegacyFeaturesOutput) ToContainerLegacyFeaturesOutputWithContext(ctx context.Context) ContainerLegacyFeaturesOutput {
+	return o
+}
+
+func (o ContainerLegacyFeaturesOutput) ToContainerLegacyFeaturesPtrOutput() ContainerLegacyFeaturesPtrOutput {
+	return o.ToContainerLegacyFeaturesPtrOutputWithContext(context.Background())
+}
+
+func (o ContainerLegacyFeaturesOutput) ToContainerLegacyFeaturesPtrOutputWithContext(ctx context.Context) ContainerLegacyFeaturesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerLegacyFeatures) *ContainerLegacyFeatures {
+		return &v
+	}).(ContainerLegacyFeaturesPtrOutput)
+}
+
+// Whether the container supports FUSE mounts (defaults to `false`)
+func (o ContainerLegacyFeaturesOutput) Fuse() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyFeatures) *bool { return v.Fuse }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the container supports `keyctl()` system call (defaults to `false`)
+func (o ContainerLegacyFeaturesOutput) Keyctl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyFeatures) *bool { return v.Keyctl }).(pulumi.BoolPtrOutput)
+}
+
+// List of allowed mount types (`cifs` or `nfs`)
+func (o ContainerLegacyFeaturesOutput) Mounts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ContainerLegacyFeatures) []string { return v.Mounts }).(pulumi.StringArrayOutput)
+}
+
+// Whether the container is nested (defaults to `false`)
+func (o ContainerLegacyFeaturesOutput) Nesting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyFeatures) *bool { return v.Nesting }).(pulumi.BoolPtrOutput)
+}
+
+type ContainerLegacyFeaturesPtrOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyFeaturesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerLegacyFeatures)(nil)).Elem()
+}
+
+func (o ContainerLegacyFeaturesPtrOutput) ToContainerLegacyFeaturesPtrOutput() ContainerLegacyFeaturesPtrOutput {
+	return o
+}
+
+func (o ContainerLegacyFeaturesPtrOutput) ToContainerLegacyFeaturesPtrOutputWithContext(ctx context.Context) ContainerLegacyFeaturesPtrOutput {
+	return o
+}
+
+func (o ContainerLegacyFeaturesPtrOutput) Elem() ContainerLegacyFeaturesOutput {
+	return o.ApplyT(func(v *ContainerLegacyFeatures) ContainerLegacyFeatures {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerLegacyFeatures
+		return ret
+	}).(ContainerLegacyFeaturesOutput)
+}
+
+// Whether the container supports FUSE mounts (defaults to `false`)
+func (o ContainerLegacyFeaturesPtrOutput) Fuse() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyFeatures) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Fuse
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether the container supports `keyctl()` system call (defaults to `false`)
+func (o ContainerLegacyFeaturesPtrOutput) Keyctl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyFeatures) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Keyctl
+	}).(pulumi.BoolPtrOutput)
+}
+
+// List of allowed mount types (`cifs` or `nfs`)
+func (o ContainerLegacyFeaturesPtrOutput) Mounts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ContainerLegacyFeatures) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Mounts
+	}).(pulumi.StringArrayOutput)
+}
+
+// Whether the container is nested (defaults to `false`)
+func (o ContainerLegacyFeaturesPtrOutput) Nesting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyFeatures) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Nesting
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ContainerLegacyIdmap struct {
+	// Starting ID in the container namespace.
+	ContainerId int `pulumi:"containerId"`
+	// Starting ID in the host namespace.
+	HostId int `pulumi:"hostId"`
+	// Number of IDs to map (must be at least `1`).
+	Size int `pulumi:"size"`
+	// Mapping type (`uid` or `gid`).
+	Type string `pulumi:"type"`
+}
+
+// ContainerLegacyIdmapInput is an input type that accepts ContainerLegacyIdmapArgs and ContainerLegacyIdmapOutput values.
+// You can construct a concrete instance of `ContainerLegacyIdmapInput` via:
+//
+//	ContainerLegacyIdmapArgs{...}
+type ContainerLegacyIdmapInput interface {
+	pulumi.Input
+
+	ToContainerLegacyIdmapOutput() ContainerLegacyIdmapOutput
+	ToContainerLegacyIdmapOutputWithContext(context.Context) ContainerLegacyIdmapOutput
+}
+
+type ContainerLegacyIdmapArgs struct {
+	// Starting ID in the container namespace.
+	ContainerId pulumi.IntInput `pulumi:"containerId"`
+	// Starting ID in the host namespace.
+	HostId pulumi.IntInput `pulumi:"hostId"`
+	// Number of IDs to map (must be at least `1`).
+	Size pulumi.IntInput `pulumi:"size"`
+	// Mapping type (`uid` or `gid`).
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (ContainerLegacyIdmapArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyIdmap)(nil)).Elem()
+}
+
+func (i ContainerLegacyIdmapArgs) ToContainerLegacyIdmapOutput() ContainerLegacyIdmapOutput {
+	return i.ToContainerLegacyIdmapOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyIdmapArgs) ToContainerLegacyIdmapOutputWithContext(ctx context.Context) ContainerLegacyIdmapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyIdmapOutput)
+}
+
+// ContainerLegacyIdmapArrayInput is an input type that accepts ContainerLegacyIdmapArray and ContainerLegacyIdmapArrayOutput values.
+// You can construct a concrete instance of `ContainerLegacyIdmapArrayInput` via:
+//
+//	ContainerLegacyIdmapArray{ ContainerLegacyIdmapArgs{...} }
+type ContainerLegacyIdmapArrayInput interface {
+	pulumi.Input
+
+	ToContainerLegacyIdmapArrayOutput() ContainerLegacyIdmapArrayOutput
+	ToContainerLegacyIdmapArrayOutputWithContext(context.Context) ContainerLegacyIdmapArrayOutput
+}
+
+type ContainerLegacyIdmapArray []ContainerLegacyIdmapInput
+
+func (ContainerLegacyIdmapArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerLegacyIdmap)(nil)).Elem()
+}
+
+func (i ContainerLegacyIdmapArray) ToContainerLegacyIdmapArrayOutput() ContainerLegacyIdmapArrayOutput {
+	return i.ToContainerLegacyIdmapArrayOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyIdmapArray) ToContainerLegacyIdmapArrayOutputWithContext(ctx context.Context) ContainerLegacyIdmapArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyIdmapArrayOutput)
+}
+
+type ContainerLegacyIdmapOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyIdmapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyIdmap)(nil)).Elem()
+}
+
+func (o ContainerLegacyIdmapOutput) ToContainerLegacyIdmapOutput() ContainerLegacyIdmapOutput {
+	return o
+}
+
+func (o ContainerLegacyIdmapOutput) ToContainerLegacyIdmapOutputWithContext(ctx context.Context) ContainerLegacyIdmapOutput {
+	return o
+}
+
+// Starting ID in the container namespace.
+func (o ContainerLegacyIdmapOutput) ContainerId() pulumi.IntOutput {
+	return o.ApplyT(func(v ContainerLegacyIdmap) int { return v.ContainerId }).(pulumi.IntOutput)
+}
+
+// Starting ID in the host namespace.
+func (o ContainerLegacyIdmapOutput) HostId() pulumi.IntOutput {
+	return o.ApplyT(func(v ContainerLegacyIdmap) int { return v.HostId }).(pulumi.IntOutput)
+}
+
+// Number of IDs to map (must be at least `1`).
+func (o ContainerLegacyIdmapOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v ContainerLegacyIdmap) int { return v.Size }).(pulumi.IntOutput)
+}
+
+// Mapping type (`uid` or `gid`).
+func (o ContainerLegacyIdmapOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerLegacyIdmap) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type ContainerLegacyIdmapArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyIdmapArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerLegacyIdmap)(nil)).Elem()
+}
+
+func (o ContainerLegacyIdmapArrayOutput) ToContainerLegacyIdmapArrayOutput() ContainerLegacyIdmapArrayOutput {
+	return o
+}
+
+func (o ContainerLegacyIdmapArrayOutput) ToContainerLegacyIdmapArrayOutputWithContext(ctx context.Context) ContainerLegacyIdmapArrayOutput {
+	return o
+}
+
+func (o ContainerLegacyIdmapArrayOutput) Index(i pulumi.IntInput) ContainerLegacyIdmapOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerLegacyIdmap {
+		return vs[0].([]ContainerLegacyIdmap)[vs[1].(int)]
+	}).(ContainerLegacyIdmapOutput)
+}
+
+type ContainerLegacyInitialization struct {
+	// The DNS configuration.
+	Dns *ContainerLegacyInitializationDns `pulumi:"dns"`
+	// Command to run as init, optionally with arguments. It may start with an absolute path, relative path, or a binary in `$PATH`.
+	Entrypoint *string `pulumi:"entrypoint"`
+	// The hostname. Must be a valid DNS name.
+	Hostname *string `pulumi:"hostname"`
+	// The IP configuration (one block per network
+	// device).
+	IpConfigs []ContainerLegacyInitializationIpConfig `pulumi:"ipConfigs"`
+	// The user account configuration.
+	UserAccount *ContainerLegacyInitializationUserAccount `pulumi:"userAccount"`
+}
+
+// ContainerLegacyInitializationInput is an input type that accepts ContainerLegacyInitializationArgs and ContainerLegacyInitializationOutput values.
+// You can construct a concrete instance of `ContainerLegacyInitializationInput` via:
+//
+//	ContainerLegacyInitializationArgs{...}
+type ContainerLegacyInitializationInput interface {
+	pulumi.Input
+
+	ToContainerLegacyInitializationOutput() ContainerLegacyInitializationOutput
+	ToContainerLegacyInitializationOutputWithContext(context.Context) ContainerLegacyInitializationOutput
+}
+
+type ContainerLegacyInitializationArgs struct {
+	// The DNS configuration.
+	Dns ContainerLegacyInitializationDnsPtrInput `pulumi:"dns"`
+	// Command to run as init, optionally with arguments. It may start with an absolute path, relative path, or a binary in `$PATH`.
+	Entrypoint pulumi.StringPtrInput `pulumi:"entrypoint"`
+	// The hostname. Must be a valid DNS name.
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// The IP configuration (one block per network
+	// device).
+	IpConfigs ContainerLegacyInitializationIpConfigArrayInput `pulumi:"ipConfigs"`
+	// The user account configuration.
+	UserAccount ContainerLegacyInitializationUserAccountPtrInput `pulumi:"userAccount"`
+}
+
+func (ContainerLegacyInitializationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyInitialization)(nil)).Elem()
+}
+
+func (i ContainerLegacyInitializationArgs) ToContainerLegacyInitializationOutput() ContainerLegacyInitializationOutput {
+	return i.ToContainerLegacyInitializationOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyInitializationArgs) ToContainerLegacyInitializationOutputWithContext(ctx context.Context) ContainerLegacyInitializationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyInitializationOutput)
+}
+
+func (i ContainerLegacyInitializationArgs) ToContainerLegacyInitializationPtrOutput() ContainerLegacyInitializationPtrOutput {
+	return i.ToContainerLegacyInitializationPtrOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyInitializationArgs) ToContainerLegacyInitializationPtrOutputWithContext(ctx context.Context) ContainerLegacyInitializationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyInitializationOutput).ToContainerLegacyInitializationPtrOutputWithContext(ctx)
+}
+
+// ContainerLegacyInitializationPtrInput is an input type that accepts ContainerLegacyInitializationArgs, ContainerLegacyInitializationPtr and ContainerLegacyInitializationPtrOutput values.
+// You can construct a concrete instance of `ContainerLegacyInitializationPtrInput` via:
+//
+//	        ContainerLegacyInitializationArgs{...}
+//
+//	or:
+//
+//	        nil
+type ContainerLegacyInitializationPtrInput interface {
+	pulumi.Input
+
+	ToContainerLegacyInitializationPtrOutput() ContainerLegacyInitializationPtrOutput
+	ToContainerLegacyInitializationPtrOutputWithContext(context.Context) ContainerLegacyInitializationPtrOutput
+}
+
+type containerLegacyInitializationPtrType ContainerLegacyInitializationArgs
+
+func ContainerLegacyInitializationPtr(v *ContainerLegacyInitializationArgs) ContainerLegacyInitializationPtrInput {
+	return (*containerLegacyInitializationPtrType)(v)
+}
+
+func (*containerLegacyInitializationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerLegacyInitialization)(nil)).Elem()
+}
+
+func (i *containerLegacyInitializationPtrType) ToContainerLegacyInitializationPtrOutput() ContainerLegacyInitializationPtrOutput {
+	return i.ToContainerLegacyInitializationPtrOutputWithContext(context.Background())
+}
+
+func (i *containerLegacyInitializationPtrType) ToContainerLegacyInitializationPtrOutputWithContext(ctx context.Context) ContainerLegacyInitializationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyInitializationPtrOutput)
+}
+
+type ContainerLegacyInitializationOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyInitializationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyInitialization)(nil)).Elem()
+}
+
+func (o ContainerLegacyInitializationOutput) ToContainerLegacyInitializationOutput() ContainerLegacyInitializationOutput {
+	return o
+}
+
+func (o ContainerLegacyInitializationOutput) ToContainerLegacyInitializationOutputWithContext(ctx context.Context) ContainerLegacyInitializationOutput {
+	return o
+}
+
+func (o ContainerLegacyInitializationOutput) ToContainerLegacyInitializationPtrOutput() ContainerLegacyInitializationPtrOutput {
+	return o.ToContainerLegacyInitializationPtrOutputWithContext(context.Background())
+}
+
+func (o ContainerLegacyInitializationOutput) ToContainerLegacyInitializationPtrOutputWithContext(ctx context.Context) ContainerLegacyInitializationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerLegacyInitialization) *ContainerLegacyInitialization {
+		return &v
+	}).(ContainerLegacyInitializationPtrOutput)
+}
+
+// The DNS configuration.
+func (o ContainerLegacyInitializationOutput) Dns() ContainerLegacyInitializationDnsPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyInitialization) *ContainerLegacyInitializationDns { return v.Dns }).(ContainerLegacyInitializationDnsPtrOutput)
+}
+
+// Command to run as init, optionally with arguments. It may start with an absolute path, relative path, or a binary in `$PATH`.
+func (o ContainerLegacyInitializationOutput) Entrypoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyInitialization) *string { return v.Entrypoint }).(pulumi.StringPtrOutput)
+}
+
+// The hostname. Must be a valid DNS name.
+func (o ContainerLegacyInitializationOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyInitialization) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// The IP configuration (one block per network
+// device).
+func (o ContainerLegacyInitializationOutput) IpConfigs() ContainerLegacyInitializationIpConfigArrayOutput {
+	return o.ApplyT(func(v ContainerLegacyInitialization) []ContainerLegacyInitializationIpConfig { return v.IpConfigs }).(ContainerLegacyInitializationIpConfigArrayOutput)
+}
+
+// The user account configuration.
+func (o ContainerLegacyInitializationOutput) UserAccount() ContainerLegacyInitializationUserAccountPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyInitialization) *ContainerLegacyInitializationUserAccount { return v.UserAccount }).(ContainerLegacyInitializationUserAccountPtrOutput)
+}
+
+type ContainerLegacyInitializationPtrOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyInitializationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerLegacyInitialization)(nil)).Elem()
+}
+
+func (o ContainerLegacyInitializationPtrOutput) ToContainerLegacyInitializationPtrOutput() ContainerLegacyInitializationPtrOutput {
+	return o
+}
+
+func (o ContainerLegacyInitializationPtrOutput) ToContainerLegacyInitializationPtrOutputWithContext(ctx context.Context) ContainerLegacyInitializationPtrOutput {
+	return o
+}
+
+func (o ContainerLegacyInitializationPtrOutput) Elem() ContainerLegacyInitializationOutput {
+	return o.ApplyT(func(v *ContainerLegacyInitialization) ContainerLegacyInitialization {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerLegacyInitialization
+		return ret
+	}).(ContainerLegacyInitializationOutput)
+}
+
+// The DNS configuration.
+func (o ContainerLegacyInitializationPtrOutput) Dns() ContainerLegacyInitializationDnsPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyInitialization) *ContainerLegacyInitializationDns {
+		if v == nil {
+			return nil
+		}
+		return v.Dns
+	}).(ContainerLegacyInitializationDnsPtrOutput)
+}
+
+// Command to run as init, optionally with arguments. It may start with an absolute path, relative path, or a binary in `$PATH`.
+func (o ContainerLegacyInitializationPtrOutput) Entrypoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyInitialization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Entrypoint
+	}).(pulumi.StringPtrOutput)
+}
+
+// The hostname. Must be a valid DNS name.
+func (o ContainerLegacyInitializationPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyInitialization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IP configuration (one block per network
+// device).
+func (o ContainerLegacyInitializationPtrOutput) IpConfigs() ContainerLegacyInitializationIpConfigArrayOutput {
+	return o.ApplyT(func(v *ContainerLegacyInitialization) []ContainerLegacyInitializationIpConfig {
+		if v == nil {
+			return nil
+		}
+		return v.IpConfigs
+	}).(ContainerLegacyInitializationIpConfigArrayOutput)
+}
+
+// The user account configuration.
+func (o ContainerLegacyInitializationPtrOutput) UserAccount() ContainerLegacyInitializationUserAccountPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyInitialization) *ContainerLegacyInitializationUserAccount {
+		if v == nil {
+			return nil
+		}
+		return v.UserAccount
+	}).(ContainerLegacyInitializationUserAccountPtrOutput)
+}
+
+type ContainerLegacyInitializationDns struct {
+	// The DNS search domain.
+	Domain *string `pulumi:"domain"`
+	// The DNS server.
+	// The `server` attribute is deprecated and will be removed in a future release. Please use
+	// the `servers` attribute instead.
+	//
+	// Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+	Server *string `pulumi:"server"`
+	// The list of DNS servers.
+	Servers []string `pulumi:"servers"`
+}
+
+// ContainerLegacyInitializationDnsInput is an input type that accepts ContainerLegacyInitializationDnsArgs and ContainerLegacyInitializationDnsOutput values.
+// You can construct a concrete instance of `ContainerLegacyInitializationDnsInput` via:
+//
+//	ContainerLegacyInitializationDnsArgs{...}
+type ContainerLegacyInitializationDnsInput interface {
+	pulumi.Input
+
+	ToContainerLegacyInitializationDnsOutput() ContainerLegacyInitializationDnsOutput
+	ToContainerLegacyInitializationDnsOutputWithContext(context.Context) ContainerLegacyInitializationDnsOutput
+}
+
+type ContainerLegacyInitializationDnsArgs struct {
+	// The DNS search domain.
+	Domain pulumi.StringPtrInput `pulumi:"domain"`
+	// The DNS server.
+	// The `server` attribute is deprecated and will be removed in a future release. Please use
+	// the `servers` attribute instead.
+	//
+	// Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+	Server pulumi.StringPtrInput `pulumi:"server"`
+	// The list of DNS servers.
+	Servers pulumi.StringArrayInput `pulumi:"servers"`
+}
+
+func (ContainerLegacyInitializationDnsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyInitializationDns)(nil)).Elem()
+}
+
+func (i ContainerLegacyInitializationDnsArgs) ToContainerLegacyInitializationDnsOutput() ContainerLegacyInitializationDnsOutput {
+	return i.ToContainerLegacyInitializationDnsOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyInitializationDnsArgs) ToContainerLegacyInitializationDnsOutputWithContext(ctx context.Context) ContainerLegacyInitializationDnsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyInitializationDnsOutput)
+}
+
+func (i ContainerLegacyInitializationDnsArgs) ToContainerLegacyInitializationDnsPtrOutput() ContainerLegacyInitializationDnsPtrOutput {
+	return i.ToContainerLegacyInitializationDnsPtrOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyInitializationDnsArgs) ToContainerLegacyInitializationDnsPtrOutputWithContext(ctx context.Context) ContainerLegacyInitializationDnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyInitializationDnsOutput).ToContainerLegacyInitializationDnsPtrOutputWithContext(ctx)
+}
+
+// ContainerLegacyInitializationDnsPtrInput is an input type that accepts ContainerLegacyInitializationDnsArgs, ContainerLegacyInitializationDnsPtr and ContainerLegacyInitializationDnsPtrOutput values.
+// You can construct a concrete instance of `ContainerLegacyInitializationDnsPtrInput` via:
+//
+//	        ContainerLegacyInitializationDnsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ContainerLegacyInitializationDnsPtrInput interface {
+	pulumi.Input
+
+	ToContainerLegacyInitializationDnsPtrOutput() ContainerLegacyInitializationDnsPtrOutput
+	ToContainerLegacyInitializationDnsPtrOutputWithContext(context.Context) ContainerLegacyInitializationDnsPtrOutput
+}
+
+type containerLegacyInitializationDnsPtrType ContainerLegacyInitializationDnsArgs
+
+func ContainerLegacyInitializationDnsPtr(v *ContainerLegacyInitializationDnsArgs) ContainerLegacyInitializationDnsPtrInput {
+	return (*containerLegacyInitializationDnsPtrType)(v)
+}
+
+func (*containerLegacyInitializationDnsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerLegacyInitializationDns)(nil)).Elem()
+}
+
+func (i *containerLegacyInitializationDnsPtrType) ToContainerLegacyInitializationDnsPtrOutput() ContainerLegacyInitializationDnsPtrOutput {
+	return i.ToContainerLegacyInitializationDnsPtrOutputWithContext(context.Background())
+}
+
+func (i *containerLegacyInitializationDnsPtrType) ToContainerLegacyInitializationDnsPtrOutputWithContext(ctx context.Context) ContainerLegacyInitializationDnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyInitializationDnsPtrOutput)
+}
+
+type ContainerLegacyInitializationDnsOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyInitializationDnsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyInitializationDns)(nil)).Elem()
+}
+
+func (o ContainerLegacyInitializationDnsOutput) ToContainerLegacyInitializationDnsOutput() ContainerLegacyInitializationDnsOutput {
+	return o
+}
+
+func (o ContainerLegacyInitializationDnsOutput) ToContainerLegacyInitializationDnsOutputWithContext(ctx context.Context) ContainerLegacyInitializationDnsOutput {
+	return o
+}
+
+func (o ContainerLegacyInitializationDnsOutput) ToContainerLegacyInitializationDnsPtrOutput() ContainerLegacyInitializationDnsPtrOutput {
+	return o.ToContainerLegacyInitializationDnsPtrOutputWithContext(context.Background())
+}
+
+func (o ContainerLegacyInitializationDnsOutput) ToContainerLegacyInitializationDnsPtrOutputWithContext(ctx context.Context) ContainerLegacyInitializationDnsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerLegacyInitializationDns) *ContainerLegacyInitializationDns {
+		return &v
+	}).(ContainerLegacyInitializationDnsPtrOutput)
+}
+
+// The DNS search domain.
+func (o ContainerLegacyInitializationDnsOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyInitializationDns) *string { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+// The DNS server.
+// The `server` attribute is deprecated and will be removed in a future release. Please use
+// the `servers` attribute instead.
+//
+// Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+func (o ContainerLegacyInitializationDnsOutput) Server() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyInitializationDns) *string { return v.Server }).(pulumi.StringPtrOutput)
+}
+
+// The list of DNS servers.
+func (o ContainerLegacyInitializationDnsOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ContainerLegacyInitializationDns) []string { return v.Servers }).(pulumi.StringArrayOutput)
+}
+
+type ContainerLegacyInitializationDnsPtrOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyInitializationDnsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerLegacyInitializationDns)(nil)).Elem()
+}
+
+func (o ContainerLegacyInitializationDnsPtrOutput) ToContainerLegacyInitializationDnsPtrOutput() ContainerLegacyInitializationDnsPtrOutput {
+	return o
+}
+
+func (o ContainerLegacyInitializationDnsPtrOutput) ToContainerLegacyInitializationDnsPtrOutputWithContext(ctx context.Context) ContainerLegacyInitializationDnsPtrOutput {
+	return o
+}
+
+func (o ContainerLegacyInitializationDnsPtrOutput) Elem() ContainerLegacyInitializationDnsOutput {
+	return o.ApplyT(func(v *ContainerLegacyInitializationDns) ContainerLegacyInitializationDns {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerLegacyInitializationDns
+		return ret
+	}).(ContainerLegacyInitializationDnsOutput)
+}
+
+// The DNS search domain.
+func (o ContainerLegacyInitializationDnsPtrOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyInitializationDns) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Domain
+	}).(pulumi.StringPtrOutput)
+}
+
+// The DNS server.
+// The `server` attribute is deprecated and will be removed in a future release. Please use
+// the `servers` attribute instead.
+//
+// Deprecated: The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.
+func (o ContainerLegacyInitializationDnsPtrOutput) Server() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyInitializationDns) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Server
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of DNS servers.
+func (o ContainerLegacyInitializationDnsPtrOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ContainerLegacyInitializationDns) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Servers
+	}).(pulumi.StringArrayOutput)
+}
+
+type ContainerLegacyInitializationIpConfig struct {
+	// The IPv4 configuration.
+	Ipv4 *ContainerLegacyInitializationIpConfigIpv4 `pulumi:"ipv4"`
+	// The IPv6 configuration.
+	Ipv6 *ContainerLegacyInitializationIpConfigIpv6 `pulumi:"ipv6"`
+}
+
+// ContainerLegacyInitializationIpConfigInput is an input type that accepts ContainerLegacyInitializationIpConfigArgs and ContainerLegacyInitializationIpConfigOutput values.
+// You can construct a concrete instance of `ContainerLegacyInitializationIpConfigInput` via:
+//
+//	ContainerLegacyInitializationIpConfigArgs{...}
+type ContainerLegacyInitializationIpConfigInput interface {
+	pulumi.Input
+
+	ToContainerLegacyInitializationIpConfigOutput() ContainerLegacyInitializationIpConfigOutput
+	ToContainerLegacyInitializationIpConfigOutputWithContext(context.Context) ContainerLegacyInitializationIpConfigOutput
+}
+
+type ContainerLegacyInitializationIpConfigArgs struct {
+	// The IPv4 configuration.
+	Ipv4 ContainerLegacyInitializationIpConfigIpv4PtrInput `pulumi:"ipv4"`
+	// The IPv6 configuration.
+	Ipv6 ContainerLegacyInitializationIpConfigIpv6PtrInput `pulumi:"ipv6"`
+}
+
+func (ContainerLegacyInitializationIpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyInitializationIpConfig)(nil)).Elem()
+}
+
+func (i ContainerLegacyInitializationIpConfigArgs) ToContainerLegacyInitializationIpConfigOutput() ContainerLegacyInitializationIpConfigOutput {
+	return i.ToContainerLegacyInitializationIpConfigOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyInitializationIpConfigArgs) ToContainerLegacyInitializationIpConfigOutputWithContext(ctx context.Context) ContainerLegacyInitializationIpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyInitializationIpConfigOutput)
+}
+
+// ContainerLegacyInitializationIpConfigArrayInput is an input type that accepts ContainerLegacyInitializationIpConfigArray and ContainerLegacyInitializationIpConfigArrayOutput values.
+// You can construct a concrete instance of `ContainerLegacyInitializationIpConfigArrayInput` via:
+//
+//	ContainerLegacyInitializationIpConfigArray{ ContainerLegacyInitializationIpConfigArgs{...} }
+type ContainerLegacyInitializationIpConfigArrayInput interface {
+	pulumi.Input
+
+	ToContainerLegacyInitializationIpConfigArrayOutput() ContainerLegacyInitializationIpConfigArrayOutput
+	ToContainerLegacyInitializationIpConfigArrayOutputWithContext(context.Context) ContainerLegacyInitializationIpConfigArrayOutput
+}
+
+type ContainerLegacyInitializationIpConfigArray []ContainerLegacyInitializationIpConfigInput
+
+func (ContainerLegacyInitializationIpConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerLegacyInitializationIpConfig)(nil)).Elem()
+}
+
+func (i ContainerLegacyInitializationIpConfigArray) ToContainerLegacyInitializationIpConfigArrayOutput() ContainerLegacyInitializationIpConfigArrayOutput {
+	return i.ToContainerLegacyInitializationIpConfigArrayOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyInitializationIpConfigArray) ToContainerLegacyInitializationIpConfigArrayOutputWithContext(ctx context.Context) ContainerLegacyInitializationIpConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyInitializationIpConfigArrayOutput)
+}
+
+type ContainerLegacyInitializationIpConfigOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyInitializationIpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyInitializationIpConfig)(nil)).Elem()
+}
+
+func (o ContainerLegacyInitializationIpConfigOutput) ToContainerLegacyInitializationIpConfigOutput() ContainerLegacyInitializationIpConfigOutput {
+	return o
+}
+
+func (o ContainerLegacyInitializationIpConfigOutput) ToContainerLegacyInitializationIpConfigOutputWithContext(ctx context.Context) ContainerLegacyInitializationIpConfigOutput {
+	return o
+}
+
+// The IPv4 configuration.
+func (o ContainerLegacyInitializationIpConfigOutput) Ipv4() ContainerLegacyInitializationIpConfigIpv4PtrOutput {
+	return o.ApplyT(func(v ContainerLegacyInitializationIpConfig) *ContainerLegacyInitializationIpConfigIpv4 {
+		return v.Ipv4
+	}).(ContainerLegacyInitializationIpConfigIpv4PtrOutput)
+}
+
+// The IPv6 configuration.
+func (o ContainerLegacyInitializationIpConfigOutput) Ipv6() ContainerLegacyInitializationIpConfigIpv6PtrOutput {
+	return o.ApplyT(func(v ContainerLegacyInitializationIpConfig) *ContainerLegacyInitializationIpConfigIpv6 {
+		return v.Ipv6
+	}).(ContainerLegacyInitializationIpConfigIpv6PtrOutput)
+}
+
+type ContainerLegacyInitializationIpConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyInitializationIpConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerLegacyInitializationIpConfig)(nil)).Elem()
+}
+
+func (o ContainerLegacyInitializationIpConfigArrayOutput) ToContainerLegacyInitializationIpConfigArrayOutput() ContainerLegacyInitializationIpConfigArrayOutput {
+	return o
+}
+
+func (o ContainerLegacyInitializationIpConfigArrayOutput) ToContainerLegacyInitializationIpConfigArrayOutputWithContext(ctx context.Context) ContainerLegacyInitializationIpConfigArrayOutput {
+	return o
+}
+
+func (o ContainerLegacyInitializationIpConfigArrayOutput) Index(i pulumi.IntInput) ContainerLegacyInitializationIpConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerLegacyInitializationIpConfig {
+		return vs[0].([]ContainerLegacyInitializationIpConfig)[vs[1].(int)]
+	}).(ContainerLegacyInitializationIpConfigOutput)
+}
+
+type ContainerLegacyInitializationIpConfigIpv4 struct {
+	// The IPv4 address in CIDR notation
+	// (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
+	// autodiscovery.
+	Address *string `pulumi:"address"`
+	// The IPv4 gateway (must be omitted
+	// when `dhcp` is used as the address).
+	Gateway *string `pulumi:"gateway"`
+}
+
+// ContainerLegacyInitializationIpConfigIpv4Input is an input type that accepts ContainerLegacyInitializationIpConfigIpv4Args and ContainerLegacyInitializationIpConfigIpv4Output values.
+// You can construct a concrete instance of `ContainerLegacyInitializationIpConfigIpv4Input` via:
+//
+//	ContainerLegacyInitializationIpConfigIpv4Args{...}
+type ContainerLegacyInitializationIpConfigIpv4Input interface {
+	pulumi.Input
+
+	ToContainerLegacyInitializationIpConfigIpv4Output() ContainerLegacyInitializationIpConfigIpv4Output
+	ToContainerLegacyInitializationIpConfigIpv4OutputWithContext(context.Context) ContainerLegacyInitializationIpConfigIpv4Output
+}
+
+type ContainerLegacyInitializationIpConfigIpv4Args struct {
+	// The IPv4 address in CIDR notation
+	// (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
+	// autodiscovery.
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// The IPv4 gateway (must be omitted
+	// when `dhcp` is used as the address).
+	Gateway pulumi.StringPtrInput `pulumi:"gateway"`
+}
+
+func (ContainerLegacyInitializationIpConfigIpv4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyInitializationIpConfigIpv4)(nil)).Elem()
+}
+
+func (i ContainerLegacyInitializationIpConfigIpv4Args) ToContainerLegacyInitializationIpConfigIpv4Output() ContainerLegacyInitializationIpConfigIpv4Output {
+	return i.ToContainerLegacyInitializationIpConfigIpv4OutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyInitializationIpConfigIpv4Args) ToContainerLegacyInitializationIpConfigIpv4OutputWithContext(ctx context.Context) ContainerLegacyInitializationIpConfigIpv4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyInitializationIpConfigIpv4Output)
+}
+
+func (i ContainerLegacyInitializationIpConfigIpv4Args) ToContainerLegacyInitializationIpConfigIpv4PtrOutput() ContainerLegacyInitializationIpConfigIpv4PtrOutput {
+	return i.ToContainerLegacyInitializationIpConfigIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyInitializationIpConfigIpv4Args) ToContainerLegacyInitializationIpConfigIpv4PtrOutputWithContext(ctx context.Context) ContainerLegacyInitializationIpConfigIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyInitializationIpConfigIpv4Output).ToContainerLegacyInitializationIpConfigIpv4PtrOutputWithContext(ctx)
+}
+
+// ContainerLegacyInitializationIpConfigIpv4PtrInput is an input type that accepts ContainerLegacyInitializationIpConfigIpv4Args, ContainerLegacyInitializationIpConfigIpv4Ptr and ContainerLegacyInitializationIpConfigIpv4PtrOutput values.
+// You can construct a concrete instance of `ContainerLegacyInitializationIpConfigIpv4PtrInput` via:
+//
+//	        ContainerLegacyInitializationIpConfigIpv4Args{...}
+//
+//	or:
+//
+//	        nil
+type ContainerLegacyInitializationIpConfigIpv4PtrInput interface {
+	pulumi.Input
+
+	ToContainerLegacyInitializationIpConfigIpv4PtrOutput() ContainerLegacyInitializationIpConfigIpv4PtrOutput
+	ToContainerLegacyInitializationIpConfigIpv4PtrOutputWithContext(context.Context) ContainerLegacyInitializationIpConfigIpv4PtrOutput
+}
+
+type containerLegacyInitializationIpConfigIpv4PtrType ContainerLegacyInitializationIpConfigIpv4Args
+
+func ContainerLegacyInitializationIpConfigIpv4Ptr(v *ContainerLegacyInitializationIpConfigIpv4Args) ContainerLegacyInitializationIpConfigIpv4PtrInput {
+	return (*containerLegacyInitializationIpConfigIpv4PtrType)(v)
+}
+
+func (*containerLegacyInitializationIpConfigIpv4PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerLegacyInitializationIpConfigIpv4)(nil)).Elem()
+}
+
+func (i *containerLegacyInitializationIpConfigIpv4PtrType) ToContainerLegacyInitializationIpConfigIpv4PtrOutput() ContainerLegacyInitializationIpConfigIpv4PtrOutput {
+	return i.ToContainerLegacyInitializationIpConfigIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i *containerLegacyInitializationIpConfigIpv4PtrType) ToContainerLegacyInitializationIpConfigIpv4PtrOutputWithContext(ctx context.Context) ContainerLegacyInitializationIpConfigIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyInitializationIpConfigIpv4PtrOutput)
+}
+
+type ContainerLegacyInitializationIpConfigIpv4Output struct{ *pulumi.OutputState }
+
+func (ContainerLegacyInitializationIpConfigIpv4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyInitializationIpConfigIpv4)(nil)).Elem()
+}
+
+func (o ContainerLegacyInitializationIpConfigIpv4Output) ToContainerLegacyInitializationIpConfigIpv4Output() ContainerLegacyInitializationIpConfigIpv4Output {
+	return o
+}
+
+func (o ContainerLegacyInitializationIpConfigIpv4Output) ToContainerLegacyInitializationIpConfigIpv4OutputWithContext(ctx context.Context) ContainerLegacyInitializationIpConfigIpv4Output {
+	return o
+}
+
+func (o ContainerLegacyInitializationIpConfigIpv4Output) ToContainerLegacyInitializationIpConfigIpv4PtrOutput() ContainerLegacyInitializationIpConfigIpv4PtrOutput {
+	return o.ToContainerLegacyInitializationIpConfigIpv4PtrOutputWithContext(context.Background())
+}
+
+func (o ContainerLegacyInitializationIpConfigIpv4Output) ToContainerLegacyInitializationIpConfigIpv4PtrOutputWithContext(ctx context.Context) ContainerLegacyInitializationIpConfigIpv4PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerLegacyInitializationIpConfigIpv4) *ContainerLegacyInitializationIpConfigIpv4 {
+		return &v
+	}).(ContainerLegacyInitializationIpConfigIpv4PtrOutput)
+}
+
+// The IPv4 address in CIDR notation
+// (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
+// autodiscovery.
+func (o ContainerLegacyInitializationIpConfigIpv4Output) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyInitializationIpConfigIpv4) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// The IPv4 gateway (must be omitted
+// when `dhcp` is used as the address).
+func (o ContainerLegacyInitializationIpConfigIpv4Output) Gateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyInitializationIpConfigIpv4) *string { return v.Gateway }).(pulumi.StringPtrOutput)
+}
+
+type ContainerLegacyInitializationIpConfigIpv4PtrOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyInitializationIpConfigIpv4PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerLegacyInitializationIpConfigIpv4)(nil)).Elem()
+}
+
+func (o ContainerLegacyInitializationIpConfigIpv4PtrOutput) ToContainerLegacyInitializationIpConfigIpv4PtrOutput() ContainerLegacyInitializationIpConfigIpv4PtrOutput {
+	return o
+}
+
+func (o ContainerLegacyInitializationIpConfigIpv4PtrOutput) ToContainerLegacyInitializationIpConfigIpv4PtrOutputWithContext(ctx context.Context) ContainerLegacyInitializationIpConfigIpv4PtrOutput {
+	return o
+}
+
+func (o ContainerLegacyInitializationIpConfigIpv4PtrOutput) Elem() ContainerLegacyInitializationIpConfigIpv4Output {
+	return o.ApplyT(func(v *ContainerLegacyInitializationIpConfigIpv4) ContainerLegacyInitializationIpConfigIpv4 {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerLegacyInitializationIpConfigIpv4
+		return ret
+	}).(ContainerLegacyInitializationIpConfigIpv4Output)
+}
+
+// The IPv4 address in CIDR notation
+// (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
+// autodiscovery.
+func (o ContainerLegacyInitializationIpConfigIpv4PtrOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyInitializationIpConfigIpv4) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Address
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IPv4 gateway (must be omitted
+// when `dhcp` is used as the address).
+func (o ContainerLegacyInitializationIpConfigIpv4PtrOutput) Gateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyInitializationIpConfigIpv4) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Gateway
+	}).(pulumi.StringPtrOutput)
+}
+
+type ContainerLegacyInitializationIpConfigIpv6 struct {
+	// The IPv6 address in CIDR notation
+	// (e.g. fd1c::7334/64). Alternatively, set this
+	// to `dhcp` for DHCPv6, or `auto` for SLAAC.
+	Address *string `pulumi:"address"`
+	// The IPv6 gateway (must be omitted
+	// when `dhcp` or `auto` are used as the address).
+	Gateway *string `pulumi:"gateway"`
+}
+
+// ContainerLegacyInitializationIpConfigIpv6Input is an input type that accepts ContainerLegacyInitializationIpConfigIpv6Args and ContainerLegacyInitializationIpConfigIpv6Output values.
+// You can construct a concrete instance of `ContainerLegacyInitializationIpConfigIpv6Input` via:
+//
+//	ContainerLegacyInitializationIpConfigIpv6Args{...}
+type ContainerLegacyInitializationIpConfigIpv6Input interface {
+	pulumi.Input
+
+	ToContainerLegacyInitializationIpConfigIpv6Output() ContainerLegacyInitializationIpConfigIpv6Output
+	ToContainerLegacyInitializationIpConfigIpv6OutputWithContext(context.Context) ContainerLegacyInitializationIpConfigIpv6Output
+}
+
+type ContainerLegacyInitializationIpConfigIpv6Args struct {
+	// The IPv6 address in CIDR notation
+	// (e.g. fd1c::7334/64). Alternatively, set this
+	// to `dhcp` for DHCPv6, or `auto` for SLAAC.
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// The IPv6 gateway (must be omitted
+	// when `dhcp` or `auto` are used as the address).
+	Gateway pulumi.StringPtrInput `pulumi:"gateway"`
+}
+
+func (ContainerLegacyInitializationIpConfigIpv6Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyInitializationIpConfigIpv6)(nil)).Elem()
+}
+
+func (i ContainerLegacyInitializationIpConfigIpv6Args) ToContainerLegacyInitializationIpConfigIpv6Output() ContainerLegacyInitializationIpConfigIpv6Output {
+	return i.ToContainerLegacyInitializationIpConfigIpv6OutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyInitializationIpConfigIpv6Args) ToContainerLegacyInitializationIpConfigIpv6OutputWithContext(ctx context.Context) ContainerLegacyInitializationIpConfigIpv6Output {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyInitializationIpConfigIpv6Output)
+}
+
+func (i ContainerLegacyInitializationIpConfigIpv6Args) ToContainerLegacyInitializationIpConfigIpv6PtrOutput() ContainerLegacyInitializationIpConfigIpv6PtrOutput {
+	return i.ToContainerLegacyInitializationIpConfigIpv6PtrOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyInitializationIpConfigIpv6Args) ToContainerLegacyInitializationIpConfigIpv6PtrOutputWithContext(ctx context.Context) ContainerLegacyInitializationIpConfigIpv6PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyInitializationIpConfigIpv6Output).ToContainerLegacyInitializationIpConfigIpv6PtrOutputWithContext(ctx)
+}
+
+// ContainerLegacyInitializationIpConfigIpv6PtrInput is an input type that accepts ContainerLegacyInitializationIpConfigIpv6Args, ContainerLegacyInitializationIpConfigIpv6Ptr and ContainerLegacyInitializationIpConfigIpv6PtrOutput values.
+// You can construct a concrete instance of `ContainerLegacyInitializationIpConfigIpv6PtrInput` via:
+//
+//	        ContainerLegacyInitializationIpConfigIpv6Args{...}
+//
+//	or:
+//
+//	        nil
+type ContainerLegacyInitializationIpConfigIpv6PtrInput interface {
+	pulumi.Input
+
+	ToContainerLegacyInitializationIpConfigIpv6PtrOutput() ContainerLegacyInitializationIpConfigIpv6PtrOutput
+	ToContainerLegacyInitializationIpConfigIpv6PtrOutputWithContext(context.Context) ContainerLegacyInitializationIpConfigIpv6PtrOutput
+}
+
+type containerLegacyInitializationIpConfigIpv6PtrType ContainerLegacyInitializationIpConfigIpv6Args
+
+func ContainerLegacyInitializationIpConfigIpv6Ptr(v *ContainerLegacyInitializationIpConfigIpv6Args) ContainerLegacyInitializationIpConfigIpv6PtrInput {
+	return (*containerLegacyInitializationIpConfigIpv6PtrType)(v)
+}
+
+func (*containerLegacyInitializationIpConfigIpv6PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerLegacyInitializationIpConfigIpv6)(nil)).Elem()
+}
+
+func (i *containerLegacyInitializationIpConfigIpv6PtrType) ToContainerLegacyInitializationIpConfigIpv6PtrOutput() ContainerLegacyInitializationIpConfigIpv6PtrOutput {
+	return i.ToContainerLegacyInitializationIpConfigIpv6PtrOutputWithContext(context.Background())
+}
+
+func (i *containerLegacyInitializationIpConfigIpv6PtrType) ToContainerLegacyInitializationIpConfigIpv6PtrOutputWithContext(ctx context.Context) ContainerLegacyInitializationIpConfigIpv6PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyInitializationIpConfigIpv6PtrOutput)
+}
+
+type ContainerLegacyInitializationIpConfigIpv6Output struct{ *pulumi.OutputState }
+
+func (ContainerLegacyInitializationIpConfigIpv6Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyInitializationIpConfigIpv6)(nil)).Elem()
+}
+
+func (o ContainerLegacyInitializationIpConfigIpv6Output) ToContainerLegacyInitializationIpConfigIpv6Output() ContainerLegacyInitializationIpConfigIpv6Output {
+	return o
+}
+
+func (o ContainerLegacyInitializationIpConfigIpv6Output) ToContainerLegacyInitializationIpConfigIpv6OutputWithContext(ctx context.Context) ContainerLegacyInitializationIpConfigIpv6Output {
+	return o
+}
+
+func (o ContainerLegacyInitializationIpConfigIpv6Output) ToContainerLegacyInitializationIpConfigIpv6PtrOutput() ContainerLegacyInitializationIpConfigIpv6PtrOutput {
+	return o.ToContainerLegacyInitializationIpConfigIpv6PtrOutputWithContext(context.Background())
+}
+
+func (o ContainerLegacyInitializationIpConfigIpv6Output) ToContainerLegacyInitializationIpConfigIpv6PtrOutputWithContext(ctx context.Context) ContainerLegacyInitializationIpConfigIpv6PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerLegacyInitializationIpConfigIpv6) *ContainerLegacyInitializationIpConfigIpv6 {
+		return &v
+	}).(ContainerLegacyInitializationIpConfigIpv6PtrOutput)
+}
+
+// The IPv6 address in CIDR notation
+// (e.g. fd1c::7334/64). Alternatively, set this
+// to `dhcp` for DHCPv6, or `auto` for SLAAC.
+func (o ContainerLegacyInitializationIpConfigIpv6Output) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyInitializationIpConfigIpv6) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// The IPv6 gateway (must be omitted
+// when `dhcp` or `auto` are used as the address).
+func (o ContainerLegacyInitializationIpConfigIpv6Output) Gateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyInitializationIpConfigIpv6) *string { return v.Gateway }).(pulumi.StringPtrOutput)
+}
+
+type ContainerLegacyInitializationIpConfigIpv6PtrOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyInitializationIpConfigIpv6PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerLegacyInitializationIpConfigIpv6)(nil)).Elem()
+}
+
+func (o ContainerLegacyInitializationIpConfigIpv6PtrOutput) ToContainerLegacyInitializationIpConfigIpv6PtrOutput() ContainerLegacyInitializationIpConfigIpv6PtrOutput {
+	return o
+}
+
+func (o ContainerLegacyInitializationIpConfigIpv6PtrOutput) ToContainerLegacyInitializationIpConfigIpv6PtrOutputWithContext(ctx context.Context) ContainerLegacyInitializationIpConfigIpv6PtrOutput {
+	return o
+}
+
+func (o ContainerLegacyInitializationIpConfigIpv6PtrOutput) Elem() ContainerLegacyInitializationIpConfigIpv6Output {
+	return o.ApplyT(func(v *ContainerLegacyInitializationIpConfigIpv6) ContainerLegacyInitializationIpConfigIpv6 {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerLegacyInitializationIpConfigIpv6
+		return ret
+	}).(ContainerLegacyInitializationIpConfigIpv6Output)
+}
+
+// The IPv6 address in CIDR notation
+// (e.g. fd1c::7334/64). Alternatively, set this
+// to `dhcp` for DHCPv6, or `auto` for SLAAC.
+func (o ContainerLegacyInitializationIpConfigIpv6PtrOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyInitializationIpConfigIpv6) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Address
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IPv6 gateway (must be omitted
+// when `dhcp` or `auto` are used as the address).
+func (o ContainerLegacyInitializationIpConfigIpv6PtrOutput) Gateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyInitializationIpConfigIpv6) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Gateway
+	}).(pulumi.StringPtrOutput)
+}
+
+type ContainerLegacyInitializationUserAccount struct {
+	// The SSH keys for the root account.
+	Keys []string `pulumi:"keys"`
+	// The password for the root account.
+	Password *string `pulumi:"password"`
+}
+
+// ContainerLegacyInitializationUserAccountInput is an input type that accepts ContainerLegacyInitializationUserAccountArgs and ContainerLegacyInitializationUserAccountOutput values.
+// You can construct a concrete instance of `ContainerLegacyInitializationUserAccountInput` via:
+//
+//	ContainerLegacyInitializationUserAccountArgs{...}
+type ContainerLegacyInitializationUserAccountInput interface {
+	pulumi.Input
+
+	ToContainerLegacyInitializationUserAccountOutput() ContainerLegacyInitializationUserAccountOutput
+	ToContainerLegacyInitializationUserAccountOutputWithContext(context.Context) ContainerLegacyInitializationUserAccountOutput
+}
+
+type ContainerLegacyInitializationUserAccountArgs struct {
+	// The SSH keys for the root account.
+	Keys pulumi.StringArrayInput `pulumi:"keys"`
+	// The password for the root account.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+}
+
+func (ContainerLegacyInitializationUserAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyInitializationUserAccount)(nil)).Elem()
+}
+
+func (i ContainerLegacyInitializationUserAccountArgs) ToContainerLegacyInitializationUserAccountOutput() ContainerLegacyInitializationUserAccountOutput {
+	return i.ToContainerLegacyInitializationUserAccountOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyInitializationUserAccountArgs) ToContainerLegacyInitializationUserAccountOutputWithContext(ctx context.Context) ContainerLegacyInitializationUserAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyInitializationUserAccountOutput)
+}
+
+func (i ContainerLegacyInitializationUserAccountArgs) ToContainerLegacyInitializationUserAccountPtrOutput() ContainerLegacyInitializationUserAccountPtrOutput {
+	return i.ToContainerLegacyInitializationUserAccountPtrOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyInitializationUserAccountArgs) ToContainerLegacyInitializationUserAccountPtrOutputWithContext(ctx context.Context) ContainerLegacyInitializationUserAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyInitializationUserAccountOutput).ToContainerLegacyInitializationUserAccountPtrOutputWithContext(ctx)
+}
+
+// ContainerLegacyInitializationUserAccountPtrInput is an input type that accepts ContainerLegacyInitializationUserAccountArgs, ContainerLegacyInitializationUserAccountPtr and ContainerLegacyInitializationUserAccountPtrOutput values.
+// You can construct a concrete instance of `ContainerLegacyInitializationUserAccountPtrInput` via:
+//
+//	        ContainerLegacyInitializationUserAccountArgs{...}
+//
+//	or:
+//
+//	        nil
+type ContainerLegacyInitializationUserAccountPtrInput interface {
+	pulumi.Input
+
+	ToContainerLegacyInitializationUserAccountPtrOutput() ContainerLegacyInitializationUserAccountPtrOutput
+	ToContainerLegacyInitializationUserAccountPtrOutputWithContext(context.Context) ContainerLegacyInitializationUserAccountPtrOutput
+}
+
+type containerLegacyInitializationUserAccountPtrType ContainerLegacyInitializationUserAccountArgs
+
+func ContainerLegacyInitializationUserAccountPtr(v *ContainerLegacyInitializationUserAccountArgs) ContainerLegacyInitializationUserAccountPtrInput {
+	return (*containerLegacyInitializationUserAccountPtrType)(v)
+}
+
+func (*containerLegacyInitializationUserAccountPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerLegacyInitializationUserAccount)(nil)).Elem()
+}
+
+func (i *containerLegacyInitializationUserAccountPtrType) ToContainerLegacyInitializationUserAccountPtrOutput() ContainerLegacyInitializationUserAccountPtrOutput {
+	return i.ToContainerLegacyInitializationUserAccountPtrOutputWithContext(context.Background())
+}
+
+func (i *containerLegacyInitializationUserAccountPtrType) ToContainerLegacyInitializationUserAccountPtrOutputWithContext(ctx context.Context) ContainerLegacyInitializationUserAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyInitializationUserAccountPtrOutput)
+}
+
+type ContainerLegacyInitializationUserAccountOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyInitializationUserAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyInitializationUserAccount)(nil)).Elem()
+}
+
+func (o ContainerLegacyInitializationUserAccountOutput) ToContainerLegacyInitializationUserAccountOutput() ContainerLegacyInitializationUserAccountOutput {
+	return o
+}
+
+func (o ContainerLegacyInitializationUserAccountOutput) ToContainerLegacyInitializationUserAccountOutputWithContext(ctx context.Context) ContainerLegacyInitializationUserAccountOutput {
+	return o
+}
+
+func (o ContainerLegacyInitializationUserAccountOutput) ToContainerLegacyInitializationUserAccountPtrOutput() ContainerLegacyInitializationUserAccountPtrOutput {
+	return o.ToContainerLegacyInitializationUserAccountPtrOutputWithContext(context.Background())
+}
+
+func (o ContainerLegacyInitializationUserAccountOutput) ToContainerLegacyInitializationUserAccountPtrOutputWithContext(ctx context.Context) ContainerLegacyInitializationUserAccountPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerLegacyInitializationUserAccount) *ContainerLegacyInitializationUserAccount {
+		return &v
+	}).(ContainerLegacyInitializationUserAccountPtrOutput)
+}
+
+// The SSH keys for the root account.
+func (o ContainerLegacyInitializationUserAccountOutput) Keys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ContainerLegacyInitializationUserAccount) []string { return v.Keys }).(pulumi.StringArrayOutput)
+}
+
+// The password for the root account.
+func (o ContainerLegacyInitializationUserAccountOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyInitializationUserAccount) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+type ContainerLegacyInitializationUserAccountPtrOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyInitializationUserAccountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerLegacyInitializationUserAccount)(nil)).Elem()
+}
+
+func (o ContainerLegacyInitializationUserAccountPtrOutput) ToContainerLegacyInitializationUserAccountPtrOutput() ContainerLegacyInitializationUserAccountPtrOutput {
+	return o
+}
+
+func (o ContainerLegacyInitializationUserAccountPtrOutput) ToContainerLegacyInitializationUserAccountPtrOutputWithContext(ctx context.Context) ContainerLegacyInitializationUserAccountPtrOutput {
+	return o
+}
+
+func (o ContainerLegacyInitializationUserAccountPtrOutput) Elem() ContainerLegacyInitializationUserAccountOutput {
+	return o.ApplyT(func(v *ContainerLegacyInitializationUserAccount) ContainerLegacyInitializationUserAccount {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerLegacyInitializationUserAccount
+		return ret
+	}).(ContainerLegacyInitializationUserAccountOutput)
+}
+
+// The SSH keys for the root account.
+func (o ContainerLegacyInitializationUserAccountPtrOutput) Keys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ContainerLegacyInitializationUserAccount) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Keys
+	}).(pulumi.StringArrayOutput)
+}
+
+// The password for the root account.
+func (o ContainerLegacyInitializationUserAccountPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyInitializationUserAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+type ContainerLegacyMemory struct {
+	// The dedicated memory in megabytes (defaults
+	// to `512`).
+	Dedicated *int `pulumi:"dedicated"`
+	// The swap size in megabytes (defaults to `0`).
+	Swap *int `pulumi:"swap"`
+}
+
+// ContainerLegacyMemoryInput is an input type that accepts ContainerLegacyMemoryArgs and ContainerLegacyMemoryOutput values.
+// You can construct a concrete instance of `ContainerLegacyMemoryInput` via:
+//
+//	ContainerLegacyMemoryArgs{...}
+type ContainerLegacyMemoryInput interface {
+	pulumi.Input
+
+	ToContainerLegacyMemoryOutput() ContainerLegacyMemoryOutput
+	ToContainerLegacyMemoryOutputWithContext(context.Context) ContainerLegacyMemoryOutput
+}
+
+type ContainerLegacyMemoryArgs struct {
+	// The dedicated memory in megabytes (defaults
+	// to `512`).
+	Dedicated pulumi.IntPtrInput `pulumi:"dedicated"`
+	// The swap size in megabytes (defaults to `0`).
+	Swap pulumi.IntPtrInput `pulumi:"swap"`
+}
+
+func (ContainerLegacyMemoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyMemory)(nil)).Elem()
+}
+
+func (i ContainerLegacyMemoryArgs) ToContainerLegacyMemoryOutput() ContainerLegacyMemoryOutput {
+	return i.ToContainerLegacyMemoryOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyMemoryArgs) ToContainerLegacyMemoryOutputWithContext(ctx context.Context) ContainerLegacyMemoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyMemoryOutput)
+}
+
+func (i ContainerLegacyMemoryArgs) ToContainerLegacyMemoryPtrOutput() ContainerLegacyMemoryPtrOutput {
+	return i.ToContainerLegacyMemoryPtrOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyMemoryArgs) ToContainerLegacyMemoryPtrOutputWithContext(ctx context.Context) ContainerLegacyMemoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyMemoryOutput).ToContainerLegacyMemoryPtrOutputWithContext(ctx)
+}
+
+// ContainerLegacyMemoryPtrInput is an input type that accepts ContainerLegacyMemoryArgs, ContainerLegacyMemoryPtr and ContainerLegacyMemoryPtrOutput values.
+// You can construct a concrete instance of `ContainerLegacyMemoryPtrInput` via:
+//
+//	        ContainerLegacyMemoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type ContainerLegacyMemoryPtrInput interface {
+	pulumi.Input
+
+	ToContainerLegacyMemoryPtrOutput() ContainerLegacyMemoryPtrOutput
+	ToContainerLegacyMemoryPtrOutputWithContext(context.Context) ContainerLegacyMemoryPtrOutput
+}
+
+type containerLegacyMemoryPtrType ContainerLegacyMemoryArgs
+
+func ContainerLegacyMemoryPtr(v *ContainerLegacyMemoryArgs) ContainerLegacyMemoryPtrInput {
+	return (*containerLegacyMemoryPtrType)(v)
+}
+
+func (*containerLegacyMemoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerLegacyMemory)(nil)).Elem()
+}
+
+func (i *containerLegacyMemoryPtrType) ToContainerLegacyMemoryPtrOutput() ContainerLegacyMemoryPtrOutput {
+	return i.ToContainerLegacyMemoryPtrOutputWithContext(context.Background())
+}
+
+func (i *containerLegacyMemoryPtrType) ToContainerLegacyMemoryPtrOutputWithContext(ctx context.Context) ContainerLegacyMemoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyMemoryPtrOutput)
+}
+
+type ContainerLegacyMemoryOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyMemoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyMemory)(nil)).Elem()
+}
+
+func (o ContainerLegacyMemoryOutput) ToContainerLegacyMemoryOutput() ContainerLegacyMemoryOutput {
+	return o
+}
+
+func (o ContainerLegacyMemoryOutput) ToContainerLegacyMemoryOutputWithContext(ctx context.Context) ContainerLegacyMemoryOutput {
+	return o
+}
+
+func (o ContainerLegacyMemoryOutput) ToContainerLegacyMemoryPtrOutput() ContainerLegacyMemoryPtrOutput {
+	return o.ToContainerLegacyMemoryPtrOutputWithContext(context.Background())
+}
+
+func (o ContainerLegacyMemoryOutput) ToContainerLegacyMemoryPtrOutputWithContext(ctx context.Context) ContainerLegacyMemoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerLegacyMemory) *ContainerLegacyMemory {
+		return &v
+	}).(ContainerLegacyMemoryPtrOutput)
+}
+
+// The dedicated memory in megabytes (defaults
+// to `512`).
+func (o ContainerLegacyMemoryOutput) Dedicated() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyMemory) *int { return v.Dedicated }).(pulumi.IntPtrOutput)
+}
+
+// The swap size in megabytes (defaults to `0`).
+func (o ContainerLegacyMemoryOutput) Swap() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyMemory) *int { return v.Swap }).(pulumi.IntPtrOutput)
+}
+
+type ContainerLegacyMemoryPtrOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyMemoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerLegacyMemory)(nil)).Elem()
+}
+
+func (o ContainerLegacyMemoryPtrOutput) ToContainerLegacyMemoryPtrOutput() ContainerLegacyMemoryPtrOutput {
+	return o
+}
+
+func (o ContainerLegacyMemoryPtrOutput) ToContainerLegacyMemoryPtrOutputWithContext(ctx context.Context) ContainerLegacyMemoryPtrOutput {
+	return o
+}
+
+func (o ContainerLegacyMemoryPtrOutput) Elem() ContainerLegacyMemoryOutput {
+	return o.ApplyT(func(v *ContainerLegacyMemory) ContainerLegacyMemory {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerLegacyMemory
+		return ret
+	}).(ContainerLegacyMemoryOutput)
+}
+
+// The dedicated memory in megabytes (defaults
+// to `512`).
+func (o ContainerLegacyMemoryPtrOutput) Dedicated() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyMemory) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Dedicated
+	}).(pulumi.IntPtrOutput)
+}
+
+// The swap size in megabytes (defaults to `0`).
+func (o ContainerLegacyMemoryPtrOutput) Swap() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyMemory) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Swap
+	}).(pulumi.IntPtrOutput)
+}
+
+type ContainerLegacyMountPoint struct {
+	// Explicitly enable or disable ACL support.
+	Acl *bool `pulumi:"acl"`
+	// Whether to include the mount point in backups (only
+	// used for volume mount points, defaults to `false`).
+	Backup *bool `pulumi:"backup"`
+	// List of extra mount options.
+	MountOptions []string `pulumi:"mountOptions"`
+	// Path to the mount point as seen from inside the
+	// container.
+	Path string `pulumi:"path"`
+	// The in-datastore path to the mount point volume.
+	// Use this attribute for cross-resource references instead of `volume`.
+	PathInDatastore *string `pulumi:"pathInDatastore"`
+	// Enable user quotas inside the container (not supported
+	// with ZFS subvolumes).
+	Quota *bool `pulumi:"quota"`
+	// Read-only mount point.
+	ReadOnly *bool `pulumi:"readOnly"`
+	// Will include this volume to a storage replica job.
+	Replicate *bool `pulumi:"replicate"`
+	// Mark this non-volume mount point as available on all
+	// nodes.
+	Shared *bool `pulumi:"shared"`
+	// Volume size (only for volume mount points).
+	// Can be specified with a unit suffix (e.g. `10G`).
+	Size *string `pulumi:"size"`
+	// Volume, device or directory to mount into the
+	// container.
+	Volume string `pulumi:"volume"`
+}
+
+// ContainerLegacyMountPointInput is an input type that accepts ContainerLegacyMountPointArgs and ContainerLegacyMountPointOutput values.
+// You can construct a concrete instance of `ContainerLegacyMountPointInput` via:
+//
+//	ContainerLegacyMountPointArgs{...}
+type ContainerLegacyMountPointInput interface {
+	pulumi.Input
+
+	ToContainerLegacyMountPointOutput() ContainerLegacyMountPointOutput
+	ToContainerLegacyMountPointOutputWithContext(context.Context) ContainerLegacyMountPointOutput
+}
+
+type ContainerLegacyMountPointArgs struct {
+	// Explicitly enable or disable ACL support.
+	Acl pulumi.BoolPtrInput `pulumi:"acl"`
+	// Whether to include the mount point in backups (only
+	// used for volume mount points, defaults to `false`).
+	Backup pulumi.BoolPtrInput `pulumi:"backup"`
+	// List of extra mount options.
+	MountOptions pulumi.StringArrayInput `pulumi:"mountOptions"`
+	// Path to the mount point as seen from inside the
+	// container.
+	Path pulumi.StringInput `pulumi:"path"`
+	// The in-datastore path to the mount point volume.
+	// Use this attribute for cross-resource references instead of `volume`.
+	PathInDatastore pulumi.StringPtrInput `pulumi:"pathInDatastore"`
+	// Enable user quotas inside the container (not supported
+	// with ZFS subvolumes).
+	Quota pulumi.BoolPtrInput `pulumi:"quota"`
+	// Read-only mount point.
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+	// Will include this volume to a storage replica job.
+	Replicate pulumi.BoolPtrInput `pulumi:"replicate"`
+	// Mark this non-volume mount point as available on all
+	// nodes.
+	Shared pulumi.BoolPtrInput `pulumi:"shared"`
+	// Volume size (only for volume mount points).
+	// Can be specified with a unit suffix (e.g. `10G`).
+	Size pulumi.StringPtrInput `pulumi:"size"`
+	// Volume, device or directory to mount into the
+	// container.
+	Volume pulumi.StringInput `pulumi:"volume"`
+}
+
+func (ContainerLegacyMountPointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyMountPoint)(nil)).Elem()
+}
+
+func (i ContainerLegacyMountPointArgs) ToContainerLegacyMountPointOutput() ContainerLegacyMountPointOutput {
+	return i.ToContainerLegacyMountPointOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyMountPointArgs) ToContainerLegacyMountPointOutputWithContext(ctx context.Context) ContainerLegacyMountPointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyMountPointOutput)
+}
+
+// ContainerLegacyMountPointArrayInput is an input type that accepts ContainerLegacyMountPointArray and ContainerLegacyMountPointArrayOutput values.
+// You can construct a concrete instance of `ContainerLegacyMountPointArrayInput` via:
+//
+//	ContainerLegacyMountPointArray{ ContainerLegacyMountPointArgs{...} }
+type ContainerLegacyMountPointArrayInput interface {
+	pulumi.Input
+
+	ToContainerLegacyMountPointArrayOutput() ContainerLegacyMountPointArrayOutput
+	ToContainerLegacyMountPointArrayOutputWithContext(context.Context) ContainerLegacyMountPointArrayOutput
+}
+
+type ContainerLegacyMountPointArray []ContainerLegacyMountPointInput
+
+func (ContainerLegacyMountPointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerLegacyMountPoint)(nil)).Elem()
+}
+
+func (i ContainerLegacyMountPointArray) ToContainerLegacyMountPointArrayOutput() ContainerLegacyMountPointArrayOutput {
+	return i.ToContainerLegacyMountPointArrayOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyMountPointArray) ToContainerLegacyMountPointArrayOutputWithContext(ctx context.Context) ContainerLegacyMountPointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyMountPointArrayOutput)
+}
+
+type ContainerLegacyMountPointOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyMountPointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyMountPoint)(nil)).Elem()
+}
+
+func (o ContainerLegacyMountPointOutput) ToContainerLegacyMountPointOutput() ContainerLegacyMountPointOutput {
+	return o
+}
+
+func (o ContainerLegacyMountPointOutput) ToContainerLegacyMountPointOutputWithContext(ctx context.Context) ContainerLegacyMountPointOutput {
+	return o
+}
+
+// Explicitly enable or disable ACL support.
+func (o ContainerLegacyMountPointOutput) Acl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyMountPoint) *bool { return v.Acl }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to include the mount point in backups (only
+// used for volume mount points, defaults to `false`).
+func (o ContainerLegacyMountPointOutput) Backup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyMountPoint) *bool { return v.Backup }).(pulumi.BoolPtrOutput)
+}
+
+// List of extra mount options.
+func (o ContainerLegacyMountPointOutput) MountOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ContainerLegacyMountPoint) []string { return v.MountOptions }).(pulumi.StringArrayOutput)
+}
+
+// Path to the mount point as seen from inside the
+// container.
+func (o ContainerLegacyMountPointOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerLegacyMountPoint) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// The in-datastore path to the mount point volume.
+// Use this attribute for cross-resource references instead of `volume`.
+func (o ContainerLegacyMountPointOutput) PathInDatastore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyMountPoint) *string { return v.PathInDatastore }).(pulumi.StringPtrOutput)
+}
+
+// Enable user quotas inside the container (not supported
+// with ZFS subvolumes).
+func (o ContainerLegacyMountPointOutput) Quota() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyMountPoint) *bool { return v.Quota }).(pulumi.BoolPtrOutput)
+}
+
+// Read-only mount point.
+func (o ContainerLegacyMountPointOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyMountPoint) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Will include this volume to a storage replica job.
+func (o ContainerLegacyMountPointOutput) Replicate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyMountPoint) *bool { return v.Replicate }).(pulumi.BoolPtrOutput)
+}
+
+// Mark this non-volume mount point as available on all
+// nodes.
+func (o ContainerLegacyMountPointOutput) Shared() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyMountPoint) *bool { return v.Shared }).(pulumi.BoolPtrOutput)
+}
+
+// Volume size (only for volume mount points).
+// Can be specified with a unit suffix (e.g. `10G`).
+func (o ContainerLegacyMountPointOutput) Size() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyMountPoint) *string { return v.Size }).(pulumi.StringPtrOutput)
+}
+
+// Volume, device or directory to mount into the
+// container.
+func (o ContainerLegacyMountPointOutput) Volume() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerLegacyMountPoint) string { return v.Volume }).(pulumi.StringOutput)
+}
+
+type ContainerLegacyMountPointArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyMountPointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerLegacyMountPoint)(nil)).Elem()
+}
+
+func (o ContainerLegacyMountPointArrayOutput) ToContainerLegacyMountPointArrayOutput() ContainerLegacyMountPointArrayOutput {
+	return o
+}
+
+func (o ContainerLegacyMountPointArrayOutput) ToContainerLegacyMountPointArrayOutputWithContext(ctx context.Context) ContainerLegacyMountPointArrayOutput {
+	return o
+}
+
+func (o ContainerLegacyMountPointArrayOutput) Index(i pulumi.IntInput) ContainerLegacyMountPointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerLegacyMountPoint {
+		return vs[0].([]ContainerLegacyMountPoint)[vs[1].(int)]
+	}).(ContainerLegacyMountPointOutput)
+}
+
+type ContainerLegacyNetworkInterface struct {
+	// The name of the network bridge (defaults
+	// to `vmbr0`).
+	Bridge *string `pulumi:"bridge"`
+	// Whether to enable the network device (defaults
+	// to `true`).
+	Enabled *bool `pulumi:"enabled"`
+	// Whether this interface's firewall rules should be
+	// used (defaults to `false`).
+	Firewall *bool `pulumi:"firewall"`
+	// The MAC address.
+	MacAddress *string `pulumi:"macAddress"`
+	// Maximum transfer unit of the interface. Cannot be
+	// larger than the bridge's MTU.
+	Mtu *int `pulumi:"mtu"`
+	// The network interface name.
+	Name string `pulumi:"name"`
+	// The rate limit in megabytes per second.
+	RateLimit *float64 `pulumi:"rateLimit"`
+	// The VLAN identifier.
+	VlanId *int `pulumi:"vlanId"`
+}
+
+// ContainerLegacyNetworkInterfaceInput is an input type that accepts ContainerLegacyNetworkInterfaceArgs and ContainerLegacyNetworkInterfaceOutput values.
+// You can construct a concrete instance of `ContainerLegacyNetworkInterfaceInput` via:
+//
+//	ContainerLegacyNetworkInterfaceArgs{...}
+type ContainerLegacyNetworkInterfaceInput interface {
+	pulumi.Input
+
+	ToContainerLegacyNetworkInterfaceOutput() ContainerLegacyNetworkInterfaceOutput
+	ToContainerLegacyNetworkInterfaceOutputWithContext(context.Context) ContainerLegacyNetworkInterfaceOutput
+}
+
+type ContainerLegacyNetworkInterfaceArgs struct {
+	// The name of the network bridge (defaults
+	// to `vmbr0`).
+	Bridge pulumi.StringPtrInput `pulumi:"bridge"`
+	// Whether to enable the network device (defaults
+	// to `true`).
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Whether this interface's firewall rules should be
+	// used (defaults to `false`).
+	Firewall pulumi.BoolPtrInput `pulumi:"firewall"`
+	// The MAC address.
+	MacAddress pulumi.StringPtrInput `pulumi:"macAddress"`
+	// Maximum transfer unit of the interface. Cannot be
+	// larger than the bridge's MTU.
+	Mtu pulumi.IntPtrInput `pulumi:"mtu"`
+	// The network interface name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The rate limit in megabytes per second.
+	RateLimit pulumi.Float64PtrInput `pulumi:"rateLimit"`
+	// The VLAN identifier.
+	VlanId pulumi.IntPtrInput `pulumi:"vlanId"`
+}
+
+func (ContainerLegacyNetworkInterfaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyNetworkInterface)(nil)).Elem()
+}
+
+func (i ContainerLegacyNetworkInterfaceArgs) ToContainerLegacyNetworkInterfaceOutput() ContainerLegacyNetworkInterfaceOutput {
+	return i.ToContainerLegacyNetworkInterfaceOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyNetworkInterfaceArgs) ToContainerLegacyNetworkInterfaceOutputWithContext(ctx context.Context) ContainerLegacyNetworkInterfaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyNetworkInterfaceOutput)
+}
+
+// ContainerLegacyNetworkInterfaceArrayInput is an input type that accepts ContainerLegacyNetworkInterfaceArray and ContainerLegacyNetworkInterfaceArrayOutput values.
+// You can construct a concrete instance of `ContainerLegacyNetworkInterfaceArrayInput` via:
+//
+//	ContainerLegacyNetworkInterfaceArray{ ContainerLegacyNetworkInterfaceArgs{...} }
+type ContainerLegacyNetworkInterfaceArrayInput interface {
+	pulumi.Input
+
+	ToContainerLegacyNetworkInterfaceArrayOutput() ContainerLegacyNetworkInterfaceArrayOutput
+	ToContainerLegacyNetworkInterfaceArrayOutputWithContext(context.Context) ContainerLegacyNetworkInterfaceArrayOutput
+}
+
+type ContainerLegacyNetworkInterfaceArray []ContainerLegacyNetworkInterfaceInput
+
+func (ContainerLegacyNetworkInterfaceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerLegacyNetworkInterface)(nil)).Elem()
+}
+
+func (i ContainerLegacyNetworkInterfaceArray) ToContainerLegacyNetworkInterfaceArrayOutput() ContainerLegacyNetworkInterfaceArrayOutput {
+	return i.ToContainerLegacyNetworkInterfaceArrayOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyNetworkInterfaceArray) ToContainerLegacyNetworkInterfaceArrayOutputWithContext(ctx context.Context) ContainerLegacyNetworkInterfaceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyNetworkInterfaceArrayOutput)
+}
+
+type ContainerLegacyNetworkInterfaceOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyNetworkInterfaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyNetworkInterface)(nil)).Elem()
+}
+
+func (o ContainerLegacyNetworkInterfaceOutput) ToContainerLegacyNetworkInterfaceOutput() ContainerLegacyNetworkInterfaceOutput {
+	return o
+}
+
+func (o ContainerLegacyNetworkInterfaceOutput) ToContainerLegacyNetworkInterfaceOutputWithContext(ctx context.Context) ContainerLegacyNetworkInterfaceOutput {
+	return o
+}
+
+// The name of the network bridge (defaults
+// to `vmbr0`).
+func (o ContainerLegacyNetworkInterfaceOutput) Bridge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyNetworkInterface) *string { return v.Bridge }).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable the network device (defaults
+// to `true`).
+func (o ContainerLegacyNetworkInterfaceOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyNetworkInterface) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether this interface's firewall rules should be
+// used (defaults to `false`).
+func (o ContainerLegacyNetworkInterfaceOutput) Firewall() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyNetworkInterface) *bool { return v.Firewall }).(pulumi.BoolPtrOutput)
+}
+
+// The MAC address.
+func (o ContainerLegacyNetworkInterfaceOutput) MacAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyNetworkInterface) *string { return v.MacAddress }).(pulumi.StringPtrOutput)
+}
+
+// Maximum transfer unit of the interface. Cannot be
+// larger than the bridge's MTU.
+func (o ContainerLegacyNetworkInterfaceOutput) Mtu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyNetworkInterface) *int { return v.Mtu }).(pulumi.IntPtrOutput)
+}
+
+// The network interface name.
+func (o ContainerLegacyNetworkInterfaceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerLegacyNetworkInterface) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The rate limit in megabytes per second.
+func (o ContainerLegacyNetworkInterfaceOutput) RateLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ContainerLegacyNetworkInterface) *float64 { return v.RateLimit }).(pulumi.Float64PtrOutput)
+}
+
+// The VLAN identifier.
+func (o ContainerLegacyNetworkInterfaceOutput) VlanId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyNetworkInterface) *int { return v.VlanId }).(pulumi.IntPtrOutput)
+}
+
+type ContainerLegacyNetworkInterfaceArrayOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyNetworkInterfaceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ContainerLegacyNetworkInterface)(nil)).Elem()
+}
+
+func (o ContainerLegacyNetworkInterfaceArrayOutput) ToContainerLegacyNetworkInterfaceArrayOutput() ContainerLegacyNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o ContainerLegacyNetworkInterfaceArrayOutput) ToContainerLegacyNetworkInterfaceArrayOutputWithContext(ctx context.Context) ContainerLegacyNetworkInterfaceArrayOutput {
+	return o
+}
+
+func (o ContainerLegacyNetworkInterfaceArrayOutput) Index(i pulumi.IntInput) ContainerLegacyNetworkInterfaceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ContainerLegacyNetworkInterface {
+		return vs[0].([]ContainerLegacyNetworkInterface)[vs[1].(int)]
+	}).(ContainerLegacyNetworkInterfaceOutput)
+}
+
+type ContainerLegacyOperatingSystem struct {
+	// The identifier for an OS template file.
+	// The ID format is `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`.
+	// Can be also taken from `download.FileLegacy` resource, or from the output of `pvesm list <storage>`.
+	TemplateFileId string `pulumi:"templateFileId"`
+	// The type (defaults to `unmanaged`).
+	Type *string `pulumi:"type"`
+}
+
+// ContainerLegacyOperatingSystemInput is an input type that accepts ContainerLegacyOperatingSystemArgs and ContainerLegacyOperatingSystemOutput values.
+// You can construct a concrete instance of `ContainerLegacyOperatingSystemInput` via:
+//
+//	ContainerLegacyOperatingSystemArgs{...}
+type ContainerLegacyOperatingSystemInput interface {
+	pulumi.Input
+
+	ToContainerLegacyOperatingSystemOutput() ContainerLegacyOperatingSystemOutput
+	ToContainerLegacyOperatingSystemOutputWithContext(context.Context) ContainerLegacyOperatingSystemOutput
+}
+
+type ContainerLegacyOperatingSystemArgs struct {
+	// The identifier for an OS template file.
+	// The ID format is `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`.
+	// Can be also taken from `download.FileLegacy` resource, or from the output of `pvesm list <storage>`.
+	TemplateFileId pulumi.StringInput `pulumi:"templateFileId"`
+	// The type (defaults to `unmanaged`).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (ContainerLegacyOperatingSystemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyOperatingSystem)(nil)).Elem()
+}
+
+func (i ContainerLegacyOperatingSystemArgs) ToContainerLegacyOperatingSystemOutput() ContainerLegacyOperatingSystemOutput {
+	return i.ToContainerLegacyOperatingSystemOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyOperatingSystemArgs) ToContainerLegacyOperatingSystemOutputWithContext(ctx context.Context) ContainerLegacyOperatingSystemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyOperatingSystemOutput)
+}
+
+func (i ContainerLegacyOperatingSystemArgs) ToContainerLegacyOperatingSystemPtrOutput() ContainerLegacyOperatingSystemPtrOutput {
+	return i.ToContainerLegacyOperatingSystemPtrOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyOperatingSystemArgs) ToContainerLegacyOperatingSystemPtrOutputWithContext(ctx context.Context) ContainerLegacyOperatingSystemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyOperatingSystemOutput).ToContainerLegacyOperatingSystemPtrOutputWithContext(ctx)
+}
+
+// ContainerLegacyOperatingSystemPtrInput is an input type that accepts ContainerLegacyOperatingSystemArgs, ContainerLegacyOperatingSystemPtr and ContainerLegacyOperatingSystemPtrOutput values.
+// You can construct a concrete instance of `ContainerLegacyOperatingSystemPtrInput` via:
+//
+//	        ContainerLegacyOperatingSystemArgs{...}
+//
+//	or:
+//
+//	        nil
+type ContainerLegacyOperatingSystemPtrInput interface {
+	pulumi.Input
+
+	ToContainerLegacyOperatingSystemPtrOutput() ContainerLegacyOperatingSystemPtrOutput
+	ToContainerLegacyOperatingSystemPtrOutputWithContext(context.Context) ContainerLegacyOperatingSystemPtrOutput
+}
+
+type containerLegacyOperatingSystemPtrType ContainerLegacyOperatingSystemArgs
+
+func ContainerLegacyOperatingSystemPtr(v *ContainerLegacyOperatingSystemArgs) ContainerLegacyOperatingSystemPtrInput {
+	return (*containerLegacyOperatingSystemPtrType)(v)
+}
+
+func (*containerLegacyOperatingSystemPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerLegacyOperatingSystem)(nil)).Elem()
+}
+
+func (i *containerLegacyOperatingSystemPtrType) ToContainerLegacyOperatingSystemPtrOutput() ContainerLegacyOperatingSystemPtrOutput {
+	return i.ToContainerLegacyOperatingSystemPtrOutputWithContext(context.Background())
+}
+
+func (i *containerLegacyOperatingSystemPtrType) ToContainerLegacyOperatingSystemPtrOutputWithContext(ctx context.Context) ContainerLegacyOperatingSystemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyOperatingSystemPtrOutput)
+}
+
+type ContainerLegacyOperatingSystemOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyOperatingSystemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyOperatingSystem)(nil)).Elem()
+}
+
+func (o ContainerLegacyOperatingSystemOutput) ToContainerLegacyOperatingSystemOutput() ContainerLegacyOperatingSystemOutput {
+	return o
+}
+
+func (o ContainerLegacyOperatingSystemOutput) ToContainerLegacyOperatingSystemOutputWithContext(ctx context.Context) ContainerLegacyOperatingSystemOutput {
+	return o
+}
+
+func (o ContainerLegacyOperatingSystemOutput) ToContainerLegacyOperatingSystemPtrOutput() ContainerLegacyOperatingSystemPtrOutput {
+	return o.ToContainerLegacyOperatingSystemPtrOutputWithContext(context.Background())
+}
+
+func (o ContainerLegacyOperatingSystemOutput) ToContainerLegacyOperatingSystemPtrOutputWithContext(ctx context.Context) ContainerLegacyOperatingSystemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerLegacyOperatingSystem) *ContainerLegacyOperatingSystem {
+		return &v
+	}).(ContainerLegacyOperatingSystemPtrOutput)
+}
+
+// The identifier for an OS template file.
+// The ID format is `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`.
+// Can be also taken from `download.FileLegacy` resource, or from the output of `pvesm list <storage>`.
+func (o ContainerLegacyOperatingSystemOutput) TemplateFileId() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerLegacyOperatingSystem) string { return v.TemplateFileId }).(pulumi.StringOutput)
+}
+
+// The type (defaults to `unmanaged`).
+func (o ContainerLegacyOperatingSystemOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyOperatingSystem) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ContainerLegacyOperatingSystemPtrOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyOperatingSystemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerLegacyOperatingSystem)(nil)).Elem()
+}
+
+func (o ContainerLegacyOperatingSystemPtrOutput) ToContainerLegacyOperatingSystemPtrOutput() ContainerLegacyOperatingSystemPtrOutput {
+	return o
+}
+
+func (o ContainerLegacyOperatingSystemPtrOutput) ToContainerLegacyOperatingSystemPtrOutputWithContext(ctx context.Context) ContainerLegacyOperatingSystemPtrOutput {
+	return o
+}
+
+func (o ContainerLegacyOperatingSystemPtrOutput) Elem() ContainerLegacyOperatingSystemOutput {
+	return o.ApplyT(func(v *ContainerLegacyOperatingSystem) ContainerLegacyOperatingSystem {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerLegacyOperatingSystem
+		return ret
+	}).(ContainerLegacyOperatingSystemOutput)
+}
+
+// The identifier for an OS template file.
+// The ID format is `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`.
+// Can be also taken from `download.FileLegacy` resource, or from the output of `pvesm list <storage>`.
+func (o ContainerLegacyOperatingSystemPtrOutput) TemplateFileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyOperatingSystem) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TemplateFileId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The type (defaults to `unmanaged`).
+func (o ContainerLegacyOperatingSystemPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyOperatingSystem) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type ContainerLegacyStartup struct {
+	// A non-negative number defining the delay in
+	// seconds before the next container is shut down.
+	DownDelay *int `pulumi:"downDelay"`
+	// A non-negative number defining the general startup
+	// order.
+	Order *int `pulumi:"order"`
+	// A non-negative number defining the delay in
+	// seconds before the next container is started.
+	UpDelay *int `pulumi:"upDelay"`
+}
+
+// ContainerLegacyStartupInput is an input type that accepts ContainerLegacyStartupArgs and ContainerLegacyStartupOutput values.
+// You can construct a concrete instance of `ContainerLegacyStartupInput` via:
+//
+//	ContainerLegacyStartupArgs{...}
+type ContainerLegacyStartupInput interface {
+	pulumi.Input
+
+	ToContainerLegacyStartupOutput() ContainerLegacyStartupOutput
+	ToContainerLegacyStartupOutputWithContext(context.Context) ContainerLegacyStartupOutput
+}
+
+type ContainerLegacyStartupArgs struct {
+	// A non-negative number defining the delay in
+	// seconds before the next container is shut down.
+	DownDelay pulumi.IntPtrInput `pulumi:"downDelay"`
+	// A non-negative number defining the general startup
+	// order.
+	Order pulumi.IntPtrInput `pulumi:"order"`
+	// A non-negative number defining the delay in
+	// seconds before the next container is started.
+	UpDelay pulumi.IntPtrInput `pulumi:"upDelay"`
+}
+
+func (ContainerLegacyStartupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyStartup)(nil)).Elem()
+}
+
+func (i ContainerLegacyStartupArgs) ToContainerLegacyStartupOutput() ContainerLegacyStartupOutput {
+	return i.ToContainerLegacyStartupOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyStartupArgs) ToContainerLegacyStartupOutputWithContext(ctx context.Context) ContainerLegacyStartupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyStartupOutput)
+}
+
+func (i ContainerLegacyStartupArgs) ToContainerLegacyStartupPtrOutput() ContainerLegacyStartupPtrOutput {
+	return i.ToContainerLegacyStartupPtrOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyStartupArgs) ToContainerLegacyStartupPtrOutputWithContext(ctx context.Context) ContainerLegacyStartupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyStartupOutput).ToContainerLegacyStartupPtrOutputWithContext(ctx)
+}
+
+// ContainerLegacyStartupPtrInput is an input type that accepts ContainerLegacyStartupArgs, ContainerLegacyStartupPtr and ContainerLegacyStartupPtrOutput values.
+// You can construct a concrete instance of `ContainerLegacyStartupPtrInput` via:
+//
+//	        ContainerLegacyStartupArgs{...}
+//
+//	or:
+//
+//	        nil
+type ContainerLegacyStartupPtrInput interface {
+	pulumi.Input
+
+	ToContainerLegacyStartupPtrOutput() ContainerLegacyStartupPtrOutput
+	ToContainerLegacyStartupPtrOutputWithContext(context.Context) ContainerLegacyStartupPtrOutput
+}
+
+type containerLegacyStartupPtrType ContainerLegacyStartupArgs
+
+func ContainerLegacyStartupPtr(v *ContainerLegacyStartupArgs) ContainerLegacyStartupPtrInput {
+	return (*containerLegacyStartupPtrType)(v)
+}
+
+func (*containerLegacyStartupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerLegacyStartup)(nil)).Elem()
+}
+
+func (i *containerLegacyStartupPtrType) ToContainerLegacyStartupPtrOutput() ContainerLegacyStartupPtrOutput {
+	return i.ToContainerLegacyStartupPtrOutputWithContext(context.Background())
+}
+
+func (i *containerLegacyStartupPtrType) ToContainerLegacyStartupPtrOutputWithContext(ctx context.Context) ContainerLegacyStartupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyStartupPtrOutput)
+}
+
+type ContainerLegacyStartupOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyStartupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyStartup)(nil)).Elem()
+}
+
+func (o ContainerLegacyStartupOutput) ToContainerLegacyStartupOutput() ContainerLegacyStartupOutput {
+	return o
+}
+
+func (o ContainerLegacyStartupOutput) ToContainerLegacyStartupOutputWithContext(ctx context.Context) ContainerLegacyStartupOutput {
+	return o
+}
+
+func (o ContainerLegacyStartupOutput) ToContainerLegacyStartupPtrOutput() ContainerLegacyStartupPtrOutput {
+	return o.ToContainerLegacyStartupPtrOutputWithContext(context.Background())
+}
+
+func (o ContainerLegacyStartupOutput) ToContainerLegacyStartupPtrOutputWithContext(ctx context.Context) ContainerLegacyStartupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerLegacyStartup) *ContainerLegacyStartup {
+		return &v
+	}).(ContainerLegacyStartupPtrOutput)
+}
+
+// A non-negative number defining the delay in
+// seconds before the next container is shut down.
+func (o ContainerLegacyStartupOutput) DownDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyStartup) *int { return v.DownDelay }).(pulumi.IntPtrOutput)
+}
+
+// A non-negative number defining the general startup
+// order.
+func (o ContainerLegacyStartupOutput) Order() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyStartup) *int { return v.Order }).(pulumi.IntPtrOutput)
+}
+
+// A non-negative number defining the delay in
+// seconds before the next container is started.
+func (o ContainerLegacyStartupOutput) UpDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyStartup) *int { return v.UpDelay }).(pulumi.IntPtrOutput)
+}
+
+type ContainerLegacyStartupPtrOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyStartupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerLegacyStartup)(nil)).Elem()
+}
+
+func (o ContainerLegacyStartupPtrOutput) ToContainerLegacyStartupPtrOutput() ContainerLegacyStartupPtrOutput {
+	return o
+}
+
+func (o ContainerLegacyStartupPtrOutput) ToContainerLegacyStartupPtrOutputWithContext(ctx context.Context) ContainerLegacyStartupPtrOutput {
+	return o
+}
+
+func (o ContainerLegacyStartupPtrOutput) Elem() ContainerLegacyStartupOutput {
+	return o.ApplyT(func(v *ContainerLegacyStartup) ContainerLegacyStartup {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerLegacyStartup
+		return ret
+	}).(ContainerLegacyStartupOutput)
+}
+
+// A non-negative number defining the delay in
+// seconds before the next container is shut down.
+func (o ContainerLegacyStartupPtrOutput) DownDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyStartup) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DownDelay
+	}).(pulumi.IntPtrOutput)
+}
+
+// A non-negative number defining the general startup
+// order.
+func (o ContainerLegacyStartupPtrOutput) Order() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyStartup) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Order
+	}).(pulumi.IntPtrOutput)
+}
+
+// A non-negative number defining the delay in
+// seconds before the next container is started.
+func (o ContainerLegacyStartupPtrOutput) UpDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyStartup) *int {
+		if v == nil {
+			return nil
+		}
+		return v.UpDelay
+	}).(pulumi.IntPtrOutput)
+}
+
+type ContainerLegacyWaitForIp struct {
+	// Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+	Ipv4 *bool `pulumi:"ipv4"`
+	// Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
+	//
+	// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+	Ipv6 *bool `pulumi:"ipv6"`
+}
+
+// ContainerLegacyWaitForIpInput is an input type that accepts ContainerLegacyWaitForIpArgs and ContainerLegacyWaitForIpOutput values.
+// You can construct a concrete instance of `ContainerLegacyWaitForIpInput` via:
+//
+//	ContainerLegacyWaitForIpArgs{...}
+type ContainerLegacyWaitForIpInput interface {
+	pulumi.Input
+
+	ToContainerLegacyWaitForIpOutput() ContainerLegacyWaitForIpOutput
+	ToContainerLegacyWaitForIpOutputWithContext(context.Context) ContainerLegacyWaitForIpOutput
+}
+
+type ContainerLegacyWaitForIpArgs struct {
+	// Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+	Ipv4 pulumi.BoolPtrInput `pulumi:"ipv4"`
+	// Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
+	//
+	// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+	Ipv6 pulumi.BoolPtrInput `pulumi:"ipv6"`
+}
+
+func (ContainerLegacyWaitForIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyWaitForIp)(nil)).Elem()
+}
+
+func (i ContainerLegacyWaitForIpArgs) ToContainerLegacyWaitForIpOutput() ContainerLegacyWaitForIpOutput {
+	return i.ToContainerLegacyWaitForIpOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyWaitForIpArgs) ToContainerLegacyWaitForIpOutputWithContext(ctx context.Context) ContainerLegacyWaitForIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyWaitForIpOutput)
+}
+
+func (i ContainerLegacyWaitForIpArgs) ToContainerLegacyWaitForIpPtrOutput() ContainerLegacyWaitForIpPtrOutput {
+	return i.ToContainerLegacyWaitForIpPtrOutputWithContext(context.Background())
+}
+
+func (i ContainerLegacyWaitForIpArgs) ToContainerLegacyWaitForIpPtrOutputWithContext(ctx context.Context) ContainerLegacyWaitForIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyWaitForIpOutput).ToContainerLegacyWaitForIpPtrOutputWithContext(ctx)
+}
+
+// ContainerLegacyWaitForIpPtrInput is an input type that accepts ContainerLegacyWaitForIpArgs, ContainerLegacyWaitForIpPtr and ContainerLegacyWaitForIpPtrOutput values.
+// You can construct a concrete instance of `ContainerLegacyWaitForIpPtrInput` via:
+//
+//	        ContainerLegacyWaitForIpArgs{...}
+//
+//	or:
+//
+//	        nil
+type ContainerLegacyWaitForIpPtrInput interface {
+	pulumi.Input
+
+	ToContainerLegacyWaitForIpPtrOutput() ContainerLegacyWaitForIpPtrOutput
+	ToContainerLegacyWaitForIpPtrOutputWithContext(context.Context) ContainerLegacyWaitForIpPtrOutput
+}
+
+type containerLegacyWaitForIpPtrType ContainerLegacyWaitForIpArgs
+
+func ContainerLegacyWaitForIpPtr(v *ContainerLegacyWaitForIpArgs) ContainerLegacyWaitForIpPtrInput {
+	return (*containerLegacyWaitForIpPtrType)(v)
+}
+
+func (*containerLegacyWaitForIpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerLegacyWaitForIp)(nil)).Elem()
+}
+
+func (i *containerLegacyWaitForIpPtrType) ToContainerLegacyWaitForIpPtrOutput() ContainerLegacyWaitForIpPtrOutput {
+	return i.ToContainerLegacyWaitForIpPtrOutputWithContext(context.Background())
+}
+
+func (i *containerLegacyWaitForIpPtrType) ToContainerLegacyWaitForIpPtrOutputWithContext(ctx context.Context) ContainerLegacyWaitForIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContainerLegacyWaitForIpPtrOutput)
+}
+
+type ContainerLegacyWaitForIpOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyWaitForIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContainerLegacyWaitForIp)(nil)).Elem()
+}
+
+func (o ContainerLegacyWaitForIpOutput) ToContainerLegacyWaitForIpOutput() ContainerLegacyWaitForIpOutput {
+	return o
+}
+
+func (o ContainerLegacyWaitForIpOutput) ToContainerLegacyWaitForIpOutputWithContext(ctx context.Context) ContainerLegacyWaitForIpOutput {
+	return o
+}
+
+func (o ContainerLegacyWaitForIpOutput) ToContainerLegacyWaitForIpPtrOutput() ContainerLegacyWaitForIpPtrOutput {
+	return o.ToContainerLegacyWaitForIpPtrOutputWithContext(context.Background())
+}
+
+func (o ContainerLegacyWaitForIpOutput) ToContainerLegacyWaitForIpPtrOutputWithContext(ctx context.Context) ContainerLegacyWaitForIpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContainerLegacyWaitForIp) *ContainerLegacyWaitForIp {
+		return &v
+	}).(ContainerLegacyWaitForIpPtrOutput)
+}
+
+// Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+func (o ContainerLegacyWaitForIpOutput) Ipv4() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyWaitForIp) *bool { return v.Ipv4 }).(pulumi.BoolPtrOutput)
+}
+
+// Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
+//
+// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+func (o ContainerLegacyWaitForIpOutput) Ipv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyWaitForIp) *bool { return v.Ipv6 }).(pulumi.BoolPtrOutput)
+}
+
+type ContainerLegacyWaitForIpPtrOutput struct{ *pulumi.OutputState }
+
+func (ContainerLegacyWaitForIpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContainerLegacyWaitForIp)(nil)).Elem()
+}
+
+func (o ContainerLegacyWaitForIpPtrOutput) ToContainerLegacyWaitForIpPtrOutput() ContainerLegacyWaitForIpPtrOutput {
+	return o
+}
+
+func (o ContainerLegacyWaitForIpPtrOutput) ToContainerLegacyWaitForIpPtrOutputWithContext(ctx context.Context) ContainerLegacyWaitForIpPtrOutput {
+	return o
+}
+
+func (o ContainerLegacyWaitForIpPtrOutput) Elem() ContainerLegacyWaitForIpOutput {
+	return o.ApplyT(func(v *ContainerLegacyWaitForIp) ContainerLegacyWaitForIp {
+		if v != nil {
+			return *v
+		}
+		var ret ContainerLegacyWaitForIp
+		return ret
+	}).(ContainerLegacyWaitForIpOutput)
+}
+
+// Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+func (o ContainerLegacyWaitForIpPtrOutput) Ipv4() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyWaitForIp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv4
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
+//
+// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+func (o ContainerLegacyWaitForIpPtrOutput) Ipv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyWaitForIp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6
+	}).(pulumi.BoolPtrOutput)
+}
+
+type FileLegacySourceFile struct {
+	// Whether the source file has changed since the last run
+	Changed *bool `pulumi:"changed"`
+	// The SHA256 checksum of the source file.
+	Checksum *string `pulumi:"checksum"`
+	// The file name to use instead of the source file
+	// name. Useful when the source file does not have a valid file extension,
+	// for example when the source file is a URL referencing a `.qcow2` image.
+	FileName *string `pulumi:"fileName"`
+	// Whether to skip the TLS verification step for
+	// HTTPS sources (defaults to `false`).
+	Insecure *bool `pulumi:"insecure"`
+	// The minimum required TLS version for HTTPS
+	// sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
+	MinTls *string `pulumi:"minTls"`
+	// A path to a local file or a URL.
+	Path string `pulumi:"path"`
+}
+
+// FileLegacySourceFileInput is an input type that accepts FileLegacySourceFileArgs and FileLegacySourceFileOutput values.
+// You can construct a concrete instance of `FileLegacySourceFileInput` via:
+//
+//	FileLegacySourceFileArgs{...}
+type FileLegacySourceFileInput interface {
+	pulumi.Input
+
+	ToFileLegacySourceFileOutput() FileLegacySourceFileOutput
+	ToFileLegacySourceFileOutputWithContext(context.Context) FileLegacySourceFileOutput
+}
+
+type FileLegacySourceFileArgs struct {
+	// Whether the source file has changed since the last run
+	Changed pulumi.BoolPtrInput `pulumi:"changed"`
+	// The SHA256 checksum of the source file.
+	Checksum pulumi.StringPtrInput `pulumi:"checksum"`
+	// The file name to use instead of the source file
+	// name. Useful when the source file does not have a valid file extension,
+	// for example when the source file is a URL referencing a `.qcow2` image.
+	FileName pulumi.StringPtrInput `pulumi:"fileName"`
+	// Whether to skip the TLS verification step for
+	// HTTPS sources (defaults to `false`).
+	Insecure pulumi.BoolPtrInput `pulumi:"insecure"`
+	// The minimum required TLS version for HTTPS
+	// sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
+	MinTls pulumi.StringPtrInput `pulumi:"minTls"`
+	// A path to a local file or a URL.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (FileLegacySourceFileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileLegacySourceFile)(nil)).Elem()
+}
+
+func (i FileLegacySourceFileArgs) ToFileLegacySourceFileOutput() FileLegacySourceFileOutput {
+	return i.ToFileLegacySourceFileOutputWithContext(context.Background())
+}
+
+func (i FileLegacySourceFileArgs) ToFileLegacySourceFileOutputWithContext(ctx context.Context) FileLegacySourceFileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileLegacySourceFileOutput)
+}
+
+func (i FileLegacySourceFileArgs) ToFileLegacySourceFilePtrOutput() FileLegacySourceFilePtrOutput {
+	return i.ToFileLegacySourceFilePtrOutputWithContext(context.Background())
+}
+
+func (i FileLegacySourceFileArgs) ToFileLegacySourceFilePtrOutputWithContext(ctx context.Context) FileLegacySourceFilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileLegacySourceFileOutput).ToFileLegacySourceFilePtrOutputWithContext(ctx)
+}
+
+// FileLegacySourceFilePtrInput is an input type that accepts FileLegacySourceFileArgs, FileLegacySourceFilePtr and FileLegacySourceFilePtrOutput values.
+// You can construct a concrete instance of `FileLegacySourceFilePtrInput` via:
+//
+//	        FileLegacySourceFileArgs{...}
+//
+//	or:
+//
+//	        nil
+type FileLegacySourceFilePtrInput interface {
+	pulumi.Input
+
+	ToFileLegacySourceFilePtrOutput() FileLegacySourceFilePtrOutput
+	ToFileLegacySourceFilePtrOutputWithContext(context.Context) FileLegacySourceFilePtrOutput
+}
+
+type fileLegacySourceFilePtrType FileLegacySourceFileArgs
+
+func FileLegacySourceFilePtr(v *FileLegacySourceFileArgs) FileLegacySourceFilePtrInput {
+	return (*fileLegacySourceFilePtrType)(v)
+}
+
+func (*fileLegacySourceFilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileLegacySourceFile)(nil)).Elem()
+}
+
+func (i *fileLegacySourceFilePtrType) ToFileLegacySourceFilePtrOutput() FileLegacySourceFilePtrOutput {
+	return i.ToFileLegacySourceFilePtrOutputWithContext(context.Background())
+}
+
+func (i *fileLegacySourceFilePtrType) ToFileLegacySourceFilePtrOutputWithContext(ctx context.Context) FileLegacySourceFilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileLegacySourceFilePtrOutput)
+}
+
+type FileLegacySourceFileOutput struct{ *pulumi.OutputState }
+
+func (FileLegacySourceFileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileLegacySourceFile)(nil)).Elem()
+}
+
+func (o FileLegacySourceFileOutput) ToFileLegacySourceFileOutput() FileLegacySourceFileOutput {
+	return o
+}
+
+func (o FileLegacySourceFileOutput) ToFileLegacySourceFileOutputWithContext(ctx context.Context) FileLegacySourceFileOutput {
+	return o
+}
+
+func (o FileLegacySourceFileOutput) ToFileLegacySourceFilePtrOutput() FileLegacySourceFilePtrOutput {
+	return o.ToFileLegacySourceFilePtrOutputWithContext(context.Background())
+}
+
+func (o FileLegacySourceFileOutput) ToFileLegacySourceFilePtrOutputWithContext(ctx context.Context) FileLegacySourceFilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileLegacySourceFile) *FileLegacySourceFile {
+		return &v
+	}).(FileLegacySourceFilePtrOutput)
+}
+
+// Whether the source file has changed since the last run
+func (o FileLegacySourceFileOutput) Changed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FileLegacySourceFile) *bool { return v.Changed }).(pulumi.BoolPtrOutput)
+}
+
+// The SHA256 checksum of the source file.
+func (o FileLegacySourceFileOutput) Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileLegacySourceFile) *string { return v.Checksum }).(pulumi.StringPtrOutput)
+}
+
+// The file name to use instead of the source file
+// name. Useful when the source file does not have a valid file extension,
+// for example when the source file is a URL referencing a `.qcow2` image.
+func (o FileLegacySourceFileOutput) FileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileLegacySourceFile) *string { return v.FileName }).(pulumi.StringPtrOutput)
+}
+
+// Whether to skip the TLS verification step for
+// HTTPS sources (defaults to `false`).
+func (o FileLegacySourceFileOutput) Insecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FileLegacySourceFile) *bool { return v.Insecure }).(pulumi.BoolPtrOutput)
+}
+
+// The minimum required TLS version for HTTPS
+// sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
+func (o FileLegacySourceFileOutput) MinTls() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FileLegacySourceFile) *string { return v.MinTls }).(pulumi.StringPtrOutput)
+}
+
+// A path to a local file or a URL.
+func (o FileLegacySourceFileOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v FileLegacySourceFile) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type FileLegacySourceFilePtrOutput struct{ *pulumi.OutputState }
+
+func (FileLegacySourceFilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileLegacySourceFile)(nil)).Elem()
+}
+
+func (o FileLegacySourceFilePtrOutput) ToFileLegacySourceFilePtrOutput() FileLegacySourceFilePtrOutput {
+	return o
+}
+
+func (o FileLegacySourceFilePtrOutput) ToFileLegacySourceFilePtrOutputWithContext(ctx context.Context) FileLegacySourceFilePtrOutput {
+	return o
+}
+
+func (o FileLegacySourceFilePtrOutput) Elem() FileLegacySourceFileOutput {
+	return o.ApplyT(func(v *FileLegacySourceFile) FileLegacySourceFile {
+		if v != nil {
+			return *v
+		}
+		var ret FileLegacySourceFile
+		return ret
+	}).(FileLegacySourceFileOutput)
+}
+
+// Whether the source file has changed since the last run
+func (o FileLegacySourceFilePtrOutput) Changed() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FileLegacySourceFile) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Changed
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The SHA256 checksum of the source file.
+func (o FileLegacySourceFilePtrOutput) Checksum() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileLegacySourceFile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Checksum
+	}).(pulumi.StringPtrOutput)
+}
+
+// The file name to use instead of the source file
+// name. Useful when the source file does not have a valid file extension,
+// for example when the source file is a URL referencing a `.qcow2` image.
+func (o FileLegacySourceFilePtrOutput) FileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileLegacySourceFile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FileName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to skip the TLS verification step for
+// HTTPS sources (defaults to `false`).
+func (o FileLegacySourceFilePtrOutput) Insecure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FileLegacySourceFile) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Insecure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The minimum required TLS version for HTTPS
+// sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
+func (o FileLegacySourceFilePtrOutput) MinTls() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileLegacySourceFile) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinTls
+	}).(pulumi.StringPtrOutput)
+}
+
+// A path to a local file or a URL.
+func (o FileLegacySourceFilePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileLegacySourceFile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+type FileLegacySourceRaw struct {
+	// The raw data.
+	Data string `pulumi:"data"`
+	// The file name.
+	FileName string `pulumi:"fileName"`
+	// The number of bytes to resize the file to.
+	Resize *int `pulumi:"resize"`
+}
+
+// FileLegacySourceRawInput is an input type that accepts FileLegacySourceRawArgs and FileLegacySourceRawOutput values.
+// You can construct a concrete instance of `FileLegacySourceRawInput` via:
+//
+//	FileLegacySourceRawArgs{...}
+type FileLegacySourceRawInput interface {
+	pulumi.Input
+
+	ToFileLegacySourceRawOutput() FileLegacySourceRawOutput
+	ToFileLegacySourceRawOutputWithContext(context.Context) FileLegacySourceRawOutput
+}
+
+type FileLegacySourceRawArgs struct {
+	// The raw data.
+	Data pulumi.StringInput `pulumi:"data"`
+	// The file name.
+	FileName pulumi.StringInput `pulumi:"fileName"`
+	// The number of bytes to resize the file to.
+	Resize pulumi.IntPtrInput `pulumi:"resize"`
+}
+
+func (FileLegacySourceRawArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileLegacySourceRaw)(nil)).Elem()
+}
+
+func (i FileLegacySourceRawArgs) ToFileLegacySourceRawOutput() FileLegacySourceRawOutput {
+	return i.ToFileLegacySourceRawOutputWithContext(context.Background())
+}
+
+func (i FileLegacySourceRawArgs) ToFileLegacySourceRawOutputWithContext(ctx context.Context) FileLegacySourceRawOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileLegacySourceRawOutput)
+}
+
+func (i FileLegacySourceRawArgs) ToFileLegacySourceRawPtrOutput() FileLegacySourceRawPtrOutput {
+	return i.ToFileLegacySourceRawPtrOutputWithContext(context.Background())
+}
+
+func (i FileLegacySourceRawArgs) ToFileLegacySourceRawPtrOutputWithContext(ctx context.Context) FileLegacySourceRawPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileLegacySourceRawOutput).ToFileLegacySourceRawPtrOutputWithContext(ctx)
+}
+
+// FileLegacySourceRawPtrInput is an input type that accepts FileLegacySourceRawArgs, FileLegacySourceRawPtr and FileLegacySourceRawPtrOutput values.
+// You can construct a concrete instance of `FileLegacySourceRawPtrInput` via:
+//
+//	        FileLegacySourceRawArgs{...}
+//
+//	or:
+//
+//	        nil
+type FileLegacySourceRawPtrInput interface {
+	pulumi.Input
+
+	ToFileLegacySourceRawPtrOutput() FileLegacySourceRawPtrOutput
+	ToFileLegacySourceRawPtrOutputWithContext(context.Context) FileLegacySourceRawPtrOutput
+}
+
+type fileLegacySourceRawPtrType FileLegacySourceRawArgs
+
+func FileLegacySourceRawPtr(v *FileLegacySourceRawArgs) FileLegacySourceRawPtrInput {
+	return (*fileLegacySourceRawPtrType)(v)
+}
+
+func (*fileLegacySourceRawPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileLegacySourceRaw)(nil)).Elem()
+}
+
+func (i *fileLegacySourceRawPtrType) ToFileLegacySourceRawPtrOutput() FileLegacySourceRawPtrOutput {
+	return i.ToFileLegacySourceRawPtrOutputWithContext(context.Background())
+}
+
+func (i *fileLegacySourceRawPtrType) ToFileLegacySourceRawPtrOutputWithContext(ctx context.Context) FileLegacySourceRawPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FileLegacySourceRawPtrOutput)
+}
+
+type FileLegacySourceRawOutput struct{ *pulumi.OutputState }
+
+func (FileLegacySourceRawOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FileLegacySourceRaw)(nil)).Elem()
+}
+
+func (o FileLegacySourceRawOutput) ToFileLegacySourceRawOutput() FileLegacySourceRawOutput {
+	return o
+}
+
+func (o FileLegacySourceRawOutput) ToFileLegacySourceRawOutputWithContext(ctx context.Context) FileLegacySourceRawOutput {
+	return o
+}
+
+func (o FileLegacySourceRawOutput) ToFileLegacySourceRawPtrOutput() FileLegacySourceRawPtrOutput {
+	return o.ToFileLegacySourceRawPtrOutputWithContext(context.Background())
+}
+
+func (o FileLegacySourceRawOutput) ToFileLegacySourceRawPtrOutputWithContext(ctx context.Context) FileLegacySourceRawPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FileLegacySourceRaw) *FileLegacySourceRaw {
+		return &v
+	}).(FileLegacySourceRawPtrOutput)
+}
+
+// The raw data.
+func (o FileLegacySourceRawOutput) Data() pulumi.StringOutput {
+	return o.ApplyT(func(v FileLegacySourceRaw) string { return v.Data }).(pulumi.StringOutput)
+}
+
+// The file name.
+func (o FileLegacySourceRawOutput) FileName() pulumi.StringOutput {
+	return o.ApplyT(func(v FileLegacySourceRaw) string { return v.FileName }).(pulumi.StringOutput)
+}
+
+// The number of bytes to resize the file to.
+func (o FileLegacySourceRawOutput) Resize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FileLegacySourceRaw) *int { return v.Resize }).(pulumi.IntPtrOutput)
+}
+
+type FileLegacySourceRawPtrOutput struct{ *pulumi.OutputState }
+
+func (FileLegacySourceRawPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FileLegacySourceRaw)(nil)).Elem()
+}
+
+func (o FileLegacySourceRawPtrOutput) ToFileLegacySourceRawPtrOutput() FileLegacySourceRawPtrOutput {
+	return o
+}
+
+func (o FileLegacySourceRawPtrOutput) ToFileLegacySourceRawPtrOutputWithContext(ctx context.Context) FileLegacySourceRawPtrOutput {
+	return o
+}
+
+func (o FileLegacySourceRawPtrOutput) Elem() FileLegacySourceRawOutput {
+	return o.ApplyT(func(v *FileLegacySourceRaw) FileLegacySourceRaw {
+		if v != nil {
+			return *v
+		}
+		var ret FileLegacySourceRaw
+		return ret
+	}).(FileLegacySourceRawOutput)
+}
+
+// The raw data.
+func (o FileLegacySourceRawPtrOutput) Data() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileLegacySourceRaw) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Data
+	}).(pulumi.StringPtrOutput)
+}
+
+// The file name.
+func (o FileLegacySourceRawPtrOutput) FileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileLegacySourceRaw) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FileName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of bytes to resize the file to.
+func (o FileLegacySourceRawPtrOutput) Resize() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FileLegacySourceRaw) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Resize
+	}).(pulumi.IntPtrOutput)
+}
+
+type GroupLegacyAcl struct {
+	// The path.
+	Path string `pulumi:"path"`
+	// Whether to propagate to child paths.
+	Propagate *bool `pulumi:"propagate"`
+	// The role identifier.
+	RoleId string `pulumi:"roleId"`
+}
+
+// GroupLegacyAclInput is an input type that accepts GroupLegacyAclArgs and GroupLegacyAclOutput values.
+// You can construct a concrete instance of `GroupLegacyAclInput` via:
+//
+//	GroupLegacyAclArgs{...}
+type GroupLegacyAclInput interface {
+	pulumi.Input
+
+	ToGroupLegacyAclOutput() GroupLegacyAclOutput
+	ToGroupLegacyAclOutputWithContext(context.Context) GroupLegacyAclOutput
+}
+
+type GroupLegacyAclArgs struct {
+	// The path.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Whether to propagate to child paths.
+	Propagate pulumi.BoolPtrInput `pulumi:"propagate"`
+	// The role identifier.
+	RoleId pulumi.StringInput `pulumi:"roleId"`
+}
+
+func (GroupLegacyAclArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupLegacyAcl)(nil)).Elem()
+}
+
+func (i GroupLegacyAclArgs) ToGroupLegacyAclOutput() GroupLegacyAclOutput {
+	return i.ToGroupLegacyAclOutputWithContext(context.Background())
+}
+
+func (i GroupLegacyAclArgs) ToGroupLegacyAclOutputWithContext(ctx context.Context) GroupLegacyAclOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupLegacyAclOutput)
+}
+
+// GroupLegacyAclArrayInput is an input type that accepts GroupLegacyAclArray and GroupLegacyAclArrayOutput values.
+// You can construct a concrete instance of `GroupLegacyAclArrayInput` via:
+//
+//	GroupLegacyAclArray{ GroupLegacyAclArgs{...} }
+type GroupLegacyAclArrayInput interface {
+	pulumi.Input
+
+	ToGroupLegacyAclArrayOutput() GroupLegacyAclArrayOutput
+	ToGroupLegacyAclArrayOutputWithContext(context.Context) GroupLegacyAclArrayOutput
+}
+
+type GroupLegacyAclArray []GroupLegacyAclInput
+
+func (GroupLegacyAclArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GroupLegacyAcl)(nil)).Elem()
+}
+
+func (i GroupLegacyAclArray) ToGroupLegacyAclArrayOutput() GroupLegacyAclArrayOutput {
+	return i.ToGroupLegacyAclArrayOutputWithContext(context.Background())
+}
+
+func (i GroupLegacyAclArray) ToGroupLegacyAclArrayOutputWithContext(ctx context.Context) GroupLegacyAclArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupLegacyAclArrayOutput)
+}
+
+type GroupLegacyAclOutput struct{ *pulumi.OutputState }
+
+func (GroupLegacyAclOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupLegacyAcl)(nil)).Elem()
+}
+
+func (o GroupLegacyAclOutput) ToGroupLegacyAclOutput() GroupLegacyAclOutput {
+	return o
+}
+
+func (o GroupLegacyAclOutput) ToGroupLegacyAclOutputWithContext(ctx context.Context) GroupLegacyAclOutput {
+	return o
+}
+
+// The path.
+func (o GroupLegacyAclOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GroupLegacyAcl) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Whether to propagate to child paths.
+func (o GroupLegacyAclOutput) Propagate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GroupLegacyAcl) *bool { return v.Propagate }).(pulumi.BoolPtrOutput)
+}
+
+// The role identifier.
+func (o GroupLegacyAclOutput) RoleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GroupLegacyAcl) string { return v.RoleId }).(pulumi.StringOutput)
+}
+
+type GroupLegacyAclArrayOutput struct{ *pulumi.OutputState }
+
+func (GroupLegacyAclArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GroupLegacyAcl)(nil)).Elem()
+}
+
+func (o GroupLegacyAclArrayOutput) ToGroupLegacyAclArrayOutput() GroupLegacyAclArrayOutput {
+	return o
+}
+
+func (o GroupLegacyAclArrayOutput) ToGroupLegacyAclArrayOutputWithContext(ctx context.Context) GroupLegacyAclArrayOutput {
+	return o
+}
+
+func (o GroupLegacyAclArrayOutput) Index(i pulumi.IntInput) GroupLegacyAclOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GroupLegacyAcl {
+		return vs[0].([]GroupLegacyAcl)[vs[1].(int)]
+	}).(GroupLegacyAclOutput)
+}
+
+type HostsLegacyEntry struct {
+	// The IP address.
+	Address string `pulumi:"address"`
+	// The hostnames.
+	Hostnames []string `pulumi:"hostnames"`
+}
+
+// HostsLegacyEntryInput is an input type that accepts HostsLegacyEntryArgs and HostsLegacyEntryOutput values.
+// You can construct a concrete instance of `HostsLegacyEntryInput` via:
+//
+//	HostsLegacyEntryArgs{...}
+type HostsLegacyEntryInput interface {
+	pulumi.Input
+
+	ToHostsLegacyEntryOutput() HostsLegacyEntryOutput
+	ToHostsLegacyEntryOutputWithContext(context.Context) HostsLegacyEntryOutput
+}
+
+type HostsLegacyEntryArgs struct {
+	// The IP address.
+	Address pulumi.StringInput `pulumi:"address"`
+	// The hostnames.
+	Hostnames pulumi.StringArrayInput `pulumi:"hostnames"`
+}
+
+func (HostsLegacyEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostsLegacyEntry)(nil)).Elem()
+}
+
+func (i HostsLegacyEntryArgs) ToHostsLegacyEntryOutput() HostsLegacyEntryOutput {
+	return i.ToHostsLegacyEntryOutputWithContext(context.Background())
+}
+
+func (i HostsLegacyEntryArgs) ToHostsLegacyEntryOutputWithContext(ctx context.Context) HostsLegacyEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostsLegacyEntryOutput)
+}
+
+// HostsLegacyEntryArrayInput is an input type that accepts HostsLegacyEntryArray and HostsLegacyEntryArrayOutput values.
+// You can construct a concrete instance of `HostsLegacyEntryArrayInput` via:
+//
+//	HostsLegacyEntryArray{ HostsLegacyEntryArgs{...} }
+type HostsLegacyEntryArrayInput interface {
+	pulumi.Input
+
+	ToHostsLegacyEntryArrayOutput() HostsLegacyEntryArrayOutput
+	ToHostsLegacyEntryArrayOutputWithContext(context.Context) HostsLegacyEntryArrayOutput
+}
+
+type HostsLegacyEntryArray []HostsLegacyEntryInput
+
+func (HostsLegacyEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HostsLegacyEntry)(nil)).Elem()
+}
+
+func (i HostsLegacyEntryArray) ToHostsLegacyEntryArrayOutput() HostsLegacyEntryArrayOutput {
+	return i.ToHostsLegacyEntryArrayOutputWithContext(context.Background())
+}
+
+func (i HostsLegacyEntryArray) ToHostsLegacyEntryArrayOutputWithContext(ctx context.Context) HostsLegacyEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HostsLegacyEntryArrayOutput)
+}
+
+type HostsLegacyEntryOutput struct{ *pulumi.OutputState }
+
+func (HostsLegacyEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HostsLegacyEntry)(nil)).Elem()
+}
+
+func (o HostsLegacyEntryOutput) ToHostsLegacyEntryOutput() HostsLegacyEntryOutput {
+	return o
+}
+
+func (o HostsLegacyEntryOutput) ToHostsLegacyEntryOutputWithContext(ctx context.Context) HostsLegacyEntryOutput {
+	return o
+}
+
+// The IP address.
+func (o HostsLegacyEntryOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v HostsLegacyEntry) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The hostnames.
+func (o HostsLegacyEntryOutput) Hostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v HostsLegacyEntry) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
+}
+
+type HostsLegacyEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (HostsLegacyEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HostsLegacyEntry)(nil)).Elem()
+}
+
+func (o HostsLegacyEntryArrayOutput) ToHostsLegacyEntryArrayOutput() HostsLegacyEntryArrayOutput {
+	return o
+}
+
+func (o HostsLegacyEntryArrayOutput) ToHostsLegacyEntryArrayOutputWithContext(ctx context.Context) HostsLegacyEntryArrayOutput {
+	return o
+}
+
+func (o HostsLegacyEntryArrayOutput) Index(i pulumi.IntInput) HostsLegacyEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HostsLegacyEntry {
+		return vs[0].([]HostsLegacyEntry)[vs[1].(int)]
+	}).(HostsLegacyEntryOutput)
+}
+
+type PoolLegacyMember struct {
+	// The datastore identifier.
+	DatastoreId *string `pulumi:"datastoreId"`
+	// The member identifier.
+	Id *string `pulumi:"id"`
+	// The node name.
+	NodeName *string `pulumi:"nodeName"`
+	// The member type.
+	Type *string `pulumi:"type"`
+	// The virtual machine identifier.
+	VmId *int `pulumi:"vmId"`
+}
+
+// PoolLegacyMemberInput is an input type that accepts PoolLegacyMemberArgs and PoolLegacyMemberOutput values.
+// You can construct a concrete instance of `PoolLegacyMemberInput` via:
+//
+//	PoolLegacyMemberArgs{...}
+type PoolLegacyMemberInput interface {
+	pulumi.Input
+
+	ToPoolLegacyMemberOutput() PoolLegacyMemberOutput
+	ToPoolLegacyMemberOutputWithContext(context.Context) PoolLegacyMemberOutput
+}
+
+type PoolLegacyMemberArgs struct {
+	// The datastore identifier.
+	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
+	// The member identifier.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The node name.
+	NodeName pulumi.StringPtrInput `pulumi:"nodeName"`
+	// The member type.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The virtual machine identifier.
+	VmId pulumi.IntPtrInput `pulumi:"vmId"`
+}
+
+func (PoolLegacyMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PoolLegacyMember)(nil)).Elem()
+}
+
+func (i PoolLegacyMemberArgs) ToPoolLegacyMemberOutput() PoolLegacyMemberOutput {
+	return i.ToPoolLegacyMemberOutputWithContext(context.Background())
+}
+
+func (i PoolLegacyMemberArgs) ToPoolLegacyMemberOutputWithContext(ctx context.Context) PoolLegacyMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PoolLegacyMemberOutput)
+}
+
+// PoolLegacyMemberArrayInput is an input type that accepts PoolLegacyMemberArray and PoolLegacyMemberArrayOutput values.
+// You can construct a concrete instance of `PoolLegacyMemberArrayInput` via:
+//
+//	PoolLegacyMemberArray{ PoolLegacyMemberArgs{...} }
+type PoolLegacyMemberArrayInput interface {
+	pulumi.Input
+
+	ToPoolLegacyMemberArrayOutput() PoolLegacyMemberArrayOutput
+	ToPoolLegacyMemberArrayOutputWithContext(context.Context) PoolLegacyMemberArrayOutput
+}
+
+type PoolLegacyMemberArray []PoolLegacyMemberInput
+
+func (PoolLegacyMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PoolLegacyMember)(nil)).Elem()
+}
+
+func (i PoolLegacyMemberArray) ToPoolLegacyMemberArrayOutput() PoolLegacyMemberArrayOutput {
+	return i.ToPoolLegacyMemberArrayOutputWithContext(context.Background())
+}
+
+func (i PoolLegacyMemberArray) ToPoolLegacyMemberArrayOutputWithContext(ctx context.Context) PoolLegacyMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PoolLegacyMemberArrayOutput)
+}
+
+type PoolLegacyMemberOutput struct{ *pulumi.OutputState }
+
+func (PoolLegacyMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PoolLegacyMember)(nil)).Elem()
+}
+
+func (o PoolLegacyMemberOutput) ToPoolLegacyMemberOutput() PoolLegacyMemberOutput {
+	return o
+}
+
+func (o PoolLegacyMemberOutput) ToPoolLegacyMemberOutputWithContext(ctx context.Context) PoolLegacyMemberOutput {
+	return o
+}
+
+// The datastore identifier.
+func (o PoolLegacyMemberOutput) DatastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PoolLegacyMember) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
+}
+
+// The member identifier.
+func (o PoolLegacyMemberOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PoolLegacyMember) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The node name.
+func (o PoolLegacyMemberOutput) NodeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PoolLegacyMember) *string { return v.NodeName }).(pulumi.StringPtrOutput)
+}
+
+// The member type.
+func (o PoolLegacyMemberOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PoolLegacyMember) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The virtual machine identifier.
+func (o PoolLegacyMemberOutput) VmId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PoolLegacyMember) *int { return v.VmId }).(pulumi.IntPtrOutput)
+}
+
+type PoolLegacyMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (PoolLegacyMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PoolLegacyMember)(nil)).Elem()
+}
+
+func (o PoolLegacyMemberArrayOutput) ToPoolLegacyMemberArrayOutput() PoolLegacyMemberArrayOutput {
+	return o
+}
+
+func (o PoolLegacyMemberArrayOutput) ToPoolLegacyMemberArrayOutputWithContext(ctx context.Context) PoolLegacyMemberArrayOutput {
+	return o
+}
+
+func (o PoolLegacyMemberArrayOutput) Index(i pulumi.IntInput) PoolLegacyMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PoolLegacyMember {
+		return vs[0].([]PoolLegacyMember)[vs[1].(int)]
+	}).(PoolLegacyMemberOutput)
+}
+
 type ProviderSsh struct {
 	// Whether to use the SSH agent for authentication. Takes precedence over the `privateKey` and `password` fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or `false` if not set.
 	Agent *bool `pulumi:"agent"`
@@ -434,6 +4530,121 @@ func (o ProviderSshNodeArrayOutput) Index(i pulumi.IntInput) ProviderSshNodeOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ProviderSshNode {
 		return vs[0].([]ProviderSshNode)[vs[1].(int)]
 	}).(ProviderSshNodeOutput)
+}
+
+type UserLegacyAcl struct {
+	// The path.
+	Path string `pulumi:"path"`
+	// Whether to propagate to child paths.
+	Propagate *bool `pulumi:"propagate"`
+	// The role identifier.
+	RoleId string `pulumi:"roleId"`
+}
+
+// UserLegacyAclInput is an input type that accepts UserLegacyAclArgs and UserLegacyAclOutput values.
+// You can construct a concrete instance of `UserLegacyAclInput` via:
+//
+//	UserLegacyAclArgs{...}
+type UserLegacyAclInput interface {
+	pulumi.Input
+
+	ToUserLegacyAclOutput() UserLegacyAclOutput
+	ToUserLegacyAclOutputWithContext(context.Context) UserLegacyAclOutput
+}
+
+type UserLegacyAclArgs struct {
+	// The path.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Whether to propagate to child paths.
+	Propagate pulumi.BoolPtrInput `pulumi:"propagate"`
+	// The role identifier.
+	RoleId pulumi.StringInput `pulumi:"roleId"`
+}
+
+func (UserLegacyAclArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserLegacyAcl)(nil)).Elem()
+}
+
+func (i UserLegacyAclArgs) ToUserLegacyAclOutput() UserLegacyAclOutput {
+	return i.ToUserLegacyAclOutputWithContext(context.Background())
+}
+
+func (i UserLegacyAclArgs) ToUserLegacyAclOutputWithContext(ctx context.Context) UserLegacyAclOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserLegacyAclOutput)
+}
+
+// UserLegacyAclArrayInput is an input type that accepts UserLegacyAclArray and UserLegacyAclArrayOutput values.
+// You can construct a concrete instance of `UserLegacyAclArrayInput` via:
+//
+//	UserLegacyAclArray{ UserLegacyAclArgs{...} }
+type UserLegacyAclArrayInput interface {
+	pulumi.Input
+
+	ToUserLegacyAclArrayOutput() UserLegacyAclArrayOutput
+	ToUserLegacyAclArrayOutputWithContext(context.Context) UserLegacyAclArrayOutput
+}
+
+type UserLegacyAclArray []UserLegacyAclInput
+
+func (UserLegacyAclArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserLegacyAcl)(nil)).Elem()
+}
+
+func (i UserLegacyAclArray) ToUserLegacyAclArrayOutput() UserLegacyAclArrayOutput {
+	return i.ToUserLegacyAclArrayOutputWithContext(context.Background())
+}
+
+func (i UserLegacyAclArray) ToUserLegacyAclArrayOutputWithContext(ctx context.Context) UserLegacyAclArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserLegacyAclArrayOutput)
+}
+
+type UserLegacyAclOutput struct{ *pulumi.OutputState }
+
+func (UserLegacyAclOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserLegacyAcl)(nil)).Elem()
+}
+
+func (o UserLegacyAclOutput) ToUserLegacyAclOutput() UserLegacyAclOutput {
+	return o
+}
+
+func (o UserLegacyAclOutput) ToUserLegacyAclOutputWithContext(ctx context.Context) UserLegacyAclOutput {
+	return o
+}
+
+// The path.
+func (o UserLegacyAclOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v UserLegacyAcl) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Whether to propagate to child paths.
+func (o UserLegacyAclOutput) Propagate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v UserLegacyAcl) *bool { return v.Propagate }).(pulumi.BoolPtrOutput)
+}
+
+// The role identifier.
+func (o UserLegacyAclOutput) RoleId() pulumi.StringOutput {
+	return o.ApplyT(func(v UserLegacyAcl) string { return v.RoleId }).(pulumi.StringOutput)
+}
+
+type UserLegacyAclArrayOutput struct{ *pulumi.OutputState }
+
+func (UserLegacyAclArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UserLegacyAcl)(nil)).Elem()
+}
+
+func (o UserLegacyAclArrayOutput) ToUserLegacyAclArrayOutput() UserLegacyAclArrayOutput {
+	return o
+}
+
+func (o UserLegacyAclArrayOutput) ToUserLegacyAclArrayOutputWithContext(ctx context.Context) UserLegacyAclArrayOutput {
+	return o
+}
+
+func (o UserLegacyAclArrayOutput) Index(i pulumi.IntInput) UserLegacyAclOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UserLegacyAcl {
+		return vs[0].([]UserLegacyAcl)[vs[1].(int)]
+	}).(UserLegacyAclOutput)
 }
 
 type Vm2LegacyCdrom struct {
@@ -1790,6 +6001,5909 @@ func (o VmCpuPtrOutput) Units() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type VmLegacyAgent struct {
+	// Whether to enable the QEMU agent (defaults
+	// to `false`).
+	Enabled *bool `pulumi:"enabled"`
+	// The maximum amount of time to wait for data from
+	// the QEMU agent to become available ( defaults to `15m`).
+	Timeout *string `pulumi:"timeout"`
+	// Whether to enable the FSTRIM feature in the QEMU agent
+	// (defaults to `false`).
+	Trim *bool `pulumi:"trim"`
+	// The QEMU agent interface type (defaults to `virtio`).
+	Type *string `pulumi:"type"`
+	// Configuration for waiting for specific IP address types when the VM starts.
+	WaitForIp *VmLegacyAgentWaitForIp `pulumi:"waitForIp"`
+}
+
+// VmLegacyAgentInput is an input type that accepts VmLegacyAgentArgs and VmLegacyAgentOutput values.
+// You can construct a concrete instance of `VmLegacyAgentInput` via:
+//
+//	VmLegacyAgentArgs{...}
+type VmLegacyAgentInput interface {
+	pulumi.Input
+
+	ToVmLegacyAgentOutput() VmLegacyAgentOutput
+	ToVmLegacyAgentOutputWithContext(context.Context) VmLegacyAgentOutput
+}
+
+type VmLegacyAgentArgs struct {
+	// Whether to enable the QEMU agent (defaults
+	// to `false`).
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The maximum amount of time to wait for data from
+	// the QEMU agent to become available ( defaults to `15m`).
+	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
+	// Whether to enable the FSTRIM feature in the QEMU agent
+	// (defaults to `false`).
+	Trim pulumi.BoolPtrInput `pulumi:"trim"`
+	// The QEMU agent interface type (defaults to `virtio`).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Configuration for waiting for specific IP address types when the VM starts.
+	WaitForIp VmLegacyAgentWaitForIpPtrInput `pulumi:"waitForIp"`
+}
+
+func (VmLegacyAgentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyAgent)(nil)).Elem()
+}
+
+func (i VmLegacyAgentArgs) ToVmLegacyAgentOutput() VmLegacyAgentOutput {
+	return i.ToVmLegacyAgentOutputWithContext(context.Background())
+}
+
+func (i VmLegacyAgentArgs) ToVmLegacyAgentOutputWithContext(ctx context.Context) VmLegacyAgentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyAgentOutput)
+}
+
+func (i VmLegacyAgentArgs) ToVmLegacyAgentPtrOutput() VmLegacyAgentPtrOutput {
+	return i.ToVmLegacyAgentPtrOutputWithContext(context.Background())
+}
+
+func (i VmLegacyAgentArgs) ToVmLegacyAgentPtrOutputWithContext(ctx context.Context) VmLegacyAgentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyAgentOutput).ToVmLegacyAgentPtrOutputWithContext(ctx)
+}
+
+// VmLegacyAgentPtrInput is an input type that accepts VmLegacyAgentArgs, VmLegacyAgentPtr and VmLegacyAgentPtrOutput values.
+// You can construct a concrete instance of `VmLegacyAgentPtrInput` via:
+//
+//	        VmLegacyAgentArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmLegacyAgentPtrInput interface {
+	pulumi.Input
+
+	ToVmLegacyAgentPtrOutput() VmLegacyAgentPtrOutput
+	ToVmLegacyAgentPtrOutputWithContext(context.Context) VmLegacyAgentPtrOutput
+}
+
+type vmLegacyAgentPtrType VmLegacyAgentArgs
+
+func VmLegacyAgentPtr(v *VmLegacyAgentArgs) VmLegacyAgentPtrInput {
+	return (*vmLegacyAgentPtrType)(v)
+}
+
+func (*vmLegacyAgentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyAgent)(nil)).Elem()
+}
+
+func (i *vmLegacyAgentPtrType) ToVmLegacyAgentPtrOutput() VmLegacyAgentPtrOutput {
+	return i.ToVmLegacyAgentPtrOutputWithContext(context.Background())
+}
+
+func (i *vmLegacyAgentPtrType) ToVmLegacyAgentPtrOutputWithContext(ctx context.Context) VmLegacyAgentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyAgentPtrOutput)
+}
+
+type VmLegacyAgentOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyAgentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyAgent)(nil)).Elem()
+}
+
+func (o VmLegacyAgentOutput) ToVmLegacyAgentOutput() VmLegacyAgentOutput {
+	return o
+}
+
+func (o VmLegacyAgentOutput) ToVmLegacyAgentOutputWithContext(ctx context.Context) VmLegacyAgentOutput {
+	return o
+}
+
+func (o VmLegacyAgentOutput) ToVmLegacyAgentPtrOutput() VmLegacyAgentPtrOutput {
+	return o.ToVmLegacyAgentPtrOutputWithContext(context.Background())
+}
+
+func (o VmLegacyAgentOutput) ToVmLegacyAgentPtrOutputWithContext(ctx context.Context) VmLegacyAgentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmLegacyAgent) *VmLegacyAgent {
+		return &v
+	}).(VmLegacyAgentPtrOutput)
+}
+
+// Whether to enable the QEMU agent (defaults
+// to `false`).
+func (o VmLegacyAgentOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmLegacyAgent) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The maximum amount of time to wait for data from
+// the QEMU agent to become available ( defaults to `15m`).
+func (o VmLegacyAgentOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyAgent) *string { return v.Timeout }).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable the FSTRIM feature in the QEMU agent
+// (defaults to `false`).
+func (o VmLegacyAgentOutput) Trim() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmLegacyAgent) *bool { return v.Trim }).(pulumi.BoolPtrOutput)
+}
+
+// The QEMU agent interface type (defaults to `virtio`).
+func (o VmLegacyAgentOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyAgent) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Configuration for waiting for specific IP address types when the VM starts.
+func (o VmLegacyAgentOutput) WaitForIp() VmLegacyAgentWaitForIpPtrOutput {
+	return o.ApplyT(func(v VmLegacyAgent) *VmLegacyAgentWaitForIp { return v.WaitForIp }).(VmLegacyAgentWaitForIpPtrOutput)
+}
+
+type VmLegacyAgentPtrOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyAgentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyAgent)(nil)).Elem()
+}
+
+func (o VmLegacyAgentPtrOutput) ToVmLegacyAgentPtrOutput() VmLegacyAgentPtrOutput {
+	return o
+}
+
+func (o VmLegacyAgentPtrOutput) ToVmLegacyAgentPtrOutputWithContext(ctx context.Context) VmLegacyAgentPtrOutput {
+	return o
+}
+
+func (o VmLegacyAgentPtrOutput) Elem() VmLegacyAgentOutput {
+	return o.ApplyT(func(v *VmLegacyAgent) VmLegacyAgent {
+		if v != nil {
+			return *v
+		}
+		var ret VmLegacyAgent
+		return ret
+	}).(VmLegacyAgentOutput)
+}
+
+// Whether to enable the QEMU agent (defaults
+// to `false`).
+func (o VmLegacyAgentPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VmLegacyAgent) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The maximum amount of time to wait for data from
+// the QEMU agent to become available ( defaults to `15m`).
+func (o VmLegacyAgentPtrOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyAgent) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Timeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable the FSTRIM feature in the QEMU agent
+// (defaults to `false`).
+func (o VmLegacyAgentPtrOutput) Trim() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VmLegacyAgent) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Trim
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The QEMU agent interface type (defaults to `virtio`).
+func (o VmLegacyAgentPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyAgent) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for waiting for specific IP address types when the VM starts.
+func (o VmLegacyAgentPtrOutput) WaitForIp() VmLegacyAgentWaitForIpPtrOutput {
+	return o.ApplyT(func(v *VmLegacyAgent) *VmLegacyAgentWaitForIp {
+		if v == nil {
+			return nil
+		}
+		return v.WaitForIp
+	}).(VmLegacyAgentWaitForIpPtrOutput)
+}
+
+type VmLegacyAgentWaitForIp struct {
+	// Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+	Ipv4 *bool `pulumi:"ipv4"`
+	// Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
+	//
+	// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+	Ipv6 *bool `pulumi:"ipv6"`
+}
+
+// VmLegacyAgentWaitForIpInput is an input type that accepts VmLegacyAgentWaitForIpArgs and VmLegacyAgentWaitForIpOutput values.
+// You can construct a concrete instance of `VmLegacyAgentWaitForIpInput` via:
+//
+//	VmLegacyAgentWaitForIpArgs{...}
+type VmLegacyAgentWaitForIpInput interface {
+	pulumi.Input
+
+	ToVmLegacyAgentWaitForIpOutput() VmLegacyAgentWaitForIpOutput
+	ToVmLegacyAgentWaitForIpOutputWithContext(context.Context) VmLegacyAgentWaitForIpOutput
+}
+
+type VmLegacyAgentWaitForIpArgs struct {
+	// Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+	Ipv4 pulumi.BoolPtrInput `pulumi:"ipv4"`
+	// Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
+	//
+	// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+	Ipv6 pulumi.BoolPtrInput `pulumi:"ipv6"`
+}
+
+func (VmLegacyAgentWaitForIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyAgentWaitForIp)(nil)).Elem()
+}
+
+func (i VmLegacyAgentWaitForIpArgs) ToVmLegacyAgentWaitForIpOutput() VmLegacyAgentWaitForIpOutput {
+	return i.ToVmLegacyAgentWaitForIpOutputWithContext(context.Background())
+}
+
+func (i VmLegacyAgentWaitForIpArgs) ToVmLegacyAgentWaitForIpOutputWithContext(ctx context.Context) VmLegacyAgentWaitForIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyAgentWaitForIpOutput)
+}
+
+func (i VmLegacyAgentWaitForIpArgs) ToVmLegacyAgentWaitForIpPtrOutput() VmLegacyAgentWaitForIpPtrOutput {
+	return i.ToVmLegacyAgentWaitForIpPtrOutputWithContext(context.Background())
+}
+
+func (i VmLegacyAgentWaitForIpArgs) ToVmLegacyAgentWaitForIpPtrOutputWithContext(ctx context.Context) VmLegacyAgentWaitForIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyAgentWaitForIpOutput).ToVmLegacyAgentWaitForIpPtrOutputWithContext(ctx)
+}
+
+// VmLegacyAgentWaitForIpPtrInput is an input type that accepts VmLegacyAgentWaitForIpArgs, VmLegacyAgentWaitForIpPtr and VmLegacyAgentWaitForIpPtrOutput values.
+// You can construct a concrete instance of `VmLegacyAgentWaitForIpPtrInput` via:
+//
+//	        VmLegacyAgentWaitForIpArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmLegacyAgentWaitForIpPtrInput interface {
+	pulumi.Input
+
+	ToVmLegacyAgentWaitForIpPtrOutput() VmLegacyAgentWaitForIpPtrOutput
+	ToVmLegacyAgentWaitForIpPtrOutputWithContext(context.Context) VmLegacyAgentWaitForIpPtrOutput
+}
+
+type vmLegacyAgentWaitForIpPtrType VmLegacyAgentWaitForIpArgs
+
+func VmLegacyAgentWaitForIpPtr(v *VmLegacyAgentWaitForIpArgs) VmLegacyAgentWaitForIpPtrInput {
+	return (*vmLegacyAgentWaitForIpPtrType)(v)
+}
+
+func (*vmLegacyAgentWaitForIpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyAgentWaitForIp)(nil)).Elem()
+}
+
+func (i *vmLegacyAgentWaitForIpPtrType) ToVmLegacyAgentWaitForIpPtrOutput() VmLegacyAgentWaitForIpPtrOutput {
+	return i.ToVmLegacyAgentWaitForIpPtrOutputWithContext(context.Background())
+}
+
+func (i *vmLegacyAgentWaitForIpPtrType) ToVmLegacyAgentWaitForIpPtrOutputWithContext(ctx context.Context) VmLegacyAgentWaitForIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyAgentWaitForIpPtrOutput)
+}
+
+type VmLegacyAgentWaitForIpOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyAgentWaitForIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyAgentWaitForIp)(nil)).Elem()
+}
+
+func (o VmLegacyAgentWaitForIpOutput) ToVmLegacyAgentWaitForIpOutput() VmLegacyAgentWaitForIpOutput {
+	return o
+}
+
+func (o VmLegacyAgentWaitForIpOutput) ToVmLegacyAgentWaitForIpOutputWithContext(ctx context.Context) VmLegacyAgentWaitForIpOutput {
+	return o
+}
+
+func (o VmLegacyAgentWaitForIpOutput) ToVmLegacyAgentWaitForIpPtrOutput() VmLegacyAgentWaitForIpPtrOutput {
+	return o.ToVmLegacyAgentWaitForIpPtrOutputWithContext(context.Background())
+}
+
+func (o VmLegacyAgentWaitForIpOutput) ToVmLegacyAgentWaitForIpPtrOutputWithContext(ctx context.Context) VmLegacyAgentWaitForIpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmLegacyAgentWaitForIp) *VmLegacyAgentWaitForIp {
+		return &v
+	}).(VmLegacyAgentWaitForIpPtrOutput)
+}
+
+// Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+func (o VmLegacyAgentWaitForIpOutput) Ipv4() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmLegacyAgentWaitForIp) *bool { return v.Ipv4 }).(pulumi.BoolPtrOutput)
+}
+
+// Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
+//
+// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+func (o VmLegacyAgentWaitForIpOutput) Ipv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmLegacyAgentWaitForIp) *bool { return v.Ipv6 }).(pulumi.BoolPtrOutput)
+}
+
+type VmLegacyAgentWaitForIpPtrOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyAgentWaitForIpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyAgentWaitForIp)(nil)).Elem()
+}
+
+func (o VmLegacyAgentWaitForIpPtrOutput) ToVmLegacyAgentWaitForIpPtrOutput() VmLegacyAgentWaitForIpPtrOutput {
+	return o
+}
+
+func (o VmLegacyAgentWaitForIpPtrOutput) ToVmLegacyAgentWaitForIpPtrOutputWithContext(ctx context.Context) VmLegacyAgentWaitForIpPtrOutput {
+	return o
+}
+
+func (o VmLegacyAgentWaitForIpPtrOutput) Elem() VmLegacyAgentWaitForIpOutput {
+	return o.ApplyT(func(v *VmLegacyAgentWaitForIp) VmLegacyAgentWaitForIp {
+		if v != nil {
+			return *v
+		}
+		var ret VmLegacyAgentWaitForIp
+		return ret
+	}).(VmLegacyAgentWaitForIpOutput)
+}
+
+// Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
+func (o VmLegacyAgentWaitForIpPtrOutput) Ipv4() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VmLegacyAgentWaitForIp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv4
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
+//
+// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+func (o VmLegacyAgentWaitForIpPtrOutput) Ipv6() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VmLegacyAgentWaitForIp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Ipv6
+	}).(pulumi.BoolPtrOutput)
+}
+
+type VmLegacyAmdSev struct {
+	// Sets policy bit to allow Simultaneous Multi Threading (SMT)
+	// (Ignored unless for SEV-SNP) (defaults to `true`).
+	AllowSmt *bool `pulumi:"allowSmt"`
+	// Add kernel hashes to guest firmware for measured linux kernel launch (defaults to `false`).
+	KernelHashes *bool `pulumi:"kernelHashes"`
+	// Sets policy bit to disallow debugging of guest (defaults
+	// to `false`).
+	NoDebug *bool `pulumi:"noDebug"`
+	// Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to `false`).
+	//
+	// The `amdSev` setting is only allowed for a `root@pam` authenticated user.
+	NoKeySharing *bool `pulumi:"noKeySharing"`
+	// Enable standard SEV with `std` or enable experimental SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option (defaults to `std`).
+	Type *string `pulumi:"type"`
+}
+
+// VmLegacyAmdSevInput is an input type that accepts VmLegacyAmdSevArgs and VmLegacyAmdSevOutput values.
+// You can construct a concrete instance of `VmLegacyAmdSevInput` via:
+//
+//	VmLegacyAmdSevArgs{...}
+type VmLegacyAmdSevInput interface {
+	pulumi.Input
+
+	ToVmLegacyAmdSevOutput() VmLegacyAmdSevOutput
+	ToVmLegacyAmdSevOutputWithContext(context.Context) VmLegacyAmdSevOutput
+}
+
+type VmLegacyAmdSevArgs struct {
+	// Sets policy bit to allow Simultaneous Multi Threading (SMT)
+	// (Ignored unless for SEV-SNP) (defaults to `true`).
+	AllowSmt pulumi.BoolPtrInput `pulumi:"allowSmt"`
+	// Add kernel hashes to guest firmware for measured linux kernel launch (defaults to `false`).
+	KernelHashes pulumi.BoolPtrInput `pulumi:"kernelHashes"`
+	// Sets policy bit to disallow debugging of guest (defaults
+	// to `false`).
+	NoDebug pulumi.BoolPtrInput `pulumi:"noDebug"`
+	// Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to `false`).
+	//
+	// The `amdSev` setting is only allowed for a `root@pam` authenticated user.
+	NoKeySharing pulumi.BoolPtrInput `pulumi:"noKeySharing"`
+	// Enable standard SEV with `std` or enable experimental SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option (defaults to `std`).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (VmLegacyAmdSevArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyAmdSev)(nil)).Elem()
+}
+
+func (i VmLegacyAmdSevArgs) ToVmLegacyAmdSevOutput() VmLegacyAmdSevOutput {
+	return i.ToVmLegacyAmdSevOutputWithContext(context.Background())
+}
+
+func (i VmLegacyAmdSevArgs) ToVmLegacyAmdSevOutputWithContext(ctx context.Context) VmLegacyAmdSevOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyAmdSevOutput)
+}
+
+func (i VmLegacyAmdSevArgs) ToVmLegacyAmdSevPtrOutput() VmLegacyAmdSevPtrOutput {
+	return i.ToVmLegacyAmdSevPtrOutputWithContext(context.Background())
+}
+
+func (i VmLegacyAmdSevArgs) ToVmLegacyAmdSevPtrOutputWithContext(ctx context.Context) VmLegacyAmdSevPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyAmdSevOutput).ToVmLegacyAmdSevPtrOutputWithContext(ctx)
+}
+
+// VmLegacyAmdSevPtrInput is an input type that accepts VmLegacyAmdSevArgs, VmLegacyAmdSevPtr and VmLegacyAmdSevPtrOutput values.
+// You can construct a concrete instance of `VmLegacyAmdSevPtrInput` via:
+//
+//	        VmLegacyAmdSevArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmLegacyAmdSevPtrInput interface {
+	pulumi.Input
+
+	ToVmLegacyAmdSevPtrOutput() VmLegacyAmdSevPtrOutput
+	ToVmLegacyAmdSevPtrOutputWithContext(context.Context) VmLegacyAmdSevPtrOutput
+}
+
+type vmLegacyAmdSevPtrType VmLegacyAmdSevArgs
+
+func VmLegacyAmdSevPtr(v *VmLegacyAmdSevArgs) VmLegacyAmdSevPtrInput {
+	return (*vmLegacyAmdSevPtrType)(v)
+}
+
+func (*vmLegacyAmdSevPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyAmdSev)(nil)).Elem()
+}
+
+func (i *vmLegacyAmdSevPtrType) ToVmLegacyAmdSevPtrOutput() VmLegacyAmdSevPtrOutput {
+	return i.ToVmLegacyAmdSevPtrOutputWithContext(context.Background())
+}
+
+func (i *vmLegacyAmdSevPtrType) ToVmLegacyAmdSevPtrOutputWithContext(ctx context.Context) VmLegacyAmdSevPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyAmdSevPtrOutput)
+}
+
+type VmLegacyAmdSevOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyAmdSevOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyAmdSev)(nil)).Elem()
+}
+
+func (o VmLegacyAmdSevOutput) ToVmLegacyAmdSevOutput() VmLegacyAmdSevOutput {
+	return o
+}
+
+func (o VmLegacyAmdSevOutput) ToVmLegacyAmdSevOutputWithContext(ctx context.Context) VmLegacyAmdSevOutput {
+	return o
+}
+
+func (o VmLegacyAmdSevOutput) ToVmLegacyAmdSevPtrOutput() VmLegacyAmdSevPtrOutput {
+	return o.ToVmLegacyAmdSevPtrOutputWithContext(context.Background())
+}
+
+func (o VmLegacyAmdSevOutput) ToVmLegacyAmdSevPtrOutputWithContext(ctx context.Context) VmLegacyAmdSevPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmLegacyAmdSev) *VmLegacyAmdSev {
+		return &v
+	}).(VmLegacyAmdSevPtrOutput)
+}
+
+// Sets policy bit to allow Simultaneous Multi Threading (SMT)
+// (Ignored unless for SEV-SNP) (defaults to `true`).
+func (o VmLegacyAmdSevOutput) AllowSmt() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmLegacyAmdSev) *bool { return v.AllowSmt }).(pulumi.BoolPtrOutput)
+}
+
+// Add kernel hashes to guest firmware for measured linux kernel launch (defaults to `false`).
+func (o VmLegacyAmdSevOutput) KernelHashes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmLegacyAmdSev) *bool { return v.KernelHashes }).(pulumi.BoolPtrOutput)
+}
+
+// Sets policy bit to disallow debugging of guest (defaults
+// to `false`).
+func (o VmLegacyAmdSevOutput) NoDebug() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmLegacyAmdSev) *bool { return v.NoDebug }).(pulumi.BoolPtrOutput)
+}
+
+// Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to `false`).
+//
+// The `amdSev` setting is only allowed for a `root@pam` authenticated user.
+func (o VmLegacyAmdSevOutput) NoKeySharing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmLegacyAmdSev) *bool { return v.NoKeySharing }).(pulumi.BoolPtrOutput)
+}
+
+// Enable standard SEV with `std` or enable experimental SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option (defaults to `std`).
+func (o VmLegacyAmdSevOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyAmdSev) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type VmLegacyAmdSevPtrOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyAmdSevPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyAmdSev)(nil)).Elem()
+}
+
+func (o VmLegacyAmdSevPtrOutput) ToVmLegacyAmdSevPtrOutput() VmLegacyAmdSevPtrOutput {
+	return o
+}
+
+func (o VmLegacyAmdSevPtrOutput) ToVmLegacyAmdSevPtrOutputWithContext(ctx context.Context) VmLegacyAmdSevPtrOutput {
+	return o
+}
+
+func (o VmLegacyAmdSevPtrOutput) Elem() VmLegacyAmdSevOutput {
+	return o.ApplyT(func(v *VmLegacyAmdSev) VmLegacyAmdSev {
+		if v != nil {
+			return *v
+		}
+		var ret VmLegacyAmdSev
+		return ret
+	}).(VmLegacyAmdSevOutput)
+}
+
+// Sets policy bit to allow Simultaneous Multi Threading (SMT)
+// (Ignored unless for SEV-SNP) (defaults to `true`).
+func (o VmLegacyAmdSevPtrOutput) AllowSmt() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VmLegacyAmdSev) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowSmt
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Add kernel hashes to guest firmware for measured linux kernel launch (defaults to `false`).
+func (o VmLegacyAmdSevPtrOutput) KernelHashes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VmLegacyAmdSev) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.KernelHashes
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Sets policy bit to disallow debugging of guest (defaults
+// to `false`).
+func (o VmLegacyAmdSevPtrOutput) NoDebug() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VmLegacyAmdSev) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoDebug
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to `false`).
+//
+// The `amdSev` setting is only allowed for a `root@pam` authenticated user.
+func (o VmLegacyAmdSevPtrOutput) NoKeySharing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VmLegacyAmdSev) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.NoKeySharing
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable standard SEV with `std` or enable experimental SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option (defaults to `std`).
+func (o VmLegacyAmdSevPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyAmdSev) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type VmLegacyAudioDevice struct {
+	// The device (defaults to `intel-hda`).
+	// - `AC97` - Intel 82801AA AC97 Audio.
+	// - `ich9-intel-hda` - Intel HD Audio Controller (ich9).
+	// - `intel-hda` - Intel HD Audio.
+	Device *string `pulumi:"device"`
+	// The driver (defaults to `spice`).
+	Driver *string `pulumi:"driver"`
+	// Whether to enable the audio device (defaults
+	// to `true`).
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// VmLegacyAudioDeviceInput is an input type that accepts VmLegacyAudioDeviceArgs and VmLegacyAudioDeviceOutput values.
+// You can construct a concrete instance of `VmLegacyAudioDeviceInput` via:
+//
+//	VmLegacyAudioDeviceArgs{...}
+type VmLegacyAudioDeviceInput interface {
+	pulumi.Input
+
+	ToVmLegacyAudioDeviceOutput() VmLegacyAudioDeviceOutput
+	ToVmLegacyAudioDeviceOutputWithContext(context.Context) VmLegacyAudioDeviceOutput
+}
+
+type VmLegacyAudioDeviceArgs struct {
+	// The device (defaults to `intel-hda`).
+	// - `AC97` - Intel 82801AA AC97 Audio.
+	// - `ich9-intel-hda` - Intel HD Audio Controller (ich9).
+	// - `intel-hda` - Intel HD Audio.
+	Device pulumi.StringPtrInput `pulumi:"device"`
+	// The driver (defaults to `spice`).
+	Driver pulumi.StringPtrInput `pulumi:"driver"`
+	// Whether to enable the audio device (defaults
+	// to `true`).
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (VmLegacyAudioDeviceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyAudioDevice)(nil)).Elem()
+}
+
+func (i VmLegacyAudioDeviceArgs) ToVmLegacyAudioDeviceOutput() VmLegacyAudioDeviceOutput {
+	return i.ToVmLegacyAudioDeviceOutputWithContext(context.Background())
+}
+
+func (i VmLegacyAudioDeviceArgs) ToVmLegacyAudioDeviceOutputWithContext(ctx context.Context) VmLegacyAudioDeviceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyAudioDeviceOutput)
+}
+
+func (i VmLegacyAudioDeviceArgs) ToVmLegacyAudioDevicePtrOutput() VmLegacyAudioDevicePtrOutput {
+	return i.ToVmLegacyAudioDevicePtrOutputWithContext(context.Background())
+}
+
+func (i VmLegacyAudioDeviceArgs) ToVmLegacyAudioDevicePtrOutputWithContext(ctx context.Context) VmLegacyAudioDevicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyAudioDeviceOutput).ToVmLegacyAudioDevicePtrOutputWithContext(ctx)
+}
+
+// VmLegacyAudioDevicePtrInput is an input type that accepts VmLegacyAudioDeviceArgs, VmLegacyAudioDevicePtr and VmLegacyAudioDevicePtrOutput values.
+// You can construct a concrete instance of `VmLegacyAudioDevicePtrInput` via:
+//
+//	        VmLegacyAudioDeviceArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmLegacyAudioDevicePtrInput interface {
+	pulumi.Input
+
+	ToVmLegacyAudioDevicePtrOutput() VmLegacyAudioDevicePtrOutput
+	ToVmLegacyAudioDevicePtrOutputWithContext(context.Context) VmLegacyAudioDevicePtrOutput
+}
+
+type vmLegacyAudioDevicePtrType VmLegacyAudioDeviceArgs
+
+func VmLegacyAudioDevicePtr(v *VmLegacyAudioDeviceArgs) VmLegacyAudioDevicePtrInput {
+	return (*vmLegacyAudioDevicePtrType)(v)
+}
+
+func (*vmLegacyAudioDevicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyAudioDevice)(nil)).Elem()
+}
+
+func (i *vmLegacyAudioDevicePtrType) ToVmLegacyAudioDevicePtrOutput() VmLegacyAudioDevicePtrOutput {
+	return i.ToVmLegacyAudioDevicePtrOutputWithContext(context.Background())
+}
+
+func (i *vmLegacyAudioDevicePtrType) ToVmLegacyAudioDevicePtrOutputWithContext(ctx context.Context) VmLegacyAudioDevicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyAudioDevicePtrOutput)
+}
+
+type VmLegacyAudioDeviceOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyAudioDeviceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyAudioDevice)(nil)).Elem()
+}
+
+func (o VmLegacyAudioDeviceOutput) ToVmLegacyAudioDeviceOutput() VmLegacyAudioDeviceOutput {
+	return o
+}
+
+func (o VmLegacyAudioDeviceOutput) ToVmLegacyAudioDeviceOutputWithContext(ctx context.Context) VmLegacyAudioDeviceOutput {
+	return o
+}
+
+func (o VmLegacyAudioDeviceOutput) ToVmLegacyAudioDevicePtrOutput() VmLegacyAudioDevicePtrOutput {
+	return o.ToVmLegacyAudioDevicePtrOutputWithContext(context.Background())
+}
+
+func (o VmLegacyAudioDeviceOutput) ToVmLegacyAudioDevicePtrOutputWithContext(ctx context.Context) VmLegacyAudioDevicePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmLegacyAudioDevice) *VmLegacyAudioDevice {
+		return &v
+	}).(VmLegacyAudioDevicePtrOutput)
+}
+
+// The device (defaults to `intel-hda`).
+// - `AC97` - Intel 82801AA AC97 Audio.
+// - `ich9-intel-hda` - Intel HD Audio Controller (ich9).
+// - `intel-hda` - Intel HD Audio.
+func (o VmLegacyAudioDeviceOutput) Device() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyAudioDevice) *string { return v.Device }).(pulumi.StringPtrOutput)
+}
+
+// The driver (defaults to `spice`).
+func (o VmLegacyAudioDeviceOutput) Driver() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyAudioDevice) *string { return v.Driver }).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable the audio device (defaults
+// to `true`).
+func (o VmLegacyAudioDeviceOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmLegacyAudioDevice) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type VmLegacyAudioDevicePtrOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyAudioDevicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyAudioDevice)(nil)).Elem()
+}
+
+func (o VmLegacyAudioDevicePtrOutput) ToVmLegacyAudioDevicePtrOutput() VmLegacyAudioDevicePtrOutput {
+	return o
+}
+
+func (o VmLegacyAudioDevicePtrOutput) ToVmLegacyAudioDevicePtrOutputWithContext(ctx context.Context) VmLegacyAudioDevicePtrOutput {
+	return o
+}
+
+func (o VmLegacyAudioDevicePtrOutput) Elem() VmLegacyAudioDeviceOutput {
+	return o.ApplyT(func(v *VmLegacyAudioDevice) VmLegacyAudioDevice {
+		if v != nil {
+			return *v
+		}
+		var ret VmLegacyAudioDevice
+		return ret
+	}).(VmLegacyAudioDeviceOutput)
+}
+
+// The device (defaults to `intel-hda`).
+// - `AC97` - Intel 82801AA AC97 Audio.
+// - `ich9-intel-hda` - Intel HD Audio Controller (ich9).
+// - `intel-hda` - Intel HD Audio.
+func (o VmLegacyAudioDevicePtrOutput) Device() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyAudioDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Device
+	}).(pulumi.StringPtrOutput)
+}
+
+// The driver (defaults to `spice`).
+func (o VmLegacyAudioDevicePtrOutput) Driver() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyAudioDevice) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Driver
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to enable the audio device (defaults
+// to `true`).
+func (o VmLegacyAudioDevicePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VmLegacyAudioDevice) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type VmLegacyCdrom struct {
+	// Whether to enable the CD-ROM drive (defaults
+	// to `false`). *Deprecated*. The attribute will be removed in the next version of the provider.
+	// Set `fileId` to `none` to leave the CD-ROM drive empty.
+	//
+	// Deprecated: Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `fileId` to `none` to leave the CDROM drive empty.
+	Enabled *bool `pulumi:"enabled"`
+	// A file ID for an ISO file (defaults to `cdrom` as
+	// in the physical drive). Use `none` to leave the CD-ROM drive empty.
+	FileId *string `pulumi:"fileId"`
+	// A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
+	// "Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. " +
+	// "Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+	Interface *string `pulumi:"interface"`
+}
+
+// VmLegacyCdromInput is an input type that accepts VmLegacyCdromArgs and VmLegacyCdromOutput values.
+// You can construct a concrete instance of `VmLegacyCdromInput` via:
+//
+//	VmLegacyCdromArgs{...}
+type VmLegacyCdromInput interface {
+	pulumi.Input
+
+	ToVmLegacyCdromOutput() VmLegacyCdromOutput
+	ToVmLegacyCdromOutputWithContext(context.Context) VmLegacyCdromOutput
+}
+
+type VmLegacyCdromArgs struct {
+	// Whether to enable the CD-ROM drive (defaults
+	// to `false`). *Deprecated*. The attribute will be removed in the next version of the provider.
+	// Set `fileId` to `none` to leave the CD-ROM drive empty.
+	//
+	// Deprecated: Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `fileId` to `none` to leave the CDROM drive empty.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// A file ID for an ISO file (defaults to `cdrom` as
+	// in the physical drive). Use `none` to leave the CD-ROM drive empty.
+	FileId pulumi.StringPtrInput `pulumi:"fileId"`
+	// A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
+	// "Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. " +
+	// "Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+	Interface pulumi.StringPtrInput `pulumi:"interface"`
+}
+
+func (VmLegacyCdromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyCdrom)(nil)).Elem()
+}
+
+func (i VmLegacyCdromArgs) ToVmLegacyCdromOutput() VmLegacyCdromOutput {
+	return i.ToVmLegacyCdromOutputWithContext(context.Background())
+}
+
+func (i VmLegacyCdromArgs) ToVmLegacyCdromOutputWithContext(ctx context.Context) VmLegacyCdromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyCdromOutput)
+}
+
+func (i VmLegacyCdromArgs) ToVmLegacyCdromPtrOutput() VmLegacyCdromPtrOutput {
+	return i.ToVmLegacyCdromPtrOutputWithContext(context.Background())
+}
+
+func (i VmLegacyCdromArgs) ToVmLegacyCdromPtrOutputWithContext(ctx context.Context) VmLegacyCdromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyCdromOutput).ToVmLegacyCdromPtrOutputWithContext(ctx)
+}
+
+// VmLegacyCdromPtrInput is an input type that accepts VmLegacyCdromArgs, VmLegacyCdromPtr and VmLegacyCdromPtrOutput values.
+// You can construct a concrete instance of `VmLegacyCdromPtrInput` via:
+//
+//	        VmLegacyCdromArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmLegacyCdromPtrInput interface {
+	pulumi.Input
+
+	ToVmLegacyCdromPtrOutput() VmLegacyCdromPtrOutput
+	ToVmLegacyCdromPtrOutputWithContext(context.Context) VmLegacyCdromPtrOutput
+}
+
+type vmLegacyCdromPtrType VmLegacyCdromArgs
+
+func VmLegacyCdromPtr(v *VmLegacyCdromArgs) VmLegacyCdromPtrInput {
+	return (*vmLegacyCdromPtrType)(v)
+}
+
+func (*vmLegacyCdromPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyCdrom)(nil)).Elem()
+}
+
+func (i *vmLegacyCdromPtrType) ToVmLegacyCdromPtrOutput() VmLegacyCdromPtrOutput {
+	return i.ToVmLegacyCdromPtrOutputWithContext(context.Background())
+}
+
+func (i *vmLegacyCdromPtrType) ToVmLegacyCdromPtrOutputWithContext(ctx context.Context) VmLegacyCdromPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyCdromPtrOutput)
+}
+
+type VmLegacyCdromOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyCdromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyCdrom)(nil)).Elem()
+}
+
+func (o VmLegacyCdromOutput) ToVmLegacyCdromOutput() VmLegacyCdromOutput {
+	return o
+}
+
+func (o VmLegacyCdromOutput) ToVmLegacyCdromOutputWithContext(ctx context.Context) VmLegacyCdromOutput {
+	return o
+}
+
+func (o VmLegacyCdromOutput) ToVmLegacyCdromPtrOutput() VmLegacyCdromPtrOutput {
+	return o.ToVmLegacyCdromPtrOutputWithContext(context.Background())
+}
+
+func (o VmLegacyCdromOutput) ToVmLegacyCdromPtrOutputWithContext(ctx context.Context) VmLegacyCdromPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmLegacyCdrom) *VmLegacyCdrom {
+		return &v
+	}).(VmLegacyCdromPtrOutput)
+}
+
+// Whether to enable the CD-ROM drive (defaults
+// to `false`). *Deprecated*. The attribute will be removed in the next version of the provider.
+// Set `fileId` to `none` to leave the CD-ROM drive empty.
+//
+// Deprecated: Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `fileId` to `none` to leave the CDROM drive empty.
+func (o VmLegacyCdromOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmLegacyCdrom) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// A file ID for an ISO file (defaults to `cdrom` as
+// in the physical drive). Use `none` to leave the CD-ROM drive empty.
+func (o VmLegacyCdromOutput) FileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyCdrom) *string { return v.FileId }).(pulumi.StringPtrOutput)
+}
+
+// A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
+// "Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. " +
+// "Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+func (o VmLegacyCdromOutput) Interface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyCdrom) *string { return v.Interface }).(pulumi.StringPtrOutput)
+}
+
+type VmLegacyCdromPtrOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyCdromPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyCdrom)(nil)).Elem()
+}
+
+func (o VmLegacyCdromPtrOutput) ToVmLegacyCdromPtrOutput() VmLegacyCdromPtrOutput {
+	return o
+}
+
+func (o VmLegacyCdromPtrOutput) ToVmLegacyCdromPtrOutputWithContext(ctx context.Context) VmLegacyCdromPtrOutput {
+	return o
+}
+
+func (o VmLegacyCdromPtrOutput) Elem() VmLegacyCdromOutput {
+	return o.ApplyT(func(v *VmLegacyCdrom) VmLegacyCdrom {
+		if v != nil {
+			return *v
+		}
+		var ret VmLegacyCdrom
+		return ret
+	}).(VmLegacyCdromOutput)
+}
+
+// Whether to enable the CD-ROM drive (defaults
+// to `false`). *Deprecated*. The attribute will be removed in the next version of the provider.
+// Set `fileId` to `none` to leave the CD-ROM drive empty.
+//
+// Deprecated: Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `fileId` to `none` to leave the CDROM drive empty.
+func (o VmLegacyCdromPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VmLegacyCdrom) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A file ID for an ISO file (defaults to `cdrom` as
+// in the physical drive). Use `none` to leave the CD-ROM drive empty.
+func (o VmLegacyCdromPtrOutput) FileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyCdrom) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FileId
+	}).(pulumi.StringPtrOutput)
+}
+
+// A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
+// "Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. " +
+// "Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
+func (o VmLegacyCdromPtrOutput) Interface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyCdrom) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Interface
+	}).(pulumi.StringPtrOutput)
+}
+
+type VmLegacyClone struct {
+	// The identifier for the target datastore.
+	DatastoreId *string `pulumi:"datastoreId"`
+	// Full or linked clone (defaults to `true`).
+	Full *bool `pulumi:"full"`
+	// The name of the source node (leave blank, if
+	// equal to the `nodeName` argument).
+	NodeName *string `pulumi:"nodeName"`
+	// Number of retries in Proxmox for clone vm.
+	// Sometimes Proxmox errors with timeout when creating multiple clones at
+	// once.
+	Retries *int `pulumi:"retries"`
+	// The identifier for the source VM.
+	VmId int `pulumi:"vmId"`
+}
+
+// VmLegacyCloneInput is an input type that accepts VmLegacyCloneArgs and VmLegacyCloneOutput values.
+// You can construct a concrete instance of `VmLegacyCloneInput` via:
+//
+//	VmLegacyCloneArgs{...}
+type VmLegacyCloneInput interface {
+	pulumi.Input
+
+	ToVmLegacyCloneOutput() VmLegacyCloneOutput
+	ToVmLegacyCloneOutputWithContext(context.Context) VmLegacyCloneOutput
+}
+
+type VmLegacyCloneArgs struct {
+	// The identifier for the target datastore.
+	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
+	// Full or linked clone (defaults to `true`).
+	Full pulumi.BoolPtrInput `pulumi:"full"`
+	// The name of the source node (leave blank, if
+	// equal to the `nodeName` argument).
+	NodeName pulumi.StringPtrInput `pulumi:"nodeName"`
+	// Number of retries in Proxmox for clone vm.
+	// Sometimes Proxmox errors with timeout when creating multiple clones at
+	// once.
+	Retries pulumi.IntPtrInput `pulumi:"retries"`
+	// The identifier for the source VM.
+	VmId pulumi.IntInput `pulumi:"vmId"`
+}
+
+func (VmLegacyCloneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyClone)(nil)).Elem()
+}
+
+func (i VmLegacyCloneArgs) ToVmLegacyCloneOutput() VmLegacyCloneOutput {
+	return i.ToVmLegacyCloneOutputWithContext(context.Background())
+}
+
+func (i VmLegacyCloneArgs) ToVmLegacyCloneOutputWithContext(ctx context.Context) VmLegacyCloneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyCloneOutput)
+}
+
+func (i VmLegacyCloneArgs) ToVmLegacyClonePtrOutput() VmLegacyClonePtrOutput {
+	return i.ToVmLegacyClonePtrOutputWithContext(context.Background())
+}
+
+func (i VmLegacyCloneArgs) ToVmLegacyClonePtrOutputWithContext(ctx context.Context) VmLegacyClonePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyCloneOutput).ToVmLegacyClonePtrOutputWithContext(ctx)
+}
+
+// VmLegacyClonePtrInput is an input type that accepts VmLegacyCloneArgs, VmLegacyClonePtr and VmLegacyClonePtrOutput values.
+// You can construct a concrete instance of `VmLegacyClonePtrInput` via:
+//
+//	        VmLegacyCloneArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmLegacyClonePtrInput interface {
+	pulumi.Input
+
+	ToVmLegacyClonePtrOutput() VmLegacyClonePtrOutput
+	ToVmLegacyClonePtrOutputWithContext(context.Context) VmLegacyClonePtrOutput
+}
+
+type vmLegacyClonePtrType VmLegacyCloneArgs
+
+func VmLegacyClonePtr(v *VmLegacyCloneArgs) VmLegacyClonePtrInput {
+	return (*vmLegacyClonePtrType)(v)
+}
+
+func (*vmLegacyClonePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyClone)(nil)).Elem()
+}
+
+func (i *vmLegacyClonePtrType) ToVmLegacyClonePtrOutput() VmLegacyClonePtrOutput {
+	return i.ToVmLegacyClonePtrOutputWithContext(context.Background())
+}
+
+func (i *vmLegacyClonePtrType) ToVmLegacyClonePtrOutputWithContext(ctx context.Context) VmLegacyClonePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyClonePtrOutput)
+}
+
+type VmLegacyCloneOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyCloneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyClone)(nil)).Elem()
+}
+
+func (o VmLegacyCloneOutput) ToVmLegacyCloneOutput() VmLegacyCloneOutput {
+	return o
+}
+
+func (o VmLegacyCloneOutput) ToVmLegacyCloneOutputWithContext(ctx context.Context) VmLegacyCloneOutput {
+	return o
+}
+
+func (o VmLegacyCloneOutput) ToVmLegacyClonePtrOutput() VmLegacyClonePtrOutput {
+	return o.ToVmLegacyClonePtrOutputWithContext(context.Background())
+}
+
+func (o VmLegacyCloneOutput) ToVmLegacyClonePtrOutputWithContext(ctx context.Context) VmLegacyClonePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmLegacyClone) *VmLegacyClone {
+		return &v
+	}).(VmLegacyClonePtrOutput)
+}
+
+// The identifier for the target datastore.
+func (o VmLegacyCloneOutput) DatastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyClone) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
+}
+
+// Full or linked clone (defaults to `true`).
+func (o VmLegacyCloneOutput) Full() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmLegacyClone) *bool { return v.Full }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the source node (leave blank, if
+// equal to the `nodeName` argument).
+func (o VmLegacyCloneOutput) NodeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyClone) *string { return v.NodeName }).(pulumi.StringPtrOutput)
+}
+
+// Number of retries in Proxmox for clone vm.
+// Sometimes Proxmox errors with timeout when creating multiple clones at
+// once.
+func (o VmLegacyCloneOutput) Retries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmLegacyClone) *int { return v.Retries }).(pulumi.IntPtrOutput)
+}
+
+// The identifier for the source VM.
+func (o VmLegacyCloneOutput) VmId() pulumi.IntOutput {
+	return o.ApplyT(func(v VmLegacyClone) int { return v.VmId }).(pulumi.IntOutput)
+}
+
+type VmLegacyClonePtrOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyClonePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyClone)(nil)).Elem()
+}
+
+func (o VmLegacyClonePtrOutput) ToVmLegacyClonePtrOutput() VmLegacyClonePtrOutput {
+	return o
+}
+
+func (o VmLegacyClonePtrOutput) ToVmLegacyClonePtrOutputWithContext(ctx context.Context) VmLegacyClonePtrOutput {
+	return o
+}
+
+func (o VmLegacyClonePtrOutput) Elem() VmLegacyCloneOutput {
+	return o.ApplyT(func(v *VmLegacyClone) VmLegacyClone {
+		if v != nil {
+			return *v
+		}
+		var ret VmLegacyClone
+		return ret
+	}).(VmLegacyCloneOutput)
+}
+
+// The identifier for the target datastore.
+func (o VmLegacyClonePtrOutput) DatastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyClone) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DatastoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Full or linked clone (defaults to `true`).
+func (o VmLegacyClonePtrOutput) Full() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VmLegacyClone) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Full
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the source node (leave blank, if
+// equal to the `nodeName` argument).
+func (o VmLegacyClonePtrOutput) NodeName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyClone) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of retries in Proxmox for clone vm.
+// Sometimes Proxmox errors with timeout when creating multiple clones at
+// once.
+func (o VmLegacyClonePtrOutput) Retries() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmLegacyClone) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Retries
+	}).(pulumi.IntPtrOutput)
+}
+
+// The identifier for the source VM.
+func (o VmLegacyClonePtrOutput) VmId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmLegacyClone) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.VmId
+	}).(pulumi.IntPtrOutput)
+}
+
+type VmLegacyCpu struct {
+	// The CPU cores that are used to run the VM’s vCPU. The
+	// value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
+	// For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four
+	// CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+	Affinity *string `pulumi:"affinity"`
+	// The CPU architecture (defaults to `x8664`).
+	Architecture *string `pulumi:"architecture"`
+	// The number of CPU cores (defaults to `1`).
+	Cores *int `pulumi:"cores"`
+	// The CPU flags.
+	// - `+aes`/`-aes` - Activate AES instruction set for HW acceleration.
+	// - `+amd-no-ssb`/`-amd-no-ssb` - Notifies guest OS that host is not
+	//   vulnerable for Spectre on AMD CPUs.
+	// - `+amd-ssbd`/`-amd-ssbd` - Improves Spectre mitigation performance with
+	//   AMD CPUs, best used with "virt-ssbd".
+	// - `+hv-evmcs`/`-hv-evmcs` - Improve performance for nested
+	//   virtualization (only supported on Intel CPUs).
+	// - `+hv-tlbflush`/`-hv-tlbflush` - Improve performance in overcommitted
+	//   Windows guests (may lead to guest BSOD on old CPUs).
+	// - `+ibpb`/`-ibpb` - Allows improved Spectre mitigation on AMD CPUs.
+	// - `+md-clear`/`-md-clear` - Required to let the guest OS know if MDS is
+	//   mitigated correctly.
+	// - `+pcid`/`-pcid` - Meltdown fix cost reduction on Westmere, Sandy- and
+	//   Ivy Bridge Intel CPUs.
+	// - `+pdpe1gb`/`-pdpe1gb` - Allows guest OS to use 1 GB size pages, if
+	//   host HW supports it.
+	// - `+spec-ctrl`/`-spec-ctrl` - Allows improved Spectre mitigation with
+	//   Intel CPUs.
+	// - `+ssbd`/`-ssbd` - Protection for "Speculative Store Bypass" for Intel
+	//   models.
+	// - `+virt-ssbd`/`-virt-ssbd` - Basis for "Speculative Store Bypass"
+	//   protection for AMD models.
+	Flags []string `pulumi:"flags"`
+	// The number of hotplugged vCPUs (defaults
+	// to `0`).
+	Hotplugged *int `pulumi:"hotplugged"`
+	// Limit of CPU usage, `0...128` (supports
+	// fractional values, e.g. `63.5`). (defaults to `0` -- no limit).
+	Limit *float64 `pulumi:"limit"`
+	// Enable/disable NUMA. (default to `false`)
+	Numa *bool `pulumi:"numa"`
+	// The number of CPU sockets (defaults to `1`).
+	Sockets *int `pulumi:"sockets"`
+	// The emulated CPU type, it's recommended to
+	// use `x86-64-v2-AES` (defaults to `qemu64`).
+	Type *string `pulumi:"type"`
+	// The CPU units. PVE default is `1024` for cgroups v1 and `100` for cgroups v2.
+	Units *int `pulumi:"units"`
+}
+
+// VmLegacyCpuInput is an input type that accepts VmLegacyCpuArgs and VmLegacyCpuOutput values.
+// You can construct a concrete instance of `VmLegacyCpuInput` via:
+//
+//	VmLegacyCpuArgs{...}
+type VmLegacyCpuInput interface {
+	pulumi.Input
+
+	ToVmLegacyCpuOutput() VmLegacyCpuOutput
+	ToVmLegacyCpuOutputWithContext(context.Context) VmLegacyCpuOutput
+}
+
+type VmLegacyCpuArgs struct {
+	// The CPU cores that are used to run the VM’s vCPU. The
+	// value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
+	// For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four
+	// CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+	Affinity pulumi.StringPtrInput `pulumi:"affinity"`
+	// The CPU architecture (defaults to `x8664`).
+	Architecture pulumi.StringPtrInput `pulumi:"architecture"`
+	// The number of CPU cores (defaults to `1`).
+	Cores pulumi.IntPtrInput `pulumi:"cores"`
+	// The CPU flags.
+	// - `+aes`/`-aes` - Activate AES instruction set for HW acceleration.
+	// - `+amd-no-ssb`/`-amd-no-ssb` - Notifies guest OS that host is not
+	//   vulnerable for Spectre on AMD CPUs.
+	// - `+amd-ssbd`/`-amd-ssbd` - Improves Spectre mitigation performance with
+	//   AMD CPUs, best used with "virt-ssbd".
+	// - `+hv-evmcs`/`-hv-evmcs` - Improve performance for nested
+	//   virtualization (only supported on Intel CPUs).
+	// - `+hv-tlbflush`/`-hv-tlbflush` - Improve performance in overcommitted
+	//   Windows guests (may lead to guest BSOD on old CPUs).
+	// - `+ibpb`/`-ibpb` - Allows improved Spectre mitigation on AMD CPUs.
+	// - `+md-clear`/`-md-clear` - Required to let the guest OS know if MDS is
+	//   mitigated correctly.
+	// - `+pcid`/`-pcid` - Meltdown fix cost reduction on Westmere, Sandy- and
+	//   Ivy Bridge Intel CPUs.
+	// - `+pdpe1gb`/`-pdpe1gb` - Allows guest OS to use 1 GB size pages, if
+	//   host HW supports it.
+	// - `+spec-ctrl`/`-spec-ctrl` - Allows improved Spectre mitigation with
+	//   Intel CPUs.
+	// - `+ssbd`/`-ssbd` - Protection for "Speculative Store Bypass" for Intel
+	//   models.
+	// - `+virt-ssbd`/`-virt-ssbd` - Basis for "Speculative Store Bypass"
+	//   protection for AMD models.
+	Flags pulumi.StringArrayInput `pulumi:"flags"`
+	// The number of hotplugged vCPUs (defaults
+	// to `0`).
+	Hotplugged pulumi.IntPtrInput `pulumi:"hotplugged"`
+	// Limit of CPU usage, `0...128` (supports
+	// fractional values, e.g. `63.5`). (defaults to `0` -- no limit).
+	Limit pulumi.Float64PtrInput `pulumi:"limit"`
+	// Enable/disable NUMA. (default to `false`)
+	Numa pulumi.BoolPtrInput `pulumi:"numa"`
+	// The number of CPU sockets (defaults to `1`).
+	Sockets pulumi.IntPtrInput `pulumi:"sockets"`
+	// The emulated CPU type, it's recommended to
+	// use `x86-64-v2-AES` (defaults to `qemu64`).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The CPU units. PVE default is `1024` for cgroups v1 and `100` for cgroups v2.
+	Units pulumi.IntPtrInput `pulumi:"units"`
+}
+
+func (VmLegacyCpuArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyCpu)(nil)).Elem()
+}
+
+func (i VmLegacyCpuArgs) ToVmLegacyCpuOutput() VmLegacyCpuOutput {
+	return i.ToVmLegacyCpuOutputWithContext(context.Background())
+}
+
+func (i VmLegacyCpuArgs) ToVmLegacyCpuOutputWithContext(ctx context.Context) VmLegacyCpuOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyCpuOutput)
+}
+
+func (i VmLegacyCpuArgs) ToVmLegacyCpuPtrOutput() VmLegacyCpuPtrOutput {
+	return i.ToVmLegacyCpuPtrOutputWithContext(context.Background())
+}
+
+func (i VmLegacyCpuArgs) ToVmLegacyCpuPtrOutputWithContext(ctx context.Context) VmLegacyCpuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyCpuOutput).ToVmLegacyCpuPtrOutputWithContext(ctx)
+}
+
+// VmLegacyCpuPtrInput is an input type that accepts VmLegacyCpuArgs, VmLegacyCpuPtr and VmLegacyCpuPtrOutput values.
+// You can construct a concrete instance of `VmLegacyCpuPtrInput` via:
+//
+//	        VmLegacyCpuArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmLegacyCpuPtrInput interface {
+	pulumi.Input
+
+	ToVmLegacyCpuPtrOutput() VmLegacyCpuPtrOutput
+	ToVmLegacyCpuPtrOutputWithContext(context.Context) VmLegacyCpuPtrOutput
+}
+
+type vmLegacyCpuPtrType VmLegacyCpuArgs
+
+func VmLegacyCpuPtr(v *VmLegacyCpuArgs) VmLegacyCpuPtrInput {
+	return (*vmLegacyCpuPtrType)(v)
+}
+
+func (*vmLegacyCpuPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyCpu)(nil)).Elem()
+}
+
+func (i *vmLegacyCpuPtrType) ToVmLegacyCpuPtrOutput() VmLegacyCpuPtrOutput {
+	return i.ToVmLegacyCpuPtrOutputWithContext(context.Background())
+}
+
+func (i *vmLegacyCpuPtrType) ToVmLegacyCpuPtrOutputWithContext(ctx context.Context) VmLegacyCpuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyCpuPtrOutput)
+}
+
+type VmLegacyCpuOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyCpuOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyCpu)(nil)).Elem()
+}
+
+func (o VmLegacyCpuOutput) ToVmLegacyCpuOutput() VmLegacyCpuOutput {
+	return o
+}
+
+func (o VmLegacyCpuOutput) ToVmLegacyCpuOutputWithContext(ctx context.Context) VmLegacyCpuOutput {
+	return o
+}
+
+func (o VmLegacyCpuOutput) ToVmLegacyCpuPtrOutput() VmLegacyCpuPtrOutput {
+	return o.ToVmLegacyCpuPtrOutputWithContext(context.Background())
+}
+
+func (o VmLegacyCpuOutput) ToVmLegacyCpuPtrOutputWithContext(ctx context.Context) VmLegacyCpuPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmLegacyCpu) *VmLegacyCpu {
+		return &v
+	}).(VmLegacyCpuPtrOutput)
+}
+
+// The CPU cores that are used to run the VM’s vCPU. The
+// value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
+// For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four
+// CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+func (o VmLegacyCpuOutput) Affinity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyCpu) *string { return v.Affinity }).(pulumi.StringPtrOutput)
+}
+
+// The CPU architecture (defaults to `x8664`).
+func (o VmLegacyCpuOutput) Architecture() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyCpu) *string { return v.Architecture }).(pulumi.StringPtrOutput)
+}
+
+// The number of CPU cores (defaults to `1`).
+func (o VmLegacyCpuOutput) Cores() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmLegacyCpu) *int { return v.Cores }).(pulumi.IntPtrOutput)
+}
+
+// The CPU flags.
+//   - `+aes`/`-aes` - Activate AES instruction set for HW acceleration.
+//   - `+amd-no-ssb`/`-amd-no-ssb` - Notifies guest OS that host is not
+//     vulnerable for Spectre on AMD CPUs.
+//   - `+amd-ssbd`/`-amd-ssbd` - Improves Spectre mitigation performance with
+//     AMD CPUs, best used with "virt-ssbd".
+//   - `+hv-evmcs`/`-hv-evmcs` - Improve performance for nested
+//     virtualization (only supported on Intel CPUs).
+//   - `+hv-tlbflush`/`-hv-tlbflush` - Improve performance in overcommitted
+//     Windows guests (may lead to guest BSOD on old CPUs).
+//   - `+ibpb`/`-ibpb` - Allows improved Spectre mitigation on AMD CPUs.
+//   - `+md-clear`/`-md-clear` - Required to let the guest OS know if MDS is
+//     mitigated correctly.
+//   - `+pcid`/`-pcid` - Meltdown fix cost reduction on Westmere, Sandy- and
+//     Ivy Bridge Intel CPUs.
+//   - `+pdpe1gb`/`-pdpe1gb` - Allows guest OS to use 1 GB size pages, if
+//     host HW supports it.
+//   - `+spec-ctrl`/`-spec-ctrl` - Allows improved Spectre mitigation with
+//     Intel CPUs.
+//   - `+ssbd`/`-ssbd` - Protection for "Speculative Store Bypass" for Intel
+//     models.
+//   - `+virt-ssbd`/`-virt-ssbd` - Basis for "Speculative Store Bypass"
+//     protection for AMD models.
+func (o VmLegacyCpuOutput) Flags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VmLegacyCpu) []string { return v.Flags }).(pulumi.StringArrayOutput)
+}
+
+// The number of hotplugged vCPUs (defaults
+// to `0`).
+func (o VmLegacyCpuOutput) Hotplugged() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmLegacyCpu) *int { return v.Hotplugged }).(pulumi.IntPtrOutput)
+}
+
+// Limit of CPU usage, `0...128` (supports
+// fractional values, e.g. `63.5`). (defaults to `0` -- no limit).
+func (o VmLegacyCpuOutput) Limit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v VmLegacyCpu) *float64 { return v.Limit }).(pulumi.Float64PtrOutput)
+}
+
+// Enable/disable NUMA. (default to `false`)
+func (o VmLegacyCpuOutput) Numa() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmLegacyCpu) *bool { return v.Numa }).(pulumi.BoolPtrOutput)
+}
+
+// The number of CPU sockets (defaults to `1`).
+func (o VmLegacyCpuOutput) Sockets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmLegacyCpu) *int { return v.Sockets }).(pulumi.IntPtrOutput)
+}
+
+// The emulated CPU type, it's recommended to
+// use `x86-64-v2-AES` (defaults to `qemu64`).
+func (o VmLegacyCpuOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyCpu) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The CPU units. PVE default is `1024` for cgroups v1 and `100` for cgroups v2.
+func (o VmLegacyCpuOutput) Units() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmLegacyCpu) *int { return v.Units }).(pulumi.IntPtrOutput)
+}
+
+type VmLegacyCpuPtrOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyCpuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyCpu)(nil)).Elem()
+}
+
+func (o VmLegacyCpuPtrOutput) ToVmLegacyCpuPtrOutput() VmLegacyCpuPtrOutput {
+	return o
+}
+
+func (o VmLegacyCpuPtrOutput) ToVmLegacyCpuPtrOutputWithContext(ctx context.Context) VmLegacyCpuPtrOutput {
+	return o
+}
+
+func (o VmLegacyCpuPtrOutput) Elem() VmLegacyCpuOutput {
+	return o.ApplyT(func(v *VmLegacyCpu) VmLegacyCpu {
+		if v != nil {
+			return *v
+		}
+		var ret VmLegacyCpu
+		return ret
+	}).(VmLegacyCpuOutput)
+}
+
+// The CPU cores that are used to run the VM’s vCPU. The
+// value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
+// For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four
+// CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
+func (o VmLegacyCpuPtrOutput) Affinity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyCpu) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Affinity
+	}).(pulumi.StringPtrOutput)
+}
+
+// The CPU architecture (defaults to `x8664`).
+func (o VmLegacyCpuPtrOutput) Architecture() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyCpu) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Architecture
+	}).(pulumi.StringPtrOutput)
+}
+
+// The number of CPU cores (defaults to `1`).
+func (o VmLegacyCpuPtrOutput) Cores() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmLegacyCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Cores
+	}).(pulumi.IntPtrOutput)
+}
+
+// The CPU flags.
+//   - `+aes`/`-aes` - Activate AES instruction set for HW acceleration.
+//   - `+amd-no-ssb`/`-amd-no-ssb` - Notifies guest OS that host is not
+//     vulnerable for Spectre on AMD CPUs.
+//   - `+amd-ssbd`/`-amd-ssbd` - Improves Spectre mitigation performance with
+//     AMD CPUs, best used with "virt-ssbd".
+//   - `+hv-evmcs`/`-hv-evmcs` - Improve performance for nested
+//     virtualization (only supported on Intel CPUs).
+//   - `+hv-tlbflush`/`-hv-tlbflush` - Improve performance in overcommitted
+//     Windows guests (may lead to guest BSOD on old CPUs).
+//   - `+ibpb`/`-ibpb` - Allows improved Spectre mitigation on AMD CPUs.
+//   - `+md-clear`/`-md-clear` - Required to let the guest OS know if MDS is
+//     mitigated correctly.
+//   - `+pcid`/`-pcid` - Meltdown fix cost reduction on Westmere, Sandy- and
+//     Ivy Bridge Intel CPUs.
+//   - `+pdpe1gb`/`-pdpe1gb` - Allows guest OS to use 1 GB size pages, if
+//     host HW supports it.
+//   - `+spec-ctrl`/`-spec-ctrl` - Allows improved Spectre mitigation with
+//     Intel CPUs.
+//   - `+ssbd`/`-ssbd` - Protection for "Speculative Store Bypass" for Intel
+//     models.
+//   - `+virt-ssbd`/`-virt-ssbd` - Basis for "Speculative Store Bypass"
+//     protection for AMD models.
+func (o VmLegacyCpuPtrOutput) Flags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VmLegacyCpu) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Flags
+	}).(pulumi.StringArrayOutput)
+}
+
+// The number of hotplugged vCPUs (defaults
+// to `0`).
+func (o VmLegacyCpuPtrOutput) Hotplugged() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmLegacyCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Hotplugged
+	}).(pulumi.IntPtrOutput)
+}
+
+// Limit of CPU usage, `0...128` (supports
+// fractional values, e.g. `63.5`). (defaults to `0` -- no limit).
+func (o VmLegacyCpuPtrOutput) Limit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *VmLegacyCpu) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Limit
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Enable/disable NUMA. (default to `false`)
+func (o VmLegacyCpuPtrOutput) Numa() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VmLegacyCpu) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Numa
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The number of CPU sockets (defaults to `1`).
+func (o VmLegacyCpuPtrOutput) Sockets() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmLegacyCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Sockets
+	}).(pulumi.IntPtrOutput)
+}
+
+// The emulated CPU type, it's recommended to
+// use `x86-64-v2-AES` (defaults to `qemu64`).
+func (o VmLegacyCpuPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyCpu) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The CPU units. PVE default is `1024` for cgroups v1 and `100` for cgroups v2.
+func (o VmLegacyCpuPtrOutput) Units() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmLegacyCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Units
+	}).(pulumi.IntPtrOutput)
+}
+
+type VmLegacyDisk struct {
+	// The disk AIO mode (defaults to `ioUring`).
+	Aio *string `pulumi:"aio"`
+	// Whether the drive should be included when making backups (defaults to `true`).
+	Backup *bool `pulumi:"backup"`
+	// The cache type (defaults to `none`).
+	Cache *string `pulumi:"cache"`
+	// The identifier for the datastore to create
+	// the disk in (defaults to `local-lvm`).
+	DatastoreId *string `pulumi:"datastoreId"`
+	// Whether to pass discard/trim requests to the
+	// underlying storage. Supported values are `on`/`ignore` (defaults
+	// to `ignore`).
+	Discard *string `pulumi:"discard"`
+	// The file format.
+	FileFormat *string `pulumi:"fileFormat"`
+	// The file ID for a disk image when importing a disk into VM. The ID format is
+	// `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
+	// `download.FileLegacy` resource. Prefer `importFrom` for uncompressed images.
+	// Use `fileId` when working with compressed cloud images (e.g., `.qcow2.xz`) that were downloaded
+	// with `contentType = "iso"` and `decompressionAlgorithm` set. See the
+	// Create a VM from a Cloud Image guide for examples.
+	FileId *string `pulumi:"fileId"`
+	// The file ID for a disk image to import into VM. The image must be of `import` content type
+	// (uncompressed images only). The ID format is `<datastore_id>:import/<file_name>`, for example `local:import/centos8.qcow2`.
+	// Can be also taken from `download.FileLegacy` resource. Note: compressed images downloaded with
+	// `decompressionAlgorithm` cannot use `importFrom`; use `fileId` instead.
+	ImportFrom *string `pulumi:"importFrom"`
+	// The disk interface for Proxmox, currently `scsi`,
+	// `sata` and `virtio` interfaces are supported. Append the disk index at
+	// the end, for example, `virtio0` for the first virtio disk, `virtio1` for
+	// the second, etc.
+	Interface string `pulumi:"interface"`
+	// Whether to use iothreads for this disk (defaults
+	// to `false`).
+	Iothread *bool `pulumi:"iothread"`
+	// The in-datastore path to the disk image.
+	// ***Experimental.***Use to attach another VM's disks,
+	// or (as root only) host's filesystem paths (`datastoreId` empty string).
+	// See "*Example: Attached disks*".
+	PathInDatastore *string `pulumi:"pathInDatastore"`
+	// Whether the drive should be considered for replication jobs (defaults to `true`).
+	Replicate *bool `pulumi:"replicate"`
+	// The serial number of the disk, up to 20 bytes long.
+	Serial *string `pulumi:"serial"`
+	// The disk size in gigabytes (defaults to `8`).
+	Size *int `pulumi:"size"`
+	// The speed limits.
+	Speed *VmLegacyDiskSpeed `pulumi:"speed"`
+	// Whether to use an SSD emulation option for this disk (
+	// defaults to `false`). Note that SSD emulation is not supported on VirtIO
+	// Block drives.
+	Ssd *bool `pulumi:"ssd"`
+}
+
+// VmLegacyDiskInput is an input type that accepts VmLegacyDiskArgs and VmLegacyDiskOutput values.
+// You can construct a concrete instance of `VmLegacyDiskInput` via:
+//
+//	VmLegacyDiskArgs{...}
+type VmLegacyDiskInput interface {
+	pulumi.Input
+
+	ToVmLegacyDiskOutput() VmLegacyDiskOutput
+	ToVmLegacyDiskOutputWithContext(context.Context) VmLegacyDiskOutput
+}
+
+type VmLegacyDiskArgs struct {
+	// The disk AIO mode (defaults to `ioUring`).
+	Aio pulumi.StringPtrInput `pulumi:"aio"`
+	// Whether the drive should be included when making backups (defaults to `true`).
+	Backup pulumi.BoolPtrInput `pulumi:"backup"`
+	// The cache type (defaults to `none`).
+	Cache pulumi.StringPtrInput `pulumi:"cache"`
+	// The identifier for the datastore to create
+	// the disk in (defaults to `local-lvm`).
+	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
+	// Whether to pass discard/trim requests to the
+	// underlying storage. Supported values are `on`/`ignore` (defaults
+	// to `ignore`).
+	Discard pulumi.StringPtrInput `pulumi:"discard"`
+	// The file format.
+	FileFormat pulumi.StringPtrInput `pulumi:"fileFormat"`
+	// The file ID for a disk image when importing a disk into VM. The ID format is
+	// `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
+	// `download.FileLegacy` resource. Prefer `importFrom` for uncompressed images.
+	// Use `fileId` when working with compressed cloud images (e.g., `.qcow2.xz`) that were downloaded
+	// with `contentType = "iso"` and `decompressionAlgorithm` set. See the
+	// Create a VM from a Cloud Image guide for examples.
+	FileId pulumi.StringPtrInput `pulumi:"fileId"`
+	// The file ID for a disk image to import into VM. The image must be of `import` content type
+	// (uncompressed images only). The ID format is `<datastore_id>:import/<file_name>`, for example `local:import/centos8.qcow2`.
+	// Can be also taken from `download.FileLegacy` resource. Note: compressed images downloaded with
+	// `decompressionAlgorithm` cannot use `importFrom`; use `fileId` instead.
+	ImportFrom pulumi.StringPtrInput `pulumi:"importFrom"`
+	// The disk interface for Proxmox, currently `scsi`,
+	// `sata` and `virtio` interfaces are supported. Append the disk index at
+	// the end, for example, `virtio0` for the first virtio disk, `virtio1` for
+	// the second, etc.
+	Interface pulumi.StringInput `pulumi:"interface"`
+	// Whether to use iothreads for this disk (defaults
+	// to `false`).
+	Iothread pulumi.BoolPtrInput `pulumi:"iothread"`
+	// The in-datastore path to the disk image.
+	// ***Experimental.***Use to attach another VM's disks,
+	// or (as root only) host's filesystem paths (`datastoreId` empty string).
+	// See "*Example: Attached disks*".
+	PathInDatastore pulumi.StringPtrInput `pulumi:"pathInDatastore"`
+	// Whether the drive should be considered for replication jobs (defaults to `true`).
+	Replicate pulumi.BoolPtrInput `pulumi:"replicate"`
+	// The serial number of the disk, up to 20 bytes long.
+	Serial pulumi.StringPtrInput `pulumi:"serial"`
+	// The disk size in gigabytes (defaults to `8`).
+	Size pulumi.IntPtrInput `pulumi:"size"`
+	// The speed limits.
+	Speed VmLegacyDiskSpeedPtrInput `pulumi:"speed"`
+	// Whether to use an SSD emulation option for this disk (
+	// defaults to `false`). Note that SSD emulation is not supported on VirtIO
+	// Block drives.
+	Ssd pulumi.BoolPtrInput `pulumi:"ssd"`
+}
+
+func (VmLegacyDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyDisk)(nil)).Elem()
+}
+
+func (i VmLegacyDiskArgs) ToVmLegacyDiskOutput() VmLegacyDiskOutput {
+	return i.ToVmLegacyDiskOutputWithContext(context.Background())
+}
+
+func (i VmLegacyDiskArgs) ToVmLegacyDiskOutputWithContext(ctx context.Context) VmLegacyDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyDiskOutput)
+}
+
+// VmLegacyDiskArrayInput is an input type that accepts VmLegacyDiskArray and VmLegacyDiskArrayOutput values.
+// You can construct a concrete instance of `VmLegacyDiskArrayInput` via:
+//
+//	VmLegacyDiskArray{ VmLegacyDiskArgs{...} }
+type VmLegacyDiskArrayInput interface {
+	pulumi.Input
+
+	ToVmLegacyDiskArrayOutput() VmLegacyDiskArrayOutput
+	ToVmLegacyDiskArrayOutputWithContext(context.Context) VmLegacyDiskArrayOutput
+}
+
+type VmLegacyDiskArray []VmLegacyDiskInput
+
+func (VmLegacyDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmLegacyDisk)(nil)).Elem()
+}
+
+func (i VmLegacyDiskArray) ToVmLegacyDiskArrayOutput() VmLegacyDiskArrayOutput {
+	return i.ToVmLegacyDiskArrayOutputWithContext(context.Background())
+}
+
+func (i VmLegacyDiskArray) ToVmLegacyDiskArrayOutputWithContext(ctx context.Context) VmLegacyDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyDiskArrayOutput)
+}
+
+type VmLegacyDiskOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyDisk)(nil)).Elem()
+}
+
+func (o VmLegacyDiskOutput) ToVmLegacyDiskOutput() VmLegacyDiskOutput {
+	return o
+}
+
+func (o VmLegacyDiskOutput) ToVmLegacyDiskOutputWithContext(ctx context.Context) VmLegacyDiskOutput {
+	return o
+}
+
+// The disk AIO mode (defaults to `ioUring`).
+func (o VmLegacyDiskOutput) Aio() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyDisk) *string { return v.Aio }).(pulumi.StringPtrOutput)
+}
+
+// Whether the drive should be included when making backups (defaults to `true`).
+func (o VmLegacyDiskOutput) Backup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmLegacyDisk) *bool { return v.Backup }).(pulumi.BoolPtrOutput)
+}
+
+// The cache type (defaults to `none`).
+func (o VmLegacyDiskOutput) Cache() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyDisk) *string { return v.Cache }).(pulumi.StringPtrOutput)
+}
+
+// The identifier for the datastore to create
+// the disk in (defaults to `local-lvm`).
+func (o VmLegacyDiskOutput) DatastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyDisk) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
+}
+
+// Whether to pass discard/trim requests to the
+// underlying storage. Supported values are `on`/`ignore` (defaults
+// to `ignore`).
+func (o VmLegacyDiskOutput) Discard() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyDisk) *string { return v.Discard }).(pulumi.StringPtrOutput)
+}
+
+// The file format.
+func (o VmLegacyDiskOutput) FileFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyDisk) *string { return v.FileFormat }).(pulumi.StringPtrOutput)
+}
+
+// The file ID for a disk image when importing a disk into VM. The ID format is
+// `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
+// `download.FileLegacy` resource. Prefer `importFrom` for uncompressed images.
+// Use `fileId` when working with compressed cloud images (e.g., `.qcow2.xz`) that were downloaded
+// with `contentType = "iso"` and `decompressionAlgorithm` set. See the
+// Create a VM from a Cloud Image guide for examples.
+func (o VmLegacyDiskOutput) FileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyDisk) *string { return v.FileId }).(pulumi.StringPtrOutput)
+}
+
+// The file ID for a disk image to import into VM. The image must be of `import` content type
+// (uncompressed images only). The ID format is `<datastore_id>:import/<file_name>`, for example `local:import/centos8.qcow2`.
+// Can be also taken from `download.FileLegacy` resource. Note: compressed images downloaded with
+// `decompressionAlgorithm` cannot use `importFrom`; use `fileId` instead.
+func (o VmLegacyDiskOutput) ImportFrom() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyDisk) *string { return v.ImportFrom }).(pulumi.StringPtrOutput)
+}
+
+// The disk interface for Proxmox, currently `scsi`,
+// `sata` and `virtio` interfaces are supported. Append the disk index at
+// the end, for example, `virtio0` for the first virtio disk, `virtio1` for
+// the second, etc.
+func (o VmLegacyDiskOutput) Interface() pulumi.StringOutput {
+	return o.ApplyT(func(v VmLegacyDisk) string { return v.Interface }).(pulumi.StringOutput)
+}
+
+// Whether to use iothreads for this disk (defaults
+// to `false`).
+func (o VmLegacyDiskOutput) Iothread() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmLegacyDisk) *bool { return v.Iothread }).(pulumi.BoolPtrOutput)
+}
+
+// The in-datastore path to the disk image.
+// ***Experimental.***Use to attach another VM's disks,
+// or (as root only) host's filesystem paths (`datastoreId` empty string).
+// See "*Example: Attached disks*".
+func (o VmLegacyDiskOutput) PathInDatastore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyDisk) *string { return v.PathInDatastore }).(pulumi.StringPtrOutput)
+}
+
+// Whether the drive should be considered for replication jobs (defaults to `true`).
+func (o VmLegacyDiskOutput) Replicate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmLegacyDisk) *bool { return v.Replicate }).(pulumi.BoolPtrOutput)
+}
+
+// The serial number of the disk, up to 20 bytes long.
+func (o VmLegacyDiskOutput) Serial() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyDisk) *string { return v.Serial }).(pulumi.StringPtrOutput)
+}
+
+// The disk size in gigabytes (defaults to `8`).
+func (o VmLegacyDiskOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmLegacyDisk) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+// The speed limits.
+func (o VmLegacyDiskOutput) Speed() VmLegacyDiskSpeedPtrOutput {
+	return o.ApplyT(func(v VmLegacyDisk) *VmLegacyDiskSpeed { return v.Speed }).(VmLegacyDiskSpeedPtrOutput)
+}
+
+// Whether to use an SSD emulation option for this disk (
+// defaults to `false`). Note that SSD emulation is not supported on VirtIO
+// Block drives.
+func (o VmLegacyDiskOutput) Ssd() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmLegacyDisk) *bool { return v.Ssd }).(pulumi.BoolPtrOutput)
+}
+
+type VmLegacyDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmLegacyDisk)(nil)).Elem()
+}
+
+func (o VmLegacyDiskArrayOutput) ToVmLegacyDiskArrayOutput() VmLegacyDiskArrayOutput {
+	return o
+}
+
+func (o VmLegacyDiskArrayOutput) ToVmLegacyDiskArrayOutputWithContext(ctx context.Context) VmLegacyDiskArrayOutput {
+	return o
+}
+
+func (o VmLegacyDiskArrayOutput) Index(i pulumi.IntInput) VmLegacyDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmLegacyDisk {
+		return vs[0].([]VmLegacyDisk)[vs[1].(int)]
+	}).(VmLegacyDiskOutput)
+}
+
+type VmLegacyDiskSpeed struct {
+	// The maximum read I/O in operations per second.
+	IopsRead *int `pulumi:"iopsRead"`
+	// The maximum unthrottled read I/O pool in operations per second.
+	IopsReadBurstable *int `pulumi:"iopsReadBurstable"`
+	// The maximum write I/O in operations per second.
+	IopsWrite *int `pulumi:"iopsWrite"`
+	// The maximum unthrottled write I/O pool in operations per second.
+	IopsWriteBurstable *int `pulumi:"iopsWriteBurstable"`
+	// The maximum read speed in megabytes per second.
+	Read *int `pulumi:"read"`
+	// The maximum burstable read speed in
+	// megabytes per second.
+	ReadBurstable *int `pulumi:"readBurstable"`
+	// The maximum write speed in megabytes per second.
+	Write *int `pulumi:"write"`
+	// The maximum burstable write speed in
+	// megabytes per second.
+	WriteBurstable *int `pulumi:"writeBurstable"`
+}
+
+// VmLegacyDiskSpeedInput is an input type that accepts VmLegacyDiskSpeedArgs and VmLegacyDiskSpeedOutput values.
+// You can construct a concrete instance of `VmLegacyDiskSpeedInput` via:
+//
+//	VmLegacyDiskSpeedArgs{...}
+type VmLegacyDiskSpeedInput interface {
+	pulumi.Input
+
+	ToVmLegacyDiskSpeedOutput() VmLegacyDiskSpeedOutput
+	ToVmLegacyDiskSpeedOutputWithContext(context.Context) VmLegacyDiskSpeedOutput
+}
+
+type VmLegacyDiskSpeedArgs struct {
+	// The maximum read I/O in operations per second.
+	IopsRead pulumi.IntPtrInput `pulumi:"iopsRead"`
+	// The maximum unthrottled read I/O pool in operations per second.
+	IopsReadBurstable pulumi.IntPtrInput `pulumi:"iopsReadBurstable"`
+	// The maximum write I/O in operations per second.
+	IopsWrite pulumi.IntPtrInput `pulumi:"iopsWrite"`
+	// The maximum unthrottled write I/O pool in operations per second.
+	IopsWriteBurstable pulumi.IntPtrInput `pulumi:"iopsWriteBurstable"`
+	// The maximum read speed in megabytes per second.
+	Read pulumi.IntPtrInput `pulumi:"read"`
+	// The maximum burstable read speed in
+	// megabytes per second.
+	ReadBurstable pulumi.IntPtrInput `pulumi:"readBurstable"`
+	// The maximum write speed in megabytes per second.
+	Write pulumi.IntPtrInput `pulumi:"write"`
+	// The maximum burstable write speed in
+	// megabytes per second.
+	WriteBurstable pulumi.IntPtrInput `pulumi:"writeBurstable"`
+}
+
+func (VmLegacyDiskSpeedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyDiskSpeed)(nil)).Elem()
+}
+
+func (i VmLegacyDiskSpeedArgs) ToVmLegacyDiskSpeedOutput() VmLegacyDiskSpeedOutput {
+	return i.ToVmLegacyDiskSpeedOutputWithContext(context.Background())
+}
+
+func (i VmLegacyDiskSpeedArgs) ToVmLegacyDiskSpeedOutputWithContext(ctx context.Context) VmLegacyDiskSpeedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyDiskSpeedOutput)
+}
+
+func (i VmLegacyDiskSpeedArgs) ToVmLegacyDiskSpeedPtrOutput() VmLegacyDiskSpeedPtrOutput {
+	return i.ToVmLegacyDiskSpeedPtrOutputWithContext(context.Background())
+}
+
+func (i VmLegacyDiskSpeedArgs) ToVmLegacyDiskSpeedPtrOutputWithContext(ctx context.Context) VmLegacyDiskSpeedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyDiskSpeedOutput).ToVmLegacyDiskSpeedPtrOutputWithContext(ctx)
+}
+
+// VmLegacyDiskSpeedPtrInput is an input type that accepts VmLegacyDiskSpeedArgs, VmLegacyDiskSpeedPtr and VmLegacyDiskSpeedPtrOutput values.
+// You can construct a concrete instance of `VmLegacyDiskSpeedPtrInput` via:
+//
+//	        VmLegacyDiskSpeedArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmLegacyDiskSpeedPtrInput interface {
+	pulumi.Input
+
+	ToVmLegacyDiskSpeedPtrOutput() VmLegacyDiskSpeedPtrOutput
+	ToVmLegacyDiskSpeedPtrOutputWithContext(context.Context) VmLegacyDiskSpeedPtrOutput
+}
+
+type vmLegacyDiskSpeedPtrType VmLegacyDiskSpeedArgs
+
+func VmLegacyDiskSpeedPtr(v *VmLegacyDiskSpeedArgs) VmLegacyDiskSpeedPtrInput {
+	return (*vmLegacyDiskSpeedPtrType)(v)
+}
+
+func (*vmLegacyDiskSpeedPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyDiskSpeed)(nil)).Elem()
+}
+
+func (i *vmLegacyDiskSpeedPtrType) ToVmLegacyDiskSpeedPtrOutput() VmLegacyDiskSpeedPtrOutput {
+	return i.ToVmLegacyDiskSpeedPtrOutputWithContext(context.Background())
+}
+
+func (i *vmLegacyDiskSpeedPtrType) ToVmLegacyDiskSpeedPtrOutputWithContext(ctx context.Context) VmLegacyDiskSpeedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyDiskSpeedPtrOutput)
+}
+
+type VmLegacyDiskSpeedOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyDiskSpeedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyDiskSpeed)(nil)).Elem()
+}
+
+func (o VmLegacyDiskSpeedOutput) ToVmLegacyDiskSpeedOutput() VmLegacyDiskSpeedOutput {
+	return o
+}
+
+func (o VmLegacyDiskSpeedOutput) ToVmLegacyDiskSpeedOutputWithContext(ctx context.Context) VmLegacyDiskSpeedOutput {
+	return o
+}
+
+func (o VmLegacyDiskSpeedOutput) ToVmLegacyDiskSpeedPtrOutput() VmLegacyDiskSpeedPtrOutput {
+	return o.ToVmLegacyDiskSpeedPtrOutputWithContext(context.Background())
+}
+
+func (o VmLegacyDiskSpeedOutput) ToVmLegacyDiskSpeedPtrOutputWithContext(ctx context.Context) VmLegacyDiskSpeedPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmLegacyDiskSpeed) *VmLegacyDiskSpeed {
+		return &v
+	}).(VmLegacyDiskSpeedPtrOutput)
+}
+
+// The maximum read I/O in operations per second.
+func (o VmLegacyDiskSpeedOutput) IopsRead() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmLegacyDiskSpeed) *int { return v.IopsRead }).(pulumi.IntPtrOutput)
+}
+
+// The maximum unthrottled read I/O pool in operations per second.
+func (o VmLegacyDiskSpeedOutput) IopsReadBurstable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmLegacyDiskSpeed) *int { return v.IopsReadBurstable }).(pulumi.IntPtrOutput)
+}
+
+// The maximum write I/O in operations per second.
+func (o VmLegacyDiskSpeedOutput) IopsWrite() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmLegacyDiskSpeed) *int { return v.IopsWrite }).(pulumi.IntPtrOutput)
+}
+
+// The maximum unthrottled write I/O pool in operations per second.
+func (o VmLegacyDiskSpeedOutput) IopsWriteBurstable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmLegacyDiskSpeed) *int { return v.IopsWriteBurstable }).(pulumi.IntPtrOutput)
+}
+
+// The maximum read speed in megabytes per second.
+func (o VmLegacyDiskSpeedOutput) Read() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmLegacyDiskSpeed) *int { return v.Read }).(pulumi.IntPtrOutput)
+}
+
+// The maximum burstable read speed in
+// megabytes per second.
+func (o VmLegacyDiskSpeedOutput) ReadBurstable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmLegacyDiskSpeed) *int { return v.ReadBurstable }).(pulumi.IntPtrOutput)
+}
+
+// The maximum write speed in megabytes per second.
+func (o VmLegacyDiskSpeedOutput) Write() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmLegacyDiskSpeed) *int { return v.Write }).(pulumi.IntPtrOutput)
+}
+
+// The maximum burstable write speed in
+// megabytes per second.
+func (o VmLegacyDiskSpeedOutput) WriteBurstable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmLegacyDiskSpeed) *int { return v.WriteBurstable }).(pulumi.IntPtrOutput)
+}
+
+type VmLegacyDiskSpeedPtrOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyDiskSpeedPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyDiskSpeed)(nil)).Elem()
+}
+
+func (o VmLegacyDiskSpeedPtrOutput) ToVmLegacyDiskSpeedPtrOutput() VmLegacyDiskSpeedPtrOutput {
+	return o
+}
+
+func (o VmLegacyDiskSpeedPtrOutput) ToVmLegacyDiskSpeedPtrOutputWithContext(ctx context.Context) VmLegacyDiskSpeedPtrOutput {
+	return o
+}
+
+func (o VmLegacyDiskSpeedPtrOutput) Elem() VmLegacyDiskSpeedOutput {
+	return o.ApplyT(func(v *VmLegacyDiskSpeed) VmLegacyDiskSpeed {
+		if v != nil {
+			return *v
+		}
+		var ret VmLegacyDiskSpeed
+		return ret
+	}).(VmLegacyDiskSpeedOutput)
+}
+
+// The maximum read I/O in operations per second.
+func (o VmLegacyDiskSpeedPtrOutput) IopsRead() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmLegacyDiskSpeed) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IopsRead
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum unthrottled read I/O pool in operations per second.
+func (o VmLegacyDiskSpeedPtrOutput) IopsReadBurstable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmLegacyDiskSpeed) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IopsReadBurstable
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum write I/O in operations per second.
+func (o VmLegacyDiskSpeedPtrOutput) IopsWrite() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmLegacyDiskSpeed) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IopsWrite
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum unthrottled write I/O pool in operations per second.
+func (o VmLegacyDiskSpeedPtrOutput) IopsWriteBurstable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmLegacyDiskSpeed) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IopsWriteBurstable
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum read speed in megabytes per second.
+func (o VmLegacyDiskSpeedPtrOutput) Read() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmLegacyDiskSpeed) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum burstable read speed in
+// megabytes per second.
+func (o VmLegacyDiskSpeedPtrOutput) ReadBurstable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmLegacyDiskSpeed) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ReadBurstable
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum write speed in megabytes per second.
+func (o VmLegacyDiskSpeedPtrOutput) Write() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmLegacyDiskSpeed) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Write
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum burstable write speed in
+// megabytes per second.
+func (o VmLegacyDiskSpeedPtrOutput) WriteBurstable() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmLegacyDiskSpeed) *int {
+		if v == nil {
+			return nil
+		}
+		return v.WriteBurstable
+	}).(pulumi.IntPtrOutput)
+}
+
+type VmLegacyEfiDisk struct {
+	// The identifier for the datastore to create
+	// the disk in (defaults to `local-lvm`).
+	DatastoreId *string `pulumi:"datastoreId"`
+	// The file format (defaults to `raw`).
+	FileFormat *string `pulumi:"fileFormat"`
+	// Use am EFI vars template with
+	// distribution-specific and Microsoft Standard keys enrolled, if used with
+	// EFI type=`4m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
+	// to `false`).
+	PreEnrolledKeys *bool `pulumi:"preEnrolledKeys"`
+	// Size and type of the OVMF EFI disk. `4m` is newer and
+	// recommended, and required for Secure Boot. For backwards compatibility
+	// use `2m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
+	// to `2m`).
+	Type *string `pulumi:"type"`
+}
+
+// VmLegacyEfiDiskInput is an input type that accepts VmLegacyEfiDiskArgs and VmLegacyEfiDiskOutput values.
+// You can construct a concrete instance of `VmLegacyEfiDiskInput` via:
+//
+//	VmLegacyEfiDiskArgs{...}
+type VmLegacyEfiDiskInput interface {
+	pulumi.Input
+
+	ToVmLegacyEfiDiskOutput() VmLegacyEfiDiskOutput
+	ToVmLegacyEfiDiskOutputWithContext(context.Context) VmLegacyEfiDiskOutput
+}
+
+type VmLegacyEfiDiskArgs struct {
+	// The identifier for the datastore to create
+	// the disk in (defaults to `local-lvm`).
+	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
+	// The file format (defaults to `raw`).
+	FileFormat pulumi.StringPtrInput `pulumi:"fileFormat"`
+	// Use am EFI vars template with
+	// distribution-specific and Microsoft Standard keys enrolled, if used with
+	// EFI type=`4m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
+	// to `false`).
+	PreEnrolledKeys pulumi.BoolPtrInput `pulumi:"preEnrolledKeys"`
+	// Size and type of the OVMF EFI disk. `4m` is newer and
+	// recommended, and required for Secure Boot. For backwards compatibility
+	// use `2m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
+	// to `2m`).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (VmLegacyEfiDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyEfiDisk)(nil)).Elem()
+}
+
+func (i VmLegacyEfiDiskArgs) ToVmLegacyEfiDiskOutput() VmLegacyEfiDiskOutput {
+	return i.ToVmLegacyEfiDiskOutputWithContext(context.Background())
+}
+
+func (i VmLegacyEfiDiskArgs) ToVmLegacyEfiDiskOutputWithContext(ctx context.Context) VmLegacyEfiDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyEfiDiskOutput)
+}
+
+func (i VmLegacyEfiDiskArgs) ToVmLegacyEfiDiskPtrOutput() VmLegacyEfiDiskPtrOutput {
+	return i.ToVmLegacyEfiDiskPtrOutputWithContext(context.Background())
+}
+
+func (i VmLegacyEfiDiskArgs) ToVmLegacyEfiDiskPtrOutputWithContext(ctx context.Context) VmLegacyEfiDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyEfiDiskOutput).ToVmLegacyEfiDiskPtrOutputWithContext(ctx)
+}
+
+// VmLegacyEfiDiskPtrInput is an input type that accepts VmLegacyEfiDiskArgs, VmLegacyEfiDiskPtr and VmLegacyEfiDiskPtrOutput values.
+// You can construct a concrete instance of `VmLegacyEfiDiskPtrInput` via:
+//
+//	        VmLegacyEfiDiskArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmLegacyEfiDiskPtrInput interface {
+	pulumi.Input
+
+	ToVmLegacyEfiDiskPtrOutput() VmLegacyEfiDiskPtrOutput
+	ToVmLegacyEfiDiskPtrOutputWithContext(context.Context) VmLegacyEfiDiskPtrOutput
+}
+
+type vmLegacyEfiDiskPtrType VmLegacyEfiDiskArgs
+
+func VmLegacyEfiDiskPtr(v *VmLegacyEfiDiskArgs) VmLegacyEfiDiskPtrInput {
+	return (*vmLegacyEfiDiskPtrType)(v)
+}
+
+func (*vmLegacyEfiDiskPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyEfiDisk)(nil)).Elem()
+}
+
+func (i *vmLegacyEfiDiskPtrType) ToVmLegacyEfiDiskPtrOutput() VmLegacyEfiDiskPtrOutput {
+	return i.ToVmLegacyEfiDiskPtrOutputWithContext(context.Background())
+}
+
+func (i *vmLegacyEfiDiskPtrType) ToVmLegacyEfiDiskPtrOutputWithContext(ctx context.Context) VmLegacyEfiDiskPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyEfiDiskPtrOutput)
+}
+
+type VmLegacyEfiDiskOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyEfiDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyEfiDisk)(nil)).Elem()
+}
+
+func (o VmLegacyEfiDiskOutput) ToVmLegacyEfiDiskOutput() VmLegacyEfiDiskOutput {
+	return o
+}
+
+func (o VmLegacyEfiDiskOutput) ToVmLegacyEfiDiskOutputWithContext(ctx context.Context) VmLegacyEfiDiskOutput {
+	return o
+}
+
+func (o VmLegacyEfiDiskOutput) ToVmLegacyEfiDiskPtrOutput() VmLegacyEfiDiskPtrOutput {
+	return o.ToVmLegacyEfiDiskPtrOutputWithContext(context.Background())
+}
+
+func (o VmLegacyEfiDiskOutput) ToVmLegacyEfiDiskPtrOutputWithContext(ctx context.Context) VmLegacyEfiDiskPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmLegacyEfiDisk) *VmLegacyEfiDisk {
+		return &v
+	}).(VmLegacyEfiDiskPtrOutput)
+}
+
+// The identifier for the datastore to create
+// the disk in (defaults to `local-lvm`).
+func (o VmLegacyEfiDiskOutput) DatastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyEfiDisk) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
+}
+
+// The file format (defaults to `raw`).
+func (o VmLegacyEfiDiskOutput) FileFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyEfiDisk) *string { return v.FileFormat }).(pulumi.StringPtrOutput)
+}
+
+// Use am EFI vars template with
+// distribution-specific and Microsoft Standard keys enrolled, if used with
+// EFI type=`4m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
+// to `false`).
+func (o VmLegacyEfiDiskOutput) PreEnrolledKeys() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmLegacyEfiDisk) *bool { return v.PreEnrolledKeys }).(pulumi.BoolPtrOutput)
+}
+
+// Size and type of the OVMF EFI disk. `4m` is newer and
+// recommended, and required for Secure Boot. For backwards compatibility
+// use `2m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
+// to `2m`).
+func (o VmLegacyEfiDiskOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyEfiDisk) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type VmLegacyEfiDiskPtrOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyEfiDiskPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyEfiDisk)(nil)).Elem()
+}
+
+func (o VmLegacyEfiDiskPtrOutput) ToVmLegacyEfiDiskPtrOutput() VmLegacyEfiDiskPtrOutput {
+	return o
+}
+
+func (o VmLegacyEfiDiskPtrOutput) ToVmLegacyEfiDiskPtrOutputWithContext(ctx context.Context) VmLegacyEfiDiskPtrOutput {
+	return o
+}
+
+func (o VmLegacyEfiDiskPtrOutput) Elem() VmLegacyEfiDiskOutput {
+	return o.ApplyT(func(v *VmLegacyEfiDisk) VmLegacyEfiDisk {
+		if v != nil {
+			return *v
+		}
+		var ret VmLegacyEfiDisk
+		return ret
+	}).(VmLegacyEfiDiskOutput)
+}
+
+// The identifier for the datastore to create
+// the disk in (defaults to `local-lvm`).
+func (o VmLegacyEfiDiskPtrOutput) DatastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyEfiDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DatastoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The file format (defaults to `raw`).
+func (o VmLegacyEfiDiskPtrOutput) FileFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyEfiDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FileFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Use am EFI vars template with
+// distribution-specific and Microsoft Standard keys enrolled, if used with
+// EFI type=`4m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
+// to `false`).
+func (o VmLegacyEfiDiskPtrOutput) PreEnrolledKeys() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VmLegacyEfiDisk) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PreEnrolledKeys
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Size and type of the OVMF EFI disk. `4m` is newer and
+// recommended, and required for Secure Boot. For backwards compatibility
+// use `2m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
+// to `2m`).
+func (o VmLegacyEfiDiskPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyEfiDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type VmLegacyHostpci struct {
+	// The PCI device name for Proxmox, in form
+	// of `hostpciX` where `X` is a sequential number from 0 to 15.
+	Device string `pulumi:"device"`
+	// The PCI device ID. This parameter is not compatible
+	// with `apiToken` and requires the root `username` and `password`
+	// configured in the proxmox provider. Use either this or `mapping`.
+	Id *string `pulumi:"id"`
+	// The resource mapping name of the device, for
+	// example gpu. Use either this or `id`.
+	Mapping *string `pulumi:"mapping"`
+	// The mediated device ID to use.
+	Mdev *string `pulumi:"mdev"`
+	// Tells Proxmox to use a PCIe or PCI port. Some
+	// guests/device combination require PCIe rather than PCI. PCIe is only
+	// available for q35 machine types.
+	Pcie *bool `pulumi:"pcie"`
+	// A path to a ROM file for the device to use. This
+	// is a relative path under `/usr/share/kvm/`.
+	RomFile *string `pulumi:"romFile"`
+	// Makes the firmware ROM visible for the VM (defaults
+	// to `true`).
+	Rombar *bool `pulumi:"rombar"`
+	// Marks the PCI(e) device as the primary GPU of the VM.
+	// With this enabled the `vga` configuration argument will be ignored.
+	Xvga *bool `pulumi:"xvga"`
+}
+
+// VmLegacyHostpciInput is an input type that accepts VmLegacyHostpciArgs and VmLegacyHostpciOutput values.
+// You can construct a concrete instance of `VmLegacyHostpciInput` via:
+//
+//	VmLegacyHostpciArgs{...}
+type VmLegacyHostpciInput interface {
+	pulumi.Input
+
+	ToVmLegacyHostpciOutput() VmLegacyHostpciOutput
+	ToVmLegacyHostpciOutputWithContext(context.Context) VmLegacyHostpciOutput
+}
+
+type VmLegacyHostpciArgs struct {
+	// The PCI device name for Proxmox, in form
+	// of `hostpciX` where `X` is a sequential number from 0 to 15.
+	Device pulumi.StringInput `pulumi:"device"`
+	// The PCI device ID. This parameter is not compatible
+	// with `apiToken` and requires the root `username` and `password`
+	// configured in the proxmox provider. Use either this or `mapping`.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The resource mapping name of the device, for
+	// example gpu. Use either this or `id`.
+	Mapping pulumi.StringPtrInput `pulumi:"mapping"`
+	// The mediated device ID to use.
+	Mdev pulumi.StringPtrInput `pulumi:"mdev"`
+	// Tells Proxmox to use a PCIe or PCI port. Some
+	// guests/device combination require PCIe rather than PCI. PCIe is only
+	// available for q35 machine types.
+	Pcie pulumi.BoolPtrInput `pulumi:"pcie"`
+	// A path to a ROM file for the device to use. This
+	// is a relative path under `/usr/share/kvm/`.
+	RomFile pulumi.StringPtrInput `pulumi:"romFile"`
+	// Makes the firmware ROM visible for the VM (defaults
+	// to `true`).
+	Rombar pulumi.BoolPtrInput `pulumi:"rombar"`
+	// Marks the PCI(e) device as the primary GPU of the VM.
+	// With this enabled the `vga` configuration argument will be ignored.
+	Xvga pulumi.BoolPtrInput `pulumi:"xvga"`
+}
+
+func (VmLegacyHostpciArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyHostpci)(nil)).Elem()
+}
+
+func (i VmLegacyHostpciArgs) ToVmLegacyHostpciOutput() VmLegacyHostpciOutput {
+	return i.ToVmLegacyHostpciOutputWithContext(context.Background())
+}
+
+func (i VmLegacyHostpciArgs) ToVmLegacyHostpciOutputWithContext(ctx context.Context) VmLegacyHostpciOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyHostpciOutput)
+}
+
+// VmLegacyHostpciArrayInput is an input type that accepts VmLegacyHostpciArray and VmLegacyHostpciArrayOutput values.
+// You can construct a concrete instance of `VmLegacyHostpciArrayInput` via:
+//
+//	VmLegacyHostpciArray{ VmLegacyHostpciArgs{...} }
+type VmLegacyHostpciArrayInput interface {
+	pulumi.Input
+
+	ToVmLegacyHostpciArrayOutput() VmLegacyHostpciArrayOutput
+	ToVmLegacyHostpciArrayOutputWithContext(context.Context) VmLegacyHostpciArrayOutput
+}
+
+type VmLegacyHostpciArray []VmLegacyHostpciInput
+
+func (VmLegacyHostpciArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmLegacyHostpci)(nil)).Elem()
+}
+
+func (i VmLegacyHostpciArray) ToVmLegacyHostpciArrayOutput() VmLegacyHostpciArrayOutput {
+	return i.ToVmLegacyHostpciArrayOutputWithContext(context.Background())
+}
+
+func (i VmLegacyHostpciArray) ToVmLegacyHostpciArrayOutputWithContext(ctx context.Context) VmLegacyHostpciArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyHostpciArrayOutput)
+}
+
+type VmLegacyHostpciOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyHostpciOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyHostpci)(nil)).Elem()
+}
+
+func (o VmLegacyHostpciOutput) ToVmLegacyHostpciOutput() VmLegacyHostpciOutput {
+	return o
+}
+
+func (o VmLegacyHostpciOutput) ToVmLegacyHostpciOutputWithContext(ctx context.Context) VmLegacyHostpciOutput {
+	return o
+}
+
+// The PCI device name for Proxmox, in form
+// of `hostpciX` where `X` is a sequential number from 0 to 15.
+func (o VmLegacyHostpciOutput) Device() pulumi.StringOutput {
+	return o.ApplyT(func(v VmLegacyHostpci) string { return v.Device }).(pulumi.StringOutput)
+}
+
+// The PCI device ID. This parameter is not compatible
+// with `apiToken` and requires the root `username` and `password`
+// configured in the proxmox provider. Use either this or `mapping`.
+func (o VmLegacyHostpciOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyHostpci) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// The resource mapping name of the device, for
+// example gpu. Use either this or `id`.
+func (o VmLegacyHostpciOutput) Mapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyHostpci) *string { return v.Mapping }).(pulumi.StringPtrOutput)
+}
+
+// The mediated device ID to use.
+func (o VmLegacyHostpciOutput) Mdev() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyHostpci) *string { return v.Mdev }).(pulumi.StringPtrOutput)
+}
+
+// Tells Proxmox to use a PCIe or PCI port. Some
+// guests/device combination require PCIe rather than PCI. PCIe is only
+// available for q35 machine types.
+func (o VmLegacyHostpciOutput) Pcie() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmLegacyHostpci) *bool { return v.Pcie }).(pulumi.BoolPtrOutput)
+}
+
+// A path to a ROM file for the device to use. This
+// is a relative path under `/usr/share/kvm/`.
+func (o VmLegacyHostpciOutput) RomFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyHostpci) *string { return v.RomFile }).(pulumi.StringPtrOutput)
+}
+
+// Makes the firmware ROM visible for the VM (defaults
+// to `true`).
+func (o VmLegacyHostpciOutput) Rombar() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmLegacyHostpci) *bool { return v.Rombar }).(pulumi.BoolPtrOutput)
+}
+
+// Marks the PCI(e) device as the primary GPU of the VM.
+// With this enabled the `vga` configuration argument will be ignored.
+func (o VmLegacyHostpciOutput) Xvga() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmLegacyHostpci) *bool { return v.Xvga }).(pulumi.BoolPtrOutput)
+}
+
+type VmLegacyHostpciArrayOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyHostpciArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmLegacyHostpci)(nil)).Elem()
+}
+
+func (o VmLegacyHostpciArrayOutput) ToVmLegacyHostpciArrayOutput() VmLegacyHostpciArrayOutput {
+	return o
+}
+
+func (o VmLegacyHostpciArrayOutput) ToVmLegacyHostpciArrayOutputWithContext(ctx context.Context) VmLegacyHostpciArrayOutput {
+	return o
+}
+
+func (o VmLegacyHostpciArrayOutput) Index(i pulumi.IntInput) VmLegacyHostpciOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmLegacyHostpci {
+		return vs[0].([]VmLegacyHostpci)[vs[1].(int)]
+	}).(VmLegacyHostpciOutput)
+}
+
+type VmLegacyInitialization struct {
+	// The identifier for the datastore to create the
+	// cloud-init disk in (defaults to `local-lvm`).
+	DatastoreId *string `pulumi:"datastoreId"`
+	// The DNS configuration.
+	Dns *VmLegacyInitializationDns `pulumi:"dns"`
+	// The file format.
+	FileFormat *string `pulumi:"fileFormat"`
+	// The hardware interface to connect the cloud-init
+	// image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+	// detected if the setting is missing but a cloud-init image is present,
+	// otherwise defaults to `ide2`.
+	Interface *string `pulumi:"interface"`
+	// The IP configuration (one block per network
+	// device).
+	IpConfigs []VmLegacyInitializationIpConfig `pulumi:"ipConfigs"`
+	// The identifier for a file containing
+	// all meta data passed to the VM via cloud-init.
+	MetaDataFileId *string `pulumi:"metaDataFileId"`
+	// The identifier for a file containing
+	// network configuration data passed to the VM via cloud-init (conflicts
+	// with `ipConfig`).
+	NetworkDataFileId *string `pulumi:"networkDataFileId"`
+	// The cloud-init configuration format
+	Type *string `pulumi:"type"`
+	// The user account configuration (conflicts
+	// with `userDataFileId`).
+	UserAccount *VmLegacyInitializationUserAccount `pulumi:"userAccount"`
+	// The identifier for a file containing
+	// custom user data (conflicts with `userAccount`).
+	UserDataFileId *string `pulumi:"userDataFileId"`
+	// The identifier for a file containing
+	// all vendor data passed to the VM via cloud-init.
+	VendorDataFileId *string `pulumi:"vendorDataFileId"`
+}
+
+// VmLegacyInitializationInput is an input type that accepts VmLegacyInitializationArgs and VmLegacyInitializationOutput values.
+// You can construct a concrete instance of `VmLegacyInitializationInput` via:
+//
+//	VmLegacyInitializationArgs{...}
+type VmLegacyInitializationInput interface {
+	pulumi.Input
+
+	ToVmLegacyInitializationOutput() VmLegacyInitializationOutput
+	ToVmLegacyInitializationOutputWithContext(context.Context) VmLegacyInitializationOutput
+}
+
+type VmLegacyInitializationArgs struct {
+	// The identifier for the datastore to create the
+	// cloud-init disk in (defaults to `local-lvm`).
+	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
+	// The DNS configuration.
+	Dns VmLegacyInitializationDnsPtrInput `pulumi:"dns"`
+	// The file format.
+	FileFormat pulumi.StringPtrInput `pulumi:"fileFormat"`
+	// The hardware interface to connect the cloud-init
+	// image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+	// detected if the setting is missing but a cloud-init image is present,
+	// otherwise defaults to `ide2`.
+	Interface pulumi.StringPtrInput `pulumi:"interface"`
+	// The IP configuration (one block per network
+	// device).
+	IpConfigs VmLegacyInitializationIpConfigArrayInput `pulumi:"ipConfigs"`
+	// The identifier for a file containing
+	// all meta data passed to the VM via cloud-init.
+	MetaDataFileId pulumi.StringPtrInput `pulumi:"metaDataFileId"`
+	// The identifier for a file containing
+	// network configuration data passed to the VM via cloud-init (conflicts
+	// with `ipConfig`).
+	NetworkDataFileId pulumi.StringPtrInput `pulumi:"networkDataFileId"`
+	// The cloud-init configuration format
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The user account configuration (conflicts
+	// with `userDataFileId`).
+	UserAccount VmLegacyInitializationUserAccountPtrInput `pulumi:"userAccount"`
+	// The identifier for a file containing
+	// custom user data (conflicts with `userAccount`).
+	UserDataFileId pulumi.StringPtrInput `pulumi:"userDataFileId"`
+	// The identifier for a file containing
+	// all vendor data passed to the VM via cloud-init.
+	VendorDataFileId pulumi.StringPtrInput `pulumi:"vendorDataFileId"`
+}
+
+func (VmLegacyInitializationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyInitialization)(nil)).Elem()
+}
+
+func (i VmLegacyInitializationArgs) ToVmLegacyInitializationOutput() VmLegacyInitializationOutput {
+	return i.ToVmLegacyInitializationOutputWithContext(context.Background())
+}
+
+func (i VmLegacyInitializationArgs) ToVmLegacyInitializationOutputWithContext(ctx context.Context) VmLegacyInitializationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyInitializationOutput)
+}
+
+func (i VmLegacyInitializationArgs) ToVmLegacyInitializationPtrOutput() VmLegacyInitializationPtrOutput {
+	return i.ToVmLegacyInitializationPtrOutputWithContext(context.Background())
+}
+
+func (i VmLegacyInitializationArgs) ToVmLegacyInitializationPtrOutputWithContext(ctx context.Context) VmLegacyInitializationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyInitializationOutput).ToVmLegacyInitializationPtrOutputWithContext(ctx)
+}
+
+// VmLegacyInitializationPtrInput is an input type that accepts VmLegacyInitializationArgs, VmLegacyInitializationPtr and VmLegacyInitializationPtrOutput values.
+// You can construct a concrete instance of `VmLegacyInitializationPtrInput` via:
+//
+//	        VmLegacyInitializationArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmLegacyInitializationPtrInput interface {
+	pulumi.Input
+
+	ToVmLegacyInitializationPtrOutput() VmLegacyInitializationPtrOutput
+	ToVmLegacyInitializationPtrOutputWithContext(context.Context) VmLegacyInitializationPtrOutput
+}
+
+type vmLegacyInitializationPtrType VmLegacyInitializationArgs
+
+func VmLegacyInitializationPtr(v *VmLegacyInitializationArgs) VmLegacyInitializationPtrInput {
+	return (*vmLegacyInitializationPtrType)(v)
+}
+
+func (*vmLegacyInitializationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyInitialization)(nil)).Elem()
+}
+
+func (i *vmLegacyInitializationPtrType) ToVmLegacyInitializationPtrOutput() VmLegacyInitializationPtrOutput {
+	return i.ToVmLegacyInitializationPtrOutputWithContext(context.Background())
+}
+
+func (i *vmLegacyInitializationPtrType) ToVmLegacyInitializationPtrOutputWithContext(ctx context.Context) VmLegacyInitializationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyInitializationPtrOutput)
+}
+
+type VmLegacyInitializationOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyInitializationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyInitialization)(nil)).Elem()
+}
+
+func (o VmLegacyInitializationOutput) ToVmLegacyInitializationOutput() VmLegacyInitializationOutput {
+	return o
+}
+
+func (o VmLegacyInitializationOutput) ToVmLegacyInitializationOutputWithContext(ctx context.Context) VmLegacyInitializationOutput {
+	return o
+}
+
+func (o VmLegacyInitializationOutput) ToVmLegacyInitializationPtrOutput() VmLegacyInitializationPtrOutput {
+	return o.ToVmLegacyInitializationPtrOutputWithContext(context.Background())
+}
+
+func (o VmLegacyInitializationOutput) ToVmLegacyInitializationPtrOutputWithContext(ctx context.Context) VmLegacyInitializationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmLegacyInitialization) *VmLegacyInitialization {
+		return &v
+	}).(VmLegacyInitializationPtrOutput)
+}
+
+// The identifier for the datastore to create the
+// cloud-init disk in (defaults to `local-lvm`).
+func (o VmLegacyInitializationOutput) DatastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyInitialization) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
+}
+
+// The DNS configuration.
+func (o VmLegacyInitializationOutput) Dns() VmLegacyInitializationDnsPtrOutput {
+	return o.ApplyT(func(v VmLegacyInitialization) *VmLegacyInitializationDns { return v.Dns }).(VmLegacyInitializationDnsPtrOutput)
+}
+
+// The file format.
+func (o VmLegacyInitializationOutput) FileFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyInitialization) *string { return v.FileFormat }).(pulumi.StringPtrOutput)
+}
+
+// The hardware interface to connect the cloud-init
+// image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+// detected if the setting is missing but a cloud-init image is present,
+// otherwise defaults to `ide2`.
+func (o VmLegacyInitializationOutput) Interface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyInitialization) *string { return v.Interface }).(pulumi.StringPtrOutput)
+}
+
+// The IP configuration (one block per network
+// device).
+func (o VmLegacyInitializationOutput) IpConfigs() VmLegacyInitializationIpConfigArrayOutput {
+	return o.ApplyT(func(v VmLegacyInitialization) []VmLegacyInitializationIpConfig { return v.IpConfigs }).(VmLegacyInitializationIpConfigArrayOutput)
+}
+
+// The identifier for a file containing
+// all meta data passed to the VM via cloud-init.
+func (o VmLegacyInitializationOutput) MetaDataFileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyInitialization) *string { return v.MetaDataFileId }).(pulumi.StringPtrOutput)
+}
+
+// The identifier for a file containing
+// network configuration data passed to the VM via cloud-init (conflicts
+// with `ipConfig`).
+func (o VmLegacyInitializationOutput) NetworkDataFileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyInitialization) *string { return v.NetworkDataFileId }).(pulumi.StringPtrOutput)
+}
+
+// The cloud-init configuration format
+func (o VmLegacyInitializationOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyInitialization) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The user account configuration (conflicts
+// with `userDataFileId`).
+func (o VmLegacyInitializationOutput) UserAccount() VmLegacyInitializationUserAccountPtrOutput {
+	return o.ApplyT(func(v VmLegacyInitialization) *VmLegacyInitializationUserAccount { return v.UserAccount }).(VmLegacyInitializationUserAccountPtrOutput)
+}
+
+// The identifier for a file containing
+// custom user data (conflicts with `userAccount`).
+func (o VmLegacyInitializationOutput) UserDataFileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyInitialization) *string { return v.UserDataFileId }).(pulumi.StringPtrOutput)
+}
+
+// The identifier for a file containing
+// all vendor data passed to the VM via cloud-init.
+func (o VmLegacyInitializationOutput) VendorDataFileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyInitialization) *string { return v.VendorDataFileId }).(pulumi.StringPtrOutput)
+}
+
+type VmLegacyInitializationPtrOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyInitializationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyInitialization)(nil)).Elem()
+}
+
+func (o VmLegacyInitializationPtrOutput) ToVmLegacyInitializationPtrOutput() VmLegacyInitializationPtrOutput {
+	return o
+}
+
+func (o VmLegacyInitializationPtrOutput) ToVmLegacyInitializationPtrOutputWithContext(ctx context.Context) VmLegacyInitializationPtrOutput {
+	return o
+}
+
+func (o VmLegacyInitializationPtrOutput) Elem() VmLegacyInitializationOutput {
+	return o.ApplyT(func(v *VmLegacyInitialization) VmLegacyInitialization {
+		if v != nil {
+			return *v
+		}
+		var ret VmLegacyInitialization
+		return ret
+	}).(VmLegacyInitializationOutput)
+}
+
+// The identifier for the datastore to create the
+// cloud-init disk in (defaults to `local-lvm`).
+func (o VmLegacyInitializationPtrOutput) DatastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyInitialization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DatastoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The DNS configuration.
+func (o VmLegacyInitializationPtrOutput) Dns() VmLegacyInitializationDnsPtrOutput {
+	return o.ApplyT(func(v *VmLegacyInitialization) *VmLegacyInitializationDns {
+		if v == nil {
+			return nil
+		}
+		return v.Dns
+	}).(VmLegacyInitializationDnsPtrOutput)
+}
+
+// The file format.
+func (o VmLegacyInitializationPtrOutput) FileFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyInitialization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FileFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// The hardware interface to connect the cloud-init
+// image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
+// detected if the setting is missing but a cloud-init image is present,
+// otherwise defaults to `ide2`.
+func (o VmLegacyInitializationPtrOutput) Interface() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyInitialization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Interface
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IP configuration (one block per network
+// device).
+func (o VmLegacyInitializationPtrOutput) IpConfigs() VmLegacyInitializationIpConfigArrayOutput {
+	return o.ApplyT(func(v *VmLegacyInitialization) []VmLegacyInitializationIpConfig {
+		if v == nil {
+			return nil
+		}
+		return v.IpConfigs
+	}).(VmLegacyInitializationIpConfigArrayOutput)
+}
+
+// The identifier for a file containing
+// all meta data passed to the VM via cloud-init.
+func (o VmLegacyInitializationPtrOutput) MetaDataFileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyInitialization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetaDataFileId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The identifier for a file containing
+// network configuration data passed to the VM via cloud-init (conflicts
+// with `ipConfig`).
+func (o VmLegacyInitializationPtrOutput) NetworkDataFileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyInitialization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkDataFileId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The cloud-init configuration format
+func (o VmLegacyInitializationPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyInitialization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user account configuration (conflicts
+// with `userDataFileId`).
+func (o VmLegacyInitializationPtrOutput) UserAccount() VmLegacyInitializationUserAccountPtrOutput {
+	return o.ApplyT(func(v *VmLegacyInitialization) *VmLegacyInitializationUserAccount {
+		if v == nil {
+			return nil
+		}
+		return v.UserAccount
+	}).(VmLegacyInitializationUserAccountPtrOutput)
+}
+
+// The identifier for a file containing
+// custom user data (conflicts with `userAccount`).
+func (o VmLegacyInitializationPtrOutput) UserDataFileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyInitialization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserDataFileId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The identifier for a file containing
+// all vendor data passed to the VM via cloud-init.
+func (o VmLegacyInitializationPtrOutput) VendorDataFileId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyInitialization) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VendorDataFileId
+	}).(pulumi.StringPtrOutput)
+}
+
+type VmLegacyInitializationDns struct {
+	// The DNS search domain.
+	Domain *string `pulumi:"domain"`
+	// The list of DNS servers.
+	Servers []string `pulumi:"servers"`
+}
+
+// VmLegacyInitializationDnsInput is an input type that accepts VmLegacyInitializationDnsArgs and VmLegacyInitializationDnsOutput values.
+// You can construct a concrete instance of `VmLegacyInitializationDnsInput` via:
+//
+//	VmLegacyInitializationDnsArgs{...}
+type VmLegacyInitializationDnsInput interface {
+	pulumi.Input
+
+	ToVmLegacyInitializationDnsOutput() VmLegacyInitializationDnsOutput
+	ToVmLegacyInitializationDnsOutputWithContext(context.Context) VmLegacyInitializationDnsOutput
+}
+
+type VmLegacyInitializationDnsArgs struct {
+	// The DNS search domain.
+	Domain pulumi.StringPtrInput `pulumi:"domain"`
+	// The list of DNS servers.
+	Servers pulumi.StringArrayInput `pulumi:"servers"`
+}
+
+func (VmLegacyInitializationDnsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyInitializationDns)(nil)).Elem()
+}
+
+func (i VmLegacyInitializationDnsArgs) ToVmLegacyInitializationDnsOutput() VmLegacyInitializationDnsOutput {
+	return i.ToVmLegacyInitializationDnsOutputWithContext(context.Background())
+}
+
+func (i VmLegacyInitializationDnsArgs) ToVmLegacyInitializationDnsOutputWithContext(ctx context.Context) VmLegacyInitializationDnsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyInitializationDnsOutput)
+}
+
+func (i VmLegacyInitializationDnsArgs) ToVmLegacyInitializationDnsPtrOutput() VmLegacyInitializationDnsPtrOutput {
+	return i.ToVmLegacyInitializationDnsPtrOutputWithContext(context.Background())
+}
+
+func (i VmLegacyInitializationDnsArgs) ToVmLegacyInitializationDnsPtrOutputWithContext(ctx context.Context) VmLegacyInitializationDnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyInitializationDnsOutput).ToVmLegacyInitializationDnsPtrOutputWithContext(ctx)
+}
+
+// VmLegacyInitializationDnsPtrInput is an input type that accepts VmLegacyInitializationDnsArgs, VmLegacyInitializationDnsPtr and VmLegacyInitializationDnsPtrOutput values.
+// You can construct a concrete instance of `VmLegacyInitializationDnsPtrInput` via:
+//
+//	        VmLegacyInitializationDnsArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmLegacyInitializationDnsPtrInput interface {
+	pulumi.Input
+
+	ToVmLegacyInitializationDnsPtrOutput() VmLegacyInitializationDnsPtrOutput
+	ToVmLegacyInitializationDnsPtrOutputWithContext(context.Context) VmLegacyInitializationDnsPtrOutput
+}
+
+type vmLegacyInitializationDnsPtrType VmLegacyInitializationDnsArgs
+
+func VmLegacyInitializationDnsPtr(v *VmLegacyInitializationDnsArgs) VmLegacyInitializationDnsPtrInput {
+	return (*vmLegacyInitializationDnsPtrType)(v)
+}
+
+func (*vmLegacyInitializationDnsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyInitializationDns)(nil)).Elem()
+}
+
+func (i *vmLegacyInitializationDnsPtrType) ToVmLegacyInitializationDnsPtrOutput() VmLegacyInitializationDnsPtrOutput {
+	return i.ToVmLegacyInitializationDnsPtrOutputWithContext(context.Background())
+}
+
+func (i *vmLegacyInitializationDnsPtrType) ToVmLegacyInitializationDnsPtrOutputWithContext(ctx context.Context) VmLegacyInitializationDnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyInitializationDnsPtrOutput)
+}
+
+type VmLegacyInitializationDnsOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyInitializationDnsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyInitializationDns)(nil)).Elem()
+}
+
+func (o VmLegacyInitializationDnsOutput) ToVmLegacyInitializationDnsOutput() VmLegacyInitializationDnsOutput {
+	return o
+}
+
+func (o VmLegacyInitializationDnsOutput) ToVmLegacyInitializationDnsOutputWithContext(ctx context.Context) VmLegacyInitializationDnsOutput {
+	return o
+}
+
+func (o VmLegacyInitializationDnsOutput) ToVmLegacyInitializationDnsPtrOutput() VmLegacyInitializationDnsPtrOutput {
+	return o.ToVmLegacyInitializationDnsPtrOutputWithContext(context.Background())
+}
+
+func (o VmLegacyInitializationDnsOutput) ToVmLegacyInitializationDnsPtrOutputWithContext(ctx context.Context) VmLegacyInitializationDnsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmLegacyInitializationDns) *VmLegacyInitializationDns {
+		return &v
+	}).(VmLegacyInitializationDnsPtrOutput)
+}
+
+// The DNS search domain.
+func (o VmLegacyInitializationDnsOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyInitializationDns) *string { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+// The list of DNS servers.
+func (o VmLegacyInitializationDnsOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VmLegacyInitializationDns) []string { return v.Servers }).(pulumi.StringArrayOutput)
+}
+
+type VmLegacyInitializationDnsPtrOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyInitializationDnsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyInitializationDns)(nil)).Elem()
+}
+
+func (o VmLegacyInitializationDnsPtrOutput) ToVmLegacyInitializationDnsPtrOutput() VmLegacyInitializationDnsPtrOutput {
+	return o
+}
+
+func (o VmLegacyInitializationDnsPtrOutput) ToVmLegacyInitializationDnsPtrOutputWithContext(ctx context.Context) VmLegacyInitializationDnsPtrOutput {
+	return o
+}
+
+func (o VmLegacyInitializationDnsPtrOutput) Elem() VmLegacyInitializationDnsOutput {
+	return o.ApplyT(func(v *VmLegacyInitializationDns) VmLegacyInitializationDns {
+		if v != nil {
+			return *v
+		}
+		var ret VmLegacyInitializationDns
+		return ret
+	}).(VmLegacyInitializationDnsOutput)
+}
+
+// The DNS search domain.
+func (o VmLegacyInitializationDnsPtrOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyInitializationDns) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Domain
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of DNS servers.
+func (o VmLegacyInitializationDnsPtrOutput) Servers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VmLegacyInitializationDns) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Servers
+	}).(pulumi.StringArrayOutput)
+}
+
+type VmLegacyInitializationIpConfig struct {
+	// The IPv4 configuration.
+	Ipv4 *VmLegacyInitializationIpConfigIpv4 `pulumi:"ipv4"`
+	// The IPv6 configuration.
+	Ipv6 *VmLegacyInitializationIpConfigIpv6 `pulumi:"ipv6"`
+}
+
+// VmLegacyInitializationIpConfigInput is an input type that accepts VmLegacyInitializationIpConfigArgs and VmLegacyInitializationIpConfigOutput values.
+// You can construct a concrete instance of `VmLegacyInitializationIpConfigInput` via:
+//
+//	VmLegacyInitializationIpConfigArgs{...}
+type VmLegacyInitializationIpConfigInput interface {
+	pulumi.Input
+
+	ToVmLegacyInitializationIpConfigOutput() VmLegacyInitializationIpConfigOutput
+	ToVmLegacyInitializationIpConfigOutputWithContext(context.Context) VmLegacyInitializationIpConfigOutput
+}
+
+type VmLegacyInitializationIpConfigArgs struct {
+	// The IPv4 configuration.
+	Ipv4 VmLegacyInitializationIpConfigIpv4PtrInput `pulumi:"ipv4"`
+	// The IPv6 configuration.
+	Ipv6 VmLegacyInitializationIpConfigIpv6PtrInput `pulumi:"ipv6"`
+}
+
+func (VmLegacyInitializationIpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyInitializationIpConfig)(nil)).Elem()
+}
+
+func (i VmLegacyInitializationIpConfigArgs) ToVmLegacyInitializationIpConfigOutput() VmLegacyInitializationIpConfigOutput {
+	return i.ToVmLegacyInitializationIpConfigOutputWithContext(context.Background())
+}
+
+func (i VmLegacyInitializationIpConfigArgs) ToVmLegacyInitializationIpConfigOutputWithContext(ctx context.Context) VmLegacyInitializationIpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyInitializationIpConfigOutput)
+}
+
+// VmLegacyInitializationIpConfigArrayInput is an input type that accepts VmLegacyInitializationIpConfigArray and VmLegacyInitializationIpConfigArrayOutput values.
+// You can construct a concrete instance of `VmLegacyInitializationIpConfigArrayInput` via:
+//
+//	VmLegacyInitializationIpConfigArray{ VmLegacyInitializationIpConfigArgs{...} }
+type VmLegacyInitializationIpConfigArrayInput interface {
+	pulumi.Input
+
+	ToVmLegacyInitializationIpConfigArrayOutput() VmLegacyInitializationIpConfigArrayOutput
+	ToVmLegacyInitializationIpConfigArrayOutputWithContext(context.Context) VmLegacyInitializationIpConfigArrayOutput
+}
+
+type VmLegacyInitializationIpConfigArray []VmLegacyInitializationIpConfigInput
+
+func (VmLegacyInitializationIpConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmLegacyInitializationIpConfig)(nil)).Elem()
+}
+
+func (i VmLegacyInitializationIpConfigArray) ToVmLegacyInitializationIpConfigArrayOutput() VmLegacyInitializationIpConfigArrayOutput {
+	return i.ToVmLegacyInitializationIpConfigArrayOutputWithContext(context.Background())
+}
+
+func (i VmLegacyInitializationIpConfigArray) ToVmLegacyInitializationIpConfigArrayOutputWithContext(ctx context.Context) VmLegacyInitializationIpConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyInitializationIpConfigArrayOutput)
+}
+
+type VmLegacyInitializationIpConfigOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyInitializationIpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyInitializationIpConfig)(nil)).Elem()
+}
+
+func (o VmLegacyInitializationIpConfigOutput) ToVmLegacyInitializationIpConfigOutput() VmLegacyInitializationIpConfigOutput {
+	return o
+}
+
+func (o VmLegacyInitializationIpConfigOutput) ToVmLegacyInitializationIpConfigOutputWithContext(ctx context.Context) VmLegacyInitializationIpConfigOutput {
+	return o
+}
+
+// The IPv4 configuration.
+func (o VmLegacyInitializationIpConfigOutput) Ipv4() VmLegacyInitializationIpConfigIpv4PtrOutput {
+	return o.ApplyT(func(v VmLegacyInitializationIpConfig) *VmLegacyInitializationIpConfigIpv4 { return v.Ipv4 }).(VmLegacyInitializationIpConfigIpv4PtrOutput)
+}
+
+// The IPv6 configuration.
+func (o VmLegacyInitializationIpConfigOutput) Ipv6() VmLegacyInitializationIpConfigIpv6PtrOutput {
+	return o.ApplyT(func(v VmLegacyInitializationIpConfig) *VmLegacyInitializationIpConfigIpv6 { return v.Ipv6 }).(VmLegacyInitializationIpConfigIpv6PtrOutput)
+}
+
+type VmLegacyInitializationIpConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyInitializationIpConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmLegacyInitializationIpConfig)(nil)).Elem()
+}
+
+func (o VmLegacyInitializationIpConfigArrayOutput) ToVmLegacyInitializationIpConfigArrayOutput() VmLegacyInitializationIpConfigArrayOutput {
+	return o
+}
+
+func (o VmLegacyInitializationIpConfigArrayOutput) ToVmLegacyInitializationIpConfigArrayOutputWithContext(ctx context.Context) VmLegacyInitializationIpConfigArrayOutput {
+	return o
+}
+
+func (o VmLegacyInitializationIpConfigArrayOutput) Index(i pulumi.IntInput) VmLegacyInitializationIpConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmLegacyInitializationIpConfig {
+		return vs[0].([]VmLegacyInitializationIpConfig)[vs[1].(int)]
+	}).(VmLegacyInitializationIpConfigOutput)
+}
+
+type VmLegacyInitializationIpConfigIpv4 struct {
+	// The IPv4 address in CIDR notation
+	// (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
+	// autodiscovery.
+	Address *string `pulumi:"address"`
+	// The IPv4 gateway (must be omitted
+	// when `dhcp` is used as the address).
+	Gateway *string `pulumi:"gateway"`
+}
+
+// VmLegacyInitializationIpConfigIpv4Input is an input type that accepts VmLegacyInitializationIpConfigIpv4Args and VmLegacyInitializationIpConfigIpv4Output values.
+// You can construct a concrete instance of `VmLegacyInitializationIpConfigIpv4Input` via:
+//
+//	VmLegacyInitializationIpConfigIpv4Args{...}
+type VmLegacyInitializationIpConfigIpv4Input interface {
+	pulumi.Input
+
+	ToVmLegacyInitializationIpConfigIpv4Output() VmLegacyInitializationIpConfigIpv4Output
+	ToVmLegacyInitializationIpConfigIpv4OutputWithContext(context.Context) VmLegacyInitializationIpConfigIpv4Output
+}
+
+type VmLegacyInitializationIpConfigIpv4Args struct {
+	// The IPv4 address in CIDR notation
+	// (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
+	// autodiscovery.
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// The IPv4 gateway (must be omitted
+	// when `dhcp` is used as the address).
+	Gateway pulumi.StringPtrInput `pulumi:"gateway"`
+}
+
+func (VmLegacyInitializationIpConfigIpv4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyInitializationIpConfigIpv4)(nil)).Elem()
+}
+
+func (i VmLegacyInitializationIpConfigIpv4Args) ToVmLegacyInitializationIpConfigIpv4Output() VmLegacyInitializationIpConfigIpv4Output {
+	return i.ToVmLegacyInitializationIpConfigIpv4OutputWithContext(context.Background())
+}
+
+func (i VmLegacyInitializationIpConfigIpv4Args) ToVmLegacyInitializationIpConfigIpv4OutputWithContext(ctx context.Context) VmLegacyInitializationIpConfigIpv4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyInitializationIpConfigIpv4Output)
+}
+
+func (i VmLegacyInitializationIpConfigIpv4Args) ToVmLegacyInitializationIpConfigIpv4PtrOutput() VmLegacyInitializationIpConfigIpv4PtrOutput {
+	return i.ToVmLegacyInitializationIpConfigIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i VmLegacyInitializationIpConfigIpv4Args) ToVmLegacyInitializationIpConfigIpv4PtrOutputWithContext(ctx context.Context) VmLegacyInitializationIpConfigIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyInitializationIpConfigIpv4Output).ToVmLegacyInitializationIpConfigIpv4PtrOutputWithContext(ctx)
+}
+
+// VmLegacyInitializationIpConfigIpv4PtrInput is an input type that accepts VmLegacyInitializationIpConfigIpv4Args, VmLegacyInitializationIpConfigIpv4Ptr and VmLegacyInitializationIpConfigIpv4PtrOutput values.
+// You can construct a concrete instance of `VmLegacyInitializationIpConfigIpv4PtrInput` via:
+//
+//	        VmLegacyInitializationIpConfigIpv4Args{...}
+//
+//	or:
+//
+//	        nil
+type VmLegacyInitializationIpConfigIpv4PtrInput interface {
+	pulumi.Input
+
+	ToVmLegacyInitializationIpConfigIpv4PtrOutput() VmLegacyInitializationIpConfigIpv4PtrOutput
+	ToVmLegacyInitializationIpConfigIpv4PtrOutputWithContext(context.Context) VmLegacyInitializationIpConfigIpv4PtrOutput
+}
+
+type vmLegacyInitializationIpConfigIpv4PtrType VmLegacyInitializationIpConfigIpv4Args
+
+func VmLegacyInitializationIpConfigIpv4Ptr(v *VmLegacyInitializationIpConfigIpv4Args) VmLegacyInitializationIpConfigIpv4PtrInput {
+	return (*vmLegacyInitializationIpConfigIpv4PtrType)(v)
+}
+
+func (*vmLegacyInitializationIpConfigIpv4PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyInitializationIpConfigIpv4)(nil)).Elem()
+}
+
+func (i *vmLegacyInitializationIpConfigIpv4PtrType) ToVmLegacyInitializationIpConfigIpv4PtrOutput() VmLegacyInitializationIpConfigIpv4PtrOutput {
+	return i.ToVmLegacyInitializationIpConfigIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i *vmLegacyInitializationIpConfigIpv4PtrType) ToVmLegacyInitializationIpConfigIpv4PtrOutputWithContext(ctx context.Context) VmLegacyInitializationIpConfigIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyInitializationIpConfigIpv4PtrOutput)
+}
+
+type VmLegacyInitializationIpConfigIpv4Output struct{ *pulumi.OutputState }
+
+func (VmLegacyInitializationIpConfigIpv4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyInitializationIpConfigIpv4)(nil)).Elem()
+}
+
+func (o VmLegacyInitializationIpConfigIpv4Output) ToVmLegacyInitializationIpConfigIpv4Output() VmLegacyInitializationIpConfigIpv4Output {
+	return o
+}
+
+func (o VmLegacyInitializationIpConfigIpv4Output) ToVmLegacyInitializationIpConfigIpv4OutputWithContext(ctx context.Context) VmLegacyInitializationIpConfigIpv4Output {
+	return o
+}
+
+func (o VmLegacyInitializationIpConfigIpv4Output) ToVmLegacyInitializationIpConfigIpv4PtrOutput() VmLegacyInitializationIpConfigIpv4PtrOutput {
+	return o.ToVmLegacyInitializationIpConfigIpv4PtrOutputWithContext(context.Background())
+}
+
+func (o VmLegacyInitializationIpConfigIpv4Output) ToVmLegacyInitializationIpConfigIpv4PtrOutputWithContext(ctx context.Context) VmLegacyInitializationIpConfigIpv4PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmLegacyInitializationIpConfigIpv4) *VmLegacyInitializationIpConfigIpv4 {
+		return &v
+	}).(VmLegacyInitializationIpConfigIpv4PtrOutput)
+}
+
+// The IPv4 address in CIDR notation
+// (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
+// autodiscovery.
+func (o VmLegacyInitializationIpConfigIpv4Output) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyInitializationIpConfigIpv4) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// The IPv4 gateway (must be omitted
+// when `dhcp` is used as the address).
+func (o VmLegacyInitializationIpConfigIpv4Output) Gateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyInitializationIpConfigIpv4) *string { return v.Gateway }).(pulumi.StringPtrOutput)
+}
+
+type VmLegacyInitializationIpConfigIpv4PtrOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyInitializationIpConfigIpv4PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyInitializationIpConfigIpv4)(nil)).Elem()
+}
+
+func (o VmLegacyInitializationIpConfigIpv4PtrOutput) ToVmLegacyInitializationIpConfigIpv4PtrOutput() VmLegacyInitializationIpConfigIpv4PtrOutput {
+	return o
+}
+
+func (o VmLegacyInitializationIpConfigIpv4PtrOutput) ToVmLegacyInitializationIpConfigIpv4PtrOutputWithContext(ctx context.Context) VmLegacyInitializationIpConfigIpv4PtrOutput {
+	return o
+}
+
+func (o VmLegacyInitializationIpConfigIpv4PtrOutput) Elem() VmLegacyInitializationIpConfigIpv4Output {
+	return o.ApplyT(func(v *VmLegacyInitializationIpConfigIpv4) VmLegacyInitializationIpConfigIpv4 {
+		if v != nil {
+			return *v
+		}
+		var ret VmLegacyInitializationIpConfigIpv4
+		return ret
+	}).(VmLegacyInitializationIpConfigIpv4Output)
+}
+
+// The IPv4 address in CIDR notation
+// (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
+// autodiscovery.
+func (o VmLegacyInitializationIpConfigIpv4PtrOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyInitializationIpConfigIpv4) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Address
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IPv4 gateway (must be omitted
+// when `dhcp` is used as the address).
+func (o VmLegacyInitializationIpConfigIpv4PtrOutput) Gateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyInitializationIpConfigIpv4) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Gateway
+	}).(pulumi.StringPtrOutput)
+}
+
+type VmLegacyInitializationIpConfigIpv6 struct {
+	// The IPv6 address in CIDR notation
+	// (e.g. fd1c::7334/64). Alternatively, set this
+	// to `dhcp` for DHCPv6, or `auto` for SLAAC.
+	Address *string `pulumi:"address"`
+	// The IPv6 gateway (must be omitted
+	// when `dhcp` or `auto` are used as the address).
+	Gateway *string `pulumi:"gateway"`
+}
+
+// VmLegacyInitializationIpConfigIpv6Input is an input type that accepts VmLegacyInitializationIpConfigIpv6Args and VmLegacyInitializationIpConfigIpv6Output values.
+// You can construct a concrete instance of `VmLegacyInitializationIpConfigIpv6Input` via:
+//
+//	VmLegacyInitializationIpConfigIpv6Args{...}
+type VmLegacyInitializationIpConfigIpv6Input interface {
+	pulumi.Input
+
+	ToVmLegacyInitializationIpConfigIpv6Output() VmLegacyInitializationIpConfigIpv6Output
+	ToVmLegacyInitializationIpConfigIpv6OutputWithContext(context.Context) VmLegacyInitializationIpConfigIpv6Output
+}
+
+type VmLegacyInitializationIpConfigIpv6Args struct {
+	// The IPv6 address in CIDR notation
+	// (e.g. fd1c::7334/64). Alternatively, set this
+	// to `dhcp` for DHCPv6, or `auto` for SLAAC.
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// The IPv6 gateway (must be omitted
+	// when `dhcp` or `auto` are used as the address).
+	Gateway pulumi.StringPtrInput `pulumi:"gateway"`
+}
+
+func (VmLegacyInitializationIpConfigIpv6Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyInitializationIpConfigIpv6)(nil)).Elem()
+}
+
+func (i VmLegacyInitializationIpConfigIpv6Args) ToVmLegacyInitializationIpConfigIpv6Output() VmLegacyInitializationIpConfigIpv6Output {
+	return i.ToVmLegacyInitializationIpConfigIpv6OutputWithContext(context.Background())
+}
+
+func (i VmLegacyInitializationIpConfigIpv6Args) ToVmLegacyInitializationIpConfigIpv6OutputWithContext(ctx context.Context) VmLegacyInitializationIpConfigIpv6Output {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyInitializationIpConfigIpv6Output)
+}
+
+func (i VmLegacyInitializationIpConfigIpv6Args) ToVmLegacyInitializationIpConfigIpv6PtrOutput() VmLegacyInitializationIpConfigIpv6PtrOutput {
+	return i.ToVmLegacyInitializationIpConfigIpv6PtrOutputWithContext(context.Background())
+}
+
+func (i VmLegacyInitializationIpConfigIpv6Args) ToVmLegacyInitializationIpConfigIpv6PtrOutputWithContext(ctx context.Context) VmLegacyInitializationIpConfigIpv6PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyInitializationIpConfigIpv6Output).ToVmLegacyInitializationIpConfigIpv6PtrOutputWithContext(ctx)
+}
+
+// VmLegacyInitializationIpConfigIpv6PtrInput is an input type that accepts VmLegacyInitializationIpConfigIpv6Args, VmLegacyInitializationIpConfigIpv6Ptr and VmLegacyInitializationIpConfigIpv6PtrOutput values.
+// You can construct a concrete instance of `VmLegacyInitializationIpConfigIpv6PtrInput` via:
+//
+//	        VmLegacyInitializationIpConfigIpv6Args{...}
+//
+//	or:
+//
+//	        nil
+type VmLegacyInitializationIpConfigIpv6PtrInput interface {
+	pulumi.Input
+
+	ToVmLegacyInitializationIpConfigIpv6PtrOutput() VmLegacyInitializationIpConfigIpv6PtrOutput
+	ToVmLegacyInitializationIpConfigIpv6PtrOutputWithContext(context.Context) VmLegacyInitializationIpConfigIpv6PtrOutput
+}
+
+type vmLegacyInitializationIpConfigIpv6PtrType VmLegacyInitializationIpConfigIpv6Args
+
+func VmLegacyInitializationIpConfigIpv6Ptr(v *VmLegacyInitializationIpConfigIpv6Args) VmLegacyInitializationIpConfigIpv6PtrInput {
+	return (*vmLegacyInitializationIpConfigIpv6PtrType)(v)
+}
+
+func (*vmLegacyInitializationIpConfigIpv6PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyInitializationIpConfigIpv6)(nil)).Elem()
+}
+
+func (i *vmLegacyInitializationIpConfigIpv6PtrType) ToVmLegacyInitializationIpConfigIpv6PtrOutput() VmLegacyInitializationIpConfigIpv6PtrOutput {
+	return i.ToVmLegacyInitializationIpConfigIpv6PtrOutputWithContext(context.Background())
+}
+
+func (i *vmLegacyInitializationIpConfigIpv6PtrType) ToVmLegacyInitializationIpConfigIpv6PtrOutputWithContext(ctx context.Context) VmLegacyInitializationIpConfigIpv6PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyInitializationIpConfigIpv6PtrOutput)
+}
+
+type VmLegacyInitializationIpConfigIpv6Output struct{ *pulumi.OutputState }
+
+func (VmLegacyInitializationIpConfigIpv6Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyInitializationIpConfigIpv6)(nil)).Elem()
+}
+
+func (o VmLegacyInitializationIpConfigIpv6Output) ToVmLegacyInitializationIpConfigIpv6Output() VmLegacyInitializationIpConfigIpv6Output {
+	return o
+}
+
+func (o VmLegacyInitializationIpConfigIpv6Output) ToVmLegacyInitializationIpConfigIpv6OutputWithContext(ctx context.Context) VmLegacyInitializationIpConfigIpv6Output {
+	return o
+}
+
+func (o VmLegacyInitializationIpConfigIpv6Output) ToVmLegacyInitializationIpConfigIpv6PtrOutput() VmLegacyInitializationIpConfigIpv6PtrOutput {
+	return o.ToVmLegacyInitializationIpConfigIpv6PtrOutputWithContext(context.Background())
+}
+
+func (o VmLegacyInitializationIpConfigIpv6Output) ToVmLegacyInitializationIpConfigIpv6PtrOutputWithContext(ctx context.Context) VmLegacyInitializationIpConfigIpv6PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmLegacyInitializationIpConfigIpv6) *VmLegacyInitializationIpConfigIpv6 {
+		return &v
+	}).(VmLegacyInitializationIpConfigIpv6PtrOutput)
+}
+
+// The IPv6 address in CIDR notation
+// (e.g. fd1c::7334/64). Alternatively, set this
+// to `dhcp` for DHCPv6, or `auto` for SLAAC.
+func (o VmLegacyInitializationIpConfigIpv6Output) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyInitializationIpConfigIpv6) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// The IPv6 gateway (must be omitted
+// when `dhcp` or `auto` are used as the address).
+func (o VmLegacyInitializationIpConfigIpv6Output) Gateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyInitializationIpConfigIpv6) *string { return v.Gateway }).(pulumi.StringPtrOutput)
+}
+
+type VmLegacyInitializationIpConfigIpv6PtrOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyInitializationIpConfigIpv6PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyInitializationIpConfigIpv6)(nil)).Elem()
+}
+
+func (o VmLegacyInitializationIpConfigIpv6PtrOutput) ToVmLegacyInitializationIpConfigIpv6PtrOutput() VmLegacyInitializationIpConfigIpv6PtrOutput {
+	return o
+}
+
+func (o VmLegacyInitializationIpConfigIpv6PtrOutput) ToVmLegacyInitializationIpConfigIpv6PtrOutputWithContext(ctx context.Context) VmLegacyInitializationIpConfigIpv6PtrOutput {
+	return o
+}
+
+func (o VmLegacyInitializationIpConfigIpv6PtrOutput) Elem() VmLegacyInitializationIpConfigIpv6Output {
+	return o.ApplyT(func(v *VmLegacyInitializationIpConfigIpv6) VmLegacyInitializationIpConfigIpv6 {
+		if v != nil {
+			return *v
+		}
+		var ret VmLegacyInitializationIpConfigIpv6
+		return ret
+	}).(VmLegacyInitializationIpConfigIpv6Output)
+}
+
+// The IPv6 address in CIDR notation
+// (e.g. fd1c::7334/64). Alternatively, set this
+// to `dhcp` for DHCPv6, or `auto` for SLAAC.
+func (o VmLegacyInitializationIpConfigIpv6PtrOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyInitializationIpConfigIpv6) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Address
+	}).(pulumi.StringPtrOutput)
+}
+
+// The IPv6 gateway (must be omitted
+// when `dhcp` or `auto` are used as the address).
+func (o VmLegacyInitializationIpConfigIpv6PtrOutput) Gateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyInitializationIpConfigIpv6) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Gateway
+	}).(pulumi.StringPtrOutput)
+}
+
+type VmLegacyInitializationUserAccount struct {
+	// The SSH keys.
+	Keys []string `pulumi:"keys"`
+	// The SSH password.
+	Password *string `pulumi:"password"`
+	// The SSH username.
+	Username *string `pulumi:"username"`
+}
+
+// VmLegacyInitializationUserAccountInput is an input type that accepts VmLegacyInitializationUserAccountArgs and VmLegacyInitializationUserAccountOutput values.
+// You can construct a concrete instance of `VmLegacyInitializationUserAccountInput` via:
+//
+//	VmLegacyInitializationUserAccountArgs{...}
+type VmLegacyInitializationUserAccountInput interface {
+	pulumi.Input
+
+	ToVmLegacyInitializationUserAccountOutput() VmLegacyInitializationUserAccountOutput
+	ToVmLegacyInitializationUserAccountOutputWithContext(context.Context) VmLegacyInitializationUserAccountOutput
+}
+
+type VmLegacyInitializationUserAccountArgs struct {
+	// The SSH keys.
+	Keys pulumi.StringArrayInput `pulumi:"keys"`
+	// The SSH password.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The SSH username.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (VmLegacyInitializationUserAccountArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyInitializationUserAccount)(nil)).Elem()
+}
+
+func (i VmLegacyInitializationUserAccountArgs) ToVmLegacyInitializationUserAccountOutput() VmLegacyInitializationUserAccountOutput {
+	return i.ToVmLegacyInitializationUserAccountOutputWithContext(context.Background())
+}
+
+func (i VmLegacyInitializationUserAccountArgs) ToVmLegacyInitializationUserAccountOutputWithContext(ctx context.Context) VmLegacyInitializationUserAccountOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyInitializationUserAccountOutput)
+}
+
+func (i VmLegacyInitializationUserAccountArgs) ToVmLegacyInitializationUserAccountPtrOutput() VmLegacyInitializationUserAccountPtrOutput {
+	return i.ToVmLegacyInitializationUserAccountPtrOutputWithContext(context.Background())
+}
+
+func (i VmLegacyInitializationUserAccountArgs) ToVmLegacyInitializationUserAccountPtrOutputWithContext(ctx context.Context) VmLegacyInitializationUserAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyInitializationUserAccountOutput).ToVmLegacyInitializationUserAccountPtrOutputWithContext(ctx)
+}
+
+// VmLegacyInitializationUserAccountPtrInput is an input type that accepts VmLegacyInitializationUserAccountArgs, VmLegacyInitializationUserAccountPtr and VmLegacyInitializationUserAccountPtrOutput values.
+// You can construct a concrete instance of `VmLegacyInitializationUserAccountPtrInput` via:
+//
+//	        VmLegacyInitializationUserAccountArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmLegacyInitializationUserAccountPtrInput interface {
+	pulumi.Input
+
+	ToVmLegacyInitializationUserAccountPtrOutput() VmLegacyInitializationUserAccountPtrOutput
+	ToVmLegacyInitializationUserAccountPtrOutputWithContext(context.Context) VmLegacyInitializationUserAccountPtrOutput
+}
+
+type vmLegacyInitializationUserAccountPtrType VmLegacyInitializationUserAccountArgs
+
+func VmLegacyInitializationUserAccountPtr(v *VmLegacyInitializationUserAccountArgs) VmLegacyInitializationUserAccountPtrInput {
+	return (*vmLegacyInitializationUserAccountPtrType)(v)
+}
+
+func (*vmLegacyInitializationUserAccountPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyInitializationUserAccount)(nil)).Elem()
+}
+
+func (i *vmLegacyInitializationUserAccountPtrType) ToVmLegacyInitializationUserAccountPtrOutput() VmLegacyInitializationUserAccountPtrOutput {
+	return i.ToVmLegacyInitializationUserAccountPtrOutputWithContext(context.Background())
+}
+
+func (i *vmLegacyInitializationUserAccountPtrType) ToVmLegacyInitializationUserAccountPtrOutputWithContext(ctx context.Context) VmLegacyInitializationUserAccountPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyInitializationUserAccountPtrOutput)
+}
+
+type VmLegacyInitializationUserAccountOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyInitializationUserAccountOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyInitializationUserAccount)(nil)).Elem()
+}
+
+func (o VmLegacyInitializationUserAccountOutput) ToVmLegacyInitializationUserAccountOutput() VmLegacyInitializationUserAccountOutput {
+	return o
+}
+
+func (o VmLegacyInitializationUserAccountOutput) ToVmLegacyInitializationUserAccountOutputWithContext(ctx context.Context) VmLegacyInitializationUserAccountOutput {
+	return o
+}
+
+func (o VmLegacyInitializationUserAccountOutput) ToVmLegacyInitializationUserAccountPtrOutput() VmLegacyInitializationUserAccountPtrOutput {
+	return o.ToVmLegacyInitializationUserAccountPtrOutputWithContext(context.Background())
+}
+
+func (o VmLegacyInitializationUserAccountOutput) ToVmLegacyInitializationUserAccountPtrOutputWithContext(ctx context.Context) VmLegacyInitializationUserAccountPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmLegacyInitializationUserAccount) *VmLegacyInitializationUserAccount {
+		return &v
+	}).(VmLegacyInitializationUserAccountPtrOutput)
+}
+
+// The SSH keys.
+func (o VmLegacyInitializationUserAccountOutput) Keys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VmLegacyInitializationUserAccount) []string { return v.Keys }).(pulumi.StringArrayOutput)
+}
+
+// The SSH password.
+func (o VmLegacyInitializationUserAccountOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyInitializationUserAccount) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The SSH username.
+func (o VmLegacyInitializationUserAccountOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyInitializationUserAccount) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type VmLegacyInitializationUserAccountPtrOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyInitializationUserAccountPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyInitializationUserAccount)(nil)).Elem()
+}
+
+func (o VmLegacyInitializationUserAccountPtrOutput) ToVmLegacyInitializationUserAccountPtrOutput() VmLegacyInitializationUserAccountPtrOutput {
+	return o
+}
+
+func (o VmLegacyInitializationUserAccountPtrOutput) ToVmLegacyInitializationUserAccountPtrOutputWithContext(ctx context.Context) VmLegacyInitializationUserAccountPtrOutput {
+	return o
+}
+
+func (o VmLegacyInitializationUserAccountPtrOutput) Elem() VmLegacyInitializationUserAccountOutput {
+	return o.ApplyT(func(v *VmLegacyInitializationUserAccount) VmLegacyInitializationUserAccount {
+		if v != nil {
+			return *v
+		}
+		var ret VmLegacyInitializationUserAccount
+		return ret
+	}).(VmLegacyInitializationUserAccountOutput)
+}
+
+// The SSH keys.
+func (o VmLegacyInitializationUserAccountPtrOutput) Keys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VmLegacyInitializationUserAccount) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Keys
+	}).(pulumi.StringArrayOutput)
+}
+
+// The SSH password.
+func (o VmLegacyInitializationUserAccountPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyInitializationUserAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SSH username.
+func (o VmLegacyInitializationUserAccountPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyInitializationUserAccount) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type VmLegacyMemory struct {
+	// The dedicated memory in megabytes (defaults to `512`).
+	Dedicated *int `pulumi:"dedicated"`
+	// The floating memory in megabytes. The default is `0`, which disables "ballooning device" for the VM.
+	// Please note that Proxmox has ballooning enabled by default. To enable it, set `floating` to the same value as `dedicated`.
+	// See [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_memory) section 10.2.6 for more information.
+	Floating *int `pulumi:"floating"`
+	// Enable/disable hugepages memory (defaults to disable).
+	Hugepages *string `pulumi:"hugepages"`
+	// Keep hugepages memory after the VM is stopped (defaults to `false`).
+	//
+	// Settings `hugepages` and `keepHugepages` are only allowed for `root@pam` authenticated user.
+	// And required `cpu.numa` to be enabled.
+	KeepHugepages *bool `pulumi:"keepHugepages"`
+	// The shared memory in megabytes (defaults to `0`).
+	Shared *int `pulumi:"shared"`
+}
+
+// VmLegacyMemoryInput is an input type that accepts VmLegacyMemoryArgs and VmLegacyMemoryOutput values.
+// You can construct a concrete instance of `VmLegacyMemoryInput` via:
+//
+//	VmLegacyMemoryArgs{...}
+type VmLegacyMemoryInput interface {
+	pulumi.Input
+
+	ToVmLegacyMemoryOutput() VmLegacyMemoryOutput
+	ToVmLegacyMemoryOutputWithContext(context.Context) VmLegacyMemoryOutput
+}
+
+type VmLegacyMemoryArgs struct {
+	// The dedicated memory in megabytes (defaults to `512`).
+	Dedicated pulumi.IntPtrInput `pulumi:"dedicated"`
+	// The floating memory in megabytes. The default is `0`, which disables "ballooning device" for the VM.
+	// Please note that Proxmox has ballooning enabled by default. To enable it, set `floating` to the same value as `dedicated`.
+	// See [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_memory) section 10.2.6 for more information.
+	Floating pulumi.IntPtrInput `pulumi:"floating"`
+	// Enable/disable hugepages memory (defaults to disable).
+	Hugepages pulumi.StringPtrInput `pulumi:"hugepages"`
+	// Keep hugepages memory after the VM is stopped (defaults to `false`).
+	//
+	// Settings `hugepages` and `keepHugepages` are only allowed for `root@pam` authenticated user.
+	// And required `cpu.numa` to be enabled.
+	KeepHugepages pulumi.BoolPtrInput `pulumi:"keepHugepages"`
+	// The shared memory in megabytes (defaults to `0`).
+	Shared pulumi.IntPtrInput `pulumi:"shared"`
+}
+
+func (VmLegacyMemoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyMemory)(nil)).Elem()
+}
+
+func (i VmLegacyMemoryArgs) ToVmLegacyMemoryOutput() VmLegacyMemoryOutput {
+	return i.ToVmLegacyMemoryOutputWithContext(context.Background())
+}
+
+func (i VmLegacyMemoryArgs) ToVmLegacyMemoryOutputWithContext(ctx context.Context) VmLegacyMemoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyMemoryOutput)
+}
+
+func (i VmLegacyMemoryArgs) ToVmLegacyMemoryPtrOutput() VmLegacyMemoryPtrOutput {
+	return i.ToVmLegacyMemoryPtrOutputWithContext(context.Background())
+}
+
+func (i VmLegacyMemoryArgs) ToVmLegacyMemoryPtrOutputWithContext(ctx context.Context) VmLegacyMemoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyMemoryOutput).ToVmLegacyMemoryPtrOutputWithContext(ctx)
+}
+
+// VmLegacyMemoryPtrInput is an input type that accepts VmLegacyMemoryArgs, VmLegacyMemoryPtr and VmLegacyMemoryPtrOutput values.
+// You can construct a concrete instance of `VmLegacyMemoryPtrInput` via:
+//
+//	        VmLegacyMemoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmLegacyMemoryPtrInput interface {
+	pulumi.Input
+
+	ToVmLegacyMemoryPtrOutput() VmLegacyMemoryPtrOutput
+	ToVmLegacyMemoryPtrOutputWithContext(context.Context) VmLegacyMemoryPtrOutput
+}
+
+type vmLegacyMemoryPtrType VmLegacyMemoryArgs
+
+func VmLegacyMemoryPtr(v *VmLegacyMemoryArgs) VmLegacyMemoryPtrInput {
+	return (*vmLegacyMemoryPtrType)(v)
+}
+
+func (*vmLegacyMemoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyMemory)(nil)).Elem()
+}
+
+func (i *vmLegacyMemoryPtrType) ToVmLegacyMemoryPtrOutput() VmLegacyMemoryPtrOutput {
+	return i.ToVmLegacyMemoryPtrOutputWithContext(context.Background())
+}
+
+func (i *vmLegacyMemoryPtrType) ToVmLegacyMemoryPtrOutputWithContext(ctx context.Context) VmLegacyMemoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyMemoryPtrOutput)
+}
+
+type VmLegacyMemoryOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyMemoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyMemory)(nil)).Elem()
+}
+
+func (o VmLegacyMemoryOutput) ToVmLegacyMemoryOutput() VmLegacyMemoryOutput {
+	return o
+}
+
+func (o VmLegacyMemoryOutput) ToVmLegacyMemoryOutputWithContext(ctx context.Context) VmLegacyMemoryOutput {
+	return o
+}
+
+func (o VmLegacyMemoryOutput) ToVmLegacyMemoryPtrOutput() VmLegacyMemoryPtrOutput {
+	return o.ToVmLegacyMemoryPtrOutputWithContext(context.Background())
+}
+
+func (o VmLegacyMemoryOutput) ToVmLegacyMemoryPtrOutputWithContext(ctx context.Context) VmLegacyMemoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmLegacyMemory) *VmLegacyMemory {
+		return &v
+	}).(VmLegacyMemoryPtrOutput)
+}
+
+// The dedicated memory in megabytes (defaults to `512`).
+func (o VmLegacyMemoryOutput) Dedicated() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmLegacyMemory) *int { return v.Dedicated }).(pulumi.IntPtrOutput)
+}
+
+// The floating memory in megabytes. The default is `0`, which disables "ballooning device" for the VM.
+// Please note that Proxmox has ballooning enabled by default. To enable it, set `floating` to the same value as `dedicated`.
+// See [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_memory) section 10.2.6 for more information.
+func (o VmLegacyMemoryOutput) Floating() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmLegacyMemory) *int { return v.Floating }).(pulumi.IntPtrOutput)
+}
+
+// Enable/disable hugepages memory (defaults to disable).
+func (o VmLegacyMemoryOutput) Hugepages() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyMemory) *string { return v.Hugepages }).(pulumi.StringPtrOutput)
+}
+
+// Keep hugepages memory after the VM is stopped (defaults to `false`).
+//
+// Settings `hugepages` and `keepHugepages` are only allowed for `root@pam` authenticated user.
+// And required `cpu.numa` to be enabled.
+func (o VmLegacyMemoryOutput) KeepHugepages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmLegacyMemory) *bool { return v.KeepHugepages }).(pulumi.BoolPtrOutput)
+}
+
+// The shared memory in megabytes (defaults to `0`).
+func (o VmLegacyMemoryOutput) Shared() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmLegacyMemory) *int { return v.Shared }).(pulumi.IntPtrOutput)
+}
+
+type VmLegacyMemoryPtrOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyMemoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyMemory)(nil)).Elem()
+}
+
+func (o VmLegacyMemoryPtrOutput) ToVmLegacyMemoryPtrOutput() VmLegacyMemoryPtrOutput {
+	return o
+}
+
+func (o VmLegacyMemoryPtrOutput) ToVmLegacyMemoryPtrOutputWithContext(ctx context.Context) VmLegacyMemoryPtrOutput {
+	return o
+}
+
+func (o VmLegacyMemoryPtrOutput) Elem() VmLegacyMemoryOutput {
+	return o.ApplyT(func(v *VmLegacyMemory) VmLegacyMemory {
+		if v != nil {
+			return *v
+		}
+		var ret VmLegacyMemory
+		return ret
+	}).(VmLegacyMemoryOutput)
+}
+
+// The dedicated memory in megabytes (defaults to `512`).
+func (o VmLegacyMemoryPtrOutput) Dedicated() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmLegacyMemory) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Dedicated
+	}).(pulumi.IntPtrOutput)
+}
+
+// The floating memory in megabytes. The default is `0`, which disables "ballooning device" for the VM.
+// Please note that Proxmox has ballooning enabled by default. To enable it, set `floating` to the same value as `dedicated`.
+// See [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_memory) section 10.2.6 for more information.
+func (o VmLegacyMemoryPtrOutput) Floating() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmLegacyMemory) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Floating
+	}).(pulumi.IntPtrOutput)
+}
+
+// Enable/disable hugepages memory (defaults to disable).
+func (o VmLegacyMemoryPtrOutput) Hugepages() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyMemory) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Hugepages
+	}).(pulumi.StringPtrOutput)
+}
+
+// Keep hugepages memory after the VM is stopped (defaults to `false`).
+//
+// Settings `hugepages` and `keepHugepages` are only allowed for `root@pam` authenticated user.
+// And required `cpu.numa` to be enabled.
+func (o VmLegacyMemoryPtrOutput) KeepHugepages() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VmLegacyMemory) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.KeepHugepages
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The shared memory in megabytes (defaults to `0`).
+func (o VmLegacyMemoryPtrOutput) Shared() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmLegacyMemory) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Shared
+	}).(pulumi.IntPtrOutput)
+}
+
+type VmLegacyNetworkDevice struct {
+	// The name of the network bridge (defaults to `vmbr0`).
+	Bridge *string `pulumi:"bridge"`
+	// Whether to disconnect the network device from the network (defaults to `false`).
+	Disconnected *bool `pulumi:"disconnected"`
+	// Whether to enable the network device (defaults to `true`). Remove the `networkDevice` block from your configuration instead of setting `enabled = false`.
+	//
+	// Deprecated: The `enabled` attribute is deprecated and will be removed in a future release. Remove the `networkDevice` block from your configuration instead of setting `enabled = false`.
+	Enabled *bool `pulumi:"enabled"`
+	// Whether this interface's firewall rules should be used (defaults to `false`).
+	Firewall *bool `pulumi:"firewall"`
+	// The MAC address.
+	MacAddress *string `pulumi:"macAddress"`
+	// The network device model (defaults to `virtio`).
+	Model *string `pulumi:"model"`
+	// Force MTU, for VirtIO only. Set to 1 to use the bridge MTU. Cannot be larger than the bridge MTU.
+	Mtu *int `pulumi:"mtu"`
+	// The number of queues for VirtIO (1..64).
+	Queues *int `pulumi:"queues"`
+	// The rate limit in megabytes per second.
+	RateLimit *float64 `pulumi:"rateLimit"`
+	// String containing a `;` separated list of VLAN trunks
+	// ("10;20;30"). Note that the VLAN-aware feature need to be enabled on the PVE
+	// Linux Bridge to use trunks.
+	Trunks *string `pulumi:"trunks"`
+	// The VLAN identifier.
+	VlanId *int `pulumi:"vlanId"`
+}
+
+// VmLegacyNetworkDeviceInput is an input type that accepts VmLegacyNetworkDeviceArgs and VmLegacyNetworkDeviceOutput values.
+// You can construct a concrete instance of `VmLegacyNetworkDeviceInput` via:
+//
+//	VmLegacyNetworkDeviceArgs{...}
+type VmLegacyNetworkDeviceInput interface {
+	pulumi.Input
+
+	ToVmLegacyNetworkDeviceOutput() VmLegacyNetworkDeviceOutput
+	ToVmLegacyNetworkDeviceOutputWithContext(context.Context) VmLegacyNetworkDeviceOutput
+}
+
+type VmLegacyNetworkDeviceArgs struct {
+	// The name of the network bridge (defaults to `vmbr0`).
+	Bridge pulumi.StringPtrInput `pulumi:"bridge"`
+	// Whether to disconnect the network device from the network (defaults to `false`).
+	Disconnected pulumi.BoolPtrInput `pulumi:"disconnected"`
+	// Whether to enable the network device (defaults to `true`). Remove the `networkDevice` block from your configuration instead of setting `enabled = false`.
+	//
+	// Deprecated: The `enabled` attribute is deprecated and will be removed in a future release. Remove the `networkDevice` block from your configuration instead of setting `enabled = false`.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Whether this interface's firewall rules should be used (defaults to `false`).
+	Firewall pulumi.BoolPtrInput `pulumi:"firewall"`
+	// The MAC address.
+	MacAddress pulumi.StringPtrInput `pulumi:"macAddress"`
+	// The network device model (defaults to `virtio`).
+	Model pulumi.StringPtrInput `pulumi:"model"`
+	// Force MTU, for VirtIO only. Set to 1 to use the bridge MTU. Cannot be larger than the bridge MTU.
+	Mtu pulumi.IntPtrInput `pulumi:"mtu"`
+	// The number of queues for VirtIO (1..64).
+	Queues pulumi.IntPtrInput `pulumi:"queues"`
+	// The rate limit in megabytes per second.
+	RateLimit pulumi.Float64PtrInput `pulumi:"rateLimit"`
+	// String containing a `;` separated list of VLAN trunks
+	// ("10;20;30"). Note that the VLAN-aware feature need to be enabled on the PVE
+	// Linux Bridge to use trunks.
+	Trunks pulumi.StringPtrInput `pulumi:"trunks"`
+	// The VLAN identifier.
+	VlanId pulumi.IntPtrInput `pulumi:"vlanId"`
+}
+
+func (VmLegacyNetworkDeviceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyNetworkDevice)(nil)).Elem()
+}
+
+func (i VmLegacyNetworkDeviceArgs) ToVmLegacyNetworkDeviceOutput() VmLegacyNetworkDeviceOutput {
+	return i.ToVmLegacyNetworkDeviceOutputWithContext(context.Background())
+}
+
+func (i VmLegacyNetworkDeviceArgs) ToVmLegacyNetworkDeviceOutputWithContext(ctx context.Context) VmLegacyNetworkDeviceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyNetworkDeviceOutput)
+}
+
+// VmLegacyNetworkDeviceArrayInput is an input type that accepts VmLegacyNetworkDeviceArray and VmLegacyNetworkDeviceArrayOutput values.
+// You can construct a concrete instance of `VmLegacyNetworkDeviceArrayInput` via:
+//
+//	VmLegacyNetworkDeviceArray{ VmLegacyNetworkDeviceArgs{...} }
+type VmLegacyNetworkDeviceArrayInput interface {
+	pulumi.Input
+
+	ToVmLegacyNetworkDeviceArrayOutput() VmLegacyNetworkDeviceArrayOutput
+	ToVmLegacyNetworkDeviceArrayOutputWithContext(context.Context) VmLegacyNetworkDeviceArrayOutput
+}
+
+type VmLegacyNetworkDeviceArray []VmLegacyNetworkDeviceInput
+
+func (VmLegacyNetworkDeviceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmLegacyNetworkDevice)(nil)).Elem()
+}
+
+func (i VmLegacyNetworkDeviceArray) ToVmLegacyNetworkDeviceArrayOutput() VmLegacyNetworkDeviceArrayOutput {
+	return i.ToVmLegacyNetworkDeviceArrayOutputWithContext(context.Background())
+}
+
+func (i VmLegacyNetworkDeviceArray) ToVmLegacyNetworkDeviceArrayOutputWithContext(ctx context.Context) VmLegacyNetworkDeviceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyNetworkDeviceArrayOutput)
+}
+
+type VmLegacyNetworkDeviceOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyNetworkDeviceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyNetworkDevice)(nil)).Elem()
+}
+
+func (o VmLegacyNetworkDeviceOutput) ToVmLegacyNetworkDeviceOutput() VmLegacyNetworkDeviceOutput {
+	return o
+}
+
+func (o VmLegacyNetworkDeviceOutput) ToVmLegacyNetworkDeviceOutputWithContext(ctx context.Context) VmLegacyNetworkDeviceOutput {
+	return o
+}
+
+// The name of the network bridge (defaults to `vmbr0`).
+func (o VmLegacyNetworkDeviceOutput) Bridge() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyNetworkDevice) *string { return v.Bridge }).(pulumi.StringPtrOutput)
+}
+
+// Whether to disconnect the network device from the network (defaults to `false`).
+func (o VmLegacyNetworkDeviceOutput) Disconnected() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmLegacyNetworkDevice) *bool { return v.Disconnected }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to enable the network device (defaults to `true`). Remove the `networkDevice` block from your configuration instead of setting `enabled = false`.
+//
+// Deprecated: The `enabled` attribute is deprecated and will be removed in a future release. Remove the `networkDevice` block from your configuration instead of setting `enabled = false`.
+func (o VmLegacyNetworkDeviceOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmLegacyNetworkDevice) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether this interface's firewall rules should be used (defaults to `false`).
+func (o VmLegacyNetworkDeviceOutput) Firewall() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmLegacyNetworkDevice) *bool { return v.Firewall }).(pulumi.BoolPtrOutput)
+}
+
+// The MAC address.
+func (o VmLegacyNetworkDeviceOutput) MacAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyNetworkDevice) *string { return v.MacAddress }).(pulumi.StringPtrOutput)
+}
+
+// The network device model (defaults to `virtio`).
+func (o VmLegacyNetworkDeviceOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyNetworkDevice) *string { return v.Model }).(pulumi.StringPtrOutput)
+}
+
+// Force MTU, for VirtIO only. Set to 1 to use the bridge MTU. Cannot be larger than the bridge MTU.
+func (o VmLegacyNetworkDeviceOutput) Mtu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmLegacyNetworkDevice) *int { return v.Mtu }).(pulumi.IntPtrOutput)
+}
+
+// The number of queues for VirtIO (1..64).
+func (o VmLegacyNetworkDeviceOutput) Queues() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmLegacyNetworkDevice) *int { return v.Queues }).(pulumi.IntPtrOutput)
+}
+
+// The rate limit in megabytes per second.
+func (o VmLegacyNetworkDeviceOutput) RateLimit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v VmLegacyNetworkDevice) *float64 { return v.RateLimit }).(pulumi.Float64PtrOutput)
+}
+
+// String containing a `;` separated list of VLAN trunks
+// ("10;20;30"). Note that the VLAN-aware feature need to be enabled on the PVE
+// Linux Bridge to use trunks.
+func (o VmLegacyNetworkDeviceOutput) Trunks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyNetworkDevice) *string { return v.Trunks }).(pulumi.StringPtrOutput)
+}
+
+// The VLAN identifier.
+func (o VmLegacyNetworkDeviceOutput) VlanId() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmLegacyNetworkDevice) *int { return v.VlanId }).(pulumi.IntPtrOutput)
+}
+
+type VmLegacyNetworkDeviceArrayOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyNetworkDeviceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmLegacyNetworkDevice)(nil)).Elem()
+}
+
+func (o VmLegacyNetworkDeviceArrayOutput) ToVmLegacyNetworkDeviceArrayOutput() VmLegacyNetworkDeviceArrayOutput {
+	return o
+}
+
+func (o VmLegacyNetworkDeviceArrayOutput) ToVmLegacyNetworkDeviceArrayOutputWithContext(ctx context.Context) VmLegacyNetworkDeviceArrayOutput {
+	return o
+}
+
+func (o VmLegacyNetworkDeviceArrayOutput) Index(i pulumi.IntInput) VmLegacyNetworkDeviceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmLegacyNetworkDevice {
+		return vs[0].([]VmLegacyNetworkDevice)[vs[1].(int)]
+	}).(VmLegacyNetworkDeviceOutput)
+}
+
+type VmLegacyNuma struct {
+	// The CPU cores to assign to the NUMA node (format is `0-7;16-31`).
+	Cpus string `pulumi:"cpus"`
+	// The NUMA device name for Proxmox, in form
+	// of `numaX` where `X` is a sequential number from 0 to 7.
+	Device string `pulumi:"device"`
+	// The NUMA host nodes.
+	Hostnodes *string `pulumi:"hostnodes"`
+	// The memory in megabytes to assign to the NUMA node.
+	Memory int `pulumi:"memory"`
+	// The NUMA policy (defaults to `preferred`).
+	Policy *string `pulumi:"policy"`
+}
+
+// VmLegacyNumaInput is an input type that accepts VmLegacyNumaArgs and VmLegacyNumaOutput values.
+// You can construct a concrete instance of `VmLegacyNumaInput` via:
+//
+//	VmLegacyNumaArgs{...}
+type VmLegacyNumaInput interface {
+	pulumi.Input
+
+	ToVmLegacyNumaOutput() VmLegacyNumaOutput
+	ToVmLegacyNumaOutputWithContext(context.Context) VmLegacyNumaOutput
+}
+
+type VmLegacyNumaArgs struct {
+	// The CPU cores to assign to the NUMA node (format is `0-7;16-31`).
+	Cpus pulumi.StringInput `pulumi:"cpus"`
+	// The NUMA device name for Proxmox, in form
+	// of `numaX` where `X` is a sequential number from 0 to 7.
+	Device pulumi.StringInput `pulumi:"device"`
+	// The NUMA host nodes.
+	Hostnodes pulumi.StringPtrInput `pulumi:"hostnodes"`
+	// The memory in megabytes to assign to the NUMA node.
+	Memory pulumi.IntInput `pulumi:"memory"`
+	// The NUMA policy (defaults to `preferred`).
+	Policy pulumi.StringPtrInput `pulumi:"policy"`
+}
+
+func (VmLegacyNumaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyNuma)(nil)).Elem()
+}
+
+func (i VmLegacyNumaArgs) ToVmLegacyNumaOutput() VmLegacyNumaOutput {
+	return i.ToVmLegacyNumaOutputWithContext(context.Background())
+}
+
+func (i VmLegacyNumaArgs) ToVmLegacyNumaOutputWithContext(ctx context.Context) VmLegacyNumaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyNumaOutput)
+}
+
+// VmLegacyNumaArrayInput is an input type that accepts VmLegacyNumaArray and VmLegacyNumaArrayOutput values.
+// You can construct a concrete instance of `VmLegacyNumaArrayInput` via:
+//
+//	VmLegacyNumaArray{ VmLegacyNumaArgs{...} }
+type VmLegacyNumaArrayInput interface {
+	pulumi.Input
+
+	ToVmLegacyNumaArrayOutput() VmLegacyNumaArrayOutput
+	ToVmLegacyNumaArrayOutputWithContext(context.Context) VmLegacyNumaArrayOutput
+}
+
+type VmLegacyNumaArray []VmLegacyNumaInput
+
+func (VmLegacyNumaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmLegacyNuma)(nil)).Elem()
+}
+
+func (i VmLegacyNumaArray) ToVmLegacyNumaArrayOutput() VmLegacyNumaArrayOutput {
+	return i.ToVmLegacyNumaArrayOutputWithContext(context.Background())
+}
+
+func (i VmLegacyNumaArray) ToVmLegacyNumaArrayOutputWithContext(ctx context.Context) VmLegacyNumaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyNumaArrayOutput)
+}
+
+type VmLegacyNumaOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyNumaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyNuma)(nil)).Elem()
+}
+
+func (o VmLegacyNumaOutput) ToVmLegacyNumaOutput() VmLegacyNumaOutput {
+	return o
+}
+
+func (o VmLegacyNumaOutput) ToVmLegacyNumaOutputWithContext(ctx context.Context) VmLegacyNumaOutput {
+	return o
+}
+
+// The CPU cores to assign to the NUMA node (format is `0-7;16-31`).
+func (o VmLegacyNumaOutput) Cpus() pulumi.StringOutput {
+	return o.ApplyT(func(v VmLegacyNuma) string { return v.Cpus }).(pulumi.StringOutput)
+}
+
+// The NUMA device name for Proxmox, in form
+// of `numaX` where `X` is a sequential number from 0 to 7.
+func (o VmLegacyNumaOutput) Device() pulumi.StringOutput {
+	return o.ApplyT(func(v VmLegacyNuma) string { return v.Device }).(pulumi.StringOutput)
+}
+
+// The NUMA host nodes.
+func (o VmLegacyNumaOutput) Hostnodes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyNuma) *string { return v.Hostnodes }).(pulumi.StringPtrOutput)
+}
+
+// The memory in megabytes to assign to the NUMA node.
+func (o VmLegacyNumaOutput) Memory() pulumi.IntOutput {
+	return o.ApplyT(func(v VmLegacyNuma) int { return v.Memory }).(pulumi.IntOutput)
+}
+
+// The NUMA policy (defaults to `preferred`).
+func (o VmLegacyNumaOutput) Policy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyNuma) *string { return v.Policy }).(pulumi.StringPtrOutput)
+}
+
+type VmLegacyNumaArrayOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyNumaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmLegacyNuma)(nil)).Elem()
+}
+
+func (o VmLegacyNumaArrayOutput) ToVmLegacyNumaArrayOutput() VmLegacyNumaArrayOutput {
+	return o
+}
+
+func (o VmLegacyNumaArrayOutput) ToVmLegacyNumaArrayOutputWithContext(ctx context.Context) VmLegacyNumaArrayOutput {
+	return o
+}
+
+func (o VmLegacyNumaArrayOutput) Index(i pulumi.IntInput) VmLegacyNumaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmLegacyNuma {
+		return vs[0].([]VmLegacyNuma)[vs[1].(int)]
+	}).(VmLegacyNumaOutput)
+}
+
+type VmLegacyOperatingSystem struct {
+	// The type (defaults to `other`).
+	Type *string `pulumi:"type"`
+}
+
+// VmLegacyOperatingSystemInput is an input type that accepts VmLegacyOperatingSystemArgs and VmLegacyOperatingSystemOutput values.
+// You can construct a concrete instance of `VmLegacyOperatingSystemInput` via:
+//
+//	VmLegacyOperatingSystemArgs{...}
+type VmLegacyOperatingSystemInput interface {
+	pulumi.Input
+
+	ToVmLegacyOperatingSystemOutput() VmLegacyOperatingSystemOutput
+	ToVmLegacyOperatingSystemOutputWithContext(context.Context) VmLegacyOperatingSystemOutput
+}
+
+type VmLegacyOperatingSystemArgs struct {
+	// The type (defaults to `other`).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (VmLegacyOperatingSystemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyOperatingSystem)(nil)).Elem()
+}
+
+func (i VmLegacyOperatingSystemArgs) ToVmLegacyOperatingSystemOutput() VmLegacyOperatingSystemOutput {
+	return i.ToVmLegacyOperatingSystemOutputWithContext(context.Background())
+}
+
+func (i VmLegacyOperatingSystemArgs) ToVmLegacyOperatingSystemOutputWithContext(ctx context.Context) VmLegacyOperatingSystemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyOperatingSystemOutput)
+}
+
+func (i VmLegacyOperatingSystemArgs) ToVmLegacyOperatingSystemPtrOutput() VmLegacyOperatingSystemPtrOutput {
+	return i.ToVmLegacyOperatingSystemPtrOutputWithContext(context.Background())
+}
+
+func (i VmLegacyOperatingSystemArgs) ToVmLegacyOperatingSystemPtrOutputWithContext(ctx context.Context) VmLegacyOperatingSystemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyOperatingSystemOutput).ToVmLegacyOperatingSystemPtrOutputWithContext(ctx)
+}
+
+// VmLegacyOperatingSystemPtrInput is an input type that accepts VmLegacyOperatingSystemArgs, VmLegacyOperatingSystemPtr and VmLegacyOperatingSystemPtrOutput values.
+// You can construct a concrete instance of `VmLegacyOperatingSystemPtrInput` via:
+//
+//	        VmLegacyOperatingSystemArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmLegacyOperatingSystemPtrInput interface {
+	pulumi.Input
+
+	ToVmLegacyOperatingSystemPtrOutput() VmLegacyOperatingSystemPtrOutput
+	ToVmLegacyOperatingSystemPtrOutputWithContext(context.Context) VmLegacyOperatingSystemPtrOutput
+}
+
+type vmLegacyOperatingSystemPtrType VmLegacyOperatingSystemArgs
+
+func VmLegacyOperatingSystemPtr(v *VmLegacyOperatingSystemArgs) VmLegacyOperatingSystemPtrInput {
+	return (*vmLegacyOperatingSystemPtrType)(v)
+}
+
+func (*vmLegacyOperatingSystemPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyOperatingSystem)(nil)).Elem()
+}
+
+func (i *vmLegacyOperatingSystemPtrType) ToVmLegacyOperatingSystemPtrOutput() VmLegacyOperatingSystemPtrOutput {
+	return i.ToVmLegacyOperatingSystemPtrOutputWithContext(context.Background())
+}
+
+func (i *vmLegacyOperatingSystemPtrType) ToVmLegacyOperatingSystemPtrOutputWithContext(ctx context.Context) VmLegacyOperatingSystemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyOperatingSystemPtrOutput)
+}
+
+type VmLegacyOperatingSystemOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyOperatingSystemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyOperatingSystem)(nil)).Elem()
+}
+
+func (o VmLegacyOperatingSystemOutput) ToVmLegacyOperatingSystemOutput() VmLegacyOperatingSystemOutput {
+	return o
+}
+
+func (o VmLegacyOperatingSystemOutput) ToVmLegacyOperatingSystemOutputWithContext(ctx context.Context) VmLegacyOperatingSystemOutput {
+	return o
+}
+
+func (o VmLegacyOperatingSystemOutput) ToVmLegacyOperatingSystemPtrOutput() VmLegacyOperatingSystemPtrOutput {
+	return o.ToVmLegacyOperatingSystemPtrOutputWithContext(context.Background())
+}
+
+func (o VmLegacyOperatingSystemOutput) ToVmLegacyOperatingSystemPtrOutputWithContext(ctx context.Context) VmLegacyOperatingSystemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmLegacyOperatingSystem) *VmLegacyOperatingSystem {
+		return &v
+	}).(VmLegacyOperatingSystemPtrOutput)
+}
+
+// The type (defaults to `other`).
+func (o VmLegacyOperatingSystemOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyOperatingSystem) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type VmLegacyOperatingSystemPtrOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyOperatingSystemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyOperatingSystem)(nil)).Elem()
+}
+
+func (o VmLegacyOperatingSystemPtrOutput) ToVmLegacyOperatingSystemPtrOutput() VmLegacyOperatingSystemPtrOutput {
+	return o
+}
+
+func (o VmLegacyOperatingSystemPtrOutput) ToVmLegacyOperatingSystemPtrOutputWithContext(ctx context.Context) VmLegacyOperatingSystemPtrOutput {
+	return o
+}
+
+func (o VmLegacyOperatingSystemPtrOutput) Elem() VmLegacyOperatingSystemOutput {
+	return o.ApplyT(func(v *VmLegacyOperatingSystem) VmLegacyOperatingSystem {
+		if v != nil {
+			return *v
+		}
+		var ret VmLegacyOperatingSystem
+		return ret
+	}).(VmLegacyOperatingSystemOutput)
+}
+
+// The type (defaults to `other`).
+func (o VmLegacyOperatingSystemPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyOperatingSystem) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type VmLegacyRng struct {
+	// Maximum bytes of entropy allowed to get injected into the guest every `period` milliseconds (defaults to `1024`). Prefer a lower value when using `/dev/random` as source.
+	MaxBytes *int `pulumi:"maxBytes"`
+	// Every `period` milliseconds the entropy-injection quota is reset, allowing the guest to retrieve another `maxBytes` of entropy (defaults to `1000`).
+	Period *int `pulumi:"period"`
+	// The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+	Source string `pulumi:"source"`
+}
+
+// VmLegacyRngInput is an input type that accepts VmLegacyRngArgs and VmLegacyRngOutput values.
+// You can construct a concrete instance of `VmLegacyRngInput` via:
+//
+//	VmLegacyRngArgs{...}
+type VmLegacyRngInput interface {
+	pulumi.Input
+
+	ToVmLegacyRngOutput() VmLegacyRngOutput
+	ToVmLegacyRngOutputWithContext(context.Context) VmLegacyRngOutput
+}
+
+type VmLegacyRngArgs struct {
+	// Maximum bytes of entropy allowed to get injected into the guest every `period` milliseconds (defaults to `1024`). Prefer a lower value when using `/dev/random` as source.
+	MaxBytes pulumi.IntPtrInput `pulumi:"maxBytes"`
+	// Every `period` milliseconds the entropy-injection quota is reset, allowing the guest to retrieve another `maxBytes` of entropy (defaults to `1000`).
+	Period pulumi.IntPtrInput `pulumi:"period"`
+	// The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+	Source pulumi.StringInput `pulumi:"source"`
+}
+
+func (VmLegacyRngArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyRng)(nil)).Elem()
+}
+
+func (i VmLegacyRngArgs) ToVmLegacyRngOutput() VmLegacyRngOutput {
+	return i.ToVmLegacyRngOutputWithContext(context.Background())
+}
+
+func (i VmLegacyRngArgs) ToVmLegacyRngOutputWithContext(ctx context.Context) VmLegacyRngOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyRngOutput)
+}
+
+// VmLegacyRngArrayInput is an input type that accepts VmLegacyRngArray and VmLegacyRngArrayOutput values.
+// You can construct a concrete instance of `VmLegacyRngArrayInput` via:
+//
+//	VmLegacyRngArray{ VmLegacyRngArgs{...} }
+type VmLegacyRngArrayInput interface {
+	pulumi.Input
+
+	ToVmLegacyRngArrayOutput() VmLegacyRngArrayOutput
+	ToVmLegacyRngArrayOutputWithContext(context.Context) VmLegacyRngArrayOutput
+}
+
+type VmLegacyRngArray []VmLegacyRngInput
+
+func (VmLegacyRngArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmLegacyRng)(nil)).Elem()
+}
+
+func (i VmLegacyRngArray) ToVmLegacyRngArrayOutput() VmLegacyRngArrayOutput {
+	return i.ToVmLegacyRngArrayOutputWithContext(context.Background())
+}
+
+func (i VmLegacyRngArray) ToVmLegacyRngArrayOutputWithContext(ctx context.Context) VmLegacyRngArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyRngArrayOutput)
+}
+
+type VmLegacyRngOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyRngOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyRng)(nil)).Elem()
+}
+
+func (o VmLegacyRngOutput) ToVmLegacyRngOutput() VmLegacyRngOutput {
+	return o
+}
+
+func (o VmLegacyRngOutput) ToVmLegacyRngOutputWithContext(ctx context.Context) VmLegacyRngOutput {
+	return o
+}
+
+// Maximum bytes of entropy allowed to get injected into the guest every `period` milliseconds (defaults to `1024`). Prefer a lower value when using `/dev/random` as source.
+func (o VmLegacyRngOutput) MaxBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmLegacyRng) *int { return v.MaxBytes }).(pulumi.IntPtrOutput)
+}
+
+// Every `period` milliseconds the entropy-injection quota is reset, allowing the guest to retrieve another `maxBytes` of entropy (defaults to `1000`).
+func (o VmLegacyRngOutput) Period() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmLegacyRng) *int { return v.Period }).(pulumi.IntPtrOutput)
+}
+
+// The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
+func (o VmLegacyRngOutput) Source() pulumi.StringOutput {
+	return o.ApplyT(func(v VmLegacyRng) string { return v.Source }).(pulumi.StringOutput)
+}
+
+type VmLegacyRngArrayOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyRngArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmLegacyRng)(nil)).Elem()
+}
+
+func (o VmLegacyRngArrayOutput) ToVmLegacyRngArrayOutput() VmLegacyRngArrayOutput {
+	return o
+}
+
+func (o VmLegacyRngArrayOutput) ToVmLegacyRngArrayOutputWithContext(ctx context.Context) VmLegacyRngArrayOutput {
+	return o
+}
+
+func (o VmLegacyRngArrayOutput) Index(i pulumi.IntInput) VmLegacyRngOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmLegacyRng {
+		return vs[0].([]VmLegacyRng)[vs[1].(int)]
+	}).(VmLegacyRngOutput)
+}
+
+type VmLegacySerialDevice struct {
+	// The device (defaults to `socket`).
+	// - `/dev/*` - A host serial device.
+	Device *string `pulumi:"device"`
+}
+
+// VmLegacySerialDeviceInput is an input type that accepts VmLegacySerialDeviceArgs and VmLegacySerialDeviceOutput values.
+// You can construct a concrete instance of `VmLegacySerialDeviceInput` via:
+//
+//	VmLegacySerialDeviceArgs{...}
+type VmLegacySerialDeviceInput interface {
+	pulumi.Input
+
+	ToVmLegacySerialDeviceOutput() VmLegacySerialDeviceOutput
+	ToVmLegacySerialDeviceOutputWithContext(context.Context) VmLegacySerialDeviceOutput
+}
+
+type VmLegacySerialDeviceArgs struct {
+	// The device (defaults to `socket`).
+	// - `/dev/*` - A host serial device.
+	Device pulumi.StringPtrInput `pulumi:"device"`
+}
+
+func (VmLegacySerialDeviceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacySerialDevice)(nil)).Elem()
+}
+
+func (i VmLegacySerialDeviceArgs) ToVmLegacySerialDeviceOutput() VmLegacySerialDeviceOutput {
+	return i.ToVmLegacySerialDeviceOutputWithContext(context.Background())
+}
+
+func (i VmLegacySerialDeviceArgs) ToVmLegacySerialDeviceOutputWithContext(ctx context.Context) VmLegacySerialDeviceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacySerialDeviceOutput)
+}
+
+// VmLegacySerialDeviceArrayInput is an input type that accepts VmLegacySerialDeviceArray and VmLegacySerialDeviceArrayOutput values.
+// You can construct a concrete instance of `VmLegacySerialDeviceArrayInput` via:
+//
+//	VmLegacySerialDeviceArray{ VmLegacySerialDeviceArgs{...} }
+type VmLegacySerialDeviceArrayInput interface {
+	pulumi.Input
+
+	ToVmLegacySerialDeviceArrayOutput() VmLegacySerialDeviceArrayOutput
+	ToVmLegacySerialDeviceArrayOutputWithContext(context.Context) VmLegacySerialDeviceArrayOutput
+}
+
+type VmLegacySerialDeviceArray []VmLegacySerialDeviceInput
+
+func (VmLegacySerialDeviceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmLegacySerialDevice)(nil)).Elem()
+}
+
+func (i VmLegacySerialDeviceArray) ToVmLegacySerialDeviceArrayOutput() VmLegacySerialDeviceArrayOutput {
+	return i.ToVmLegacySerialDeviceArrayOutputWithContext(context.Background())
+}
+
+func (i VmLegacySerialDeviceArray) ToVmLegacySerialDeviceArrayOutputWithContext(ctx context.Context) VmLegacySerialDeviceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacySerialDeviceArrayOutput)
+}
+
+type VmLegacySerialDeviceOutput struct{ *pulumi.OutputState }
+
+func (VmLegacySerialDeviceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacySerialDevice)(nil)).Elem()
+}
+
+func (o VmLegacySerialDeviceOutput) ToVmLegacySerialDeviceOutput() VmLegacySerialDeviceOutput {
+	return o
+}
+
+func (o VmLegacySerialDeviceOutput) ToVmLegacySerialDeviceOutputWithContext(ctx context.Context) VmLegacySerialDeviceOutput {
+	return o
+}
+
+// The device (defaults to `socket`).
+// - `/dev/*` - A host serial device.
+func (o VmLegacySerialDeviceOutput) Device() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacySerialDevice) *string { return v.Device }).(pulumi.StringPtrOutput)
+}
+
+type VmLegacySerialDeviceArrayOutput struct{ *pulumi.OutputState }
+
+func (VmLegacySerialDeviceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmLegacySerialDevice)(nil)).Elem()
+}
+
+func (o VmLegacySerialDeviceArrayOutput) ToVmLegacySerialDeviceArrayOutput() VmLegacySerialDeviceArrayOutput {
+	return o
+}
+
+func (o VmLegacySerialDeviceArrayOutput) ToVmLegacySerialDeviceArrayOutputWithContext(ctx context.Context) VmLegacySerialDeviceArrayOutput {
+	return o
+}
+
+func (o VmLegacySerialDeviceArrayOutput) Index(i pulumi.IntInput) VmLegacySerialDeviceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmLegacySerialDevice {
+		return vs[0].([]VmLegacySerialDevice)[vs[1].(int)]
+	}).(VmLegacySerialDeviceOutput)
+}
+
+type VmLegacySmbios struct {
+	// The family string.
+	Family *string `pulumi:"family"`
+	// The manufacturer.
+	Manufacturer *string `pulumi:"manufacturer"`
+	// The product ID.
+	Product *string `pulumi:"product"`
+	// The serial number.
+	Serial *string `pulumi:"serial"`
+	// The SKU number.
+	Sku *string `pulumi:"sku"`
+	// The UUID (defaults to randomly generated UUID).
+	Uuid *string `pulumi:"uuid"`
+	// The version.
+	Version *string `pulumi:"version"`
+}
+
+// VmLegacySmbiosInput is an input type that accepts VmLegacySmbiosArgs and VmLegacySmbiosOutput values.
+// You can construct a concrete instance of `VmLegacySmbiosInput` via:
+//
+//	VmLegacySmbiosArgs{...}
+type VmLegacySmbiosInput interface {
+	pulumi.Input
+
+	ToVmLegacySmbiosOutput() VmLegacySmbiosOutput
+	ToVmLegacySmbiosOutputWithContext(context.Context) VmLegacySmbiosOutput
+}
+
+type VmLegacySmbiosArgs struct {
+	// The family string.
+	Family pulumi.StringPtrInput `pulumi:"family"`
+	// The manufacturer.
+	Manufacturer pulumi.StringPtrInput `pulumi:"manufacturer"`
+	// The product ID.
+	Product pulumi.StringPtrInput `pulumi:"product"`
+	// The serial number.
+	Serial pulumi.StringPtrInput `pulumi:"serial"`
+	// The SKU number.
+	Sku pulumi.StringPtrInput `pulumi:"sku"`
+	// The UUID (defaults to randomly generated UUID).
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+	// The version.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (VmLegacySmbiosArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacySmbios)(nil)).Elem()
+}
+
+func (i VmLegacySmbiosArgs) ToVmLegacySmbiosOutput() VmLegacySmbiosOutput {
+	return i.ToVmLegacySmbiosOutputWithContext(context.Background())
+}
+
+func (i VmLegacySmbiosArgs) ToVmLegacySmbiosOutputWithContext(ctx context.Context) VmLegacySmbiosOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacySmbiosOutput)
+}
+
+func (i VmLegacySmbiosArgs) ToVmLegacySmbiosPtrOutput() VmLegacySmbiosPtrOutput {
+	return i.ToVmLegacySmbiosPtrOutputWithContext(context.Background())
+}
+
+func (i VmLegacySmbiosArgs) ToVmLegacySmbiosPtrOutputWithContext(ctx context.Context) VmLegacySmbiosPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacySmbiosOutput).ToVmLegacySmbiosPtrOutputWithContext(ctx)
+}
+
+// VmLegacySmbiosPtrInput is an input type that accepts VmLegacySmbiosArgs, VmLegacySmbiosPtr and VmLegacySmbiosPtrOutput values.
+// You can construct a concrete instance of `VmLegacySmbiosPtrInput` via:
+//
+//	        VmLegacySmbiosArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmLegacySmbiosPtrInput interface {
+	pulumi.Input
+
+	ToVmLegacySmbiosPtrOutput() VmLegacySmbiosPtrOutput
+	ToVmLegacySmbiosPtrOutputWithContext(context.Context) VmLegacySmbiosPtrOutput
+}
+
+type vmLegacySmbiosPtrType VmLegacySmbiosArgs
+
+func VmLegacySmbiosPtr(v *VmLegacySmbiosArgs) VmLegacySmbiosPtrInput {
+	return (*vmLegacySmbiosPtrType)(v)
+}
+
+func (*vmLegacySmbiosPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacySmbios)(nil)).Elem()
+}
+
+func (i *vmLegacySmbiosPtrType) ToVmLegacySmbiosPtrOutput() VmLegacySmbiosPtrOutput {
+	return i.ToVmLegacySmbiosPtrOutputWithContext(context.Background())
+}
+
+func (i *vmLegacySmbiosPtrType) ToVmLegacySmbiosPtrOutputWithContext(ctx context.Context) VmLegacySmbiosPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacySmbiosPtrOutput)
+}
+
+type VmLegacySmbiosOutput struct{ *pulumi.OutputState }
+
+func (VmLegacySmbiosOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacySmbios)(nil)).Elem()
+}
+
+func (o VmLegacySmbiosOutput) ToVmLegacySmbiosOutput() VmLegacySmbiosOutput {
+	return o
+}
+
+func (o VmLegacySmbiosOutput) ToVmLegacySmbiosOutputWithContext(ctx context.Context) VmLegacySmbiosOutput {
+	return o
+}
+
+func (o VmLegacySmbiosOutput) ToVmLegacySmbiosPtrOutput() VmLegacySmbiosPtrOutput {
+	return o.ToVmLegacySmbiosPtrOutputWithContext(context.Background())
+}
+
+func (o VmLegacySmbiosOutput) ToVmLegacySmbiosPtrOutputWithContext(ctx context.Context) VmLegacySmbiosPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmLegacySmbios) *VmLegacySmbios {
+		return &v
+	}).(VmLegacySmbiosPtrOutput)
+}
+
+// The family string.
+func (o VmLegacySmbiosOutput) Family() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacySmbios) *string { return v.Family }).(pulumi.StringPtrOutput)
+}
+
+// The manufacturer.
+func (o VmLegacySmbiosOutput) Manufacturer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacySmbios) *string { return v.Manufacturer }).(pulumi.StringPtrOutput)
+}
+
+// The product ID.
+func (o VmLegacySmbiosOutput) Product() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacySmbios) *string { return v.Product }).(pulumi.StringPtrOutput)
+}
+
+// The serial number.
+func (o VmLegacySmbiosOutput) Serial() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacySmbios) *string { return v.Serial }).(pulumi.StringPtrOutput)
+}
+
+// The SKU number.
+func (o VmLegacySmbiosOutput) Sku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacySmbios) *string { return v.Sku }).(pulumi.StringPtrOutput)
+}
+
+// The UUID (defaults to randomly generated UUID).
+func (o VmLegacySmbiosOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacySmbios) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+// The version.
+func (o VmLegacySmbiosOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacySmbios) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type VmLegacySmbiosPtrOutput struct{ *pulumi.OutputState }
+
+func (VmLegacySmbiosPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacySmbios)(nil)).Elem()
+}
+
+func (o VmLegacySmbiosPtrOutput) ToVmLegacySmbiosPtrOutput() VmLegacySmbiosPtrOutput {
+	return o
+}
+
+func (o VmLegacySmbiosPtrOutput) ToVmLegacySmbiosPtrOutputWithContext(ctx context.Context) VmLegacySmbiosPtrOutput {
+	return o
+}
+
+func (o VmLegacySmbiosPtrOutput) Elem() VmLegacySmbiosOutput {
+	return o.ApplyT(func(v *VmLegacySmbios) VmLegacySmbios {
+		if v != nil {
+			return *v
+		}
+		var ret VmLegacySmbios
+		return ret
+	}).(VmLegacySmbiosOutput)
+}
+
+// The family string.
+func (o VmLegacySmbiosPtrOutput) Family() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacySmbios) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Family
+	}).(pulumi.StringPtrOutput)
+}
+
+// The manufacturer.
+func (o VmLegacySmbiosPtrOutput) Manufacturer() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacySmbios) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Manufacturer
+	}).(pulumi.StringPtrOutput)
+}
+
+// The product ID.
+func (o VmLegacySmbiosPtrOutput) Product() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacySmbios) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Product
+	}).(pulumi.StringPtrOutput)
+}
+
+// The serial number.
+func (o VmLegacySmbiosPtrOutput) Serial() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacySmbios) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Serial
+	}).(pulumi.StringPtrOutput)
+}
+
+// The SKU number.
+func (o VmLegacySmbiosPtrOutput) Sku() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacySmbios) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sku
+	}).(pulumi.StringPtrOutput)
+}
+
+// The UUID (defaults to randomly generated UUID).
+func (o VmLegacySmbiosPtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacySmbios) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+// The version.
+func (o VmLegacySmbiosPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacySmbios) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type VmLegacyStartup struct {
+	// A non-negative number defining the delay in
+	// seconds before the next VM is shut down.
+	DownDelay *int `pulumi:"downDelay"`
+	// A non-negative number defining the general startup
+	// order.
+	Order *int `pulumi:"order"`
+	// A non-negative number defining the delay in
+	// seconds before the next VM is started.
+	UpDelay *int `pulumi:"upDelay"`
+}
+
+// VmLegacyStartupInput is an input type that accepts VmLegacyStartupArgs and VmLegacyStartupOutput values.
+// You can construct a concrete instance of `VmLegacyStartupInput` via:
+//
+//	VmLegacyStartupArgs{...}
+type VmLegacyStartupInput interface {
+	pulumi.Input
+
+	ToVmLegacyStartupOutput() VmLegacyStartupOutput
+	ToVmLegacyStartupOutputWithContext(context.Context) VmLegacyStartupOutput
+}
+
+type VmLegacyStartupArgs struct {
+	// A non-negative number defining the delay in
+	// seconds before the next VM is shut down.
+	DownDelay pulumi.IntPtrInput `pulumi:"downDelay"`
+	// A non-negative number defining the general startup
+	// order.
+	Order pulumi.IntPtrInput `pulumi:"order"`
+	// A non-negative number defining the delay in
+	// seconds before the next VM is started.
+	UpDelay pulumi.IntPtrInput `pulumi:"upDelay"`
+}
+
+func (VmLegacyStartupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyStartup)(nil)).Elem()
+}
+
+func (i VmLegacyStartupArgs) ToVmLegacyStartupOutput() VmLegacyStartupOutput {
+	return i.ToVmLegacyStartupOutputWithContext(context.Background())
+}
+
+func (i VmLegacyStartupArgs) ToVmLegacyStartupOutputWithContext(ctx context.Context) VmLegacyStartupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyStartupOutput)
+}
+
+func (i VmLegacyStartupArgs) ToVmLegacyStartupPtrOutput() VmLegacyStartupPtrOutput {
+	return i.ToVmLegacyStartupPtrOutputWithContext(context.Background())
+}
+
+func (i VmLegacyStartupArgs) ToVmLegacyStartupPtrOutputWithContext(ctx context.Context) VmLegacyStartupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyStartupOutput).ToVmLegacyStartupPtrOutputWithContext(ctx)
+}
+
+// VmLegacyStartupPtrInput is an input type that accepts VmLegacyStartupArgs, VmLegacyStartupPtr and VmLegacyStartupPtrOutput values.
+// You can construct a concrete instance of `VmLegacyStartupPtrInput` via:
+//
+//	        VmLegacyStartupArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmLegacyStartupPtrInput interface {
+	pulumi.Input
+
+	ToVmLegacyStartupPtrOutput() VmLegacyStartupPtrOutput
+	ToVmLegacyStartupPtrOutputWithContext(context.Context) VmLegacyStartupPtrOutput
+}
+
+type vmLegacyStartupPtrType VmLegacyStartupArgs
+
+func VmLegacyStartupPtr(v *VmLegacyStartupArgs) VmLegacyStartupPtrInput {
+	return (*vmLegacyStartupPtrType)(v)
+}
+
+func (*vmLegacyStartupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyStartup)(nil)).Elem()
+}
+
+func (i *vmLegacyStartupPtrType) ToVmLegacyStartupPtrOutput() VmLegacyStartupPtrOutput {
+	return i.ToVmLegacyStartupPtrOutputWithContext(context.Background())
+}
+
+func (i *vmLegacyStartupPtrType) ToVmLegacyStartupPtrOutputWithContext(ctx context.Context) VmLegacyStartupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyStartupPtrOutput)
+}
+
+type VmLegacyStartupOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyStartupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyStartup)(nil)).Elem()
+}
+
+func (o VmLegacyStartupOutput) ToVmLegacyStartupOutput() VmLegacyStartupOutput {
+	return o
+}
+
+func (o VmLegacyStartupOutput) ToVmLegacyStartupOutputWithContext(ctx context.Context) VmLegacyStartupOutput {
+	return o
+}
+
+func (o VmLegacyStartupOutput) ToVmLegacyStartupPtrOutput() VmLegacyStartupPtrOutput {
+	return o.ToVmLegacyStartupPtrOutputWithContext(context.Background())
+}
+
+func (o VmLegacyStartupOutput) ToVmLegacyStartupPtrOutputWithContext(ctx context.Context) VmLegacyStartupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmLegacyStartup) *VmLegacyStartup {
+		return &v
+	}).(VmLegacyStartupPtrOutput)
+}
+
+// A non-negative number defining the delay in
+// seconds before the next VM is shut down.
+func (o VmLegacyStartupOutput) DownDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmLegacyStartup) *int { return v.DownDelay }).(pulumi.IntPtrOutput)
+}
+
+// A non-negative number defining the general startup
+// order.
+func (o VmLegacyStartupOutput) Order() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmLegacyStartup) *int { return v.Order }).(pulumi.IntPtrOutput)
+}
+
+// A non-negative number defining the delay in
+// seconds before the next VM is started.
+func (o VmLegacyStartupOutput) UpDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmLegacyStartup) *int { return v.UpDelay }).(pulumi.IntPtrOutput)
+}
+
+type VmLegacyStartupPtrOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyStartupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyStartup)(nil)).Elem()
+}
+
+func (o VmLegacyStartupPtrOutput) ToVmLegacyStartupPtrOutput() VmLegacyStartupPtrOutput {
+	return o
+}
+
+func (o VmLegacyStartupPtrOutput) ToVmLegacyStartupPtrOutputWithContext(ctx context.Context) VmLegacyStartupPtrOutput {
+	return o
+}
+
+func (o VmLegacyStartupPtrOutput) Elem() VmLegacyStartupOutput {
+	return o.ApplyT(func(v *VmLegacyStartup) VmLegacyStartup {
+		if v != nil {
+			return *v
+		}
+		var ret VmLegacyStartup
+		return ret
+	}).(VmLegacyStartupOutput)
+}
+
+// A non-negative number defining the delay in
+// seconds before the next VM is shut down.
+func (o VmLegacyStartupPtrOutput) DownDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmLegacyStartup) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DownDelay
+	}).(pulumi.IntPtrOutput)
+}
+
+// A non-negative number defining the general startup
+// order.
+func (o VmLegacyStartupPtrOutput) Order() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmLegacyStartup) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Order
+	}).(pulumi.IntPtrOutput)
+}
+
+// A non-negative number defining the delay in
+// seconds before the next VM is started.
+func (o VmLegacyStartupPtrOutput) UpDelay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmLegacyStartup) *int {
+		if v == nil {
+			return nil
+		}
+		return v.UpDelay
+	}).(pulumi.IntPtrOutput)
+}
+
+type VmLegacyTpmState struct {
+	// The identifier for the datastore to create
+	// the disk in (defaults to `local-lvm`).
+	DatastoreId *string `pulumi:"datastoreId"`
+	// TPM state device version. Can be `v1.2` or `v2.0`.
+	// (defaults to `v2.0`).
+	Version *string `pulumi:"version"`
+}
+
+// VmLegacyTpmStateInput is an input type that accepts VmLegacyTpmStateArgs and VmLegacyTpmStateOutput values.
+// You can construct a concrete instance of `VmLegacyTpmStateInput` via:
+//
+//	VmLegacyTpmStateArgs{...}
+type VmLegacyTpmStateInput interface {
+	pulumi.Input
+
+	ToVmLegacyTpmStateOutput() VmLegacyTpmStateOutput
+	ToVmLegacyTpmStateOutputWithContext(context.Context) VmLegacyTpmStateOutput
+}
+
+type VmLegacyTpmStateArgs struct {
+	// The identifier for the datastore to create
+	// the disk in (defaults to `local-lvm`).
+	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
+	// TPM state device version. Can be `v1.2` or `v2.0`.
+	// (defaults to `v2.0`).
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (VmLegacyTpmStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyTpmState)(nil)).Elem()
+}
+
+func (i VmLegacyTpmStateArgs) ToVmLegacyTpmStateOutput() VmLegacyTpmStateOutput {
+	return i.ToVmLegacyTpmStateOutputWithContext(context.Background())
+}
+
+func (i VmLegacyTpmStateArgs) ToVmLegacyTpmStateOutputWithContext(ctx context.Context) VmLegacyTpmStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyTpmStateOutput)
+}
+
+func (i VmLegacyTpmStateArgs) ToVmLegacyTpmStatePtrOutput() VmLegacyTpmStatePtrOutput {
+	return i.ToVmLegacyTpmStatePtrOutputWithContext(context.Background())
+}
+
+func (i VmLegacyTpmStateArgs) ToVmLegacyTpmStatePtrOutputWithContext(ctx context.Context) VmLegacyTpmStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyTpmStateOutput).ToVmLegacyTpmStatePtrOutputWithContext(ctx)
+}
+
+// VmLegacyTpmStatePtrInput is an input type that accepts VmLegacyTpmStateArgs, VmLegacyTpmStatePtr and VmLegacyTpmStatePtrOutput values.
+// You can construct a concrete instance of `VmLegacyTpmStatePtrInput` via:
+//
+//	        VmLegacyTpmStateArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmLegacyTpmStatePtrInput interface {
+	pulumi.Input
+
+	ToVmLegacyTpmStatePtrOutput() VmLegacyTpmStatePtrOutput
+	ToVmLegacyTpmStatePtrOutputWithContext(context.Context) VmLegacyTpmStatePtrOutput
+}
+
+type vmLegacyTpmStatePtrType VmLegacyTpmStateArgs
+
+func VmLegacyTpmStatePtr(v *VmLegacyTpmStateArgs) VmLegacyTpmStatePtrInput {
+	return (*vmLegacyTpmStatePtrType)(v)
+}
+
+func (*vmLegacyTpmStatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyTpmState)(nil)).Elem()
+}
+
+func (i *vmLegacyTpmStatePtrType) ToVmLegacyTpmStatePtrOutput() VmLegacyTpmStatePtrOutput {
+	return i.ToVmLegacyTpmStatePtrOutputWithContext(context.Background())
+}
+
+func (i *vmLegacyTpmStatePtrType) ToVmLegacyTpmStatePtrOutputWithContext(ctx context.Context) VmLegacyTpmStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyTpmStatePtrOutput)
+}
+
+type VmLegacyTpmStateOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyTpmStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyTpmState)(nil)).Elem()
+}
+
+func (o VmLegacyTpmStateOutput) ToVmLegacyTpmStateOutput() VmLegacyTpmStateOutput {
+	return o
+}
+
+func (o VmLegacyTpmStateOutput) ToVmLegacyTpmStateOutputWithContext(ctx context.Context) VmLegacyTpmStateOutput {
+	return o
+}
+
+func (o VmLegacyTpmStateOutput) ToVmLegacyTpmStatePtrOutput() VmLegacyTpmStatePtrOutput {
+	return o.ToVmLegacyTpmStatePtrOutputWithContext(context.Background())
+}
+
+func (o VmLegacyTpmStateOutput) ToVmLegacyTpmStatePtrOutputWithContext(ctx context.Context) VmLegacyTpmStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmLegacyTpmState) *VmLegacyTpmState {
+		return &v
+	}).(VmLegacyTpmStatePtrOutput)
+}
+
+// The identifier for the datastore to create
+// the disk in (defaults to `local-lvm`).
+func (o VmLegacyTpmStateOutput) DatastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyTpmState) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
+}
+
+// TPM state device version. Can be `v1.2` or `v2.0`.
+// (defaults to `v2.0`).
+func (o VmLegacyTpmStateOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyTpmState) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type VmLegacyTpmStatePtrOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyTpmStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyTpmState)(nil)).Elem()
+}
+
+func (o VmLegacyTpmStatePtrOutput) ToVmLegacyTpmStatePtrOutput() VmLegacyTpmStatePtrOutput {
+	return o
+}
+
+func (o VmLegacyTpmStatePtrOutput) ToVmLegacyTpmStatePtrOutputWithContext(ctx context.Context) VmLegacyTpmStatePtrOutput {
+	return o
+}
+
+func (o VmLegacyTpmStatePtrOutput) Elem() VmLegacyTpmStateOutput {
+	return o.ApplyT(func(v *VmLegacyTpmState) VmLegacyTpmState {
+		if v != nil {
+			return *v
+		}
+		var ret VmLegacyTpmState
+		return ret
+	}).(VmLegacyTpmStateOutput)
+}
+
+// The identifier for the datastore to create
+// the disk in (defaults to `local-lvm`).
+func (o VmLegacyTpmStatePtrOutput) DatastoreId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyTpmState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DatastoreId
+	}).(pulumi.StringPtrOutput)
+}
+
+// TPM state device version. Can be `v1.2` or `v2.0`.
+// (defaults to `v2.0`).
+func (o VmLegacyTpmStatePtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyTpmState) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type VmLegacyUsb struct {
+	// The Host USB device or port or the value `spice`. Use either this or `mapping`.
+	Host *string `pulumi:"host"`
+	// The cluster-wide resource mapping name of the device, for example "usbdevice". Use either this or `host`.
+	Mapping *string `pulumi:"mapping"`
+	// Makes the USB device a USB3 device for the VM
+	// (defaults to `false`).
+	Usb3 *bool `pulumi:"usb3"`
+}
+
+// VmLegacyUsbInput is an input type that accepts VmLegacyUsbArgs and VmLegacyUsbOutput values.
+// You can construct a concrete instance of `VmLegacyUsbInput` via:
+//
+//	VmLegacyUsbArgs{...}
+type VmLegacyUsbInput interface {
+	pulumi.Input
+
+	ToVmLegacyUsbOutput() VmLegacyUsbOutput
+	ToVmLegacyUsbOutputWithContext(context.Context) VmLegacyUsbOutput
+}
+
+type VmLegacyUsbArgs struct {
+	// The Host USB device or port or the value `spice`. Use either this or `mapping`.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// The cluster-wide resource mapping name of the device, for example "usbdevice". Use either this or `host`.
+	Mapping pulumi.StringPtrInput `pulumi:"mapping"`
+	// Makes the USB device a USB3 device for the VM
+	// (defaults to `false`).
+	Usb3 pulumi.BoolPtrInput `pulumi:"usb3"`
+}
+
+func (VmLegacyUsbArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyUsb)(nil)).Elem()
+}
+
+func (i VmLegacyUsbArgs) ToVmLegacyUsbOutput() VmLegacyUsbOutput {
+	return i.ToVmLegacyUsbOutputWithContext(context.Background())
+}
+
+func (i VmLegacyUsbArgs) ToVmLegacyUsbOutputWithContext(ctx context.Context) VmLegacyUsbOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyUsbOutput)
+}
+
+// VmLegacyUsbArrayInput is an input type that accepts VmLegacyUsbArray and VmLegacyUsbArrayOutput values.
+// You can construct a concrete instance of `VmLegacyUsbArrayInput` via:
+//
+//	VmLegacyUsbArray{ VmLegacyUsbArgs{...} }
+type VmLegacyUsbArrayInput interface {
+	pulumi.Input
+
+	ToVmLegacyUsbArrayOutput() VmLegacyUsbArrayOutput
+	ToVmLegacyUsbArrayOutputWithContext(context.Context) VmLegacyUsbArrayOutput
+}
+
+type VmLegacyUsbArray []VmLegacyUsbInput
+
+func (VmLegacyUsbArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmLegacyUsb)(nil)).Elem()
+}
+
+func (i VmLegacyUsbArray) ToVmLegacyUsbArrayOutput() VmLegacyUsbArrayOutput {
+	return i.ToVmLegacyUsbArrayOutputWithContext(context.Background())
+}
+
+func (i VmLegacyUsbArray) ToVmLegacyUsbArrayOutputWithContext(ctx context.Context) VmLegacyUsbArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyUsbArrayOutput)
+}
+
+type VmLegacyUsbOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyUsbOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyUsb)(nil)).Elem()
+}
+
+func (o VmLegacyUsbOutput) ToVmLegacyUsbOutput() VmLegacyUsbOutput {
+	return o
+}
+
+func (o VmLegacyUsbOutput) ToVmLegacyUsbOutputWithContext(ctx context.Context) VmLegacyUsbOutput {
+	return o
+}
+
+// The Host USB device or port or the value `spice`. Use either this or `mapping`.
+func (o VmLegacyUsbOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyUsb) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// The cluster-wide resource mapping name of the device, for example "usbdevice". Use either this or `host`.
+func (o VmLegacyUsbOutput) Mapping() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyUsb) *string { return v.Mapping }).(pulumi.StringPtrOutput)
+}
+
+// Makes the USB device a USB3 device for the VM
+// (defaults to `false`).
+func (o VmLegacyUsbOutput) Usb3() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmLegacyUsb) *bool { return v.Usb3 }).(pulumi.BoolPtrOutput)
+}
+
+type VmLegacyUsbArrayOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyUsbArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmLegacyUsb)(nil)).Elem()
+}
+
+func (o VmLegacyUsbArrayOutput) ToVmLegacyUsbArrayOutput() VmLegacyUsbArrayOutput {
+	return o
+}
+
+func (o VmLegacyUsbArrayOutput) ToVmLegacyUsbArrayOutputWithContext(ctx context.Context) VmLegacyUsbArrayOutput {
+	return o
+}
+
+func (o VmLegacyUsbArrayOutput) Index(i pulumi.IntInput) VmLegacyUsbOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmLegacyUsb {
+		return vs[0].([]VmLegacyUsb)[vs[1].(int)]
+	}).(VmLegacyUsbOutput)
+}
+
+type VmLegacyVga struct {
+	// Enable VNC clipboard by setting to `vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
+	Clipboard *string `pulumi:"clipboard"`
+	// The VGA memory in megabytes (defaults to `16`).
+	Memory *int `pulumi:"memory"`
+	// The VGA type (defaults to `std`).
+	Type *string `pulumi:"type"`
+}
+
+// VmLegacyVgaInput is an input type that accepts VmLegacyVgaArgs and VmLegacyVgaOutput values.
+// You can construct a concrete instance of `VmLegacyVgaInput` via:
+//
+//	VmLegacyVgaArgs{...}
+type VmLegacyVgaInput interface {
+	pulumi.Input
+
+	ToVmLegacyVgaOutput() VmLegacyVgaOutput
+	ToVmLegacyVgaOutputWithContext(context.Context) VmLegacyVgaOutput
+}
+
+type VmLegacyVgaArgs struct {
+	// Enable VNC clipboard by setting to `vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
+	Clipboard pulumi.StringPtrInput `pulumi:"clipboard"`
+	// The VGA memory in megabytes (defaults to `16`).
+	Memory pulumi.IntPtrInput `pulumi:"memory"`
+	// The VGA type (defaults to `std`).
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (VmLegacyVgaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyVga)(nil)).Elem()
+}
+
+func (i VmLegacyVgaArgs) ToVmLegacyVgaOutput() VmLegacyVgaOutput {
+	return i.ToVmLegacyVgaOutputWithContext(context.Background())
+}
+
+func (i VmLegacyVgaArgs) ToVmLegacyVgaOutputWithContext(ctx context.Context) VmLegacyVgaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyVgaOutput)
+}
+
+func (i VmLegacyVgaArgs) ToVmLegacyVgaPtrOutput() VmLegacyVgaPtrOutput {
+	return i.ToVmLegacyVgaPtrOutputWithContext(context.Background())
+}
+
+func (i VmLegacyVgaArgs) ToVmLegacyVgaPtrOutputWithContext(ctx context.Context) VmLegacyVgaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyVgaOutput).ToVmLegacyVgaPtrOutputWithContext(ctx)
+}
+
+// VmLegacyVgaPtrInput is an input type that accepts VmLegacyVgaArgs, VmLegacyVgaPtr and VmLegacyVgaPtrOutput values.
+// You can construct a concrete instance of `VmLegacyVgaPtrInput` via:
+//
+//	        VmLegacyVgaArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmLegacyVgaPtrInput interface {
+	pulumi.Input
+
+	ToVmLegacyVgaPtrOutput() VmLegacyVgaPtrOutput
+	ToVmLegacyVgaPtrOutputWithContext(context.Context) VmLegacyVgaPtrOutput
+}
+
+type vmLegacyVgaPtrType VmLegacyVgaArgs
+
+func VmLegacyVgaPtr(v *VmLegacyVgaArgs) VmLegacyVgaPtrInput {
+	return (*vmLegacyVgaPtrType)(v)
+}
+
+func (*vmLegacyVgaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyVga)(nil)).Elem()
+}
+
+func (i *vmLegacyVgaPtrType) ToVmLegacyVgaPtrOutput() VmLegacyVgaPtrOutput {
+	return i.ToVmLegacyVgaPtrOutputWithContext(context.Background())
+}
+
+func (i *vmLegacyVgaPtrType) ToVmLegacyVgaPtrOutputWithContext(ctx context.Context) VmLegacyVgaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyVgaPtrOutput)
+}
+
+type VmLegacyVgaOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyVgaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyVga)(nil)).Elem()
+}
+
+func (o VmLegacyVgaOutput) ToVmLegacyVgaOutput() VmLegacyVgaOutput {
+	return o
+}
+
+func (o VmLegacyVgaOutput) ToVmLegacyVgaOutputWithContext(ctx context.Context) VmLegacyVgaOutput {
+	return o
+}
+
+func (o VmLegacyVgaOutput) ToVmLegacyVgaPtrOutput() VmLegacyVgaPtrOutput {
+	return o.ToVmLegacyVgaPtrOutputWithContext(context.Background())
+}
+
+func (o VmLegacyVgaOutput) ToVmLegacyVgaPtrOutputWithContext(ctx context.Context) VmLegacyVgaPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmLegacyVga) *VmLegacyVga {
+		return &v
+	}).(VmLegacyVgaPtrOutput)
+}
+
+// Enable VNC clipboard by setting to `vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
+func (o VmLegacyVgaOutput) Clipboard() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyVga) *string { return v.Clipboard }).(pulumi.StringPtrOutput)
+}
+
+// The VGA memory in megabytes (defaults to `16`).
+func (o VmLegacyVgaOutput) Memory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmLegacyVga) *int { return v.Memory }).(pulumi.IntPtrOutput)
+}
+
+// The VGA type (defaults to `std`).
+func (o VmLegacyVgaOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyVga) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type VmLegacyVgaPtrOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyVgaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyVga)(nil)).Elem()
+}
+
+func (o VmLegacyVgaPtrOutput) ToVmLegacyVgaPtrOutput() VmLegacyVgaPtrOutput {
+	return o
+}
+
+func (o VmLegacyVgaPtrOutput) ToVmLegacyVgaPtrOutputWithContext(ctx context.Context) VmLegacyVgaPtrOutput {
+	return o
+}
+
+func (o VmLegacyVgaPtrOutput) Elem() VmLegacyVgaOutput {
+	return o.ApplyT(func(v *VmLegacyVga) VmLegacyVga {
+		if v != nil {
+			return *v
+		}
+		var ret VmLegacyVga
+		return ret
+	}).(VmLegacyVgaOutput)
+}
+
+// Enable VNC clipboard by setting to `vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
+func (o VmLegacyVgaPtrOutput) Clipboard() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyVga) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Clipboard
+	}).(pulumi.StringPtrOutput)
+}
+
+// The VGA memory in megabytes (defaults to `16`).
+func (o VmLegacyVgaPtrOutput) Memory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmLegacyVga) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Memory
+	}).(pulumi.IntPtrOutput)
+}
+
+// The VGA type (defaults to `std`).
+func (o VmLegacyVgaPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyVga) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type VmLegacyVirtiof struct {
+	// The caching mode
+	Cache *string `pulumi:"cache"`
+	// Whether to allow direct io
+	DirectIo *bool `pulumi:"directIo"`
+	// Enable POSIX ACLs, implies xattr support
+	ExposeAcl *bool `pulumi:"exposeAcl"`
+	// Enable support for extended attributes
+	ExposeXattr *bool `pulumi:"exposeXattr"`
+	// Identifier of the directory mapping
+	Mapping string `pulumi:"mapping"`
+}
+
+// VmLegacyVirtiofInput is an input type that accepts VmLegacyVirtiofArgs and VmLegacyVirtiofOutput values.
+// You can construct a concrete instance of `VmLegacyVirtiofInput` via:
+//
+//	VmLegacyVirtiofArgs{...}
+type VmLegacyVirtiofInput interface {
+	pulumi.Input
+
+	ToVmLegacyVirtiofOutput() VmLegacyVirtiofOutput
+	ToVmLegacyVirtiofOutputWithContext(context.Context) VmLegacyVirtiofOutput
+}
+
+type VmLegacyVirtiofArgs struct {
+	// The caching mode
+	Cache pulumi.StringPtrInput `pulumi:"cache"`
+	// Whether to allow direct io
+	DirectIo pulumi.BoolPtrInput `pulumi:"directIo"`
+	// Enable POSIX ACLs, implies xattr support
+	ExposeAcl pulumi.BoolPtrInput `pulumi:"exposeAcl"`
+	// Enable support for extended attributes
+	ExposeXattr pulumi.BoolPtrInput `pulumi:"exposeXattr"`
+	// Identifier of the directory mapping
+	Mapping pulumi.StringInput `pulumi:"mapping"`
+}
+
+func (VmLegacyVirtiofArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyVirtiof)(nil)).Elem()
+}
+
+func (i VmLegacyVirtiofArgs) ToVmLegacyVirtiofOutput() VmLegacyVirtiofOutput {
+	return i.ToVmLegacyVirtiofOutputWithContext(context.Background())
+}
+
+func (i VmLegacyVirtiofArgs) ToVmLegacyVirtiofOutputWithContext(ctx context.Context) VmLegacyVirtiofOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyVirtiofOutput)
+}
+
+// VmLegacyVirtiofArrayInput is an input type that accepts VmLegacyVirtiofArray and VmLegacyVirtiofArrayOutput values.
+// You can construct a concrete instance of `VmLegacyVirtiofArrayInput` via:
+//
+//	VmLegacyVirtiofArray{ VmLegacyVirtiofArgs{...} }
+type VmLegacyVirtiofArrayInput interface {
+	pulumi.Input
+
+	ToVmLegacyVirtiofArrayOutput() VmLegacyVirtiofArrayOutput
+	ToVmLegacyVirtiofArrayOutputWithContext(context.Context) VmLegacyVirtiofArrayOutput
+}
+
+type VmLegacyVirtiofArray []VmLegacyVirtiofInput
+
+func (VmLegacyVirtiofArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmLegacyVirtiof)(nil)).Elem()
+}
+
+func (i VmLegacyVirtiofArray) ToVmLegacyVirtiofArrayOutput() VmLegacyVirtiofArrayOutput {
+	return i.ToVmLegacyVirtiofArrayOutputWithContext(context.Background())
+}
+
+func (i VmLegacyVirtiofArray) ToVmLegacyVirtiofArrayOutputWithContext(ctx context.Context) VmLegacyVirtiofArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyVirtiofArrayOutput)
+}
+
+type VmLegacyVirtiofOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyVirtiofOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyVirtiof)(nil)).Elem()
+}
+
+func (o VmLegacyVirtiofOutput) ToVmLegacyVirtiofOutput() VmLegacyVirtiofOutput {
+	return o
+}
+
+func (o VmLegacyVirtiofOutput) ToVmLegacyVirtiofOutputWithContext(ctx context.Context) VmLegacyVirtiofOutput {
+	return o
+}
+
+// The caching mode
+func (o VmLegacyVirtiofOutput) Cache() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyVirtiof) *string { return v.Cache }).(pulumi.StringPtrOutput)
+}
+
+// Whether to allow direct io
+func (o VmLegacyVirtiofOutput) DirectIo() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmLegacyVirtiof) *bool { return v.DirectIo }).(pulumi.BoolPtrOutput)
+}
+
+// Enable POSIX ACLs, implies xattr support
+func (o VmLegacyVirtiofOutput) ExposeAcl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmLegacyVirtiof) *bool { return v.ExposeAcl }).(pulumi.BoolPtrOutput)
+}
+
+// Enable support for extended attributes
+func (o VmLegacyVirtiofOutput) ExposeXattr() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmLegacyVirtiof) *bool { return v.ExposeXattr }).(pulumi.BoolPtrOutput)
+}
+
+// Identifier of the directory mapping
+func (o VmLegacyVirtiofOutput) Mapping() pulumi.StringOutput {
+	return o.ApplyT(func(v VmLegacyVirtiof) string { return v.Mapping }).(pulumi.StringOutput)
+}
+
+type VmLegacyVirtiofArrayOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyVirtiofArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmLegacyVirtiof)(nil)).Elem()
+}
+
+func (o VmLegacyVirtiofArrayOutput) ToVmLegacyVirtiofArrayOutput() VmLegacyVirtiofArrayOutput {
+	return o
+}
+
+func (o VmLegacyVirtiofArrayOutput) ToVmLegacyVirtiofArrayOutputWithContext(ctx context.Context) VmLegacyVirtiofArrayOutput {
+	return o
+}
+
+func (o VmLegacyVirtiofArrayOutput) Index(i pulumi.IntInput) VmLegacyVirtiofOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmLegacyVirtiof {
+		return vs[0].([]VmLegacyVirtiof)[vs[1].(int)]
+	}).(VmLegacyVirtiofOutput)
+}
+
+type VmLegacyWatchdog struct {
+	// The action to perform if after activation the guest fails to poll the watchdog in time  (defaults to `none`).
+	Action *string `pulumi:"action"`
+	// Whether the watchdog is enabled (defaults to `false`).
+	Enabled *bool `pulumi:"enabled"`
+	// The watchdog type to emulate (defaults to `i6300esb`).
+	Model *string `pulumi:"model"`
+}
+
+// VmLegacyWatchdogInput is an input type that accepts VmLegacyWatchdogArgs and VmLegacyWatchdogOutput values.
+// You can construct a concrete instance of `VmLegacyWatchdogInput` via:
+//
+//	VmLegacyWatchdogArgs{...}
+type VmLegacyWatchdogInput interface {
+	pulumi.Input
+
+	ToVmLegacyWatchdogOutput() VmLegacyWatchdogOutput
+	ToVmLegacyWatchdogOutputWithContext(context.Context) VmLegacyWatchdogOutput
+}
+
+type VmLegacyWatchdogArgs struct {
+	// The action to perform if after activation the guest fails to poll the watchdog in time  (defaults to `none`).
+	Action pulumi.StringPtrInput `pulumi:"action"`
+	// Whether the watchdog is enabled (defaults to `false`).
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The watchdog type to emulate (defaults to `i6300esb`).
+	Model pulumi.StringPtrInput `pulumi:"model"`
+}
+
+func (VmLegacyWatchdogArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyWatchdog)(nil)).Elem()
+}
+
+func (i VmLegacyWatchdogArgs) ToVmLegacyWatchdogOutput() VmLegacyWatchdogOutput {
+	return i.ToVmLegacyWatchdogOutputWithContext(context.Background())
+}
+
+func (i VmLegacyWatchdogArgs) ToVmLegacyWatchdogOutputWithContext(ctx context.Context) VmLegacyWatchdogOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyWatchdogOutput)
+}
+
+func (i VmLegacyWatchdogArgs) ToVmLegacyWatchdogPtrOutput() VmLegacyWatchdogPtrOutput {
+	return i.ToVmLegacyWatchdogPtrOutputWithContext(context.Background())
+}
+
+func (i VmLegacyWatchdogArgs) ToVmLegacyWatchdogPtrOutputWithContext(ctx context.Context) VmLegacyWatchdogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyWatchdogOutput).ToVmLegacyWatchdogPtrOutputWithContext(ctx)
+}
+
+// VmLegacyWatchdogPtrInput is an input type that accepts VmLegacyWatchdogArgs, VmLegacyWatchdogPtr and VmLegacyWatchdogPtrOutput values.
+// You can construct a concrete instance of `VmLegacyWatchdogPtrInput` via:
+//
+//	        VmLegacyWatchdogArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmLegacyWatchdogPtrInput interface {
+	pulumi.Input
+
+	ToVmLegacyWatchdogPtrOutput() VmLegacyWatchdogPtrOutput
+	ToVmLegacyWatchdogPtrOutputWithContext(context.Context) VmLegacyWatchdogPtrOutput
+}
+
+type vmLegacyWatchdogPtrType VmLegacyWatchdogArgs
+
+func VmLegacyWatchdogPtr(v *VmLegacyWatchdogArgs) VmLegacyWatchdogPtrInput {
+	return (*vmLegacyWatchdogPtrType)(v)
+}
+
+func (*vmLegacyWatchdogPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyWatchdog)(nil)).Elem()
+}
+
+func (i *vmLegacyWatchdogPtrType) ToVmLegacyWatchdogPtrOutput() VmLegacyWatchdogPtrOutput {
+	return i.ToVmLegacyWatchdogPtrOutputWithContext(context.Background())
+}
+
+func (i *vmLegacyWatchdogPtrType) ToVmLegacyWatchdogPtrOutputWithContext(ctx context.Context) VmLegacyWatchdogPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmLegacyWatchdogPtrOutput)
+}
+
+type VmLegacyWatchdogOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyWatchdogOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmLegacyWatchdog)(nil)).Elem()
+}
+
+func (o VmLegacyWatchdogOutput) ToVmLegacyWatchdogOutput() VmLegacyWatchdogOutput {
+	return o
+}
+
+func (o VmLegacyWatchdogOutput) ToVmLegacyWatchdogOutputWithContext(ctx context.Context) VmLegacyWatchdogOutput {
+	return o
+}
+
+func (o VmLegacyWatchdogOutput) ToVmLegacyWatchdogPtrOutput() VmLegacyWatchdogPtrOutput {
+	return o.ToVmLegacyWatchdogPtrOutputWithContext(context.Background())
+}
+
+func (o VmLegacyWatchdogOutput) ToVmLegacyWatchdogPtrOutputWithContext(ctx context.Context) VmLegacyWatchdogPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmLegacyWatchdog) *VmLegacyWatchdog {
+		return &v
+	}).(VmLegacyWatchdogPtrOutput)
+}
+
+// The action to perform if after activation the guest fails to poll the watchdog in time  (defaults to `none`).
+func (o VmLegacyWatchdogOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyWatchdog) *string { return v.Action }).(pulumi.StringPtrOutput)
+}
+
+// Whether the watchdog is enabled (defaults to `false`).
+func (o VmLegacyWatchdogOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmLegacyWatchdog) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The watchdog type to emulate (defaults to `i6300esb`).
+func (o VmLegacyWatchdogOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmLegacyWatchdog) *string { return v.Model }).(pulumi.StringPtrOutput)
+}
+
+type VmLegacyWatchdogPtrOutput struct{ *pulumi.OutputState }
+
+func (VmLegacyWatchdogPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmLegacyWatchdog)(nil)).Elem()
+}
+
+func (o VmLegacyWatchdogPtrOutput) ToVmLegacyWatchdogPtrOutput() VmLegacyWatchdogPtrOutput {
+	return o
+}
+
+func (o VmLegacyWatchdogPtrOutput) ToVmLegacyWatchdogPtrOutputWithContext(ctx context.Context) VmLegacyWatchdogPtrOutput {
+	return o
+}
+
+func (o VmLegacyWatchdogPtrOutput) Elem() VmLegacyWatchdogOutput {
+	return o.ApplyT(func(v *VmLegacyWatchdog) VmLegacyWatchdog {
+		if v != nil {
+			return *v
+		}
+		var ret VmLegacyWatchdog
+		return ret
+	}).(VmLegacyWatchdogOutput)
+}
+
+// The action to perform if after activation the guest fails to poll the watchdog in time  (defaults to `none`).
+func (o VmLegacyWatchdogPtrOutput) Action() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyWatchdog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Action
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether the watchdog is enabled (defaults to `false`).
+func (o VmLegacyWatchdogPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VmLegacyWatchdog) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The watchdog type to emulate (defaults to `i6300esb`).
+func (o VmLegacyWatchdogPtrOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmLegacyWatchdog) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Model
+	}).(pulumi.StringPtrOutput)
+}
+
 type VmRng struct {
 	// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
 	MaxBytes *int `pulumi:"maxBytes"`
@@ -2332,6 +12446,266 @@ func (o VmVgaPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+type GetContainersLegacyContainer struct {
+	// The container name.
+	Name string `pulumi:"name"`
+	// The node name. All cluster nodes will be queried in case this is omitted
+	NodeName string `pulumi:"nodeName"`
+	// The status of the container.
+	Status *string `pulumi:"status"`
+	// A list of tags to filter the containers. The container must have all
+	// the tags to be included in the result.
+	Tags []string `pulumi:"tags"`
+	// Whether the container is a template.
+	Template *bool `pulumi:"template"`
+	// The container identifier.
+	VmId int `pulumi:"vmId"`
+}
+
+// GetContainersLegacyContainerInput is an input type that accepts GetContainersLegacyContainerArgs and GetContainersLegacyContainerOutput values.
+// You can construct a concrete instance of `GetContainersLegacyContainerInput` via:
+//
+//	GetContainersLegacyContainerArgs{...}
+type GetContainersLegacyContainerInput interface {
+	pulumi.Input
+
+	ToGetContainersLegacyContainerOutput() GetContainersLegacyContainerOutput
+	ToGetContainersLegacyContainerOutputWithContext(context.Context) GetContainersLegacyContainerOutput
+}
+
+type GetContainersLegacyContainerArgs struct {
+	// The container name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The node name. All cluster nodes will be queried in case this is omitted
+	NodeName pulumi.StringInput `pulumi:"nodeName"`
+	// The status of the container.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// A list of tags to filter the containers. The container must have all
+	// the tags to be included in the result.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// Whether the container is a template.
+	Template pulumi.BoolPtrInput `pulumi:"template"`
+	// The container identifier.
+	VmId pulumi.IntInput `pulumi:"vmId"`
+}
+
+func (GetContainersLegacyContainerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetContainersLegacyContainer)(nil)).Elem()
+}
+
+func (i GetContainersLegacyContainerArgs) ToGetContainersLegacyContainerOutput() GetContainersLegacyContainerOutput {
+	return i.ToGetContainersLegacyContainerOutputWithContext(context.Background())
+}
+
+func (i GetContainersLegacyContainerArgs) ToGetContainersLegacyContainerOutputWithContext(ctx context.Context) GetContainersLegacyContainerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetContainersLegacyContainerOutput)
+}
+
+// GetContainersLegacyContainerArrayInput is an input type that accepts GetContainersLegacyContainerArray and GetContainersLegacyContainerArrayOutput values.
+// You can construct a concrete instance of `GetContainersLegacyContainerArrayInput` via:
+//
+//	GetContainersLegacyContainerArray{ GetContainersLegacyContainerArgs{...} }
+type GetContainersLegacyContainerArrayInput interface {
+	pulumi.Input
+
+	ToGetContainersLegacyContainerArrayOutput() GetContainersLegacyContainerArrayOutput
+	ToGetContainersLegacyContainerArrayOutputWithContext(context.Context) GetContainersLegacyContainerArrayOutput
+}
+
+type GetContainersLegacyContainerArray []GetContainersLegacyContainerInput
+
+func (GetContainersLegacyContainerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetContainersLegacyContainer)(nil)).Elem()
+}
+
+func (i GetContainersLegacyContainerArray) ToGetContainersLegacyContainerArrayOutput() GetContainersLegacyContainerArrayOutput {
+	return i.ToGetContainersLegacyContainerArrayOutputWithContext(context.Background())
+}
+
+func (i GetContainersLegacyContainerArray) ToGetContainersLegacyContainerArrayOutputWithContext(ctx context.Context) GetContainersLegacyContainerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetContainersLegacyContainerArrayOutput)
+}
+
+type GetContainersLegacyContainerOutput struct{ *pulumi.OutputState }
+
+func (GetContainersLegacyContainerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetContainersLegacyContainer)(nil)).Elem()
+}
+
+func (o GetContainersLegacyContainerOutput) ToGetContainersLegacyContainerOutput() GetContainersLegacyContainerOutput {
+	return o
+}
+
+func (o GetContainersLegacyContainerOutput) ToGetContainersLegacyContainerOutputWithContext(ctx context.Context) GetContainersLegacyContainerOutput {
+	return o
+}
+
+// The container name.
+func (o GetContainersLegacyContainerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetContainersLegacyContainer) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The node name. All cluster nodes will be queried in case this is omitted
+func (o GetContainersLegacyContainerOutput) NodeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetContainersLegacyContainer) string { return v.NodeName }).(pulumi.StringOutput)
+}
+
+// The status of the container.
+func (o GetContainersLegacyContainerOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetContainersLegacyContainer) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// A list of tags to filter the containers. The container must have all
+// the tags to be included in the result.
+func (o GetContainersLegacyContainerOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetContainersLegacyContainer) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Whether the container is a template.
+func (o GetContainersLegacyContainerOutput) Template() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetContainersLegacyContainer) *bool { return v.Template }).(pulumi.BoolPtrOutput)
+}
+
+// The container identifier.
+func (o GetContainersLegacyContainerOutput) VmId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetContainersLegacyContainer) int { return v.VmId }).(pulumi.IntOutput)
+}
+
+type GetContainersLegacyContainerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetContainersLegacyContainerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetContainersLegacyContainer)(nil)).Elem()
+}
+
+func (o GetContainersLegacyContainerArrayOutput) ToGetContainersLegacyContainerArrayOutput() GetContainersLegacyContainerArrayOutput {
+	return o
+}
+
+func (o GetContainersLegacyContainerArrayOutput) ToGetContainersLegacyContainerArrayOutputWithContext(ctx context.Context) GetContainersLegacyContainerArrayOutput {
+	return o
+}
+
+func (o GetContainersLegacyContainerArrayOutput) Index(i pulumi.IntInput) GetContainersLegacyContainerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetContainersLegacyContainer {
+		return vs[0].([]GetContainersLegacyContainer)[vs[1].(int)]
+	}).(GetContainersLegacyContainerOutput)
+}
+
+type GetContainersLegacyFilter struct {
+	// Name of the container attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
+	Name string `pulumi:"name"`
+	// Treat values as regex patterns
+	Regex *bool `pulumi:"regex"`
+	// List of values to pass the filter. Container's attribute should match at least one value in the list.
+	Values []string `pulumi:"values"`
+}
+
+// GetContainersLegacyFilterInput is an input type that accepts GetContainersLegacyFilterArgs and GetContainersLegacyFilterOutput values.
+// You can construct a concrete instance of `GetContainersLegacyFilterInput` via:
+//
+//	GetContainersLegacyFilterArgs{...}
+type GetContainersLegacyFilterInput interface {
+	pulumi.Input
+
+	ToGetContainersLegacyFilterOutput() GetContainersLegacyFilterOutput
+	ToGetContainersLegacyFilterOutputWithContext(context.Context) GetContainersLegacyFilterOutput
+}
+
+type GetContainersLegacyFilterArgs struct {
+	// Name of the container attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
+	Name pulumi.StringInput `pulumi:"name"`
+	// Treat values as regex patterns
+	Regex pulumi.BoolPtrInput `pulumi:"regex"`
+	// List of values to pass the filter. Container's attribute should match at least one value in the list.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetContainersLegacyFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetContainersLegacyFilter)(nil)).Elem()
+}
+
+func (i GetContainersLegacyFilterArgs) ToGetContainersLegacyFilterOutput() GetContainersLegacyFilterOutput {
+	return i.ToGetContainersLegacyFilterOutputWithContext(context.Background())
+}
+
+func (i GetContainersLegacyFilterArgs) ToGetContainersLegacyFilterOutputWithContext(ctx context.Context) GetContainersLegacyFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetContainersLegacyFilterOutput)
+}
+
+// GetContainersLegacyFilterArrayInput is an input type that accepts GetContainersLegacyFilterArray and GetContainersLegacyFilterArrayOutput values.
+// You can construct a concrete instance of `GetContainersLegacyFilterArrayInput` via:
+//
+//	GetContainersLegacyFilterArray{ GetContainersLegacyFilterArgs{...} }
+type GetContainersLegacyFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetContainersLegacyFilterArrayOutput() GetContainersLegacyFilterArrayOutput
+	ToGetContainersLegacyFilterArrayOutputWithContext(context.Context) GetContainersLegacyFilterArrayOutput
+}
+
+type GetContainersLegacyFilterArray []GetContainersLegacyFilterInput
+
+func (GetContainersLegacyFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetContainersLegacyFilter)(nil)).Elem()
+}
+
+func (i GetContainersLegacyFilterArray) ToGetContainersLegacyFilterArrayOutput() GetContainersLegacyFilterArrayOutput {
+	return i.ToGetContainersLegacyFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetContainersLegacyFilterArray) ToGetContainersLegacyFilterArrayOutputWithContext(ctx context.Context) GetContainersLegacyFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetContainersLegacyFilterArrayOutput)
+}
+
+type GetContainersLegacyFilterOutput struct{ *pulumi.OutputState }
+
+func (GetContainersLegacyFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetContainersLegacyFilter)(nil)).Elem()
+}
+
+func (o GetContainersLegacyFilterOutput) ToGetContainersLegacyFilterOutput() GetContainersLegacyFilterOutput {
+	return o
+}
+
+func (o GetContainersLegacyFilterOutput) ToGetContainersLegacyFilterOutputWithContext(ctx context.Context) GetContainersLegacyFilterOutput {
+	return o
+}
+
+// Name of the container attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
+func (o GetContainersLegacyFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetContainersLegacyFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Treat values as regex patterns
+func (o GetContainersLegacyFilterOutput) Regex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetContainersLegacyFilter) *bool { return v.Regex }).(pulumi.BoolPtrOutput)
+}
+
+// List of values to pass the filter. Container's attribute should match at least one value in the list.
+func (o GetContainersLegacyFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetContainersLegacyFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetContainersLegacyFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetContainersLegacyFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetContainersLegacyFilter)(nil)).Elem()
+}
+
+func (o GetContainersLegacyFilterArrayOutput) ToGetContainersLegacyFilterArrayOutput() GetContainersLegacyFilterArrayOutput {
+	return o
+}
+
+func (o GetContainersLegacyFilterArrayOutput) ToGetContainersLegacyFilterArrayOutputWithContext(ctx context.Context) GetContainersLegacyFilterArrayOutput {
+	return o
+}
+
+func (o GetContainersLegacyFilterArrayOutput) Index(i pulumi.IntInput) GetContainersLegacyFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetContainersLegacyFilter {
+		return vs[0].([]GetContainersLegacyFilter)[vs[1].(int)]
+	}).(GetContainersLegacyFilterOutput)
 }
 
 type GetDatastoresDatastore struct {
@@ -3200,6 +13574,360 @@ func (o GetFilesFileArrayOutput) Index(i pulumi.IntInput) GetFilesFileOutput {
 	}).(GetFilesFileOutput)
 }
 
+type GetGroupLegacyAcl struct {
+	// The path.
+	Path string `pulumi:"path"`
+	// Whether to propagate to child paths.
+	Propagate bool `pulumi:"propagate"`
+	// The role identifier.
+	RoleId string `pulumi:"roleId"`
+}
+
+// GetGroupLegacyAclInput is an input type that accepts GetGroupLegacyAclArgs and GetGroupLegacyAclOutput values.
+// You can construct a concrete instance of `GetGroupLegacyAclInput` via:
+//
+//	GetGroupLegacyAclArgs{...}
+type GetGroupLegacyAclInput interface {
+	pulumi.Input
+
+	ToGetGroupLegacyAclOutput() GetGroupLegacyAclOutput
+	ToGetGroupLegacyAclOutputWithContext(context.Context) GetGroupLegacyAclOutput
+}
+
+type GetGroupLegacyAclArgs struct {
+	// The path.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Whether to propagate to child paths.
+	Propagate pulumi.BoolInput `pulumi:"propagate"`
+	// The role identifier.
+	RoleId pulumi.StringInput `pulumi:"roleId"`
+}
+
+func (GetGroupLegacyAclArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupLegacyAcl)(nil)).Elem()
+}
+
+func (i GetGroupLegacyAclArgs) ToGetGroupLegacyAclOutput() GetGroupLegacyAclOutput {
+	return i.ToGetGroupLegacyAclOutputWithContext(context.Background())
+}
+
+func (i GetGroupLegacyAclArgs) ToGetGroupLegacyAclOutputWithContext(ctx context.Context) GetGroupLegacyAclOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupLegacyAclOutput)
+}
+
+// GetGroupLegacyAclArrayInput is an input type that accepts GetGroupLegacyAclArray and GetGroupLegacyAclArrayOutput values.
+// You can construct a concrete instance of `GetGroupLegacyAclArrayInput` via:
+//
+//	GetGroupLegacyAclArray{ GetGroupLegacyAclArgs{...} }
+type GetGroupLegacyAclArrayInput interface {
+	pulumi.Input
+
+	ToGetGroupLegacyAclArrayOutput() GetGroupLegacyAclArrayOutput
+	ToGetGroupLegacyAclArrayOutputWithContext(context.Context) GetGroupLegacyAclArrayOutput
+}
+
+type GetGroupLegacyAclArray []GetGroupLegacyAclInput
+
+func (GetGroupLegacyAclArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupLegacyAcl)(nil)).Elem()
+}
+
+func (i GetGroupLegacyAclArray) ToGetGroupLegacyAclArrayOutput() GetGroupLegacyAclArrayOutput {
+	return i.ToGetGroupLegacyAclArrayOutputWithContext(context.Background())
+}
+
+func (i GetGroupLegacyAclArray) ToGetGroupLegacyAclArrayOutputWithContext(ctx context.Context) GetGroupLegacyAclArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupLegacyAclArrayOutput)
+}
+
+type GetGroupLegacyAclOutput struct{ *pulumi.OutputState }
+
+func (GetGroupLegacyAclOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupLegacyAcl)(nil)).Elem()
+}
+
+func (o GetGroupLegacyAclOutput) ToGetGroupLegacyAclOutput() GetGroupLegacyAclOutput {
+	return o
+}
+
+func (o GetGroupLegacyAclOutput) ToGetGroupLegacyAclOutputWithContext(ctx context.Context) GetGroupLegacyAclOutput {
+	return o
+}
+
+// The path.
+func (o GetGroupLegacyAclOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupLegacyAcl) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Whether to propagate to child paths.
+func (o GetGroupLegacyAclOutput) Propagate() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupLegacyAcl) bool { return v.Propagate }).(pulumi.BoolOutput)
+}
+
+// The role identifier.
+func (o GetGroupLegacyAclOutput) RoleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupLegacyAcl) string { return v.RoleId }).(pulumi.StringOutput)
+}
+
+type GetGroupLegacyAclArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGroupLegacyAclArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupLegacyAcl)(nil)).Elem()
+}
+
+func (o GetGroupLegacyAclArrayOutput) ToGetGroupLegacyAclArrayOutput() GetGroupLegacyAclArrayOutput {
+	return o
+}
+
+func (o GetGroupLegacyAclArrayOutput) ToGetGroupLegacyAclArrayOutputWithContext(ctx context.Context) GetGroupLegacyAclArrayOutput {
+	return o
+}
+
+func (o GetGroupLegacyAclArrayOutput) Index(i pulumi.IntInput) GetGroupLegacyAclOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupLegacyAcl {
+		return vs[0].([]GetGroupLegacyAcl)[vs[1].(int)]
+	}).(GetGroupLegacyAclOutput)
+}
+
+type GetHostsLegacyEntry struct {
+	// The address
+	Address string `pulumi:"address"`
+	// The hostnames associated with each of the IP addresses.
+	Hostnames []string `pulumi:"hostnames"`
+}
+
+// GetHostsLegacyEntryInput is an input type that accepts GetHostsLegacyEntryArgs and GetHostsLegacyEntryOutput values.
+// You can construct a concrete instance of `GetHostsLegacyEntryInput` via:
+//
+//	GetHostsLegacyEntryArgs{...}
+type GetHostsLegacyEntryInput interface {
+	pulumi.Input
+
+	ToGetHostsLegacyEntryOutput() GetHostsLegacyEntryOutput
+	ToGetHostsLegacyEntryOutputWithContext(context.Context) GetHostsLegacyEntryOutput
+}
+
+type GetHostsLegacyEntryArgs struct {
+	// The address
+	Address pulumi.StringInput `pulumi:"address"`
+	// The hostnames associated with each of the IP addresses.
+	Hostnames pulumi.StringArrayInput `pulumi:"hostnames"`
+}
+
+func (GetHostsLegacyEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostsLegacyEntry)(nil)).Elem()
+}
+
+func (i GetHostsLegacyEntryArgs) ToGetHostsLegacyEntryOutput() GetHostsLegacyEntryOutput {
+	return i.ToGetHostsLegacyEntryOutputWithContext(context.Background())
+}
+
+func (i GetHostsLegacyEntryArgs) ToGetHostsLegacyEntryOutputWithContext(ctx context.Context) GetHostsLegacyEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostsLegacyEntryOutput)
+}
+
+// GetHostsLegacyEntryArrayInput is an input type that accepts GetHostsLegacyEntryArray and GetHostsLegacyEntryArrayOutput values.
+// You can construct a concrete instance of `GetHostsLegacyEntryArrayInput` via:
+//
+//	GetHostsLegacyEntryArray{ GetHostsLegacyEntryArgs{...} }
+type GetHostsLegacyEntryArrayInput interface {
+	pulumi.Input
+
+	ToGetHostsLegacyEntryArrayOutput() GetHostsLegacyEntryArrayOutput
+	ToGetHostsLegacyEntryArrayOutputWithContext(context.Context) GetHostsLegacyEntryArrayOutput
+}
+
+type GetHostsLegacyEntryArray []GetHostsLegacyEntryInput
+
+func (GetHostsLegacyEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostsLegacyEntry)(nil)).Elem()
+}
+
+func (i GetHostsLegacyEntryArray) ToGetHostsLegacyEntryArrayOutput() GetHostsLegacyEntryArrayOutput {
+	return i.ToGetHostsLegacyEntryArrayOutputWithContext(context.Background())
+}
+
+func (i GetHostsLegacyEntryArray) ToGetHostsLegacyEntryArrayOutputWithContext(ctx context.Context) GetHostsLegacyEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetHostsLegacyEntryArrayOutput)
+}
+
+type GetHostsLegacyEntryOutput struct{ *pulumi.OutputState }
+
+func (GetHostsLegacyEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetHostsLegacyEntry)(nil)).Elem()
+}
+
+func (o GetHostsLegacyEntryOutput) ToGetHostsLegacyEntryOutput() GetHostsLegacyEntryOutput {
+	return o
+}
+
+func (o GetHostsLegacyEntryOutput) ToGetHostsLegacyEntryOutputWithContext(ctx context.Context) GetHostsLegacyEntryOutput {
+	return o
+}
+
+// The address
+func (o GetHostsLegacyEntryOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v GetHostsLegacyEntry) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// The hostnames associated with each of the IP addresses.
+func (o GetHostsLegacyEntryOutput) Hostnames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetHostsLegacyEntry) []string { return v.Hostnames }).(pulumi.StringArrayOutput)
+}
+
+type GetHostsLegacyEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetHostsLegacyEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetHostsLegacyEntry)(nil)).Elem()
+}
+
+func (o GetHostsLegacyEntryArrayOutput) ToGetHostsLegacyEntryArrayOutput() GetHostsLegacyEntryArrayOutput {
+	return o
+}
+
+func (o GetHostsLegacyEntryArrayOutput) ToGetHostsLegacyEntryArrayOutputWithContext(ctx context.Context) GetHostsLegacyEntryArrayOutput {
+	return o
+}
+
+func (o GetHostsLegacyEntryArrayOutput) Index(i pulumi.IntInput) GetHostsLegacyEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetHostsLegacyEntry {
+		return vs[0].([]GetHostsLegacyEntry)[vs[1].(int)]
+	}).(GetHostsLegacyEntryOutput)
+}
+
+type GetPoolLegacyMember struct {
+	// The datastore identifier.
+	DatastoreId string `pulumi:"datastoreId"`
+	// The member identifier.
+	Id string `pulumi:"id"`
+	// The node name.
+	NodeName string `pulumi:"nodeName"`
+	// The member type.
+	Type string `pulumi:"type"`
+	// The virtual machine identifier.
+	VmId int `pulumi:"vmId"`
+}
+
+// GetPoolLegacyMemberInput is an input type that accepts GetPoolLegacyMemberArgs and GetPoolLegacyMemberOutput values.
+// You can construct a concrete instance of `GetPoolLegacyMemberInput` via:
+//
+//	GetPoolLegacyMemberArgs{...}
+type GetPoolLegacyMemberInput interface {
+	pulumi.Input
+
+	ToGetPoolLegacyMemberOutput() GetPoolLegacyMemberOutput
+	ToGetPoolLegacyMemberOutputWithContext(context.Context) GetPoolLegacyMemberOutput
+}
+
+type GetPoolLegacyMemberArgs struct {
+	// The datastore identifier.
+	DatastoreId pulumi.StringInput `pulumi:"datastoreId"`
+	// The member identifier.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The node name.
+	NodeName pulumi.StringInput `pulumi:"nodeName"`
+	// The member type.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The virtual machine identifier.
+	VmId pulumi.IntInput `pulumi:"vmId"`
+}
+
+func (GetPoolLegacyMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPoolLegacyMember)(nil)).Elem()
+}
+
+func (i GetPoolLegacyMemberArgs) ToGetPoolLegacyMemberOutput() GetPoolLegacyMemberOutput {
+	return i.ToGetPoolLegacyMemberOutputWithContext(context.Background())
+}
+
+func (i GetPoolLegacyMemberArgs) ToGetPoolLegacyMemberOutputWithContext(ctx context.Context) GetPoolLegacyMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPoolLegacyMemberOutput)
+}
+
+// GetPoolLegacyMemberArrayInput is an input type that accepts GetPoolLegacyMemberArray and GetPoolLegacyMemberArrayOutput values.
+// You can construct a concrete instance of `GetPoolLegacyMemberArrayInput` via:
+//
+//	GetPoolLegacyMemberArray{ GetPoolLegacyMemberArgs{...} }
+type GetPoolLegacyMemberArrayInput interface {
+	pulumi.Input
+
+	ToGetPoolLegacyMemberArrayOutput() GetPoolLegacyMemberArrayOutput
+	ToGetPoolLegacyMemberArrayOutputWithContext(context.Context) GetPoolLegacyMemberArrayOutput
+}
+
+type GetPoolLegacyMemberArray []GetPoolLegacyMemberInput
+
+func (GetPoolLegacyMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPoolLegacyMember)(nil)).Elem()
+}
+
+func (i GetPoolLegacyMemberArray) ToGetPoolLegacyMemberArrayOutput() GetPoolLegacyMemberArrayOutput {
+	return i.ToGetPoolLegacyMemberArrayOutputWithContext(context.Background())
+}
+
+func (i GetPoolLegacyMemberArray) ToGetPoolLegacyMemberArrayOutputWithContext(ctx context.Context) GetPoolLegacyMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPoolLegacyMemberArrayOutput)
+}
+
+type GetPoolLegacyMemberOutput struct{ *pulumi.OutputState }
+
+func (GetPoolLegacyMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPoolLegacyMember)(nil)).Elem()
+}
+
+func (o GetPoolLegacyMemberOutput) ToGetPoolLegacyMemberOutput() GetPoolLegacyMemberOutput {
+	return o
+}
+
+func (o GetPoolLegacyMemberOutput) ToGetPoolLegacyMemberOutputWithContext(ctx context.Context) GetPoolLegacyMemberOutput {
+	return o
+}
+
+// The datastore identifier.
+func (o GetPoolLegacyMemberOutput) DatastoreId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoolLegacyMember) string { return v.DatastoreId }).(pulumi.StringOutput)
+}
+
+// The member identifier.
+func (o GetPoolLegacyMemberOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoolLegacyMember) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The node name.
+func (o GetPoolLegacyMemberOutput) NodeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoolLegacyMember) string { return v.NodeName }).(pulumi.StringOutput)
+}
+
+// The member type.
+func (o GetPoolLegacyMemberOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPoolLegacyMember) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The virtual machine identifier.
+func (o GetPoolLegacyMemberOutput) VmId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPoolLegacyMember) int { return v.VmId }).(pulumi.IntOutput)
+}
+
+type GetPoolLegacyMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPoolLegacyMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPoolLegacyMember)(nil)).Elem()
+}
+
+func (o GetPoolLegacyMemberArrayOutput) ToGetPoolLegacyMemberArrayOutput() GetPoolLegacyMemberArrayOutput {
+	return o
+}
+
+func (o GetPoolLegacyMemberArrayOutput) ToGetPoolLegacyMemberArrayOutputWithContext(ctx context.Context) GetPoolLegacyMemberArrayOutput {
+	return o
+}
+
+func (o GetPoolLegacyMemberArrayOutput) Index(i pulumi.IntInput) GetPoolLegacyMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPoolLegacyMember {
+		return vs[0].([]GetPoolLegacyMember)[vs[1].(int)]
+	}).(GetPoolLegacyMemberOutput)
+}
+
 type GetReplicationsLegacyReplication struct {
 	Comment   string  `pulumi:"comment"`
 	Disable   bool    `pulumi:"disable"`
@@ -3506,6 +14234,121 @@ func (o GetReplicationsReplicationArrayOutput) Index(i pulumi.IntInput) GetRepli
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReplicationsReplication {
 		return vs[0].([]GetReplicationsReplication)[vs[1].(int)]
 	}).(GetReplicationsReplicationOutput)
+}
+
+type GetUserLegacyAcl struct {
+	// The path.
+	Path string `pulumi:"path"`
+	// Whether to propagate to child paths.
+	Propagate bool `pulumi:"propagate"`
+	// The role identifier.
+	RoleId string `pulumi:"roleId"`
+}
+
+// GetUserLegacyAclInput is an input type that accepts GetUserLegacyAclArgs and GetUserLegacyAclOutput values.
+// You can construct a concrete instance of `GetUserLegacyAclInput` via:
+//
+//	GetUserLegacyAclArgs{...}
+type GetUserLegacyAclInput interface {
+	pulumi.Input
+
+	ToGetUserLegacyAclOutput() GetUserLegacyAclOutput
+	ToGetUserLegacyAclOutputWithContext(context.Context) GetUserLegacyAclOutput
+}
+
+type GetUserLegacyAclArgs struct {
+	// The path.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Whether to propagate to child paths.
+	Propagate pulumi.BoolInput `pulumi:"propagate"`
+	// The role identifier.
+	RoleId pulumi.StringInput `pulumi:"roleId"`
+}
+
+func (GetUserLegacyAclArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserLegacyAcl)(nil)).Elem()
+}
+
+func (i GetUserLegacyAclArgs) ToGetUserLegacyAclOutput() GetUserLegacyAclOutput {
+	return i.ToGetUserLegacyAclOutputWithContext(context.Background())
+}
+
+func (i GetUserLegacyAclArgs) ToGetUserLegacyAclOutputWithContext(ctx context.Context) GetUserLegacyAclOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserLegacyAclOutput)
+}
+
+// GetUserLegacyAclArrayInput is an input type that accepts GetUserLegacyAclArray and GetUserLegacyAclArrayOutput values.
+// You can construct a concrete instance of `GetUserLegacyAclArrayInput` via:
+//
+//	GetUserLegacyAclArray{ GetUserLegacyAclArgs{...} }
+type GetUserLegacyAclArrayInput interface {
+	pulumi.Input
+
+	ToGetUserLegacyAclArrayOutput() GetUserLegacyAclArrayOutput
+	ToGetUserLegacyAclArrayOutputWithContext(context.Context) GetUserLegacyAclArrayOutput
+}
+
+type GetUserLegacyAclArray []GetUserLegacyAclInput
+
+func (GetUserLegacyAclArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserLegacyAcl)(nil)).Elem()
+}
+
+func (i GetUserLegacyAclArray) ToGetUserLegacyAclArrayOutput() GetUserLegacyAclArrayOutput {
+	return i.ToGetUserLegacyAclArrayOutputWithContext(context.Background())
+}
+
+func (i GetUserLegacyAclArray) ToGetUserLegacyAclArrayOutputWithContext(ctx context.Context) GetUserLegacyAclArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUserLegacyAclArrayOutput)
+}
+
+type GetUserLegacyAclOutput struct{ *pulumi.OutputState }
+
+func (GetUserLegacyAclOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUserLegacyAcl)(nil)).Elem()
+}
+
+func (o GetUserLegacyAclOutput) ToGetUserLegacyAclOutput() GetUserLegacyAclOutput {
+	return o
+}
+
+func (o GetUserLegacyAclOutput) ToGetUserLegacyAclOutputWithContext(ctx context.Context) GetUserLegacyAclOutput {
+	return o
+}
+
+// The path.
+func (o GetUserLegacyAclOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserLegacyAcl) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Whether to propagate to child paths.
+func (o GetUserLegacyAclOutput) Propagate() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetUserLegacyAcl) bool { return v.Propagate }).(pulumi.BoolOutput)
+}
+
+// The role identifier.
+func (o GetUserLegacyAclOutput) RoleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUserLegacyAcl) string { return v.RoleId }).(pulumi.StringOutput)
+}
+
+type GetUserLegacyAclArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUserLegacyAclArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUserLegacyAcl)(nil)).Elem()
+}
+
+func (o GetUserLegacyAclArrayOutput) ToGetUserLegacyAclArrayOutput() GetUserLegacyAclArrayOutput {
+	return o
+}
+
+func (o GetUserLegacyAclArrayOutput) ToGetUserLegacyAclArrayOutputWithContext(ctx context.Context) GetUserLegacyAclArrayOutput {
+	return o
+}
+
+func (o GetUserLegacyAclArrayOutput) Index(i pulumi.IntInput) GetUserLegacyAclOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUserLegacyAcl {
+		return vs[0].([]GetUserLegacyAcl)[vs[1].(int)]
+	}).(GetUserLegacyAclOutput)
 }
 
 type GetVm2LegacyCpu struct {
@@ -5098,11 +15941,321 @@ func (o GetVmVgaPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetVmsLegacyFilter struct {
+	// Name of the VM attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
+	Name string `pulumi:"name"`
+	// Treat values as regex patterns
+	Regex *bool `pulumi:"regex"`
+	// List of values to pass the filter. VM's attribute should match at least one value in the list.
+	Values []string `pulumi:"values"`
+}
+
+// GetVmsLegacyFilterInput is an input type that accepts GetVmsLegacyFilterArgs and GetVmsLegacyFilterOutput values.
+// You can construct a concrete instance of `GetVmsLegacyFilterInput` via:
+//
+//	GetVmsLegacyFilterArgs{...}
+type GetVmsLegacyFilterInput interface {
+	pulumi.Input
+
+	ToGetVmsLegacyFilterOutput() GetVmsLegacyFilterOutput
+	ToGetVmsLegacyFilterOutputWithContext(context.Context) GetVmsLegacyFilterOutput
+}
+
+type GetVmsLegacyFilterArgs struct {
+	// Name of the VM attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
+	Name pulumi.StringInput `pulumi:"name"`
+	// Treat values as regex patterns
+	Regex pulumi.BoolPtrInput `pulumi:"regex"`
+	// List of values to pass the filter. VM's attribute should match at least one value in the list.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetVmsLegacyFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVmsLegacyFilter)(nil)).Elem()
+}
+
+func (i GetVmsLegacyFilterArgs) ToGetVmsLegacyFilterOutput() GetVmsLegacyFilterOutput {
+	return i.ToGetVmsLegacyFilterOutputWithContext(context.Background())
+}
+
+func (i GetVmsLegacyFilterArgs) ToGetVmsLegacyFilterOutputWithContext(ctx context.Context) GetVmsLegacyFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVmsLegacyFilterOutput)
+}
+
+// GetVmsLegacyFilterArrayInput is an input type that accepts GetVmsLegacyFilterArray and GetVmsLegacyFilterArrayOutput values.
+// You can construct a concrete instance of `GetVmsLegacyFilterArrayInput` via:
+//
+//	GetVmsLegacyFilterArray{ GetVmsLegacyFilterArgs{...} }
+type GetVmsLegacyFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetVmsLegacyFilterArrayOutput() GetVmsLegacyFilterArrayOutput
+	ToGetVmsLegacyFilterArrayOutputWithContext(context.Context) GetVmsLegacyFilterArrayOutput
+}
+
+type GetVmsLegacyFilterArray []GetVmsLegacyFilterInput
+
+func (GetVmsLegacyFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVmsLegacyFilter)(nil)).Elem()
+}
+
+func (i GetVmsLegacyFilterArray) ToGetVmsLegacyFilterArrayOutput() GetVmsLegacyFilterArrayOutput {
+	return i.ToGetVmsLegacyFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetVmsLegacyFilterArray) ToGetVmsLegacyFilterArrayOutputWithContext(ctx context.Context) GetVmsLegacyFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVmsLegacyFilterArrayOutput)
+}
+
+type GetVmsLegacyFilterOutput struct{ *pulumi.OutputState }
+
+func (GetVmsLegacyFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVmsLegacyFilter)(nil)).Elem()
+}
+
+func (o GetVmsLegacyFilterOutput) ToGetVmsLegacyFilterOutput() GetVmsLegacyFilterOutput {
+	return o
+}
+
+func (o GetVmsLegacyFilterOutput) ToGetVmsLegacyFilterOutputWithContext(ctx context.Context) GetVmsLegacyFilterOutput {
+	return o
+}
+
+// Name of the VM attribute to filter on. One of [`name`, `template`, `status`, `nodeName`]
+func (o GetVmsLegacyFilterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVmsLegacyFilter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Treat values as regex patterns
+func (o GetVmsLegacyFilterOutput) Regex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetVmsLegacyFilter) *bool { return v.Regex }).(pulumi.BoolPtrOutput)
+}
+
+// List of values to pass the filter. VM's attribute should match at least one value in the list.
+func (o GetVmsLegacyFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVmsLegacyFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetVmsLegacyFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVmsLegacyFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVmsLegacyFilter)(nil)).Elem()
+}
+
+func (o GetVmsLegacyFilterArrayOutput) ToGetVmsLegacyFilterArrayOutput() GetVmsLegacyFilterArrayOutput {
+	return o
+}
+
+func (o GetVmsLegacyFilterArrayOutput) ToGetVmsLegacyFilterArrayOutputWithContext(ctx context.Context) GetVmsLegacyFilterArrayOutput {
+	return o
+}
+
+func (o GetVmsLegacyFilterArrayOutput) Index(i pulumi.IntInput) GetVmsLegacyFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVmsLegacyFilter {
+		return vs[0].([]GetVmsLegacyFilter)[vs[1].(int)]
+	}).(GetVmsLegacyFilterOutput)
+}
+
+type GetVmsLegacyVm struct {
+	// The virtual machine name.
+	Name string `pulumi:"name"`
+	// The node name. All cluster nodes will be queried in case this is omitted
+	NodeName string `pulumi:"nodeName"`
+	// The status of the VM.
+	Status *string `pulumi:"status"`
+	// A list of tags to filter the VMs. The VM must have all
+	// the tags to be included in the result.
+	Tags []string `pulumi:"tags"`
+	// Whether the VM is a template.
+	Template *bool `pulumi:"template"`
+	// The VM identifier.
+	VmId int `pulumi:"vmId"`
+}
+
+// GetVmsLegacyVmInput is an input type that accepts GetVmsLegacyVmArgs and GetVmsLegacyVmOutput values.
+// You can construct a concrete instance of `GetVmsLegacyVmInput` via:
+//
+//	GetVmsLegacyVmArgs{...}
+type GetVmsLegacyVmInput interface {
+	pulumi.Input
+
+	ToGetVmsLegacyVmOutput() GetVmsLegacyVmOutput
+	ToGetVmsLegacyVmOutputWithContext(context.Context) GetVmsLegacyVmOutput
+}
+
+type GetVmsLegacyVmArgs struct {
+	// The virtual machine name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The node name. All cluster nodes will be queried in case this is omitted
+	NodeName pulumi.StringInput `pulumi:"nodeName"`
+	// The status of the VM.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// A list of tags to filter the VMs. The VM must have all
+	// the tags to be included in the result.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// Whether the VM is a template.
+	Template pulumi.BoolPtrInput `pulumi:"template"`
+	// The VM identifier.
+	VmId pulumi.IntInput `pulumi:"vmId"`
+}
+
+func (GetVmsLegacyVmArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVmsLegacyVm)(nil)).Elem()
+}
+
+func (i GetVmsLegacyVmArgs) ToGetVmsLegacyVmOutput() GetVmsLegacyVmOutput {
+	return i.ToGetVmsLegacyVmOutputWithContext(context.Background())
+}
+
+func (i GetVmsLegacyVmArgs) ToGetVmsLegacyVmOutputWithContext(ctx context.Context) GetVmsLegacyVmOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVmsLegacyVmOutput)
+}
+
+// GetVmsLegacyVmArrayInput is an input type that accepts GetVmsLegacyVmArray and GetVmsLegacyVmArrayOutput values.
+// You can construct a concrete instance of `GetVmsLegacyVmArrayInput` via:
+//
+//	GetVmsLegacyVmArray{ GetVmsLegacyVmArgs{...} }
+type GetVmsLegacyVmArrayInput interface {
+	pulumi.Input
+
+	ToGetVmsLegacyVmArrayOutput() GetVmsLegacyVmArrayOutput
+	ToGetVmsLegacyVmArrayOutputWithContext(context.Context) GetVmsLegacyVmArrayOutput
+}
+
+type GetVmsLegacyVmArray []GetVmsLegacyVmInput
+
+func (GetVmsLegacyVmArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVmsLegacyVm)(nil)).Elem()
+}
+
+func (i GetVmsLegacyVmArray) ToGetVmsLegacyVmArrayOutput() GetVmsLegacyVmArrayOutput {
+	return i.ToGetVmsLegacyVmArrayOutputWithContext(context.Background())
+}
+
+func (i GetVmsLegacyVmArray) ToGetVmsLegacyVmArrayOutputWithContext(ctx context.Context) GetVmsLegacyVmArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVmsLegacyVmArrayOutput)
+}
+
+type GetVmsLegacyVmOutput struct{ *pulumi.OutputState }
+
+func (GetVmsLegacyVmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVmsLegacyVm)(nil)).Elem()
+}
+
+func (o GetVmsLegacyVmOutput) ToGetVmsLegacyVmOutput() GetVmsLegacyVmOutput {
+	return o
+}
+
+func (o GetVmsLegacyVmOutput) ToGetVmsLegacyVmOutputWithContext(ctx context.Context) GetVmsLegacyVmOutput {
+	return o
+}
+
+// The virtual machine name.
+func (o GetVmsLegacyVmOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVmsLegacyVm) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The node name. All cluster nodes will be queried in case this is omitted
+func (o GetVmsLegacyVmOutput) NodeName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVmsLegacyVm) string { return v.NodeName }).(pulumi.StringOutput)
+}
+
+// The status of the VM.
+func (o GetVmsLegacyVmOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVmsLegacyVm) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// A list of tags to filter the VMs. The VM must have all
+// the tags to be included in the result.
+func (o GetVmsLegacyVmOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVmsLegacyVm) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Whether the VM is a template.
+func (o GetVmsLegacyVmOutput) Template() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetVmsLegacyVm) *bool { return v.Template }).(pulumi.BoolPtrOutput)
+}
+
+// The VM identifier.
+func (o GetVmsLegacyVmOutput) VmId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVmsLegacyVm) int { return v.VmId }).(pulumi.IntOutput)
+}
+
+type GetVmsLegacyVmArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVmsLegacyVmArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVmsLegacyVm)(nil)).Elem()
+}
+
+func (o GetVmsLegacyVmArrayOutput) ToGetVmsLegacyVmArrayOutput() GetVmsLegacyVmArrayOutput {
+	return o
+}
+
+func (o GetVmsLegacyVmArrayOutput) ToGetVmsLegacyVmArrayOutputWithContext(ctx context.Context) GetVmsLegacyVmArrayOutput {
+	return o
+}
+
+func (o GetVmsLegacyVmArrayOutput) Index(i pulumi.IntInput) GetVmsLegacyVmOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVmsLegacyVm {
+		return vs[0].([]GetVmsLegacyVm)[vs[1].(int)]
+	}).(GetVmsLegacyVmOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyCloneInput)(nil)).Elem(), ContainerLegacyCloneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyClonePtrInput)(nil)).Elem(), ContainerLegacyCloneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyConsoleInput)(nil)).Elem(), ContainerLegacyConsoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyConsolePtrInput)(nil)).Elem(), ContainerLegacyConsoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyCpuInput)(nil)).Elem(), ContainerLegacyCpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyCpuPtrInput)(nil)).Elem(), ContainerLegacyCpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyDevicePassthroughInput)(nil)).Elem(), ContainerLegacyDevicePassthroughArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyDevicePassthroughArrayInput)(nil)).Elem(), ContainerLegacyDevicePassthroughArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyDiskInput)(nil)).Elem(), ContainerLegacyDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyDiskPtrInput)(nil)).Elem(), ContainerLegacyDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyFeaturesInput)(nil)).Elem(), ContainerLegacyFeaturesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyFeaturesPtrInput)(nil)).Elem(), ContainerLegacyFeaturesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyIdmapInput)(nil)).Elem(), ContainerLegacyIdmapArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyIdmapArrayInput)(nil)).Elem(), ContainerLegacyIdmapArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyInitializationInput)(nil)).Elem(), ContainerLegacyInitializationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyInitializationPtrInput)(nil)).Elem(), ContainerLegacyInitializationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyInitializationDnsInput)(nil)).Elem(), ContainerLegacyInitializationDnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyInitializationDnsPtrInput)(nil)).Elem(), ContainerLegacyInitializationDnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyInitializationIpConfigInput)(nil)).Elem(), ContainerLegacyInitializationIpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyInitializationIpConfigArrayInput)(nil)).Elem(), ContainerLegacyInitializationIpConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyInitializationIpConfigIpv4Input)(nil)).Elem(), ContainerLegacyInitializationIpConfigIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyInitializationIpConfigIpv4PtrInput)(nil)).Elem(), ContainerLegacyInitializationIpConfigIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyInitializationIpConfigIpv6Input)(nil)).Elem(), ContainerLegacyInitializationIpConfigIpv6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyInitializationIpConfigIpv6PtrInput)(nil)).Elem(), ContainerLegacyInitializationIpConfigIpv6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyInitializationUserAccountInput)(nil)).Elem(), ContainerLegacyInitializationUserAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyInitializationUserAccountPtrInput)(nil)).Elem(), ContainerLegacyInitializationUserAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyMemoryInput)(nil)).Elem(), ContainerLegacyMemoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyMemoryPtrInput)(nil)).Elem(), ContainerLegacyMemoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyMountPointInput)(nil)).Elem(), ContainerLegacyMountPointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyMountPointArrayInput)(nil)).Elem(), ContainerLegacyMountPointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyNetworkInterfaceInput)(nil)).Elem(), ContainerLegacyNetworkInterfaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyNetworkInterfaceArrayInput)(nil)).Elem(), ContainerLegacyNetworkInterfaceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyOperatingSystemInput)(nil)).Elem(), ContainerLegacyOperatingSystemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyOperatingSystemPtrInput)(nil)).Elem(), ContainerLegacyOperatingSystemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyStartupInput)(nil)).Elem(), ContainerLegacyStartupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyStartupPtrInput)(nil)).Elem(), ContainerLegacyStartupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyWaitForIpInput)(nil)).Elem(), ContainerLegacyWaitForIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ContainerLegacyWaitForIpPtrInput)(nil)).Elem(), ContainerLegacyWaitForIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileLegacySourceFileInput)(nil)).Elem(), FileLegacySourceFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileLegacySourceFilePtrInput)(nil)).Elem(), FileLegacySourceFileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileLegacySourceRawInput)(nil)).Elem(), FileLegacySourceRawArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FileLegacySourceRawPtrInput)(nil)).Elem(), FileLegacySourceRawArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupLegacyAclInput)(nil)).Elem(), GroupLegacyAclArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupLegacyAclArrayInput)(nil)).Elem(), GroupLegacyAclArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostsLegacyEntryInput)(nil)).Elem(), HostsLegacyEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HostsLegacyEntryArrayInput)(nil)).Elem(), HostsLegacyEntryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PoolLegacyMemberInput)(nil)).Elem(), PoolLegacyMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PoolLegacyMemberArrayInput)(nil)).Elem(), PoolLegacyMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSshInput)(nil)).Elem(), ProviderSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSshPtrInput)(nil)).Elem(), ProviderSshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSshNodeInput)(nil)).Elem(), ProviderSshNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderSshNodeArrayInput)(nil)).Elem(), ProviderSshNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserLegacyAclInput)(nil)).Elem(), UserLegacyAclArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserLegacyAclArrayInput)(nil)).Elem(), UserLegacyAclArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Vm2LegacyCdromInput)(nil)).Elem(), Vm2LegacyCdromArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Vm2LegacyCdromMapInput)(nil)).Elem(), Vm2LegacyCdromMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Vm2LegacyCpuInput)(nil)).Elem(), Vm2LegacyCpuArgs{})
@@ -5117,12 +16270,76 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VmCdromMapInput)(nil)).Elem(), VmCdromMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmCpuInput)(nil)).Elem(), VmCpuArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmCpuPtrInput)(nil)).Elem(), VmCpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyAgentInput)(nil)).Elem(), VmLegacyAgentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyAgentPtrInput)(nil)).Elem(), VmLegacyAgentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyAgentWaitForIpInput)(nil)).Elem(), VmLegacyAgentWaitForIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyAgentWaitForIpPtrInput)(nil)).Elem(), VmLegacyAgentWaitForIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyAmdSevInput)(nil)).Elem(), VmLegacyAmdSevArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyAmdSevPtrInput)(nil)).Elem(), VmLegacyAmdSevArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyAudioDeviceInput)(nil)).Elem(), VmLegacyAudioDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyAudioDevicePtrInput)(nil)).Elem(), VmLegacyAudioDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyCdromInput)(nil)).Elem(), VmLegacyCdromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyCdromPtrInput)(nil)).Elem(), VmLegacyCdromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyCloneInput)(nil)).Elem(), VmLegacyCloneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyClonePtrInput)(nil)).Elem(), VmLegacyCloneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyCpuInput)(nil)).Elem(), VmLegacyCpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyCpuPtrInput)(nil)).Elem(), VmLegacyCpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyDiskInput)(nil)).Elem(), VmLegacyDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyDiskArrayInput)(nil)).Elem(), VmLegacyDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyDiskSpeedInput)(nil)).Elem(), VmLegacyDiskSpeedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyDiskSpeedPtrInput)(nil)).Elem(), VmLegacyDiskSpeedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyEfiDiskInput)(nil)).Elem(), VmLegacyEfiDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyEfiDiskPtrInput)(nil)).Elem(), VmLegacyEfiDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyHostpciInput)(nil)).Elem(), VmLegacyHostpciArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyHostpciArrayInput)(nil)).Elem(), VmLegacyHostpciArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyInitializationInput)(nil)).Elem(), VmLegacyInitializationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyInitializationPtrInput)(nil)).Elem(), VmLegacyInitializationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyInitializationDnsInput)(nil)).Elem(), VmLegacyInitializationDnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyInitializationDnsPtrInput)(nil)).Elem(), VmLegacyInitializationDnsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyInitializationIpConfigInput)(nil)).Elem(), VmLegacyInitializationIpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyInitializationIpConfigArrayInput)(nil)).Elem(), VmLegacyInitializationIpConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyInitializationIpConfigIpv4Input)(nil)).Elem(), VmLegacyInitializationIpConfigIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyInitializationIpConfigIpv4PtrInput)(nil)).Elem(), VmLegacyInitializationIpConfigIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyInitializationIpConfigIpv6Input)(nil)).Elem(), VmLegacyInitializationIpConfigIpv6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyInitializationIpConfigIpv6PtrInput)(nil)).Elem(), VmLegacyInitializationIpConfigIpv6Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyInitializationUserAccountInput)(nil)).Elem(), VmLegacyInitializationUserAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyInitializationUserAccountPtrInput)(nil)).Elem(), VmLegacyInitializationUserAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyMemoryInput)(nil)).Elem(), VmLegacyMemoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyMemoryPtrInput)(nil)).Elem(), VmLegacyMemoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyNetworkDeviceInput)(nil)).Elem(), VmLegacyNetworkDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyNetworkDeviceArrayInput)(nil)).Elem(), VmLegacyNetworkDeviceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyNumaInput)(nil)).Elem(), VmLegacyNumaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyNumaArrayInput)(nil)).Elem(), VmLegacyNumaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyOperatingSystemInput)(nil)).Elem(), VmLegacyOperatingSystemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyOperatingSystemPtrInput)(nil)).Elem(), VmLegacyOperatingSystemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyRngInput)(nil)).Elem(), VmLegacyRngArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyRngArrayInput)(nil)).Elem(), VmLegacyRngArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacySerialDeviceInput)(nil)).Elem(), VmLegacySerialDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacySerialDeviceArrayInput)(nil)).Elem(), VmLegacySerialDeviceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacySmbiosInput)(nil)).Elem(), VmLegacySmbiosArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacySmbiosPtrInput)(nil)).Elem(), VmLegacySmbiosArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyStartupInput)(nil)).Elem(), VmLegacyStartupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyStartupPtrInput)(nil)).Elem(), VmLegacyStartupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyTpmStateInput)(nil)).Elem(), VmLegacyTpmStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyTpmStatePtrInput)(nil)).Elem(), VmLegacyTpmStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyUsbInput)(nil)).Elem(), VmLegacyUsbArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyUsbArrayInput)(nil)).Elem(), VmLegacyUsbArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyVgaInput)(nil)).Elem(), VmLegacyVgaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyVgaPtrInput)(nil)).Elem(), VmLegacyVgaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyVirtiofInput)(nil)).Elem(), VmLegacyVirtiofArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyVirtiofArrayInput)(nil)).Elem(), VmLegacyVirtiofArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyWatchdogInput)(nil)).Elem(), VmLegacyWatchdogArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmLegacyWatchdogPtrInput)(nil)).Elem(), VmLegacyWatchdogArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmRngInput)(nil)).Elem(), VmRngArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmRngPtrInput)(nil)).Elem(), VmRngArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmTimeoutsInput)(nil)).Elem(), VmTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmTimeoutsPtrInput)(nil)).Elem(), VmTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmVgaInput)(nil)).Elem(), VmVgaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmVgaPtrInput)(nil)).Elem(), VmVgaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainersLegacyContainerInput)(nil)).Elem(), GetContainersLegacyContainerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainersLegacyContainerArrayInput)(nil)).Elem(), GetContainersLegacyContainerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainersLegacyFilterInput)(nil)).Elem(), GetContainersLegacyFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetContainersLegacyFilterArrayInput)(nil)).Elem(), GetContainersLegacyFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatastoresDatastoreInput)(nil)).Elem(), GetDatastoresDatastoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatastoresDatastoreArrayInput)(nil)).Elem(), GetDatastoresDatastoreArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatastoresFiltersInput)(nil)).Elem(), GetDatastoresFiltersArgs{})
@@ -5133,10 +16350,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatastoresLegacyFiltersPtrInput)(nil)).Elem(), GetDatastoresLegacyFiltersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFilesFileInput)(nil)).Elem(), GetFilesFileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetFilesFileArrayInput)(nil)).Elem(), GetFilesFileArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupLegacyAclInput)(nil)).Elem(), GetGroupLegacyAclArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupLegacyAclArrayInput)(nil)).Elem(), GetGroupLegacyAclArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostsLegacyEntryInput)(nil)).Elem(), GetHostsLegacyEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetHostsLegacyEntryArrayInput)(nil)).Elem(), GetHostsLegacyEntryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPoolLegacyMemberInput)(nil)).Elem(), GetPoolLegacyMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPoolLegacyMemberArrayInput)(nil)).Elem(), GetPoolLegacyMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReplicationsLegacyReplicationInput)(nil)).Elem(), GetReplicationsLegacyReplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReplicationsLegacyReplicationArrayInput)(nil)).Elem(), GetReplicationsLegacyReplicationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReplicationsReplicationInput)(nil)).Elem(), GetReplicationsReplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReplicationsReplicationArrayInput)(nil)).Elem(), GetReplicationsReplicationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserLegacyAclInput)(nil)).Elem(), GetUserLegacyAclArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetUserLegacyAclArrayInput)(nil)).Elem(), GetUserLegacyAclArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2LegacyCpuInput)(nil)).Elem(), GetVm2LegacyCpuArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2LegacyCpuPtrInput)(nil)).Elem(), GetVm2LegacyCpuArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2LegacyRngInput)(nil)).Elem(), GetVm2LegacyRngArgs{})
@@ -5153,10 +16378,64 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVmTimeoutsPtrInput)(nil)).Elem(), GetVmTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVmVgaInput)(nil)).Elem(), GetVmVgaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVmVgaPtrInput)(nil)).Elem(), GetVmVgaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVmsLegacyFilterInput)(nil)).Elem(), GetVmsLegacyFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVmsLegacyFilterArrayInput)(nil)).Elem(), GetVmsLegacyFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVmsLegacyVmInput)(nil)).Elem(), GetVmsLegacyVmArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVmsLegacyVmArrayInput)(nil)).Elem(), GetVmsLegacyVmArray{})
+	pulumi.RegisterOutputType(ContainerLegacyCloneOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyClonePtrOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyConsoleOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyConsolePtrOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyCpuOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyCpuPtrOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyDevicePassthroughOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyDevicePassthroughArrayOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyDiskOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyDiskPtrOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyFeaturesOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyFeaturesPtrOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyIdmapOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyIdmapArrayOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyInitializationOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyInitializationPtrOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyInitializationDnsOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyInitializationDnsPtrOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyInitializationIpConfigOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyInitializationIpConfigArrayOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyInitializationIpConfigIpv4Output{})
+	pulumi.RegisterOutputType(ContainerLegacyInitializationIpConfigIpv4PtrOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyInitializationIpConfigIpv6Output{})
+	pulumi.RegisterOutputType(ContainerLegacyInitializationIpConfigIpv6PtrOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyInitializationUserAccountOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyInitializationUserAccountPtrOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyMemoryOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyMemoryPtrOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyMountPointOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyMountPointArrayOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyNetworkInterfaceOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyNetworkInterfaceArrayOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyOperatingSystemOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyOperatingSystemPtrOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyStartupOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyStartupPtrOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyWaitForIpOutput{})
+	pulumi.RegisterOutputType(ContainerLegacyWaitForIpPtrOutput{})
+	pulumi.RegisterOutputType(FileLegacySourceFileOutput{})
+	pulumi.RegisterOutputType(FileLegacySourceFilePtrOutput{})
+	pulumi.RegisterOutputType(FileLegacySourceRawOutput{})
+	pulumi.RegisterOutputType(FileLegacySourceRawPtrOutput{})
+	pulumi.RegisterOutputType(GroupLegacyAclOutput{})
+	pulumi.RegisterOutputType(GroupLegacyAclArrayOutput{})
+	pulumi.RegisterOutputType(HostsLegacyEntryOutput{})
+	pulumi.RegisterOutputType(HostsLegacyEntryArrayOutput{})
+	pulumi.RegisterOutputType(PoolLegacyMemberOutput{})
+	pulumi.RegisterOutputType(PoolLegacyMemberArrayOutput{})
 	pulumi.RegisterOutputType(ProviderSshOutput{})
 	pulumi.RegisterOutputType(ProviderSshPtrOutput{})
 	pulumi.RegisterOutputType(ProviderSshNodeOutput{})
 	pulumi.RegisterOutputType(ProviderSshNodeArrayOutput{})
+	pulumi.RegisterOutputType(UserLegacyAclOutput{})
+	pulumi.RegisterOutputType(UserLegacyAclArrayOutput{})
 	pulumi.RegisterOutputType(Vm2LegacyCdromOutput{})
 	pulumi.RegisterOutputType(Vm2LegacyCdromMapOutput{})
 	pulumi.RegisterOutputType(Vm2LegacyCpuOutput{})
@@ -5171,12 +16450,76 @@ func init() {
 	pulumi.RegisterOutputType(VmCdromMapOutput{})
 	pulumi.RegisterOutputType(VmCpuOutput{})
 	pulumi.RegisterOutputType(VmCpuPtrOutput{})
+	pulumi.RegisterOutputType(VmLegacyAgentOutput{})
+	pulumi.RegisterOutputType(VmLegacyAgentPtrOutput{})
+	pulumi.RegisterOutputType(VmLegacyAgentWaitForIpOutput{})
+	pulumi.RegisterOutputType(VmLegacyAgentWaitForIpPtrOutput{})
+	pulumi.RegisterOutputType(VmLegacyAmdSevOutput{})
+	pulumi.RegisterOutputType(VmLegacyAmdSevPtrOutput{})
+	pulumi.RegisterOutputType(VmLegacyAudioDeviceOutput{})
+	pulumi.RegisterOutputType(VmLegacyAudioDevicePtrOutput{})
+	pulumi.RegisterOutputType(VmLegacyCdromOutput{})
+	pulumi.RegisterOutputType(VmLegacyCdromPtrOutput{})
+	pulumi.RegisterOutputType(VmLegacyCloneOutput{})
+	pulumi.RegisterOutputType(VmLegacyClonePtrOutput{})
+	pulumi.RegisterOutputType(VmLegacyCpuOutput{})
+	pulumi.RegisterOutputType(VmLegacyCpuPtrOutput{})
+	pulumi.RegisterOutputType(VmLegacyDiskOutput{})
+	pulumi.RegisterOutputType(VmLegacyDiskArrayOutput{})
+	pulumi.RegisterOutputType(VmLegacyDiskSpeedOutput{})
+	pulumi.RegisterOutputType(VmLegacyDiskSpeedPtrOutput{})
+	pulumi.RegisterOutputType(VmLegacyEfiDiskOutput{})
+	pulumi.RegisterOutputType(VmLegacyEfiDiskPtrOutput{})
+	pulumi.RegisterOutputType(VmLegacyHostpciOutput{})
+	pulumi.RegisterOutputType(VmLegacyHostpciArrayOutput{})
+	pulumi.RegisterOutputType(VmLegacyInitializationOutput{})
+	pulumi.RegisterOutputType(VmLegacyInitializationPtrOutput{})
+	pulumi.RegisterOutputType(VmLegacyInitializationDnsOutput{})
+	pulumi.RegisterOutputType(VmLegacyInitializationDnsPtrOutput{})
+	pulumi.RegisterOutputType(VmLegacyInitializationIpConfigOutput{})
+	pulumi.RegisterOutputType(VmLegacyInitializationIpConfigArrayOutput{})
+	pulumi.RegisterOutputType(VmLegacyInitializationIpConfigIpv4Output{})
+	pulumi.RegisterOutputType(VmLegacyInitializationIpConfigIpv4PtrOutput{})
+	pulumi.RegisterOutputType(VmLegacyInitializationIpConfigIpv6Output{})
+	pulumi.RegisterOutputType(VmLegacyInitializationIpConfigIpv6PtrOutput{})
+	pulumi.RegisterOutputType(VmLegacyInitializationUserAccountOutput{})
+	pulumi.RegisterOutputType(VmLegacyInitializationUserAccountPtrOutput{})
+	pulumi.RegisterOutputType(VmLegacyMemoryOutput{})
+	pulumi.RegisterOutputType(VmLegacyMemoryPtrOutput{})
+	pulumi.RegisterOutputType(VmLegacyNetworkDeviceOutput{})
+	pulumi.RegisterOutputType(VmLegacyNetworkDeviceArrayOutput{})
+	pulumi.RegisterOutputType(VmLegacyNumaOutput{})
+	pulumi.RegisterOutputType(VmLegacyNumaArrayOutput{})
+	pulumi.RegisterOutputType(VmLegacyOperatingSystemOutput{})
+	pulumi.RegisterOutputType(VmLegacyOperatingSystemPtrOutput{})
+	pulumi.RegisterOutputType(VmLegacyRngOutput{})
+	pulumi.RegisterOutputType(VmLegacyRngArrayOutput{})
+	pulumi.RegisterOutputType(VmLegacySerialDeviceOutput{})
+	pulumi.RegisterOutputType(VmLegacySerialDeviceArrayOutput{})
+	pulumi.RegisterOutputType(VmLegacySmbiosOutput{})
+	pulumi.RegisterOutputType(VmLegacySmbiosPtrOutput{})
+	pulumi.RegisterOutputType(VmLegacyStartupOutput{})
+	pulumi.RegisterOutputType(VmLegacyStartupPtrOutput{})
+	pulumi.RegisterOutputType(VmLegacyTpmStateOutput{})
+	pulumi.RegisterOutputType(VmLegacyTpmStatePtrOutput{})
+	pulumi.RegisterOutputType(VmLegacyUsbOutput{})
+	pulumi.RegisterOutputType(VmLegacyUsbArrayOutput{})
+	pulumi.RegisterOutputType(VmLegacyVgaOutput{})
+	pulumi.RegisterOutputType(VmLegacyVgaPtrOutput{})
+	pulumi.RegisterOutputType(VmLegacyVirtiofOutput{})
+	pulumi.RegisterOutputType(VmLegacyVirtiofArrayOutput{})
+	pulumi.RegisterOutputType(VmLegacyWatchdogOutput{})
+	pulumi.RegisterOutputType(VmLegacyWatchdogPtrOutput{})
 	pulumi.RegisterOutputType(VmRngOutput{})
 	pulumi.RegisterOutputType(VmRngPtrOutput{})
 	pulumi.RegisterOutputType(VmTimeoutsOutput{})
 	pulumi.RegisterOutputType(VmTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(VmVgaOutput{})
 	pulumi.RegisterOutputType(VmVgaPtrOutput{})
+	pulumi.RegisterOutputType(GetContainersLegacyContainerOutput{})
+	pulumi.RegisterOutputType(GetContainersLegacyContainerArrayOutput{})
+	pulumi.RegisterOutputType(GetContainersLegacyFilterOutput{})
+	pulumi.RegisterOutputType(GetContainersLegacyFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetDatastoresDatastoreOutput{})
 	pulumi.RegisterOutputType(GetDatastoresDatastoreArrayOutput{})
 	pulumi.RegisterOutputType(GetDatastoresFiltersOutput{})
@@ -5187,10 +16530,18 @@ func init() {
 	pulumi.RegisterOutputType(GetDatastoresLegacyFiltersPtrOutput{})
 	pulumi.RegisterOutputType(GetFilesFileOutput{})
 	pulumi.RegisterOutputType(GetFilesFileArrayOutput{})
+	pulumi.RegisterOutputType(GetGroupLegacyAclOutput{})
+	pulumi.RegisterOutputType(GetGroupLegacyAclArrayOutput{})
+	pulumi.RegisterOutputType(GetHostsLegacyEntryOutput{})
+	pulumi.RegisterOutputType(GetHostsLegacyEntryArrayOutput{})
+	pulumi.RegisterOutputType(GetPoolLegacyMemberOutput{})
+	pulumi.RegisterOutputType(GetPoolLegacyMemberArrayOutput{})
 	pulumi.RegisterOutputType(GetReplicationsLegacyReplicationOutput{})
 	pulumi.RegisterOutputType(GetReplicationsLegacyReplicationArrayOutput{})
 	pulumi.RegisterOutputType(GetReplicationsReplicationOutput{})
 	pulumi.RegisterOutputType(GetReplicationsReplicationArrayOutput{})
+	pulumi.RegisterOutputType(GetUserLegacyAclOutput{})
+	pulumi.RegisterOutputType(GetUserLegacyAclArrayOutput{})
 	pulumi.RegisterOutputType(GetVm2LegacyCpuOutput{})
 	pulumi.RegisterOutputType(GetVm2LegacyCpuPtrOutput{})
 	pulumi.RegisterOutputType(GetVm2LegacyRngOutput{})
@@ -5207,4 +16558,8 @@ func init() {
 	pulumi.RegisterOutputType(GetVmTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetVmVgaOutput{})
 	pulumi.RegisterOutputType(GetVmVgaPtrOutput{})
+	pulumi.RegisterOutputType(GetVmsLegacyFilterOutput{})
+	pulumi.RegisterOutputType(GetVmsLegacyFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetVmsLegacyVmOutput{})
+	pulumi.RegisterOutputType(GetVmsLegacyVmArrayOutput{})
 }

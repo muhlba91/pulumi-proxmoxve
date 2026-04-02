@@ -20,13 +20,12 @@ namespace Pulumi.ProxmoxVE.User
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Proxmox = Pulumi.Proxmox;
     /// using ProxmoxVE = Pulumi.ProxmoxVE;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // if creating a user token, the user must be created first
-    ///     var user = new Proxmox.Index.VirtualEnvironmentUser("user", new()
+    ///     var user = new ProxmoxVE.UserLegacy("user", new()
     ///     {
     ///         Comment = "Managed by Pulumi",
     ///         Email = "user@pve",

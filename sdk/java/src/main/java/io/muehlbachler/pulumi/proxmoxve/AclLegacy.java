@@ -33,10 +33,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.proxmox.VirtualEnvironmentUser;
- * import com.pulumi.proxmox.VirtualEnvironmentUserArgs;
- * import com.pulumi.proxmox.VirtualEnvironmentRole;
- * import com.pulumi.proxmox.VirtualEnvironmentRoleArgs;
+ * import io.muehlbachler.pulumi.proxmoxve.UserLegacy;
+ * import io.muehlbachler.pulumi.proxmoxve.UserLegacyArgs;
+ * import io.muehlbachler.pulumi.proxmoxve.RoleLegacy;
+ * import io.muehlbachler.pulumi.proxmoxve.RoleLegacyArgs;
  * import io.muehlbachler.pulumi.proxmoxve.AclLegacy;
  * import io.muehlbachler.pulumi.proxmoxve.AclLegacyArgs;
  * import java.util.List;
@@ -52,15 +52,15 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         var operationsAutomation = new VirtualEnvironmentUser("operationsAutomation", VirtualEnvironmentUserArgs.builder()
+ *         var operationsAutomation = new UserLegacy("operationsAutomation", UserLegacyArgs.builder()
  *             .comment("Managed by Pulumi")
  *             .password("a-strong-password")
  *             .userId("operations-automation}{@literal @}{@code pve")
  *             .build());
  * 
- *         var operationsMonitoring = new VirtualEnvironmentRole("operationsMonitoring", VirtualEnvironmentRoleArgs.builder()
+ *         var operationsMonitoring = new RoleLegacy("operationsMonitoring", RoleLegacyArgs.builder()
  *             .roleId("operations-monitoring")
- *             .privileges(List.of("VM.GuestAgent.Audit"))
+ *             .privileges("VM.GuestAgent.Audit")
  *             .build());
  * 
  *         var operationsAutomationMonitoring = new AclLegacy("operationsAutomationMonitoring", AclLegacyArgs.builder()

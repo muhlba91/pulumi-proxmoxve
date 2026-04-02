@@ -8,11 +8,20 @@ import typing
 # Export this package's modules as members:
 from .acl import *
 from .acl_legacy import *
+from .certificate_legacy import *
+from .container_legacy import *
+from .dns_legacy import *
+from .file_legacy import *
+from .get_container_legacy import *
+from .get_containers_legacy import *
 from .get_datastores import *
 from .get_datastores_legacy import *
+from .get_dns_legacy import *
 from .get_file import *
 from .get_file_legacy import *
 from .get_files import *
+from .get_group_legacy import *
+from .get_groups_legacy import *
 from .get_hagroup import *
 from .get_hagroup_legacy import *
 from .get_hagroups import *
@@ -21,25 +30,44 @@ from .get_haresource import *
 from .get_haresource_legacy import *
 from .get_haresources import *
 from .get_haresources_legacy import *
+from .get_hosts_legacy import *
+from .get_node_legacy import *
+from .get_nodes_legacy import *
+from .get_pool_legacy import *
+from .get_pools_legacy import *
 from .get_replication import *
 from .get_replication_legacy import *
 from .get_replications import *
 from .get_replications_legacy import *
+from .get_role_legacy import *
+from .get_roles_legacy import *
+from .get_time_legacy import *
+from .get_user_legacy import *
+from .get_users_legacy import *
 from .get_version import *
 from .get_version_legacy import *
 from .get_vm import *
 from .get_vm2_legacy import *
+from .get_vm_legacy import *
+from .get_vms_legacy import *
+from .group_legacy import *
 from .hagroup import *
 from .hagroup_legacy import *
 from .haresource import *
 from .haresource_legacy import *
 from .harule import *
 from .harule_legacy import *
+from .hosts_legacy import *
+from .pool_legacy import *
 from .provider import *
 from .replication import *
 from .replication_legacy import *
+from .role_legacy import *
+from .time_legacy import *
+from .user_legacy import *
 from .vm import *
 from .vm2_legacy import *
+from .vm_legacy import *
 from ._inputs import *
 from . import outputs
 
@@ -59,6 +87,8 @@ if typing.TYPE_CHECKING:
     config = __config
     import pulumi_proxmoxve.download as __download
     download = __download
+    import pulumi_proxmoxve.firewall as __firewall
+    firewall = __firewall
     import pulumi_proxmoxve.hardware as __hardware
     hardware = __hardware
     import pulumi_proxmoxve.metrics as __metrics
@@ -87,6 +117,7 @@ else:
     cluster = _utilities.lazy_import('pulumi_proxmoxve.cluster')
     config = _utilities.lazy_import('pulumi_proxmoxve.config')
     download = _utilities.lazy_import('pulumi_proxmoxve.download')
+    firewall = _utilities.lazy_import('pulumi_proxmoxve.firewall')
     hardware = _utilities.lazy_import('pulumi_proxmoxve.hardware')
     metrics = _utilities.lazy_import('pulumi_proxmoxve.metrics')
     network = _utilities.lazy_import('pulumi_proxmoxve.network')
@@ -207,6 +238,22 @@ _utilities.register(
  },
  {
   "pkg": "proxmoxve",
+  "mod": "cluster/firewall/security/groupLegacy",
+  "fqn": "pulumi_proxmoxve.cluster.firewall.security",
+  "classes": {
+   "proxmoxve:cluster/firewall/security/groupLegacy:GroupLegacy": "GroupLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "cluster/firewallLegacy",
+  "fqn": "pulumi_proxmoxve.cluster",
+  "classes": {
+   "proxmoxve:cluster/firewallLegacy:FirewallLegacy": "FirewallLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
   "mod": "cluster/options",
   "fqn": "pulumi_proxmoxve.cluster",
   "classes": {
@@ -235,6 +282,38 @@ _utilities.register(
   "fqn": "pulumi_proxmoxve.download",
   "classes": {
    "proxmoxve:download/fileLegacy:FileLegacy": "FileLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "firewall/aliasLegacy",
+  "fqn": "pulumi_proxmoxve.firewall",
+  "classes": {
+   "proxmoxve:firewall/aliasLegacy:AliasLegacy": "AliasLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "firewall/ipsetLegacy",
+  "fqn": "pulumi_proxmoxve.firewall",
+  "classes": {
+   "proxmoxve:firewall/ipsetLegacy:IpsetLegacy": "IpsetLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "firewall/optionsLegacy",
+  "fqn": "pulumi_proxmoxve.firewall",
+  "classes": {
+   "proxmoxve:firewall/optionsLegacy:OptionsLegacy": "OptionsLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "firewall/rulesLegacy",
+  "fqn": "pulumi_proxmoxve.firewall",
+  "classes": {
+   "proxmoxve:firewall/rulesLegacy:RulesLegacy": "RulesLegacy"
   }
  },
  {
@@ -303,6 +382,46 @@ _utilities.register(
  },
  {
   "pkg": "proxmoxve",
+  "mod": "index/certificateLegacy",
+  "fqn": "pulumi_proxmoxve",
+  "classes": {
+   "proxmoxve:index/certificateLegacy:CertificateLegacy": "CertificateLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "index/containerLegacy",
+  "fqn": "pulumi_proxmoxve",
+  "classes": {
+   "proxmoxve:index/containerLegacy:ContainerLegacy": "ContainerLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "index/dnsLegacy",
+  "fqn": "pulumi_proxmoxve",
+  "classes": {
+   "proxmoxve:index/dnsLegacy:DnsLegacy": "DnsLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "index/fileLegacy",
+  "fqn": "pulumi_proxmoxve",
+  "classes": {
+   "proxmoxve:index/fileLegacy:FileLegacy": "FileLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "index/groupLegacy",
+  "fqn": "pulumi_proxmoxve",
+  "classes": {
+   "proxmoxve:index/groupLegacy:GroupLegacy": "GroupLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
   "mod": "index/hagroup",
   "fqn": "pulumi_proxmoxve",
   "classes": {
@@ -351,6 +470,22 @@ _utilities.register(
  },
  {
   "pkg": "proxmoxve",
+  "mod": "index/hostsLegacy",
+  "fqn": "pulumi_proxmoxve",
+  "classes": {
+   "proxmoxve:index/hostsLegacy:HostsLegacy": "HostsLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "index/poolLegacy",
+  "fqn": "pulumi_proxmoxve",
+  "classes": {
+   "proxmoxve:index/poolLegacy:PoolLegacy": "PoolLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
   "mod": "index/replication",
   "fqn": "pulumi_proxmoxve",
   "classes": {
@@ -367,6 +502,30 @@ _utilities.register(
  },
  {
   "pkg": "proxmoxve",
+  "mod": "index/roleLegacy",
+  "fqn": "pulumi_proxmoxve",
+  "classes": {
+   "proxmoxve:index/roleLegacy:RoleLegacy": "RoleLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "index/timeLegacy",
+  "fqn": "pulumi_proxmoxve",
+  "classes": {
+   "proxmoxve:index/timeLegacy:TimeLegacy": "TimeLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "index/userLegacy",
+  "fqn": "pulumi_proxmoxve",
+  "classes": {
+   "proxmoxve:index/userLegacy:UserLegacy": "UserLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
   "mod": "index/vm",
   "fqn": "pulumi_proxmoxve",
   "classes": {
@@ -379,6 +538,14 @@ _utilities.register(
   "fqn": "pulumi_proxmoxve",
   "classes": {
    "proxmoxve:index/vm2Legacy:Vm2Legacy": "Vm2Legacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "index/vmLegacy",
+  "fqn": "pulumi_proxmoxve",
+  "classes": {
+   "proxmoxve:index/vmLegacy:VmLegacy": "VmLegacy"
   }
  },
  {

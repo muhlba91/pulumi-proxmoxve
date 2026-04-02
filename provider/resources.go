@@ -26,11 +26,13 @@ import (
 	"unicode"
 
 	"github.com/bpg/terraform-provider-proxmox/fwprovider"
+	"github.com/bpg/terraform-provider-proxmox/proxmoxtf/provider"
 	"github.com/ettle/strcase"
 	"github.com/muhlba91/pulumi-proxmoxve/provider/pkg/version"
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/info"
+	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
@@ -225,8 +227,10 @@ func resourceOverrides() map[string]*tfbridge.ResourceInfo {
 }
 
 func Provider() tfbridge.ProviderInfo {
+	p := pfbridge.MuxShimWithPF(context.Background(), shimv2.NewProvider(provider.ProxmoxVirtualEnvironment()), fwprovider.New(version.Version)())
+	// p := pfbridge.ShimProvider(fwprovider.New(version.Version)())
 	prov := tfbridge.ProviderInfo{
-		P:                 pfbridge.ShimProvider(fwprovider.New(version.Version)()),
+		P:                 p,
 		Name:              "proxmox",
 		DisplayName:       "Proxmox Virtual Environment (Proxmox VE)",
 		Description:       "A Pulumi package for creating and managing Proxmox Virtual Environment cloud resources.",

@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.proxmox.VirtualEnvironmentUser;
- * import com.pulumi.proxmox.VirtualEnvironmentUserArgs;
+ * import io.muehlbachler.pulumi.proxmoxve.UserLegacy;
+ * import io.muehlbachler.pulumi.proxmoxve.UserLegacyArgs;
  * import io.muehlbachler.pulumi.proxmoxve.user.TokenLegacy;
  * import io.muehlbachler.pulumi.proxmoxve.user.TokenLegacyArgs;
  * import java.util.List;
@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         // if creating a user token, the user must be created first
- *         var user = new VirtualEnvironmentUser("user", VirtualEnvironmentUserArgs.builder()
+ *         var user = new UserLegacy("user", UserLegacyArgs.builder()
  *             .comment("Managed by Pulumi")
  *             .email("user}{@literal @}{@code pve")
  *             .enabled(true)

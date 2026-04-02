@@ -23,7 +23,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-proxmox/sdk/go/proxmox"
+//	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve"
 //	"github.com/pulumi/pulumi-proxmoxve/sdk/v7/go/proxmoxve/user"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -32,12 +32,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// if creating a user token, the user must be created first
-//			user, err := proxmox.NewVirtualEnvironmentUser(ctx, "user", &proxmox.VirtualEnvironmentUserArgs{
-//				Comment:        "Managed by Pulumi",
-//				Email:          "user@pve",
-//				Enabled:        true,
-//				ExpirationDate: "2034-01-01T22:00:00Z",
-//				UserId:         "user@pve",
+//			user, err := proxmoxve.NewUserLegacy(ctx, "user", &proxmoxve.UserLegacyArgs{
+//				Comment:        pulumi.String("Managed by Pulumi"),
+//				Email:          pulumi.String("user@pve"),
+//				Enabled:        pulumi.Bool(true),
+//				ExpirationDate: pulumi.String("2034-01-01T22:00:00Z"),
+//				UserId:         pulumi.String("user@pve"),
 //			})
 //			if err != nil {
 //				return err

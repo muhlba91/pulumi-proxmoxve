@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmox from "@pulumi/proxmox";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
  * const ubuntuIso = proxmoxve.getFileLegacy({
@@ -43,24 +42,24 @@ import * as utilities from "./utilities";
  * export const ubuntuIsoId = ubuntuIso.then(ubuntuIso => ubuntuIso.id);
  * export const ubuntuIsoSize = ubuntuIso.then(ubuntuIso => ubuntuIso.fileSize);
  * export const containerTemplateFormat = ubuntuContainerTemplate.then(ubuntuContainerTemplate => ubuntuContainerTemplate.fileFormat);
- * const example = new proxmox.VirtualEnvironmentVm("example", {
+ * const example = new proxmoxve.VmLegacy("example", {
  *     nodeName: "pve",
  *     vmId: 100,
- *     cdrom: [{
+ *     cdrom: {
  *         fileId: ubuntuIso.then(ubuntuIso => ubuntuIso.id),
- *     }],
- *     cpu: [{
+ *     },
+ *     cpu: {
  *         cores: 2,
- *     }],
- *     memory: [{
+ *     },
+ *     memory: {
  *         dedicated: 2048,
- *     }],
- *     disk: [{
+ *     },
+ *     disks: [{
  *         datastoreId: "local-lvm",
  *         fileFormat: "qcow2",
  *         size: 20,
  *     }],
- *     networkDevice: [{
+ *     networkDevices: [{
  *         bridge: "vmbr0",
  *     }],
  * });
@@ -144,7 +143,6 @@ export interface GetFileLegacyResult {
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmox from "@pulumi/proxmox";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
  * const ubuntuIso = proxmoxve.getFileLegacy({
@@ -174,24 +172,24 @@ export interface GetFileLegacyResult {
  * export const ubuntuIsoId = ubuntuIso.then(ubuntuIso => ubuntuIso.id);
  * export const ubuntuIsoSize = ubuntuIso.then(ubuntuIso => ubuntuIso.fileSize);
  * export const containerTemplateFormat = ubuntuContainerTemplate.then(ubuntuContainerTemplate => ubuntuContainerTemplate.fileFormat);
- * const example = new proxmox.VirtualEnvironmentVm("example", {
+ * const example = new proxmoxve.VmLegacy("example", {
  *     nodeName: "pve",
  *     vmId: 100,
- *     cdrom: [{
+ *     cdrom: {
  *         fileId: ubuntuIso.then(ubuntuIso => ubuntuIso.id),
- *     }],
- *     cpu: [{
+ *     },
+ *     cpu: {
  *         cores: 2,
- *     }],
- *     memory: [{
+ *     },
+ *     memory: {
  *         dedicated: 2048,
- *     }],
- *     disk: [{
+ *     },
+ *     disks: [{
  *         datastoreId: "local-lvm",
  *         fileFormat: "qcow2",
  *         size: 20,
  *     }],
- *     networkDevice: [{
+ *     networkDevices: [{
  *         bridge: "vmbr0",
  *     }],
  * });

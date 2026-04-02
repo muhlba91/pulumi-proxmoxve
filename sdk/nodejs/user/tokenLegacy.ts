@@ -13,11 +13,10 @@ import * as utilities from "../utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as proxmox from "@pulumi/proxmox";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
  * // if creating a user token, the user must be created first
- * const user = new proxmox.index.VirtualEnvironmentUser("user", {
+ * const user = new proxmoxve.UserLegacy("user", {
  *     comment: "Managed by Pulumi",
  *     email: "user@pve",
  *     enabled: true,

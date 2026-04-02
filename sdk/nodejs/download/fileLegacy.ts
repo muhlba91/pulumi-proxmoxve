@@ -7,7 +7,7 @@ import * as utilities from "../utilities";
 /**
  * > **Deprecated:** Use `proxmoxve.download.File` instead. This resource will be removed in v1.0.
  *
- * Manages files upload using PVE download-url API. It can be fully compatible and faster replacement for image files created using `proxmoxve.getFileLegacy`. Supports images for VMs (ISO and disk images) and LXC (CT Templates).
+ * Manages files upload using PVE download-url API. It can be fully compatible and faster replacement for image files created using `proxmoxve.FileLegacy`. Supports images for VMs (ISO and disk images) and LXC (CT Templates).
  *
  * > Besides the `Datastore.AllocateTemplate` privilege, this resource requires both the `Sys.Audit` and `Sys.Modify` privileges.<br><br>
  * For more details, see the [`download-url`](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/storage/{storage}/download-url) API documentation under the "Required permissions" section.

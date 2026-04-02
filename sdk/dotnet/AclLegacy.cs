@@ -23,19 +23,18 @@ namespace Pulumi.ProxmoxVE
     /// using System.Collections.Generic;
     /// using System.Linq;
     /// using Pulumi;
-    /// using Proxmox = Pulumi.Proxmox;
     /// using ProxmoxVE = Pulumi.ProxmoxVE;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var operationsAutomation = new Proxmox.Index.VirtualEnvironmentUser("operations_automation", new()
+    ///     var operationsAutomation = new ProxmoxVE.UserLegacy("operations_automation", new()
     ///     {
     ///         Comment = "Managed by Pulumi",
     ///         Password = "a-strong-password",
     ///         UserId = "operations-automation@pve",
     ///     });
     /// 
-    ///     var operationsMonitoring = new Proxmox.Index.VirtualEnvironmentRole("operations_monitoring", new()
+    ///     var operationsMonitoring = new ProxmoxVE.RoleLegacy("operations_monitoring", new()
     ///     {
     ///         RoleId = "operations-monitoring",
     ///         Privileges = new[]
