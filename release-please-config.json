@@ -7,7 +7,10 @@
             "include-component-in-tag": false,
             "changelog-path": "CHANGELOG.md",
             "extra-files": [
-                "sdk/go.mod"
+                {
+                    "type": "go",
+                    "path": "sdk/go.mod"
+                }
             ]
         }
     },
