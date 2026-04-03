@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/internal"
+	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,8 +21,8 @@ import (
 //
 // import (
 //
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve"
-//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v7/go/proxmoxve/download"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/download"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi-std/sdk/v2/go/std"
 //	"github.com/pulumi/pulumi-tls/sdk/v5/go/tls"
