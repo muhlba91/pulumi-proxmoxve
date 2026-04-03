@@ -1,7 +1,4 @@
-// x-release-please-start-major
-module github.com/muhlba91/pulumi-proxmoxve/sdk/v7
-
-// x-release-please-end
+module github.com/muhlba91/pulumi-proxmoxve/sdk/v7 // x-release-please-major
 
 go 1.25.8
 

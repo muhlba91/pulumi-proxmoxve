@@ -8,7 +8,7 @@
             "changelog-path": "CHANGELOG.md",
             "extra-files": [
                 {
-                    "type": "go",
+                    "type": "generic",
                     "path": "sdk/go.mod"
                 }
             ]
