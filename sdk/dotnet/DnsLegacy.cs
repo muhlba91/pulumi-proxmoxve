@@ -22,12 +22,12 @@ namespace Pulumi.ProxmoxVE
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var firstNodeDnsConfiguration = ProxmoxVE.GetDnsLegacy.Invoke(new()
+    ///     var firstNodeDnsConfiguration = ProxmoxVE.Index.GetDnsLegacy.Invoke(new()
     ///     {
     ///         NodeName = "first-node",
     ///     });
     /// 
-    ///     var firstNodeDnsConfigurationDnsLegacy = new ProxmoxVE.DnsLegacy("first_node_dns_configuration", new()
+    ///     var firstNodeDnsConfigurationDnsLegacy = new ProxmoxVE.Index.DnsLegacy("first_node_dns_configuration", new()
     ///     {
     ///         Domain = firstNodeDnsConfiguration.Apply(getDnsLegacyResult =&gt; getDnsLegacyResult.Domain),
     ///         NodeName = firstNodeDnsConfiguration.Apply(getDnsLegacyResult =&gt; getDnsLegacyResult.NodeName),

@@ -50,21 +50,21 @@ import javax.annotation.Nullable;
  *         var influxdbServer = new ServerLegacy("influxdbServer", ServerLegacyArgs.builder()
  *             .name("example_influxdb_server")
  *             .server("192.168.3.2")
- *             .port(8089)
+ *             .port(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(8089) (example.pp:4,19-23)))
  *             .type("influxdb")
  *             .build());
  * 
  *         var graphiteServer = new ServerLegacy("graphiteServer", ServerLegacyArgs.builder()
  *             .name("example_graphite_server")
  *             .server("192.168.4.2")
- *             .port(2003)
+ *             .port(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2003) (example.pp:12,19-23)))
  *             .type("graphite")
  *             .build());
  * 
  *         var opentelemetryServer = new ServerLegacy("opentelemetryServer", ServerLegacyArgs.builder()
  *             .name("example_opentelemetry_server")
  *             .server("192.168.5.2")
- *             .port(4318)
+ *             .port(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(4318) (example.pp:20,24-28)))
  *             .type("opentelemetry")
  *             .opentelemetryProto("http")
  *             .opentelemetryPath("/v1/metrics")

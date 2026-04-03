@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			ubuntuIso, err := proxmoxve.LookupFileLegacy(ctx, &proxmoxve.LookupFileLegacyArgs{
+//			ubuntuIso, err := proxmoxve.GetFileLegacy(ctx, &proxmoxve.LookupFileLegacyArgs{
 //				NodeName:    "pve",
 //				DatastoreId: "local",
 //				ContentType: "iso",
@@ -38,7 +38,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ubuntuContainerTemplate, err := proxmoxve.LookupFileLegacy(ctx, &proxmoxve.LookupFileLegacyArgs{
+//			ubuntuContainerTemplate, err := proxmoxve.GetFileLegacy(ctx, &proxmoxve.LookupFileLegacyArgs{
 //				NodeName:    "pve",
 //				DatastoreId: "local",
 //				ContentType: "vztmpl",
@@ -47,7 +47,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = proxmoxve.LookupFileLegacy(ctx, &proxmoxve.LookupFileLegacyArgs{
+//			_, err = proxmoxve.GetFileLegacy(ctx, &proxmoxve.LookupFileLegacyArgs{
 //				NodeName:    "pve",
 //				DatastoreId: "local",
 //				ContentType: "snippets",
@@ -56,7 +56,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = proxmoxve.LookupFileLegacy(ctx, &proxmoxve.LookupFileLegacyArgs{
+//			_, err = proxmoxve.GetFileLegacy(ctx, &proxmoxve.LookupFileLegacyArgs{
 //				NodeName:    "pve",
 //				DatastoreId: "local",
 //				ContentType: "import",

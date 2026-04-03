@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := proxmoxve.LookupRoleLegacy(ctx, &proxmoxve.LookupRoleLegacyArgs{
+//			_, err := proxmoxve.GetRoleLegacy(ctx, &proxmoxve.LookupRoleLegacyArgs{
 //				RoleId: "operations",
 //			}, nil)
 //			if err != nil {

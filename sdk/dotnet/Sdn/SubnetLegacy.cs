@@ -34,7 +34,7 @@ namespace Pulumi.ProxmoxVE.Sdn
     ///         {
     ///             "pve",
     ///         },
-    ///         Mtu = 1500,
+    ///         Mtu = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1500) (example.pp:8,16-20)),
     ///         Dns = "1.1.1.1",
     ///         DnsZone = "example.com",
     ///         Ipam = "pve",
@@ -55,7 +55,7 @@ namespace Pulumi.ProxmoxVE.Sdn
     ///         {
     ///             "pve",
     ///         },
-    ///         Mtu = 1500,
+    ///         Mtu = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1500) (example.pp:27,16-20)),
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =

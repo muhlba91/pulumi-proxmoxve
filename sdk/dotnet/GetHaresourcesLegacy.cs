@@ -27,10 +27,10 @@ namespace Pulumi.ProxmoxVE
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // This will fetch the set of all HA resource identifiers.
-        ///     var exampleAll = ProxmoxVE.GetHaresourcesLegacy.Invoke();
+        ///     var exampleAll = ProxmoxVE.Index.GetHaresourcesLegacy.Invoke();
         /// 
         ///     // This will fetch the set of HA resource identifiers that correspond to virtual machines.
-        ///     var exampleVm = ProxmoxVE.GetHaresourcesLegacy.Invoke(new()
+        ///     var exampleVm = ProxmoxVE.Index.GetHaresourcesLegacy.Invoke(new()
         ///     {
         ///         Type = "vm",
         ///     });
@@ -65,10 +65,10 @@ namespace Pulumi.ProxmoxVE
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // This will fetch the set of all HA resource identifiers.
-        ///     var exampleAll = ProxmoxVE.GetHaresourcesLegacy.Invoke();
+        ///     var exampleAll = ProxmoxVE.Index.GetHaresourcesLegacy.Invoke();
         /// 
         ///     // This will fetch the set of HA resource identifiers that correspond to virtual machines.
-        ///     var exampleVm = ProxmoxVE.GetHaresourcesLegacy.Invoke(new()
+        ///     var exampleVm = ProxmoxVE.Index.GetHaresourcesLegacy.Invoke(new()
         ///     {
         ///         Type = "vm",
         ///     });
@@ -103,10 +103,10 @@ namespace Pulumi.ProxmoxVE
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // This will fetch the set of all HA resource identifiers.
-        ///     var exampleAll = ProxmoxVE.GetHaresourcesLegacy.Invoke();
+        ///     var exampleAll = ProxmoxVE.Index.GetHaresourcesLegacy.Invoke();
         /// 
         ///     // This will fetch the set of HA resource identifiers that correspond to virtual machines.
-        ///     var exampleVm = ProxmoxVE.GetHaresourcesLegacy.Invoke(new()
+        ///     var exampleVm = ProxmoxVE.Index.GetHaresourcesLegacy.Invoke(new()
         ///     {
         ///         Type = "vm",
         ///     });

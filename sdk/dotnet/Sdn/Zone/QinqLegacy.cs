@@ -28,9 +28,9 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
     ///     {
     ///         ResourceId = "qinq1",
     ///         Bridge = "vmbr0",
-    ///         ServiceVlan = 100,
+    ///         ServiceVlan = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:3,25-28)),
     ///         ServiceVlanProtocol = "802.1ad",
-    ///         Mtu = 1496,
+    ///         Mtu = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1496) (example.pp:5,25-29)),
     ///         Dns = "1.1.1.1",
     ///         DnsZone = "example.com",
     ///         Ipam = "pve",

@@ -22,7 +22,7 @@ namespace Pulumi.ProxmoxVE
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var operationsPool = new ProxmoxVE.PoolLegacy("operations_pool", new()
+    ///     var operationsPool = new ProxmoxVE.Index.PoolLegacy("operations_pool", new()
     ///     {
     ///         Comment = "Managed by Pulumi",
     ///         PoolId = "operations-pool",

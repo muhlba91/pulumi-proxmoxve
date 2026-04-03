@@ -24,7 +24,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var operationsTeam = ProxmoxVE.GetGroupLegacy.Invoke(new()
+        ///     var operationsTeam = ProxmoxVE.Index.GetGroupLegacy.Invoke(new()
         ///     {
         ///         GroupId = "operations-team",
         ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var operationsTeam = ProxmoxVE.GetGroupLegacy.Invoke(new()
+        ///     var operationsTeam = ProxmoxVE.Index.GetGroupLegacy.Invoke(new()
         ///     {
         ///         GroupId = "operations-team",
         ///     });
@@ -72,7 +72,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var operationsTeam = ProxmoxVE.GetGroupLegacy.Invoke(new()
+        ///     var operationsTeam = ProxmoxVE.Index.GetGroupLegacy.Invoke(new()
         ///     {
         ///         GroupId = "operations-team",
         ///     });

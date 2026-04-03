@@ -23,13 +23,13 @@ namespace Pulumi.ProxmoxVE
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var proxmoxVirtualEnvironmentCertificate = new Tls.PrivateKey("proxmox_virtual_environment_certificate", new()
+    ///     var proxmoxVirtualEnvironmentCertificate = new Tls.Index.PrivateKey("proxmox_virtual_environment_certificate", new()
     ///     {
     ///         Algorithm = "RSA",
-    ///         RsaBits = 2048,
+    ///         RsaBits = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:9,19-23)),
     ///     });
     /// 
-    ///     var proxmoxVirtualEnvironmentCertificateSelfSignedCert = new Tls.SelfSignedCert("proxmox_virtual_environment_certificate", new()
+    ///     var proxmoxVirtualEnvironmentCertificateSelfSignedCert = new Tls.Index.SelfSignedCert("proxmox_virtual_environment_certificate", new()
     ///     {
     ///         KeyAlgorithm = proxmoxVirtualEnvironmentCertificate.Algorithm,
     ///         PrivateKeyPem = proxmoxVirtualEnvironmentCertificate.PrivateKeyPem,
@@ -38,7 +38,7 @@ namespace Pulumi.ProxmoxVE
     ///             CommonName = "example.com",
     ///             Organization = "Terraform Provider for Proxmox",
     ///         },
-    ///         ValidityPeriodHours = 8760,
+    ///         ValidityPeriodHours = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(8760) (example.pp:20,25-29)),
     ///         AllowedUses = new[]
     ///         {
     ///             "key_encipherment",
@@ -47,7 +47,7 @@ namespace Pulumi.ProxmoxVE
     ///         },
     ///     });
     /// 
-    ///     var example = new ProxmoxVE.CertificateLegacy("example", new()
+    ///     var example = new ProxmoxVE.Index.CertificateLegacy("example", new()
     ///     {
     ///         Certificate = proxmoxVirtualEnvironmentCertificateSelfSignedCert.CertPem,
     ///         NodeName = "first-node",

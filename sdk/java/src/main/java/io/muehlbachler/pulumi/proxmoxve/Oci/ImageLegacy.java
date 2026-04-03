@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *             .nodeName("pve")
  *             .datastoreId("local")
  *             .reference("docker.io/library/debian:bookworm")
- *             .uploadTimeout(900)
+ *             .uploadTimeout(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(900) (example.pp:18,24-27)))
  *             .overwrite(false)
  *             .overwriteUnmanaged(true)
  *             .build());

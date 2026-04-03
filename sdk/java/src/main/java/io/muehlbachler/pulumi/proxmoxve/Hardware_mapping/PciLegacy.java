@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *             .maps(PciLegacyMapArgs.builder()
  *                 .comment("This is a device specific comment")
  *                 .id("8086:5916")
- *                 .iommuGroup(0)
+ *                 .iommuGroup(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(0) (example.pp:6,19-20)))
  *                 .node("pve")
  *                 .path("0000:00:02.0")
  *                 .subsystemId("8086:2068")

@@ -31,7 +31,7 @@ namespace Pulumi.ProxmoxVE
     /// {
     ///     // Node Affinity Rule: assign VMs to preferred nodes with priorities.
     ///     // Non-strict rules allow failover to other nodes; strict rules do not.
-    ///     var preferNode1 = new ProxmoxVE.HaruleLegacy("prefer_node1", new()
+    ///     var preferNode1 = new ProxmoxVE.Index.HaruleLegacy("prefer_node1", new()
     ///     {
     ///         Rule = "prefer-node1",
     ///         Type = "node-affinity",
@@ -43,15 +43,15 @@ namespace Pulumi.ProxmoxVE
     ///         },
     ///         Nodes = 
     ///         {
-    ///             { "node1", 2 },
-    ///             { "node2", 1 },
-    ///             { "node3", 1 },
+    ///             { "node1", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:9,13-14)) },
+    ///             { "node2", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1) (example.pp:11,13-14)) },
+    ///             { "node3", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1) (example.pp:12,13-14)) },
     ///         },
     ///         Strict = false,
     ///     });
     /// 
     ///     // Resource Affinity Rule (Positive): keep resources together on the same node.
-    ///     var keepTogether = new ProxmoxVE.HaruleLegacy("keep_together", new()
+    ///     var keepTogether = new ProxmoxVE.Index.HaruleLegacy("keep_together", new()
     ///     {
     ///         Rule = "db-cluster-together",
     ///         Type = "resource-affinity",
@@ -66,7 +66,7 @@ namespace Pulumi.ProxmoxVE
     /// 
     ///     // Resource Affinity Rule (Negative / Anti-Affinity): keep resources on
     ///     // separate nodes for high availability.
-    ///     var keepApart = new ProxmoxVE.HaruleLegacy("keep_apart", new()
+    ///     var keepApart = new ProxmoxVE.Index.HaruleLegacy("keep_apart", new()
     ///     {
     ///         Rule = "db-cluster-apart",
     ///         Type = "resource-affinity",

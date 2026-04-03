@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *         var example = new VlanLegacy("example", VlanLegacyArgs.builder()
  *             .resourceId("vlan1")
  *             .bridge("vmbr0")
- *             .mtu(1500)
+ *             .mtu(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1500) (example.pp:3,16-20)))
  *             .dns("1.1.1.1")
  *             .dnsZone("example.com")
  *             .ipam("pve")

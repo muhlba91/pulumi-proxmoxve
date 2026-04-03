@@ -25,7 +25,7 @@ namespace Pulumi.ProxmoxVE
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Replication
-    ///     var exampleReplication1 = new ProxmoxVE.ReplicationLegacy("example_replication_1", new()
+    ///     var exampleReplication1 = new ProxmoxVE.Index.ReplicationLegacy("example_replication_1", new()
     ///     {
     ///         ResourceId = "100-0",
     ///         Target = "pve-02",

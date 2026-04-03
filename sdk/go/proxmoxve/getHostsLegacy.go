@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := proxmoxve.LookupHostsLegacy(ctx, &proxmoxve.LookupHostsLegacyArgs{
+//			_, err := proxmoxve.GetHostsLegacy(ctx, &proxmoxve.LookupHostsLegacyArgs{
 //				NodeName: "first-node",
 //			}, nil)
 //			if err != nil {

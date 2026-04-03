@@ -24,7 +24,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var availableUsers = ProxmoxVE.GetUsersLegacy.Invoke();
+        ///     var availableUsers = ProxmoxVE.Index.GetUsersLegacy.Invoke();
         /// 
         /// });
         /// ```
@@ -45,7 +45,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var availableUsers = ProxmoxVE.GetUsersLegacy.Invoke();
+        ///     var availableUsers = ProxmoxVE.Index.GetUsersLegacy.Invoke();
         /// 
         /// });
         /// ```
@@ -66,7 +66,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var availableUsers = ProxmoxVE.GetUsersLegacy.Invoke();
+        ///     var availableUsers = ProxmoxVE.Index.GetUsersLegacy.Invoke();
         /// 
         /// });
         /// ```

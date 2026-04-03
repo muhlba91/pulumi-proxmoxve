@@ -55,7 +55,7 @@ namespace Pulumi.ProxmoxVE.Acme
     ///     {
     ///         PluginName = "cloudflare",
     ///         Api = "cf",
-    ///         ValidationDelay = 120,
+    ///         ValidationDelay = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(120) (example.pp:22,21-24)),
     ///         Data = 
     ///         {
     ///             { "CF_Account_ID", "your-cloudflare-account-id" },

@@ -85,7 +85,7 @@ public final class AptFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AptFunctions.getRepositoryLegacy(GetRepositoryLegacyArgs.builder()
      *             .filePath("/etc/apt/sources.list")
-     *             .index(0)
+     *             .index(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(0) (example.pp:2,14-15)))
      *             .node("pve")
      *             .build());
      * 
@@ -132,7 +132,7 @@ public final class AptFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AptFunctions.getRepositoryLegacy(GetRepositoryLegacyArgs.builder()
      *             .filePath("/etc/apt/sources.list")
-     *             .index(0)
+     *             .index(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(0) (example.pp:2,14-15)))
      *             .node("pve")
      *             .build());
      * 
@@ -179,7 +179,7 @@ public final class AptFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AptFunctions.getRepositoryLegacy(GetRepositoryLegacyArgs.builder()
      *             .filePath("/etc/apt/sources.list")
-     *             .index(0)
+     *             .index(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(0) (example.pp:2,14-15)))
      *             .node("pve")
      *             .build());
      * 
@@ -226,7 +226,7 @@ public final class AptFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AptFunctions.getRepositoryLegacy(GetRepositoryLegacyArgs.builder()
      *             .filePath("/etc/apt/sources.list")
-     *             .index(0)
+     *             .index(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(0) (example.pp:2,14-15)))
      *             .node("pve")
      *             .build());
      * 
@@ -273,7 +273,7 @@ public final class AptFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AptFunctions.getRepositoryLegacy(GetRepositoryLegacyArgs.builder()
      *             .filePath("/etc/apt/sources.list")
-     *             .index(0)
+     *             .index(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(0) (example.pp:2,14-15)))
      *             .node("pve")
      *             .build());
      * 

@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *                 "10.0.0.1",
  *                 "10.0.0.2",
  *                 "10.0.0.3")
- *             .mtu(1450)
+ *             .mtu(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1450) (example.pp:3,16-20)))
  *             .dns("1.1.1.1")
  *             .dnsZone("example.com")
  *             .ipam("pve")

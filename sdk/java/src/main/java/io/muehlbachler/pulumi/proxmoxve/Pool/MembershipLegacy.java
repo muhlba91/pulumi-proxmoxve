@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var testVm1 = new VmLegacy("testVm1", VmLegacyArgs.builder()
- *             .vmId(1234)
+ *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1234) (example.pp:2,19-23)))
  *             .nodeName("pve")
  *             .started(false)
  *             .build());

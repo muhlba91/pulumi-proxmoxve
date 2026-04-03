@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * // ...which we will go through in order to fetch the whole record for each resource.
  * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: proxmoxve.getHaresourceLegacy({
  *     resourceId: __value,
- * }) })));
+ * }) }), {}));
  * export const proxmoxVirtualEnvironmentHaresourcesFull = example;
  * ```
  */
@@ -94,7 +94,7 @@ export interface GetHaresourceLegacyResult {
  * // ...which we will go through in order to fetch the whole record for each resource.
  * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: proxmoxve.getHaresourceLegacy({
  *     resourceId: __value,
- * }) })));
+ * }) }), {}));
  * export const proxmoxVirtualEnvironmentHaresourcesFull = example;
  * ```
  */

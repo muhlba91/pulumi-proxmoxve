@@ -32,7 +32,7 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
     ///             "pve",
     ///         },
     ///         Controller = "evpn-controller1",
-    ///         VrfVxlan = 4000,
+    ///         VrfVxlan = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(4000) (example.pp:4,16-20)),
     ///         AdvertiseSubnets = true,
     ///         DisableArpNdSuppression = false,
     ///         ExitNodes = new[]
@@ -43,7 +43,7 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
     ///         ExitNodesLocalRouting = true,
     ///         PrimaryExitNode = "pve-exit1",
     ///         RtImport = "65000:65000",
-    ///         Mtu = 1450,
+    ///         Mtu = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1450) (example.pp:14,29-33)),
     ///         Dns = "1.1.1.1",
     ///         DnsZone = "example.com",
     ///         Ipam = "pve",

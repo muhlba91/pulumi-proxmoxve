@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var proxmoxVirtualEnvironmentCertificate = new PrivateKey("proxmoxVirtualEnvironmentCertificate", PrivateKeyArgs.builder()
  *             .algorithm("RSA")
- *             .rsaBits(2048)
+ *             .rsaBits(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:9,19-23)))
  *             .build());
  * 
  *         var proxmoxVirtualEnvironmentCertificateSelfSignedCert = new SelfSignedCert("proxmoxVirtualEnvironmentCertificateSelfSignedCert", SelfSignedCertArgs.builder()
@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *                 .commonName("example.com")
  *                 .organization("Terraform Provider for Proxmox")
  *                 .build())
- *             .validityPeriodHours(8760)
+ *             .validityPeriodHours(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(8760) (example.pp:20,25-29)))
  *             .allowedUses(            
  *                 "key_encipherment",
  *                 "digital_signature",

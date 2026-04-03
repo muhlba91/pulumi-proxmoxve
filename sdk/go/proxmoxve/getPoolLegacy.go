@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := proxmoxve.LookupPoolLegacy(ctx, &proxmoxve.LookupPoolLegacyArgs{
+//			_, err := proxmoxve.GetPoolLegacy(ctx, &proxmoxve.LookupPoolLegacyArgs{
 //				PoolId: "operations",
 //			}, nil)
 //			if err != nil {

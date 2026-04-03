@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := proxmoxve.LookupContainerLegacy(ctx, &proxmoxve.LookupContainerLegacyArgs{
+//			_, err := proxmoxve.GetContainerLegacy(ctx, &proxmoxve.LookupContainerLegacyArgs{
 //				NodeName: "test",
 //				VmId:     100,
 //			}, nil)

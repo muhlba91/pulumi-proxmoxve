@@ -27,7 +27,7 @@ namespace Pulumi.ProxmoxVE
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // This will fetch the set of HA group identifiers...
-        ///     var all = ProxmoxVE.GetHagroupsLegacy.Invoke();
+        ///     var all = ProxmoxVE.Index.GetHagroupsLegacy.Invoke();
         /// 
         ///     // ...which we will go through in order to fetch the whole data on each group.
         ///     var example = ;
@@ -58,7 +58,7 @@ namespace Pulumi.ProxmoxVE
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // This will fetch the set of HA group identifiers...
-        ///     var all = ProxmoxVE.GetHagroupsLegacy.Invoke();
+        ///     var all = ProxmoxVE.Index.GetHagroupsLegacy.Invoke();
         /// 
         ///     // ...which we will go through in order to fetch the whole data on each group.
         ///     var example = ;
@@ -89,7 +89,7 @@ namespace Pulumi.ProxmoxVE
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // This will fetch the set of HA group identifiers...
-        ///     var all = ProxmoxVE.GetHagroupsLegacy.Invoke();
+        ///     var all = ProxmoxVE.Index.GetHagroupsLegacy.Invoke();
         /// 
         ///     // ...which we will go through in order to fetch the whole data on each group.
         ///     var example = ;

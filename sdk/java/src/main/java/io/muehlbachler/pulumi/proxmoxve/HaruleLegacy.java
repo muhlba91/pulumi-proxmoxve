@@ -63,9 +63,9 @@ import javax.annotation.Nullable;
  *                 "vm:100",
  *                 "vm:101")
  *             .nodes(Map.ofEntries(
- *                 Map.entry("node1", 2),
- *                 Map.entry("node2", 1),
- *                 Map.entry("node3", 1)
+ *                 Map.entry("node1", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:9,13-14))),
+ *                 Map.entry("node2", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1) (example.pp:11,13-14))),
+ *                 Map.entry("node3", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1) (example.pp:12,13-14)))
  *             ))
  *             .strict(false)
  *             .build());

@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *             .forwardPolicy("ACCEPT")
  *             .logRatelimit(FirewallLegacyLogRatelimitArgs.builder()
  *                 .enabled(false)
- *                 .burst(10)
+ *                 .burst(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(10) (example.pp:9,15-17)))
  *                 .rate("5/second")
  *                 .build())
  *             .build());

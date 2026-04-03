@@ -25,7 +25,7 @@ namespace Pulumi.ProxmoxVE.User
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // if creating a user token, the user must be created first
-    ///     var user = new ProxmoxVE.UserLegacy("user", new()
+    ///     var user = new ProxmoxVE.Index.UserLegacy("user", new()
     ///     {
     ///         Comment = "Managed by Pulumi",
     ///         Email = "user@pve",

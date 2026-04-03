@@ -26,7 +26,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ubuntuIso = ProxmoxVE.GetFileLegacy.Invoke(new()
+        ///     var ubuntuIso = ProxmoxVE.Index.GetFileLegacy.Invoke(new()
         ///     {
         ///         NodeName = "pve",
         ///         DatastoreId = "local",
@@ -34,7 +34,7 @@ namespace Pulumi.ProxmoxVE
         ///         FileName = "ubuntu-22.04.3-live-server-amd64.iso",
         ///     });
         /// 
-        ///     var ubuntuContainerTemplate = ProxmoxVE.GetFileLegacy.Invoke(new()
+        ///     var ubuntuContainerTemplate = ProxmoxVE.Index.GetFileLegacy.Invoke(new()
         ///     {
         ///         NodeName = "pve",
         ///         DatastoreId = "local",
@@ -42,7 +42,7 @@ namespace Pulumi.ProxmoxVE
         ///         FileName = "ubuntu-22.04-standard_22.04-1_amd64.tar.zst",
         ///     });
         /// 
-        ///     var cloudInitSnippet = ProxmoxVE.GetFileLegacy.Invoke(new()
+        ///     var cloudInitSnippet = ProxmoxVE.Index.GetFileLegacy.Invoke(new()
         ///     {
         ///         NodeName = "pve",
         ///         DatastoreId = "local",
@@ -50,7 +50,7 @@ namespace Pulumi.ProxmoxVE
         ///         FileName = "cloud-init-config.yaml",
         ///     });
         /// 
-        ///     var importedFile = ProxmoxVE.GetFileLegacy.Invoke(new()
+        ///     var importedFile = ProxmoxVE.Index.GetFileLegacy.Invoke(new()
         ///     {
         ///         NodeName = "pve",
         ///         DatastoreId = "local",
@@ -58,21 +58,21 @@ namespace Pulumi.ProxmoxVE
         ///         FileName = "imported-config.yaml",
         ///     });
         /// 
-        ///     var example = new ProxmoxVE.VmLegacy("example", new()
+        ///     var example = new ProxmoxVE.Index.VmLegacy("example", new()
         ///     {
         ///         NodeName = "pve",
-        ///         VmId = 100,
+        ///         VmId = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:53,14-17)),
         ///         Cdrom = new ProxmoxVE.Inputs.VmLegacyCdromArgs
         ///         {
         ///             FileId = ubuntuIso.Apply(getFileLegacyResult =&gt; getFileLegacyResult.Id),
         ///         },
         ///         Cpu = new ProxmoxVE.Inputs.VmLegacyCpuArgs
         ///         {
-        ///             Cores = 2,
+        ///             Cores = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:59,13-14)),
         ///         },
         ///         Memory = new ProxmoxVE.Inputs.VmLegacyMemoryArgs
         ///         {
-        ///             Dedicated = 2048,
+        ///             Dedicated = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:62,17-21)),
         ///         },
         ///         Disks = new[]
         ///         {
@@ -80,7 +80,7 @@ namespace Pulumi.ProxmoxVE
         ///             {
         ///                 DatastoreId = "local-lvm",
         ///                 FileFormat = "qcow2",
-        ///                 Size = 20,
+        ///                 Size = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(20) (example.pp:67,19-21)),
         ///             },
         ///         },
         ///         NetworkDevices = new[]
@@ -119,7 +119,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ubuntuIso = ProxmoxVE.GetFileLegacy.Invoke(new()
+        ///     var ubuntuIso = ProxmoxVE.Index.GetFileLegacy.Invoke(new()
         ///     {
         ///         NodeName = "pve",
         ///         DatastoreId = "local",
@@ -127,7 +127,7 @@ namespace Pulumi.ProxmoxVE
         ///         FileName = "ubuntu-22.04.3-live-server-amd64.iso",
         ///     });
         /// 
-        ///     var ubuntuContainerTemplate = ProxmoxVE.GetFileLegacy.Invoke(new()
+        ///     var ubuntuContainerTemplate = ProxmoxVE.Index.GetFileLegacy.Invoke(new()
         ///     {
         ///         NodeName = "pve",
         ///         DatastoreId = "local",
@@ -135,7 +135,7 @@ namespace Pulumi.ProxmoxVE
         ///         FileName = "ubuntu-22.04-standard_22.04-1_amd64.tar.zst",
         ///     });
         /// 
-        ///     var cloudInitSnippet = ProxmoxVE.GetFileLegacy.Invoke(new()
+        ///     var cloudInitSnippet = ProxmoxVE.Index.GetFileLegacy.Invoke(new()
         ///     {
         ///         NodeName = "pve",
         ///         DatastoreId = "local",
@@ -143,7 +143,7 @@ namespace Pulumi.ProxmoxVE
         ///         FileName = "cloud-init-config.yaml",
         ///     });
         /// 
-        ///     var importedFile = ProxmoxVE.GetFileLegacy.Invoke(new()
+        ///     var importedFile = ProxmoxVE.Index.GetFileLegacy.Invoke(new()
         ///     {
         ///         NodeName = "pve",
         ///         DatastoreId = "local",
@@ -151,21 +151,21 @@ namespace Pulumi.ProxmoxVE
         ///         FileName = "imported-config.yaml",
         ///     });
         /// 
-        ///     var example = new ProxmoxVE.VmLegacy("example", new()
+        ///     var example = new ProxmoxVE.Index.VmLegacy("example", new()
         ///     {
         ///         NodeName = "pve",
-        ///         VmId = 100,
+        ///         VmId = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:53,14-17)),
         ///         Cdrom = new ProxmoxVE.Inputs.VmLegacyCdromArgs
         ///         {
         ///             FileId = ubuntuIso.Apply(getFileLegacyResult =&gt; getFileLegacyResult.Id),
         ///         },
         ///         Cpu = new ProxmoxVE.Inputs.VmLegacyCpuArgs
         ///         {
-        ///             Cores = 2,
+        ///             Cores = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:59,13-14)),
         ///         },
         ///         Memory = new ProxmoxVE.Inputs.VmLegacyMemoryArgs
         ///         {
-        ///             Dedicated = 2048,
+        ///             Dedicated = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:62,17-21)),
         ///         },
         ///         Disks = new[]
         ///         {
@@ -173,7 +173,7 @@ namespace Pulumi.ProxmoxVE
         ///             {
         ///                 DatastoreId = "local-lvm",
         ///                 FileFormat = "qcow2",
-        ///                 Size = 20,
+        ///                 Size = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(20) (example.pp:67,19-21)),
         ///             },
         ///         },
         ///         NetworkDevices = new[]
@@ -212,7 +212,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ubuntuIso = ProxmoxVE.GetFileLegacy.Invoke(new()
+        ///     var ubuntuIso = ProxmoxVE.Index.GetFileLegacy.Invoke(new()
         ///     {
         ///         NodeName = "pve",
         ///         DatastoreId = "local",
@@ -220,7 +220,7 @@ namespace Pulumi.ProxmoxVE
         ///         FileName = "ubuntu-22.04.3-live-server-amd64.iso",
         ///     });
         /// 
-        ///     var ubuntuContainerTemplate = ProxmoxVE.GetFileLegacy.Invoke(new()
+        ///     var ubuntuContainerTemplate = ProxmoxVE.Index.GetFileLegacy.Invoke(new()
         ///     {
         ///         NodeName = "pve",
         ///         DatastoreId = "local",
@@ -228,7 +228,7 @@ namespace Pulumi.ProxmoxVE
         ///         FileName = "ubuntu-22.04-standard_22.04-1_amd64.tar.zst",
         ///     });
         /// 
-        ///     var cloudInitSnippet = ProxmoxVE.GetFileLegacy.Invoke(new()
+        ///     var cloudInitSnippet = ProxmoxVE.Index.GetFileLegacy.Invoke(new()
         ///     {
         ///         NodeName = "pve",
         ///         DatastoreId = "local",
@@ -236,7 +236,7 @@ namespace Pulumi.ProxmoxVE
         ///         FileName = "cloud-init-config.yaml",
         ///     });
         /// 
-        ///     var importedFile = ProxmoxVE.GetFileLegacy.Invoke(new()
+        ///     var importedFile = ProxmoxVE.Index.GetFileLegacy.Invoke(new()
         ///     {
         ///         NodeName = "pve",
         ///         DatastoreId = "local",
@@ -244,21 +244,21 @@ namespace Pulumi.ProxmoxVE
         ///         FileName = "imported-config.yaml",
         ///     });
         /// 
-        ///     var example = new ProxmoxVE.VmLegacy("example", new()
+        ///     var example = new ProxmoxVE.Index.VmLegacy("example", new()
         ///     {
         ///         NodeName = "pve",
-        ///         VmId = 100,
+        ///         VmId = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:53,14-17)),
         ///         Cdrom = new ProxmoxVE.Inputs.VmLegacyCdromArgs
         ///         {
         ///             FileId = ubuntuIso.Apply(getFileLegacyResult =&gt; getFileLegacyResult.Id),
         ///         },
         ///         Cpu = new ProxmoxVE.Inputs.VmLegacyCpuArgs
         ///         {
-        ///             Cores = 2,
+        ///             Cores = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:59,13-14)),
         ///         },
         ///         Memory = new ProxmoxVE.Inputs.VmLegacyMemoryArgs
         ///         {
-        ///             Dedicated = 2048,
+        ///             Dedicated = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:62,17-21)),
         ///         },
         ///         Disks = new[]
         ///         {
@@ -266,7 +266,7 @@ namespace Pulumi.ProxmoxVE
         ///             {
         ///                 DatastoreId = "local-lvm",
         ///                 FileFormat = "qcow2",
-        ///                 Size = 20,
+        ///                 Size = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(20) (example.pp:67,19-21)),
         ///             },
         ///         },
         ///         NetworkDevices = new[]

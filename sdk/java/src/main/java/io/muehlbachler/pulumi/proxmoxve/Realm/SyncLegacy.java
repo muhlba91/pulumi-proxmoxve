@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *         var example = new LdapLegacy("example", LdapLegacyArgs.builder()
  *             .realm("example-ldap")
  *             .server1("ldap.example.com")
- *             .port(389)
+ *             .port(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(389) (example.pp:3,17-20)))
  *             .baseDn("ou=people,dc=example,dc=com")
  *             .userAttr("uid")
  *             .groupDn("ou=groups,dc=example,dc=com")

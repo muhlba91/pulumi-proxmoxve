@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * // ...which we will go through in order to fetch the whole data on each account.
  * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: proxmoxve.acme.getAccountLegacy({
  *     name: __value,
- * }) })));
+ * }) }), {}));
  * export const dataProxmoxVirtualEnvironmentAcmeAccount = example;
  * ```
  */
@@ -89,7 +89,7 @@ export interface GetAccountLegacyResult {
  * // ...which we will go through in order to fetch the whole data on each account.
  * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: proxmoxve.acme.getAccountLegacy({
  *     name: __value,
- * }) })));
+ * }) }), {}));
  * export const dataProxmoxVirtualEnvironmentAcmeAccount = example;
  * ```
  */

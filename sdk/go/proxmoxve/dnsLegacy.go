@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			firstNodeDnsConfiguration, err := proxmoxve.LookupDnsLegacy(ctx, &proxmoxve.LookupDnsLegacyArgs{
+//			firstNodeDnsConfiguration, err := proxmoxve.GetDnsLegacy(ctx, &proxmoxve.LookupDnsLegacyArgs{
 //				NodeName: "first-node",
 //			}, nil)
 //			if err != nil {

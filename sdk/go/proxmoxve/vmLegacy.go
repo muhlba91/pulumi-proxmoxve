@@ -106,7 +106,8 @@ import (
 //							std.TrimspaceOutput(ctx, std.TrimspaceOutputArgs{
 //								Input: ubuntuVmKey.PublicKeyOpenssh,
 //							}, nil).ApplyT(func(invoke std.TrimspaceResult) (*string, error) {
-//								return invoke.Result, nil
+//								val := invoke.Result
+//								return &val, nil
 //							}).(pulumi.StringPtrOutput),
 //						},
 //						Password: ubuntuVmPassword.Result,

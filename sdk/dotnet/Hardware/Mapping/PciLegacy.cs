@@ -34,7 +34,7 @@ namespace Pulumi.ProxmoxVE.Hardware.Mapping
     ///             {
     ///                 Comment = "This is a device specific comment",
     ///                 Id = "8086:5916",
-    ///                 IommuGroup = 0,
+    ///                 IommuGroup = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(0) (example.pp:6,19-20)),
     ///                 Node = "pve",
     ///                 Path = "0000:00:02.0",
     ///                 SubsystemId = "8086:2068",

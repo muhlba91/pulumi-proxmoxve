@@ -22,7 +22,7 @@ namespace Pulumi.ProxmoxVE
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var operationsMonitoring = new ProxmoxVE.RoleLegacy("operations_monitoring", new()
+    ///     var operationsMonitoring = new ProxmoxVE.Index.RoleLegacy("operations_monitoring", new()
     ///     {
     ///         RoleId = "operations-monitoring",
     ///         Privileges = new[]

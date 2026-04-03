@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *             .resourceId("evpn1")
  *             .nodes("pve")
  *             .controller("evpn-controller1")
- *             .vrfVxlan(4000)
+ *             .vrfVxlan(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(4000) (example.pp:4,16-20)))
  *             .advertiseSubnets(true)
  *             .disableArpNdSuppression(false)
  *             .exitNodes(            
@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *             .exitNodesLocalRouting(true)
  *             .primaryExitNode("pve-exit1")
  *             .rtImport("65000:65000")
- *             .mtu(1450)
+ *             .mtu(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1450) (example.pp:14,29-33)))
  *             .dns("1.1.1.1")
  *             .dnsZone("example.com")
  *             .ipam("pve")

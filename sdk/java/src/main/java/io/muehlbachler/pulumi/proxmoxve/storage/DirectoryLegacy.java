@@ -56,8 +56,8 @@ import javax.annotation.Nullable;
  *             .shared(true)
  *             .disable(false)
  *             .backups(DirectoryLegacyBackupsArgs.builder()
- *                 .maxProtectedBackups(5)
- *                 .keepDaily(7)
+ *                 .maxProtectedBackups(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(5) (example.pp:9,27-28)))
+ *                 .keepDaily(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(7) (example.pp:10,27-28)))
  *                 .build())
  *             .build());
  * 

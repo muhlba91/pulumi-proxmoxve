@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := proxmoxve.LookupGroupLegacy(ctx, &proxmoxve.LookupGroupLegacyArgs{
+//			_, err := proxmoxve.GetGroupLegacy(ctx, &proxmoxve.LookupGroupLegacyArgs{
 //				GroupId: "operations-team",
 //			}, nil)
 //			if err != nil {

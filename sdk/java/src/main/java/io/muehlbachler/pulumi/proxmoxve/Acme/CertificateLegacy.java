@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  *         var cloudflare = new PluginLegacy("cloudflare", PluginLegacyArgs.builder()
  *             .plugin("cloudflare")
  *             .api("cf")
- *             .validationDelay(120)
+ *             .validationDelay(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(120) (example.pp:22,21-24)))
  *             .data(Map.ofEntries(
  *                 Map.entry("CF_Account_ID", "your-cloudflare-account-id"),
  *                 Map.entry("CF_Token", "your-cloudflare-api-token"),

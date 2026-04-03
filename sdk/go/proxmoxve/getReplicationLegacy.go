@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := proxmoxve.LookupReplicationLegacy(ctx, &proxmoxve.LookupReplicationLegacyArgs{
+//			example, err := proxmoxve.GetReplicationLegacy(ctx, &proxmoxve.LookupReplicationLegacyArgs{
 //				Id: "100-0",
 //			}, nil)
 //			if err != nil {

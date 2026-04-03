@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *         // SDN Zone (Simple) - Basic zone for simple vnets
  *         var exampleZone1 = new SimpleLegacy("exampleZone1", SimpleLegacyArgs.builder()
  *             .resourceId("zone1")
- *             .mtu(1500)
+ *             .mtu(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1500) (example.pp:7,16-20)))
  *             .dns("1.1.1.1")
  *             .dnsZone("example.com")
  *             .ipam("pve")
@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *         // SDN Zone (Simple) - Second zone for demonstration
  *         var exampleZone2 = new SimpleLegacy("exampleZone2", SimpleLegacyArgs.builder()
  *             .resourceId("zone2")
- *             .mtu(1500)
+ *             .mtu(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1500) (example.pp:25,16-20)))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(finalizer)
  *                 .build());

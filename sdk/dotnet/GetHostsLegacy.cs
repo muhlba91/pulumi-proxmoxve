@@ -24,7 +24,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var firstNodeHostEntries = ProxmoxVE.GetHostsLegacy.Invoke(new()
+        ///     var firstNodeHostEntries = ProxmoxVE.Index.GetHostsLegacy.Invoke(new()
         ///     {
         ///         NodeName = "first-node",
         ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var firstNodeHostEntries = ProxmoxVE.GetHostsLegacy.Invoke(new()
+        ///     var firstNodeHostEntries = ProxmoxVE.Index.GetHostsLegacy.Invoke(new()
         ///     {
         ///         NodeName = "first-node",
         ///     });
@@ -72,7 +72,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var firstNodeHostEntries = ProxmoxVE.GetHostsLegacy.Invoke(new()
+        ///     var firstNodeHostEntries = ProxmoxVE.Index.GetHostsLegacy.Invoke(new()
         ///     {
         ///         NodeName = "first-node",
         ///     });

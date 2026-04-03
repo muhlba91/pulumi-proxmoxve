@@ -165,7 +165,7 @@ func callPlainInner(
 func PkgResourceDefaultOpts(opts []pulumi.ResourceOption) []pulumi.ResourceOption {
 	defaults := []pulumi.ResourceOption{}
 	defaults = append(defaults, pulumi.PluginDownloadURL("github://api.github.com/muhlba91/pulumi-proxmoxve"))
-	version := semver.MustParse("7.14.0-alpha.1775133707+cd9e2928.dirty")
+	version := semver.MustParse("7.14.0-alpha.1775155851+06ca6479.dirty")
 	if !version.Equals(semver.Version{}) {
 		defaults = append(defaults, pulumi.Version(version.String()))
 	}
@@ -176,7 +176,7 @@ func PkgResourceDefaultOpts(opts []pulumi.ResourceOption) []pulumi.ResourceOptio
 func PkgInvokeDefaultOpts(opts []pulumi.InvokeOption) []pulumi.InvokeOption {
 	defaults := []pulumi.InvokeOption{}
 	defaults = append(defaults, pulumi.PluginDownloadURL("github://api.github.com/muhlba91/pulumi-proxmoxve"))
-	version := semver.MustParse("7.14.0-alpha.1775133707+cd9e2928.dirty")
+	version := semver.MustParse("7.14.0-alpha.1775155851+06ca6479.dirty")
 	if !version.Equals(semver.Version{}) {
 		defaults = append(defaults, pulumi.Version(version.String()))
 	}

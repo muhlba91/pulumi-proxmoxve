@@ -33,7 +33,7 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
     ///             "10.0.0.2",
     ///             "10.0.0.3",
     ///         },
-    ///         Mtu = 1450,
+    ///         Mtu = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1450) (example.pp:3,16-20)),
     ///         Dns = "1.1.1.1",
     ///         DnsZone = "example.com",
     ///         Ipam = "pve",

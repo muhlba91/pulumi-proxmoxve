@@ -38,7 +38,7 @@ namespace Pulumi.ProxmoxVE.Network.Linux
     ///         NodeName = "pve",
     ///         Name = "vlan_lab",
     ///         Interface = "eno0",
-    ///         VlanId = 98,
+    ///         VlanId = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(98) (example.pp:13,15-17)),
     ///         Comment = "VLAN 98",
     ///     });
     /// 

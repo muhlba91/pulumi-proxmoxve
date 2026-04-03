@@ -29,15 +29,15 @@ namespace Pulumi.ProxmoxVE.Cluster
     ///         Language = "en",
     ///         Keyboard = "pl",
     ///         EmailFrom = "ged@gont.earthsea",
-    ///         BandwidthLimitMigration = 555555,
-    ///         BandwidthLimitDefault = 666666,
-    ///         MaxWorkers = 5,
+    ///         BandwidthLimitMigration = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(555555) (example.pp:4,29-35)),
+    ///         BandwidthLimitDefault = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(666666) (example.pp:5,29-35)),
+    ///         MaxWorkers = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(5) (example.pp:6,29-30)),
     ///         MigrationCidr = "10.0.0.0/8",
     ///         MigrationType = "secure",
     ///         NextId = new ProxmoxVE.Cluster.Inputs.OptionsLegacyNextIdArgs
     ///         {
-    ///             Lower = 100,
-    ///             Upper = 999999999,
+    ///             Lower = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:10,13-16)),
+    ///             Upper = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(9.99999999e+08) (example.pp:11,13-22)),
     ///         },
     ///         Notify = new ProxmoxVE.Cluster.Inputs.OptionsLegacyNotifyArgs
     ///         {

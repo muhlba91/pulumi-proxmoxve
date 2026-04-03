@@ -26,21 +26,21 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(async() =&gt; 
         /// {
-        ///     var isoFiles = await ProxmoxVE.GetFiles.InvokeAsync(new()
+        ///     var isoFiles = await ProxmoxVE.Index.GetFiles.InvokeAsync(new()
         ///     {
         ///         NodeName = "pve",
         ///         DatastoreId = "local",
         ///         ContentType = "iso",
         ///     });
         /// 
-        ///     var imageExists = (await Std.Anytrue.InvokeAsync(new()
+        ///     var imageExists = (await Std.Index.Anytrue.InvokeAsync(new()
         ///     {
         ///         Input = ,
         ///     })).Result;
         /// 
         ///     // Only download if the image doesn't already exist
         ///     var ubuntuNoble = new List&lt;ProxmoxVE.Download.FileLegacy&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; imageExists ? 0 : 1; rangeIndex++)
+        ///     for (var rangeIndex = 0; rangeIndex &lt; imageExists ? %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(0) (example.pp:14,27-28)) : %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1) (example.pp:14,31-32)); rangeIndex++)
         ///     {
         ///         var range = new { Value = rangeIndex };
         ///         ubuntuNoble.Add(new ProxmoxVE.Download.FileLegacy($"ubuntu_noble-{range.Value}", new()
@@ -52,7 +52,7 @@ namespace Pulumi.ProxmoxVE
         ///         }));
         ///     }
         ///     // List all files without filtering
-        ///     var allFiles = await ProxmoxVE.GetFiles.InvokeAsync(new()
+        ///     var allFiles = await ProxmoxVE.Index.GetFiles.InvokeAsync(new()
         ///     {
         ///         NodeName = "pve",
         ///         DatastoreId = "local",
@@ -84,21 +84,21 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(async() =&gt; 
         /// {
-        ///     var isoFiles = await ProxmoxVE.GetFiles.InvokeAsync(new()
+        ///     var isoFiles = await ProxmoxVE.Index.GetFiles.InvokeAsync(new()
         ///     {
         ///         NodeName = "pve",
         ///         DatastoreId = "local",
         ///         ContentType = "iso",
         ///     });
         /// 
-        ///     var imageExists = (await Std.Anytrue.InvokeAsync(new()
+        ///     var imageExists = (await Std.Index.Anytrue.InvokeAsync(new()
         ///     {
         ///         Input = ,
         ///     })).Result;
         /// 
         ///     // Only download if the image doesn't already exist
         ///     var ubuntuNoble = new List&lt;ProxmoxVE.Download.FileLegacy&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; imageExists ? 0 : 1; rangeIndex++)
+        ///     for (var rangeIndex = 0; rangeIndex &lt; imageExists ? %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(0) (example.pp:14,27-28)) : %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1) (example.pp:14,31-32)); rangeIndex++)
         ///     {
         ///         var range = new { Value = rangeIndex };
         ///         ubuntuNoble.Add(new ProxmoxVE.Download.FileLegacy($"ubuntu_noble-{range.Value}", new()
@@ -110,7 +110,7 @@ namespace Pulumi.ProxmoxVE
         ///         }));
         ///     }
         ///     // List all files without filtering
-        ///     var allFiles = await ProxmoxVE.GetFiles.InvokeAsync(new()
+        ///     var allFiles = await ProxmoxVE.Index.GetFiles.InvokeAsync(new()
         ///     {
         ///         NodeName = "pve",
         ///         DatastoreId = "local",
@@ -142,21 +142,21 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(async() =&gt; 
         /// {
-        ///     var isoFiles = await ProxmoxVE.GetFiles.InvokeAsync(new()
+        ///     var isoFiles = await ProxmoxVE.Index.GetFiles.InvokeAsync(new()
         ///     {
         ///         NodeName = "pve",
         ///         DatastoreId = "local",
         ///         ContentType = "iso",
         ///     });
         /// 
-        ///     var imageExists = (await Std.Anytrue.InvokeAsync(new()
+        ///     var imageExists = (await Std.Index.Anytrue.InvokeAsync(new()
         ///     {
         ///         Input = ,
         ///     })).Result;
         /// 
         ///     // Only download if the image doesn't already exist
         ///     var ubuntuNoble = new List&lt;ProxmoxVE.Download.FileLegacy&gt;();
-        ///     for (var rangeIndex = 0; rangeIndex &lt; imageExists ? 0 : 1; rangeIndex++)
+        ///     for (var rangeIndex = 0; rangeIndex &lt; imageExists ? %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(0) (example.pp:14,27-28)) : %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1) (example.pp:14,31-32)); rangeIndex++)
         ///     {
         ///         var range = new { Value = rangeIndex };
         ///         ubuntuNoble.Add(new ProxmoxVE.Download.FileLegacy($"ubuntu_noble-{range.Value}", new()
@@ -168,7 +168,7 @@ namespace Pulumi.ProxmoxVE
         ///         }));
         ///     }
         ///     // List all files without filtering
-        ///     var allFiles = await ProxmoxVE.GetFiles.InvokeAsync(new()
+        ///     var allFiles = await ProxmoxVE.Index.GetFiles.InvokeAsync(new()
         ///     {
         ///         NodeName = "pve",
         ///         DatastoreId = "local",

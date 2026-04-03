@@ -40,8 +40,8 @@ namespace Pulumi.ProxmoxVE.Storage
     ///         Disable = false,
     ///         Backups = new ProxmoxVE.Storage.Inputs.DirectoryLegacyBackupsArgs
     ///         {
-    ///             MaxProtectedBackups = 5,
-    ///             KeepDaily = 7,
+    ///             MaxProtectedBackups = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(5) (example.pp:9,27-28)),
+    ///             KeepDaily = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(7) (example.pp:10,27-28)),
     ///         },
     ///     });
     /// 

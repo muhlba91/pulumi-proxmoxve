@@ -44,12 +44,12 @@ namespace Pulumi.ProxmoxVE.Cloned
     ///         Name = "basic-clone",
     ///         Clone = new ProxmoxVE.Cloned.Inputs.VmLegacyCloneArgs
     ///         {
-    ///             SourceVmId = 100,
+    ///             SourceVmId = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:6,18-21)),
     ///             Full = true,
     ///         },
     ///         Cpu = new ProxmoxVE.Cloned.Inputs.VmLegacyCpuArgs
     ///         {
-    ///             Cores = 4,
+    ///             Cores = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(4) (example.pp:12,13-14)),
     ///         },
     ///     });
     /// 
@@ -60,7 +60,7 @@ namespace Pulumi.ProxmoxVE.Cloned
     ///         Name = "network-clone",
     ///         Clone = new ProxmoxVE.Cloned.Inputs.VmLegacyCloneArgs
     ///         {
-    ///             SourceVmId = 100,
+    ///             SourceVmId = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:23,18-21)),
     ///         },
     ///         Network = 
     ///         {
@@ -68,7 +68,7 @@ namespace Pulumi.ProxmoxVE.Cloned
     ///             {
     ///                 Bridge = "vmbr0",
     ///                 Model = "virtio",
-    ///                 Tag = 100,
+    ///                 Tag = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:29,16-19)),
     ///             } },
     ///             { "net1", new ProxmoxVE.Cloned.Inputs.VmLegacyNetworkArgs
     ///             {
@@ -80,7 +80,7 @@ namespace Pulumi.ProxmoxVE.Cloned
     ///         },
     ///         Cpu = new ProxmoxVE.Cloned.Inputs.VmLegacyCpuArgs
     ///         {
-    ///             Cores = 2,
+    ///             Cores = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:40,13-14)),
     ///         },
     ///     });
     /// 
@@ -91,7 +91,7 @@ namespace Pulumi.ProxmoxVE.Cloned
     ///         Name = "disk-clone",
     ///         Clone = new ProxmoxVE.Cloned.Inputs.VmLegacyCloneArgs
     ///         {
-    ///             SourceVmId = 100,
+    ///             SourceVmId = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:51,23-26)),
     ///             TargetDatastore = "local-lvm",
     ///         },
     ///         Disk = 
@@ -99,14 +99,14 @@ namespace Pulumi.ProxmoxVE.Cloned
     ///             { "scsi0", new ProxmoxVE.Cloned.Inputs.VmLegacyDiskArgs
     ///             {
     ///                 DatastoreId = "local-lvm",
-    ///                 SizeGb = 50,
+    ///                 SizeGb = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(50) (example.pp:57,21-23)),
     ///                 Discard = "on",
     ///                 Ssd = true,
     ///             } },
     ///             { "scsi1", new ProxmoxVE.Cloned.Inputs.VmLegacyDiskArgs
     ///             {
     ///                 DatastoreId = "local-lvm",
-    ///                 SizeGb = 100,
+    ///                 SizeGb = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:63,21-24)),
     ///                 Backup = false,
     ///             } },
     ///         },
@@ -119,7 +119,7 @@ namespace Pulumi.ProxmoxVE.Cloned
     ///         Name = "minimal-clone",
     ///         Clone = new ProxmoxVE.Cloned.Inputs.VmLegacyCloneArgs
     ///         {
-    ///             SourceVmId = 100,
+    ///             SourceVmId = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:76,18-21)),
     ///         },
     ///         Network = 
     ///         {
@@ -152,24 +152,24 @@ namespace Pulumi.ProxmoxVE.Cloned
     ///         },
     ///         Clone = new ProxmoxVE.Cloned.Inputs.VmLegacyCloneArgs
     ///         {
-    ///             SourceVmId = 100,
+    ///             SourceVmId = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:98,23-26)),
     ///             SourceNodeName = "pve",
     ///             Full = true,
     ///             TargetDatastore = "local-lvm",
-    ///             Retries = 3,
+    ///             Retries = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(3) (example.pp:102,23-24)),
     ///         },
     ///         Cpu = new ProxmoxVE.Cloned.Inputs.VmLegacyCpuArgs
     ///         {
-    ///             Cores = 8,
-    ///             Sockets = 1,
+    ///             Cores = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(8) (example.pp:105,20-21)),
+    ///             Sockets = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1) (example.pp:106,20-21)),
     ///             Architecture = "x86_64",
     ///             Type = "host",
     ///         },
     ///         Memory = new ProxmoxVE.Cloned.Inputs.VmLegacyMemoryArgs
     ///         {
-    ///             Size = 8192,
-    ///             Balloon = 2048,
-    ///             Shares = 2000,
+    ///             Size = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(8192) (example.pp:111,15-19)),
+    ///             Balloon = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:112,15-19)),
+    ///             Shares = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2000) (example.pp:113,15-19)),
     ///         },
     ///         Network = 
     ///         {
@@ -177,9 +177,9 @@ namespace Pulumi.ProxmoxVE.Cloned
     ///             {
     ///                 Bridge = "vmbr0",
     ///                 Model = "virtio",
-    ///                 Tag = 100,
+    ///                 Tag = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:119,19-22)),
     ///                 Firewall = true,
-    ///                 RateLimit = 100,
+    ///                 RateLimit = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:121,19-22)),
     ///             } },
     ///         },
     ///         Disk = 
@@ -187,7 +187,7 @@ namespace Pulumi.ProxmoxVE.Cloned
     ///             { "scsi0", new ProxmoxVE.Cloned.Inputs.VmLegacyDiskArgs
     ///             {
     ///                 DatastoreId = "local-lvm",
-    ///                 SizeGb = 100,
+    ///                 SizeGb = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:128,21-24)),
     ///                 Discard = "on",
     ///                 Iothread = true,
     ///                 Ssd = true,
@@ -197,7 +197,7 @@ namespace Pulumi.ProxmoxVE.Cloned
     ///         Vga = new ProxmoxVE.Cloned.Inputs.VmLegacyVgaArgs
     ///         {
     ///             Type = "std",
-    ///             Memory = 16,
+    ///             Memory = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(16) (example.pp:137,14-16)),
     ///         },
     ///         Delete = new ProxmoxVE.Cloned.Inputs.VmLegacyDeleteArgs
     ///         {
@@ -224,12 +224,12 @@ namespace Pulumi.ProxmoxVE.Cloned
     ///         Name = "test-vm",
     ///         Clone = new ProxmoxVE.Cloned.Inputs.VmLegacyCloneArgs
     ///         {
-    ///             SourceVmId = 100,
+    ///             SourceVmId = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:162,18-21)),
     ///             Full = false,
     ///         },
     ///         Cpu = new ProxmoxVE.Cloned.Inputs.VmLegacyCpuArgs
     ///         {
-    ///             Cores = 2,
+    ///             Cores = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:167,13-14)),
     ///         },
     ///         Network = 
     ///         {
@@ -248,12 +248,12 @@ namespace Pulumi.ProxmoxVE.Cloned
     ///         Name = "pooled-vm",
     ///         Clone = new ProxmoxVE.Cloned.Inputs.VmLegacyCloneArgs
     ///         {
-    ///             SourceVmId = 100,
+    ///             SourceVmId = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:184,18-21)),
     ///             PoolId = "production",
     ///         },
     ///         Cpu = new ProxmoxVE.Cloned.Inputs.VmLegacyCpuArgs
     ///         {
-    ///             Cores = 4,
+    ///             Cores = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(4) (example.pp:188,13-14)),
     ///         },
     ///     });
     /// 
@@ -264,11 +264,11 @@ namespace Pulumi.ProxmoxVE.Cloned
     ///         NodeName = "pve",
     ///         Clone = new ProxmoxVE.Cloned.Inputs.VmLegacyCloneArgs
     ///         {
-    ///             SourceVmId = 100,
+    ///             SourceVmId = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:199,18-21)),
     ///         },
     ///         Cpu = new ProxmoxVE.Cloned.Inputs.VmLegacyCpuArgs
     ///         {
-    ///             Cores = 4,
+    ///             Cores = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(4) (example.pp:203,13-14)),
     ///         },
     ///     });
     /// 

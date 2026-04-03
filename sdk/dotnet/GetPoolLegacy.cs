@@ -24,7 +24,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var operationsPool = ProxmoxVE.GetPoolLegacy.Invoke(new()
+        ///     var operationsPool = ProxmoxVE.Index.GetPoolLegacy.Invoke(new()
         ///     {
         ///         PoolId = "operations",
         ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var operationsPool = ProxmoxVE.GetPoolLegacy.Invoke(new()
+        ///     var operationsPool = ProxmoxVE.Index.GetPoolLegacy.Invoke(new()
         ///     {
         ///         PoolId = "operations",
         ///     });
@@ -72,7 +72,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var operationsPool = ProxmoxVE.GetPoolLegacy.Invoke(new()
+        ///     var operationsPool = ProxmoxVE.Index.GetPoolLegacy.Invoke(new()
         ///     {
         ///         PoolId = "operations",
         ///     });

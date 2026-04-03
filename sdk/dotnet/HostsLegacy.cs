@@ -22,7 +22,7 @@ namespace Pulumi.ProxmoxVE
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var firstNodeHostEntries = new ProxmoxVE.HostsLegacy("first_node_host_entries", new()
+    ///     var firstNodeHostEntries = new ProxmoxVE.Index.HostsLegacy("first_node_host_entries", new()
     ///     {
     ///         NodeName = "first-node",
     ///         Entries = new[]

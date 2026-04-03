@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * // ...which we will go through in order to fetch the whole data on each group.
  * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: proxmoxve.getHagroupLegacy({
  *     group: __value,
- * }) })));
+ * }) }), {}));
  * export const proxmoxVirtualEnvironmentHagroupsFull = example;
  * ```
  */
@@ -86,7 +86,7 @@ export interface GetHagroupLegacyResult {
  * // ...which we will go through in order to fetch the whole data on each group.
  * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: proxmoxve.getHagroupLegacy({
  *     group: __value,
- * }) })));
+ * }) }), {}));
  * export const proxmoxVirtualEnvironmentHagroupsFull = example;
  * ```
  */

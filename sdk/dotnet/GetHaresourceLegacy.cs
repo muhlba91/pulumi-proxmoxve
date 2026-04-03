@@ -27,7 +27,7 @@ namespace Pulumi.ProxmoxVE
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // This will fetch the set of all HA resource identifiers...
-        ///     var all = ProxmoxVE.GetHaresourcesLegacy.Invoke();
+        ///     var all = ProxmoxVE.Index.GetHaresourcesLegacy.Invoke();
         /// 
         ///     // ...which we will go through in order to fetch the whole record for each resource.
         ///     var example = ;
@@ -58,7 +58,7 @@ namespace Pulumi.ProxmoxVE
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // This will fetch the set of all HA resource identifiers...
-        ///     var all = ProxmoxVE.GetHaresourcesLegacy.Invoke();
+        ///     var all = ProxmoxVE.Index.GetHaresourcesLegacy.Invoke();
         /// 
         ///     // ...which we will go through in order to fetch the whole record for each resource.
         ///     var example = ;
@@ -89,7 +89,7 @@ namespace Pulumi.ProxmoxVE
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // This will fetch the set of all HA resource identifiers...
-        ///     var all = ProxmoxVE.GetHaresourcesLegacy.Invoke();
+        ///     var all = ProxmoxVE.Index.GetHaresourcesLegacy.Invoke();
         /// 
         ///     // ...which we will go through in order to fetch the whole record for each resource.
         ///     var example = ;

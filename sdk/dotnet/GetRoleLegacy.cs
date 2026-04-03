@@ -24,7 +24,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var operationsRole = ProxmoxVE.GetRoleLegacy.Invoke(new()
+        ///     var operationsRole = ProxmoxVE.Index.GetRoleLegacy.Invoke(new()
         ///     {
         ///         RoleId = "operations",
         ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var operationsRole = ProxmoxVE.GetRoleLegacy.Invoke(new()
+        ///     var operationsRole = ProxmoxVE.Index.GetRoleLegacy.Invoke(new()
         ///     {
         ///         RoleId = "operations",
         ///     });
@@ -72,7 +72,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var operationsRole = ProxmoxVE.GetRoleLegacy.Invoke(new()
+        ///     var operationsRole = ProxmoxVE.Index.GetRoleLegacy.Invoke(new()
         ///     {
         ///         RoleId = "operations",
         ///     });

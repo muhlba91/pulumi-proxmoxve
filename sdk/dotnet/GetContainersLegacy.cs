@@ -24,7 +24,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ubuntuContainers = ProxmoxVE.GetContainersLegacy.Invoke(new()
+        ///     var ubuntuContainers = ProxmoxVE.Index.GetContainersLegacy.Invoke(new()
         ///     {
         ///         Tags = new[]
         ///         {
@@ -32,7 +32,7 @@ namespace Pulumi.ProxmoxVE
         ///         },
         ///     });
         /// 
-        ///     var ubuntuTemplates = ProxmoxVE.GetContainersLegacy.Invoke(new()
+        ///     var ubuntuTemplates = ProxmoxVE.Index.GetContainersLegacy.Invoke(new()
         ///     {
         ///         Tags = new[]
         ///         {
@@ -98,7 +98,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ubuntuContainers = ProxmoxVE.GetContainersLegacy.Invoke(new()
+        ///     var ubuntuContainers = ProxmoxVE.Index.GetContainersLegacy.Invoke(new()
         ///     {
         ///         Tags = new[]
         ///         {
@@ -106,7 +106,7 @@ namespace Pulumi.ProxmoxVE
         ///         },
         ///     });
         /// 
-        ///     var ubuntuTemplates = ProxmoxVE.GetContainersLegacy.Invoke(new()
+        ///     var ubuntuTemplates = ProxmoxVE.Index.GetContainersLegacy.Invoke(new()
         ///     {
         ///         Tags = new[]
         ///         {
@@ -172,7 +172,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ubuntuContainers = ProxmoxVE.GetContainersLegacy.Invoke(new()
+        ///     var ubuntuContainers = ProxmoxVE.Index.GetContainersLegacy.Invoke(new()
         ///     {
         ///         Tags = new[]
         ///         {
@@ -180,7 +180,7 @@ namespace Pulumi.ProxmoxVE
         ///         },
         ///     });
         /// 
-        ///     var ubuntuTemplates = ProxmoxVE.GetContainersLegacy.Invoke(new()
+        ///     var ubuntuTemplates = ProxmoxVE.Index.GetContainersLegacy.Invoke(new()
         ///     {
         ///         Tags = new[]
         ///         {

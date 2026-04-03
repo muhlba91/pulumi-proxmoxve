@@ -115,7 +115,7 @@ import javax.annotation.Nullable;
  *             .realm("secure-ldap")
  *             .server1("ldap1.example.com")
  *             .server2("ldap2.example.com")
- *             .port(636)
+ *             .port(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(636) (example.pp:4,18-21)))
  *             .baseDn("ou=users,dc=example,dc=com")
  *             .bindDn("cn=readonly,dc=example,dc=com")
  *             .bindPassword(ldapPassword)

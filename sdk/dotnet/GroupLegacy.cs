@@ -22,7 +22,7 @@ namespace Pulumi.ProxmoxVE
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var operationsTeam = new ProxmoxVE.GroupLegacy("operations_team", new()
+    ///     var operationsTeam = new ProxmoxVE.Index.GroupLegacy("operations_team", new()
     ///     {
     ///         Comment = "Managed by Pulumi",
     ///         GroupId = "operations-team",

@@ -32,7 +32,7 @@ namespace Pulumi.ProxmoxVE.Cluster
     ///         LogRatelimit = new ProxmoxVE.Cluster.Inputs.FirewallLegacyLogRatelimitArgs
     ///         {
     ///             Enabled = false,
-    ///             Burst = 10,
+    ///             Burst = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(10) (example.pp:9,15-17)),
     ///             Rate = "5/second",
     ///         },
     ///     });

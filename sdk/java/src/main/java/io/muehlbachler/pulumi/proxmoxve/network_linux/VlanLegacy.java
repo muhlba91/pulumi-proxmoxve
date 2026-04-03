@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *             .nodeName("pve")
  *             .name("vlan_lab")
  *             .interface_("eno0")
- *             .vlan(98)
+ *             .vlan(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(98) (example.pp:13,15-17)))
  *             .comment("VLAN 98")
  *             .build());
  * 

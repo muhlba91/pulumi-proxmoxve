@@ -26,7 +26,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = ProxmoxVE.GetHagroupsLegacy.Invoke();
+        ///     var example = ProxmoxVE.Index.GetHagroupsLegacy.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -53,7 +53,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = ProxmoxVE.GetHagroupsLegacy.Invoke();
+        ///     var example = ProxmoxVE.Index.GetHagroupsLegacy.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -80,7 +80,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = ProxmoxVE.GetHagroupsLegacy.Invoke();
+        ///     var example = ProxmoxVE.Index.GetHagroupsLegacy.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {

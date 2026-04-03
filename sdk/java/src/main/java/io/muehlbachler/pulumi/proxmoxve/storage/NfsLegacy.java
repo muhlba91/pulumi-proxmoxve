@@ -61,8 +61,8 @@ import javax.annotation.Nullable;
  *             .preallocation("metadata")
  *             .snapshotAsVolumeChain(true)
  *             .backups(NfsLegacyBackupsArgs.builder()
- *                 .maxProtectedBackups(5)
- *                 .keepDaily(7)
+ *                 .maxProtectedBackups(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(5) (example.pp:11,27-28)))
+ *                 .keepDaily(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(7) (example.pp:12,27-28)))
  *                 .build())
  *             .build());
  * 

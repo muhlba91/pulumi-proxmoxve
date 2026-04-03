@@ -135,7 +135,7 @@ public final class ProxmoxveFunctions {
      *     public static void stack(Context ctx) {
      *         final var testContainer = ProxmoxveFunctions.getContainerLegacy(GetContainerLegacyArgs.builder()
      *             .nodeName("test")
-     *             .vmId(100)
+     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:2,14-17)))
      *             .build());
      * 
      *     }
@@ -178,7 +178,7 @@ public final class ProxmoxveFunctions {
      *     public static void stack(Context ctx) {
      *         final var testContainer = ProxmoxveFunctions.getContainerLegacy(GetContainerLegacyArgs.builder()
      *             .nodeName("test")
-     *             .vmId(100)
+     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:2,14-17)))
      *             .build());
      * 
      *     }
@@ -221,7 +221,7 @@ public final class ProxmoxveFunctions {
      *     public static void stack(Context ctx) {
      *         final var testContainer = ProxmoxveFunctions.getContainerLegacy(GetContainerLegacyArgs.builder()
      *             .nodeName("test")
-     *             .vmId(100)
+     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:2,14-17)))
      *             .build());
      * 
      *     }
@@ -264,7 +264,7 @@ public final class ProxmoxveFunctions {
      *     public static void stack(Context ctx) {
      *         final var testContainer = ProxmoxveFunctions.getContainerLegacy(GetContainerLegacyArgs.builder()
      *             .nodeName("test")
-     *             .vmId(100)
+     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:2,14-17)))
      *             .build());
      * 
      *     }
@@ -307,7 +307,7 @@ public final class ProxmoxveFunctions {
      *     public static void stack(Context ctx) {
      *         final var testContainer = ProxmoxveFunctions.getContainerLegacy(GetContainerLegacyArgs.builder()
      *             .nodeName("test")
-     *             .vmId(100)
+     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:2,14-17)))
      *             .build());
      * 
      *     }
@@ -1198,20 +1198,20 @@ public final class ProxmoxveFunctions {
      *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
      *         var example = new VmLegacy("example", VmLegacyArgs.builder()
      *             .nodeName("pve")
-     *             .vmId(100)
+     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:53,14-17)))
      *             .cdrom(VmLegacyCdromArgs.builder()
      *                 .fileId(ubuntuIso.id())
      *                 .build())
      *             .cpu(VmLegacyCpuArgs.builder()
-     *                 .cores(2)
+     *                 .cores(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:59,13-14)))
      *                 .build())
      *             .memory(VmLegacyMemoryArgs.builder()
-     *                 .dedicated(2048)
+     *                 .dedicated(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:62,17-21)))
      *                 .build())
      *             .disks(VmLegacyDiskArgs.builder()
      *                 .datastoreId("local-lvm")
      *                 .fileFormat("qcow2")
-     *                 .size(20)
+     *                 .size(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(20) (example.pp:67,19-21)))
      *                 .build())
      *             .networkDevices(VmLegacyNetworkDeviceArgs.builder()
      *                 .bridge("vmbr0")
@@ -1298,20 +1298,20 @@ public final class ProxmoxveFunctions {
      *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
      *         var example = new VmLegacy("example", VmLegacyArgs.builder()
      *             .nodeName("pve")
-     *             .vmId(100)
+     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:53,14-17)))
      *             .cdrom(VmLegacyCdromArgs.builder()
      *                 .fileId(ubuntuIso.id())
      *                 .build())
      *             .cpu(VmLegacyCpuArgs.builder()
-     *                 .cores(2)
+     *                 .cores(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:59,13-14)))
      *                 .build())
      *             .memory(VmLegacyMemoryArgs.builder()
-     *                 .dedicated(2048)
+     *                 .dedicated(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:62,17-21)))
      *                 .build())
      *             .disks(VmLegacyDiskArgs.builder()
      *                 .datastoreId("local-lvm")
      *                 .fileFormat("qcow2")
-     *                 .size(20)
+     *                 .size(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(20) (example.pp:67,19-21)))
      *                 .build())
      *             .networkDevices(VmLegacyNetworkDeviceArgs.builder()
      *                 .bridge("vmbr0")
@@ -1398,20 +1398,20 @@ public final class ProxmoxveFunctions {
      *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
      *         var example = new VmLegacy("example", VmLegacyArgs.builder()
      *             .nodeName("pve")
-     *             .vmId(100)
+     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:53,14-17)))
      *             .cdrom(VmLegacyCdromArgs.builder()
      *                 .fileId(ubuntuIso.id())
      *                 .build())
      *             .cpu(VmLegacyCpuArgs.builder()
-     *                 .cores(2)
+     *                 .cores(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:59,13-14)))
      *                 .build())
      *             .memory(VmLegacyMemoryArgs.builder()
-     *                 .dedicated(2048)
+     *                 .dedicated(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:62,17-21)))
      *                 .build())
      *             .disks(VmLegacyDiskArgs.builder()
      *                 .datastoreId("local-lvm")
      *                 .fileFormat("qcow2")
-     *                 .size(20)
+     *                 .size(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(20) (example.pp:67,19-21)))
      *                 .build())
      *             .networkDevices(VmLegacyNetworkDeviceArgs.builder()
      *                 .bridge("vmbr0")
@@ -1498,20 +1498,20 @@ public final class ProxmoxveFunctions {
      *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
      *         var example = new VmLegacy("example", VmLegacyArgs.builder()
      *             .nodeName("pve")
-     *             .vmId(100)
+     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:53,14-17)))
      *             .cdrom(VmLegacyCdromArgs.builder()
      *                 .fileId(ubuntuIso.id())
      *                 .build())
      *             .cpu(VmLegacyCpuArgs.builder()
-     *                 .cores(2)
+     *                 .cores(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:59,13-14)))
      *                 .build())
      *             .memory(VmLegacyMemoryArgs.builder()
-     *                 .dedicated(2048)
+     *                 .dedicated(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:62,17-21)))
      *                 .build())
      *             .disks(VmLegacyDiskArgs.builder()
      *                 .datastoreId("local-lvm")
      *                 .fileFormat("qcow2")
-     *                 .size(20)
+     *                 .size(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(20) (example.pp:67,19-21)))
      *                 .build())
      *             .networkDevices(VmLegacyNetworkDeviceArgs.builder()
      *                 .bridge("vmbr0")
@@ -1598,20 +1598,20 @@ public final class ProxmoxveFunctions {
      *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
      *         var example = new VmLegacy("example", VmLegacyArgs.builder()
      *             .nodeName("pve")
-     *             .vmId(100)
+     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:53,14-17)))
      *             .cdrom(VmLegacyCdromArgs.builder()
      *                 .fileId(ubuntuIso.id())
      *                 .build())
      *             .cpu(VmLegacyCpuArgs.builder()
-     *                 .cores(2)
+     *                 .cores(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:59,13-14)))
      *                 .build())
      *             .memory(VmLegacyMemoryArgs.builder()
-     *                 .dedicated(2048)
+     *                 .dedicated(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:62,17-21)))
      *                 .build())
      *             .disks(VmLegacyDiskArgs.builder()
      *                 .datastoreId("local-lvm")
      *                 .fileFormat("qcow2")
-     *                 .size(20)
+     *                 .size(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(20) (example.pp:67,19-21)))
      *                 .build())
      *             .networkDevices(VmLegacyNetworkDeviceArgs.builder()
      *                 .bridge("vmbr0")
@@ -6702,7 +6702,7 @@ public final class ProxmoxveFunctions {
      *     public static void stack(Context ctx) {
      *         final var testVm = ProxmoxveFunctions.getVmLegacy(GetVmLegacyArgs.builder()
      *             .nodeName("test")
-     *             .vmId(100)
+     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:2,14-17)))
      *             .build());
      * 
      *     }
@@ -6745,7 +6745,7 @@ public final class ProxmoxveFunctions {
      *     public static void stack(Context ctx) {
      *         final var testVm = ProxmoxveFunctions.getVmLegacy(GetVmLegacyArgs.builder()
      *             .nodeName("test")
-     *             .vmId(100)
+     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:2,14-17)))
      *             .build());
      * 
      *     }
@@ -6788,7 +6788,7 @@ public final class ProxmoxveFunctions {
      *     public static void stack(Context ctx) {
      *         final var testVm = ProxmoxveFunctions.getVmLegacy(GetVmLegacyArgs.builder()
      *             .nodeName("test")
-     *             .vmId(100)
+     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:2,14-17)))
      *             .build());
      * 
      *     }
@@ -6831,7 +6831,7 @@ public final class ProxmoxveFunctions {
      *     public static void stack(Context ctx) {
      *         final var testVm = ProxmoxveFunctions.getVmLegacy(GetVmLegacyArgs.builder()
      *             .nodeName("test")
-     *             .vmId(100)
+     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:2,14-17)))
      *             .build());
      * 
      *     }
@@ -6874,7 +6874,7 @@ public final class ProxmoxveFunctions {
      *     public static void stack(Context ctx) {
      *         final var testVm = ProxmoxveFunctions.getVmLegacy(GetVmLegacyArgs.builder()
      *             .nodeName("test")
-     *             .vmId(100)
+     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:2,14-17)))
      *             .build());
      * 
      *     }

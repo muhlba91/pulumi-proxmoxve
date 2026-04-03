@@ -34,20 +34,20 @@ namespace Pulumi.ProxmoxVE
     ///         FileName = "jammy-server-cloudimg-amd64.qcow2",
     ///     });
     /// 
-    ///     var ubuntuVmPassword = new Random.RandomPassword("ubuntu_vm_password", new()
+    ///     var ubuntuVmPassword = new Random.Index.RandomPassword("ubuntu_vm_password", new()
     ///     {
-    ///         Length = 16,
+    ///         Length = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(16) (example.pp:77,21-23)),
     ///         OverrideSpecial = "_%@",
     ///         Special = true,
     ///     });
     /// 
-    ///     var ubuntuVmKey = new Tls.PrivateKey("ubuntu_vm_key", new()
+    ///     var ubuntuVmKey = new Tls.Index.PrivateKey("ubuntu_vm_key", new()
     ///     {
     ///         Algorithm = "RSA",
-    ///         RsaBits = 2048,
+    ///         RsaBits = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:85,19-23)),
     ///     });
     /// 
-    ///     var ubuntuVm = new ProxmoxVE.VmLegacy("ubuntu_vm", new()
+    ///     var ubuntuVm = new ProxmoxVE.Index.VmLegacy("ubuntu_vm", new()
     ///     {
     ///         SerialDevices = new[]
     ///         {
@@ -61,7 +61,7 @@ namespace Pulumi.ProxmoxVE
     ///             "ubuntu",
     ///         },
     ///         NodeName = "first-node",
-    ///         VmId = 4321,
+    ///         VmId = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(4321) (example.pp:7,19-23)),
     ///         Agent = new ProxmoxVE.Inputs.VmLegacyAgentArgs
     ///         {
     ///             Enabled = false,
@@ -69,19 +69,19 @@ namespace Pulumi.ProxmoxVE
     ///         StopOnDestroy = true,
     ///         Startup = new ProxmoxVE.Inputs.VmLegacyStartupArgs
     ///         {
-    ///             Order = 3,
-    ///             UpDelay = 60,
-    ///             DownDelay = 60,
+    ///             Order = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(3) (:0,0-0)),
+    ///             UpDelay = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(60) (:0,0-0)),
+    ///             DownDelay = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(60) (:0,0-0)),
     ///         },
     ///         Cpu = new ProxmoxVE.Inputs.VmLegacyCpuArgs
     ///         {
-    ///             Cores = 2,
+    ///             Cores = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:22,13-14)),
     ///             Type = "x86-64-v2-AES",
     ///         },
     ///         Memory = new ProxmoxVE.Inputs.VmLegacyMemoryArgs
     ///         {
-    ///             Dedicated = 2048,
-    ///             Floating = 2048,
+    ///             Dedicated = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:26,17-21)),
+    ///             Floating = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:27,17-21)),
     ///         },
     ///         Disks = new[]
     ///         {
@@ -108,7 +108,7 @@ namespace Pulumi.ProxmoxVE
     ///             {
     ///                 Keys = new[]
     ///                 {
-    ///                     Std.Trimspace.Invoke(new()
+    ///                     Std.Index.Trimspace.Invoke(new()
     ///                     {
     ///                         Input = ubuntuVmKey.PublicKeyOpenssh,
     ///                     }).Apply(invoke =&gt; invoke.Result),
@@ -222,13 +222,13 @@ namespace Pulumi.ProxmoxVE
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ubuntuVm = new ProxmoxVE.VmLegacy("ubuntu_vm", new()
+    ///     var ubuntuVm = new ProxmoxVE.Index.VmLegacy("ubuntu_vm", new()
     ///     {
     ///         Name = "terraform-provider-proxmox-ubuntu-vm",
-    ///         VmId = 4321,
+    ///         VmId = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(4321) (example.pp:3,19-23)),
     ///     });
     /// 
-    ///     var ubuntuVmHaresourceLegacy = new ProxmoxVE.HaresourceLegacy("ubuntu_vm", new()
+    ///     var ubuntuVmHaresourceLegacy = new ProxmoxVE.Index.HaresourceLegacy("ubuntu_vm", new()
     ///     {
     ///         ResourceId = ubuntuVm.VmId.Apply(vmId =&gt; $"vm:{vmId}"),
     ///         Group = "node1",

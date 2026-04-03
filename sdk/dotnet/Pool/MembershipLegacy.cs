@@ -26,14 +26,14 @@ namespace Pulumi.ProxmoxVE.Pool
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var testVm1 = new ProxmoxVE.VmLegacy("test_vm1", new()
+    ///     var testVm1 = new ProxmoxVE.Index.VmLegacy("test_vm1", new()
     ///     {
-    ///         VmId = 1234,
+    ///         VmId = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1234) (example.pp:2,19-23)),
     ///         NodeName = "pve",
     ///         Started = false,
     ///     });
     /// 
-    ///     var testPool = new ProxmoxVE.PoolLegacy("test_pool", new()
+    ///     var testPool = new ProxmoxVE.Index.PoolLegacy("test_pool", new()
     ///     {
     ///         PoolId = "test-pool",
     ///     });

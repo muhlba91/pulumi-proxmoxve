@@ -44,8 +44,8 @@ namespace Pulumi.ProxmoxVE.Storage
     ///         SnapshotAsVolumeChain = true,
     ///         Backups = new ProxmoxVE.Storage.Inputs.NfsLegacyBackupsArgs
     ///         {
-    ///             MaxProtectedBackups = 5,
-    ///             KeepDaily = 7,
+    ///             MaxProtectedBackups = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(5) (example.pp:11,27-28)),
+    ///             KeepDaily = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(7) (example.pp:12,27-28)),
     ///         },
     ///     });
     /// 

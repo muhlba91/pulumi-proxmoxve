@@ -97,14 +97,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var ubuntuVmPassword = new RandomPassword("ubuntuVmPassword", RandomPasswordArgs.builder()
- *             .length(16)
+ *             .length(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(16) (example.pp:77,21-23)))
  *             .overrideSpecial("_%}{@literal @}{@code ")
  *             .special(true)
  *             .build());
  * 
  *         var ubuntuVmKey = new PrivateKey("ubuntuVmKey", PrivateKeyArgs.builder()
  *             .algorithm("RSA")
- *             .rsaBits(2048)
+ *             .rsaBits(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:85,19-23)))
  *             .build());
  * 
  *         var ubuntuVm = new VmLegacy("ubuntuVm", VmLegacyArgs.builder()
@@ -116,23 +116,23 @@ import javax.annotation.Nullable;
  *                 "terraform",
  *                 "ubuntu")
  *             .nodeName("first-node")
- *             .vmId(4321)
+ *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(4321) (example.pp:7,19-23)))
  *             .agent(VmLegacyAgentArgs.builder()
  *                 .enabled(false)
  *                 .build())
  *             .stopOnDestroy(true)
  *             .startup(VmLegacyStartupArgs.builder()
- *                 .order(3)
- *                 .upDelay(60)
- *                 .downDelay(60)
+ *                 .order(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(3) (:0,0-0)))
+ *                 .upDelay(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(60) (:0,0-0)))
+ *                 .downDelay(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(60) (:0,0-0)))
  *                 .build())
  *             .cpu(VmLegacyCpuArgs.builder()
- *                 .cores(2)
+ *                 .cores(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:22,13-14)))
  *                 .type("x86-64-v2-AES")
  *                 .build())
  *             .memory(VmLegacyMemoryArgs.builder()
- *                 .dedicated(2048)
- *                 .floating(2048)
+ *                 .dedicated(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:26,17-21)))
+ *                 .floating(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:27,17-21)))
  *                 .build())
  *             .disks(VmLegacyDiskArgs.builder()
  *                 .datastoreId("local-lvm")
@@ -267,7 +267,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var ubuntuVm = new VmLegacy("ubuntuVm", VmLegacyArgs.builder()
  *             .name("terraform-provider-proxmox-ubuntu-vm")
- *             .vmId(4321)
+ *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(4321) (example.pp:3,19-23)))
  *             .build());
  * 
  *         var ubuntuVmHaresourceLegacy = new HaresourceLegacy("ubuntuVmHaresourceLegacy", HaresourceLegacyArgs.builder()

@@ -28,7 +28,7 @@ namespace Pulumi.ProxmoxVE
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var backup = new ProxmoxVE.FileLegacy("backup", new()
+    ///     var backup = new ProxmoxVE.Index.FileLegacy("backup", new()
     ///     {
     ///         ContentType = "backup",
     ///         DatastoreId = "local",
@@ -56,7 +56,7 @@ namespace Pulumi.ProxmoxVE
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ubuntuContainerTemplate = new ProxmoxVE.FileLegacy("ubuntu_container_template", new()
+    ///     var ubuntuContainerTemplate = new ProxmoxVE.Index.FileLegacy("ubuntu_container_template", new()
     ///     {
     ///         ContentType = "iso",
     ///         DatastoreId = "local",
@@ -78,7 +78,7 @@ namespace Pulumi.ProxmoxVE
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ubuntuContainerTemplate = new ProxmoxVE.FileLegacy("ubuntu_container_template", new()
+    ///     var ubuntuContainerTemplate = new ProxmoxVE.Index.FileLegacy("ubuntu_container_template", new()
     ///     {
     ///         ContentType = "import",
     ///         DatastoreId = "local",
@@ -107,14 +107,14 @@ namespace Pulumi.ProxmoxVE
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var cloudConfig = new ProxmoxVE.FileLegacy("cloud_config", new()
+    ///     var cloudConfig = new ProxmoxVE.Index.FileLegacy("cloud_config", new()
     ///     {
     ///         ContentType = "snippets",
     ///         DatastoreId = "local",
     ///         NodeName = "pve",
     ///         SourceRaw = new ProxmoxVE.Inputs.FileLegacySourceRawArgs
     ///         {
-    ///             Data = Std.Trimspace.Invoke(new()
+    ///             Data = Std.Index.Trimspace.Invoke(new()
     ///             {
     ///                 Input = example.PublicKeyOpenssh,
     ///             }).Apply(invoke =&gt; @$"#cloud-config
@@ -151,7 +151,7 @@ namespace Pulumi.ProxmoxVE
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var hookScript = new ProxmoxVE.FileLegacy("hook_script", new()
+    ///     var hookScript = new ProxmoxVE.Index.FileLegacy("hook_script", new()
     ///     {
     ///         ContentType = "snippets",
     ///         DatastoreId = "local",
@@ -182,7 +182,7 @@ namespace Pulumi.ProxmoxVE
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ubuntuContainerTemplate = new ProxmoxVE.FileLegacy("ubuntu_container_template", new()
+    ///     var ubuntuContainerTemplate = new ProxmoxVE.Index.FileLegacy("ubuntu_container_template", new()
     ///     {
     ///         ContentType = "vztmpl",
     ///         DatastoreId = "local",

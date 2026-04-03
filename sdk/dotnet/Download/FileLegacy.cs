@@ -94,7 +94,7 @@ namespace Pulumi.ProxmoxVE.Download
     ///         Url = "https://cloud-images.ubuntu.com/releases/22.04/release-20231211/ubuntu-22.04-server-cloudimg-amd64-root.tar.xz",
     ///         Checksum = "c9997dcfea5d826fd04871f960c513665f2e87dd7450bba99f68a97e60e4586e",
     ///         ChecksumAlgorithm = "sha256",
-    ///         UploadTimeout = 4444,
+    ///         UploadTimeout = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(4444) (example.pp:65,23-27)),
     ///     });
     /// 
     ///     var latestUbuntu22JammyLxcImg = new ProxmoxVE.Download.FileLegacy("latest_ubuntu_22_jammy_lxc_img", new()

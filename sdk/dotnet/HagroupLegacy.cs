@@ -24,15 +24,15 @@ namespace Pulumi.ProxmoxVE
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new ProxmoxVE.HagroupLegacy("example", new()
+    ///     var example = new ProxmoxVE.Index.HagroupLegacy("example", new()
     ///     {
     ///         Group = "example",
     ///         Comment = "This is a comment.",
     ///         Nodes = 
     ///         {
     ///             { "node1", null },
-    ///             { "node2", 2 },
-    ///             { "node3", 1 },
+    ///             { "node2", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:5,13-14)) },
+    ///             { "node3", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1) (example.pp:6,13-14)) },
     ///         },
     ///         Restricted = true,
     ///         NoFailback = false,

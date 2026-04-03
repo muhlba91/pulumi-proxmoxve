@@ -24,7 +24,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var availableGroups = ProxmoxVE.GetGroupsLegacy.Invoke();
+        ///     var availableGroups = ProxmoxVE.Index.GetGroupsLegacy.Invoke();
         /// 
         /// });
         /// ```
@@ -45,7 +45,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var availableGroups = ProxmoxVE.GetGroupsLegacy.Invoke();
+        ///     var availableGroups = ProxmoxVE.Index.GetGroupsLegacy.Invoke();
         /// 
         /// });
         /// ```
@@ -66,7 +66,7 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var availableGroups = ProxmoxVE.GetGroupsLegacy.Invoke();
+        ///     var availableGroups = ProxmoxVE.Index.GetGroupsLegacy.Invoke();
         /// 
         /// });
         /// ```

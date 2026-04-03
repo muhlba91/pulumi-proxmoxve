@@ -84,20 +84,20 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var ubuntuContainerPassword = new RandomPassword("ubuntuContainerPassword", RandomPasswordArgs.builder()
- *             .length(16)
+ *             .length(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(16) (example.pp:74,21-23)))
  *             .overrideSpecial("_%}{@literal @}{@code ")
  *             .special(true)
  *             .build());
  * 
  *         var ubuntuContainerKey = new PrivateKey("ubuntuContainerKey", PrivateKeyArgs.builder()
  *             .algorithm("RSA")
- *             .rsaBits(2048)
+ *             .rsaBits(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:82,19-23)))
  *             .build());
  * 
  *         var ubuntuContainer = new ContainerLegacy("ubuntuContainer", ContainerLegacyArgs.builder()
  *             .description("Managed by Pulumi")
  *             .nodeName("first-node")
- *             .vmId(1234)
+ *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1234) (example.pp:4,19-23)))
  *             .unprivileged(true)
  *             .features(ContainerLegacyFeaturesArgs.builder()
  *                 .nesting(true)
@@ -121,7 +121,7 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .disk(ContainerLegacyDiskArgs.builder()
  *                 .datastoreId("local-lvm")
- *                 .size(4)
+ *                 .size(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(4) (example.pp:31,19-20)))
  *                 .build())
  *             .operatingSystem(ContainerLegacyOperatingSystemArgs.builder()
  *                 .templateFileId(ubuntu2504LxcImg.id())
@@ -143,9 +143,9 @@ import javax.annotation.Nullable;
  *                     .path("/mnt/data")
  *                     .build())
  *             .startup(ContainerLegacyStartupArgs.builder()
- *                 .order(3)
- *                 .upDelay(60)
- *                 .downDelay(60)
+ *                 .order(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(3) (:0,0-0)))
+ *                 .upDelay(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(60) (:0,0-0)))
+ *                 .downDelay(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(60) (:0,0-0)))
  *                 .build())
  *             .build());
  * 

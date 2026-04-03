@@ -28,7 +28,7 @@ namespace Pulumi.ProxmoxVE.Metrics
     ///     {
     ///         Name = "example_influxdb_server",
     ///         ServerAddress = "192.168.3.2",
-    ///         Port = 8089,
+    ///         Port = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(8089) (example.pp:4,19-23)),
     ///         Type = "influxdb",
     ///     });
     /// 
@@ -36,7 +36,7 @@ namespace Pulumi.ProxmoxVE.Metrics
     ///     {
     ///         Name = "example_graphite_server",
     ///         ServerAddress = "192.168.4.2",
-    ///         Port = 2003,
+    ///         Port = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2003) (example.pp:12,19-23)),
     ///         Type = "graphite",
     ///     });
     /// 
@@ -44,7 +44,7 @@ namespace Pulumi.ProxmoxVE.Metrics
     ///     {
     ///         Name = "example_opentelemetry_server",
     ///         ServerAddress = "192.168.5.2",
-    ///         Port = 4318,
+    ///         Port = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(4318) (example.pp:20,24-28)),
     ///         Type = "opentelemetry",
     ///         OpentelemetryProto = "http",
     ///         OpentelemetryPath = "/v1/metrics",

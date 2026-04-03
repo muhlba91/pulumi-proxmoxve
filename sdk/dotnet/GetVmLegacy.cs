@@ -24,10 +24,10 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var testVm = ProxmoxVE.GetVmLegacy.Invoke(new()
+        ///     var testVm = ProxmoxVE.Index.GetVmLegacy.Invoke(new()
         ///     {
         ///         NodeName = "test",
-        ///         VmId = 100,
+        ///         VmId = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:2,14-17)),
         ///     });
         /// 
         /// });
@@ -49,10 +49,10 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var testVm = ProxmoxVE.GetVmLegacy.Invoke(new()
+        ///     var testVm = ProxmoxVE.Index.GetVmLegacy.Invoke(new()
         ///     {
         ///         NodeName = "test",
-        ///         VmId = 100,
+        ///         VmId = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:2,14-17)),
         ///     });
         /// 
         /// });
@@ -74,10 +74,10 @@ namespace Pulumi.ProxmoxVE
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var testVm = ProxmoxVE.GetVmLegacy.Invoke(new()
+        ///     var testVm = ProxmoxVE.Index.GetVmLegacy.Invoke(new()
         ///     {
         ///         NodeName = "test",
-        ///         VmId = 100,
+        ///         VmId = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:2,14-17)),
         ///     });
         /// 
         /// });

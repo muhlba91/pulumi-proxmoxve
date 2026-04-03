@@ -49,7 +49,7 @@ import javax.annotation.Nullable;
  *         var example = new RepositoryLegacy("example", RepositoryLegacyArgs.builder()
  *             .enabled(true)
  *             .filePath("/etc/apt/sources.list")
- *             .index(0)
+ *             .index(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(0) (example.pp:3,14-15)))
  *             .node("pve")
  *             .build());
  * 
