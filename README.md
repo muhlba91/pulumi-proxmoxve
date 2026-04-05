@@ -87,6 +87,9 @@ Version 8 introduces a breaking change in how resources are named to align with 
 
 - **Standardized Resource Names**: Due to the upstream provider introducing the `proxmox_` prefix and standardizing resource identification, custom resource name and ID changes have been deprecated.
 - **Legacy Namespacing**: Resources that previously started with `proxmox_virtual_environment_` have been moved to a `Legacy` naming format (e.g., `proxmoxve:VM/virtualMachine:VirtualMachine` is now `proxmoxve:index/vmLegacy:VmLegacy`).
+- **Standardized Resource IDs**: Resources which have an `id` input exposed by the Terraform provider are consistently renamed to `resourceId`. In particular, this affects resources created using the Terraform provider framework.
+
+#### State Migration
 
 You can migrate your existing stack by exporting the state, updating the resource tokens, and re-importing:
 
@@ -95,6 +98,26 @@ pulumi stack export > stack.json
 # Example: updating the VirtualMachine resource token
 sed -i 's/proxmoxve:VM\/virtualMachine:VirtualMachine/proxmoxve:index\/vmLegacy:VmLegacy/g' stack.json
 pulumi stack import < stack.json
+```
+
+#### ID Migration
+
+For resources that have an `id` input, you will need to update your code to use `resourceId` instead. For example:
+
+```typescript
+// Example: updating a Vnet resource to use resourceId instead of id
+
+// Before
+const vnet = new proxmox.sdn.Vnet('my-vnet', {
+  vnetId: '1',
+  // ... further configuration
+});
+
+// After
+const vnet = new proxmox.sdn.Vnet('my-vnet', {
+  resourceId: '1',
+  // ... further configuration
+});
 ```
 
 ## Reference
