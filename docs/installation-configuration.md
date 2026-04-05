@@ -44,7 +44,7 @@ In fact, we need to set the credentials using the following work-around:
 3. Pass the provider when creating a resource, e.g. in Typescript:
 
    ```typescript
-   const server = new proxmox.vm.VirtualMachine('vm',
+   const server = new proxmox.VmLegacy('vm',
       ...,
       {
         provider: provider,
