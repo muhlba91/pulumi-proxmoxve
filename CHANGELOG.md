@@ -1,6 +1,20 @@
 # Changelog
 
 
+## [8.0.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v8.0.0...v8.0.1) (2026-04-10)
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/upload-artifact action to v7.0.1 ([3c519b8](https://github.com/muhlba91/pulumi-proxmoxve/commit/3c519b8a109f85d9c0742f9577ac6195e6cf4080))
+* **deps:** update dependency go to v1.26.2 ([fad5efd](https://github.com/muhlba91/pulumi-proxmoxve/commit/fad5efd08bbf20069806d54d22138c08bb4a1c64))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.101.0 ([ea8e700](https://github.com/muhlba91/pulumi-proxmoxve/commit/ea8e70077df5145e4ed3cea2d7092d25d4d60aad))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.101.1 ([ba9a567](https://github.com/muhlba91/pulumi-proxmoxve/commit/ba9a567f54e4c01aa0c0bfeec39a9b8786babe85))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/v3 to v3.126.0 ([38090d3](https://github.com/muhlba91/pulumi-proxmoxve/commit/38090d3749c504c2291bcf84f6d5a9ca2ab60c7e))
+* **deps:** update module github.com/pulumi/pulumi/sdk/v3 to v3.230.0 ([9793519](https://github.com/muhlba91/pulumi-proxmoxve/commit/979351950a29a314126f7ff9780d5486260b8ee5))
+* **deps:** update pypa/gh-action-pypi-publish digest to cef2210 ([efcbdd5](https://github.com/muhlba91/pulumi-proxmoxve/commit/efcbdd557bed1574dc5651ec4de00b3d9e038476))
+* **deps:** update step-security/harden-runner action to v2.17.0 ([0d5a149](https://github.com/muhlba91/pulumi-proxmoxve/commit/0d5a1495783aff81e6b614e9b06fb67ed69cbacc))
+
 ## [8.0.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v7.13.0...v8.0.0) (2026-04-05)
 
 
