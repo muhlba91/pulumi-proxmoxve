@@ -3112,6 +3112,8 @@ github.com/go-git/go-git-fixtures/v4 v4.3.2-0.20231010084843-55a94097c399/go.mod
 github.com/go-git/go-git/v5 v5.16.5/go.mod h1:QOMLpNf1qxuSY4StA/ArOdfFR2TrKEjJiye2kel2m+M=
 github.com/go-git/go-git/v5 v5.17.2 h1:B+nkdlxdYrvyFK4GPXVU8w1U+YkbsgciIR7f2sZJ104=
 github.com/go-git/go-git/v5 v5.17.2/go.mod h1:pW/VmeqkanRFqR6AljLcs7EA7FbZaN5MQqO7oZADXpo=
+github.com/go-git/go-git/v5 v5.18.0 h1:O831KI+0PR51hM2kep6T8k+w0/LIAD490gvqMCvL5hM=
+github.com/go-git/go-git/v5 v5.18.0/go.mod h1:pW/VmeqkanRFqR6AljLcs7EA7FbZaN5MQqO7oZADXpo=
 github.com/go-gl/glfw v0.0.0-20190409004039-e6da0acd62b1/go.mod h1:vR7hzQXu2zJy9AVAgeJqvqgH9Q5CA+iKCZ2gyEVpxRU=
 github.com/go-gl/glfw/v3.3/glfw v0.0.0-20191125211704-12ad95a8df72/go.mod h1:tQ2UAYgL5IevRw8kRxooKSPJfGvJ9fJQFa0TUsXzTg8=
 github.com/go-gl/glfw/v3.3/glfw v0.0.0-20200222043503-6f7a984d4dc4/go.mod h1:tQ2UAYgL5IevRw8kRxooKSPJfGvJ9fJQFa0TUsXzTg8=
@@ -3905,6 +3907,8 @@ github.com/pulumi/pulumi-terraform-bridge/v3 v3.125.0 h1:uAcnlyytVMBxqewrjAD6+T0
 github.com/pulumi/pulumi-terraform-bridge/v3 v3.125.0/go.mod h1:9ynhhLNzOST1GpuOYQU4o/gh1dng3wY9hHtzzZIjQZ0=
 github.com/pulumi/pulumi-terraform-bridge/v3 v3.126.0 h1:k6/SEGQVxcX3DbF77Ghhr/IHfHFs2JfWqUZ+gHzrRUI=
 github.com/pulumi/pulumi-terraform-bridge/v3 v3.126.0/go.mod h1:y933dcWs6qekakj1cLaGVQWtqnY75soxBuXnGiN5kQ8=
+github.com/pulumi/pulumi-terraform-bridge/v3 v3.127.0 h1:gI9ziJMv1UDENR2G2N9/cpOL5h72dIXKqvTqnlzjPgc=
+github.com/pulumi/pulumi-terraform-bridge/v3 v3.127.0/go.mod h1:SWYcV9/uTdXJEbjSQREaUxSNmIs7X5H79j6lFxEyjzY=
 github.com/pulumi/pulumi-yaml v1.30.2 h1:f5ooFAz9p31yEWQeGUydrRGGMbrpHwYg6vrcUf1HhTc=
 github.com/pulumi/pulumi-yaml v1.30.2/go.mod h1:hYEmYfbzY6p70TGTpOx8xHP6QqjSsgic6gR+LYu5sqo=
 github.com/pulumi/pulumi/pkg/v3 v3.229.0 h1:bGna3zTOFLUpUd0M+GuLspOxjSaAhawXygG6+IAwajw=
