@@ -19,6 +19,58 @@ import javax.annotation.Nullable;
 /**
  * Manages a USB hardware mapping in a Proxmox VE cluster.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.hardware.Usb;
+ * import io.muehlbachler.pulumi.proxmoxve.hardware.UsbArgs;
+ * import com.pulumi.proxmoxve.hardware.inputs.UsbMapArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Usb("example", UsbArgs.builder()
+ *             .comment("This is a comment")
+ *             .name("example")
+ *             .maps(UsbMapArgs.builder()
+ *                 .comment("This is a device specific comment")
+ *                 .id("8087:0a2b")
+ *                 .node("pve")
+ *                 .path("1-8.2")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * !/usr/bin/env sh
+ * A USB hardware mapping can be imported using their name, e.g.:
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:hardware/mapping/usb:Usb example example
+ * ```
+ * 
  */
 @ResourceType(type="proxmoxve:hardware/mapping/usb:Usb")
 public class Usb extends com.pulumi.resources.CustomResource {

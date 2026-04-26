@@ -13,6 +13,60 @@ import (
 )
 
 // EVPN Zone in Proxmox SDN. The EVPN zone creates a routable Layer 3 network, capable of spanning across multiple clusters.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/sdn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sdn.NewEvpn(ctx, "example", &sdn.EvpnArgs{
+//				ResourceId: pulumi.String("evpn1"),
+//				Nodes: pulumi.StringArray{
+//					pulumi.String("pve"),
+//				},
+//				Controller:              pulumi.String("evpn-controller1"),
+//				VrfVxlan:                pulumi.Int(4000),
+//				AdvertiseSubnets:        pulumi.Bool(true),
+//				DisableArpNdSuppression: pulumi.Bool(false),
+//				ExitNodes: pulumi.StringArray{
+//					pulumi.String("pve-exit1"),
+//					pulumi.String("pve-exit2"),
+//				},
+//				ExitNodesLocalRouting: pulumi.Bool(true),
+//				PrimaryExitNode:       pulumi.String("pve-exit1"),
+//				RtImport:              pulumi.String("65000:65000"),
+//				Mtu:                   pulumi.Int(1450),
+//				Dns:                   pulumi.String("1.1.1.1"),
+//				DnsZone:               pulumi.String("example.com"),
+//				Ipam:                  pulumi.String("pve"),
+//				ReverseDns:            pulumi.String("1.1.1.1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// !/usr/bin/env sh
+// EVPN SDN zone can be imported using its unique identifier (zone ID)
+//
+// ```sh
+// $ pulumi import proxmoxve:sdn/zone/evpn:Evpn example evpn1
+// ```
 type Evpn struct {
 	pulumi.CustomResourceState
 

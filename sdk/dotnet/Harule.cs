@@ -16,6 +16,79 @@ namespace Pulumi.ProxmoxVE
     /// have been replaced by HA rules, which provide node affinity and resource affinity
     /// capabilities. For PVE 8 and earlier, use
     /// `proxmoxve.Hagroup` instead.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Node Affinity Rule: assign VMs to preferred nodes with priorities.
+    ///     // Non-strict rules allow failover to other nodes; strict rules do not.
+    ///     var preferNode1 = new ProxmoxVE.Index.Harule("prefer_node1", new()
+    ///     {
+    ///         Rule = "prefer-node1",
+    ///         Type = "node-affinity",
+    ///         Comment = "Prefer node1 for these VMs",
+    ///         Resources = new[]
+    ///         {
+    ///             "vm:100",
+    ///             "vm:101",
+    ///         },
+    ///         Nodes = 
+    ///         {
+    ///             { "node1", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:9,13-14)) },
+    ///             { "node2", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1) (example.pp:11,13-14)) },
+    ///             { "node3", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1) (example.pp:12,13-14)) },
+    ///         },
+    ///         Strict = false,
+    ///     });
+    /// 
+    ///     // Resource Affinity Rule (Positive): keep resources together on the same node.
+    ///     var keepTogether = new ProxmoxVE.Index.Harule("keep_together", new()
+    ///     {
+    ///         Rule = "db-cluster-together",
+    ///         Type = "resource-affinity",
+    ///         Comment = "Keep database replicas on the same node",
+    ///         Resources = new[]
+    ///         {
+    ///             "vm:200",
+    ///             "vm:201",
+    ///         },
+    ///         Affinity = "positive",
+    ///     });
+    /// 
+    ///     // Resource Affinity Rule (Negative / Anti-Affinity): keep resources on
+    ///     // separate nodes for high availability.
+    ///     var keepApart = new ProxmoxVE.Index.Harule("keep_apart", new()
+    ///     {
+    ///         Rule = "db-cluster-apart",
+    ///         Type = "resource-affinity",
+    ///         Comment = "Spread database replicas across nodes",
+    ///         Resources = new[]
+    ///         {
+    ///             "vm:200",
+    ///             "vm:201",
+    ///             "vm:202",
+    ///         },
+    ///         Affinity = "negative",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// HA rules can be imported using their name, e.g.:
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:index/harule:Harule example prefer-node1
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:index/harule:Harule")]
     public partial class Harule : global::Pulumi.CustomResource

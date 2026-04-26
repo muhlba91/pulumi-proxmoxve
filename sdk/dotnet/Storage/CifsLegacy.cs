@@ -52,6 +52,15 @@ namespace Pulumi.ProxmoxVE.Storage
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// Storage can be imported using its identifier, e.g.:
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:storage/cifsLegacy:CifsLegacy example local-cifs
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:storage/cifsLegacy:CifsLegacy")]
     public partial class CifsLegacy : global::Pulumi.CustomResource

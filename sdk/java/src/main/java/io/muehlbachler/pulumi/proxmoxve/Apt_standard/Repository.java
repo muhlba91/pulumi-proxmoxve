@@ -17,6 +17,59 @@ import javax.annotation.Nullable;
 /**
  * Manages an APT standard repository of a Proxmox VE node.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.apt.Repository;
+ * import io.muehlbachler.pulumi.proxmoxve.apt.RepositoryArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Repository("example", RepositoryArgs.builder()
+ *             .handle("no-subscription")
+ *             .node("pve")
+ *             .build());
+ * 
+ *         var exampleRepository = new Repository("exampleRepository", RepositoryArgs.builder()
+ *             .enabled(true)
+ *             .filePath(example.filePath())
+ *             .index(example.index())
+ *             .node(example.node())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * !/usr/bin/env sh
+ * An APT standard repository can be imported using a comma-separated list consisting of the name of the Proxmox VE node,
+ * and the standard repository handle in the exact same order, e.g.:
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:apt/standard/repository:Repository example pve,no-subscription
+ * ```
+ * 
  */
 @ResourceType(type="proxmoxve:apt/standard/repository:Repository")
 public class Repository extends com.pulumi.resources.CustomResource {

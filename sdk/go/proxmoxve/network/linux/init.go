@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "proxmoxve:network/linux/bond:Bond":
+		r = &Bond{}
 	case "proxmoxve:network/linux/bridge:Bridge":
 		r = &Bridge{}
 	case "proxmoxve:network/linux/bridgeLegacy:BridgeLegacy":
@@ -42,6 +44,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"network/linux/bond",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
 		"network/linux/bridge",

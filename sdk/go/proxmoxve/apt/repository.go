@@ -13,6 +13,45 @@ import (
 )
 
 // Manages an APT repository of a Proxmox VE node.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/apt"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := apt.NewRepository(ctx, "example", &apt.RepositoryArgs{
+//				Enabled:  pulumi.Bool(true),
+//				FilePath: pulumi.String("/etc/apt/sources.list"),
+//				Index:    pulumi.Int(0),
+//				Node:     pulumi.String("pve"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// !/usr/bin/env sh
+// An APT repository can be imported using a comma-separated list consisting of the name of the Proxmox VE node,
+// the absolute source list file path, and the index in the exact same order, e.g.:
+//
+// ```sh
+// $ pulumi import proxmoxve:apt/repository:Repository example pve,/etc/apt/sources.list,0
+// ```
 type Repository struct {
 	pulumi.CustomResourceState
 

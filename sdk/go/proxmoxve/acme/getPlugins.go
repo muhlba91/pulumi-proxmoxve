@@ -12,6 +12,31 @@ import (
 )
 
 // Retrieves the list of ACME plugins.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/acme"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := acme.GetPlugins(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("dataProxmoxAcmePlugins", example.Plugins)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetPlugins(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetPluginsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPluginsResult

@@ -13,6 +13,46 @@ import (
 )
 
 // Manages Proxmox HA resources.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := proxmoxve.NewHaresource(ctx, "example", &proxmoxve.HaresourceArgs{
+//				ResourceId: pulumi.String("vm:123"),
+//				State:      pulumi.String("started"),
+//				Group:      pulumi.String("example"),
+//				Comment:    pulumi.String("Managed by Pulumi"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				exampleProxmoxHagroup,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// !/usr/bin/env sh
+// HA resources can be imported using their identifiers, e.g.:
+//
+// ```sh
+// $ pulumi import proxmoxve:index/haresource:Haresource example vm:123
+// ```
 type Haresource struct {
 	pulumi.CustomResourceState
 

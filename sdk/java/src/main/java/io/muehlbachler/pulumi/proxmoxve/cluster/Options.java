@@ -21,6 +21,71 @@ import javax.annotation.Nullable;
 /**
  * Manages Proxmox VE Cluster Datacenter options.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.cluster.Options;
+ * import io.muehlbachler.pulumi.proxmoxve.cluster.OptionsArgs;
+ * import com.pulumi.proxmoxve.cluster.inputs.OptionsNextIdArgs;
+ * import com.pulumi.proxmoxve.cluster.inputs.OptionsNotifyArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var options = new Options("options", OptionsArgs.builder()
+ *             .language("en")
+ *             .keyboard("pl")
+ *             .emailFrom("ged}{@literal @}{@code gont.earthsea")
+ *             .bandwidthLimitMigration(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(555555) (example.pp:4,29-35)))
+ *             .bandwidthLimitDefault(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(666666) (example.pp:5,29-35)))
+ *             .maxWorkers(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(5) (example.pp:6,29-30)))
+ *             .migrationCidr("10.0.0.0/8")
+ *             .migrationType("secure")
+ *             .nextId(OptionsNextIdArgs.builder()
+ *                 .lower(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:10,13-16)))
+ *                 .upper(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(9.99999999e+08) (example.pp:11,13-22)))
+ *                 .build())
+ *             .notify(OptionsNotifyArgs.builder()
+ *                 .haFencingMode("never")
+ *                 .haFencingTarget("default-matcher")
+ *                 .packageUpdates("always")
+ *                 .packageUpdatesTarget("default-matcher")
+ *                 .packageReplication("always")
+ *                 .packageReplicationTarget("default-matcher")
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * !/usr/bin/env sh
+ * Cluster options are global and can be imported using e.g.:
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:cluster/options:Options options cluster
+ * ```
+ * 
  */
 @ResourceType(type="proxmoxve:cluster/options:Options")
 public class Options extends com.pulumi.resources.CustomResource {

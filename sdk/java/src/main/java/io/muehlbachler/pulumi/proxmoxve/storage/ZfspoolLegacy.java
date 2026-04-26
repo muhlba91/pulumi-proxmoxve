@@ -61,6 +61,15 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * !/usr/bin/env sh
+ * Storage can be imported using its identifier, e.g.:
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:storage/zfspoolLegacy:ZfspoolLegacy example local-zfs
+ * ```
+ * 
  */
 @ResourceType(type="proxmoxve:storage/zfspoolLegacy:ZfspoolLegacy")
 public class ZfspoolLegacy extends com.pulumi.resources.CustomResource {

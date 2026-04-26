@@ -6,6 +6,23 @@ import * as utilities from "./utilities";
 
 /**
  * Manages Proxmox VE Replication.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * // Replication
+ * const exampleReplication1 = new proxmoxve.Replication("example_replication_1", {
+ *     resourceId: "100-0",
+ *     target: "pve-02",
+ *     type: "local",
+ *     disable: false,
+ *     comment: "Replication to pve-02 every 30 min",
+ *     schedule: "*&#47;30",
+ * });
+ * ```
  */
 export class Replication extends pulumi.CustomResource {
     /**

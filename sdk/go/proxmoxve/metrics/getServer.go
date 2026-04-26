@@ -12,6 +12,36 @@ import (
 )
 
 // Retrieves information about a specific PVE metric server.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/metrics"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := metrics.LookupServer(ctx, &metrics.LookupServerArgs{
+//				Name: "example_influxdb",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("dataProxmoxMetricsServer", pulumi.Map{
+//				"server": example.Server,
+//				"port":   example.Port,
+//			})
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupServer(ctx *pulumi.Context, args *LookupServerArgs, opts ...pulumi.InvokeOption) (*LookupServerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupServerResult

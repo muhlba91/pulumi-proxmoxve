@@ -11,6 +11,13 @@ export interface ContainerLegacyClone {
      */
     datastoreId?: string;
     /**
+     * When cloning, create a full copy of all disks. Set
+     * to `false` to create a linked clone. Linked clones require the source
+     * container to be a template on storage that supports copy-on-write
+     * (e.g. Ceph RBD) (defaults to `true`).
+     */
+    full?: boolean;
+    /**
      * The name of the source node (leave blank, if
      * equal to the `nodeName` argument).
      */
@@ -47,9 +54,13 @@ export interface ContainerLegacyCpu {
      */
     cores?: number;
     /**
+     * Limit of CPU usage. Value `0` indicates no limit (defaults to `0`).
+     */
+    limit?: number;
+    /**
      * The CPU units (defaults to `1024`).
      */
-    units?: number;
+    units: number;
 }
 
 export interface ContainerLegacyDevicePassthrough {
@@ -324,6 +335,12 @@ export interface ContainerLegacyNetworkInterface {
      * used (defaults to `false`).
      */
     firewall?: boolean;
+    /**
+     * Whether the host runs DHCP on this interface's
+     * behalf (defaults to `false`). Requires Proxmox VE 9.0+. Required for
+     * application containers that do not include a DHCP client.
+     */
+    hostManaged?: boolean;
     /**
      * The MAC address.
      */
@@ -723,6 +740,13 @@ export interface GetUserLegacyAcl {
     roleId: string;
 }
 
+export interface GetVm2LegacyCdrom {
+    /**
+     * The file ID of the CD-ROM.
+     */
+    fileId: string;
+}
+
 export interface GetVm2LegacyCpu {
     /**
      * List of host cores used to execute guest processes, for example: '0,5,8-11'
@@ -741,15 +765,11 @@ export interface GetVm2LegacyCpu {
      */
     flags: string[];
     /**
-     * The number of hotplugged vCPUs.
-     */
-    hotplugged: number;
-    /**
      * Limit of CPU usage.
      */
     limit: number;
     /**
-     * Enable NUMA.
+     * Whether NUMA emulation is enabled.
      */
     numa: boolean;
     /**
@@ -764,6 +784,10 @@ export interface GetVm2LegacyCpu {
      * CPU weight for a VM
      */
     units: number;
+    /**
+     * Number of active vCPUs.
+     */
+    vcpus: number;
 }
 
 export interface GetVm2LegacyRng {
@@ -803,6 +827,13 @@ export interface GetVm2LegacyVga {
     type: string;
 }
 
+export interface GetVmCdrom {
+    /**
+     * The file ID of the CD-ROM.
+     */
+    fileId: string;
+}
+
 export interface GetVmCpu {
     /**
      * List of host cores used to execute guest processes, for example: '0,5,8-11'
@@ -821,15 +852,11 @@ export interface GetVmCpu {
      */
     flags: string[];
     /**
-     * The number of hotplugged vCPUs.
-     */
-    hotplugged: number;
-    /**
      * Limit of CPU usage.
      */
     limit: number;
     /**
-     * Enable NUMA.
+     * Whether NUMA emulation is enabled.
      */
     numa: boolean;
     /**
@@ -844,6 +871,10 @@ export interface GetVmCpu {
      * CPU weight for a VM
      */
     units: number;
+    /**
+     * Number of active vCPUs.
+     */
+    vcpus: number;
 }
 
 export interface GetVmRng {
@@ -992,7 +1023,7 @@ export interface UserLegacyAcl {
 
 export interface Vm2LegacyCdrom {
     /**
-     * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+     * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
      */
     fileId: string;
 }
@@ -1001,58 +1032,58 @@ export interface Vm2LegacyCpu {
     /**
      * The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
      */
-    affinity: string;
+    affinity?: string;
     /**
      * The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
      */
-    architecture: string;
+    architecture?: string;
     /**
-     * The number of CPU cores per socket (defaults to `1`).
+     * The number of CPU cores per socket (PVE defaults to `1` when unset).
      */
-    cores: number;
+    cores?: number;
     /**
      * Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
      */
-    flags: string[];
+    flags?: string[];
     /**
-     * The number of hotplugged vCPUs (defaults to `0`).
+     * Limit of CPU usage. `0` means no limit (PVE default).
      */
-    hotplugged: number;
+    limit?: number;
     /**
-     * Limit of CPU usage (defaults to `0` which means no limit).
+     * Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
      */
-    limit: number;
+    numa?: boolean;
     /**
-     * Enable NUMA (defaults to `false`).
+     * The number of CPU sockets (PVE defaults to `1` when unset).
      */
-    numa: boolean;
+    sockets?: number;
     /**
-     * The number of CPU sockets (defaults to `1`).
+     * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
      */
-    sockets: number;
+    type?: string;
     /**
-     * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+     * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
      */
-    type: string;
+    units?: number;
     /**
-     * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+     * Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
      */
-    units: number;
+    vcpus?: number;
 }
 
 export interface Vm2LegacyRng {
     /**
-     * Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+     * Maximum bytes of entropy allowed to get injected into the guest every period.
      */
-    maxBytes: number;
+    maxBytes?: number;
     /**
-     * Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+     * Period in milliseconds to limit entropy injection to the guest.
      */
-    period: number;
+    period?: number;
     /**
      * The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
      */
-    source: string;
+    source?: string;
 }
 
 export interface Vm2LegacyTimeouts {
@@ -1078,20 +1109,20 @@ export interface Vm2LegacyVga {
     /**
      * Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
      */
-    clipboard: string;
+    clipboard?: string;
     /**
      * The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
      */
-    memory: number;
+    memory?: number;
     /**
      * The VGA type (defaults to `std`).
      */
-    type: string;
+    type?: string;
 }
 
 export interface VmCdrom {
     /**
-     * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+     * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
      */
     fileId: string;
 }
@@ -1100,43 +1131,43 @@ export interface VmCpu {
     /**
      * The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
      */
-    affinity: string;
+    affinity?: string;
     /**
      * The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
      */
-    architecture: string;
+    architecture?: string;
     /**
-     * The number of CPU cores per socket (defaults to `1`).
+     * The number of CPU cores per socket (PVE defaults to `1` when unset).
      */
-    cores: number;
+    cores?: number;
     /**
      * Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
      */
-    flags: string[];
+    flags?: string[];
     /**
-     * The number of hotplugged vCPUs (defaults to `0`).
+     * Limit of CPU usage. `0` means no limit (PVE default).
      */
-    hotplugged: number;
+    limit?: number;
     /**
-     * Limit of CPU usage (defaults to `0` which means no limit).
+     * Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
      */
-    limit: number;
+    numa?: boolean;
     /**
-     * Enable NUMA (defaults to `false`).
+     * The number of CPU sockets (PVE defaults to `1` when unset).
      */
-    numa: boolean;
+    sockets?: number;
     /**
-     * The number of CPU sockets (defaults to `1`).
+     * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
      */
-    sockets: number;
+    type?: string;
     /**
-     * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+     * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
      */
-    type: string;
+    units?: number;
     /**
-     * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+     * Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
      */
-    units: number;
+    vcpus?: number;
 }
 
 export interface VmLegacyAgent {
@@ -1579,6 +1610,12 @@ export interface VmLegacyInitialization {
      */
     type: string;
     /**
+     * Whether to do an automatic package upgrade after
+     * the first boot (defaults to `true`).
+     * Setting this is only allowed for `root@pam` authenticated user.
+     */
+    upgrade: boolean;
+    /**
      * The user account configuration (conflicts
      * with `userDataFileId`).
      */
@@ -1926,17 +1963,17 @@ export interface VmLegacyWatchdog {
 
 export interface VmRng {
     /**
-     * Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+     * Maximum bytes of entropy allowed to get injected into the guest every period.
      */
-    maxBytes: number;
+    maxBytes?: number;
     /**
-     * Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+     * Period in milliseconds to limit entropy injection to the guest.
      */
-    period: number;
+    period?: number;
     /**
      * The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
      */
-    source: string;
+    source?: string;
 }
 
 export interface VmTimeouts {
@@ -1962,15 +1999,15 @@ export interface VmVga {
     /**
      * Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
      */
-    clipboard: string;
+    clipboard?: string;
     /**
      * The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
      */
-    memory: number;
+    memory?: number;
     /**
      * The VGA type (defaults to `std`).
      */
-    type: string;
+    type?: string;
 }
 
 export namespace acme {
@@ -2181,7 +2218,7 @@ export namespace backup {
 export namespace cloned {
     export interface VmCdrom {
         /**
-         * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+         * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
          */
         fileId?: string;
     }
@@ -2235,7 +2272,7 @@ export namespace cloned {
          */
         architecture?: string;
         /**
-         * The number of CPU cores per socket (defaults to `1`).
+         * The number of CPU cores per socket (PVE defaults to `1` when unset).
          */
         cores?: number;
         /**
@@ -2243,29 +2280,29 @@ export namespace cloned {
          */
         flags?: string[];
         /**
-         * The number of hotplugged vCPUs (defaults to `0`).
-         */
-        hotplugged?: number;
-        /**
-         * Limit of CPU usage (defaults to `0` which means no limit).
+         * Limit of CPU usage. `0` means no limit (PVE default).
          */
         limit?: number;
         /**
-         * Enable NUMA (defaults to `false`).
+         * Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
          */
         numa?: boolean;
         /**
-         * The number of CPU sockets (defaults to `1`).
+         * The number of CPU sockets (PVE defaults to `1` when unset).
          */
         sockets?: number;
         /**
-         * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+         * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
          */
         type?: string;
         /**
-         * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+         * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
          */
         units?: number;
+        /**
+         * Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+         */
+        vcpus?: number;
     }
 
     export interface VmDelete {
@@ -2340,7 +2377,7 @@ export namespace cloned {
 
     export interface VmLegacyCdrom {
         /**
-         * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+         * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
          */
         fileId?: string;
     }
@@ -2394,7 +2431,7 @@ export namespace cloned {
          */
         architecture?: string;
         /**
-         * The number of CPU cores per socket (defaults to `1`).
+         * The number of CPU cores per socket (PVE defaults to `1` when unset).
          */
         cores?: number;
         /**
@@ -2402,29 +2439,29 @@ export namespace cloned {
          */
         flags?: string[];
         /**
-         * The number of hotplugged vCPUs (defaults to `0`).
-         */
-        hotplugged?: number;
-        /**
-         * Limit of CPU usage (defaults to `0` which means no limit).
+         * Limit of CPU usage. `0` means no limit (PVE default).
          */
         limit?: number;
         /**
-         * Enable NUMA (defaults to `false`).
+         * Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
          */
         numa?: boolean;
         /**
-         * The number of CPU sockets (defaults to `1`).
+         * The number of CPU sockets (PVE defaults to `1` when unset).
          */
         sockets?: number;
         /**
-         * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+         * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
          */
         type?: string;
         /**
-         * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+         * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
          */
         units?: number;
+        /**
+         * Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+         */
+        vcpus?: number;
     }
 
     export interface VmLegacyDelete {
@@ -2499,7 +2536,7 @@ export namespace cloned {
 
     export interface VmLegacyMemory {
         /**
-         * Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely (defaults to `0`).
+         * Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely.
          */
         balloon?: number;
         /**
@@ -2512,15 +2549,15 @@ export namespace cloned {
          */
         hugepages?: string;
         /**
-         * Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup (defaults to `false`).
+         * Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup.
          */
         keepHugepages?: boolean;
         /**
-         * CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs (defaults to `1000`).
+         * CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs.
          */
         shares?: number;
         /**
-         * Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM (defaults to `512` MiB).
+         * Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM. Defaults to PVE's implicit `512` MiB when unset.
          */
         size?: number;
     }
@@ -2570,11 +2607,11 @@ export namespace cloned {
 
     export interface VmLegacyRng {
         /**
-         * Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+         * Maximum bytes of entropy allowed to get injected into the guest every period.
          */
         maxBytes?: number;
         /**
-         * Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+         * Period in milliseconds to limit entropy injection to the guest.
          */
         period?: number;
         /**
@@ -2619,7 +2656,7 @@ export namespace cloned {
 
     export interface VmMemory {
         /**
-         * Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely (defaults to `0`).
+         * Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely.
          */
         balloon?: number;
         /**
@@ -2632,15 +2669,15 @@ export namespace cloned {
          */
         hugepages?: string;
         /**
-         * Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup (defaults to `false`).
+         * Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup.
          */
         keepHugepages?: boolean;
         /**
-         * CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs (defaults to `1000`).
+         * CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs.
          */
         shares?: number;
         /**
-         * Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM (defaults to `512` MiB).
+         * Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM. Defaults to PVE's implicit `512` MiB when unset.
          */
         size?: number;
     }
@@ -2690,11 +2727,11 @@ export namespace cloned {
 
     export interface VmRng {
         /**
-         * Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+         * Maximum bytes of entropy allowed to get injected into the guest every period.
          */
         maxBytes?: number;
         /**
-         * Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+         * Period in milliseconds to limit entropy injection to the guest.
          */
         period?: number;
         /**
@@ -2936,6 +2973,10 @@ export namespace config {
          */
         agentSocket?: string;
         /**
+         * The method used to resolve node IP addresses for SSH connections. Set to `dns` to skip the Proxmox API-based resolution and use local DNS instead. DNS resolution prefers IPv4 but falls back to IPv6 if no IPv4 addresses are available. Useful in multi-subnet environments where the API may return an inaccessible IP. Defaults to `api`.
+         */
+        nodeAddressSource?: string;
+        /**
          * Overrides for SSH connection configuration for a Proxmox VE node.
          */
         nodes?: outputs.config.SshNode[];
@@ -3113,6 +3154,76 @@ export namespace hardware {
          * The severity of the node check diagnostic entry.
          */
         severity: string;
+    }
+
+    export interface GetPciDevice {
+        /**
+         * The PCI class code (hex, e.g. `0x030000`).
+         */
+        class: string;
+        /**
+         * The PCI device ID (hex, e.g. `0x5916`).
+         */
+        device: string;
+        /**
+         * The human-readable device name.
+         */
+        deviceName: string;
+        /**
+         * The PCI address in `domain:bus:device.function` format (e.g. `0000:00:02.0`).
+         */
+        id: string;
+        /**
+         * The IOMMU group number. `-1` indicates that the device is not in an IOMMU group.
+         */
+        iommuGroup: number;
+        /**
+         * Whether the device supports mediated devices (vGPU).
+         */
+        mdev: boolean;
+        /**
+         * The PCI subsystem device ID (hex).
+         */
+        subsystemDevice: string;
+        /**
+         * The human-readable subsystem device name.
+         */
+        subsystemDeviceName: string;
+        /**
+         * The PCI subsystem vendor ID (hex).
+         */
+        subsystemVendor: string;
+        /**
+         * The human-readable subsystem vendor name.
+         */
+        subsystemVendorName: string;
+        /**
+         * The PCI vendor ID (hex, e.g. `0x8086`).
+         */
+        vendor: string;
+        /**
+         * The human-readable vendor name (e.g. `Intel Corporation`).
+         */
+        vendorName: string;
+    }
+
+    export interface GetPciFilters {
+        /**
+         * Filter by PCI class code prefix (e.g. `03` to match all display controllers). The `0x` prefix in class codes is stripped before matching.
+         */
+        class?: string;
+        /**
+         * Filter by device ID prefix. The `0x` prefix in device IDs is stripped before matching.
+         */
+        deviceId?: string;
+        /**
+         * Filter by PCI address prefix (e.g. `0000:01` to match all devices on bus 01).
+         */
+        id?: string;
+        /**
+         * Filter by vendor ID prefix (e.g. `8086` for Intel devices). The `0x` prefix in vendor IDs is stripped before matching.
+         */
+        vendorId?: string;
     }
 
     export namespace mapping {

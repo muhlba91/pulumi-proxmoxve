@@ -30,6 +30,12 @@ namespace Pulumi.ProxmoxVE.Inputs
         [Input("agentSocket")]
         public Input<string>? AgentSocket { get; set; }
 
+        /// <summary>
+        /// The method used to resolve node IP addresses for SSH connections. Set to `Dns` to skip the Proxmox API-based resolution and use local DNS instead. DNS resolution prefers IPv4 but falls back to IPv6 if no IPv4 addresses are available. Useful in multi-subnet environments where the API may return an inaccessible IP. Defaults to `Api`.
+        /// </summary>
+        [Input("nodeAddressSource")]
+        public Input<string>? NodeAddressSource { get; set; }
+
         [Input("nodes")]
         private InputList<Inputs.ProviderSshNodeArgs>? _nodes;
 

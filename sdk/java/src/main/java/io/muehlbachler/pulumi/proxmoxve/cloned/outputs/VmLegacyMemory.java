@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VmLegacyMemory {
     /**
-     * @return Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; disables the balloon driver entirely (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
+     * @return Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; disables the balloon driver entirely.
      * 
      */
     private @Nullable Integer balloon;
@@ -29,24 +29,24 @@ public final class VmLegacyMemory {
      */
     private @Nullable String hugepages;
     /**
-     * @return Don&#39;t release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt; keeps them allocated for faster VM startup (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * @return Don&#39;t release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt; keeps them allocated for faster VM startup.
      * 
      */
     private @Nullable Boolean keepHugepages;
     /**
-     * @return CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs (defaults to &lt;span pulumi-lang-nodejs=&#34;`1000`&#34; pulumi-lang-dotnet=&#34;`1000`&#34; pulumi-lang-go=&#34;`1000`&#34; pulumi-lang-python=&#34;`1000`&#34; pulumi-lang-yaml=&#34;`1000`&#34; pulumi-lang-java=&#34;`1000`&#34;&gt;`1000`&lt;/span&gt;).
+     * @return CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs.
      * 
      */
     private @Nullable Integer shares;
     /**
-     * @return Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon &gt; 0), memory between &lt;span pulumi-lang-nodejs=&#34;`balloon`&#34; pulumi-lang-dotnet=&#34;`Balloon`&#34; pulumi-lang-go=&#34;`balloon`&#34; pulumi-lang-python=&#34;`balloon`&#34; pulumi-lang-yaml=&#34;`balloon`&#34; pulumi-lang-java=&#34;`balloon`&#34;&gt;`balloon`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`size`&#34; pulumi-lang-dotnet=&#34;`Size`&#34; pulumi-lang-go=&#34;`size`&#34; pulumi-lang-python=&#34;`size`&#34; pulumi-lang-yaml=&#34;`size`&#34; pulumi-lang-java=&#34;`size`&#34;&gt;`size`&lt;/span&gt; can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM (defaults to &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34;&gt;`512`&lt;/span&gt; MiB).
+     * @return Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon &gt; 0), memory between &lt;span pulumi-lang-nodejs=&#34;`balloon`&#34; pulumi-lang-dotnet=&#34;`Balloon`&#34; pulumi-lang-go=&#34;`balloon`&#34; pulumi-lang-python=&#34;`balloon`&#34; pulumi-lang-yaml=&#34;`balloon`&#34; pulumi-lang-java=&#34;`balloon`&#34;&gt;`balloon`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`size`&#34; pulumi-lang-dotnet=&#34;`Size`&#34; pulumi-lang-go=&#34;`size`&#34; pulumi-lang-python=&#34;`size`&#34; pulumi-lang-yaml=&#34;`size`&#34; pulumi-lang-java=&#34;`size`&#34;&gt;`size`&lt;/span&gt; can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM. Defaults to PVE&#39;s implicit &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34;&gt;`512`&lt;/span&gt; MiB when unset.
      * 
      */
     private @Nullable Integer size;
 
     private VmLegacyMemory() {}
     /**
-     * @return Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; disables the balloon driver entirely (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
+     * @return Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; disables the balloon driver entirely.
      * 
      */
     public Optional<Integer> balloon() {
@@ -65,21 +65,21 @@ public final class VmLegacyMemory {
         return Optional.ofNullable(this.hugepages);
     }
     /**
-     * @return Don&#39;t release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt; keeps them allocated for faster VM startup (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * @return Don&#39;t release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt; keeps them allocated for faster VM startup.
      * 
      */
     public Optional<Boolean> keepHugepages() {
         return Optional.ofNullable(this.keepHugepages);
     }
     /**
-     * @return CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs (defaults to &lt;span pulumi-lang-nodejs=&#34;`1000`&#34; pulumi-lang-dotnet=&#34;`1000`&#34; pulumi-lang-go=&#34;`1000`&#34; pulumi-lang-python=&#34;`1000`&#34; pulumi-lang-yaml=&#34;`1000`&#34; pulumi-lang-java=&#34;`1000`&#34;&gt;`1000`&lt;/span&gt;).
+     * @return CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs.
      * 
      */
     public Optional<Integer> shares() {
         return Optional.ofNullable(this.shares);
     }
     /**
-     * @return Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon &gt; 0), memory between &lt;span pulumi-lang-nodejs=&#34;`balloon`&#34; pulumi-lang-dotnet=&#34;`Balloon`&#34; pulumi-lang-go=&#34;`balloon`&#34; pulumi-lang-python=&#34;`balloon`&#34; pulumi-lang-yaml=&#34;`balloon`&#34; pulumi-lang-java=&#34;`balloon`&#34;&gt;`balloon`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`size`&#34; pulumi-lang-dotnet=&#34;`Size`&#34; pulumi-lang-go=&#34;`size`&#34; pulumi-lang-python=&#34;`size`&#34; pulumi-lang-yaml=&#34;`size`&#34; pulumi-lang-java=&#34;`size`&#34;&gt;`size`&lt;/span&gt; can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM (defaults to &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34;&gt;`512`&lt;/span&gt; MiB).
+     * @return Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon &gt; 0), memory between &lt;span pulumi-lang-nodejs=&#34;`balloon`&#34; pulumi-lang-dotnet=&#34;`Balloon`&#34; pulumi-lang-go=&#34;`balloon`&#34; pulumi-lang-python=&#34;`balloon`&#34; pulumi-lang-yaml=&#34;`balloon`&#34; pulumi-lang-java=&#34;`balloon`&#34;&gt;`balloon`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`size`&#34; pulumi-lang-dotnet=&#34;`Size`&#34; pulumi-lang-go=&#34;`size`&#34; pulumi-lang-python=&#34;`size`&#34; pulumi-lang-yaml=&#34;`size`&#34; pulumi-lang-java=&#34;`size`&#34;&gt;`size`&lt;/span&gt; can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM. Defaults to PVE&#39;s implicit &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34;&gt;`512`&lt;/span&gt; MiB when unset.
      * 
      */
     public Optional<Integer> size() {

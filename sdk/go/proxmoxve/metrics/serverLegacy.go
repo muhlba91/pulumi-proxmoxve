@@ -75,8 +75,8 @@ import (
 type ServerLegacy struct {
 	pulumi.CustomResourceState
 
-	// Set this to `true` to disable this metric server.
-	Disable pulumi.BoolPtrOutput `pulumi:"disable"`
+	// Set this to `true` to disable this metric server. Defaults to `false`.
+	Disable pulumi.BoolOutput `pulumi:"disable"`
 	// Root graphite path (ex: `proxmox.mycluster.mykey`).
 	GraphitePath pulumi.StringPtrOutput `pulumi:"graphitePath"`
 	// Protocol to send graphite data. Choice is between `udp` | `tcp`. If not set, PVE default is `udp`.
@@ -93,7 +93,7 @@ type ServerLegacy struct {
 	InfluxOrganization pulumi.StringPtrOutput `pulumi:"influxOrganization"`
 	// The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
 	InfluxToken pulumi.StringPtrOutput `pulumi:"influxToken"`
-	// Set to `false` to disable certificate verification for https endpoints.
+	// Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
 	InfluxVerify pulumi.BoolPtrOutput `pulumi:"influxVerify"`
 	// MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
 	Mtu pulumi.IntPtrOutput `pulumi:"mtu"`
@@ -175,7 +175,7 @@ func GetServerLegacy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServerLegacy resources.
 type serverLegacyState struct {
-	// Set this to `true` to disable this metric server.
+	// Set this to `true` to disable this metric server. Defaults to `false`.
 	Disable *bool `pulumi:"disable"`
 	// Root graphite path (ex: `proxmox.mycluster.mykey`).
 	GraphitePath *string `pulumi:"graphitePath"`
@@ -193,7 +193,7 @@ type serverLegacyState struct {
 	InfluxOrganization *string `pulumi:"influxOrganization"`
 	// The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
 	InfluxToken *string `pulumi:"influxToken"`
-	// Set to `false` to disable certificate verification for https endpoints.
+	// Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
 	InfluxVerify *bool `pulumi:"influxVerify"`
 	// MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
 	Mtu *int `pulumi:"mtu"`
@@ -226,7 +226,7 @@ type serverLegacyState struct {
 }
 
 type ServerLegacyState struct {
-	// Set this to `true` to disable this metric server.
+	// Set this to `true` to disable this metric server. Defaults to `false`.
 	Disable pulumi.BoolPtrInput
 	// Root graphite path (ex: `proxmox.mycluster.mykey`).
 	GraphitePath pulumi.StringPtrInput
@@ -244,7 +244,7 @@ type ServerLegacyState struct {
 	InfluxOrganization pulumi.StringPtrInput
 	// The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
 	InfluxToken pulumi.StringPtrInput
-	// Set to `false` to disable certificate verification for https endpoints.
+	// Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
 	InfluxVerify pulumi.BoolPtrInput
 	// MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
 	Mtu pulumi.IntPtrInput
@@ -281,7 +281,7 @@ func (ServerLegacyState) ElementType() reflect.Type {
 }
 
 type serverLegacyArgs struct {
-	// Set this to `true` to disable this metric server.
+	// Set this to `true` to disable this metric server. Defaults to `false`.
 	Disable *bool `pulumi:"disable"`
 	// Root graphite path (ex: `proxmox.mycluster.mykey`).
 	GraphitePath *string `pulumi:"graphitePath"`
@@ -299,7 +299,7 @@ type serverLegacyArgs struct {
 	InfluxOrganization *string `pulumi:"influxOrganization"`
 	// The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
 	InfluxToken *string `pulumi:"influxToken"`
-	// Set to `false` to disable certificate verification for https endpoints.
+	// Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
 	InfluxVerify *bool `pulumi:"influxVerify"`
 	// MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
 	Mtu *int `pulumi:"mtu"`
@@ -333,7 +333,7 @@ type serverLegacyArgs struct {
 
 // The set of arguments for constructing a ServerLegacy resource.
 type ServerLegacyArgs struct {
-	// Set this to `true` to disable this metric server.
+	// Set this to `true` to disable this metric server. Defaults to `false`.
 	Disable pulumi.BoolPtrInput
 	// Root graphite path (ex: `proxmox.mycluster.mykey`).
 	GraphitePath pulumi.StringPtrInput
@@ -351,7 +351,7 @@ type ServerLegacyArgs struct {
 	InfluxOrganization pulumi.StringPtrInput
 	// The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
 	InfluxToken pulumi.StringPtrInput
-	// Set to `false` to disable certificate verification for https endpoints.
+	// Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
 	InfluxVerify pulumi.BoolPtrInput
 	// MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
 	Mtu pulumi.IntPtrInput
@@ -470,9 +470,9 @@ func (o ServerLegacyOutput) ToServerLegacyOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Set this to `true` to disable this metric server.
-func (o ServerLegacyOutput) Disable() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *ServerLegacy) pulumi.BoolPtrOutput { return v.Disable }).(pulumi.BoolPtrOutput)
+// Set this to `true` to disable this metric server. Defaults to `false`.
+func (o ServerLegacyOutput) Disable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ServerLegacy) pulumi.BoolOutput { return v.Disable }).(pulumi.BoolOutput)
 }
 
 // Root graphite path (ex: `proxmox.mycluster.mykey`).
@@ -515,7 +515,7 @@ func (o ServerLegacyOutput) InfluxToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerLegacy) pulumi.StringPtrOutput { return v.InfluxToken }).(pulumi.StringPtrOutput)
 }
 
-// Set to `false` to disable certificate verification for https endpoints.
+// Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
 func (o ServerLegacyOutput) InfluxVerify() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServerLegacy) pulumi.BoolPtrOutput { return v.InfluxVerify }).(pulumi.BoolPtrOutput)
 }

@@ -11,6 +11,42 @@ namespace Pulumi.ProxmoxVE
 {
     /// <summary>
     /// Manages a High Availability group in a Proxmox VE cluster.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new ProxmoxVE.Index.Hagroup("example", new()
+    ///     {
+    ///         Group = "example",
+    ///         Comment = "This is a comment.",
+    ///         Nodes = 
+    ///         {
+    ///             { "node1", null },
+    ///             { "node2", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:5,13-14)) },
+    ///             { "node3", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1) (example.pp:6,13-14)) },
+    ///         },
+    ///         Restricted = true,
+    ///         NoFailback = false,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// HA groups can be imported using their name, e.g.:
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:index/hagroup:Hagroup example example
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:index/hagroup:Hagroup")]
     public partial class Hagroup : global::Pulumi.CustomResource

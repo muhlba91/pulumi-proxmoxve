@@ -162,6 +162,24 @@ def get_simple(id: Optional[_builtins.str] = None,
     """
     Retrieves information about a Simple Zone in Proxmox SDN. It will create an isolated VNet bridge. This bridge is not linked to a physical interface, and VM traffic is only local on each the node. It can be used in NAT or routed setups.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.sdn.zone.get_simple(id="simple1")
+    pulumi.export("dataProxmoxSdnZoneSimple", {
+        "id": example.id,
+        "nodes": example.nodes,
+        "mtu": example.mtu,
+        "dns": example.dns,
+        "dnsZone": example.dns_zone,
+        "ipam": example.ipam,
+        "reverseDns": example.reverse_dns,
+    })
+    ```
+
 
     :param _builtins.str id: The unique identifier of the SDN zone.
     """
@@ -185,6 +203,24 @@ def get_simple_output(id: Optional[pulumi.Input[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSimpleResult]:
     """
     Retrieves information about a Simple Zone in Proxmox SDN. It will create an isolated VNet bridge. This bridge is not linked to a physical interface, and VM traffic is only local on each the node. It can be used in NAT or routed setups.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.sdn.zone.get_simple(id="simple1")
+    pulumi.export("dataProxmoxSdnZoneSimple", {
+        "id": example.id,
+        "nodes": example.nodes,
+        "mtu": example.mtu,
+        "dns": example.dns,
+        "dnsZone": example.dns_zone,
+        "ipam": example.ipam,
+        "reverseDns": example.reverse_dns,
+    })
+    ```
 
 
     :param _builtins.str id: The unique identifier of the SDN zone.

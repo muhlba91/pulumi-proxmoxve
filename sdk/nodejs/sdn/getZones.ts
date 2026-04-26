@@ -8,6 +8,31 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves information about all SDN Zones in Proxmox. This data source can optionally filter zones by type.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * // List all SDN zones
+ * const all = proxmoxve.sdn.getZones({});
+ * // List only EVPN zones
+ * const evpnOnly = proxmoxve.sdn.getZones({
+ *     type: "evpn",
+ * });
+ * // List only Simple zones  
+ * const simpleOnly = proxmoxve.sdn.getZones({
+ *     type: "simple",
+ * });
+ * export const dataProxmoxSdnZonesAll = {
+ *     zones: all.then(all => all.zones),
+ * };
+ * export const dataProxmoxSdnZonesFiltered = {
+ *     evpnZones: evpnOnly.then(evpnOnly => evpnOnly.zones),
+ *     simpleZones: simpleOnly.then(simpleOnly => simpleOnly.zones),
+ * };
+ * ```
  */
 export function getZones(args?: GetZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetZonesResult> {
     args = args || {};
@@ -46,6 +71,31 @@ export interface GetZonesResult {
 }
 /**
  * Retrieves information about all SDN Zones in Proxmox. This data source can optionally filter zones by type.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * // List all SDN zones
+ * const all = proxmoxve.sdn.getZones({});
+ * // List only EVPN zones
+ * const evpnOnly = proxmoxve.sdn.getZones({
+ *     type: "evpn",
+ * });
+ * // List only Simple zones  
+ * const simpleOnly = proxmoxve.sdn.getZones({
+ *     type: "simple",
+ * });
+ * export const dataProxmoxSdnZonesAll = {
+ *     zones: all.then(all => all.zones),
+ * };
+ * export const dataProxmoxSdnZonesFiltered = {
+ *     evpnZones: evpnOnly.then(evpnOnly => evpnOnly.zones),
+ *     simpleZones: simpleOnly.then(simpleOnly => simpleOnly.zones),
+ * };
+ * ```
  */
 export function getZonesOutput(args?: GetZonesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZonesResult> {
     args = args || {};

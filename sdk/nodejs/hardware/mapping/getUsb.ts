@@ -8,6 +8,18 @@ import * as utilities from "../../utilities";
 
 /**
  * Retrieves a USB hardware mapping from a Proxmox VE cluster.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = proxmoxve.hardware.mapping.getUsb({
+ *     name: "example",
+ * });
+ * export const dataProxmoxHardwareMappingUsb = example;
+ * ```
  */
 export function getUsb(args: GetUsbArgs, opts?: pulumi.InvokeOptions): Promise<GetUsbResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -49,6 +61,18 @@ export interface GetUsbResult {
 }
 /**
  * Retrieves a USB hardware mapping from a Proxmox VE cluster.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = proxmoxve.hardware.mapping.getUsb({
+ *     name: "example",
+ * });
+ * export const dataProxmoxHardwareMappingUsb = example;
+ * ```
  */
 export function getUsbOutput(args: GetUsbOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUsbResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

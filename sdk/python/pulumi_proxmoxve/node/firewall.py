@@ -441,6 +441,34 @@ class Firewall(pulumi.CustomResource):
 
         > This resource in fact updates existing node firewall configuration created by PVE on bootstrap. All optional attributes have explicit defaults for deterministic behavior (PVE may change defaults in the future). See [API documentation](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/firewall/options).
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        node_pve1 = proxmoxve.node.Firewall("node-pve1",
+            node_name="pve1",
+            enabled=False)
+        pve2 = proxmoxve.node.Firewall("pve2",
+            node_name="pve2",
+            enabled=True,
+            log_level_in="alert",
+            log_level_out="alert",
+            log_level_forward="alert",
+            ndp=True,
+            nftables=True,
+            nosmurfs=True,
+            smurf_log_level="alert",
+            tcp_flags_log_level="alert")
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import proxmoxve:node/firewall:Firewall node-pve1 pve1
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -467,6 +495,34 @@ class Firewall(pulumi.CustomResource):
         Manages Proxmox VE Node Firewall options.
 
         > This resource in fact updates existing node firewall configuration created by PVE on bootstrap. All optional attributes have explicit defaults for deterministic behavior (PVE may change defaults in the future). See [API documentation](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/firewall/options).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        node_pve1 = proxmoxve.node.Firewall("node-pve1",
+            node_name="pve1",
+            enabled=False)
+        pve2 = proxmoxve.node.Firewall("pve2",
+            node_name="pve2",
+            enabled=True,
+            log_level_in="alert",
+            log_level_out="alert",
+            log_level_forward="alert",
+            ndp=True,
+            nftables=True,
+            nosmurfs=True,
+            smurf_log_level="alert",
+            tcp_flags_log_level="alert")
+        ```
+
+        ## Import
+
+        ```sh
+        $ pulumi import proxmoxve:node/firewall:Firewall node-pve1 pve1
+        ```
 
 
         :param str resource_name: The name of the resource.

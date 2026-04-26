@@ -14,7 +14,7 @@ namespace Pulumi.ProxmoxVE.Cloned.Outputs
     public sealed class VmLegacyMemory
     {
         /// <summary>
-        /// Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely (defaults to `0`).
+        /// Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely.
         /// </summary>
         public readonly int? Balloon;
         /// <summary>
@@ -27,15 +27,15 @@ namespace Pulumi.ProxmoxVE.Cloned.Outputs
         /// </summary>
         public readonly string? Hugepages;
         /// <summary>
-        /// Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `True` keeps them allocated for faster VM startup (defaults to `False`).
+        /// Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `True` keeps them allocated for faster VM startup.
         /// </summary>
         public readonly bool? KeepHugepages;
         /// <summary>
-        /// CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs (defaults to `1000`).
+        /// CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs.
         /// </summary>
         public readonly int? Shares;
         /// <summary>
-        /// Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon &gt; 0), memory between `Balloon` and `Size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM (defaults to `512` MiB).
+        /// Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon &gt; 0), memory between `Balloon` and `Size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM. Defaults to PVE's implicit `512` MiB when unset.
         /// </summary>
         public readonly int? Size;
 

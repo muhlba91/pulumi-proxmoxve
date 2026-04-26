@@ -11,6 +11,42 @@ namespace Pulumi.ProxmoxVE
 {
     /// <summary>
     /// Manages Proxmox HA resources.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new ProxmoxVE.Index.Haresource("example", new()
+    ///     {
+    ///         ResourceId = "vm:123",
+    ///         State = "started",
+    ///         Group = "example",
+    ///         Comment = "Managed by Pulumi",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             exampleProxmoxHagroup,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// HA resources can be imported using their identifiers, e.g.:
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:index/haresource:Haresource example vm:123
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:index/haresource:Haresource")]
     public partial class Haresource : global::Pulumi.CustomResource

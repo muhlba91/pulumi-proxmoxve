@@ -13,18 +13,120 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
     {
         /// <summary>
         /// Retrieves information about a QinQ Zone in Proxmox SDN. QinQ also known as VLAN stacking, that uses multiple layers of VLAN tags for isolation. The QinQ zone defines the outer VLAN tag (the Service VLAN) whereas the inner VLAN tag is defined by the VNet. Your physical network switches must support stacked VLANs for this configuration. Due to the double stacking of tags, you need 4 more bytes for QinQ VLANs. For example, you must reduce the MTU to 1496 if you physical interface MTU is 1500.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = ProxmoxVE.Sdn.Zone.GetQinq.Invoke(new()
+        ///     {
+        ///         Id = "qinq1",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxSdnZoneQinq"] = 
+        ///         {
+        ///             { "id", example.Apply(getQinqResult =&gt; getQinqResult.Id) },
+        ///             { "nodes", example.Apply(getQinqResult =&gt; getQinqResult.Nodes) },
+        ///             { "bridge", example.Apply(getQinqResult =&gt; getQinqResult.Bridge) },
+        ///             { "serviceVlan", example.Apply(getQinqResult =&gt; getQinqResult.ServiceVlan) },
+        ///             { "serviceVlanProtocol", example.Apply(getQinqResult =&gt; getQinqResult.ServiceVlanProtocol) },
+        ///             { "mtu", example.Apply(getQinqResult =&gt; getQinqResult.Mtu) },
+        ///             { "dns", example.Apply(getQinqResult =&gt; getQinqResult.Dns) },
+        ///             { "dnsZone", example.Apply(getQinqResult =&gt; getQinqResult.DnsZone) },
+        ///             { "ipam", example.Apply(getQinqResult =&gt; getQinqResult.Ipam) },
+        ///             { "reverseDns", example.Apply(getQinqResult =&gt; getQinqResult.ReverseDns) },
+        ///         },
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetQinqResult> InvokeAsync(GetQinqArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetQinqResult>("proxmoxve:sdn/zone/getQinq:getQinq", args ?? new GetQinqArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about a QinQ Zone in Proxmox SDN. QinQ also known as VLAN stacking, that uses multiple layers of VLAN tags for isolation. The QinQ zone defines the outer VLAN tag (the Service VLAN) whereas the inner VLAN tag is defined by the VNet. Your physical network switches must support stacked VLANs for this configuration. Due to the double stacking of tags, you need 4 more bytes for QinQ VLANs. For example, you must reduce the MTU to 1496 if you physical interface MTU is 1500.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = ProxmoxVE.Sdn.Zone.GetQinq.Invoke(new()
+        ///     {
+        ///         Id = "qinq1",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxSdnZoneQinq"] = 
+        ///         {
+        ///             { "id", example.Apply(getQinqResult =&gt; getQinqResult.Id) },
+        ///             { "nodes", example.Apply(getQinqResult =&gt; getQinqResult.Nodes) },
+        ///             { "bridge", example.Apply(getQinqResult =&gt; getQinqResult.Bridge) },
+        ///             { "serviceVlan", example.Apply(getQinqResult =&gt; getQinqResult.ServiceVlan) },
+        ///             { "serviceVlanProtocol", example.Apply(getQinqResult =&gt; getQinqResult.ServiceVlanProtocol) },
+        ///             { "mtu", example.Apply(getQinqResult =&gt; getQinqResult.Mtu) },
+        ///             { "dns", example.Apply(getQinqResult =&gt; getQinqResult.Dns) },
+        ///             { "dnsZone", example.Apply(getQinqResult =&gt; getQinqResult.DnsZone) },
+        ///             { "ipam", example.Apply(getQinqResult =&gt; getQinqResult.Ipam) },
+        ///             { "reverseDns", example.Apply(getQinqResult =&gt; getQinqResult.ReverseDns) },
+        ///         },
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetQinqResult> Invoke(GetQinqInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetQinqResult>("proxmoxve:sdn/zone/getQinq:getQinq", args ?? new GetQinqInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about a QinQ Zone in Proxmox SDN. QinQ also known as VLAN stacking, that uses multiple layers of VLAN tags for isolation. The QinQ zone defines the outer VLAN tag (the Service VLAN) whereas the inner VLAN tag is defined by the VNet. Your physical network switches must support stacked VLANs for this configuration. Due to the double stacking of tags, you need 4 more bytes for QinQ VLANs. For example, you must reduce the MTU to 1496 if you physical interface MTU is 1500.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = ProxmoxVE.Sdn.Zone.GetQinq.Invoke(new()
+        ///     {
+        ///         Id = "qinq1",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxSdnZoneQinq"] = 
+        ///         {
+        ///             { "id", example.Apply(getQinqResult =&gt; getQinqResult.Id) },
+        ///             { "nodes", example.Apply(getQinqResult =&gt; getQinqResult.Nodes) },
+        ///             { "bridge", example.Apply(getQinqResult =&gt; getQinqResult.Bridge) },
+        ///             { "serviceVlan", example.Apply(getQinqResult =&gt; getQinqResult.ServiceVlan) },
+        ///             { "serviceVlanProtocol", example.Apply(getQinqResult =&gt; getQinqResult.ServiceVlanProtocol) },
+        ///             { "mtu", example.Apply(getQinqResult =&gt; getQinqResult.Mtu) },
+        ///             { "dns", example.Apply(getQinqResult =&gt; getQinqResult.Dns) },
+        ///             { "dnsZone", example.Apply(getQinqResult =&gt; getQinqResult.DnsZone) },
+        ///             { "ipam", example.Apply(getQinqResult =&gt; getQinqResult.Ipam) },
+        ///             { "reverseDns", example.Apply(getQinqResult =&gt; getQinqResult.ReverseDns) },
+        ///         },
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetQinqResult> Invoke(GetQinqInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetQinqResult>("proxmoxve:sdn/zone/getQinq:getQinq", args ?? new GetQinqInvokeArgs(), options.WithDefaults());

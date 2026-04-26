@@ -13,18 +13,87 @@ namespace Pulumi.ProxmoxVE
     {
         /// <summary>
         /// Retrieves information about a specific High Availability resource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // This will fetch the set of all HA resource identifiers...
+        ///     var all = ProxmoxVE.Index.GetHaresources.Invoke();
+        /// 
+        ///     // ...which we will go through in order to fetch the whole record for each resource.
+        ///     var example = ;
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["proxmoxHaresourcesFull"] = example,
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetHaresourceResult> InvokeAsync(GetHaresourceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHaresourceResult>("proxmoxve:index/getHaresource:getHaresource", args ?? new GetHaresourceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about a specific High Availability resource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // This will fetch the set of all HA resource identifiers...
+        ///     var all = ProxmoxVE.Index.GetHaresources.Invoke();
+        /// 
+        ///     // ...which we will go through in order to fetch the whole record for each resource.
+        ///     var example = ;
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["proxmoxHaresourcesFull"] = example,
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetHaresourceResult> Invoke(GetHaresourceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHaresourceResult>("proxmoxve:index/getHaresource:getHaresource", args ?? new GetHaresourceInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about a specific High Availability resource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // This will fetch the set of all HA resource identifiers...
+        ///     var all = ProxmoxVE.Index.GetHaresources.Invoke();
+        /// 
+        ///     // ...which we will go through in order to fetch the whole record for each resource.
+        ///     var example = ;
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["proxmoxHaresourcesFull"] = example,
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetHaresourceResult> Invoke(GetHaresourceInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetHaresourceResult>("proxmoxve:index/getHaresource:getHaresource", args ?? new GetHaresourceInvokeArgs(), options.WithDefaults());

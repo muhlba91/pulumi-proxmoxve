@@ -12,6 +12,49 @@ import (
 )
 
 // Retrieves information about an EVPN Zone in Proxmox SDN. The EVPN zone creates a routable Layer 3 network, capable of spanning across multiple clusters.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/sdn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := sdn.GetEvpn(ctx, &zone.GetEvpnArgs{
+//				Id: "evpn1",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("dataProxmoxSdnZoneEvpn", pulumi.Map{
+//				"id":                      example.Id,
+//				"nodes":                   example.Nodes,
+//				"controller":              example.Controller,
+//				"vrfVxlan":                example.VrfVxlan,
+//				"advertiseSubnets":        example.AdvertiseSubnets,
+//				"disableArpNdSuppression": example.DisableArpNdSuppression,
+//				"exitNodes":               example.ExitNodes,
+//				"exitNodesLocalRouting":   example.ExitNodesLocalRouting,
+//				"primaryExitNode":         example.PrimaryExitNode,
+//				"rtImport":                example.RtImport,
+//				"mtu":                     example.Mtu,
+//				"dns":                     example.Dns,
+//				"dnsZone":                 example.DnsZone,
+//				"ipam":                    example.Ipam,
+//				"reverseDns":              example.ReverseDns,
+//			})
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupEvpn(ctx *pulumi.Context, args *LookupEvpnArgs, opts ...pulumi.InvokeOption) (*LookupEvpnResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupEvpnResult

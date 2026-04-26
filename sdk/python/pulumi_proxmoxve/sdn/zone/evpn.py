@@ -568,6 +568,42 @@ class Evpn(pulumi.CustomResource):
         """
         EVPN Zone in Proxmox SDN. The EVPN zone creates a routable Layer 3 network, capable of spanning across multiple clusters.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.sdn.zone.Evpn("example",
+            resource_id="evpn1",
+            nodes=["pve"],
+            controller="evpn-controller1",
+            vrf_vxlan=4000,
+            advertise_subnets=True,
+            disable_arp_nd_suppression=False,
+            exit_nodes=[
+                "pve-exit1",
+                "pve-exit2",
+            ],
+            exit_nodes_local_routing=True,
+            primary_exit_node="pve-exit1",
+            rt_import="65000:65000",
+            mtu=1450,
+            dns="1.1.1.1",
+            dns_zone="example.com",
+            ipam="pve",
+            reverse_dns="1.1.1.1")
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        EVPN SDN zone can be imported using its unique identifier (zone ID)
+
+        ```sh
+        $ pulumi import proxmoxve:sdn/zone/evpn:Evpn example evpn1
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -595,6 +631,42 @@ class Evpn(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         EVPN Zone in Proxmox SDN. The EVPN zone creates a routable Layer 3 network, capable of spanning across multiple clusters.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.sdn.zone.Evpn("example",
+            resource_id="evpn1",
+            nodes=["pve"],
+            controller="evpn-controller1",
+            vrf_vxlan=4000,
+            advertise_subnets=True,
+            disable_arp_nd_suppression=False,
+            exit_nodes=[
+                "pve-exit1",
+                "pve-exit2",
+            ],
+            exit_nodes_local_routing=True,
+            primary_exit_node="pve-exit1",
+            rt_import="65000:65000",
+            mtu=1450,
+            dns="1.1.1.1",
+            dns_zone="example.com",
+            ipam="pve",
+            reverse_dns="1.1.1.1")
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        EVPN SDN zone can be imported using its unique identifier (zone ID)
+
+        ```sh
+        $ pulumi import proxmoxve:sdn/zone/evpn:Evpn example evpn1
+        ```
 
 
         :param str resource_name: The name of the resource.

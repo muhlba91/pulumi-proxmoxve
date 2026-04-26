@@ -50,11 +50,11 @@ export class Vm2Legacy extends pulumi.CustomResource {
     /**
      * The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
      */
-    declare public readonly cdrom: pulumi.Output<{[key: string]: outputs.Vm2LegacyCdrom}>;
+    declare public readonly cdrom: pulumi.Output<{[key: string]: outputs.Vm2LegacyCdrom} | undefined>;
     /**
      * The CPU configuration.
      */
-    declare public readonly cpu: pulumi.Output<outputs.Vm2LegacyCpu>;
+    declare public readonly cpu: pulumi.Output<outputs.Vm2LegacyCpu | undefined>;
     /**
      * Set to true to delete unreferenced disks on destroy (defaults to `true`).
      */
@@ -82,7 +82,7 @@ export class Vm2Legacy extends pulumi.CustomResource {
     /**
      * Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
      */
-    declare public readonly rng: pulumi.Output<outputs.Vm2LegacyRng>;
+    declare public readonly rng: pulumi.Output<outputs.Vm2LegacyRng | undefined>;
     /**
      * Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
      */
@@ -99,7 +99,7 @@ export class Vm2Legacy extends pulumi.CustomResource {
     /**
      * Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
      */
-    declare public readonly vga: pulumi.Output<outputs.Vm2LegacyVga>;
+    declare public readonly vga: pulumi.Output<outputs.Vm2LegacyVga | undefined>;
 
     /**
      * Create a Vm2Legacy resource with the given unique name, arguments, and options.

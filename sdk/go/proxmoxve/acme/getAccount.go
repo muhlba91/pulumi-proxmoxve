@@ -12,6 +12,8 @@ import (
 )
 
 // Retrieves information about a specific ACME account.
+//
+// ## Example Usage
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAccountResult

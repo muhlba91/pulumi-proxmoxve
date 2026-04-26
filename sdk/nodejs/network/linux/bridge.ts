@@ -6,6 +6,36 @@ import * as utilities from "../../utilities";
 
 /**
  * Manages a Linux Bridge network interface in a Proxmox VE node.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const vlan99 = new proxmoxve.network.linux.Vlan("vlan99", {
+ *     nodeName: "pve",
+ *     name: "ens18.99",
+ * });
+ * const vmbr99 = new proxmoxve.network.linux.Bridge("vmbr99", {
+ *     nodeName: "pve",
+ *     name: "vmbr99",
+ *     address: "99.99.99.99/16",
+ *     comment: "vmbr99 comment",
+ *     ports: ["ens18.99"],
+ * }, {
+ *     dependsOn: [vlan99],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * !/usr/bin/env sh
+ * Interfaces can be imported using the `node_name:iface` format, e.g.
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:network/linux/bridge:Bridge vmbr99 pve:vmbr99
+ * ```
  */
 export class Bridge extends pulumi.CustomResource {
     /**
@@ -64,7 +94,7 @@ export class Bridge extends pulumi.CustomResource {
      */
     declare public readonly mtu: pulumi.Output<number | undefined>;
     /**
-     * The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+     * The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -165,7 +195,7 @@ export interface BridgeState {
      */
     mtu?: pulumi.Input<number>;
     /**
-     * The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+     * The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
      */
     name?: pulumi.Input<string>;
     /**
@@ -219,7 +249,7 @@ export interface BridgeArgs {
      */
     mtu?: pulumi.Input<number>;
     /**
-     * The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+     * The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
      */
     name?: pulumi.Input<string>;
     /**

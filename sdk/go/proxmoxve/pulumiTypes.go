@@ -16,6 +16,11 @@ var _ = internal.GetEnvOrDefault
 type ContainerLegacyClone struct {
 	// The identifier for the target datastore.
 	DatastoreId *string `pulumi:"datastoreId"`
+	// When cloning, create a full copy of all disks. Set
+	// to `false` to create a linked clone. Linked clones require the source
+	// container to be a template on storage that supports copy-on-write
+	// (e.g. Ceph RBD) (defaults to `true`).
+	Full *bool `pulumi:"full"`
 	// The name of the source node (leave blank, if
 	// equal to the `nodeName` argument).
 	NodeName *string `pulumi:"nodeName"`
@@ -37,6 +42,11 @@ type ContainerLegacyCloneInput interface {
 type ContainerLegacyCloneArgs struct {
 	// The identifier for the target datastore.
 	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
+	// When cloning, create a full copy of all disks. Set
+	// to `false` to create a linked clone. Linked clones require the source
+	// container to be a template on storage that supports copy-on-write
+	// (e.g. Ceph RBD) (defaults to `true`).
+	Full pulumi.BoolPtrInput `pulumi:"full"`
 	// The name of the source node (leave blank, if
 	// equal to the `nodeName` argument).
 	NodeName pulumi.StringPtrInput `pulumi:"nodeName"`
@@ -126,6 +136,14 @@ func (o ContainerLegacyCloneOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerLegacyClone) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
 }
 
+// When cloning, create a full copy of all disks. Set
+// to `false` to create a linked clone. Linked clones require the source
+// container to be a template on storage that supports copy-on-write
+// (e.g. Ceph RBD) (defaults to `true`).
+func (o ContainerLegacyCloneOutput) Full() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyClone) *bool { return v.Full }).(pulumi.BoolPtrOutput)
+}
+
 // The name of the source node (leave blank, if
 // equal to the `nodeName` argument).
 func (o ContainerLegacyCloneOutput) NodeName() pulumi.StringPtrOutput {
@@ -169,6 +187,19 @@ func (o ContainerLegacyClonePtrOutput) DatastoreId() pulumi.StringPtrOutput {
 		}
 		return v.DatastoreId
 	}).(pulumi.StringPtrOutput)
+}
+
+// When cloning, create a full copy of all disks. Set
+// to `false` to create a linked clone. Linked clones require the source
+// container to be a template on storage that supports copy-on-write
+// (e.g. Ceph RBD) (defaults to `true`).
+func (o ContainerLegacyClonePtrOutput) Full() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyClone) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Full
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The name of the source node (leave blank, if
@@ -376,6 +407,8 @@ type ContainerLegacyCpu struct {
 	Architecture *string `pulumi:"architecture"`
 	// The number of CPU cores (defaults to `1`).
 	Cores *int `pulumi:"cores"`
+	// Limit of CPU usage. Value `0` indicates no limit (defaults to `0`).
+	Limit *float64 `pulumi:"limit"`
 	// The CPU units (defaults to `1024`).
 	Units *int `pulumi:"units"`
 }
@@ -396,6 +429,8 @@ type ContainerLegacyCpuArgs struct {
 	Architecture pulumi.StringPtrInput `pulumi:"architecture"`
 	// The number of CPU cores (defaults to `1`).
 	Cores pulumi.IntPtrInput `pulumi:"cores"`
+	// Limit of CPU usage. Value `0` indicates no limit (defaults to `0`).
+	Limit pulumi.Float64PtrInput `pulumi:"limit"`
 	// The CPU units (defaults to `1024`).
 	Units pulumi.IntPtrInput `pulumi:"units"`
 }
@@ -487,6 +522,11 @@ func (o ContainerLegacyCpuOutput) Cores() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerLegacyCpu) *int { return v.Cores }).(pulumi.IntPtrOutput)
 }
 
+// Limit of CPU usage. Value `0` indicates no limit (defaults to `0`).
+func (o ContainerLegacyCpuOutput) Limit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ContainerLegacyCpu) *float64 { return v.Limit }).(pulumi.Float64PtrOutput)
+}
+
 // The CPU units (defaults to `1024`).
 func (o ContainerLegacyCpuOutput) Units() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ContainerLegacyCpu) *int { return v.Units }).(pulumi.IntPtrOutput)
@@ -534,6 +574,16 @@ func (o ContainerLegacyCpuPtrOutput) Cores() pulumi.IntPtrOutput {
 		}
 		return v.Cores
 	}).(pulumi.IntPtrOutput)
+}
+
+// Limit of CPU usage. Value `0` indicates no limit (defaults to `0`).
+func (o ContainerLegacyCpuPtrOutput) Limit() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyCpu) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Limit
+	}).(pulumi.Float64PtrOutput)
 }
 
 // The CPU units (defaults to `1024`).
@@ -2655,6 +2705,10 @@ type ContainerLegacyNetworkInterface struct {
 	// Whether this interface's firewall rules should be
 	// used (defaults to `false`).
 	Firewall *bool `pulumi:"firewall"`
+	// Whether the host runs DHCP on this interface's
+	// behalf (defaults to `false`). Requires Proxmox VE 9.0+. Required for
+	// application containers that do not include a DHCP client.
+	HostManaged *bool `pulumi:"hostManaged"`
 	// The MAC address.
 	MacAddress *string `pulumi:"macAddress"`
 	// Maximum transfer unit of the interface. Cannot be
@@ -2689,6 +2743,10 @@ type ContainerLegacyNetworkInterfaceArgs struct {
 	// Whether this interface's firewall rules should be
 	// used (defaults to `false`).
 	Firewall pulumi.BoolPtrInput `pulumi:"firewall"`
+	// Whether the host runs DHCP on this interface's
+	// behalf (defaults to `false`). Requires Proxmox VE 9.0+. Required for
+	// application containers that do not include a DHCP client.
+	HostManaged pulumi.BoolPtrInput `pulumi:"hostManaged"`
 	// The MAC address.
 	MacAddress pulumi.StringPtrInput `pulumi:"macAddress"`
 	// Maximum transfer unit of the interface. Cannot be
@@ -2769,6 +2827,13 @@ func (o ContainerLegacyNetworkInterfaceOutput) Enabled() pulumi.BoolPtrOutput {
 // used (defaults to `false`).
 func (o ContainerLegacyNetworkInterfaceOutput) Firewall() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerLegacyNetworkInterface) *bool { return v.Firewall }).(pulumi.BoolPtrOutput)
+}
+
+// Whether the host runs DHCP on this interface's
+// behalf (defaults to `false`). Requires Proxmox VE 9.0+. Required for
+// application containers that do not include a DHCP client.
+func (o ContainerLegacyNetworkInterfaceOutput) HostManaged() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyNetworkInterface) *bool { return v.HostManaged }).(pulumi.BoolPtrOutput)
 }
 
 // The MAC address.
@@ -4116,6 +4181,8 @@ type ProviderSsh struct {
 	AgentForwarding *bool `pulumi:"agentForwarding"`
 	// The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
 	AgentSocket *string `pulumi:"agentSocket"`
+	// The method used to resolve node IP addresses for SSH connections. Set to `dns` to skip the Proxmox API-based resolution and use local DNS instead. DNS resolution prefers IPv4 but falls back to IPv6 if no IPv4 addresses are available. Useful in multi-subnet environments where the API may return an inaccessible IP. Defaults to `api`.
+	NodeAddressSource *string `pulumi:"nodeAddressSource"`
 	// Overrides for SSH connection configuration for a Proxmox VE node.
 	Nodes []ProviderSshNode `pulumi:"nodes"`
 	// The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block when using username/password authentication. Default has no effect when using API token authentication, as there is no password to inherit. Can also be sourced from `PROXMOX_VE_SSH_PASSWORD`.
@@ -4150,6 +4217,8 @@ type ProviderSshArgs struct {
 	AgentForwarding pulumi.BoolPtrInput `pulumi:"agentForwarding"`
 	// The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
 	AgentSocket pulumi.StringPtrInput `pulumi:"agentSocket"`
+	// The method used to resolve node IP addresses for SSH connections. Set to `dns` to skip the Proxmox API-based resolution and use local DNS instead. DNS resolution prefers IPv4 but falls back to IPv6 if no IPv4 addresses are available. Useful in multi-subnet environments where the API may return an inaccessible IP. Defaults to `api`.
+	NodeAddressSource pulumi.StringPtrInput `pulumi:"nodeAddressSource"`
 	// Overrides for SSH connection configuration for a Proxmox VE node.
 	Nodes ProviderSshNodeArrayInput `pulumi:"nodes"`
 	// The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block when using username/password authentication. Default has no effect when using API token authentication, as there is no password to inherit. Can also be sourced from `PROXMOX_VE_SSH_PASSWORD`.
@@ -4258,6 +4327,11 @@ func (o ProviderSshOutput) AgentSocket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ProviderSsh) *string { return v.AgentSocket }).(pulumi.StringPtrOutput)
 }
 
+// The method used to resolve node IP addresses for SSH connections. Set to `dns` to skip the Proxmox API-based resolution and use local DNS instead. DNS resolution prefers IPv4 but falls back to IPv6 if no IPv4 addresses are available. Useful in multi-subnet environments where the API may return an inaccessible IP. Defaults to `api`.
+func (o ProviderSshOutput) NodeAddressSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ProviderSsh) *string { return v.NodeAddressSource }).(pulumi.StringPtrOutput)
+}
+
 // Overrides for SSH connection configuration for a Proxmox VE node.
 func (o ProviderSshOutput) Nodes() ProviderSshNodeArrayOutput {
 	return o.ApplyT(func(v ProviderSsh) []ProviderSshNode { return v.Nodes }).(ProviderSshNodeArrayOutput)
@@ -4344,6 +4418,16 @@ func (o ProviderSshPtrOutput) AgentSocket() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.AgentSocket
+	}).(pulumi.StringPtrOutput)
+}
+
+// The method used to resolve node IP addresses for SSH connections. Set to `dns` to skip the Proxmox API-based resolution and use local DNS instead. DNS resolution prefers IPv4 but falls back to IPv6 if no IPv4 addresses are available. Useful in multi-subnet environments where the API may return an inaccessible IP. Defaults to `api`.
+func (o ProviderSshPtrOutput) NodeAddressSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ProviderSsh) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeAddressSource
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4648,7 +4732,7 @@ func (o UserLegacyAclArrayOutput) Index(i pulumi.IntInput) UserLegacyAclOutput {
 }
 
 type Vm2LegacyCdrom struct {
-	// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+	// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
 	FileId *string `pulumi:"fileId"`
 }
 
@@ -4664,7 +4748,7 @@ type Vm2LegacyCdromInput interface {
 }
 
 type Vm2LegacyCdromArgs struct {
-	// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+	// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
 	FileId pulumi.StringPtrInput `pulumi:"fileId"`
 }
 
@@ -4719,7 +4803,7 @@ func (o Vm2LegacyCdromOutput) ToVm2LegacyCdromOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
 func (o Vm2LegacyCdromOutput) FileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Vm2LegacyCdrom) *string { return v.FileId }).(pulumi.StringPtrOutput)
 }
@@ -4749,22 +4833,22 @@ type Vm2LegacyCpu struct {
 	Affinity *string `pulumi:"affinity"`
 	// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
 	Architecture *string `pulumi:"architecture"`
-	// The number of CPU cores per socket (defaults to `1`).
+	// The number of CPU cores per socket (PVE defaults to `1` when unset).
 	Cores *int `pulumi:"cores"`
 	// Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
 	Flags []string `pulumi:"flags"`
-	// The number of hotplugged vCPUs (defaults to `0`).
-	Hotplugged *int `pulumi:"hotplugged"`
-	// Limit of CPU usage (defaults to `0` which means no limit).
+	// Limit of CPU usage. `0` means no limit (PVE default).
 	Limit *float64 `pulumi:"limit"`
-	// Enable NUMA (defaults to `false`).
+	// Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
 	Numa *bool `pulumi:"numa"`
-	// The number of CPU sockets (defaults to `1`).
+	// The number of CPU sockets (PVE defaults to `1` when unset).
 	Sockets *int `pulumi:"sockets"`
-	// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+	// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
 	Type *string `pulumi:"type"`
-	// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+	// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
 	Units *int `pulumi:"units"`
+	// Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+	Vcpus *int `pulumi:"vcpus"`
 }
 
 // Vm2LegacyCpuInput is an input type that accepts Vm2LegacyCpuArgs and Vm2LegacyCpuOutput values.
@@ -4783,22 +4867,22 @@ type Vm2LegacyCpuArgs struct {
 	Affinity pulumi.StringPtrInput `pulumi:"affinity"`
 	// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
 	Architecture pulumi.StringPtrInput `pulumi:"architecture"`
-	// The number of CPU cores per socket (defaults to `1`).
+	// The number of CPU cores per socket (PVE defaults to `1` when unset).
 	Cores pulumi.IntPtrInput `pulumi:"cores"`
 	// Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
 	Flags pulumi.StringArrayInput `pulumi:"flags"`
-	// The number of hotplugged vCPUs (defaults to `0`).
-	Hotplugged pulumi.IntPtrInput `pulumi:"hotplugged"`
-	// Limit of CPU usage (defaults to `0` which means no limit).
+	// Limit of CPU usage. `0` means no limit (PVE default).
 	Limit pulumi.Float64PtrInput `pulumi:"limit"`
-	// Enable NUMA (defaults to `false`).
+	// Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
 	Numa pulumi.BoolPtrInput `pulumi:"numa"`
-	// The number of CPU sockets (defaults to `1`).
+	// The number of CPU sockets (PVE defaults to `1` when unset).
 	Sockets pulumi.IntPtrInput `pulumi:"sockets"`
-	// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+	// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+	// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
 	Units pulumi.IntPtrInput `pulumi:"units"`
+	// Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+	Vcpus pulumi.IntPtrInput `pulumi:"vcpus"`
 }
 
 func (Vm2LegacyCpuArgs) ElementType() reflect.Type {
@@ -4888,7 +4972,7 @@ func (o Vm2LegacyCpuOutput) Architecture() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Vm2LegacyCpu) *string { return v.Architecture }).(pulumi.StringPtrOutput)
 }
 
-// The number of CPU cores per socket (defaults to `1`).
+// The number of CPU cores per socket (PVE defaults to `1` when unset).
 func (o Vm2LegacyCpuOutput) Cores() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Vm2LegacyCpu) *int { return v.Cores }).(pulumi.IntPtrOutput)
 }
@@ -4898,34 +4982,34 @@ func (o Vm2LegacyCpuOutput) Flags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Vm2LegacyCpu) []string { return v.Flags }).(pulumi.StringArrayOutput)
 }
 
-// The number of hotplugged vCPUs (defaults to `0`).
-func (o Vm2LegacyCpuOutput) Hotplugged() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Vm2LegacyCpu) *int { return v.Hotplugged }).(pulumi.IntPtrOutput)
-}
-
-// Limit of CPU usage (defaults to `0` which means no limit).
+// Limit of CPU usage. `0` means no limit (PVE default).
 func (o Vm2LegacyCpuOutput) Limit() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v Vm2LegacyCpu) *float64 { return v.Limit }).(pulumi.Float64PtrOutput)
 }
 
-// Enable NUMA (defaults to `false`).
+// Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
 func (o Vm2LegacyCpuOutput) Numa() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Vm2LegacyCpu) *bool { return v.Numa }).(pulumi.BoolPtrOutput)
 }
 
-// The number of CPU sockets (defaults to `1`).
+// The number of CPU sockets (PVE defaults to `1` when unset).
 func (o Vm2LegacyCpuOutput) Sockets() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Vm2LegacyCpu) *int { return v.Sockets }).(pulumi.IntPtrOutput)
 }
 
-// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
 func (o Vm2LegacyCpuOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Vm2LegacyCpu) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
 func (o Vm2LegacyCpuOutput) Units() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Vm2LegacyCpu) *int { return v.Units }).(pulumi.IntPtrOutput)
+}
+
+// Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+func (o Vm2LegacyCpuOutput) Vcpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Vm2LegacyCpu) *int { return v.Vcpus }).(pulumi.IntPtrOutput)
 }
 
 type Vm2LegacyCpuPtrOutput struct{ *pulumi.OutputState }
@@ -4972,7 +5056,7 @@ func (o Vm2LegacyCpuPtrOutput) Architecture() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The number of CPU cores per socket (defaults to `1`).
+// The number of CPU cores per socket (PVE defaults to `1` when unset).
 func (o Vm2LegacyCpuPtrOutput) Cores() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Vm2LegacyCpu) *int {
 		if v == nil {
@@ -4992,17 +5076,7 @@ func (o Vm2LegacyCpuPtrOutput) Flags() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// The number of hotplugged vCPUs (defaults to `0`).
-func (o Vm2LegacyCpuPtrOutput) Hotplugged() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Vm2LegacyCpu) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Hotplugged
-	}).(pulumi.IntPtrOutput)
-}
-
-// Limit of CPU usage (defaults to `0` which means no limit).
+// Limit of CPU usage. `0` means no limit (PVE default).
 func (o Vm2LegacyCpuPtrOutput) Limit() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *Vm2LegacyCpu) *float64 {
 		if v == nil {
@@ -5012,7 +5086,7 @@ func (o Vm2LegacyCpuPtrOutput) Limit() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Enable NUMA (defaults to `false`).
+// Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
 func (o Vm2LegacyCpuPtrOutput) Numa() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Vm2LegacyCpu) *bool {
 		if v == nil {
@@ -5022,7 +5096,7 @@ func (o Vm2LegacyCpuPtrOutput) Numa() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The number of CPU sockets (defaults to `1`).
+// The number of CPU sockets (PVE defaults to `1` when unset).
 func (o Vm2LegacyCpuPtrOutput) Sockets() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Vm2LegacyCpu) *int {
 		if v == nil {
@@ -5032,7 +5106,7 @@ func (o Vm2LegacyCpuPtrOutput) Sockets() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
 func (o Vm2LegacyCpuPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Vm2LegacyCpu) *string {
 		if v == nil {
@@ -5042,7 +5116,7 @@ func (o Vm2LegacyCpuPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
 func (o Vm2LegacyCpuPtrOutput) Units() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Vm2LegacyCpu) *int {
 		if v == nil {
@@ -5052,10 +5126,20 @@ func (o Vm2LegacyCpuPtrOutput) Units() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+func (o Vm2LegacyCpuPtrOutput) Vcpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Vm2LegacyCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Vcpus
+	}).(pulumi.IntPtrOutput)
+}
+
 type Vm2LegacyRng struct {
-	// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+	// Maximum bytes of entropy allowed to get injected into the guest every period.
 	MaxBytes *int `pulumi:"maxBytes"`
-	// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+	// Period in milliseconds to limit entropy injection to the guest.
 	Period *int `pulumi:"period"`
 	// The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
 	Source *string `pulumi:"source"`
@@ -5073,9 +5157,9 @@ type Vm2LegacyRngInput interface {
 }
 
 type Vm2LegacyRngArgs struct {
-	// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+	// Maximum bytes of entropy allowed to get injected into the guest every period.
 	MaxBytes pulumi.IntPtrInput `pulumi:"maxBytes"`
-	// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+	// Period in milliseconds to limit entropy injection to the guest.
 	Period pulumi.IntPtrInput `pulumi:"period"`
 	// The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
 	Source pulumi.StringPtrInput `pulumi:"source"`
@@ -5158,12 +5242,12 @@ func (o Vm2LegacyRngOutput) ToVm2LegacyRngPtrOutputWithContext(ctx context.Conte
 	}).(Vm2LegacyRngPtrOutput)
 }
 
-// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+// Maximum bytes of entropy allowed to get injected into the guest every period.
 func (o Vm2LegacyRngOutput) MaxBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Vm2LegacyRng) *int { return v.MaxBytes }).(pulumi.IntPtrOutput)
 }
 
-// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+// Period in milliseconds to limit entropy injection to the guest.
 func (o Vm2LegacyRngOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Vm2LegacyRng) *int { return v.Period }).(pulumi.IntPtrOutput)
 }
@@ -5197,7 +5281,7 @@ func (o Vm2LegacyRngPtrOutput) Elem() Vm2LegacyRngOutput {
 	}).(Vm2LegacyRngOutput)
 }
 
-// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+// Maximum bytes of entropy allowed to get injected into the guest every period.
 func (o Vm2LegacyRngPtrOutput) MaxBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Vm2LegacyRng) *int {
 		if v == nil {
@@ -5207,7 +5291,7 @@ func (o Vm2LegacyRngPtrOutput) MaxBytes() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+// Period in milliseconds to limit entropy injection to the guest.
 func (o Vm2LegacyRngPtrOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Vm2LegacyRng) *int {
 		if v == nil {
@@ -5597,7 +5681,7 @@ func (o Vm2LegacyVgaPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type VmCdrom struct {
-	// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+	// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
 	FileId *string `pulumi:"fileId"`
 }
 
@@ -5613,7 +5697,7 @@ type VmCdromInput interface {
 }
 
 type VmCdromArgs struct {
-	// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+	// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
 	FileId pulumi.StringPtrInput `pulumi:"fileId"`
 }
 
@@ -5668,7 +5752,7 @@ func (o VmCdromOutput) ToVmCdromOutputWithContext(ctx context.Context) VmCdromOu
 	return o
 }
 
-// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
 func (o VmCdromOutput) FileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmCdrom) *string { return v.FileId }).(pulumi.StringPtrOutput)
 }
@@ -5698,22 +5782,22 @@ type VmCpu struct {
 	Affinity *string `pulumi:"affinity"`
 	// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
 	Architecture *string `pulumi:"architecture"`
-	// The number of CPU cores per socket (defaults to `1`).
+	// The number of CPU cores per socket (PVE defaults to `1` when unset).
 	Cores *int `pulumi:"cores"`
 	// Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
 	Flags []string `pulumi:"flags"`
-	// The number of hotplugged vCPUs (defaults to `0`).
-	Hotplugged *int `pulumi:"hotplugged"`
-	// Limit of CPU usage (defaults to `0` which means no limit).
+	// Limit of CPU usage. `0` means no limit (PVE default).
 	Limit *float64 `pulumi:"limit"`
-	// Enable NUMA (defaults to `false`).
+	// Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
 	Numa *bool `pulumi:"numa"`
-	// The number of CPU sockets (defaults to `1`).
+	// The number of CPU sockets (PVE defaults to `1` when unset).
 	Sockets *int `pulumi:"sockets"`
-	// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+	// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
 	Type *string `pulumi:"type"`
-	// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+	// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
 	Units *int `pulumi:"units"`
+	// Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+	Vcpus *int `pulumi:"vcpus"`
 }
 
 // VmCpuInput is an input type that accepts VmCpuArgs and VmCpuOutput values.
@@ -5732,22 +5816,22 @@ type VmCpuArgs struct {
 	Affinity pulumi.StringPtrInput `pulumi:"affinity"`
 	// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
 	Architecture pulumi.StringPtrInput `pulumi:"architecture"`
-	// The number of CPU cores per socket (defaults to `1`).
+	// The number of CPU cores per socket (PVE defaults to `1` when unset).
 	Cores pulumi.IntPtrInput `pulumi:"cores"`
 	// Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
 	Flags pulumi.StringArrayInput `pulumi:"flags"`
-	// The number of hotplugged vCPUs (defaults to `0`).
-	Hotplugged pulumi.IntPtrInput `pulumi:"hotplugged"`
-	// Limit of CPU usage (defaults to `0` which means no limit).
+	// Limit of CPU usage. `0` means no limit (PVE default).
 	Limit pulumi.Float64PtrInput `pulumi:"limit"`
-	// Enable NUMA (defaults to `false`).
+	// Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
 	Numa pulumi.BoolPtrInput `pulumi:"numa"`
-	// The number of CPU sockets (defaults to `1`).
+	// The number of CPU sockets (PVE defaults to `1` when unset).
 	Sockets pulumi.IntPtrInput `pulumi:"sockets"`
-	// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+	// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+	// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
 	Units pulumi.IntPtrInput `pulumi:"units"`
+	// Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+	Vcpus pulumi.IntPtrInput `pulumi:"vcpus"`
 }
 
 func (VmCpuArgs) ElementType() reflect.Type {
@@ -5837,7 +5921,7 @@ func (o VmCpuOutput) Architecture() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmCpu) *string { return v.Architecture }).(pulumi.StringPtrOutput)
 }
 
-// The number of CPU cores per socket (defaults to `1`).
+// The number of CPU cores per socket (PVE defaults to `1` when unset).
 func (o VmCpuOutput) Cores() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VmCpu) *int { return v.Cores }).(pulumi.IntPtrOutput)
 }
@@ -5847,34 +5931,34 @@ func (o VmCpuOutput) Flags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VmCpu) []string { return v.Flags }).(pulumi.StringArrayOutput)
 }
 
-// The number of hotplugged vCPUs (defaults to `0`).
-func (o VmCpuOutput) Hotplugged() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v VmCpu) *int { return v.Hotplugged }).(pulumi.IntPtrOutput)
-}
-
-// Limit of CPU usage (defaults to `0` which means no limit).
+// Limit of CPU usage. `0` means no limit (PVE default).
 func (o VmCpuOutput) Limit() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v VmCpu) *float64 { return v.Limit }).(pulumi.Float64PtrOutput)
 }
 
-// Enable NUMA (defaults to `false`).
+// Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
 func (o VmCpuOutput) Numa() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VmCpu) *bool { return v.Numa }).(pulumi.BoolPtrOutput)
 }
 
-// The number of CPU sockets (defaults to `1`).
+// The number of CPU sockets (PVE defaults to `1` when unset).
 func (o VmCpuOutput) Sockets() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VmCpu) *int { return v.Sockets }).(pulumi.IntPtrOutput)
 }
 
-// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
 func (o VmCpuOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmCpu) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
 func (o VmCpuOutput) Units() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VmCpu) *int { return v.Units }).(pulumi.IntPtrOutput)
+}
+
+// Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+func (o VmCpuOutput) Vcpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmCpu) *int { return v.Vcpus }).(pulumi.IntPtrOutput)
 }
 
 type VmCpuPtrOutput struct{ *pulumi.OutputState }
@@ -5921,7 +6005,7 @@ func (o VmCpuPtrOutput) Architecture() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The number of CPU cores per socket (defaults to `1`).
+// The number of CPU cores per socket (PVE defaults to `1` when unset).
 func (o VmCpuPtrOutput) Cores() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VmCpu) *int {
 		if v == nil {
@@ -5941,17 +6025,7 @@ func (o VmCpuPtrOutput) Flags() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// The number of hotplugged vCPUs (defaults to `0`).
-func (o VmCpuPtrOutput) Hotplugged() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *VmCpu) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Hotplugged
-	}).(pulumi.IntPtrOutput)
-}
-
-// Limit of CPU usage (defaults to `0` which means no limit).
+// Limit of CPU usage. `0` means no limit (PVE default).
 func (o VmCpuPtrOutput) Limit() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *VmCpu) *float64 {
 		if v == nil {
@@ -5961,7 +6035,7 @@ func (o VmCpuPtrOutput) Limit() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Enable NUMA (defaults to `false`).
+// Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
 func (o VmCpuPtrOutput) Numa() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VmCpu) *bool {
 		if v == nil {
@@ -5971,7 +6045,7 @@ func (o VmCpuPtrOutput) Numa() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The number of CPU sockets (defaults to `1`).
+// The number of CPU sockets (PVE defaults to `1` when unset).
 func (o VmCpuPtrOutput) Sockets() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VmCpu) *int {
 		if v == nil {
@@ -5981,7 +6055,7 @@ func (o VmCpuPtrOutput) Sockets() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
 func (o VmCpuPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VmCpu) *string {
 		if v == nil {
@@ -5991,13 +6065,23 @@ func (o VmCpuPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
 func (o VmCpuPtrOutput) Units() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VmCpu) *int {
 		if v == nil {
 			return nil
 		}
 		return v.Units
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+func (o VmCpuPtrOutput) Vcpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Vcpus
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -8662,6 +8746,10 @@ type VmLegacyInitialization struct {
 	NetworkDataFileId *string `pulumi:"networkDataFileId"`
 	// The cloud-init configuration format
 	Type *string `pulumi:"type"`
+	// Whether to do an automatic package upgrade after
+	// the first boot (defaults to `true`).
+	// Setting this is only allowed for `root@pam` authenticated user.
+	Upgrade *bool `pulumi:"upgrade"`
 	// The user account configuration (conflicts
 	// with `userDataFileId`).
 	UserAccount *VmLegacyInitializationUserAccount `pulumi:"userAccount"`
@@ -8709,6 +8797,10 @@ type VmLegacyInitializationArgs struct {
 	NetworkDataFileId pulumi.StringPtrInput `pulumi:"networkDataFileId"`
 	// The cloud-init configuration format
 	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Whether to do an automatic package upgrade after
+	// the first boot (defaults to `true`).
+	// Setting this is only allowed for `root@pam` authenticated user.
+	Upgrade pulumi.BoolPtrInput `pulumi:"upgrade"`
 	// The user account configuration (conflicts
 	// with `userDataFileId`).
 	UserAccount VmLegacyInitializationUserAccountPtrInput `pulumi:"userAccount"`
@@ -8845,6 +8937,13 @@ func (o VmLegacyInitializationOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmLegacyInitialization) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// Whether to do an automatic package upgrade after
+// the first boot (defaults to `true`).
+// Setting this is only allowed for `root@pam` authenticated user.
+func (o VmLegacyInitializationOutput) Upgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmLegacyInitialization) *bool { return v.Upgrade }).(pulumi.BoolPtrOutput)
+}
+
 // The user account configuration (conflicts
 // with `userDataFileId`).
 func (o VmLegacyInitializationOutput) UserAccount() VmLegacyInitializationUserAccountPtrOutput {
@@ -8973,6 +9072,18 @@ func (o VmLegacyInitializationPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to do an automatic package upgrade after
+// the first boot (defaults to `true`).
+// Setting this is only allowed for `root@pam` authenticated user.
+func (o VmLegacyInitializationPtrOutput) Upgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VmLegacyInitialization) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Upgrade
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The user account configuration (conflicts
@@ -11905,9 +12016,9 @@ func (o VmLegacyWatchdogPtrOutput) Model() pulumi.StringPtrOutput {
 }
 
 type VmRng struct {
-	// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+	// Maximum bytes of entropy allowed to get injected into the guest every period.
 	MaxBytes *int `pulumi:"maxBytes"`
-	// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+	// Period in milliseconds to limit entropy injection to the guest.
 	Period *int `pulumi:"period"`
 	// The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
 	Source *string `pulumi:"source"`
@@ -11925,9 +12036,9 @@ type VmRngInput interface {
 }
 
 type VmRngArgs struct {
-	// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+	// Maximum bytes of entropy allowed to get injected into the guest every period.
 	MaxBytes pulumi.IntPtrInput `pulumi:"maxBytes"`
-	// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+	// Period in milliseconds to limit entropy injection to the guest.
 	Period pulumi.IntPtrInput `pulumi:"period"`
 	// The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
 	Source pulumi.StringPtrInput `pulumi:"source"`
@@ -12010,12 +12121,12 @@ func (o VmRngOutput) ToVmRngPtrOutputWithContext(ctx context.Context) VmRngPtrOu
 	}).(VmRngPtrOutput)
 }
 
-// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+// Maximum bytes of entropy allowed to get injected into the guest every period.
 func (o VmRngOutput) MaxBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VmRng) *int { return v.MaxBytes }).(pulumi.IntPtrOutput)
 }
 
-// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+// Period in milliseconds to limit entropy injection to the guest.
 func (o VmRngOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VmRng) *int { return v.Period }).(pulumi.IntPtrOutput)
 }
@@ -12049,7 +12160,7 @@ func (o VmRngPtrOutput) Elem() VmRngOutput {
 	}).(VmRngOutput)
 }
 
-// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+// Maximum bytes of entropy allowed to get injected into the guest every period.
 func (o VmRngPtrOutput) MaxBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VmRng) *int {
 		if v == nil {
@@ -12059,7 +12170,7 @@ func (o VmRngPtrOutput) MaxBytes() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+// Period in milliseconds to limit entropy injection to the guest.
 func (o VmRngPtrOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VmRng) *int {
 		if v == nil {
@@ -14351,6 +14462,103 @@ func (o GetUserLegacyAclArrayOutput) Index(i pulumi.IntInput) GetUserLegacyAclOu
 	}).(GetUserLegacyAclOutput)
 }
 
+type GetVm2LegacyCdrom struct {
+	// The file ID of the CD-ROM.
+	FileId string `pulumi:"fileId"`
+}
+
+// GetVm2LegacyCdromInput is an input type that accepts GetVm2LegacyCdromArgs and GetVm2LegacyCdromOutput values.
+// You can construct a concrete instance of `GetVm2LegacyCdromInput` via:
+//
+//	GetVm2LegacyCdromArgs{...}
+type GetVm2LegacyCdromInput interface {
+	pulumi.Input
+
+	ToGetVm2LegacyCdromOutput() GetVm2LegacyCdromOutput
+	ToGetVm2LegacyCdromOutputWithContext(context.Context) GetVm2LegacyCdromOutput
+}
+
+type GetVm2LegacyCdromArgs struct {
+	// The file ID of the CD-ROM.
+	FileId pulumi.StringInput `pulumi:"fileId"`
+}
+
+func (GetVm2LegacyCdromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVm2LegacyCdrom)(nil)).Elem()
+}
+
+func (i GetVm2LegacyCdromArgs) ToGetVm2LegacyCdromOutput() GetVm2LegacyCdromOutput {
+	return i.ToGetVm2LegacyCdromOutputWithContext(context.Background())
+}
+
+func (i GetVm2LegacyCdromArgs) ToGetVm2LegacyCdromOutputWithContext(ctx context.Context) GetVm2LegacyCdromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVm2LegacyCdromOutput)
+}
+
+// GetVm2LegacyCdromMapInput is an input type that accepts GetVm2LegacyCdromMap and GetVm2LegacyCdromMapOutput values.
+// You can construct a concrete instance of `GetVm2LegacyCdromMapInput` via:
+//
+//	GetVm2LegacyCdromMap{ "key": GetVm2LegacyCdromArgs{...} }
+type GetVm2LegacyCdromMapInput interface {
+	pulumi.Input
+
+	ToGetVm2LegacyCdromMapOutput() GetVm2LegacyCdromMapOutput
+	ToGetVm2LegacyCdromMapOutputWithContext(context.Context) GetVm2LegacyCdromMapOutput
+}
+
+type GetVm2LegacyCdromMap map[string]GetVm2LegacyCdromInput
+
+func (GetVm2LegacyCdromMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetVm2LegacyCdrom)(nil)).Elem()
+}
+
+func (i GetVm2LegacyCdromMap) ToGetVm2LegacyCdromMapOutput() GetVm2LegacyCdromMapOutput {
+	return i.ToGetVm2LegacyCdromMapOutputWithContext(context.Background())
+}
+
+func (i GetVm2LegacyCdromMap) ToGetVm2LegacyCdromMapOutputWithContext(ctx context.Context) GetVm2LegacyCdromMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVm2LegacyCdromMapOutput)
+}
+
+type GetVm2LegacyCdromOutput struct{ *pulumi.OutputState }
+
+func (GetVm2LegacyCdromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVm2LegacyCdrom)(nil)).Elem()
+}
+
+func (o GetVm2LegacyCdromOutput) ToGetVm2LegacyCdromOutput() GetVm2LegacyCdromOutput {
+	return o
+}
+
+func (o GetVm2LegacyCdromOutput) ToGetVm2LegacyCdromOutputWithContext(ctx context.Context) GetVm2LegacyCdromOutput {
+	return o
+}
+
+// The file ID of the CD-ROM.
+func (o GetVm2LegacyCdromOutput) FileId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVm2LegacyCdrom) string { return v.FileId }).(pulumi.StringOutput)
+}
+
+type GetVm2LegacyCdromMapOutput struct{ *pulumi.OutputState }
+
+func (GetVm2LegacyCdromMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetVm2LegacyCdrom)(nil)).Elem()
+}
+
+func (o GetVm2LegacyCdromMapOutput) ToGetVm2LegacyCdromMapOutput() GetVm2LegacyCdromMapOutput {
+	return o
+}
+
+func (o GetVm2LegacyCdromMapOutput) ToGetVm2LegacyCdromMapOutputWithContext(ctx context.Context) GetVm2LegacyCdromMapOutput {
+	return o
+}
+
+func (o GetVm2LegacyCdromMapOutput) MapIndex(k pulumi.StringInput) GetVm2LegacyCdromOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetVm2LegacyCdrom {
+		return vs[0].(map[string]GetVm2LegacyCdrom)[vs[1].(string)]
+	}).(GetVm2LegacyCdromOutput)
+}
+
 type GetVm2LegacyCpu struct {
 	// List of host cores used to execute guest processes, for example: '0,5,8-11'
 	Affinity string `pulumi:"affinity"`
@@ -14360,11 +14568,9 @@ type GetVm2LegacyCpu struct {
 	Cores int `pulumi:"cores"`
 	// Set of additional CPU flags.
 	Flags []string `pulumi:"flags"`
-	// The number of hotplugged vCPUs.
-	Hotplugged int `pulumi:"hotplugged"`
 	// Limit of CPU usage.
 	Limit float64 `pulumi:"limit"`
-	// Enable NUMA.
+	// Whether NUMA emulation is enabled.
 	Numa bool `pulumi:"numa"`
 	// The number of CPU sockets.
 	Sockets int `pulumi:"sockets"`
@@ -14372,6 +14578,8 @@ type GetVm2LegacyCpu struct {
 	Type string `pulumi:"type"`
 	// CPU weight for a VM
 	Units int `pulumi:"units"`
+	// Number of active vCPUs.
+	Vcpus int `pulumi:"vcpus"`
 }
 
 // GetVm2LegacyCpuInput is an input type that accepts GetVm2LegacyCpuArgs and GetVm2LegacyCpuOutput values.
@@ -14394,11 +14602,9 @@ type GetVm2LegacyCpuArgs struct {
 	Cores pulumi.IntInput `pulumi:"cores"`
 	// Set of additional CPU flags.
 	Flags pulumi.StringArrayInput `pulumi:"flags"`
-	// The number of hotplugged vCPUs.
-	Hotplugged pulumi.IntInput `pulumi:"hotplugged"`
 	// Limit of CPU usage.
 	Limit pulumi.Float64Input `pulumi:"limit"`
-	// Enable NUMA.
+	// Whether NUMA emulation is enabled.
 	Numa pulumi.BoolInput `pulumi:"numa"`
 	// The number of CPU sockets.
 	Sockets pulumi.IntInput `pulumi:"sockets"`
@@ -14406,6 +14612,8 @@ type GetVm2LegacyCpuArgs struct {
 	Type pulumi.StringInput `pulumi:"type"`
 	// CPU weight for a VM
 	Units pulumi.IntInput `pulumi:"units"`
+	// Number of active vCPUs.
+	Vcpus pulumi.IntInput `pulumi:"vcpus"`
 }
 
 func (GetVm2LegacyCpuArgs) ElementType() reflect.Type {
@@ -14420,47 +14628,6 @@ func (i GetVm2LegacyCpuArgs) ToGetVm2LegacyCpuOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetVm2LegacyCpuOutput)
 }
 
-func (i GetVm2LegacyCpuArgs) ToGetVm2LegacyCpuPtrOutput() GetVm2LegacyCpuPtrOutput {
-	return i.ToGetVm2LegacyCpuPtrOutputWithContext(context.Background())
-}
-
-func (i GetVm2LegacyCpuArgs) ToGetVm2LegacyCpuPtrOutputWithContext(ctx context.Context) GetVm2LegacyCpuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVm2LegacyCpuOutput).ToGetVm2LegacyCpuPtrOutputWithContext(ctx)
-}
-
-// GetVm2LegacyCpuPtrInput is an input type that accepts GetVm2LegacyCpuArgs, GetVm2LegacyCpuPtr and GetVm2LegacyCpuPtrOutput values.
-// You can construct a concrete instance of `GetVm2LegacyCpuPtrInput` via:
-//
-//	        GetVm2LegacyCpuArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetVm2LegacyCpuPtrInput interface {
-	pulumi.Input
-
-	ToGetVm2LegacyCpuPtrOutput() GetVm2LegacyCpuPtrOutput
-	ToGetVm2LegacyCpuPtrOutputWithContext(context.Context) GetVm2LegacyCpuPtrOutput
-}
-
-type getVm2LegacyCpuPtrType GetVm2LegacyCpuArgs
-
-func GetVm2LegacyCpuPtr(v *GetVm2LegacyCpuArgs) GetVm2LegacyCpuPtrInput {
-	return (*getVm2LegacyCpuPtrType)(v)
-}
-
-func (*getVm2LegacyCpuPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetVm2LegacyCpu)(nil)).Elem()
-}
-
-func (i *getVm2LegacyCpuPtrType) ToGetVm2LegacyCpuPtrOutput() GetVm2LegacyCpuPtrOutput {
-	return i.ToGetVm2LegacyCpuPtrOutputWithContext(context.Background())
-}
-
-func (i *getVm2LegacyCpuPtrType) ToGetVm2LegacyCpuPtrOutputWithContext(ctx context.Context) GetVm2LegacyCpuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVm2LegacyCpuPtrOutput)
-}
-
 type GetVm2LegacyCpuOutput struct{ *pulumi.OutputState }
 
 func (GetVm2LegacyCpuOutput) ElementType() reflect.Type {
@@ -14473,16 +14640,6 @@ func (o GetVm2LegacyCpuOutput) ToGetVm2LegacyCpuOutput() GetVm2LegacyCpuOutput {
 
 func (o GetVm2LegacyCpuOutput) ToGetVm2LegacyCpuOutputWithContext(ctx context.Context) GetVm2LegacyCpuOutput {
 	return o
-}
-
-func (o GetVm2LegacyCpuOutput) ToGetVm2LegacyCpuPtrOutput() GetVm2LegacyCpuPtrOutput {
-	return o.ToGetVm2LegacyCpuPtrOutputWithContext(context.Background())
-}
-
-func (o GetVm2LegacyCpuOutput) ToGetVm2LegacyCpuPtrOutputWithContext(ctx context.Context) GetVm2LegacyCpuPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVm2LegacyCpu) *GetVm2LegacyCpu {
-		return &v
-	}).(GetVm2LegacyCpuPtrOutput)
 }
 
 // List of host cores used to execute guest processes, for example: '0,5,8-11'
@@ -14505,17 +14662,12 @@ func (o GetVm2LegacyCpuOutput) Flags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVm2LegacyCpu) []string { return v.Flags }).(pulumi.StringArrayOutput)
 }
 
-// The number of hotplugged vCPUs.
-func (o GetVm2LegacyCpuOutput) Hotplugged() pulumi.IntOutput {
-	return o.ApplyT(func(v GetVm2LegacyCpu) int { return v.Hotplugged }).(pulumi.IntOutput)
-}
-
 // Limit of CPU usage.
 func (o GetVm2LegacyCpuOutput) Limit() pulumi.Float64Output {
 	return o.ApplyT(func(v GetVm2LegacyCpu) float64 { return v.Limit }).(pulumi.Float64Output)
 }
 
-// Enable NUMA.
+// Whether NUMA emulation is enabled.
 func (o GetVm2LegacyCpuOutput) Numa() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetVm2LegacyCpu) bool { return v.Numa }).(pulumi.BoolOutput)
 }
@@ -14535,128 +14687,9 @@ func (o GetVm2LegacyCpuOutput) Units() pulumi.IntOutput {
 	return o.ApplyT(func(v GetVm2LegacyCpu) int { return v.Units }).(pulumi.IntOutput)
 }
 
-type GetVm2LegacyCpuPtrOutput struct{ *pulumi.OutputState }
-
-func (GetVm2LegacyCpuPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetVm2LegacyCpu)(nil)).Elem()
-}
-
-func (o GetVm2LegacyCpuPtrOutput) ToGetVm2LegacyCpuPtrOutput() GetVm2LegacyCpuPtrOutput {
-	return o
-}
-
-func (o GetVm2LegacyCpuPtrOutput) ToGetVm2LegacyCpuPtrOutputWithContext(ctx context.Context) GetVm2LegacyCpuPtrOutput {
-	return o
-}
-
-func (o GetVm2LegacyCpuPtrOutput) Elem() GetVm2LegacyCpuOutput {
-	return o.ApplyT(func(v *GetVm2LegacyCpu) GetVm2LegacyCpu {
-		if v != nil {
-			return *v
-		}
-		var ret GetVm2LegacyCpu
-		return ret
-	}).(GetVm2LegacyCpuOutput)
-}
-
-// List of host cores used to execute guest processes, for example: '0,5,8-11'
-func (o GetVm2LegacyCpuPtrOutput) Affinity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVm2LegacyCpu) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Affinity
-	}).(pulumi.StringPtrOutput)
-}
-
-// The CPU architecture.
-func (o GetVm2LegacyCpuPtrOutput) Architecture() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVm2LegacyCpu) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Architecture
-	}).(pulumi.StringPtrOutput)
-}
-
-// The number of CPU cores per socket.
-func (o GetVm2LegacyCpuPtrOutput) Cores() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetVm2LegacyCpu) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Cores
-	}).(pulumi.IntPtrOutput)
-}
-
-// Set of additional CPU flags.
-func (o GetVm2LegacyCpuPtrOutput) Flags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GetVm2LegacyCpu) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Flags
-	}).(pulumi.StringArrayOutput)
-}
-
-// The number of hotplugged vCPUs.
-func (o GetVm2LegacyCpuPtrOutput) Hotplugged() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetVm2LegacyCpu) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Hotplugged
-	}).(pulumi.IntPtrOutput)
-}
-
-// Limit of CPU usage.
-func (o GetVm2LegacyCpuPtrOutput) Limit() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GetVm2LegacyCpu) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.Limit
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Enable NUMA.
-func (o GetVm2LegacyCpuPtrOutput) Numa() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetVm2LegacyCpu) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Numa
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The number of CPU sockets.
-func (o GetVm2LegacyCpuPtrOutput) Sockets() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetVm2LegacyCpu) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Sockets
-	}).(pulumi.IntPtrOutput)
-}
-
-// Emulated CPU type.
-func (o GetVm2LegacyCpuPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVm2LegacyCpu) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// CPU weight for a VM
-func (o GetVm2LegacyCpuPtrOutput) Units() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetVm2LegacyCpu) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Units
-	}).(pulumi.IntPtrOutput)
+// Number of active vCPUs.
+func (o GetVm2LegacyCpuOutput) Vcpus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVm2LegacyCpu) int { return v.Vcpus }).(pulumi.IntOutput)
 }
 
 type GetVm2LegacyRng struct {
@@ -14700,47 +14733,6 @@ func (i GetVm2LegacyRngArgs) ToGetVm2LegacyRngOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetVm2LegacyRngOutput)
 }
 
-func (i GetVm2LegacyRngArgs) ToGetVm2LegacyRngPtrOutput() GetVm2LegacyRngPtrOutput {
-	return i.ToGetVm2LegacyRngPtrOutputWithContext(context.Background())
-}
-
-func (i GetVm2LegacyRngArgs) ToGetVm2LegacyRngPtrOutputWithContext(ctx context.Context) GetVm2LegacyRngPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVm2LegacyRngOutput).ToGetVm2LegacyRngPtrOutputWithContext(ctx)
-}
-
-// GetVm2LegacyRngPtrInput is an input type that accepts GetVm2LegacyRngArgs, GetVm2LegacyRngPtr and GetVm2LegacyRngPtrOutput values.
-// You can construct a concrete instance of `GetVm2LegacyRngPtrInput` via:
-//
-//	        GetVm2LegacyRngArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetVm2LegacyRngPtrInput interface {
-	pulumi.Input
-
-	ToGetVm2LegacyRngPtrOutput() GetVm2LegacyRngPtrOutput
-	ToGetVm2LegacyRngPtrOutputWithContext(context.Context) GetVm2LegacyRngPtrOutput
-}
-
-type getVm2LegacyRngPtrType GetVm2LegacyRngArgs
-
-func GetVm2LegacyRngPtr(v *GetVm2LegacyRngArgs) GetVm2LegacyRngPtrInput {
-	return (*getVm2LegacyRngPtrType)(v)
-}
-
-func (*getVm2LegacyRngPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetVm2LegacyRng)(nil)).Elem()
-}
-
-func (i *getVm2LegacyRngPtrType) ToGetVm2LegacyRngPtrOutput() GetVm2LegacyRngPtrOutput {
-	return i.ToGetVm2LegacyRngPtrOutputWithContext(context.Background())
-}
-
-func (i *getVm2LegacyRngPtrType) ToGetVm2LegacyRngPtrOutputWithContext(ctx context.Context) GetVm2LegacyRngPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVm2LegacyRngPtrOutput)
-}
-
 type GetVm2LegacyRngOutput struct{ *pulumi.OutputState }
 
 func (GetVm2LegacyRngOutput) ElementType() reflect.Type {
@@ -14753,16 +14745,6 @@ func (o GetVm2LegacyRngOutput) ToGetVm2LegacyRngOutput() GetVm2LegacyRngOutput {
 
 func (o GetVm2LegacyRngOutput) ToGetVm2LegacyRngOutputWithContext(ctx context.Context) GetVm2LegacyRngOutput {
 	return o
-}
-
-func (o GetVm2LegacyRngOutput) ToGetVm2LegacyRngPtrOutput() GetVm2LegacyRngPtrOutput {
-	return o.ToGetVm2LegacyRngPtrOutputWithContext(context.Background())
-}
-
-func (o GetVm2LegacyRngOutput) ToGetVm2LegacyRngPtrOutputWithContext(ctx context.Context) GetVm2LegacyRngPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVm2LegacyRng) *GetVm2LegacyRng {
-		return &v
-	}).(GetVm2LegacyRngPtrOutput)
 }
 
 // Maximum bytes of entropy allowed to get injected into the guest every period.
@@ -14778,60 +14760,6 @@ func (o GetVm2LegacyRngOutput) Period() pulumi.IntOutput {
 // The entropy source for the RNG device.
 func (o GetVm2LegacyRngOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVm2LegacyRng) string { return v.Source }).(pulumi.StringOutput)
-}
-
-type GetVm2LegacyRngPtrOutput struct{ *pulumi.OutputState }
-
-func (GetVm2LegacyRngPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetVm2LegacyRng)(nil)).Elem()
-}
-
-func (o GetVm2LegacyRngPtrOutput) ToGetVm2LegacyRngPtrOutput() GetVm2LegacyRngPtrOutput {
-	return o
-}
-
-func (o GetVm2LegacyRngPtrOutput) ToGetVm2LegacyRngPtrOutputWithContext(ctx context.Context) GetVm2LegacyRngPtrOutput {
-	return o
-}
-
-func (o GetVm2LegacyRngPtrOutput) Elem() GetVm2LegacyRngOutput {
-	return o.ApplyT(func(v *GetVm2LegacyRng) GetVm2LegacyRng {
-		if v != nil {
-			return *v
-		}
-		var ret GetVm2LegacyRng
-		return ret
-	}).(GetVm2LegacyRngOutput)
-}
-
-// Maximum bytes of entropy allowed to get injected into the guest every period.
-func (o GetVm2LegacyRngPtrOutput) MaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetVm2LegacyRng) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MaxBytes
-	}).(pulumi.IntPtrOutput)
-}
-
-// Period in milliseconds to limit entropy injection to the guest.
-func (o GetVm2LegacyRngPtrOutput) Period() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetVm2LegacyRng) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Period
-	}).(pulumi.IntPtrOutput)
-}
-
-// The entropy source for the RNG device.
-func (o GetVm2LegacyRngPtrOutput) Source() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVm2LegacyRng) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Source
-	}).(pulumi.StringPtrOutput)
 }
 
 type GetVm2LegacyTimeouts struct {
@@ -15012,47 +14940,6 @@ func (i GetVm2LegacyVgaArgs) ToGetVm2LegacyVgaOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(GetVm2LegacyVgaOutput)
 }
 
-func (i GetVm2LegacyVgaArgs) ToGetVm2LegacyVgaPtrOutput() GetVm2LegacyVgaPtrOutput {
-	return i.ToGetVm2LegacyVgaPtrOutputWithContext(context.Background())
-}
-
-func (i GetVm2LegacyVgaArgs) ToGetVm2LegacyVgaPtrOutputWithContext(ctx context.Context) GetVm2LegacyVgaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVm2LegacyVgaOutput).ToGetVm2LegacyVgaPtrOutputWithContext(ctx)
-}
-
-// GetVm2LegacyVgaPtrInput is an input type that accepts GetVm2LegacyVgaArgs, GetVm2LegacyVgaPtr and GetVm2LegacyVgaPtrOutput values.
-// You can construct a concrete instance of `GetVm2LegacyVgaPtrInput` via:
-//
-//	        GetVm2LegacyVgaArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetVm2LegacyVgaPtrInput interface {
-	pulumi.Input
-
-	ToGetVm2LegacyVgaPtrOutput() GetVm2LegacyVgaPtrOutput
-	ToGetVm2LegacyVgaPtrOutputWithContext(context.Context) GetVm2LegacyVgaPtrOutput
-}
-
-type getVm2LegacyVgaPtrType GetVm2LegacyVgaArgs
-
-func GetVm2LegacyVgaPtr(v *GetVm2LegacyVgaArgs) GetVm2LegacyVgaPtrInput {
-	return (*getVm2LegacyVgaPtrType)(v)
-}
-
-func (*getVm2LegacyVgaPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetVm2LegacyVga)(nil)).Elem()
-}
-
-func (i *getVm2LegacyVgaPtrType) ToGetVm2LegacyVgaPtrOutput() GetVm2LegacyVgaPtrOutput {
-	return i.ToGetVm2LegacyVgaPtrOutputWithContext(context.Background())
-}
-
-func (i *getVm2LegacyVgaPtrType) ToGetVm2LegacyVgaPtrOutputWithContext(ctx context.Context) GetVm2LegacyVgaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVm2LegacyVgaPtrOutput)
-}
-
 type GetVm2LegacyVgaOutput struct{ *pulumi.OutputState }
 
 func (GetVm2LegacyVgaOutput) ElementType() reflect.Type {
@@ -15065,16 +14952,6 @@ func (o GetVm2LegacyVgaOutput) ToGetVm2LegacyVgaOutput() GetVm2LegacyVgaOutput {
 
 func (o GetVm2LegacyVgaOutput) ToGetVm2LegacyVgaOutputWithContext(ctx context.Context) GetVm2LegacyVgaOutput {
 	return o
-}
-
-func (o GetVm2LegacyVgaOutput) ToGetVm2LegacyVgaPtrOutput() GetVm2LegacyVgaPtrOutput {
-	return o.ToGetVm2LegacyVgaPtrOutputWithContext(context.Background())
-}
-
-func (o GetVm2LegacyVgaOutput) ToGetVm2LegacyVgaPtrOutputWithContext(ctx context.Context) GetVm2LegacyVgaPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVm2LegacyVga) *GetVm2LegacyVga {
-		return &v
-	}).(GetVm2LegacyVgaPtrOutput)
 }
 
 // Enable a specific clipboard.
@@ -15092,58 +14969,101 @@ func (o GetVm2LegacyVgaOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVm2LegacyVga) string { return v.Type }).(pulumi.StringOutput)
 }
 
-type GetVm2LegacyVgaPtrOutput struct{ *pulumi.OutputState }
-
-func (GetVm2LegacyVgaPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetVm2LegacyVga)(nil)).Elem()
+type GetVmCdrom struct {
+	// The file ID of the CD-ROM.
+	FileId string `pulumi:"fileId"`
 }
 
-func (o GetVm2LegacyVgaPtrOutput) ToGetVm2LegacyVgaPtrOutput() GetVm2LegacyVgaPtrOutput {
+// GetVmCdromInput is an input type that accepts GetVmCdromArgs and GetVmCdromOutput values.
+// You can construct a concrete instance of `GetVmCdromInput` via:
+//
+//	GetVmCdromArgs{...}
+type GetVmCdromInput interface {
+	pulumi.Input
+
+	ToGetVmCdromOutput() GetVmCdromOutput
+	ToGetVmCdromOutputWithContext(context.Context) GetVmCdromOutput
+}
+
+type GetVmCdromArgs struct {
+	// The file ID of the CD-ROM.
+	FileId pulumi.StringInput `pulumi:"fileId"`
+}
+
+func (GetVmCdromArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVmCdrom)(nil)).Elem()
+}
+
+func (i GetVmCdromArgs) ToGetVmCdromOutput() GetVmCdromOutput {
+	return i.ToGetVmCdromOutputWithContext(context.Background())
+}
+
+func (i GetVmCdromArgs) ToGetVmCdromOutputWithContext(ctx context.Context) GetVmCdromOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVmCdromOutput)
+}
+
+// GetVmCdromMapInput is an input type that accepts GetVmCdromMap and GetVmCdromMapOutput values.
+// You can construct a concrete instance of `GetVmCdromMapInput` via:
+//
+//	GetVmCdromMap{ "key": GetVmCdromArgs{...} }
+type GetVmCdromMapInput interface {
+	pulumi.Input
+
+	ToGetVmCdromMapOutput() GetVmCdromMapOutput
+	ToGetVmCdromMapOutputWithContext(context.Context) GetVmCdromMapOutput
+}
+
+type GetVmCdromMap map[string]GetVmCdromInput
+
+func (GetVmCdromMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetVmCdrom)(nil)).Elem()
+}
+
+func (i GetVmCdromMap) ToGetVmCdromMapOutput() GetVmCdromMapOutput {
+	return i.ToGetVmCdromMapOutputWithContext(context.Background())
+}
+
+func (i GetVmCdromMap) ToGetVmCdromMapOutputWithContext(ctx context.Context) GetVmCdromMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVmCdromMapOutput)
+}
+
+type GetVmCdromOutput struct{ *pulumi.OutputState }
+
+func (GetVmCdromOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVmCdrom)(nil)).Elem()
+}
+
+func (o GetVmCdromOutput) ToGetVmCdromOutput() GetVmCdromOutput {
 	return o
 }
 
-func (o GetVm2LegacyVgaPtrOutput) ToGetVm2LegacyVgaPtrOutputWithContext(ctx context.Context) GetVm2LegacyVgaPtrOutput {
+func (o GetVmCdromOutput) ToGetVmCdromOutputWithContext(ctx context.Context) GetVmCdromOutput {
 	return o
 }
 
-func (o GetVm2LegacyVgaPtrOutput) Elem() GetVm2LegacyVgaOutput {
-	return o.ApplyT(func(v *GetVm2LegacyVga) GetVm2LegacyVga {
-		if v != nil {
-			return *v
-		}
-		var ret GetVm2LegacyVga
-		return ret
-	}).(GetVm2LegacyVgaOutput)
+// The file ID of the CD-ROM.
+func (o GetVmCdromOutput) FileId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVmCdrom) string { return v.FileId }).(pulumi.StringOutput)
 }
 
-// Enable a specific clipboard.
-func (o GetVm2LegacyVgaPtrOutput) Clipboard() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVm2LegacyVga) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Clipboard
-	}).(pulumi.StringPtrOutput)
+type GetVmCdromMapOutput struct{ *pulumi.OutputState }
+
+func (GetVmCdromMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetVmCdrom)(nil)).Elem()
 }
 
-// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
-func (o GetVm2LegacyVgaPtrOutput) Memory() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetVm2LegacyVga) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Memory
-	}).(pulumi.IntPtrOutput)
+func (o GetVmCdromMapOutput) ToGetVmCdromMapOutput() GetVmCdromMapOutput {
+	return o
 }
 
-// The VGA type.
-func (o GetVm2LegacyVgaPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVm2LegacyVga) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
+func (o GetVmCdromMapOutput) ToGetVmCdromMapOutputWithContext(ctx context.Context) GetVmCdromMapOutput {
+	return o
+}
+
+func (o GetVmCdromMapOutput) MapIndex(k pulumi.StringInput) GetVmCdromOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetVmCdrom {
+		return vs[0].(map[string]GetVmCdrom)[vs[1].(string)]
+	}).(GetVmCdromOutput)
 }
 
 type GetVmCpu struct {
@@ -15155,11 +15075,9 @@ type GetVmCpu struct {
 	Cores int `pulumi:"cores"`
 	// Set of additional CPU flags.
 	Flags []string `pulumi:"flags"`
-	// The number of hotplugged vCPUs.
-	Hotplugged int `pulumi:"hotplugged"`
 	// Limit of CPU usage.
 	Limit float64 `pulumi:"limit"`
-	// Enable NUMA.
+	// Whether NUMA emulation is enabled.
 	Numa bool `pulumi:"numa"`
 	// The number of CPU sockets.
 	Sockets int `pulumi:"sockets"`
@@ -15167,6 +15085,8 @@ type GetVmCpu struct {
 	Type string `pulumi:"type"`
 	// CPU weight for a VM
 	Units int `pulumi:"units"`
+	// Number of active vCPUs.
+	Vcpus int `pulumi:"vcpus"`
 }
 
 // GetVmCpuInput is an input type that accepts GetVmCpuArgs and GetVmCpuOutput values.
@@ -15189,11 +15109,9 @@ type GetVmCpuArgs struct {
 	Cores pulumi.IntInput `pulumi:"cores"`
 	// Set of additional CPU flags.
 	Flags pulumi.StringArrayInput `pulumi:"flags"`
-	// The number of hotplugged vCPUs.
-	Hotplugged pulumi.IntInput `pulumi:"hotplugged"`
 	// Limit of CPU usage.
 	Limit pulumi.Float64Input `pulumi:"limit"`
-	// Enable NUMA.
+	// Whether NUMA emulation is enabled.
 	Numa pulumi.BoolInput `pulumi:"numa"`
 	// The number of CPU sockets.
 	Sockets pulumi.IntInput `pulumi:"sockets"`
@@ -15201,6 +15119,8 @@ type GetVmCpuArgs struct {
 	Type pulumi.StringInput `pulumi:"type"`
 	// CPU weight for a VM
 	Units pulumi.IntInput `pulumi:"units"`
+	// Number of active vCPUs.
+	Vcpus pulumi.IntInput `pulumi:"vcpus"`
 }
 
 func (GetVmCpuArgs) ElementType() reflect.Type {
@@ -15215,47 +15135,6 @@ func (i GetVmCpuArgs) ToGetVmCpuOutputWithContext(ctx context.Context) GetVmCpuO
 	return pulumi.ToOutputWithContext(ctx, i).(GetVmCpuOutput)
 }
 
-func (i GetVmCpuArgs) ToGetVmCpuPtrOutput() GetVmCpuPtrOutput {
-	return i.ToGetVmCpuPtrOutputWithContext(context.Background())
-}
-
-func (i GetVmCpuArgs) ToGetVmCpuPtrOutputWithContext(ctx context.Context) GetVmCpuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVmCpuOutput).ToGetVmCpuPtrOutputWithContext(ctx)
-}
-
-// GetVmCpuPtrInput is an input type that accepts GetVmCpuArgs, GetVmCpuPtr and GetVmCpuPtrOutput values.
-// You can construct a concrete instance of `GetVmCpuPtrInput` via:
-//
-//	        GetVmCpuArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetVmCpuPtrInput interface {
-	pulumi.Input
-
-	ToGetVmCpuPtrOutput() GetVmCpuPtrOutput
-	ToGetVmCpuPtrOutputWithContext(context.Context) GetVmCpuPtrOutput
-}
-
-type getVmCpuPtrType GetVmCpuArgs
-
-func GetVmCpuPtr(v *GetVmCpuArgs) GetVmCpuPtrInput {
-	return (*getVmCpuPtrType)(v)
-}
-
-func (*getVmCpuPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetVmCpu)(nil)).Elem()
-}
-
-func (i *getVmCpuPtrType) ToGetVmCpuPtrOutput() GetVmCpuPtrOutput {
-	return i.ToGetVmCpuPtrOutputWithContext(context.Background())
-}
-
-func (i *getVmCpuPtrType) ToGetVmCpuPtrOutputWithContext(ctx context.Context) GetVmCpuPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVmCpuPtrOutput)
-}
-
 type GetVmCpuOutput struct{ *pulumi.OutputState }
 
 func (GetVmCpuOutput) ElementType() reflect.Type {
@@ -15268,16 +15147,6 @@ func (o GetVmCpuOutput) ToGetVmCpuOutput() GetVmCpuOutput {
 
 func (o GetVmCpuOutput) ToGetVmCpuOutputWithContext(ctx context.Context) GetVmCpuOutput {
 	return o
-}
-
-func (o GetVmCpuOutput) ToGetVmCpuPtrOutput() GetVmCpuPtrOutput {
-	return o.ToGetVmCpuPtrOutputWithContext(context.Background())
-}
-
-func (o GetVmCpuOutput) ToGetVmCpuPtrOutputWithContext(ctx context.Context) GetVmCpuPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVmCpu) *GetVmCpu {
-		return &v
-	}).(GetVmCpuPtrOutput)
 }
 
 // List of host cores used to execute guest processes, for example: '0,5,8-11'
@@ -15300,17 +15169,12 @@ func (o GetVmCpuOutput) Flags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVmCpu) []string { return v.Flags }).(pulumi.StringArrayOutput)
 }
 
-// The number of hotplugged vCPUs.
-func (o GetVmCpuOutput) Hotplugged() pulumi.IntOutput {
-	return o.ApplyT(func(v GetVmCpu) int { return v.Hotplugged }).(pulumi.IntOutput)
-}
-
 // Limit of CPU usage.
 func (o GetVmCpuOutput) Limit() pulumi.Float64Output {
 	return o.ApplyT(func(v GetVmCpu) float64 { return v.Limit }).(pulumi.Float64Output)
 }
 
-// Enable NUMA.
+// Whether NUMA emulation is enabled.
 func (o GetVmCpuOutput) Numa() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetVmCpu) bool { return v.Numa }).(pulumi.BoolOutput)
 }
@@ -15330,128 +15194,9 @@ func (o GetVmCpuOutput) Units() pulumi.IntOutput {
 	return o.ApplyT(func(v GetVmCpu) int { return v.Units }).(pulumi.IntOutput)
 }
 
-type GetVmCpuPtrOutput struct{ *pulumi.OutputState }
-
-func (GetVmCpuPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetVmCpu)(nil)).Elem()
-}
-
-func (o GetVmCpuPtrOutput) ToGetVmCpuPtrOutput() GetVmCpuPtrOutput {
-	return o
-}
-
-func (o GetVmCpuPtrOutput) ToGetVmCpuPtrOutputWithContext(ctx context.Context) GetVmCpuPtrOutput {
-	return o
-}
-
-func (o GetVmCpuPtrOutput) Elem() GetVmCpuOutput {
-	return o.ApplyT(func(v *GetVmCpu) GetVmCpu {
-		if v != nil {
-			return *v
-		}
-		var ret GetVmCpu
-		return ret
-	}).(GetVmCpuOutput)
-}
-
-// List of host cores used to execute guest processes, for example: '0,5,8-11'
-func (o GetVmCpuPtrOutput) Affinity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVmCpu) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Affinity
-	}).(pulumi.StringPtrOutput)
-}
-
-// The CPU architecture.
-func (o GetVmCpuPtrOutput) Architecture() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVmCpu) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Architecture
-	}).(pulumi.StringPtrOutput)
-}
-
-// The number of CPU cores per socket.
-func (o GetVmCpuPtrOutput) Cores() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetVmCpu) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Cores
-	}).(pulumi.IntPtrOutput)
-}
-
-// Set of additional CPU flags.
-func (o GetVmCpuPtrOutput) Flags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GetVmCpu) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Flags
-	}).(pulumi.StringArrayOutput)
-}
-
-// The number of hotplugged vCPUs.
-func (o GetVmCpuPtrOutput) Hotplugged() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetVmCpu) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Hotplugged
-	}).(pulumi.IntPtrOutput)
-}
-
-// Limit of CPU usage.
-func (o GetVmCpuPtrOutput) Limit() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v *GetVmCpu) *float64 {
-		if v == nil {
-			return nil
-		}
-		return &v.Limit
-	}).(pulumi.Float64PtrOutput)
-}
-
-// Enable NUMA.
-func (o GetVmCpuPtrOutput) Numa() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetVmCpu) *bool {
-		if v == nil {
-			return nil
-		}
-		return &v.Numa
-	}).(pulumi.BoolPtrOutput)
-}
-
-// The number of CPU sockets.
-func (o GetVmCpuPtrOutput) Sockets() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetVmCpu) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Sockets
-	}).(pulumi.IntPtrOutput)
-}
-
-// Emulated CPU type.
-func (o GetVmCpuPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVmCpu) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
-}
-
-// CPU weight for a VM
-func (o GetVmCpuPtrOutput) Units() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetVmCpu) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Units
-	}).(pulumi.IntPtrOutput)
+// Number of active vCPUs.
+func (o GetVmCpuOutput) Vcpus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVmCpu) int { return v.Vcpus }).(pulumi.IntOutput)
 }
 
 type GetVmRng struct {
@@ -15495,47 +15240,6 @@ func (i GetVmRngArgs) ToGetVmRngOutputWithContext(ctx context.Context) GetVmRngO
 	return pulumi.ToOutputWithContext(ctx, i).(GetVmRngOutput)
 }
 
-func (i GetVmRngArgs) ToGetVmRngPtrOutput() GetVmRngPtrOutput {
-	return i.ToGetVmRngPtrOutputWithContext(context.Background())
-}
-
-func (i GetVmRngArgs) ToGetVmRngPtrOutputWithContext(ctx context.Context) GetVmRngPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVmRngOutput).ToGetVmRngPtrOutputWithContext(ctx)
-}
-
-// GetVmRngPtrInput is an input type that accepts GetVmRngArgs, GetVmRngPtr and GetVmRngPtrOutput values.
-// You can construct a concrete instance of `GetVmRngPtrInput` via:
-//
-//	        GetVmRngArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetVmRngPtrInput interface {
-	pulumi.Input
-
-	ToGetVmRngPtrOutput() GetVmRngPtrOutput
-	ToGetVmRngPtrOutputWithContext(context.Context) GetVmRngPtrOutput
-}
-
-type getVmRngPtrType GetVmRngArgs
-
-func GetVmRngPtr(v *GetVmRngArgs) GetVmRngPtrInput {
-	return (*getVmRngPtrType)(v)
-}
-
-func (*getVmRngPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetVmRng)(nil)).Elem()
-}
-
-func (i *getVmRngPtrType) ToGetVmRngPtrOutput() GetVmRngPtrOutput {
-	return i.ToGetVmRngPtrOutputWithContext(context.Background())
-}
-
-func (i *getVmRngPtrType) ToGetVmRngPtrOutputWithContext(ctx context.Context) GetVmRngPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVmRngPtrOutput)
-}
-
 type GetVmRngOutput struct{ *pulumi.OutputState }
 
 func (GetVmRngOutput) ElementType() reflect.Type {
@@ -15548,16 +15252,6 @@ func (o GetVmRngOutput) ToGetVmRngOutput() GetVmRngOutput {
 
 func (o GetVmRngOutput) ToGetVmRngOutputWithContext(ctx context.Context) GetVmRngOutput {
 	return o
-}
-
-func (o GetVmRngOutput) ToGetVmRngPtrOutput() GetVmRngPtrOutput {
-	return o.ToGetVmRngPtrOutputWithContext(context.Background())
-}
-
-func (o GetVmRngOutput) ToGetVmRngPtrOutputWithContext(ctx context.Context) GetVmRngPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVmRng) *GetVmRng {
-		return &v
-	}).(GetVmRngPtrOutput)
 }
 
 // Maximum bytes of entropy allowed to get injected into the guest every period.
@@ -15573,60 +15267,6 @@ func (o GetVmRngOutput) Period() pulumi.IntOutput {
 // The entropy source for the RNG device.
 func (o GetVmRngOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmRng) string { return v.Source }).(pulumi.StringOutput)
-}
-
-type GetVmRngPtrOutput struct{ *pulumi.OutputState }
-
-func (GetVmRngPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetVmRng)(nil)).Elem()
-}
-
-func (o GetVmRngPtrOutput) ToGetVmRngPtrOutput() GetVmRngPtrOutput {
-	return o
-}
-
-func (o GetVmRngPtrOutput) ToGetVmRngPtrOutputWithContext(ctx context.Context) GetVmRngPtrOutput {
-	return o
-}
-
-func (o GetVmRngPtrOutput) Elem() GetVmRngOutput {
-	return o.ApplyT(func(v *GetVmRng) GetVmRng {
-		if v != nil {
-			return *v
-		}
-		var ret GetVmRng
-		return ret
-	}).(GetVmRngOutput)
-}
-
-// Maximum bytes of entropy allowed to get injected into the guest every period.
-func (o GetVmRngPtrOutput) MaxBytes() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetVmRng) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.MaxBytes
-	}).(pulumi.IntPtrOutput)
-}
-
-// Period in milliseconds to limit entropy injection to the guest.
-func (o GetVmRngPtrOutput) Period() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetVmRng) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Period
-	}).(pulumi.IntPtrOutput)
-}
-
-// The entropy source for the RNG device.
-func (o GetVmRngPtrOutput) Source() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVmRng) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Source
-	}).(pulumi.StringPtrOutput)
 }
 
 type GetVmTimeouts struct {
@@ -15807,47 +15447,6 @@ func (i GetVmVgaArgs) ToGetVmVgaOutputWithContext(ctx context.Context) GetVmVgaO
 	return pulumi.ToOutputWithContext(ctx, i).(GetVmVgaOutput)
 }
 
-func (i GetVmVgaArgs) ToGetVmVgaPtrOutput() GetVmVgaPtrOutput {
-	return i.ToGetVmVgaPtrOutputWithContext(context.Background())
-}
-
-func (i GetVmVgaArgs) ToGetVmVgaPtrOutputWithContext(ctx context.Context) GetVmVgaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVmVgaOutput).ToGetVmVgaPtrOutputWithContext(ctx)
-}
-
-// GetVmVgaPtrInput is an input type that accepts GetVmVgaArgs, GetVmVgaPtr and GetVmVgaPtrOutput values.
-// You can construct a concrete instance of `GetVmVgaPtrInput` via:
-//
-//	        GetVmVgaArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetVmVgaPtrInput interface {
-	pulumi.Input
-
-	ToGetVmVgaPtrOutput() GetVmVgaPtrOutput
-	ToGetVmVgaPtrOutputWithContext(context.Context) GetVmVgaPtrOutput
-}
-
-type getVmVgaPtrType GetVmVgaArgs
-
-func GetVmVgaPtr(v *GetVmVgaArgs) GetVmVgaPtrInput {
-	return (*getVmVgaPtrType)(v)
-}
-
-func (*getVmVgaPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetVmVga)(nil)).Elem()
-}
-
-func (i *getVmVgaPtrType) ToGetVmVgaPtrOutput() GetVmVgaPtrOutput {
-	return i.ToGetVmVgaPtrOutputWithContext(context.Background())
-}
-
-func (i *getVmVgaPtrType) ToGetVmVgaPtrOutputWithContext(ctx context.Context) GetVmVgaPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVmVgaPtrOutput)
-}
-
 type GetVmVgaOutput struct{ *pulumi.OutputState }
 
 func (GetVmVgaOutput) ElementType() reflect.Type {
@@ -15860,16 +15459,6 @@ func (o GetVmVgaOutput) ToGetVmVgaOutput() GetVmVgaOutput {
 
 func (o GetVmVgaOutput) ToGetVmVgaOutputWithContext(ctx context.Context) GetVmVgaOutput {
 	return o
-}
-
-func (o GetVmVgaOutput) ToGetVmVgaPtrOutput() GetVmVgaPtrOutput {
-	return o.ToGetVmVgaPtrOutputWithContext(context.Background())
-}
-
-func (o GetVmVgaOutput) ToGetVmVgaPtrOutputWithContext(ctx context.Context) GetVmVgaPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVmVga) *GetVmVga {
-		return &v
-	}).(GetVmVgaPtrOutput)
 }
 
 // Enable a specific clipboard.
@@ -15885,60 +15474,6 @@ func (o GetVmVgaOutput) Memory() pulumi.IntOutput {
 // The VGA type.
 func (o GetVmVgaOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVmVga) string { return v.Type }).(pulumi.StringOutput)
-}
-
-type GetVmVgaPtrOutput struct{ *pulumi.OutputState }
-
-func (GetVmVgaPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetVmVga)(nil)).Elem()
-}
-
-func (o GetVmVgaPtrOutput) ToGetVmVgaPtrOutput() GetVmVgaPtrOutput {
-	return o
-}
-
-func (o GetVmVgaPtrOutput) ToGetVmVgaPtrOutputWithContext(ctx context.Context) GetVmVgaPtrOutput {
-	return o
-}
-
-func (o GetVmVgaPtrOutput) Elem() GetVmVgaOutput {
-	return o.ApplyT(func(v *GetVmVga) GetVmVga {
-		if v != nil {
-			return *v
-		}
-		var ret GetVmVga
-		return ret
-	}).(GetVmVgaOutput)
-}
-
-// Enable a specific clipboard.
-func (o GetVmVgaPtrOutput) Clipboard() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVmVga) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Clipboard
-	}).(pulumi.StringPtrOutput)
-}
-
-// The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
-func (o GetVmVgaPtrOutput) Memory() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetVmVga) *int {
-		if v == nil {
-			return nil
-		}
-		return &v.Memory
-	}).(pulumi.IntPtrOutput)
-}
-
-// The VGA type.
-func (o GetVmVgaPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetVmVga) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Type
-	}).(pulumi.StringPtrOutput)
 }
 
 type GetVmsLegacyFilter struct {
@@ -16362,22 +15897,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReplicationsReplicationArrayInput)(nil)).Elem(), GetReplicationsReplicationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserLegacyAclInput)(nil)).Elem(), GetUserLegacyAclArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUserLegacyAclArrayInput)(nil)).Elem(), GetUserLegacyAclArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2LegacyCdromInput)(nil)).Elem(), GetVm2LegacyCdromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2LegacyCdromMapInput)(nil)).Elem(), GetVm2LegacyCdromMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2LegacyCpuInput)(nil)).Elem(), GetVm2LegacyCpuArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2LegacyCpuPtrInput)(nil)).Elem(), GetVm2LegacyCpuArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2LegacyRngInput)(nil)).Elem(), GetVm2LegacyRngArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2LegacyRngPtrInput)(nil)).Elem(), GetVm2LegacyRngArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2LegacyTimeoutsInput)(nil)).Elem(), GetVm2LegacyTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2LegacyTimeoutsPtrInput)(nil)).Elem(), GetVm2LegacyTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2LegacyVgaInput)(nil)).Elem(), GetVm2LegacyVgaArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVm2LegacyVgaPtrInput)(nil)).Elem(), GetVm2LegacyVgaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVmCdromInput)(nil)).Elem(), GetVmCdromArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVmCdromMapInput)(nil)).Elem(), GetVmCdromMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVmCpuInput)(nil)).Elem(), GetVmCpuArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVmCpuPtrInput)(nil)).Elem(), GetVmCpuArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVmRngInput)(nil)).Elem(), GetVmRngArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVmRngPtrInput)(nil)).Elem(), GetVmRngArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVmTimeoutsInput)(nil)).Elem(), GetVmTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVmTimeoutsPtrInput)(nil)).Elem(), GetVmTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVmVgaInput)(nil)).Elem(), GetVmVgaArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVmVgaPtrInput)(nil)).Elem(), GetVmVgaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVmsLegacyFilterInput)(nil)).Elem(), GetVmsLegacyFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVmsLegacyFilterArrayInput)(nil)).Elem(), GetVmsLegacyFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVmsLegacyVmInput)(nil)).Elem(), GetVmsLegacyVmArgs{})
@@ -16542,22 +16075,20 @@ func init() {
 	pulumi.RegisterOutputType(GetReplicationsReplicationArrayOutput{})
 	pulumi.RegisterOutputType(GetUserLegacyAclOutput{})
 	pulumi.RegisterOutputType(GetUserLegacyAclArrayOutput{})
+	pulumi.RegisterOutputType(GetVm2LegacyCdromOutput{})
+	pulumi.RegisterOutputType(GetVm2LegacyCdromMapOutput{})
 	pulumi.RegisterOutputType(GetVm2LegacyCpuOutput{})
-	pulumi.RegisterOutputType(GetVm2LegacyCpuPtrOutput{})
 	pulumi.RegisterOutputType(GetVm2LegacyRngOutput{})
-	pulumi.RegisterOutputType(GetVm2LegacyRngPtrOutput{})
 	pulumi.RegisterOutputType(GetVm2LegacyTimeoutsOutput{})
 	pulumi.RegisterOutputType(GetVm2LegacyTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetVm2LegacyVgaOutput{})
-	pulumi.RegisterOutputType(GetVm2LegacyVgaPtrOutput{})
+	pulumi.RegisterOutputType(GetVmCdromOutput{})
+	pulumi.RegisterOutputType(GetVmCdromMapOutput{})
 	pulumi.RegisterOutputType(GetVmCpuOutput{})
-	pulumi.RegisterOutputType(GetVmCpuPtrOutput{})
 	pulumi.RegisterOutputType(GetVmRngOutput{})
-	pulumi.RegisterOutputType(GetVmRngPtrOutput{})
 	pulumi.RegisterOutputType(GetVmTimeoutsOutput{})
 	pulumi.RegisterOutputType(GetVmTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetVmVgaOutput{})
-	pulumi.RegisterOutputType(GetVmVgaPtrOutput{})
 	pulumi.RegisterOutputType(GetVmsLegacyFilterOutput{})
 	pulumi.RegisterOutputType(GetVmsLegacyFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetVmsLegacyVmOutput{})

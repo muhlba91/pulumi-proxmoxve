@@ -339,6 +339,31 @@ class Simple(pulumi.CustomResource):
         """
         Simple Zone in Proxmox SDN. It will create an isolated VNet bridge. This bridge is not linked to a physical interface, and VM traffic is only local on each the node. It can be used in NAT or routed setups.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.sdn.zone.Simple("example",
+            resource_id="simple1",
+            nodes=["pve"],
+            mtu=1500,
+            dns="1.1.1.1",
+            dns_zone="example.com",
+            ipam="pve",
+            reverse_dns="1.1.1.1")
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        Simple SDN zone can be imported using its unique identifier (zone ID)
+
+        ```sh
+        $ pulumi import proxmoxve:sdn/zone/simple:Simple example simple1
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -359,6 +384,31 @@ class Simple(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Simple Zone in Proxmox SDN. It will create an isolated VNet bridge. This bridge is not linked to a physical interface, and VM traffic is only local on each the node. It can be used in NAT or routed setups.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.sdn.zone.Simple("example",
+            resource_id="simple1",
+            nodes=["pve"],
+            mtu=1500,
+            dns="1.1.1.1",
+            dns_zone="example.com",
+            ipam="pve",
+            reverse_dns="1.1.1.1")
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        Simple SDN zone can be imported using its unique identifier (zone ID)
+
+        ```sh
+        $ pulumi import proxmoxve:sdn/zone/simple:Simple example simple1
+        ```
 
 
         :param str resource_name: The name of the resource.

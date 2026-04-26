@@ -88,6 +88,20 @@ class AwaitableGetVersionResult(GetVersionResult):
 def get_version(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVersionResult:
     """
     Retrieves API version details.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.get_version()
+    pulumi.export("dataProxmoxVersion", {
+        "release": example.release,
+        "repositoryId": example.repository_id,
+        "version": example.version,
+    })
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -101,6 +115,20 @@ def get_version(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVers
 def get_version_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVersionResult]:
     """
     Retrieves API version details.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.get_version()
+    pulumi.export("dataProxmoxVersion", {
+        "release": example.release,
+        "repositoryId": example.repository_id,
+        "version": example.version,
+    })
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

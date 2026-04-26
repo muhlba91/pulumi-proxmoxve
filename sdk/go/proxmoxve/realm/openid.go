@@ -22,6 +22,43 @@ import (
 // |-----------------|----------------|
 // | /access/domains | Realm.Allocate |
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/realm"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := realm.NewOpenid(ctx, "example", &realm.OpenidArgs{
+//				Realm:            pulumi.String("example-oidc"),
+//				IssuerUrl:        pulumi.String("https://auth.example.com"),
+//				ClientId:         pulumi.String("your-client-id"),
+//				ClientKey:        pulumi.Any(oidcClientSecret),
+//				UsernameClaim:    pulumi.String("email"),
+//				Autocreate:       pulumi.Bool(true),
+//				GroupsClaim:      pulumi.String("groups"),
+//				GroupsAutocreate: pulumi.Bool(true),
+//				GroupsOverwrite:  pulumi.Bool(false),
+//				Scopes:           pulumi.String("openid email profile"),
+//				QueryUserinfo:    pulumi.Bool(true),
+//				Comment:          pulumi.String("Example OpenID Connect realm managed by Terraform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Notes
 //
 // ### Client Key Security
@@ -114,6 +151,17 @@ import (
 // - [Proxmox VE User Management](https://pve.proxmox.com/wiki/User_Management)
 // - [Proxmox VE OpenID Connect Authentication](https://pve.proxmox.com/wiki/User_Management#pveum_openid)
 // - [Proxmox API: /access/domains](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/domains)
+//
+// ## Import
+//
+// !/usr/bin/env sh
+// OpenID realms can be imported using the realm identifier, e.g.:
+//
+// ```sh
+// $ pulumi import proxmoxve:realm/openid:Openid example example-oidc
+// ```
+//
+// > When importing, the `clientKey` attribute cannot be imported since it's not returned by the Proxmox API. You'll need to set this attribute in your Terraform configuration after the import to manage it with Terraform.
 type Openid struct {
 	pulumi.CustomResourceState
 

@@ -1096,12 +1096,178 @@ public final class ProxmoxveFunctions {
     /**
      * Retrieves information about an existing file in a Proxmox Virtual Environment node.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetFileArgs;
+     * import io.muehlbachler.pulumi.proxmoxve.Vm;
+     * import io.muehlbachler.pulumi.proxmoxve.VmArgs;
+     * import com.pulumi.proxmoxve.inputs.VmCpuArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuIso = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("iso")
+     *             .fileName("ubuntu-22.04.3-live-server-amd64.iso")
+     *             .build());
+     * 
+     *         final var ubuntuContainerTemplate = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("vztmpl")
+     *             .fileName("ubuntu-22.04-standard_22.04-1_amd64.tar.zst")
+     *             .build());
+     * 
+     *         final var cloudInitSnippet = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("snippets")
+     *             .fileName("cloud-init-config.yaml")
+     *             .build());
+     * 
+     *         final var importedFile = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("import")
+     *             .fileName("imported-config.yaml")
+     *             .build());
+     * 
+     *         ctx.export("ubuntuIsoId", ubuntuIso.id());
+     *         ctx.export("ubuntuIsoSize", ubuntuIso.fileSize());
+     *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
+     *         var example = new Vm("example", VmArgs.builder()
+     *             .nodeName("pve")
+     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:53,14-17)))
+     *             .cdrom(VmCdromArgs.builder()
+     *                 .fileId(ubuntuIso.id())
+     *                 .build())
+     *             .cpu(VmCpuArgs.builder()
+     *                 .cores(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:59,13-14)))
+     *                 .build())
+     *             .memory(List.of(Map.of("dedicated", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:62,17-21)))))
+     *             .disk(List.of(Map.ofEntries(
+     *                 Map.entry("datastoreId", "local-lvm"),
+     *                 Map.entry("fileFormat", "qcow2"),
+     *                 Map.entry("size", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(20) (example.pp:67,19-21)))
+     *             )))
+     *             .networkDevice(List.of(Map.of("bridge", "vmbr0")))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetFileResult> getFile(GetFileArgs args) {
         return getFile(args, InvokeOptions.Empty);
     }
     /**
      * Retrieves information about an existing file in a Proxmox Virtual Environment node.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetFileArgs;
+     * import io.muehlbachler.pulumi.proxmoxve.Vm;
+     * import io.muehlbachler.pulumi.proxmoxve.VmArgs;
+     * import com.pulumi.proxmoxve.inputs.VmCpuArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuIso = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("iso")
+     *             .fileName("ubuntu-22.04.3-live-server-amd64.iso")
+     *             .build());
+     * 
+     *         final var ubuntuContainerTemplate = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("vztmpl")
+     *             .fileName("ubuntu-22.04-standard_22.04-1_amd64.tar.zst")
+     *             .build());
+     * 
+     *         final var cloudInitSnippet = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("snippets")
+     *             .fileName("cloud-init-config.yaml")
+     *             .build());
+     * 
+     *         final var importedFile = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("import")
+     *             .fileName("imported-config.yaml")
+     *             .build());
+     * 
+     *         ctx.export("ubuntuIsoId", ubuntuIso.id());
+     *         ctx.export("ubuntuIsoSize", ubuntuIso.fileSize());
+     *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
+     *         var example = new Vm("example", VmArgs.builder()
+     *             .nodeName("pve")
+     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:53,14-17)))
+     *             .cdrom(VmCdromArgs.builder()
+     *                 .fileId(ubuntuIso.id())
+     *                 .build())
+     *             .cpu(VmCpuArgs.builder()
+     *                 .cores(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:59,13-14)))
+     *                 .build())
+     *             .memory(List.of(Map.of("dedicated", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:62,17-21)))))
+     *             .disk(List.of(Map.ofEntries(
+     *                 Map.entry("datastoreId", "local-lvm"),
+     *                 Map.entry("fileFormat", "qcow2"),
+     *                 Map.entry("size", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(20) (example.pp:67,19-21)))
+     *             )))
+     *             .networkDevice(List.of(Map.of("bridge", "vmbr0")))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFileResult> getFilePlain(GetFilePlainArgs args) {
@@ -1110,6 +1276,89 @@ public final class ProxmoxveFunctions {
     /**
      * Retrieves information about an existing file in a Proxmox Virtual Environment node.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetFileArgs;
+     * import io.muehlbachler.pulumi.proxmoxve.Vm;
+     * import io.muehlbachler.pulumi.proxmoxve.VmArgs;
+     * import com.pulumi.proxmoxve.inputs.VmCpuArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuIso = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("iso")
+     *             .fileName("ubuntu-22.04.3-live-server-amd64.iso")
+     *             .build());
+     * 
+     *         final var ubuntuContainerTemplate = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("vztmpl")
+     *             .fileName("ubuntu-22.04-standard_22.04-1_amd64.tar.zst")
+     *             .build());
+     * 
+     *         final var cloudInitSnippet = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("snippets")
+     *             .fileName("cloud-init-config.yaml")
+     *             .build());
+     * 
+     *         final var importedFile = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("import")
+     *             .fileName("imported-config.yaml")
+     *             .build());
+     * 
+     *         ctx.export("ubuntuIsoId", ubuntuIso.id());
+     *         ctx.export("ubuntuIsoSize", ubuntuIso.fileSize());
+     *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
+     *         var example = new Vm("example", VmArgs.builder()
+     *             .nodeName("pve")
+     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:53,14-17)))
+     *             .cdrom(VmCdromArgs.builder()
+     *                 .fileId(ubuntuIso.id())
+     *                 .build())
+     *             .cpu(VmCpuArgs.builder()
+     *                 .cores(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:59,13-14)))
+     *                 .build())
+     *             .memory(List.of(Map.of("dedicated", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:62,17-21)))))
+     *             .disk(List.of(Map.ofEntries(
+     *                 Map.entry("datastoreId", "local-lvm"),
+     *                 Map.entry("fileFormat", "qcow2"),
+     *                 Map.entry("size", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(20) (example.pp:67,19-21)))
+     *             )))
+     *             .networkDevice(List.of(Map.of("bridge", "vmbr0")))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetFileResult> getFile(GetFileArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:index/getFile:getFile", TypeShape.of(GetFileResult.class), args, Utilities.withVersion(options));
@@ -1117,12 +1366,178 @@ public final class ProxmoxveFunctions {
     /**
      * Retrieves information about an existing file in a Proxmox Virtual Environment node.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetFileArgs;
+     * import io.muehlbachler.pulumi.proxmoxve.Vm;
+     * import io.muehlbachler.pulumi.proxmoxve.VmArgs;
+     * import com.pulumi.proxmoxve.inputs.VmCpuArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuIso = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("iso")
+     *             .fileName("ubuntu-22.04.3-live-server-amd64.iso")
+     *             .build());
+     * 
+     *         final var ubuntuContainerTemplate = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("vztmpl")
+     *             .fileName("ubuntu-22.04-standard_22.04-1_amd64.tar.zst")
+     *             .build());
+     * 
+     *         final var cloudInitSnippet = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("snippets")
+     *             .fileName("cloud-init-config.yaml")
+     *             .build());
+     * 
+     *         final var importedFile = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("import")
+     *             .fileName("imported-config.yaml")
+     *             .build());
+     * 
+     *         ctx.export("ubuntuIsoId", ubuntuIso.id());
+     *         ctx.export("ubuntuIsoSize", ubuntuIso.fileSize());
+     *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
+     *         var example = new Vm("example", VmArgs.builder()
+     *             .nodeName("pve")
+     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:53,14-17)))
+     *             .cdrom(VmCdromArgs.builder()
+     *                 .fileId(ubuntuIso.id())
+     *                 .build())
+     *             .cpu(VmCpuArgs.builder()
+     *                 .cores(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:59,13-14)))
+     *                 .build())
+     *             .memory(List.of(Map.of("dedicated", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:62,17-21)))))
+     *             .disk(List.of(Map.ofEntries(
+     *                 Map.entry("datastoreId", "local-lvm"),
+     *                 Map.entry("fileFormat", "qcow2"),
+     *                 Map.entry("size", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(20) (example.pp:67,19-21)))
+     *             )))
+     *             .networkDevice(List.of(Map.of("bridge", "vmbr0")))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetFileResult> getFile(GetFileArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:index/getFile:getFile", TypeShape.of(GetFileResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves information about an existing file in a Proxmox Virtual Environment node.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetFileArgs;
+     * import io.muehlbachler.pulumi.proxmoxve.Vm;
+     * import io.muehlbachler.pulumi.proxmoxve.VmArgs;
+     * import com.pulumi.proxmoxve.inputs.VmCpuArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ubuntuIso = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("iso")
+     *             .fileName("ubuntu-22.04.3-live-server-amd64.iso")
+     *             .build());
+     * 
+     *         final var ubuntuContainerTemplate = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("vztmpl")
+     *             .fileName("ubuntu-22.04-standard_22.04-1_amd64.tar.zst")
+     *             .build());
+     * 
+     *         final var cloudInitSnippet = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("snippets")
+     *             .fileName("cloud-init-config.yaml")
+     *             .build());
+     * 
+     *         final var importedFile = ProxmoxveFunctions.getFile(GetFileArgs.builder()
+     *             .nodeName("pve")
+     *             .datastoreId("local")
+     *             .contentType("import")
+     *             .fileName("imported-config.yaml")
+     *             .build());
+     * 
+     *         ctx.export("ubuntuIsoId", ubuntuIso.id());
+     *         ctx.export("ubuntuIsoSize", ubuntuIso.fileSize());
+     *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
+     *         var example = new Vm("example", VmArgs.builder()
+     *             .nodeName("pve")
+     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:53,14-17)))
+     *             .cdrom(VmCdromArgs.builder()
+     *                 .fileId(ubuntuIso.id())
+     *                 .build())
+     *             .cpu(VmCpuArgs.builder()
+     *                 .cores(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:59,13-14)))
+     *                 .build())
+     *             .memory(List.of(Map.of("dedicated", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:62,17-21)))))
+     *             .disk(List.of(Map.ofEntries(
+     *                 Map.entry("datastoreId", "local-lvm"),
+     *                 Map.entry("fileFormat", "qcow2"),
+     *                 Map.entry("size", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(20) (example.pp:67,19-21)))
+     *             )))
+     *             .networkDevice(List.of(Map.of("bridge", "vmbr0")))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetFileResult> getFilePlain(GetFilePlainArgs args, InvokeOptions options) {
@@ -2174,12 +2589,22 @@ public final class ProxmoxveFunctions {
     /**
      * Retrieves information about a specific High Availability group.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetHagroupResult> getHagroup(GetHagroupArgs args) {
         return getHagroup(args, InvokeOptions.Empty);
     }
     /**
      * Retrieves information about a specific High Availability group.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHagroupResult> getHagroupPlain(GetHagroupPlainArgs args) {
@@ -2188,6 +2613,11 @@ public final class ProxmoxveFunctions {
     /**
      * Retrieves information about a specific High Availability group.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetHagroupResult> getHagroup(GetHagroupArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:index/getHagroup:getHagroup", TypeShape.of(GetHagroupResult.class), args, Utilities.withVersion(options));
@@ -2195,12 +2625,22 @@ public final class ProxmoxveFunctions {
     /**
      * Retrieves information about a specific High Availability group.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetHagroupResult> getHagroup(GetHagroupArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:index/getHagroup:getHagroup", TypeShape.of(GetHagroupResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves information about a specific High Availability group.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHagroupResult> getHagroupPlain(GetHagroupPlainArgs args, InvokeOptions options) {
@@ -2279,12 +2719,78 @@ public final class ProxmoxveFunctions {
     /**
      * Retrieves the list of High Availability groups.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getHagroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxHagroups", example.groupIds());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetHagroupsResult> getHagroups() {
         return getHagroups(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * Retrieves the list of High Availability groups.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getHagroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxHagroups", example.groupIds());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHagroupsResult> getHagroupsPlain() {
@@ -2293,12 +2799,78 @@ public final class ProxmoxveFunctions {
     /**
      * Retrieves the list of High Availability groups.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getHagroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxHagroups", example.groupIds());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetHagroupsResult> getHagroups(InvokeArgs args) {
         return getHagroups(args, InvokeOptions.Empty);
     }
     /**
      * Retrieves the list of High Availability groups.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getHagroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxHagroups", example.groupIds());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHagroupsResult> getHagroupsPlain(InvokeArgs args) {
@@ -2307,6 +2879,39 @@ public final class ProxmoxveFunctions {
     /**
      * Retrieves the list of High Availability groups.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getHagroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxHagroups", example.groupIds());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetHagroupsResult> getHagroups(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:index/getHagroups:getHagroups", TypeShape.of(GetHagroupsResult.class), args, Utilities.withVersion(options));
@@ -2314,12 +2919,78 @@ public final class ProxmoxveFunctions {
     /**
      * Retrieves the list of High Availability groups.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getHagroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxHagroups", example.groupIds());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetHagroupsResult> getHagroups(InvokeArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:index/getHagroups:getHagroups", TypeShape.of(GetHagroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves the list of High Availability groups.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getHagroups(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxHagroups", example.groupIds());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHagroupsResult> getHagroupsPlain(InvokeArgs args, InvokeOptions options) {
@@ -2622,12 +3293,22 @@ public final class ProxmoxveFunctions {
     /**
      * Retrieves information about a specific High Availability resource.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetHaresourceResult> getHaresource(GetHaresourceArgs args) {
         return getHaresource(args, InvokeOptions.Empty);
     }
     /**
      * Retrieves information about a specific High Availability resource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHaresourceResult> getHaresourcePlain(GetHaresourcePlainArgs args) {
@@ -2636,6 +3317,11 @@ public final class ProxmoxveFunctions {
     /**
      * Retrieves information about a specific High Availability resource.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetHaresourceResult> getHaresource(GetHaresourceArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:index/getHaresource:getHaresource", TypeShape.of(GetHaresourceResult.class), args, Utilities.withVersion(options));
@@ -2643,12 +3329,22 @@ public final class ProxmoxveFunctions {
     /**
      * Retrieves information about a specific High Availability resource.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetHaresourceResult> getHaresource(GetHaresourceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:index/getHaresource:getHaresource", TypeShape.of(GetHaresourceResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves information about a specific High Availability resource.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHaresourceResult> getHaresourcePlain(GetHaresourcePlainArgs args, InvokeOptions options) {
@@ -2727,12 +3423,100 @@ public final class ProxmoxveFunctions {
     /**
      * Retrieves the list of High Availability resources.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetHaresourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // This will fetch the set of all HA resource identifiers.
+     *         final var exampleAll = ProxmoxveFunctions.getHaresources(GetHaresourcesArgs.builder()
+     *             .build());
+     * 
+     *         // This will fetch the set of HA resource identifiers that correspond to virtual machines.
+     *         final var exampleVm = ProxmoxveFunctions.getHaresources(GetHaresourcesArgs.builder()
+     *             .type("vm")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxHaresources", Map.ofEntries(
+     *             Map.entry("all", exampleAll.resourceIds()),
+     *             Map.entry("vms", exampleVm.resourceIds())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetHaresourcesResult> getHaresources() {
         return getHaresources(GetHaresourcesArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * Retrieves the list of High Availability resources.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetHaresourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // This will fetch the set of all HA resource identifiers.
+     *         final var exampleAll = ProxmoxveFunctions.getHaresources(GetHaresourcesArgs.builder()
+     *             .build());
+     * 
+     *         // This will fetch the set of HA resource identifiers that correspond to virtual machines.
+     *         final var exampleVm = ProxmoxveFunctions.getHaresources(GetHaresourcesArgs.builder()
+     *             .type("vm")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxHaresources", Map.ofEntries(
+     *             Map.entry("all", exampleAll.resourceIds()),
+     *             Map.entry("vms", exampleVm.resourceIds())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHaresourcesResult> getHaresourcesPlain() {
@@ -2741,12 +3525,100 @@ public final class ProxmoxveFunctions {
     /**
      * Retrieves the list of High Availability resources.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetHaresourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // This will fetch the set of all HA resource identifiers.
+     *         final var exampleAll = ProxmoxveFunctions.getHaresources(GetHaresourcesArgs.builder()
+     *             .build());
+     * 
+     *         // This will fetch the set of HA resource identifiers that correspond to virtual machines.
+     *         final var exampleVm = ProxmoxveFunctions.getHaresources(GetHaresourcesArgs.builder()
+     *             .type("vm")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxHaresources", Map.ofEntries(
+     *             Map.entry("all", exampleAll.resourceIds()),
+     *             Map.entry("vms", exampleVm.resourceIds())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetHaresourcesResult> getHaresources(GetHaresourcesArgs args) {
         return getHaresources(args, InvokeOptions.Empty);
     }
     /**
      * Retrieves the list of High Availability resources.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetHaresourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // This will fetch the set of all HA resource identifiers.
+     *         final var exampleAll = ProxmoxveFunctions.getHaresources(GetHaresourcesArgs.builder()
+     *             .build());
+     * 
+     *         // This will fetch the set of HA resource identifiers that correspond to virtual machines.
+     *         final var exampleVm = ProxmoxveFunctions.getHaresources(GetHaresourcesArgs.builder()
+     *             .type("vm")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxHaresources", Map.ofEntries(
+     *             Map.entry("all", exampleAll.resourceIds()),
+     *             Map.entry("vms", exampleVm.resourceIds())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHaresourcesResult> getHaresourcesPlain(GetHaresourcesPlainArgs args) {
@@ -2755,6 +3627,50 @@ public final class ProxmoxveFunctions {
     /**
      * Retrieves the list of High Availability resources.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetHaresourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // This will fetch the set of all HA resource identifiers.
+     *         final var exampleAll = ProxmoxveFunctions.getHaresources(GetHaresourcesArgs.builder()
+     *             .build());
+     * 
+     *         // This will fetch the set of HA resource identifiers that correspond to virtual machines.
+     *         final var exampleVm = ProxmoxveFunctions.getHaresources(GetHaresourcesArgs.builder()
+     *             .type("vm")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxHaresources", Map.ofEntries(
+     *             Map.entry("all", exampleAll.resourceIds()),
+     *             Map.entry("vms", exampleVm.resourceIds())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetHaresourcesResult> getHaresources(GetHaresourcesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:index/getHaresources:getHaresources", TypeShape.of(GetHaresourcesResult.class), args, Utilities.withVersion(options));
@@ -2762,12 +3678,100 @@ public final class ProxmoxveFunctions {
     /**
      * Retrieves the list of High Availability resources.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetHaresourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // This will fetch the set of all HA resource identifiers.
+     *         final var exampleAll = ProxmoxveFunctions.getHaresources(GetHaresourcesArgs.builder()
+     *             .build());
+     * 
+     *         // This will fetch the set of HA resource identifiers that correspond to virtual machines.
+     *         final var exampleVm = ProxmoxveFunctions.getHaresources(GetHaresourcesArgs.builder()
+     *             .type("vm")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxHaresources", Map.ofEntries(
+     *             Map.entry("all", exampleAll.resourceIds()),
+     *             Map.entry("vms", exampleVm.resourceIds())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetHaresourcesResult> getHaresources(GetHaresourcesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:index/getHaresources:getHaresources", TypeShape.of(GetHaresourcesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves the list of High Availability resources.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetHaresourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // This will fetch the set of all HA resource identifiers.
+     *         final var exampleAll = ProxmoxveFunctions.getHaresources(GetHaresourcesArgs.builder()
+     *             .build());
+     * 
+     *         // This will fetch the set of HA resource identifiers that correspond to virtual machines.
+     *         final var exampleVm = ProxmoxveFunctions.getHaresources(GetHaresourcesArgs.builder()
+     *             .type("vm")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxHaresources", Map.ofEntries(
+     *             Map.entry("all", exampleAll.resourceIds()),
+     *             Map.entry("vms", exampleVm.resourceIds())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetHaresourcesResult> getHaresourcesPlain(GetHaresourcesPlainArgs args, InvokeOptions options) {
@@ -4398,12 +5402,96 @@ public final class ProxmoxveFunctions {
     /**
      * Retrieves information about an existing Replication.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetReplicationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getReplication(GetReplicationArgs.builder()
+     *             .id("100-0")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxReplication", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("target", example.target()),
+     *             Map.entry("type", example.type()),
+     *             Map.entry("jobnum", example.jobnum()),
+     *             Map.entry("guest", example.guest())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetReplicationResult> getReplication(GetReplicationArgs args) {
         return getReplication(args, InvokeOptions.Empty);
     }
     /**
      * Retrieves information about an existing Replication.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetReplicationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getReplication(GetReplicationArgs.builder()
+     *             .id("100-0")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxReplication", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("target", example.target()),
+     *             Map.entry("type", example.type()),
+     *             Map.entry("jobnum", example.jobnum()),
+     *             Map.entry("guest", example.guest())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetReplicationResult> getReplicationPlain(GetReplicationPlainArgs args) {
@@ -4412,6 +5500,48 @@ public final class ProxmoxveFunctions {
     /**
      * Retrieves information about an existing Replication.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetReplicationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getReplication(GetReplicationArgs.builder()
+     *             .id("100-0")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxReplication", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("target", example.target()),
+     *             Map.entry("type", example.type()),
+     *             Map.entry("jobnum", example.jobnum()),
+     *             Map.entry("guest", example.guest())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetReplicationResult> getReplication(GetReplicationArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:index/getReplication:getReplication", TypeShape.of(GetReplicationResult.class), args, Utilities.withVersion(options));
@@ -4419,12 +5549,96 @@ public final class ProxmoxveFunctions {
     /**
      * Retrieves information about an existing Replication.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetReplicationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getReplication(GetReplicationArgs.builder()
+     *             .id("100-0")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxReplication", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("target", example.target()),
+     *             Map.entry("type", example.type()),
+     *             Map.entry("jobnum", example.jobnum()),
+     *             Map.entry("guest", example.guest())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetReplicationResult> getReplication(GetReplicationArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:index/getReplication:getReplication", TypeShape.of(GetReplicationResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves information about an existing Replication.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import com.pulumi.proxmoxve.inputs.GetReplicationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getReplication(GetReplicationArgs.builder()
+     *             .id("100-0")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxReplication", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("target", example.target()),
+     *             Map.entry("type", example.type()),
+     *             Map.entry("jobnum", example.jobnum()),
+     *             Map.entry("guest", example.guest())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetReplicationResult> getReplicationPlain(GetReplicationPlainArgs args, InvokeOptions options) {
@@ -4688,12 +5902,80 @@ public final class ProxmoxveFunctions {
     /**
      * Retrieves information about all Replications in Proxmox.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all Replications
+     *         final var all = ProxmoxveFunctions.getReplications(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxReplicationsAll", Map.of("replications", all.replications()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetReplicationsResult> getReplications() {
         return getReplications(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * Retrieves information about all Replications in Proxmox.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all Replications
+     *         final var all = ProxmoxveFunctions.getReplications(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxReplicationsAll", Map.of("replications", all.replications()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetReplicationsResult> getReplicationsPlain() {
@@ -4702,12 +5984,80 @@ public final class ProxmoxveFunctions {
     /**
      * Retrieves information about all Replications in Proxmox.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all Replications
+     *         final var all = ProxmoxveFunctions.getReplications(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxReplicationsAll", Map.of("replications", all.replications()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetReplicationsResult> getReplications(InvokeArgs args) {
         return getReplications(args, InvokeOptions.Empty);
     }
     /**
      * Retrieves information about all Replications in Proxmox.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all Replications
+     *         final var all = ProxmoxveFunctions.getReplications(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxReplicationsAll", Map.of("replications", all.replications()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetReplicationsResult> getReplicationsPlain(InvokeArgs args) {
@@ -4716,6 +6066,40 @@ public final class ProxmoxveFunctions {
     /**
      * Retrieves information about all Replications in Proxmox.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all Replications
+     *         final var all = ProxmoxveFunctions.getReplications(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxReplicationsAll", Map.of("replications", all.replications()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetReplicationsResult> getReplications(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:index/getReplications:getReplications", TypeShape.of(GetReplicationsResult.class), args, Utilities.withVersion(options));
@@ -4723,12 +6107,80 @@ public final class ProxmoxveFunctions {
     /**
      * Retrieves information about all Replications in Proxmox.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all Replications
+     *         final var all = ProxmoxveFunctions.getReplications(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxReplicationsAll", Map.of("replications", all.replications()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetReplicationsResult> getReplications(InvokeArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:index/getReplications:getReplications", TypeShape.of(GetReplicationsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves information about all Replications in Proxmox.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all Replications
+     *         final var all = ProxmoxveFunctions.getReplications(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxReplicationsAll", Map.of("replications", all.replications()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetReplicationsResult> getReplicationsPlain(InvokeArgs args, InvokeOptions options) {
@@ -6214,12 +7666,86 @@ public final class ProxmoxveFunctions {
     /**
      * Retrieves API version details.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getVersion(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxVersion", Map.ofEntries(
+     *             Map.entry("release", example.release()),
+     *             Map.entry("repositoryId", example.repositoryId()),
+     *             Map.entry("version", example.version())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetVersionResult> getVersion() {
         return getVersion(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * Retrieves API version details.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getVersion(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxVersion", Map.ofEntries(
+     *             Map.entry("release", example.release()),
+     *             Map.entry("repositoryId", example.repositoryId()),
+     *             Map.entry("version", example.version())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVersionResult> getVersionPlain() {
@@ -6228,12 +7754,86 @@ public final class ProxmoxveFunctions {
     /**
      * Retrieves API version details.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getVersion(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxVersion", Map.ofEntries(
+     *             Map.entry("release", example.release()),
+     *             Map.entry("repositoryId", example.repositoryId()),
+     *             Map.entry("version", example.version())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetVersionResult> getVersion(InvokeArgs args) {
         return getVersion(args, InvokeOptions.Empty);
     }
     /**
      * Retrieves API version details.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getVersion(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxVersion", Map.ofEntries(
+     *             Map.entry("release", example.release()),
+     *             Map.entry("repositoryId", example.repositoryId()),
+     *             Map.entry("version", example.version())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVersionResult> getVersionPlain(InvokeArgs args) {
@@ -6242,6 +7842,43 @@ public final class ProxmoxveFunctions {
     /**
      * Retrieves API version details.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getVersion(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxVersion", Map.ofEntries(
+     *             Map.entry("release", example.release()),
+     *             Map.entry("repositoryId", example.repositoryId()),
+     *             Map.entry("version", example.version())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetVersionResult> getVersion(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:index/getVersion:getVersion", TypeShape.of(GetVersionResult.class), args, Utilities.withVersion(options));
@@ -6249,12 +7886,86 @@ public final class ProxmoxveFunctions {
     /**
      * Retrieves API version details.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getVersion(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxVersion", Map.ofEntries(
+     *             Map.entry("release", example.release()),
+     *             Map.entry("repositoryId", example.repositoryId()),
+     *             Map.entry("version", example.version())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetVersionResult> getVersion(InvokeArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:index/getVersion:getVersion", TypeShape.of(GetVersionResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves API version details.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.ProxmoxveFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = ProxmoxveFunctions.getVersion(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxVersion", Map.ofEntries(
+     *             Map.entry("release", example.release()),
+     *             Map.entry("repositoryId", example.repositoryId()),
+     *             Map.entry("version", example.version())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVersionResult> getVersionPlain(InvokeArgs args, InvokeOptions options) {
@@ -6583,96 +8294,88 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:index/getVersionLegacy:getVersionLegacy", TypeShape.of(GetVersionLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data-source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
-     * !&gt; **DO NOT USE**
-     * This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
+     * Retrieves information about a specific VM.
      * 
      */
     public static Output<GetVm2LegacyResult> getVm2Legacy(GetVm2LegacyArgs args) {
         return getVm2Legacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data-source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
-     * !&gt; **DO NOT USE**
-     * This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
+     * Retrieves information about a specific VM.
      * 
      */
     public static CompletableFuture<GetVm2LegacyResult> getVm2LegacyPlain(GetVm2LegacyPlainArgs args) {
         return getVm2LegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data-source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
-     * !&gt; **DO NOT USE**
-     * This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
+     * Retrieves information about a specific VM.
      * 
      */
     public static Output<GetVm2LegacyResult> getVm2Legacy(GetVm2LegacyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:index/getVm2Legacy:getVm2Legacy", TypeShape.of(GetVm2LegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data-source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
-     * !&gt; **DO NOT USE**
-     * This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
+     * Retrieves information about a specific VM.
      * 
      */
     public static Output<GetVm2LegacyResult> getVm2Legacy(GetVm2LegacyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:index/getVm2Legacy:getVm2Legacy", TypeShape.of(GetVm2LegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data-source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
-     * !&gt; **DO NOT USE**
-     * This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
+     * Retrieves information about a specific VM.
      * 
      */
     public static CompletableFuture<GetVm2LegacyResult> getVm2LegacyPlain(GetVm2LegacyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("proxmoxve:index/getVm2Legacy:getVm2Legacy", TypeShape.of(GetVm2LegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * !&gt; **DO NOT USE**
-     * This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
+     * Retrieves information about a specific VM.
      * 
      */
     public static Output<GetVmResult> getVm(GetVmArgs args) {
         return getVm(args, InvokeOptions.Empty);
     }
     /**
-     * !&gt; **DO NOT USE**
-     * This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
+     * Retrieves information about a specific VM.
      * 
      */
     public static CompletableFuture<GetVmResult> getVmPlain(GetVmPlainArgs args) {
         return getVmPlain(args, InvokeOptions.Empty);
     }
     /**
-     * !&gt; **DO NOT USE**
-     * This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
+     * Retrieves information about a specific VM.
      * 
      */
     public static Output<GetVmResult> getVm(GetVmArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:index/getVm:getVm", TypeShape.of(GetVmResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * !&gt; **DO NOT USE**
-     * This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
+     * Retrieves information about a specific VM.
      * 
      */
     public static Output<GetVmResult> getVm(GetVmArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:index/getVm:getVm", TypeShape.of(GetVmResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * !&gt; **DO NOT USE**
-     * This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
+     * Retrieves information about a specific VM.
      * 
      */
     public static CompletableFuture<GetVmResult> getVmPlain(GetVmPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("proxmoxve:index/getVm:getVm", TypeShape.of(GetVmResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * 
      * Retrieves information about a specific VM.
      * 
      * ## Example Usage
@@ -6716,6 +8419,8 @@ public final class ProxmoxveFunctions {
         return getVmLegacy(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * 
      * Retrieves information about a specific VM.
      * 
      * ## Example Usage
@@ -6759,6 +8464,8 @@ public final class ProxmoxveFunctions {
         return getVmLegacyPlain(args, InvokeOptions.Empty);
     }
     /**
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * 
      * Retrieves information about a specific VM.
      * 
      * ## Example Usage
@@ -6802,6 +8509,8 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invoke("proxmoxve:index/getVmLegacy:getVmLegacy", TypeShape.of(GetVmLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * 
      * Retrieves information about a specific VM.
      * 
      * ## Example Usage
@@ -6845,6 +8554,8 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invoke("proxmoxve:index/getVmLegacy:getVmLegacy", TypeShape.of(GetVmLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * 
      * Retrieves information about a specific VM.
      * 
      * ## Example Usage

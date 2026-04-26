@@ -72,6 +72,15 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * !/usr/bin/env sh
+ * Storage can be imported using its identifier, e.g.:
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:storage/cifsLegacy:CifsLegacy example local-cifs
+ * ```
+ * 
  */
 @ResourceType(type="proxmoxve:storage/cifsLegacy:CifsLegacy")
 public class CifsLegacy extends com.pulumi.resources.CustomResource {

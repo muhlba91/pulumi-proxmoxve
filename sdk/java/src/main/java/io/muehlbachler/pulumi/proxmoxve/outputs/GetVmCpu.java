@@ -35,17 +35,12 @@ public final class GetVmCpu {
      */
     private List<String> flags;
     /**
-     * @return The number of hotplugged vCPUs.
-     * 
-     */
-    private Integer hotplugged;
-    /**
      * @return Limit of CPU usage.
      * 
      */
     private Double limit;
     /**
-     * @return Enable NUMA.
+     * @return Whether NUMA emulation is enabled.
      * 
      */
     private Boolean numa;
@@ -64,6 +59,11 @@ public final class GetVmCpu {
      * 
      */
     private Integer units;
+    /**
+     * @return Number of active vCPUs.
+     * 
+     */
+    private Integer vcpus;
 
     private GetVmCpu() {}
     /**
@@ -95,13 +95,6 @@ public final class GetVmCpu {
         return this.flags;
     }
     /**
-     * @return The number of hotplugged vCPUs.
-     * 
-     */
-    public Integer hotplugged() {
-        return this.hotplugged;
-    }
-    /**
      * @return Limit of CPU usage.
      * 
      */
@@ -109,7 +102,7 @@ public final class GetVmCpu {
         return this.limit;
     }
     /**
-     * @return Enable NUMA.
+     * @return Whether NUMA emulation is enabled.
      * 
      */
     public Boolean numa() {
@@ -136,6 +129,13 @@ public final class GetVmCpu {
     public Integer units() {
         return this.units;
     }
+    /**
+     * @return Number of active vCPUs.
+     * 
+     */
+    public Integer vcpus() {
+        return this.vcpus;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -150,12 +150,12 @@ public final class GetVmCpu {
         private String architecture;
         private Integer cores;
         private List<String> flags;
-        private Integer hotplugged;
         private Double limit;
         private Boolean numa;
         private Integer sockets;
         private String type;
         private Integer units;
+        private Integer vcpus;
         public Builder() {}
         public Builder(GetVmCpu defaults) {
     	      Objects.requireNonNull(defaults);
@@ -163,12 +163,12 @@ public final class GetVmCpu {
     	      this.architecture = defaults.architecture;
     	      this.cores = defaults.cores;
     	      this.flags = defaults.flags;
-    	      this.hotplugged = defaults.hotplugged;
     	      this.limit = defaults.limit;
     	      this.numa = defaults.numa;
     	      this.sockets = defaults.sockets;
     	      this.type = defaults.type;
     	      this.units = defaults.units;
+    	      this.vcpus = defaults.vcpus;
         }
 
         @CustomType.Setter
@@ -205,14 +205,6 @@ public final class GetVmCpu {
         }
         public Builder flags(String... flags) {
             return flags(List.of(flags));
-        }
-        @CustomType.Setter
-        public Builder hotplugged(Integer hotplugged) {
-            if (hotplugged == null) {
-              throw new MissingRequiredPropertyException("GetVmCpu", "hotplugged");
-            }
-            this.hotplugged = hotplugged;
-            return this;
         }
         @CustomType.Setter
         public Builder limit(Double limit) {
@@ -254,18 +246,26 @@ public final class GetVmCpu {
             this.units = units;
             return this;
         }
+        @CustomType.Setter
+        public Builder vcpus(Integer vcpus) {
+            if (vcpus == null) {
+              throw new MissingRequiredPropertyException("GetVmCpu", "vcpus");
+            }
+            this.vcpus = vcpus;
+            return this;
+        }
         public GetVmCpu build() {
             final var _resultValue = new GetVmCpu();
             _resultValue.affinity = affinity;
             _resultValue.architecture = architecture;
             _resultValue.cores = cores;
             _resultValue.flags = flags;
-            _resultValue.hotplugged = hotplugged;
             _resultValue.limit = limit;
             _resultValue.numa = numa;
             _resultValue.sockets = sockets;
             _resultValue.type = type;
             _resultValue.units = units;
+            _resultValue.vcpus = vcpus;
             return _resultValue;
         }
     }

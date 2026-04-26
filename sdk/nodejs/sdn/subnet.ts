@@ -8,6 +8,97 @@ import * as utilities from "../utilities";
 
 /**
  * Manages SDN Subnets in Proxmox VE.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const finalizer = new proxmoxve.sdn.Applier("finalizer", {});
+ * // SDN Zone (Simple) - Basic zone for simple vnets
+ * const exampleZone1 = new proxmoxve.sdn.zone.Simple("example_zone_1", {
+ *     resourceId: "zone1",
+ *     nodes: ["pve"],
+ *     mtu: 1500,
+ *     dns: "1.1.1.1",
+ *     dnsZone: "example.com",
+ *     ipam: "pve",
+ *     reverseDns: "1.1.1.1",
+ * }, {
+ *     dependsOn: [finalizer],
+ * });
+ * // SDN Zone (Simple) - Second zone for demonstration
+ * const exampleZone2 = new proxmoxve.sdn.zone.Simple("example_zone_2", {
+ *     resourceId: "zone2",
+ *     nodes: ["pve"],
+ *     mtu: 1500,
+ * }, {
+ *     dependsOn: [finalizer],
+ * });
+ * // SDN VNet - Basic vnet
+ * const exampleVnet1 = new proxmoxve.sdn.Vnet("example_vnet_1", {
+ *     resourceId: "vnet1",
+ *     zone: exampleZone1.resourceId,
+ * }, {
+ *     dependsOn: [finalizer],
+ * });
+ * // SDN VNet - VNet with alias and port isolation
+ * const exampleVnet2 = new proxmoxve.sdn.Vnet("example_vnet_2", {
+ *     resourceId: "vnet2",
+ *     zone: exampleZone2.resourceId,
+ *     alias: "Example VNet 2",
+ *     isolatePorts: true,
+ *     vlanAware: false,
+ * }, {
+ *     dependsOn: [finalizer],
+ * });
+ * // Basic Subnet
+ * const basicSubnet = new proxmoxve.sdn.Subnet("basic_subnet", {
+ *     cidr: "192.168.1.0/24",
+ *     vnet: exampleVnet1.resourceId,
+ *     gateway: "192.168.1.1",
+ * }, {
+ *     dependsOn: [finalizer],
+ * });
+ * // Subnet with DHCP Configuration
+ * const dhcpSubnet = new proxmoxve.sdn.Subnet("dhcp_subnet", {
+ *     cidr: "192.168.2.0/24",
+ *     vnet: exampleVnet2.resourceId,
+ *     gateway: "192.168.2.1",
+ *     dhcpDnsServer: "192.168.2.53",
+ *     dnsZonePrefix: "internal.example.com",
+ *     snat: true,
+ *     dhcpRange: {
+ *         startAddress: "192.168.2.10",
+ *         endAddress: "192.168.2.100",
+ *     },
+ * }, {
+ *     dependsOn: [finalizer],
+ * });
+ * // SDN Applier for all resources
+ * const subnetApplier = new proxmoxve.sdn.Applier("subnet_applier", {}, {
+ *     dependsOn: [
+ *         exampleZone1,
+ *         exampleZone2,
+ *         exampleVnet1,
+ *         exampleVnet2,
+ *         basicSubnet,
+ *         dhcpSubnet,
+ *     ],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * !/usr/bin/env sh
+ * SDN subnet can be imported using its unique identifier in the format: <vnet>/<subnet-id>
+ * The <subnet-id> is the canonical ID from Proxmox, e.g., "zone1-192.168.1.0-24"
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:sdn/subnet:Subnet basic_subnet vnet1/zone1-192.168.1.0-24
+ * $ pulumi import proxmoxve:sdn/subnet:Subnet dhcp_subnet vnet2/zone2-192.168.2.0-24
+ * ```
  */
 export class Subnet extends pulumi.CustomResource {
     /**

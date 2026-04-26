@@ -18,7 +18,7 @@ import (
 //
 // ## Limitations
 //
-// This resource intentionally manages only a subset of VM configuration. The following are currently not managed and must be inherited from the source template (or managed via `VmLegacy` with a `clone` block):
+// This resource intentionally manages only a subset of VM configuration. The following are currently not managed and must be inherited from the source template (or managed via `Vm` with a `clone` block):
 //
 // - BIOS / machine / boot order
 // - EFI disk / secure boot settings
@@ -26,6 +26,233 @@ import (
 // - Cloud-init / initialization
 // - QEMU guest agent configuration
 // - PCI/USB passthrough, serial/audio devices, watchdog, VirtioFS
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/cloned"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Example 1: Basic clone with minimal management
+//			_, err := cloned.NewVm(ctx, "basic_clone", &cloned.VmArgs{
+//				NodeName: pulumi.String("pve"),
+//				Name:     pulumi.String("basic-clone"),
+//				Clone: &cloned.VmCloneArgs{
+//					SourceVmId: pulumi.Int(100),
+//					Full:       pulumi.Bool(true),
+//				},
+//				Cpu: &cloned.VmCpuArgs{
+//					Cores: pulumi.Int(4),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Example 2: Clone with explicit network management
+//			_, err = cloned.NewVm(ctx, "network_managed", &cloned.VmArgs{
+//				NodeName: pulumi.String("pve"),
+//				Name:     pulumi.String("network-clone"),
+//				Clone: &cloned.VmCloneArgs{
+//					SourceVmId: pulumi.Int(100),
+//				},
+//				Network: cloned.VmNetworkMap{
+//					"net0": &cloned.VmNetworkArgs{
+//						Bridge: pulumi.String("vmbr0"),
+//						Model:  pulumi.String("virtio"),
+//						Tag:    pulumi.Int(100),
+//					},
+//					"net1": &cloned.VmNetworkArgs{
+//						Bridge:     pulumi.String("vmbr1"),
+//						Model:      pulumi.String("virtio"),
+//						Firewall:   pulumi.Bool(true),
+//						MacAddress: pulumi.String("BC:24:11:2E:C5:00"),
+//					},
+//				},
+//				Cpu: &cloned.VmCpuArgs{
+//					Cores: pulumi.Int(2),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Example 3: Clone with disk management
+//			_, err = cloned.NewVm(ctx, "disk_managed", &cloned.VmArgs{
+//				NodeName: pulumi.String("pve"),
+//				Name:     pulumi.String("disk-clone"),
+//				Clone: &cloned.VmCloneArgs{
+//					SourceVmId:      pulumi.Int(100),
+//					TargetDatastore: pulumi.String("local-lvm"),
+//				},
+//				Disk: cloned.VmDiskMap{
+//					"scsi0": &cloned.VmDiskArgs{
+//						DatastoreId: pulumi.String("local-lvm"),
+//						SizeGb:      pulumi.Int(50),
+//						Discard:     pulumi.String("on"),
+//						Ssd:         pulumi.Bool(true),
+//					},
+//					"scsi1": &cloned.VmDiskArgs{
+//						DatastoreId: pulumi.String("local-lvm"),
+//						SizeGb:      pulumi.Int(100),
+//						Backup:      pulumi.Bool(false),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Example 4: Clone with explicit device deletion
+//			_, err = cloned.NewVm(ctx, "selective_delete", &cloned.VmArgs{
+//				NodeName: pulumi.String("pve"),
+//				Name:     pulumi.String("minimal-clone"),
+//				Clone: &cloned.VmCloneArgs{
+//					SourceVmId: pulumi.Int(100),
+//				},
+//				Network: cloned.VmNetworkMap{
+//					"net0": &cloned.VmNetworkArgs{
+//						Bridge: pulumi.String("vmbr0"),
+//						Model:  pulumi.String("virtio"),
+//					},
+//				},
+//				Delete: &cloned.VmDeleteArgs{
+//					Networks: pulumi.StringArray{
+//						pulumi.String("net1"),
+//						pulumi.String("net2"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Example 5: Full-featured clone with multiple settings
+//			_, err = cloned.NewVm(ctx, "full_featured", &cloned.VmArgs{
+//				NodeName:    pulumi.String("pve"),
+//				Name:        pulumi.String("production-vm"),
+//				Description: pulumi.String("Production VM cloned from template"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("production"),
+//					pulumi.String("web"),
+//				},
+//				Clone: &cloned.VmCloneArgs{
+//					SourceVmId:      pulumi.Int(100),
+//					SourceNodeName:  pulumi.String("pve"),
+//					Full:            pulumi.Bool(true),
+//					TargetDatastore: pulumi.String("local-lvm"),
+//					Retries:         pulumi.Int(3),
+//				},
+//				Cpu: &cloned.VmCpuArgs{
+//					Cores:        pulumi.Int(8),
+//					Sockets:      pulumi.Int(1),
+//					Architecture: pulumi.String("x86_64"),
+//					Type:         pulumi.String("host"),
+//				},
+//				Memory: &cloned.VmMemoryArgs{
+//					Size:    pulumi.Int(8192),
+//					Balloon: pulumi.Int(2048),
+//					Shares:  pulumi.Int(2000),
+//				},
+//				Network: cloned.VmNetworkMap{
+//					"net0": &cloned.VmNetworkArgs{
+//						Bridge:    pulumi.String("vmbr0"),
+//						Model:     pulumi.String("virtio"),
+//						Tag:       pulumi.Int(100),
+//						Firewall:  pulumi.Bool(true),
+//						RateLimit: pulumi.Float64(100),
+//					},
+//				},
+//				Disk: cloned.VmDiskMap{
+//					"scsi0": &cloned.VmDiskArgs{
+//						DatastoreId: pulumi.String("local-lvm"),
+//						SizeGb:      pulumi.Int(100),
+//						Discard:     pulumi.String("on"),
+//						Iothread:    pulumi.Bool(true),
+//						Ssd:         pulumi.Bool(true),
+//						Cache:       pulumi.String("writethrough"),
+//					},
+//				},
+//				Vga: &cloned.VmVgaArgs{
+//					Type:   pulumi.String("std"),
+//					Memory: pulumi.Int(16),
+//				},
+//				Delete: &cloned.VmDeleteArgs{
+//					Disks: pulumi.StringArray{
+//						pulumi.String("ide2"),
+//					},
+//				},
+//				StopOnDestroy:                    pulumi.Bool(false),
+//				PurgeOnDestroy:                   pulumi.Bool(true),
+//				DeleteUnreferencedDisksOnDestroy: pulumi.Bool(false),
+//				Timeouts: &cloned.VmTimeoutsArgs{
+//					Create: pulumi.String("30m"),
+//					Update: pulumi.String("30m"),
+//					Delete: pulumi.String("10m"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Example 6: Linked clone for testing
+//			_, err = cloned.NewVm(ctx, "test_clone", &cloned.VmArgs{
+//				NodeName: pulumi.String("pve"),
+//				Name:     pulumi.String("test-vm"),
+//				Clone: &cloned.VmCloneArgs{
+//					SourceVmId: pulumi.Int(100),
+//					Full:       pulumi.Bool(false),
+//				},
+//				Cpu: &cloned.VmCpuArgs{
+//					Cores: pulumi.Int(2),
+//				},
+//				Network: cloned.VmNetworkMap{
+//					"net0": &cloned.VmNetworkArgs{
+//						Bridge: pulumi.String("vmbr0"),
+//						Model:  pulumi.String("virtio"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Example 7: Clone with pool assignment
+//			_, err = cloned.NewVm(ctx, "pooled_clone", &cloned.VmArgs{
+//				NodeName: pulumi.String("pve"),
+//				Name:     pulumi.String("pooled-vm"),
+//				Clone: &cloned.VmCloneArgs{
+//					SourceVmId: pulumi.Int(100),
+//					PoolId:     pulumi.String("production"),
+//				},
+//				Cpu: &cloned.VmCpuArgs{
+//					Cores: pulumi.Int(4),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Example 8: Import existing cloned VM
+//			_, err = cloned.NewVm(ctx, "imported", &cloned.VmArgs{
+//				ResourceId: pulumi.String("123"),
+//				NodeName:   pulumi.String("pve"),
+//				Clone: &cloned.VmCloneArgs{
+//					SourceVmId: pulumi.Int(100),
+//				},
+//				Cpu: &cloned.VmCpuArgs{
+//					Cores: pulumi.Int(4),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Vm struct {
 	pulumi.CustomResourceState
 

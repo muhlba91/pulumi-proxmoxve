@@ -246,6 +246,32 @@ def get_evpn(id: Optional[_builtins.str] = None,
     """
     Retrieves information about an EVPN Zone in Proxmox SDN. The EVPN zone creates a routable Layer 3 network, capable of spanning across multiple clusters.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.sdn.zone.get_evpn(id="evpn1")
+    pulumi.export("dataProxmoxSdnZoneEvpn", {
+        "id": example.id,
+        "nodes": example.nodes,
+        "controller": example.controller,
+        "vrfVxlan": example.vrf_vxlan,
+        "advertiseSubnets": example.advertise_subnets,
+        "disableArpNdSuppression": example.disable_arp_nd_suppression,
+        "exitNodes": example.exit_nodes,
+        "exitNodesLocalRouting": example.exit_nodes_local_routing,
+        "primaryExitNode": example.primary_exit_node,
+        "rtImport": example.rt_import,
+        "mtu": example.mtu,
+        "dns": example.dns,
+        "dnsZone": example.dns_zone,
+        "ipam": example.ipam,
+        "reverseDns": example.reverse_dns,
+    })
+    ```
+
 
     :param _builtins.str id: The unique identifier of the SDN zone.
     """
@@ -276,6 +302,32 @@ def get_evpn_output(id: Optional[pulumi.Input[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEvpnResult]:
     """
     Retrieves information about an EVPN Zone in Proxmox SDN. The EVPN zone creates a routable Layer 3 network, capable of spanning across multiple clusters.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.sdn.zone.get_evpn(id="evpn1")
+    pulumi.export("dataProxmoxSdnZoneEvpn", {
+        "id": example.id,
+        "nodes": example.nodes,
+        "controller": example.controller,
+        "vrfVxlan": example.vrf_vxlan,
+        "advertiseSubnets": example.advertise_subnets,
+        "disableArpNdSuppression": example.disable_arp_nd_suppression,
+        "exitNodes": example.exit_nodes,
+        "exitNodesLocalRouting": example.exit_nodes_local_routing,
+        "primaryExitNode": example.primary_exit_node,
+        "rtImport": example.rt_import,
+        "mtu": example.mtu,
+        "dns": example.dns,
+        "dnsZone": example.dns_zone,
+        "ipam": example.ipam,
+        "reverseDns": example.reverse_dns,
+    })
+    ```
 
 
     :param _builtins.str id: The unique identifier of the SDN zone.

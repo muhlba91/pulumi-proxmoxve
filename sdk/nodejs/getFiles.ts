@@ -52,6 +52,7 @@ export function getFiles(args: GetFilesArgs, opts?: pulumi.InvokeOptions): Promi
     return pulumi.runtime.invoke("proxmoxve:index/getFiles:getFiles", {
         "contentType": args.contentType,
         "datastoreId": args.datastoreId,
+        "fileNameRegex": args.fileNameRegex,
         "nodeName": args.nodeName,
     }, opts);
 }
@@ -68,6 +69,10 @@ export interface GetFilesArgs {
      * The identifier of the datastore.
      */
     datastoreId: string;
+    /**
+     * A regular expression to filter files by name. When set, only files whose name matches the expression are returned.
+     */
+    fileNameRegex?: string;
     /**
      * The name of the node.
      */
@@ -86,6 +91,10 @@ export interface GetFilesResult {
      * The identifier of the datastore.
      */
     readonly datastoreId: string;
+    /**
+     * A regular expression to filter files by name. When set, only files whose name matches the expression are returned.
+     */
+    readonly fileNameRegex?: string;
     /**
      * The list of files in the datastore.
      */
@@ -145,6 +154,7 @@ export function getFilesOutput(args: GetFilesOutputArgs, opts?: pulumi.InvokeOut
     return pulumi.runtime.invokeOutput("proxmoxve:index/getFiles:getFiles", {
         "contentType": args.contentType,
         "datastoreId": args.datastoreId,
+        "fileNameRegex": args.fileNameRegex,
         "nodeName": args.nodeName,
     }, opts);
 }
@@ -161,6 +171,10 @@ export interface GetFilesOutputArgs {
      * The identifier of the datastore.
      */
     datastoreId: pulumi.Input<string>;
+    /**
+     * A regular expression to filter files by name. When set, only files whose name matches the expression are returned.
+     */
+    fileNameRegex?: pulumi.Input<string>;
     /**
      * The name of the node.
      */

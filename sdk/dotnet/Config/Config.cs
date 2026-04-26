@@ -190,6 +190,10 @@ namespace Pulumi.ProxmoxVE
             /// </summary>
                 public string? AgentSocket { get; set; } = null!;
             /// <summary>
+            /// The method used to resolve node IP addresses for SSH connections. Set to `Dns` to skip the Proxmox API-based resolution and use local DNS instead. DNS resolution prefers IPv4 but falls back to IPv6 if no IPv4 addresses are available. Useful in multi-subnet environments where the API may return an inaccessible IP. Defaults to `Api`.
+            /// </summary>
+                public string? NodeAddressSource { get; set; } = null!;
+            /// <summary>
             /// Overrides for SSH connection configuration for a Proxmox VE node.
             /// </summary>
                 public ImmutableArray<Pulumi.ProxmoxVE.Config.Types.SshNode> Nodes { get; set; }

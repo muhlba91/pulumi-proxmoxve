@@ -11,6 +11,53 @@ namespace Pulumi.ProxmoxVE.Storage
 {
     /// <summary>
     /// Manages an NFS-based storage in Proxmox VE.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new ProxmoxVE.Storage.Nfs("example", new()
+    ///     {
+    ///         ResourceId = "example-nfs",
+    ///         Nodes = new[]
+    ///         {
+    ///             "pve",
+    ///         },
+    ///         Server = "10.0.0.10",
+    ///         Export = "/exports/proxmox",
+    ///         Contents = new[]
+    ///         {
+    ///             "images",
+    ///             "iso",
+    ///             "backup",
+    ///         },
+    ///         Options = "vers=4.2",
+    ///         Preallocation = "metadata",
+    ///         SnapshotAsVolumeChain = true,
+    ///         Backups = new ProxmoxVE.Storage.Inputs.NfsBackupsArgs
+    ///         {
+    ///             MaxProtectedBackups = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(5) (example.pp:11,27-28)),
+    ///             KeepDaily = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(7) (example.pp:12,27-28)),
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// Storage can be imported using its identifier, e.g.:
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:storage/nfs:Nfs example local-nfs
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:storage/nfs:Nfs")]
     public partial class Nfs : global::Pulumi.CustomResource

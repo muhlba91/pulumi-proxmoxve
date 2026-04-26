@@ -240,6 +240,30 @@ class Plugin(pulumi.CustomResource):
         """
         Manages an ACME plugin in a Proxmox VE cluster.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.acme.dns.Plugin("example",
+            plugin="test",
+            api="aws",
+            data={
+                "AWS_ACCESS_KEY_ID": "EXAMPLE",
+                "AWS_SECRET_ACCESS_KEY": "EXAMPLE",
+            })
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        ACME accounts can be imported using their name, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:acme/dns/plugin:Plugin example test
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -258,6 +282,30 @@ class Plugin(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages an ACME plugin in a Proxmox VE cluster.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.acme.dns.Plugin("example",
+            plugin="test",
+            api="aws",
+            data={
+                "AWS_ACCESS_KEY_ID": "EXAMPLE",
+                "AWS_SECRET_ACCESS_KEY": "EXAMPLE",
+            })
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        ACME accounts can be imported using their name, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:acme/dns/plugin:Plugin example test
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -6,6 +6,26 @@ import * as utilities from "../../utilities";
 
 /**
  * Retrieves information about a Simple Zone in Proxmox SDN. It will create an isolated VNet bridge. This bridge is not linked to a physical interface, and VM traffic is only local on each the node. It can be used in NAT or routed setups.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = proxmoxve.sdn.zone.getSimple({
+ *     id: "simple1",
+ * });
+ * export const dataProxmoxSdnZoneSimple = {
+ *     id: example.then(example => example.id),
+ *     nodes: example.then(example => example.nodes),
+ *     mtu: example.then(example => example.mtu),
+ *     dns: example.then(example => example.dns),
+ *     dnsZone: example.then(example => example.dnsZone),
+ *     ipam: example.then(example => example.ipam),
+ *     reverseDns: example.then(example => example.reverseDns),
+ * };
+ * ```
  */
 export function getSimple(args: GetSimpleArgs, opts?: pulumi.InvokeOptions): Promise<GetSimpleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -71,6 +91,26 @@ export interface GetSimpleResult {
 }
 /**
  * Retrieves information about a Simple Zone in Proxmox SDN. It will create an isolated VNet bridge. This bridge is not linked to a physical interface, and VM traffic is only local on each the node. It can be used in NAT or routed setups.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = proxmoxve.sdn.zone.getSimple({
+ *     id: "simple1",
+ * });
+ * export const dataProxmoxSdnZoneSimple = {
+ *     id: example.then(example => example.id),
+ *     nodes: example.then(example => example.nodes),
+ *     mtu: example.then(example => example.mtu),
+ *     dns: example.then(example => example.dns),
+ *     dnsZone: example.then(example => example.dnsZone),
+ *     ipam: example.then(example => example.ipam),
+ *     reverseDns: example.then(example => example.reverseDns),
+ * };
+ * ```
  */
 export function getSimpleOutput(args: GetSimpleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSimpleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

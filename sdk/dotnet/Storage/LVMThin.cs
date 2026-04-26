@@ -11,6 +11,43 @@ namespace Pulumi.ProxmoxVE.Storage
 {
     /// <summary>
     /// Manages thin LVM-based storage in Proxmox VE.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new ProxmoxVE.Storage.Lvmthin("example", new()
+    ///     {
+    ///         ResourceId = "example-lvmthin",
+    ///         Nodes = new[]
+    ///         {
+    ///             "pve",
+    ///         },
+    ///         VolumeGroup = "vg0",
+    ///         ThinPool = "data",
+    ///         Contents = new[]
+    ///         {
+    ///             "images",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// Storage can be imported using its identifier, e.g.:
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:storage/lvmthin:Lvmthin example local-lvm-thin
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:storage/lvmthin:Lvmthin")]
     public partial class Lvmthin : global::Pulumi.CustomResource

@@ -23,6 +23,108 @@ import javax.annotation.Nullable;
  * - An ACME account is configured (using &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-go=&#34;`acme.Account`&#34; pulumi-lang-python=&#34;`acme.Account`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.Account`&#34;&gt;`proxmoxve.acme.Account`&lt;/span&gt;)
  * - DNS plugins are configured if using DNS-01 challenge (using &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme/dns.Plugin`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme/dns.Plugin`&#34; pulumi-lang-go=&#34;`acme/dns.Plugin`&#34; pulumi-lang-python=&#34;`acme/dns.Plugin`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme/dns.Plugin`&#34; pulumi-lang-java=&#34;`proxmoxve.acme/dns.Plugin`&#34;&gt;`proxmoxve.acme/dns.Plugin`&lt;/span&gt;)
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.acme.Account;
+ * import io.muehlbachler.pulumi.proxmoxve.acme.AccountArgs;
+ * import io.muehlbachler.pulumi.proxmoxve.acme.Certificate;
+ * import io.muehlbachler.pulumi.proxmoxve.acme.CertificateArgs;
+ * import com.pulumi.proxmoxve.acme.inputs.CertificateDomainArgs;
+ * import io.muehlbachler.pulumi.proxmoxve.acme.Plugin;
+ * import io.muehlbachler.pulumi.proxmoxve.acme.PluginArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         // Example: Basic ACME certificate with HTTP-01 challenge (standalone)
+ *         var example = new Account("example", AccountArgs.builder()
+ *             .name("production")
+ *             .contact("admin}{@literal @}{@code example.com")
+ *             .directory("https://acme-v02.api.letsencrypt.org/directory")
+ *             .tos("https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf")
+ *             .build());
+ * 
+ *         var httpExample = new Certificate("httpExample", CertificateArgs.builder()
+ *             .nodeName("pve-node-01")
+ *             .account(example.name())
+ *             .domains(CertificateDomainArgs.builder()
+ *                 .domain("pve.example.com")
+ *                 .build())
+ *             .build());
+ * 
+ *         // Example: ACME certificate with DNS-01 challenge using Cloudflare
+ *         var cloudflare = new Plugin("cloudflare", PluginArgs.builder()
+ *             .plugin("cloudflare")
+ *             .api("cf")
+ *             .validationDelay(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(120) (example.pp:22,21-24)))
+ *             .data(Map.ofEntries(
+ *                 Map.entry("CF_Account_ID", "your-cloudflare-account-id"),
+ *                 Map.entry("CF_Token", "your-cloudflare-api-token"),
+ *                 Map.entry("CF_Zone_ID", "your-cloudflare-zone-id")
+ *             ))
+ *             .build());
+ * 
+ *         var dnsExample = new Certificate("dnsExample", CertificateArgs.builder()
+ *             .nodeName("pve-node-01")
+ *             .account(example.name())
+ *             .domains(CertificateDomainArgs.builder()
+ *                 .domain("pve.example.com")
+ *                 .plugin(cloudflare.plugin())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     example,
+ *                     cloudflare)
+ *                 .build());
+ * 
+ *         // Example: Force certificate renewal
+ *         var forceRenew = new Certificate("forceRenew", CertificateArgs.builder()
+ *             .nodeName("pve-node-01")
+ *             .account(example.name())
+ *             .force(true)
+ *             .domains(CertificateDomainArgs.builder()
+ *                 .domain("pve.example.com")
+ *                 .plugin(cloudflare.plugin())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     example,
+ *                     cloudflare)
+ *                 .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * !/usr/bin/env sh
+ * ACME certificates can be imported using the node name, e.g.:
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:acme/certificate:Certificate example pve-node-01
+ * ```
+ * 
  */
 @ResourceType(type="proxmoxve:acme/certificate:Certificate")
 public class Certificate extends com.pulumi.resources.CustomResource {

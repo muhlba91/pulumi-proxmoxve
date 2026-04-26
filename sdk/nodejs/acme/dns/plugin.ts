@@ -6,6 +6,31 @@ import * as utilities from "../../utilities";
 
 /**
  * Manages an ACME plugin in a Proxmox VE cluster.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = new proxmoxve.acme.dns.Plugin("example", {
+ *     plugin: "test",
+ *     api: "aws",
+ *     data: {
+ *         AWS_ACCESS_KEY_ID: "EXAMPLE",
+ *         AWS_SECRET_ACCESS_KEY: "EXAMPLE",
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * !/usr/bin/env sh
+ * ACME accounts can be imported using their name, e.g.:
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:acme/dns/plugin:Plugin example test
+ * ```
  */
 export class Plugin extends pulumi.CustomResource {
     /**

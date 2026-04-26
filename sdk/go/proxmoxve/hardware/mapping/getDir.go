@@ -12,6 +12,33 @@ import (
 )
 
 // Retrieves a directory mapping from a Proxmox VE cluster.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/hardware"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := hardware.GetDir(ctx, &mapping.GetDirArgs{
+//				Name: "example",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("dataProxmoxHardwareMappingDir", example)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupDir(ctx *pulumi.Context, args *LookupDirArgs, opts ...pulumi.InvokeOption) (*LookupDirResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupDirResult

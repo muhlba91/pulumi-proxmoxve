@@ -13,12 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class Vm2LegacyRng {
     /**
-     * @return Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+     * @return Maximum bytes of entropy allowed to get injected into the guest every period.
      * 
      */
     private @Nullable Integer maxBytes;
     /**
-     * @return Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+     * @return Period in milliseconds to limit entropy injection to the guest.
      * 
      */
     private @Nullable Integer period;
@@ -30,14 +30,14 @@ public final class Vm2LegacyRng {
 
     private Vm2LegacyRng() {}
     /**
-     * @return Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+     * @return Maximum bytes of entropy allowed to get injected into the guest every period.
      * 
      */
     public Optional<Integer> maxBytes() {
         return Optional.ofNullable(this.maxBytes);
     }
     /**
-     * @return Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+     * @return Period in milliseconds to limit entropy injection to the guest.
      * 
      */
     public Optional<Integer> period() {

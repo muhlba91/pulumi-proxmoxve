@@ -23,6 +23,15 @@ import * as utilities from "../utilities";
  *     contents: ["images"],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * !/usr/bin/env sh
+ * Storage can be imported using its identifier, e.g.:
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:storage/lvmthinLegacy:LvmthinLegacy example local-lvm-thin
+ * ```
  */
 export class LvmthinLegacy extends pulumi.CustomResource {
     /**

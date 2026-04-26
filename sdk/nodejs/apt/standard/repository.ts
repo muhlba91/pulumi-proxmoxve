@@ -6,6 +6,34 @@ import * as utilities from "../../utilities";
 
 /**
  * Manages an APT standard repository of a Proxmox VE node.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = new proxmoxve.apt.standard.Repository("example", {
+ *     handle: "no-subscription",
+ *     node: "pve",
+ * });
+ * const exampleRepository = new proxmoxve.apt.Repository("example", {
+ *     enabled: true,
+ *     filePath: example.filePath,
+ *     index: example.index,
+ *     node: example.node,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * !/usr/bin/env sh
+ * An APT standard repository can be imported using a comma-separated list consisting of the name of the Proxmox VE node,
+ * and the standard repository handle in the exact same order, e.g.:
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:apt/standard/repository:Repository example pve,no-subscription
+ * ```
  */
 export class Repository extends pulumi.CustomResource {
     /**

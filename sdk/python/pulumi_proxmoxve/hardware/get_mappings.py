@@ -104,6 +104,22 @@ def get_mappings(check_node: Optional[_builtins.str] = None,
     """
     Retrieves a list of hardware mapping resources.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example_dir = proxmoxve.hardware.get_mappings(check_node="pve",
+        type="dir")
+    example_pci = proxmoxve.hardware.get_mappings(check_node="pve",
+        type="pci")
+    example_usb = proxmoxve.hardware.get_mappings(check_node="pve",
+        type="usb")
+    pulumi.export("dataProxmoxHardwareMappingsPci", example_pci)
+    pulumi.export("dataProxmoxHardwareMappingsUsb", example_usb)
+    ```
+
 
     :param _builtins.str check_node: The name of the node whose configurations should be checked for correctness.
     :param _builtins.str type: The type of the hardware mappings.
@@ -125,6 +141,22 @@ def get_mappings_output(check_node: Optional[pulumi.Input[Optional[_builtins.str
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMappingsResult]:
     """
     Retrieves a list of hardware mapping resources.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example_dir = proxmoxve.hardware.get_mappings(check_node="pve",
+        type="dir")
+    example_pci = proxmoxve.hardware.get_mappings(check_node="pve",
+        type="pci")
+    example_usb = proxmoxve.hardware.get_mappings(check_node="pve",
+        type="usb")
+    pulumi.export("dataProxmoxHardwareMappingsPci", example_pci)
+    pulumi.export("dataProxmoxHardwareMappingsUsb", example_usb)
+    ```
 
 
     :param _builtins.str check_node: The name of the node whose configurations should be checked for correctness.

@@ -6,6 +6,21 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves information about a specific PVE metric server.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = proxmoxve.metrics.getServer({
+ *     name: "example_influxdb",
+ * });
+ * export const dataProxmoxMetricsServer = {
+ *     server: example.then(example => example.server),
+ *     port: example.then(example => example.port),
+ * };
+ * ```
  */
 export function getServer(args: GetServerArgs, opts?: pulumi.InvokeOptions): Promise<GetServerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -87,6 +102,21 @@ export interface GetServerResult {
 }
 /**
  * Retrieves information about a specific PVE metric server.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = proxmoxve.metrics.getServer({
+ *     name: "example_influxdb",
+ * });
+ * export const dataProxmoxMetricsServer = {
+ *     server: example.then(example => example.server),
+ *     port: example.then(example => example.port),
+ * };
+ * ```
  */
 export function getServerOutput(args: GetServerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

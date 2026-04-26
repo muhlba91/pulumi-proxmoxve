@@ -162,6 +162,25 @@ def get_vxlan(id: Optional[_builtins.str] = None,
     """
     Retrieves information about a VXLAN Zone in Proxmox SDN. It establishes a tunnel (overlay) on top of an existing network (underlay). This encapsulates layer 2 Ethernet frames within layer 4 UDP datagrams using the default destination port 4789. You have to configure the underlay network yourself to enable UDP connectivity between all peers. Because VXLAN encapsulation uses 50 bytes, the MTU needs to be 50 bytes lower than the outgoing physical interface.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.sdn.zone.get_vxlan(id="vxlan1")
+    pulumi.export("dataProxmoxSdnZoneVxlan", {
+        "id": example.id,
+        "nodes": example.nodes,
+        "peers": example.peers,
+        "mtu": example.mtu,
+        "dns": example.dns,
+        "dnsZone": example.dns_zone,
+        "ipam": example.ipam,
+        "reverseDns": example.reverse_dns,
+    })
+    ```
+
 
     :param _builtins.str id: The unique identifier of the SDN zone.
     """
@@ -185,6 +204,25 @@ def get_vxlan_output(id: Optional[pulumi.Input[_builtins.str]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVxlanResult]:
     """
     Retrieves information about a VXLAN Zone in Proxmox SDN. It establishes a tunnel (overlay) on top of an existing network (underlay). This encapsulates layer 2 Ethernet frames within layer 4 UDP datagrams using the default destination port 4789. You have to configure the underlay network yourself to enable UDP connectivity between all peers. Because VXLAN encapsulation uses 50 bytes, the MTU needs to be 50 bytes lower than the outgoing physical interface.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.sdn.zone.get_vxlan(id="vxlan1")
+    pulumi.export("dataProxmoxSdnZoneVxlan", {
+        "id": example.id,
+        "nodes": example.nodes,
+        "peers": example.peers,
+        "mtu": example.mtu,
+        "dns": example.dns,
+        "dnsZone": example.dns_zone,
+        "ipam": example.ipam,
+        "reverseDns": example.reverse_dns,
+    })
+    ```
 
 
     :param _builtins.str id: The unique identifier of the SDN zone.

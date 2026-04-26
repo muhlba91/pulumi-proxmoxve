@@ -8,6 +8,34 @@ import * as utilities from "../utilities";
 
 /**
  * Manages a Proxmox Backup Server (PBS) storage in Proxmox VE.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = new proxmoxve.storage.Pbs("example", {
+ *     resourceId: "example-pbs",
+ *     nodes: ["pve"],
+ *     server: "pbs.example.local",
+ *     datastore: "backup",
+ *     username: "pbs-user",
+ *     password: "pbs-password",
+ *     fingerprint: "AA:BB:CC:DD:EE:FF",
+ *     contents: ["backup"],
+ *     generateEncryptionKey: true,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * !/usr/bin/env sh
+ * Storage can be imported using its identifier, e.g.:
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:storage/pbs:Pbs example pbs-backup
+ * ```
  */
 export class Pbs extends pulumi.CustomResource {
     /**

@@ -12,28 +12,25 @@ namespace Pulumi.ProxmoxVE
     public static class GetVm2Legacy
     {
         /// <summary>
-        /// &gt; **Deprecated:** Use `proxmoxve.Vm` instead. This data-source will be removed in v1.0.
+        /// &gt; **Deprecated:** Use `proxmoxve.Vm` instead. This data source will be removed in v1.0.
         /// 
-        /// !&gt; **DO NOT USE**
-        /// This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
+        /// Retrieves information about a specific VM.
         /// </summary>
         public static Task<GetVm2LegacyResult> InvokeAsync(GetVm2LegacyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVm2LegacyResult>("proxmoxve:index/getVm2Legacy:getVm2Legacy", args ?? new GetVm2LegacyArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Deprecated:** Use `proxmoxve.Vm` instead. This data-source will be removed in v1.0.
+        /// &gt; **Deprecated:** Use `proxmoxve.Vm` instead. This data source will be removed in v1.0.
         /// 
-        /// !&gt; **DO NOT USE**
-        /// This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
+        /// Retrieves information about a specific VM.
         /// </summary>
         public static Output<GetVm2LegacyResult> Invoke(GetVm2LegacyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVm2LegacyResult>("proxmoxve:index/getVm2Legacy:getVm2Legacy", args ?? new GetVm2LegacyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **Deprecated:** Use `proxmoxve.Vm` instead. This data-source will be removed in v1.0.
+        /// &gt; **Deprecated:** Use `proxmoxve.Vm` instead. This data source will be removed in v1.0.
         /// 
-        /// !&gt; **DO NOT USE**
-        /// This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
+        /// Retrieves information about a specific VM.
         /// </summary>
         public static Output<GetVm2LegacyResult> Invoke(GetVm2LegacyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetVm2LegacyResult>("proxmoxve:index/getVm2Legacy:getVm2Legacy", args ?? new GetVm2LegacyInvokeArgs(), options.WithDefaults());
@@ -43,28 +40,10 @@ namespace Pulumi.ProxmoxVE
     public sealed class GetVm2LegacyArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The CPU configuration.
-        /// </summary>
-        [Input("cpu")]
-        public Inputs.GetVm2LegacyCpuArgs? Cpu { get; set; }
-
-        /// <summary>
-        /// The description of the VM.
-        /// </summary>
-        [Input("description")]
-        public string? Description { get; set; }
-
-        /// <summary>
         /// The unique identifier of the VM in the Proxmox cluster.
         /// </summary>
         [Input("id", required: true)]
         public int Id { get; set; }
-
-        /// <summary>
-        /// The name of the VM.
-        /// </summary>
-        [Input("name")]
-        public string? Name { get; set; }
 
         /// <summary>
         /// The name of the node where the VM is provisioned.
@@ -72,38 +51,8 @@ namespace Pulumi.ProxmoxVE
         [Input("nodeName", required: true)]
         public string NodeName { get; set; } = null!;
 
-        /// <summary>
-        /// The RNG (Random Number Generator) configuration.
-        /// </summary>
-        [Input("rng")]
-        public Inputs.GetVm2LegacyRngArgs? Rng { get; set; }
-
-        [Input("tags")]
-        private List<string>? _tags;
-
-        /// <summary>
-        /// The tags assigned to the VM.
-        /// </summary>
-        public List<string> Tags
-        {
-            get => _tags ?? (_tags = new List<string>());
-            set => _tags = value;
-        }
-
-        /// <summary>
-        /// Whether the VM is a template.
-        /// </summary>
-        [Input("template")]
-        public bool? Template { get; set; }
-
         [Input("timeouts")]
         public Inputs.GetVm2LegacyTimeoutsArgs? Timeouts { get; set; }
-
-        /// <summary>
-        /// The VGA configuration.
-        /// </summary>
-        [Input("vga")]
-        public Inputs.GetVm2LegacyVgaArgs? Vga { get; set; }
 
         public GetVm2LegacyArgs()
         {
@@ -114,28 +63,10 @@ namespace Pulumi.ProxmoxVE
     public sealed class GetVm2LegacyInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The CPU configuration.
-        /// </summary>
-        [Input("cpu")]
-        public Input<Inputs.GetVm2LegacyCpuInputArgs>? Cpu { get; set; }
-
-        /// <summary>
-        /// The description of the VM.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
         /// The unique identifier of the VM in the Proxmox cluster.
         /// </summary>
         [Input("id", required: true)]
         public Input<int> Id { get; set; } = null!;
-
-        /// <summary>
-        /// The name of the VM.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// The name of the node where the VM is provisioned.
@@ -143,38 +74,8 @@ namespace Pulumi.ProxmoxVE
         [Input("nodeName", required: true)]
         public Input<string> NodeName { get; set; } = null!;
 
-        /// <summary>
-        /// The RNG (Random Number Generator) configuration.
-        /// </summary>
-        [Input("rng")]
-        public Input<Inputs.GetVm2LegacyRngInputArgs>? Rng { get; set; }
-
-        [Input("tags")]
-        private InputList<string>? _tags;
-
-        /// <summary>
-        /// The tags assigned to the VM.
-        /// </summary>
-        public InputList<string> Tags
-        {
-            get => _tags ?? (_tags = new InputList<string>());
-            set => _tags = value;
-        }
-
-        /// <summary>
-        /// Whether the VM is a template.
-        /// </summary>
-        [Input("template")]
-        public Input<bool>? Template { get; set; }
-
         [Input("timeouts")]
         public Input<Inputs.GetVm2LegacyTimeoutsInputArgs>? Timeouts { get; set; }
-
-        /// <summary>
-        /// The VGA configuration.
-        /// </summary>
-        [Input("vga")]
-        public Input<Inputs.GetVm2LegacyVgaInputArgs>? Vga { get; set; }
 
         public GetVm2LegacyInvokeArgs()
         {
@@ -187,13 +88,17 @@ namespace Pulumi.ProxmoxVE
     public sealed class GetVm2LegacyResult
     {
         /// <summary>
+        /// The CD-ROM configuration.
+        /// </summary>
+        public readonly ImmutableDictionary<string, Outputs.GetVm2LegacyCdromResult> Cdrom;
+        /// <summary>
         /// The CPU configuration.
         /// </summary>
         public readonly Outputs.GetVm2LegacyCpuResult Cpu;
         /// <summary>
         /// The description of the VM.
         /// </summary>
-        public readonly string? Description;
+        public readonly string Description;
         /// <summary>
         /// The unique identifier of the VM in the Proxmox cluster.
         /// </summary>
@@ -201,7 +106,7 @@ namespace Pulumi.ProxmoxVE
         /// <summary>
         /// The name of the VM.
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
         /// <summary>
         /// The name of the node where the VM is provisioned.
         /// </summary>
@@ -211,13 +116,17 @@ namespace Pulumi.ProxmoxVE
         /// </summary>
         public readonly Outputs.GetVm2LegacyRngResult Rng;
         /// <summary>
+        /// The status of the VM (e.g., `Running`, `Stopped`).
+        /// </summary>
+        public readonly string Status;
+        /// <summary>
         /// The tags assigned to the VM.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
         /// Whether the VM is a template.
         /// </summary>
-        public readonly bool? Template;
+        public readonly bool Template;
         public readonly Outputs.GetVm2LegacyTimeoutsResult? Timeouts;
         /// <summary>
         /// The VGA configuration.
@@ -226,32 +135,38 @@ namespace Pulumi.ProxmoxVE
 
         [OutputConstructor]
         private GetVm2LegacyResult(
+            ImmutableDictionary<string, Outputs.GetVm2LegacyCdromResult> cdrom,
+
             Outputs.GetVm2LegacyCpuResult cpu,
 
-            string? description,
+            string description,
 
             int id,
 
-            string? name,
+            string name,
 
             string nodeName,
 
             Outputs.GetVm2LegacyRngResult rng,
 
+            string status,
+
             ImmutableArray<string> tags,
 
-            bool? template,
+            bool template,
 
             Outputs.GetVm2LegacyTimeoutsResult? timeouts,
 
             Outputs.GetVm2LegacyVgaResult vga)
         {
+            Cdrom = cdrom;
             Cpu = cpu;
             Description = description;
             Id = id;
             Name = name;
             NodeName = nodeName;
             Rng = rng;
+            Status = status;
             Tags = tags;
             Template = template;
             Timeouts = timeouts;

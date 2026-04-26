@@ -11,6 +11,39 @@ namespace Pulumi.ProxmoxVE.Acme.Dns
 {
     /// <summary>
     /// Manages an ACME plugin in a Proxmox VE cluster.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new ProxmoxVE.Acme.Dns.Plugin("example", new()
+    ///     {
+    ///         PluginName = "test",
+    ///         Api = "aws",
+    ///         Data = 
+    ///         {
+    ///             { "AWS_ACCESS_KEY_ID", "EXAMPLE" },
+    ///             { "AWS_SECRET_ACCESS_KEY", "EXAMPLE" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// ACME accounts can be imported using their name, e.g.:
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:acme/dns/plugin:Plugin example test
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:acme/dns/plugin:Plugin")]
     public partial class Plugin : global::Pulumi.CustomResource

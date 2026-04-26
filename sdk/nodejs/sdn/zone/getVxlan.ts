@@ -6,6 +6,27 @@ import * as utilities from "../../utilities";
 
 /**
  * Retrieves information about a VXLAN Zone in Proxmox SDN. It establishes a tunnel (overlay) on top of an existing network (underlay). This encapsulates layer 2 Ethernet frames within layer 4 UDP datagrams using the default destination port 4789. You have to configure the underlay network yourself to enable UDP connectivity between all peers. Because VXLAN encapsulation uses 50 bytes, the MTU needs to be 50 bytes lower than the outgoing physical interface.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = proxmoxve.sdn.zone.getVxlan({
+ *     id: "vxlan1",
+ * });
+ * export const dataProxmoxSdnZoneVxlan = {
+ *     id: example.then(example => example.id),
+ *     nodes: example.then(example => example.nodes),
+ *     peers: example.then(example => example.peers),
+ *     mtu: example.then(example => example.mtu),
+ *     dns: example.then(example => example.dns),
+ *     dnsZone: example.then(example => example.dnsZone),
+ *     ipam: example.then(example => example.ipam),
+ *     reverseDns: example.then(example => example.reverseDns),
+ * };
+ * ```
  */
 export function getVxlan(args: GetVxlanArgs, opts?: pulumi.InvokeOptions): Promise<GetVxlanResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -71,6 +92,27 @@ export interface GetVxlanResult {
 }
 /**
  * Retrieves information about a VXLAN Zone in Proxmox SDN. It establishes a tunnel (overlay) on top of an existing network (underlay). This encapsulates layer 2 Ethernet frames within layer 4 UDP datagrams using the default destination port 4789. You have to configure the underlay network yourself to enable UDP connectivity between all peers. Because VXLAN encapsulation uses 50 bytes, the MTU needs to be 50 bytes lower than the outgoing physical interface.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = proxmoxve.sdn.zone.getVxlan({
+ *     id: "vxlan1",
+ * });
+ * export const dataProxmoxSdnZoneVxlan = {
+ *     id: example.then(example => example.id),
+ *     nodes: example.then(example => example.nodes),
+ *     peers: example.then(example => example.peers),
+ *     mtu: example.then(example => example.mtu),
+ *     dns: example.then(example => example.dns),
+ *     dnsZone: example.then(example => example.dnsZone),
+ *     ipam: example.then(example => example.ipam),
+ *     reverseDns: example.then(example => example.reverseDns),
+ * };
+ * ```
  */
 export function getVxlanOutput(args: GetVxlanOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVxlanResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

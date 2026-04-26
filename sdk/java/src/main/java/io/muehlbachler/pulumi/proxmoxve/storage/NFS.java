@@ -21,6 +21,65 @@ import javax.annotation.Nullable;
 /**
  * Manages an NFS-based storage in Proxmox VE.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.storage.Nfs;
+ * import io.muehlbachler.pulumi.proxmoxve.storage.NfsArgs;
+ * import com.pulumi.proxmoxve.storage.inputs.NfsBackupsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Nfs("example", NfsArgs.builder()
+ *             .resourceId("example-nfs")
+ *             .nodes("pve")
+ *             .server("10.0.0.10")
+ *             .export("/exports/proxmox")
+ *             .contents(            
+ *                 "images",
+ *                 "iso",
+ *                 "backup")
+ *             .options("vers=4.2")
+ *             .preallocation("metadata")
+ *             .snapshotAsVolumeChain(true)
+ *             .backups(NfsBackupsArgs.builder()
+ *                 .maxProtectedBackups(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(5) (example.pp:11,27-28)))
+ *                 .keepDaily(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(7) (example.pp:12,27-28)))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * !/usr/bin/env sh
+ * Storage can be imported using its identifier, e.g.:
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:storage/nfs:Nfs example local-nfs
+ * ```
+ * 
  */
 @ResourceType(type="proxmoxve:storage/nfs:Nfs")
 public class Nfs extends com.pulumi.resources.CustomResource {

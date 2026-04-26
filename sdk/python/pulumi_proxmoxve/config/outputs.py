@@ -26,6 +26,7 @@ class Ssh(dict):
                  agent: Optional[_builtins.bool] = None,
                  agent_forwarding: Optional[_builtins.bool] = None,
                  agent_socket: Optional[_builtins.str] = None,
+                 node_address_source: Optional[_builtins.str] = None,
                  nodes: Optional[Sequence['outputs.SshNode']] = None,
                  password: Optional[_builtins.str] = None,
                  private_key: Optional[_builtins.str] = None,
@@ -37,6 +38,7 @@ class Ssh(dict):
         :param _builtins.bool agent: Whether to use the SSH agent for authentication. Takes precedence over the `private_key` and `password` fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or `false` if not set.
         :param _builtins.bool agent_forwarding: Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or `false` if not set.
         :param _builtins.str agent_socket: The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
+        :param _builtins.str node_address_source: The method used to resolve node IP addresses for SSH connections. Set to `dns` to skip the Proxmox API-based resolution and use local DNS instead. DNS resolution prefers IPv4 but falls back to IPv6 if no IPv4 addresses are available. Useful in multi-subnet environments where the API may return an inaccessible IP. Defaults to `api`.
         :param Sequence['SshNodeArgs'] nodes: Overrides for SSH connection configuration for a Proxmox VE node.
         :param _builtins.str password: The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block when using username/password authentication. Default has no effect when using API token authentication, as there is no password to inherit. Can also be sourced from `PROXMOX_VE_SSH_PASSWORD`.
         :param _builtins.str private_key: The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
@@ -51,6 +53,8 @@ class Ssh(dict):
             pulumi.set(__self__, "agent_forwarding", agent_forwarding)
         if agent_socket is not None:
             pulumi.set(__self__, "agent_socket", agent_socket)
+        if node_address_source is not None:
+            pulumi.set(__self__, "node_address_source", node_address_source)
         if nodes is not None:
             pulumi.set(__self__, "nodes", nodes)
         if password is not None:
@@ -89,6 +93,14 @@ class Ssh(dict):
         The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
         """
         return pulumi.get(self, "agent_socket")
+
+    @_builtins.property
+    @pulumi.getter(name="nodeAddressSource")
+    def node_address_source(self) -> Optional[_builtins.str]:
+        """
+        The method used to resolve node IP addresses for SSH connections. Set to `dns` to skip the Proxmox API-based resolution and use local DNS instead. DNS resolution prefers IPv4 but falls back to IPv6 if no IPv4 addresses are available. Useful in multi-subnet environments where the API may return an inaccessible IP. Defaults to `api`.
+        """
+        return pulumi.get(self, "node_address_source")
 
     @_builtins.property
     @pulumi.getter

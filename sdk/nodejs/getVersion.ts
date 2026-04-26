@@ -6,6 +6,20 @@ import * as utilities from "./utilities";
 
 /**
  * Retrieves API version details.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = proxmoxve.getVersion({});
+ * export const dataProxmoxVersion = {
+ *     release: example.then(example => example.release),
+ *     repositoryId: example.then(example => example.repositoryId),
+ *     version: example.then(example => example.version),
+ * };
+ * ```
  */
 export function getVersion(opts?: pulumi.InvokeOptions): Promise<GetVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -36,6 +50,20 @@ export interface GetVersionResult {
 }
 /**
  * Retrieves API version details.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = proxmoxve.getVersion({});
+ * export const dataProxmoxVersion = {
+ *     release: example.then(example => example.release),
+ *     repositoryId: example.then(example => example.repositoryId),
+ *     version: example.then(example => example.version),
+ * };
+ * ```
  */
 export function getVersionOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -6,6 +6,29 @@ import * as utilities from "../../utilities";
 
 /**
  * Retrieves information about a QinQ Zone in Proxmox SDN. QinQ also known as VLAN stacking, that uses multiple layers of VLAN tags for isolation. The QinQ zone defines the outer VLAN tag (the Service VLAN) whereas the inner VLAN tag is defined by the VNet. Your physical network switches must support stacked VLANs for this configuration. Due to the double stacking of tags, you need 4 more bytes for QinQ VLANs. For example, you must reduce the MTU to 1496 if you physical interface MTU is 1500.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = proxmoxve.sdn.zone.getQinq({
+ *     id: "qinq1",
+ * });
+ * export const dataProxmoxSdnZoneQinq = {
+ *     id: example.then(example => example.id),
+ *     nodes: example.then(example => example.nodes),
+ *     bridge: example.then(example => example.bridge),
+ *     serviceVlan: example.then(example => example.serviceVlan),
+ *     serviceVlanProtocol: example.then(example => example.serviceVlanProtocol),
+ *     mtu: example.then(example => example.mtu),
+ *     dns: example.then(example => example.dns),
+ *     dnsZone: example.then(example => example.dnsZone),
+ *     ipam: example.then(example => example.ipam),
+ *     reverseDns: example.then(example => example.reverseDns),
+ * };
+ * ```
  */
 export function getQinq(args: GetQinqArgs, opts?: pulumi.InvokeOptions): Promise<GetQinqResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -79,6 +102,29 @@ export interface GetQinqResult {
 }
 /**
  * Retrieves information about a QinQ Zone in Proxmox SDN. QinQ also known as VLAN stacking, that uses multiple layers of VLAN tags for isolation. The QinQ zone defines the outer VLAN tag (the Service VLAN) whereas the inner VLAN tag is defined by the VNet. Your physical network switches must support stacked VLANs for this configuration. Due to the double stacking of tags, you need 4 more bytes for QinQ VLANs. For example, you must reduce the MTU to 1496 if you physical interface MTU is 1500.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = proxmoxve.sdn.zone.getQinq({
+ *     id: "qinq1",
+ * });
+ * export const dataProxmoxSdnZoneQinq = {
+ *     id: example.then(example => example.id),
+ *     nodes: example.then(example => example.nodes),
+ *     bridge: example.then(example => example.bridge),
+ *     serviceVlan: example.then(example => example.serviceVlan),
+ *     serviceVlanProtocol: example.then(example => example.serviceVlanProtocol),
+ *     mtu: example.then(example => example.mtu),
+ *     dns: example.then(example => example.dns),
+ *     dnsZone: example.then(example => example.dnsZone),
+ *     ipam: example.then(example => example.ipam),
+ *     reverseDns: example.then(example => example.reverseDns),
+ * };
+ * ```
  */
 export function getQinqOutput(args: GetQinqOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetQinqResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -82,7 +82,7 @@ type BridgeLegacy struct {
 	Gateway6 pulumi.StringPtrOutput `pulumi:"gateway6"`
 	// The interface MTU.
 	Mtu pulumi.IntPtrOutput `pulumi:"mtu"`
-	// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+	// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the node.
 	NodeName pulumi.StringOutput `pulumi:"nodeName"`
@@ -141,7 +141,7 @@ type bridgeLegacyState struct {
 	Gateway6 *string `pulumi:"gateway6"`
 	// The interface MTU.
 	Mtu *int `pulumi:"mtu"`
-	// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+	// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
 	Name *string `pulumi:"name"`
 	// The name of the node.
 	NodeName *string `pulumi:"nodeName"`
@@ -168,7 +168,7 @@ type BridgeLegacyState struct {
 	Gateway6 pulumi.StringPtrInput
 	// The interface MTU.
 	Mtu pulumi.IntPtrInput
-	// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+	// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
 	Name pulumi.StringPtrInput
 	// The name of the node.
 	NodeName pulumi.StringPtrInput
@@ -199,7 +199,7 @@ type bridgeLegacyArgs struct {
 	Gateway6 *string `pulumi:"gateway6"`
 	// The interface MTU.
 	Mtu *int `pulumi:"mtu"`
-	// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+	// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
 	Name *string `pulumi:"name"`
 	// The name of the node.
 	NodeName string `pulumi:"nodeName"`
@@ -227,7 +227,7 @@ type BridgeLegacyArgs struct {
 	Gateway6 pulumi.StringPtrInput
 	// The interface MTU.
 	Mtu pulumi.IntPtrInput
-	// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+	// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
 	Name pulumi.StringPtrInput
 	// The name of the node.
 	NodeName pulumi.StringInput
@@ -361,7 +361,7 @@ func (o BridgeLegacyOutput) Mtu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BridgeLegacy) pulumi.IntPtrOutput { return v.Mtu }).(pulumi.IntPtrOutput)
 }
 
-// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
 func (o BridgeLegacyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *BridgeLegacy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

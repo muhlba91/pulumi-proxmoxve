@@ -59,6 +59,15 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * !/usr/bin/env sh
+ * Storage can be imported using its identifier, e.g.:
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:storage/lvmthinLegacy:LvmthinLegacy example local-lvm-thin
+ * ```
+ * 
  */
 @ResourceType(type="proxmoxve:storage/lvmthinLegacy:LvmthinLegacy")
 public class LvmthinLegacy extends com.pulumi.resources.CustomResource {

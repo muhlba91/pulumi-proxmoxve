@@ -8,6 +8,18 @@ import * as utilities from "../../utilities";
 
 /**
  * Retrieves a directory mapping from a Proxmox VE cluster.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = proxmoxve.hardware.mapping.getDir({
+ *     name: "example",
+ * });
+ * export const dataProxmoxHardwareMappingDir = example;
+ * ```
  */
 export function getDir(args: GetDirArgs, opts?: pulumi.InvokeOptions): Promise<GetDirResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -49,6 +61,18 @@ export interface GetDirResult {
 }
 /**
  * Retrieves a directory mapping from a Proxmox VE cluster.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = proxmoxve.hardware.mapping.getDir({
+ *     name: "example",
+ * });
+ * export const dataProxmoxHardwareMappingDir = example;
+ * ```
  */
 export function getDirOutput(args: GetDirOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDirResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

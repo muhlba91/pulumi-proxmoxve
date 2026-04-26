@@ -64,6 +64,21 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The method used to resolve node IP addresses for SSH connections. Set to &lt;span pulumi-lang-nodejs=&#34;`dns`&#34; pulumi-lang-dotnet=&#34;`Dns`&#34; pulumi-lang-go=&#34;`dns`&#34; pulumi-lang-python=&#34;`dns`&#34; pulumi-lang-yaml=&#34;`dns`&#34; pulumi-lang-java=&#34;`dns`&#34;&gt;`dns`&lt;/span&gt; to skip the Proxmox API-based resolution and use local DNS instead. DNS resolution prefers IPv4 but falls back to IPv6 if no IPv4 addresses are available. Useful in multi-subnet environments where the API may return an inaccessible IP. Defaults to &lt;span pulumi-lang-nodejs=&#34;`api`&#34; pulumi-lang-dotnet=&#34;`Api`&#34; pulumi-lang-go=&#34;`api`&#34; pulumi-lang-python=&#34;`api`&#34; pulumi-lang-yaml=&#34;`api`&#34; pulumi-lang-java=&#34;`api`&#34;&gt;`api`&lt;/span&gt;.
+     * 
+     */
+    @Import(name="nodeAddressSource")
+    private @Nullable Output<String> nodeAddressSource;
+
+    /**
+     * @return The method used to resolve node IP addresses for SSH connections. Set to &lt;span pulumi-lang-nodejs=&#34;`dns`&#34; pulumi-lang-dotnet=&#34;`Dns`&#34; pulumi-lang-go=&#34;`dns`&#34; pulumi-lang-python=&#34;`dns`&#34; pulumi-lang-yaml=&#34;`dns`&#34; pulumi-lang-java=&#34;`dns`&#34;&gt;`dns`&lt;/span&gt; to skip the Proxmox API-based resolution and use local DNS instead. DNS resolution prefers IPv4 but falls back to IPv6 if no IPv4 addresses are available. Useful in multi-subnet environments where the API may return an inaccessible IP. Defaults to &lt;span pulumi-lang-nodejs=&#34;`api`&#34; pulumi-lang-dotnet=&#34;`Api`&#34; pulumi-lang-go=&#34;`api`&#34; pulumi-lang-python=&#34;`api`&#34; pulumi-lang-yaml=&#34;`api`&#34; pulumi-lang-java=&#34;`api`&#34;&gt;`api`&lt;/span&gt;.
+     * 
+     */
+    public Optional<Output<String>> nodeAddressSource() {
+        return Optional.ofNullable(this.nodeAddressSource);
+    }
+
+    /**
      * Overrides for SSH connection configuration for a Proxmox VE node.
      * 
      */
@@ -174,6 +189,7 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
         this.agent = $.agent;
         this.agentForwarding = $.agentForwarding;
         this.agentSocket = $.agentSocket;
+        this.nodeAddressSource = $.nodeAddressSource;
         this.nodes = $.nodes;
         this.password = $.password;
         this.privateKey = $.privateKey;
@@ -262,6 +278,27 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder agentSocket(String agentSocket) {
             return agentSocket(Output.of(agentSocket));
+        }
+
+        /**
+         * @param nodeAddressSource The method used to resolve node IP addresses for SSH connections. Set to &lt;span pulumi-lang-nodejs=&#34;`dns`&#34; pulumi-lang-dotnet=&#34;`Dns`&#34; pulumi-lang-go=&#34;`dns`&#34; pulumi-lang-python=&#34;`dns`&#34; pulumi-lang-yaml=&#34;`dns`&#34; pulumi-lang-java=&#34;`dns`&#34;&gt;`dns`&lt;/span&gt; to skip the Proxmox API-based resolution and use local DNS instead. DNS resolution prefers IPv4 but falls back to IPv6 if no IPv4 addresses are available. Useful in multi-subnet environments where the API may return an inaccessible IP. Defaults to &lt;span pulumi-lang-nodejs=&#34;`api`&#34; pulumi-lang-dotnet=&#34;`Api`&#34; pulumi-lang-go=&#34;`api`&#34; pulumi-lang-python=&#34;`api`&#34; pulumi-lang-yaml=&#34;`api`&#34; pulumi-lang-java=&#34;`api`&#34;&gt;`api`&lt;/span&gt;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeAddressSource(@Nullable Output<String> nodeAddressSource) {
+            $.nodeAddressSource = nodeAddressSource;
+            return this;
+        }
+
+        /**
+         * @param nodeAddressSource The method used to resolve node IP addresses for SSH connections. Set to &lt;span pulumi-lang-nodejs=&#34;`dns`&#34; pulumi-lang-dotnet=&#34;`Dns`&#34; pulumi-lang-go=&#34;`dns`&#34; pulumi-lang-python=&#34;`dns`&#34; pulumi-lang-yaml=&#34;`dns`&#34; pulumi-lang-java=&#34;`dns`&#34;&gt;`dns`&lt;/span&gt; to skip the Proxmox API-based resolution and use local DNS instead. DNS resolution prefers IPv4 but falls back to IPv6 if no IPv4 addresses are available. Useful in multi-subnet environments where the API may return an inaccessible IP. Defaults to &lt;span pulumi-lang-nodejs=&#34;`api`&#34; pulumi-lang-dotnet=&#34;`Api`&#34; pulumi-lang-go=&#34;`api`&#34; pulumi-lang-python=&#34;`api`&#34; pulumi-lang-yaml=&#34;`api`&#34; pulumi-lang-java=&#34;`api`&#34;&gt;`api`&lt;/span&gt;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nodeAddressSource(String nodeAddressSource) {
+            return nodeAddressSource(Output.of(nodeAddressSource));
         }
 
         /**

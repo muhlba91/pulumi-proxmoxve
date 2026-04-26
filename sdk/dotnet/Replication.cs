@@ -11,6 +11,30 @@ namespace Pulumi.ProxmoxVE
 {
     /// <summary>
     /// Manages Proxmox VE Replication.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Replication
+    ///     var exampleReplication1 = new ProxmoxVE.Index.Replication("example_replication_1", new()
+    ///     {
+    ///         ResourceId = "100-0",
+    ///         Target = "pve-02",
+    ///         Type = "local",
+    ///         Disable = false,
+    ///         Comment = "Replication to pve-02 every 30 min",
+    ///         Schedule = "*/30",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:index/replication:Replication")]
     public partial class Replication : global::Pulumi.CustomResource

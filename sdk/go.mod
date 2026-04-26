@@ -1,6 +1,6 @@
 module github.com/muhlba91/pulumi-proxmoxve/sdk/v8
 
-go 1.25.8
+go 1.26.0
 
 require (
 	github.com/blang/semver v3.5.1+incompatible

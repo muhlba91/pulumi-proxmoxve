@@ -180,7 +180,7 @@ import (
 //
 // ```
 //
-// The `fileMode` attribute can be used to make a script file executable, e.g. when referencing the file in the `hookScriptFileId` attribute of a container or a VM resource which is a requirement enforced by the Proxmox VE API.
+// The `fileMode` attribute can be used to make a script file executable, e.g. when referencing the file in the `hookScriptFileId` attribute of [a container](https://bpg.sh/docs/resources/virtual_environment_container#hook-script-file-id) or [a VM](https://bpg.sh/docs/resources/virtual_environment_vm#hook-script-file-id) resource which is a requirement enforced by the Proxmox VE API.
 //
 // ```go
 // package main

@@ -13,18 +13,87 @@ namespace Pulumi.ProxmoxVE
     {
         /// <summary>
         /// Retrieves information about all Replications in Proxmox.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // List all Replications
+        ///     var all = ProxmoxVE.Index.GetReplications.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxReplicationsAll"] = 
+        ///         {
+        ///             { "replications", all.Apply(getReplicationsResult =&gt; getReplicationsResult.Replications) },
+        ///         },
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetReplicationsResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetReplicationsResult>("proxmoxve:index/getReplications:getReplications", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about all Replications in Proxmox.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // List all Replications
+        ///     var all = ProxmoxVE.Index.GetReplications.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxReplicationsAll"] = 
+        ///         {
+        ///             { "replications", all.Apply(getReplicationsResult =&gt; getReplicationsResult.Replications) },
+        ///         },
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetReplicationsResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetReplicationsResult>("proxmoxve:index/getReplications:getReplications", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about all Replications in Proxmox.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // List all Replications
+        ///     var all = ProxmoxVE.Index.GetReplications.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxReplicationsAll"] = 
+        ///         {
+        ///             { "replications", all.Apply(getReplicationsResult =&gt; getReplicationsResult.Replications) },
+        ///         },
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetReplicationsResult> Invoke(InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetReplicationsResult>("proxmoxve:index/getReplications:getReplications", InvokeArgs.Empty, options.WithDefaults());

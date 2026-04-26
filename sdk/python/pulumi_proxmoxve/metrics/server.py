@@ -49,7 +49,7 @@ class ServerArgs:
         :param pulumi.Input[_builtins.int] port: Server network port.
         :param pulumi.Input[_builtins.str] server: Server dns name or IP address.
         :param pulumi.Input[_builtins.str] type: Plugin type. Choice is between `graphite` | `influxdb` | `opentelemetry`.
-        :param pulumi.Input[_builtins.bool] disable: Set this to `true` to disable this metric server.
+        :param pulumi.Input[_builtins.bool] disable: Set this to `true` to disable this metric server. Defaults to `false`.
         :param pulumi.Input[_builtins.str] graphite_path: Root graphite path (ex: `proxmox.mycluster.mykey`).
         :param pulumi.Input[_builtins.str] graphite_proto: Protocol to send graphite data. Choice is between `udp` | `tcp`. If not set, PVE default is `udp`.
         :param pulumi.Input[_builtins.str] influx_api_path_prefix: An API path prefix inserted between `<host>:<port>/` and `/api2/`. Can be useful if the InfluxDB service runs behind a reverse proxy.
@@ -58,7 +58,7 @@ class ServerArgs:
         :param pulumi.Input[_builtins.int] influx_max_body_size: InfluxDB max-body-size in bytes. Requests are batched up to this size. If not set, PVE default is `25000000`.
         :param pulumi.Input[_builtins.str] influx_organization: The InfluxDB organization. Only necessary when using the http v2 api. Has no meaning when using v2 compatibility api.
         :param pulumi.Input[_builtins.str] influx_token: The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
-        :param pulumi.Input[_builtins.bool] influx_verify: Set to `false` to disable certificate verification for https endpoints.
+        :param pulumi.Input[_builtins.bool] influx_verify: Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
         :param pulumi.Input[_builtins.int] mtu: MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
         :param pulumi.Input[_builtins.str] name: Unique name that will be ID of this metric server in PVE.
         :param pulumi.Input[_builtins.str] opentelemetry_compression: OpenTelemetry compression algorithm for requests. Choice is between `none` | `gzip`. If not set, PVE default is `gzip`.
@@ -157,7 +157,7 @@ class ServerArgs:
     @pulumi.getter
     def disable(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Set this to `true` to disable this metric server.
+        Set this to `true` to disable this metric server. Defaults to `false`.
         """
         return pulumi.get(self, "disable")
 
@@ -265,7 +265,7 @@ class ServerArgs:
     @pulumi.getter(name="influxVerify")
     def influx_verify(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Set to `false` to disable certificate verification for https endpoints.
+        Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
         """
         return pulumi.get(self, "influx_verify")
 
@@ -436,7 +436,7 @@ class _ServerState:
         """
         Input properties used for looking up and filtering Server resources.
 
-        :param pulumi.Input[_builtins.bool] disable: Set this to `true` to disable this metric server.
+        :param pulumi.Input[_builtins.bool] disable: Set this to `true` to disable this metric server. Defaults to `false`.
         :param pulumi.Input[_builtins.str] graphite_path: Root graphite path (ex: `proxmox.mycluster.mykey`).
         :param pulumi.Input[_builtins.str] graphite_proto: Protocol to send graphite data. Choice is between `udp` | `tcp`. If not set, PVE default is `udp`.
         :param pulumi.Input[_builtins.str] influx_api_path_prefix: An API path prefix inserted between `<host>:<port>/` and `/api2/`. Can be useful if the InfluxDB service runs behind a reverse proxy.
@@ -445,7 +445,7 @@ class _ServerState:
         :param pulumi.Input[_builtins.int] influx_max_body_size: InfluxDB max-body-size in bytes. Requests are batched up to this size. If not set, PVE default is `25000000`.
         :param pulumi.Input[_builtins.str] influx_organization: The InfluxDB organization. Only necessary when using the http v2 api. Has no meaning when using v2 compatibility api.
         :param pulumi.Input[_builtins.str] influx_token: The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
-        :param pulumi.Input[_builtins.bool] influx_verify: Set to `false` to disable certificate verification for https endpoints.
+        :param pulumi.Input[_builtins.bool] influx_verify: Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
         :param pulumi.Input[_builtins.int] mtu: MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
         :param pulumi.Input[_builtins.str] name: Unique name that will be ID of this metric server in PVE.
         :param pulumi.Input[_builtins.str] opentelemetry_compression: OpenTelemetry compression algorithm for requests. Choice is between `none` | `gzip`. If not set, PVE default is `gzip`.
@@ -514,7 +514,7 @@ class _ServerState:
     @pulumi.getter
     def disable(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Set this to `true` to disable this metric server.
+        Set this to `true` to disable this metric server. Defaults to `false`.
         """
         return pulumi.get(self, "disable")
 
@@ -622,7 +622,7 @@ class _ServerState:
     @pulumi.getter(name="influxVerify")
     def influx_verify(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Set to `false` to disable certificate verification for https endpoints.
+        Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
         """
         return pulumi.get(self, "influx_verify")
 
@@ -833,10 +833,43 @@ class Server(pulumi.CustomResource):
         """
         Manages PVE metrics server.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        influxdb_server = proxmoxve.metrics.Server("influxdb_server",
+            name="example_influxdb_server",
+            server="192.168.3.2",
+            port=8089,
+            type="influxdb")
+        graphite_server = proxmoxve.metrics.Server("graphite_server",
+            name="example_graphite_server",
+            server="192.168.4.2",
+            port=2003,
+            type="graphite")
+        opentelemetry_server = proxmoxve.metrics.Server("opentelemetry_server",
+            name="example_opentelemetry_server",
+            server="192.168.5.2",
+            port=4318,
+            type="opentelemetry",
+            opentelemetry_proto="http",
+            opentelemetry_path="/v1/metrics")
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+
+        ```sh
+        $ pulumi import proxmoxve:metrics/server:Server example example
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] disable: Set this to `true` to disable this metric server.
+        :param pulumi.Input[_builtins.bool] disable: Set this to `true` to disable this metric server. Defaults to `false`.
         :param pulumi.Input[_builtins.str] graphite_path: Root graphite path (ex: `proxmox.mycluster.mykey`).
         :param pulumi.Input[_builtins.str] graphite_proto: Protocol to send graphite data. Choice is between `udp` | `tcp`. If not set, PVE default is `udp`.
         :param pulumi.Input[_builtins.str] influx_api_path_prefix: An API path prefix inserted between `<host>:<port>/` and `/api2/`. Can be useful if the InfluxDB service runs behind a reverse proxy.
@@ -845,7 +878,7 @@ class Server(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] influx_max_body_size: InfluxDB max-body-size in bytes. Requests are batched up to this size. If not set, PVE default is `25000000`.
         :param pulumi.Input[_builtins.str] influx_organization: The InfluxDB organization. Only necessary when using the http v2 api. Has no meaning when using v2 compatibility api.
         :param pulumi.Input[_builtins.str] influx_token: The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
-        :param pulumi.Input[_builtins.bool] influx_verify: Set to `false` to disable certificate verification for https endpoints.
+        :param pulumi.Input[_builtins.bool] influx_verify: Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
         :param pulumi.Input[_builtins.int] mtu: MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
         :param pulumi.Input[_builtins.str] name: Unique name that will be ID of this metric server in PVE.
         :param pulumi.Input[_builtins.str] opentelemetry_compression: OpenTelemetry compression algorithm for requests. Choice is between `none` | `gzip`. If not set, PVE default is `gzip`.
@@ -869,6 +902,39 @@ class Server(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages PVE metrics server.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        influxdb_server = proxmoxve.metrics.Server("influxdb_server",
+            name="example_influxdb_server",
+            server="192.168.3.2",
+            port=8089,
+            type="influxdb")
+        graphite_server = proxmoxve.metrics.Server("graphite_server",
+            name="example_graphite_server",
+            server="192.168.4.2",
+            port=2003,
+            type="graphite")
+        opentelemetry_server = proxmoxve.metrics.Server("opentelemetry_server",
+            name="example_opentelemetry_server",
+            server="192.168.5.2",
+            port=4318,
+            type="opentelemetry",
+            opentelemetry_proto="http",
+            opentelemetry_path="/v1/metrics")
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+
+        ```sh
+        $ pulumi import proxmoxve:metrics/server:Server example example
+        ```
 
 
         :param str resource_name: The name of the resource.
@@ -992,7 +1058,7 @@ class Server(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.bool] disable: Set this to `true` to disable this metric server.
+        :param pulumi.Input[_builtins.bool] disable: Set this to `true` to disable this metric server. Defaults to `false`.
         :param pulumi.Input[_builtins.str] graphite_path: Root graphite path (ex: `proxmox.mycluster.mykey`).
         :param pulumi.Input[_builtins.str] graphite_proto: Protocol to send graphite data. Choice is between `udp` | `tcp`. If not set, PVE default is `udp`.
         :param pulumi.Input[_builtins.str] influx_api_path_prefix: An API path prefix inserted between `<host>:<port>/` and `/api2/`. Can be useful if the InfluxDB service runs behind a reverse proxy.
@@ -1001,7 +1067,7 @@ class Server(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] influx_max_body_size: InfluxDB max-body-size in bytes. Requests are batched up to this size. If not set, PVE default is `25000000`.
         :param pulumi.Input[_builtins.str] influx_organization: The InfluxDB organization. Only necessary when using the http v2 api. Has no meaning when using v2 compatibility api.
         :param pulumi.Input[_builtins.str] influx_token: The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
-        :param pulumi.Input[_builtins.bool] influx_verify: Set to `false` to disable certificate verification for https endpoints.
+        :param pulumi.Input[_builtins.bool] influx_verify: Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
         :param pulumi.Input[_builtins.int] mtu: MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
         :param pulumi.Input[_builtins.str] name: Unique name that will be ID of this metric server in PVE.
         :param pulumi.Input[_builtins.str] opentelemetry_compression: OpenTelemetry compression algorithm for requests. Choice is between `none` | `gzip`. If not set, PVE default is `gzip`.
@@ -1049,9 +1115,9 @@ class Server(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def disable(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def disable(self) -> pulumi.Output[_builtins.bool]:
         """
-        Set this to `true` to disable this metric server.
+        Set this to `true` to disable this metric server. Defaults to `false`.
         """
         return pulumi.get(self, "disable")
 
@@ -1123,7 +1189,7 @@ class Server(pulumi.CustomResource):
     @pulumi.getter(name="influxVerify")
     def influx_verify(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        Set to `false` to disable certificate verification for https endpoints.
+        Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
         """
         return pulumi.get(self, "influx_verify")
 

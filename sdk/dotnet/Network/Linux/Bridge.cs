@@ -11,6 +11,52 @@ namespace Pulumi.ProxmoxVE.Network.Linux
 {
     /// <summary>
     /// Manages a Linux Bridge network interface in a Proxmox VE node.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var vlan99 = new ProxmoxVE.Network.Linux.Vlan("vlan99", new()
+    ///     {
+    ///         NodeName = "pve",
+    ///         Name = "ens18.99",
+    ///     });
+    /// 
+    ///     var vmbr99 = new ProxmoxVE.Network.Linux.Bridge("vmbr99", new()
+    ///     {
+    ///         NodeName = "pve",
+    ///         Name = "vmbr99",
+    ///         Address = "99.99.99.99/16",
+    ///         Comment = "vmbr99 comment",
+    ///         Ports = new[]
+    ///         {
+    ///             "ens18.99",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             vlan99,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// Interfaces can be imported using the `node_name:iface` format, e.g.
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:network/linux/bridge:Bridge vmbr99 pve:vmbr99
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:network/linux/bridge:Bridge")]
     public partial class Bridge : global::Pulumi.CustomResource
@@ -58,7 +104,7 @@ namespace Pulumi.ProxmoxVE.Network.Linux
         public Output<int?> Mtu { get; private set; } = null!;
 
         /// <summary>
-        /// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+        /// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -177,7 +223,7 @@ namespace Pulumi.ProxmoxVE.Network.Linux
         public Input<int>? Mtu { get; set; }
 
         /// <summary>
-        /// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+        /// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -263,7 +309,7 @@ namespace Pulumi.ProxmoxVE.Network.Linux
         public Input<int>? Mtu { get; set; }
 
         /// <summary>
-        /// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+        /// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

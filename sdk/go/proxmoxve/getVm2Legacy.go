@@ -11,10 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// > **Deprecated:** Use `Vm` instead. This data-source will be removed in v1.0.
+// > **Deprecated:** Use `Vm` instead. This data source will be removed in v1.0.
 //
-// !> **DO NOT USE**
-// This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
+// Retrieves information about a specific VM.
 func LookupVm2Legacy(ctx *pulumi.Context, args *LookupVm2LegacyArgs, opts ...pulumi.InvokeOption) (*LookupVm2LegacyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVm2LegacyResult
@@ -27,45 +26,35 @@ func LookupVm2Legacy(ctx *pulumi.Context, args *LookupVm2LegacyArgs, opts ...pul
 
 // A collection of arguments for invoking getVm2Legacy.
 type LookupVm2LegacyArgs struct {
-	// The CPU configuration.
-	Cpu *GetVm2LegacyCpu `pulumi:"cpu"`
-	// The description of the VM.
-	Description *string `pulumi:"description"`
 	// The unique identifier of the VM in the Proxmox cluster.
 	Id int `pulumi:"id"`
-	// The name of the VM.
-	Name *string `pulumi:"name"`
 	// The name of the node where the VM is provisioned.
-	NodeName string `pulumi:"nodeName"`
-	// The RNG (Random Number Generator) configuration.
-	Rng *GetVm2LegacyRng `pulumi:"rng"`
-	// The tags assigned to the VM.
-	Tags []string `pulumi:"tags"`
-	// Whether the VM is a template.
-	Template *bool                 `pulumi:"template"`
+	NodeName string                `pulumi:"nodeName"`
 	Timeouts *GetVm2LegacyTimeouts `pulumi:"timeouts"`
-	// The VGA configuration.
-	Vga *GetVm2LegacyVga `pulumi:"vga"`
 }
 
 // A collection of values returned by getVm2Legacy.
 type LookupVm2LegacyResult struct {
+	// The CD-ROM configuration.
+	Cdrom map[string]GetVm2LegacyCdrom `pulumi:"cdrom"`
 	// The CPU configuration.
 	Cpu GetVm2LegacyCpu `pulumi:"cpu"`
 	// The description of the VM.
-	Description *string `pulumi:"description"`
+	Description string `pulumi:"description"`
 	// The unique identifier of the VM in the Proxmox cluster.
 	Id int `pulumi:"id"`
 	// The name of the VM.
-	Name *string `pulumi:"name"`
+	Name string `pulumi:"name"`
 	// The name of the node where the VM is provisioned.
 	NodeName string `pulumi:"nodeName"`
 	// The RNG (Random Number Generator) configuration.
 	Rng GetVm2LegacyRng `pulumi:"rng"`
+	// The status of the VM (e.g., `running`, `stopped`).
+	Status string `pulumi:"status"`
 	// The tags assigned to the VM.
 	Tags []string `pulumi:"tags"`
 	// Whether the VM is a template.
-	Template *bool                 `pulumi:"template"`
+	Template bool                  `pulumi:"template"`
 	Timeouts *GetVm2LegacyTimeouts `pulumi:"timeouts"`
 	// The VGA configuration.
 	Vga GetVm2LegacyVga `pulumi:"vga"`
@@ -82,25 +71,11 @@ func LookupVm2LegacyOutput(ctx *pulumi.Context, args LookupVm2LegacyOutputArgs, 
 
 // A collection of arguments for invoking getVm2Legacy.
 type LookupVm2LegacyOutputArgs struct {
-	// The CPU configuration.
-	Cpu GetVm2LegacyCpuPtrInput `pulumi:"cpu"`
-	// The description of the VM.
-	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The unique identifier of the VM in the Proxmox cluster.
 	Id pulumi.IntInput `pulumi:"id"`
-	// The name of the VM.
-	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The name of the node where the VM is provisioned.
-	NodeName pulumi.StringInput `pulumi:"nodeName"`
-	// The RNG (Random Number Generator) configuration.
-	Rng GetVm2LegacyRngPtrInput `pulumi:"rng"`
-	// The tags assigned to the VM.
-	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	// Whether the VM is a template.
-	Template pulumi.BoolPtrInput          `pulumi:"template"`
+	NodeName pulumi.StringInput           `pulumi:"nodeName"`
 	Timeouts GetVm2LegacyTimeoutsPtrInput `pulumi:"timeouts"`
-	// The VGA configuration.
-	Vga GetVm2LegacyVgaPtrInput `pulumi:"vga"`
 }
 
 func (LookupVm2LegacyOutputArgs) ElementType() reflect.Type {
@@ -122,14 +97,19 @@ func (o LookupVm2LegacyResultOutput) ToLookupVm2LegacyResultOutputWithContext(ct
 	return o
 }
 
+// The CD-ROM configuration.
+func (o LookupVm2LegacyResultOutput) Cdrom() GetVm2LegacyCdromMapOutput {
+	return o.ApplyT(func(v LookupVm2LegacyResult) map[string]GetVm2LegacyCdrom { return v.Cdrom }).(GetVm2LegacyCdromMapOutput)
+}
+
 // The CPU configuration.
 func (o LookupVm2LegacyResultOutput) Cpu() GetVm2LegacyCpuOutput {
 	return o.ApplyT(func(v LookupVm2LegacyResult) GetVm2LegacyCpu { return v.Cpu }).(GetVm2LegacyCpuOutput)
 }
 
 // The description of the VM.
-func (o LookupVm2LegacyResultOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupVm2LegacyResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o LookupVm2LegacyResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVm2LegacyResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // The unique identifier of the VM in the Proxmox cluster.
@@ -138,8 +118,8 @@ func (o LookupVm2LegacyResultOutput) Id() pulumi.IntOutput {
 }
 
 // The name of the VM.
-func (o LookupVm2LegacyResultOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupVm2LegacyResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o LookupVm2LegacyResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVm2LegacyResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The name of the node where the VM is provisioned.
@@ -152,14 +132,19 @@ func (o LookupVm2LegacyResultOutput) Rng() GetVm2LegacyRngOutput {
 	return o.ApplyT(func(v LookupVm2LegacyResult) GetVm2LegacyRng { return v.Rng }).(GetVm2LegacyRngOutput)
 }
 
+// The status of the VM (e.g., `running`, `stopped`).
+func (o LookupVm2LegacyResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVm2LegacyResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
 // The tags assigned to the VM.
 func (o LookupVm2LegacyResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupVm2LegacyResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 // Whether the VM is a template.
-func (o LookupVm2LegacyResultOutput) Template() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupVm2LegacyResult) *bool { return v.Template }).(pulumi.BoolPtrOutput)
+func (o LookupVm2LegacyResultOutput) Template() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupVm2LegacyResult) bool { return v.Template }).(pulumi.BoolOutput)
 }
 
 func (o LookupVm2LegacyResultOutput) Timeouts() GetVm2LegacyTimeoutsPtrOutput {

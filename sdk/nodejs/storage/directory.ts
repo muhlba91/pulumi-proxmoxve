@@ -8,6 +8,35 @@ import * as utilities from "../utilities";
 
 /**
  * Manages directory-based storage in Proxmox VE.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = new proxmoxve.storage.Directory("example", {
+ *     resourceId: "example-dir",
+ *     path: "/var/lib/vz",
+ *     nodes: ["pve"],
+ *     contents: ["images"],
+ *     shared: true,
+ *     disable: false,
+ *     backups: {
+ *         maxProtectedBackups: 5,
+ *         keepDaily: 7,
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * !/usr/bin/env sh
+ * Storage can be imported using its identifier, e.g.:
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:storage/directory:Directory example local-dir
+ * ```
  */
 export class Directory extends pulumi.CustomResource {
     /**

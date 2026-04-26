@@ -19,6 +19,64 @@ import javax.annotation.Nullable;
 /**
  * User API tokens.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.UserLegacy;
+ * import io.muehlbachler.pulumi.proxmoxve.UserLegacyArgs;
+ * import io.muehlbachler.pulumi.proxmoxve.user.Token;
+ * import io.muehlbachler.pulumi.proxmoxve.user.TokenArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         // if creating a user token, the user must be created first
+ *         var user = new UserLegacy("user", UserLegacyArgs.builder()
+ *             .comment("Managed by Pulumi")
+ *             .email("user}{@literal @}{@code pve")
+ *             .enabled(true)
+ *             .expirationDate("2034-01-01T22:00:00Z")
+ *             .userId("user}{@literal @}{@code pve")
+ *             .build());
+ * 
+ *         var userToken = new Token("userToken", TokenArgs.builder()
+ *             .comment("Managed by Pulumi")
+ *             .expirationDate("2033-01-01T22:00:00Z")
+ *             .tokenName("tk1")
+ *             .userId(user.userId())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * !/usr/bin/env sh
+ * Tokens can be imported using their identifiers in the format `user_id!token_name`, e.g.:
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:user/token:Token token1 user{@literal @}pve!token1
+ * ```
+ * 
  */
 @ResourceType(type="proxmoxve:user/token:Token")
 public class Token extends com.pulumi.resources.CustomResource {

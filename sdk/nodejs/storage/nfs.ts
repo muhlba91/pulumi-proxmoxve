@@ -8,6 +8,41 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an NFS-based storage in Proxmox VE.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = new proxmoxve.storage.Nfs("example", {
+ *     resourceId: "example-nfs",
+ *     nodes: ["pve"],
+ *     server: "10.0.0.10",
+ *     "export": "/exports/proxmox",
+ *     contents: [
+ *         "images",
+ *         "iso",
+ *         "backup",
+ *     ],
+ *     options: "vers=4.2",
+ *     preallocation: "metadata",
+ *     snapshotAsVolumeChain: true,
+ *     backups: {
+ *         maxProtectedBackups: 5,
+ *         keepDaily: 7,
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * !/usr/bin/env sh
+ * Storage can be imported using its identifier, e.g.:
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:storage/nfs:Nfs example local-nfs
+ * ```
  */
 export class Nfs extends pulumi.CustomResource {
     /**

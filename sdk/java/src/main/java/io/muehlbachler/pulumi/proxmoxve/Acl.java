@@ -21,6 +21,68 @@ import javax.annotation.Nullable;
  * ACLs are used to control access to resources in the Proxmox cluster.
  * Each ACL consists of a path, a user, group or token, a role, and a flag to allow propagation of permissions.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.UserLegacy;
+ * import io.muehlbachler.pulumi.proxmoxve.UserLegacyArgs;
+ * import io.muehlbachler.pulumi.proxmoxve.RoleLegacy;
+ * import io.muehlbachler.pulumi.proxmoxve.RoleLegacyArgs;
+ * import io.muehlbachler.pulumi.proxmoxve.Acl;
+ * import io.muehlbachler.pulumi.proxmoxve.AclArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var operationsAutomation = new UserLegacy("operationsAutomation", UserLegacyArgs.builder()
+ *             .comment("Managed by Pulumi")
+ *             .password("a-strong-password")
+ *             .userId("operations-automation}{@literal @}{@code pve")
+ *             .build());
+ * 
+ *         var operationsMonitoring = new RoleLegacy("operationsMonitoring", RoleLegacyArgs.builder()
+ *             .roleId("operations-monitoring")
+ *             .privileges("VM.GuestAgent.Audit")
+ *             .build());
+ * 
+ *         var operationsAutomationMonitoring = new Acl("operationsAutomationMonitoring", AclArgs.builder()
+ *             .userId(operationsAutomation.userId())
+ *             .roleId(operationsMonitoring.roleId())
+ *             .path("/vms/1234")
+ *             .propagate(true)
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * !/usr/bin/env sh
+ * ACL can be imported using its unique identifier, e.g.: {path}?{group|user{@literal @}realm|user{@literal @}realm!token}?{role}
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:index/acl:Acl operations_automation_monitoring /?monitor{@literal @}pve?operations-monitoring
+ * ```
+ * 
  */
 @ResourceType(type="proxmoxve:index/acl:Acl")
 public class Acl extends com.pulumi.resources.CustomResource {

@@ -54,6 +54,12 @@ namespace Pulumi.ProxmoxVE.Outputs
         /// </summary>
         public readonly string? Type;
         /// <summary>
+        /// Whether to do an automatic package upgrade after
+        /// the first boot (defaults to `True`).
+        /// Setting this is only allowed for `root@pam` authenticated user.
+        /// </summary>
+        public readonly bool? Upgrade;
+        /// <summary>
         /// The user account configuration (conflicts
         /// with `UserDataFileId`).
         /// </summary>
@@ -87,6 +93,8 @@ namespace Pulumi.ProxmoxVE.Outputs
 
             string? type,
 
+            bool? upgrade,
+
             Outputs.VmLegacyInitializationUserAccount? userAccount,
 
             string? userDataFileId,
@@ -101,6 +109,7 @@ namespace Pulumi.ProxmoxVE.Outputs
             MetaDataFileId = metaDataFileId;
             NetworkDataFileId = networkDataFileId;
             Type = type;
+            Upgrade = upgrade;
             UserAccount = userAccount;
             UserDataFileId = userDataFileId;
             VendorDataFileId = vendorDataFileId;

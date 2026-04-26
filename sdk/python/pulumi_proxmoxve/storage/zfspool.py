@@ -289,6 +289,30 @@ class Zfspool(pulumi.CustomResource):
         """
         Manages ZFS-based storage in Proxmox VE.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.storage.Zfspool("example",
+            resource_id="example-zfs",
+            nodes=["pve"],
+            zfs_pool="rpool/data",
+            contents=["images"],
+            thin_provision=True,
+            blocksize="64k")
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        Storage can be imported using its identifier, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:storage/zfspool:Zfspool example local-zfs
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -308,6 +332,30 @@ class Zfspool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages ZFS-based storage in Proxmox VE.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.storage.Zfspool("example",
+            resource_id="example-zfs",
+            nodes=["pve"],
+            zfs_pool="rpool/data",
+            contents=["images"],
+            thin_provision=True,
+            blocksize="64k")
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        Storage can be imported using its identifier, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:storage/zfspool:Zfspool example local-zfs
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -79,6 +79,27 @@ def get_zones(type: Optional[_builtins.str] = None,
     """
     Retrieves information about all SDN Zones in Proxmox. This data source can optionally filter zones by type.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    # List all SDN zones
+    all = proxmoxve.sdn.get_zones()
+    # List only EVPN zones
+    evpn_only = proxmoxve.sdn.get_zones(type="evpn")
+    # List only Simple zones  
+    simple_only = proxmoxve.sdn.get_zones(type="simple")
+    pulumi.export("dataProxmoxSdnZonesAll", {
+        "zones": all.zones,
+    })
+    pulumi.export("dataProxmoxSdnZonesFiltered", {
+        "evpnZones": evpn_only.zones,
+        "simpleZones": simple_only.zones,
+    })
+    ```
+
 
     :param _builtins.str type: Filter zones by type (simple, vlan, qinq, vxlan, evpn).
     """
@@ -95,6 +116,27 @@ def get_zones_output(type: Optional[pulumi.Input[Optional[_builtins.str]]] = Non
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZonesResult]:
     """
     Retrieves information about all SDN Zones in Proxmox. This data source can optionally filter zones by type.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    # List all SDN zones
+    all = proxmoxve.sdn.get_zones()
+    # List only EVPN zones
+    evpn_only = proxmoxve.sdn.get_zones(type="evpn")
+    # List only Simple zones  
+    simple_only = proxmoxve.sdn.get_zones(type="simple")
+    pulumi.export("dataProxmoxSdnZonesAll", {
+        "zones": all.zones,
+    })
+    pulumi.export("dataProxmoxSdnZonesFiltered", {
+        "evpnZones": evpn_only.zones,
+        "simpleZones": simple_only.zones,
+    })
+    ```
 
 
     :param _builtins.str type: Filter zones by type (simple, vlan, qinq, vxlan, evpn).

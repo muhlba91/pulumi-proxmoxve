@@ -255,6 +255,29 @@ class Lvmthin(pulumi.CustomResource):
         """
         Manages thin LVM-based storage in Proxmox VE.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.storage.Lvmthin("example",
+            resource_id="example-lvmthin",
+            nodes=["pve"],
+            volume_group="vg0",
+            thin_pool="data",
+            contents=["images"])
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        Storage can be imported using its identifier, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:storage/lvmthin:Lvmthin example local-lvm-thin
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -273,6 +296,29 @@ class Lvmthin(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages thin LVM-based storage in Proxmox VE.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.storage.Lvmthin("example",
+            resource_id="example-lvmthin",
+            nodes=["pve"],
+            volume_group="vg0",
+            thin_pool="data",
+            contents=["images"])
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        Storage can be imported using its identifier, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:storage/lvmthin:Lvmthin example local-lvm-thin
+        ```
 
 
         :param str resource_name: The name of the resource.

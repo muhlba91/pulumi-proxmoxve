@@ -8,6 +8,33 @@ import * as utilities from "../../utilities";
 
 /**
  * Manages a USB hardware mapping in a Proxmox VE cluster.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = new proxmoxve.hardware.mapping.Usb("example", {
+ *     comment: "This is a comment",
+ *     name: "example",
+ *     maps: [{
+ *         comment: "This is a device specific comment",
+ *         id: "8087:0a2b",
+ *         node: "pve",
+ *         path: "1-8.2",
+ *     }],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * !/usr/bin/env sh
+ * A USB hardware mapping can be imported using their name, e.g.:
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:hardware/mapping/usb:Usb example example
+ * ```
  */
 export class Usb extends pulumi.CustomResource {
     /**

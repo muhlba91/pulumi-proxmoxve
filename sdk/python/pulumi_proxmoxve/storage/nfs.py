@@ -389,6 +389,40 @@ class Nfs(pulumi.CustomResource):
         """
         Manages an NFS-based storage in Proxmox VE.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.storage.Nfs("example",
+            resource_id="example-nfs",
+            nodes=["pve"],
+            server="10.0.0.10",
+            export="/exports/proxmox",
+            contents=[
+                "images",
+                "iso",
+                "backup",
+            ],
+            options="vers=4.2",
+            preallocation="metadata",
+            snapshot_as_volume_chain=True,
+            backups={
+                "max_protected_backups": 5,
+                "keep_daily": 7,
+            })
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        Storage can be imported using its identifier, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:storage/nfs:Nfs example local-nfs
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -411,6 +445,40 @@ class Nfs(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages an NFS-based storage in Proxmox VE.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.storage.Nfs("example",
+            resource_id="example-nfs",
+            nodes=["pve"],
+            server="10.0.0.10",
+            export="/exports/proxmox",
+            contents=[
+                "images",
+                "iso",
+                "backup",
+            ],
+            options="vers=4.2",
+            preallocation="metadata",
+            snapshot_as_volume_chain=True,
+            backups={
+                "max_protected_backups": 5,
+                "keep_daily": 7,
+            })
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        Storage can be imported using its identifier, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:storage/nfs:Nfs example local-nfs
+        ```
 
 
         :param str resource_name: The name of the resource.

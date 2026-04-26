@@ -65,6 +65,19 @@ class AwaitableGetReplicationsResult(GetReplicationsResult):
 def get_replications(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetReplicationsResult:
     """
     Retrieves information about all Replications in Proxmox.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    # List all Replications
+    all = proxmoxve.get_replications()
+    pulumi.export("dataProxmoxReplicationsAll", {
+        "replications": all.replications,
+    })
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -76,6 +89,19 @@ def get_replications(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
 def get_replications_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetReplicationsResult]:
     """
     Retrieves information about all Replications in Proxmox.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    # List all Replications
+    all = proxmoxve.get_replications()
+    pulumi.export("dataProxmoxReplicationsAll", {
+        "replications": all.replications,
+    })
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

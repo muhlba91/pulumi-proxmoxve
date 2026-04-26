@@ -439,6 +439,35 @@ class Vlan(pulumi.CustomResource):
         """
         Manages a Linux VLAN network interface in a Proxmox VE node.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        # using VLAN tag
+        vlan99 = proxmoxve.network.linux.Vlan("vlan99",
+            node_name="pve",
+            name="eno0.99",
+            comment="VLAN 99")
+        # using custom network interface name
+        vlan98 = proxmoxve.network.linux.Vlan("vlan98",
+            node_name="pve",
+            name="vlan_lab",
+            interface="eno0",
+            vlan=98,
+            comment="VLAN 98")
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        Interfaces can be imported using the `node_name:iface` format, e.g.
+
+        ```sh
+        $ pulumi import proxmoxve:network/linux/vlan:Vlan vlan99 pve:vlan99
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -463,6 +492,35 @@ class Vlan(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Linux VLAN network interface in a Proxmox VE node.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        # using VLAN tag
+        vlan99 = proxmoxve.network.linux.Vlan("vlan99",
+            node_name="pve",
+            name="eno0.99",
+            comment="VLAN 99")
+        # using custom network interface name
+        vlan98 = proxmoxve.network.linux.Vlan("vlan98",
+            node_name="pve",
+            name="vlan_lab",
+            interface="eno0",
+            vlan=98,
+            comment="VLAN 98")
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        Interfaces can be imported using the `node_name:iface` format, e.g.
+
+        ```sh
+        $ pulumi import proxmoxve:network/linux/vlan:Vlan vlan99 pve:vlan99
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -12,6 +12,76 @@ import * as utilities from "../utilities";
  * This resource orders and renews certificates from an ACME Certificate Authority (like Let's Encrypt) for a specific node. Before using this resource, ensure that:
  * - An ACME account is configured (using `proxmoxve.acme.Account`)
  * - DNS plugins are configured if using DNS-01 challenge (using `proxmoxve.acme/dns.Plugin`)
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * // Example: Basic ACME certificate with HTTP-01 challenge (standalone)
+ * const example = new proxmoxve.acme.Account("example", {
+ *     name: "production",
+ *     contact: "admin@example.com",
+ *     directory: "https://acme-v02.api.letsencrypt.org/directory",
+ *     tos: "https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf",
+ * });
+ * const httpExample = new proxmoxve.acme.Certificate("http_example", {
+ *     nodeName: "pve-node-01",
+ *     account: example.name,
+ *     domains: [{
+ *         domain: "pve.example.com",
+ *     }],
+ * });
+ * // Example: ACME certificate with DNS-01 challenge using Cloudflare
+ * const cloudflare = new proxmoxve.acme.dns.Plugin("cloudflare", {
+ *     plugin: "cloudflare",
+ *     api: "cf",
+ *     validationDelay: 120,
+ *     data: {
+ *         CF_Account_ID: "your-cloudflare-account-id",
+ *         CF_Token: "your-cloudflare-api-token",
+ *         CF_Zone_ID: "your-cloudflare-zone-id",
+ *     },
+ * });
+ * const dnsExample = new proxmoxve.acme.Certificate("dns_example", {
+ *     nodeName: "pve-node-01",
+ *     account: example.name,
+ *     domains: [{
+ *         domain: "pve.example.com",
+ *         plugin: cloudflare.plugin,
+ *     }],
+ * }, {
+ *     dependsOn: [
+ *         example,
+ *         cloudflare,
+ *     ],
+ * });
+ * // Example: Force certificate renewal
+ * const forceRenew = new proxmoxve.acme.Certificate("force_renew", {
+ *     nodeName: "pve-node-01",
+ *     account: example.name,
+ *     force: true,
+ *     domains: [{
+ *         domain: "pve.example.com",
+ *         plugin: cloudflare.plugin,
+ *     }],
+ * }, {
+ *     dependsOn: [
+ *         example,
+ *         cloudflare,
+ *     ],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * !/usr/bin/env sh
+ * ACME certificates can be imported using the node name, e.g.:
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:acme/certificate:Certificate example pve-node-01
+ * ```
  */
 export class Certificate extends pulumi.CustomResource {
     /**

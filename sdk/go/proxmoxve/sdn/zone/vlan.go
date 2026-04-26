@@ -13,6 +13,47 @@ import (
 )
 
 // VLAN Zone in Proxmox SDN. It uses an existing local Linux or OVS bridge to connect to the node's physical interface. It uses VLAN tagging defined in the VNet to isolate the network segments. This allows connectivity of VMs between different nodes.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/sdn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sdn.NewVlan(ctx, "example", &sdn.VlanArgs{
+//				ResourceId: pulumi.String("vlan1"),
+//				Bridge:     pulumi.String("vmbr0"),
+//				Mtu:        pulumi.Int(1500),
+//				Dns:        pulumi.String("1.1.1.1"),
+//				DnsZone:    pulumi.String("example.com"),
+//				Ipam:       pulumi.String("pve"),
+//				ReverseDns: pulumi.String("1.1.1.1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// !/usr/bin/env sh
+// VLAN SDN zone can be imported using its unique identifier (zone ID)
+//
+// ```sh
+// $ pulumi import proxmoxve:sdn/zone/vlan:Vlan example vlan1
+// ```
 type Vlan struct {
 	pulumi.CustomResourceState
 

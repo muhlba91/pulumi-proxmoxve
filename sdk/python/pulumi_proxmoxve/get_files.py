@@ -27,13 +27,16 @@ class GetFilesResult:
     """
     A collection of values returned by getFiles.
     """
-    def __init__(__self__, content_type=None, datastore_id=None, files=None, id=None, node_name=None):
+    def __init__(__self__, content_type=None, datastore_id=None, file_name_regex=None, files=None, id=None, node_name=None):
         if content_type and not isinstance(content_type, str):
             raise TypeError("Expected argument 'content_type' to be a str")
         pulumi.set(__self__, "content_type", content_type)
         if datastore_id and not isinstance(datastore_id, str):
             raise TypeError("Expected argument 'datastore_id' to be a str")
         pulumi.set(__self__, "datastore_id", datastore_id)
+        if file_name_regex and not isinstance(file_name_regex, str):
+            raise TypeError("Expected argument 'file_name_regex' to be a str")
+        pulumi.set(__self__, "file_name_regex", file_name_regex)
         if files and not isinstance(files, list):
             raise TypeError("Expected argument 'files' to be a list")
         pulumi.set(__self__, "files", files)
@@ -59,6 +62,14 @@ class GetFilesResult:
         The identifier of the datastore.
         """
         return pulumi.get(self, "datastore_id")
+
+    @_builtins.property
+    @pulumi.getter(name="fileNameRegex")
+    def file_name_regex(self) -> Optional[_builtins.str]:
+        """
+        A regular expression to filter files by name. When set, only files whose name matches the expression are returned.
+        """
+        return pulumi.get(self, "file_name_regex")
 
     @_builtins.property
     @pulumi.getter
@@ -93,6 +104,7 @@ class AwaitableGetFilesResult(GetFilesResult):
         return GetFilesResult(
             content_type=self.content_type,
             datastore_id=self.datastore_id,
+            file_name_regex=self.file_name_regex,
             files=self.files,
             id=self.id,
             node_name=self.node_name)
@@ -100,6 +112,7 @@ class AwaitableGetFilesResult(GetFilesResult):
 
 def get_files(content_type: Optional[_builtins.str] = None,
               datastore_id: Optional[_builtins.str] = None,
+              file_name_regex: Optional[_builtins.str] = None,
               node_name: Optional[_builtins.str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFilesResult:
     """
@@ -134,11 +147,13 @@ def get_files(content_type: Optional[_builtins.str] = None,
 
     :param _builtins.str content_type: The content type to filter by. When set, only files of this type are returned. Valid values are `backup`, `images`, `import`, `iso`, `rootdir`, `snippets`, `vztmpl`.
     :param _builtins.str datastore_id: The identifier of the datastore.
+    :param _builtins.str file_name_regex: A regular expression to filter files by name. When set, only files whose name matches the expression are returned.
     :param _builtins.str node_name: The name of the node.
     """
     __args__ = dict()
     __args__['contentType'] = content_type
     __args__['datastoreId'] = datastore_id
+    __args__['fileNameRegex'] = file_name_regex
     __args__['nodeName'] = node_name
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('proxmoxve:index/getFiles:getFiles', __args__, opts=opts, typ=GetFilesResult).value
@@ -146,11 +161,13 @@ def get_files(content_type: Optional[_builtins.str] = None,
     return AwaitableGetFilesResult(
         content_type=pulumi.get(__ret__, 'content_type'),
         datastore_id=pulumi.get(__ret__, 'datastore_id'),
+        file_name_regex=pulumi.get(__ret__, 'file_name_regex'),
         files=pulumi.get(__ret__, 'files'),
         id=pulumi.get(__ret__, 'id'),
         node_name=pulumi.get(__ret__, 'node_name'))
 def get_files_output(content_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                      datastore_id: Optional[pulumi.Input[_builtins.str]] = None,
+                     file_name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                      node_name: Optional[pulumi.Input[_builtins.str]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFilesResult]:
     """
@@ -185,17 +202,20 @@ def get_files_output(content_type: Optional[pulumi.Input[Optional[_builtins.str]
 
     :param _builtins.str content_type: The content type to filter by. When set, only files of this type are returned. Valid values are `backup`, `images`, `import`, `iso`, `rootdir`, `snippets`, `vztmpl`.
     :param _builtins.str datastore_id: The identifier of the datastore.
+    :param _builtins.str file_name_regex: A regular expression to filter files by name. When set, only files whose name matches the expression are returned.
     :param _builtins.str node_name: The name of the node.
     """
     __args__ = dict()
     __args__['contentType'] = content_type
     __args__['datastoreId'] = datastore_id
+    __args__['fileNameRegex'] = file_name_regex
     __args__['nodeName'] = node_name
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:index/getFiles:getFiles', __args__, opts=opts, typ=GetFilesResult)
     return __ret__.apply(lambda __response__: GetFilesResult(
         content_type=pulumi.get(__response__, 'content_type'),
         datastore_id=pulumi.get(__response__, 'datastore_id'),
+        file_name_regex=pulumi.get(__response__, 'file_name_regex'),
         files=pulumi.get(__response__, 'files'),
         id=pulumi.get(__response__, 'id'),
         node_name=pulumi.get(__response__, 'node_name')))

@@ -5,14 +5,9 @@ package io.muehlbachler.pulumi.proxmoxve.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import io.muehlbachler.pulumi.proxmoxve.inputs.GetVmCpu;
-import io.muehlbachler.pulumi.proxmoxve.inputs.GetVmRng;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetVmTimeouts;
-import io.muehlbachler.pulumi.proxmoxve.inputs.GetVmVga;
-import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -21,36 +16,6 @@ import javax.annotation.Nullable;
 public final class GetVmPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetVmPlainArgs Empty = new GetVmPlainArgs();
-
-    /**
-     * The CPU configuration.
-     * 
-     */
-    @Import(name="cpu")
-    private @Nullable GetVmCpu cpu;
-
-    /**
-     * @return The CPU configuration.
-     * 
-     */
-    public Optional<GetVmCpu> cpu() {
-        return Optional.ofNullable(this.cpu);
-    }
-
-    /**
-     * The description of the VM.
-     * 
-     */
-    @Import(name="description")
-    private @Nullable String description;
-
-    /**
-     * @return The description of the VM.
-     * 
-     */
-    public Optional<String> description() {
-        return Optional.ofNullable(this.description);
-    }
 
     /**
      * The unique identifier of the VM in the Proxmox cluster.
@@ -68,21 +33,6 @@ public final class GetVmPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The name of the VM.
-     * 
-     */
-    @Import(name="name")
-    private @Nullable String name;
-
-    /**
-     * @return The name of the VM.
-     * 
-     */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
-    }
-
-    /**
      * The name of the node where the VM is provisioned.
      * 
      */
@@ -97,51 +47,6 @@ public final class GetVmPlainArgs extends com.pulumi.resources.InvokeArgs {
         return this.nodeName;
     }
 
-    /**
-     * The RNG (Random Number Generator) configuration.
-     * 
-     */
-    @Import(name="rng")
-    private @Nullable GetVmRng rng;
-
-    /**
-     * @return The RNG (Random Number Generator) configuration.
-     * 
-     */
-    public Optional<GetVmRng> rng() {
-        return Optional.ofNullable(this.rng);
-    }
-
-    /**
-     * The tags assigned to the VM.
-     * 
-     */
-    @Import(name="tags")
-    private @Nullable List<String> tags;
-
-    /**
-     * @return The tags assigned to the VM.
-     * 
-     */
-    public Optional<List<String>> tags() {
-        return Optional.ofNullable(this.tags);
-    }
-
-    /**
-     * Whether the VM is a template.
-     * 
-     */
-    @Import(name="template")
-    private @Nullable Boolean template;
-
-    /**
-     * @return Whether the VM is a template.
-     * 
-     */
-    public Optional<Boolean> template() {
-        return Optional.ofNullable(this.template);
-    }
-
     @Import(name="timeouts")
     private @Nullable GetVmTimeouts timeouts;
 
@@ -149,34 +54,12 @@ public final class GetVmPlainArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.timeouts);
     }
 
-    /**
-     * The VGA configuration.
-     * 
-     */
-    @Import(name="vga")
-    private @Nullable GetVmVga vga;
-
-    /**
-     * @return The VGA configuration.
-     * 
-     */
-    public Optional<GetVmVga> vga() {
-        return Optional.ofNullable(this.vga);
-    }
-
     private GetVmPlainArgs() {}
 
     private GetVmPlainArgs(GetVmPlainArgs $) {
-        this.cpu = $.cpu;
-        this.description = $.description;
         this.id = $.id;
-        this.name = $.name;
         this.nodeName = $.nodeName;
-        this.rng = $.rng;
-        this.tags = $.tags;
-        this.template = $.template;
         this.timeouts = $.timeouts;
-        this.vga = $.vga;
     }
 
     public static Builder builder() {
@@ -198,28 +81,6 @@ public final class GetVmPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param cpu The CPU configuration.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder cpu(@Nullable GetVmCpu cpu) {
-            $.cpu = cpu;
-            return this;
-        }
-
-        /**
-         * @param description The description of the VM.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder description(@Nullable String description) {
-            $.description = description;
-            return this;
-        }
-
-        /**
          * @param id The unique identifier of the VM in the Proxmox cluster.
          * 
          * @return builder
@@ -227,17 +88,6 @@ public final class GetVmPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder id(Integer id) {
             $.id = id;
-            return this;
-        }
-
-        /**
-         * @param name The name of the VM.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder name(@Nullable String name) {
-            $.name = name;
             return this;
         }
 
@@ -252,62 +102,8 @@ public final class GetVmPlainArgs extends com.pulumi.resources.InvokeArgs {
             return this;
         }
 
-        /**
-         * @param rng The RNG (Random Number Generator) configuration.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder rng(@Nullable GetVmRng rng) {
-            $.rng = rng;
-            return this;
-        }
-
-        /**
-         * @param tags The tags assigned to the VM.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder tags(@Nullable List<String> tags) {
-            $.tags = tags;
-            return this;
-        }
-
-        /**
-         * @param tags The tags assigned to the VM.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder tags(String... tags) {
-            return tags(List.of(tags));
-        }
-
-        /**
-         * @param template Whether the VM is a template.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder template(@Nullable Boolean template) {
-            $.template = template;
-            return this;
-        }
-
         public Builder timeouts(@Nullable GetVmTimeouts timeouts) {
             $.timeouts = timeouts;
-            return this;
-        }
-
-        /**
-         * @param vga The VGA configuration.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder vga(@Nullable GetVmVga vga) {
-            $.vga = vga;
             return this;
         }
 

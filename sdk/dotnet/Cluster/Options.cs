@@ -11,6 +11,54 @@ namespace Pulumi.ProxmoxVE.Cluster
 {
     /// <summary>
     /// Manages Proxmox VE Cluster Datacenter options.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var options = new ProxmoxVE.Cluster.Options("options", new()
+    ///     {
+    ///         Language = "en",
+    ///         Keyboard = "pl",
+    ///         EmailFrom = "ged@gont.earthsea",
+    ///         BandwidthLimitMigration = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(555555) (example.pp:4,29-35)),
+    ///         BandwidthLimitDefault = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(666666) (example.pp:5,29-35)),
+    ///         MaxWorkers = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(5) (example.pp:6,29-30)),
+    ///         MigrationCidr = "10.0.0.0/8",
+    ///         MigrationType = "secure",
+    ///         NextId = new ProxmoxVE.Cluster.Inputs.OptionsNextIdArgs
+    ///         {
+    ///             Lower = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:10,13-16)),
+    ///             Upper = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(9.99999999e+08) (example.pp:11,13-22)),
+    ///         },
+    ///         Notify = new ProxmoxVE.Cluster.Inputs.OptionsNotifyArgs
+    ///         {
+    ///             HaFencingMode = "never",
+    ///             HaFencingTarget = "default-matcher",
+    ///             PackageUpdates = "always",
+    ///             PackageUpdatesTarget = "default-matcher",
+    ///             PackageReplication = "always",
+    ///             PackageReplicationTarget = "default-matcher",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// Cluster options are global and can be imported using e.g.:
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:cluster/options:Options options cluster
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:cluster/options:Options")]
     public partial class Options : global::Pulumi.CustomResource

@@ -103,6 +103,16 @@ def get_pci(name: Optional[_builtins.str] = None,
     """
     Retrieves a PCI hardware mapping from a Proxmox VE cluster.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.hardware.mapping.get_pci(name="example")
+    pulumi.export("dataProxmoxHardwareMappingPci", example)
+    ```
+
 
     :param _builtins.str name: The name of this PCI hardware mapping.
     """
@@ -121,6 +131,16 @@ def get_pci_output(name: Optional[pulumi.Input[_builtins.str]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPciResult]:
     """
     Retrieves a PCI hardware mapping from a Proxmox VE cluster.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.hardware.mapping.get_pci(name="example")
+    pulumi.export("dataProxmoxHardwareMappingPci", example)
+    ```
 
 
     :param _builtins.str name: The name of this PCI hardware mapping.

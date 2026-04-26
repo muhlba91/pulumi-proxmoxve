@@ -544,6 +544,27 @@ class Openid(pulumi.CustomResource):
         |-----------------|----------------|
         | /access/domains | Realm.Allocate |
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.realm.Openid("example",
+            realm="example-oidc",
+            issuer_url="https://auth.example.com",
+            client_id="your-client-id",
+            client_key=oidc_client_secret,
+            username_claim="email",
+            autocreate=True,
+            groups_claim="groups",
+            groups_autocreate=True,
+            groups_overwrite=False,
+            scopes="openid email profile",
+            query_userinfo=True,
+            comment="Example OpenID Connect realm managed by Terraform")
+        ```
+
         ## Notes
 
         ### Client Key Security
@@ -604,6 +625,17 @@ class Openid(pulumi.CustomResource):
         - [Proxmox VE User Management](https://pve.proxmox.com/wiki/User_Management)
         - [Proxmox VE OpenID Connect Authentication](https://pve.proxmox.com/wiki/User_Management#pveum_openid)
         - [Proxmox API: /access/domains](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/domains)
+
+        ## Import
+
+        !/usr/bin/env sh
+        OpenID realms can be imported using the realm identifier, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:realm/openid:Openid example example-oidc
+        ```
+
+        > When importing, the `client_key` attribute cannot be imported since it's not returned by the Proxmox API. You'll need to set this attribute in your Terraform configuration after the import to manage it with Terraform.
 
 
         :param str resource_name: The name of the resource.
@@ -641,6 +673,27 @@ class Openid(pulumi.CustomResource):
         |-----------------|----------------|
         | /access/domains | Realm.Allocate |
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.realm.Openid("example",
+            realm="example-oidc",
+            issuer_url="https://auth.example.com",
+            client_id="your-client-id",
+            client_key=oidc_client_secret,
+            username_claim="email",
+            autocreate=True,
+            groups_claim="groups",
+            groups_autocreate=True,
+            groups_overwrite=False,
+            scopes="openid email profile",
+            query_userinfo=True,
+            comment="Example OpenID Connect realm managed by Terraform")
+        ```
+
         ## Notes
 
         ### Client Key Security
@@ -701,6 +754,17 @@ class Openid(pulumi.CustomResource):
         - [Proxmox VE User Management](https://pve.proxmox.com/wiki/User_Management)
         - [Proxmox VE OpenID Connect Authentication](https://pve.proxmox.com/wiki/User_Management#pveum_openid)
         - [Proxmox API: /access/domains](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/domains)
+
+        ## Import
+
+        !/usr/bin/env sh
+        OpenID realms can be imported using the realm identifier, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:realm/openid:Openid example example-oidc
+        ```
+
+        > When importing, the `client_key` attribute cannot be imported since it's not returned by the Proxmox API. You'll need to set this attribute in your Terraform configuration after the import to manage it with Terraform.
 
 
         :param str resource_name: The name of the resource.

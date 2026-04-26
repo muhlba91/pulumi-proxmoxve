@@ -306,6 +306,15 @@ class ZfspoolLegacy(pulumi.CustomResource):
             blocksize="64k")
         ```
 
+        ## Import
+
+        !/usr/bin/env sh
+        Storage can be imported using its identifier, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:storage/zfspoolLegacy:ZfspoolLegacy example local-zfs
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -341,6 +350,15 @@ class ZfspoolLegacy(pulumi.CustomResource):
             contents=["images"],
             thin_provision=True,
             blocksize="64k")
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        Storage can be imported using its identifier, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:storage/zfspoolLegacy:ZfspoolLegacy example local-zfs
         ```
 
 

@@ -29,7 +29,7 @@ type Vm2Legacy struct {
 	// The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
 	Cdrom Vm2LegacyCdromMapOutput `pulumi:"cdrom"`
 	// The CPU configuration.
-	Cpu Vm2LegacyCpuOutput `pulumi:"cpu"`
+	Cpu Vm2LegacyCpuPtrOutput `pulumi:"cpu"`
 	// Set to true to delete unreferenced disks on destroy (defaults to `true`).
 	DeleteUnreferencedDisksOnDestroy pulumi.BoolOutput `pulumi:"deleteUnreferencedDisksOnDestroy"`
 	// The description of the VM.
@@ -43,7 +43,7 @@ type Vm2Legacy struct {
 	// The unique identifier of the VM in the Proxmox cluster.
 	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
 	// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
-	Rng Vm2LegacyRngOutput `pulumi:"rng"`
+	Rng Vm2LegacyRngPtrOutput `pulumi:"rng"`
 	// Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
 	StopOnDestroy pulumi.BoolOutput `pulumi:"stopOnDestroy"`
 	// The tags assigned to the VM.
@@ -52,7 +52,7 @@ type Vm2Legacy struct {
 	Template pulumi.BoolPtrOutput       `pulumi:"template"`
 	Timeouts Vm2LegacyTimeoutsPtrOutput `pulumi:"timeouts"`
 	// Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
-	Vga Vm2LegacyVgaOutput `pulumi:"vga"`
+	Vga Vm2LegacyVgaPtrOutput `pulumi:"vga"`
 }
 
 // NewVm2Legacy registers a new resource with the given unique name, arguments, and options.
@@ -305,8 +305,8 @@ func (o Vm2LegacyOutput) Cdrom() Vm2LegacyCdromMapOutput {
 }
 
 // The CPU configuration.
-func (o Vm2LegacyOutput) Cpu() Vm2LegacyCpuOutput {
-	return o.ApplyT(func(v *Vm2Legacy) Vm2LegacyCpuOutput { return v.Cpu }).(Vm2LegacyCpuOutput)
+func (o Vm2LegacyOutput) Cpu() Vm2LegacyCpuPtrOutput {
+	return o.ApplyT(func(v *Vm2Legacy) Vm2LegacyCpuPtrOutput { return v.Cpu }).(Vm2LegacyCpuPtrOutput)
 }
 
 // Set to true to delete unreferenced disks on destroy (defaults to `true`).
@@ -340,8 +340,8 @@ func (o Vm2LegacyOutput) ResourceId() pulumi.StringOutput {
 }
 
 // Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
-func (o Vm2LegacyOutput) Rng() Vm2LegacyRngOutput {
-	return o.ApplyT(func(v *Vm2Legacy) Vm2LegacyRngOutput { return v.Rng }).(Vm2LegacyRngOutput)
+func (o Vm2LegacyOutput) Rng() Vm2LegacyRngPtrOutput {
+	return o.ApplyT(func(v *Vm2Legacy) Vm2LegacyRngPtrOutput { return v.Rng }).(Vm2LegacyRngPtrOutput)
 }
 
 // Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
@@ -364,8 +364,8 @@ func (o Vm2LegacyOutput) Timeouts() Vm2LegacyTimeoutsPtrOutput {
 }
 
 // Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
-func (o Vm2LegacyOutput) Vga() Vm2LegacyVgaOutput {
-	return o.ApplyT(func(v *Vm2Legacy) Vm2LegacyVgaOutput { return v.Vga }).(Vm2LegacyVgaOutput)
+func (o Vm2LegacyOutput) Vga() Vm2LegacyVgaPtrOutput {
+	return o.ApplyT(func(v *Vm2Legacy) Vm2LegacyVgaPtrOutput { return v.Vga }).(Vm2LegacyVgaPtrOutput)
 }
 
 type Vm2LegacyArrayOutput struct{ *pulumi.OutputState }

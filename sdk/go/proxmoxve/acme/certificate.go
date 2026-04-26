@@ -17,6 +17,105 @@ import (
 // This resource orders and renews certificates from an ACME Certificate Authority (like Let's Encrypt) for a specific node. Before using this resource, ensure that:
 // - An ACME account is configured (using `acme.Account`)
 // - DNS plugins are configured if using DNS-01 challenge (using `acme/dns.Plugin`)
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/acme"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Example: Basic ACME certificate with HTTP-01 challenge (standalone)
+//			example, err := acme.NewAccount(ctx, "example", &acme.AccountArgs{
+//				Name:      pulumi.String("production"),
+//				Contact:   pulumi.String("admin@example.com"),
+//				Directory: pulumi.String("https://acme-v02.api.letsencrypt.org/directory"),
+//				Tos:       pulumi.String("https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = acme.NewCertificate(ctx, "http_example", &acme.CertificateArgs{
+//				NodeName: pulumi.String("pve-node-01"),
+//				Account:  example.Name,
+//				Domains: acme.CertificateDomainArray{
+//					&acme.CertificateDomainArgs{
+//						Domain: pulumi.String("pve.example.com"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Example: ACME certificate with DNS-01 challenge using Cloudflare
+//			cloudflare, err := acme.NewPlugin(ctx, "cloudflare", &acme.PluginArgs{
+//				Plugin:          pulumi.String("cloudflare"),
+//				Api:             pulumi.String("cf"),
+//				ValidationDelay: pulumi.Int(120),
+//				Data: pulumi.StringMap{
+//					"CF_Account_ID": pulumi.String("your-cloudflare-account-id"),
+//					"CF_Token":      pulumi.String("your-cloudflare-api-token"),
+//					"CF_Zone_ID":    pulumi.String("your-cloudflare-zone-id"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = acme.NewCertificate(ctx, "dns_example", &acme.CertificateArgs{
+//				NodeName: pulumi.String("pve-node-01"),
+//				Account:  example.Name,
+//				Domains: acme.CertificateDomainArray{
+//					&acme.CertificateDomainArgs{
+//						Domain: pulumi.String("pve.example.com"),
+//						Plugin: cloudflare.Plugin,
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				example,
+//				cloudflare,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			// Example: Force certificate renewal
+//			_, err = acme.NewCertificate(ctx, "force_renew", &acme.CertificateArgs{
+//				NodeName: pulumi.String("pve-node-01"),
+//				Account:  example.Name,
+//				Force:    pulumi.Bool(true),
+//				Domains: acme.CertificateDomainArray{
+//					&acme.CertificateDomainArgs{
+//						Domain: pulumi.String("pve.example.com"),
+//						Plugin: cloudflare.Plugin,
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				example,
+//				cloudflare,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// !/usr/bin/env sh
+// ACME certificates can be imported using the node name, e.g.:
+//
+// ```sh
+// $ pulumi import proxmoxve:acme/certificate:Certificate example pve-node-01
+// ```
 type Certificate struct {
 	pulumi.CustomResourceState
 

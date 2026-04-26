@@ -186,6 +186,27 @@ def get_qinq(id: Optional[_builtins.str] = None,
     """
     Retrieves information about a QinQ Zone in Proxmox SDN. QinQ also known as VLAN stacking, that uses multiple layers of VLAN tags for isolation. The QinQ zone defines the outer VLAN tag (the Service VLAN) whereas the inner VLAN tag is defined by the VNet. Your physical network switches must support stacked VLANs for this configuration. Due to the double stacking of tags, you need 4 more bytes for QinQ VLANs. For example, you must reduce the MTU to 1496 if you physical interface MTU is 1500.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.sdn.zone.get_qinq(id="qinq1")
+    pulumi.export("dataProxmoxSdnZoneQinq", {
+        "id": example.id,
+        "nodes": example.nodes,
+        "bridge": example.bridge,
+        "serviceVlan": example.service_vlan,
+        "serviceVlanProtocol": example.service_vlan_protocol,
+        "mtu": example.mtu,
+        "dns": example.dns,
+        "dnsZone": example.dns_zone,
+        "ipam": example.ipam,
+        "reverseDns": example.reverse_dns,
+    })
+    ```
+
 
     :param _builtins.str id: The unique identifier of the SDN zone.
     """
@@ -211,6 +232,27 @@ def get_qinq_output(id: Optional[pulumi.Input[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQinqResult]:
     """
     Retrieves information about a QinQ Zone in Proxmox SDN. QinQ also known as VLAN stacking, that uses multiple layers of VLAN tags for isolation. The QinQ zone defines the outer VLAN tag (the Service VLAN) whereas the inner VLAN tag is defined by the VNet. Your physical network switches must support stacked VLANs for this configuration. Due to the double stacking of tags, you need 4 more bytes for QinQ VLANs. For example, you must reduce the MTU to 1496 if you physical interface MTU is 1500.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.sdn.zone.get_qinq(id="qinq1")
+    pulumi.export("dataProxmoxSdnZoneQinq", {
+        "id": example.id,
+        "nodes": example.nodes,
+        "bridge": example.bridge,
+        "serviceVlan": example.service_vlan,
+        "serviceVlanProtocol": example.service_vlan_protocol,
+        "mtu": example.mtu,
+        "dns": example.dns,
+        "dnsZone": example.dns_zone,
+        "ipam": example.ipam,
+        "reverseDns": example.reverse_dns,
+    })
+    ```
 
 
     :param _builtins.str id: The unique identifier of the SDN zone.

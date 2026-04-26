@@ -11,6 +11,54 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
 {
     /// <summary>
     /// EVPN Zone in Proxmox SDN. The EVPN zone creates a routable Layer 3 network, capable of spanning across multiple clusters.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new ProxmoxVE.Sdn.Zone.Evpn("example", new()
+    ///     {
+    ///         ResourceId = "evpn1",
+    ///         Nodes = new[]
+    ///         {
+    ///             "pve",
+    ///         },
+    ///         Controller = "evpn-controller1",
+    ///         VrfVxlan = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(4000) (example.pp:4,16-20)),
+    ///         AdvertiseSubnets = true,
+    ///         DisableArpNdSuppression = false,
+    ///         ExitNodes = new[]
+    ///         {
+    ///             "pve-exit1",
+    ///             "pve-exit2",
+    ///         },
+    ///         ExitNodesLocalRouting = true,
+    ///         PrimaryExitNode = "pve-exit1",
+    ///         RtImport = "65000:65000",
+    ///         Mtu = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1450) (example.pp:14,29-33)),
+    ///         Dns = "1.1.1.1",
+    ///         DnsZone = "example.com",
+    ///         Ipam = "pve",
+    ///         ReverseDns = "1.1.1.1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// EVPN SDN zone can be imported using its unique identifier (zone ID)
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:sdn/zone/evpn:Evpn example evpn1
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:sdn/zone/evpn:Evpn")]
     public partial class Evpn : global::Pulumi.CustomResource

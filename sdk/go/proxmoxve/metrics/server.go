@@ -13,11 +13,68 @@ import (
 )
 
 // Manages PVE metrics server.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/metrics"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := metrics.NewServer(ctx, "influxdb_server", &metrics.ServerArgs{
+//				Name:   pulumi.String("example_influxdb_server"),
+//				Server: pulumi.String("192.168.3.2"),
+//				Port:   pulumi.Int(8089),
+//				Type:   pulumi.String("influxdb"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = metrics.NewServer(ctx, "graphite_server", &metrics.ServerArgs{
+//				Name:   pulumi.String("example_graphite_server"),
+//				Server: pulumi.String("192.168.4.2"),
+//				Port:   pulumi.Int(2003),
+//				Type:   pulumi.String("graphite"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = metrics.NewServer(ctx, "opentelemetry_server", &metrics.ServerArgs{
+//				Name:               pulumi.String("example_opentelemetry_server"),
+//				Server:             pulumi.String("192.168.5.2"),
+//				Port:               pulumi.Int(4318),
+//				Type:               pulumi.String("opentelemetry"),
+//				OpentelemetryProto: pulumi.String("http"),
+//				OpentelemetryPath:  pulumi.String("/v1/metrics"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// !/usr/bin/env sh
+//
+// ```sh
+// $ pulumi import proxmoxve:metrics/server:Server example example
+// ```
 type Server struct {
 	pulumi.CustomResourceState
 
-	// Set this to `true` to disable this metric server.
-	Disable pulumi.BoolPtrOutput `pulumi:"disable"`
+	// Set this to `true` to disable this metric server. Defaults to `false`.
+	Disable pulumi.BoolOutput `pulumi:"disable"`
 	// Root graphite path (ex: `proxmox.mycluster.mykey`).
 	GraphitePath pulumi.StringPtrOutput `pulumi:"graphitePath"`
 	// Protocol to send graphite data. Choice is between `udp` | `tcp`. If not set, PVE default is `udp`.
@@ -34,7 +91,7 @@ type Server struct {
 	InfluxOrganization pulumi.StringPtrOutput `pulumi:"influxOrganization"`
 	// The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
 	InfluxToken pulumi.StringPtrOutput `pulumi:"influxToken"`
-	// Set to `false` to disable certificate verification for https endpoints.
+	// Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
 	InfluxVerify pulumi.BoolPtrOutput `pulumi:"influxVerify"`
 	// MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
 	Mtu pulumi.IntPtrOutput `pulumi:"mtu"`
@@ -116,7 +173,7 @@ func GetServer(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Server resources.
 type serverState struct {
-	// Set this to `true` to disable this metric server.
+	// Set this to `true` to disable this metric server. Defaults to `false`.
 	Disable *bool `pulumi:"disable"`
 	// Root graphite path (ex: `proxmox.mycluster.mykey`).
 	GraphitePath *string `pulumi:"graphitePath"`
@@ -134,7 +191,7 @@ type serverState struct {
 	InfluxOrganization *string `pulumi:"influxOrganization"`
 	// The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
 	InfluxToken *string `pulumi:"influxToken"`
-	// Set to `false` to disable certificate verification for https endpoints.
+	// Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
 	InfluxVerify *bool `pulumi:"influxVerify"`
 	// MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
 	Mtu *int `pulumi:"mtu"`
@@ -167,7 +224,7 @@ type serverState struct {
 }
 
 type ServerState struct {
-	// Set this to `true` to disable this metric server.
+	// Set this to `true` to disable this metric server. Defaults to `false`.
 	Disable pulumi.BoolPtrInput
 	// Root graphite path (ex: `proxmox.mycluster.mykey`).
 	GraphitePath pulumi.StringPtrInput
@@ -185,7 +242,7 @@ type ServerState struct {
 	InfluxOrganization pulumi.StringPtrInput
 	// The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
 	InfluxToken pulumi.StringPtrInput
-	// Set to `false` to disable certificate verification for https endpoints.
+	// Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
 	InfluxVerify pulumi.BoolPtrInput
 	// MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
 	Mtu pulumi.IntPtrInput
@@ -222,7 +279,7 @@ func (ServerState) ElementType() reflect.Type {
 }
 
 type serverArgs struct {
-	// Set this to `true` to disable this metric server.
+	// Set this to `true` to disable this metric server. Defaults to `false`.
 	Disable *bool `pulumi:"disable"`
 	// Root graphite path (ex: `proxmox.mycluster.mykey`).
 	GraphitePath *string `pulumi:"graphitePath"`
@@ -240,7 +297,7 @@ type serverArgs struct {
 	InfluxOrganization *string `pulumi:"influxOrganization"`
 	// The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
 	InfluxToken *string `pulumi:"influxToken"`
-	// Set to `false` to disable certificate verification for https endpoints.
+	// Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
 	InfluxVerify *bool `pulumi:"influxVerify"`
 	// MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
 	Mtu *int `pulumi:"mtu"`
@@ -274,7 +331,7 @@ type serverArgs struct {
 
 // The set of arguments for constructing a Server resource.
 type ServerArgs struct {
-	// Set this to `true` to disable this metric server.
+	// Set this to `true` to disable this metric server. Defaults to `false`.
 	Disable pulumi.BoolPtrInput
 	// Root graphite path (ex: `proxmox.mycluster.mykey`).
 	GraphitePath pulumi.StringPtrInput
@@ -292,7 +349,7 @@ type ServerArgs struct {
 	InfluxOrganization pulumi.StringPtrInput
 	// The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
 	InfluxToken pulumi.StringPtrInput
-	// Set to `false` to disable certificate verification for https endpoints.
+	// Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
 	InfluxVerify pulumi.BoolPtrInput
 	// MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
 	Mtu pulumi.IntPtrInput
@@ -411,9 +468,9 @@ func (o ServerOutput) ToServerOutputWithContext(ctx context.Context) ServerOutpu
 	return o
 }
 
-// Set this to `true` to disable this metric server.
-func (o ServerOutput) Disable() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Server) pulumi.BoolPtrOutput { return v.Disable }).(pulumi.BoolPtrOutput)
+// Set this to `true` to disable this metric server. Defaults to `false`.
+func (o ServerOutput) Disable() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Server) pulumi.BoolOutput { return v.Disable }).(pulumi.BoolOutput)
 }
 
 // Root graphite path (ex: `proxmox.mycluster.mykey`).
@@ -456,7 +513,7 @@ func (o ServerOutput) InfluxToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringPtrOutput { return v.InfluxToken }).(pulumi.StringPtrOutput)
 }
 
-// Set to `false` to disable certificate verification for https endpoints.
+// Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
 func (o ServerOutput) InfluxVerify() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Server) pulumi.BoolPtrOutput { return v.InfluxVerify }).(pulumi.BoolPtrOutput)
 }

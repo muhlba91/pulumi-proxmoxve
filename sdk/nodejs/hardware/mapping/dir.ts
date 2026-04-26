@@ -8,6 +8,31 @@ import * as utilities from "../../utilities";
 
 /**
  * Manages a directory mapping in a Proxmox VE cluster.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = new proxmoxve.hardware.mapping.Dir("example", {
+ *     comment: "This is a comment",
+ *     name: "example",
+ *     maps: [{
+ *         node: "pve",
+ *         path: "/mnt/data",
+ *     }],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * !/usr/bin/env sh
+ * A directory mapping can be imported using their name, e.g.:
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:hardware/mapping/dir:Dir example example
+ * ```
  */
 export class Dir extends pulumi.CustomResource {
     /**

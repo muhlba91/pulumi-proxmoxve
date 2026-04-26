@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export { BondArgs, BondState } from "./bond";
+export type Bond = import("./bond").Bond;
+export const Bond: typeof import("./bond").Bond = null as any;
+utilities.lazyLoad(exports, ["Bond"], () => require("./bond"));
+
 export { BridgeArgs, BridgeState } from "./bridge";
 export type Bridge = import("./bridge").Bridge;
 export const Bridge: typeof import("./bridge").Bridge = null as any;
@@ -30,6 +35,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "proxmoxve:network/linux/bond:Bond":
+                return new Bond(name, <any>undefined, { urn })
             case "proxmoxve:network/linux/bridge:Bridge":
                 return new Bridge(name, <any>undefined, { urn })
             case "proxmoxve:network/linux/bridgeLegacy:BridgeLegacy":
@@ -43,6 +50,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("proxmoxve", "network/linux/bond", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "network/linux/bridge", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "network/linux/bridgeLegacy", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "network/linux/vlan", _module)

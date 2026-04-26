@@ -13,18 +13,87 @@ namespace Pulumi.ProxmoxVE
     {
         /// <summary>
         /// Retrieves information about a specific High Availability group.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // This will fetch the set of HA group identifiers...
+        ///     var all = ProxmoxVE.Index.GetHagroups.Invoke();
+        /// 
+        ///     // ...which we will go through in order to fetch the whole data on each group.
+        ///     var example = ;
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["proxmoxHagroupsFull"] = example,
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetHagroupResult> InvokeAsync(GetHagroupArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHagroupResult>("proxmoxve:index/getHagroup:getHagroup", args ?? new GetHagroupArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about a specific High Availability group.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // This will fetch the set of HA group identifiers...
+        ///     var all = ProxmoxVE.Index.GetHagroups.Invoke();
+        /// 
+        ///     // ...which we will go through in order to fetch the whole data on each group.
+        ///     var example = ;
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["proxmoxHagroupsFull"] = example,
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetHagroupResult> Invoke(GetHagroupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHagroupResult>("proxmoxve:index/getHagroup:getHagroup", args ?? new GetHagroupInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about a specific High Availability group.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // This will fetch the set of HA group identifiers...
+        ///     var all = ProxmoxVE.Index.GetHagroups.Invoke();
+        /// 
+        ///     // ...which we will go through in order to fetch the whole data on each group.
+        ///     var example = ;
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["proxmoxHagroupsFull"] = example,
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetHagroupResult> Invoke(GetHagroupInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetHagroupResult>("proxmoxve:index/getHagroup:getHagroup", args ?? new GetHagroupInvokeArgs(), options.WithDefaults());

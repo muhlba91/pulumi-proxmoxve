@@ -74,9 +74,9 @@ export class ServerLegacy extends pulumi.CustomResource {
     }
 
     /**
-     * Set this to `true` to disable this metric server.
+     * Set this to `true` to disable this metric server. Defaults to `false`.
      */
-    declare public readonly disable: pulumi.Output<boolean | undefined>;
+    declare public readonly disable: pulumi.Output<boolean>;
     /**
      * Root graphite path (ex: `proxmox.mycluster.mykey`).
      */
@@ -110,7 +110,7 @@ export class ServerLegacy extends pulumi.CustomResource {
      */
     declare public readonly influxToken: pulumi.Output<string | undefined>;
     /**
-     * Set to `false` to disable certificate verification for https endpoints.
+     * Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
      */
     declare public readonly influxVerify: pulumi.Output<boolean | undefined>;
     /**
@@ -255,7 +255,7 @@ export class ServerLegacy extends pulumi.CustomResource {
  */
 export interface ServerLegacyState {
     /**
-     * Set this to `true` to disable this metric server.
+     * Set this to `true` to disable this metric server. Defaults to `false`.
      */
     disable?: pulumi.Input<boolean>;
     /**
@@ -291,7 +291,7 @@ export interface ServerLegacyState {
      */
     influxToken?: pulumi.Input<string>;
     /**
-     * Set to `false` to disable certificate verification for https endpoints.
+     * Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
      */
     influxVerify?: pulumi.Input<boolean>;
     /**
@@ -357,7 +357,7 @@ export interface ServerLegacyState {
  */
 export interface ServerLegacyArgs {
     /**
-     * Set this to `true` to disable this metric server.
+     * Set this to `true` to disable this metric server. Defaults to `false`.
      */
     disable?: pulumi.Input<boolean>;
     /**
@@ -393,7 +393,7 @@ export interface ServerLegacyArgs {
      */
     influxToken?: pulumi.Input<string>;
     /**
-     * Set to `false` to disable certificate verification for https endpoints.
+     * Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
      */
     influxVerify?: pulumi.Input<boolean>;
     /**

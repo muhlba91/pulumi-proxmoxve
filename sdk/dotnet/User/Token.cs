@@ -11,6 +11,46 @@ namespace Pulumi.ProxmoxVE.User
 {
     /// <summary>
     /// User API tokens.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // if creating a user token, the user must be created first
+    ///     var user = new ProxmoxVE.Index.UserLegacy("user", new()
+    ///     {
+    ///         Comment = "Managed by Pulumi",
+    ///         Email = "user@pve",
+    ///         Enabled = true,
+    ///         ExpirationDate = "2034-01-01T22:00:00Z",
+    ///         UserId = "user@pve",
+    ///     });
+    /// 
+    ///     var userToken = new ProxmoxVE.User.Token("user_token", new()
+    ///     {
+    ///         Comment = "Managed by Pulumi",
+    ///         ExpirationDate = "2033-01-01T22:00:00Z",
+    ///         TokenName = "tk1",
+    ///         UserId = user.UserId,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// Tokens can be imported using their identifiers in the format `user_id!token_name`, e.g.:
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:user/token:Token token1 user@pve!token1
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:user/token:Token")]
     public partial class Token : global::Pulumi.CustomResource

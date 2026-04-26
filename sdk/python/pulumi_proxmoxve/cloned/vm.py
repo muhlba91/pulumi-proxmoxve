@@ -667,7 +667,7 @@ class Vm(pulumi.CustomResource):
 
         ## Limitations
 
-        This resource intentionally manages only a subset of VM configuration. The following are currently not managed and must be inherited from the source template (or managed via `VmLegacy` with a `clone` block):
+        This resource intentionally manages only a subset of VM configuration. The following are currently not managed and must be inherited from the source template (or managed via `Vm` with a `clone` block):
 
         - BIOS / machine / boot order
         - EFI disk / secure boot settings
@@ -675,6 +675,187 @@ class Vm(pulumi.CustomResource):
         - Cloud-init / initialization
         - QEMU guest agent configuration
         - PCI/USB passthrough, serial/audio devices, watchdog, VirtioFS
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        # Example 1: Basic clone with minimal management
+        basic_clone = proxmoxve.cloned.Vm("basic_clone",
+            node_name="pve",
+            name="basic-clone",
+            clone={
+                "source_vm_id": 100,
+                "full": True,
+            },
+            cpu={
+                "cores": 4,
+            })
+        # Example 2: Clone with explicit network management
+        network_managed = proxmoxve.cloned.Vm("network_managed",
+            node_name="pve",
+            name="network-clone",
+            clone={
+                "source_vm_id": 100,
+            },
+            network={
+                "net0": {
+                    "bridge": "vmbr0",
+                    "model": "virtio",
+                    "tag": 100,
+                },
+                "net1": {
+                    "bridge": "vmbr1",
+                    "model": "virtio",
+                    "firewall": True,
+                    "mac_address": "BC:24:11:2E:C5:00",
+                },
+            },
+            cpu={
+                "cores": 2,
+            })
+        # Example 3: Clone with disk management
+        disk_managed = proxmoxve.cloned.Vm("disk_managed",
+            node_name="pve",
+            name="disk-clone",
+            clone={
+                "source_vm_id": 100,
+                "target_datastore": "local-lvm",
+            },
+            disk={
+                "scsi0": {
+                    "datastore_id": "local-lvm",
+                    "size_gb": 50,
+                    "discard": "on",
+                    "ssd": True,
+                },
+                "scsi1": {
+                    "datastore_id": "local-lvm",
+                    "size_gb": 100,
+                    "backup": False,
+                },
+            })
+        # Example 4: Clone with explicit device deletion
+        selective_delete = proxmoxve.cloned.Vm("selective_delete",
+            node_name="pve",
+            name="minimal-clone",
+            clone={
+                "source_vm_id": 100,
+            },
+            network={
+                "net0": {
+                    "bridge": "vmbr0",
+                    "model": "virtio",
+                },
+            },
+            delete={
+                "networks": [
+                    "net1",
+                    "net2",
+                ],
+            })
+        # Example 5: Full-featured clone with multiple settings
+        full_featured = proxmoxve.cloned.Vm("full_featured",
+            node_name="pve",
+            name="production-vm",
+            description="Production VM cloned from template",
+            tags=[
+                "production",
+                "web",
+            ],
+            clone={
+                "source_vm_id": 100,
+                "source_node_name": "pve",
+                "full": True,
+                "target_datastore": "local-lvm",
+                "retries": 3,
+            },
+            cpu={
+                "cores": 8,
+                "sockets": 1,
+                "architecture": "x86_64",
+                "type": "host",
+            },
+            memory={
+                "size": 8192,
+                "balloon": 2048,
+                "shares": 2000,
+            },
+            network={
+                "net0": {
+                    "bridge": "vmbr0",
+                    "model": "virtio",
+                    "tag": 100,
+                    "firewall": True,
+                    "rate_limit": 100,
+                },
+            },
+            disk={
+                "scsi0": {
+                    "datastore_id": "local-lvm",
+                    "size_gb": 100,
+                    "discard": "on",
+                    "iothread": True,
+                    "ssd": True,
+                    "cache": "writethrough",
+                },
+            },
+            vga={
+                "type": "std",
+                "memory": 16,
+            },
+            delete={
+                "disks": ["ide2"],
+            },
+            stop_on_destroy=False,
+            purge_on_destroy=True,
+            delete_unreferenced_disks_on_destroy=False,
+            timeouts={
+                "create": "30m",
+                "update": "30m",
+                "delete": "10m",
+            })
+        # Example 6: Linked clone for testing
+        test_clone = proxmoxve.cloned.Vm("test_clone",
+            node_name="pve",
+            name="test-vm",
+            clone={
+                "source_vm_id": 100,
+                "full": False,
+            },
+            cpu={
+                "cores": 2,
+            },
+            network={
+                "net0": {
+                    "bridge": "vmbr0",
+                    "model": "virtio",
+                },
+            })
+        # Example 7: Clone with pool assignment
+        pooled_clone = proxmoxve.cloned.Vm("pooled_clone",
+            node_name="pve",
+            name="pooled-vm",
+            clone={
+                "source_vm_id": 100,
+                "pool_id": "production",
+            },
+            cpu={
+                "cores": 4,
+            })
+        # Example 8: Import existing cloned VM
+        imported = proxmoxve.cloned.Vm("imported",
+            resource_id="123",
+            node_name="pve",
+            clone={
+                "source_vm_id": 100,
+            },
+            cpu={
+                "cores": 4,
+            })
+        ```
 
 
         :param str resource_name: The name of the resource.
@@ -711,7 +892,7 @@ class Vm(pulumi.CustomResource):
 
         ## Limitations
 
-        This resource intentionally manages only a subset of VM configuration. The following are currently not managed and must be inherited from the source template (or managed via `VmLegacy` with a `clone` block):
+        This resource intentionally manages only a subset of VM configuration. The following are currently not managed and must be inherited from the source template (or managed via `Vm` with a `clone` block):
 
         - BIOS / machine / boot order
         - EFI disk / secure boot settings
@@ -719,6 +900,187 @@ class Vm(pulumi.CustomResource):
         - Cloud-init / initialization
         - QEMU guest agent configuration
         - PCI/USB passthrough, serial/audio devices, watchdog, VirtioFS
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        # Example 1: Basic clone with minimal management
+        basic_clone = proxmoxve.cloned.Vm("basic_clone",
+            node_name="pve",
+            name="basic-clone",
+            clone={
+                "source_vm_id": 100,
+                "full": True,
+            },
+            cpu={
+                "cores": 4,
+            })
+        # Example 2: Clone with explicit network management
+        network_managed = proxmoxve.cloned.Vm("network_managed",
+            node_name="pve",
+            name="network-clone",
+            clone={
+                "source_vm_id": 100,
+            },
+            network={
+                "net0": {
+                    "bridge": "vmbr0",
+                    "model": "virtio",
+                    "tag": 100,
+                },
+                "net1": {
+                    "bridge": "vmbr1",
+                    "model": "virtio",
+                    "firewall": True,
+                    "mac_address": "BC:24:11:2E:C5:00",
+                },
+            },
+            cpu={
+                "cores": 2,
+            })
+        # Example 3: Clone with disk management
+        disk_managed = proxmoxve.cloned.Vm("disk_managed",
+            node_name="pve",
+            name="disk-clone",
+            clone={
+                "source_vm_id": 100,
+                "target_datastore": "local-lvm",
+            },
+            disk={
+                "scsi0": {
+                    "datastore_id": "local-lvm",
+                    "size_gb": 50,
+                    "discard": "on",
+                    "ssd": True,
+                },
+                "scsi1": {
+                    "datastore_id": "local-lvm",
+                    "size_gb": 100,
+                    "backup": False,
+                },
+            })
+        # Example 4: Clone with explicit device deletion
+        selective_delete = proxmoxve.cloned.Vm("selective_delete",
+            node_name="pve",
+            name="minimal-clone",
+            clone={
+                "source_vm_id": 100,
+            },
+            network={
+                "net0": {
+                    "bridge": "vmbr0",
+                    "model": "virtio",
+                },
+            },
+            delete={
+                "networks": [
+                    "net1",
+                    "net2",
+                ],
+            })
+        # Example 5: Full-featured clone with multiple settings
+        full_featured = proxmoxve.cloned.Vm("full_featured",
+            node_name="pve",
+            name="production-vm",
+            description="Production VM cloned from template",
+            tags=[
+                "production",
+                "web",
+            ],
+            clone={
+                "source_vm_id": 100,
+                "source_node_name": "pve",
+                "full": True,
+                "target_datastore": "local-lvm",
+                "retries": 3,
+            },
+            cpu={
+                "cores": 8,
+                "sockets": 1,
+                "architecture": "x86_64",
+                "type": "host",
+            },
+            memory={
+                "size": 8192,
+                "balloon": 2048,
+                "shares": 2000,
+            },
+            network={
+                "net0": {
+                    "bridge": "vmbr0",
+                    "model": "virtio",
+                    "tag": 100,
+                    "firewall": True,
+                    "rate_limit": 100,
+                },
+            },
+            disk={
+                "scsi0": {
+                    "datastore_id": "local-lvm",
+                    "size_gb": 100,
+                    "discard": "on",
+                    "iothread": True,
+                    "ssd": True,
+                    "cache": "writethrough",
+                },
+            },
+            vga={
+                "type": "std",
+                "memory": 16,
+            },
+            delete={
+                "disks": ["ide2"],
+            },
+            stop_on_destroy=False,
+            purge_on_destroy=True,
+            delete_unreferenced_disks_on_destroy=False,
+            timeouts={
+                "create": "30m",
+                "update": "30m",
+                "delete": "10m",
+            })
+        # Example 6: Linked clone for testing
+        test_clone = proxmoxve.cloned.Vm("test_clone",
+            node_name="pve",
+            name="test-vm",
+            clone={
+                "source_vm_id": 100,
+                "full": False,
+            },
+            cpu={
+                "cores": 2,
+            },
+            network={
+                "net0": {
+                    "bridge": "vmbr0",
+                    "model": "virtio",
+                },
+            })
+        # Example 7: Clone with pool assignment
+        pooled_clone = proxmoxve.cloned.Vm("pooled_clone",
+            node_name="pve",
+            name="pooled-vm",
+            clone={
+                "source_vm_id": 100,
+                "pool_id": "production",
+            },
+            cpu={
+                "cores": 4,
+            })
+        # Example 8: Import existing cloned VM
+        imported = proxmoxve.cloned.Vm("imported",
+            resource_id="123",
+            node_name="pve",
+            clone={
+                "source_vm_id": 100,
+            },
+            cpu={
+                "cores": 4,
+            })
+        ```
 
 
         :param str resource_name: The name of the resource.

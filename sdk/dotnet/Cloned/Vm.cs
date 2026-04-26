@@ -16,7 +16,7 @@ namespace Pulumi.ProxmoxVE.Cloned
     /// 
     /// ## Limitations
     /// 
-    /// This resource intentionally manages only a subset of VM configuration. The following are currently not managed and must be inherited from the source template (or managed via `proxmoxve.VmLegacy` with a `Clone` block):
+    /// This resource intentionally manages only a subset of VM configuration. The following are currently not managed and must be inherited from the source template (or managed via `proxmoxve.Vm` with a `Clone` block):
     /// 
     /// - BIOS / machine / boot order
     /// - EFI disk / secure boot settings
@@ -24,6 +24,254 @@ namespace Pulumi.ProxmoxVE.Cloned
     /// - Cloud-init / initialization
     /// - QEMU guest agent configuration
     /// - PCI/USB passthrough, serial/audio devices, watchdog, VirtioFS
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Example 1: Basic clone with minimal management
+    ///     var basicClone = new ProxmoxVE.Cloned.Vm("basic_clone", new()
+    ///     {
+    ///         NodeName = "pve",
+    ///         Name = "basic-clone",
+    ///         Clone = new ProxmoxVE.Cloned.Inputs.VmCloneArgs
+    ///         {
+    ///             SourceVmId = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:6,18-21)),
+    ///             Full = true,
+    ///         },
+    ///         Cpu = new ProxmoxVE.Cloned.Inputs.VmCpuArgs
+    ///         {
+    ///             Cores = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(4) (example.pp:12,13-14)),
+    ///         },
+    ///     });
+    /// 
+    ///     // Example 2: Clone with explicit network management
+    ///     var networkManaged = new ProxmoxVE.Cloned.Vm("network_managed", new()
+    ///     {
+    ///         NodeName = "pve",
+    ///         Name = "network-clone",
+    ///         Clone = new ProxmoxVE.Cloned.Inputs.VmCloneArgs
+    ///         {
+    ///             SourceVmId = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:23,18-21)),
+    ///         },
+    ///         Network = 
+    ///         {
+    ///             { "net0", new ProxmoxVE.Cloned.Inputs.VmNetworkArgs
+    ///             {
+    ///                 Bridge = "vmbr0",
+    ///                 Model = "virtio",
+    ///                 Tag = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:29,16-19)),
+    ///             } },
+    ///             { "net1", new ProxmoxVE.Cloned.Inputs.VmNetworkArgs
+    ///             {
+    ///                 Bridge = "vmbr1",
+    ///                 Model = "virtio",
+    ///                 Firewall = true,
+    ///                 MacAddress = "BC:24:11:2E:C5:00",
+    ///             } },
+    ///         },
+    ///         Cpu = new ProxmoxVE.Cloned.Inputs.VmCpuArgs
+    ///         {
+    ///             Cores = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:40,13-14)),
+    ///         },
+    ///     });
+    /// 
+    ///     // Example 3: Clone with disk management
+    ///     var diskManaged = new ProxmoxVE.Cloned.Vm("disk_managed", new()
+    ///     {
+    ///         NodeName = "pve",
+    ///         Name = "disk-clone",
+    ///         Clone = new ProxmoxVE.Cloned.Inputs.VmCloneArgs
+    ///         {
+    ///             SourceVmId = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:51,23-26)),
+    ///             TargetDatastore = "local-lvm",
+    ///         },
+    ///         Disk = 
+    ///         {
+    ///             { "scsi0", new ProxmoxVE.Cloned.Inputs.VmDiskArgs
+    ///             {
+    ///                 DatastoreId = "local-lvm",
+    ///                 SizeGb = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(50) (example.pp:57,21-23)),
+    ///                 Discard = "on",
+    ///                 Ssd = true,
+    ///             } },
+    ///             { "scsi1", new ProxmoxVE.Cloned.Inputs.VmDiskArgs
+    ///             {
+    ///                 DatastoreId = "local-lvm",
+    ///                 SizeGb = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:63,21-24)),
+    ///                 Backup = false,
+    ///             } },
+    ///         },
+    ///     });
+    /// 
+    ///     // Example 4: Clone with explicit device deletion
+    ///     var selectiveDelete = new ProxmoxVE.Cloned.Vm("selective_delete", new()
+    ///     {
+    ///         NodeName = "pve",
+    ///         Name = "minimal-clone",
+    ///         Clone = new ProxmoxVE.Cloned.Inputs.VmCloneArgs
+    ///         {
+    ///             SourceVmId = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:76,18-21)),
+    ///         },
+    ///         Network = 
+    ///         {
+    ///             { "net0", new ProxmoxVE.Cloned.Inputs.VmNetworkArgs
+    ///             {
+    ///                 Bridge = "vmbr0",
+    ///                 Model = "virtio",
+    ///             } },
+    ///         },
+    ///         Delete = new ProxmoxVE.Cloned.Inputs.VmDeleteArgs
+    ///         {
+    ///             Networks = new[]
+    ///             {
+    ///                 "net1",
+    ///                 "net2",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Example 5: Full-featured clone with multiple settings
+    ///     var fullFeatured = new ProxmoxVE.Cloned.Vm("full_featured", new()
+    ///     {
+    ///         NodeName = "pve",
+    ///         Name = "production-vm",
+    ///         Description = "Production VM cloned from template",
+    ///         Tags = new[]
+    ///         {
+    ///             "production",
+    ///             "web",
+    ///         },
+    ///         Clone = new ProxmoxVE.Cloned.Inputs.VmCloneArgs
+    ///         {
+    ///             SourceVmId = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:98,23-26)),
+    ///             SourceNodeName = "pve",
+    ///             Full = true,
+    ///             TargetDatastore = "local-lvm",
+    ///             Retries = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(3) (example.pp:102,23-24)),
+    ///         },
+    ///         Cpu = new ProxmoxVE.Cloned.Inputs.VmCpuArgs
+    ///         {
+    ///             Cores = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(8) (example.pp:105,20-21)),
+    ///             Sockets = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1) (example.pp:106,20-21)),
+    ///             Architecture = "x86_64",
+    ///             Type = "host",
+    ///         },
+    ///         Memory = new ProxmoxVE.Cloned.Inputs.VmMemoryArgs
+    ///         {
+    ///             Size = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(8192) (example.pp:111,15-19)),
+    ///             Balloon = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:112,15-19)),
+    ///             Shares = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2000) (example.pp:113,15-19)),
+    ///         },
+    ///         Network = 
+    ///         {
+    ///             { "net0", new ProxmoxVE.Cloned.Inputs.VmNetworkArgs
+    ///             {
+    ///                 Bridge = "vmbr0",
+    ///                 Model = "virtio",
+    ///                 Tag = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:119,19-22)),
+    ///                 Firewall = true,
+    ///                 RateLimit = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:121,19-22)),
+    ///             } },
+    ///         },
+    ///         Disk = 
+    ///         {
+    ///             { "scsi0", new ProxmoxVE.Cloned.Inputs.VmDiskArgs
+    ///             {
+    ///                 DatastoreId = "local-lvm",
+    ///                 SizeGb = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:128,21-24)),
+    ///                 Discard = "on",
+    ///                 Iothread = true,
+    ///                 Ssd = true,
+    ///                 Cache = "writethrough",
+    ///             } },
+    ///         },
+    ///         Vga = new ProxmoxVE.Cloned.Inputs.VmVgaArgs
+    ///         {
+    ///             Type = "std",
+    ///             Memory = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(16) (example.pp:137,14-16)),
+    ///         },
+    ///         Delete = new ProxmoxVE.Cloned.Inputs.VmDeleteArgs
+    ///         {
+    ///             Disks = new[]
+    ///             {
+    ///                 "ide2",
+    ///             },
+    ///         },
+    ///         StopOnDestroy = false,
+    ///         PurgeOnDestroy = true,
+    ///         DeleteUnreferencedDisksOnDestroy = false,
+    ///         Timeouts = new ProxmoxVE.Cloned.Inputs.VmTimeoutsArgs
+    ///         {
+    ///             Create = "30m",
+    ///             Update = "30m",
+    ///             Delete = "10m",
+    ///         },
+    ///     });
+    /// 
+    ///     // Example 6: Linked clone for testing
+    ///     var testClone = new ProxmoxVE.Cloned.Vm("test_clone", new()
+    ///     {
+    ///         NodeName = "pve",
+    ///         Name = "test-vm",
+    ///         Clone = new ProxmoxVE.Cloned.Inputs.VmCloneArgs
+    ///         {
+    ///             SourceVmId = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:162,18-21)),
+    ///             Full = false,
+    ///         },
+    ///         Cpu = new ProxmoxVE.Cloned.Inputs.VmCpuArgs
+    ///         {
+    ///             Cores = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:167,13-14)),
+    ///         },
+    ///         Network = 
+    ///         {
+    ///             { "net0", new ProxmoxVE.Cloned.Inputs.VmNetworkArgs
+    ///             {
+    ///                 Bridge = "vmbr0",
+    ///                 Model = "virtio",
+    ///             } },
+    ///         },
+    ///     });
+    /// 
+    ///     // Example 7: Clone with pool assignment
+    ///     var pooledClone = new ProxmoxVE.Cloned.Vm("pooled_clone", new()
+    ///     {
+    ///         NodeName = "pve",
+    ///         Name = "pooled-vm",
+    ///         Clone = new ProxmoxVE.Cloned.Inputs.VmCloneArgs
+    ///         {
+    ///             SourceVmId = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:184,18-21)),
+    ///             PoolId = "production",
+    ///         },
+    ///         Cpu = new ProxmoxVE.Cloned.Inputs.VmCpuArgs
+    ///         {
+    ///             Cores = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(4) (example.pp:188,13-14)),
+    ///         },
+    ///     });
+    /// 
+    ///     // Example 8: Import existing cloned VM
+    ///     var imported = new ProxmoxVE.Cloned.Vm("imported", new()
+    ///     {
+    ///         ResourceId = "123",
+    ///         NodeName = "pve",
+    ///         Clone = new ProxmoxVE.Cloned.Inputs.VmCloneArgs
+    ///         {
+    ///             SourceVmId = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:199,18-21)),
+    ///         },
+    ///         Cpu = new ProxmoxVE.Cloned.Inputs.VmCpuArgs
+    ///         {
+    ///             Cores = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(4) (example.pp:203,13-14)),
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:cloned/vm:Vm")]
     public partial class Vm : global::Pulumi.CustomResource

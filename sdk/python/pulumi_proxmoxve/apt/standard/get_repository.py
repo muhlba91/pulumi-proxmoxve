@@ -139,6 +139,17 @@ def get_repository(handle: Optional[_builtins.str] = None,
     """
     Retrieves an APT standard repository from a Proxmox VE cluster.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.apt.standard.get_repository(handle="no-subscription",
+        node="pve")
+    pulumi.export("proxmoxAptStandardRepository", example)
+    ```
+
 
     :param _builtins.str handle: The handle of the APT standard repository.
     :param _builtins.str node: The name of the target Proxmox VE node.
@@ -163,6 +174,17 @@ def get_repository_output(handle: Optional[pulumi.Input[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRepositoryResult]:
     """
     Retrieves an APT standard repository from a Proxmox VE cluster.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.apt.standard.get_repository(handle="no-subscription",
+        node="pve")
+    pulumi.export("proxmoxAptStandardRepository", example)
+    ```
 
 
     :param _builtins.str handle: The handle of the APT standard repository.

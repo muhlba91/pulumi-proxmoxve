@@ -49,6 +49,15 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// !/usr/bin/env sh
+// Storage can be imported using its identifier, e.g.:
+//
+// ```sh
+// $ pulumi import proxmoxve:storage/lvmLegacy:LvmLegacy example local-lvm
+// ```
 type LvmLegacy struct {
 	pulumi.CustomResourceState
 

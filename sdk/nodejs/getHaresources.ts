@@ -6,6 +6,24 @@ import * as utilities from "./utilities";
 
 /**
  * Retrieves the list of High Availability resources.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * // This will fetch the set of all HA resource identifiers.
+ * const exampleAll = proxmoxve.getHaresources({});
+ * // This will fetch the set of HA resource identifiers that correspond to virtual machines.
+ * const exampleVm = proxmoxve.getHaresources({
+ *     type: "vm",
+ * });
+ * export const dataProxmoxHaresources = {
+ *     all: exampleAll.then(exampleAll => exampleAll.resourceIds),
+ *     vms: exampleVm.then(exampleVm => exampleVm.resourceIds),
+ * };
+ * ```
  */
 export function getHaresources(args?: GetHaresourcesArgs, opts?: pulumi.InvokeOptions): Promise<GetHaresourcesResult> {
     args = args || {};
@@ -44,6 +62,24 @@ export interface GetHaresourcesResult {
 }
 /**
  * Retrieves the list of High Availability resources.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * // This will fetch the set of all HA resource identifiers.
+ * const exampleAll = proxmoxve.getHaresources({});
+ * // This will fetch the set of HA resource identifiers that correspond to virtual machines.
+ * const exampleVm = proxmoxve.getHaresources({
+ *     type: "vm",
+ * });
+ * export const dataProxmoxHaresources = {
+ *     all: exampleAll.then(exampleAll => exampleAll.resourceIds),
+ *     vms: exampleVm.then(exampleVm => exampleVm.resourceIds),
+ * };
+ * ```
  */
 export function getHaresourcesOutput(args?: GetHaresourcesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHaresourcesResult> {
     args = args || {};

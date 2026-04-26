@@ -6,6 +6,18 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves a single ACME plugin by plugin ID name.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = proxmoxve.acme.getPlugin({
+ *     plugin: "standalone",
+ * });
+ * export const dataProxmoxAcmePlugin = example;
+ * ```
  */
 export function getPlugin(args: GetPluginArgs, opts?: pulumi.InvokeOptions): Promise<GetPluginResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -59,6 +71,18 @@ export interface GetPluginResult {
 }
 /**
  * Retrieves a single ACME plugin by plugin ID name.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = proxmoxve.acme.getPlugin({
+ *     plugin: "standalone",
+ * });
+ * export const dataProxmoxAcmePlugin = example;
+ * ```
  */
 export function getPluginOutput(args: GetPluginOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPluginResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

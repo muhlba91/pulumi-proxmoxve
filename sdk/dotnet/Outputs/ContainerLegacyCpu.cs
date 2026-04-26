@@ -22,6 +22,10 @@ namespace Pulumi.ProxmoxVE.Outputs
         /// </summary>
         public readonly int? Cores;
         /// <summary>
+        /// Limit of CPU usage. Value `0` indicates no limit (defaults to `0`).
+        /// </summary>
+        public readonly double? Limit;
+        /// <summary>
         /// The CPU units (defaults to `1024`).
         /// </summary>
         public readonly int? Units;
@@ -32,10 +36,13 @@ namespace Pulumi.ProxmoxVE.Outputs
 
             int? cores,
 
+            double? limit,
+
             int? units)
         {
             Architecture = architecture;
             Cores = cores;
+            Limit = limit;
             Units = units;
         }
     }

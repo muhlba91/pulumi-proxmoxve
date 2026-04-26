@@ -28,6 +28,52 @@ import javax.annotation.Nullable;
  * |-----------------|----------------|
  * | /access/domains | Realm.Allocate |
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.realm.Ldap;
+ * import io.muehlbachler.pulumi.proxmoxve.realm.LdapArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Ldap("example", LdapArgs.builder()
+ *             .realm("example-ldap")
+ *             .server1("ldap.example.com")
+ *             .port(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(389) (example.pp:3,13-16)))
+ *             .baseDn("ou=people,dc=example,dc=com")
+ *             .userAttr("uid")
+ *             .bindDn("cn=admin,dc=example,dc=com")
+ *             .bindPassword(ldapBindPassword)
+ *             .mode("ldap+starttls")
+ *             .verify(true)
+ *             .groupDn("ou=groups,dc=example,dc=com")
+ *             .groupFilter("(objectClass=groupOfNames)")
+ *             .comment("Example LDAP realm managed by Terraform")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Notes
  * 
  * ### Password Security
@@ -179,6 +225,17 @@ import javax.annotation.Nullable;
  * - [Proxmox VE User Management](https://pve.proxmox.com/wiki/User_Management)
  * - [Proxmox VE LDAP Authentication](https://pve.proxmox.com/wiki/User_Management#pveum_ldap)
  * - [Proxmox API: /access/domains](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/domains)
+ * 
+ * ## Import
+ * 
+ * !/usr/bin/env sh
+ * LDAP realms can be imported using the realm identifier, e.g.:
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:realm/ldap:Ldap example example.com
+ * ```
+ * 
+ * &gt; When importing, the &lt;span pulumi-lang-nodejs=&#34;`bindPassword`&#34; pulumi-lang-dotnet=&#34;`BindPassword`&#34; pulumi-lang-go=&#34;`bindPassword`&#34; pulumi-lang-python=&#34;`bind_password`&#34; pulumi-lang-yaml=&#34;`bindPassword`&#34; pulumi-lang-java=&#34;`bindPassword`&#34;&gt;`bindPassword`&lt;/span&gt; attribute cannot be imported since it&#39;s not returned by the Proxmox API. You&#39;ll need to set this attribute in your Terraform configuration after the import to manage it with Terraform.
  * 
  */
 @ResourceType(type="proxmoxve:realm/ldap:Ldap")

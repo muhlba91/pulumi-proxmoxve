@@ -210,6 +210,19 @@ def get_server(name: Optional[_builtins.str] = None,
     """
     Retrieves information about a specific PVE metric server.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.metrics.get_server(name="example_influxdb")
+    pulumi.export("dataProxmoxMetricsServer", {
+        "server": example.server,
+        "port": example.port,
+    })
+    ```
+
 
     :param _builtins.str name: Unique name that will be ID of this metric server in PVE.
     """
@@ -237,6 +250,19 @@ def get_server_output(name: Optional[pulumi.Input[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServerResult]:
     """
     Retrieves information about a specific PVE metric server.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.metrics.get_server(name="example_influxdb")
+    pulumi.export("dataProxmoxMetricsServer", {
+        "server": example.server,
+        "port": example.port,
+    })
+    ```
 
 
     :param _builtins.str name: Unique name that will be ID of this metric server in PVE.

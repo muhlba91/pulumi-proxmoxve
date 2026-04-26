@@ -338,6 +338,35 @@ class Vxlan(pulumi.CustomResource):
         """
         VXLAN Zone in Proxmox SDN. It establishes a tunnel (overlay) on top of an existing network (underlay). This encapsulates layer 2 Ethernet frames within layer 4 UDP datagrams using the default destination port 4789. You have to configure the underlay network yourself to enable UDP connectivity between all peers. Because VXLAN encapsulation uses 50 bytes, the MTU needs to be 50 bytes lower than the outgoing physical interface.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.sdn.zone.Vxlan("example",
+            resource_id="vxlan1",
+            peers=[
+                "10.0.0.1",
+                "10.0.0.2",
+                "10.0.0.3",
+            ],
+            mtu=1450,
+            dns="1.1.1.1",
+            dns_zone="example.com",
+            ipam="pve",
+            reverse_dns="1.1.1.1")
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        VXLAN SDN zone can be imported using its unique identifier (zone ID)
+
+        ```sh
+        $ pulumi import proxmoxve:sdn/zone/vxlan:Vxlan example vxlan1
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -358,6 +387,35 @@ class Vxlan(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         VXLAN Zone in Proxmox SDN. It establishes a tunnel (overlay) on top of an existing network (underlay). This encapsulates layer 2 Ethernet frames within layer 4 UDP datagrams using the default destination port 4789. You have to configure the underlay network yourself to enable UDP connectivity between all peers. Because VXLAN encapsulation uses 50 bytes, the MTU needs to be 50 bytes lower than the outgoing physical interface.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.sdn.zone.Vxlan("example",
+            resource_id="vxlan1",
+            peers=[
+                "10.0.0.1",
+                "10.0.0.2",
+                "10.0.0.3",
+            ],
+            mtu=1450,
+            dns="1.1.1.1",
+            dns_zone="example.com",
+            ipam="pve",
+            reverse_dns="1.1.1.1")
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        VXLAN SDN zone can be imported using its unique identifier (zone ID)
+
+        ```sh
+        $ pulumi import proxmoxve:sdn/zone/vxlan:Vxlan example vxlan1
+        ```
 
 
         :param str resource_name: The name of the resource.

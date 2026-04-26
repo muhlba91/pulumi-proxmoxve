@@ -538,6 +538,15 @@ class PbsLegacy(pulumi.CustomResource):
             generate_encryption_key=True)
         ```
 
+        ## Import
+
+        !/usr/bin/env sh
+        Storage can be imported using its identifier, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:storage/pbsLegacy:PbsLegacy example pbs-backup
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -582,6 +591,15 @@ class PbsLegacy(pulumi.CustomResource):
             fingerprint="AA:BB:CC:DD:EE:FF",
             contents=["backup"],
             generate_encryption_key=True)
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        Storage can be imported using its identifier, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:storage/pbsLegacy:PbsLegacy example pbs-backup
         ```
 
 

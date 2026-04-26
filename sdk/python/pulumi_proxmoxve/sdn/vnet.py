@@ -240,6 +240,59 @@ class Vnet(pulumi.CustomResource):
         """
         Manages Proxmox VE SDN VNet.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        finalizer = proxmoxve.sdn.Applier("finalizer")
+        # SDN Zone (Simple) - Basic zone for simple vnets
+        example_zone1 = proxmoxve.sdn.zone.Simple("example_zone_1",
+            resource_id="zone1",
+            mtu=1500,
+            dns="1.1.1.1",
+            dns_zone="example.com",
+            ipam="pve",
+            reverse_dns="1.1.1.1",
+            opts = pulumi.ResourceOptions(depends_on=[finalizer]))
+        # SDN Zone (Simple) - Second zone for demonstration
+        example_zone2 = proxmoxve.sdn.zone.Simple("example_zone_2",
+            resource_id="zone2",
+            mtu=1500,
+            opts = pulumi.ResourceOptions(depends_on=[finalizer]))
+        # Basic VNet (Simple)
+        basic_vnet = proxmoxve.sdn.Vnet("basic_vnet",
+            resource_id="vnet1",
+            zone=example_zone1.resource_id,
+            opts = pulumi.ResourceOptions(depends_on=[finalizer]))
+        # VNet with Alias and Port Isolation
+        isolated_vnet = proxmoxve.sdn.Vnet("isolated_vnet",
+            resource_id="vnet2",
+            zone=example_zone2.resource_id,
+            alias="Isolated VNet",
+            isolate_ports=True,
+            vlan_aware=False,
+            opts = pulumi.ResourceOptions(depends_on=[finalizer]))
+        # SDN Applier for all resources
+        vnet_applier = proxmoxve.sdn.Applier("vnet_applier", opts = pulumi.ResourceOptions(depends_on=[
+                example_zone1,
+                example_zone2,
+                basic_vnet,
+                isolated_vnet,
+            ]))
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        SDN vnet can be imported using its unique identifier (vnet ID)
+
+        ```sh
+        $ pulumi import proxmoxve:sdn/vnet:Vnet basic_vnet vnet1
+        $ pulumi import proxmoxve:sdn/vnet:Vnet isolated_vnet vnet2
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -258,6 +311,59 @@ class Vnet(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages Proxmox VE SDN VNet.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        finalizer = proxmoxve.sdn.Applier("finalizer")
+        # SDN Zone (Simple) - Basic zone for simple vnets
+        example_zone1 = proxmoxve.sdn.zone.Simple("example_zone_1",
+            resource_id="zone1",
+            mtu=1500,
+            dns="1.1.1.1",
+            dns_zone="example.com",
+            ipam="pve",
+            reverse_dns="1.1.1.1",
+            opts = pulumi.ResourceOptions(depends_on=[finalizer]))
+        # SDN Zone (Simple) - Second zone for demonstration
+        example_zone2 = proxmoxve.sdn.zone.Simple("example_zone_2",
+            resource_id="zone2",
+            mtu=1500,
+            opts = pulumi.ResourceOptions(depends_on=[finalizer]))
+        # Basic VNet (Simple)
+        basic_vnet = proxmoxve.sdn.Vnet("basic_vnet",
+            resource_id="vnet1",
+            zone=example_zone1.resource_id,
+            opts = pulumi.ResourceOptions(depends_on=[finalizer]))
+        # VNet with Alias and Port Isolation
+        isolated_vnet = proxmoxve.sdn.Vnet("isolated_vnet",
+            resource_id="vnet2",
+            zone=example_zone2.resource_id,
+            alias="Isolated VNet",
+            isolate_ports=True,
+            vlan_aware=False,
+            opts = pulumi.ResourceOptions(depends_on=[finalizer]))
+        # SDN Applier for all resources
+        vnet_applier = proxmoxve.sdn.Applier("vnet_applier", opts = pulumi.ResourceOptions(depends_on=[
+                example_zone1,
+                example_zone2,
+                basic_vnet,
+                isolated_vnet,
+            ]))
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        SDN vnet can be imported using its unique identifier (vnet ID)
+
+        ```sh
+        $ pulumi import proxmoxve:sdn/vnet:Vnet basic_vnet vnet1
+        $ pulumi import proxmoxve:sdn/vnet:Vnet isolated_vnet vnet2
+        ```
 
 
         :param str resource_name: The name of the resource.

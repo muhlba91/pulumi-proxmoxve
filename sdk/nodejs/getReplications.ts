@@ -8,6 +8,19 @@ import * as utilities from "./utilities";
 
 /**
  * Retrieves information about all Replications in Proxmox.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * // List all Replications
+ * const all = proxmoxve.getReplications({});
+ * export const dataProxmoxReplicationsAll = {
+ *     replications: all.then(all => all.replications),
+ * };
+ * ```
  */
 export function getReplications(opts?: pulumi.InvokeOptions): Promise<GetReplicationsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -30,6 +43,19 @@ export interface GetReplicationsResult {
 }
 /**
  * Retrieves information about all Replications in Proxmox.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * // List all Replications
+ * const all = proxmoxve.getReplications({});
+ * export const dataProxmoxReplicationsAll = {
+ *     replications: all.then(all => all.replications),
+ * };
+ * ```
  */
 export function getReplicationsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetReplicationsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

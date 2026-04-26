@@ -11,8 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// !> **DO NOT USE**
-// This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
+// Retrieves information about a specific VM.
 func LookupVm(ctx *pulumi.Context, args *LookupVmArgs, opts ...pulumi.InvokeOption) (*LookupVmResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVmResult
@@ -25,45 +24,35 @@ func LookupVm(ctx *pulumi.Context, args *LookupVmArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getVm.
 type LookupVmArgs struct {
-	// The CPU configuration.
-	Cpu *GetVmCpu `pulumi:"cpu"`
-	// The description of the VM.
-	Description *string `pulumi:"description"`
 	// The unique identifier of the VM in the Proxmox cluster.
 	Id int `pulumi:"id"`
-	// The name of the VM.
-	Name *string `pulumi:"name"`
 	// The name of the node where the VM is provisioned.
-	NodeName string `pulumi:"nodeName"`
-	// The RNG (Random Number Generator) configuration.
-	Rng *GetVmRng `pulumi:"rng"`
-	// The tags assigned to the VM.
-	Tags []string `pulumi:"tags"`
-	// Whether the VM is a template.
-	Template *bool          `pulumi:"template"`
+	NodeName string         `pulumi:"nodeName"`
 	Timeouts *GetVmTimeouts `pulumi:"timeouts"`
-	// The VGA configuration.
-	Vga *GetVmVga `pulumi:"vga"`
 }
 
 // A collection of values returned by getVm.
 type LookupVmResult struct {
+	// The CD-ROM configuration.
+	Cdrom map[string]GetVmCdrom `pulumi:"cdrom"`
 	// The CPU configuration.
 	Cpu GetVmCpu `pulumi:"cpu"`
 	// The description of the VM.
-	Description *string `pulumi:"description"`
+	Description string `pulumi:"description"`
 	// The unique identifier of the VM in the Proxmox cluster.
 	Id int `pulumi:"id"`
 	// The name of the VM.
-	Name *string `pulumi:"name"`
+	Name string `pulumi:"name"`
 	// The name of the node where the VM is provisioned.
 	NodeName string `pulumi:"nodeName"`
 	// The RNG (Random Number Generator) configuration.
 	Rng GetVmRng `pulumi:"rng"`
+	// The status of the VM (e.g., `running`, `stopped`).
+	Status string `pulumi:"status"`
 	// The tags assigned to the VM.
 	Tags []string `pulumi:"tags"`
 	// Whether the VM is a template.
-	Template *bool          `pulumi:"template"`
+	Template bool           `pulumi:"template"`
 	Timeouts *GetVmTimeouts `pulumi:"timeouts"`
 	// The VGA configuration.
 	Vga GetVmVga `pulumi:"vga"`
@@ -80,25 +69,11 @@ func LookupVmOutput(ctx *pulumi.Context, args LookupVmOutputArgs, opts ...pulumi
 
 // A collection of arguments for invoking getVm.
 type LookupVmOutputArgs struct {
-	// The CPU configuration.
-	Cpu GetVmCpuPtrInput `pulumi:"cpu"`
-	// The description of the VM.
-	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The unique identifier of the VM in the Proxmox cluster.
 	Id pulumi.IntInput `pulumi:"id"`
-	// The name of the VM.
-	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The name of the node where the VM is provisioned.
-	NodeName pulumi.StringInput `pulumi:"nodeName"`
-	// The RNG (Random Number Generator) configuration.
-	Rng GetVmRngPtrInput `pulumi:"rng"`
-	// The tags assigned to the VM.
-	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	// Whether the VM is a template.
-	Template pulumi.BoolPtrInput   `pulumi:"template"`
+	NodeName pulumi.StringInput    `pulumi:"nodeName"`
 	Timeouts GetVmTimeoutsPtrInput `pulumi:"timeouts"`
-	// The VGA configuration.
-	Vga GetVmVgaPtrInput `pulumi:"vga"`
 }
 
 func (LookupVmOutputArgs) ElementType() reflect.Type {
@@ -120,14 +95,19 @@ func (o LookupVmResultOutput) ToLookupVmResultOutputWithContext(ctx context.Cont
 	return o
 }
 
+// The CD-ROM configuration.
+func (o LookupVmResultOutput) Cdrom() GetVmCdromMapOutput {
+	return o.ApplyT(func(v LookupVmResult) map[string]GetVmCdrom { return v.Cdrom }).(GetVmCdromMapOutput)
+}
+
 // The CPU configuration.
 func (o LookupVmResultOutput) Cpu() GetVmCpuOutput {
 	return o.ApplyT(func(v LookupVmResult) GetVmCpu { return v.Cpu }).(GetVmCpuOutput)
 }
 
 // The description of the VM.
-func (o LookupVmResultOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupVmResult) *string { return v.Description }).(pulumi.StringPtrOutput)
+func (o LookupVmResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVmResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // The unique identifier of the VM in the Proxmox cluster.
@@ -136,8 +116,8 @@ func (o LookupVmResultOutput) Id() pulumi.IntOutput {
 }
 
 // The name of the VM.
-func (o LookupVmResultOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LookupVmResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o LookupVmResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVmResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The name of the node where the VM is provisioned.
@@ -150,14 +130,19 @@ func (o LookupVmResultOutput) Rng() GetVmRngOutput {
 	return o.ApplyT(func(v LookupVmResult) GetVmRng { return v.Rng }).(GetVmRngOutput)
 }
 
+// The status of the VM (e.g., `running`, `stopped`).
+func (o LookupVmResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVmResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
 // The tags assigned to the VM.
 func (o LookupVmResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupVmResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 // Whether the VM is a template.
-func (o LookupVmResultOutput) Template() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v LookupVmResult) *bool { return v.Template }).(pulumi.BoolPtrOutput)
+func (o LookupVmResultOutput) Template() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupVmResult) bool { return v.Template }).(pulumi.BoolOutput)
 }
 
 func (o LookupVmResultOutput) Timeouts() GetVmTimeoutsPtrOutput {

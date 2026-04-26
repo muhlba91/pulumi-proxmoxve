@@ -11,6 +11,64 @@ import * as utilities from "./utilities";
  * have been replaced by HA rules, which provide node affinity and resource affinity
  * capabilities. For PVE 8 and earlier, use
  * `proxmoxve.Hagroup` instead.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * // Node Affinity Rule: assign VMs to preferred nodes with priorities.
+ * // Non-strict rules allow failover to other nodes; strict rules do not.
+ * const preferNode1 = new proxmoxve.Harule("prefer_node1", {
+ *     rule: "prefer-node1",
+ *     type: "node-affinity",
+ *     comment: "Prefer node1 for these VMs",
+ *     resources: [
+ *         "vm:100",
+ *         "vm:101",
+ *     ],
+ *     nodes: {
+ *         node1: 2,
+ *         node2: 1,
+ *         node3: 1,
+ *     },
+ *     strict: false,
+ * });
+ * // Resource Affinity Rule (Positive): keep resources together on the same node.
+ * const keepTogether = new proxmoxve.Harule("keep_together", {
+ *     rule: "db-cluster-together",
+ *     type: "resource-affinity",
+ *     comment: "Keep database replicas on the same node",
+ *     resources: [
+ *         "vm:200",
+ *         "vm:201",
+ *     ],
+ *     affinity: "positive",
+ * });
+ * // Resource Affinity Rule (Negative / Anti-Affinity): keep resources on
+ * // separate nodes for high availability.
+ * const keepApart = new proxmoxve.Harule("keep_apart", {
+ *     rule: "db-cluster-apart",
+ *     type: "resource-affinity",
+ *     comment: "Spread database replicas across nodes",
+ *     resources: [
+ *         "vm:200",
+ *         "vm:201",
+ *         "vm:202",
+ *     ],
+ *     affinity: "negative",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * !/usr/bin/env sh
+ * HA rules can be imported using their name, e.g.:
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:index/harule:Harule example prefer-node1
+ * ```
  */
 export class Harule extends pulumi.CustomResource {
     /**

@@ -13,6 +13,53 @@ import (
 )
 
 // Manages a Proxmox Backup Server (PBS) storage in Proxmox VE.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := storage.NewPbs(ctx, "example", &storage.PbsArgs{
+//				ResourceId: pulumi.String("example-pbs"),
+//				Nodes: pulumi.StringArray{
+//					pulumi.String("pve"),
+//				},
+//				Server:      pulumi.String("pbs.example.local"),
+//				Datastore:   pulumi.String("backup"),
+//				Username:    pulumi.String("pbs-user"),
+//				Password:    pulumi.String("pbs-password"),
+//				Fingerprint: pulumi.String("AA:BB:CC:DD:EE:FF"),
+//				Contents: pulumi.StringArray{
+//					pulumi.String("backup"),
+//				},
+//				GenerateEncryptionKey: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// !/usr/bin/env sh
+// Storage can be imported using its identifier, e.g.:
+//
+// ```sh
+// $ pulumi import proxmoxve:storage/pbs:Pbs example pbs-backup
+// ```
 type Pbs struct {
 	pulumi.CustomResourceState
 

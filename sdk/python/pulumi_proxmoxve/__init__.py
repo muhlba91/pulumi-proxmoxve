@@ -566,6 +566,14 @@ _utilities.register(
  },
  {
   "pkg": "proxmoxve",
+  "mod": "network/linux/bond",
+  "fqn": "pulumi_proxmoxve.network.linux",
+  "classes": {
+   "proxmoxve:network/linux/bond:Bond": "Bond"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
   "mod": "network/linux/bridge",
   "fqn": "pulumi_proxmoxve.network.linux",
   "classes": {

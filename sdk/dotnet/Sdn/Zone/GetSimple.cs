@@ -13,18 +13,111 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
     {
         /// <summary>
         /// Retrieves information about a Simple Zone in Proxmox SDN. It will create an isolated VNet bridge. This bridge is not linked to a physical interface, and VM traffic is only local on each the node. It can be used in NAT or routed setups.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = ProxmoxVE.Sdn.Zone.GetSimple.Invoke(new()
+        ///     {
+        ///         Id = "simple1",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxSdnZoneSimple"] = 
+        ///         {
+        ///             { "id", example.Apply(getSimpleResult =&gt; getSimpleResult.Id) },
+        ///             { "nodes", example.Apply(getSimpleResult =&gt; getSimpleResult.Nodes) },
+        ///             { "mtu", example.Apply(getSimpleResult =&gt; getSimpleResult.Mtu) },
+        ///             { "dns", example.Apply(getSimpleResult =&gt; getSimpleResult.Dns) },
+        ///             { "dnsZone", example.Apply(getSimpleResult =&gt; getSimpleResult.DnsZone) },
+        ///             { "ipam", example.Apply(getSimpleResult =&gt; getSimpleResult.Ipam) },
+        ///             { "reverseDns", example.Apply(getSimpleResult =&gt; getSimpleResult.ReverseDns) },
+        ///         },
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetSimpleResult> InvokeAsync(GetSimpleArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSimpleResult>("proxmoxve:sdn/zone/getSimple:getSimple", args ?? new GetSimpleArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about a Simple Zone in Proxmox SDN. It will create an isolated VNet bridge. This bridge is not linked to a physical interface, and VM traffic is only local on each the node. It can be used in NAT or routed setups.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = ProxmoxVE.Sdn.Zone.GetSimple.Invoke(new()
+        ///     {
+        ///         Id = "simple1",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxSdnZoneSimple"] = 
+        ///         {
+        ///             { "id", example.Apply(getSimpleResult =&gt; getSimpleResult.Id) },
+        ///             { "nodes", example.Apply(getSimpleResult =&gt; getSimpleResult.Nodes) },
+        ///             { "mtu", example.Apply(getSimpleResult =&gt; getSimpleResult.Mtu) },
+        ///             { "dns", example.Apply(getSimpleResult =&gt; getSimpleResult.Dns) },
+        ///             { "dnsZone", example.Apply(getSimpleResult =&gt; getSimpleResult.DnsZone) },
+        ///             { "ipam", example.Apply(getSimpleResult =&gt; getSimpleResult.Ipam) },
+        ///             { "reverseDns", example.Apply(getSimpleResult =&gt; getSimpleResult.ReverseDns) },
+        ///         },
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetSimpleResult> Invoke(GetSimpleInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSimpleResult>("proxmoxve:sdn/zone/getSimple:getSimple", args ?? new GetSimpleInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about a Simple Zone in Proxmox SDN. It will create an isolated VNet bridge. This bridge is not linked to a physical interface, and VM traffic is only local on each the node. It can be used in NAT or routed setups.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = ProxmoxVE.Sdn.Zone.GetSimple.Invoke(new()
+        ///     {
+        ///         Id = "simple1",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxSdnZoneSimple"] = 
+        ///         {
+        ///             { "id", example.Apply(getSimpleResult =&gt; getSimpleResult.Id) },
+        ///             { "nodes", example.Apply(getSimpleResult =&gt; getSimpleResult.Nodes) },
+        ///             { "mtu", example.Apply(getSimpleResult =&gt; getSimpleResult.Mtu) },
+        ///             { "dns", example.Apply(getSimpleResult =&gt; getSimpleResult.Dns) },
+        ///             { "dnsZone", example.Apply(getSimpleResult =&gt; getSimpleResult.DnsZone) },
+        ///             { "ipam", example.Apply(getSimpleResult =&gt; getSimpleResult.Ipam) },
+        ///             { "reverseDns", example.Apply(getSimpleResult =&gt; getSimpleResult.ReverseDns) },
+        ///         },
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetSimpleResult> Invoke(GetSimpleInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetSimpleResult>("proxmoxve:sdn/zone/getSimple:getSimple", args ?? new GetSimpleInvokeArgs(), options.WithDefaults());

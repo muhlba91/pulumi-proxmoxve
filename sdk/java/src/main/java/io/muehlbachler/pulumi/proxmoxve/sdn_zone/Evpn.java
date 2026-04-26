@@ -21,6 +21,66 @@ import javax.annotation.Nullable;
 /**
  * EVPN Zone in Proxmox SDN. The EVPN zone creates a routable Layer 3 network, capable of spanning across multiple clusters.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.sdn.Evpn;
+ * import io.muehlbachler.pulumi.proxmoxve.sdn.EvpnArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Evpn("example", EvpnArgs.builder()
+ *             .resourceId("evpn1")
+ *             .nodes("pve")
+ *             .controller("evpn-controller1")
+ *             .vrfVxlan(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(4000) (example.pp:4,16-20)))
+ *             .advertiseSubnets(true)
+ *             .disableArpNdSuppression(false)
+ *             .exitNodes(            
+ *                 "pve-exit1",
+ *                 "pve-exit2")
+ *             .exitNodesLocalRouting(true)
+ *             .primaryExitNode("pve-exit1")
+ *             .rtImport("65000:65000")
+ *             .mtu(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1450) (example.pp:14,29-33)))
+ *             .dns("1.1.1.1")
+ *             .dnsZone("example.com")
+ *             .ipam("pve")
+ *             .reverseDns("1.1.1.1")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * !/usr/bin/env sh
+ * EVPN SDN zone can be imported using its unique identifier (zone ID)
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:sdn/zone/evpn:Evpn example evpn1
+ * ```
+ * 
  */
 @ResourceType(type="proxmoxve:sdn/zone/evpn:Evpn")
 public class Evpn extends com.pulumi.resources.CustomResource {

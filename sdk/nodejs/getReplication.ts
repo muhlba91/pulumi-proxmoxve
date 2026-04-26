@@ -6,6 +6,24 @@ import * as utilities from "./utilities";
 
 /**
  * Retrieves information about an existing Replication.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = proxmoxve.getReplication({
+ *     id: "100-0",
+ * });
+ * export const dataProxmoxReplication = {
+ *     id: example.then(example => example.id),
+ *     target: example.then(example => example.target),
+ *     type: example.then(example => example.type),
+ *     jobnum: example.then(example => example.jobnum),
+ *     guest: example.then(example => example.guest),
+ * };
+ * ```
  */
 export function getReplication(args: GetReplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetReplicationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -71,6 +89,24 @@ export interface GetReplicationResult {
 }
 /**
  * Retrieves information about an existing Replication.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = proxmoxve.getReplication({
+ *     id: "100-0",
+ * });
+ * export const dataProxmoxReplication = {
+ *     id: example.then(example => example.id),
+ *     target: example.then(example => example.target),
+ *     type: example.then(example => example.type),
+ *     jobnum: example.then(example => example.jobnum),
+ *     guest: example.then(example => example.guest),
+ * };
+ * ```
  */
 export function getReplicationOutput(args: GetReplicationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetReplicationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

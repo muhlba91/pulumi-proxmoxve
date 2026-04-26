@@ -13,6 +13,55 @@ import (
 )
 
 // Manages a Linux VLAN network interface in a Proxmox VE node.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/network"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// using VLAN tag
+//			_, err := network.NewVlan(ctx, "vlan99", &network.VlanArgs{
+//				NodeName: pulumi.String("pve"),
+//				Name:     pulumi.String("eno0.99"),
+//				Comment:  pulumi.String("VLAN 99"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// using custom network interface name
+//			_, err = network.NewVlan(ctx, "vlan98", &network.VlanArgs{
+//				NodeName:  pulumi.String("pve"),
+//				Name:      pulumi.String("vlan_lab"),
+//				Interface: pulumi.String("eno0"),
+//				Vlan:      pulumi.Int(98),
+//				Comment:   pulumi.String("VLAN 98"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// !/usr/bin/env sh
+// Interfaces can be imported using the `node_name:iface` format, e.g.
+//
+// ```sh
+// $ pulumi import proxmoxve:network/linux/vlan:Vlan vlan99 pve:vlan99
+// ```
 type Vlan struct {
 	pulumi.CustomResourceState
 

@@ -30,15 +30,11 @@ namespace Pulumi.ProxmoxVE.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Flags;
         /// <summary>
-        /// The number of hotplugged vCPUs.
-        /// </summary>
-        public readonly int Hotplugged;
-        /// <summary>
         /// Limit of CPU usage.
         /// </summary>
         public readonly double Limit;
         /// <summary>
-        /// Enable NUMA.
+        /// Whether NUMA emulation is enabled.
         /// </summary>
         public readonly bool Numa;
         /// <summary>
@@ -53,6 +49,10 @@ namespace Pulumi.ProxmoxVE.Outputs
         /// CPU weight for a VM
         /// </summary>
         public readonly int Units;
+        /// <summary>
+        /// Number of active vCPUs.
+        /// </summary>
+        public readonly int Vcpus;
 
         [OutputConstructor]
         private GetVmCpuResult(
@@ -64,8 +64,6 @@ namespace Pulumi.ProxmoxVE.Outputs
 
             ImmutableArray<string> flags,
 
-            int hotplugged,
-
             double limit,
 
             bool numa,
@@ -74,18 +72,20 @@ namespace Pulumi.ProxmoxVE.Outputs
 
             string type,
 
-            int units)
+            int units,
+
+            int vcpus)
         {
             Affinity = affinity;
             Architecture = architecture;
             Cores = cores;
             Flags = flags;
-            Hotplugged = hotplugged;
             Limit = limit;
             Numa = numa;
             Sockets = sockets;
             Type = type;
             Units = units;
+            Vcpus = vcpus;
         }
     }
 }

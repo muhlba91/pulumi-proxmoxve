@@ -6,6 +6,42 @@ import * as utilities from "../utilities";
 
 /**
  * Manages PVE metrics server.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const influxdbServer = new proxmoxve.metrics.Server("influxdb_server", {
+ *     name: "example_influxdb_server",
+ *     server: "192.168.3.2",
+ *     port: 8089,
+ *     type: "influxdb",
+ * });
+ * const graphiteServer = new proxmoxve.metrics.Server("graphite_server", {
+ *     name: "example_graphite_server",
+ *     server: "192.168.4.2",
+ *     port: 2003,
+ *     type: "graphite",
+ * });
+ * const opentelemetryServer = new proxmoxve.metrics.Server("opentelemetry_server", {
+ *     name: "example_opentelemetry_server",
+ *     server: "192.168.5.2",
+ *     port: 4318,
+ *     type: "opentelemetry",
+ *     opentelemetryProto: "http",
+ *     opentelemetryPath: "/v1/metrics",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * !/usr/bin/env sh
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:metrics/server:Server example example
+ * ```
  */
 export class Server extends pulumi.CustomResource {
     /**
@@ -36,9 +72,9 @@ export class Server extends pulumi.CustomResource {
     }
 
     /**
-     * Set this to `true` to disable this metric server.
+     * Set this to `true` to disable this metric server. Defaults to `false`.
      */
-    declare public readonly disable: pulumi.Output<boolean | undefined>;
+    declare public readonly disable: pulumi.Output<boolean>;
     /**
      * Root graphite path (ex: `proxmox.mycluster.mykey`).
      */
@@ -72,7 +108,7 @@ export class Server extends pulumi.CustomResource {
      */
     declare public readonly influxToken: pulumi.Output<string | undefined>;
     /**
-     * Set to `false` to disable certificate verification for https endpoints.
+     * Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
      */
     declare public readonly influxVerify: pulumi.Output<boolean | undefined>;
     /**
@@ -217,7 +253,7 @@ export class Server extends pulumi.CustomResource {
  */
 export interface ServerState {
     /**
-     * Set this to `true` to disable this metric server.
+     * Set this to `true` to disable this metric server. Defaults to `false`.
      */
     disable?: pulumi.Input<boolean>;
     /**
@@ -253,7 +289,7 @@ export interface ServerState {
      */
     influxToken?: pulumi.Input<string>;
     /**
-     * Set to `false` to disable certificate verification for https endpoints.
+     * Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
      */
     influxVerify?: pulumi.Input<boolean>;
     /**
@@ -319,7 +355,7 @@ export interface ServerState {
  */
 export interface ServerArgs {
     /**
-     * Set this to `true` to disable this metric server.
+     * Set this to `true` to disable this metric server. Defaults to `false`.
      */
     disable?: pulumi.Input<boolean>;
     /**
@@ -355,7 +391,7 @@ export interface ServerArgs {
      */
     influxToken?: pulumi.Input<string>;
     /**
-     * Set to `false` to disable certificate verification for https endpoints.
+     * Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
      */
     influxVerify?: pulumi.Input<boolean>;
     /**

@@ -20,6 +20,35 @@ namespace Pulumi.ProxmoxVE.Realm
     /// |-----------------|----------------|
     /// | /access/domains | Realm.Allocate |
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new ProxmoxVE.Realm.Openid("example", new()
+    ///     {
+    ///         Realm = "example-oidc",
+    ///         IssuerUrl = "https://auth.example.com",
+    ///         ClientId = "your-client-id",
+    ///         ClientKey = oidcClientSecret,
+    ///         UsernameClaim = "email",
+    ///         Autocreate = true,
+    ///         GroupsClaim = "groups",
+    ///         GroupsAutocreate = true,
+    ///         GroupsOverwrite = false,
+    ///         Scopes = "openid email profile",
+    ///         QueryUserinfo = true,
+    ///         Comment = "Example OpenID Connect realm managed by Terraform",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Notes
     /// 
     /// ### Client Key Security
@@ -96,6 +125,17 @@ namespace Pulumi.ProxmoxVE.Realm
     /// - [Proxmox VE User Management](https://pve.proxmox.com/wiki/User_Management)
     /// - [Proxmox VE OpenID Connect Authentication](https://pve.proxmox.com/wiki/User_Management#pveum_openid)
     /// - [Proxmox API: /access/domains](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/domains)
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// OpenID realms can be imported using the realm identifier, e.g.:
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:realm/openid:Openid example example-oidc
+    /// ```
+    /// 
+    /// &gt; When importing, the `ClientKey` attribute cannot be imported since it's not returned by the Proxmox API. You'll need to set this attribute in your Terraform configuration after the import to manage it with Terraform.
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:realm/openid:Openid")]
     public partial class Openid : global::Pulumi.CustomResource

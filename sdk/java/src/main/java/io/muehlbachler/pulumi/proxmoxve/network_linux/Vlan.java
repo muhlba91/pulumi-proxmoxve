@@ -19,6 +19,62 @@ import javax.annotation.Nullable;
 /**
  * Manages a Linux VLAN network interface in a Proxmox VE node.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.network.Vlan;
+ * import io.muehlbachler.pulumi.proxmoxve.network.VlanArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // using VLAN tag
+ *         var vlan99 = new Vlan("vlan99", VlanArgs.builder()
+ *             .nodeName("pve")
+ *             .name("eno0.99")
+ *             .comment("VLAN 99")
+ *             .build());
+ * 
+ *         // using custom network interface name
+ *         var vlan98 = new Vlan("vlan98", VlanArgs.builder()
+ *             .nodeName("pve")
+ *             .name("vlan_lab")
+ *             .interface_("eno0")
+ *             .vlan(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(98) (example.pp:13,15-17)))
+ *             .comment("VLAN 98")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * !/usr/bin/env sh
+ * Interfaces can be imported using the `node_name:iface` format, e.g.
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:network/linux/vlan:Vlan vlan99 pve:vlan99
+ * ```
+ * 
  */
 @ResourceType(type="proxmoxve:network/linux/vlan:Vlan")
 public class Vlan extends com.pulumi.resources.CustomResource {

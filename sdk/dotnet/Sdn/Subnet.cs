@@ -11,6 +11,151 @@ namespace Pulumi.ProxmoxVE.Sdn
 {
     /// <summary>
     /// Manages SDN Subnets in Proxmox VE.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var finalizer = new ProxmoxVE.Sdn.Applier("finalizer");
+    /// 
+    ///     // SDN Zone (Simple) - Basic zone for simple vnets
+    ///     var exampleZone1 = new ProxmoxVE.Sdn.Zone.Simple("example_zone_1", new()
+    ///     {
+    ///         ResourceId = "zone1",
+    ///         Nodes = new[]
+    ///         {
+    ///             "pve",
+    ///         },
+    ///         Mtu = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1500) (example.pp:8,16-20)),
+    ///         Dns = "1.1.1.1",
+    ///         DnsZone = "example.com",
+    ///         Ipam = "pve",
+    ///         ReverseDns = "1.1.1.1",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             finalizer,
+    ///         },
+    ///     });
+    /// 
+    ///     // SDN Zone (Simple) - Second zone for demonstration
+    ///     var exampleZone2 = new ProxmoxVE.Sdn.Zone.Simple("example_zone_2", new()
+    ///     {
+    ///         ResourceId = "zone2",
+    ///         Nodes = new[]
+    ///         {
+    ///             "pve",
+    ///         },
+    ///         Mtu = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1500) (example.pp:27,16-20)),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             finalizer,
+    ///         },
+    ///     });
+    /// 
+    ///     // SDN VNet - Basic vnet
+    ///     var exampleVnet1 = new ProxmoxVE.Sdn.Vnet("example_vnet_1", new()
+    ///     {
+    ///         ResourceId = "vnet1",
+    ///         Zone = exampleZone1.ResourceId,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             finalizer,
+    ///         },
+    ///     });
+    /// 
+    ///     // SDN VNet - VNet with alias and port isolation
+    ///     var exampleVnet2 = new ProxmoxVE.Sdn.Vnet("example_vnet_2", new()
+    ///     {
+    ///         ResourceId = "vnet2",
+    ///         Zone = exampleZone2.ResourceId,
+    ///         Alias = "Example VNet 2",
+    ///         IsolatePorts = true,
+    ///         VlanAware = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             finalizer,
+    ///         },
+    ///     });
+    /// 
+    ///     // Basic Subnet
+    ///     var basicSubnet = new ProxmoxVE.Sdn.Subnet("basic_subnet", new()
+    ///     {
+    ///         Cidr = "192.168.1.0/24",
+    ///         Vnet = exampleVnet1.ResourceId,
+    ///         Gateway = "192.168.1.1",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             finalizer,
+    ///         },
+    ///     });
+    /// 
+    ///     // Subnet with DHCP Configuration
+    ///     var dhcpSubnet = new ProxmoxVE.Sdn.Subnet("dhcp_subnet", new()
+    ///     {
+    ///         Cidr = "192.168.2.0/24",
+    ///         Vnet = exampleVnet2.ResourceId,
+    ///         Gateway = "192.168.2.1",
+    ///         DhcpDnsServer = "192.168.2.53",
+    ///         DnsZonePrefix = "internal.example.com",
+    ///         Snat = true,
+    ///         DhcpRange = new ProxmoxVE.Sdn.Inputs.SubnetDhcpRangeArgs
+    ///         {
+    ///             StartAddress = "192.168.2.10",
+    ///             EndAddress = "192.168.2.100",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             finalizer,
+    ///         },
+    ///     });
+    /// 
+    ///     // SDN Applier for all resources
+    ///     var subnetApplier = new ProxmoxVE.Sdn.Applier("subnet_applier", new()
+    ///     {
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             exampleZone1,
+    ///             exampleZone2,
+    ///             exampleVnet1,
+    ///             exampleVnet2,
+    ///             basicSubnet,
+    ///             dhcpSubnet,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// SDN subnet can be imported using its unique identifier in the format: &lt;vnet&gt;/&lt;subnet-id&gt;
+    /// The &lt;subnet-id&gt; is the canonical ID from Proxmox, e.g., "zone1-192.168.1.0-24"
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:sdn/subnet:Subnet basic_subnet vnet1/zone1-192.168.1.0-24
+    /// $ pulumi import proxmoxve:sdn/subnet:Subnet dhcp_subnet vnet2/zone2-192.168.2.0-24
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:sdn/subnet:Subnet")]
     public partial class Subnet : global::Pulumi.CustomResource

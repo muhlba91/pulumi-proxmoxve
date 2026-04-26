@@ -6,6 +6,43 @@ import * as utilities from "../../utilities";
 
 /**
  * EVPN Zone in Proxmox SDN. The EVPN zone creates a routable Layer 3 network, capable of spanning across multiple clusters.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = new proxmoxve.sdn.zone.Evpn("example", {
+ *     resourceId: "evpn1",
+ *     nodes: ["pve"],
+ *     controller: "evpn-controller1",
+ *     vrfVxlan: 4000,
+ *     advertiseSubnets: true,
+ *     disableArpNdSuppression: false,
+ *     exitNodes: [
+ *         "pve-exit1",
+ *         "pve-exit2",
+ *     ],
+ *     exitNodesLocalRouting: true,
+ *     primaryExitNode: "pve-exit1",
+ *     rtImport: "65000:65000",
+ *     mtu: 1450,
+ *     dns: "1.1.1.1",
+ *     dnsZone: "example.com",
+ *     ipam: "pve",
+ *     reverseDns: "1.1.1.1",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * !/usr/bin/env sh
+ * EVPN SDN zone can be imported using its unique identifier (zone ID)
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:sdn/zone/evpn:Evpn example evpn1
+ * ```
  */
 export class Evpn extends pulumi.CustomResource {
     /**

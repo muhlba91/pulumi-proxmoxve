@@ -6,6 +6,36 @@ import * as utilities from "../../utilities";
 
 /**
  * VXLAN Zone in Proxmox SDN. It establishes a tunnel (overlay) on top of an existing network (underlay). This encapsulates layer 2 Ethernet frames within layer 4 UDP datagrams using the default destination port 4789. You have to configure the underlay network yourself to enable UDP connectivity between all peers. Because VXLAN encapsulation uses 50 bytes, the MTU needs to be 50 bytes lower than the outgoing physical interface.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = new proxmoxve.sdn.zone.Vxlan("example", {
+ *     resourceId: "vxlan1",
+ *     peers: [
+ *         "10.0.0.1",
+ *         "10.0.0.2",
+ *         "10.0.0.3",
+ *     ],
+ *     mtu: 1450,
+ *     dns: "1.1.1.1",
+ *     dnsZone: "example.com",
+ *     ipam: "pve",
+ *     reverseDns: "1.1.1.1",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * !/usr/bin/env sh
+ * VXLAN SDN zone can be imported using its unique identifier (zone ID)
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:sdn/zone/vxlan:Vxlan example vxlan1
+ * ```
  */
 export class Vxlan extends pulumi.CustomResource {
     /**

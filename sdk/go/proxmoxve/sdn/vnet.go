@@ -13,6 +13,97 @@ import (
 )
 
 // Manages Proxmox VE SDN VNet.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/sdn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			finalizer, err := sdn.NewApplier(ctx, "finalizer", nil)
+//			if err != nil {
+//				return err
+//			}
+//			// SDN Zone (Simple) - Basic zone for simple vnets
+//			exampleZone1, err := sdn.NewSimple(ctx, "example_zone_1", &sdn.SimpleArgs{
+//				ResourceId: pulumi.String("zone1"),
+//				Mtu:        pulumi.Int(1500),
+//				Dns:        pulumi.String("1.1.1.1"),
+//				DnsZone:    pulumi.String("example.com"),
+//				Ipam:       pulumi.String("pve"),
+//				ReverseDns: pulumi.String("1.1.1.1"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				finalizer,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			// SDN Zone (Simple) - Second zone for demonstration
+//			exampleZone2, err := sdn.NewSimple(ctx, "example_zone_2", &sdn.SimpleArgs{
+//				ResourceId: pulumi.String("zone2"),
+//				Mtu:        pulumi.Int(1500),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				finalizer,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			// Basic VNet (Simple)
+//			basicVnet, err := sdn.NewVnet(ctx, "basic_vnet", &sdn.VnetArgs{
+//				ResourceId: pulumi.String("vnet1"),
+//				Zone:       exampleZone1.ResourceId,
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				finalizer,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			// VNet with Alias and Port Isolation
+//			isolatedVnet, err := sdn.NewVnet(ctx, "isolated_vnet", &sdn.VnetArgs{
+//				ResourceId:   pulumi.String("vnet2"),
+//				Zone:         exampleZone2.ResourceId,
+//				Alias:        pulumi.String("Isolated VNet"),
+//				IsolatePorts: pulumi.Bool(true),
+//				VlanAware:    pulumi.Bool(false),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				finalizer,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			// SDN Applier for all resources
+//			_, err = sdn.NewApplier(ctx, "vnet_applier", nil, pulumi.DependsOn([]pulumi.Resource{
+//				exampleZone1,
+//				exampleZone2,
+//				basicVnet,
+//				isolatedVnet,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// !/usr/bin/env sh
+// SDN vnet can be imported using its unique identifier (vnet ID)
+//
+// ```sh
+// $ pulumi import proxmoxve:sdn/vnet:Vnet basic_vnet vnet1
+// $ pulumi import proxmoxve:sdn/vnet:Vnet isolated_vnet vnet2
+// ```
 type Vnet struct {
 	pulumi.CustomResourceState
 

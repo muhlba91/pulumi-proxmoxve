@@ -291,6 +291,69 @@ class Certificate(pulumi.CustomResource):
         - An ACME account is configured (using `acme.Account`)
         - DNS plugins are configured if using DNS-01 challenge (using `acme/dns.Plugin`)
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        # Example: Basic ACME certificate with HTTP-01 challenge (standalone)
+        example = proxmoxve.acme.Account("example",
+            name="production",
+            contact="admin@example.com",
+            directory="https://acme-v02.api.letsencrypt.org/directory",
+            tos="https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf")
+        http_example = proxmoxve.acme.Certificate("http_example",
+            node_name="pve-node-01",
+            account=example.name,
+            domains=[{
+                "domain": "pve.example.com",
+            }])
+        # Example: ACME certificate with DNS-01 challenge using Cloudflare
+        cloudflare = proxmoxve.acme.dns.Plugin("cloudflare",
+            plugin="cloudflare",
+            api="cf",
+            validation_delay=120,
+            data={
+                "CF_Account_ID": "your-cloudflare-account-id",
+                "CF_Token": "your-cloudflare-api-token",
+                "CF_Zone_ID": "your-cloudflare-zone-id",
+            })
+        dns_example = proxmoxve.acme.Certificate("dns_example",
+            node_name="pve-node-01",
+            account=example.name,
+            domains=[{
+                "domain": "pve.example.com",
+                "plugin": cloudflare.plugin,
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[
+                    example,
+                    cloudflare,
+                ]))
+        # Example: Force certificate renewal
+        force_renew = proxmoxve.acme.Certificate("force_renew",
+            node_name="pve-node-01",
+            account=example.name,
+            force=True,
+            domains=[{
+                "domain": "pve.example.com",
+                "plugin": cloudflare.plugin,
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[
+                    example,
+                    cloudflare,
+                ]))
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        ACME certificates can be imported using the node name, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:acme/certificate:Certificate example pve-node-01
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -311,6 +374,69 @@ class Certificate(pulumi.CustomResource):
         This resource orders and renews certificates from an ACME Certificate Authority (like Let's Encrypt) for a specific node. Before using this resource, ensure that:
         - An ACME account is configured (using `acme.Account`)
         - DNS plugins are configured if using DNS-01 challenge (using `acme/dns.Plugin`)
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        # Example: Basic ACME certificate with HTTP-01 challenge (standalone)
+        example = proxmoxve.acme.Account("example",
+            name="production",
+            contact="admin@example.com",
+            directory="https://acme-v02.api.letsencrypt.org/directory",
+            tos="https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf")
+        http_example = proxmoxve.acme.Certificate("http_example",
+            node_name="pve-node-01",
+            account=example.name,
+            domains=[{
+                "domain": "pve.example.com",
+            }])
+        # Example: ACME certificate with DNS-01 challenge using Cloudflare
+        cloudflare = proxmoxve.acme.dns.Plugin("cloudflare",
+            plugin="cloudflare",
+            api="cf",
+            validation_delay=120,
+            data={
+                "CF_Account_ID": "your-cloudflare-account-id",
+                "CF_Token": "your-cloudflare-api-token",
+                "CF_Zone_ID": "your-cloudflare-zone-id",
+            })
+        dns_example = proxmoxve.acme.Certificate("dns_example",
+            node_name="pve-node-01",
+            account=example.name,
+            domains=[{
+                "domain": "pve.example.com",
+                "plugin": cloudflare.plugin,
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[
+                    example,
+                    cloudflare,
+                ]))
+        # Example: Force certificate renewal
+        force_renew = proxmoxve.acme.Certificate("force_renew",
+            node_name="pve-node-01",
+            account=example.name,
+            force=True,
+            domains=[{
+                "domain": "pve.example.com",
+                "plugin": cloudflare.plugin,
+            }],
+            opts = pulumi.ResourceOptions(depends_on=[
+                    example,
+                    cloudflare,
+                ]))
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        ACME certificates can be imported using the node name, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:acme/certificate:Certificate example pve-node-01
+        ```
 
 
         :param str resource_name: The name of the resource.

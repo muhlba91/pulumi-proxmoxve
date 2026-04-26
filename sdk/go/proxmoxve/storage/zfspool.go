@@ -13,6 +13,50 @@ import (
 )
 
 // Manages ZFS-based storage in Proxmox VE.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := storage.NewZfspool(ctx, "example", &storage.ZfspoolArgs{
+//				ResourceId: pulumi.String("example-zfs"),
+//				Nodes: pulumi.StringArray{
+//					pulumi.String("pve"),
+//				},
+//				ZfsPool: pulumi.String("rpool/data"),
+//				Contents: pulumi.StringArray{
+//					pulumi.String("images"),
+//				},
+//				ThinProvision: pulumi.Bool(true),
+//				Blocksize:     pulumi.String("64k"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// !/usr/bin/env sh
+// Storage can be imported using its identifier, e.g.:
+//
+// ```sh
+// $ pulumi import proxmoxve:storage/zfspool:Zfspool example local-zfs
+// ```
 type Zfspool struct {
 	pulumi.CustomResourceState
 

@@ -294,6 +294,27 @@ class Sync(pulumi.CustomResource):
         used alongside realm configuration resources such as
         `realm.Ldap`.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.realm.Ldap("example",
+            realm="example-ldap",
+            server1="ldap.example.com",
+            port=389,
+            base_dn="ou=people,dc=example,dc=com",
+            user_attr="uid",
+            group_dn="ou=groups,dc=example,dc=com",
+            group_filter="(objectClass=groupOfNames)")
+        example_sync = proxmoxve.realm.Sync("example",
+            realm=example.realm,
+            scope="both",
+            remove_vanished="acl;entry;properties",
+            enable_new=True)
+        ```
+
         ## Behavior Notes
 
         - The sync operation is **one-shot**: applying the resource runs the sync
@@ -302,6 +323,18 @@ class Sync(pulumi.CustomResource):
           configuration in Terraform state.
         - Destroying the resource does **not** undo any previously performed sync;
           it simply removes the resource from Terraform state.
+
+        ## Import
+
+        !/usr/bin/env sh
+        Realm sync resources can be imported by realm name, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:realm/sync:Sync example example.com
+        ```
+
+        Importing only populates the `realm` and `id` attributes; other fields must
+        be set in configuration.
 
 
         :param str resource_name: The name of the resource.
@@ -327,6 +360,27 @@ class Sync(pulumi.CustomResource):
         used alongside realm configuration resources such as
         `realm.Ldap`.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.realm.Ldap("example",
+            realm="example-ldap",
+            server1="ldap.example.com",
+            port=389,
+            base_dn="ou=people,dc=example,dc=com",
+            user_attr="uid",
+            group_dn="ou=groups,dc=example,dc=com",
+            group_filter="(objectClass=groupOfNames)")
+        example_sync = proxmoxve.realm.Sync("example",
+            realm=example.realm,
+            scope="both",
+            remove_vanished="acl;entry;properties",
+            enable_new=True)
+        ```
+
         ## Behavior Notes
 
         - The sync operation is **one-shot**: applying the resource runs the sync
@@ -335,6 +389,18 @@ class Sync(pulumi.CustomResource):
           configuration in Terraform state.
         - Destroying the resource does **not** undo any previously performed sync;
           it simply removes the resource from Terraform state.
+
+        ## Import
+
+        !/usr/bin/env sh
+        Realm sync resources can be imported by realm name, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:realm/sync:Sync example example.com
+        ```
+
+        Importing only populates the `realm` and `id` attributes; other fields must
+        be set in configuration.
 
 
         :param str resource_name: The name of the resource.

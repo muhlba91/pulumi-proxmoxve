@@ -12,6 +12,41 @@ import (
 )
 
 // Retrieves information about a Simple Zone in Proxmox SDN. It will create an isolated VNet bridge. This bridge is not linked to a physical interface, and VM traffic is only local on each the node. It can be used in NAT or routed setups.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/sdn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := sdn.GetSimple(ctx, &zone.GetSimpleArgs{
+//				Id: "simple1",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("dataProxmoxSdnZoneSimple", pulumi.Map{
+//				"id":         example.Id,
+//				"nodes":      example.Nodes,
+//				"mtu":        example.Mtu,
+//				"dns":        example.Dns,
+//				"dnsZone":    example.DnsZone,
+//				"ipam":       example.Ipam,
+//				"reverseDns": example.ReverseDns,
+//			})
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupSimple(ctx *pulumi.Context, args *LookupSimpleArgs, opts ...pulumi.InvokeOption) (*LookupSimpleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupSimpleResult

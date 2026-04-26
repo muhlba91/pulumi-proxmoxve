@@ -11,6 +11,29 @@ import * as utilities from "../utilities";
  * used alongside realm configuration resources such as
  * `proxmoxve.realm.Ldap`.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = new proxmoxve.realm.Ldap("example", {
+ *     realm: "example-ldap",
+ *     server1: "ldap.example.com",
+ *     port: 389,
+ *     baseDn: "ou=people,dc=example,dc=com",
+ *     userAttr: "uid",
+ *     groupDn: "ou=groups,dc=example,dc=com",
+ *     groupFilter: "(objectClass=groupOfNames)",
+ * });
+ * const exampleSync = new proxmoxve.realm.Sync("example", {
+ *     realm: example.realm,
+ *     scope: "both",
+ *     removeVanished: "acl;entry;properties",
+ *     enableNew: true,
+ * });
+ * ```
+ *
  * ## Behavior Notes
  *
  * - The sync operation is **one-shot**: applying the resource runs the sync
@@ -19,6 +42,18 @@ import * as utilities from "../utilities";
  *   configuration in Terraform state.
  * - Destroying the resource does **not** undo any previously performed sync;
  *   it simply removes the resource from Terraform state.
+ *
+ * ## Import
+ *
+ * !/usr/bin/env sh
+ * Realm sync resources can be imported by realm name, e.g.:
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:realm/sync:Sync example example.com
+ * ```
+ *
+ * Importing only populates the `realm` and `id` attributes; other fields must
+ * be set in configuration.
  */
 export class Sync extends pulumi.CustomResource {
     /**

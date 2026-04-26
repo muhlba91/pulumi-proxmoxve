@@ -202,6 +202,12 @@ namespace Pulumi.ProxmoxVE
         public string DatastoreId { get; set; } = null!;
 
         /// <summary>
+        /// A regular expression to filter files by name. When set, only files whose name matches the expression are returned.
+        /// </summary>
+        [Input("fileNameRegex")]
+        public string? FileNameRegex { get; set; }
+
+        /// <summary>
         /// The name of the node.
         /// </summary>
         [Input("nodeName", required: true)]
@@ -228,6 +234,12 @@ namespace Pulumi.ProxmoxVE
         public Input<string> DatastoreId { get; set; } = null!;
 
         /// <summary>
+        /// A regular expression to filter files by name. When set, only files whose name matches the expression are returned.
+        /// </summary>
+        [Input("fileNameRegex")]
+        public Input<string>? FileNameRegex { get; set; }
+
+        /// <summary>
         /// The name of the node.
         /// </summary>
         [Input("nodeName", required: true)]
@@ -252,6 +264,10 @@ namespace Pulumi.ProxmoxVE
         /// </summary>
         public readonly string DatastoreId;
         /// <summary>
+        /// A regular expression to filter files by name. When set, only files whose name matches the expression are returned.
+        /// </summary>
+        public readonly string? FileNameRegex;
+        /// <summary>
         /// The list of files in the datastore.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFilesFileResult> Files;
@@ -270,6 +286,8 @@ namespace Pulumi.ProxmoxVE
 
             string datastoreId,
 
+            string? fileNameRegex,
+
             ImmutableArray<Outputs.GetFilesFileResult> files,
 
             string id,
@@ -278,6 +296,7 @@ namespace Pulumi.ProxmoxVE
         {
             ContentType = contentType;
             DatastoreId = datastoreId;
+            FileNameRegex = fileNameRegex;
             Files = files;
             Id = id;
             NodeName = nodeName;

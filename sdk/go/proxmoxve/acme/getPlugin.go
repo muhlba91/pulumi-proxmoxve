@@ -12,6 +12,33 @@ import (
 )
 
 // Retrieves a single ACME plugin by plugin ID name.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/acme"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := acme.GetPlugin(ctx, &acme.GetPluginArgs{
+//				Plugin: "standalone",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("dataProxmoxAcmePlugin", example)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetPlugin(ctx *pulumi.Context, args *GetPluginArgs, opts ...pulumi.InvokeOption) (*GetPluginResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPluginResult

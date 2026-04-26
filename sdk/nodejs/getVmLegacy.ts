@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * > **Deprecated:** Use `proxmoxve.Vm` instead. This data source will be removed in v1.0.
+ *
  * Retrieves information about a specific VM.
  *
  * ## Example Usage
@@ -79,6 +81,8 @@ export interface GetVmLegacyResult {
     readonly vmId: number;
 }
 /**
+ * > **Deprecated:** Use `proxmoxve.Vm` instead. This data source will be removed in v1.0.
+ *
  * Retrieves information about a specific VM.
  *
  * ## Example Usage

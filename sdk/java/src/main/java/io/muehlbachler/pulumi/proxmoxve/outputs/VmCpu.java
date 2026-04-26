@@ -26,7 +26,7 @@ public final class VmCpu {
      */
     private @Nullable String architecture;
     /**
-     * @return The number of CPU cores per socket (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
+     * @return The number of CPU cores per socket (PVE defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt; when unset).
      * 
      */
     private @Nullable Integer cores;
@@ -36,35 +36,35 @@ public final class VmCpu {
      */
     private @Nullable List<String> flags;
     /**
-     * @return The number of hotplugged vCPUs (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
-     * 
-     */
-    private @Nullable Integer hotplugged;
-    /**
-     * @return Limit of CPU usage (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; which means no limit).
+     * @return Limit of CPU usage. &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; means no limit (PVE default).
      * 
      */
     private @Nullable Double limit;
     /**
-     * @return Enable NUMA (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * @return Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
      * 
      */
     private @Nullable Boolean numa;
     /**
-     * @return The number of CPU sockets (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
+     * @return The number of CPU sockets (PVE defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt; when unset).
      * 
      */
     private @Nullable Integer sockets;
     /**
-     * @return Emulated CPU type, it&#39;s recommended to use `x86-64-v2-AES` or higher (defaults to &lt;span pulumi-lang-nodejs=&#34;`kvm64`&#34; pulumi-lang-dotnet=&#34;`Kvm64`&#34; pulumi-lang-go=&#34;`kvm64`&#34; pulumi-lang-python=&#34;`kvm64`&#34; pulumi-lang-yaml=&#34;`kvm64`&#34; pulumi-lang-java=&#34;`kvm64`&#34;&gt;`kvm64`&lt;/span&gt;). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+     * @return Emulated CPU type, it&#39;s recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
      * 
      */
     private @Nullable String type;
     /**
-     * @return CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+     * @return CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; is a valid value meaning disable CPU share weighting.
      * 
      */
     private @Nullable Integer units;
+    /**
+     * @return Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+     * 
+     */
+    private @Nullable Integer vcpus;
 
     private VmCpu() {}
     /**
@@ -82,7 +82,7 @@ public final class VmCpu {
         return Optional.ofNullable(this.architecture);
     }
     /**
-     * @return The number of CPU cores per socket (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
+     * @return The number of CPU cores per socket (PVE defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt; when unset).
      * 
      */
     public Optional<Integer> cores() {
@@ -96,46 +96,46 @@ public final class VmCpu {
         return this.flags == null ? List.of() : this.flags;
     }
     /**
-     * @return The number of hotplugged vCPUs (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
-     * 
-     */
-    public Optional<Integer> hotplugged() {
-        return Optional.ofNullable(this.hotplugged);
-    }
-    /**
-     * @return Limit of CPU usage (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; which means no limit).
+     * @return Limit of CPU usage. &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; means no limit (PVE default).
      * 
      */
     public Optional<Double> limit() {
         return Optional.ofNullable(this.limit);
     }
     /**
-     * @return Enable NUMA (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * @return Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
      * 
      */
     public Optional<Boolean> numa() {
         return Optional.ofNullable(this.numa);
     }
     /**
-     * @return The number of CPU sockets (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
+     * @return The number of CPU sockets (PVE defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt; when unset).
      * 
      */
     public Optional<Integer> sockets() {
         return Optional.ofNullable(this.sockets);
     }
     /**
-     * @return Emulated CPU type, it&#39;s recommended to use `x86-64-v2-AES` or higher (defaults to &lt;span pulumi-lang-nodejs=&#34;`kvm64`&#34; pulumi-lang-dotnet=&#34;`Kvm64`&#34; pulumi-lang-go=&#34;`kvm64`&#34; pulumi-lang-python=&#34;`kvm64`&#34; pulumi-lang-yaml=&#34;`kvm64`&#34; pulumi-lang-java=&#34;`kvm64`&#34;&gt;`kvm64`&lt;/span&gt;). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+     * @return Emulated CPU type, it&#39;s recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+     * @return CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; is a valid value meaning disable CPU share weighting.
      * 
      */
     public Optional<Integer> units() {
         return Optional.ofNullable(this.units);
+    }
+    /**
+     * @return Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+     * 
+     */
+    public Optional<Integer> vcpus() {
+        return Optional.ofNullable(this.vcpus);
     }
 
     public static Builder builder() {
@@ -151,12 +151,12 @@ public final class VmCpu {
         private @Nullable String architecture;
         private @Nullable Integer cores;
         private @Nullable List<String> flags;
-        private @Nullable Integer hotplugged;
         private @Nullable Double limit;
         private @Nullable Boolean numa;
         private @Nullable Integer sockets;
         private @Nullable String type;
         private @Nullable Integer units;
+        private @Nullable Integer vcpus;
         public Builder() {}
         public Builder(VmCpu defaults) {
     	      Objects.requireNonNull(defaults);
@@ -164,12 +164,12 @@ public final class VmCpu {
     	      this.architecture = defaults.architecture;
     	      this.cores = defaults.cores;
     	      this.flags = defaults.flags;
-    	      this.hotplugged = defaults.hotplugged;
     	      this.limit = defaults.limit;
     	      this.numa = defaults.numa;
     	      this.sockets = defaults.sockets;
     	      this.type = defaults.type;
     	      this.units = defaults.units;
+    	      this.vcpus = defaults.vcpus;
         }
 
         @CustomType.Setter
@@ -198,12 +198,6 @@ public final class VmCpu {
         }
         public Builder flags(String... flags) {
             return flags(List.of(flags));
-        }
-        @CustomType.Setter
-        public Builder hotplugged(@Nullable Integer hotplugged) {
-
-            this.hotplugged = hotplugged;
-            return this;
         }
         @CustomType.Setter
         public Builder limit(@Nullable Double limit) {
@@ -235,18 +229,24 @@ public final class VmCpu {
             this.units = units;
             return this;
         }
+        @CustomType.Setter
+        public Builder vcpus(@Nullable Integer vcpus) {
+
+            this.vcpus = vcpus;
+            return this;
+        }
         public VmCpu build() {
             final var _resultValue = new VmCpu();
             _resultValue.affinity = affinity;
             _resultValue.architecture = architecture;
             _resultValue.cores = cores;
             _resultValue.flags = flags;
-            _resultValue.hotplugged = hotplugged;
             _resultValue.limit = limit;
             _resultValue.numa = numa;
             _resultValue.sockets = sockets;
             _resultValue.type = type;
             _resultValue.units = units;
+            _resultValue.vcpus = vcpus;
             return _resultValue;
         }
     }

@@ -338,6 +338,31 @@ class Vlan(pulumi.CustomResource):
         """
         VLAN Zone in Proxmox SDN. It uses an existing local Linux or OVS bridge to connect to the node's physical interface. It uses VLAN tagging defined in the VNet to isolate the network segments. This allows connectivity of VMs between different nodes.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.sdn.zone.Vlan("example",
+            resource_id="vlan1",
+            bridge="vmbr0",
+            mtu=1500,
+            dns="1.1.1.1",
+            dns_zone="example.com",
+            ipam="pve",
+            reverse_dns="1.1.1.1")
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        VLAN SDN zone can be imported using its unique identifier (zone ID)
+
+        ```sh
+        $ pulumi import proxmoxve:sdn/zone/vlan:Vlan example vlan1
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -358,6 +383,31 @@ class Vlan(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         VLAN Zone in Proxmox SDN. It uses an existing local Linux or OVS bridge to connect to the node's physical interface. It uses VLAN tagging defined in the VNet to isolate the network segments. This allows connectivity of VMs between different nodes.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.sdn.zone.Vlan("example",
+            resource_id="vlan1",
+            bridge="vmbr0",
+            mtu=1500,
+            dns="1.1.1.1",
+            dns_zone="example.com",
+            ipam="pve",
+            reverse_dns="1.1.1.1")
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        VLAN SDN zone can be imported using its unique identifier (zone ID)
+
+        ```sh
+        $ pulumi import proxmoxve:sdn/zone/vlan:Vlan example vlan1
+        ```
 
 
         :param str resource_name: The name of the resource.

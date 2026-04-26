@@ -114,6 +114,19 @@ def get_hagroup(group: Optional[_builtins.str] = None,
     """
     Retrieves information about a specific High Availability group.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    # This will fetch the set of HA group identifiers...
+    all = proxmoxve.get_hagroups()
+    # ...which we will go through in order to fetch the whole data on each group.
+    example = {__key: proxmoxve.get_hagroup(group=__value) for __key, __value in enumerate(all.group_ids)}
+    pulumi.export("proxmoxHagroupsFull", example)
+    ```
+
 
     :param _builtins.str group: The identifier of the High Availability group to read.
     """
@@ -133,6 +146,19 @@ def get_hagroup_output(group: Optional[pulumi.Input[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHagroupResult]:
     """
     Retrieves information about a specific High Availability group.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    # This will fetch the set of HA group identifiers...
+    all = proxmoxve.get_hagroups()
+    # ...which we will go through in order to fetch the whole data on each group.
+    example = {__key: proxmoxve.get_hagroup(group=__value) for __key, __value in enumerate(all.group_ids)}
+    pulumi.export("proxmoxHagroupsFull", example)
+    ```
 
 
     :param _builtins.str group: The identifier of the High Availability group to read.

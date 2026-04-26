@@ -11,6 +11,44 @@ namespace Pulumi.ProxmoxVE.Oci
 {
     /// <summary>
     /// Manages OCI images pulled from OCI registries using PVE oci-registry-pull API. Pulls OCI container images and stores them as tar files in Proxmox VE datastores.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ubuntuLatest = new ProxmoxVE.Oci.Image("ubuntu_latest", new()
+    ///     {
+    ///         NodeName = "pve",
+    ///         DatastoreId = "local",
+    ///         Reference = "docker.io/library/ubuntu:latest",
+    ///     });
+    /// 
+    ///     var nginx = new ProxmoxVE.Oci.Image("nginx", new()
+    ///     {
+    ///         NodeName = "pve",
+    ///         DatastoreId = "local",
+    ///         Reference = "docker.io/library/nginx:alpine",
+    ///         FileName = "custom_image_name.tar",
+    ///     });
+    /// 
+    ///     var debian = new ProxmoxVE.Oci.Image("debian", new()
+    ///     {
+    ///         NodeName = "pve",
+    ///         DatastoreId = "local",
+    ///         Reference = "docker.io/library/debian:bookworm",
+    ///         UploadTimeout = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(900) (example.pp:18,24-27)),
+    ///         Overwrite = false,
+    ///         OverwriteUnmanaged = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:oci/image:Image")]
     public partial class Image : global::Pulumi.CustomResource

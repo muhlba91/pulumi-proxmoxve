@@ -34,6 +34,14 @@ namespace Pulumi.ProxmoxVE.Inputs
         public Input<bool>? Firewall { get; set; }
 
         /// <summary>
+        /// Whether the host runs DHCP on this interface's
+        /// behalf (defaults to `False`). Requires Proxmox VE 9.0+. Required for
+        /// application containers that do not include a DHCP client.
+        /// </summary>
+        [Input("hostManaged")]
+        public Input<bool>? HostManaged { get; set; }
+
+        /// <summary>
         /// The MAC address.
         /// </summary>
         [Input("macAddress")]

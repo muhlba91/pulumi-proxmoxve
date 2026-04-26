@@ -18,6 +18,13 @@ namespace Pulumi.ProxmoxVE.Outputs
         /// </summary>
         public readonly string? DatastoreId;
         /// <summary>
+        /// When cloning, create a full copy of all disks. Set
+        /// to `False` to create a linked clone. Linked clones require the source
+        /// container to be a template on storage that supports copy-on-write
+        /// (e.g. Ceph RBD) (defaults to `True`).
+        /// </summary>
+        public readonly bool? Full;
+        /// <summary>
         /// The name of the source node (leave blank, if
         /// equal to the `NodeName` argument).
         /// </summary>
@@ -31,11 +38,14 @@ namespace Pulumi.ProxmoxVE.Outputs
         private ContainerLegacyClone(
             string? datastoreId,
 
+            bool? full,
+
             string? nodeName,
 
             int vmId)
         {
             DatastoreId = datastoreId;
+            Full = full;
             NodeName = nodeName;
             VmId = vmId;
         }

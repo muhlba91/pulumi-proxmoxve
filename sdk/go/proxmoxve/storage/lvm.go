@@ -13,6 +13,49 @@ import (
 )
 
 // Manages LVM-based storage in Proxmox VE.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := storage.NewLvm(ctx, "example", &storage.LvmArgs{
+//				ResourceId: pulumi.String("example-lvm"),
+//				Nodes: pulumi.StringArray{
+//					pulumi.String("pve"),
+//				},
+//				VolumeGroup: pulumi.String("vg0"),
+//				Contents: pulumi.StringArray{
+//					pulumi.String("images"),
+//				},
+//				WipeRemovedVolumes: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// !/usr/bin/env sh
+// Storage can be imported using its identifier, e.g.:
+//
+// ```sh
+// $ pulumi import proxmoxve:storage/lvm:Lvm example local-lvm
+// ```
 type Lvm struct {
 	pulumi.CustomResourceState
 

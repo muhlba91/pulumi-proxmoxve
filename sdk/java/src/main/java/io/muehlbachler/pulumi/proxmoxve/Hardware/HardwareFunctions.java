@@ -13,13 +13,64 @@ import io.muehlbachler.pulumi.proxmoxve.hardware.inputs.GetMappingsArgs;
 import io.muehlbachler.pulumi.proxmoxve.hardware.inputs.GetMappingsLegacyArgs;
 import io.muehlbachler.pulumi.proxmoxve.hardware.inputs.GetMappingsLegacyPlainArgs;
 import io.muehlbachler.pulumi.proxmoxve.hardware.inputs.GetMappingsPlainArgs;
+import io.muehlbachler.pulumi.proxmoxve.hardware.inputs.GetPciArgs;
+import io.muehlbachler.pulumi.proxmoxve.hardware.inputs.GetPciPlainArgs;
 import io.muehlbachler.pulumi.proxmoxve.hardware.outputs.GetMappingsLegacyResult;
 import io.muehlbachler.pulumi.proxmoxve.hardware.outputs.GetMappingsResult;
+import io.muehlbachler.pulumi.proxmoxve.hardware.outputs.GetPciResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class HardwareFunctions {
     /**
      * Retrieves a list of hardware mapping resources.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.hardware.HardwareFunctions;
+     * import com.pulumi.proxmoxve.hardware.inputs.GetMappingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example-dir = HardwareFunctions.getMappings(GetMappingsArgs.builder()
+     *             .checkNode("pve")
+     *             .type("dir")
+     *             .build());
+     * 
+     *         final var example-pci = HardwareFunctions.getMappings(GetMappingsArgs.builder()
+     *             .checkNode("pve")
+     *             .type("pci")
+     *             .build());
+     * 
+     *         final var example-usb = HardwareFunctions.getMappings(GetMappingsArgs.builder()
+     *             .checkNode("pve")
+     *             .type("usb")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxHardwareMappingsPci", example_pci);
+     *         ctx.export("dataProxmoxHardwareMappingsUsb", example_usb);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMappingsResult> getMappings(GetMappingsArgs args) {
@@ -28,12 +79,108 @@ public final class HardwareFunctions {
     /**
      * Retrieves a list of hardware mapping resources.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.hardware.HardwareFunctions;
+     * import com.pulumi.proxmoxve.hardware.inputs.GetMappingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example-dir = HardwareFunctions.getMappings(GetMappingsArgs.builder()
+     *             .checkNode("pve")
+     *             .type("dir")
+     *             .build());
+     * 
+     *         final var example-pci = HardwareFunctions.getMappings(GetMappingsArgs.builder()
+     *             .checkNode("pve")
+     *             .type("pci")
+     *             .build());
+     * 
+     *         final var example-usb = HardwareFunctions.getMappings(GetMappingsArgs.builder()
+     *             .checkNode("pve")
+     *             .type("usb")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxHardwareMappingsPci", example_pci);
+     *         ctx.export("dataProxmoxHardwareMappingsUsb", example_usb);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static CompletableFuture<GetMappingsResult> getMappingsPlain(GetMappingsPlainArgs args) {
         return getMappingsPlain(args, InvokeOptions.Empty);
     }
     /**
      * Retrieves a list of hardware mapping resources.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.hardware.HardwareFunctions;
+     * import com.pulumi.proxmoxve.hardware.inputs.GetMappingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example-dir = HardwareFunctions.getMappings(GetMappingsArgs.builder()
+     *             .checkNode("pve")
+     *             .type("dir")
+     *             .build());
+     * 
+     *         final var example-pci = HardwareFunctions.getMappings(GetMappingsArgs.builder()
+     *             .checkNode("pve")
+     *             .type("pci")
+     *             .build());
+     * 
+     *         final var example-usb = HardwareFunctions.getMappings(GetMappingsArgs.builder()
+     *             .checkNode("pve")
+     *             .type("usb")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxHardwareMappingsPci", example_pci);
+     *         ctx.export("dataProxmoxHardwareMappingsUsb", example_usb);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetMappingsResult> getMappings(GetMappingsArgs args, InvokeOptions options) {
@@ -42,12 +189,108 @@ public final class HardwareFunctions {
     /**
      * Retrieves a list of hardware mapping resources.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.hardware.HardwareFunctions;
+     * import com.pulumi.proxmoxve.hardware.inputs.GetMappingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example-dir = HardwareFunctions.getMappings(GetMappingsArgs.builder()
+     *             .checkNode("pve")
+     *             .type("dir")
+     *             .build());
+     * 
+     *         final var example-pci = HardwareFunctions.getMappings(GetMappingsArgs.builder()
+     *             .checkNode("pve")
+     *             .type("pci")
+     *             .build());
+     * 
+     *         final var example-usb = HardwareFunctions.getMappings(GetMappingsArgs.builder()
+     *             .checkNode("pve")
+     *             .type("usb")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxHardwareMappingsPci", example_pci);
+     *         ctx.export("dataProxmoxHardwareMappingsUsb", example_usb);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetMappingsResult> getMappings(GetMappingsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:hardware/getMappings:getMappings", TypeShape.of(GetMappingsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves a list of hardware mapping resources.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.hardware.HardwareFunctions;
+     * import com.pulumi.proxmoxve.hardware.inputs.GetMappingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example-dir = HardwareFunctions.getMappings(GetMappingsArgs.builder()
+     *             .checkNode("pve")
+     *             .type("dir")
+     *             .build());
+     * 
+     *         final var example-pci = HardwareFunctions.getMappings(GetMappingsArgs.builder()
+     *             .checkNode("pve")
+     *             .type("pci")
+     *             .build());
+     * 
+     *         final var example-usb = HardwareFunctions.getMappings(GetMappingsArgs.builder()
+     *             .checkNode("pve")
+     *             .type("usb")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxHardwareMappingsPci", example_pci);
+     *         ctx.export("dataProxmoxHardwareMappingsUsb", example_usb);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetMappingsResult> getMappingsPlain(GetMappingsPlainArgs args, InvokeOptions options) {
@@ -337,5 +580,305 @@ public final class HardwareFunctions {
      */
     public static CompletableFuture<GetMappingsLegacyResult> getMappingsLegacyPlain(GetMappingsLegacyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("proxmoxve:hardware/getMappingsLegacy:getMappingsLegacy", TypeShape.of(GetMappingsLegacyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the list of PCI devices present on a specific Proxmox VE node. This is useful for discovering PCI devices available for passthrough or for configuring hardware mappings.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.hardware.HardwareFunctions;
+     * import com.pulumi.proxmoxve.hardware.inputs.GetPciArgs;
+     * import com.pulumi.proxmoxve.hardware.inputs.GetPciFiltersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all PCI devices on a node (using default blacklist)
+     *         final var example = HardwareFunctions.getPci(GetPciArgs.builder()
+     *             .nodeName("pve")
+     *             .build());
+     * 
+     *         // List all PCI devices including bridges and memory controllers
+     *         final var all = HardwareFunctions.getPci(GetPciArgs.builder()
+     *             .nodeName("pve")
+     *             .pciClassBlacklists()
+     *             .build());
+     * 
+     *         // Find all NVIDIA GPUs (vendor ID 10de = NVIDIA, class 03 = display controller)
+     *         final var gpus = HardwareFunctions.getPci(GetPciArgs.builder()
+     *             .nodeName("pve")
+     *             .pciClassBlacklists()
+     *             .filters(GetPciFiltersArgs.builder()
+     *                 .vendorId("10de")
+     *                 .class_("03")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPciResult> getPci(GetPciArgs args) {
+        return getPci(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the list of PCI devices present on a specific Proxmox VE node. This is useful for discovering PCI devices available for passthrough or for configuring hardware mappings.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.hardware.HardwareFunctions;
+     * import com.pulumi.proxmoxve.hardware.inputs.GetPciArgs;
+     * import com.pulumi.proxmoxve.hardware.inputs.GetPciFiltersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all PCI devices on a node (using default blacklist)
+     *         final var example = HardwareFunctions.getPci(GetPciArgs.builder()
+     *             .nodeName("pve")
+     *             .build());
+     * 
+     *         // List all PCI devices including bridges and memory controllers
+     *         final var all = HardwareFunctions.getPci(GetPciArgs.builder()
+     *             .nodeName("pve")
+     *             .pciClassBlacklists()
+     *             .build());
+     * 
+     *         // Find all NVIDIA GPUs (vendor ID 10de = NVIDIA, class 03 = display controller)
+     *         final var gpus = HardwareFunctions.getPci(GetPciArgs.builder()
+     *             .nodeName("pve")
+     *             .pciClassBlacklists()
+     *             .filters(GetPciFiltersArgs.builder()
+     *                 .vendorId("10de")
+     *                 .class_("03")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetPciResult> getPciPlain(GetPciPlainArgs args) {
+        return getPciPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the list of PCI devices present on a specific Proxmox VE node. This is useful for discovering PCI devices available for passthrough or for configuring hardware mappings.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.hardware.HardwareFunctions;
+     * import com.pulumi.proxmoxve.hardware.inputs.GetPciArgs;
+     * import com.pulumi.proxmoxve.hardware.inputs.GetPciFiltersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all PCI devices on a node (using default blacklist)
+     *         final var example = HardwareFunctions.getPci(GetPciArgs.builder()
+     *             .nodeName("pve")
+     *             .build());
+     * 
+     *         // List all PCI devices including bridges and memory controllers
+     *         final var all = HardwareFunctions.getPci(GetPciArgs.builder()
+     *             .nodeName("pve")
+     *             .pciClassBlacklists()
+     *             .build());
+     * 
+     *         // Find all NVIDIA GPUs (vendor ID 10de = NVIDIA, class 03 = display controller)
+     *         final var gpus = HardwareFunctions.getPci(GetPciArgs.builder()
+     *             .nodeName("pve")
+     *             .pciClassBlacklists()
+     *             .filters(GetPciFiltersArgs.builder()
+     *                 .vendorId("10de")
+     *                 .class_("03")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPciResult> getPci(GetPciArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:hardware/getPci:getPci", TypeShape.of(GetPciResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the list of PCI devices present on a specific Proxmox VE node. This is useful for discovering PCI devices available for passthrough or for configuring hardware mappings.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.hardware.HardwareFunctions;
+     * import com.pulumi.proxmoxve.hardware.inputs.GetPciArgs;
+     * import com.pulumi.proxmoxve.hardware.inputs.GetPciFiltersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all PCI devices on a node (using default blacklist)
+     *         final var example = HardwareFunctions.getPci(GetPciArgs.builder()
+     *             .nodeName("pve")
+     *             .build());
+     * 
+     *         // List all PCI devices including bridges and memory controllers
+     *         final var all = HardwareFunctions.getPci(GetPciArgs.builder()
+     *             .nodeName("pve")
+     *             .pciClassBlacklists()
+     *             .build());
+     * 
+     *         // Find all NVIDIA GPUs (vendor ID 10de = NVIDIA, class 03 = display controller)
+     *         final var gpus = HardwareFunctions.getPci(GetPciArgs.builder()
+     *             .nodeName("pve")
+     *             .pciClassBlacklists()
+     *             .filters(GetPciFiltersArgs.builder()
+     *                 .vendorId("10de")
+     *                 .class_("03")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetPciResult> getPci(GetPciArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("proxmoxve:hardware/getPci:getPci", TypeShape.of(GetPciResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the list of PCI devices present on a specific Proxmox VE node. This is useful for discovering PCI devices available for passthrough or for configuring hardware mappings.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.hardware.HardwareFunctions;
+     * import com.pulumi.proxmoxve.hardware.inputs.GetPciArgs;
+     * import com.pulumi.proxmoxve.hardware.inputs.GetPciFiltersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all PCI devices on a node (using default blacklist)
+     *         final var example = HardwareFunctions.getPci(GetPciArgs.builder()
+     *             .nodeName("pve")
+     *             .build());
+     * 
+     *         // List all PCI devices including bridges and memory controllers
+     *         final var all = HardwareFunctions.getPci(GetPciArgs.builder()
+     *             .nodeName("pve")
+     *             .pciClassBlacklists()
+     *             .build());
+     * 
+     *         // Find all NVIDIA GPUs (vendor ID 10de = NVIDIA, class 03 = display controller)
+     *         final var gpus = HardwareFunctions.getPci(GetPciArgs.builder()
+     *             .nodeName("pve")
+     *             .pciClassBlacklists()
+     *             .filters(GetPciFiltersArgs.builder()
+     *                 .vendorId("10de")
+     *                 .class_("03")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetPciResult> getPciPlain(GetPciPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("proxmoxve:hardware/getPci:getPci", TypeShape.of(GetPciResult.class), args, Utilities.withVersion(options));
     }
 }

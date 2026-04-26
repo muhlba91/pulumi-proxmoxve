@@ -223,6 +223,35 @@ class Token(pulumi.CustomResource):
         """
         User API tokens.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        # if creating a user token, the user must be created first
+        user = proxmoxve.UserLegacy("user",
+            comment="Managed by Pulumi",
+            email="user@pve",
+            enabled=True,
+            expiration_date="2034-01-01T22:00:00Z",
+            user_id="user@pve")
+        user_token = proxmoxve.user.Token("user_token",
+            comment="Managed by Pulumi",
+            expiration_date="2033-01-01T22:00:00Z",
+            token_name="tk1",
+            user_id=user.user_id)
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        Tokens can be imported using their identifiers in the format `user_id!token_name`, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:user/token:Token token1 user@pve!token1
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -240,6 +269,35 @@ class Token(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         User API tokens.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        # if creating a user token, the user must be created first
+        user = proxmoxve.UserLegacy("user",
+            comment="Managed by Pulumi",
+            email="user@pve",
+            enabled=True,
+            expiration_date="2034-01-01T22:00:00Z",
+            user_id="user@pve")
+        user_token = proxmoxve.user.Token("user_token",
+            comment="Managed by Pulumi",
+            expiration_date="2033-01-01T22:00:00Z",
+            token_name="tk1",
+            user_id=user.user_id)
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        Tokens can be imported using their identifiers in the format `user_id!token_name`, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:user/token:Token token1 user@pve!token1
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -16,6 +16,95 @@ namespace Pulumi.ProxmoxVE.Download
     /// For more details, see the [`download-url`](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/storage/{storage}/download-url) API documentation under the "Required permissions" section.
     /// 
     /// &gt; The `Import` content type is not enabled by default on Proxmox VE storages. To use this resource with `ContentType = "import"`, first add `Import` to the allowed content types on the target storage under 'Datacenter &gt; Storage' in the Proxmox web interface.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var release20231228Debian12BookwormQcow2Img = new ProxmoxVE.Download.File("release_20231228_debian_12_bookworm_qcow2_img", new()
+    ///     {
+    ///         ContentType = "iso",
+    ///         DatastoreId = "local",
+    ///         FileName = "debian-12-generic-amd64-20231228-1609.img",
+    ///         NodeName = "pve",
+    ///         Url = "https://cloud.debian.org/images/cloud/bookworm/20231228-1609/debian-12-generic-amd64-20231228-1609.qcow2",
+    ///         Checksum = "d2fbcf11fb28795842e91364d8c7b69f1870db09ff299eb94e4fbbfa510eb78d141e74c1f4bf6dfa0b7e33d0c3b66e6751886feadb4e9916f778bab1776bdf1b",
+    ///         ChecksumAlgorithm = "sha512",
+    ///     });
+    /// 
+    ///     var release20231228Debian12BookwormQcow2 = new ProxmoxVE.Download.File("release_20231228_debian_12_bookworm_qcow2", new()
+    ///     {
+    ///         ContentType = "import",
+    ///         DatastoreId = "local",
+    ///         FileName = "debian-12-generic-amd64-20231228-1609.qcow2",
+    ///         NodeName = "pve",
+    ///         Url = "https://cloud.debian.org/images/cloud/bookworm/20231228-1609/debian-12-generic-amd64-20231228-1609.qcow2",
+    ///         Checksum = "d2fbcf11fb28795842e91364d8c7b69f1870db09ff299eb94e4fbbfa510eb78d141e74c1f4bf6dfa0b7e33d0c3b66e6751886feadb4e9916f778bab1776bdf1b",
+    ///         ChecksumAlgorithm = "sha512",
+    ///     });
+    /// 
+    ///     var latestDebian12BookwormQcow2Img = new ProxmoxVE.Download.File("latest_debian_12_bookworm_qcow2_img", new()
+    ///     {
+    ///         ContentType = "iso",
+    ///         DatastoreId = "local",
+    ///         FileName = "debian-12-generic-amd64.qcow2.img",
+    ///         NodeName = "pve",
+    ///         Url = "https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2",
+    ///     });
+    /// 
+    ///     var latestDebian12BookwormQcow2 = new ProxmoxVE.Download.File("latest_debian_12_bookworm_qcow2", new()
+    ///     {
+    ///         ContentType = "import",
+    ///         DatastoreId = "local",
+    ///         FileName = "debian-12-generic-amd64.qcow2",
+    ///         NodeName = "pve",
+    ///         Url = "https://cloud.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2",
+    ///     });
+    /// 
+    ///     var latestUbuntu22JammyQcow2Img = new ProxmoxVE.Download.File("latest_ubuntu_22_jammy_qcow2_img", new()
+    ///     {
+    ///         ContentType = "iso",
+    ///         DatastoreId = "local",
+    ///         NodeName = "pve",
+    ///         Url = "https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img",
+    ///     });
+    /// 
+    ///     var latestStaticUbuntu24NobleQcow2Img = new ProxmoxVE.Download.File("latest_static_ubuntu_24_noble_qcow2_img", new()
+    ///     {
+    ///         ContentType = "iso",
+    ///         DatastoreId = "local",
+    ///         NodeName = "pve",
+    ///         Url = "https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img",
+    ///         Overwrite = false,
+    ///     });
+    /// 
+    ///     var release20231211Ubuntu22JammyLxcImg = new ProxmoxVE.Download.File("release_20231211_ubuntu_22_jammy_lxc_img", new()
+    ///     {
+    ///         ContentType = "vztmpl",
+    ///         DatastoreId = "local",
+    ///         NodeName = "pve",
+    ///         Url = "https://cloud-images.ubuntu.com/releases/22.04/release-20231211/ubuntu-22.04-server-cloudimg-amd64-root.tar.xz",
+    ///         Checksum = "c9997dcfea5d826fd04871f960c513665f2e87dd7450bba99f68a97e60e4586e",
+    ///         ChecksumAlgorithm = "sha256",
+    ///         UploadTimeout = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(4444) (example.pp:65,23-27)),
+    ///     });
+    /// 
+    ///     var latestUbuntu22JammyLxcImg = new ProxmoxVE.Download.File("latest_ubuntu_22_jammy_lxc_img", new()
+    ///     {
+    ///         ContentType = "vztmpl",
+    ///         DatastoreId = "local",
+    ///         NodeName = "pve",
+    ///         Url = "https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.tar.gz",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:download/file:File")]
     public partial class File : global::Pulumi.CustomResource

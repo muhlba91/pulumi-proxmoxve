@@ -42,7 +42,7 @@ class BridgeLegacyArgs:
         :param pulumi.Input[_builtins.str] gateway: Default gateway address.
         :param pulumi.Input[_builtins.str] gateway6: Default IPv6 gateway address.
         :param pulumi.Input[_builtins.int] mtu: The interface MTU.
-        :param pulumi.Input[_builtins.str] name: The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+        :param pulumi.Input[_builtins.str] name: The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ports: The interface bridge ports.
         :param pulumi.Input[_builtins.int] timeout_reload: Timeout for network reload operations in seconds (defaults to `100`).
         :param pulumi.Input[_builtins.bool] vlan_aware: Whether the interface bridge is VLAN aware (defaults to `false`).
@@ -171,7 +171,7 @@ class BridgeLegacyArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+        The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
         """
         return pulumi.get(self, "name")
 
@@ -241,7 +241,7 @@ class _BridgeLegacyState:
         :param pulumi.Input[_builtins.str] gateway: Default gateway address.
         :param pulumi.Input[_builtins.str] gateway6: Default IPv6 gateway address.
         :param pulumi.Input[_builtins.int] mtu: The interface MTU.
-        :param pulumi.Input[_builtins.str] name: The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+        :param pulumi.Input[_builtins.str] name: The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
         :param pulumi.Input[_builtins.str] node_name: The name of the node.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ports: The interface bridge ports.
         :param pulumi.Input[_builtins.int] timeout_reload: Timeout for network reload operations in seconds (defaults to `100`).
@@ -360,7 +360,7 @@ class _BridgeLegacyState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+        The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
         """
         return pulumi.get(self, "name")
 
@@ -478,7 +478,7 @@ class BridgeLegacy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] gateway: Default gateway address.
         :param pulumi.Input[_builtins.str] gateway6: Default IPv6 gateway address.
         :param pulumi.Input[_builtins.int] mtu: The interface MTU.
-        :param pulumi.Input[_builtins.str] name: The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+        :param pulumi.Input[_builtins.str] name: The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
         :param pulumi.Input[_builtins.str] node_name: The name of the node.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ports: The interface bridge ports.
         :param pulumi.Input[_builtins.int] timeout_reload: Timeout for network reload operations in seconds (defaults to `100`).
@@ -609,7 +609,7 @@ class BridgeLegacy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] gateway: Default gateway address.
         :param pulumi.Input[_builtins.str] gateway6: Default IPv6 gateway address.
         :param pulumi.Input[_builtins.int] mtu: The interface MTU.
-        :param pulumi.Input[_builtins.str] name: The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+        :param pulumi.Input[_builtins.str] name: The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
         :param pulumi.Input[_builtins.str] node_name: The name of the node.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ports: The interface bridge ports.
         :param pulumi.Input[_builtins.int] timeout_reload: Timeout for network reload operations in seconds (defaults to `100`).
@@ -693,7 +693,7 @@ class BridgeLegacy(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+        The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
         """
         return pulumi.get(self, "name")
 

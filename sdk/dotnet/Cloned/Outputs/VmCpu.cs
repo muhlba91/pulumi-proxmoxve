@@ -22,7 +22,7 @@ namespace Pulumi.ProxmoxVE.Cloned.Outputs
         /// </summary>
         public readonly string? Architecture;
         /// <summary>
-        /// The number of CPU cores per socket (defaults to `1`).
+        /// The number of CPU cores per socket (PVE defaults to `1` when unset).
         /// </summary>
         public readonly int? Cores;
         /// <summary>
@@ -30,29 +30,29 @@ namespace Pulumi.ProxmoxVE.Cloned.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Flags;
         /// <summary>
-        /// The number of hotplugged vCPUs (defaults to `0`).
-        /// </summary>
-        public readonly int? Hotplugged;
-        /// <summary>
-        /// Limit of CPU usage (defaults to `0` which means no limit).
+        /// Limit of CPU usage. `0` means no limit (PVE default).
         /// </summary>
         public readonly double? Limit;
         /// <summary>
-        /// Enable NUMA (defaults to `False`).
+        /// Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
         /// </summary>
         public readonly bool? Numa;
         /// <summary>
-        /// The number of CPU sockets (defaults to `1`).
+        /// The number of CPU sockets (PVE defaults to `1` when unset).
         /// </summary>
         public readonly int? Sockets;
         /// <summary>
-        /// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `Kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+        /// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+        /// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
         /// </summary>
         public readonly int? Units;
+        /// <summary>
+        /// Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+        /// </summary>
+        public readonly int? Vcpus;
 
         [OutputConstructor]
         private VmCpu(
@@ -64,8 +64,6 @@ namespace Pulumi.ProxmoxVE.Cloned.Outputs
 
             ImmutableArray<string> flags,
 
-            int? hotplugged,
-
             double? limit,
 
             bool? numa,
@@ -74,18 +72,20 @@ namespace Pulumi.ProxmoxVE.Cloned.Outputs
 
             string? type,
 
-            int? units)
+            int? units,
+
+            int? vcpus)
         {
             Affinity = affinity;
             Architecture = architecture;
             Cores = cores;
             Flags = flags;
-            Hotplugged = hotplugged;
             Limit = limit;
             Numa = numa;
             Sockets = sockets;
             Type = type;
             Units = units;
+            Vcpus = vcpus;
         }
     }
 }

@@ -15,6 +15,64 @@ import (
 // Manages resource pool memberships for containers, virtual machines and storages
 //
 // > This resource requires the `Pool.Allocate` permission on the pool path (e.g., `/pool/{poolid}`).
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/pool"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			testVm1, err := proxmoxve.NewVm(ctx, "test_vm1", &proxmoxve.VmArgs{
+//				VmId:     1234,
+//				NodeName: pulumi.String("pve"),
+//				Started:  false,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			testPool, err := proxmoxve.NewPoolLegacy(ctx, "test_pool", &proxmoxve.PoolLegacyArgs{
+//				PoolId: pulumi.String("test-pool"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pool.NewMembership(ctx, "vm_membership", &pool.MembershipArgs{
+//				PoolId: testPool.ID(),
+//				VmId:   testVm1.ResourceId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = pool.NewMembership(ctx, "storage_membership", &pool.MembershipArgs{
+//				PoolId:    testPool.ID(),
+//				StorageId: pulumi.String("local-lvm"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// !/usr/bin/env sh
+// Resource pool membership can be imported using its unique identifier, e.g.: {pool_id}/{type}/{member_id}
+//
+// ```sh
+// $ pulumi import proxmoxve:pool/membership:Membership example_membership test-pool/vm/102
+// ```
 type Membership struct {
 	pulumi.CustomResourceState
 

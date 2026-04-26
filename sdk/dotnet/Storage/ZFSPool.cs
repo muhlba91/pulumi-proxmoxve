@@ -11,6 +11,44 @@ namespace Pulumi.ProxmoxVE.Storage
 {
     /// <summary>
     /// Manages ZFS-based storage in Proxmox VE.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new ProxmoxVE.Storage.Zfspool("example", new()
+    ///     {
+    ///         ResourceId = "example-zfs",
+    ///         Nodes = new[]
+    ///         {
+    ///             "pve",
+    ///         },
+    ///         ZfsPool = "rpool/data",
+    ///         Contents = new[]
+    ///         {
+    ///             "images",
+    ///         },
+    ///         ThinProvision = true,
+    ///         Blocksize = "64k",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// Storage can be imported using its identifier, e.g.:
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:storage/zfspool:Zfspool example local-zfs
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:storage/zfspool:Zfspool")]
     public partial class Zfspool : global::Pulumi.CustomResource

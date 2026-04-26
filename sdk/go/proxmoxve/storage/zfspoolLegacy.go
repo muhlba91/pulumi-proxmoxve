@@ -50,6 +50,15 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// !/usr/bin/env sh
+// Storage can be imported using its identifier, e.g.:
+//
+// ```sh
+// $ pulumi import proxmoxve:storage/zfspoolLegacy:ZfspoolLegacy example local-zfs
+// ```
 type ZfspoolLegacy struct {
 	pulumi.CustomResourceState
 

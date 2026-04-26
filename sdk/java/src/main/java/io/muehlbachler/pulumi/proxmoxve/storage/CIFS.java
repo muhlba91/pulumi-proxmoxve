@@ -21,6 +21,65 @@ import javax.annotation.Nullable;
 /**
  * Manages an SMB/CIFS based storage server in Proxmox VE.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.storage.Cifs;
+ * import io.muehlbachler.pulumi.proxmoxve.storage.CifsArgs;
+ * import com.pulumi.proxmoxve.storage.inputs.CifsBackupsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Cifs("example", CifsArgs.builder()
+ *             .resourceId("example-cifs")
+ *             .nodes("pve")
+ *             .server("10.0.0.20")
+ *             .share("proxmox")
+ *             .username("cifs-user")
+ *             .password("cifs-password")
+ *             .contents("images")
+ *             .domain("WORKGROUP")
+ *             .subdirectory("terraform")
+ *             .preallocation("metadata")
+ *             .snapshotAsVolumeChain(true)
+ *             .backups(CifsBackupsArgs.builder()
+ *                 .maxProtectedBackups(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(5) (example.pp:14,27-28)))
+ *                 .keepDaily(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(7) (example.pp:15,27-28)))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * !/usr/bin/env sh
+ * Storage can be imported using its identifier, e.g.:
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:storage/cifs:Cifs example local-cifs
+ * ```
+ * 
  */
 @ResourceType(type="proxmoxve:storage/cifs:Cifs")
 public class Cifs extends com.pulumi.resources.CustomResource {

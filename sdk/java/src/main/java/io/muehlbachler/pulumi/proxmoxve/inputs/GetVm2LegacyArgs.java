@@ -6,14 +6,9 @@ package io.muehlbachler.pulumi.proxmoxve.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
-import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2LegacyCpuArgs;
-import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2LegacyRngArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2LegacyTimeoutsArgs;
-import io.muehlbachler.pulumi.proxmoxve.inputs.GetVm2LegacyVgaArgs;
-import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -22,36 +17,6 @@ import javax.annotation.Nullable;
 public final class GetVm2LegacyArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetVm2LegacyArgs Empty = new GetVm2LegacyArgs();
-
-    /**
-     * The CPU configuration.
-     * 
-     */
-    @Import(name="cpu")
-    private @Nullable Output<GetVm2LegacyCpuArgs> cpu;
-
-    /**
-     * @return The CPU configuration.
-     * 
-     */
-    public Optional<Output<GetVm2LegacyCpuArgs>> cpu() {
-        return Optional.ofNullable(this.cpu);
-    }
-
-    /**
-     * The description of the VM.
-     * 
-     */
-    @Import(name="description")
-    private @Nullable Output<String> description;
-
-    /**
-     * @return The description of the VM.
-     * 
-     */
-    public Optional<Output<String>> description() {
-        return Optional.ofNullable(this.description);
-    }
 
     /**
      * The unique identifier of the VM in the Proxmox cluster.
@@ -69,21 +34,6 @@ public final class GetVm2LegacyArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The name of the VM.
-     * 
-     */
-    @Import(name="name")
-    private @Nullable Output<String> name;
-
-    /**
-     * @return The name of the VM.
-     * 
-     */
-    public Optional<Output<String>> name() {
-        return Optional.ofNullable(this.name);
-    }
-
-    /**
      * The name of the node where the VM is provisioned.
      * 
      */
@@ -98,51 +48,6 @@ public final class GetVm2LegacyArgs extends com.pulumi.resources.InvokeArgs {
         return this.nodeName;
     }
 
-    /**
-     * The RNG (Random Number Generator) configuration.
-     * 
-     */
-    @Import(name="rng")
-    private @Nullable Output<GetVm2LegacyRngArgs> rng;
-
-    /**
-     * @return The RNG (Random Number Generator) configuration.
-     * 
-     */
-    public Optional<Output<GetVm2LegacyRngArgs>> rng() {
-        return Optional.ofNullable(this.rng);
-    }
-
-    /**
-     * The tags assigned to the VM.
-     * 
-     */
-    @Import(name="tags")
-    private @Nullable Output<List<String>> tags;
-
-    /**
-     * @return The tags assigned to the VM.
-     * 
-     */
-    public Optional<Output<List<String>>> tags() {
-        return Optional.ofNullable(this.tags);
-    }
-
-    /**
-     * Whether the VM is a template.
-     * 
-     */
-    @Import(name="template")
-    private @Nullable Output<Boolean> template;
-
-    /**
-     * @return Whether the VM is a template.
-     * 
-     */
-    public Optional<Output<Boolean>> template() {
-        return Optional.ofNullable(this.template);
-    }
-
     @Import(name="timeouts")
     private @Nullable Output<GetVm2LegacyTimeoutsArgs> timeouts;
 
@@ -150,34 +55,12 @@ public final class GetVm2LegacyArgs extends com.pulumi.resources.InvokeArgs {
         return Optional.ofNullable(this.timeouts);
     }
 
-    /**
-     * The VGA configuration.
-     * 
-     */
-    @Import(name="vga")
-    private @Nullable Output<GetVm2LegacyVgaArgs> vga;
-
-    /**
-     * @return The VGA configuration.
-     * 
-     */
-    public Optional<Output<GetVm2LegacyVgaArgs>> vga() {
-        return Optional.ofNullable(this.vga);
-    }
-
     private GetVm2LegacyArgs() {}
 
     private GetVm2LegacyArgs(GetVm2LegacyArgs $) {
-        this.cpu = $.cpu;
-        this.description = $.description;
         this.id = $.id;
-        this.name = $.name;
         this.nodeName = $.nodeName;
-        this.rng = $.rng;
-        this.tags = $.tags;
-        this.template = $.template;
         this.timeouts = $.timeouts;
-        this.vga = $.vga;
     }
 
     public static Builder builder() {
@@ -196,48 +79,6 @@ public final class GetVm2LegacyArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetVm2LegacyArgs defaults) {
             $ = new GetVm2LegacyArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param cpu The CPU configuration.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder cpu(@Nullable Output<GetVm2LegacyCpuArgs> cpu) {
-            $.cpu = cpu;
-            return this;
-        }
-
-        /**
-         * @param cpu The CPU configuration.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder cpu(GetVm2LegacyCpuArgs cpu) {
-            return cpu(Output.of(cpu));
-        }
-
-        /**
-         * @param description The description of the VM.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder description(@Nullable Output<String> description) {
-            $.description = description;
-            return this;
-        }
-
-        /**
-         * @param description The description of the VM.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder description(String description) {
-            return description(Output.of(description));
         }
 
         /**
@@ -262,27 +103,6 @@ public final class GetVm2LegacyArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param name The name of the VM.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder name(@Nullable Output<String> name) {
-            $.name = name;
-            return this;
-        }
-
-        /**
-         * @param name The name of the VM.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder name(String name) {
-            return name(Output.of(name));
-        }
-
-        /**
          * @param nodeName The name of the node where the VM is provisioned.
          * 
          * @return builder
@@ -303,79 +123,6 @@ public final class GetVm2LegacyArgs extends com.pulumi.resources.InvokeArgs {
             return nodeName(Output.of(nodeName));
         }
 
-        /**
-         * @param rng The RNG (Random Number Generator) configuration.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder rng(@Nullable Output<GetVm2LegacyRngArgs> rng) {
-            $.rng = rng;
-            return this;
-        }
-
-        /**
-         * @param rng The RNG (Random Number Generator) configuration.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder rng(GetVm2LegacyRngArgs rng) {
-            return rng(Output.of(rng));
-        }
-
-        /**
-         * @param tags The tags assigned to the VM.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder tags(@Nullable Output<List<String>> tags) {
-            $.tags = tags;
-            return this;
-        }
-
-        /**
-         * @param tags The tags assigned to the VM.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder tags(List<String> tags) {
-            return tags(Output.of(tags));
-        }
-
-        /**
-         * @param tags The tags assigned to the VM.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder tags(String... tags) {
-            return tags(List.of(tags));
-        }
-
-        /**
-         * @param template Whether the VM is a template.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder template(@Nullable Output<Boolean> template) {
-            $.template = template;
-            return this;
-        }
-
-        /**
-         * @param template Whether the VM is a template.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder template(Boolean template) {
-            return template(Output.of(template));
-        }
-
         public Builder timeouts(@Nullable Output<GetVm2LegacyTimeoutsArgs> timeouts) {
             $.timeouts = timeouts;
             return this;
@@ -383,27 +130,6 @@ public final class GetVm2LegacyArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder timeouts(GetVm2LegacyTimeoutsArgs timeouts) {
             return timeouts(Output.of(timeouts));
-        }
-
-        /**
-         * @param vga The VGA configuration.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder vga(@Nullable Output<GetVm2LegacyVgaArgs> vga) {
-            $.vga = vga;
-            return this;
-        }
-
-        /**
-         * @param vga The VGA configuration.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder vga(GetVm2LegacyVgaArgs vga) {
-            return vga(Output.of(vga));
         }
 
         public GetVm2LegacyArgs build() {

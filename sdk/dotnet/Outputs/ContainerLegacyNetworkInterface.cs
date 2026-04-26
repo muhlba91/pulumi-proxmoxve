@@ -29,6 +29,12 @@ namespace Pulumi.ProxmoxVE.Outputs
         /// </summary>
         public readonly bool? Firewall;
         /// <summary>
+        /// Whether the host runs DHCP on this interface's
+        /// behalf (defaults to `False`). Requires Proxmox VE 9.0+. Required for
+        /// application containers that do not include a DHCP client.
+        /// </summary>
+        public readonly bool? HostManaged;
+        /// <summary>
         /// The MAC address.
         /// </summary>
         public readonly string? MacAddress;
@@ -58,6 +64,8 @@ namespace Pulumi.ProxmoxVE.Outputs
 
             bool? firewall,
 
+            bool? hostManaged,
+
             string? macAddress,
 
             int? mtu,
@@ -71,6 +79,7 @@ namespace Pulumi.ProxmoxVE.Outputs
             Bridge = bridge;
             Enabled = enabled;
             Firewall = firewall;
+            HostManaged = hostManaged;
             MacAddress = macAddress;
             Mtu = mtu;
             Name = name;
