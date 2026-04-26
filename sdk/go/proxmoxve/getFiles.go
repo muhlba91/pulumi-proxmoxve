@@ -30,6 +30,8 @@ type GetFilesArgs struct {
 	ContentType *string `pulumi:"contentType"`
 	// The identifier of the datastore.
 	DatastoreId string `pulumi:"datastoreId"`
+	// A regular expression to filter files by name. When set, only files whose name matches the expression are returned.
+	FileNameRegex *string `pulumi:"fileNameRegex"`
 	// The name of the node.
 	NodeName string `pulumi:"nodeName"`
 }
@@ -40,6 +42,8 @@ type GetFilesResult struct {
 	ContentType *string `pulumi:"contentType"`
 	// The identifier of the datastore.
 	DatastoreId string `pulumi:"datastoreId"`
+	// A regular expression to filter files by name. When set, only files whose name matches the expression are returned.
+	FileNameRegex *string `pulumi:"fileNameRegex"`
 	// The list of files in the datastore.
 	Files []GetFilesFile `pulumi:"files"`
 	// The provider-assigned unique ID for this managed resource.
@@ -63,6 +67,8 @@ type GetFilesOutputArgs struct {
 	ContentType pulumi.StringPtrInput `pulumi:"contentType"`
 	// The identifier of the datastore.
 	DatastoreId pulumi.StringInput `pulumi:"datastoreId"`
+	// A regular expression to filter files by name. When set, only files whose name matches the expression are returned.
+	FileNameRegex pulumi.StringPtrInput `pulumi:"fileNameRegex"`
 	// The name of the node.
 	NodeName pulumi.StringInput `pulumi:"nodeName"`
 }
@@ -94,6 +100,11 @@ func (o GetFilesResultOutput) ContentType() pulumi.StringPtrOutput {
 // The identifier of the datastore.
 func (o GetFilesResultOutput) DatastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFilesResult) string { return v.DatastoreId }).(pulumi.StringOutput)
+}
+
+// A regular expression to filter files by name. When set, only files whose name matches the expression are returned.
+func (o GetFilesResultOutput) FileNameRegex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetFilesResult) *string { return v.FileNameRegex }).(pulumi.StringPtrOutput)
 }
 
 // The list of files in the datastore.

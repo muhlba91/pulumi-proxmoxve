@@ -6,6 +6,31 @@ import * as utilities from "../utilities";
 
 /**
  * Manages ZFS-based storage in Proxmox VE.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = new proxmoxve.storage.Zfspool("example", {
+ *     resourceId: "example-zfs",
+ *     nodes: ["pve"],
+ *     zfsPool: "rpool/data",
+ *     contents: ["images"],
+ *     thinProvision: true,
+ *     blocksize: "64k",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * !/usr/bin/env sh
+ * Storage can be imported using its identifier, e.g.:
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:storage/zfspool:Zfspool example local-zfs
+ * ```
  */
 export class Zfspool extends pulumi.CustomResource {
     /**

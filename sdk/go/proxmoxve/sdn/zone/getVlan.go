@@ -12,6 +12,42 @@ import (
 )
 
 // Retrieves information about a VLAN Zone in Proxmox SDN. It uses an existing local Linux or OVS bridge to connect to the node's physical interface. It uses VLAN tagging defined in the VNet to isolate the network segments. This allows connectivity of VMs between different nodes.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/sdn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := sdn.GetVlan(ctx, &zone.GetVlanArgs{
+//				Id: "vlan1",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("dataProxmoxSdnZoneVlan", pulumi.Map{
+//				"id":         example.Id,
+//				"nodes":      example.Nodes,
+//				"bridge":     example.Bridge,
+//				"mtu":        example.Mtu,
+//				"dns":        example.Dns,
+//				"dnsZone":    example.DnsZone,
+//				"ipam":       example.Ipam,
+//				"reverseDns": example.ReverseDns,
+//			})
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupVlan(ctx *pulumi.Context, args *LookupVlanArgs, opts ...pulumi.InvokeOption) (*LookupVlanResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVlanResult

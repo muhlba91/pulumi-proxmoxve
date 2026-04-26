@@ -20,6 +20,55 @@ import javax.annotation.Nullable;
 /**
  * Manages an ACME plugin in a Proxmox VE cluster.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.acme.Plugin;
+ * import io.muehlbachler.pulumi.proxmoxve.acme.PluginArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Plugin("example", PluginArgs.builder()
+ *             .plugin("test")
+ *             .api("aws")
+ *             .data(Map.ofEntries(
+ *                 Map.entry("AWS_ACCESS_KEY_ID", "EXAMPLE"),
+ *                 Map.entry("AWS_SECRET_ACCESS_KEY", "EXAMPLE")
+ *             ))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * !/usr/bin/env sh
+ * ACME accounts can be imported using their name, e.g.:
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:acme/dns/plugin:Plugin example test
+ * ```
+ * 
  */
 @ResourceType(type="proxmoxve:acme/dns/plugin:Plugin")
 public class Plugin extends com.pulumi.resources.CustomResource {

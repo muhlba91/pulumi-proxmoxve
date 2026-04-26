@@ -71,6 +71,25 @@ public final class ContainerLegacyNetworkInterfaceArgs extends com.pulumi.resour
     }
 
     /**
+     * Whether the host runs DHCP on this interface&#39;s
+     * behalf (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). Requires Proxmox VE 9.0+. Required for
+     * application containers that do not include a DHCP client.
+     * 
+     */
+    @Import(name="hostManaged")
+    private @Nullable Output<Boolean> hostManaged;
+
+    /**
+     * @return Whether the host runs DHCP on this interface&#39;s
+     * behalf (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). Requires Proxmox VE 9.0+. Required for
+     * application containers that do not include a DHCP client.
+     * 
+     */
+    public Optional<Output<Boolean>> hostManaged() {
+        return Optional.ofNullable(this.hostManaged);
+    }
+
+    /**
      * The MAC address.
      * 
      */
@@ -153,6 +172,7 @@ public final class ContainerLegacyNetworkInterfaceArgs extends com.pulumi.resour
         this.bridge = $.bridge;
         this.enabled = $.enabled;
         this.firewall = $.firewall;
+        this.hostManaged = $.hostManaged;
         this.macAddress = $.macAddress;
         this.mtu = $.mtu;
         this.name = $.name;
@@ -245,6 +265,31 @@ public final class ContainerLegacyNetworkInterfaceArgs extends com.pulumi.resour
          */
         public Builder firewall(Boolean firewall) {
             return firewall(Output.of(firewall));
+        }
+
+        /**
+         * @param hostManaged Whether the host runs DHCP on this interface&#39;s
+         * behalf (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). Requires Proxmox VE 9.0+. Required for
+         * application containers that do not include a DHCP client.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostManaged(@Nullable Output<Boolean> hostManaged) {
+            $.hostManaged = hostManaged;
+            return this;
+        }
+
+        /**
+         * @param hostManaged Whether the host runs DHCP on this interface&#39;s
+         * behalf (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). Requires Proxmox VE 9.0+. Required for
+         * application containers that do not include a DHCP client.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostManaged(Boolean hostManaged) {
+            return hostManaged(Output.of(hostManaged));
         }
 
         /**

@@ -19,6 +19,53 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource requires `root{@literal @}pam` authentication.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.acme.Account;
+ * import io.muehlbachler.pulumi.proxmoxve.acme.AccountArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var example = new Account("example", AccountArgs.builder()
+ *             .name("example")
+ *             .contact("example}{@literal @}{@code email.com")
+ *             .directory("https://acme-staging-v02.api.letsencrypt.org/directory")
+ *             .tos("https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * !/usr/bin/env sh
+ * ACME accounts can be imported using their name, e.g.:
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:acme/account:Account example example
+ * ```
+ * 
  */
 @ResourceType(type="proxmoxve:acme/account:Account")
 public class Account extends com.pulumi.resources.CustomResource {

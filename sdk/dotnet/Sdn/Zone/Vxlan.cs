@@ -11,6 +11,44 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
 {
     /// <summary>
     /// VXLAN Zone in Proxmox SDN. It establishes a tunnel (overlay) on top of an existing network (underlay). This encapsulates layer 2 Ethernet frames within layer 4 UDP datagrams using the default destination port 4789. You have to configure the underlay network yourself to enable UDP connectivity between all peers. Because VXLAN encapsulation uses 50 bytes, the MTU needs to be 50 bytes lower than the outgoing physical interface.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new ProxmoxVE.Sdn.Zone.Vxlan("example", new()
+    ///     {
+    ///         ResourceId = "vxlan1",
+    ///         Peers = new[]
+    ///         {
+    ///             "10.0.0.1",
+    ///             "10.0.0.2",
+    ///             "10.0.0.3",
+    ///         },
+    ///         Mtu = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1450) (example.pp:3,16-20)),
+    ///         Dns = "1.1.1.1",
+    ///         DnsZone = "example.com",
+    ///         Ipam = "pve",
+    ///         ReverseDns = "1.1.1.1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// VXLAN SDN zone can be imported using its unique identifier (zone ID)
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:sdn/zone/vxlan:Vxlan example vxlan1
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:sdn/zone/vxlan:Vxlan")]
     public partial class Vxlan : global::Pulumi.CustomResource

@@ -30,6 +30,15 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ *
+ * ## Import
+ *
+ * !/usr/bin/env sh
+ * Storage can be imported using its identifier, e.g.:
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:storage/directoryLegacy:DirectoryLegacy example local-dir
+ * ```
  */
 export class DirectoryLegacy extends pulumi.CustomResource {
     /**

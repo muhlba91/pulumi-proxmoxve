@@ -64,6 +64,16 @@ class AwaitableGetHagroupsResult(GetHagroupsResult):
 def get_hagroups(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHagroupsResult:
     """
     Retrieves the list of High Availability groups.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.get_hagroups()
+    pulumi.export("dataProxmoxHagroups", example.group_ids)
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -75,6 +85,16 @@ def get_hagroups(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHag
 def get_hagroups_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHagroupsResult]:
     """
     Retrieves the list of High Availability groups.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.get_hagroups()
+    pulumi.export("dataProxmoxHagroups", example.group_ids)
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

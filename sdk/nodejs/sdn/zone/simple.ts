@@ -6,6 +6,32 @@ import * as utilities from "../../utilities";
 
 /**
  * Simple Zone in Proxmox SDN. It will create an isolated VNet bridge. This bridge is not linked to a physical interface, and VM traffic is only local on each the node. It can be used in NAT or routed setups.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = new proxmoxve.sdn.zone.Simple("example", {
+ *     resourceId: "simple1",
+ *     nodes: ["pve"],
+ *     mtu: 1500,
+ *     dns: "1.1.1.1",
+ *     dnsZone: "example.com",
+ *     ipam: "pve",
+ *     reverseDns: "1.1.1.1",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * !/usr/bin/env sh
+ * Simple SDN zone can be imported using its unique identifier (zone ID)
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:sdn/zone/simple:Simple example simple1
+ * ```
  */
 export class Simple extends pulumi.CustomResource {
     /**

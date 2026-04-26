@@ -12,6 +12,49 @@ import (
 )
 
 // Retrieves a list of hardware mapping resources.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/hardware"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := hardware.GetMappings(ctx, &hardware.GetMappingsArgs{
+//				CheckNode: pulumi.StringRef("pve"),
+//				Type:      "dir",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			example_pci, err := hardware.GetMappings(ctx, &hardware.GetMappingsArgs{
+//				CheckNode: pulumi.StringRef("pve"),
+//				Type:      "pci",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			example_usb, err := hardware.GetMappings(ctx, &hardware.GetMappingsArgs{
+//				CheckNode: pulumi.StringRef("pve"),
+//				Type:      "usb",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("dataProxmoxHardwareMappingsPci", example_pci)
+//			ctx.Export("dataProxmoxHardwareMappingsUsb", example_usb)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetMappings(ctx *pulumi.Context, args *GetMappingsArgs, opts ...pulumi.InvokeOption) (*GetMappingsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMappingsResult

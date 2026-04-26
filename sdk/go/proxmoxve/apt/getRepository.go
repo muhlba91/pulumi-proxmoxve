@@ -12,6 +12,35 @@ import (
 )
 
 // Retrieves an APT repository from a Proxmox VE cluster.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/apt"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := apt.LookupRepository(ctx, &apt.LookupRepositoryArgs{
+//				FilePath: "/etc/apt/sources.list",
+//				Index:    0,
+//				Node:     "pve",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("proxmoxAptRepository", example)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupRepository(ctx *pulumi.Context, args *LookupRepositoryArgs, opts ...pulumi.InvokeOption) (*LookupRepositoryResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRepositoryResult

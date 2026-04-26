@@ -20,6 +20,35 @@ namespace Pulumi.ProxmoxVE.Realm
     /// |-----------------|----------------|
     /// | /access/domains | Realm.Allocate |
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new ProxmoxVE.Realm.Ldap("example", new()
+    ///     {
+    ///         Realm = "example-ldap",
+    ///         Server1 = "ldap.example.com",
+    ///         Port = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(389) (example.pp:3,13-16)),
+    ///         BaseDn = "ou=people,dc=example,dc=com",
+    ///         UserAttr = "uid",
+    ///         BindDn = "cn=admin,dc=example,dc=com",
+    ///         BindPassword = ldapBindPassword,
+    ///         Mode = "ldap+starttls",
+    ///         Verify = true,
+    ///         GroupDn = "ou=groups,dc=example,dc=com",
+    ///         GroupFilter = "(objectClass=groupOfNames)",
+    ///         Comment = "Example LDAP realm managed by Terraform",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Notes
     /// 
     /// ### Password Security
@@ -120,6 +149,17 @@ namespace Pulumi.ProxmoxVE.Realm
     /// - [Proxmox VE User Management](https://pve.proxmox.com/wiki/User_Management)
     /// - [Proxmox VE LDAP Authentication](https://pve.proxmox.com/wiki/User_Management#pveum_ldap)
     /// - [Proxmox API: /access/domains](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/domains)
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// LDAP realms can be imported using the realm identifier, e.g.:
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:realm/ldap:Ldap example example.com
+    /// ```
+    /// 
+    /// &gt; When importing, the `BindPassword` attribute cannot be imported since it's not returned by the Proxmox API. You'll need to set this attribute in your Terraform configuration after the import to manage it with Terraform.
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:realm/ldap:Ldap")]
     public partial class Ldap : global::Pulumi.CustomResource

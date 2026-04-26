@@ -6,6 +6,31 @@ import * as utilities from "./utilities";
 
 /**
  * Manages Proxmox HA resources.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = new proxmoxve.Haresource("example", {
+ *     resourceId: "vm:123",
+ *     state: "started",
+ *     group: "example",
+ *     comment: "Managed by Pulumi",
+ * }, {
+ *     dependsOn: [exampleProxmoxHagroup],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * !/usr/bin/env sh
+ * HA resources can be imported using their identifiers, e.g.:
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:index/haresource:Haresource example vm:123
+ * ```
  */
 export class Haresource extends pulumi.CustomResource {
     /**

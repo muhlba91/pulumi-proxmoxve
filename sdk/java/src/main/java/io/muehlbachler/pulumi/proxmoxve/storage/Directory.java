@@ -21,6 +21,60 @@ import javax.annotation.Nullable;
 /**
  * Manages directory-based storage in Proxmox VE.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.storage.Directory;
+ * import io.muehlbachler.pulumi.proxmoxve.storage.DirectoryArgs;
+ * import com.pulumi.proxmoxve.storage.inputs.DirectoryBackupsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Directory("example", DirectoryArgs.builder()
+ *             .resourceId("example-dir")
+ *             .path("/var/lib/vz")
+ *             .nodes("pve")
+ *             .contents("images")
+ *             .shared(true)
+ *             .disable(false)
+ *             .backups(DirectoryBackupsArgs.builder()
+ *                 .maxProtectedBackups(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(5) (example.pp:9,27-28)))
+ *                 .keepDaily(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(7) (example.pp:10,27-28)))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * !/usr/bin/env sh
+ * Storage can be imported using its identifier, e.g.:
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:storage/directory:Directory example local-dir
+ * ```
+ * 
  */
 @ResourceType(type="proxmoxve:storage/directory:Directory")
 public class Directory extends com.pulumi.resources.CustomResource {

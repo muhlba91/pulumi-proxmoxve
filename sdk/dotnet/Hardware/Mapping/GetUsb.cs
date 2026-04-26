@@ -13,18 +13,84 @@ namespace Pulumi.ProxmoxVE.Hardware.Mapping
     {
         /// <summary>
         /// Retrieves a USB hardware mapping from a Proxmox VE cluster.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = ProxmoxVE.Hardware.Mapping.GetUsb.Invoke(new()
+        ///     {
+        ///         Name = "example",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxHardwareMappingUsb"] = example,
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetUsbResult> InvokeAsync(GetUsbArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUsbResult>("proxmoxve:hardware/mapping/getUsb:getUsb", args ?? new GetUsbArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves a USB hardware mapping from a Proxmox VE cluster.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = ProxmoxVE.Hardware.Mapping.GetUsb.Invoke(new()
+        ///     {
+        ///         Name = "example",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxHardwareMappingUsb"] = example,
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetUsbResult> Invoke(GetUsbInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUsbResult>("proxmoxve:hardware/mapping/getUsb:getUsb", args ?? new GetUsbInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves a USB hardware mapping from a Proxmox VE cluster.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = ProxmoxVE.Hardware.Mapping.GetUsb.Invoke(new()
+        ///     {
+        ///         Name = "example",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxHardwareMappingUsb"] = example,
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetUsbResult> Invoke(GetUsbInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetUsbResult>("proxmoxve:hardware/mapping/getUsb:getUsb", args ?? new GetUsbInvokeArgs(), options.WithDefaults());

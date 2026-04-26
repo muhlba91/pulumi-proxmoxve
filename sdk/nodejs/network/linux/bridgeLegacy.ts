@@ -96,7 +96,7 @@ export class BridgeLegacy extends pulumi.CustomResource {
      */
     declare public readonly mtu: pulumi.Output<number | undefined>;
     /**
-     * The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+     * The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -197,7 +197,7 @@ export interface BridgeLegacyState {
      */
     mtu?: pulumi.Input<number>;
     /**
-     * The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+     * The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
      */
     name?: pulumi.Input<string>;
     /**
@@ -251,7 +251,7 @@ export interface BridgeLegacyArgs {
      */
     mtu?: pulumi.Input<number>;
     /**
-     * The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+     * The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
      */
     name?: pulumi.Input<string>;
     /**

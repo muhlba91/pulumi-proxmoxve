@@ -8,6 +8,18 @@ import * as utilities from "../../utilities";
 
 /**
  * Retrieves a PCI hardware mapping from a Proxmox VE cluster.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = proxmoxve.hardware.mapping.getPci({
+ *     name: "example",
+ * });
+ * export const dataProxmoxHardwareMappingPci = example;
+ * ```
  */
 export function getPci(args: GetPciArgs, opts?: pulumi.InvokeOptions): Promise<GetPciResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -53,6 +65,18 @@ export interface GetPciResult {
 }
 /**
  * Retrieves a PCI hardware mapping from a Proxmox VE cluster.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = proxmoxve.hardware.mapping.getPci({
+ *     name: "example",
+ * });
+ * export const dataProxmoxHardwareMappingPci = example;
+ * ```
  */
 export function getPciOutput(args: GetPciOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPciResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -11,6 +11,13 @@ export interface ContainerLegacyClone {
      */
     datastoreId?: pulumi.Input<string>;
     /**
+     * When cloning, create a full copy of all disks. Set
+     * to `false` to create a linked clone. Linked clones require the source
+     * container to be a template on storage that supports copy-on-write
+     * (e.g. Ceph RBD) (defaults to `true`).
+     */
+    full?: pulumi.Input<boolean>;
+    /**
      * The name of the source node (leave blank, if
      * equal to the `nodeName` argument).
      */
@@ -46,6 +53,10 @@ export interface ContainerLegacyCpu {
      * The number of CPU cores (defaults to `1`).
      */
     cores?: pulumi.Input<number>;
+    /**
+     * Limit of CPU usage. Value `0` indicates no limit (defaults to `0`).
+     */
+    limit?: pulumi.Input<number>;
     /**
      * The CPU units (defaults to `1024`).
      */
@@ -325,6 +336,12 @@ export interface ContainerLegacyNetworkInterface {
      */
     firewall?: pulumi.Input<boolean>;
     /**
+     * Whether the host runs DHCP on this interface's
+     * behalf (defaults to `false`). Requires Proxmox VE 9.0+. Required for
+     * application containers that do not include a DHCP client.
+     */
+    hostManaged?: pulumi.Input<boolean>;
+    /**
      * The MAC address.
      */
     macAddress?: pulumi.Input<string>;
@@ -475,7 +492,7 @@ export interface GetDatastoresDatastore {
     /**
      * Allowed store content types.
      */
-    contentTypes: string[];
+    contentTypes?: string[];
     /**
      * Whether the store is enabled.
      */
@@ -522,7 +539,7 @@ export interface GetDatastoresDatastoreArgs {
     /**
      * Allowed store content types.
      */
-    contentTypes: pulumi.Input<pulumi.Input<string>[]>;
+    contentTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether the store is enabled.
      */
@@ -599,7 +616,7 @@ export interface GetDatastoresLegacyDatastore {
     /**
      * Allowed store content types.
      */
-    contentTypes: string[];
+    contentTypes?: string[];
     /**
      * Whether the store is enabled.
      */
@@ -646,7 +663,7 @@ export interface GetDatastoresLegacyDatastoreArgs {
     /**
      * Allowed store content types.
      */
-    contentTypes: pulumi.Input<pulumi.Input<string>[]>;
+    contentTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether the store is enabled.
      */
@@ -715,122 +732,6 @@ export interface GetDatastoresLegacyFiltersArgs {
     target?: pulumi.Input<string>;
 }
 
-export interface GetVm2LegacyCpu {
-    /**
-     * List of host cores used to execute guest processes, for example: '0,5,8-11'
-     */
-    affinity?: string;
-    /**
-     * The CPU architecture.
-     */
-    architecture?: string;
-    /**
-     * The number of CPU cores per socket.
-     */
-    cores?: number;
-    /**
-     * Set of additional CPU flags.
-     */
-    flags?: string[];
-    /**
-     * The number of hotplugged vCPUs.
-     */
-    hotplugged?: number;
-    /**
-     * Limit of CPU usage.
-     */
-    limit?: number;
-    /**
-     * Enable NUMA.
-     */
-    numa?: boolean;
-    /**
-     * The number of CPU sockets.
-     */
-    sockets?: number;
-    /**
-     * Emulated CPU type.
-     */
-    type?: string;
-    /**
-     * CPU weight for a VM
-     */
-    units?: number;
-}
-
-export interface GetVm2LegacyCpuArgs {
-    /**
-     * List of host cores used to execute guest processes, for example: '0,5,8-11'
-     */
-    affinity?: pulumi.Input<string>;
-    /**
-     * The CPU architecture.
-     */
-    architecture?: pulumi.Input<string>;
-    /**
-     * The number of CPU cores per socket.
-     */
-    cores?: pulumi.Input<number>;
-    /**
-     * Set of additional CPU flags.
-     */
-    flags?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The number of hotplugged vCPUs.
-     */
-    hotplugged?: pulumi.Input<number>;
-    /**
-     * Limit of CPU usage.
-     */
-    limit?: pulumi.Input<number>;
-    /**
-     * Enable NUMA.
-     */
-    numa?: pulumi.Input<boolean>;
-    /**
-     * The number of CPU sockets.
-     */
-    sockets?: pulumi.Input<number>;
-    /**
-     * Emulated CPU type.
-     */
-    type?: pulumi.Input<string>;
-    /**
-     * CPU weight for a VM
-     */
-    units?: pulumi.Input<number>;
-}
-
-export interface GetVm2LegacyRng {
-    /**
-     * Maximum bytes of entropy allowed to get injected into the guest every period.
-     */
-    maxBytes?: number;
-    /**
-     * Period in milliseconds to limit entropy injection to the guest.
-     */
-    period?: number;
-    /**
-     * The entropy source for the RNG device.
-     */
-    source?: string;
-}
-
-export interface GetVm2LegacyRngArgs {
-    /**
-     * Maximum bytes of entropy allowed to get injected into the guest every period.
-     */
-    maxBytes?: pulumi.Input<number>;
-    /**
-     * Period in milliseconds to limit entropy injection to the guest.
-     */
-    period?: pulumi.Input<number>;
-    /**
-     * The entropy source for the RNG device.
-     */
-    source?: pulumi.Input<string>;
-}
-
 export interface GetVm2LegacyTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
@@ -845,152 +746,6 @@ export interface GetVm2LegacyTimeoutsArgs {
     read?: pulumi.Input<string>;
 }
 
-export interface GetVm2LegacyVga {
-    /**
-     * Enable a specific clipboard.
-     */
-    clipboard?: string;
-    /**
-     * The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
-     */
-    memory?: number;
-    /**
-     * The VGA type.
-     */
-    type?: string;
-}
-
-export interface GetVm2LegacyVgaArgs {
-    /**
-     * Enable a specific clipboard.
-     */
-    clipboard?: pulumi.Input<string>;
-    /**
-     * The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
-     */
-    memory?: pulumi.Input<number>;
-    /**
-     * The VGA type.
-     */
-    type?: pulumi.Input<string>;
-}
-
-export interface GetVmCpu {
-    /**
-     * List of host cores used to execute guest processes, for example: '0,5,8-11'
-     */
-    affinity?: string;
-    /**
-     * The CPU architecture.
-     */
-    architecture?: string;
-    /**
-     * The number of CPU cores per socket.
-     */
-    cores?: number;
-    /**
-     * Set of additional CPU flags.
-     */
-    flags?: string[];
-    /**
-     * The number of hotplugged vCPUs.
-     */
-    hotplugged?: number;
-    /**
-     * Limit of CPU usage.
-     */
-    limit?: number;
-    /**
-     * Enable NUMA.
-     */
-    numa?: boolean;
-    /**
-     * The number of CPU sockets.
-     */
-    sockets?: number;
-    /**
-     * Emulated CPU type.
-     */
-    type?: string;
-    /**
-     * CPU weight for a VM
-     */
-    units?: number;
-}
-
-export interface GetVmCpuArgs {
-    /**
-     * List of host cores used to execute guest processes, for example: '0,5,8-11'
-     */
-    affinity?: pulumi.Input<string>;
-    /**
-     * The CPU architecture.
-     */
-    architecture?: pulumi.Input<string>;
-    /**
-     * The number of CPU cores per socket.
-     */
-    cores?: pulumi.Input<number>;
-    /**
-     * Set of additional CPU flags.
-     */
-    flags?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The number of hotplugged vCPUs.
-     */
-    hotplugged?: pulumi.Input<number>;
-    /**
-     * Limit of CPU usage.
-     */
-    limit?: pulumi.Input<number>;
-    /**
-     * Enable NUMA.
-     */
-    numa?: pulumi.Input<boolean>;
-    /**
-     * The number of CPU sockets.
-     */
-    sockets?: pulumi.Input<number>;
-    /**
-     * Emulated CPU type.
-     */
-    type?: pulumi.Input<string>;
-    /**
-     * CPU weight for a VM
-     */
-    units?: pulumi.Input<number>;
-}
-
-export interface GetVmRng {
-    /**
-     * Maximum bytes of entropy allowed to get injected into the guest every period.
-     */
-    maxBytes?: number;
-    /**
-     * Period in milliseconds to limit entropy injection to the guest.
-     */
-    period?: number;
-    /**
-     * The entropy source for the RNG device.
-     */
-    source?: string;
-}
-
-export interface GetVmRngArgs {
-    /**
-     * Maximum bytes of entropy allowed to get injected into the guest every period.
-     */
-    maxBytes?: pulumi.Input<number>;
-    /**
-     * Period in milliseconds to limit entropy injection to the guest.
-     */
-    period?: pulumi.Input<number>;
-    /**
-     * The entropy source for the RNG device.
-     */
-    source?: pulumi.Input<string>;
-}
-
 export interface GetVmTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
@@ -1003,36 +758,6 @@ export interface GetVmTimeoutsArgs {
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
     read?: pulumi.Input<string>;
-}
-
-export interface GetVmVga {
-    /**
-     * Enable a specific clipboard.
-     */
-    clipboard?: string;
-    /**
-     * The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
-     */
-    memory?: number;
-    /**
-     * The VGA type.
-     */
-    type?: string;
-}
-
-export interface GetVmVgaArgs {
-    /**
-     * Enable a specific clipboard.
-     */
-    clipboard?: pulumi.Input<string>;
-    /**
-     * The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
-     */
-    memory?: pulumi.Input<number>;
-    /**
-     * The VGA type.
-     */
-    type?: pulumi.Input<string>;
 }
 
 export interface GetVmsLegacyFilter {
@@ -1128,6 +853,10 @@ export interface ProviderSsh {
      */
     agentSocket?: pulumi.Input<string>;
     /**
+     * The method used to resolve node IP addresses for SSH connections. Set to `dns` to skip the Proxmox API-based resolution and use local DNS instead. DNS resolution prefers IPv4 but falls back to IPv6 if no IPv4 addresses are available. Useful in multi-subnet environments where the API may return an inaccessible IP. Defaults to `api`.
+     */
+    nodeAddressSource?: pulumi.Input<string>;
+    /**
      * Overrides for SSH connection configuration for a Proxmox VE node.
      */
     nodes?: pulumi.Input<pulumi.Input<inputs.ProviderSshNode>[]>;
@@ -1189,7 +918,7 @@ export interface UserLegacyAcl {
 
 export interface Vm2LegacyCdrom {
     /**
-     * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+     * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
      */
     fileId?: pulumi.Input<string>;
 }
@@ -1204,7 +933,7 @@ export interface Vm2LegacyCpu {
      */
     architecture?: pulumi.Input<string>;
     /**
-     * The number of CPU cores per socket (defaults to `1`).
+     * The number of CPU cores per socket (PVE defaults to `1` when unset).
      */
     cores?: pulumi.Input<number>;
     /**
@@ -1212,38 +941,38 @@ export interface Vm2LegacyCpu {
      */
     flags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The number of hotplugged vCPUs (defaults to `0`).
-     */
-    hotplugged?: pulumi.Input<number>;
-    /**
-     * Limit of CPU usage (defaults to `0` which means no limit).
+     * Limit of CPU usage. `0` means no limit (PVE default).
      */
     limit?: pulumi.Input<number>;
     /**
-     * Enable NUMA (defaults to `false`).
+     * Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
      */
     numa?: pulumi.Input<boolean>;
     /**
-     * The number of CPU sockets (defaults to `1`).
+     * The number of CPU sockets (PVE defaults to `1` when unset).
      */
     sockets?: pulumi.Input<number>;
     /**
-     * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+     * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
      */
     type?: pulumi.Input<string>;
     /**
-     * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+     * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
      */
     units?: pulumi.Input<number>;
+    /**
+     * Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+     */
+    vcpus?: pulumi.Input<number>;
 }
 
 export interface Vm2LegacyRng {
     /**
-     * Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+     * Maximum bytes of entropy allowed to get injected into the guest every period.
      */
     maxBytes?: pulumi.Input<number>;
     /**
-     * Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+     * Period in milliseconds to limit entropy injection to the guest.
      */
     period?: pulumi.Input<number>;
     /**
@@ -1288,7 +1017,7 @@ export interface Vm2LegacyVga {
 
 export interface VmCdrom {
     /**
-     * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+     * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
      */
     fileId?: pulumi.Input<string>;
 }
@@ -1303,7 +1032,7 @@ export interface VmCpu {
      */
     architecture?: pulumi.Input<string>;
     /**
-     * The number of CPU cores per socket (defaults to `1`).
+     * The number of CPU cores per socket (PVE defaults to `1` when unset).
      */
     cores?: pulumi.Input<number>;
     /**
@@ -1311,29 +1040,29 @@ export interface VmCpu {
      */
     flags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The number of hotplugged vCPUs (defaults to `0`).
-     */
-    hotplugged?: pulumi.Input<number>;
-    /**
-     * Limit of CPU usage (defaults to `0` which means no limit).
+     * Limit of CPU usage. `0` means no limit (PVE default).
      */
     limit?: pulumi.Input<number>;
     /**
-     * Enable NUMA (defaults to `false`).
+     * Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
      */
     numa?: pulumi.Input<boolean>;
     /**
-     * The number of CPU sockets (defaults to `1`).
+     * The number of CPU sockets (PVE defaults to `1` when unset).
      */
     sockets?: pulumi.Input<number>;
     /**
-     * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+     * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
      */
     type?: pulumi.Input<string>;
     /**
-     * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+     * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
      */
     units?: pulumi.Input<number>;
+    /**
+     * Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+     */
+    vcpus?: pulumi.Input<number>;
 }
 
 export interface VmLegacyAgent {
@@ -1776,6 +1505,12 @@ export interface VmLegacyInitialization {
      */
     type?: pulumi.Input<string>;
     /**
+     * Whether to do an automatic package upgrade after
+     * the first boot (defaults to `true`).
+     * Setting this is only allowed for `root@pam` authenticated user.
+     */
+    upgrade?: pulumi.Input<boolean>;
+    /**
      * The user account configuration (conflicts
      * with `userDataFileId`).
      */
@@ -2123,11 +1858,11 @@ export interface VmLegacyWatchdog {
 
 export interface VmRng {
     /**
-     * Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+     * Maximum bytes of entropy allowed to get injected into the guest every period.
      */
     maxBytes?: pulumi.Input<number>;
     /**
-     * Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+     * Period in milliseconds to limit entropy injection to the guest.
      */
     period?: pulumi.Input<number>;
     /**
@@ -2229,7 +1964,7 @@ export namespace backup {
 export namespace cloned {
     export interface VmCdrom {
         /**
-         * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+         * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
          */
         fileId?: pulumi.Input<string>;
     }
@@ -2283,7 +2018,7 @@ export namespace cloned {
          */
         architecture?: pulumi.Input<string>;
         /**
-         * The number of CPU cores per socket (defaults to `1`).
+         * The number of CPU cores per socket (PVE defaults to `1` when unset).
          */
         cores?: pulumi.Input<number>;
         /**
@@ -2291,29 +2026,29 @@ export namespace cloned {
          */
         flags?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * The number of hotplugged vCPUs (defaults to `0`).
-         */
-        hotplugged?: pulumi.Input<number>;
-        /**
-         * Limit of CPU usage (defaults to `0` which means no limit).
+         * Limit of CPU usage. `0` means no limit (PVE default).
          */
         limit?: pulumi.Input<number>;
         /**
-         * Enable NUMA (defaults to `false`).
+         * Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
          */
         numa?: pulumi.Input<boolean>;
         /**
-         * The number of CPU sockets (defaults to `1`).
+         * The number of CPU sockets (PVE defaults to `1` when unset).
          */
         sockets?: pulumi.Input<number>;
         /**
-         * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+         * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
          */
         type?: pulumi.Input<string>;
         /**
-         * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+         * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
          */
         units?: pulumi.Input<number>;
+        /**
+         * Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+         */
+        vcpus?: pulumi.Input<number>;
     }
 
     export interface VmDelete {
@@ -2388,7 +2123,7 @@ export namespace cloned {
 
     export interface VmLegacyCdrom {
         /**
-         * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+         * The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
          */
         fileId?: pulumi.Input<string>;
     }
@@ -2442,7 +2177,7 @@ export namespace cloned {
          */
         architecture?: pulumi.Input<string>;
         /**
-         * The number of CPU cores per socket (defaults to `1`).
+         * The number of CPU cores per socket (PVE defaults to `1` when unset).
          */
         cores?: pulumi.Input<number>;
         /**
@@ -2450,29 +2185,29 @@ export namespace cloned {
          */
         flags?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * The number of hotplugged vCPUs (defaults to `0`).
-         */
-        hotplugged?: pulumi.Input<number>;
-        /**
-         * Limit of CPU usage (defaults to `0` which means no limit).
+         * Limit of CPU usage. `0` means no limit (PVE default).
          */
         limit?: pulumi.Input<number>;
         /**
-         * Enable NUMA (defaults to `false`).
+         * Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
          */
         numa?: pulumi.Input<boolean>;
         /**
-         * The number of CPU sockets (defaults to `1`).
+         * The number of CPU sockets (PVE defaults to `1` when unset).
          */
         sockets?: pulumi.Input<number>;
         /**
-         * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+         * Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
          */
         type?: pulumi.Input<string>;
         /**
-         * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+         * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
          */
         units?: pulumi.Input<number>;
+        /**
+         * Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+         */
+        vcpus?: pulumi.Input<number>;
     }
 
     export interface VmLegacyDelete {
@@ -2547,7 +2282,7 @@ export namespace cloned {
 
     export interface VmLegacyMemory {
         /**
-         * Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely (defaults to `0`).
+         * Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely.
          */
         balloon?: pulumi.Input<number>;
         /**
@@ -2560,15 +2295,15 @@ export namespace cloned {
          */
         hugepages?: pulumi.Input<string>;
         /**
-         * Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup (defaults to `false`).
+         * Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup.
          */
         keepHugepages?: pulumi.Input<boolean>;
         /**
-         * CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs (defaults to `1000`).
+         * CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs.
          */
         shares?: pulumi.Input<number>;
         /**
-         * Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM (defaults to `512` MiB).
+         * Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM. Defaults to PVE's implicit `512` MiB when unset.
          */
         size?: pulumi.Input<number>;
     }
@@ -2618,11 +2353,11 @@ export namespace cloned {
 
     export interface VmLegacyRng {
         /**
-         * Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+         * Maximum bytes of entropy allowed to get injected into the guest every period.
          */
         maxBytes?: pulumi.Input<number>;
         /**
-         * Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+         * Period in milliseconds to limit entropy injection to the guest.
          */
         period?: pulumi.Input<number>;
         /**
@@ -2667,7 +2402,7 @@ export namespace cloned {
 
     export interface VmMemory {
         /**
-         * Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely (defaults to `0`).
+         * Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely.
          */
         balloon?: pulumi.Input<number>;
         /**
@@ -2680,15 +2415,15 @@ export namespace cloned {
          */
         hugepages?: pulumi.Input<string>;
         /**
-         * Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup (defaults to `false`).
+         * Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup.
          */
         keepHugepages?: pulumi.Input<boolean>;
         /**
-         * CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs (defaults to `1000`).
+         * CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs.
          */
         shares?: pulumi.Input<number>;
         /**
-         * Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM (defaults to `512` MiB).
+         * Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM. Defaults to PVE's implicit `512` MiB when unset.
          */
         size?: pulumi.Input<number>;
     }
@@ -2738,11 +2473,11 @@ export namespace cloned {
 
     export interface VmRng {
         /**
-         * Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+         * Maximum bytes of entropy allowed to get injected into the guest every period.
          */
         maxBytes?: pulumi.Input<number>;
         /**
-         * Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+         * Period in milliseconds to limit entropy injection to the guest.
          */
         period?: pulumi.Input<number>;
         /**
@@ -3071,6 +2806,43 @@ export namespace firewall {
 }
 
 export namespace hardware {
+    export interface GetPciFilters {
+        /**
+         * Filter by PCI class code prefix (e.g. `03` to match all display controllers). The `0x` prefix in class codes is stripped before matching.
+         */
+        class?: string;
+        /**
+         * Filter by device ID prefix. The `0x` prefix in device IDs is stripped before matching.
+         */
+        deviceId?: string;
+        /**
+         * Filter by PCI address prefix (e.g. `0000:01` to match all devices on bus 01).
+         */
+        id?: string;
+        /**
+         * Filter by vendor ID prefix (e.g. `8086` for Intel devices). The `0x` prefix in vendor IDs is stripped before matching.
+         */
+        vendorId?: string;
+    }
+
+    export interface GetPciFiltersArgs {
+        /**
+         * Filter by PCI class code prefix (e.g. `03` to match all display controllers). The `0x` prefix in class codes is stripped before matching.
+         */
+        class?: pulumi.Input<string>;
+        /**
+         * Filter by device ID prefix. The `0x` prefix in device IDs is stripped before matching.
+         */
+        deviceId?: pulumi.Input<string>;
+        /**
+         * Filter by PCI address prefix (e.g. `0000:01` to match all devices on bus 01).
+         */
+        id?: pulumi.Input<string>;
+        /**
+         * Filter by vendor ID prefix (e.g. `8086` for Intel devices). The `0x` prefix in vendor IDs is stripped before matching.
+         */
+        vendorId?: pulumi.Input<string>;
+    }
     export namespace mapping {
         export interface DirLegacyMap {
             /**

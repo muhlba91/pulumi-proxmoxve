@@ -13,18 +13,135 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
     {
         /// <summary>
         /// Retrieves information about an EVPN Zone in Proxmox SDN. The EVPN zone creates a routable Layer 3 network, capable of spanning across multiple clusters.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = ProxmoxVE.Sdn.Zone.GetEvpn.Invoke(new()
+        ///     {
+        ///         Id = "evpn1",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxSdnZoneEvpn"] = 
+        ///         {
+        ///             { "id", example.Apply(getEvpnResult =&gt; getEvpnResult.Id) },
+        ///             { "nodes", example.Apply(getEvpnResult =&gt; getEvpnResult.Nodes) },
+        ///             { "controller", example.Apply(getEvpnResult =&gt; getEvpnResult.Controller) },
+        ///             { "vrfVxlan", example.Apply(getEvpnResult =&gt; getEvpnResult.VrfVxlan) },
+        ///             { "advertiseSubnets", example.Apply(getEvpnResult =&gt; getEvpnResult.AdvertiseSubnets) },
+        ///             { "disableArpNdSuppression", example.Apply(getEvpnResult =&gt; getEvpnResult.DisableArpNdSuppression) },
+        ///             { "exitNodes", example.Apply(getEvpnResult =&gt; getEvpnResult.ExitNodes) },
+        ///             { "exitNodesLocalRouting", example.Apply(getEvpnResult =&gt; getEvpnResult.ExitNodesLocalRouting) },
+        ///             { "primaryExitNode", example.Apply(getEvpnResult =&gt; getEvpnResult.PrimaryExitNode) },
+        ///             { "rtImport", example.Apply(getEvpnResult =&gt; getEvpnResult.RtImport) },
+        ///             { "mtu", example.Apply(getEvpnResult =&gt; getEvpnResult.Mtu) },
+        ///             { "dns", example.Apply(getEvpnResult =&gt; getEvpnResult.Dns) },
+        ///             { "dnsZone", example.Apply(getEvpnResult =&gt; getEvpnResult.DnsZone) },
+        ///             { "ipam", example.Apply(getEvpnResult =&gt; getEvpnResult.Ipam) },
+        ///             { "reverseDns", example.Apply(getEvpnResult =&gt; getEvpnResult.ReverseDns) },
+        ///         },
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetEvpnResult> InvokeAsync(GetEvpnArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEvpnResult>("proxmoxve:sdn/zone/getEvpn:getEvpn", args ?? new GetEvpnArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about an EVPN Zone in Proxmox SDN. The EVPN zone creates a routable Layer 3 network, capable of spanning across multiple clusters.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = ProxmoxVE.Sdn.Zone.GetEvpn.Invoke(new()
+        ///     {
+        ///         Id = "evpn1",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxSdnZoneEvpn"] = 
+        ///         {
+        ///             { "id", example.Apply(getEvpnResult =&gt; getEvpnResult.Id) },
+        ///             { "nodes", example.Apply(getEvpnResult =&gt; getEvpnResult.Nodes) },
+        ///             { "controller", example.Apply(getEvpnResult =&gt; getEvpnResult.Controller) },
+        ///             { "vrfVxlan", example.Apply(getEvpnResult =&gt; getEvpnResult.VrfVxlan) },
+        ///             { "advertiseSubnets", example.Apply(getEvpnResult =&gt; getEvpnResult.AdvertiseSubnets) },
+        ///             { "disableArpNdSuppression", example.Apply(getEvpnResult =&gt; getEvpnResult.DisableArpNdSuppression) },
+        ///             { "exitNodes", example.Apply(getEvpnResult =&gt; getEvpnResult.ExitNodes) },
+        ///             { "exitNodesLocalRouting", example.Apply(getEvpnResult =&gt; getEvpnResult.ExitNodesLocalRouting) },
+        ///             { "primaryExitNode", example.Apply(getEvpnResult =&gt; getEvpnResult.PrimaryExitNode) },
+        ///             { "rtImport", example.Apply(getEvpnResult =&gt; getEvpnResult.RtImport) },
+        ///             { "mtu", example.Apply(getEvpnResult =&gt; getEvpnResult.Mtu) },
+        ///             { "dns", example.Apply(getEvpnResult =&gt; getEvpnResult.Dns) },
+        ///             { "dnsZone", example.Apply(getEvpnResult =&gt; getEvpnResult.DnsZone) },
+        ///             { "ipam", example.Apply(getEvpnResult =&gt; getEvpnResult.Ipam) },
+        ///             { "reverseDns", example.Apply(getEvpnResult =&gt; getEvpnResult.ReverseDns) },
+        ///         },
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetEvpnResult> Invoke(GetEvpnInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEvpnResult>("proxmoxve:sdn/zone/getEvpn:getEvpn", args ?? new GetEvpnInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about an EVPN Zone in Proxmox SDN. The EVPN zone creates a routable Layer 3 network, capable of spanning across multiple clusters.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = ProxmoxVE.Sdn.Zone.GetEvpn.Invoke(new()
+        ///     {
+        ///         Id = "evpn1",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxSdnZoneEvpn"] = 
+        ///         {
+        ///             { "id", example.Apply(getEvpnResult =&gt; getEvpnResult.Id) },
+        ///             { "nodes", example.Apply(getEvpnResult =&gt; getEvpnResult.Nodes) },
+        ///             { "controller", example.Apply(getEvpnResult =&gt; getEvpnResult.Controller) },
+        ///             { "vrfVxlan", example.Apply(getEvpnResult =&gt; getEvpnResult.VrfVxlan) },
+        ///             { "advertiseSubnets", example.Apply(getEvpnResult =&gt; getEvpnResult.AdvertiseSubnets) },
+        ///             { "disableArpNdSuppression", example.Apply(getEvpnResult =&gt; getEvpnResult.DisableArpNdSuppression) },
+        ///             { "exitNodes", example.Apply(getEvpnResult =&gt; getEvpnResult.ExitNodes) },
+        ///             { "exitNodesLocalRouting", example.Apply(getEvpnResult =&gt; getEvpnResult.ExitNodesLocalRouting) },
+        ///             { "primaryExitNode", example.Apply(getEvpnResult =&gt; getEvpnResult.PrimaryExitNode) },
+        ///             { "rtImport", example.Apply(getEvpnResult =&gt; getEvpnResult.RtImport) },
+        ///             { "mtu", example.Apply(getEvpnResult =&gt; getEvpnResult.Mtu) },
+        ///             { "dns", example.Apply(getEvpnResult =&gt; getEvpnResult.Dns) },
+        ///             { "dnsZone", example.Apply(getEvpnResult =&gt; getEvpnResult.DnsZone) },
+        ///             { "ipam", example.Apply(getEvpnResult =&gt; getEvpnResult.Ipam) },
+        ///             { "reverseDns", example.Apply(getEvpnResult =&gt; getEvpnResult.ReverseDns) },
+        ///         },
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetEvpnResult> Invoke(GetEvpnInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetEvpnResult>("proxmoxve:sdn/zone/getEvpn:getEvpn", args ?? new GetEvpnInvokeArgs(), options.WithDefaults());

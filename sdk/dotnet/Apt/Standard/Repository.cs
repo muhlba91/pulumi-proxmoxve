@@ -11,6 +11,43 @@ namespace Pulumi.ProxmoxVE.Apt.Standard
 {
     /// <summary>
     /// Manages an APT standard repository of a Proxmox VE node.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new ProxmoxVE.Apt.Standard.Repository("example", new()
+    ///     {
+    ///         Handle = "no-subscription",
+    ///         Node = "pve",
+    ///     });
+    /// 
+    ///     var exampleRepository = new ProxmoxVE.Apt.Repository("example", new()
+    ///     {
+    ///         Enabled = true,
+    ///         FilePath = example.FilePath,
+    ///         Index = example.Index,
+    ///         Node = example.Node,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// An APT standard repository can be imported using a comma-separated list consisting of the name of the Proxmox VE node,
+    /// and the standard repository handle in the exact same order, e.g.:
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:apt/standard/repository:Repository example pve,no-subscription
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:apt/standard/repository:Repository")]
     public partial class Repository : global::Pulumi.CustomResource

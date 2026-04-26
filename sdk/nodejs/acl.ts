@@ -9,6 +9,38 @@ import * as utilities from "./utilities";
  *
  * ACLs are used to control access to resources in the Proxmox cluster.
  * Each ACL consists of a path, a user, group or token, a role, and a flag to allow propagation of permissions.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const operationsAutomation = new proxmoxve.UserLegacy("operations_automation", {
+ *     comment: "Managed by Pulumi",
+ *     password: "a-strong-password",
+ *     userId: "operations-automation@pve",
+ * });
+ * const operationsMonitoring = new proxmoxve.RoleLegacy("operations_monitoring", {
+ *     roleId: "operations-monitoring",
+ *     privileges: ["VM.GuestAgent.Audit"],
+ * });
+ * const operationsAutomationMonitoring = new proxmoxve.Acl("operations_automation_monitoring", {
+ *     userId: operationsAutomation.userId,
+ *     roleId: operationsMonitoring.roleId,
+ *     path: "/vms/1234",
+ *     propagate: true,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * !/usr/bin/env sh
+ * ACL can be imported using its unique identifier, e.g.: {path}?{group|user@realm|user@realm!token}?{role}
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:index/acl:Acl operations_automation_monitoring /?monitor@pve?operations-monitoring
+ * ```
  */
 export class Acl extends pulumi.CustomResource {
     /**

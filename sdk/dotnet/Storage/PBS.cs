@@ -11,6 +11,47 @@ namespace Pulumi.ProxmoxVE.Storage
 {
     /// <summary>
     /// Manages a Proxmox Backup Server (PBS) storage in Proxmox VE.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new ProxmoxVE.Storage.Pbs("example", new()
+    ///     {
+    ///         ResourceId = "example-pbs",
+    ///         Nodes = new[]
+    ///         {
+    ///             "pve",
+    ///         },
+    ///         Server = "pbs.example.local",
+    ///         Datastore = "backup",
+    ///         Username = "pbs-user",
+    ///         Password = "pbs-password",
+    ///         Fingerprint = "AA:BB:CC:DD:EE:FF",
+    ///         Contents = new[]
+    ///         {
+    ///             "backup",
+    ///         },
+    ///         GenerateEncryptionKey = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// Storage can be imported using its identifier, e.g.:
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:storage/pbs:Pbs example pbs-backup
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:storage/pbs:Pbs")]
     public partial class Pbs : global::Pulumi.CustomResource

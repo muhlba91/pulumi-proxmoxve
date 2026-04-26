@@ -91,6 +91,16 @@ def get_usb(name: Optional[_builtins.str] = None,
     """
     Retrieves a USB hardware mapping from a Proxmox VE cluster.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.hardware.mapping.get_usb(name="example")
+    pulumi.export("dataProxmoxHardwareMappingUsb", example)
+    ```
+
 
     :param _builtins.str name: The name of this USB hardware mapping.
     """
@@ -108,6 +118,16 @@ def get_usb_output(name: Optional[pulumi.Input[_builtins.str]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUsbResult]:
     """
     Retrieves a USB hardware mapping from a Proxmox VE cluster.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.hardware.mapping.get_usb(name="example")
+    pulumi.export("dataProxmoxHardwareMappingUsb", example)
+    ```
 
 
     :param _builtins.str name: The name of this USB hardware mapping.

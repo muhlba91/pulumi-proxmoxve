@@ -51,6 +51,15 @@ namespace Pulumi.ProxmoxVE.Storage
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// Storage can be imported using its identifier, e.g.:
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:storage/nfsLegacy:NfsLegacy example local-nfs
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:storage/nfsLegacy:NfsLegacy")]
     public partial class NfsLegacy : global::Pulumi.CustomResource

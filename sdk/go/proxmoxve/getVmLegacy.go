@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Deprecated:** Use `Vm` instead. This data source will be removed in v1.0.
+//
 // Retrieves information about a specific VM.
 //
 // ## Example Usage

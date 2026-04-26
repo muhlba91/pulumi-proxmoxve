@@ -50,14 +50,14 @@ public final class VmLegacyCpuArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of CPU cores per socket (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
+     * The number of CPU cores per socket (PVE defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt; when unset).
      * 
      */
     @Import(name="cores")
     private @Nullable Output<Integer> cores;
 
     /**
-     * @return The number of CPU cores per socket (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
+     * @return The number of CPU cores per socket (PVE defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt; when unset).
      * 
      */
     public Optional<Output<Integer>> cores() {
@@ -80,29 +80,14 @@ public final class VmLegacyCpuArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of hotplugged vCPUs (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
-     * 
-     */
-    @Import(name="hotplugged")
-    private @Nullable Output<Integer> hotplugged;
-
-    /**
-     * @return The number of hotplugged vCPUs (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
-     * 
-     */
-    public Optional<Output<Integer>> hotplugged() {
-        return Optional.ofNullable(this.hotplugged);
-    }
-
-    /**
-     * Limit of CPU usage (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; which means no limit).
+     * Limit of CPU usage. &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; means no limit (PVE default).
      * 
      */
     @Import(name="limit")
     private @Nullable Output<Double> limit;
 
     /**
-     * @return Limit of CPU usage (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; which means no limit).
+     * @return Limit of CPU usage. &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; means no limit (PVE default).
      * 
      */
     public Optional<Output<Double>> limit() {
@@ -110,14 +95,14 @@ public final class VmLegacyCpuArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Enable NUMA (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
      * 
      */
     @Import(name="numa")
     private @Nullable Output<Boolean> numa;
 
     /**
-     * @return Enable NUMA (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * @return Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
      * 
      */
     public Optional<Output<Boolean>> numa() {
@@ -125,14 +110,14 @@ public final class VmLegacyCpuArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of CPU sockets (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
+     * The number of CPU sockets (PVE defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt; when unset).
      * 
      */
     @Import(name="sockets")
     private @Nullable Output<Integer> sockets;
 
     /**
-     * @return The number of CPU sockets (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
+     * @return The number of CPU sockets (PVE defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt; when unset).
      * 
      */
     public Optional<Output<Integer>> sockets() {
@@ -140,14 +125,14 @@ public final class VmLegacyCpuArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Emulated CPU type, it&#39;s recommended to use `x86-64-v2-AES` or higher (defaults to &lt;span pulumi-lang-nodejs=&#34;`kvm64`&#34; pulumi-lang-dotnet=&#34;`Kvm64`&#34; pulumi-lang-go=&#34;`kvm64`&#34; pulumi-lang-python=&#34;`kvm64`&#34; pulumi-lang-yaml=&#34;`kvm64`&#34; pulumi-lang-java=&#34;`kvm64`&#34;&gt;`kvm64`&lt;/span&gt;). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+     * Emulated CPU type, it&#39;s recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Emulated CPU type, it&#39;s recommended to use `x86-64-v2-AES` or higher (defaults to &lt;span pulumi-lang-nodejs=&#34;`kvm64`&#34; pulumi-lang-dotnet=&#34;`Kvm64`&#34; pulumi-lang-go=&#34;`kvm64`&#34; pulumi-lang-python=&#34;`kvm64`&#34; pulumi-lang-yaml=&#34;`kvm64`&#34; pulumi-lang-java=&#34;`kvm64`&#34;&gt;`kvm64`&lt;/span&gt;). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+     * @return Emulated CPU type, it&#39;s recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
      * 
      */
     public Optional<Output<String>> type() {
@@ -155,18 +140,33 @@ public final class VmLegacyCpuArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+     * CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; is a valid value meaning disable CPU share weighting.
      * 
      */
     @Import(name="units")
     private @Nullable Output<Integer> units;
 
     /**
-     * @return CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+     * @return CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; is a valid value meaning disable CPU share weighting.
      * 
      */
     public Optional<Output<Integer>> units() {
         return Optional.ofNullable(this.units);
+    }
+
+    /**
+     * Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+     * 
+     */
+    @Import(name="vcpus")
+    private @Nullable Output<Integer> vcpus;
+
+    /**
+     * @return Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+     * 
+     */
+    public Optional<Output<Integer>> vcpus() {
+        return Optional.ofNullable(this.vcpus);
     }
 
     private VmLegacyCpuArgs() {}
@@ -176,12 +176,12 @@ public final class VmLegacyCpuArgs extends com.pulumi.resources.ResourceArgs {
         this.architecture = $.architecture;
         this.cores = $.cores;
         this.flags = $.flags;
-        this.hotplugged = $.hotplugged;
         this.limit = $.limit;
         this.numa = $.numa;
         this.sockets = $.sockets;
         this.type = $.type;
         this.units = $.units;
+        this.vcpus = $.vcpus;
     }
 
     public static Builder builder() {
@@ -245,7 +245,7 @@ public final class VmLegacyCpuArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cores The number of CPU cores per socket (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
+         * @param cores The number of CPU cores per socket (PVE defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt; when unset).
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class VmLegacyCpuArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cores The number of CPU cores per socket (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
+         * @param cores The number of CPU cores per socket (PVE defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt; when unset).
          * 
          * @return builder
          * 
@@ -297,28 +297,7 @@ public final class VmLegacyCpuArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hotplugged The number of hotplugged vCPUs (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder hotplugged(@Nullable Output<Integer> hotplugged) {
-            $.hotplugged = hotplugged;
-            return this;
-        }
-
-        /**
-         * @param hotplugged The number of hotplugged vCPUs (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
-         * 
-         * @return builder
-         * 
-         */
-        public Builder hotplugged(Integer hotplugged) {
-            return hotplugged(Output.of(hotplugged));
-        }
-
-        /**
-         * @param limit Limit of CPU usage (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; which means no limit).
+         * @param limit Limit of CPU usage. &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; means no limit (PVE default).
          * 
          * @return builder
          * 
@@ -329,7 +308,7 @@ public final class VmLegacyCpuArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param limit Limit of CPU usage (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; which means no limit).
+         * @param limit Limit of CPU usage. &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; means no limit (PVE default).
          * 
          * @return builder
          * 
@@ -339,7 +318,7 @@ public final class VmLegacyCpuArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param numa Enable NUMA (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+         * @param numa Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
          * 
          * @return builder
          * 
@@ -350,7 +329,7 @@ public final class VmLegacyCpuArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param numa Enable NUMA (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+         * @param numa Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
          * 
          * @return builder
          * 
@@ -360,7 +339,7 @@ public final class VmLegacyCpuArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sockets The number of CPU sockets (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
+         * @param sockets The number of CPU sockets (PVE defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt; when unset).
          * 
          * @return builder
          * 
@@ -371,7 +350,7 @@ public final class VmLegacyCpuArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sockets The number of CPU sockets (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
+         * @param sockets The number of CPU sockets (PVE defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt; when unset).
          * 
          * @return builder
          * 
@@ -381,7 +360,7 @@ public final class VmLegacyCpuArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Emulated CPU type, it&#39;s recommended to use `x86-64-v2-AES` or higher (defaults to &lt;span pulumi-lang-nodejs=&#34;`kvm64`&#34; pulumi-lang-dotnet=&#34;`Kvm64`&#34; pulumi-lang-go=&#34;`kvm64`&#34; pulumi-lang-python=&#34;`kvm64`&#34; pulumi-lang-yaml=&#34;`kvm64`&#34; pulumi-lang-java=&#34;`kvm64`&#34;&gt;`kvm64`&lt;/span&gt;). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+         * @param type Emulated CPU type, it&#39;s recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
          * 
          * @return builder
          * 
@@ -392,7 +371,7 @@ public final class VmLegacyCpuArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Emulated CPU type, it&#39;s recommended to use `x86-64-v2-AES` or higher (defaults to &lt;span pulumi-lang-nodejs=&#34;`kvm64`&#34; pulumi-lang-dotnet=&#34;`Kvm64`&#34; pulumi-lang-go=&#34;`kvm64`&#34; pulumi-lang-python=&#34;`kvm64`&#34; pulumi-lang-yaml=&#34;`kvm64`&#34; pulumi-lang-java=&#34;`kvm64`&#34;&gt;`kvm64`&lt;/span&gt;). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+         * @param type Emulated CPU type, it&#39;s recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
          * 
          * @return builder
          * 
@@ -402,7 +381,7 @@ public final class VmLegacyCpuArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param units CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+         * @param units CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; is a valid value meaning disable CPU share weighting.
          * 
          * @return builder
          * 
@@ -413,13 +392,34 @@ public final class VmLegacyCpuArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param units CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+         * @param units CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; is a valid value meaning disable CPU share weighting.
          * 
          * @return builder
          * 
          */
         public Builder units(Integer units) {
             return units(Output.of(units));
+        }
+
+        /**
+         * @param vcpus Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vcpus(@Nullable Output<Integer> vcpus) {
+            $.vcpus = vcpus;
+            return this;
+        }
+
+        /**
+         * @param vcpus Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vcpus(Integer vcpus) {
+            return vcpus(Output.of(vcpus));
         }
 
         public VmLegacyCpuArgs build() {

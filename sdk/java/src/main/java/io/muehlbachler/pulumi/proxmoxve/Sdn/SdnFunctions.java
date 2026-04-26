@@ -116,12 +116,98 @@ public final class SdnFunctions {
     /**
      * Retrieves information about an existing SDN VNet.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn.SdnFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetVnetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SdnFunctions.getVnet(GetVnetArgs.builder()
+     *             .id("vnet1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnVnet", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("zone", example.zone()),
+     *             Map.entry("alias", example.alias()),
+     *             Map.entry("isolatePorts", example.isolatePorts()),
+     *             Map.entry("tag", example.tag()),
+     *             Map.entry("vlanAware", example.vlanAware())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetVnetResult> getVnet(GetVnetArgs args) {
         return getVnet(args, InvokeOptions.Empty);
     }
     /**
      * Retrieves information about an existing SDN VNet.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn.SdnFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetVnetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SdnFunctions.getVnet(GetVnetArgs.builder()
+     *             .id("vnet1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnVnet", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("zone", example.zone()),
+     *             Map.entry("alias", example.alias()),
+     *             Map.entry("isolatePorts", example.isolatePorts()),
+     *             Map.entry("tag", example.tag()),
+     *             Map.entry("vlanAware", example.vlanAware())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVnetResult> getVnetPlain(GetVnetPlainArgs args) {
@@ -130,6 +216,49 @@ public final class SdnFunctions {
     /**
      * Retrieves information about an existing SDN VNet.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn.SdnFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetVnetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SdnFunctions.getVnet(GetVnetArgs.builder()
+     *             .id("vnet1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnVnet", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("zone", example.zone()),
+     *             Map.entry("alias", example.alias()),
+     *             Map.entry("isolatePorts", example.isolatePorts()),
+     *             Map.entry("tag", example.tag()),
+     *             Map.entry("vlanAware", example.vlanAware())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetVnetResult> getVnet(GetVnetArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:sdn/getVnet:getVnet", TypeShape.of(GetVnetResult.class), args, Utilities.withVersion(options));
@@ -137,12 +266,98 @@ public final class SdnFunctions {
     /**
      * Retrieves information about an existing SDN VNet.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn.SdnFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetVnetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SdnFunctions.getVnet(GetVnetArgs.builder()
+     *             .id("vnet1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnVnet", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("zone", example.zone()),
+     *             Map.entry("alias", example.alias()),
+     *             Map.entry("isolatePorts", example.isolatePorts()),
+     *             Map.entry("tag", example.tag()),
+     *             Map.entry("vlanAware", example.vlanAware())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetVnetResult> getVnet(GetVnetArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:sdn/getVnet:getVnet", TypeShape.of(GetVnetResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves information about an existing SDN VNet.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn.SdnFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetVnetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = SdnFunctions.getVnet(GetVnetArgs.builder()
+     *             .id("vnet1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnVnet", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("zone", example.zone()),
+     *             Map.entry("alias", example.alias()),
+     *             Map.entry("isolatePorts", example.isolatePorts()),
+     *             Map.entry("tag", example.tag()),
+     *             Map.entry("vlanAware", example.vlanAware())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVnetResult> getVnetPlain(GetVnetPlainArgs args, InvokeOptions options) {
@@ -411,12 +626,80 @@ public final class SdnFunctions {
     /**
      * Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn.SdnFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all SDN VNets
+     *         final var all = SdnFunctions.getVnets(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxSdnVnetsAll", Map.of("vnets", all.vnets()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetVnetsResult> getVnets() {
         return getVnets(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn.SdnFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all SDN VNets
+     *         final var all = SdnFunctions.getVnets(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxSdnVnetsAll", Map.of("vnets", all.vnets()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVnetsResult> getVnetsPlain() {
@@ -425,12 +708,80 @@ public final class SdnFunctions {
     /**
      * Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn.SdnFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all SDN VNets
+     *         final var all = SdnFunctions.getVnets(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxSdnVnetsAll", Map.of("vnets", all.vnets()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetVnetsResult> getVnets(InvokeArgs args) {
         return getVnets(args, InvokeOptions.Empty);
     }
     /**
      * Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn.SdnFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all SDN VNets
+     *         final var all = SdnFunctions.getVnets(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxSdnVnetsAll", Map.of("vnets", all.vnets()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVnetsResult> getVnetsPlain(InvokeArgs args) {
@@ -439,6 +790,40 @@ public final class SdnFunctions {
     /**
      * Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn.SdnFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all SDN VNets
+     *         final var all = SdnFunctions.getVnets(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxSdnVnetsAll", Map.of("vnets", all.vnets()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetVnetsResult> getVnets(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:sdn/getVnets:getVnets", TypeShape.of(GetVnetsResult.class), args, Utilities.withVersion(options));
@@ -446,12 +831,80 @@ public final class SdnFunctions {
     /**
      * Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn.SdnFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all SDN VNets
+     *         final var all = SdnFunctions.getVnets(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxSdnVnetsAll", Map.of("vnets", all.vnets()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetVnetsResult> getVnets(InvokeArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:sdn/getVnets:getVnets", TypeShape.of(GetVnetsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn.SdnFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all SDN VNets
+     *         final var all = SdnFunctions.getVnets(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("dataProxmoxSdnVnetsAll", Map.of("vnets", all.vnets()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVnetsResult> getVnetsPlain(InvokeArgs args, InvokeOptions options) {
@@ -761,12 +1214,112 @@ public final class SdnFunctions {
     /**
      * Retrieves information about all SDN Zones in Proxmox. This data source can optionally filter zones by type.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn.SdnFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all SDN zones
+     *         final var all = SdnFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
+     * 
+     *         // List only EVPN zones
+     *         final var evpnOnly = SdnFunctions.getZones(GetZonesArgs.builder()
+     *             .type("evpn")
+     *             .build());
+     * 
+     *         // List only Simple zones  
+     *         final var simpleOnly = SdnFunctions.getZones(GetZonesArgs.builder()
+     *             .type("simple")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnZonesAll", Map.of("zones", all.zones()));
+     *         ctx.export("dataProxmoxSdnZonesFiltered", Map.ofEntries(
+     *             Map.entry("evpnZones", evpnOnly.zones()),
+     *             Map.entry("simpleZones", simpleOnly.zones())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetZonesResult> getZones() {
         return getZones(GetZonesArgs.Empty, InvokeOptions.Empty);
     }
     /**
      * Retrieves information about all SDN Zones in Proxmox. This data source can optionally filter zones by type.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn.SdnFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all SDN zones
+     *         final var all = SdnFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
+     * 
+     *         // List only EVPN zones
+     *         final var evpnOnly = SdnFunctions.getZones(GetZonesArgs.builder()
+     *             .type("evpn")
+     *             .build());
+     * 
+     *         // List only Simple zones  
+     *         final var simpleOnly = SdnFunctions.getZones(GetZonesArgs.builder()
+     *             .type("simple")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnZonesAll", Map.of("zones", all.zones()));
+     *         ctx.export("dataProxmoxSdnZonesFiltered", Map.ofEntries(
+     *             Map.entry("evpnZones", evpnOnly.zones()),
+     *             Map.entry("simpleZones", simpleOnly.zones())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain() {
@@ -775,12 +1328,112 @@ public final class SdnFunctions {
     /**
      * Retrieves information about all SDN Zones in Proxmox. This data source can optionally filter zones by type.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn.SdnFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all SDN zones
+     *         final var all = SdnFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
+     * 
+     *         // List only EVPN zones
+     *         final var evpnOnly = SdnFunctions.getZones(GetZonesArgs.builder()
+     *             .type("evpn")
+     *             .build());
+     * 
+     *         // List only Simple zones  
+     *         final var simpleOnly = SdnFunctions.getZones(GetZonesArgs.builder()
+     *             .type("simple")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnZonesAll", Map.of("zones", all.zones()));
+     *         ctx.export("dataProxmoxSdnZonesFiltered", Map.ofEntries(
+     *             Map.entry("evpnZones", evpnOnly.zones()),
+     *             Map.entry("simpleZones", simpleOnly.zones())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args) {
         return getZones(args, InvokeOptions.Empty);
     }
     /**
      * Retrieves information about all SDN Zones in Proxmox. This data source can optionally filter zones by type.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn.SdnFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all SDN zones
+     *         final var all = SdnFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
+     * 
+     *         // List only EVPN zones
+     *         final var evpnOnly = SdnFunctions.getZones(GetZonesArgs.builder()
+     *             .type("evpn")
+     *             .build());
+     * 
+     *         // List only Simple zones  
+     *         final var simpleOnly = SdnFunctions.getZones(GetZonesArgs.builder()
+     *             .type("simple")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnZonesAll", Map.of("zones", all.zones()));
+     *         ctx.export("dataProxmoxSdnZonesFiltered", Map.ofEntries(
+     *             Map.entry("evpnZones", evpnOnly.zones()),
+     *             Map.entry("simpleZones", simpleOnly.zones())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args) {
@@ -789,6 +1442,56 @@ public final class SdnFunctions {
     /**
      * Retrieves information about all SDN Zones in Proxmox. This data source can optionally filter zones by type.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn.SdnFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all SDN zones
+     *         final var all = SdnFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
+     * 
+     *         // List only EVPN zones
+     *         final var evpnOnly = SdnFunctions.getZones(GetZonesArgs.builder()
+     *             .type("evpn")
+     *             .build());
+     * 
+     *         // List only Simple zones  
+     *         final var simpleOnly = SdnFunctions.getZones(GetZonesArgs.builder()
+     *             .type("simple")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnZonesAll", Map.of("zones", all.zones()));
+     *         ctx.export("dataProxmoxSdnZonesFiltered", Map.ofEntries(
+     *             Map.entry("evpnZones", evpnOnly.zones()),
+     *             Map.entry("simpleZones", simpleOnly.zones())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:sdn/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
@@ -796,12 +1499,112 @@ public final class SdnFunctions {
     /**
      * Retrieves information about all SDN Zones in Proxmox. This data source can optionally filter zones by type.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn.SdnFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all SDN zones
+     *         final var all = SdnFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
+     * 
+     *         // List only EVPN zones
+     *         final var evpnOnly = SdnFunctions.getZones(GetZonesArgs.builder()
+     *             .type("evpn")
+     *             .build());
+     * 
+     *         // List only Simple zones  
+     *         final var simpleOnly = SdnFunctions.getZones(GetZonesArgs.builder()
+     *             .type("simple")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnZonesAll", Map.of("zones", all.zones()));
+     *         ctx.export("dataProxmoxSdnZonesFiltered", Map.ofEntries(
+     *             Map.entry("evpnZones", evpnOnly.zones()),
+     *             Map.entry("simpleZones", simpleOnly.zones())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetZonesResult> getZones(GetZonesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:sdn/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves information about all SDN Zones in Proxmox. This data source can optionally filter zones by type.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn.SdnFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetZonesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // List all SDN zones
+     *         final var all = SdnFunctions.getZones(GetZonesArgs.builder()
+     *             .build());
+     * 
+     *         // List only EVPN zones
+     *         final var evpnOnly = SdnFunctions.getZones(GetZonesArgs.builder()
+     *             .type("evpn")
+     *             .build());
+     * 
+     *         // List only Simple zones  
+     *         final var simpleOnly = SdnFunctions.getZones(GetZonesArgs.builder()
+     *             .type("simple")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnZonesAll", Map.of("zones", all.zones()));
+     *         ctx.export("dataProxmoxSdnZonesFiltered", Map.ofEntries(
+     *             Map.entry("evpnZones", evpnOnly.zones()),
+     *             Map.entry("simpleZones", simpleOnly.zones())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetZonesResult> getZonesPlain(GetZonesPlainArgs args, InvokeOptions options) {

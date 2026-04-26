@@ -16,6 +16,38 @@ namespace Pulumi.ProxmoxVE.Realm
     /// used alongside realm configuration resources such as
     /// `proxmoxve.realm.Ldap`.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new ProxmoxVE.Realm.Ldap("example", new()
+    ///     {
+    ///         Realm = "example-ldap",
+    ///         Server1 = "ldap.example.com",
+    ///         Port = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(389) (example.pp:3,17-20)),
+    ///         BaseDn = "ou=people,dc=example,dc=com",
+    ///         UserAttr = "uid",
+    ///         GroupDn = "ou=groups,dc=example,dc=com",
+    ///         GroupFilter = "(objectClass=groupOfNames)",
+    ///     });
+    /// 
+    ///     var exampleSync = new ProxmoxVE.Realm.Sync("example", new()
+    ///     {
+    ///         Realm = example.Realm,
+    ///         Scope = "both",
+    ///         RemoveVanished = "acl;entry;properties",
+    ///         EnableNew = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Behavior Notes
     /// 
     /// - The sync operation is **one-shot**: applying the resource runs the sync
@@ -24,6 +56,18 @@ namespace Pulumi.ProxmoxVE.Realm
     ///   configuration in Terraform state.
     /// - Destroying the resource does **not** undo any previously performed sync;
     ///   it simply removes the resource from Terraform state.
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// Realm sync resources can be imported by realm name, e.g.:
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:realm/sync:Sync example example.com
+    /// ```
+    /// 
+    /// Importing only populates the `Realm` and `Id` attributes; other fields must
+    /// be set in configuration.
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:realm/sync:Sync")]
     public partial class Sync : global::Pulumi.CustomResource

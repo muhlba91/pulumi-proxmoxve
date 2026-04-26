@@ -21,6 +21,59 @@ import javax.annotation.Nullable;
 /**
  * VXLAN Zone in Proxmox SDN. It establishes a tunnel (overlay) on top of an existing network (underlay). This encapsulates layer 2 Ethernet frames within layer 4 UDP datagrams using the default destination port 4789. You have to configure the underlay network yourself to enable UDP connectivity between all peers. Because VXLAN encapsulation uses 50 bytes, the MTU needs to be 50 bytes lower than the outgoing physical interface.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.sdn.Vxlan;
+ * import io.muehlbachler.pulumi.proxmoxve.sdn.VxlanArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Vxlan("example", VxlanArgs.builder()
+ *             .resourceId("vxlan1")
+ *             .peers(            
+ *                 "10.0.0.1",
+ *                 "10.0.0.2",
+ *                 "10.0.0.3")
+ *             .mtu(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1450) (example.pp:3,16-20)))
+ *             .dns("1.1.1.1")
+ *             .dnsZone("example.com")
+ *             .ipam("pve")
+ *             .reverseDns("1.1.1.1")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * !/usr/bin/env sh
+ * VXLAN SDN zone can be imported using its unique identifier (zone ID)
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:sdn/zone/vxlan:Vxlan example vxlan1
+ * ```
+ * 
  */
 @ResourceType(type="proxmoxve:sdn/zone/vxlan:Vxlan")
 public class Vxlan extends com.pulumi.resources.CustomResource {

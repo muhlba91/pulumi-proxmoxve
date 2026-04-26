@@ -20,6 +20,64 @@ import javax.annotation.Nullable;
 /**
  * Manages a Linux Bridge network interface in a Proxmox VE node.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.network.Vlan;
+ * import io.muehlbachler.pulumi.proxmoxve.network.VlanArgs;
+ * import io.muehlbachler.pulumi.proxmoxve.network.Bridge;
+ * import io.muehlbachler.pulumi.proxmoxve.network.BridgeArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var vlan99 = new Vlan("vlan99", VlanArgs.builder()
+ *             .nodeName("pve")
+ *             .name("ens18.99")
+ *             .build());
+ * 
+ *         var vmbr99 = new Bridge("vmbr99", BridgeArgs.builder()
+ *             .nodeName("pve")
+ *             .name("vmbr99")
+ *             .address("99.99.99.99/16")
+ *             .comment("vmbr99 comment")
+ *             .ports("ens18.99")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(vlan99)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * !/usr/bin/env sh
+ * Interfaces can be imported using the `node_name:iface` format, e.g.
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:network/linux/bridge:Bridge vmbr99 pve:vmbr99
+ * ```
+ * 
  */
 @ResourceType(type="proxmoxve:network/linux/bridge:Bridge")
 public class Bridge extends com.pulumi.resources.CustomResource {
@@ -122,14 +180,14 @@ public class Bridge extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.mtu);
     }
     /**
-     * The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+     * The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+     * @return The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
      * 
      */
     public Output<String> name() {

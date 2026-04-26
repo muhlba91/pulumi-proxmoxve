@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  *
  * ## Limitations
  *
- * This resource intentionally manages only a subset of VM configuration. The following are currently not managed and must be inherited from the source template (or managed via `proxmoxve.VmLegacy` with a `clone` block):
+ * This resource intentionally manages only a subset of VM configuration. The following are currently not managed and must be inherited from the source template (or managed via `proxmoxve.Vm` with a `clone` block):
  *
  * - BIOS / machine / boot order
  * - EFI disk / secure boot settings
@@ -21,6 +21,195 @@ import * as utilities from "../utilities";
  * - Cloud-init / initialization
  * - QEMU guest agent configuration
  * - PCI/USB passthrough, serial/audio devices, watchdog, VirtioFS
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * // Example 1: Basic clone with minimal management
+ * const basicClone = new proxmoxve.cloned.Vm("basic_clone", {
+ *     nodeName: "pve",
+ *     name: "basic-clone",
+ *     clone: {
+ *         sourceVmId: 100,
+ *         full: true,
+ *     },
+ *     cpu: {
+ *         cores: 4,
+ *     },
+ * });
+ * // Example 2: Clone with explicit network management
+ * const networkManaged = new proxmoxve.cloned.Vm("network_managed", {
+ *     nodeName: "pve",
+ *     name: "network-clone",
+ *     clone: {
+ *         sourceVmId: 100,
+ *     },
+ *     network: {
+ *         net0: {
+ *             bridge: "vmbr0",
+ *             model: "virtio",
+ *             tag: 100,
+ *         },
+ *         net1: {
+ *             bridge: "vmbr1",
+ *             model: "virtio",
+ *             firewall: true,
+ *             macAddress: "BC:24:11:2E:C5:00",
+ *         },
+ *     },
+ *     cpu: {
+ *         cores: 2,
+ *     },
+ * });
+ * // Example 3: Clone with disk management
+ * const diskManaged = new proxmoxve.cloned.Vm("disk_managed", {
+ *     nodeName: "pve",
+ *     name: "disk-clone",
+ *     clone: {
+ *         sourceVmId: 100,
+ *         targetDatastore: "local-lvm",
+ *     },
+ *     disk: {
+ *         scsi0: {
+ *             datastoreId: "local-lvm",
+ *             sizeGb: 50,
+ *             discard: "on",
+ *             ssd: true,
+ *         },
+ *         scsi1: {
+ *             datastoreId: "local-lvm",
+ *             sizeGb: 100,
+ *             backup: false,
+ *         },
+ *     },
+ * });
+ * // Example 4: Clone with explicit device deletion
+ * const selectiveDelete = new proxmoxve.cloned.Vm("selective_delete", {
+ *     nodeName: "pve",
+ *     name: "minimal-clone",
+ *     clone: {
+ *         sourceVmId: 100,
+ *     },
+ *     network: {
+ *         net0: {
+ *             bridge: "vmbr0",
+ *             model: "virtio",
+ *         },
+ *     },
+ *     "delete": {
+ *         networks: [
+ *             "net1",
+ *             "net2",
+ *         ],
+ *     },
+ * });
+ * // Example 5: Full-featured clone with multiple settings
+ * const fullFeatured = new proxmoxve.cloned.Vm("full_featured", {
+ *     nodeName: "pve",
+ *     name: "production-vm",
+ *     description: "Production VM cloned from template",
+ *     tags: [
+ *         "production",
+ *         "web",
+ *     ],
+ *     clone: {
+ *         sourceVmId: 100,
+ *         sourceNodeName: "pve",
+ *         full: true,
+ *         targetDatastore: "local-lvm",
+ *         retries: 3,
+ *     },
+ *     cpu: {
+ *         cores: 8,
+ *         sockets: 1,
+ *         architecture: "x86_64",
+ *         type: "host",
+ *     },
+ *     memory: {
+ *         size: 8192,
+ *         balloon: 2048,
+ *         shares: 2000,
+ *     },
+ *     network: {
+ *         net0: {
+ *             bridge: "vmbr0",
+ *             model: "virtio",
+ *             tag: 100,
+ *             firewall: true,
+ *             rateLimit: 100,
+ *         },
+ *     },
+ *     disk: {
+ *         scsi0: {
+ *             datastoreId: "local-lvm",
+ *             sizeGb: 100,
+ *             discard: "on",
+ *             iothread: true,
+ *             ssd: true,
+ *             cache: "writethrough",
+ *         },
+ *     },
+ *     vga: {
+ *         type: "std",
+ *         memory: 16,
+ *     },
+ *     "delete": {
+ *         disks: ["ide2"],
+ *     },
+ *     stopOnDestroy: false,
+ *     purgeOnDestroy: true,
+ *     deleteUnreferencedDisksOnDestroy: false,
+ *     timeouts: {
+ *         create: "30m",
+ *         update: "30m",
+ *         "delete": "10m",
+ *     },
+ * });
+ * // Example 6: Linked clone for testing
+ * const testClone = new proxmoxve.cloned.Vm("test_clone", {
+ *     nodeName: "pve",
+ *     name: "test-vm",
+ *     clone: {
+ *         sourceVmId: 100,
+ *         full: false,
+ *     },
+ *     cpu: {
+ *         cores: 2,
+ *     },
+ *     network: {
+ *         net0: {
+ *             bridge: "vmbr0",
+ *             model: "virtio",
+ *         },
+ *     },
+ * });
+ * // Example 7: Clone with pool assignment
+ * const pooledClone = new proxmoxve.cloned.Vm("pooled_clone", {
+ *     nodeName: "pve",
+ *     name: "pooled-vm",
+ *     clone: {
+ *         sourceVmId: 100,
+ *         poolId: "production",
+ *     },
+ *     cpu: {
+ *         cores: 4,
+ *     },
+ * });
+ * // Example 8: Import existing cloned VM
+ * const imported = new proxmoxve.cloned.Vm("imported", {
+ *     resourceId: "123",
+ *     nodeName: "pve",
+ *     clone: {
+ *         sourceVmId: 100,
+ *     },
+ *     cpu: {
+ *         cores: 4,
+ *     },
+ * });
+ * ```
  */
 export class Vm extends pulumi.CustomResource {
     /**

@@ -6,6 +6,27 @@ import * as utilities from "../../utilities";
 
 /**
  * Retrieves information about a VLAN Zone in Proxmox SDN. It uses an existing local Linux or OVS bridge to connect to the node's physical interface. It uses VLAN tagging defined in the VNet to isolate the network segments. This allows connectivity of VMs between different nodes.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = proxmoxve.sdn.zone.getVlan({
+ *     id: "vlan1",
+ * });
+ * export const dataProxmoxSdnZoneVlan = {
+ *     id: example.then(example => example.id),
+ *     nodes: example.then(example => example.nodes),
+ *     bridge: example.then(example => example.bridge),
+ *     mtu: example.then(example => example.mtu),
+ *     dns: example.then(example => example.dns),
+ *     dnsZone: example.then(example => example.dnsZone),
+ *     ipam: example.then(example => example.ipam),
+ *     reverseDns: example.then(example => example.reverseDns),
+ * };
+ * ```
  */
 export function getVlan(args: GetVlanArgs, opts?: pulumi.InvokeOptions): Promise<GetVlanResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -71,6 +92,27 @@ export interface GetVlanResult {
 }
 /**
  * Retrieves information about a VLAN Zone in Proxmox SDN. It uses an existing local Linux or OVS bridge to connect to the node's physical interface. It uses VLAN tagging defined in the VNet to isolate the network segments. This allows connectivity of VMs between different nodes.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = proxmoxve.sdn.zone.getVlan({
+ *     id: "vlan1",
+ * });
+ * export const dataProxmoxSdnZoneVlan = {
+ *     id: example.then(example => example.id),
+ *     nodes: example.then(example => example.nodes),
+ *     bridge: example.then(example => example.bridge),
+ *     mtu: example.then(example => example.mtu),
+ *     dns: example.then(example => example.dns),
+ *     dnsZone: example.then(example => example.dnsZone),
+ *     ipam: example.then(example => example.ipam),
+ *     reverseDns: example.then(example => example.reverseDns),
+ * };
+ * ```
  */
 export function getVlanOutput(args: GetVlanOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVlanResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

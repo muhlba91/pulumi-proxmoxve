@@ -12,6 +12,8 @@ import (
 )
 
 // Retrieves information about a specific High Availability group.
+//
+// ## Example Usage
 func LookupHagroup(ctx *pulumi.Context, args *LookupHagroupArgs, opts ...pulumi.InvokeOption) (*LookupHagroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupHagroupResult

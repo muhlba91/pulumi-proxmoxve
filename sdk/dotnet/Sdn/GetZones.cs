@@ -13,18 +13,138 @@ namespace Pulumi.ProxmoxVE.Sdn
     {
         /// <summary>
         /// Retrieves information about all SDN Zones in Proxmox. This data source can optionally filter zones by type.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // List all SDN zones
+        ///     var all = ProxmoxVE.Sdn.GetZones.Invoke();
+        /// 
+        ///     // List only EVPN zones
+        ///     var evpnOnly = ProxmoxVE.Sdn.GetZones.Invoke(new()
+        ///     {
+        ///         Type = "evpn",
+        ///     });
+        /// 
+        ///     // List only Simple zones  
+        ///     var simpleOnly = ProxmoxVE.Sdn.GetZones.Invoke(new()
+        ///     {
+        ///         Type = "simple",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxSdnZonesAll"] = 
+        ///         {
+        ///             { "zones", all.Apply(getZonesResult =&gt; getZonesResult.Zones) },
+        ///         },
+        ///         ["dataProxmoxSdnZonesFiltered"] = 
+        ///         {
+        ///             { "evpnZones", evpnOnly.Apply(getZonesResult =&gt; getZonesResult.Zones) },
+        ///             { "simpleZones", simpleOnly.Apply(getZonesResult =&gt; getZonesResult.Zones) },
+        ///         },
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("proxmoxve:sdn/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about all SDN Zones in Proxmox. This data source can optionally filter zones by type.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // List all SDN zones
+        ///     var all = ProxmoxVE.Sdn.GetZones.Invoke();
+        /// 
+        ///     // List only EVPN zones
+        ///     var evpnOnly = ProxmoxVE.Sdn.GetZones.Invoke(new()
+        ///     {
+        ///         Type = "evpn",
+        ///     });
+        /// 
+        ///     // List only Simple zones  
+        ///     var simpleOnly = ProxmoxVE.Sdn.GetZones.Invoke(new()
+        ///     {
+        ///         Type = "simple",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxSdnZonesAll"] = 
+        ///         {
+        ///             { "zones", all.Apply(getZonesResult =&gt; getZonesResult.Zones) },
+        ///         },
+        ///         ["dataProxmoxSdnZonesFiltered"] = 
+        ///         {
+        ///             { "evpnZones", evpnOnly.Apply(getZonesResult =&gt; getZonesResult.Zones) },
+        ///             { "simpleZones", simpleOnly.Apply(getZonesResult =&gt; getZonesResult.Zones) },
+        ///         },
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("proxmoxve:sdn/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about all SDN Zones in Proxmox. This data source can optionally filter zones by type.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // List all SDN zones
+        ///     var all = ProxmoxVE.Sdn.GetZones.Invoke();
+        /// 
+        ///     // List only EVPN zones
+        ///     var evpnOnly = ProxmoxVE.Sdn.GetZones.Invoke(new()
+        ///     {
+        ///         Type = "evpn",
+        ///     });
+        /// 
+        ///     // List only Simple zones  
+        ///     var simpleOnly = ProxmoxVE.Sdn.GetZones.Invoke(new()
+        ///     {
+        ///         Type = "simple",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxSdnZonesAll"] = 
+        ///         {
+        ///             { "zones", all.Apply(getZonesResult =&gt; getZonesResult.Zones) },
+        ///         },
+        ///         ["dataProxmoxSdnZonesFiltered"] = 
+        ///         {
+        ///             { "evpnZones", evpnOnly.Apply(getZonesResult =&gt; getZonesResult.Zones) },
+        ///             { "simpleZones", simpleOnly.Apply(getZonesResult =&gt; getZonesResult.Zones) },
+        ///         },
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("proxmoxve:sdn/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());

@@ -13,18 +13,96 @@ namespace Pulumi.ProxmoxVE.Metrics
     {
         /// <summary>
         /// Retrieves information about a specific PVE metric server.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = ProxmoxVE.Metrics.GetServer.Invoke(new()
+        ///     {
+        ///         Name = "example_influxdb",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxMetricsServer"] = 
+        ///         {
+        ///             { "server", example.Apply(getServerResult =&gt; getServerResult.Server) },
+        ///             { "port", example.Apply(getServerResult =&gt; getServerResult.Port) },
+        ///         },
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetServerResult> InvokeAsync(GetServerArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerResult>("proxmoxve:metrics/getServer:getServer", args ?? new GetServerArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about a specific PVE metric server.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = ProxmoxVE.Metrics.GetServer.Invoke(new()
+        ///     {
+        ///         Name = "example_influxdb",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxMetricsServer"] = 
+        ///         {
+        ///             { "server", example.Apply(getServerResult =&gt; getServerResult.Server) },
+        ///             { "port", example.Apply(getServerResult =&gt; getServerResult.Port) },
+        ///         },
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetServerResult> Invoke(GetServerInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerResult>("proxmoxve:metrics/getServer:getServer", args ?? new GetServerInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about a specific PVE metric server.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = ProxmoxVE.Metrics.GetServer.Invoke(new()
+        ///     {
+        ///         Name = "example_influxdb",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxMetricsServer"] = 
+        ///         {
+        ///             { "server", example.Apply(getServerResult =&gt; getServerResult.Server) },
+        ///             { "port", example.Apply(getServerResult =&gt; getServerResult.Port) },
+        ///         },
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetServerResult> Invoke(GetServerInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerResult>("proxmoxve:metrics/getServer:getServer", args ?? new GetServerInvokeArgs(), options.WithDefaults());

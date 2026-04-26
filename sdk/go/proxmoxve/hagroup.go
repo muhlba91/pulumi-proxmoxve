@@ -13,6 +13,49 @@ import (
 )
 
 // Manages a High Availability group in a Proxmox VE cluster.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := proxmoxve.NewHagroup(ctx, "example", &proxmoxve.HagroupArgs{
+//				Group:   pulumi.String("example"),
+//				Comment: pulumi.String("This is a comment."),
+//				Nodes: pulumi.IntMap{
+//					"node1": nil,
+//					"node2": pulumi.Int(2),
+//					"node3": pulumi.Int(1),
+//				},
+//				Restricted: pulumi.Bool(true),
+//				NoFailback: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// !/usr/bin/env sh
+// HA groups can be imported using their name, e.g.:
+//
+// ```sh
+// $ pulumi import proxmoxve:index/hagroup:Hagroup example example
+// ```
 type Hagroup struct {
 	pulumi.CustomResourceState
 

@@ -13,6 +13,38 @@ import (
 )
 
 // Manages Proxmox VE Replication.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Replication
+//			_, err := proxmoxve.NewReplication(ctx, "example_replication_1", &proxmoxve.ReplicationArgs{
+//				ResourceId: pulumi.String("100-0"),
+//				Target:     pulumi.String("pve-02"),
+//				Type:       pulumi.String("local"),
+//				Disable:    pulumi.Bool(false),
+//				Comment:    pulumi.String("Replication to pve-02 every 30 min"),
+//				Schedule:   pulumi.String("*/30"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Replication struct {
 	pulumi.CustomResourceState
 

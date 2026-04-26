@@ -19,6 +19,135 @@ import javax.annotation.Nullable;
 /**
  * Manages SDN Subnets in Proxmox VE.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.sdn.Applier;
+ * import io.muehlbachler.pulumi.proxmoxve.sdn.Simple;
+ * import io.muehlbachler.pulumi.proxmoxve.sdn.SimpleArgs;
+ * import io.muehlbachler.pulumi.proxmoxve.sdn.Vnet;
+ * import io.muehlbachler.pulumi.proxmoxve.sdn.VnetArgs;
+ * import io.muehlbachler.pulumi.proxmoxve.sdn.Subnet;
+ * import io.muehlbachler.pulumi.proxmoxve.sdn.SubnetArgs;
+ * import com.pulumi.proxmoxve.sdn.inputs.SubnetDhcpRangeArgs;
+ * import io.muehlbachler.pulumi.proxmoxve.sdn.ApplierArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var finalizer = new Applier("finalizer");
+ * 
+ *         // SDN Zone (Simple) - Basic zone for simple vnets
+ *         var exampleZone1 = new Simple("exampleZone1", SimpleArgs.builder()
+ *             .resourceId("zone1")
+ *             .nodes("pve")
+ *             .mtu(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1500) (example.pp:8,16-20)))
+ *             .dns("1.1.1.1")
+ *             .dnsZone("example.com")
+ *             .ipam("pve")
+ *             .reverseDns("1.1.1.1")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(finalizer)
+ *                 .build());
+ * 
+ *         // SDN Zone (Simple) - Second zone for demonstration
+ *         var exampleZone2 = new Simple("exampleZone2", SimpleArgs.builder()
+ *             .resourceId("zone2")
+ *             .nodes("pve")
+ *             .mtu(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1500) (example.pp:27,16-20)))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(finalizer)
+ *                 .build());
+ * 
+ *         // SDN VNet - Basic vnet
+ *         var exampleVnet1 = new Vnet("exampleVnet1", VnetArgs.builder()
+ *             .resourceId("vnet1")
+ *             .zone(exampleZone1.resourceId())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(finalizer)
+ *                 .build());
+ * 
+ *         // SDN VNet - VNet with alias and port isolation
+ *         var exampleVnet2 = new Vnet("exampleVnet2", VnetArgs.builder()
+ *             .resourceId("vnet2")
+ *             .zone(exampleZone2.resourceId())
+ *             .alias("Example VNet 2")
+ *             .isolatePorts(true)
+ *             .vlanAware(false)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(finalizer)
+ *                 .build());
+ * 
+ *         // Basic Subnet
+ *         var basicSubnet = new Subnet("basicSubnet", SubnetArgs.builder()
+ *             .cidr("192.168.1.0/24")
+ *             .vnet(exampleVnet1.resourceId())
+ *             .gateway("192.168.1.1")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(finalizer)
+ *                 .build());
+ * 
+ *         // Subnet with DHCP Configuration
+ *         var dhcpSubnet = new Subnet("dhcpSubnet", SubnetArgs.builder()
+ *             .cidr("192.168.2.0/24")
+ *             .vnet(exampleVnet2.resourceId())
+ *             .gateway("192.168.2.1")
+ *             .dhcpDnsServer("192.168.2.53")
+ *             .dnsZonePrefix("internal.example.com")
+ *             .snat(true)
+ *             .dhcpRange(SubnetDhcpRangeArgs.builder()
+ *                 .startAddress("192.168.2.10")
+ *                 .endAddress("192.168.2.100")
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(finalizer)
+ *                 .build());
+ * 
+ *         // SDN Applier for all resources
+ *         var subnetApplier = new Applier("subnetApplier", ApplierArgs.Empty, CustomResourceOptions.builder()
+ *             .dependsOn(            
+ *                 exampleZone1,
+ *                 exampleZone2,
+ *                 exampleVnet1,
+ *                 exampleVnet2,
+ *                 basicSubnet,
+ *                 dhcpSubnet)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * !/usr/bin/env sh
+ * SDN subnet can be imported using its unique identifier in the format: &lt;vnet&gt;/&lt;subnet-id&gt;
+ * The &lt;subnet-id&gt; is the canonical ID from Proxmox, e.g., &#34;zone1-192.168.1.0-24&#34;
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:sdn/subnet:Subnet basic_subnet vnet1/zone1-192.168.1.0-24
+ * $ pulumi import proxmoxve:sdn/subnet:Subnet dhcp_subnet vnet2/zone2-192.168.2.0-24
+ * ```
+ * 
  */
 @ResourceType(type="proxmoxve:sdn/subnet:Subnet")
 public class Subnet extends com.pulumi.resources.CustomResource {

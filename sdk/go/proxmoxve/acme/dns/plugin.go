@@ -13,6 +13,46 @@ import (
 )
 
 // Manages an ACME plugin in a Proxmox VE cluster.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/acme"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := acme.NewPlugin(ctx, "example", &acme.PluginArgs{
+//				Plugin: pulumi.String("test"),
+//				Api:    pulumi.String("aws"),
+//				Data: pulumi.StringMap{
+//					"AWS_ACCESS_KEY_ID":     pulumi.String("EXAMPLE"),
+//					"AWS_SECRET_ACCESS_KEY": pulumi.String("EXAMPLE"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// !/usr/bin/env sh
+// ACME accounts can be imported using their name, e.g.:
+//
+// ```sh
+// $ pulumi import proxmoxve:acme/dns/plugin:Plugin example test
+// ```
 type Plugin struct {
 	pulumi.CustomResourceState
 

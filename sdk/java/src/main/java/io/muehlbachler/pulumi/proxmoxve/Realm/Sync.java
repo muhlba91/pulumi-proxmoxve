@@ -22,6 +22,56 @@ import javax.annotation.Nullable;
  * used alongside realm configuration resources such as
  * &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.realm.Ldap`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.realm.Ldap`&#34; pulumi-lang-go=&#34;`realm.Ldap`&#34; pulumi-lang-python=&#34;`realm.Ldap`&#34; pulumi-lang-yaml=&#34;`proxmoxve.realm.Ldap`&#34; pulumi-lang-java=&#34;`proxmoxve.realm.Ldap`&#34;&gt;`proxmoxve.realm.Ldap`&lt;/span&gt;.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.realm.Ldap;
+ * import io.muehlbachler.pulumi.proxmoxve.realm.LdapArgs;
+ * import io.muehlbachler.pulumi.proxmoxve.realm.Sync;
+ * import io.muehlbachler.pulumi.proxmoxve.realm.SyncArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Ldap("example", LdapArgs.builder()
+ *             .realm("example-ldap")
+ *             .server1("ldap.example.com")
+ *             .port(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(389) (example.pp:3,17-20)))
+ *             .baseDn("ou=people,dc=example,dc=com")
+ *             .userAttr("uid")
+ *             .groupDn("ou=groups,dc=example,dc=com")
+ *             .groupFilter("(objectClass=groupOfNames)")
+ *             .build());
+ * 
+ *         var exampleSync = new Sync("exampleSync", SyncArgs.builder()
+ *             .realm(example.realm())
+ *             .scope("both")
+ *             .removeVanished("acl;entry;properties")
+ *             .enableNew(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Behavior Notes
  * 
  * - The sync operation is **one-shot**: applying the resource runs the sync
@@ -30,6 +80,18 @@ import javax.annotation.Nullable;
  *   configuration in Terraform state.
  * - Destroying the resource does **not** undo any previously performed sync;
  *   it simply removes the resource from Terraform state.
+ * 
+ * ## Import
+ * 
+ * !/usr/bin/env sh
+ * Realm sync resources can be imported by realm name, e.g.:
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:realm/sync:Sync example example.com
+ * ```
+ * 
+ * Importing only populates the &lt;span pulumi-lang-nodejs=&#34;`realm`&#34; pulumi-lang-dotnet=&#34;`Realm`&#34; pulumi-lang-go=&#34;`realm`&#34; pulumi-lang-python=&#34;`realm`&#34; pulumi-lang-yaml=&#34;`realm`&#34; pulumi-lang-java=&#34;`realm`&#34;&gt;`realm`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`id`&#34; pulumi-lang-dotnet=&#34;`Id`&#34; pulumi-lang-go=&#34;`id`&#34; pulumi-lang-python=&#34;`id`&#34; pulumi-lang-yaml=&#34;`id`&#34; pulumi-lang-java=&#34;`id`&#34;&gt;`id`&lt;/span&gt; attributes; other fields must
+ * be set in configuration.
  * 
  */
 @ResourceType(type="proxmoxve:realm/sync:Sync")

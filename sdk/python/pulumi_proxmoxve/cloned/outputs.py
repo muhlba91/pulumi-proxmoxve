@@ -59,7 +59,7 @@ class VmCdrom(dict):
     def __init__(__self__, *,
                  file_id: Optional[_builtins.str] = None):
         """
-        :param _builtins.str file_id: The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+        :param _builtins.str file_id: The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
         """
         if file_id is not None:
             pulumi.set(__self__, "file_id", file_id)
@@ -68,7 +68,7 @@ class VmCdrom(dict):
     @pulumi.getter(name="fileId")
     def file_id(self) -> Optional[_builtins.str]:
         """
-        The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+        The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
         """
         return pulumi.get(self, "file_id")
 
@@ -223,23 +223,23 @@ class VmCpu(dict):
                  architecture: Optional[_builtins.str] = None,
                  cores: Optional[_builtins.int] = None,
                  flags: Optional[Sequence[_builtins.str]] = None,
-                 hotplugged: Optional[_builtins.int] = None,
                  limit: Optional[_builtins.float] = None,
                  numa: Optional[_builtins.bool] = None,
                  sockets: Optional[_builtins.int] = None,
                  type: Optional[_builtins.str] = None,
-                 units: Optional[_builtins.int] = None):
+                 units: Optional[_builtins.int] = None,
+                 vcpus: Optional[_builtins.int] = None):
         """
         :param _builtins.str affinity: The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
         :param _builtins.str architecture: The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
-        :param _builtins.int cores: The number of CPU cores per socket (defaults to `1`).
+        :param _builtins.int cores: The number of CPU cores per socket (PVE defaults to `1` when unset).
         :param Sequence[_builtins.str] flags: Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
-        :param _builtins.int hotplugged: The number of hotplugged vCPUs (defaults to `0`).
-        :param _builtins.float limit: Limit of CPU usage (defaults to `0` which means no limit).
-        :param _builtins.bool numa: Enable NUMA (defaults to `false`).
-        :param _builtins.int sockets: The number of CPU sockets (defaults to `1`).
-        :param _builtins.str type: Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
-        :param _builtins.int units: CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+        :param _builtins.float limit: Limit of CPU usage. `0` means no limit (PVE default).
+        :param _builtins.bool numa: Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
+        :param _builtins.int sockets: The number of CPU sockets (PVE defaults to `1` when unset).
+        :param _builtins.str type: Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
+        :param _builtins.int units: CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
+        :param _builtins.int vcpus: Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
         """
         if affinity is not None:
             pulumi.set(__self__, "affinity", affinity)
@@ -249,8 +249,6 @@ class VmCpu(dict):
             pulumi.set(__self__, "cores", cores)
         if flags is not None:
             pulumi.set(__self__, "flags", flags)
-        if hotplugged is not None:
-            pulumi.set(__self__, "hotplugged", hotplugged)
         if limit is not None:
             pulumi.set(__self__, "limit", limit)
         if numa is not None:
@@ -261,6 +259,8 @@ class VmCpu(dict):
             pulumi.set(__self__, "type", type)
         if units is not None:
             pulumi.set(__self__, "units", units)
+        if vcpus is not None:
+            pulumi.set(__self__, "vcpus", vcpus)
 
     @_builtins.property
     @pulumi.getter
@@ -282,7 +282,7 @@ class VmCpu(dict):
     @pulumi.getter
     def cores(self) -> Optional[_builtins.int]:
         """
-        The number of CPU cores per socket (defaults to `1`).
+        The number of CPU cores per socket (PVE defaults to `1` when unset).
         """
         return pulumi.get(self, "cores")
 
@@ -296,17 +296,9 @@ class VmCpu(dict):
 
     @_builtins.property
     @pulumi.getter
-    def hotplugged(self) -> Optional[_builtins.int]:
-        """
-        The number of hotplugged vCPUs (defaults to `0`).
-        """
-        return pulumi.get(self, "hotplugged")
-
-    @_builtins.property
-    @pulumi.getter
     def limit(self) -> Optional[_builtins.float]:
         """
-        Limit of CPU usage (defaults to `0` which means no limit).
+        Limit of CPU usage. `0` means no limit (PVE default).
         """
         return pulumi.get(self, "limit")
 
@@ -314,7 +306,7 @@ class VmCpu(dict):
     @pulumi.getter
     def numa(self) -> Optional[_builtins.bool]:
         """
-        Enable NUMA (defaults to `false`).
+        Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
         """
         return pulumi.get(self, "numa")
 
@@ -322,7 +314,7 @@ class VmCpu(dict):
     @pulumi.getter
     def sockets(self) -> Optional[_builtins.int]:
         """
-        The number of CPU sockets (defaults to `1`).
+        The number of CPU sockets (PVE defaults to `1` when unset).
         """
         return pulumi.get(self, "sockets")
 
@@ -330,7 +322,7 @@ class VmCpu(dict):
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
         """
-        Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+        Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
         """
         return pulumi.get(self, "type")
 
@@ -338,9 +330,17 @@ class VmCpu(dict):
     @pulumi.getter
     def units(self) -> Optional[_builtins.int]:
         """
-        CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+        CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
         """
         return pulumi.get(self, "units")
+
+    @_builtins.property
+    @pulumi.getter
+    def vcpus(self) -> Optional[_builtins.int]:
+        """
+        Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+        """
+        return pulumi.get(self, "vcpus")
 
 
 @pulumi.output_type
@@ -592,7 +592,7 @@ class VmLegacyCdrom(dict):
     def __init__(__self__, *,
                  file_id: Optional[_builtins.str] = None):
         """
-        :param _builtins.str file_id: The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+        :param _builtins.str file_id: The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
         """
         if file_id is not None:
             pulumi.set(__self__, "file_id", file_id)
@@ -601,7 +601,7 @@ class VmLegacyCdrom(dict):
     @pulumi.getter(name="fileId")
     def file_id(self) -> Optional[_builtins.str]:
         """
-        The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+        The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
         """
         return pulumi.get(self, "file_id")
 
@@ -756,23 +756,23 @@ class VmLegacyCpu(dict):
                  architecture: Optional[_builtins.str] = None,
                  cores: Optional[_builtins.int] = None,
                  flags: Optional[Sequence[_builtins.str]] = None,
-                 hotplugged: Optional[_builtins.int] = None,
                  limit: Optional[_builtins.float] = None,
                  numa: Optional[_builtins.bool] = None,
                  sockets: Optional[_builtins.int] = None,
                  type: Optional[_builtins.str] = None,
-                 units: Optional[_builtins.int] = None):
+                 units: Optional[_builtins.int] = None,
+                 vcpus: Optional[_builtins.int] = None):
         """
         :param _builtins.str affinity: The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
         :param _builtins.str architecture: The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
-        :param _builtins.int cores: The number of CPU cores per socket (defaults to `1`).
+        :param _builtins.int cores: The number of CPU cores per socket (PVE defaults to `1` when unset).
         :param Sequence[_builtins.str] flags: Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
-        :param _builtins.int hotplugged: The number of hotplugged vCPUs (defaults to `0`).
-        :param _builtins.float limit: Limit of CPU usage (defaults to `0` which means no limit).
-        :param _builtins.bool numa: Enable NUMA (defaults to `false`).
-        :param _builtins.int sockets: The number of CPU sockets (defaults to `1`).
-        :param _builtins.str type: Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
-        :param _builtins.int units: CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+        :param _builtins.float limit: Limit of CPU usage. `0` means no limit (PVE default).
+        :param _builtins.bool numa: Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
+        :param _builtins.int sockets: The number of CPU sockets (PVE defaults to `1` when unset).
+        :param _builtins.str type: Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
+        :param _builtins.int units: CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
+        :param _builtins.int vcpus: Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
         """
         if affinity is not None:
             pulumi.set(__self__, "affinity", affinity)
@@ -782,8 +782,6 @@ class VmLegacyCpu(dict):
             pulumi.set(__self__, "cores", cores)
         if flags is not None:
             pulumi.set(__self__, "flags", flags)
-        if hotplugged is not None:
-            pulumi.set(__self__, "hotplugged", hotplugged)
         if limit is not None:
             pulumi.set(__self__, "limit", limit)
         if numa is not None:
@@ -794,6 +792,8 @@ class VmLegacyCpu(dict):
             pulumi.set(__self__, "type", type)
         if units is not None:
             pulumi.set(__self__, "units", units)
+        if vcpus is not None:
+            pulumi.set(__self__, "vcpus", vcpus)
 
     @_builtins.property
     @pulumi.getter
@@ -815,7 +815,7 @@ class VmLegacyCpu(dict):
     @pulumi.getter
     def cores(self) -> Optional[_builtins.int]:
         """
-        The number of CPU cores per socket (defaults to `1`).
+        The number of CPU cores per socket (PVE defaults to `1` when unset).
         """
         return pulumi.get(self, "cores")
 
@@ -829,17 +829,9 @@ class VmLegacyCpu(dict):
 
     @_builtins.property
     @pulumi.getter
-    def hotplugged(self) -> Optional[_builtins.int]:
-        """
-        The number of hotplugged vCPUs (defaults to `0`).
-        """
-        return pulumi.get(self, "hotplugged")
-
-    @_builtins.property
-    @pulumi.getter
     def limit(self) -> Optional[_builtins.float]:
         """
-        Limit of CPU usage (defaults to `0` which means no limit).
+        Limit of CPU usage. `0` means no limit (PVE default).
         """
         return pulumi.get(self, "limit")
 
@@ -847,7 +839,7 @@ class VmLegacyCpu(dict):
     @pulumi.getter
     def numa(self) -> Optional[_builtins.bool]:
         """
-        Enable NUMA (defaults to `false`).
+        Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
         """
         return pulumi.get(self, "numa")
 
@@ -855,7 +847,7 @@ class VmLegacyCpu(dict):
     @pulumi.getter
     def sockets(self) -> Optional[_builtins.int]:
         """
-        The number of CPU sockets (defaults to `1`).
+        The number of CPU sockets (PVE defaults to `1` when unset).
         """
         return pulumi.get(self, "sockets")
 
@@ -863,7 +855,7 @@ class VmLegacyCpu(dict):
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
         """
-        Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+        Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
         """
         return pulumi.get(self, "type")
 
@@ -871,9 +863,17 @@ class VmLegacyCpu(dict):
     @pulumi.getter
     def units(self) -> Optional[_builtins.int]:
         """
-        CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+        CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
         """
         return pulumi.get(self, "units")
+
+    @_builtins.property
+    @pulumi.getter
+    def vcpus(self) -> Optional[_builtins.int]:
+        """
+        Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+        """
+        return pulumi.get(self, "vcpus")
 
 
 @pulumi.output_type
@@ -1129,16 +1129,16 @@ class VmLegacyMemory(dict):
                  shares: Optional[_builtins.int] = None,
                  size: Optional[_builtins.int] = None):
         """
-        :param _builtins.int balloon: Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely (defaults to `0`).
+        :param _builtins.int balloon: Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely.
         :param _builtins.str hugepages: Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses. 
                
                **Options:**
                - `2` - Use 2 MiB hugepages
                - `1024` - Use 1 GiB hugepages
                - `any` - Use any available hugepage size
-        :param _builtins.bool keep_hugepages: Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup (defaults to `false`).
-        :param _builtins.int shares: CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs (defaults to `1000`).
-        :param _builtins.int size: Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM (defaults to `512` MiB).
+        :param _builtins.bool keep_hugepages: Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup.
+        :param _builtins.int shares: CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs.
+        :param _builtins.int size: Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM. Defaults to PVE's implicit `512` MiB when unset.
         """
         if balloon is not None:
             pulumi.set(__self__, "balloon", balloon)
@@ -1155,7 +1155,7 @@ class VmLegacyMemory(dict):
     @pulumi.getter
     def balloon(self) -> Optional[_builtins.int]:
         """
-        Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely (defaults to `0`).
+        Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely.
         """
         return pulumi.get(self, "balloon")
 
@@ -1176,7 +1176,7 @@ class VmLegacyMemory(dict):
     @pulumi.getter(name="keepHugepages")
     def keep_hugepages(self) -> Optional[_builtins.bool]:
         """
-        Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup (defaults to `false`).
+        Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup.
         """
         return pulumi.get(self, "keep_hugepages")
 
@@ -1184,7 +1184,7 @@ class VmLegacyMemory(dict):
     @pulumi.getter
     def shares(self) -> Optional[_builtins.int]:
         """
-        CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs (defaults to `1000`).
+        CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs.
         """
         return pulumi.get(self, "shares")
 
@@ -1192,7 +1192,7 @@ class VmLegacyMemory(dict):
     @pulumi.getter
     def size(self) -> Optional[_builtins.int]:
         """
-        Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM (defaults to `512` MiB).
+        Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM. Defaults to PVE's implicit `512` MiB when unset.
         """
         return pulumi.get(self, "size")
 
@@ -1369,8 +1369,8 @@ class VmLegacyRng(dict):
                  period: Optional[_builtins.int] = None,
                  source: Optional[_builtins.str] = None):
         """
-        :param _builtins.int max_bytes: Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
-        :param _builtins.int period: Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+        :param _builtins.int max_bytes: Maximum bytes of entropy allowed to get injected into the guest every period.
+        :param _builtins.int period: Period in milliseconds to limit entropy injection to the guest.
         :param _builtins.str source: The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
         """
         if max_bytes is not None:
@@ -1384,7 +1384,7 @@ class VmLegacyRng(dict):
     @pulumi.getter(name="maxBytes")
     def max_bytes(self) -> Optional[_builtins.int]:
         """
-        Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+        Maximum bytes of entropy allowed to get injected into the guest every period.
         """
         return pulumi.get(self, "max_bytes")
 
@@ -1392,7 +1392,7 @@ class VmLegacyRng(dict):
     @pulumi.getter
     def period(self) -> Optional[_builtins.int]:
         """
-        Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+        Period in milliseconds to limit entropy injection to the guest.
         """
         return pulumi.get(self, "period")
 
@@ -1529,16 +1529,16 @@ class VmMemory(dict):
                  shares: Optional[_builtins.int] = None,
                  size: Optional[_builtins.int] = None):
         """
-        :param _builtins.int balloon: Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely (defaults to `0`).
+        :param _builtins.int balloon: Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely.
         :param _builtins.str hugepages: Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses. 
                
                **Options:**
                - `2` - Use 2 MiB hugepages
                - `1024` - Use 1 GiB hugepages
                - `any` - Use any available hugepage size
-        :param _builtins.bool keep_hugepages: Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup (defaults to `false`).
-        :param _builtins.int shares: CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs (defaults to `1000`).
-        :param _builtins.int size: Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM (defaults to `512` MiB).
+        :param _builtins.bool keep_hugepages: Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup.
+        :param _builtins.int shares: CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs.
+        :param _builtins.int size: Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM. Defaults to PVE's implicit `512` MiB when unset.
         """
         if balloon is not None:
             pulumi.set(__self__, "balloon", balloon)
@@ -1555,7 +1555,7 @@ class VmMemory(dict):
     @pulumi.getter
     def balloon(self) -> Optional[_builtins.int]:
         """
-        Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely (defaults to `0`).
+        Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely.
         """
         return pulumi.get(self, "balloon")
 
@@ -1576,7 +1576,7 @@ class VmMemory(dict):
     @pulumi.getter(name="keepHugepages")
     def keep_hugepages(self) -> Optional[_builtins.bool]:
         """
-        Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup (defaults to `false`).
+        Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup.
         """
         return pulumi.get(self, "keep_hugepages")
 
@@ -1584,7 +1584,7 @@ class VmMemory(dict):
     @pulumi.getter
     def shares(self) -> Optional[_builtins.int]:
         """
-        CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs (defaults to `1000`).
+        CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs.
         """
         return pulumi.get(self, "shares")
 
@@ -1592,7 +1592,7 @@ class VmMemory(dict):
     @pulumi.getter
     def size(self) -> Optional[_builtins.int]:
         """
-        Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM (defaults to `512` MiB).
+        Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM. Defaults to PVE's implicit `512` MiB when unset.
         """
         return pulumi.get(self, "size")
 
@@ -1769,8 +1769,8 @@ class VmRng(dict):
                  period: Optional[_builtins.int] = None,
                  source: Optional[_builtins.str] = None):
         """
-        :param _builtins.int max_bytes: Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
-        :param _builtins.int period: Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+        :param _builtins.int max_bytes: Maximum bytes of entropy allowed to get injected into the guest every period.
+        :param _builtins.int period: Period in milliseconds to limit entropy injection to the guest.
         :param _builtins.str source: The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
         """
         if max_bytes is not None:
@@ -1784,7 +1784,7 @@ class VmRng(dict):
     @pulumi.getter(name="maxBytes")
     def max_bytes(self) -> Optional[_builtins.int]:
         """
-        Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+        Maximum bytes of entropy allowed to get injected into the guest every period.
         """
         return pulumi.get(self, "max_bytes")
 
@@ -1792,7 +1792,7 @@ class VmRng(dict):
     @pulumi.getter
     def period(self) -> Optional[_builtins.int]:
         """
-        Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+        Period in milliseconds to limit entropy injection to the guest.
         """
         return pulumi.get(self, "period")
 

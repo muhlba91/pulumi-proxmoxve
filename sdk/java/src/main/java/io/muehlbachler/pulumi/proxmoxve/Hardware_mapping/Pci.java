@@ -20,6 +20,61 @@ import javax.annotation.Nullable;
 /**
  * Manages a PCI hardware mapping in a Proxmox VE cluster.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.hardware.Pci;
+ * import io.muehlbachler.pulumi.proxmoxve.hardware.PciArgs;
+ * import com.pulumi.proxmoxve.hardware.inputs.PciMapArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Pci("example", PciArgs.builder()
+ *             .comment("This is a comment")
+ *             .name("example")
+ *             .maps(PciMapArgs.builder()
+ *                 .comment("This is a device specific comment")
+ *                 .id("8086:5916")
+ *                 .iommuGroup(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(0) (example.pp:6,19-20)))
+ *                 .node("pve")
+ *                 .path("0000:00:02.0")
+ *                 .subsystemId("8086:2068")
+ *                 .build())
+ *             .mediatedDevices(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * !/usr/bin/env sh
+ * A PCI hardware mapping can be imported using their name, e.g.:
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:hardware/mapping/pci:Pci example example
+ * ```
+ * 
  */
 @ResourceType(type="proxmoxve:hardware/mapping/pci:Pci")
 public class Pci extends com.pulumi.resources.CustomResource {

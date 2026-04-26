@@ -29,6 +29,15 @@ import * as utilities from "../utilities";
  *     generateEncryptionKey: true,
  * });
  * ```
+ *
+ * ## Import
+ *
+ * !/usr/bin/env sh
+ * Storage can be imported using its identifier, e.g.:
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:storage/pbsLegacy:PbsLegacy example pbs-backup
+ * ```
  */
 export class PbsLegacy extends pulumi.CustomResource {
     /**

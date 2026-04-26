@@ -14,7 +14,7 @@ namespace Pulumi.ProxmoxVE.Outputs
     public sealed class Vm2LegacyCdrom
     {
         /// <summary>
-        /// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `None` to leave the CD-ROM empty. Use `Cdrom` to connect to the physical drive.
+        /// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `Cdrom` (i.e. empty CD-ROM drive — `Cdrom` is PVE's literal "no media inserted" storage path). Use `None` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
         /// </summary>
         public readonly string? FileId;
 

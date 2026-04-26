@@ -11,6 +11,49 @@ namespace Pulumi.ProxmoxVE.Storage
 {
     /// <summary>
     /// Manages directory-based storage in Proxmox VE.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new ProxmoxVE.Storage.Directory("example", new()
+    ///     {
+    ///         ResourceId = "example-dir",
+    ///         Path = "/var/lib/vz",
+    ///         Nodes = new[]
+    ///         {
+    ///             "pve",
+    ///         },
+    ///         Contents = new[]
+    ///         {
+    ///             "images",
+    ///         },
+    ///         Shared = true,
+    ///         Disable = false,
+    ///         Backups = new ProxmoxVE.Storage.Inputs.DirectoryBackupsArgs
+    ///         {
+    ///             MaxProtectedBackups = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(5) (example.pp:9,27-28)),
+    ///             KeepDaily = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(7) (example.pp:10,27-28)),
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// Storage can be imported using its identifier, e.g.:
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:storage/directory:Directory example local-dir
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:storage/directory:Directory")]
     public partial class Directory : global::Pulumi.CustomResource

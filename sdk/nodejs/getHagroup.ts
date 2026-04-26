@@ -6,6 +6,21 @@ import * as utilities from "./utilities";
 
 /**
  * Retrieves information about a specific High Availability group.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * // This will fetch the set of HA group identifiers...
+ * const all = proxmoxve.getHagroups({});
+ * // ...which we will go through in order to fetch the whole data on each group.
+ * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: proxmoxve.getHagroup({
+ *     group: __value,
+ * }) }), {}));
+ * export const proxmoxHagroupsFull = example;
+ * ```
  */
 export function getHagroup(args: GetHagroupArgs, opts?: pulumi.InvokeOptions): Promise<GetHagroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -55,6 +70,21 @@ export interface GetHagroupResult {
 }
 /**
  * Retrieves information about a specific High Availability group.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * // This will fetch the set of HA group identifiers...
+ * const all = proxmoxve.getHagroups({});
+ * // ...which we will go through in order to fetch the whole data on each group.
+ * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: proxmoxve.getHagroup({
+ *     group: __value,
+ * }) }), {}));
+ * export const proxmoxHagroupsFull = example;
+ * ```
  */
 export function getHagroupOutput(args: GetHagroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHagroupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

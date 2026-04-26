@@ -6,6 +6,37 @@ import * as utilities from "../../utilities";
 
 /**
  * Manages a Linux VLAN network interface in a Proxmox VE node.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * // using VLAN tag
+ * const vlan99 = new proxmoxve.network.linux.Vlan("vlan99", {
+ *     nodeName: "pve",
+ *     name: "eno0.99",
+ *     comment: "VLAN 99",
+ * });
+ * // using custom network interface name
+ * const vlan98 = new proxmoxve.network.linux.Vlan("vlan98", {
+ *     nodeName: "pve",
+ *     name: "vlan_lab",
+ *     "interface": "eno0",
+ *     vlan: 98,
+ *     comment: "VLAN 98",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * !/usr/bin/env sh
+ * Interfaces can be imported using the `node_name:iface` format, e.g.
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:network/linux/vlan:Vlan vlan99 pve:vlan99
+ * ```
  */
 export class Vlan extends pulumi.CustomResource {
     /**

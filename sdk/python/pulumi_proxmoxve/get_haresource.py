@@ -138,6 +138,19 @@ def get_haresource(resource_id: Optional[_builtins.str] = None,
     """
     Retrieves information about a specific High Availability resource.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    # This will fetch the set of all HA resource identifiers...
+    all = proxmoxve.get_haresources()
+    # ...which we will go through in order to fetch the whole record for each resource.
+    example = {__key: proxmoxve.get_haresource(resource_id=__value) for __key, __value in enumerate(all.resource_ids)}
+    pulumi.export("proxmoxHaresourcesFull", example)
+    ```
+
 
     :param _builtins.str resource_id: The identifier of the Proxmox HA resource to read.
     """
@@ -159,6 +172,19 @@ def get_haresource_output(resource_id: Optional[pulumi.Input[_builtins.str]] = N
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHaresourceResult]:
     """
     Retrieves information about a specific High Availability resource.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    # This will fetch the set of all HA resource identifiers...
+    all = proxmoxve.get_haresources()
+    # ...which we will go through in order to fetch the whole record for each resource.
+    example = {__key: proxmoxve.get_haresource(resource_id=__value) for __key, __value in enumerate(all.resource_ids)}
+    pulumi.export("proxmoxHaresourcesFull", example)
+    ```
 
 
     :param _builtins.str resource_id: The identifier of the Proxmox HA resource to read.

@@ -12,6 +12,39 @@ import (
 )
 
 // Retrieves information about an existing Replication.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := proxmoxve.GetReplication(ctx, &proxmoxve.LookupReplicationArgs{
+//				Id: "100-0",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("dataProxmoxReplication", pulumi.Map{
+//				"id":     example.Id,
+//				"target": example.Target,
+//				"type":   example.Type,
+//				"jobnum": example.Jobnum,
+//				"guest":  example.Guest,
+//			})
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupReplication(ctx *pulumi.Context, args *LookupReplicationArgs, opts ...pulumi.InvokeOption) (*LookupReplicationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupReplicationResult

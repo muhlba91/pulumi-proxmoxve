@@ -34,6 +34,13 @@ public final class ContainerLegacyNetworkInterface {
      */
     private @Nullable Boolean firewall;
     /**
+     * @return Whether the host runs DHCP on this interface&#39;s
+     * behalf (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). Requires Proxmox VE 9.0+. Required for
+     * application containers that do not include a DHCP client.
+     * 
+     */
+    private @Nullable Boolean hostManaged;
+    /**
      * @return The MAC address.
      * 
      */
@@ -86,6 +93,15 @@ public final class ContainerLegacyNetworkInterface {
         return Optional.ofNullable(this.firewall);
     }
     /**
+     * @return Whether the host runs DHCP on this interface&#39;s
+     * behalf (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). Requires Proxmox VE 9.0+. Required for
+     * application containers that do not include a DHCP client.
+     * 
+     */
+    public Optional<Boolean> hostManaged() {
+        return Optional.ofNullable(this.hostManaged);
+    }
+    /**
      * @return The MAC address.
      * 
      */
@@ -134,6 +150,7 @@ public final class ContainerLegacyNetworkInterface {
         private @Nullable String bridge;
         private @Nullable Boolean enabled;
         private @Nullable Boolean firewall;
+        private @Nullable Boolean hostManaged;
         private @Nullable String macAddress;
         private @Nullable Integer mtu;
         private String name;
@@ -145,6 +162,7 @@ public final class ContainerLegacyNetworkInterface {
     	      this.bridge = defaults.bridge;
     	      this.enabled = defaults.enabled;
     	      this.firewall = defaults.firewall;
+    	      this.hostManaged = defaults.hostManaged;
     	      this.macAddress = defaults.macAddress;
     	      this.mtu = defaults.mtu;
     	      this.name = defaults.name;
@@ -168,6 +186,12 @@ public final class ContainerLegacyNetworkInterface {
         public Builder firewall(@Nullable Boolean firewall) {
 
             this.firewall = firewall;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder hostManaged(@Nullable Boolean hostManaged) {
+
+            this.hostManaged = hostManaged;
             return this;
         }
         @CustomType.Setter
@@ -207,6 +231,7 @@ public final class ContainerLegacyNetworkInterface {
             _resultValue.bridge = bridge;
             _resultValue.enabled = enabled;
             _resultValue.firewall = firewall;
+            _resultValue.hostManaged = hostManaged;
             _resultValue.macAddress = macAddress;
             _resultValue.mtu = mtu;
             _resultValue.name = name;

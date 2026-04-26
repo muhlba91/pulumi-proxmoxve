@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -47,6 +48,21 @@ public final class ContainerLegacyCpuArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Limit of CPU usage. Value &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; indicates no limit (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
+     * 
+     */
+    @Import(name="limit")
+    private @Nullable Output<Double> limit;
+
+    /**
+     * @return Limit of CPU usage. Value &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; indicates no limit (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
+     * 
+     */
+    public Optional<Output<Double>> limit() {
+        return Optional.ofNullable(this.limit);
+    }
+
+    /**
      * The CPU units (defaults to &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt;).
      * 
      */
@@ -66,6 +82,7 @@ public final class ContainerLegacyCpuArgs extends com.pulumi.resources.ResourceA
     private ContainerLegacyCpuArgs(ContainerLegacyCpuArgs $) {
         this.architecture = $.architecture;
         this.cores = $.cores;
+        this.limit = $.limit;
         this.units = $.units;
     }
 
@@ -127,6 +144,27 @@ public final class ContainerLegacyCpuArgs extends com.pulumi.resources.ResourceA
          */
         public Builder cores(Integer cores) {
             return cores(Output.of(cores));
+        }
+
+        /**
+         * @param limit Limit of CPU usage. Value &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; indicates no limit (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder limit(@Nullable Output<Double> limit) {
+            $.limit = limit;
+            return this;
+        }
+
+        /**
+         * @param limit Limit of CPU usage. Value &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; indicates no limit (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder limit(Double limit) {
+            return limit(Output.of(limit));
         }
 
         /**

@@ -207,6 +207,33 @@ class Hagroup(pulumi.CustomResource):
         """
         Manages a High Availability group in a Proxmox VE cluster.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.Hagroup("example",
+            group="example",
+            comment="This is a comment.",
+            nodes={
+                "node1": None,
+                "node2": 2,
+                "node3": 1,
+            },
+            restricted=True,
+            no_failback=False)
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        HA groups can be imported using their name, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:index/hagroup:Hagroup example example
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -224,6 +251,33 @@ class Hagroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a High Availability group in a Proxmox VE cluster.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.Hagroup("example",
+            group="example",
+            comment="This is a comment.",
+            nodes={
+                "node1": None,
+                "node2": 2,
+                "node3": 1,
+            },
+            restricted=True,
+            no_failback=False)
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        HA groups can be imported using their name, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:index/hagroup:Hagroup example example
+        ```
 
 
         :param str resource_name: The name of the resource.

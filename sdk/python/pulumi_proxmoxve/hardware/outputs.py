@@ -17,6 +17,8 @@ from .. import _utilities
 __all__ = [
     'GetMappingsCheckResult',
     'GetMappingsLegacyCheckResult',
+    'GetPciDeviceResult',
+    'GetPciFiltersResult',
 ]
 
 @pulumi.output_type
@@ -97,5 +99,199 @@ class GetMappingsLegacyCheckResult(dict):
         The severity of the node check diagnostic entry.
         """
         return pulumi.get(self, "severity")
+
+
+@pulumi.output_type
+class GetPciDeviceResult(dict):
+    def __init__(__self__, *,
+                 class_: _builtins.str,
+                 device: _builtins.str,
+                 device_name: _builtins.str,
+                 id: _builtins.str,
+                 iommu_group: _builtins.int,
+                 mdev: _builtins.bool,
+                 subsystem_device: _builtins.str,
+                 subsystem_device_name: _builtins.str,
+                 subsystem_vendor: _builtins.str,
+                 subsystem_vendor_name: _builtins.str,
+                 vendor: _builtins.str,
+                 vendor_name: _builtins.str):
+        """
+        :param _builtins.str class_: The PCI class code (hex, e.g. `0x030000`).
+        :param _builtins.str device: The PCI device ID (hex, e.g. `0x5916`).
+        :param _builtins.str device_name: The human-readable device name.
+        :param _builtins.str id: The PCI address in `domain:bus:device.function` format (e.g. `0000:00:02.0`).
+        :param _builtins.int iommu_group: The IOMMU group number. `-1` indicates that the device is not in an IOMMU group.
+        :param _builtins.bool mdev: Whether the device supports mediated devices (vGPU).
+        :param _builtins.str subsystem_device: The PCI subsystem device ID (hex).
+        :param _builtins.str subsystem_device_name: The human-readable subsystem device name.
+        :param _builtins.str subsystem_vendor: The PCI subsystem vendor ID (hex).
+        :param _builtins.str subsystem_vendor_name: The human-readable subsystem vendor name.
+        :param _builtins.str vendor: The PCI vendor ID (hex, e.g. `0x8086`).
+        :param _builtins.str vendor_name: The human-readable vendor name (e.g. `Intel Corporation`).
+        """
+        pulumi.set(__self__, "class_", class_)
+        pulumi.set(__self__, "device", device)
+        pulumi.set(__self__, "device_name", device_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "iommu_group", iommu_group)
+        pulumi.set(__self__, "mdev", mdev)
+        pulumi.set(__self__, "subsystem_device", subsystem_device)
+        pulumi.set(__self__, "subsystem_device_name", subsystem_device_name)
+        pulumi.set(__self__, "subsystem_vendor", subsystem_vendor)
+        pulumi.set(__self__, "subsystem_vendor_name", subsystem_vendor_name)
+        pulumi.set(__self__, "vendor", vendor)
+        pulumi.set(__self__, "vendor_name", vendor_name)
+
+    @_builtins.property
+    @pulumi.getter(name="class")
+    def class_(self) -> _builtins.str:
+        """
+        The PCI class code (hex, e.g. `0x030000`).
+        """
+        return pulumi.get(self, "class_")
+
+    @_builtins.property
+    @pulumi.getter
+    def device(self) -> _builtins.str:
+        """
+        The PCI device ID (hex, e.g. `0x5916`).
+        """
+        return pulumi.get(self, "device")
+
+    @_builtins.property
+    @pulumi.getter(name="deviceName")
+    def device_name(self) -> _builtins.str:
+        """
+        The human-readable device name.
+        """
+        return pulumi.get(self, "device_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The PCI address in `domain:bus:device.function` format (e.g. `0000:00:02.0`).
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="iommuGroup")
+    def iommu_group(self) -> _builtins.int:
+        """
+        The IOMMU group number. `-1` indicates that the device is not in an IOMMU group.
+        """
+        return pulumi.get(self, "iommu_group")
+
+    @_builtins.property
+    @pulumi.getter
+    def mdev(self) -> _builtins.bool:
+        """
+        Whether the device supports mediated devices (vGPU).
+        """
+        return pulumi.get(self, "mdev")
+
+    @_builtins.property
+    @pulumi.getter(name="subsystemDevice")
+    def subsystem_device(self) -> _builtins.str:
+        """
+        The PCI subsystem device ID (hex).
+        """
+        return pulumi.get(self, "subsystem_device")
+
+    @_builtins.property
+    @pulumi.getter(name="subsystemDeviceName")
+    def subsystem_device_name(self) -> _builtins.str:
+        """
+        The human-readable subsystem device name.
+        """
+        return pulumi.get(self, "subsystem_device_name")
+
+    @_builtins.property
+    @pulumi.getter(name="subsystemVendor")
+    def subsystem_vendor(self) -> _builtins.str:
+        """
+        The PCI subsystem vendor ID (hex).
+        """
+        return pulumi.get(self, "subsystem_vendor")
+
+    @_builtins.property
+    @pulumi.getter(name="subsystemVendorName")
+    def subsystem_vendor_name(self) -> _builtins.str:
+        """
+        The human-readable subsystem vendor name.
+        """
+        return pulumi.get(self, "subsystem_vendor_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def vendor(self) -> _builtins.str:
+        """
+        The PCI vendor ID (hex, e.g. `0x8086`).
+        """
+        return pulumi.get(self, "vendor")
+
+    @_builtins.property
+    @pulumi.getter(name="vendorName")
+    def vendor_name(self) -> _builtins.str:
+        """
+        The human-readable vendor name (e.g. `Intel Corporation`).
+        """
+        return pulumi.get(self, "vendor_name")
+
+
+@pulumi.output_type
+class GetPciFiltersResult(dict):
+    def __init__(__self__, *,
+                 class_: Optional[_builtins.str] = None,
+                 device_id: Optional[_builtins.str] = None,
+                 id: Optional[_builtins.str] = None,
+                 vendor_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str class_: Filter by PCI class code prefix (e.g. `03` to match all display controllers). The `0x` prefix in class codes is stripped before matching.
+        :param _builtins.str device_id: Filter by device ID prefix. The `0x` prefix in device IDs is stripped before matching.
+        :param _builtins.str id: Filter by PCI address prefix (e.g. `0000:01` to match all devices on bus 01).
+        :param _builtins.str vendor_id: Filter by vendor ID prefix (e.g. `8086` for Intel devices). The `0x` prefix in vendor IDs is stripped before matching.
+        """
+        if class_ is not None:
+            pulumi.set(__self__, "class_", class_)
+        if device_id is not None:
+            pulumi.set(__self__, "device_id", device_id)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if vendor_id is not None:
+            pulumi.set(__self__, "vendor_id", vendor_id)
+
+    @_builtins.property
+    @pulumi.getter(name="class")
+    def class_(self) -> Optional[_builtins.str]:
+        """
+        Filter by PCI class code prefix (e.g. `03` to match all display controllers). The `0x` prefix in class codes is stripped before matching.
+        """
+        return pulumi.get(self, "class_")
+
+    @_builtins.property
+    @pulumi.getter(name="deviceId")
+    def device_id(self) -> Optional[_builtins.str]:
+        """
+        Filter by device ID prefix. The `0x` prefix in device IDs is stripped before matching.
+        """
+        return pulumi.get(self, "device_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[_builtins.str]:
+        """
+        Filter by PCI address prefix (e.g. `0000:01` to match all devices on bus 01).
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="vendorId")
+    def vendor_id(self) -> Optional[_builtins.str]:
+        """
+        Filter by vendor ID prefix (e.g. `8086` for Intel devices). The `0x` prefix in vendor IDs is stripped before matching.
+        """
+        return pulumi.get(self, "vendor_id")
 
 

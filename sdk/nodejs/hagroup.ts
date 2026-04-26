@@ -6,6 +6,34 @@ import * as utilities from "./utilities";
 
 /**
  * Manages a High Availability group in a Proxmox VE cluster.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = new proxmoxve.Hagroup("example", {
+ *     group: "example",
+ *     comment: "This is a comment.",
+ *     nodes: {
+ *         node1: null,
+ *         node2: 2,
+ *         node3: 1,
+ *     },
+ *     restricted: true,
+ *     noFailback: false,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * !/usr/bin/env sh
+ * HA groups can be imported using their name, e.g.:
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:index/hagroup:Hagroup example example
+ * ```
  */
 export class Hagroup extends pulumi.CustomResource {
     /**

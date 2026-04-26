@@ -6,6 +6,20 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves an APT repository from a Proxmox VE cluster.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = proxmoxve.apt.getRepository({
+ *     filePath: "/etc/apt/sources.list",
+ *     index: 0,
+ *     node: "pve",
+ * });
+ * export const proxmoxAptRepository = example;
+ * ```
  */
 export function getRepository(args: GetRepositoryArgs, opts?: pulumi.InvokeOptions): Promise<GetRepositoryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -85,6 +99,20 @@ export interface GetRepositoryResult {
 }
 /**
  * Retrieves an APT repository from a Proxmox VE cluster.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = proxmoxve.apt.getRepository({
+ *     filePath: "/etc/apt/sources.list",
+ *     index: 0,
+ *     node: "pve",
+ * });
+ * export const proxmoxAptRepository = example;
+ * ```
  */
 export function getRepositoryOutput(args: GetRepositoryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRepositoryResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

@@ -18,6 +18,56 @@ import javax.annotation.Nullable;
 /**
  * Manages Proxmox HA resources.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.Haresource;
+ * import io.muehlbachler.pulumi.proxmoxve.HaresourceArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Haresource("example", HaresourceArgs.builder()
+ *             .resourceId("vm:123")
+ *             .state("started")
+ *             .group("example")
+ *             .comment("Managed by Pulumi")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(exampleProxmoxHagroup)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * !/usr/bin/env sh
+ * HA resources can be imported using their identifiers, e.g.:
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:index/haresource:Haresource example vm:123
+ * ```
+ * 
  */
 @ResourceType(type="proxmoxve:index/haresource:Haresource")
 public class Haresource extends com.pulumi.resources.CustomResource {

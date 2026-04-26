@@ -13,18 +13,90 @@ namespace Pulumi.ProxmoxVE
     {
         /// <summary>
         /// Retrieves API version details.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = ProxmoxVE.Index.GetVersion.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxVersion"] = 
+        ///         {
+        ///             { "release", example.Apply(getVersionResult =&gt; getVersionResult.Release) },
+        ///             { "repositoryId", example.Apply(getVersionResult =&gt; getVersionResult.RepositoryId) },
+        ///             { "version", example.Apply(getVersionResult =&gt; getVersionResult.Version) },
+        ///         },
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetVersionResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVersionResult>("proxmoxve:index/getVersion:getVersion", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
         /// Retrieves API version details.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = ProxmoxVE.Index.GetVersion.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxVersion"] = 
+        ///         {
+        ///             { "release", example.Apply(getVersionResult =&gt; getVersionResult.Release) },
+        ///             { "repositoryId", example.Apply(getVersionResult =&gt; getVersionResult.RepositoryId) },
+        ///             { "version", example.Apply(getVersionResult =&gt; getVersionResult.Version) },
+        ///         },
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetVersionResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVersionResult>("proxmoxve:index/getVersion:getVersion", InvokeArgs.Empty, options.WithDefaults());
 
         /// <summary>
         /// Retrieves API version details.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = ProxmoxVE.Index.GetVersion.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxVersion"] = 
+        ///         {
+        ///             { "release", example.Apply(getVersionResult =&gt; getVersionResult.Release) },
+        ///             { "repositoryId", example.Apply(getVersionResult =&gt; getVersionResult.RepositoryId) },
+        ///             { "version", example.Apply(getVersionResult =&gt; getVersionResult.Version) },
+        ///         },
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetVersionResult> Invoke(InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetVersionResult>("proxmoxve:index/getVersion:getVersion", InvokeArgs.Empty, options.WithDefaults());

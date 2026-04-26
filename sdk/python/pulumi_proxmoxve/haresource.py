@@ -274,6 +274,29 @@ class Haresource(pulumi.CustomResource):
         """
         Manages Proxmox HA resources.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.Haresource("example",
+            resource_id="vm:123",
+            state="started",
+            group="example",
+            comment="Managed by Pulumi",
+            opts = pulumi.ResourceOptions(depends_on=[example_proxmox_hagroup]))
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        HA resources can be imported using their identifiers, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:index/haresource:Haresource example vm:123
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -293,6 +316,29 @@ class Haresource(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages Proxmox HA resources.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.Haresource("example",
+            resource_id="vm:123",
+            state="started",
+            group="example",
+            comment="Managed by Pulumi",
+            opts = pulumi.ResourceOptions(depends_on=[example_proxmox_hagroup]))
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        HA resources can be imported using their identifiers, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:index/haresource:Haresource example vm:123
+        ```
 
 
         :param str resource_name: The name of the resource.

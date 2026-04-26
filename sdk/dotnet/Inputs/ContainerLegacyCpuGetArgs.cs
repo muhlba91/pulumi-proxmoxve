@@ -25,6 +25,12 @@ namespace Pulumi.ProxmoxVE.Inputs
         public Input<int>? Cores { get; set; }
 
         /// <summary>
+        /// Limit of CPU usage. Value `0` indicates no limit (defaults to `0`).
+        /// </summary>
+        [Input("limit")]
+        public Input<double>? Limit { get; set; }
+
+        /// <summary>
         /// The CPU units (defaults to `1024`).
         /// </summary>
         [Input("units")]

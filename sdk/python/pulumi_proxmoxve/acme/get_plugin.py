@@ -126,6 +126,16 @@ def get_plugin(plugin: Optional[_builtins.str] = None,
     """
     Retrieves a single ACME plugin by plugin ID name.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.acme.get_plugin(plugin="standalone")
+    pulumi.export("dataProxmoxAcmePlugin", example)
+    ```
+
 
     :param _builtins.str plugin: ACME Plugin ID name.
     """
@@ -146,6 +156,16 @@ def get_plugin_output(plugin: Optional[pulumi.Input[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPluginResult]:
     """
     Retrieves a single ACME plugin by plugin ID name.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.acme.get_plugin(plugin="standalone")
+    pulumi.export("dataProxmoxAcmePlugin", example)
+    ```
 
 
     :param _builtins.str plugin: ACME Plugin ID name.

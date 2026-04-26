@@ -11,6 +11,46 @@ namespace Pulumi.ProxmoxVE.Network.Linux
 {
     /// <summary>
     /// Manages a Linux VLAN network interface in a Proxmox VE node.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // using VLAN tag
+    ///     var vlan99 = new ProxmoxVE.Network.Linux.Vlan("vlan99", new()
+    ///     {
+    ///         NodeName = "pve",
+    ///         Name = "eno0.99",
+    ///         Comment = "VLAN 99",
+    ///     });
+    /// 
+    ///     // using custom network interface name
+    ///     var vlan98 = new ProxmoxVE.Network.Linux.Vlan("vlan98", new()
+    ///     {
+    ///         NodeName = "pve",
+    ///         Name = "vlan_lab",
+    ///         Interface = "eno0",
+    ///         VlanId = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(98) (example.pp:13,15-17)),
+    ///         Comment = "VLAN 98",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// Interfaces can be imported using the `node_name:iface` format, e.g.
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:network/linux/vlan:Vlan vlan99 pve:vlan99
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:network/linux/vlan:Vlan")]
     public partial class Vlan : global::Pulumi.CustomResource

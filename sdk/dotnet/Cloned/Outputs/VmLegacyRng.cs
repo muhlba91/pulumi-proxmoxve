@@ -14,11 +14,11 @@ namespace Pulumi.ProxmoxVE.Cloned.Outputs
     public sealed class VmLegacyRng
     {
         /// <summary>
-        /// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+        /// Maximum bytes of entropy allowed to get injected into the guest every period.
         /// </summary>
         public readonly int? MaxBytes;
         /// <summary>
-        /// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+        /// Period in milliseconds to limit entropy injection to the guest.
         /// </summary>
         public readonly int? Period;
         /// <summary>

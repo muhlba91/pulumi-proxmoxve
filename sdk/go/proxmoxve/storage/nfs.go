@@ -13,6 +13,58 @@ import (
 )
 
 // Manages an NFS-based storage in Proxmox VE.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := storage.NewNfs(ctx, "example", &storage.NfsArgs{
+//				ResourceId: pulumi.String("example-nfs"),
+//				Nodes: pulumi.StringArray{
+//					pulumi.String("pve"),
+//				},
+//				Server: pulumi.String("10.0.0.10"),
+//				Export: pulumi.String("/exports/proxmox"),
+//				Contents: pulumi.StringArray{
+//					pulumi.String("images"),
+//					pulumi.String("iso"),
+//					pulumi.String("backup"),
+//				},
+//				Options:               pulumi.String("vers=4.2"),
+//				Preallocation:         pulumi.String("metadata"),
+//				SnapshotAsVolumeChain: pulumi.Bool(true),
+//				Backups: &storage.NfsBackupsArgs{
+//					MaxProtectedBackups: pulumi.Int(5),
+//					KeepDaily:           pulumi.Int(7),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// !/usr/bin/env sh
+// Storage can be imported using its identifier, e.g.:
+//
+// ```sh
+// $ pulumi import proxmoxve:storage/nfs:Nfs example local-nfs
+// ```
 type Nfs struct {
 	pulumi.CustomResourceState
 

@@ -11,6 +11,43 @@ namespace Pulumi.ProxmoxVE.Storage
 {
     /// <summary>
     /// Manages LVM-based storage in Proxmox VE.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new ProxmoxVE.Storage.Lvm("example", new()
+    ///     {
+    ///         ResourceId = "example-lvm",
+    ///         Nodes = new[]
+    ///         {
+    ///             "pve",
+    ///         },
+    ///         VolumeGroup = "vg0",
+    ///         Contents = new[]
+    ///         {
+    ///             "images",
+    ///         },
+    ///         WipeRemovedVolumes = false,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// Storage can be imported using its identifier, e.g.:
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:storage/lvm:Lvm example local-lvm
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:storage/lvm:Lvm")]
     public partial class Lvm : global::Pulumi.CustomResource

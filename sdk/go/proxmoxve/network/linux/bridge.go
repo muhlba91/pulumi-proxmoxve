@@ -13,6 +13,56 @@ import (
 )
 
 // Manages a Linux Bridge network interface in a Proxmox VE node.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/network"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			vlan99, err := network.NewVlan(ctx, "vlan99", &network.VlanArgs{
+//				NodeName: pulumi.String("pve"),
+//				Name:     pulumi.String("ens18.99"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = network.NewBridge(ctx, "vmbr99", &network.BridgeArgs{
+//				NodeName: pulumi.String("pve"),
+//				Name:     pulumi.String("vmbr99"),
+//				Address:  pulumi.String("99.99.99.99/16"),
+//				Comment:  pulumi.String("vmbr99 comment"),
+//				Ports: pulumi.StringArray{
+//					pulumi.String("ens18.99"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				vlan99,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// !/usr/bin/env sh
+// Interfaces can be imported using the `node_name:iface` format, e.g.
+//
+// ```sh
+// $ pulumi import proxmoxve:network/linux/bridge:Bridge vmbr99 pve:vmbr99
+// ```
 type Bridge struct {
 	pulumi.CustomResourceState
 
@@ -30,7 +80,7 @@ type Bridge struct {
 	Gateway6 pulumi.StringPtrOutput `pulumi:"gateway6"`
 	// The interface MTU.
 	Mtu pulumi.IntPtrOutput `pulumi:"mtu"`
-	// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+	// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the node.
 	NodeName pulumi.StringOutput `pulumi:"nodeName"`
@@ -89,7 +139,7 @@ type bridgeState struct {
 	Gateway6 *string `pulumi:"gateway6"`
 	// The interface MTU.
 	Mtu *int `pulumi:"mtu"`
-	// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+	// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
 	Name *string `pulumi:"name"`
 	// The name of the node.
 	NodeName *string `pulumi:"nodeName"`
@@ -116,7 +166,7 @@ type BridgeState struct {
 	Gateway6 pulumi.StringPtrInput
 	// The interface MTU.
 	Mtu pulumi.IntPtrInput
-	// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+	// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
 	Name pulumi.StringPtrInput
 	// The name of the node.
 	NodeName pulumi.StringPtrInput
@@ -147,7 +197,7 @@ type bridgeArgs struct {
 	Gateway6 *string `pulumi:"gateway6"`
 	// The interface MTU.
 	Mtu *int `pulumi:"mtu"`
-	// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+	// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
 	Name *string `pulumi:"name"`
 	// The name of the node.
 	NodeName string `pulumi:"nodeName"`
@@ -175,7 +225,7 @@ type BridgeArgs struct {
 	Gateway6 pulumi.StringPtrInput
 	// The interface MTU.
 	Mtu pulumi.IntPtrInput
-	// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+	// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
 	Name pulumi.StringPtrInput
 	// The name of the node.
 	NodeName pulumi.StringInput
@@ -309,7 +359,7 @@ func (o BridgeOutput) Mtu() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Bridge) pulumi.IntPtrOutput { return v.Mtu }).(pulumi.IntPtrOutput)
 }
 
-// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+// The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
 func (o BridgeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Bridge) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

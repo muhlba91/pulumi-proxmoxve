@@ -13,6 +13,54 @@ import (
 )
 
 // Manages directory-based storage in Proxmox VE.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := storage.NewDirectory(ctx, "example", &storage.DirectoryArgs{
+//				ResourceId: pulumi.String("example-dir"),
+//				Path:       pulumi.String("/var/lib/vz"),
+//				Nodes: pulumi.StringArray{
+//					pulumi.String("pve"),
+//				},
+//				Contents: pulumi.StringArray{
+//					pulumi.String("images"),
+//				},
+//				Shared:  pulumi.Bool(true),
+//				Disable: pulumi.Bool(false),
+//				Backups: &storage.DirectoryBackupsArgs{
+//					MaxProtectedBackups: pulumi.Int(5),
+//					KeepDaily:           pulumi.Int(7),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// !/usr/bin/env sh
+// Storage can be imported using its identifier, e.g.:
+//
+// ```sh
+// $ pulumi import proxmoxve:storage/directory:Directory example local-dir
+// ```
 type Directory struct {
 	pulumi.CustomResourceState
 

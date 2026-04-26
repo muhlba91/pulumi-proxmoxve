@@ -12,6 +12,34 @@ import (
 )
 
 // Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/sdn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// List all SDN VNets
+//			all, err := sdn.GetVnets(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("dataProxmoxSdnVnetsAll", []sdn.GetVnetsVnetMap{
+//				"vnets": all.Vnets,
+//			})
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetVnets(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetVnetsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVnetsResult

@@ -27,13 +27,13 @@ namespace Pulumi.ProxmoxVE
         /// The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `Q35` machine type only supports `Ide0` and `Ide2` of IDE interfaces.
         /// </summary>
         [Output("cdrom")]
-        public Output<ImmutableDictionary<string, Outputs.VmCdrom>> Cdrom { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, Outputs.VmCdrom>?> Cdrom { get; private set; } = null!;
 
         /// <summary>
         /// The CPU configuration.
         /// </summary>
         [Output("cpu")]
-        public Output<Outputs.VmCpu> Cpu { get; private set; } = null!;
+        public Output<Outputs.VmCpu?> Cpu { get; private set; } = null!;
 
         /// <summary>
         /// Set to true to delete unreferenced disks on destroy (defaults to `True`).
@@ -75,7 +75,7 @@ namespace Pulumi.ProxmoxVE
         /// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
         /// </summary>
         [Output("rng")]
-        public Output<Outputs.VmRng> Rng { get; private set; } = null!;
+        public Output<Outputs.VmRng?> Rng { get; private set; } = null!;
 
         /// <summary>
         /// Set to true to stop (rather than shutdown) the VM on destroy (defaults to `False`).
@@ -102,7 +102,7 @@ namespace Pulumi.ProxmoxVE
         /// Configure the VGA Hardware. If you want to use high resolution modes (&gt;= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `Std` for all OS types besides some Windows versions (XP and older) which use `Cirrus`. The `Qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
         /// </summary>
         [Output("vga")]
-        public Output<Outputs.VmVga> Vga { get; private set; } = null!;
+        public Output<Outputs.VmVga?> Vga { get; private set; } = null!;
 
 
         /// <summary>

@@ -64,6 +64,16 @@ class AwaitableGetAccountsResult(GetAccountsResult):
 def get_accounts(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountsResult:
     """
     Retrieves the list of ACME accounts.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.acme.get_accounts()
+    pulumi.export("dataProxmoxAcmeAccounts", example.accounts)
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -75,6 +85,16 @@ def get_accounts(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAcc
 def get_accounts_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountsResult]:
     """
     Retrieves the list of ACME accounts.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.acme.get_accounts()
+    pulumi.export("dataProxmoxAcmeAccounts", example.accounts)
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

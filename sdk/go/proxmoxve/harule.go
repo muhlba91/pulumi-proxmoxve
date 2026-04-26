@@ -18,6 +18,85 @@ import (
 // have been replaced by HA rules, which provide node affinity and resource affinity
 // capabilities. For PVE 8 and earlier, use
 // `Hagroup` instead.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Node Affinity Rule: assign VMs to preferred nodes with priorities.
+//			// Non-strict rules allow failover to other nodes; strict rules do not.
+//			_, err := proxmoxve.NewHarule(ctx, "prefer_node1", &proxmoxve.HaruleArgs{
+//				Rule:    pulumi.String("prefer-node1"),
+//				Type:    pulumi.String("node-affinity"),
+//				Comment: pulumi.String("Prefer node1 for these VMs"),
+//				Resources: pulumi.StringArray{
+//					pulumi.String("vm:100"),
+//					pulumi.String("vm:101"),
+//				},
+//				Nodes: pulumi.IntMap{
+//					"node1": pulumi.Int(2),
+//					"node2": pulumi.Int(1),
+//					"node3": pulumi.Int(1),
+//				},
+//				Strict: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Resource Affinity Rule (Positive): keep resources together on the same node.
+//			_, err = proxmoxve.NewHarule(ctx, "keep_together", &proxmoxve.HaruleArgs{
+//				Rule:    pulumi.String("db-cluster-together"),
+//				Type:    pulumi.String("resource-affinity"),
+//				Comment: pulumi.String("Keep database replicas on the same node"),
+//				Resources: pulumi.StringArray{
+//					pulumi.String("vm:200"),
+//					pulumi.String("vm:201"),
+//				},
+//				Affinity: pulumi.String("positive"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Resource Affinity Rule (Negative / Anti-Affinity): keep resources on
+//			// separate nodes for high availability.
+//			_, err = proxmoxve.NewHarule(ctx, "keep_apart", &proxmoxve.HaruleArgs{
+//				Rule:    pulumi.String("db-cluster-apart"),
+//				Type:    pulumi.String("resource-affinity"),
+//				Comment: pulumi.String("Spread database replicas across nodes"),
+//				Resources: pulumi.StringArray{
+//					pulumi.String("vm:200"),
+//					pulumi.String("vm:201"),
+//					pulumi.String("vm:202"),
+//				},
+//				Affinity: pulumi.String("negative"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// !/usr/bin/env sh
+// HA rules can be imported using their name, e.g.:
+//
+// ```sh
+// $ pulumi import proxmoxve:index/harule:Harule example prefer-node1
+// ```
 type Harule struct {
 	pulumi.CustomResourceState
 

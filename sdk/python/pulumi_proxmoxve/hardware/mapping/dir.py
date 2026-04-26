@@ -144,6 +144,30 @@ class Dir(pulumi.CustomResource):
         """
         Manages a directory mapping in a Proxmox VE cluster.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.hardware.mapping.Dir("example",
+            comment="This is a comment",
+            name="example",
+            maps=[{
+                "node": "pve",
+                "path": "/mnt/data",
+            }])
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        A directory mapping can be imported using their name, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:hardware/mapping/dir:Dir example example
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -159,6 +183,30 @@ class Dir(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a directory mapping in a Proxmox VE cluster.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.hardware.mapping.Dir("example",
+            comment="This is a comment",
+            name="example",
+            maps=[{
+                "node": "pve",
+                "path": "/mnt/data",
+            }])
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        A directory mapping can be imported using their name, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:hardware/mapping/dir:Dir example example
+        ```
 
 
         :param str resource_name: The name of the resource.

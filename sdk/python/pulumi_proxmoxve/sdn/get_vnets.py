@@ -65,6 +65,19 @@ class AwaitableGetVnetsResult(GetVnetsResult):
 def get_vnets(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVnetsResult:
     """
     Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    # List all SDN VNets
+    all = proxmoxve.sdn.get_vnets()
+    pulumi.export("dataProxmoxSdnVnetsAll", {
+        "vnets": all.vnets,
+    })
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -76,6 +89,19 @@ def get_vnets(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVnetsR
 def get_vnets_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVnetsResult]:
     """
     Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    # List all SDN VNets
+    all = proxmoxve.sdn.get_vnets()
+    pulumi.export("dataProxmoxSdnVnetsAll", {
+        "vnets": all.vnets,
+    })
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

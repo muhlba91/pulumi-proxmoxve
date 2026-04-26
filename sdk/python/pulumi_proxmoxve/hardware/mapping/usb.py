@@ -144,6 +144,32 @@ class Usb(pulumi.CustomResource):
         """
         Manages a USB hardware mapping in a Proxmox VE cluster.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.hardware.mapping.Usb("example",
+            comment="This is a comment",
+            name="example",
+            maps=[{
+                "comment": "This is a device specific comment",
+                "id": "8087:0a2b",
+                "node": "pve",
+                "path": "1-8.2",
+            }])
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        A USB hardware mapping can be imported using their name, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:hardware/mapping/usb:Usb example example
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -159,6 +185,32 @@ class Usb(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a USB hardware mapping in a Proxmox VE cluster.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.hardware.mapping.Usb("example",
+            comment="This is a comment",
+            name="example",
+            maps=[{
+                "comment": "This is a device specific comment",
+                "id": "8087:0a2b",
+                "node": "pve",
+                "path": "1-8.2",
+            }])
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        A USB hardware mapping can be imported using their name, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:hardware/mapping/usb:Usb example example
+        ```
 
 
         :param str resource_name: The name of the resource.

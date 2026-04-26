@@ -13,18 +13,105 @@ namespace Pulumi.ProxmoxVE
     {
         /// <summary>
         /// Retrieves information about an existing Replication.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = ProxmoxVE.Index.GetReplication.Invoke(new()
+        ///     {
+        ///         Id = "100-0",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxReplication"] = 
+        ///         {
+        ///             { "id", example.Apply(getReplicationResult =&gt; getReplicationResult.Id) },
+        ///             { "target", example.Apply(getReplicationResult =&gt; getReplicationResult.Target) },
+        ///             { "type", example.Apply(getReplicationResult =&gt; getReplicationResult.Type) },
+        ///             { "jobnum", example.Apply(getReplicationResult =&gt; getReplicationResult.Jobnum) },
+        ///             { "guest", example.Apply(getReplicationResult =&gt; getReplicationResult.Guest) },
+        ///         },
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetReplicationResult> InvokeAsync(GetReplicationArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetReplicationResult>("proxmoxve:index/getReplication:getReplication", args ?? new GetReplicationArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about an existing Replication.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = ProxmoxVE.Index.GetReplication.Invoke(new()
+        ///     {
+        ///         Id = "100-0",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxReplication"] = 
+        ///         {
+        ///             { "id", example.Apply(getReplicationResult =&gt; getReplicationResult.Id) },
+        ///             { "target", example.Apply(getReplicationResult =&gt; getReplicationResult.Target) },
+        ///             { "type", example.Apply(getReplicationResult =&gt; getReplicationResult.Type) },
+        ///             { "jobnum", example.Apply(getReplicationResult =&gt; getReplicationResult.Jobnum) },
+        ///             { "guest", example.Apply(getReplicationResult =&gt; getReplicationResult.Guest) },
+        ///         },
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetReplicationResult> Invoke(GetReplicationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetReplicationResult>("proxmoxve:index/getReplication:getReplication", args ?? new GetReplicationInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about an existing Replication.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = ProxmoxVE.Index.GetReplication.Invoke(new()
+        ///     {
+        ///         Id = "100-0",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxReplication"] = 
+        ///         {
+        ///             { "id", example.Apply(getReplicationResult =&gt; getReplicationResult.Id) },
+        ///             { "target", example.Apply(getReplicationResult =&gt; getReplicationResult.Target) },
+        ///             { "type", example.Apply(getReplicationResult =&gt; getReplicationResult.Type) },
+        ///             { "jobnum", example.Apply(getReplicationResult =&gt; getReplicationResult.Jobnum) },
+        ///             { "guest", example.Apply(getReplicationResult =&gt; getReplicationResult.Guest) },
+        ///         },
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetReplicationResult> Invoke(GetReplicationInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetReplicationResult>("proxmoxve:index/getReplication:getReplication", args ?? new GetReplicationInvokeArgs(), options.WithDefaults());

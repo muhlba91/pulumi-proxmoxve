@@ -35,7 +35,7 @@ import javax.annotation.Nullable;
  * 
  * ## Limitations
  * 
- * This resource intentionally manages only a subset of VM configuration. The following are currently not managed and must be inherited from the source template (or managed via &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.VmLegacy`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.VmLegacy`&#34; pulumi-lang-go=&#34;`VmLegacy`&#34; pulumi-lang-python=&#34;`VmLegacy`&#34; pulumi-lang-yaml=&#34;`proxmoxve.VmLegacy`&#34; pulumi-lang-java=&#34;`proxmoxve.VmLegacy`&#34;&gt;`proxmoxve.VmLegacy`&lt;/span&gt; with a &lt;span pulumi-lang-nodejs=&#34;`clone`&#34; pulumi-lang-dotnet=&#34;`Clone`&#34; pulumi-lang-go=&#34;`clone`&#34; pulumi-lang-python=&#34;`clone`&#34; pulumi-lang-yaml=&#34;`clone`&#34; pulumi-lang-java=&#34;`clone`&#34;&gt;`clone`&lt;/span&gt; block):
+ * This resource intentionally manages only a subset of VM configuration. The following are currently not managed and must be inherited from the source template (or managed via &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; with a &lt;span pulumi-lang-nodejs=&#34;`clone`&#34; pulumi-lang-dotnet=&#34;`Clone`&#34; pulumi-lang-go=&#34;`clone`&#34; pulumi-lang-python=&#34;`clone`&#34; pulumi-lang-yaml=&#34;`clone`&#34; pulumi-lang-java=&#34;`clone`&#34;&gt;`clone`&lt;/span&gt; block):
  * 
  * - BIOS / machine / boot order
  * - EFI disk / secure boot settings
@@ -43,6 +43,222 @@ import javax.annotation.Nullable;
  * - Cloud-init / initialization
  * - QEMU guest agent configuration
  * - PCI/USB passthrough, serial/audio devices, watchdog, VirtioFS
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.cloned.Vm;
+ * import io.muehlbachler.pulumi.proxmoxve.cloned.VmArgs;
+ * import com.pulumi.proxmoxve.cloned.inputs.VmCloneArgs;
+ * import com.pulumi.proxmoxve.cloned.inputs.VmCpuArgs;
+ * import com.pulumi.proxmoxve.cloned.inputs.VmDeleteArgs;
+ * import com.pulumi.proxmoxve.cloned.inputs.VmMemoryArgs;
+ * import com.pulumi.proxmoxve.cloned.inputs.VmVgaArgs;
+ * import com.pulumi.proxmoxve.cloned.inputs.VmTimeoutsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Example 1: Basic clone with minimal management
+ *         var basicClone = new Vm("basicClone", VmArgs.builder()
+ *             .nodeName("pve")
+ *             .name("basic-clone")
+ *             .clone(VmCloneArgs.builder()
+ *                 .sourceVmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:6,18-21)))
+ *                 .full(true)
+ *                 .build())
+ *             .cpu(VmCpuArgs.builder()
+ *                 .cores(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(4) (example.pp:12,13-14)))
+ *                 .build())
+ *             .build());
+ * 
+ *         // Example 2: Clone with explicit network management
+ *         var networkManaged = new Vm("networkManaged", VmArgs.builder()
+ *             .nodeName("pve")
+ *             .name("network-clone")
+ *             .clone(VmCloneArgs.builder()
+ *                 .sourceVmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:23,18-21)))
+ *                 .build())
+ *             .network(Map.ofEntries(
+ *                 Map.entry("net0", VmNetworkArgs.builder()
+ *                     .bridge("vmbr0")
+ *                     .model("virtio")
+ *                     .tag(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:29,16-19)))
+ *                     .build()),
+ *                 Map.entry("net1", VmNetworkArgs.builder()
+ *                     .bridge("vmbr1")
+ *                     .model("virtio")
+ *                     .firewall(true)
+ *                     .macAddress("BC:24:11:2E:C5:00")
+ *                     .build())
+ *             ))
+ *             .cpu(VmCpuArgs.builder()
+ *                 .cores(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:40,13-14)))
+ *                 .build())
+ *             .build());
+ * 
+ *         // Example 3: Clone with disk management
+ *         var diskManaged = new Vm("diskManaged", VmArgs.builder()
+ *             .nodeName("pve")
+ *             .name("disk-clone")
+ *             .clone(VmCloneArgs.builder()
+ *                 .sourceVmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:51,23-26)))
+ *                 .targetDatastore("local-lvm")
+ *                 .build())
+ *             .disk(Map.ofEntries(
+ *                 Map.entry("scsi0", VmDiskArgs.builder()
+ *                     .datastoreId("local-lvm")
+ *                     .sizeGb(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(50) (example.pp:57,21-23)))
+ *                     .discard("on")
+ *                     .ssd(true)
+ *                     .build()),
+ *                 Map.entry("scsi1", VmDiskArgs.builder()
+ *                     .datastoreId("local-lvm")
+ *                     .sizeGb(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:63,21-24)))
+ *                     .backup(false)
+ *                     .build())
+ *             ))
+ *             .build());
+ * 
+ *         // Example 4: Clone with explicit device deletion
+ *         var selectiveDelete = new Vm("selectiveDelete", VmArgs.builder()
+ *             .nodeName("pve")
+ *             .name("minimal-clone")
+ *             .clone(VmCloneArgs.builder()
+ *                 .sourceVmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:76,18-21)))
+ *                 .build())
+ *             .network(Map.of("net0", VmNetworkArgs.builder()
+ *                 .bridge("vmbr0")
+ *                 .model("virtio")
+ *                 .build()))
+ *             .delete(VmDeleteArgs.builder()
+ *                 .networks(                
+ *                     "net1",
+ *                     "net2")
+ *                 .build())
+ *             .build());
+ * 
+ *         // Example 5: Full-featured clone with multiple settings
+ *         var fullFeatured = new Vm("fullFeatured", VmArgs.builder()
+ *             .nodeName("pve")
+ *             .name("production-vm")
+ *             .description("Production VM cloned from template")
+ *             .tags(            
+ *                 "production",
+ *                 "web")
+ *             .clone(VmCloneArgs.builder()
+ *                 .sourceVmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:98,23-26)))
+ *                 .sourceNodeName("pve")
+ *                 .full(true)
+ *                 .targetDatastore("local-lvm")
+ *                 .retries(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(3) (example.pp:102,23-24)))
+ *                 .build())
+ *             .cpu(VmCpuArgs.builder()
+ *                 .cores(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(8) (example.pp:105,20-21)))
+ *                 .sockets(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1) (example.pp:106,20-21)))
+ *                 .architecture("x86_64")
+ *                 .type("host")
+ *                 .build())
+ *             .memory(VmMemoryArgs.builder()
+ *                 .size(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(8192) (example.pp:111,15-19)))
+ *                 .balloon(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:112,15-19)))
+ *                 .shares(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2000) (example.pp:113,15-19)))
+ *                 .build())
+ *             .network(Map.of("net0", VmNetworkArgs.builder()
+ *                 .bridge("vmbr0")
+ *                 .model("virtio")
+ *                 .tag(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:119,19-22)))
+ *                 .firewall(true)
+ *                 .rateLimit(100.0)
+ *                 .build()))
+ *             .disk(Map.of("scsi0", VmDiskArgs.builder()
+ *                 .datastoreId("local-lvm")
+ *                 .sizeGb(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:128,21-24)))
+ *                 .discard("on")
+ *                 .iothread(true)
+ *                 .ssd(true)
+ *                 .cache("writethrough")
+ *                 .build()))
+ *             .vga(VmVgaArgs.builder()
+ *                 .type("std")
+ *                 .memory(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(16) (example.pp:137,14-16)))
+ *                 .build())
+ *             .delete(VmDeleteArgs.builder()
+ *                 .disks("ide2")
+ *                 .build())
+ *             .stopOnDestroy(false)
+ *             .purgeOnDestroy(true)
+ *             .deleteUnreferencedDisksOnDestroy(false)
+ *             .timeouts(VmTimeoutsArgs.builder()
+ *                 .create("30m")
+ *                 .update("30m")
+ *                 .delete("10m")
+ *                 .build())
+ *             .build());
+ * 
+ *         // Example 6: Linked clone for testing
+ *         var testClone = new Vm("testClone", VmArgs.builder()
+ *             .nodeName("pve")
+ *             .name("test-vm")
+ *             .clone(VmCloneArgs.builder()
+ *                 .sourceVmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:162,18-21)))
+ *                 .full(false)
+ *                 .build())
+ *             .cpu(VmCpuArgs.builder()
+ *                 .cores(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:167,13-14)))
+ *                 .build())
+ *             .network(Map.of("net0", VmNetworkArgs.builder()
+ *                 .bridge("vmbr0")
+ *                 .model("virtio")
+ *                 .build()))
+ *             .build());
+ * 
+ *         // Example 7: Clone with pool assignment
+ *         var pooledClone = new Vm("pooledClone", VmArgs.builder()
+ *             .nodeName("pve")
+ *             .name("pooled-vm")
+ *             .clone(VmCloneArgs.builder()
+ *                 .sourceVmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:184,18-21)))
+ *                 .poolId("production")
+ *                 .build())
+ *             .cpu(VmCpuArgs.builder()
+ *                 .cores(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(4) (example.pp:188,13-14)))
+ *                 .build())
+ *             .build());
+ * 
+ *         // Example 8: Import existing cloned VM
+ *         var imported = new Vm("imported", VmArgs.builder()
+ *             .resourceId("123")
+ *             .nodeName("pve")
+ *             .clone(VmCloneArgs.builder()
+ *                 .sourceVmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:199,18-21)))
+ *                 .build())
+ *             .cpu(VmCpuArgs.builder()
+ *                 .cores(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(4) (example.pp:203,13-14)))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="proxmoxve:cloned/vm:Vm")

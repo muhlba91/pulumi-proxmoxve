@@ -8,6 +8,21 @@ import * as utilities from "../utilities";
 
 /**
  * Retrieves information about a specific ACME account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * // This will fetch all ACME accounts...
+ * const all = proxmoxve.acme.getAccounts({});
+ * // ...which we will go through in order to fetch the whole data on each account.
+ * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: proxmoxve.acme.getAccount({
+ *     name: __value,
+ * }) }), {}));
+ * export const dataProxmoxAcmeAccount = example;
+ * ```
  */
 export function getAccount(args?: GetAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountResult> {
     args = args || {};
@@ -58,6 +73,21 @@ export interface GetAccountResult {
 }
 /**
  * Retrieves information about a specific ACME account.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * // This will fetch all ACME accounts...
+ * const all = proxmoxve.acme.getAccounts({});
+ * // ...which we will go through in order to fetch the whole data on each account.
+ * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: proxmoxve.acme.getAccount({
+ *     name: __value,
+ * }) }), {}));
+ * export const dataProxmoxAcmeAccount = example;
+ * ```
  */
 export function getAccountOutput(args?: GetAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountResult> {
     args = args || {};

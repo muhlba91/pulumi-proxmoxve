@@ -329,6 +329,15 @@ class DirectoryLegacy(pulumi.CustomResource):
             })
         ```
 
+        ## Import
+
+        !/usr/bin/env sh
+        Storage can be imported using its identifier, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:storage/directoryLegacy:DirectoryLegacy example local-dir
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -369,6 +378,15 @@ class DirectoryLegacy(pulumi.CustomResource):
                 "max_protected_backups": 5,
                 "keep_daily": 7,
             })
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        Storage can be imported using its identifier, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:storage/directoryLegacy:DirectoryLegacy example local-dir
         ```
 
 

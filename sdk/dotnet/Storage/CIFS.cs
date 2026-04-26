@@ -11,6 +11,54 @@ namespace Pulumi.ProxmoxVE.Storage
 {
     /// <summary>
     /// Manages an SMB/CIFS based storage server in Proxmox VE.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new ProxmoxVE.Storage.Cifs("example", new()
+    ///     {
+    ///         ResourceId = "example-cifs",
+    ///         Nodes = new[]
+    ///         {
+    ///             "pve",
+    ///         },
+    ///         Server = "10.0.0.20",
+    ///         Share = "proxmox",
+    ///         Username = "cifs-user",
+    ///         Password = "cifs-password",
+    ///         Contents = new[]
+    ///         {
+    ///             "images",
+    ///         },
+    ///         Domain = "WORKGROUP",
+    ///         Subdirectory = "terraform",
+    ///         Preallocation = "metadata",
+    ///         SnapshotAsVolumeChain = true,
+    ///         Backups = new ProxmoxVE.Storage.Inputs.CifsBackupsArgs
+    ///         {
+    ///             MaxProtectedBackups = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(5) (example.pp:14,27-28)),
+    ///             KeepDaily = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(7) (example.pp:15,27-28)),
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// Storage can be imported using its identifier, e.g.:
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:storage/cifs:Cifs example local-cifs
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:storage/cifs:Cifs")]
     public partial class Cifs : global::Pulumi.CustomResource

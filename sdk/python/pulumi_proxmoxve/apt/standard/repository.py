@@ -188,6 +188,32 @@ class Repository(pulumi.CustomResource):
         """
         Manages an APT standard repository of a Proxmox VE node.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.apt.standard.Repository("example",
+            handle="no-subscription",
+            node="pve")
+        example_repository = proxmoxve.apt.Repository("example",
+            enabled=True,
+            file_path=example.file_path,
+            index=example.index,
+            node=example.node)
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        An APT standard repository can be imported using a comma-separated list consisting of the name of the Proxmox VE node,
+        and the standard repository handle in the exact same order, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:apt/standard/repository:Repository example pve,no-subscription
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -202,6 +228,32 @@ class Repository(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages an APT standard repository of a Proxmox VE node.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.apt.standard.Repository("example",
+            handle="no-subscription",
+            node="pve")
+        example_repository = proxmoxve.apt.Repository("example",
+            enabled=True,
+            file_path=example.file_path,
+            index=example.index,
+            node=example.node)
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        An APT standard repository can be imported using a comma-separated list consisting of the name of the Proxmox VE node,
+        and the standard repository handle in the exact same order, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:apt/standard/repository:Repository example pve,no-subscription
+        ```
 
 
         :param str resource_name: The name of the resource.

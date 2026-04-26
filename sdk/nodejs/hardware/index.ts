@@ -14,6 +14,11 @@ export const getMappingsLegacy: typeof import("./getMappingsLegacy").getMappings
 export const getMappingsLegacyOutput: typeof import("./getMappingsLegacy").getMappingsLegacyOutput = null as any;
 utilities.lazyLoad(exports, ["getMappingsLegacy","getMappingsLegacyOutput"], () => require("./getMappingsLegacy"));
 
+export { GetPciArgs, GetPciResult, GetPciOutputArgs } from "./getPci";
+export const getPci: typeof import("./getPci").getPci = null as any;
+export const getPciOutput: typeof import("./getPci").getPciOutput = null as any;
+utilities.lazyLoad(exports, ["getPci","getPciOutput"], () => require("./getPci"));
+
 
 // Export sub-modules:
 import * as mapping from "./mapping";

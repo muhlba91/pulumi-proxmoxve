@@ -915,6 +915,27 @@ class Ldap(pulumi.CustomResource):
         |-----------------|----------------|
         | /access/domains | Realm.Allocate |
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.realm.Ldap("example",
+            realm="example-ldap",
+            server1="ldap.example.com",
+            port=389,
+            base_dn="ou=people,dc=example,dc=com",
+            user_attr="uid",
+            bind_dn="cn=admin,dc=example,dc=com",
+            bind_password=ldap_bind_password,
+            mode="ldap+starttls",
+            verify=True,
+            group_dn="ou=groups,dc=example,dc=com",
+            group_filter="(objectClass=groupOfNames)",
+            comment="Example LDAP realm managed by Terraform")
+        ```
+
         ## Notes
 
         ### Password Security
@@ -991,6 +1012,17 @@ class Ldap(pulumi.CustomResource):
         - [Proxmox VE User Management](https://pve.proxmox.com/wiki/User_Management)
         - [Proxmox VE LDAP Authentication](https://pve.proxmox.com/wiki/User_Management#pveum_ldap)
         - [Proxmox API: /access/domains](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/domains)
+
+        ## Import
+
+        !/usr/bin/env sh
+        LDAP realms can be imported using the realm identifier, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:realm/ldap:Ldap example example.com
+        ```
+
+        > When importing, the `bind_password` attribute cannot be imported since it's not returned by the Proxmox API. You'll need to set this attribute in your Terraform configuration after the import to manage it with Terraform.
 
 
         :param str resource_name: The name of the resource.
@@ -1039,6 +1071,27 @@ class Ldap(pulumi.CustomResource):
         |-----------------|----------------|
         | /access/domains | Realm.Allocate |
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.realm.Ldap("example",
+            realm="example-ldap",
+            server1="ldap.example.com",
+            port=389,
+            base_dn="ou=people,dc=example,dc=com",
+            user_attr="uid",
+            bind_dn="cn=admin,dc=example,dc=com",
+            bind_password=ldap_bind_password,
+            mode="ldap+starttls",
+            verify=True,
+            group_dn="ou=groups,dc=example,dc=com",
+            group_filter="(objectClass=groupOfNames)",
+            comment="Example LDAP realm managed by Terraform")
+        ```
+
         ## Notes
 
         ### Password Security
@@ -1115,6 +1168,17 @@ class Ldap(pulumi.CustomResource):
         - [Proxmox VE User Management](https://pve.proxmox.com/wiki/User_Management)
         - [Proxmox VE LDAP Authentication](https://pve.proxmox.com/wiki/User_Management#pveum_ldap)
         - [Proxmox API: /access/domains](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/domains)
+
+        ## Import
+
+        !/usr/bin/env sh
+        LDAP realms can be imported using the realm identifier, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:realm/ldap:Ldap example example.com
+        ```
+
+        > When importing, the `bind_password` attribute cannot be imported since it's not returned by the Proxmox API. You'll need to set this attribute in your Terraform configuration after the import to manage it with Terraform.
 
 
         :param str resource_name: The name of the resource.

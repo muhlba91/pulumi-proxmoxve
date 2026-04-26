@@ -19,6 +19,54 @@ import javax.annotation.Nullable;
 /**
  * Manages thin LVM-based storage in Proxmox VE.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.storage.Lvmthin;
+ * import io.muehlbachler.pulumi.proxmoxve.storage.LvmthinArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Lvmthin("example", LvmthinArgs.builder()
+ *             .resourceId("example-lvmthin")
+ *             .nodes("pve")
+ *             .volumeGroup("vg0")
+ *             .thinPool("data")
+ *             .contents("images")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * !/usr/bin/env sh
+ * Storage can be imported using its identifier, e.g.:
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:storage/lvmthin:Lvmthin example local-lvm-thin
+ * ```
+ * 
  */
 @ResourceType(type="proxmoxve:storage/lvmthin:Lvmthin")
 public class Lvmthin extends com.pulumi.resources.CustomResource {

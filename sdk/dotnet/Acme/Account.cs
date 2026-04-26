@@ -13,6 +13,36 @@ namespace Pulumi.ProxmoxVE.Acme
     /// Manages an ACME account in a Proxmox VE cluster.
     /// 
     /// &gt; This resource requires `root@pam` authentication.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new ProxmoxVE.Acme.Account("example", new()
+    ///     {
+    ///         Name = "example",
+    ///         Contact = "example@email.com",
+    ///         Directory = "https://acme-staging-v02.api.letsencrypt.org/directory",
+    ///         Tos = "https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// ACME accounts can be imported using their name, e.g.:
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:acme/account:Account example example
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:acme/account:Account")]
     public partial class Account : global::Pulumi.CustomResource

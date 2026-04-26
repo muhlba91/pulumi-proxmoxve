@@ -13,13 +13,13 @@ namespace Pulumi.ProxmoxVE.Cloned.Inputs
     public sealed class VmLegacyRngArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+        /// Maximum bytes of entropy allowed to get injected into the guest every period.
         /// </summary>
         [Input("maxBytes")]
         public Input<int>? MaxBytes { get; set; }
 
         /// <summary>
-        /// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+        /// Period in milliseconds to limit entropy injection to the guest.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }

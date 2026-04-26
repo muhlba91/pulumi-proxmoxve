@@ -289,6 +289,15 @@ class LvmLegacy(pulumi.CustomResource):
             wipe_removed_volumes=False)
         ```
 
+        ## Import
+
+        !/usr/bin/env sh
+        Storage can be imported using its identifier, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:storage/lvmLegacy:LvmLegacy example local-lvm
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -323,6 +332,15 @@ class LvmLegacy(pulumi.CustomResource):
             volume_group="vg0",
             contents=["images"],
             wipe_removed_volumes=False)
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        Storage can be imported using its identifier, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:storage/lvmLegacy:LvmLegacy example local-lvm
         ```
 
 

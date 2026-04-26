@@ -91,6 +91,16 @@ def get_dir(name: Optional[_builtins.str] = None,
     """
     Retrieves a directory mapping from a Proxmox VE cluster.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.hardware.mapping.get_dir(name="example")
+    pulumi.export("dataProxmoxHardwareMappingDir", example)
+    ```
+
 
     :param _builtins.str name: The name of this directory mapping.
     """
@@ -108,6 +118,16 @@ def get_dir_output(name: Optional[pulumi.Input[_builtins.str]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDirResult]:
     """
     Retrieves a directory mapping from a Proxmox VE cluster.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.hardware.mapping.get_dir(name="example")
+    pulumi.export("dataProxmoxHardwareMappingDir", example)
+    ```
 
 
     :param _builtins.str name: The name of this directory mapping.

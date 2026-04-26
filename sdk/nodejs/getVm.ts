@@ -7,22 +7,14 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * !> **DO NOT USE**
- * This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
+ * Retrieves information about a specific VM.
  */
 export function getVm(args: GetVmArgs, opts?: pulumi.InvokeOptions): Promise<GetVmResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("proxmoxve:index/getVm:getVm", {
-        "cpu": args.cpu,
-        "description": args.description,
         "id": args.id,
-        "name": args.name,
         "nodeName": args.nodeName,
-        "rng": args.rng,
-        "tags": args.tags,
-        "template": args.template,
         "timeouts": args.timeouts,
-        "vga": args.vga,
     }, opts);
 }
 
@@ -31,42 +23,14 @@ export function getVm(args: GetVmArgs, opts?: pulumi.InvokeOptions): Promise<Get
  */
 export interface GetVmArgs {
     /**
-     * The CPU configuration.
-     */
-    cpu?: inputs.GetVmCpu;
-    /**
-     * The description of the VM.
-     */
-    description?: string;
-    /**
      * The unique identifier of the VM in the Proxmox cluster.
      */
     id: number;
     /**
-     * The name of the VM.
-     */
-    name?: string;
-    /**
      * The name of the node where the VM is provisioned.
      */
     nodeName: string;
-    /**
-     * The RNG (Random Number Generator) configuration.
-     */
-    rng?: inputs.GetVmRng;
-    /**
-     * The tags assigned to the VM.
-     */
-    tags?: string[];
-    /**
-     * Whether the VM is a template.
-     */
-    template?: boolean;
     timeouts?: inputs.GetVmTimeouts;
-    /**
-     * The VGA configuration.
-     */
-    vga?: inputs.GetVmVga;
 }
 
 /**
@@ -74,13 +38,17 @@ export interface GetVmArgs {
  */
 export interface GetVmResult {
     /**
+     * The CD-ROM configuration.
+     */
+    readonly cdrom: {[key: string]: outputs.GetVmCdrom};
+    /**
      * The CPU configuration.
      */
     readonly cpu: outputs.GetVmCpu;
     /**
      * The description of the VM.
      */
-    readonly description?: string;
+    readonly description: string;
     /**
      * The unique identifier of the VM in the Proxmox cluster.
      */
@@ -88,7 +56,7 @@ export interface GetVmResult {
     /**
      * The name of the VM.
      */
-    readonly name?: string;
+    readonly name: string;
     /**
      * The name of the node where the VM is provisioned.
      */
@@ -98,13 +66,17 @@ export interface GetVmResult {
      */
     readonly rng: outputs.GetVmRng;
     /**
+     * The status of the VM (e.g., `running`, `stopped`).
+     */
+    readonly status: string;
+    /**
      * The tags assigned to the VM.
      */
     readonly tags: string[];
     /**
      * Whether the VM is a template.
      */
-    readonly template?: boolean;
+    readonly template: boolean;
     readonly timeouts?: outputs.GetVmTimeouts;
     /**
      * The VGA configuration.
@@ -112,22 +84,14 @@ export interface GetVmResult {
     readonly vga: outputs.GetVmVga;
 }
 /**
- * !> **DO NOT USE**
- * This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
+ * Retrieves information about a specific VM.
  */
 export function getVmOutput(args: GetVmOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVmResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("proxmoxve:index/getVm:getVm", {
-        "cpu": args.cpu,
-        "description": args.description,
         "id": args.id,
-        "name": args.name,
         "nodeName": args.nodeName,
-        "rng": args.rng,
-        "tags": args.tags,
-        "template": args.template,
         "timeouts": args.timeouts,
-        "vga": args.vga,
     }, opts);
 }
 
@@ -136,40 +100,12 @@ export function getVmOutput(args: GetVmOutputArgs, opts?: pulumi.InvokeOutputOpt
  */
 export interface GetVmOutputArgs {
     /**
-     * The CPU configuration.
-     */
-    cpu?: pulumi.Input<inputs.GetVmCpuArgs>;
-    /**
-     * The description of the VM.
-     */
-    description?: pulumi.Input<string>;
-    /**
      * The unique identifier of the VM in the Proxmox cluster.
      */
     id: pulumi.Input<number>;
     /**
-     * The name of the VM.
-     */
-    name?: pulumi.Input<string>;
-    /**
      * The name of the node where the VM is provisioned.
      */
     nodeName: pulumi.Input<string>;
-    /**
-     * The RNG (Random Number Generator) configuration.
-     */
-    rng?: pulumi.Input<inputs.GetVmRngArgs>;
-    /**
-     * The tags assigned to the VM.
-     */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Whether the VM is a template.
-     */
-    template?: pulumi.Input<boolean>;
     timeouts?: pulumi.Input<inputs.GetVmTimeoutsArgs>;
-    /**
-     * The VGA configuration.
-     */
-    vga?: pulumi.Input<inputs.GetVmVgaArgs>;
 }

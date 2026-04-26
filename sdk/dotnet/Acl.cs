@@ -14,6 +14,52 @@ namespace Pulumi.ProxmoxVE
     /// 
     /// ACLs are used to control access to resources in the Proxmox cluster.
     /// Each ACL consists of a path, a user, group or token, a role, and a flag to allow propagation of permissions.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var operationsAutomation = new ProxmoxVE.Index.UserLegacy("operations_automation", new()
+    ///     {
+    ///         Comment = "Managed by Pulumi",
+    ///         Password = "a-strong-password",
+    ///         UserId = "operations-automation@pve",
+    ///     });
+    /// 
+    ///     var operationsMonitoring = new ProxmoxVE.Index.RoleLegacy("operations_monitoring", new()
+    ///     {
+    ///         RoleId = "operations-monitoring",
+    ///         Privileges = new[]
+    ///         {
+    ///             "VM.GuestAgent.Audit",
+    ///         },
+    ///     });
+    /// 
+    ///     var operationsAutomationMonitoring = new ProxmoxVE.Index.Acl("operations_automation_monitoring", new()
+    ///     {
+    ///         UserId = operationsAutomation.UserId,
+    ///         RoleId = operationsMonitoring.RoleId,
+    ///         Path = "/vms/1234",
+    ///         Propagate = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// ACL can be imported using its unique identifier, e.g.: {path}?{group|user@realm|user@realm!token}?{role}
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:index/acl:Acl operations_automation_monitoring /?monitor@pve?operations-monitoring
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:index/acl:Acl")]
     public partial class Acl : global::Pulumi.CustomResource

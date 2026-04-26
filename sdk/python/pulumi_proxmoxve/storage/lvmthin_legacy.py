@@ -271,6 +271,15 @@ class LvmthinLegacy(pulumi.CustomResource):
             contents=["images"])
         ```
 
+        ## Import
+
+        !/usr/bin/env sh
+        Storage can be imported using its identifier, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:storage/lvmthinLegacy:LvmthinLegacy example local-lvm-thin
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -304,6 +313,15 @@ class LvmthinLegacy(pulumi.CustomResource):
             volume_group="vg0",
             thin_pool="data",
             contents=["images"])
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        Storage can be imported using its identifier, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:storage/lvmthinLegacy:LvmthinLegacy example local-lvm-thin
         ```
 
 

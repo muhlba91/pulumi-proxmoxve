@@ -26,6 +26,87 @@ import javax.annotation.Nullable;
  * capabilities. For PVE 8 and earlier, use
  * &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-go=&#34;`Hagroup`&#34; pulumi-lang-python=&#34;`Hagroup`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-java=&#34;`proxmoxve.Hagroup`&#34;&gt;`proxmoxve.Hagroup`&lt;/span&gt; instead.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.Harule;
+ * import io.muehlbachler.pulumi.proxmoxve.HaruleArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Node Affinity Rule: assign VMs to preferred nodes with priorities.
+ *         // Non-strict rules allow failover to other nodes; strict rules do not.
+ *         var preferNode1 = new Harule("preferNode1", HaruleArgs.builder()
+ *             .rule("prefer-node1")
+ *             .type("node-affinity")
+ *             .comment("Prefer node1 for these VMs")
+ *             .resources(            
+ *                 "vm:100",
+ *                 "vm:101")
+ *             .nodes(Map.ofEntries(
+ *                 Map.entry("node1", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:9,13-14))),
+ *                 Map.entry("node2", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1) (example.pp:11,13-14))),
+ *                 Map.entry("node3", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1) (example.pp:12,13-14)))
+ *             ))
+ *             .strict(false)
+ *             .build());
+ * 
+ *         // Resource Affinity Rule (Positive): keep resources together on the same node.
+ *         var keepTogether = new Harule("keepTogether", HaruleArgs.builder()
+ *             .rule("db-cluster-together")
+ *             .type("resource-affinity")
+ *             .comment("Keep database replicas on the same node")
+ *             .resources(            
+ *                 "vm:200",
+ *                 "vm:201")
+ *             .affinity("positive")
+ *             .build());
+ * 
+ *         // Resource Affinity Rule (Negative / Anti-Affinity): keep resources on
+ *         // separate nodes for high availability.
+ *         var keepApart = new Harule("keepApart", HaruleArgs.builder()
+ *             .rule("db-cluster-apart")
+ *             .type("resource-affinity")
+ *             .comment("Spread database replicas across nodes")
+ *             .resources(            
+ *                 "vm:200",
+ *                 "vm:201",
+ *                 "vm:202")
+ *             .affinity("negative")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * !/usr/bin/env sh
+ * HA rules can be imported using their name, e.g.:
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:index/harule:Harule example prefer-node1
+ * ```
+ * 
  */
 @ResourceType(type="proxmoxve:index/harule:Harule")
 public class Harule extends com.pulumi.resources.CustomResource {

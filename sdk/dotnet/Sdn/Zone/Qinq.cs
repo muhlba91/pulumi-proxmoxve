@@ -11,6 +11,41 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
 {
     /// <summary>
     /// QinQ Zone in Proxmox SDN. QinQ also known as VLAN stacking, that uses multiple layers of VLAN tags for isolation. The QinQ zone defines the outer VLAN tag (the Service VLAN) whereas the inner VLAN tag is defined by the VNet. Your physical network switches must support stacked VLANs for this configuration. Due to the double stacking of tags, you need 4 more bytes for QinQ VLANs. For example, you must reduce the MTU to 1496 if you physical interface MTU is 1500.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new ProxmoxVE.Sdn.Zone.Qinq("example", new()
+    ///     {
+    ///         ResourceId = "qinq1",
+    ///         Bridge = "vmbr0",
+    ///         ServiceVlan = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:3,25-28)),
+    ///         ServiceVlanProtocol = "802.1ad",
+    ///         Mtu = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1496) (example.pp:5,25-29)),
+    ///         Dns = "1.1.1.1",
+    ///         DnsZone = "example.com",
+    ///         Ipam = "pve",
+    ///         ReverseDns = "1.1.1.1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// QinQ SDN zone can be imported using its unique identifier (zone ID)
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:sdn/zone/qinq:Qinq example qinq1
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:sdn/zone/qinq:Qinq")]
     public partial class Qinq : global::Pulumi.CustomResource

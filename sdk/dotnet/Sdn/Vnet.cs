@@ -11,6 +11,104 @@ namespace Pulumi.ProxmoxVE.Sdn
 {
     /// <summary>
     /// Manages Proxmox VE SDN VNet.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var finalizer = new ProxmoxVE.Sdn.Applier("finalizer");
+    /// 
+    ///     // SDN Zone (Simple) - Basic zone for simple vnets
+    ///     var exampleZone1 = new ProxmoxVE.Sdn.Zone.Simple("example_zone_1", new()
+    ///     {
+    ///         ResourceId = "zone1",
+    ///         Mtu = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1500) (example.pp:7,16-20)),
+    ///         Dns = "1.1.1.1",
+    ///         DnsZone = "example.com",
+    ///         Ipam = "pve",
+    ///         ReverseDns = "1.1.1.1",
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             finalizer,
+    ///         },
+    ///     });
+    /// 
+    ///     // SDN Zone (Simple) - Second zone for demonstration
+    ///     var exampleZone2 = new ProxmoxVE.Sdn.Zone.Simple("example_zone_2", new()
+    ///     {
+    ///         ResourceId = "zone2",
+    ///         Mtu = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1500) (example.pp:25,16-20)),
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             finalizer,
+    ///         },
+    ///     });
+    /// 
+    ///     // Basic VNet (Simple)
+    ///     var basicVnet = new ProxmoxVE.Sdn.Vnet("basic_vnet", new()
+    ///     {
+    ///         ResourceId = "vnet1",
+    ///         Zone = exampleZone1.ResourceId,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             finalizer,
+    ///         },
+    ///     });
+    /// 
+    ///     // VNet with Alias and Port Isolation
+    ///     var isolatedVnet = new ProxmoxVE.Sdn.Vnet("isolated_vnet", new()
+    ///     {
+    ///         ResourceId = "vnet2",
+    ///         Zone = exampleZone2.ResourceId,
+    ///         Alias = "Isolated VNet",
+    ///         IsolatePorts = true,
+    ///         VlanAware = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             finalizer,
+    ///         },
+    ///     });
+    /// 
+    ///     // SDN Applier for all resources
+    ///     var vnetApplier = new ProxmoxVE.Sdn.Applier("vnet_applier", new()
+    ///     {
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             exampleZone1,
+    ///             exampleZone2,
+    ///             basicVnet,
+    ///             isolatedVnet,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// SDN vnet can be imported using its unique identifier (vnet ID)
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:sdn/vnet:Vnet basic_vnet vnet1
+    /// $ pulumi import proxmoxve:sdn/vnet:Vnet isolated_vnet vnet2
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:sdn/vnet:Vnet")]
     public partial class Vnet : global::Pulumi.CustomResource

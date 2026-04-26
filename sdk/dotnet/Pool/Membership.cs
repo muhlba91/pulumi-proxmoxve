@@ -13,6 +13,52 @@ namespace Pulumi.ProxmoxVE.Pool
     /// Manages resource pool memberships for containers, virtual machines and storages
     /// 
     /// &gt; This resource requires the `Pool.Allocate` permission on the pool path (e.g., `/pool/{poolid}`).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var testVm1 = new ProxmoxVE.Index.Vm("test_vm1", new()
+    ///     {
+    ///         VmId = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1234) (example.pp:2,19-23)),
+    ///         NodeName = "pve",
+    ///         Started = false,
+    ///     });
+    /// 
+    ///     var testPool = new ProxmoxVE.Index.PoolLegacy("test_pool", new()
+    ///     {
+    ///         PoolId = "test-pool",
+    ///     });
+    /// 
+    ///     var vmMembership = new ProxmoxVE.Pool.Membership("vm_membership", new()
+    ///     {
+    ///         PoolId = testPool.Id,
+    ///         VmId = testVm1.ResourceId,
+    ///     });
+    /// 
+    ///     var storageMembership = new ProxmoxVE.Pool.Membership("storage_membership", new()
+    ///     {
+    ///         PoolId = testPool.Id,
+    ///         StorageId = "local-lvm",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// Resource pool membership can be imported using its unique identifier, e.g.: {pool_id}/{type}/{member_id}
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:pool/membership:Membership example_membership test-pool/vm/102
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:pool/membership:Membership")]
     public partial class Membership : global::Pulumi.CustomResource

@@ -11,15 +11,62 @@ namespace Pulumi.ProxmoxVE.Metrics
 {
     /// <summary>
     /// Manages PVE metrics server.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var influxdbServer = new ProxmoxVE.Metrics.Server("influxdb_server", new()
+    ///     {
+    ///         Name = "example_influxdb_server",
+    ///         ServerAddress = "192.168.3.2",
+    ///         Port = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(8089) (example.pp:4,19-23)),
+    ///         Type = "influxdb",
+    ///     });
+    /// 
+    ///     var graphiteServer = new ProxmoxVE.Metrics.Server("graphite_server", new()
+    ///     {
+    ///         Name = "example_graphite_server",
+    ///         ServerAddress = "192.168.4.2",
+    ///         Port = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2003) (example.pp:12,19-23)),
+    ///         Type = "graphite",
+    ///     });
+    /// 
+    ///     var opentelemetryServer = new ProxmoxVE.Metrics.Server("opentelemetry_server", new()
+    ///     {
+    ///         Name = "example_opentelemetry_server",
+    ///         ServerAddress = "192.168.5.2",
+    ///         Port = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(4318) (example.pp:20,24-28)),
+    ///         Type = "opentelemetry",
+    ///         OpentelemetryProto = "http",
+    ///         OpentelemetryPath = "/v1/metrics",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:metrics/server:Server example example
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:metrics/server:Server")]
     public partial class Server : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Set this to `True` to disable this metric server.
+        /// Set this to `True` to disable this metric server. Defaults to `False`.
         /// </summary>
         [Output("disable")]
-        public Output<bool?> Disable { get; private set; } = null!;
+        public Output<bool> Disable { get; private set; } = null!;
 
         /// <summary>
         /// Root graphite path (ex: `proxmox.mycluster.mykey`).
@@ -70,7 +117,7 @@ namespace Pulumi.ProxmoxVE.Metrics
         public Output<string?> InfluxToken { get; private set; } = null!;
 
         /// <summary>
-        /// Set to `False` to disable certificate verification for https endpoints.
+        /// Set to `False` to disable certificate verification for https endpoints. If not set, PVE default is `True`.
         /// </summary>
         [Output("influxVerify")]
         public Output<bool?> InfluxVerify { get; private set; } = null!;
@@ -212,7 +259,7 @@ namespace Pulumi.ProxmoxVE.Metrics
     public sealed class ServerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Set this to `True` to disable this metric server.
+        /// Set this to `True` to disable this metric server. Defaults to `False`.
         /// </summary>
         [Input("disable")]
         public Input<bool>? Disable { get; set; }
@@ -276,7 +323,7 @@ namespace Pulumi.ProxmoxVE.Metrics
         }
 
         /// <summary>
-        /// Set to `False` to disable certificate verification for https endpoints.
+        /// Set to `False` to disable certificate verification for https endpoints. If not set, PVE default is `True`.
         /// </summary>
         [Input("influxVerify")]
         public Input<bool>? InfluxVerify { get; set; }
@@ -384,7 +431,7 @@ namespace Pulumi.ProxmoxVE.Metrics
     public sealed class ServerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Set this to `True` to disable this metric server.
+        /// Set this to `True` to disable this metric server. Defaults to `False`.
         /// </summary>
         [Input("disable")]
         public Input<bool>? Disable { get; set; }
@@ -448,7 +495,7 @@ namespace Pulumi.ProxmoxVE.Metrics
         }
 
         /// <summary>
-        /// Set to `False` to disable certificate verification for https endpoints.
+        /// Set to `False` to disable certificate verification for https endpoints. If not set, PVE default is `True`.
         /// </summary>
         [Input("influxVerify")]
         public Input<bool>? InfluxVerify { get; set; }

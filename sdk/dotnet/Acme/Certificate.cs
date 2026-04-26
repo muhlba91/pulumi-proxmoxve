@@ -15,6 +15,108 @@ namespace Pulumi.ProxmoxVE.Acme
     /// This resource orders and renews certificates from an ACME Certificate Authority (like Let's Encrypt) for a specific node. Before using this resource, ensure that:
     /// - An ACME account is configured (using `proxmoxve.acme.Account`)
     /// - DNS plugins are configured if using DNS-01 challenge (using `proxmoxve.acme/dns.Plugin`)
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Example: Basic ACME certificate with HTTP-01 challenge (standalone)
+    ///     var example = new ProxmoxVE.Acme.Account("example", new()
+    ///     {
+    ///         Name = "production",
+    ///         Contact = "admin@example.com",
+    ///         Directory = "https://acme-v02.api.letsencrypt.org/directory",
+    ///         Tos = "https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf",
+    ///     });
+    /// 
+    ///     var httpExample = new ProxmoxVE.Acme.Certificate("http_example", new()
+    ///     {
+    ///         NodeName = "pve-node-01",
+    ///         Account = example.Name,
+    ///         Domains = new[]
+    ///         {
+    ///             new ProxmoxVE.Acme.Inputs.CertificateDomainArgs
+    ///             {
+    ///                 Domain = "pve.example.com",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Example: ACME certificate with DNS-01 challenge using Cloudflare
+    ///     var cloudflare = new ProxmoxVE.Acme.Dns.Plugin("cloudflare", new()
+    ///     {
+    ///         PluginName = "cloudflare",
+    ///         Api = "cf",
+    ///         ValidationDelay = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(120) (example.pp:22,21-24)),
+    ///         Data = 
+    ///         {
+    ///             { "CF_Account_ID", "your-cloudflare-account-id" },
+    ///             { "CF_Token", "your-cloudflare-api-token" },
+    ///             { "CF_Zone_ID", "your-cloudflare-zone-id" },
+    ///         },
+    ///     });
+    /// 
+    ///     var dnsExample = new ProxmoxVE.Acme.Certificate("dns_example", new()
+    ///     {
+    ///         NodeName = "pve-node-01",
+    ///         Account = example.Name,
+    ///         Domains = new[]
+    ///         {
+    ///             new ProxmoxVE.Acme.Inputs.CertificateDomainArgs
+    ///             {
+    ///                 Domain = "pve.example.com",
+    ///                 Plugin = cloudflare.PluginName,
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             example,
+    ///             cloudflare,
+    ///         },
+    ///     });
+    /// 
+    ///     // Example: Force certificate renewal
+    ///     var forceRenew = new ProxmoxVE.Acme.Certificate("force_renew", new()
+    ///     {
+    ///         NodeName = "pve-node-01",
+    ///         Account = example.Name,
+    ///         Force = true,
+    ///         Domains = new[]
+    ///         {
+    ///             new ProxmoxVE.Acme.Inputs.CertificateDomainArgs
+    ///             {
+    ///                 Domain = "pve.example.com",
+    ///                 Plugin = cloudflare.PluginName,
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             example,
+    ///             cloudflare,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// ACME certificates can be imported using the node name, e.g.:
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:acme/certificate:Certificate example pve-node-01
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:acme/certificate:Certificate")]
     public partial class Certificate : global::Pulumi.CustomResource

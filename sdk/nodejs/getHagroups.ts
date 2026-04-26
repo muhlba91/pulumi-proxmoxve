@@ -6,6 +6,16 @@ import * as utilities from "./utilities";
 
 /**
  * Retrieves the list of High Availability groups.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = proxmoxve.getHagroups({});
+ * export const dataProxmoxHagroups = example.then(example => example.groupIds);
+ * ```
  */
 export function getHagroups(opts?: pulumi.InvokeOptions): Promise<GetHagroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -28,6 +38,16 @@ export interface GetHagroupsResult {
 }
 /**
  * Retrieves the list of High Availability groups.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = proxmoxve.getHagroups({});
+ * export const dataProxmoxHagroups = example.then(example => example.groupIds);
+ * ```
  */
 export function getHagroupsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHagroupsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

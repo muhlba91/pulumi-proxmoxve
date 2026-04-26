@@ -13,6 +13,50 @@ import (
 )
 
 // Manages a USB hardware mapping in a Proxmox VE cluster.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/hardware"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := hardware.NewUsb(ctx, "example", &hardware.UsbArgs{
+//				Comment: pulumi.String("This is a comment"),
+//				Name:    pulumi.String("example"),
+//				Maps: mapping.UsbMapTypeArray{
+//					&mapping.UsbMapTypeArgs{
+//						Comment: pulumi.String("This is a device specific comment"),
+//						Id:      pulumi.String("8087:0a2b"),
+//						Node:    pulumi.String("pve"),
+//						Path:    pulumi.String("1-8.2"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// !/usr/bin/env sh
+// A USB hardware mapping can be imported using their name, e.g.:
+//
+// ```sh
+// $ pulumi import proxmoxve:hardware/mapping/usb:Usb example example
+// ```
 type Usb struct {
 	pulumi.CustomResourceState
 

@@ -20,6 +20,61 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource in fact updates existing node firewall configuration created by PVE on bootstrap. All optional attributes have explicit defaults for deterministic behavior (PVE may change defaults in the future). See [API documentation](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/nodes/{node}/firewall/options).
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.node.Firewall;
+ * import io.muehlbachler.pulumi.proxmoxve.node.FirewallArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var node_pve1 = new Firewall("node-pve1", FirewallArgs.builder()
+ *             .nodeName("pve1")
+ *             .enabled(false)
+ *             .build());
+ * 
+ *         var pve2 = new Firewall("pve2", FirewallArgs.builder()
+ *             .nodeName("pve2")
+ *             .enabled(true)
+ *             .logLevelIn("alert")
+ *             .logLevelOut("alert")
+ *             .logLevelForward("alert")
+ *             .ndp(true)
+ *             .nftables(true)
+ *             .nosmurfs(true)
+ *             .smurfLogLevel("alert")
+ *             .tcpFlagsLogLevel("alert")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:node/firewall:Firewall node-pve1 pve1
+ * ```
+ * 
  */
 @ResourceType(type="proxmoxve:node/firewall:Firewall")
 public class Firewall extends com.pulumi.resources.CustomResource {

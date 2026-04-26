@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import io.muehlbachler.pulumi.proxmoxve.outputs.GetVmCdrom;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetVmCpu;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetVmRng;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetVmTimeouts;
@@ -13,12 +14,18 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class GetVmResult {
+    /**
+     * @return The CD-ROM configuration.
+     * 
+     */
+    private Map<String,GetVmCdrom> cdrom;
     /**
      * @return The CPU configuration.
      * 
@@ -28,7 +35,7 @@ public final class GetVmResult {
      * @return The description of the VM.
      * 
      */
-    private @Nullable String description;
+    private String description;
     /**
      * @return The unique identifier of the VM in the Proxmox cluster.
      * 
@@ -38,7 +45,7 @@ public final class GetVmResult {
      * @return The name of the VM.
      * 
      */
-    private @Nullable String name;
+    private String name;
     /**
      * @return The name of the node where the VM is provisioned.
      * 
@@ -50,6 +57,11 @@ public final class GetVmResult {
      */
     private GetVmRng rng;
     /**
+     * @return The status of the VM (e.g., &lt;span pulumi-lang-nodejs=&#34;`running`&#34; pulumi-lang-dotnet=&#34;`Running`&#34; pulumi-lang-go=&#34;`running`&#34; pulumi-lang-python=&#34;`running`&#34; pulumi-lang-yaml=&#34;`running`&#34; pulumi-lang-java=&#34;`running`&#34;&gt;`running`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`stopped`&#34; pulumi-lang-dotnet=&#34;`Stopped`&#34; pulumi-lang-go=&#34;`stopped`&#34; pulumi-lang-python=&#34;`stopped`&#34; pulumi-lang-yaml=&#34;`stopped`&#34; pulumi-lang-java=&#34;`stopped`&#34;&gt;`stopped`&lt;/span&gt;).
+     * 
+     */
+    private String status;
+    /**
      * @return The tags assigned to the VM.
      * 
      */
@@ -58,7 +70,7 @@ public final class GetVmResult {
      * @return Whether the VM is a template.
      * 
      */
-    private @Nullable Boolean template;
+    private Boolean template;
     private @Nullable GetVmTimeouts timeouts;
     /**
      * @return The VGA configuration.
@@ -67,6 +79,13 @@ public final class GetVmResult {
     private GetVmVga vga;
 
     private GetVmResult() {}
+    /**
+     * @return The CD-ROM configuration.
+     * 
+     */
+    public Map<String,GetVmCdrom> cdrom() {
+        return this.cdrom;
+    }
     /**
      * @return The CPU configuration.
      * 
@@ -78,8 +97,8 @@ public final class GetVmResult {
      * @return The description of the VM.
      * 
      */
-    public Optional<String> description() {
-        return Optional.ofNullable(this.description);
+    public String description() {
+        return this.description;
     }
     /**
      * @return The unique identifier of the VM in the Proxmox cluster.
@@ -92,8 +111,8 @@ public final class GetVmResult {
      * @return The name of the VM.
      * 
      */
-    public Optional<String> name() {
-        return Optional.ofNullable(this.name);
+    public String name() {
+        return this.name;
     }
     /**
      * @return The name of the node where the VM is provisioned.
@@ -110,6 +129,13 @@ public final class GetVmResult {
         return this.rng;
     }
     /**
+     * @return The status of the VM (e.g., &lt;span pulumi-lang-nodejs=&#34;`running`&#34; pulumi-lang-dotnet=&#34;`Running`&#34; pulumi-lang-go=&#34;`running`&#34; pulumi-lang-python=&#34;`running`&#34; pulumi-lang-yaml=&#34;`running`&#34; pulumi-lang-java=&#34;`running`&#34;&gt;`running`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`stopped`&#34; pulumi-lang-dotnet=&#34;`Stopped`&#34; pulumi-lang-go=&#34;`stopped`&#34; pulumi-lang-python=&#34;`stopped`&#34; pulumi-lang-yaml=&#34;`stopped`&#34; pulumi-lang-java=&#34;`stopped`&#34;&gt;`stopped`&lt;/span&gt;).
+     * 
+     */
+    public String status() {
+        return this.status;
+    }
+    /**
      * @return The tags assigned to the VM.
      * 
      */
@@ -120,8 +146,8 @@ public final class GetVmResult {
      * @return Whether the VM is a template.
      * 
      */
-    public Optional<Boolean> template() {
-        return Optional.ofNullable(this.template);
+    public Boolean template() {
+        return this.template;
     }
     public Optional<GetVmTimeouts> timeouts() {
         return Optional.ofNullable(this.timeouts);
@@ -143,31 +169,43 @@ public final class GetVmResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Map<String,GetVmCdrom> cdrom;
         private GetVmCpu cpu;
-        private @Nullable String description;
+        private String description;
         private Integer id;
-        private @Nullable String name;
+        private String name;
         private String nodeName;
         private GetVmRng rng;
+        private String status;
         private List<String> tags;
-        private @Nullable Boolean template;
+        private Boolean template;
         private @Nullable GetVmTimeouts timeouts;
         private GetVmVga vga;
         public Builder() {}
         public Builder(GetVmResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.cdrom = defaults.cdrom;
     	      this.cpu = defaults.cpu;
     	      this.description = defaults.description;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.nodeName = defaults.nodeName;
     	      this.rng = defaults.rng;
+    	      this.status = defaults.status;
     	      this.tags = defaults.tags;
     	      this.template = defaults.template;
     	      this.timeouts = defaults.timeouts;
     	      this.vga = defaults.vga;
         }
 
+        @CustomType.Setter
+        public Builder cdrom(Map<String,GetVmCdrom> cdrom) {
+            if (cdrom == null) {
+              throw new MissingRequiredPropertyException("GetVmResult", "cdrom");
+            }
+            this.cdrom = cdrom;
+            return this;
+        }
         @CustomType.Setter
         public Builder cpu(GetVmCpu cpu) {
             if (cpu == null) {
@@ -177,8 +215,10 @@ public final class GetVmResult {
             return this;
         }
         @CustomType.Setter
-        public Builder description(@Nullable String description) {
-
+        public Builder description(String description) {
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetVmResult", "description");
+            }
             this.description = description;
             return this;
         }
@@ -191,8 +231,10 @@ public final class GetVmResult {
             return this;
         }
         @CustomType.Setter
-        public Builder name(@Nullable String name) {
-
+        public Builder name(String name) {
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetVmResult", "name");
+            }
             this.name = name;
             return this;
         }
@@ -213,6 +255,14 @@ public final class GetVmResult {
             return this;
         }
         @CustomType.Setter
+        public Builder status(String status) {
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetVmResult", "status");
+            }
+            this.status = status;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tags(List<String> tags) {
             if (tags == null) {
               throw new MissingRequiredPropertyException("GetVmResult", "tags");
@@ -224,8 +274,10 @@ public final class GetVmResult {
             return tags(List.of(tags));
         }
         @CustomType.Setter
-        public Builder template(@Nullable Boolean template) {
-
+        public Builder template(Boolean template) {
+            if (template == null) {
+              throw new MissingRequiredPropertyException("GetVmResult", "template");
+            }
             this.template = template;
             return this;
         }
@@ -245,12 +297,14 @@ public final class GetVmResult {
         }
         public GetVmResult build() {
             final var _resultValue = new GetVmResult();
+            _resultValue.cdrom = cdrom;
             _resultValue.cpu = cpu;
             _resultValue.description = description;
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.nodeName = nodeName;
             _resultValue.rng = rng;
+            _resultValue.status = status;
             _resultValue.tags = tags;
             _resultValue.template = template;
             _resultValue.timeouts = timeouts;

@@ -45,12 +45,116 @@ public final class Sdn_zoneFunctions {
     /**
      * Retrieves information about an EVPN Zone in Proxmox SDN. The EVPN zone creates a routable Layer 3 network, capable of spanning across multiple clusters.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn_zone.Sdn_zoneFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetEvpnArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Sdn_zoneFunctions.getEvpn(GetEvpnArgs.builder()
+     *             .id("evpn1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnZoneEvpn", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("nodes", example.nodes()),
+     *             Map.entry("controller", example.controller()),
+     *             Map.entry("vrfVxlan", example.vrfVxlan()),
+     *             Map.entry("advertiseSubnets", example.advertiseSubnets()),
+     *             Map.entry("disableArpNdSuppression", example.disableArpNdSuppression()),
+     *             Map.entry("exitNodes", example.exitNodes()),
+     *             Map.entry("exitNodesLocalRouting", example.exitNodesLocalRouting()),
+     *             Map.entry("primaryExitNode", example.primaryExitNode()),
+     *             Map.entry("rtImport", example.rtImport()),
+     *             Map.entry("mtu", example.mtu()),
+     *             Map.entry("dns", example.dns()),
+     *             Map.entry("dnsZone", example.dnsZone()),
+     *             Map.entry("ipam", example.ipam()),
+     *             Map.entry("reverseDns", example.reverseDns())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetEvpnResult> getEvpn(GetEvpnArgs args) {
         return getEvpn(args, InvokeOptions.Empty);
     }
     /**
      * Retrieves information about an EVPN Zone in Proxmox SDN. The EVPN zone creates a routable Layer 3 network, capable of spanning across multiple clusters.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn_zone.Sdn_zoneFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetEvpnArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Sdn_zoneFunctions.getEvpn(GetEvpnArgs.builder()
+     *             .id("evpn1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnZoneEvpn", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("nodes", example.nodes()),
+     *             Map.entry("controller", example.controller()),
+     *             Map.entry("vrfVxlan", example.vrfVxlan()),
+     *             Map.entry("advertiseSubnets", example.advertiseSubnets()),
+     *             Map.entry("disableArpNdSuppression", example.disableArpNdSuppression()),
+     *             Map.entry("exitNodes", example.exitNodes()),
+     *             Map.entry("exitNodesLocalRouting", example.exitNodesLocalRouting()),
+     *             Map.entry("primaryExitNode", example.primaryExitNode()),
+     *             Map.entry("rtImport", example.rtImport()),
+     *             Map.entry("mtu", example.mtu()),
+     *             Map.entry("dns", example.dns()),
+     *             Map.entry("dnsZone", example.dnsZone()),
+     *             Map.entry("ipam", example.ipam()),
+     *             Map.entry("reverseDns", example.reverseDns())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEvpnResult> getEvpnPlain(GetEvpnPlainArgs args) {
@@ -59,6 +163,58 @@ public final class Sdn_zoneFunctions {
     /**
      * Retrieves information about an EVPN Zone in Proxmox SDN. The EVPN zone creates a routable Layer 3 network, capable of spanning across multiple clusters.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn_zone.Sdn_zoneFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetEvpnArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Sdn_zoneFunctions.getEvpn(GetEvpnArgs.builder()
+     *             .id("evpn1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnZoneEvpn", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("nodes", example.nodes()),
+     *             Map.entry("controller", example.controller()),
+     *             Map.entry("vrfVxlan", example.vrfVxlan()),
+     *             Map.entry("advertiseSubnets", example.advertiseSubnets()),
+     *             Map.entry("disableArpNdSuppression", example.disableArpNdSuppression()),
+     *             Map.entry("exitNodes", example.exitNodes()),
+     *             Map.entry("exitNodesLocalRouting", example.exitNodesLocalRouting()),
+     *             Map.entry("primaryExitNode", example.primaryExitNode()),
+     *             Map.entry("rtImport", example.rtImport()),
+     *             Map.entry("mtu", example.mtu()),
+     *             Map.entry("dns", example.dns()),
+     *             Map.entry("dnsZone", example.dnsZone()),
+     *             Map.entry("ipam", example.ipam()),
+     *             Map.entry("reverseDns", example.reverseDns())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetEvpnResult> getEvpn(GetEvpnArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:sdn/zone/getEvpn:getEvpn", TypeShape.of(GetEvpnResult.class), args, Utilities.withVersion(options));
@@ -66,12 +222,116 @@ public final class Sdn_zoneFunctions {
     /**
      * Retrieves information about an EVPN Zone in Proxmox SDN. The EVPN zone creates a routable Layer 3 network, capable of spanning across multiple clusters.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn_zone.Sdn_zoneFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetEvpnArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Sdn_zoneFunctions.getEvpn(GetEvpnArgs.builder()
+     *             .id("evpn1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnZoneEvpn", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("nodes", example.nodes()),
+     *             Map.entry("controller", example.controller()),
+     *             Map.entry("vrfVxlan", example.vrfVxlan()),
+     *             Map.entry("advertiseSubnets", example.advertiseSubnets()),
+     *             Map.entry("disableArpNdSuppression", example.disableArpNdSuppression()),
+     *             Map.entry("exitNodes", example.exitNodes()),
+     *             Map.entry("exitNodesLocalRouting", example.exitNodesLocalRouting()),
+     *             Map.entry("primaryExitNode", example.primaryExitNode()),
+     *             Map.entry("rtImport", example.rtImport()),
+     *             Map.entry("mtu", example.mtu()),
+     *             Map.entry("dns", example.dns()),
+     *             Map.entry("dnsZone", example.dnsZone()),
+     *             Map.entry("ipam", example.ipam()),
+     *             Map.entry("reverseDns", example.reverseDns())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetEvpnResult> getEvpn(GetEvpnArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:sdn/zone/getEvpn:getEvpn", TypeShape.of(GetEvpnResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves information about an EVPN Zone in Proxmox SDN. The EVPN zone creates a routable Layer 3 network, capable of spanning across multiple clusters.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn_zone.Sdn_zoneFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetEvpnArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Sdn_zoneFunctions.getEvpn(GetEvpnArgs.builder()
+     *             .id("evpn1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnZoneEvpn", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("nodes", example.nodes()),
+     *             Map.entry("controller", example.controller()),
+     *             Map.entry("vrfVxlan", example.vrfVxlan()),
+     *             Map.entry("advertiseSubnets", example.advertiseSubnets()),
+     *             Map.entry("disableArpNdSuppression", example.disableArpNdSuppression()),
+     *             Map.entry("exitNodes", example.exitNodes()),
+     *             Map.entry("exitNodesLocalRouting", example.exitNodesLocalRouting()),
+     *             Map.entry("primaryExitNode", example.primaryExitNode()),
+     *             Map.entry("rtImport", example.rtImport()),
+     *             Map.entry("mtu", example.mtu()),
+     *             Map.entry("dns", example.dns()),
+     *             Map.entry("dnsZone", example.dnsZone()),
+     *             Map.entry("ipam", example.ipam()),
+     *             Map.entry("reverseDns", example.reverseDns())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetEvpnResult> getEvpnPlain(GetEvpnPlainArgs args, InvokeOptions options) {
@@ -385,12 +645,106 @@ public final class Sdn_zoneFunctions {
     /**
      * Retrieves information about a QinQ Zone in Proxmox SDN. QinQ also known as VLAN stacking, that uses multiple layers of VLAN tags for isolation. The QinQ zone defines the outer VLAN tag (the Service VLAN) whereas the inner VLAN tag is defined by the VNet. Your physical network switches must support stacked VLANs for this configuration. Due to the double stacking of tags, you need 4 more bytes for QinQ VLANs. For example, you must reduce the MTU to 1496 if you physical interface MTU is 1500.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn_zone.Sdn_zoneFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetQinqArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Sdn_zoneFunctions.getQinq(GetQinqArgs.builder()
+     *             .id("qinq1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnZoneQinq", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("nodes", example.nodes()),
+     *             Map.entry("bridge", example.bridge()),
+     *             Map.entry("serviceVlan", example.serviceVlan()),
+     *             Map.entry("serviceVlanProtocol", example.serviceVlanProtocol()),
+     *             Map.entry("mtu", example.mtu()),
+     *             Map.entry("dns", example.dns()),
+     *             Map.entry("dnsZone", example.dnsZone()),
+     *             Map.entry("ipam", example.ipam()),
+     *             Map.entry("reverseDns", example.reverseDns())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetQinqResult> getQinq(GetQinqArgs args) {
         return getQinq(args, InvokeOptions.Empty);
     }
     /**
      * Retrieves information about a QinQ Zone in Proxmox SDN. QinQ also known as VLAN stacking, that uses multiple layers of VLAN tags for isolation. The QinQ zone defines the outer VLAN tag (the Service VLAN) whereas the inner VLAN tag is defined by the VNet. Your physical network switches must support stacked VLANs for this configuration. Due to the double stacking of tags, you need 4 more bytes for QinQ VLANs. For example, you must reduce the MTU to 1496 if you physical interface MTU is 1500.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn_zone.Sdn_zoneFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetQinqArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Sdn_zoneFunctions.getQinq(GetQinqArgs.builder()
+     *             .id("qinq1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnZoneQinq", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("nodes", example.nodes()),
+     *             Map.entry("bridge", example.bridge()),
+     *             Map.entry("serviceVlan", example.serviceVlan()),
+     *             Map.entry("serviceVlanProtocol", example.serviceVlanProtocol()),
+     *             Map.entry("mtu", example.mtu()),
+     *             Map.entry("dns", example.dns()),
+     *             Map.entry("dnsZone", example.dnsZone()),
+     *             Map.entry("ipam", example.ipam()),
+     *             Map.entry("reverseDns", example.reverseDns())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetQinqResult> getQinqPlain(GetQinqPlainArgs args) {
@@ -399,6 +753,53 @@ public final class Sdn_zoneFunctions {
     /**
      * Retrieves information about a QinQ Zone in Proxmox SDN. QinQ also known as VLAN stacking, that uses multiple layers of VLAN tags for isolation. The QinQ zone defines the outer VLAN tag (the Service VLAN) whereas the inner VLAN tag is defined by the VNet. Your physical network switches must support stacked VLANs for this configuration. Due to the double stacking of tags, you need 4 more bytes for QinQ VLANs. For example, you must reduce the MTU to 1496 if you physical interface MTU is 1500.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn_zone.Sdn_zoneFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetQinqArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Sdn_zoneFunctions.getQinq(GetQinqArgs.builder()
+     *             .id("qinq1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnZoneQinq", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("nodes", example.nodes()),
+     *             Map.entry("bridge", example.bridge()),
+     *             Map.entry("serviceVlan", example.serviceVlan()),
+     *             Map.entry("serviceVlanProtocol", example.serviceVlanProtocol()),
+     *             Map.entry("mtu", example.mtu()),
+     *             Map.entry("dns", example.dns()),
+     *             Map.entry("dnsZone", example.dnsZone()),
+     *             Map.entry("ipam", example.ipam()),
+     *             Map.entry("reverseDns", example.reverseDns())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetQinqResult> getQinq(GetQinqArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:sdn/zone/getQinq:getQinq", TypeShape.of(GetQinqResult.class), args, Utilities.withVersion(options));
@@ -406,12 +807,106 @@ public final class Sdn_zoneFunctions {
     /**
      * Retrieves information about a QinQ Zone in Proxmox SDN. QinQ also known as VLAN stacking, that uses multiple layers of VLAN tags for isolation. The QinQ zone defines the outer VLAN tag (the Service VLAN) whereas the inner VLAN tag is defined by the VNet. Your physical network switches must support stacked VLANs for this configuration. Due to the double stacking of tags, you need 4 more bytes for QinQ VLANs. For example, you must reduce the MTU to 1496 if you physical interface MTU is 1500.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn_zone.Sdn_zoneFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetQinqArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Sdn_zoneFunctions.getQinq(GetQinqArgs.builder()
+     *             .id("qinq1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnZoneQinq", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("nodes", example.nodes()),
+     *             Map.entry("bridge", example.bridge()),
+     *             Map.entry("serviceVlan", example.serviceVlan()),
+     *             Map.entry("serviceVlanProtocol", example.serviceVlanProtocol()),
+     *             Map.entry("mtu", example.mtu()),
+     *             Map.entry("dns", example.dns()),
+     *             Map.entry("dnsZone", example.dnsZone()),
+     *             Map.entry("ipam", example.ipam()),
+     *             Map.entry("reverseDns", example.reverseDns())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetQinqResult> getQinq(GetQinqArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:sdn/zone/getQinq:getQinq", TypeShape.of(GetQinqResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves information about a QinQ Zone in Proxmox SDN. QinQ also known as VLAN stacking, that uses multiple layers of VLAN tags for isolation. The QinQ zone defines the outer VLAN tag (the Service VLAN) whereas the inner VLAN tag is defined by the VNet. Your physical network switches must support stacked VLANs for this configuration. Due to the double stacking of tags, you need 4 more bytes for QinQ VLANs. For example, you must reduce the MTU to 1496 if you physical interface MTU is 1500.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn_zone.Sdn_zoneFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetQinqArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Sdn_zoneFunctions.getQinq(GetQinqArgs.builder()
+     *             .id("qinq1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnZoneQinq", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("nodes", example.nodes()),
+     *             Map.entry("bridge", example.bridge()),
+     *             Map.entry("serviceVlan", example.serviceVlan()),
+     *             Map.entry("serviceVlanProtocol", example.serviceVlanProtocol()),
+     *             Map.entry("mtu", example.mtu()),
+     *             Map.entry("dns", example.dns()),
+     *             Map.entry("dnsZone", example.dnsZone()),
+     *             Map.entry("ipam", example.ipam()),
+     *             Map.entry("reverseDns", example.reverseDns())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetQinqResult> getQinqPlain(GetQinqPlainArgs args, InvokeOptions options) {
@@ -700,12 +1195,100 @@ public final class Sdn_zoneFunctions {
     /**
      * Retrieves information about a Simple Zone in Proxmox SDN. It will create an isolated VNet bridge. This bridge is not linked to a physical interface, and VM traffic is only local on each the node. It can be used in NAT or routed setups.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn_zone.Sdn_zoneFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetSimpleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Sdn_zoneFunctions.getSimple(GetSimpleArgs.builder()
+     *             .id("simple1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnZoneSimple", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("nodes", example.nodes()),
+     *             Map.entry("mtu", example.mtu()),
+     *             Map.entry("dns", example.dns()),
+     *             Map.entry("dnsZone", example.dnsZone()),
+     *             Map.entry("ipam", example.ipam()),
+     *             Map.entry("reverseDns", example.reverseDns())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetSimpleResult> getSimple(GetSimpleArgs args) {
         return getSimple(args, InvokeOptions.Empty);
     }
     /**
      * Retrieves information about a Simple Zone in Proxmox SDN. It will create an isolated VNet bridge. This bridge is not linked to a physical interface, and VM traffic is only local on each the node. It can be used in NAT or routed setups.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn_zone.Sdn_zoneFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetSimpleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Sdn_zoneFunctions.getSimple(GetSimpleArgs.builder()
+     *             .id("simple1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnZoneSimple", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("nodes", example.nodes()),
+     *             Map.entry("mtu", example.mtu()),
+     *             Map.entry("dns", example.dns()),
+     *             Map.entry("dnsZone", example.dnsZone()),
+     *             Map.entry("ipam", example.ipam()),
+     *             Map.entry("reverseDns", example.reverseDns())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSimpleResult> getSimplePlain(GetSimplePlainArgs args) {
@@ -714,6 +1297,50 @@ public final class Sdn_zoneFunctions {
     /**
      * Retrieves information about a Simple Zone in Proxmox SDN. It will create an isolated VNet bridge. This bridge is not linked to a physical interface, and VM traffic is only local on each the node. It can be used in NAT or routed setups.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn_zone.Sdn_zoneFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetSimpleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Sdn_zoneFunctions.getSimple(GetSimpleArgs.builder()
+     *             .id("simple1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnZoneSimple", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("nodes", example.nodes()),
+     *             Map.entry("mtu", example.mtu()),
+     *             Map.entry("dns", example.dns()),
+     *             Map.entry("dnsZone", example.dnsZone()),
+     *             Map.entry("ipam", example.ipam()),
+     *             Map.entry("reverseDns", example.reverseDns())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetSimpleResult> getSimple(GetSimpleArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:sdn/zone/getSimple:getSimple", TypeShape.of(GetSimpleResult.class), args, Utilities.withVersion(options));
@@ -721,12 +1348,100 @@ public final class Sdn_zoneFunctions {
     /**
      * Retrieves information about a Simple Zone in Proxmox SDN. It will create an isolated VNet bridge. This bridge is not linked to a physical interface, and VM traffic is only local on each the node. It can be used in NAT or routed setups.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn_zone.Sdn_zoneFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetSimpleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Sdn_zoneFunctions.getSimple(GetSimpleArgs.builder()
+     *             .id("simple1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnZoneSimple", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("nodes", example.nodes()),
+     *             Map.entry("mtu", example.mtu()),
+     *             Map.entry("dns", example.dns()),
+     *             Map.entry("dnsZone", example.dnsZone()),
+     *             Map.entry("ipam", example.ipam()),
+     *             Map.entry("reverseDns", example.reverseDns())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetSimpleResult> getSimple(GetSimpleArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:sdn/zone/getSimple:getSimple", TypeShape.of(GetSimpleResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves information about a Simple Zone in Proxmox SDN. It will create an isolated VNet bridge. This bridge is not linked to a physical interface, and VM traffic is only local on each the node. It can be used in NAT or routed setups.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn_zone.Sdn_zoneFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetSimpleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Sdn_zoneFunctions.getSimple(GetSimpleArgs.builder()
+     *             .id("simple1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnZoneSimple", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("nodes", example.nodes()),
+     *             Map.entry("mtu", example.mtu()),
+     *             Map.entry("dns", example.dns()),
+     *             Map.entry("dnsZone", example.dnsZone()),
+     *             Map.entry("ipam", example.ipam()),
+     *             Map.entry("reverseDns", example.reverseDns())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetSimpleResult> getSimplePlain(GetSimplePlainArgs args, InvokeOptions options) {
@@ -1000,12 +1715,102 @@ public final class Sdn_zoneFunctions {
     /**
      * Retrieves information about a VLAN Zone in Proxmox SDN. It uses an existing local Linux or OVS bridge to connect to the node&#39;s physical interface. It uses VLAN tagging defined in the VNet to isolate the network segments. This allows connectivity of VMs between different nodes.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn_zone.Sdn_zoneFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetVlanArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Sdn_zoneFunctions.getVlan(GetVlanArgs.builder()
+     *             .id("vlan1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnZoneVlan", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("nodes", example.nodes()),
+     *             Map.entry("bridge", example.bridge()),
+     *             Map.entry("mtu", example.mtu()),
+     *             Map.entry("dns", example.dns()),
+     *             Map.entry("dnsZone", example.dnsZone()),
+     *             Map.entry("ipam", example.ipam()),
+     *             Map.entry("reverseDns", example.reverseDns())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetVlanResult> getVlan(GetVlanArgs args) {
         return getVlan(args, InvokeOptions.Empty);
     }
     /**
      * Retrieves information about a VLAN Zone in Proxmox SDN. It uses an existing local Linux or OVS bridge to connect to the node&#39;s physical interface. It uses VLAN tagging defined in the VNet to isolate the network segments. This allows connectivity of VMs between different nodes.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn_zone.Sdn_zoneFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetVlanArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Sdn_zoneFunctions.getVlan(GetVlanArgs.builder()
+     *             .id("vlan1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnZoneVlan", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("nodes", example.nodes()),
+     *             Map.entry("bridge", example.bridge()),
+     *             Map.entry("mtu", example.mtu()),
+     *             Map.entry("dns", example.dns()),
+     *             Map.entry("dnsZone", example.dnsZone()),
+     *             Map.entry("ipam", example.ipam()),
+     *             Map.entry("reverseDns", example.reverseDns())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVlanResult> getVlanPlain(GetVlanPlainArgs args) {
@@ -1014,6 +1819,51 @@ public final class Sdn_zoneFunctions {
     /**
      * Retrieves information about a VLAN Zone in Proxmox SDN. It uses an existing local Linux or OVS bridge to connect to the node&#39;s physical interface. It uses VLAN tagging defined in the VNet to isolate the network segments. This allows connectivity of VMs between different nodes.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn_zone.Sdn_zoneFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetVlanArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Sdn_zoneFunctions.getVlan(GetVlanArgs.builder()
+     *             .id("vlan1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnZoneVlan", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("nodes", example.nodes()),
+     *             Map.entry("bridge", example.bridge()),
+     *             Map.entry("mtu", example.mtu()),
+     *             Map.entry("dns", example.dns()),
+     *             Map.entry("dnsZone", example.dnsZone()),
+     *             Map.entry("ipam", example.ipam()),
+     *             Map.entry("reverseDns", example.reverseDns())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetVlanResult> getVlan(GetVlanArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:sdn/zone/getVlan:getVlan", TypeShape.of(GetVlanResult.class), args, Utilities.withVersion(options));
@@ -1021,12 +1871,102 @@ public final class Sdn_zoneFunctions {
     /**
      * Retrieves information about a VLAN Zone in Proxmox SDN. It uses an existing local Linux or OVS bridge to connect to the node&#39;s physical interface. It uses VLAN tagging defined in the VNet to isolate the network segments. This allows connectivity of VMs between different nodes.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn_zone.Sdn_zoneFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetVlanArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Sdn_zoneFunctions.getVlan(GetVlanArgs.builder()
+     *             .id("vlan1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnZoneVlan", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("nodes", example.nodes()),
+     *             Map.entry("bridge", example.bridge()),
+     *             Map.entry("mtu", example.mtu()),
+     *             Map.entry("dns", example.dns()),
+     *             Map.entry("dnsZone", example.dnsZone()),
+     *             Map.entry("ipam", example.ipam()),
+     *             Map.entry("reverseDns", example.reverseDns())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetVlanResult> getVlan(GetVlanArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:sdn/zone/getVlan:getVlan", TypeShape.of(GetVlanResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves information about a VLAN Zone in Proxmox SDN. It uses an existing local Linux or OVS bridge to connect to the node&#39;s physical interface. It uses VLAN tagging defined in the VNet to isolate the network segments. This allows connectivity of VMs between different nodes.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn_zone.Sdn_zoneFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetVlanArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Sdn_zoneFunctions.getVlan(GetVlanArgs.builder()
+     *             .id("vlan1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnZoneVlan", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("nodes", example.nodes()),
+     *             Map.entry("bridge", example.bridge()),
+     *             Map.entry("mtu", example.mtu()),
+     *             Map.entry("dns", example.dns()),
+     *             Map.entry("dnsZone", example.dnsZone()),
+     *             Map.entry("ipam", example.ipam()),
+     *             Map.entry("reverseDns", example.reverseDns())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVlanResult> getVlanPlain(GetVlanPlainArgs args, InvokeOptions options) {
@@ -1305,12 +2245,102 @@ public final class Sdn_zoneFunctions {
     /**
      * Retrieves information about a VXLAN Zone in Proxmox SDN. It establishes a tunnel (overlay) on top of an existing network (underlay). This encapsulates layer 2 Ethernet frames within layer 4 UDP datagrams using the default destination port 4789. You have to configure the underlay network yourself to enable UDP connectivity between all peers. Because VXLAN encapsulation uses 50 bytes, the MTU needs to be 50 bytes lower than the outgoing physical interface.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn_zone.Sdn_zoneFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetVxlanArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Sdn_zoneFunctions.getVxlan(GetVxlanArgs.builder()
+     *             .id("vxlan1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnZoneVxlan", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("nodes", example.nodes()),
+     *             Map.entry("peers", example.peers()),
+     *             Map.entry("mtu", example.mtu()),
+     *             Map.entry("dns", example.dns()),
+     *             Map.entry("dnsZone", example.dnsZone()),
+     *             Map.entry("ipam", example.ipam()),
+     *             Map.entry("reverseDns", example.reverseDns())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetVxlanResult> getVxlan(GetVxlanArgs args) {
         return getVxlan(args, InvokeOptions.Empty);
     }
     /**
      * Retrieves information about a VXLAN Zone in Proxmox SDN. It establishes a tunnel (overlay) on top of an existing network (underlay). This encapsulates layer 2 Ethernet frames within layer 4 UDP datagrams using the default destination port 4789. You have to configure the underlay network yourself to enable UDP connectivity between all peers. Because VXLAN encapsulation uses 50 bytes, the MTU needs to be 50 bytes lower than the outgoing physical interface.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn_zone.Sdn_zoneFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetVxlanArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Sdn_zoneFunctions.getVxlan(GetVxlanArgs.builder()
+     *             .id("vxlan1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnZoneVxlan", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("nodes", example.nodes()),
+     *             Map.entry("peers", example.peers()),
+     *             Map.entry("mtu", example.mtu()),
+     *             Map.entry("dns", example.dns()),
+     *             Map.entry("dnsZone", example.dnsZone()),
+     *             Map.entry("ipam", example.ipam()),
+     *             Map.entry("reverseDns", example.reverseDns())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVxlanResult> getVxlanPlain(GetVxlanPlainArgs args) {
@@ -1319,6 +2349,51 @@ public final class Sdn_zoneFunctions {
     /**
      * Retrieves information about a VXLAN Zone in Proxmox SDN. It establishes a tunnel (overlay) on top of an existing network (underlay). This encapsulates layer 2 Ethernet frames within layer 4 UDP datagrams using the default destination port 4789. You have to configure the underlay network yourself to enable UDP connectivity between all peers. Because VXLAN encapsulation uses 50 bytes, the MTU needs to be 50 bytes lower than the outgoing physical interface.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn_zone.Sdn_zoneFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetVxlanArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Sdn_zoneFunctions.getVxlan(GetVxlanArgs.builder()
+     *             .id("vxlan1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnZoneVxlan", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("nodes", example.nodes()),
+     *             Map.entry("peers", example.peers()),
+     *             Map.entry("mtu", example.mtu()),
+     *             Map.entry("dns", example.dns()),
+     *             Map.entry("dnsZone", example.dnsZone()),
+     *             Map.entry("ipam", example.ipam()),
+     *             Map.entry("reverseDns", example.reverseDns())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetVxlanResult> getVxlan(GetVxlanArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:sdn/zone/getVxlan:getVxlan", TypeShape.of(GetVxlanResult.class), args, Utilities.withVersion(options));
@@ -1326,12 +2401,102 @@ public final class Sdn_zoneFunctions {
     /**
      * Retrieves information about a VXLAN Zone in Proxmox SDN. It establishes a tunnel (overlay) on top of an existing network (underlay). This encapsulates layer 2 Ethernet frames within layer 4 UDP datagrams using the default destination port 4789. You have to configure the underlay network yourself to enable UDP connectivity between all peers. Because VXLAN encapsulation uses 50 bytes, the MTU needs to be 50 bytes lower than the outgoing physical interface.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn_zone.Sdn_zoneFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetVxlanArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Sdn_zoneFunctions.getVxlan(GetVxlanArgs.builder()
+     *             .id("vxlan1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnZoneVxlan", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("nodes", example.nodes()),
+     *             Map.entry("peers", example.peers()),
+     *             Map.entry("mtu", example.mtu()),
+     *             Map.entry("dns", example.dns()),
+     *             Map.entry("dnsZone", example.dnsZone()),
+     *             Map.entry("ipam", example.ipam()),
+     *             Map.entry("reverseDns", example.reverseDns())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetVxlanResult> getVxlan(GetVxlanArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:sdn/zone/getVxlan:getVxlan", TypeShape.of(GetVxlanResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves information about a VXLAN Zone in Proxmox SDN. It establishes a tunnel (overlay) on top of an existing network (underlay). This encapsulates layer 2 Ethernet frames within layer 4 UDP datagrams using the default destination port 4789. You have to configure the underlay network yourself to enable UDP connectivity between all peers. Because VXLAN encapsulation uses 50 bytes, the MTU needs to be 50 bytes lower than the outgoing physical interface.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.sdn_zone.Sdn_zoneFunctions;
+     * import com.pulumi.proxmoxve.sdn.inputs.GetVxlanArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Sdn_zoneFunctions.getVxlan(GetVxlanArgs.builder()
+     *             .id("vxlan1")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxSdnZoneVxlan", Map.ofEntries(
+     *             Map.entry("id", example.id()),
+     *             Map.entry("nodes", example.nodes()),
+     *             Map.entry("peers", example.peers()),
+     *             Map.entry("mtu", example.mtu()),
+     *             Map.entry("dns", example.dns()),
+     *             Map.entry("dnsZone", example.dnsZone()),
+     *             Map.entry("ipam", example.ipam()),
+     *             Map.entry("reverseDns", example.reverseDns())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetVxlanResult> getVxlanPlain(GetVxlanPlainArgs args, InvokeOptions options) {

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import io.muehlbachler.pulumi.proxmoxve.inputs.VmLegacyInitializationDnsArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.VmLegacyInitializationIpConfigArgs;
 import io.muehlbachler.pulumi.proxmoxve.inputs.VmLegacyInitializationUserAccountArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -156,6 +157,25 @@ public final class VmLegacyInitializationArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * Whether to do an automatic package upgrade after
+     * the first boot (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * Setting this is only allowed for `root{@literal @}pam` authenticated user.
+     * 
+     */
+    @Import(name="upgrade")
+    private @Nullable Output<Boolean> upgrade;
+
+    /**
+     * @return Whether to do an automatic package upgrade after
+     * the first boot (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * Setting this is only allowed for `root{@literal @}pam` authenticated user.
+     * 
+     */
+    public Optional<Output<Boolean>> upgrade() {
+        return Optional.ofNullable(this.upgrade);
+    }
+
+    /**
      * The user account configuration (conflicts
      * with &lt;span pulumi-lang-nodejs=&#34;`userDataFileId`&#34; pulumi-lang-dotnet=&#34;`UserDataFileId`&#34; pulumi-lang-go=&#34;`userDataFileId`&#34; pulumi-lang-python=&#34;`user_data_file_id`&#34; pulumi-lang-yaml=&#34;`userDataFileId`&#34; pulumi-lang-java=&#34;`userDataFileId`&#34;&gt;`userDataFileId`&lt;/span&gt;).
      * 
@@ -217,6 +237,7 @@ public final class VmLegacyInitializationArgs extends com.pulumi.resources.Resou
         this.metaDataFileId = $.metaDataFileId;
         this.networkDataFileId = $.networkDataFileId;
         this.type = $.type;
+        this.upgrade = $.upgrade;
         this.userAccount = $.userAccount;
         this.userDataFileId = $.userDataFileId;
         this.vendorDataFileId = $.vendorDataFileId;
@@ -433,6 +454,31 @@ public final class VmLegacyInitializationArgs extends com.pulumi.resources.Resou
          */
         public Builder type(String type) {
             return type(Output.of(type));
+        }
+
+        /**
+         * @param upgrade Whether to do an automatic package upgrade after
+         * the first boot (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+         * Setting this is only allowed for `root{@literal @}pam` authenticated user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder upgrade(@Nullable Output<Boolean> upgrade) {
+            $.upgrade = upgrade;
+            return this;
+        }
+
+        /**
+         * @param upgrade Whether to do an automatic package upgrade after
+         * the first boot (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+         * Setting this is only allowed for `root{@literal @}pam` authenticated user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder upgrade(Boolean upgrade) {
+            return upgrade(Output.of(upgrade));
         }
 
         /**

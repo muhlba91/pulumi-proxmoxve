@@ -20,6 +20,8 @@ type Ssh struct {
 	AgentForwarding *bool `pulumi:"agentForwarding"`
 	// The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
 	AgentSocket *string `pulumi:"agentSocket"`
+	// The method used to resolve node IP addresses for SSH connections. Set to `dns` to skip the Proxmox API-based resolution and use local DNS instead. DNS resolution prefers IPv4 but falls back to IPv6 if no IPv4 addresses are available. Useful in multi-subnet environments where the API may return an inaccessible IP. Defaults to `api`.
+	NodeAddressSource *string `pulumi:"nodeAddressSource"`
 	// Overrides for SSH connection configuration for a Proxmox VE node.
 	Nodes []SshNode `pulumi:"nodes"`
 	// The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block when using username/password authentication. Default has no effect when using API token authentication, as there is no password to inherit. Can also be sourced from `PROXMOX_VE_SSH_PASSWORD`.
@@ -54,6 +56,8 @@ type SshArgs struct {
 	AgentForwarding pulumi.BoolPtrInput `pulumi:"agentForwarding"`
 	// The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
 	AgentSocket pulumi.StringPtrInput `pulumi:"agentSocket"`
+	// The method used to resolve node IP addresses for SSH connections. Set to `dns` to skip the Proxmox API-based resolution and use local DNS instead. DNS resolution prefers IPv4 but falls back to IPv6 if no IPv4 addresses are available. Useful in multi-subnet environments where the API may return an inaccessible IP. Defaults to `api`.
+	NodeAddressSource pulumi.StringPtrInput `pulumi:"nodeAddressSource"`
 	// Overrides for SSH connection configuration for a Proxmox VE node.
 	Nodes SshNodeArrayInput `pulumi:"nodes"`
 	// The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block when using username/password authentication. Default has no effect when using API token authentication, as there is no password to inherit. Can also be sourced from `PROXMOX_VE_SSH_PASSWORD`.
@@ -109,6 +113,11 @@ func (o SshOutput) AgentForwarding() pulumi.BoolPtrOutput {
 // The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
 func (o SshOutput) AgentSocket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Ssh) *string { return v.AgentSocket }).(pulumi.StringPtrOutput)
+}
+
+// The method used to resolve node IP addresses for SSH connections. Set to `dns` to skip the Proxmox API-based resolution and use local DNS instead. DNS resolution prefers IPv4 but falls back to IPv6 if no IPv4 addresses are available. Useful in multi-subnet environments where the API may return an inaccessible IP. Defaults to `api`.
+func (o SshOutput) NodeAddressSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Ssh) *string { return v.NodeAddressSource }).(pulumi.StringPtrOutput)
 }
 
 // Overrides for SSH connection configuration for a Proxmox VE node.

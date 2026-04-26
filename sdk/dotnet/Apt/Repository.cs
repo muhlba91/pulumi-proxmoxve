@@ -11,6 +11,37 @@ namespace Pulumi.ProxmoxVE.Apt
 {
     /// <summary>
     /// Manages an APT repository of a Proxmox VE node.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new ProxmoxVE.Apt.Repository("example", new()
+    ///     {
+    ///         Enabled = true,
+    ///         FilePath = "/etc/apt/sources.list",
+    ///         Index = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(0) (example.pp:3,14-15)),
+    ///         Node = "pve",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// An APT repository can be imported using a comma-separated list consisting of the name of the Proxmox VE node,
+    /// the absolute source list file path, and the index in the exact same order, e.g.:
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:apt/repository:Repository example pve,/etc/apt/sources.list,0
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:apt/repository:Repository")]
     public partial class Repository : global::Pulumi.CustomResource

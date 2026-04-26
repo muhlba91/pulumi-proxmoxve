@@ -18,6 +18,47 @@ import (
 // used alongside realm configuration resources such as
 // `realm.Ldap`.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/realm"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := realm.NewLdap(ctx, "example", &realm.LdapArgs{
+//				Realm:       pulumi.String("example-ldap"),
+//				Server1:     pulumi.String("ldap.example.com"),
+//				Port:        pulumi.Int(389),
+//				BaseDn:      pulumi.String("ou=people,dc=example,dc=com"),
+//				UserAttr:    pulumi.String("uid"),
+//				GroupDn:     pulumi.String("ou=groups,dc=example,dc=com"),
+//				GroupFilter: pulumi.String("(objectClass=groupOfNames)"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = realm.NewSync(ctx, "example", &realm.SyncArgs{
+//				Realm:          example.Realm,
+//				Scope:          pulumi.String("both"),
+//				RemoveVanished: pulumi.String("acl;entry;properties"),
+//				EnableNew:      pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Behavior Notes
 //
 //   - The sync operation is **one-shot**: applying the resource runs the sync
@@ -26,6 +67,18 @@ import (
 //     configuration in Terraform state.
 //   - Destroying the resource does **not** undo any previously performed sync;
 //     it simply removes the resource from Terraform state.
+//
+// ## Import
+//
+// !/usr/bin/env sh
+// Realm sync resources can be imported by realm name, e.g.:
+//
+// ```sh
+// $ pulumi import proxmoxve:realm/sync:Sync example example.com
+// ```
+//
+// Importing only populates the `realm` and `id` attributes; other fields must
+// be set in configuration.
 type Sync struct {
 	pulumi.CustomResourceState
 

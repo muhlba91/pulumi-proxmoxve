@@ -65,10 +65,10 @@ namespace Pulumi.ProxmoxVE.Metrics
     public partial class ServerLegacy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Set this to `True` to disable this metric server.
+        /// Set this to `True` to disable this metric server. Defaults to `False`.
         /// </summary>
         [Output("disable")]
-        public Output<bool?> Disable { get; private set; } = null!;
+        public Output<bool> Disable { get; private set; } = null!;
 
         /// <summary>
         /// Root graphite path (ex: `proxmox.mycluster.mykey`).
@@ -119,7 +119,7 @@ namespace Pulumi.ProxmoxVE.Metrics
         public Output<string?> InfluxToken { get; private set; } = null!;
 
         /// <summary>
-        /// Set to `False` to disable certificate verification for https endpoints.
+        /// Set to `False` to disable certificate verification for https endpoints. If not set, PVE default is `True`.
         /// </summary>
         [Output("influxVerify")]
         public Output<bool?> InfluxVerify { get; private set; } = null!;
@@ -261,7 +261,7 @@ namespace Pulumi.ProxmoxVE.Metrics
     public sealed class ServerLegacyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Set this to `True` to disable this metric server.
+        /// Set this to `True` to disable this metric server. Defaults to `False`.
         /// </summary>
         [Input("disable")]
         public Input<bool>? Disable { get; set; }
@@ -325,7 +325,7 @@ namespace Pulumi.ProxmoxVE.Metrics
         }
 
         /// <summary>
-        /// Set to `False` to disable certificate verification for https endpoints.
+        /// Set to `False` to disable certificate verification for https endpoints. If not set, PVE default is `True`.
         /// </summary>
         [Input("influxVerify")]
         public Input<bool>? InfluxVerify { get; set; }
@@ -433,7 +433,7 @@ namespace Pulumi.ProxmoxVE.Metrics
     public sealed class ServerLegacyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Set this to `True` to disable this metric server.
+        /// Set this to `True` to disable this metric server. Defaults to `False`.
         /// </summary>
         [Input("disable")]
         public Input<bool>? Disable { get; set; }
@@ -497,7 +497,7 @@ namespace Pulumi.ProxmoxVE.Metrics
         }
 
         /// <summary>
-        /// Set to `False` to disable certificate verification for https endpoints.
+        /// Set to `False` to disable certificate verification for https endpoints. If not set, PVE default is `True`.
         /// </summary>
         [Input("influxVerify")]
         public Input<bool>? InfluxVerify { get; set; }

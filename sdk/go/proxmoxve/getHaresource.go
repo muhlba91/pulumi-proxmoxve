@@ -12,6 +12,8 @@ import (
 )
 
 // Retrieves information about a specific High Availability resource.
+//
+// ## Example Usage
 func LookupHaresource(ctx *pulumi.Context, args *LookupHaresourceArgs, opts ...pulumi.InvokeOption) (*LookupHaresourceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupHaresourceResult

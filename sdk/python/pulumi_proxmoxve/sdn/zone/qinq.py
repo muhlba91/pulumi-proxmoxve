@@ -403,6 +403,33 @@ class Qinq(pulumi.CustomResource):
         """
         QinQ Zone in Proxmox SDN. QinQ also known as VLAN stacking, that uses multiple layers of VLAN tags for isolation. The QinQ zone defines the outer VLAN tag (the Service VLAN) whereas the inner VLAN tag is defined by the VNet. Your physical network switches must support stacked VLANs for this configuration. Due to the double stacking of tags, you need 4 more bytes for QinQ VLANs. For example, you must reduce the MTU to 1496 if you physical interface MTU is 1500.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.sdn.zone.Qinq("example",
+            resource_id="qinq1",
+            bridge="vmbr0",
+            service_vlan=100,
+            service_vlan_protocol="802.1ad",
+            mtu=1496,
+            dns="1.1.1.1",
+            dns_zone="example.com",
+            ipam="pve",
+            reverse_dns="1.1.1.1")
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        QinQ SDN zone can be imported using its unique identifier (zone ID)
+
+        ```sh
+        $ pulumi import proxmoxve:sdn/zone/qinq:Qinq example qinq1
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -425,6 +452,33 @@ class Qinq(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         QinQ Zone in Proxmox SDN. QinQ also known as VLAN stacking, that uses multiple layers of VLAN tags for isolation. The QinQ zone defines the outer VLAN tag (the Service VLAN) whereas the inner VLAN tag is defined by the VNet. Your physical network switches must support stacked VLANs for this configuration. Due to the double stacking of tags, you need 4 more bytes for QinQ VLANs. For example, you must reduce the MTU to 1496 if you physical interface MTU is 1500.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.sdn.zone.Qinq("example",
+            resource_id="qinq1",
+            bridge="vmbr0",
+            service_vlan=100,
+            service_vlan_protocol="802.1ad",
+            mtu=1496,
+            dns="1.1.1.1",
+            dns_zone="example.com",
+            ipam="pve",
+            reverse_dns="1.1.1.1")
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        QinQ SDN zone can be imported using its unique identifier (zone ID)
+
+        ```sh
+        $ pulumi import proxmoxve:sdn/zone/qinq:Qinq example qinq1
+        ```
 
 
         :param str resource_name: The name of the resource.

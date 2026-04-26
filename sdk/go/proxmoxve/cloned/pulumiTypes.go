@@ -14,7 +14,7 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type VmCdrom struct {
-	// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+	// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
 	FileId *string `pulumi:"fileId"`
 }
 
@@ -30,7 +30,7 @@ type VmCdromInput interface {
 }
 
 type VmCdromArgs struct {
-	// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+	// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
 	FileId pulumi.StringPtrInput `pulumi:"fileId"`
 }
 
@@ -85,7 +85,7 @@ func (o VmCdromOutput) ToVmCdromOutputWithContext(ctx context.Context) VmCdromOu
 	return o
 }
 
-// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
 func (o VmCdromOutput) FileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmCdrom) *string { return v.FileId }).(pulumi.StringPtrOutput)
 }
@@ -404,22 +404,22 @@ type VmCpu struct {
 	Affinity *string `pulumi:"affinity"`
 	// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
 	Architecture *string `pulumi:"architecture"`
-	// The number of CPU cores per socket (defaults to `1`).
+	// The number of CPU cores per socket (PVE defaults to `1` when unset).
 	Cores *int `pulumi:"cores"`
 	// Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
 	Flags []string `pulumi:"flags"`
-	// The number of hotplugged vCPUs (defaults to `0`).
-	Hotplugged *int `pulumi:"hotplugged"`
-	// Limit of CPU usage (defaults to `0` which means no limit).
+	// Limit of CPU usage. `0` means no limit (PVE default).
 	Limit *float64 `pulumi:"limit"`
-	// Enable NUMA (defaults to `false`).
+	// Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
 	Numa *bool `pulumi:"numa"`
-	// The number of CPU sockets (defaults to `1`).
+	// The number of CPU sockets (PVE defaults to `1` when unset).
 	Sockets *int `pulumi:"sockets"`
-	// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+	// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
 	Type *string `pulumi:"type"`
-	// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+	// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
 	Units *int `pulumi:"units"`
+	// Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+	Vcpus *int `pulumi:"vcpus"`
 }
 
 // VmCpuInput is an input type that accepts VmCpuArgs and VmCpuOutput values.
@@ -438,22 +438,22 @@ type VmCpuArgs struct {
 	Affinity pulumi.StringPtrInput `pulumi:"affinity"`
 	// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
 	Architecture pulumi.StringPtrInput `pulumi:"architecture"`
-	// The number of CPU cores per socket (defaults to `1`).
+	// The number of CPU cores per socket (PVE defaults to `1` when unset).
 	Cores pulumi.IntPtrInput `pulumi:"cores"`
 	// Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
 	Flags pulumi.StringArrayInput `pulumi:"flags"`
-	// The number of hotplugged vCPUs (defaults to `0`).
-	Hotplugged pulumi.IntPtrInput `pulumi:"hotplugged"`
-	// Limit of CPU usage (defaults to `0` which means no limit).
+	// Limit of CPU usage. `0` means no limit (PVE default).
 	Limit pulumi.Float64PtrInput `pulumi:"limit"`
-	// Enable NUMA (defaults to `false`).
+	// Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
 	Numa pulumi.BoolPtrInput `pulumi:"numa"`
-	// The number of CPU sockets (defaults to `1`).
+	// The number of CPU sockets (PVE defaults to `1` when unset).
 	Sockets pulumi.IntPtrInput `pulumi:"sockets"`
-	// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+	// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+	// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
 	Units pulumi.IntPtrInput `pulumi:"units"`
+	// Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+	Vcpus pulumi.IntPtrInput `pulumi:"vcpus"`
 }
 
 func (VmCpuArgs) ElementType() reflect.Type {
@@ -543,7 +543,7 @@ func (o VmCpuOutput) Architecture() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmCpu) *string { return v.Architecture }).(pulumi.StringPtrOutput)
 }
 
-// The number of CPU cores per socket (defaults to `1`).
+// The number of CPU cores per socket (PVE defaults to `1` when unset).
 func (o VmCpuOutput) Cores() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VmCpu) *int { return v.Cores }).(pulumi.IntPtrOutput)
 }
@@ -553,34 +553,34 @@ func (o VmCpuOutput) Flags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VmCpu) []string { return v.Flags }).(pulumi.StringArrayOutput)
 }
 
-// The number of hotplugged vCPUs (defaults to `0`).
-func (o VmCpuOutput) Hotplugged() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v VmCpu) *int { return v.Hotplugged }).(pulumi.IntPtrOutput)
-}
-
-// Limit of CPU usage (defaults to `0` which means no limit).
+// Limit of CPU usage. `0` means no limit (PVE default).
 func (o VmCpuOutput) Limit() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v VmCpu) *float64 { return v.Limit }).(pulumi.Float64PtrOutput)
 }
 
-// Enable NUMA (defaults to `false`).
+// Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
 func (o VmCpuOutput) Numa() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VmCpu) *bool { return v.Numa }).(pulumi.BoolPtrOutput)
 }
 
-// The number of CPU sockets (defaults to `1`).
+// The number of CPU sockets (PVE defaults to `1` when unset).
 func (o VmCpuOutput) Sockets() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VmCpu) *int { return v.Sockets }).(pulumi.IntPtrOutput)
 }
 
-// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
 func (o VmCpuOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmCpu) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
 func (o VmCpuOutput) Units() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VmCpu) *int { return v.Units }).(pulumi.IntPtrOutput)
+}
+
+// Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+func (o VmCpuOutput) Vcpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmCpu) *int { return v.Vcpus }).(pulumi.IntPtrOutput)
 }
 
 type VmCpuPtrOutput struct{ *pulumi.OutputState }
@@ -627,7 +627,7 @@ func (o VmCpuPtrOutput) Architecture() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The number of CPU cores per socket (defaults to `1`).
+// The number of CPU cores per socket (PVE defaults to `1` when unset).
 func (o VmCpuPtrOutput) Cores() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VmCpu) *int {
 		if v == nil {
@@ -647,17 +647,7 @@ func (o VmCpuPtrOutput) Flags() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// The number of hotplugged vCPUs (defaults to `0`).
-func (o VmCpuPtrOutput) Hotplugged() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *VmCpu) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Hotplugged
-	}).(pulumi.IntPtrOutput)
-}
-
-// Limit of CPU usage (defaults to `0` which means no limit).
+// Limit of CPU usage. `0` means no limit (PVE default).
 func (o VmCpuPtrOutput) Limit() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *VmCpu) *float64 {
 		if v == nil {
@@ -667,7 +657,7 @@ func (o VmCpuPtrOutput) Limit() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Enable NUMA (defaults to `false`).
+// Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
 func (o VmCpuPtrOutput) Numa() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VmCpu) *bool {
 		if v == nil {
@@ -677,7 +667,7 @@ func (o VmCpuPtrOutput) Numa() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The number of CPU sockets (defaults to `1`).
+// The number of CPU sockets (PVE defaults to `1` when unset).
 func (o VmCpuPtrOutput) Sockets() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VmCpu) *int {
 		if v == nil {
@@ -687,7 +677,7 @@ func (o VmCpuPtrOutput) Sockets() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
 func (o VmCpuPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VmCpu) *string {
 		if v == nil {
@@ -697,13 +687,23 @@ func (o VmCpuPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
 func (o VmCpuPtrOutput) Units() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VmCpu) *int {
 		if v == nil {
 			return nil
 		}
 		return v.Units
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+func (o VmCpuPtrOutput) Vcpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Vcpus
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -1078,7 +1078,7 @@ func (o VmDiskMapOutput) MapIndex(k pulumi.StringInput) VmDiskOutput {
 }
 
 type VmLegacyCdrom struct {
-	// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+	// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
 	FileId *string `pulumi:"fileId"`
 }
 
@@ -1094,7 +1094,7 @@ type VmLegacyCdromInput interface {
 }
 
 type VmLegacyCdromArgs struct {
-	// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+	// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
 	FileId pulumi.StringPtrInput `pulumi:"fileId"`
 }
 
@@ -1149,7 +1149,7 @@ func (o VmLegacyCdromOutput) ToVmLegacyCdromOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+// The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
 func (o VmLegacyCdromOutput) FileId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmLegacyCdrom) *string { return v.FileId }).(pulumi.StringPtrOutput)
 }
@@ -1468,22 +1468,22 @@ type VmLegacyCpu struct {
 	Affinity *string `pulumi:"affinity"`
 	// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
 	Architecture *string `pulumi:"architecture"`
-	// The number of CPU cores per socket (defaults to `1`).
+	// The number of CPU cores per socket (PVE defaults to `1` when unset).
 	Cores *int `pulumi:"cores"`
 	// Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
 	Flags []string `pulumi:"flags"`
-	// The number of hotplugged vCPUs (defaults to `0`).
-	Hotplugged *int `pulumi:"hotplugged"`
-	// Limit of CPU usage (defaults to `0` which means no limit).
+	// Limit of CPU usage. `0` means no limit (PVE default).
 	Limit *float64 `pulumi:"limit"`
-	// Enable NUMA (defaults to `false`).
+	// Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
 	Numa *bool `pulumi:"numa"`
-	// The number of CPU sockets (defaults to `1`).
+	// The number of CPU sockets (PVE defaults to `1` when unset).
 	Sockets *int `pulumi:"sockets"`
-	// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+	// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
 	Type *string `pulumi:"type"`
-	// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+	// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
 	Units *int `pulumi:"units"`
+	// Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+	Vcpus *int `pulumi:"vcpus"`
 }
 
 // VmLegacyCpuInput is an input type that accepts VmLegacyCpuArgs and VmLegacyCpuOutput values.
@@ -1502,22 +1502,22 @@ type VmLegacyCpuArgs struct {
 	Affinity pulumi.StringPtrInput `pulumi:"affinity"`
 	// The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
 	Architecture pulumi.StringPtrInput `pulumi:"architecture"`
-	// The number of CPU cores per socket (defaults to `1`).
+	// The number of CPU cores per socket (PVE defaults to `1` when unset).
 	Cores pulumi.IntPtrInput `pulumi:"cores"`
 	// Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
 	Flags pulumi.StringArrayInput `pulumi:"flags"`
-	// The number of hotplugged vCPUs (defaults to `0`).
-	Hotplugged pulumi.IntPtrInput `pulumi:"hotplugged"`
-	// Limit of CPU usage (defaults to `0` which means no limit).
+	// Limit of CPU usage. `0` means no limit (PVE default).
 	Limit pulumi.Float64PtrInput `pulumi:"limit"`
-	// Enable NUMA (defaults to `false`).
+	// Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
 	Numa pulumi.BoolPtrInput `pulumi:"numa"`
-	// The number of CPU sockets (defaults to `1`).
+	// The number of CPU sockets (PVE defaults to `1` when unset).
 	Sockets pulumi.IntPtrInput `pulumi:"sockets"`
-	// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+	// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+	// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
 	Units pulumi.IntPtrInput `pulumi:"units"`
+	// Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+	Vcpus pulumi.IntPtrInput `pulumi:"vcpus"`
 }
 
 func (VmLegacyCpuArgs) ElementType() reflect.Type {
@@ -1607,7 +1607,7 @@ func (o VmLegacyCpuOutput) Architecture() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmLegacyCpu) *string { return v.Architecture }).(pulumi.StringPtrOutput)
 }
 
-// The number of CPU cores per socket (defaults to `1`).
+// The number of CPU cores per socket (PVE defaults to `1` when unset).
 func (o VmLegacyCpuOutput) Cores() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VmLegacyCpu) *int { return v.Cores }).(pulumi.IntPtrOutput)
 }
@@ -1617,34 +1617,34 @@ func (o VmLegacyCpuOutput) Flags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VmLegacyCpu) []string { return v.Flags }).(pulumi.StringArrayOutput)
 }
 
-// The number of hotplugged vCPUs (defaults to `0`).
-func (o VmLegacyCpuOutput) Hotplugged() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v VmLegacyCpu) *int { return v.Hotplugged }).(pulumi.IntPtrOutput)
-}
-
-// Limit of CPU usage (defaults to `0` which means no limit).
+// Limit of CPU usage. `0` means no limit (PVE default).
 func (o VmLegacyCpuOutput) Limit() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v VmLegacyCpu) *float64 { return v.Limit }).(pulumi.Float64PtrOutput)
 }
 
-// Enable NUMA (defaults to `false`).
+// Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
 func (o VmLegacyCpuOutput) Numa() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VmLegacyCpu) *bool { return v.Numa }).(pulumi.BoolPtrOutput)
 }
 
-// The number of CPU sockets (defaults to `1`).
+// The number of CPU sockets (PVE defaults to `1` when unset).
 func (o VmLegacyCpuOutput) Sockets() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VmLegacyCpu) *int { return v.Sockets }).(pulumi.IntPtrOutput)
 }
 
-// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
 func (o VmLegacyCpuOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmLegacyCpu) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
 func (o VmLegacyCpuOutput) Units() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VmLegacyCpu) *int { return v.Units }).(pulumi.IntPtrOutput)
+}
+
+// Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+func (o VmLegacyCpuOutput) Vcpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmLegacyCpu) *int { return v.Vcpus }).(pulumi.IntPtrOutput)
 }
 
 type VmLegacyCpuPtrOutput struct{ *pulumi.OutputState }
@@ -1691,7 +1691,7 @@ func (o VmLegacyCpuPtrOutput) Architecture() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The number of CPU cores per socket (defaults to `1`).
+// The number of CPU cores per socket (PVE defaults to `1` when unset).
 func (o VmLegacyCpuPtrOutput) Cores() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VmLegacyCpu) *int {
 		if v == nil {
@@ -1711,17 +1711,7 @@ func (o VmLegacyCpuPtrOutput) Flags() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// The number of hotplugged vCPUs (defaults to `0`).
-func (o VmLegacyCpuPtrOutput) Hotplugged() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *VmLegacyCpu) *int {
-		if v == nil {
-			return nil
-		}
-		return v.Hotplugged
-	}).(pulumi.IntPtrOutput)
-}
-
-// Limit of CPU usage (defaults to `0` which means no limit).
+// Limit of CPU usage. `0` means no limit (PVE default).
 func (o VmLegacyCpuPtrOutput) Limit() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *VmLegacyCpu) *float64 {
 		if v == nil {
@@ -1731,7 +1721,7 @@ func (o VmLegacyCpuPtrOutput) Limit() pulumi.Float64PtrOutput {
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Enable NUMA (defaults to `false`).
+// Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
 func (o VmLegacyCpuPtrOutput) Numa() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VmLegacyCpu) *bool {
 		if v == nil {
@@ -1741,7 +1731,7 @@ func (o VmLegacyCpuPtrOutput) Numa() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The number of CPU sockets (defaults to `1`).
+// The number of CPU sockets (PVE defaults to `1` when unset).
 func (o VmLegacyCpuPtrOutput) Sockets() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VmLegacyCpu) *int {
 		if v == nil {
@@ -1751,7 +1741,7 @@ func (o VmLegacyCpuPtrOutput) Sockets() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+// Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
 func (o VmLegacyCpuPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VmLegacyCpu) *string {
 		if v == nil {
@@ -1761,13 +1751,23 @@ func (o VmLegacyCpuPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+// CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
 func (o VmLegacyCpuPtrOutput) Units() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VmLegacyCpu) *int {
 		if v == nil {
 			return nil
 		}
 		return v.Units
+	}).(pulumi.IntPtrOutput)
+}
+
+// Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+func (o VmLegacyCpuPtrOutput) Vcpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmLegacyCpu) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Vcpus
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -2142,7 +2142,7 @@ func (o VmLegacyDiskMapOutput) MapIndex(k pulumi.StringInput) VmLegacyDiskOutput
 }
 
 type VmLegacyMemory struct {
-	// Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely (defaults to `0`).
+	// Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely.
 	Balloon *int `pulumi:"balloon"`
 	// Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses.
 	//
@@ -2151,11 +2151,11 @@ type VmLegacyMemory struct {
 	// - `1024` - Use 1 GiB hugepages
 	// - `any` - Use any available hugepage size
 	Hugepages *string `pulumi:"hugepages"`
-	// Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup (defaults to `false`).
+	// Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup.
 	KeepHugepages *bool `pulumi:"keepHugepages"`
-	// CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs (defaults to `1000`).
+	// CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs.
 	Shares *int `pulumi:"shares"`
-	// Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM (defaults to `512` MiB).
+	// Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM. Defaults to PVE's implicit `512` MiB when unset.
 	Size *int `pulumi:"size"`
 }
 
@@ -2171,7 +2171,7 @@ type VmLegacyMemoryInput interface {
 }
 
 type VmLegacyMemoryArgs struct {
-	// Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely (defaults to `0`).
+	// Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely.
 	Balloon pulumi.IntPtrInput `pulumi:"balloon"`
 	// Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses.
 	//
@@ -2180,11 +2180,11 @@ type VmLegacyMemoryArgs struct {
 	// - `1024` - Use 1 GiB hugepages
 	// - `any` - Use any available hugepage size
 	Hugepages pulumi.StringPtrInput `pulumi:"hugepages"`
-	// Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup (defaults to `false`).
+	// Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup.
 	KeepHugepages pulumi.BoolPtrInput `pulumi:"keepHugepages"`
-	// CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs (defaults to `1000`).
+	// CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs.
 	Shares pulumi.IntPtrInput `pulumi:"shares"`
-	// Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM (defaults to `512` MiB).
+	// Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM. Defaults to PVE's implicit `512` MiB when unset.
 	Size pulumi.IntPtrInput `pulumi:"size"`
 }
 
@@ -2265,7 +2265,7 @@ func (o VmLegacyMemoryOutput) ToVmLegacyMemoryPtrOutputWithContext(ctx context.C
 	}).(VmLegacyMemoryPtrOutput)
 }
 
-// Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely (defaults to `0`).
+// Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely.
 func (o VmLegacyMemoryOutput) Balloon() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VmLegacyMemory) *int { return v.Balloon }).(pulumi.IntPtrOutput)
 }
@@ -2280,17 +2280,17 @@ func (o VmLegacyMemoryOutput) Hugepages() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmLegacyMemory) *string { return v.Hugepages }).(pulumi.StringPtrOutput)
 }
 
-// Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup (defaults to `false`).
+// Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup.
 func (o VmLegacyMemoryOutput) KeepHugepages() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VmLegacyMemory) *bool { return v.KeepHugepages }).(pulumi.BoolPtrOutput)
 }
 
-// CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs (defaults to `1000`).
+// CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs.
 func (o VmLegacyMemoryOutput) Shares() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VmLegacyMemory) *int { return v.Shares }).(pulumi.IntPtrOutput)
 }
 
-// Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM (defaults to `512` MiB).
+// Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM. Defaults to PVE's implicit `512` MiB when unset.
 func (o VmLegacyMemoryOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VmLegacyMemory) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
@@ -2319,7 +2319,7 @@ func (o VmLegacyMemoryPtrOutput) Elem() VmLegacyMemoryOutput {
 	}).(VmLegacyMemoryOutput)
 }
 
-// Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely (defaults to `0`).
+// Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely.
 func (o VmLegacyMemoryPtrOutput) Balloon() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VmLegacyMemory) *int {
 		if v == nil {
@@ -2344,7 +2344,7 @@ func (o VmLegacyMemoryPtrOutput) Hugepages() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup (defaults to `false`).
+// Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup.
 func (o VmLegacyMemoryPtrOutput) KeepHugepages() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VmLegacyMemory) *bool {
 		if v == nil {
@@ -2354,7 +2354,7 @@ func (o VmLegacyMemoryPtrOutput) KeepHugepages() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs (defaults to `1000`).
+// CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs.
 func (o VmLegacyMemoryPtrOutput) Shares() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VmLegacyMemory) *int {
 		if v == nil {
@@ -2364,7 +2364,7 @@ func (o VmLegacyMemoryPtrOutput) Shares() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM (defaults to `512` MiB).
+// Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM. Defaults to PVE's implicit `512` MiB when unset.
 func (o VmLegacyMemoryPtrOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VmLegacyMemory) *int {
 		if v == nil {
@@ -2553,9 +2553,9 @@ func (o VmLegacyNetworkMapOutput) MapIndex(k pulumi.StringInput) VmLegacyNetwork
 }
 
 type VmLegacyRng struct {
-	// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+	// Maximum bytes of entropy allowed to get injected into the guest every period.
 	MaxBytes *int `pulumi:"maxBytes"`
-	// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+	// Period in milliseconds to limit entropy injection to the guest.
 	Period *int `pulumi:"period"`
 	// The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
 	Source *string `pulumi:"source"`
@@ -2573,9 +2573,9 @@ type VmLegacyRngInput interface {
 }
 
 type VmLegacyRngArgs struct {
-	// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+	// Maximum bytes of entropy allowed to get injected into the guest every period.
 	MaxBytes pulumi.IntPtrInput `pulumi:"maxBytes"`
-	// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+	// Period in milliseconds to limit entropy injection to the guest.
 	Period pulumi.IntPtrInput `pulumi:"period"`
 	// The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
 	Source pulumi.StringPtrInput `pulumi:"source"`
@@ -2658,12 +2658,12 @@ func (o VmLegacyRngOutput) ToVmLegacyRngPtrOutputWithContext(ctx context.Context
 	}).(VmLegacyRngPtrOutput)
 }
 
-// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+// Maximum bytes of entropy allowed to get injected into the guest every period.
 func (o VmLegacyRngOutput) MaxBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VmLegacyRng) *int { return v.MaxBytes }).(pulumi.IntPtrOutput)
 }
 
-// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+// Period in milliseconds to limit entropy injection to the guest.
 func (o VmLegacyRngOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VmLegacyRng) *int { return v.Period }).(pulumi.IntPtrOutput)
 }
@@ -2697,7 +2697,7 @@ func (o VmLegacyRngPtrOutput) Elem() VmLegacyRngOutput {
 	}).(VmLegacyRngOutput)
 }
 
-// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+// Maximum bytes of entropy allowed to get injected into the guest every period.
 func (o VmLegacyRngPtrOutput) MaxBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VmLegacyRng) *int {
 		if v == nil {
@@ -2707,7 +2707,7 @@ func (o VmLegacyRngPtrOutput) MaxBytes() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+// Period in milliseconds to limit entropy injection to the guest.
 func (o VmLegacyRngPtrOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VmLegacyRng) *int {
 		if v == nil {
@@ -3097,7 +3097,7 @@ func (o VmLegacyVgaPtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type VmMemory struct {
-	// Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely (defaults to `0`).
+	// Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely.
 	Balloon *int `pulumi:"balloon"`
 	// Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses.
 	//
@@ -3106,11 +3106,11 @@ type VmMemory struct {
 	// - `1024` - Use 1 GiB hugepages
 	// - `any` - Use any available hugepage size
 	Hugepages *string `pulumi:"hugepages"`
-	// Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup (defaults to `false`).
+	// Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup.
 	KeepHugepages *bool `pulumi:"keepHugepages"`
-	// CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs (defaults to `1000`).
+	// CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs.
 	Shares *int `pulumi:"shares"`
-	// Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM (defaults to `512` MiB).
+	// Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM. Defaults to PVE's implicit `512` MiB when unset.
 	Size *int `pulumi:"size"`
 }
 
@@ -3126,7 +3126,7 @@ type VmMemoryInput interface {
 }
 
 type VmMemoryArgs struct {
-	// Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely (defaults to `0`).
+	// Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely.
 	Balloon pulumi.IntPtrInput `pulumi:"balloon"`
 	// Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses.
 	//
@@ -3135,11 +3135,11 @@ type VmMemoryArgs struct {
 	// - `1024` - Use 1 GiB hugepages
 	// - `any` - Use any available hugepage size
 	Hugepages pulumi.StringPtrInput `pulumi:"hugepages"`
-	// Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup (defaults to `false`).
+	// Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup.
 	KeepHugepages pulumi.BoolPtrInput `pulumi:"keepHugepages"`
-	// CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs (defaults to `1000`).
+	// CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs.
 	Shares pulumi.IntPtrInput `pulumi:"shares"`
-	// Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM (defaults to `512` MiB).
+	// Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM. Defaults to PVE's implicit `512` MiB when unset.
 	Size pulumi.IntPtrInput `pulumi:"size"`
 }
 
@@ -3220,7 +3220,7 @@ func (o VmMemoryOutput) ToVmMemoryPtrOutputWithContext(ctx context.Context) VmMe
 	}).(VmMemoryPtrOutput)
 }
 
-// Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely (defaults to `0`).
+// Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely.
 func (o VmMemoryOutput) Balloon() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VmMemory) *int { return v.Balloon }).(pulumi.IntPtrOutput)
 }
@@ -3235,17 +3235,17 @@ func (o VmMemoryOutput) Hugepages() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmMemory) *string { return v.Hugepages }).(pulumi.StringPtrOutput)
 }
 
-// Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup (defaults to `false`).
+// Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup.
 func (o VmMemoryOutput) KeepHugepages() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VmMemory) *bool { return v.KeepHugepages }).(pulumi.BoolPtrOutput)
 }
 
-// CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs (defaults to `1000`).
+// CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs.
 func (o VmMemoryOutput) Shares() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VmMemory) *int { return v.Shares }).(pulumi.IntPtrOutput)
 }
 
-// Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM (defaults to `512` MiB).
+// Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM. Defaults to PVE's implicit `512` MiB when unset.
 func (o VmMemoryOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VmMemory) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
@@ -3274,7 +3274,7 @@ func (o VmMemoryPtrOutput) Elem() VmMemoryOutput {
 	}).(VmMemoryOutput)
 }
 
-// Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely (defaults to `0`).
+// Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely.
 func (o VmMemoryPtrOutput) Balloon() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VmMemory) *int {
 		if v == nil {
@@ -3299,7 +3299,7 @@ func (o VmMemoryPtrOutput) Hugepages() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup (defaults to `false`).
+// Don't release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to `true` keeps them allocated for faster VM startup.
 func (o VmMemoryPtrOutput) KeepHugepages() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VmMemory) *bool {
 		if v == nil {
@@ -3309,7 +3309,7 @@ func (o VmMemoryPtrOutput) KeepHugepages() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs (defaults to `1000`).
+// CPU scheduler priority for memory ballooning. This is used by the kernel fair scheduler. Higher values mean this VM gets more CPU time during memory ballooning operations. The value is relative to other running VMs.
 func (o VmMemoryPtrOutput) Shares() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VmMemory) *int {
 		if v == nil {
@@ -3319,7 +3319,7 @@ func (o VmMemoryPtrOutput) Shares() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM (defaults to `512` MiB).
+// Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon > 0), memory between `balloon` and `size` can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM. Defaults to PVE's implicit `512` MiB when unset.
 func (o VmMemoryPtrOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VmMemory) *int {
 		if v == nil {
@@ -3508,9 +3508,9 @@ func (o VmNetworkMapOutput) MapIndex(k pulumi.StringInput) VmNetworkOutput {
 }
 
 type VmRng struct {
-	// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+	// Maximum bytes of entropy allowed to get injected into the guest every period.
 	MaxBytes *int `pulumi:"maxBytes"`
-	// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+	// Period in milliseconds to limit entropy injection to the guest.
 	Period *int `pulumi:"period"`
 	// The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
 	Source *string `pulumi:"source"`
@@ -3528,9 +3528,9 @@ type VmRngInput interface {
 }
 
 type VmRngArgs struct {
-	// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+	// Maximum bytes of entropy allowed to get injected into the guest every period.
 	MaxBytes pulumi.IntPtrInput `pulumi:"maxBytes"`
-	// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+	// Period in milliseconds to limit entropy injection to the guest.
 	Period pulumi.IntPtrInput `pulumi:"period"`
 	// The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
 	Source pulumi.StringPtrInput `pulumi:"source"`
@@ -3613,12 +3613,12 @@ func (o VmRngOutput) ToVmRngPtrOutputWithContext(ctx context.Context) VmRngPtrOu
 	}).(VmRngPtrOutput)
 }
 
-// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+// Maximum bytes of entropy allowed to get injected into the guest every period.
 func (o VmRngOutput) MaxBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VmRng) *int { return v.MaxBytes }).(pulumi.IntPtrOutput)
 }
 
-// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+// Period in milliseconds to limit entropy injection to the guest.
 func (o VmRngOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v VmRng) *int { return v.Period }).(pulumi.IntPtrOutput)
 }
@@ -3652,7 +3652,7 @@ func (o VmRngPtrOutput) Elem() VmRngOutput {
 	}).(VmRngOutput)
 }
 
-// Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+// Maximum bytes of entropy allowed to get injected into the guest every period.
 func (o VmRngPtrOutput) MaxBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VmRng) *int {
 		if v == nil {
@@ -3662,7 +3662,7 @@ func (o VmRngPtrOutput) MaxBytes() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+// Period in milliseconds to limit entropy injection to the guest.
 func (o VmRngPtrOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VmRng) *int {
 		if v == nil {

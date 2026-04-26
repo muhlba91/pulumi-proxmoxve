@@ -162,6 +162,22 @@ def get_replication(id: Optional[_builtins.str] = None,
     """
     Retrieves information about an existing Replication.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.get_replication(id="100-0")
+    pulumi.export("dataProxmoxReplication", {
+        "id": example.id,
+        "target": example.target,
+        "type": example.type,
+        "jobnum": example.jobnum,
+        "guest": example.guest,
+    })
+    ```
+
 
     :param _builtins.str id: Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. '\\n\\n-\\n\\n'.
     """
@@ -185,6 +201,22 @@ def get_replication_output(id: Optional[pulumi.Input[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetReplicationResult]:
     """
     Retrieves information about an existing Replication.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.get_replication(id="100-0")
+    pulumi.export("dataProxmoxReplication", {
+        "id": example.id,
+        "target": example.target,
+        "type": example.type,
+        "jobnum": example.jobnum,
+        "guest": example.guest,
+    })
+    ```
 
 
     :param _builtins.str id: Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. '\\n\\n-\\n\\n'.

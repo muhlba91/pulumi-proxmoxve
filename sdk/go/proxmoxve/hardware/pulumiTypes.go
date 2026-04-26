@@ -243,13 +243,411 @@ func (o GetMappingsLegacyCheckArrayOutput) Index(i pulumi.IntInput) GetMappingsL
 	}).(GetMappingsLegacyCheckOutput)
 }
 
+type GetPciDevice struct {
+	// The PCI class code (hex, e.g. `0x030000`).
+	Class string `pulumi:"class"`
+	// The PCI device ID (hex, e.g. `0x5916`).
+	Device string `pulumi:"device"`
+	// The human-readable device name.
+	DeviceName string `pulumi:"deviceName"`
+	// The PCI address in `domain:bus:device.function` format (e.g. `0000:00:02.0`).
+	Id string `pulumi:"id"`
+	// The IOMMU group number. `-1` indicates that the device is not in an IOMMU group.
+	IommuGroup int `pulumi:"iommuGroup"`
+	// Whether the device supports mediated devices (vGPU).
+	Mdev bool `pulumi:"mdev"`
+	// The PCI subsystem device ID (hex).
+	SubsystemDevice string `pulumi:"subsystemDevice"`
+	// The human-readable subsystem device name.
+	SubsystemDeviceName string `pulumi:"subsystemDeviceName"`
+	// The PCI subsystem vendor ID (hex).
+	SubsystemVendor string `pulumi:"subsystemVendor"`
+	// The human-readable subsystem vendor name.
+	SubsystemVendorName string `pulumi:"subsystemVendorName"`
+	// The PCI vendor ID (hex, e.g. `0x8086`).
+	Vendor string `pulumi:"vendor"`
+	// The human-readable vendor name (e.g. `Intel Corporation`).
+	VendorName string `pulumi:"vendorName"`
+}
+
+// GetPciDeviceInput is an input type that accepts GetPciDeviceArgs and GetPciDeviceOutput values.
+// You can construct a concrete instance of `GetPciDeviceInput` via:
+//
+//	GetPciDeviceArgs{...}
+type GetPciDeviceInput interface {
+	pulumi.Input
+
+	ToGetPciDeviceOutput() GetPciDeviceOutput
+	ToGetPciDeviceOutputWithContext(context.Context) GetPciDeviceOutput
+}
+
+type GetPciDeviceArgs struct {
+	// The PCI class code (hex, e.g. `0x030000`).
+	Class pulumi.StringInput `pulumi:"class"`
+	// The PCI device ID (hex, e.g. `0x5916`).
+	Device pulumi.StringInput `pulumi:"device"`
+	// The human-readable device name.
+	DeviceName pulumi.StringInput `pulumi:"deviceName"`
+	// The PCI address in `domain:bus:device.function` format (e.g. `0000:00:02.0`).
+	Id pulumi.StringInput `pulumi:"id"`
+	// The IOMMU group number. `-1` indicates that the device is not in an IOMMU group.
+	IommuGroup pulumi.IntInput `pulumi:"iommuGroup"`
+	// Whether the device supports mediated devices (vGPU).
+	Mdev pulumi.BoolInput `pulumi:"mdev"`
+	// The PCI subsystem device ID (hex).
+	SubsystemDevice pulumi.StringInput `pulumi:"subsystemDevice"`
+	// The human-readable subsystem device name.
+	SubsystemDeviceName pulumi.StringInput `pulumi:"subsystemDeviceName"`
+	// The PCI subsystem vendor ID (hex).
+	SubsystemVendor pulumi.StringInput `pulumi:"subsystemVendor"`
+	// The human-readable subsystem vendor name.
+	SubsystemVendorName pulumi.StringInput `pulumi:"subsystemVendorName"`
+	// The PCI vendor ID (hex, e.g. `0x8086`).
+	Vendor pulumi.StringInput `pulumi:"vendor"`
+	// The human-readable vendor name (e.g. `Intel Corporation`).
+	VendorName pulumi.StringInput `pulumi:"vendorName"`
+}
+
+func (GetPciDeviceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPciDevice)(nil)).Elem()
+}
+
+func (i GetPciDeviceArgs) ToGetPciDeviceOutput() GetPciDeviceOutput {
+	return i.ToGetPciDeviceOutputWithContext(context.Background())
+}
+
+func (i GetPciDeviceArgs) ToGetPciDeviceOutputWithContext(ctx context.Context) GetPciDeviceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPciDeviceOutput)
+}
+
+// GetPciDeviceArrayInput is an input type that accepts GetPciDeviceArray and GetPciDeviceArrayOutput values.
+// You can construct a concrete instance of `GetPciDeviceArrayInput` via:
+//
+//	GetPciDeviceArray{ GetPciDeviceArgs{...} }
+type GetPciDeviceArrayInput interface {
+	pulumi.Input
+
+	ToGetPciDeviceArrayOutput() GetPciDeviceArrayOutput
+	ToGetPciDeviceArrayOutputWithContext(context.Context) GetPciDeviceArrayOutput
+}
+
+type GetPciDeviceArray []GetPciDeviceInput
+
+func (GetPciDeviceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPciDevice)(nil)).Elem()
+}
+
+func (i GetPciDeviceArray) ToGetPciDeviceArrayOutput() GetPciDeviceArrayOutput {
+	return i.ToGetPciDeviceArrayOutputWithContext(context.Background())
+}
+
+func (i GetPciDeviceArray) ToGetPciDeviceArrayOutputWithContext(ctx context.Context) GetPciDeviceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPciDeviceArrayOutput)
+}
+
+type GetPciDeviceOutput struct{ *pulumi.OutputState }
+
+func (GetPciDeviceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPciDevice)(nil)).Elem()
+}
+
+func (o GetPciDeviceOutput) ToGetPciDeviceOutput() GetPciDeviceOutput {
+	return o
+}
+
+func (o GetPciDeviceOutput) ToGetPciDeviceOutputWithContext(ctx context.Context) GetPciDeviceOutput {
+	return o
+}
+
+// The PCI class code (hex, e.g. `0x030000`).
+func (o GetPciDeviceOutput) Class() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPciDevice) string { return v.Class }).(pulumi.StringOutput)
+}
+
+// The PCI device ID (hex, e.g. `0x5916`).
+func (o GetPciDeviceOutput) Device() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPciDevice) string { return v.Device }).(pulumi.StringOutput)
+}
+
+// The human-readable device name.
+func (o GetPciDeviceOutput) DeviceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPciDevice) string { return v.DeviceName }).(pulumi.StringOutput)
+}
+
+// The PCI address in `domain:bus:device.function` format (e.g. `0000:00:02.0`).
+func (o GetPciDeviceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPciDevice) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The IOMMU group number. `-1` indicates that the device is not in an IOMMU group.
+func (o GetPciDeviceOutput) IommuGroup() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPciDevice) int { return v.IommuGroup }).(pulumi.IntOutput)
+}
+
+// Whether the device supports mediated devices (vGPU).
+func (o GetPciDeviceOutput) Mdev() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetPciDevice) bool { return v.Mdev }).(pulumi.BoolOutput)
+}
+
+// The PCI subsystem device ID (hex).
+func (o GetPciDeviceOutput) SubsystemDevice() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPciDevice) string { return v.SubsystemDevice }).(pulumi.StringOutput)
+}
+
+// The human-readable subsystem device name.
+func (o GetPciDeviceOutput) SubsystemDeviceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPciDevice) string { return v.SubsystemDeviceName }).(pulumi.StringOutput)
+}
+
+// The PCI subsystem vendor ID (hex).
+func (o GetPciDeviceOutput) SubsystemVendor() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPciDevice) string { return v.SubsystemVendor }).(pulumi.StringOutput)
+}
+
+// The human-readable subsystem vendor name.
+func (o GetPciDeviceOutput) SubsystemVendorName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPciDevice) string { return v.SubsystemVendorName }).(pulumi.StringOutput)
+}
+
+// The PCI vendor ID (hex, e.g. `0x8086`).
+func (o GetPciDeviceOutput) Vendor() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPciDevice) string { return v.Vendor }).(pulumi.StringOutput)
+}
+
+// The human-readable vendor name (e.g. `Intel Corporation`).
+func (o GetPciDeviceOutput) VendorName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPciDevice) string { return v.VendorName }).(pulumi.StringOutput)
+}
+
+type GetPciDeviceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPciDeviceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPciDevice)(nil)).Elem()
+}
+
+func (o GetPciDeviceArrayOutput) ToGetPciDeviceArrayOutput() GetPciDeviceArrayOutput {
+	return o
+}
+
+func (o GetPciDeviceArrayOutput) ToGetPciDeviceArrayOutputWithContext(ctx context.Context) GetPciDeviceArrayOutput {
+	return o
+}
+
+func (o GetPciDeviceArrayOutput) Index(i pulumi.IntInput) GetPciDeviceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPciDevice {
+		return vs[0].([]GetPciDevice)[vs[1].(int)]
+	}).(GetPciDeviceOutput)
+}
+
+type GetPciFilters struct {
+	// Filter by PCI class code prefix (e.g. `03` to match all display controllers). The `0x` prefix in class codes is stripped before matching.
+	Class *string `pulumi:"class"`
+	// Filter by device ID prefix. The `0x` prefix in device IDs is stripped before matching.
+	DeviceId *string `pulumi:"deviceId"`
+	// Filter by PCI address prefix (e.g. `0000:01` to match all devices on bus 01).
+	Id *string `pulumi:"id"`
+	// Filter by vendor ID prefix (e.g. `8086` for Intel devices). The `0x` prefix in vendor IDs is stripped before matching.
+	VendorId *string `pulumi:"vendorId"`
+}
+
+// GetPciFiltersInput is an input type that accepts GetPciFiltersArgs and GetPciFiltersOutput values.
+// You can construct a concrete instance of `GetPciFiltersInput` via:
+//
+//	GetPciFiltersArgs{...}
+type GetPciFiltersInput interface {
+	pulumi.Input
+
+	ToGetPciFiltersOutput() GetPciFiltersOutput
+	ToGetPciFiltersOutputWithContext(context.Context) GetPciFiltersOutput
+}
+
+type GetPciFiltersArgs struct {
+	// Filter by PCI class code prefix (e.g. `03` to match all display controllers). The `0x` prefix in class codes is stripped before matching.
+	Class pulumi.StringPtrInput `pulumi:"class"`
+	// Filter by device ID prefix. The `0x` prefix in device IDs is stripped before matching.
+	DeviceId pulumi.StringPtrInput `pulumi:"deviceId"`
+	// Filter by PCI address prefix (e.g. `0000:01` to match all devices on bus 01).
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Filter by vendor ID prefix (e.g. `8086` for Intel devices). The `0x` prefix in vendor IDs is stripped before matching.
+	VendorId pulumi.StringPtrInput `pulumi:"vendorId"`
+}
+
+func (GetPciFiltersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPciFilters)(nil)).Elem()
+}
+
+func (i GetPciFiltersArgs) ToGetPciFiltersOutput() GetPciFiltersOutput {
+	return i.ToGetPciFiltersOutputWithContext(context.Background())
+}
+
+func (i GetPciFiltersArgs) ToGetPciFiltersOutputWithContext(ctx context.Context) GetPciFiltersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPciFiltersOutput)
+}
+
+func (i GetPciFiltersArgs) ToGetPciFiltersPtrOutput() GetPciFiltersPtrOutput {
+	return i.ToGetPciFiltersPtrOutputWithContext(context.Background())
+}
+
+func (i GetPciFiltersArgs) ToGetPciFiltersPtrOutputWithContext(ctx context.Context) GetPciFiltersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPciFiltersOutput).ToGetPciFiltersPtrOutputWithContext(ctx)
+}
+
+// GetPciFiltersPtrInput is an input type that accepts GetPciFiltersArgs, GetPciFiltersPtr and GetPciFiltersPtrOutput values.
+// You can construct a concrete instance of `GetPciFiltersPtrInput` via:
+//
+//	        GetPciFiltersArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPciFiltersPtrInput interface {
+	pulumi.Input
+
+	ToGetPciFiltersPtrOutput() GetPciFiltersPtrOutput
+	ToGetPciFiltersPtrOutputWithContext(context.Context) GetPciFiltersPtrOutput
+}
+
+type getPciFiltersPtrType GetPciFiltersArgs
+
+func GetPciFiltersPtr(v *GetPciFiltersArgs) GetPciFiltersPtrInput {
+	return (*getPciFiltersPtrType)(v)
+}
+
+func (*getPciFiltersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPciFilters)(nil)).Elem()
+}
+
+func (i *getPciFiltersPtrType) ToGetPciFiltersPtrOutput() GetPciFiltersPtrOutput {
+	return i.ToGetPciFiltersPtrOutputWithContext(context.Background())
+}
+
+func (i *getPciFiltersPtrType) ToGetPciFiltersPtrOutputWithContext(ctx context.Context) GetPciFiltersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPciFiltersPtrOutput)
+}
+
+type GetPciFiltersOutput struct{ *pulumi.OutputState }
+
+func (GetPciFiltersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPciFilters)(nil)).Elem()
+}
+
+func (o GetPciFiltersOutput) ToGetPciFiltersOutput() GetPciFiltersOutput {
+	return o
+}
+
+func (o GetPciFiltersOutput) ToGetPciFiltersOutputWithContext(ctx context.Context) GetPciFiltersOutput {
+	return o
+}
+
+func (o GetPciFiltersOutput) ToGetPciFiltersPtrOutput() GetPciFiltersPtrOutput {
+	return o.ToGetPciFiltersPtrOutputWithContext(context.Background())
+}
+
+func (o GetPciFiltersOutput) ToGetPciFiltersPtrOutputWithContext(ctx context.Context) GetPciFiltersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPciFilters) *GetPciFilters {
+		return &v
+	}).(GetPciFiltersPtrOutput)
+}
+
+// Filter by PCI class code prefix (e.g. `03` to match all display controllers). The `0x` prefix in class codes is stripped before matching.
+func (o GetPciFiltersOutput) Class() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPciFilters) *string { return v.Class }).(pulumi.StringPtrOutput)
+}
+
+// Filter by device ID prefix. The `0x` prefix in device IDs is stripped before matching.
+func (o GetPciFiltersOutput) DeviceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPciFilters) *string { return v.DeviceId }).(pulumi.StringPtrOutput)
+}
+
+// Filter by PCI address prefix (e.g. `0000:01` to match all devices on bus 01).
+func (o GetPciFiltersOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPciFilters) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Filter by vendor ID prefix (e.g. `8086` for Intel devices). The `0x` prefix in vendor IDs is stripped before matching.
+func (o GetPciFiltersOutput) VendorId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPciFilters) *string { return v.VendorId }).(pulumi.StringPtrOutput)
+}
+
+type GetPciFiltersPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPciFiltersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPciFilters)(nil)).Elem()
+}
+
+func (o GetPciFiltersPtrOutput) ToGetPciFiltersPtrOutput() GetPciFiltersPtrOutput {
+	return o
+}
+
+func (o GetPciFiltersPtrOutput) ToGetPciFiltersPtrOutputWithContext(ctx context.Context) GetPciFiltersPtrOutput {
+	return o
+}
+
+func (o GetPciFiltersPtrOutput) Elem() GetPciFiltersOutput {
+	return o.ApplyT(func(v *GetPciFilters) GetPciFilters {
+		if v != nil {
+			return *v
+		}
+		var ret GetPciFilters
+		return ret
+	}).(GetPciFiltersOutput)
+}
+
+// Filter by PCI class code prefix (e.g. `03` to match all display controllers). The `0x` prefix in class codes is stripped before matching.
+func (o GetPciFiltersPtrOutput) Class() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPciFilters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Class
+	}).(pulumi.StringPtrOutput)
+}
+
+// Filter by device ID prefix. The `0x` prefix in device IDs is stripped before matching.
+func (o GetPciFiltersPtrOutput) DeviceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPciFilters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeviceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Filter by PCI address prefix (e.g. `0000:01` to match all devices on bus 01).
+func (o GetPciFiltersPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPciFilters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Filter by vendor ID prefix (e.g. `8086` for Intel devices). The `0x` prefix in vendor IDs is stripped before matching.
+func (o GetPciFiltersPtrOutput) VendorId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPciFilters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VendorId
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMappingsCheckInput)(nil)).Elem(), GetMappingsCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMappingsCheckArrayInput)(nil)).Elem(), GetMappingsCheckArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMappingsLegacyCheckInput)(nil)).Elem(), GetMappingsLegacyCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMappingsLegacyCheckArrayInput)(nil)).Elem(), GetMappingsLegacyCheckArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPciDeviceInput)(nil)).Elem(), GetPciDeviceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPciDeviceArrayInput)(nil)).Elem(), GetPciDeviceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPciFiltersInput)(nil)).Elem(), GetPciFiltersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPciFiltersPtrInput)(nil)).Elem(), GetPciFiltersArgs{})
 	pulumi.RegisterOutputType(GetMappingsCheckOutput{})
 	pulumi.RegisterOutputType(GetMappingsCheckArrayOutput{})
 	pulumi.RegisterOutputType(GetMappingsLegacyCheckOutput{})
 	pulumi.RegisterOutputType(GetMappingsLegacyCheckArrayOutput{})
+	pulumi.RegisterOutputType(GetPciDeviceOutput{})
+	pulumi.RegisterOutputType(GetPciDeviceArrayOutput{})
+	pulumi.RegisterOutputType(GetPciFiltersOutput{})
+	pulumi.RegisterOutputType(GetPciFiltersPtrOutput{})
 }

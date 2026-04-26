@@ -58,6 +58,15 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// !/usr/bin/env sh
+// Storage can be imported using its identifier, e.g.:
+//
+// ```sh
+// $ pulumi import proxmoxve:storage/nfsLegacy:NfsLegacy example local-nfs
+// ```
 type NfsLegacy struct {
 	pulumi.CustomResourceState
 

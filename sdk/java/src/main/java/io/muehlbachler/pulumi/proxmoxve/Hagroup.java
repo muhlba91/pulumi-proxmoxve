@@ -20,6 +20,58 @@ import javax.annotation.Nullable;
 /**
  * Manages a High Availability group in a Proxmox VE cluster.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.Hagroup;
+ * import io.muehlbachler.pulumi.proxmoxve.HagroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Hagroup("example", HagroupArgs.builder()
+ *             .group("example")
+ *             .comment("This is a comment.")
+ *             .nodes(Map.ofEntries(
+ *                 Map.entry("node1", null),
+ *                 Map.entry("node2", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:5,13-14))),
+ *                 Map.entry("node3", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1) (example.pp:6,13-14)))
+ *             ))
+ *             .restricted(true)
+ *             .noFailback(false)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * !/usr/bin/env sh
+ * HA groups can be imported using their name, e.g.:
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:index/hagroup:Hagroup example example
+ * ```
+ * 
  */
 @ResourceType(type="proxmoxve:index/hagroup:Hagroup")
 public class Hagroup extends com.pulumi.resources.CustomResource {

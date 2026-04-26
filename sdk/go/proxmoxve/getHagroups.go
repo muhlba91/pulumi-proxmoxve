@@ -12,6 +12,31 @@ import (
 )
 
 // Retrieves the list of High Availability groups.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := proxmoxve.GetHagroups(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("dataProxmoxHagroups", example.GroupIds)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetHagroups(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetHagroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHagroupsResult

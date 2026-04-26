@@ -27,6 +27,52 @@ import javax.annotation.Nullable;
  * |-----------------|----------------|
  * | /access/domains | Realm.Allocate |
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.realm.Openid;
+ * import io.muehlbachler.pulumi.proxmoxve.realm.OpenidArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Openid("example", OpenidArgs.builder()
+ *             .realm("example-oidc")
+ *             .issuerUrl("https://auth.example.com")
+ *             .clientId("your-client-id")
+ *             .clientKey(oidcClientSecret)
+ *             .usernameClaim("email")
+ *             .autocreate(true)
+ *             .groupsClaim("groups")
+ *             .groupsAutocreate(true)
+ *             .groupsOverwrite(false)
+ *             .scopes("openid email profile")
+ *             .queryUserinfo(true)
+ *             .comment("Example OpenID Connect realm managed by Terraform")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Notes
  * 
  * ### Client Key Security
@@ -137,6 +183,17 @@ import javax.annotation.Nullable;
  * - [Proxmox VE User Management](https://pve.proxmox.com/wiki/User_Management)
  * - [Proxmox VE OpenID Connect Authentication](https://pve.proxmox.com/wiki/User_Management#pveum_openid)
  * - [Proxmox API: /access/domains](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/domains)
+ * 
+ * ## Import
+ * 
+ * !/usr/bin/env sh
+ * OpenID realms can be imported using the realm identifier, e.g.:
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:realm/openid:Openid example example-oidc
+ * ```
+ * 
+ * &gt; When importing, the &lt;span pulumi-lang-nodejs=&#34;`clientKey`&#34; pulumi-lang-dotnet=&#34;`ClientKey`&#34; pulumi-lang-go=&#34;`clientKey`&#34; pulumi-lang-python=&#34;`client_key`&#34; pulumi-lang-yaml=&#34;`clientKey`&#34; pulumi-lang-java=&#34;`clientKey`&#34;&gt;`clientKey`&lt;/span&gt; attribute cannot be imported since it&#39;s not returned by the Proxmox API. You&#39;ll need to set this attribute in your Terraform configuration after the import to manage it with Terraform.
  * 
  */
 @ResourceType(type="proxmoxve:realm/openid:Openid")

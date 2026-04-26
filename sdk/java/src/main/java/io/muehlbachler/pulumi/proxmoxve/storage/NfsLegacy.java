@@ -72,6 +72,15 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ## Import
+ * 
+ * !/usr/bin/env sh
+ * Storage can be imported using its identifier, e.g.:
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:storage/nfsLegacy:NfsLegacy example local-nfs
+ * ```
+ * 
  */
 @ResourceType(type="proxmoxve:storage/nfsLegacy:NfsLegacy")
 public class NfsLegacy extends com.pulumi.resources.CustomResource {

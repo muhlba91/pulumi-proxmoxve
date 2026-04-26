@@ -11,6 +11,42 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
 {
     /// <summary>
     /// Simple Zone in Proxmox SDN. It will create an isolated VNet bridge. This bridge is not linked to a physical interface, and VM traffic is only local on each the node. It can be used in NAT or routed setups.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new ProxmoxVE.Sdn.Zone.Simple("example", new()
+    ///     {
+    ///         ResourceId = "simple1",
+    ///         Nodes = new[]
+    ///         {
+    ///             "pve",
+    ///         },
+    ///         Mtu = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1500) (example.pp:3,16-20)),
+    ///         Dns = "1.1.1.1",
+    ///         DnsZone = "example.com",
+    ///         Ipam = "pve",
+    ///         ReverseDns = "1.1.1.1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// Simple SDN zone can be imported using its unique identifier (zone ID)
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:sdn/zone/simple:Simple example simple1
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:sdn/zone/simple:Simple")]
     public partial class Simple : global::Pulumi.CustomResource

@@ -7,24 +7,16 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * > **Deprecated:** Use `proxmoxve.Vm` instead. This data-source will be removed in v1.0.
+ * > **Deprecated:** Use `proxmoxve.Vm` instead. This data source will be removed in v1.0.
  *
- * !> **DO NOT USE**
- * This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
+ * Retrieves information about a specific VM.
  */
 export function getVm2Legacy(args: GetVm2LegacyArgs, opts?: pulumi.InvokeOptions): Promise<GetVm2LegacyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("proxmoxve:index/getVm2Legacy:getVm2Legacy", {
-        "cpu": args.cpu,
-        "description": args.description,
         "id": args.id,
-        "name": args.name,
         "nodeName": args.nodeName,
-        "rng": args.rng,
-        "tags": args.tags,
-        "template": args.template,
         "timeouts": args.timeouts,
-        "vga": args.vga,
     }, opts);
 }
 
@@ -33,42 +25,14 @@ export function getVm2Legacy(args: GetVm2LegacyArgs, opts?: pulumi.InvokeOptions
  */
 export interface GetVm2LegacyArgs {
     /**
-     * The CPU configuration.
-     */
-    cpu?: inputs.GetVm2LegacyCpu;
-    /**
-     * The description of the VM.
-     */
-    description?: string;
-    /**
      * The unique identifier of the VM in the Proxmox cluster.
      */
     id: number;
     /**
-     * The name of the VM.
-     */
-    name?: string;
-    /**
      * The name of the node where the VM is provisioned.
      */
     nodeName: string;
-    /**
-     * The RNG (Random Number Generator) configuration.
-     */
-    rng?: inputs.GetVm2LegacyRng;
-    /**
-     * The tags assigned to the VM.
-     */
-    tags?: string[];
-    /**
-     * Whether the VM is a template.
-     */
-    template?: boolean;
     timeouts?: inputs.GetVm2LegacyTimeouts;
-    /**
-     * The VGA configuration.
-     */
-    vga?: inputs.GetVm2LegacyVga;
 }
 
 /**
@@ -76,13 +40,17 @@ export interface GetVm2LegacyArgs {
  */
 export interface GetVm2LegacyResult {
     /**
+     * The CD-ROM configuration.
+     */
+    readonly cdrom: {[key: string]: outputs.GetVm2LegacyCdrom};
+    /**
      * The CPU configuration.
      */
     readonly cpu: outputs.GetVm2LegacyCpu;
     /**
      * The description of the VM.
      */
-    readonly description?: string;
+    readonly description: string;
     /**
      * The unique identifier of the VM in the Proxmox cluster.
      */
@@ -90,7 +58,7 @@ export interface GetVm2LegacyResult {
     /**
      * The name of the VM.
      */
-    readonly name?: string;
+    readonly name: string;
     /**
      * The name of the node where the VM is provisioned.
      */
@@ -100,13 +68,17 @@ export interface GetVm2LegacyResult {
      */
     readonly rng: outputs.GetVm2LegacyRng;
     /**
+     * The status of the VM (e.g., `running`, `stopped`).
+     */
+    readonly status: string;
+    /**
      * The tags assigned to the VM.
      */
     readonly tags: string[];
     /**
      * Whether the VM is a template.
      */
-    readonly template?: boolean;
+    readonly template: boolean;
     readonly timeouts?: outputs.GetVm2LegacyTimeouts;
     /**
      * The VGA configuration.
@@ -114,24 +86,16 @@ export interface GetVm2LegacyResult {
     readonly vga: outputs.GetVm2LegacyVga;
 }
 /**
- * > **Deprecated:** Use `proxmoxve.Vm` instead. This data-source will be removed in v1.0.
+ * > **Deprecated:** Use `proxmoxve.Vm` instead. This data source will be removed in v1.0.
  *
- * !> **DO NOT USE**
- * This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
+ * Retrieves information about a specific VM.
  */
 export function getVm2LegacyOutput(args: GetVm2LegacyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVm2LegacyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("proxmoxve:index/getVm2Legacy:getVm2Legacy", {
-        "cpu": args.cpu,
-        "description": args.description,
         "id": args.id,
-        "name": args.name,
         "nodeName": args.nodeName,
-        "rng": args.rng,
-        "tags": args.tags,
-        "template": args.template,
         "timeouts": args.timeouts,
-        "vga": args.vga,
     }, opts);
 }
 
@@ -140,40 +104,12 @@ export function getVm2LegacyOutput(args: GetVm2LegacyOutputArgs, opts?: pulumi.I
  */
 export interface GetVm2LegacyOutputArgs {
     /**
-     * The CPU configuration.
-     */
-    cpu?: pulumi.Input<inputs.GetVm2LegacyCpuArgs>;
-    /**
-     * The description of the VM.
-     */
-    description?: pulumi.Input<string>;
-    /**
      * The unique identifier of the VM in the Proxmox cluster.
      */
     id: pulumi.Input<number>;
     /**
-     * The name of the VM.
-     */
-    name?: pulumi.Input<string>;
-    /**
      * The name of the node where the VM is provisioned.
      */
     nodeName: pulumi.Input<string>;
-    /**
-     * The RNG (Random Number Generator) configuration.
-     */
-    rng?: pulumi.Input<inputs.GetVm2LegacyRngArgs>;
-    /**
-     * The tags assigned to the VM.
-     */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Whether the VM is a template.
-     */
-    template?: pulumi.Input<boolean>;
     timeouts?: pulumi.Input<inputs.GetVm2LegacyTimeoutsArgs>;
-    /**
-     * The VGA configuration.
-     */
-    vga?: pulumi.Input<inputs.GetVm2LegacyVgaArgs>;
 }

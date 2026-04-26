@@ -12,6 +12,35 @@ import (
 )
 
 // Retrieves API version details.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := proxmoxve.GetVersion(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("dataProxmoxVersion", pulumi.StringMap{
+//				"release":      example.Release,
+//				"repositoryId": example.RepositoryId,
+//				"version":      example.Version,
+//			})
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetVersion(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetVersionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVersionResult

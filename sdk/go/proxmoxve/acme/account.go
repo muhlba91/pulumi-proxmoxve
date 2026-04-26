@@ -15,6 +15,44 @@ import (
 // Manages an ACME account in a Proxmox VE cluster.
 //
 // > This resource requires `root@pam` authentication.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/acme"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := acme.NewAccount(ctx, "example", &acme.AccountArgs{
+//				Name:      pulumi.String("example"),
+//				Contact:   pulumi.String("example@email.com"),
+//				Directory: pulumi.String("https://acme-staging-v02.api.letsencrypt.org/directory"),
+//				Tos:       pulumi.String("https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// !/usr/bin/env sh
+// ACME accounts can be imported using their name, e.g.:
+//
+// ```sh
+// $ pulumi import proxmoxve:acme/account:Account example example
+// ```
 type Account struct {
 	pulumi.CustomResourceState
 

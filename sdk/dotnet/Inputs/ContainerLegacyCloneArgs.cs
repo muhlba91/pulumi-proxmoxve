@@ -19,6 +19,15 @@ namespace Pulumi.ProxmoxVE.Inputs
         public Input<string>? DatastoreId { get; set; }
 
         /// <summary>
+        /// When cloning, create a full copy of all disks. Set
+        /// to `False` to create a linked clone. Linked clones require the source
+        /// container to be a template on storage that supports copy-on-write
+        /// (e.g. Ceph RBD) (defaults to `True`).
+        /// </summary>
+        [Input("full")]
+        public Input<bool>? Full { get; set; }
+
+        /// <summary>
         /// The name of the source node (leave blank, if
         /// equal to the `NodeName` argument).
         /// </summary>

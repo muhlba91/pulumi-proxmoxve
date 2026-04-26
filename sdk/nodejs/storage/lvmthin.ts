@@ -6,6 +6,30 @@ import * as utilities from "../utilities";
 
 /**
  * Manages thin LVM-based storage in Proxmox VE.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = new proxmoxve.storage.Lvmthin("example", {
+ *     resourceId: "example-lvmthin",
+ *     nodes: ["pve"],
+ *     volumeGroup: "vg0",
+ *     thinPool: "data",
+ *     contents: ["images"],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * !/usr/bin/env sh
+ * Storage can be imported using its identifier, e.g.:
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:storage/lvmthin:Lvmthin example local-lvm-thin
+ * ```
  */
 export class Lvmthin extends pulumi.CustomResource {
     /**

@@ -160,6 +160,34 @@ class Membership(pulumi.CustomResource):
 
         > This resource requires the `Pool.Allocate` permission on the pool path (e.g., `/pool/{poolid}`).
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        test_vm1 = proxmoxve.Vm("test_vm1",
+            vm_id=1234,
+            node_name="pve",
+            started=False)
+        test_pool = proxmoxve.PoolLegacy("test_pool", pool_id="test-pool")
+        vm_membership = proxmoxve.pool.Membership("vm_membership",
+            pool_id=test_pool.id,
+            vm_id=test_vm1.resource_id)
+        storage_membership = proxmoxve.pool.Membership("storage_membership",
+            pool_id=test_pool.id,
+            storage_id="local-lvm")
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        Resource pool membership can be imported using its unique identifier, e.g.: {pool_id}/{type}/{member_id}
+
+        ```sh
+        $ pulumi import proxmoxve:pool/membership:Membership example_membership test-pool/vm/102
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -177,6 +205,34 @@ class Membership(pulumi.CustomResource):
         Manages resource pool memberships for containers, virtual machines and storages
 
         > This resource requires the `Pool.Allocate` permission on the pool path (e.g., `/pool/{poolid}`).
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        test_vm1 = proxmoxve.Vm("test_vm1",
+            vm_id=1234,
+            node_name="pve",
+            started=False)
+        test_pool = proxmoxve.PoolLegacy("test_pool", pool_id="test-pool")
+        vm_membership = proxmoxve.pool.Membership("vm_membership",
+            pool_id=test_pool.id,
+            vm_id=test_vm1.resource_id)
+        storage_membership = proxmoxve.pool.Membership("storage_membership",
+            pool_id=test_pool.id,
+            storage_id="local-lvm")
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        Resource pool membership can be imported using its unique identifier, e.g.: {pool_id}/{type}/{member_id}
+
+        ```sh
+        $ pulumi import proxmoxve:pool/membership:Membership example_membership test-pool/vm/102
+        ```
 
 
         :param str resource_name: The name of the resource.

@@ -12,22 +12,19 @@ namespace Pulumi.ProxmoxVE
     public static class GetVm
     {
         /// <summary>
-        /// !&gt; **DO NOT USE**
-        /// This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
+        /// Retrieves information about a specific VM.
         /// </summary>
         public static Task<GetVmResult> InvokeAsync(GetVmArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVmResult>("proxmoxve:index/getVm:getVm", args ?? new GetVmArgs(), options.WithDefaults());
 
         /// <summary>
-        /// !&gt; **DO NOT USE**
-        /// This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
+        /// Retrieves information about a specific VM.
         /// </summary>
         public static Output<GetVmResult> Invoke(GetVmInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVmResult>("proxmoxve:index/getVm:getVm", args ?? new GetVmInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// !&gt; **DO NOT USE**
-        /// This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
+        /// Retrieves information about a specific VM.
         /// </summary>
         public static Output<GetVmResult> Invoke(GetVmInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetVmResult>("proxmoxve:index/getVm:getVm", args ?? new GetVmInvokeArgs(), options.WithDefaults());
@@ -37,28 +34,10 @@ namespace Pulumi.ProxmoxVE
     public sealed class GetVmArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The CPU configuration.
-        /// </summary>
-        [Input("cpu")]
-        public Inputs.GetVmCpuArgs? Cpu { get; set; }
-
-        /// <summary>
-        /// The description of the VM.
-        /// </summary>
-        [Input("description")]
-        public string? Description { get; set; }
-
-        /// <summary>
         /// The unique identifier of the VM in the Proxmox cluster.
         /// </summary>
         [Input("id", required: true)]
         public int Id { get; set; }
-
-        /// <summary>
-        /// The name of the VM.
-        /// </summary>
-        [Input("name")]
-        public string? Name { get; set; }
 
         /// <summary>
         /// The name of the node where the VM is provisioned.
@@ -66,38 +45,8 @@ namespace Pulumi.ProxmoxVE
         [Input("nodeName", required: true)]
         public string NodeName { get; set; } = null!;
 
-        /// <summary>
-        /// The RNG (Random Number Generator) configuration.
-        /// </summary>
-        [Input("rng")]
-        public Inputs.GetVmRngArgs? Rng { get; set; }
-
-        [Input("tags")]
-        private List<string>? _tags;
-
-        /// <summary>
-        /// The tags assigned to the VM.
-        /// </summary>
-        public List<string> Tags
-        {
-            get => _tags ?? (_tags = new List<string>());
-            set => _tags = value;
-        }
-
-        /// <summary>
-        /// Whether the VM is a template.
-        /// </summary>
-        [Input("template")]
-        public bool? Template { get; set; }
-
         [Input("timeouts")]
         public Inputs.GetVmTimeoutsArgs? Timeouts { get; set; }
-
-        /// <summary>
-        /// The VGA configuration.
-        /// </summary>
-        [Input("vga")]
-        public Inputs.GetVmVgaArgs? Vga { get; set; }
 
         public GetVmArgs()
         {
@@ -108,28 +57,10 @@ namespace Pulumi.ProxmoxVE
     public sealed class GetVmInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The CPU configuration.
-        /// </summary>
-        [Input("cpu")]
-        public Input<Inputs.GetVmCpuInputArgs>? Cpu { get; set; }
-
-        /// <summary>
-        /// The description of the VM.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
         /// The unique identifier of the VM in the Proxmox cluster.
         /// </summary>
         [Input("id", required: true)]
         public Input<int> Id { get; set; } = null!;
-
-        /// <summary>
-        /// The name of the VM.
-        /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// The name of the node where the VM is provisioned.
@@ -137,38 +68,8 @@ namespace Pulumi.ProxmoxVE
         [Input("nodeName", required: true)]
         public Input<string> NodeName { get; set; } = null!;
 
-        /// <summary>
-        /// The RNG (Random Number Generator) configuration.
-        /// </summary>
-        [Input("rng")]
-        public Input<Inputs.GetVmRngInputArgs>? Rng { get; set; }
-
-        [Input("tags")]
-        private InputList<string>? _tags;
-
-        /// <summary>
-        /// The tags assigned to the VM.
-        /// </summary>
-        public InputList<string> Tags
-        {
-            get => _tags ?? (_tags = new InputList<string>());
-            set => _tags = value;
-        }
-
-        /// <summary>
-        /// Whether the VM is a template.
-        /// </summary>
-        [Input("template")]
-        public Input<bool>? Template { get; set; }
-
         [Input("timeouts")]
         public Input<Inputs.GetVmTimeoutsInputArgs>? Timeouts { get; set; }
-
-        /// <summary>
-        /// The VGA configuration.
-        /// </summary>
-        [Input("vga")]
-        public Input<Inputs.GetVmVgaInputArgs>? Vga { get; set; }
 
         public GetVmInvokeArgs()
         {
@@ -181,13 +82,17 @@ namespace Pulumi.ProxmoxVE
     public sealed class GetVmResult
     {
         /// <summary>
+        /// The CD-ROM configuration.
+        /// </summary>
+        public readonly ImmutableDictionary<string, Outputs.GetVmCdromResult> Cdrom;
+        /// <summary>
         /// The CPU configuration.
         /// </summary>
         public readonly Outputs.GetVmCpuResult Cpu;
         /// <summary>
         /// The description of the VM.
         /// </summary>
-        public readonly string? Description;
+        public readonly string Description;
         /// <summary>
         /// The unique identifier of the VM in the Proxmox cluster.
         /// </summary>
@@ -195,7 +100,7 @@ namespace Pulumi.ProxmoxVE
         /// <summary>
         /// The name of the VM.
         /// </summary>
-        public readonly string? Name;
+        public readonly string Name;
         /// <summary>
         /// The name of the node where the VM is provisioned.
         /// </summary>
@@ -205,13 +110,17 @@ namespace Pulumi.ProxmoxVE
         /// </summary>
         public readonly Outputs.GetVmRngResult Rng;
         /// <summary>
+        /// The status of the VM (e.g., `Running`, `Stopped`).
+        /// </summary>
+        public readonly string Status;
+        /// <summary>
         /// The tags assigned to the VM.
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
         /// Whether the VM is a template.
         /// </summary>
-        public readonly bool? Template;
+        public readonly bool Template;
         public readonly Outputs.GetVmTimeoutsResult? Timeouts;
         /// <summary>
         /// The VGA configuration.
@@ -220,32 +129,38 @@ namespace Pulumi.ProxmoxVE
 
         [OutputConstructor]
         private GetVmResult(
+            ImmutableDictionary<string, Outputs.GetVmCdromResult> cdrom,
+
             Outputs.GetVmCpuResult cpu,
 
-            string? description,
+            string description,
 
             int id,
 
-            string? name,
+            string name,
 
             string nodeName,
 
             Outputs.GetVmRngResult rng,
 
+            string status,
+
             ImmutableArray<string> tags,
 
-            bool? template,
+            bool template,
 
             Outputs.GetVmTimeoutsResult? timeouts,
 
             Outputs.GetVmVgaResult vga)
         {
+            Cdrom = cdrom;
             Cpu = cpu;
             Description = description;
             Id = id;
             Name = name;
             NodeName = nodeName;
             Rng = rng;
+            Status = status;
             Tags = tags;
             Template = template;
             Timeouts = timeouts;

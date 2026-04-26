@@ -273,6 +273,29 @@ class Lvm(pulumi.CustomResource):
         """
         Manages LVM-based storage in Proxmox VE.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.storage.Lvm("example",
+            resource_id="example-lvm",
+            nodes=["pve"],
+            volume_group="vg0",
+            contents=["images"],
+            wipe_removed_volumes=False)
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        Storage can be imported using its identifier, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:storage/lvm:Lvm example local-lvm
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -292,6 +315,29 @@ class Lvm(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages LVM-based storage in Proxmox VE.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.storage.Lvm("example",
+            resource_id="example-lvm",
+            nodes=["pve"],
+            volume_group="vg0",
+            contents=["images"],
+            wipe_removed_volumes=False)
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        Storage can be imported using its identifier, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:storage/lvm:Lvm example local-lvm
+        ```
 
 
         :param str resource_name: The name of the resource.

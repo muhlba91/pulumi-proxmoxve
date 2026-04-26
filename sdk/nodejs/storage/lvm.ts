@@ -6,6 +6,30 @@ import * as utilities from "../utilities";
 
 /**
  * Manages LVM-based storage in Proxmox VE.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = new proxmoxve.storage.Lvm("example", {
+ *     resourceId: "example-lvm",
+ *     nodes: ["pve"],
+ *     volumeGroup: "vg0",
+ *     contents: ["images"],
+ *     wipeRemovedVolumes: false,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * !/usr/bin/env sh
+ * Storage can be imported using its identifier, e.g.:
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:storage/lvm:Lvm example local-lvm
+ * ```
  */
 export class Lvm extends pulumi.CustomResource {
     /**

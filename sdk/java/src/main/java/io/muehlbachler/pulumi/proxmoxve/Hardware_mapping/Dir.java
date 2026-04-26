@@ -19,6 +19,56 @@ import javax.annotation.Nullable;
 /**
  * Manages a directory mapping in a Proxmox VE cluster.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.hardware.Dir;
+ * import io.muehlbachler.pulumi.proxmoxve.hardware.DirArgs;
+ * import com.pulumi.proxmoxve.hardware.inputs.DirMapArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Dir("example", DirArgs.builder()
+ *             .comment("This is a comment")
+ *             .name("example")
+ *             .maps(DirMapArgs.builder()
+ *                 .node("pve")
+ *                 .path("/mnt/data")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * !/usr/bin/env sh
+ * A directory mapping can be imported using their name, e.g.:
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:hardware/mapping/dir:Dir example example
+ * ```
+ * 
  */
 @ResourceType(type="proxmoxve:hardware/mapping/dir:Dir")
 public class Dir extends com.pulumi.resources.CustomResource {

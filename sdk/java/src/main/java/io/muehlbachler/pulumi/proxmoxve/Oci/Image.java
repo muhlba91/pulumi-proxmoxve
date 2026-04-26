@@ -18,6 +18,59 @@ import javax.annotation.Nullable;
 /**
  * Manages OCI images pulled from OCI registries using PVE oci-registry-pull API. Pulls OCI container images and stores them as tar files in Proxmox VE datastores.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.oci.Image;
+ * import io.muehlbachler.pulumi.proxmoxve.oci.ImageArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var ubuntuLatest = new Image("ubuntuLatest", ImageArgs.builder()
+ *             .nodeName("pve")
+ *             .datastoreId("local")
+ *             .reference("docker.io/library/ubuntu:latest")
+ *             .build());
+ * 
+ *         var nginx = new Image("nginx", ImageArgs.builder()
+ *             .nodeName("pve")
+ *             .datastoreId("local")
+ *             .reference("docker.io/library/nginx:alpine")
+ *             .fileName("custom_image_name.tar")
+ *             .build());
+ * 
+ *         var debian = new Image("debian", ImageArgs.builder()
+ *             .nodeName("pve")
+ *             .datastoreId("local")
+ *             .reference("docker.io/library/debian:bookworm")
+ *             .uploadTimeout(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(900) (example.pp:18,24-27)))
+ *             .overwrite(false)
+ *             .overwriteUnmanaged(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="proxmoxve:oci/image:Image")
 public class Image extends com.pulumi.resources.CustomResource {

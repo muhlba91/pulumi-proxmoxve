@@ -13,6 +13,59 @@ import (
 )
 
 // Manages an SMB/CIFS based storage server in Proxmox VE.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := storage.NewCifs(ctx, "example", &storage.CifsArgs{
+//				ResourceId: pulumi.String("example-cifs"),
+//				Nodes: pulumi.StringArray{
+//					pulumi.String("pve"),
+//				},
+//				Server:   pulumi.String("10.0.0.20"),
+//				Share:    pulumi.String("proxmox"),
+//				Username: pulumi.String("cifs-user"),
+//				Password: pulumi.String("cifs-password"),
+//				Contents: pulumi.StringArray{
+//					pulumi.String("images"),
+//				},
+//				Domain:                pulumi.String("WORKGROUP"),
+//				Subdirectory:          pulumi.String("terraform"),
+//				Preallocation:         pulumi.String("metadata"),
+//				SnapshotAsVolumeChain: pulumi.Bool(true),
+//				Backups: &storage.CifsBackupsArgs{
+//					MaxProtectedBackups: pulumi.Int(5),
+//					KeepDaily:           pulumi.Int(7),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// !/usr/bin/env sh
+// Storage can be imported using its identifier, e.g.:
+//
+// ```sh
+// $ pulumi import proxmoxve:storage/cifs:Cifs example local-cifs
+// ```
 type Cifs struct {
 	pulumi.CustomResourceState
 

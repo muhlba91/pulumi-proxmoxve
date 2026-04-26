@@ -8,6 +8,40 @@ import * as utilities from "../utilities";
 
 /**
  * Manages an SMB/CIFS based storage server in Proxmox VE.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = new proxmoxve.storage.Cifs("example", {
+ *     resourceId: "example-cifs",
+ *     nodes: ["pve"],
+ *     server: "10.0.0.20",
+ *     share: "proxmox",
+ *     username: "cifs-user",
+ *     password: "cifs-password",
+ *     contents: ["images"],
+ *     domain: "WORKGROUP",
+ *     subdirectory: "terraform",
+ *     preallocation: "metadata",
+ *     snapshotAsVolumeChain: true,
+ *     backups: {
+ *         maxProtectedBackups: 5,
+ *         keepDaily: 7,
+ *     },
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * !/usr/bin/env sh
+ * Storage can be imported using its identifier, e.g.:
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:storage/cifs:Cifs example local-cifs
+ * ```
  */
 export class Cifs extends pulumi.CustomResource {
     /**

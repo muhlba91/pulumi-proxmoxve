@@ -22,6 +22,47 @@ import javax.annotation.Nullable;
 /**
  * Manages Proxmox VE Replication.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.Replication;
+ * import io.muehlbachler.pulumi.proxmoxve.ReplicationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         // Replication
+ *         var exampleReplication1 = new Replication("exampleReplication1", ReplicationArgs.builder()
+ *             .resourceId("100-0")
+ *             .target("pve-02")
+ *             .type("local")
+ *             .disable(false)
+ *             .comment("Replication to pve-02 every 30 min")
+ *             .schedule("*}&#47;{@code 30")
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  */
 @ResourceType(type="proxmoxve:index/replication:Replication")
 public class Replication extends com.pulumi.resources.CustomResource {

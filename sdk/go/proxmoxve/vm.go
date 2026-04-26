@@ -27,7 +27,7 @@ type Vm struct {
 	// The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
 	Cdrom VmCdromMapOutput `pulumi:"cdrom"`
 	// The CPU configuration.
-	Cpu VmCpuOutput `pulumi:"cpu"`
+	Cpu VmCpuPtrOutput `pulumi:"cpu"`
 	// Set to true to delete unreferenced disks on destroy (defaults to `true`).
 	DeleteUnreferencedDisksOnDestroy pulumi.BoolOutput `pulumi:"deleteUnreferencedDisksOnDestroy"`
 	// The description of the VM.
@@ -41,7 +41,7 @@ type Vm struct {
 	// The unique identifier of the VM in the Proxmox cluster.
 	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
 	// Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
-	Rng VmRngOutput `pulumi:"rng"`
+	Rng VmRngPtrOutput `pulumi:"rng"`
 	// Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
 	StopOnDestroy pulumi.BoolOutput `pulumi:"stopOnDestroy"`
 	// The tags assigned to the VM.
@@ -50,7 +50,7 @@ type Vm struct {
 	Template pulumi.BoolPtrOutput `pulumi:"template"`
 	Timeouts VmTimeoutsPtrOutput  `pulumi:"timeouts"`
 	// Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
-	Vga VmVgaOutput `pulumi:"vga"`
+	Vga VmVgaPtrOutput `pulumi:"vga"`
 }
 
 // NewVm registers a new resource with the given unique name, arguments, and options.
@@ -309,8 +309,8 @@ func (o VmOutput) Cdrom() VmCdromMapOutput {
 }
 
 // The CPU configuration.
-func (o VmOutput) Cpu() VmCpuOutput {
-	return o.ApplyT(func(v *Vm) VmCpuOutput { return v.Cpu }).(VmCpuOutput)
+func (o VmOutput) Cpu() VmCpuPtrOutput {
+	return o.ApplyT(func(v *Vm) VmCpuPtrOutput { return v.Cpu }).(VmCpuPtrOutput)
 }
 
 // Set to true to delete unreferenced disks on destroy (defaults to `true`).
@@ -344,8 +344,8 @@ func (o VmOutput) ResourceId() pulumi.StringOutput {
 }
 
 // Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
-func (o VmOutput) Rng() VmRngOutput {
-	return o.ApplyT(func(v *Vm) VmRngOutput { return v.Rng }).(VmRngOutput)
+func (o VmOutput) Rng() VmRngPtrOutput {
+	return o.ApplyT(func(v *Vm) VmRngPtrOutput { return v.Rng }).(VmRngPtrOutput)
 }
 
 // Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
@@ -368,8 +368,8 @@ func (o VmOutput) Timeouts() VmTimeoutsPtrOutput {
 }
 
 // Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
-func (o VmOutput) Vga() VmVgaOutput {
-	return o.ApplyT(func(v *Vm) VmVgaOutput { return v.Vga }).(VmVgaOutput)
+func (o VmOutput) Vga() VmVgaPtrOutput {
+	return o.ApplyT(func(v *Vm) VmVgaPtrOutput { return v.Vga }).(VmVgaPtrOutput)
 }
 
 type VmArrayOutput struct{ *pulumi.OutputState }

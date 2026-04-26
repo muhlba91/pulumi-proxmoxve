@@ -28,7 +28,10 @@ class GetVm2LegacyResult:
     """
     A collection of values returned by getVm2Legacy.
     """
-    def __init__(__self__, cpu=None, description=None, id=None, name=None, node_name=None, rng=None, tags=None, template=None, timeouts=None, vga=None):
+    def __init__(__self__, cdrom=None, cpu=None, description=None, id=None, name=None, node_name=None, rng=None, status=None, tags=None, template=None, timeouts=None, vga=None):
+        if cdrom and not isinstance(cdrom, dict):
+            raise TypeError("Expected argument 'cdrom' to be a dict")
+        pulumi.set(__self__, "cdrom", cdrom)
         if cpu and not isinstance(cpu, dict):
             raise TypeError("Expected argument 'cpu' to be a dict")
         pulumi.set(__self__, "cpu", cpu)
@@ -47,6 +50,9 @@ class GetVm2LegacyResult:
         if rng and not isinstance(rng, dict):
             raise TypeError("Expected argument 'rng' to be a dict")
         pulumi.set(__self__, "rng", rng)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
@@ -62,6 +68,14 @@ class GetVm2LegacyResult:
 
     @_builtins.property
     @pulumi.getter
+    def cdrom(self) -> Mapping[str, 'outputs.GetVm2LegacyCdromResult']:
+        """
+        The CD-ROM configuration.
+        """
+        return pulumi.get(self, "cdrom")
+
+    @_builtins.property
+    @pulumi.getter
     def cpu(self) -> 'outputs.GetVm2LegacyCpuResult':
         """
         The CPU configuration.
@@ -70,7 +84,7 @@ class GetVm2LegacyResult:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[_builtins.str]:
+    def description(self) -> _builtins.str:
         """
         The description of the VM.
         """
@@ -86,7 +100,7 @@ class GetVm2LegacyResult:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[_builtins.str]:
+    def name(self) -> _builtins.str:
         """
         The name of the VM.
         """
@@ -110,6 +124,14 @@ class GetVm2LegacyResult:
 
     @_builtins.property
     @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The status of the VM (e.g., `running`, `stopped`).
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
     def tags(self) -> Sequence[_builtins.str]:
         """
         The tags assigned to the VM.
@@ -118,7 +140,7 @@ class GetVm2LegacyResult:
 
     @_builtins.property
     @pulumi.getter
-    def template(self) -> Optional[_builtins.bool]:
+    def template(self) -> _builtins.bool:
         """
         Whether the VM is a template.
         """
@@ -144,119 +166,81 @@ class AwaitableGetVm2LegacyResult(GetVm2LegacyResult):
         if False:
             yield self
         return GetVm2LegacyResult(
+            cdrom=self.cdrom,
             cpu=self.cpu,
             description=self.description,
             id=self.id,
             name=self.name,
             node_name=self.node_name,
             rng=self.rng,
+            status=self.status,
             tags=self.tags,
             template=self.template,
             timeouts=self.timeouts,
             vga=self.vga)
 
 
-def get_vm2_legacy(cpu: Optional[Union['GetVm2LegacyCpuArgs', 'GetVm2LegacyCpuArgsDict']] = None,
-                   description: Optional[_builtins.str] = None,
-                   id: Optional[_builtins.int] = None,
-                   name: Optional[_builtins.str] = None,
+def get_vm2_legacy(id: Optional[_builtins.int] = None,
                    node_name: Optional[_builtins.str] = None,
-                   rng: Optional[Union['GetVm2LegacyRngArgs', 'GetVm2LegacyRngArgsDict']] = None,
-                   tags: Optional[Sequence[_builtins.str]] = None,
-                   template: Optional[_builtins.bool] = None,
                    timeouts: Optional[Union['GetVm2LegacyTimeoutsArgs', 'GetVm2LegacyTimeoutsArgsDict']] = None,
-                   vga: Optional[Union['GetVm2LegacyVgaArgs', 'GetVm2LegacyVgaArgsDict']] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVm2LegacyResult:
     """
-    > **Deprecated:** Use `Vm` instead. This data-source will be removed in v1.0.
+    > **Deprecated:** Use `Vm` instead. This data source will be removed in v1.0.
 
-    !> **DO NOT USE**
-    This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
+    Retrieves information about a specific VM.
 
 
-    :param Union['GetVm2LegacyCpuArgs', 'GetVm2LegacyCpuArgsDict'] cpu: The CPU configuration.
-    :param _builtins.str description: The description of the VM.
     :param _builtins.int id: The unique identifier of the VM in the Proxmox cluster.
-    :param _builtins.str name: The name of the VM.
     :param _builtins.str node_name: The name of the node where the VM is provisioned.
-    :param Union['GetVm2LegacyRngArgs', 'GetVm2LegacyRngArgsDict'] rng: The RNG (Random Number Generator) configuration.
-    :param Sequence[_builtins.str] tags: The tags assigned to the VM.
-    :param _builtins.bool template: Whether the VM is a template.
-    :param Union['GetVm2LegacyVgaArgs', 'GetVm2LegacyVgaArgsDict'] vga: The VGA configuration.
     """
     __args__ = dict()
-    __args__['cpu'] = cpu
-    __args__['description'] = description
     __args__['id'] = id
-    __args__['name'] = name
     __args__['nodeName'] = node_name
-    __args__['rng'] = rng
-    __args__['tags'] = tags
-    __args__['template'] = template
     __args__['timeouts'] = timeouts
-    __args__['vga'] = vga
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('proxmoxve:index/getVm2Legacy:getVm2Legacy', __args__, opts=opts, typ=GetVm2LegacyResult).value
 
     return AwaitableGetVm2LegacyResult(
+        cdrom=pulumi.get(__ret__, 'cdrom'),
         cpu=pulumi.get(__ret__, 'cpu'),
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         node_name=pulumi.get(__ret__, 'node_name'),
         rng=pulumi.get(__ret__, 'rng'),
+        status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'),
         template=pulumi.get(__ret__, 'template'),
         timeouts=pulumi.get(__ret__, 'timeouts'),
         vga=pulumi.get(__ret__, 'vga'))
-def get_vm2_legacy_output(cpu: Optional[pulumi.Input[Optional[Union['GetVm2LegacyCpuArgs', 'GetVm2LegacyCpuArgsDict']]]] = None,
-                          description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          id: Optional[pulumi.Input[_builtins.int]] = None,
-                          name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_vm2_legacy_output(id: Optional[pulumi.Input[_builtins.int]] = None,
                           node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                          rng: Optional[pulumi.Input[Optional[Union['GetVm2LegacyRngArgs', 'GetVm2LegacyRngArgsDict']]]] = None,
-                          tags: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
-                          template: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                           timeouts: Optional[pulumi.Input[Optional[Union['GetVm2LegacyTimeoutsArgs', 'GetVm2LegacyTimeoutsArgsDict']]]] = None,
-                          vga: Optional[pulumi.Input[Optional[Union['GetVm2LegacyVgaArgs', 'GetVm2LegacyVgaArgsDict']]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVm2LegacyResult]:
     """
-    > **Deprecated:** Use `Vm` instead. This data-source will be removed in v1.0.
+    > **Deprecated:** Use `Vm` instead. This data source will be removed in v1.0.
 
-    !> **DO NOT USE**
-    This is an experimental implementation of a Proxmox VM datasource using Plugin Framework.
+    Retrieves information about a specific VM.
 
 
-    :param Union['GetVm2LegacyCpuArgs', 'GetVm2LegacyCpuArgsDict'] cpu: The CPU configuration.
-    :param _builtins.str description: The description of the VM.
     :param _builtins.int id: The unique identifier of the VM in the Proxmox cluster.
-    :param _builtins.str name: The name of the VM.
     :param _builtins.str node_name: The name of the node where the VM is provisioned.
-    :param Union['GetVm2LegacyRngArgs', 'GetVm2LegacyRngArgsDict'] rng: The RNG (Random Number Generator) configuration.
-    :param Sequence[_builtins.str] tags: The tags assigned to the VM.
-    :param _builtins.bool template: Whether the VM is a template.
-    :param Union['GetVm2LegacyVgaArgs', 'GetVm2LegacyVgaArgsDict'] vga: The VGA configuration.
     """
     __args__ = dict()
-    __args__['cpu'] = cpu
-    __args__['description'] = description
     __args__['id'] = id
-    __args__['name'] = name
     __args__['nodeName'] = node_name
-    __args__['rng'] = rng
-    __args__['tags'] = tags
-    __args__['template'] = template
     __args__['timeouts'] = timeouts
-    __args__['vga'] = vga
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:index/getVm2Legacy:getVm2Legacy', __args__, opts=opts, typ=GetVm2LegacyResult)
     return __ret__.apply(lambda __response__: GetVm2LegacyResult(
+        cdrom=pulumi.get(__response__, 'cdrom'),
         cpu=pulumi.get(__response__, 'cpu'),
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
         node_name=pulumi.get(__response__, 'node_name'),
         rng=pulumi.get(__response__, 'rng'),
+        status=pulumi.get(__response__, 'status'),
         tags=pulumi.get(__response__, 'tags'),
         template=pulumi.get(__response__, 'template'),
         timeouts=pulumi.get(__response__, 'timeouts'),

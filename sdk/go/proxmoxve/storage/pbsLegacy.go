@@ -53,6 +53,15 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// !/usr/bin/env sh
+// Storage can be imported using its identifier, e.g.:
+//
+// ```sh
+// $ pulumi import proxmoxve:storage/pbsLegacy:PbsLegacy example pbs-backup
+// ```
 type PbsLegacy struct {
 	pulumi.CustomResourceState
 

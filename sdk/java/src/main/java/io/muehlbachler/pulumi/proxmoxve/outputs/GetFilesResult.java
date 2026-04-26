@@ -25,6 +25,11 @@ public final class GetFilesResult {
      */
     private String datastoreId;
     /**
+     * @return A regular expression to filter files by name. When set, only files whose name matches the expression are returned.
+     * 
+     */
+    private @Nullable String fileNameRegex;
+    /**
      * @return The list of files in the datastore.
      * 
      */
@@ -54,6 +59,13 @@ public final class GetFilesResult {
      */
     public String datastoreId() {
         return this.datastoreId;
+    }
+    /**
+     * @return A regular expression to filter files by name. When set, only files whose name matches the expression are returned.
+     * 
+     */
+    public Optional<String> fileNameRegex() {
+        return Optional.ofNullable(this.fileNameRegex);
     }
     /**
      * @return The list of files in the datastore.
@@ -88,6 +100,7 @@ public final class GetFilesResult {
     public static final class Builder {
         private @Nullable String contentType;
         private String datastoreId;
+        private @Nullable String fileNameRegex;
         private List<GetFilesFile> files;
         private String id;
         private String nodeName;
@@ -96,6 +109,7 @@ public final class GetFilesResult {
     	      Objects.requireNonNull(defaults);
     	      this.contentType = defaults.contentType;
     	      this.datastoreId = defaults.datastoreId;
+    	      this.fileNameRegex = defaults.fileNameRegex;
     	      this.files = defaults.files;
     	      this.id = defaults.id;
     	      this.nodeName = defaults.nodeName;
@@ -113,6 +127,12 @@ public final class GetFilesResult {
               throw new MissingRequiredPropertyException("GetFilesResult", "datastoreId");
             }
             this.datastoreId = datastoreId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder fileNameRegex(@Nullable String fileNameRegex) {
+
+            this.fileNameRegex = fileNameRegex;
             return this;
         }
         @CustomType.Setter
@@ -146,6 +166,7 @@ public final class GetFilesResult {
             final var _resultValue = new GetFilesResult();
             _resultValue.contentType = contentType;
             _resultValue.datastoreId = datastoreId;
+            _resultValue.fileNameRegex = fileNameRegex;
             _resultValue.files = files;
             _resultValue.id = id;
             _resultValue.nodeName = nodeName;

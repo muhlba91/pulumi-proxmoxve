@@ -6,6 +6,37 @@ import * as utilities from "../utilities";
 
 /**
  * User API tokens.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * // if creating a user token, the user must be created first
+ * const user = new proxmoxve.UserLegacy("user", {
+ *     comment: "Managed by Pulumi",
+ *     email: "user@pve",
+ *     enabled: true,
+ *     expirationDate: "2034-01-01T22:00:00Z",
+ *     userId: "user@pve",
+ * });
+ * const userToken = new proxmoxve.user.Token("user_token", {
+ *     comment: "Managed by Pulumi",
+ *     expirationDate: "2033-01-01T22:00:00Z",
+ *     tokenName: "tk1",
+ *     userId: user.userId,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * !/usr/bin/env sh
+ * Tokens can be imported using their identifiers in the format `user_id!token_name`, e.g.:
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:user/token:Token token1 user@pve!token1
+ * ```
  */
 export class Token extends pulumi.CustomResource {
     /**

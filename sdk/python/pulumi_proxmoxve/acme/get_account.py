@@ -115,6 +115,19 @@ def get_account(name: Optional[_builtins.str] = None,
     """
     Retrieves information about a specific ACME account.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    # This will fetch all ACME accounts...
+    all = proxmoxve.acme.get_accounts()
+    # ...which we will go through in order to fetch the whole data on each account.
+    example = {__key: proxmoxve.acme.get_account(name=__value) for __key, __value in enumerate(all.accounts)}
+    pulumi.export("dataProxmoxAcmeAccount", example)
+    ```
+
 
     :param _builtins.str name: The identifier of the ACME account to read.
     """
@@ -134,6 +147,19 @@ def get_account_output(name: Optional[pulumi.Input[Optional[_builtins.str]]] = N
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountResult]:
     """
     Retrieves information about a specific ACME account.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    # This will fetch all ACME accounts...
+    all = proxmoxve.acme.get_accounts()
+    # ...which we will go through in order to fetch the whole data on each account.
+    example = {__key: proxmoxve.acme.get_account(name=__value) for __key, __value in enumerate(all.accounts)}
+    pulumi.export("dataProxmoxAcmeAccount", example)
+    ```
 
 
     :param _builtins.str name: The identifier of the ACME account to read.

@@ -308,6 +308,34 @@ class Directory(pulumi.CustomResource):
         """
         Manages directory-based storage in Proxmox VE.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.storage.Directory("example",
+            resource_id="example-dir",
+            path="/var/lib/vz",
+            nodes=["pve"],
+            contents=["images"],
+            shared=True,
+            disable=False,
+            backups={
+                "max_protected_backups": 5,
+                "keep_daily": 7,
+            })
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        Storage can be imported using its identifier, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:storage/directory:Directory example local-dir
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -328,6 +356,34 @@ class Directory(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages directory-based storage in Proxmox VE.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.storage.Directory("example",
+            resource_id="example-dir",
+            path="/var/lib/vz",
+            nodes=["pve"],
+            contents=["images"],
+            shared=True,
+            disable=False,
+            backups={
+                "max_protected_backups": 5,
+                "keep_daily": 7,
+            })
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        Storage can be imported using its identifier, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:storage/directory:Directory example local-dir
+        ```
 
 
         :param str resource_name: The name of the resource.

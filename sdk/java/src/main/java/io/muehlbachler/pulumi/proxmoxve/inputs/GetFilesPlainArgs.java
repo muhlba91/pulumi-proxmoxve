@@ -46,6 +46,21 @@ public final class GetFilesPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * A regular expression to filter files by name. When set, only files whose name matches the expression are returned.
+     * 
+     */
+    @Import(name="fileNameRegex")
+    private @Nullable String fileNameRegex;
+
+    /**
+     * @return A regular expression to filter files by name. When set, only files whose name matches the expression are returned.
+     * 
+     */
+    public Optional<String> fileNameRegex() {
+        return Optional.ofNullable(this.fileNameRegex);
+    }
+
+    /**
      * The name of the node.
      * 
      */
@@ -65,6 +80,7 @@ public final class GetFilesPlainArgs extends com.pulumi.resources.InvokeArgs {
     private GetFilesPlainArgs(GetFilesPlainArgs $) {
         this.contentType = $.contentType;
         this.datastoreId = $.datastoreId;
+        this.fileNameRegex = $.fileNameRegex;
         this.nodeName = $.nodeName;
     }
 
@@ -105,6 +121,17 @@ public final class GetFilesPlainArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder datastoreId(String datastoreId) {
             $.datastoreId = datastoreId;
+            return this;
+        }
+
+        /**
+         * @param fileNameRegex A regular expression to filter files by name. When set, only files whose name matches the expression are returned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fileNameRegex(@Nullable String fileNameRegex) {
+            $.fileNameRegex = fileNameRegex;
             return this;
         }
 

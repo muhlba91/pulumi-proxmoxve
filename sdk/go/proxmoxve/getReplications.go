@@ -12,6 +12,34 @@ import (
 )
 
 // Retrieves information about all Replications in Proxmox.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// List all Replications
+//			all, err := proxmoxve.GetReplications(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("dataProxmoxReplicationsAll", []proxmoxve.GetReplicationsReplicationMap{
+//				"replications": all.Replications,
+//			})
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetReplications(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetReplicationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetReplicationsResult

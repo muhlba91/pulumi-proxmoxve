@@ -6,6 +6,69 @@ import * as utilities from "../utilities";
 
 /**
  * Manages Proxmox VE SDN VNet.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const finalizer = new proxmoxve.sdn.Applier("finalizer", {});
+ * // SDN Zone (Simple) - Basic zone for simple vnets
+ * const exampleZone1 = new proxmoxve.sdn.zone.Simple("example_zone_1", {
+ *     resourceId: "zone1",
+ *     mtu: 1500,
+ *     dns: "1.1.1.1",
+ *     dnsZone: "example.com",
+ *     ipam: "pve",
+ *     reverseDns: "1.1.1.1",
+ * }, {
+ *     dependsOn: [finalizer],
+ * });
+ * // SDN Zone (Simple) - Second zone for demonstration
+ * const exampleZone2 = new proxmoxve.sdn.zone.Simple("example_zone_2", {
+ *     resourceId: "zone2",
+ *     mtu: 1500,
+ * }, {
+ *     dependsOn: [finalizer],
+ * });
+ * // Basic VNet (Simple)
+ * const basicVnet = new proxmoxve.sdn.Vnet("basic_vnet", {
+ *     resourceId: "vnet1",
+ *     zone: exampleZone1.resourceId,
+ * }, {
+ *     dependsOn: [finalizer],
+ * });
+ * // VNet with Alias and Port Isolation
+ * const isolatedVnet = new proxmoxve.sdn.Vnet("isolated_vnet", {
+ *     resourceId: "vnet2",
+ *     zone: exampleZone2.resourceId,
+ *     alias: "Isolated VNet",
+ *     isolatePorts: true,
+ *     vlanAware: false,
+ * }, {
+ *     dependsOn: [finalizer],
+ * });
+ * // SDN Applier for all resources
+ * const vnetApplier = new proxmoxve.sdn.Applier("vnet_applier", {}, {
+ *     dependsOn: [
+ *         exampleZone1,
+ *         exampleZone2,
+ *         basicVnet,
+ *         isolatedVnet,
+ *     ],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * !/usr/bin/env sh
+ * SDN vnet can be imported using its unique identifier (vnet ID)
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:sdn/vnet:Vnet basic_vnet vnet1
+ * $ pulumi import proxmoxve:sdn/vnet:Vnet isolated_vnet vnet2
+ * ```
  */
 export class Vnet extends pulumi.CustomResource {
     /**

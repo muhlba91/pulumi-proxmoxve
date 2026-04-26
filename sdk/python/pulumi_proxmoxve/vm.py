@@ -665,7 +665,7 @@ class Vm(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def cdrom(self) -> pulumi.Output[Mapping[str, 'outputs.VmCdrom']]:
+    def cdrom(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.VmCdrom']]]:
         """
         The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
         """
@@ -673,7 +673,7 @@ class Vm(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def cpu(self) -> pulumi.Output['outputs.VmCpu']:
+    def cpu(self) -> pulumi.Output[Optional['outputs.VmCpu']]:
         """
         The CPU configuration.
         """
@@ -729,7 +729,7 @@ class Vm(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def rng(self) -> pulumi.Output['outputs.VmRng']:
+    def rng(self) -> pulumi.Output[Optional['outputs.VmRng']]:
         """
         Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
         """
@@ -766,7 +766,7 @@ class Vm(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def vga(self) -> pulumi.Output['outputs.VmVga']:
+    def vga(self) -> pulumi.Output[Optional['outputs.VmVga']]:
         """
         Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
         """

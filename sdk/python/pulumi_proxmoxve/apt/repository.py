@@ -269,6 +269,29 @@ class Repository(pulumi.CustomResource):
         """
         Manages an APT repository of a Proxmox VE node.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.apt.Repository("example",
+            enabled=True,
+            file_path="/etc/apt/sources.list",
+            index=0,
+            node="pve")
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        An APT repository can be imported using a comma-separated list consisting of the name of the Proxmox VE node,
+        the absolute source list file path, and the index in the exact same order, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:apt/repository:Repository example pve,/etc/apt/sources.list,0
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -285,6 +308,29 @@ class Repository(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages an APT repository of a Proxmox VE node.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.apt.Repository("example",
+            enabled=True,
+            file_path="/etc/apt/sources.list",
+            index=0,
+            node="pve")
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        An APT repository can be imported using a comma-separated list consisting of the name of the Proxmox VE node,
+        the absolute source list file path, and the index in the exact same order, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:apt/repository:Repository example pve,/etc/apt/sources.list,0
+        ```
 
 
         :param str resource_name: The name of the resource.

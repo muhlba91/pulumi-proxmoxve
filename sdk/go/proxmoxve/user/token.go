@@ -13,6 +13,56 @@ import (
 )
 
 // User API tokens.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve"
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/user"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// if creating a user token, the user must be created first
+//			user, err := proxmoxve.NewUserLegacy(ctx, "user", &proxmoxve.UserLegacyArgs{
+//				Comment:        pulumi.String("Managed by Pulumi"),
+//				Email:          pulumi.String("user@pve"),
+//				Enabled:        pulumi.Bool(true),
+//				ExpirationDate: pulumi.String("2034-01-01T22:00:00Z"),
+//				UserId:         pulumi.String("user@pve"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = user.NewToken(ctx, "user_token", &user.TokenArgs{
+//				Comment:        pulumi.String("Managed by Pulumi"),
+//				ExpirationDate: pulumi.String("2033-01-01T22:00:00Z"),
+//				TokenName:      pulumi.String("tk1"),
+//				UserId:         user.UserId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// !/usr/bin/env sh
+// Tokens can be imported using their identifiers in the format `user_id!token_name`, e.g.:
+//
+// ```sh
+// $ pulumi import proxmoxve:user/token:Token token1 user@pve!token1
+// ```
 type Token struct {
 	pulumi.CustomResourceState
 

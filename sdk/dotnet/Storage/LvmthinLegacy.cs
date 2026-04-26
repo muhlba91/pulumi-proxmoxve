@@ -41,6 +41,15 @@ namespace Pulumi.ProxmoxVE.Storage
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// Storage can be imported using its identifier, e.g.:
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:storage/lvmthinLegacy:LvmthinLegacy example local-lvm-thin
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:storage/lvmthinLegacy:LvmthinLegacy")]
     public partial class LvmthinLegacy : global::Pulumi.CustomResource

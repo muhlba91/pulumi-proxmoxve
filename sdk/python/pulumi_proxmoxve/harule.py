@@ -310,6 +310,61 @@ class Harule(pulumi.CustomResource):
         capabilities. For PVE 8 and earlier, use
         `Hagroup` instead.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        # Node Affinity Rule: assign VMs to preferred nodes with priorities.
+        # Non-strict rules allow failover to other nodes; strict rules do not.
+        prefer_node1 = proxmoxve.Harule("prefer_node1",
+            rule="prefer-node1",
+            type="node-affinity",
+            comment="Prefer node1 for these VMs",
+            resources=[
+                "vm:100",
+                "vm:101",
+            ],
+            nodes={
+                "node1": 2,
+                "node2": 1,
+                "node3": 1,
+            },
+            strict=False)
+        # Resource Affinity Rule (Positive): keep resources together on the same node.
+        keep_together = proxmoxve.Harule("keep_together",
+            rule="db-cluster-together",
+            type="resource-affinity",
+            comment="Keep database replicas on the same node",
+            resources=[
+                "vm:200",
+                "vm:201",
+            ],
+            affinity="positive")
+        # Resource Affinity Rule (Negative / Anti-Affinity): keep resources on
+        # separate nodes for high availability.
+        keep_apart = proxmoxve.Harule("keep_apart",
+            rule="db-cluster-apart",
+            type="resource-affinity",
+            comment="Spread database replicas across nodes",
+            resources=[
+                "vm:200",
+                "vm:201",
+                "vm:202",
+            ],
+            affinity="negative")
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        HA rules can be imported using their name, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:index/harule:Harule example prefer-node1
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -335,6 +390,61 @@ class Harule(pulumi.CustomResource):
         have been replaced by HA rules, which provide node affinity and resource affinity
         capabilities. For PVE 8 and earlier, use
         `Hagroup` instead.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        # Node Affinity Rule: assign VMs to preferred nodes with priorities.
+        # Non-strict rules allow failover to other nodes; strict rules do not.
+        prefer_node1 = proxmoxve.Harule("prefer_node1",
+            rule="prefer-node1",
+            type="node-affinity",
+            comment="Prefer node1 for these VMs",
+            resources=[
+                "vm:100",
+                "vm:101",
+            ],
+            nodes={
+                "node1": 2,
+                "node2": 1,
+                "node3": 1,
+            },
+            strict=False)
+        # Resource Affinity Rule (Positive): keep resources together on the same node.
+        keep_together = proxmoxve.Harule("keep_together",
+            rule="db-cluster-together",
+            type="resource-affinity",
+            comment="Keep database replicas on the same node",
+            resources=[
+                "vm:200",
+                "vm:201",
+            ],
+            affinity="positive")
+        # Resource Affinity Rule (Negative / Anti-Affinity): keep resources on
+        # separate nodes for high availability.
+        keep_apart = proxmoxve.Harule("keep_apart",
+            rule="db-cluster-apart",
+            type="resource-affinity",
+            comment="Spread database replicas across nodes",
+            resources=[
+                "vm:200",
+                "vm:201",
+                "vm:202",
+            ],
+            affinity="negative")
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        HA rules can be imported using their name, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:index/harule:Harule example prefer-node1
+        ```
 
 
         :param str resource_name: The name of the resource.

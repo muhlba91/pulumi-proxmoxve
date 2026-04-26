@@ -518,6 +518,33 @@ class Pbs(pulumi.CustomResource):
         """
         Manages a Proxmox Backup Server (PBS) storage in Proxmox VE.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.storage.Pbs("example",
+            resource_id="example-pbs",
+            nodes=["pve"],
+            server="pbs.example.local",
+            datastore="backup",
+            username="pbs-user",
+            password="pbs-password",
+            fingerprint="AA:BB:CC:DD:EE:FF",
+            contents=["backup"],
+            generate_encryption_key=True)
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        Storage can be imported using its identifier, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:storage/pbs:Pbs example pbs-backup
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -543,6 +570,33 @@ class Pbs(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Proxmox Backup Server (PBS) storage in Proxmox VE.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.storage.Pbs("example",
+            resource_id="example-pbs",
+            nodes=["pve"],
+            server="pbs.example.local",
+            datastore="backup",
+            username="pbs-user",
+            password="pbs-password",
+            fingerprint="AA:BB:CC:DD:EE:FF",
+            contents=["backup"],
+            generate_encryption_key=True)
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        Storage can be imported using its identifier, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:storage/pbs:Pbs example pbs-backup
+        ```
 
 
         :param str resource_name: The name of the resource.

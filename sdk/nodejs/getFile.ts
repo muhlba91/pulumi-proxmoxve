@@ -6,6 +6,62 @@ import * as utilities from "./utilities";
 
 /**
  * Retrieves information about an existing file in a Proxmox Virtual Environment node.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const ubuntuIso = proxmoxve.getFile({
+ *     nodeName: "pve",
+ *     datastoreId: "local",
+ *     contentType: "iso",
+ *     fileName: "ubuntu-22.04.3-live-server-amd64.iso",
+ * });
+ * const ubuntuContainerTemplate = proxmoxve.getFile({
+ *     nodeName: "pve",
+ *     datastoreId: "local",
+ *     contentType: "vztmpl",
+ *     fileName: "ubuntu-22.04-standard_22.04-1_amd64.tar.zst",
+ * });
+ * const cloudInitSnippet = proxmoxve.getFile({
+ *     nodeName: "pve",
+ *     datastoreId: "local",
+ *     contentType: "snippets",
+ *     fileName: "cloud-init-config.yaml",
+ * });
+ * const importedFile = proxmoxve.getFile({
+ *     nodeName: "pve",
+ *     datastoreId: "local",
+ *     contentType: "import",
+ *     fileName: "imported-config.yaml",
+ * });
+ * export const ubuntuIsoId = ubuntuIso.then(ubuntuIso => ubuntuIso.id);
+ * export const ubuntuIsoSize = ubuntuIso.then(ubuntuIso => ubuntuIso.fileSize);
+ * export const containerTemplateFormat = ubuntuContainerTemplate.then(ubuntuContainerTemplate => ubuntuContainerTemplate.fileFormat);
+ * const example = new proxmoxve.Vm("example", {
+ *     nodeName: "pve",
+ *     vmId: 100,
+ *     cdrom: [{
+ *         fileId: ubuntuIso.then(ubuntuIso => ubuntuIso.id),
+ *     }],
+ *     cpu: {
+ *         cores: 2,
+ *     },
+ *     memory: [{
+ *         dedicated: 2048,
+ *     }],
+ *     disk: [{
+ *         datastoreId: "local-lvm",
+ *         fileFormat: "qcow2",
+ *         size: 20,
+ *     }],
+ *     networkDevice: [{
+ *         bridge: "vmbr0",
+ *     }],
+ * });
+ * ```
  */
 export function getFile(args: GetFileArgs, opts?: pulumi.InvokeOptions): Promise<GetFileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -78,6 +134,62 @@ export interface GetFileResult {
 }
 /**
  * Retrieves information about an existing file in a Proxmox Virtual Environment node.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const ubuntuIso = proxmoxve.getFile({
+ *     nodeName: "pve",
+ *     datastoreId: "local",
+ *     contentType: "iso",
+ *     fileName: "ubuntu-22.04.3-live-server-amd64.iso",
+ * });
+ * const ubuntuContainerTemplate = proxmoxve.getFile({
+ *     nodeName: "pve",
+ *     datastoreId: "local",
+ *     contentType: "vztmpl",
+ *     fileName: "ubuntu-22.04-standard_22.04-1_amd64.tar.zst",
+ * });
+ * const cloudInitSnippet = proxmoxve.getFile({
+ *     nodeName: "pve",
+ *     datastoreId: "local",
+ *     contentType: "snippets",
+ *     fileName: "cloud-init-config.yaml",
+ * });
+ * const importedFile = proxmoxve.getFile({
+ *     nodeName: "pve",
+ *     datastoreId: "local",
+ *     contentType: "import",
+ *     fileName: "imported-config.yaml",
+ * });
+ * export const ubuntuIsoId = ubuntuIso.then(ubuntuIso => ubuntuIso.id);
+ * export const ubuntuIsoSize = ubuntuIso.then(ubuntuIso => ubuntuIso.fileSize);
+ * export const containerTemplateFormat = ubuntuContainerTemplate.then(ubuntuContainerTemplate => ubuntuContainerTemplate.fileFormat);
+ * const example = new proxmoxve.Vm("example", {
+ *     nodeName: "pve",
+ *     vmId: 100,
+ *     cdrom: [{
+ *         fileId: ubuntuIso.then(ubuntuIso => ubuntuIso.id),
+ *     }],
+ *     cpu: {
+ *         cores: 2,
+ *     },
+ *     memory: [{
+ *         dedicated: 2048,
+ *     }],
+ *     disk: [{
+ *         datastoreId: "local-lvm",
+ *         fileFormat: "qcow2",
+ *         size: 20,
+ *     }],
+ *     networkDevice: [{
+ *         bridge: "vmbr0",
+ *     }],
+ * });
+ * ```
  */
 export function getFileOutput(args: GetFileOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFileResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

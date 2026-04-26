@@ -11,6 +11,39 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
 {
     /// <summary>
     /// VLAN Zone in Proxmox SDN. It uses an existing local Linux or OVS bridge to connect to the node's physical interface. It uses VLAN tagging defined in the VNet to isolate the network segments. This allows connectivity of VMs between different nodes.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new ProxmoxVE.Sdn.Zone.Vlan("example", new()
+    ///     {
+    ///         ResourceId = "vlan1",
+    ///         Bridge = "vmbr0",
+    ///         Mtu = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1500) (example.pp:3,16-20)),
+    ///         Dns = "1.1.1.1",
+    ///         DnsZone = "example.com",
+    ///         Ipam = "pve",
+    ///         ReverseDns = "1.1.1.1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// VLAN SDN zone can be imported using its unique identifier (zone ID)
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:sdn/zone/vlan:Vlan example vlan1
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:sdn/zone/vlan:Vlan")]
     public partial class Vlan : global::Pulumi.CustomResource

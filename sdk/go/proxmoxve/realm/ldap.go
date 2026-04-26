@@ -22,6 +22,43 @@ import (
 // |-----------------|----------------|
 // | /access/domains | Realm.Allocate |
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/realm"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := realm.NewLdap(ctx, "example", &realm.LdapArgs{
+//				Realm:        pulumi.String("example-ldap"),
+//				Server1:      pulumi.String("ldap.example.com"),
+//				Port:         pulumi.Int(389),
+//				BaseDn:       pulumi.String("ou=people,dc=example,dc=com"),
+//				UserAttr:     pulumi.String("uid"),
+//				BindDn:       pulumi.String("cn=admin,dc=example,dc=com"),
+//				BindPassword: pulumi.Any(ldapBindPassword),
+//				Mode:         pulumi.String("ldap+starttls"),
+//				Verify:       pulumi.Bool(true),
+//				GroupDn:      pulumi.String("ou=groups,dc=example,dc=com"),
+//				GroupFilter:  pulumi.String("(objectClass=groupOfNames)"),
+//				Comment:      pulumi.String("Example LDAP realm managed by Terraform"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Notes
 //
 // ### Password Security
@@ -146,6 +183,17 @@ import (
 // - [Proxmox VE User Management](https://pve.proxmox.com/wiki/User_Management)
 // - [Proxmox VE LDAP Authentication](https://pve.proxmox.com/wiki/User_Management#pveum_ldap)
 // - [Proxmox API: /access/domains](https://pve.proxmox.com/pve-docs/api-viewer/index.html#/access/domains)
+//
+// ## Import
+//
+// !/usr/bin/env sh
+// LDAP realms can be imported using the realm identifier, e.g.:
+//
+// ```sh
+// $ pulumi import proxmoxve:realm/ldap:Ldap example example.com
+// ```
+//
+// > When importing, the `bindPassword` attribute cannot be imported since it's not returned by the Proxmox API. You'll need to set this attribute in your Terraform configuration after the import to manage it with Terraform.
 type Ldap struct {
 	pulumi.CustomResourceState
 

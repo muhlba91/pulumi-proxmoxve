@@ -20,6 +20,70 @@ import javax.annotation.Nullable;
  * 
  * &gt; This resource requires the `Pool.Allocate` permission on the pool path (e.g., `/pool/{poolid}`).
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.Vm;
+ * import io.muehlbachler.pulumi.proxmoxve.VmArgs;
+ * import io.muehlbachler.pulumi.proxmoxve.PoolLegacy;
+ * import io.muehlbachler.pulumi.proxmoxve.PoolLegacyArgs;
+ * import io.muehlbachler.pulumi.proxmoxve.pool.Membership;
+ * import io.muehlbachler.pulumi.proxmoxve.pool.MembershipArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var testVm1 = new Vm("testVm1", VmArgs.builder()
+ *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1234) (example.pp:2,19-23)))
+ *             .nodeName("pve")
+ *             .started(false)
+ *             .build());
+ * 
+ *         var testPool = new PoolLegacy("testPool", PoolLegacyArgs.builder()
+ *             .poolId("test-pool")
+ *             .build());
+ * 
+ *         var vmMembership = new Membership("vmMembership", MembershipArgs.builder()
+ *             .poolId(testPool.id())
+ *             .vmId(testVm1.resourceId())
+ *             .build());
+ * 
+ *         var storageMembership = new Membership("storageMembership", MembershipArgs.builder()
+ *             .poolId(testPool.id())
+ *             .storageId("local-lvm")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * !/usr/bin/env sh
+ * Resource pool membership can be imported using its unique identifier, e.g.: {pool_id}/{type}/{member_id}
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:pool/membership:Membership example_membership test-pool/vm/102
+ * ```
+ * 
  */
 @ResourceType(type="proxmoxve:pool/membership:Membership")
 public class Membership extends com.pulumi.resources.CustomResource {

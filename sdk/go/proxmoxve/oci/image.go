@@ -13,6 +13,54 @@ import (
 )
 
 // Manages OCI images pulled from OCI registries using PVE oci-registry-pull API. Pulls OCI container images and stores them as tar files in Proxmox VE datastores.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/oci"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := oci.NewImage(ctx, "ubuntu_latest", &oci.ImageArgs{
+//				NodeName:    pulumi.String("pve"),
+//				DatastoreId: pulumi.String("local"),
+//				Reference:   pulumi.String("docker.io/library/ubuntu:latest"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oci.NewImage(ctx, "nginx", &oci.ImageArgs{
+//				NodeName:    pulumi.String("pve"),
+//				DatastoreId: pulumi.String("local"),
+//				Reference:   pulumi.String("docker.io/library/nginx:alpine"),
+//				FileName:    pulumi.String("custom_image_name.tar"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = oci.NewImage(ctx, "debian", &oci.ImageArgs{
+//				NodeName:           pulumi.String("pve"),
+//				DatastoreId:        pulumi.String("local"),
+//				Reference:          pulumi.String("docker.io/library/debian:bookworm"),
+//				UploadTimeout:      pulumi.Int(900),
+//				Overwrite:          pulumi.Bool(false),
+//				OverwriteUnmanaged: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type Image struct {
 	pulumi.CustomResourceState
 

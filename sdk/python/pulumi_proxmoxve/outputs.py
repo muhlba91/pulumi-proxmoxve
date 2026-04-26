@@ -94,10 +94,12 @@ __all__ = [
     'GetReplicationsLegacyReplicationResult',
     'GetReplicationsReplicationResult',
     'GetUserLegacyAclResult',
+    'GetVm2LegacyCdromResult',
     'GetVm2LegacyCpuResult',
     'GetVm2LegacyRngResult',
     'GetVm2LegacyTimeoutsResult',
     'GetVm2LegacyVgaResult',
+    'GetVmCdromResult',
     'GetVmCpuResult',
     'GetVmRngResult',
     'GetVmTimeoutsResult',
@@ -132,16 +134,23 @@ class ContainerLegacyClone(dict):
     def __init__(__self__, *,
                  vm_id: _builtins.int,
                  datastore_id: Optional[_builtins.str] = None,
+                 full: Optional[_builtins.bool] = None,
                  node_name: Optional[_builtins.str] = None):
         """
         :param _builtins.int vm_id: The identifier for the source container.
         :param _builtins.str datastore_id: The identifier for the target datastore.
+        :param _builtins.bool full: When cloning, create a full copy of all disks. Set
+               to `false` to create a linked clone. Linked clones require the source
+               container to be a template on storage that supports copy-on-write
+               (e.g. Ceph RBD) (defaults to `true`).
         :param _builtins.str node_name: The name of the source node (leave blank, if
                equal to the `node_name` argument).
         """
         pulumi.set(__self__, "vm_id", vm_id)
         if datastore_id is not None:
             pulumi.set(__self__, "datastore_id", datastore_id)
+        if full is not None:
+            pulumi.set(__self__, "full", full)
         if node_name is not None:
             pulumi.set(__self__, "node_name", node_name)
 
@@ -160,6 +169,17 @@ class ContainerLegacyClone(dict):
         The identifier for the target datastore.
         """
         return pulumi.get(self, "datastore_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def full(self) -> Optional[_builtins.bool]:
+        """
+        When cloning, create a full copy of all disks. Set
+        to `false` to create a linked clone. Linked clones require the source
+        container to be a template on storage that supports copy-on-write
+        (e.g. Ceph RBD) (defaults to `true`).
+        """
+        return pulumi.get(self, "full")
 
     @_builtins.property
     @pulumi.getter(name="nodeName")
@@ -238,16 +258,20 @@ class ContainerLegacyCpu(dict):
     def __init__(__self__, *,
                  architecture: Optional[_builtins.str] = None,
                  cores: Optional[_builtins.int] = None,
+                 limit: Optional[_builtins.float] = None,
                  units: Optional[_builtins.int] = None):
         """
         :param _builtins.str architecture: The CPU architecture (defaults to `amd64`).
         :param _builtins.int cores: The number of CPU cores (defaults to `1`).
+        :param _builtins.float limit: Limit of CPU usage. Value `0` indicates no limit (defaults to `0`).
         :param _builtins.int units: The CPU units (defaults to `1024`).
         """
         if architecture is not None:
             pulumi.set(__self__, "architecture", architecture)
         if cores is not None:
             pulumi.set(__self__, "cores", cores)
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
         if units is not None:
             pulumi.set(__self__, "units", units)
 
@@ -266,6 +290,14 @@ class ContainerLegacyCpu(dict):
         The number of CPU cores (defaults to `1`).
         """
         return pulumi.get(self, "cores")
+
+    @_builtins.property
+    @pulumi.getter
+    def limit(self) -> Optional[_builtins.float]:
+        """
+        Limit of CPU usage. Value `0` indicates no limit (defaults to `0`).
+        """
+        return pulumi.get(self, "limit")
 
     @_builtins.property
     @pulumi.getter
@@ -1088,7 +1120,9 @@ class ContainerLegacyNetworkInterface(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "macAddress":
+        if key == "hostManaged":
+            suggest = "host_managed"
+        elif key == "macAddress":
             suggest = "mac_address"
         elif key == "rateLimit":
             suggest = "rate_limit"
@@ -1111,6 +1145,7 @@ class ContainerLegacyNetworkInterface(dict):
                  bridge: Optional[_builtins.str] = None,
                  enabled: Optional[_builtins.bool] = None,
                  firewall: Optional[_builtins.bool] = None,
+                 host_managed: Optional[_builtins.bool] = None,
                  mac_address: Optional[_builtins.str] = None,
                  mtu: Optional[_builtins.int] = None,
                  rate_limit: Optional[_builtins.float] = None,
@@ -1123,6 +1158,9 @@ class ContainerLegacyNetworkInterface(dict):
                to `true`).
         :param _builtins.bool firewall: Whether this interface's firewall rules should be
                used (defaults to `false`).
+        :param _builtins.bool host_managed: Whether the host runs DHCP on this interface's
+               behalf (defaults to `false`). Requires Proxmox VE 9.0+. Required for
+               application containers that do not include a DHCP client.
         :param _builtins.str mac_address: The MAC address.
         :param _builtins.int mtu: Maximum transfer unit of the interface. Cannot be
                larger than the bridge's MTU.
@@ -1136,6 +1174,8 @@ class ContainerLegacyNetworkInterface(dict):
             pulumi.set(__self__, "enabled", enabled)
         if firewall is not None:
             pulumi.set(__self__, "firewall", firewall)
+        if host_managed is not None:
+            pulumi.set(__self__, "host_managed", host_managed)
         if mac_address is not None:
             pulumi.set(__self__, "mac_address", mac_address)
         if mtu is not None:
@@ -1179,6 +1219,16 @@ class ContainerLegacyNetworkInterface(dict):
         used (defaults to `false`).
         """
         return pulumi.get(self, "firewall")
+
+    @_builtins.property
+    @pulumi.getter(name="hostManaged")
+    def host_managed(self) -> Optional[_builtins.bool]:
+        """
+        Whether the host runs DHCP on this interface's
+        behalf (defaults to `false`). Requires Proxmox VE 9.0+. Required for
+        application containers that do not include a DHCP client.
+        """
+        return pulumi.get(self, "host_managed")
 
     @_builtins.property
     @pulumi.getter(name="macAddress")
@@ -1786,7 +1836,7 @@ class Vm2LegacyCdrom(dict):
     def __init__(__self__, *,
                  file_id: Optional[_builtins.str] = None):
         """
-        :param _builtins.str file_id: The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+        :param _builtins.str file_id: The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
         """
         if file_id is not None:
             pulumi.set(__self__, "file_id", file_id)
@@ -1795,7 +1845,7 @@ class Vm2LegacyCdrom(dict):
     @pulumi.getter(name="fileId")
     def file_id(self) -> Optional[_builtins.str]:
         """
-        The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+        The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
         """
         return pulumi.get(self, "file_id")
 
@@ -1807,23 +1857,23 @@ class Vm2LegacyCpu(dict):
                  architecture: Optional[_builtins.str] = None,
                  cores: Optional[_builtins.int] = None,
                  flags: Optional[Sequence[_builtins.str]] = None,
-                 hotplugged: Optional[_builtins.int] = None,
                  limit: Optional[_builtins.float] = None,
                  numa: Optional[_builtins.bool] = None,
                  sockets: Optional[_builtins.int] = None,
                  type: Optional[_builtins.str] = None,
-                 units: Optional[_builtins.int] = None):
+                 units: Optional[_builtins.int] = None,
+                 vcpus: Optional[_builtins.int] = None):
         """
         :param _builtins.str affinity: The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
         :param _builtins.str architecture: The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
-        :param _builtins.int cores: The number of CPU cores per socket (defaults to `1`).
+        :param _builtins.int cores: The number of CPU cores per socket (PVE defaults to `1` when unset).
         :param Sequence[_builtins.str] flags: Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
-        :param _builtins.int hotplugged: The number of hotplugged vCPUs (defaults to `0`).
-        :param _builtins.float limit: Limit of CPU usage (defaults to `0` which means no limit).
-        :param _builtins.bool numa: Enable NUMA (defaults to `false`).
-        :param _builtins.int sockets: The number of CPU sockets (defaults to `1`).
-        :param _builtins.str type: Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
-        :param _builtins.int units: CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+        :param _builtins.float limit: Limit of CPU usage. `0` means no limit (PVE default).
+        :param _builtins.bool numa: Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
+        :param _builtins.int sockets: The number of CPU sockets (PVE defaults to `1` when unset).
+        :param _builtins.str type: Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
+        :param _builtins.int units: CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
+        :param _builtins.int vcpus: Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
         """
         if affinity is not None:
             pulumi.set(__self__, "affinity", affinity)
@@ -1833,8 +1883,6 @@ class Vm2LegacyCpu(dict):
             pulumi.set(__self__, "cores", cores)
         if flags is not None:
             pulumi.set(__self__, "flags", flags)
-        if hotplugged is not None:
-            pulumi.set(__self__, "hotplugged", hotplugged)
         if limit is not None:
             pulumi.set(__self__, "limit", limit)
         if numa is not None:
@@ -1845,6 +1893,8 @@ class Vm2LegacyCpu(dict):
             pulumi.set(__self__, "type", type)
         if units is not None:
             pulumi.set(__self__, "units", units)
+        if vcpus is not None:
+            pulumi.set(__self__, "vcpus", vcpus)
 
     @_builtins.property
     @pulumi.getter
@@ -1866,7 +1916,7 @@ class Vm2LegacyCpu(dict):
     @pulumi.getter
     def cores(self) -> Optional[_builtins.int]:
         """
-        The number of CPU cores per socket (defaults to `1`).
+        The number of CPU cores per socket (PVE defaults to `1` when unset).
         """
         return pulumi.get(self, "cores")
 
@@ -1880,17 +1930,9 @@ class Vm2LegacyCpu(dict):
 
     @_builtins.property
     @pulumi.getter
-    def hotplugged(self) -> Optional[_builtins.int]:
-        """
-        The number of hotplugged vCPUs (defaults to `0`).
-        """
-        return pulumi.get(self, "hotplugged")
-
-    @_builtins.property
-    @pulumi.getter
     def limit(self) -> Optional[_builtins.float]:
         """
-        Limit of CPU usage (defaults to `0` which means no limit).
+        Limit of CPU usage. `0` means no limit (PVE default).
         """
         return pulumi.get(self, "limit")
 
@@ -1898,7 +1940,7 @@ class Vm2LegacyCpu(dict):
     @pulumi.getter
     def numa(self) -> Optional[_builtins.bool]:
         """
-        Enable NUMA (defaults to `false`).
+        Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
         """
         return pulumi.get(self, "numa")
 
@@ -1906,7 +1948,7 @@ class Vm2LegacyCpu(dict):
     @pulumi.getter
     def sockets(self) -> Optional[_builtins.int]:
         """
-        The number of CPU sockets (defaults to `1`).
+        The number of CPU sockets (PVE defaults to `1` when unset).
         """
         return pulumi.get(self, "sockets")
 
@@ -1914,7 +1956,7 @@ class Vm2LegacyCpu(dict):
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
         """
-        Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+        Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
         """
         return pulumi.get(self, "type")
 
@@ -1922,9 +1964,17 @@ class Vm2LegacyCpu(dict):
     @pulumi.getter
     def units(self) -> Optional[_builtins.int]:
         """
-        CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+        CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
         """
         return pulumi.get(self, "units")
+
+    @_builtins.property
+    @pulumi.getter
+    def vcpus(self) -> Optional[_builtins.int]:
+        """
+        Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+        """
+        return pulumi.get(self, "vcpus")
 
 
 @pulumi.output_type
@@ -1951,8 +2001,8 @@ class Vm2LegacyRng(dict):
                  period: Optional[_builtins.int] = None,
                  source: Optional[_builtins.str] = None):
         """
-        :param _builtins.int max_bytes: Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
-        :param _builtins.int period: Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+        :param _builtins.int max_bytes: Maximum bytes of entropy allowed to get injected into the guest every period.
+        :param _builtins.int period: Period in milliseconds to limit entropy injection to the guest.
         :param _builtins.str source: The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
         """
         if max_bytes is not None:
@@ -1966,7 +2016,7 @@ class Vm2LegacyRng(dict):
     @pulumi.getter(name="maxBytes")
     def max_bytes(self) -> Optional[_builtins.int]:
         """
-        Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+        Maximum bytes of entropy allowed to get injected into the guest every period.
         """
         return pulumi.get(self, "max_bytes")
 
@@ -1974,7 +2024,7 @@ class Vm2LegacyRng(dict):
     @pulumi.getter
     def period(self) -> Optional[_builtins.int]:
         """
-        Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+        Period in milliseconds to limit entropy injection to the guest.
         """
         return pulumi.get(self, "period")
 
@@ -2107,7 +2157,7 @@ class VmCdrom(dict):
     def __init__(__self__, *,
                  file_id: Optional[_builtins.str] = None):
         """
-        :param _builtins.str file_id: The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+        :param _builtins.str file_id: The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
         """
         if file_id is not None:
             pulumi.set(__self__, "file_id", file_id)
@@ -2116,7 +2166,7 @@ class VmCdrom(dict):
     @pulumi.getter(name="fileId")
     def file_id(self) -> Optional[_builtins.str]:
         """
-        The file ID of the CD-ROM, or `cdrom|none`. Defaults to `none` to leave the CD-ROM empty. Use `cdrom` to connect to the physical drive.
+        The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
         """
         return pulumi.get(self, "file_id")
 
@@ -2128,23 +2178,23 @@ class VmCpu(dict):
                  architecture: Optional[_builtins.str] = None,
                  cores: Optional[_builtins.int] = None,
                  flags: Optional[Sequence[_builtins.str]] = None,
-                 hotplugged: Optional[_builtins.int] = None,
                  limit: Optional[_builtins.float] = None,
                  numa: Optional[_builtins.bool] = None,
                  sockets: Optional[_builtins.int] = None,
                  type: Optional[_builtins.str] = None,
-                 units: Optional[_builtins.int] = None):
+                 units: Optional[_builtins.int] = None,
+                 vcpus: Optional[_builtins.int] = None):
         """
         :param _builtins.str affinity: The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
         :param _builtins.str architecture: The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
-        :param _builtins.int cores: The number of CPU cores per socket (defaults to `1`).
+        :param _builtins.int cores: The number of CPU cores per socket (PVE defaults to `1` when unset).
         :param Sequence[_builtins.str] flags: Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
-        :param _builtins.int hotplugged: The number of hotplugged vCPUs (defaults to `0`).
-        :param _builtins.float limit: Limit of CPU usage (defaults to `0` which means no limit).
-        :param _builtins.bool numa: Enable NUMA (defaults to `false`).
-        :param _builtins.int sockets: The number of CPU sockets (defaults to `1`).
-        :param _builtins.str type: Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
-        :param _builtins.int units: CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+        :param _builtins.float limit: Limit of CPU usage. `0` means no limit (PVE default).
+        :param _builtins.bool numa: Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
+        :param _builtins.int sockets: The number of CPU sockets (PVE defaults to `1` when unset).
+        :param _builtins.str type: Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
+        :param _builtins.int units: CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
+        :param _builtins.int vcpus: Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
         """
         if affinity is not None:
             pulumi.set(__self__, "affinity", affinity)
@@ -2154,8 +2204,6 @@ class VmCpu(dict):
             pulumi.set(__self__, "cores", cores)
         if flags is not None:
             pulumi.set(__self__, "flags", flags)
-        if hotplugged is not None:
-            pulumi.set(__self__, "hotplugged", hotplugged)
         if limit is not None:
             pulumi.set(__self__, "limit", limit)
         if numa is not None:
@@ -2166,6 +2214,8 @@ class VmCpu(dict):
             pulumi.set(__self__, "type", type)
         if units is not None:
             pulumi.set(__self__, "units", units)
+        if vcpus is not None:
+            pulumi.set(__self__, "vcpus", vcpus)
 
     @_builtins.property
     @pulumi.getter
@@ -2187,7 +2237,7 @@ class VmCpu(dict):
     @pulumi.getter
     def cores(self) -> Optional[_builtins.int]:
         """
-        The number of CPU cores per socket (defaults to `1`).
+        The number of CPU cores per socket (PVE defaults to `1` when unset).
         """
         return pulumi.get(self, "cores")
 
@@ -2201,17 +2251,9 @@ class VmCpu(dict):
 
     @_builtins.property
     @pulumi.getter
-    def hotplugged(self) -> Optional[_builtins.int]:
-        """
-        The number of hotplugged vCPUs (defaults to `0`).
-        """
-        return pulumi.get(self, "hotplugged")
-
-    @_builtins.property
-    @pulumi.getter
     def limit(self) -> Optional[_builtins.float]:
         """
-        Limit of CPU usage (defaults to `0` which means no limit).
+        Limit of CPU usage. `0` means no limit (PVE default).
         """
         return pulumi.get(self, "limit")
 
@@ -2219,7 +2261,7 @@ class VmCpu(dict):
     @pulumi.getter
     def numa(self) -> Optional[_builtins.bool]:
         """
-        Enable NUMA (defaults to `false`).
+        Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
         """
         return pulumi.get(self, "numa")
 
@@ -2227,7 +2269,7 @@ class VmCpu(dict):
     @pulumi.getter
     def sockets(self) -> Optional[_builtins.int]:
         """
-        The number of CPU sockets (defaults to `1`).
+        The number of CPU sockets (PVE defaults to `1` when unset).
         """
         return pulumi.get(self, "sockets")
 
@@ -2235,7 +2277,7 @@ class VmCpu(dict):
     @pulumi.getter
     def type(self) -> Optional[_builtins.str]:
         """
-        Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher (defaults to `kvm64`). See https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm*virtual*machines_settings for more information.
+        Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
         """
         return pulumi.get(self, "type")
 
@@ -2243,9 +2285,17 @@ class VmCpu(dict):
     @pulumi.getter
     def units(self) -> Optional[_builtins.int]:
         """
-        CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs.
+        CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
         """
         return pulumi.get(self, "units")
+
+    @_builtins.property
+    @pulumi.getter
+    def vcpus(self) -> Optional[_builtins.int]:
+        """
+        Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
+        """
+        return pulumi.get(self, "vcpus")
 
 
 @pulumi.output_type
@@ -3535,6 +3585,7 @@ class VmLegacyInitialization(dict):
                  meta_data_file_id: Optional[_builtins.str] = None,
                  network_data_file_id: Optional[_builtins.str] = None,
                  type: Optional[_builtins.str] = None,
+                 upgrade: Optional[_builtins.bool] = None,
                  user_account: Optional['outputs.VmLegacyInitializationUserAccount'] = None,
                  user_data_file_id: Optional[_builtins.str] = None,
                  vendor_data_file_id: Optional[_builtins.str] = None):
@@ -3555,6 +3606,9 @@ class VmLegacyInitialization(dict):
                network configuration data passed to the VM via cloud-init (conflicts
                with `ip_config`).
         :param _builtins.str type: The cloud-init configuration format
+        :param _builtins.bool upgrade: Whether to do an automatic package upgrade after
+               the first boot (defaults to `true`).
+               Setting this is only allowed for `root@pam` authenticated user.
         :param 'VmLegacyInitializationUserAccountArgs' user_account: The user account configuration (conflicts
                with `user_data_file_id`).
         :param _builtins.str user_data_file_id: The identifier for a file containing
@@ -3578,6 +3632,8 @@ class VmLegacyInitialization(dict):
             pulumi.set(__self__, "network_data_file_id", network_data_file_id)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if upgrade is not None:
+            pulumi.set(__self__, "upgrade", upgrade)
         if user_account is not None:
             pulumi.set(__self__, "user_account", user_account)
         if user_data_file_id is not None:
@@ -3656,6 +3712,16 @@ class VmLegacyInitialization(dict):
         The cloud-init configuration format
         """
         return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def upgrade(self) -> Optional[_builtins.bool]:
+        """
+        Whether to do an automatic package upgrade after
+        the first boot (defaults to `true`).
+        Setting this is only allowed for `root@pam` authenticated user.
+        """
+        return pulumi.get(self, "upgrade")
 
     @_builtins.property
     @pulumi.getter(name="userAccount")
@@ -4741,8 +4807,8 @@ class VmRng(dict):
                  period: Optional[_builtins.int] = None,
                  source: Optional[_builtins.str] = None):
         """
-        :param _builtins.int max_bytes: Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
-        :param _builtins.int period: Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+        :param _builtins.int max_bytes: Maximum bytes of entropy allowed to get injected into the guest every period.
+        :param _builtins.int period: Period in milliseconds to limit entropy injection to the guest.
         :param _builtins.str source: The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
         """
         if max_bytes is not None:
@@ -4756,7 +4822,7 @@ class VmRng(dict):
     @pulumi.getter(name="maxBytes")
     def max_bytes(self) -> Optional[_builtins.int]:
         """
-        Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+        Maximum bytes of entropy allowed to get injected into the guest every period.
         """
         return pulumi.get(self, "max_bytes")
 
@@ -4764,7 +4830,7 @@ class VmRng(dict):
     @pulumi.getter
     def period(self) -> Optional[_builtins.int]:
         """
-        Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+        Period in milliseconds to limit entropy injection to the guest.
         """
         return pulumi.get(self, "period")
 
@@ -5758,40 +5824,58 @@ class GetUserLegacyAclResult(dict):
 
 
 @pulumi.output_type
+class GetVm2LegacyCdromResult(dict):
+    def __init__(__self__, *,
+                 file_id: _builtins.str):
+        """
+        :param _builtins.str file_id: The file ID of the CD-ROM.
+        """
+        pulumi.set(__self__, "file_id", file_id)
+
+    @_builtins.property
+    @pulumi.getter(name="fileId")
+    def file_id(self) -> _builtins.str:
+        """
+        The file ID of the CD-ROM.
+        """
+        return pulumi.get(self, "file_id")
+
+
+@pulumi.output_type
 class GetVm2LegacyCpuResult(dict):
     def __init__(__self__, *,
                  affinity: _builtins.str,
                  architecture: _builtins.str,
                  cores: _builtins.int,
                  flags: Sequence[_builtins.str],
-                 hotplugged: _builtins.int,
                  limit: _builtins.float,
                  numa: _builtins.bool,
                  sockets: _builtins.int,
                  type: _builtins.str,
-                 units: _builtins.int):
+                 units: _builtins.int,
+                 vcpus: _builtins.int):
         """
         :param _builtins.str affinity: List of host cores used to execute guest processes, for example: '0,5,8-11'
         :param _builtins.str architecture: The CPU architecture.
         :param _builtins.int cores: The number of CPU cores per socket.
         :param Sequence[_builtins.str] flags: Set of additional CPU flags.
-        :param _builtins.int hotplugged: The number of hotplugged vCPUs.
         :param _builtins.float limit: Limit of CPU usage.
-        :param _builtins.bool numa: Enable NUMA.
+        :param _builtins.bool numa: Whether NUMA emulation is enabled.
         :param _builtins.int sockets: The number of CPU sockets.
         :param _builtins.str type: Emulated CPU type.
         :param _builtins.int units: CPU weight for a VM
+        :param _builtins.int vcpus: Number of active vCPUs.
         """
         pulumi.set(__self__, "affinity", affinity)
         pulumi.set(__self__, "architecture", architecture)
         pulumi.set(__self__, "cores", cores)
         pulumi.set(__self__, "flags", flags)
-        pulumi.set(__self__, "hotplugged", hotplugged)
         pulumi.set(__self__, "limit", limit)
         pulumi.set(__self__, "numa", numa)
         pulumi.set(__self__, "sockets", sockets)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "units", units)
+        pulumi.set(__self__, "vcpus", vcpus)
 
     @_builtins.property
     @pulumi.getter
@@ -5827,14 +5911,6 @@ class GetVm2LegacyCpuResult(dict):
 
     @_builtins.property
     @pulumi.getter
-    def hotplugged(self) -> _builtins.int:
-        """
-        The number of hotplugged vCPUs.
-        """
-        return pulumi.get(self, "hotplugged")
-
-    @_builtins.property
-    @pulumi.getter
     def limit(self) -> _builtins.float:
         """
         Limit of CPU usage.
@@ -5845,7 +5921,7 @@ class GetVm2LegacyCpuResult(dict):
     @pulumi.getter
     def numa(self) -> _builtins.bool:
         """
-        Enable NUMA.
+        Whether NUMA emulation is enabled.
         """
         return pulumi.get(self, "numa")
 
@@ -5872,6 +5948,14 @@ class GetVm2LegacyCpuResult(dict):
         CPU weight for a VM
         """
         return pulumi.get(self, "units")
+
+    @_builtins.property
+    @pulumi.getter
+    def vcpus(self) -> _builtins.int:
+        """
+        Number of active vCPUs.
+        """
+        return pulumi.get(self, "vcpus")
 
 
 @pulumi.output_type
@@ -5974,40 +6058,58 @@ class GetVm2LegacyVgaResult(dict):
 
 
 @pulumi.output_type
+class GetVmCdromResult(dict):
+    def __init__(__self__, *,
+                 file_id: _builtins.str):
+        """
+        :param _builtins.str file_id: The file ID of the CD-ROM.
+        """
+        pulumi.set(__self__, "file_id", file_id)
+
+    @_builtins.property
+    @pulumi.getter(name="fileId")
+    def file_id(self) -> _builtins.str:
+        """
+        The file ID of the CD-ROM.
+        """
+        return pulumi.get(self, "file_id")
+
+
+@pulumi.output_type
 class GetVmCpuResult(dict):
     def __init__(__self__, *,
                  affinity: _builtins.str,
                  architecture: _builtins.str,
                  cores: _builtins.int,
                  flags: Sequence[_builtins.str],
-                 hotplugged: _builtins.int,
                  limit: _builtins.float,
                  numa: _builtins.bool,
                  sockets: _builtins.int,
                  type: _builtins.str,
-                 units: _builtins.int):
+                 units: _builtins.int,
+                 vcpus: _builtins.int):
         """
         :param _builtins.str affinity: List of host cores used to execute guest processes, for example: '0,5,8-11'
         :param _builtins.str architecture: The CPU architecture.
         :param _builtins.int cores: The number of CPU cores per socket.
         :param Sequence[_builtins.str] flags: Set of additional CPU flags.
-        :param _builtins.int hotplugged: The number of hotplugged vCPUs.
         :param _builtins.float limit: Limit of CPU usage.
-        :param _builtins.bool numa: Enable NUMA.
+        :param _builtins.bool numa: Whether NUMA emulation is enabled.
         :param _builtins.int sockets: The number of CPU sockets.
         :param _builtins.str type: Emulated CPU type.
         :param _builtins.int units: CPU weight for a VM
+        :param _builtins.int vcpus: Number of active vCPUs.
         """
         pulumi.set(__self__, "affinity", affinity)
         pulumi.set(__self__, "architecture", architecture)
         pulumi.set(__self__, "cores", cores)
         pulumi.set(__self__, "flags", flags)
-        pulumi.set(__self__, "hotplugged", hotplugged)
         pulumi.set(__self__, "limit", limit)
         pulumi.set(__self__, "numa", numa)
         pulumi.set(__self__, "sockets", sockets)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "units", units)
+        pulumi.set(__self__, "vcpus", vcpus)
 
     @_builtins.property
     @pulumi.getter
@@ -6043,14 +6145,6 @@ class GetVmCpuResult(dict):
 
     @_builtins.property
     @pulumi.getter
-    def hotplugged(self) -> _builtins.int:
-        """
-        The number of hotplugged vCPUs.
-        """
-        return pulumi.get(self, "hotplugged")
-
-    @_builtins.property
-    @pulumi.getter
     def limit(self) -> _builtins.float:
         """
         Limit of CPU usage.
@@ -6061,7 +6155,7 @@ class GetVmCpuResult(dict):
     @pulumi.getter
     def numa(self) -> _builtins.bool:
         """
-        Enable NUMA.
+        Whether NUMA emulation is enabled.
         """
         return pulumi.get(self, "numa")
 
@@ -6088,6 +6182,14 @@ class GetVmCpuResult(dict):
         CPU weight for a VM
         """
         return pulumi.get(self, "units")
+
+    @_builtins.property
+    @pulumi.getter
+    def vcpus(self) -> _builtins.int:
+        """
+        Number of active vCPUs.
+        """
+        return pulumi.get(self, "vcpus")
 
 
 @pulumi.output_type

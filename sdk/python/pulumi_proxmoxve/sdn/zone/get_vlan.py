@@ -162,6 +162,25 @@ def get_vlan(id: Optional[_builtins.str] = None,
     """
     Retrieves information about a VLAN Zone in Proxmox SDN. It uses an existing local Linux or OVS bridge to connect to the node's physical interface. It uses VLAN tagging defined in the VNet to isolate the network segments. This allows connectivity of VMs between different nodes.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.sdn.zone.get_vlan(id="vlan1")
+    pulumi.export("dataProxmoxSdnZoneVlan", {
+        "id": example.id,
+        "nodes": example.nodes,
+        "bridge": example.bridge,
+        "mtu": example.mtu,
+        "dns": example.dns,
+        "dnsZone": example.dns_zone,
+        "ipam": example.ipam,
+        "reverseDns": example.reverse_dns,
+    })
+    ```
+
 
     :param _builtins.str id: The unique identifier of the SDN zone.
     """
@@ -185,6 +204,25 @@ def get_vlan_output(id: Optional[pulumi.Input[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVlanResult]:
     """
     Retrieves information about a VLAN Zone in Proxmox SDN. It uses an existing local Linux or OVS bridge to connect to the node's physical interface. It uses VLAN tagging defined in the VNet to isolate the network segments. This allows connectivity of VMs between different nodes.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.sdn.zone.get_vlan(id="vlan1")
+    pulumi.export("dataProxmoxSdnZoneVlan", {
+        "id": example.id,
+        "nodes": example.nodes,
+        "bridge": example.bridge,
+        "mtu": example.mtu,
+        "dns": example.dns,
+        "dnsZone": example.dns_zone,
+        "ipam": example.ipam,
+        "reverseDns": example.reverse_dns,
+    })
+    ```
 
 
     :param _builtins.str id: The unique identifier of the SDN zone.

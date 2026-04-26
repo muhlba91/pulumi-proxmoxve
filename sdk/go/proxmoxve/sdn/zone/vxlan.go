@@ -13,6 +13,51 @@ import (
 )
 
 // VXLAN Zone in Proxmox SDN. It establishes a tunnel (overlay) on top of an existing network (underlay). This encapsulates layer 2 Ethernet frames within layer 4 UDP datagrams using the default destination port 4789. You have to configure the underlay network yourself to enable UDP connectivity between all peers. Because VXLAN encapsulation uses 50 bytes, the MTU needs to be 50 bytes lower than the outgoing physical interface.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/sdn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sdn.NewVxlan(ctx, "example", &sdn.VxlanArgs{
+//				ResourceId: pulumi.String("vxlan1"),
+//				Peers: pulumi.StringArray{
+//					pulumi.String("10.0.0.1"),
+//					pulumi.String("10.0.0.2"),
+//					pulumi.String("10.0.0.3"),
+//				},
+//				Mtu:        pulumi.Int(1450),
+//				Dns:        pulumi.String("1.1.1.1"),
+//				DnsZone:    pulumi.String("example.com"),
+//				Ipam:       pulumi.String("pve"),
+//				ReverseDns: pulumi.String("1.1.1.1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// !/usr/bin/env sh
+// VXLAN SDN zone can be imported using its unique identifier (zone ID)
+//
+// ```sh
+// $ pulumi import proxmoxve:sdn/zone/vxlan:Vxlan example vxlan1
+// ```
 type Vxlan struct {
 	pulumi.CustomResourceState
 

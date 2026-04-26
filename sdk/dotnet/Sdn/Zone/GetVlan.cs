@@ -13,18 +13,114 @@ namespace Pulumi.ProxmoxVE.Sdn.Zone
     {
         /// <summary>
         /// Retrieves information about a VLAN Zone in Proxmox SDN. It uses an existing local Linux or OVS bridge to connect to the node's physical interface. It uses VLAN tagging defined in the VNet to isolate the network segments. This allows connectivity of VMs between different nodes.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = ProxmoxVE.Sdn.Zone.GetVlan.Invoke(new()
+        ///     {
+        ///         Id = "vlan1",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxSdnZoneVlan"] = 
+        ///         {
+        ///             { "id", example.Apply(getVlanResult =&gt; getVlanResult.Id) },
+        ///             { "nodes", example.Apply(getVlanResult =&gt; getVlanResult.Nodes) },
+        ///             { "bridge", example.Apply(getVlanResult =&gt; getVlanResult.Bridge) },
+        ///             { "mtu", example.Apply(getVlanResult =&gt; getVlanResult.Mtu) },
+        ///             { "dns", example.Apply(getVlanResult =&gt; getVlanResult.Dns) },
+        ///             { "dnsZone", example.Apply(getVlanResult =&gt; getVlanResult.DnsZone) },
+        ///             { "ipam", example.Apply(getVlanResult =&gt; getVlanResult.Ipam) },
+        ///             { "reverseDns", example.Apply(getVlanResult =&gt; getVlanResult.ReverseDns) },
+        ///         },
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetVlanResult> InvokeAsync(GetVlanArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVlanResult>("proxmoxve:sdn/zone/getVlan:getVlan", args ?? new GetVlanArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about a VLAN Zone in Proxmox SDN. It uses an existing local Linux or OVS bridge to connect to the node's physical interface. It uses VLAN tagging defined in the VNet to isolate the network segments. This allows connectivity of VMs between different nodes.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = ProxmoxVE.Sdn.Zone.GetVlan.Invoke(new()
+        ///     {
+        ///         Id = "vlan1",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxSdnZoneVlan"] = 
+        ///         {
+        ///             { "id", example.Apply(getVlanResult =&gt; getVlanResult.Id) },
+        ///             { "nodes", example.Apply(getVlanResult =&gt; getVlanResult.Nodes) },
+        ///             { "bridge", example.Apply(getVlanResult =&gt; getVlanResult.Bridge) },
+        ///             { "mtu", example.Apply(getVlanResult =&gt; getVlanResult.Mtu) },
+        ///             { "dns", example.Apply(getVlanResult =&gt; getVlanResult.Dns) },
+        ///             { "dnsZone", example.Apply(getVlanResult =&gt; getVlanResult.DnsZone) },
+        ///             { "ipam", example.Apply(getVlanResult =&gt; getVlanResult.Ipam) },
+        ///             { "reverseDns", example.Apply(getVlanResult =&gt; getVlanResult.ReverseDns) },
+        ///         },
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetVlanResult> Invoke(GetVlanInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVlanResult>("proxmoxve:sdn/zone/getVlan:getVlan", args ?? new GetVlanInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves information about a VLAN Zone in Proxmox SDN. It uses an existing local Linux or OVS bridge to connect to the node's physical interface. It uses VLAN tagging defined in the VNet to isolate the network segments. This allows connectivity of VMs between different nodes.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = ProxmoxVE.Sdn.Zone.GetVlan.Invoke(new()
+        ///     {
+        ///         Id = "vlan1",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["dataProxmoxSdnZoneVlan"] = 
+        ///         {
+        ///             { "id", example.Apply(getVlanResult =&gt; getVlanResult.Id) },
+        ///             { "nodes", example.Apply(getVlanResult =&gt; getVlanResult.Nodes) },
+        ///             { "bridge", example.Apply(getVlanResult =&gt; getVlanResult.Bridge) },
+        ///             { "mtu", example.Apply(getVlanResult =&gt; getVlanResult.Mtu) },
+        ///             { "dns", example.Apply(getVlanResult =&gt; getVlanResult.Dns) },
+        ///             { "dnsZone", example.Apply(getVlanResult =&gt; getVlanResult.DnsZone) },
+        ///             { "ipam", example.Apply(getVlanResult =&gt; getVlanResult.Ipam) },
+        ///             { "reverseDns", example.Apply(getVlanResult =&gt; getVlanResult.ReverseDns) },
+        ///         },
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetVlanResult> Invoke(GetVlanInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetVlanResult>("proxmoxve:sdn/zone/getVlan:getVlan", args ?? new GetVlanInvokeArgs(), options.WithDefaults());

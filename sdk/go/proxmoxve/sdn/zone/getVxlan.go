@@ -12,6 +12,42 @@ import (
 )
 
 // Retrieves information about a VXLAN Zone in Proxmox SDN. It establishes a tunnel (overlay) on top of an existing network (underlay). This encapsulates layer 2 Ethernet frames within layer 4 UDP datagrams using the default destination port 4789. You have to configure the underlay network yourself to enable UDP connectivity between all peers. Because VXLAN encapsulation uses 50 bytes, the MTU needs to be 50 bytes lower than the outgoing physical interface.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/sdn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := sdn.GetVxlan(ctx, &zone.GetVxlanArgs{
+//				Id: "vxlan1",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("dataProxmoxSdnZoneVxlan", pulumi.Map{
+//				"id":         example.Id,
+//				"nodes":      example.Nodes,
+//				"peers":      example.Peers,
+//				"mtu":        example.Mtu,
+//				"dns":        example.Dns,
+//				"dnsZone":    example.DnsZone,
+//				"ipam":       example.Ipam,
+//				"reverseDns": example.ReverseDns,
+//			})
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupVxlan(ctx *pulumi.Context, args *LookupVxlanArgs, opts ...pulumi.InvokeOption) (*LookupVxlanResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupVxlanResult

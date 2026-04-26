@@ -12,6 +12,33 @@ import (
 )
 
 // Retrieves a PCI hardware mapping from a Proxmox VE cluster.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/hardware"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := hardware.GetPci(ctx, &mapping.GetPciArgs{
+//				Name: "example",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("dataProxmoxHardwareMappingPci", example)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupPci(ctx *pulumi.Context, args *LookupPciArgs, opts ...pulumi.InvokeOption) (*LookupPciResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPciResult

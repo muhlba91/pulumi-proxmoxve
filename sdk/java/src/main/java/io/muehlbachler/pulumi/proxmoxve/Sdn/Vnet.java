@@ -21,6 +21,102 @@ import javax.annotation.Nullable;
 /**
  * Manages Proxmox VE SDN VNet.
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.sdn.Applier;
+ * import io.muehlbachler.pulumi.proxmoxve.sdn.Simple;
+ * import io.muehlbachler.pulumi.proxmoxve.sdn.SimpleArgs;
+ * import io.muehlbachler.pulumi.proxmoxve.sdn.Vnet;
+ * import io.muehlbachler.pulumi.proxmoxve.sdn.VnetArgs;
+ * import io.muehlbachler.pulumi.proxmoxve.sdn.ApplierArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var finalizer = new Applier("finalizer");
+ * 
+ *         // SDN Zone (Simple) - Basic zone for simple vnets
+ *         var exampleZone1 = new Simple("exampleZone1", SimpleArgs.builder()
+ *             .resourceId("zone1")
+ *             .mtu(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1500) (example.pp:7,16-20)))
+ *             .dns("1.1.1.1")
+ *             .dnsZone("example.com")
+ *             .ipam("pve")
+ *             .reverseDns("1.1.1.1")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(finalizer)
+ *                 .build());
+ * 
+ *         // SDN Zone (Simple) - Second zone for demonstration
+ *         var exampleZone2 = new Simple("exampleZone2", SimpleArgs.builder()
+ *             .resourceId("zone2")
+ *             .mtu(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1500) (example.pp:25,16-20)))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(finalizer)
+ *                 .build());
+ * 
+ *         // Basic VNet (Simple)
+ *         var basicVnet = new Vnet("basicVnet", VnetArgs.builder()
+ *             .resourceId("vnet1")
+ *             .zone(exampleZone1.resourceId())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(finalizer)
+ *                 .build());
+ * 
+ *         // VNet with Alias and Port Isolation
+ *         var isolatedVnet = new Vnet("isolatedVnet", VnetArgs.builder()
+ *             .resourceId("vnet2")
+ *             .zone(exampleZone2.resourceId())
+ *             .alias("Isolated VNet")
+ *             .isolatePorts(true)
+ *             .vlanAware(false)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(finalizer)
+ *                 .build());
+ * 
+ *         // SDN Applier for all resources
+ *         var vnetApplier = new Applier("vnetApplier", ApplierArgs.Empty, CustomResourceOptions.builder()
+ *             .dependsOn(            
+ *                 exampleZone1,
+ *                 exampleZone2,
+ *                 basicVnet,
+ *                 isolatedVnet)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * !/usr/bin/env sh
+ * SDN vnet can be imported using its unique identifier (vnet ID)
+ * 
+ * ```sh
+ * $ pulumi import proxmoxve:sdn/vnet:Vnet basic_vnet vnet1
+ * $ pulumi import proxmoxve:sdn/vnet:Vnet isolated_vnet vnet2
+ * ```
+ * 
  */
 @ResourceType(type="proxmoxve:sdn/vnet:Vnet")
 public class Vnet extends com.pulumi.resources.CustomResource {

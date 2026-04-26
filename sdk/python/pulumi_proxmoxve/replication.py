@@ -320,6 +320,22 @@ class Replication(pulumi.CustomResource):
         """
         Manages Proxmox VE Replication.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        # Replication
+        example_replication1 = proxmoxve.Replication("example_replication_1",
+            resource_id="100-0",
+            target="pve-02",
+            type="local",
+            disable=False,
+            comment="Replication to pve-02 every 30 min",
+            schedule="*/30")
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -339,6 +355,22 @@ class Replication(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages Proxmox VE Replication.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        # Replication
+        example_replication1 = proxmoxve.Replication("example_replication_1",
+            resource_id="100-0",
+            target="pve-02",
+            type="local",
+            disable=False,
+            comment="Replication to pve-02 every 30 min",
+            schedule="*/30")
+        ```
 
 
         :param str resource_name: The name of the resource.

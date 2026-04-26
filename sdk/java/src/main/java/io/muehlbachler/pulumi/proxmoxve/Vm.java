@@ -42,28 +42,28 @@ public class Vm extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="cdrom", refs={Map.class,String.class,VmCdrom.class}, tree="[0,1,2]")
-    private Output<Map<String,VmCdrom>> cdrom;
+    private Output</* @Nullable */ Map<String,VmCdrom>> cdrom;
 
     /**
      * @return The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that &lt;span pulumi-lang-nodejs=&#34;`q35`&#34; pulumi-lang-dotnet=&#34;`Q35`&#34; pulumi-lang-go=&#34;`q35`&#34; pulumi-lang-python=&#34;`q35`&#34; pulumi-lang-yaml=&#34;`q35`&#34; pulumi-lang-java=&#34;`q35`&#34;&gt;`q35`&lt;/span&gt; machine type only supports &lt;span pulumi-lang-nodejs=&#34;`ide0`&#34; pulumi-lang-dotnet=&#34;`Ide0`&#34; pulumi-lang-go=&#34;`ide0`&#34; pulumi-lang-python=&#34;`ide0`&#34; pulumi-lang-yaml=&#34;`ide0`&#34; pulumi-lang-java=&#34;`ide0`&#34;&gt;`ide0`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`ide2`&#34; pulumi-lang-dotnet=&#34;`Ide2`&#34; pulumi-lang-go=&#34;`ide2`&#34; pulumi-lang-python=&#34;`ide2`&#34; pulumi-lang-yaml=&#34;`ide2`&#34; pulumi-lang-java=&#34;`ide2`&#34;&gt;`ide2`&lt;/span&gt; of IDE interfaces.
      * 
      */
-    public Output<Map<String,VmCdrom>> cdrom() {
-        return this.cdrom;
+    public Output<Optional<Map<String,VmCdrom>>> cdrom() {
+        return Codegen.optional(this.cdrom);
     }
     /**
      * The CPU configuration.
      * 
      */
     @Export(name="cpu", refs={VmCpu.class}, tree="[0]")
-    private Output<VmCpu> cpu;
+    private Output</* @Nullable */ VmCpu> cpu;
 
     /**
      * @return The CPU configuration.
      * 
      */
-    public Output<VmCpu> cpu() {
-        return this.cpu;
+    public Output<Optional<VmCpu>> cpu() {
+        return Codegen.optional(this.cpu);
     }
     /**
      * Set to true to delete unreferenced disks on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
@@ -154,14 +154,14 @@ public class Vm extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="rng", refs={VmRng.class}, tree="[0]")
-    private Output<VmRng> rng;
+    private Output</* @Nullable */ VmRng> rng;
 
     /**
      * @return Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root{@literal @}pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
      * 
      */
-    public Output<VmRng> rng() {
-        return this.rng;
+    public Output<Optional<VmRng>> rng() {
+        return Codegen.optional(this.rng);
     }
     /**
      * Set to true to stop (rather than shutdown) the VM on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
@@ -216,14 +216,14 @@ public class Vm extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="vga", refs={VmVga.class}, tree="[0]")
-    private Output<VmVga> vga;
+    private Output</* @Nullable */ VmVga> vga;
 
     /**
      * @return Configure the VGA Hardware. If you want to use high resolution modes (&gt;= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is &lt;span pulumi-lang-nodejs=&#34;`std`&#34; pulumi-lang-dotnet=&#34;`Std`&#34; pulumi-lang-go=&#34;`std`&#34; pulumi-lang-python=&#34;`std`&#34; pulumi-lang-yaml=&#34;`std`&#34; pulumi-lang-java=&#34;`std`&#34;&gt;`std`&lt;/span&gt; for all OS types besides some Windows versions (XP and older) which use &lt;span pulumi-lang-nodejs=&#34;`cirrus`&#34; pulumi-lang-dotnet=&#34;`Cirrus`&#34; pulumi-lang-go=&#34;`cirrus`&#34; pulumi-lang-python=&#34;`cirrus`&#34; pulumi-lang-yaml=&#34;`cirrus`&#34; pulumi-lang-java=&#34;`cirrus`&#34;&gt;`cirrus`&lt;/span&gt;. The &lt;span pulumi-lang-nodejs=&#34;`qxl`&#34; pulumi-lang-dotnet=&#34;`Qxl`&#34; pulumi-lang-go=&#34;`qxl`&#34; pulumi-lang-python=&#34;`qxl`&#34; pulumi-lang-yaml=&#34;`qxl`&#34; pulumi-lang-java=&#34;`qxl`&#34;&gt;`qxl`&lt;/span&gt; option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
      * 
      */
-    public Output<VmVga> vga() {
-        return this.vga;
+    public Output<Optional<VmVga>> vga() {
+        return Codegen.optional(this.vga);
     }
 
     /**

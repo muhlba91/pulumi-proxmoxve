@@ -17,14 +17,14 @@ public final class VmLegacyRngArgs extends com.pulumi.resources.ResourceArgs {
     public static final VmLegacyRngArgs Empty = new VmLegacyRngArgs();
 
     /**
-     * Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+     * Maximum bytes of entropy allowed to get injected into the guest every period.
      * 
      */
     @Import(name="maxBytes")
     private @Nullable Output<Integer> maxBytes;
 
     /**
-     * @return Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+     * @return Maximum bytes of entropy allowed to get injected into the guest every period.
      * 
      */
     public Optional<Output<Integer>> maxBytes() {
@@ -32,14 +32,14 @@ public final class VmLegacyRngArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+     * Period in milliseconds to limit entropy injection to the guest.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+     * @return Period in milliseconds to limit entropy injection to the guest.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -88,7 +88,7 @@ public final class VmLegacyRngArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxBytes Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+         * @param maxBytes Maximum bytes of entropy allowed to get injected into the guest every period.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class VmLegacyRngArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxBytes Maximum bytes of entropy allowed to get injected into the guest every period. Use 0 to disable limiting (potentially dangerous).
+         * @param maxBytes Maximum bytes of entropy allowed to get injected into the guest every period.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class VmLegacyRngArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+         * @param period Period in milliseconds to limit entropy injection to the guest.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class VmLegacyRngArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period Period in milliseconds to limit entropy injection to the guest. Use 0 to disable limiting (potentially dangerous).
+         * @param period Period in milliseconds to limit entropy injection to the guest.
          * 
          * @return builder
          * 

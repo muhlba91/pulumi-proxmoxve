@@ -30,6 +30,11 @@ public final class Ssh {
      */
     private @Nullable String agentSocket;
     /**
+     * @return The method used to resolve node IP addresses for SSH connections. Set to &lt;span pulumi-lang-nodejs=&#34;`dns`&#34; pulumi-lang-dotnet=&#34;`Dns`&#34; pulumi-lang-go=&#34;`dns`&#34; pulumi-lang-python=&#34;`dns`&#34; pulumi-lang-yaml=&#34;`dns`&#34; pulumi-lang-java=&#34;`dns`&#34;&gt;`dns`&lt;/span&gt; to skip the Proxmox API-based resolution and use local DNS instead. DNS resolution prefers IPv4 but falls back to IPv6 if no IPv4 addresses are available. Useful in multi-subnet environments where the API may return an inaccessible IP. Defaults to &lt;span pulumi-lang-nodejs=&#34;`api`&#34; pulumi-lang-dotnet=&#34;`Api`&#34; pulumi-lang-go=&#34;`api`&#34; pulumi-lang-python=&#34;`api`&#34; pulumi-lang-yaml=&#34;`api`&#34; pulumi-lang-java=&#34;`api`&#34;&gt;`api`&lt;/span&gt;.
+     * 
+     */
+    private @Nullable String nodeAddressSource;
+    /**
      * @return Overrides for SSH connection configuration for a Proxmox VE node.
      * 
      */
@@ -86,6 +91,13 @@ public final class Ssh {
      */
     public Optional<String> agentSocket() {
         return Optional.ofNullable(this.agentSocket);
+    }
+    /**
+     * @return The method used to resolve node IP addresses for SSH connections. Set to &lt;span pulumi-lang-nodejs=&#34;`dns`&#34; pulumi-lang-dotnet=&#34;`Dns`&#34; pulumi-lang-go=&#34;`dns`&#34; pulumi-lang-python=&#34;`dns`&#34; pulumi-lang-yaml=&#34;`dns`&#34; pulumi-lang-java=&#34;`dns`&#34;&gt;`dns`&lt;/span&gt; to skip the Proxmox API-based resolution and use local DNS instead. DNS resolution prefers IPv4 but falls back to IPv6 if no IPv4 addresses are available. Useful in multi-subnet environments where the API may return an inaccessible IP. Defaults to &lt;span pulumi-lang-nodejs=&#34;`api`&#34; pulumi-lang-dotnet=&#34;`Api`&#34; pulumi-lang-go=&#34;`api`&#34; pulumi-lang-python=&#34;`api`&#34; pulumi-lang-yaml=&#34;`api`&#34; pulumi-lang-java=&#34;`api`&#34;&gt;`api`&lt;/span&gt;.
+     * 
+     */
+    public Optional<String> nodeAddressSource() {
+        return Optional.ofNullable(this.nodeAddressSource);
     }
     /**
      * @return Overrides for SSH connection configuration for a Proxmox VE node.
@@ -149,6 +161,7 @@ public final class Ssh {
         private @Nullable Boolean agent;
         private @Nullable Boolean agentForwarding;
         private @Nullable String agentSocket;
+        private @Nullable String nodeAddressSource;
         private @Nullable List<SshNode> nodes;
         private @Nullable String password;
         private @Nullable String privateKey;
@@ -162,6 +175,7 @@ public final class Ssh {
     	      this.agent = defaults.agent;
     	      this.agentForwarding = defaults.agentForwarding;
     	      this.agentSocket = defaults.agentSocket;
+    	      this.nodeAddressSource = defaults.nodeAddressSource;
     	      this.nodes = defaults.nodes;
     	      this.password = defaults.password;
     	      this.privateKey = defaults.privateKey;
@@ -187,6 +201,12 @@ public final class Ssh {
         public Builder agentSocket(@Nullable String agentSocket) {
 
             this.agentSocket = agentSocket;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder nodeAddressSource(@Nullable String nodeAddressSource) {
+
+            this.nodeAddressSource = nodeAddressSource;
             return this;
         }
         @CustomType.Setter
@@ -239,6 +259,7 @@ public final class Ssh {
             _resultValue.agent = agent;
             _resultValue.agentForwarding = agentForwarding;
             _resultValue.agentSocket = agentSocket;
+            _resultValue.nodeAddressSource = nodeAddressSource;
             _resultValue.nodes = nodes;
             _resultValue.password = password;
             _resultValue.privateKey = privateKey;

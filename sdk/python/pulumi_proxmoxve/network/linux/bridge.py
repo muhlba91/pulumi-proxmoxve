@@ -42,7 +42,7 @@ class BridgeArgs:
         :param pulumi.Input[_builtins.str] gateway: Default gateway address.
         :param pulumi.Input[_builtins.str] gateway6: Default IPv6 gateway address.
         :param pulumi.Input[_builtins.int] mtu: The interface MTU.
-        :param pulumi.Input[_builtins.str] name: The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+        :param pulumi.Input[_builtins.str] name: The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ports: The interface bridge ports.
         :param pulumi.Input[_builtins.int] timeout_reload: Timeout for network reload operations in seconds (defaults to `100`).
         :param pulumi.Input[_builtins.bool] vlan_aware: Whether the interface bridge is VLAN aware (defaults to `false`).
@@ -171,7 +171,7 @@ class BridgeArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+        The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
         """
         return pulumi.get(self, "name")
 
@@ -241,7 +241,7 @@ class _BridgeState:
         :param pulumi.Input[_builtins.str] gateway: Default gateway address.
         :param pulumi.Input[_builtins.str] gateway6: Default IPv6 gateway address.
         :param pulumi.Input[_builtins.int] mtu: The interface MTU.
-        :param pulumi.Input[_builtins.str] name: The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+        :param pulumi.Input[_builtins.str] name: The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
         :param pulumi.Input[_builtins.str] node_name: The name of the node.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ports: The interface bridge ports.
         :param pulumi.Input[_builtins.int] timeout_reload: Timeout for network reload operations in seconds (defaults to `100`).
@@ -360,7 +360,7 @@ class _BridgeState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+        The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
         """
         return pulumi.get(self, "name")
 
@@ -439,6 +439,33 @@ class Bridge(pulumi.CustomResource):
         """
         Manages a Linux Bridge network interface in a Proxmox VE node.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        vlan99 = proxmoxve.network.linux.Vlan("vlan99",
+            node_name="pve",
+            name="ens18.99")
+        vmbr99 = proxmoxve.network.linux.Bridge("vmbr99",
+            node_name="pve",
+            name="vmbr99",
+            address="99.99.99.99/16",
+            comment="vmbr99 comment",
+            ports=["ens18.99"],
+            opts = pulumi.ResourceOptions(depends_on=[vlan99]))
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        Interfaces can be imported using the `node_name:iface` format, e.g.
+
+        ```sh
+        $ pulumi import proxmoxve:network/linux/bridge:Bridge vmbr99 pve:vmbr99
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -449,7 +476,7 @@ class Bridge(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] gateway: Default gateway address.
         :param pulumi.Input[_builtins.str] gateway6: Default IPv6 gateway address.
         :param pulumi.Input[_builtins.int] mtu: The interface MTU.
-        :param pulumi.Input[_builtins.str] name: The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+        :param pulumi.Input[_builtins.str] name: The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
         :param pulumi.Input[_builtins.str] node_name: The name of the node.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ports: The interface bridge ports.
         :param pulumi.Input[_builtins.int] timeout_reload: Timeout for network reload operations in seconds (defaults to `100`).
@@ -463,6 +490,33 @@ class Bridge(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a Linux Bridge network interface in a Proxmox VE node.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        vlan99 = proxmoxve.network.linux.Vlan("vlan99",
+            node_name="pve",
+            name="ens18.99")
+        vmbr99 = proxmoxve.network.linux.Bridge("vmbr99",
+            node_name="pve",
+            name="vmbr99",
+            address="99.99.99.99/16",
+            comment="vmbr99 comment",
+            ports=["ens18.99"],
+            opts = pulumi.ResourceOptions(depends_on=[vlan99]))
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        Interfaces can be imported using the `node_name:iface` format, e.g.
+
+        ```sh
+        $ pulumi import proxmoxve:network/linux/bridge:Bridge vmbr99 pve:vmbr99
+        ```
 
 
         :param str resource_name: The name of the resource.
@@ -551,7 +605,7 @@ class Bridge(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] gateway: Default gateway address.
         :param pulumi.Input[_builtins.str] gateway6: Default IPv6 gateway address.
         :param pulumi.Input[_builtins.int] mtu: The interface MTU.
-        :param pulumi.Input[_builtins.str] name: The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+        :param pulumi.Input[_builtins.str] name: The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
         :param pulumi.Input[_builtins.str] node_name: The name of the node.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ports: The interface bridge ports.
         :param pulumi.Input[_builtins.int] timeout_reload: Timeout for network reload operations in seconds (defaults to `100`).
@@ -635,7 +689,7 @@ class Bridge(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any alphanumeric string that starts with a character and is at most 10 characters long.
+        The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
         """
         return pulumi.get(self, "name")
 

@@ -12,6 +12,44 @@ import (
 )
 
 // Retrieves information about a QinQ Zone in Proxmox SDN. QinQ also known as VLAN stacking, that uses multiple layers of VLAN tags for isolation. The QinQ zone defines the outer VLAN tag (the Service VLAN) whereas the inner VLAN tag is defined by the VNet. Your physical network switches must support stacked VLANs for this configuration. Due to the double stacking of tags, you need 4 more bytes for QinQ VLANs. For example, you must reduce the MTU to 1496 if you physical interface MTU is 1500.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/sdn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := sdn.GetQinq(ctx, &zone.GetQinqArgs{
+//				Id: "qinq1",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("dataProxmoxSdnZoneQinq", pulumi.Map{
+//				"id":                  example.Id,
+//				"nodes":               example.Nodes,
+//				"bridge":              example.Bridge,
+//				"serviceVlan":         example.ServiceVlan,
+//				"serviceVlanProtocol": example.ServiceVlanProtocol,
+//				"mtu":                 example.Mtu,
+//				"dns":                 example.Dns,
+//				"dnsZone":             example.DnsZone,
+//				"ipam":                example.Ipam,
+//				"reverseDns":          example.ReverseDns,
+//			})
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupQinq(ctx *pulumi.Context, args *LookupQinqArgs, opts ...pulumi.InvokeOption) (*LookupQinqResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupQinqResult

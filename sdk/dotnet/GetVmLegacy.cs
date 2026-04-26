@@ -12,6 +12,8 @@ namespace Pulumi.ProxmoxVE
     public static class GetVmLegacy
     {
         /// <summary>
+        /// &gt; **Deprecated:** Use `proxmoxve.Vm` instead. This data source will be removed in v1.0.
+        /// 
         /// Retrieves information about a specific VM.
         /// 
         /// ## Example Usage
@@ -37,6 +39,8 @@ namespace Pulumi.ProxmoxVE
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVmLegacyResult>("proxmoxve:index/getVmLegacy:getVmLegacy", args ?? new GetVmLegacyArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Deprecated:** Use `proxmoxve.Vm` instead. This data source will be removed in v1.0.
+        /// 
         /// Retrieves information about a specific VM.
         /// 
         /// ## Example Usage
@@ -62,6 +66,8 @@ namespace Pulumi.ProxmoxVE
             => global::Pulumi.Deployment.Instance.Invoke<GetVmLegacyResult>("proxmoxve:index/getVmLegacy:getVmLegacy", args ?? new GetVmLegacyInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Deprecated:** Use `proxmoxve.Vm` instead. This data source will be removed in v1.0.
+        /// 
         /// Retrieves information about a specific VM.
         /// 
         /// ## Example Usage

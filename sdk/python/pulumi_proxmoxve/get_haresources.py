@@ -78,6 +78,22 @@ def get_haresources(type: Optional[_builtins.str] = None,
     """
     Retrieves the list of High Availability resources.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    # This will fetch the set of all HA resource identifiers.
+    example_all = proxmoxve.get_haresources()
+    # This will fetch the set of HA resource identifiers that correspond to virtual machines.
+    example_vm = proxmoxve.get_haresources(type="vm")
+    pulumi.export("dataProxmoxHaresources", {
+        "all": example_all.resource_ids,
+        "vms": example_vm.resource_ids,
+    })
+    ```
+
 
     :param _builtins.str type: The type of High Availability resources to fetch (`vm` or `ct`). All resources will be fetched if this option is unset.
     """
@@ -94,6 +110,22 @@ def get_haresources_output(type: Optional[pulumi.Input[Optional[_builtins.str]]]
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHaresourcesResult]:
     """
     Retrieves the list of High Availability resources.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    # This will fetch the set of all HA resource identifiers.
+    example_all = proxmoxve.get_haresources()
+    # This will fetch the set of HA resource identifiers that correspond to virtual machines.
+    example_vm = proxmoxve.get_haresources(type="vm")
+    pulumi.export("dataProxmoxHaresources", {
+        "all": example_all.resource_ids,
+        "vms": example_vm.resource_ids,
+    })
+    ```
 
 
     :param _builtins.str type: The type of High Availability resources to fetch (`vm` or `ct`). All resources will be fetched if this option is unset.

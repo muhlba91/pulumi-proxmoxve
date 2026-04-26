@@ -75,6 +75,14 @@ namespace Pulumi.ProxmoxVE.Inputs
         public Input<string>? Type { get; set; }
 
         /// <summary>
+        /// Whether to do an automatic package upgrade after
+        /// the first boot (defaults to `True`).
+        /// Setting this is only allowed for `root@pam` authenticated user.
+        /// </summary>
+        [Input("upgrade")]
+        public Input<bool>? Upgrade { get; set; }
+
+        /// <summary>
         /// The user account configuration (conflicts
         /// with `UserDataFileId`).
         /// </summary>

@@ -4,6 +4,7 @@
 package io.muehlbachler.pulumi.proxmoxve.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -22,6 +23,11 @@ public final class ContainerLegacyCpu {
      * 
      */
     private @Nullable Integer cores;
+    /**
+     * @return Limit of CPU usage. Value &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; indicates no limit (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
+     * 
+     */
+    private @Nullable Double limit;
     /**
      * @return The CPU units (defaults to &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt;).
      * 
@@ -44,6 +50,13 @@ public final class ContainerLegacyCpu {
         return Optional.ofNullable(this.cores);
     }
     /**
+     * @return Limit of CPU usage. Value &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; indicates no limit (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
+     * 
+     */
+    public Optional<Double> limit() {
+        return Optional.ofNullable(this.limit);
+    }
+    /**
      * @return The CPU units (defaults to &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt;).
      * 
      */
@@ -62,12 +75,14 @@ public final class ContainerLegacyCpu {
     public static final class Builder {
         private @Nullable String architecture;
         private @Nullable Integer cores;
+        private @Nullable Double limit;
         private @Nullable Integer units;
         public Builder() {}
         public Builder(ContainerLegacyCpu defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.architecture = defaults.architecture;
     	      this.cores = defaults.cores;
+    	      this.limit = defaults.limit;
     	      this.units = defaults.units;
         }
 
@@ -84,6 +99,12 @@ public final class ContainerLegacyCpu {
             return this;
         }
         @CustomType.Setter
+        public Builder limit(@Nullable Double limit) {
+
+            this.limit = limit;
+            return this;
+        }
+        @CustomType.Setter
         public Builder units(@Nullable Integer units) {
 
             this.units = units;
@@ -93,6 +114,7 @@ public final class ContainerLegacyCpu {
             final var _resultValue = new ContainerLegacyCpu();
             _resultValue.architecture = architecture;
             _resultValue.cores = cores;
+            _resultValue.limit = limit;
             _resultValue.units = units;
             return _resultValue;
         }

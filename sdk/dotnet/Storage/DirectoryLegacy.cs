@@ -47,6 +47,15 @@ namespace Pulumi.ProxmoxVE.Storage
     /// 
     /// });
     /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// !/usr/bin/env sh
+    /// Storage can be imported using its identifier, e.g.:
+    /// 
+    /// ```sh
+    /// $ pulumi import proxmoxve:storage/directoryLegacy:DirectoryLegacy example local-dir
+    /// ```
     /// </summary>
     [ProxmoxVEResourceType("proxmoxve:storage/directoryLegacy:DirectoryLegacy")]
     public partial class DirectoryLegacy : global::Pulumi.CustomResource

@@ -176,6 +176,18 @@ def get_repository(file_path: Optional[_builtins.str] = None,
     """
     Retrieves an APT repository from a Proxmox VE cluster.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.apt.get_repository(file_path="/etc/apt/sources.list",
+        index=0,
+        node="pve")
+    pulumi.export("proxmoxAptRepository", example)
+    ```
+
 
     :param _builtins.str file_path: The absolute path of the source list file that contains this repository.
     :param _builtins.int index: The index within the defining source list file.
@@ -206,6 +218,18 @@ def get_repository_output(file_path: Optional[pulumi.Input[_builtins.str]] = Non
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRepositoryResult]:
     """
     Retrieves an APT repository from a Proxmox VE cluster.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_proxmoxve as proxmoxve
+
+    example = proxmoxve.apt.get_repository(file_path="/etc/apt/sources.list",
+        index=0,
+        node="pve")
+    pulumi.export("proxmoxAptRepository", example)
+    ```
 
 
     :param _builtins.str file_path: The absolute path of the source list file that contains this repository.

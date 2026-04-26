@@ -6,6 +6,34 @@ import * as utilities from "../../utilities";
 
 /**
  * Retrieves information about an EVPN Zone in Proxmox SDN. The EVPN zone creates a routable Layer 3 network, capable of spanning across multiple clusters.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = proxmoxve.sdn.zone.getEvpn({
+ *     id: "evpn1",
+ * });
+ * export const dataProxmoxSdnZoneEvpn = {
+ *     id: example.then(example => example.id),
+ *     nodes: example.then(example => example.nodes),
+ *     controller: example.then(example => example.controller),
+ *     vrfVxlan: example.then(example => example.vrfVxlan),
+ *     advertiseSubnets: example.then(example => example.advertiseSubnets),
+ *     disableArpNdSuppression: example.then(example => example.disableArpNdSuppression),
+ *     exitNodes: example.then(example => example.exitNodes),
+ *     exitNodesLocalRouting: example.then(example => example.exitNodesLocalRouting),
+ *     primaryExitNode: example.then(example => example.primaryExitNode),
+ *     rtImport: example.then(example => example.rtImport),
+ *     mtu: example.then(example => example.mtu),
+ *     dns: example.then(example => example.dns),
+ *     dnsZone: example.then(example => example.dnsZone),
+ *     ipam: example.then(example => example.ipam),
+ *     reverseDns: example.then(example => example.reverseDns),
+ * };
+ * ```
  */
 export function getEvpn(args: GetEvpnArgs, opts?: pulumi.InvokeOptions): Promise<GetEvpnResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -99,6 +127,34 @@ export interface GetEvpnResult {
 }
 /**
  * Retrieves information about an EVPN Zone in Proxmox SDN. The EVPN zone creates a routable Layer 3 network, capable of spanning across multiple clusters.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const example = proxmoxve.sdn.zone.getEvpn({
+ *     id: "evpn1",
+ * });
+ * export const dataProxmoxSdnZoneEvpn = {
+ *     id: example.then(example => example.id),
+ *     nodes: example.then(example => example.nodes),
+ *     controller: example.then(example => example.controller),
+ *     vrfVxlan: example.then(example => example.vrfVxlan),
+ *     advertiseSubnets: example.then(example => example.advertiseSubnets),
+ *     disableArpNdSuppression: example.then(example => example.disableArpNdSuppression),
+ *     exitNodes: example.then(example => example.exitNodes),
+ *     exitNodesLocalRouting: example.then(example => example.exitNodesLocalRouting),
+ *     primaryExitNode: example.then(example => example.primaryExitNode),
+ *     rtImport: example.then(example => example.rtImport),
+ *     mtu: example.then(example => example.mtu),
+ *     dns: example.then(example => example.dns),
+ *     dnsZone: example.then(example => example.dnsZone),
+ *     ipam: example.then(example => example.ipam),
+ *     reverseDns: example.then(example => example.reverseDns),
+ * };
+ * ```
  */
 export function getEvpnOutput(args: GetEvpnOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEvpnResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

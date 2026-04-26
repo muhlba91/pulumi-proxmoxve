@@ -275,6 +275,28 @@ class Account(pulumi.CustomResource):
 
         > This resource requires `root@pam` authentication.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.acme.Account("example",
+            name="example",
+            contact="example@email.com",
+            directory="https://acme-staging-v02.api.letsencrypt.org/directory",
+            tos="https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf")
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        ACME accounts can be imported using their name, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:acme/account:Account example example
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -295,6 +317,28 @@ class Account(pulumi.CustomResource):
         Manages an ACME account in a Proxmox VE cluster.
 
         > This resource requires `root@pam` authentication.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        example = proxmoxve.acme.Account("example",
+            name="example",
+            contact="example@email.com",
+            directory="https://acme-staging-v02.api.letsencrypt.org/directory",
+            tos="https://letsencrypt.org/documents/LE-SA-v1.3-September-21-2022.pdf")
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        ACME accounts can be imported using their name, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:acme/account:Account example example
+        ```
 
 
         :param str resource_name: The name of the resource.

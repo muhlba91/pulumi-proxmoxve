@@ -288,6 +288,30 @@ class Image(pulumi.CustomResource):
         """
         Manages OCI images pulled from OCI registries using PVE oci-registry-pull API. Pulls OCI container images and stores them as tar files in Proxmox VE datastores.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        ubuntu_latest = proxmoxve.oci.Image("ubuntu_latest",
+            node_name="pve",
+            datastore_id="local",
+            reference="docker.io/library/ubuntu:latest")
+        nginx = proxmoxve.oci.Image("nginx",
+            node_name="pve",
+            datastore_id="local",
+            reference="docker.io/library/nginx:alpine",
+            file_name="custom_image_name.tar")
+        debian = proxmoxve.oci.Image("debian",
+            node_name="pve",
+            datastore_id="local",
+            reference="docker.io/library/debian:bookworm",
+            upload_timeout=900,
+            overwrite=False,
+            overwrite_unmanaged=True)
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -307,6 +331,30 @@ class Image(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages OCI images pulled from OCI registries using PVE oci-registry-pull API. Pulls OCI container images and stores them as tar files in Proxmox VE datastores.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        ubuntu_latest = proxmoxve.oci.Image("ubuntu_latest",
+            node_name="pve",
+            datastore_id="local",
+            reference="docker.io/library/ubuntu:latest")
+        nginx = proxmoxve.oci.Image("nginx",
+            node_name="pve",
+            datastore_id="local",
+            reference="docker.io/library/nginx:alpine",
+            file_name="custom_image_name.tar")
+        debian = proxmoxve.oci.Image("debian",
+            node_name="pve",
+            datastore_id="local",
+            reference="docker.io/library/debian:bookworm",
+            upload_timeout=900,
+            overwrite=False,
+            overwrite_unmanaged=True)
+        ```
 
 
         :param str resource_name: The name of the resource.

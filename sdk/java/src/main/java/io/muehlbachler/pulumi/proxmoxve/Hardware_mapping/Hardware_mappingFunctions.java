@@ -33,12 +33,84 @@ public final class Hardware_mappingFunctions {
     /**
      * Retrieves a directory mapping from a Proxmox VE cluster.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.hardware_mapping.Hardware_mappingFunctions;
+     * import com.pulumi.proxmoxve.hardware.inputs.GetDirArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Hardware_mappingFunctions.getDir(GetDirArgs.builder()
+     *             .name("example")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxHardwareMappingDir", example);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetDirResult> getDir(GetDirArgs args) {
         return getDir(args, InvokeOptions.Empty);
     }
     /**
      * Retrieves a directory mapping from a Proxmox VE cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.hardware_mapping.Hardware_mappingFunctions;
+     * import com.pulumi.proxmoxve.hardware.inputs.GetDirArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Hardware_mappingFunctions.getDir(GetDirArgs.builder()
+     *             .name("example")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxHardwareMappingDir", example);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDirResult> getDirPlain(GetDirPlainArgs args) {
@@ -47,6 +119,42 @@ public final class Hardware_mappingFunctions {
     /**
      * Retrieves a directory mapping from a Proxmox VE cluster.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.hardware_mapping.Hardware_mappingFunctions;
+     * import com.pulumi.proxmoxve.hardware.inputs.GetDirArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Hardware_mappingFunctions.getDir(GetDirArgs.builder()
+     *             .name("example")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxHardwareMappingDir", example);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetDirResult> getDir(GetDirArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:hardware/mapping/getDir:getDir", TypeShape.of(GetDirResult.class), args, Utilities.withVersion(options));
@@ -54,12 +162,84 @@ public final class Hardware_mappingFunctions {
     /**
      * Retrieves a directory mapping from a Proxmox VE cluster.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.hardware_mapping.Hardware_mappingFunctions;
+     * import com.pulumi.proxmoxve.hardware.inputs.GetDirArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Hardware_mappingFunctions.getDir(GetDirArgs.builder()
+     *             .name("example")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxHardwareMappingDir", example);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetDirResult> getDir(GetDirArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:hardware/mapping/getDir:getDir", TypeShape.of(GetDirResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves a directory mapping from a Proxmox VE cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.hardware_mapping.Hardware_mappingFunctions;
+     * import com.pulumi.proxmoxve.hardware.inputs.GetDirArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Hardware_mappingFunctions.getDir(GetDirArgs.builder()
+     *             .name("example")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxHardwareMappingDir", example);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetDirResult> getDirPlain(GetDirPlainArgs args, InvokeOptions options) {
@@ -293,12 +473,84 @@ public final class Hardware_mappingFunctions {
     /**
      * Retrieves a PCI hardware mapping from a Proxmox VE cluster.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.hardware_mapping.Hardware_mappingFunctions;
+     * import com.pulumi.proxmoxve.hardware.inputs.GetPciArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Hardware_mappingFunctions.getPci(GetPciArgs.builder()
+     *             .name("example")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxHardwareMappingPci", example);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetPciResult> getPci(GetPciArgs args) {
         return getPci(args, InvokeOptions.Empty);
     }
     /**
      * Retrieves a PCI hardware mapping from a Proxmox VE cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.hardware_mapping.Hardware_mappingFunctions;
+     * import com.pulumi.proxmoxve.hardware.inputs.GetPciArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Hardware_mappingFunctions.getPci(GetPciArgs.builder()
+     *             .name("example")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxHardwareMappingPci", example);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPciResult> getPciPlain(GetPciPlainArgs args) {
@@ -307,6 +559,42 @@ public final class Hardware_mappingFunctions {
     /**
      * Retrieves a PCI hardware mapping from a Proxmox VE cluster.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.hardware_mapping.Hardware_mappingFunctions;
+     * import com.pulumi.proxmoxve.hardware.inputs.GetPciArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Hardware_mappingFunctions.getPci(GetPciArgs.builder()
+     *             .name("example")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxHardwareMappingPci", example);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetPciResult> getPci(GetPciArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:hardware/mapping/getPci:getPci", TypeShape.of(GetPciResult.class), args, Utilities.withVersion(options));
@@ -314,12 +602,84 @@ public final class Hardware_mappingFunctions {
     /**
      * Retrieves a PCI hardware mapping from a Proxmox VE cluster.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.hardware_mapping.Hardware_mappingFunctions;
+     * import com.pulumi.proxmoxve.hardware.inputs.GetPciArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Hardware_mappingFunctions.getPci(GetPciArgs.builder()
+     *             .name("example")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxHardwareMappingPci", example);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetPciResult> getPci(GetPciArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:hardware/mapping/getPci:getPci", TypeShape.of(GetPciResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves a PCI hardware mapping from a Proxmox VE cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.hardware_mapping.Hardware_mappingFunctions;
+     * import com.pulumi.proxmoxve.hardware.inputs.GetPciArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Hardware_mappingFunctions.getPci(GetPciArgs.builder()
+     *             .name("example")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxHardwareMappingPci", example);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetPciResult> getPciPlain(GetPciPlainArgs args, InvokeOptions options) {
@@ -553,12 +913,84 @@ public final class Hardware_mappingFunctions {
     /**
      * Retrieves a USB hardware mapping from a Proxmox VE cluster.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.hardware_mapping.Hardware_mappingFunctions;
+     * import com.pulumi.proxmoxve.hardware.inputs.GetUsbArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Hardware_mappingFunctions.getUsb(GetUsbArgs.builder()
+     *             .name("example")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxHardwareMappingUsb", example);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetUsbResult> getUsb(GetUsbArgs args) {
         return getUsb(args, InvokeOptions.Empty);
     }
     /**
      * Retrieves a USB hardware mapping from a Proxmox VE cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.hardware_mapping.Hardware_mappingFunctions;
+     * import com.pulumi.proxmoxve.hardware.inputs.GetUsbArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Hardware_mappingFunctions.getUsb(GetUsbArgs.builder()
+     *             .name("example")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxHardwareMappingUsb", example);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUsbResult> getUsbPlain(GetUsbPlainArgs args) {
@@ -567,6 +999,42 @@ public final class Hardware_mappingFunctions {
     /**
      * Retrieves a USB hardware mapping from a Proxmox VE cluster.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.hardware_mapping.Hardware_mappingFunctions;
+     * import com.pulumi.proxmoxve.hardware.inputs.GetUsbArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Hardware_mappingFunctions.getUsb(GetUsbArgs.builder()
+     *             .name("example")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxHardwareMappingUsb", example);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetUsbResult> getUsb(GetUsbArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:hardware/mapping/getUsb:getUsb", TypeShape.of(GetUsbResult.class), args, Utilities.withVersion(options));
@@ -574,12 +1042,84 @@ public final class Hardware_mappingFunctions {
     /**
      * Retrieves a USB hardware mapping from a Proxmox VE cluster.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.hardware_mapping.Hardware_mappingFunctions;
+     * import com.pulumi.proxmoxve.hardware.inputs.GetUsbArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Hardware_mappingFunctions.getUsb(GetUsbArgs.builder()
+     *             .name("example")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxHardwareMappingUsb", example);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetUsbResult> getUsb(GetUsbArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("proxmoxve:hardware/mapping/getUsb:getUsb", TypeShape.of(GetUsbResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves a USB hardware mapping from a Proxmox VE cluster.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.proxmoxve.hardware_mapping.Hardware_mappingFunctions;
+     * import com.pulumi.proxmoxve.hardware.inputs.GetUsbArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = Hardware_mappingFunctions.getUsb(GetUsbArgs.builder()
+     *             .name("example")
+     *             .build());
+     * 
+     *         ctx.export("dataProxmoxHardwareMappingUsb", example);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetUsbResult> getUsbPlain(GetUsbPlainArgs args, InvokeOptions options) {

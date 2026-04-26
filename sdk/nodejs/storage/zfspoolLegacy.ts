@@ -24,6 +24,15 @@ import * as utilities from "../utilities";
  *     blocksize: "64k",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * !/usr/bin/env sh
+ * Storage can be imported using its identifier, e.g.:
+ *
+ * ```sh
+ * $ pulumi import proxmoxve:storage/zfspoolLegacy:ZfspoolLegacy example local-zfs
+ * ```
  */
 export class ZfspoolLegacy extends pulumi.CustomResource {
     /**

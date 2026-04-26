@@ -12,6 +12,52 @@ import (
 )
 
 // Retrieves information about all SDN Zones in Proxmox. This data source can optionally filter zones by type.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/sdn"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// List all SDN zones
+//			all, err := sdn.GetZones(ctx, &sdn.GetZonesArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// List only EVPN zones
+//			evpnOnly, err := sdn.GetZones(ctx, &sdn.GetZonesArgs{
+//				Type: pulumi.StringRef("evpn"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// List only Simple zones
+//			simpleOnly, err := sdn.GetZones(ctx, &sdn.GetZonesArgs{
+//				Type: pulumi.StringRef("simple"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("dataProxmoxSdnZonesAll", []sdn.GetZonesZoneMap{
+//				"zones": all.Zones,
+//			})
+//			ctx.Export("dataProxmoxSdnZonesFiltered", []sdn.GetZonesZoneMap{
+//				"evpnZones":   evpnOnly.Zones,
+//				"simpleZones": simpleOnly.Zones,
+//			})
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOption) (*GetZonesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetZonesResult

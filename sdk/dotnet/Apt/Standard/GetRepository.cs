@@ -13,18 +13,87 @@ namespace Pulumi.ProxmoxVE.Apt.Standard
     {
         /// <summary>
         /// Retrieves an APT standard repository from a Proxmox VE cluster.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = ProxmoxVE.Apt.Standard.GetRepository.Invoke(new()
+        ///     {
+        ///         Handle = "no-subscription",
+        ///         Node = "pve",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["proxmoxAptStandardRepository"] = example,
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetRepositoryResult> InvokeAsync(GetRepositoryArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRepositoryResult>("proxmoxve:apt/standard/getRepository:getRepository", args ?? new GetRepositoryArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves an APT standard repository from a Proxmox VE cluster.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = ProxmoxVE.Apt.Standard.GetRepository.Invoke(new()
+        ///     {
+        ///         Handle = "no-subscription",
+        ///         Node = "pve",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["proxmoxAptStandardRepository"] = example,
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetRepositoryResult> Invoke(GetRepositoryInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRepositoryResult>("proxmoxve:apt/standard/getRepository:getRepository", args ?? new GetRepositoryInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// Retrieves an APT standard repository from a Proxmox VE cluster.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using ProxmoxVE = Pulumi.ProxmoxVE;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = ProxmoxVE.Apt.Standard.GetRepository.Invoke(new()
+        ///     {
+        ///         Handle = "no-subscription",
+        ///         Node = "pve",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["proxmoxAptStandardRepository"] = example,
+        ///     };
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetRepositoryResult> Invoke(GetRepositoryInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetRepositoryResult>("proxmoxve:apt/standard/getRepository:getRepository", args ?? new GetRepositoryInvokeArgs(), options.WithDefaults());
