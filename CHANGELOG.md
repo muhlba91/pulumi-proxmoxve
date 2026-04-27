@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [8.1.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v8.1.0...v8.1.1) (2026-04-27)
+
+
+### Miscellaneous Chores
+
+* **deps:** update goreleaser/goreleaser-action action to v7.2.1 ([8491c18](https://github.com/muhlba91/pulumi-proxmoxve/commit/8491c180f2eef881c784e6e2a54bc05e59056a29))
+
 ## [8.1.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v8.0.0...v8.1.0) (2026-04-26)
 
 
