@@ -1,6 +1,18 @@
 # Changelog
 
 
+## [8.1.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v8.1.0...v8.1.1) (2026-05-03)
+
+
+### Miscellaneous Chores
+
+* **deps:** update github/codeql-action action to v4.35.3 ([9209033](https://github.com/muhlba91/pulumi-proxmoxve/commit/920903339b49bde896a185fdd4d676471fe7932e))
+* **deps:** update goreleaser/goreleaser-action action to v7.2.1 ([8491c18](https://github.com/muhlba91/pulumi-proxmoxve/commit/8491c180f2eef881c784e6e2a54bc05e59056a29))
+* **deps:** update module github.com/bpg/terraform-provider-proxmox to v0.105.0 ([ad38638](https://github.com/muhlba91/pulumi-proxmoxve/commit/ad38638e8b23a1dc276a717d23f9712e618cf7f2))
+* **deps:** update module github.com/pulumi/pulumi-terraform-bridge/v3 to v3.128.0 ([f8d32b7](https://github.com/muhlba91/pulumi-proxmoxve/commit/f8d32b7939b015cae92bc00dfb3e3d1d00d2fbf7))
+* **deps:** update siderolabs/conform action to v0.1.0-alpha.31 ([2d82a5d](https://github.com/muhlba91/pulumi-proxmoxve/commit/2d82a5de8169c3c6b2c14f15a9c4b2ead5414245))
+* **deps:** update step-security/harden-runner action to v2.19.1 ([dbb26f2](https://github.com/muhlba91/pulumi-proxmoxve/commit/dbb26f2d15499ff92e961ecdbc25b2a16c012ec7))
+
 ## [8.1.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v8.0.0...v8.1.0) (2026-04-26)
 
 
