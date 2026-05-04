@@ -65,7 +65,7 @@ jobs:
       - uses: jaxxstorm/action-install-gh-release@25e24d2d23ae098373794ef1d6faecb48ee52da8 # v3.0.0
         with:
           repo: pulumi/pulumictl
-      - uses: pulumi/actions@8582a9e8cc630786854029b4e09281acd6794b58 # v6.6.1
+      - uses: pulumi/actions@8e5e406f4007fca908480587cb9893c07090f58d # v7
 
       - uses: sigstore/cosign-installer@cad07c2e89fa2edd6e2d7bab4c1aa38e53f76003 # v4.1.1
       - uses: anchore/sbom-action/download-syft@e22c389904149dbc22b58101806040fa8d37a610 # v0.24.0
@@ -127,7 +127,7 @@ jobs:
       - uses: jaxxstorm/action-install-gh-release@25e24d2d23ae098373794ef1d6faecb48ee52da8 # v3.0.0
         with:
           repo: pulumi/pulumictl
-      - uses: pulumi/actions@8582a9e8cc630786854029b4e09281acd6794b58 # v6.6.1
+      - uses: pulumi/actions@8e5e406f4007fca908480587cb9893c07090f58d # v7
 
       - uses: actions/setup-dotnet@c2fa09f4bde5ebb9d1777cf28262a3eb3db3ced7 # v5.2.0
         with:
