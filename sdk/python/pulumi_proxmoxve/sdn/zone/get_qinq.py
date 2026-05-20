@@ -228,7 +228,7 @@ def get_qinq(id: Optional[_builtins.str] = None,
         service_vlan=pulumi.get(__ret__, 'service_vlan'),
         service_vlan_protocol=pulumi.get(__ret__, 'service_vlan_protocol'),
         state=pulumi.get(__ret__, 'state'))
-def get_qinq_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_qinq_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQinqResult]:
     """
     Retrieves information about a QinQ Zone in Proxmox SDN. QinQ also known as VLAN stacking, that uses multiple layers of VLAN tags for isolation. The QinQ zone defines the outer VLAN tag (the Service VLAN) whereas the inner VLAN tag is defined by the VNet. Your physical network switches must support stacked VLANs for this configuration. Due to the double stacking of tags, you need 4 more bytes for QinQ VLANs. For example, you must reduce the MTU to 1496 if you physical interface MTU is 1500.

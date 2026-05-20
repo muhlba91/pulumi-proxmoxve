@@ -21,11 +21,11 @@ class ZfspoolLegacyArgs:
     def __init__(__self__, *,
                  resource_id: pulumi.Input[_builtins.str],
                  zfs_pool: pulumi.Input[_builtins.str],
-                 blocksize: Optional[pulumi.Input[_builtins.str]] = None,
-                 contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 thin_provision: Optional[pulumi.Input[_builtins.bool]] = None):
+                 blocksize: pulumi.Input[Optional[_builtins.str]] = None,
+                 contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 thin_provision: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ZfspoolLegacy resource.
 
@@ -76,76 +76,76 @@ class ZfspoolLegacyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def blocksize(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def blocksize(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Block size for newly created volumes (e.g. `4k`, `8k`, `16k`). Larger values may improve throughput for large I/O, while smaller values optimize space efficiency.
         """
         return pulumi.get(self, "blocksize")
 
     @blocksize.setter
-    def blocksize(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def blocksize(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "blocksize", value)
 
     @_builtins.property
     @pulumi.getter
-    def contents(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def contents(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
         """
         return pulumi.get(self, "contents")
 
     @contents.setter
-    def contents(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def contents(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "contents", value)
 
     @_builtins.property
     @pulumi.getter
-    def disable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the storage is disabled.
         """
         return pulumi.get(self, "disable")
 
     @disable.setter
-    def disable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable", value)
 
     @_builtins.property
     @pulumi.getter
-    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of nodes where this storage is available.
         """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
-    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter(name="thinProvision")
-    def thin_provision(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def thin_provision(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable thin provisioning (`on` or `off`). Thin provisioning allows flexible disk allocation without pre-allocating full space.
         """
         return pulumi.get(self, "thin_provision")
 
     @thin_provision.setter
-    def thin_provision(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def thin_provision(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "thin_provision", value)
 
 
 @pulumi.input_type
 class _ZfspoolLegacyState:
     def __init__(__self__, *,
-                 blocksize: Optional[pulumi.Input[_builtins.str]] = None,
-                 contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared: Optional[pulumi.Input[_builtins.bool]] = None,
-                 thin_provision: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zfs_pool: Optional[pulumi.Input[_builtins.str]] = None):
+                 blocksize: pulumi.Input[Optional[_builtins.str]] = None,
+                 contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared: pulumi.Input[Optional[_builtins.bool]] = None,
+                 thin_provision: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zfs_pool: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZfspoolLegacy resources.
 
@@ -177,98 +177,98 @@ class _ZfspoolLegacyState:
 
     @_builtins.property
     @pulumi.getter
-    def blocksize(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def blocksize(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Block size for newly created volumes (e.g. `4k`, `8k`, `16k`). Larger values may improve throughput for large I/O, while smaller values optimize space efficiency.
         """
         return pulumi.get(self, "blocksize")
 
     @blocksize.setter
-    def blocksize(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def blocksize(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "blocksize", value)
 
     @_builtins.property
     @pulumi.getter
-    def contents(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def contents(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
         """
         return pulumi.get(self, "contents")
 
     @contents.setter
-    def contents(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def contents(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "contents", value)
 
     @_builtins.property
     @pulumi.getter
-    def disable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the storage is disabled.
         """
         return pulumi.get(self, "disable")
 
     @disable.setter
-    def disable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable", value)
 
     @_builtins.property
     @pulumi.getter
-    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of nodes where this storage is available.
         """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
-    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the storage.
         """
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def shared(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def shared(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the storage is shared across all nodes.
         """
         return pulumi.get(self, "shared")
 
     @shared.setter
-    def shared(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def shared(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "shared", value)
 
     @_builtins.property
     @pulumi.getter(name="thinProvision")
-    def thin_provision(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def thin_provision(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable thin provisioning (`on` or `off`). Thin provisioning allows flexible disk allocation without pre-allocating full space.
         """
         return pulumi.get(self, "thin_provision")
 
     @thin_provision.setter
-    def thin_provision(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def thin_provision(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "thin_provision", value)
 
     @_builtins.property
     @pulumi.getter(name="zfsPool")
-    def zfs_pool(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zfs_pool(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the ZFS storage pool to use (e.g. `tank`, `rpool/data`).
         """
         return pulumi.get(self, "zfs_pool")
 
     @zfs_pool.setter
-    def zfs_pool(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zfs_pool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zfs_pool", value)
 
 
@@ -278,13 +278,13 @@ class ZfspoolLegacy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 blocksize: Optional[pulumi.Input[_builtins.str]] = None,
-                 contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 thin_provision: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zfs_pool: Optional[pulumi.Input[_builtins.str]] = None,
+                 blocksize: pulumi.Input[Optional[_builtins.str]] = None,
+                 contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 thin_provision: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zfs_pool: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         > **Deprecated:** Use `storage.Zfspool` instead. This resource will be removed in v1.0.
@@ -377,13 +377,13 @@ class ZfspoolLegacy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 blocksize: Optional[pulumi.Input[_builtins.str]] = None,
-                 contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 thin_provision: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zfs_pool: Optional[pulumi.Input[_builtins.str]] = None,
+                 blocksize: pulumi.Input[Optional[_builtins.str]] = None,
+                 contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 thin_provision: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zfs_pool: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -415,14 +415,14 @@ class ZfspoolLegacy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            blocksize: Optional[pulumi.Input[_builtins.str]] = None,
-            contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            disable: Optional[pulumi.Input[_builtins.bool]] = None,
-            nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-            shared: Optional[pulumi.Input[_builtins.bool]] = None,
-            thin_provision: Optional[pulumi.Input[_builtins.bool]] = None,
-            zfs_pool: Optional[pulumi.Input[_builtins.str]] = None) -> 'ZfspoolLegacy':
+            blocksize: pulumi.Input[Optional[_builtins.str]] = None,
+            contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            disable: pulumi.Input[Optional[_builtins.bool]] = None,
+            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            shared: pulumi.Input[Optional[_builtins.bool]] = None,
+            thin_provision: pulumi.Input[Optional[_builtins.bool]] = None,
+            zfs_pool: pulumi.Input[Optional[_builtins.str]] = None) -> 'ZfspoolLegacy':
         """
         Get an existing ZfspoolLegacy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

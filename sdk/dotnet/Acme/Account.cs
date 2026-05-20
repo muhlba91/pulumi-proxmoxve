@@ -119,6 +119,11 @@ namespace Pulumi.ProxmoxVE.Acme
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/muhlba91/pulumi-proxmoxve",
+                AdditionalSecretOutputs =
+                {
+                    "eabHmacKey",
+                    "eabKid",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -154,17 +159,37 @@ namespace Pulumi.ProxmoxVE.Acme
         [Input("directory")]
         public Input<string>? Directory { get; set; }
 
+        [Input("eabHmacKey")]
+        private Input<string>? _eabHmacKey;
+
         /// <summary>
         /// The HMAC key for External Account Binding.
         /// </summary>
-        [Input("eabHmacKey")]
-        public Input<string>? EabHmacKey { get; set; }
+        public Input<string>? EabHmacKey
+        {
+            get => _eabHmacKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _eabHmacKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("eabKid")]
+        private Input<string>? _eabKid;
 
         /// <summary>
         /// The Key Identifier for External Account Binding.
         /// </summary>
-        [Input("eabKid")]
-        public Input<string>? EabKid { get; set; }
+        public Input<string>? EabKid
+        {
+            get => _eabKid;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _eabKid = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The ACME account config file name.
@@ -204,17 +229,37 @@ namespace Pulumi.ProxmoxVE.Acme
         [Input("directory")]
         public Input<string>? Directory { get; set; }
 
+        [Input("eabHmacKey")]
+        private Input<string>? _eabHmacKey;
+
         /// <summary>
         /// The HMAC key for External Account Binding.
         /// </summary>
-        [Input("eabHmacKey")]
-        public Input<string>? EabHmacKey { get; set; }
+        public Input<string>? EabHmacKey
+        {
+            get => _eabHmacKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _eabHmacKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("eabKid")]
+        private Input<string>? _eabKid;
 
         /// <summary>
         /// The Key Identifier for External Account Binding.
         /// </summary>
-        [Input("eabKid")]
-        public Input<string>? EabKid { get; set; }
+        public Input<string>? EabKid
+        {
+            get => _eabKid;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _eabKid = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The location of the ACME account.

@@ -426,8 +426,8 @@ class ContainerLegacyDisk(dict):
                  size: Optional[_builtins.int] = None):
         """
         :param _builtins.bool acl: Explicitly enable or disable ACL support
-        :param _builtins.str datastore_id: The identifier for the datastore to create the
-               disk in (defaults to `local`).
+        :param _builtins.str datastore_id: The Proxmox storage ID where the rootfs
+               volume is created (defaults to `local`).
         :param Sequence[_builtins.str] mount_options: List of extra mount options.
         :param _builtins.str path_in_datastore: The in-datastore path to the disk image.
                Use this attribute for cross-resource references.
@@ -464,8 +464,8 @@ class ContainerLegacyDisk(dict):
     @pulumi.getter(name="datastoreId")
     def datastore_id(self) -> Optional[_builtins.str]:
         """
-        The identifier for the datastore to create the
-        disk in (defaults to `local`).
+        The Proxmox storage ID where the rootfs
+        volume is created (defaults to `local`).
         """
         return pulumi.get(self, "datastore_id")
 
@@ -518,11 +518,13 @@ class ContainerLegacyFeatures(dict):
     def __init__(__self__, *,
                  fuse: Optional[_builtins.bool] = None,
                  keyctl: Optional[_builtins.bool] = None,
+                 mknod: Optional[_builtins.bool] = None,
                  mounts: Optional[Sequence[_builtins.str]] = None,
                  nesting: Optional[_builtins.bool] = None):
         """
         :param _builtins.bool fuse: Whether the container supports FUSE mounts (defaults to `false`)
         :param _builtins.bool keyctl: Whether the container supports `keyctl()` system call (defaults to `false`)
+        :param _builtins.bool mknod: Whether the container supports `mknod()` system call (defaults to `false`)
         :param Sequence[_builtins.str] mounts: List of allowed mount types (`cifs` or `nfs`)
         :param _builtins.bool nesting: Whether the container is nested (defaults to `false`)
         """
@@ -530,6 +532,8 @@ class ContainerLegacyFeatures(dict):
             pulumi.set(__self__, "fuse", fuse)
         if keyctl is not None:
             pulumi.set(__self__, "keyctl", keyctl)
+        if mknod is not None:
+            pulumi.set(__self__, "mknod", mknod)
         if mounts is not None:
             pulumi.set(__self__, "mounts", mounts)
         if nesting is not None:
@@ -550,6 +554,14 @@ class ContainerLegacyFeatures(dict):
         Whether the container supports `keyctl()` system call (defaults to `false`)
         """
         return pulumi.get(self, "keyctl")
+
+    @_builtins.property
+    @pulumi.getter
+    def mknod(self) -> Optional[_builtins.bool]:
+        """
+        Whether the container supports `mknod()` system call (defaults to `false`)
+        """
+        return pulumi.get(self, "mknod")
 
     @_builtins.property
     @pulumi.getter
@@ -981,8 +993,11 @@ class ContainerLegacyMountPoint(dict):
         """
         :param _builtins.str path: Path to the mount point as seen from inside the
                container.
-        :param _builtins.str volume: Volume, device or directory to mount into the
-               container.
+        :param _builtins.str volume: Volume reference. Accepts a Proxmox storage ID
+               (e.g. `local-lvm`) to allocate a new volume, a full PVE volume ID
+               (e.g. `local-lvm:subvol-108-disk-101`) to mount an existing volume,
+               or an absolute host path (e.g. `/mnt/bindmounts/shared`) to
+               bind-mount a host directory.
         :param _builtins.bool acl: Explicitly enable or disable ACL support.
         :param _builtins.bool backup: Whether to include the mount point in backups (only
                used for volume mount points, defaults to `false`).
@@ -1032,8 +1047,11 @@ class ContainerLegacyMountPoint(dict):
     @pulumi.getter
     def volume(self) -> _builtins.str:
         """
-        Volume, device or directory to mount into the
-        container.
+        Volume reference. Accepts a Proxmox storage ID
+        (e.g. `local-lvm`) to allocate a new volume, a full PVE volume ID
+        (e.g. `local-lvm:subvol-108-disk-101`) to mount an existing volume,
+        or an absolute host path (e.g. `/mnt/bindmounts/shared`) to
+        bind-mount a host directory.
         """
         return pulumi.get(self, "volume")
 
@@ -1159,7 +1177,7 @@ class ContainerLegacyNetworkInterface(dict):
         :param _builtins.bool firewall: Whether this interface's firewall rules should be
                used (defaults to `false`).
         :param _builtins.bool host_managed: Whether the host runs DHCP on this interface's
-               behalf (defaults to `false`). Requires Proxmox VE 9.0+. Required for
+               behalf (defaults to `false`). Requires Proxmox VE 9.1+. Required for
                application containers that do not include a DHCP client.
         :param _builtins.str mac_address: The MAC address.
         :param _builtins.int mtu: Maximum transfer unit of the interface. Cannot be
@@ -1225,7 +1243,7 @@ class ContainerLegacyNetworkInterface(dict):
     def host_managed(self) -> Optional[_builtins.bool]:
         """
         Whether the host runs DHCP on this interface's
-        behalf (defaults to `false`). Requires Proxmox VE 9.0+. Required for
+        behalf (defaults to `false`). Requires Proxmox VE 9.1+. Required for
         application containers that do not include a DHCP client.
         """
         return pulumi.get(self, "host_managed")

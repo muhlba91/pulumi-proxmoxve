@@ -60,8 +60,11 @@ namespace Pulumi.ProxmoxVE.Outputs
         /// </summary>
         public readonly string? Size;
         /// <summary>
-        /// Volume, device or directory to mount into the
-        /// container.
+        /// Volume reference. Accepts a Proxmox storage ID
+        /// (e.g. `local-lvm`) to allocate a new volume, a full PVE volume ID
+        /// (e.g. `local-lvm:subvol-108-disk-101`) to mount an existing volume,
+        /// or an absolute host path (e.g. `/mnt/bindmounts/shared`) to
+        /// bind-mount a host directory.
         /// </summary>
         public readonly string Volume;
 

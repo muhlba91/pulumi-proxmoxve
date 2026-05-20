@@ -197,7 +197,7 @@ def get_replication(id: Optional[_builtins.str] = None,
         source=pulumi.get(__ret__, 'source'),
         target=pulumi.get(__ret__, 'target'),
         type=pulumi.get(__ret__, 'type'))
-def get_replication_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_replication_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetReplicationResult]:
     """
     Retrieves information about an existing Replication.

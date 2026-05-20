@@ -20,12 +20,12 @@ __all__ = ['SyncLegacyArgs', 'SyncLegacy']
 class SyncLegacyArgs:
     def __init__(__self__, *,
                  realm: pulumi.Input[_builtins.str],
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_new: Optional[pulumi.Input[_builtins.bool]] = None,
-                 full: Optional[pulumi.Input[_builtins.bool]] = None,
-                 purge: Optional[pulumi.Input[_builtins.bool]] = None,
-                 remove_vanished: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None):
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_new: pulumi.Input[Optional[_builtins.bool]] = None,
+                 full: pulumi.Input[Optional[_builtins.bool]] = None,
+                 purge: pulumi.Input[Optional[_builtins.bool]] = None,
+                 remove_vanished: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SyncLegacy resource.
 
@@ -71,89 +71,89 @@ class SyncLegacyArgs:
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Only simulate the sync without applying changes.
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="enableNew")
-    def enable_new(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_new(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable newly synced users.
         """
         return pulumi.get(self, "enable_new")
 
     @enable_new.setter
-    def enable_new(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_new(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_new", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Deprecated by Proxmox: use remove_vanished instead.""")
-    def full(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def full(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Perform a full sync.
         """
         return pulumi.get(self, "full")
 
     @full.setter
-    def full(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def full(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "full", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Deprecated by Proxmox: use remove_vanished instead.""")
-    def purge(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def purge(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Purge removed entries.
         """
         return pulumi.get(self, "purge")
 
     @purge.setter
-    def purge(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def purge(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "purge", value)
 
     @_builtins.property
     @pulumi.getter(name="removeVanished")
-    def remove_vanished(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remove_vanished(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How to handle vanished entries (e.g. `acl;properties;entry` or `none`).
         """
         return pulumi.get(self, "remove_vanished")
 
     @remove_vanished.setter
-    def remove_vanished(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remove_vanished(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remove_vanished", value)
 
     @_builtins.property
     @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sync scope: users, groups, or both.
         """
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope", value)
 
 
 @pulumi.input_type
 class _SyncLegacyState:
     def __init__(__self__, *,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_new: Optional[pulumi.Input[_builtins.bool]] = None,
-                 full: Optional[pulumi.Input[_builtins.bool]] = None,
-                 purge: Optional[pulumi.Input[_builtins.bool]] = None,
-                 realm: Optional[pulumi.Input[_builtins.str]] = None,
-                 remove_vanished: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None):
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_new: pulumi.Input[Optional[_builtins.bool]] = None,
+                 full: pulumi.Input[Optional[_builtins.bool]] = None,
+                 purge: pulumi.Input[Optional[_builtins.bool]] = None,
+                 realm: pulumi.Input[Optional[_builtins.str]] = None,
+                 remove_vanished: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SyncLegacy resources.
 
@@ -188,88 +188,88 @@ class _SyncLegacyState:
 
     @_builtins.property
     @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dry_run(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Only simulate the sync without applying changes.
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dry_run(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dry_run", value)
 
     @_builtins.property
     @pulumi.getter(name="enableNew")
-    def enable_new(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_new(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable newly synced users.
         """
         return pulumi.get(self, "enable_new")
 
     @enable_new.setter
-    def enable_new(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_new(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_new", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Deprecated by Proxmox: use remove_vanished instead.""")
-    def full(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def full(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Perform a full sync.
         """
         return pulumi.get(self, "full")
 
     @full.setter
-    def full(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def full(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "full", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Deprecated by Proxmox: use remove_vanished instead.""")
-    def purge(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def purge(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Purge removed entries.
         """
         return pulumi.get(self, "purge")
 
     @purge.setter
-    def purge(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def purge(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "purge", value)
 
     @_builtins.property
     @pulumi.getter
-    def realm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def realm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the realm to synchronize.
         """
         return pulumi.get(self, "realm")
 
     @realm.setter
-    def realm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def realm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "realm", value)
 
     @_builtins.property
     @pulumi.getter(name="removeVanished")
-    def remove_vanished(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remove_vanished(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         How to handle vanished entries (e.g. `acl;properties;entry` or `none`).
         """
         return pulumi.get(self, "remove_vanished")
 
     @remove_vanished.setter
-    def remove_vanished(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remove_vanished(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remove_vanished", value)
 
     @_builtins.property
     @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Sync scope: users, groups, or both.
         """
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope", value)
 
 
@@ -279,13 +279,13 @@ class SyncLegacy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_new: Optional[pulumi.Input[_builtins.bool]] = None,
-                 full: Optional[pulumi.Input[_builtins.bool]] = None,
-                 purge: Optional[pulumi.Input[_builtins.bool]] = None,
-                 realm: Optional[pulumi.Input[_builtins.str]] = None,
-                 remove_vanished: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_new: pulumi.Input[Optional[_builtins.bool]] = None,
+                 full: pulumi.Input[Optional[_builtins.bool]] = None,
+                 purge: pulumi.Input[Optional[_builtins.bool]] = None,
+                 realm: pulumi.Input[Optional[_builtins.str]] = None,
+                 remove_vanished: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         > **Deprecated:** Use `realm.Sync` instead. This resource will be removed in v1.0.
@@ -422,13 +422,13 @@ class SyncLegacy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_new: Optional[pulumi.Input[_builtins.bool]] = None,
-                 full: Optional[pulumi.Input[_builtins.bool]] = None,
-                 purge: Optional[pulumi.Input[_builtins.bool]] = None,
-                 realm: Optional[pulumi.Input[_builtins.str]] = None,
-                 remove_vanished: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None,
+                 dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_new: pulumi.Input[Optional[_builtins.bool]] = None,
+                 full: pulumi.Input[Optional[_builtins.bool]] = None,
+                 purge: pulumi.Input[Optional[_builtins.bool]] = None,
+                 realm: pulumi.Input[Optional[_builtins.str]] = None,
+                 remove_vanished: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -457,13 +457,13 @@ class SyncLegacy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dry_run: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_new: Optional[pulumi.Input[_builtins.bool]] = None,
-            full: Optional[pulumi.Input[_builtins.bool]] = None,
-            purge: Optional[pulumi.Input[_builtins.bool]] = None,
-            realm: Optional[pulumi.Input[_builtins.str]] = None,
-            remove_vanished: Optional[pulumi.Input[_builtins.str]] = None,
-            scope: Optional[pulumi.Input[_builtins.str]] = None) -> 'SyncLegacy':
+            dry_run: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_new: pulumi.Input[Optional[_builtins.bool]] = None,
+            full: pulumi.Input[Optional[_builtins.bool]] = None,
+            purge: pulumi.Input[Optional[_builtins.bool]] = None,
+            realm: pulumi.Input[Optional[_builtins.str]] = None,
+            remove_vanished: pulumi.Input[Optional[_builtins.str]] = None,
+            scope: pulumi.Input[Optional[_builtins.str]] = None) -> 'SyncLegacy':
         """
         Get an existing SyncLegacy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

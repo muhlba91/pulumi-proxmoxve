@@ -171,8 +171,8 @@ def get_repository_legacy(handle: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         node=pulumi.get(__ret__, 'node'),
         status=pulumi.get(__ret__, 'status'))
-def get_repository_legacy_output(handle: Optional[pulumi.Input[_builtins.str]] = None,
-                                 node: Optional[pulumi.Input[_builtins.str]] = None,
+def get_repository_legacy_output(handle: pulumi.Input[Optional[_builtins.str]] = None,
+                                 node: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRepositoryLegacyResult]:
     """
     > **Deprecated:** Use `apt/standard.Repository` instead. This data source will be removed in v1.0.

@@ -33,8 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import io.muehlbachler.pulumi.proxmoxve.sdn.Evpn;
  * import io.muehlbachler.pulumi.proxmoxve.sdn.EvpnArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *             .resourceId("evpn1")
  *             .nodes("pve")
  *             .controller("evpn-controller1")
- *             .vrfVxlan(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(4000) (example.pp:4,16-20)))
+ *             .vrfVxlan(4000)
  *             .advertiseSubnets(true)
  *             .disableArpNdSuppression(false)
  *             .exitNodes(            
@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *             .exitNodesLocalRouting(true)
  *             .primaryExitNode("pve-exit1")
  *             .rtImport("65000:65000")
- *             .mtu(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1450) (example.pp:14,29-33)))
+ *             .mtu(1450)
  *             .dns("1.1.1.1")
  *             .dnsZone("example.com")
  *             .ipam("pve")

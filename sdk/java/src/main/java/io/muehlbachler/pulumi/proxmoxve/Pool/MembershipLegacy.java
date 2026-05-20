@@ -38,8 +38,8 @@ import javax.annotation.Nullable;
  * import io.muehlbachler.pulumi.proxmoxve.PoolLegacyArgs;
  * import io.muehlbachler.pulumi.proxmoxve.pool.MembershipLegacy;
  * import io.muehlbachler.pulumi.proxmoxve.pool.MembershipLegacyArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var testVm1 = new VmLegacy("testVm1", VmLegacyArgs.builder()
- *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1234) (example.pp:2,19-23)))
+ *             .vmId(1234)
  *             .nodeName("pve")
  *             .started(false)
  *             .build());

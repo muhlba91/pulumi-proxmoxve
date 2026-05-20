@@ -298,7 +298,7 @@ def get_evpn(id: Optional[_builtins.str] = None,
         rt_import=pulumi.get(__ret__, 'rt_import'),
         state=pulumi.get(__ret__, 'state'),
         vrf_vxlan=pulumi.get(__ret__, 'vrf_vxlan'))
-def get_evpn_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_evpn_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEvpnResult]:
     """
     Retrieves information about an EVPN Zone in Proxmox SDN. The EVPN zone creates a routable Layer 3 network, capable of spanning across multiple clusters.

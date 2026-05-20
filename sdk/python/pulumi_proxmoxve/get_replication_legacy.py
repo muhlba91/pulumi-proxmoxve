@@ -199,7 +199,7 @@ def get_replication_legacy(id: Optional[_builtins.str] = None,
         source=pulumi.get(__ret__, 'source'),
         target=pulumi.get(__ret__, 'target'),
         type=pulumi.get(__ret__, 'type'))
-def get_replication_legacy_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_replication_legacy_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetReplicationLegacyResult]:
     """
     > **Deprecated:** Use `Replication` instead. This data source will be removed in v1.0.

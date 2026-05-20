@@ -35,8 +35,8 @@ import javax.annotation.Nullable;
  * import io.muehlbachler.pulumi.proxmoxve.network.Bridge;
  * import io.muehlbachler.pulumi.proxmoxve.network.BridgeArgs;
  * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -59,6 +59,8 @@ import javax.annotation.Nullable;
  *             .address("99.99.99.99/16")
  *             .comment("vmbr99 comment")
  *             .ports("ens18.99")
+ *             .vlanAware(true)
+ *             .vids("2-4094")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(vlan99)
  *                 .build());
@@ -234,6 +236,20 @@ public class Bridge extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> timeoutReload() {
         return this.timeoutReload;
+    }
+    /**
+     * VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `&#34;2-4094&#34;`, `&#34;1 20 130&#34;`, or `&#34;1 10-20 30&#34;`). Requires &lt;span pulumi-lang-nodejs=&#34;`vlanAware &#34; pulumi-lang-dotnet=&#34;`VlanAware &#34; pulumi-lang-go=&#34;`vlanAware &#34; pulumi-lang-python=&#34;`vlan_aware &#34; pulumi-lang-yaml=&#34;`vlanAware &#34; pulumi-lang-java=&#34;`vlanAware &#34;&gt;`vlanAware &lt;/span&gt;= true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
+     * 
+     */
+    @Export(name="vids", refs={String.class}, tree="[0]")
+    private Output<String> vids;
+
+    /**
+     * @return VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `&#34;2-4094&#34;`, `&#34;1 20 130&#34;`, or `&#34;1 10-20 30&#34;`). Requires &lt;span pulumi-lang-nodejs=&#34;`vlanAware &#34; pulumi-lang-dotnet=&#34;`VlanAware &#34; pulumi-lang-go=&#34;`vlanAware &#34; pulumi-lang-python=&#34;`vlan_aware &#34; pulumi-lang-yaml=&#34;`vlanAware &#34; pulumi-lang-java=&#34;`vlanAware &#34;&gt;`vlanAware &lt;/span&gt;= true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
+     * 
+     */
+    public Output<String> vids() {
+        return this.vids;
     }
     /**
      * Whether the interface bridge is VLAN aware (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).

@@ -19,8 +19,8 @@ namespace Pulumi.ProxmoxVE.Inputs
         public Input<bool>? Acl { get; set; }
 
         /// <summary>
-        /// The identifier for the datastore to create the
-        /// disk in (defaults to `Local`).
+        /// The Proxmox storage ID where the rootfs
+        /// volume is created (defaults to `Local`).
         /// </summary>
         [Input("datastoreId")]
         public Input<string>? DatastoreId { get; set; }

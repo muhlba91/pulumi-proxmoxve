@@ -33,8 +33,8 @@ public final class MetricsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.metrics.MetricsFunctions;
      * import com.pulumi.proxmoxve.metrics.inputs.GetServerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -79,8 +79,8 @@ public final class MetricsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.metrics.MetricsFunctions;
      * import com.pulumi.proxmoxve.metrics.inputs.GetServerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -125,8 +125,8 @@ public final class MetricsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.metrics.MetricsFunctions;
      * import com.pulumi.proxmoxve.metrics.inputs.GetServerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -171,8 +171,8 @@ public final class MetricsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.metrics.MetricsFunctions;
      * import com.pulumi.proxmoxve.metrics.inputs.GetServerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -217,8 +217,8 @@ public final class MetricsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.metrics.MetricsFunctions;
      * import com.pulumi.proxmoxve.metrics.inputs.GetServerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -265,8 +265,8 @@ public final class MetricsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.metrics.MetricsFunctions;
      * import com.pulumi.proxmoxve.metrics.inputs.GetServerLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -313,8 +313,8 @@ public final class MetricsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.metrics.MetricsFunctions;
      * import com.pulumi.proxmoxve.metrics.inputs.GetServerLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -361,8 +361,8 @@ public final class MetricsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.metrics.MetricsFunctions;
      * import com.pulumi.proxmoxve.metrics.inputs.GetServerLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -409,8 +409,8 @@ public final class MetricsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.metrics.MetricsFunctions;
      * import com.pulumi.proxmoxve.metrics.inputs.GetServerLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -457,8 +457,8 @@ public final class MetricsFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.metrics.MetricsFunctions;
      * import com.pulumi.proxmoxve.metrics.inputs.GetServerLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

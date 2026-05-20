@@ -160,14 +160,14 @@ export interface GetVmsLegacyOutputArgs {
     /**
      * Filter blocks. The VM must satisfy all filter blocks to be included in the result.
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetVmsLegacyFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetVmsLegacyFilterArgs>[] | undefined>;
     /**
      * The node name. All cluster nodes will be queried in case this is omitted
      */
-    nodeName?: pulumi.Input<string>;
+    nodeName?: pulumi.Input<string | undefined>;
     /**
      * A list of tags to filter the VMs. The VM must have all
      * the tags to be included in the result.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

@@ -20,8 +20,8 @@ __all__ = ['MembershipArgs', 'Membership']
 class MembershipArgs:
     def __init__(__self__, *,
                  pool_id: pulumi.Input[_builtins.str],
-                 storage_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 storage_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Membership resource.
 
@@ -49,36 +49,36 @@ class MembershipArgs:
 
     @_builtins.property
     @pulumi.getter(name="storageId")
-    def storage_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Storage id
         """
         return pulumi.get(self, "storage_id")
 
     @storage_id.setter
-    def storage_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vmId")
-    def vm_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vm_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         VM or CT id
         """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
-    def vm_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vm_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vm_id", value)
 
 
 @pulumi.input_type
 class _MembershipState:
     def __init__(__self__, *,
-                 pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Membership resources.
 
@@ -98,50 +98,50 @@ class _MembershipState:
 
     @_builtins.property
     @pulumi.getter(name="poolId")
-    def pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource pool id
         """
         return pulumi.get(self, "pool_id")
 
     @pool_id.setter
-    def pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pool_id", value)
 
     @_builtins.property
     @pulumi.getter(name="storageId")
-    def storage_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Storage id
         """
         return pulumi.get(self, "storage_id")
 
     @storage_id.setter
-    def storage_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource pool membership type (can be `vm` for VMs and CTs or `storage` for storages)
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="vmId")
-    def vm_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vm_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         VM or CT id
         """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
-    def vm_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vm_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vm_id", value)
 
 
@@ -151,9 +151,9 @@ class Membership(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Manages resource pool memberships for containers, virtual machines and storages
@@ -173,7 +173,7 @@ class Membership(pulumi.CustomResource):
         test_pool = proxmoxve.PoolLegacy("test_pool", pool_id="test-pool")
         vm_membership = proxmoxve.pool.Membership("vm_membership",
             pool_id=test_pool.id,
-            vm_id=test_vm1.resource_id)
+            vm_id=test_vm1.resource_id.apply(lambda x: int(x)))
         storage_membership = proxmoxve.pool.Membership("storage_membership",
             pool_id=test_pool.id,
             storage_id="local-lvm")
@@ -219,7 +219,7 @@ class Membership(pulumi.CustomResource):
         test_pool = proxmoxve.PoolLegacy("test_pool", pool_id="test-pool")
         vm_membership = proxmoxve.pool.Membership("vm_membership",
             pool_id=test_pool.id,
-            vm_id=test_vm1.resource_id)
+            vm_id=test_vm1.resource_id.apply(lambda x: int(x)))
         storage_membership = proxmoxve.pool.Membership("storage_membership",
             pool_id=test_pool.id,
             storage_id="local-lvm")
@@ -250,9 +250,9 @@ class Membership(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -278,10 +278,10 @@ class Membership(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_id: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            vm_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'Membership':
+            pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_id: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            vm_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'Membership':
         """
         Get an existing Membership resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

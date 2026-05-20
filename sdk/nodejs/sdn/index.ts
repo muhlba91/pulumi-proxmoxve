@@ -77,10 +77,12 @@ utilities.lazyLoad(exports, ["VnetLegacy"], () => require("./vnetLegacy"));
 
 
 // Export sub-modules:
+import * as controller from "./controller";
 import * as fabric from "./fabric";
 import * as zone from "./zone";
 
 export {
+    controller,
     fabric,
     zone,
 };

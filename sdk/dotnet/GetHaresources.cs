@@ -25,10 +25,10 @@ namespace Pulumi.ProxmoxVE
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // This will fetch the set of all HA resource identifiers.
-        ///     var exampleAll = ProxmoxVE.Index.GetHaresources.Invoke();
+        ///     var exampleAll = ProxmoxVE.GetHaresources.Invoke();
         /// 
         ///     // This will fetch the set of HA resource identifiers that correspond to virtual machines.
-        ///     var exampleVm = ProxmoxVE.Index.GetHaresources.Invoke(new()
+        ///     var exampleVm = ProxmoxVE.GetHaresources.Invoke(new()
         ///     {
         ///         Type = "vm",
         ///     });
@@ -61,10 +61,10 @@ namespace Pulumi.ProxmoxVE
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // This will fetch the set of all HA resource identifiers.
-        ///     var exampleAll = ProxmoxVE.Index.GetHaresources.Invoke();
+        ///     var exampleAll = ProxmoxVE.GetHaresources.Invoke();
         /// 
         ///     // This will fetch the set of HA resource identifiers that correspond to virtual machines.
-        ///     var exampleVm = ProxmoxVE.Index.GetHaresources.Invoke(new()
+        ///     var exampleVm = ProxmoxVE.GetHaresources.Invoke(new()
         ///     {
         ///         Type = "vm",
         ///     });
@@ -97,10 +97,10 @@ namespace Pulumi.ProxmoxVE
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // This will fetch the set of all HA resource identifiers.
-        ///     var exampleAll = ProxmoxVE.Index.GetHaresources.Invoke();
+        ///     var exampleAll = ProxmoxVE.GetHaresources.Invoke();
         /// 
         ///     // This will fetch the set of HA resource identifiers that correspond to virtual machines.
-        ///     var exampleVm = ProxmoxVE.Index.GetHaresources.Invoke(new()
+        ///     var exampleVm = ProxmoxVE.GetHaresources.Invoke(new()
         ///     {
         ///         Type = "vm",
         ///     });

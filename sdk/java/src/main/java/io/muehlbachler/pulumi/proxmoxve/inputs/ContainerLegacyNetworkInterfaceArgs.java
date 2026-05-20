@@ -72,7 +72,7 @@ public final class ContainerLegacyNetworkInterfaceArgs extends com.pulumi.resour
 
     /**
      * Whether the host runs DHCP on this interface&#39;s
-     * behalf (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). Requires Proxmox VE 9.0+. Required for
+     * behalf (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). Requires Proxmox VE 9.1+. Required for
      * application containers that do not include a DHCP client.
      * 
      */
@@ -81,7 +81,7 @@ public final class ContainerLegacyNetworkInterfaceArgs extends com.pulumi.resour
 
     /**
      * @return Whether the host runs DHCP on this interface&#39;s
-     * behalf (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). Requires Proxmox VE 9.0+. Required for
+     * behalf (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). Requires Proxmox VE 9.1+. Required for
      * application containers that do not include a DHCP client.
      * 
      */
@@ -269,7 +269,7 @@ public final class ContainerLegacyNetworkInterfaceArgs extends com.pulumi.resour
 
         /**
          * @param hostManaged Whether the host runs DHCP on this interface&#39;s
-         * behalf (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). Requires Proxmox VE 9.0+. Required for
+         * behalf (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). Requires Proxmox VE 9.1+. Required for
          * application containers that do not include a DHCP client.
          * 
          * @return builder
@@ -282,7 +282,7 @@ public final class ContainerLegacyNetworkInterfaceArgs extends com.pulumi.resour
 
         /**
          * @param hostManaged Whether the host runs DHCP on this interface&#39;s
-         * behalf (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). Requires Proxmox VE 9.0+. Required for
+         * behalf (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). Requires Proxmox VE 9.1+. Required for
          * application containers that do not include a DHCP client.
          * 
          * @return builder

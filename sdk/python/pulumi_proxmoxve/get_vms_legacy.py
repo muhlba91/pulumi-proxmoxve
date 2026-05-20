@@ -158,9 +158,9 @@ def get_vms_legacy(filters: Optional[Sequence[Union['GetVmsLegacyFilterArgs', 'G
         node_name=pulumi.get(__ret__, 'node_name'),
         tags=pulumi.get(__ret__, 'tags'),
         vms=pulumi.get(__ret__, 'vms'))
-def get_vms_legacy_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetVmsLegacyFilterArgs', 'GetVmsLegacyFilterArgsDict']]]]] = None,
-                          node_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                          tags: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_vms_legacy_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetVmsLegacyFilterArgs', 'GetVmsLegacyFilterArgsDict']]]]] = None,
+                          node_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                          tags: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVmsLegacyResult]:
     """
     Retrieves information about all VMs in the Proxmox cluster.

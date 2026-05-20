@@ -145,35 +145,35 @@ export interface ZfspoolState {
     /**
      * Block size for newly created volumes (e.g. `4k`, `8k`, `16k`). Larger values may improve throughput for large I/O, while smaller values optimize space efficiency.
      */
-    blocksize?: pulumi.Input<string>;
+    blocksize?: pulumi.Input<string | undefined>;
     /**
      * The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
      */
-    contents?: pulumi.Input<pulumi.Input<string>[]>;
+    contents?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the storage is disabled.
      */
-    disable?: pulumi.Input<boolean>;
+    disable?: pulumi.Input<boolean | undefined>;
     /**
      * A list of nodes where this storage is available.
      */
-    nodes?: pulumi.Input<pulumi.Input<string>[]>;
+    nodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The unique identifier of the storage.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * Whether the storage is shared across all nodes.
      */
-    shared?: pulumi.Input<boolean>;
+    shared?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to enable thin provisioning (`on` or `off`). Thin provisioning allows flexible disk allocation without pre-allocating full space.
      */
-    thinProvision?: pulumi.Input<boolean>;
+    thinProvision?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the ZFS storage pool to use (e.g. `tank`, `rpool/data`).
      */
-    zfsPool?: pulumi.Input<string>;
+    zfsPool?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -183,19 +183,19 @@ export interface ZfspoolArgs {
     /**
      * Block size for newly created volumes (e.g. `4k`, `8k`, `16k`). Larger values may improve throughput for large I/O, while smaller values optimize space efficiency.
      */
-    blocksize?: pulumi.Input<string>;
+    blocksize?: pulumi.Input<string | undefined>;
     /**
      * The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
      */
-    contents?: pulumi.Input<pulumi.Input<string>[]>;
+    contents?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the storage is disabled.
      */
-    disable?: pulumi.Input<boolean>;
+    disable?: pulumi.Input<boolean | undefined>;
     /**
      * A list of nodes where this storage is available.
      */
-    nodes?: pulumi.Input<pulumi.Input<string>[]>;
+    nodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The unique identifier of the storage.
      */
@@ -203,7 +203,7 @@ export interface ZfspoolArgs {
     /**
      * Whether to enable thin provisioning (`on` or `off`). Thin provisioning allows flexible disk allocation without pre-allocating full space.
      */
-    thinProvision?: pulumi.Input<boolean>;
+    thinProvision?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the ZFS storage pool to use (e.g. `tank`, `rpool/data`).
      */

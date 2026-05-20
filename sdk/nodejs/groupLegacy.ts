@@ -113,19 +113,19 @@ export interface GroupLegacyState {
     /**
      * The access control list (multiple blocks supported).
      */
-    acls?: pulumi.Input<pulumi.Input<inputs.GroupLegacyAcl>[]>;
+    acls?: pulumi.Input<pulumi.Input<inputs.GroupLegacyAcl>[] | undefined>;
     /**
      * The group comment.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The group identifier.
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * The group members as a list of `username@realm` entries
      */
-    members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -135,11 +135,11 @@ export interface GroupLegacyArgs {
     /**
      * The access control list (multiple blocks supported).
      */
-    acls?: pulumi.Input<pulumi.Input<inputs.GroupLegacyAcl>[]>;
+    acls?: pulumi.Input<pulumi.Input<inputs.GroupLegacyAcl>[] | undefined>;
     /**
      * The group comment.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The group identifier.
      */

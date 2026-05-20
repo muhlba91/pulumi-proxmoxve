@@ -25,6 +25,8 @@ import * as utilities from "../../utilities";
  *     address: "99.99.99.99/16",
  *     comment: "vmbr99 comment",
  *     ports: ["ens18.99"],
+ *     vlanAware: true,
+ *     vids: "2-4094",
  * }, {
  *     dependsOn: [vlan99],
  * });
@@ -112,6 +114,10 @@ export class BridgeLegacy extends pulumi.CustomResource {
      */
     declare public readonly timeoutReload: pulumi.Output<number>;
     /**
+     * VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `"2-4094"`, `"1 20 130"`, or `"1 10-20 30"`). Requires `vlanAware = true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
+     */
+    declare public readonly vids: pulumi.Output<string>;
+    /**
      * Whether the interface bridge is VLAN aware (defaults to `false`).
      */
     declare public readonly vlanAware: pulumi.Output<boolean>;
@@ -140,6 +146,7 @@ export class BridgeLegacy extends pulumi.CustomResource {
             resourceInputs["nodeName"] = state?.nodeName;
             resourceInputs["ports"] = state?.ports;
             resourceInputs["timeoutReload"] = state?.timeoutReload;
+            resourceInputs["vids"] = state?.vids;
             resourceInputs["vlanAware"] = state?.vlanAware;
         } else {
             const args = argsOrState as BridgeLegacyArgs | undefined;
@@ -157,6 +164,7 @@ export class BridgeLegacy extends pulumi.CustomResource {
             resourceInputs["nodeName"] = args?.nodeName;
             resourceInputs["ports"] = args?.ports;
             resourceInputs["timeoutReload"] = args?.timeoutReload;
+            resourceInputs["vids"] = args?.vids;
             resourceInputs["vlanAware"] = args?.vlanAware;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -171,51 +179,55 @@ export interface BridgeLegacyState {
     /**
      * The interface IPv4/CIDR address.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The interface IPv6/CIDR address.
      */
-    address6?: pulumi.Input<string>;
+    address6?: pulumi.Input<string | undefined>;
     /**
      * Automatically start interface on boot (defaults to `true`).
      */
-    autostart?: pulumi.Input<boolean>;
+    autostart?: pulumi.Input<boolean | undefined>;
     /**
      * Comment for the interface.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Default gateway address.
      */
-    gateway?: pulumi.Input<string>;
+    gateway?: pulumi.Input<string | undefined>;
     /**
      * Default IPv6 gateway address.
      */
-    gateway6?: pulumi.Input<string>;
+    gateway6?: pulumi.Input<string | undefined>;
     /**
      * The interface MTU.
      */
-    mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number | undefined>;
     /**
      * The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the node.
      */
-    nodeName?: pulumi.Input<string>;
+    nodeName?: pulumi.Input<string | undefined>;
     /**
      * The interface bridge ports.
      */
-    ports?: pulumi.Input<pulumi.Input<string>[]>;
+    ports?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Timeout for network reload operations in seconds (defaults to `100`).
      */
-    timeoutReload?: pulumi.Input<number>;
+    timeoutReload?: pulumi.Input<number | undefined>;
+    /**
+     * VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `"2-4094"`, `"1 20 130"`, or `"1 10-20 30"`). Requires `vlanAware = true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
+     */
+    vids?: pulumi.Input<string | undefined>;
     /**
      * Whether the interface bridge is VLAN aware (defaults to `false`).
      */
-    vlanAware?: pulumi.Input<boolean>;
+    vlanAware?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -225,35 +237,35 @@ export interface BridgeLegacyArgs {
     /**
      * The interface IPv4/CIDR address.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The interface IPv6/CIDR address.
      */
-    address6?: pulumi.Input<string>;
+    address6?: pulumi.Input<string | undefined>;
     /**
      * Automatically start interface on boot (defaults to `true`).
      */
-    autostart?: pulumi.Input<boolean>;
+    autostart?: pulumi.Input<boolean | undefined>;
     /**
      * Comment for the interface.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Default gateway address.
      */
-    gateway?: pulumi.Input<string>;
+    gateway?: pulumi.Input<string | undefined>;
     /**
      * Default IPv6 gateway address.
      */
-    gateway6?: pulumi.Input<string>;
+    gateway6?: pulumi.Input<string | undefined>;
     /**
      * The interface MTU.
      */
-    mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number | undefined>;
     /**
      * The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the node.
      */
@@ -261,13 +273,17 @@ export interface BridgeLegacyArgs {
     /**
      * The interface bridge ports.
      */
-    ports?: pulumi.Input<pulumi.Input<string>[]>;
+    ports?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Timeout for network reload operations in seconds (defaults to `100`).
      */
-    timeoutReload?: pulumi.Input<number>;
+    timeoutReload?: pulumi.Input<number | undefined>;
+    /**
+     * VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `"2-4094"`, `"1 20 130"`, or `"1 10-20 30"`). Requires `vlanAware = true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
+     */
+    vids?: pulumi.Input<string | undefined>;
     /**
      * Whether the interface bridge is VLAN aware (defaults to `false`).
      */
-    vlanAware?: pulumi.Input<boolean>;
+    vlanAware?: pulumi.Input<boolean | undefined>;
 }

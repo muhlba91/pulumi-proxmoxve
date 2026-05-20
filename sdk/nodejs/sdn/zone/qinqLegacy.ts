@@ -175,51 +175,51 @@ export interface QinqLegacyState {
     /**
      * A local, VLAN-aware bridge that is already configured on each local node
      */
-    bridge?: pulumi.Input<string>;
+    bridge?: pulumi.Input<string | undefined>;
     /**
      * DNS API server address.
      */
-    dns?: pulumi.Input<string>;
+    dns?: pulumi.Input<string | undefined>;
     /**
      * DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
      */
-    dnsZone?: pulumi.Input<string>;
+    dnsZone?: pulumi.Input<string | undefined>;
     /**
      * IP Address Management system.
      */
-    ipam?: pulumi.Input<string>;
+    ipam?: pulumi.Input<string | undefined>;
     /**
      * MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
      */
-    mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number | undefined>;
     /**
      * The Proxmox nodes which the zone and associated VNets should be deployed on
      */
-    nodes?: pulumi.Input<pulumi.Input<string>[]>;
+    nodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates if the zone has pending configuration changes that need to be applied.
      */
-    pending?: pulumi.Input<boolean>;
+    pending?: pulumi.Input<boolean | undefined>;
     /**
      * The unique identifier of the SDN zone.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * Reverse DNS API server address.
      */
-    reverseDns?: pulumi.Input<string>;
+    reverseDns?: pulumi.Input<string | undefined>;
     /**
      * Service VLAN tag for QinQ. The tag must be between `1` and `4094`.
      */
-    serviceVlan?: pulumi.Input<number>;
+    serviceVlan?: pulumi.Input<number | undefined>;
     /**
      * Service VLAN protocol for QinQ. The protocol must be `802.1ad` or `802.1q`.
      */
-    serviceVlanProtocol?: pulumi.Input<string>;
+    serviceVlanProtocol?: pulumi.Input<string | undefined>;
     /**
      * Indicates the current state of the zone.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -233,23 +233,23 @@ export interface QinqLegacyArgs {
     /**
      * DNS API server address.
      */
-    dns?: pulumi.Input<string>;
+    dns?: pulumi.Input<string | undefined>;
     /**
      * DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
      */
-    dnsZone?: pulumi.Input<string>;
+    dnsZone?: pulumi.Input<string | undefined>;
     /**
      * IP Address Management system.
      */
-    ipam?: pulumi.Input<string>;
+    ipam?: pulumi.Input<string | undefined>;
     /**
      * MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
      */
-    mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number | undefined>;
     /**
      * The Proxmox nodes which the zone and associated VNets should be deployed on
      */
-    nodes?: pulumi.Input<pulumi.Input<string>[]>;
+    nodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The unique identifier of the SDN zone.
      */
@@ -257,7 +257,7 @@ export interface QinqLegacyArgs {
     /**
      * Reverse DNS API server address.
      */
-    reverseDns?: pulumi.Input<string>;
+    reverseDns?: pulumi.Input<string | undefined>;
     /**
      * Service VLAN tag for QinQ. The tag must be between `1` and `4094`.
      */
@@ -265,5 +265,5 @@ export interface QinqLegacyArgs {
     /**
      * Service VLAN protocol for QinQ. The protocol must be `802.1ad` or `802.1q`.
      */
-    serviceVlanProtocol?: pulumi.Input<string>;
+    serviceVlanProtocol?: pulumi.Input<string | undefined>;
 }

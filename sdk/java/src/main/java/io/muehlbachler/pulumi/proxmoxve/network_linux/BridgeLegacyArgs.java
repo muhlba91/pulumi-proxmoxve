@@ -185,6 +185,21 @@ public final class BridgeLegacyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `&#34;2-4094&#34;`, `&#34;1 20 130&#34;`, or `&#34;1 10-20 30&#34;`). Requires &lt;span pulumi-lang-nodejs=&#34;`vlanAware &#34; pulumi-lang-dotnet=&#34;`VlanAware &#34; pulumi-lang-go=&#34;`vlanAware &#34; pulumi-lang-python=&#34;`vlan_aware &#34; pulumi-lang-yaml=&#34;`vlanAware &#34; pulumi-lang-java=&#34;`vlanAware &#34;&gt;`vlanAware &lt;/span&gt;= true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
+     * 
+     */
+    @Import(name="vids")
+    private @Nullable Output<String> vids;
+
+    /**
+     * @return VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `&#34;2-4094&#34;`, `&#34;1 20 130&#34;`, or `&#34;1 10-20 30&#34;`). Requires &lt;span pulumi-lang-nodejs=&#34;`vlanAware &#34; pulumi-lang-dotnet=&#34;`VlanAware &#34; pulumi-lang-go=&#34;`vlanAware &#34; pulumi-lang-python=&#34;`vlan_aware &#34; pulumi-lang-yaml=&#34;`vlanAware &#34; pulumi-lang-java=&#34;`vlanAware &#34;&gt;`vlanAware &lt;/span&gt;= true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
+     * 
+     */
+    public Optional<Output<String>> vids() {
+        return Optional.ofNullable(this.vids);
+    }
+
+    /**
      * Whether the interface bridge is VLAN aware (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
@@ -213,6 +228,7 @@ public final class BridgeLegacyArgs extends com.pulumi.resources.ResourceArgs {
         this.nodeName = $.nodeName;
         this.ports = $.ports;
         this.timeoutReload = $.timeoutReload;
+        this.vids = $.vids;
         this.vlanAware = $.vlanAware;
     }
 
@@ -473,6 +489,27 @@ public final class BridgeLegacyArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder timeoutReload(Integer timeoutReload) {
             return timeoutReload(Output.of(timeoutReload));
+        }
+
+        /**
+         * @param vids VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `&#34;2-4094&#34;`, `&#34;1 20 130&#34;`, or `&#34;1 10-20 30&#34;`). Requires &lt;span pulumi-lang-nodejs=&#34;`vlanAware &#34; pulumi-lang-dotnet=&#34;`VlanAware &#34; pulumi-lang-go=&#34;`vlanAware &#34; pulumi-lang-python=&#34;`vlan_aware &#34; pulumi-lang-yaml=&#34;`vlanAware &#34; pulumi-lang-java=&#34;`vlanAware &#34;&gt;`vlanAware &lt;/span&gt;= true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vids(@Nullable Output<String> vids) {
+            $.vids = vids;
+            return this;
+        }
+
+        /**
+         * @param vids VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `&#34;2-4094&#34;`, `&#34;1 20 130&#34;`, or `&#34;1 10-20 30&#34;`). Requires &lt;span pulumi-lang-nodejs=&#34;`vlanAware &#34; pulumi-lang-dotnet=&#34;`VlanAware &#34; pulumi-lang-go=&#34;`vlanAware &#34; pulumi-lang-python=&#34;`vlan_aware &#34; pulumi-lang-yaml=&#34;`vlanAware &#34; pulumi-lang-java=&#34;`vlanAware &#34;&gt;`vlanAware &lt;/span&gt;= true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vids(String vids) {
+            return vids(Output.of(vids));
         }
 
         /**

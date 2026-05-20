@@ -138,8 +138,8 @@ def get_mappings_legacy(check_node: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         type=pulumi.get(__ret__, 'type'))
-def get_mappings_legacy_output(check_node: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                               type: Optional[pulumi.Input[_builtins.str]] = None,
+def get_mappings_legacy_output(check_node: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                               type: pulumi.Input[Optional[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMappingsLegacyResult]:
     """
     > **Deprecated:** Use `hardware_get_mappings` instead. This data source will be removed in v1.0.

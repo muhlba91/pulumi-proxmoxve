@@ -142,31 +142,31 @@ export interface RepositoryLegacyState {
     /**
      * The description of the APT standard repository.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The absolute path of the source list file that contains this standard repository.
      */
-    filePath?: pulumi.Input<string>;
+    filePath?: pulumi.Input<string | undefined>;
     /**
      * The handle of the APT standard repository. Must be `ceph-squid-enterprise` | `ceph-squid-no-subscription` | `ceph-squid-test` | `enterprise` | `no-subscription` | `test`.
      */
-    handle?: pulumi.Input<string>;
+    handle?: pulumi.Input<string | undefined>;
     /**
      * The index within the defining source list file.
      */
-    index?: pulumi.Input<number>;
+    index?: pulumi.Input<number | undefined>;
     /**
      * The name of the APT standard repository.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the target Proxmox VE node.
      */
-    node?: pulumi.Input<string>;
+    node?: pulumi.Input<string | undefined>;
     /**
      * Indicates the activation status.
      */
-    status?: pulumi.Input<number>;
+    status?: pulumi.Input<number | undefined>;
 }
 
 /**

@@ -129,7 +129,7 @@ def get_pci_legacy(name: Optional[_builtins.str] = None,
         maps=pulumi.get(__ret__, 'maps'),
         mediated_devices=pulumi.get(__ret__, 'mediated_devices'),
         name=pulumi.get(__ret__, 'name'))
-def get_pci_legacy_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_pci_legacy_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPciLegacyResult]:
     """
     > **Deprecated:** Use `hardware/mapping.Pci` instead. This data source will be removed in v1.0.

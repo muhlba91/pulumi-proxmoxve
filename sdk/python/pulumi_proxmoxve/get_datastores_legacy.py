@@ -113,9 +113,9 @@ def get_datastores_legacy(datastores: Optional[Sequence[Union['GetDatastoresLega
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         node_name=pulumi.get(__ret__, 'node_name'))
-def get_datastores_legacy_output(datastores: Optional[pulumi.Input[Optional[Sequence[Union['GetDatastoresLegacyDatastoreArgs', 'GetDatastoresLegacyDatastoreArgsDict']]]]] = None,
-                                 filters: Optional[pulumi.Input[Optional[Union['GetDatastoresLegacyFiltersArgs', 'GetDatastoresLegacyFiltersArgsDict']]]] = None,
-                                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_datastores_legacy_output(datastores: pulumi.Input[Optional[Optional[Sequence[Union['GetDatastoresLegacyDatastoreArgs', 'GetDatastoresLegacyDatastoreArgsDict']]]]] = None,
+                                 filters: pulumi.Input[Optional[Optional[Union['GetDatastoresLegacyFiltersArgs', 'GetDatastoresLegacyFiltersArgsDict']]]] = None,
+                                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatastoresLegacyResult]:
     """
     > **Deprecated:** Use `get_datastores` instead. This data source will be removed in v1.0.

@@ -137,7 +137,7 @@ def get_hosts_legacy(node_name: Optional[_builtins.str] = None,
         hostnames=pulumi.get(__ret__, 'hostnames'),
         id=pulumi.get(__ret__, 'id'),
         node_name=pulumi.get(__ret__, 'node_name'))
-def get_hosts_legacy_output(node_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_hosts_legacy_output(node_name: pulumi.Input[Optional[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHostsLegacyResult]:
     """
     Retrieves all the host entries from a specific node.

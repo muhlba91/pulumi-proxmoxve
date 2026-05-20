@@ -211,10 +211,10 @@ def get_file(content_type: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         node_name=pulumi.get(__ret__, 'node_name'),
         vmid=pulumi.get(__ret__, 'vmid'))
-def get_file_output(content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                    datastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                    file_name: Optional[pulumi.Input[_builtins.str]] = None,
-                    node_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_file_output(content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                    datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                    file_name: pulumi.Input[Optional[_builtins.str]] = None,
+                    node_name: pulumi.Input[Optional[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFileResult]:
     """
     Retrieves information about an existing file in a Proxmox Virtual Environment node.

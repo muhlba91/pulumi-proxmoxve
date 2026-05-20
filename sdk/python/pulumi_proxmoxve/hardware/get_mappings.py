@@ -136,8 +136,8 @@ def get_mappings(check_node: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         ids=pulumi.get(__ret__, 'ids'),
         type=pulumi.get(__ret__, 'type'))
-def get_mappings_output(check_node: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        type: Optional[pulumi.Input[_builtins.str]] = None,
+def get_mappings_output(check_node: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        type: pulumi.Input[Optional[_builtins.str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMappingsResult]:
     """
     Retrieves a list of hardware mapping resources.

@@ -149,7 +149,7 @@ def get_haresource_legacy(resource_id: Optional[_builtins.str] = None,
     # This will fetch the set of all HA resource identifiers...
     all = proxmoxve.get_haresources_legacy()
     # ...which we will go through in order to fetch the whole record for each resource.
-    example = {__key: proxmoxve.get_haresource_legacy(resource_id=__value) for __key, __value in enumerate(all.resource_ids)}
+    example = {str(__key): proxmoxve.get_haresource_legacy(resource_id=__value) for __key, __value in enumerate(all.resource_ids)}
     pulumi.export("proxmoxVirtualEnvironmentHaresourcesFull", example)
     ```
 
@@ -170,7 +170,7 @@ def get_haresource_legacy(resource_id: Optional[_builtins.str] = None,
         resource_id=pulumi.get(__ret__, 'resource_id'),
         state=pulumi.get(__ret__, 'state'),
         type=pulumi.get(__ret__, 'type'))
-def get_haresource_legacy_output(resource_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_haresource_legacy_output(resource_id: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHaresourceLegacyResult]:
     """
     > **Deprecated:** Use `Haresource` instead. This data source will be removed in v1.0.
@@ -186,7 +186,7 @@ def get_haresource_legacy_output(resource_id: Optional[pulumi.Input[_builtins.st
     # This will fetch the set of all HA resource identifiers...
     all = proxmoxve.get_haresources_legacy()
     # ...which we will go through in order to fetch the whole record for each resource.
-    example = {__key: proxmoxve.get_haresource_legacy(resource_id=__value) for __key, __value in enumerate(all.resource_ids)}
+    example = {str(__key): proxmoxve.get_haresource_legacy(resource_id=__value) for __key, __value in enumerate(all.resource_ids)}
     pulumi.export("proxmoxVirtualEnvironmentHaresourcesFull", example)
     ```
 

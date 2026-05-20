@@ -157,43 +157,43 @@ export interface RepositoryState {
     /**
      * The associated comment.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The list of components.
      */
-    components?: pulumi.Input<pulumi.Input<string>[]>;
+    components?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates the activation status.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The absolute path of the source list file that contains this repository.
      */
-    filePath?: pulumi.Input<string>;
+    filePath?: pulumi.Input<string | undefined>;
     /**
      * The format of the defining source list file.
      */
-    fileType?: pulumi.Input<string>;
+    fileType?: pulumi.Input<string | undefined>;
     /**
      * The index within the defining source list file.
      */
-    index?: pulumi.Input<number>;
+    index?: pulumi.Input<number | undefined>;
     /**
      * The name of the target Proxmox VE node.
      */
-    node?: pulumi.Input<string>;
+    node?: pulumi.Input<string | undefined>;
     /**
      * The list of package types.
      */
-    packageTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    packageTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of package distributions.
      */
-    suites?: pulumi.Input<pulumi.Input<string>[]>;
+    suites?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The list of repository URIs.
      */
-    uris?: pulumi.Input<pulumi.Input<string>[]>;
+    uris?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -203,7 +203,7 @@ export interface RepositoryArgs {
     /**
      * Indicates the activation status.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The absolute path of the source list file that contains this repository.
      */

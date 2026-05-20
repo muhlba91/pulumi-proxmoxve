@@ -178,47 +178,47 @@ export interface NfsLegacyState {
     /**
      * Configure backup retention settings for the storage type.
      */
-    backups?: pulumi.Input<inputs.storage.NfsLegacyBackups>;
+    backups?: pulumi.Input<inputs.storage.NfsLegacyBackups | undefined>;
     /**
      * The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
      */
-    contents?: pulumi.Input<pulumi.Input<string>[]>;
+    contents?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the storage is disabled.
      */
-    disable?: pulumi.Input<boolean>;
+    disable?: pulumi.Input<boolean | undefined>;
     /**
      * The path of the NFS export.
      */
-    export?: pulumi.Input<string>;
+    export?: pulumi.Input<string | undefined>;
     /**
      * A list of nodes where this storage is available.
      */
-    nodes?: pulumi.Input<pulumi.Input<string>[]>;
+    nodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The options to pass to the NFS service.
      */
-    options?: pulumi.Input<string>;
+    options?: pulumi.Input<string | undefined>;
     /**
      * The preallocation mode for raw and qcow2 images.
      */
-    preallocation?: pulumi.Input<string>;
+    preallocation?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the storage.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * The IP address or DNS name of the NFS server.
      */
-    server?: pulumi.Input<string>;
+    server?: pulumi.Input<string | undefined>;
     /**
      * Whether the storage is shared across all nodes.
      */
-    shared?: pulumi.Input<boolean>;
+    shared?: pulumi.Input<boolean | undefined>;
     /**
      * Enable support for creating snapshots through volume backing-chains.
      */
-    snapshotAsVolumeChain?: pulumi.Input<boolean>;
+    snapshotAsVolumeChain?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -228,15 +228,15 @@ export interface NfsLegacyArgs {
     /**
      * Configure backup retention settings for the storage type.
      */
-    backups?: pulumi.Input<inputs.storage.NfsLegacyBackups>;
+    backups?: pulumi.Input<inputs.storage.NfsLegacyBackups | undefined>;
     /**
      * The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
      */
-    contents?: pulumi.Input<pulumi.Input<string>[]>;
+    contents?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the storage is disabled.
      */
-    disable?: pulumi.Input<boolean>;
+    disable?: pulumi.Input<boolean | undefined>;
     /**
      * The path of the NFS export.
      */
@@ -244,15 +244,15 @@ export interface NfsLegacyArgs {
     /**
      * A list of nodes where this storage is available.
      */
-    nodes?: pulumi.Input<pulumi.Input<string>[]>;
+    nodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The options to pass to the NFS service.
      */
-    options?: pulumi.Input<string>;
+    options?: pulumi.Input<string | undefined>;
     /**
      * The preallocation mode for raw and qcow2 images.
      */
-    preallocation?: pulumi.Input<string>;
+    preallocation?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the storage.
      */
@@ -264,5 +264,5 @@ export interface NfsLegacyArgs {
     /**
      * Enable support for creating snapshots through volume backing-chains.
      */
-    snapshotAsVolumeChain?: pulumi.Input<boolean>;
+    snapshotAsVolumeChain?: pulumi.Input<boolean | undefined>;
 }

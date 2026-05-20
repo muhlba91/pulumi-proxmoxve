@@ -251,6 +251,17 @@ export class FileLegacy extends pulumi.CustomResource {
      * seconds (defaults to 1800).
      */
     declare public readonly timeoutUpload: pulumi.Output<number | undefined>;
+    /**
+     * The SSH upload mode for non-API content types
+     * (snippets, backups, etc.). Set to `stream` to pipe the file through an SSH
+     * shell session (uses `sudo` where required), or `sftp` to upload via the SFTP
+     * subsystem. Use `sftp` when the target host's SSH server only allows the
+     * SFTP subsystem; note that the SFTP path does not invoke `sudo`, so the SSH
+     * user must have direct write permission to the target directory. Has no
+     * effect for `iso`, `vztmpl`, and `import` content types, which always use
+     * the HTTP API. Defaults to `stream`.
+     */
+    declare public readonly uploadMode: pulumi.Output<string | undefined>;
 
     /**
      * Create a FileLegacy resource with the given unique name, arguments, and options.
@@ -277,6 +288,7 @@ export class FileLegacy extends pulumi.CustomResource {
             resourceInputs["sourceFile"] = state?.sourceFile;
             resourceInputs["sourceRaw"] = state?.sourceRaw;
             resourceInputs["timeoutUpload"] = state?.timeoutUpload;
+            resourceInputs["uploadMode"] = state?.uploadMode;
         } else {
             const args = argsOrState as FileLegacyArgs | undefined;
             if (args?.datastoreId === undefined && !opts.urn) {
@@ -293,6 +305,7 @@ export class FileLegacy extends pulumi.CustomResource {
             resourceInputs["sourceFile"] = args?.sourceFile;
             resourceInputs["sourceRaw"] = args?.sourceRaw;
             resourceInputs["timeoutUpload"] = args?.timeoutUpload;
+            resourceInputs["uploadMode"] = args?.uploadMode;
             resourceInputs["fileModificationDate"] = undefined /*out*/;
             resourceInputs["fileName"] = undefined /*out*/;
             resourceInputs["fileSize"] = undefined /*out*/;
@@ -311,55 +324,66 @@ export interface FileLegacyState {
      * The content type. If not specified, the content
      * type will be inferred from the file extension. Valid values are:
      */
-    contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string | undefined>;
     /**
      * The datastore id.
      */
-    datastoreId?: pulumi.Input<string>;
+    datastoreId?: pulumi.Input<string | undefined>;
     /**
      * The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
      */
-    fileMode?: pulumi.Input<string>;
+    fileMode?: pulumi.Input<string | undefined>;
     /**
      * The file modification date (RFC 3339).
      */
-    fileModificationDate?: pulumi.Input<string>;
+    fileModificationDate?: pulumi.Input<string | undefined>;
     /**
      * The file name.
      */
-    fileName?: pulumi.Input<string>;
+    fileName?: pulumi.Input<string | undefined>;
     /**
      * The file size in bytes.
      */
-    fileSize?: pulumi.Input<number>;
+    fileSize?: pulumi.Input<number | undefined>;
     /**
      * The file tag.
      */
-    fileTag?: pulumi.Input<string>;
+    fileTag?: pulumi.Input<string | undefined>;
     /**
      * The node name.
      */
-    nodeName?: pulumi.Input<string>;
+    nodeName?: pulumi.Input<string | undefined>;
     /**
      * Whether to overwrite an existing file (defaults to
      * `true`).
      */
-    overwrite?: pulumi.Input<boolean>;
+    overwrite?: pulumi.Input<boolean | undefined>;
     /**
      * The source file (conflicts with `sourceRaw`),
      * could be a local file or a URL. If the source file is a URL, the file will
      * be downloaded and stored locally before uploading it to Proxmox VE.
      */
-    sourceFile?: pulumi.Input<inputs.FileLegacySourceFile>;
+    sourceFile?: pulumi.Input<inputs.FileLegacySourceFile | undefined>;
     /**
      * The raw source (conflicts with `sourceFile`).
      */
-    sourceRaw?: pulumi.Input<inputs.FileLegacySourceRaw>;
+    sourceRaw?: pulumi.Input<inputs.FileLegacySourceRaw | undefined>;
     /**
      * Timeout for uploading ISO/VSTMPL files in
      * seconds (defaults to 1800).
      */
-    timeoutUpload?: pulumi.Input<number>;
+    timeoutUpload?: pulumi.Input<number | undefined>;
+    /**
+     * The SSH upload mode for non-API content types
+     * (snippets, backups, etc.). Set to `stream` to pipe the file through an SSH
+     * shell session (uses `sudo` where required), or `sftp` to upload via the SFTP
+     * subsystem. Use `sftp` when the target host's SSH server only allows the
+     * SFTP subsystem; note that the SFTP path does not invoke `sudo`, so the SSH
+     * user must have direct write permission to the target directory. Has no
+     * effect for `iso`, `vztmpl`, and `import` content types, which always use
+     * the HTTP API. Defaults to `stream`.
+     */
+    uploadMode?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -370,7 +394,7 @@ export interface FileLegacyArgs {
      * The content type. If not specified, the content
      * type will be inferred from the file extension. Valid values are:
      */
-    contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string | undefined>;
     /**
      * The datastore id.
      */
@@ -378,7 +402,7 @@ export interface FileLegacyArgs {
     /**
      * The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
      */
-    fileMode?: pulumi.Input<string>;
+    fileMode?: pulumi.Input<string | undefined>;
     /**
      * The node name.
      */
@@ -387,20 +411,31 @@ export interface FileLegacyArgs {
      * Whether to overwrite an existing file (defaults to
      * `true`).
      */
-    overwrite?: pulumi.Input<boolean>;
+    overwrite?: pulumi.Input<boolean | undefined>;
     /**
      * The source file (conflicts with `sourceRaw`),
      * could be a local file or a URL. If the source file is a URL, the file will
      * be downloaded and stored locally before uploading it to Proxmox VE.
      */
-    sourceFile?: pulumi.Input<inputs.FileLegacySourceFile>;
+    sourceFile?: pulumi.Input<inputs.FileLegacySourceFile | undefined>;
     /**
      * The raw source (conflicts with `sourceFile`).
      */
-    sourceRaw?: pulumi.Input<inputs.FileLegacySourceRaw>;
+    sourceRaw?: pulumi.Input<inputs.FileLegacySourceRaw | undefined>;
     /**
      * Timeout for uploading ISO/VSTMPL files in
      * seconds (defaults to 1800).
      */
-    timeoutUpload?: pulumi.Input<number>;
+    timeoutUpload?: pulumi.Input<number | undefined>;
+    /**
+     * The SSH upload mode for non-API content types
+     * (snippets, backups, etc.). Set to `stream` to pipe the file through an SSH
+     * shell session (uses `sudo` where required), or `sftp` to upload via the SFTP
+     * subsystem. Use `sftp` when the target host's SSH server only allows the
+     * SFTP subsystem; note that the SFTP path does not invoke `sudo`, so the SSH
+     * user must have direct write permission to the target directory. Has no
+     * effect for `iso`, `vztmpl`, and `import` content types, which always use
+     * the HTTP API. Defaults to `stream`.
+     */
+    uploadMode?: pulumi.Input<string | undefined>;
 }

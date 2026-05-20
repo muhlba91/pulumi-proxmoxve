@@ -99,23 +99,23 @@ export interface OpenfabricState {
     /**
      * The csnpInterval property for OpenFabric.
      */
-    csnpInterval?: pulumi.Input<number>;
+    csnpInterval?: pulumi.Input<number | undefined>;
     /**
      * The helloInterval property for OpenFabric.
      */
-    helloInterval?: pulumi.Input<number>;
+    helloInterval?: pulumi.Input<number | undefined>;
     /**
      * IPv6 prefix cidr for the fabric.
      */
-    ip6Prefix?: pulumi.Input<string>;
+    ip6Prefix?: pulumi.Input<string | undefined>;
     /**
      * IPv4 prefix cidr for the fabric.
      */
-    ipPrefix?: pulumi.Input<string>;
+    ipPrefix?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the SDN fabric.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -125,19 +125,19 @@ export interface OpenfabricArgs {
     /**
      * The csnpInterval property for OpenFabric.
      */
-    csnpInterval?: pulumi.Input<number>;
+    csnpInterval?: pulumi.Input<number | undefined>;
     /**
      * The helloInterval property for OpenFabric.
      */
-    helloInterval?: pulumi.Input<number>;
+    helloInterval?: pulumi.Input<number | undefined>;
     /**
      * IPv6 prefix cidr for the fabric.
      */
-    ip6Prefix?: pulumi.Input<string>;
+    ip6Prefix?: pulumi.Input<string | undefined>;
     /**
      * IPv4 prefix cidr for the fabric.
      */
-    ipPrefix?: pulumi.Input<string>;
+    ipPrefix?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the SDN fabric.
      */

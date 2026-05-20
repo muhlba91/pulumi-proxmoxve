@@ -22,27 +22,27 @@ class ServerArgs:
                  port: pulumi.Input[_builtins.int],
                  server: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 graphite_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 graphite_proto: Optional[pulumi.Input[_builtins.str]] = None,
-                 influx_api_path_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 influx_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 influx_db_proto: Optional[pulumi.Input[_builtins.str]] = None,
-                 influx_max_body_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 influx_organization: Optional[pulumi.Input[_builtins.str]] = None,
-                 influx_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 influx_verify: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 opentelemetry_compression: Optional[pulumi.Input[_builtins.str]] = None,
-                 opentelemetry_headers: Optional[pulumi.Input[_builtins.str]] = None,
-                 opentelemetry_max_body_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 opentelemetry_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 opentelemetry_proto: Optional[pulumi.Input[_builtins.str]] = None,
-                 opentelemetry_resource_attributes: Optional[pulumi.Input[_builtins.str]] = None,
-                 opentelemetry_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 opentelemetry_verify_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 graphite_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 graphite_proto: pulumi.Input[Optional[_builtins.str]] = None,
+                 influx_api_path_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 influx_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 influx_db_proto: pulumi.Input[Optional[_builtins.str]] = None,
+                 influx_max_body_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 influx_organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 influx_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 influx_verify: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 opentelemetry_compression: pulumi.Input[Optional[_builtins.str]] = None,
+                 opentelemetry_headers: pulumi.Input[Optional[_builtins.str]] = None,
+                 opentelemetry_max_body_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 opentelemetry_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 opentelemetry_proto: pulumi.Input[Optional[_builtins.str]] = None,
+                 opentelemetry_resource_attributes: pulumi.Input[Optional[_builtins.str]] = None,
+                 opentelemetry_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 opentelemetry_verify_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Server resource.
 
@@ -155,284 +155,284 @@ class ServerArgs:
 
     @_builtins.property
     @pulumi.getter
-    def disable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set this to `true` to disable this metric server. Defaults to `false`.
         """
         return pulumi.get(self, "disable")
 
     @disable.setter
-    def disable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable", value)
 
     @_builtins.property
     @pulumi.getter(name="graphitePath")
-    def graphite_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def graphite_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Root graphite path (ex: `proxmox.mycluster.mykey`).
         """
         return pulumi.get(self, "graphite_path")
 
     @graphite_path.setter
-    def graphite_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def graphite_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "graphite_path", value)
 
     @_builtins.property
     @pulumi.getter(name="graphiteProto")
-    def graphite_proto(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def graphite_proto(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Protocol to send graphite data. Choice is between `udp` | `tcp`. If not set, PVE default is `udp`.
         """
         return pulumi.get(self, "graphite_proto")
 
     @graphite_proto.setter
-    def graphite_proto(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def graphite_proto(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "graphite_proto", value)
 
     @_builtins.property
     @pulumi.getter(name="influxApiPathPrefix")
-    def influx_api_path_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def influx_api_path_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An API path prefix inserted between `<host>:<port>/` and `/api2/`. Can be useful if the InfluxDB service runs behind a reverse proxy.
         """
         return pulumi.get(self, "influx_api_path_prefix")
 
     @influx_api_path_prefix.setter
-    def influx_api_path_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def influx_api_path_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "influx_api_path_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="influxBucket")
-    def influx_bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def influx_bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The InfluxDB bucket/db. Only necessary when using the http v2 api.
         """
         return pulumi.get(self, "influx_bucket")
 
     @influx_bucket.setter
-    def influx_bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def influx_bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "influx_bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="influxDbProto")
-    def influx_db_proto(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def influx_db_proto(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Protocol for InfluxDB. Choice is between `udp` | `http` | `https`. If not set, PVE default is `udp`.
         """
         return pulumi.get(self, "influx_db_proto")
 
     @influx_db_proto.setter
-    def influx_db_proto(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def influx_db_proto(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "influx_db_proto", value)
 
     @_builtins.property
     @pulumi.getter(name="influxMaxBodySize")
-    def influx_max_body_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def influx_max_body_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         InfluxDB max-body-size in bytes. Requests are batched up to this size. If not set, PVE default is `25000000`.
         """
         return pulumi.get(self, "influx_max_body_size")
 
     @influx_max_body_size.setter
-    def influx_max_body_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def influx_max_body_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "influx_max_body_size", value)
 
     @_builtins.property
     @pulumi.getter(name="influxOrganization")
-    def influx_organization(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def influx_organization(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The InfluxDB organization. Only necessary when using the http v2 api. Has no meaning when using v2 compatibility api.
         """
         return pulumi.get(self, "influx_organization")
 
     @influx_organization.setter
-    def influx_organization(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def influx_organization(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "influx_organization", value)
 
     @_builtins.property
     @pulumi.getter(name="influxToken")
-    def influx_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def influx_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
         """
         return pulumi.get(self, "influx_token")
 
     @influx_token.setter
-    def influx_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def influx_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "influx_token", value)
 
     @_builtins.property
     @pulumi.getter(name="influxVerify")
-    def influx_verify(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def influx_verify(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
         """
         return pulumi.get(self, "influx_verify")
 
     @influx_verify.setter
-    def influx_verify(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def influx_verify(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "influx_verify", value)
 
     @_builtins.property
     @pulumi.getter
-    def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mtu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
         """
         return pulumi.get(self, "mtu")
 
     @mtu.setter
-    def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mtu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mtu", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique name that will be ID of this metric server in PVE.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="opentelemetryCompression")
-    def opentelemetry_compression(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opentelemetry_compression(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OpenTelemetry compression algorithm for requests. Choice is between `none` | `gzip`. If not set, PVE default is `gzip`.
         """
         return pulumi.get(self, "opentelemetry_compression")
 
     @opentelemetry_compression.setter
-    def opentelemetry_compression(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opentelemetry_compression(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opentelemetry_compression", value)
 
     @_builtins.property
     @pulumi.getter(name="opentelemetryHeaders")
-    def opentelemetry_headers(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opentelemetry_headers(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OpenTelemetry custom HTTP headers as JSON, base64 encoded.
         """
         return pulumi.get(self, "opentelemetry_headers")
 
     @opentelemetry_headers.setter
-    def opentelemetry_headers(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opentelemetry_headers(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opentelemetry_headers", value)
 
     @_builtins.property
     @pulumi.getter(name="opentelemetryMaxBodySize")
-    def opentelemetry_max_body_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def opentelemetry_max_body_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         OpenTelemetry maximum request body size in bytes. If not set, PVE default is `10000000`.
         """
         return pulumi.get(self, "opentelemetry_max_body_size")
 
     @opentelemetry_max_body_size.setter
-    def opentelemetry_max_body_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def opentelemetry_max_body_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "opentelemetry_max_body_size", value)
 
     @_builtins.property
     @pulumi.getter(name="opentelemetryPath")
-    def opentelemetry_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opentelemetry_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OpenTelemetry endpoint path (e.g., `/v1/metrics`).
         """
         return pulumi.get(self, "opentelemetry_path")
 
     @opentelemetry_path.setter
-    def opentelemetry_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opentelemetry_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opentelemetry_path", value)
 
     @_builtins.property
     @pulumi.getter(name="opentelemetryProto")
-    def opentelemetry_proto(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opentelemetry_proto(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Protocol for OpenTelemetry. Choice is between `http` | `https`. If not set, PVE default is `https`.
         """
         return pulumi.get(self, "opentelemetry_proto")
 
     @opentelemetry_proto.setter
-    def opentelemetry_proto(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opentelemetry_proto(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opentelemetry_proto", value)
 
     @_builtins.property
     @pulumi.getter(name="opentelemetryResourceAttributes")
-    def opentelemetry_resource_attributes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opentelemetry_resource_attributes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OpenTelemetry additional resource attributes as JSON, base64 encoded.
         """
         return pulumi.get(self, "opentelemetry_resource_attributes")
 
     @opentelemetry_resource_attributes.setter
-    def opentelemetry_resource_attributes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opentelemetry_resource_attributes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opentelemetry_resource_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="opentelemetryTimeout")
-    def opentelemetry_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def opentelemetry_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         OpenTelemetry HTTP request timeout in seconds. If not set, PVE default is `5`.
         """
         return pulumi.get(self, "opentelemetry_timeout")
 
     @opentelemetry_timeout.setter
-    def opentelemetry_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def opentelemetry_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "opentelemetry_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="opentelemetryVerifySsl")
-    def opentelemetry_verify_ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def opentelemetry_verify_ssl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         OpenTelemetry verify SSL certificates. If not set, PVE default is `true`.
         """
         return pulumi.get(self, "opentelemetry_verify_ssl")
 
     @opentelemetry_verify_ssl.setter
-    def opentelemetry_verify_ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def opentelemetry_verify_ssl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "opentelemetry_verify_ssl", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         TCP socket timeout in seconds. If not set, PVE default is `1`.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
 
 @pulumi.input_type
 class _ServerState:
     def __init__(__self__, *,
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 graphite_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 graphite_proto: Optional[pulumi.Input[_builtins.str]] = None,
-                 influx_api_path_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 influx_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 influx_db_proto: Optional[pulumi.Input[_builtins.str]] = None,
-                 influx_max_body_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 influx_organization: Optional[pulumi.Input[_builtins.str]] = None,
-                 influx_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 influx_verify: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 opentelemetry_compression: Optional[pulumi.Input[_builtins.str]] = None,
-                 opentelemetry_headers: Optional[pulumi.Input[_builtins.str]] = None,
-                 opentelemetry_max_body_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 opentelemetry_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 opentelemetry_proto: Optional[pulumi.Input[_builtins.str]] = None,
-                 opentelemetry_resource_attributes: Optional[pulumi.Input[_builtins.str]] = None,
-                 opentelemetry_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 opentelemetry_verify_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 server: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 graphite_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 graphite_proto: pulumi.Input[Optional[_builtins.str]] = None,
+                 influx_api_path_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 influx_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 influx_db_proto: pulumi.Input[Optional[_builtins.str]] = None,
+                 influx_max_body_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 influx_organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 influx_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 influx_verify: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 opentelemetry_compression: pulumi.Input[Optional[_builtins.str]] = None,
+                 opentelemetry_headers: pulumi.Input[Optional[_builtins.str]] = None,
+                 opentelemetry_max_body_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 opentelemetry_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 opentelemetry_proto: pulumi.Input[Optional[_builtins.str]] = None,
+                 opentelemetry_resource_attributes: pulumi.Input[Optional[_builtins.str]] = None,
+                 opentelemetry_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 opentelemetry_verify_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 server: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Server resources.
 
@@ -512,290 +512,290 @@ class _ServerState:
 
     @_builtins.property
     @pulumi.getter
-    def disable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set this to `true` to disable this metric server. Defaults to `false`.
         """
         return pulumi.get(self, "disable")
 
     @disable.setter
-    def disable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable", value)
 
     @_builtins.property
     @pulumi.getter(name="graphitePath")
-    def graphite_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def graphite_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Root graphite path (ex: `proxmox.mycluster.mykey`).
         """
         return pulumi.get(self, "graphite_path")
 
     @graphite_path.setter
-    def graphite_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def graphite_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "graphite_path", value)
 
     @_builtins.property
     @pulumi.getter(name="graphiteProto")
-    def graphite_proto(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def graphite_proto(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Protocol to send graphite data. Choice is between `udp` | `tcp`. If not set, PVE default is `udp`.
         """
         return pulumi.get(self, "graphite_proto")
 
     @graphite_proto.setter
-    def graphite_proto(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def graphite_proto(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "graphite_proto", value)
 
     @_builtins.property
     @pulumi.getter(name="influxApiPathPrefix")
-    def influx_api_path_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def influx_api_path_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An API path prefix inserted between `<host>:<port>/` and `/api2/`. Can be useful if the InfluxDB service runs behind a reverse proxy.
         """
         return pulumi.get(self, "influx_api_path_prefix")
 
     @influx_api_path_prefix.setter
-    def influx_api_path_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def influx_api_path_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "influx_api_path_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="influxBucket")
-    def influx_bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def influx_bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The InfluxDB bucket/db. Only necessary when using the http v2 api.
         """
         return pulumi.get(self, "influx_bucket")
 
     @influx_bucket.setter
-    def influx_bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def influx_bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "influx_bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="influxDbProto")
-    def influx_db_proto(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def influx_db_proto(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Protocol for InfluxDB. Choice is between `udp` | `http` | `https`. If not set, PVE default is `udp`.
         """
         return pulumi.get(self, "influx_db_proto")
 
     @influx_db_proto.setter
-    def influx_db_proto(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def influx_db_proto(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "influx_db_proto", value)
 
     @_builtins.property
     @pulumi.getter(name="influxMaxBodySize")
-    def influx_max_body_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def influx_max_body_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         InfluxDB max-body-size in bytes. Requests are batched up to this size. If not set, PVE default is `25000000`.
         """
         return pulumi.get(self, "influx_max_body_size")
 
     @influx_max_body_size.setter
-    def influx_max_body_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def influx_max_body_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "influx_max_body_size", value)
 
     @_builtins.property
     @pulumi.getter(name="influxOrganization")
-    def influx_organization(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def influx_organization(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The InfluxDB organization. Only necessary when using the http v2 api. Has no meaning when using v2 compatibility api.
         """
         return pulumi.get(self, "influx_organization")
 
     @influx_organization.setter
-    def influx_organization(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def influx_organization(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "influx_organization", value)
 
     @_builtins.property
     @pulumi.getter(name="influxToken")
-    def influx_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def influx_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
         """
         return pulumi.get(self, "influx_token")
 
     @influx_token.setter
-    def influx_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def influx_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "influx_token", value)
 
     @_builtins.property
     @pulumi.getter(name="influxVerify")
-    def influx_verify(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def influx_verify(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
         """
         return pulumi.get(self, "influx_verify")
 
     @influx_verify.setter
-    def influx_verify(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def influx_verify(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "influx_verify", value)
 
     @_builtins.property
     @pulumi.getter
-    def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mtu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
         """
         return pulumi.get(self, "mtu")
 
     @mtu.setter
-    def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mtu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mtu", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Unique name that will be ID of this metric server in PVE.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="opentelemetryCompression")
-    def opentelemetry_compression(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opentelemetry_compression(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OpenTelemetry compression algorithm for requests. Choice is between `none` | `gzip`. If not set, PVE default is `gzip`.
         """
         return pulumi.get(self, "opentelemetry_compression")
 
     @opentelemetry_compression.setter
-    def opentelemetry_compression(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opentelemetry_compression(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opentelemetry_compression", value)
 
     @_builtins.property
     @pulumi.getter(name="opentelemetryHeaders")
-    def opentelemetry_headers(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opentelemetry_headers(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OpenTelemetry custom HTTP headers as JSON, base64 encoded.
         """
         return pulumi.get(self, "opentelemetry_headers")
 
     @opentelemetry_headers.setter
-    def opentelemetry_headers(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opentelemetry_headers(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opentelemetry_headers", value)
 
     @_builtins.property
     @pulumi.getter(name="opentelemetryMaxBodySize")
-    def opentelemetry_max_body_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def opentelemetry_max_body_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         OpenTelemetry maximum request body size in bytes. If not set, PVE default is `10000000`.
         """
         return pulumi.get(self, "opentelemetry_max_body_size")
 
     @opentelemetry_max_body_size.setter
-    def opentelemetry_max_body_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def opentelemetry_max_body_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "opentelemetry_max_body_size", value)
 
     @_builtins.property
     @pulumi.getter(name="opentelemetryPath")
-    def opentelemetry_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opentelemetry_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OpenTelemetry endpoint path (e.g., `/v1/metrics`).
         """
         return pulumi.get(self, "opentelemetry_path")
 
     @opentelemetry_path.setter
-    def opentelemetry_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opentelemetry_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opentelemetry_path", value)
 
     @_builtins.property
     @pulumi.getter(name="opentelemetryProto")
-    def opentelemetry_proto(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opentelemetry_proto(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Protocol for OpenTelemetry. Choice is between `http` | `https`. If not set, PVE default is `https`.
         """
         return pulumi.get(self, "opentelemetry_proto")
 
     @opentelemetry_proto.setter
-    def opentelemetry_proto(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opentelemetry_proto(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opentelemetry_proto", value)
 
     @_builtins.property
     @pulumi.getter(name="opentelemetryResourceAttributes")
-    def opentelemetry_resource_attributes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opentelemetry_resource_attributes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OpenTelemetry additional resource attributes as JSON, base64 encoded.
         """
         return pulumi.get(self, "opentelemetry_resource_attributes")
 
     @opentelemetry_resource_attributes.setter
-    def opentelemetry_resource_attributes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opentelemetry_resource_attributes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opentelemetry_resource_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="opentelemetryTimeout")
-    def opentelemetry_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def opentelemetry_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         OpenTelemetry HTTP request timeout in seconds. If not set, PVE default is `5`.
         """
         return pulumi.get(self, "opentelemetry_timeout")
 
     @opentelemetry_timeout.setter
-    def opentelemetry_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def opentelemetry_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "opentelemetry_timeout", value)
 
     @_builtins.property
     @pulumi.getter(name="opentelemetryVerifySsl")
-    def opentelemetry_verify_ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def opentelemetry_verify_ssl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         OpenTelemetry verify SSL certificates. If not set, PVE default is `true`.
         """
         return pulumi.get(self, "opentelemetry_verify_ssl")
 
     @opentelemetry_verify_ssl.setter
-    def opentelemetry_verify_ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def opentelemetry_verify_ssl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "opentelemetry_verify_ssl", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Server network port.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def server(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Server dns name or IP address.
         """
         return pulumi.get(self, "server")
 
     @server.setter
-    def server(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         TCP socket timeout in seconds. If not set, PVE default is `1`.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Plugin type. Choice is between `graphite` | `influxdb` | `opentelemetry`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -805,30 +805,30 @@ class Server(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 graphite_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 graphite_proto: Optional[pulumi.Input[_builtins.str]] = None,
-                 influx_api_path_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 influx_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 influx_db_proto: Optional[pulumi.Input[_builtins.str]] = None,
-                 influx_max_body_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 influx_organization: Optional[pulumi.Input[_builtins.str]] = None,
-                 influx_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 influx_verify: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 opentelemetry_compression: Optional[pulumi.Input[_builtins.str]] = None,
-                 opentelemetry_headers: Optional[pulumi.Input[_builtins.str]] = None,
-                 opentelemetry_max_body_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 opentelemetry_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 opentelemetry_proto: Optional[pulumi.Input[_builtins.str]] = None,
-                 opentelemetry_resource_attributes: Optional[pulumi.Input[_builtins.str]] = None,
-                 opentelemetry_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 opentelemetry_verify_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 server: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 graphite_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 graphite_proto: pulumi.Input[Optional[_builtins.str]] = None,
+                 influx_api_path_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 influx_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 influx_db_proto: pulumi.Input[Optional[_builtins.str]] = None,
+                 influx_max_body_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 influx_organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 influx_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 influx_verify: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 opentelemetry_compression: pulumi.Input[Optional[_builtins.str]] = None,
+                 opentelemetry_headers: pulumi.Input[Optional[_builtins.str]] = None,
+                 opentelemetry_max_body_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 opentelemetry_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 opentelemetry_proto: pulumi.Input[Optional[_builtins.str]] = None,
+                 opentelemetry_resource_attributes: pulumi.Input[Optional[_builtins.str]] = None,
+                 opentelemetry_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 opentelemetry_verify_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 server: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages PVE metrics server.
@@ -952,30 +952,30 @@ class Server(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 graphite_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 graphite_proto: Optional[pulumi.Input[_builtins.str]] = None,
-                 influx_api_path_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 influx_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 influx_db_proto: Optional[pulumi.Input[_builtins.str]] = None,
-                 influx_max_body_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 influx_organization: Optional[pulumi.Input[_builtins.str]] = None,
-                 influx_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 influx_verify: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 opentelemetry_compression: Optional[pulumi.Input[_builtins.str]] = None,
-                 opentelemetry_headers: Optional[pulumi.Input[_builtins.str]] = None,
-                 opentelemetry_max_body_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 opentelemetry_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 opentelemetry_proto: Optional[pulumi.Input[_builtins.str]] = None,
-                 opentelemetry_resource_attributes: Optional[pulumi.Input[_builtins.str]] = None,
-                 opentelemetry_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 opentelemetry_verify_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 server: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 graphite_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 graphite_proto: pulumi.Input[Optional[_builtins.str]] = None,
+                 influx_api_path_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 influx_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 influx_db_proto: pulumi.Input[Optional[_builtins.str]] = None,
+                 influx_max_body_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 influx_organization: pulumi.Input[Optional[_builtins.str]] = None,
+                 influx_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 influx_verify: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 opentelemetry_compression: pulumi.Input[Optional[_builtins.str]] = None,
+                 opentelemetry_headers: pulumi.Input[Optional[_builtins.str]] = None,
+                 opentelemetry_max_body_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 opentelemetry_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 opentelemetry_proto: pulumi.Input[Optional[_builtins.str]] = None,
+                 opentelemetry_resource_attributes: pulumi.Input[Optional[_builtins.str]] = None,
+                 opentelemetry_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 opentelemetry_verify_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 server: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1027,30 +1027,30 @@ class Server(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            disable: Optional[pulumi.Input[_builtins.bool]] = None,
-            graphite_path: Optional[pulumi.Input[_builtins.str]] = None,
-            graphite_proto: Optional[pulumi.Input[_builtins.str]] = None,
-            influx_api_path_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            influx_bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            influx_db_proto: Optional[pulumi.Input[_builtins.str]] = None,
-            influx_max_body_size: Optional[pulumi.Input[_builtins.int]] = None,
-            influx_organization: Optional[pulumi.Input[_builtins.str]] = None,
-            influx_token: Optional[pulumi.Input[_builtins.str]] = None,
-            influx_verify: Optional[pulumi.Input[_builtins.bool]] = None,
-            mtu: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            opentelemetry_compression: Optional[pulumi.Input[_builtins.str]] = None,
-            opentelemetry_headers: Optional[pulumi.Input[_builtins.str]] = None,
-            opentelemetry_max_body_size: Optional[pulumi.Input[_builtins.int]] = None,
-            opentelemetry_path: Optional[pulumi.Input[_builtins.str]] = None,
-            opentelemetry_proto: Optional[pulumi.Input[_builtins.str]] = None,
-            opentelemetry_resource_attributes: Optional[pulumi.Input[_builtins.str]] = None,
-            opentelemetry_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            opentelemetry_verify_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-            port: Optional[pulumi.Input[_builtins.int]] = None,
-            server: Optional[pulumi.Input[_builtins.str]] = None,
-            timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'Server':
+            disable: pulumi.Input[Optional[_builtins.bool]] = None,
+            graphite_path: pulumi.Input[Optional[_builtins.str]] = None,
+            graphite_proto: pulumi.Input[Optional[_builtins.str]] = None,
+            influx_api_path_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            influx_bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            influx_db_proto: pulumi.Input[Optional[_builtins.str]] = None,
+            influx_max_body_size: pulumi.Input[Optional[_builtins.int]] = None,
+            influx_organization: pulumi.Input[Optional[_builtins.str]] = None,
+            influx_token: pulumi.Input[Optional[_builtins.str]] = None,
+            influx_verify: pulumi.Input[Optional[_builtins.bool]] = None,
+            mtu: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            opentelemetry_compression: pulumi.Input[Optional[_builtins.str]] = None,
+            opentelemetry_headers: pulumi.Input[Optional[_builtins.str]] = None,
+            opentelemetry_max_body_size: pulumi.Input[Optional[_builtins.int]] = None,
+            opentelemetry_path: pulumi.Input[Optional[_builtins.str]] = None,
+            opentelemetry_proto: pulumi.Input[Optional[_builtins.str]] = None,
+            opentelemetry_resource_attributes: pulumi.Input[Optional[_builtins.str]] = None,
+            opentelemetry_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            opentelemetry_verify_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            server: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Server':
         """
         Get an existing Server resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

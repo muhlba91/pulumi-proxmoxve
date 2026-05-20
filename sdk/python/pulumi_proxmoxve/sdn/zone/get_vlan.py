@@ -200,7 +200,7 @@ def get_vlan(id: Optional[_builtins.str] = None,
         pending=pulumi.get(__ret__, 'pending'),
         reverse_dns=pulumi.get(__ret__, 'reverse_dns'),
         state=pulumi.get(__ret__, 'state'))
-def get_vlan_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_vlan_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVlanResult]:
     """
     Retrieves information about a VLAN Zone in Proxmox SDN. It uses an existing local Linux or OVS bridge to connect to the node's physical interface. It uses VLAN tagging defined in the VNet to isolate the network segments. This allows connectivity of VMs between different nodes.

@@ -9,7 +9,7 @@
     <PackageProjectUrl>https://github.com/muhlba91/pulumi-proxmoxve</PackageProjectUrl>
     <RepositoryUrl>https://github.com/muhlba91/pulumi-proxmoxve</RepositoryUrl>
     <PackageIcon>logo.png</PackageIcon>
-    <Version>8.1.0-alpha.1776929910+38419dfb.dirty</Version>
+    <Version>8.2.0-alpha.1779276000+7fddbf04</Version>
 
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>

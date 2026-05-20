@@ -22,18 +22,18 @@ class OpenidLegacyArgs:
                  client_id: pulumi.Input[_builtins.str],
                  issuer_url: pulumi.Input[_builtins.str],
                  realm: pulumi.Input[_builtins.str],
-                 acr_values: Optional[pulumi.Input[_builtins.str]] = None,
-                 autocreate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 groups_autocreate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 groups_claim: Optional[pulumi.Input[_builtins.str]] = None,
-                 groups_overwrite: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prompt: Optional[pulumi.Input[_builtins.str]] = None,
-                 query_userinfo: Optional[pulumi.Input[_builtins.bool]] = None,
-                 scopes: Optional[pulumi.Input[_builtins.str]] = None,
-                 username_claim: Optional[pulumi.Input[_builtins.str]] = None):
+                 acr_values: pulumi.Input[Optional[_builtins.str]] = None,
+                 autocreate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 groups_autocreate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 groups_claim: pulumi.Input[Optional[_builtins.str]] = None,
+                 groups_overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prompt: pulumi.Input[Optional[_builtins.str]] = None,
+                 query_userinfo: pulumi.Input[Optional[_builtins.bool]] = None,
+                 scopes: pulumi.Input[Optional[_builtins.str]] = None,
+                 username_claim: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a OpenidLegacy resource.
 
@@ -119,167 +119,167 @@ class OpenidLegacyArgs:
 
     @_builtins.property
     @pulumi.getter(name="acrValues")
-    def acr_values(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acr_values(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Authentication Context Class Reference values for the OpenID provider.
         """
         return pulumi.get(self, "acr_values")
 
     @acr_values.setter
-    def acr_values(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acr_values(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acr_values", value)
 
     @_builtins.property
     @pulumi.getter
-    def autocreate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def autocreate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Automatically create users on the Proxmox cluster if they do not exist.
         """
         return pulumi.get(self, "autocreate")
 
     @autocreate.setter
-    def autocreate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def autocreate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "autocreate", value)
 
     @_builtins.property
     @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OpenID Connect Client Key (secret). Note: stored in Proxmox but not returned by API.
         """
         return pulumi.get(self, "client_key")
 
     @client_key.setter
-    def client_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the realm.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use this realm as the default for login.
         """
         return pulumi.get(self, "default")
 
     @default.setter
-    def default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default", value)
 
     @_builtins.property
     @pulumi.getter(name="groupsAutocreate")
-    def groups_autocreate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def groups_autocreate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Automatically create groups from claims rather than using existing Proxmox VE groups.
         """
         return pulumi.get(self, "groups_autocreate")
 
     @groups_autocreate.setter
-    def groups_autocreate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def groups_autocreate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "groups_autocreate", value)
 
     @_builtins.property
     @pulumi.getter(name="groupsClaim")
-    def groups_claim(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def groups_claim(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OpenID claim used to retrieve user group memberships.
         """
         return pulumi.get(self, "groups_claim")
 
     @groups_claim.setter
-    def groups_claim(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def groups_claim(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "groups_claim", value)
 
     @_builtins.property
     @pulumi.getter(name="groupsOverwrite")
-    def groups_overwrite(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def groups_overwrite(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Replace assigned groups on login instead of appending to existing ones.
         """
         return pulumi.get(self, "groups_overwrite")
 
     @groups_overwrite.setter
-    def groups_overwrite(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def groups_overwrite(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "groups_overwrite", value)
 
     @_builtins.property
     @pulumi.getter
-    def prompt(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prompt(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether the authorization server prompts for reauthentication and/or consent (e.g., 'none', 'login', 'consent', 'select_account').
         """
         return pulumi.get(self, "prompt")
 
     @prompt.setter
-    def prompt(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prompt(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prompt", value)
 
     @_builtins.property
     @pulumi.getter(name="queryUserinfo")
-    def query_userinfo(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def query_userinfo(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Query the OpenID userinfo endpoint for claims. Required when the identity provider does not include claims in the ID token.
         """
         return pulumi.get(self, "query_userinfo")
 
     @query_userinfo.setter
-    def query_userinfo(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def query_userinfo(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "query_userinfo", value)
 
     @_builtins.property
     @pulumi.getter
-    def scopes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scopes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Space-separated list of OpenID scopes to request.
         """
         return pulumi.get(self, "scopes")
 
     @scopes.setter
-    def scopes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scopes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="usernameClaim")
-    def username_claim(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username_claim(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OpenID claim used to generate the unique username. Common values are `subject`, `username`, `email`, and `upn`.
         """
         return pulumi.get(self, "username_claim")
 
     @username_claim.setter
-    def username_claim(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username_claim(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username_claim", value)
 
 
 @pulumi.input_type
 class _OpenidLegacyState:
     def __init__(__self__, *,
-                 acr_values: Optional[pulumi.Input[_builtins.str]] = None,
-                 autocreate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 groups_autocreate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 groups_claim: Optional[pulumi.Input[_builtins.str]] = None,
-                 groups_overwrite: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issuer_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 prompt: Optional[pulumi.Input[_builtins.str]] = None,
-                 query_userinfo: Optional[pulumi.Input[_builtins.bool]] = None,
-                 realm: Optional[pulumi.Input[_builtins.str]] = None,
-                 scopes: Optional[pulumi.Input[_builtins.str]] = None,
-                 username_claim: Optional[pulumi.Input[_builtins.str]] = None):
+                 acr_values: pulumi.Input[Optional[_builtins.str]] = None,
+                 autocreate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 groups_autocreate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 groups_claim: pulumi.Input[Optional[_builtins.str]] = None,
+                 groups_overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issuer_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 prompt: pulumi.Input[Optional[_builtins.str]] = None,
+                 query_userinfo: pulumi.Input[Optional[_builtins.bool]] = None,
+                 realm: pulumi.Input[Optional[_builtins.str]] = None,
+                 scopes: pulumi.Input[Optional[_builtins.str]] = None,
+                 username_claim: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OpenidLegacy resources.
 
@@ -332,182 +332,182 @@ class _OpenidLegacyState:
 
     @_builtins.property
     @pulumi.getter(name="acrValues")
-    def acr_values(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acr_values(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Authentication Context Class Reference values for the OpenID provider.
         """
         return pulumi.get(self, "acr_values")
 
     @acr_values.setter
-    def acr_values(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acr_values(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acr_values", value)
 
     @_builtins.property
     @pulumi.getter
-    def autocreate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def autocreate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Automatically create users on the Proxmox cluster if they do not exist.
         """
         return pulumi.get(self, "autocreate")
 
     @autocreate.setter
-    def autocreate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def autocreate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "autocreate", value)
 
     @_builtins.property
     @pulumi.getter(name="clientId")
-    def client_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OpenID Connect Client ID.
         """
         return pulumi.get(self, "client_id")
 
     @client_id.setter
-    def client_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OpenID Connect Client Key (secret). Note: stored in Proxmox but not returned by API.
         """
         return pulumi.get(self, "client_key")
 
     @client_key.setter
-    def client_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the realm.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use this realm as the default for login.
         """
         return pulumi.get(self, "default")
 
     @default.setter
-    def default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default", value)
 
     @_builtins.property
     @pulumi.getter(name="groupsAutocreate")
-    def groups_autocreate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def groups_autocreate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Automatically create groups from claims rather than using existing Proxmox VE groups.
         """
         return pulumi.get(self, "groups_autocreate")
 
     @groups_autocreate.setter
-    def groups_autocreate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def groups_autocreate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "groups_autocreate", value)
 
     @_builtins.property
     @pulumi.getter(name="groupsClaim")
-    def groups_claim(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def groups_claim(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OpenID claim used to retrieve user group memberships.
         """
         return pulumi.get(self, "groups_claim")
 
     @groups_claim.setter
-    def groups_claim(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def groups_claim(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "groups_claim", value)
 
     @_builtins.property
     @pulumi.getter(name="groupsOverwrite")
-    def groups_overwrite(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def groups_overwrite(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Replace assigned groups on login instead of appending to existing ones.
         """
         return pulumi.get(self, "groups_overwrite")
 
     @groups_overwrite.setter
-    def groups_overwrite(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def groups_overwrite(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "groups_overwrite", value)
 
     @_builtins.property
     @pulumi.getter(name="issuerUrl")
-    def issuer_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issuer_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OpenID Connect issuer URL. Proxmox uses OpenID Connect Discovery to configure the provider.
         """
         return pulumi.get(self, "issuer_url")
 
     @issuer_url.setter
-    def issuer_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issuer_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issuer_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def prompt(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prompt(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies whether the authorization server prompts for reauthentication and/or consent (e.g., 'none', 'login', 'consent', 'select_account').
         """
         return pulumi.get(self, "prompt")
 
     @prompt.setter
-    def prompt(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prompt(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prompt", value)
 
     @_builtins.property
     @pulumi.getter(name="queryUserinfo")
-    def query_userinfo(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def query_userinfo(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Query the OpenID userinfo endpoint for claims. Required when the identity provider does not include claims in the ID token.
         """
         return pulumi.get(self, "query_userinfo")
 
     @query_userinfo.setter
-    def query_userinfo(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def query_userinfo(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "query_userinfo", value)
 
     @_builtins.property
     @pulumi.getter
-    def realm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def realm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Realm identifier (e.g., 'my-oidc').
         """
         return pulumi.get(self, "realm")
 
     @realm.setter
-    def realm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def realm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "realm", value)
 
     @_builtins.property
     @pulumi.getter
-    def scopes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scopes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Space-separated list of OpenID scopes to request.
         """
         return pulumi.get(self, "scopes")
 
     @scopes.setter
-    def scopes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scopes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scopes", value)
 
     @_builtins.property
     @pulumi.getter(name="usernameClaim")
-    def username_claim(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username_claim(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OpenID claim used to generate the unique username. Common values are `subject`, `username`, `email`, and `upn`.
         """
         return pulumi.get(self, "username_claim")
 
     @username_claim.setter
-    def username_claim(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username_claim(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username_claim", value)
 
 
@@ -517,21 +517,21 @@ class OpenidLegacy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acr_values: Optional[pulumi.Input[_builtins.str]] = None,
-                 autocreate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 groups_autocreate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 groups_claim: Optional[pulumi.Input[_builtins.str]] = None,
-                 groups_overwrite: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issuer_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 prompt: Optional[pulumi.Input[_builtins.str]] = None,
-                 query_userinfo: Optional[pulumi.Input[_builtins.bool]] = None,
-                 realm: Optional[pulumi.Input[_builtins.str]] = None,
-                 scopes: Optional[pulumi.Input[_builtins.str]] = None,
-                 username_claim: Optional[pulumi.Input[_builtins.str]] = None,
+                 acr_values: pulumi.Input[Optional[_builtins.str]] = None,
+                 autocreate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 groups_autocreate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 groups_claim: pulumi.Input[Optional[_builtins.str]] = None,
+                 groups_overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issuer_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 prompt: pulumi.Input[Optional[_builtins.str]] = None,
+                 query_userinfo: pulumi.Input[Optional[_builtins.bool]] = None,
+                 realm: pulumi.Input[Optional[_builtins.str]] = None,
+                 scopes: pulumi.Input[Optional[_builtins.str]] = None,
+                 username_claim: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         > **Deprecated:** Use `realm.Openid` instead. This resource will be removed in v1.0.
@@ -786,21 +786,21 @@ class OpenidLegacy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acr_values: Optional[pulumi.Input[_builtins.str]] = None,
-                 autocreate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 client_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 groups_autocreate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 groups_claim: Optional[pulumi.Input[_builtins.str]] = None,
-                 groups_overwrite: Optional[pulumi.Input[_builtins.bool]] = None,
-                 issuer_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 prompt: Optional[pulumi.Input[_builtins.str]] = None,
-                 query_userinfo: Optional[pulumi.Input[_builtins.bool]] = None,
-                 realm: Optional[pulumi.Input[_builtins.str]] = None,
-                 scopes: Optional[pulumi.Input[_builtins.str]] = None,
-                 username_claim: Optional[pulumi.Input[_builtins.str]] = None,
+                 acr_values: pulumi.Input[Optional[_builtins.str]] = None,
+                 autocreate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 client_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 groups_autocreate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 groups_claim: pulumi.Input[Optional[_builtins.str]] = None,
+                 groups_overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
+                 issuer_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 prompt: pulumi.Input[Optional[_builtins.str]] = None,
+                 query_userinfo: pulumi.Input[Optional[_builtins.bool]] = None,
+                 realm: pulumi.Input[Optional[_builtins.str]] = None,
+                 scopes: pulumi.Input[Optional[_builtins.str]] = None,
+                 username_claim: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -843,21 +843,21 @@ class OpenidLegacy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acr_values: Optional[pulumi.Input[_builtins.str]] = None,
-            autocreate: Optional[pulumi.Input[_builtins.bool]] = None,
-            client_id: Optional[pulumi.Input[_builtins.str]] = None,
-            client_key: Optional[pulumi.Input[_builtins.str]] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            default: Optional[pulumi.Input[_builtins.bool]] = None,
-            groups_autocreate: Optional[pulumi.Input[_builtins.bool]] = None,
-            groups_claim: Optional[pulumi.Input[_builtins.str]] = None,
-            groups_overwrite: Optional[pulumi.Input[_builtins.bool]] = None,
-            issuer_url: Optional[pulumi.Input[_builtins.str]] = None,
-            prompt: Optional[pulumi.Input[_builtins.str]] = None,
-            query_userinfo: Optional[pulumi.Input[_builtins.bool]] = None,
-            realm: Optional[pulumi.Input[_builtins.str]] = None,
-            scopes: Optional[pulumi.Input[_builtins.str]] = None,
-            username_claim: Optional[pulumi.Input[_builtins.str]] = None) -> 'OpenidLegacy':
+            acr_values: pulumi.Input[Optional[_builtins.str]] = None,
+            autocreate: pulumi.Input[Optional[_builtins.bool]] = None,
+            client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            client_key: pulumi.Input[Optional[_builtins.str]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            default: pulumi.Input[Optional[_builtins.bool]] = None,
+            groups_autocreate: pulumi.Input[Optional[_builtins.bool]] = None,
+            groups_claim: pulumi.Input[Optional[_builtins.str]] = None,
+            groups_overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
+            issuer_url: pulumi.Input[Optional[_builtins.str]] = None,
+            prompt: pulumi.Input[Optional[_builtins.str]] = None,
+            query_userinfo: pulumi.Input[Optional[_builtins.bool]] = None,
+            realm: pulumi.Input[Optional[_builtins.str]] = None,
+            scopes: pulumi.Input[Optional[_builtins.str]] = None,
+            username_claim: pulumi.Input[Optional[_builtins.str]] = None) -> 'OpenidLegacy':
         """
         Get an existing OpenidLegacy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

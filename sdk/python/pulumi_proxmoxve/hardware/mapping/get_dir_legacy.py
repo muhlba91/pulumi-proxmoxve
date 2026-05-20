@@ -116,7 +116,7 @@ def get_dir_legacy(name: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         maps=pulumi.get(__ret__, 'maps'),
         name=pulumi.get(__ret__, 'name'))
-def get_dir_legacy_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_dir_legacy_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDirLegacyResult]:
     """
     > **Deprecated:** Use `hardware/mapping.Dir` instead. This data source will be removed in v1.0.

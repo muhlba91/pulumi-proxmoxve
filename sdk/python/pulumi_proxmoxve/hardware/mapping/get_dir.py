@@ -114,7 +114,7 @@ def get_dir(name: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         maps=pulumi.get(__ret__, 'maps'),
         name=pulumi.get(__ret__, 'name'))
-def get_dir_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_dir_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDirResult]:
     """
     Retrieves a directory mapping from a Proxmox VE cluster.

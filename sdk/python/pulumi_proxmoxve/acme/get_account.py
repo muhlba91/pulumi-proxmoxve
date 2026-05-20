@@ -124,7 +124,7 @@ def get_account(name: Optional[_builtins.str] = None,
     # This will fetch all ACME accounts...
     all = proxmoxve.acme.get_accounts()
     # ...which we will go through in order to fetch the whole data on each account.
-    example = {__key: proxmoxve.acme.get_account(name=__value) for __key, __value in enumerate(all.accounts)}
+    example = {str(__key): proxmoxve.acme.get_account(name=__value) for __key, __value in enumerate(all.accounts)}
     pulumi.export("dataProxmoxAcmeAccount", example)
     ```
 
@@ -143,7 +143,7 @@ def get_account(name: Optional[_builtins.str] = None,
         location=pulumi.get(__ret__, 'location'),
         name=pulumi.get(__ret__, 'name'),
         tos=pulumi.get(__ret__, 'tos'))
-def get_account_output(name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_account_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountResult]:
     """
     Retrieves information about a specific ACME account.
@@ -157,7 +157,7 @@ def get_account_output(name: Optional[pulumi.Input[Optional[_builtins.str]]] = N
     # This will fetch all ACME accounts...
     all = proxmoxve.acme.get_accounts()
     # ...which we will go through in order to fetch the whole data on each account.
-    example = {__key: proxmoxve.acme.get_account(name=__value) for __key, __value in enumerate(all.accounts)}
+    example = {str(__key): proxmoxve.acme.get_account(name=__value) for __key, __value in enumerate(all.accounts)}
     pulumi.export("dataProxmoxAcmeAccount", example)
     ```
 

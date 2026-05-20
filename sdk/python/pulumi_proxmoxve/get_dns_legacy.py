@@ -109,7 +109,7 @@ def get_dns_legacy(node_name: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         node_name=pulumi.get(__ret__, 'node_name'),
         servers=pulumi.get(__ret__, 'servers'))
-def get_dns_legacy_output(node_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_dns_legacy_output(node_name: pulumi.Input[Optional[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDnsLegacyResult]:
     """
     Retrieves the DNS configuration for a specific node.

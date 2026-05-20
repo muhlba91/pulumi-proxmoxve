@@ -163,9 +163,9 @@ def get_subnet(cidr: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         snat=pulumi.get(__ret__, 'snat'),
         vnet=pulumi.get(__ret__, 'vnet'))
-def get_subnet_output(cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                      dhcp_range: Optional[pulumi.Input[Optional[Union['GetSubnetDhcpRangeArgs', 'GetSubnetDhcpRangeArgsDict']]]] = None,
-                      vnet: Optional[pulumi.Input[_builtins.str]] = None,
+def get_subnet_output(cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                      dhcp_range: pulumi.Input[Optional[Optional[Union['GetSubnetDhcpRangeArgs', 'GetSubnetDhcpRangeArgsDict']]]] = None,
+                      vnet: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSubnetResult]:
     """
     Retrieve details about a specific SDN Subnet in Proxmox VE.

@@ -40,8 +40,8 @@ import javax.annotation.Nullable;
  * import io.muehlbachler.pulumi.proxmoxve.FileLegacy;
  * import io.muehlbachler.pulumi.proxmoxve.FileLegacyArgs;
  * import com.pulumi.proxmoxve.inputs.FileLegacySourceFileArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -85,8 +85,8 @@ import javax.annotation.Nullable;
  * import io.muehlbachler.pulumi.proxmoxve.FileLegacy;
  * import io.muehlbachler.pulumi.proxmoxve.FileLegacyArgs;
  * import com.pulumi.proxmoxve.inputs.FileLegacySourceFileArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -124,8 +124,8 @@ import javax.annotation.Nullable;
  * import io.muehlbachler.pulumi.proxmoxve.FileLegacy;
  * import io.muehlbachler.pulumi.proxmoxve.FileLegacyArgs;
  * import com.pulumi.proxmoxve.inputs.FileLegacySourceFileArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -171,8 +171,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.proxmoxve.inputs.FileLegacySourceRawArgs;
  * import com.pulumi.std.StdFunctions;
  * import com.pulumi.std.inputs.TrimspaceArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -232,8 +232,8 @@ import javax.annotation.Nullable;
  * import io.muehlbachler.pulumi.proxmoxve.FileLegacy;
  * import io.muehlbachler.pulumi.proxmoxve.FileLegacyArgs;
  * import com.pulumi.proxmoxve.inputs.FileLegacySourceRawArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -281,8 +281,8 @@ import javax.annotation.Nullable;
  * import io.muehlbachler.pulumi.proxmoxve.FileLegacy;
  * import io.muehlbachler.pulumi.proxmoxve.FileLegacyArgs;
  * import com.pulumi.proxmoxve.inputs.FileLegacySourceFileArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -515,6 +515,34 @@ public class FileLegacy extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> timeoutUpload() {
         return Codegen.optional(this.timeoutUpload);
+    }
+    /**
+     * The SSH upload mode for non-API content types
+     * (snippets, backups, etc.). Set to &lt;span pulumi-lang-nodejs=&#34;`stream`&#34; pulumi-lang-dotnet=&#34;`Stream`&#34; pulumi-lang-go=&#34;`stream`&#34; pulumi-lang-python=&#34;`stream`&#34; pulumi-lang-yaml=&#34;`stream`&#34; pulumi-lang-java=&#34;`stream`&#34;&gt;`stream`&lt;/span&gt; to pipe the file through an SSH
+     * shell session (uses &lt;span pulumi-lang-nodejs=&#34;`sudo`&#34; pulumi-lang-dotnet=&#34;`Sudo`&#34; pulumi-lang-go=&#34;`sudo`&#34; pulumi-lang-python=&#34;`sudo`&#34; pulumi-lang-yaml=&#34;`sudo`&#34; pulumi-lang-java=&#34;`sudo`&#34;&gt;`sudo`&lt;/span&gt; where required), or &lt;span pulumi-lang-nodejs=&#34;`sftp`&#34; pulumi-lang-dotnet=&#34;`Sftp`&#34; pulumi-lang-go=&#34;`sftp`&#34; pulumi-lang-python=&#34;`sftp`&#34; pulumi-lang-yaml=&#34;`sftp`&#34; pulumi-lang-java=&#34;`sftp`&#34;&gt;`sftp`&lt;/span&gt; to upload via the SFTP
+     * subsystem. Use &lt;span pulumi-lang-nodejs=&#34;`sftp`&#34; pulumi-lang-dotnet=&#34;`Sftp`&#34; pulumi-lang-go=&#34;`sftp`&#34; pulumi-lang-python=&#34;`sftp`&#34; pulumi-lang-yaml=&#34;`sftp`&#34; pulumi-lang-java=&#34;`sftp`&#34;&gt;`sftp`&lt;/span&gt; when the target host&#39;s SSH server only allows the
+     * SFTP subsystem; note that the SFTP path does not invoke &lt;span pulumi-lang-nodejs=&#34;`sudo`&#34; pulumi-lang-dotnet=&#34;`Sudo`&#34; pulumi-lang-go=&#34;`sudo`&#34; pulumi-lang-python=&#34;`sudo`&#34; pulumi-lang-yaml=&#34;`sudo`&#34; pulumi-lang-java=&#34;`sudo`&#34;&gt;`sudo`&lt;/span&gt;, so the SSH
+     * user must have direct write permission to the target directory. Has no
+     * effect for &lt;span pulumi-lang-nodejs=&#34;`iso`&#34; pulumi-lang-dotnet=&#34;`Iso`&#34; pulumi-lang-go=&#34;`iso`&#34; pulumi-lang-python=&#34;`iso`&#34; pulumi-lang-yaml=&#34;`iso`&#34; pulumi-lang-java=&#34;`iso`&#34;&gt;`iso`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`vztmpl`&#34; pulumi-lang-dotnet=&#34;`Vztmpl`&#34; pulumi-lang-go=&#34;`vztmpl`&#34; pulumi-lang-python=&#34;`vztmpl`&#34; pulumi-lang-yaml=&#34;`vztmpl`&#34; pulumi-lang-java=&#34;`vztmpl`&#34;&gt;`vztmpl`&lt;/span&gt;, and &lt;span pulumi-lang-nodejs=&#34;`import`&#34; pulumi-lang-dotnet=&#34;`Import`&#34; pulumi-lang-go=&#34;`import`&#34; pulumi-lang-python=&#34;`import`&#34; pulumi-lang-yaml=&#34;`import`&#34; pulumi-lang-java=&#34;`import`&#34;&gt;`import`&lt;/span&gt; content types, which always use
+     * the HTTP API. Defaults to &lt;span pulumi-lang-nodejs=&#34;`stream`&#34; pulumi-lang-dotnet=&#34;`Stream`&#34; pulumi-lang-go=&#34;`stream`&#34; pulumi-lang-python=&#34;`stream`&#34; pulumi-lang-yaml=&#34;`stream`&#34; pulumi-lang-java=&#34;`stream`&#34;&gt;`stream`&lt;/span&gt;.
+     * 
+     */
+    @Export(name="uploadMode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> uploadMode;
+
+    /**
+     * @return The SSH upload mode for non-API content types
+     * (snippets, backups, etc.). Set to &lt;span pulumi-lang-nodejs=&#34;`stream`&#34; pulumi-lang-dotnet=&#34;`Stream`&#34; pulumi-lang-go=&#34;`stream`&#34; pulumi-lang-python=&#34;`stream`&#34; pulumi-lang-yaml=&#34;`stream`&#34; pulumi-lang-java=&#34;`stream`&#34;&gt;`stream`&lt;/span&gt; to pipe the file through an SSH
+     * shell session (uses &lt;span pulumi-lang-nodejs=&#34;`sudo`&#34; pulumi-lang-dotnet=&#34;`Sudo`&#34; pulumi-lang-go=&#34;`sudo`&#34; pulumi-lang-python=&#34;`sudo`&#34; pulumi-lang-yaml=&#34;`sudo`&#34; pulumi-lang-java=&#34;`sudo`&#34;&gt;`sudo`&lt;/span&gt; where required), or &lt;span pulumi-lang-nodejs=&#34;`sftp`&#34; pulumi-lang-dotnet=&#34;`Sftp`&#34; pulumi-lang-go=&#34;`sftp`&#34; pulumi-lang-python=&#34;`sftp`&#34; pulumi-lang-yaml=&#34;`sftp`&#34; pulumi-lang-java=&#34;`sftp`&#34;&gt;`sftp`&lt;/span&gt; to upload via the SFTP
+     * subsystem. Use &lt;span pulumi-lang-nodejs=&#34;`sftp`&#34; pulumi-lang-dotnet=&#34;`Sftp`&#34; pulumi-lang-go=&#34;`sftp`&#34; pulumi-lang-python=&#34;`sftp`&#34; pulumi-lang-yaml=&#34;`sftp`&#34; pulumi-lang-java=&#34;`sftp`&#34;&gt;`sftp`&lt;/span&gt; when the target host&#39;s SSH server only allows the
+     * SFTP subsystem; note that the SFTP path does not invoke &lt;span pulumi-lang-nodejs=&#34;`sudo`&#34; pulumi-lang-dotnet=&#34;`Sudo`&#34; pulumi-lang-go=&#34;`sudo`&#34; pulumi-lang-python=&#34;`sudo`&#34; pulumi-lang-yaml=&#34;`sudo`&#34; pulumi-lang-java=&#34;`sudo`&#34;&gt;`sudo`&lt;/span&gt;, so the SSH
+     * user must have direct write permission to the target directory. Has no
+     * effect for &lt;span pulumi-lang-nodejs=&#34;`iso`&#34; pulumi-lang-dotnet=&#34;`Iso`&#34; pulumi-lang-go=&#34;`iso`&#34; pulumi-lang-python=&#34;`iso`&#34; pulumi-lang-yaml=&#34;`iso`&#34; pulumi-lang-java=&#34;`iso`&#34;&gt;`iso`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`vztmpl`&#34; pulumi-lang-dotnet=&#34;`Vztmpl`&#34; pulumi-lang-go=&#34;`vztmpl`&#34; pulumi-lang-python=&#34;`vztmpl`&#34; pulumi-lang-yaml=&#34;`vztmpl`&#34; pulumi-lang-java=&#34;`vztmpl`&#34;&gt;`vztmpl`&lt;/span&gt;, and &lt;span pulumi-lang-nodejs=&#34;`import`&#34; pulumi-lang-dotnet=&#34;`Import`&#34; pulumi-lang-go=&#34;`import`&#34; pulumi-lang-python=&#34;`import`&#34; pulumi-lang-yaml=&#34;`import`&#34; pulumi-lang-java=&#34;`import`&#34;&gt;`import`&lt;/span&gt; content types, which always use
+     * the HTTP API. Defaults to &lt;span pulumi-lang-nodejs=&#34;`stream`&#34; pulumi-lang-dotnet=&#34;`Stream`&#34; pulumi-lang-go=&#34;`stream`&#34; pulumi-lang-python=&#34;`stream`&#34; pulumi-lang-yaml=&#34;`stream`&#34; pulumi-lang-java=&#34;`stream`&#34;&gt;`stream`&lt;/span&gt;.
+     * 
+     */
+    public Output<Optional<String>> uploadMode() {
+        return Codegen.optional(this.uploadMode);
     }
 
     /**

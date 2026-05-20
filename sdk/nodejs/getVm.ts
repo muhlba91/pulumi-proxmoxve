@@ -107,5 +107,5 @@ export interface GetVmOutputArgs {
      * The name of the node where the VM is provisioned.
      */
     nodeName: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.GetVmTimeoutsArgs>;
+    timeouts?: pulumi.Input<inputs.GetVmTimeoutsArgs | undefined>;
 }

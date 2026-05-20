@@ -19,8 +19,8 @@ __all__ = ['ApplierLegacyArgs', 'ApplierLegacy']
 @pulumi.input_type
 class ApplierLegacyArgs:
     def __init__(__self__, *,
-                 on_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 on_destroy: Optional[pulumi.Input[_builtins.bool]] = None):
+                 on_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 on_destroy: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ApplierLegacy resource.
 
@@ -34,34 +34,34 @@ class ApplierLegacyArgs:
 
     @_builtins.property
     @pulumi.getter(name="onCreate")
-    def on_create(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def on_create(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to apply SDN configuration on resource creation. Defaults to true.
         """
         return pulumi.get(self, "on_create")
 
     @on_create.setter
-    def on_create(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def on_create(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "on_create", value)
 
     @_builtins.property
     @pulumi.getter(name="onDestroy")
-    def on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to apply SDN configuration on resource destruction. Defaults to true.
         """
         return pulumi.get(self, "on_destroy")
 
     @on_destroy.setter
-    def on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "on_destroy", value)
 
 
 @pulumi.input_type
 class _ApplierLegacyState:
     def __init__(__self__, *,
-                 on_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 on_destroy: Optional[pulumi.Input[_builtins.bool]] = None):
+                 on_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 on_destroy: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ApplierLegacy resources.
 
@@ -75,26 +75,26 @@ class _ApplierLegacyState:
 
     @_builtins.property
     @pulumi.getter(name="onCreate")
-    def on_create(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def on_create(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to apply SDN configuration on resource creation. Defaults to true.
         """
         return pulumi.get(self, "on_create")
 
     @on_create.setter
-    def on_create(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def on_create(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "on_create", value)
 
     @_builtins.property
     @pulumi.getter(name="onDestroy")
-    def on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to apply SDN configuration on resource destruction. Defaults to true.
         """
         return pulumi.get(self, "on_destroy")
 
     @on_destroy.setter
-    def on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "on_destroy", value)
 
 
@@ -104,8 +104,8 @@ class ApplierLegacy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 on_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
+                 on_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         > **Deprecated:** Use `sdn.Applier` instead. This resource will be removed in v1.0.
@@ -145,8 +145,8 @@ class ApplierLegacy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 on_create: Optional[pulumi.Input[_builtins.bool]] = None,
-                 on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
+                 on_create: pulumi.Input[Optional[_builtins.bool]] = None,
+                 on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -168,8 +168,8 @@ class ApplierLegacy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            on_create: Optional[pulumi.Input[_builtins.bool]] = None,
-            on_destroy: Optional[pulumi.Input[_builtins.bool]] = None) -> 'ApplierLegacy':
+            on_create: pulumi.Input[Optional[_builtins.bool]] = None,
+            on_destroy: pulumi.Input[Optional[_builtins.bool]] = None) -> 'ApplierLegacy':
         """
         Get an existing ApplierLegacy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

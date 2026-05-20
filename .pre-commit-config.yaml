@@ -1,7 +1,7 @@
 ---
 repos:
   - repo: https://github.com/talos-systems/conform
-    rev: v0.1.0-alpha.30
+    rev: v0.1.0-alpha.31
     hooks:
       - id: conform
         stages:
@@ -36,6 +36,6 @@ repos:
     hooks:
       - id: gitleaks
   - repo: https://github.com/golangci/golangci-lint
-    rev: v2.7.2
+    rev: v2.12.2
     hooks:
       - id: golangci-lint

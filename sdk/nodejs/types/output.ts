@@ -93,8 +93,8 @@ export interface ContainerLegacyDisk {
      */
     acl?: boolean;
     /**
-     * The identifier for the datastore to create the
-     * disk in (defaults to `local`).
+     * The Proxmox storage ID where the rootfs
+     * volume is created (defaults to `local`).
      */
     datastoreId?: string;
     /**
@@ -131,6 +131,10 @@ export interface ContainerLegacyFeatures {
      * Whether the container supports `keyctl()` system call (defaults to `false`)
      */
     keyctl?: boolean;
+    /**
+     * Whether the container supports `mknod()` system call (defaults to `false`)
+     */
+    mknod?: boolean;
     /**
      * List of allowed mount types (`cifs` or `nfs`)
      */
@@ -313,8 +317,11 @@ export interface ContainerLegacyMountPoint {
      */
     size?: string;
     /**
-     * Volume, device or directory to mount into the
-     * container.
+     * Volume reference. Accepts a Proxmox storage ID
+     * (e.g. `local-lvm`) to allocate a new volume, a full PVE volume ID
+     * (e.g. `local-lvm:subvol-108-disk-101`) to mount an existing volume,
+     * or an absolute host path (e.g. `/mnt/bindmounts/shared`) to
+     * bind-mount a host directory.
      */
     volume: string;
 }
@@ -337,7 +344,7 @@ export interface ContainerLegacyNetworkInterface {
     firewall?: boolean;
     /**
      * Whether the host runs DHCP on this interface's
-     * behalf (defaults to `false`). Requires Proxmox VE 9.0+. Required for
+     * behalf (defaults to `false`). Requires Proxmox VE 9.1+. Required for
      * application containers that do not include a DHCP client.
      */
     hostManaged?: boolean;

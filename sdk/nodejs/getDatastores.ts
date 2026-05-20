@@ -76,11 +76,11 @@ export interface GetDatastoresOutputArgs {
     /**
      * The list of datastores.
      */
-    datastores?: pulumi.Input<pulumi.Input<inputs.GetDatastoresDatastoreArgs>[]>;
+    datastores?: pulumi.Input<pulumi.Input<inputs.GetDatastoresDatastoreArgs>[] | undefined>;
     /**
      * The filters to apply to the stores.
      */
-    filters?: pulumi.Input<inputs.GetDatastoresFiltersArgs>;
+    filters?: pulumi.Input<inputs.GetDatastoresFiltersArgs | undefined>;
     /**
      * The name of the node to retrieve the stores from.
      */

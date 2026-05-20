@@ -22,36 +22,36 @@ __all__ = ['ContainerLegacyArgs', 'ContainerLegacy']
 class ContainerLegacyArgs:
     def __init__(__self__, *,
                  node_name: pulumi.Input[_builtins.str],
-                 clone: Optional[pulumi.Input['ContainerLegacyCloneArgs']] = None,
-                 console: Optional[pulumi.Input['ContainerLegacyConsoleArgs']] = None,
-                 cpu: Optional[pulumi.Input['ContainerLegacyCpuArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 device_passthroughs: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerLegacyDevicePassthroughArgs']]]] = None,
-                 disk: Optional[pulumi.Input['ContainerLegacyDiskArgs']] = None,
-                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 features: Optional[pulumi.Input['ContainerLegacyFeaturesArgs']] = None,
-                 hook_script_file_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 idmaps: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerLegacyIdmapArgs']]]] = None,
-                 initialization: Optional[pulumi.Input['ContainerLegacyInitializationArgs']] = None,
-                 memory: Optional[pulumi.Input['ContainerLegacyMemoryArgs']] = None,
-                 mount_points: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerLegacyMountPointArgs']]]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerLegacyNetworkInterfaceArgs']]]] = None,
-                 operating_system: Optional[pulumi.Input['ContainerLegacyOperatingSystemArgs']] = None,
-                 pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 start_on_boot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 started: Optional[pulumi.Input[_builtins.bool]] = None,
-                 startup: Optional[pulumi.Input['ContainerLegacyStartupArgs']] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeout_clone: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_create: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_delete: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_start: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_update: Optional[pulumi.Input[_builtins.int]] = None,
-                 unprivileged: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 wait_for_ip: Optional[pulumi.Input['ContainerLegacyWaitForIpArgs']] = None):
+                 clone: pulumi.Input[Optional['ContainerLegacyCloneArgs']] = None,
+                 console: pulumi.Input[Optional['ContainerLegacyConsoleArgs']] = None,
+                 cpu: pulumi.Input[Optional['ContainerLegacyCpuArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 device_passthroughs: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyDevicePassthroughArgs']]]] = None,
+                 disk: pulumi.Input[Optional['ContainerLegacyDiskArgs']] = None,
+                 environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 features: pulumi.Input[Optional['ContainerLegacyFeaturesArgs']] = None,
+                 hook_script_file_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 idmaps: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyIdmapArgs']]]] = None,
+                 initialization: pulumi.Input[Optional['ContainerLegacyInitializationArgs']] = None,
+                 memory: pulumi.Input[Optional['ContainerLegacyMemoryArgs']] = None,
+                 mount_points: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyMountPointArgs']]]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyNetworkInterfaceArgs']]]] = None,
+                 operating_system: pulumi.Input[Optional['ContainerLegacyOperatingSystemArgs']] = None,
+                 pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 start_on_boot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 started: pulumi.Input[Optional[_builtins.bool]] = None,
+                 startup: pulumi.Input[Optional['ContainerLegacyStartupArgs']] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeout_clone: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_create: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_delete: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_start: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_update: pulumi.Input[Optional[_builtins.int]] = None,
+                 unprivileged: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 wait_for_ip: pulumi.Input[Optional['ContainerLegacyWaitForIpArgs']] = None):
         """
         The set of arguments for constructing a ContainerLegacy resource.
 
@@ -61,7 +61,10 @@ class ContainerLegacyArgs:
         :param pulumi.Input['ContainerLegacyCpuArgs'] cpu: The CPU configuration.
         :param pulumi.Input[_builtins.str] description: The description.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerLegacyDevicePassthroughArgs']]] device_passthroughs: Device to pass through to the container (multiple blocks supported).
-        :param pulumi.Input['ContainerLegacyDiskArgs'] disk: The disk configuration.
+        :param pulumi.Input['ContainerLegacyDiskArgs'] disk: The root filesystem (rootfs) storage configuration.
+               Selects the Proxmox storage pool the container's root volume is created
+               on. Backend-agnostic — works with directory, LVM, LVM-thin, ZFS, Ceph
+               RBD, NFS, and any other configured Proxmox storage.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] environment_variables: A map of runtime environment variables for the container init process.
         :param pulumi.Input['ContainerLegacyFeaturesArgs'] features: The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
         :param pulumi.Input[_builtins.str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
@@ -71,7 +74,9 @@ class ContainerLegacyArgs:
                `lxc[n]` parameters.
         :param pulumi.Input['ContainerLegacyInitializationArgs'] initialization: The initialization configuration.
         :param pulumi.Input['ContainerLegacyMemoryArgs'] memory: The memory configuration.
-        :param pulumi.Input[Sequence[pulumi.Input['ContainerLegacyMountPointArgs']]] mount_points: A mount point
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerLegacyMountPointArgs']]] mount_points: An additional volume mount or host bind mount
+               (multiple blocks supported). Use this for data volumes, shared
+               directories, or attaching pre-existing PVE volumes.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerLegacyNetworkInterfaceArgs']]] network_interfaces: A network interface (multiple blocks
                supported).
         :param pulumi.Input['ContainerLegacyOperatingSystemArgs'] operating_system: The Operating System configuration.
@@ -175,115 +180,118 @@ class ContainerLegacyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def clone(self) -> Optional[pulumi.Input['ContainerLegacyCloneArgs']]:
+    def clone(self) -> pulumi.Input[Optional['ContainerLegacyCloneArgs']]:
         """
         The cloning configuration.
         """
         return pulumi.get(self, "clone")
 
     @clone.setter
-    def clone(self, value: Optional[pulumi.Input['ContainerLegacyCloneArgs']]):
+    def clone(self, value: pulumi.Input[Optional['ContainerLegacyCloneArgs']]):
         pulumi.set(self, "clone", value)
 
     @_builtins.property
     @pulumi.getter
-    def console(self) -> Optional[pulumi.Input['ContainerLegacyConsoleArgs']]:
+    def console(self) -> pulumi.Input[Optional['ContainerLegacyConsoleArgs']]:
         """
         The console configuration.
         """
         return pulumi.get(self, "console")
 
     @console.setter
-    def console(self, value: Optional[pulumi.Input['ContainerLegacyConsoleArgs']]):
+    def console(self, value: pulumi.Input[Optional['ContainerLegacyConsoleArgs']]):
         pulumi.set(self, "console", value)
 
     @_builtins.property
     @pulumi.getter
-    def cpu(self) -> Optional[pulumi.Input['ContainerLegacyCpuArgs']]:
+    def cpu(self) -> pulumi.Input[Optional['ContainerLegacyCpuArgs']]:
         """
         The CPU configuration.
         """
         return pulumi.get(self, "cpu")
 
     @cpu.setter
-    def cpu(self, value: Optional[pulumi.Input['ContainerLegacyCpuArgs']]):
+    def cpu(self, value: pulumi.Input[Optional['ContainerLegacyCpuArgs']]):
         pulumi.set(self, "cpu", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="devicePassthroughs")
-    def device_passthroughs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerLegacyDevicePassthroughArgs']]]]:
+    def device_passthroughs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyDevicePassthroughArgs']]]]:
         """
         Device to pass through to the container (multiple blocks supported).
         """
         return pulumi.get(self, "device_passthroughs")
 
     @device_passthroughs.setter
-    def device_passthroughs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerLegacyDevicePassthroughArgs']]]]):
+    def device_passthroughs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyDevicePassthroughArgs']]]]):
         pulumi.set(self, "device_passthroughs", value)
 
     @_builtins.property
     @pulumi.getter
-    def disk(self) -> Optional[pulumi.Input['ContainerLegacyDiskArgs']]:
+    def disk(self) -> pulumi.Input[Optional['ContainerLegacyDiskArgs']]:
         """
-        The disk configuration.
+        The root filesystem (rootfs) storage configuration.
+        Selects the Proxmox storage pool the container's root volume is created
+        on. Backend-agnostic — works with directory, LVM, LVM-thin, ZFS, Ceph
+        RBD, NFS, and any other configured Proxmox storage.
         """
         return pulumi.get(self, "disk")
 
     @disk.setter
-    def disk(self, value: Optional[pulumi.Input['ContainerLegacyDiskArgs']]):
+    def disk(self, value: pulumi.Input[Optional['ContainerLegacyDiskArgs']]):
         pulumi.set(self, "disk", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentVariables")
-    def environment_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def environment_variables(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of runtime environment variables for the container init process.
         """
         return pulumi.get(self, "environment_variables")
 
     @environment_variables.setter
-    def environment_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def environment_variables(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "environment_variables", value)
 
     @_builtins.property
     @pulumi.getter
-    def features(self) -> Optional[pulumi.Input['ContainerLegacyFeaturesArgs']]:
+    def features(self) -> pulumi.Input[Optional['ContainerLegacyFeaturesArgs']]:
         """
         The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
         """
         return pulumi.get(self, "features")
 
     @features.setter
-    def features(self, value: Optional[pulumi.Input['ContainerLegacyFeaturesArgs']]):
+    def features(self, value: pulumi.Input[Optional['ContainerLegacyFeaturesArgs']]):
         pulumi.set(self, "features", value)
 
     @_builtins.property
     @pulumi.getter(name="hookScriptFileId")
-    def hook_script_file_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hook_script_file_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
         """
         return pulumi.get(self, "hook_script_file_id")
 
     @hook_script_file_id.setter
-    def hook_script_file_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hook_script_file_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hook_script_file_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def idmaps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerLegacyIdmapArgs']]]]:
+    def idmaps(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyIdmapArgs']]]]:
         """
         UID/GID mapping for unprivileged containers (multiple
         blocks supported). These are written as `lxc.idmap` entries in the container
@@ -293,48 +301,50 @@ class ContainerLegacyArgs:
         return pulumi.get(self, "idmaps")
 
     @idmaps.setter
-    def idmaps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerLegacyIdmapArgs']]]]):
+    def idmaps(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyIdmapArgs']]]]):
         pulumi.set(self, "idmaps", value)
 
     @_builtins.property
     @pulumi.getter
-    def initialization(self) -> Optional[pulumi.Input['ContainerLegacyInitializationArgs']]:
+    def initialization(self) -> pulumi.Input[Optional['ContainerLegacyInitializationArgs']]:
         """
         The initialization configuration.
         """
         return pulumi.get(self, "initialization")
 
     @initialization.setter
-    def initialization(self, value: Optional[pulumi.Input['ContainerLegacyInitializationArgs']]):
+    def initialization(self, value: pulumi.Input[Optional['ContainerLegacyInitializationArgs']]):
         pulumi.set(self, "initialization", value)
 
     @_builtins.property
     @pulumi.getter
-    def memory(self) -> Optional[pulumi.Input['ContainerLegacyMemoryArgs']]:
+    def memory(self) -> pulumi.Input[Optional['ContainerLegacyMemoryArgs']]:
         """
         The memory configuration.
         """
         return pulumi.get(self, "memory")
 
     @memory.setter
-    def memory(self, value: Optional[pulumi.Input['ContainerLegacyMemoryArgs']]):
+    def memory(self, value: pulumi.Input[Optional['ContainerLegacyMemoryArgs']]):
         pulumi.set(self, "memory", value)
 
     @_builtins.property
     @pulumi.getter(name="mountPoints")
-    def mount_points(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerLegacyMountPointArgs']]]]:
+    def mount_points(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyMountPointArgs']]]]:
         """
-        A mount point
+        An additional volume mount or host bind mount
+        (multiple blocks supported). Use this for data volumes, shared
+        directories, or attaching pre-existing PVE volumes.
         """
         return pulumi.get(self, "mount_points")
 
     @mount_points.setter
-    def mount_points(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerLegacyMountPointArgs']]]]):
+    def mount_points(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyMountPointArgs']]]]):
         pulumi.set(self, "mount_points", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerLegacyNetworkInterfaceArgs']]]]:
+    def network_interfaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyNetworkInterfaceArgs']]]]:
         """
         A network interface (multiple blocks
         supported).
@@ -342,48 +352,48 @@ class ContainerLegacyArgs:
         return pulumi.get(self, "network_interfaces")
 
     @network_interfaces.setter
-    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerLegacyNetworkInterfaceArgs']]]]):
+    def network_interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyNetworkInterfaceArgs']]]]):
         pulumi.set(self, "network_interfaces", value)
 
     @_builtins.property
     @pulumi.getter(name="operatingSystem")
-    def operating_system(self) -> Optional[pulumi.Input['ContainerLegacyOperatingSystemArgs']]:
+    def operating_system(self) -> pulumi.Input[Optional['ContainerLegacyOperatingSystemArgs']]:
         """
         The Operating System configuration.
         """
         return pulumi.get(self, "operating_system")
 
     @operating_system.setter
-    def operating_system(self, value: Optional[pulumi.Input['ContainerLegacyOperatingSystemArgs']]):
+    def operating_system(self, value: pulumi.Input[Optional['ContainerLegacyOperatingSystemArgs']]):
         pulumi.set(self, "operating_system", value)
 
     @_builtins.property
     @pulumi.getter(name="poolId")
-    def pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier for a pool to assign the container to.
         """
         return pulumi.get(self, "pool_id")
 
     @pool_id.setter
-    def pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pool_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
         """
         return pulumi.get(self, "protection")
 
     @protection.setter
-    def protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "protection", value)
 
     @_builtins.property
     @pulumi.getter(name="startOnBoot")
-    def start_on_boot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def start_on_boot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Automatically start container when the host
         system boots (defaults to `true`).
@@ -391,36 +401,36 @@ class ContainerLegacyArgs:
         return pulumi.get(self, "start_on_boot")
 
     @start_on_boot.setter
-    def start_on_boot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def start_on_boot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "start_on_boot", value)
 
     @_builtins.property
     @pulumi.getter
-    def started(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def started(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to start the container (defaults to `true`).
         """
         return pulumi.get(self, "started")
 
     @started.setter
-    def started(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def started(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "started", value)
 
     @_builtins.property
     @pulumi.getter
-    def startup(self) -> Optional[pulumi.Input['ContainerLegacyStartupArgs']]:
+    def startup(self) -> pulumi.Input[Optional['ContainerLegacyStartupArgs']]:
         """
         Defines startup and shutdown behavior of the container.
         """
         return pulumi.get(self, "startup")
 
     @startup.setter
-    def startup(self, value: Optional[pulumi.Input['ContainerLegacyStartupArgs']]):
+    def startup(self, value: pulumi.Input[Optional['ContainerLegacyStartupArgs']]):
         pulumi.set(self, "startup", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of tags the container tags. This is only meta
         information (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.
@@ -431,155 +441,155 @@ class ContainerLegacyArgs:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def template(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def template(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to create a template (defaults to `false`).
         """
         return pulumi.get(self, "template")
 
     @template.setter
-    def template(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def template(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "template", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutClone")
-    def timeout_clone(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_clone(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timeout for cloning a container in seconds (defaults to 1800).
         """
         return pulumi.get(self, "timeout_clone")
 
     @timeout_clone.setter
-    def timeout_clone(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_clone(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_clone", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutCreate")
-    def timeout_create(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_create(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timeout for creating a container in seconds (defaults to 1800).
         """
         return pulumi.get(self, "timeout_create")
 
     @timeout_create.setter
-    def timeout_create(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_create(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_create", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutDelete")
-    def timeout_delete(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_delete(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timeout for deleting a container in seconds (defaults to 60).
         """
         return pulumi.get(self, "timeout_delete")
 
     @timeout_delete.setter
-    def timeout_delete(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_delete(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutStart")
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead.""")
-    def timeout_start(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_start(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Start container timeout
         """
         return pulumi.get(self, "timeout_start")
 
     @timeout_start.setter
-    def timeout_start(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_start(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_start", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutUpdate")
-    def timeout_update(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_update(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timeout for updating a container in seconds (defaults to 1800).
         """
         return pulumi.get(self, "timeout_update")
 
     @timeout_update.setter
-    def timeout_update(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_update(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_update", value)
 
     @_builtins.property
     @pulumi.getter
-    def unprivileged(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def unprivileged(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the container runs as unprivileged on the host (defaults to `false`).
         """
         return pulumi.get(self, "unprivileged")
 
     @unprivileged.setter
-    def unprivileged(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def unprivileged(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "unprivileged", value)
 
     @_builtins.property
     @pulumi.getter(name="vmId")
-    def vm_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vm_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The container identifier
         """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
-    def vm_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vm_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vm_id", value)
 
     @_builtins.property
     @pulumi.getter(name="waitForIp")
-    def wait_for_ip(self) -> Optional[pulumi.Input['ContainerLegacyWaitForIpArgs']]:
+    def wait_for_ip(self) -> pulumi.Input[Optional['ContainerLegacyWaitForIpArgs']]:
         """
         Configuration for waiting for specific IP address types when the container starts.
         """
         return pulumi.get(self, "wait_for_ip")
 
     @wait_for_ip.setter
-    def wait_for_ip(self, value: Optional[pulumi.Input['ContainerLegacyWaitForIpArgs']]):
+    def wait_for_ip(self, value: pulumi.Input[Optional['ContainerLegacyWaitForIpArgs']]):
         pulumi.set(self, "wait_for_ip", value)
 
 
 @pulumi.input_type
 class _ContainerLegacyState:
     def __init__(__self__, *,
-                 clone: Optional[pulumi.Input['ContainerLegacyCloneArgs']] = None,
-                 console: Optional[pulumi.Input['ContainerLegacyConsoleArgs']] = None,
-                 cpu: Optional[pulumi.Input['ContainerLegacyCpuArgs']] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 device_passthroughs: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerLegacyDevicePassthroughArgs']]]] = None,
-                 disk: Optional[pulumi.Input['ContainerLegacyDiskArgs']] = None,
-                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 features: Optional[pulumi.Input['ContainerLegacyFeaturesArgs']] = None,
-                 hook_script_file_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 idmaps: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerLegacyIdmapArgs']]]] = None,
-                 initialization: Optional[pulumi.Input['ContainerLegacyInitializationArgs']] = None,
-                 ipv4: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ipv6: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 memory: Optional[pulumi.Input['ContainerLegacyMemoryArgs']] = None,
-                 mount_points: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerLegacyMountPointArgs']]]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerLegacyNetworkInterfaceArgs']]]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 operating_system: Optional[pulumi.Input['ContainerLegacyOperatingSystemArgs']] = None,
-                 pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 start_on_boot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 started: Optional[pulumi.Input[_builtins.bool]] = None,
-                 startup: Optional[pulumi.Input['ContainerLegacyStartupArgs']] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeout_clone: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_create: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_delete: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_start: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_update: Optional[pulumi.Input[_builtins.int]] = None,
-                 unprivileged: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 wait_for_ip: Optional[pulumi.Input['ContainerLegacyWaitForIpArgs']] = None):
+                 clone: pulumi.Input[Optional['ContainerLegacyCloneArgs']] = None,
+                 console: pulumi.Input[Optional['ContainerLegacyConsoleArgs']] = None,
+                 cpu: pulumi.Input[Optional['ContainerLegacyCpuArgs']] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 device_passthroughs: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyDevicePassthroughArgs']]]] = None,
+                 disk: pulumi.Input[Optional['ContainerLegacyDiskArgs']] = None,
+                 environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 features: pulumi.Input[Optional['ContainerLegacyFeaturesArgs']] = None,
+                 hook_script_file_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 idmaps: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyIdmapArgs']]]] = None,
+                 initialization: pulumi.Input[Optional['ContainerLegacyInitializationArgs']] = None,
+                 ipv4: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ipv6: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 memory: pulumi.Input[Optional['ContainerLegacyMemoryArgs']] = None,
+                 mount_points: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyMountPointArgs']]]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyNetworkInterfaceArgs']]]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 operating_system: pulumi.Input[Optional['ContainerLegacyOperatingSystemArgs']] = None,
+                 pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 start_on_boot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 started: pulumi.Input[Optional[_builtins.bool]] = None,
+                 startup: pulumi.Input[Optional['ContainerLegacyStartupArgs']] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeout_clone: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_create: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_delete: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_start: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_update: pulumi.Input[Optional[_builtins.int]] = None,
+                 unprivileged: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 wait_for_ip: pulumi.Input[Optional['ContainerLegacyWaitForIpArgs']] = None):
         """
         Input properties used for looking up and filtering ContainerLegacy resources.
 
@@ -588,7 +598,10 @@ class _ContainerLegacyState:
         :param pulumi.Input['ContainerLegacyCpuArgs'] cpu: The CPU configuration.
         :param pulumi.Input[_builtins.str] description: The description.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerLegacyDevicePassthroughArgs']]] device_passthroughs: Device to pass through to the container (multiple blocks supported).
-        :param pulumi.Input['ContainerLegacyDiskArgs'] disk: The disk configuration.
+        :param pulumi.Input['ContainerLegacyDiskArgs'] disk: The root filesystem (rootfs) storage configuration.
+               Selects the Proxmox storage pool the container's root volume is created
+               on. Backend-agnostic — works with directory, LVM, LVM-thin, ZFS, Ceph
+               RBD, NFS, and any other configured Proxmox storage.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] environment_variables: A map of runtime environment variables for the container init process.
         :param pulumi.Input['ContainerLegacyFeaturesArgs'] features: The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
         :param pulumi.Input[_builtins.str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
@@ -600,7 +613,9 @@ class _ContainerLegacyState:
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] ipv4: The map of IPv4 addresses per network devices. Returns the first address for each network device, if multiple addresses are assigned.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] ipv6: The map of IPv6 addresses per network device. Returns the first address for each network device, if multiple addresses are assigned.
         :param pulumi.Input['ContainerLegacyMemoryArgs'] memory: The memory configuration.
-        :param pulumi.Input[Sequence[pulumi.Input['ContainerLegacyMountPointArgs']]] mount_points: A mount point
+        :param pulumi.Input[Sequence[pulumi.Input['ContainerLegacyMountPointArgs']]] mount_points: An additional volume mount or host bind mount
+               (multiple blocks supported). Use this for data volumes, shared
+               directories, or attaching pre-existing PVE volumes.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerLegacyNetworkInterfaceArgs']]] network_interfaces: A network interface (multiple blocks
                supported).
         :param pulumi.Input[_builtins.str] node_name: The name of the node to assign the container to.
@@ -698,115 +713,118 @@ class _ContainerLegacyState:
 
     @_builtins.property
     @pulumi.getter
-    def clone(self) -> Optional[pulumi.Input['ContainerLegacyCloneArgs']]:
+    def clone(self) -> pulumi.Input[Optional['ContainerLegacyCloneArgs']]:
         """
         The cloning configuration.
         """
         return pulumi.get(self, "clone")
 
     @clone.setter
-    def clone(self, value: Optional[pulumi.Input['ContainerLegacyCloneArgs']]):
+    def clone(self, value: pulumi.Input[Optional['ContainerLegacyCloneArgs']]):
         pulumi.set(self, "clone", value)
 
     @_builtins.property
     @pulumi.getter
-    def console(self) -> Optional[pulumi.Input['ContainerLegacyConsoleArgs']]:
+    def console(self) -> pulumi.Input[Optional['ContainerLegacyConsoleArgs']]:
         """
         The console configuration.
         """
         return pulumi.get(self, "console")
 
     @console.setter
-    def console(self, value: Optional[pulumi.Input['ContainerLegacyConsoleArgs']]):
+    def console(self, value: pulumi.Input[Optional['ContainerLegacyConsoleArgs']]):
         pulumi.set(self, "console", value)
 
     @_builtins.property
     @pulumi.getter
-    def cpu(self) -> Optional[pulumi.Input['ContainerLegacyCpuArgs']]:
+    def cpu(self) -> pulumi.Input[Optional['ContainerLegacyCpuArgs']]:
         """
         The CPU configuration.
         """
         return pulumi.get(self, "cpu")
 
     @cpu.setter
-    def cpu(self, value: Optional[pulumi.Input['ContainerLegacyCpuArgs']]):
+    def cpu(self, value: pulumi.Input[Optional['ContainerLegacyCpuArgs']]):
         pulumi.set(self, "cpu", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="devicePassthroughs")
-    def device_passthroughs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerLegacyDevicePassthroughArgs']]]]:
+    def device_passthroughs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyDevicePassthroughArgs']]]]:
         """
         Device to pass through to the container (multiple blocks supported).
         """
         return pulumi.get(self, "device_passthroughs")
 
     @device_passthroughs.setter
-    def device_passthroughs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerLegacyDevicePassthroughArgs']]]]):
+    def device_passthroughs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyDevicePassthroughArgs']]]]):
         pulumi.set(self, "device_passthroughs", value)
 
     @_builtins.property
     @pulumi.getter
-    def disk(self) -> Optional[pulumi.Input['ContainerLegacyDiskArgs']]:
+    def disk(self) -> pulumi.Input[Optional['ContainerLegacyDiskArgs']]:
         """
-        The disk configuration.
+        The root filesystem (rootfs) storage configuration.
+        Selects the Proxmox storage pool the container's root volume is created
+        on. Backend-agnostic — works with directory, LVM, LVM-thin, ZFS, Ceph
+        RBD, NFS, and any other configured Proxmox storage.
         """
         return pulumi.get(self, "disk")
 
     @disk.setter
-    def disk(self, value: Optional[pulumi.Input['ContainerLegacyDiskArgs']]):
+    def disk(self, value: pulumi.Input[Optional['ContainerLegacyDiskArgs']]):
         pulumi.set(self, "disk", value)
 
     @_builtins.property
     @pulumi.getter(name="environmentVariables")
-    def environment_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def environment_variables(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of runtime environment variables for the container init process.
         """
         return pulumi.get(self, "environment_variables")
 
     @environment_variables.setter
-    def environment_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def environment_variables(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "environment_variables", value)
 
     @_builtins.property
     @pulumi.getter
-    def features(self) -> Optional[pulumi.Input['ContainerLegacyFeaturesArgs']]:
+    def features(self) -> pulumi.Input[Optional['ContainerLegacyFeaturesArgs']]:
         """
         The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
         """
         return pulumi.get(self, "features")
 
     @features.setter
-    def features(self, value: Optional[pulumi.Input['ContainerLegacyFeaturesArgs']]):
+    def features(self, value: pulumi.Input[Optional['ContainerLegacyFeaturesArgs']]):
         pulumi.set(self, "features", value)
 
     @_builtins.property
     @pulumi.getter(name="hookScriptFileId")
-    def hook_script_file_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hook_script_file_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
         """
         return pulumi.get(self, "hook_script_file_id")
 
     @hook_script_file_id.setter
-    def hook_script_file_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hook_script_file_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hook_script_file_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def idmaps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerLegacyIdmapArgs']]]]:
+    def idmaps(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyIdmapArgs']]]]:
         """
         UID/GID mapping for unprivileged containers (multiple
         blocks supported). These are written as `lxc.idmap` entries in the container
@@ -816,72 +834,74 @@ class _ContainerLegacyState:
         return pulumi.get(self, "idmaps")
 
     @idmaps.setter
-    def idmaps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerLegacyIdmapArgs']]]]):
+    def idmaps(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyIdmapArgs']]]]):
         pulumi.set(self, "idmaps", value)
 
     @_builtins.property
     @pulumi.getter
-    def initialization(self) -> Optional[pulumi.Input['ContainerLegacyInitializationArgs']]:
+    def initialization(self) -> pulumi.Input[Optional['ContainerLegacyInitializationArgs']]:
         """
         The initialization configuration.
         """
         return pulumi.get(self, "initialization")
 
     @initialization.setter
-    def initialization(self, value: Optional[pulumi.Input['ContainerLegacyInitializationArgs']]):
+    def initialization(self, value: pulumi.Input[Optional['ContainerLegacyInitializationArgs']]):
         pulumi.set(self, "initialization", value)
 
     @_builtins.property
     @pulumi.getter
-    def ipv4(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def ipv4(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The map of IPv4 addresses per network devices. Returns the first address for each network device, if multiple addresses are assigned.
         """
         return pulumi.get(self, "ipv4")
 
     @ipv4.setter
-    def ipv4(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def ipv4(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ipv4", value)
 
     @_builtins.property
     @pulumi.getter
-    def ipv6(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def ipv6(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         The map of IPv6 addresses per network device. Returns the first address for each network device, if multiple addresses are assigned.
         """
         return pulumi.get(self, "ipv6")
 
     @ipv6.setter
-    def ipv6(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def ipv6(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ipv6", value)
 
     @_builtins.property
     @pulumi.getter
-    def memory(self) -> Optional[pulumi.Input['ContainerLegacyMemoryArgs']]:
+    def memory(self) -> pulumi.Input[Optional['ContainerLegacyMemoryArgs']]:
         """
         The memory configuration.
         """
         return pulumi.get(self, "memory")
 
     @memory.setter
-    def memory(self, value: Optional[pulumi.Input['ContainerLegacyMemoryArgs']]):
+    def memory(self, value: pulumi.Input[Optional['ContainerLegacyMemoryArgs']]):
         pulumi.set(self, "memory", value)
 
     @_builtins.property
     @pulumi.getter(name="mountPoints")
-    def mount_points(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerLegacyMountPointArgs']]]]:
+    def mount_points(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyMountPointArgs']]]]:
         """
-        A mount point
+        An additional volume mount or host bind mount
+        (multiple blocks supported). Use this for data volumes, shared
+        directories, or attaching pre-existing PVE volumes.
         """
         return pulumi.get(self, "mount_points")
 
     @mount_points.setter
-    def mount_points(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerLegacyMountPointArgs']]]]):
+    def mount_points(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyMountPointArgs']]]]):
         pulumi.set(self, "mount_points", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerLegacyNetworkInterfaceArgs']]]]:
+    def network_interfaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyNetworkInterfaceArgs']]]]:
         """
         A network interface (multiple blocks
         supported).
@@ -889,60 +909,60 @@ class _ContainerLegacyState:
         return pulumi.get(self, "network_interfaces")
 
     @network_interfaces.setter
-    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerLegacyNetworkInterfaceArgs']]]]):
+    def network_interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyNetworkInterfaceArgs']]]]):
         pulumi.set(self, "network_interfaces", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeName")
-    def node_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the node to assign the container to.
         """
         return pulumi.get(self, "node_name")
 
     @node_name.setter
-    def node_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_name", value)
 
     @_builtins.property
     @pulumi.getter(name="operatingSystem")
-    def operating_system(self) -> Optional[pulumi.Input['ContainerLegacyOperatingSystemArgs']]:
+    def operating_system(self) -> pulumi.Input[Optional['ContainerLegacyOperatingSystemArgs']]:
         """
         The Operating System configuration.
         """
         return pulumi.get(self, "operating_system")
 
     @operating_system.setter
-    def operating_system(self, value: Optional[pulumi.Input['ContainerLegacyOperatingSystemArgs']]):
+    def operating_system(self, value: pulumi.Input[Optional['ContainerLegacyOperatingSystemArgs']]):
         pulumi.set(self, "operating_system", value)
 
     @_builtins.property
     @pulumi.getter(name="poolId")
-    def pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier for a pool to assign the container to.
         """
         return pulumi.get(self, "pool_id")
 
     @pool_id.setter
-    def pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pool_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def protection(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def protection(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
         """
         return pulumi.get(self, "protection")
 
     @protection.setter
-    def protection(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def protection(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "protection", value)
 
     @_builtins.property
     @pulumi.getter(name="startOnBoot")
-    def start_on_boot(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def start_on_boot(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Automatically start container when the host
         system boots (defaults to `true`).
@@ -950,36 +970,36 @@ class _ContainerLegacyState:
         return pulumi.get(self, "start_on_boot")
 
     @start_on_boot.setter
-    def start_on_boot(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def start_on_boot(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "start_on_boot", value)
 
     @_builtins.property
     @pulumi.getter
-    def started(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def started(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to start the container (defaults to `true`).
         """
         return pulumi.get(self, "started")
 
     @started.setter
-    def started(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def started(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "started", value)
 
     @_builtins.property
     @pulumi.getter
-    def startup(self) -> Optional[pulumi.Input['ContainerLegacyStartupArgs']]:
+    def startup(self) -> pulumi.Input[Optional['ContainerLegacyStartupArgs']]:
         """
         Defines startup and shutdown behavior of the container.
         """
         return pulumi.get(self, "startup")
 
     @startup.setter
-    def startup(self, value: Optional[pulumi.Input['ContainerLegacyStartupArgs']]):
+    def startup(self, value: pulumi.Input[Optional['ContainerLegacyStartupArgs']]):
         pulumi.set(self, "startup", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of tags the container tags. This is only meta
         information (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.
@@ -990,116 +1010,116 @@ class _ContainerLegacyState:
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def template(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def template(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to create a template (defaults to `false`).
         """
         return pulumi.get(self, "template")
 
     @template.setter
-    def template(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def template(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "template", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutClone")
-    def timeout_clone(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_clone(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timeout for cloning a container in seconds (defaults to 1800).
         """
         return pulumi.get(self, "timeout_clone")
 
     @timeout_clone.setter
-    def timeout_clone(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_clone(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_clone", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutCreate")
-    def timeout_create(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_create(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timeout for creating a container in seconds (defaults to 1800).
         """
         return pulumi.get(self, "timeout_create")
 
     @timeout_create.setter
-    def timeout_create(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_create(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_create", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutDelete")
-    def timeout_delete(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_delete(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timeout for deleting a container in seconds (defaults to 60).
         """
         return pulumi.get(self, "timeout_delete")
 
     @timeout_delete.setter
-    def timeout_delete(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_delete(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutStart")
     @_utilities.deprecated("""This field is deprecated and will be removed in a future release. An overall operation timeout (`timeout_create` / `timeout_clone`) is used instead.""")
-    def timeout_start(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_start(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Start container timeout
         """
         return pulumi.get(self, "timeout_start")
 
     @timeout_start.setter
-    def timeout_start(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_start(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_start", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutUpdate")
-    def timeout_update(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_update(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timeout for updating a container in seconds (defaults to 1800).
         """
         return pulumi.get(self, "timeout_update")
 
     @timeout_update.setter
-    def timeout_update(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_update(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_update", value)
 
     @_builtins.property
     @pulumi.getter
-    def unprivileged(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def unprivileged(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the container runs as unprivileged on the host (defaults to `false`).
         """
         return pulumi.get(self, "unprivileged")
 
     @unprivileged.setter
-    def unprivileged(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def unprivileged(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "unprivileged", value)
 
     @_builtins.property
     @pulumi.getter(name="vmId")
-    def vm_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vm_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The container identifier
         """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
-    def vm_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vm_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vm_id", value)
 
     @_builtins.property
     @pulumi.getter(name="waitForIp")
-    def wait_for_ip(self) -> Optional[pulumi.Input['ContainerLegacyWaitForIpArgs']]:
+    def wait_for_ip(self) -> pulumi.Input[Optional['ContainerLegacyWaitForIpArgs']]:
         """
         Configuration for waiting for specific IP address types when the container starts.
         """
         return pulumi.get(self, "wait_for_ip")
 
     @wait_for_ip.setter
-    def wait_for_ip(self, value: Optional[pulumi.Input['ContainerLegacyWaitForIpArgs']]):
+    def wait_for_ip(self, value: pulumi.Input[Optional['ContainerLegacyWaitForIpArgs']]):
         pulumi.set(self, "wait_for_ip", value)
 
 
@@ -1109,42 +1129,53 @@ class ContainerLegacy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 clone: Optional[pulumi.Input[Union['ContainerLegacyCloneArgs', 'ContainerLegacyCloneArgsDict']]] = None,
-                 console: Optional[pulumi.Input[Union['ContainerLegacyConsoleArgs', 'ContainerLegacyConsoleArgsDict']]] = None,
-                 cpu: Optional[pulumi.Input[Union['ContainerLegacyCpuArgs', 'ContainerLegacyCpuArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 device_passthroughs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerLegacyDevicePassthroughArgs', 'ContainerLegacyDevicePassthroughArgsDict']]]]] = None,
-                 disk: Optional[pulumi.Input[Union['ContainerLegacyDiskArgs', 'ContainerLegacyDiskArgsDict']]] = None,
-                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 features: Optional[pulumi.Input[Union['ContainerLegacyFeaturesArgs', 'ContainerLegacyFeaturesArgsDict']]] = None,
-                 hook_script_file_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 idmaps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerLegacyIdmapArgs', 'ContainerLegacyIdmapArgsDict']]]]] = None,
-                 initialization: Optional[pulumi.Input[Union['ContainerLegacyInitializationArgs', 'ContainerLegacyInitializationArgsDict']]] = None,
-                 memory: Optional[pulumi.Input[Union['ContainerLegacyMemoryArgs', 'ContainerLegacyMemoryArgsDict']]] = None,
-                 mount_points: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerLegacyMountPointArgs', 'ContainerLegacyMountPointArgsDict']]]]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerLegacyNetworkInterfaceArgs', 'ContainerLegacyNetworkInterfaceArgsDict']]]]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 operating_system: Optional[pulumi.Input[Union['ContainerLegacyOperatingSystemArgs', 'ContainerLegacyOperatingSystemArgsDict']]] = None,
-                 pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 start_on_boot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 started: Optional[pulumi.Input[_builtins.bool]] = None,
-                 startup: Optional[pulumi.Input[Union['ContainerLegacyStartupArgs', 'ContainerLegacyStartupArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeout_clone: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_create: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_delete: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_start: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_update: Optional[pulumi.Input[_builtins.int]] = None,
-                 unprivileged: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 wait_for_ip: Optional[pulumi.Input[Union['ContainerLegacyWaitForIpArgs', 'ContainerLegacyWaitForIpArgsDict']]] = None,
+                 clone: pulumi.Input[Optional[Union['ContainerLegacyCloneArgs', 'ContainerLegacyCloneArgsDict']]] = None,
+                 console: pulumi.Input[Optional[Union['ContainerLegacyConsoleArgs', 'ContainerLegacyConsoleArgsDict']]] = None,
+                 cpu: pulumi.Input[Optional[Union['ContainerLegacyCpuArgs', 'ContainerLegacyCpuArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 device_passthroughs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerLegacyDevicePassthroughArgs', 'ContainerLegacyDevicePassthroughArgsDict']]]]] = None,
+                 disk: pulumi.Input[Optional[Union['ContainerLegacyDiskArgs', 'ContainerLegacyDiskArgsDict']]] = None,
+                 environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 features: pulumi.Input[Optional[Union['ContainerLegacyFeaturesArgs', 'ContainerLegacyFeaturesArgsDict']]] = None,
+                 hook_script_file_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 idmaps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerLegacyIdmapArgs', 'ContainerLegacyIdmapArgsDict']]]]] = None,
+                 initialization: pulumi.Input[Optional[Union['ContainerLegacyInitializationArgs', 'ContainerLegacyInitializationArgsDict']]] = None,
+                 memory: pulumi.Input[Optional[Union['ContainerLegacyMemoryArgs', 'ContainerLegacyMemoryArgsDict']]] = None,
+                 mount_points: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerLegacyMountPointArgs', 'ContainerLegacyMountPointArgsDict']]]]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerLegacyNetworkInterfaceArgs', 'ContainerLegacyNetworkInterfaceArgsDict']]]]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 operating_system: pulumi.Input[Optional[Union['ContainerLegacyOperatingSystemArgs', 'ContainerLegacyOperatingSystemArgsDict']]] = None,
+                 pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 start_on_boot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 started: pulumi.Input[Optional[_builtins.bool]] = None,
+                 startup: pulumi.Input[Optional[Union['ContainerLegacyStartupArgs', 'ContainerLegacyStartupArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeout_clone: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_create: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_delete: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_start: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_update: pulumi.Input[Optional[_builtins.int]] = None,
+                 unprivileged: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 wait_for_ip: pulumi.Input[Optional[Union['ContainerLegacyWaitForIpArgs', 'ContainerLegacyWaitForIpArgsDict']]] = None,
                  __props__=None):
         """
-        Manages a container.
+        Manages an LXC container on a Proxmox VE node.
+
+        A container's root filesystem (the `disk` block) and any additional volumes
+        (`mount_point` blocks) can be placed on any Proxmox VE storage backend —
+        directory, LVM, LVM-thin, ZFS, Ceph RBD, NFS, CIFS, or any other storage
+        configured on the cluster. Bind mounts of arbitrary host directories are
+        also supported. See the Storage section below for details.
 
         ## Example Usage
+
+        ### Basic container
+
+        A minimal Ubuntu container with a 4&nbsp;GB rootfs on `local-lvm`,
+        DHCP networking, and an SSH key:
 
         ```python
         import pulumi
@@ -1196,11 +1227,35 @@ class ContainerLegacy(pulumi.CustomResource):
                 "template_file_id": ubuntu2504_lxc_img.id,
                 "type": "ubuntu",
             },
+            startup={
+                "order": 3,
+                "up_delay": 60,
+                "down_delay": 60,
+            })
+        pulumi.export("ubuntuContainerPassword", ubuntu_container_password.result)
+        pulumi.export("ubuntuContainerPrivateKey", ubuntu_container_key.private_key_pem)
+        pulumi.export("ubuntuContainerPublicKey", ubuntu_container_key.public_key_openssh)
+        ```
+
+        ### Custom storage configuration
+
+        This example places the rootfs on a custom storage pool, attaches an
+        additional volume, mounts an existing volume by ID, and bind-mounts a host
+        directory. Any Proxmox storage backend (directory, LVM-thin, ZFS, Ceph RBD,
+        NFS, CIFS) can be referenced by its storage ID:
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        custom_storage = proxmoxve.ContainerLegacy("custom_storage",
+            node_name="first-node",
+            vm_id=1235,
+            disk={
+                "datastore_id": "tank-zfs",
+                "size": 32,
+            },
             mount_points=[
-                {
-                    "volume": "/mnt/bindmounts/shared",
-                    "path": "/mnt/shared",
-                },
                 {
                     "volume": "local-lvm",
                     "size": "10G",
@@ -1211,16 +1266,36 @@ class ContainerLegacy(pulumi.CustomResource):
                     "size": "10G",
                     "path": "/mnt/data",
                 },
-            ],
-            startup={
-                "order": 3,
-                "up_delay": 60,
-                "down_delay": 60,
-            })
-        pulumi.export("ubuntuContainerPassword", ubuntu_container_password.result)
-        pulumi.export("ubuntuContainerPrivateKey", ubuntu_container_key.private_key_pem)
-        pulumi.export("ubuntuContainerPublicKey", ubuntu_container_key.public_key_openssh)
+                {
+                    "volume": "/mnt/bindmounts/shared",
+                    "path": "/mnt/shared",
+                },
+            ])
         ```
+
+        ## Storage
+
+        Containers attach storage through two block types:
+
+        - **`disk`** — the root filesystem (rootfs). Exactly one rootfs per
+          container; the `datastore_id` argument selects the Proxmox storage pool
+          it lives on.
+        - **`mount_point`** — zero or more additional volumes or bind mounts,
+          each mounted at a separate `path` inside the container.
+
+        Both block types are backend-agnostic: `datastore_id` (on `disk`) and
+        `volume` (on `mount_point`) accept any Proxmox storage ID, regardless of
+        backend type. Run `pvesm status` on the host or use the
+        `get_datastores_legacy`
+        data source to list configured storages.
+
+        The `mount_point.volume` attribute accepts three forms:
+
+        | Form                       | Meaning                                                  | Example                            |
+        | -------------------------- | -------------------------------------------------------- | ---------------------------------- |
+        | Storage ID                 | Allocate a new volume on that storage (requires `size`)  | `local-lvm`, `tank-zfs`            |
+        | Storage ID + volume name   | Mount an existing volume by its full PVE volume ID       | `local-lvm:subvol-108-disk-101`    |
+        | Absolute host path         | Bind-mount a host directory (requires `root@pam` auth)   | `/mnt/bindmounts/shared`           |
 
         ## Import
 
@@ -1238,7 +1313,10 @@ class ContainerLegacy(pulumi.CustomResource):
         :param pulumi.Input[Union['ContainerLegacyCpuArgs', 'ContainerLegacyCpuArgsDict']] cpu: The CPU configuration.
         :param pulumi.Input[_builtins.str] description: The description.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerLegacyDevicePassthroughArgs', 'ContainerLegacyDevicePassthroughArgsDict']]]] device_passthroughs: Device to pass through to the container (multiple blocks supported).
-        :param pulumi.Input[Union['ContainerLegacyDiskArgs', 'ContainerLegacyDiskArgsDict']] disk: The disk configuration.
+        :param pulumi.Input[Union['ContainerLegacyDiskArgs', 'ContainerLegacyDiskArgsDict']] disk: The root filesystem (rootfs) storage configuration.
+               Selects the Proxmox storage pool the container's root volume is created
+               on. Backend-agnostic — works with directory, LVM, LVM-thin, ZFS, Ceph
+               RBD, NFS, and any other configured Proxmox storage.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] environment_variables: A map of runtime environment variables for the container init process.
         :param pulumi.Input[Union['ContainerLegacyFeaturesArgs', 'ContainerLegacyFeaturesArgsDict']] features: The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
         :param pulumi.Input[_builtins.str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
@@ -1248,7 +1326,9 @@ class ContainerLegacy(pulumi.CustomResource):
                `lxc[n]` parameters.
         :param pulumi.Input[Union['ContainerLegacyInitializationArgs', 'ContainerLegacyInitializationArgsDict']] initialization: The initialization configuration.
         :param pulumi.Input[Union['ContainerLegacyMemoryArgs', 'ContainerLegacyMemoryArgsDict']] memory: The memory configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerLegacyMountPointArgs', 'ContainerLegacyMountPointArgsDict']]]] mount_points: A mount point
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerLegacyMountPointArgs', 'ContainerLegacyMountPointArgsDict']]]] mount_points: An additional volume mount or host bind mount
+               (multiple blocks supported). Use this for data volumes, shared
+               directories, or attaching pre-existing PVE volumes.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerLegacyNetworkInterfaceArgs', 'ContainerLegacyNetworkInterfaceArgsDict']]]] network_interfaces: A network interface (multiple blocks
                supported).
         :param pulumi.Input[_builtins.str] node_name: The name of the node to assign the container to.
@@ -1281,9 +1361,20 @@ class ContainerLegacy(pulumi.CustomResource):
                  args: ContainerLegacyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a container.
+        Manages an LXC container on a Proxmox VE node.
+
+        A container's root filesystem (the `disk` block) and any additional volumes
+        (`mount_point` blocks) can be placed on any Proxmox VE storage backend —
+        directory, LVM, LVM-thin, ZFS, Ceph RBD, NFS, CIFS, or any other storage
+        configured on the cluster. Bind mounts of arbitrary host directories are
+        also supported. See the Storage section below for details.
 
         ## Example Usage
+
+        ### Basic container
+
+        A minimal Ubuntu container with a 4&nbsp;GB rootfs on `local-lvm`,
+        DHCP networking, and an SSH key:
 
         ```python
         import pulumi
@@ -1335,11 +1426,35 @@ class ContainerLegacy(pulumi.CustomResource):
                 "template_file_id": ubuntu2504_lxc_img.id,
                 "type": "ubuntu",
             },
+            startup={
+                "order": 3,
+                "up_delay": 60,
+                "down_delay": 60,
+            })
+        pulumi.export("ubuntuContainerPassword", ubuntu_container_password.result)
+        pulumi.export("ubuntuContainerPrivateKey", ubuntu_container_key.private_key_pem)
+        pulumi.export("ubuntuContainerPublicKey", ubuntu_container_key.public_key_openssh)
+        ```
+
+        ### Custom storage configuration
+
+        This example places the rootfs on a custom storage pool, attaches an
+        additional volume, mounts an existing volume by ID, and bind-mounts a host
+        directory. Any Proxmox storage backend (directory, LVM-thin, ZFS, Ceph RBD,
+        NFS, CIFS) can be referenced by its storage ID:
+
+        ```python
+        import pulumi
+        import pulumi_proxmoxve as proxmoxve
+
+        custom_storage = proxmoxve.ContainerLegacy("custom_storage",
+            node_name="first-node",
+            vm_id=1235,
+            disk={
+                "datastore_id": "tank-zfs",
+                "size": 32,
+            },
             mount_points=[
-                {
-                    "volume": "/mnt/bindmounts/shared",
-                    "path": "/mnt/shared",
-                },
                 {
                     "volume": "local-lvm",
                     "size": "10G",
@@ -1350,16 +1465,36 @@ class ContainerLegacy(pulumi.CustomResource):
                     "size": "10G",
                     "path": "/mnt/data",
                 },
-            ],
-            startup={
-                "order": 3,
-                "up_delay": 60,
-                "down_delay": 60,
-            })
-        pulumi.export("ubuntuContainerPassword", ubuntu_container_password.result)
-        pulumi.export("ubuntuContainerPrivateKey", ubuntu_container_key.private_key_pem)
-        pulumi.export("ubuntuContainerPublicKey", ubuntu_container_key.public_key_openssh)
+                {
+                    "volume": "/mnt/bindmounts/shared",
+                    "path": "/mnt/shared",
+                },
+            ])
         ```
+
+        ## Storage
+
+        Containers attach storage through two block types:
+
+        - **`disk`** — the root filesystem (rootfs). Exactly one rootfs per
+          container; the `datastore_id` argument selects the Proxmox storage pool
+          it lives on.
+        - **`mount_point`** — zero or more additional volumes or bind mounts,
+          each mounted at a separate `path` inside the container.
+
+        Both block types are backend-agnostic: `datastore_id` (on `disk`) and
+        `volume` (on `mount_point`) accept any Proxmox storage ID, regardless of
+        backend type. Run `pvesm status` on the host or use the
+        `get_datastores_legacy`
+        data source to list configured storages.
+
+        The `mount_point.volume` attribute accepts three forms:
+
+        | Form                       | Meaning                                                  | Example                            |
+        | -------------------------- | -------------------------------------------------------- | ---------------------------------- |
+        | Storage ID                 | Allocate a new volume on that storage (requires `size`)  | `local-lvm`, `tank-zfs`            |
+        | Storage ID + volume name   | Mount an existing volume by its full PVE volume ID       | `local-lvm:subvol-108-disk-101`    |
+        | Absolute host path         | Bind-mount a host directory (requires `root@pam` auth)   | `/mnt/bindmounts/shared`           |
 
         ## Import
 
@@ -1385,37 +1520,37 @@ class ContainerLegacy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 clone: Optional[pulumi.Input[Union['ContainerLegacyCloneArgs', 'ContainerLegacyCloneArgsDict']]] = None,
-                 console: Optional[pulumi.Input[Union['ContainerLegacyConsoleArgs', 'ContainerLegacyConsoleArgsDict']]] = None,
-                 cpu: Optional[pulumi.Input[Union['ContainerLegacyCpuArgs', 'ContainerLegacyCpuArgsDict']]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 device_passthroughs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerLegacyDevicePassthroughArgs', 'ContainerLegacyDevicePassthroughArgsDict']]]]] = None,
-                 disk: Optional[pulumi.Input[Union['ContainerLegacyDiskArgs', 'ContainerLegacyDiskArgsDict']]] = None,
-                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 features: Optional[pulumi.Input[Union['ContainerLegacyFeaturesArgs', 'ContainerLegacyFeaturesArgsDict']]] = None,
-                 hook_script_file_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 idmaps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerLegacyIdmapArgs', 'ContainerLegacyIdmapArgsDict']]]]] = None,
-                 initialization: Optional[pulumi.Input[Union['ContainerLegacyInitializationArgs', 'ContainerLegacyInitializationArgsDict']]] = None,
-                 memory: Optional[pulumi.Input[Union['ContainerLegacyMemoryArgs', 'ContainerLegacyMemoryArgsDict']]] = None,
-                 mount_points: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerLegacyMountPointArgs', 'ContainerLegacyMountPointArgsDict']]]]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerLegacyNetworkInterfaceArgs', 'ContainerLegacyNetworkInterfaceArgsDict']]]]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 operating_system: Optional[pulumi.Input[Union['ContainerLegacyOperatingSystemArgs', 'ContainerLegacyOperatingSystemArgsDict']]] = None,
-                 pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 protection: Optional[pulumi.Input[_builtins.bool]] = None,
-                 start_on_boot: Optional[pulumi.Input[_builtins.bool]] = None,
-                 started: Optional[pulumi.Input[_builtins.bool]] = None,
-                 startup: Optional[pulumi.Input[Union['ContainerLegacyStartupArgs', 'ContainerLegacyStartupArgsDict']]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeout_clone: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_create: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_delete: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_start: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeout_update: Optional[pulumi.Input[_builtins.int]] = None,
-                 unprivileged: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 wait_for_ip: Optional[pulumi.Input[Union['ContainerLegacyWaitForIpArgs', 'ContainerLegacyWaitForIpArgsDict']]] = None,
+                 clone: pulumi.Input[Optional[Union['ContainerLegacyCloneArgs', 'ContainerLegacyCloneArgsDict']]] = None,
+                 console: pulumi.Input[Optional[Union['ContainerLegacyConsoleArgs', 'ContainerLegacyConsoleArgsDict']]] = None,
+                 cpu: pulumi.Input[Optional[Union['ContainerLegacyCpuArgs', 'ContainerLegacyCpuArgsDict']]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 device_passthroughs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerLegacyDevicePassthroughArgs', 'ContainerLegacyDevicePassthroughArgsDict']]]]] = None,
+                 disk: pulumi.Input[Optional[Union['ContainerLegacyDiskArgs', 'ContainerLegacyDiskArgsDict']]] = None,
+                 environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 features: pulumi.Input[Optional[Union['ContainerLegacyFeaturesArgs', 'ContainerLegacyFeaturesArgsDict']]] = None,
+                 hook_script_file_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 idmaps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerLegacyIdmapArgs', 'ContainerLegacyIdmapArgsDict']]]]] = None,
+                 initialization: pulumi.Input[Optional[Union['ContainerLegacyInitializationArgs', 'ContainerLegacyInitializationArgsDict']]] = None,
+                 memory: pulumi.Input[Optional[Union['ContainerLegacyMemoryArgs', 'ContainerLegacyMemoryArgsDict']]] = None,
+                 mount_points: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerLegacyMountPointArgs', 'ContainerLegacyMountPointArgsDict']]]]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerLegacyNetworkInterfaceArgs', 'ContainerLegacyNetworkInterfaceArgsDict']]]]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 operating_system: pulumi.Input[Optional[Union['ContainerLegacyOperatingSystemArgs', 'ContainerLegacyOperatingSystemArgsDict']]] = None,
+                 pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 protection: pulumi.Input[Optional[_builtins.bool]] = None,
+                 start_on_boot: pulumi.Input[Optional[_builtins.bool]] = None,
+                 started: pulumi.Input[Optional[_builtins.bool]] = None,
+                 startup: pulumi.Input[Optional[Union['ContainerLegacyStartupArgs', 'ContainerLegacyStartupArgsDict']]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeout_clone: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_create: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_delete: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_start: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeout_update: pulumi.Input[Optional[_builtins.int]] = None,
+                 unprivileged: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 wait_for_ip: pulumi.Input[Optional[Union['ContainerLegacyWaitForIpArgs', 'ContainerLegacyWaitForIpArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1470,39 +1605,39 @@ class ContainerLegacy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            clone: Optional[pulumi.Input[Union['ContainerLegacyCloneArgs', 'ContainerLegacyCloneArgsDict']]] = None,
-            console: Optional[pulumi.Input[Union['ContainerLegacyConsoleArgs', 'ContainerLegacyConsoleArgsDict']]] = None,
-            cpu: Optional[pulumi.Input[Union['ContainerLegacyCpuArgs', 'ContainerLegacyCpuArgsDict']]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            device_passthroughs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerLegacyDevicePassthroughArgs', 'ContainerLegacyDevicePassthroughArgsDict']]]]] = None,
-            disk: Optional[pulumi.Input[Union['ContainerLegacyDiskArgs', 'ContainerLegacyDiskArgsDict']]] = None,
-            environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            features: Optional[pulumi.Input[Union['ContainerLegacyFeaturesArgs', 'ContainerLegacyFeaturesArgsDict']]] = None,
-            hook_script_file_id: Optional[pulumi.Input[_builtins.str]] = None,
-            idmaps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerLegacyIdmapArgs', 'ContainerLegacyIdmapArgsDict']]]]] = None,
-            initialization: Optional[pulumi.Input[Union['ContainerLegacyInitializationArgs', 'ContainerLegacyInitializationArgsDict']]] = None,
-            ipv4: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            ipv6: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            memory: Optional[pulumi.Input[Union['ContainerLegacyMemoryArgs', 'ContainerLegacyMemoryArgsDict']]] = None,
-            mount_points: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerLegacyMountPointArgs', 'ContainerLegacyMountPointArgsDict']]]]] = None,
-            network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ContainerLegacyNetworkInterfaceArgs', 'ContainerLegacyNetworkInterfaceArgsDict']]]]] = None,
-            node_name: Optional[pulumi.Input[_builtins.str]] = None,
-            operating_system: Optional[pulumi.Input[Union['ContainerLegacyOperatingSystemArgs', 'ContainerLegacyOperatingSystemArgsDict']]] = None,
-            pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-            protection: Optional[pulumi.Input[_builtins.bool]] = None,
-            start_on_boot: Optional[pulumi.Input[_builtins.bool]] = None,
-            started: Optional[pulumi.Input[_builtins.bool]] = None,
-            startup: Optional[pulumi.Input[Union['ContainerLegacyStartupArgs', 'ContainerLegacyStartupArgsDict']]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            template: Optional[pulumi.Input[_builtins.bool]] = None,
-            timeout_clone: Optional[pulumi.Input[_builtins.int]] = None,
-            timeout_create: Optional[pulumi.Input[_builtins.int]] = None,
-            timeout_delete: Optional[pulumi.Input[_builtins.int]] = None,
-            timeout_start: Optional[pulumi.Input[_builtins.int]] = None,
-            timeout_update: Optional[pulumi.Input[_builtins.int]] = None,
-            unprivileged: Optional[pulumi.Input[_builtins.bool]] = None,
-            vm_id: Optional[pulumi.Input[_builtins.int]] = None,
-            wait_for_ip: Optional[pulumi.Input[Union['ContainerLegacyWaitForIpArgs', 'ContainerLegacyWaitForIpArgsDict']]] = None) -> 'ContainerLegacy':
+            clone: pulumi.Input[Optional[Union['ContainerLegacyCloneArgs', 'ContainerLegacyCloneArgsDict']]] = None,
+            console: pulumi.Input[Optional[Union['ContainerLegacyConsoleArgs', 'ContainerLegacyConsoleArgsDict']]] = None,
+            cpu: pulumi.Input[Optional[Union['ContainerLegacyCpuArgs', 'ContainerLegacyCpuArgsDict']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            device_passthroughs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerLegacyDevicePassthroughArgs', 'ContainerLegacyDevicePassthroughArgsDict']]]]] = None,
+            disk: pulumi.Input[Optional[Union['ContainerLegacyDiskArgs', 'ContainerLegacyDiskArgsDict']]] = None,
+            environment_variables: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            features: pulumi.Input[Optional[Union['ContainerLegacyFeaturesArgs', 'ContainerLegacyFeaturesArgsDict']]] = None,
+            hook_script_file_id: pulumi.Input[Optional[_builtins.str]] = None,
+            idmaps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerLegacyIdmapArgs', 'ContainerLegacyIdmapArgsDict']]]]] = None,
+            initialization: pulumi.Input[Optional[Union['ContainerLegacyInitializationArgs', 'ContainerLegacyInitializationArgsDict']]] = None,
+            ipv4: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            ipv6: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            memory: pulumi.Input[Optional[Union['ContainerLegacyMemoryArgs', 'ContainerLegacyMemoryArgsDict']]] = None,
+            mount_points: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerLegacyMountPointArgs', 'ContainerLegacyMountPointArgsDict']]]]] = None,
+            network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ContainerLegacyNetworkInterfaceArgs', 'ContainerLegacyNetworkInterfaceArgsDict']]]]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            operating_system: pulumi.Input[Optional[Union['ContainerLegacyOperatingSystemArgs', 'ContainerLegacyOperatingSystemArgsDict']]] = None,
+            pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            protection: pulumi.Input[Optional[_builtins.bool]] = None,
+            start_on_boot: pulumi.Input[Optional[_builtins.bool]] = None,
+            started: pulumi.Input[Optional[_builtins.bool]] = None,
+            startup: pulumi.Input[Optional[Union['ContainerLegacyStartupArgs', 'ContainerLegacyStartupArgsDict']]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            template: pulumi.Input[Optional[_builtins.bool]] = None,
+            timeout_clone: pulumi.Input[Optional[_builtins.int]] = None,
+            timeout_create: pulumi.Input[Optional[_builtins.int]] = None,
+            timeout_delete: pulumi.Input[Optional[_builtins.int]] = None,
+            timeout_start: pulumi.Input[Optional[_builtins.int]] = None,
+            timeout_update: pulumi.Input[Optional[_builtins.int]] = None,
+            unprivileged: pulumi.Input[Optional[_builtins.bool]] = None,
+            vm_id: pulumi.Input[Optional[_builtins.int]] = None,
+            wait_for_ip: pulumi.Input[Optional[Union['ContainerLegacyWaitForIpArgs', 'ContainerLegacyWaitForIpArgsDict']]] = None) -> 'ContainerLegacy':
         """
         Get an existing ContainerLegacy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1515,7 +1650,10 @@ class ContainerLegacy(pulumi.CustomResource):
         :param pulumi.Input[Union['ContainerLegacyCpuArgs', 'ContainerLegacyCpuArgsDict']] cpu: The CPU configuration.
         :param pulumi.Input[_builtins.str] description: The description.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerLegacyDevicePassthroughArgs', 'ContainerLegacyDevicePassthroughArgsDict']]]] device_passthroughs: Device to pass through to the container (multiple blocks supported).
-        :param pulumi.Input[Union['ContainerLegacyDiskArgs', 'ContainerLegacyDiskArgsDict']] disk: The disk configuration.
+        :param pulumi.Input[Union['ContainerLegacyDiskArgs', 'ContainerLegacyDiskArgsDict']] disk: The root filesystem (rootfs) storage configuration.
+               Selects the Proxmox storage pool the container's root volume is created
+               on. Backend-agnostic — works with directory, LVM, LVM-thin, ZFS, Ceph
+               RBD, NFS, and any other configured Proxmox storage.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] environment_variables: A map of runtime environment variables for the container init process.
         :param pulumi.Input[Union['ContainerLegacyFeaturesArgs', 'ContainerLegacyFeaturesArgsDict']] features: The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
         :param pulumi.Input[_builtins.str] hook_script_file_id: The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
@@ -1527,7 +1665,9 @@ class ContainerLegacy(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] ipv4: The map of IPv4 addresses per network devices. Returns the first address for each network device, if multiple addresses are assigned.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] ipv6: The map of IPv6 addresses per network device. Returns the first address for each network device, if multiple addresses are assigned.
         :param pulumi.Input[Union['ContainerLegacyMemoryArgs', 'ContainerLegacyMemoryArgsDict']] memory: The memory configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerLegacyMountPointArgs', 'ContainerLegacyMountPointArgsDict']]]] mount_points: A mount point
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerLegacyMountPointArgs', 'ContainerLegacyMountPointArgsDict']]]] mount_points: An additional volume mount or host bind mount
+               (multiple blocks supported). Use this for data volumes, shared
+               directories, or attaching pre-existing PVE volumes.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ContainerLegacyNetworkInterfaceArgs', 'ContainerLegacyNetworkInterfaceArgsDict']]]] network_interfaces: A network interface (multiple blocks
                supported).
         :param pulumi.Input[_builtins.str] node_name: The name of the node to assign the container to.
@@ -1636,7 +1776,10 @@ class ContainerLegacy(pulumi.CustomResource):
     @pulumi.getter
     def disk(self) -> pulumi.Output[Optional['outputs.ContainerLegacyDisk']]:
         """
-        The disk configuration.
+        The root filesystem (rootfs) storage configuration.
+        Selects the Proxmox storage pool the container's root volume is created
+        on. Backend-agnostic — works with directory, LVM, LVM-thin, ZFS, Ceph
+        RBD, NFS, and any other configured Proxmox storage.
         """
         return pulumi.get(self, "disk")
 
@@ -1711,7 +1854,9 @@ class ContainerLegacy(pulumi.CustomResource):
     @pulumi.getter(name="mountPoints")
     def mount_points(self) -> pulumi.Output[Optional[Sequence['outputs.ContainerLegacyMountPoint']]]:
         """
-        A mount point
+        An additional volume mount or host bind mount
+        (multiple blocks supported). Use this for data volumes, shared
+        directories, or attaching pre-existing PVE volumes.
         """
         return pulumi.get(self, "mount_points")
 

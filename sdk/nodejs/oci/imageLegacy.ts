@@ -150,35 +150,35 @@ export interface ImageLegacyState {
     /**
      * The identifier for the target datastore.
      */
-    datastoreId?: pulumi.Input<string>;
+    datastoreId?: pulumi.Input<string | undefined>;
     /**
      * The file name for the pulled OCI image. If not provided, it will be generated automatically. The file will be stored as a .tar file.
      */
-    fileName?: pulumi.Input<string>;
+    fileName?: pulumi.Input<string | undefined>;
     /**
      * The node name.
      */
-    nodeName?: pulumi.Input<string>;
+    nodeName?: pulumi.Input<string | undefined>;
     /**
      * By default `true`. If `true` and the OCI image size has changed in the datastore, it will be replaced. If `false`, there will be no check.
      */
-    overwrite?: pulumi.Input<boolean>;
+    overwrite?: pulumi.Input<boolean | undefined>;
     /**
      * If `true` and an OCI image with the same name already exists in the datastore, it will be deleted and the new image will be pulled. If `false` and the image already exists, an error will be returned.
      */
-    overwriteUnmanaged?: pulumi.Input<boolean>;
+    overwriteUnmanaged?: pulumi.Input<boolean | undefined>;
     /**
      * The reference to the OCI image.
      */
-    reference?: pulumi.Input<string>;
+    reference?: pulumi.Input<string | undefined>;
     /**
      * The image size in PVE.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * The OCI image pull timeout in seconds. Default is 600 (10min).
      */
-    uploadTimeout?: pulumi.Input<number>;
+    uploadTimeout?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -192,7 +192,7 @@ export interface ImageLegacyArgs {
     /**
      * The file name for the pulled OCI image. If not provided, it will be generated automatically. The file will be stored as a .tar file.
      */
-    fileName?: pulumi.Input<string>;
+    fileName?: pulumi.Input<string | undefined>;
     /**
      * The node name.
      */
@@ -200,11 +200,11 @@ export interface ImageLegacyArgs {
     /**
      * By default `true`. If `true` and the OCI image size has changed in the datastore, it will be replaced. If `false`, there will be no check.
      */
-    overwrite?: pulumi.Input<boolean>;
+    overwrite?: pulumi.Input<boolean | undefined>;
     /**
      * If `true` and an OCI image with the same name already exists in the datastore, it will be deleted and the new image will be pulled. If `false` and the image already exists, an error will be returned.
      */
-    overwriteUnmanaged?: pulumi.Input<boolean>;
+    overwriteUnmanaged?: pulumi.Input<boolean | undefined>;
     /**
      * The reference to the OCI image.
      */
@@ -212,5 +212,5 @@ export interface ImageLegacyArgs {
     /**
      * The OCI image pull timeout in seconds. Default is 600 (10min).
      */
-    uploadTimeout?: pulumi.Input<number>;
+    uploadTimeout?: pulumi.Input<number | undefined>;
 }

@@ -116,7 +116,7 @@ def get_openfabric(id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         ip6_prefix=pulumi.get(__ret__, 'ip6_prefix'),
         ip_prefix=pulumi.get(__ret__, 'ip_prefix'))
-def get_openfabric_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_openfabric_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOpenfabricResult]:
     """
     OpenFabric Fabric in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.

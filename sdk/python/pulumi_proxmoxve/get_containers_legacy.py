@@ -158,9 +158,9 @@ def get_containers_legacy(filters: Optional[Sequence[Union['GetContainersLegacyF
         id=pulumi.get(__ret__, 'id'),
         node_name=pulumi.get(__ret__, 'node_name'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_containers_legacy_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetContainersLegacyFilterArgs', 'GetContainersLegacyFilterArgsDict']]]]] = None,
-                                 node_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 tags: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_containers_legacy_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetContainersLegacyFilterArgs', 'GetContainersLegacyFilterArgsDict']]]]] = None,
+                                 node_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 tags: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetContainersLegacyResult]:
     """
     Retrieves information about all containers in the Proxmox cluster.

@@ -26,11 +26,11 @@ class CertificateDomainArgsDict(TypedDict):
     """
     The domain name to include in the certificate.
     """
-    alias: NotRequired[pulumi.Input[_builtins.str]]
+    alias: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional alias domain for DNS validation. This allows you to validate the domain using a different domain's DNS records.
     """
-    plugin: NotRequired[pulumi.Input[_builtins.str]]
+    plugin: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The DNS plugin to use for DNS-01 challenge validation. If not specified, the standalone HTTP-01 challenge will be used.
     """
@@ -39,8 +39,8 @@ class CertificateDomainArgsDict(TypedDict):
 class CertificateDomainArgs:
     def __init__(__self__, *,
                  domain: pulumi.Input[_builtins.str],
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 plugin: Optional[pulumi.Input[_builtins.str]] = None):
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 plugin: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] domain: The domain name to include in the certificate.
         :param pulumi.Input[_builtins.str] alias: An optional alias domain for DNS validation. This allows you to validate the domain using a different domain's DNS records.
@@ -66,26 +66,26 @@ class CertificateDomainArgs:
 
     @_builtins.property
     @pulumi.getter
-    def alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional alias domain for DNS validation. This allows you to validate the domain using a different domain's DNS records.
         """
         return pulumi.get(self, "alias")
 
     @alias.setter
-    def alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alias", value)
 
     @_builtins.property
     @pulumi.getter
-    def plugin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plugin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The DNS plugin to use for DNS-01 challenge validation. If not specified, the standalone HTTP-01 challenge will be used.
         """
         return pulumi.get(self, "plugin")
 
     @plugin.setter
-    def plugin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plugin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plugin", value)
 
 
@@ -94,11 +94,11 @@ class CertificateLegacyDomainArgsDict(TypedDict):
     """
     The domain name to include in the certificate.
     """
-    alias: NotRequired[pulumi.Input[_builtins.str]]
+    alias: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     An optional alias domain for DNS validation. This allows you to validate the domain using a different domain's DNS records.
     """
-    plugin: NotRequired[pulumi.Input[_builtins.str]]
+    plugin: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The DNS plugin to use for DNS-01 challenge validation. If not specified, the standalone HTTP-01 challenge will be used.
     """
@@ -107,8 +107,8 @@ class CertificateLegacyDomainArgsDict(TypedDict):
 class CertificateLegacyDomainArgs:
     def __init__(__self__, *,
                  domain: pulumi.Input[_builtins.str],
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 plugin: Optional[pulumi.Input[_builtins.str]] = None):
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 plugin: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] domain: The domain name to include in the certificate.
         :param pulumi.Input[_builtins.str] alias: An optional alias domain for DNS validation. This allows you to validate the domain using a different domain's DNS records.
@@ -134,26 +134,26 @@ class CertificateLegacyDomainArgs:
 
     @_builtins.property
     @pulumi.getter
-    def alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional alias domain for DNS validation. This allows you to validate the domain using a different domain's DNS records.
         """
         return pulumi.get(self, "alias")
 
     @alias.setter
-    def alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alias", value)
 
     @_builtins.property
     @pulumi.getter
-    def plugin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plugin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The DNS plugin to use for DNS-01 challenge validation. If not specified, the standalone HTTP-01 challenge will be used.
         """
         return pulumi.get(self, "plugin")
 
     @plugin.setter
-    def plugin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plugin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plugin", value)
 
 

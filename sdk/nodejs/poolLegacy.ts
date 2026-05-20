@@ -107,15 +107,15 @@ export interface PoolLegacyState {
     /**
      * The pool comment.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The pool members.
      */
-    members?: pulumi.Input<pulumi.Input<inputs.PoolLegacyMember>[]>;
+    members?: pulumi.Input<pulumi.Input<inputs.PoolLegacyMember>[] | undefined>;
     /**
      * The pool identifier.
      */
-    poolId?: pulumi.Input<string>;
+    poolId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -125,7 +125,7 @@ export interface PoolLegacyArgs {
     /**
      * The pool comment.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The pool identifier.
      */

@@ -41,8 +41,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.proxmoxve.sdn.inputs.SubnetLegacyDhcpRangeArgs;
  * import io.muehlbachler.pulumi.proxmoxve.sdn.ApplierLegacyArgs;
  * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *         var exampleZone1 = new SimpleLegacy("exampleZone1", SimpleLegacyArgs.builder()
  *             .resourceId("zone1")
  *             .nodes("pve")
- *             .mtu(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1500) (example.pp:8,16-20)))
+ *             .mtu(1500)
  *             .dns("1.1.1.1")
  *             .dnsZone("example.com")
  *             .ipam("pve")
@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *         var exampleZone2 = new SimpleLegacy("exampleZone2", SimpleLegacyArgs.builder()
  *             .resourceId("zone2")
  *             .nodes("pve")
- *             .mtu(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1500) (example.pp:27,16-20)))
+ *             .mtu(1500)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(finalizer)
  *                 .build());

@@ -22,19 +22,19 @@ __all__ = ['Vm2LegacyArgs', 'Vm2Legacy']
 class Vm2LegacyArgs:
     def __init__(__self__, *,
                  node_name: pulumi.Input[_builtins.str],
-                 cdrom: Optional[pulumi.Input[Mapping[str, pulumi.Input['Vm2LegacyCdromArgs']]]] = None,
-                 cpu: Optional[pulumi.Input['Vm2LegacyCpuArgs']] = None,
-                 delete_unreferenced_disks_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 purge_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rng: Optional[pulumi.Input['Vm2LegacyRngArgs']] = None,
-                 stop_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeouts: Optional[pulumi.Input['Vm2LegacyTimeoutsArgs']] = None,
-                 vga: Optional[pulumi.Input['Vm2LegacyVgaArgs']] = None):
+                 cdrom: pulumi.Input[Optional[Mapping[str, pulumi.Input['Vm2LegacyCdromArgs']]]] = None,
+                 cpu: pulumi.Input[Optional['Vm2LegacyCpuArgs']] = None,
+                 delete_unreferenced_disks_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 purge_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rng: pulumi.Input[Optional['Vm2LegacyRngArgs']] = None,
+                 stop_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeouts: pulumi.Input[Optional['Vm2LegacyTimeoutsArgs']] = None,
+                 vga: pulumi.Input[Optional['Vm2LegacyVgaArgs']] = None):
         """
         The set of arguments for constructing a Vm2Legacy resource.
 
@@ -94,175 +94,175 @@ class Vm2LegacyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def cdrom(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['Vm2LegacyCdromArgs']]]]:
+    def cdrom(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['Vm2LegacyCdromArgs']]]]:
         """
         The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
         """
         return pulumi.get(self, "cdrom")
 
     @cdrom.setter
-    def cdrom(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['Vm2LegacyCdromArgs']]]]):
+    def cdrom(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['Vm2LegacyCdromArgs']]]]):
         pulumi.set(self, "cdrom", value)
 
     @_builtins.property
     @pulumi.getter
-    def cpu(self) -> Optional[pulumi.Input['Vm2LegacyCpuArgs']]:
+    def cpu(self) -> pulumi.Input[Optional['Vm2LegacyCpuArgs']]:
         """
         The CPU configuration.
         """
         return pulumi.get(self, "cpu")
 
     @cpu.setter
-    def cpu(self, value: Optional[pulumi.Input['Vm2LegacyCpuArgs']]):
+    def cpu(self, value: pulumi.Input[Optional['Vm2LegacyCpuArgs']]):
         pulumi.set(self, "cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteUnreferencedDisksOnDestroy")
-    def delete_unreferenced_disks_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_unreferenced_disks_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true to delete unreferenced disks on destroy (defaults to `true`).
         """
         return pulumi.get(self, "delete_unreferenced_disks_on_destroy")
 
     @delete_unreferenced_disks_on_destroy.setter
-    def delete_unreferenced_disks_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_unreferenced_disks_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_unreferenced_disks_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the VM.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VM. Doesn't have to be unique.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="purgeOnDestroy")
-    def purge_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def purge_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true to purge the VM from backup configurations on destroy (defaults to `true`).
         """
         return pulumi.get(self, "purge_on_destroy")
 
     @purge_on_destroy.setter
-    def purge_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def purge_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "purge_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the VM in the Proxmox cluster.
         """
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def rng(self) -> Optional[pulumi.Input['Vm2LegacyRngArgs']]:
+    def rng(self) -> pulumi.Input[Optional['Vm2LegacyRngArgs']]:
         """
         Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
         """
         return pulumi.get(self, "rng")
 
     @rng.setter
-    def rng(self, value: Optional[pulumi.Input['Vm2LegacyRngArgs']]):
+    def rng(self, value: pulumi.Input[Optional['Vm2LegacyRngArgs']]):
         pulumi.set(self, "rng", value)
 
     @_builtins.property
     @pulumi.getter(name="stopOnDestroy")
-    def stop_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def stop_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
         """
         return pulumi.get(self, "stop_on_destroy")
 
     @stop_on_destroy.setter
-    def stop_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def stop_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "stop_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The tags assigned to the VM.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def template(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def template(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true to create a VM template.
         """
         return pulumi.get(self, "template")
 
     @template.setter
-    def template(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def template(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "template", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['Vm2LegacyTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['Vm2LegacyTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['Vm2LegacyTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['Vm2LegacyTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter
-    def vga(self) -> Optional[pulumi.Input['Vm2LegacyVgaArgs']]:
+    def vga(self) -> pulumi.Input[Optional['Vm2LegacyVgaArgs']]:
         """
         Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
         """
         return pulumi.get(self, "vga")
 
     @vga.setter
-    def vga(self, value: Optional[pulumi.Input['Vm2LegacyVgaArgs']]):
+    def vga(self, value: pulumi.Input[Optional['Vm2LegacyVgaArgs']]):
         pulumi.set(self, "vga", value)
 
 
 @pulumi.input_type
 class _Vm2LegacyState:
     def __init__(__self__, *,
-                 cdrom: Optional[pulumi.Input[Mapping[str, pulumi.Input['Vm2LegacyCdromArgs']]]] = None,
-                 cpu: Optional[pulumi.Input['Vm2LegacyCpuArgs']] = None,
-                 delete_unreferenced_disks_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 purge_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rng: Optional[pulumi.Input['Vm2LegacyRngArgs']] = None,
-                 stop_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeouts: Optional[pulumi.Input['Vm2LegacyTimeoutsArgs']] = None,
-                 vga: Optional[pulumi.Input['Vm2LegacyVgaArgs']] = None):
+                 cdrom: pulumi.Input[Optional[Mapping[str, pulumi.Input['Vm2LegacyCdromArgs']]]] = None,
+                 cpu: pulumi.Input[Optional['Vm2LegacyCpuArgs']] = None,
+                 delete_unreferenced_disks_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 purge_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rng: pulumi.Input[Optional['Vm2LegacyRngArgs']] = None,
+                 stop_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeouts: pulumi.Input[Optional['Vm2LegacyTimeoutsArgs']] = None,
+                 vga: pulumi.Input[Optional['Vm2LegacyVgaArgs']] = None):
         """
         Input properties used for looking up and filtering Vm2Legacy resources.
 
@@ -311,167 +311,167 @@ class _Vm2LegacyState:
 
     @_builtins.property
     @pulumi.getter
-    def cdrom(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input['Vm2LegacyCdromArgs']]]]:
+    def cdrom(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['Vm2LegacyCdromArgs']]]]:
         """
         The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
         """
         return pulumi.get(self, "cdrom")
 
     @cdrom.setter
-    def cdrom(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input['Vm2LegacyCdromArgs']]]]):
+    def cdrom(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['Vm2LegacyCdromArgs']]]]):
         pulumi.set(self, "cdrom", value)
 
     @_builtins.property
     @pulumi.getter
-    def cpu(self) -> Optional[pulumi.Input['Vm2LegacyCpuArgs']]:
+    def cpu(self) -> pulumi.Input[Optional['Vm2LegacyCpuArgs']]:
         """
         The CPU configuration.
         """
         return pulumi.get(self, "cpu")
 
     @cpu.setter
-    def cpu(self, value: Optional[pulumi.Input['Vm2LegacyCpuArgs']]):
+    def cpu(self, value: pulumi.Input[Optional['Vm2LegacyCpuArgs']]):
         pulumi.set(self, "cpu", value)
 
     @_builtins.property
     @pulumi.getter(name="deleteUnreferencedDisksOnDestroy")
-    def delete_unreferenced_disks_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def delete_unreferenced_disks_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true to delete unreferenced disks on destroy (defaults to `true`).
         """
         return pulumi.get(self, "delete_unreferenced_disks_on_destroy")
 
     @delete_unreferenced_disks_on_destroy.setter
-    def delete_unreferenced_disks_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def delete_unreferenced_disks_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "delete_unreferenced_disks_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description of the VM.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the VM. Doesn't have to be unique.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeName")
-    def node_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the node where the VM is provisioned.
         """
         return pulumi.get(self, "node_name")
 
     @node_name.setter
-    def node_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_name", value)
 
     @_builtins.property
     @pulumi.getter(name="purgeOnDestroy")
-    def purge_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def purge_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true to purge the VM from backup configurations on destroy (defaults to `true`).
         """
         return pulumi.get(self, "purge_on_destroy")
 
     @purge_on_destroy.setter
-    def purge_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def purge_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "purge_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the VM in the Proxmox cluster.
         """
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def rng(self) -> Optional[pulumi.Input['Vm2LegacyRngArgs']]:
+    def rng(self) -> pulumi.Input[Optional['Vm2LegacyRngArgs']]:
         """
         Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
         """
         return pulumi.get(self, "rng")
 
     @rng.setter
-    def rng(self, value: Optional[pulumi.Input['Vm2LegacyRngArgs']]):
+    def rng(self, value: pulumi.Input[Optional['Vm2LegacyRngArgs']]):
         pulumi.set(self, "rng", value)
 
     @_builtins.property
     @pulumi.getter(name="stopOnDestroy")
-    def stop_on_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def stop_on_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
         """
         return pulumi.get(self, "stop_on_destroy")
 
     @stop_on_destroy.setter
-    def stop_on_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def stop_on_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "stop_on_destroy", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The tags assigned to the VM.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def template(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def template(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Set to true to create a VM template.
         """
         return pulumi.get(self, "template")
 
     @template.setter
-    def template(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def template(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "template", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['Vm2LegacyTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['Vm2LegacyTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['Vm2LegacyTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['Vm2LegacyTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter
-    def vga(self) -> Optional[pulumi.Input['Vm2LegacyVgaArgs']]:
+    def vga(self) -> pulumi.Input[Optional['Vm2LegacyVgaArgs']]:
         """
         Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
         """
         return pulumi.get(self, "vga")
 
     @vga.setter
-    def vga(self, value: Optional[pulumi.Input['Vm2LegacyVgaArgs']]):
+    def vga(self, value: pulumi.Input[Optional['Vm2LegacyVgaArgs']]):
         pulumi.set(self, "vga", value)
 
 
@@ -481,20 +481,20 @@ class Vm2Legacy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cdrom: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['Vm2LegacyCdromArgs', 'Vm2LegacyCdromArgsDict']]]]] = None,
-                 cpu: Optional[pulumi.Input[Union['Vm2LegacyCpuArgs', 'Vm2LegacyCpuArgsDict']]] = None,
-                 delete_unreferenced_disks_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 purge_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rng: Optional[pulumi.Input[Union['Vm2LegacyRngArgs', 'Vm2LegacyRngArgsDict']]] = None,
-                 stop_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeouts: Optional[pulumi.Input[Union['Vm2LegacyTimeoutsArgs', 'Vm2LegacyTimeoutsArgsDict']]] = None,
-                 vga: Optional[pulumi.Input[Union['Vm2LegacyVgaArgs', 'Vm2LegacyVgaArgsDict']]] = None,
+                 cdrom: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['Vm2LegacyCdromArgs', 'Vm2LegacyCdromArgsDict']]]]] = None,
+                 cpu: pulumi.Input[Optional[Union['Vm2LegacyCpuArgs', 'Vm2LegacyCpuArgsDict']]] = None,
+                 delete_unreferenced_disks_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 purge_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rng: pulumi.Input[Optional[Union['Vm2LegacyRngArgs', 'Vm2LegacyRngArgsDict']]] = None,
+                 stop_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeouts: pulumi.Input[Optional[Union['Vm2LegacyTimeoutsArgs', 'Vm2LegacyTimeoutsArgsDict']]] = None,
+                 vga: pulumi.Input[Optional[Union['Vm2LegacyVgaArgs', 'Vm2LegacyVgaArgsDict']]] = None,
                  __props__=None):
         """
         > **Deprecated:** Use `Vm` instead. This resource will be removed in v1.0.
@@ -561,20 +561,20 @@ class Vm2Legacy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cdrom: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['Vm2LegacyCdromArgs', 'Vm2LegacyCdromArgsDict']]]]] = None,
-                 cpu: Optional[pulumi.Input[Union['Vm2LegacyCpuArgs', 'Vm2LegacyCpuArgsDict']]] = None,
-                 delete_unreferenced_disks_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 purge_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rng: Optional[pulumi.Input[Union['Vm2LegacyRngArgs', 'Vm2LegacyRngArgsDict']]] = None,
-                 stop_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 template: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeouts: Optional[pulumi.Input[Union['Vm2LegacyTimeoutsArgs', 'Vm2LegacyTimeoutsArgsDict']]] = None,
-                 vga: Optional[pulumi.Input[Union['Vm2LegacyVgaArgs', 'Vm2LegacyVgaArgsDict']]] = None,
+                 cdrom: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['Vm2LegacyCdromArgs', 'Vm2LegacyCdromArgsDict']]]]] = None,
+                 cpu: pulumi.Input[Optional[Union['Vm2LegacyCpuArgs', 'Vm2LegacyCpuArgsDict']]] = None,
+                 delete_unreferenced_disks_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 purge_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rng: pulumi.Input[Optional[Union['Vm2LegacyRngArgs', 'Vm2LegacyRngArgsDict']]] = None,
+                 stop_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 template: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeouts: pulumi.Input[Optional[Union['Vm2LegacyTimeoutsArgs', 'Vm2LegacyTimeoutsArgsDict']]] = None,
+                 vga: pulumi.Input[Optional[Union['Vm2LegacyVgaArgs', 'Vm2LegacyVgaArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -610,20 +610,20 @@ class Vm2Legacy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cdrom: Optional[pulumi.Input[Mapping[str, pulumi.Input[Union['Vm2LegacyCdromArgs', 'Vm2LegacyCdromArgsDict']]]]] = None,
-            cpu: Optional[pulumi.Input[Union['Vm2LegacyCpuArgs', 'Vm2LegacyCpuArgsDict']]] = None,
-            delete_unreferenced_disks_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            node_name: Optional[pulumi.Input[_builtins.str]] = None,
-            purge_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-            rng: Optional[pulumi.Input[Union['Vm2LegacyRngArgs', 'Vm2LegacyRngArgsDict']]] = None,
-            stop_on_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            template: Optional[pulumi.Input[_builtins.bool]] = None,
-            timeouts: Optional[pulumi.Input[Union['Vm2LegacyTimeoutsArgs', 'Vm2LegacyTimeoutsArgsDict']]] = None,
-            vga: Optional[pulumi.Input[Union['Vm2LegacyVgaArgs', 'Vm2LegacyVgaArgsDict']]] = None) -> 'Vm2Legacy':
+            cdrom: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['Vm2LegacyCdromArgs', 'Vm2LegacyCdromArgsDict']]]]] = None,
+            cpu: pulumi.Input[Optional[Union['Vm2LegacyCpuArgs', 'Vm2LegacyCpuArgsDict']]] = None,
+            delete_unreferenced_disks_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            purge_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rng: pulumi.Input[Optional[Union['Vm2LegacyRngArgs', 'Vm2LegacyRngArgsDict']]] = None,
+            stop_on_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            template: pulumi.Input[Optional[_builtins.bool]] = None,
+            timeouts: pulumi.Input[Optional[Union['Vm2LegacyTimeoutsArgs', 'Vm2LegacyTimeoutsArgsDict']]] = None,
+            vga: pulumi.Input[Optional[Union['Vm2LegacyVgaArgs', 'Vm2LegacyVgaArgsDict']]] = None) -> 'Vm2Legacy':
         """
         Get an existing Vm2Legacy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

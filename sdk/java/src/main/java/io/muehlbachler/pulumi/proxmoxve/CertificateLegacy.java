@@ -37,8 +37,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.tls.inputs.SelfSignedCertSubjectArgs;
  * import io.muehlbachler.pulumi.proxmoxve.CertificateLegacy;
  * import io.muehlbachler.pulumi.proxmoxve.CertificateLegacyArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var proxmoxVirtualEnvironmentCertificate = new PrivateKey("proxmoxVirtualEnvironmentCertificate", PrivateKeyArgs.builder()
  *             .algorithm("RSA")
- *             .rsaBits(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:9,19-23)))
+ *             .rsaBits(2048)
  *             .build());
  * 
  *         var proxmoxVirtualEnvironmentCertificateSelfSignedCert = new SelfSignedCert("proxmoxVirtualEnvironmentCertificateSelfSignedCert", SelfSignedCertArgs.builder()
@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *                 .commonName("example.com")
  *                 .organization("Terraform Provider for Proxmox")
  *                 .build())
- *             .validityPeriodHours(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(8760) (example.pp:20,25-29)))
+ *             .validityPeriodHours(8760)
  *             .allowedUses(            
  *                 "key_encipherment",
  *                 "digital_signature",

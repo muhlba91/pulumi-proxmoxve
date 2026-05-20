@@ -130,23 +130,23 @@ export interface HagroupLegacyState {
     /**
      * The comment associated with this group
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The identifier of the High Availability group to manage.
      */
-    group?: pulumi.Input<string>;
+    group?: pulumi.Input<string | undefined>;
     /**
      * A flag that indicates that failing back to a higher priority node is disabled for this HA group. Defaults to `false`.
      */
-    noFailback?: pulumi.Input<boolean>;
+    noFailback?: pulumi.Input<boolean | undefined>;
     /**
      * The member nodes for this group. They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or `null` for unset priorities.
      */
-    nodes?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
+    nodes?: pulumi.Input<{[key: string]: pulumi.Input<number>} | undefined>;
     /**
      * A flag that indicates that other nodes may not be used to run resources associated to this HA group. Defaults to `false`.
      */
-    restricted?: pulumi.Input<boolean>;
+    restricted?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -156,7 +156,7 @@ export interface HagroupLegacyArgs {
     /**
      * The comment associated with this group
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The identifier of the High Availability group to manage.
      */
@@ -164,7 +164,7 @@ export interface HagroupLegacyArgs {
     /**
      * A flag that indicates that failing back to a higher priority node is disabled for this HA group. Defaults to `false`.
      */
-    noFailback?: pulumi.Input<boolean>;
+    noFailback?: pulumi.Input<boolean | undefined>;
     /**
      * The member nodes for this group. They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or `null` for unset priorities.
      */
@@ -172,5 +172,5 @@ export interface HagroupLegacyArgs {
     /**
      * A flag that indicates that other nodes may not be used to run resources associated to this HA group. Defaults to `false`.
      */
-    restricted?: pulumi.Input<boolean>;
+    restricted?: pulumi.Input<boolean | undefined>;
 }

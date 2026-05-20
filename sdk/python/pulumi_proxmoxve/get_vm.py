@@ -211,9 +211,9 @@ def get_vm(id: Optional[_builtins.int] = None,
         template=pulumi.get(__ret__, 'template'),
         timeouts=pulumi.get(__ret__, 'timeouts'),
         vga=pulumi.get(__ret__, 'vga'))
-def get_vm_output(id: Optional[pulumi.Input[_builtins.int]] = None,
-                  node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                  timeouts: Optional[pulumi.Input[Optional[Union['GetVmTimeoutsArgs', 'GetVmTimeoutsArgsDict']]]] = None,
+def get_vm_output(id: pulumi.Input[Optional[_builtins.int]] = None,
+                  node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                  timeouts: pulumi.Input[Optional[Optional[Union['GetVmTimeoutsArgs', 'GetVmTimeoutsArgsDict']]]] = None,
                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVmResult]:
     """
     Retrieves information about a specific VM.

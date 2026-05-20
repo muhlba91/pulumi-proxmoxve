@@ -121,14 +121,16 @@ export class Account extends pulumi.CustomResource {
             }
             resourceInputs["contact"] = args?.contact;
             resourceInputs["directory"] = args?.directory;
-            resourceInputs["eabHmacKey"] = args?.eabHmacKey;
-            resourceInputs["eabKid"] = args?.eabKid;
+            resourceInputs["eabHmacKey"] = args?.eabHmacKey ? pulumi.secret(args.eabHmacKey) : undefined;
+            resourceInputs["eabKid"] = args?.eabKid ? pulumi.secret(args.eabKid) : undefined;
             resourceInputs["name"] = args?.name;
             resourceInputs["tos"] = args?.tos;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["eabHmacKey", "eabKid"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Account.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -140,35 +142,35 @@ export interface AccountState {
     /**
      * The contact email addresses.
      */
-    contact?: pulumi.Input<string>;
+    contact?: pulumi.Input<string | undefined>;
     /**
      * The timestamp of the ACME account creation.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The URL of the ACME CA directory endpoint.
      */
-    directory?: pulumi.Input<string>;
+    directory?: pulumi.Input<string | undefined>;
     /**
      * The HMAC key for External Account Binding.
      */
-    eabHmacKey?: pulumi.Input<string>;
+    eabHmacKey?: pulumi.Input<string | undefined>;
     /**
      * The Key Identifier for External Account Binding.
      */
-    eabKid?: pulumi.Input<string>;
+    eabKid?: pulumi.Input<string | undefined>;
     /**
      * The location of the ACME account.
      */
-    location?: pulumi.Input<string>;
+    location?: pulumi.Input<string | undefined>;
     /**
      * The ACME account config file name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The URL of CA TermsOfService - setting this indicates agreement.
      */
-    tos?: pulumi.Input<string>;
+    tos?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -182,21 +184,21 @@ export interface AccountArgs {
     /**
      * The URL of the ACME CA directory endpoint.
      */
-    directory?: pulumi.Input<string>;
+    directory?: pulumi.Input<string | undefined>;
     /**
      * The HMAC key for External Account Binding.
      */
-    eabHmacKey?: pulumi.Input<string>;
+    eabHmacKey?: pulumi.Input<string | undefined>;
     /**
      * The Key Identifier for External Account Binding.
      */
-    eabKid?: pulumi.Input<string>;
+    eabKid?: pulumi.Input<string | undefined>;
     /**
      * The ACME account config file name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The URL of CA TermsOfService - setting this indicates agreement.
      */
-    tos?: pulumi.Input<string>;
+    tos?: pulumi.Input<string | undefined>;
 }

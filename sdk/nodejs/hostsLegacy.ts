@@ -139,28 +139,28 @@ export interface HostsLegacyState {
     /**
      * The IP addresses.
      */
-    addresses?: pulumi.Input<pulumi.Input<string>[]>;
+    addresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The SHA1 digest.
      */
-    digest?: pulumi.Input<string>;
+    digest?: pulumi.Input<string | undefined>;
     /**
      * The host entries (conversion of `addresses` and `hostnames` into
      * objects).
      */
-    entries?: pulumi.Input<pulumi.Input<inputs.HostsLegacyEntry>[]>;
+    entries?: pulumi.Input<pulumi.Input<inputs.HostsLegacyEntry>[] | undefined>;
     /**
      * A host entry (multiple blocks supported).
      */
-    entry?: pulumi.Input<pulumi.Input<inputs.HostsLegacyEntry>[]>;
+    entry?: pulumi.Input<pulumi.Input<inputs.HostsLegacyEntry>[] | undefined>;
     /**
      * The hostnames associated with each of the IP addresses.
      */
-    hostnames?: pulumi.Input<pulumi.Input<pulumi.Input<string>[]>[]>;
+    hostnames?: pulumi.Input<pulumi.Input<pulumi.Input<string>[]>[] | undefined>;
     /**
      * A node name.
      */
-    nodeName?: pulumi.Input<string>;
+    nodeName?: pulumi.Input<string | undefined>;
 }
 
 /**

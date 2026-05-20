@@ -125,19 +125,19 @@ export interface PciLegacyState {
     /**
      * The comment of this PCI hardware mapping.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The actual map of devices for the PCI hardware mapping.
      */
-    maps?: pulumi.Input<pulumi.Input<inputs.hardware.mapping.PciLegacyMap>[]>;
+    maps?: pulumi.Input<pulumi.Input<inputs.hardware.mapping.PciLegacyMap>[] | undefined>;
     /**
      * Indicates whether to enable mediated devices.
      */
-    mediatedDevices?: pulumi.Input<boolean>;
+    mediatedDevices?: pulumi.Input<boolean | undefined>;
     /**
      * The name of this PCI hardware mapping.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -147,7 +147,7 @@ export interface PciLegacyArgs {
     /**
      * The comment of this PCI hardware mapping.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The actual map of devices for the PCI hardware mapping.
      */
@@ -155,9 +155,9 @@ export interface PciLegacyArgs {
     /**
      * Indicates whether to enable mediated devices.
      */
-    mediatedDevices?: pulumi.Input<boolean>;
+    mediatedDevices?: pulumi.Input<boolean | undefined>;
     /**
      * The name of this PCI hardware mapping.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

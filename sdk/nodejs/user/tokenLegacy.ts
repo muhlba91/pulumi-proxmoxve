@@ -141,27 +141,27 @@ export interface TokenLegacyState {
     /**
      * Comment for the token.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Expiration date for the token.
      */
-    expirationDate?: pulumi.Input<string>;
+    expirationDate?: pulumi.Input<string | undefined>;
     /**
      * Restrict API token privileges with separate ACLs (default), or give full privileges of corresponding user.
      */
-    privilegesSeparation?: pulumi.Input<boolean>;
+    privilegesSeparation?: pulumi.Input<boolean | undefined>;
     /**
      * User-specific token identifier.
      */
-    tokenName?: pulumi.Input<string>;
+    tokenName?: pulumi.Input<string | undefined>;
     /**
      * User identifier.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * API token value used for authentication. It is populated only when creating a new token, and can't be retrieved at import.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -171,15 +171,15 @@ export interface TokenLegacyArgs {
     /**
      * Comment for the token.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Expiration date for the token.
      */
-    expirationDate?: pulumi.Input<string>;
+    expirationDate?: pulumi.Input<string | undefined>;
     /**
      * Restrict API token privileges with separate ACLs (default), or give full privileges of corresponding user.
      */
-    privilegesSeparation?: pulumi.Input<boolean>;
+    privilegesSeparation?: pulumi.Input<boolean | undefined>;
     /**
      * User-specific token identifier.
      */

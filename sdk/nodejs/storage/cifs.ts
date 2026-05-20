@@ -203,59 +203,59 @@ export interface CifsState {
     /**
      * Configure backup retention settings for the storage type.
      */
-    backups?: pulumi.Input<inputs.storage.CifsBackups>;
+    backups?: pulumi.Input<inputs.storage.CifsBackups | undefined>;
     /**
      * The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
      */
-    contents?: pulumi.Input<pulumi.Input<string>[]>;
+    contents?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the storage is disabled.
      */
-    disable?: pulumi.Input<boolean>;
+    disable?: pulumi.Input<boolean | undefined>;
     /**
      * The SMB/CIFS domain.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * A list of nodes where this storage is available.
      */
-    nodes?: pulumi.Input<pulumi.Input<string>[]>;
+    nodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The password for authenticating with the SMB/CIFS server.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The preallocation mode for raw and qcow2 images.
      */
-    preallocation?: pulumi.Input<string>;
+    preallocation?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the storage.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * The IP address or DNS name of the SMB/CIFS server.
      */
-    server?: pulumi.Input<string>;
+    server?: pulumi.Input<string | undefined>;
     /**
      * The name of the SMB/CIFS share.
      */
-    share?: pulumi.Input<string>;
+    share?: pulumi.Input<string | undefined>;
     /**
      * Whether the storage is shared across all nodes.
      */
-    shared?: pulumi.Input<boolean>;
+    shared?: pulumi.Input<boolean | undefined>;
     /**
      * Enable support for creating snapshots through volume backing-chains.
      */
-    snapshotAsVolumeChain?: pulumi.Input<boolean>;
+    snapshotAsVolumeChain?: pulumi.Input<boolean | undefined>;
     /**
      * A subdirectory to mount within the share.
      */
-    subdirectory?: pulumi.Input<string>;
+    subdirectory?: pulumi.Input<string | undefined>;
     /**
      * The username for authenticating with the SMB/CIFS server.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -265,23 +265,23 @@ export interface CifsArgs {
     /**
      * Configure backup retention settings for the storage type.
      */
-    backups?: pulumi.Input<inputs.storage.CifsBackups>;
+    backups?: pulumi.Input<inputs.storage.CifsBackups | undefined>;
     /**
      * The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
      */
-    contents?: pulumi.Input<pulumi.Input<string>[]>;
+    contents?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the storage is disabled.
      */
-    disable?: pulumi.Input<boolean>;
+    disable?: pulumi.Input<boolean | undefined>;
     /**
      * The SMB/CIFS domain.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * A list of nodes where this storage is available.
      */
-    nodes?: pulumi.Input<pulumi.Input<string>[]>;
+    nodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The password for authenticating with the SMB/CIFS server.
      */
@@ -289,7 +289,7 @@ export interface CifsArgs {
     /**
      * The preallocation mode for raw and qcow2 images.
      */
-    preallocation?: pulumi.Input<string>;
+    preallocation?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the storage.
      */
@@ -305,11 +305,11 @@ export interface CifsArgs {
     /**
      * Enable support for creating snapshots through volume backing-chains.
      */
-    snapshotAsVolumeChain?: pulumi.Input<boolean>;
+    snapshotAsVolumeChain?: pulumi.Input<boolean | undefined>;
     /**
      * A subdirectory to mount within the share.
      */
-    subdirectory?: pulumi.Input<string>;
+    subdirectory?: pulumi.Input<string | undefined>;
     /**
      * The username for authenticating with the SMB/CIFS server.
      */

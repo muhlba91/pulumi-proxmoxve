@@ -125,7 +125,7 @@ def get_hagroup_legacy(group: Optional[_builtins.str] = None,
     # This will fetch the set of HA group identifiers...
     all = proxmoxve.get_hagroups_legacy()
     # ...which we will go through in order to fetch the whole data on each group.
-    example = {__key: proxmoxve.get_hagroup_legacy(group=__value) for __key, __value in enumerate(all.group_ids)}
+    example = {str(__key): proxmoxve.get_hagroup_legacy(group=__value) for __key, __value in enumerate(all.group_ids)}
     pulumi.export("proxmoxVirtualEnvironmentHagroupsFull", example)
     ```
 
@@ -144,7 +144,7 @@ def get_hagroup_legacy(group: Optional[_builtins.str] = None,
         no_failback=pulumi.get(__ret__, 'no_failback'),
         nodes=pulumi.get(__ret__, 'nodes'),
         restricted=pulumi.get(__ret__, 'restricted'))
-def get_hagroup_legacy_output(group: Optional[pulumi.Input[_builtins.str]] = None,
+def get_hagroup_legacy_output(group: pulumi.Input[Optional[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHagroupLegacyResult]:
     """
     > **Deprecated:** Use `Hagroup` instead. This data source will be removed in v1.0.
@@ -160,7 +160,7 @@ def get_hagroup_legacy_output(group: Optional[pulumi.Input[_builtins.str]] = Non
     # This will fetch the set of HA group identifiers...
     all = proxmoxve.get_hagroups_legacy()
     # ...which we will go through in order to fetch the whole data on each group.
-    example = {__key: proxmoxve.get_hagroup_legacy(group=__value) for __key, __value in enumerate(all.group_ids)}
+    example = {str(__key): proxmoxve.get_hagroup_legacy(group=__value) for __key, __value in enumerate(all.group_ids)}
     pulumi.export("proxmoxVirtualEnvironmentHagroupsFull", example)
     ```
 

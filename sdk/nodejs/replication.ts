@@ -152,43 +152,43 @@ export interface ReplicationState {
     /**
      * Description.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Flag to disable/deactivate this replication.
      */
-    disable?: pulumi.Input<boolean>;
+    disable?: pulumi.Input<boolean | undefined>;
     /**
      * Guest ID.
      */
-    guest?: pulumi.Input<number>;
+    guest?: pulumi.Input<number | undefined>;
     /**
      * Unique, sequential ID assigned to each job.
      */
-    jobnum?: pulumi.Input<number>;
+    jobnum?: pulumi.Input<number | undefined>;
     /**
      * Rate limit in mbps (megabytes per second) as floating point number.
      */
-    rate?: pulumi.Input<number>;
+    rate?: pulumi.Input<number | undefined>;
     /**
      * Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. '\n\n-\n\n'.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * Storage replication schedule. The format is a subset of `systemd` calendar events. Defaults to *&#47;15
      */
-    schedule?: pulumi.Input<string>;
+    schedule?: pulumi.Input<string | undefined>;
     /**
      * For internal use, to detect if the guest was stolen.
      */
-    source?: pulumi.Input<string>;
+    source?: pulumi.Input<string | undefined>;
     /**
      * Target node.
      */
-    target?: pulumi.Input<string>;
+    target?: pulumi.Input<string | undefined>;
     /**
      * Section type.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -198,15 +198,15 @@ export interface ReplicationArgs {
     /**
      * Description.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Flag to disable/deactivate this replication.
      */
-    disable?: pulumi.Input<boolean>;
+    disable?: pulumi.Input<boolean | undefined>;
     /**
      * Rate limit in mbps (megabytes per second) as floating point number.
      */
-    rate?: pulumi.Input<number>;
+    rate?: pulumi.Input<number | undefined>;
     /**
      * Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. '\n\n-\n\n'.
      */
@@ -214,7 +214,7 @@ export interface ReplicationArgs {
     /**
      * Storage replication schedule. The format is a subset of `systemd` calendar events. Defaults to *&#47;15
      */
-    schedule?: pulumi.Input<string>;
+    schedule?: pulumi.Input<string | undefined>;
     /**
      * Target node.
      */

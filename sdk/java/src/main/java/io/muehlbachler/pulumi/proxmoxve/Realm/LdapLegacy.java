@@ -42,8 +42,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import io.muehlbachler.pulumi.proxmoxve.realm.LdapLegacy;
  * import io.muehlbachler.pulumi.proxmoxve.realm.LdapLegacyArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *         var example = new LdapLegacy("example", LdapLegacyArgs.builder()
  *             .realm("example-ldap")
  *             .server1("ldap.example.com")
- *             .port(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(389) (example.pp:3,13-16)))
+ *             .port(389)
  *             .baseDn("ou=people,dc=example,dc=com")
  *             .userAttr("uid")
  *             .bindDn("cn=admin,dc=example,dc=com")
@@ -109,8 +109,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import io.muehlbachler.pulumi.proxmoxve.realm.LdapLegacy;
  * import io.muehlbachler.pulumi.proxmoxve.realm.LdapLegacyArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -146,8 +146,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import io.muehlbachler.pulumi.proxmoxve.realm.LdapLegacy;
  * import io.muehlbachler.pulumi.proxmoxve.realm.LdapLegacyArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -163,7 +163,7 @@ import javax.annotation.Nullable;
  *             .realm("secure-ldap")
  *             .server1("ldap1.example.com")
  *             .server2("ldap2.example.com")
- *             .port(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(636) (example.pp:4,18-21)))
+ *             .port(636)
  *             .baseDn("ou=users,dc=example,dc=com")
  *             .bindDn("cn=readonly,dc=example,dc=com")
  *             .bindPassword(ldapPassword)
@@ -189,8 +189,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import io.muehlbachler.pulumi.proxmoxve.realm.LdapLegacy;
  * import io.muehlbachler.pulumi.proxmoxve.realm.LdapLegacyArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;

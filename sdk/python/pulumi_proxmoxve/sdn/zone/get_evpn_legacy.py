@@ -300,7 +300,7 @@ def get_evpn_legacy(id: Optional[_builtins.str] = None,
         rt_import=pulumi.get(__ret__, 'rt_import'),
         state=pulumi.get(__ret__, 'state'),
         vrf_vxlan=pulumi.get(__ret__, 'vrf_vxlan'))
-def get_evpn_legacy_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_evpn_legacy_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEvpnLegacyResult]:
     """
     > **Deprecated:** Use `sdn/zone.Evpn` instead. This data source will be removed in v1.0.

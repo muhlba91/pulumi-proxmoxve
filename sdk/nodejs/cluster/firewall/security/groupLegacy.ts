@@ -144,27 +144,27 @@ export interface GroupLegacyState {
     /**
      * Security group comment.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The ID of the container to manage the firewall for.
      */
-    containerId?: pulumi.Input<number>;
+    containerId?: pulumi.Input<number | undefined>;
     /**
      * Security group name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the node.
      */
-    nodeName?: pulumi.Input<string>;
+    nodeName?: pulumi.Input<string | undefined>;
     /**
      * Firewall rule block (multiple blocks supported).
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.cluster.firewall.security.GroupLegacyRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.cluster.firewall.security.GroupLegacyRule>[] | undefined>;
     /**
      * The ID of the VM to manage the firewall for.
      */
-    vmId?: pulumi.Input<number>;
+    vmId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -174,25 +174,25 @@ export interface GroupLegacyArgs {
     /**
      * Security group comment.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The ID of the container to manage the firewall for.
      */
-    containerId?: pulumi.Input<number>;
+    containerId?: pulumi.Input<number | undefined>;
     /**
      * Security group name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the node.
      */
-    nodeName?: pulumi.Input<string>;
+    nodeName?: pulumi.Input<string | undefined>;
     /**
      * Firewall rule block (multiple blocks supported).
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.cluster.firewall.security.GroupLegacyRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.cluster.firewall.security.GroupLegacyRule>[] | undefined>;
     /**
      * The ID of the VM to manage the firewall for.
      */
-    vmId?: pulumi.Input<number>;
+    vmId?: pulumi.Input<number | undefined>;
 }

@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  *
  * const ipset = new proxmoxve.firewall.IpsetLegacy("ipset", {
  *     nodeName: example.nodeName,
- *     vmId: example.vmId,
+ *     vmId: Number(example.vmId),
  *     name: "local_network",
  *     comment: "Managed by Pulumi",
  *     cidrs: [
@@ -163,27 +163,27 @@ export interface IpsetLegacyState {
     /**
      * IP/CIDR block (multiple blocks supported).
      */
-    cidrs?: pulumi.Input<pulumi.Input<inputs.firewall.IpsetLegacyCidr>[]>;
+    cidrs?: pulumi.Input<pulumi.Input<inputs.firewall.IpsetLegacyCidr>[] | undefined>;
     /**
      * IPSet comment.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Container ID. Leave empty for cluster level ipsets.
      */
-    containerId?: pulumi.Input<number>;
+    containerId?: pulumi.Input<number | undefined>;
     /**
      * IPSet name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Node name. Leave empty for cluster level ipsets.
      */
-    nodeName?: pulumi.Input<string>;
+    nodeName?: pulumi.Input<string | undefined>;
     /**
      * VM ID. Leave empty for cluster level ipsets.
      */
-    vmId?: pulumi.Input<number>;
+    vmId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -193,25 +193,25 @@ export interface IpsetLegacyArgs {
     /**
      * IP/CIDR block (multiple blocks supported).
      */
-    cidrs?: pulumi.Input<pulumi.Input<inputs.firewall.IpsetLegacyCidr>[]>;
+    cidrs?: pulumi.Input<pulumi.Input<inputs.firewall.IpsetLegacyCidr>[] | undefined>;
     /**
      * IPSet comment.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Container ID. Leave empty for cluster level ipsets.
      */
-    containerId?: pulumi.Input<number>;
+    containerId?: pulumi.Input<number | undefined>;
     /**
      * IPSet name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Node name. Leave empty for cluster level ipsets.
      */
-    nodeName?: pulumi.Input<string>;
+    nodeName?: pulumi.Input<string | undefined>;
     /**
      * VM ID. Leave empty for cluster level ipsets.
      */
-    vmId?: pulumi.Input<number>;
+    vmId?: pulumi.Input<number | undefined>;
 }

@@ -22,8 +22,8 @@ __all__ = ['DirArgs', 'Dir']
 class DirArgs:
     def __init__(__self__, *,
                  maps: pulumi.Input[Sequence[pulumi.Input['DirMapArgs']]],
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Dir resource.
 
@@ -51,35 +51,35 @@ class DirArgs:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The comment of this directory mapping.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of this directory mapping.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _DirState:
     def __init__(__self__, *,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 maps: Optional[pulumi.Input[Sequence[pulumi.Input['DirMapArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 maps: pulumi.Input[Optional[Sequence[pulumi.Input['DirMapArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Dir resources.
 
@@ -96,38 +96,38 @@ class _DirState:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The comment of this directory mapping.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def maps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DirMapArgs']]]]:
+    def maps(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DirMapArgs']]]]:
         """
         The actual map of devices for the hardware mapping.
         """
         return pulumi.get(self, "maps")
 
     @maps.setter
-    def maps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DirMapArgs']]]]):
+    def maps(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DirMapArgs']]]]):
         pulumi.set(self, "maps", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of this directory mapping.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
@@ -137,9 +137,9 @@ class Dir(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 maps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DirMapArgs', 'DirMapArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 maps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DirMapArgs', 'DirMapArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a directory mapping in a Proxmox VE cluster.
@@ -224,9 +224,9 @@ class Dir(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 maps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DirMapArgs', 'DirMapArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 maps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DirMapArgs', 'DirMapArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -251,9 +251,9 @@ class Dir(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            maps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DirMapArgs', 'DirMapArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None) -> 'Dir':
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            maps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DirMapArgs', 'DirMapArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Dir':
         """
         Get an existing Dir resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

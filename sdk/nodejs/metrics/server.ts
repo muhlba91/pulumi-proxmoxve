@@ -255,99 +255,99 @@ export interface ServerState {
     /**
      * Set this to `true` to disable this metric server. Defaults to `false`.
      */
-    disable?: pulumi.Input<boolean>;
+    disable?: pulumi.Input<boolean | undefined>;
     /**
      * Root graphite path (ex: `proxmox.mycluster.mykey`).
      */
-    graphitePath?: pulumi.Input<string>;
+    graphitePath?: pulumi.Input<string | undefined>;
     /**
      * Protocol to send graphite data. Choice is between `udp` | `tcp`. If not set, PVE default is `udp`.
      */
-    graphiteProto?: pulumi.Input<string>;
+    graphiteProto?: pulumi.Input<string | undefined>;
     /**
      * An API path prefix inserted between `<host>:<port>/` and `/api2/`. Can be useful if the InfluxDB service runs behind a reverse proxy.
      */
-    influxApiPathPrefix?: pulumi.Input<string>;
+    influxApiPathPrefix?: pulumi.Input<string | undefined>;
     /**
      * The InfluxDB bucket/db. Only necessary when using the http v2 api.
      */
-    influxBucket?: pulumi.Input<string>;
+    influxBucket?: pulumi.Input<string | undefined>;
     /**
      * Protocol for InfluxDB. Choice is between `udp` | `http` | `https`. If not set, PVE default is `udp`.
      */
-    influxDbProto?: pulumi.Input<string>;
+    influxDbProto?: pulumi.Input<string | undefined>;
     /**
      * InfluxDB max-body-size in bytes. Requests are batched up to this size. If not set, PVE default is `25000000`.
      */
-    influxMaxBodySize?: pulumi.Input<number>;
+    influxMaxBodySize?: pulumi.Input<number | undefined>;
     /**
      * The InfluxDB organization. Only necessary when using the http v2 api. Has no meaning when using v2 compatibility api.
      */
-    influxOrganization?: pulumi.Input<string>;
+    influxOrganization?: pulumi.Input<string | undefined>;
     /**
      * The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
      */
-    influxToken?: pulumi.Input<string>;
+    influxToken?: pulumi.Input<string | undefined>;
     /**
      * Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
      */
-    influxVerify?: pulumi.Input<boolean>;
+    influxVerify?: pulumi.Input<boolean | undefined>;
     /**
      * MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
      */
-    mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number | undefined>;
     /**
      * Unique name that will be ID of this metric server in PVE.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * OpenTelemetry compression algorithm for requests. Choice is between `none` | `gzip`. If not set, PVE default is `gzip`.
      */
-    opentelemetryCompression?: pulumi.Input<string>;
+    opentelemetryCompression?: pulumi.Input<string | undefined>;
     /**
      * OpenTelemetry custom HTTP headers as JSON, base64 encoded.
      */
-    opentelemetryHeaders?: pulumi.Input<string>;
+    opentelemetryHeaders?: pulumi.Input<string | undefined>;
     /**
      * OpenTelemetry maximum request body size in bytes. If not set, PVE default is `10000000`.
      */
-    opentelemetryMaxBodySize?: pulumi.Input<number>;
+    opentelemetryMaxBodySize?: pulumi.Input<number | undefined>;
     /**
      * OpenTelemetry endpoint path (e.g., `/v1/metrics`).
      */
-    opentelemetryPath?: pulumi.Input<string>;
+    opentelemetryPath?: pulumi.Input<string | undefined>;
     /**
      * Protocol for OpenTelemetry. Choice is between `http` | `https`. If not set, PVE default is `https`.
      */
-    opentelemetryProto?: pulumi.Input<string>;
+    opentelemetryProto?: pulumi.Input<string | undefined>;
     /**
      * OpenTelemetry additional resource attributes as JSON, base64 encoded.
      */
-    opentelemetryResourceAttributes?: pulumi.Input<string>;
+    opentelemetryResourceAttributes?: pulumi.Input<string | undefined>;
     /**
      * OpenTelemetry HTTP request timeout in seconds. If not set, PVE default is `5`.
      */
-    opentelemetryTimeout?: pulumi.Input<number>;
+    opentelemetryTimeout?: pulumi.Input<number | undefined>;
     /**
      * OpenTelemetry verify SSL certificates. If not set, PVE default is `true`.
      */
-    opentelemetryVerifySsl?: pulumi.Input<boolean>;
+    opentelemetryVerifySsl?: pulumi.Input<boolean | undefined>;
     /**
      * Server network port.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * Server dns name or IP address.
      */
-    server?: pulumi.Input<string>;
+    server?: pulumi.Input<string | undefined>;
     /**
      * TCP socket timeout in seconds. If not set, PVE default is `1`.
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
     /**
      * Plugin type. Choice is between `graphite` | `influxdb` | `opentelemetry`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -357,83 +357,83 @@ export interface ServerArgs {
     /**
      * Set this to `true` to disable this metric server. Defaults to `false`.
      */
-    disable?: pulumi.Input<boolean>;
+    disable?: pulumi.Input<boolean | undefined>;
     /**
      * Root graphite path (ex: `proxmox.mycluster.mykey`).
      */
-    graphitePath?: pulumi.Input<string>;
+    graphitePath?: pulumi.Input<string | undefined>;
     /**
      * Protocol to send graphite data. Choice is between `udp` | `tcp`. If not set, PVE default is `udp`.
      */
-    graphiteProto?: pulumi.Input<string>;
+    graphiteProto?: pulumi.Input<string | undefined>;
     /**
      * An API path prefix inserted between `<host>:<port>/` and `/api2/`. Can be useful if the InfluxDB service runs behind a reverse proxy.
      */
-    influxApiPathPrefix?: pulumi.Input<string>;
+    influxApiPathPrefix?: pulumi.Input<string | undefined>;
     /**
      * The InfluxDB bucket/db. Only necessary when using the http v2 api.
      */
-    influxBucket?: pulumi.Input<string>;
+    influxBucket?: pulumi.Input<string | undefined>;
     /**
      * Protocol for InfluxDB. Choice is between `udp` | `http` | `https`. If not set, PVE default is `udp`.
      */
-    influxDbProto?: pulumi.Input<string>;
+    influxDbProto?: pulumi.Input<string | undefined>;
     /**
      * InfluxDB max-body-size in bytes. Requests are batched up to this size. If not set, PVE default is `25000000`.
      */
-    influxMaxBodySize?: pulumi.Input<number>;
+    influxMaxBodySize?: pulumi.Input<number | undefined>;
     /**
      * The InfluxDB organization. Only necessary when using the http v2 api. Has no meaning when using v2 compatibility api.
      */
-    influxOrganization?: pulumi.Input<string>;
+    influxOrganization?: pulumi.Input<string | undefined>;
     /**
      * The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
      */
-    influxToken?: pulumi.Input<string>;
+    influxToken?: pulumi.Input<string | undefined>;
     /**
      * Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
      */
-    influxVerify?: pulumi.Input<boolean>;
+    influxVerify?: pulumi.Input<boolean | undefined>;
     /**
      * MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
      */
-    mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number | undefined>;
     /**
      * Unique name that will be ID of this metric server in PVE.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * OpenTelemetry compression algorithm for requests. Choice is between `none` | `gzip`. If not set, PVE default is `gzip`.
      */
-    opentelemetryCompression?: pulumi.Input<string>;
+    opentelemetryCompression?: pulumi.Input<string | undefined>;
     /**
      * OpenTelemetry custom HTTP headers as JSON, base64 encoded.
      */
-    opentelemetryHeaders?: pulumi.Input<string>;
+    opentelemetryHeaders?: pulumi.Input<string | undefined>;
     /**
      * OpenTelemetry maximum request body size in bytes. If not set, PVE default is `10000000`.
      */
-    opentelemetryMaxBodySize?: pulumi.Input<number>;
+    opentelemetryMaxBodySize?: pulumi.Input<number | undefined>;
     /**
      * OpenTelemetry endpoint path (e.g., `/v1/metrics`).
      */
-    opentelemetryPath?: pulumi.Input<string>;
+    opentelemetryPath?: pulumi.Input<string | undefined>;
     /**
      * Protocol for OpenTelemetry. Choice is between `http` | `https`. If not set, PVE default is `https`.
      */
-    opentelemetryProto?: pulumi.Input<string>;
+    opentelemetryProto?: pulumi.Input<string | undefined>;
     /**
      * OpenTelemetry additional resource attributes as JSON, base64 encoded.
      */
-    opentelemetryResourceAttributes?: pulumi.Input<string>;
+    opentelemetryResourceAttributes?: pulumi.Input<string | undefined>;
     /**
      * OpenTelemetry HTTP request timeout in seconds. If not set, PVE default is `5`.
      */
-    opentelemetryTimeout?: pulumi.Input<number>;
+    opentelemetryTimeout?: pulumi.Input<number | undefined>;
     /**
      * OpenTelemetry verify SSL certificates. If not set, PVE default is `true`.
      */
-    opentelemetryVerifySsl?: pulumi.Input<boolean>;
+    opentelemetryVerifySsl?: pulumi.Input<boolean | undefined>;
     /**
      * Server network port.
      */
@@ -445,7 +445,7 @@ export interface ServerArgs {
     /**
      * TCP socket timeout in seconds. If not set, PVE default is `1`.
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
     /**
      * Plugin type. Choice is between `graphite` | `influxdb` | `opentelemetry`.
      */

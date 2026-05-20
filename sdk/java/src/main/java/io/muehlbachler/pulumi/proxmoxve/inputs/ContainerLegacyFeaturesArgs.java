@@ -48,6 +48,21 @@ public final class ContainerLegacyFeaturesArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * Whether the container supports `mknod()` system call (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * 
+     */
+    @Import(name="mknod")
+    private @Nullable Output<Boolean> mknod;
+
+    /**
+     * @return Whether the container supports `mknod()` system call (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * 
+     */
+    public Optional<Output<Boolean>> mknod() {
+        return Optional.ofNullable(this.mknod);
+    }
+
+    /**
      * List of allowed mount types (&lt;span pulumi-lang-nodejs=&#34;`cifs`&#34; pulumi-lang-dotnet=&#34;`Cifs`&#34; pulumi-lang-go=&#34;`cifs`&#34; pulumi-lang-python=&#34;`cifs`&#34; pulumi-lang-yaml=&#34;`cifs`&#34; pulumi-lang-java=&#34;`cifs`&#34;&gt;`cifs`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`nfs`&#34; pulumi-lang-dotnet=&#34;`Nfs`&#34; pulumi-lang-go=&#34;`nfs`&#34; pulumi-lang-python=&#34;`nfs`&#34; pulumi-lang-yaml=&#34;`nfs`&#34; pulumi-lang-java=&#34;`nfs`&#34;&gt;`nfs`&lt;/span&gt;)
      * 
      */
@@ -82,6 +97,7 @@ public final class ContainerLegacyFeaturesArgs extends com.pulumi.resources.Reso
     private ContainerLegacyFeaturesArgs(ContainerLegacyFeaturesArgs $) {
         this.fuse = $.fuse;
         this.keyctl = $.keyctl;
+        this.mknod = $.mknod;
         this.mounts = $.mounts;
         this.nesting = $.nesting;
     }
@@ -144,6 +160,27 @@ public final class ContainerLegacyFeaturesArgs extends com.pulumi.resources.Reso
          */
         public Builder keyctl(Boolean keyctl) {
             return keyctl(Output.of(keyctl));
+        }
+
+        /**
+         * @param mknod Whether the container supports `mknod()` system call (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mknod(@Nullable Output<Boolean> mknod) {
+            $.mknod = mknod;
+            return this;
+        }
+
+        /**
+         * @param mknod Whether the container supports `mknod()` system call (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mknod(Boolean mknod) {
+            return mknod(Output.of(mknod));
         }
 
         /**

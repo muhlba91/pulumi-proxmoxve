@@ -28,7 +28,7 @@ namespace Pulumi.ProxmoxVE
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var backup = new ProxmoxVE.Index.FileLegacy("backup", new()
+    ///     var backup = new ProxmoxVE.FileLegacy("backup", new()
     ///     {
     ///         ContentType = "backup",
     ///         DatastoreId = "local",
@@ -56,7 +56,7 @@ namespace Pulumi.ProxmoxVE
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ubuntuContainerTemplate = new ProxmoxVE.Index.FileLegacy("ubuntu_container_template", new()
+    ///     var ubuntuContainerTemplate = new ProxmoxVE.FileLegacy("ubuntu_container_template", new()
     ///     {
     ///         ContentType = "iso",
     ///         DatastoreId = "local",
@@ -78,7 +78,7 @@ namespace Pulumi.ProxmoxVE
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ubuntuContainerTemplate = new ProxmoxVE.Index.FileLegacy("ubuntu_container_template", new()
+    ///     var ubuntuContainerTemplate = new ProxmoxVE.FileLegacy("ubuntu_container_template", new()
     ///     {
     ///         ContentType = "import",
     ///         DatastoreId = "local",
@@ -107,14 +107,14 @@ namespace Pulumi.ProxmoxVE
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var cloudConfig = new ProxmoxVE.Index.FileLegacy("cloud_config", new()
+    ///     var cloudConfig = new ProxmoxVE.FileLegacy("cloud_config", new()
     ///     {
     ///         ContentType = "snippets",
     ///         DatastoreId = "local",
     ///         NodeName = "pve",
     ///         SourceRaw = new ProxmoxVE.Inputs.FileLegacySourceRawArgs
     ///         {
-    ///             Data = Std.Index.Trimspace.Invoke(new()
+    ///             Data = Std.Trimspace.Invoke(new()
     ///             {
     ///                 Input = example.PublicKeyOpenssh,
     ///             }).Apply(invoke =&gt; @$"#cloud-config
@@ -151,7 +151,7 @@ namespace Pulumi.ProxmoxVE
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var hookScript = new ProxmoxVE.Index.FileLegacy("hook_script", new()
+    ///     var hookScript = new ProxmoxVE.FileLegacy("hook_script", new()
     ///     {
     ///         ContentType = "snippets",
     ///         DatastoreId = "local",
@@ -182,7 +182,7 @@ namespace Pulumi.ProxmoxVE
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var ubuntuContainerTemplate = new ProxmoxVE.Index.FileLegacy("ubuntu_container_template", new()
+    ///     var ubuntuContainerTemplate = new ProxmoxVE.FileLegacy("ubuntu_container_template", new()
     ///     {
     ///         ContentType = "vztmpl",
     ///         DatastoreId = "local",
@@ -302,6 +302,19 @@ namespace Pulumi.ProxmoxVE
         [Output("timeoutUpload")]
         public Output<int?> TimeoutUpload { get; private set; } = null!;
 
+        /// <summary>
+        /// The SSH upload mode for non-API content types
+        /// (snippets, backups, etc.). Set to `Stream` to pipe the file through an SSH
+        /// shell session (uses `Sudo` where required), or `Sftp` to upload via the SFTP
+        /// subsystem. Use `Sftp` when the target host's SSH server only allows the
+        /// SFTP subsystem; note that the SFTP path does not invoke `Sudo`, so the SSH
+        /// user must have direct write permission to the target directory. Has no
+        /// effect for `Iso`, `Vztmpl`, and `Import` content types, which always use
+        /// the HTTP API. Defaults to `Stream`.
+        /// </summary>
+        [Output("uploadMode")]
+        public Output<string?> UploadMode { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a FileLegacy resource with the given unique name, arguments, and options.
@@ -402,6 +415,19 @@ namespace Pulumi.ProxmoxVE
         [Input("timeoutUpload")]
         public Input<int>? TimeoutUpload { get; set; }
 
+        /// <summary>
+        /// The SSH upload mode for non-API content types
+        /// (snippets, backups, etc.). Set to `Stream` to pipe the file through an SSH
+        /// shell session (uses `Sudo` where required), or `Sftp` to upload via the SFTP
+        /// subsystem. Use `Sftp` when the target host's SSH server only allows the
+        /// SFTP subsystem; note that the SFTP path does not invoke `Sudo`, so the SSH
+        /// user must have direct write permission to the target directory. Has no
+        /// effect for `Iso`, `Vztmpl`, and `Import` content types, which always use
+        /// the HTTP API. Defaults to `Stream`.
+        /// </summary>
+        [Input("uploadMode")]
+        public Input<string>? UploadMode { get; set; }
+
         public FileLegacyArgs()
         {
         }
@@ -486,6 +512,19 @@ namespace Pulumi.ProxmoxVE
         /// </summary>
         [Input("timeoutUpload")]
         public Input<int>? TimeoutUpload { get; set; }
+
+        /// <summary>
+        /// The SSH upload mode for non-API content types
+        /// (snippets, backups, etc.). Set to `Stream` to pipe the file through an SSH
+        /// shell session (uses `Sudo` where required), or `Sftp` to upload via the SFTP
+        /// subsystem. Use `Sftp` when the target host's SSH server only allows the
+        /// SFTP subsystem; note that the SFTP path does not invoke `Sudo`, so the SSH
+        /// user must have direct write permission to the target directory. Has no
+        /// effect for `Iso`, `Vztmpl`, and `Import` content types, which always use
+        /// the HTTP API. Defaults to `Stream`.
+        /// </summary>
+        [Input("uploadMode")]
+        public Input<string>? UploadMode { get; set; }
 
         public FileLegacyState()
         {

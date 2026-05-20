@@ -120,8 +120,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetContainerLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -135,7 +135,7 @@ public final class ProxmoxveFunctions {
      *     public static void stack(Context ctx) {
      *         final var testContainer = ProxmoxveFunctions.getContainerLegacy(GetContainerLegacyArgs.builder()
      *             .nodeName("test")
-     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:2,14-17)))
+     *             .vmId(100)
      *             .build());
      * 
      *     }
@@ -163,8 +163,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetContainerLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -178,7 +178,7 @@ public final class ProxmoxveFunctions {
      *     public static void stack(Context ctx) {
      *         final var testContainer = ProxmoxveFunctions.getContainerLegacy(GetContainerLegacyArgs.builder()
      *             .nodeName("test")
-     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:2,14-17)))
+     *             .vmId(100)
      *             .build());
      * 
      *     }
@@ -206,8 +206,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetContainerLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -221,7 +221,7 @@ public final class ProxmoxveFunctions {
      *     public static void stack(Context ctx) {
      *         final var testContainer = ProxmoxveFunctions.getContainerLegacy(GetContainerLegacyArgs.builder()
      *             .nodeName("test")
-     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:2,14-17)))
+     *             .vmId(100)
      *             .build());
      * 
      *     }
@@ -249,8 +249,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetContainerLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -264,7 +264,7 @@ public final class ProxmoxveFunctions {
      *     public static void stack(Context ctx) {
      *         final var testContainer = ProxmoxveFunctions.getContainerLegacy(GetContainerLegacyArgs.builder()
      *             .nodeName("test")
-     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:2,14-17)))
+     *             .vmId(100)
      *             .build());
      * 
      *     }
@@ -292,8 +292,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetContainerLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -307,7 +307,7 @@ public final class ProxmoxveFunctions {
      *     public static void stack(Context ctx) {
      *         final var testContainer = ProxmoxveFunctions.getContainerLegacy(GetContainerLegacyArgs.builder()
      *             .nodeName("test")
-     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:2,14-17)))
+     *             .vmId(100)
      *             .build());
      * 
      *     }
@@ -335,8 +335,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetContainersLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -404,8 +404,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetContainersLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -473,8 +473,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetContainersLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -542,8 +542,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetContainersLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -611,8 +611,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetContainersLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -680,8 +680,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetContainersLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -749,8 +749,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetContainersLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -898,8 +898,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetDnsLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -940,8 +940,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetDnsLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -982,8 +982,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetDnsLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1024,8 +1024,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetDnsLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1066,8 +1066,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetDnsLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1111,8 +1111,8 @@ public final class ProxmoxveFunctions {
      * import io.muehlbachler.pulumi.proxmoxve.Vm;
      * import io.muehlbachler.pulumi.proxmoxve.VmArgs;
      * import com.pulumi.proxmoxve.inputs.VmCpuArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1157,20 +1157,20 @@ public final class ProxmoxveFunctions {
      *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
      *         var example = new Vm("example", VmArgs.builder()
      *             .nodeName("pve")
-     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:53,14-17)))
+     *             .vmId(100)
      *             .cdrom(VmCdromArgs.builder()
      *                 .fileId(ubuntuIso.id())
      *                 .build())
      *             .cpu(VmCpuArgs.builder()
-     *                 .cores(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:59,13-14)))
+     *                 .cores(2)
      *                 .build())
-     *             .memory(List.of(Map.of("dedicated", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:62,17-21)))))
-     *             .disk(List.of(Map.ofEntries(
+     *             .memory(Arrays.asList(Map.of("dedicated", 2048)))
+     *             .disk(Arrays.asList(Map.ofEntries(
      *                 Map.entry("datastoreId", "local-lvm"),
      *                 Map.entry("fileFormat", "qcow2"),
-     *                 Map.entry("size", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(20) (example.pp:67,19-21)))
+     *                 Map.entry("size", 20)
      *             )))
-     *             .networkDevice(List.of(Map.of("bridge", "vmbr0")))
+     *             .networkDevice(Arrays.asList(Map.of("bridge", "vmbr0")))
      *             .build());
      * 
      *     }
@@ -1201,8 +1201,8 @@ public final class ProxmoxveFunctions {
      * import io.muehlbachler.pulumi.proxmoxve.Vm;
      * import io.muehlbachler.pulumi.proxmoxve.VmArgs;
      * import com.pulumi.proxmoxve.inputs.VmCpuArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1247,20 +1247,20 @@ public final class ProxmoxveFunctions {
      *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
      *         var example = new Vm("example", VmArgs.builder()
      *             .nodeName("pve")
-     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:53,14-17)))
+     *             .vmId(100)
      *             .cdrom(VmCdromArgs.builder()
      *                 .fileId(ubuntuIso.id())
      *                 .build())
      *             .cpu(VmCpuArgs.builder()
-     *                 .cores(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:59,13-14)))
+     *                 .cores(2)
      *                 .build())
-     *             .memory(List.of(Map.of("dedicated", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:62,17-21)))))
-     *             .disk(List.of(Map.ofEntries(
+     *             .memory(Arrays.asList(Map.of("dedicated", 2048)))
+     *             .disk(Arrays.asList(Map.ofEntries(
      *                 Map.entry("datastoreId", "local-lvm"),
      *                 Map.entry("fileFormat", "qcow2"),
-     *                 Map.entry("size", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(20) (example.pp:67,19-21)))
+     *                 Map.entry("size", 20)
      *             )))
-     *             .networkDevice(List.of(Map.of("bridge", "vmbr0")))
+     *             .networkDevice(Arrays.asList(Map.of("bridge", "vmbr0")))
      *             .build());
      * 
      *     }
@@ -1291,8 +1291,8 @@ public final class ProxmoxveFunctions {
      * import io.muehlbachler.pulumi.proxmoxve.Vm;
      * import io.muehlbachler.pulumi.proxmoxve.VmArgs;
      * import com.pulumi.proxmoxve.inputs.VmCpuArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1337,20 +1337,20 @@ public final class ProxmoxveFunctions {
      *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
      *         var example = new Vm("example", VmArgs.builder()
      *             .nodeName("pve")
-     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:53,14-17)))
+     *             .vmId(100)
      *             .cdrom(VmCdromArgs.builder()
      *                 .fileId(ubuntuIso.id())
      *                 .build())
      *             .cpu(VmCpuArgs.builder()
-     *                 .cores(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:59,13-14)))
+     *                 .cores(2)
      *                 .build())
-     *             .memory(List.of(Map.of("dedicated", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:62,17-21)))))
-     *             .disk(List.of(Map.ofEntries(
+     *             .memory(Arrays.asList(Map.of("dedicated", 2048)))
+     *             .disk(Arrays.asList(Map.ofEntries(
      *                 Map.entry("datastoreId", "local-lvm"),
      *                 Map.entry("fileFormat", "qcow2"),
-     *                 Map.entry("size", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(20) (example.pp:67,19-21)))
+     *                 Map.entry("size", 20)
      *             )))
-     *             .networkDevice(List.of(Map.of("bridge", "vmbr0")))
+     *             .networkDevice(Arrays.asList(Map.of("bridge", "vmbr0")))
      *             .build());
      * 
      *     }
@@ -1381,8 +1381,8 @@ public final class ProxmoxveFunctions {
      * import io.muehlbachler.pulumi.proxmoxve.Vm;
      * import io.muehlbachler.pulumi.proxmoxve.VmArgs;
      * import com.pulumi.proxmoxve.inputs.VmCpuArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1427,20 +1427,20 @@ public final class ProxmoxveFunctions {
      *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
      *         var example = new Vm("example", VmArgs.builder()
      *             .nodeName("pve")
-     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:53,14-17)))
+     *             .vmId(100)
      *             .cdrom(VmCdromArgs.builder()
      *                 .fileId(ubuntuIso.id())
      *                 .build())
      *             .cpu(VmCpuArgs.builder()
-     *                 .cores(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:59,13-14)))
+     *                 .cores(2)
      *                 .build())
-     *             .memory(List.of(Map.of("dedicated", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:62,17-21)))))
-     *             .disk(List.of(Map.ofEntries(
+     *             .memory(Arrays.asList(Map.of("dedicated", 2048)))
+     *             .disk(Arrays.asList(Map.ofEntries(
      *                 Map.entry("datastoreId", "local-lvm"),
      *                 Map.entry("fileFormat", "qcow2"),
-     *                 Map.entry("size", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(20) (example.pp:67,19-21)))
+     *                 Map.entry("size", 20)
      *             )))
-     *             .networkDevice(List.of(Map.of("bridge", "vmbr0")))
+     *             .networkDevice(Arrays.asList(Map.of("bridge", "vmbr0")))
      *             .build());
      * 
      *     }
@@ -1471,8 +1471,8 @@ public final class ProxmoxveFunctions {
      * import io.muehlbachler.pulumi.proxmoxve.Vm;
      * import io.muehlbachler.pulumi.proxmoxve.VmArgs;
      * import com.pulumi.proxmoxve.inputs.VmCpuArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1517,20 +1517,20 @@ public final class ProxmoxveFunctions {
      *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
      *         var example = new Vm("example", VmArgs.builder()
      *             .nodeName("pve")
-     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:53,14-17)))
+     *             .vmId(100)
      *             .cdrom(VmCdromArgs.builder()
      *                 .fileId(ubuntuIso.id())
      *                 .build())
      *             .cpu(VmCpuArgs.builder()
-     *                 .cores(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:59,13-14)))
+     *                 .cores(2)
      *                 .build())
-     *             .memory(List.of(Map.of("dedicated", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:62,17-21)))))
-     *             .disk(List.of(Map.ofEntries(
+     *             .memory(Arrays.asList(Map.of("dedicated", 2048)))
+     *             .disk(Arrays.asList(Map.ofEntries(
      *                 Map.entry("datastoreId", "local-lvm"),
      *                 Map.entry("fileFormat", "qcow2"),
-     *                 Map.entry("size", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(20) (example.pp:67,19-21)))
+     *                 Map.entry("size", 20)
      *             )))
-     *             .networkDevice(List.of(Map.of("bridge", "vmbr0")))
+     *             .networkDevice(Arrays.asList(Map.of("bridge", "vmbr0")))
      *             .build());
      * 
      *     }
@@ -1567,8 +1567,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.proxmoxve.inputs.VmLegacyMemoryArgs;
      * import com.pulumi.proxmoxve.inputs.VmLegacyDiskArgs;
      * import com.pulumi.proxmoxve.inputs.VmLegacyNetworkDeviceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1613,20 +1613,20 @@ public final class ProxmoxveFunctions {
      *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
      *         var example = new VmLegacy("example", VmLegacyArgs.builder()
      *             .nodeName("pve")
-     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:53,14-17)))
+     *             .vmId(100)
      *             .cdrom(VmLegacyCdromArgs.builder()
      *                 .fileId(ubuntuIso.id())
      *                 .build())
      *             .cpu(VmLegacyCpuArgs.builder()
-     *                 .cores(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:59,13-14)))
+     *                 .cores(2)
      *                 .build())
      *             .memory(VmLegacyMemoryArgs.builder()
-     *                 .dedicated(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:62,17-21)))
+     *                 .dedicated(2048)
      *                 .build())
      *             .disks(VmLegacyDiskArgs.builder()
      *                 .datastoreId("local-lvm")
      *                 .fileFormat("qcow2")
-     *                 .size(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(20) (example.pp:67,19-21)))
+     *                 .size(20)
      *                 .build())
      *             .networkDevices(VmLegacyNetworkDeviceArgs.builder()
      *                 .bridge("vmbr0")
@@ -1667,8 +1667,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.proxmoxve.inputs.VmLegacyMemoryArgs;
      * import com.pulumi.proxmoxve.inputs.VmLegacyDiskArgs;
      * import com.pulumi.proxmoxve.inputs.VmLegacyNetworkDeviceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1713,20 +1713,20 @@ public final class ProxmoxveFunctions {
      *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
      *         var example = new VmLegacy("example", VmLegacyArgs.builder()
      *             .nodeName("pve")
-     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:53,14-17)))
+     *             .vmId(100)
      *             .cdrom(VmLegacyCdromArgs.builder()
      *                 .fileId(ubuntuIso.id())
      *                 .build())
      *             .cpu(VmLegacyCpuArgs.builder()
-     *                 .cores(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:59,13-14)))
+     *                 .cores(2)
      *                 .build())
      *             .memory(VmLegacyMemoryArgs.builder()
-     *                 .dedicated(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:62,17-21)))
+     *                 .dedicated(2048)
      *                 .build())
      *             .disks(VmLegacyDiskArgs.builder()
      *                 .datastoreId("local-lvm")
      *                 .fileFormat("qcow2")
-     *                 .size(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(20) (example.pp:67,19-21)))
+     *                 .size(20)
      *                 .build())
      *             .networkDevices(VmLegacyNetworkDeviceArgs.builder()
      *                 .bridge("vmbr0")
@@ -1767,8 +1767,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.proxmoxve.inputs.VmLegacyMemoryArgs;
      * import com.pulumi.proxmoxve.inputs.VmLegacyDiskArgs;
      * import com.pulumi.proxmoxve.inputs.VmLegacyNetworkDeviceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1813,20 +1813,20 @@ public final class ProxmoxveFunctions {
      *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
      *         var example = new VmLegacy("example", VmLegacyArgs.builder()
      *             .nodeName("pve")
-     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:53,14-17)))
+     *             .vmId(100)
      *             .cdrom(VmLegacyCdromArgs.builder()
      *                 .fileId(ubuntuIso.id())
      *                 .build())
      *             .cpu(VmLegacyCpuArgs.builder()
-     *                 .cores(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:59,13-14)))
+     *                 .cores(2)
      *                 .build())
      *             .memory(VmLegacyMemoryArgs.builder()
-     *                 .dedicated(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:62,17-21)))
+     *                 .dedicated(2048)
      *                 .build())
      *             .disks(VmLegacyDiskArgs.builder()
      *                 .datastoreId("local-lvm")
      *                 .fileFormat("qcow2")
-     *                 .size(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(20) (example.pp:67,19-21)))
+     *                 .size(20)
      *                 .build())
      *             .networkDevices(VmLegacyNetworkDeviceArgs.builder()
      *                 .bridge("vmbr0")
@@ -1867,8 +1867,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.proxmoxve.inputs.VmLegacyMemoryArgs;
      * import com.pulumi.proxmoxve.inputs.VmLegacyDiskArgs;
      * import com.pulumi.proxmoxve.inputs.VmLegacyNetworkDeviceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1913,20 +1913,20 @@ public final class ProxmoxveFunctions {
      *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
      *         var example = new VmLegacy("example", VmLegacyArgs.builder()
      *             .nodeName("pve")
-     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:53,14-17)))
+     *             .vmId(100)
      *             .cdrom(VmLegacyCdromArgs.builder()
      *                 .fileId(ubuntuIso.id())
      *                 .build())
      *             .cpu(VmLegacyCpuArgs.builder()
-     *                 .cores(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:59,13-14)))
+     *                 .cores(2)
      *                 .build())
      *             .memory(VmLegacyMemoryArgs.builder()
-     *                 .dedicated(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:62,17-21)))
+     *                 .dedicated(2048)
      *                 .build())
      *             .disks(VmLegacyDiskArgs.builder()
      *                 .datastoreId("local-lvm")
      *                 .fileFormat("qcow2")
-     *                 .size(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(20) (example.pp:67,19-21)))
+     *                 .size(20)
      *                 .build())
      *             .networkDevices(VmLegacyNetworkDeviceArgs.builder()
      *                 .bridge("vmbr0")
@@ -1967,8 +1967,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.proxmoxve.inputs.VmLegacyMemoryArgs;
      * import com.pulumi.proxmoxve.inputs.VmLegacyDiskArgs;
      * import com.pulumi.proxmoxve.inputs.VmLegacyNetworkDeviceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2013,20 +2013,20 @@ public final class ProxmoxveFunctions {
      *         ctx.export("containerTemplateFormat", ubuntuContainerTemplate.fileFormat());
      *         var example = new VmLegacy("example", VmLegacyArgs.builder()
      *             .nodeName("pve")
-     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:53,14-17)))
+     *             .vmId(100)
      *             .cdrom(VmLegacyCdromArgs.builder()
      *                 .fileId(ubuntuIso.id())
      *                 .build())
      *             .cpu(VmLegacyCpuArgs.builder()
-     *                 .cores(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:59,13-14)))
+     *                 .cores(2)
      *                 .build())
      *             .memory(VmLegacyMemoryArgs.builder()
-     *                 .dedicated(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:62,17-21)))
+     *                 .dedicated(2048)
      *                 .build())
      *             .disks(VmLegacyDiskArgs.builder()
      *                 .datastoreId("local-lvm")
      *                 .fileFormat("qcow2")
-     *                 .size(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(20) (example.pp:67,19-21)))
+     *                 .size(20)
      *                 .build())
      *             .networkDevices(VmLegacyNetworkDeviceArgs.builder()
      *                 .bridge("vmbr0")
@@ -2118,8 +2118,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetGroupLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2160,8 +2160,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetGroupLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2202,8 +2202,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetGroupLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2244,8 +2244,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetGroupLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2286,8 +2286,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetGroupLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2327,8 +2327,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2366,8 +2366,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2405,8 +2405,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2444,8 +2444,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2483,8 +2483,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2522,8 +2522,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2561,8 +2561,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2730,8 +2730,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2770,8 +2770,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2810,8 +2810,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2850,8 +2850,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2890,8 +2890,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2930,8 +2930,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2970,8 +2970,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3012,8 +3012,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3054,8 +3054,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3096,8 +3096,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3138,8 +3138,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3180,8 +3180,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3222,8 +3222,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3264,8 +3264,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3435,8 +3435,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetHaresourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3486,8 +3486,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetHaresourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3537,8 +3537,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetHaresourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3588,8 +3588,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetHaresourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3639,8 +3639,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetHaresourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3690,8 +3690,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetHaresourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3741,8 +3741,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetHaresourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3794,8 +3794,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetHaresourcesLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3847,8 +3847,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetHaresourcesLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3900,8 +3900,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetHaresourcesLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3953,8 +3953,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetHaresourcesLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4006,8 +4006,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetHaresourcesLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4059,8 +4059,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetHaresourcesLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4112,8 +4112,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetHaresourcesLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4163,8 +4163,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetHostsLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4205,8 +4205,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetHostsLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4247,8 +4247,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetHostsLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4289,8 +4289,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetHostsLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4331,8 +4331,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetHostsLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4373,8 +4373,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetNodeLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4423,8 +4423,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetNodeLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4473,8 +4473,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetNodeLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4523,8 +4523,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetNodeLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4573,8 +4573,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetNodeLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4622,8 +4622,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4666,8 +4666,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4710,8 +4710,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4754,8 +4754,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4798,8 +4798,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4842,8 +4842,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4886,8 +4886,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4931,8 +4931,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetPoolLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4973,8 +4973,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetPoolLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5015,8 +5015,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetPoolLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5057,8 +5057,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetPoolLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5099,8 +5099,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetPoolLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5140,8 +5140,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5179,8 +5179,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5218,8 +5218,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5257,8 +5257,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5296,8 +5296,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5335,8 +5335,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5374,8 +5374,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5414,8 +5414,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetReplicationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5463,8 +5463,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetReplicationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5512,8 +5512,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetReplicationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5561,8 +5561,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetReplicationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5610,8 +5610,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetReplicationArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5661,8 +5661,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetReplicationLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5712,8 +5712,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetReplicationLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5763,8 +5763,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetReplicationLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5814,8 +5814,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetReplicationLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5865,8 +5865,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetReplicationLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5913,8 +5913,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5954,8 +5954,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5995,8 +5995,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6036,8 +6036,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6077,8 +6077,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6118,8 +6118,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6159,8 +6159,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6202,8 +6202,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6245,8 +6245,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6288,8 +6288,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6331,8 +6331,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6374,8 +6374,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6417,8 +6417,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6460,8 +6460,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6502,8 +6502,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetRoleLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6544,8 +6544,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetRoleLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6586,8 +6586,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetRoleLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6628,8 +6628,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetRoleLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6670,8 +6670,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetRoleLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6711,8 +6711,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6750,8 +6750,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6789,8 +6789,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6828,8 +6828,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6867,8 +6867,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6906,8 +6906,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6945,8 +6945,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6985,8 +6985,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetTimeLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7027,8 +7027,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetTimeLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7069,8 +7069,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetTimeLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7111,8 +7111,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetTimeLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7153,8 +7153,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetTimeLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7195,8 +7195,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetUserLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7237,8 +7237,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetUserLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7279,8 +7279,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetUserLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7321,8 +7321,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetUserLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7363,8 +7363,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetUserLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7404,8 +7404,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7443,8 +7443,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7482,8 +7482,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7521,8 +7521,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7560,8 +7560,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7599,8 +7599,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7638,8 +7638,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7677,8 +7677,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7721,8 +7721,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7765,8 +7765,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7809,8 +7809,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7853,8 +7853,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7897,8 +7897,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7941,8 +7941,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7987,8 +7987,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8033,8 +8033,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8079,8 +8079,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8125,8 +8125,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8171,8 +8171,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8217,8 +8217,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8263,8 +8263,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8390,8 +8390,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetVmLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8405,7 +8405,7 @@ public final class ProxmoxveFunctions {
      *     public static void stack(Context ctx) {
      *         final var testVm = ProxmoxveFunctions.getVmLegacy(GetVmLegacyArgs.builder()
      *             .nodeName("test")
-     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:2,14-17)))
+     *             .vmId(100)
      *             .build());
      * 
      *     }
@@ -8435,8 +8435,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetVmLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8450,7 +8450,7 @@ public final class ProxmoxveFunctions {
      *     public static void stack(Context ctx) {
      *         final var testVm = ProxmoxveFunctions.getVmLegacy(GetVmLegacyArgs.builder()
      *             .nodeName("test")
-     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:2,14-17)))
+     *             .vmId(100)
      *             .build());
      * 
      *     }
@@ -8480,8 +8480,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetVmLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8495,7 +8495,7 @@ public final class ProxmoxveFunctions {
      *     public static void stack(Context ctx) {
      *         final var testVm = ProxmoxveFunctions.getVmLegacy(GetVmLegacyArgs.builder()
      *             .nodeName("test")
-     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:2,14-17)))
+     *             .vmId(100)
      *             .build());
      * 
      *     }
@@ -8525,8 +8525,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetVmLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8540,7 +8540,7 @@ public final class ProxmoxveFunctions {
      *     public static void stack(Context ctx) {
      *         final var testVm = ProxmoxveFunctions.getVmLegacy(GetVmLegacyArgs.builder()
      *             .nodeName("test")
-     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:2,14-17)))
+     *             .vmId(100)
      *             .build());
      * 
      *     }
@@ -8570,8 +8570,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetVmLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8585,7 +8585,7 @@ public final class ProxmoxveFunctions {
      *     public static void stack(Context ctx) {
      *         final var testVm = ProxmoxveFunctions.getVmLegacy(GetVmLegacyArgs.builder()
      *             .nodeName("test")
-     *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:2,14-17)))
+     *             .vmId(100)
      *             .build());
      * 
      *     }
@@ -8613,8 +8613,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetVmsLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8682,8 +8682,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetVmsLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8751,8 +8751,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetVmsLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8820,8 +8820,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetVmsLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8889,8 +8889,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetVmsLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8958,8 +8958,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetVmsLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9027,8 +9027,8 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetVmsLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

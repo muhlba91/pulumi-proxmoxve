@@ -28,7 +28,7 @@ namespace Pulumi.ProxmoxVE.Sdn
     ///     var exampleZone1 = new ProxmoxVE.Sdn.Zone.Simple("example_zone_1", new()
     ///     {
     ///         ResourceId = "zone1",
-    ///         Mtu = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1500) (example.pp:7,16-20)),
+    ///         Mtu = 1500,
     ///         Dns = "1.1.1.1",
     ///         DnsZone = "example.com",
     ///         Ipam = "pve",
@@ -45,7 +45,7 @@ namespace Pulumi.ProxmoxVE.Sdn
     ///     var exampleZone2 = new ProxmoxVE.Sdn.Zone.Simple("example_zone_2", new()
     ///     {
     ///         ResourceId = "zone2",
-    ///         Mtu = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1500) (example.pp:25,16-20)),
+    ///         Mtu = 1500,
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =

@@ -93,15 +93,15 @@ export interface OspfState {
     /**
      * OSPF area. Either a IPv4 address or a 32-bit number. Gets validated in rust.
      */
-    area?: pulumi.Input<string>;
+    area?: pulumi.Input<string | undefined>;
     /**
      * IPv4 prefix cidr for the fabric.
      */
-    ipPrefix?: pulumi.Input<string>;
+    ipPrefix?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the SDN fabric.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
 }
 
 /**

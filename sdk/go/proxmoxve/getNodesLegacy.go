@@ -24,21 +24,22 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// example, err := proxmoxve.GetNodesLegacy(ctx, map[string]interface{}{
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ctx.Export("dataProxmoxVirtualEnvironmentNodes", interface{}Map{
-// "names": example.Names,
-// "cpuCount": example.CpuCounts,
-// "online": example.Onlines,
-// })
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := proxmoxve.GetNodesLegacy(ctx, map[string]interface{}{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("dataProxmoxVirtualEnvironmentNodes", pulumi.Map{
+//				"names":    example.Names,
+//				"cpuCount": example.CpuCounts,
+//				"online":   example.Onlines,
+//			})
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetNodesLegacy(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetNodesLegacyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

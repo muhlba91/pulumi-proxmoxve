@@ -20,15 +20,15 @@ __all__ = [
 ]
 
 class GroupLegacyRuleArgsDict(TypedDict):
-    action: NotRequired[pulumi.Input[_builtins.str]]
+    action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Rule action (`ACCEPT`, `DROP`, `REJECT`).
     """
-    comment: NotRequired[pulumi.Input[_builtins.str]]
+    comment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Rule comment.
     """
-    dest: NotRequired[pulumi.Input[_builtins.str]]
+    dest: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Restrict packet destination address. This can refer to
     a single IP address, an IP set ('+ipsetname') or an IP alias
@@ -37,7 +37,7 @@ class GroupLegacyRuleArgsDict(TypedDict):
     (entries are separated by comma). Please do not mix IPv4 and IPv6
     addresses inside such lists.
     """
-    dport: NotRequired[pulumi.Input[_builtins.str]]
+    dport: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Restrict TCP/UDP destination port. You can use
     service names or simple numbers (0-65535), as defined in '/etc/
@@ -45,40 +45,40 @@ class GroupLegacyRuleArgsDict(TypedDict):
     `80:85`, and you can use comma separated list to match several ports or
     ranges.
     """
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable this rule. Defaults to `true`.
     """
-    iface: NotRequired[pulumi.Input[_builtins.str]]
+    iface: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Network interface name. You have to use network
     configuration key names for VMs and containers ('net\\d+'). Host related
     rules can use arbitrary strings.
     """
-    log: NotRequired[pulumi.Input[_builtins.str]]
+    log: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Log level for this rule (`emerg`, `alert`, `crit`,
     `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
     """
-    macro: NotRequired[pulumi.Input[_builtins.str]]
+    macro: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Macro name. Use predefined standard macro
     from <https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions>
     """
-    pos: NotRequired[pulumi.Input[_builtins.int]]
+    pos: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Position of the rule in the list.
     """
-    proto: NotRequired[pulumi.Input[_builtins.str]]
+    proto: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Restrict packet protocol. You can use protocol names
     as defined in '/etc/protocols'.
     """
-    security_group: NotRequired[pulumi.Input[_builtins.str]]
+    security_group: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Security group name
     """
-    source: NotRequired[pulumi.Input[_builtins.str]]
+    source: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Restrict packet source address. This can refer
     to a single IP address, an IP set ('+ipsetname') or an IP alias
@@ -87,7 +87,7 @@ class GroupLegacyRuleArgsDict(TypedDict):
     entries are separated by comma). Please do not mix IPv4 and IPv6
     addresses inside such lists.
     """
-    sport: NotRequired[pulumi.Input[_builtins.str]]
+    sport: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Restrict TCP/UDP source port. You can use
     service names or simple numbers (0-65535), as defined in '/etc/
@@ -95,7 +95,7 @@ class GroupLegacyRuleArgsDict(TypedDict):
     `80:85`, and you can use comma separated list to match several ports or
     ranges.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Rule type (`in`, `out`, `forward`).
     """
@@ -103,20 +103,20 @@ class GroupLegacyRuleArgsDict(TypedDict):
 @pulumi.input_type
 class GroupLegacyRuleArgs:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 dest: Optional[pulumi.Input[_builtins.str]] = None,
-                 dport: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 iface: Optional[pulumi.Input[_builtins.str]] = None,
-                 log: Optional[pulumi.Input[_builtins.str]] = None,
-                 macro: Optional[pulumi.Input[_builtins.str]] = None,
-                 pos: Optional[pulumi.Input[_builtins.int]] = None,
-                 proto: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 sport: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 dest: pulumi.Input[Optional[_builtins.str]] = None,
+                 dport: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 iface: pulumi.Input[Optional[_builtins.str]] = None,
+                 log: pulumi.Input[Optional[_builtins.str]] = None,
+                 macro: pulumi.Input[Optional[_builtins.str]] = None,
+                 pos: pulumi.Input[Optional[_builtins.int]] = None,
+                 proto: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 sport: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] action: Rule action (`ACCEPT`, `DROP`, `REJECT`).
         :param pulumi.Input[_builtins.str] comment: Rule comment.
@@ -187,31 +187,31 @@ class GroupLegacyRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule action (`ACCEPT`, `DROP`, `REJECT`).
         """
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule comment.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def dest(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dest(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Restrict packet destination address. This can refer to
         a single IP address, an IP set ('+ipsetname') or an IP alias
@@ -223,12 +223,12 @@ class GroupLegacyRuleArgs:
         return pulumi.get(self, "dest")
 
     @dest.setter
-    def dest(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dest(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dest", value)
 
     @_builtins.property
     @pulumi.getter
-    def dport(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dport(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Restrict TCP/UDP destination port. You can use
         service names or simple numbers (0-65535), as defined in '/etc/
@@ -239,24 +239,24 @@ class GroupLegacyRuleArgs:
         return pulumi.get(self, "dport")
 
     @dport.setter
-    def dport(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dport(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dport", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable this rule. Defaults to `true`.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def iface(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def iface(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Network interface name. You have to use network
         configuration key names for VMs and containers ('net\\d+'). Host related
@@ -265,12 +265,12 @@ class GroupLegacyRuleArgs:
         return pulumi.get(self, "iface")
 
     @iface.setter
-    def iface(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def iface(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "iface", value)
 
     @_builtins.property
     @pulumi.getter
-    def log(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Log level for this rule (`emerg`, `alert`, `crit`,
         `err`, `warning`, `notice`, `info`, `debug`, `nolog`).
@@ -278,12 +278,12 @@ class GroupLegacyRuleArgs:
         return pulumi.get(self, "log")
 
     @log.setter
-    def log(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log", value)
 
     @_builtins.property
     @pulumi.getter
-    def macro(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def macro(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Macro name. Use predefined standard macro
         from <https://pve.proxmox.com/pve-docs/pve-admin-guide.html#_firewall_macro_definitions>
@@ -291,24 +291,24 @@ class GroupLegacyRuleArgs:
         return pulumi.get(self, "macro")
 
     @macro.setter
-    def macro(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def macro(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "macro", value)
 
     @_builtins.property
     @pulumi.getter
-    def pos(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def pos(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Position of the rule in the list.
         """
         return pulumi.get(self, "pos")
 
     @pos.setter
-    def pos(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def pos(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "pos", value)
 
     @_builtins.property
     @pulumi.getter
-    def proto(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def proto(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Restrict packet protocol. You can use protocol names
         as defined in '/etc/protocols'.
@@ -316,24 +316,24 @@ class GroupLegacyRuleArgs:
         return pulumi.get(self, "proto")
 
     @proto.setter
-    def proto(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def proto(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "proto", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroup")
-    def security_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Security group name
         """
         return pulumi.get(self, "security_group")
 
     @security_group.setter
-    def security_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Restrict packet source address. This can refer
         to a single IP address, an IP set ('+ipsetname') or an IP alias
@@ -345,12 +345,12 @@ class GroupLegacyRuleArgs:
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter
-    def sport(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sport(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Restrict TCP/UDP source port. You can use
         service names or simple numbers (0-65535), as defined in '/etc/
@@ -361,19 +361,19 @@ class GroupLegacyRuleArgs:
         return pulumi.get(self, "sport")
 
     @sport.setter
-    def sport(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sport(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sport", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Rule type (`in`, `out`, `forward`).
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 

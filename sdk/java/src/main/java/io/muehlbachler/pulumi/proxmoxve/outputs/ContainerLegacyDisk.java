@@ -20,8 +20,8 @@ public final class ContainerLegacyDisk {
      */
     private @Nullable Boolean acl;
     /**
-     * @return The identifier for the datastore to create the
-     * disk in (defaults to &lt;span pulumi-lang-nodejs=&#34;`local`&#34; pulumi-lang-dotnet=&#34;`Local`&#34; pulumi-lang-go=&#34;`local`&#34; pulumi-lang-python=&#34;`local`&#34; pulumi-lang-yaml=&#34;`local`&#34; pulumi-lang-java=&#34;`local`&#34;&gt;`local`&lt;/span&gt;).
+     * @return The Proxmox storage ID where the rootfs
+     * volume is created (defaults to &lt;span pulumi-lang-nodejs=&#34;`local`&#34; pulumi-lang-dotnet=&#34;`Local`&#34; pulumi-lang-go=&#34;`local`&#34; pulumi-lang-python=&#34;`local`&#34; pulumi-lang-yaml=&#34;`local`&#34; pulumi-lang-java=&#34;`local`&#34;&gt;`local`&lt;/span&gt;).
      * 
      */
     private @Nullable String datastoreId;
@@ -63,8 +63,8 @@ public final class ContainerLegacyDisk {
         return Optional.ofNullable(this.acl);
     }
     /**
-     * @return The identifier for the datastore to create the
-     * disk in (defaults to &lt;span pulumi-lang-nodejs=&#34;`local`&#34; pulumi-lang-dotnet=&#34;`Local`&#34; pulumi-lang-go=&#34;`local`&#34; pulumi-lang-python=&#34;`local`&#34; pulumi-lang-yaml=&#34;`local`&#34; pulumi-lang-java=&#34;`local`&#34;&gt;`local`&lt;/span&gt;).
+     * @return The Proxmox storage ID where the rootfs
+     * volume is created (defaults to &lt;span pulumi-lang-nodejs=&#34;`local`&#34; pulumi-lang-dotnet=&#34;`Local`&#34; pulumi-lang-go=&#34;`local`&#34; pulumi-lang-python=&#34;`local`&#34; pulumi-lang-yaml=&#34;`local`&#34; pulumi-lang-java=&#34;`local`&#34;&gt;`local`&lt;/span&gt;).
      * 
      */
     public Optional<String> datastoreId() {

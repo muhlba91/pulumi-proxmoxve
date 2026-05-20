@@ -735,8 +735,8 @@ func (o ContainerLegacyDevicePassthroughArrayOutput) Index(i pulumi.IntInput) Co
 type ContainerLegacyDisk struct {
 	// Explicitly enable or disable ACL support
 	Acl *bool `pulumi:"acl"`
-	// The identifier for the datastore to create the
-	// disk in (defaults to `local`).
+	// The Proxmox storage ID where the rootfs
+	// volume is created (defaults to `local`).
 	DatastoreId *string `pulumi:"datastoreId"`
 	// List of extra mount options.
 	MountOptions []string `pulumi:"mountOptions"`
@@ -767,8 +767,8 @@ type ContainerLegacyDiskInput interface {
 type ContainerLegacyDiskArgs struct {
 	// Explicitly enable or disable ACL support
 	Acl pulumi.BoolPtrInput `pulumi:"acl"`
-	// The identifier for the datastore to create the
-	// disk in (defaults to `local`).
+	// The Proxmox storage ID where the rootfs
+	// volume is created (defaults to `local`).
 	DatastoreId pulumi.StringPtrInput `pulumi:"datastoreId"`
 	// List of extra mount options.
 	MountOptions pulumi.StringArrayInput `pulumi:"mountOptions"`
@@ -867,8 +867,8 @@ func (o ContainerLegacyDiskOutput) Acl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerLegacyDisk) *bool { return v.Acl }).(pulumi.BoolPtrOutput)
 }
 
-// The identifier for the datastore to create the
-// disk in (defaults to `local`).
+// The Proxmox storage ID where the rootfs
+// volume is created (defaults to `local`).
 func (o ContainerLegacyDiskOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerLegacyDisk) *string { return v.DatastoreId }).(pulumi.StringPtrOutput)
 }
@@ -935,8 +935,8 @@ func (o ContainerLegacyDiskPtrOutput) Acl() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The identifier for the datastore to create the
-// disk in (defaults to `local`).
+// The Proxmox storage ID where the rootfs
+// volume is created (defaults to `local`).
 func (o ContainerLegacyDiskPtrOutput) DatastoreId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerLegacyDisk) *string {
 		if v == nil {
@@ -1004,6 +1004,8 @@ type ContainerLegacyFeatures struct {
 	Fuse *bool `pulumi:"fuse"`
 	// Whether the container supports `keyctl()` system call (defaults to `false`)
 	Keyctl *bool `pulumi:"keyctl"`
+	// Whether the container supports `mknod()` system call (defaults to `false`)
+	Mknod *bool `pulumi:"mknod"`
 	// List of allowed mount types (`cifs` or `nfs`)
 	Mounts []string `pulumi:"mounts"`
 	// Whether the container is nested (defaults to `false`)
@@ -1026,6 +1028,8 @@ type ContainerLegacyFeaturesArgs struct {
 	Fuse pulumi.BoolPtrInput `pulumi:"fuse"`
 	// Whether the container supports `keyctl()` system call (defaults to `false`)
 	Keyctl pulumi.BoolPtrInput `pulumi:"keyctl"`
+	// Whether the container supports `mknod()` system call (defaults to `false`)
+	Mknod pulumi.BoolPtrInput `pulumi:"mknod"`
 	// List of allowed mount types (`cifs` or `nfs`)
 	Mounts pulumi.StringArrayInput `pulumi:"mounts"`
 	// Whether the container is nested (defaults to `false`)
@@ -1119,6 +1123,11 @@ func (o ContainerLegacyFeaturesOutput) Keyctl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerLegacyFeatures) *bool { return v.Keyctl }).(pulumi.BoolPtrOutput)
 }
 
+// Whether the container supports `mknod()` system call (defaults to `false`)
+func (o ContainerLegacyFeaturesOutput) Mknod() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ContainerLegacyFeatures) *bool { return v.Mknod }).(pulumi.BoolPtrOutput)
+}
+
 // List of allowed mount types (`cifs` or `nfs`)
 func (o ContainerLegacyFeaturesOutput) Mounts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ContainerLegacyFeatures) []string { return v.Mounts }).(pulumi.StringArrayOutput)
@@ -1170,6 +1179,16 @@ func (o ContainerLegacyFeaturesPtrOutput) Keyctl() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return v.Keyctl
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether the container supports `mknod()` system call (defaults to `false`)
+func (o ContainerLegacyFeaturesPtrOutput) Mknod() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ContainerLegacyFeatures) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Mknod
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -2514,8 +2533,11 @@ type ContainerLegacyMountPoint struct {
 	// Volume size (only for volume mount points).
 	// Can be specified with a unit suffix (e.g. `10G`).
 	Size *string `pulumi:"size"`
-	// Volume, device or directory to mount into the
-	// container.
+	// Volume reference. Accepts a Proxmox storage ID
+	// (e.g. `local-lvm`) to allocate a new volume, a full PVE volume ID
+	// (e.g. `local-lvm:subvol-108-disk-101`) to mount an existing volume,
+	// or an absolute host path (e.g. `/mnt/bindmounts/shared`) to
+	// bind-mount a host directory.
 	Volume string `pulumi:"volume"`
 }
 
@@ -2557,8 +2579,11 @@ type ContainerLegacyMountPointArgs struct {
 	// Volume size (only for volume mount points).
 	// Can be specified with a unit suffix (e.g. `10G`).
 	Size pulumi.StringPtrInput `pulumi:"size"`
-	// Volume, device or directory to mount into the
-	// container.
+	// Volume reference. Accepts a Proxmox storage ID
+	// (e.g. `local-lvm`) to allocate a new volume, a full PVE volume ID
+	// (e.g. `local-lvm:subvol-108-disk-101`) to mount an existing volume,
+	// or an absolute host path (e.g. `/mnt/bindmounts/shared`) to
+	// bind-mount a host directory.
 	Volume pulumi.StringInput `pulumi:"volume"`
 }
 
@@ -2669,8 +2694,11 @@ func (o ContainerLegacyMountPointOutput) Size() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ContainerLegacyMountPoint) *string { return v.Size }).(pulumi.StringPtrOutput)
 }
 
-// Volume, device or directory to mount into the
-// container.
+// Volume reference. Accepts a Proxmox storage ID
+// (e.g. `local-lvm`) to allocate a new volume, a full PVE volume ID
+// (e.g. `local-lvm:subvol-108-disk-101`) to mount an existing volume,
+// or an absolute host path (e.g. `/mnt/bindmounts/shared`) to
+// bind-mount a host directory.
 func (o ContainerLegacyMountPointOutput) Volume() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerLegacyMountPoint) string { return v.Volume }).(pulumi.StringOutput)
 }
@@ -2706,7 +2734,7 @@ type ContainerLegacyNetworkInterface struct {
 	// used (defaults to `false`).
 	Firewall *bool `pulumi:"firewall"`
 	// Whether the host runs DHCP on this interface's
-	// behalf (defaults to `false`). Requires Proxmox VE 9.0+. Required for
+	// behalf (defaults to `false`). Requires Proxmox VE 9.1+. Required for
 	// application containers that do not include a DHCP client.
 	HostManaged *bool `pulumi:"hostManaged"`
 	// The MAC address.
@@ -2744,7 +2772,7 @@ type ContainerLegacyNetworkInterfaceArgs struct {
 	// used (defaults to `false`).
 	Firewall pulumi.BoolPtrInput `pulumi:"firewall"`
 	// Whether the host runs DHCP on this interface's
-	// behalf (defaults to `false`). Requires Proxmox VE 9.0+. Required for
+	// behalf (defaults to `false`). Requires Proxmox VE 9.1+. Required for
 	// application containers that do not include a DHCP client.
 	HostManaged pulumi.BoolPtrInput `pulumi:"hostManaged"`
 	// The MAC address.
@@ -2830,7 +2858,7 @@ func (o ContainerLegacyNetworkInterfaceOutput) Firewall() pulumi.BoolPtrOutput {
 }
 
 // Whether the host runs DHCP on this interface's
-// behalf (defaults to `false`). Requires Proxmox VE 9.0+. Required for
+// behalf (defaults to `false`). Requires Proxmox VE 9.1+. Required for
 // application containers that do not include a DHCP client.
 func (o ContainerLegacyNetworkInterfaceOutput) HostManaged() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ContainerLegacyNetworkInterface) *bool { return v.HostManaged }).(pulumi.BoolPtrOutput)

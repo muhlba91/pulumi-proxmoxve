@@ -111,5 +111,5 @@ export interface GetVm2LegacyOutputArgs {
      * The name of the node where the VM is provisioned.
      */
     nodeName: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.GetVm2LegacyTimeoutsArgs>;
+    timeouts?: pulumi.Input<inputs.GetVm2LegacyTimeoutsArgs | undefined>;
 }

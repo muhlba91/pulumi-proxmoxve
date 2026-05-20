@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import io.muehlbachler.pulumi.proxmoxve.apt.Repository;
  * import io.muehlbachler.pulumi.proxmoxve.apt.RepositoryArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -47,7 +47,7 @@ import javax.annotation.Nullable;
  *         var example = new Repository("example", RepositoryArgs.builder()
  *             .enabled(true)
  *             .filePath("/etc/apt/sources.list")
- *             .index(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(0) (example.pp:3,14-15)))
+ *             .index(0)
  *             .node("pve")
  *             .build());
  * 

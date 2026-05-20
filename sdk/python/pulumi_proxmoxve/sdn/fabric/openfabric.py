@@ -20,10 +20,10 @@ __all__ = ['OpenfabricArgs', 'Openfabric']
 class OpenfabricArgs:
     def __init__(__self__, *,
                  resource_id: pulumi.Input[_builtins.str],
-                 csnp_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 hello_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip6_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_prefix: Optional[pulumi.Input[_builtins.str]] = None):
+                 csnp_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 hello_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_prefix: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Openfabric resource.
 
@@ -57,61 +57,61 @@ class OpenfabricArgs:
 
     @_builtins.property
     @pulumi.getter(name="csnpInterval")
-    def csnp_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def csnp_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The csnp_interval property for OpenFabric.
         """
         return pulumi.get(self, "csnp_interval")
 
     @csnp_interval.setter
-    def csnp_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def csnp_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "csnp_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="helloInterval")
-    def hello_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def hello_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The hello_interval property for OpenFabric.
         """
         return pulumi.get(self, "hello_interval")
 
     @hello_interval.setter
-    def hello_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def hello_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "hello_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="ip6Prefix")
-    def ip6_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip6_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPv6 prefix cidr for the fabric.
         """
         return pulumi.get(self, "ip6_prefix")
 
     @ip6_prefix.setter
-    def ip6_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip6_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip6_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="ipPrefix")
-    def ip_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPv4 prefix cidr for the fabric.
         """
         return pulumi.get(self, "ip_prefix")
 
     @ip_prefix.setter
-    def ip_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_prefix", value)
 
 
 @pulumi.input_type
 class _OpenfabricState:
     def __init__(__self__, *,
-                 csnp_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 hello_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip6_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 csnp_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 hello_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Openfabric resources.
 
@@ -134,62 +134,62 @@ class _OpenfabricState:
 
     @_builtins.property
     @pulumi.getter(name="csnpInterval")
-    def csnp_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def csnp_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The csnp_interval property for OpenFabric.
         """
         return pulumi.get(self, "csnp_interval")
 
     @csnp_interval.setter
-    def csnp_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def csnp_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "csnp_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="helloInterval")
-    def hello_interval(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def hello_interval(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The hello_interval property for OpenFabric.
         """
         return pulumi.get(self, "hello_interval")
 
     @hello_interval.setter
-    def hello_interval(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def hello_interval(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "hello_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="ip6Prefix")
-    def ip6_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip6_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPv6 prefix cidr for the fabric.
         """
         return pulumi.get(self, "ip6_prefix")
 
     @ip6_prefix.setter
-    def ip6_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip6_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip6_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="ipPrefix")
-    def ip_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPv4 prefix cidr for the fabric.
         """
         return pulumi.get(self, "ip_prefix")
 
     @ip_prefix.setter
-    def ip_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the SDN fabric.
         """
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_id", value)
 
 
@@ -199,11 +199,11 @@ class Openfabric(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 csnp_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 hello_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip6_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 csnp_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 hello_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         OpenFabric Fabric in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
@@ -242,11 +242,11 @@ class Openfabric(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 csnp_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 hello_interval: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip6_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 csnp_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 hello_interval: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -275,11 +275,11 @@ class Openfabric(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            csnp_interval: Optional[pulumi.Input[_builtins.int]] = None,
-            hello_interval: Optional[pulumi.Input[_builtins.int]] = None,
-            ip6_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Openfabric':
+            csnp_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            hello_interval: pulumi.Input[Optional[_builtins.int]] = None,
+            ip6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Openfabric':
         """
         Get an existing Openfabric resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

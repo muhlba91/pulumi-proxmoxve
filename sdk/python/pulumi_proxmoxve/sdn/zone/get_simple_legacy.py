@@ -201,7 +201,7 @@ def get_simple_legacy(id: Optional[_builtins.str] = None,
         pending=pulumi.get(__ret__, 'pending'),
         reverse_dns=pulumi.get(__ret__, 'reverse_dns'),
         state=pulumi.get(__ret__, 'state'))
-def get_simple_legacy_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_simple_legacy_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSimpleLegacyResult]:
     """
     > **Deprecated:** Use `sdn/zone.Simple` instead. This data source will be removed in v1.0.

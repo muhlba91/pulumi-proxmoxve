@@ -171,27 +171,27 @@ export interface VnetLegacyState {
     /**
      * An optional alias for this VNet.
      */
-    alias?: pulumi.Input<string>;
+    alias?: pulumi.Input<string | undefined>;
     /**
      * Isolate ports within this VNet.
      */
-    isolatePorts?: pulumi.Input<boolean>;
+    isolatePorts?: pulumi.Input<boolean | undefined>;
     /**
      * The unique identifier of the SDN VNet.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * Tag value for VLAN/VXLAN (can't be used with other zone types).
      */
-    tag?: pulumi.Input<number>;
+    tag?: pulumi.Input<number | undefined>;
     /**
      * Allow VM VLANs to pass through this VNet.
      */
-    vlanAware?: pulumi.Input<boolean>;
+    vlanAware?: pulumi.Input<boolean | undefined>;
     /**
      * The zone to which this VNet belongs.
      */
-    zone?: pulumi.Input<string>;
+    zone?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -201,11 +201,11 @@ export interface VnetLegacyArgs {
     /**
      * An optional alias for this VNet.
      */
-    alias?: pulumi.Input<string>;
+    alias?: pulumi.Input<string | undefined>;
     /**
      * Isolate ports within this VNet.
      */
-    isolatePorts?: pulumi.Input<boolean>;
+    isolatePorts?: pulumi.Input<boolean | undefined>;
     /**
      * The unique identifier of the SDN VNet.
      */
@@ -213,11 +213,11 @@ export interface VnetLegacyArgs {
     /**
      * Tag value for VLAN/VXLAN (can't be used with other zone types).
      */
-    tag?: pulumi.Input<number>;
+    tag?: pulumi.Input<number | undefined>;
     /**
      * Allow VM VLANs to pass through this VNet.
      */
-    vlanAware?: pulumi.Input<boolean>;
+    vlanAware?: pulumi.Input<boolean | undefined>;
     /**
      * The zone to which this VNet belongs.
      */

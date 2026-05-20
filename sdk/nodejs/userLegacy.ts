@@ -167,47 +167,47 @@ export interface UserLegacyState {
     /**
      * The access control list (multiple blocks supported).
      */
-    acls?: pulumi.Input<pulumi.Input<inputs.UserLegacyAcl>[]>;
+    acls?: pulumi.Input<pulumi.Input<inputs.UserLegacyAcl>[] | undefined>;
     /**
      * The user comment.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The user's email address.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * Whether the user account is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The user account's expiration date (RFC 3339).
      */
-    expirationDate?: pulumi.Input<string>;
+    expirationDate?: pulumi.Input<string | undefined>;
     /**
      * The user's first name.
      */
-    firstName?: pulumi.Input<string>;
+    firstName?: pulumi.Input<string | undefined>;
     /**
      * The user's groups.
      */
-    groups?: pulumi.Input<pulumi.Input<string>[]>;
+    groups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The user's keys.
      */
-    keys?: pulumi.Input<string>;
+    keys?: pulumi.Input<string | undefined>;
     /**
      * The user's last name.
      */
-    lastName?: pulumi.Input<string>;
+    lastName?: pulumi.Input<string | undefined>;
     /**
      * The user's password. Required for PVE or PAM realms.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The user identifier.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -217,43 +217,43 @@ export interface UserLegacyArgs {
     /**
      * The access control list (multiple blocks supported).
      */
-    acls?: pulumi.Input<pulumi.Input<inputs.UserLegacyAcl>[]>;
+    acls?: pulumi.Input<pulumi.Input<inputs.UserLegacyAcl>[] | undefined>;
     /**
      * The user comment.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The user's email address.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * Whether the user account is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The user account's expiration date (RFC 3339).
      */
-    expirationDate?: pulumi.Input<string>;
+    expirationDate?: pulumi.Input<string | undefined>;
     /**
      * The user's first name.
      */
-    firstName?: pulumi.Input<string>;
+    firstName?: pulumi.Input<string | undefined>;
     /**
      * The user's groups.
      */
-    groups?: pulumi.Input<pulumi.Input<string>[]>;
+    groups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The user's keys.
      */
-    keys?: pulumi.Input<string>;
+    keys?: pulumi.Input<string | undefined>;
     /**
      * The user's last name.
      */
-    lastName?: pulumi.Input<string>;
+    lastName?: pulumi.Input<string | undefined>;
     /**
      * The user's password. Required for PVE or PAM realms.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The user identifier.
      */

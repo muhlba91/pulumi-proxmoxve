@@ -213,9 +213,9 @@ def get_vm2_legacy(id: Optional[_builtins.int] = None,
         template=pulumi.get(__ret__, 'template'),
         timeouts=pulumi.get(__ret__, 'timeouts'),
         vga=pulumi.get(__ret__, 'vga'))
-def get_vm2_legacy_output(id: Optional[pulumi.Input[_builtins.int]] = None,
-                          node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                          timeouts: Optional[pulumi.Input[Optional[Union['GetVm2LegacyTimeoutsArgs', 'GetVm2LegacyTimeoutsArgsDict']]]] = None,
+def get_vm2_legacy_output(id: pulumi.Input[Optional[_builtins.int]] = None,
+                          node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                          timeouts: pulumi.Input[Optional[Optional[Union['GetVm2LegacyTimeoutsArgs', 'GetVm2LegacyTimeoutsArgsDict']]]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVm2LegacyResult]:
     """
     > **Deprecated:** Use `Vm` instead. This data source will be removed in v1.0.

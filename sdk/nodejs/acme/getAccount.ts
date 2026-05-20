@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * // This will fetch all ACME accounts...
  * const all = proxmoxve.acme.getAccounts({});
  * // ...which we will go through in order to fetch the whole data on each account.
- * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: proxmoxve.acme.getAccount({
+ * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: proxmoxve.acme.getAccount({
  *     name: __value,
  * }) }), {}));
  * export const dataProxmoxAcmeAccount = example;
@@ -83,7 +83,7 @@ export interface GetAccountResult {
  * // This will fetch all ACME accounts...
  * const all = proxmoxve.acme.getAccounts({});
  * // ...which we will go through in order to fetch the whole data on each account.
- * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: proxmoxve.acme.getAccount({
+ * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: proxmoxve.acme.getAccount({
  *     name: __value,
  * }) }), {}));
  * export const dataProxmoxAcmeAccount = example;
@@ -104,5 +104,5 @@ export interface GetAccountOutputArgs {
     /**
      * The identifier of the ACME account to read.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

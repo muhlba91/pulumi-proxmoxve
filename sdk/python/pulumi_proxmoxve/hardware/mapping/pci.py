@@ -22,9 +22,9 @@ __all__ = ['PciArgs', 'Pci']
 class PciArgs:
     def __init__(__self__, *,
                  maps: pulumi.Input[Sequence[pulumi.Input['PciMapArgs']]],
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 mediated_devices: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 mediated_devices: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Pci resource.
 
@@ -55,48 +55,48 @@ class PciArgs:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The comment of this PCI hardware mapping.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="mediatedDevices")
-    def mediated_devices(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mediated_devices(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether to enable mediated devices.
         """
         return pulumi.get(self, "mediated_devices")
 
     @mediated_devices.setter
-    def mediated_devices(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mediated_devices(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mediated_devices", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of this PCI hardware mapping.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _PciState:
     def __init__(__self__, *,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 maps: Optional[pulumi.Input[Sequence[pulumi.Input['PciMapArgs']]]] = None,
-                 mediated_devices: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 maps: pulumi.Input[Optional[Sequence[pulumi.Input['PciMapArgs']]]] = None,
+                 mediated_devices: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Pci resources.
 
@@ -116,50 +116,50 @@ class _PciState:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The comment of this PCI hardware mapping.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def maps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PciMapArgs']]]]:
+    def maps(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['PciMapArgs']]]]:
         """
         The actual map of devices for the PCI hardware mapping.
         """
         return pulumi.get(self, "maps")
 
     @maps.setter
-    def maps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PciMapArgs']]]]):
+    def maps(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['PciMapArgs']]]]):
         pulumi.set(self, "maps", value)
 
     @_builtins.property
     @pulumi.getter(name="mediatedDevices")
-    def mediated_devices(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def mediated_devices(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates whether to enable mediated devices.
         """
         return pulumi.get(self, "mediated_devices")
 
     @mediated_devices.setter
-    def mediated_devices(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def mediated_devices(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "mediated_devices", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of this PCI hardware mapping.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
@@ -169,10 +169,10 @@ class Pci(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 maps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PciMapArgs', 'PciMapArgsDict']]]]] = None,
-                 mediated_devices: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 maps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PciMapArgs', 'PciMapArgsDict']]]]] = None,
+                 mediated_devices: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a PCI hardware mapping in a Proxmox VE cluster.
@@ -268,10 +268,10 @@ class Pci(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 maps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PciMapArgs', 'PciMapArgsDict']]]]] = None,
-                 mediated_devices: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 maps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PciMapArgs', 'PciMapArgsDict']]]]] = None,
+                 mediated_devices: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -297,10 +297,10 @@ class Pci(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            maps: Optional[pulumi.Input[Sequence[pulumi.Input[Union['PciMapArgs', 'PciMapArgsDict']]]]] = None,
-            mediated_devices: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None) -> 'Pci':
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            maps: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PciMapArgs', 'PciMapArgsDict']]]]] = None,
+            mediated_devices: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Pci':
         """
         Get an existing Pci resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

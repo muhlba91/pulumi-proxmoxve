@@ -112,7 +112,7 @@ def get_zones(type: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         type=pulumi.get(__ret__, 'type'),
         zones=pulumi.get(__ret__, 'zones'))
-def get_zones_output(type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zones_output(type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZonesResult]:
     """
     Retrieves information about all SDN Zones in Proxmox. This data source can optionally filter zones by type.

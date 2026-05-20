@@ -157,10 +157,10 @@ def get_vm_legacy(node_name: Optional[_builtins.str] = None,
         tags=pulumi.get(__ret__, 'tags'),
         template=pulumi.get(__ret__, 'template'),
         vm_id=pulumi.get(__ret__, 'vm_id'))
-def get_vm_legacy_output(node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                         status: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         template: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                         vm_id: Optional[pulumi.Input[_builtins.int]] = None,
+def get_vm_legacy_output(node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                         status: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         template: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                         vm_id: pulumi.Input[Optional[_builtins.int]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVmLegacyResult]:
     """
     > **Deprecated:** Use `Vm` instead. This data source will be removed in v1.0.

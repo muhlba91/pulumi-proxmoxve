@@ -34,8 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import io.muehlbachler.pulumi.proxmoxve.sdn.SimpleLegacy;
  * import io.muehlbachler.pulumi.proxmoxve.sdn.SimpleLegacyArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *         var example = new SimpleLegacy("example", SimpleLegacyArgs.builder()
  *             .resourceId("simple1")
  *             .nodes("pve")
- *             .mtu(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1500) (example.pp:3,16-20)))
+ *             .mtu(1500)
  *             .dns("1.1.1.1")
  *             .dnsZone("example.com")
  *             .ipam("pve")

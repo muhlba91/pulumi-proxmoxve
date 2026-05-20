@@ -201,7 +201,7 @@ def get_user_legacy(user_id: Optional[_builtins.str] = None,
         keys=pulumi.get(__ret__, 'keys'),
         last_name=pulumi.get(__ret__, 'last_name'),
         user_id=pulumi.get(__ret__, 'user_id'))
-def get_user_legacy_output(user_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_user_legacy_output(user_id: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserLegacyResult]:
     """
     Retrieves information about a specific user.

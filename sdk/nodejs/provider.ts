@@ -115,61 +115,61 @@ export interface ProviderArgs {
     /**
      * The API token for the Proxmox VE API.
      */
-    apiToken?: pulumi.Input<string>;
+    apiToken?: pulumi.Input<string | undefined>;
     /**
      * The pre-authenticated Ticket for the Proxmox VE API.
      */
-    authTicket?: pulumi.Input<string>;
+    authTicket?: pulumi.Input<string | undefined>;
     /**
      * The pre-authenticated CSRF Prevention Token for the Proxmox VE API.
      */
-    csrfPreventionToken?: pulumi.Input<string>;
+    csrfPreventionToken?: pulumi.Input<string | undefined>;
     /**
      * The endpoint for the Proxmox VE API.
      */
-    endpoint?: pulumi.Input<string>;
+    endpoint?: pulumi.Input<string | undefined>;
     /**
      * Whether to skip the TLS verification step.
      */
-    insecure?: pulumi.Input<boolean>;
+    insecure?: pulumi.Input<boolean | undefined>;
     /**
      * The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`.
      */
-    minTls?: pulumi.Input<string>;
+    minTls?: pulumi.Input<string | undefined>;
     /**
      * The one-time password for the Proxmox VE API.
      *
      * @deprecated The `otp` attribute is deprecated and will be removed in a future release. Please use the `apiToken` attribute instead.
      */
-    otp?: pulumi.Input<string>;
+    otp?: pulumi.Input<string | undefined>;
     /**
      * The password for the Proxmox VE API.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The ending number for random VM / Container IDs.
      */
-    randomVmIdEnd?: pulumi.Input<number>;
+    randomVmIdEnd?: pulumi.Input<number | undefined>;
     /**
      * The starting number for random VM / Container IDs.
      */
-    randomVmIdStart?: pulumi.Input<number>;
+    randomVmIdStart?: pulumi.Input<number | undefined>;
     /**
      * Whether to generate random VM / Container IDs.
      */
-    randomVmIds?: pulumi.Input<boolean>;
+    randomVmIds?: pulumi.Input<boolean | undefined>;
     /**
      * The SSH configuration for the Proxmox nodes.
      */
-    ssh?: pulumi.Input<inputs.ProviderSsh>;
+    ssh?: pulumi.Input<inputs.ProviderSsh | undefined>;
     /**
      * The alternative temporary directory.
      */
-    tmpDir?: pulumi.Input<string>;
+    tmpDir?: pulumi.Input<string | undefined>;
     /**
      * The username for the Proxmox VE API.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 export namespace Provider {

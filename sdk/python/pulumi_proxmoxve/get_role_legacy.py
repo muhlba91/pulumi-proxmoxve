@@ -96,7 +96,7 @@ def get_role_legacy(role_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         privileges=pulumi.get(__ret__, 'privileges'),
         role_id=pulumi.get(__ret__, 'role_id'))
-def get_role_legacy_output(role_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_role_legacy_output(role_id: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRoleLegacyResult]:
     """
     Retrieves information about a specific role.

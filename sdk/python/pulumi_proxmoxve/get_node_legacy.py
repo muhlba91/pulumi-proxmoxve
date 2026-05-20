@@ -211,7 +211,7 @@ def get_node_legacy(node_name: Optional[_builtins.str] = None,
         memory_used=pulumi.get(__ret__, 'memory_used'),
         node_name=pulumi.get(__ret__, 'node_name'),
         uptime=pulumi.get(__ret__, 'uptime'))
-def get_node_legacy_output(node_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_node_legacy_output(node_name: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodeLegacyResult]:
     """
     Retrieves information about a specific Proxmox VE node.

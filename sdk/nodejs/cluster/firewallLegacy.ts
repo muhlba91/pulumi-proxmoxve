@@ -134,27 +134,27 @@ export interface FirewallLegacyState {
     /**
      * Enable ebtables rules cluster wide.
      */
-    ebtables?: pulumi.Input<boolean>;
+    ebtables?: pulumi.Input<boolean | undefined>;
     /**
      * Enable or disable the firewall cluster wide.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The default forward policy (`ACCEPT`, `DROP`).
      */
-    forwardPolicy?: pulumi.Input<string>;
+    forwardPolicy?: pulumi.Input<string | undefined>;
     /**
      * The default input policy (`ACCEPT`, `DROP`, `REJECT`).
      */
-    inputPolicy?: pulumi.Input<string>;
+    inputPolicy?: pulumi.Input<string | undefined>;
     /**
      * The log rate limit.
      */
-    logRatelimit?: pulumi.Input<inputs.cluster.FirewallLegacyLogRatelimit>;
+    logRatelimit?: pulumi.Input<inputs.cluster.FirewallLegacyLogRatelimit | undefined>;
     /**
      * The default output policy (`ACCEPT`, `DROP`, `REJECT`).
      */
-    outputPolicy?: pulumi.Input<string>;
+    outputPolicy?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -164,25 +164,25 @@ export interface FirewallLegacyArgs {
     /**
      * Enable ebtables rules cluster wide.
      */
-    ebtables?: pulumi.Input<boolean>;
+    ebtables?: pulumi.Input<boolean | undefined>;
     /**
      * Enable or disable the firewall cluster wide.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The default forward policy (`ACCEPT`, `DROP`).
      */
-    forwardPolicy?: pulumi.Input<string>;
+    forwardPolicy?: pulumi.Input<string | undefined>;
     /**
      * The default input policy (`ACCEPT`, `DROP`, `REJECT`).
      */
-    inputPolicy?: pulumi.Input<string>;
+    inputPolicy?: pulumi.Input<string | undefined>;
     /**
      * The log rate limit.
      */
-    logRatelimit?: pulumi.Input<inputs.cluster.FirewallLegacyLogRatelimit>;
+    logRatelimit?: pulumi.Input<inputs.cluster.FirewallLegacyLogRatelimit | undefined>;
     /**
      * The default output policy (`ACCEPT`, `DROP`, `REJECT`).
      */
-    outputPolicy?: pulumi.Input<string>;
+    outputPolicy?: pulumi.Input<string | undefined>;
 }

@@ -21,12 +21,12 @@ __all__ = ['FirewallLegacyArgs', 'FirewallLegacy']
 @pulumi.input_type
 class FirewallLegacyArgs:
     def __init__(__self__, *,
-                 ebtables: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 forward_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 input_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_ratelimit: Optional[pulumi.Input['FirewallLegacyLogRatelimitArgs']] = None,
-                 output_policy: Optional[pulumi.Input[_builtins.str]] = None):
+                 ebtables: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 forward_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 input_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_ratelimit: pulumi.Input[Optional['FirewallLegacyLogRatelimitArgs']] = None,
+                 output_policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a FirewallLegacy resource.
 
@@ -52,86 +52,86 @@ class FirewallLegacyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def ebtables(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ebtables(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable ebtables rules cluster wide.
         """
         return pulumi.get(self, "ebtables")
 
     @ebtables.setter
-    def ebtables(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ebtables(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ebtables", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable or disable the firewall cluster wide.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardPolicy")
-    def forward_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def forward_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default forward policy (`ACCEPT`, `DROP`).
         """
         return pulumi.get(self, "forward_policy")
 
     @forward_policy.setter
-    def forward_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def forward_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "forward_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="inputPolicy")
-    def input_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def input_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default input policy (`ACCEPT`, `DROP`, `REJECT`).
         """
         return pulumi.get(self, "input_policy")
 
     @input_policy.setter
-    def input_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def input_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "input_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="logRatelimit")
-    def log_ratelimit(self) -> Optional[pulumi.Input['FirewallLegacyLogRatelimitArgs']]:
+    def log_ratelimit(self) -> pulumi.Input[Optional['FirewallLegacyLogRatelimitArgs']]:
         """
         The log rate limit.
         """
         return pulumi.get(self, "log_ratelimit")
 
     @log_ratelimit.setter
-    def log_ratelimit(self, value: Optional[pulumi.Input['FirewallLegacyLogRatelimitArgs']]):
+    def log_ratelimit(self, value: pulumi.Input[Optional['FirewallLegacyLogRatelimitArgs']]):
         pulumi.set(self, "log_ratelimit", value)
 
     @_builtins.property
     @pulumi.getter(name="outputPolicy")
-    def output_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def output_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default output policy (`ACCEPT`, `DROP`, `REJECT`).
         """
         return pulumi.get(self, "output_policy")
 
     @output_policy.setter
-    def output_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def output_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "output_policy", value)
 
 
 @pulumi.input_type
 class _FirewallLegacyState:
     def __init__(__self__, *,
-                 ebtables: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 forward_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 input_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_ratelimit: Optional[pulumi.Input['FirewallLegacyLogRatelimitArgs']] = None,
-                 output_policy: Optional[pulumi.Input[_builtins.str]] = None):
+                 ebtables: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 forward_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 input_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_ratelimit: pulumi.Input[Optional['FirewallLegacyLogRatelimitArgs']] = None,
+                 output_policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FirewallLegacy resources.
 
@@ -157,74 +157,74 @@ class _FirewallLegacyState:
 
     @_builtins.property
     @pulumi.getter
-    def ebtables(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ebtables(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable ebtables rules cluster wide.
         """
         return pulumi.get(self, "ebtables")
 
     @ebtables.setter
-    def ebtables(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ebtables(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ebtables", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable or disable the firewall cluster wide.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardPolicy")
-    def forward_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def forward_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default forward policy (`ACCEPT`, `DROP`).
         """
         return pulumi.get(self, "forward_policy")
 
     @forward_policy.setter
-    def forward_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def forward_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "forward_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="inputPolicy")
-    def input_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def input_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default input policy (`ACCEPT`, `DROP`, `REJECT`).
         """
         return pulumi.get(self, "input_policy")
 
     @input_policy.setter
-    def input_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def input_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "input_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="logRatelimit")
-    def log_ratelimit(self) -> Optional[pulumi.Input['FirewallLegacyLogRatelimitArgs']]:
+    def log_ratelimit(self) -> pulumi.Input[Optional['FirewallLegacyLogRatelimitArgs']]:
         """
         The log rate limit.
         """
         return pulumi.get(self, "log_ratelimit")
 
     @log_ratelimit.setter
-    def log_ratelimit(self, value: Optional[pulumi.Input['FirewallLegacyLogRatelimitArgs']]):
+    def log_ratelimit(self, value: pulumi.Input[Optional['FirewallLegacyLogRatelimitArgs']]):
         pulumi.set(self, "log_ratelimit", value)
 
     @_builtins.property
     @pulumi.getter(name="outputPolicy")
-    def output_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def output_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default output policy (`ACCEPT`, `DROP`, `REJECT`).
         """
         return pulumi.get(self, "output_policy")
 
     @output_policy.setter
-    def output_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def output_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "output_policy", value)
 
 
@@ -234,12 +234,12 @@ class FirewallLegacy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ebtables: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 forward_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 input_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_ratelimit: Optional[pulumi.Input[Union['FirewallLegacyLogRatelimitArgs', 'FirewallLegacyLogRatelimitArgsDict']]] = None,
-                 output_policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 ebtables: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 forward_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 input_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_ratelimit: pulumi.Input[Optional[Union['FirewallLegacyLogRatelimitArgs', 'FirewallLegacyLogRatelimitArgsDict']]] = None,
+                 output_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages firewall options on the cluster level.
@@ -341,12 +341,12 @@ class FirewallLegacy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ebtables: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 forward_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 input_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_ratelimit: Optional[pulumi.Input[Union['FirewallLegacyLogRatelimitArgs', 'FirewallLegacyLogRatelimitArgsDict']]] = None,
-                 output_policy: Optional[pulumi.Input[_builtins.str]] = None,
+                 ebtables: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 forward_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 input_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_ratelimit: pulumi.Input[Optional[Union['FirewallLegacyLogRatelimitArgs', 'FirewallLegacyLogRatelimitArgsDict']]] = None,
+                 output_policy: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -372,12 +372,12 @@ class FirewallLegacy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            ebtables: Optional[pulumi.Input[_builtins.bool]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            forward_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            input_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            log_ratelimit: Optional[pulumi.Input[Union['FirewallLegacyLogRatelimitArgs', 'FirewallLegacyLogRatelimitArgsDict']]] = None,
-            output_policy: Optional[pulumi.Input[_builtins.str]] = None) -> 'FirewallLegacy':
+            ebtables: pulumi.Input[Optional[_builtins.bool]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            forward_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            input_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            log_ratelimit: pulumi.Input[Optional[Union['FirewallLegacyLogRatelimitArgs', 'FirewallLegacyLogRatelimitArgsDict']]] = None,
+            output_policy: pulumi.Input[Optional[_builtins.str]] = None) -> 'FirewallLegacy':
         """
         Get an existing FirewallLegacy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

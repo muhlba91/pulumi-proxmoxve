@@ -116,7 +116,7 @@ def get_usb_legacy(name: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         maps=pulumi.get(__ret__, 'maps'),
         name=pulumi.get(__ret__, 'name'))
-def get_usb_legacy_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_usb_legacy_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUsbLegacyResult]:
     """
     > **Deprecated:** Use `hardware/mapping.Usb` instead. This data source will be removed in v1.0.

@@ -160,56 +160,56 @@ export interface VmState {
     /**
      * The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
      */
-    cdrom?: pulumi.Input<{[key: string]: pulumi.Input<inputs.VmCdrom>}>;
+    cdrom?: pulumi.Input<{[key: string]: pulumi.Input<inputs.VmCdrom>} | undefined>;
     /**
      * The CPU configuration.
      */
-    cpu?: pulumi.Input<inputs.VmCpu>;
+    cpu?: pulumi.Input<inputs.VmCpu | undefined>;
     /**
      * Set to true to delete unreferenced disks on destroy (defaults to `true`).
      */
-    deleteUnreferencedDisksOnDestroy?: pulumi.Input<boolean>;
+    deleteUnreferencedDisksOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the VM.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the VM. Doesn't have to be unique.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the node where the VM is provisioned.
      */
-    nodeName?: pulumi.Input<string>;
+    nodeName?: pulumi.Input<string | undefined>;
     /**
      * Set to true to purge the VM from backup configurations on destroy (defaults to `true`).
      */
-    purgeOnDestroy?: pulumi.Input<boolean>;
+    purgeOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The unique identifier of the VM in the Proxmox cluster.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
      */
-    rng?: pulumi.Input<inputs.VmRng>;
+    rng?: pulumi.Input<inputs.VmRng | undefined>;
     /**
      * Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
      */
-    stopOnDestroy?: pulumi.Input<boolean>;
+    stopOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The tags assigned to the VM.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set to true to create a VM template.
      */
-    template?: pulumi.Input<boolean>;
-    timeouts?: pulumi.Input<inputs.VmTimeouts>;
+    template?: pulumi.Input<boolean | undefined>;
+    timeouts?: pulumi.Input<inputs.VmTimeouts | undefined>;
     /**
      * Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
      */
-    vga?: pulumi.Input<inputs.VmVga>;
+    vga?: pulumi.Input<inputs.VmVga | undefined>;
 }
 
 /**
@@ -219,23 +219,23 @@ export interface VmArgs {
     /**
      * The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
      */
-    cdrom?: pulumi.Input<{[key: string]: pulumi.Input<inputs.VmCdrom>}>;
+    cdrom?: pulumi.Input<{[key: string]: pulumi.Input<inputs.VmCdrom>} | undefined>;
     /**
      * The CPU configuration.
      */
-    cpu?: pulumi.Input<inputs.VmCpu>;
+    cpu?: pulumi.Input<inputs.VmCpu | undefined>;
     /**
      * Set to true to delete unreferenced disks on destroy (defaults to `true`).
      */
-    deleteUnreferencedDisksOnDestroy?: pulumi.Input<boolean>;
+    deleteUnreferencedDisksOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The description of the VM.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The name of the VM. Doesn't have to be unique.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the node where the VM is provisioned.
      */
@@ -243,30 +243,30 @@ export interface VmArgs {
     /**
      * Set to true to purge the VM from backup configurations on destroy (defaults to `true`).
      */
-    purgeOnDestroy?: pulumi.Input<boolean>;
+    purgeOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The unique identifier of the VM in the Proxmox cluster.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
      */
-    rng?: pulumi.Input<inputs.VmRng>;
+    rng?: pulumi.Input<inputs.VmRng | undefined>;
     /**
      * Set to true to stop (rather than shutdown) the VM on destroy (defaults to `false`).
      */
-    stopOnDestroy?: pulumi.Input<boolean>;
+    stopOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The tags assigned to the VM.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set to true to create a VM template.
      */
-    template?: pulumi.Input<boolean>;
-    timeouts?: pulumi.Input<inputs.VmTimeouts>;
+    template?: pulumi.Input<boolean | undefined>;
+    timeouts?: pulumi.Input<inputs.VmTimeouts | undefined>;
     /**
      * Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
      */
-    vga?: pulumi.Input<inputs.VmVga>;
+    vga?: pulumi.Input<inputs.VmVga | undefined>;
 }

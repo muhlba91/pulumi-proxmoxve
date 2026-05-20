@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * // This will fetch the set of HA group identifiers...
  * const all = proxmoxve.getHagroupsLegacy({});
  * // ...which we will go through in order to fetch the whole data on each group.
- * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: proxmoxve.getHagroupLegacy({
+ * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: proxmoxve.getHagroupLegacy({
  *     group: __value,
  * }) }), {}));
  * export const proxmoxVirtualEnvironmentHagroupsFull = example;
@@ -84,7 +84,7 @@ export interface GetHagroupLegacyResult {
  * // This will fetch the set of HA group identifiers...
  * const all = proxmoxve.getHagroupsLegacy({});
  * // ...which we will go through in order to fetch the whole data on each group.
- * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: proxmoxve.getHagroupLegacy({
+ * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: proxmoxve.getHagroupLegacy({
  *     group: __value,
  * }) }), {}));
  * export const proxmoxVirtualEnvironmentHagroupsFull = example;

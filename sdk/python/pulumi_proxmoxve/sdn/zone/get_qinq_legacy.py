@@ -230,7 +230,7 @@ def get_qinq_legacy(id: Optional[_builtins.str] = None,
         service_vlan=pulumi.get(__ret__, 'service_vlan'),
         service_vlan_protocol=pulumi.get(__ret__, 'service_vlan_protocol'),
         state=pulumi.get(__ret__, 'state'))
-def get_qinq_legacy_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_qinq_legacy_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetQinqLegacyResult]:
     """
     > **Deprecated:** Use `sdn/zone.Qinq` instead. This data source will be removed in v1.0.

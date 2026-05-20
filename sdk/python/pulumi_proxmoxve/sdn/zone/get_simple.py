@@ -199,7 +199,7 @@ def get_simple(id: Optional[_builtins.str] = None,
         pending=pulumi.get(__ret__, 'pending'),
         reverse_dns=pulumi.get(__ret__, 'reverse_dns'),
         state=pulumi.get(__ret__, 'state'))
-def get_simple_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_simple_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSimpleResult]:
     """
     Retrieves information about a Simple Zone in Proxmox SDN. It will create an isolated VNet bridge. This bridge is not linked to a physical interface, and VM traffic is only local on each the node. It can be used in NAT or routed setups.

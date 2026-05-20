@@ -100,7 +100,7 @@ export interface GetSubnetLegacyOutputArgs {
     /**
      * DHCP range (start and end IPs).
      */
-    dhcpRange?: pulumi.Input<inputs.sdn.GetSubnetLegacyDhcpRangeArgs>;
+    dhcpRange?: pulumi.Input<inputs.sdn.GetSubnetLegacyDhcpRangeArgs | undefined>;
     /**
      * The VNet this subnet belongs to.
      */

@@ -160,14 +160,14 @@ export interface GetContainersLegacyOutputArgs {
     /**
      * Filter blocks. The container must satisfy all filter blocks to be included in the result.
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetContainersLegacyFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetContainersLegacyFilterArgs>[] | undefined>;
     /**
      * The node name. All cluster nodes will be queried in case this is omitted
      */
-    nodeName?: pulumi.Input<string>;
+    nodeName?: pulumi.Input<string | undefined>;
     /**
      * A list of tags to filter the containers. The container must have all
      * the tags to be included in the result.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

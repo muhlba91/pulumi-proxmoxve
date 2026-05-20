@@ -148,7 +148,7 @@ def get_vnet_legacy(id: Optional[_builtins.str] = None,
         tag=pulumi.get(__ret__, 'tag'),
         vlan_aware=pulumi.get(__ret__, 'vlan_aware'),
         zone=pulumi.get(__ret__, 'zone'))
-def get_vnet_legacy_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_vnet_legacy_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVnetLegacyResult]:
     """
     > **Deprecated:** Use `sdn.Vnet` instead. This data source will be removed in v1.0.

@@ -110,7 +110,7 @@ def get_pool_legacy(pool_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         members=pulumi.get(__ret__, 'members'),
         pool_id=pulumi.get(__ret__, 'pool_id'))
-def get_pool_legacy_output(pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_pool_legacy_output(pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPoolLegacyResult]:
     """
     Retrieves information about a specific resource pool.

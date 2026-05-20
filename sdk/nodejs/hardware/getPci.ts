@@ -132,7 +132,7 @@ export interface GetPciOutputArgs {
     /**
      * Client-side filters for narrowing down results. All filters use prefix matching.
      */
-    filters?: pulumi.Input<inputs.hardware.GetPciFiltersArgs>;
+    filters?: pulumi.Input<inputs.hardware.GetPciFiltersArgs | undefined>;
     /**
      * The name of the node to list PCI devices from.
      */
@@ -140,5 +140,5 @@ export interface GetPciOutputArgs {
     /**
      * A list of PCI class IDs (hex prefixes) to exclude from the results. If not set, the Proxmox default blacklist is used which filters out memory controllers (05), bridges (06), and processors (0b). Set to an empty list to return all devices.
      */
-    pciClassBlacklists?: pulumi.Input<pulumi.Input<string>[]>;
+    pciClassBlacklists?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

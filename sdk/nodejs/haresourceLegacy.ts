@@ -136,31 +136,31 @@ export interface HaresourceLegacyState {
     /**
      * The comment associated with this resource.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The identifier of the High Availability group this resource is a member of.
      */
-    group?: pulumi.Input<string>;
+    group?: pulumi.Input<string | undefined>;
     /**
      * The maximal number of relocation attempts.
      */
-    maxRelocate?: pulumi.Input<number>;
+    maxRelocate?: pulumi.Input<number | undefined>;
     /**
      * The maximal number of restart attempts.
      */
-    maxRestart?: pulumi.Input<number>;
+    maxRestart?: pulumi.Input<number | undefined>;
     /**
      * The Proxmox HA resource identifier
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * The desired state of the resource.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The type of HA resources to create. If unset, it will be deduced from the `resourceId`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -170,19 +170,19 @@ export interface HaresourceLegacyArgs {
     /**
      * The comment associated with this resource.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The identifier of the High Availability group this resource is a member of.
      */
-    group?: pulumi.Input<string>;
+    group?: pulumi.Input<string | undefined>;
     /**
      * The maximal number of relocation attempts.
      */
-    maxRelocate?: pulumi.Input<number>;
+    maxRelocate?: pulumi.Input<number | undefined>;
     /**
      * The maximal number of restart attempts.
      */
-    maxRestart?: pulumi.Input<number>;
+    maxRestart?: pulumi.Input<number | undefined>;
     /**
      * The Proxmox HA resource identifier
      */
@@ -190,9 +190,9 @@ export interface HaresourceLegacyArgs {
     /**
      * The desired state of the resource.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The type of HA resources to create. If unset, it will be deduced from the `resourceId`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

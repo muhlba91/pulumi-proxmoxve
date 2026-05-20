@@ -38,6 +38,8 @@ namespace Pulumi.ProxmoxVE.Network.Linux
     ///         {
     ///             "ens18.99",
     ///         },
+    ///         VlanAware = true,
+    ///         Vids = "2-4094",
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =
@@ -126,6 +128,12 @@ namespace Pulumi.ProxmoxVE.Network.Linux
         /// </summary>
         [Output("timeoutReload")]
         public Output<int> TimeoutReload { get; private set; } = null!;
+
+        /// <summary>
+        /// VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `"2-4094"`, `"1 20 130"`, or `"1 10-20 30"`). Requires `VlanAware = true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
+        /// </summary>
+        [Output("vids")]
+        public Output<string> Vids { get; private set; } = null!;
 
         /// <summary>
         /// Whether the interface bridge is VLAN aware (defaults to `False`).
@@ -253,6 +261,12 @@ namespace Pulumi.ProxmoxVE.Network.Linux
         public Input<int>? TimeoutReload { get; set; }
 
         /// <summary>
+        /// VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `"2-4094"`, `"1 20 130"`, or `"1 10-20 30"`). Requires `VlanAware = true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
+        /// </summary>
+        [Input("vids")]
+        public Input<string>? Vids { get; set; }
+
+        /// <summary>
         /// Whether the interface bridge is VLAN aware (defaults to `False`).
         /// </summary>
         [Input("vlanAware")]
@@ -337,6 +351,12 @@ namespace Pulumi.ProxmoxVE.Network.Linux
         /// </summary>
         [Input("timeoutReload")]
         public Input<int>? TimeoutReload { get; set; }
+
+        /// <summary>
+        /// VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `"2-4094"`, `"1 20 130"`, or `"1 10-20 30"`). Requires `VlanAware = true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
+        /// </summary>
+        [Input("vids")]
+        public Input<string>? Vids { get; set; }
 
         /// <summary>
         /// Whether the interface bridge is VLAN aware (defaults to `False`).
