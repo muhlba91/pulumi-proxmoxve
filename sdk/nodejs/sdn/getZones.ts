@@ -112,5 +112,5 @@ export interface GetZonesOutputArgs {
     /**
      * Filter zones by type (simple, vlan, qinq, vxlan, evpn).
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

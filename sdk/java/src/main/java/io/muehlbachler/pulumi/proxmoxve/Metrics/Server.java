@@ -32,8 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import io.muehlbachler.pulumi.proxmoxve.metrics.Server;
  * import io.muehlbachler.pulumi.proxmoxve.metrics.ServerArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -48,21 +48,21 @@ import javax.annotation.Nullable;
  *         var influxdbServer = new Server("influxdbServer", ServerArgs.builder()
  *             .name("example_influxdb_server")
  *             .server("192.168.3.2")
- *             .port(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(8089) (example.pp:4,19-23)))
+ *             .port(8089)
  *             .type("influxdb")
  *             .build());
  * 
  *         var graphiteServer = new Server("graphiteServer", ServerArgs.builder()
  *             .name("example_graphite_server")
  *             .server("192.168.4.2")
- *             .port(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2003) (example.pp:12,19-23)))
+ *             .port(2003)
  *             .type("graphite")
  *             .build());
  * 
  *         var opentelemetryServer = new Server("opentelemetryServer", ServerArgs.builder()
  *             .name("example_opentelemetry_server")
  *             .server("192.168.5.2")
- *             .port(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(4318) (example.pp:20,24-28)))
+ *             .port(4318)
  *             .type("opentelemetry")
  *             .opentelemetryProto("http")
  *             .opentelemetryPath("/v1/metrics")

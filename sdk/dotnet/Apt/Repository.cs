@@ -26,7 +26,7 @@ namespace Pulumi.ProxmoxVE.Apt
     ///     {
     ///         Enabled = true,
     ///         FilePath = "/etc/apt/sources.list",
-    ///         Index = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(0) (example.pp:3,14-15)),
+    ///         Index = 0,
     ///         Node = "pve",
     ///     });
     /// 

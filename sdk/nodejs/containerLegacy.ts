@@ -7,9 +7,20 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Manages a container.
+ * Manages an LXC container on a Proxmox VE node.
+ *
+ * A container's root filesystem (the `disk` block) and any additional volumes
+ * (`mountPoint` blocks) can be placed on any Proxmox VE storage backend —
+ * directory, LVM, LVM-thin, ZFS, Ceph RBD, NFS, CIFS, or any other storage
+ * configured on the cluster. Bind mounts of arbitrary host directories are
+ * also supported. See the Storage section below for details.
  *
  * ## Example Usage
+ *
+ * ### Basic container
+ *
+ * A minimal Ubuntu container with a 4&nbsp;GB rootfs on `local-lvm`,
+ * DHCP networking, and an SSH key:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -67,22 +78,6 @@ import * as utilities from "./utilities";
  *             templateFileId: ubuntu2504LxcImg.id,
  *             type: "ubuntu",
  *         },
- *         mountPoints: [
- *             {
- *                 volume: "/mnt/bindmounts/shared",
- *                 path: "/mnt/shared",
- *             },
- *             {
- *                 volume: "local-lvm",
- *                 size: "10G",
- *                 path: "/mnt/volume",
- *             },
- *             {
- *                 volume: "local-lvm:subvol-108-disk-101",
- *                 size: "10G",
- *                 path: "/mnt/data",
- *             },
- *         ],
  *         startup: {
  *             order: 3,
  *             upDelay: 60,
@@ -96,6 +91,67 @@ import * as utilities from "./utilities";
  *     };
  * }
  * ```
+ *
+ * ### Custom storage configuration
+ *
+ * This example places the rootfs on a custom storage pool, attaches an
+ * additional volume, mounts an existing volume by ID, and bind-mounts a host
+ * directory. Any Proxmox storage backend (directory, LVM-thin, ZFS, Ceph RBD,
+ * NFS, CIFS) can be referenced by its storage ID:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
+ *
+ * const customStorage = new proxmoxve.ContainerLegacy("custom_storage", {
+ *     nodeName: "first-node",
+ *     vmId: 1235,
+ *     disk: {
+ *         datastoreId: "tank-zfs",
+ *         size: 32,
+ *     },
+ *     mountPoints: [
+ *         {
+ *             volume: "local-lvm",
+ *             size: "10G",
+ *             path: "/mnt/volume",
+ *         },
+ *         {
+ *             volume: "local-lvm:subvol-108-disk-101",
+ *             size: "10G",
+ *             path: "/mnt/data",
+ *         },
+ *         {
+ *             volume: "/mnt/bindmounts/shared",
+ *             path: "/mnt/shared",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Storage
+ *
+ * Containers attach storage through two block types:
+ *
+ * - **`disk`** — the root filesystem (rootfs). Exactly one rootfs per
+ *   container; the `datastoreId` argument selects the Proxmox storage pool
+ *   it lives on.
+ * - **`mountPoint`** — zero or more additional volumes or bind mounts,
+ *   each mounted at a separate `path` inside the container.
+ *
+ * Both block types are backend-agnostic: `datastoreId` (on `disk`) and
+ * `volume` (on `mountPoint`) accept any Proxmox storage ID, regardless of
+ * backend type. Run `pvesm status` on the host or use the
+ * `proxmoxve.getDatastoresLegacy`
+ * data source to list configured storages.
+ *
+ * The `mount_point.volume` attribute accepts three forms:
+ *
+ * | Form                       | Meaning                                                  | Example                            |
+ * | -------------------------- | -------------------------------------------------------- | ---------------------------------- |
+ * | Storage ID                 | Allocate a new volume on that storage (requires `size`)  | `local-lvm`, `tank-zfs`            |
+ * | Storage ID + volume name   | Mount an existing volume by its full PVE volume ID       | `local-lvm:subvol-108-disk-101`    |
+ * | Absolute host path         | Bind-mount a host directory (requires `root@pam` auth)   | `/mnt/bindmounts/shared`           |
  *
  * ## Import
  *
@@ -154,7 +210,10 @@ export class ContainerLegacy extends pulumi.CustomResource {
      */
     declare public readonly devicePassthroughs: pulumi.Output<outputs.ContainerLegacyDevicePassthrough[] | undefined>;
     /**
-     * The disk configuration.
+     * The root filesystem (rootfs) storage configuration.
+     * Selects the Proxmox storage pool the container's root volume is created
+     * on. Backend-agnostic — works with directory, LVM, LVM-thin, ZFS, Ceph
+     * RBD, NFS, and any other configured Proxmox storage.
      */
     declare public readonly disk: pulumi.Output<outputs.ContainerLegacyDisk | undefined>;
     /**
@@ -193,7 +252,9 @@ export class ContainerLegacy extends pulumi.CustomResource {
      */
     declare public readonly memory: pulumi.Output<outputs.ContainerLegacyMemory | undefined>;
     /**
-     * A mount point
+     * An additional volume mount or host bind mount
+     * (multiple blocks supported). Use this for data volumes, shared
+     * directories, or attaching pre-existing PVE volumes.
      */
     declare public readonly mountPoints: pulumi.Output<outputs.ContainerLegacyMountPoint[] | undefined>;
     /**
@@ -374,100 +435,105 @@ export interface ContainerLegacyState {
     /**
      * The cloning configuration.
      */
-    clone?: pulumi.Input<inputs.ContainerLegacyClone>;
+    clone?: pulumi.Input<inputs.ContainerLegacyClone | undefined>;
     /**
      * The console configuration.
      */
-    console?: pulumi.Input<inputs.ContainerLegacyConsole>;
+    console?: pulumi.Input<inputs.ContainerLegacyConsole | undefined>;
     /**
      * The CPU configuration.
      */
-    cpu?: pulumi.Input<inputs.ContainerLegacyCpu>;
+    cpu?: pulumi.Input<inputs.ContainerLegacyCpu | undefined>;
     /**
      * The description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Device to pass through to the container (multiple blocks supported).
      */
-    devicePassthroughs?: pulumi.Input<pulumi.Input<inputs.ContainerLegacyDevicePassthrough>[]>;
+    devicePassthroughs?: pulumi.Input<pulumi.Input<inputs.ContainerLegacyDevicePassthrough>[] | undefined>;
     /**
-     * The disk configuration.
+     * The root filesystem (rootfs) storage configuration.
+     * Selects the Proxmox storage pool the container's root volume is created
+     * on. Backend-agnostic — works with directory, LVM, LVM-thin, ZFS, Ceph
+     * RBD, NFS, and any other configured Proxmox storage.
      */
-    disk?: pulumi.Input<inputs.ContainerLegacyDisk>;
+    disk?: pulumi.Input<inputs.ContainerLegacyDisk | undefined>;
     /**
      * A map of runtime environment variables for the container init process.
      */
-    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
      */
-    features?: pulumi.Input<inputs.ContainerLegacyFeatures>;
+    features?: pulumi.Input<inputs.ContainerLegacyFeatures | undefined>;
     /**
      * The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
      */
-    hookScriptFileId?: pulumi.Input<string>;
+    hookScriptFileId?: pulumi.Input<string | undefined>;
     /**
      * UID/GID mapping for unprivileged containers (multiple
      * blocks supported). These are written as `lxc.idmap` entries in the container
      * configuration file via SSH, since the Proxmox API does not support writing
      * `lxc[n]` parameters.
      */
-    idmaps?: pulumi.Input<pulumi.Input<inputs.ContainerLegacyIdmap>[]>;
+    idmaps?: pulumi.Input<pulumi.Input<inputs.ContainerLegacyIdmap>[] | undefined>;
     /**
      * The initialization configuration.
      */
-    initialization?: pulumi.Input<inputs.ContainerLegacyInitialization>;
+    initialization?: pulumi.Input<inputs.ContainerLegacyInitialization | undefined>;
     /**
      * The map of IPv4 addresses per network devices. Returns the first address for each network device, if multiple addresses are assigned.
      */
-    ipv4?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    ipv4?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The map of IPv6 addresses per network device. Returns the first address for each network device, if multiple addresses are assigned.
      */
-    ipv6?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    ipv6?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The memory configuration.
      */
-    memory?: pulumi.Input<inputs.ContainerLegacyMemory>;
+    memory?: pulumi.Input<inputs.ContainerLegacyMemory | undefined>;
     /**
-     * A mount point
+     * An additional volume mount or host bind mount
+     * (multiple blocks supported). Use this for data volumes, shared
+     * directories, or attaching pre-existing PVE volumes.
      */
-    mountPoints?: pulumi.Input<pulumi.Input<inputs.ContainerLegacyMountPoint>[]>;
+    mountPoints?: pulumi.Input<pulumi.Input<inputs.ContainerLegacyMountPoint>[] | undefined>;
     /**
      * A network interface (multiple blocks
      * supported).
      */
-    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.ContainerLegacyNetworkInterface>[]>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.ContainerLegacyNetworkInterface>[] | undefined>;
     /**
      * The name of the node to assign the container to.
      */
-    nodeName?: pulumi.Input<string>;
+    nodeName?: pulumi.Input<string | undefined>;
     /**
      * The Operating System configuration.
      */
-    operatingSystem?: pulumi.Input<inputs.ContainerLegacyOperatingSystem>;
+    operatingSystem?: pulumi.Input<inputs.ContainerLegacyOperatingSystem | undefined>;
     /**
      * The identifier for a pool to assign the container to.
      */
-    poolId?: pulumi.Input<string>;
+    poolId?: pulumi.Input<string | undefined>;
     /**
      * Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
      */
-    protection?: pulumi.Input<boolean>;
+    protection?: pulumi.Input<boolean | undefined>;
     /**
      * Automatically start container when the host
      * system boots (defaults to `true`).
      */
-    startOnBoot?: pulumi.Input<boolean>;
+    startOnBoot?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to start the container (defaults to `true`).
      */
-    started?: pulumi.Input<boolean>;
+    started?: pulumi.Input<boolean | undefined>;
     /**
      * Defines startup and shutdown behavior of the container.
      */
-    startup?: pulumi.Input<inputs.ContainerLegacyStartup>;
+    startup?: pulumi.Input<inputs.ContainerLegacyStartup | undefined>;
     /**
      * A list of tags the container tags. This is only meta
      * information (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.
@@ -475,45 +541,45 @@ export interface ContainerLegacyState {
      * difference on the resource. You may use the `ignoreChanges` lifecycle
      * meta-argument to ignore changes to this attribute.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether to create a template (defaults to `false`).
      */
-    template?: pulumi.Input<boolean>;
+    template?: pulumi.Input<boolean | undefined>;
     /**
      * Timeout for cloning a container in seconds (defaults to 1800).
      */
-    timeoutClone?: pulumi.Input<number>;
+    timeoutClone?: pulumi.Input<number | undefined>;
     /**
      * Timeout for creating a container in seconds (defaults to 1800).
      */
-    timeoutCreate?: pulumi.Input<number>;
+    timeoutCreate?: pulumi.Input<number | undefined>;
     /**
      * Timeout for deleting a container in seconds (defaults to 60).
      */
-    timeoutDelete?: pulumi.Input<number>;
+    timeoutDelete?: pulumi.Input<number | undefined>;
     /**
      * Start container timeout
      *
      * @deprecated This field is deprecated and will be removed in a future release. An overall operation timeout (`timeoutCreate` / `timeoutClone`) is used instead.
      */
-    timeoutStart?: pulumi.Input<number>;
+    timeoutStart?: pulumi.Input<number | undefined>;
     /**
      * Timeout for updating a container in seconds (defaults to 1800).
      */
-    timeoutUpdate?: pulumi.Input<number>;
+    timeoutUpdate?: pulumi.Input<number | undefined>;
     /**
      * Whether the container runs as unprivileged on the host (defaults to `false`).
      */
-    unprivileged?: pulumi.Input<boolean>;
+    unprivileged?: pulumi.Input<boolean | undefined>;
     /**
      * The container identifier
      */
-    vmId?: pulumi.Input<number>;
+    vmId?: pulumi.Input<number | undefined>;
     /**
      * Configuration for waiting for specific IP address types when the container starts.
      */
-    waitForIp?: pulumi.Input<inputs.ContainerLegacyWaitForIp>;
+    waitForIp?: pulumi.Input<inputs.ContainerLegacyWaitForIp | undefined>;
 }
 
 /**
@@ -523,63 +589,68 @@ export interface ContainerLegacyArgs {
     /**
      * The cloning configuration.
      */
-    clone?: pulumi.Input<inputs.ContainerLegacyClone>;
+    clone?: pulumi.Input<inputs.ContainerLegacyClone | undefined>;
     /**
      * The console configuration.
      */
-    console?: pulumi.Input<inputs.ContainerLegacyConsole>;
+    console?: pulumi.Input<inputs.ContainerLegacyConsole | undefined>;
     /**
      * The CPU configuration.
      */
-    cpu?: pulumi.Input<inputs.ContainerLegacyCpu>;
+    cpu?: pulumi.Input<inputs.ContainerLegacyCpu | undefined>;
     /**
      * The description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Device to pass through to the container (multiple blocks supported).
      */
-    devicePassthroughs?: pulumi.Input<pulumi.Input<inputs.ContainerLegacyDevicePassthrough>[]>;
+    devicePassthroughs?: pulumi.Input<pulumi.Input<inputs.ContainerLegacyDevicePassthrough>[] | undefined>;
     /**
-     * The disk configuration.
+     * The root filesystem (rootfs) storage configuration.
+     * Selects the Proxmox storage pool the container's root volume is created
+     * on. Backend-agnostic — works with directory, LVM, LVM-thin, ZFS, Ceph
+     * RBD, NFS, and any other configured Proxmox storage.
      */
-    disk?: pulumi.Input<inputs.ContainerLegacyDisk>;
+    disk?: pulumi.Input<inputs.ContainerLegacyDisk | undefined>;
     /**
      * A map of runtime environment variables for the container init process.
      */
-    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The container feature flags. Changing flags (except nesting) is only allowed for `root@pam` authenticated user.
      */
-    features?: pulumi.Input<inputs.ContainerLegacyFeatures>;
+    features?: pulumi.Input<inputs.ContainerLegacyFeatures | undefined>;
     /**
      * The identifier for a file containing a hook script (needs to be executable, e.g. by using the `proxmox_virtual_environment_file.file_mode` attribute).
      */
-    hookScriptFileId?: pulumi.Input<string>;
+    hookScriptFileId?: pulumi.Input<string | undefined>;
     /**
      * UID/GID mapping for unprivileged containers (multiple
      * blocks supported). These are written as `lxc.idmap` entries in the container
      * configuration file via SSH, since the Proxmox API does not support writing
      * `lxc[n]` parameters.
      */
-    idmaps?: pulumi.Input<pulumi.Input<inputs.ContainerLegacyIdmap>[]>;
+    idmaps?: pulumi.Input<pulumi.Input<inputs.ContainerLegacyIdmap>[] | undefined>;
     /**
      * The initialization configuration.
      */
-    initialization?: pulumi.Input<inputs.ContainerLegacyInitialization>;
+    initialization?: pulumi.Input<inputs.ContainerLegacyInitialization | undefined>;
     /**
      * The memory configuration.
      */
-    memory?: pulumi.Input<inputs.ContainerLegacyMemory>;
+    memory?: pulumi.Input<inputs.ContainerLegacyMemory | undefined>;
     /**
-     * A mount point
+     * An additional volume mount or host bind mount
+     * (multiple blocks supported). Use this for data volumes, shared
+     * directories, or attaching pre-existing PVE volumes.
      */
-    mountPoints?: pulumi.Input<pulumi.Input<inputs.ContainerLegacyMountPoint>[]>;
+    mountPoints?: pulumi.Input<pulumi.Input<inputs.ContainerLegacyMountPoint>[] | undefined>;
     /**
      * A network interface (multiple blocks
      * supported).
      */
-    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.ContainerLegacyNetworkInterface>[]>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<inputs.ContainerLegacyNetworkInterface>[] | undefined>;
     /**
      * The name of the node to assign the container to.
      */
@@ -587,28 +658,28 @@ export interface ContainerLegacyArgs {
     /**
      * The Operating System configuration.
      */
-    operatingSystem?: pulumi.Input<inputs.ContainerLegacyOperatingSystem>;
+    operatingSystem?: pulumi.Input<inputs.ContainerLegacyOperatingSystem | undefined>;
     /**
      * The identifier for a pool to assign the container to.
      */
-    poolId?: pulumi.Input<string>;
+    poolId?: pulumi.Input<string | undefined>;
     /**
      * Whether to set the protection flag of the container (defaults to `false`). This will prevent the container itself and its disk for remove/update operations.
      */
-    protection?: pulumi.Input<boolean>;
+    protection?: pulumi.Input<boolean | undefined>;
     /**
      * Automatically start container when the host
      * system boots (defaults to `true`).
      */
-    startOnBoot?: pulumi.Input<boolean>;
+    startOnBoot?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to start the container (defaults to `true`).
      */
-    started?: pulumi.Input<boolean>;
+    started?: pulumi.Input<boolean | undefined>;
     /**
      * Defines startup and shutdown behavior of the container.
      */
-    startup?: pulumi.Input<inputs.ContainerLegacyStartup>;
+    startup?: pulumi.Input<inputs.ContainerLegacyStartup | undefined>;
     /**
      * A list of tags the container tags. This is only meta
      * information (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.
@@ -616,43 +687,43 @@ export interface ContainerLegacyArgs {
      * difference on the resource. You may use the `ignoreChanges` lifecycle
      * meta-argument to ignore changes to this attribute.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether to create a template (defaults to `false`).
      */
-    template?: pulumi.Input<boolean>;
+    template?: pulumi.Input<boolean | undefined>;
     /**
      * Timeout for cloning a container in seconds (defaults to 1800).
      */
-    timeoutClone?: pulumi.Input<number>;
+    timeoutClone?: pulumi.Input<number | undefined>;
     /**
      * Timeout for creating a container in seconds (defaults to 1800).
      */
-    timeoutCreate?: pulumi.Input<number>;
+    timeoutCreate?: pulumi.Input<number | undefined>;
     /**
      * Timeout for deleting a container in seconds (defaults to 60).
      */
-    timeoutDelete?: pulumi.Input<number>;
+    timeoutDelete?: pulumi.Input<number | undefined>;
     /**
      * Start container timeout
      *
      * @deprecated This field is deprecated and will be removed in a future release. An overall operation timeout (`timeoutCreate` / `timeoutClone`) is used instead.
      */
-    timeoutStart?: pulumi.Input<number>;
+    timeoutStart?: pulumi.Input<number | undefined>;
     /**
      * Timeout for updating a container in seconds (defaults to 1800).
      */
-    timeoutUpdate?: pulumi.Input<number>;
+    timeoutUpdate?: pulumi.Input<number | undefined>;
     /**
      * Whether the container runs as unprivileged on the host (defaults to `false`).
      */
-    unprivileged?: pulumi.Input<boolean>;
+    unprivileged?: pulumi.Input<boolean | undefined>;
     /**
      * The container identifier
      */
-    vmId?: pulumi.Input<number>;
+    vmId?: pulumi.Input<number | undefined>;
     /**
      * Configuration for waiting for specific IP address types when the container starts.
      */
-    waitForIp?: pulumi.Input<inputs.ContainerLegacyWaitForIp>;
+    waitForIp?: pulumi.Input<inputs.ContainerLegacyWaitForIp | undefined>;
 }

@@ -30,7 +30,7 @@ namespace Pulumi.ProxmoxVE.Outputs
         public readonly bool? Firewall;
         /// <summary>
         /// Whether the host runs DHCP on this interface's
-        /// behalf (defaults to `False`). Requires Proxmox VE 9.0+. Required for
+        /// behalf (defaults to `False`). Requires Proxmox VE 9.1+. Required for
         /// application containers that do not include a DHCP client.
         /// </summary>
         public readonly bool? HostManaged;

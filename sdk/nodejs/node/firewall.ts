@@ -171,51 +171,51 @@ export interface FirewallState {
     /**
      * Enable host firewall rules (defaults to `true`).
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Log level for forwarded traffic. Must be one of: `emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` (defaults to `nolog`).
      */
-    logLevelForward?: pulumi.Input<string>;
+    logLevelForward?: pulumi.Input<string | undefined>;
     /**
      * Log level for incoming traffic. Must be one of: `emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` (defaults to `nolog`).
      */
-    logLevelIn?: pulumi.Input<string>;
+    logLevelIn?: pulumi.Input<string | undefined>;
     /**
      * Log level for outgoing traffic. Must be one of: `emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` (defaults to `nolog`).
      */
-    logLevelOut?: pulumi.Input<string>;
+    logLevelOut?: pulumi.Input<string | undefined>;
     /**
      * Enable NDP - Neighbor Discovery Protocol (defaults to `true`).
      */
-    ndp?: pulumi.Input<boolean>;
+    ndp?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum number of tracked connections (defaults to `262144`). Minimum value is `32768`.
      */
-    nfConntrackMax?: pulumi.Input<number>;
+    nfConntrackMax?: pulumi.Input<number | undefined>;
     /**
      * Conntrack established timeout in seconds (defaults to `432000` - 5 days). Minimum value is `7875`.
      */
-    nfConntrackTcpTimeoutEstablished?: pulumi.Input<number>;
+    nfConntrackTcpTimeoutEstablished?: pulumi.Input<number | undefined>;
     /**
      * Enable nftables based firewall (tech preview, defaults to `false`).
      */
-    nftables?: pulumi.Input<boolean>;
+    nftables?: pulumi.Input<boolean | undefined>;
     /**
      * The cluster node name.
      */
-    nodeName?: pulumi.Input<string>;
+    nodeName?: pulumi.Input<string | undefined>;
     /**
      * Enable SMURFS filter (defaults to `true`).
      */
-    nosmurfs?: pulumi.Input<boolean>;
+    nosmurfs?: pulumi.Input<boolean | undefined>;
     /**
      * Log level for SMURFS filter. Must be one of: `emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` (defaults to `nolog`).
      */
-    smurfLogLevel?: pulumi.Input<string>;
+    smurfLogLevel?: pulumi.Input<string | undefined>;
     /**
      * Log level for illegal tcp flags filter. Must be one of: `emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` (defaults to `nolog`).
      */
-    tcpFlagsLogLevel?: pulumi.Input<string>;
+    tcpFlagsLogLevel?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -225,35 +225,35 @@ export interface FirewallArgs {
     /**
      * Enable host firewall rules (defaults to `true`).
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Log level for forwarded traffic. Must be one of: `emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` (defaults to `nolog`).
      */
-    logLevelForward?: pulumi.Input<string>;
+    logLevelForward?: pulumi.Input<string | undefined>;
     /**
      * Log level for incoming traffic. Must be one of: `emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` (defaults to `nolog`).
      */
-    logLevelIn?: pulumi.Input<string>;
+    logLevelIn?: pulumi.Input<string | undefined>;
     /**
      * Log level for outgoing traffic. Must be one of: `emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` (defaults to `nolog`).
      */
-    logLevelOut?: pulumi.Input<string>;
+    logLevelOut?: pulumi.Input<string | undefined>;
     /**
      * Enable NDP - Neighbor Discovery Protocol (defaults to `true`).
      */
-    ndp?: pulumi.Input<boolean>;
+    ndp?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum number of tracked connections (defaults to `262144`). Minimum value is `32768`.
      */
-    nfConntrackMax?: pulumi.Input<number>;
+    nfConntrackMax?: pulumi.Input<number | undefined>;
     /**
      * Conntrack established timeout in seconds (defaults to `432000` - 5 days). Minimum value is `7875`.
      */
-    nfConntrackTcpTimeoutEstablished?: pulumi.Input<number>;
+    nfConntrackTcpTimeoutEstablished?: pulumi.Input<number | undefined>;
     /**
      * Enable nftables based firewall (tech preview, defaults to `false`).
      */
-    nftables?: pulumi.Input<boolean>;
+    nftables?: pulumi.Input<boolean | undefined>;
     /**
      * The cluster node name.
      */
@@ -261,13 +261,13 @@ export interface FirewallArgs {
     /**
      * Enable SMURFS filter (defaults to `true`).
      */
-    nosmurfs?: pulumi.Input<boolean>;
+    nosmurfs?: pulumi.Input<boolean | undefined>;
     /**
      * Log level for SMURFS filter. Must be one of: `emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` (defaults to `nolog`).
      */
-    smurfLogLevel?: pulumi.Input<string>;
+    smurfLogLevel?: pulumi.Input<string | undefined>;
     /**
      * Log level for illegal tcp flags filter. Must be one of: `emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` (defaults to `nolog`).
      */
-    tcpFlagsLogLevel?: pulumi.Input<string>;
+    tcpFlagsLogLevel?: pulumi.Input<string | undefined>;
 }

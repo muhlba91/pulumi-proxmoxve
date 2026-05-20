@@ -22,7 +22,7 @@ namespace Pulumi.ProxmoxVE
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new ProxmoxVE.Index.Haresource("example", new()
+    ///     var example = new ProxmoxVE.Haresource("example", new()
     ///     {
     ///         ResourceId = "vm:123",
     ///         State = "started",

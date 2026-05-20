@@ -21,10 +21,10 @@ class VnetArgs:
     def __init__(__self__, *,
                  resource_id: pulumi.Input[_builtins.str],
                  zone: pulumi.Input[_builtins.str],
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 isolate_ports: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tag: Optional[pulumi.Input[_builtins.int]] = None,
-                 vlan_aware: Optional[pulumi.Input[_builtins.bool]] = None):
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 isolate_ports: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tag: pulumi.Input[Optional[_builtins.int]] = None,
+                 vlan_aware: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Vnet resource.
 
@@ -72,62 +72,62 @@ class VnetArgs:
 
     @_builtins.property
     @pulumi.getter
-    def alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional alias for this VNet.
         """
         return pulumi.get(self, "alias")
 
     @alias.setter
-    def alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alias", value)
 
     @_builtins.property
     @pulumi.getter(name="isolatePorts")
-    def isolate_ports(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def isolate_ports(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Isolate ports within this VNet.
         """
         return pulumi.get(self, "isolate_ports")
 
     @isolate_ports.setter
-    def isolate_ports(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def isolate_ports(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "isolate_ports", value)
 
     @_builtins.property
     @pulumi.getter
-    def tag(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def tag(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Tag value for VLAN/VXLAN (can't be used with other zone types).
         """
         return pulumi.get(self, "tag")
 
     @tag.setter
-    def tag(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def tag(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "tag", value)
 
     @_builtins.property
     @pulumi.getter(name="vlanAware")
-    def vlan_aware(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vlan_aware(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow VM VLANs to pass through this VNet.
         """
         return pulumi.get(self, "vlan_aware")
 
     @vlan_aware.setter
-    def vlan_aware(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vlan_aware(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vlan_aware", value)
 
 
 @pulumi.input_type
 class _VnetState:
     def __init__(__self__, *,
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 isolate_ports: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag: Optional[pulumi.Input[_builtins.int]] = None,
-                 vlan_aware: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None):
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 isolate_ports: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag: pulumi.Input[Optional[_builtins.int]] = None,
+                 vlan_aware: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Vnet resources.
 
@@ -153,74 +153,74 @@ class _VnetState:
 
     @_builtins.property
     @pulumi.getter
-    def alias(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alias(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An optional alias for this VNet.
         """
         return pulumi.get(self, "alias")
 
     @alias.setter
-    def alias(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alias(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alias", value)
 
     @_builtins.property
     @pulumi.getter(name="isolatePorts")
-    def isolate_ports(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def isolate_ports(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Isolate ports within this VNet.
         """
         return pulumi.get(self, "isolate_ports")
 
     @isolate_ports.setter
-    def isolate_ports(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def isolate_ports(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "isolate_ports", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the SDN VNet.
         """
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def tag(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def tag(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Tag value for VLAN/VXLAN (can't be used with other zone types).
         """
         return pulumi.get(self, "tag")
 
     @tag.setter
-    def tag(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def tag(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "tag", value)
 
     @_builtins.property
     @pulumi.getter(name="vlanAware")
-    def vlan_aware(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vlan_aware(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Allow VM VLANs to pass through this VNet.
         """
         return pulumi.get(self, "vlan_aware")
 
     @vlan_aware.setter
-    def vlan_aware(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vlan_aware(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vlan_aware", value)
 
     @_builtins.property
     @pulumi.getter
-    def zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone to which this VNet belongs.
         """
         return pulumi.get(self, "zone")
 
     @zone.setter
-    def zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone", value)
 
 
@@ -230,12 +230,12 @@ class Vnet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 isolate_ports: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag: Optional[pulumi.Input[_builtins.int]] = None,
-                 vlan_aware: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 isolate_ports: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag: pulumi.Input[Optional[_builtins.int]] = None,
+                 vlan_aware: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages Proxmox VE SDN VNet.
@@ -381,12 +381,12 @@ class Vnet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alias: Optional[pulumi.Input[_builtins.str]] = None,
-                 isolate_ports: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 tag: Optional[pulumi.Input[_builtins.int]] = None,
-                 vlan_aware: Optional[pulumi.Input[_builtins.bool]] = None,
-                 zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 alias: pulumi.Input[Optional[_builtins.str]] = None,
+                 isolate_ports: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 tag: pulumi.Input[Optional[_builtins.int]] = None,
+                 vlan_aware: pulumi.Input[Optional[_builtins.bool]] = None,
+                 zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -418,12 +418,12 @@ class Vnet(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alias: Optional[pulumi.Input[_builtins.str]] = None,
-            isolate_ports: Optional[pulumi.Input[_builtins.bool]] = None,
-            resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-            tag: Optional[pulumi.Input[_builtins.int]] = None,
-            vlan_aware: Optional[pulumi.Input[_builtins.bool]] = None,
-            zone: Optional[pulumi.Input[_builtins.str]] = None) -> 'Vnet':
+            alias: pulumi.Input[Optional[_builtins.str]] = None,
+            isolate_ports: pulumi.Input[Optional[_builtins.bool]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            tag: pulumi.Input[Optional[_builtins.int]] = None,
+            vlan_aware: pulumi.Input[Optional[_builtins.bool]] = None,
+            zone: pulumi.Input[Optional[_builtins.str]] = None) -> 'Vnet':
         """
         Get an existing Vnet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

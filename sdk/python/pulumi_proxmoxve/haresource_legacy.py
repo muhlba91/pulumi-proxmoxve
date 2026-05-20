@@ -20,12 +20,12 @@ __all__ = ['HaresourceLegacyArgs', 'HaresourceLegacy']
 class HaresourceLegacyArgs:
     def __init__(__self__, *,
                  resource_id: pulumi.Input[_builtins.str],
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_relocate: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_restart: Optional[pulumi.Input[_builtins.int]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_relocate: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_restart: pulumi.Input[Optional[_builtins.int]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a HaresourceLegacy resource.
 
@@ -65,87 +65,87 @@ class HaresourceLegacyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The comment associated with this resource.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier of the High Availability group this resource is a member of.
         """
         return pulumi.get(self, "group")
 
     @group.setter
-    def group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group", value)
 
     @_builtins.property
     @pulumi.getter(name="maxRelocate")
-    def max_relocate(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_relocate(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximal number of relocation attempts.
         """
         return pulumi.get(self, "max_relocate")
 
     @max_relocate.setter
-    def max_relocate(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_relocate(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_relocate", value)
 
     @_builtins.property
     @pulumi.getter(name="maxRestart")
-    def max_restart(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_restart(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximal number of restart attempts.
         """
         return pulumi.get(self, "max_restart")
 
     @max_restart.setter
-    def max_restart(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_restart(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_restart", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desired state of the resource.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of HA resources to create. If unset, it will be deduced from the `resource_id`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class _HaresourceLegacyState:
     def __init__(__self__, *,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_relocate: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_restart: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_relocate: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_restart: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HaresourceLegacy resources.
 
@@ -174,86 +174,86 @@ class _HaresourceLegacyState:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The comment associated with this resource.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier of the High Availability group this resource is a member of.
         """
         return pulumi.get(self, "group")
 
     @group.setter
-    def group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group", value)
 
     @_builtins.property
     @pulumi.getter(name="maxRelocate")
-    def max_relocate(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_relocate(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximal number of relocation attempts.
         """
         return pulumi.get(self, "max_relocate")
 
     @max_relocate.setter
-    def max_relocate(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_relocate(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_relocate", value)
 
     @_builtins.property
     @pulumi.getter(name="maxRestart")
-    def max_restart(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_restart(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximal number of restart attempts.
         """
         return pulumi.get(self, "max_restart")
 
     @max_restart.setter
-    def max_restart(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_restart(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_restart", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Proxmox HA resource identifier
         """
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desired state of the resource.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of HA resources to create. If unset, it will be deduced from the `resource_id`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -263,13 +263,13 @@ class HaresourceLegacy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_relocate: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_restart: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_relocate: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_restart: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         > **Deprecated:** Use `Haresource` instead. This resource will be removed in v1.0.
@@ -360,13 +360,13 @@ class HaresourceLegacy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_relocate: Optional[pulumi.Input[_builtins.int]] = None,
-                 max_restart: Optional[pulumi.Input[_builtins.int]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_relocate: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_restart: pulumi.Input[Optional[_builtins.int]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -395,13 +395,13 @@ class HaresourceLegacy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            group: Optional[pulumi.Input[_builtins.str]] = None,
-            max_relocate: Optional[pulumi.Input[_builtins.int]] = None,
-            max_restart: Optional[pulumi.Input[_builtins.int]] = None,
-            resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'HaresourceLegacy':
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            group: pulumi.Input[Optional[_builtins.str]] = None,
+            max_relocate: pulumi.Input[Optional[_builtins.int]] = None,
+            max_restart: pulumi.Input[Optional[_builtins.int]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'HaresourceLegacy':
         """
         Get an existing HaresourceLegacy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

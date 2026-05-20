@@ -23,11 +23,11 @@ class SubnetLegacyArgs:
     def __init__(__self__, *,
                  cidr: pulumi.Input[_builtins.str],
                  vnet: pulumi.Input[_builtins.str],
-                 dhcp_dns_server: Optional[pulumi.Input[_builtins.str]] = None,
-                 dhcp_range: Optional[pulumi.Input['SubnetLegacyDhcpRangeArgs']] = None,
-                 dns_zone_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 snat: Optional[pulumi.Input[_builtins.bool]] = None):
+                 dhcp_dns_server: pulumi.Input[Optional[_builtins.str]] = None,
+                 dhcp_range: pulumi.Input[Optional['SubnetLegacyDhcpRangeArgs']] = None,
+                 dns_zone_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 snat: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a SubnetLegacy resource.
 
@@ -78,75 +78,75 @@ class SubnetLegacyArgs:
 
     @_builtins.property
     @pulumi.getter(name="dhcpDnsServer")
-    def dhcp_dns_server(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dhcp_dns_server(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The DNS server used for DHCP.
         """
         return pulumi.get(self, "dhcp_dns_server")
 
     @dhcp_dns_server.setter
-    def dhcp_dns_server(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dhcp_dns_server(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dhcp_dns_server", value)
 
     @_builtins.property
     @pulumi.getter(name="dhcpRange")
-    def dhcp_range(self) -> Optional[pulumi.Input['SubnetLegacyDhcpRangeArgs']]:
+    def dhcp_range(self) -> pulumi.Input[Optional['SubnetLegacyDhcpRangeArgs']]:
         """
         DHCP range (start and end IPs).
         """
         return pulumi.get(self, "dhcp_range")
 
     @dhcp_range.setter
-    def dhcp_range(self, value: Optional[pulumi.Input['SubnetLegacyDhcpRangeArgs']]):
+    def dhcp_range(self, value: pulumi.Input[Optional['SubnetLegacyDhcpRangeArgs']]):
         pulumi.set(self, "dhcp_range", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsZonePrefix")
-    def dns_zone_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns_zone_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Prefix used for DNS zone delegation.
         """
         return pulumi.get(self, "dns_zone_prefix")
 
     @dns_zone_prefix.setter
-    def dns_zone_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns_zone_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns_zone_prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The gateway address for the subnet.
         """
         return pulumi.get(self, "gateway")
 
     @gateway.setter
-    def gateway(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway", value)
 
     @_builtins.property
     @pulumi.getter
-    def snat(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def snat(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether SNAT is enabled for the subnet.
         """
         return pulumi.get(self, "snat")
 
     @snat.setter
-    def snat(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def snat(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "snat", value)
 
 
 @pulumi.input_type
 class _SubnetLegacyState:
     def __init__(__self__, *,
-                 cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 dhcp_dns_server: Optional[pulumi.Input[_builtins.str]] = None,
-                 dhcp_range: Optional[pulumi.Input['SubnetLegacyDhcpRangeArgs']] = None,
-                 dns_zone_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 snat: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vnet: Optional[pulumi.Input[_builtins.str]] = None):
+                 cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 dhcp_dns_server: pulumi.Input[Optional[_builtins.str]] = None,
+                 dhcp_range: pulumi.Input[Optional['SubnetLegacyDhcpRangeArgs']] = None,
+                 dns_zone_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 snat: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vnet: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SubnetLegacy resources.
 
@@ -175,86 +175,86 @@ class _SubnetLegacyState:
 
     @_builtins.property
     @pulumi.getter
-    def cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A CIDR network address, for example 10.0.0.0/8
         """
         return pulumi.get(self, "cidr")
 
     @cidr.setter
-    def cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="dhcpDnsServer")
-    def dhcp_dns_server(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dhcp_dns_server(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The DNS server used for DHCP.
         """
         return pulumi.get(self, "dhcp_dns_server")
 
     @dhcp_dns_server.setter
-    def dhcp_dns_server(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dhcp_dns_server(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dhcp_dns_server", value)
 
     @_builtins.property
     @pulumi.getter(name="dhcpRange")
-    def dhcp_range(self) -> Optional[pulumi.Input['SubnetLegacyDhcpRangeArgs']]:
+    def dhcp_range(self) -> pulumi.Input[Optional['SubnetLegacyDhcpRangeArgs']]:
         """
         DHCP range (start and end IPs).
         """
         return pulumi.get(self, "dhcp_range")
 
     @dhcp_range.setter
-    def dhcp_range(self, value: Optional[pulumi.Input['SubnetLegacyDhcpRangeArgs']]):
+    def dhcp_range(self, value: pulumi.Input[Optional['SubnetLegacyDhcpRangeArgs']]):
         pulumi.set(self, "dhcp_range", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsZonePrefix")
-    def dns_zone_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns_zone_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Prefix used for DNS zone delegation.
         """
         return pulumi.get(self, "dns_zone_prefix")
 
     @dns_zone_prefix.setter
-    def dns_zone_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns_zone_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns_zone_prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The gateway address for the subnet.
         """
         return pulumi.get(self, "gateway")
 
     @gateway.setter
-    def gateway(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway", value)
 
     @_builtins.property
     @pulumi.getter
-    def snat(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def snat(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether SNAT is enabled for the subnet.
         """
         return pulumi.get(self, "snat")
 
     @snat.setter
-    def snat(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def snat(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "snat", value)
 
     @_builtins.property
     @pulumi.getter
-    def vnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vnet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VNet to which this subnet belongs.
         """
         return pulumi.get(self, "vnet")
 
     @vnet.setter
-    def vnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vnet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vnet", value)
 
 
@@ -264,13 +264,13 @@ class SubnetLegacy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 dhcp_dns_server: Optional[pulumi.Input[_builtins.str]] = None,
-                 dhcp_range: Optional[pulumi.Input[Union['SubnetLegacyDhcpRangeArgs', 'SubnetLegacyDhcpRangeArgsDict']]] = None,
-                 dns_zone_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 snat: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vnet: Optional[pulumi.Input[_builtins.str]] = None,
+                 cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 dhcp_dns_server: pulumi.Input[Optional[_builtins.str]] = None,
+                 dhcp_range: pulumi.Input[Optional[Union['SubnetLegacyDhcpRangeArgs', 'SubnetLegacyDhcpRangeArgsDict']]] = None,
+                 dns_zone_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 snat: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vnet: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         > **Deprecated:** Use `sdn.Subnet` instead. This resource will be removed in v1.0.
@@ -469,13 +469,13 @@ class SubnetLegacy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 dhcp_dns_server: Optional[pulumi.Input[_builtins.str]] = None,
-                 dhcp_range: Optional[pulumi.Input[Union['SubnetLegacyDhcpRangeArgs', 'SubnetLegacyDhcpRangeArgsDict']]] = None,
-                 dns_zone_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 snat: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vnet: Optional[pulumi.Input[_builtins.str]] = None,
+                 cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 dhcp_dns_server: pulumi.Input[Optional[_builtins.str]] = None,
+                 dhcp_range: pulumi.Input[Optional[Union['SubnetLegacyDhcpRangeArgs', 'SubnetLegacyDhcpRangeArgsDict']]] = None,
+                 dns_zone_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 snat: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vnet: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -506,13 +506,13 @@ class SubnetLegacy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            dhcp_dns_server: Optional[pulumi.Input[_builtins.str]] = None,
-            dhcp_range: Optional[pulumi.Input[Union['SubnetLegacyDhcpRangeArgs', 'SubnetLegacyDhcpRangeArgsDict']]] = None,
-            dns_zone_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            gateway: Optional[pulumi.Input[_builtins.str]] = None,
-            snat: Optional[pulumi.Input[_builtins.bool]] = None,
-            vnet: Optional[pulumi.Input[_builtins.str]] = None) -> 'SubnetLegacy':
+            cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            dhcp_dns_server: pulumi.Input[Optional[_builtins.str]] = None,
+            dhcp_range: pulumi.Input[Optional[Union['SubnetLegacyDhcpRangeArgs', 'SubnetLegacyDhcpRangeArgsDict']]] = None,
+            dns_zone_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway: pulumi.Input[Optional[_builtins.str]] = None,
+            snat: pulumi.Input[Optional[_builtins.bool]] = None,
+            vnet: pulumi.Input[Optional[_builtins.str]] = None) -> 'SubnetLegacy':
         """
         Get an existing SubnetLegacy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

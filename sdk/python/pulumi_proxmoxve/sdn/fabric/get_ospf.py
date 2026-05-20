@@ -90,7 +90,7 @@ def get_ospf(id: Optional[_builtins.str] = None,
         area=pulumi.get(__ret__, 'area'),
         id=pulumi.get(__ret__, 'id'),
         ip_prefix=pulumi.get(__ret__, 'ip_prefix'))
-def get_ospf_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_ospf_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOspfResult]:
     """
     OSPF Fabric in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.

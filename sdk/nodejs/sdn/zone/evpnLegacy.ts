@@ -214,71 +214,71 @@ export interface EvpnLegacyState {
     /**
      * Enable subnet advertisement for EVPN.
      */
-    advertiseSubnets?: pulumi.Input<boolean>;
+    advertiseSubnets?: pulumi.Input<boolean | undefined>;
     /**
      * EVPN controller address.
      */
-    controller?: pulumi.Input<string>;
+    controller?: pulumi.Input<string | undefined>;
     /**
      * Disable ARP/ND suppression for EVPN.
      */
-    disableArpNdSuppression?: pulumi.Input<boolean>;
+    disableArpNdSuppression?: pulumi.Input<boolean | undefined>;
     /**
      * DNS API server address.
      */
-    dns?: pulumi.Input<string>;
+    dns?: pulumi.Input<string | undefined>;
     /**
      * DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
      */
-    dnsZone?: pulumi.Input<string>;
+    dnsZone?: pulumi.Input<string | undefined>;
     /**
      * List of exit nodes for EVPN.
      */
-    exitNodes?: pulumi.Input<pulumi.Input<string>[]>;
+    exitNodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Enable local routing for EVPN exit nodes.
      */
-    exitNodesLocalRouting?: pulumi.Input<boolean>;
+    exitNodesLocalRouting?: pulumi.Input<boolean | undefined>;
     /**
      * IP Address Management system.
      */
-    ipam?: pulumi.Input<string>;
+    ipam?: pulumi.Input<string | undefined>;
     /**
      * MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
      */
-    mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number | undefined>;
     /**
      * The Proxmox nodes which the zone and associated VNets should be deployed on
      */
-    nodes?: pulumi.Input<pulumi.Input<string>[]>;
+    nodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates if the zone has pending configuration changes that need to be applied.
      */
-    pending?: pulumi.Input<boolean>;
+    pending?: pulumi.Input<boolean | undefined>;
     /**
      * Primary exit node for EVPN.
      */
-    primaryExitNode?: pulumi.Input<string>;
+    primaryExitNode?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the SDN zone.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * Reverse DNS API server address.
      */
-    reverseDns?: pulumi.Input<string>;
+    reverseDns?: pulumi.Input<string | undefined>;
     /**
      * Route target import for EVPN.
      */
-    rtImport?: pulumi.Input<string>;
+    rtImport?: pulumi.Input<string | undefined>;
     /**
      * Indicates the current state of the zone.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * VRF VXLAN-ID used for dedicated routing interconnect between VNets. It must be different than the VXLAN-ID of the VNets.
      */
-    vrfVxlan?: pulumi.Input<number>;
+    vrfVxlan?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -288,7 +288,7 @@ export interface EvpnLegacyArgs {
     /**
      * Enable subnet advertisement for EVPN.
      */
-    advertiseSubnets?: pulumi.Input<boolean>;
+    advertiseSubnets?: pulumi.Input<boolean | undefined>;
     /**
      * EVPN controller address.
      */
@@ -296,39 +296,39 @@ export interface EvpnLegacyArgs {
     /**
      * Disable ARP/ND suppression for EVPN.
      */
-    disableArpNdSuppression?: pulumi.Input<boolean>;
+    disableArpNdSuppression?: pulumi.Input<boolean | undefined>;
     /**
      * DNS API server address.
      */
-    dns?: pulumi.Input<string>;
+    dns?: pulumi.Input<string | undefined>;
     /**
      * DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
      */
-    dnsZone?: pulumi.Input<string>;
+    dnsZone?: pulumi.Input<string | undefined>;
     /**
      * List of exit nodes for EVPN.
      */
-    exitNodes?: pulumi.Input<pulumi.Input<string>[]>;
+    exitNodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Enable local routing for EVPN exit nodes.
      */
-    exitNodesLocalRouting?: pulumi.Input<boolean>;
+    exitNodesLocalRouting?: pulumi.Input<boolean | undefined>;
     /**
      * IP Address Management system.
      */
-    ipam?: pulumi.Input<string>;
+    ipam?: pulumi.Input<string | undefined>;
     /**
      * MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
      */
-    mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number | undefined>;
     /**
      * The Proxmox nodes which the zone and associated VNets should be deployed on
      */
-    nodes?: pulumi.Input<pulumi.Input<string>[]>;
+    nodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Primary exit node for EVPN.
      */
-    primaryExitNode?: pulumi.Input<string>;
+    primaryExitNode?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the SDN zone.
      */
@@ -336,11 +336,11 @@ export interface EvpnLegacyArgs {
     /**
      * Reverse DNS API server address.
      */
-    reverseDns?: pulumi.Input<string>;
+    reverseDns?: pulumi.Input<string | undefined>;
     /**
      * Route target import for EVPN.
      */
-    rtImport?: pulumi.Input<string>;
+    rtImport?: pulumi.Input<string | undefined>;
     /**
      * VRF VXLAN-ID used for dedicated routing interconnect between VNets. It must be different than the VXLAN-ID of the VNets.
      */

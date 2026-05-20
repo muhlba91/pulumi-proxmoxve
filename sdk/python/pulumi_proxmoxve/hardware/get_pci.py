@@ -144,9 +144,9 @@ def get_pci(filters: Optional[Union['GetPciFiltersArgs', 'GetPciFiltersArgsDict'
         id=pulumi.get(__ret__, 'id'),
         node_name=pulumi.get(__ret__, 'node_name'),
         pci_class_blacklists=pulumi.get(__ret__, 'pci_class_blacklists'))
-def get_pci_output(filters: Optional[pulumi.Input[Optional[Union['GetPciFiltersArgs', 'GetPciFiltersArgsDict']]]] = None,
-                   node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                   pci_class_blacklists: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_pci_output(filters: pulumi.Input[Optional[Optional[Union['GetPciFiltersArgs', 'GetPciFiltersArgsDict']]]] = None,
+                   node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                   pci_class_blacklists: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPciResult]:
     """
     Retrieves the list of PCI devices present on a specific Proxmox VE node. This is useful for discovering PCI devices available for passthrough or for configuring hardware mappings.

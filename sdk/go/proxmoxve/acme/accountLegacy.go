@@ -86,6 +86,17 @@ func NewAccountLegacy(ctx *pulumi.Context,
 	if args.Contact == nil {
 		return nil, errors.New("invalid value for required argument 'Contact'")
 	}
+	if args.EabHmacKey != nil {
+		args.EabHmacKey = pulumi.ToSecret(args.EabHmacKey).(pulumi.StringPtrInput)
+	}
+	if args.EabKid != nil {
+		args.EabKid = pulumi.ToSecret(args.EabKid).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"eabHmacKey",
+		"eabKid",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccountLegacy
 	err := ctx.RegisterResource("proxmoxve:acme/accountLegacy:AccountLegacy", name, args, &resource, opts...)

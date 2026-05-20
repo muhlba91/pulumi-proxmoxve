@@ -21,10 +21,10 @@ class PluginLegacyArgs:
     def __init__(__self__, *,
                  api: pulumi.Input[_builtins.str],
                  plugin: pulumi.Input[_builtins.str],
-                 data: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 digest: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 validation_delay: Optional[pulumi.Input[_builtins.int]] = None):
+                 data: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 digest: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 validation_delay: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a PluginLegacy resource.
 
@@ -72,62 +72,62 @@ class PluginLegacyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def data(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def data(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         DNS plugin data.
         """
         return pulumi.get(self, "data")
 
     @data.setter
-    def data(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def data(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "data", value)
 
     @_builtins.property
     @pulumi.getter
-    def digest(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def digest(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SHA1 digest of the current configuration. Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
         """
         return pulumi.get(self, "digest")
 
     @digest.setter
-    def digest(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def digest(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "digest", value)
 
     @_builtins.property
     @pulumi.getter
-    def disable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag to disable the config.
         """
         return pulumi.get(self, "disable")
 
     @disable.setter
-    def disable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable", value)
 
     @_builtins.property
     @pulumi.getter(name="validationDelay")
-    def validation_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def validation_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records (0 - 172800).
         """
         return pulumi.get(self, "validation_delay")
 
     @validation_delay.setter
-    def validation_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def validation_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "validation_delay", value)
 
 
 @pulumi.input_type
 class _PluginLegacyState:
     def __init__(__self__, *,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 data: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 digest: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 plugin: Optional[pulumi.Input[_builtins.str]] = None,
-                 validation_delay: Optional[pulumi.Input[_builtins.int]] = None):
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 data: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 digest: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 plugin: pulumi.Input[Optional[_builtins.str]] = None,
+                 validation_delay: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering PluginLegacy resources.
 
@@ -153,74 +153,74 @@ class _PluginLegacyState:
 
     @_builtins.property
     @pulumi.getter
-    def api(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         API plugin name.
         """
         return pulumi.get(self, "api")
 
     @api.setter
-    def api(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api", value)
 
     @_builtins.property
     @pulumi.getter
-    def data(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def data(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         DNS plugin data.
         """
         return pulumi.get(self, "data")
 
     @data.setter
-    def data(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def data(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "data", value)
 
     @_builtins.property
     @pulumi.getter
-    def digest(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def digest(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SHA1 digest of the current configuration. Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
         """
         return pulumi.get(self, "digest")
 
     @digest.setter
-    def digest(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def digest(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "digest", value)
 
     @_builtins.property
     @pulumi.getter
-    def disable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag to disable the config.
         """
         return pulumi.get(self, "disable")
 
     @disable.setter
-    def disable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable", value)
 
     @_builtins.property
     @pulumi.getter
-    def plugin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plugin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ACME Plugin ID name.
         """
         return pulumi.get(self, "plugin")
 
     @plugin.setter
-    def plugin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plugin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plugin", value)
 
     @_builtins.property
     @pulumi.getter(name="validationDelay")
-    def validation_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def validation_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records (0 - 172800).
         """
         return pulumi.get(self, "validation_delay")
 
     @validation_delay.setter
-    def validation_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def validation_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "validation_delay", value)
 
 
@@ -230,12 +230,12 @@ class PluginLegacy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 data: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 digest: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 plugin: Optional[pulumi.Input[_builtins.str]] = None,
-                 validation_delay: Optional[pulumi.Input[_builtins.int]] = None,
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 data: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 digest: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 plugin: pulumi.Input[Optional[_builtins.str]] = None,
+                 validation_delay: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         > **Deprecated:** Use `acme/dns.Plugin` instead. This resource will be removed in v1.0.
@@ -327,12 +327,12 @@ class PluginLegacy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api: Optional[pulumi.Input[_builtins.str]] = None,
-                 data: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 digest: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 plugin: Optional[pulumi.Input[_builtins.str]] = None,
-                 validation_delay: Optional[pulumi.Input[_builtins.int]] = None,
+                 api: pulumi.Input[Optional[_builtins.str]] = None,
+                 data: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 digest: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 plugin: pulumi.Input[Optional[_builtins.str]] = None,
+                 validation_delay: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -362,12 +362,12 @@ class PluginLegacy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            api: Optional[pulumi.Input[_builtins.str]] = None,
-            data: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            digest: Optional[pulumi.Input[_builtins.str]] = None,
-            disable: Optional[pulumi.Input[_builtins.bool]] = None,
-            plugin: Optional[pulumi.Input[_builtins.str]] = None,
-            validation_delay: Optional[pulumi.Input[_builtins.int]] = None) -> 'PluginLegacy':
+            api: pulumi.Input[Optional[_builtins.str]] = None,
+            data: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            digest: pulumi.Input[Optional[_builtins.str]] = None,
+            disable: pulumi.Input[Optional[_builtins.bool]] = None,
+            plugin: pulumi.Input[Optional[_builtins.str]] = None,
+            validation_delay: pulumi.Input[Optional[_builtins.int]] = None) -> 'PluginLegacy':
         """
         Get an existing PluginLegacy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

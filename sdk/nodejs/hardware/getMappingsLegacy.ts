@@ -122,7 +122,7 @@ export interface GetMappingsLegacyOutputArgs {
     /**
      * The name of the node whose configurations should be checked for correctness.
      */
-    checkNode?: pulumi.Input<string>;
+    checkNode?: pulumi.Input<string | undefined>;
     /**
      * The type of the hardware mappings.
      */

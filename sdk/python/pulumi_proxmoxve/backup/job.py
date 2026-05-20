@@ -24,35 +24,35 @@ class JobArgs:
                  resource_id: pulumi.Input[_builtins.str],
                  schedule: pulumi.Input[_builtins.str],
                  storage: pulumi.Input[_builtins.str],
-                 all: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bwlimit: Optional[pulumi.Input[_builtins.int]] = None,
-                 compress: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 exclude_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 fleecing: Optional[pulumi.Input['JobFleecingArgs']] = None,
-                 ionice: Optional[pulumi.Input[_builtins.int]] = None,
-                 lockwait: Optional[pulumi.Input[_builtins.int]] = None,
-                 mailnotification: Optional[pulumi.Input[_builtins.str]] = None,
-                 mailtos: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 maxfiles: Optional[pulumi.Input[_builtins.int]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 node: Optional[pulumi.Input[_builtins.str]] = None,
-                 notes_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 pbs_change_detection_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 performance: Optional[pulumi.Input['JobPerformanceArgs']] = None,
-                 pigz: Optional[pulumi.Input[_builtins.int]] = None,
-                 pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 protected: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prune_backups: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 remove: Optional[pulumi.Input[_builtins.bool]] = None,
-                 repeat_missed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 script: Optional[pulumi.Input[_builtins.str]] = None,
-                 starttime: Optional[pulumi.Input[_builtins.str]] = None,
-                 stdexcludes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 stopwait: Optional[pulumi.Input[_builtins.int]] = None,
-                 tmpdir: Optional[pulumi.Input[_builtins.str]] = None,
-                 vmids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zstd: Optional[pulumi.Input[_builtins.int]] = None):
+                 all: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bwlimit: pulumi.Input[Optional[_builtins.int]] = None,
+                 compress: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exclude_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 fleecing: pulumi.Input[Optional['JobFleecingArgs']] = None,
+                 ionice: pulumi.Input[Optional[_builtins.int]] = None,
+                 lockwait: pulumi.Input[Optional[_builtins.int]] = None,
+                 mailnotification: pulumi.Input[Optional[_builtins.str]] = None,
+                 mailtos: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 maxfiles: pulumi.Input[Optional[_builtins.int]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 node: pulumi.Input[Optional[_builtins.str]] = None,
+                 notes_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 pbs_change_detection_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 performance: pulumi.Input[Optional['JobPerformanceArgs']] = None,
+                 pigz: pulumi.Input[Optional[_builtins.int]] = None,
+                 pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 protected: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prune_backups: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 remove: pulumi.Input[Optional[_builtins.bool]] = None,
+                 repeat_missed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 script: pulumi.Input[Optional[_builtins.str]] = None,
+                 starttime: pulumi.Input[Optional[_builtins.str]] = None,
+                 stdexcludes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 stopwait: pulumi.Input[Optional[_builtins.int]] = None,
+                 tmpdir: pulumi.Input[Optional[_builtins.str]] = None,
+                 vmids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zstd: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Job resource.
 
@@ -189,388 +189,388 @@ class JobArgs:
 
     @_builtins.property
     @pulumi.getter
-    def all(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def all(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to back up all known guests on the node.
         """
         return pulumi.get(self, "all")
 
     @all.setter
-    def all(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def all(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "all", value)
 
     @_builtins.property
     @pulumi.getter
-    def bwlimit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bwlimit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         I/O bandwidth limit in KiB/s.
         """
         return pulumi.get(self, "bwlimit")
 
     @bwlimit.setter
-    def bwlimit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bwlimit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bwlimit", value)
 
     @_builtins.property
     @pulumi.getter
-    def compress(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compress(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The compression algorithm (0, 1, gzip, lzo, or zstd).
         """
         return pulumi.get(self, "compress")
 
     @compress.setter
-    def compress(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compress(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compress", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the backup job is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="excludePaths")
-    def exclude_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exclude_paths(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of paths to exclude from the backup.
         """
         return pulumi.get(self, "exclude_paths")
 
     @exclude_paths.setter
-    def exclude_paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exclude_paths(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exclude_paths", value)
 
     @_builtins.property
     @pulumi.getter
-    def fleecing(self) -> Optional[pulumi.Input['JobFleecingArgs']]:
+    def fleecing(self) -> pulumi.Input[Optional['JobFleecingArgs']]:
         """
         Fleecing configuration for the backup job.
         """
         return pulumi.get(self, "fleecing")
 
     @fleecing.setter
-    def fleecing(self, value: Optional[pulumi.Input['JobFleecingArgs']]):
+    def fleecing(self, value: pulumi.Input[Optional['JobFleecingArgs']]):
         pulumi.set(self, "fleecing", value)
 
     @_builtins.property
     @pulumi.getter
-    def ionice(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ionice(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         I/O priority (0-8).
         """
         return pulumi.get(self, "ionice")
 
     @ionice.setter
-    def ionice(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ionice(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ionice", value)
 
     @_builtins.property
     @pulumi.getter
-    def lockwait(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def lockwait(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum wait time in minutes for the global lock.
         """
         return pulumi.get(self, "lockwait")
 
     @lockwait.setter
-    def lockwait(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def lockwait(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "lockwait", value)
 
     @_builtins.property
     @pulumi.getter
-    def mailnotification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mailnotification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Email notification setting (always or failure).
         """
         return pulumi.get(self, "mailnotification")
 
     @mailnotification.setter
-    def mailnotification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mailnotification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mailnotification", value)
 
     @_builtins.property
     @pulumi.getter
-    def mailtos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def mailtos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of email addresses to send notifications to.
         """
         return pulumi.get(self, "mailtos")
 
     @mailtos.setter
-    def mailtos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def mailtos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "mailtos", value)
 
     @_builtins.property
     @pulumi.getter
-    def maxfiles(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def maxfiles(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Deprecated: use prune_backups instead. Maximum number of backup files per guest.
         """
         return pulumi.get(self, "maxfiles")
 
     @maxfiles.setter
-    def maxfiles(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def maxfiles(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "maxfiles", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup mode (snapshot, suspend, or stop).
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def node(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster node name to limit the backup job to.
         """
         return pulumi.get(self, "node")
 
     @node.setter
-    def node(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node", value)
 
     @_builtins.property
     @pulumi.getter(name="notesTemplate")
-    def notes_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notes_template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Template for notes attached to the backup.
         """
         return pulumi.get(self, "notes_template")
 
     @notes_template.setter
-    def notes_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notes_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notes_template", value)
 
     @_builtins.property
     @pulumi.getter(name="pbsChangeDetectionMode")
-    def pbs_change_detection_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pbs_change_detection_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PBS change detection mode (legacy, data, or metadata).
         """
         return pulumi.get(self, "pbs_change_detection_mode")
 
     @pbs_change_detection_mode.setter
-    def pbs_change_detection_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pbs_change_detection_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pbs_change_detection_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def performance(self) -> Optional[pulumi.Input['JobPerformanceArgs']]:
+    def performance(self) -> pulumi.Input[Optional['JobPerformanceArgs']]:
         """
         Performance-related settings for the backup job.
         """
         return pulumi.get(self, "performance")
 
     @performance.setter
-    def performance(self, value: Optional[pulumi.Input['JobPerformanceArgs']]):
+    def performance(self, value: pulumi.Input[Optional['JobPerformanceArgs']]):
         pulumi.set(self, "performance", value)
 
     @_builtins.property
     @pulumi.getter
-    def pigz(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def pigz(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of pigz threads (0 disables, 1 uses single-threaded gzip).
         """
         return pulumi.get(self, "pigz")
 
     @pigz.setter
-    def pigz(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def pigz(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "pigz", value)
 
     @_builtins.property
     @pulumi.getter
-    def pool(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pool(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Limit backup to guests in the specified pool.
         """
         return pulumi.get(self, "pool")
 
     @pool.setter
-    def pool(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pool", value)
 
     @_builtins.property
     @pulumi.getter
-    def protected(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def protected(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the backup should be marked as protected.
         """
         return pulumi.get(self, "protected")
 
     @protected.setter
-    def protected(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def protected(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "protected", value)
 
     @_builtins.property
     @pulumi.getter(name="pruneBackups")
-    def prune_backups(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def prune_backups(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Retention options as a map of keep policies (e.g. keep-last = "3", keep-weekly = "2").
         """
         return pulumi.get(self, "prune_backups")
 
     @prune_backups.setter
-    def prune_backups(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def prune_backups(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "prune_backups", value)
 
     @_builtins.property
     @pulumi.getter
-    def remove(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def remove(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to remove old backups if there are more than maxfiles.
         """
         return pulumi.get(self, "remove")
 
     @remove.setter
-    def remove(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def remove(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "remove", value)
 
     @_builtins.property
     @pulumi.getter(name="repeatMissed")
-    def repeat_missed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def repeat_missed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to repeat missed backup jobs as soon as possible.
         """
         return pulumi.get(self, "repeat_missed")
 
     @repeat_missed.setter
-    def repeat_missed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def repeat_missed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "repeat_missed", value)
 
     @_builtins.property
     @pulumi.getter
-    def script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def script(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to a script to execute before/after the backup job.
         """
         return pulumi.get(self, "script")
 
     @script.setter
-    def script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "script", value)
 
     @_builtins.property
     @pulumi.getter
-    def starttime(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def starttime(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scheduled start time (HH:MM).
         """
         return pulumi.get(self, "starttime")
 
     @starttime.setter
-    def starttime(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def starttime(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "starttime", value)
 
     @_builtins.property
     @pulumi.getter
-    def stdexcludes(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def stdexcludes(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to exclude common temporary files from the backup.
         """
         return pulumi.get(self, "stdexcludes")
 
     @stdexcludes.setter
-    def stdexcludes(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def stdexcludes(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "stdexcludes", value)
 
     @_builtins.property
     @pulumi.getter
-    def stopwait(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def stopwait(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum wait time in minutes for a guest to stop.
         """
         return pulumi.get(self, "stopwait")
 
     @stopwait.setter
-    def stopwait(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def stopwait(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "stopwait", value)
 
     @_builtins.property
     @pulumi.getter
-    def tmpdir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tmpdir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to the temporary directory for the backup job.
         """
         return pulumi.get(self, "tmpdir")
 
     @tmpdir.setter
-    def tmpdir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tmpdir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tmpdir", value)
 
     @_builtins.property
     @pulumi.getter
-    def vmids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vmids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of guest VM/CT IDs to include in the backup job.
         """
         return pulumi.get(self, "vmids")
 
     @vmids.setter
-    def vmids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vmids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vmids", value)
 
     @_builtins.property
     @pulumi.getter
-    def zstd(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def zstd(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of zstd threads (0 uses half of available cores).
         """
         return pulumi.get(self, "zstd")
 
     @zstd.setter
-    def zstd(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def zstd(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "zstd", value)
 
 
 @pulumi.input_type
 class _JobState:
     def __init__(__self__, *,
-                 all: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bwlimit: Optional[pulumi.Input[_builtins.int]] = None,
-                 compress: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 exclude_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 fleecing: Optional[pulumi.Input['JobFleecingArgs']] = None,
-                 ionice: Optional[pulumi.Input[_builtins.int]] = None,
-                 lockwait: Optional[pulumi.Input[_builtins.int]] = None,
-                 mailnotification: Optional[pulumi.Input[_builtins.str]] = None,
-                 mailtos: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 maxfiles: Optional[pulumi.Input[_builtins.int]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 node: Optional[pulumi.Input[_builtins.str]] = None,
-                 notes_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 pbs_change_detection_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 performance: Optional[pulumi.Input['JobPerformanceArgs']] = None,
-                 pigz: Optional[pulumi.Input[_builtins.int]] = None,
-                 pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 protected: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prune_backups: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 remove: Optional[pulumi.Input[_builtins.bool]] = None,
-                 repeat_missed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 script: Optional[pulumi.Input[_builtins.str]] = None,
-                 starttime: Optional[pulumi.Input[_builtins.str]] = None,
-                 stdexcludes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 stopwait: Optional[pulumi.Input[_builtins.int]] = None,
-                 storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 tmpdir: Optional[pulumi.Input[_builtins.str]] = None,
-                 vmids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zstd: Optional[pulumi.Input[_builtins.int]] = None):
+                 all: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bwlimit: pulumi.Input[Optional[_builtins.int]] = None,
+                 compress: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exclude_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 fleecing: pulumi.Input[Optional['JobFleecingArgs']] = None,
+                 ionice: pulumi.Input[Optional[_builtins.int]] = None,
+                 lockwait: pulumi.Input[Optional[_builtins.int]] = None,
+                 mailnotification: pulumi.Input[Optional[_builtins.str]] = None,
+                 mailtos: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 maxfiles: pulumi.Input[Optional[_builtins.int]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 node: pulumi.Input[Optional[_builtins.str]] = None,
+                 notes_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 pbs_change_detection_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 performance: pulumi.Input[Optional['JobPerformanceArgs']] = None,
+                 pigz: pulumi.Input[Optional[_builtins.int]] = None,
+                 pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 protected: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prune_backups: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 remove: pulumi.Input[Optional[_builtins.bool]] = None,
+                 repeat_missed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 script: pulumi.Input[Optional[_builtins.str]] = None,
+                 starttime: pulumi.Input[Optional[_builtins.str]] = None,
+                 stdexcludes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 stopwait: pulumi.Input[Optional[_builtins.int]] = None,
+                 storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 tmpdir: pulumi.Input[Optional[_builtins.str]] = None,
+                 vmids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zstd: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Job resources.
 
@@ -674,386 +674,386 @@ class _JobState:
 
     @_builtins.property
     @pulumi.getter
-    def all(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def all(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to back up all known guests on the node.
         """
         return pulumi.get(self, "all")
 
     @all.setter
-    def all(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def all(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "all", value)
 
     @_builtins.property
     @pulumi.getter
-    def bwlimit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bwlimit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         I/O bandwidth limit in KiB/s.
         """
         return pulumi.get(self, "bwlimit")
 
     @bwlimit.setter
-    def bwlimit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bwlimit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bwlimit", value)
 
     @_builtins.property
     @pulumi.getter
-    def compress(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def compress(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The compression algorithm (0, 1, gzip, lzo, or zstd).
         """
         return pulumi.get(self, "compress")
 
     @compress.setter
-    def compress(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def compress(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "compress", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the backup job is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="excludePaths")
-    def exclude_paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exclude_paths(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of paths to exclude from the backup.
         """
         return pulumi.get(self, "exclude_paths")
 
     @exclude_paths.setter
-    def exclude_paths(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exclude_paths(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exclude_paths", value)
 
     @_builtins.property
     @pulumi.getter
-    def fleecing(self) -> Optional[pulumi.Input['JobFleecingArgs']]:
+    def fleecing(self) -> pulumi.Input[Optional['JobFleecingArgs']]:
         """
         Fleecing configuration for the backup job.
         """
         return pulumi.get(self, "fleecing")
 
     @fleecing.setter
-    def fleecing(self, value: Optional[pulumi.Input['JobFleecingArgs']]):
+    def fleecing(self, value: pulumi.Input[Optional['JobFleecingArgs']]):
         pulumi.set(self, "fleecing", value)
 
     @_builtins.property
     @pulumi.getter
-    def ionice(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ionice(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         I/O priority (0-8).
         """
         return pulumi.get(self, "ionice")
 
     @ionice.setter
-    def ionice(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ionice(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ionice", value)
 
     @_builtins.property
     @pulumi.getter
-    def lockwait(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def lockwait(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum wait time in minutes for the global lock.
         """
         return pulumi.get(self, "lockwait")
 
     @lockwait.setter
-    def lockwait(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def lockwait(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "lockwait", value)
 
     @_builtins.property
     @pulumi.getter
-    def mailnotification(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mailnotification(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Email notification setting (always or failure).
         """
         return pulumi.get(self, "mailnotification")
 
     @mailnotification.setter
-    def mailnotification(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mailnotification(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mailnotification", value)
 
     @_builtins.property
     @pulumi.getter
-    def mailtos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def mailtos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of email addresses to send notifications to.
         """
         return pulumi.get(self, "mailtos")
 
     @mailtos.setter
-    def mailtos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def mailtos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "mailtos", value)
 
     @_builtins.property
     @pulumi.getter
-    def maxfiles(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def maxfiles(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Deprecated: use prune_backups instead. Maximum number of backup files per guest.
         """
         return pulumi.get(self, "maxfiles")
 
     @maxfiles.setter
-    def maxfiles(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def maxfiles(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "maxfiles", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup mode (snapshot, suspend, or stop).
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def node(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster node name to limit the backup job to.
         """
         return pulumi.get(self, "node")
 
     @node.setter
-    def node(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node", value)
 
     @_builtins.property
     @pulumi.getter(name="notesTemplate")
-    def notes_template(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notes_template(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Template for notes attached to the backup.
         """
         return pulumi.get(self, "notes_template")
 
     @notes_template.setter
-    def notes_template(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notes_template(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notes_template", value)
 
     @_builtins.property
     @pulumi.getter(name="pbsChangeDetectionMode")
-    def pbs_change_detection_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pbs_change_detection_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         PBS change detection mode (legacy, data, or metadata).
         """
         return pulumi.get(self, "pbs_change_detection_mode")
 
     @pbs_change_detection_mode.setter
-    def pbs_change_detection_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pbs_change_detection_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pbs_change_detection_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def performance(self) -> Optional[pulumi.Input['JobPerformanceArgs']]:
+    def performance(self) -> pulumi.Input[Optional['JobPerformanceArgs']]:
         """
         Performance-related settings for the backup job.
         """
         return pulumi.get(self, "performance")
 
     @performance.setter
-    def performance(self, value: Optional[pulumi.Input['JobPerformanceArgs']]):
+    def performance(self, value: pulumi.Input[Optional['JobPerformanceArgs']]):
         pulumi.set(self, "performance", value)
 
     @_builtins.property
     @pulumi.getter
-    def pigz(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def pigz(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of pigz threads (0 disables, 1 uses single-threaded gzip).
         """
         return pulumi.get(self, "pigz")
 
     @pigz.setter
-    def pigz(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def pigz(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "pigz", value)
 
     @_builtins.property
     @pulumi.getter
-    def pool(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def pool(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Limit backup to guests in the specified pool.
         """
         return pulumi.get(self, "pool")
 
     @pool.setter
-    def pool(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def pool(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "pool", value)
 
     @_builtins.property
     @pulumi.getter
-    def protected(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def protected(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the backup should be marked as protected.
         """
         return pulumi.get(self, "protected")
 
     @protected.setter
-    def protected(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def protected(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "protected", value)
 
     @_builtins.property
     @pulumi.getter(name="pruneBackups")
-    def prune_backups(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def prune_backups(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Retention options as a map of keep policies (e.g. keep-last = "3", keep-weekly = "2").
         """
         return pulumi.get(self, "prune_backups")
 
     @prune_backups.setter
-    def prune_backups(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def prune_backups(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "prune_backups", value)
 
     @_builtins.property
     @pulumi.getter
-    def remove(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def remove(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to remove old backups if there are more than maxfiles.
         """
         return pulumi.get(self, "remove")
 
     @remove.setter
-    def remove(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def remove(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "remove", value)
 
     @_builtins.property
     @pulumi.getter(name="repeatMissed")
-    def repeat_missed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def repeat_missed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to repeat missed backup jobs as soon as possible.
         """
         return pulumi.get(self, "repeat_missed")
 
     @repeat_missed.setter
-    def repeat_missed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def repeat_missed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "repeat_missed", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier of the backup job.
         """
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Backup schedule in systemd calendar event format.
         """
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedule", value)
 
     @_builtins.property
     @pulumi.getter
-    def script(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def script(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to a script to execute before/after the backup job.
         """
         return pulumi.get(self, "script")
 
     @script.setter
-    def script(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def script(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "script", value)
 
     @_builtins.property
     @pulumi.getter
-    def starttime(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def starttime(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scheduled start time (HH:MM).
         """
         return pulumi.get(self, "starttime")
 
     @starttime.setter
-    def starttime(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def starttime(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "starttime", value)
 
     @_builtins.property
     @pulumi.getter
-    def stdexcludes(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def stdexcludes(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to exclude common temporary files from the backup.
         """
         return pulumi.get(self, "stdexcludes")
 
     @stdexcludes.setter
-    def stdexcludes(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def stdexcludes(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "stdexcludes", value)
 
     @_builtins.property
     @pulumi.getter
-    def stopwait(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def stopwait(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum wait time in minutes for a guest to stop.
         """
         return pulumi.get(self, "stopwait")
 
     @stopwait.setter
-    def stopwait(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def stopwait(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "stopwait", value)
 
     @_builtins.property
     @pulumi.getter
-    def storage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage identifier for the backup.
         """
         return pulumi.get(self, "storage")
 
     @storage.setter
-    def storage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage", value)
 
     @_builtins.property
     @pulumi.getter
-    def tmpdir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tmpdir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to the temporary directory for the backup job.
         """
         return pulumi.get(self, "tmpdir")
 
     @tmpdir.setter
-    def tmpdir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tmpdir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tmpdir", value)
 
     @_builtins.property
     @pulumi.getter
-    def vmids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def vmids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of guest VM/CT IDs to include in the backup job.
         """
         return pulumi.get(self, "vmids")
 
     @vmids.setter
-    def vmids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def vmids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "vmids", value)
 
     @_builtins.property
     @pulumi.getter
-    def zstd(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def zstd(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of zstd threads (0 uses half of available cores).
         """
         return pulumi.get(self, "zstd")
 
     @zstd.setter
-    def zstd(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def zstd(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "zstd", value)
 
 
@@ -1063,38 +1063,38 @@ class Job(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 all: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bwlimit: Optional[pulumi.Input[_builtins.int]] = None,
-                 compress: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 exclude_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 fleecing: Optional[pulumi.Input[Union['JobFleecingArgs', 'JobFleecingArgsDict']]] = None,
-                 ionice: Optional[pulumi.Input[_builtins.int]] = None,
-                 lockwait: Optional[pulumi.Input[_builtins.int]] = None,
-                 mailnotification: Optional[pulumi.Input[_builtins.str]] = None,
-                 mailtos: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 maxfiles: Optional[pulumi.Input[_builtins.int]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 node: Optional[pulumi.Input[_builtins.str]] = None,
-                 notes_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 pbs_change_detection_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 performance: Optional[pulumi.Input[Union['JobPerformanceArgs', 'JobPerformanceArgsDict']]] = None,
-                 pigz: Optional[pulumi.Input[_builtins.int]] = None,
-                 pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 protected: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prune_backups: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 remove: Optional[pulumi.Input[_builtins.bool]] = None,
-                 repeat_missed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 script: Optional[pulumi.Input[_builtins.str]] = None,
-                 starttime: Optional[pulumi.Input[_builtins.str]] = None,
-                 stdexcludes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 stopwait: Optional[pulumi.Input[_builtins.int]] = None,
-                 storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 tmpdir: Optional[pulumi.Input[_builtins.str]] = None,
-                 vmids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zstd: Optional[pulumi.Input[_builtins.int]] = None,
+                 all: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bwlimit: pulumi.Input[Optional[_builtins.int]] = None,
+                 compress: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exclude_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 fleecing: pulumi.Input[Optional[Union['JobFleecingArgs', 'JobFleecingArgsDict']]] = None,
+                 ionice: pulumi.Input[Optional[_builtins.int]] = None,
+                 lockwait: pulumi.Input[Optional[_builtins.int]] = None,
+                 mailnotification: pulumi.Input[Optional[_builtins.str]] = None,
+                 mailtos: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 maxfiles: pulumi.Input[Optional[_builtins.int]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 node: pulumi.Input[Optional[_builtins.str]] = None,
+                 notes_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 pbs_change_detection_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 performance: pulumi.Input[Optional[Union['JobPerformanceArgs', 'JobPerformanceArgsDict']]] = None,
+                 pigz: pulumi.Input[Optional[_builtins.int]] = None,
+                 pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 protected: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prune_backups: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 remove: pulumi.Input[Optional[_builtins.bool]] = None,
+                 repeat_missed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 script: pulumi.Input[Optional[_builtins.str]] = None,
+                 starttime: pulumi.Input[Optional[_builtins.str]] = None,
+                 stdexcludes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 stopwait: pulumi.Input[Optional[_builtins.int]] = None,
+                 storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 tmpdir: pulumi.Input[Optional[_builtins.str]] = None,
+                 vmids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zstd: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Manages a Proxmox VE cluster backup job.
@@ -1202,38 +1202,38 @@ class Job(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 all: Optional[pulumi.Input[_builtins.bool]] = None,
-                 bwlimit: Optional[pulumi.Input[_builtins.int]] = None,
-                 compress: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 exclude_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 fleecing: Optional[pulumi.Input[Union['JobFleecingArgs', 'JobFleecingArgsDict']]] = None,
-                 ionice: Optional[pulumi.Input[_builtins.int]] = None,
-                 lockwait: Optional[pulumi.Input[_builtins.int]] = None,
-                 mailnotification: Optional[pulumi.Input[_builtins.str]] = None,
-                 mailtos: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 maxfiles: Optional[pulumi.Input[_builtins.int]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 node: Optional[pulumi.Input[_builtins.str]] = None,
-                 notes_template: Optional[pulumi.Input[_builtins.str]] = None,
-                 pbs_change_detection_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 performance: Optional[pulumi.Input[Union['JobPerformanceArgs', 'JobPerformanceArgsDict']]] = None,
-                 pigz: Optional[pulumi.Input[_builtins.int]] = None,
-                 pool: Optional[pulumi.Input[_builtins.str]] = None,
-                 protected: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prune_backups: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 remove: Optional[pulumi.Input[_builtins.bool]] = None,
-                 repeat_missed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 script: Optional[pulumi.Input[_builtins.str]] = None,
-                 starttime: Optional[pulumi.Input[_builtins.str]] = None,
-                 stdexcludes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 stopwait: Optional[pulumi.Input[_builtins.int]] = None,
-                 storage: Optional[pulumi.Input[_builtins.str]] = None,
-                 tmpdir: Optional[pulumi.Input[_builtins.str]] = None,
-                 vmids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 zstd: Optional[pulumi.Input[_builtins.int]] = None,
+                 all: pulumi.Input[Optional[_builtins.bool]] = None,
+                 bwlimit: pulumi.Input[Optional[_builtins.int]] = None,
+                 compress: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 exclude_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 fleecing: pulumi.Input[Optional[Union['JobFleecingArgs', 'JobFleecingArgsDict']]] = None,
+                 ionice: pulumi.Input[Optional[_builtins.int]] = None,
+                 lockwait: pulumi.Input[Optional[_builtins.int]] = None,
+                 mailnotification: pulumi.Input[Optional[_builtins.str]] = None,
+                 mailtos: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 maxfiles: pulumi.Input[Optional[_builtins.int]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 node: pulumi.Input[Optional[_builtins.str]] = None,
+                 notes_template: pulumi.Input[Optional[_builtins.str]] = None,
+                 pbs_change_detection_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 performance: pulumi.Input[Optional[Union['JobPerformanceArgs', 'JobPerformanceArgsDict']]] = None,
+                 pigz: pulumi.Input[Optional[_builtins.int]] = None,
+                 pool: pulumi.Input[Optional[_builtins.str]] = None,
+                 protected: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prune_backups: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 remove: pulumi.Input[Optional[_builtins.bool]] = None,
+                 repeat_missed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 script: pulumi.Input[Optional[_builtins.str]] = None,
+                 starttime: pulumi.Input[Optional[_builtins.str]] = None,
+                 stdexcludes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 stopwait: pulumi.Input[Optional[_builtins.int]] = None,
+                 storage: pulumi.Input[Optional[_builtins.str]] = None,
+                 tmpdir: pulumi.Input[Optional[_builtins.str]] = None,
+                 vmids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 zstd: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1291,38 +1291,38 @@ class Job(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            all: Optional[pulumi.Input[_builtins.bool]] = None,
-            bwlimit: Optional[pulumi.Input[_builtins.int]] = None,
-            compress: Optional[pulumi.Input[_builtins.str]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            exclude_paths: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            fleecing: Optional[pulumi.Input[Union['JobFleecingArgs', 'JobFleecingArgsDict']]] = None,
-            ionice: Optional[pulumi.Input[_builtins.int]] = None,
-            lockwait: Optional[pulumi.Input[_builtins.int]] = None,
-            mailnotification: Optional[pulumi.Input[_builtins.str]] = None,
-            mailtos: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            maxfiles: Optional[pulumi.Input[_builtins.int]] = None,
-            mode: Optional[pulumi.Input[_builtins.str]] = None,
-            node: Optional[pulumi.Input[_builtins.str]] = None,
-            notes_template: Optional[pulumi.Input[_builtins.str]] = None,
-            pbs_change_detection_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            performance: Optional[pulumi.Input[Union['JobPerformanceArgs', 'JobPerformanceArgsDict']]] = None,
-            pigz: Optional[pulumi.Input[_builtins.int]] = None,
-            pool: Optional[pulumi.Input[_builtins.str]] = None,
-            protected: Optional[pulumi.Input[_builtins.bool]] = None,
-            prune_backups: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            remove: Optional[pulumi.Input[_builtins.bool]] = None,
-            repeat_missed: Optional[pulumi.Input[_builtins.bool]] = None,
-            resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-            schedule: Optional[pulumi.Input[_builtins.str]] = None,
-            script: Optional[pulumi.Input[_builtins.str]] = None,
-            starttime: Optional[pulumi.Input[_builtins.str]] = None,
-            stdexcludes: Optional[pulumi.Input[_builtins.bool]] = None,
-            stopwait: Optional[pulumi.Input[_builtins.int]] = None,
-            storage: Optional[pulumi.Input[_builtins.str]] = None,
-            tmpdir: Optional[pulumi.Input[_builtins.str]] = None,
-            vmids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            zstd: Optional[pulumi.Input[_builtins.int]] = None) -> 'Job':
+            all: pulumi.Input[Optional[_builtins.bool]] = None,
+            bwlimit: pulumi.Input[Optional[_builtins.int]] = None,
+            compress: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            exclude_paths: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            fleecing: pulumi.Input[Optional[Union['JobFleecingArgs', 'JobFleecingArgsDict']]] = None,
+            ionice: pulumi.Input[Optional[_builtins.int]] = None,
+            lockwait: pulumi.Input[Optional[_builtins.int]] = None,
+            mailnotification: pulumi.Input[Optional[_builtins.str]] = None,
+            mailtos: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            maxfiles: pulumi.Input[Optional[_builtins.int]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            node: pulumi.Input[Optional[_builtins.str]] = None,
+            notes_template: pulumi.Input[Optional[_builtins.str]] = None,
+            pbs_change_detection_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            performance: pulumi.Input[Optional[Union['JobPerformanceArgs', 'JobPerformanceArgsDict']]] = None,
+            pigz: pulumi.Input[Optional[_builtins.int]] = None,
+            pool: pulumi.Input[Optional[_builtins.str]] = None,
+            protected: pulumi.Input[Optional[_builtins.bool]] = None,
+            prune_backups: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            remove: pulumi.Input[Optional[_builtins.bool]] = None,
+            repeat_missed: pulumi.Input[Optional[_builtins.bool]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule: pulumi.Input[Optional[_builtins.str]] = None,
+            script: pulumi.Input[Optional[_builtins.str]] = None,
+            starttime: pulumi.Input[Optional[_builtins.str]] = None,
+            stdexcludes: pulumi.Input[Optional[_builtins.bool]] = None,
+            stopwait: pulumi.Input[Optional[_builtins.int]] = None,
+            storage: pulumi.Input[Optional[_builtins.str]] = None,
+            tmpdir: pulumi.Input[Optional[_builtins.str]] = None,
+            vmids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            zstd: pulumi.Input[Optional[_builtins.int]] = None) -> 'Job':
         """
         Get an existing Job resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

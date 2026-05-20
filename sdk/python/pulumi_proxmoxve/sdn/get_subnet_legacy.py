@@ -165,9 +165,9 @@ def get_subnet_legacy(cidr: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         snat=pulumi.get(__ret__, 'snat'),
         vnet=pulumi.get(__ret__, 'vnet'))
-def get_subnet_legacy_output(cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                             dhcp_range: Optional[pulumi.Input[Optional[Union['GetSubnetLegacyDhcpRangeArgs', 'GetSubnetLegacyDhcpRangeArgsDict']]]] = None,
-                             vnet: Optional[pulumi.Input[_builtins.str]] = None,
+def get_subnet_legacy_output(cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                             dhcp_range: pulumi.Input[Optional[Optional[Union['GetSubnetLegacyDhcpRangeArgs', 'GetSubnetLegacyDhcpRangeArgsDict']]]] = None,
+                             vnet: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSubnetLegacyResult]:
     """
     > **Deprecated:** Use `sdn.Subnet` instead. This data source will be removed in v1.0.

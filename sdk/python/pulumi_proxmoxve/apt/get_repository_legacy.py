@@ -214,9 +214,9 @@ def get_repository_legacy(file_path: Optional[_builtins.str] = None,
         package_types=pulumi.get(__ret__, 'package_types'),
         suites=pulumi.get(__ret__, 'suites'),
         uris=pulumi.get(__ret__, 'uris'))
-def get_repository_legacy_output(file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                                 index: Optional[pulumi.Input[_builtins.int]] = None,
-                                 node: Optional[pulumi.Input[_builtins.str]] = None,
+def get_repository_legacy_output(file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                                 index: pulumi.Input[Optional[_builtins.int]] = None,
+                                 node: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRepositoryLegacyResult]:
     """
     > **Deprecated:** Use `apt.Repository` instead. This data source will be removed in v1.0.

@@ -209,67 +209,67 @@ export interface PbsState {
     /**
      * Configure backup retention settings for the storage type.
      */
-    backups?: pulumi.Input<inputs.storage.PbsBackups>;
+    backups?: pulumi.Input<inputs.storage.PbsBackups | undefined>;
     /**
      * The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
      */
-    contents?: pulumi.Input<pulumi.Input<string>[]>;
+    contents?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the datastore on the Proxmox Backup Server.
      */
-    datastore?: pulumi.Input<string>;
+    datastore?: pulumi.Input<string | undefined>;
     /**
      * Whether the storage is disabled.
      */
-    disable?: pulumi.Input<boolean>;
+    disable?: pulumi.Input<boolean | undefined>;
     /**
      * An existing encryption key for the datastore. This is a sensitive value. Conflicts with `generateEncryptionKey`.
      */
-    encryptionKey?: pulumi.Input<string>;
+    encryptionKey?: pulumi.Input<string | undefined>;
     /**
      * The SHA256 fingerprint of the encryption key currently in use.
      */
-    encryptionKeyFingerprint?: pulumi.Input<string>;
+    encryptionKeyFingerprint?: pulumi.Input<string | undefined>;
     /**
      * The SHA256 fingerprint of the Proxmox Backup Server's certificate.
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * If set to true, Proxmox will generate a new encryption key. The key will be stored in the `generatedEncryptionKey` attribute. Conflicts with `encryptionKey`.
      */
-    generateEncryptionKey?: pulumi.Input<boolean>;
+    generateEncryptionKey?: pulumi.Input<boolean | undefined>;
     /**
      * The encryption key returned by Proxmox when `generateEncryptionKey` is true.
      */
-    generatedEncryptionKey?: pulumi.Input<string>;
+    generatedEncryptionKey?: pulumi.Input<string | undefined>;
     /**
      * The namespace to use on the Proxmox Backup Server.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * A list of nodes where this storage is available.
      */
-    nodes?: pulumi.Input<pulumi.Input<string>[]>;
+    nodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The password for authenticating with the Proxmox Backup Server.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the storage.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * The IP address or DNS name of the Proxmox Backup Server.
      */
-    server?: pulumi.Input<string>;
+    server?: pulumi.Input<string | undefined>;
     /**
      * Whether the storage is shared across all nodes.
      */
-    shared?: pulumi.Input<boolean>;
+    shared?: pulumi.Input<boolean | undefined>;
     /**
      * The username for authenticating with the Proxmox Backup Server.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -279,11 +279,11 @@ export interface PbsArgs {
     /**
      * Configure backup retention settings for the storage type.
      */
-    backups?: pulumi.Input<inputs.storage.PbsBackups>;
+    backups?: pulumi.Input<inputs.storage.PbsBackups | undefined>;
     /**
      * The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
      */
-    contents?: pulumi.Input<pulumi.Input<string>[]>;
+    contents?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the datastore on the Proxmox Backup Server.
      */
@@ -291,27 +291,27 @@ export interface PbsArgs {
     /**
      * Whether the storage is disabled.
      */
-    disable?: pulumi.Input<boolean>;
+    disable?: pulumi.Input<boolean | undefined>;
     /**
      * An existing encryption key for the datastore. This is a sensitive value. Conflicts with `generateEncryptionKey`.
      */
-    encryptionKey?: pulumi.Input<string>;
+    encryptionKey?: pulumi.Input<string | undefined>;
     /**
      * The SHA256 fingerprint of the Proxmox Backup Server's certificate.
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * If set to true, Proxmox will generate a new encryption key. The key will be stored in the `generatedEncryptionKey` attribute. Conflicts with `encryptionKey`.
      */
-    generateEncryptionKey?: pulumi.Input<boolean>;
+    generateEncryptionKey?: pulumi.Input<boolean | undefined>;
     /**
      * The namespace to use on the Proxmox Backup Server.
      */
-    namespace?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string | undefined>;
     /**
      * A list of nodes where this storage is available.
      */
-    nodes?: pulumi.Input<pulumi.Input<string>[]>;
+    nodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The password for authenticating with the Proxmox Backup Server.
      */

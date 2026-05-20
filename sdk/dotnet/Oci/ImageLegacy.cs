@@ -44,7 +44,7 @@ namespace Pulumi.ProxmoxVE.Oci
     ///         NodeName = "pve",
     ///         DatastoreId = "local",
     ///         Reference = "docker.io/library/debian:bookworm",
-    ///         UploadTimeout = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(900) (example.pp:18,24-27)),
+    ///         UploadTimeout = 900,
     ///         Overwrite = false,
     ///         OverwriteUnmanaged = true,
     ///     });

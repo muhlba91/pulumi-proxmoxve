@@ -20,18 +20,18 @@ __all__ = ['OptionsLegacyArgs', 'OptionsLegacy']
 class OptionsLegacyArgs:
     def __init__(__self__, *,
                  node_name: pulumi.Input[_builtins.str],
-                 container_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 dhcp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 input_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipfilter: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_level_in: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_level_out: Optional[pulumi.Input[_builtins.str]] = None,
-                 macfilter: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ndp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 output_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 radv: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 container_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 dhcp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 input_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipfilter: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_level_in: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_level_out: pulumi.Input[Optional[_builtins.str]] = None,
+                 macfilter: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ndp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 output_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 radv: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a OptionsLegacy resource.
 
@@ -99,43 +99,43 @@ class OptionsLegacyArgs:
 
     @_builtins.property
     @pulumi.getter(name="containerId")
-    def container_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def container_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Container ID. **Exactly one of `vm_id` or `container_id` must be specified.**
         """
         return pulumi.get(self, "container_id")
 
     @container_id.setter
-    def container_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def container_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "container_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def dhcp(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dhcp(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable DHCP.
         """
         return pulumi.get(self, "dhcp")
 
     @dhcp.setter
-    def dhcp(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dhcp(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dhcp", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable or disable the firewall.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="inputPolicy")
-    def input_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def input_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default input
         policy (`ACCEPT`, `DROP`, `REJECT`).
@@ -143,12 +143,12 @@ class OptionsLegacyArgs:
         return pulumi.get(self, "input_policy")
 
     @input_policy.setter
-    def input_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def input_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "input_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def ipfilter(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ipfilter(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable default IP filters. This is equivalent to
         adding an empty `ipfilter-net<id>` ipset for every interface. Such ipsets
@@ -159,12 +159,12 @@ class OptionsLegacyArgs:
         return pulumi.get(self, "ipfilter")
 
     @ipfilter.setter
-    def ipfilter(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ipfilter(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ipfilter", value)
 
     @_builtins.property
     @pulumi.getter(name="logLevelIn")
-    def log_level_in(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_level_in(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Log level for incoming
         packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
@@ -173,12 +173,12 @@ class OptionsLegacyArgs:
         return pulumi.get(self, "log_level_in")
 
     @log_level_in.setter
-    def log_level_in(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_level_in(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_level_in", value)
 
     @_builtins.property
     @pulumi.getter(name="logLevelOut")
-    def log_level_out(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_level_out(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Log level for outgoing
         packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
@@ -187,36 +187,36 @@ class OptionsLegacyArgs:
         return pulumi.get(self, "log_level_out")
 
     @log_level_out.setter
-    def log_level_out(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_level_out(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_level_out", value)
 
     @_builtins.property
     @pulumi.getter
-    def macfilter(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def macfilter(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable/disable MAC address filter.
         """
         return pulumi.get(self, "macfilter")
 
     @macfilter.setter
-    def macfilter(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def macfilter(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "macfilter", value)
 
     @_builtins.property
     @pulumi.getter
-    def ndp(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ndp(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable NDP (Neighbor Discovery Protocol).
         """
         return pulumi.get(self, "ndp")
 
     @ndp.setter
-    def ndp(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ndp(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ndp", value)
 
     @_builtins.property
     @pulumi.getter(name="outputPolicy")
-    def output_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def output_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default output
         policy (`ACCEPT`, `DROP`, `REJECT`).
@@ -224,50 +224,50 @@ class OptionsLegacyArgs:
         return pulumi.get(self, "output_policy")
 
     @output_policy.setter
-    def output_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def output_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "output_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def radv(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def radv(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Router Advertisement.
         """
         return pulumi.get(self, "radv")
 
     @radv.setter
-    def radv(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def radv(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "radv", value)
 
     @_builtins.property
     @pulumi.getter(name="vmId")
-    def vm_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vm_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         VM ID. **Exactly one of `vm_id` or `container_id` must be specified.**
         """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
-    def vm_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vm_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vm_id", value)
 
 
 @pulumi.input_type
 class _OptionsLegacyState:
     def __init__(__self__, *,
-                 container_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 dhcp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 input_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipfilter: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_level_in: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_level_out: Optional[pulumi.Input[_builtins.str]] = None,
-                 macfilter: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ndp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 output_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 radv: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 container_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 dhcp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 input_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipfilter: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_level_in: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_level_out: pulumi.Input[Optional[_builtins.str]] = None,
+                 macfilter: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ndp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 radv: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering OptionsLegacy resources.
 
@@ -324,43 +324,43 @@ class _OptionsLegacyState:
 
     @_builtins.property
     @pulumi.getter(name="containerId")
-    def container_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def container_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Container ID. **Exactly one of `vm_id` or `container_id` must be specified.**
         """
         return pulumi.get(self, "container_id")
 
     @container_id.setter
-    def container_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def container_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "container_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def dhcp(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dhcp(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable DHCP.
         """
         return pulumi.get(self, "dhcp")
 
     @dhcp.setter
-    def dhcp(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dhcp(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dhcp", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable or disable the firewall.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="inputPolicy")
-    def input_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def input_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default input
         policy (`ACCEPT`, `DROP`, `REJECT`).
@@ -368,12 +368,12 @@ class _OptionsLegacyState:
         return pulumi.get(self, "input_policy")
 
     @input_policy.setter
-    def input_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def input_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "input_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def ipfilter(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ipfilter(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable default IP filters. This is equivalent to
         adding an empty `ipfilter-net<id>` ipset for every interface. Such ipsets
@@ -384,12 +384,12 @@ class _OptionsLegacyState:
         return pulumi.get(self, "ipfilter")
 
     @ipfilter.setter
-    def ipfilter(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ipfilter(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ipfilter", value)
 
     @_builtins.property
     @pulumi.getter(name="logLevelIn")
-    def log_level_in(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_level_in(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Log level for incoming
         packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
@@ -398,12 +398,12 @@ class _OptionsLegacyState:
         return pulumi.get(self, "log_level_in")
 
     @log_level_in.setter
-    def log_level_in(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_level_in(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_level_in", value)
 
     @_builtins.property
     @pulumi.getter(name="logLevelOut")
-    def log_level_out(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_level_out(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Log level for outgoing
         packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
@@ -412,48 +412,48 @@ class _OptionsLegacyState:
         return pulumi.get(self, "log_level_out")
 
     @log_level_out.setter
-    def log_level_out(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_level_out(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_level_out", value)
 
     @_builtins.property
     @pulumi.getter
-    def macfilter(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def macfilter(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable/disable MAC address filter.
         """
         return pulumi.get(self, "macfilter")
 
     @macfilter.setter
-    def macfilter(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def macfilter(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "macfilter", value)
 
     @_builtins.property
     @pulumi.getter
-    def ndp(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ndp(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable NDP (Neighbor Discovery Protocol).
         """
         return pulumi.get(self, "ndp")
 
     @ndp.setter
-    def ndp(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ndp(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ndp", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeName")
-    def node_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node name.
         """
         return pulumi.get(self, "node_name")
 
     @node_name.setter
-    def node_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_name", value)
 
     @_builtins.property
     @pulumi.getter(name="outputPolicy")
-    def output_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def output_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The default output
         policy (`ACCEPT`, `DROP`, `REJECT`).
@@ -461,31 +461,31 @@ class _OptionsLegacyState:
         return pulumi.get(self, "output_policy")
 
     @output_policy.setter
-    def output_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def output_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "output_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def radv(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def radv(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Router Advertisement.
         """
         return pulumi.get(self, "radv")
 
     @radv.setter
-    def radv(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def radv(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "radv", value)
 
     @_builtins.property
     @pulumi.getter(name="vmId")
-    def vm_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vm_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         VM ID. **Exactly one of `vm_id` or `container_id` must be specified.**
         """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
-    def vm_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vm_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vm_id", value)
 
 
@@ -495,19 +495,19 @@ class OptionsLegacy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 container_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 dhcp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 input_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipfilter: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_level_in: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_level_out: Optional[pulumi.Input[_builtins.str]] = None,
-                 macfilter: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ndp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 output_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 radv: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 container_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 dhcp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 input_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipfilter: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_level_in: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_level_out: pulumi.Input[Optional[_builtins.str]] = None,
+                 macfilter: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ndp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 radv: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Manages firewall options on VM / Container level.
@@ -520,7 +520,7 @@ class OptionsLegacy(pulumi.CustomResource):
 
         example = proxmoxve.firewall.OptionsLegacy("example",
             node_name=example_proxmox_virtual_environment_vm["nodeName"],
-            vm_id=example_proxmox_virtual_environment_vm["vmId"],
+            vm_id=int(example_proxmox_virtual_environment_vm["vmId"]),
             dhcp=True,
             enabled=False,
             ipfilter=True,
@@ -598,7 +598,7 @@ class OptionsLegacy(pulumi.CustomResource):
 
         example = proxmoxve.firewall.OptionsLegacy("example",
             node_name=example_proxmox_virtual_environment_vm["nodeName"],
-            vm_id=example_proxmox_virtual_environment_vm["vmId"],
+            vm_id=int(example_proxmox_virtual_environment_vm["vmId"]),
             dhcp=True,
             enabled=False,
             ipfilter=True,
@@ -648,19 +648,19 @@ class OptionsLegacy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 container_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 dhcp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 input_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipfilter: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_level_in: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_level_out: Optional[pulumi.Input[_builtins.str]] = None,
-                 macfilter: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ndp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 output_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 radv: Optional[pulumi.Input[_builtins.bool]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 container_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 dhcp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 input_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipfilter: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_level_in: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_level_out: pulumi.Input[Optional[_builtins.str]] = None,
+                 macfilter: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ndp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 radv: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -695,19 +695,19 @@ class OptionsLegacy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            container_id: Optional[pulumi.Input[_builtins.int]] = None,
-            dhcp: Optional[pulumi.Input[_builtins.bool]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            input_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            ipfilter: Optional[pulumi.Input[_builtins.bool]] = None,
-            log_level_in: Optional[pulumi.Input[_builtins.str]] = None,
-            log_level_out: Optional[pulumi.Input[_builtins.str]] = None,
-            macfilter: Optional[pulumi.Input[_builtins.bool]] = None,
-            ndp: Optional[pulumi.Input[_builtins.bool]] = None,
-            node_name: Optional[pulumi.Input[_builtins.str]] = None,
-            output_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            radv: Optional[pulumi.Input[_builtins.bool]] = None,
-            vm_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'OptionsLegacy':
+            container_id: pulumi.Input[Optional[_builtins.int]] = None,
+            dhcp: pulumi.Input[Optional[_builtins.bool]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            input_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            ipfilter: pulumi.Input[Optional[_builtins.bool]] = None,
+            log_level_in: pulumi.Input[Optional[_builtins.str]] = None,
+            log_level_out: pulumi.Input[Optional[_builtins.str]] = None,
+            macfilter: pulumi.Input[Optional[_builtins.bool]] = None,
+            ndp: pulumi.Input[Optional[_builtins.bool]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            output_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            radv: pulumi.Input[Optional[_builtins.bool]] = None,
+            vm_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'OptionsLegacy':
         """
         Get an existing OptionsLegacy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

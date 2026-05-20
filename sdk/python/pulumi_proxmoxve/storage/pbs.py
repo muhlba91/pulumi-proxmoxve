@@ -26,14 +26,14 @@ class PbsArgs:
                  resource_id: pulumi.Input[_builtins.str],
                  server: pulumi.Input[_builtins.str],
                  username: pulumi.Input[_builtins.str],
-                 backups: Optional[pulumi.Input['PbsBackupsArgs']] = None,
-                 contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 generate_encryption_key: Optional[pulumi.Input[_builtins.bool]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 backups: pulumi.Input[Optional['PbsBackupsArgs']] = None,
+                 contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 generate_encryption_key: pulumi.Input[Optional[_builtins.bool]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Pbs resource.
 
@@ -135,120 +135,120 @@ class PbsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def backups(self) -> Optional[pulumi.Input['PbsBackupsArgs']]:
+    def backups(self) -> pulumi.Input[Optional['PbsBackupsArgs']]:
         """
         Configure backup retention settings for the storage type.
         """
         return pulumi.get(self, "backups")
 
     @backups.setter
-    def backups(self, value: Optional[pulumi.Input['PbsBackupsArgs']]):
+    def backups(self, value: pulumi.Input[Optional['PbsBackupsArgs']]):
         pulumi.set(self, "backups", value)
 
     @_builtins.property
     @pulumi.getter
-    def contents(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def contents(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
         """
         return pulumi.get(self, "contents")
 
     @contents.setter
-    def contents(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def contents(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "contents", value)
 
     @_builtins.property
     @pulumi.getter
-    def disable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the storage is disabled.
         """
         return pulumi.get(self, "disable")
 
     @disable.setter
-    def disable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionKey")
-    def encryption_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An existing encryption key for the datastore. This is a sensitive value. Conflicts with `generate_encryption_key`.
         """
         return pulumi.get(self, "encryption_key")
 
     @encryption_key.setter
-    def encryption_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SHA256 fingerprint of the Proxmox Backup Server's certificate.
         """
         return pulumi.get(self, "fingerprint")
 
     @fingerprint.setter
-    def fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fingerprint", value)
 
     @_builtins.property
     @pulumi.getter(name="generateEncryptionKey")
-    def generate_encryption_key(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def generate_encryption_key(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, Proxmox will generate a new encryption key. The key will be stored in the `generated_encryption_key` attribute. Conflicts with `encryption_key`.
         """
         return pulumi.get(self, "generate_encryption_key")
 
     @generate_encryption_key.setter
-    def generate_encryption_key(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def generate_encryption_key(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "generate_encryption_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The namespace to use on the Proxmox Backup Server.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter
-    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of nodes where this storage is available.
         """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
-    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "nodes", value)
 
 
 @pulumi.input_type
 class _PbsState:
     def __init__(__self__, *,
-                 backups: Optional[pulumi.Input['PbsBackupsArgs']] = None,
-                 contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 datastore: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 encryption_key_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 generate_encryption_key: Optional[pulumi.Input[_builtins.bool]] = None,
-                 generated_encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared: Optional[pulumi.Input[_builtins.bool]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 backups: pulumi.Input[Optional['PbsBackupsArgs']] = None,
+                 contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 datastore: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption_key_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 generate_encryption_key: pulumi.Input[Optional[_builtins.bool]] = None,
+                 generated_encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared: pulumi.Input[Optional[_builtins.bool]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Pbs resources.
 
@@ -304,194 +304,194 @@ class _PbsState:
 
     @_builtins.property
     @pulumi.getter
-    def backups(self) -> Optional[pulumi.Input['PbsBackupsArgs']]:
+    def backups(self) -> pulumi.Input[Optional['PbsBackupsArgs']]:
         """
         Configure backup retention settings for the storage type.
         """
         return pulumi.get(self, "backups")
 
     @backups.setter
-    def backups(self, value: Optional[pulumi.Input['PbsBackupsArgs']]):
+    def backups(self, value: pulumi.Input[Optional['PbsBackupsArgs']]):
         pulumi.set(self, "backups", value)
 
     @_builtins.property
     @pulumi.getter
-    def contents(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def contents(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
         """
         return pulumi.get(self, "contents")
 
     @contents.setter
-    def contents(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def contents(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "contents", value)
 
     @_builtins.property
     @pulumi.getter
-    def datastore(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datastore(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the datastore on the Proxmox Backup Server.
         """
         return pulumi.get(self, "datastore")
 
     @datastore.setter
-    def datastore(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datastore(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datastore", value)
 
     @_builtins.property
     @pulumi.getter
-    def disable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the storage is disabled.
         """
         return pulumi.get(self, "disable")
 
     @disable.setter
-    def disable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionKey")
-    def encryption_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An existing encryption key for the datastore. This is a sensitive value. Conflicts with `generate_encryption_key`.
         """
         return pulumi.get(self, "encryption_key")
 
     @encryption_key.setter
-    def encryption_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="encryptionKeyFingerprint")
-    def encryption_key_fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def encryption_key_fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SHA256 fingerprint of the encryption key currently in use.
         """
         return pulumi.get(self, "encryption_key_fingerprint")
 
     @encryption_key_fingerprint.setter
-    def encryption_key_fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def encryption_key_fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "encryption_key_fingerprint", value)
 
     @_builtins.property
     @pulumi.getter
-    def fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SHA256 fingerprint of the Proxmox Backup Server's certificate.
         """
         return pulumi.get(self, "fingerprint")
 
     @fingerprint.setter
-    def fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fingerprint", value)
 
     @_builtins.property
     @pulumi.getter(name="generateEncryptionKey")
-    def generate_encryption_key(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def generate_encryption_key(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, Proxmox will generate a new encryption key. The key will be stored in the `generated_encryption_key` attribute. Conflicts with `encryption_key`.
         """
         return pulumi.get(self, "generate_encryption_key")
 
     @generate_encryption_key.setter
-    def generate_encryption_key(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def generate_encryption_key(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "generate_encryption_key", value)
 
     @_builtins.property
     @pulumi.getter(name="generatedEncryptionKey")
-    def generated_encryption_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def generated_encryption_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The encryption key returned by Proxmox when `generate_encryption_key` is true.
         """
         return pulumi.get(self, "generated_encryption_key")
 
     @generated_encryption_key.setter
-    def generated_encryption_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def generated_encryption_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "generated_encryption_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def namespace(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The namespace to use on the Proxmox Backup Server.
         """
         return pulumi.get(self, "namespace")
 
     @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def namespace(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "namespace", value)
 
     @_builtins.property
     @pulumi.getter
-    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of nodes where this storage is available.
         """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
-    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password for authenticating with the Proxmox Backup Server.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the storage.
         """
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def server(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address or DNS name of the Proxmox Backup Server.
         """
         return pulumi.get(self, "server")
 
     @server.setter
-    def server(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server", value)
 
     @_builtins.property
     @pulumi.getter
-    def shared(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def shared(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the storage is shared across all nodes.
         """
         return pulumi.get(self, "shared")
 
     @shared.setter
-    def shared(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def shared(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "shared", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username for authenticating with the Proxmox Backup Server.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -501,19 +501,19 @@ class Pbs(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backups: Optional[pulumi.Input[Union['PbsBackupsArgs', 'PbsBackupsArgsDict']]] = None,
-                 contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 datastore: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 generate_encryption_key: Optional[pulumi.Input[_builtins.bool]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 backups: pulumi.Input[Optional[Union['PbsBackupsArgs', 'PbsBackupsArgsDict']]] = None,
+                 contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 datastore: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 generate_encryption_key: pulumi.Input[Optional[_builtins.bool]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a Proxmox Backup Server (PBS) storage in Proxmox VE.
@@ -614,19 +614,19 @@ class Pbs(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backups: Optional[pulumi.Input[Union['PbsBackupsArgs', 'PbsBackupsArgsDict']]] = None,
-                 contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 datastore: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 generate_encryption_key: Optional[pulumi.Input[_builtins.bool]] = None,
-                 namespace: Optional[pulumi.Input[_builtins.str]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 backups: pulumi.Input[Optional[Union['PbsBackupsArgs', 'PbsBackupsArgsDict']]] = None,
+                 contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 datastore: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 generate_encryption_key: pulumi.Input[Optional[_builtins.bool]] = None,
+                 namespace: pulumi.Input[Optional[_builtins.str]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -676,22 +676,22 @@ class Pbs(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backups: Optional[pulumi.Input[Union['PbsBackupsArgs', 'PbsBackupsArgsDict']]] = None,
-            contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            datastore: Optional[pulumi.Input[_builtins.str]] = None,
-            disable: Optional[pulumi.Input[_builtins.bool]] = None,
-            encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-            encryption_key_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            generate_encryption_key: Optional[pulumi.Input[_builtins.bool]] = None,
-            generated_encryption_key: Optional[pulumi.Input[_builtins.str]] = None,
-            namespace: Optional[pulumi.Input[_builtins.str]] = None,
-            nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-            server: Optional[pulumi.Input[_builtins.str]] = None,
-            shared: Optional[pulumi.Input[_builtins.bool]] = None,
-            username: Optional[pulumi.Input[_builtins.str]] = None) -> 'Pbs':
+            backups: pulumi.Input[Optional[Union['PbsBackupsArgs', 'PbsBackupsArgsDict']]] = None,
+            contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            datastore: pulumi.Input[Optional[_builtins.str]] = None,
+            disable: pulumi.Input[Optional[_builtins.bool]] = None,
+            encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+            encryption_key_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            generate_encryption_key: pulumi.Input[Optional[_builtins.bool]] = None,
+            generated_encryption_key: pulumi.Input[Optional[_builtins.str]] = None,
+            namespace: pulumi.Input[Optional[_builtins.str]] = None,
+            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            server: pulumi.Input[Optional[_builtins.str]] = None,
+            shared: pulumi.Input[Optional[_builtins.bool]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> 'Pbs':
         """
         Get an existing Pbs resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

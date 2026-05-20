@@ -25,11 +25,14 @@ from . import outputs
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
+    import pulumi_proxmoxve.sdn.controller as __controller
+    controller = __controller
     import pulumi_proxmoxve.sdn.fabric as __fabric
     fabric = __fabric
     import pulumi_proxmoxve.sdn.zone as __zone
     zone = __zone
 else:
+    controller = _utilities.lazy_import('pulumi_proxmoxve.sdn.controller')
     fabric = _utilities.lazy_import('pulumi_proxmoxve.sdn.fabric')
     zone = _utilities.lazy_import('pulumi_proxmoxve.sdn.zone')
 

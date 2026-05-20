@@ -36,8 +36,8 @@ import javax.annotation.Nullable;
  * import io.muehlbachler.pulumi.proxmoxve.realm.LdapArgs;
  * import io.muehlbachler.pulumi.proxmoxve.realm.Sync;
  * import io.muehlbachler.pulumi.proxmoxve.realm.SyncArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *         var example = new Ldap("example", LdapArgs.builder()
  *             .realm("example-ldap")
  *             .server1("ldap.example.com")
- *             .port(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(389) (example.pp:3,17-20)))
+ *             .port(389)
  *             .baseDn("ou=people,dc=example,dc=com")
  *             .userAttr("uid")
  *             .groupDn("ou=groups,dc=example,dc=com")

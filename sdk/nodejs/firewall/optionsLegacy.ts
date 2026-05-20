@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  *
  * const example = new proxmoxve.firewall.OptionsLegacy("example", {
  *     nodeName: exampleProxmoxVirtualEnvironmentVm.nodeName,
- *     vmId: exampleProxmoxVirtualEnvironmentVm.vmId,
+ *     vmId: Number(exampleProxmoxVirtualEnvironmentVm.vmId),
  *     dhcp: true,
  *     enabled: false,
  *     ipfilter: true,
@@ -199,20 +199,20 @@ export interface OptionsLegacyState {
     /**
      * Container ID. **Exactly one of `vmId` or `containerId` must be specified.**
      */
-    containerId?: pulumi.Input<number>;
+    containerId?: pulumi.Input<number | undefined>;
     /**
      * Enable DHCP.
      */
-    dhcp?: pulumi.Input<boolean>;
+    dhcp?: pulumi.Input<boolean | undefined>;
     /**
      * Enable or disable the firewall.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The default input
      * policy (`ACCEPT`, `DROP`, `REJECT`).
      */
-    inputPolicy?: pulumi.Input<string>;
+    inputPolicy?: pulumi.Input<string | undefined>;
     /**
      * Enable default IP filters. This is equivalent to
      * adding an empty `ipfilter-net<id>` ipset for every interface. Such ipsets
@@ -220,44 +220,44 @@ export interface OptionsLegacyState {
      * local addresses to the one derived from the interface's MAC address. For
      * containers the configured IP addresses will be implicitly added.
      */
-    ipfilter?: pulumi.Input<boolean>;
+    ipfilter?: pulumi.Input<boolean | undefined>;
     /**
      * Log level for incoming
      * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
      * `debug`, `nolog`).
      */
-    logLevelIn?: pulumi.Input<string>;
+    logLevelIn?: pulumi.Input<string | undefined>;
     /**
      * Log level for outgoing
      * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
      * `debug`, `nolog`).
      */
-    logLevelOut?: pulumi.Input<string>;
+    logLevelOut?: pulumi.Input<string | undefined>;
     /**
      * Enable/disable MAC address filter.
      */
-    macfilter?: pulumi.Input<boolean>;
+    macfilter?: pulumi.Input<boolean | undefined>;
     /**
      * Enable NDP (Neighbor Discovery Protocol).
      */
-    ndp?: pulumi.Input<boolean>;
+    ndp?: pulumi.Input<boolean | undefined>;
     /**
      * Node name.
      */
-    nodeName?: pulumi.Input<string>;
+    nodeName?: pulumi.Input<string | undefined>;
     /**
      * The default output
      * policy (`ACCEPT`, `DROP`, `REJECT`).
      */
-    outputPolicy?: pulumi.Input<string>;
+    outputPolicy?: pulumi.Input<string | undefined>;
     /**
      * Enable Router Advertisement.
      */
-    radv?: pulumi.Input<boolean>;
+    radv?: pulumi.Input<boolean | undefined>;
     /**
      * VM ID. **Exactly one of `vmId` or `containerId` must be specified.**
      */
-    vmId?: pulumi.Input<number>;
+    vmId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -267,20 +267,20 @@ export interface OptionsLegacyArgs {
     /**
      * Container ID. **Exactly one of `vmId` or `containerId` must be specified.**
      */
-    containerId?: pulumi.Input<number>;
+    containerId?: pulumi.Input<number | undefined>;
     /**
      * Enable DHCP.
      */
-    dhcp?: pulumi.Input<boolean>;
+    dhcp?: pulumi.Input<boolean | undefined>;
     /**
      * Enable or disable the firewall.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The default input
      * policy (`ACCEPT`, `DROP`, `REJECT`).
      */
-    inputPolicy?: pulumi.Input<string>;
+    inputPolicy?: pulumi.Input<string | undefined>;
     /**
      * Enable default IP filters. This is equivalent to
      * adding an empty `ipfilter-net<id>` ipset for every interface. Such ipsets
@@ -288,27 +288,27 @@ export interface OptionsLegacyArgs {
      * local addresses to the one derived from the interface's MAC address. For
      * containers the configured IP addresses will be implicitly added.
      */
-    ipfilter?: pulumi.Input<boolean>;
+    ipfilter?: pulumi.Input<boolean | undefined>;
     /**
      * Log level for incoming
      * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
      * `debug`, `nolog`).
      */
-    logLevelIn?: pulumi.Input<string>;
+    logLevelIn?: pulumi.Input<string | undefined>;
     /**
      * Log level for outgoing
      * packets (`emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`,
      * `debug`, `nolog`).
      */
-    logLevelOut?: pulumi.Input<string>;
+    logLevelOut?: pulumi.Input<string | undefined>;
     /**
      * Enable/disable MAC address filter.
      */
-    macfilter?: pulumi.Input<boolean>;
+    macfilter?: pulumi.Input<boolean | undefined>;
     /**
      * Enable NDP (Neighbor Discovery Protocol).
      */
-    ndp?: pulumi.Input<boolean>;
+    ndp?: pulumi.Input<boolean | undefined>;
     /**
      * Node name.
      */
@@ -317,13 +317,13 @@ export interface OptionsLegacyArgs {
      * The default output
      * policy (`ACCEPT`, `DROP`, `REJECT`).
      */
-    outputPolicy?: pulumi.Input<string>;
+    outputPolicy?: pulumi.Input<string | undefined>;
     /**
      * Enable Router Advertisement.
      */
-    radv?: pulumi.Input<boolean>;
+    radv?: pulumi.Input<boolean | undefined>;
     /**
      * VM ID. **Exactly one of `vmId` or `containerId` must be specified.**
      */
-    vmId?: pulumi.Input<number>;
+    vmId?: pulumi.Input<number | undefined>;
 }

@@ -136,15 +136,15 @@ class PciLegacyMapArgsDict(TypedDict):
     """
     The path of the map.
     """
-    comment: NotRequired[pulumi.Input[_builtins.str]]
+    comment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The comment of the mapped PCI device.
     """
-    iommu_group: NotRequired[pulumi.Input[_builtins.int]]
+    iommu_group: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The IOMMU group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
     """
-    subsystem_id: NotRequired[pulumi.Input[_builtins.str]]
+    subsystem_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The subsystem ID group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
     """
@@ -155,9 +155,9 @@ class PciLegacyMapArgs:
                  id: pulumi.Input[_builtins.str],
                  node: pulumi.Input[_builtins.str],
                  path: pulumi.Input[_builtins.str],
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 iommu_group: Optional[pulumi.Input[_builtins.int]] = None,
-                 subsystem_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 iommu_group: pulumi.Input[Optional[_builtins.int]] = None,
+                 subsystem_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] id: The ID of the map.
         :param pulumi.Input[_builtins.str] node: The node name of the map.
@@ -214,38 +214,38 @@ class PciLegacyMapArgs:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The comment of the mapped PCI device.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="iommuGroup")
-    def iommu_group(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def iommu_group(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The IOMMU group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
         """
         return pulumi.get(self, "iommu_group")
 
     @iommu_group.setter
-    def iommu_group(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def iommu_group(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "iommu_group", value)
 
     @_builtins.property
     @pulumi.getter(name="subsystemId")
-    def subsystem_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subsystem_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subsystem ID group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
         """
         return pulumi.get(self, "subsystem_id")
 
     @subsystem_id.setter
-    def subsystem_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subsystem_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subsystem_id", value)
 
 
@@ -262,15 +262,15 @@ class PciMapArgsDict(TypedDict):
     """
     The path of the map.
     """
-    comment: NotRequired[pulumi.Input[_builtins.str]]
+    comment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The comment of the mapped PCI device.
     """
-    iommu_group: NotRequired[pulumi.Input[_builtins.int]]
+    iommu_group: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The IOMMU group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
     """
-    subsystem_id: NotRequired[pulumi.Input[_builtins.str]]
+    subsystem_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The subsystem ID group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
     """
@@ -281,9 +281,9 @@ class PciMapArgs:
                  id: pulumi.Input[_builtins.str],
                  node: pulumi.Input[_builtins.str],
                  path: pulumi.Input[_builtins.str],
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 iommu_group: Optional[pulumi.Input[_builtins.int]] = None,
-                 subsystem_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 iommu_group: pulumi.Input[Optional[_builtins.int]] = None,
+                 subsystem_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] id: The ID of the map.
         :param pulumi.Input[_builtins.str] node: The node name of the map.
@@ -340,38 +340,38 @@ class PciMapArgs:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The comment of the mapped PCI device.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="iommuGroup")
-    def iommu_group(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def iommu_group(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The IOMMU group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
         """
         return pulumi.get(self, "iommu_group")
 
     @iommu_group.setter
-    def iommu_group(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def iommu_group(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "iommu_group", value)
 
     @_builtins.property
     @pulumi.getter(name="subsystemId")
-    def subsystem_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subsystem_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subsystem ID group of the map. While not mandatory for the Proxmox VE API call, omitting this attribute will result in an incomplete PCI hardware mapping.
         """
         return pulumi.get(self, "subsystem_id")
 
     @subsystem_id.setter
-    def subsystem_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subsystem_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subsystem_id", value)
 
 
@@ -384,11 +384,11 @@ class UsbLegacyMapArgsDict(TypedDict):
     """
     The node name of the map.
     """
-    comment: NotRequired[pulumi.Input[_builtins.str]]
+    comment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The comment of the mapped USB device.
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The path of the map. For USB hardware mappings, this is optional and indicates that the device is mapped via its device ID rather than ports.
     """
@@ -398,8 +398,8 @@ class UsbLegacyMapArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[_builtins.str],
                  node: pulumi.Input[_builtins.str],
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] id: The ID of the map.
         :param pulumi.Input[_builtins.str] node: The node name of the map.
@@ -439,26 +439,26 @@ class UsbLegacyMapArgs:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The comment of the mapped USB device.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path of the map. For USB hardware mappings, this is optional and indicates that the device is mapped via its device ID rather than ports.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
 
@@ -471,11 +471,11 @@ class UsbMapArgsDict(TypedDict):
     """
     The node name of the map.
     """
-    comment: NotRequired[pulumi.Input[_builtins.str]]
+    comment: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The comment of the mapped USB device.
     """
-    path: NotRequired[pulumi.Input[_builtins.str]]
+    path: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The path of the map. For USB hardware mappings, this is optional and indicates that the device is mapped via its device ID rather than ports.
     """
@@ -485,8 +485,8 @@ class UsbMapArgs:
     def __init__(__self__, *,
                  id: pulumi.Input[_builtins.str],
                  node: pulumi.Input[_builtins.str],
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] id: The ID of the map.
         :param pulumi.Input[_builtins.str] node: The node name of the map.
@@ -526,26 +526,26 @@ class UsbMapArgs:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The comment of the mapped USB device.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path of the map. For USB hardware mappings, this is optional and indicates that the device is mapped via its device ID rather than ports.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
 

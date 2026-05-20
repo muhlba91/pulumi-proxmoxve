@@ -111,9 +111,9 @@ def get_datastores(datastores: Optional[Sequence[Union['GetDatastoresDatastoreAr
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         node_name=pulumi.get(__ret__, 'node_name'))
-def get_datastores_output(datastores: Optional[pulumi.Input[Optional[Sequence[Union['GetDatastoresDatastoreArgs', 'GetDatastoresDatastoreArgsDict']]]]] = None,
-                          filters: Optional[pulumi.Input[Optional[Union['GetDatastoresFiltersArgs', 'GetDatastoresFiltersArgsDict']]]] = None,
-                          node_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_datastores_output(datastores: pulumi.Input[Optional[Optional[Sequence[Union['GetDatastoresDatastoreArgs', 'GetDatastoresDatastoreArgsDict']]]]] = None,
+                          filters: pulumi.Input[Optional[Optional[Union['GetDatastoresFiltersArgs', 'GetDatastoresFiltersArgsDict']]]] = None,
+                          node_name: pulumi.Input[Optional[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatastoresResult]:
     """
     Retrieves information about all the datastores available to a specific node.

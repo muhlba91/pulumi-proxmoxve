@@ -161,35 +161,35 @@ export interface SyncState {
     /**
      * Only simulate the sync without applying changes.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Enable newly synced users.
      */
-    enableNew?: pulumi.Input<boolean>;
+    enableNew?: pulumi.Input<boolean | undefined>;
     /**
      * Perform a full sync.
      *
      * @deprecated Deprecated by Proxmox: use removeVanished instead.
      */
-    full?: pulumi.Input<boolean>;
+    full?: pulumi.Input<boolean | undefined>;
     /**
      * Purge removed entries.
      *
      * @deprecated Deprecated by Proxmox: use removeVanished instead.
      */
-    purge?: pulumi.Input<boolean>;
+    purge?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the realm to synchronize.
      */
-    realm?: pulumi.Input<string>;
+    realm?: pulumi.Input<string | undefined>;
     /**
      * How to handle vanished entries (e.g. `acl;properties;entry` or `none`).
      */
-    removeVanished?: pulumi.Input<string>;
+    removeVanished?: pulumi.Input<string | undefined>;
     /**
      * Sync scope: users, groups, or both.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -199,23 +199,23 @@ export interface SyncArgs {
     /**
      * Only simulate the sync without applying changes.
      */
-    dryRun?: pulumi.Input<boolean>;
+    dryRun?: pulumi.Input<boolean | undefined>;
     /**
      * Enable newly synced users.
      */
-    enableNew?: pulumi.Input<boolean>;
+    enableNew?: pulumi.Input<boolean | undefined>;
     /**
      * Perform a full sync.
      *
      * @deprecated Deprecated by Proxmox: use removeVanished instead.
      */
-    full?: pulumi.Input<boolean>;
+    full?: pulumi.Input<boolean | undefined>;
     /**
      * Purge removed entries.
      *
      * @deprecated Deprecated by Proxmox: use removeVanished instead.
      */
-    purge?: pulumi.Input<boolean>;
+    purge?: pulumi.Input<boolean | undefined>;
     /**
      * Name of the realm to synchronize.
      */
@@ -223,9 +223,9 @@ export interface SyncArgs {
     /**
      * How to handle vanished entries (e.g. `acl;properties;entry` or `none`).
      */
-    removeVanished?: pulumi.Input<string>;
+    removeVanished?: pulumi.Input<string | undefined>;
     /**
      * Sync scope: users, groups, or both.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
 }

@@ -106,7 +106,7 @@ def get_haresources(type: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         resource_ids=pulumi.get(__ret__, 'resource_ids'),
         type=pulumi.get(__ret__, 'type'))
-def get_haresources_output(type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_haresources_output(type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHaresourcesResult]:
     """
     Retrieves the list of High Availability resources.

@@ -154,59 +154,59 @@ export interface BondState {
     /**
      * The interface IPv4/CIDR address.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The interface IPv6/CIDR address.
      */
-    address6?: pulumi.Input<string>;
+    address6?: pulumi.Input<string | undefined>;
     /**
      * Automatically start interface on boot (defaults to `true`).
      */
-    autostart?: pulumi.Input<boolean>;
+    autostart?: pulumi.Input<boolean | undefined>;
     /**
      * The bonding mode. Possible values are `balance-rr`, `active-backup`, `balance-xor`, `broadcast`, `802.3ad`, `balance-tlb`, `balance-alb`.
      */
-    bondMode?: pulumi.Input<string>;
+    bondMode?: pulumi.Input<string | undefined>;
     /**
      * The primary interface for `active-backup` bond mode. Specifies which slave interface should be the active one.
      */
-    bondPrimary?: pulumi.Input<string>;
+    bondPrimary?: pulumi.Input<string | undefined>;
     /**
      * The transmit hash policy for `balance-xor` and `802.3ad` bond modes. Possible values are `layer2`, `layer2+3`, `layer3+4`.
      */
-    bondXmitHashPolicy?: pulumi.Input<string>;
+    bondXmitHashPolicy?: pulumi.Input<string | undefined>;
     /**
      * Comment for the interface.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Default gateway address.
      */
-    gateway?: pulumi.Input<string>;
+    gateway?: pulumi.Input<string | undefined>;
     /**
      * Default IPv6 gateway address.
      */
-    gateway6?: pulumi.Input<string>;
+    gateway6?: pulumi.Input<string | undefined>;
     /**
      * The interface MTU.
      */
-    mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number | undefined>;
     /**
      * The interface name. Must be `bond[N]`, where 0 ≤ N (e.g. bond0, bond1), or any alphanumeric string that starts with a character and is at most 10 characters long.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the node.
      */
-    nodeName?: pulumi.Input<string>;
+    nodeName?: pulumi.Input<string | undefined>;
     /**
      * The interface bond slaves (member interfaces).
      */
-    slaves?: pulumi.Input<pulumi.Input<string>[]>;
+    slaves?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Timeout for network reload operations in seconds (defaults to `100`).
      */
-    timeoutReload?: pulumi.Input<number>;
+    timeoutReload?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -216,47 +216,47 @@ export interface BondArgs {
     /**
      * The interface IPv4/CIDR address.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The interface IPv6/CIDR address.
      */
-    address6?: pulumi.Input<string>;
+    address6?: pulumi.Input<string | undefined>;
     /**
      * Automatically start interface on boot (defaults to `true`).
      */
-    autostart?: pulumi.Input<boolean>;
+    autostart?: pulumi.Input<boolean | undefined>;
     /**
      * The bonding mode. Possible values are `balance-rr`, `active-backup`, `balance-xor`, `broadcast`, `802.3ad`, `balance-tlb`, `balance-alb`.
      */
-    bondMode?: pulumi.Input<string>;
+    bondMode?: pulumi.Input<string | undefined>;
     /**
      * The primary interface for `active-backup` bond mode. Specifies which slave interface should be the active one.
      */
-    bondPrimary?: pulumi.Input<string>;
+    bondPrimary?: pulumi.Input<string | undefined>;
     /**
      * The transmit hash policy for `balance-xor` and `802.3ad` bond modes. Possible values are `layer2`, `layer2+3`, `layer3+4`.
      */
-    bondXmitHashPolicy?: pulumi.Input<string>;
+    bondXmitHashPolicy?: pulumi.Input<string | undefined>;
     /**
      * Comment for the interface.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Default gateway address.
      */
-    gateway?: pulumi.Input<string>;
+    gateway?: pulumi.Input<string | undefined>;
     /**
      * Default IPv6 gateway address.
      */
-    gateway6?: pulumi.Input<string>;
+    gateway6?: pulumi.Input<string | undefined>;
     /**
      * The interface MTU.
      */
-    mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number | undefined>;
     /**
      * The interface name. Must be `bond[N]`, where 0 ≤ N (e.g. bond0, bond1), or any alphanumeric string that starts with a character and is at most 10 characters long.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the node.
      */
@@ -268,5 +268,5 @@ export interface BondArgs {
     /**
      * Timeout for network reload operations in seconds (defaults to `100`).
      */
-    timeoutReload?: pulumi.Input<number>;
+    timeoutReload?: pulumi.Input<number | undefined>;
 }

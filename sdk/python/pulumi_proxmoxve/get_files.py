@@ -122,6 +122,7 @@ def get_files(content_type: Optional[_builtins.str] = None,
 
     ```python
     import pulumi
+    from typing import Any
     import pulumi_proxmoxve as proxmoxve
     import pulumi_std as std
 
@@ -130,7 +131,7 @@ def get_files(content_type: Optional[_builtins.str] = None,
         content_type="iso")
     image_exists = std.anytrue(input=[f.file_name == "noble-server-cloudimg-amd64.img" for f in iso_files.files]).result
     # Only download if the image doesn't already exist
-    ubuntu_noble = []
+    ubuntu_noble: list[Any] = []
     for range in [{"value": i} for i in range(0, 0 if image_exists else 1)]:
         ubuntu_noble.append(proxmoxve.download.FileLegacy(f"ubuntu_noble-{range['value']}",
             datastore_id="local",
@@ -165,10 +166,10 @@ def get_files(content_type: Optional[_builtins.str] = None,
         files=pulumi.get(__ret__, 'files'),
         id=pulumi.get(__ret__, 'id'),
         node_name=pulumi.get(__ret__, 'node_name'))
-def get_files_output(content_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     datastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                     file_name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                     node_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_files_output(content_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                     file_name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                     node_name: pulumi.Input[Optional[_builtins.str]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFilesResult]:
     """
     Retrieves a list of files available in a datastore on a specific Proxmox VE node.
@@ -177,6 +178,7 @@ def get_files_output(content_type: Optional[pulumi.Input[Optional[_builtins.str]
 
     ```python
     import pulumi
+    from typing import Any
     import pulumi_proxmoxve as proxmoxve
     import pulumi_std as std
 
@@ -185,7 +187,7 @@ def get_files_output(content_type: Optional[pulumi.Input[Optional[_builtins.str]
         content_type="iso")
     image_exists = std.anytrue(input=[f.file_name == "noble-server-cloudimg-amd64.img" for f in iso_files.files]).result
     # Only download if the image doesn't already exist
-    ubuntu_noble = []
+    ubuntu_noble: list[Any] = []
     for range in [{"value": i} for i in range(0, 0 if image_exists else 1)]:
         ubuntu_noble.append(proxmoxve.download.FileLegacy(f"ubuntu_noble-{range['value']}",
             datastore_id="local",

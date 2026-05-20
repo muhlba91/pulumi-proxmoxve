@@ -110,14 +110,20 @@ public final class ContainerLegacyArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The disk configuration.
+     * The root filesystem (rootfs) storage configuration.
+     * Selects the Proxmox storage pool the container&#39;s root volume is created
+     * on. Backend-agnostic — works with directory, LVM, LVM-thin, ZFS, Ceph
+     * RBD, NFS, and any other configured Proxmox storage.
      * 
      */
     @Import(name="disk")
     private @Nullable Output<ContainerLegacyDiskArgs> disk;
 
     /**
-     * @return The disk configuration.
+     * @return The root filesystem (rootfs) storage configuration.
+     * Selects the Proxmox storage pool the container&#39;s root volume is created
+     * on. Backend-agnostic — works with directory, LVM, LVM-thin, ZFS, Ceph
+     * RBD, NFS, and any other configured Proxmox storage.
      * 
      */
     public Optional<Output<ContainerLegacyDiskArgs>> disk() {
@@ -221,14 +227,18 @@ public final class ContainerLegacyArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * A mount point
+     * An additional volume mount or host bind mount
+     * (multiple blocks supported). Use this for data volumes, shared
+     * directories, or attaching pre-existing PVE volumes.
      * 
      */
     @Import(name="mountPoints")
     private @Nullable Output<List<ContainerLegacyMountPointArgs>> mountPoints;
 
     /**
-     * @return A mount point
+     * @return An additional volume mount or host bind mount
+     * (multiple blocks supported). Use this for data volumes, shared
+     * directories, or attaching pre-existing PVE volumes.
      * 
      */
     public Optional<Output<List<ContainerLegacyMountPointArgs>>> mountPoints() {
@@ -695,7 +705,10 @@ public final class ContainerLegacyArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param disk The disk configuration.
+         * @param disk The root filesystem (rootfs) storage configuration.
+         * Selects the Proxmox storage pool the container&#39;s root volume is created
+         * on. Backend-agnostic — works with directory, LVM, LVM-thin, ZFS, Ceph
+         * RBD, NFS, and any other configured Proxmox storage.
          * 
          * @return builder
          * 
@@ -706,7 +719,10 @@ public final class ContainerLegacyArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param disk The disk configuration.
+         * @param disk The root filesystem (rootfs) storage configuration.
+         * Selects the Proxmox storage pool the container&#39;s root volume is created
+         * on. Backend-agnostic — works with directory, LVM, LVM-thin, ZFS, Ceph
+         * RBD, NFS, and any other configured Proxmox storage.
          * 
          * @return builder
          * 
@@ -861,7 +877,9 @@ public final class ContainerLegacyArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param mountPoints A mount point
+         * @param mountPoints An additional volume mount or host bind mount
+         * (multiple blocks supported). Use this for data volumes, shared
+         * directories, or attaching pre-existing PVE volumes.
          * 
          * @return builder
          * 
@@ -872,7 +890,9 @@ public final class ContainerLegacyArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param mountPoints A mount point
+         * @param mountPoints An additional volume mount or host bind mount
+         * (multiple blocks supported). Use this for data volumes, shared
+         * directories, or attaching pre-existing PVE volumes.
          * 
          * @return builder
          * 
@@ -882,7 +902,9 @@ public final class ContainerLegacyArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param mountPoints A mount point
+         * @param mountPoints An additional volume mount or host bind mount
+         * (multiple blocks supported). Use this for data volumes, shared
+         * directories, or attaching pre-existing PVE volumes.
          * 
          * @return builder
          * 

@@ -36,8 +36,8 @@ public final class HardwareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.hardware.HardwareFunctions;
      * import com.pulumi.proxmoxve.hardware.inputs.GetMappingsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -91,8 +91,8 @@ public final class HardwareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.hardware.HardwareFunctions;
      * import com.pulumi.proxmoxve.hardware.inputs.GetMappingsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -146,8 +146,8 @@ public final class HardwareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.hardware.HardwareFunctions;
      * import com.pulumi.proxmoxve.hardware.inputs.GetMappingsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -201,8 +201,8 @@ public final class HardwareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.hardware.HardwareFunctions;
      * import com.pulumi.proxmoxve.hardware.inputs.GetMappingsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -256,8 +256,8 @@ public final class HardwareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.hardware.HardwareFunctions;
      * import com.pulumi.proxmoxve.hardware.inputs.GetMappingsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -313,8 +313,8 @@ public final class HardwareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.hardware.HardwareFunctions;
      * import com.pulumi.proxmoxve.hardware.inputs.GetMappingsLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -370,8 +370,8 @@ public final class HardwareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.hardware.HardwareFunctions;
      * import com.pulumi.proxmoxve.hardware.inputs.GetMappingsLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -427,8 +427,8 @@ public final class HardwareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.hardware.HardwareFunctions;
      * import com.pulumi.proxmoxve.hardware.inputs.GetMappingsLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -484,8 +484,8 @@ public final class HardwareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.hardware.HardwareFunctions;
      * import com.pulumi.proxmoxve.hardware.inputs.GetMappingsLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -541,8 +541,8 @@ public final class HardwareFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.hardware.HardwareFunctions;
      * import com.pulumi.proxmoxve.hardware.inputs.GetMappingsLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -597,8 +597,8 @@ public final class HardwareFunctions {
      * import com.pulumi.proxmoxve.hardware.HardwareFunctions;
      * import com.pulumi.proxmoxve.hardware.inputs.GetPciArgs;
      * import com.pulumi.proxmoxve.hardware.inputs.GetPciFiltersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -657,8 +657,8 @@ public final class HardwareFunctions {
      * import com.pulumi.proxmoxve.hardware.HardwareFunctions;
      * import com.pulumi.proxmoxve.hardware.inputs.GetPciArgs;
      * import com.pulumi.proxmoxve.hardware.inputs.GetPciFiltersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -717,8 +717,8 @@ public final class HardwareFunctions {
      * import com.pulumi.proxmoxve.hardware.HardwareFunctions;
      * import com.pulumi.proxmoxve.hardware.inputs.GetPciArgs;
      * import com.pulumi.proxmoxve.hardware.inputs.GetPciFiltersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -777,8 +777,8 @@ public final class HardwareFunctions {
      * import com.pulumi.proxmoxve.hardware.HardwareFunctions;
      * import com.pulumi.proxmoxve.hardware.inputs.GetPciArgs;
      * import com.pulumi.proxmoxve.hardware.inputs.GetPciFiltersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -837,8 +837,8 @@ public final class HardwareFunctions {
      * import com.pulumi.proxmoxve.hardware.HardwareFunctions;
      * import com.pulumi.proxmoxve.hardware.inputs.GetPciArgs;
      * import com.pulumi.proxmoxve.hardware.inputs.GetPciFiltersArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

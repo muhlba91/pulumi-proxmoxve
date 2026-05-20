@@ -158,43 +158,43 @@ export interface VlanState {
     /**
      * The local bridge or OVS switch, already configured on *each* node that allows node-to-node connection.
      */
-    bridge?: pulumi.Input<string>;
+    bridge?: pulumi.Input<string | undefined>;
     /**
      * DNS API server address.
      */
-    dns?: pulumi.Input<string>;
+    dns?: pulumi.Input<string | undefined>;
     /**
      * DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
      */
-    dnsZone?: pulumi.Input<string>;
+    dnsZone?: pulumi.Input<string | undefined>;
     /**
      * IP Address Management system.
      */
-    ipam?: pulumi.Input<string>;
+    ipam?: pulumi.Input<string | undefined>;
     /**
      * MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
      */
-    mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number | undefined>;
     /**
      * The Proxmox nodes which the zone and associated VNets should be deployed on
      */
-    nodes?: pulumi.Input<pulumi.Input<string>[]>;
+    nodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates if the zone has pending configuration changes that need to be applied.
      */
-    pending?: pulumi.Input<boolean>;
+    pending?: pulumi.Input<boolean | undefined>;
     /**
      * The unique identifier of the SDN zone.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * Reverse DNS API server address.
      */
-    reverseDns?: pulumi.Input<string>;
+    reverseDns?: pulumi.Input<string | undefined>;
     /**
      * Indicates the current state of the zone.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -208,23 +208,23 @@ export interface VlanArgs {
     /**
      * DNS API server address.
      */
-    dns?: pulumi.Input<string>;
+    dns?: pulumi.Input<string | undefined>;
     /**
      * DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
      */
-    dnsZone?: pulumi.Input<string>;
+    dnsZone?: pulumi.Input<string | undefined>;
     /**
      * IP Address Management system.
      */
-    ipam?: pulumi.Input<string>;
+    ipam?: pulumi.Input<string | undefined>;
     /**
      * MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
      */
-    mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number | undefined>;
     /**
      * The Proxmox nodes which the zone and associated VNets should be deployed on
      */
-    nodes?: pulumi.Input<pulumi.Input<string>[]>;
+    nodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The unique identifier of the SDN zone.
      */
@@ -232,5 +232,5 @@ export interface VlanArgs {
     /**
      * Reverse DNS API server address.
      */
-    reverseDns?: pulumi.Input<string>;
+    reverseDns?: pulumi.Input<string | undefined>;
 }

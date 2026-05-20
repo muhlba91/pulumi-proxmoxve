@@ -10,9 +10,20 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE
 {
     /// <summary>
-    /// Manages a container.
+    /// Manages an LXC container on a Proxmox VE node.
+    /// 
+    /// A container's root filesystem (the `Disk` block) and any additional volumes
+    /// (`MountPoint` blocks) can be placed on any Proxmox VE storage backend —
+    /// directory, LVM, LVM-thin, ZFS, Ceph RBD, NFS, CIFS, or any other storage
+    /// configured on the cluster. Bind mounts of arbitrary host directories are
+    /// also supported. See the Storage section below for details.
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Basic container
+    /// 
+    /// A minimal Ubuntu container with a 4&amp;nbsp;GB rootfs on `local-lvm`,
+    /// DHCP networking, and an SSH key:
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -33,24 +44,24 @@ namespace Pulumi.ProxmoxVE
     ///         Url = "https://mirrors.servercentral.com/ubuntu-cloud-images/releases/25.04/release/ubuntu-25.04-server-cloudimg-amd64-root.tar.xz",
     ///     });
     /// 
-    ///     var ubuntuContainerPassword = new Random.Index.RandomPassword("ubuntu_container_password", new()
+    ///     var ubuntuContainerPassword = new Random.RandomPassword("ubuntu_container_password", new()
     ///     {
-    ///         Length = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(16) (example.pp:74,21-23)),
+    ///         Length = 16,
     ///         OverrideSpecial = "_%@",
     ///         Special = true,
     ///     });
     /// 
-    ///     var ubuntuContainerKey = new Tls.Index.PrivateKey("ubuntu_container_key", new()
+    ///     var ubuntuContainerKey = new Tls.PrivateKey("ubuntu_container_key", new()
     ///     {
     ///         Algorithm = "RSA",
-    ///         RsaBits = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:82,19-23)),
+    ///         RsaBits = 2048,
     ///     });
     /// 
-    ///     var ubuntuContainer = new ProxmoxVE.Index.ContainerLegacy("ubuntu_container", new()
+    ///     var ubuntuContainer = new ProxmoxVE.ContainerLegacy("ubuntu_container", new()
     ///     {
     ///         Description = "Managed by Pulumi",
     ///         NodeName = "first-node",
-    ///         VmId = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1234) (example.pp:4,19-23)),
+    ///         VmId = 1234,
     ///         Unprivileged = true,
     ///         Features = new ProxmoxVE.Inputs.ContainerLegacyFeaturesArgs
     ///         {
@@ -73,7 +84,7 @@ namespace Pulumi.ProxmoxVE
     ///             {
     ///                 Keys = new[]
     ///                 {
-    ///                     Std.Index.Trimspace.Invoke(new()
+    ///                     Std.Trimspace.Invoke(new()
     ///                     {
     ///                         Input = ubuntuContainerKey.PublicKeyOpenssh,
     ///                     }).Apply(invoke =&gt; invoke.Result),
@@ -91,20 +102,56 @@ namespace Pulumi.ProxmoxVE
     ///         Disk = new ProxmoxVE.Inputs.ContainerLegacyDiskArgs
     ///         {
     ///             DatastoreId = "local-lvm",
-    ///             Size = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(4) (example.pp:31,19-20)),
+    ///             Size = 4,
     ///         },
     ///         OperatingSystem = new ProxmoxVE.Inputs.ContainerLegacyOperatingSystemArgs
     ///         {
     ///             TemplateFileId = ubuntu2504LxcImg.Id,
     ///             Type = "ubuntu",
     ///         },
+    ///         Startup = new ProxmoxVE.Inputs.ContainerLegacyStartupArgs
+    ///         {
+    ///             Order = 3,
+    ///             UpDelay = 60,
+    ///             DownDelay = 60,
+    ///         },
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["ubuntuContainerPassword"] = ubuntuContainerPassword.Result,
+    ///         ["ubuntuContainerPrivateKey"] = ubuntuContainerKey.PrivateKeyPem,
+    ///         ["ubuntuContainerPublicKey"] = ubuntuContainerKey.PublicKeyOpenssh,
+    ///     };
+    /// });
+    /// ```
+    /// 
+    /// ### Custom storage configuration
+    /// 
+    /// This example places the rootfs on a custom storage pool, attaches an
+    /// additional volume, mounts an existing volume by ID, and bind-mounts a host
+    /// directory. Any Proxmox storage backend (directory, LVM-thin, ZFS, Ceph RBD,
+    /// NFS, CIFS) can be referenced by its storage ID:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using ProxmoxVE = Pulumi.ProxmoxVE;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var customStorage = new ProxmoxVE.ContainerLegacy("custom_storage", new()
+    ///     {
+    ///         NodeName = "first-node",
+    ///         VmId = 1235,
+    ///         Disk = new ProxmoxVE.Inputs.ContainerLegacyDiskArgs
+    ///         {
+    ///             DatastoreId = "tank-zfs",
+    ///             Size = 32,
+    ///         },
     ///         MountPoints = new[]
     ///         {
-    ///             new ProxmoxVE.Inputs.ContainerLegacyMountPointArgs
-    ///             {
-    ///                 Volume = "/mnt/bindmounts/shared",
-    ///                 Path = "/mnt/shared",
-    ///             },
     ///             new ProxmoxVE.Inputs.ContainerLegacyMountPointArgs
     ///             {
     ///                 Volume = "local-lvm",
@@ -117,23 +164,40 @@ namespace Pulumi.ProxmoxVE
     ///                 Size = "10G",
     ///                 Path = "/mnt/data",
     ///             },
-    ///         },
-    ///         Startup = new ProxmoxVE.Inputs.ContainerLegacyStartupArgs
-    ///         {
-    ///             Order = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(3) (:0,0-0)),
-    ///             UpDelay = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(60) (:0,0-0)),
-    ///             DownDelay = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(60) (:0,0-0)),
+    ///             new ProxmoxVE.Inputs.ContainerLegacyMountPointArgs
+    ///             {
+    ///                 Volume = "/mnt/bindmounts/shared",
+    ///                 Path = "/mnt/shared",
+    ///             },
     ///         },
     ///     });
     /// 
-    ///     return new Dictionary&lt;string, object?&gt;
-    ///     {
-    ///         ["ubuntuContainerPassword"] = ubuntuContainerPassword.Result,
-    ///         ["ubuntuContainerPrivateKey"] = ubuntuContainerKey.PrivateKeyPem,
-    ///         ["ubuntuContainerPublicKey"] = ubuntuContainerKey.PublicKeyOpenssh,
-    ///     };
     /// });
     /// ```
+    /// 
+    /// ## Storage
+    /// 
+    /// Containers attach storage through two block types:
+    /// 
+    /// - **`Disk`** — the root filesystem (rootfs). Exactly one rootfs per
+    ///   container; the `DatastoreId` argument selects the Proxmox storage pool
+    ///   it lives on.
+    /// - **`MountPoint`** — zero or more additional volumes or bind mounts,
+    ///   each mounted at a separate `Path` inside the container.
+    /// 
+    /// Both block types are backend-agnostic: `DatastoreId` (on `Disk`) and
+    /// `Volume` (on `MountPoint`) accept any Proxmox storage ID, regardless of
+    /// backend type. Run `pvesm status` on the host or use the
+    /// `proxmoxve.getDatastoresLegacy`
+    /// data source to list configured storages.
+    /// 
+    /// The `mount_point.volume` attribute accepts three forms:
+    /// 
+    /// | Form                       | Meaning                                                  | Example                            |
+    /// | -------------------------- | -------------------------------------------------------- | ---------------------------------- |
+    /// | Storage ID                 | Allocate a new volume on that storage (requires `Size`)  | `local-lvm`, `tank-zfs`            |
+    /// | Storage ID + volume name   | Mount an existing volume by its full PVE volume ID       | `local-lvm:subvol-108-disk-101`    |
+    /// | Absolute host path         | Bind-mount a host directory (requires `root@pam` auth)   | `/mnt/bindmounts/shared`           |
     /// 
     /// ## Import
     /// 
@@ -177,7 +241,10 @@ namespace Pulumi.ProxmoxVE
         public Output<ImmutableArray<Outputs.ContainerLegacyDevicePassthrough>> DevicePassthroughs { get; private set; } = null!;
 
         /// <summary>
-        /// The disk configuration.
+        /// The root filesystem (rootfs) storage configuration.
+        /// Selects the Proxmox storage pool the container's root volume is created
+        /// on. Backend-agnostic — works with directory, LVM, LVM-thin, ZFS, Ceph
+        /// RBD, NFS, and any other configured Proxmox storage.
         /// </summary>
         [Output("disk")]
         public Output<Outputs.ContainerLegacyDisk?> Disk { get; private set; } = null!;
@@ -234,7 +301,9 @@ namespace Pulumi.ProxmoxVE
         public Output<Outputs.ContainerLegacyMemory?> Memory { get; private set; } = null!;
 
         /// <summary>
-        /// A mount point
+        /// An additional volume mount or host bind mount
+        /// (multiple blocks supported). Use this for data volumes, shared
+        /// directories, or attaching pre-existing PVE volumes.
         /// </summary>
         [Output("mountPoints")]
         public Output<ImmutableArray<Outputs.ContainerLegacyMountPoint>> MountPoints { get; private set; } = null!;
@@ -437,7 +506,10 @@ namespace Pulumi.ProxmoxVE
         }
 
         /// <summary>
-        /// The disk configuration.
+        /// The root filesystem (rootfs) storage configuration.
+        /// Selects the Proxmox storage pool the container's root volume is created
+        /// on. Backend-agnostic — works with directory, LVM, LVM-thin, ZFS, Ceph
+        /// RBD, NFS, and any other configured Proxmox storage.
         /// </summary>
         [Input("disk")]
         public Input<Inputs.ContainerLegacyDiskArgs>? Disk { get; set; }
@@ -497,7 +569,9 @@ namespace Pulumi.ProxmoxVE
         private InputList<Inputs.ContainerLegacyMountPointArgs>? _mountPoints;
 
         /// <summary>
-        /// A mount point
+        /// An additional volume mount or host bind mount
+        /// (multiple blocks supported). Use this for data volumes, shared
+        /// directories, or attaching pre-existing PVE volumes.
         /// </summary>
         public InputList<Inputs.ContainerLegacyMountPointArgs> MountPoints
         {
@@ -676,7 +750,10 @@ namespace Pulumi.ProxmoxVE
         }
 
         /// <summary>
-        /// The disk configuration.
+        /// The root filesystem (rootfs) storage configuration.
+        /// Selects the Proxmox storage pool the container's root volume is created
+        /// on. Backend-agnostic — works with directory, LVM, LVM-thin, ZFS, Ceph
+        /// RBD, NFS, and any other configured Proxmox storage.
         /// </summary>
         [Input("disk")]
         public Input<Inputs.ContainerLegacyDiskGetArgs>? Disk { get; set; }
@@ -760,7 +837,9 @@ namespace Pulumi.ProxmoxVE
         private InputList<Inputs.ContainerLegacyMountPointGetArgs>? _mountPoints;
 
         /// <summary>
-        /// A mount point
+        /// An additional volume mount or host bind mount
+        /// (multiple blocks supported). Use this for data volumes, shared
+        /// directories, or attaching pre-existing PVE volumes.
         /// </summary>
         public InputList<Inputs.ContainerLegacyMountPointGetArgs> MountPoints
         {

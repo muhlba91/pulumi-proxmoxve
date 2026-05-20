@@ -22,8 +22,8 @@ class CertificateLegacyArgs:
                  certificate: pulumi.Input[_builtins.str],
                  node_name: pulumi.Input[_builtins.str],
                  private_key: pulumi.Input[_builtins.str],
-                 certificate_chain: Optional[pulumi.Input[_builtins.str]] = None,
-                 overwrite: Optional[pulumi.Input[_builtins.bool]] = None):
+                 certificate_chain: pulumi.Input[Optional[_builtins.str]] = None,
+                 overwrite: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a CertificateLegacy resource.
 
@@ -79,46 +79,46 @@ class CertificateLegacyArgs:
 
     @_builtins.property
     @pulumi.getter(name="certificateChain")
-    def certificate_chain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate_chain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The PEM encoded certificate chain.
         """
         return pulumi.get(self, "certificate_chain")
 
     @certificate_chain.setter
-    def certificate_chain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate_chain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate_chain", value)
 
     @_builtins.property
     @pulumi.getter
-    def overwrite(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def overwrite(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to overwrite an existing certificate
         """
         return pulumi.get(self, "overwrite")
 
     @overwrite.setter
-    def overwrite(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def overwrite(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "overwrite", value)
 
 
 @pulumi.input_type
 class _CertificateLegacyState:
     def __init__(__self__, *,
-                 certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_chain: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiration_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 issuer: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 overwrite: Optional[pulumi.Input[_builtins.bool]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_key_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 public_key_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-                 start_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 subject: Optional[pulumi.Input[_builtins.str]] = None,
-                 subject_alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_chain: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiration_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 issuer: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_key_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 public_key_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+                 start_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 subject: pulumi.Input[Optional[_builtins.str]] = None,
+                 subject_alternative_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering CertificateLegacy resources.
 
@@ -168,170 +168,170 @@ class _CertificateLegacyState:
 
     @_builtins.property
     @pulumi.getter
-    def certificate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The PEM encoded certificate.
         """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
-    def certificate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateChain")
-    def certificate_chain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate_chain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The PEM encoded certificate chain.
         """
         return pulumi.get(self, "certificate_chain")
 
     @certificate_chain.setter
-    def certificate_chain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate_chain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate_chain", value)
 
     @_builtins.property
     @pulumi.getter(name="expirationDate")
-    def expiration_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expiration_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The expiration date (RFC 3339).
         """
         return pulumi.get(self, "expiration_date")
 
     @expiration_date.setter
-    def expiration_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expiration_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expiration_date", value)
 
     @_builtins.property
     @pulumi.getter(name="fileName")
-    def file_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The file name.
         """
         return pulumi.get(self, "file_name")
 
     @file_name.setter
-    def file_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def issuer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issuer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The issuer.
         """
         return pulumi.get(self, "issuer")
 
     @issuer.setter
-    def issuer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issuer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issuer", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeName")
-    def node_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A node name.
         """
         return pulumi.get(self, "node_name")
 
     @node_name.setter
-    def node_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def overwrite(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def overwrite(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to overwrite an existing certificate
         """
         return pulumi.get(self, "overwrite")
 
     @overwrite.setter
-    def overwrite(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def overwrite(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "overwrite", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The PEM encoded private key.
         """
         return pulumi.get(self, "private_key")
 
     @private_key.setter
-    def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key", value)
 
     @_builtins.property
     @pulumi.getter(name="publicKeySize")
-    def public_key_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def public_key_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The public key size.
         """
         return pulumi.get(self, "public_key_size")
 
     @public_key_size.setter
-    def public_key_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def public_key_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "public_key_size", value)
 
     @_builtins.property
     @pulumi.getter(name="publicKeyType")
-    def public_key_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_key_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The public key type.
         """
         return pulumi.get(self, "public_key_type")
 
     @public_key_type.setter
-    def public_key_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_key_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_key_type", value)
 
     @_builtins.property
     @pulumi.getter(name="sslFingerprint")
-    def ssl_fingerprint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_fingerprint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SSL fingerprint.
         """
         return pulumi.get(self, "ssl_fingerprint")
 
     @ssl_fingerprint.setter
-    def ssl_fingerprint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_fingerprint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_fingerprint", value)
 
     @_builtins.property
     @pulumi.getter(name="startDate")
-    def start_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def start_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The start date (RFC 3339).
         """
         return pulumi.get(self, "start_date")
 
     @start_date.setter
-    def start_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def start_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "start_date", value)
 
     @_builtins.property
     @pulumi.getter
-    def subject(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subject(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The subject.
         """
         return pulumi.get(self, "subject")
 
     @subject.setter
-    def subject(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subject(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subject", value)
 
     @_builtins.property
     @pulumi.getter(name="subjectAlternativeNames")
-    def subject_alternative_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def subject_alternative_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The subject alternative names.
         """
         return pulumi.get(self, "subject_alternative_names")
 
     @subject_alternative_names.setter
-    def subject_alternative_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def subject_alternative_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "subject_alternative_names", value)
 
 
@@ -341,11 +341,11 @@ class CertificateLegacy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_chain: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 overwrite: Optional[pulumi.Input[_builtins.bool]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_chain: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages the custom SSL/TLS certificate for a specific node.
@@ -442,11 +442,11 @@ class CertificateLegacy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificate: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_chain: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 overwrite: Optional[pulumi.Input[_builtins.bool]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 certificate: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_chain: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -488,20 +488,20 @@ class CertificateLegacy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            certificate: Optional[pulumi.Input[_builtins.str]] = None,
-            certificate_chain: Optional[pulumi.Input[_builtins.str]] = None,
-            expiration_date: Optional[pulumi.Input[_builtins.str]] = None,
-            file_name: Optional[pulumi.Input[_builtins.str]] = None,
-            issuer: Optional[pulumi.Input[_builtins.str]] = None,
-            node_name: Optional[pulumi.Input[_builtins.str]] = None,
-            overwrite: Optional[pulumi.Input[_builtins.bool]] = None,
-            private_key: Optional[pulumi.Input[_builtins.str]] = None,
-            public_key_size: Optional[pulumi.Input[_builtins.int]] = None,
-            public_key_type: Optional[pulumi.Input[_builtins.str]] = None,
-            ssl_fingerprint: Optional[pulumi.Input[_builtins.str]] = None,
-            start_date: Optional[pulumi.Input[_builtins.str]] = None,
-            subject: Optional[pulumi.Input[_builtins.str]] = None,
-            subject_alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'CertificateLegacy':
+            certificate: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate_chain: pulumi.Input[Optional[_builtins.str]] = None,
+            expiration_date: pulumi.Input[Optional[_builtins.str]] = None,
+            file_name: pulumi.Input[Optional[_builtins.str]] = None,
+            issuer: pulumi.Input[Optional[_builtins.str]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
+            private_key: pulumi.Input[Optional[_builtins.str]] = None,
+            public_key_size: pulumi.Input[Optional[_builtins.int]] = None,
+            public_key_type: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_fingerprint: pulumi.Input[Optional[_builtins.str]] = None,
+            start_date: pulumi.Input[Optional[_builtins.str]] = None,
+            subject: pulumi.Input[Optional[_builtins.str]] = None,
+            subject_alternative_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'CertificateLegacy':
         """
         Get an existing CertificateLegacy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

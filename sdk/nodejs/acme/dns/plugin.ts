@@ -131,27 +131,27 @@ export interface PluginState {
     /**
      * API plugin name.
      */
-    api?: pulumi.Input<string>;
+    api?: pulumi.Input<string | undefined>;
     /**
      * DNS plugin data.
      */
-    data?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    data?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * SHA1 digest of the current configuration. Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
      */
-    digest?: pulumi.Input<string>;
+    digest?: pulumi.Input<string | undefined>;
     /**
      * Flag to disable the config.
      */
-    disable?: pulumi.Input<boolean>;
+    disable?: pulumi.Input<boolean | undefined>;
     /**
      * ACME Plugin ID name.
      */
-    plugin?: pulumi.Input<string>;
+    plugin?: pulumi.Input<string | undefined>;
     /**
      * Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records (0 - 172800).
      */
-    validationDelay?: pulumi.Input<number>;
+    validationDelay?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -165,15 +165,15 @@ export interface PluginArgs {
     /**
      * DNS plugin data.
      */
-    data?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    data?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * SHA1 digest of the current configuration. Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
      */
-    digest?: pulumi.Input<string>;
+    digest?: pulumi.Input<string | undefined>;
     /**
      * Flag to disable the config.
      */
-    disable?: pulumi.Input<boolean>;
+    disable?: pulumi.Input<boolean | undefined>;
     /**
      * ACME Plugin ID name.
      */
@@ -181,5 +181,5 @@ export interface PluginArgs {
     /**
      * Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records (0 - 172800).
      */
-    validationDelay?: pulumi.Input<number>;
+    validationDelay?: pulumi.Input<number | undefined>;
 }

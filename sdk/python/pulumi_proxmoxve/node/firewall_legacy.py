@@ -20,17 +20,17 @@ __all__ = ['FirewallLegacyArgs', 'FirewallLegacy']
 class FirewallLegacyArgs:
     def __init__(__self__, *,
                  node_name: pulumi.Input[_builtins.str],
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_level_forward: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_level_in: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_level_out: Optional[pulumi.Input[_builtins.str]] = None,
-                 ndp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nf_conntrack_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 nf_conntrack_tcp_timeout_established: Optional[pulumi.Input[_builtins.int]] = None,
-                 nftables: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nosmurfs: Optional[pulumi.Input[_builtins.bool]] = None,
-                 smurf_log_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 tcp_flags_log_level: Optional[pulumi.Input[_builtins.str]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_level_forward: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_level_in: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_level_out: pulumi.Input[Optional[_builtins.str]] = None,
+                 ndp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nf_conntrack_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 nf_conntrack_tcp_timeout_established: pulumi.Input[Optional[_builtins.int]] = None,
+                 nftables: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nosmurfs: pulumi.Input[Optional[_builtins.bool]] = None,
+                 smurf_log_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 tcp_flags_log_level: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a FirewallLegacy resource.
 
@@ -85,152 +85,152 @@ class FirewallLegacyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable host firewall rules (defaults to `true`).
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="logLevelForward")
-    def log_level_forward(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_level_forward(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Log level for forwarded traffic. Must be one of: `emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` (defaults to `nolog`).
         """
         return pulumi.get(self, "log_level_forward")
 
     @log_level_forward.setter
-    def log_level_forward(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_level_forward(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_level_forward", value)
 
     @_builtins.property
     @pulumi.getter(name="logLevelIn")
-    def log_level_in(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_level_in(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Log level for incoming traffic. Must be one of: `emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` (defaults to `nolog`).
         """
         return pulumi.get(self, "log_level_in")
 
     @log_level_in.setter
-    def log_level_in(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_level_in(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_level_in", value)
 
     @_builtins.property
     @pulumi.getter(name="logLevelOut")
-    def log_level_out(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_level_out(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Log level for outgoing traffic. Must be one of: `emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` (defaults to `nolog`).
         """
         return pulumi.get(self, "log_level_out")
 
     @log_level_out.setter
-    def log_level_out(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_level_out(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_level_out", value)
 
     @_builtins.property
     @pulumi.getter
-    def ndp(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ndp(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable NDP - Neighbor Discovery Protocol (defaults to `true`).
         """
         return pulumi.get(self, "ndp")
 
     @ndp.setter
-    def ndp(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ndp(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ndp", value)
 
     @_builtins.property
     @pulumi.getter(name="nfConntrackMax")
-    def nf_conntrack_max(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def nf_conntrack_max(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of tracked connections (defaults to `262144`). Minimum value is `32768`.
         """
         return pulumi.get(self, "nf_conntrack_max")
 
     @nf_conntrack_max.setter
-    def nf_conntrack_max(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def nf_conntrack_max(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "nf_conntrack_max", value)
 
     @_builtins.property
     @pulumi.getter(name="nfConntrackTcpTimeoutEstablished")
-    def nf_conntrack_tcp_timeout_established(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def nf_conntrack_tcp_timeout_established(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Conntrack established timeout in seconds (defaults to `432000` - 5 days). Minimum value is `7875`.
         """
         return pulumi.get(self, "nf_conntrack_tcp_timeout_established")
 
     @nf_conntrack_tcp_timeout_established.setter
-    def nf_conntrack_tcp_timeout_established(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def nf_conntrack_tcp_timeout_established(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "nf_conntrack_tcp_timeout_established", value)
 
     @_builtins.property
     @pulumi.getter
-    def nftables(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nftables(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable nftables based firewall (tech preview, defaults to `false`).
         """
         return pulumi.get(self, "nftables")
 
     @nftables.setter
-    def nftables(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nftables(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nftables", value)
 
     @_builtins.property
     @pulumi.getter
-    def nosmurfs(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nosmurfs(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable SMURFS filter (defaults to `true`).
         """
         return pulumi.get(self, "nosmurfs")
 
     @nosmurfs.setter
-    def nosmurfs(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nosmurfs(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nosmurfs", value)
 
     @_builtins.property
     @pulumi.getter(name="smurfLogLevel")
-    def smurf_log_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def smurf_log_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Log level for SMURFS filter. Must be one of: `emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` (defaults to `nolog`).
         """
         return pulumi.get(self, "smurf_log_level")
 
     @smurf_log_level.setter
-    def smurf_log_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def smurf_log_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "smurf_log_level", value)
 
     @_builtins.property
     @pulumi.getter(name="tcpFlagsLogLevel")
-    def tcp_flags_log_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tcp_flags_log_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Log level for illegal tcp flags filter. Must be one of: `emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` (defaults to `nolog`).
         """
         return pulumi.get(self, "tcp_flags_log_level")
 
     @tcp_flags_log_level.setter
-    def tcp_flags_log_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tcp_flags_log_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tcp_flags_log_level", value)
 
 
 @pulumi.input_type
 class _FirewallLegacyState:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_level_forward: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_level_in: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_level_out: Optional[pulumi.Input[_builtins.str]] = None,
-                 ndp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nf_conntrack_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 nf_conntrack_tcp_timeout_established: Optional[pulumi.Input[_builtins.int]] = None,
-                 nftables: Optional[pulumi.Input[_builtins.bool]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nosmurfs: Optional[pulumi.Input[_builtins.bool]] = None,
-                 smurf_log_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 tcp_flags_log_level: Optional[pulumi.Input[_builtins.str]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_level_forward: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_level_in: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_level_out: pulumi.Input[Optional[_builtins.str]] = None,
+                 ndp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nf_conntrack_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 nf_conntrack_tcp_timeout_established: pulumi.Input[Optional[_builtins.int]] = None,
+                 nftables: pulumi.Input[Optional[_builtins.bool]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nosmurfs: pulumi.Input[Optional[_builtins.bool]] = None,
+                 smurf_log_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 tcp_flags_log_level: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FirewallLegacy resources.
 
@@ -274,146 +274,146 @@ class _FirewallLegacyState:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable host firewall rules (defaults to `true`).
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="logLevelForward")
-    def log_level_forward(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_level_forward(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Log level for forwarded traffic. Must be one of: `emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` (defaults to `nolog`).
         """
         return pulumi.get(self, "log_level_forward")
 
     @log_level_forward.setter
-    def log_level_forward(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_level_forward(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_level_forward", value)
 
     @_builtins.property
     @pulumi.getter(name="logLevelIn")
-    def log_level_in(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_level_in(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Log level for incoming traffic. Must be one of: `emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` (defaults to `nolog`).
         """
         return pulumi.get(self, "log_level_in")
 
     @log_level_in.setter
-    def log_level_in(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_level_in(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_level_in", value)
 
     @_builtins.property
     @pulumi.getter(name="logLevelOut")
-    def log_level_out(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_level_out(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Log level for outgoing traffic. Must be one of: `emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` (defaults to `nolog`).
         """
         return pulumi.get(self, "log_level_out")
 
     @log_level_out.setter
-    def log_level_out(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_level_out(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_level_out", value)
 
     @_builtins.property
     @pulumi.getter
-    def ndp(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ndp(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable NDP - Neighbor Discovery Protocol (defaults to `true`).
         """
         return pulumi.get(self, "ndp")
 
     @ndp.setter
-    def ndp(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ndp(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ndp", value)
 
     @_builtins.property
     @pulumi.getter(name="nfConntrackMax")
-    def nf_conntrack_max(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def nf_conntrack_max(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of tracked connections (defaults to `262144`). Minimum value is `32768`.
         """
         return pulumi.get(self, "nf_conntrack_max")
 
     @nf_conntrack_max.setter
-    def nf_conntrack_max(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def nf_conntrack_max(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "nf_conntrack_max", value)
 
     @_builtins.property
     @pulumi.getter(name="nfConntrackTcpTimeoutEstablished")
-    def nf_conntrack_tcp_timeout_established(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def nf_conntrack_tcp_timeout_established(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Conntrack established timeout in seconds (defaults to `432000` - 5 days). Minimum value is `7875`.
         """
         return pulumi.get(self, "nf_conntrack_tcp_timeout_established")
 
     @nf_conntrack_tcp_timeout_established.setter
-    def nf_conntrack_tcp_timeout_established(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def nf_conntrack_tcp_timeout_established(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "nf_conntrack_tcp_timeout_established", value)
 
     @_builtins.property
     @pulumi.getter
-    def nftables(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nftables(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable nftables based firewall (tech preview, defaults to `false`).
         """
         return pulumi.get(self, "nftables")
 
     @nftables.setter
-    def nftables(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nftables(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nftables", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeName")
-    def node_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster node name.
         """
         return pulumi.get(self, "node_name")
 
     @node_name.setter
-    def node_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def nosmurfs(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nosmurfs(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable SMURFS filter (defaults to `true`).
         """
         return pulumi.get(self, "nosmurfs")
 
     @nosmurfs.setter
-    def nosmurfs(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nosmurfs(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nosmurfs", value)
 
     @_builtins.property
     @pulumi.getter(name="smurfLogLevel")
-    def smurf_log_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def smurf_log_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Log level for SMURFS filter. Must be one of: `emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` (defaults to `nolog`).
         """
         return pulumi.get(self, "smurf_log_level")
 
     @smurf_log_level.setter
-    def smurf_log_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def smurf_log_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "smurf_log_level", value)
 
     @_builtins.property
     @pulumi.getter(name="tcpFlagsLogLevel")
-    def tcp_flags_log_level(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tcp_flags_log_level(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Log level for illegal tcp flags filter. Must be one of: `emerg`, `alert`, `crit`, `err`, `warning`, `notice`, `info`, `debug`, `nolog` (defaults to `nolog`).
         """
         return pulumi.get(self, "tcp_flags_log_level")
 
     @tcp_flags_log_level.setter
-    def tcp_flags_log_level(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tcp_flags_log_level(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tcp_flags_log_level", value)
 
 
@@ -423,18 +423,18 @@ class FirewallLegacy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_level_forward: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_level_in: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_level_out: Optional[pulumi.Input[_builtins.str]] = None,
-                 ndp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nf_conntrack_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 nf_conntrack_tcp_timeout_established: Optional[pulumi.Input[_builtins.int]] = None,
-                 nftables: Optional[pulumi.Input[_builtins.bool]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nosmurfs: Optional[pulumi.Input[_builtins.bool]] = None,
-                 smurf_log_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 tcp_flags_log_level: Optional[pulumi.Input[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_level_forward: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_level_in: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_level_out: pulumi.Input[Optional[_builtins.str]] = None,
+                 ndp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nf_conntrack_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 nf_conntrack_tcp_timeout_established: pulumi.Input[Optional[_builtins.int]] = None,
+                 nftables: pulumi.Input[Optional[_builtins.bool]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nosmurfs: pulumi.Input[Optional[_builtins.bool]] = None,
+                 smurf_log_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 tcp_flags_log_level: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         > **Deprecated:** Use `node.Firewall` instead. This resource will be removed in v1.0.
@@ -544,18 +544,18 @@ class FirewallLegacy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_level_forward: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_level_in: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_level_out: Optional[pulumi.Input[_builtins.str]] = None,
-                 ndp: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nf_conntrack_max: Optional[pulumi.Input[_builtins.int]] = None,
-                 nf_conntrack_tcp_timeout_established: Optional[pulumi.Input[_builtins.int]] = None,
-                 nftables: Optional[pulumi.Input[_builtins.bool]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nosmurfs: Optional[pulumi.Input[_builtins.bool]] = None,
-                 smurf_log_level: Optional[pulumi.Input[_builtins.str]] = None,
-                 tcp_flags_log_level: Optional[pulumi.Input[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_level_forward: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_level_in: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_level_out: pulumi.Input[Optional[_builtins.str]] = None,
+                 ndp: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nf_conntrack_max: pulumi.Input[Optional[_builtins.int]] = None,
+                 nf_conntrack_tcp_timeout_established: pulumi.Input[Optional[_builtins.int]] = None,
+                 nftables: pulumi.Input[Optional[_builtins.bool]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nosmurfs: pulumi.Input[Optional[_builtins.bool]] = None,
+                 smurf_log_level: pulumi.Input[Optional[_builtins.str]] = None,
+                 tcp_flags_log_level: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -589,18 +589,18 @@ class FirewallLegacy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            log_level_forward: Optional[pulumi.Input[_builtins.str]] = None,
-            log_level_in: Optional[pulumi.Input[_builtins.str]] = None,
-            log_level_out: Optional[pulumi.Input[_builtins.str]] = None,
-            ndp: Optional[pulumi.Input[_builtins.bool]] = None,
-            nf_conntrack_max: Optional[pulumi.Input[_builtins.int]] = None,
-            nf_conntrack_tcp_timeout_established: Optional[pulumi.Input[_builtins.int]] = None,
-            nftables: Optional[pulumi.Input[_builtins.bool]] = None,
-            node_name: Optional[pulumi.Input[_builtins.str]] = None,
-            nosmurfs: Optional[pulumi.Input[_builtins.bool]] = None,
-            smurf_log_level: Optional[pulumi.Input[_builtins.str]] = None,
-            tcp_flags_log_level: Optional[pulumi.Input[_builtins.str]] = None) -> 'FirewallLegacy':
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            log_level_forward: pulumi.Input[Optional[_builtins.str]] = None,
+            log_level_in: pulumi.Input[Optional[_builtins.str]] = None,
+            log_level_out: pulumi.Input[Optional[_builtins.str]] = None,
+            ndp: pulumi.Input[Optional[_builtins.bool]] = None,
+            nf_conntrack_max: pulumi.Input[Optional[_builtins.int]] = None,
+            nf_conntrack_tcp_timeout_established: pulumi.Input[Optional[_builtins.int]] = None,
+            nftables: pulumi.Input[Optional[_builtins.bool]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            nosmurfs: pulumi.Input[Optional[_builtins.bool]] = None,
+            smurf_log_level: pulumi.Input[Optional[_builtins.str]] = None,
+            tcp_flags_log_level: pulumi.Input[Optional[_builtins.str]] = None) -> 'FirewallLegacy':
         """
         Get an existing FirewallLegacy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

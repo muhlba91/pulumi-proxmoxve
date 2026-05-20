@@ -134,8 +134,8 @@ def get_openfabric_legacy(fabric_id: Optional[_builtins.str] = None,
         ip=pulumi.get(__ret__, 'ip'),
         ip6=pulumi.get(__ret__, 'ip6'),
         node_id=pulumi.get(__ret__, 'node_id'))
-def get_openfabric_legacy_output(fabric_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                 node_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_openfabric_legacy_output(fabric_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                 node_id: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOpenfabricLegacyResult]:
     """
     > **Deprecated:** Use `sdn/fabric/node.Openfabric` instead. This data source will be removed in v1.0.

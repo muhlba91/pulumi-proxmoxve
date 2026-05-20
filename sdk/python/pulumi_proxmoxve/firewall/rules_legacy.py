@@ -21,10 +21,10 @@ __all__ = ['RulesLegacyArgs', 'RulesLegacy']
 @pulumi.input_type
 class RulesLegacyArgs:
     def __init__(__self__, *,
-                 container_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['RulesLegacyRuleArgs']]]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 container_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['RulesLegacyRuleArgs']]]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a RulesLegacy resource.
 
@@ -46,31 +46,31 @@ class RulesLegacyArgs:
 
     @_builtins.property
     @pulumi.getter(name="containerId")
-    def container_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def container_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Container ID. Leave empty for node/cluster level rules.
         """
         return pulumi.get(self, "container_id")
 
     @container_id.setter
-    def container_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def container_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "container_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeName")
-    def node_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node name. Leave empty for cluster level rules.
         """
         return pulumi.get(self, "node_name")
 
     @node_name.setter
-    def node_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RulesLegacyRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RulesLegacyRuleArgs']]]]:
         """
         Firewall rule block (multiple blocks supported).
         The provider supports two types of the `rule` blocks:
@@ -79,29 +79,29 @@ class RulesLegacyArgs:
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RulesLegacyRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RulesLegacyRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter(name="vmId")
-    def vm_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vm_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         VM ID. Leave empty for node/cluster level rules.
         """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
-    def vm_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vm_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vm_id", value)
 
 
 @pulumi.input_type
 class _RulesLegacyState:
     def __init__(__self__, *,
-                 container_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['RulesLegacyRuleArgs']]]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 container_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['RulesLegacyRuleArgs']]]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering RulesLegacy resources.
 
@@ -123,31 +123,31 @@ class _RulesLegacyState:
 
     @_builtins.property
     @pulumi.getter(name="containerId")
-    def container_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def container_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Container ID. Leave empty for node/cluster level rules.
         """
         return pulumi.get(self, "container_id")
 
     @container_id.setter
-    def container_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def container_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "container_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeName")
-    def node_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node name. Leave empty for cluster level rules.
         """
         return pulumi.get(self, "node_name")
 
     @node_name.setter
-    def node_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RulesLegacyRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['RulesLegacyRuleArgs']]]]:
         """
         Firewall rule block (multiple blocks supported).
         The provider supports two types of the `rule` blocks:
@@ -156,19 +156,19 @@ class _RulesLegacyState:
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RulesLegacyRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['RulesLegacyRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
     @_builtins.property
     @pulumi.getter(name="vmId")
-    def vm_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vm_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         VM ID. Leave empty for node/cluster level rules.
         """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
-    def vm_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vm_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vm_id", value)
 
 
@@ -178,10 +178,10 @@ class RulesLegacy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 container_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RulesLegacyRuleArgs', 'RulesLegacyRuleArgsDict']]]]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 container_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RulesLegacyRuleArgs', 'RulesLegacyRuleArgsDict']]]]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Manages cluster-level, node-level or VM/container-level firewall rules.
@@ -196,7 +196,7 @@ class RulesLegacy(pulumi.CustomResource):
 
         inbound = proxmoxve.firewall.RulesLegacy("inbound",
             node_name=example["nodeName"],
-            vm_id=example["vmId"],
+            vm_id=int(example["vmId"]),
             rules=[
                 {
                     "type": "in",
@@ -294,7 +294,7 @@ class RulesLegacy(pulumi.CustomResource):
 
         inbound = proxmoxve.firewall.RulesLegacy("inbound",
             node_name=example["nodeName"],
-            vm_id=example["vmId"],
+            vm_id=int(example["vmId"]),
             rules=[
                 {
                     "type": "in",
@@ -379,10 +379,10 @@ class RulesLegacy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 container_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RulesLegacyRuleArgs', 'RulesLegacyRuleArgsDict']]]]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 container_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RulesLegacyRuleArgs', 'RulesLegacyRuleArgsDict']]]]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -406,10 +406,10 @@ class RulesLegacy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            container_id: Optional[pulumi.Input[_builtins.int]] = None,
-            node_name: Optional[pulumi.Input[_builtins.str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['RulesLegacyRuleArgs', 'RulesLegacyRuleArgsDict']]]]] = None,
-            vm_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'RulesLegacy':
+            container_id: pulumi.Input[Optional[_builtins.int]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['RulesLegacyRuleArgs', 'RulesLegacyRuleArgsDict']]]]] = None,
+            vm_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'RulesLegacy':
         """
         Get an existing RulesLegacy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

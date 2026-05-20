@@ -200,7 +200,7 @@ def get_vxlan(id: Optional[_builtins.str] = None,
         pending=pulumi.get(__ret__, 'pending'),
         reverse_dns=pulumi.get(__ret__, 'reverse_dns'),
         state=pulumi.get(__ret__, 'state'))
-def get_vxlan_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_vxlan_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVxlanResult]:
     """
     Retrieves information about a VXLAN Zone in Proxmox SDN. It establishes a tunnel (overlay) on top of an existing network (underlay). This encapsulates layer 2 Ethernet frames within layer 4 UDP datagrams using the default destination port 4789. You have to configure the underlay network yourself to enable UDP connectivity between all peers. Because VXLAN encapsulation uses 50 bytes, the MTU needs to be 50 bytes lower than the outgoing physical interface.

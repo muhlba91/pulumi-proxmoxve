@@ -96,7 +96,7 @@ export interface GetSubnetOutputArgs {
     /**
      * DHCP range (start and end IPs).
      */
-    dhcpRange?: pulumi.Input<inputs.sdn.GetSubnetDhcpRangeArgs>;
+    dhcpRange?: pulumi.Input<inputs.sdn.GetSubnetDhcpRangeArgs | undefined>;
     /**
      * The VNet this subnet belongs to.
      */

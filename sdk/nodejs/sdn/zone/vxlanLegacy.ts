@@ -162,43 +162,43 @@ export interface VxlanLegacyState {
     /**
      * DNS API server address.
      */
-    dns?: pulumi.Input<string>;
+    dns?: pulumi.Input<string | undefined>;
     /**
      * DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
      */
-    dnsZone?: pulumi.Input<string>;
+    dnsZone?: pulumi.Input<string | undefined>;
     /**
      * IP Address Management system.
      */
-    ipam?: pulumi.Input<string>;
+    ipam?: pulumi.Input<string | undefined>;
     /**
      * MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
      */
-    mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number | undefined>;
     /**
      * The Proxmox nodes which the zone and associated VNets should be deployed on
      */
-    nodes?: pulumi.Input<pulumi.Input<string>[]>;
+    nodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of IP addresses of each node in the VXLAN zone. This can be external nodes reachable at this IP address. All nodes in the cluster need to be mentioned here
      */
-    peers?: pulumi.Input<pulumi.Input<string>[]>;
+    peers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Indicates if the zone has pending configuration changes that need to be applied.
      */
-    pending?: pulumi.Input<boolean>;
+    pending?: pulumi.Input<boolean | undefined>;
     /**
      * The unique identifier of the SDN zone.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * Reverse DNS API server address.
      */
-    reverseDns?: pulumi.Input<string>;
+    reverseDns?: pulumi.Input<string | undefined>;
     /**
      * Indicates the current state of the zone.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -208,23 +208,23 @@ export interface VxlanLegacyArgs {
     /**
      * DNS API server address.
      */
-    dns?: pulumi.Input<string>;
+    dns?: pulumi.Input<string | undefined>;
     /**
      * DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
      */
-    dnsZone?: pulumi.Input<string>;
+    dnsZone?: pulumi.Input<string | undefined>;
     /**
      * IP Address Management system.
      */
-    ipam?: pulumi.Input<string>;
+    ipam?: pulumi.Input<string | undefined>;
     /**
      * MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
      */
-    mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number | undefined>;
     /**
      * The Proxmox nodes which the zone and associated VNets should be deployed on
      */
-    nodes?: pulumi.Input<pulumi.Input<string>[]>;
+    nodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of IP addresses of each node in the VXLAN zone. This can be external nodes reachable at this IP address. All nodes in the cluster need to be mentioned here
      */
@@ -236,5 +236,5 @@ export interface VxlanLegacyArgs {
     /**
      * Reverse DNS API server address.
      */
-    reverseDns?: pulumi.Input<string>;
+    reverseDns?: pulumi.Input<string | undefined>;
 }

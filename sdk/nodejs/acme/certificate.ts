@@ -215,47 +215,47 @@ export interface CertificateState {
     /**
      * The ACME account name to use for ordering the certificate.
      */
-    account?: pulumi.Input<string>;
+    account?: pulumi.Input<string | undefined>;
     /**
      * The PEM-encoded certificate data.
      */
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * The list of domains to include in the certificate. At least one domain is required.
      */
-    domains?: pulumi.Input<pulumi.Input<inputs.acme.CertificateDomain>[]>;
+    domains?: pulumi.Input<pulumi.Input<inputs.acme.CertificateDomain>[] | undefined>;
     /**
      * The certificate fingerprint.
      */
-    fingerprint?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string | undefined>;
     /**
      * Force certificate renewal even if the certificate is not due for renewal yet. Setting this to true will trigger a new certificate order on every apply.
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The certificate issuer.
      */
-    issuer?: pulumi.Input<string>;
+    issuer?: pulumi.Input<string | undefined>;
     /**
      * The name of the Proxmox VE node for which to order/manage the ACME certificate.
      */
-    nodeName?: pulumi.Input<string>;
+    nodeName?: pulumi.Input<string | undefined>;
     /**
      * The certificate expiration timestamp.
      */
-    notAfter?: pulumi.Input<string>;
+    notAfter?: pulumi.Input<string | undefined>;
     /**
      * The certificate start timestamp.
      */
-    notBefore?: pulumi.Input<string>;
+    notBefore?: pulumi.Input<string | undefined>;
     /**
      * The certificate subject.
      */
-    subject?: pulumi.Input<string>;
+    subject?: pulumi.Input<string | undefined>;
     /**
      * The certificate subject alternative names (SANs).
      */
-    subjectAlternativeNames?: pulumi.Input<pulumi.Input<string>[]>;
+    subjectAlternativeNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -273,7 +273,7 @@ export interface CertificateArgs {
     /**
      * Force certificate renewal even if the certificate is not due for renewal yet. Setting this to true will trigger a new certificate order on every apply.
      */
-    force?: pulumi.Input<boolean>;
+    force?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the Proxmox VE node for which to order/manage the ACME certificate.
      */

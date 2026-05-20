@@ -22,11 +22,11 @@ __all__ = [
 ]
 
 class JobFleecingArgsDict(TypedDict):
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether fleecing is enabled.
     """
-    storage: NotRequired[pulumi.Input[_builtins.str]]
+    storage: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The storage identifier for fleecing.
     """
@@ -34,8 +34,8 @@ class JobFleecingArgsDict(TypedDict):
 @pulumi.input_type
 class JobFleecingArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 storage: Optional[pulumi.Input[_builtins.str]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 storage: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Whether fleecing is enabled.
         :param pulumi.Input[_builtins.str] storage: The storage identifier for fleecing.
@@ -47,35 +47,35 @@ class JobFleecingArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether fleecing is enabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def storage(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The storage identifier for fleecing.
         """
         return pulumi.get(self, "storage")
 
     @storage.setter
-    def storage(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage", value)
 
 
 class JobPerformanceArgsDict(TypedDict):
-    max_workers: NotRequired[pulumi.Input[_builtins.int]]
+    max_workers: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum number of workers for parallel backup.
     """
-    pbs_entries_max: NotRequired[pulumi.Input[_builtins.int]]
+    pbs_entries_max: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum number of entries for PBS catalog.
     """
@@ -83,8 +83,8 @@ class JobPerformanceArgsDict(TypedDict):
 @pulumi.input_type
 class JobPerformanceArgs:
     def __init__(__self__, *,
-                 max_workers: Optional[pulumi.Input[_builtins.int]] = None,
-                 pbs_entries_max: Optional[pulumi.Input[_builtins.int]] = None):
+                 max_workers: pulumi.Input[Optional[_builtins.int]] = None,
+                 pbs_entries_max: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] max_workers: Maximum number of workers for parallel backup.
         :param pulumi.Input[_builtins.int] pbs_entries_max: Maximum number of entries for PBS catalog.
@@ -96,26 +96,26 @@ class JobPerformanceArgs:
 
     @_builtins.property
     @pulumi.getter(name="maxWorkers")
-    def max_workers(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_workers(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of workers for parallel backup.
         """
         return pulumi.get(self, "max_workers")
 
     @max_workers.setter
-    def max_workers(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_workers(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_workers", value)
 
     @_builtins.property
     @pulumi.getter(name="pbsEntriesMax")
-    def pbs_entries_max(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def pbs_entries_max(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of entries for PBS catalog.
         """
         return pulumi.get(self, "pbs_entries_max")
 
     @pbs_entries_max.setter
-    def pbs_entries_max(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def pbs_entries_max(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "pbs_entries_max", value)
 
 

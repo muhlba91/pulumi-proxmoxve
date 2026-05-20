@@ -166,7 +166,7 @@ export interface GetFilesOutputArgs {
     /**
      * The content type to filter by. When set, only files of this type are returned. Valid values are `backup`, `images`, `import`, `iso`, `rootdir`, `snippets`, `vztmpl`.
      */
-    contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string | undefined>;
     /**
      * The identifier of the datastore.
      */
@@ -174,7 +174,7 @@ export interface GetFilesOutputArgs {
     /**
      * A regular expression to filter files by name. When set, only files whose name matches the expression are returned.
      */
-    fileNameRegex?: pulumi.Input<string>;
+    fileNameRegex?: pulumi.Input<string | undefined>;
     /**
      * The name of the node.
      */

@@ -147,7 +147,7 @@ def get_haresource(resource_id: Optional[_builtins.str] = None,
     # This will fetch the set of all HA resource identifiers...
     all = proxmoxve.get_haresources()
     # ...which we will go through in order to fetch the whole record for each resource.
-    example = {__key: proxmoxve.get_haresource(resource_id=__value) for __key, __value in enumerate(all.resource_ids)}
+    example = {str(__key): proxmoxve.get_haresource(resource_id=__value) for __key, __value in enumerate(all.resource_ids)}
     pulumi.export("proxmoxHaresourcesFull", example)
     ```
 
@@ -168,7 +168,7 @@ def get_haresource(resource_id: Optional[_builtins.str] = None,
         resource_id=pulumi.get(__ret__, 'resource_id'),
         state=pulumi.get(__ret__, 'state'),
         type=pulumi.get(__ret__, 'type'))
-def get_haresource_output(resource_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_haresource_output(resource_id: pulumi.Input[Optional[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHaresourceResult]:
     """
     Retrieves information about a specific High Availability resource.
@@ -182,7 +182,7 @@ def get_haresource_output(resource_id: Optional[pulumi.Input[_builtins.str]] = N
     # This will fetch the set of all HA resource identifiers...
     all = proxmoxve.get_haresources()
     # ...which we will go through in order to fetch the whole record for each resource.
-    example = {__key: proxmoxve.get_haresource(resource_id=__value) for __key, __value in enumerate(all.resource_ids)}
+    example = {str(__key): proxmoxve.get_haresource(resource_id=__value) for __key, __value in enumerate(all.resource_ids)}
     pulumi.export("proxmoxHaresourcesFull", example)
     ```
 

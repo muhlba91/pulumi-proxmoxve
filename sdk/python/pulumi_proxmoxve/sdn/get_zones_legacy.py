@@ -114,7 +114,7 @@ def get_zones_legacy(type: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         type=pulumi.get(__ret__, 'type'),
         zones=pulumi.get(__ret__, 'zones'))
-def get_zones_legacy_output(type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_zones_legacy_output(type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZonesLegacyResult]:
     """
     > **Deprecated:** Use `sdn_get_zones` instead. This data source will be removed in v1.0.

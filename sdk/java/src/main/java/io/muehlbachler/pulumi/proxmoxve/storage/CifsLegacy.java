@@ -35,8 +35,8 @@ import javax.annotation.Nullable;
  * import io.muehlbachler.pulumi.proxmoxve.storage.CifsLegacy;
  * import io.muehlbachler.pulumi.proxmoxve.storage.CifsLegacyArgs;
  * import com.pulumi.proxmoxve.storage.inputs.CifsLegacyBackupsArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -61,8 +61,8 @@ import javax.annotation.Nullable;
  *             .preallocation("metadata")
  *             .snapshotAsVolumeChain(true)
  *             .backups(CifsLegacyBackupsArgs.builder()
- *                 .maxProtectedBackups(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(5) (example.pp:14,27-28)))
- *                 .keepDaily(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(7) (example.pp:15,27-28)))
+ *                 .maxProtectedBackups(5)
+ *                 .keepDaily(7)
  *                 .build())
  *             .build());
  * 

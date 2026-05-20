@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  *
  * const inbound = new proxmoxve.firewall.RulesLegacy("inbound", {
  *     nodeName: example.nodeName,
- *     vmId: example.vmId,
+ *     vmId: Number(example.vmId),
  *     rules: [
  *         {
  *             type: "in",
@@ -173,21 +173,21 @@ export interface RulesLegacyState {
     /**
      * Container ID. Leave empty for node/cluster level rules.
      */
-    containerId?: pulumi.Input<number>;
+    containerId?: pulumi.Input<number | undefined>;
     /**
      * Node name. Leave empty for cluster level rules.
      */
-    nodeName?: pulumi.Input<string>;
+    nodeName?: pulumi.Input<string | undefined>;
     /**
      * Firewall rule block (multiple blocks supported).
      * The provider supports two types of the `rule` blocks:
      * - A rule definition block, which includes the following arguments:
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.firewall.RulesLegacyRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.firewall.RulesLegacyRule>[] | undefined>;
     /**
      * VM ID. Leave empty for node/cluster level rules.
      */
-    vmId?: pulumi.Input<number>;
+    vmId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -197,19 +197,19 @@ export interface RulesLegacyArgs {
     /**
      * Container ID. Leave empty for node/cluster level rules.
      */
-    containerId?: pulumi.Input<number>;
+    containerId?: pulumi.Input<number | undefined>;
     /**
      * Node name. Leave empty for cluster level rules.
      */
-    nodeName?: pulumi.Input<string>;
+    nodeName?: pulumi.Input<string | undefined>;
     /**
      * Firewall rule block (multiple blocks supported).
      * The provider supports two types of the `rule` blocks:
      * - A rule definition block, which includes the following arguments:
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.firewall.RulesLegacyRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.firewall.RulesLegacyRule>[] | undefined>;
     /**
      * VM ID. Leave empty for node/cluster level rules.
      */
-    vmId?: pulumi.Input<number>;
+    vmId?: pulumi.Input<number | undefined>;
 }

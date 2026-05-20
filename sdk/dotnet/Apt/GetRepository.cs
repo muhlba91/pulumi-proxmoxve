@@ -27,7 +27,7 @@ namespace Pulumi.ProxmoxVE.Apt
         ///     var example = ProxmoxVE.Apt.GetRepository.Invoke(new()
         ///     {
         ///         FilePath = "/etc/apt/sources.list",
-        ///         Index = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(0) (example.pp:2,14-15)),
+        ///         Index = 0,
         ///         Node = "pve",
         ///     });
         /// 
@@ -57,7 +57,7 @@ namespace Pulumi.ProxmoxVE.Apt
         ///     var example = ProxmoxVE.Apt.GetRepository.Invoke(new()
         ///     {
         ///         FilePath = "/etc/apt/sources.list",
-        ///         Index = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(0) (example.pp:2,14-15)),
+        ///         Index = 0,
         ///         Node = "pve",
         ///     });
         /// 
@@ -87,7 +87,7 @@ namespace Pulumi.ProxmoxVE.Apt
         ///     var example = ProxmoxVE.Apt.GetRepository.Invoke(new()
         ///     {
         ///         FilePath = "/etc/apt/sources.list",
-        ///         Index = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(0) (example.pp:2,14-15)),
+        ///         Index = 0,
         ///         Node = "pve",
         ///     });
         /// 

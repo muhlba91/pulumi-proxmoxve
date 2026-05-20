@@ -127,7 +127,7 @@ def get_pci(name: Optional[_builtins.str] = None,
         maps=pulumi.get(__ret__, 'maps'),
         mediated_devices=pulumi.get(__ret__, 'mediated_devices'),
         name=pulumi.get(__ret__, 'name'))
-def get_pci_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_pci_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPciResult]:
     """
     Retrieves a PCI hardware mapping from a Proxmox VE cluster.

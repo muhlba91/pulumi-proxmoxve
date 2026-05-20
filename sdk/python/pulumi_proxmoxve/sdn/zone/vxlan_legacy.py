@@ -21,12 +21,12 @@ class VxlanLegacyArgs:
     def __init__(__self__, *,
                  peers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  resource_id: pulumi.Input[_builtins.str],
-                 dns: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 reverse_dns: Optional[pulumi.Input[_builtins.str]] = None):
+                 dns: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 reverse_dns: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a VxlanLegacy resource.
 
@@ -80,90 +80,90 @@ class VxlanLegacyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def dns(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DNS API server address.
         """
         return pulumi.get(self, "dns")
 
     @dns.setter
-    def dns(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsZone")
-    def dns_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
         """
         return pulumi.get(self, "dns_zone")
 
     @dns_zone.setter
-    def dns_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns_zone", value)
 
     @_builtins.property
     @pulumi.getter
-    def ipam(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipam(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP Address Management system.
         """
         return pulumi.get(self, "ipam")
 
     @ipam.setter
-    def ipam(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipam(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipam", value)
 
     @_builtins.property
     @pulumi.getter
-    def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mtu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
         """
         return pulumi.get(self, "mtu")
 
     @mtu.setter
-    def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mtu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mtu", value)
 
     @_builtins.property
     @pulumi.getter
-    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The Proxmox nodes which the zone and associated VNets should be deployed on
         """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
-    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter(name="reverseDns")
-    def reverse_dns(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reverse_dns(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reverse DNS API server address.
         """
         return pulumi.get(self, "reverse_dns")
 
     @reverse_dns.setter
-    def reverse_dns(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reverse_dns(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reverse_dns", value)
 
 
 @pulumi.input_type
 class _VxlanLegacyState:
     def __init__(__self__, *,
-                 dns: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 peers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 pending: Optional[pulumi.Input[_builtins.bool]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 reverse_dns: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 dns: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 peers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 pending: pulumi.Input[Optional[_builtins.bool]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 reverse_dns: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VxlanLegacy resources.
 
@@ -201,122 +201,122 @@ class _VxlanLegacyState:
 
     @_builtins.property
     @pulumi.getter
-    def dns(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DNS API server address.
         """
         return pulumi.get(self, "dns")
 
     @dns.setter
-    def dns(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsZone")
-    def dns_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
         """
         return pulumi.get(self, "dns_zone")
 
     @dns_zone.setter
-    def dns_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns_zone", value)
 
     @_builtins.property
     @pulumi.getter
-    def ipam(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipam(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP Address Management system.
         """
         return pulumi.get(self, "ipam")
 
     @ipam.setter
-    def ipam(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipam(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipam", value)
 
     @_builtins.property
     @pulumi.getter
-    def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mtu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
         """
         return pulumi.get(self, "mtu")
 
     @mtu.setter
-    def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mtu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mtu", value)
 
     @_builtins.property
     @pulumi.getter
-    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The Proxmox nodes which the zone and associated VNets should be deployed on
         """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
-    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter
-    def peers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def peers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of IP addresses of each node in the VXLAN zone. This can be external nodes reachable at this IP address. All nodes in the cluster need to be mentioned here
         """
         return pulumi.get(self, "peers")
 
     @peers.setter
-    def peers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def peers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "peers", value)
 
     @_builtins.property
     @pulumi.getter
-    def pending(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def pending(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the zone has pending configuration changes that need to be applied.
         """
         return pulumi.get(self, "pending")
 
     @pending.setter
-    def pending(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def pending(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "pending", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the SDN zone.
         """
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter(name="reverseDns")
-    def reverse_dns(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reverse_dns(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reverse DNS API server address.
         """
         return pulumi.get(self, "reverse_dns")
 
     @reverse_dns.setter
-    def reverse_dns(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reverse_dns(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reverse_dns", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates the current state of the zone.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
@@ -326,14 +326,14 @@ class VxlanLegacy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dns: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 peers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 reverse_dns: Optional[pulumi.Input[_builtins.str]] = None,
+                 dns: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 peers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 reverse_dns: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         > **Deprecated:** Use `sdn/zone.Vxlan` instead. This resource will be removed in v1.0.
@@ -437,14 +437,14 @@ class VxlanLegacy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dns: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipam: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 peers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 reverse_dns: Optional[pulumi.Input[_builtins.str]] = None,
+                 dns: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipam: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 peers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 reverse_dns: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -478,16 +478,16 @@ class VxlanLegacy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            dns: Optional[pulumi.Input[_builtins.str]] = None,
-            dns_zone: Optional[pulumi.Input[_builtins.str]] = None,
-            ipam: Optional[pulumi.Input[_builtins.str]] = None,
-            mtu: Optional[pulumi.Input[_builtins.int]] = None,
-            nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            peers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            pending: Optional[pulumi.Input[_builtins.bool]] = None,
-            resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-            reverse_dns: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None) -> 'VxlanLegacy':
+            dns: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            ipam: pulumi.Input[Optional[_builtins.str]] = None,
+            mtu: pulumi.Input[Optional[_builtins.int]] = None,
+            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            peers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            pending: pulumi.Input[Optional[_builtins.bool]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            reverse_dns: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> 'VxlanLegacy':
         """
         Get an existing VxlanLegacy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

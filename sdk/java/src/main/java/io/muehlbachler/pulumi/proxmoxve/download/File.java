@@ -36,8 +36,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import io.muehlbachler.pulumi.proxmoxve.download.File;
  * import io.muehlbachler.pulumi.proxmoxve.download.FileArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -107,7 +107,7 @@ import javax.annotation.Nullable;
  *             .url("https://cloud-images.ubuntu.com/releases/22.04/release-20231211/ubuntu-22.04-server-cloudimg-amd64-root.tar.xz")
  *             .checksum("c9997dcfea5d826fd04871f960c513665f2e87dd7450bba99f68a97e60e4586e")
  *             .checksumAlgorithm("sha256")
- *             .uploadTimeout(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(4444) (example.pp:65,23-27)))
+ *             .uploadTimeout(4444)
  *             .build());
  * 
  *         var latestUbuntu22JammyLxcImg = new File("latestUbuntu22JammyLxcImg", FileArgs.builder()

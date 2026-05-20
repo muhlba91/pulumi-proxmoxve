@@ -128,8 +128,8 @@ public final class SdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
      * import com.pulumi.proxmoxve.sdn.inputs.GetVnetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -178,8 +178,8 @@ public final class SdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
      * import com.pulumi.proxmoxve.sdn.inputs.GetVnetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -228,8 +228,8 @@ public final class SdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
      * import com.pulumi.proxmoxve.sdn.inputs.GetVnetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -278,8 +278,8 @@ public final class SdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
      * import com.pulumi.proxmoxve.sdn.inputs.GetVnetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -328,8 +328,8 @@ public final class SdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
      * import com.pulumi.proxmoxve.sdn.inputs.GetVnetArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -380,8 +380,8 @@ public final class SdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
      * import com.pulumi.proxmoxve.sdn.inputs.GetVnetLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -432,8 +432,8 @@ public final class SdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
      * import com.pulumi.proxmoxve.sdn.inputs.GetVnetLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -484,8 +484,8 @@ public final class SdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
      * import com.pulumi.proxmoxve.sdn.inputs.GetVnetLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -536,8 +536,8 @@ public final class SdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
      * import com.pulumi.proxmoxve.sdn.inputs.GetVnetLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -588,8 +588,8 @@ public final class SdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
      * import com.pulumi.proxmoxve.sdn.inputs.GetVnetLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -637,8 +637,8 @@ public final class SdnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -678,8 +678,8 @@ public final class SdnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -719,8 +719,8 @@ public final class SdnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -760,8 +760,8 @@ public final class SdnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -801,8 +801,8 @@ public final class SdnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -842,8 +842,8 @@ public final class SdnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -883,8 +883,8 @@ public final class SdnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -926,8 +926,8 @@ public final class SdnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -969,8 +969,8 @@ public final class SdnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1012,8 +1012,8 @@ public final class SdnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1055,8 +1055,8 @@ public final class SdnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1098,8 +1098,8 @@ public final class SdnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1141,8 +1141,8 @@ public final class SdnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1184,8 +1184,8 @@ public final class SdnFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1226,8 +1226,8 @@ public final class SdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
      * import com.pulumi.proxmoxve.sdn.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1283,8 +1283,8 @@ public final class SdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
      * import com.pulumi.proxmoxve.sdn.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1340,8 +1340,8 @@ public final class SdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
      * import com.pulumi.proxmoxve.sdn.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1397,8 +1397,8 @@ public final class SdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
      * import com.pulumi.proxmoxve.sdn.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1454,8 +1454,8 @@ public final class SdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
      * import com.pulumi.proxmoxve.sdn.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1511,8 +1511,8 @@ public final class SdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
      * import com.pulumi.proxmoxve.sdn.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1568,8 +1568,8 @@ public final class SdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
      * import com.pulumi.proxmoxve.sdn.inputs.GetZonesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1627,8 +1627,8 @@ public final class SdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
      * import com.pulumi.proxmoxve.sdn.inputs.GetZonesLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1686,8 +1686,8 @@ public final class SdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
      * import com.pulumi.proxmoxve.sdn.inputs.GetZonesLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1745,8 +1745,8 @@ public final class SdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
      * import com.pulumi.proxmoxve.sdn.inputs.GetZonesLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1804,8 +1804,8 @@ public final class SdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
      * import com.pulumi.proxmoxve.sdn.inputs.GetZonesLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1863,8 +1863,8 @@ public final class SdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
      * import com.pulumi.proxmoxve.sdn.inputs.GetZonesLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1922,8 +1922,8 @@ public final class SdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
      * import com.pulumi.proxmoxve.sdn.inputs.GetZonesLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1981,8 +1981,8 @@ public final class SdnFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.sdn.SdnFunctions;
      * import com.pulumi.proxmoxve.sdn.inputs.GetZonesLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

@@ -26,28 +26,29 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-// func main() {
-// pulumi.Run(func(ctx *pulumi.Context) error {
-// // This will fetch the set of all HA resource identifiers.
-// exampleAll, err := proxmoxve.GetHaresourcesLegacy(ctx, &proxmoxve.GetHaresourcesLegacyArgs{
-// }, nil);
-// if err != nil {
-// return err
-// }
-// // This will fetch the set of HA resource identifiers that correspond to virtual machines.
-// exampleVm, err := proxmoxve.GetHaresourcesLegacy(ctx, &proxmoxve.GetHaresourcesLegacyArgs{
-// Type: pulumi.StringRef("vm"),
-// }, nil);
-// if err != nil {
-// return err
-// }
-// ctx.Export("dataProxmoxVirtualEnvironmentHaresources", interface{}Map{
-// "all": exampleAll.ResourceIds,
-// "vms": exampleVm.ResourceIds,
-// })
-// return nil
-// })
-// }
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// This will fetch the set of all HA resource identifiers.
+//			exampleAll, err := proxmoxve.GetHaresourcesLegacy(ctx, &proxmoxve.GetHaresourcesLegacyArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			// This will fetch the set of HA resource identifiers that correspond to virtual machines.
+//			exampleVm, err := proxmoxve.GetHaresourcesLegacy(ctx, &proxmoxve.GetHaresourcesLegacyArgs{
+//				Type: pulumi.StringRef("vm"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("dataProxmoxVirtualEnvironmentHaresources", pulumi.StringArrayMap{
+//				"all": exampleAll.ResourceIds,
+//				"vms": exampleVm.ResourceIds,
+//			})
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetHaresourcesLegacy(ctx *pulumi.Context, args *GetHaresourcesLegacyArgs, opts ...pulumi.InvokeOption) (*GetHaresourcesLegacyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

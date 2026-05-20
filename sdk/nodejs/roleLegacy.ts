@@ -102,11 +102,11 @@ export interface RoleLegacyState {
     /**
      * The role privileges.
      */
-    privileges?: pulumi.Input<pulumi.Input<string>[]>;
+    privileges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The role identifier.
      */
-    roleId?: pulumi.Input<string>;
+    roleId?: pulumi.Input<string | undefined>;
 }
 
 /**

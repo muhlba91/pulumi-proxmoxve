@@ -22,8 +22,8 @@ class OpenfabricLegacyArgs:
                  fabric_id: pulumi.Input[_builtins.str],
                  interface_names: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  node_id: pulumi.Input[_builtins.str],
-                 ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip6: Optional[pulumi.Input[_builtins.str]] = None):
+                 ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip6: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a OpenfabricLegacy resource.
 
@@ -79,37 +79,37 @@ class OpenfabricLegacyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPv4 address for the fabric node.
         """
         return pulumi.get(self, "ip")
 
     @ip.setter
-    def ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def ip6(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip6(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPv6 address for the fabric node.
         """
         return pulumi.get(self, "ip6")
 
     @ip6.setter
-    def ip6(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip6(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip6", value)
 
 
 @pulumi.input_type
 class _OpenfabricLegacyState:
     def __init__(__self__, *,
-                 fabric_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 interface_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip6: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 fabric_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 interface_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip6: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OpenfabricLegacy resources.
 
@@ -132,62 +132,62 @@ class _OpenfabricLegacyState:
 
     @_builtins.property
     @pulumi.getter(name="fabricId")
-    def fabric_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def fabric_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the SDN fabric.
         """
         return pulumi.get(self, "fabric_id")
 
     @fabric_id.setter
-    def fabric_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def fabric_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "fabric_id", value)
 
     @_builtins.property
     @pulumi.getter(name="interfaceNames")
-    def interface_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def interface_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Set of interfaces associated with the fabric node.
         """
         return pulumi.get(self, "interface_names")
 
     @interface_names.setter
-    def interface_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def interface_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "interface_names", value)
 
     @_builtins.property
     @pulumi.getter
-    def ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPv4 address for the fabric node.
         """
         return pulumi.get(self, "ip")
 
     @ip.setter
-    def ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def ip6(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip6(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPv6 address for the fabric node.
         """
         return pulumi.get(self, "ip6")
 
     @ip6.setter
-    def ip6(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip6(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip6", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeId")
-    def node_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the SDN fabric node.
         """
         return pulumi.get(self, "node_id")
 
     @node_id.setter
-    def node_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_id", value)
 
 
@@ -197,11 +197,11 @@ class OpenfabricLegacy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 fabric_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 interface_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip6: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 fabric_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 interface_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip6: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         > **Deprecated:** Use `sdn/fabric/node.Openfabric` instead. This resource will be removed in v1.0.
@@ -244,11 +244,11 @@ class OpenfabricLegacy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 fabric_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 interface_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip6: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 fabric_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 interface_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip6: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -279,11 +279,11 @@ class OpenfabricLegacy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            fabric_id: Optional[pulumi.Input[_builtins.str]] = None,
-            interface_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            ip: Optional[pulumi.Input[_builtins.str]] = None,
-            ip6: Optional[pulumi.Input[_builtins.str]] = None,
-            node_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'OpenfabricLegacy':
+            fabric_id: pulumi.Input[Optional[_builtins.str]] = None,
+            interface_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ip: pulumi.Input[Optional[_builtins.str]] = None,
+            ip6: pulumi.Input[Optional[_builtins.str]] = None,
+            node_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'OpenfabricLegacy':
         """
         Get an existing OpenfabricLegacy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

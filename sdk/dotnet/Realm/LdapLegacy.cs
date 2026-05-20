@@ -36,7 +36,7 @@ namespace Pulumi.ProxmoxVE.Realm
     ///     {
     ///         Realm = "example-ldap",
     ///         Server1 = "ldap.example.com",
-    ///         Port = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(389) (example.pp:3,13-16)),
+    ///         Port = 389,
     ///         BaseDn = "ou=people,dc=example,dc=com",
     ///         UserAttr = "uid",
     ///         BindDn = "cn=admin,dc=example,dc=com",
@@ -107,7 +107,7 @@ namespace Pulumi.ProxmoxVE.Realm
     ///         Realm = "secure-ldap",
     ///         Server1 = "ldap1.example.com",
     ///         Server2 = "ldap2.example.com",
-    ///         Port = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(636) (example.pp:4,18-21)),
+    ///         Port = 636,
     ///         BaseDn = "ou=users,dc=example,dc=com",
     ///         BindDn = "cn=readonly,dc=example,dc=com",
     ///         BindPassword = ldapPassword,

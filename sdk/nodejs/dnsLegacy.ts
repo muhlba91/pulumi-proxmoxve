@@ -119,15 +119,15 @@ export interface DnsLegacyState {
     /**
      * The DNS search domain.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * A node name.
      */
-    nodeName?: pulumi.Input<string>;
+    nodeName?: pulumi.Input<string | undefined>;
     /**
      * The DNS servers.
      */
-    servers?: pulumi.Input<pulumi.Input<string>[]>;
+    servers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -145,5 +145,5 @@ export interface DnsLegacyArgs {
     /**
      * The DNS servers.
      */
-    servers?: pulumi.Input<pulumi.Input<string>[]>;
+    servers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

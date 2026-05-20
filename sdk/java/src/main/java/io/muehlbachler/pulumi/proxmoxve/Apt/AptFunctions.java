@@ -33,8 +33,8 @@ public final class AptFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.apt.AptFunctions;
      * import com.pulumi.proxmoxve.apt.inputs.GetRepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -48,7 +48,7 @@ public final class AptFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AptFunctions.getRepository(GetRepositoryArgs.builder()
      *             .filePath("/etc/apt/sources.list")
-     *             .index(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(0) (example.pp:2,14-15)))
+     *             .index(0)
      *             .node("pve")
      *             .build());
      * 
@@ -78,8 +78,8 @@ public final class AptFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.apt.AptFunctions;
      * import com.pulumi.proxmoxve.apt.inputs.GetRepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -93,7 +93,7 @@ public final class AptFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AptFunctions.getRepository(GetRepositoryArgs.builder()
      *             .filePath("/etc/apt/sources.list")
-     *             .index(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(0) (example.pp:2,14-15)))
+     *             .index(0)
      *             .node("pve")
      *             .build());
      * 
@@ -123,8 +123,8 @@ public final class AptFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.apt.AptFunctions;
      * import com.pulumi.proxmoxve.apt.inputs.GetRepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -138,7 +138,7 @@ public final class AptFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AptFunctions.getRepository(GetRepositoryArgs.builder()
      *             .filePath("/etc/apt/sources.list")
-     *             .index(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(0) (example.pp:2,14-15)))
+     *             .index(0)
      *             .node("pve")
      *             .build());
      * 
@@ -168,8 +168,8 @@ public final class AptFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.apt.AptFunctions;
      * import com.pulumi.proxmoxve.apt.inputs.GetRepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -183,7 +183,7 @@ public final class AptFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AptFunctions.getRepository(GetRepositoryArgs.builder()
      *             .filePath("/etc/apt/sources.list")
-     *             .index(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(0) (example.pp:2,14-15)))
+     *             .index(0)
      *             .node("pve")
      *             .build());
      * 
@@ -213,8 +213,8 @@ public final class AptFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.apt.AptFunctions;
      * import com.pulumi.proxmoxve.apt.inputs.GetRepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -228,7 +228,7 @@ public final class AptFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AptFunctions.getRepository(GetRepositoryArgs.builder()
      *             .filePath("/etc/apt/sources.list")
-     *             .index(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(0) (example.pp:2,14-15)))
+     *             .index(0)
      *             .node("pve")
      *             .build());
      * 
@@ -260,8 +260,8 @@ public final class AptFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.apt.AptFunctions;
      * import com.pulumi.proxmoxve.apt.inputs.GetRepositoryLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -275,7 +275,7 @@ public final class AptFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AptFunctions.getRepositoryLegacy(GetRepositoryLegacyArgs.builder()
      *             .filePath("/etc/apt/sources.list")
-     *             .index(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(0) (example.pp:2,14-15)))
+     *             .index(0)
      *             .node("pve")
      *             .build());
      * 
@@ -307,8 +307,8 @@ public final class AptFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.apt.AptFunctions;
      * import com.pulumi.proxmoxve.apt.inputs.GetRepositoryLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -322,7 +322,7 @@ public final class AptFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AptFunctions.getRepositoryLegacy(GetRepositoryLegacyArgs.builder()
      *             .filePath("/etc/apt/sources.list")
-     *             .index(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(0) (example.pp:2,14-15)))
+     *             .index(0)
      *             .node("pve")
      *             .build());
      * 
@@ -354,8 +354,8 @@ public final class AptFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.apt.AptFunctions;
      * import com.pulumi.proxmoxve.apt.inputs.GetRepositoryLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -369,7 +369,7 @@ public final class AptFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AptFunctions.getRepositoryLegacy(GetRepositoryLegacyArgs.builder()
      *             .filePath("/etc/apt/sources.list")
-     *             .index(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(0) (example.pp:2,14-15)))
+     *             .index(0)
      *             .node("pve")
      *             .build());
      * 
@@ -401,8 +401,8 @@ public final class AptFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.apt.AptFunctions;
      * import com.pulumi.proxmoxve.apt.inputs.GetRepositoryLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -416,7 +416,7 @@ public final class AptFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AptFunctions.getRepositoryLegacy(GetRepositoryLegacyArgs.builder()
      *             .filePath("/etc/apt/sources.list")
-     *             .index(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(0) (example.pp:2,14-15)))
+     *             .index(0)
      *             .node("pve")
      *             .build());
      * 
@@ -448,8 +448,8 @@ public final class AptFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.apt.AptFunctions;
      * import com.pulumi.proxmoxve.apt.inputs.GetRepositoryLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -463,7 +463,7 @@ public final class AptFunctions {
      *     public static void stack(Context ctx) {
      *         final var example = AptFunctions.getRepositoryLegacy(GetRepositoryLegacyArgs.builder()
      *             .filePath("/etc/apt/sources.list")
-     *             .index(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(0) (example.pp:2,14-15)))
+     *             .index(0)
      *             .node("pve")
      *             .build());
      * 

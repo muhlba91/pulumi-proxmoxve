@@ -114,15 +114,15 @@ export interface DirLegacyState {
     /**
      * The comment of this directory mapping.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The actual map of devices for the hardware mapping.
      */
-    maps?: pulumi.Input<pulumi.Input<inputs.hardware.mapping.DirLegacyMap>[]>;
+    maps?: pulumi.Input<pulumi.Input<inputs.hardware.mapping.DirLegacyMap>[] | undefined>;
     /**
      * The name of this directory mapping.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -132,7 +132,7 @@ export interface DirLegacyArgs {
     /**
      * The comment of this directory mapping.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The actual map of devices for the hardware mapping.
      */
@@ -140,5 +140,5 @@ export interface DirLegacyArgs {
     /**
      * The name of this directory mapping.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

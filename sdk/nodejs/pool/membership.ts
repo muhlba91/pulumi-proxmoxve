@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * const testPool = new proxmoxve.PoolLegacy("test_pool", {poolId: "test-pool"});
  * const vmMembership = new proxmoxve.pool.Membership("vm_membership", {
  *     poolId: testPool.id,
- *     vmId: testVm1.resourceId,
+ *     vmId: testVm1.resourceId.apply(x =>Number(x)),
  * });
  * const storageMembership = new proxmoxve.pool.Membership("storage_membership", {
  *     poolId: testPool.id,
@@ -124,19 +124,19 @@ export interface MembershipState {
     /**
      * Resource pool id
      */
-    poolId?: pulumi.Input<string>;
+    poolId?: pulumi.Input<string | undefined>;
     /**
      * Storage id
      */
-    storageId?: pulumi.Input<string>;
+    storageId?: pulumi.Input<string | undefined>;
     /**
      * Resource pool membership type (can be `vm` for VMs and CTs or `storage` for storages)
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * VM or CT id
      */
-    vmId?: pulumi.Input<number>;
+    vmId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -150,9 +150,9 @@ export interface MembershipArgs {
     /**
      * Storage id
      */
-    storageId?: pulumi.Input<string>;
+    storageId?: pulumi.Input<string | undefined>;
     /**
      * VM or CT id
      */
-    vmId?: pulumi.Input<number>;
+    vmId?: pulumi.Input<number | undefined>;
 }

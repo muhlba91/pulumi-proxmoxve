@@ -23,12 +23,13 @@ class FileLegacyArgs:
     def __init__(__self__, *,
                  datastore_id: pulumi.Input[_builtins.str],
                  node_name: pulumi.Input[_builtins.str],
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 overwrite: Optional[pulumi.Input[_builtins.bool]] = None,
-                 source_file: Optional[pulumi.Input['FileLegacySourceFileArgs']] = None,
-                 source_raw: Optional[pulumi.Input['FileLegacySourceRawArgs']] = None,
-                 timeout_upload: Optional[pulumi.Input[_builtins.int]] = None):
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
+                 source_file: pulumi.Input[Optional['FileLegacySourceFileArgs']] = None,
+                 source_raw: pulumi.Input[Optional['FileLegacySourceRawArgs']] = None,
+                 timeout_upload: pulumi.Input[Optional[_builtins.int]] = None,
+                 upload_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a FileLegacy resource.
 
@@ -45,6 +46,14 @@ class FileLegacyArgs:
         :param pulumi.Input['FileLegacySourceRawArgs'] source_raw: The raw source (conflicts with `source_file`).
         :param pulumi.Input[_builtins.int] timeout_upload: Timeout for uploading ISO/VSTMPL files in
                seconds (defaults to 1800).
+        :param pulumi.Input[_builtins.str] upload_mode: The SSH upload mode for non-API content types
+               (snippets, backups, etc.). Set to `stream` to pipe the file through an SSH
+               shell session (uses `sudo` where required), or `sftp` to upload via the SFTP
+               subsystem. Use `sftp` when the target host's SSH server only allows the
+               SFTP subsystem; note that the SFTP path does not invoke `sudo`, so the SSH
+               user must have direct write permission to the target directory. Has no
+               effect for `iso`, `vztmpl`, and `import` content types, which always use
+               the HTTP API. Defaults to `stream`.
         """
         pulumi.set(__self__, "datastore_id", datastore_id)
         pulumi.set(__self__, "node_name", node_name)
@@ -60,6 +69,8 @@ class FileLegacyArgs:
             pulumi.set(__self__, "source_raw", source_raw)
         if timeout_upload is not None:
             pulumi.set(__self__, "timeout_upload", timeout_upload)
+        if upload_mode is not None:
+            pulumi.set(__self__, "upload_mode", upload_mode)
 
     @_builtins.property
     @pulumi.getter(name="datastoreId")
@@ -87,7 +98,7 @@ class FileLegacyArgs:
 
     @_builtins.property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content type. If not specified, the content
         type will be inferred from the file extension. Valid values are:
@@ -95,24 +106,24 @@ class FileLegacyArgs:
         return pulumi.get(self, "content_type")
 
     @content_type.setter
-    def content_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_type", value)
 
     @_builtins.property
     @pulumi.getter(name="fileMode")
-    def file_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
         """
         return pulumi.get(self, "file_mode")
 
     @file_mode.setter
-    def file_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def overwrite(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def overwrite(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to overwrite an existing file (defaults to
         `true`).
@@ -120,12 +131,12 @@ class FileLegacyArgs:
         return pulumi.get(self, "overwrite")
 
     @overwrite.setter
-    def overwrite(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def overwrite(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "overwrite", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceFile")
-    def source_file(self) -> Optional[pulumi.Input['FileLegacySourceFileArgs']]:
+    def source_file(self) -> pulumi.Input[Optional['FileLegacySourceFileArgs']]:
         """
         The source file (conflicts with `source_raw`),
         could be a local file or a URL. If the source file is a URL, the file will
@@ -134,24 +145,24 @@ class FileLegacyArgs:
         return pulumi.get(self, "source_file")
 
     @source_file.setter
-    def source_file(self, value: Optional[pulumi.Input['FileLegacySourceFileArgs']]):
+    def source_file(self, value: pulumi.Input[Optional['FileLegacySourceFileArgs']]):
         pulumi.set(self, "source_file", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceRaw")
-    def source_raw(self) -> Optional[pulumi.Input['FileLegacySourceRawArgs']]:
+    def source_raw(self) -> pulumi.Input[Optional['FileLegacySourceRawArgs']]:
         """
         The raw source (conflicts with `source_file`).
         """
         return pulumi.get(self, "source_raw")
 
     @source_raw.setter
-    def source_raw(self, value: Optional[pulumi.Input['FileLegacySourceRawArgs']]):
+    def source_raw(self, value: pulumi.Input[Optional['FileLegacySourceRawArgs']]):
         pulumi.set(self, "source_raw", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutUpload")
-    def timeout_upload(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_upload(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timeout for uploading ISO/VSTMPL files in
         seconds (defaults to 1800).
@@ -159,25 +170,45 @@ class FileLegacyArgs:
         return pulumi.get(self, "timeout_upload")
 
     @timeout_upload.setter
-    def timeout_upload(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_upload(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_upload", value)
+
+    @_builtins.property
+    @pulumi.getter(name="uploadMode")
+    def upload_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The SSH upload mode for non-API content types
+        (snippets, backups, etc.). Set to `stream` to pipe the file through an SSH
+        shell session (uses `sudo` where required), or `sftp` to upload via the SFTP
+        subsystem. Use `sftp` when the target host's SSH server only allows the
+        SFTP subsystem; note that the SFTP path does not invoke `sudo`, so the SSH
+        user must have direct write permission to the target directory. Has no
+        effect for `iso`, `vztmpl`, and `import` content types, which always use
+        the HTTP API. Defaults to `stream`.
+        """
+        return pulumi.get(self, "upload_mode")
+
+    @upload_mode.setter
+    def upload_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "upload_mode", value)
 
 
 @pulumi.input_type
 class _FileLegacyState:
     def __init__(__self__, *,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 datastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_modification_date: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 file_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 overwrite: Optional[pulumi.Input[_builtins.bool]] = None,
-                 source_file: Optional[pulumi.Input['FileLegacySourceFileArgs']] = None,
-                 source_raw: Optional[pulumi.Input['FileLegacySourceRawArgs']] = None,
-                 timeout_upload: Optional[pulumi.Input[_builtins.int]] = None):
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_modification_date: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 file_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
+                 source_file: pulumi.Input[Optional['FileLegacySourceFileArgs']] = None,
+                 source_raw: pulumi.Input[Optional['FileLegacySourceRawArgs']] = None,
+                 timeout_upload: pulumi.Input[Optional[_builtins.int]] = None,
+                 upload_mode: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FileLegacy resources.
 
@@ -198,6 +229,14 @@ class _FileLegacyState:
         :param pulumi.Input['FileLegacySourceRawArgs'] source_raw: The raw source (conflicts with `source_file`).
         :param pulumi.Input[_builtins.int] timeout_upload: Timeout for uploading ISO/VSTMPL files in
                seconds (defaults to 1800).
+        :param pulumi.Input[_builtins.str] upload_mode: The SSH upload mode for non-API content types
+               (snippets, backups, etc.). Set to `stream` to pipe the file through an SSH
+               shell session (uses `sudo` where required), or `sftp` to upload via the SFTP
+               subsystem. Use `sftp` when the target host's SSH server only allows the
+               SFTP subsystem; note that the SFTP path does not invoke `sudo`, so the SSH
+               user must have direct write permission to the target directory. Has no
+               effect for `iso`, `vztmpl`, and `import` content types, which always use
+               the HTTP API. Defaults to `stream`.
         """
         if content_type is not None:
             pulumi.set(__self__, "content_type", content_type)
@@ -223,10 +262,12 @@ class _FileLegacyState:
             pulumi.set(__self__, "source_raw", source_raw)
         if timeout_upload is not None:
             pulumi.set(__self__, "timeout_upload", timeout_upload)
+        if upload_mode is not None:
+            pulumi.set(__self__, "upload_mode", upload_mode)
 
     @_builtins.property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The content type. If not specified, the content
         type will be inferred from the file extension. Valid values are:
@@ -234,96 +275,96 @@ class _FileLegacyState:
         return pulumi.get(self, "content_type")
 
     @content_type.setter
-    def content_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_type", value)
 
     @_builtins.property
     @pulumi.getter(name="datastoreId")
-    def datastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datastore_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The datastore id.
         """
         return pulumi.get(self, "datastore_id")
 
     @datastore_id.setter
-    def datastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datastore_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datastore_id", value)
 
     @_builtins.property
     @pulumi.getter(name="fileMode")
-    def file_mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The file mode in octal format, e.g. `0700` or `600`. Note that the prefixes `0o` and `0x` is not supported! Setting this attribute is also only allowed for `root@pam` authenticated user.
         """
         return pulumi.get(self, "file_mode")
 
     @file_mode.setter
-    def file_mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_mode", value)
 
     @_builtins.property
     @pulumi.getter(name="fileModificationDate")
-    def file_modification_date(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_modification_date(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The file modification date (RFC 3339).
         """
         return pulumi.get(self, "file_modification_date")
 
     @file_modification_date.setter
-    def file_modification_date(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_modification_date(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_modification_date", value)
 
     @_builtins.property
     @pulumi.getter(name="fileName")
-    def file_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The file name.
         """
         return pulumi.get(self, "file_name")
 
     @file_name.setter
-    def file_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_name", value)
 
     @_builtins.property
     @pulumi.getter(name="fileSize")
-    def file_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def file_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The file size in bytes.
         """
         return pulumi.get(self, "file_size")
 
     @file_size.setter
-    def file_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def file_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "file_size", value)
 
     @_builtins.property
     @pulumi.getter(name="fileTag")
-    def file_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The file tag.
         """
         return pulumi.get(self, "file_tag")
 
     @file_tag.setter
-    def file_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_tag", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeName")
-    def node_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The node name.
         """
         return pulumi.get(self, "node_name")
 
     @node_name.setter
-    def node_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def overwrite(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def overwrite(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to overwrite an existing file (defaults to
         `true`).
@@ -331,12 +372,12 @@ class _FileLegacyState:
         return pulumi.get(self, "overwrite")
 
     @overwrite.setter
-    def overwrite(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def overwrite(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "overwrite", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceFile")
-    def source_file(self) -> Optional[pulumi.Input['FileLegacySourceFileArgs']]:
+    def source_file(self) -> pulumi.Input[Optional['FileLegacySourceFileArgs']]:
         """
         The source file (conflicts with `source_raw`),
         could be a local file or a URL. If the source file is a URL, the file will
@@ -345,24 +386,24 @@ class _FileLegacyState:
         return pulumi.get(self, "source_file")
 
     @source_file.setter
-    def source_file(self, value: Optional[pulumi.Input['FileLegacySourceFileArgs']]):
+    def source_file(self, value: pulumi.Input[Optional['FileLegacySourceFileArgs']]):
         pulumi.set(self, "source_file", value)
 
     @_builtins.property
     @pulumi.getter(name="sourceRaw")
-    def source_raw(self) -> Optional[pulumi.Input['FileLegacySourceRawArgs']]:
+    def source_raw(self) -> pulumi.Input[Optional['FileLegacySourceRawArgs']]:
         """
         The raw source (conflicts with `source_file`).
         """
         return pulumi.get(self, "source_raw")
 
     @source_raw.setter
-    def source_raw(self, value: Optional[pulumi.Input['FileLegacySourceRawArgs']]):
+    def source_raw(self, value: pulumi.Input[Optional['FileLegacySourceRawArgs']]):
         pulumi.set(self, "source_raw", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutUpload")
-    def timeout_upload(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_upload(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timeout for uploading ISO/VSTMPL files in
         seconds (defaults to 1800).
@@ -370,8 +411,27 @@ class _FileLegacyState:
         return pulumi.get(self, "timeout_upload")
 
     @timeout_upload.setter
-    def timeout_upload(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_upload(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_upload", value)
+
+    @_builtins.property
+    @pulumi.getter(name="uploadMode")
+    def upload_mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The SSH upload mode for non-API content types
+        (snippets, backups, etc.). Set to `stream` to pipe the file through an SSH
+        shell session (uses `sudo` where required), or `sftp` to upload via the SFTP
+        subsystem. Use `sftp` when the target host's SSH server only allows the
+        SFTP subsystem; note that the SFTP path does not invoke `sudo`, so the SSH
+        user must have direct write permission to the target directory. Has no
+        effect for `iso`, `vztmpl`, and `import` content types, which always use
+        the HTTP API. Defaults to `stream`.
+        """
+        return pulumi.get(self, "upload_mode")
+
+    @upload_mode.setter
+    def upload_mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "upload_mode", value)
 
 
 @pulumi.type_token("proxmoxve:index/fileLegacy:FileLegacy")
@@ -380,14 +440,15 @@ class FileLegacy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 datastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 overwrite: Optional[pulumi.Input[_builtins.bool]] = None,
-                 source_file: Optional[pulumi.Input[Union['FileLegacySourceFileArgs', 'FileLegacySourceFileArgsDict']]] = None,
-                 source_raw: Optional[pulumi.Input[Union['FileLegacySourceRawArgs', 'FileLegacySourceRawArgsDict']]] = None,
-                 timeout_upload: Optional[pulumi.Input[_builtins.int]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
+                 source_file: pulumi.Input[Optional[Union['FileLegacySourceFileArgs', 'FileLegacySourceFileArgsDict']]] = None,
+                 source_raw: pulumi.Input[Optional[Union['FileLegacySourceRawArgs', 'FileLegacySourceRawArgsDict']]] = None,
+                 timeout_upload: pulumi.Input[Optional[_builtins.int]] = None,
+                 upload_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Use this resource to upload files to a Proxmox VE node. The file can be a backup, an ISO image, a Disk Image, a snippet, or a container template depending on the `content_type` attribute.
@@ -561,6 +622,14 @@ class FileLegacy(pulumi.CustomResource):
         :param pulumi.Input[Union['FileLegacySourceRawArgs', 'FileLegacySourceRawArgsDict']] source_raw: The raw source (conflicts with `source_file`).
         :param pulumi.Input[_builtins.int] timeout_upload: Timeout for uploading ISO/VSTMPL files in
                seconds (defaults to 1800).
+        :param pulumi.Input[_builtins.str] upload_mode: The SSH upload mode for non-API content types
+               (snippets, backups, etc.). Set to `stream` to pipe the file through an SSH
+               shell session (uses `sudo` where required), or `sftp` to upload via the SFTP
+               subsystem. Use `sftp` when the target host's SSH server only allows the
+               SFTP subsystem; note that the SFTP path does not invoke `sudo`, so the SSH
+               user must have direct write permission to the target directory. Has no
+               effect for `iso`, `vztmpl`, and `import` content types, which always use
+               the HTTP API. Defaults to `stream`.
         """
         ...
     @overload
@@ -740,14 +809,15 @@ class FileLegacy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 datastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 overwrite: Optional[pulumi.Input[_builtins.bool]] = None,
-                 source_file: Optional[pulumi.Input[Union['FileLegacySourceFileArgs', 'FileLegacySourceFileArgsDict']]] = None,
-                 source_raw: Optional[pulumi.Input[Union['FileLegacySourceRawArgs', 'FileLegacySourceRawArgsDict']]] = None,
-                 timeout_upload: Optional[pulumi.Input[_builtins.int]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
+                 source_file: pulumi.Input[Optional[Union['FileLegacySourceFileArgs', 'FileLegacySourceFileArgsDict']]] = None,
+                 source_raw: pulumi.Input[Optional[Union['FileLegacySourceRawArgs', 'FileLegacySourceRawArgsDict']]] = None,
+                 timeout_upload: pulumi.Input[Optional[_builtins.int]] = None,
+                 upload_mode: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -769,6 +839,7 @@ class FileLegacy(pulumi.CustomResource):
             __props__.__dict__["source_file"] = source_file
             __props__.__dict__["source_raw"] = source_raw
             __props__.__dict__["timeout_upload"] = timeout_upload
+            __props__.__dict__["upload_mode"] = upload_mode
             __props__.__dict__["file_modification_date"] = None
             __props__.__dict__["file_name"] = None
             __props__.__dict__["file_size"] = None
@@ -783,18 +854,19 @@ class FileLegacy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            content_type: Optional[pulumi.Input[_builtins.str]] = None,
-            datastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-            file_mode: Optional[pulumi.Input[_builtins.str]] = None,
-            file_modification_date: Optional[pulumi.Input[_builtins.str]] = None,
-            file_name: Optional[pulumi.Input[_builtins.str]] = None,
-            file_size: Optional[pulumi.Input[_builtins.int]] = None,
-            file_tag: Optional[pulumi.Input[_builtins.str]] = None,
-            node_name: Optional[pulumi.Input[_builtins.str]] = None,
-            overwrite: Optional[pulumi.Input[_builtins.bool]] = None,
-            source_file: Optional[pulumi.Input[Union['FileLegacySourceFileArgs', 'FileLegacySourceFileArgsDict']]] = None,
-            source_raw: Optional[pulumi.Input[Union['FileLegacySourceRawArgs', 'FileLegacySourceRawArgsDict']]] = None,
-            timeout_upload: Optional[pulumi.Input[_builtins.int]] = None) -> 'FileLegacy':
+            content_type: pulumi.Input[Optional[_builtins.str]] = None,
+            datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            file_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            file_modification_date: pulumi.Input[Optional[_builtins.str]] = None,
+            file_name: pulumi.Input[Optional[_builtins.str]] = None,
+            file_size: pulumi.Input[Optional[_builtins.int]] = None,
+            file_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
+            source_file: pulumi.Input[Optional[Union['FileLegacySourceFileArgs', 'FileLegacySourceFileArgsDict']]] = None,
+            source_raw: pulumi.Input[Optional[Union['FileLegacySourceRawArgs', 'FileLegacySourceRawArgsDict']]] = None,
+            timeout_upload: pulumi.Input[Optional[_builtins.int]] = None,
+            upload_mode: pulumi.Input[Optional[_builtins.str]] = None) -> 'FileLegacy':
         """
         Get an existing FileLegacy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -819,6 +891,14 @@ class FileLegacy(pulumi.CustomResource):
         :param pulumi.Input[Union['FileLegacySourceRawArgs', 'FileLegacySourceRawArgsDict']] source_raw: The raw source (conflicts with `source_file`).
         :param pulumi.Input[_builtins.int] timeout_upload: Timeout for uploading ISO/VSTMPL files in
                seconds (defaults to 1800).
+        :param pulumi.Input[_builtins.str] upload_mode: The SSH upload mode for non-API content types
+               (snippets, backups, etc.). Set to `stream` to pipe the file through an SSH
+               shell session (uses `sudo` where required), or `sftp` to upload via the SFTP
+               subsystem. Use `sftp` when the target host's SSH server only allows the
+               SFTP subsystem; note that the SFTP path does not invoke `sudo`, so the SSH
+               user must have direct write permission to the target directory. Has no
+               effect for `iso`, `vztmpl`, and `import` content types, which always use
+               the HTTP API. Defaults to `stream`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -836,6 +916,7 @@ class FileLegacy(pulumi.CustomResource):
         __props__.__dict__["source_file"] = source_file
         __props__.__dict__["source_raw"] = source_raw
         __props__.__dict__["timeout_upload"] = timeout_upload
+        __props__.__dict__["upload_mode"] = upload_mode
         return FileLegacy(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -938,4 +1019,19 @@ class FileLegacy(pulumi.CustomResource):
         seconds (defaults to 1800).
         """
         return pulumi.get(self, "timeout_upload")
+
+    @_builtins.property
+    @pulumi.getter(name="uploadMode")
+    def upload_mode(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The SSH upload mode for non-API content types
+        (snippets, backups, etc.). Set to `stream` to pipe the file through an SSH
+        shell session (uses `sudo` where required), or `sftp` to upload via the SFTP
+        subsystem. Use `sftp` when the target host's SSH server only allows the
+        SFTP subsystem; note that the SFTP path does not invoke `sudo`, so the SSH
+        user must have direct write permission to the target directory. Has no
+        effect for `iso`, `vztmpl`, and `import` content types, which always use
+        the HTTP API. Defaults to `stream`.
+        """
+        return pulumi.get(self, "upload_mode")
 

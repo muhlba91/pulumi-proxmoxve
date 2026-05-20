@@ -205,31 +205,31 @@ export interface SubnetState {
     /**
      * A CIDR network address, for example 10.0.0.0/8
      */
-    cidr?: pulumi.Input<string>;
+    cidr?: pulumi.Input<string | undefined>;
     /**
      * The DNS server used for DHCP.
      */
-    dhcpDnsServer?: pulumi.Input<string>;
+    dhcpDnsServer?: pulumi.Input<string | undefined>;
     /**
      * DHCP range (start and end IPs).
      */
-    dhcpRange?: pulumi.Input<inputs.sdn.SubnetDhcpRange>;
+    dhcpRange?: pulumi.Input<inputs.sdn.SubnetDhcpRange | undefined>;
     /**
      * Prefix used for DNS zone delegation.
      */
-    dnsZonePrefix?: pulumi.Input<string>;
+    dnsZonePrefix?: pulumi.Input<string | undefined>;
     /**
      * The gateway address for the subnet.
      */
-    gateway?: pulumi.Input<string>;
+    gateway?: pulumi.Input<string | undefined>;
     /**
      * Whether SNAT is enabled for the subnet.
      */
-    snat?: pulumi.Input<boolean>;
+    snat?: pulumi.Input<boolean | undefined>;
     /**
      * The VNet to which this subnet belongs.
      */
-    vnet?: pulumi.Input<string>;
+    vnet?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -243,23 +243,23 @@ export interface SubnetArgs {
     /**
      * The DNS server used for DHCP.
      */
-    dhcpDnsServer?: pulumi.Input<string>;
+    dhcpDnsServer?: pulumi.Input<string | undefined>;
     /**
      * DHCP range (start and end IPs).
      */
-    dhcpRange?: pulumi.Input<inputs.sdn.SubnetDhcpRange>;
+    dhcpRange?: pulumi.Input<inputs.sdn.SubnetDhcpRange | undefined>;
     /**
      * Prefix used for DNS zone delegation.
      */
-    dnsZonePrefix?: pulumi.Input<string>;
+    dnsZonePrefix?: pulumi.Input<string | undefined>;
     /**
      * The gateway address for the subnet.
      */
-    gateway?: pulumi.Input<string>;
+    gateway?: pulumi.Input<string | undefined>;
     /**
      * Whether SNAT is enabled for the subnet.
      */
-    snat?: pulumi.Input<boolean>;
+    snat?: pulumi.Input<boolean | undefined>;
     /**
      * The VNet to which this subnet belongs.
      */

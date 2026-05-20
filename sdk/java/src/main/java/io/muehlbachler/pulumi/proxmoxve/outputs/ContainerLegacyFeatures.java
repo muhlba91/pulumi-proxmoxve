@@ -24,6 +24,11 @@ public final class ContainerLegacyFeatures {
      */
     private @Nullable Boolean keyctl;
     /**
+     * @return Whether the container supports `mknod()` system call (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * 
+     */
+    private @Nullable Boolean mknod;
+    /**
      * @return List of allowed mount types (&lt;span pulumi-lang-nodejs=&#34;`cifs`&#34; pulumi-lang-dotnet=&#34;`Cifs`&#34; pulumi-lang-go=&#34;`cifs`&#34; pulumi-lang-python=&#34;`cifs`&#34; pulumi-lang-yaml=&#34;`cifs`&#34; pulumi-lang-java=&#34;`cifs`&#34;&gt;`cifs`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`nfs`&#34; pulumi-lang-dotnet=&#34;`Nfs`&#34; pulumi-lang-go=&#34;`nfs`&#34; pulumi-lang-python=&#34;`nfs`&#34; pulumi-lang-yaml=&#34;`nfs`&#34; pulumi-lang-java=&#34;`nfs`&#34;&gt;`nfs`&lt;/span&gt;)
      * 
      */
@@ -48,6 +53,13 @@ public final class ContainerLegacyFeatures {
      */
     public Optional<Boolean> keyctl() {
         return Optional.ofNullable(this.keyctl);
+    }
+    /**
+     * @return Whether the container supports `mknod()` system call (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * 
+     */
+    public Optional<Boolean> mknod() {
+        return Optional.ofNullable(this.mknod);
     }
     /**
      * @return List of allowed mount types (&lt;span pulumi-lang-nodejs=&#34;`cifs`&#34; pulumi-lang-dotnet=&#34;`Cifs`&#34; pulumi-lang-go=&#34;`cifs`&#34; pulumi-lang-python=&#34;`cifs`&#34; pulumi-lang-yaml=&#34;`cifs`&#34; pulumi-lang-java=&#34;`cifs`&#34;&gt;`cifs`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`nfs`&#34; pulumi-lang-dotnet=&#34;`Nfs`&#34; pulumi-lang-go=&#34;`nfs`&#34; pulumi-lang-python=&#34;`nfs`&#34; pulumi-lang-yaml=&#34;`nfs`&#34; pulumi-lang-java=&#34;`nfs`&#34;&gt;`nfs`&lt;/span&gt;)
@@ -75,6 +87,7 @@ public final class ContainerLegacyFeatures {
     public static final class Builder {
         private @Nullable Boolean fuse;
         private @Nullable Boolean keyctl;
+        private @Nullable Boolean mknod;
         private @Nullable List<String> mounts;
         private @Nullable Boolean nesting;
         public Builder() {}
@@ -82,6 +95,7 @@ public final class ContainerLegacyFeatures {
     	      Objects.requireNonNull(defaults);
     	      this.fuse = defaults.fuse;
     	      this.keyctl = defaults.keyctl;
+    	      this.mknod = defaults.mknod;
     	      this.mounts = defaults.mounts;
     	      this.nesting = defaults.nesting;
         }
@@ -96,6 +110,12 @@ public final class ContainerLegacyFeatures {
         public Builder keyctl(@Nullable Boolean keyctl) {
 
             this.keyctl = keyctl;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder mknod(@Nullable Boolean mknod) {
+
+            this.mknod = mknod;
             return this;
         }
         @CustomType.Setter
@@ -117,6 +137,7 @@ public final class ContainerLegacyFeatures {
             final var _resultValue = new ContainerLegacyFeatures();
             _resultValue.fuse = fuse;
             _resultValue.keyctl = keyctl;
+            _resultValue.mknod = mknod;
             _resultValue.mounts = mounts;
             _resultValue.nesting = nesting;
             return _resultValue;

@@ -22,18 +22,18 @@ class EvpnLegacyArgs:
                  controller: pulumi.Input[_builtins.str],
                  resource_id: pulumi.Input[_builtins.str],
                  vrf_vxlan: pulumi.Input[_builtins.int],
-                 advertise_subnets: Optional[pulumi.Input[_builtins.bool]] = None,
-                 disable_arp_nd_suppression: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dns: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 exit_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 exit_nodes_local_routing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ipam: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 primary_exit_node: Optional[pulumi.Input[_builtins.str]] = None,
-                 reverse_dns: Optional[pulumi.Input[_builtins.str]] = None,
-                 rt_import: Optional[pulumi.Input[_builtins.str]] = None):
+                 advertise_subnets: pulumi.Input[Optional[_builtins.bool]] = None,
+                 disable_arp_nd_suppression: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 exit_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 exit_nodes_local_routing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ipam: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 primary_exit_node: pulumi.Input[Optional[_builtins.str]] = None,
+                 reverse_dns: pulumi.Input[Optional[_builtins.str]] = None,
+                 rt_import: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a EvpnLegacy resource.
 
@@ -119,169 +119,169 @@ class EvpnLegacyArgs:
 
     @_builtins.property
     @pulumi.getter(name="advertiseSubnets")
-    def advertise_subnets(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def advertise_subnets(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable subnet advertisement for EVPN.
         """
         return pulumi.get(self, "advertise_subnets")
 
     @advertise_subnets.setter
-    def advertise_subnets(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def advertise_subnets(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "advertise_subnets", value)
 
     @_builtins.property
     @pulumi.getter(name="disableArpNdSuppression")
-    def disable_arp_nd_suppression(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_arp_nd_suppression(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disable ARP/ND suppression for EVPN.
         """
         return pulumi.get(self, "disable_arp_nd_suppression")
 
     @disable_arp_nd_suppression.setter
-    def disable_arp_nd_suppression(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_arp_nd_suppression(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_arp_nd_suppression", value)
 
     @_builtins.property
     @pulumi.getter
-    def dns(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DNS API server address.
         """
         return pulumi.get(self, "dns")
 
     @dns.setter
-    def dns(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsZone")
-    def dns_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
         """
         return pulumi.get(self, "dns_zone")
 
     @dns_zone.setter
-    def dns_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="exitNodes")
-    def exit_nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exit_nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of exit nodes for EVPN.
         """
         return pulumi.get(self, "exit_nodes")
 
     @exit_nodes.setter
-    def exit_nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exit_nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exit_nodes", value)
 
     @_builtins.property
     @pulumi.getter(name="exitNodesLocalRouting")
-    def exit_nodes_local_routing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def exit_nodes_local_routing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable local routing for EVPN exit nodes.
         """
         return pulumi.get(self, "exit_nodes_local_routing")
 
     @exit_nodes_local_routing.setter
-    def exit_nodes_local_routing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def exit_nodes_local_routing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "exit_nodes_local_routing", value)
 
     @_builtins.property
     @pulumi.getter
-    def ipam(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipam(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP Address Management system.
         """
         return pulumi.get(self, "ipam")
 
     @ipam.setter
-    def ipam(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipam(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipam", value)
 
     @_builtins.property
     @pulumi.getter
-    def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mtu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
         """
         return pulumi.get(self, "mtu")
 
     @mtu.setter
-    def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mtu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mtu", value)
 
     @_builtins.property
     @pulumi.getter
-    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The Proxmox nodes which the zone and associated VNets should be deployed on
         """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
-    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryExitNode")
-    def primary_exit_node(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_exit_node(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Primary exit node for EVPN.
         """
         return pulumi.get(self, "primary_exit_node")
 
     @primary_exit_node.setter
-    def primary_exit_node(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_exit_node(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_exit_node", value)
 
     @_builtins.property
     @pulumi.getter(name="reverseDns")
-    def reverse_dns(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reverse_dns(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reverse DNS API server address.
         """
         return pulumi.get(self, "reverse_dns")
 
     @reverse_dns.setter
-    def reverse_dns(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reverse_dns(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reverse_dns", value)
 
     @_builtins.property
     @pulumi.getter(name="rtImport")
-    def rt_import(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rt_import(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Route target import for EVPN.
         """
         return pulumi.get(self, "rt_import")
 
     @rt_import.setter
-    def rt_import(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rt_import(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rt_import", value)
 
 
 @pulumi.input_type
 class _EvpnLegacyState:
     def __init__(__self__, *,
-                 advertise_subnets: Optional[pulumi.Input[_builtins.bool]] = None,
-                 controller: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_arp_nd_suppression: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dns: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 exit_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 exit_nodes_local_routing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ipam: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 pending: Optional[pulumi.Input[_builtins.bool]] = None,
-                 primary_exit_node: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 reverse_dns: Optional[pulumi.Input[_builtins.str]] = None,
-                 rt_import: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 vrf_vxlan: Optional[pulumi.Input[_builtins.int]] = None):
+                 advertise_subnets: pulumi.Input[Optional[_builtins.bool]] = None,
+                 controller: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_arp_nd_suppression: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 exit_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 exit_nodes_local_routing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ipam: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 pending: pulumi.Input[Optional[_builtins.bool]] = None,
+                 primary_exit_node: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 reverse_dns: pulumi.Input[Optional[_builtins.str]] = None,
+                 rt_import: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 vrf_vxlan: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering EvpnLegacy resources.
 
@@ -340,206 +340,206 @@ class _EvpnLegacyState:
 
     @_builtins.property
     @pulumi.getter(name="advertiseSubnets")
-    def advertise_subnets(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def advertise_subnets(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable subnet advertisement for EVPN.
         """
         return pulumi.get(self, "advertise_subnets")
 
     @advertise_subnets.setter
-    def advertise_subnets(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def advertise_subnets(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "advertise_subnets", value)
 
     @_builtins.property
     @pulumi.getter
-    def controller(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def controller(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         EVPN controller address.
         """
         return pulumi.get(self, "controller")
 
     @controller.setter
-    def controller(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def controller(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "controller", value)
 
     @_builtins.property
     @pulumi.getter(name="disableArpNdSuppression")
-    def disable_arp_nd_suppression(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_arp_nd_suppression(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Disable ARP/ND suppression for EVPN.
         """
         return pulumi.get(self, "disable_arp_nd_suppression")
 
     @disable_arp_nd_suppression.setter
-    def disable_arp_nd_suppression(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_arp_nd_suppression(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_arp_nd_suppression", value)
 
     @_builtins.property
     @pulumi.getter
-    def dns(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DNS API server address.
         """
         return pulumi.get(self, "dns")
 
     @dns.setter
-    def dns(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsZone")
-    def dns_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DNS domain name. Used to register hostnames, such as `<hostname>.<domain>`. The DNS zone must already exist on the DNS server.
         """
         return pulumi.get(self, "dns_zone")
 
     @dns_zone.setter
-    def dns_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="exitNodes")
-    def exit_nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def exit_nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of exit nodes for EVPN.
         """
         return pulumi.get(self, "exit_nodes")
 
     @exit_nodes.setter
-    def exit_nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def exit_nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "exit_nodes", value)
 
     @_builtins.property
     @pulumi.getter(name="exitNodesLocalRouting")
-    def exit_nodes_local_routing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def exit_nodes_local_routing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable local routing for EVPN exit nodes.
         """
         return pulumi.get(self, "exit_nodes_local_routing")
 
     @exit_nodes_local_routing.setter
-    def exit_nodes_local_routing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def exit_nodes_local_routing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "exit_nodes_local_routing", value)
 
     @_builtins.property
     @pulumi.getter
-    def ipam(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipam(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IP Address Management system.
         """
         return pulumi.get(self, "ipam")
 
     @ipam.setter
-    def ipam(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipam(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipam", value)
 
     @_builtins.property
     @pulumi.getter
-    def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mtu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         MTU value for the zone. There is no support to reset this value back to PVE default once set due to API limitation.
         """
         return pulumi.get(self, "mtu")
 
     @mtu.setter
-    def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mtu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mtu", value)
 
     @_builtins.property
     @pulumi.getter
-    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The Proxmox nodes which the zone and associated VNets should be deployed on
         """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
-    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter
-    def pending(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def pending(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the zone has pending configuration changes that need to be applied.
         """
         return pulumi.get(self, "pending")
 
     @pending.setter
-    def pending(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def pending(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "pending", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryExitNode")
-    def primary_exit_node(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_exit_node(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Primary exit node for EVPN.
         """
         return pulumi.get(self, "primary_exit_node")
 
     @primary_exit_node.setter
-    def primary_exit_node(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_exit_node(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_exit_node", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the SDN zone.
         """
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter(name="reverseDns")
-    def reverse_dns(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reverse_dns(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Reverse DNS API server address.
         """
         return pulumi.get(self, "reverse_dns")
 
     @reverse_dns.setter
-    def reverse_dns(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reverse_dns(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reverse_dns", value)
 
     @_builtins.property
     @pulumi.getter(name="rtImport")
-    def rt_import(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rt_import(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Route target import for EVPN.
         """
         return pulumi.get(self, "rt_import")
 
     @rt_import.setter
-    def rt_import(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rt_import(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rt_import", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Indicates the current state of the zone.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="vrfVxlan")
-    def vrf_vxlan(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vrf_vxlan(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         VRF VXLAN-ID used for dedicated routing interconnect between VNets. It must be different than the VXLAN-ID of the VNets.
         """
         return pulumi.get(self, "vrf_vxlan")
 
     @vrf_vxlan.setter
-    def vrf_vxlan(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vrf_vxlan(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vrf_vxlan", value)
 
 
@@ -549,21 +549,21 @@ class EvpnLegacy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advertise_subnets: Optional[pulumi.Input[_builtins.bool]] = None,
-                 controller: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_arp_nd_suppression: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dns: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 exit_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 exit_nodes_local_routing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ipam: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 primary_exit_node: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 reverse_dns: Optional[pulumi.Input[_builtins.str]] = None,
-                 rt_import: Optional[pulumi.Input[_builtins.str]] = None,
-                 vrf_vxlan: Optional[pulumi.Input[_builtins.int]] = None,
+                 advertise_subnets: pulumi.Input[Optional[_builtins.bool]] = None,
+                 controller: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_arp_nd_suppression: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 exit_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 exit_nodes_local_routing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ipam: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 primary_exit_node: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 reverse_dns: pulumi.Input[Optional[_builtins.str]] = None,
+                 rt_import: pulumi.Input[Optional[_builtins.str]] = None,
+                 vrf_vxlan: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         > **Deprecated:** Use `sdn/zone.Evpn` instead. This resource will be removed in v1.0.
@@ -688,21 +688,21 @@ class EvpnLegacy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advertise_subnets: Optional[pulumi.Input[_builtins.bool]] = None,
-                 controller: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_arp_nd_suppression: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dns: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 exit_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 exit_nodes_local_routing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ipam: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 primary_exit_node: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 reverse_dns: Optional[pulumi.Input[_builtins.str]] = None,
-                 rt_import: Optional[pulumi.Input[_builtins.str]] = None,
-                 vrf_vxlan: Optional[pulumi.Input[_builtins.int]] = None,
+                 advertise_subnets: pulumi.Input[Optional[_builtins.bool]] = None,
+                 controller: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_arp_nd_suppression: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dns: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 exit_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 exit_nodes_local_routing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ipam: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 primary_exit_node: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 reverse_dns: pulumi.Input[Optional[_builtins.str]] = None,
+                 rt_import: pulumi.Input[Optional[_builtins.str]] = None,
+                 vrf_vxlan: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -745,23 +745,23 @@ class EvpnLegacy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            advertise_subnets: Optional[pulumi.Input[_builtins.bool]] = None,
-            controller: Optional[pulumi.Input[_builtins.str]] = None,
-            disable_arp_nd_suppression: Optional[pulumi.Input[_builtins.bool]] = None,
-            dns: Optional[pulumi.Input[_builtins.str]] = None,
-            dns_zone: Optional[pulumi.Input[_builtins.str]] = None,
-            exit_nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            exit_nodes_local_routing: Optional[pulumi.Input[_builtins.bool]] = None,
-            ipam: Optional[pulumi.Input[_builtins.str]] = None,
-            mtu: Optional[pulumi.Input[_builtins.int]] = None,
-            nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            pending: Optional[pulumi.Input[_builtins.bool]] = None,
-            primary_exit_node: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-            reverse_dns: Optional[pulumi.Input[_builtins.str]] = None,
-            rt_import: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            vrf_vxlan: Optional[pulumi.Input[_builtins.int]] = None) -> 'EvpnLegacy':
+            advertise_subnets: pulumi.Input[Optional[_builtins.bool]] = None,
+            controller: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_arp_nd_suppression: pulumi.Input[Optional[_builtins.bool]] = None,
+            dns: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            exit_nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            exit_nodes_local_routing: pulumi.Input[Optional[_builtins.bool]] = None,
+            ipam: pulumi.Input[Optional[_builtins.str]] = None,
+            mtu: pulumi.Input[Optional[_builtins.int]] = None,
+            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            pending: pulumi.Input[Optional[_builtins.bool]] = None,
+            primary_exit_node: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            reverse_dns: pulumi.Input[Optional[_builtins.str]] = None,
+            rt_import: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            vrf_vxlan: pulumi.Input[Optional[_builtins.int]] = None) -> 'EvpnLegacy':
         """
         Get an existing EvpnLegacy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

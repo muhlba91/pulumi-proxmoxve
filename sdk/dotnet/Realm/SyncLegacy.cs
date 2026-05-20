@@ -32,7 +32,7 @@ namespace Pulumi.ProxmoxVE.Realm
     ///     {
     ///         Realm = "example-ldap",
     ///         Server1 = "ldap.example.com",
-    ///         Port = %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(389) (example.pp:3,17-20)),
+    ///         Port = 389,
     ///         BaseDn = "ou=people,dc=example,dc=com",
     ///         UserAttr = "uid",
     ///         GroupDn = "ou=groups,dc=example,dc=com",

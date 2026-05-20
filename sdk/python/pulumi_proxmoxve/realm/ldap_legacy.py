@@ -22,29 +22,29 @@ class LdapLegacyArgs:
                  base_dn: pulumi.Input[_builtins.str],
                  realm: pulumi.Input[_builtins.str],
                  server1: pulumi.Input[_builtins.str],
-                 bind_dn: Optional[pulumi.Input[_builtins.str]] = None,
-                 bind_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 ca_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 case_sensitive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cert_key_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_classes: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_dn: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_name_attr: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 secure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 server2: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_attributes: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_defaults_options: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_attr: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_classes: Optional[pulumi.Input[_builtins.str]] = None,
-                 verify: Optional[pulumi.Input[_builtins.bool]] = None):
+                 bind_dn: pulumi.Input[Optional[_builtins.str]] = None,
+                 bind_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 case_sensitive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cert_key_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_classes: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_dn: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name_attr: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 secure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 server2: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_attributes: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_defaults_options: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_attr: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_classes: pulumi.Input[Optional[_builtins.str]] = None,
+                 verify: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a LdapLegacy resource.
 
@@ -166,311 +166,311 @@ class LdapLegacyArgs:
 
     @_builtins.property
     @pulumi.getter(name="bindDn")
-    def bind_dn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bind_dn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         LDAP bind DN for authentication (e.g., 'cn=admin,dc=example,dc=com').
         """
         return pulumi.get(self, "bind_dn")
 
     @bind_dn.setter
-    def bind_dn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bind_dn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bind_dn", value)
 
     @_builtins.property
     @pulumi.getter(name="bindPassword")
-    def bind_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bind_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password for the bind DN. Note: stored in Proxmox but not returned by API.
         """
         return pulumi.get(self, "bind_password")
 
     @bind_password.setter
-    def bind_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bind_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bind_password", value)
 
     @_builtins.property
     @pulumi.getter(name="caPath")
-    def ca_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to CA certificate file for SSL verification.
         """
         return pulumi.get(self, "ca_path")
 
     @ca_path.setter
-    def ca_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_path", value)
 
     @_builtins.property
     @pulumi.getter(name="caseSensitive")
-    def case_sensitive(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def case_sensitive(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable case-sensitive username matching.
         """
         return pulumi.get(self, "case_sensitive")
 
     @case_sensitive.setter
-    def case_sensitive(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def case_sensitive(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "case_sensitive", value)
 
     @_builtins.property
     @pulumi.getter(name="certKeyPath")
-    def cert_key_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_key_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to client certificate key.
         """
         return pulumi.get(self, "cert_key_path")
 
     @cert_key_path.setter
-    def cert_key_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_key_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_key_path", value)
 
     @_builtins.property
     @pulumi.getter(name="certPath")
-    def cert_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to client certificate for SSL authentication.
         """
         return pulumi.get(self, "cert_path")
 
     @cert_path.setter
-    def cert_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the realm.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use this realm as the default for login.
         """
         return pulumi.get(self, "default")
 
     @default.setter
-    def default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default", value)
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         LDAP filter for user searches.
         """
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter", value)
 
     @_builtins.property
     @pulumi.getter(name="groupClasses")
-    def group_classes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_classes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         LDAP objectClasses for groups (comma-separated).
         """
         return pulumi.get(self, "group_classes")
 
     @group_classes.setter
-    def group_classes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_classes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_classes", value)
 
     @_builtins.property
     @pulumi.getter(name="groupDn")
-    def group_dn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_dn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         LDAP base DN for group searches.
         """
         return pulumi.get(self, "group_dn")
 
     @group_dn.setter
-    def group_dn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_dn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_dn", value)
 
     @_builtins.property
     @pulumi.getter(name="groupFilter")
-    def group_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         LDAP filter for group searches.
         """
         return pulumi.get(self, "group_filter")
 
     @group_filter.setter
-    def group_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="groupNameAttr")
-    def group_name_attr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_name_attr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         LDAP attribute representing the group name.
         """
         return pulumi.get(self, "group_name_attr")
 
     @group_name_attr.setter
-    def group_name_attr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_name_attr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_name_attr", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         LDAP connection mode (ldap, ldaps, ldap+starttls).
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         LDAP server port. Default: 389 (LDAP) or 636 (LDAPS).
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Deprecated by Proxmox: use mode instead.""")
-    def secure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def secure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use LDAPS (LDAP over SSL/TLS) instead of plain LDAP.
         """
         return pulumi.get(self, "secure")
 
     @secure.setter
-    def secure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def secure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "secure", value)
 
     @_builtins.property
     @pulumi.getter
-    def server2(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server2(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fallback LDAP server hostname or IP address.
         """
         return pulumi.get(self, "server2")
 
     @server2.setter
-    def server2(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server2(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server2", value)
 
     @_builtins.property
     @pulumi.getter(name="sslVersion")
-    def ssl_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SSL/TLS version (tlsv1, tlsv1*1, tlsv1*2, tlsv1_3).
         """
         return pulumi.get(self, "ssl_version")
 
     @ssl_version.setter
-    def ssl_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_version", value)
 
     @_builtins.property
     @pulumi.getter(name="syncAttributes")
-    def sync_attributes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_attributes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Comma-separated list of attributes to sync (e.g., 'email=mail,firstname=givenName').
         """
         return pulumi.get(self, "sync_attributes")
 
     @sync_attributes.setter
-    def sync_attributes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_attributes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="syncDefaultsOptions")
-    def sync_defaults_options(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_defaults_options(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default synchronization options. Format: comma-separated 'key=value' pairs. Valid keys: 'scope' (users/groups/both), 'enable-new' (1/0), 'remove-vanished' (semicolon-separated: entry/acl/properties), 'full' (deprecated), 'purge' (deprecated). Example: 'scope=users,enable-new=1,remove-vanished=entry;acl'.
         """
         return pulumi.get(self, "sync_defaults_options")
 
     @sync_defaults_options.setter
-    def sync_defaults_options(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_defaults_options(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_defaults_options", value)
 
     @_builtins.property
     @pulumi.getter(name="userAttr")
-    def user_attr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_attr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         LDAP attribute representing the username.
         """
         return pulumi.get(self, "user_attr")
 
     @user_attr.setter
-    def user_attr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_attr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_attr", value)
 
     @_builtins.property
     @pulumi.getter(name="userClasses")
-    def user_classes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_classes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         LDAP objectClasses for users (comma-separated).
         """
         return pulumi.get(self, "user_classes")
 
     @user_classes.setter
-    def user_classes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_classes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_classes", value)
 
     @_builtins.property
     @pulumi.getter
-    def verify(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def verify(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Verify LDAP server SSL certificate.
         """
         return pulumi.get(self, "verify")
 
     @verify.setter
-    def verify(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def verify(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "verify", value)
 
 
 @pulumi.input_type
 class _LdapLegacyState:
     def __init__(__self__, *,
-                 base_dn: Optional[pulumi.Input[_builtins.str]] = None,
-                 bind_dn: Optional[pulumi.Input[_builtins.str]] = None,
-                 bind_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 ca_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 case_sensitive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cert_key_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_classes: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_dn: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_name_attr: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 realm: Optional[pulumi.Input[_builtins.str]] = None,
-                 secure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 server1: Optional[pulumi.Input[_builtins.str]] = None,
-                 server2: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_attributes: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_defaults_options: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_attr: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_classes: Optional[pulumi.Input[_builtins.str]] = None,
-                 verify: Optional[pulumi.Input[_builtins.bool]] = None):
+                 base_dn: pulumi.Input[Optional[_builtins.str]] = None,
+                 bind_dn: pulumi.Input[Optional[_builtins.str]] = None,
+                 bind_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 case_sensitive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cert_key_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_classes: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_dn: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name_attr: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 realm: pulumi.Input[Optional[_builtins.str]] = None,
+                 secure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 server1: pulumi.Input[Optional[_builtins.str]] = None,
+                 server2: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_attributes: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_defaults_options: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_attr: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_classes: pulumi.Input[Optional[_builtins.str]] = None,
+                 verify: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering LdapLegacy resources.
 
@@ -559,315 +559,315 @@ class _LdapLegacyState:
 
     @_builtins.property
     @pulumi.getter(name="baseDn")
-    def base_dn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def base_dn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         LDAP base DN for user searches (e.g., 'ou=users,dc=example,dc=com').
         """
         return pulumi.get(self, "base_dn")
 
     @base_dn.setter
-    def base_dn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def base_dn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "base_dn", value)
 
     @_builtins.property
     @pulumi.getter(name="bindDn")
-    def bind_dn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bind_dn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         LDAP bind DN for authentication (e.g., 'cn=admin,dc=example,dc=com').
         """
         return pulumi.get(self, "bind_dn")
 
     @bind_dn.setter
-    def bind_dn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bind_dn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bind_dn", value)
 
     @_builtins.property
     @pulumi.getter(name="bindPassword")
-    def bind_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bind_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password for the bind DN. Note: stored in Proxmox but not returned by API.
         """
         return pulumi.get(self, "bind_password")
 
     @bind_password.setter
-    def bind_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bind_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bind_password", value)
 
     @_builtins.property
     @pulumi.getter(name="caPath")
-    def ca_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to CA certificate file for SSL verification.
         """
         return pulumi.get(self, "ca_path")
 
     @ca_path.setter
-    def ca_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_path", value)
 
     @_builtins.property
     @pulumi.getter(name="caseSensitive")
-    def case_sensitive(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def case_sensitive(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable case-sensitive username matching.
         """
         return pulumi.get(self, "case_sensitive")
 
     @case_sensitive.setter
-    def case_sensitive(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def case_sensitive(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "case_sensitive", value)
 
     @_builtins.property
     @pulumi.getter(name="certKeyPath")
-    def cert_key_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_key_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to client certificate key.
         """
         return pulumi.get(self, "cert_key_path")
 
     @cert_key_path.setter
-    def cert_key_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_key_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_key_path", value)
 
     @_builtins.property
     @pulumi.getter(name="certPath")
-    def cert_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cert_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path to client certificate for SSL authentication.
         """
         return pulumi.get(self, "cert_path")
 
     @cert_path.setter
-    def cert_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cert_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cert_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the realm.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def default(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use this realm as the default for login.
         """
         return pulumi.get(self, "default")
 
     @default.setter
-    def default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def default(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "default", value)
 
     @_builtins.property
     @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         LDAP filter for user searches.
         """
         return pulumi.get(self, "filter")
 
     @filter.setter
-    def filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "filter", value)
 
     @_builtins.property
     @pulumi.getter(name="groupClasses")
-    def group_classes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_classes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         LDAP objectClasses for groups (comma-separated).
         """
         return pulumi.get(self, "group_classes")
 
     @group_classes.setter
-    def group_classes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_classes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_classes", value)
 
     @_builtins.property
     @pulumi.getter(name="groupDn")
-    def group_dn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_dn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         LDAP base DN for group searches.
         """
         return pulumi.get(self, "group_dn")
 
     @group_dn.setter
-    def group_dn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_dn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_dn", value)
 
     @_builtins.property
     @pulumi.getter(name="groupFilter")
-    def group_filter(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_filter(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         LDAP filter for group searches.
         """
         return pulumi.get(self, "group_filter")
 
     @group_filter.setter
-    def group_filter(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_filter(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_filter", value)
 
     @_builtins.property
     @pulumi.getter(name="groupNameAttr")
-    def group_name_attr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group_name_attr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         LDAP attribute representing the group name.
         """
         return pulumi.get(self, "group_name_attr")
 
     @group_name_attr.setter
-    def group_name_attr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group_name_attr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group_name_attr", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         LDAP connection mode (ldap, ldaps, ldap+starttls).
         """
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         LDAP server port. Default: 389 (LDAP) or 636 (LDAPS).
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def realm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def realm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Realm identifier (e.g., 'example.com').
         """
         return pulumi.get(self, "realm")
 
     @realm.setter
-    def realm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def realm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "realm", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Deprecated by Proxmox: use mode instead.""")
-    def secure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def secure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use LDAPS (LDAP over SSL/TLS) instead of plain LDAP.
         """
         return pulumi.get(self, "secure")
 
     @secure.setter
-    def secure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def secure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "secure", value)
 
     @_builtins.property
     @pulumi.getter
-    def server1(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server1(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Primary LDAP server hostname or IP address.
         """
         return pulumi.get(self, "server1")
 
     @server1.setter
-    def server1(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server1(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server1", value)
 
     @_builtins.property
     @pulumi.getter
-    def server2(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server2(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Fallback LDAP server hostname or IP address.
         """
         return pulumi.get(self, "server2")
 
     @server2.setter
-    def server2(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server2(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server2", value)
 
     @_builtins.property
     @pulumi.getter(name="sslVersion")
-    def ssl_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ssl_version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         SSL/TLS version (tlsv1, tlsv1*1, tlsv1*2, tlsv1_3).
         """
         return pulumi.get(self, "ssl_version")
 
     @ssl_version.setter
-    def ssl_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ssl_version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ssl_version", value)
 
     @_builtins.property
     @pulumi.getter(name="syncAttributes")
-    def sync_attributes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_attributes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Comma-separated list of attributes to sync (e.g., 'email=mail,firstname=givenName').
         """
         return pulumi.get(self, "sync_attributes")
 
     @sync_attributes.setter
-    def sync_attributes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_attributes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="syncDefaultsOptions")
-    def sync_defaults_options(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sync_defaults_options(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default synchronization options. Format: comma-separated 'key=value' pairs. Valid keys: 'scope' (users/groups/both), 'enable-new' (1/0), 'remove-vanished' (semicolon-separated: entry/acl/properties), 'full' (deprecated), 'purge' (deprecated). Example: 'scope=users,enable-new=1,remove-vanished=entry;acl'.
         """
         return pulumi.get(self, "sync_defaults_options")
 
     @sync_defaults_options.setter
-    def sync_defaults_options(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sync_defaults_options(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sync_defaults_options", value)
 
     @_builtins.property
     @pulumi.getter(name="userAttr")
-    def user_attr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_attr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         LDAP attribute representing the username.
         """
         return pulumi.get(self, "user_attr")
 
     @user_attr.setter
-    def user_attr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_attr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_attr", value)
 
     @_builtins.property
     @pulumi.getter(name="userClasses")
-    def user_classes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_classes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         LDAP objectClasses for users (comma-separated).
         """
         return pulumi.get(self, "user_classes")
 
     @user_classes.setter
-    def user_classes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_classes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_classes", value)
 
     @_builtins.property
     @pulumi.getter
-    def verify(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def verify(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Verify LDAP server SSL certificate.
         """
         return pulumi.get(self, "verify")
 
     @verify.setter
-    def verify(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def verify(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "verify", value)
 
 
@@ -877,32 +877,32 @@ class LdapLegacy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 base_dn: Optional[pulumi.Input[_builtins.str]] = None,
-                 bind_dn: Optional[pulumi.Input[_builtins.str]] = None,
-                 bind_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 ca_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 case_sensitive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cert_key_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_classes: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_dn: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_name_attr: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 realm: Optional[pulumi.Input[_builtins.str]] = None,
-                 secure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 server1: Optional[pulumi.Input[_builtins.str]] = None,
-                 server2: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_attributes: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_defaults_options: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_attr: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_classes: Optional[pulumi.Input[_builtins.str]] = None,
-                 verify: Optional[pulumi.Input[_builtins.bool]] = None,
+                 base_dn: pulumi.Input[Optional[_builtins.str]] = None,
+                 bind_dn: pulumi.Input[Optional[_builtins.str]] = None,
+                 bind_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 case_sensitive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cert_key_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_classes: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_dn: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name_attr: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 realm: pulumi.Input[Optional[_builtins.str]] = None,
+                 secure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 server1: pulumi.Input[Optional[_builtins.str]] = None,
+                 server2: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_attributes: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_defaults_options: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_attr: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_classes: pulumi.Input[Optional[_builtins.str]] = None,
+                 verify: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         > **Deprecated:** Use `realm.Ldap` instead. This resource will be removed in v1.0.
@@ -1200,32 +1200,32 @@ class LdapLegacy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 base_dn: Optional[pulumi.Input[_builtins.str]] = None,
-                 bind_dn: Optional[pulumi.Input[_builtins.str]] = None,
-                 bind_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 ca_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 case_sensitive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cert_key_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 cert_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 default: Optional[pulumi.Input[_builtins.bool]] = None,
-                 filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_classes: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_dn: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_filter: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_name_attr: Optional[pulumi.Input[_builtins.str]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 realm: Optional[pulumi.Input[_builtins.str]] = None,
-                 secure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 server1: Optional[pulumi.Input[_builtins.str]] = None,
-                 server2: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssl_version: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_attributes: Optional[pulumi.Input[_builtins.str]] = None,
-                 sync_defaults_options: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_attr: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_classes: Optional[pulumi.Input[_builtins.str]] = None,
-                 verify: Optional[pulumi.Input[_builtins.bool]] = None,
+                 base_dn: pulumi.Input[Optional[_builtins.str]] = None,
+                 bind_dn: pulumi.Input[Optional[_builtins.str]] = None,
+                 bind_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 ca_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 case_sensitive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cert_key_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 cert_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 default: pulumi.Input[Optional[_builtins.bool]] = None,
+                 filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_classes: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_dn: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_filter: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name_attr: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 realm: pulumi.Input[Optional[_builtins.str]] = None,
+                 secure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 server1: pulumi.Input[Optional[_builtins.str]] = None,
+                 server2: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssl_version: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_attributes: pulumi.Input[Optional[_builtins.str]] = None,
+                 sync_defaults_options: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_attr: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_classes: pulumi.Input[Optional[_builtins.str]] = None,
+                 verify: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1279,32 +1279,32 @@ class LdapLegacy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            base_dn: Optional[pulumi.Input[_builtins.str]] = None,
-            bind_dn: Optional[pulumi.Input[_builtins.str]] = None,
-            bind_password: Optional[pulumi.Input[_builtins.str]] = None,
-            ca_path: Optional[pulumi.Input[_builtins.str]] = None,
-            case_sensitive: Optional[pulumi.Input[_builtins.bool]] = None,
-            cert_key_path: Optional[pulumi.Input[_builtins.str]] = None,
-            cert_path: Optional[pulumi.Input[_builtins.str]] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            default: Optional[pulumi.Input[_builtins.bool]] = None,
-            filter: Optional[pulumi.Input[_builtins.str]] = None,
-            group_classes: Optional[pulumi.Input[_builtins.str]] = None,
-            group_dn: Optional[pulumi.Input[_builtins.str]] = None,
-            group_filter: Optional[pulumi.Input[_builtins.str]] = None,
-            group_name_attr: Optional[pulumi.Input[_builtins.str]] = None,
-            mode: Optional[pulumi.Input[_builtins.str]] = None,
-            port: Optional[pulumi.Input[_builtins.int]] = None,
-            realm: Optional[pulumi.Input[_builtins.str]] = None,
-            secure: Optional[pulumi.Input[_builtins.bool]] = None,
-            server1: Optional[pulumi.Input[_builtins.str]] = None,
-            server2: Optional[pulumi.Input[_builtins.str]] = None,
-            ssl_version: Optional[pulumi.Input[_builtins.str]] = None,
-            sync_attributes: Optional[pulumi.Input[_builtins.str]] = None,
-            sync_defaults_options: Optional[pulumi.Input[_builtins.str]] = None,
-            user_attr: Optional[pulumi.Input[_builtins.str]] = None,
-            user_classes: Optional[pulumi.Input[_builtins.str]] = None,
-            verify: Optional[pulumi.Input[_builtins.bool]] = None) -> 'LdapLegacy':
+            base_dn: pulumi.Input[Optional[_builtins.str]] = None,
+            bind_dn: pulumi.Input[Optional[_builtins.str]] = None,
+            bind_password: pulumi.Input[Optional[_builtins.str]] = None,
+            ca_path: pulumi.Input[Optional[_builtins.str]] = None,
+            case_sensitive: pulumi.Input[Optional[_builtins.bool]] = None,
+            cert_key_path: pulumi.Input[Optional[_builtins.str]] = None,
+            cert_path: pulumi.Input[Optional[_builtins.str]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            default: pulumi.Input[Optional[_builtins.bool]] = None,
+            filter: pulumi.Input[Optional[_builtins.str]] = None,
+            group_classes: pulumi.Input[Optional[_builtins.str]] = None,
+            group_dn: pulumi.Input[Optional[_builtins.str]] = None,
+            group_filter: pulumi.Input[Optional[_builtins.str]] = None,
+            group_name_attr: pulumi.Input[Optional[_builtins.str]] = None,
+            mode: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            realm: pulumi.Input[Optional[_builtins.str]] = None,
+            secure: pulumi.Input[Optional[_builtins.bool]] = None,
+            server1: pulumi.Input[Optional[_builtins.str]] = None,
+            server2: pulumi.Input[Optional[_builtins.str]] = None,
+            ssl_version: pulumi.Input[Optional[_builtins.str]] = None,
+            sync_attributes: pulumi.Input[Optional[_builtins.str]] = None,
+            sync_defaults_options: pulumi.Input[Optional[_builtins.str]] = None,
+            user_attr: pulumi.Input[Optional[_builtins.str]] = None,
+            user_classes: pulumi.Input[Optional[_builtins.str]] = None,
+            verify: pulumi.Input[Optional[_builtins.bool]] = None) -> 'LdapLegacy':
         """
         Get an existing LdapLegacy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

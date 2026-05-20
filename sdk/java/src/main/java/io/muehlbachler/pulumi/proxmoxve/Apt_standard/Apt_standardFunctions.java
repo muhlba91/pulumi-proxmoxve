@@ -33,8 +33,8 @@ public final class Apt_standardFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.apt_standard.Apt_standardFunctions;
      * import com.pulumi.proxmoxve.apt.inputs.GetRepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -77,8 +77,8 @@ public final class Apt_standardFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.apt_standard.Apt_standardFunctions;
      * import com.pulumi.proxmoxve.apt.inputs.GetRepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -121,8 +121,8 @@ public final class Apt_standardFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.apt_standard.Apt_standardFunctions;
      * import com.pulumi.proxmoxve.apt.inputs.GetRepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -165,8 +165,8 @@ public final class Apt_standardFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.apt_standard.Apt_standardFunctions;
      * import com.pulumi.proxmoxve.apt.inputs.GetRepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -209,8 +209,8 @@ public final class Apt_standardFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.apt_standard.Apt_standardFunctions;
      * import com.pulumi.proxmoxve.apt.inputs.GetRepositoryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -255,8 +255,8 @@ public final class Apt_standardFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.apt_standard.Apt_standardFunctions;
      * import com.pulumi.proxmoxve.apt.inputs.GetRepositoryLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -301,8 +301,8 @@ public final class Apt_standardFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.apt_standard.Apt_standardFunctions;
      * import com.pulumi.proxmoxve.apt.inputs.GetRepositoryLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -347,8 +347,8 @@ public final class Apt_standardFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.apt_standard.Apt_standardFunctions;
      * import com.pulumi.proxmoxve.apt.inputs.GetRepositoryLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -393,8 +393,8 @@ public final class Apt_standardFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.apt_standard.Apt_standardFunctions;
      * import com.pulumi.proxmoxve.apt.inputs.GetRepositoryLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -439,8 +439,8 @@ public final class Apt_standardFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.apt_standard.Apt_standardFunctions;
      * import com.pulumi.proxmoxve.apt.inputs.GetRepositoryLegacyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

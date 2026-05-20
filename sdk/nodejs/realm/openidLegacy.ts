@@ -271,63 +271,63 @@ export interface OpenidLegacyState {
     /**
      * Authentication Context Class Reference values for the OpenID provider.
      */
-    acrValues?: pulumi.Input<string>;
+    acrValues?: pulumi.Input<string | undefined>;
     /**
      * Automatically create users on the Proxmox cluster if they do not exist.
      */
-    autocreate?: pulumi.Input<boolean>;
+    autocreate?: pulumi.Input<boolean | undefined>;
     /**
      * OpenID Connect Client ID.
      */
-    clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string | undefined>;
     /**
      * OpenID Connect Client Key (secret). Note: stored in Proxmox but not returned by API.
      */
-    clientKey?: pulumi.Input<string>;
+    clientKey?: pulumi.Input<string | undefined>;
     /**
      * Description of the realm.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Use this realm as the default for login.
      */
-    default?: pulumi.Input<boolean>;
+    default?: pulumi.Input<boolean | undefined>;
     /**
      * Automatically create groups from claims rather than using existing Proxmox VE groups.
      */
-    groupsAutocreate?: pulumi.Input<boolean>;
+    groupsAutocreate?: pulumi.Input<boolean | undefined>;
     /**
      * OpenID claim used to retrieve user group memberships.
      */
-    groupsClaim?: pulumi.Input<string>;
+    groupsClaim?: pulumi.Input<string | undefined>;
     /**
      * Replace assigned groups on login instead of appending to existing ones.
      */
-    groupsOverwrite?: pulumi.Input<boolean>;
+    groupsOverwrite?: pulumi.Input<boolean | undefined>;
     /**
      * OpenID Connect issuer URL. Proxmox uses OpenID Connect Discovery to configure the provider.
      */
-    issuerUrl?: pulumi.Input<string>;
+    issuerUrl?: pulumi.Input<string | undefined>;
     /**
      * Specifies whether the authorization server prompts for reauthentication and/or consent (e.g., 'none', 'login', 'consent', 'select_account').
      */
-    prompt?: pulumi.Input<string>;
+    prompt?: pulumi.Input<string | undefined>;
     /**
      * Query the OpenID userinfo endpoint for claims. Required when the identity provider does not include claims in the ID token.
      */
-    queryUserinfo?: pulumi.Input<boolean>;
+    queryUserinfo?: pulumi.Input<boolean | undefined>;
     /**
      * Realm identifier (e.g., 'my-oidc').
      */
-    realm?: pulumi.Input<string>;
+    realm?: pulumi.Input<string | undefined>;
     /**
      * Space-separated list of OpenID scopes to request.
      */
-    scopes?: pulumi.Input<string>;
+    scopes?: pulumi.Input<string | undefined>;
     /**
      * OpenID claim used to generate the unique username. Common values are `subject`, `username`, `email`, and `upn`.
      */
-    usernameClaim?: pulumi.Input<string>;
+    usernameClaim?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -337,11 +337,11 @@ export interface OpenidLegacyArgs {
     /**
      * Authentication Context Class Reference values for the OpenID provider.
      */
-    acrValues?: pulumi.Input<string>;
+    acrValues?: pulumi.Input<string | undefined>;
     /**
      * Automatically create users on the Proxmox cluster if they do not exist.
      */
-    autocreate?: pulumi.Input<boolean>;
+    autocreate?: pulumi.Input<boolean | undefined>;
     /**
      * OpenID Connect Client ID.
      */
@@ -349,27 +349,27 @@ export interface OpenidLegacyArgs {
     /**
      * OpenID Connect Client Key (secret). Note: stored in Proxmox but not returned by API.
      */
-    clientKey?: pulumi.Input<string>;
+    clientKey?: pulumi.Input<string | undefined>;
     /**
      * Description of the realm.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Use this realm as the default for login.
      */
-    default?: pulumi.Input<boolean>;
+    default?: pulumi.Input<boolean | undefined>;
     /**
      * Automatically create groups from claims rather than using existing Proxmox VE groups.
      */
-    groupsAutocreate?: pulumi.Input<boolean>;
+    groupsAutocreate?: pulumi.Input<boolean | undefined>;
     /**
      * OpenID claim used to retrieve user group memberships.
      */
-    groupsClaim?: pulumi.Input<string>;
+    groupsClaim?: pulumi.Input<string | undefined>;
     /**
      * Replace assigned groups on login instead of appending to existing ones.
      */
-    groupsOverwrite?: pulumi.Input<boolean>;
+    groupsOverwrite?: pulumi.Input<boolean | undefined>;
     /**
      * OpenID Connect issuer URL. Proxmox uses OpenID Connect Discovery to configure the provider.
      */
@@ -377,11 +377,11 @@ export interface OpenidLegacyArgs {
     /**
      * Specifies whether the authorization server prompts for reauthentication and/or consent (e.g., 'none', 'login', 'consent', 'select_account').
      */
-    prompt?: pulumi.Input<string>;
+    prompt?: pulumi.Input<string | undefined>;
     /**
      * Query the OpenID userinfo endpoint for claims. Required when the identity provider does not include claims in the ID token.
      */
-    queryUserinfo?: pulumi.Input<boolean>;
+    queryUserinfo?: pulumi.Input<boolean | undefined>;
     /**
      * Realm identifier (e.g., 'my-oidc').
      */
@@ -389,9 +389,9 @@ export interface OpenidLegacyArgs {
     /**
      * Space-separated list of OpenID scopes to request.
      */
-    scopes?: pulumi.Input<string>;
+    scopes?: pulumi.Input<string | undefined>;
     /**
      * OpenID claim used to generate the unique username. Common values are `subject`, `username`, `email`, and `upn`.
      */
-    usernameClaim?: pulumi.Input<string>;
+    usernameClaim?: pulumi.Input<string | undefined>;
 }

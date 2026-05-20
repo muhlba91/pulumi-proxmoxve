@@ -34,8 +34,8 @@ import javax.annotation.Nullable;
  * import io.muehlbachler.pulumi.proxmoxve.storage.Directory;
  * import io.muehlbachler.pulumi.proxmoxve.storage.DirectoryArgs;
  * import com.pulumi.proxmoxve.storage.inputs.DirectoryBackupsArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -55,8 +55,8 @@ import javax.annotation.Nullable;
  *             .shared(true)
  *             .disable(false)
  *             .backups(DirectoryBackupsArgs.builder()
- *                 .maxProtectedBackups(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(5) (example.pp:9,27-28)))
- *                 .keepDaily(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(7) (example.pp:10,27-28)))
+ *                 .maxProtectedBackups(5)
+ *                 .keepDaily(7)
  *                 .build())
  *             .build());
  * 

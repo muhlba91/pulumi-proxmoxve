@@ -303,6 +303,15 @@ type FileLegacy struct {
 	// Timeout for uploading ISO/VSTMPL files in
 	// seconds (defaults to 1800).
 	TimeoutUpload pulumi.IntPtrOutput `pulumi:"timeoutUpload"`
+	// The SSH upload mode for non-API content types
+	// (snippets, backups, etc.). Set to `stream` to pipe the file through an SSH
+	// shell session (uses `sudo` where required), or `sftp` to upload via the SFTP
+	// subsystem. Use `sftp` when the target host's SSH server only allows the
+	// SFTP subsystem; note that the SFTP path does not invoke `sudo`, so the SSH
+	// user must have direct write permission to the target directory. Has no
+	// effect for `iso`, `vztmpl`, and `import` content types, which always use
+	// the HTTP API. Defaults to `stream`.
+	UploadMode pulumi.StringPtrOutput `pulumi:"uploadMode"`
 }
 
 // NewFileLegacy registers a new resource with the given unique name, arguments, and options.
@@ -370,6 +379,15 @@ type fileLegacyState struct {
 	// Timeout for uploading ISO/VSTMPL files in
 	// seconds (defaults to 1800).
 	TimeoutUpload *int `pulumi:"timeoutUpload"`
+	// The SSH upload mode for non-API content types
+	// (snippets, backups, etc.). Set to `stream` to pipe the file through an SSH
+	// shell session (uses `sudo` where required), or `sftp` to upload via the SFTP
+	// subsystem. Use `sftp` when the target host's SSH server only allows the
+	// SFTP subsystem; note that the SFTP path does not invoke `sudo`, so the SSH
+	// user must have direct write permission to the target directory. Has no
+	// effect for `iso`, `vztmpl`, and `import` content types, which always use
+	// the HTTP API. Defaults to `stream`.
+	UploadMode *string `pulumi:"uploadMode"`
 }
 
 type FileLegacyState struct {
@@ -402,6 +420,15 @@ type FileLegacyState struct {
 	// Timeout for uploading ISO/VSTMPL files in
 	// seconds (defaults to 1800).
 	TimeoutUpload pulumi.IntPtrInput
+	// The SSH upload mode for non-API content types
+	// (snippets, backups, etc.). Set to `stream` to pipe the file through an SSH
+	// shell session (uses `sudo` where required), or `sftp` to upload via the SFTP
+	// subsystem. Use `sftp` when the target host's SSH server only allows the
+	// SFTP subsystem; note that the SFTP path does not invoke `sudo`, so the SSH
+	// user must have direct write permission to the target directory. Has no
+	// effect for `iso`, `vztmpl`, and `import` content types, which always use
+	// the HTTP API. Defaults to `stream`.
+	UploadMode pulumi.StringPtrInput
 }
 
 func (FileLegacyState) ElementType() reflect.Type {
@@ -430,6 +457,15 @@ type fileLegacyArgs struct {
 	// Timeout for uploading ISO/VSTMPL files in
 	// seconds (defaults to 1800).
 	TimeoutUpload *int `pulumi:"timeoutUpload"`
+	// The SSH upload mode for non-API content types
+	// (snippets, backups, etc.). Set to `stream` to pipe the file through an SSH
+	// shell session (uses `sudo` where required), or `sftp` to upload via the SFTP
+	// subsystem. Use `sftp` when the target host's SSH server only allows the
+	// SFTP subsystem; note that the SFTP path does not invoke `sudo`, so the SSH
+	// user must have direct write permission to the target directory. Has no
+	// effect for `iso`, `vztmpl`, and `import` content types, which always use
+	// the HTTP API. Defaults to `stream`.
+	UploadMode *string `pulumi:"uploadMode"`
 }
 
 // The set of arguments for constructing a FileLegacy resource.
@@ -455,6 +491,15 @@ type FileLegacyArgs struct {
 	// Timeout for uploading ISO/VSTMPL files in
 	// seconds (defaults to 1800).
 	TimeoutUpload pulumi.IntPtrInput
+	// The SSH upload mode for non-API content types
+	// (snippets, backups, etc.). Set to `stream` to pipe the file through an SSH
+	// shell session (uses `sudo` where required), or `sftp` to upload via the SFTP
+	// subsystem. Use `sftp` when the target host's SSH server only allows the
+	// SFTP subsystem; note that the SFTP path does not invoke `sudo`, so the SSH
+	// user must have direct write permission to the target directory. Has no
+	// effect for `iso`, `vztmpl`, and `import` content types, which always use
+	// the HTTP API. Defaults to `stream`.
+	UploadMode pulumi.StringPtrInput
 }
 
 func (FileLegacyArgs) ElementType() reflect.Type {
@@ -607,6 +652,18 @@ func (o FileLegacyOutput) SourceRaw() FileLegacySourceRawPtrOutput {
 // seconds (defaults to 1800).
 func (o FileLegacyOutput) TimeoutUpload() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FileLegacy) pulumi.IntPtrOutput { return v.TimeoutUpload }).(pulumi.IntPtrOutput)
+}
+
+// The SSH upload mode for non-API content types
+// (snippets, backups, etc.). Set to `stream` to pipe the file through an SSH
+// shell session (uses `sudo` where required), or `sftp` to upload via the SFTP
+// subsystem. Use `sftp` when the target host's SSH server only allows the
+// SFTP subsystem; note that the SFTP path does not invoke `sudo`, so the SSH
+// user must have direct write permission to the target directory. Has no
+// effect for `iso`, `vztmpl`, and `import` content types, which always use
+// the HTTP API. Defaults to `stream`.
+func (o FileLegacyOutput) UploadMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FileLegacy) pulumi.StringPtrOutput { return v.UploadMode }).(pulumi.StringPtrOutput)
 }
 
 type FileLegacyArrayOutput struct{ *pulumi.OutputState }

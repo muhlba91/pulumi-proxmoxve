@@ -58,10 +58,10 @@ class TimeLegacyArgs:
 @pulumi.input_type
 class _TimeLegacyState:
     def __init__(__self__, *,
-                 local_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 utc_time: Optional[pulumi.Input[_builtins.str]] = None):
+                 local_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 utc_time: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering TimeLegacy resources.
 
@@ -81,50 +81,50 @@ class _TimeLegacyState:
 
     @_builtins.property
     @pulumi.getter(name="localTime")
-    def local_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The node's local time.
         """
         return pulumi.get(self, "local_time")
 
     @local_time.setter
-    def local_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_time", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeName")
-    def node_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A node name.
         """
         return pulumi.get(self, "node_name")
 
     @node_name.setter
-    def node_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_name", value)
 
     @_builtins.property
     @pulumi.getter(name="timeZone")
-    def time_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def time_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The node's time zone.
         """
         return pulumi.get(self, "time_zone")
 
     @time_zone.setter
-    def time_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def time_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "time_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="utcTime")
-    def utc_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def utc_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The node's time formatted as UTC.
         """
         return pulumi.get(self, "utc_time")
 
     @utc_time.setter
-    def utc_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def utc_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "utc_time", value)
 
 
@@ -134,8 +134,8 @@ class TimeLegacy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages the time for a specific node.
@@ -209,8 +209,8 @@ class TimeLegacy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 time_zone: Optional[pulumi.Input[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 time_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -238,10 +238,10 @@ class TimeLegacy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            local_time: Optional[pulumi.Input[_builtins.str]] = None,
-            node_name: Optional[pulumi.Input[_builtins.str]] = None,
-            time_zone: Optional[pulumi.Input[_builtins.str]] = None,
-            utc_time: Optional[pulumi.Input[_builtins.str]] = None) -> 'TimeLegacy':
+            local_time: pulumi.Input[Optional[_builtins.str]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            time_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            utc_time: pulumi.Input[Optional[_builtins.str]] = None) -> 'TimeLegacy':
         """
         Get an existing TimeLegacy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * // This will fetch the set of all HA resource identifiers...
  * const all = proxmoxve.getHaresources({});
  * // ...which we will go through in order to fetch the whole record for each resource.
- * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: proxmoxve.getHaresource({
+ * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: proxmoxve.getHaresource({
  *     resourceId: __value,
  * }) }), {}));
  * export const proxmoxHaresourcesFull = example;
@@ -88,7 +88,7 @@ export interface GetHaresourceResult {
  * // This will fetch the set of all HA resource identifiers...
  * const all = proxmoxve.getHaresources({});
  * // ...which we will go through in order to fetch the whole record for each resource.
- * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: proxmoxve.getHaresource({
+ * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: proxmoxve.getHaresource({
  *     resourceId: __value,
  * }) }), {}));
  * export const proxmoxHaresourcesFull = example;

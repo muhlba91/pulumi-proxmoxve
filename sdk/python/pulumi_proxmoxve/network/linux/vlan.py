@@ -20,17 +20,17 @@ __all__ = ['VlanArgs', 'Vlan']
 class VlanArgs:
     def __init__(__self__, *,
                  node_name: pulumi.Input[_builtins.str],
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 address6: Optional[pulumi.Input[_builtins.str]] = None,
-                 autostart: Optional[pulumi.Input[_builtins.bool]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway6: Optional[pulumi.Input[_builtins.str]] = None,
-                 interface: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout_reload: Optional[pulumi.Input[_builtins.int]] = None,
-                 vlan: Optional[pulumi.Input[_builtins.int]] = None):
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 address6: pulumi.Input[Optional[_builtins.str]] = None,
+                 autostart: pulumi.Input[Optional[_builtins.bool]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway6: pulumi.Input[Optional[_builtins.str]] = None,
+                 interface: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout_reload: pulumi.Input[Optional[_builtins.int]] = None,
+                 vlan: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Vlan resource.
 
@@ -85,152 +85,152 @@ class VlanArgs:
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The interface IPv4/CIDR address.
         """
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter
-    def address6(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address6(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The interface IPv6/CIDR address.
         """
         return pulumi.get(self, "address6")
 
     @address6.setter
-    def address6(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address6(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address6", value)
 
     @_builtins.property
     @pulumi.getter
-    def autostart(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def autostart(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Automatically start interface on boot (defaults to `true`).
         """
         return pulumi.get(self, "autostart")
 
     @autostart.setter
-    def autostart(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def autostart(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "autostart", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Comment for the interface.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default gateway address.
         """
         return pulumi.get(self, "gateway")
 
     @gateway.setter
-    def gateway(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway", value)
 
     @_builtins.property
     @pulumi.getter
-    def gateway6(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway6(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default IPv6 gateway address.
         """
         return pulumi.get(self, "gateway6")
 
     @gateway6.setter
-    def gateway6(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway6(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway6", value)
 
     @_builtins.property
     @pulumi.getter
-    def interface(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interface(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VLAN raw device. See also `name`.
         """
         return pulumi.get(self, "interface")
 
     @interface.setter
-    def interface(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interface(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interface", value)
 
     @_builtins.property
     @pulumi.getter
-    def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mtu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The interface MTU.
         """
         return pulumi.get(self, "mtu")
 
     @mtu.setter
-    def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mtu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mtu", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The interface name. Either add the VLAN tag number to an existing interface name, e.g. `ens18.21` (and do not set `interface` and `vlan`), or use custom name, e.g. `vlan_lab` (`interface` and `vlan` are then required).
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutReload")
-    def timeout_reload(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_reload(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timeout for network reload operations in seconds (defaults to `100`).
         """
         return pulumi.get(self, "timeout_reload")
 
     @timeout_reload.setter
-    def timeout_reload(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_reload(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_reload", value)
 
     @_builtins.property
     @pulumi.getter
-    def vlan(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vlan(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The VLAN tag. See also `name`.
         """
         return pulumi.get(self, "vlan")
 
     @vlan.setter
-    def vlan(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vlan(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vlan", value)
 
 
 @pulumi.input_type
 class _VlanState:
     def __init__(__self__, *,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 address6: Optional[pulumi.Input[_builtins.str]] = None,
-                 autostart: Optional[pulumi.Input[_builtins.bool]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway6: Optional[pulumi.Input[_builtins.str]] = None,
-                 interface: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout_reload: Optional[pulumi.Input[_builtins.int]] = None,
-                 vlan: Optional[pulumi.Input[_builtins.int]] = None):
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 address6: pulumi.Input[Optional[_builtins.str]] = None,
+                 autostart: pulumi.Input[Optional[_builtins.bool]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway6: pulumi.Input[Optional[_builtins.str]] = None,
+                 interface: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout_reload: pulumi.Input[Optional[_builtins.int]] = None,
+                 vlan: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Vlan resources.
 
@@ -274,146 +274,146 @@ class _VlanState:
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The interface IPv4/CIDR address.
         """
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter
-    def address6(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address6(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The interface IPv6/CIDR address.
         """
         return pulumi.get(self, "address6")
 
     @address6.setter
-    def address6(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address6(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address6", value)
 
     @_builtins.property
     @pulumi.getter
-    def autostart(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def autostart(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Automatically start interface on boot (defaults to `true`).
         """
         return pulumi.get(self, "autostart")
 
     @autostart.setter
-    def autostart(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def autostart(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "autostart", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Comment for the interface.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default gateway address.
         """
         return pulumi.get(self, "gateway")
 
     @gateway.setter
-    def gateway(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway", value)
 
     @_builtins.property
     @pulumi.getter
-    def gateway6(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway6(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default IPv6 gateway address.
         """
         return pulumi.get(self, "gateway6")
 
     @gateway6.setter
-    def gateway6(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway6(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway6", value)
 
     @_builtins.property
     @pulumi.getter
-    def interface(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interface(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VLAN raw device. See also `name`.
         """
         return pulumi.get(self, "interface")
 
     @interface.setter
-    def interface(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interface(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interface", value)
 
     @_builtins.property
     @pulumi.getter
-    def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mtu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The interface MTU.
         """
         return pulumi.get(self, "mtu")
 
     @mtu.setter
-    def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mtu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mtu", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The interface name. Either add the VLAN tag number to an existing interface name, e.g. `ens18.21` (and do not set `interface` and `vlan`), or use custom name, e.g. `vlan_lab` (`interface` and `vlan` are then required).
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeName")
-    def node_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the node.
         """
         return pulumi.get(self, "node_name")
 
     @node_name.setter
-    def node_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_name", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutReload")
-    def timeout_reload(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_reload(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timeout for network reload operations in seconds (defaults to `100`).
         """
         return pulumi.get(self, "timeout_reload")
 
     @timeout_reload.setter
-    def timeout_reload(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_reload(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_reload", value)
 
     @_builtins.property
     @pulumi.getter
-    def vlan(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vlan(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The VLAN tag. See also `name`.
         """
         return pulumi.get(self, "vlan")
 
     @vlan.setter
-    def vlan(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vlan(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vlan", value)
 
 
@@ -423,18 +423,18 @@ class Vlan(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 address6: Optional[pulumi.Input[_builtins.str]] = None,
-                 autostart: Optional[pulumi.Input[_builtins.bool]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway6: Optional[pulumi.Input[_builtins.str]] = None,
-                 interface: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout_reload: Optional[pulumi.Input[_builtins.int]] = None,
-                 vlan: Optional[pulumi.Input[_builtins.int]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 address6: pulumi.Input[Optional[_builtins.str]] = None,
+                 autostart: pulumi.Input[Optional[_builtins.bool]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway6: pulumi.Input[Optional[_builtins.str]] = None,
+                 interface: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout_reload: pulumi.Input[Optional[_builtins.int]] = None,
+                 vlan: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Manages a Linux VLAN network interface in a Proxmox VE node.
@@ -538,18 +538,18 @@ class Vlan(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 address6: Optional[pulumi.Input[_builtins.str]] = None,
-                 autostart: Optional[pulumi.Input[_builtins.bool]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway6: Optional[pulumi.Input[_builtins.str]] = None,
-                 interface: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeout_reload: Optional[pulumi.Input[_builtins.int]] = None,
-                 vlan: Optional[pulumi.Input[_builtins.int]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 address6: pulumi.Input[Optional[_builtins.str]] = None,
+                 autostart: pulumi.Input[Optional[_builtins.bool]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway6: pulumi.Input[Optional[_builtins.str]] = None,
+                 interface: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeout_reload: pulumi.Input[Optional[_builtins.int]] = None,
+                 vlan: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -583,18 +583,18 @@ class Vlan(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            address: Optional[pulumi.Input[_builtins.str]] = None,
-            address6: Optional[pulumi.Input[_builtins.str]] = None,
-            autostart: Optional[pulumi.Input[_builtins.bool]] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            gateway: Optional[pulumi.Input[_builtins.str]] = None,
-            gateway6: Optional[pulumi.Input[_builtins.str]] = None,
-            interface: Optional[pulumi.Input[_builtins.str]] = None,
-            mtu: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            node_name: Optional[pulumi.Input[_builtins.str]] = None,
-            timeout_reload: Optional[pulumi.Input[_builtins.int]] = None,
-            vlan: Optional[pulumi.Input[_builtins.int]] = None) -> 'Vlan':
+            address: pulumi.Input[Optional[_builtins.str]] = None,
+            address6: pulumi.Input[Optional[_builtins.str]] = None,
+            autostart: pulumi.Input[Optional[_builtins.bool]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway6: pulumi.Input[Optional[_builtins.str]] = None,
+            interface: pulumi.Input[Optional[_builtins.str]] = None,
+            mtu: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            timeout_reload: pulumi.Input[Optional[_builtins.int]] = None,
+            vlan: pulumi.Input[Optional[_builtins.int]] = None) -> 'Vlan':
         """
         Get an existing Vlan resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

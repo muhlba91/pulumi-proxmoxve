@@ -114,15 +114,15 @@ export interface UsbState {
     /**
      * The comment of this USB hardware mapping.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The actual map of devices for the hardware mapping.
      */
-    maps?: pulumi.Input<pulumi.Input<inputs.hardware.mapping.UsbMap>[]>;
+    maps?: pulumi.Input<pulumi.Input<inputs.hardware.mapping.UsbMap>[] | undefined>;
     /**
      * The name of this hardware mapping.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -132,7 +132,7 @@ export interface UsbArgs {
     /**
      * The comment of this USB hardware mapping.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The actual map of devices for the hardware mapping.
      */
@@ -140,5 +140,5 @@ export interface UsbArgs {
     /**
      * The name of this hardware mapping.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

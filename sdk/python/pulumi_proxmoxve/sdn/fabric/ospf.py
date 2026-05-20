@@ -73,9 +73,9 @@ class OspfArgs:
 @pulumi.input_type
 class _OspfState:
     def __init__(__self__, *,
-                 area: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 area: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Ospf resources.
 
@@ -92,38 +92,38 @@ class _OspfState:
 
     @_builtins.property
     @pulumi.getter
-    def area(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def area(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         OSPF area. Either a IPv4 address or a 32-bit number. Gets validated in rust.
         """
         return pulumi.get(self, "area")
 
     @area.setter
-    def area(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def area(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "area", value)
 
     @_builtins.property
     @pulumi.getter(name="ipPrefix")
-    def ip_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPv4 prefix cidr for the fabric.
         """
         return pulumi.get(self, "ip_prefix")
 
     @ip_prefix.setter
-    def ip_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the SDN fabric.
         """
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_id", value)
 
 
@@ -133,9 +133,9 @@ class Ospf(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 area: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 area: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         OSPF Fabric in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
@@ -172,9 +172,9 @@ class Ospf(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 area: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 area: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -205,9 +205,9 @@ class Ospf(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            area: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'Ospf':
+            area: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Ospf':
         """
         Get an existing Ospf resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -37,8 +37,8 @@ import javax.annotation.Nullable;
  * import io.muehlbachler.pulumi.proxmoxve.cluster.OptionsLegacyArgs;
  * import com.pulumi.proxmoxve.cluster.inputs.OptionsLegacyNextIdArgs;
  * import com.pulumi.proxmoxve.cluster.inputs.OptionsLegacyNotifyArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -54,14 +54,14 @@ import javax.annotation.Nullable;
  *             .language("en")
  *             .keyboard("pl")
  *             .emailFrom("ged}{@literal @}{@code gont.earthsea")
- *             .bandwidthLimitMigration(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(555555) (example.pp:4,29-35)))
- *             .bandwidthLimitDefault(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(666666) (example.pp:5,29-35)))
- *             .maxWorkers(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(5) (example.pp:6,29-30)))
+ *             .bandwidthLimitMigration(555555)
+ *             .bandwidthLimitDefault(666666)
+ *             .maxWorkers(5)
  *             .migrationCidr("10.0.0.0/8")
  *             .migrationType("secure")
  *             .nextId(OptionsLegacyNextIdArgs.builder()
- *                 .lower(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:10,13-16)))
- *                 .upper(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(9.99999999e+08) (example.pp:11,13-22)))
+ *                 .lower(100)
+ *                 .upper(999999999)
  *                 .build())
  *             .notify(OptionsLegacyNotifyArgs.builder()
  *                 .haFencingMode("never")

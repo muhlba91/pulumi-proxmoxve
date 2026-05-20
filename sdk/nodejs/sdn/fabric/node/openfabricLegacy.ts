@@ -105,23 +105,23 @@ export interface OpenfabricLegacyState {
     /**
      * The unique identifier of the SDN fabric.
      */
-    fabricId?: pulumi.Input<string>;
+    fabricId?: pulumi.Input<string | undefined>;
     /**
      * Set of interfaces associated with the fabric node.
      */
-    interfaceNames?: pulumi.Input<pulumi.Input<string>[]>;
+    interfaceNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * IPv4 address for the fabric node.
      */
-    ip?: pulumi.Input<string>;
+    ip?: pulumi.Input<string | undefined>;
     /**
      * IPv6 address for the fabric node.
      */
-    ip6?: pulumi.Input<string>;
+    ip6?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the SDN fabric node.
      */
-    nodeId?: pulumi.Input<string>;
+    nodeId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -139,11 +139,11 @@ export interface OpenfabricLegacyArgs {
     /**
      * IPv4 address for the fabric node.
      */
-    ip?: pulumi.Input<string>;
+    ip?: pulumi.Input<string | undefined>;
     /**
      * IPv6 address for the fabric node.
      */
-    ip6?: pulumi.Input<string>;
+    ip6?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the SDN fabric node.
      */

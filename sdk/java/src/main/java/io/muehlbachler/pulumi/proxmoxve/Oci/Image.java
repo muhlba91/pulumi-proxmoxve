@@ -30,8 +30,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import io.muehlbachler.pulumi.proxmoxve.oci.Image;
  * import io.muehlbachler.pulumi.proxmoxve.oci.ImageArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *             .nodeName("pve")
  *             .datastoreId("local")
  *             .reference("docker.io/library/debian:bookworm")
- *             .uploadTimeout(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(900) (example.pp:18,24-27)))
+ *             .uploadTimeout(900)
  *             .overwrite(false)
  *             .overwriteUnmanaged(true)
  *             .build());

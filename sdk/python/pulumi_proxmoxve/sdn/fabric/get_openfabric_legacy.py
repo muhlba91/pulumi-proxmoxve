@@ -118,7 +118,7 @@ def get_openfabric_legacy(id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         ip6_prefix=pulumi.get(__ret__, 'ip6_prefix'),
         ip_prefix=pulumi.get(__ret__, 'ip_prefix'))
-def get_openfabric_legacy_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_openfabric_legacy_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOpenfabricLegacyResult]:
     """
     > **Deprecated:** Use `sdn/fabric.Openfabric` instead. This data source will be removed in v1.0.

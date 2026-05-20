@@ -114,19 +114,19 @@ export interface TimeLegacyState {
     /**
      * The node's local time.
      */
-    localTime?: pulumi.Input<string>;
+    localTime?: pulumi.Input<string | undefined>;
     /**
      * A node name.
      */
-    nodeName?: pulumi.Input<string>;
+    nodeName?: pulumi.Input<string | undefined>;
     /**
      * The node's time zone.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone?: pulumi.Input<string | undefined>;
     /**
      * The node's time formatted as UTC.
      */
-    utcTime?: pulumi.Input<string>;
+    utcTime?: pulumi.Input<string | undefined>;
 }
 
 /**

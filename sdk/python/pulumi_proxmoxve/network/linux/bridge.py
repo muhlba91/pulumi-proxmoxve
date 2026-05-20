@@ -20,17 +20,18 @@ __all__ = ['BridgeArgs', 'Bridge']
 class BridgeArgs:
     def __init__(__self__, *,
                  node_name: pulumi.Input[_builtins.str],
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 address6: Optional[pulumi.Input[_builtins.str]] = None,
-                 autostart: Optional[pulumi.Input[_builtins.bool]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway6: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeout_reload: Optional[pulumi.Input[_builtins.int]] = None,
-                 vlan_aware: Optional[pulumi.Input[_builtins.bool]] = None):
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 address6: pulumi.Input[Optional[_builtins.str]] = None,
+                 autostart: pulumi.Input[Optional[_builtins.bool]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway6: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timeout_reload: pulumi.Input[Optional[_builtins.int]] = None,
+                 vids: pulumi.Input[Optional[_builtins.str]] = None,
+                 vlan_aware: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Bridge resource.
 
@@ -45,6 +46,7 @@ class BridgeArgs:
         :param pulumi.Input[_builtins.str] name: The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ports: The interface bridge ports.
         :param pulumi.Input[_builtins.int] timeout_reload: Timeout for network reload operations in seconds (defaults to `100`).
+        :param pulumi.Input[_builtins.str] vids: VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `"2-4094"`, `"1 20 130"`, or `"1 10-20 30"`). Requires `vlan_aware = true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
         :param pulumi.Input[_builtins.bool] vlan_aware: Whether the interface bridge is VLAN aware (defaults to `false`).
         """
         pulumi.set(__self__, "node_name", node_name)
@@ -68,6 +70,8 @@ class BridgeArgs:
             pulumi.set(__self__, "ports", ports)
         if timeout_reload is not None:
             pulumi.set(__self__, "timeout_reload", timeout_reload)
+        if vids is not None:
+            pulumi.set(__self__, "vids", vids)
         if vlan_aware is not None:
             pulumi.set(__self__, "vlan_aware", vlan_aware)
 
@@ -85,152 +89,165 @@ class BridgeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The interface IPv4/CIDR address.
         """
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter
-    def address6(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address6(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The interface IPv6/CIDR address.
         """
         return pulumi.get(self, "address6")
 
     @address6.setter
-    def address6(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address6(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address6", value)
 
     @_builtins.property
     @pulumi.getter
-    def autostart(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def autostart(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Automatically start interface on boot (defaults to `true`).
         """
         return pulumi.get(self, "autostart")
 
     @autostart.setter
-    def autostart(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def autostart(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "autostart", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Comment for the interface.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default gateway address.
         """
         return pulumi.get(self, "gateway")
 
     @gateway.setter
-    def gateway(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway", value)
 
     @_builtins.property
     @pulumi.getter
-    def gateway6(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway6(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default IPv6 gateway address.
         """
         return pulumi.get(self, "gateway6")
 
     @gateway6.setter
-    def gateway6(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway6(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway6", value)
 
     @_builtins.property
     @pulumi.getter
-    def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mtu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The interface MTU.
         """
         return pulumi.get(self, "mtu")
 
     @mtu.setter
-    def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mtu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mtu", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The interface bridge ports.
         """
         return pulumi.get(self, "ports")
 
     @ports.setter
-    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ports", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutReload")
-    def timeout_reload(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_reload(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timeout for network reload operations in seconds (defaults to `100`).
         """
         return pulumi.get(self, "timeout_reload")
 
     @timeout_reload.setter
-    def timeout_reload(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_reload(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_reload", value)
 
     @_builtins.property
+    @pulumi.getter
+    def vids(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `"2-4094"`, `"1 20 130"`, or `"1 10-20 30"`). Requires `vlan_aware = true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
+        """
+        return pulumi.get(self, "vids")
+
+    @vids.setter
+    def vids(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "vids", value)
+
+    @_builtins.property
     @pulumi.getter(name="vlanAware")
-    def vlan_aware(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vlan_aware(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the interface bridge is VLAN aware (defaults to `false`).
         """
         return pulumi.get(self, "vlan_aware")
 
     @vlan_aware.setter
-    def vlan_aware(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vlan_aware(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vlan_aware", value)
 
 
 @pulumi.input_type
 class _BridgeState:
     def __init__(__self__, *,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 address6: Optional[pulumi.Input[_builtins.str]] = None,
-                 autostart: Optional[pulumi.Input[_builtins.bool]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway6: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeout_reload: Optional[pulumi.Input[_builtins.int]] = None,
-                 vlan_aware: Optional[pulumi.Input[_builtins.bool]] = None):
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 address6: pulumi.Input[Optional[_builtins.str]] = None,
+                 autostart: pulumi.Input[Optional[_builtins.bool]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway6: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timeout_reload: pulumi.Input[Optional[_builtins.int]] = None,
+                 vids: pulumi.Input[Optional[_builtins.str]] = None,
+                 vlan_aware: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Bridge resources.
 
@@ -245,6 +262,7 @@ class _BridgeState:
         :param pulumi.Input[_builtins.str] node_name: The name of the node.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ports: The interface bridge ports.
         :param pulumi.Input[_builtins.int] timeout_reload: Timeout for network reload operations in seconds (defaults to `100`).
+        :param pulumi.Input[_builtins.str] vids: VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `"2-4094"`, `"1 20 130"`, or `"1 10-20 30"`). Requires `vlan_aware = true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
         :param pulumi.Input[_builtins.bool] vlan_aware: Whether the interface bridge is VLAN aware (defaults to `false`).
         """
         if address is not None:
@@ -269,151 +287,165 @@ class _BridgeState:
             pulumi.set(__self__, "ports", ports)
         if timeout_reload is not None:
             pulumi.set(__self__, "timeout_reload", timeout_reload)
+        if vids is not None:
+            pulumi.set(__self__, "vids", vids)
         if vlan_aware is not None:
             pulumi.set(__self__, "vlan_aware", vlan_aware)
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The interface IPv4/CIDR address.
         """
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter
-    def address6(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address6(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The interface IPv6/CIDR address.
         """
         return pulumi.get(self, "address6")
 
     @address6.setter
-    def address6(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address6(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address6", value)
 
     @_builtins.property
     @pulumi.getter
-    def autostart(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def autostart(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Automatically start interface on boot (defaults to `true`).
         """
         return pulumi.get(self, "autostart")
 
     @autostart.setter
-    def autostart(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def autostart(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "autostart", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Comment for the interface.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default gateway address.
         """
         return pulumi.get(self, "gateway")
 
     @gateway.setter
-    def gateway(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway", value)
 
     @_builtins.property
     @pulumi.getter
-    def gateway6(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway6(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default IPv6 gateway address.
         """
         return pulumi.get(self, "gateway6")
 
     @gateway6.setter
-    def gateway6(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway6(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway6", value)
 
     @_builtins.property
     @pulumi.getter
-    def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mtu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The interface MTU.
         """
         return pulumi.get(self, "mtu")
 
     @mtu.setter
-    def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mtu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mtu", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The interface name. Commonly vmbr[N], where 0 ≤ N ≤ 4094 (vmbr0 - vmbr4094), but can be any string containing only letters, numbers, and underscores (_), starting with a letter and at most 10 characters long.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeName")
-    def node_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the node.
         """
         return pulumi.get(self, "node_name")
 
     @node_name.setter
-    def node_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def ports(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ports(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The interface bridge ports.
         """
         return pulumi.get(self, "ports")
 
     @ports.setter
-    def ports(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ports(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ports", value)
 
     @_builtins.property
     @pulumi.getter(name="timeoutReload")
-    def timeout_reload(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout_reload(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Timeout for network reload operations in seconds (defaults to `100`).
         """
         return pulumi.get(self, "timeout_reload")
 
     @timeout_reload.setter
-    def timeout_reload(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout_reload(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout_reload", value)
 
     @_builtins.property
+    @pulumi.getter
+    def vids(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `"2-4094"`, `"1 20 130"`, or `"1 10-20 30"`). Requires `vlan_aware = true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
+        """
+        return pulumi.get(self, "vids")
+
+    @vids.setter
+    def vids(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "vids", value)
+
+    @_builtins.property
     @pulumi.getter(name="vlanAware")
-    def vlan_aware(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def vlan_aware(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the interface bridge is VLAN aware (defaults to `false`).
         """
         return pulumi.get(self, "vlan_aware")
 
     @vlan_aware.setter
-    def vlan_aware(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def vlan_aware(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "vlan_aware", value)
 
 
@@ -423,18 +455,19 @@ class Bridge(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 address6: Optional[pulumi.Input[_builtins.str]] = None,
-                 autostart: Optional[pulumi.Input[_builtins.bool]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway6: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeout_reload: Optional[pulumi.Input[_builtins.int]] = None,
-                 vlan_aware: Optional[pulumi.Input[_builtins.bool]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 address6: pulumi.Input[Optional[_builtins.str]] = None,
+                 autostart: pulumi.Input[Optional[_builtins.bool]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway6: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timeout_reload: pulumi.Input[Optional[_builtins.int]] = None,
+                 vids: pulumi.Input[Optional[_builtins.str]] = None,
+                 vlan_aware: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Manages a Linux Bridge network interface in a Proxmox VE node.
@@ -454,6 +487,8 @@ class Bridge(pulumi.CustomResource):
             address="99.99.99.99/16",
             comment="vmbr99 comment",
             ports=["ens18.99"],
+            vlan_aware=True,
+            vids="2-4094",
             opts = pulumi.ResourceOptions(depends_on=[vlan99]))
         ```
 
@@ -480,6 +515,7 @@ class Bridge(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] node_name: The name of the node.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ports: The interface bridge ports.
         :param pulumi.Input[_builtins.int] timeout_reload: Timeout for network reload operations in seconds (defaults to `100`).
+        :param pulumi.Input[_builtins.str] vids: VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `"2-4094"`, `"1 20 130"`, or `"1 10-20 30"`). Requires `vlan_aware = true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
         :param pulumi.Input[_builtins.bool] vlan_aware: Whether the interface bridge is VLAN aware (defaults to `false`).
         """
         ...
@@ -506,6 +542,8 @@ class Bridge(pulumi.CustomResource):
             address="99.99.99.99/16",
             comment="vmbr99 comment",
             ports=["ens18.99"],
+            vlan_aware=True,
+            vids="2-4094",
             opts = pulumi.ResourceOptions(depends_on=[vlan99]))
         ```
 
@@ -534,18 +572,19 @@ class Bridge(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 address6: Optional[pulumi.Input[_builtins.str]] = None,
-                 autostart: Optional[pulumi.Input[_builtins.bool]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway6: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 timeout_reload: Optional[pulumi.Input[_builtins.int]] = None,
-                 vlan_aware: Optional[pulumi.Input[_builtins.bool]] = None,
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 address6: pulumi.Input[Optional[_builtins.str]] = None,
+                 autostart: pulumi.Input[Optional[_builtins.bool]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway6: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timeout_reload: pulumi.Input[Optional[_builtins.int]] = None,
+                 vids: pulumi.Input[Optional[_builtins.str]] = None,
+                 vlan_aware: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -568,6 +607,7 @@ class Bridge(pulumi.CustomResource):
             __props__.__dict__["node_name"] = node_name
             __props__.__dict__["ports"] = ports
             __props__.__dict__["timeout_reload"] = timeout_reload
+            __props__.__dict__["vids"] = vids
             __props__.__dict__["vlan_aware"] = vlan_aware
         super(Bridge, __self__).__init__(
             'proxmoxve:network/linux/bridge:Bridge',
@@ -579,18 +619,19 @@ class Bridge(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            address: Optional[pulumi.Input[_builtins.str]] = None,
-            address6: Optional[pulumi.Input[_builtins.str]] = None,
-            autostart: Optional[pulumi.Input[_builtins.bool]] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            gateway: Optional[pulumi.Input[_builtins.str]] = None,
-            gateway6: Optional[pulumi.Input[_builtins.str]] = None,
-            mtu: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            node_name: Optional[pulumi.Input[_builtins.str]] = None,
-            ports: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            timeout_reload: Optional[pulumi.Input[_builtins.int]] = None,
-            vlan_aware: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Bridge':
+            address: pulumi.Input[Optional[_builtins.str]] = None,
+            address6: pulumi.Input[Optional[_builtins.str]] = None,
+            autostart: pulumi.Input[Optional[_builtins.bool]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway6: pulumi.Input[Optional[_builtins.str]] = None,
+            mtu: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ports: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            timeout_reload: pulumi.Input[Optional[_builtins.int]] = None,
+            vids: pulumi.Input[Optional[_builtins.str]] = None,
+            vlan_aware: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Bridge':
         """
         Get an existing Bridge resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -609,6 +650,7 @@ class Bridge(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] node_name: The name of the node.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ports: The interface bridge ports.
         :param pulumi.Input[_builtins.int] timeout_reload: Timeout for network reload operations in seconds (defaults to `100`).
+        :param pulumi.Input[_builtins.str] vids: VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `"2-4094"`, `"1 20 130"`, or `"1 10-20 30"`). Requires `vlan_aware = true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
         :param pulumi.Input[_builtins.bool] vlan_aware: Whether the interface bridge is VLAN aware (defaults to `false`).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -626,6 +668,7 @@ class Bridge(pulumi.CustomResource):
         __props__.__dict__["node_name"] = node_name
         __props__.__dict__["ports"] = ports
         __props__.__dict__["timeout_reload"] = timeout_reload
+        __props__.__dict__["vids"] = vids
         __props__.__dict__["vlan_aware"] = vlan_aware
         return Bridge(resource_name, opts=opts, __props__=__props__)
 
@@ -716,6 +759,14 @@ class Bridge(pulumi.CustomResource):
         Timeout for network reload operations in seconds (defaults to `100`).
         """
         return pulumi.get(self, "timeout_reload")
+
+    @_builtins.property
+    @pulumi.getter
+    def vids(self) -> pulumi.Output[_builtins.str]:
+        """
+        VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `"2-4094"`, `"1 20 130"`, or `"1 10-20 30"`). Requires `vlan_aware = true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
+        """
+        return pulumi.get(self, "vids")
 
     @_builtins.property
     @pulumi.getter(name="vlanAware")

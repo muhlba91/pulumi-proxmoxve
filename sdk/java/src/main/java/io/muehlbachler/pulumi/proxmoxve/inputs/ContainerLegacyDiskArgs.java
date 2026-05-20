@@ -34,16 +34,16 @@ public final class ContainerLegacyDiskArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The identifier for the datastore to create the
-     * disk in (defaults to &lt;span pulumi-lang-nodejs=&#34;`local`&#34; pulumi-lang-dotnet=&#34;`Local`&#34; pulumi-lang-go=&#34;`local`&#34; pulumi-lang-python=&#34;`local`&#34; pulumi-lang-yaml=&#34;`local`&#34; pulumi-lang-java=&#34;`local`&#34;&gt;`local`&lt;/span&gt;).
+     * The Proxmox storage ID where the rootfs
+     * volume is created (defaults to &lt;span pulumi-lang-nodejs=&#34;`local`&#34; pulumi-lang-dotnet=&#34;`Local`&#34; pulumi-lang-go=&#34;`local`&#34; pulumi-lang-python=&#34;`local`&#34; pulumi-lang-yaml=&#34;`local`&#34; pulumi-lang-java=&#34;`local`&#34;&gt;`local`&lt;/span&gt;).
      * 
      */
     @Import(name="datastoreId")
     private @Nullable Output<String> datastoreId;
 
     /**
-     * @return The identifier for the datastore to create the
-     * disk in (defaults to &lt;span pulumi-lang-nodejs=&#34;`local`&#34; pulumi-lang-dotnet=&#34;`Local`&#34; pulumi-lang-go=&#34;`local`&#34; pulumi-lang-python=&#34;`local`&#34; pulumi-lang-yaml=&#34;`local`&#34; pulumi-lang-java=&#34;`local`&#34;&gt;`local`&lt;/span&gt;).
+     * @return The Proxmox storage ID where the rootfs
+     * volume is created (defaults to &lt;span pulumi-lang-nodejs=&#34;`local`&#34; pulumi-lang-dotnet=&#34;`Local`&#34; pulumi-lang-go=&#34;`local`&#34; pulumi-lang-python=&#34;`local`&#34; pulumi-lang-yaml=&#34;`local`&#34; pulumi-lang-java=&#34;`local`&#34;&gt;`local`&lt;/span&gt;).
      * 
      */
     public Optional<Output<String>> datastoreId() {
@@ -183,8 +183,8 @@ public final class ContainerLegacyDiskArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param datastoreId The identifier for the datastore to create the
-         * disk in (defaults to &lt;span pulumi-lang-nodejs=&#34;`local`&#34; pulumi-lang-dotnet=&#34;`Local`&#34; pulumi-lang-go=&#34;`local`&#34; pulumi-lang-python=&#34;`local`&#34; pulumi-lang-yaml=&#34;`local`&#34; pulumi-lang-java=&#34;`local`&#34;&gt;`local`&lt;/span&gt;).
+         * @param datastoreId The Proxmox storage ID where the rootfs
+         * volume is created (defaults to &lt;span pulumi-lang-nodejs=&#34;`local`&#34; pulumi-lang-dotnet=&#34;`Local`&#34; pulumi-lang-go=&#34;`local`&#34; pulumi-lang-python=&#34;`local`&#34; pulumi-lang-yaml=&#34;`local`&#34; pulumi-lang-java=&#34;`local`&#34;&gt;`local`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -195,8 +195,8 @@ public final class ContainerLegacyDiskArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param datastoreId The identifier for the datastore to create the
-         * disk in (defaults to &lt;span pulumi-lang-nodejs=&#34;`local`&#34; pulumi-lang-dotnet=&#34;`Local`&#34; pulumi-lang-go=&#34;`local`&#34; pulumi-lang-python=&#34;`local`&#34; pulumi-lang-yaml=&#34;`local`&#34; pulumi-lang-java=&#34;`local`&#34;&gt;`local`&lt;/span&gt;).
+         * @param datastoreId The Proxmox storage ID where the rootfs
+         * volume is created (defaults to &lt;span pulumi-lang-nodejs=&#34;`local`&#34; pulumi-lang-dotnet=&#34;`Local`&#34; pulumi-lang-go=&#34;`local`&#34; pulumi-lang-python=&#34;`local`&#34; pulumi-lang-yaml=&#34;`local`&#34; pulumi-lang-java=&#34;`local`&#34;&gt;`local`&lt;/span&gt;).
          * 
          * @return builder
          * 

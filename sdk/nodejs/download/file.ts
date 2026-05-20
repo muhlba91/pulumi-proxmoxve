@@ -227,55 +227,55 @@ export interface FileState {
     /**
      * The expected checksum of the file.
      */
-    checksum?: pulumi.Input<string>;
+    checksum?: pulumi.Input<string | undefined>;
     /**
      * The algorithm to calculate the checksum of the file. Must be `md5` | `sha1` | `sha224` | `sha256` | `sha384` | `sha512`.
      */
-    checksumAlgorithm?: pulumi.Input<string>;
+    checksumAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * The file content type. Must be `iso` or `import` for VM images or `vztmpl` for LXC images.
      */
-    contentType?: pulumi.Input<string>;
+    contentType?: pulumi.Input<string | undefined>;
     /**
      * The identifier for the target datastore.
      */
-    datastoreId?: pulumi.Input<string>;
+    datastoreId?: pulumi.Input<string | undefined>;
     /**
      * Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
      */
-    decompressionAlgorithm?: pulumi.Input<string>;
+    decompressionAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
      */
-    fileName?: pulumi.Input<string>;
+    fileName?: pulumi.Input<string | undefined>;
     /**
      * The node name.
      */
-    nodeName?: pulumi.Input<string>;
+    nodeName?: pulumi.Input<string | undefined>;
     /**
      * By default `true`. If `true`, the file will be replaced when either: (1) the file size in the datastore has changed outside of Terraform, or (2) the file size reported by the URL differs from the downloaded file (detecting upstream updates like new cloud image versions). If `false`, no size checks are performed and the file is never automatically replaced.
      */
-    overwrite?: pulumi.Input<boolean>;
+    overwrite?: pulumi.Input<boolean | undefined>;
     /**
      * If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
      */
-    overwriteUnmanaged?: pulumi.Input<boolean>;
+    overwriteUnmanaged?: pulumi.Input<boolean | undefined>;
     /**
      * The file size in PVE.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * The file download timeout seconds. Default is 600 (10min).
      */
-    uploadTimeout?: pulumi.Input<number>;
+    uploadTimeout?: pulumi.Input<number | undefined>;
     /**
      * The URL to download the file from. Must match regex: `https?://.*`.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * By default `true`. If `false`, no SSL/TLS certificates will be verified.
      */
-    verify?: pulumi.Input<boolean>;
+    verify?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -285,11 +285,11 @@ export interface FileArgs {
     /**
      * The expected checksum of the file.
      */
-    checksum?: pulumi.Input<string>;
+    checksum?: pulumi.Input<string | undefined>;
     /**
      * The algorithm to calculate the checksum of the file. Must be `md5` | `sha1` | `sha224` | `sha256` | `sha384` | `sha512`.
      */
-    checksumAlgorithm?: pulumi.Input<string>;
+    checksumAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * The file content type. Must be `iso` or `import` for VM images or `vztmpl` for LXC images.
      */
@@ -301,11 +301,11 @@ export interface FileArgs {
     /**
      * Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
      */
-    decompressionAlgorithm?: pulumi.Input<string>;
+    decompressionAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
      */
-    fileName?: pulumi.Input<string>;
+    fileName?: pulumi.Input<string | undefined>;
     /**
      * The node name.
      */
@@ -313,15 +313,15 @@ export interface FileArgs {
     /**
      * By default `true`. If `true`, the file will be replaced when either: (1) the file size in the datastore has changed outside of Terraform, or (2) the file size reported by the URL differs from the downloaded file (detecting upstream updates like new cloud image versions). If `false`, no size checks are performed and the file is never automatically replaced.
      */
-    overwrite?: pulumi.Input<boolean>;
+    overwrite?: pulumi.Input<boolean | undefined>;
     /**
      * If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
      */
-    overwriteUnmanaged?: pulumi.Input<boolean>;
+    overwriteUnmanaged?: pulumi.Input<boolean | undefined>;
     /**
      * The file download timeout seconds. Default is 600 (10min).
      */
-    uploadTimeout?: pulumi.Input<number>;
+    uploadTimeout?: pulumi.Input<number | undefined>;
     /**
      * The URL to download the file from. Must match regex: `https?://.*`.
      */
@@ -329,5 +329,5 @@ export interface FileArgs {
     /**
      * By default `true`. If `false`, no SSL/TLS certificates will be verified.
      */
-    verify?: pulumi.Input<boolean>;
+    verify?: pulumi.Input<boolean | undefined>;
 }

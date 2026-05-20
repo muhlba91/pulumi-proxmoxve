@@ -114,11 +114,11 @@ export interface GetContainerLegacyOutputArgs {
     /**
      * The status of the container.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Whether the container is a template.
      */
-    template?: pulumi.Input<boolean>;
+    template?: pulumi.Input<boolean | undefined>;
     /**
      * The container identifier.
      */

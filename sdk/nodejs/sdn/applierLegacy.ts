@@ -78,11 +78,11 @@ export interface ApplierLegacyState {
     /**
      * Whether to apply SDN configuration on resource creation. Defaults to true.
      */
-    onCreate?: pulumi.Input<boolean>;
+    onCreate?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to apply SDN configuration on resource destruction. Defaults to true.
      */
-    onDestroy?: pulumi.Input<boolean>;
+    onDestroy?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -92,9 +92,9 @@ export interface ApplierLegacyArgs {
     /**
      * Whether to apply SDN configuration on resource creation. Defaults to true.
      */
-    onCreate?: pulumi.Input<boolean>;
+    onCreate?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to apply SDN configuration on resource destruction. Defaults to true.
      */
-    onDestroy?: pulumi.Input<boolean>;
+    onDestroy?: pulumi.Input<boolean | undefined>;
 }

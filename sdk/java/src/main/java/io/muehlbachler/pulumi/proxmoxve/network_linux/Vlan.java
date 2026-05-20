@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import io.muehlbachler.pulumi.proxmoxve.network.Vlan;
  * import io.muehlbachler.pulumi.proxmoxve.network.VlanArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *             .nodeName("pve")
  *             .name("vlan_lab")
  *             .interface_("eno0")
- *             .vlan(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(98) (example.pp:13,15-17)))
+ *             .vlan(98)
  *             .comment("VLAN 98")
  *             .build());
  * 

@@ -152,7 +152,7 @@ def get_plugin(plugin: Optional[_builtins.str] = None,
         plugin=pulumi.get(__ret__, 'plugin'),
         type=pulumi.get(__ret__, 'type'),
         validation_delay=pulumi.get(__ret__, 'validation_delay'))
-def get_plugin_output(plugin: Optional[pulumi.Input[_builtins.str]] = None,
+def get_plugin_output(plugin: pulumi.Input[Optional[_builtins.str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPluginResult]:
     """
     Retrieves a single ACME plugin by plugin ID name.

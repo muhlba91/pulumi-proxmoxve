@@ -170,51 +170,51 @@ export interface VlanState {
     /**
      * The interface IPv4/CIDR address.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The interface IPv6/CIDR address.
      */
-    address6?: pulumi.Input<string>;
+    address6?: pulumi.Input<string | undefined>;
     /**
      * Automatically start interface on boot (defaults to `true`).
      */
-    autostart?: pulumi.Input<boolean>;
+    autostart?: pulumi.Input<boolean | undefined>;
     /**
      * Comment for the interface.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Default gateway address.
      */
-    gateway?: pulumi.Input<string>;
+    gateway?: pulumi.Input<string | undefined>;
     /**
      * Default IPv6 gateway address.
      */
-    gateway6?: pulumi.Input<string>;
+    gateway6?: pulumi.Input<string | undefined>;
     /**
      * The VLAN raw device. See also `name`.
      */
-    interface?: pulumi.Input<string>;
+    interface?: pulumi.Input<string | undefined>;
     /**
      * The interface MTU.
      */
-    mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number | undefined>;
     /**
      * The interface name. Either add the VLAN tag number to an existing interface name, e.g. `ens18.21` (and do not set `interface` and `vlan`), or use custom name, e.g. `vlanLab` (`interface` and `vlan` are then required).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the node.
      */
-    nodeName?: pulumi.Input<string>;
+    nodeName?: pulumi.Input<string | undefined>;
     /**
      * Timeout for network reload operations in seconds (defaults to `100`).
      */
-    timeoutReload?: pulumi.Input<number>;
+    timeoutReload?: pulumi.Input<number | undefined>;
     /**
      * The VLAN tag. See also `name`.
      */
-    vlan?: pulumi.Input<number>;
+    vlan?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -224,39 +224,39 @@ export interface VlanArgs {
     /**
      * The interface IPv4/CIDR address.
      */
-    address?: pulumi.Input<string>;
+    address?: pulumi.Input<string | undefined>;
     /**
      * The interface IPv6/CIDR address.
      */
-    address6?: pulumi.Input<string>;
+    address6?: pulumi.Input<string | undefined>;
     /**
      * Automatically start interface on boot (defaults to `true`).
      */
-    autostart?: pulumi.Input<boolean>;
+    autostart?: pulumi.Input<boolean | undefined>;
     /**
      * Comment for the interface.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Default gateway address.
      */
-    gateway?: pulumi.Input<string>;
+    gateway?: pulumi.Input<string | undefined>;
     /**
      * Default IPv6 gateway address.
      */
-    gateway6?: pulumi.Input<string>;
+    gateway6?: pulumi.Input<string | undefined>;
     /**
      * The VLAN raw device. See also `name`.
      */
-    interface?: pulumi.Input<string>;
+    interface?: pulumi.Input<string | undefined>;
     /**
      * The interface MTU.
      */
-    mtu?: pulumi.Input<number>;
+    mtu?: pulumi.Input<number | undefined>;
     /**
      * The interface name. Either add the VLAN tag number to an existing interface name, e.g. `ens18.21` (and do not set `interface` and `vlan`), or use custom name, e.g. `vlanLab` (`interface` and `vlan` are then required).
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The name of the node.
      */
@@ -264,9 +264,9 @@ export interface VlanArgs {
     /**
      * Timeout for network reload operations in seconds (defaults to `100`).
      */
-    timeoutReload?: pulumi.Input<number>;
+    timeoutReload?: pulumi.Input<number | undefined>;
     /**
      * The VLAN tag. See also `name`.
      */
-    vlan?: pulumi.Input<number>;
+    vlan?: pulumi.Input<number | undefined>;
 }

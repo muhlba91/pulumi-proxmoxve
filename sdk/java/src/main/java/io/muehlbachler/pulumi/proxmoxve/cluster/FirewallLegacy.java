@@ -32,8 +32,8 @@ import javax.annotation.Nullable;
  * import io.muehlbachler.pulumi.proxmoxve.cluster.FirewallLegacy;
  * import io.muehlbachler.pulumi.proxmoxve.cluster.FirewallLegacyArgs;
  * import com.pulumi.proxmoxve.cluster.inputs.FirewallLegacyLogRatelimitArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *             .forwardPolicy("ACCEPT")
  *             .logRatelimit(FirewallLegacyLogRatelimitArgs.builder()
  *                 .enabled(false)
- *                 .burst(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(10) (example.pp:9,15-17)))
+ *                 .burst(10)
  *                 .rate("5/second")
  *                 .build())
  *             .build());

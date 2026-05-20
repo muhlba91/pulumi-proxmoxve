@@ -24,6 +24,12 @@ namespace Pulumi.ProxmoxVE.Inputs
         [Input("keyctl")]
         public Input<bool>? Keyctl { get; set; }
 
+        /// <summary>
+        /// Whether the container supports `mknod()` system call (defaults to `False`)
+        /// </summary>
+        [Input("mknod")]
+        public Input<bool>? Mknod { get; set; }
+
         [Input("mounts")]
         private InputList<string>? _mounts;
 

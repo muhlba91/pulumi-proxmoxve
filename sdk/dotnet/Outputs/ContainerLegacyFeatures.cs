@@ -22,6 +22,10 @@ namespace Pulumi.ProxmoxVE.Outputs
         /// </summary>
         public readonly bool? Keyctl;
         /// <summary>
+        /// Whether the container supports `mknod()` system call (defaults to `False`)
+        /// </summary>
+        public readonly bool? Mknod;
+        /// <summary>
         /// List of allowed mount types (`Cifs` or `Nfs`)
         /// </summary>
         public readonly ImmutableArray<string> Mounts;
@@ -36,12 +40,15 @@ namespace Pulumi.ProxmoxVE.Outputs
 
             bool? keyctl,
 
+            bool? mknod,
+
             ImmutableArray<string> mounts,
 
             bool? nesting)
         {
             Fuse = fuse;
             Keyctl = keyctl;
+            Mknod = mknod;
             Mounts = mounts;
             Nesting = nesting;
         }

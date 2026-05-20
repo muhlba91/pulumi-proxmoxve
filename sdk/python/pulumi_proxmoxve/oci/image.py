@@ -22,10 +22,10 @@ class ImageArgs:
                  datastore_id: pulumi.Input[_builtins.str],
                  node_name: pulumi.Input[_builtins.str],
                  reference: pulumi.Input[_builtins.str],
-                 file_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 overwrite: Optional[pulumi.Input[_builtins.bool]] = None,
-                 overwrite_unmanaged: Optional[pulumi.Input[_builtins.bool]] = None,
-                 upload_timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 file_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
+                 overwrite_unmanaged: pulumi.Input[Optional[_builtins.bool]] = None,
+                 upload_timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Image resource.
 
@@ -87,64 +87,64 @@ class ImageArgs:
 
     @_builtins.property
     @pulumi.getter(name="fileName")
-    def file_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The file name for the pulled OCI image. If not provided, it will be generated automatically. The file will be stored as a .tar file.
         """
         return pulumi.get(self, "file_name")
 
     @file_name.setter
-    def file_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def overwrite(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def overwrite(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         By default `true`. If `true` and the OCI image size has changed in the datastore, it will be replaced. If `false`, there will be no check.
         """
         return pulumi.get(self, "overwrite")
 
     @overwrite.setter
-    def overwrite(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def overwrite(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "overwrite", value)
 
     @_builtins.property
     @pulumi.getter(name="overwriteUnmanaged")
-    def overwrite_unmanaged(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def overwrite_unmanaged(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true` and an OCI image with the same name already exists in the datastore, it will be deleted and the new image will be pulled. If `false` and the image already exists, an error will be returned.
         """
         return pulumi.get(self, "overwrite_unmanaged")
 
     @overwrite_unmanaged.setter
-    def overwrite_unmanaged(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def overwrite_unmanaged(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "overwrite_unmanaged", value)
 
     @_builtins.property
     @pulumi.getter(name="uploadTimeout")
-    def upload_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def upload_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The OCI image pull timeout in seconds. Default is 600 (10min).
         """
         return pulumi.get(self, "upload_timeout")
 
     @upload_timeout.setter
-    def upload_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def upload_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "upload_timeout", value)
 
 
 @pulumi.input_type
 class _ImageState:
     def __init__(__self__, *,
-                 datastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 overwrite: Optional[pulumi.Input[_builtins.bool]] = None,
-                 overwrite_unmanaged: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reference: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 upload_timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
+                 overwrite_unmanaged: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reference: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 upload_timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Image resources.
 
@@ -176,98 +176,98 @@ class _ImageState:
 
     @_builtins.property
     @pulumi.getter(name="datastoreId")
-    def datastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datastore_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier for the target datastore.
         """
         return pulumi.get(self, "datastore_id")
 
     @datastore_id.setter
-    def datastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datastore_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datastore_id", value)
 
     @_builtins.property
     @pulumi.getter(name="fileName")
-    def file_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The file name for the pulled OCI image. If not provided, it will be generated automatically. The file will be stored as a .tar file.
         """
         return pulumi.get(self, "file_name")
 
     @file_name.setter
-    def file_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeName")
-    def node_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The node name.
         """
         return pulumi.get(self, "node_name")
 
     @node_name.setter
-    def node_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def overwrite(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def overwrite(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         By default `true`. If `true` and the OCI image size has changed in the datastore, it will be replaced. If `false`, there will be no check.
         """
         return pulumi.get(self, "overwrite")
 
     @overwrite.setter
-    def overwrite(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def overwrite(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "overwrite", value)
 
     @_builtins.property
     @pulumi.getter(name="overwriteUnmanaged")
-    def overwrite_unmanaged(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def overwrite_unmanaged(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true` and an OCI image with the same name already exists in the datastore, it will be deleted and the new image will be pulled. If `false` and the image already exists, an error will be returned.
         """
         return pulumi.get(self, "overwrite_unmanaged")
 
     @overwrite_unmanaged.setter
-    def overwrite_unmanaged(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def overwrite_unmanaged(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "overwrite_unmanaged", value)
 
     @_builtins.property
     @pulumi.getter
-    def reference(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def reference(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reference to the OCI image.
         """
         return pulumi.get(self, "reference")
 
     @reference.setter
-    def reference(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def reference(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "reference", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The image size in PVE.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
     @_builtins.property
     @pulumi.getter(name="uploadTimeout")
-    def upload_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def upload_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The OCI image pull timeout in seconds. Default is 600 (10min).
         """
         return pulumi.get(self, "upload_timeout")
 
     @upload_timeout.setter
-    def upload_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def upload_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "upload_timeout", value)
 
 
@@ -277,13 +277,13 @@ class Image(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 datastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 overwrite: Optional[pulumi.Input[_builtins.bool]] = None,
-                 overwrite_unmanaged: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reference: Optional[pulumi.Input[_builtins.str]] = None,
-                 upload_timeout: Optional[pulumi.Input[_builtins.int]] = None,
+                 datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
+                 overwrite_unmanaged: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reference: pulumi.Input[Optional[_builtins.str]] = None,
+                 upload_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Manages OCI images pulled from OCI registries using PVE oci-registry-pull API. Pulls OCI container images and stores them as tar files in Proxmox VE datastores.
@@ -372,13 +372,13 @@ class Image(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 datastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 overwrite: Optional[pulumi.Input[_builtins.bool]] = None,
-                 overwrite_unmanaged: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reference: Optional[pulumi.Input[_builtins.str]] = None,
-                 upload_timeout: Optional[pulumi.Input[_builtins.int]] = None,
+                 datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
+                 overwrite_unmanaged: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reference: pulumi.Input[Optional[_builtins.str]] = None,
+                 upload_timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -412,14 +412,14 @@ class Image(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            datastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-            file_name: Optional[pulumi.Input[_builtins.str]] = None,
-            node_name: Optional[pulumi.Input[_builtins.str]] = None,
-            overwrite: Optional[pulumi.Input[_builtins.bool]] = None,
-            overwrite_unmanaged: Optional[pulumi.Input[_builtins.bool]] = None,
-            reference: Optional[pulumi.Input[_builtins.str]] = None,
-            size: Optional[pulumi.Input[_builtins.int]] = None,
-            upload_timeout: Optional[pulumi.Input[_builtins.int]] = None) -> 'Image':
+            datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            file_name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
+            overwrite_unmanaged: pulumi.Input[Optional[_builtins.bool]] = None,
+            reference: pulumi.Input[Optional[_builtins.str]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            upload_timeout: pulumi.Input[Optional[_builtins.int]] = None) -> 'Image':
         """
         Get an existing Image resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

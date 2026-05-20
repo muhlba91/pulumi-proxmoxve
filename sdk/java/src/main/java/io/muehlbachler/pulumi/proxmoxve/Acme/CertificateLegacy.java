@@ -43,8 +43,8 @@ import javax.annotation.Nullable;
  * import io.muehlbachler.pulumi.proxmoxve.acme.PluginLegacy;
  * import io.muehlbachler.pulumi.proxmoxve.acme.PluginLegacyArgs;
  * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  *         var cloudflare = new PluginLegacy("cloudflare", PluginLegacyArgs.builder()
  *             .plugin("cloudflare")
  *             .api("cf")
- *             .validationDelay(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(120) (example.pp:22,21-24)))
+ *             .validationDelay(120)
  *             .data(Map.ofEntries(
  *                 Map.entry("CF_Account_ID", "your-cloudflare-account-id"),
  *                 Map.entry("CF_Token", "your-cloudflare-api-token"),

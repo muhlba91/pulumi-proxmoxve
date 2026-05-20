@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * const localNetwork = new proxmoxve.firewall.AliasLegacy("local_network", {
  *     nodeName: example.nodeName,
- *     vmId: example.vmId,
+ *     vmId: Number(example.vmId),
  *     name: "local_network",
  *     cidr: "192.168.0.0/23",
  *     comment: "Managed by Pulumi",
@@ -127,27 +127,27 @@ export interface AliasLegacyState {
     /**
      * Network/IP specification in CIDR format.
      */
-    cidr?: pulumi.Input<string>;
+    cidr?: pulumi.Input<string | undefined>;
     /**
      * Alias comment.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Container ID. Leave empty for cluster level aliases.
      */
-    containerId?: pulumi.Input<number>;
+    containerId?: pulumi.Input<number | undefined>;
     /**
      * Alias name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Node name. Leave empty for cluster level aliases.
      */
-    nodeName?: pulumi.Input<string>;
+    nodeName?: pulumi.Input<string | undefined>;
     /**
      * VM ID. Leave empty for cluster level aliases.
      */
-    vmId?: pulumi.Input<number>;
+    vmId?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -161,21 +161,21 @@ export interface AliasLegacyArgs {
     /**
      * Alias comment.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Container ID. Leave empty for cluster level aliases.
      */
-    containerId?: pulumi.Input<number>;
+    containerId?: pulumi.Input<number | undefined>;
     /**
      * Alias name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Node name. Leave empty for cluster level aliases.
      */
-    nodeName?: pulumi.Input<string>;
+    nodeName?: pulumi.Input<string | undefined>;
     /**
      * VM ID. Leave empty for cluster level aliases.
      */
-    vmId?: pulumi.Input<number>;
+    vmId?: pulumi.Input<number | undefined>;
 }

@@ -43,6 +43,8 @@ import (
 //				Ports: pulumi.StringArray{
 //					pulumi.String("ens18.99"),
 //				},
+//				VlanAware: pulumi.Bool(true),
+//				Vids:      pulumi.String("2-4094"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				vlan99,
 //			}))
@@ -88,6 +90,8 @@ type Bridge struct {
 	Ports pulumi.StringArrayOutput `pulumi:"ports"`
 	// Timeout for network reload operations in seconds (defaults to `100`).
 	TimeoutReload pulumi.IntOutput `pulumi:"timeoutReload"`
+	// VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `"2-4094"`, `"1 20 130"`, or `"1 10-20 30"`). Requires `vlanAware = true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
+	Vids pulumi.StringOutput `pulumi:"vids"`
 	// Whether the interface bridge is VLAN aware (defaults to `false`).
 	VlanAware pulumi.BoolOutput `pulumi:"vlanAware"`
 }
@@ -147,6 +151,8 @@ type bridgeState struct {
 	Ports []string `pulumi:"ports"`
 	// Timeout for network reload operations in seconds (defaults to `100`).
 	TimeoutReload *int `pulumi:"timeoutReload"`
+	// VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `"2-4094"`, `"1 20 130"`, or `"1 10-20 30"`). Requires `vlanAware = true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
+	Vids *string `pulumi:"vids"`
 	// Whether the interface bridge is VLAN aware (defaults to `false`).
 	VlanAware *bool `pulumi:"vlanAware"`
 }
@@ -174,6 +180,8 @@ type BridgeState struct {
 	Ports pulumi.StringArrayInput
 	// Timeout for network reload operations in seconds (defaults to `100`).
 	TimeoutReload pulumi.IntPtrInput
+	// VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `"2-4094"`, `"1 20 130"`, or `"1 10-20 30"`). Requires `vlanAware = true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
+	Vids pulumi.StringPtrInput
 	// Whether the interface bridge is VLAN aware (defaults to `false`).
 	VlanAware pulumi.BoolPtrInput
 }
@@ -205,6 +213,8 @@ type bridgeArgs struct {
 	Ports []string `pulumi:"ports"`
 	// Timeout for network reload operations in seconds (defaults to `100`).
 	TimeoutReload *int `pulumi:"timeoutReload"`
+	// VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `"2-4094"`, `"1 20 130"`, or `"1 10-20 30"`). Requires `vlanAware = true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
+	Vids *string `pulumi:"vids"`
 	// Whether the interface bridge is VLAN aware (defaults to `false`).
 	VlanAware *bool `pulumi:"vlanAware"`
 }
@@ -233,6 +243,8 @@ type BridgeArgs struct {
 	Ports pulumi.StringArrayInput
 	// Timeout for network reload operations in seconds (defaults to `100`).
 	TimeoutReload pulumi.IntPtrInput
+	// VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `"2-4094"`, `"1 20 130"`, or `"1 10-20 30"`). Requires `vlanAware = true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
+	Vids pulumi.StringPtrInput
 	// Whether the interface bridge is VLAN aware (defaults to `false`).
 	VlanAware pulumi.BoolPtrInput
 }
@@ -377,6 +389,11 @@ func (o BridgeOutput) Ports() pulumi.StringArrayOutput {
 // Timeout for network reload operations in seconds (defaults to `100`).
 func (o BridgeOutput) TimeoutReload() pulumi.IntOutput {
 	return o.ApplyT(func(v *Bridge) pulumi.IntOutput { return v.TimeoutReload }).(pulumi.IntOutput)
+}
+
+// VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `"2-4094"`, `"1 20 130"`, or `"1 10-20 30"`). Requires `vlanAware = true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
+func (o BridgeOutput) Vids() pulumi.StringOutput {
+	return o.ApplyT(func(v *Bridge) pulumi.StringOutput { return v.Vids }).(pulumi.StringOutput)
 }
 
 // Whether the interface bridge is VLAN aware (defaults to `false`).

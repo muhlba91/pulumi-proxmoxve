@@ -60,12 +60,12 @@ class HostsLegacyArgs:
 @pulumi.input_type
 class _HostsLegacyState:
     def __init__(__self__, *,
-                 addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 digest: Optional[pulumi.Input[_builtins.str]] = None,
-                 entries: Optional[pulumi.Input[Sequence[pulumi.Input['HostsLegacyEntryArgs']]]] = None,
-                 entry: Optional[pulumi.Input[Sequence[pulumi.Input['HostsLegacyEntryArgs']]]] = None,
-                 hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 digest: pulumi.Input[Optional[_builtins.str]] = None,
+                 entries: pulumi.Input[Optional[Sequence[pulumi.Input['HostsLegacyEntryArgs']]]] = None,
+                 entry: pulumi.Input[Optional[Sequence[pulumi.Input['HostsLegacyEntryArgs']]]] = None,
+                 hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering HostsLegacy resources.
 
@@ -92,31 +92,31 @@ class _HostsLegacyState:
 
     @_builtins.property
     @pulumi.getter
-    def addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def addresses(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IP addresses.
         """
         return pulumi.get(self, "addresses")
 
     @addresses.setter
-    def addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def addresses(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "addresses", value)
 
     @_builtins.property
     @pulumi.getter
-    def digest(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def digest(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SHA1 digest.
         """
         return pulumi.get(self, "digest")
 
     @digest.setter
-    def digest(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def digest(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "digest", value)
 
     @_builtins.property
     @pulumi.getter
-    def entries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostsLegacyEntryArgs']]]]:
+    def entries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HostsLegacyEntryArgs']]]]:
         """
         The host entries (conversion of `addresses` and `hostnames` into
         objects).
@@ -124,43 +124,43 @@ class _HostsLegacyState:
         return pulumi.get(self, "entries")
 
     @entries.setter
-    def entries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostsLegacyEntryArgs']]]]):
+    def entries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['HostsLegacyEntryArgs']]]]):
         pulumi.set(self, "entries", value)
 
     @_builtins.property
     @pulumi.getter
-    def entry(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostsLegacyEntryArgs']]]]:
+    def entry(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['HostsLegacyEntryArgs']]]]:
         """
         A host entry (multiple blocks supported).
         """
         return pulumi.get(self, "entry")
 
     @entry.setter
-    def entry(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostsLegacyEntryArgs']]]]):
+    def entry(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['HostsLegacyEntryArgs']]]]):
         pulumi.set(self, "entry", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostnames(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]:
+    def hostnames(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]:
         """
         The hostnames associated with each of the IP addresses.
         """
         return pulumi.get(self, "hostnames")
 
     @hostnames.setter
-    def hostnames(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]):
+    def hostnames(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]):
         pulumi.set(self, "hostnames", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeName")
-    def node_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A node name.
         """
         return pulumi.get(self, "node_name")
 
     @node_name.setter
-    def node_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_name", value)
 
 
@@ -170,8 +170,8 @@ class HostsLegacy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 entry: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HostsLegacyEntryArgs', 'HostsLegacyEntryArgsDict']]]]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 entry: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HostsLegacyEntryArgs', 'HostsLegacyEntryArgsDict']]]]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages the host entries on a specific node.
@@ -265,8 +265,8 @@ class HostsLegacy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 entry: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HostsLegacyEntryArgs', 'HostsLegacyEntryArgsDict']]]]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 entry: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HostsLegacyEntryArgs', 'HostsLegacyEntryArgsDict']]]]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -296,12 +296,12 @@ class HostsLegacy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            addresses: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            digest: Optional[pulumi.Input[_builtins.str]] = None,
-            entries: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HostsLegacyEntryArgs', 'HostsLegacyEntryArgsDict']]]]] = None,
-            entry: Optional[pulumi.Input[Sequence[pulumi.Input[Union['HostsLegacyEntryArgs', 'HostsLegacyEntryArgsDict']]]]] = None,
-            hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
-            node_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'HostsLegacy':
+            addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            digest: pulumi.Input[Optional[_builtins.str]] = None,
+            entries: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HostsLegacyEntryArgs', 'HostsLegacyEntryArgsDict']]]]] = None,
+            entry: pulumi.Input[Optional[Sequence[pulumi.Input[Union['HostsLegacyEntryArgs', 'HostsLegacyEntryArgsDict']]]]] = None,
+            hostnames: pulumi.Input[Optional[Sequence[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'HostsLegacy':
         """
         Get an existing HostsLegacy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

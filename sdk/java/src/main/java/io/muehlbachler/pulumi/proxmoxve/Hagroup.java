@@ -32,8 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import io.muehlbachler.pulumi.proxmoxve.Hagroup;
  * import io.muehlbachler.pulumi.proxmoxve.HagroupArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -50,8 +50,8 @@ import javax.annotation.Nullable;
  *             .comment("This is a comment.")
  *             .nodes(Map.ofEntries(
  *                 Map.entry("node1", null),
- *                 Map.entry("node2", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2) (example.pp:5,13-14))),
- *                 Map.entry("node3", %!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1) (example.pp:6,13-14)))
+ *                 Map.entry("node2", 2),
+ *                 Map.entry("node3", 1)
  *             ))
  *             .restricted(true)
  *             .noFailback(false)

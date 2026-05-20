@@ -123,7 +123,7 @@ def get_group_legacy(group_id: Optional[_builtins.str] = None,
         group_id=pulumi.get(__ret__, 'group_id'),
         id=pulumi.get(__ret__, 'id'),
         members=pulumi.get(__ret__, 'members'))
-def get_group_legacy_output(group_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_group_legacy_output(group_id: pulumi.Input[Optional[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupLegacyResult]:
     """
     Retrieves information about a specific user group.

@@ -33,8 +33,8 @@ import javax.annotation.Nullable;
  * import io.muehlbachler.pulumi.proxmoxve.hardware.Pci;
  * import io.muehlbachler.pulumi.proxmoxve.hardware.PciArgs;
  * import com.pulumi.proxmoxve.hardware.inputs.PciMapArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *             .maps(PciMapArgs.builder()
  *                 .comment("This is a device specific comment")
  *                 .id("8086:5916")
- *                 .iommuGroup(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(0) (example.pp:6,19-20)))
+ *                 .iommuGroup(0)
  *                 .node("pve")
  *                 .path("0000:00:02.0")
  *                 .subsystemId("8086:2068")

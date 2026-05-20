@@ -11,6 +11,7 @@ import io.muehlbachler.pulumi.proxmoxve.Utilities;
 import io.muehlbachler.pulumi.proxmoxve.acme.AccountArgs;
 import io.muehlbachler.pulumi.proxmoxve.acme.inputs.AccountState;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -31,8 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import io.muehlbachler.pulumi.proxmoxve.acme.Account;
  * import io.muehlbachler.pulumi.proxmoxve.acme.AccountArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -222,6 +223,10 @@ public class Account extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .pluginDownloadURL("github://api.github.com/muhlba91/pulumi-proxmoxve")
+            .additionalSecretOutputs(List.of(
+                "eabHmacKey",
+                "eabKid"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

@@ -20,20 +20,20 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 api_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_ticket: Optional[pulumi.Input[_builtins.str]] = None,
-                 csrf_prevention_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 min_tls: Optional[pulumi.Input[_builtins.str]] = None,
-                 otp: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 random_vm_id_end: Optional[pulumi.Input[_builtins.int]] = None,
-                 random_vm_id_start: Optional[pulumi.Input[_builtins.int]] = None,
-                 random_vm_ids: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ssh: Optional[pulumi.Input['ProviderSshArgs']] = None,
-                 tmp_dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 api_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_ticket: pulumi.Input[Optional[_builtins.str]] = None,
+                 csrf_prevention_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 min_tls: pulumi.Input[Optional[_builtins.str]] = None,
+                 otp: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 random_vm_id_end: pulumi.Input[Optional[_builtins.int]] = None,
+                 random_vm_id_start: pulumi.Input[Optional[_builtins.int]] = None,
+                 random_vm_ids: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ssh: pulumi.Input[Optional['ProviderSshArgs']] = None,
+                 tmp_dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
 
@@ -86,171 +86,171 @@ class ProviderArgs:
 
     @_builtins.property
     @pulumi.getter(name="apiToken")
-    def api_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def api_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The API token for the Proxmox VE API.
         """
         return pulumi.get(self, "api_token")
 
     @api_token.setter
-    def api_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def api_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "api_token", value)
 
     @_builtins.property
     @pulumi.getter(name="authTicket")
-    def auth_ticket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def auth_ticket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The pre-authenticated Ticket for the Proxmox VE API.
         """
         return pulumi.get(self, "auth_ticket")
 
     @auth_ticket.setter
-    def auth_ticket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def auth_ticket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "auth_ticket", value)
 
     @_builtins.property
     @pulumi.getter(name="csrfPreventionToken")
-    def csrf_prevention_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def csrf_prevention_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The pre-authenticated CSRF Prevention Token for the Proxmox VE API.
         """
         return pulumi.get(self, "csrf_prevention_token")
 
     @csrf_prevention_token.setter
-    def csrf_prevention_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def csrf_prevention_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "csrf_prevention_token", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The endpoint for the Proxmox VE API.
         """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to skip the TLS verification step.
         """
         return pulumi.get(self, "insecure")
 
     @insecure.setter
-    def insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "insecure", value)
 
     @_builtins.property
     @pulumi.getter(name="minTls")
-    def min_tls(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def min_tls(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minimum required TLS version for API calls.Supported values: `1.0|1.1|1.2|1.3`. Defaults to `1.3`.
         """
         return pulumi.get(self, "min_tls")
 
     @min_tls.setter
-    def min_tls(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def min_tls(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "min_tls", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""The `otp` attribute is deprecated and will be removed in a future release. Please use the `api_token` attribute instead.""")
-    def otp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def otp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The one-time password for the Proxmox VE API.
         """
         return pulumi.get(self, "otp")
 
     @otp.setter
-    def otp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def otp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "otp", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password for the Proxmox VE API.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="randomVmIdEnd")
-    def random_vm_id_end(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def random_vm_id_end(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ending number for random VM / Container IDs.
         """
         return pulumi.get(self, "random_vm_id_end")
 
     @random_vm_id_end.setter
-    def random_vm_id_end(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def random_vm_id_end(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "random_vm_id_end", value)
 
     @_builtins.property
     @pulumi.getter(name="randomVmIdStart")
-    def random_vm_id_start(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def random_vm_id_start(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The starting number for random VM / Container IDs.
         """
         return pulumi.get(self, "random_vm_id_start")
 
     @random_vm_id_start.setter
-    def random_vm_id_start(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def random_vm_id_start(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "random_vm_id_start", value)
 
     @_builtins.property
     @pulumi.getter(name="randomVmIds")
-    def random_vm_ids(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def random_vm_ids(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to generate random VM / Container IDs.
         """
         return pulumi.get(self, "random_vm_ids")
 
     @random_vm_ids.setter
-    def random_vm_ids(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def random_vm_ids(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "random_vm_ids", value)
 
     @_builtins.property
     @pulumi.getter
-    def ssh(self) -> Optional[pulumi.Input['ProviderSshArgs']]:
+    def ssh(self) -> pulumi.Input[Optional['ProviderSshArgs']]:
         """
         The SSH configuration for the Proxmox nodes.
         """
         return pulumi.get(self, "ssh")
 
     @ssh.setter
-    def ssh(self, value: Optional[pulumi.Input['ProviderSshArgs']]):
+    def ssh(self, value: pulumi.Input[Optional['ProviderSshArgs']]):
         pulumi.set(self, "ssh", value)
 
     @_builtins.property
     @pulumi.getter(name="tmpDir")
-    def tmp_dir(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tmp_dir(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The alternative temporary directory.
         """
         return pulumi.get(self, "tmp_dir")
 
     @tmp_dir.setter
-    def tmp_dir(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tmp_dir(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tmp_dir", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username for the Proxmox VE API.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -260,20 +260,20 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_ticket: Optional[pulumi.Input[_builtins.str]] = None,
-                 csrf_prevention_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 min_tls: Optional[pulumi.Input[_builtins.str]] = None,
-                 otp: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 random_vm_id_end: Optional[pulumi.Input[_builtins.int]] = None,
-                 random_vm_id_start: Optional[pulumi.Input[_builtins.int]] = None,
-                 random_vm_ids: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ssh: Optional[pulumi.Input[Union['ProviderSshArgs', 'ProviderSshArgsDict']]] = None,
-                 tmp_dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 api_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_ticket: pulumi.Input[Optional[_builtins.str]] = None,
+                 csrf_prevention_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 min_tls: pulumi.Input[Optional[_builtins.str]] = None,
+                 otp: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 random_vm_id_end: pulumi.Input[Optional[_builtins.int]] = None,
+                 random_vm_id_start: pulumi.Input[Optional[_builtins.int]] = None,
+                 random_vm_ids: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ssh: pulumi.Input[Optional[Union['ProviderSshArgs', 'ProviderSshArgsDict']]] = None,
+                 tmp_dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The provider type for the proxmox package. By default, resources use package-wide configuration
@@ -327,20 +327,20 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 api_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 auth_ticket: Optional[pulumi.Input[_builtins.str]] = None,
-                 csrf_prevention_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 min_tls: Optional[pulumi.Input[_builtins.str]] = None,
-                 otp: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 random_vm_id_end: Optional[pulumi.Input[_builtins.int]] = None,
-                 random_vm_id_start: Optional[pulumi.Input[_builtins.int]] = None,
-                 random_vm_ids: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ssh: Optional[pulumi.Input[Union['ProviderSshArgs', 'ProviderSshArgsDict']]] = None,
-                 tmp_dir: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None,
+                 api_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 auth_ticket: pulumi.Input[Optional[_builtins.str]] = None,
+                 csrf_prevention_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 min_tls: pulumi.Input[Optional[_builtins.str]] = None,
+                 otp: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 random_vm_id_end: pulumi.Input[Optional[_builtins.int]] = None,
+                 random_vm_id_start: pulumi.Input[Optional[_builtins.int]] = None,
+                 random_vm_ids: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ssh: pulumi.Input[Optional[Union['ProviderSshArgs', 'ProviderSshArgsDict']]] = None,
+                 tmp_dir: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

@@ -32,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// if creating a user token, the user must be created first
-//			user, err := proxmoxve.NewUserLegacy(ctx, "user", &proxmoxve.UserLegacyArgs{
+//			user2, err := proxmoxve.NewUserLegacy(ctx, "user", &proxmoxve.UserLegacyArgs{
 //				Comment:        pulumi.String("Managed by Pulumi"),
 //				Email:          pulumi.String("user@pve"),
 //				Enabled:        pulumi.Bool(true),
@@ -46,7 +46,7 @@ import (
 //				Comment:        pulumi.String("Managed by Pulumi"),
 //				ExpirationDate: pulumi.String("2033-01-01T22:00:00Z"),
 //				TokenName:      pulumi.String("tk1"),
-//				UserId:         user.UserId,
+//				UserId:         user2.UserId,
 //			})
 //			if err != nil {
 //				return err

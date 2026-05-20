@@ -121,8 +121,8 @@ def get_ospf_legacy(fabric_id: Optional[_builtins.str] = None,
         interface_names=pulumi.get(__ret__, 'interface_names'),
         ip=pulumi.get(__ret__, 'ip'),
         node_id=pulumi.get(__ret__, 'node_id'))
-def get_ospf_legacy_output(fabric_id: Optional[pulumi.Input[_builtins.str]] = None,
-                           node_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_ospf_legacy_output(fabric_id: pulumi.Input[Optional[_builtins.str]] = None,
+                           node_id: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOspfLegacyResult]:
     """
     > **Deprecated:** Use `sdn/fabric/node.Ospf` instead. This data source will be removed in v1.0.

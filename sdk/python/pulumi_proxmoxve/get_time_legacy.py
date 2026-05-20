@@ -122,7 +122,7 @@ def get_time_legacy(node_name: Optional[_builtins.str] = None,
         node_name=pulumi.get(__ret__, 'node_name'),
         time_zone=pulumi.get(__ret__, 'time_zone'),
         utc_time=pulumi.get(__ret__, 'utc_time'))
-def get_time_legacy_output(node_name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_time_legacy_output(node_name: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTimeLegacyResult]:
     """
     Retrieves the current time for a specific node.

@@ -23,14 +23,14 @@ class FileArgs:
                  datastore_id: pulumi.Input[_builtins.str],
                  node_name: pulumi.Input[_builtins.str],
                  url: pulumi.Input[_builtins.str],
-                 checksum: Optional[pulumi.Input[_builtins.str]] = None,
-                 checksum_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 decompression_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 overwrite: Optional[pulumi.Input[_builtins.bool]] = None,
-                 overwrite_unmanaged: Optional[pulumi.Input[_builtins.bool]] = None,
-                 upload_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 verify: Optional[pulumi.Input[_builtins.bool]] = None):
+                 checksum: pulumi.Input[Optional[_builtins.str]] = None,
+                 checksum_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 decompression_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
+                 overwrite_unmanaged: pulumi.Input[Optional[_builtins.bool]] = None,
+                 upload_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 verify: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a File resource.
 
@@ -118,117 +118,117 @@ class FileArgs:
 
     @_builtins.property
     @pulumi.getter
-    def checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The expected checksum of the file.
         """
         return pulumi.get(self, "checksum")
 
     @checksum.setter
-    def checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "checksum", value)
 
     @_builtins.property
     @pulumi.getter(name="checksumAlgorithm")
-    def checksum_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def checksum_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The algorithm to calculate the checksum of the file. Must be `md5` | `sha1` | `sha224` | `sha256` | `sha384` | `sha512`.
         """
         return pulumi.get(self, "checksum_algorithm")
 
     @checksum_algorithm.setter
-    def checksum_algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def checksum_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "checksum_algorithm", value)
 
     @_builtins.property
     @pulumi.getter(name="decompressionAlgorithm")
-    def decompression_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def decompression_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
         """
         return pulumi.get(self, "decompression_algorithm")
 
     @decompression_algorithm.setter
-    def decompression_algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def decompression_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "decompression_algorithm", value)
 
     @_builtins.property
     @pulumi.getter(name="fileName")
-    def file_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
         """
         return pulumi.get(self, "file_name")
 
     @file_name.setter
-    def file_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def overwrite(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def overwrite(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         By default `true`. If `true`, the file will be replaced when either: (1) the file size in the datastore has changed outside of Terraform, or (2) the file size reported by the URL differs from the downloaded file (detecting upstream updates like new cloud image versions). If `false`, no size checks are performed and the file is never automatically replaced.
         """
         return pulumi.get(self, "overwrite")
 
     @overwrite.setter
-    def overwrite(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def overwrite(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "overwrite", value)
 
     @_builtins.property
     @pulumi.getter(name="overwriteUnmanaged")
-    def overwrite_unmanaged(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def overwrite_unmanaged(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
         """
         return pulumi.get(self, "overwrite_unmanaged")
 
     @overwrite_unmanaged.setter
-    def overwrite_unmanaged(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def overwrite_unmanaged(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "overwrite_unmanaged", value)
 
     @_builtins.property
     @pulumi.getter(name="uploadTimeout")
-    def upload_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def upload_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The file download timeout seconds. Default is 600 (10min).
         """
         return pulumi.get(self, "upload_timeout")
 
     @upload_timeout.setter
-    def upload_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def upload_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "upload_timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def verify(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def verify(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         By default `true`. If `false`, no SSL/TLS certificates will be verified.
         """
         return pulumi.get(self, "verify")
 
     @verify.setter
-    def verify(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def verify(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "verify", value)
 
 
 @pulumi.input_type
 class _FileState:
     def __init__(__self__, *,
-                 checksum: Optional[pulumi.Input[_builtins.str]] = None,
-                 checksum_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 datastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 decompression_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 overwrite: Optional[pulumi.Input[_builtins.bool]] = None,
-                 overwrite_unmanaged: Optional[pulumi.Input[_builtins.bool]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 upload_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 verify: Optional[pulumi.Input[_builtins.bool]] = None):
+                 checksum: pulumi.Input[Optional[_builtins.str]] = None,
+                 checksum_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 decompression_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
+                 overwrite_unmanaged: pulumi.Input[Optional[_builtins.bool]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 upload_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 verify: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering File resources.
 
@@ -275,158 +275,158 @@ class _FileState:
 
     @_builtins.property
     @pulumi.getter
-    def checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The expected checksum of the file.
         """
         return pulumi.get(self, "checksum")
 
     @checksum.setter
-    def checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "checksum", value)
 
     @_builtins.property
     @pulumi.getter(name="checksumAlgorithm")
-    def checksum_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def checksum_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The algorithm to calculate the checksum of the file. Must be `md5` | `sha1` | `sha224` | `sha256` | `sha384` | `sha512`.
         """
         return pulumi.get(self, "checksum_algorithm")
 
     @checksum_algorithm.setter
-    def checksum_algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def checksum_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "checksum_algorithm", value)
 
     @_builtins.property
     @pulumi.getter(name="contentType")
-    def content_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def content_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The file content type. Must be `iso` or `import` for VM images or `vztmpl` for LXC images.
         """
         return pulumi.get(self, "content_type")
 
     @content_type.setter
-    def content_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def content_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "content_type", value)
 
     @_builtins.property
     @pulumi.getter(name="datastoreId")
-    def datastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datastore_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier for the target datastore.
         """
         return pulumi.get(self, "datastore_id")
 
     @datastore_id.setter
-    def datastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datastore_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datastore_id", value)
 
     @_builtins.property
     @pulumi.getter(name="decompressionAlgorithm")
-    def decompression_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def decompression_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Decompress the downloaded file using the specified compression algorithm. Must be one of `gz` | `lzo` | `zst` | `bz2`.
         """
         return pulumi.get(self, "decompression_algorithm")
 
     @decompression_algorithm.setter
-    def decompression_algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def decompression_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "decompression_algorithm", value)
 
     @_builtins.property
     @pulumi.getter(name="fileName")
-    def file_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The file name. If not provided, it is calculated using `url`. PVE will raise 'wrong file extension' error for some popular extensions file `.raw` or `.qcow2` on PVE versions prior to 8.4. Workaround is to use e.g. `.img` instead.
         """
         return pulumi.get(self, "file_name")
 
     @file_name.setter
-    def file_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeName")
-    def node_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The node name.
         """
         return pulumi.get(self, "node_name")
 
     @node_name.setter
-    def node_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def overwrite(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def overwrite(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         By default `true`. If `true`, the file will be replaced when either: (1) the file size in the datastore has changed outside of Terraform, or (2) the file size reported by the URL differs from the downloaded file (detecting upstream updates like new cloud image versions). If `false`, no size checks are performed and the file is never automatically replaced.
         """
         return pulumi.get(self, "overwrite")
 
     @overwrite.setter
-    def overwrite(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def overwrite(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "overwrite", value)
 
     @_builtins.property
     @pulumi.getter(name="overwriteUnmanaged")
-    def overwrite_unmanaged(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def overwrite_unmanaged(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If `true` and a file with the same name already exists in the datastore, it will be deleted and the new file will be downloaded. If `false` and the file already exists, an error will be returned.
         """
         return pulumi.get(self, "overwrite_unmanaged")
 
     @overwrite_unmanaged.setter
-    def overwrite_unmanaged(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def overwrite_unmanaged(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "overwrite_unmanaged", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The file size in PVE.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
     @_builtins.property
     @pulumi.getter(name="uploadTimeout")
-    def upload_timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def upload_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The file download timeout seconds. Default is 600 (10min).
         """
         return pulumi.get(self, "upload_timeout")
 
     @upload_timeout.setter
-    def upload_timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def upload_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "upload_timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL to download the file from. Must match regex: `https?://.*`.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
     @_builtins.property
     @pulumi.getter
-    def verify(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def verify(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         By default `true`. If `false`, no SSL/TLS certificates will be verified.
         """
         return pulumi.get(self, "verify")
 
     @verify.setter
-    def verify(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def verify(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "verify", value)
 
 
@@ -436,18 +436,18 @@ class File(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 checksum: Optional[pulumi.Input[_builtins.str]] = None,
-                 checksum_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 datastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 decompression_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 overwrite: Optional[pulumi.Input[_builtins.bool]] = None,
-                 overwrite_unmanaged: Optional[pulumi.Input[_builtins.bool]] = None,
-                 upload_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 verify: Optional[pulumi.Input[_builtins.bool]] = None,
+                 checksum: pulumi.Input[Optional[_builtins.str]] = None,
+                 checksum_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 decompression_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
+                 overwrite_unmanaged: pulumi.Input[Optional[_builtins.bool]] = None,
+                 upload_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 verify: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Manages files upload using PVE download-url API. It can be fully compatible and faster replacement for image files created using `FileLegacy`. Supports images for VMs (ISO and disk images) and LXC (CT Templates).
@@ -623,18 +623,18 @@ class File(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 checksum: Optional[pulumi.Input[_builtins.str]] = None,
-                 checksum_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 content_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 datastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 decompression_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 overwrite: Optional[pulumi.Input[_builtins.bool]] = None,
-                 overwrite_unmanaged: Optional[pulumi.Input[_builtins.bool]] = None,
-                 upload_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 verify: Optional[pulumi.Input[_builtins.bool]] = None,
+                 checksum: pulumi.Input[Optional[_builtins.str]] = None,
+                 checksum_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 content_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 decompression_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
+                 overwrite_unmanaged: pulumi.Input[Optional[_builtins.bool]] = None,
+                 upload_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 verify: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -675,19 +675,19 @@ class File(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            checksum: Optional[pulumi.Input[_builtins.str]] = None,
-            checksum_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-            content_type: Optional[pulumi.Input[_builtins.str]] = None,
-            datastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-            decompression_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-            file_name: Optional[pulumi.Input[_builtins.str]] = None,
-            node_name: Optional[pulumi.Input[_builtins.str]] = None,
-            overwrite: Optional[pulumi.Input[_builtins.bool]] = None,
-            overwrite_unmanaged: Optional[pulumi.Input[_builtins.bool]] = None,
-            size: Optional[pulumi.Input[_builtins.int]] = None,
-            upload_timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None,
-            verify: Optional[pulumi.Input[_builtins.bool]] = None) -> 'File':
+            checksum: pulumi.Input[Optional[_builtins.str]] = None,
+            checksum_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            content_type: pulumi.Input[Optional[_builtins.str]] = None,
+            datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+            decompression_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            file_name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            overwrite: pulumi.Input[Optional[_builtins.bool]] = None,
+            overwrite_unmanaged: pulumi.Input[Optional[_builtins.bool]] = None,
+            size: pulumi.Input[Optional[_builtins.int]] = None,
+            upload_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            verify: pulumi.Input[Optional[_builtins.bool]] = None) -> 'File':
         """
         Get an existing File resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

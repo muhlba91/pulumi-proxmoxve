@@ -21,26 +21,26 @@ __all__ = ['OptionsArgs', 'Options']
 @pulumi.input_type
 class OptionsArgs:
     def __init__(__self__, *,
-                 bandwidth_limit_clone: Optional[pulumi.Input[_builtins.int]] = None,
-                 bandwidth_limit_default: Optional[pulumi.Input[_builtins.int]] = None,
-                 bandwidth_limit_migration: Optional[pulumi.Input[_builtins.int]] = None,
-                 bandwidth_limit_move: Optional[pulumi.Input[_builtins.int]] = None,
-                 bandwidth_limit_restore: Optional[pulumi.Input[_builtins.int]] = None,
-                 console: Optional[pulumi.Input[_builtins.str]] = None,
-                 crs_ha: Optional[pulumi.Input[_builtins.str]] = None,
-                 crs_ha_rebalance_on_start: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 email_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_shutdown_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_proxy: Optional[pulumi.Input[_builtins.str]] = None,
-                 keyboard: Optional[pulumi.Input[_builtins.str]] = None,
-                 language: Optional[pulumi.Input[_builtins.str]] = None,
-                 mac_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_workers: Optional[pulumi.Input[_builtins.int]] = None,
-                 migration_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 migration_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_id: Optional[pulumi.Input['OptionsNextIdArgs']] = None,
-                 notify: Optional[pulumi.Input['OptionsNotifyArgs']] = None):
+                 bandwidth_limit_clone: pulumi.Input[Optional[_builtins.int]] = None,
+                 bandwidth_limit_default: pulumi.Input[Optional[_builtins.int]] = None,
+                 bandwidth_limit_migration: pulumi.Input[Optional[_builtins.int]] = None,
+                 bandwidth_limit_move: pulumi.Input[Optional[_builtins.int]] = None,
+                 bandwidth_limit_restore: pulumi.Input[Optional[_builtins.int]] = None,
+                 console: pulumi.Input[Optional[_builtins.str]] = None,
+                 crs_ha: pulumi.Input[Optional[_builtins.str]] = None,
+                 crs_ha_rebalance_on_start: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 email_from: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_shutdown_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_proxy: pulumi.Input[Optional[_builtins.str]] = None,
+                 keyboard: pulumi.Input[Optional[_builtins.str]] = None,
+                 language: pulumi.Input[Optional[_builtins.str]] = None,
+                 mac_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_workers: pulumi.Input[Optional[_builtins.int]] = None,
+                 migration_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 migration_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_id: pulumi.Input[Optional['OptionsNextIdArgs']] = None,
+                 notify: pulumi.Input[Optional['OptionsNotifyArgs']] = None):
         """
         The set of arguments for constructing a Options resource.
 
@@ -108,268 +108,268 @@ class OptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="bandwidthLimitClone")
-    def bandwidth_limit_clone(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth_limit_clone(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Clone I/O bandwidth limit in KiB/s.
         """
         return pulumi.get(self, "bandwidth_limit_clone")
 
     @bandwidth_limit_clone.setter
-    def bandwidth_limit_clone(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth_limit_clone(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth_limit_clone", value)
 
     @_builtins.property
     @pulumi.getter(name="bandwidthLimitDefault")
-    def bandwidth_limit_default(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth_limit_default(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Default I/O bandwidth limit in KiB/s.
         """
         return pulumi.get(self, "bandwidth_limit_default")
 
     @bandwidth_limit_default.setter
-    def bandwidth_limit_default(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth_limit_default(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth_limit_default", value)
 
     @_builtins.property
     @pulumi.getter(name="bandwidthLimitMigration")
-    def bandwidth_limit_migration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth_limit_migration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Migration I/O bandwidth limit in KiB/s.
         """
         return pulumi.get(self, "bandwidth_limit_migration")
 
     @bandwidth_limit_migration.setter
-    def bandwidth_limit_migration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth_limit_migration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth_limit_migration", value)
 
     @_builtins.property
     @pulumi.getter(name="bandwidthLimitMove")
-    def bandwidth_limit_move(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth_limit_move(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Move I/O bandwidth limit in KiB/s.
         """
         return pulumi.get(self, "bandwidth_limit_move")
 
     @bandwidth_limit_move.setter
-    def bandwidth_limit_move(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth_limit_move(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth_limit_move", value)
 
     @_builtins.property
     @pulumi.getter(name="bandwidthLimitRestore")
-    def bandwidth_limit_restore(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth_limit_restore(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Restore I/O bandwidth limit in KiB/s.
         """
         return pulumi.get(self, "bandwidth_limit_restore")
 
     @bandwidth_limit_restore.setter
-    def bandwidth_limit_restore(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth_limit_restore(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth_limit_restore", value)
 
     @_builtins.property
     @pulumi.getter
-    def console(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def console(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Select the default Console viewer. Must be `applet` | `vv`| `html5` | `xtermjs`. You can either use the builtin java applet (VNC; deprecated and maps to html5), an external virt-viewer compatible application (SPICE), an HTML5 based vnc viewer (noVNC), or an HTML5 based console client (xtermjs). If the selected viewer is not available (e.g. SPICE not activated for the VM), the fallback is noVNC.
         """
         return pulumi.get(self, "console")
 
     @console.setter
-    def console(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def console(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "console", value)
 
     @_builtins.property
     @pulumi.getter(name="crsHa")
-    def crs_ha(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def crs_ha(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster resource scheduling setting for HA. Must be `static` | `basic` (default is `basic`).
         """
         return pulumi.get(self, "crs_ha")
 
     @crs_ha.setter
-    def crs_ha(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def crs_ha(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "crs_ha", value)
 
     @_builtins.property
     @pulumi.getter(name="crsHaRebalanceOnStart")
-    def crs_ha_rebalance_on_start(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def crs_ha_rebalance_on_start(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Cluster resource scheduling setting for HA rebalance on start.
         """
         return pulumi.get(self, "crs_ha_rebalance_on_start")
 
     @crs_ha_rebalance_on_start.setter
-    def crs_ha_rebalance_on_start(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def crs_ha_rebalance_on_start(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "crs_ha_rebalance_on_start", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Datacenter description. Shown in the web-interface datacenter notes panel. This is saved as comment inside the configuration file.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="emailFrom")
-    def email_from(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email_from(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         email address to send notification from (default is root@$hostname).
         """
         return pulumi.get(self, "email_from")
 
     @email_from.setter
-    def email_from(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email_from(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email_from", value)
 
     @_builtins.property
     @pulumi.getter(name="haShutdownPolicy")
-    def ha_shutdown_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_shutdown_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster wide HA shutdown policy. Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
         """
         return pulumi.get(self, "ha_shutdown_policy")
 
     @ha_shutdown_policy.setter
-    def ha_shutdown_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_shutdown_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_shutdown_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="httpProxy")
-    def http_proxy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http_proxy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify external http proxy which is used for downloads (example: `http://username:password@host:port/`).
         """
         return pulumi.get(self, "http_proxy")
 
     @http_proxy.setter
-    def http_proxy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http_proxy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http_proxy", value)
 
     @_builtins.property
     @pulumi.getter
-    def keyboard(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def keyboard(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default keyboard layout for vnc server. Must be `de` | `de-ch` | `da` | `en-gb` | `en-us` | `es` | `fi` | `fr` | `fr-be` | `fr-ca` | `fr-ch` | `hu` | `is` | `it` | `ja` | `lt` | `mk` | `nl` | `no` | `pl` | `pt` | `pt-br` | `sv` | `sl` | `tr`.
         """
         return pulumi.get(self, "keyboard")
 
     @keyboard.setter
-    def keyboard(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def keyboard(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "keyboard", value)
 
     @_builtins.property
     @pulumi.getter
-    def language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default GUI language. Must be `ca` | `da` | `de` | `en` | `es` | `eu` | `fa` | `fr` | `he` | `it` | `ja` | `nb` | `nn` | `pl` | `pt_BR` | `ru` | `sl` | `sv` | `tr` | `zh_CN` | `zh_TW`.
         """
         return pulumi.get(self, "language")
 
     @language.setter
-    def language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "language", value)
 
     @_builtins.property
     @pulumi.getter(name="macPrefix")
-    def mac_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mac_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Prefix for autogenerated MAC addresses.
         """
         return pulumi.get(self, "mac_prefix")
 
     @mac_prefix.setter
-    def mac_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mac_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mac_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="maxWorkers")
-    def max_workers(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_workers(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Defines how many workers (per node) are maximal started on actions like 'stopall VMs' or task from the ha-manager.
         """
         return pulumi.get(self, "max_workers")
 
     @max_workers.setter
-    def max_workers(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_workers(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_workers", value)
 
     @_builtins.property
     @pulumi.getter(name="migrationCidr")
-    def migration_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def migration_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster wide migration network CIDR.
         """
         return pulumi.get(self, "migration_cidr")
 
     @migration_cidr.setter
-    def migration_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def migration_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "migration_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="migrationType")
-    def migration_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def migration_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster wide migration type. Must be `secure` | `insecure` (default is `secure`).
         """
         return pulumi.get(self, "migration_type")
 
     @migration_type.setter
-    def migration_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def migration_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "migration_type", value)
 
     @_builtins.property
     @pulumi.getter(name="nextId")
-    def next_id(self) -> Optional[pulumi.Input['OptionsNextIdArgs']]:
+    def next_id(self) -> pulumi.Input[Optional['OptionsNextIdArgs']]:
         """
         The ranges for the next free VM ID auto-selection pool.
         """
         return pulumi.get(self, "next_id")
 
     @next_id.setter
-    def next_id(self, value: Optional[pulumi.Input['OptionsNextIdArgs']]):
+    def next_id(self, value: pulumi.Input[Optional['OptionsNextIdArgs']]):
         pulumi.set(self, "next_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def notify(self) -> Optional[pulumi.Input['OptionsNotifyArgs']]:
+    def notify(self) -> pulumi.Input[Optional['OptionsNotifyArgs']]:
         """
         Cluster-wide notification settings.
         """
         return pulumi.get(self, "notify")
 
     @notify.setter
-    def notify(self, value: Optional[pulumi.Input['OptionsNotifyArgs']]):
+    def notify(self, value: pulumi.Input[Optional['OptionsNotifyArgs']]):
         pulumi.set(self, "notify", value)
 
 
 @pulumi.input_type
 class _OptionsState:
     def __init__(__self__, *,
-                 bandwidth_limit_clone: Optional[pulumi.Input[_builtins.int]] = None,
-                 bandwidth_limit_default: Optional[pulumi.Input[_builtins.int]] = None,
-                 bandwidth_limit_migration: Optional[pulumi.Input[_builtins.int]] = None,
-                 bandwidth_limit_move: Optional[pulumi.Input[_builtins.int]] = None,
-                 bandwidth_limit_restore: Optional[pulumi.Input[_builtins.int]] = None,
-                 console: Optional[pulumi.Input[_builtins.str]] = None,
-                 crs_ha: Optional[pulumi.Input[_builtins.str]] = None,
-                 crs_ha_rebalance_on_start: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 email_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_shutdown_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_proxy: Optional[pulumi.Input[_builtins.str]] = None,
-                 keyboard: Optional[pulumi.Input[_builtins.str]] = None,
-                 language: Optional[pulumi.Input[_builtins.str]] = None,
-                 mac_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_workers: Optional[pulumi.Input[_builtins.int]] = None,
-                 migration_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 migration_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_id: Optional[pulumi.Input['OptionsNextIdArgs']] = None,
-                 notify: Optional[pulumi.Input['OptionsNotifyArgs']] = None):
+                 bandwidth_limit_clone: pulumi.Input[Optional[_builtins.int]] = None,
+                 bandwidth_limit_default: pulumi.Input[Optional[_builtins.int]] = None,
+                 bandwidth_limit_migration: pulumi.Input[Optional[_builtins.int]] = None,
+                 bandwidth_limit_move: pulumi.Input[Optional[_builtins.int]] = None,
+                 bandwidth_limit_restore: pulumi.Input[Optional[_builtins.int]] = None,
+                 console: pulumi.Input[Optional[_builtins.str]] = None,
+                 crs_ha: pulumi.Input[Optional[_builtins.str]] = None,
+                 crs_ha_rebalance_on_start: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 email_from: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_shutdown_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_proxy: pulumi.Input[Optional[_builtins.str]] = None,
+                 keyboard: pulumi.Input[Optional[_builtins.str]] = None,
+                 language: pulumi.Input[Optional[_builtins.str]] = None,
+                 mac_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_workers: pulumi.Input[Optional[_builtins.int]] = None,
+                 migration_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 migration_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_id: pulumi.Input[Optional['OptionsNextIdArgs']] = None,
+                 notify: pulumi.Input[Optional['OptionsNotifyArgs']] = None):
         """
         Input properties used for looking up and filtering Options resources.
 
@@ -437,242 +437,242 @@ class _OptionsState:
 
     @_builtins.property
     @pulumi.getter(name="bandwidthLimitClone")
-    def bandwidth_limit_clone(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth_limit_clone(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Clone I/O bandwidth limit in KiB/s.
         """
         return pulumi.get(self, "bandwidth_limit_clone")
 
     @bandwidth_limit_clone.setter
-    def bandwidth_limit_clone(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth_limit_clone(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth_limit_clone", value)
 
     @_builtins.property
     @pulumi.getter(name="bandwidthLimitDefault")
-    def bandwidth_limit_default(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth_limit_default(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Default I/O bandwidth limit in KiB/s.
         """
         return pulumi.get(self, "bandwidth_limit_default")
 
     @bandwidth_limit_default.setter
-    def bandwidth_limit_default(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth_limit_default(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth_limit_default", value)
 
     @_builtins.property
     @pulumi.getter(name="bandwidthLimitMigration")
-    def bandwidth_limit_migration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth_limit_migration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Migration I/O bandwidth limit in KiB/s.
         """
         return pulumi.get(self, "bandwidth_limit_migration")
 
     @bandwidth_limit_migration.setter
-    def bandwidth_limit_migration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth_limit_migration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth_limit_migration", value)
 
     @_builtins.property
     @pulumi.getter(name="bandwidthLimitMove")
-    def bandwidth_limit_move(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth_limit_move(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Move I/O bandwidth limit in KiB/s.
         """
         return pulumi.get(self, "bandwidth_limit_move")
 
     @bandwidth_limit_move.setter
-    def bandwidth_limit_move(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth_limit_move(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth_limit_move", value)
 
     @_builtins.property
     @pulumi.getter(name="bandwidthLimitRestore")
-    def bandwidth_limit_restore(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def bandwidth_limit_restore(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Restore I/O bandwidth limit in KiB/s.
         """
         return pulumi.get(self, "bandwidth_limit_restore")
 
     @bandwidth_limit_restore.setter
-    def bandwidth_limit_restore(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def bandwidth_limit_restore(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "bandwidth_limit_restore", value)
 
     @_builtins.property
     @pulumi.getter
-    def console(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def console(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Select the default Console viewer. Must be `applet` | `vv`| `html5` | `xtermjs`. You can either use the builtin java applet (VNC; deprecated and maps to html5), an external virt-viewer compatible application (SPICE), an HTML5 based vnc viewer (noVNC), or an HTML5 based console client (xtermjs). If the selected viewer is not available (e.g. SPICE not activated for the VM), the fallback is noVNC.
         """
         return pulumi.get(self, "console")
 
     @console.setter
-    def console(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def console(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "console", value)
 
     @_builtins.property
     @pulumi.getter(name="crsHa")
-    def crs_ha(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def crs_ha(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster resource scheduling setting for HA. Must be `static` | `basic` (default is `basic`).
         """
         return pulumi.get(self, "crs_ha")
 
     @crs_ha.setter
-    def crs_ha(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def crs_ha(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "crs_ha", value)
 
     @_builtins.property
     @pulumi.getter(name="crsHaRebalanceOnStart")
-    def crs_ha_rebalance_on_start(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def crs_ha_rebalance_on_start(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Cluster resource scheduling setting for HA rebalance on start.
         """
         return pulumi.get(self, "crs_ha_rebalance_on_start")
 
     @crs_ha_rebalance_on_start.setter
-    def crs_ha_rebalance_on_start(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def crs_ha_rebalance_on_start(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "crs_ha_rebalance_on_start", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Datacenter description. Shown in the web-interface datacenter notes panel. This is saved as comment inside the configuration file.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="emailFrom")
-    def email_from(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def email_from(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         email address to send notification from (default is root@$hostname).
         """
         return pulumi.get(self, "email_from")
 
     @email_from.setter
-    def email_from(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def email_from(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "email_from", value)
 
     @_builtins.property
     @pulumi.getter(name="haShutdownPolicy")
-    def ha_shutdown_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ha_shutdown_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster wide HA shutdown policy. Must be `freeze` | `failover` | `migrate` | `conditional` (default is `conditional`).
         """
         return pulumi.get(self, "ha_shutdown_policy")
 
     @ha_shutdown_policy.setter
-    def ha_shutdown_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ha_shutdown_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ha_shutdown_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="httpProxy")
-    def http_proxy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def http_proxy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specify external http proxy which is used for downloads (example: `http://username:password@host:port/`).
         """
         return pulumi.get(self, "http_proxy")
 
     @http_proxy.setter
-    def http_proxy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def http_proxy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "http_proxy", value)
 
     @_builtins.property
     @pulumi.getter
-    def keyboard(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def keyboard(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default keyboard layout for vnc server. Must be `de` | `de-ch` | `da` | `en-gb` | `en-us` | `es` | `fi` | `fr` | `fr-be` | `fr-ca` | `fr-ch` | `hu` | `is` | `it` | `ja` | `lt` | `mk` | `nl` | `no` | `pl` | `pt` | `pt-br` | `sv` | `sl` | `tr`.
         """
         return pulumi.get(self, "keyboard")
 
     @keyboard.setter
-    def keyboard(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def keyboard(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "keyboard", value)
 
     @_builtins.property
     @pulumi.getter
-    def language(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def language(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Default GUI language. Must be `ca` | `da` | `de` | `en` | `es` | `eu` | `fa` | `fr` | `he` | `it` | `ja` | `nb` | `nn` | `pl` | `pt_BR` | `ru` | `sl` | `sv` | `tr` | `zh_CN` | `zh_TW`.
         """
         return pulumi.get(self, "language")
 
     @language.setter
-    def language(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def language(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "language", value)
 
     @_builtins.property
     @pulumi.getter(name="macPrefix")
-    def mac_prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mac_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Prefix for autogenerated MAC addresses.
         """
         return pulumi.get(self, "mac_prefix")
 
     @mac_prefix.setter
-    def mac_prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mac_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mac_prefix", value)
 
     @_builtins.property
     @pulumi.getter(name="maxWorkers")
-    def max_workers(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_workers(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Defines how many workers (per node) are maximal started on actions like 'stopall VMs' or task from the ha-manager.
         """
         return pulumi.get(self, "max_workers")
 
     @max_workers.setter
-    def max_workers(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_workers(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_workers", value)
 
     @_builtins.property
     @pulumi.getter(name="migrationCidr")
-    def migration_cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def migration_cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster wide migration network CIDR.
         """
         return pulumi.get(self, "migration_cidr")
 
     @migration_cidr.setter
-    def migration_cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def migration_cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "migration_cidr", value)
 
     @_builtins.property
     @pulumi.getter(name="migrationType")
-    def migration_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def migration_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Cluster wide migration type. Must be `secure` | `insecure` (default is `secure`).
         """
         return pulumi.get(self, "migration_type")
 
     @migration_type.setter
-    def migration_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def migration_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "migration_type", value)
 
     @_builtins.property
     @pulumi.getter(name="nextId")
-    def next_id(self) -> Optional[pulumi.Input['OptionsNextIdArgs']]:
+    def next_id(self) -> pulumi.Input[Optional['OptionsNextIdArgs']]:
         """
         The ranges for the next free VM ID auto-selection pool.
         """
         return pulumi.get(self, "next_id")
 
     @next_id.setter
-    def next_id(self, value: Optional[pulumi.Input['OptionsNextIdArgs']]):
+    def next_id(self, value: pulumi.Input[Optional['OptionsNextIdArgs']]):
         pulumi.set(self, "next_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def notify(self) -> Optional[pulumi.Input['OptionsNotifyArgs']]:
+    def notify(self) -> pulumi.Input[Optional['OptionsNotifyArgs']]:
         """
         Cluster-wide notification settings.
         """
         return pulumi.get(self, "notify")
 
     @notify.setter
-    def notify(self, value: Optional[pulumi.Input['OptionsNotifyArgs']]):
+    def notify(self, value: pulumi.Input[Optional['OptionsNotifyArgs']]):
         pulumi.set(self, "notify", value)
 
 
@@ -682,26 +682,26 @@ class Options(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth_limit_clone: Optional[pulumi.Input[_builtins.int]] = None,
-                 bandwidth_limit_default: Optional[pulumi.Input[_builtins.int]] = None,
-                 bandwidth_limit_migration: Optional[pulumi.Input[_builtins.int]] = None,
-                 bandwidth_limit_move: Optional[pulumi.Input[_builtins.int]] = None,
-                 bandwidth_limit_restore: Optional[pulumi.Input[_builtins.int]] = None,
-                 console: Optional[pulumi.Input[_builtins.str]] = None,
-                 crs_ha: Optional[pulumi.Input[_builtins.str]] = None,
-                 crs_ha_rebalance_on_start: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 email_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_shutdown_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_proxy: Optional[pulumi.Input[_builtins.str]] = None,
-                 keyboard: Optional[pulumi.Input[_builtins.str]] = None,
-                 language: Optional[pulumi.Input[_builtins.str]] = None,
-                 mac_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_workers: Optional[pulumi.Input[_builtins.int]] = None,
-                 migration_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 migration_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_id: Optional[pulumi.Input[Union['OptionsNextIdArgs', 'OptionsNextIdArgsDict']]] = None,
-                 notify: Optional[pulumi.Input[Union['OptionsNotifyArgs', 'OptionsNotifyArgsDict']]] = None,
+                 bandwidth_limit_clone: pulumi.Input[Optional[_builtins.int]] = None,
+                 bandwidth_limit_default: pulumi.Input[Optional[_builtins.int]] = None,
+                 bandwidth_limit_migration: pulumi.Input[Optional[_builtins.int]] = None,
+                 bandwidth_limit_move: pulumi.Input[Optional[_builtins.int]] = None,
+                 bandwidth_limit_restore: pulumi.Input[Optional[_builtins.int]] = None,
+                 console: pulumi.Input[Optional[_builtins.str]] = None,
+                 crs_ha: pulumi.Input[Optional[_builtins.str]] = None,
+                 crs_ha_rebalance_on_start: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 email_from: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_shutdown_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_proxy: pulumi.Input[Optional[_builtins.str]] = None,
+                 keyboard: pulumi.Input[Optional[_builtins.str]] = None,
+                 language: pulumi.Input[Optional[_builtins.str]] = None,
+                 mac_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_workers: pulumi.Input[Optional[_builtins.int]] = None,
+                 migration_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 migration_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_id: pulumi.Input[Optional[Union['OptionsNextIdArgs', 'OptionsNextIdArgsDict']]] = None,
+                 notify: pulumi.Input[Optional[Union['OptionsNotifyArgs', 'OptionsNotifyArgsDict']]] = None,
                  __props__=None):
         """
         Manages Proxmox VE Cluster Datacenter options.
@@ -831,26 +831,26 @@ class Options(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bandwidth_limit_clone: Optional[pulumi.Input[_builtins.int]] = None,
-                 bandwidth_limit_default: Optional[pulumi.Input[_builtins.int]] = None,
-                 bandwidth_limit_migration: Optional[pulumi.Input[_builtins.int]] = None,
-                 bandwidth_limit_move: Optional[pulumi.Input[_builtins.int]] = None,
-                 bandwidth_limit_restore: Optional[pulumi.Input[_builtins.int]] = None,
-                 console: Optional[pulumi.Input[_builtins.str]] = None,
-                 crs_ha: Optional[pulumi.Input[_builtins.str]] = None,
-                 crs_ha_rebalance_on_start: Optional[pulumi.Input[_builtins.bool]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 email_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha_shutdown_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 http_proxy: Optional[pulumi.Input[_builtins.str]] = None,
-                 keyboard: Optional[pulumi.Input[_builtins.str]] = None,
-                 language: Optional[pulumi.Input[_builtins.str]] = None,
-                 mac_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 max_workers: Optional[pulumi.Input[_builtins.int]] = None,
-                 migration_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 migration_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_id: Optional[pulumi.Input[Union['OptionsNextIdArgs', 'OptionsNextIdArgsDict']]] = None,
-                 notify: Optional[pulumi.Input[Union['OptionsNotifyArgs', 'OptionsNotifyArgsDict']]] = None,
+                 bandwidth_limit_clone: pulumi.Input[Optional[_builtins.int]] = None,
+                 bandwidth_limit_default: pulumi.Input[Optional[_builtins.int]] = None,
+                 bandwidth_limit_migration: pulumi.Input[Optional[_builtins.int]] = None,
+                 bandwidth_limit_move: pulumi.Input[Optional[_builtins.int]] = None,
+                 bandwidth_limit_restore: pulumi.Input[Optional[_builtins.int]] = None,
+                 console: pulumi.Input[Optional[_builtins.str]] = None,
+                 crs_ha: pulumi.Input[Optional[_builtins.str]] = None,
+                 crs_ha_rebalance_on_start: pulumi.Input[Optional[_builtins.bool]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 email_from: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha_shutdown_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 http_proxy: pulumi.Input[Optional[_builtins.str]] = None,
+                 keyboard: pulumi.Input[Optional[_builtins.str]] = None,
+                 language: pulumi.Input[Optional[_builtins.str]] = None,
+                 mac_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 max_workers: pulumi.Input[Optional[_builtins.int]] = None,
+                 migration_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 migration_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_id: pulumi.Input[Optional[Union['OptionsNextIdArgs', 'OptionsNextIdArgsDict']]] = None,
+                 notify: pulumi.Input[Optional[Union['OptionsNotifyArgs', 'OptionsNotifyArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -890,26 +890,26 @@ class Options(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bandwidth_limit_clone: Optional[pulumi.Input[_builtins.int]] = None,
-            bandwidth_limit_default: Optional[pulumi.Input[_builtins.int]] = None,
-            bandwidth_limit_migration: Optional[pulumi.Input[_builtins.int]] = None,
-            bandwidth_limit_move: Optional[pulumi.Input[_builtins.int]] = None,
-            bandwidth_limit_restore: Optional[pulumi.Input[_builtins.int]] = None,
-            console: Optional[pulumi.Input[_builtins.str]] = None,
-            crs_ha: Optional[pulumi.Input[_builtins.str]] = None,
-            crs_ha_rebalance_on_start: Optional[pulumi.Input[_builtins.bool]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            email_from: Optional[pulumi.Input[_builtins.str]] = None,
-            ha_shutdown_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            http_proxy: Optional[pulumi.Input[_builtins.str]] = None,
-            keyboard: Optional[pulumi.Input[_builtins.str]] = None,
-            language: Optional[pulumi.Input[_builtins.str]] = None,
-            mac_prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            max_workers: Optional[pulumi.Input[_builtins.int]] = None,
-            migration_cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            migration_type: Optional[pulumi.Input[_builtins.str]] = None,
-            next_id: Optional[pulumi.Input[Union['OptionsNextIdArgs', 'OptionsNextIdArgsDict']]] = None,
-            notify: Optional[pulumi.Input[Union['OptionsNotifyArgs', 'OptionsNotifyArgsDict']]] = None) -> 'Options':
+            bandwidth_limit_clone: pulumi.Input[Optional[_builtins.int]] = None,
+            bandwidth_limit_default: pulumi.Input[Optional[_builtins.int]] = None,
+            bandwidth_limit_migration: pulumi.Input[Optional[_builtins.int]] = None,
+            bandwidth_limit_move: pulumi.Input[Optional[_builtins.int]] = None,
+            bandwidth_limit_restore: pulumi.Input[Optional[_builtins.int]] = None,
+            console: pulumi.Input[Optional[_builtins.str]] = None,
+            crs_ha: pulumi.Input[Optional[_builtins.str]] = None,
+            crs_ha_rebalance_on_start: pulumi.Input[Optional[_builtins.bool]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            email_from: pulumi.Input[Optional[_builtins.str]] = None,
+            ha_shutdown_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            http_proxy: pulumi.Input[Optional[_builtins.str]] = None,
+            keyboard: pulumi.Input[Optional[_builtins.str]] = None,
+            language: pulumi.Input[Optional[_builtins.str]] = None,
+            mac_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            max_workers: pulumi.Input[Optional[_builtins.int]] = None,
+            migration_cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            migration_type: pulumi.Input[Optional[_builtins.str]] = None,
+            next_id: pulumi.Input[Optional[Union['OptionsNextIdArgs', 'OptionsNextIdArgsDict']]] = None,
+            notify: pulumi.Input[Optional[Union['OptionsNotifyArgs', 'OptionsNotifyArgsDict']]] = None) -> 'Options':
         """
         Get an existing Options resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -112,15 +112,15 @@ export interface DirState {
     /**
      * The comment of this directory mapping.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The actual map of devices for the hardware mapping.
      */
-    maps?: pulumi.Input<pulumi.Input<inputs.hardware.mapping.DirMap>[]>;
+    maps?: pulumi.Input<pulumi.Input<inputs.hardware.mapping.DirMap>[] | undefined>;
     /**
      * The name of this directory mapping.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -130,7 +130,7 @@ export interface DirArgs {
     /**
      * The comment of this directory mapping.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * The actual map of devices for the hardware mapping.
      */
@@ -138,5 +138,5 @@ export interface DirArgs {
     /**
      * The name of this directory mapping.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

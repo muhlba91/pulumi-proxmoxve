@@ -22,10 +22,10 @@ class ReplicationArgs:
                  resource_id: pulumi.Input[_builtins.str],
                  target: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rate: Optional[pulumi.Input[_builtins.float]] = None,
-                 schedule: Optional[pulumi.Input[_builtins.str]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rate: pulumi.Input[Optional[_builtins.float]] = None,
+                 schedule: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Replication resource.
 
@@ -87,66 +87,66 @@ class ReplicationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def disable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag to disable/deactivate this replication.
         """
         return pulumi.get(self, "disable")
 
     @disable.setter
-    def disable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable", value)
 
     @_builtins.property
     @pulumi.getter
-    def rate(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def rate(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Rate limit in mbps (megabytes per second) as floating point number.
         """
         return pulumi.get(self, "rate")
 
     @rate.setter
-    def rate(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def rate(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "rate", value)
 
     @_builtins.property
     @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Storage replication schedule. The format is a subset of `systemd` calendar events. Defaults to */15
         """
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedule", value)
 
 
 @pulumi.input_type
 class _ReplicationState:
     def __init__(__self__, *,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 guest: Optional[pulumi.Input[_builtins.int]] = None,
-                 jobnum: Optional[pulumi.Input[_builtins.int]] = None,
-                 rate: Optional[pulumi.Input[_builtins.float]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None,
-                 target: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 guest: pulumi.Input[Optional[_builtins.int]] = None,
+                 jobnum: pulumi.Input[Optional[_builtins.int]] = None,
+                 rate: pulumi.Input[Optional[_builtins.float]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None,
+                 target: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Replication resources.
 
@@ -184,122 +184,122 @@ class _ReplicationState:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def disable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag to disable/deactivate this replication.
         """
         return pulumi.get(self, "disable")
 
     @disable.setter
-    def disable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable", value)
 
     @_builtins.property
     @pulumi.getter
-    def guest(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def guest(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Guest ID.
         """
         return pulumi.get(self, "guest")
 
     @guest.setter
-    def guest(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def guest(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "guest", value)
 
     @_builtins.property
     @pulumi.getter
-    def jobnum(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def jobnum(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Unique, sequential ID assigned to each job.
         """
         return pulumi.get(self, "jobnum")
 
     @jobnum.setter
-    def jobnum(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def jobnum(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "jobnum", value)
 
     @_builtins.property
     @pulumi.getter
-    def rate(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def rate(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Rate limit in mbps (megabytes per second) as floating point number.
         """
         return pulumi.get(self, "rate")
 
     @rate.setter
-    def rate(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def rate(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "rate", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Replication Job ID. The ID is composed of a Guest ID and a job number, separated by a hyphen, i.e. '\\n\\n-\\n\\n'.
         """
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def schedule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Storage replication schedule. The format is a subset of `systemd` calendar events. Defaults to */15
         """
         return pulumi.get(self, "schedule")
 
     @schedule.setter
-    def schedule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schedule", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         For internal use, to detect if the guest was stolen.
         """
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter
-    def target(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def target(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Target node.
         """
         return pulumi.get(self, "target")
 
     @target.setter
-    def target(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def target(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "target", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Section type.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -309,13 +309,13 @@ class Replication(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rate: Optional[pulumi.Input[_builtins.float]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 target: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rate: pulumi.Input[Optional[_builtins.float]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 target: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages Proxmox VE Replication.
@@ -388,13 +388,13 @@ class Replication(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rate: Optional[pulumi.Input[_builtins.float]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 target: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rate: pulumi.Input[Optional[_builtins.float]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 target: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -432,16 +432,16 @@ class Replication(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            disable: Optional[pulumi.Input[_builtins.bool]] = None,
-            guest: Optional[pulumi.Input[_builtins.int]] = None,
-            jobnum: Optional[pulumi.Input[_builtins.int]] = None,
-            rate: Optional[pulumi.Input[_builtins.float]] = None,
-            resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-            schedule: Optional[pulumi.Input[_builtins.str]] = None,
-            source: Optional[pulumi.Input[_builtins.str]] = None,
-            target: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'Replication':
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            disable: pulumi.Input[Optional[_builtins.bool]] = None,
+            guest: pulumi.Input[Optional[_builtins.int]] = None,
+            jobnum: pulumi.Input[Optional[_builtins.int]] = None,
+            rate: pulumi.Input[Optional[_builtins.float]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            schedule: pulumi.Input[Optional[_builtins.str]] = None,
+            source: pulumi.Input[Optional[_builtins.str]] = None,
+            target: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Replication':
         """
         Get an existing Replication resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

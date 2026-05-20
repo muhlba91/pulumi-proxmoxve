@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * // This will fetch the set of HA group identifiers...
  * const all = proxmoxve.getHagroups({});
  * // ...which we will go through in order to fetch the whole data on each group.
- * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: proxmoxve.getHagroup({
+ * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: proxmoxve.getHagroup({
  *     group: __value,
  * }) }), {}));
  * export const proxmoxHagroupsFull = example;
@@ -80,7 +80,7 @@ export interface GetHagroupResult {
  * // This will fetch the set of HA group identifiers...
  * const all = proxmoxve.getHagroups({});
  * // ...which we will go through in order to fetch the whole data on each group.
- * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: proxmoxve.getHagroup({
+ * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: proxmoxve.getHagroup({
  *     group: __value,
  * }) }), {}));
  * export const proxmoxHagroupsFull = example;

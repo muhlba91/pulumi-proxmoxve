@@ -718,6 +718,14 @@ _utilities.register(
  },
  {
   "pkg": "proxmoxve",
+  "mod": "sdn/controller/evpn",
+  "fqn": "pulumi_proxmoxve.sdn.controller",
+  "classes": {
+   "proxmoxve:sdn/controller/evpn:Evpn": "Evpn"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
   "mod": "sdn/fabric/node/openfabric",
   "fqn": "pulumi_proxmoxve.sdn.fabric.node",
   "classes": {

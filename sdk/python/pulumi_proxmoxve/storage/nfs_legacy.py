@@ -24,13 +24,13 @@ class NfsLegacyArgs:
                  export: pulumi.Input[_builtins.str],
                  resource_id: pulumi.Input[_builtins.str],
                  server: pulumi.Input[_builtins.str],
-                 backups: Optional[pulumi.Input['NfsLegacyBackupsArgs']] = None,
-                 contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 options: Optional[pulumi.Input[_builtins.str]] = None,
-                 preallocation: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_as_volume_chain: Optional[pulumi.Input[_builtins.bool]] = None):
+                 backups: pulumi.Input[Optional['NfsLegacyBackupsArgs']] = None,
+                 contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
+                 preallocation: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_as_volume_chain: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a NfsLegacy resource.
 
@@ -101,103 +101,103 @@ class NfsLegacyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def backups(self) -> Optional[pulumi.Input['NfsLegacyBackupsArgs']]:
+    def backups(self) -> pulumi.Input[Optional['NfsLegacyBackupsArgs']]:
         """
         Configure backup retention settings for the storage type.
         """
         return pulumi.get(self, "backups")
 
     @backups.setter
-    def backups(self, value: Optional[pulumi.Input['NfsLegacyBackupsArgs']]):
+    def backups(self, value: pulumi.Input[Optional['NfsLegacyBackupsArgs']]):
         pulumi.set(self, "backups", value)
 
     @_builtins.property
     @pulumi.getter
-    def contents(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def contents(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
         """
         return pulumi.get(self, "contents")
 
     @contents.setter
-    def contents(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def contents(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "contents", value)
 
     @_builtins.property
     @pulumi.getter
-    def disable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the storage is disabled.
         """
         return pulumi.get(self, "disable")
 
     @disable.setter
-    def disable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable", value)
 
     @_builtins.property
     @pulumi.getter
-    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of nodes where this storage is available.
         """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
-    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def options(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The options to pass to the NFS service.
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def options(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter
-    def preallocation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def preallocation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The preallocation mode for raw and qcow2 images.
         """
         return pulumi.get(self, "preallocation")
 
     @preallocation.setter
-    def preallocation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def preallocation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "preallocation", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotAsVolumeChain")
-    def snapshot_as_volume_chain(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def snapshot_as_volume_chain(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable support for creating snapshots through volume backing-chains.
         """
         return pulumi.get(self, "snapshot_as_volume_chain")
 
     @snapshot_as_volume_chain.setter
-    def snapshot_as_volume_chain(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def snapshot_as_volume_chain(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "snapshot_as_volume_chain", value)
 
 
 @pulumi.input_type
 class _NfsLegacyState:
     def __init__(__self__, *,
-                 backups: Optional[pulumi.Input['NfsLegacyBackupsArgs']] = None,
-                 contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 export: Optional[pulumi.Input[_builtins.str]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 options: Optional[pulumi.Input[_builtins.str]] = None,
-                 preallocation: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared: Optional[pulumi.Input[_builtins.bool]] = None,
-                 snapshot_as_volume_chain: Optional[pulumi.Input[_builtins.bool]] = None):
+                 backups: pulumi.Input[Optional['NfsLegacyBackupsArgs']] = None,
+                 contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 export: pulumi.Input[Optional[_builtins.str]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
+                 preallocation: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared: pulumi.Input[Optional[_builtins.bool]] = None,
+                 snapshot_as_volume_chain: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering NfsLegacy resources.
 
@@ -238,134 +238,134 @@ class _NfsLegacyState:
 
     @_builtins.property
     @pulumi.getter
-    def backups(self) -> Optional[pulumi.Input['NfsLegacyBackupsArgs']]:
+    def backups(self) -> pulumi.Input[Optional['NfsLegacyBackupsArgs']]:
         """
         Configure backup retention settings for the storage type.
         """
         return pulumi.get(self, "backups")
 
     @backups.setter
-    def backups(self, value: Optional[pulumi.Input['NfsLegacyBackupsArgs']]):
+    def backups(self, value: pulumi.Input[Optional['NfsLegacyBackupsArgs']]):
         pulumi.set(self, "backups", value)
 
     @_builtins.property
     @pulumi.getter
-    def contents(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def contents(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
         """
         return pulumi.get(self, "contents")
 
     @contents.setter
-    def contents(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def contents(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "contents", value)
 
     @_builtins.property
     @pulumi.getter
-    def disable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the storage is disabled.
         """
         return pulumi.get(self, "disable")
 
     @disable.setter
-    def disable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable", value)
 
     @_builtins.property
     @pulumi.getter
-    def export(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def export(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path of the NFS export.
         """
         return pulumi.get(self, "export")
 
     @export.setter
-    def export(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def export(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "export", value)
 
     @_builtins.property
     @pulumi.getter
-    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of nodes where this storage is available.
         """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
-    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def options(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The options to pass to the NFS service.
         """
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def options(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter
-    def preallocation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def preallocation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The preallocation mode for raw and qcow2 images.
         """
         return pulumi.get(self, "preallocation")
 
     @preallocation.setter
-    def preallocation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def preallocation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "preallocation", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the storage.
         """
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def server(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IP address or DNS name of the NFS server.
         """
         return pulumi.get(self, "server")
 
     @server.setter
-    def server(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server", value)
 
     @_builtins.property
     @pulumi.getter
-    def shared(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def shared(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the storage is shared across all nodes.
         """
         return pulumi.get(self, "shared")
 
     @shared.setter
-    def shared(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def shared(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "shared", value)
 
     @_builtins.property
     @pulumi.getter(name="snapshotAsVolumeChain")
-    def snapshot_as_volume_chain(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def snapshot_as_volume_chain(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable support for creating snapshots through volume backing-chains.
         """
         return pulumi.get(self, "snapshot_as_volume_chain")
 
     @snapshot_as_volume_chain.setter
-    def snapshot_as_volume_chain(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def snapshot_as_volume_chain(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "snapshot_as_volume_chain", value)
 
 
@@ -375,16 +375,16 @@ class NfsLegacy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backups: Optional[pulumi.Input[Union['NfsLegacyBackupsArgs', 'NfsLegacyBackupsArgsDict']]] = None,
-                 contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 export: Optional[pulumi.Input[_builtins.str]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 options: Optional[pulumi.Input[_builtins.str]] = None,
-                 preallocation: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_as_volume_chain: Optional[pulumi.Input[_builtins.bool]] = None,
+                 backups: pulumi.Input[Optional[Union['NfsLegacyBackupsArgs', 'NfsLegacyBackupsArgsDict']]] = None,
+                 contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 export: pulumi.Input[Optional[_builtins.str]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
+                 preallocation: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_as_volume_chain: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         > **Deprecated:** Use `storage.Nfs` instead. This resource will be removed in v1.0.
@@ -500,16 +500,16 @@ class NfsLegacy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backups: Optional[pulumi.Input[Union['NfsLegacyBackupsArgs', 'NfsLegacyBackupsArgsDict']]] = None,
-                 contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 export: Optional[pulumi.Input[_builtins.str]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 options: Optional[pulumi.Input[_builtins.str]] = None,
-                 preallocation: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 server: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshot_as_volume_chain: Optional[pulumi.Input[_builtins.bool]] = None,
+                 backups: pulumi.Input[Optional[Union['NfsLegacyBackupsArgs', 'NfsLegacyBackupsArgsDict']]] = None,
+                 contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 export: pulumi.Input[Optional[_builtins.str]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
+                 preallocation: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 server: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_as_volume_chain: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -546,17 +546,17 @@ class NfsLegacy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backups: Optional[pulumi.Input[Union['NfsLegacyBackupsArgs', 'NfsLegacyBackupsArgsDict']]] = None,
-            contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            disable: Optional[pulumi.Input[_builtins.bool]] = None,
-            export: Optional[pulumi.Input[_builtins.str]] = None,
-            nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            options: Optional[pulumi.Input[_builtins.str]] = None,
-            preallocation: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-            server: Optional[pulumi.Input[_builtins.str]] = None,
-            shared: Optional[pulumi.Input[_builtins.bool]] = None,
-            snapshot_as_volume_chain: Optional[pulumi.Input[_builtins.bool]] = None) -> 'NfsLegacy':
+            backups: pulumi.Input[Optional[Union['NfsLegacyBackupsArgs', 'NfsLegacyBackupsArgsDict']]] = None,
+            contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            disable: pulumi.Input[Optional[_builtins.bool]] = None,
+            export: pulumi.Input[Optional[_builtins.str]] = None,
+            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            options: pulumi.Input[Optional[_builtins.str]] = None,
+            preallocation: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            server: pulumi.Input[Optional[_builtins.str]] = None,
+            shared: pulumi.Input[Optional[_builtins.bool]] = None,
+            snapshot_as_volume_chain: pulumi.Input[Optional[_builtins.bool]] = None) -> 'NfsLegacy':
         """
         Get an existing NfsLegacy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

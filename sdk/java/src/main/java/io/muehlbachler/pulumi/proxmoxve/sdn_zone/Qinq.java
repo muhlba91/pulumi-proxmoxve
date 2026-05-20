@@ -33,8 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import io.muehlbachler.pulumi.proxmoxve.sdn.Qinq;
  * import io.muehlbachler.pulumi.proxmoxve.sdn.QinqArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -49,9 +49,9 @@ import javax.annotation.Nullable;
  *         var example = new Qinq("example", QinqArgs.builder()
  *             .resourceId("qinq1")
  *             .bridge("vmbr0")
- *             .serviceVlan(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(100) (example.pp:3,25-28)))
+ *             .serviceVlan(100)
  *             .serviceVlanProtocol("802.1ad")
- *             .mtu(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1496) (example.pp:5,25-29)))
+ *             .mtu(1496)
  *             .dns("1.1.1.1")
  *             .dnsZone("example.com")
  *             .ipam("pve")

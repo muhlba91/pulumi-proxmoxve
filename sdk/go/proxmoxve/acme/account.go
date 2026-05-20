@@ -84,6 +84,17 @@ func NewAccount(ctx *pulumi.Context,
 	if args.Contact == nil {
 		return nil, errors.New("invalid value for required argument 'Contact'")
 	}
+	if args.EabHmacKey != nil {
+		args.EabHmacKey = pulumi.ToSecret(args.EabHmacKey).(pulumi.StringPtrInput)
+	}
+	if args.EabKid != nil {
+		args.EabKid = pulumi.ToSecret(args.EabKid).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"eabHmacKey",
+		"eabKid",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Account
 	err := ctx.RegisterResource("proxmoxve:acme/account:Account", name, args, &resource, opts...)

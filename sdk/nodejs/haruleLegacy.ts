@@ -186,35 +186,35 @@ export interface HaruleLegacyState {
     /**
      * The resource affinity type (resource-affinity only). `positive` keeps resources on the same node, `negative` keeps them on separate nodes.
      */
-    affinity?: pulumi.Input<string>;
+    affinity?: pulumi.Input<string | undefined>;
     /**
      * The comment associated with this rule.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Whether the HA rule is disabled. Defaults to `false`.
      */
-    disable?: pulumi.Input<boolean>;
+    disable?: pulumi.Input<boolean | undefined>;
     /**
      * The member nodes for this rule (node-affinity only). They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or `null` for unset priorities.
      */
-    nodes?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
+    nodes?: pulumi.Input<{[key: string]: pulumi.Input<number>} | undefined>;
     /**
      * The set of HA resource IDs that this rule applies to (e.g. `vm:100`, `ct:101`). The resources must already be managed by HA.
      */
-    resources?: pulumi.Input<pulumi.Input<string>[]>;
+    resources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The identifier of the High Availability rule to manage.
      */
-    rule?: pulumi.Input<string>;
+    rule?: pulumi.Input<string | undefined>;
     /**
      * Whether the node affinity rule is strict (node-affinity only). When strict, resources cannot run on nodes not listed. Defaults to `false`.
      */
-    strict?: pulumi.Input<boolean>;
+    strict?: pulumi.Input<boolean | undefined>;
     /**
      * The HA rule type. Must be `node-affinity` or `resource-affinity`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -224,19 +224,19 @@ export interface HaruleLegacyArgs {
     /**
      * The resource affinity type (resource-affinity only). `positive` keeps resources on the same node, `negative` keeps them on separate nodes.
      */
-    affinity?: pulumi.Input<string>;
+    affinity?: pulumi.Input<string | undefined>;
     /**
      * The comment associated with this rule.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Whether the HA rule is disabled. Defaults to `false`.
      */
-    disable?: pulumi.Input<boolean>;
+    disable?: pulumi.Input<boolean | undefined>;
     /**
      * The member nodes for this rule (node-affinity only). They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or `null` for unset priorities.
      */
-    nodes?: pulumi.Input<{[key: string]: pulumi.Input<number>}>;
+    nodes?: pulumi.Input<{[key: string]: pulumi.Input<number>} | undefined>;
     /**
      * The set of HA resource IDs that this rule applies to (e.g. `vm:100`, `ct:101`). The resources must already be managed by HA.
      */
@@ -248,7 +248,7 @@ export interface HaruleLegacyArgs {
     /**
      * Whether the node affinity rule is strict (node-affinity only). When strict, resources cannot run on nodes not listed. Defaults to `false`.
      */
-    strict?: pulumi.Input<boolean>;
+    strict?: pulumi.Input<boolean | undefined>;
     /**
      * The HA rule type. Must be `node-affinity` or `resource-affinity`.
      */

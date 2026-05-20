@@ -126,7 +126,7 @@ def get_account_legacy(name: Optional[_builtins.str] = None,
     # This will fetch all ACME accounts...
     all = proxmoxve.acme.get_accounts_legacy()
     # ...which we will go through in order to fetch the whole data on each account.
-    example = {__key: proxmoxve.acme.get_account_legacy(name=__value) for __key, __value in enumerate(all.accounts)}
+    example = {str(__key): proxmoxve.acme.get_account_legacy(name=__value) for __key, __value in enumerate(all.accounts)}
     pulumi.export("dataProxmoxVirtualEnvironmentAcmeAccount", example)
     ```
 
@@ -145,7 +145,7 @@ def get_account_legacy(name: Optional[_builtins.str] = None,
         location=pulumi.get(__ret__, 'location'),
         name=pulumi.get(__ret__, 'name'),
         tos=pulumi.get(__ret__, 'tos'))
-def get_account_legacy_output(name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_account_legacy_output(name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountLegacyResult]:
     """
     > **Deprecated:** Use `acme.Account` instead. This data source will be removed in v1.0.
@@ -161,7 +161,7 @@ def get_account_legacy_output(name: Optional[pulumi.Input[Optional[_builtins.str
     # This will fetch all ACME accounts...
     all = proxmoxve.acme.get_accounts_legacy()
     # ...which we will go through in order to fetch the whole data on each account.
-    example = {__key: proxmoxve.acme.get_account_legacy(name=__value) for __key, __value in enumerate(all.accounts)}
+    example = {str(__key): proxmoxve.acme.get_account_legacy(name=__value) for __key, __value in enumerate(all.accounts)}
     pulumi.export("dataProxmoxVirtualEnvironmentAcmeAccount", example)
     ```
 

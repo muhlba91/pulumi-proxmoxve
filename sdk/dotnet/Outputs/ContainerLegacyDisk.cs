@@ -18,8 +18,8 @@ namespace Pulumi.ProxmoxVE.Outputs
         /// </summary>
         public readonly bool? Acl;
         /// <summary>
-        /// The identifier for the datastore to create the
-        /// disk in (defaults to `Local`).
+        /// The Proxmox storage ID where the rootfs
+        /// volume is created (defaults to `Local`).
         /// </summary>
         public readonly string? DatastoreId;
         /// <summary>

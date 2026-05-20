@@ -21,9 +21,9 @@ class HagroupLegacyArgs:
     def __init__(__self__, *,
                  group: pulumi.Input[_builtins.str],
                  nodes: pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]],
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_failback: Optional[pulumi.Input[_builtins.bool]] = None,
-                 restricted: Optional[pulumi.Input[_builtins.bool]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_failback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 restricted: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a HagroupLegacy resource.
 
@@ -68,49 +68,49 @@ class HagroupLegacyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The comment associated with this group
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="noFailback")
-    def no_failback(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def no_failback(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A flag that indicates that failing back to a higher priority node is disabled for this HA group. Defaults to `false`.
         """
         return pulumi.get(self, "no_failback")
 
     @no_failback.setter
-    def no_failback(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def no_failback(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "no_failback", value)
 
     @_builtins.property
     @pulumi.getter
-    def restricted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def restricted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A flag that indicates that other nodes may not be used to run resources associated to this HA group. Defaults to `false`.
         """
         return pulumi.get(self, "restricted")
 
     @restricted.setter
-    def restricted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def restricted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "restricted", value)
 
 
 @pulumi.input_type
 class _HagroupLegacyState:
     def __init__(__self__, *,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_failback: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nodes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
-                 restricted: Optional[pulumi.Input[_builtins.bool]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_failback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nodes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
+                 restricted: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering HagroupLegacy resources.
 
@@ -133,62 +133,62 @@ class _HagroupLegacyState:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The comment associated with this group
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier of the High Availability group to manage.
         """
         return pulumi.get(self, "group")
 
     @group.setter
-    def group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "group", value)
 
     @_builtins.property
     @pulumi.getter(name="noFailback")
-    def no_failback(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def no_failback(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A flag that indicates that failing back to a higher priority node is disabled for this HA group. Defaults to `false`.
         """
         return pulumi.get(self, "no_failback")
 
     @no_failback.setter
-    def no_failback(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def no_failback(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "no_failback", value)
 
     @_builtins.property
     @pulumi.getter
-    def nodes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]]:
+    def nodes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]]:
         """
         The member nodes for this group. They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or `null` for unset priorities.
         """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
-    def nodes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]]):
+    def nodes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter
-    def restricted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def restricted(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A flag that indicates that other nodes may not be used to run resources associated to this HA group. Defaults to `false`.
         """
         return pulumi.get(self, "restricted")
 
     @restricted.setter
-    def restricted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def restricted(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "restricted", value)
 
 
@@ -198,11 +198,11 @@ class HagroupLegacy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_failback: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nodes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
-                 restricted: Optional[pulumi.Input[_builtins.bool]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_failback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nodes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
+                 restricted: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         > **Deprecated:** Use `Hagroup` instead. This resource will be removed in v1.0.
@@ -299,11 +299,11 @@ class HagroupLegacy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 group: Optional[pulumi.Input[_builtins.str]] = None,
-                 no_failback: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nodes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
-                 restricted: Optional[pulumi.Input[_builtins.bool]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 group: pulumi.Input[Optional[_builtins.str]] = None,
+                 no_failback: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nodes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
+                 restricted: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -332,11 +332,11 @@ class HagroupLegacy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            group: Optional[pulumi.Input[_builtins.str]] = None,
-            no_failback: Optional[pulumi.Input[_builtins.bool]] = None,
-            nodes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
-            restricted: Optional[pulumi.Input[_builtins.bool]] = None) -> 'HagroupLegacy':
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            group: pulumi.Input[Optional[_builtins.str]] = None,
+            no_failback: pulumi.Input[Optional[_builtins.bool]] = None,
+            nodes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
+            restricted: pulumi.Input[Optional[_builtins.bool]] = None) -> 'HagroupLegacy':
         """
         Get an existing HagroupLegacy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -356,109 +356,109 @@ export interface LdapLegacyState {
     /**
      * LDAP base DN for user searches (e.g., 'ou=users,dc=example,dc=com').
      */
-    baseDn?: pulumi.Input<string>;
+    baseDn?: pulumi.Input<string | undefined>;
     /**
      * LDAP bind DN for authentication (e.g., 'cn=admin,dc=example,dc=com').
      */
-    bindDn?: pulumi.Input<string>;
+    bindDn?: pulumi.Input<string | undefined>;
     /**
      * Password for the bind DN. Note: stored in Proxmox but not returned by API.
      */
-    bindPassword?: pulumi.Input<string>;
+    bindPassword?: pulumi.Input<string | undefined>;
     /**
      * Path to CA certificate file for SSL verification.
      */
-    caPath?: pulumi.Input<string>;
+    caPath?: pulumi.Input<string | undefined>;
     /**
      * Enable case-sensitive username matching.
      */
-    caseSensitive?: pulumi.Input<boolean>;
+    caseSensitive?: pulumi.Input<boolean | undefined>;
     /**
      * Path to client certificate key.
      */
-    certKeyPath?: pulumi.Input<string>;
+    certKeyPath?: pulumi.Input<string | undefined>;
     /**
      * Path to client certificate for SSL authentication.
      */
-    certPath?: pulumi.Input<string>;
+    certPath?: pulumi.Input<string | undefined>;
     /**
      * Description of the realm.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Use this realm as the default for login.
      */
-    default?: pulumi.Input<boolean>;
+    default?: pulumi.Input<boolean | undefined>;
     /**
      * LDAP filter for user searches.
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * LDAP objectClasses for groups (comma-separated).
      */
-    groupClasses?: pulumi.Input<string>;
+    groupClasses?: pulumi.Input<string | undefined>;
     /**
      * LDAP base DN for group searches.
      */
-    groupDn?: pulumi.Input<string>;
+    groupDn?: pulumi.Input<string | undefined>;
     /**
      * LDAP filter for group searches.
      */
-    groupFilter?: pulumi.Input<string>;
+    groupFilter?: pulumi.Input<string | undefined>;
     /**
      * LDAP attribute representing the group name.
      */
-    groupNameAttr?: pulumi.Input<string>;
+    groupNameAttr?: pulumi.Input<string | undefined>;
     /**
      * LDAP connection mode (ldap, ldaps, ldap+starttls).
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * LDAP server port. Default: 389 (LDAP) or 636 (LDAPS).
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * Realm identifier (e.g., 'example.com').
      */
-    realm?: pulumi.Input<string>;
+    realm?: pulumi.Input<string | undefined>;
     /**
      * Use LDAPS (LDAP over SSL/TLS) instead of plain LDAP.
      *
      * @deprecated Deprecated by Proxmox: use mode instead.
      */
-    secure?: pulumi.Input<boolean>;
+    secure?: pulumi.Input<boolean | undefined>;
     /**
      * Primary LDAP server hostname or IP address.
      */
-    server1?: pulumi.Input<string>;
+    server1?: pulumi.Input<string | undefined>;
     /**
      * Fallback LDAP server hostname or IP address.
      */
-    server2?: pulumi.Input<string>;
+    server2?: pulumi.Input<string | undefined>;
     /**
      * SSL/TLS version (tlsv1, tlsv1*1, tlsv1*2, tlsv1_3).
      */
-    sslVersion?: pulumi.Input<string>;
+    sslVersion?: pulumi.Input<string | undefined>;
     /**
      * Comma-separated list of attributes to sync (e.g., 'email=mail,firstname=givenName').
      */
-    syncAttributes?: pulumi.Input<string>;
+    syncAttributes?: pulumi.Input<string | undefined>;
     /**
      * Default synchronization options. Format: comma-separated 'key=value' pairs. Valid keys: 'scope' (users/groups/both), 'enable-new' (1/0), 'remove-vanished' (semicolon-separated: entry/acl/properties), 'full' (deprecated), 'purge' (deprecated). Example: 'scope=users,enable-new=1,remove-vanished=entry;acl'.
      */
-    syncDefaultsOptions?: pulumi.Input<string>;
+    syncDefaultsOptions?: pulumi.Input<string | undefined>;
     /**
      * LDAP attribute representing the username.
      */
-    userAttr?: pulumi.Input<string>;
+    userAttr?: pulumi.Input<string | undefined>;
     /**
      * LDAP objectClasses for users (comma-separated).
      */
-    userClasses?: pulumi.Input<string>;
+    userClasses?: pulumi.Input<string | undefined>;
     /**
      * Verify LDAP server SSL certificate.
      */
-    verify?: pulumi.Input<boolean>;
+    verify?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -472,63 +472,63 @@ export interface LdapLegacyArgs {
     /**
      * LDAP bind DN for authentication (e.g., 'cn=admin,dc=example,dc=com').
      */
-    bindDn?: pulumi.Input<string>;
+    bindDn?: pulumi.Input<string | undefined>;
     /**
      * Password for the bind DN. Note: stored in Proxmox but not returned by API.
      */
-    bindPassword?: pulumi.Input<string>;
+    bindPassword?: pulumi.Input<string | undefined>;
     /**
      * Path to CA certificate file for SSL verification.
      */
-    caPath?: pulumi.Input<string>;
+    caPath?: pulumi.Input<string | undefined>;
     /**
      * Enable case-sensitive username matching.
      */
-    caseSensitive?: pulumi.Input<boolean>;
+    caseSensitive?: pulumi.Input<boolean | undefined>;
     /**
      * Path to client certificate key.
      */
-    certKeyPath?: pulumi.Input<string>;
+    certKeyPath?: pulumi.Input<string | undefined>;
     /**
      * Path to client certificate for SSL authentication.
      */
-    certPath?: pulumi.Input<string>;
+    certPath?: pulumi.Input<string | undefined>;
     /**
      * Description of the realm.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Use this realm as the default for login.
      */
-    default?: pulumi.Input<boolean>;
+    default?: pulumi.Input<boolean | undefined>;
     /**
      * LDAP filter for user searches.
      */
-    filter?: pulumi.Input<string>;
+    filter?: pulumi.Input<string | undefined>;
     /**
      * LDAP objectClasses for groups (comma-separated).
      */
-    groupClasses?: pulumi.Input<string>;
+    groupClasses?: pulumi.Input<string | undefined>;
     /**
      * LDAP base DN for group searches.
      */
-    groupDn?: pulumi.Input<string>;
+    groupDn?: pulumi.Input<string | undefined>;
     /**
      * LDAP filter for group searches.
      */
-    groupFilter?: pulumi.Input<string>;
+    groupFilter?: pulumi.Input<string | undefined>;
     /**
      * LDAP attribute representing the group name.
      */
-    groupNameAttr?: pulumi.Input<string>;
+    groupNameAttr?: pulumi.Input<string | undefined>;
     /**
      * LDAP connection mode (ldap, ldaps, ldap+starttls).
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * LDAP server port. Default: 389 (LDAP) or 636 (LDAPS).
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * Realm identifier (e.g., 'example.com').
      */
@@ -538,7 +538,7 @@ export interface LdapLegacyArgs {
      *
      * @deprecated Deprecated by Proxmox: use mode instead.
      */
-    secure?: pulumi.Input<boolean>;
+    secure?: pulumi.Input<boolean | undefined>;
     /**
      * Primary LDAP server hostname or IP address.
      */
@@ -546,29 +546,29 @@ export interface LdapLegacyArgs {
     /**
      * Fallback LDAP server hostname or IP address.
      */
-    server2?: pulumi.Input<string>;
+    server2?: pulumi.Input<string | undefined>;
     /**
      * SSL/TLS version (tlsv1, tlsv1*1, tlsv1*2, tlsv1_3).
      */
-    sslVersion?: pulumi.Input<string>;
+    sslVersion?: pulumi.Input<string | undefined>;
     /**
      * Comma-separated list of attributes to sync (e.g., 'email=mail,firstname=givenName').
      */
-    syncAttributes?: pulumi.Input<string>;
+    syncAttributes?: pulumi.Input<string | undefined>;
     /**
      * Default synchronization options. Format: comma-separated 'key=value' pairs. Valid keys: 'scope' (users/groups/both), 'enable-new' (1/0), 'remove-vanished' (semicolon-separated: entry/acl/properties), 'full' (deprecated), 'purge' (deprecated). Example: 'scope=users,enable-new=1,remove-vanished=entry;acl'.
      */
-    syncDefaultsOptions?: pulumi.Input<string>;
+    syncDefaultsOptions?: pulumi.Input<string | undefined>;
     /**
      * LDAP attribute representing the username.
      */
-    userAttr?: pulumi.Input<string>;
+    userAttr?: pulumi.Input<string | undefined>;
     /**
      * LDAP objectClasses for users (comma-separated).
      */
-    userClasses?: pulumi.Input<string>;
+    userClasses?: pulumi.Input<string | undefined>;
     /**
      * Verify LDAP server SSL certificate.
      */
-    verify?: pulumi.Input<boolean>;
+    verify?: pulumi.Input<boolean | undefined>;
 }

@@ -20,11 +20,11 @@ __all__ = ['AliasLegacyArgs', 'AliasLegacy']
 class AliasLegacyArgs:
     def __init__(__self__, *,
                  cidr: pulumi.Input[_builtins.str],
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a AliasLegacy resource.
 
@@ -61,74 +61,74 @@ class AliasLegacyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alias comment.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="containerId")
-    def container_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def container_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Container ID. Leave empty for cluster level aliases.
         """
         return pulumi.get(self, "container_id")
 
     @container_id.setter
-    def container_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def container_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "container_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alias name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeName")
-    def node_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node name. Leave empty for cluster level aliases.
         """
         return pulumi.get(self, "node_name")
 
     @node_name.setter
-    def node_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_name", value)
 
     @_builtins.property
     @pulumi.getter(name="vmId")
-    def vm_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vm_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         VM ID. Leave empty for cluster level aliases.
         """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
-    def vm_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vm_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vm_id", value)
 
 
 @pulumi.input_type
 class _AliasLegacyState:
     def __init__(__self__, *,
-                 cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering AliasLegacy resources.
 
@@ -154,74 +154,74 @@ class _AliasLegacyState:
 
     @_builtins.property
     @pulumi.getter
-    def cidr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cidr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Network/IP specification in CIDR format.
         """
         return pulumi.get(self, "cidr")
 
     @cidr.setter
-    def cidr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cidr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cidr", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alias comment.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="containerId")
-    def container_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def container_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Container ID. Leave empty for cluster level aliases.
         """
         return pulumi.get(self, "container_id")
 
     @container_id.setter
-    def container_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def container_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "container_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Alias name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeName")
-    def node_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node name. Leave empty for cluster level aliases.
         """
         return pulumi.get(self, "node_name")
 
     @node_name.setter
-    def node_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_name", value)
 
     @_builtins.property
     @pulumi.getter(name="vmId")
-    def vm_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vm_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         VM ID. Leave empty for cluster level aliases.
         """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
-    def vm_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vm_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vm_id", value)
 
 
@@ -231,12 +231,12 @@ class AliasLegacy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Aliases are used to see what devices or group of devices are affected by a rule.
@@ -251,7 +251,7 @@ class AliasLegacy(pulumi.CustomResource):
 
         local_network = proxmoxve.firewall.AliasLegacy("local_network",
             node_name=example["nodeName"],
-            vm_id=example["vmId"],
+            vm_id=int(example["vmId"]),
             name="local_network",
             cidr="192.168.0.0/23",
             comment="Managed by Pulumi",
@@ -291,7 +291,7 @@ class AliasLegacy(pulumi.CustomResource):
 
         local_network = proxmoxve.firewall.AliasLegacy("local_network",
             node_name=example["nodeName"],
-            vm_id=example["vmId"],
+            vm_id=int(example["vmId"]),
             name="local_network",
             cidr="192.168.0.0/23",
             comment="Managed by Pulumi",
@@ -318,12 +318,12 @@ class AliasLegacy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cidr: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 cidr: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -351,12 +351,12 @@ class AliasLegacy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cidr: Optional[pulumi.Input[_builtins.str]] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            container_id: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            node_name: Optional[pulumi.Input[_builtins.str]] = None,
-            vm_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'AliasLegacy':
+            cidr: pulumi.Input[Optional[_builtins.str]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            container_id: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vm_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'AliasLegacy':
         """
         Get an existing AliasLegacy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

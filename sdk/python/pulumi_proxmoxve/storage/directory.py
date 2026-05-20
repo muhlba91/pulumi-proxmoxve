@@ -23,12 +23,12 @@ class DirectoryArgs:
     def __init__(__self__, *,
                  path: pulumi.Input[_builtins.str],
                  resource_id: pulumi.Input[_builtins.str],
-                 backups: Optional[pulumi.Input['DirectoryBackupsArgs']] = None,
-                 contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 preallocation: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared: Optional[pulumi.Input[_builtins.bool]] = None):
+                 backups: pulumi.Input[Optional['DirectoryBackupsArgs']] = None,
+                 contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 preallocation: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Directory resource.
 
@@ -82,88 +82,88 @@ class DirectoryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def backups(self) -> Optional[pulumi.Input['DirectoryBackupsArgs']]:
+    def backups(self) -> pulumi.Input[Optional['DirectoryBackupsArgs']]:
         """
         Configure backup retention settings for the storage type.
         """
         return pulumi.get(self, "backups")
 
     @backups.setter
-    def backups(self, value: Optional[pulumi.Input['DirectoryBackupsArgs']]):
+    def backups(self, value: pulumi.Input[Optional['DirectoryBackupsArgs']]):
         pulumi.set(self, "backups", value)
 
     @_builtins.property
     @pulumi.getter
-    def contents(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def contents(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
         """
         return pulumi.get(self, "contents")
 
     @contents.setter
-    def contents(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def contents(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "contents", value)
 
     @_builtins.property
     @pulumi.getter
-    def disable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the storage is disabled.
         """
         return pulumi.get(self, "disable")
 
     @disable.setter
-    def disable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable", value)
 
     @_builtins.property
     @pulumi.getter
-    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of nodes where this storage is available.
         """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
-    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter
-    def preallocation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def preallocation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The preallocation mode for raw and qcow2 images.
         """
         return pulumi.get(self, "preallocation")
 
     @preallocation.setter
-    def preallocation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def preallocation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "preallocation", value)
 
     @_builtins.property
     @pulumi.getter
-    def shared(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def shared(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the storage is shared across all nodes.
         """
         return pulumi.get(self, "shared")
 
     @shared.setter
-    def shared(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def shared(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "shared", value)
 
 
 @pulumi.input_type
 class _DirectoryState:
     def __init__(__self__, *,
-                 backups: Optional[pulumi.Input['DirectoryBackupsArgs']] = None,
-                 contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 preallocation: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared: Optional[pulumi.Input[_builtins.bool]] = None):
+                 backups: pulumi.Input[Optional['DirectoryBackupsArgs']] = None,
+                 contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 preallocation: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Directory resources.
 
@@ -195,98 +195,98 @@ class _DirectoryState:
 
     @_builtins.property
     @pulumi.getter
-    def backups(self) -> Optional[pulumi.Input['DirectoryBackupsArgs']]:
+    def backups(self) -> pulumi.Input[Optional['DirectoryBackupsArgs']]:
         """
         Configure backup retention settings for the storage type.
         """
         return pulumi.get(self, "backups")
 
     @backups.setter
-    def backups(self, value: Optional[pulumi.Input['DirectoryBackupsArgs']]):
+    def backups(self, value: pulumi.Input[Optional['DirectoryBackupsArgs']]):
         pulumi.set(self, "backups", value)
 
     @_builtins.property
     @pulumi.getter
-    def contents(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def contents(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
         """
         return pulumi.get(self, "contents")
 
     @contents.setter
-    def contents(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def contents(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "contents", value)
 
     @_builtins.property
     @pulumi.getter
-    def disable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the storage is disabled.
         """
         return pulumi.get(self, "disable")
 
     @disable.setter
-    def disable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable", value)
 
     @_builtins.property
     @pulumi.getter
-    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of nodes where this storage is available.
         """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
-    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter
-    def path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to the directory on the Proxmox node.
         """
         return pulumi.get(self, "path")
 
     @path.setter
-    def path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path", value)
 
     @_builtins.property
     @pulumi.getter
-    def preallocation(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def preallocation(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The preallocation mode for raw and qcow2 images.
         """
         return pulumi.get(self, "preallocation")
 
     @preallocation.setter
-    def preallocation(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def preallocation(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "preallocation", value)
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
-    def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier of the storage.
         """
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
-    def resource_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def shared(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def shared(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the storage is shared across all nodes.
         """
         return pulumi.get(self, "shared")
 
     @shared.setter
-    def shared(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def shared(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "shared", value)
 
 
@@ -296,14 +296,14 @@ class Directory(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backups: Optional[pulumi.Input[Union['DirectoryBackupsArgs', 'DirectoryBackupsArgsDict']]] = None,
-                 contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 preallocation: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared: Optional[pulumi.Input[_builtins.bool]] = None,
+                 backups: pulumi.Input[Optional[Union['DirectoryBackupsArgs', 'DirectoryBackupsArgsDict']]] = None,
+                 contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 preallocation: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Manages directory-based storage in Proxmox VE.
@@ -401,14 +401,14 @@ class Directory(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backups: Optional[pulumi.Input[Union['DirectoryBackupsArgs', 'DirectoryBackupsArgsDict']]] = None,
-                 contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 path: Optional[pulumi.Input[_builtins.str]] = None,
-                 preallocation: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 shared: Optional[pulumi.Input[_builtins.bool]] = None,
+                 backups: pulumi.Input[Optional[Union['DirectoryBackupsArgs', 'DirectoryBackupsArgsDict']]] = None,
+                 contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 path: pulumi.Input[Optional[_builtins.str]] = None,
+                 preallocation: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 shared: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -442,14 +442,14 @@ class Directory(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backups: Optional[pulumi.Input[Union['DirectoryBackupsArgs', 'DirectoryBackupsArgsDict']]] = None,
-            contents: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            disable: Optional[pulumi.Input[_builtins.bool]] = None,
-            nodes: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            path: Optional[pulumi.Input[_builtins.str]] = None,
-            preallocation: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-            shared: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Directory':
+            backups: pulumi.Input[Optional[Union['DirectoryBackupsArgs', 'DirectoryBackupsArgsDict']]] = None,
+            contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            disable: pulumi.Input[Optional[_builtins.bool]] = None,
+            nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            path: pulumi.Input[Optional[_builtins.str]] = None,
+            preallocation: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            shared: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Directory':
         """
         Get an existing Directory resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

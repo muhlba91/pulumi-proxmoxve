@@ -387,76 +387,76 @@ export interface VmLegacyState {
     /**
      * The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
      */
-    cdrom?: pulumi.Input<{[key: string]: pulumi.Input<inputs.cloned.VmLegacyCdrom>}>;
+    cdrom?: pulumi.Input<{[key: string]: pulumi.Input<inputs.cloned.VmLegacyCdrom>} | undefined>;
     /**
      * Clone settings. Changes require recreation.
      */
-    clone?: pulumi.Input<inputs.cloned.VmLegacyClone>;
+    clone?: pulumi.Input<inputs.cloned.VmLegacyClone | undefined>;
     /**
      * The CPU configuration.
      */
-    cpu?: pulumi.Input<inputs.cloned.VmLegacyCpu>;
+    cpu?: pulumi.Input<inputs.cloned.VmLegacyCpu | undefined>;
     /**
      * Explicit deletions to perform after cloning/updating. Entries persist across applies.
      */
-    delete?: pulumi.Input<inputs.cloned.VmLegacyDelete>;
+    delete?: pulumi.Input<inputs.cloned.VmLegacyDelete | undefined>;
     /**
      * Delete unreferenced disks on destroy. WARNING: When set to true, any disks not explicitly managed by Terraform will be deleted on destroy, potentially causing data loss. Defaults to false for safety.
      */
-    deleteUnreferencedDisksOnDestroy?: pulumi.Input<boolean>;
+    deleteUnreferencedDisksOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * Optional VM description applied after cloning.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Disks keyed by slot (scsi0, virtio0, sata0, ide0, ...). Only listed keys are managed.
      */
-    disk?: pulumi.Input<{[key: string]: pulumi.Input<inputs.cloned.VmLegacyDisk>}>;
+    disk?: pulumi.Input<{[key: string]: pulumi.Input<inputs.cloned.VmLegacyDisk>} | undefined>;
     /**
      * Memory configuration for the VM. Uses Proxmox memory ballooning to allow dynamic memory allocation. The `size` sets the total available RAM, while `balloon` sets the guaranteed floor. The host can reclaim memory between these values when needed.
      */
-    memory?: pulumi.Input<inputs.cloned.VmLegacyMemory>;
+    memory?: pulumi.Input<inputs.cloned.VmLegacyMemory | undefined>;
     /**
      * Optional VM name override applied after cloning.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Network devices keyed by slot (net0, net1, ...). Only listed keys are managed.
      */
-    network?: pulumi.Input<{[key: string]: pulumi.Input<inputs.cloned.VmLegacyNetwork>}>;
+    network?: pulumi.Input<{[key: string]: pulumi.Input<inputs.cloned.VmLegacyNetwork>} | undefined>;
     /**
      * Target node for the cloned VM.
      */
-    nodeName?: pulumi.Input<string>;
+    nodeName?: pulumi.Input<string | undefined>;
     /**
      * Purge backup configuration on destroy.
      */
-    purgeOnDestroy?: pulumi.Input<boolean>;
+    purgeOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The VM identifier in the Proxmox cluster.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
      */
-    rng?: pulumi.Input<inputs.cloned.VmLegacyRng>;
+    rng?: pulumi.Input<inputs.cloned.VmLegacyRng | undefined>;
     /**
      * Whether the VM should be started after cloning. Defaults to true.
      */
-    started?: pulumi.Input<boolean>;
+    started?: pulumi.Input<boolean | undefined>;
     /**
      * Stop the VM on destroy (instead of shutdown).
      */
-    stopOnDestroy?: pulumi.Input<boolean>;
+    stopOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * Tags applied after cloning.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
-    timeouts?: pulumi.Input<inputs.cloned.VmLegacyTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.cloned.VmLegacyTimeouts | undefined>;
     /**
      * Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
      */
-    vga?: pulumi.Input<inputs.cloned.VmLegacyVga>;
+    vga?: pulumi.Input<inputs.cloned.VmLegacyVga | undefined>;
 }
 
 /**
@@ -466,7 +466,7 @@ export interface VmLegacyArgs {
     /**
      * The CD-ROM configuration. The key is the interface of the CD-ROM, could be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. Note that `q35` machine type only supports `ide0` and `ide2` of IDE interfaces.
      */
-    cdrom?: pulumi.Input<{[key: string]: pulumi.Input<inputs.cloned.VmLegacyCdrom>}>;
+    cdrom?: pulumi.Input<{[key: string]: pulumi.Input<inputs.cloned.VmLegacyCdrom>} | undefined>;
     /**
      * Clone settings. Changes require recreation.
      */
@@ -474,35 +474,35 @@ export interface VmLegacyArgs {
     /**
      * The CPU configuration.
      */
-    cpu?: pulumi.Input<inputs.cloned.VmLegacyCpu>;
+    cpu?: pulumi.Input<inputs.cloned.VmLegacyCpu | undefined>;
     /**
      * Explicit deletions to perform after cloning/updating. Entries persist across applies.
      */
-    delete?: pulumi.Input<inputs.cloned.VmLegacyDelete>;
+    delete?: pulumi.Input<inputs.cloned.VmLegacyDelete | undefined>;
     /**
      * Delete unreferenced disks on destroy. WARNING: When set to true, any disks not explicitly managed by Terraform will be deleted on destroy, potentially causing data loss. Defaults to false for safety.
      */
-    deleteUnreferencedDisksOnDestroy?: pulumi.Input<boolean>;
+    deleteUnreferencedDisksOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * Optional VM description applied after cloning.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Disks keyed by slot (scsi0, virtio0, sata0, ide0, ...). Only listed keys are managed.
      */
-    disk?: pulumi.Input<{[key: string]: pulumi.Input<inputs.cloned.VmLegacyDisk>}>;
+    disk?: pulumi.Input<{[key: string]: pulumi.Input<inputs.cloned.VmLegacyDisk>} | undefined>;
     /**
      * Memory configuration for the VM. Uses Proxmox memory ballooning to allow dynamic memory allocation. The `size` sets the total available RAM, while `balloon` sets the guaranteed floor. The host can reclaim memory between these values when needed.
      */
-    memory?: pulumi.Input<inputs.cloned.VmLegacyMemory>;
+    memory?: pulumi.Input<inputs.cloned.VmLegacyMemory | undefined>;
     /**
      * Optional VM name override applied after cloning.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Network devices keyed by slot (net0, net1, ...). Only listed keys are managed.
      */
-    network?: pulumi.Input<{[key: string]: pulumi.Input<inputs.cloned.VmLegacyNetwork>}>;
+    network?: pulumi.Input<{[key: string]: pulumi.Input<inputs.cloned.VmLegacyNetwork>} | undefined>;
     /**
      * Target node for the cloned VM.
      */
@@ -510,30 +510,30 @@ export interface VmLegacyArgs {
     /**
      * Purge backup configuration on destroy.
      */
-    purgeOnDestroy?: pulumi.Input<boolean>;
+    purgeOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * The VM identifier in the Proxmox cluster.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * Configure the RNG (Random Number Generator) device. The RNG device provides entropy to guests to ensure good quality random numbers for guest applications that require them. Can only be set by `root@pam.` See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for more information.
      */
-    rng?: pulumi.Input<inputs.cloned.VmLegacyRng>;
+    rng?: pulumi.Input<inputs.cloned.VmLegacyRng | undefined>;
     /**
      * Whether the VM should be started after cloning. Defaults to true.
      */
-    started?: pulumi.Input<boolean>;
+    started?: pulumi.Input<boolean | undefined>;
     /**
      * Stop the VM on destroy (instead of shutdown).
      */
-    stopOnDestroy?: pulumi.Input<boolean>;
+    stopOnDestroy?: pulumi.Input<boolean | undefined>;
     /**
      * Tags applied after cloning.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
-    timeouts?: pulumi.Input<inputs.cloned.VmLegacyTimeouts>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    timeouts?: pulumi.Input<inputs.cloned.VmLegacyTimeouts | undefined>;
     /**
      * Configure the VGA Hardware. If you want to use high resolution modes (>= 1280x1024x16) you may need to increase the vga memory option. Since QEMU 2.9 the default VGA display type is `std` for all OS types besides some Windows versions (XP and older) which use `cirrus`. The `qxl` option enables the SPICE display server. For win* OS you can select how many independent displays you want, Linux guests can add displays themself. You can also run without any graphic card, using a serial device as terminal. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information and available configuration parameters.
      */
-    vga?: pulumi.Input<inputs.cloned.VmLegacyVga>;
+    vga?: pulumi.Input<inputs.cloned.VmLegacyVga | undefined>;
 }

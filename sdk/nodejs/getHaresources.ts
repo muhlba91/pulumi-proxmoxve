@@ -96,5 +96,5 @@ export interface GetHaresourcesOutputArgs {
     /**
      * The type of High Availability resources to fetch (`vm` or `ct`). All resources will be fetched if this option is unset.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

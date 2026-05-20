@@ -5,7 +5,7 @@
   keywords = ["proxmox", "proxmoxve", "category/infrastructure"]
   readme = "README.md"
   requires-python = ">=3.9"
-  version = "8.1.0a1776929910+38419dfb.dirty"
+  version = "8.2.0a1779276000+7fddbf04.dirty"
   [project.license]
     text = "Apache-2.0"
   [project.urls]

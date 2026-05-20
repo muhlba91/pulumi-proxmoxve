@@ -22,11 +22,11 @@ class HaruleArgs:
                  resources: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  rule: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
-                 affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nodes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
-                 strict: Optional[pulumi.Input[_builtins.bool]] = None):
+                 affinity: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nodes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
+                 strict: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Harule resource.
 
@@ -91,76 +91,76 @@ class HaruleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def affinity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def affinity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource affinity type (resource-affinity only). `positive` keeps resources on the same node, `negative` keeps them on separate nodes.
         """
         return pulumi.get(self, "affinity")
 
     @affinity.setter
-    def affinity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def affinity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "affinity", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The comment associated with this rule.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def disable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the HA rule is disabled. Defaults to `false`.
         """
         return pulumi.get(self, "disable")
 
     @disable.setter
-    def disable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable", value)
 
     @_builtins.property
     @pulumi.getter
-    def nodes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]]:
+    def nodes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]]:
         """
         The member nodes for this rule (node-affinity only). They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or `null` for unset priorities.
         """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
-    def nodes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]]):
+    def nodes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter
-    def strict(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def strict(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the node affinity rule is strict (node-affinity only). When strict, resources cannot run on nodes not listed. Defaults to `false`.
         """
         return pulumi.get(self, "strict")
 
     @strict.setter
-    def strict(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def strict(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "strict", value)
 
 
 @pulumi.input_type
 class _HaruleState:
     def __init__(__self__, *,
-                 affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nodes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 strict: Optional[pulumi.Input[_builtins.bool]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 affinity: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nodes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 strict: pulumi.Input[Optional[_builtins.bool]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Harule resources.
 
@@ -192,98 +192,98 @@ class _HaruleState:
 
     @_builtins.property
     @pulumi.getter
-    def affinity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def affinity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource affinity type (resource-affinity only). `positive` keeps resources on the same node, `negative` keeps them on separate nodes.
         """
         return pulumi.get(self, "affinity")
 
     @affinity.setter
-    def affinity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def affinity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "affinity", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The comment associated with this rule.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter
-    def disable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the HA rule is disabled. Defaults to `false`.
         """
         return pulumi.get(self, "disable")
 
     @disable.setter
-    def disable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable", value)
 
     @_builtins.property
     @pulumi.getter
-    def nodes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]]:
+    def nodes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]]:
         """
         The member nodes for this rule (node-affinity only). They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or `null` for unset priorities.
         """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
-    def nodes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]]):
+    def nodes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter
-    def resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The set of HA resource IDs that this rule applies to (e.g. `vm:100`, `ct:101`). The resources must already be managed by HA.
         """
         return pulumi.get(self, "resources")
 
     @resources.setter
-    def resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "resources", value)
 
     @_builtins.property
     @pulumi.getter
-    def rule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier of the High Availability rule to manage.
         """
         return pulumi.get(self, "rule")
 
     @rule.setter
-    def rule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rule", value)
 
     @_builtins.property
     @pulumi.getter
-    def strict(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def strict(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the node affinity rule is strict (node-affinity only). When strict, resources cannot run on nodes not listed. Defaults to `false`.
         """
         return pulumi.get(self, "strict")
 
     @strict.setter
-    def strict(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def strict(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "strict", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The HA rule type. Must be `node-affinity` or `resource-affinity`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -293,14 +293,14 @@ class Harule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nodes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 strict: Optional[pulumi.Input[_builtins.bool]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 affinity: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nodes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 strict: pulumi.Input[Optional[_builtins.bool]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages a High Availability rule in a Proxmox VE cluster (PVE 9+). HA rules replace the legacy HA groups and provide node affinity and resource affinity capabilities.
@@ -462,14 +462,14 @@ class Harule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 nodes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
-                 resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 rule: Optional[pulumi.Input[_builtins.str]] = None,
-                 strict: Optional[pulumi.Input[_builtins.bool]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 affinity: pulumi.Input[Optional[_builtins.str]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 nodes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
+                 resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rule: pulumi.Input[Optional[_builtins.str]] = None,
+                 strict: pulumi.Input[Optional[_builtins.bool]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -503,14 +503,14 @@ class Harule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            affinity: Optional[pulumi.Input[_builtins.str]] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            disable: Optional[pulumi.Input[_builtins.bool]] = None,
-            nodes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
-            resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            rule: Optional[pulumi.Input[_builtins.str]] = None,
-            strict: Optional[pulumi.Input[_builtins.bool]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None) -> 'Harule':
+            affinity: pulumi.Input[Optional[_builtins.str]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            disable: pulumi.Input[Optional[_builtins.bool]] = None,
+            nodes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.int]]]] = None,
+            resources: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            rule: pulumi.Input[Optional[_builtins.str]] = None,
+            strict: pulumi.Input[Optional[_builtins.bool]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> 'Harule':
         """
         Get an existing Harule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

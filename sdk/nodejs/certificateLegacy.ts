@@ -191,59 +191,59 @@ export interface CertificateLegacyState {
     /**
      * The PEM encoded certificate.
      */
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * The PEM encoded certificate chain.
      */
-    certificateChain?: pulumi.Input<string>;
+    certificateChain?: pulumi.Input<string | undefined>;
     /**
      * The expiration date (RFC 3339).
      */
-    expirationDate?: pulumi.Input<string>;
+    expirationDate?: pulumi.Input<string | undefined>;
     /**
      * The file name.
      */
-    fileName?: pulumi.Input<string>;
+    fileName?: pulumi.Input<string | undefined>;
     /**
      * The issuer.
      */
-    issuer?: pulumi.Input<string>;
+    issuer?: pulumi.Input<string | undefined>;
     /**
      * A node name.
      */
-    nodeName?: pulumi.Input<string>;
+    nodeName?: pulumi.Input<string | undefined>;
     /**
      * Whether to overwrite an existing certificate
      */
-    overwrite?: pulumi.Input<boolean>;
+    overwrite?: pulumi.Input<boolean | undefined>;
     /**
      * The PEM encoded private key.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * The public key size.
      */
-    publicKeySize?: pulumi.Input<number>;
+    publicKeySize?: pulumi.Input<number | undefined>;
     /**
      * The public key type.
      */
-    publicKeyType?: pulumi.Input<string>;
+    publicKeyType?: pulumi.Input<string | undefined>;
     /**
      * The SSL fingerprint.
      */
-    sslFingerprint?: pulumi.Input<string>;
+    sslFingerprint?: pulumi.Input<string | undefined>;
     /**
      * The start date (RFC 3339).
      */
-    startDate?: pulumi.Input<string>;
+    startDate?: pulumi.Input<string | undefined>;
     /**
      * The subject.
      */
-    subject?: pulumi.Input<string>;
+    subject?: pulumi.Input<string | undefined>;
     /**
      * The subject alternative names.
      */
-    subjectAlternativeNames?: pulumi.Input<pulumi.Input<string>[]>;
+    subjectAlternativeNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -257,7 +257,7 @@ export interface CertificateLegacyArgs {
     /**
      * The PEM encoded certificate chain.
      */
-    certificateChain?: pulumi.Input<string>;
+    certificateChain?: pulumi.Input<string | undefined>;
     /**
      * A node name.
      */
@@ -265,7 +265,7 @@ export interface CertificateLegacyArgs {
     /**
      * Whether to overwrite an existing certificate
      */
-    overwrite?: pulumi.Input<boolean>;
+    overwrite?: pulumi.Input<boolean | undefined>;
     /**
      * The PEM encoded private key.
      */

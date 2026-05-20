@@ -143,27 +143,27 @@ export interface AclLegacyState {
     /**
      * The group the ACL should apply to (mutually exclusive with `tokenId` and `userId`)
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * Access control path
      */
-    path?: pulumi.Input<string>;
+    path?: pulumi.Input<string | undefined>;
     /**
      * Allow to propagate (inherit) permissions.
      */
-    propagate?: pulumi.Input<boolean>;
+    propagate?: pulumi.Input<boolean | undefined>;
     /**
      * The role to apply
      */
-    roleId?: pulumi.Input<string>;
+    roleId?: pulumi.Input<string | undefined>;
     /**
      * The token the ACL should apply to (mutually exclusive with `groupId` and `userId`)
      */
-    tokenId?: pulumi.Input<string>;
+    tokenId?: pulumi.Input<string | undefined>;
     /**
      * The user the ACL should apply to (mutually exclusive with `groupId` and `tokenId`)
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -173,7 +173,7 @@ export interface AclLegacyArgs {
     /**
      * The group the ACL should apply to (mutually exclusive with `tokenId` and `userId`)
      */
-    groupId?: pulumi.Input<string>;
+    groupId?: pulumi.Input<string | undefined>;
     /**
      * Access control path
      */
@@ -181,7 +181,7 @@ export interface AclLegacyArgs {
     /**
      * Allow to propagate (inherit) permissions.
      */
-    propagate?: pulumi.Input<boolean>;
+    propagate?: pulumi.Input<boolean | undefined>;
     /**
      * The role to apply
      */
@@ -189,9 +189,9 @@ export interface AclLegacyArgs {
     /**
      * The token the ACL should apply to (mutually exclusive with `groupId` and `userId`)
      */
-    tokenId?: pulumi.Input<string>;
+    tokenId?: pulumi.Input<string | undefined>;
     /**
      * The user the ACL should apply to (mutually exclusive with `groupId` and `tokenId`)
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
 }

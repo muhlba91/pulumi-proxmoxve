@@ -25,7 +25,7 @@ namespace Pulumi.ProxmoxVE
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // List all Replications
-        ///     var all = ProxmoxVE.Index.GetReplications.Invoke();
+        ///     var all = ProxmoxVE.GetReplications.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -54,7 +54,7 @@ namespace Pulumi.ProxmoxVE
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // List all Replications
-        ///     var all = ProxmoxVE.Index.GetReplications.Invoke();
+        ///     var all = ProxmoxVE.GetReplications.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -83,7 +83,7 @@ namespace Pulumi.ProxmoxVE
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // List all Replications
-        ///     var all = ProxmoxVE.Index.GetReplications.Invoke();
+        ///     var all = ProxmoxVE.GetReplications.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {

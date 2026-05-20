@@ -12,9 +12,20 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages a container.
+// Manages an LXC container on a Proxmox VE node.
+//
+// A container's root filesystem (the `disk` block) and any additional volumes
+// (`mountPoint` blocks) can be placed on any Proxmox VE storage backend —
+// directory, LVM, LVM-thin, ZFS, Ceph RBD, NFS, CIFS, or any other storage
+// configured on the cluster. Bind mounts of arbitrary host directories are
+// also supported. See the Storage section below for details.
 //
 // ## Example Usage
+//
+// ### Basic container
+//
+// A minimal Ubuntu container with a 4&nbsp;GB rootfs on `local-lvm`,
+// DHCP networking, and an SSH key:
 //
 // ```go
 // package main
@@ -98,22 +109,6 @@ import (
 //					TemplateFileId: ubuntu2504LxcImg.ID(),
 //					Type:           pulumi.String("ubuntu"),
 //				},
-//				MountPoints: proxmoxve.ContainerLegacyMountPointArray{
-//					&proxmoxve.ContainerLegacyMountPointArgs{
-//						Volume: pulumi.String("/mnt/bindmounts/shared"),
-//						Path:   pulumi.String("/mnt/shared"),
-//					},
-//					&proxmoxve.ContainerLegacyMountPointArgs{
-//						Volume: pulumi.String("local-lvm"),
-//						Size:   pulumi.String("10G"),
-//						Path:   pulumi.String("/mnt/volume"),
-//					},
-//					&proxmoxve.ContainerLegacyMountPointArgs{
-//						Volume: pulumi.String("local-lvm:subvol-108-disk-101"),
-//						Size:   pulumi.String("10G"),
-//						Path:   pulumi.String("/mnt/data"),
-//					},
-//				},
 //				Startup: &proxmoxve.ContainerLegacyStartupArgs{
 //					Order:     pulumi.Int(3),
 //					UpDelay:   pulumi.Int(60),
@@ -131,6 +126,82 @@ import (
 //	}
 //
 // ```
+//
+// ### Custom storage configuration
+//
+// This example places the rootfs on a custom storage pool, attaches an
+// additional volume, mounts an existing volume by ID, and bind-mounts a host
+// directory. Any Proxmox storage backend (directory, LVM-thin, ZFS, Ceph RBD,
+// NFS, CIFS) can be referenced by its storage ID:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := proxmoxve.NewContainerLegacy(ctx, "custom_storage", &proxmoxve.ContainerLegacyArgs{
+//				NodeName: pulumi.String("first-node"),
+//				VmId:     pulumi.Int(1235),
+//				Disk: &proxmoxve.ContainerLegacyDiskArgs{
+//					DatastoreId: pulumi.String("tank-zfs"),
+//					Size:        pulumi.Int(32),
+//				},
+//				MountPoints: proxmoxve.ContainerLegacyMountPointArray{
+//					&proxmoxve.ContainerLegacyMountPointArgs{
+//						Volume: pulumi.String("local-lvm"),
+//						Size:   pulumi.String("10G"),
+//						Path:   pulumi.String("/mnt/volume"),
+//					},
+//					&proxmoxve.ContainerLegacyMountPointArgs{
+//						Volume: pulumi.String("local-lvm:subvol-108-disk-101"),
+//						Size:   pulumi.String("10G"),
+//						Path:   pulumi.String("/mnt/data"),
+//					},
+//					&proxmoxve.ContainerLegacyMountPointArgs{
+//						Volume: pulumi.String("/mnt/bindmounts/shared"),
+//						Path:   pulumi.String("/mnt/shared"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Storage
+//
+// Containers attach storage through two block types:
+//
+//   - **`disk`** — the root filesystem (rootfs). Exactly one rootfs per
+//     container; the `datastoreId` argument selects the Proxmox storage pool
+//     it lives on.
+//   - **`mountPoint`** — zero or more additional volumes or bind mounts,
+//     each mounted at a separate `path` inside the container.
+//
+// Both block types are backend-agnostic: `datastoreId` (on `disk`) and
+// `volume` (on `mountPoint`) accept any Proxmox storage ID, regardless of
+// backend type. Run `pvesm status` on the host or use the
+// `getDatastoresLegacy`
+// data source to list configured storages.
+//
+// The `mount_point.volume` attribute accepts three forms:
+//
+// | Form                       | Meaning                                                  | Example                            |
+// | -------------------------- | -------------------------------------------------------- | ---------------------------------- |
+// | Storage ID                 | Allocate a new volume on that storage (requires `size`)  | `local-lvm`, `tank-zfs`            |
+// | Storage ID + volume name   | Mount an existing volume by its full PVE volume ID       | `local-lvm:subvol-108-disk-101`    |
+// | Absolute host path         | Bind-mount a host directory (requires `root@pam` auth)   | `/mnt/bindmounts/shared`           |
 //
 // ## Import
 //
@@ -152,7 +223,10 @@ type ContainerLegacy struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Device to pass through to the container (multiple blocks supported).
 	DevicePassthroughs ContainerLegacyDevicePassthroughArrayOutput `pulumi:"devicePassthroughs"`
-	// The disk configuration.
+	// The root filesystem (rootfs) storage configuration.
+	// Selects the Proxmox storage pool the container's root volume is created
+	// on. Backend-agnostic — works with directory, LVM, LVM-thin, ZFS, Ceph
+	// RBD, NFS, and any other configured Proxmox storage.
 	Disk ContainerLegacyDiskPtrOutput `pulumi:"disk"`
 	// A map of runtime environment variables for the container init process.
 	EnvironmentVariables pulumi.StringMapOutput `pulumi:"environmentVariables"`
@@ -173,7 +247,9 @@ type ContainerLegacy struct {
 	Ipv6 pulumi.StringMapOutput `pulumi:"ipv6"`
 	// The memory configuration.
 	Memory ContainerLegacyMemoryPtrOutput `pulumi:"memory"`
-	// A mount point
+	// An additional volume mount or host bind mount
+	// (multiple blocks supported). Use this for data volumes, shared
+	// directories, or attaching pre-existing PVE volumes.
 	MountPoints ContainerLegacyMountPointArrayOutput `pulumi:"mountPoints"`
 	// A network interface (multiple blocks
 	// supported).
@@ -264,7 +340,10 @@ type containerLegacyState struct {
 	Description *string `pulumi:"description"`
 	// Device to pass through to the container (multiple blocks supported).
 	DevicePassthroughs []ContainerLegacyDevicePassthrough `pulumi:"devicePassthroughs"`
-	// The disk configuration.
+	// The root filesystem (rootfs) storage configuration.
+	// Selects the Proxmox storage pool the container's root volume is created
+	// on. Backend-agnostic — works with directory, LVM, LVM-thin, ZFS, Ceph
+	// RBD, NFS, and any other configured Proxmox storage.
 	Disk *ContainerLegacyDisk `pulumi:"disk"`
 	// A map of runtime environment variables for the container init process.
 	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
@@ -285,7 +364,9 @@ type containerLegacyState struct {
 	Ipv6 map[string]string `pulumi:"ipv6"`
 	// The memory configuration.
 	Memory *ContainerLegacyMemory `pulumi:"memory"`
-	// A mount point
+	// An additional volume mount or host bind mount
+	// (multiple blocks supported). Use this for data volumes, shared
+	// directories, or attaching pre-existing PVE volumes.
 	MountPoints []ContainerLegacyMountPoint `pulumi:"mountPoints"`
 	// A network interface (multiple blocks
 	// supported).
@@ -344,7 +425,10 @@ type ContainerLegacyState struct {
 	Description pulumi.StringPtrInput
 	// Device to pass through to the container (multiple blocks supported).
 	DevicePassthroughs ContainerLegacyDevicePassthroughArrayInput
-	// The disk configuration.
+	// The root filesystem (rootfs) storage configuration.
+	// Selects the Proxmox storage pool the container's root volume is created
+	// on. Backend-agnostic — works with directory, LVM, LVM-thin, ZFS, Ceph
+	// RBD, NFS, and any other configured Proxmox storage.
 	Disk ContainerLegacyDiskPtrInput
 	// A map of runtime environment variables for the container init process.
 	EnvironmentVariables pulumi.StringMapInput
@@ -365,7 +449,9 @@ type ContainerLegacyState struct {
 	Ipv6 pulumi.StringMapInput
 	// The memory configuration.
 	Memory ContainerLegacyMemoryPtrInput
-	// A mount point
+	// An additional volume mount or host bind mount
+	// (multiple blocks supported). Use this for data volumes, shared
+	// directories, or attaching pre-existing PVE volumes.
 	MountPoints ContainerLegacyMountPointArrayInput
 	// A network interface (multiple blocks
 	// supported).
@@ -428,7 +514,10 @@ type containerLegacyArgs struct {
 	Description *string `pulumi:"description"`
 	// Device to pass through to the container (multiple blocks supported).
 	DevicePassthroughs []ContainerLegacyDevicePassthrough `pulumi:"devicePassthroughs"`
-	// The disk configuration.
+	// The root filesystem (rootfs) storage configuration.
+	// Selects the Proxmox storage pool the container's root volume is created
+	// on. Backend-agnostic — works with directory, LVM, LVM-thin, ZFS, Ceph
+	// RBD, NFS, and any other configured Proxmox storage.
 	Disk *ContainerLegacyDisk `pulumi:"disk"`
 	// A map of runtime environment variables for the container init process.
 	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
@@ -445,7 +534,9 @@ type containerLegacyArgs struct {
 	Initialization *ContainerLegacyInitialization `pulumi:"initialization"`
 	// The memory configuration.
 	Memory *ContainerLegacyMemory `pulumi:"memory"`
-	// A mount point
+	// An additional volume mount or host bind mount
+	// (multiple blocks supported). Use this for data volumes, shared
+	// directories, or attaching pre-existing PVE volumes.
 	MountPoints []ContainerLegacyMountPoint `pulumi:"mountPoints"`
 	// A network interface (multiple blocks
 	// supported).
@@ -505,7 +596,10 @@ type ContainerLegacyArgs struct {
 	Description pulumi.StringPtrInput
 	// Device to pass through to the container (multiple blocks supported).
 	DevicePassthroughs ContainerLegacyDevicePassthroughArrayInput
-	// The disk configuration.
+	// The root filesystem (rootfs) storage configuration.
+	// Selects the Proxmox storage pool the container's root volume is created
+	// on. Backend-agnostic — works with directory, LVM, LVM-thin, ZFS, Ceph
+	// RBD, NFS, and any other configured Proxmox storage.
 	Disk ContainerLegacyDiskPtrInput
 	// A map of runtime environment variables for the container init process.
 	EnvironmentVariables pulumi.StringMapInput
@@ -522,7 +616,9 @@ type ContainerLegacyArgs struct {
 	Initialization ContainerLegacyInitializationPtrInput
 	// The memory configuration.
 	Memory ContainerLegacyMemoryPtrInput
-	// A mount point
+	// An additional volume mount or host bind mount
+	// (multiple blocks supported). Use this for data volumes, shared
+	// directories, or attaching pre-existing PVE volumes.
 	MountPoints ContainerLegacyMountPointArrayInput
 	// A network interface (multiple blocks
 	// supported).
@@ -682,7 +778,10 @@ func (o ContainerLegacyOutput) DevicePassthroughs() ContainerLegacyDevicePassthr
 	return o.ApplyT(func(v *ContainerLegacy) ContainerLegacyDevicePassthroughArrayOutput { return v.DevicePassthroughs }).(ContainerLegacyDevicePassthroughArrayOutput)
 }
 
-// The disk configuration.
+// The root filesystem (rootfs) storage configuration.
+// Selects the Proxmox storage pool the container's root volume is created
+// on. Backend-agnostic — works with directory, LVM, LVM-thin, ZFS, Ceph
+// RBD, NFS, and any other configured Proxmox storage.
 func (o ContainerLegacyOutput) Disk() ContainerLegacyDiskPtrOutput {
 	return o.ApplyT(func(v *ContainerLegacy) ContainerLegacyDiskPtrOutput { return v.Disk }).(ContainerLegacyDiskPtrOutput)
 }
@@ -730,7 +829,9 @@ func (o ContainerLegacyOutput) Memory() ContainerLegacyMemoryPtrOutput {
 	return o.ApplyT(func(v *ContainerLegacy) ContainerLegacyMemoryPtrOutput { return v.Memory }).(ContainerLegacyMemoryPtrOutput)
 }
 
-// A mount point
+// An additional volume mount or host bind mount
+// (multiple blocks supported). Use this for data volumes, shared
+// directories, or attaching pre-existing PVE volumes.
 func (o ContainerLegacyOutput) MountPoints() ContainerLegacyMountPointArrayOutput {
 	return o.ApplyT(func(v *ContainerLegacy) ContainerLegacyMountPointArrayOutput { return v.MountPoints }).(ContainerLegacyMountPointArrayOutput)
 }

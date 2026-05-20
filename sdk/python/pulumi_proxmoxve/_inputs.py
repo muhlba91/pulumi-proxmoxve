@@ -172,18 +172,18 @@ class ContainerLegacyCloneArgsDict(TypedDict):
     """
     The identifier for the source container.
     """
-    datastore_id: NotRequired[pulumi.Input[_builtins.str]]
+    datastore_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The identifier for the target datastore.
     """
-    full: NotRequired[pulumi.Input[_builtins.bool]]
+    full: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     When cloning, create a full copy of all disks. Set
     to `false` to create a linked clone. Linked clones require the source
     container to be a template on storage that supports copy-on-write
     (e.g. Ceph RBD) (defaults to `true`).
     """
-    node_name: NotRequired[pulumi.Input[_builtins.str]]
+    node_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the source node (leave blank, if
     equal to the `node_name` argument).
@@ -193,9 +193,9 @@ class ContainerLegacyCloneArgsDict(TypedDict):
 class ContainerLegacyCloneArgs:
     def __init__(__self__, *,
                  vm_id: pulumi.Input[_builtins.int],
-                 datastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 full: Optional[pulumi.Input[_builtins.bool]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 full: pulumi.Input[Optional[_builtins.bool]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] vm_id: The identifier for the source container.
         :param pulumi.Input[_builtins.str] datastore_id: The identifier for the target datastore.
@@ -228,19 +228,19 @@ class ContainerLegacyCloneArgs:
 
     @_builtins.property
     @pulumi.getter(name="datastoreId")
-    def datastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datastore_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier for the target datastore.
         """
         return pulumi.get(self, "datastore_id")
 
     @datastore_id.setter
-    def datastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datastore_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datastore_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def full(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def full(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When cloning, create a full copy of all disks. Set
         to `false` to create a linked clone. Linked clones require the source
@@ -250,12 +250,12 @@ class ContainerLegacyCloneArgs:
         return pulumi.get(self, "full")
 
     @full.setter
-    def full(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def full(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "full", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeName")
-    def node_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the source node (leave blank, if
         equal to the `node_name` argument).
@@ -263,21 +263,21 @@ class ContainerLegacyCloneArgs:
         return pulumi.get(self, "node_name")
 
     @node_name.setter
-    def node_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_name", value)
 
 
 class ContainerLegacyConsoleArgsDict(TypedDict):
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable the console device (defaults
     to `true`).
     """
-    tty_count: NotRequired[pulumi.Input[_builtins.int]]
+    tty_count: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of available TTY (defaults to `2`).
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The console mode (defaults to `tty`).
     """
@@ -285,9 +285,9 @@ class ContainerLegacyConsoleArgsDict(TypedDict):
 @pulumi.input_type
 class ContainerLegacyConsoleArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tty_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tty_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Whether to enable the console device (defaults
                to `true`).
@@ -303,7 +303,7 @@ class ContainerLegacyConsoleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable the console device (defaults
         to `true`).
@@ -311,48 +311,48 @@ class ContainerLegacyConsoleArgs:
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="ttyCount")
-    def tty_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def tty_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of available TTY (defaults to `2`).
         """
         return pulumi.get(self, "tty_count")
 
     @tty_count.setter
-    def tty_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def tty_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "tty_count", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The console mode (defaults to `tty`).
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class ContainerLegacyCpuArgsDict(TypedDict):
-    architecture: NotRequired[pulumi.Input[_builtins.str]]
+    architecture: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The CPU architecture (defaults to `amd64`).
     """
-    cores: NotRequired[pulumi.Input[_builtins.int]]
+    cores: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of CPU cores (defaults to `1`).
     """
-    limit: NotRequired[pulumi.Input[_builtins.float]]
+    limit: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Limit of CPU usage. Value `0` indicates no limit (defaults to `0`).
     """
-    units: NotRequired[pulumi.Input[_builtins.int]]
+    units: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The CPU units (defaults to `1024`).
     """
@@ -360,10 +360,10 @@ class ContainerLegacyCpuArgsDict(TypedDict):
 @pulumi.input_type
 class ContainerLegacyCpuArgs:
     def __init__(__self__, *,
-                 architecture: Optional[pulumi.Input[_builtins.str]] = None,
-                 cores: Optional[pulumi.Input[_builtins.int]] = None,
-                 limit: Optional[pulumi.Input[_builtins.float]] = None,
-                 units: Optional[pulumi.Input[_builtins.int]] = None):
+                 architecture: pulumi.Input[Optional[_builtins.str]] = None,
+                 cores: pulumi.Input[Optional[_builtins.int]] = None,
+                 limit: pulumi.Input[Optional[_builtins.float]] = None,
+                 units: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] architecture: The CPU architecture (defaults to `amd64`).
         :param pulumi.Input[_builtins.int] cores: The number of CPU cores (defaults to `1`).
@@ -381,50 +381,50 @@ class ContainerLegacyCpuArgs:
 
     @_builtins.property
     @pulumi.getter
-    def architecture(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def architecture(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CPU architecture (defaults to `amd64`).
         """
         return pulumi.get(self, "architecture")
 
     @architecture.setter
-    def architecture(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def architecture(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "architecture", value)
 
     @_builtins.property
     @pulumi.getter
-    def cores(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cores(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of CPU cores (defaults to `1`).
         """
         return pulumi.get(self, "cores")
 
     @cores.setter
-    def cores(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cores(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cores", value)
 
     @_builtins.property
     @pulumi.getter
-    def limit(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def limit(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Limit of CPU usage. Value `0` indicates no limit (defaults to `0`).
         """
         return pulumi.get(self, "limit")
 
     @limit.setter
-    def limit(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def limit(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "limit", value)
 
     @_builtins.property
     @pulumi.getter
-    def units(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def units(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The CPU units (defaults to `1024`).
         """
         return pulumi.get(self, "units")
 
     @units.setter
-    def units(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def units(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "units", value)
 
 
@@ -433,20 +433,20 @@ class ContainerLegacyDevicePassthroughArgsDict(TypedDict):
     """
     Device to pass through to the container (e.g. `/dev/sda`).
     """
-    deny_write: NotRequired[pulumi.Input[_builtins.bool]]
+    deny_write: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Deny the container to write to the device (defaults to `false`).
     """
-    gid: NotRequired[pulumi.Input[_builtins.int]]
+    gid: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Group ID to be assigned to the device node.
     """
-    mode: NotRequired[pulumi.Input[_builtins.str]]
+    mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Access mode to be set on the device node. Must be a
     4-digit octal number.
     """
-    uid: NotRequired[pulumi.Input[_builtins.int]]
+    uid: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     User ID to be assigned to the device node.
     """
@@ -455,10 +455,10 @@ class ContainerLegacyDevicePassthroughArgsDict(TypedDict):
 class ContainerLegacyDevicePassthroughArgs:
     def __init__(__self__, *,
                  path: pulumi.Input[_builtins.str],
-                 deny_write: Optional[pulumi.Input[_builtins.bool]] = None,
-                 gid: Optional[pulumi.Input[_builtins.int]] = None,
-                 mode: Optional[pulumi.Input[_builtins.str]] = None,
-                 uid: Optional[pulumi.Input[_builtins.int]] = None):
+                 deny_write: pulumi.Input[Optional[_builtins.bool]] = None,
+                 gid: pulumi.Input[Optional[_builtins.int]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 uid: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] path: Device to pass through to the container (e.g. `/dev/sda`).
         :param pulumi.Input[_builtins.bool] deny_write: Deny the container to write to the device (defaults to `false`).
@@ -491,31 +491,31 @@ class ContainerLegacyDevicePassthroughArgs:
 
     @_builtins.property
     @pulumi.getter(name="denyWrite")
-    def deny_write(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def deny_write(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Deny the container to write to the device (defaults to `false`).
         """
         return pulumi.get(self, "deny_write")
 
     @deny_write.setter
-    def deny_write(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def deny_write(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "deny_write", value)
 
     @_builtins.property
     @pulumi.getter
-    def gid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def gid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Group ID to be assigned to the device node.
         """
         return pulumi.get(self, "gid")
 
     @gid.setter
-    def gid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def gid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "gid", value)
 
     @_builtins.property
     @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access mode to be set on the device node. Must be a
         4-digit octal number.
@@ -523,50 +523,50 @@ class ContainerLegacyDevicePassthroughArgs:
         return pulumi.get(self, "mode")
 
     @mode.setter
-    def mode(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mode", value)
 
     @_builtins.property
     @pulumi.getter
-    def uid(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def uid(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         User ID to be assigned to the device node.
         """
         return pulumi.get(self, "uid")
 
     @uid.setter
-    def uid(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def uid(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "uid", value)
 
 
 class ContainerLegacyDiskArgsDict(TypedDict):
-    acl: NotRequired[pulumi.Input[_builtins.bool]]
+    acl: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Explicitly enable or disable ACL support
     """
-    datastore_id: NotRequired[pulumi.Input[_builtins.str]]
+    datastore_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The identifier for the datastore to create the
-    disk in (defaults to `local`).
+    The Proxmox storage ID where the rootfs
+    volume is created (defaults to `local`).
     """
-    mount_options: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    mount_options: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of extra mount options.
     """
-    path_in_datastore: NotRequired[pulumi.Input[_builtins.str]]
+    path_in_datastore: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The in-datastore path to the disk image.
     Use this attribute for cross-resource references.
     """
-    quota: NotRequired[pulumi.Input[_builtins.bool]]
+    quota: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable user quotas for the container rootfs
     """
-    replicate: NotRequired[pulumi.Input[_builtins.bool]]
+    replicate: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Will include this volume to a storage replica job
     """
-    size: NotRequired[pulumi.Input[_builtins.int]]
+    size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The size of the root filesystem in gigabytes (defaults
     to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.
@@ -576,17 +576,17 @@ class ContainerLegacyDiskArgsDict(TypedDict):
 @pulumi.input_type
 class ContainerLegacyDiskArgs:
     def __init__(__self__, *,
-                 acl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 datastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mount_options: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 path_in_datastore: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota: Optional[pulumi.Input[_builtins.bool]] = None,
-                 replicate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None):
+                 acl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mount_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 path_in_datastore: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota: pulumi.Input[Optional[_builtins.bool]] = None,
+                 replicate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.bool] acl: Explicitly enable or disable ACL support
-        :param pulumi.Input[_builtins.str] datastore_id: The identifier for the datastore to create the
-               disk in (defaults to `local`).
+        :param pulumi.Input[_builtins.str] datastore_id: The Proxmox storage ID where the rootfs
+               volume is created (defaults to `local`).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mount_options: List of extra mount options.
         :param pulumi.Input[_builtins.str] path_in_datastore: The in-datastore path to the disk image.
                Use this attribute for cross-resource references.
@@ -613,44 +613,44 @@ class ContainerLegacyDiskArgs:
 
     @_builtins.property
     @pulumi.getter
-    def acl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def acl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Explicitly enable or disable ACL support
         """
         return pulumi.get(self, "acl")
 
     @acl.setter
-    def acl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def acl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "acl", value)
 
     @_builtins.property
     @pulumi.getter(name="datastoreId")
-    def datastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datastore_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The identifier for the datastore to create the
-        disk in (defaults to `local`).
+        The Proxmox storage ID where the rootfs
+        volume is created (defaults to `local`).
         """
         return pulumi.get(self, "datastore_id")
 
     @datastore_id.setter
-    def datastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datastore_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datastore_id", value)
 
     @_builtins.property
     @pulumi.getter(name="mountOptions")
-    def mount_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def mount_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of extra mount options.
         """
         return pulumi.get(self, "mount_options")
 
     @mount_options.setter
-    def mount_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def mount_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "mount_options", value)
 
     @_builtins.property
     @pulumi.getter(name="pathInDatastore")
-    def path_in_datastore(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path_in_datastore(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The in-datastore path to the disk image.
         Use this attribute for cross-resource references.
@@ -658,36 +658,36 @@ class ContainerLegacyDiskArgs:
         return pulumi.get(self, "path_in_datastore")
 
     @path_in_datastore.setter
-    def path_in_datastore(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path_in_datastore(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path_in_datastore", value)
 
     @_builtins.property
     @pulumi.getter
-    def quota(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def quota(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable user quotas for the container rootfs
         """
         return pulumi.get(self, "quota")
 
     @quota.setter
-    def quota(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def quota(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "quota", value)
 
     @_builtins.property
     @pulumi.getter
-    def replicate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def replicate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Will include this volume to a storage replica job
         """
         return pulumi.get(self, "replicate")
 
     @replicate.setter
-    def replicate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def replicate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "replicate", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the root filesystem in gigabytes (defaults
         to `4`). When set to 0 a directory or zfs/btrfs subvolume will be created.
@@ -696,24 +696,28 @@ class ContainerLegacyDiskArgs:
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
 
 class ContainerLegacyFeaturesArgsDict(TypedDict):
-    fuse: NotRequired[pulumi.Input[_builtins.bool]]
+    fuse: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the container supports FUSE mounts (defaults to `false`)
     """
-    keyctl: NotRequired[pulumi.Input[_builtins.bool]]
+    keyctl: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the container supports `keyctl()` system call (defaults to `false`)
     """
-    mounts: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    mknod: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether the container supports `mknod()` system call (defaults to `false`)
+    """
+    mounts: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of allowed mount types (`cifs` or `nfs`)
     """
-    nesting: NotRequired[pulumi.Input[_builtins.bool]]
+    nesting: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the container is nested (defaults to `false`)
     """
@@ -721,13 +725,15 @@ class ContainerLegacyFeaturesArgsDict(TypedDict):
 @pulumi.input_type
 class ContainerLegacyFeaturesArgs:
     def __init__(__self__, *,
-                 fuse: Optional[pulumi.Input[_builtins.bool]] = None,
-                 keyctl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mounts: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 nesting: Optional[pulumi.Input[_builtins.bool]] = None):
+                 fuse: pulumi.Input[Optional[_builtins.bool]] = None,
+                 keyctl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mknod: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mounts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 nesting: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] fuse: Whether the container supports FUSE mounts (defaults to `false`)
         :param pulumi.Input[_builtins.bool] keyctl: Whether the container supports `keyctl()` system call (defaults to `false`)
+        :param pulumi.Input[_builtins.bool] mknod: Whether the container supports `mknod()` system call (defaults to `false`)
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] mounts: List of allowed mount types (`cifs` or `nfs`)
         :param pulumi.Input[_builtins.bool] nesting: Whether the container is nested (defaults to `false`)
         """
@@ -735,6 +741,8 @@ class ContainerLegacyFeaturesArgs:
             pulumi.set(__self__, "fuse", fuse)
         if keyctl is not None:
             pulumi.set(__self__, "keyctl", keyctl)
+        if mknod is not None:
+            pulumi.set(__self__, "mknod", mknod)
         if mounts is not None:
             pulumi.set(__self__, "mounts", mounts)
         if nesting is not None:
@@ -742,50 +750,62 @@ class ContainerLegacyFeaturesArgs:
 
     @_builtins.property
     @pulumi.getter
-    def fuse(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def fuse(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the container supports FUSE mounts (defaults to `false`)
         """
         return pulumi.get(self, "fuse")
 
     @fuse.setter
-    def fuse(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def fuse(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "fuse", value)
 
     @_builtins.property
     @pulumi.getter
-    def keyctl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def keyctl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the container supports `keyctl()` system call (defaults to `false`)
         """
         return pulumi.get(self, "keyctl")
 
     @keyctl.setter
-    def keyctl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def keyctl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "keyctl", value)
 
     @_builtins.property
     @pulumi.getter
-    def mounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def mknod(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the container supports `mknod()` system call (defaults to `false`)
+        """
+        return pulumi.get(self, "mknod")
+
+    @mknod.setter
+    def mknod(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "mknod", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def mounts(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of allowed mount types (`cifs` or `nfs`)
         """
         return pulumi.get(self, "mounts")
 
     @mounts.setter
-    def mounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def mounts(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "mounts", value)
 
     @_builtins.property
     @pulumi.getter
-    def nesting(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def nesting(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the container is nested (defaults to `false`)
         """
         return pulumi.get(self, "nesting")
 
     @nesting.setter
-    def nesting(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def nesting(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "nesting", value)
 
 
@@ -875,24 +895,24 @@ class ContainerLegacyIdmapArgs:
 
 
 class ContainerLegacyInitializationArgsDict(TypedDict):
-    dns: NotRequired[pulumi.Input['ContainerLegacyInitializationDnsArgsDict']]
+    dns: NotRequired[pulumi.Input[Optional['ContainerLegacyInitializationDnsArgs']]]
     """
     The DNS configuration.
     """
-    entrypoint: NotRequired[pulumi.Input[_builtins.str]]
+    entrypoint: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Command to run as init, optionally with arguments. It may start with an absolute path, relative path, or a binary in `$PATH`.
     """
-    hostname: NotRequired[pulumi.Input[_builtins.str]]
+    hostname: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The hostname. Must be a valid DNS name.
     """
-    ip_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['ContainerLegacyInitializationIpConfigArgsDict']]]]
+    ip_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyInitializationIpConfigArgs']]]]]
     """
     The IP configuration (one block per network
     device).
     """
-    user_account: NotRequired[pulumi.Input['ContainerLegacyInitializationUserAccountArgsDict']]
+    user_account: NotRequired[pulumi.Input[Optional['ContainerLegacyInitializationUserAccountArgs']]]
     """
     The user account configuration.
     """
@@ -900,11 +920,11 @@ class ContainerLegacyInitializationArgsDict(TypedDict):
 @pulumi.input_type
 class ContainerLegacyInitializationArgs:
     def __init__(__self__, *,
-                 dns: Optional[pulumi.Input['ContainerLegacyInitializationDnsArgs']] = None,
-                 entrypoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 hostname: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerLegacyInitializationIpConfigArgs']]]] = None,
-                 user_account: Optional[pulumi.Input['ContainerLegacyInitializationUserAccountArgs']] = None):
+                 dns: pulumi.Input[Optional['ContainerLegacyInitializationDnsArgs']] = None,
+                 entrypoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 hostname: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_configs: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyInitializationIpConfigArgs']]]] = None,
+                 user_account: pulumi.Input[Optional['ContainerLegacyInitializationUserAccountArgs']] = None):
         """
         :param pulumi.Input['ContainerLegacyInitializationDnsArgs'] dns: The DNS configuration.
         :param pulumi.Input[_builtins.str] entrypoint: Command to run as init, optionally with arguments. It may start with an absolute path, relative path, or a binary in `$PATH`.
@@ -926,43 +946,43 @@ class ContainerLegacyInitializationArgs:
 
     @_builtins.property
     @pulumi.getter
-    def dns(self) -> Optional[pulumi.Input['ContainerLegacyInitializationDnsArgs']]:
+    def dns(self) -> pulumi.Input[Optional['ContainerLegacyInitializationDnsArgs']]:
         """
         The DNS configuration.
         """
         return pulumi.get(self, "dns")
 
     @dns.setter
-    def dns(self, value: Optional[pulumi.Input['ContainerLegacyInitializationDnsArgs']]):
+    def dns(self, value: pulumi.Input[Optional['ContainerLegacyInitializationDnsArgs']]):
         pulumi.set(self, "dns", value)
 
     @_builtins.property
     @pulumi.getter
-    def entrypoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def entrypoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Command to run as init, optionally with arguments. It may start with an absolute path, relative path, or a binary in `$PATH`.
         """
         return pulumi.get(self, "entrypoint")
 
     @entrypoint.setter
-    def entrypoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def entrypoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "entrypoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostname(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hostname. Must be a valid DNS name.
         """
         return pulumi.get(self, "hostname")
 
     @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostname(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostname", value)
 
     @_builtins.property
     @pulumi.getter(name="ipConfigs")
-    def ip_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ContainerLegacyInitializationIpConfigArgs']]]]:
+    def ip_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyInitializationIpConfigArgs']]]]:
         """
         The IP configuration (one block per network
         device).
@@ -970,34 +990,34 @@ class ContainerLegacyInitializationArgs:
         return pulumi.get(self, "ip_configs")
 
     @ip_configs.setter
-    def ip_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerLegacyInitializationIpConfigArgs']]]]):
+    def ip_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyInitializationIpConfigArgs']]]]):
         pulumi.set(self, "ip_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="userAccount")
-    def user_account(self) -> Optional[pulumi.Input['ContainerLegacyInitializationUserAccountArgs']]:
+    def user_account(self) -> pulumi.Input[Optional['ContainerLegacyInitializationUserAccountArgs']]:
         """
         The user account configuration.
         """
         return pulumi.get(self, "user_account")
 
     @user_account.setter
-    def user_account(self, value: Optional[pulumi.Input['ContainerLegacyInitializationUserAccountArgs']]):
+    def user_account(self, value: pulumi.Input[Optional['ContainerLegacyInitializationUserAccountArgs']]):
         pulumi.set(self, "user_account", value)
 
 
 class ContainerLegacyInitializationDnsArgsDict(TypedDict):
-    domain: NotRequired[pulumi.Input[_builtins.str]]
+    domain: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The DNS search domain.
     """
-    server: NotRequired[pulumi.Input[_builtins.str]]
+    server: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The DNS server.
     The `server` attribute is deprecated and will be removed in a future release. Please use
     the `servers` attribute instead.
     """
-    servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of DNS servers.
     """
@@ -1005,9 +1025,9 @@ class ContainerLegacyInitializationDnsArgsDict(TypedDict):
 @pulumi.input_type
 class ContainerLegacyInitializationDnsArgs:
     def __init__(__self__, *,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 server: Optional[pulumi.Input[_builtins.str]] = None,
-                 servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 server: pulumi.Input[Optional[_builtins.str]] = None,
+                 servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] domain: The DNS search domain.
         :param pulumi.Input[_builtins.str] server: The DNS server.
@@ -1027,20 +1047,20 @@ class ContainerLegacyInitializationDnsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The DNS search domain.
         """
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""The `server` attribute is deprecated and will be removed in a future release. Please use the `servers` attribute instead.""")
-    def server(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The DNS server.
         The `server` attribute is deprecated and will be removed in a future release. Please use
@@ -1049,28 +1069,28 @@ class ContainerLegacyInitializationDnsArgs:
         return pulumi.get(self, "server")
 
     @server.setter
-    def server(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server", value)
 
     @_builtins.property
     @pulumi.getter
-    def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of DNS servers.
         """
         return pulumi.get(self, "servers")
 
     @servers.setter
-    def servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "servers", value)
 
 
 class ContainerLegacyInitializationIpConfigArgsDict(TypedDict):
-    ipv4: NotRequired[pulumi.Input['ContainerLegacyInitializationIpConfigIpv4ArgsDict']]
+    ipv4: NotRequired[pulumi.Input[Optional['ContainerLegacyInitializationIpConfigIpv4Args']]]
     """
     The IPv4 configuration.
     """
-    ipv6: NotRequired[pulumi.Input['ContainerLegacyInitializationIpConfigIpv6ArgsDict']]
+    ipv6: NotRequired[pulumi.Input[Optional['ContainerLegacyInitializationIpConfigIpv6Args']]]
     """
     The IPv6 configuration.
     """
@@ -1078,8 +1098,8 @@ class ContainerLegacyInitializationIpConfigArgsDict(TypedDict):
 @pulumi.input_type
 class ContainerLegacyInitializationIpConfigArgs:
     def __init__(__self__, *,
-                 ipv4: Optional[pulumi.Input['ContainerLegacyInitializationIpConfigIpv4Args']] = None,
-                 ipv6: Optional[pulumi.Input['ContainerLegacyInitializationIpConfigIpv6Args']] = None):
+                 ipv4: pulumi.Input[Optional['ContainerLegacyInitializationIpConfigIpv4Args']] = None,
+                 ipv6: pulumi.Input[Optional['ContainerLegacyInitializationIpConfigIpv6Args']] = None):
         """
         :param pulumi.Input['ContainerLegacyInitializationIpConfigIpv4Args'] ipv4: The IPv4 configuration.
         :param pulumi.Input['ContainerLegacyInitializationIpConfigIpv6Args'] ipv6: The IPv6 configuration.
@@ -1091,37 +1111,37 @@ class ContainerLegacyInitializationIpConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def ipv4(self) -> Optional[pulumi.Input['ContainerLegacyInitializationIpConfigIpv4Args']]:
+    def ipv4(self) -> pulumi.Input[Optional['ContainerLegacyInitializationIpConfigIpv4Args']]:
         """
         The IPv4 configuration.
         """
         return pulumi.get(self, "ipv4")
 
     @ipv4.setter
-    def ipv4(self, value: Optional[pulumi.Input['ContainerLegacyInitializationIpConfigIpv4Args']]):
+    def ipv4(self, value: pulumi.Input[Optional['ContainerLegacyInitializationIpConfigIpv4Args']]):
         pulumi.set(self, "ipv4", value)
 
     @_builtins.property
     @pulumi.getter
-    def ipv6(self) -> Optional[pulumi.Input['ContainerLegacyInitializationIpConfigIpv6Args']]:
+    def ipv6(self) -> pulumi.Input[Optional['ContainerLegacyInitializationIpConfigIpv6Args']]:
         """
         The IPv6 configuration.
         """
         return pulumi.get(self, "ipv6")
 
     @ipv6.setter
-    def ipv6(self, value: Optional[pulumi.Input['ContainerLegacyInitializationIpConfigIpv6Args']]):
+    def ipv6(self, value: pulumi.Input[Optional['ContainerLegacyInitializationIpConfigIpv6Args']]):
         pulumi.set(self, "ipv6", value)
 
 
 class ContainerLegacyInitializationIpConfigIpv4ArgsDict(TypedDict):
-    address: NotRequired[pulumi.Input[_builtins.str]]
+    address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IPv4 address in CIDR notation
     (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
     autodiscovery.
     """
-    gateway: NotRequired[pulumi.Input[_builtins.str]]
+    gateway: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IPv4 gateway (must be omitted
     when `dhcp` is used as the address).
@@ -1130,8 +1150,8 @@ class ContainerLegacyInitializationIpConfigIpv4ArgsDict(TypedDict):
 @pulumi.input_type
 class ContainerLegacyInitializationIpConfigIpv4Args:
     def __init__(__self__, *,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway: Optional[pulumi.Input[_builtins.str]] = None):
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] address: The IPv4 address in CIDR notation
                (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
@@ -1146,7 +1166,7 @@ class ContainerLegacyInitializationIpConfigIpv4Args:
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IPv4 address in CIDR notation
         (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
@@ -1155,12 +1175,12 @@ class ContainerLegacyInitializationIpConfigIpv4Args:
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter
-    def gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IPv4 gateway (must be omitted
         when `dhcp` is used as the address).
@@ -1168,18 +1188,18 @@ class ContainerLegacyInitializationIpConfigIpv4Args:
         return pulumi.get(self, "gateway")
 
     @gateway.setter
-    def gateway(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway", value)
 
 
 class ContainerLegacyInitializationIpConfigIpv6ArgsDict(TypedDict):
-    address: NotRequired[pulumi.Input[_builtins.str]]
+    address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IPv6 address in CIDR notation
     (e.g. fd1c::7334/64). Alternatively, set this
     to `dhcp` for DHCPv6, or `auto` for SLAAC.
     """
-    gateway: NotRequired[pulumi.Input[_builtins.str]]
+    gateway: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IPv6 gateway (must be omitted
     when `dhcp` or `auto` are used as the address).
@@ -1188,8 +1208,8 @@ class ContainerLegacyInitializationIpConfigIpv6ArgsDict(TypedDict):
 @pulumi.input_type
 class ContainerLegacyInitializationIpConfigIpv6Args:
     def __init__(__self__, *,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway: Optional[pulumi.Input[_builtins.str]] = None):
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] address: The IPv6 address in CIDR notation
                (e.g. fd1c::7334/64). Alternatively, set this
@@ -1204,7 +1224,7 @@ class ContainerLegacyInitializationIpConfigIpv6Args:
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IPv6 address in CIDR notation
         (e.g. fd1c::7334/64). Alternatively, set this
@@ -1213,12 +1233,12 @@ class ContainerLegacyInitializationIpConfigIpv6Args:
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter
-    def gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IPv6 gateway (must be omitted
         when `dhcp` or `auto` are used as the address).
@@ -1226,16 +1246,16 @@ class ContainerLegacyInitializationIpConfigIpv6Args:
         return pulumi.get(self, "gateway")
 
     @gateway.setter
-    def gateway(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway", value)
 
 
 class ContainerLegacyInitializationUserAccountArgsDict(TypedDict):
-    keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The SSH keys for the root account.
     """
-    password: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The password for the root account.
     """
@@ -1243,8 +1263,8 @@ class ContainerLegacyInitializationUserAccountArgsDict(TypedDict):
 @pulumi.input_type
 class ContainerLegacyInitializationUserAccountArgs:
     def __init__(__self__, *,
-                 keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None):
+                 keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] keys: The SSH keys for the root account.
         :param pulumi.Input[_builtins.str] password: The password for the root account.
@@ -1256,36 +1276,36 @@ class ContainerLegacyInitializationUserAccountArgs:
 
     @_builtins.property
     @pulumi.getter
-    def keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The SSH keys for the root account.
         """
         return pulumi.get(self, "keys")
 
     @keys.setter
-    def keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "keys", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password for the root account.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
 
 class ContainerLegacyMemoryArgsDict(TypedDict):
-    dedicated: NotRequired[pulumi.Input[_builtins.int]]
+    dedicated: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The dedicated memory in megabytes (defaults
     to `512`).
     """
-    swap: NotRequired[pulumi.Input[_builtins.int]]
+    swap: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The swap size in megabytes (defaults to `0`).
     """
@@ -1293,8 +1313,8 @@ class ContainerLegacyMemoryArgsDict(TypedDict):
 @pulumi.input_type
 class ContainerLegacyMemoryArgs:
     def __init__(__self__, *,
-                 dedicated: Optional[pulumi.Input[_builtins.int]] = None,
-                 swap: Optional[pulumi.Input[_builtins.int]] = None):
+                 dedicated: pulumi.Input[Optional[_builtins.int]] = None,
+                 swap: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] dedicated: The dedicated memory in megabytes (defaults
                to `512`).
@@ -1307,7 +1327,7 @@ class ContainerLegacyMemoryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def dedicated(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def dedicated(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The dedicated memory in megabytes (defaults
         to `512`).
@@ -1315,19 +1335,19 @@ class ContainerLegacyMemoryArgs:
         return pulumi.get(self, "dedicated")
 
     @dedicated.setter
-    def dedicated(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def dedicated(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "dedicated", value)
 
     @_builtins.property
     @pulumi.getter
-    def swap(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def swap(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The swap size in megabytes (defaults to `0`).
         """
         return pulumi.get(self, "swap")
 
     @swap.setter
-    def swap(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def swap(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "swap", value)
 
 
@@ -1339,46 +1359,49 @@ class ContainerLegacyMountPointArgsDict(TypedDict):
     """
     volume: pulumi.Input[_builtins.str]
     """
-    Volume, device or directory to mount into the
-    container.
+    Volume reference. Accepts a Proxmox storage ID
+    (e.g. `local-lvm`) to allocate a new volume, a full PVE volume ID
+    (e.g. `local-lvm:subvol-108-disk-101`) to mount an existing volume,
+    or an absolute host path (e.g. `/mnt/bindmounts/shared`) to
+    bind-mount a host directory.
     """
-    acl: NotRequired[pulumi.Input[_builtins.bool]]
+    acl: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Explicitly enable or disable ACL support.
     """
-    backup: NotRequired[pulumi.Input[_builtins.bool]]
+    backup: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to include the mount point in backups (only
     used for volume mount points, defaults to `false`).
     """
-    mount_options: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    mount_options: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     List of extra mount options.
     """
-    path_in_datastore: NotRequired[pulumi.Input[_builtins.str]]
+    path_in_datastore: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The in-datastore path to the mount point volume.
     Use this attribute for cross-resource references instead of `volume`.
     """
-    quota: NotRequired[pulumi.Input[_builtins.bool]]
+    quota: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable user quotas inside the container (not supported
     with ZFS subvolumes).
     """
-    read_only: NotRequired[pulumi.Input[_builtins.bool]]
+    read_only: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Read-only mount point.
     """
-    replicate: NotRequired[pulumi.Input[_builtins.bool]]
+    replicate: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Will include this volume to a storage replica job.
     """
-    shared: NotRequired[pulumi.Input[_builtins.bool]]
+    shared: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Mark this non-volume mount point as available on all
     nodes.
     """
-    size: NotRequired[pulumi.Input[_builtins.str]]
+    size: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Volume size (only for volume mount points).
     Can be specified with a unit suffix (e.g. `10G`).
@@ -1389,20 +1412,23 @@ class ContainerLegacyMountPointArgs:
     def __init__(__self__, *,
                  path: pulumi.Input[_builtins.str],
                  volume: pulumi.Input[_builtins.str],
-                 acl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 backup: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mount_options: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 path_in_datastore: Optional[pulumi.Input[_builtins.str]] = None,
-                 quota: Optional[pulumi.Input[_builtins.bool]] = None,
-                 read_only: Optional[pulumi.Input[_builtins.bool]] = None,
-                 replicate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 shared: Optional[pulumi.Input[_builtins.bool]] = None,
-                 size: Optional[pulumi.Input[_builtins.str]] = None):
+                 acl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 backup: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mount_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 path_in_datastore: pulumi.Input[Optional[_builtins.str]] = None,
+                 quota: pulumi.Input[Optional[_builtins.bool]] = None,
+                 read_only: pulumi.Input[Optional[_builtins.bool]] = None,
+                 replicate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 shared: pulumi.Input[Optional[_builtins.bool]] = None,
+                 size: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] path: Path to the mount point as seen from inside the
                container.
-        :param pulumi.Input[_builtins.str] volume: Volume, device or directory to mount into the
-               container.
+        :param pulumi.Input[_builtins.str] volume: Volume reference. Accepts a Proxmox storage ID
+               (e.g. `local-lvm`) to allocate a new volume, a full PVE volume ID
+               (e.g. `local-lvm:subvol-108-disk-101`) to mount an existing volume,
+               or an absolute host path (e.g. `/mnt/bindmounts/shared`) to
+               bind-mount a host directory.
         :param pulumi.Input[_builtins.bool] acl: Explicitly enable or disable ACL support.
         :param pulumi.Input[_builtins.bool] backup: Whether to include the mount point in backups (only
                used for volume mount points, defaults to `false`).
@@ -1456,8 +1482,11 @@ class ContainerLegacyMountPointArgs:
     @pulumi.getter
     def volume(self) -> pulumi.Input[_builtins.str]:
         """
-        Volume, device or directory to mount into the
-        container.
+        Volume reference. Accepts a Proxmox storage ID
+        (e.g. `local-lvm`) to allocate a new volume, a full PVE volume ID
+        (e.g. `local-lvm:subvol-108-disk-101`) to mount an existing volume,
+        or an absolute host path (e.g. `/mnt/bindmounts/shared`) to
+        bind-mount a host directory.
         """
         return pulumi.get(self, "volume")
 
@@ -1467,19 +1496,19 @@ class ContainerLegacyMountPointArgs:
 
     @_builtins.property
     @pulumi.getter
-    def acl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def acl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Explicitly enable or disable ACL support.
         """
         return pulumi.get(self, "acl")
 
     @acl.setter
-    def acl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def acl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "acl", value)
 
     @_builtins.property
     @pulumi.getter
-    def backup(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def backup(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to include the mount point in backups (only
         used for volume mount points, defaults to `false`).
@@ -1487,24 +1516,24 @@ class ContainerLegacyMountPointArgs:
         return pulumi.get(self, "backup")
 
     @backup.setter
-    def backup(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def backup(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "backup", value)
 
     @_builtins.property
     @pulumi.getter(name="mountOptions")
-    def mount_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def mount_options(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of extra mount options.
         """
         return pulumi.get(self, "mount_options")
 
     @mount_options.setter
-    def mount_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def mount_options(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "mount_options", value)
 
     @_builtins.property
     @pulumi.getter(name="pathInDatastore")
-    def path_in_datastore(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path_in_datastore(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The in-datastore path to the mount point volume.
         Use this attribute for cross-resource references instead of `volume`.
@@ -1512,12 +1541,12 @@ class ContainerLegacyMountPointArgs:
         return pulumi.get(self, "path_in_datastore")
 
     @path_in_datastore.setter
-    def path_in_datastore(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path_in_datastore(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path_in_datastore", value)
 
     @_builtins.property
     @pulumi.getter
-    def quota(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def quota(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable user quotas inside the container (not supported
         with ZFS subvolumes).
@@ -1525,36 +1554,36 @@ class ContainerLegacyMountPointArgs:
         return pulumi.get(self, "quota")
 
     @quota.setter
-    def quota(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def quota(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "quota", value)
 
     @_builtins.property
     @pulumi.getter(name="readOnly")
-    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def read_only(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Read-only mount point.
         """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
-    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def read_only(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "read_only", value)
 
     @_builtins.property
     @pulumi.getter
-    def replicate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def replicate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Will include this volume to a storage replica job.
         """
         return pulumi.get(self, "replicate")
 
     @replicate.setter
-    def replicate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def replicate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "replicate", value)
 
     @_builtins.property
     @pulumi.getter
-    def shared(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def shared(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Mark this non-volume mount point as available on all
         nodes.
@@ -1562,12 +1591,12 @@ class ContainerLegacyMountPointArgs:
         return pulumi.get(self, "shared")
 
     @shared.setter
-    def shared(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def shared(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "shared", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Volume size (only for volume mount points).
         Can be specified with a unit suffix (e.g. `10G`).
@@ -1575,7 +1604,7 @@ class ContainerLegacyMountPointArgs:
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "size", value)
 
 
@@ -1584,41 +1613,41 @@ class ContainerLegacyNetworkInterfaceArgsDict(TypedDict):
     """
     The network interface name.
     """
-    bridge: NotRequired[pulumi.Input[_builtins.str]]
+    bridge: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the network bridge (defaults
     to `vmbr0`).
     """
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable the network device (defaults
     to `true`).
     """
-    firewall: NotRequired[pulumi.Input[_builtins.bool]]
+    firewall: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether this interface's firewall rules should be
     used (defaults to `false`).
     """
-    host_managed: NotRequired[pulumi.Input[_builtins.bool]]
+    host_managed: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the host runs DHCP on this interface's
-    behalf (defaults to `false`). Requires Proxmox VE 9.0+. Required for
+    behalf (defaults to `false`). Requires Proxmox VE 9.1+. Required for
     application containers that do not include a DHCP client.
     """
-    mac_address: NotRequired[pulumi.Input[_builtins.str]]
+    mac_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The MAC address.
     """
-    mtu: NotRequired[pulumi.Input[_builtins.int]]
+    mtu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum transfer unit of the interface. Cannot be
     larger than the bridge's MTU.
     """
-    rate_limit: NotRequired[pulumi.Input[_builtins.float]]
+    rate_limit: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     The rate limit in megabytes per second.
     """
-    vlan_id: NotRequired[pulumi.Input[_builtins.int]]
+    vlan_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The VLAN identifier.
     """
@@ -1627,14 +1656,14 @@ class ContainerLegacyNetworkInterfaceArgsDict(TypedDict):
 class ContainerLegacyNetworkInterfaceArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 bridge: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 firewall: Optional[pulumi.Input[_builtins.bool]] = None,
-                 host_managed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mac_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 rate_limit: Optional[pulumi.Input[_builtins.float]] = None,
-                 vlan_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 bridge: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 firewall: pulumi.Input[Optional[_builtins.bool]] = None,
+                 host_managed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mac_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 rate_limit: pulumi.Input[Optional[_builtins.float]] = None,
+                 vlan_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The network interface name.
         :param pulumi.Input[_builtins.str] bridge: The name of the network bridge (defaults
@@ -1644,7 +1673,7 @@ class ContainerLegacyNetworkInterfaceArgs:
         :param pulumi.Input[_builtins.bool] firewall: Whether this interface's firewall rules should be
                used (defaults to `false`).
         :param pulumi.Input[_builtins.bool] host_managed: Whether the host runs DHCP on this interface's
-               behalf (defaults to `false`). Requires Proxmox VE 9.0+. Required for
+               behalf (defaults to `false`). Requires Proxmox VE 9.1+. Required for
                application containers that do not include a DHCP client.
         :param pulumi.Input[_builtins.str] mac_address: The MAC address.
         :param pulumi.Input[_builtins.int] mtu: Maximum transfer unit of the interface. Cannot be
@@ -1684,7 +1713,7 @@ class ContainerLegacyNetworkInterfaceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def bridge(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bridge(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the network bridge (defaults
         to `vmbr0`).
@@ -1692,12 +1721,12 @@ class ContainerLegacyNetworkInterfaceArgs:
         return pulumi.get(self, "bridge")
 
     @bridge.setter
-    def bridge(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bridge(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bridge", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable the network device (defaults
         to `true`).
@@ -1705,12 +1734,12 @@ class ContainerLegacyNetworkInterfaceArgs:
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def firewall(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def firewall(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this interface's firewall rules should be
         used (defaults to `false`).
@@ -1718,38 +1747,38 @@ class ContainerLegacyNetworkInterfaceArgs:
         return pulumi.get(self, "firewall")
 
     @firewall.setter
-    def firewall(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def firewall(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "firewall", value)
 
     @_builtins.property
     @pulumi.getter(name="hostManaged")
-    def host_managed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def host_managed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the host runs DHCP on this interface's
-        behalf (defaults to `false`). Requires Proxmox VE 9.0+. Required for
+        behalf (defaults to `false`). Requires Proxmox VE 9.1+. Required for
         application containers that do not include a DHCP client.
         """
         return pulumi.get(self, "host_managed")
 
     @host_managed.setter
-    def host_managed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def host_managed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "host_managed", value)
 
     @_builtins.property
     @pulumi.getter(name="macAddress")
-    def mac_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mac_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The MAC address.
         """
         return pulumi.get(self, "mac_address")
 
     @mac_address.setter
-    def mac_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mac_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mac_address", value)
 
     @_builtins.property
     @pulumi.getter
-    def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mtu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum transfer unit of the interface. Cannot be
         larger than the bridge's MTU.
@@ -1757,31 +1786,31 @@ class ContainerLegacyNetworkInterfaceArgs:
         return pulumi.get(self, "mtu")
 
     @mtu.setter
-    def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mtu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mtu", value)
 
     @_builtins.property
     @pulumi.getter(name="rateLimit")
-    def rate_limit(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def rate_limit(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The rate limit in megabytes per second.
         """
         return pulumi.get(self, "rate_limit")
 
     @rate_limit.setter
-    def rate_limit(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def rate_limit(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "rate_limit", value)
 
     @_builtins.property
     @pulumi.getter(name="vlanId")
-    def vlan_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vlan_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The VLAN identifier.
         """
         return pulumi.get(self, "vlan_id")
 
     @vlan_id.setter
-    def vlan_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vlan_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vlan_id", value)
 
 
@@ -1792,7 +1821,7 @@ class ContainerLegacyOperatingSystemArgsDict(TypedDict):
     The ID format is `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`.
     Can be also taken from `download.FileLegacy` resource, or from the output of `pvesm list <storage>`.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type (defaults to `unmanaged`).
     """
@@ -1801,7 +1830,7 @@ class ContainerLegacyOperatingSystemArgsDict(TypedDict):
 class ContainerLegacyOperatingSystemArgs:
     def __init__(__self__, *,
                  template_file_id: pulumi.Input[_builtins.str],
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] template_file_id: The identifier for an OS template file.
                The ID format is `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`.
@@ -1828,29 +1857,29 @@ class ContainerLegacyOperatingSystemArgs:
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type (defaults to `unmanaged`).
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class ContainerLegacyStartupArgsDict(TypedDict):
-    down_delay: NotRequired[pulumi.Input[_builtins.int]]
+    down_delay: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     A non-negative number defining the delay in
     seconds before the next container is shut down.
     """
-    order: NotRequired[pulumi.Input[_builtins.int]]
+    order: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     A non-negative number defining the general startup
     order.
     """
-    up_delay: NotRequired[pulumi.Input[_builtins.int]]
+    up_delay: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     A non-negative number defining the delay in
     seconds before the next container is started.
@@ -1859,9 +1888,9 @@ class ContainerLegacyStartupArgsDict(TypedDict):
 @pulumi.input_type
 class ContainerLegacyStartupArgs:
     def __init__(__self__, *,
-                 down_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 order: Optional[pulumi.Input[_builtins.int]] = None,
-                 up_delay: Optional[pulumi.Input[_builtins.int]] = None):
+                 down_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 order: pulumi.Input[Optional[_builtins.int]] = None,
+                 up_delay: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] down_delay: A non-negative number defining the delay in
                seconds before the next container is shut down.
@@ -1879,7 +1908,7 @@ class ContainerLegacyStartupArgs:
 
     @_builtins.property
     @pulumi.getter(name="downDelay")
-    def down_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def down_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A non-negative number defining the delay in
         seconds before the next container is shut down.
@@ -1887,12 +1916,12 @@ class ContainerLegacyStartupArgs:
         return pulumi.get(self, "down_delay")
 
     @down_delay.setter
-    def down_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def down_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "down_delay", value)
 
     @_builtins.property
     @pulumi.getter
-    def order(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def order(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A non-negative number defining the general startup
         order.
@@ -1900,12 +1929,12 @@ class ContainerLegacyStartupArgs:
         return pulumi.get(self, "order")
 
     @order.setter
-    def order(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def order(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "order", value)
 
     @_builtins.property
     @pulumi.getter(name="upDelay")
-    def up_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def up_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A non-negative number defining the delay in
         seconds before the next container is started.
@@ -1913,16 +1942,16 @@ class ContainerLegacyStartupArgs:
         return pulumi.get(self, "up_delay")
 
     @up_delay.setter
-    def up_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def up_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "up_delay", value)
 
 
 class ContainerLegacyWaitForIpArgsDict(TypedDict):
-    ipv4: NotRequired[pulumi.Input[_builtins.bool]]
+    ipv4: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
     """
-    ipv6: NotRequired[pulumi.Input[_builtins.bool]]
+    ipv6: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
 
@@ -1932,8 +1961,8 @@ class ContainerLegacyWaitForIpArgsDict(TypedDict):
 @pulumi.input_type
 class ContainerLegacyWaitForIpArgs:
     def __init__(__self__, *,
-                 ipv4: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ipv6: Optional[pulumi.Input[_builtins.bool]] = None):
+                 ipv4: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ipv6: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] ipv4: Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
         :param pulumi.Input[_builtins.bool] ipv6: Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
@@ -1947,19 +1976,19 @@ class ContainerLegacyWaitForIpArgs:
 
     @_builtins.property
     @pulumi.getter
-    def ipv4(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ipv4(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
         """
         return pulumi.get(self, "ipv4")
 
     @ipv4.setter
-    def ipv4(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ipv4(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ipv4", value)
 
     @_builtins.property
     @pulumi.getter
-    def ipv6(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ipv6(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
 
@@ -1968,7 +1997,7 @@ class ContainerLegacyWaitForIpArgs:
         return pulumi.get(self, "ipv6")
 
     @ipv6.setter
-    def ipv6(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ipv6(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ipv6", value)
 
 
@@ -1977,26 +2006,26 @@ class FileLegacySourceFileArgsDict(TypedDict):
     """
     A path to a local file or a URL.
     """
-    changed: NotRequired[pulumi.Input[_builtins.bool]]
+    changed: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the source file has changed since the last run
     """
-    checksum: NotRequired[pulumi.Input[_builtins.str]]
+    checksum: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The SHA256 checksum of the source file.
     """
-    file_name: NotRequired[pulumi.Input[_builtins.str]]
+    file_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The file name to use instead of the source file
     name. Useful when the source file does not have a valid file extension,
     for example when the source file is a URL referencing a `.qcow2` image.
     """
-    insecure: NotRequired[pulumi.Input[_builtins.bool]]
+    insecure: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to skip the TLS verification step for
     HTTPS sources (defaults to `false`).
     """
-    min_tls: NotRequired[pulumi.Input[_builtins.str]]
+    min_tls: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The minimum required TLS version for HTTPS
     sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
@@ -2006,11 +2035,11 @@ class FileLegacySourceFileArgsDict(TypedDict):
 class FileLegacySourceFileArgs:
     def __init__(__self__, *,
                  path: pulumi.Input[_builtins.str],
-                 changed: Optional[pulumi.Input[_builtins.bool]] = None,
-                 checksum: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 insecure: Optional[pulumi.Input[_builtins.bool]] = None,
-                 min_tls: Optional[pulumi.Input[_builtins.str]] = None):
+                 changed: pulumi.Input[Optional[_builtins.bool]] = None,
+                 checksum: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 insecure: pulumi.Input[Optional[_builtins.bool]] = None,
+                 min_tls: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] path: A path to a local file or a URL.
         :param pulumi.Input[_builtins.bool] changed: Whether the source file has changed since the last run
@@ -2049,31 +2078,31 @@ class FileLegacySourceFileArgs:
 
     @_builtins.property
     @pulumi.getter
-    def changed(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def changed(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the source file has changed since the last run
         """
         return pulumi.get(self, "changed")
 
     @changed.setter
-    def changed(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def changed(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "changed", value)
 
     @_builtins.property
     @pulumi.getter
-    def checksum(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def checksum(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SHA256 checksum of the source file.
         """
         return pulumi.get(self, "checksum")
 
     @checksum.setter
-    def checksum(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def checksum(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "checksum", value)
 
     @_builtins.property
     @pulumi.getter(name="fileName")
-    def file_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The file name to use instead of the source file
         name. Useful when the source file does not have a valid file extension,
@@ -2082,12 +2111,12 @@ class FileLegacySourceFileArgs:
         return pulumi.get(self, "file_name")
 
     @file_name.setter
-    def file_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def insecure(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def insecure(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to skip the TLS verification step for
         HTTPS sources (defaults to `false`).
@@ -2095,12 +2124,12 @@ class FileLegacySourceFileArgs:
         return pulumi.get(self, "insecure")
 
     @insecure.setter
-    def insecure(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def insecure(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "insecure", value)
 
     @_builtins.property
     @pulumi.getter(name="minTls")
-    def min_tls(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def min_tls(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minimum required TLS version for HTTPS
         sources. "Supported values: `1.0|1.1|1.2|1.3` (defaults to `1.3`).
@@ -2108,7 +2137,7 @@ class FileLegacySourceFileArgs:
         return pulumi.get(self, "min_tls")
 
     @min_tls.setter
-    def min_tls(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def min_tls(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "min_tls", value)
 
 
@@ -2121,7 +2150,7 @@ class FileLegacySourceRawArgsDict(TypedDict):
     """
     The file name.
     """
-    resize: NotRequired[pulumi.Input[_builtins.int]]
+    resize: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of bytes to resize the file to.
     """
@@ -2131,7 +2160,7 @@ class FileLegacySourceRawArgs:
     def __init__(__self__, *,
                  data: pulumi.Input[_builtins.str],
                  file_name: pulumi.Input[_builtins.str],
-                 resize: Optional[pulumi.Input[_builtins.int]] = None):
+                 resize: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] data: The raw data.
         :param pulumi.Input[_builtins.str] file_name: The file name.
@@ -2168,14 +2197,14 @@ class FileLegacySourceRawArgs:
 
     @_builtins.property
     @pulumi.getter
-    def resize(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def resize(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of bytes to resize the file to.
         """
         return pulumi.get(self, "resize")
 
     @resize.setter
-    def resize(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def resize(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "resize", value)
 
 
@@ -2188,7 +2217,7 @@ class GroupLegacyAclArgsDict(TypedDict):
     """
     The role identifier.
     """
-    propagate: NotRequired[pulumi.Input[_builtins.bool]]
+    propagate: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to propagate to child paths.
     """
@@ -2198,7 +2227,7 @@ class GroupLegacyAclArgs:
     def __init__(__self__, *,
                  path: pulumi.Input[_builtins.str],
                  role_id: pulumi.Input[_builtins.str],
-                 propagate: Optional[pulumi.Input[_builtins.bool]] = None):
+                 propagate: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] path: The path.
         :param pulumi.Input[_builtins.str] role_id: The role identifier.
@@ -2235,14 +2264,14 @@ class GroupLegacyAclArgs:
 
     @_builtins.property
     @pulumi.getter
-    def propagate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def propagate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to propagate to child paths.
         """
         return pulumi.get(self, "propagate")
 
     @propagate.setter
-    def propagate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def propagate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "propagate", value)
 
 
@@ -2294,23 +2323,23 @@ class HostsLegacyEntryArgs:
 
 
 class PoolLegacyMemberArgsDict(TypedDict):
-    datastore_id: NotRequired[pulumi.Input[_builtins.str]]
+    datastore_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The datastore identifier.
     """
-    id: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The member identifier.
     """
-    node_name: NotRequired[pulumi.Input[_builtins.str]]
+    node_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The node name.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The member type.
     """
-    vm_id: NotRequired[pulumi.Input[_builtins.int]]
+    vm_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The virtual machine identifier.
     """
@@ -2318,11 +2347,11 @@ class PoolLegacyMemberArgsDict(TypedDict):
 @pulumi.input_type
 class PoolLegacyMemberArgs:
     def __init__(__self__, *,
-                 datastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] datastore_id: The datastore identifier.
         :param pulumi.Input[_builtins.str] id: The member identifier.
@@ -2343,107 +2372,107 @@ class PoolLegacyMemberArgs:
 
     @_builtins.property
     @pulumi.getter(name="datastoreId")
-    def datastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datastore_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The datastore identifier.
         """
         return pulumi.get(self, "datastore_id")
 
     @datastore_id.setter
-    def datastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datastore_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datastore_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The member identifier.
         """
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeName")
-    def node_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The node name.
         """
         return pulumi.get(self, "node_name")
 
     @node_name.setter
-    def node_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The member type.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="vmId")
-    def vm_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vm_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The virtual machine identifier.
         """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
-    def vm_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vm_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vm_id", value)
 
 
 class ProviderSshArgsDict(TypedDict):
-    agent: NotRequired[pulumi.Input[_builtins.bool]]
+    agent: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to use the SSH agent for authentication. Takes precedence over the `private_key` and `password` fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or `false` if not set.
     """
-    agent_forwarding: NotRequired[pulumi.Input[_builtins.bool]]
+    agent_forwarding: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or `false` if not set.
     """
-    agent_socket: NotRequired[pulumi.Input[_builtins.str]]
+    agent_socket: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
     """
-    node_address_source: NotRequired[pulumi.Input[_builtins.str]]
+    node_address_source: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The method used to resolve node IP addresses for SSH connections. Set to `dns` to skip the Proxmox API-based resolution and use local DNS instead. DNS resolution prefers IPv4 but falls back to IPv6 if no IPv4 addresses are available. Useful in multi-subnet environments where the API may return an inaccessible IP. Defaults to `api`.
     """
-    nodes: NotRequired[pulumi.Input[Sequence[pulumi.Input['ProviderSshNodeArgsDict']]]]
+    nodes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ProviderSshNodeArgs']]]]]
     """
     Overrides for SSH connection configuration for a Proxmox VE node.
     """
-    password: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block when using username/password authentication. Default has no effect when using API token authentication, as there is no password to inherit. Can also be sourced from `PROXMOX_VE_SSH_PASSWORD`.
     """
-    private_key: NotRequired[pulumi.Input[_builtins.str]]
+    private_key: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
     """
-    socks5_password: NotRequired[pulumi.Input[_builtins.str]]
+    socks5_password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
     """
-    socks5_server: NotRequired[pulumi.Input[_builtins.str]]
+    socks5_server: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.
     """
-    socks5_username: NotRequired[pulumi.Input[_builtins.str]]
+    socks5_username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The username for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_USERNAME` environment variable.
     """
-    username: NotRequired[pulumi.Input[_builtins.str]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The username used for the SSH connection. Defaults to the value of the `username` field of the `provider` block.
     """
@@ -2451,17 +2480,17 @@ class ProviderSshArgsDict(TypedDict):
 @pulumi.input_type
 class ProviderSshArgs:
     def __init__(__self__, *,
-                 agent: Optional[pulumi.Input[_builtins.bool]] = None,
-                 agent_forwarding: Optional[pulumi.Input[_builtins.bool]] = None,
-                 agent_socket: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_address_source: Optional[pulumi.Input[_builtins.str]] = None,
-                 nodes: Optional[pulumi.Input[Sequence[pulumi.Input['ProviderSshNodeArgs']]]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 socks5_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 socks5_server: Optional[pulumi.Input[_builtins.str]] = None,
-                 socks5_username: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 agent: pulumi.Input[Optional[_builtins.bool]] = None,
+                 agent_forwarding: pulumi.Input[Optional[_builtins.bool]] = None,
+                 agent_socket: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_address_source: pulumi.Input[Optional[_builtins.str]] = None,
+                 nodes: pulumi.Input[Optional[Sequence[pulumi.Input['ProviderSshNodeArgs']]]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 socks5_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 socks5_server: pulumi.Input[Optional[_builtins.str]] = None,
+                 socks5_username: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] agent: Whether to use the SSH agent for authentication. Takes precedence over the `private_key` and `password` fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or `false` if not set.
         :param pulumi.Input[_builtins.bool] agent_forwarding: Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or `false` if not set.
@@ -2500,134 +2529,134 @@ class ProviderSshArgs:
 
     @_builtins.property
     @pulumi.getter
-    def agent(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def agent(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to use the SSH agent for authentication. Takes precedence over the `private_key` and `password` fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or `false` if not set.
         """
         return pulumi.get(self, "agent")
 
     @agent.setter
-    def agent(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def agent(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "agent", value)
 
     @_builtins.property
     @pulumi.getter(name="agentForwarding")
-    def agent_forwarding(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def agent_forwarding(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or `false` if not set.
         """
         return pulumi.get(self, "agent_forwarding")
 
     @agent_forwarding.setter
-    def agent_forwarding(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def agent_forwarding(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "agent_forwarding", value)
 
     @_builtins.property
     @pulumi.getter(name="agentSocket")
-    def agent_socket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def agent_socket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The path to the SSH agent socket. Defaults to the value of the `SSH_AUTH_SOCK` environment variable.
         """
         return pulumi.get(self, "agent_socket")
 
     @agent_socket.setter
-    def agent_socket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def agent_socket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "agent_socket", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeAddressSource")
-    def node_address_source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_address_source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The method used to resolve node IP addresses for SSH connections. Set to `dns` to skip the Proxmox API-based resolution and use local DNS instead. DNS resolution prefers IPv4 but falls back to IPv6 if no IPv4 addresses are available. Useful in multi-subnet environments where the API may return an inaccessible IP. Defaults to `api`.
         """
         return pulumi.get(self, "node_address_source")
 
     @node_address_source.setter
-    def node_address_source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_address_source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_address_source", value)
 
     @_builtins.property
     @pulumi.getter
-    def nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ProviderSshNodeArgs']]]]:
+    def nodes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ProviderSshNodeArgs']]]]:
         """
         Overrides for SSH connection configuration for a Proxmox VE node.
         """
         return pulumi.get(self, "nodes")
 
     @nodes.setter
-    def nodes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ProviderSshNodeArgs']]]]):
+    def nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ProviderSshNodeArgs']]]]):
         pulumi.set(self, "nodes", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password used for the SSH connection. Defaults to the value of the `password` field of the `provider` block when using username/password authentication. Default has no effect when using API token authentication, as there is no password to inherit. Can also be sourced from `PROXMOX_VE_SSH_PASSWORD`.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unencrypted private key (in PEM format) used for the SSH connection. Defaults to the value of the `PROXMOX_VE_SSH_PRIVATE_KEY` environment variable.
         """
         return pulumi.get(self, "private_key")
 
     @private_key.setter
-    def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key", value)
 
     @_builtins.property
     @pulumi.getter(name="socks5Password")
-    def socks5_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def socks5_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The password for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_PASSWORD` environment variable.
         """
         return pulumi.get(self, "socks5_password")
 
     @socks5_password.setter
-    def socks5_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def socks5_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "socks5_password", value)
 
     @_builtins.property
     @pulumi.getter(name="socks5Server")
-    def socks5_server(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def socks5_server(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The address:port of the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_SERVER` environment variable.
         """
         return pulumi.get(self, "socks5_server")
 
     @socks5_server.setter
-    def socks5_server(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def socks5_server(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "socks5_server", value)
 
     @_builtins.property
     @pulumi.getter(name="socks5Username")
-    def socks5_username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def socks5_username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username for the SOCKS5 proxy server. Defaults to the value of the `PROXMOX_VE_SSH_SOCKS5_USERNAME` environment variable.
         """
         return pulumi.get(self, "socks5_username")
 
     @socks5_username.setter
-    def socks5_username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def socks5_username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "socks5_username", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The username used for the SSH connection. Defaults to the value of the `username` field of the `provider` block.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
@@ -2640,7 +2669,7 @@ class ProviderSshNodeArgsDict(TypedDict):
     """
     The name of the Proxmox VE node.
     """
-    port: NotRequired[pulumi.Input[_builtins.int]]
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The port of the Proxmox VE node.
     """
@@ -2650,7 +2679,7 @@ class ProviderSshNodeArgs:
     def __init__(__self__, *,
                  address: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 port: Optional[pulumi.Input[_builtins.int]] = None):
+                 port: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] address: The address of the Proxmox VE node.
         :param pulumi.Input[_builtins.str] name: The name of the Proxmox VE node.
@@ -2687,14 +2716,14 @@ class ProviderSshNodeArgs:
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The port of the Proxmox VE node.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
 
@@ -2707,7 +2736,7 @@ class UserLegacyAclArgsDict(TypedDict):
     """
     The role identifier.
     """
-    propagate: NotRequired[pulumi.Input[_builtins.bool]]
+    propagate: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to propagate to child paths.
     """
@@ -2717,7 +2746,7 @@ class UserLegacyAclArgs:
     def __init__(__self__, *,
                  path: pulumi.Input[_builtins.str],
                  role_id: pulumi.Input[_builtins.str],
-                 propagate: Optional[pulumi.Input[_builtins.bool]] = None):
+                 propagate: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] path: The path.
         :param pulumi.Input[_builtins.str] role_id: The role identifier.
@@ -2754,19 +2783,19 @@ class UserLegacyAclArgs:
 
     @_builtins.property
     @pulumi.getter
-    def propagate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def propagate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to propagate to child paths.
         """
         return pulumi.get(self, "propagate")
 
     @propagate.setter
-    def propagate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def propagate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "propagate", value)
 
 
 class Vm2LegacyCdromArgsDict(TypedDict):
-    file_id: NotRequired[pulumi.Input[_builtins.str]]
+    file_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
     """
@@ -2774,7 +2803,7 @@ class Vm2LegacyCdromArgsDict(TypedDict):
 @pulumi.input_type
 class Vm2LegacyCdromArgs:
     def __init__(__self__, *,
-                 file_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 file_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] file_id: The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
         """
@@ -2783,55 +2812,55 @@ class Vm2LegacyCdromArgs:
 
     @_builtins.property
     @pulumi.getter(name="fileId")
-    def file_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
         """
         return pulumi.get(self, "file_id")
 
     @file_id.setter
-    def file_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_id", value)
 
 
 class Vm2LegacyCpuArgsDict(TypedDict):
-    affinity: NotRequired[pulumi.Input[_builtins.str]]
+    affinity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
     """
-    architecture: NotRequired[pulumi.Input[_builtins.str]]
+    architecture: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
     """
-    cores: NotRequired[pulumi.Input[_builtins.int]]
+    cores: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of CPU cores per socket (PVE defaults to `1` when unset).
     """
-    flags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    flags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
     """
-    limit: NotRequired[pulumi.Input[_builtins.float]]
+    limit: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Limit of CPU usage. `0` means no limit (PVE default).
     """
-    numa: NotRequired[pulumi.Input[_builtins.bool]]
+    numa: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
     """
-    sockets: NotRequired[pulumi.Input[_builtins.int]]
+    sockets: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of CPU sockets (PVE defaults to `1` when unset).
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
     """
-    units: NotRequired[pulumi.Input[_builtins.int]]
+    units: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
     """
-    vcpus: NotRequired[pulumi.Input[_builtins.int]]
+    vcpus: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
     """
@@ -2839,16 +2868,16 @@ class Vm2LegacyCpuArgsDict(TypedDict):
 @pulumi.input_type
 class Vm2LegacyCpuArgs:
     def __init__(__self__, *,
-                 affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 architecture: Optional[pulumi.Input[_builtins.str]] = None,
-                 cores: Optional[pulumi.Input[_builtins.int]] = None,
-                 flags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 limit: Optional[pulumi.Input[_builtins.float]] = None,
-                 numa: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sockets: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 units: Optional[pulumi.Input[_builtins.int]] = None,
-                 vcpus: Optional[pulumi.Input[_builtins.int]] = None):
+                 affinity: pulumi.Input[Optional[_builtins.str]] = None,
+                 architecture: pulumi.Input[Optional[_builtins.str]] = None,
+                 cores: pulumi.Input[Optional[_builtins.int]] = None,
+                 flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 limit: pulumi.Input[Optional[_builtins.float]] = None,
+                 numa: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sockets: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 units: pulumi.Input[Optional[_builtins.int]] = None,
+                 vcpus: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] affinity: The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
         :param pulumi.Input[_builtins.str] architecture: The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
@@ -2884,135 +2913,135 @@ class Vm2LegacyCpuArgs:
 
     @_builtins.property
     @pulumi.getter
-    def affinity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def affinity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
         """
         return pulumi.get(self, "affinity")
 
     @affinity.setter
-    def affinity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def affinity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "affinity", value)
 
     @_builtins.property
     @pulumi.getter
-    def architecture(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def architecture(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
         """
         return pulumi.get(self, "architecture")
 
     @architecture.setter
-    def architecture(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def architecture(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "architecture", value)
 
     @_builtins.property
     @pulumi.getter
-    def cores(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cores(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of CPU cores per socket (PVE defaults to `1` when unset).
         """
         return pulumi.get(self, "cores")
 
     @cores.setter
-    def cores(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cores(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cores", value)
 
     @_builtins.property
     @pulumi.getter
-    def flags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def flags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
         """
         return pulumi.get(self, "flags")
 
     @flags.setter
-    def flags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def flags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "flags", value)
 
     @_builtins.property
     @pulumi.getter
-    def limit(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def limit(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Limit of CPU usage. `0` means no limit (PVE default).
         """
         return pulumi.get(self, "limit")
 
     @limit.setter
-    def limit(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def limit(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "limit", value)
 
     @_builtins.property
     @pulumi.getter
-    def numa(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def numa(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
         """
         return pulumi.get(self, "numa")
 
     @numa.setter
-    def numa(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def numa(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "numa", value)
 
     @_builtins.property
     @pulumi.getter
-    def sockets(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sockets(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of CPU sockets (PVE defaults to `1` when unset).
         """
         return pulumi.get(self, "sockets")
 
     @sockets.setter
-    def sockets(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sockets(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sockets", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def units(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def units(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
         """
         return pulumi.get(self, "units")
 
     @units.setter
-    def units(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def units(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "units", value)
 
     @_builtins.property
     @pulumi.getter
-    def vcpus(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vcpus(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
         """
         return pulumi.get(self, "vcpus")
 
     @vcpus.setter
-    def vcpus(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vcpus(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vcpus", value)
 
 
 class Vm2LegacyRngArgsDict(TypedDict):
-    max_bytes: NotRequired[pulumi.Input[_builtins.int]]
+    max_bytes: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum bytes of entropy allowed to get injected into the guest every period.
     """
-    period: NotRequired[pulumi.Input[_builtins.int]]
+    period: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Period in milliseconds to limit entropy injection to the guest.
     """
-    source: NotRequired[pulumi.Input[_builtins.str]]
+    source: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
     """
@@ -3020,9 +3049,9 @@ class Vm2LegacyRngArgsDict(TypedDict):
 @pulumi.input_type
 class Vm2LegacyRngArgs:
     def __init__(__self__, *,
-                 max_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None):
+                 max_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] max_bytes: Maximum bytes of entropy allowed to get injected into the guest every period.
         :param pulumi.Input[_builtins.int] period: Period in milliseconds to limit entropy injection to the guest.
@@ -3037,55 +3066,55 @@ class Vm2LegacyRngArgs:
 
     @_builtins.property
     @pulumi.getter(name="maxBytes")
-    def max_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum bytes of entropy allowed to get injected into the guest every period.
         """
         return pulumi.get(self, "max_bytes")
 
     @max_bytes.setter
-    def max_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_bytes", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Period in milliseconds to limit entropy injection to the guest.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
         """
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
 
 class Vm2LegacyTimeoutsArgsDict(TypedDict):
-    create: NotRequired[pulumi.Input[_builtins.str]]
+    create: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
     """
-    delete: NotRequired[pulumi.Input[_builtins.str]]
+    delete: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
     """
-    read: NotRequired[pulumi.Input[_builtins.str]]
+    read: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
     """
-    update: NotRequired[pulumi.Input[_builtins.str]]
+    update: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
     """
@@ -3093,10 +3122,10 @@ class Vm2LegacyTimeoutsArgsDict(TypedDict):
 @pulumi.input_type
 class Vm2LegacyTimeoutsArgs:
     def __init__(__self__, *,
-                 create: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete: Optional[pulumi.Input[_builtins.str]] = None,
-                 read: Optional[pulumi.Input[_builtins.str]] = None,
-                 update: Optional[pulumi.Input[_builtins.str]] = None):
+                 create: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete: pulumi.Input[Optional[_builtins.str]] = None,
+                 read: pulumi.Input[Optional[_builtins.str]] = None,
+                 update: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
         :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
@@ -3114,63 +3143,63 @@ class Vm2LegacyTimeoutsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def create(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
         """
         return pulumi.get(self, "create")
 
     @create.setter
-    def create(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create", value)
 
     @_builtins.property
     @pulumi.getter
-    def delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delete(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
         """
         return pulumi.get(self, "delete")
 
     @delete.setter
-    def delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delete(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete", value)
 
     @_builtins.property
     @pulumi.getter
-    def read(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def read(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
         """
         return pulumi.get(self, "read")
 
     @read.setter
-    def read(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def read(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "read", value)
 
     @_builtins.property
     @pulumi.getter
-    def update(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
         """
         return pulumi.get(self, "update")
 
     @update.setter
-    def update(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update", value)
 
 
 class Vm2LegacyVgaArgsDict(TypedDict):
-    clipboard: NotRequired[pulumi.Input[_builtins.str]]
+    clipboard: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
     """
-    memory: NotRequired[pulumi.Input[_builtins.int]]
+    memory: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The VGA type (defaults to `std`).
     """
@@ -3178,9 +3207,9 @@ class Vm2LegacyVgaArgsDict(TypedDict):
 @pulumi.input_type
 class Vm2LegacyVgaArgs:
     def __init__(__self__, *,
-                 clipboard: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 clipboard: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] clipboard: Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
         :param pulumi.Input[_builtins.int] memory: The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
@@ -3195,43 +3224,43 @@ class Vm2LegacyVgaArgs:
 
     @_builtins.property
     @pulumi.getter
-    def clipboard(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def clipboard(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
         """
         return pulumi.get(self, "clipboard")
 
     @clipboard.setter
-    def clipboard(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def clipboard(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "clipboard", value)
 
     @_builtins.property
     @pulumi.getter
-    def memory(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
         """
         return pulumi.get(self, "memory")
 
     @memory.setter
-    def memory(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VGA type (defaults to `std`).
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class VmCdromArgsDict(TypedDict):
-    file_id: NotRequired[pulumi.Input[_builtins.str]]
+    file_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
     """
@@ -3239,7 +3268,7 @@ class VmCdromArgsDict(TypedDict):
 @pulumi.input_type
 class VmCdromArgs:
     def __init__(__self__, *,
-                 file_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 file_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] file_id: The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
         """
@@ -3248,55 +3277,55 @@ class VmCdromArgs:
 
     @_builtins.property
     @pulumi.getter(name="fileId")
-    def file_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The file ID of the CD-ROM, or `cdrom|none`. Defaults to `cdrom` (i.e. empty CD-ROM drive — `cdrom` is PVE's literal "no media inserted" storage path). Use `none` to leave the CD-ROM unplugged, or a storage path like `local:iso/debian.iso` to insert an image.
         """
         return pulumi.get(self, "file_id")
 
     @file_id.setter
-    def file_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_id", value)
 
 
 class VmCpuArgsDict(TypedDict):
-    affinity: NotRequired[pulumi.Input[_builtins.str]]
+    affinity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
     """
-    architecture: NotRequired[pulumi.Input[_builtins.str]]
+    architecture: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
     """
-    cores: NotRequired[pulumi.Input[_builtins.int]]
+    cores: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of CPU cores per socket (PVE defaults to `1` when unset).
     """
-    flags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    flags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
     """
-    limit: NotRequired[pulumi.Input[_builtins.float]]
+    limit: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Limit of CPU usage. `0` means no limit (PVE default).
     """
-    numa: NotRequired[pulumi.Input[_builtins.bool]]
+    numa: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
     """
-    sockets: NotRequired[pulumi.Input[_builtins.int]]
+    sockets: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of CPU sockets (PVE defaults to `1` when unset).
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
     """
-    units: NotRequired[pulumi.Input[_builtins.int]]
+    units: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
     """
-    vcpus: NotRequired[pulumi.Input[_builtins.int]]
+    vcpus: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
     """
@@ -3304,16 +3333,16 @@ class VmCpuArgsDict(TypedDict):
 @pulumi.input_type
 class VmCpuArgs:
     def __init__(__self__, *,
-                 affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 architecture: Optional[pulumi.Input[_builtins.str]] = None,
-                 cores: Optional[pulumi.Input[_builtins.int]] = None,
-                 flags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 limit: Optional[pulumi.Input[_builtins.float]] = None,
-                 numa: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sockets: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 units: Optional[pulumi.Input[_builtins.int]] = None,
-                 vcpus: Optional[pulumi.Input[_builtins.int]] = None):
+                 affinity: pulumi.Input[Optional[_builtins.str]] = None,
+                 architecture: pulumi.Input[Optional[_builtins.str]] = None,
+                 cores: pulumi.Input[Optional[_builtins.int]] = None,
+                 flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 limit: pulumi.Input[Optional[_builtins.float]] = None,
+                 numa: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sockets: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 units: pulumi.Input[Optional[_builtins.int]] = None,
+                 vcpus: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] affinity: The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
         :param pulumi.Input[_builtins.str] architecture: The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
@@ -3349,146 +3378,146 @@ class VmCpuArgs:
 
     @_builtins.property
     @pulumi.getter
-    def affinity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def affinity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CPU cores that are used to run the VM’s vCPU. The value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.  For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
         """
         return pulumi.get(self, "affinity")
 
     @affinity.setter
-    def affinity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def affinity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "affinity", value)
 
     @_builtins.property
     @pulumi.getter
-    def architecture(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def architecture(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CPU architecture `<aarch64 | x86_64>` (defaults to the host). Setting `architecture` is only allowed for `root@pam` authenticated user.
         """
         return pulumi.get(self, "architecture")
 
     @architecture.setter
-    def architecture(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def architecture(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "architecture", value)
 
     @_builtins.property
     @pulumi.getter
-    def cores(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cores(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of CPU cores per socket (PVE defaults to `1` when unset).
         """
         return pulumi.get(self, "cores")
 
     @cores.setter
-    def cores(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cores(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cores", value)
 
     @_builtins.property
     @pulumi.getter
-    def flags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def flags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Set of additional CPU flags. Use `+FLAG` to enable, `-FLAG` to disable a flag. Custom CPU models can specify any flag supported by QEMU/KVM, VM-specific flags must be from the following set for security reasons: `pcid`, `spec-ctrl`, `ibpb`, `ssbd`, `virt-ssbd`, `amd-ssbd`, `amd-no-ssb`, `pdpe1gb`, `md-clear`, `hv-tlbflush`, `hv-evmcs`, `aes`.
         """
         return pulumi.get(self, "flags")
 
     @flags.setter
-    def flags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def flags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "flags", value)
 
     @_builtins.property
     @pulumi.getter
-    def limit(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def limit(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Limit of CPU usage. `0` means no limit (PVE default).
         """
         return pulumi.get(self, "limit")
 
     @limit.setter
-    def limit(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def limit(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "limit", value)
 
     @_builtins.property
     @pulumi.getter
-    def numa(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def numa(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable NUMA topology emulation. Matches the PVE Processors → **Enable NUMA** checkbox.
         """
         return pulumi.get(self, "numa")
 
     @numa.setter
-    def numa(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def numa(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "numa", value)
 
     @_builtins.property
     @pulumi.getter
-    def sockets(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sockets(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of CPU sockets (PVE defaults to `1` when unset).
         """
         return pulumi.get(self, "sockets")
 
     @sockets.setter
-    def sockets(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sockets(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sockets", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Emulated CPU type, it's recommended to use `x86-64-v2-AES` or higher. See [the PVE admin guide](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) for the full list of supported types.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def units(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def units(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         CPU weight for a VM. Argument is used in the kernel fair scheduler. The larger the number is, the more CPU time this VM gets. Number is relative to weights of all the other running VMs. On cgroup v2 `0` is a valid value meaning disable CPU share weighting.
         """
         return pulumi.get(self, "units")
 
     @units.setter
-    def units(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def units(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "units", value)
 
     @_builtins.property
     @pulumi.getter
-    def vcpus(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vcpus(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of vCPUs started with the VM, bounded by `cores * sockets`. Matches the PVE Processors → **VCPUs** field. Leave unset to start with `cores * sockets` vCPUs. Requires PVE hotplug feature enabled to change at runtime.
         """
         return pulumi.get(self, "vcpus")
 
     @vcpus.setter
-    def vcpus(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vcpus(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vcpus", value)
 
 
 class VmLegacyAgentArgsDict(TypedDict):
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable the QEMU agent (defaults
     to `false`).
     """
-    timeout: NotRequired[pulumi.Input[_builtins.str]]
+    timeout: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The maximum amount of time to wait for data from
     the QEMU agent to become available ( defaults to `15m`).
     """
-    trim: NotRequired[pulumi.Input[_builtins.bool]]
+    trim: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable the FSTRIM feature in the QEMU agent
     (defaults to `false`).
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The QEMU agent interface type (defaults to `virtio`).
     """
-    wait_for_ip: NotRequired[pulumi.Input['VmLegacyAgentWaitForIpArgsDict']]
+    wait_for_ip: NotRequired[pulumi.Input[Optional['VmLegacyAgentWaitForIpArgs']]]
     """
     Configuration for waiting for specific IP address types when the VM starts.
     """
@@ -3496,11 +3525,11 @@ class VmLegacyAgentArgsDict(TypedDict):
 @pulumi.input_type
 class VmLegacyAgentArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 trim: Optional[pulumi.Input[_builtins.bool]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 wait_for_ip: Optional[pulumi.Input['VmLegacyAgentWaitForIpArgs']] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 trim: pulumi.Input[Optional[_builtins.bool]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 wait_for_ip: pulumi.Input[Optional['VmLegacyAgentWaitForIpArgs']] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Whether to enable the QEMU agent (defaults
                to `false`).
@@ -3524,7 +3553,7 @@ class VmLegacyAgentArgs:
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable the QEMU agent (defaults
         to `false`).
@@ -3532,12 +3561,12 @@ class VmLegacyAgentArgs:
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum amount of time to wait for data from
         the QEMU agent to become available ( defaults to `15m`).
@@ -3545,12 +3574,12 @@ class VmLegacyAgentArgs:
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def trim(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def trim(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable the FSTRIM feature in the QEMU agent
         (defaults to `false`).
@@ -3558,40 +3587,40 @@ class VmLegacyAgentArgs:
         return pulumi.get(self, "trim")
 
     @trim.setter
-    def trim(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def trim(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "trim", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The QEMU agent interface type (defaults to `virtio`).
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="waitForIp")
-    def wait_for_ip(self) -> Optional[pulumi.Input['VmLegacyAgentWaitForIpArgs']]:
+    def wait_for_ip(self) -> pulumi.Input[Optional['VmLegacyAgentWaitForIpArgs']]:
         """
         Configuration for waiting for specific IP address types when the VM starts.
         """
         return pulumi.get(self, "wait_for_ip")
 
     @wait_for_ip.setter
-    def wait_for_ip(self, value: Optional[pulumi.Input['VmLegacyAgentWaitForIpArgs']]):
+    def wait_for_ip(self, value: pulumi.Input[Optional['VmLegacyAgentWaitForIpArgs']]):
         pulumi.set(self, "wait_for_ip", value)
 
 
 class VmLegacyAgentWaitForIpArgsDict(TypedDict):
-    ipv4: NotRequired[pulumi.Input[_builtins.bool]]
+    ipv4: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
     """
-    ipv6: NotRequired[pulumi.Input[_builtins.bool]]
+    ipv6: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
 
@@ -3601,8 +3630,8 @@ class VmLegacyAgentWaitForIpArgsDict(TypedDict):
 @pulumi.input_type
 class VmLegacyAgentWaitForIpArgs:
     def __init__(__self__, *,
-                 ipv4: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ipv6: Optional[pulumi.Input[_builtins.bool]] = None):
+                 ipv4: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ipv6: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.bool] ipv4: Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
         :param pulumi.Input[_builtins.bool] ipv6: Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
@@ -3616,19 +3645,19 @@ class VmLegacyAgentWaitForIpArgs:
 
     @_builtins.property
     @pulumi.getter
-    def ipv4(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ipv4(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
         """
         return pulumi.get(self, "ipv4")
 
     @ipv4.setter
-    def ipv4(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ipv4(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ipv4", value)
 
     @_builtins.property
     @pulumi.getter
-    def ipv6(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ipv6(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
 
@@ -3637,32 +3666,32 @@ class VmLegacyAgentWaitForIpArgs:
         return pulumi.get(self, "ipv6")
 
     @ipv6.setter
-    def ipv6(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ipv6(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ipv6", value)
 
 
 class VmLegacyAmdSevArgsDict(TypedDict):
-    allow_smt: NotRequired[pulumi.Input[_builtins.bool]]
+    allow_smt: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Sets policy bit to allow Simultaneous Multi Threading (SMT)
     (Ignored unless for SEV-SNP) (defaults to `true`).
     """
-    kernel_hashes: NotRequired[pulumi.Input[_builtins.bool]]
+    kernel_hashes: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Add kernel hashes to guest firmware for measured linux kernel launch (defaults to `false`).
     """
-    no_debug: NotRequired[pulumi.Input[_builtins.bool]]
+    no_debug: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Sets policy bit to disallow debugging of guest (defaults
     to `false`).
     """
-    no_key_sharing: NotRequired[pulumi.Input[_builtins.bool]]
+    no_key_sharing: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to `false`).
 
     The `amd_sev` setting is only allowed for a `root@pam` authenticated user.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Enable standard SEV with `std` or enable experimental SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option (defaults to `std`).
     """
@@ -3670,11 +3699,11 @@ class VmLegacyAmdSevArgsDict(TypedDict):
 @pulumi.input_type
 class VmLegacyAmdSevArgs:
     def __init__(__self__, *,
-                 allow_smt: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kernel_hashes: Optional[pulumi.Input[_builtins.bool]] = None,
-                 no_debug: Optional[pulumi.Input[_builtins.bool]] = None,
-                 no_key_sharing: Optional[pulumi.Input[_builtins.bool]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 allow_smt: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kernel_hashes: pulumi.Input[Optional[_builtins.bool]] = None,
+                 no_debug: pulumi.Input[Optional[_builtins.bool]] = None,
+                 no_key_sharing: pulumi.Input[Optional[_builtins.bool]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] allow_smt: Sets policy bit to allow Simultaneous Multi Threading (SMT)
                (Ignored unless for SEV-SNP) (defaults to `true`).
@@ -3699,7 +3728,7 @@ class VmLegacyAmdSevArgs:
 
     @_builtins.property
     @pulumi.getter(name="allowSmt")
-    def allow_smt(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def allow_smt(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Sets policy bit to allow Simultaneous Multi Threading (SMT)
         (Ignored unless for SEV-SNP) (defaults to `true`).
@@ -3707,24 +3736,24 @@ class VmLegacyAmdSevArgs:
         return pulumi.get(self, "allow_smt")
 
     @allow_smt.setter
-    def allow_smt(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def allow_smt(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "allow_smt", value)
 
     @_builtins.property
     @pulumi.getter(name="kernelHashes")
-    def kernel_hashes(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def kernel_hashes(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Add kernel hashes to guest firmware for measured linux kernel launch (defaults to `false`).
         """
         return pulumi.get(self, "kernel_hashes")
 
     @kernel_hashes.setter
-    def kernel_hashes(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def kernel_hashes(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "kernel_hashes", value)
 
     @_builtins.property
     @pulumi.getter(name="noDebug")
-    def no_debug(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def no_debug(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Sets policy bit to disallow debugging of guest (defaults
         to `false`).
@@ -3732,12 +3761,12 @@ class VmLegacyAmdSevArgs:
         return pulumi.get(self, "no_debug")
 
     @no_debug.setter
-    def no_debug(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def no_debug(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "no_debug", value)
 
     @_builtins.property
     @pulumi.getter(name="noKeySharing")
-    def no_key_sharing(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def no_key_sharing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Sets policy bit to disallow key sharing with other guests (Ignored for SEV-SNP) (defaults to `false`).
 
@@ -3746,35 +3775,35 @@ class VmLegacyAmdSevArgs:
         return pulumi.get(self, "no_key_sharing")
 
     @no_key_sharing.setter
-    def no_key_sharing(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def no_key_sharing(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "no_key_sharing", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enable standard SEV with `std` or enable experimental SEV-ES with the `es` option or enable experimental SEV-SNP with the `snp` option (defaults to `std`).
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 class VmLegacyAudioDeviceArgsDict(TypedDict):
-    device: NotRequired[pulumi.Input[_builtins.str]]
+    device: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The device (defaults to `intel-hda`).
     - `AC97` - Intel 82801AA AC97 Audio.
     - `ich9-intel-hda` - Intel HD Audio Controller (ich9).
     - `intel-hda` - Intel HD Audio.
     """
-    driver: NotRequired[pulumi.Input[_builtins.str]]
+    driver: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The driver (defaults to `spice`).
     """
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable the audio device (defaults
     to `true`).
@@ -3783,9 +3812,9 @@ class VmLegacyAudioDeviceArgsDict(TypedDict):
 @pulumi.input_type
 class VmLegacyAudioDeviceArgs:
     def __init__(__self__, *,
-                 device: Optional[pulumi.Input[_builtins.str]] = None,
-                 driver: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 device: pulumi.Input[Optional[_builtins.str]] = None,
+                 driver: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] device: The device (defaults to `intel-hda`).
                - `AC97` - Intel 82801AA AC97 Audio.
@@ -3804,7 +3833,7 @@ class VmLegacyAudioDeviceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def device(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def device(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The device (defaults to `intel-hda`).
         - `AC97` - Intel 82801AA AC97 Audio.
@@ -3814,24 +3843,24 @@ class VmLegacyAudioDeviceArgs:
         return pulumi.get(self, "device")
 
     @device.setter
-    def device(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def device(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "device", value)
 
     @_builtins.property
     @pulumi.getter
-    def driver(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def driver(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The driver (defaults to `spice`).
         """
         return pulumi.get(self, "driver")
 
     @driver.setter
-    def driver(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def driver(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "driver", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable the audio device (defaults
         to `true`).
@@ -3839,23 +3868,23 @@ class VmLegacyAudioDeviceArgs:
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
 
 class VmLegacyCdromArgsDict(TypedDict):
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable the CD-ROM drive (defaults
     to `false`). *Deprecated*. The attribute will be removed in the next version of the provider.
     Set `file_id` to `none` to leave the CD-ROM drive empty.
     """
-    file_id: NotRequired[pulumi.Input[_builtins.str]]
+    file_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A file ID for an ISO file (defaults to `cdrom` as
     in the physical drive). Use `none` to leave the CD-ROM drive empty.
     """
-    interface: NotRequired[pulumi.Input[_builtins.str]]
+    interface: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
     "Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. " +
@@ -3865,9 +3894,9 @@ class VmLegacyCdromArgsDict(TypedDict):
 @pulumi.input_type
 class VmLegacyCdromArgs:
     def __init__(__self__, *,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 file_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 interface: Optional[pulumi.Input[_builtins.str]] = None):
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 file_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 interface: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Whether to enable the CD-ROM drive (defaults
                to `false`). *Deprecated*. The attribute will be removed in the next version of the provider.
@@ -3891,7 +3920,7 @@ class VmLegacyCdromArgs:
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""Remove this attribute's configuration as it is no longer used and the attribute will be removed in the next version of the provider. Set `file_id` to `none` to leave the CDROM drive empty.""")
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable the CD-ROM drive (defaults
         to `false`). *Deprecated*. The attribute will be removed in the next version of the provider.
@@ -3900,12 +3929,12 @@ class VmLegacyCdromArgs:
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="fileId")
-    def file_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A file ID for an ISO file (defaults to `cdrom` as
         in the physical drive). Use `none` to leave the CD-ROM drive empty.
@@ -3913,12 +3942,12 @@ class VmLegacyCdromArgs:
         return pulumi.get(self, "file_id")
 
     @file_id.setter
-    def file_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def interface(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interface(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A hardware interface to connect CD-ROM drive to (defaults to `ide3`).
         "Must be one of `ideN`, `sataN`, `scsiN`, where N is the index of the interface. " +
@@ -3927,7 +3956,7 @@ class VmLegacyCdromArgs:
         return pulumi.get(self, "interface")
 
     @interface.setter
-    def interface(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interface(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interface", value)
 
 
@@ -3936,20 +3965,20 @@ class VmLegacyCloneArgsDict(TypedDict):
     """
     The identifier for the source VM.
     """
-    datastore_id: NotRequired[pulumi.Input[_builtins.str]]
+    datastore_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The identifier for the target datastore.
     """
-    full: NotRequired[pulumi.Input[_builtins.bool]]
+    full: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Full or linked clone (defaults to `true`).
     """
-    node_name: NotRequired[pulumi.Input[_builtins.str]]
+    node_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the source node (leave blank, if
     equal to the `node_name` argument).
     """
-    retries: NotRequired[pulumi.Input[_builtins.int]]
+    retries: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Number of retries in Proxmox for clone vm.
     Sometimes Proxmox errors with timeout when creating multiple clones at
@@ -3960,10 +3989,10 @@ class VmLegacyCloneArgsDict(TypedDict):
 class VmLegacyCloneArgs:
     def __init__(__self__, *,
                  vm_id: pulumi.Input[_builtins.int],
-                 datastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 full: Optional[pulumi.Input[_builtins.bool]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 retries: Optional[pulumi.Input[_builtins.int]] = None):
+                 datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 full: pulumi.Input[Optional[_builtins.bool]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 retries: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] vm_id: The identifier for the source VM.
         :param pulumi.Input[_builtins.str] datastore_id: The identifier for the target datastore.
@@ -3998,31 +4027,31 @@ class VmLegacyCloneArgs:
 
     @_builtins.property
     @pulumi.getter(name="datastoreId")
-    def datastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datastore_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier for the target datastore.
         """
         return pulumi.get(self, "datastore_id")
 
     @datastore_id.setter
-    def datastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datastore_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datastore_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def full(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def full(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Full or linked clone (defaults to `true`).
         """
         return pulumi.get(self, "full")
 
     @full.setter
-    def full(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def full(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "full", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeName")
-    def node_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the source node (leave blank, if
         equal to the `node_name` argument).
@@ -4030,12 +4059,12 @@ class VmLegacyCloneArgs:
         return pulumi.get(self, "node_name")
 
     @node_name.setter
-    def node_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def retries(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retries(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of retries in Proxmox for clone vm.
         Sometimes Proxmox errors with timeout when creating multiple clones at
@@ -4044,27 +4073,27 @@ class VmLegacyCloneArgs:
         return pulumi.get(self, "retries")
 
     @retries.setter
-    def retries(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retries(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retries", value)
 
 
 class VmLegacyCpuArgsDict(TypedDict):
-    affinity: NotRequired[pulumi.Input[_builtins.str]]
+    affinity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The CPU cores that are used to run the VM’s vCPU. The
     value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
     For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four
     CPU cores. Setting `affinity` is only allowed for `root@pam` authenticated user.
     """
-    architecture: NotRequired[pulumi.Input[_builtins.str]]
+    architecture: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The CPU architecture (defaults to `x86_64`).
     """
-    cores: NotRequired[pulumi.Input[_builtins.int]]
+    cores: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of CPU cores (defaults to `1`).
     """
-    flags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    flags: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The CPU flags.
     - `+aes`/`-aes` - Activate AES instruction set for HW acceleration.
@@ -4090,30 +4119,30 @@ class VmLegacyCpuArgsDict(TypedDict):
     - `+virt-ssbd`/`-virt-ssbd` - Basis for "Speculative Store Bypass"
     protection for AMD models.
     """
-    hotplugged: NotRequired[pulumi.Input[_builtins.int]]
+    hotplugged: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of hotplugged vCPUs (defaults
     to `0`).
     """
-    limit: NotRequired[pulumi.Input[_builtins.float]]
+    limit: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     Limit of CPU usage, `0...128` (supports
     fractional values, e.g. `63.5`). (defaults to `0` -- no limit).
     """
-    numa: NotRequired[pulumi.Input[_builtins.bool]]
+    numa: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable/disable NUMA. (default to `false`)
     """
-    sockets: NotRequired[pulumi.Input[_builtins.int]]
+    sockets: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of CPU sockets (defaults to `1`).
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The emulated CPU type, it's recommended to
     use `x86-64-v2-AES` (defaults to `qemu64`).
     """
-    units: NotRequired[pulumi.Input[_builtins.int]]
+    units: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The CPU units. PVE default is `1024` for cgroups v1 and `100` for cgroups v2.
     """
@@ -4121,16 +4150,16 @@ class VmLegacyCpuArgsDict(TypedDict):
 @pulumi.input_type
 class VmLegacyCpuArgs:
     def __init__(__self__, *,
-                 affinity: Optional[pulumi.Input[_builtins.str]] = None,
-                 architecture: Optional[pulumi.Input[_builtins.str]] = None,
-                 cores: Optional[pulumi.Input[_builtins.int]] = None,
-                 flags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 hotplugged: Optional[pulumi.Input[_builtins.int]] = None,
-                 limit: Optional[pulumi.Input[_builtins.float]] = None,
-                 numa: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sockets: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 units: Optional[pulumi.Input[_builtins.int]] = None):
+                 affinity: pulumi.Input[Optional[_builtins.str]] = None,
+                 architecture: pulumi.Input[Optional[_builtins.str]] = None,
+                 cores: pulumi.Input[Optional[_builtins.int]] = None,
+                 flags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 hotplugged: pulumi.Input[Optional[_builtins.int]] = None,
+                 limit: pulumi.Input[Optional[_builtins.float]] = None,
+                 numa: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sockets: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 units: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] affinity: The CPU cores that are used to run the VM’s vCPU. The
                value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
@@ -4194,7 +4223,7 @@ class VmLegacyCpuArgs:
 
     @_builtins.property
     @pulumi.getter
-    def affinity(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def affinity(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CPU cores that are used to run the VM’s vCPU. The
         value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
@@ -4204,36 +4233,36 @@ class VmLegacyCpuArgs:
         return pulumi.get(self, "affinity")
 
     @affinity.setter
-    def affinity(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def affinity(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "affinity", value)
 
     @_builtins.property
     @pulumi.getter
-    def architecture(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def architecture(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CPU architecture (defaults to `x86_64`).
         """
         return pulumi.get(self, "architecture")
 
     @architecture.setter
-    def architecture(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def architecture(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "architecture", value)
 
     @_builtins.property
     @pulumi.getter
-    def cores(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cores(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of CPU cores (defaults to `1`).
         """
         return pulumi.get(self, "cores")
 
     @cores.setter
-    def cores(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cores(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cores", value)
 
     @_builtins.property
     @pulumi.getter
-    def flags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def flags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The CPU flags.
         - `+aes`/`-aes` - Activate AES instruction set for HW acceleration.
@@ -4262,12 +4291,12 @@ class VmLegacyCpuArgs:
         return pulumi.get(self, "flags")
 
     @flags.setter
-    def flags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def flags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "flags", value)
 
     @_builtins.property
     @pulumi.getter
-    def hotplugged(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def hotplugged(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of hotplugged vCPUs (defaults
         to `0`).
@@ -4275,12 +4304,12 @@ class VmLegacyCpuArgs:
         return pulumi.get(self, "hotplugged")
 
     @hotplugged.setter
-    def hotplugged(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def hotplugged(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "hotplugged", value)
 
     @_builtins.property
     @pulumi.getter
-    def limit(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def limit(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Limit of CPU usage, `0...128` (supports
         fractional values, e.g. `63.5`). (defaults to `0` -- no limit).
@@ -4288,36 +4317,36 @@ class VmLegacyCpuArgs:
         return pulumi.get(self, "limit")
 
     @limit.setter
-    def limit(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def limit(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "limit", value)
 
     @_builtins.property
     @pulumi.getter
-    def numa(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def numa(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable/disable NUMA. (default to `false`)
         """
         return pulumi.get(self, "numa")
 
     @numa.setter
-    def numa(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def numa(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "numa", value)
 
     @_builtins.property
     @pulumi.getter
-    def sockets(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sockets(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of CPU sockets (defaults to `1`).
         """
         return pulumi.get(self, "sockets")
 
     @sockets.setter
-    def sockets(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sockets(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sockets", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The emulated CPU type, it's recommended to
         use `x86-64-v2-AES` (defaults to `qemu64`).
@@ -4325,19 +4354,19 @@ class VmLegacyCpuArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def units(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def units(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The CPU units. PVE default is `1024` for cgroups v1 and `100` for cgroups v2.
         """
         return pulumi.get(self, "units")
 
     @units.setter
-    def units(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def units(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "units", value)
 
 
@@ -4349,34 +4378,34 @@ class VmLegacyDiskArgsDict(TypedDict):
     the end, for example, `virtio0` for the first virtio disk, `virtio1` for
     the second, etc.
     """
-    aio: NotRequired[pulumi.Input[_builtins.str]]
+    aio: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The disk AIO mode (defaults to `io_uring`).
     """
-    backup: NotRequired[pulumi.Input[_builtins.bool]]
+    backup: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the drive should be included when making backups (defaults to `true`).
     """
-    cache: NotRequired[pulumi.Input[_builtins.str]]
+    cache: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The cache type (defaults to `none`).
     """
-    datastore_id: NotRequired[pulumi.Input[_builtins.str]]
+    datastore_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The identifier for the datastore to create
     the disk in (defaults to `local-lvm`).
     """
-    discard: NotRequired[pulumi.Input[_builtins.str]]
+    discard: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Whether to pass discard/trim requests to the
     underlying storage. Supported values are `on`/`ignore` (defaults
     to `ignore`).
     """
-    file_format: NotRequired[pulumi.Input[_builtins.str]]
+    file_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The file format.
     """
-    file_id: NotRequired[pulumi.Input[_builtins.str]]
+    file_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The file ID for a disk image when importing a disk into VM. The ID format is
     `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
@@ -4385,42 +4414,42 @@ class VmLegacyDiskArgsDict(TypedDict):
     with `content_type = "iso"` and `decompression_algorithm` set. See the
     Create a VM from a Cloud Image guide for examples.
     """
-    import_from: NotRequired[pulumi.Input[_builtins.str]]
+    import_from: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The file ID for a disk image to import into VM. The image must be of `import` content type
     (uncompressed images only). The ID format is `<datastore_id>:import/<file_name>`, for example `local:import/centos8.qcow2`.
     Can be also taken from `download.FileLegacy` resource. Note: compressed images downloaded with
     `decompression_algorithm` cannot use `import_from`; use `file_id` instead.
     """
-    iothread: NotRequired[pulumi.Input[_builtins.bool]]
+    iothread: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to use iothreads for this disk (defaults
     to `false`).
     """
-    path_in_datastore: NotRequired[pulumi.Input[_builtins.str]]
+    path_in_datastore: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The in-datastore path to the disk image.
     ***Experimental.***Use to attach another VM's disks,
     or (as root only) host's filesystem paths (`datastore_id` empty string).
     See "*Example: Attached disks*".
     """
-    replicate: NotRequired[pulumi.Input[_builtins.bool]]
+    replicate: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the drive should be considered for replication jobs (defaults to `true`).
     """
-    serial: NotRequired[pulumi.Input[_builtins.str]]
+    serial: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The serial number of the disk, up to 20 bytes long.
     """
-    size: NotRequired[pulumi.Input[_builtins.int]]
+    size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The disk size in gigabytes (defaults to `8`).
     """
-    speed: NotRequired[pulumi.Input['VmLegacyDiskSpeedArgsDict']]
+    speed: NotRequired[pulumi.Input[Optional['VmLegacyDiskSpeedArgs']]]
     """
     The speed limits.
     """
-    ssd: NotRequired[pulumi.Input[_builtins.bool]]
+    ssd: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to use an SSD emulation option for this disk (
     defaults to `false`). Note that SSD emulation is not supported on VirtIO
@@ -4431,21 +4460,21 @@ class VmLegacyDiskArgsDict(TypedDict):
 class VmLegacyDiskArgs:
     def __init__(__self__, *,
                  interface: pulumi.Input[_builtins.str],
-                 aio: Optional[pulumi.Input[_builtins.str]] = None,
-                 backup: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cache: Optional[pulumi.Input[_builtins.str]] = None,
-                 datastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 discard: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 import_from: Optional[pulumi.Input[_builtins.str]] = None,
-                 iothread: Optional[pulumi.Input[_builtins.bool]] = None,
-                 path_in_datastore: Optional[pulumi.Input[_builtins.str]] = None,
-                 replicate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 serial: Optional[pulumi.Input[_builtins.str]] = None,
-                 size: Optional[pulumi.Input[_builtins.int]] = None,
-                 speed: Optional[pulumi.Input['VmLegacyDiskSpeedArgs']] = None,
-                 ssd: Optional[pulumi.Input[_builtins.bool]] = None):
+                 aio: pulumi.Input[Optional[_builtins.str]] = None,
+                 backup: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cache: pulumi.Input[Optional[_builtins.str]] = None,
+                 datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 discard: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 import_from: pulumi.Input[Optional[_builtins.str]] = None,
+                 iothread: pulumi.Input[Optional[_builtins.bool]] = None,
+                 path_in_datastore: pulumi.Input[Optional[_builtins.str]] = None,
+                 replicate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 serial: pulumi.Input[Optional[_builtins.str]] = None,
+                 size: pulumi.Input[Optional[_builtins.int]] = None,
+                 speed: pulumi.Input[Optional['VmLegacyDiskSpeedArgs']] = None,
+                 ssd: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] interface: The disk interface for Proxmox, currently `scsi`,
                `sata` and `virtio` interfaces are supported. Append the disk index at
@@ -4533,43 +4562,43 @@ class VmLegacyDiskArgs:
 
     @_builtins.property
     @pulumi.getter
-    def aio(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def aio(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The disk AIO mode (defaults to `io_uring`).
         """
         return pulumi.get(self, "aio")
 
     @aio.setter
-    def aio(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def aio(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "aio", value)
 
     @_builtins.property
     @pulumi.getter
-    def backup(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def backup(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the drive should be included when making backups (defaults to `true`).
         """
         return pulumi.get(self, "backup")
 
     @backup.setter
-    def backup(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def backup(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "backup", value)
 
     @_builtins.property
     @pulumi.getter
-    def cache(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cache(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cache type (defaults to `none`).
         """
         return pulumi.get(self, "cache")
 
     @cache.setter
-    def cache(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cache(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cache", value)
 
     @_builtins.property
     @pulumi.getter(name="datastoreId")
-    def datastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datastore_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier for the datastore to create
         the disk in (defaults to `local-lvm`).
@@ -4577,12 +4606,12 @@ class VmLegacyDiskArgs:
         return pulumi.get(self, "datastore_id")
 
     @datastore_id.setter
-    def datastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datastore_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datastore_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def discard(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def discard(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Whether to pass discard/trim requests to the
         underlying storage. Supported values are `on`/`ignore` (defaults
@@ -4591,24 +4620,24 @@ class VmLegacyDiskArgs:
         return pulumi.get(self, "discard")
 
     @discard.setter
-    def discard(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def discard(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "discard", value)
 
     @_builtins.property
     @pulumi.getter(name="fileFormat")
-    def file_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The file format.
         """
         return pulumi.get(self, "file_format")
 
     @file_format.setter
-    def file_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_format", value)
 
     @_builtins.property
     @pulumi.getter(name="fileId")
-    def file_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The file ID for a disk image when importing a disk into VM. The ID format is
         `<datastore_id>:<content_type>/<file_name>`, for example `local:iso/centos8.img`. Can be also taken from
@@ -4620,12 +4649,12 @@ class VmLegacyDiskArgs:
         return pulumi.get(self, "file_id")
 
     @file_id.setter
-    def file_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_id", value)
 
     @_builtins.property
     @pulumi.getter(name="importFrom")
-    def import_from(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def import_from(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The file ID for a disk image to import into VM. The image must be of `import` content type
         (uncompressed images only). The ID format is `<datastore_id>:import/<file_name>`, for example `local:import/centos8.qcow2`.
@@ -4635,12 +4664,12 @@ class VmLegacyDiskArgs:
         return pulumi.get(self, "import_from")
 
     @import_from.setter
-    def import_from(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def import_from(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "import_from", value)
 
     @_builtins.property
     @pulumi.getter
-    def iothread(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def iothread(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to use iothreads for this disk (defaults
         to `false`).
@@ -4648,12 +4677,12 @@ class VmLegacyDiskArgs:
         return pulumi.get(self, "iothread")
 
     @iothread.setter
-    def iothread(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def iothread(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "iothread", value)
 
     @_builtins.property
     @pulumi.getter(name="pathInDatastore")
-    def path_in_datastore(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def path_in_datastore(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The in-datastore path to the disk image.
         ***Experimental.***Use to attach another VM's disks,
@@ -4663,60 +4692,60 @@ class VmLegacyDiskArgs:
         return pulumi.get(self, "path_in_datastore")
 
     @path_in_datastore.setter
-    def path_in_datastore(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def path_in_datastore(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path_in_datastore", value)
 
     @_builtins.property
     @pulumi.getter
-    def replicate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def replicate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the drive should be considered for replication jobs (defaults to `true`).
         """
         return pulumi.get(self, "replicate")
 
     @replicate.setter
-    def replicate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def replicate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "replicate", value)
 
     @_builtins.property
     @pulumi.getter
-    def serial(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def serial(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The serial number of the disk, up to 20 bytes long.
         """
         return pulumi.get(self, "serial")
 
     @serial.setter
-    def serial(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def serial(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "serial", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The disk size in gigabytes (defaults to `8`).
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size", value)
 
     @_builtins.property
     @pulumi.getter
-    def speed(self) -> Optional[pulumi.Input['VmLegacyDiskSpeedArgs']]:
+    def speed(self) -> pulumi.Input[Optional['VmLegacyDiskSpeedArgs']]:
         """
         The speed limits.
         """
         return pulumi.get(self, "speed")
 
     @speed.setter
-    def speed(self, value: Optional[pulumi.Input['VmLegacyDiskSpeedArgs']]):
+    def speed(self, value: pulumi.Input[Optional['VmLegacyDiskSpeedArgs']]):
         pulumi.set(self, "speed", value)
 
     @_builtins.property
     @pulumi.getter
-    def ssd(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ssd(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to use an SSD emulation option for this disk (
         defaults to `false`). Note that SSD emulation is not supported on VirtIO
@@ -4725,41 +4754,41 @@ class VmLegacyDiskArgs:
         return pulumi.get(self, "ssd")
 
     @ssd.setter
-    def ssd(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ssd(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ssd", value)
 
 
 class VmLegacyDiskSpeedArgsDict(TypedDict):
-    iops_read: NotRequired[pulumi.Input[_builtins.int]]
+    iops_read: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum read I/O in operations per second.
     """
-    iops_read_burstable: NotRequired[pulumi.Input[_builtins.int]]
+    iops_read_burstable: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum unthrottled read I/O pool in operations per second.
     """
-    iops_write: NotRequired[pulumi.Input[_builtins.int]]
+    iops_write: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum write I/O in operations per second.
     """
-    iops_write_burstable: NotRequired[pulumi.Input[_builtins.int]]
+    iops_write_burstable: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum unthrottled write I/O pool in operations per second.
     """
-    read: NotRequired[pulumi.Input[_builtins.int]]
+    read: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum read speed in megabytes per second.
     """
-    read_burstable: NotRequired[pulumi.Input[_builtins.int]]
+    read_burstable: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum burstable read speed in
     megabytes per second.
     """
-    write: NotRequired[pulumi.Input[_builtins.int]]
+    write: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum write speed in megabytes per second.
     """
-    write_burstable: NotRequired[pulumi.Input[_builtins.int]]
+    write_burstable: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The maximum burstable write speed in
     megabytes per second.
@@ -4768,14 +4797,14 @@ class VmLegacyDiskSpeedArgsDict(TypedDict):
 @pulumi.input_type
 class VmLegacyDiskSpeedArgs:
     def __init__(__self__, *,
-                 iops_read: Optional[pulumi.Input[_builtins.int]] = None,
-                 iops_read_burstable: Optional[pulumi.Input[_builtins.int]] = None,
-                 iops_write: Optional[pulumi.Input[_builtins.int]] = None,
-                 iops_write_burstable: Optional[pulumi.Input[_builtins.int]] = None,
-                 read: Optional[pulumi.Input[_builtins.int]] = None,
-                 read_burstable: Optional[pulumi.Input[_builtins.int]] = None,
-                 write: Optional[pulumi.Input[_builtins.int]] = None,
-                 write_burstable: Optional[pulumi.Input[_builtins.int]] = None):
+                 iops_read: pulumi.Input[Optional[_builtins.int]] = None,
+                 iops_read_burstable: pulumi.Input[Optional[_builtins.int]] = None,
+                 iops_write: pulumi.Input[Optional[_builtins.int]] = None,
+                 iops_write_burstable: pulumi.Input[Optional[_builtins.int]] = None,
+                 read: pulumi.Input[Optional[_builtins.int]] = None,
+                 read_burstable: pulumi.Input[Optional[_builtins.int]] = None,
+                 write: pulumi.Input[Optional[_builtins.int]] = None,
+                 write_burstable: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] iops_read: The maximum read I/O in operations per second.
         :param pulumi.Input[_builtins.int] iops_read_burstable: The maximum unthrottled read I/O pool in operations per second.
@@ -4807,67 +4836,67 @@ class VmLegacyDiskSpeedArgs:
 
     @_builtins.property
     @pulumi.getter(name="iopsRead")
-    def iops_read(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def iops_read(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum read I/O in operations per second.
         """
         return pulumi.get(self, "iops_read")
 
     @iops_read.setter
-    def iops_read(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def iops_read(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "iops_read", value)
 
     @_builtins.property
     @pulumi.getter(name="iopsReadBurstable")
-    def iops_read_burstable(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def iops_read_burstable(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum unthrottled read I/O pool in operations per second.
         """
         return pulumi.get(self, "iops_read_burstable")
 
     @iops_read_burstable.setter
-    def iops_read_burstable(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def iops_read_burstable(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "iops_read_burstable", value)
 
     @_builtins.property
     @pulumi.getter(name="iopsWrite")
-    def iops_write(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def iops_write(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum write I/O in operations per second.
         """
         return pulumi.get(self, "iops_write")
 
     @iops_write.setter
-    def iops_write(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def iops_write(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "iops_write", value)
 
     @_builtins.property
     @pulumi.getter(name="iopsWriteBurstable")
-    def iops_write_burstable(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def iops_write_burstable(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum unthrottled write I/O pool in operations per second.
         """
         return pulumi.get(self, "iops_write_burstable")
 
     @iops_write_burstable.setter
-    def iops_write_burstable(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def iops_write_burstable(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "iops_write_burstable", value)
 
     @_builtins.property
     @pulumi.getter
-    def read(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def read(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum read speed in megabytes per second.
         """
         return pulumi.get(self, "read")
 
     @read.setter
-    def read(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def read(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "read", value)
 
     @_builtins.property
     @pulumi.getter(name="readBurstable")
-    def read_burstable(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def read_burstable(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum burstable read speed in
         megabytes per second.
@@ -4875,24 +4904,24 @@ class VmLegacyDiskSpeedArgs:
         return pulumi.get(self, "read_burstable")
 
     @read_burstable.setter
-    def read_burstable(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def read_burstable(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "read_burstable", value)
 
     @_builtins.property
     @pulumi.getter
-    def write(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def write(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum write speed in megabytes per second.
         """
         return pulumi.get(self, "write")
 
     @write.setter
-    def write(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def write(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "write", value)
 
     @_builtins.property
     @pulumi.getter(name="writeBurstable")
-    def write_burstable(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def write_burstable(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum burstable write speed in
         megabytes per second.
@@ -4900,28 +4929,28 @@ class VmLegacyDiskSpeedArgs:
         return pulumi.get(self, "write_burstable")
 
     @write_burstable.setter
-    def write_burstable(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def write_burstable(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "write_burstable", value)
 
 
 class VmLegacyEfiDiskArgsDict(TypedDict):
-    datastore_id: NotRequired[pulumi.Input[_builtins.str]]
+    datastore_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The identifier for the datastore to create
     the disk in (defaults to `local-lvm`).
     """
-    file_format: NotRequired[pulumi.Input[_builtins.str]]
+    file_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The file format (defaults to `raw`).
     """
-    pre_enrolled_keys: NotRequired[pulumi.Input[_builtins.bool]]
+    pre_enrolled_keys: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Use am EFI vars template with
     distribution-specific and Microsoft Standard keys enrolled, if used with
     EFI type=`4m`. Ignored for VMs with cpu.architecture=`aarch64` (defaults
     to `false`).
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Size and type of the OVMF EFI disk. `4m` is newer and
     recommended, and required for Secure Boot. For backwards compatibility
@@ -4932,10 +4961,10 @@ class VmLegacyEfiDiskArgsDict(TypedDict):
 @pulumi.input_type
 class VmLegacyEfiDiskArgs:
     def __init__(__self__, *,
-                 datastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 pre_enrolled_keys: Optional[pulumi.Input[_builtins.bool]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 file_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 pre_enrolled_keys: pulumi.Input[Optional[_builtins.bool]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] datastore_id: The identifier for the datastore to create
                the disk in (defaults to `local-lvm`).
@@ -4960,7 +4989,7 @@ class VmLegacyEfiDiskArgs:
 
     @_builtins.property
     @pulumi.getter(name="datastoreId")
-    def datastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datastore_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier for the datastore to create
         the disk in (defaults to `local-lvm`).
@@ -4968,24 +4997,24 @@ class VmLegacyEfiDiskArgs:
         return pulumi.get(self, "datastore_id")
 
     @datastore_id.setter
-    def datastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datastore_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datastore_id", value)
 
     @_builtins.property
     @pulumi.getter(name="fileFormat")
-    def file_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The file format (defaults to `raw`).
         """
         return pulumi.get(self, "file_format")
 
     @file_format.setter
-    def file_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_format", value)
 
     @_builtins.property
     @pulumi.getter(name="preEnrolledKeys")
-    def pre_enrolled_keys(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def pre_enrolled_keys(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Use am EFI vars template with
         distribution-specific and Microsoft Standard keys enrolled, if used with
@@ -4995,12 +5024,12 @@ class VmLegacyEfiDiskArgs:
         return pulumi.get(self, "pre_enrolled_keys")
 
     @pre_enrolled_keys.setter
-    def pre_enrolled_keys(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def pre_enrolled_keys(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "pre_enrolled_keys", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Size and type of the OVMF EFI disk. `4m` is newer and
         recommended, and required for Secure Boot. For backwards compatibility
@@ -5010,7 +5039,7 @@ class VmLegacyEfiDiskArgs:
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -5020,38 +5049,38 @@ class VmLegacyHostpciArgsDict(TypedDict):
     The PCI device name for Proxmox, in form
     of `hostpciX` where `X` is a sequential number from 0 to 15.
     """
-    id: NotRequired[pulumi.Input[_builtins.str]]
+    id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The PCI device ID. This parameter is not compatible
     with `api_token` and requires the root `username` and `password`
     configured in the proxmox provider. Use either this or `mapping`.
     """
-    mapping: NotRequired[pulumi.Input[_builtins.str]]
+    mapping: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The resource mapping name of the device, for
     example gpu. Use either this or `id`.
     """
-    mdev: NotRequired[pulumi.Input[_builtins.str]]
+    mdev: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The mediated device ID to use.
     """
-    pcie: NotRequired[pulumi.Input[_builtins.bool]]
+    pcie: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Tells Proxmox to use a PCIe or PCI port. Some
     guests/device combination require PCIe rather than PCI. PCIe is only
     available for q35 machine types.
     """
-    rom_file: NotRequired[pulumi.Input[_builtins.str]]
+    rom_file: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A path to a ROM file for the device to use. This
     is a relative path under `/usr/share/kvm/`.
     """
-    rombar: NotRequired[pulumi.Input[_builtins.bool]]
+    rombar: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Makes the firmware ROM visible for the VM (defaults
     to `true`).
     """
-    xvga: NotRequired[pulumi.Input[_builtins.bool]]
+    xvga: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Marks the PCI(e) device as the primary GPU of the VM.
     With this enabled the `vga` configuration argument will be ignored.
@@ -5061,13 +5090,13 @@ class VmLegacyHostpciArgsDict(TypedDict):
 class VmLegacyHostpciArgs:
     def __init__(__self__, *,
                  device: pulumi.Input[_builtins.str],
-                 id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mapping: Optional[pulumi.Input[_builtins.str]] = None,
-                 mdev: Optional[pulumi.Input[_builtins.str]] = None,
-                 pcie: Optional[pulumi.Input[_builtins.bool]] = None,
-                 rom_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 rombar: Optional[pulumi.Input[_builtins.bool]] = None,
-                 xvga: Optional[pulumi.Input[_builtins.bool]] = None):
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mapping: pulumi.Input[Optional[_builtins.str]] = None,
+                 mdev: pulumi.Input[Optional[_builtins.str]] = None,
+                 pcie: pulumi.Input[Optional[_builtins.bool]] = None,
+                 rom_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 rombar: pulumi.Input[Optional[_builtins.bool]] = None,
+                 xvga: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] device: The PCI device name for Proxmox, in form
                of `hostpciX` where `X` is a sequential number from 0 to 15.
@@ -5118,7 +5147,7 @@ class VmLegacyHostpciArgs:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The PCI device ID. This parameter is not compatible
         with `api_token` and requires the root `username` and `password`
@@ -5127,12 +5156,12 @@ class VmLegacyHostpciArgs:
         return pulumi.get(self, "id")
 
     @id.setter
-    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
 
     @_builtins.property
     @pulumi.getter
-    def mapping(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mapping(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource mapping name of the device, for
         example gpu. Use either this or `id`.
@@ -5140,24 +5169,24 @@ class VmLegacyHostpciArgs:
         return pulumi.get(self, "mapping")
 
     @mapping.setter
-    def mapping(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mapping(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mapping", value)
 
     @_builtins.property
     @pulumi.getter
-    def mdev(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mdev(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The mediated device ID to use.
         """
         return pulumi.get(self, "mdev")
 
     @mdev.setter
-    def mdev(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mdev(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mdev", value)
 
     @_builtins.property
     @pulumi.getter
-    def pcie(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def pcie(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Tells Proxmox to use a PCIe or PCI port. Some
         guests/device combination require PCIe rather than PCI. PCIe is only
@@ -5166,12 +5195,12 @@ class VmLegacyHostpciArgs:
         return pulumi.get(self, "pcie")
 
     @pcie.setter
-    def pcie(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def pcie(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "pcie", value)
 
     @_builtins.property
     @pulumi.getter(name="romFile")
-    def rom_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rom_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A path to a ROM file for the device to use. This
         is a relative path under `/usr/share/kvm/`.
@@ -5179,12 +5208,12 @@ class VmLegacyHostpciArgs:
         return pulumi.get(self, "rom_file")
 
     @rom_file.setter
-    def rom_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rom_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rom_file", value)
 
     @_builtins.property
     @pulumi.getter
-    def rombar(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def rombar(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Makes the firmware ROM visible for the VM (defaults
         to `true`).
@@ -5192,12 +5221,12 @@ class VmLegacyHostpciArgs:
         return pulumi.get(self, "rombar")
 
     @rombar.setter
-    def rombar(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def rombar(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "rombar", value)
 
     @_builtins.property
     @pulumi.getter
-    def xvga(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def xvga(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Marks the PCI(e) device as the primary GPU of the VM.
         With this enabled the `vga` configuration argument will be ignored.
@@ -5205,68 +5234,68 @@ class VmLegacyHostpciArgs:
         return pulumi.get(self, "xvga")
 
     @xvga.setter
-    def xvga(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def xvga(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "xvga", value)
 
 
 class VmLegacyInitializationArgsDict(TypedDict):
-    datastore_id: NotRequired[pulumi.Input[_builtins.str]]
+    datastore_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The identifier for the datastore to create the
     cloud-init disk in (defaults to `local-lvm`).
     """
-    dns: NotRequired[pulumi.Input['VmLegacyInitializationDnsArgsDict']]
+    dns: NotRequired[pulumi.Input[Optional['VmLegacyInitializationDnsArgs']]]
     """
     The DNS configuration.
     """
-    file_format: NotRequired[pulumi.Input[_builtins.str]]
+    file_format: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The file format.
     """
-    interface: NotRequired[pulumi.Input[_builtins.str]]
+    interface: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The hardware interface to connect the cloud-init
     image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
     detected if the setting is missing but a cloud-init image is present,
     otherwise defaults to `ide2`.
     """
-    ip_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['VmLegacyInitializationIpConfigArgsDict']]]]
+    ip_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VmLegacyInitializationIpConfigArgs']]]]]
     """
     The IP configuration (one block per network
     device).
     """
-    meta_data_file_id: NotRequired[pulumi.Input[_builtins.str]]
+    meta_data_file_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The identifier for a file containing
     all meta data passed to the VM via cloud-init.
     """
-    network_data_file_id: NotRequired[pulumi.Input[_builtins.str]]
+    network_data_file_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The identifier for a file containing
     network configuration data passed to the VM via cloud-init (conflicts
     with `ip_config`).
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The cloud-init configuration format
     """
-    upgrade: NotRequired[pulumi.Input[_builtins.bool]]
+    upgrade: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to do an automatic package upgrade after
     the first boot (defaults to `true`).
     Setting this is only allowed for `root@pam` authenticated user.
     """
-    user_account: NotRequired[pulumi.Input['VmLegacyInitializationUserAccountArgsDict']]
+    user_account: NotRequired[pulumi.Input[Optional['VmLegacyInitializationUserAccountArgs']]]
     """
     The user account configuration (conflicts
     with `user_data_file_id`).
     """
-    user_data_file_id: NotRequired[pulumi.Input[_builtins.str]]
+    user_data_file_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The identifier for a file containing
     custom user data (conflicts with `user_account`).
     """
-    vendor_data_file_id: NotRequired[pulumi.Input[_builtins.str]]
+    vendor_data_file_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The identifier for a file containing
     all vendor data passed to the VM via cloud-init.
@@ -5275,18 +5304,18 @@ class VmLegacyInitializationArgsDict(TypedDict):
 @pulumi.input_type
 class VmLegacyInitializationArgs:
     def __init__(__self__, *,
-                 datastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns: Optional[pulumi.Input['VmLegacyInitializationDnsArgs']] = None,
-                 file_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 interface: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_configs: Optional[pulumi.Input[Sequence[pulumi.Input['VmLegacyInitializationIpConfigArgs']]]] = None,
-                 meta_data_file_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_data_file_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 user_account: Optional[pulumi.Input['VmLegacyInitializationUserAccountArgs']] = None,
-                 user_data_file_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vendor_data_file_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns: pulumi.Input[Optional['VmLegacyInitializationDnsArgs']] = None,
+                 file_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 interface: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_configs: pulumi.Input[Optional[Sequence[pulumi.Input['VmLegacyInitializationIpConfigArgs']]]] = None,
+                 meta_data_file_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_data_file_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 user_account: pulumi.Input[Optional['VmLegacyInitializationUserAccountArgs']] = None,
+                 user_data_file_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vendor_data_file_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] datastore_id: The identifier for the datastore to create the
                cloud-init disk in (defaults to `local-lvm`).
@@ -5341,7 +5370,7 @@ class VmLegacyInitializationArgs:
 
     @_builtins.property
     @pulumi.getter(name="datastoreId")
-    def datastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datastore_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier for the datastore to create the
         cloud-init disk in (defaults to `local-lvm`).
@@ -5349,36 +5378,36 @@ class VmLegacyInitializationArgs:
         return pulumi.get(self, "datastore_id")
 
     @datastore_id.setter
-    def datastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datastore_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datastore_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def dns(self) -> Optional[pulumi.Input['VmLegacyInitializationDnsArgs']]:
+    def dns(self) -> pulumi.Input[Optional['VmLegacyInitializationDnsArgs']]:
         """
         The DNS configuration.
         """
         return pulumi.get(self, "dns")
 
     @dns.setter
-    def dns(self, value: Optional[pulumi.Input['VmLegacyInitializationDnsArgs']]):
+    def dns(self, value: pulumi.Input[Optional['VmLegacyInitializationDnsArgs']]):
         pulumi.set(self, "dns", value)
 
     @_builtins.property
     @pulumi.getter(name="fileFormat")
-    def file_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def file_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The file format.
         """
         return pulumi.get(self, "file_format")
 
     @file_format.setter
-    def file_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def file_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "file_format", value)
 
     @_builtins.property
     @pulumi.getter
-    def interface(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def interface(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hardware interface to connect the cloud-init
         image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
@@ -5388,12 +5417,12 @@ class VmLegacyInitializationArgs:
         return pulumi.get(self, "interface")
 
     @interface.setter
-    def interface(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def interface(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "interface", value)
 
     @_builtins.property
     @pulumi.getter(name="ipConfigs")
-    def ip_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmLegacyInitializationIpConfigArgs']]]]:
+    def ip_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['VmLegacyInitializationIpConfigArgs']]]]:
         """
         The IP configuration (one block per network
         device).
@@ -5401,12 +5430,12 @@ class VmLegacyInitializationArgs:
         return pulumi.get(self, "ip_configs")
 
     @ip_configs.setter
-    def ip_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VmLegacyInitializationIpConfigArgs']]]]):
+    def ip_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['VmLegacyInitializationIpConfigArgs']]]]):
         pulumi.set(self, "ip_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="metaDataFileId")
-    def meta_data_file_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def meta_data_file_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier for a file containing
         all meta data passed to the VM via cloud-init.
@@ -5414,12 +5443,12 @@ class VmLegacyInitializationArgs:
         return pulumi.get(self, "meta_data_file_id")
 
     @meta_data_file_id.setter
-    def meta_data_file_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def meta_data_file_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "meta_data_file_id", value)
 
     @_builtins.property
     @pulumi.getter(name="networkDataFileId")
-    def network_data_file_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_data_file_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier for a file containing
         network configuration data passed to the VM via cloud-init (conflicts
@@ -5428,24 +5457,24 @@ class VmLegacyInitializationArgs:
         return pulumi.get(self, "network_data_file_id")
 
     @network_data_file_id.setter
-    def network_data_file_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_data_file_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_data_file_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cloud-init configuration format
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def upgrade(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def upgrade(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to do an automatic package upgrade after
         the first boot (defaults to `true`).
@@ -5454,12 +5483,12 @@ class VmLegacyInitializationArgs:
         return pulumi.get(self, "upgrade")
 
     @upgrade.setter
-    def upgrade(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def upgrade(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "upgrade", value)
 
     @_builtins.property
     @pulumi.getter(name="userAccount")
-    def user_account(self) -> Optional[pulumi.Input['VmLegacyInitializationUserAccountArgs']]:
+    def user_account(self) -> pulumi.Input[Optional['VmLegacyInitializationUserAccountArgs']]:
         """
         The user account configuration (conflicts
         with `user_data_file_id`).
@@ -5467,12 +5496,12 @@ class VmLegacyInitializationArgs:
         return pulumi.get(self, "user_account")
 
     @user_account.setter
-    def user_account(self, value: Optional[pulumi.Input['VmLegacyInitializationUserAccountArgs']]):
+    def user_account(self, value: pulumi.Input[Optional['VmLegacyInitializationUserAccountArgs']]):
         pulumi.set(self, "user_account", value)
 
     @_builtins.property
     @pulumi.getter(name="userDataFileId")
-    def user_data_file_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_data_file_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier for a file containing
         custom user data (conflicts with `user_account`).
@@ -5480,12 +5509,12 @@ class VmLegacyInitializationArgs:
         return pulumi.get(self, "user_data_file_id")
 
     @user_data_file_id.setter
-    def user_data_file_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_data_file_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_data_file_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vendorDataFileId")
-    def vendor_data_file_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vendor_data_file_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier for a file containing
         all vendor data passed to the VM via cloud-init.
@@ -5493,16 +5522,16 @@ class VmLegacyInitializationArgs:
         return pulumi.get(self, "vendor_data_file_id")
 
     @vendor_data_file_id.setter
-    def vendor_data_file_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vendor_data_file_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vendor_data_file_id", value)
 
 
 class VmLegacyInitializationDnsArgsDict(TypedDict):
-    domain: NotRequired[pulumi.Input[_builtins.str]]
+    domain: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The DNS search domain.
     """
-    servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    servers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The list of DNS servers.
     """
@@ -5510,8 +5539,8 @@ class VmLegacyInitializationDnsArgsDict(TypedDict):
 @pulumi.input_type
 class VmLegacyInitializationDnsArgs:
     def __init__(__self__, *,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] domain: The DNS search domain.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] servers: The list of DNS servers.
@@ -5523,35 +5552,35 @@ class VmLegacyInitializationDnsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The DNS search domain.
         """
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter
-    def servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The list of DNS servers.
         """
         return pulumi.get(self, "servers")
 
     @servers.setter
-    def servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "servers", value)
 
 
 class VmLegacyInitializationIpConfigArgsDict(TypedDict):
-    ipv4: NotRequired[pulumi.Input['VmLegacyInitializationIpConfigIpv4ArgsDict']]
+    ipv4: NotRequired[pulumi.Input[Optional['VmLegacyInitializationIpConfigIpv4Args']]]
     """
     The IPv4 configuration.
     """
-    ipv6: NotRequired[pulumi.Input['VmLegacyInitializationIpConfigIpv6ArgsDict']]
+    ipv6: NotRequired[pulumi.Input[Optional['VmLegacyInitializationIpConfigIpv6Args']]]
     """
     The IPv6 configuration.
     """
@@ -5559,8 +5588,8 @@ class VmLegacyInitializationIpConfigArgsDict(TypedDict):
 @pulumi.input_type
 class VmLegacyInitializationIpConfigArgs:
     def __init__(__self__, *,
-                 ipv4: Optional[pulumi.Input['VmLegacyInitializationIpConfigIpv4Args']] = None,
-                 ipv6: Optional[pulumi.Input['VmLegacyInitializationIpConfigIpv6Args']] = None):
+                 ipv4: pulumi.Input[Optional['VmLegacyInitializationIpConfigIpv4Args']] = None,
+                 ipv6: pulumi.Input[Optional['VmLegacyInitializationIpConfigIpv6Args']] = None):
         """
         :param pulumi.Input['VmLegacyInitializationIpConfigIpv4Args'] ipv4: The IPv4 configuration.
         :param pulumi.Input['VmLegacyInitializationIpConfigIpv6Args'] ipv6: The IPv6 configuration.
@@ -5572,37 +5601,37 @@ class VmLegacyInitializationIpConfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def ipv4(self) -> Optional[pulumi.Input['VmLegacyInitializationIpConfigIpv4Args']]:
+    def ipv4(self) -> pulumi.Input[Optional['VmLegacyInitializationIpConfigIpv4Args']]:
         """
         The IPv4 configuration.
         """
         return pulumi.get(self, "ipv4")
 
     @ipv4.setter
-    def ipv4(self, value: Optional[pulumi.Input['VmLegacyInitializationIpConfigIpv4Args']]):
+    def ipv4(self, value: pulumi.Input[Optional['VmLegacyInitializationIpConfigIpv4Args']]):
         pulumi.set(self, "ipv4", value)
 
     @_builtins.property
     @pulumi.getter
-    def ipv6(self) -> Optional[pulumi.Input['VmLegacyInitializationIpConfigIpv6Args']]:
+    def ipv6(self) -> pulumi.Input[Optional['VmLegacyInitializationIpConfigIpv6Args']]:
         """
         The IPv6 configuration.
         """
         return pulumi.get(self, "ipv6")
 
     @ipv6.setter
-    def ipv6(self, value: Optional[pulumi.Input['VmLegacyInitializationIpConfigIpv6Args']]):
+    def ipv6(self, value: pulumi.Input[Optional['VmLegacyInitializationIpConfigIpv6Args']]):
         pulumi.set(self, "ipv6", value)
 
 
 class VmLegacyInitializationIpConfigIpv4ArgsDict(TypedDict):
-    address: NotRequired[pulumi.Input[_builtins.str]]
+    address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IPv4 address in CIDR notation
     (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
     autodiscovery.
     """
-    gateway: NotRequired[pulumi.Input[_builtins.str]]
+    gateway: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IPv4 gateway (must be omitted
     when `dhcp` is used as the address).
@@ -5611,8 +5640,8 @@ class VmLegacyInitializationIpConfigIpv4ArgsDict(TypedDict):
 @pulumi.input_type
 class VmLegacyInitializationIpConfigIpv4Args:
     def __init__(__self__, *,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway: Optional[pulumi.Input[_builtins.str]] = None):
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] address: The IPv4 address in CIDR notation
                (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
@@ -5627,7 +5656,7 @@ class VmLegacyInitializationIpConfigIpv4Args:
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IPv4 address in CIDR notation
         (e.g. 192.168.2.2/24). Alternatively, set this to `dhcp` for
@@ -5636,12 +5665,12 @@ class VmLegacyInitializationIpConfigIpv4Args:
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter
-    def gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IPv4 gateway (must be omitted
         when `dhcp` is used as the address).
@@ -5649,18 +5678,18 @@ class VmLegacyInitializationIpConfigIpv4Args:
         return pulumi.get(self, "gateway")
 
     @gateway.setter
-    def gateway(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway", value)
 
 
 class VmLegacyInitializationIpConfigIpv6ArgsDict(TypedDict):
-    address: NotRequired[pulumi.Input[_builtins.str]]
+    address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IPv6 address in CIDR notation
     (e.g. fd1c::7334/64). Alternatively, set this
     to `dhcp` for DHCPv6, or `auto` for SLAAC.
     """
-    gateway: NotRequired[pulumi.Input[_builtins.str]]
+    gateway: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The IPv6 gateway (must be omitted
     when `dhcp` or `auto` are used as the address).
@@ -5669,8 +5698,8 @@ class VmLegacyInitializationIpConfigIpv6ArgsDict(TypedDict):
 @pulumi.input_type
 class VmLegacyInitializationIpConfigIpv6Args:
     def __init__(__self__, *,
-                 address: Optional[pulumi.Input[_builtins.str]] = None,
-                 gateway: Optional[pulumi.Input[_builtins.str]] = None):
+                 address: pulumi.Input[Optional[_builtins.str]] = None,
+                 gateway: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] address: The IPv6 address in CIDR notation
                (e.g. fd1c::7334/64). Alternatively, set this
@@ -5685,7 +5714,7 @@ class VmLegacyInitializationIpConfigIpv6Args:
 
     @_builtins.property
     @pulumi.getter
-    def address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IPv6 address in CIDR notation
         (e.g. fd1c::7334/64). Alternatively, set this
@@ -5694,12 +5723,12 @@ class VmLegacyInitializationIpConfigIpv6Args:
         return pulumi.get(self, "address")
 
     @address.setter
-    def address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "address", value)
 
     @_builtins.property
     @pulumi.getter
-    def gateway(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IPv6 gateway (must be omitted
         when `dhcp` or `auto` are used as the address).
@@ -5707,20 +5736,20 @@ class VmLegacyInitializationIpConfigIpv6Args:
         return pulumi.get(self, "gateway")
 
     @gateway.setter
-    def gateway(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def gateway(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "gateway", value)
 
 
 class VmLegacyInitializationUserAccountArgsDict(TypedDict):
-    keys: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    keys: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The SSH keys.
     """
-    password: NotRequired[pulumi.Input[_builtins.str]]
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The SSH password.
     """
-    username: NotRequired[pulumi.Input[_builtins.str]]
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The SSH username.
     """
@@ -5728,9 +5757,9 @@ class VmLegacyInitializationUserAccountArgsDict(TypedDict):
 @pulumi.input_type
 class VmLegacyInitializationUserAccountArgs:
     def __init__(__self__, *,
-                 keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 username: Optional[pulumi.Input[_builtins.str]] = None):
+                 keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] keys: The SSH keys.
         :param pulumi.Input[_builtins.str] password: The SSH password.
@@ -5745,64 +5774,64 @@ class VmLegacyInitializationUserAccountArgs:
 
     @_builtins.property
     @pulumi.getter
-    def keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The SSH keys.
         """
         return pulumi.get(self, "keys")
 
     @keys.setter
-    def keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "keys", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SSH password.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SSH username.
         """
         return pulumi.get(self, "username")
 
     @username.setter
-    def username(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "username", value)
 
 
 class VmLegacyMemoryArgsDict(TypedDict):
-    dedicated: NotRequired[pulumi.Input[_builtins.int]]
+    dedicated: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The dedicated memory in megabytes (defaults to `512`).
     """
-    floating: NotRequired[pulumi.Input[_builtins.int]]
+    floating: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The floating memory in megabytes. The default is `0`, which disables "ballooning device" for the VM.
     Please note that Proxmox has ballooning enabled by default. To enable it, set `floating` to the same value as `dedicated`.
     See [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_memory) section 10.2.6 for more information.
     """
-    hugepages: NotRequired[pulumi.Input[_builtins.str]]
+    hugepages: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Enable/disable hugepages memory (defaults to disable).
     """
-    keep_hugepages: NotRequired[pulumi.Input[_builtins.bool]]
+    keep_hugepages: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Keep hugepages memory after the VM is stopped (defaults to `false`).
 
     Settings `hugepages` and `keep_hugepages` are only allowed for `root@pam` authenticated user.
     And required `cpu.numa` to be enabled.
     """
-    shared: NotRequired[pulumi.Input[_builtins.int]]
+    shared: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The shared memory in megabytes (defaults to `0`).
     """
@@ -5810,11 +5839,11 @@ class VmLegacyMemoryArgsDict(TypedDict):
 @pulumi.input_type
 class VmLegacyMemoryArgs:
     def __init__(__self__, *,
-                 dedicated: Optional[pulumi.Input[_builtins.int]] = None,
-                 floating: Optional[pulumi.Input[_builtins.int]] = None,
-                 hugepages: Optional[pulumi.Input[_builtins.str]] = None,
-                 keep_hugepages: Optional[pulumi.Input[_builtins.bool]] = None,
-                 shared: Optional[pulumi.Input[_builtins.int]] = None):
+                 dedicated: pulumi.Input[Optional[_builtins.int]] = None,
+                 floating: pulumi.Input[Optional[_builtins.int]] = None,
+                 hugepages: pulumi.Input[Optional[_builtins.str]] = None,
+                 keep_hugepages: pulumi.Input[Optional[_builtins.bool]] = None,
+                 shared: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] dedicated: The dedicated memory in megabytes (defaults to `512`).
         :param pulumi.Input[_builtins.int] floating: The floating memory in megabytes. The default is `0`, which disables "ballooning device" for the VM.
@@ -5840,19 +5869,19 @@ class VmLegacyMemoryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def dedicated(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def dedicated(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The dedicated memory in megabytes (defaults to `512`).
         """
         return pulumi.get(self, "dedicated")
 
     @dedicated.setter
-    def dedicated(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def dedicated(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "dedicated", value)
 
     @_builtins.property
     @pulumi.getter
-    def floating(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def floating(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The floating memory in megabytes. The default is `0`, which disables "ballooning device" for the VM.
         Please note that Proxmox has ballooning enabled by default. To enable it, set `floating` to the same value as `dedicated`.
@@ -5861,24 +5890,24 @@ class VmLegacyMemoryArgs:
         return pulumi.get(self, "floating")
 
     @floating.setter
-    def floating(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def floating(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "floating", value)
 
     @_builtins.property
     @pulumi.getter
-    def hugepages(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hugepages(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enable/disable hugepages memory (defaults to disable).
         """
         return pulumi.get(self, "hugepages")
 
     @hugepages.setter
-    def hugepages(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hugepages(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hugepages", value)
 
     @_builtins.property
     @pulumi.getter(name="keepHugepages")
-    def keep_hugepages(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def keep_hugepages(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Keep hugepages memory after the VM is stopped (defaults to `false`).
 
@@ -5888,66 +5917,66 @@ class VmLegacyMemoryArgs:
         return pulumi.get(self, "keep_hugepages")
 
     @keep_hugepages.setter
-    def keep_hugepages(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def keep_hugepages(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "keep_hugepages", value)
 
     @_builtins.property
     @pulumi.getter
-    def shared(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def shared(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The shared memory in megabytes (defaults to `0`).
         """
         return pulumi.get(self, "shared")
 
     @shared.setter
-    def shared(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def shared(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "shared", value)
 
 
 class VmLegacyNetworkDeviceArgsDict(TypedDict):
-    bridge: NotRequired[pulumi.Input[_builtins.str]]
+    bridge: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The name of the network bridge (defaults to `vmbr0`).
     """
-    disconnected: NotRequired[pulumi.Input[_builtins.bool]]
+    disconnected: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to disconnect the network device from the network (defaults to `false`).
     """
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to enable the network device (defaults to `true`). Remove the `network_device` block from your configuration instead of setting `enabled = false`.
     """
-    firewall: NotRequired[pulumi.Input[_builtins.bool]]
+    firewall: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether this interface's firewall rules should be used (defaults to `false`).
     """
-    mac_address: NotRequired[pulumi.Input[_builtins.str]]
+    mac_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The MAC address.
     """
-    model: NotRequired[pulumi.Input[_builtins.str]]
+    model: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The network device model (defaults to `virtio`).
     """
-    mtu: NotRequired[pulumi.Input[_builtins.int]]
+    mtu: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Force MTU, for VirtIO only. Set to 1 to use the bridge MTU. Cannot be larger than the bridge MTU.
     """
-    queues: NotRequired[pulumi.Input[_builtins.int]]
+    queues: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The number of queues for VirtIO (1..64).
     """
-    rate_limit: NotRequired[pulumi.Input[_builtins.float]]
+    rate_limit: NotRequired[pulumi.Input[Optional[_builtins.float]]]
     """
     The rate limit in megabytes per second.
     """
-    trunks: NotRequired[pulumi.Input[_builtins.str]]
+    trunks: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     String containing a `;` separated list of VLAN trunks
     ("10;20;30"). Note that the VLAN-aware feature need to be enabled on the PVE
     Linux Bridge to use trunks.
     """
-    vlan_id: NotRequired[pulumi.Input[_builtins.int]]
+    vlan_id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The VLAN identifier.
     """
@@ -5955,17 +5984,17 @@ class VmLegacyNetworkDeviceArgsDict(TypedDict):
 @pulumi.input_type
 class VmLegacyNetworkDeviceArgs:
     def __init__(__self__, *,
-                 bridge: Optional[pulumi.Input[_builtins.str]] = None,
-                 disconnected: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 firewall: Optional[pulumi.Input[_builtins.bool]] = None,
-                 mac_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 model: Optional[pulumi.Input[_builtins.str]] = None,
-                 mtu: Optional[pulumi.Input[_builtins.int]] = None,
-                 queues: Optional[pulumi.Input[_builtins.int]] = None,
-                 rate_limit: Optional[pulumi.Input[_builtins.float]] = None,
-                 trunks: Optional[pulumi.Input[_builtins.str]] = None,
-                 vlan_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 bridge: pulumi.Input[Optional[_builtins.str]] = None,
+                 disconnected: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 firewall: pulumi.Input[Optional[_builtins.bool]] = None,
+                 mac_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 model: pulumi.Input[Optional[_builtins.str]] = None,
+                 mtu: pulumi.Input[Optional[_builtins.int]] = None,
+                 queues: pulumi.Input[Optional[_builtins.int]] = None,
+                 rate_limit: pulumi.Input[Optional[_builtins.float]] = None,
+                 trunks: pulumi.Input[Optional[_builtins.str]] = None,
+                 vlan_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] bridge: The name of the network bridge (defaults to `vmbr0`).
         :param pulumi.Input[_builtins.bool] disconnected: Whether to disconnect the network device from the network (defaults to `false`).
@@ -6009,116 +6038,116 @@ class VmLegacyNetworkDeviceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def bridge(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bridge(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the network bridge (defaults to `vmbr0`).
         """
         return pulumi.get(self, "bridge")
 
     @bridge.setter
-    def bridge(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bridge(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bridge", value)
 
     @_builtins.property
     @pulumi.getter
-    def disconnected(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disconnected(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to disconnect the network device from the network (defaults to `false`).
         """
         return pulumi.get(self, "disconnected")
 
     @disconnected.setter
-    def disconnected(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disconnected(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disconnected", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""The `enabled` attribute is deprecated and will be removed in a future release. Remove the `network_device` block from your configuration instead of setting `enabled = false`.""")
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to enable the network device (defaults to `true`). Remove the `network_device` block from your configuration instead of setting `enabled = false`.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def firewall(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def firewall(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether this interface's firewall rules should be used (defaults to `false`).
         """
         return pulumi.get(self, "firewall")
 
     @firewall.setter
-    def firewall(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def firewall(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "firewall", value)
 
     @_builtins.property
     @pulumi.getter(name="macAddress")
-    def mac_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mac_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The MAC address.
         """
         return pulumi.get(self, "mac_address")
 
     @mac_address.setter
-    def mac_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mac_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mac_address", value)
 
     @_builtins.property
     @pulumi.getter
-    def model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network device model (defaults to `virtio`).
         """
         return pulumi.get(self, "model")
 
     @model.setter
-    def model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model", value)
 
     @_builtins.property
     @pulumi.getter
-    def mtu(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def mtu(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Force MTU, for VirtIO only. Set to 1 to use the bridge MTU. Cannot be larger than the bridge MTU.
         """
         return pulumi.get(self, "mtu")
 
     @mtu.setter
-    def mtu(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def mtu(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "mtu", value)
 
     @_builtins.property
     @pulumi.getter
-    def queues(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def queues(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of queues for VirtIO (1..64).
         """
         return pulumi.get(self, "queues")
 
     @queues.setter
-    def queues(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def queues(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "queues", value)
 
     @_builtins.property
     @pulumi.getter(name="rateLimit")
-    def rate_limit(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def rate_limit(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         The rate limit in megabytes per second.
         """
         return pulumi.get(self, "rate_limit")
 
     @rate_limit.setter
-    def rate_limit(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def rate_limit(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "rate_limit", value)
 
     @_builtins.property
     @pulumi.getter
-    def trunks(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def trunks(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         String containing a `;` separated list of VLAN trunks
         ("10;20;30"). Note that the VLAN-aware feature need to be enabled on the PVE
@@ -6127,19 +6156,19 @@ class VmLegacyNetworkDeviceArgs:
         return pulumi.get(self, "trunks")
 
     @trunks.setter
-    def trunks(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def trunks(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "trunks", value)
 
     @_builtins.property
     @pulumi.getter(name="vlanId")
-    def vlan_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vlan_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The VLAN identifier.
         """
         return pulumi.get(self, "vlan_id")
 
     @vlan_id.setter
-    def vlan_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vlan_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vlan_id", value)
 
 
@@ -6157,11 +6186,11 @@ class VmLegacyNumaArgsDict(TypedDict):
     """
     The memory in megabytes to assign to the NUMA node.
     """
-    hostnodes: NotRequired[pulumi.Input[_builtins.str]]
+    hostnodes: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The NUMA host nodes.
     """
-    policy: NotRequired[pulumi.Input[_builtins.str]]
+    policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The NUMA policy (defaults to `preferred`).
     """
@@ -6172,8 +6201,8 @@ class VmLegacyNumaArgs:
                  cpus: pulumi.Input[_builtins.str],
                  device: pulumi.Input[_builtins.str],
                  memory: pulumi.Input[_builtins.int],
-                 hostnodes: Optional[pulumi.Input[_builtins.str]] = None,
-                 policy: Optional[pulumi.Input[_builtins.str]] = None):
+                 hostnodes: pulumi.Input[Optional[_builtins.str]] = None,
+                 policy: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] cpus: The CPU cores to assign to the NUMA node (format is `0-7;16-31`).
         :param pulumi.Input[_builtins.str] device: The NUMA device name for Proxmox, in form
@@ -6229,31 +6258,31 @@ class VmLegacyNumaArgs:
 
     @_builtins.property
     @pulumi.getter
-    def hostnodes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def hostnodes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The NUMA host nodes.
         """
         return pulumi.get(self, "hostnodes")
 
     @hostnodes.setter
-    def hostnodes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def hostnodes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "hostnodes", value)
 
     @_builtins.property
     @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The NUMA policy (defaults to `preferred`).
         """
         return pulumi.get(self, "policy")
 
     @policy.setter
-    def policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "policy", value)
 
 
 class VmLegacyOperatingSystemArgsDict(TypedDict):
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The type (defaults to `other`).
     """
@@ -6261,7 +6290,7 @@ class VmLegacyOperatingSystemArgsDict(TypedDict):
 @pulumi.input_type
 class VmLegacyOperatingSystemArgs:
     def __init__(__self__, *,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] type: The type (defaults to `other`).
         """
@@ -6270,14 +6299,14 @@ class VmLegacyOperatingSystemArgs:
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type (defaults to `other`).
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -6286,11 +6315,11 @@ class VmLegacyRngArgsDict(TypedDict):
     """
     The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
     """
-    max_bytes: NotRequired[pulumi.Input[_builtins.int]]
+    max_bytes: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum bytes of entropy allowed to get injected into the guest every `period` milliseconds (defaults to `1024`). Prefer a lower value when using `/dev/random` as source.
     """
-    period: NotRequired[pulumi.Input[_builtins.int]]
+    period: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Every `period` milliseconds the entropy-injection quota is reset, allowing the guest to retrieve another `max_bytes` of entropy (defaults to `1000`).
     """
@@ -6299,8 +6328,8 @@ class VmLegacyRngArgsDict(TypedDict):
 class VmLegacyRngArgs:
     def __init__(__self__, *,
                  source: pulumi.Input[_builtins.str],
-                 max_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None):
+                 max_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] source: The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
         :param pulumi.Input[_builtins.int] max_bytes: Maximum bytes of entropy allowed to get injected into the guest every `period` milliseconds (defaults to `1024`). Prefer a lower value when using `/dev/random` as source.
@@ -6326,31 +6355,31 @@ class VmLegacyRngArgs:
 
     @_builtins.property
     @pulumi.getter(name="maxBytes")
-    def max_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum bytes of entropy allowed to get injected into the guest every `period` milliseconds (defaults to `1024`). Prefer a lower value when using `/dev/random` as source.
         """
         return pulumi.get(self, "max_bytes")
 
     @max_bytes.setter
-    def max_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_bytes", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Every `period` milliseconds the entropy-injection quota is reset, allowing the guest to retrieve another `max_bytes` of entropy (defaults to `1000`).
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
 
 class VmLegacySerialDeviceArgsDict(TypedDict):
-    device: NotRequired[pulumi.Input[_builtins.str]]
+    device: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The device (defaults to `socket`).
     - `/dev/*` - A host serial device.
@@ -6359,7 +6388,7 @@ class VmLegacySerialDeviceArgsDict(TypedDict):
 @pulumi.input_type
 class VmLegacySerialDeviceArgs:
     def __init__(__self__, *,
-                 device: Optional[pulumi.Input[_builtins.str]] = None):
+                 device: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] device: The device (defaults to `socket`).
                - `/dev/*` - A host serial device.
@@ -6369,7 +6398,7 @@ class VmLegacySerialDeviceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def device(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def device(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The device (defaults to `socket`).
         - `/dev/*` - A host serial device.
@@ -6377,36 +6406,36 @@ class VmLegacySerialDeviceArgs:
         return pulumi.get(self, "device")
 
     @device.setter
-    def device(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def device(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "device", value)
 
 
 class VmLegacySmbiosArgsDict(TypedDict):
-    family: NotRequired[pulumi.Input[_builtins.str]]
+    family: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The family string.
     """
-    manufacturer: NotRequired[pulumi.Input[_builtins.str]]
+    manufacturer: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The manufacturer.
     """
-    product: NotRequired[pulumi.Input[_builtins.str]]
+    product: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The product ID.
     """
-    serial: NotRequired[pulumi.Input[_builtins.str]]
+    serial: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The serial number.
     """
-    sku: NotRequired[pulumi.Input[_builtins.str]]
+    sku: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The SKU number.
     """
-    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    uuid: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The UUID (defaults to randomly generated UUID).
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The version.
     """
@@ -6414,13 +6443,13 @@ class VmLegacySmbiosArgsDict(TypedDict):
 @pulumi.input_type
 class VmLegacySmbiosArgs:
     def __init__(__self__, *,
-                 family: Optional[pulumi.Input[_builtins.str]] = None,
-                 manufacturer: Optional[pulumi.Input[_builtins.str]] = None,
-                 product: Optional[pulumi.Input[_builtins.str]] = None,
-                 serial: Optional[pulumi.Input[_builtins.str]] = None,
-                 sku: Optional[pulumi.Input[_builtins.str]] = None,
-                 uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 family: pulumi.Input[Optional[_builtins.str]] = None,
+                 manufacturer: pulumi.Input[Optional[_builtins.str]] = None,
+                 product: pulumi.Input[Optional[_builtins.str]] = None,
+                 serial: pulumi.Input[Optional[_builtins.str]] = None,
+                 sku: pulumi.Input[Optional[_builtins.str]] = None,
+                 uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] family: The family string.
         :param pulumi.Input[_builtins.str] manufacturer: The manufacturer.
@@ -6447,101 +6476,101 @@ class VmLegacySmbiosArgs:
 
     @_builtins.property
     @pulumi.getter
-    def family(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def family(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The family string.
         """
         return pulumi.get(self, "family")
 
     @family.setter
-    def family(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def family(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "family", value)
 
     @_builtins.property
     @pulumi.getter
-    def manufacturer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def manufacturer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The manufacturer.
         """
         return pulumi.get(self, "manufacturer")
 
     @manufacturer.setter
-    def manufacturer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def manufacturer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "manufacturer", value)
 
     @_builtins.property
     @pulumi.getter
-    def product(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def product(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The product ID.
         """
         return pulumi.get(self, "product")
 
     @product.setter
-    def product(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def product(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "product", value)
 
     @_builtins.property
     @pulumi.getter
-    def serial(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def serial(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The serial number.
         """
         return pulumi.get(self, "serial")
 
     @serial.setter
-    def serial(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def serial(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "serial", value)
 
     @_builtins.property
     @pulumi.getter
-    def sku(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sku(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The SKU number.
         """
         return pulumi.get(self, "sku")
 
     @sku.setter
-    def sku(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sku(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sku", value)
 
     @_builtins.property
     @pulumi.getter
-    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID (defaults to randomly generated UUID).
         """
         return pulumi.get(self, "uuid")
 
     @uuid.setter
-    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uuid", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The version.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
 class VmLegacyStartupArgsDict(TypedDict):
-    down_delay: NotRequired[pulumi.Input[_builtins.int]]
+    down_delay: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     A non-negative number defining the delay in
     seconds before the next VM is shut down.
     """
-    order: NotRequired[pulumi.Input[_builtins.int]]
+    order: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     A non-negative number defining the general startup
     order.
     """
-    up_delay: NotRequired[pulumi.Input[_builtins.int]]
+    up_delay: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     A non-negative number defining the delay in
     seconds before the next VM is started.
@@ -6550,9 +6579,9 @@ class VmLegacyStartupArgsDict(TypedDict):
 @pulumi.input_type
 class VmLegacyStartupArgs:
     def __init__(__self__, *,
-                 down_delay: Optional[pulumi.Input[_builtins.int]] = None,
-                 order: Optional[pulumi.Input[_builtins.int]] = None,
-                 up_delay: Optional[pulumi.Input[_builtins.int]] = None):
+                 down_delay: pulumi.Input[Optional[_builtins.int]] = None,
+                 order: pulumi.Input[Optional[_builtins.int]] = None,
+                 up_delay: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] down_delay: A non-negative number defining the delay in
                seconds before the next VM is shut down.
@@ -6570,7 +6599,7 @@ class VmLegacyStartupArgs:
 
     @_builtins.property
     @pulumi.getter(name="downDelay")
-    def down_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def down_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A non-negative number defining the delay in
         seconds before the next VM is shut down.
@@ -6578,12 +6607,12 @@ class VmLegacyStartupArgs:
         return pulumi.get(self, "down_delay")
 
     @down_delay.setter
-    def down_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def down_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "down_delay", value)
 
     @_builtins.property
     @pulumi.getter
-    def order(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def order(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A non-negative number defining the general startup
         order.
@@ -6591,12 +6620,12 @@ class VmLegacyStartupArgs:
         return pulumi.get(self, "order")
 
     @order.setter
-    def order(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def order(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "order", value)
 
     @_builtins.property
     @pulumi.getter(name="upDelay")
-    def up_delay(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def up_delay(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         A non-negative number defining the delay in
         seconds before the next VM is started.
@@ -6604,17 +6633,17 @@ class VmLegacyStartupArgs:
         return pulumi.get(self, "up_delay")
 
     @up_delay.setter
-    def up_delay(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def up_delay(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "up_delay", value)
 
 
 class VmLegacyTpmStateArgsDict(TypedDict):
-    datastore_id: NotRequired[pulumi.Input[_builtins.str]]
+    datastore_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The identifier for the datastore to create
     the disk in (defaults to `local-lvm`).
     """
-    version: NotRequired[pulumi.Input[_builtins.str]]
+    version: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     TPM state device version. Can be `v1.2` or `v2.0`.
     (defaults to `v2.0`).
@@ -6623,8 +6652,8 @@ class VmLegacyTpmStateArgsDict(TypedDict):
 @pulumi.input_type
 class VmLegacyTpmStateArgs:
     def __init__(__self__, *,
-                 datastore_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] datastore_id: The identifier for the datastore to create
                the disk in (defaults to `local-lvm`).
@@ -6638,7 +6667,7 @@ class VmLegacyTpmStateArgs:
 
     @_builtins.property
     @pulumi.getter(name="datastoreId")
-    def datastore_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def datastore_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifier for the datastore to create
         the disk in (defaults to `local-lvm`).
@@ -6646,12 +6675,12 @@ class VmLegacyTpmStateArgs:
         return pulumi.get(self, "datastore_id")
 
     @datastore_id.setter
-    def datastore_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def datastore_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "datastore_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         TPM state device version. Can be `v1.2` or `v2.0`.
         (defaults to `v2.0`).
@@ -6659,20 +6688,20 @@ class VmLegacyTpmStateArgs:
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
 class VmLegacyUsbArgsDict(TypedDict):
-    host: NotRequired[pulumi.Input[_builtins.str]]
+    host: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The Host USB device or port or the value `spice`. Use either this or `mapping`.
     """
-    mapping: NotRequired[pulumi.Input[_builtins.str]]
+    mapping: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The cluster-wide resource mapping name of the device, for example "usbdevice". Use either this or `host`.
     """
-    usb3: NotRequired[pulumi.Input[_builtins.bool]]
+    usb3: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Makes the USB device a USB3 device for the VM
     (defaults to `false`).
@@ -6681,9 +6710,9 @@ class VmLegacyUsbArgsDict(TypedDict):
 @pulumi.input_type
 class VmLegacyUsbArgs:
     def __init__(__self__, *,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 mapping: Optional[pulumi.Input[_builtins.str]] = None,
-                 usb3: Optional[pulumi.Input[_builtins.bool]] = None):
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 mapping: pulumi.Input[Optional[_builtins.str]] = None,
+                 usb3: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] host: The Host USB device or port or the value `spice`. Use either this or `mapping`.
         :param pulumi.Input[_builtins.str] mapping: The cluster-wide resource mapping name of the device, for example "usbdevice". Use either this or `host`.
@@ -6699,31 +6728,31 @@ class VmLegacyUsbArgs:
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Host USB device or port or the value `spice`. Use either this or `mapping`.
         """
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter
-    def mapping(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mapping(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster-wide resource mapping name of the device, for example "usbdevice". Use either this or `host`.
         """
         return pulumi.get(self, "mapping")
 
     @mapping.setter
-    def mapping(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mapping(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mapping", value)
 
     @_builtins.property
     @pulumi.getter
-    def usb3(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def usb3(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Makes the USB device a USB3 device for the VM
         (defaults to `false`).
@@ -6731,20 +6760,20 @@ class VmLegacyUsbArgs:
         return pulumi.get(self, "usb3")
 
     @usb3.setter
-    def usb3(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def usb3(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "usb3", value)
 
 
 class VmLegacyVgaArgsDict(TypedDict):
-    clipboard: NotRequired[pulumi.Input[_builtins.str]]
+    clipboard: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Enable VNC clipboard by setting to `vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
     """
-    memory: NotRequired[pulumi.Input[_builtins.int]]
+    memory: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The VGA memory in megabytes (defaults to `16`).
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The VGA type (defaults to `std`).
     """
@@ -6752,9 +6781,9 @@ class VmLegacyVgaArgsDict(TypedDict):
 @pulumi.input_type
 class VmLegacyVgaArgs:
     def __init__(__self__, *,
-                 clipboard: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 clipboard: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] clipboard: Enable VNC clipboard by setting to `vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
         :param pulumi.Input[_builtins.int] memory: The VGA memory in megabytes (defaults to `16`).
@@ -6769,38 +6798,38 @@ class VmLegacyVgaArgs:
 
     @_builtins.property
     @pulumi.getter
-    def clipboard(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def clipboard(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enable VNC clipboard by setting to `vnc`. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
         """
         return pulumi.get(self, "clipboard")
 
     @clipboard.setter
-    def clipboard(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def clipboard(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "clipboard", value)
 
     @_builtins.property
     @pulumi.getter
-    def memory(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The VGA memory in megabytes (defaults to `16`).
         """
         return pulumi.get(self, "memory")
 
     @memory.setter
-    def memory(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VGA type (defaults to `std`).
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
@@ -6809,19 +6838,19 @@ class VmLegacyVirtiofArgsDict(TypedDict):
     """
     Identifier of the directory mapping
     """
-    cache: NotRequired[pulumi.Input[_builtins.str]]
+    cache: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The caching mode
     """
-    direct_io: NotRequired[pulumi.Input[_builtins.bool]]
+    direct_io: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether to allow direct io
     """
-    expose_acl: NotRequired[pulumi.Input[_builtins.bool]]
+    expose_acl: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable POSIX ACLs, implies xattr support
     """
-    expose_xattr: NotRequired[pulumi.Input[_builtins.bool]]
+    expose_xattr: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable support for extended attributes
     """
@@ -6830,10 +6859,10 @@ class VmLegacyVirtiofArgsDict(TypedDict):
 class VmLegacyVirtiofArgs:
     def __init__(__self__, *,
                  mapping: pulumi.Input[_builtins.str],
-                 cache: Optional[pulumi.Input[_builtins.str]] = None,
-                 direct_io: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expose_acl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 expose_xattr: Optional[pulumi.Input[_builtins.bool]] = None):
+                 cache: pulumi.Input[Optional[_builtins.str]] = None,
+                 direct_io: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expose_acl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 expose_xattr: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] mapping: Identifier of the directory mapping
         :param pulumi.Input[_builtins.str] cache: The caching mode
@@ -6865,63 +6894,63 @@ class VmLegacyVirtiofArgs:
 
     @_builtins.property
     @pulumi.getter
-    def cache(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cache(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The caching mode
         """
         return pulumi.get(self, "cache")
 
     @cache.setter
-    def cache(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cache(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cache", value)
 
     @_builtins.property
     @pulumi.getter(name="directIo")
-    def direct_io(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def direct_io(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether to allow direct io
         """
         return pulumi.get(self, "direct_io")
 
     @direct_io.setter
-    def direct_io(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def direct_io(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "direct_io", value)
 
     @_builtins.property
     @pulumi.getter(name="exposeAcl")
-    def expose_acl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def expose_acl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable POSIX ACLs, implies xattr support
         """
         return pulumi.get(self, "expose_acl")
 
     @expose_acl.setter
-    def expose_acl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def expose_acl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "expose_acl", value)
 
     @_builtins.property
     @pulumi.getter(name="exposeXattr")
-    def expose_xattr(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def expose_xattr(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable support for extended attributes
         """
         return pulumi.get(self, "expose_xattr")
 
     @expose_xattr.setter
-    def expose_xattr(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def expose_xattr(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "expose_xattr", value)
 
 
 class VmLegacyWatchdogArgsDict(TypedDict):
-    action: NotRequired[pulumi.Input[_builtins.str]]
+    action: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The action to perform if after activation the guest fails to poll the watchdog in time  (defaults to `none`).
     """
-    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the watchdog is enabled (defaults to `false`).
     """
-    model: NotRequired[pulumi.Input[_builtins.str]]
+    model: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The watchdog type to emulate (defaults to `i6300esb`).
     """
@@ -6929,9 +6958,9 @@ class VmLegacyWatchdogArgsDict(TypedDict):
 @pulumi.input_type
 class VmLegacyWatchdogArgs:
     def __init__(__self__, *,
-                 action: Optional[pulumi.Input[_builtins.str]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 model: Optional[pulumi.Input[_builtins.str]] = None):
+                 action: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 model: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] action: The action to perform if after activation the guest fails to poll the watchdog in time  (defaults to `none`).
         :param pulumi.Input[_builtins.bool] enabled: Whether the watchdog is enabled (defaults to `false`).
@@ -6946,51 +6975,51 @@ class VmLegacyWatchdogArgs:
 
     @_builtins.property
     @pulumi.getter
-    def action(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def action(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The action to perform if after activation the guest fails to poll the watchdog in time  (defaults to `none`).
         """
         return pulumi.get(self, "action")
 
     @action.setter
-    def action(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def action(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "action", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the watchdog is enabled (defaults to `false`).
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def model(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The watchdog type to emulate (defaults to `i6300esb`).
         """
         return pulumi.get(self, "model")
 
     @model.setter
-    def model(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model", value)
 
 
 class VmRngArgsDict(TypedDict):
-    max_bytes: NotRequired[pulumi.Input[_builtins.int]]
+    max_bytes: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Maximum bytes of entropy allowed to get injected into the guest every period.
     """
-    period: NotRequired[pulumi.Input[_builtins.int]]
+    period: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Period in milliseconds to limit entropy injection to the guest.
     """
-    source: NotRequired[pulumi.Input[_builtins.str]]
+    source: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
     """
@@ -6998,9 +7027,9 @@ class VmRngArgsDict(TypedDict):
 @pulumi.input_type
 class VmRngArgs:
     def __init__(__self__, *,
-                 max_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 period: Optional[pulumi.Input[_builtins.int]] = None,
-                 source: Optional[pulumi.Input[_builtins.str]] = None):
+                 max_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 period: pulumi.Input[Optional[_builtins.int]] = None,
+                 source: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] max_bytes: Maximum bytes of entropy allowed to get injected into the guest every period.
         :param pulumi.Input[_builtins.int] period: Period in milliseconds to limit entropy injection to the guest.
@@ -7015,55 +7044,55 @@ class VmRngArgs:
 
     @_builtins.property
     @pulumi.getter(name="maxBytes")
-    def max_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum bytes of entropy allowed to get injected into the guest every period.
         """
         return pulumi.get(self, "max_bytes")
 
     @max_bytes.setter
-    def max_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_bytes", value)
 
     @_builtins.property
     @pulumi.getter
-    def period(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def period(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Period in milliseconds to limit entropy injection to the guest.
         """
         return pulumi.get(self, "period")
 
     @period.setter
-    def period(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def period(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "period", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def source(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The file on the host to gather entropy from. In most cases, `/dev/urandom` should be preferred over `/dev/random` to avoid entropy-starvation issues on the host.
         """
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def source(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "source", value)
 
 
 class VmTimeoutsArgsDict(TypedDict):
-    create: NotRequired[pulumi.Input[_builtins.str]]
+    create: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
     """
-    delete: NotRequired[pulumi.Input[_builtins.str]]
+    delete: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
     """
-    read: NotRequired[pulumi.Input[_builtins.str]]
+    read: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
     """
-    update: NotRequired[pulumi.Input[_builtins.str]]
+    update: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
     """
@@ -7071,10 +7100,10 @@ class VmTimeoutsArgsDict(TypedDict):
 @pulumi.input_type
 class VmTimeoutsArgs:
     def __init__(__self__, *,
-                 create: Optional[pulumi.Input[_builtins.str]] = None,
-                 delete: Optional[pulumi.Input[_builtins.str]] = None,
-                 read: Optional[pulumi.Input[_builtins.str]] = None,
-                 update: Optional[pulumi.Input[_builtins.str]] = None):
+                 create: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete: pulumi.Input[Optional[_builtins.str]] = None,
+                 read: pulumi.Input[Optional[_builtins.str]] = None,
+                 update: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
         :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
@@ -7092,63 +7121,63 @@ class VmTimeoutsArgs:
 
     @_builtins.property
     @pulumi.getter
-    def create(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def create(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
         """
         return pulumi.get(self, "create")
 
     @create.setter
-    def create(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def create(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "create", value)
 
     @_builtins.property
     @pulumi.getter
-    def delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def delete(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
         """
         return pulumi.get(self, "delete")
 
     @delete.setter
-    def delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def delete(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "delete", value)
 
     @_builtins.property
     @pulumi.getter
-    def read(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def read(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
         """
         return pulumi.get(self, "read")
 
     @read.setter
-    def read(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def read(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "read", value)
 
     @_builtins.property
     @pulumi.getter
-    def update(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def update(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
         """
         return pulumi.get(self, "update")
 
     @update.setter
-    def update(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def update(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "update", value)
 
 
 class VmVgaArgsDict(TypedDict):
-    clipboard: NotRequired[pulumi.Input[_builtins.str]]
+    clipboard: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
     """
-    memory: NotRequired[pulumi.Input[_builtins.int]]
+    memory: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
     """
-    type: NotRequired[pulumi.Input[_builtins.str]]
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     The VGA type (defaults to `std`).
     """
@@ -7156,9 +7185,9 @@ class VmVgaArgsDict(TypedDict):
 @pulumi.input_type
 class VmVgaArgs:
     def __init__(__self__, *,
-                 clipboard: Optional[pulumi.Input[_builtins.str]] = None,
-                 memory: Optional[pulumi.Input[_builtins.int]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 clipboard: pulumi.Input[Optional[_builtins.str]] = None,
+                 memory: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] clipboard: Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
         :param pulumi.Input[_builtins.int] memory: The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
@@ -7173,38 +7202,38 @@ class VmVgaArgs:
 
     @_builtins.property
     @pulumi.getter
-    def clipboard(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def clipboard(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only `vnc` is available. Migration with VNC clipboard is not supported by Proxmox.
         """
         return pulumi.get(self, "clipboard")
 
     @clipboard.setter
-    def clipboard(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def clipboard(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "clipboard", value)
 
     @_builtins.property
     @pulumi.getter
-    def memory(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The VGA memory in megabytes (4-512 MB). Has no effect with serial display.
         """
         return pulumi.get(self, "memory")
 
     @memory.setter
-    def memory(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The VGA type (defaults to `std`).
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 

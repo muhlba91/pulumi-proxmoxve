@@ -289,131 +289,131 @@ export interface JobState {
     /**
      * Whether to back up all known guests on the node.
      */
-    all?: pulumi.Input<boolean>;
+    all?: pulumi.Input<boolean | undefined>;
     /**
      * I/O bandwidth limit in KiB/s.
      */
-    bwlimit?: pulumi.Input<number>;
+    bwlimit?: pulumi.Input<number | undefined>;
     /**
      * The compression algorithm (0, 1, gzip, lzo, or zstd).
      */
-    compress?: pulumi.Input<string>;
+    compress?: pulumi.Input<string | undefined>;
     /**
      * Whether the backup job is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * A list of paths to exclude from the backup.
      */
-    excludePaths?: pulumi.Input<pulumi.Input<string>[]>;
+    excludePaths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Fleecing configuration for the backup job.
      */
-    fleecing?: pulumi.Input<inputs.backup.JobFleecing>;
+    fleecing?: pulumi.Input<inputs.backup.JobFleecing | undefined>;
     /**
      * I/O priority (0-8).
      */
-    ionice?: pulumi.Input<number>;
+    ionice?: pulumi.Input<number | undefined>;
     /**
      * Maximum wait time in minutes for the global lock.
      */
-    lockwait?: pulumi.Input<number>;
+    lockwait?: pulumi.Input<number | undefined>;
     /**
      * Email notification setting (always or failure).
      */
-    mailnotification?: pulumi.Input<string>;
+    mailnotification?: pulumi.Input<string | undefined>;
     /**
      * A list of email addresses to send notifications to.
      */
-    mailtos?: pulumi.Input<pulumi.Input<string>[]>;
+    mailtos?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Deprecated: use pruneBackups instead. Maximum number of backup files per guest.
      */
-    maxfiles?: pulumi.Input<number>;
+    maxfiles?: pulumi.Input<number | undefined>;
     /**
      * The backup mode (snapshot, suspend, or stop).
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * The cluster node name to limit the backup job to.
      */
-    node?: pulumi.Input<string>;
+    node?: pulumi.Input<string | undefined>;
     /**
      * Template for notes attached to the backup.
      */
-    notesTemplate?: pulumi.Input<string>;
+    notesTemplate?: pulumi.Input<string | undefined>;
     /**
      * PBS change detection mode (legacy, data, or metadata).
      */
-    pbsChangeDetectionMode?: pulumi.Input<string>;
+    pbsChangeDetectionMode?: pulumi.Input<string | undefined>;
     /**
      * Performance-related settings for the backup job.
      */
-    performance?: pulumi.Input<inputs.backup.JobPerformance>;
+    performance?: pulumi.Input<inputs.backup.JobPerformance | undefined>;
     /**
      * Number of pigz threads (0 disables, 1 uses single-threaded gzip).
      */
-    pigz?: pulumi.Input<number>;
+    pigz?: pulumi.Input<number | undefined>;
     /**
      * Limit backup to guests in the specified pool.
      */
-    pool?: pulumi.Input<string>;
+    pool?: pulumi.Input<string | undefined>;
     /**
      * Whether the backup should be marked as protected.
      */
-    protected?: pulumi.Input<boolean>;
+    protected?: pulumi.Input<boolean | undefined>;
     /**
      * Retention options as a map of keep policies (e.g. keep-last = "3", keep-weekly = "2").
      */
-    pruneBackups?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pruneBackups?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether to remove old backups if there are more than maxfiles.
      */
-    remove?: pulumi.Input<boolean>;
+    remove?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to repeat missed backup jobs as soon as possible.
      */
-    repeatMissed?: pulumi.Input<boolean>;
+    repeatMissed?: pulumi.Input<boolean | undefined>;
     /**
      * The identifier of the backup job.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * Backup schedule in systemd calendar event format.
      */
-    schedule?: pulumi.Input<string>;
+    schedule?: pulumi.Input<string | undefined>;
     /**
      * Path to a script to execute before/after the backup job.
      */
-    script?: pulumi.Input<string>;
+    script?: pulumi.Input<string | undefined>;
     /**
      * The scheduled start time (HH:MM).
      */
-    starttime?: pulumi.Input<string>;
+    starttime?: pulumi.Input<string | undefined>;
     /**
      * Whether to exclude common temporary files from the backup.
      */
-    stdexcludes?: pulumi.Input<boolean>;
+    stdexcludes?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum wait time in minutes for a guest to stop.
      */
-    stopwait?: pulumi.Input<number>;
+    stopwait?: pulumi.Input<number | undefined>;
     /**
      * The storage identifier for the backup.
      */
-    storage?: pulumi.Input<string>;
+    storage?: pulumi.Input<string | undefined>;
     /**
      * Path to the temporary directory for the backup job.
      */
-    tmpdir?: pulumi.Input<string>;
+    tmpdir?: pulumi.Input<string | undefined>;
     /**
      * A list of guest VM/CT IDs to include in the backup job.
      */
-    vmids?: pulumi.Input<pulumi.Input<string>[]>;
+    vmids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Number of zstd threads (0 uses half of available cores).
      */
-    zstd?: pulumi.Input<number>;
+    zstd?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -423,91 +423,91 @@ export interface JobArgs {
     /**
      * Whether to back up all known guests on the node.
      */
-    all?: pulumi.Input<boolean>;
+    all?: pulumi.Input<boolean | undefined>;
     /**
      * I/O bandwidth limit in KiB/s.
      */
-    bwlimit?: pulumi.Input<number>;
+    bwlimit?: pulumi.Input<number | undefined>;
     /**
      * The compression algorithm (0, 1, gzip, lzo, or zstd).
      */
-    compress?: pulumi.Input<string>;
+    compress?: pulumi.Input<string | undefined>;
     /**
      * Whether the backup job is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * A list of paths to exclude from the backup.
      */
-    excludePaths?: pulumi.Input<pulumi.Input<string>[]>;
+    excludePaths?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Fleecing configuration for the backup job.
      */
-    fleecing?: pulumi.Input<inputs.backup.JobFleecing>;
+    fleecing?: pulumi.Input<inputs.backup.JobFleecing | undefined>;
     /**
      * I/O priority (0-8).
      */
-    ionice?: pulumi.Input<number>;
+    ionice?: pulumi.Input<number | undefined>;
     /**
      * Maximum wait time in minutes for the global lock.
      */
-    lockwait?: pulumi.Input<number>;
+    lockwait?: pulumi.Input<number | undefined>;
     /**
      * Email notification setting (always or failure).
      */
-    mailnotification?: pulumi.Input<string>;
+    mailnotification?: pulumi.Input<string | undefined>;
     /**
      * A list of email addresses to send notifications to.
      */
-    mailtos?: pulumi.Input<pulumi.Input<string>[]>;
+    mailtos?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Deprecated: use pruneBackups instead. Maximum number of backup files per guest.
      */
-    maxfiles?: pulumi.Input<number>;
+    maxfiles?: pulumi.Input<number | undefined>;
     /**
      * The backup mode (snapshot, suspend, or stop).
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * The cluster node name to limit the backup job to.
      */
-    node?: pulumi.Input<string>;
+    node?: pulumi.Input<string | undefined>;
     /**
      * Template for notes attached to the backup.
      */
-    notesTemplate?: pulumi.Input<string>;
+    notesTemplate?: pulumi.Input<string | undefined>;
     /**
      * PBS change detection mode (legacy, data, or metadata).
      */
-    pbsChangeDetectionMode?: pulumi.Input<string>;
+    pbsChangeDetectionMode?: pulumi.Input<string | undefined>;
     /**
      * Performance-related settings for the backup job.
      */
-    performance?: pulumi.Input<inputs.backup.JobPerformance>;
+    performance?: pulumi.Input<inputs.backup.JobPerformance | undefined>;
     /**
      * Number of pigz threads (0 disables, 1 uses single-threaded gzip).
      */
-    pigz?: pulumi.Input<number>;
+    pigz?: pulumi.Input<number | undefined>;
     /**
      * Limit backup to guests in the specified pool.
      */
-    pool?: pulumi.Input<string>;
+    pool?: pulumi.Input<string | undefined>;
     /**
      * Whether the backup should be marked as protected.
      */
-    protected?: pulumi.Input<boolean>;
+    protected?: pulumi.Input<boolean | undefined>;
     /**
      * Retention options as a map of keep policies (e.g. keep-last = "3", keep-weekly = "2").
      */
-    pruneBackups?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    pruneBackups?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Whether to remove old backups if there are more than maxfiles.
      */
-    remove?: pulumi.Input<boolean>;
+    remove?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to repeat missed backup jobs as soon as possible.
      */
-    repeatMissed?: pulumi.Input<boolean>;
+    repeatMissed?: pulumi.Input<boolean | undefined>;
     /**
      * The identifier of the backup job.
      */
@@ -519,19 +519,19 @@ export interface JobArgs {
     /**
      * Path to a script to execute before/after the backup job.
      */
-    script?: pulumi.Input<string>;
+    script?: pulumi.Input<string | undefined>;
     /**
      * The scheduled start time (HH:MM).
      */
-    starttime?: pulumi.Input<string>;
+    starttime?: pulumi.Input<string | undefined>;
     /**
      * Whether to exclude common temporary files from the backup.
      */
-    stdexcludes?: pulumi.Input<boolean>;
+    stdexcludes?: pulumi.Input<boolean | undefined>;
     /**
      * Maximum wait time in minutes for a guest to stop.
      */
-    stopwait?: pulumi.Input<number>;
+    stopwait?: pulumi.Input<number | undefined>;
     /**
      * The storage identifier for the backup.
      */
@@ -539,13 +539,13 @@ export interface JobArgs {
     /**
      * Path to the temporary directory for the backup job.
      */
-    tmpdir?: pulumi.Input<string>;
+    tmpdir?: pulumi.Input<string | undefined>;
     /**
      * A list of guest VM/CT IDs to include in the backup job.
      */
-    vmids?: pulumi.Input<pulumi.Input<string>[]>;
+    vmids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Number of zstd threads (0 uses half of available cores).
      */
-    zstd?: pulumi.Input<number>;
+    zstd?: pulumi.Input<number | undefined>;
 }

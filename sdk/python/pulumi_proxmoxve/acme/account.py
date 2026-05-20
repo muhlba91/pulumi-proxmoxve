@@ -20,11 +20,11 @@ __all__ = ['AccountArgs', 'Account']
 class AccountArgs:
     def __init__(__self__, *,
                  contact: pulumi.Input[_builtins.str],
-                 directory: Optional[pulumi.Input[_builtins.str]] = None,
-                 eab_hmac_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 eab_kid: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tos: Optional[pulumi.Input[_builtins.str]] = None):
+                 directory: pulumi.Input[Optional[_builtins.str]] = None,
+                 eab_hmac_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 eab_kid: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tos: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Account resource.
 
@@ -61,76 +61,76 @@ class AccountArgs:
 
     @_builtins.property
     @pulumi.getter
-    def directory(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def directory(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the ACME CA directory endpoint.
         """
         return pulumi.get(self, "directory")
 
     @directory.setter
-    def directory(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def directory(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "directory", value)
 
     @_builtins.property
     @pulumi.getter(name="eabHmacKey")
-    def eab_hmac_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eab_hmac_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The HMAC key for External Account Binding.
         """
         return pulumi.get(self, "eab_hmac_key")
 
     @eab_hmac_key.setter
-    def eab_hmac_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eab_hmac_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eab_hmac_key", value)
 
     @_builtins.property
     @pulumi.getter(name="eabKid")
-    def eab_kid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eab_kid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Key Identifier for External Account Binding.
         """
         return pulumi.get(self, "eab_kid")
 
     @eab_kid.setter
-    def eab_kid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eab_kid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eab_kid", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ACME account config file name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tos(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tos(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of CA TermsOfService - setting this indicates agreement.
         """
         return pulumi.get(self, "tos")
 
     @tos.setter
-    def tos(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tos(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tos", value)
 
 
 @pulumi.input_type
 class _AccountState:
     def __init__(__self__, *,
-                 contact: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory: Optional[pulumi.Input[_builtins.str]] = None,
-                 eab_hmac_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 eab_kid: Optional[pulumi.Input[_builtins.str]] = None,
-                 location: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tos: Optional[pulumi.Input[_builtins.str]] = None):
+                 contact: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory: pulumi.Input[Optional[_builtins.str]] = None,
+                 eab_hmac_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 eab_kid: pulumi.Input[Optional[_builtins.str]] = None,
+                 location: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tos: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Account resources.
 
@@ -162,98 +162,98 @@ class _AccountState:
 
     @_builtins.property
     @pulumi.getter
-    def contact(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def contact(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The contact email addresses.
         """
         return pulumi.get(self, "contact")
 
     @contact.setter
-    def contact(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def contact(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "contact", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp of the ACME account creation.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def directory(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def directory(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of the ACME CA directory endpoint.
         """
         return pulumi.get(self, "directory")
 
     @directory.setter
-    def directory(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def directory(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "directory", value)
 
     @_builtins.property
     @pulumi.getter(name="eabHmacKey")
-    def eab_hmac_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eab_hmac_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The HMAC key for External Account Binding.
         """
         return pulumi.get(self, "eab_hmac_key")
 
     @eab_hmac_key.setter
-    def eab_hmac_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eab_hmac_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eab_hmac_key", value)
 
     @_builtins.property
     @pulumi.getter(name="eabKid")
-    def eab_kid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def eab_kid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Key Identifier for External Account Binding.
         """
         return pulumi.get(self, "eab_kid")
 
     @eab_kid.setter
-    def eab_kid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def eab_kid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "eab_kid", value)
 
     @_builtins.property
     @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def location(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The location of the ACME account.
         """
         return pulumi.get(self, "location")
 
     @location.setter
-    def location(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def location(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "location", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ACME account config file name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def tos(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tos(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL of CA TermsOfService - setting this indicates agreement.
         """
         return pulumi.get(self, "tos")
 
     @tos.setter
-    def tos(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tos(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tos", value)
 
 
@@ -263,12 +263,12 @@ class Account(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 contact: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory: Optional[pulumi.Input[_builtins.str]] = None,
-                 eab_hmac_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 eab_kid: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tos: Optional[pulumi.Input[_builtins.str]] = None,
+                 contact: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory: pulumi.Input[Optional[_builtins.str]] = None,
+                 eab_hmac_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 eab_kid: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tos: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages an ACME account in a Proxmox VE cluster.
@@ -356,12 +356,12 @@ class Account(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 contact: Optional[pulumi.Input[_builtins.str]] = None,
-                 directory: Optional[pulumi.Input[_builtins.str]] = None,
-                 eab_hmac_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 eab_kid: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 tos: Optional[pulumi.Input[_builtins.str]] = None,
+                 contact: pulumi.Input[Optional[_builtins.str]] = None,
+                 directory: pulumi.Input[Optional[_builtins.str]] = None,
+                 eab_hmac_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 eab_kid: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 tos: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -375,12 +375,14 @@ class Account(pulumi.CustomResource):
                 raise TypeError("Missing required property 'contact'")
             __props__.__dict__["contact"] = contact
             __props__.__dict__["directory"] = directory
-            __props__.__dict__["eab_hmac_key"] = eab_hmac_key
-            __props__.__dict__["eab_kid"] = eab_kid
+            __props__.__dict__["eab_hmac_key"] = None if eab_hmac_key is None else pulumi.Output.secret(eab_hmac_key)
+            __props__.__dict__["eab_kid"] = None if eab_kid is None else pulumi.Output.secret(eab_kid)
             __props__.__dict__["name"] = name
             __props__.__dict__["tos"] = tos
             __props__.__dict__["created_at"] = None
             __props__.__dict__["location"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["eabHmacKey", "eabKid"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Account, __self__).__init__(
             'proxmoxve:acme/account:Account',
             resource_name,
@@ -391,14 +393,14 @@ class Account(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            contact: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            directory: Optional[pulumi.Input[_builtins.str]] = None,
-            eab_hmac_key: Optional[pulumi.Input[_builtins.str]] = None,
-            eab_kid: Optional[pulumi.Input[_builtins.str]] = None,
-            location: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            tos: Optional[pulumi.Input[_builtins.str]] = None) -> 'Account':
+            contact: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            directory: pulumi.Input[Optional[_builtins.str]] = None,
+            eab_hmac_key: pulumi.Input[Optional[_builtins.str]] = None,
+            eab_kid: pulumi.Input[Optional[_builtins.str]] = None,
+            location: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            tos: pulumi.Input[Optional[_builtins.str]] = None) -> 'Account':
         """
         Get an existing Account resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

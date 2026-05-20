@@ -248,7 +248,7 @@ def get_server_legacy(name: Optional[_builtins.str] = None,
         port=pulumi.get(__ret__, 'port'),
         server=pulumi.get(__ret__, 'server'),
         type=pulumi.get(__ret__, 'type'))
-def get_server_legacy_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_server_legacy_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServerLegacyResult]:
     """
     > **Deprecated:** Use `metrics.Server` instead. This data source will be removed in v1.0.

@@ -138,31 +138,31 @@ export interface LvmState {
     /**
      * The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
      */
-    contents?: pulumi.Input<pulumi.Input<string>[]>;
+    contents?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the storage is disabled.
      */
-    disable?: pulumi.Input<boolean>;
+    disable?: pulumi.Input<boolean | undefined>;
     /**
      * A list of nodes where this storage is available.
      */
-    nodes?: pulumi.Input<pulumi.Input<string>[]>;
+    nodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The unique identifier of the storage.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * Whether the storage is shared across all nodes.
      */
-    shared?: pulumi.Input<boolean>;
+    shared?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the volume group to use.
      */
-    volumeGroup?: pulumi.Input<string>;
+    volumeGroup?: pulumi.Input<string | undefined>;
     /**
      * Whether to zero-out data when removing LVMs.
      */
-    wipeRemovedVolumes?: pulumi.Input<boolean>;
+    wipeRemovedVolumes?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -172,15 +172,15 @@ export interface LvmArgs {
     /**
      * The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
      */
-    contents?: pulumi.Input<pulumi.Input<string>[]>;
+    contents?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the storage is disabled.
      */
-    disable?: pulumi.Input<boolean>;
+    disable?: pulumi.Input<boolean | undefined>;
     /**
      * A list of nodes where this storage is available.
      */
-    nodes?: pulumi.Input<pulumi.Input<string>[]>;
+    nodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The unique identifier of the storage.
      */
@@ -188,7 +188,7 @@ export interface LvmArgs {
     /**
      * Whether the storage is shared across all nodes.
      */
-    shared?: pulumi.Input<boolean>;
+    shared?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the volume group to use.
      */
@@ -196,5 +196,5 @@ export interface LvmArgs {
     /**
      * Whether to zero-out data when removing LVMs.
      */
-    wipeRemovedVolumes?: pulumi.Input<boolean>;
+    wipeRemovedVolumes?: pulumi.Input<boolean | undefined>;
 }

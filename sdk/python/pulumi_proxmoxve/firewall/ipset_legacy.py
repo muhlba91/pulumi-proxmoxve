@@ -21,12 +21,12 @@ __all__ = ['IpsetLegacyArgs', 'IpsetLegacy']
 @pulumi.input_type
 class IpsetLegacyArgs:
     def __init__(__self__, *,
-                 cidrs: Optional[pulumi.Input[Sequence[pulumi.Input['IpsetLegacyCidrArgs']]]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 cidrs: pulumi.Input[Optional[Sequence[pulumi.Input['IpsetLegacyCidrArgs']]]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a IpsetLegacy resource.
 
@@ -52,86 +52,86 @@ class IpsetLegacyArgs:
 
     @_builtins.property
     @pulumi.getter
-    def cidrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IpsetLegacyCidrArgs']]]]:
+    def cidrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['IpsetLegacyCidrArgs']]]]:
         """
         IP/CIDR block (multiple blocks supported).
         """
         return pulumi.get(self, "cidrs")
 
     @cidrs.setter
-    def cidrs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IpsetLegacyCidrArgs']]]]):
+    def cidrs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['IpsetLegacyCidrArgs']]]]):
         pulumi.set(self, "cidrs", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPSet comment.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="containerId")
-    def container_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def container_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Container ID. Leave empty for cluster level ipsets.
         """
         return pulumi.get(self, "container_id")
 
     @container_id.setter
-    def container_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def container_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "container_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPSet name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeName")
-    def node_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node name. Leave empty for cluster level ipsets.
         """
         return pulumi.get(self, "node_name")
 
     @node_name.setter
-    def node_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_name", value)
 
     @_builtins.property
     @pulumi.getter(name="vmId")
-    def vm_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vm_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         VM ID. Leave empty for cluster level ipsets.
         """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
-    def vm_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vm_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vm_id", value)
 
 
 @pulumi.input_type
 class _IpsetLegacyState:
     def __init__(__self__, *,
-                 cidrs: Optional[pulumi.Input[Sequence[pulumi.Input['IpsetLegacyCidrArgs']]]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.int]] = None):
+                 cidrs: pulumi.Input[Optional[Sequence[pulumi.Input['IpsetLegacyCidrArgs']]]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering IpsetLegacy resources.
 
@@ -157,74 +157,74 @@ class _IpsetLegacyState:
 
     @_builtins.property
     @pulumi.getter
-    def cidrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IpsetLegacyCidrArgs']]]]:
+    def cidrs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['IpsetLegacyCidrArgs']]]]:
         """
         IP/CIDR block (multiple blocks supported).
         """
         return pulumi.get(self, "cidrs")
 
     @cidrs.setter
-    def cidrs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IpsetLegacyCidrArgs']]]]):
+    def cidrs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['IpsetLegacyCidrArgs']]]]):
         pulumi.set(self, "cidrs", value)
 
     @_builtins.property
     @pulumi.getter
-    def comment(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def comment(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPSet comment.
         """
         return pulumi.get(self, "comment")
 
     @comment.setter
-    def comment(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
 
     @_builtins.property
     @pulumi.getter(name="containerId")
-    def container_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def container_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Container ID. Leave empty for cluster level ipsets.
         """
         return pulumi.get(self, "container_id")
 
     @container_id.setter
-    def container_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def container_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "container_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         IPSet name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodeName")
-    def node_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def node_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Node name. Leave empty for cluster level ipsets.
         """
         return pulumi.get(self, "node_name")
 
     @node_name.setter
-    def node_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def node_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "node_name", value)
 
     @_builtins.property
     @pulumi.getter(name="vmId")
-    def vm_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vm_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         VM ID. Leave empty for cluster level ipsets.
         """
         return pulumi.get(self, "vm_id")
 
     @vm_id.setter
-    def vm_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vm_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vm_id", value)
 
 
@@ -234,12 +234,12 @@ class IpsetLegacy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpsetLegacyCidrArgs', 'IpsetLegacyCidrArgsDict']]]]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IpsetLegacyCidrArgs', 'IpsetLegacyCidrArgsDict']]]]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         An IPSet allows us to group multiple IP addresses, IP subnets and aliases. IPSets can be
@@ -253,7 +253,7 @@ class IpsetLegacy(pulumi.CustomResource):
 
         ipset = proxmoxve.firewall.IpsetLegacy("ipset",
             node_name=example["nodeName"],
-            vm_id=example["vmId"],
+            vm_id=int(example["vmId"]),
             name="local_network",
             comment="Managed by Pulumi",
             cidrs=[
@@ -331,7 +331,7 @@ class IpsetLegacy(pulumi.CustomResource):
 
         ipset = proxmoxve.firewall.IpsetLegacy("ipset",
             node_name=example["nodeName"],
-            vm_id=example["vmId"],
+            vm_id=int(example["vmId"]),
             name="local_network",
             comment="Managed by Pulumi",
             cidrs=[
@@ -397,12 +397,12 @@ class IpsetLegacy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpsetLegacyCidrArgs', 'IpsetLegacyCidrArgsDict']]]]] = None,
-                 comment: Optional[pulumi.Input[_builtins.str]] = None,
-                 container_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 vm_id: Optional[pulumi.Input[_builtins.int]] = None,
+                 cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IpsetLegacyCidrArgs', 'IpsetLegacyCidrArgsDict']]]]] = None,
+                 comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 container_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 vm_id: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -428,12 +428,12 @@ class IpsetLegacy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cidrs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['IpsetLegacyCidrArgs', 'IpsetLegacyCidrArgsDict']]]]] = None,
-            comment: Optional[pulumi.Input[_builtins.str]] = None,
-            container_id: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            node_name: Optional[pulumi.Input[_builtins.str]] = None,
-            vm_id: Optional[pulumi.Input[_builtins.int]] = None) -> 'IpsetLegacy':
+            cidrs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['IpsetLegacyCidrArgs', 'IpsetLegacyCidrArgsDict']]]]] = None,
+            comment: pulumi.Input[Optional[_builtins.str]] = None,
+            container_id: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_name: pulumi.Input[Optional[_builtins.str]] = None,
+            vm_id: pulumi.Input[Optional[_builtins.int]] = None) -> 'IpsetLegacy':
         """
         Get an existing IpsetLegacy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

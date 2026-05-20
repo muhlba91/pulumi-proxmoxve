@@ -181,16 +181,22 @@ public final class ContainerLegacyMountPointArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * Volume, device or directory to mount into the
-     * container.
+     * Volume reference. Accepts a Proxmox storage ID
+     * (e.g. `local-lvm`) to allocate a new volume, a full PVE volume ID
+     * (e.g. `local-lvm:subvol-108-disk-101`) to mount an existing volume,
+     * or an absolute host path (e.g. `/mnt/bindmounts/shared`) to
+     * bind-mount a host directory.
      * 
      */
     @Import(name="volume", required=true)
     private Output<String> volume;
 
     /**
-     * @return Volume, device or directory to mount into the
-     * container.
+     * @return Volume reference. Accepts a Proxmox storage ID
+     * (e.g. `local-lvm`) to allocate a new volume, a full PVE volume ID
+     * (e.g. `local-lvm:subvol-108-disk-101`) to mount an existing volume,
+     * or an absolute host path (e.g. `/mnt/bindmounts/shared`) to
+     * bind-mount a host directory.
      * 
      */
     public Output<String> volume() {
@@ -464,8 +470,11 @@ public final class ContainerLegacyMountPointArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param volume Volume, device or directory to mount into the
-         * container.
+         * @param volume Volume reference. Accepts a Proxmox storage ID
+         * (e.g. `local-lvm`) to allocate a new volume, a full PVE volume ID
+         * (e.g. `local-lvm:subvol-108-disk-101`) to mount an existing volume,
+         * or an absolute host path (e.g. `/mnt/bindmounts/shared`) to
+         * bind-mount a host directory.
          * 
          * @return builder
          * 
@@ -476,8 +485,11 @@ public final class ContainerLegacyMountPointArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param volume Volume, device or directory to mount into the
-         * container.
+         * @param volume Volume reference. Accepts a Proxmox storage ID
+         * (e.g. `local-lvm`) to allocate a new volume, a full PVE volume ID
+         * (e.g. `local-lvm:subvol-108-disk-101`) to mount an existing volume,
+         * or an absolute host path (e.g. `/mnt/bindmounts/shared`) to
+         * bind-mount a host directory.
          * 
          * @return builder
          * 

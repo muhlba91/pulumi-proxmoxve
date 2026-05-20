@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * // This will fetch all ACME accounts...
  * const all = proxmoxve.acme.getAccountsLegacy({});
  * // ...which we will go through in order to fetch the whole data on each account.
- * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: proxmoxve.acme.getAccountLegacy({
+ * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: proxmoxve.acme.getAccountLegacy({
  *     name: __value,
  * }) }), {}));
  * export const dataProxmoxVirtualEnvironmentAcmeAccount = example;
@@ -87,7 +87,7 @@ export interface GetAccountLegacyResult {
  * // This will fetch all ACME accounts...
  * const all = proxmoxve.acme.getAccountsLegacy({});
  * // ...which we will go through in order to fetch the whole data on each account.
- * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [__key]: proxmoxve.acme.getAccountLegacy({
+ * const example = all.then(all => .reduce((__obj, [__key, __value]) => ({ ...__obj, [String(__key)]: proxmoxve.acme.getAccountLegacy({
  *     name: __value,
  * }) }), {}));
  * export const dataProxmoxVirtualEnvironmentAcmeAccount = example;
@@ -108,5 +108,5 @@ export interface GetAccountLegacyOutputArgs {
     /**
      * The identifier of the ACME account to read.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

@@ -33,9 +33,20 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Manages a container.
+ * Manages an LXC container on a Proxmox VE node.
+ * 
+ * A container&#39;s root filesystem (the &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt; block) and any additional volumes
+ * (&lt;span pulumi-lang-nodejs=&#34;`mountPoint`&#34; pulumi-lang-dotnet=&#34;`MountPoint`&#34; pulumi-lang-go=&#34;`mountPoint`&#34; pulumi-lang-python=&#34;`mount_point`&#34; pulumi-lang-yaml=&#34;`mountPoint`&#34; pulumi-lang-java=&#34;`mountPoint`&#34;&gt;`mountPoint`&lt;/span&gt; blocks) can be placed on any Proxmox VE storage backend —
+ * directory, LVM, LVM-thin, ZFS, Ceph RBD, NFS, CIFS, or any other storage
+ * configured on the cluster. Bind mounts of arbitrary host directories are
+ * also supported. See the Storage section below for details.
  * 
  * ## Example Usage
+ * 
+ * ### Basic container
+ * 
+ * A minimal Ubuntu container with a 4&amp;nbsp;GB rootfs on `local-lvm`,
+ * DHCP networking, and an SSH key:
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -59,12 +70,11 @@ import javax.annotation.Nullable;
  * import com.pulumi.proxmoxve.inputs.ContainerLegacyNetworkInterfaceArgs;
  * import com.pulumi.proxmoxve.inputs.ContainerLegacyDiskArgs;
  * import com.pulumi.proxmoxve.inputs.ContainerLegacyOperatingSystemArgs;
- * import com.pulumi.proxmoxve.inputs.ContainerLegacyMountPointArgs;
  * import com.pulumi.proxmoxve.inputs.ContainerLegacyStartupArgs;
  * import com.pulumi.std.StdFunctions;
  * import com.pulumi.std.inputs.TrimspaceArgs;
- * import java.util.List;
  * import java.util.ArrayList;
+ * import java.util.Arrays;
  * import java.util.Map;
  * import java.io.File;
  * import java.nio.file.Files;
@@ -84,20 +94,20 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var ubuntuContainerPassword = new RandomPassword("ubuntuContainerPassword", RandomPasswordArgs.builder()
- *             .length(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(16) (example.pp:74,21-23)))
+ *             .length(16)
  *             .overrideSpecial("_%}{@literal @}{@code ")
  *             .special(true)
  *             .build());
  * 
  *         var ubuntuContainerKey = new PrivateKey("ubuntuContainerKey", PrivateKeyArgs.builder()
  *             .algorithm("RSA")
- *             .rsaBits(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(2048) (example.pp:82,19-23)))
+ *             .rsaBits(2048)
  *             .build());
  * 
  *         var ubuntuContainer = new ContainerLegacy("ubuntuContainer", ContainerLegacyArgs.builder()
  *             .description("Managed by Pulumi")
  *             .nodeName("first-node")
- *             .vmId(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(1234) (example.pp:4,19-23)))
+ *             .vmId(1234)
  *             .unprivileged(true)
  *             .features(ContainerLegacyFeaturesArgs.builder()
  *                 .nesting(true)
@@ -121,31 +131,16 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .disk(ContainerLegacyDiskArgs.builder()
  *                 .datastoreId("local-lvm")
- *                 .size(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(4) (example.pp:31,19-20)))
+ *                 .size(4)
  *                 .build())
  *             .operatingSystem(ContainerLegacyOperatingSystemArgs.builder()
  *                 .templateFileId(ubuntu2504LxcImg.id())
  *                 .type("ubuntu")
  *                 .build())
- *             .mountPoints(            
- *                 ContainerLegacyMountPointArgs.builder()
- *                     .volume("/mnt/bindmounts/shared")
- *                     .path("/mnt/shared")
- *                     .build(),
- *                 ContainerLegacyMountPointArgs.builder()
- *                     .volume("local-lvm")
- *                     .size("10G")
- *                     .path("/mnt/volume")
- *                     .build(),
- *                 ContainerLegacyMountPointArgs.builder()
- *                     .volume("local-lvm:subvol-108-disk-101")
- *                     .size("10G")
- *                     .path("/mnt/data")
- *                     .build())
  *             .startup(ContainerLegacyStartupArgs.builder()
- *                 .order(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(3) (:0,0-0)))
- *                 .upDelay(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(60) (:0,0-0)))
- *                 .downDelay(%!v(PANIC=Format method: fatal: A failure has occurred: unexpected literal type in GenLiteralValueExpression: cty.NumberIntVal(60) (:0,0-0)))
+ *                 .order(3)
+ *                 .upDelay(60)
+ *                 .downDelay(60)
  *                 .build())
  *             .build());
  * 
@@ -157,6 +152,92 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ### Custom storage configuration
+ * 
+ * This example places the rootfs on a custom storage pool, attaches an
+ * additional volume, mounts an existing volume by ID, and bind-mounts a host
+ * directory. Any Proxmox storage backend (directory, LVM-thin, ZFS, Ceph RBD,
+ * NFS, CIFS) can be referenced by its storage ID:
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import io.muehlbachler.pulumi.proxmoxve.ContainerLegacy;
+ * import io.muehlbachler.pulumi.proxmoxve.ContainerLegacyArgs;
+ * import com.pulumi.proxmoxve.inputs.ContainerLegacyDiskArgs;
+ * import com.pulumi.proxmoxve.inputs.ContainerLegacyMountPointArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var customStorage = new ContainerLegacy("customStorage", ContainerLegacyArgs.builder()
+ *             .nodeName("first-node")
+ *             .vmId(1235)
+ *             .disk(ContainerLegacyDiskArgs.builder()
+ *                 .datastoreId("tank-zfs")
+ *                 .size(32)
+ *                 .build())
+ *             .mountPoints(            
+ *                 ContainerLegacyMountPointArgs.builder()
+ *                     .volume("local-lvm")
+ *                     .size("10G")
+ *                     .path("/mnt/volume")
+ *                     .build(),
+ *                 ContainerLegacyMountPointArgs.builder()
+ *                     .volume("local-lvm:subvol-108-disk-101")
+ *                     .size("10G")
+ *                     .path("/mnt/data")
+ *                     .build(),
+ *                 ContainerLegacyMountPointArgs.builder()
+ *                     .volume("/mnt/bindmounts/shared")
+ *                     .path("/mnt/shared")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Storage
+ * 
+ * Containers attach storage through two block types:
+ * 
+ * - **&lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt;** — the root filesystem (rootfs). Exactly one rootfs per
+ *   container; the &lt;span pulumi-lang-nodejs=&#34;`datastoreId`&#34; pulumi-lang-dotnet=&#34;`DatastoreId`&#34; pulumi-lang-go=&#34;`datastoreId`&#34; pulumi-lang-python=&#34;`datastore_id`&#34; pulumi-lang-yaml=&#34;`datastoreId`&#34; pulumi-lang-java=&#34;`datastoreId`&#34;&gt;`datastoreId`&lt;/span&gt; argument selects the Proxmox storage pool
+ *   it lives on.
+ * - **&lt;span pulumi-lang-nodejs=&#34;`mountPoint`&#34; pulumi-lang-dotnet=&#34;`MountPoint`&#34; pulumi-lang-go=&#34;`mountPoint`&#34; pulumi-lang-python=&#34;`mount_point`&#34; pulumi-lang-yaml=&#34;`mountPoint`&#34; pulumi-lang-java=&#34;`mountPoint`&#34;&gt;`mountPoint`&lt;/span&gt;** — zero or more additional volumes or bind mounts,
+ *   each mounted at a separate &lt;span pulumi-lang-nodejs=&#34;`path`&#34; pulumi-lang-dotnet=&#34;`Path`&#34; pulumi-lang-go=&#34;`path`&#34; pulumi-lang-python=&#34;`path`&#34; pulumi-lang-yaml=&#34;`path`&#34; pulumi-lang-java=&#34;`path`&#34;&gt;`path`&lt;/span&gt; inside the container.
+ * 
+ * Both block types are backend-agnostic: &lt;span pulumi-lang-nodejs=&#34;`datastoreId`&#34; pulumi-lang-dotnet=&#34;`DatastoreId`&#34; pulumi-lang-go=&#34;`datastoreId`&#34; pulumi-lang-python=&#34;`datastore_id`&#34; pulumi-lang-yaml=&#34;`datastoreId`&#34; pulumi-lang-java=&#34;`datastoreId`&#34;&gt;`datastoreId`&lt;/span&gt; (on &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt;) and
+ * &lt;span pulumi-lang-nodejs=&#34;`volume`&#34; pulumi-lang-dotnet=&#34;`Volume`&#34; pulumi-lang-go=&#34;`volume`&#34; pulumi-lang-python=&#34;`volume`&#34; pulumi-lang-yaml=&#34;`volume`&#34; pulumi-lang-java=&#34;`volume`&#34;&gt;`volume`&lt;/span&gt; (on &lt;span pulumi-lang-nodejs=&#34;`mountPoint`&#34; pulumi-lang-dotnet=&#34;`MountPoint`&#34; pulumi-lang-go=&#34;`mountPoint`&#34; pulumi-lang-python=&#34;`mount_point`&#34; pulumi-lang-yaml=&#34;`mountPoint`&#34; pulumi-lang-java=&#34;`mountPoint`&#34;&gt;`mountPoint`&lt;/span&gt;) accept any Proxmox storage ID, regardless of
+ * backend type. Run `pvesm status` on the host or use the
+ * &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getDatastoresLegacy`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getDatastoresLegacy`&#34; pulumi-lang-go=&#34;`getDatastoresLegacy`&#34; pulumi-lang-python=&#34;`get_datastores_legacy`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getDatastoresLegacy`&#34; pulumi-lang-java=&#34;`proxmoxve.getDatastoresLegacy`&#34;&gt;`proxmoxve.getDatastoresLegacy`&lt;/span&gt;
+ * data source to list configured storages.
+ * 
+ * The `mount_point.volume` attribute accepts three forms:
+ * 
+ * | Form                       | Meaning                                                  | Example                            |
+ * | -------------------------- | -------------------------------------------------------- | ---------------------------------- |
+ * | Storage ID                 | Allocate a new volume on that storage (requires &lt;span pulumi-lang-nodejs=&#34;`size`&#34; pulumi-lang-dotnet=&#34;`Size`&#34; pulumi-lang-go=&#34;`size`&#34; pulumi-lang-python=&#34;`size`&#34; pulumi-lang-yaml=&#34;`size`&#34; pulumi-lang-java=&#34;`size`&#34;&gt;`size`&lt;/span&gt;)  | `local-lvm`, `tank-zfs`            |
+ * | Storage ID + volume name   | Mount an existing volume by its full PVE volume ID       | `local-lvm:subvol-108-disk-101`    |
+ * | Absolute host path         | Bind-mount a host directory (requires `root{@literal @}pam` auth)   | `/mnt/bindmounts/shared`           |
  * 
  * ## Import
  * 
@@ -240,14 +321,20 @@ public class ContainerLegacy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.devicePassthroughs);
     }
     /**
-     * The disk configuration.
+     * The root filesystem (rootfs) storage configuration.
+     * Selects the Proxmox storage pool the container&#39;s root volume is created
+     * on. Backend-agnostic — works with directory, LVM, LVM-thin, ZFS, Ceph
+     * RBD, NFS, and any other configured Proxmox storage.
      * 
      */
     @Export(name="disk", refs={ContainerLegacyDisk.class}, tree="[0]")
     private Output</* @Nullable */ ContainerLegacyDisk> disk;
 
     /**
-     * @return The disk configuration.
+     * @return The root filesystem (rootfs) storage configuration.
+     * Selects the Proxmox storage pool the container&#39;s root volume is created
+     * on. Backend-agnostic — works with directory, LVM, LVM-thin, ZFS, Ceph
+     * RBD, NFS, and any other configured Proxmox storage.
      * 
      */
     public Output<Optional<ContainerLegacyDisk>> disk() {
@@ -372,14 +459,18 @@ public class ContainerLegacy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.memory);
     }
     /**
-     * A mount point
+     * An additional volume mount or host bind mount
+     * (multiple blocks supported). Use this for data volumes, shared
+     * directories, or attaching pre-existing PVE volumes.
      * 
      */
     @Export(name="mountPoints", refs={List.class,ContainerLegacyMountPoint.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ContainerLegacyMountPoint>> mountPoints;
 
     /**
-     * @return A mount point
+     * @return An additional volume mount or host bind mount
+     * (multiple blocks supported). Use this for data volumes, shared
+     * directories, or attaching pre-existing PVE volumes.
      * 
      */
     public Output<Optional<List<ContainerLegacyMountPoint>>> mountPoints() {
