@@ -102,7 +102,7 @@ jobs:
         node-version: ["24"]
         dotnet-version: [8.0.x]
         python-version: [3.11]
-        java-version: [11]
+        java-version: [21]
         language:
           - go
           - nodejs
