@@ -153,7 +153,7 @@ jobs:
       - run: |
           VERSION_NAME=`git describe --abbrev=0 --tags`
           echo "found tag: $VERSION_NAME"
-          echo "VERSION_NAME=${VERSION_NAME}" >> $GITHUB_ENV
+          echo "VERSION_NAME=${VERSION_NAME#v}" >> $GITHUB_ENV
 
       - run: make install_plugins
       - run: echo "${{ github.workspace }}/bin" >> $GITHUB_PATH
@@ -195,8 +195,7 @@ jobs:
 
       - name: Java PACKAGE_VERSION
         run: |
-          VERSION_TAG="${{ env.VERSION_NAME }}"
-          echo "PACKAGE_VERSION=${VERSION_TAG#v}" >> $GITHUB_ENV
+          echo "PACKAGE_VERSION=${{ env.VERSION_NAME }}" >> $GITHUB_ENV
         if: matrix.language == 'java'
       - name: Publish Java SDK
         working-directory: sdk/java
