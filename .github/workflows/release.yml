@@ -46,7 +46,7 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        go-version: [ 1.26.x ]
+        go-version: [1.26.x]
 
     steps:
       - uses: step-security/harden-runner@ab7a9404c0f3da075243ca237b5fac12c98deaa5 # v2.19.3
@@ -91,18 +91,18 @@ jobs:
     name: Publish SDK
     permissions:
       id-token: write
-      contents: read
+      contents: write
     needs:
       - release
       - publish_provider
     strategy:
       max-parallel: 10
       matrix:
-        go-version: [ 1.26.x ]
-        node-version: [ "24" ]
-        dotnet-version: [ 8.0.x ]
-        python-version: [ 3.11 ]
-        java-version: [ 11 ]
+        go-version: [1.26.x]
+        node-version: ["24"]
+        dotnet-version: [8.0.x]
+        python-version: [3.11]
+        java-version: [11]
         language:
           - go
           - nodejs
@@ -150,6 +150,11 @@ jobs:
       - uses: gradle/actions/setup-gradle@50e97c2cd7a37755bbfafc9c5b7cafaece252f6e # v6.1.0
         if: matrix.language == 'java'
 
+      - run: |
+          VERSION_NAME=`git describe --abbrev=0 --tags`
+          echo "found tag: $VERSION_NAME"
+          echo "VERSION_NAME=${VERSION_NAME}" >> $GITHUB_ENV
+
       - run: make install_plugins
       - run: echo "${{ github.workspace }}/bin" >> $GITHUB_PATH
 
@@ -190,8 +195,8 @@ jobs:
 
       - name: Java PACKAGE_VERSION
         run: |
-          REF_NAME=`git describe --abbrev=0 --tags`
-          echo "PACKAGE_VERSION=${REF_NAME:1}" >> $GITHUB_ENV
+          VERSION_TAG="${{ env.VERSION_NAME }}"
+          echo "PACKAGE_VERSION=${VERSION_TAG#v}" >> $GITHUB_ENV
         if: matrix.language == 'java'
       - name: Publish Java SDK
         working-directory: sdk/java
@@ -199,31 +204,17 @@ jobs:
         if: matrix.language == 'java'
         continue-on-error: true # Java SDK publishing is in alpha stage
 
-  tag_sdk:
-    if: needs.release.outputs.release_created
-    runs-on: ubuntu-latest
-    name: Tag SDK Release
-    permissions:
-      id-token: write
-      contents: write
-    needs:
-      - release
-      - publish_sdk
-
-    steps:
-      - uses: step-security/harden-runner@ab7a9404c0f3da075243ca237b5fac12c98deaa5 # v2.19.3
+      - name: Publish Go SDK
+        uses: pulumi/publish-go-sdk-action@0a153fa3c54227a3c0f7c97a57033ecfe94ab3c2
+        if: matrix.language == 'go'
         with:
-          egress-policy: audit
-
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-        with:
-          fetch-depth: 0
-      - run: |
-          git config --local user.email "${{ env.GITHUB_ACTION }}+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-
-      - run: |
-          REF_NAME=`git describe --abbrev=0 --tags`
-          echo "found tag: $REF_NAME"
-          git tag -a sdk/$REF_NAME -m sdk/$REF_NAME
-          git push origin sdk/$REF_NAME
+          repository: ${{ github.repository }}
+          base-ref: ${{ github.sha }}
+          source: sdk
+          path: sdk
+          version: ${{ env.VERSION_NAME }}
+          additive: false
+          files: |
+            go.*
+            go/**
+            !*.tar.gz
