@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [8.2.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v8.2.0...v8.2.1) (2026-05-20)
+
+
+### Bug Fixes
+
+* **release:** fix version parsing for go release ([d054a64](https://github.com/muhlba91/pulumi-proxmoxve/commit/d054a645a40c1d4c309b95f0c2791ddde6625f6c))
+
 ## [8.2.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v8.1.0...v8.2.0) (2026-05-20)
 
 
