@@ -2943,6 +2943,8 @@ github.com/bpg/terraform-provider-proxmox v0.108.0 h1:VHg5iM4JeTnVfCdfKqxNDYHStX
 github.com/bpg/terraform-provider-proxmox v0.108.0/go.mod h1:6RLA8b/Q0NphsSDBBgQkIML1WUnxHKbxHYKQS0hSJ0Y=
 github.com/bpg/terraform-provider-proxmox v0.109.0 h1:NbFHV2v7vJc37lEFJ8yzUzSptfxW+aNYx1Mm9aWBgg8=
 github.com/bpg/terraform-provider-proxmox v0.109.0/go.mod h1:bmDYXkTPElTG1OmNgwpnzG52jwXHMEPfsOzXfE1D9Vc=
+github.com/bpg/terraform-provider-proxmox v0.110.0 h1:vjgoOqLQakZudM5oyJY8EPw7pEOAvAw/CgR58b2BvMA=
+github.com/bpg/terraform-provider-proxmox v0.110.0/go.mod h1:Qi8ftlbAyMdGEiH4BklgrhMBvEc4q9fOHlSnVccFAaA=
 github.com/brianvoe/gofakeit/v7 v7.14.1 h1:a7fe3fonbj0cW3wgl5VwIKfZtiH9C3cLnwcIXWT7sow=
 github.com/brianvoe/gofakeit/v7 v7.14.1/go.mod h1:QXuPeBw164PJCzCUZVmgpgHJ3Llj49jSLVkKPMtxtxA=
 github.com/bufbuild/protocompile v0.14.1 h1:iA73zAf/fyljNjQKwYzUHD6AD4R8KMasmwa/FBatYVw=
@@ -3967,6 +3969,7 @@ github.com/prometheus/procfs v0.15.1/go.mod h1:fB45yRUv8NstnjriLhBQLuOUt+WW4BsoG
 github.com/prometheus/procfs v0.16.0/go.mod h1:8veyXUu3nGP7oaCxhX6yeaM5u4stL2FeMXnCqhDthZg=
 github.com/pulumi-labs/pulumi-hcl v0.3.1 h1:Fp8Nc/owglgUqVPodZ4ZFxUuyydiYUXqtLMhmuIOX8U=
 github.com/pulumi-labs/pulumi-hcl v0.3.1/go.mod h1:DQS4ZHIFxV4mzVd0By5WohxbonVRKWhlAhXIkMAeQK0=
+github.com/pulumi-labs/pulumi-hcl v0.6.0/go.mod h1:p7S34d50eDIJQyszPS33vlZhieqDFVdkWmvuVy0jKwM=
 github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 h1:vkHw5I/plNdTr435cARxCW6q9gc0S/Yxz7Mkd38pOb0=
 github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231/go.mod h1:murToZ2N9hNJzewjHBgfFdXhZKjY3z5cYC1VXk+lbFE=
 github.com/pulumi/esc v0.23.0 h1:5lOXO+5vvXOEQxXw7cTuYhjg9lVng23f9XNLWDR9EP4=
