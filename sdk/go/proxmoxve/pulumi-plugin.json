@@ -1,6 +1,6 @@
 {
   "resource": true,
   "name": "proxmoxve",
-  "version": "8.3.0-alpha.1783125836+8c6cd832.dirty",
+  "version": "8.3.0",
   "server": "github://api.github.com/muhlba91/pulumi-proxmoxve"
 }
