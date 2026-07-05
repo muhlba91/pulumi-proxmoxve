@@ -73,12 +73,18 @@ type Cifs struct {
 	Backups CifsBackupsPtrOutput `pulumi:"backups"`
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents pulumi.StringArrayOutput `pulumi:"contents"`
+	// Create the base directory if it doesn't exist.
+	CreateBasePath pulumi.BoolOutput `pulumi:"createBasePath"`
+	// Populate the directory with the default structure.
+	CreateSubdirs pulumi.BoolOutput `pulumi:"createSubdirs"`
 	// Whether the storage is disabled.
 	Disable pulumi.BoolOutput `pulumi:"disable"`
 	// The SMB/CIFS domain.
 	Domain pulumi.StringPtrOutput `pulumi:"domain"`
 	// A list of nodes where this storage is available.
 	Nodes pulumi.StringArrayOutput `pulumi:"nodes"`
+	// The mount options for the SMB/CIFS share (see 'man mount.cifs').
+	Options pulumi.StringPtrOutput `pulumi:"options"`
 	// The password for authenticating with the SMB/CIFS server.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// The preallocation mode for raw and qcow2 images.
@@ -161,12 +167,18 @@ type cifsState struct {
 	Backups *CifsBackups `pulumi:"backups"`
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents []string `pulumi:"contents"`
+	// Create the base directory if it doesn't exist.
+	CreateBasePath *bool `pulumi:"createBasePath"`
+	// Populate the directory with the default structure.
+	CreateSubdirs *bool `pulumi:"createSubdirs"`
 	// Whether the storage is disabled.
 	Disable *bool `pulumi:"disable"`
 	// The SMB/CIFS domain.
 	Domain *string `pulumi:"domain"`
 	// A list of nodes where this storage is available.
 	Nodes []string `pulumi:"nodes"`
+	// The mount options for the SMB/CIFS share (see 'man mount.cifs').
+	Options *string `pulumi:"options"`
 	// The password for authenticating with the SMB/CIFS server.
 	Password *string `pulumi:"password"`
 	// The preallocation mode for raw and qcow2 images.
@@ -192,12 +204,18 @@ type CifsState struct {
 	Backups CifsBackupsPtrInput
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents pulumi.StringArrayInput
+	// Create the base directory if it doesn't exist.
+	CreateBasePath pulumi.BoolPtrInput
+	// Populate the directory with the default structure.
+	CreateSubdirs pulumi.BoolPtrInput
 	// Whether the storage is disabled.
 	Disable pulumi.BoolPtrInput
 	// The SMB/CIFS domain.
 	Domain pulumi.StringPtrInput
 	// A list of nodes where this storage is available.
 	Nodes pulumi.StringArrayInput
+	// The mount options for the SMB/CIFS share (see 'man mount.cifs').
+	Options pulumi.StringPtrInput
 	// The password for authenticating with the SMB/CIFS server.
 	Password pulumi.StringPtrInput
 	// The preallocation mode for raw and qcow2 images.
@@ -227,12 +245,18 @@ type cifsArgs struct {
 	Backups *CifsBackups `pulumi:"backups"`
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents []string `pulumi:"contents"`
+	// Create the base directory if it doesn't exist.
+	CreateBasePath *bool `pulumi:"createBasePath"`
+	// Populate the directory with the default structure.
+	CreateSubdirs *bool `pulumi:"createSubdirs"`
 	// Whether the storage is disabled.
 	Disable *bool `pulumi:"disable"`
 	// The SMB/CIFS domain.
 	Domain *string `pulumi:"domain"`
 	// A list of nodes where this storage is available.
 	Nodes []string `pulumi:"nodes"`
+	// The mount options for the SMB/CIFS share (see 'man mount.cifs').
+	Options *string `pulumi:"options"`
 	// The password for authenticating with the SMB/CIFS server.
 	Password string `pulumi:"password"`
 	// The preallocation mode for raw and qcow2 images.
@@ -257,12 +281,18 @@ type CifsArgs struct {
 	Backups CifsBackupsPtrInput
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents pulumi.StringArrayInput
+	// Create the base directory if it doesn't exist.
+	CreateBasePath pulumi.BoolPtrInput
+	// Populate the directory with the default structure.
+	CreateSubdirs pulumi.BoolPtrInput
 	// Whether the storage is disabled.
 	Disable pulumi.BoolPtrInput
 	// The SMB/CIFS domain.
 	Domain pulumi.StringPtrInput
 	// A list of nodes where this storage is available.
 	Nodes pulumi.StringArrayInput
+	// The mount options for the SMB/CIFS share (see 'man mount.cifs').
+	Options pulumi.StringPtrInput
 	// The password for authenticating with the SMB/CIFS server.
 	Password pulumi.StringInput
 	// The preallocation mode for raw and qcow2 images.
@@ -378,6 +408,16 @@ func (o CifsOutput) Contents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Cifs) pulumi.StringArrayOutput { return v.Contents }).(pulumi.StringArrayOutput)
 }
 
+// Create the base directory if it doesn't exist.
+func (o CifsOutput) CreateBasePath() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Cifs) pulumi.BoolOutput { return v.CreateBasePath }).(pulumi.BoolOutput)
+}
+
+// Populate the directory with the default structure.
+func (o CifsOutput) CreateSubdirs() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Cifs) pulumi.BoolOutput { return v.CreateSubdirs }).(pulumi.BoolOutput)
+}
+
 // Whether the storage is disabled.
 func (o CifsOutput) Disable() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Cifs) pulumi.BoolOutput { return v.Disable }).(pulumi.BoolOutput)
@@ -391,6 +431,11 @@ func (o CifsOutput) Domain() pulumi.StringPtrOutput {
 // A list of nodes where this storage is available.
 func (o CifsOutput) Nodes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Cifs) pulumi.StringArrayOutput { return v.Nodes }).(pulumi.StringArrayOutput)
+}
+
+// The mount options for the SMB/CIFS share (see 'man mount.cifs').
+func (o CifsOutput) Options() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Cifs) pulumi.StringPtrOutput { return v.Options }).(pulumi.StringPtrOutput)
 }
 
 // The password for authenticating with the SMB/CIFS server.

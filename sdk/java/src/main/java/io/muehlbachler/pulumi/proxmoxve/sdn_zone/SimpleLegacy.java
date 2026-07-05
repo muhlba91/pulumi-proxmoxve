@@ -18,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-go=&#34;`sdn/zone.Simple`&#34; pulumi-lang-python=&#34;`sdn/zone.Simple`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Simple`&#34;&gt;`proxmoxve.sdn/zone.Simple`&lt;/span&gt; instead. This resource will be removed in v1.0.
+ * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-go=&#34;`sdn/zone.Simple`&#34; pulumi-lang-python=&#34;`sdn/zone.Simple`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_zone_simple`&#34;&gt;`proxmoxve.sdn/zone.Simple`&lt;/span&gt; instead. This resource will be removed in v1.0.
  * 
  * Simple Zone in Proxmox SDN. It will create an isolated VNet bridge. This bridge is not linked to a physical interface, and VM traffic is only local on each the node. It can be used in NAT or routed setups.
  * 
@@ -76,14 +76,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="proxmoxve:sdn/zone/simpleLegacy:SimpleLegacy")
 public class SimpleLegacy extends com.pulumi.resources.CustomResource {
     /**
-     * The type of the DHCP backend for this zone. Currently the only supported value is &lt;span pulumi-lang-nodejs=&#34;`dnsmasq`&#34; pulumi-lang-dotnet=&#34;`Dnsmasq`&#34; pulumi-lang-go=&#34;`dnsmasq`&#34; pulumi-lang-python=&#34;`dnsmasq`&#34; pulumi-lang-yaml=&#34;`dnsmasq`&#34; pulumi-lang-java=&#34;`dnsmasq`&#34;&gt;`dnsmasq`&lt;/span&gt;.
+     * The type of the DHCP backend for this zone. Currently the only supported value is &lt;span pulumi-lang-nodejs=&#34;`dnsmasq`&#34; pulumi-lang-dotnet=&#34;`Dnsmasq`&#34; pulumi-lang-go=&#34;`dnsmasq`&#34; pulumi-lang-python=&#34;`dnsmasq`&#34; pulumi-lang-yaml=&#34;`dnsmasq`&#34; pulumi-lang-java=&#34;`dnsmasq`&#34; pulumi-lang-hcl=&#34;`dnsmasq`&#34;&gt;`dnsmasq`&lt;/span&gt;.
      * 
      */
     @Export(name="dhcp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dhcp;
 
     /**
-     * @return The type of the DHCP backend for this zone. Currently the only supported value is &lt;span pulumi-lang-nodejs=&#34;`dnsmasq`&#34; pulumi-lang-dotnet=&#34;`Dnsmasq`&#34; pulumi-lang-go=&#34;`dnsmasq`&#34; pulumi-lang-python=&#34;`dnsmasq`&#34; pulumi-lang-yaml=&#34;`dnsmasq`&#34; pulumi-lang-java=&#34;`dnsmasq`&#34;&gt;`dnsmasq`&lt;/span&gt;.
+     * @return The type of the DHCP backend for this zone. Currently the only supported value is &lt;span pulumi-lang-nodejs=&#34;`dnsmasq`&#34; pulumi-lang-dotnet=&#34;`Dnsmasq`&#34; pulumi-lang-go=&#34;`dnsmasq`&#34; pulumi-lang-python=&#34;`dnsmasq`&#34; pulumi-lang-yaml=&#34;`dnsmasq`&#34; pulumi-lang-java=&#34;`dnsmasq`&#34; pulumi-lang-hcl=&#34;`dnsmasq`&#34;&gt;`dnsmasq`&lt;/span&gt;.
      * 
      */
     public Output<Optional<String>> dhcp() {

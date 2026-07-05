@@ -21,14 +21,14 @@ public final class HaruleLegacyArgs extends com.pulumi.resources.ResourceArgs {
     public static final HaruleLegacyArgs Empty = new HaruleLegacyArgs();
 
     /**
-     * The resource affinity type (resource-affinity only). &lt;span pulumi-lang-nodejs=&#34;`positive`&#34; pulumi-lang-dotnet=&#34;`Positive`&#34; pulumi-lang-go=&#34;`positive`&#34; pulumi-lang-python=&#34;`positive`&#34; pulumi-lang-yaml=&#34;`positive`&#34; pulumi-lang-java=&#34;`positive`&#34;&gt;`positive`&lt;/span&gt; keeps resources on the same node, &lt;span pulumi-lang-nodejs=&#34;`negative`&#34; pulumi-lang-dotnet=&#34;`Negative`&#34; pulumi-lang-go=&#34;`negative`&#34; pulumi-lang-python=&#34;`negative`&#34; pulumi-lang-yaml=&#34;`negative`&#34; pulumi-lang-java=&#34;`negative`&#34;&gt;`negative`&lt;/span&gt; keeps them on separate nodes.
+     * The resource affinity type (resource-affinity only). &lt;span pulumi-lang-nodejs=&#34;`positive`&#34; pulumi-lang-dotnet=&#34;`Positive`&#34; pulumi-lang-go=&#34;`positive`&#34; pulumi-lang-python=&#34;`positive`&#34; pulumi-lang-yaml=&#34;`positive`&#34; pulumi-lang-java=&#34;`positive`&#34; pulumi-lang-hcl=&#34;`positive`&#34;&gt;`positive`&lt;/span&gt; keeps resources on the same node, &lt;span pulumi-lang-nodejs=&#34;`negative`&#34; pulumi-lang-dotnet=&#34;`Negative`&#34; pulumi-lang-go=&#34;`negative`&#34; pulumi-lang-python=&#34;`negative`&#34; pulumi-lang-yaml=&#34;`negative`&#34; pulumi-lang-java=&#34;`negative`&#34; pulumi-lang-hcl=&#34;`negative`&#34;&gt;`negative`&lt;/span&gt; keeps them on separate nodes.
      * 
      */
     @Import(name="affinity")
     private @Nullable Output<String> affinity;
 
     /**
-     * @return The resource affinity type (resource-affinity only). &lt;span pulumi-lang-nodejs=&#34;`positive`&#34; pulumi-lang-dotnet=&#34;`Positive`&#34; pulumi-lang-go=&#34;`positive`&#34; pulumi-lang-python=&#34;`positive`&#34; pulumi-lang-yaml=&#34;`positive`&#34; pulumi-lang-java=&#34;`positive`&#34;&gt;`positive`&lt;/span&gt; keeps resources on the same node, &lt;span pulumi-lang-nodejs=&#34;`negative`&#34; pulumi-lang-dotnet=&#34;`Negative`&#34; pulumi-lang-go=&#34;`negative`&#34; pulumi-lang-python=&#34;`negative`&#34; pulumi-lang-yaml=&#34;`negative`&#34; pulumi-lang-java=&#34;`negative`&#34;&gt;`negative`&lt;/span&gt; keeps them on separate nodes.
+     * @return The resource affinity type (resource-affinity only). &lt;span pulumi-lang-nodejs=&#34;`positive`&#34; pulumi-lang-dotnet=&#34;`Positive`&#34; pulumi-lang-go=&#34;`positive`&#34; pulumi-lang-python=&#34;`positive`&#34; pulumi-lang-yaml=&#34;`positive`&#34; pulumi-lang-java=&#34;`positive`&#34; pulumi-lang-hcl=&#34;`positive`&#34;&gt;`positive`&lt;/span&gt; keeps resources on the same node, &lt;span pulumi-lang-nodejs=&#34;`negative`&#34; pulumi-lang-dotnet=&#34;`Negative`&#34; pulumi-lang-go=&#34;`negative`&#34; pulumi-lang-python=&#34;`negative`&#34; pulumi-lang-yaml=&#34;`negative`&#34; pulumi-lang-java=&#34;`negative`&#34; pulumi-lang-hcl=&#34;`negative`&#34;&gt;`negative`&lt;/span&gt; keeps them on separate nodes.
      * 
      */
     public Optional<Output<String>> affinity() {
@@ -51,14 +51,14 @@ public final class HaruleLegacyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the HA rule is disabled. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
+     * Whether the HA rule is disabled. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
      * 
      */
     @Import(name="disable")
     private @Nullable Output<Boolean> disable;
 
     /**
-     * @return Whether the HA rule is disabled. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
+     * @return Whether the HA rule is disabled. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
      * 
      */
     public Optional<Output<Boolean>> disable() {
@@ -66,14 +66,14 @@ public final class HaruleLegacyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The member nodes for this rule (node-affinity only). They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or &lt;span pulumi-lang-nodejs=&#34;`null`&#34; pulumi-lang-dotnet=&#34;`Null`&#34; pulumi-lang-go=&#34;`null`&#34; pulumi-lang-python=&#34;`null`&#34; pulumi-lang-yaml=&#34;`null`&#34; pulumi-lang-java=&#34;`null`&#34;&gt;`null`&lt;/span&gt; for unset priorities.
+     * The member nodes for this rule (node-affinity only). They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or &lt;span pulumi-lang-nodejs=&#34;`null`&#34; pulumi-lang-dotnet=&#34;`Null`&#34; pulumi-lang-go=&#34;`null`&#34; pulumi-lang-python=&#34;`null`&#34; pulumi-lang-yaml=&#34;`null`&#34; pulumi-lang-java=&#34;`null`&#34; pulumi-lang-hcl=&#34;`null`&#34;&gt;`null`&lt;/span&gt; for unset priorities.
      * 
      */
     @Import(name="nodes")
     private @Nullable Output<Map<String,Integer>> nodes;
 
     /**
-     * @return The member nodes for this rule (node-affinity only). They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or &lt;span pulumi-lang-nodejs=&#34;`null`&#34; pulumi-lang-dotnet=&#34;`Null`&#34; pulumi-lang-go=&#34;`null`&#34; pulumi-lang-python=&#34;`null`&#34; pulumi-lang-yaml=&#34;`null`&#34; pulumi-lang-java=&#34;`null`&#34;&gt;`null`&lt;/span&gt; for unset priorities.
+     * @return The member nodes for this rule (node-affinity only). They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or &lt;span pulumi-lang-nodejs=&#34;`null`&#34; pulumi-lang-dotnet=&#34;`Null`&#34; pulumi-lang-go=&#34;`null`&#34; pulumi-lang-python=&#34;`null`&#34; pulumi-lang-yaml=&#34;`null`&#34; pulumi-lang-java=&#34;`null`&#34; pulumi-lang-hcl=&#34;`null`&#34;&gt;`null`&lt;/span&gt; for unset priorities.
      * 
      */
     public Optional<Output<Map<String,Integer>>> nodes() {
@@ -111,14 +111,14 @@ public final class HaruleLegacyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether the node affinity rule is strict (node-affinity only). When strict, resources cannot run on nodes not listed. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
+     * Whether the node affinity rule is strict (node-affinity only). When strict, resources cannot run on nodes not listed. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
      * 
      */
     @Import(name="strict")
     private @Nullable Output<Boolean> strict;
 
     /**
-     * @return Whether the node affinity rule is strict (node-affinity only). When strict, resources cannot run on nodes not listed. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
+     * @return Whether the node affinity rule is strict (node-affinity only). When strict, resources cannot run on nodes not listed. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
      * 
      */
     public Optional<Output<Boolean>> strict() {
@@ -172,7 +172,7 @@ public final class HaruleLegacyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param affinity The resource affinity type (resource-affinity only). &lt;span pulumi-lang-nodejs=&#34;`positive`&#34; pulumi-lang-dotnet=&#34;`Positive`&#34; pulumi-lang-go=&#34;`positive`&#34; pulumi-lang-python=&#34;`positive`&#34; pulumi-lang-yaml=&#34;`positive`&#34; pulumi-lang-java=&#34;`positive`&#34;&gt;`positive`&lt;/span&gt; keeps resources on the same node, &lt;span pulumi-lang-nodejs=&#34;`negative`&#34; pulumi-lang-dotnet=&#34;`Negative`&#34; pulumi-lang-go=&#34;`negative`&#34; pulumi-lang-python=&#34;`negative`&#34; pulumi-lang-yaml=&#34;`negative`&#34; pulumi-lang-java=&#34;`negative`&#34;&gt;`negative`&lt;/span&gt; keeps them on separate nodes.
+         * @param affinity The resource affinity type (resource-affinity only). &lt;span pulumi-lang-nodejs=&#34;`positive`&#34; pulumi-lang-dotnet=&#34;`Positive`&#34; pulumi-lang-go=&#34;`positive`&#34; pulumi-lang-python=&#34;`positive`&#34; pulumi-lang-yaml=&#34;`positive`&#34; pulumi-lang-java=&#34;`positive`&#34; pulumi-lang-hcl=&#34;`positive`&#34;&gt;`positive`&lt;/span&gt; keeps resources on the same node, &lt;span pulumi-lang-nodejs=&#34;`negative`&#34; pulumi-lang-dotnet=&#34;`Negative`&#34; pulumi-lang-go=&#34;`negative`&#34; pulumi-lang-python=&#34;`negative`&#34; pulumi-lang-yaml=&#34;`negative`&#34; pulumi-lang-java=&#34;`negative`&#34; pulumi-lang-hcl=&#34;`negative`&#34;&gt;`negative`&lt;/span&gt; keeps them on separate nodes.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class HaruleLegacyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param affinity The resource affinity type (resource-affinity only). &lt;span pulumi-lang-nodejs=&#34;`positive`&#34; pulumi-lang-dotnet=&#34;`Positive`&#34; pulumi-lang-go=&#34;`positive`&#34; pulumi-lang-python=&#34;`positive`&#34; pulumi-lang-yaml=&#34;`positive`&#34; pulumi-lang-java=&#34;`positive`&#34;&gt;`positive`&lt;/span&gt; keeps resources on the same node, &lt;span pulumi-lang-nodejs=&#34;`negative`&#34; pulumi-lang-dotnet=&#34;`Negative`&#34; pulumi-lang-go=&#34;`negative`&#34; pulumi-lang-python=&#34;`negative`&#34; pulumi-lang-yaml=&#34;`negative`&#34; pulumi-lang-java=&#34;`negative`&#34;&gt;`negative`&lt;/span&gt; keeps them on separate nodes.
+         * @param affinity The resource affinity type (resource-affinity only). &lt;span pulumi-lang-nodejs=&#34;`positive`&#34; pulumi-lang-dotnet=&#34;`Positive`&#34; pulumi-lang-go=&#34;`positive`&#34; pulumi-lang-python=&#34;`positive`&#34; pulumi-lang-yaml=&#34;`positive`&#34; pulumi-lang-java=&#34;`positive`&#34; pulumi-lang-hcl=&#34;`positive`&#34;&gt;`positive`&lt;/span&gt; keeps resources on the same node, &lt;span pulumi-lang-nodejs=&#34;`negative`&#34; pulumi-lang-dotnet=&#34;`Negative`&#34; pulumi-lang-go=&#34;`negative`&#34; pulumi-lang-python=&#34;`negative`&#34; pulumi-lang-yaml=&#34;`negative`&#34; pulumi-lang-java=&#34;`negative`&#34; pulumi-lang-hcl=&#34;`negative`&#34;&gt;`negative`&lt;/span&gt; keeps them on separate nodes.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class HaruleLegacyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disable Whether the HA rule is disabled. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
+         * @param disable Whether the HA rule is disabled. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class HaruleLegacyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disable Whether the HA rule is disabled. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
+         * @param disable Whether the HA rule is disabled. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class HaruleLegacyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodes The member nodes for this rule (node-affinity only). They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or &lt;span pulumi-lang-nodejs=&#34;`null`&#34; pulumi-lang-dotnet=&#34;`Null`&#34; pulumi-lang-go=&#34;`null`&#34; pulumi-lang-python=&#34;`null`&#34; pulumi-lang-yaml=&#34;`null`&#34; pulumi-lang-java=&#34;`null`&#34;&gt;`null`&lt;/span&gt; for unset priorities.
+         * @param nodes The member nodes for this rule (node-affinity only). They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or &lt;span pulumi-lang-nodejs=&#34;`null`&#34; pulumi-lang-dotnet=&#34;`Null`&#34; pulumi-lang-go=&#34;`null`&#34; pulumi-lang-python=&#34;`null`&#34; pulumi-lang-yaml=&#34;`null`&#34; pulumi-lang-java=&#34;`null`&#34; pulumi-lang-hcl=&#34;`null`&#34;&gt;`null`&lt;/span&gt; for unset priorities.
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class HaruleLegacyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodes The member nodes for this rule (node-affinity only). They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or &lt;span pulumi-lang-nodejs=&#34;`null`&#34; pulumi-lang-dotnet=&#34;`Null`&#34; pulumi-lang-go=&#34;`null`&#34; pulumi-lang-python=&#34;`null`&#34; pulumi-lang-yaml=&#34;`null`&#34; pulumi-lang-java=&#34;`null`&#34;&gt;`null`&lt;/span&gt; for unset priorities.
+         * @param nodes The member nodes for this rule (node-affinity only). They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or &lt;span pulumi-lang-nodejs=&#34;`null`&#34; pulumi-lang-dotnet=&#34;`Null`&#34; pulumi-lang-go=&#34;`null`&#34; pulumi-lang-python=&#34;`null`&#34; pulumi-lang-yaml=&#34;`null`&#34; pulumi-lang-java=&#34;`null`&#34; pulumi-lang-hcl=&#34;`null`&#34;&gt;`null`&lt;/span&gt; for unset priorities.
          * 
          * @return builder
          * 
@@ -308,7 +308,7 @@ public final class HaruleLegacyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param strict Whether the node affinity rule is strict (node-affinity only). When strict, resources cannot run on nodes not listed. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
+         * @param strict Whether the node affinity rule is strict (node-affinity only). When strict, resources cannot run on nodes not listed. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class HaruleLegacyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param strict Whether the node affinity rule is strict (node-affinity only). When strict, resources cannot run on nodes not listed. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
+         * @param strict Whether the node affinity rule is strict (node-affinity only). When strict, resources cannot run on nodes not listed. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
          * 
          * @return builder
          * 

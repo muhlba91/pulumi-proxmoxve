@@ -79,6 +79,8 @@ if typing.TYPE_CHECKING:
     apt = __apt
     import pulumi_proxmoxve.backup as __backup
     backup = __backup
+    import pulumi_proxmoxve.ceph as __ceph
+    ceph = __ceph
     import pulumi_proxmoxve.cloned as __cloned
     cloned = __cloned
     import pulumi_proxmoxve.cluster as __cluster
@@ -113,6 +115,7 @@ else:
     acme = _utilities.lazy_import('pulumi_proxmoxve.acme')
     apt = _utilities.lazy_import('pulumi_proxmoxve.apt')
     backup = _utilities.lazy_import('pulumi_proxmoxve.backup')
+    ceph = _utilities.lazy_import('pulumi_proxmoxve.ceph')
     cloned = _utilities.lazy_import('pulumi_proxmoxve.cloned')
     cluster = _utilities.lazy_import('pulumi_proxmoxve.cluster')
     config = _utilities.lazy_import('pulumi_proxmoxve.config')
@@ -218,6 +221,14 @@ _utilities.register(
   "fqn": "pulumi_proxmoxve.backup",
   "classes": {
    "proxmoxve:backup/job:Job": "Job"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "ceph/pool",
+  "fqn": "pulumi_proxmoxve.ceph",
+  "classes": {
+   "proxmoxve:ceph/pool:Pool": "Pool"
   }
  },
  {
@@ -602,6 +613,22 @@ _utilities.register(
   "fqn": "pulumi_proxmoxve.network.linux",
   "classes": {
    "proxmoxve:network/linux/vlanLegacy:VlanLegacy": "VlanLegacy"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "node/config",
+  "fqn": "pulumi_proxmoxve.node",
+  "classes": {
+   "proxmoxve:node/config:Config": "Config"
+  }
+ },
+ {
+  "pkg": "proxmoxve",
+  "mod": "node/disk/zfs",
+  "fqn": "pulumi_proxmoxve.node.disk",
+  "classes": {
+   "proxmoxve:node/disk/zfs:Zfs": "Zfs"
   }
  },
  {

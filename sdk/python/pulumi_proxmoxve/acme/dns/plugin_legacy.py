@@ -22,6 +22,8 @@ class PluginLegacyArgs:
                  api: pulumi.Input[_builtins.str],
                  plugin: pulumi.Input[_builtins.str],
                  data: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 data_wo: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 data_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  digest: pulumi.Input[Optional[_builtins.str]] = None,
                  disable: pulumi.Input[Optional[_builtins.bool]] = None,
                  validation_delay: pulumi.Input[Optional[_builtins.int]] = None):
@@ -29,8 +31,11 @@ class PluginLegacyArgs:
         The set of arguments for constructing a PluginLegacy resource.
 
         :param pulumi.Input[_builtins.str] api: API plugin name.
-        :param pulumi.Input[_builtins.str] plugin: ACME Plugin ID name.
+        :param pulumi.Input[_builtins.str] plugin: ACME plugin ID name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] data: DNS plugin data.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] data_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               DNS plugin data, supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so credentials are never stored in Terraform state. Requires Terraform 1.11+. Mutually exclusive with `data`. Pair with `data_wo_version` to push rotated values.
+        :param pulumi.Input[_builtins.int] data_wo_version: Version counter for `data_wo`. Because write-only values are not stored in state, Terraform cannot detect when `data_wo` changes; increment this value to signal a rotation and force the new `data_wo` to be sent.
         :param pulumi.Input[_builtins.str] digest: SHA1 digest of the current configuration. Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
         :param pulumi.Input[_builtins.bool] disable: Flag to disable the config.
         :param pulumi.Input[_builtins.int] validation_delay: Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records (0 - 172800).
@@ -39,6 +44,10 @@ class PluginLegacyArgs:
         pulumi.set(__self__, "plugin", plugin)
         if data is not None:
             pulumi.set(__self__, "data", data)
+        if data_wo is not None:
+            pulumi.set(__self__, "data_wo", data_wo)
+        if data_wo_version is not None:
+            pulumi.set(__self__, "data_wo_version", data_wo_version)
         if digest is not None:
             pulumi.set(__self__, "digest", digest)
         if disable is not None:
@@ -62,7 +71,7 @@ class PluginLegacyArgs:
     @pulumi.getter
     def plugin(self) -> pulumi.Input[_builtins.str]:
         """
-        ACME Plugin ID name.
+        ACME plugin ID name.
         """
         return pulumi.get(self, "plugin")
 
@@ -81,6 +90,31 @@ class PluginLegacyArgs:
     @data.setter
     def data(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "data", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataWo")
+    def data_wo(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        DNS plugin data, supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so credentials are never stored in Terraform state. Requires Terraform 1.11+. Mutually exclusive with `data`. Pair with `data_wo_version` to push rotated values.
+        """
+        return pulumi.get(self, "data_wo")
+
+    @data_wo.setter
+    def data_wo(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "data_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataWoVersion")
+    def data_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Version counter for `data_wo`. Because write-only values are not stored in state, Terraform cannot detect when `data_wo` changes; increment this value to signal a rotation and force the new `data_wo` to be sent.
+        """
+        return pulumi.get(self, "data_wo_version")
+
+    @data_wo_version.setter
+    def data_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "data_wo_version", value)
 
     @_builtins.property
     @pulumi.getter
@@ -124,6 +158,8 @@ class _PluginLegacyState:
     def __init__(__self__, *,
                  api: pulumi.Input[Optional[_builtins.str]] = None,
                  data: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 data_wo: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 data_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  digest: pulumi.Input[Optional[_builtins.str]] = None,
                  disable: pulumi.Input[Optional[_builtins.bool]] = None,
                  plugin: pulumi.Input[Optional[_builtins.str]] = None,
@@ -133,15 +169,22 @@ class _PluginLegacyState:
 
         :param pulumi.Input[_builtins.str] api: API plugin name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] data: DNS plugin data.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] data_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               DNS plugin data, supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so credentials are never stored in Terraform state. Requires Terraform 1.11+. Mutually exclusive with `data`. Pair with `data_wo_version` to push rotated values.
+        :param pulumi.Input[_builtins.int] data_wo_version: Version counter for `data_wo`. Because write-only values are not stored in state, Terraform cannot detect when `data_wo` changes; increment this value to signal a rotation and force the new `data_wo` to be sent.
         :param pulumi.Input[_builtins.str] digest: SHA1 digest of the current configuration. Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
         :param pulumi.Input[_builtins.bool] disable: Flag to disable the config.
-        :param pulumi.Input[_builtins.str] plugin: ACME Plugin ID name.
+        :param pulumi.Input[_builtins.str] plugin: ACME plugin ID name.
         :param pulumi.Input[_builtins.int] validation_delay: Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records (0 - 172800).
         """
         if api is not None:
             pulumi.set(__self__, "api", api)
         if data is not None:
             pulumi.set(__self__, "data", data)
+        if data_wo is not None:
+            pulumi.set(__self__, "data_wo", data_wo)
+        if data_wo_version is not None:
+            pulumi.set(__self__, "data_wo_version", data_wo_version)
         if digest is not None:
             pulumi.set(__self__, "digest", digest)
         if disable is not None:
@@ -176,6 +219,31 @@ class _PluginLegacyState:
         pulumi.set(self, "data", value)
 
     @_builtins.property
+    @pulumi.getter(name="dataWo")
+    def data_wo(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        DNS plugin data, supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so credentials are never stored in Terraform state. Requires Terraform 1.11+. Mutually exclusive with `data`. Pair with `data_wo_version` to push rotated values.
+        """
+        return pulumi.get(self, "data_wo")
+
+    @data_wo.setter
+    def data_wo(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "data_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataWoVersion")
+    def data_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Version counter for `data_wo`. Because write-only values are not stored in state, Terraform cannot detect when `data_wo` changes; increment this value to signal a rotation and force the new `data_wo` to be sent.
+        """
+        return pulumi.get(self, "data_wo_version")
+
+    @data_wo_version.setter
+    def data_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "data_wo_version", value)
+
+    @_builtins.property
     @pulumi.getter
     def digest(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -203,7 +271,7 @@ class _PluginLegacyState:
     @pulumi.getter
     def plugin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        ACME Plugin ID name.
+        ACME plugin ID name.
         """
         return pulumi.get(self, "plugin")
 
@@ -232,6 +300,8 @@ class PluginLegacy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api: pulumi.Input[Optional[_builtins.str]] = None,
                  data: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 data_wo: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 data_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  digest: pulumi.Input[Optional[_builtins.str]] = None,
                  disable: pulumi.Input[Optional[_builtins.bool]] = None,
                  plugin: pulumi.Input[Optional[_builtins.str]] = None,
@@ -271,9 +341,12 @@ class PluginLegacy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api: API plugin name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] data: DNS plugin data.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] data_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               DNS plugin data, supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so credentials are never stored in Terraform state. Requires Terraform 1.11+. Mutually exclusive with `data`. Pair with `data_wo_version` to push rotated values.
+        :param pulumi.Input[_builtins.int] data_wo_version: Version counter for `data_wo`. Because write-only values are not stored in state, Terraform cannot detect when `data_wo` changes; increment this value to signal a rotation and force the new `data_wo` to be sent.
         :param pulumi.Input[_builtins.str] digest: SHA1 digest of the current configuration. Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
         :param pulumi.Input[_builtins.bool] disable: Flag to disable the config.
-        :param pulumi.Input[_builtins.str] plugin: ACME Plugin ID name.
+        :param pulumi.Input[_builtins.str] plugin: ACME plugin ID name.
         :param pulumi.Input[_builtins.int] validation_delay: Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records (0 - 172800).
         """
         ...
@@ -329,6 +402,8 @@ class PluginLegacy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api: pulumi.Input[Optional[_builtins.str]] = None,
                  data: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 data_wo: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 data_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  digest: pulumi.Input[Optional[_builtins.str]] = None,
                  disable: pulumi.Input[Optional[_builtins.bool]] = None,
                  plugin: pulumi.Input[Optional[_builtins.str]] = None,
@@ -346,12 +421,16 @@ class PluginLegacy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'api'")
             __props__.__dict__["api"] = api
             __props__.__dict__["data"] = data
+            __props__.__dict__["data_wo"] = None if data_wo is None else pulumi.Output.secret(data_wo)
+            __props__.__dict__["data_wo_version"] = data_wo_version
             __props__.__dict__["digest"] = digest
             __props__.__dict__["disable"] = disable
             if plugin is None and not opts.urn:
                 raise TypeError("Missing required property 'plugin'")
             __props__.__dict__["plugin"] = plugin
             __props__.__dict__["validation_delay"] = validation_delay
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["dataWo"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(PluginLegacy, __self__).__init__(
             'proxmoxve:acme/dns/pluginLegacy:PluginLegacy',
             resource_name,
@@ -364,6 +443,8 @@ class PluginLegacy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             api: pulumi.Input[Optional[_builtins.str]] = None,
             data: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            data_wo: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            data_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             digest: pulumi.Input[Optional[_builtins.str]] = None,
             disable: pulumi.Input[Optional[_builtins.bool]] = None,
             plugin: pulumi.Input[Optional[_builtins.str]] = None,
@@ -377,9 +458,12 @@ class PluginLegacy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api: API plugin name.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] data: DNS plugin data.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] data_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               DNS plugin data, supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so credentials are never stored in Terraform state. Requires Terraform 1.11+. Mutually exclusive with `data`. Pair with `data_wo_version` to push rotated values.
+        :param pulumi.Input[_builtins.int] data_wo_version: Version counter for `data_wo`. Because write-only values are not stored in state, Terraform cannot detect when `data_wo` changes; increment this value to signal a rotation and force the new `data_wo` to be sent.
         :param pulumi.Input[_builtins.str] digest: SHA1 digest of the current configuration. Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
         :param pulumi.Input[_builtins.bool] disable: Flag to disable the config.
-        :param pulumi.Input[_builtins.str] plugin: ACME Plugin ID name.
+        :param pulumi.Input[_builtins.str] plugin: ACME plugin ID name.
         :param pulumi.Input[_builtins.int] validation_delay: Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records (0 - 172800).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -388,6 +472,8 @@ class PluginLegacy(pulumi.CustomResource):
 
         __props__.__dict__["api"] = api
         __props__.__dict__["data"] = data
+        __props__.__dict__["data_wo"] = data_wo
+        __props__.__dict__["data_wo_version"] = data_wo_version
         __props__.__dict__["digest"] = digest
         __props__.__dict__["disable"] = disable
         __props__.__dict__["plugin"] = plugin
@@ -411,6 +497,23 @@ class PluginLegacy(pulumi.CustomResource):
         return pulumi.get(self, "data")
 
     @_builtins.property
+    @pulumi.getter(name="dataWo")
+    def data_wo(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        DNS plugin data, supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so credentials are never stored in Terraform state. Requires Terraform 1.11+. Mutually exclusive with `data`. Pair with `data_wo_version` to push rotated values.
+        """
+        return pulumi.get(self, "data_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="dataWoVersion")
+    def data_wo_version(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Version counter for `data_wo`. Because write-only values are not stored in state, Terraform cannot detect when `data_wo` changes; increment this value to signal a rotation and force the new `data_wo` to be sent.
+        """
+        return pulumi.get(self, "data_wo_version")
+
+    @_builtins.property
     @pulumi.getter
     def digest(self) -> pulumi.Output[_builtins.str]:
         """
@@ -430,7 +533,7 @@ class PluginLegacy(pulumi.CustomResource):
     @pulumi.getter
     def plugin(self) -> pulumi.Output[_builtins.str]:
         """
-        ACME Plugin ID name.
+        ACME plugin ID name.
         """
         return pulumi.get(self, "plugin")
 

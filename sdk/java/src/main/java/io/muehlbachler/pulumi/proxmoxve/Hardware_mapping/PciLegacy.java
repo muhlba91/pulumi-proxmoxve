@@ -18,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-go=&#34;`hardware/mapping.Pci`&#34; pulumi-lang-python=&#34;`hardware/mapping.Pci`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware/mapping.Pci`&#34;&gt;`proxmoxve.hardware/mapping.Pci`&lt;/span&gt; instead. This resource will be removed in v1.0.
+ * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-go=&#34;`hardware/mapping.Pci`&#34; pulumi-lang-python=&#34;`hardware/mapping.Pci`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-hcl=&#34;`proxmox_hardware_mapping_pci`&#34;&gt;`proxmoxve.hardware/mapping.Pci`&lt;/span&gt; instead. This resource will be removed in v1.0.
  * 
  * Manages a PCI hardware mapping in a Proxmox VE cluster.
  * 

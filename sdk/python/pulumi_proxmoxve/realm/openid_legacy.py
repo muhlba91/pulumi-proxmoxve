@@ -23,8 +23,11 @@ class OpenidLegacyArgs:
                  issuer_url: pulumi.Input[_builtins.str],
                  realm: pulumi.Input[_builtins.str],
                  acr_values: pulumi.Input[Optional[_builtins.str]] = None,
+                 audiences: pulumi.Input[Optional[_builtins.str]] = None,
                  autocreate: pulumi.Input[Optional[_builtins.bool]] = None,
                  client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  default: pulumi.Input[Optional[_builtins.bool]] = None,
                  groups_autocreate: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -41,8 +44,12 @@ class OpenidLegacyArgs:
         :param pulumi.Input[_builtins.str] issuer_url: OpenID Connect issuer URL. Proxmox uses OpenID Connect Discovery to configure the provider.
         :param pulumi.Input[_builtins.str] realm: Realm identifier (e.g., 'my-oidc').
         :param pulumi.Input[_builtins.str] acr_values: Authentication Context Class Reference values for the OpenID provider.
+        :param pulumi.Input[_builtins.str] audiences: Audiences that the OpenID Issuer may include that are accepted for the client (comma-separated).
         :param pulumi.Input[_builtins.bool] autocreate: Automatically create users on the Proxmox cluster if they do not exist.
         :param pulumi.Input[_builtins.str] client_key: OpenID Connect Client Key (secret). Note: stored in Proxmox but not returned by API.
+        :param pulumi.Input[_builtins.str] client_key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               OpenID Connect Client Key (secret), supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so it is never stored in Terraform state or plan. Requires Terraform 1.11+. Mutually exclusive with `client_key`. Pair with `client_key_wo_version` to push a rotated secret.
+        :param pulumi.Input[_builtins.int] client_key_wo_version: Version counter for `client_key_wo`. Because write-only values are not stored in state, Terraform cannot detect when `client_key_wo` changes; increment this value to signal a rotation and force the new secret to be sent.
         :param pulumi.Input[_builtins.str] comment: Description of the realm.
         :param pulumi.Input[_builtins.bool] default: Use this realm as the default for login.
         :param pulumi.Input[_builtins.bool] groups_autocreate: Automatically create groups from claims rather than using existing Proxmox VE groups.
@@ -58,10 +65,16 @@ class OpenidLegacyArgs:
         pulumi.set(__self__, "realm", realm)
         if acr_values is not None:
             pulumi.set(__self__, "acr_values", acr_values)
+        if audiences is not None:
+            pulumi.set(__self__, "audiences", audiences)
         if autocreate is not None:
             pulumi.set(__self__, "autocreate", autocreate)
         if client_key is not None:
             pulumi.set(__self__, "client_key", client_key)
+        if client_key_wo is not None:
+            pulumi.set(__self__, "client_key_wo", client_key_wo)
+        if client_key_wo_version is not None:
+            pulumi.set(__self__, "client_key_wo_version", client_key_wo_version)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
         if default is not None:
@@ -131,6 +144,18 @@ class OpenidLegacyArgs:
 
     @_builtins.property
     @pulumi.getter
+    def audiences(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Audiences that the OpenID Issuer may include that are accepted for the client (comma-separated).
+        """
+        return pulumi.get(self, "audiences")
+
+    @audiences.setter
+    def audiences(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "audiences", value)
+
+    @_builtins.property
+    @pulumi.getter
     def autocreate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Automatically create users on the Proxmox cluster if they do not exist.
@@ -152,6 +177,31 @@ class OpenidLegacyArgs:
     @client_key.setter
     def client_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientKeyWo")
+    def client_key_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        OpenID Connect Client Key (secret), supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so it is never stored in Terraform state or plan. Requires Terraform 1.11+. Mutually exclusive with `client_key`. Pair with `client_key_wo_version` to push a rotated secret.
+        """
+        return pulumi.get(self, "client_key_wo")
+
+    @client_key_wo.setter
+    def client_key_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "client_key_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientKeyWoVersion")
+    def client_key_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Version counter for `client_key_wo`. Because write-only values are not stored in state, Terraform cannot detect when `client_key_wo` changes; increment this value to signal a rotation and force the new secret to be sent.
+        """
+        return pulumi.get(self, "client_key_wo_version")
+
+    @client_key_wo_version.setter
+    def client_key_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "client_key_wo_version", value)
 
     @_builtins.property
     @pulumi.getter
@@ -266,9 +316,12 @@ class OpenidLegacyArgs:
 class _OpenidLegacyState:
     def __init__(__self__, *,
                  acr_values: pulumi.Input[Optional[_builtins.str]] = None,
+                 audiences: pulumi.Input[Optional[_builtins.str]] = None,
                  autocreate: pulumi.Input[Optional[_builtins.bool]] = None,
                  client_id: pulumi.Input[Optional[_builtins.str]] = None,
                  client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  default: pulumi.Input[Optional[_builtins.bool]] = None,
                  groups_autocreate: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -284,9 +337,13 @@ class _OpenidLegacyState:
         Input properties used for looking up and filtering OpenidLegacy resources.
 
         :param pulumi.Input[_builtins.str] acr_values: Authentication Context Class Reference values for the OpenID provider.
+        :param pulumi.Input[_builtins.str] audiences: Audiences that the OpenID Issuer may include that are accepted for the client (comma-separated).
         :param pulumi.Input[_builtins.bool] autocreate: Automatically create users on the Proxmox cluster if they do not exist.
         :param pulumi.Input[_builtins.str] client_id: OpenID Connect Client ID.
         :param pulumi.Input[_builtins.str] client_key: OpenID Connect Client Key (secret). Note: stored in Proxmox but not returned by API.
+        :param pulumi.Input[_builtins.str] client_key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               OpenID Connect Client Key (secret), supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so it is never stored in Terraform state or plan. Requires Terraform 1.11+. Mutually exclusive with `client_key`. Pair with `client_key_wo_version` to push a rotated secret.
+        :param pulumi.Input[_builtins.int] client_key_wo_version: Version counter for `client_key_wo`. Because write-only values are not stored in state, Terraform cannot detect when `client_key_wo` changes; increment this value to signal a rotation and force the new secret to be sent.
         :param pulumi.Input[_builtins.str] comment: Description of the realm.
         :param pulumi.Input[_builtins.bool] default: Use this realm as the default for login.
         :param pulumi.Input[_builtins.bool] groups_autocreate: Automatically create groups from claims rather than using existing Proxmox VE groups.
@@ -301,12 +358,18 @@ class _OpenidLegacyState:
         """
         if acr_values is not None:
             pulumi.set(__self__, "acr_values", acr_values)
+        if audiences is not None:
+            pulumi.set(__self__, "audiences", audiences)
         if autocreate is not None:
             pulumi.set(__self__, "autocreate", autocreate)
         if client_id is not None:
             pulumi.set(__self__, "client_id", client_id)
         if client_key is not None:
             pulumi.set(__self__, "client_key", client_key)
+        if client_key_wo is not None:
+            pulumi.set(__self__, "client_key_wo", client_key_wo)
+        if client_key_wo_version is not None:
+            pulumi.set(__self__, "client_key_wo_version", client_key_wo_version)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
         if default is not None:
@@ -344,6 +407,18 @@ class _OpenidLegacyState:
 
     @_builtins.property
     @pulumi.getter
+    def audiences(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Audiences that the OpenID Issuer may include that are accepted for the client (comma-separated).
+        """
+        return pulumi.get(self, "audiences")
+
+    @audiences.setter
+    def audiences(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "audiences", value)
+
+    @_builtins.property
+    @pulumi.getter
     def autocreate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Automatically create users on the Proxmox cluster if they do not exist.
@@ -377,6 +452,31 @@ class _OpenidLegacyState:
     @client_key.setter
     def client_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientKeyWo")
+    def client_key_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        OpenID Connect Client Key (secret), supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so it is never stored in Terraform state or plan. Requires Terraform 1.11+. Mutually exclusive with `client_key`. Pair with `client_key_wo_version` to push a rotated secret.
+        """
+        return pulumi.get(self, "client_key_wo")
+
+    @client_key_wo.setter
+    def client_key_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "client_key_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="clientKeyWoVersion")
+    def client_key_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Version counter for `client_key_wo`. Because write-only values are not stored in state, Terraform cannot detect when `client_key_wo` changes; increment this value to signal a rotation and force the new secret to be sent.
+        """
+        return pulumi.get(self, "client_key_wo_version")
+
+    @client_key_wo_version.setter
+    def client_key_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "client_key_wo_version", value)
 
     @_builtins.property
     @pulumi.getter
@@ -518,9 +618,12 @@ class OpenidLegacy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acr_values: pulumi.Input[Optional[_builtins.str]] = None,
+                 audiences: pulumi.Input[Optional[_builtins.str]] = None,
                  autocreate: pulumi.Input[Optional[_builtins.bool]] = None,
                  client_id: pulumi.Input[Optional[_builtins.str]] = None,
                  client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  default: pulumi.Input[Optional[_builtins.bool]] = None,
                  groups_autocreate: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -577,19 +680,6 @@ class OpenidLegacy(pulumi.CustomResource):
         - You must maintain the client key in your Terraform configuration or use a variable
         - The client key will be marked as sensitive in Terraform state
 
-        ### Username Claim
-
-        The `username_claim` attribute is **fixed after creation** — it cannot be changed once the realm is created. Changing it requires destroying and recreating the realm. Common values:
-
-        - `subject` (default) — Uses the OpenID `sub` claim
-        - `username` — Uses the `preferred_username` claim
-        - `email` — Uses the `email` claim
-        - `upn` — Uses the User Principal Name claim (common with ADFS/Azure AD)
-
-        Any valid OpenID claim name can be used. Ensure the chosen claim provides unique, stable identifiers for your users.
-
-        ### Common Configuration Scenarios
-
         #### Minimal Configuration
 
         ```python
@@ -643,9 +733,13 @@ class OpenidLegacy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acr_values: Authentication Context Class Reference values for the OpenID provider.
+        :param pulumi.Input[_builtins.str] audiences: Audiences that the OpenID Issuer may include that are accepted for the client (comma-separated).
         :param pulumi.Input[_builtins.bool] autocreate: Automatically create users on the Proxmox cluster if they do not exist.
         :param pulumi.Input[_builtins.str] client_id: OpenID Connect Client ID.
         :param pulumi.Input[_builtins.str] client_key: OpenID Connect Client Key (secret). Note: stored in Proxmox but not returned by API.
+        :param pulumi.Input[_builtins.str] client_key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               OpenID Connect Client Key (secret), supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so it is never stored in Terraform state or plan. Requires Terraform 1.11+. Mutually exclusive with `client_key`. Pair with `client_key_wo_version` to push a rotated secret.
+        :param pulumi.Input[_builtins.int] client_key_wo_version: Version counter for `client_key_wo`. Because write-only values are not stored in state, Terraform cannot detect when `client_key_wo` changes; increment this value to signal a rotation and force the new secret to be sent.
         :param pulumi.Input[_builtins.str] comment: Description of the realm.
         :param pulumi.Input[_builtins.bool] default: Use this realm as the default for login.
         :param pulumi.Input[_builtins.bool] groups_autocreate: Automatically create groups from claims rather than using existing Proxmox VE groups.
@@ -707,19 +801,6 @@ class OpenidLegacy(pulumi.CustomResource):
         - Terraform cannot detect if the client key was changed outside of Terraform
         - You must maintain the client key in your Terraform configuration or use a variable
         - The client key will be marked as sensitive in Terraform state
-
-        ### Username Claim
-
-        The `username_claim` attribute is **fixed after creation** — it cannot be changed once the realm is created. Changing it requires destroying and recreating the realm. Common values:
-
-        - `subject` (default) — Uses the OpenID `sub` claim
-        - `username` — Uses the `preferred_username` claim
-        - `email` — Uses the `email` claim
-        - `upn` — Uses the User Principal Name claim (common with ADFS/Azure AD)
-
-        Any valid OpenID claim name can be used. Ensure the chosen claim provides unique, stable identifiers for your users.
-
-        ### Common Configuration Scenarios
 
         #### Minimal Configuration
 
@@ -787,9 +868,12 @@ class OpenidLegacy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acr_values: pulumi.Input[Optional[_builtins.str]] = None,
+                 audiences: pulumi.Input[Optional[_builtins.str]] = None,
                  autocreate: pulumi.Input[Optional[_builtins.bool]] = None,
                  client_id: pulumi.Input[Optional[_builtins.str]] = None,
                  client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
                  default: pulumi.Input[Optional[_builtins.bool]] = None,
                  groups_autocreate: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -811,11 +895,14 @@ class OpenidLegacy(pulumi.CustomResource):
             __props__ = OpenidLegacyArgs.__new__(OpenidLegacyArgs)
 
             __props__.__dict__["acr_values"] = acr_values
+            __props__.__dict__["audiences"] = audiences
             __props__.__dict__["autocreate"] = autocreate
             if client_id is None and not opts.urn:
                 raise TypeError("Missing required property 'client_id'")
             __props__.__dict__["client_id"] = client_id
             __props__.__dict__["client_key"] = None if client_key is None else pulumi.Output.secret(client_key)
+            __props__.__dict__["client_key_wo"] = None if client_key_wo is None else pulumi.Output.secret(client_key_wo)
+            __props__.__dict__["client_key_wo_version"] = client_key_wo_version
             __props__.__dict__["comment"] = comment
             __props__.__dict__["default"] = default
             __props__.__dict__["groups_autocreate"] = groups_autocreate
@@ -831,7 +918,7 @@ class OpenidLegacy(pulumi.CustomResource):
             __props__.__dict__["realm"] = realm
             __props__.__dict__["scopes"] = scopes
             __props__.__dict__["username_claim"] = username_claim
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["clientKey"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["clientKey", "clientKeyWo"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(OpenidLegacy, __self__).__init__(
             'proxmoxve:realm/openidLegacy:OpenidLegacy',
@@ -844,9 +931,12 @@ class OpenidLegacy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             acr_values: pulumi.Input[Optional[_builtins.str]] = None,
+            audiences: pulumi.Input[Optional[_builtins.str]] = None,
             autocreate: pulumi.Input[Optional[_builtins.bool]] = None,
             client_id: pulumi.Input[Optional[_builtins.str]] = None,
             client_key: pulumi.Input[Optional[_builtins.str]] = None,
+            client_key_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            client_key_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             comment: pulumi.Input[Optional[_builtins.str]] = None,
             default: pulumi.Input[Optional[_builtins.bool]] = None,
             groups_autocreate: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -866,9 +956,13 @@ class OpenidLegacy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acr_values: Authentication Context Class Reference values for the OpenID provider.
+        :param pulumi.Input[_builtins.str] audiences: Audiences that the OpenID Issuer may include that are accepted for the client (comma-separated).
         :param pulumi.Input[_builtins.bool] autocreate: Automatically create users on the Proxmox cluster if they do not exist.
         :param pulumi.Input[_builtins.str] client_id: OpenID Connect Client ID.
         :param pulumi.Input[_builtins.str] client_key: OpenID Connect Client Key (secret). Note: stored in Proxmox but not returned by API.
+        :param pulumi.Input[_builtins.str] client_key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               OpenID Connect Client Key (secret), supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so it is never stored in Terraform state or plan. Requires Terraform 1.11+. Mutually exclusive with `client_key`. Pair with `client_key_wo_version` to push a rotated secret.
+        :param pulumi.Input[_builtins.int] client_key_wo_version: Version counter for `client_key_wo`. Because write-only values are not stored in state, Terraform cannot detect when `client_key_wo` changes; increment this value to signal a rotation and force the new secret to be sent.
         :param pulumi.Input[_builtins.str] comment: Description of the realm.
         :param pulumi.Input[_builtins.bool] default: Use this realm as the default for login.
         :param pulumi.Input[_builtins.bool] groups_autocreate: Automatically create groups from claims rather than using existing Proxmox VE groups.
@@ -886,9 +980,12 @@ class OpenidLegacy(pulumi.CustomResource):
         __props__ = _OpenidLegacyState.__new__(_OpenidLegacyState)
 
         __props__.__dict__["acr_values"] = acr_values
+        __props__.__dict__["audiences"] = audiences
         __props__.__dict__["autocreate"] = autocreate
         __props__.__dict__["client_id"] = client_id
         __props__.__dict__["client_key"] = client_key
+        __props__.__dict__["client_key_wo"] = client_key_wo
+        __props__.__dict__["client_key_wo_version"] = client_key_wo_version
         __props__.__dict__["comment"] = comment
         __props__.__dict__["default"] = default
         __props__.__dict__["groups_autocreate"] = groups_autocreate
@@ -909,6 +1006,14 @@ class OpenidLegacy(pulumi.CustomResource):
         Authentication Context Class Reference values for the OpenID provider.
         """
         return pulumi.get(self, "acr_values")
+
+    @_builtins.property
+    @pulumi.getter
+    def audiences(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Audiences that the OpenID Issuer may include that are accepted for the client (comma-separated).
+        """
+        return pulumi.get(self, "audiences")
 
     @_builtins.property
     @pulumi.getter
@@ -933,6 +1038,23 @@ class OpenidLegacy(pulumi.CustomResource):
         OpenID Connect Client Key (secret). Note: stored in Proxmox but not returned by API.
         """
         return pulumi.get(self, "client_key")
+
+    @_builtins.property
+    @pulumi.getter(name="clientKeyWo")
+    def client_key_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        OpenID Connect Client Key (secret), supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so it is never stored in Terraform state or plan. Requires Terraform 1.11+. Mutually exclusive with `client_key`. Pair with `client_key_wo_version` to push a rotated secret.
+        """
+        return pulumi.get(self, "client_key_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="clientKeyWoVersion")
+    def client_key_wo_version(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Version counter for `client_key_wo`. Because write-only values are not stored in state, Terraform cannot detect when `client_key_wo` changes; increment this value to signal a rotation and force the new secret to be sent.
+        """
+        return pulumi.get(self, "client_key_wo_version")
 
     @_builtins.property
     @pulumi.getter

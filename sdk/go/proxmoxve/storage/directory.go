@@ -68,6 +68,10 @@ type Directory struct {
 	Backups DirectoryBackupsPtrOutput `pulumi:"backups"`
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents pulumi.StringArrayOutput `pulumi:"contents"`
+	// Create the base directory if it doesn't exist.
+	CreateBasePath pulumi.BoolOutput `pulumi:"createBasePath"`
+	// Populate the directory with the default structure.
+	CreateSubdirs pulumi.BoolOutput `pulumi:"createSubdirs"`
 	// Whether the storage is disabled.
 	Disable pulumi.BoolOutput `pulumi:"disable"`
 	// A list of nodes where this storage is available.
@@ -128,6 +132,10 @@ type directoryState struct {
 	Backups *DirectoryBackups `pulumi:"backups"`
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents []string `pulumi:"contents"`
+	// Create the base directory if it doesn't exist.
+	CreateBasePath *bool `pulumi:"createBasePath"`
+	// Populate the directory with the default structure.
+	CreateSubdirs *bool `pulumi:"createSubdirs"`
 	// Whether the storage is disabled.
 	Disable *bool `pulumi:"disable"`
 	// A list of nodes where this storage is available.
@@ -147,6 +155,10 @@ type DirectoryState struct {
 	Backups DirectoryBackupsPtrInput
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents pulumi.StringArrayInput
+	// Create the base directory if it doesn't exist.
+	CreateBasePath pulumi.BoolPtrInput
+	// Populate the directory with the default structure.
+	CreateSubdirs pulumi.BoolPtrInput
 	// Whether the storage is disabled.
 	Disable pulumi.BoolPtrInput
 	// A list of nodes where this storage is available.
@@ -170,6 +182,10 @@ type directoryArgs struct {
 	Backups *DirectoryBackups `pulumi:"backups"`
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents []string `pulumi:"contents"`
+	// Create the base directory if it doesn't exist.
+	CreateBasePath *bool `pulumi:"createBasePath"`
+	// Populate the directory with the default structure.
+	CreateSubdirs *bool `pulumi:"createSubdirs"`
 	// Whether the storage is disabled.
 	Disable *bool `pulumi:"disable"`
 	// A list of nodes where this storage is available.
@@ -190,6 +206,10 @@ type DirectoryArgs struct {
 	Backups DirectoryBackupsPtrInput
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents pulumi.StringArrayInput
+	// Create the base directory if it doesn't exist.
+	CreateBasePath pulumi.BoolPtrInput
+	// Populate the directory with the default structure.
+	CreateSubdirs pulumi.BoolPtrInput
 	// Whether the storage is disabled.
 	Disable pulumi.BoolPtrInput
 	// A list of nodes where this storage is available.
@@ -299,6 +319,16 @@ func (o DirectoryOutput) Backups() DirectoryBackupsPtrOutput {
 // The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 func (o DirectoryOutput) Contents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Directory) pulumi.StringArrayOutput { return v.Contents }).(pulumi.StringArrayOutput)
+}
+
+// Create the base directory if it doesn't exist.
+func (o DirectoryOutput) CreateBasePath() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Directory) pulumi.BoolOutput { return v.CreateBasePath }).(pulumi.BoolOutput)
+}
+
+// Populate the directory with the default structure.
+func (o DirectoryOutput) CreateSubdirs() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Directory) pulumi.BoolOutput { return v.CreateSubdirs }).(pulumi.BoolOutput)
 }
 
 // Whether the storage is disabled.

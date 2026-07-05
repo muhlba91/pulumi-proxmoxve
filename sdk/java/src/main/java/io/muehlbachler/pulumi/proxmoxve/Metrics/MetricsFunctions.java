@@ -249,7 +249,7 @@ public final class MetricsFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:metrics/getServer:getServer", TypeShape.of(GetServerResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-go=&#34;`metrics.Server`&#34; pulumi-lang-python=&#34;`metrics.Server`&#34; pulumi-lang-yaml=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-java=&#34;`proxmoxve.metrics.Server`&#34;&gt;`proxmoxve.metrics.Server`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-go=&#34;`metrics.Server`&#34; pulumi-lang-python=&#34;`metrics.Server`&#34; pulumi-lang-yaml=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-java=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-hcl=&#34;`proxmox_metrics_server`&#34;&gt;`proxmoxve.metrics.Server`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a specific PVE metric server.
      * 
@@ -297,7 +297,7 @@ public final class MetricsFunctions {
         return getServerLegacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-go=&#34;`metrics.Server`&#34; pulumi-lang-python=&#34;`metrics.Server`&#34; pulumi-lang-yaml=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-java=&#34;`proxmoxve.metrics.Server`&#34;&gt;`proxmoxve.metrics.Server`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-go=&#34;`metrics.Server`&#34; pulumi-lang-python=&#34;`metrics.Server`&#34; pulumi-lang-yaml=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-java=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-hcl=&#34;`proxmox_metrics_server`&#34;&gt;`proxmoxve.metrics.Server`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a specific PVE metric server.
      * 
@@ -345,7 +345,7 @@ public final class MetricsFunctions {
         return getServerLegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-go=&#34;`metrics.Server`&#34; pulumi-lang-python=&#34;`metrics.Server`&#34; pulumi-lang-yaml=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-java=&#34;`proxmoxve.metrics.Server`&#34;&gt;`proxmoxve.metrics.Server`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-go=&#34;`metrics.Server`&#34; pulumi-lang-python=&#34;`metrics.Server`&#34; pulumi-lang-yaml=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-java=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-hcl=&#34;`proxmox_metrics_server`&#34;&gt;`proxmoxve.metrics.Server`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a specific PVE metric server.
      * 
@@ -393,7 +393,7 @@ public final class MetricsFunctions {
         return Deployment.getInstance().invoke("proxmoxve:metrics/getServerLegacy:getServerLegacy", TypeShape.of(GetServerLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-go=&#34;`metrics.Server`&#34; pulumi-lang-python=&#34;`metrics.Server`&#34; pulumi-lang-yaml=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-java=&#34;`proxmoxve.metrics.Server`&#34;&gt;`proxmoxve.metrics.Server`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-go=&#34;`metrics.Server`&#34; pulumi-lang-python=&#34;`metrics.Server`&#34; pulumi-lang-yaml=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-java=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-hcl=&#34;`proxmox_metrics_server`&#34;&gt;`proxmoxve.metrics.Server`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a specific PVE metric server.
      * 
@@ -441,7 +441,7 @@ public final class MetricsFunctions {
         return Deployment.getInstance().invoke("proxmoxve:metrics/getServerLegacy:getServerLegacy", TypeShape.of(GetServerLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-go=&#34;`metrics.Server`&#34; pulumi-lang-python=&#34;`metrics.Server`&#34; pulumi-lang-yaml=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-java=&#34;`proxmoxve.metrics.Server`&#34;&gt;`proxmoxve.metrics.Server`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-go=&#34;`metrics.Server`&#34; pulumi-lang-python=&#34;`metrics.Server`&#34; pulumi-lang-yaml=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-java=&#34;`proxmoxve.metrics.Server`&#34; pulumi-lang-hcl=&#34;`proxmox_metrics_server`&#34;&gt;`proxmoxve.metrics.Server`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a specific PVE metric server.
      * 

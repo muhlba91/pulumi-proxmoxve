@@ -47,14 +47,14 @@ public final class MembershipState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Resource pool membership type (can be &lt;span pulumi-lang-nodejs=&#34;`vm`&#34; pulumi-lang-dotnet=&#34;`Vm`&#34; pulumi-lang-go=&#34;`vm`&#34; pulumi-lang-python=&#34;`vm`&#34; pulumi-lang-yaml=&#34;`vm`&#34; pulumi-lang-java=&#34;`vm`&#34;&gt;`vm`&lt;/span&gt; for VMs and CTs or &lt;span pulumi-lang-nodejs=&#34;`storage`&#34; pulumi-lang-dotnet=&#34;`Storage`&#34; pulumi-lang-go=&#34;`storage`&#34; pulumi-lang-python=&#34;`storage`&#34; pulumi-lang-yaml=&#34;`storage`&#34; pulumi-lang-java=&#34;`storage`&#34;&gt;`storage`&lt;/span&gt; for storages)
+     * Resource pool membership type (can be &lt;span pulumi-lang-nodejs=&#34;`vm`&#34; pulumi-lang-dotnet=&#34;`Vm`&#34; pulumi-lang-go=&#34;`vm`&#34; pulumi-lang-python=&#34;`vm`&#34; pulumi-lang-yaml=&#34;`vm`&#34; pulumi-lang-java=&#34;`vm`&#34; pulumi-lang-hcl=&#34;`vm`&#34;&gt;`vm`&lt;/span&gt; for VMs and CTs or &lt;span pulumi-lang-nodejs=&#34;`storage`&#34; pulumi-lang-dotnet=&#34;`Storage`&#34; pulumi-lang-go=&#34;`storage`&#34; pulumi-lang-python=&#34;`storage`&#34; pulumi-lang-yaml=&#34;`storage`&#34; pulumi-lang-java=&#34;`storage`&#34; pulumi-lang-hcl=&#34;`storage`&#34;&gt;`storage`&lt;/span&gt; for storages)
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Resource pool membership type (can be &lt;span pulumi-lang-nodejs=&#34;`vm`&#34; pulumi-lang-dotnet=&#34;`Vm`&#34; pulumi-lang-go=&#34;`vm`&#34; pulumi-lang-python=&#34;`vm`&#34; pulumi-lang-yaml=&#34;`vm`&#34; pulumi-lang-java=&#34;`vm`&#34;&gt;`vm`&lt;/span&gt; for VMs and CTs or &lt;span pulumi-lang-nodejs=&#34;`storage`&#34; pulumi-lang-dotnet=&#34;`Storage`&#34; pulumi-lang-go=&#34;`storage`&#34; pulumi-lang-python=&#34;`storage`&#34; pulumi-lang-yaml=&#34;`storage`&#34; pulumi-lang-java=&#34;`storage`&#34;&gt;`storage`&lt;/span&gt; for storages)
+     * @return Resource pool membership type (can be &lt;span pulumi-lang-nodejs=&#34;`vm`&#34; pulumi-lang-dotnet=&#34;`Vm`&#34; pulumi-lang-go=&#34;`vm`&#34; pulumi-lang-python=&#34;`vm`&#34; pulumi-lang-yaml=&#34;`vm`&#34; pulumi-lang-java=&#34;`vm`&#34; pulumi-lang-hcl=&#34;`vm`&#34;&gt;`vm`&lt;/span&gt; for VMs and CTs or &lt;span pulumi-lang-nodejs=&#34;`storage`&#34; pulumi-lang-dotnet=&#34;`Storage`&#34; pulumi-lang-go=&#34;`storage`&#34; pulumi-lang-python=&#34;`storage`&#34; pulumi-lang-yaml=&#34;`storage`&#34; pulumi-lang-java=&#34;`storage`&#34; pulumi-lang-hcl=&#34;`storage`&#34;&gt;`storage`&lt;/span&gt; for storages)
      * 
      */
     public Optional<Output<String>> type() {
@@ -146,7 +146,7 @@ public final class MembershipState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Resource pool membership type (can be &lt;span pulumi-lang-nodejs=&#34;`vm`&#34; pulumi-lang-dotnet=&#34;`Vm`&#34; pulumi-lang-go=&#34;`vm`&#34; pulumi-lang-python=&#34;`vm`&#34; pulumi-lang-yaml=&#34;`vm`&#34; pulumi-lang-java=&#34;`vm`&#34;&gt;`vm`&lt;/span&gt; for VMs and CTs or &lt;span pulumi-lang-nodejs=&#34;`storage`&#34; pulumi-lang-dotnet=&#34;`Storage`&#34; pulumi-lang-go=&#34;`storage`&#34; pulumi-lang-python=&#34;`storage`&#34; pulumi-lang-yaml=&#34;`storage`&#34; pulumi-lang-java=&#34;`storage`&#34;&gt;`storage`&lt;/span&gt; for storages)
+         * @param type Resource pool membership type (can be &lt;span pulumi-lang-nodejs=&#34;`vm`&#34; pulumi-lang-dotnet=&#34;`Vm`&#34; pulumi-lang-go=&#34;`vm`&#34; pulumi-lang-python=&#34;`vm`&#34; pulumi-lang-yaml=&#34;`vm`&#34; pulumi-lang-java=&#34;`vm`&#34; pulumi-lang-hcl=&#34;`vm`&#34;&gt;`vm`&lt;/span&gt; for VMs and CTs or &lt;span pulumi-lang-nodejs=&#34;`storage`&#34; pulumi-lang-dotnet=&#34;`Storage`&#34; pulumi-lang-go=&#34;`storage`&#34; pulumi-lang-python=&#34;`storage`&#34; pulumi-lang-yaml=&#34;`storage`&#34; pulumi-lang-java=&#34;`storage`&#34; pulumi-lang-hcl=&#34;`storage`&#34;&gt;`storage`&lt;/span&gt; for storages)
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class MembershipState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Resource pool membership type (can be &lt;span pulumi-lang-nodejs=&#34;`vm`&#34; pulumi-lang-dotnet=&#34;`Vm`&#34; pulumi-lang-go=&#34;`vm`&#34; pulumi-lang-python=&#34;`vm`&#34; pulumi-lang-yaml=&#34;`vm`&#34; pulumi-lang-java=&#34;`vm`&#34;&gt;`vm`&lt;/span&gt; for VMs and CTs or &lt;span pulumi-lang-nodejs=&#34;`storage`&#34; pulumi-lang-dotnet=&#34;`Storage`&#34; pulumi-lang-go=&#34;`storage`&#34; pulumi-lang-python=&#34;`storage`&#34; pulumi-lang-yaml=&#34;`storage`&#34; pulumi-lang-java=&#34;`storage`&#34;&gt;`storage`&lt;/span&gt; for storages)
+         * @param type Resource pool membership type (can be &lt;span pulumi-lang-nodejs=&#34;`vm`&#34; pulumi-lang-dotnet=&#34;`Vm`&#34; pulumi-lang-go=&#34;`vm`&#34; pulumi-lang-python=&#34;`vm`&#34; pulumi-lang-yaml=&#34;`vm`&#34; pulumi-lang-java=&#34;`vm`&#34; pulumi-lang-hcl=&#34;`vm`&#34;&gt;`vm`&lt;/span&gt; for VMs and CTs or &lt;span pulumi-lang-nodejs=&#34;`storage`&#34; pulumi-lang-dotnet=&#34;`Storage`&#34; pulumi-lang-go=&#34;`storage`&#34; pulumi-lang-python=&#34;`storage`&#34; pulumi-lang-yaml=&#34;`storage`&#34; pulumi-lang-java=&#34;`storage`&#34; pulumi-lang-hcl=&#34;`storage`&#34;&gt;`storage`&lt;/span&gt; for storages)
          * 
          * @return builder
          * 

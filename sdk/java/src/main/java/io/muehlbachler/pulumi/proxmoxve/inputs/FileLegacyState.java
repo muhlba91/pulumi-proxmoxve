@@ -52,14 +52,14 @@ public final class FileLegacyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The file mode in octal format, e.g. &lt;span pulumi-lang-nodejs=&#34;`0700`&#34; pulumi-lang-dotnet=&#34;`0700`&#34; pulumi-lang-go=&#34;`0700`&#34; pulumi-lang-python=&#34;`0700`&#34; pulumi-lang-yaml=&#34;`0700`&#34; pulumi-lang-java=&#34;`0700`&#34;&gt;`0700`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`600`&#34; pulumi-lang-dotnet=&#34;`600`&#34; pulumi-lang-go=&#34;`600`&#34; pulumi-lang-python=&#34;`600`&#34; pulumi-lang-yaml=&#34;`600`&#34; pulumi-lang-java=&#34;`600`&#34;&gt;`600`&lt;/span&gt;. Note that the prefixes &lt;span pulumi-lang-nodejs=&#34;`0o`&#34; pulumi-lang-dotnet=&#34;`0o`&#34; pulumi-lang-go=&#34;`0o`&#34; pulumi-lang-python=&#34;`0o`&#34; pulumi-lang-yaml=&#34;`0o`&#34; pulumi-lang-java=&#34;`0o`&#34;&gt;`0o`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`0x`&#34; pulumi-lang-dotnet=&#34;`0x`&#34; pulumi-lang-go=&#34;`0x`&#34; pulumi-lang-python=&#34;`0x`&#34; pulumi-lang-yaml=&#34;`0x`&#34; pulumi-lang-java=&#34;`0x`&#34;&gt;`0x`&lt;/span&gt; is not supported! Setting this attribute is also only allowed for `root{@literal @}pam` authenticated user.
+     * The file mode in octal format, e.g. &lt;span pulumi-lang-nodejs=&#34;`0700`&#34; pulumi-lang-dotnet=&#34;`0700`&#34; pulumi-lang-go=&#34;`0700`&#34; pulumi-lang-python=&#34;`0700`&#34; pulumi-lang-yaml=&#34;`0700`&#34; pulumi-lang-java=&#34;`0700`&#34; pulumi-lang-hcl=&#34;`0700`&#34;&gt;`0700`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`600`&#34; pulumi-lang-dotnet=&#34;`600`&#34; pulumi-lang-go=&#34;`600`&#34; pulumi-lang-python=&#34;`600`&#34; pulumi-lang-yaml=&#34;`600`&#34; pulumi-lang-java=&#34;`600`&#34; pulumi-lang-hcl=&#34;`600`&#34;&gt;`600`&lt;/span&gt;. Note that the prefixes &lt;span pulumi-lang-nodejs=&#34;`0o`&#34; pulumi-lang-dotnet=&#34;`0o`&#34; pulumi-lang-go=&#34;`0o`&#34; pulumi-lang-python=&#34;`0o`&#34; pulumi-lang-yaml=&#34;`0o`&#34; pulumi-lang-java=&#34;`0o`&#34; pulumi-lang-hcl=&#34;`0o`&#34;&gt;`0o`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`0x`&#34; pulumi-lang-dotnet=&#34;`0x`&#34; pulumi-lang-go=&#34;`0x`&#34; pulumi-lang-python=&#34;`0x`&#34; pulumi-lang-yaml=&#34;`0x`&#34; pulumi-lang-java=&#34;`0x`&#34; pulumi-lang-hcl=&#34;`0x`&#34;&gt;`0x`&lt;/span&gt; is not supported! Setting this attribute is also only allowed for `root{@literal @}pam` authenticated user.
      * 
      */
     @Import(name="fileMode")
     private @Nullable Output<String> fileMode;
 
     /**
-     * @return The file mode in octal format, e.g. &lt;span pulumi-lang-nodejs=&#34;`0700`&#34; pulumi-lang-dotnet=&#34;`0700`&#34; pulumi-lang-go=&#34;`0700`&#34; pulumi-lang-python=&#34;`0700`&#34; pulumi-lang-yaml=&#34;`0700`&#34; pulumi-lang-java=&#34;`0700`&#34;&gt;`0700`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`600`&#34; pulumi-lang-dotnet=&#34;`600`&#34; pulumi-lang-go=&#34;`600`&#34; pulumi-lang-python=&#34;`600`&#34; pulumi-lang-yaml=&#34;`600`&#34; pulumi-lang-java=&#34;`600`&#34;&gt;`600`&lt;/span&gt;. Note that the prefixes &lt;span pulumi-lang-nodejs=&#34;`0o`&#34; pulumi-lang-dotnet=&#34;`0o`&#34; pulumi-lang-go=&#34;`0o`&#34; pulumi-lang-python=&#34;`0o`&#34; pulumi-lang-yaml=&#34;`0o`&#34; pulumi-lang-java=&#34;`0o`&#34;&gt;`0o`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`0x`&#34; pulumi-lang-dotnet=&#34;`0x`&#34; pulumi-lang-go=&#34;`0x`&#34; pulumi-lang-python=&#34;`0x`&#34; pulumi-lang-yaml=&#34;`0x`&#34; pulumi-lang-java=&#34;`0x`&#34;&gt;`0x`&lt;/span&gt; is not supported! Setting this attribute is also only allowed for `root{@literal @}pam` authenticated user.
+     * @return The file mode in octal format, e.g. &lt;span pulumi-lang-nodejs=&#34;`0700`&#34; pulumi-lang-dotnet=&#34;`0700`&#34; pulumi-lang-go=&#34;`0700`&#34; pulumi-lang-python=&#34;`0700`&#34; pulumi-lang-yaml=&#34;`0700`&#34; pulumi-lang-java=&#34;`0700`&#34; pulumi-lang-hcl=&#34;`0700`&#34;&gt;`0700`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`600`&#34; pulumi-lang-dotnet=&#34;`600`&#34; pulumi-lang-go=&#34;`600`&#34; pulumi-lang-python=&#34;`600`&#34; pulumi-lang-yaml=&#34;`600`&#34; pulumi-lang-java=&#34;`600`&#34; pulumi-lang-hcl=&#34;`600`&#34;&gt;`600`&lt;/span&gt;. Note that the prefixes &lt;span pulumi-lang-nodejs=&#34;`0o`&#34; pulumi-lang-dotnet=&#34;`0o`&#34; pulumi-lang-go=&#34;`0o`&#34; pulumi-lang-python=&#34;`0o`&#34; pulumi-lang-yaml=&#34;`0o`&#34; pulumi-lang-java=&#34;`0o`&#34; pulumi-lang-hcl=&#34;`0o`&#34;&gt;`0o`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`0x`&#34; pulumi-lang-dotnet=&#34;`0x`&#34; pulumi-lang-go=&#34;`0x`&#34; pulumi-lang-python=&#34;`0x`&#34; pulumi-lang-yaml=&#34;`0x`&#34; pulumi-lang-java=&#34;`0x`&#34; pulumi-lang-hcl=&#34;`0x`&#34;&gt;`0x`&lt;/span&gt; is not supported! Setting this attribute is also only allowed for `root{@literal @}pam` authenticated user.
      * 
      */
     public Optional<Output<String>> fileMode() {
@@ -143,7 +143,7 @@ public final class FileLegacyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Whether to overwrite an existing file (defaults to
-     * &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     @Import(name="overwrite")
@@ -151,7 +151,7 @@ public final class FileLegacyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Whether to overwrite an existing file (defaults to
-     * &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> overwrite() {
@@ -159,7 +159,7 @@ public final class FileLegacyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The source file (conflicts with &lt;span pulumi-lang-nodejs=&#34;`sourceRaw`&#34; pulumi-lang-dotnet=&#34;`SourceRaw`&#34; pulumi-lang-go=&#34;`sourceRaw`&#34; pulumi-lang-python=&#34;`source_raw`&#34; pulumi-lang-yaml=&#34;`sourceRaw`&#34; pulumi-lang-java=&#34;`sourceRaw`&#34;&gt;`sourceRaw`&lt;/span&gt;),
+     * The source file (conflicts with &lt;span pulumi-lang-nodejs=&#34;`sourceRaw`&#34; pulumi-lang-dotnet=&#34;`SourceRaw`&#34; pulumi-lang-go=&#34;`sourceRaw`&#34; pulumi-lang-python=&#34;`source_raw`&#34; pulumi-lang-yaml=&#34;`sourceRaw`&#34; pulumi-lang-java=&#34;`sourceRaw`&#34; pulumi-lang-hcl=&#34;`source_raw`&#34;&gt;`sourceRaw`&lt;/span&gt;),
      * could be a local file or a URL. If the source file is a URL, the file will
      * be downloaded and stored locally before uploading it to Proxmox VE.
      * 
@@ -168,7 +168,7 @@ public final class FileLegacyState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<FileLegacySourceFileArgs> sourceFile;
 
     /**
-     * @return The source file (conflicts with &lt;span pulumi-lang-nodejs=&#34;`sourceRaw`&#34; pulumi-lang-dotnet=&#34;`SourceRaw`&#34; pulumi-lang-go=&#34;`sourceRaw`&#34; pulumi-lang-python=&#34;`source_raw`&#34; pulumi-lang-yaml=&#34;`sourceRaw`&#34; pulumi-lang-java=&#34;`sourceRaw`&#34;&gt;`sourceRaw`&lt;/span&gt;),
+     * @return The source file (conflicts with &lt;span pulumi-lang-nodejs=&#34;`sourceRaw`&#34; pulumi-lang-dotnet=&#34;`SourceRaw`&#34; pulumi-lang-go=&#34;`sourceRaw`&#34; pulumi-lang-python=&#34;`source_raw`&#34; pulumi-lang-yaml=&#34;`sourceRaw`&#34; pulumi-lang-java=&#34;`sourceRaw`&#34; pulumi-lang-hcl=&#34;`source_raw`&#34;&gt;`sourceRaw`&lt;/span&gt;),
      * could be a local file or a URL. If the source file is a URL, the file will
      * be downloaded and stored locally before uploading it to Proxmox VE.
      * 
@@ -178,14 +178,14 @@ public final class FileLegacyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The raw source (conflicts with &lt;span pulumi-lang-nodejs=&#34;`sourceFile`&#34; pulumi-lang-dotnet=&#34;`SourceFile`&#34; pulumi-lang-go=&#34;`sourceFile`&#34; pulumi-lang-python=&#34;`source_file`&#34; pulumi-lang-yaml=&#34;`sourceFile`&#34; pulumi-lang-java=&#34;`sourceFile`&#34;&gt;`sourceFile`&lt;/span&gt;).
+     * The raw source (conflicts with &lt;span pulumi-lang-nodejs=&#34;`sourceFile`&#34; pulumi-lang-dotnet=&#34;`SourceFile`&#34; pulumi-lang-go=&#34;`sourceFile`&#34; pulumi-lang-python=&#34;`source_file`&#34; pulumi-lang-yaml=&#34;`sourceFile`&#34; pulumi-lang-java=&#34;`sourceFile`&#34; pulumi-lang-hcl=&#34;`source_file`&#34;&gt;`sourceFile`&lt;/span&gt;).
      * 
      */
     @Import(name="sourceRaw")
     private @Nullable Output<FileLegacySourceRawArgs> sourceRaw;
 
     /**
-     * @return The raw source (conflicts with &lt;span pulumi-lang-nodejs=&#34;`sourceFile`&#34; pulumi-lang-dotnet=&#34;`SourceFile`&#34; pulumi-lang-go=&#34;`sourceFile`&#34; pulumi-lang-python=&#34;`source_file`&#34; pulumi-lang-yaml=&#34;`sourceFile`&#34; pulumi-lang-java=&#34;`sourceFile`&#34;&gt;`sourceFile`&lt;/span&gt;).
+     * @return The raw source (conflicts with &lt;span pulumi-lang-nodejs=&#34;`sourceFile`&#34; pulumi-lang-dotnet=&#34;`SourceFile`&#34; pulumi-lang-go=&#34;`sourceFile`&#34; pulumi-lang-python=&#34;`source_file`&#34; pulumi-lang-yaml=&#34;`sourceFile`&#34; pulumi-lang-java=&#34;`sourceFile`&#34; pulumi-lang-hcl=&#34;`source_file`&#34;&gt;`sourceFile`&lt;/span&gt;).
      * 
      */
     public Optional<Output<FileLegacySourceRawArgs>> sourceRaw() {
@@ -211,13 +211,13 @@ public final class FileLegacyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The SSH upload mode for non-API content types
-     * (snippets, backups, etc.). Set to &lt;span pulumi-lang-nodejs=&#34;`stream`&#34; pulumi-lang-dotnet=&#34;`Stream`&#34; pulumi-lang-go=&#34;`stream`&#34; pulumi-lang-python=&#34;`stream`&#34; pulumi-lang-yaml=&#34;`stream`&#34; pulumi-lang-java=&#34;`stream`&#34;&gt;`stream`&lt;/span&gt; to pipe the file through an SSH
-     * shell session (uses &lt;span pulumi-lang-nodejs=&#34;`sudo`&#34; pulumi-lang-dotnet=&#34;`Sudo`&#34; pulumi-lang-go=&#34;`sudo`&#34; pulumi-lang-python=&#34;`sudo`&#34; pulumi-lang-yaml=&#34;`sudo`&#34; pulumi-lang-java=&#34;`sudo`&#34;&gt;`sudo`&lt;/span&gt; where required), or &lt;span pulumi-lang-nodejs=&#34;`sftp`&#34; pulumi-lang-dotnet=&#34;`Sftp`&#34; pulumi-lang-go=&#34;`sftp`&#34; pulumi-lang-python=&#34;`sftp`&#34; pulumi-lang-yaml=&#34;`sftp`&#34; pulumi-lang-java=&#34;`sftp`&#34;&gt;`sftp`&lt;/span&gt; to upload via the SFTP
-     * subsystem. Use &lt;span pulumi-lang-nodejs=&#34;`sftp`&#34; pulumi-lang-dotnet=&#34;`Sftp`&#34; pulumi-lang-go=&#34;`sftp`&#34; pulumi-lang-python=&#34;`sftp`&#34; pulumi-lang-yaml=&#34;`sftp`&#34; pulumi-lang-java=&#34;`sftp`&#34;&gt;`sftp`&lt;/span&gt; when the target host&#39;s SSH server only allows the
-     * SFTP subsystem; note that the SFTP path does not invoke &lt;span pulumi-lang-nodejs=&#34;`sudo`&#34; pulumi-lang-dotnet=&#34;`Sudo`&#34; pulumi-lang-go=&#34;`sudo`&#34; pulumi-lang-python=&#34;`sudo`&#34; pulumi-lang-yaml=&#34;`sudo`&#34; pulumi-lang-java=&#34;`sudo`&#34;&gt;`sudo`&lt;/span&gt;, so the SSH
+     * (snippets, backups, etc.). Set to &lt;span pulumi-lang-nodejs=&#34;`stream`&#34; pulumi-lang-dotnet=&#34;`Stream`&#34; pulumi-lang-go=&#34;`stream`&#34; pulumi-lang-python=&#34;`stream`&#34; pulumi-lang-yaml=&#34;`stream`&#34; pulumi-lang-java=&#34;`stream`&#34; pulumi-lang-hcl=&#34;`stream`&#34;&gt;`stream`&lt;/span&gt; to pipe the file through an SSH
+     * shell session (uses &lt;span pulumi-lang-nodejs=&#34;`sudo`&#34; pulumi-lang-dotnet=&#34;`Sudo`&#34; pulumi-lang-go=&#34;`sudo`&#34; pulumi-lang-python=&#34;`sudo`&#34; pulumi-lang-yaml=&#34;`sudo`&#34; pulumi-lang-java=&#34;`sudo`&#34; pulumi-lang-hcl=&#34;`sudo`&#34;&gt;`sudo`&lt;/span&gt; where required), or &lt;span pulumi-lang-nodejs=&#34;`sftp`&#34; pulumi-lang-dotnet=&#34;`Sftp`&#34; pulumi-lang-go=&#34;`sftp`&#34; pulumi-lang-python=&#34;`sftp`&#34; pulumi-lang-yaml=&#34;`sftp`&#34; pulumi-lang-java=&#34;`sftp`&#34; pulumi-lang-hcl=&#34;`sftp`&#34;&gt;`sftp`&lt;/span&gt; to upload via the SFTP
+     * subsystem. Use &lt;span pulumi-lang-nodejs=&#34;`sftp`&#34; pulumi-lang-dotnet=&#34;`Sftp`&#34; pulumi-lang-go=&#34;`sftp`&#34; pulumi-lang-python=&#34;`sftp`&#34; pulumi-lang-yaml=&#34;`sftp`&#34; pulumi-lang-java=&#34;`sftp`&#34; pulumi-lang-hcl=&#34;`sftp`&#34;&gt;`sftp`&lt;/span&gt; when the target host&#39;s SSH server only allows the
+     * SFTP subsystem; note that the SFTP path does not invoke &lt;span pulumi-lang-nodejs=&#34;`sudo`&#34; pulumi-lang-dotnet=&#34;`Sudo`&#34; pulumi-lang-go=&#34;`sudo`&#34; pulumi-lang-python=&#34;`sudo`&#34; pulumi-lang-yaml=&#34;`sudo`&#34; pulumi-lang-java=&#34;`sudo`&#34; pulumi-lang-hcl=&#34;`sudo`&#34;&gt;`sudo`&lt;/span&gt;, so the SSH
      * user must have direct write permission to the target directory. Has no
-     * effect for &lt;span pulumi-lang-nodejs=&#34;`iso`&#34; pulumi-lang-dotnet=&#34;`Iso`&#34; pulumi-lang-go=&#34;`iso`&#34; pulumi-lang-python=&#34;`iso`&#34; pulumi-lang-yaml=&#34;`iso`&#34; pulumi-lang-java=&#34;`iso`&#34;&gt;`iso`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`vztmpl`&#34; pulumi-lang-dotnet=&#34;`Vztmpl`&#34; pulumi-lang-go=&#34;`vztmpl`&#34; pulumi-lang-python=&#34;`vztmpl`&#34; pulumi-lang-yaml=&#34;`vztmpl`&#34; pulumi-lang-java=&#34;`vztmpl`&#34;&gt;`vztmpl`&lt;/span&gt;, and &lt;span pulumi-lang-nodejs=&#34;`import`&#34; pulumi-lang-dotnet=&#34;`Import`&#34; pulumi-lang-go=&#34;`import`&#34; pulumi-lang-python=&#34;`import`&#34; pulumi-lang-yaml=&#34;`import`&#34; pulumi-lang-java=&#34;`import`&#34;&gt;`import`&lt;/span&gt; content types, which always use
-     * the HTTP API. Defaults to &lt;span pulumi-lang-nodejs=&#34;`stream`&#34; pulumi-lang-dotnet=&#34;`Stream`&#34; pulumi-lang-go=&#34;`stream`&#34; pulumi-lang-python=&#34;`stream`&#34; pulumi-lang-yaml=&#34;`stream`&#34; pulumi-lang-java=&#34;`stream`&#34;&gt;`stream`&lt;/span&gt;.
+     * effect for &lt;span pulumi-lang-nodejs=&#34;`iso`&#34; pulumi-lang-dotnet=&#34;`Iso`&#34; pulumi-lang-go=&#34;`iso`&#34; pulumi-lang-python=&#34;`iso`&#34; pulumi-lang-yaml=&#34;`iso`&#34; pulumi-lang-java=&#34;`iso`&#34; pulumi-lang-hcl=&#34;`iso`&#34;&gt;`iso`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`vztmpl`&#34; pulumi-lang-dotnet=&#34;`Vztmpl`&#34; pulumi-lang-go=&#34;`vztmpl`&#34; pulumi-lang-python=&#34;`vztmpl`&#34; pulumi-lang-yaml=&#34;`vztmpl`&#34; pulumi-lang-java=&#34;`vztmpl`&#34; pulumi-lang-hcl=&#34;`vztmpl`&#34;&gt;`vztmpl`&lt;/span&gt;, and &lt;span pulumi-lang-nodejs=&#34;`import`&#34; pulumi-lang-dotnet=&#34;`Import`&#34; pulumi-lang-go=&#34;`import`&#34; pulumi-lang-python=&#34;`import`&#34; pulumi-lang-yaml=&#34;`import`&#34; pulumi-lang-java=&#34;`import`&#34; pulumi-lang-hcl=&#34;`import`&#34;&gt;`import`&lt;/span&gt; content types, which always use
+     * the HTTP API. Defaults to &lt;span pulumi-lang-nodejs=&#34;`stream`&#34; pulumi-lang-dotnet=&#34;`Stream`&#34; pulumi-lang-go=&#34;`stream`&#34; pulumi-lang-python=&#34;`stream`&#34; pulumi-lang-yaml=&#34;`stream`&#34; pulumi-lang-java=&#34;`stream`&#34; pulumi-lang-hcl=&#34;`stream`&#34;&gt;`stream`&lt;/span&gt;.
      * 
      */
     @Import(name="uploadMode")
@@ -225,13 +225,13 @@ public final class FileLegacyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The SSH upload mode for non-API content types
-     * (snippets, backups, etc.). Set to &lt;span pulumi-lang-nodejs=&#34;`stream`&#34; pulumi-lang-dotnet=&#34;`Stream`&#34; pulumi-lang-go=&#34;`stream`&#34; pulumi-lang-python=&#34;`stream`&#34; pulumi-lang-yaml=&#34;`stream`&#34; pulumi-lang-java=&#34;`stream`&#34;&gt;`stream`&lt;/span&gt; to pipe the file through an SSH
-     * shell session (uses &lt;span pulumi-lang-nodejs=&#34;`sudo`&#34; pulumi-lang-dotnet=&#34;`Sudo`&#34; pulumi-lang-go=&#34;`sudo`&#34; pulumi-lang-python=&#34;`sudo`&#34; pulumi-lang-yaml=&#34;`sudo`&#34; pulumi-lang-java=&#34;`sudo`&#34;&gt;`sudo`&lt;/span&gt; where required), or &lt;span pulumi-lang-nodejs=&#34;`sftp`&#34; pulumi-lang-dotnet=&#34;`Sftp`&#34; pulumi-lang-go=&#34;`sftp`&#34; pulumi-lang-python=&#34;`sftp`&#34; pulumi-lang-yaml=&#34;`sftp`&#34; pulumi-lang-java=&#34;`sftp`&#34;&gt;`sftp`&lt;/span&gt; to upload via the SFTP
-     * subsystem. Use &lt;span pulumi-lang-nodejs=&#34;`sftp`&#34; pulumi-lang-dotnet=&#34;`Sftp`&#34; pulumi-lang-go=&#34;`sftp`&#34; pulumi-lang-python=&#34;`sftp`&#34; pulumi-lang-yaml=&#34;`sftp`&#34; pulumi-lang-java=&#34;`sftp`&#34;&gt;`sftp`&lt;/span&gt; when the target host&#39;s SSH server only allows the
-     * SFTP subsystem; note that the SFTP path does not invoke &lt;span pulumi-lang-nodejs=&#34;`sudo`&#34; pulumi-lang-dotnet=&#34;`Sudo`&#34; pulumi-lang-go=&#34;`sudo`&#34; pulumi-lang-python=&#34;`sudo`&#34; pulumi-lang-yaml=&#34;`sudo`&#34; pulumi-lang-java=&#34;`sudo`&#34;&gt;`sudo`&lt;/span&gt;, so the SSH
+     * (snippets, backups, etc.). Set to &lt;span pulumi-lang-nodejs=&#34;`stream`&#34; pulumi-lang-dotnet=&#34;`Stream`&#34; pulumi-lang-go=&#34;`stream`&#34; pulumi-lang-python=&#34;`stream`&#34; pulumi-lang-yaml=&#34;`stream`&#34; pulumi-lang-java=&#34;`stream`&#34; pulumi-lang-hcl=&#34;`stream`&#34;&gt;`stream`&lt;/span&gt; to pipe the file through an SSH
+     * shell session (uses &lt;span pulumi-lang-nodejs=&#34;`sudo`&#34; pulumi-lang-dotnet=&#34;`Sudo`&#34; pulumi-lang-go=&#34;`sudo`&#34; pulumi-lang-python=&#34;`sudo`&#34; pulumi-lang-yaml=&#34;`sudo`&#34; pulumi-lang-java=&#34;`sudo`&#34; pulumi-lang-hcl=&#34;`sudo`&#34;&gt;`sudo`&lt;/span&gt; where required), or &lt;span pulumi-lang-nodejs=&#34;`sftp`&#34; pulumi-lang-dotnet=&#34;`Sftp`&#34; pulumi-lang-go=&#34;`sftp`&#34; pulumi-lang-python=&#34;`sftp`&#34; pulumi-lang-yaml=&#34;`sftp`&#34; pulumi-lang-java=&#34;`sftp`&#34; pulumi-lang-hcl=&#34;`sftp`&#34;&gt;`sftp`&lt;/span&gt; to upload via the SFTP
+     * subsystem. Use &lt;span pulumi-lang-nodejs=&#34;`sftp`&#34; pulumi-lang-dotnet=&#34;`Sftp`&#34; pulumi-lang-go=&#34;`sftp`&#34; pulumi-lang-python=&#34;`sftp`&#34; pulumi-lang-yaml=&#34;`sftp`&#34; pulumi-lang-java=&#34;`sftp`&#34; pulumi-lang-hcl=&#34;`sftp`&#34;&gt;`sftp`&lt;/span&gt; when the target host&#39;s SSH server only allows the
+     * SFTP subsystem; note that the SFTP path does not invoke &lt;span pulumi-lang-nodejs=&#34;`sudo`&#34; pulumi-lang-dotnet=&#34;`Sudo`&#34; pulumi-lang-go=&#34;`sudo`&#34; pulumi-lang-python=&#34;`sudo`&#34; pulumi-lang-yaml=&#34;`sudo`&#34; pulumi-lang-java=&#34;`sudo`&#34; pulumi-lang-hcl=&#34;`sudo`&#34;&gt;`sudo`&lt;/span&gt;, so the SSH
      * user must have direct write permission to the target directory. Has no
-     * effect for &lt;span pulumi-lang-nodejs=&#34;`iso`&#34; pulumi-lang-dotnet=&#34;`Iso`&#34; pulumi-lang-go=&#34;`iso`&#34; pulumi-lang-python=&#34;`iso`&#34; pulumi-lang-yaml=&#34;`iso`&#34; pulumi-lang-java=&#34;`iso`&#34;&gt;`iso`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`vztmpl`&#34; pulumi-lang-dotnet=&#34;`Vztmpl`&#34; pulumi-lang-go=&#34;`vztmpl`&#34; pulumi-lang-python=&#34;`vztmpl`&#34; pulumi-lang-yaml=&#34;`vztmpl`&#34; pulumi-lang-java=&#34;`vztmpl`&#34;&gt;`vztmpl`&lt;/span&gt;, and &lt;span pulumi-lang-nodejs=&#34;`import`&#34; pulumi-lang-dotnet=&#34;`Import`&#34; pulumi-lang-go=&#34;`import`&#34; pulumi-lang-python=&#34;`import`&#34; pulumi-lang-yaml=&#34;`import`&#34; pulumi-lang-java=&#34;`import`&#34;&gt;`import`&lt;/span&gt; content types, which always use
-     * the HTTP API. Defaults to &lt;span pulumi-lang-nodejs=&#34;`stream`&#34; pulumi-lang-dotnet=&#34;`Stream`&#34; pulumi-lang-go=&#34;`stream`&#34; pulumi-lang-python=&#34;`stream`&#34; pulumi-lang-yaml=&#34;`stream`&#34; pulumi-lang-java=&#34;`stream`&#34;&gt;`stream`&lt;/span&gt;.
+     * effect for &lt;span pulumi-lang-nodejs=&#34;`iso`&#34; pulumi-lang-dotnet=&#34;`Iso`&#34; pulumi-lang-go=&#34;`iso`&#34; pulumi-lang-python=&#34;`iso`&#34; pulumi-lang-yaml=&#34;`iso`&#34; pulumi-lang-java=&#34;`iso`&#34; pulumi-lang-hcl=&#34;`iso`&#34;&gt;`iso`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`vztmpl`&#34; pulumi-lang-dotnet=&#34;`Vztmpl`&#34; pulumi-lang-go=&#34;`vztmpl`&#34; pulumi-lang-python=&#34;`vztmpl`&#34; pulumi-lang-yaml=&#34;`vztmpl`&#34; pulumi-lang-java=&#34;`vztmpl`&#34; pulumi-lang-hcl=&#34;`vztmpl`&#34;&gt;`vztmpl`&lt;/span&gt;, and &lt;span pulumi-lang-nodejs=&#34;`import`&#34; pulumi-lang-dotnet=&#34;`Import`&#34; pulumi-lang-go=&#34;`import`&#34; pulumi-lang-python=&#34;`import`&#34; pulumi-lang-yaml=&#34;`import`&#34; pulumi-lang-java=&#34;`import`&#34; pulumi-lang-hcl=&#34;`import`&#34;&gt;`import`&lt;/span&gt; content types, which always use
+     * the HTTP API. Defaults to &lt;span pulumi-lang-nodejs=&#34;`stream`&#34; pulumi-lang-dotnet=&#34;`Stream`&#34; pulumi-lang-go=&#34;`stream`&#34; pulumi-lang-python=&#34;`stream`&#34; pulumi-lang-yaml=&#34;`stream`&#34; pulumi-lang-java=&#34;`stream`&#34; pulumi-lang-hcl=&#34;`stream`&#34;&gt;`stream`&lt;/span&gt;.
      * 
      */
     public Optional<Output<String>> uploadMode() {
@@ -319,7 +319,7 @@ public final class FileLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fileMode The file mode in octal format, e.g. &lt;span pulumi-lang-nodejs=&#34;`0700`&#34; pulumi-lang-dotnet=&#34;`0700`&#34; pulumi-lang-go=&#34;`0700`&#34; pulumi-lang-python=&#34;`0700`&#34; pulumi-lang-yaml=&#34;`0700`&#34; pulumi-lang-java=&#34;`0700`&#34;&gt;`0700`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`600`&#34; pulumi-lang-dotnet=&#34;`600`&#34; pulumi-lang-go=&#34;`600`&#34; pulumi-lang-python=&#34;`600`&#34; pulumi-lang-yaml=&#34;`600`&#34; pulumi-lang-java=&#34;`600`&#34;&gt;`600`&lt;/span&gt;. Note that the prefixes &lt;span pulumi-lang-nodejs=&#34;`0o`&#34; pulumi-lang-dotnet=&#34;`0o`&#34; pulumi-lang-go=&#34;`0o`&#34; pulumi-lang-python=&#34;`0o`&#34; pulumi-lang-yaml=&#34;`0o`&#34; pulumi-lang-java=&#34;`0o`&#34;&gt;`0o`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`0x`&#34; pulumi-lang-dotnet=&#34;`0x`&#34; pulumi-lang-go=&#34;`0x`&#34; pulumi-lang-python=&#34;`0x`&#34; pulumi-lang-yaml=&#34;`0x`&#34; pulumi-lang-java=&#34;`0x`&#34;&gt;`0x`&lt;/span&gt; is not supported! Setting this attribute is also only allowed for `root{@literal @}pam` authenticated user.
+         * @param fileMode The file mode in octal format, e.g. &lt;span pulumi-lang-nodejs=&#34;`0700`&#34; pulumi-lang-dotnet=&#34;`0700`&#34; pulumi-lang-go=&#34;`0700`&#34; pulumi-lang-python=&#34;`0700`&#34; pulumi-lang-yaml=&#34;`0700`&#34; pulumi-lang-java=&#34;`0700`&#34; pulumi-lang-hcl=&#34;`0700`&#34;&gt;`0700`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`600`&#34; pulumi-lang-dotnet=&#34;`600`&#34; pulumi-lang-go=&#34;`600`&#34; pulumi-lang-python=&#34;`600`&#34; pulumi-lang-yaml=&#34;`600`&#34; pulumi-lang-java=&#34;`600`&#34; pulumi-lang-hcl=&#34;`600`&#34;&gt;`600`&lt;/span&gt;. Note that the prefixes &lt;span pulumi-lang-nodejs=&#34;`0o`&#34; pulumi-lang-dotnet=&#34;`0o`&#34; pulumi-lang-go=&#34;`0o`&#34; pulumi-lang-python=&#34;`0o`&#34; pulumi-lang-yaml=&#34;`0o`&#34; pulumi-lang-java=&#34;`0o`&#34; pulumi-lang-hcl=&#34;`0o`&#34;&gt;`0o`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`0x`&#34; pulumi-lang-dotnet=&#34;`0x`&#34; pulumi-lang-go=&#34;`0x`&#34; pulumi-lang-python=&#34;`0x`&#34; pulumi-lang-yaml=&#34;`0x`&#34; pulumi-lang-java=&#34;`0x`&#34; pulumi-lang-hcl=&#34;`0x`&#34;&gt;`0x`&lt;/span&gt; is not supported! Setting this attribute is also only allowed for `root{@literal @}pam` authenticated user.
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class FileLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fileMode The file mode in octal format, e.g. &lt;span pulumi-lang-nodejs=&#34;`0700`&#34; pulumi-lang-dotnet=&#34;`0700`&#34; pulumi-lang-go=&#34;`0700`&#34; pulumi-lang-python=&#34;`0700`&#34; pulumi-lang-yaml=&#34;`0700`&#34; pulumi-lang-java=&#34;`0700`&#34;&gt;`0700`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`600`&#34; pulumi-lang-dotnet=&#34;`600`&#34; pulumi-lang-go=&#34;`600`&#34; pulumi-lang-python=&#34;`600`&#34; pulumi-lang-yaml=&#34;`600`&#34; pulumi-lang-java=&#34;`600`&#34;&gt;`600`&lt;/span&gt;. Note that the prefixes &lt;span pulumi-lang-nodejs=&#34;`0o`&#34; pulumi-lang-dotnet=&#34;`0o`&#34; pulumi-lang-go=&#34;`0o`&#34; pulumi-lang-python=&#34;`0o`&#34; pulumi-lang-yaml=&#34;`0o`&#34; pulumi-lang-java=&#34;`0o`&#34;&gt;`0o`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`0x`&#34; pulumi-lang-dotnet=&#34;`0x`&#34; pulumi-lang-go=&#34;`0x`&#34; pulumi-lang-python=&#34;`0x`&#34; pulumi-lang-yaml=&#34;`0x`&#34; pulumi-lang-java=&#34;`0x`&#34;&gt;`0x`&lt;/span&gt; is not supported! Setting this attribute is also only allowed for `root{@literal @}pam` authenticated user.
+         * @param fileMode The file mode in octal format, e.g. &lt;span pulumi-lang-nodejs=&#34;`0700`&#34; pulumi-lang-dotnet=&#34;`0700`&#34; pulumi-lang-go=&#34;`0700`&#34; pulumi-lang-python=&#34;`0700`&#34; pulumi-lang-yaml=&#34;`0700`&#34; pulumi-lang-java=&#34;`0700`&#34; pulumi-lang-hcl=&#34;`0700`&#34;&gt;`0700`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`600`&#34; pulumi-lang-dotnet=&#34;`600`&#34; pulumi-lang-go=&#34;`600`&#34; pulumi-lang-python=&#34;`600`&#34; pulumi-lang-yaml=&#34;`600`&#34; pulumi-lang-java=&#34;`600`&#34; pulumi-lang-hcl=&#34;`600`&#34;&gt;`600`&lt;/span&gt;. Note that the prefixes &lt;span pulumi-lang-nodejs=&#34;`0o`&#34; pulumi-lang-dotnet=&#34;`0o`&#34; pulumi-lang-go=&#34;`0o`&#34; pulumi-lang-python=&#34;`0o`&#34; pulumi-lang-yaml=&#34;`0o`&#34; pulumi-lang-java=&#34;`0o`&#34; pulumi-lang-hcl=&#34;`0o`&#34;&gt;`0o`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`0x`&#34; pulumi-lang-dotnet=&#34;`0x`&#34; pulumi-lang-go=&#34;`0x`&#34; pulumi-lang-python=&#34;`0x`&#34; pulumi-lang-yaml=&#34;`0x`&#34; pulumi-lang-java=&#34;`0x`&#34; pulumi-lang-hcl=&#34;`0x`&#34;&gt;`0x`&lt;/span&gt; is not supported! Setting this attribute is also only allowed for `root{@literal @}pam` authenticated user.
          * 
          * @return builder
          * 
@@ -446,7 +446,7 @@ public final class FileLegacyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param overwrite Whether to overwrite an existing file (defaults to
-         * &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+         * &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -458,7 +458,7 @@ public final class FileLegacyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param overwrite Whether to overwrite an existing file (defaults to
-         * &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+         * &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -468,7 +468,7 @@ public final class FileLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceFile The source file (conflicts with &lt;span pulumi-lang-nodejs=&#34;`sourceRaw`&#34; pulumi-lang-dotnet=&#34;`SourceRaw`&#34; pulumi-lang-go=&#34;`sourceRaw`&#34; pulumi-lang-python=&#34;`source_raw`&#34; pulumi-lang-yaml=&#34;`sourceRaw`&#34; pulumi-lang-java=&#34;`sourceRaw`&#34;&gt;`sourceRaw`&lt;/span&gt;),
+         * @param sourceFile The source file (conflicts with &lt;span pulumi-lang-nodejs=&#34;`sourceRaw`&#34; pulumi-lang-dotnet=&#34;`SourceRaw`&#34; pulumi-lang-go=&#34;`sourceRaw`&#34; pulumi-lang-python=&#34;`source_raw`&#34; pulumi-lang-yaml=&#34;`sourceRaw`&#34; pulumi-lang-java=&#34;`sourceRaw`&#34; pulumi-lang-hcl=&#34;`source_raw`&#34;&gt;`sourceRaw`&lt;/span&gt;),
          * could be a local file or a URL. If the source file is a URL, the file will
          * be downloaded and stored locally before uploading it to Proxmox VE.
          * 
@@ -481,7 +481,7 @@ public final class FileLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceFile The source file (conflicts with &lt;span pulumi-lang-nodejs=&#34;`sourceRaw`&#34; pulumi-lang-dotnet=&#34;`SourceRaw`&#34; pulumi-lang-go=&#34;`sourceRaw`&#34; pulumi-lang-python=&#34;`source_raw`&#34; pulumi-lang-yaml=&#34;`sourceRaw`&#34; pulumi-lang-java=&#34;`sourceRaw`&#34;&gt;`sourceRaw`&lt;/span&gt;),
+         * @param sourceFile The source file (conflicts with &lt;span pulumi-lang-nodejs=&#34;`sourceRaw`&#34; pulumi-lang-dotnet=&#34;`SourceRaw`&#34; pulumi-lang-go=&#34;`sourceRaw`&#34; pulumi-lang-python=&#34;`source_raw`&#34; pulumi-lang-yaml=&#34;`sourceRaw`&#34; pulumi-lang-java=&#34;`sourceRaw`&#34; pulumi-lang-hcl=&#34;`source_raw`&#34;&gt;`sourceRaw`&lt;/span&gt;),
          * could be a local file or a URL. If the source file is a URL, the file will
          * be downloaded and stored locally before uploading it to Proxmox VE.
          * 
@@ -493,7 +493,7 @@ public final class FileLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceRaw The raw source (conflicts with &lt;span pulumi-lang-nodejs=&#34;`sourceFile`&#34; pulumi-lang-dotnet=&#34;`SourceFile`&#34; pulumi-lang-go=&#34;`sourceFile`&#34; pulumi-lang-python=&#34;`source_file`&#34; pulumi-lang-yaml=&#34;`sourceFile`&#34; pulumi-lang-java=&#34;`sourceFile`&#34;&gt;`sourceFile`&lt;/span&gt;).
+         * @param sourceRaw The raw source (conflicts with &lt;span pulumi-lang-nodejs=&#34;`sourceFile`&#34; pulumi-lang-dotnet=&#34;`SourceFile`&#34; pulumi-lang-go=&#34;`sourceFile`&#34; pulumi-lang-python=&#34;`source_file`&#34; pulumi-lang-yaml=&#34;`sourceFile`&#34; pulumi-lang-java=&#34;`sourceFile`&#34; pulumi-lang-hcl=&#34;`source_file`&#34;&gt;`sourceFile`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -504,7 +504,7 @@ public final class FileLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sourceRaw The raw source (conflicts with &lt;span pulumi-lang-nodejs=&#34;`sourceFile`&#34; pulumi-lang-dotnet=&#34;`SourceFile`&#34; pulumi-lang-go=&#34;`sourceFile`&#34; pulumi-lang-python=&#34;`source_file`&#34; pulumi-lang-yaml=&#34;`sourceFile`&#34; pulumi-lang-java=&#34;`sourceFile`&#34;&gt;`sourceFile`&lt;/span&gt;).
+         * @param sourceRaw The raw source (conflicts with &lt;span pulumi-lang-nodejs=&#34;`sourceFile`&#34; pulumi-lang-dotnet=&#34;`SourceFile`&#34; pulumi-lang-go=&#34;`sourceFile`&#34; pulumi-lang-python=&#34;`source_file`&#34; pulumi-lang-yaml=&#34;`sourceFile`&#34; pulumi-lang-java=&#34;`sourceFile`&#34; pulumi-lang-hcl=&#34;`source_file`&#34;&gt;`sourceFile`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -538,13 +538,13 @@ public final class FileLegacyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param uploadMode The SSH upload mode for non-API content types
-         * (snippets, backups, etc.). Set to &lt;span pulumi-lang-nodejs=&#34;`stream`&#34; pulumi-lang-dotnet=&#34;`Stream`&#34; pulumi-lang-go=&#34;`stream`&#34; pulumi-lang-python=&#34;`stream`&#34; pulumi-lang-yaml=&#34;`stream`&#34; pulumi-lang-java=&#34;`stream`&#34;&gt;`stream`&lt;/span&gt; to pipe the file through an SSH
-         * shell session (uses &lt;span pulumi-lang-nodejs=&#34;`sudo`&#34; pulumi-lang-dotnet=&#34;`Sudo`&#34; pulumi-lang-go=&#34;`sudo`&#34; pulumi-lang-python=&#34;`sudo`&#34; pulumi-lang-yaml=&#34;`sudo`&#34; pulumi-lang-java=&#34;`sudo`&#34;&gt;`sudo`&lt;/span&gt; where required), or &lt;span pulumi-lang-nodejs=&#34;`sftp`&#34; pulumi-lang-dotnet=&#34;`Sftp`&#34; pulumi-lang-go=&#34;`sftp`&#34; pulumi-lang-python=&#34;`sftp`&#34; pulumi-lang-yaml=&#34;`sftp`&#34; pulumi-lang-java=&#34;`sftp`&#34;&gt;`sftp`&lt;/span&gt; to upload via the SFTP
-         * subsystem. Use &lt;span pulumi-lang-nodejs=&#34;`sftp`&#34; pulumi-lang-dotnet=&#34;`Sftp`&#34; pulumi-lang-go=&#34;`sftp`&#34; pulumi-lang-python=&#34;`sftp`&#34; pulumi-lang-yaml=&#34;`sftp`&#34; pulumi-lang-java=&#34;`sftp`&#34;&gt;`sftp`&lt;/span&gt; when the target host&#39;s SSH server only allows the
-         * SFTP subsystem; note that the SFTP path does not invoke &lt;span pulumi-lang-nodejs=&#34;`sudo`&#34; pulumi-lang-dotnet=&#34;`Sudo`&#34; pulumi-lang-go=&#34;`sudo`&#34; pulumi-lang-python=&#34;`sudo`&#34; pulumi-lang-yaml=&#34;`sudo`&#34; pulumi-lang-java=&#34;`sudo`&#34;&gt;`sudo`&lt;/span&gt;, so the SSH
+         * (snippets, backups, etc.). Set to &lt;span pulumi-lang-nodejs=&#34;`stream`&#34; pulumi-lang-dotnet=&#34;`Stream`&#34; pulumi-lang-go=&#34;`stream`&#34; pulumi-lang-python=&#34;`stream`&#34; pulumi-lang-yaml=&#34;`stream`&#34; pulumi-lang-java=&#34;`stream`&#34; pulumi-lang-hcl=&#34;`stream`&#34;&gt;`stream`&lt;/span&gt; to pipe the file through an SSH
+         * shell session (uses &lt;span pulumi-lang-nodejs=&#34;`sudo`&#34; pulumi-lang-dotnet=&#34;`Sudo`&#34; pulumi-lang-go=&#34;`sudo`&#34; pulumi-lang-python=&#34;`sudo`&#34; pulumi-lang-yaml=&#34;`sudo`&#34; pulumi-lang-java=&#34;`sudo`&#34; pulumi-lang-hcl=&#34;`sudo`&#34;&gt;`sudo`&lt;/span&gt; where required), or &lt;span pulumi-lang-nodejs=&#34;`sftp`&#34; pulumi-lang-dotnet=&#34;`Sftp`&#34; pulumi-lang-go=&#34;`sftp`&#34; pulumi-lang-python=&#34;`sftp`&#34; pulumi-lang-yaml=&#34;`sftp`&#34; pulumi-lang-java=&#34;`sftp`&#34; pulumi-lang-hcl=&#34;`sftp`&#34;&gt;`sftp`&lt;/span&gt; to upload via the SFTP
+         * subsystem. Use &lt;span pulumi-lang-nodejs=&#34;`sftp`&#34; pulumi-lang-dotnet=&#34;`Sftp`&#34; pulumi-lang-go=&#34;`sftp`&#34; pulumi-lang-python=&#34;`sftp`&#34; pulumi-lang-yaml=&#34;`sftp`&#34; pulumi-lang-java=&#34;`sftp`&#34; pulumi-lang-hcl=&#34;`sftp`&#34;&gt;`sftp`&lt;/span&gt; when the target host&#39;s SSH server only allows the
+         * SFTP subsystem; note that the SFTP path does not invoke &lt;span pulumi-lang-nodejs=&#34;`sudo`&#34; pulumi-lang-dotnet=&#34;`Sudo`&#34; pulumi-lang-go=&#34;`sudo`&#34; pulumi-lang-python=&#34;`sudo`&#34; pulumi-lang-yaml=&#34;`sudo`&#34; pulumi-lang-java=&#34;`sudo`&#34; pulumi-lang-hcl=&#34;`sudo`&#34;&gt;`sudo`&lt;/span&gt;, so the SSH
          * user must have direct write permission to the target directory. Has no
-         * effect for &lt;span pulumi-lang-nodejs=&#34;`iso`&#34; pulumi-lang-dotnet=&#34;`Iso`&#34; pulumi-lang-go=&#34;`iso`&#34; pulumi-lang-python=&#34;`iso`&#34; pulumi-lang-yaml=&#34;`iso`&#34; pulumi-lang-java=&#34;`iso`&#34;&gt;`iso`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`vztmpl`&#34; pulumi-lang-dotnet=&#34;`Vztmpl`&#34; pulumi-lang-go=&#34;`vztmpl`&#34; pulumi-lang-python=&#34;`vztmpl`&#34; pulumi-lang-yaml=&#34;`vztmpl`&#34; pulumi-lang-java=&#34;`vztmpl`&#34;&gt;`vztmpl`&lt;/span&gt;, and &lt;span pulumi-lang-nodejs=&#34;`import`&#34; pulumi-lang-dotnet=&#34;`Import`&#34; pulumi-lang-go=&#34;`import`&#34; pulumi-lang-python=&#34;`import`&#34; pulumi-lang-yaml=&#34;`import`&#34; pulumi-lang-java=&#34;`import`&#34;&gt;`import`&lt;/span&gt; content types, which always use
-         * the HTTP API. Defaults to &lt;span pulumi-lang-nodejs=&#34;`stream`&#34; pulumi-lang-dotnet=&#34;`Stream`&#34; pulumi-lang-go=&#34;`stream`&#34; pulumi-lang-python=&#34;`stream`&#34; pulumi-lang-yaml=&#34;`stream`&#34; pulumi-lang-java=&#34;`stream`&#34;&gt;`stream`&lt;/span&gt;.
+         * effect for &lt;span pulumi-lang-nodejs=&#34;`iso`&#34; pulumi-lang-dotnet=&#34;`Iso`&#34; pulumi-lang-go=&#34;`iso`&#34; pulumi-lang-python=&#34;`iso`&#34; pulumi-lang-yaml=&#34;`iso`&#34; pulumi-lang-java=&#34;`iso`&#34; pulumi-lang-hcl=&#34;`iso`&#34;&gt;`iso`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`vztmpl`&#34; pulumi-lang-dotnet=&#34;`Vztmpl`&#34; pulumi-lang-go=&#34;`vztmpl`&#34; pulumi-lang-python=&#34;`vztmpl`&#34; pulumi-lang-yaml=&#34;`vztmpl`&#34; pulumi-lang-java=&#34;`vztmpl`&#34; pulumi-lang-hcl=&#34;`vztmpl`&#34;&gt;`vztmpl`&lt;/span&gt;, and &lt;span pulumi-lang-nodejs=&#34;`import`&#34; pulumi-lang-dotnet=&#34;`Import`&#34; pulumi-lang-go=&#34;`import`&#34; pulumi-lang-python=&#34;`import`&#34; pulumi-lang-yaml=&#34;`import`&#34; pulumi-lang-java=&#34;`import`&#34; pulumi-lang-hcl=&#34;`import`&#34;&gt;`import`&lt;/span&gt; content types, which always use
+         * the HTTP API. Defaults to &lt;span pulumi-lang-nodejs=&#34;`stream`&#34; pulumi-lang-dotnet=&#34;`Stream`&#34; pulumi-lang-go=&#34;`stream`&#34; pulumi-lang-python=&#34;`stream`&#34; pulumi-lang-yaml=&#34;`stream`&#34; pulumi-lang-java=&#34;`stream`&#34; pulumi-lang-hcl=&#34;`stream`&#34;&gt;`stream`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -556,13 +556,13 @@ public final class FileLegacyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param uploadMode The SSH upload mode for non-API content types
-         * (snippets, backups, etc.). Set to &lt;span pulumi-lang-nodejs=&#34;`stream`&#34; pulumi-lang-dotnet=&#34;`Stream`&#34; pulumi-lang-go=&#34;`stream`&#34; pulumi-lang-python=&#34;`stream`&#34; pulumi-lang-yaml=&#34;`stream`&#34; pulumi-lang-java=&#34;`stream`&#34;&gt;`stream`&lt;/span&gt; to pipe the file through an SSH
-         * shell session (uses &lt;span pulumi-lang-nodejs=&#34;`sudo`&#34; pulumi-lang-dotnet=&#34;`Sudo`&#34; pulumi-lang-go=&#34;`sudo`&#34; pulumi-lang-python=&#34;`sudo`&#34; pulumi-lang-yaml=&#34;`sudo`&#34; pulumi-lang-java=&#34;`sudo`&#34;&gt;`sudo`&lt;/span&gt; where required), or &lt;span pulumi-lang-nodejs=&#34;`sftp`&#34; pulumi-lang-dotnet=&#34;`Sftp`&#34; pulumi-lang-go=&#34;`sftp`&#34; pulumi-lang-python=&#34;`sftp`&#34; pulumi-lang-yaml=&#34;`sftp`&#34; pulumi-lang-java=&#34;`sftp`&#34;&gt;`sftp`&lt;/span&gt; to upload via the SFTP
-         * subsystem. Use &lt;span pulumi-lang-nodejs=&#34;`sftp`&#34; pulumi-lang-dotnet=&#34;`Sftp`&#34; pulumi-lang-go=&#34;`sftp`&#34; pulumi-lang-python=&#34;`sftp`&#34; pulumi-lang-yaml=&#34;`sftp`&#34; pulumi-lang-java=&#34;`sftp`&#34;&gt;`sftp`&lt;/span&gt; when the target host&#39;s SSH server only allows the
-         * SFTP subsystem; note that the SFTP path does not invoke &lt;span pulumi-lang-nodejs=&#34;`sudo`&#34; pulumi-lang-dotnet=&#34;`Sudo`&#34; pulumi-lang-go=&#34;`sudo`&#34; pulumi-lang-python=&#34;`sudo`&#34; pulumi-lang-yaml=&#34;`sudo`&#34; pulumi-lang-java=&#34;`sudo`&#34;&gt;`sudo`&lt;/span&gt;, so the SSH
+         * (snippets, backups, etc.). Set to &lt;span pulumi-lang-nodejs=&#34;`stream`&#34; pulumi-lang-dotnet=&#34;`Stream`&#34; pulumi-lang-go=&#34;`stream`&#34; pulumi-lang-python=&#34;`stream`&#34; pulumi-lang-yaml=&#34;`stream`&#34; pulumi-lang-java=&#34;`stream`&#34; pulumi-lang-hcl=&#34;`stream`&#34;&gt;`stream`&lt;/span&gt; to pipe the file through an SSH
+         * shell session (uses &lt;span pulumi-lang-nodejs=&#34;`sudo`&#34; pulumi-lang-dotnet=&#34;`Sudo`&#34; pulumi-lang-go=&#34;`sudo`&#34; pulumi-lang-python=&#34;`sudo`&#34; pulumi-lang-yaml=&#34;`sudo`&#34; pulumi-lang-java=&#34;`sudo`&#34; pulumi-lang-hcl=&#34;`sudo`&#34;&gt;`sudo`&lt;/span&gt; where required), or &lt;span pulumi-lang-nodejs=&#34;`sftp`&#34; pulumi-lang-dotnet=&#34;`Sftp`&#34; pulumi-lang-go=&#34;`sftp`&#34; pulumi-lang-python=&#34;`sftp`&#34; pulumi-lang-yaml=&#34;`sftp`&#34; pulumi-lang-java=&#34;`sftp`&#34; pulumi-lang-hcl=&#34;`sftp`&#34;&gt;`sftp`&lt;/span&gt; to upload via the SFTP
+         * subsystem. Use &lt;span pulumi-lang-nodejs=&#34;`sftp`&#34; pulumi-lang-dotnet=&#34;`Sftp`&#34; pulumi-lang-go=&#34;`sftp`&#34; pulumi-lang-python=&#34;`sftp`&#34; pulumi-lang-yaml=&#34;`sftp`&#34; pulumi-lang-java=&#34;`sftp`&#34; pulumi-lang-hcl=&#34;`sftp`&#34;&gt;`sftp`&lt;/span&gt; when the target host&#39;s SSH server only allows the
+         * SFTP subsystem; note that the SFTP path does not invoke &lt;span pulumi-lang-nodejs=&#34;`sudo`&#34; pulumi-lang-dotnet=&#34;`Sudo`&#34; pulumi-lang-go=&#34;`sudo`&#34; pulumi-lang-python=&#34;`sudo`&#34; pulumi-lang-yaml=&#34;`sudo`&#34; pulumi-lang-java=&#34;`sudo`&#34; pulumi-lang-hcl=&#34;`sudo`&#34;&gt;`sudo`&lt;/span&gt;, so the SSH
          * user must have direct write permission to the target directory. Has no
-         * effect for &lt;span pulumi-lang-nodejs=&#34;`iso`&#34; pulumi-lang-dotnet=&#34;`Iso`&#34; pulumi-lang-go=&#34;`iso`&#34; pulumi-lang-python=&#34;`iso`&#34; pulumi-lang-yaml=&#34;`iso`&#34; pulumi-lang-java=&#34;`iso`&#34;&gt;`iso`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`vztmpl`&#34; pulumi-lang-dotnet=&#34;`Vztmpl`&#34; pulumi-lang-go=&#34;`vztmpl`&#34; pulumi-lang-python=&#34;`vztmpl`&#34; pulumi-lang-yaml=&#34;`vztmpl`&#34; pulumi-lang-java=&#34;`vztmpl`&#34;&gt;`vztmpl`&lt;/span&gt;, and &lt;span pulumi-lang-nodejs=&#34;`import`&#34; pulumi-lang-dotnet=&#34;`Import`&#34; pulumi-lang-go=&#34;`import`&#34; pulumi-lang-python=&#34;`import`&#34; pulumi-lang-yaml=&#34;`import`&#34; pulumi-lang-java=&#34;`import`&#34;&gt;`import`&lt;/span&gt; content types, which always use
-         * the HTTP API. Defaults to &lt;span pulumi-lang-nodejs=&#34;`stream`&#34; pulumi-lang-dotnet=&#34;`Stream`&#34; pulumi-lang-go=&#34;`stream`&#34; pulumi-lang-python=&#34;`stream`&#34; pulumi-lang-yaml=&#34;`stream`&#34; pulumi-lang-java=&#34;`stream`&#34;&gt;`stream`&lt;/span&gt;.
+         * effect for &lt;span pulumi-lang-nodejs=&#34;`iso`&#34; pulumi-lang-dotnet=&#34;`Iso`&#34; pulumi-lang-go=&#34;`iso`&#34; pulumi-lang-python=&#34;`iso`&#34; pulumi-lang-yaml=&#34;`iso`&#34; pulumi-lang-java=&#34;`iso`&#34; pulumi-lang-hcl=&#34;`iso`&#34;&gt;`iso`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`vztmpl`&#34; pulumi-lang-dotnet=&#34;`Vztmpl`&#34; pulumi-lang-go=&#34;`vztmpl`&#34; pulumi-lang-python=&#34;`vztmpl`&#34; pulumi-lang-yaml=&#34;`vztmpl`&#34; pulumi-lang-java=&#34;`vztmpl`&#34; pulumi-lang-hcl=&#34;`vztmpl`&#34;&gt;`vztmpl`&lt;/span&gt;, and &lt;span pulumi-lang-nodejs=&#34;`import`&#34; pulumi-lang-dotnet=&#34;`Import`&#34; pulumi-lang-go=&#34;`import`&#34; pulumi-lang-python=&#34;`import`&#34; pulumi-lang-yaml=&#34;`import`&#34; pulumi-lang-java=&#34;`import`&#34; pulumi-lang-hcl=&#34;`import`&#34;&gt;`import`&lt;/span&gt; content types, which always use
+         * the HTTP API. Defaults to &lt;span pulumi-lang-nodejs=&#34;`stream`&#34; pulumi-lang-dotnet=&#34;`Stream`&#34; pulumi-lang-go=&#34;`stream`&#34; pulumi-lang-python=&#34;`stream`&#34; pulumi-lang-yaml=&#34;`stream`&#34; pulumi-lang-java=&#34;`stream`&#34; pulumi-lang-hcl=&#34;`stream`&#34;&gt;`stream`&lt;/span&gt;.
          * 
          * @return builder
          * 

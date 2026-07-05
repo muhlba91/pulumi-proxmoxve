@@ -17,7 +17,7 @@ public final class ContainerLegacyMemoryArgs extends com.pulumi.resources.Resour
 
     /**
      * The dedicated memory in megabytes (defaults
-     * to &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34;&gt;`512`&lt;/span&gt;).
+     * to &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34; pulumi-lang-hcl=&#34;`512`&#34;&gt;`512`&lt;/span&gt;).
      * 
      */
     @Import(name="dedicated")
@@ -25,7 +25,7 @@ public final class ContainerLegacyMemoryArgs extends com.pulumi.resources.Resour
 
     /**
      * @return The dedicated memory in megabytes (defaults
-     * to &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34;&gt;`512`&lt;/span&gt;).
+     * to &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34; pulumi-lang-hcl=&#34;`512`&#34;&gt;`512`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Integer>> dedicated() {
@@ -33,14 +33,14 @@ public final class ContainerLegacyMemoryArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The swap size in megabytes (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
+     * The swap size in megabytes (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
      * 
      */
     @Import(name="swap")
     private @Nullable Output<Integer> swap;
 
     /**
-     * @return The swap size in megabytes (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
+     * @return The swap size in megabytes (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Integer>> swap() {
@@ -74,7 +74,7 @@ public final class ContainerLegacyMemoryArgs extends com.pulumi.resources.Resour
 
         /**
          * @param dedicated The dedicated memory in megabytes (defaults
-         * to &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34;&gt;`512`&lt;/span&gt;).
+         * to &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34; pulumi-lang-hcl=&#34;`512`&#34;&gt;`512`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -86,7 +86,7 @@ public final class ContainerLegacyMemoryArgs extends com.pulumi.resources.Resour
 
         /**
          * @param dedicated The dedicated memory in megabytes (defaults
-         * to &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34;&gt;`512`&lt;/span&gt;).
+         * to &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34; pulumi-lang-hcl=&#34;`512`&#34;&gt;`512`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -96,7 +96,7 @@ public final class ContainerLegacyMemoryArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param swap The swap size in megabytes (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
+         * @param swap The swap size in megabytes (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -107,7 +107,7 @@ public final class ContainerLegacyMemoryArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param swap The swap size in megabytes (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
+         * @param swap The swap size in megabytes (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
          * 
          * @return builder
          * 

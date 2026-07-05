@@ -14,6 +14,11 @@ import (
 
 // Manages a user group.
 //
+// > **Deprecation:** the inline `acl` block is deprecated. Manage group ACLs via the dedicated
+// `Acl` resource instead. The `acl` block is no longer auto-populated from a
+// cluster-wide fetch on refresh or import; existing configurations using `acl` blocks continue
+// to work, but new code should use `Acl`.
+//
 // ## Example Usage
 //
 // ```go
@@ -51,7 +56,10 @@ import (
 type GroupLegacy struct {
 	pulumi.CustomResourceState
 
-	// The access control list (multiple blocks supported).
+	// The access control list (multiple blocks supported). Use
+	// `Acl` instead.
+	//
+	// Deprecated: Manage ACLs via the dedicated `Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `Acl`.
 	Acls GroupLegacyAclArrayOutput `pulumi:"acls"`
 	// The group comment.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
@@ -94,7 +102,10 @@ func GetGroupLegacy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GroupLegacy resources.
 type groupLegacyState struct {
-	// The access control list (multiple blocks supported).
+	// The access control list (multiple blocks supported). Use
+	// `Acl` instead.
+	//
+	// Deprecated: Manage ACLs via the dedicated `Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `Acl`.
 	Acls []GroupLegacyAcl `pulumi:"acls"`
 	// The group comment.
 	Comment *string `pulumi:"comment"`
@@ -105,7 +116,10 @@ type groupLegacyState struct {
 }
 
 type GroupLegacyState struct {
-	// The access control list (multiple blocks supported).
+	// The access control list (multiple blocks supported). Use
+	// `Acl` instead.
+	//
+	// Deprecated: Manage ACLs via the dedicated `Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `Acl`.
 	Acls GroupLegacyAclArrayInput
 	// The group comment.
 	Comment pulumi.StringPtrInput
@@ -120,7 +134,10 @@ func (GroupLegacyState) ElementType() reflect.Type {
 }
 
 type groupLegacyArgs struct {
-	// The access control list (multiple blocks supported).
+	// The access control list (multiple blocks supported). Use
+	// `Acl` instead.
+	//
+	// Deprecated: Manage ACLs via the dedicated `Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `Acl`.
 	Acls []GroupLegacyAcl `pulumi:"acls"`
 	// The group comment.
 	Comment *string `pulumi:"comment"`
@@ -130,7 +147,10 @@ type groupLegacyArgs struct {
 
 // The set of arguments for constructing a GroupLegacy resource.
 type GroupLegacyArgs struct {
-	// The access control list (multiple blocks supported).
+	// The access control list (multiple blocks supported). Use
+	// `Acl` instead.
+	//
+	// Deprecated: Manage ACLs via the dedicated `Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `Acl`.
 	Acls GroupLegacyAclArrayInput
 	// The group comment.
 	Comment pulumi.StringPtrInput
@@ -225,7 +245,10 @@ func (o GroupLegacyOutput) ToGroupLegacyOutputWithContext(ctx context.Context) G
 	return o
 }
 
-// The access control list (multiple blocks supported).
+// The access control list (multiple blocks supported). Use
+// `Acl` instead.
+//
+// Deprecated: Manage ACLs via the dedicated `Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `Acl`.
 func (o GroupLegacyOutput) Acls() GroupLegacyAclArrayOutput {
 	return o.ApplyT(func(v *GroupLegacy) GroupLegacyAclArrayOutput { return v.Acls }).(GroupLegacyAclArrayOutput)
 }

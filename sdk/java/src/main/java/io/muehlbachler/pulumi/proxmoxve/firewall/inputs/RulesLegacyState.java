@@ -50,7 +50,7 @@ public final class RulesLegacyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Firewall rule block (multiple blocks supported).
-     * The provider supports two types of the &lt;span pulumi-lang-nodejs=&#34;`rule`&#34; pulumi-lang-dotnet=&#34;`Rule`&#34; pulumi-lang-go=&#34;`rule`&#34; pulumi-lang-python=&#34;`rule`&#34; pulumi-lang-yaml=&#34;`rule`&#34; pulumi-lang-java=&#34;`rule`&#34;&gt;`rule`&lt;/span&gt; blocks:
+     * The provider supports two types of the &lt;span pulumi-lang-nodejs=&#34;`rule`&#34; pulumi-lang-dotnet=&#34;`Rule`&#34; pulumi-lang-go=&#34;`rule`&#34; pulumi-lang-python=&#34;`rule`&#34; pulumi-lang-yaml=&#34;`rule`&#34; pulumi-lang-java=&#34;`rule`&#34; pulumi-lang-hcl=&#34;`rule`&#34;&gt;`rule`&lt;/span&gt; blocks:
      * - A rule definition block, which includes the following arguments:
      * 
      */
@@ -59,7 +59,7 @@ public final class RulesLegacyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Firewall rule block (multiple blocks supported).
-     * The provider supports two types of the &lt;span pulumi-lang-nodejs=&#34;`rule`&#34; pulumi-lang-dotnet=&#34;`Rule`&#34; pulumi-lang-go=&#34;`rule`&#34; pulumi-lang-python=&#34;`rule`&#34; pulumi-lang-yaml=&#34;`rule`&#34; pulumi-lang-java=&#34;`rule`&#34;&gt;`rule`&lt;/span&gt; blocks:
+     * The provider supports two types of the &lt;span pulumi-lang-nodejs=&#34;`rule`&#34; pulumi-lang-dotnet=&#34;`Rule`&#34; pulumi-lang-go=&#34;`rule`&#34; pulumi-lang-python=&#34;`rule`&#34; pulumi-lang-yaml=&#34;`rule`&#34; pulumi-lang-java=&#34;`rule`&#34; pulumi-lang-hcl=&#34;`rule`&#34;&gt;`rule`&lt;/span&gt; blocks:
      * - A rule definition block, which includes the following arguments:
      * 
      */
@@ -153,7 +153,7 @@ public final class RulesLegacyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param rules Firewall rule block (multiple blocks supported).
-         * The provider supports two types of the &lt;span pulumi-lang-nodejs=&#34;`rule`&#34; pulumi-lang-dotnet=&#34;`Rule`&#34; pulumi-lang-go=&#34;`rule`&#34; pulumi-lang-python=&#34;`rule`&#34; pulumi-lang-yaml=&#34;`rule`&#34; pulumi-lang-java=&#34;`rule`&#34;&gt;`rule`&lt;/span&gt; blocks:
+         * The provider supports two types of the &lt;span pulumi-lang-nodejs=&#34;`rule`&#34; pulumi-lang-dotnet=&#34;`Rule`&#34; pulumi-lang-go=&#34;`rule`&#34; pulumi-lang-python=&#34;`rule`&#34; pulumi-lang-yaml=&#34;`rule`&#34; pulumi-lang-java=&#34;`rule`&#34; pulumi-lang-hcl=&#34;`rule`&#34;&gt;`rule`&lt;/span&gt; blocks:
          * - A rule definition block, which includes the following arguments:
          * 
          * @return builder
@@ -166,7 +166,7 @@ public final class RulesLegacyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param rules Firewall rule block (multiple blocks supported).
-         * The provider supports two types of the &lt;span pulumi-lang-nodejs=&#34;`rule`&#34; pulumi-lang-dotnet=&#34;`Rule`&#34; pulumi-lang-go=&#34;`rule`&#34; pulumi-lang-python=&#34;`rule`&#34; pulumi-lang-yaml=&#34;`rule`&#34; pulumi-lang-java=&#34;`rule`&#34;&gt;`rule`&lt;/span&gt; blocks:
+         * The provider supports two types of the &lt;span pulumi-lang-nodejs=&#34;`rule`&#34; pulumi-lang-dotnet=&#34;`Rule`&#34; pulumi-lang-go=&#34;`rule`&#34; pulumi-lang-python=&#34;`rule`&#34; pulumi-lang-yaml=&#34;`rule`&#34; pulumi-lang-java=&#34;`rule`&#34; pulumi-lang-hcl=&#34;`rule`&#34;&gt;`rule`&lt;/span&gt; blocks:
          * - A rule definition block, which includes the following arguments:
          * 
          * @return builder
@@ -178,7 +178,7 @@ public final class RulesLegacyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param rules Firewall rule block (multiple blocks supported).
-         * The provider supports two types of the &lt;span pulumi-lang-nodejs=&#34;`rule`&#34; pulumi-lang-dotnet=&#34;`Rule`&#34; pulumi-lang-go=&#34;`rule`&#34; pulumi-lang-python=&#34;`rule`&#34; pulumi-lang-yaml=&#34;`rule`&#34; pulumi-lang-java=&#34;`rule`&#34;&gt;`rule`&lt;/span&gt; blocks:
+         * The provider supports two types of the &lt;span pulumi-lang-nodejs=&#34;`rule`&#34; pulumi-lang-dotnet=&#34;`Rule`&#34; pulumi-lang-go=&#34;`rule`&#34; pulumi-lang-python=&#34;`rule`&#34; pulumi-lang-yaml=&#34;`rule`&#34; pulumi-lang-java=&#34;`rule`&#34; pulumi-lang-hcl=&#34;`rule`&#34;&gt;`rule`&lt;/span&gt; blocks:
          * - A rule definition block, which includes the following arguments:
          * 
          * @return builder

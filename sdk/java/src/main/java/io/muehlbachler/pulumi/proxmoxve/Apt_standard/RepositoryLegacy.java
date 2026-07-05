@@ -15,7 +15,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-go=&#34;`apt/standard.Repository`&#34; pulumi-lang-python=&#34;`apt/standard.Repository`&#34; pulumi-lang-yaml=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-java=&#34;`proxmoxve.apt/standard.Repository`&#34;&gt;`proxmoxve.apt/standard.Repository`&lt;/span&gt; instead. This resource will be removed in v1.0.
+ * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-go=&#34;`apt/standard.Repository`&#34; pulumi-lang-python=&#34;`apt/standard.Repository`&#34; pulumi-lang-yaml=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-java=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-hcl=&#34;`proxmox_apt_standard_repository`&#34;&gt;`proxmoxve.apt/standard.Repository`&lt;/span&gt; instead. This resource will be removed in v1.0.
  * 
  * Manages an APT standard repository of a Proxmox VE node.
  * 
@@ -104,14 +104,14 @@ public class RepositoryLegacy extends com.pulumi.resources.CustomResource {
         return this.filePath;
     }
     /**
-     * The handle of the APT standard repository. Must be `ceph-squid-enterprise` | `ceph-squid-no-subscription` | `ceph-squid-test` | &lt;span pulumi-lang-nodejs=&#34;`enterprise`&#34; pulumi-lang-dotnet=&#34;`Enterprise`&#34; pulumi-lang-go=&#34;`enterprise`&#34; pulumi-lang-python=&#34;`enterprise`&#34; pulumi-lang-yaml=&#34;`enterprise`&#34; pulumi-lang-java=&#34;`enterprise`&#34;&gt;`enterprise`&lt;/span&gt; | `no-subscription` | &lt;span pulumi-lang-nodejs=&#34;`test`&#34; pulumi-lang-dotnet=&#34;`Test`&#34; pulumi-lang-go=&#34;`test`&#34; pulumi-lang-python=&#34;`test`&#34; pulumi-lang-yaml=&#34;`test`&#34; pulumi-lang-java=&#34;`test`&#34;&gt;`test`&lt;/span&gt;.
+     * The handle of the APT standard repository. Must be `ceph-squid-enterprise` | `ceph-squid-no-subscription` | `ceph-squid-test` | &lt;span pulumi-lang-nodejs=&#34;`enterprise`&#34; pulumi-lang-dotnet=&#34;`Enterprise`&#34; pulumi-lang-go=&#34;`enterprise`&#34; pulumi-lang-python=&#34;`enterprise`&#34; pulumi-lang-yaml=&#34;`enterprise`&#34; pulumi-lang-java=&#34;`enterprise`&#34; pulumi-lang-hcl=&#34;`enterprise`&#34;&gt;`enterprise`&lt;/span&gt; | `no-subscription` | &lt;span pulumi-lang-nodejs=&#34;`test`&#34; pulumi-lang-dotnet=&#34;`Test`&#34; pulumi-lang-go=&#34;`test`&#34; pulumi-lang-python=&#34;`test`&#34; pulumi-lang-yaml=&#34;`test`&#34; pulumi-lang-java=&#34;`test`&#34; pulumi-lang-hcl=&#34;`test`&#34;&gt;`test`&lt;/span&gt;.
      * 
      */
     @Export(name="handle", refs={String.class}, tree="[0]")
     private Output<String> handle;
 
     /**
-     * @return The handle of the APT standard repository. Must be `ceph-squid-enterprise` | `ceph-squid-no-subscription` | `ceph-squid-test` | &lt;span pulumi-lang-nodejs=&#34;`enterprise`&#34; pulumi-lang-dotnet=&#34;`Enterprise`&#34; pulumi-lang-go=&#34;`enterprise`&#34; pulumi-lang-python=&#34;`enterprise`&#34; pulumi-lang-yaml=&#34;`enterprise`&#34; pulumi-lang-java=&#34;`enterprise`&#34;&gt;`enterprise`&lt;/span&gt; | `no-subscription` | &lt;span pulumi-lang-nodejs=&#34;`test`&#34; pulumi-lang-dotnet=&#34;`Test`&#34; pulumi-lang-go=&#34;`test`&#34; pulumi-lang-python=&#34;`test`&#34; pulumi-lang-yaml=&#34;`test`&#34; pulumi-lang-java=&#34;`test`&#34;&gt;`test`&lt;/span&gt;.
+     * @return The handle of the APT standard repository. Must be `ceph-squid-enterprise` | `ceph-squid-no-subscription` | `ceph-squid-test` | &lt;span pulumi-lang-nodejs=&#34;`enterprise`&#34; pulumi-lang-dotnet=&#34;`Enterprise`&#34; pulumi-lang-go=&#34;`enterprise`&#34; pulumi-lang-python=&#34;`enterprise`&#34; pulumi-lang-yaml=&#34;`enterprise`&#34; pulumi-lang-java=&#34;`enterprise`&#34; pulumi-lang-hcl=&#34;`enterprise`&#34;&gt;`enterprise`&lt;/span&gt; | `no-subscription` | &lt;span pulumi-lang-nodejs=&#34;`test`&#34; pulumi-lang-dotnet=&#34;`Test`&#34; pulumi-lang-go=&#34;`test`&#34; pulumi-lang-python=&#34;`test`&#34; pulumi-lang-yaml=&#34;`test`&#34; pulumi-lang-java=&#34;`test`&#34; pulumi-lang-hcl=&#34;`test`&#34;&gt;`test`&lt;/span&gt;.
      * 
      */
     public Output<String> handle() {

@@ -19,17 +19,17 @@ public final class VmLegacyCpu {
      * @return The CPU cores that are used to run the VM’s vCPU. The
      * value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
      * For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four
-     * CPU cores. Setting &lt;span pulumi-lang-nodejs=&#34;`affinity`&#34; pulumi-lang-dotnet=&#34;`Affinity`&#34; pulumi-lang-go=&#34;`affinity`&#34; pulumi-lang-python=&#34;`affinity`&#34; pulumi-lang-yaml=&#34;`affinity`&#34; pulumi-lang-java=&#34;`affinity`&#34;&gt;`affinity`&lt;/span&gt; is only allowed for `root{@literal @}pam` authenticated user.
+     * CPU cores. Setting &lt;span pulumi-lang-nodejs=&#34;`affinity`&#34; pulumi-lang-dotnet=&#34;`Affinity`&#34; pulumi-lang-go=&#34;`affinity`&#34; pulumi-lang-python=&#34;`affinity`&#34; pulumi-lang-yaml=&#34;`affinity`&#34; pulumi-lang-java=&#34;`affinity`&#34; pulumi-lang-hcl=&#34;`affinity`&#34;&gt;`affinity`&lt;/span&gt; is only allowed for `root{@literal @}pam` authenticated user.
      * 
      */
     private @Nullable String affinity;
     /**
-     * @return The CPU architecture (defaults to &lt;span pulumi-lang-nodejs=&#34;`x8664`&#34; pulumi-lang-dotnet=&#34;`X8664`&#34; pulumi-lang-go=&#34;`x8664`&#34; pulumi-lang-python=&#34;`x86_64`&#34; pulumi-lang-yaml=&#34;`x8664`&#34; pulumi-lang-java=&#34;`x8664`&#34;&gt;`x8664`&lt;/span&gt;).
+     * @return The CPU architecture (defaults to &lt;span pulumi-lang-nodejs=&#34;`x8664`&#34; pulumi-lang-dotnet=&#34;`X8664`&#34; pulumi-lang-go=&#34;`x8664`&#34; pulumi-lang-python=&#34;`x86_64`&#34; pulumi-lang-yaml=&#34;`x8664`&#34; pulumi-lang-java=&#34;`x8664`&#34; pulumi-lang-hcl=&#34;`x86_64`&#34;&gt;`x8664`&lt;/span&gt;).
      * 
      */
     private @Nullable String architecture;
     /**
-     * @return The number of CPU cores (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
+     * @return The number of CPU cores (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34; pulumi-lang-hcl=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
      * 
      */
     private @Nullable Integer cores;
@@ -62,34 +62,34 @@ public final class VmLegacyCpu {
     private @Nullable List<String> flags;
     /**
      * @return The number of hotplugged vCPUs (defaults
-     * to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
+     * to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
      * 
      */
     private @Nullable Integer hotplugged;
     /**
      * @return Limit of CPU usage, `0...128` (supports
-     * fractional values, e.g. `63.5`). (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; -- no limit).
+     * fractional values, e.g. `63.5`). (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt; -- no limit).
      * 
      */
     private @Nullable Double limit;
     /**
-     * @return Enable/disable NUMA. (default to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * @return Enable/disable NUMA. (default to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
     private @Nullable Boolean numa;
     /**
-     * @return The number of CPU sockets (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
+     * @return The number of CPU sockets (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34; pulumi-lang-hcl=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
      * 
      */
     private @Nullable Integer sockets;
     /**
      * @return The emulated CPU type, it&#39;s recommended to
-     * use `x86-64-v2-AES` (defaults to &lt;span pulumi-lang-nodejs=&#34;`qemu64`&#34; pulumi-lang-dotnet=&#34;`Qemu64`&#34; pulumi-lang-go=&#34;`qemu64`&#34; pulumi-lang-python=&#34;`qemu64`&#34; pulumi-lang-yaml=&#34;`qemu64`&#34; pulumi-lang-java=&#34;`qemu64`&#34;&gt;`qemu64`&lt;/span&gt;).
+     * use `x86-64-v2-AES` (defaults to &lt;span pulumi-lang-nodejs=&#34;`qemu64`&#34; pulumi-lang-dotnet=&#34;`Qemu64`&#34; pulumi-lang-go=&#34;`qemu64`&#34; pulumi-lang-python=&#34;`qemu64`&#34; pulumi-lang-yaml=&#34;`qemu64`&#34; pulumi-lang-java=&#34;`qemu64`&#34; pulumi-lang-hcl=&#34;`qemu64`&#34;&gt;`qemu64`&lt;/span&gt;).
      * 
      */
     private @Nullable String type;
     /**
-     * @return The CPU units. PVE default is &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt; for cgroups v1 and &lt;span pulumi-lang-nodejs=&#34;`100`&#34; pulumi-lang-dotnet=&#34;`100`&#34; pulumi-lang-go=&#34;`100`&#34; pulumi-lang-python=&#34;`100`&#34; pulumi-lang-yaml=&#34;`100`&#34; pulumi-lang-java=&#34;`100`&#34;&gt;`100`&lt;/span&gt; for cgroups v2.
+     * @return The CPU units. PVE default is &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34; pulumi-lang-hcl=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt; for cgroups v1 and &lt;span pulumi-lang-nodejs=&#34;`100`&#34; pulumi-lang-dotnet=&#34;`100`&#34; pulumi-lang-go=&#34;`100`&#34; pulumi-lang-python=&#34;`100`&#34; pulumi-lang-yaml=&#34;`100`&#34; pulumi-lang-java=&#34;`100`&#34; pulumi-lang-hcl=&#34;`100`&#34;&gt;`100`&lt;/span&gt; for cgroups v2.
      * 
      */
     private @Nullable Integer units;
@@ -99,21 +99,21 @@ public final class VmLegacyCpu {
      * @return The CPU cores that are used to run the VM’s vCPU. The
      * value is a list of CPU IDs, separated by commas. The CPU IDs are zero-based.
      * For example, `0,1,2,3` (which also can be shortened to `0-3`) means that the VM’s vCPUs are run on the first four
-     * CPU cores. Setting &lt;span pulumi-lang-nodejs=&#34;`affinity`&#34; pulumi-lang-dotnet=&#34;`Affinity`&#34; pulumi-lang-go=&#34;`affinity`&#34; pulumi-lang-python=&#34;`affinity`&#34; pulumi-lang-yaml=&#34;`affinity`&#34; pulumi-lang-java=&#34;`affinity`&#34;&gt;`affinity`&lt;/span&gt; is only allowed for `root{@literal @}pam` authenticated user.
+     * CPU cores. Setting &lt;span pulumi-lang-nodejs=&#34;`affinity`&#34; pulumi-lang-dotnet=&#34;`Affinity`&#34; pulumi-lang-go=&#34;`affinity`&#34; pulumi-lang-python=&#34;`affinity`&#34; pulumi-lang-yaml=&#34;`affinity`&#34; pulumi-lang-java=&#34;`affinity`&#34; pulumi-lang-hcl=&#34;`affinity`&#34;&gt;`affinity`&lt;/span&gt; is only allowed for `root{@literal @}pam` authenticated user.
      * 
      */
     public Optional<String> affinity() {
         return Optional.ofNullable(this.affinity);
     }
     /**
-     * @return The CPU architecture (defaults to &lt;span pulumi-lang-nodejs=&#34;`x8664`&#34; pulumi-lang-dotnet=&#34;`X8664`&#34; pulumi-lang-go=&#34;`x8664`&#34; pulumi-lang-python=&#34;`x86_64`&#34; pulumi-lang-yaml=&#34;`x8664`&#34; pulumi-lang-java=&#34;`x8664`&#34;&gt;`x8664`&lt;/span&gt;).
+     * @return The CPU architecture (defaults to &lt;span pulumi-lang-nodejs=&#34;`x8664`&#34; pulumi-lang-dotnet=&#34;`X8664`&#34; pulumi-lang-go=&#34;`x8664`&#34; pulumi-lang-python=&#34;`x86_64`&#34; pulumi-lang-yaml=&#34;`x8664`&#34; pulumi-lang-java=&#34;`x8664`&#34; pulumi-lang-hcl=&#34;`x86_64`&#34;&gt;`x8664`&lt;/span&gt;).
      * 
      */
     public Optional<String> architecture() {
         return Optional.ofNullable(this.architecture);
     }
     /**
-     * @return The number of CPU cores (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
+     * @return The number of CPU cores (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34; pulumi-lang-hcl=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
      * 
      */
     public Optional<Integer> cores() {
@@ -150,7 +150,7 @@ public final class VmLegacyCpu {
     }
     /**
      * @return The number of hotplugged vCPUs (defaults
-     * to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
+     * to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
      * 
      */
     public Optional<Integer> hotplugged() {
@@ -158,21 +158,21 @@ public final class VmLegacyCpu {
     }
     /**
      * @return Limit of CPU usage, `0...128` (supports
-     * fractional values, e.g. `63.5`). (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; -- no limit).
+     * fractional values, e.g. `63.5`). (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt; -- no limit).
      * 
      */
     public Optional<Double> limit() {
         return Optional.ofNullable(this.limit);
     }
     /**
-     * @return Enable/disable NUMA. (default to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * @return Enable/disable NUMA. (default to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
     public Optional<Boolean> numa() {
         return Optional.ofNullable(this.numa);
     }
     /**
-     * @return The number of CPU sockets (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
+     * @return The number of CPU sockets (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34; pulumi-lang-hcl=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
      * 
      */
     public Optional<Integer> sockets() {
@@ -180,14 +180,14 @@ public final class VmLegacyCpu {
     }
     /**
      * @return The emulated CPU type, it&#39;s recommended to
-     * use `x86-64-v2-AES` (defaults to &lt;span pulumi-lang-nodejs=&#34;`qemu64`&#34; pulumi-lang-dotnet=&#34;`Qemu64`&#34; pulumi-lang-go=&#34;`qemu64`&#34; pulumi-lang-python=&#34;`qemu64`&#34; pulumi-lang-yaml=&#34;`qemu64`&#34; pulumi-lang-java=&#34;`qemu64`&#34;&gt;`qemu64`&lt;/span&gt;).
+     * use `x86-64-v2-AES` (defaults to &lt;span pulumi-lang-nodejs=&#34;`qemu64`&#34; pulumi-lang-dotnet=&#34;`Qemu64`&#34; pulumi-lang-go=&#34;`qemu64`&#34; pulumi-lang-python=&#34;`qemu64`&#34; pulumi-lang-yaml=&#34;`qemu64`&#34; pulumi-lang-java=&#34;`qemu64`&#34; pulumi-lang-hcl=&#34;`qemu64`&#34;&gt;`qemu64`&lt;/span&gt;).
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return The CPU units. PVE default is &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt; for cgroups v1 and &lt;span pulumi-lang-nodejs=&#34;`100`&#34; pulumi-lang-dotnet=&#34;`100`&#34; pulumi-lang-go=&#34;`100`&#34; pulumi-lang-python=&#34;`100`&#34; pulumi-lang-yaml=&#34;`100`&#34; pulumi-lang-java=&#34;`100`&#34;&gt;`100`&lt;/span&gt; for cgroups v2.
+     * @return The CPU units. PVE default is &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34; pulumi-lang-hcl=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt; for cgroups v1 and &lt;span pulumi-lang-nodejs=&#34;`100`&#34; pulumi-lang-dotnet=&#34;`100`&#34; pulumi-lang-go=&#34;`100`&#34; pulumi-lang-python=&#34;`100`&#34; pulumi-lang-yaml=&#34;`100`&#34; pulumi-lang-java=&#34;`100`&#34; pulumi-lang-hcl=&#34;`100`&#34;&gt;`100`&lt;/span&gt; for cgroups v2.
      * 
      */
     public Optional<Integer> units() {

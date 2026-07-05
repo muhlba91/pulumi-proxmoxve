@@ -1100,13 +1100,17 @@ export interface VmLegacyAgent {
 
 export interface VmLegacyAgentWaitForIp {
     /**
+     * Whether to disable waiting for the agent to report an IP address (defaults to `false`). Set to `true` to skip the IP lookup entirely, so the provider does not wait for the agent during `refresh` and at the end of `apply`. Useful when the guest agent is slow to start, not yet installed, or not running, to avoid blocking those operations. When disabled, `ipv4Addresses`, `ipv6Addresses`, and `networkInterfaceNames` are left empty.
+     */
+    disabled?: pulumi.Input<boolean | undefined>;
+    /**
      * Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
      */
     ipv4?: pulumi.Input<boolean | undefined>;
     /**
      * Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
      *
-     * When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+     * When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
      */
     ipv6?: pulumi.Input<boolean | undefined>;
 }
@@ -1225,26 +1229,26 @@ export interface VmLegacyCpu {
      * The CPU flags.
      * - `+aes`/`-aes` - Activate AES instruction set for HW acceleration.
      * - `+amd-no-ssb`/`-amd-no-ssb` - Notifies guest OS that host is not
-     * vulnerable for Spectre on AMD CPUs.
+     *   vulnerable for Spectre on AMD CPUs.
      * - `+amd-ssbd`/`-amd-ssbd` - Improves Spectre mitigation performance with
-     * AMD CPUs, best used with "virt-ssbd".
+     *   AMD CPUs, best used with "virt-ssbd".
      * - `+hv-evmcs`/`-hv-evmcs` - Improve performance for nested
-     * virtualization (only supported on Intel CPUs).
+     *   virtualization (only supported on Intel CPUs).
      * - `+hv-tlbflush`/`-hv-tlbflush` - Improve performance in overcommitted
-     * Windows guests (may lead to guest BSOD on old CPUs).
+     *   Windows guests (may lead to guest BSOD on old CPUs).
      * - `+ibpb`/`-ibpb` - Allows improved Spectre mitigation on AMD CPUs.
      * - `+md-clear`/`-md-clear` - Required to let the guest OS know if MDS is
-     * mitigated correctly.
+     *   mitigated correctly.
      * - `+pcid`/`-pcid` - Meltdown fix cost reduction on Westmere, Sandy- and
-     * Ivy Bridge Intel CPUs.
+     *   Ivy Bridge Intel CPUs.
      * - `+pdpe1gb`/`-pdpe1gb` - Allows guest OS to use 1 GB size pages, if
-     * host HW supports it.
+     *   host HW supports it.
      * - `+spec-ctrl`/`-spec-ctrl` - Allows improved Spectre mitigation with
-     * Intel CPUs.
+     *   Intel CPUs.
      * - `+ssbd`/`-ssbd` - Protection for "Speculative Store Bypass" for Intel
-     * models.
+     *   models.
      * - `+virt-ssbd`/`-virt-ssbd` - Basis for "Speculative Store Bypass"
-     * protection for AMD models.
+     *   protection for AMD models.
      */
     flags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -1339,6 +1343,13 @@ export interface VmLegacyDisk {
      * See "*Example: Attached disks*".
      */
     pathInDatastore?: pulumi.Input<string | undefined>;
+    /**
+     * The number of I/O queues for this disk, `2` or
+     * greater. Only supported for SCSI disks, and applied by Proxmox only
+     * when `scsiHardware` is set to `virtio-scsi-single`. A change requires
+     * a VM power cycle (or reboot via the Proxmox API) to take effect.
+     */
+    queues?: pulumi.Input<number | undefined>;
     /**
      * Whether the drive should be considered for replication jobs (defaults to `true`).
      */
@@ -2293,7 +2304,7 @@ export namespace cloned {
          */
         balloon?: pulumi.Input<number | undefined>;
         /**
-         * Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses. 
+         * Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses.
          *
          * **Options:**
          * - `2` - Use 2 MiB hugepages
@@ -2413,7 +2424,7 @@ export namespace cloned {
          */
         balloon?: pulumi.Input<number | undefined>;
         /**
-         * Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses. 
+         * Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses.
          *
          * **Options:**
          * - `2` - Use 2 MiB hugepages
@@ -2963,6 +2974,21 @@ export namespace hardware {
              * The path of the map. For USB hardware mappings, this is optional and indicates that the device is mapped via its device ID rather than ports.
              */
             path?: pulumi.Input<string | undefined>;
+        }
+    }
+}
+
+export namespace node {
+    export namespace disk {
+        export interface ZfsDraidConfig {
+            /**
+             * Number of data devices per redundancy group.
+             */
+            data: pulumi.Input<number>;
+            /**
+             * Number of dRAID distributed spare devices.
+             */
+            spares: pulumi.Input<number>;
         }
     }
 }

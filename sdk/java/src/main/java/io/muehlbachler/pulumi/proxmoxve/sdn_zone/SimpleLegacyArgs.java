@@ -19,14 +19,14 @@ public final class SimpleLegacyArgs extends com.pulumi.resources.ResourceArgs {
     public static final SimpleLegacyArgs Empty = new SimpleLegacyArgs();
 
     /**
-     * The type of the DHCP backend for this zone. Currently the only supported value is &lt;span pulumi-lang-nodejs=&#34;`dnsmasq`&#34; pulumi-lang-dotnet=&#34;`Dnsmasq`&#34; pulumi-lang-go=&#34;`dnsmasq`&#34; pulumi-lang-python=&#34;`dnsmasq`&#34; pulumi-lang-yaml=&#34;`dnsmasq`&#34; pulumi-lang-java=&#34;`dnsmasq`&#34;&gt;`dnsmasq`&lt;/span&gt;.
+     * The type of the DHCP backend for this zone. Currently the only supported value is &lt;span pulumi-lang-nodejs=&#34;`dnsmasq`&#34; pulumi-lang-dotnet=&#34;`Dnsmasq`&#34; pulumi-lang-go=&#34;`dnsmasq`&#34; pulumi-lang-python=&#34;`dnsmasq`&#34; pulumi-lang-yaml=&#34;`dnsmasq`&#34; pulumi-lang-java=&#34;`dnsmasq`&#34; pulumi-lang-hcl=&#34;`dnsmasq`&#34;&gt;`dnsmasq`&lt;/span&gt;.
      * 
      */
     @Import(name="dhcp")
     private @Nullable Output<String> dhcp;
 
     /**
-     * @return The type of the DHCP backend for this zone. Currently the only supported value is &lt;span pulumi-lang-nodejs=&#34;`dnsmasq`&#34; pulumi-lang-dotnet=&#34;`Dnsmasq`&#34; pulumi-lang-go=&#34;`dnsmasq`&#34; pulumi-lang-python=&#34;`dnsmasq`&#34; pulumi-lang-yaml=&#34;`dnsmasq`&#34; pulumi-lang-java=&#34;`dnsmasq`&#34;&gt;`dnsmasq`&lt;/span&gt;.
+     * @return The type of the DHCP backend for this zone. Currently the only supported value is &lt;span pulumi-lang-nodejs=&#34;`dnsmasq`&#34; pulumi-lang-dotnet=&#34;`Dnsmasq`&#34; pulumi-lang-go=&#34;`dnsmasq`&#34; pulumi-lang-python=&#34;`dnsmasq`&#34; pulumi-lang-yaml=&#34;`dnsmasq`&#34; pulumi-lang-java=&#34;`dnsmasq`&#34; pulumi-lang-hcl=&#34;`dnsmasq`&#34;&gt;`dnsmasq`&lt;/span&gt;.
      * 
      */
     public Optional<Output<String>> dhcp() {
@@ -170,7 +170,7 @@ public final class SimpleLegacyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dhcp The type of the DHCP backend for this zone. Currently the only supported value is &lt;span pulumi-lang-nodejs=&#34;`dnsmasq`&#34; pulumi-lang-dotnet=&#34;`Dnsmasq`&#34; pulumi-lang-go=&#34;`dnsmasq`&#34; pulumi-lang-python=&#34;`dnsmasq`&#34; pulumi-lang-yaml=&#34;`dnsmasq`&#34; pulumi-lang-java=&#34;`dnsmasq`&#34;&gt;`dnsmasq`&lt;/span&gt;.
+         * @param dhcp The type of the DHCP backend for this zone. Currently the only supported value is &lt;span pulumi-lang-nodejs=&#34;`dnsmasq`&#34; pulumi-lang-dotnet=&#34;`Dnsmasq`&#34; pulumi-lang-go=&#34;`dnsmasq`&#34; pulumi-lang-python=&#34;`dnsmasq`&#34; pulumi-lang-yaml=&#34;`dnsmasq`&#34; pulumi-lang-java=&#34;`dnsmasq`&#34; pulumi-lang-hcl=&#34;`dnsmasq`&#34;&gt;`dnsmasq`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class SimpleLegacyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dhcp The type of the DHCP backend for this zone. Currently the only supported value is &lt;span pulumi-lang-nodejs=&#34;`dnsmasq`&#34; pulumi-lang-dotnet=&#34;`Dnsmasq`&#34; pulumi-lang-go=&#34;`dnsmasq`&#34; pulumi-lang-python=&#34;`dnsmasq`&#34; pulumi-lang-yaml=&#34;`dnsmasq`&#34; pulumi-lang-java=&#34;`dnsmasq`&#34;&gt;`dnsmasq`&lt;/span&gt;.
+         * @param dhcp The type of the DHCP backend for this zone. Currently the only supported value is &lt;span pulumi-lang-nodejs=&#34;`dnsmasq`&#34; pulumi-lang-dotnet=&#34;`Dnsmasq`&#34; pulumi-lang-go=&#34;`dnsmasq`&#34; pulumi-lang-python=&#34;`dnsmasq`&#34; pulumi-lang-yaml=&#34;`dnsmasq`&#34; pulumi-lang-java=&#34;`dnsmasq`&#34; pulumi-lang-hcl=&#34;`dnsmasq`&#34;&gt;`dnsmasq`&lt;/span&gt;.
          * 
          * @return builder
          * 

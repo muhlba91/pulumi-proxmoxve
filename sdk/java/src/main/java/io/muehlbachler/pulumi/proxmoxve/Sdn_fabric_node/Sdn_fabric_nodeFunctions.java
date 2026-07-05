@@ -60,7 +60,7 @@ public final class Sdn_fabric_nodeFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:sdn/fabric/node/getOpenfabric:getOpenfabric", TypeShape.of(GetOpenfabricResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-go=&#34;`sdn/fabric/node.Openfabric`&#34; pulumi-lang-python=&#34;`sdn/fabric/node.Openfabric`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34;&gt;`proxmoxve.sdn/fabric/node.Openfabric`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-go=&#34;`sdn/fabric/node.Openfabric`&#34; pulumi-lang-python=&#34;`sdn/fabric/node.Openfabric`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_fabric_node_openfabric`&#34;&gt;`proxmoxve.sdn/fabric/node.Openfabric`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * OpenFabric Fabric Node in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
      * 
@@ -69,7 +69,7 @@ public final class Sdn_fabric_nodeFunctions {
         return getOpenfabricLegacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-go=&#34;`sdn/fabric/node.Openfabric`&#34; pulumi-lang-python=&#34;`sdn/fabric/node.Openfabric`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34;&gt;`proxmoxve.sdn/fabric/node.Openfabric`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-go=&#34;`sdn/fabric/node.Openfabric`&#34; pulumi-lang-python=&#34;`sdn/fabric/node.Openfabric`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_fabric_node_openfabric`&#34;&gt;`proxmoxve.sdn/fabric/node.Openfabric`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * OpenFabric Fabric Node in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
      * 
@@ -78,7 +78,7 @@ public final class Sdn_fabric_nodeFunctions {
         return getOpenfabricLegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-go=&#34;`sdn/fabric/node.Openfabric`&#34; pulumi-lang-python=&#34;`sdn/fabric/node.Openfabric`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34;&gt;`proxmoxve.sdn/fabric/node.Openfabric`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-go=&#34;`sdn/fabric/node.Openfabric`&#34; pulumi-lang-python=&#34;`sdn/fabric/node.Openfabric`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_fabric_node_openfabric`&#34;&gt;`proxmoxve.sdn/fabric/node.Openfabric`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * OpenFabric Fabric Node in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
      * 
@@ -87,7 +87,7 @@ public final class Sdn_fabric_nodeFunctions {
         return Deployment.getInstance().invoke("proxmoxve:sdn/fabric/node/getOpenfabricLegacy:getOpenfabricLegacy", TypeShape.of(GetOpenfabricLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-go=&#34;`sdn/fabric/node.Openfabric`&#34; pulumi-lang-python=&#34;`sdn/fabric/node.Openfabric`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34;&gt;`proxmoxve.sdn/fabric/node.Openfabric`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-go=&#34;`sdn/fabric/node.Openfabric`&#34; pulumi-lang-python=&#34;`sdn/fabric/node.Openfabric`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_fabric_node_openfabric`&#34;&gt;`proxmoxve.sdn/fabric/node.Openfabric`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * OpenFabric Fabric Node in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
      * 
@@ -96,7 +96,7 @@ public final class Sdn_fabric_nodeFunctions {
         return Deployment.getInstance().invoke("proxmoxve:sdn/fabric/node/getOpenfabricLegacy:getOpenfabricLegacy", TypeShape.of(GetOpenfabricLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-go=&#34;`sdn/fabric/node.Openfabric`&#34; pulumi-lang-python=&#34;`sdn/fabric/node.Openfabric`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34;&gt;`proxmoxve.sdn/fabric/node.Openfabric`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-go=&#34;`sdn/fabric/node.Openfabric`&#34; pulumi-lang-python=&#34;`sdn/fabric/node.Openfabric`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/fabric/node.Openfabric`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_fabric_node_openfabric`&#34;&gt;`proxmoxve.sdn/fabric/node.Openfabric`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * OpenFabric Fabric Node in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
      * 
@@ -140,7 +140,7 @@ public final class Sdn_fabric_nodeFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:sdn/fabric/node/getOspf:getOspf", TypeShape.of(GetOspfResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-go=&#34;`sdn/fabric/node.Ospf`&#34; pulumi-lang-python=&#34;`sdn/fabric/node.Ospf`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34;&gt;`proxmoxve.sdn/fabric/node.Ospf`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-go=&#34;`sdn/fabric/node.Ospf`&#34; pulumi-lang-python=&#34;`sdn/fabric/node.Ospf`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_fabric_node_ospf`&#34;&gt;`proxmoxve.sdn/fabric/node.Ospf`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * OSPF Fabric Node in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
      * 
@@ -149,7 +149,7 @@ public final class Sdn_fabric_nodeFunctions {
         return getOspfLegacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-go=&#34;`sdn/fabric/node.Ospf`&#34; pulumi-lang-python=&#34;`sdn/fabric/node.Ospf`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34;&gt;`proxmoxve.sdn/fabric/node.Ospf`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-go=&#34;`sdn/fabric/node.Ospf`&#34; pulumi-lang-python=&#34;`sdn/fabric/node.Ospf`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_fabric_node_ospf`&#34;&gt;`proxmoxve.sdn/fabric/node.Ospf`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * OSPF Fabric Node in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
      * 
@@ -158,7 +158,7 @@ public final class Sdn_fabric_nodeFunctions {
         return getOspfLegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-go=&#34;`sdn/fabric/node.Ospf`&#34; pulumi-lang-python=&#34;`sdn/fabric/node.Ospf`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34;&gt;`proxmoxve.sdn/fabric/node.Ospf`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-go=&#34;`sdn/fabric/node.Ospf`&#34; pulumi-lang-python=&#34;`sdn/fabric/node.Ospf`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_fabric_node_ospf`&#34;&gt;`proxmoxve.sdn/fabric/node.Ospf`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * OSPF Fabric Node in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
      * 
@@ -167,7 +167,7 @@ public final class Sdn_fabric_nodeFunctions {
         return Deployment.getInstance().invoke("proxmoxve:sdn/fabric/node/getOspfLegacy:getOspfLegacy", TypeShape.of(GetOspfLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-go=&#34;`sdn/fabric/node.Ospf`&#34; pulumi-lang-python=&#34;`sdn/fabric/node.Ospf`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34;&gt;`proxmoxve.sdn/fabric/node.Ospf`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-go=&#34;`sdn/fabric/node.Ospf`&#34; pulumi-lang-python=&#34;`sdn/fabric/node.Ospf`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_fabric_node_ospf`&#34;&gt;`proxmoxve.sdn/fabric/node.Ospf`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * OSPF Fabric Node in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
      * 
@@ -176,7 +176,7 @@ public final class Sdn_fabric_nodeFunctions {
         return Deployment.getInstance().invoke("proxmoxve:sdn/fabric/node/getOspfLegacy:getOspfLegacy", TypeShape.of(GetOspfLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-go=&#34;`sdn/fabric/node.Ospf`&#34; pulumi-lang-python=&#34;`sdn/fabric/node.Ospf`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34;&gt;`proxmoxve.sdn/fabric/node.Ospf`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-go=&#34;`sdn/fabric/node.Ospf`&#34; pulumi-lang-python=&#34;`sdn/fabric/node.Ospf`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/fabric/node.Ospf`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_fabric_node_ospf`&#34;&gt;`proxmoxve.sdn/fabric/node.Ospf`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * OSPF Fabric Node in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
      * 

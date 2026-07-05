@@ -35,8 +35,8 @@ import (
 //				return err
 //			}
 //			_, err = proxmoxve.NewDnsLegacy(ctx, "first_node_dns_configuration", &proxmoxve.DnsLegacyArgs{
-//				Domain:   pulumi.String(pulumi.String(firstNodeDnsConfiguration.Domain)),
-//				NodeName: pulumi.String(pulumi.String(firstNodeDnsConfiguration.NodeName)),
+//				Domain:   pulumi.String(firstNodeDnsConfiguration.Domain),
+//				NodeName: pulumi.String(firstNodeDnsConfiguration.NodeName),
 //				Servers: pulumi.StringArray{
 //					pulumi.String("1.1.1.1"),
 //					pulumi.String("1.0.0.1"),

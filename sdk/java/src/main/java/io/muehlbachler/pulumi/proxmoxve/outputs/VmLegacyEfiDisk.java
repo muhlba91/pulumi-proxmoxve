@@ -19,23 +19,23 @@ public final class VmLegacyEfiDisk {
      */
     private @Nullable String datastoreId;
     /**
-     * @return The file format (defaults to &lt;span pulumi-lang-nodejs=&#34;`raw`&#34; pulumi-lang-dotnet=&#34;`Raw`&#34; pulumi-lang-go=&#34;`raw`&#34; pulumi-lang-python=&#34;`raw`&#34; pulumi-lang-yaml=&#34;`raw`&#34; pulumi-lang-java=&#34;`raw`&#34;&gt;`raw`&lt;/span&gt;).
+     * @return The file format (defaults to &lt;span pulumi-lang-nodejs=&#34;`raw`&#34; pulumi-lang-dotnet=&#34;`Raw`&#34; pulumi-lang-go=&#34;`raw`&#34; pulumi-lang-python=&#34;`raw`&#34; pulumi-lang-yaml=&#34;`raw`&#34; pulumi-lang-java=&#34;`raw`&#34; pulumi-lang-hcl=&#34;`raw`&#34;&gt;`raw`&lt;/span&gt;).
      * 
      */
     private @Nullable String fileFormat;
     /**
      * @return Use am EFI vars template with
      * distribution-specific and Microsoft Standard keys enrolled, if used with
-     * EFI type=&lt;span pulumi-lang-nodejs=&#34;`4m`&#34; pulumi-lang-dotnet=&#34;`4m`&#34; pulumi-lang-go=&#34;`4m`&#34; pulumi-lang-python=&#34;`4m`&#34; pulumi-lang-yaml=&#34;`4m`&#34; pulumi-lang-java=&#34;`4m`&#34;&gt;`4m`&lt;/span&gt;. Ignored for VMs with cpu.architecture=&lt;span pulumi-lang-nodejs=&#34;`aarch64`&#34; pulumi-lang-dotnet=&#34;`Aarch64`&#34; pulumi-lang-go=&#34;`aarch64`&#34; pulumi-lang-python=&#34;`aarch64`&#34; pulumi-lang-yaml=&#34;`aarch64`&#34; pulumi-lang-java=&#34;`aarch64`&#34;&gt;`aarch64`&lt;/span&gt; (defaults
-     * to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * EFI type=&lt;span pulumi-lang-nodejs=&#34;`4m`&#34; pulumi-lang-dotnet=&#34;`4m`&#34; pulumi-lang-go=&#34;`4m`&#34; pulumi-lang-python=&#34;`4m`&#34; pulumi-lang-yaml=&#34;`4m`&#34; pulumi-lang-java=&#34;`4m`&#34; pulumi-lang-hcl=&#34;`4m`&#34;&gt;`4m`&lt;/span&gt;. Ignored for VMs with cpu.architecture=&lt;span pulumi-lang-nodejs=&#34;`aarch64`&#34; pulumi-lang-dotnet=&#34;`Aarch64`&#34; pulumi-lang-go=&#34;`aarch64`&#34; pulumi-lang-python=&#34;`aarch64`&#34; pulumi-lang-yaml=&#34;`aarch64`&#34; pulumi-lang-java=&#34;`aarch64`&#34; pulumi-lang-hcl=&#34;`aarch64`&#34;&gt;`aarch64`&lt;/span&gt; (defaults
+     * to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     private @Nullable Boolean preEnrolledKeys;
     /**
-     * @return Size and type of the OVMF EFI disk. &lt;span pulumi-lang-nodejs=&#34;`4m`&#34; pulumi-lang-dotnet=&#34;`4m`&#34; pulumi-lang-go=&#34;`4m`&#34; pulumi-lang-python=&#34;`4m`&#34; pulumi-lang-yaml=&#34;`4m`&#34; pulumi-lang-java=&#34;`4m`&#34;&gt;`4m`&lt;/span&gt; is newer and
+     * @return Size and type of the OVMF EFI disk. &lt;span pulumi-lang-nodejs=&#34;`4m`&#34; pulumi-lang-dotnet=&#34;`4m`&#34; pulumi-lang-go=&#34;`4m`&#34; pulumi-lang-python=&#34;`4m`&#34; pulumi-lang-yaml=&#34;`4m`&#34; pulumi-lang-java=&#34;`4m`&#34; pulumi-lang-hcl=&#34;`4m`&#34;&gt;`4m`&lt;/span&gt; is newer and
      * recommended, and required for Secure Boot. For backwards compatibility
-     * use &lt;span pulumi-lang-nodejs=&#34;`2m`&#34; pulumi-lang-dotnet=&#34;`2m`&#34; pulumi-lang-go=&#34;`2m`&#34; pulumi-lang-python=&#34;`2m`&#34; pulumi-lang-yaml=&#34;`2m`&#34; pulumi-lang-java=&#34;`2m`&#34;&gt;`2m`&lt;/span&gt;. Ignored for VMs with cpu.architecture=&lt;span pulumi-lang-nodejs=&#34;`aarch64`&#34; pulumi-lang-dotnet=&#34;`Aarch64`&#34; pulumi-lang-go=&#34;`aarch64`&#34; pulumi-lang-python=&#34;`aarch64`&#34; pulumi-lang-yaml=&#34;`aarch64`&#34; pulumi-lang-java=&#34;`aarch64`&#34;&gt;`aarch64`&lt;/span&gt; (defaults
-     * to &lt;span pulumi-lang-nodejs=&#34;`2m`&#34; pulumi-lang-dotnet=&#34;`2m`&#34; pulumi-lang-go=&#34;`2m`&#34; pulumi-lang-python=&#34;`2m`&#34; pulumi-lang-yaml=&#34;`2m`&#34; pulumi-lang-java=&#34;`2m`&#34;&gt;`2m`&lt;/span&gt;).
+     * use &lt;span pulumi-lang-nodejs=&#34;`2m`&#34; pulumi-lang-dotnet=&#34;`2m`&#34; pulumi-lang-go=&#34;`2m`&#34; pulumi-lang-python=&#34;`2m`&#34; pulumi-lang-yaml=&#34;`2m`&#34; pulumi-lang-java=&#34;`2m`&#34; pulumi-lang-hcl=&#34;`2m`&#34;&gt;`2m`&lt;/span&gt;. Ignored for VMs with cpu.architecture=&lt;span pulumi-lang-nodejs=&#34;`aarch64`&#34; pulumi-lang-dotnet=&#34;`Aarch64`&#34; pulumi-lang-go=&#34;`aarch64`&#34; pulumi-lang-python=&#34;`aarch64`&#34; pulumi-lang-yaml=&#34;`aarch64`&#34; pulumi-lang-java=&#34;`aarch64`&#34; pulumi-lang-hcl=&#34;`aarch64`&#34;&gt;`aarch64`&lt;/span&gt; (defaults
+     * to &lt;span pulumi-lang-nodejs=&#34;`2m`&#34; pulumi-lang-dotnet=&#34;`2m`&#34; pulumi-lang-go=&#34;`2m`&#34; pulumi-lang-python=&#34;`2m`&#34; pulumi-lang-yaml=&#34;`2m`&#34; pulumi-lang-java=&#34;`2m`&#34; pulumi-lang-hcl=&#34;`2m`&#34;&gt;`2m`&lt;/span&gt;).
      * 
      */
     private @Nullable String type;
@@ -50,7 +50,7 @@ public final class VmLegacyEfiDisk {
         return Optional.ofNullable(this.datastoreId);
     }
     /**
-     * @return The file format (defaults to &lt;span pulumi-lang-nodejs=&#34;`raw`&#34; pulumi-lang-dotnet=&#34;`Raw`&#34; pulumi-lang-go=&#34;`raw`&#34; pulumi-lang-python=&#34;`raw`&#34; pulumi-lang-yaml=&#34;`raw`&#34; pulumi-lang-java=&#34;`raw`&#34;&gt;`raw`&lt;/span&gt;).
+     * @return The file format (defaults to &lt;span pulumi-lang-nodejs=&#34;`raw`&#34; pulumi-lang-dotnet=&#34;`Raw`&#34; pulumi-lang-go=&#34;`raw`&#34; pulumi-lang-python=&#34;`raw`&#34; pulumi-lang-yaml=&#34;`raw`&#34; pulumi-lang-java=&#34;`raw`&#34; pulumi-lang-hcl=&#34;`raw`&#34;&gt;`raw`&lt;/span&gt;).
      * 
      */
     public Optional<String> fileFormat() {
@@ -59,18 +59,18 @@ public final class VmLegacyEfiDisk {
     /**
      * @return Use am EFI vars template with
      * distribution-specific and Microsoft Standard keys enrolled, if used with
-     * EFI type=&lt;span pulumi-lang-nodejs=&#34;`4m`&#34; pulumi-lang-dotnet=&#34;`4m`&#34; pulumi-lang-go=&#34;`4m`&#34; pulumi-lang-python=&#34;`4m`&#34; pulumi-lang-yaml=&#34;`4m`&#34; pulumi-lang-java=&#34;`4m`&#34;&gt;`4m`&lt;/span&gt;. Ignored for VMs with cpu.architecture=&lt;span pulumi-lang-nodejs=&#34;`aarch64`&#34; pulumi-lang-dotnet=&#34;`Aarch64`&#34; pulumi-lang-go=&#34;`aarch64`&#34; pulumi-lang-python=&#34;`aarch64`&#34; pulumi-lang-yaml=&#34;`aarch64`&#34; pulumi-lang-java=&#34;`aarch64`&#34;&gt;`aarch64`&lt;/span&gt; (defaults
-     * to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * EFI type=&lt;span pulumi-lang-nodejs=&#34;`4m`&#34; pulumi-lang-dotnet=&#34;`4m`&#34; pulumi-lang-go=&#34;`4m`&#34; pulumi-lang-python=&#34;`4m`&#34; pulumi-lang-yaml=&#34;`4m`&#34; pulumi-lang-java=&#34;`4m`&#34; pulumi-lang-hcl=&#34;`4m`&#34;&gt;`4m`&lt;/span&gt;. Ignored for VMs with cpu.architecture=&lt;span pulumi-lang-nodejs=&#34;`aarch64`&#34; pulumi-lang-dotnet=&#34;`Aarch64`&#34; pulumi-lang-go=&#34;`aarch64`&#34; pulumi-lang-python=&#34;`aarch64`&#34; pulumi-lang-yaml=&#34;`aarch64`&#34; pulumi-lang-java=&#34;`aarch64`&#34; pulumi-lang-hcl=&#34;`aarch64`&#34;&gt;`aarch64`&lt;/span&gt; (defaults
+     * to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Optional<Boolean> preEnrolledKeys() {
         return Optional.ofNullable(this.preEnrolledKeys);
     }
     /**
-     * @return Size and type of the OVMF EFI disk. &lt;span pulumi-lang-nodejs=&#34;`4m`&#34; pulumi-lang-dotnet=&#34;`4m`&#34; pulumi-lang-go=&#34;`4m`&#34; pulumi-lang-python=&#34;`4m`&#34; pulumi-lang-yaml=&#34;`4m`&#34; pulumi-lang-java=&#34;`4m`&#34;&gt;`4m`&lt;/span&gt; is newer and
+     * @return Size and type of the OVMF EFI disk. &lt;span pulumi-lang-nodejs=&#34;`4m`&#34; pulumi-lang-dotnet=&#34;`4m`&#34; pulumi-lang-go=&#34;`4m`&#34; pulumi-lang-python=&#34;`4m`&#34; pulumi-lang-yaml=&#34;`4m`&#34; pulumi-lang-java=&#34;`4m`&#34; pulumi-lang-hcl=&#34;`4m`&#34;&gt;`4m`&lt;/span&gt; is newer and
      * recommended, and required for Secure Boot. For backwards compatibility
-     * use &lt;span pulumi-lang-nodejs=&#34;`2m`&#34; pulumi-lang-dotnet=&#34;`2m`&#34; pulumi-lang-go=&#34;`2m`&#34; pulumi-lang-python=&#34;`2m`&#34; pulumi-lang-yaml=&#34;`2m`&#34; pulumi-lang-java=&#34;`2m`&#34;&gt;`2m`&lt;/span&gt;. Ignored for VMs with cpu.architecture=&lt;span pulumi-lang-nodejs=&#34;`aarch64`&#34; pulumi-lang-dotnet=&#34;`Aarch64`&#34; pulumi-lang-go=&#34;`aarch64`&#34; pulumi-lang-python=&#34;`aarch64`&#34; pulumi-lang-yaml=&#34;`aarch64`&#34; pulumi-lang-java=&#34;`aarch64`&#34;&gt;`aarch64`&lt;/span&gt; (defaults
-     * to &lt;span pulumi-lang-nodejs=&#34;`2m`&#34; pulumi-lang-dotnet=&#34;`2m`&#34; pulumi-lang-go=&#34;`2m`&#34; pulumi-lang-python=&#34;`2m`&#34; pulumi-lang-yaml=&#34;`2m`&#34; pulumi-lang-java=&#34;`2m`&#34;&gt;`2m`&lt;/span&gt;).
+     * use &lt;span pulumi-lang-nodejs=&#34;`2m`&#34; pulumi-lang-dotnet=&#34;`2m`&#34; pulumi-lang-go=&#34;`2m`&#34; pulumi-lang-python=&#34;`2m`&#34; pulumi-lang-yaml=&#34;`2m`&#34; pulumi-lang-java=&#34;`2m`&#34; pulumi-lang-hcl=&#34;`2m`&#34;&gt;`2m`&lt;/span&gt;. Ignored for VMs with cpu.architecture=&lt;span pulumi-lang-nodejs=&#34;`aarch64`&#34; pulumi-lang-dotnet=&#34;`Aarch64`&#34; pulumi-lang-go=&#34;`aarch64`&#34; pulumi-lang-python=&#34;`aarch64`&#34; pulumi-lang-yaml=&#34;`aarch64`&#34; pulumi-lang-java=&#34;`aarch64`&#34; pulumi-lang-hcl=&#34;`aarch64`&#34;&gt;`aarch64`&lt;/span&gt; (defaults
+     * to &lt;span pulumi-lang-nodejs=&#34;`2m`&#34; pulumi-lang-dotnet=&#34;`2m`&#34; pulumi-lang-go=&#34;`2m`&#34; pulumi-lang-python=&#34;`2m`&#34; pulumi-lang-yaml=&#34;`2m`&#34; pulumi-lang-java=&#34;`2m`&#34; pulumi-lang-hcl=&#34;`2m`&#34;&gt;`2m`&lt;/span&gt;).
      * 
      */
     public Optional<String> type() {

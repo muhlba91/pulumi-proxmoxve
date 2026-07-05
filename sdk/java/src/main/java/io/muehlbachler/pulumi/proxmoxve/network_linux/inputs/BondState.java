@@ -49,14 +49,14 @@ public final class BondState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Automatically start interface on boot (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * Automatically start interface on boot (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     @Import(name="autostart")
     private @Nullable Output<Boolean> autostart;
 
     /**
-     * @return Automatically start interface on boot (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * @return Automatically start interface on boot (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> autostart() {
@@ -64,14 +64,14 @@ public final class BondState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The bonding mode. Possible values are `balance-rr`, `active-backup`, `balance-xor`, &lt;span pulumi-lang-nodejs=&#34;`broadcast`&#34; pulumi-lang-dotnet=&#34;`Broadcast`&#34; pulumi-lang-go=&#34;`broadcast`&#34; pulumi-lang-python=&#34;`broadcast`&#34; pulumi-lang-yaml=&#34;`broadcast`&#34; pulumi-lang-java=&#34;`broadcast`&#34;&gt;`broadcast`&lt;/span&gt;, `802.3ad`, `balance-tlb`, `balance-alb`.
+     * The bonding mode. Possible values are `balance-rr`, `active-backup`, `balance-xor`, &lt;span pulumi-lang-nodejs=&#34;`broadcast`&#34; pulumi-lang-dotnet=&#34;`Broadcast`&#34; pulumi-lang-go=&#34;`broadcast`&#34; pulumi-lang-python=&#34;`broadcast`&#34; pulumi-lang-yaml=&#34;`broadcast`&#34; pulumi-lang-java=&#34;`broadcast`&#34; pulumi-lang-hcl=&#34;`broadcast`&#34;&gt;`broadcast`&lt;/span&gt;, `802.3ad`, `balance-tlb`, `balance-alb`.
      * 
      */
     @Import(name="bondMode")
     private @Nullable Output<String> bondMode;
 
     /**
-     * @return The bonding mode. Possible values are `balance-rr`, `active-backup`, `balance-xor`, &lt;span pulumi-lang-nodejs=&#34;`broadcast`&#34; pulumi-lang-dotnet=&#34;`Broadcast`&#34; pulumi-lang-go=&#34;`broadcast`&#34; pulumi-lang-python=&#34;`broadcast`&#34; pulumi-lang-yaml=&#34;`broadcast`&#34; pulumi-lang-java=&#34;`broadcast`&#34;&gt;`broadcast`&lt;/span&gt;, `802.3ad`, `balance-tlb`, `balance-alb`.
+     * @return The bonding mode. Possible values are `balance-rr`, `active-backup`, `balance-xor`, &lt;span pulumi-lang-nodejs=&#34;`broadcast`&#34; pulumi-lang-dotnet=&#34;`Broadcast`&#34; pulumi-lang-go=&#34;`broadcast`&#34; pulumi-lang-python=&#34;`broadcast`&#34; pulumi-lang-yaml=&#34;`broadcast`&#34; pulumi-lang-java=&#34;`broadcast`&#34; pulumi-lang-hcl=&#34;`broadcast`&#34;&gt;`broadcast`&lt;/span&gt;, `802.3ad`, `balance-tlb`, `balance-alb`.
      * 
      */
     public Optional<Output<String>> bondMode() {
@@ -94,14 +94,14 @@ public final class BondState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The transmit hash policy for `balance-xor` and `802.3ad` bond modes. Possible values are &lt;span pulumi-lang-nodejs=&#34;`layer2`&#34; pulumi-lang-dotnet=&#34;`Layer2`&#34; pulumi-lang-go=&#34;`layer2`&#34; pulumi-lang-python=&#34;`layer2`&#34; pulumi-lang-yaml=&#34;`layer2`&#34; pulumi-lang-java=&#34;`layer2`&#34;&gt;`layer2`&lt;/span&gt;, `layer2+3`, `layer3+4`.
+     * The transmit hash policy for `balance-xor` and `802.3ad` bond modes. Possible values are &lt;span pulumi-lang-nodejs=&#34;`layer2`&#34; pulumi-lang-dotnet=&#34;`Layer2`&#34; pulumi-lang-go=&#34;`layer2`&#34; pulumi-lang-python=&#34;`layer2`&#34; pulumi-lang-yaml=&#34;`layer2`&#34; pulumi-lang-java=&#34;`layer2`&#34; pulumi-lang-hcl=&#34;`layer2`&#34;&gt;`layer2`&lt;/span&gt;, `layer2+3`, `layer3+4`.
      * 
      */
     @Import(name="bondXmitHashPolicy")
     private @Nullable Output<String> bondXmitHashPolicy;
 
     /**
-     * @return The transmit hash policy for `balance-xor` and `802.3ad` bond modes. Possible values are &lt;span pulumi-lang-nodejs=&#34;`layer2`&#34; pulumi-lang-dotnet=&#34;`Layer2`&#34; pulumi-lang-go=&#34;`layer2`&#34; pulumi-lang-python=&#34;`layer2`&#34; pulumi-lang-yaml=&#34;`layer2`&#34; pulumi-lang-java=&#34;`layer2`&#34;&gt;`layer2`&lt;/span&gt;, `layer2+3`, `layer3+4`.
+     * @return The transmit hash policy for `balance-xor` and `802.3ad` bond modes. Possible values are &lt;span pulumi-lang-nodejs=&#34;`layer2`&#34; pulumi-lang-dotnet=&#34;`Layer2`&#34; pulumi-lang-go=&#34;`layer2`&#34; pulumi-lang-python=&#34;`layer2`&#34; pulumi-lang-yaml=&#34;`layer2`&#34; pulumi-lang-java=&#34;`layer2`&#34; pulumi-lang-hcl=&#34;`layer2`&#34;&gt;`layer2`&lt;/span&gt;, `layer2+3`, `layer3+4`.
      * 
      */
     public Optional<Output<String>> bondXmitHashPolicy() {
@@ -214,14 +214,14 @@ public final class BondState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Timeout for network reload operations in seconds (defaults to &lt;span pulumi-lang-nodejs=&#34;`100`&#34; pulumi-lang-dotnet=&#34;`100`&#34; pulumi-lang-go=&#34;`100`&#34; pulumi-lang-python=&#34;`100`&#34; pulumi-lang-yaml=&#34;`100`&#34; pulumi-lang-java=&#34;`100`&#34;&gt;`100`&lt;/span&gt;).
+     * Timeout for network reload operations in seconds (defaults to &lt;span pulumi-lang-nodejs=&#34;`100`&#34; pulumi-lang-dotnet=&#34;`100`&#34; pulumi-lang-go=&#34;`100`&#34; pulumi-lang-python=&#34;`100`&#34; pulumi-lang-yaml=&#34;`100`&#34; pulumi-lang-java=&#34;`100`&#34; pulumi-lang-hcl=&#34;`100`&#34;&gt;`100`&lt;/span&gt;).
      * 
      */
     @Import(name="timeoutReload")
     private @Nullable Output<Integer> timeoutReload;
 
     /**
-     * @return Timeout for network reload operations in seconds (defaults to &lt;span pulumi-lang-nodejs=&#34;`100`&#34; pulumi-lang-dotnet=&#34;`100`&#34; pulumi-lang-go=&#34;`100`&#34; pulumi-lang-python=&#34;`100`&#34; pulumi-lang-yaml=&#34;`100`&#34; pulumi-lang-java=&#34;`100`&#34;&gt;`100`&lt;/span&gt;).
+     * @return Timeout for network reload operations in seconds (defaults to &lt;span pulumi-lang-nodejs=&#34;`100`&#34; pulumi-lang-dotnet=&#34;`100`&#34; pulumi-lang-go=&#34;`100`&#34; pulumi-lang-python=&#34;`100`&#34; pulumi-lang-yaml=&#34;`100`&#34; pulumi-lang-java=&#34;`100`&#34; pulumi-lang-hcl=&#34;`100`&#34;&gt;`100`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Integer>> timeoutReload() {
@@ -308,7 +308,7 @@ public final class BondState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autostart Automatically start interface on boot (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+         * @param autostart Automatically start interface on boot (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class BondState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autostart Automatically start interface on boot (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+         * @param autostart Automatically start interface on boot (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -329,7 +329,7 @@ public final class BondState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bondMode The bonding mode. Possible values are `balance-rr`, `active-backup`, `balance-xor`, &lt;span pulumi-lang-nodejs=&#34;`broadcast`&#34; pulumi-lang-dotnet=&#34;`Broadcast`&#34; pulumi-lang-go=&#34;`broadcast`&#34; pulumi-lang-python=&#34;`broadcast`&#34; pulumi-lang-yaml=&#34;`broadcast`&#34; pulumi-lang-java=&#34;`broadcast`&#34;&gt;`broadcast`&lt;/span&gt;, `802.3ad`, `balance-tlb`, `balance-alb`.
+         * @param bondMode The bonding mode. Possible values are `balance-rr`, `active-backup`, `balance-xor`, &lt;span pulumi-lang-nodejs=&#34;`broadcast`&#34; pulumi-lang-dotnet=&#34;`Broadcast`&#34; pulumi-lang-go=&#34;`broadcast`&#34; pulumi-lang-python=&#34;`broadcast`&#34; pulumi-lang-yaml=&#34;`broadcast`&#34; pulumi-lang-java=&#34;`broadcast`&#34; pulumi-lang-hcl=&#34;`broadcast`&#34;&gt;`broadcast`&lt;/span&gt;, `802.3ad`, `balance-tlb`, `balance-alb`.
          * 
          * @return builder
          * 
@@ -340,7 +340,7 @@ public final class BondState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bondMode The bonding mode. Possible values are `balance-rr`, `active-backup`, `balance-xor`, &lt;span pulumi-lang-nodejs=&#34;`broadcast`&#34; pulumi-lang-dotnet=&#34;`Broadcast`&#34; pulumi-lang-go=&#34;`broadcast`&#34; pulumi-lang-python=&#34;`broadcast`&#34; pulumi-lang-yaml=&#34;`broadcast`&#34; pulumi-lang-java=&#34;`broadcast`&#34;&gt;`broadcast`&lt;/span&gt;, `802.3ad`, `balance-tlb`, `balance-alb`.
+         * @param bondMode The bonding mode. Possible values are `balance-rr`, `active-backup`, `balance-xor`, &lt;span pulumi-lang-nodejs=&#34;`broadcast`&#34; pulumi-lang-dotnet=&#34;`Broadcast`&#34; pulumi-lang-go=&#34;`broadcast`&#34; pulumi-lang-python=&#34;`broadcast`&#34; pulumi-lang-yaml=&#34;`broadcast`&#34; pulumi-lang-java=&#34;`broadcast`&#34; pulumi-lang-hcl=&#34;`broadcast`&#34;&gt;`broadcast`&lt;/span&gt;, `802.3ad`, `balance-tlb`, `balance-alb`.
          * 
          * @return builder
          * 
@@ -371,7 +371,7 @@ public final class BondState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bondXmitHashPolicy The transmit hash policy for `balance-xor` and `802.3ad` bond modes. Possible values are &lt;span pulumi-lang-nodejs=&#34;`layer2`&#34; pulumi-lang-dotnet=&#34;`Layer2`&#34; pulumi-lang-go=&#34;`layer2`&#34; pulumi-lang-python=&#34;`layer2`&#34; pulumi-lang-yaml=&#34;`layer2`&#34; pulumi-lang-java=&#34;`layer2`&#34;&gt;`layer2`&lt;/span&gt;, `layer2+3`, `layer3+4`.
+         * @param bondXmitHashPolicy The transmit hash policy for `balance-xor` and `802.3ad` bond modes. Possible values are &lt;span pulumi-lang-nodejs=&#34;`layer2`&#34; pulumi-lang-dotnet=&#34;`Layer2`&#34; pulumi-lang-go=&#34;`layer2`&#34; pulumi-lang-python=&#34;`layer2`&#34; pulumi-lang-yaml=&#34;`layer2`&#34; pulumi-lang-java=&#34;`layer2`&#34; pulumi-lang-hcl=&#34;`layer2`&#34;&gt;`layer2`&lt;/span&gt;, `layer2+3`, `layer3+4`.
          * 
          * @return builder
          * 
@@ -382,7 +382,7 @@ public final class BondState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bondXmitHashPolicy The transmit hash policy for `balance-xor` and `802.3ad` bond modes. Possible values are &lt;span pulumi-lang-nodejs=&#34;`layer2`&#34; pulumi-lang-dotnet=&#34;`Layer2`&#34; pulumi-lang-go=&#34;`layer2`&#34; pulumi-lang-python=&#34;`layer2`&#34; pulumi-lang-yaml=&#34;`layer2`&#34; pulumi-lang-java=&#34;`layer2`&#34;&gt;`layer2`&lt;/span&gt;, `layer2+3`, `layer3+4`.
+         * @param bondXmitHashPolicy The transmit hash policy for `balance-xor` and `802.3ad` bond modes. Possible values are &lt;span pulumi-lang-nodejs=&#34;`layer2`&#34; pulumi-lang-dotnet=&#34;`Layer2`&#34; pulumi-lang-go=&#34;`layer2`&#34; pulumi-lang-python=&#34;`layer2`&#34; pulumi-lang-yaml=&#34;`layer2`&#34; pulumi-lang-java=&#34;`layer2`&#34; pulumi-lang-hcl=&#34;`layer2`&#34;&gt;`layer2`&lt;/span&gt;, `layer2+3`, `layer3+4`.
          * 
          * @return builder
          * 
@@ -549,7 +549,7 @@ public final class BondState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeoutReload Timeout for network reload operations in seconds (defaults to &lt;span pulumi-lang-nodejs=&#34;`100`&#34; pulumi-lang-dotnet=&#34;`100`&#34; pulumi-lang-go=&#34;`100`&#34; pulumi-lang-python=&#34;`100`&#34; pulumi-lang-yaml=&#34;`100`&#34; pulumi-lang-java=&#34;`100`&#34;&gt;`100`&lt;/span&gt;).
+         * @param timeoutReload Timeout for network reload operations in seconds (defaults to &lt;span pulumi-lang-nodejs=&#34;`100`&#34; pulumi-lang-dotnet=&#34;`100`&#34; pulumi-lang-go=&#34;`100`&#34; pulumi-lang-python=&#34;`100`&#34; pulumi-lang-yaml=&#34;`100`&#34; pulumi-lang-java=&#34;`100`&#34; pulumi-lang-hcl=&#34;`100`&#34;&gt;`100`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -560,7 +560,7 @@ public final class BondState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeoutReload Timeout for network reload operations in seconds (defaults to &lt;span pulumi-lang-nodejs=&#34;`100`&#34; pulumi-lang-dotnet=&#34;`100`&#34; pulumi-lang-go=&#34;`100`&#34; pulumi-lang-python=&#34;`100`&#34; pulumi-lang-yaml=&#34;`100`&#34; pulumi-lang-java=&#34;`100`&#34;&gt;`100`&lt;/span&gt;).
+         * @param timeoutReload Timeout for network reload operations in seconds (defaults to &lt;span pulumi-lang-nodejs=&#34;`100`&#34; pulumi-lang-dotnet=&#34;`100`&#34; pulumi-lang-go=&#34;`100`&#34; pulumi-lang-python=&#34;`100`&#34; pulumi-lang-yaml=&#34;`100`&#34; pulumi-lang-java=&#34;`100`&#34; pulumi-lang-hcl=&#34;`100`&#34;&gt;`100`&lt;/span&gt;).
          * 
          * @return builder
          * 

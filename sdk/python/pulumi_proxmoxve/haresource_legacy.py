@@ -21,6 +21,7 @@ class HaresourceLegacyArgs:
     def __init__(__self__, *,
                  resource_id: pulumi.Input[_builtins.str],
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 failback: pulumi.Input[Optional[_builtins.bool]] = None,
                  group: pulumi.Input[Optional[_builtins.str]] = None,
                  max_relocate: pulumi.Input[Optional[_builtins.int]] = None,
                  max_restart: pulumi.Input[Optional[_builtins.int]] = None,
@@ -31,6 +32,7 @@ class HaresourceLegacyArgs:
 
         :param pulumi.Input[_builtins.str] resource_id: The Proxmox HA resource identifier
         :param pulumi.Input[_builtins.str] comment: The comment associated with this resource.
+        :param pulumi.Input[_builtins.bool] failback: Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
         :param pulumi.Input[_builtins.str] group: The identifier of the High Availability group this resource is a member of.
         :param pulumi.Input[_builtins.int] max_relocate: The maximal number of relocation attempts.
         :param pulumi.Input[_builtins.int] max_restart: The maximal number of restart attempts.
@@ -40,6 +42,8 @@ class HaresourceLegacyArgs:
         pulumi.set(__self__, "resource_id", resource_id)
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
+        if failback is not None:
+            pulumi.set(__self__, "failback", failback)
         if group is not None:
             pulumi.set(__self__, "group", group)
         if max_relocate is not None:
@@ -74,6 +78,18 @@ class HaresourceLegacyArgs:
     @comment.setter
     def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def failback(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
+        """
+        return pulumi.get(self, "failback")
+
+    @failback.setter
+    def failback(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "failback", value)
 
     @_builtins.property
     @pulumi.getter
@@ -140,6 +156,7 @@ class HaresourceLegacyArgs:
 class _HaresourceLegacyState:
     def __init__(__self__, *,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 failback: pulumi.Input[Optional[_builtins.bool]] = None,
                  group: pulumi.Input[Optional[_builtins.str]] = None,
                  max_relocate: pulumi.Input[Optional[_builtins.int]] = None,
                  max_restart: pulumi.Input[Optional[_builtins.int]] = None,
@@ -150,6 +167,7 @@ class _HaresourceLegacyState:
         Input properties used for looking up and filtering HaresourceLegacy resources.
 
         :param pulumi.Input[_builtins.str] comment: The comment associated with this resource.
+        :param pulumi.Input[_builtins.bool] failback: Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
         :param pulumi.Input[_builtins.str] group: The identifier of the High Availability group this resource is a member of.
         :param pulumi.Input[_builtins.int] max_relocate: The maximal number of relocation attempts.
         :param pulumi.Input[_builtins.int] max_restart: The maximal number of restart attempts.
@@ -159,6 +177,8 @@ class _HaresourceLegacyState:
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
+        if failback is not None:
+            pulumi.set(__self__, "failback", failback)
         if group is not None:
             pulumi.set(__self__, "group", group)
         if max_relocate is not None:
@@ -183,6 +203,18 @@ class _HaresourceLegacyState:
     @comment.setter
     def comment(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "comment", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def failback(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
+        """
+        return pulumi.get(self, "failback")
+
+    @failback.setter
+    def failback(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "failback", value)
 
     @_builtins.property
     @pulumi.getter
@@ -264,6 +296,7 @@ class HaresourceLegacy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 failback: pulumi.Input[Optional[_builtins.bool]] = None,
                  group: pulumi.Input[Optional[_builtins.str]] = None,
                  max_relocate: pulumi.Input[Optional[_builtins.int]] = None,
                  max_restart: pulumi.Input[Optional[_builtins.int]] = None,
@@ -303,6 +336,7 @@ class HaresourceLegacy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: The comment associated with this resource.
+        :param pulumi.Input[_builtins.bool] failback: Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
         :param pulumi.Input[_builtins.str] group: The identifier of the High Availability group this resource is a member of.
         :param pulumi.Input[_builtins.int] max_relocate: The maximal number of relocation attempts.
         :param pulumi.Input[_builtins.int] max_restart: The maximal number of restart attempts.
@@ -361,6 +395,7 @@ class HaresourceLegacy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  comment: pulumi.Input[Optional[_builtins.str]] = None,
+                 failback: pulumi.Input[Optional[_builtins.bool]] = None,
                  group: pulumi.Input[Optional[_builtins.str]] = None,
                  max_relocate: pulumi.Input[Optional[_builtins.int]] = None,
                  max_restart: pulumi.Input[Optional[_builtins.int]] = None,
@@ -377,6 +412,7 @@ class HaresourceLegacy(pulumi.CustomResource):
             __props__ = HaresourceLegacyArgs.__new__(HaresourceLegacyArgs)
 
             __props__.__dict__["comment"] = comment
+            __props__.__dict__["failback"] = failback
             __props__.__dict__["group"] = group
             __props__.__dict__["max_relocate"] = max_relocate
             __props__.__dict__["max_restart"] = max_restart
@@ -396,6 +432,7 @@ class HaresourceLegacy(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             comment: pulumi.Input[Optional[_builtins.str]] = None,
+            failback: pulumi.Input[Optional[_builtins.bool]] = None,
             group: pulumi.Input[Optional[_builtins.str]] = None,
             max_relocate: pulumi.Input[Optional[_builtins.int]] = None,
             max_restart: pulumi.Input[Optional[_builtins.int]] = None,
@@ -410,6 +447,7 @@ class HaresourceLegacy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] comment: The comment associated with this resource.
+        :param pulumi.Input[_builtins.bool] failback: Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
         :param pulumi.Input[_builtins.str] group: The identifier of the High Availability group this resource is a member of.
         :param pulumi.Input[_builtins.int] max_relocate: The maximal number of relocation attempts.
         :param pulumi.Input[_builtins.int] max_restart: The maximal number of restart attempts.
@@ -422,6 +460,7 @@ class HaresourceLegacy(pulumi.CustomResource):
         __props__ = _HaresourceLegacyState.__new__(_HaresourceLegacyState)
 
         __props__.__dict__["comment"] = comment
+        __props__.__dict__["failback"] = failback
         __props__.__dict__["group"] = group
         __props__.__dict__["max_relocate"] = max_relocate
         __props__.__dict__["max_restart"] = max_restart
@@ -437,6 +476,14 @@ class HaresourceLegacy(pulumi.CustomResource):
         The comment associated with this resource.
         """
         return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter
+    def failback(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
+        """
+        return pulumi.get(self, "failback")
 
     @_builtins.property
     @pulumi.getter

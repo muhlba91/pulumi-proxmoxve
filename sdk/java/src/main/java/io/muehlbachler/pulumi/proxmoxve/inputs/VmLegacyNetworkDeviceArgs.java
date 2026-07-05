@@ -19,14 +19,14 @@ public final class VmLegacyNetworkDeviceArgs extends com.pulumi.resources.Resour
     public static final VmLegacyNetworkDeviceArgs Empty = new VmLegacyNetworkDeviceArgs();
 
     /**
-     * The name of the network bridge (defaults to &lt;span pulumi-lang-nodejs=&#34;`vmbr0`&#34; pulumi-lang-dotnet=&#34;`Vmbr0`&#34; pulumi-lang-go=&#34;`vmbr0`&#34; pulumi-lang-python=&#34;`vmbr0`&#34; pulumi-lang-yaml=&#34;`vmbr0`&#34; pulumi-lang-java=&#34;`vmbr0`&#34;&gt;`vmbr0`&lt;/span&gt;).
+     * The name of the network bridge (defaults to &lt;span pulumi-lang-nodejs=&#34;`vmbr0`&#34; pulumi-lang-dotnet=&#34;`Vmbr0`&#34; pulumi-lang-go=&#34;`vmbr0`&#34; pulumi-lang-python=&#34;`vmbr0`&#34; pulumi-lang-yaml=&#34;`vmbr0`&#34; pulumi-lang-java=&#34;`vmbr0`&#34; pulumi-lang-hcl=&#34;`vmbr0`&#34;&gt;`vmbr0`&lt;/span&gt;).
      * 
      */
     @Import(name="bridge")
     private @Nullable Output<String> bridge;
 
     /**
-     * @return The name of the network bridge (defaults to &lt;span pulumi-lang-nodejs=&#34;`vmbr0`&#34; pulumi-lang-dotnet=&#34;`Vmbr0`&#34; pulumi-lang-go=&#34;`vmbr0`&#34; pulumi-lang-python=&#34;`vmbr0`&#34; pulumi-lang-yaml=&#34;`vmbr0`&#34; pulumi-lang-java=&#34;`vmbr0`&#34;&gt;`vmbr0`&lt;/span&gt;).
+     * @return The name of the network bridge (defaults to &lt;span pulumi-lang-nodejs=&#34;`vmbr0`&#34; pulumi-lang-dotnet=&#34;`Vmbr0`&#34; pulumi-lang-go=&#34;`vmbr0`&#34; pulumi-lang-python=&#34;`vmbr0`&#34; pulumi-lang-yaml=&#34;`vmbr0`&#34; pulumi-lang-java=&#34;`vmbr0`&#34; pulumi-lang-hcl=&#34;`vmbr0`&#34;&gt;`vmbr0`&lt;/span&gt;).
      * 
      */
     public Optional<Output<String>> bridge() {
@@ -34,14 +34,14 @@ public final class VmLegacyNetworkDeviceArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Whether to disconnect the network device from the network (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * Whether to disconnect the network device from the network (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Import(name="disconnected")
     private @Nullable Output<Boolean> disconnected;
 
     /**
-     * @return Whether to disconnect the network device from the network (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * @return Whether to disconnect the network device from the network (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> disconnected() {
@@ -49,37 +49,37 @@ public final class VmLegacyNetworkDeviceArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Whether to enable the network device (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;). Remove the &lt;span pulumi-lang-nodejs=&#34;`networkDevice`&#34; pulumi-lang-dotnet=&#34;`NetworkDevice`&#34; pulumi-lang-go=&#34;`networkDevice`&#34; pulumi-lang-python=&#34;`network_device`&#34; pulumi-lang-yaml=&#34;`networkDevice`&#34; pulumi-lang-java=&#34;`networkDevice`&#34;&gt;`networkDevice`&lt;/span&gt; block from your configuration instead of setting `enabled = false`.
+     * Whether to enable the network device (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;). Remove the &lt;span pulumi-lang-nodejs=&#34;`networkDevice`&#34; pulumi-lang-dotnet=&#34;`NetworkDevice`&#34; pulumi-lang-go=&#34;`networkDevice`&#34; pulumi-lang-python=&#34;`network_device`&#34; pulumi-lang-yaml=&#34;`networkDevice`&#34; pulumi-lang-java=&#34;`networkDevice`&#34; pulumi-lang-hcl=&#34;`network_device`&#34;&gt;`networkDevice`&lt;/span&gt; block from your configuration instead of setting `enabled = false`.
      * 
      * @deprecated
-     * The &lt;span pulumi-lang-nodejs=&#34;`enabled`&#34; pulumi-lang-dotnet=&#34;`Enabled`&#34; pulumi-lang-go=&#34;`enabled`&#34; pulumi-lang-python=&#34;`enabled`&#34; pulumi-lang-yaml=&#34;`enabled`&#34; pulumi-lang-java=&#34;`enabled`&#34;&gt;`enabled`&lt;/span&gt; attribute is deprecated and will be removed in a future release. Remove the &lt;span pulumi-lang-nodejs=&#34;`networkDevice`&#34; pulumi-lang-dotnet=&#34;`NetworkDevice`&#34; pulumi-lang-go=&#34;`networkDevice`&#34; pulumi-lang-python=&#34;`network_device`&#34; pulumi-lang-yaml=&#34;`networkDevice`&#34; pulumi-lang-java=&#34;`networkDevice`&#34;&gt;`networkDevice`&lt;/span&gt; block from your configuration instead of setting `enabled = false`.
+     * The &lt;span pulumi-lang-nodejs=&#34;`enabled`&#34; pulumi-lang-dotnet=&#34;`Enabled`&#34; pulumi-lang-go=&#34;`enabled`&#34; pulumi-lang-python=&#34;`enabled`&#34; pulumi-lang-yaml=&#34;`enabled`&#34; pulumi-lang-java=&#34;`enabled`&#34; pulumi-lang-hcl=&#34;`enabled`&#34;&gt;`enabled`&lt;/span&gt; attribute is deprecated and will be removed in a future release. Remove the &lt;span pulumi-lang-nodejs=&#34;`networkDevice`&#34; pulumi-lang-dotnet=&#34;`NetworkDevice`&#34; pulumi-lang-go=&#34;`networkDevice`&#34; pulumi-lang-python=&#34;`network_device`&#34; pulumi-lang-yaml=&#34;`networkDevice`&#34; pulumi-lang-java=&#34;`networkDevice`&#34; pulumi-lang-hcl=&#34;`network_device`&#34;&gt;`networkDevice`&lt;/span&gt; block from your configuration instead of setting `enabled = false`.
      * 
      */
-    @Deprecated /* The <span pulumi-lang-nodejs=""`enabled`"" pulumi-lang-dotnet=""`Enabled`"" pulumi-lang-go=""`enabled`"" pulumi-lang-python=""`enabled`"" pulumi-lang-yaml=""`enabled`"" pulumi-lang-java=""`enabled`"">`enabled`</span> attribute is deprecated and will be removed in a future release. Remove the <span pulumi-lang-nodejs=""`networkDevice`"" pulumi-lang-dotnet=""`NetworkDevice`"" pulumi-lang-go=""`networkDevice`"" pulumi-lang-python=""`network_device`"" pulumi-lang-yaml=""`networkDevice`"" pulumi-lang-java=""`networkDevice`"">`networkDevice`</span> block from your configuration instead of setting `enabled = false`. */
+    @Deprecated /* The <span pulumi-lang-nodejs=""`enabled`"" pulumi-lang-dotnet=""`Enabled`"" pulumi-lang-go=""`enabled`"" pulumi-lang-python=""`enabled`"" pulumi-lang-yaml=""`enabled`"" pulumi-lang-java=""`enabled`"" pulumi-lang-hcl=""`enabled`"">`enabled`</span> attribute is deprecated and will be removed in a future release. Remove the <span pulumi-lang-nodejs=""`networkDevice`"" pulumi-lang-dotnet=""`NetworkDevice`"" pulumi-lang-go=""`networkDevice`"" pulumi-lang-python=""`network_device`"" pulumi-lang-yaml=""`networkDevice`"" pulumi-lang-java=""`networkDevice`"" pulumi-lang-hcl=""`network_device`"">`networkDevice`</span> block from your configuration instead of setting `enabled = false`. */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether to enable the network device (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;). Remove the &lt;span pulumi-lang-nodejs=&#34;`networkDevice`&#34; pulumi-lang-dotnet=&#34;`NetworkDevice`&#34; pulumi-lang-go=&#34;`networkDevice`&#34; pulumi-lang-python=&#34;`network_device`&#34; pulumi-lang-yaml=&#34;`networkDevice`&#34; pulumi-lang-java=&#34;`networkDevice`&#34;&gt;`networkDevice`&lt;/span&gt; block from your configuration instead of setting `enabled = false`.
+     * @return Whether to enable the network device (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;). Remove the &lt;span pulumi-lang-nodejs=&#34;`networkDevice`&#34; pulumi-lang-dotnet=&#34;`NetworkDevice`&#34; pulumi-lang-go=&#34;`networkDevice`&#34; pulumi-lang-python=&#34;`network_device`&#34; pulumi-lang-yaml=&#34;`networkDevice`&#34; pulumi-lang-java=&#34;`networkDevice`&#34; pulumi-lang-hcl=&#34;`network_device`&#34;&gt;`networkDevice`&lt;/span&gt; block from your configuration instead of setting `enabled = false`.
      * 
      * @deprecated
-     * The &lt;span pulumi-lang-nodejs=&#34;`enabled`&#34; pulumi-lang-dotnet=&#34;`Enabled`&#34; pulumi-lang-go=&#34;`enabled`&#34; pulumi-lang-python=&#34;`enabled`&#34; pulumi-lang-yaml=&#34;`enabled`&#34; pulumi-lang-java=&#34;`enabled`&#34;&gt;`enabled`&lt;/span&gt; attribute is deprecated and will be removed in a future release. Remove the &lt;span pulumi-lang-nodejs=&#34;`networkDevice`&#34; pulumi-lang-dotnet=&#34;`NetworkDevice`&#34; pulumi-lang-go=&#34;`networkDevice`&#34; pulumi-lang-python=&#34;`network_device`&#34; pulumi-lang-yaml=&#34;`networkDevice`&#34; pulumi-lang-java=&#34;`networkDevice`&#34;&gt;`networkDevice`&lt;/span&gt; block from your configuration instead of setting `enabled = false`.
+     * The &lt;span pulumi-lang-nodejs=&#34;`enabled`&#34; pulumi-lang-dotnet=&#34;`Enabled`&#34; pulumi-lang-go=&#34;`enabled`&#34; pulumi-lang-python=&#34;`enabled`&#34; pulumi-lang-yaml=&#34;`enabled`&#34; pulumi-lang-java=&#34;`enabled`&#34; pulumi-lang-hcl=&#34;`enabled`&#34;&gt;`enabled`&lt;/span&gt; attribute is deprecated and will be removed in a future release. Remove the &lt;span pulumi-lang-nodejs=&#34;`networkDevice`&#34; pulumi-lang-dotnet=&#34;`NetworkDevice`&#34; pulumi-lang-go=&#34;`networkDevice`&#34; pulumi-lang-python=&#34;`network_device`&#34; pulumi-lang-yaml=&#34;`networkDevice`&#34; pulumi-lang-java=&#34;`networkDevice`&#34; pulumi-lang-hcl=&#34;`network_device`&#34;&gt;`networkDevice`&lt;/span&gt; block from your configuration instead of setting `enabled = false`.
      * 
      */
-    @Deprecated /* The <span pulumi-lang-nodejs=""`enabled`"" pulumi-lang-dotnet=""`Enabled`"" pulumi-lang-go=""`enabled`"" pulumi-lang-python=""`enabled`"" pulumi-lang-yaml=""`enabled`"" pulumi-lang-java=""`enabled`"">`enabled`</span> attribute is deprecated and will be removed in a future release. Remove the <span pulumi-lang-nodejs=""`networkDevice`"" pulumi-lang-dotnet=""`NetworkDevice`"" pulumi-lang-go=""`networkDevice`"" pulumi-lang-python=""`network_device`"" pulumi-lang-yaml=""`networkDevice`"" pulumi-lang-java=""`networkDevice`"">`networkDevice`</span> block from your configuration instead of setting `enabled = false`. */
+    @Deprecated /* The <span pulumi-lang-nodejs=""`enabled`"" pulumi-lang-dotnet=""`Enabled`"" pulumi-lang-go=""`enabled`"" pulumi-lang-python=""`enabled`"" pulumi-lang-yaml=""`enabled`"" pulumi-lang-java=""`enabled`"" pulumi-lang-hcl=""`enabled`"">`enabled`</span> attribute is deprecated and will be removed in a future release. Remove the <span pulumi-lang-nodejs=""`networkDevice`"" pulumi-lang-dotnet=""`NetworkDevice`"" pulumi-lang-go=""`networkDevice`"" pulumi-lang-python=""`network_device`"" pulumi-lang-yaml=""`networkDevice`"" pulumi-lang-java=""`networkDevice`"" pulumi-lang-hcl=""`network_device`"">`networkDevice`</span> block from your configuration instead of setting `enabled = false`. */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
     /**
-     * Whether this interface&#39;s firewall rules should be used (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * Whether this interface&#39;s firewall rules should be used (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Import(name="firewall")
     private @Nullable Output<Boolean> firewall;
 
     /**
-     * @return Whether this interface&#39;s firewall rules should be used (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * @return Whether this interface&#39;s firewall rules should be used (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> firewall() {
@@ -102,14 +102,14 @@ public final class VmLegacyNetworkDeviceArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * The network device model (defaults to &lt;span pulumi-lang-nodejs=&#34;`virtio`&#34; pulumi-lang-dotnet=&#34;`Virtio`&#34; pulumi-lang-go=&#34;`virtio`&#34; pulumi-lang-python=&#34;`virtio`&#34; pulumi-lang-yaml=&#34;`virtio`&#34; pulumi-lang-java=&#34;`virtio`&#34;&gt;`virtio`&lt;/span&gt;).
+     * The network device model (defaults to &lt;span pulumi-lang-nodejs=&#34;`virtio`&#34; pulumi-lang-dotnet=&#34;`Virtio`&#34; pulumi-lang-go=&#34;`virtio`&#34; pulumi-lang-python=&#34;`virtio`&#34; pulumi-lang-yaml=&#34;`virtio`&#34; pulumi-lang-java=&#34;`virtio`&#34; pulumi-lang-hcl=&#34;`virtio`&#34;&gt;`virtio`&lt;/span&gt;).
      * 
      */
     @Import(name="model")
     private @Nullable Output<String> model;
 
     /**
-     * @return The network device model (defaults to &lt;span pulumi-lang-nodejs=&#34;`virtio`&#34; pulumi-lang-dotnet=&#34;`Virtio`&#34; pulumi-lang-go=&#34;`virtio`&#34; pulumi-lang-python=&#34;`virtio`&#34; pulumi-lang-yaml=&#34;`virtio`&#34; pulumi-lang-java=&#34;`virtio`&#34;&gt;`virtio`&lt;/span&gt;).
+     * @return The network device model (defaults to &lt;span pulumi-lang-nodejs=&#34;`virtio`&#34; pulumi-lang-dotnet=&#34;`Virtio`&#34; pulumi-lang-go=&#34;`virtio`&#34; pulumi-lang-python=&#34;`virtio`&#34; pulumi-lang-yaml=&#34;`virtio`&#34; pulumi-lang-java=&#34;`virtio`&#34; pulumi-lang-hcl=&#34;`virtio`&#34;&gt;`virtio`&lt;/span&gt;).
      * 
      */
     public Optional<Output<String>> model() {
@@ -230,7 +230,7 @@ public final class VmLegacyNetworkDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param bridge The name of the network bridge (defaults to &lt;span pulumi-lang-nodejs=&#34;`vmbr0`&#34; pulumi-lang-dotnet=&#34;`Vmbr0`&#34; pulumi-lang-go=&#34;`vmbr0`&#34; pulumi-lang-python=&#34;`vmbr0`&#34; pulumi-lang-yaml=&#34;`vmbr0`&#34; pulumi-lang-java=&#34;`vmbr0`&#34;&gt;`vmbr0`&lt;/span&gt;).
+         * @param bridge The name of the network bridge (defaults to &lt;span pulumi-lang-nodejs=&#34;`vmbr0`&#34; pulumi-lang-dotnet=&#34;`Vmbr0`&#34; pulumi-lang-go=&#34;`vmbr0`&#34; pulumi-lang-python=&#34;`vmbr0`&#34; pulumi-lang-yaml=&#34;`vmbr0`&#34; pulumi-lang-java=&#34;`vmbr0`&#34; pulumi-lang-hcl=&#34;`vmbr0`&#34;&gt;`vmbr0`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class VmLegacyNetworkDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param bridge The name of the network bridge (defaults to &lt;span pulumi-lang-nodejs=&#34;`vmbr0`&#34; pulumi-lang-dotnet=&#34;`Vmbr0`&#34; pulumi-lang-go=&#34;`vmbr0`&#34; pulumi-lang-python=&#34;`vmbr0`&#34; pulumi-lang-yaml=&#34;`vmbr0`&#34; pulumi-lang-java=&#34;`vmbr0`&#34;&gt;`vmbr0`&lt;/span&gt;).
+         * @param bridge The name of the network bridge (defaults to &lt;span pulumi-lang-nodejs=&#34;`vmbr0`&#34; pulumi-lang-dotnet=&#34;`Vmbr0`&#34; pulumi-lang-go=&#34;`vmbr0`&#34; pulumi-lang-python=&#34;`vmbr0`&#34; pulumi-lang-yaml=&#34;`vmbr0`&#34; pulumi-lang-java=&#34;`vmbr0`&#34; pulumi-lang-hcl=&#34;`vmbr0`&#34;&gt;`vmbr0`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class VmLegacyNetworkDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param disconnected Whether to disconnect the network device from the network (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+         * @param disconnected Whether to disconnect the network device from the network (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class VmLegacyNetworkDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param disconnected Whether to disconnect the network device from the network (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+         * @param disconnected Whether to disconnect the network device from the network (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -272,36 +272,36 @@ public final class VmLegacyNetworkDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param enabled Whether to enable the network device (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;). Remove the &lt;span pulumi-lang-nodejs=&#34;`networkDevice`&#34; pulumi-lang-dotnet=&#34;`NetworkDevice`&#34; pulumi-lang-go=&#34;`networkDevice`&#34; pulumi-lang-python=&#34;`network_device`&#34; pulumi-lang-yaml=&#34;`networkDevice`&#34; pulumi-lang-java=&#34;`networkDevice`&#34;&gt;`networkDevice`&lt;/span&gt; block from your configuration instead of setting `enabled = false`.
+         * @param enabled Whether to enable the network device (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;). Remove the &lt;span pulumi-lang-nodejs=&#34;`networkDevice`&#34; pulumi-lang-dotnet=&#34;`NetworkDevice`&#34; pulumi-lang-go=&#34;`networkDevice`&#34; pulumi-lang-python=&#34;`network_device`&#34; pulumi-lang-yaml=&#34;`networkDevice`&#34; pulumi-lang-java=&#34;`networkDevice`&#34; pulumi-lang-hcl=&#34;`network_device`&#34;&gt;`networkDevice`&lt;/span&gt; block from your configuration instead of setting `enabled = false`.
          * 
          * @return builder
          * 
          * @deprecated
-         * The &lt;span pulumi-lang-nodejs=&#34;`enabled`&#34; pulumi-lang-dotnet=&#34;`Enabled`&#34; pulumi-lang-go=&#34;`enabled`&#34; pulumi-lang-python=&#34;`enabled`&#34; pulumi-lang-yaml=&#34;`enabled`&#34; pulumi-lang-java=&#34;`enabled`&#34;&gt;`enabled`&lt;/span&gt; attribute is deprecated and will be removed in a future release. Remove the &lt;span pulumi-lang-nodejs=&#34;`networkDevice`&#34; pulumi-lang-dotnet=&#34;`NetworkDevice`&#34; pulumi-lang-go=&#34;`networkDevice`&#34; pulumi-lang-python=&#34;`network_device`&#34; pulumi-lang-yaml=&#34;`networkDevice`&#34; pulumi-lang-java=&#34;`networkDevice`&#34;&gt;`networkDevice`&lt;/span&gt; block from your configuration instead of setting `enabled = false`.
+         * The &lt;span pulumi-lang-nodejs=&#34;`enabled`&#34; pulumi-lang-dotnet=&#34;`Enabled`&#34; pulumi-lang-go=&#34;`enabled`&#34; pulumi-lang-python=&#34;`enabled`&#34; pulumi-lang-yaml=&#34;`enabled`&#34; pulumi-lang-java=&#34;`enabled`&#34; pulumi-lang-hcl=&#34;`enabled`&#34;&gt;`enabled`&lt;/span&gt; attribute is deprecated and will be removed in a future release. Remove the &lt;span pulumi-lang-nodejs=&#34;`networkDevice`&#34; pulumi-lang-dotnet=&#34;`NetworkDevice`&#34; pulumi-lang-go=&#34;`networkDevice`&#34; pulumi-lang-python=&#34;`network_device`&#34; pulumi-lang-yaml=&#34;`networkDevice`&#34; pulumi-lang-java=&#34;`networkDevice`&#34; pulumi-lang-hcl=&#34;`network_device`&#34;&gt;`networkDevice`&lt;/span&gt; block from your configuration instead of setting `enabled = false`.
          * 
          */
-        @Deprecated /* The <span pulumi-lang-nodejs=""`enabled`"" pulumi-lang-dotnet=""`Enabled`"" pulumi-lang-go=""`enabled`"" pulumi-lang-python=""`enabled`"" pulumi-lang-yaml=""`enabled`"" pulumi-lang-java=""`enabled`"">`enabled`</span> attribute is deprecated and will be removed in a future release. Remove the <span pulumi-lang-nodejs=""`networkDevice`"" pulumi-lang-dotnet=""`NetworkDevice`"" pulumi-lang-go=""`networkDevice`"" pulumi-lang-python=""`network_device`"" pulumi-lang-yaml=""`networkDevice`"" pulumi-lang-java=""`networkDevice`"">`networkDevice`</span> block from your configuration instead of setting `enabled = false`. */
+        @Deprecated /* The <span pulumi-lang-nodejs=""`enabled`"" pulumi-lang-dotnet=""`Enabled`"" pulumi-lang-go=""`enabled`"" pulumi-lang-python=""`enabled`"" pulumi-lang-yaml=""`enabled`"" pulumi-lang-java=""`enabled`"" pulumi-lang-hcl=""`enabled`"">`enabled`</span> attribute is deprecated and will be removed in a future release. Remove the <span pulumi-lang-nodejs=""`networkDevice`"" pulumi-lang-dotnet=""`NetworkDevice`"" pulumi-lang-go=""`networkDevice`"" pulumi-lang-python=""`network_device`"" pulumi-lang-yaml=""`networkDevice`"" pulumi-lang-java=""`networkDevice`"" pulumi-lang-hcl=""`network_device`"">`networkDevice`</span> block from your configuration instead of setting `enabled = false`. */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
         /**
-         * @param enabled Whether to enable the network device (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;). Remove the &lt;span pulumi-lang-nodejs=&#34;`networkDevice`&#34; pulumi-lang-dotnet=&#34;`NetworkDevice`&#34; pulumi-lang-go=&#34;`networkDevice`&#34; pulumi-lang-python=&#34;`network_device`&#34; pulumi-lang-yaml=&#34;`networkDevice`&#34; pulumi-lang-java=&#34;`networkDevice`&#34;&gt;`networkDevice`&lt;/span&gt; block from your configuration instead of setting `enabled = false`.
+         * @param enabled Whether to enable the network device (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;). Remove the &lt;span pulumi-lang-nodejs=&#34;`networkDevice`&#34; pulumi-lang-dotnet=&#34;`NetworkDevice`&#34; pulumi-lang-go=&#34;`networkDevice`&#34; pulumi-lang-python=&#34;`network_device`&#34; pulumi-lang-yaml=&#34;`networkDevice`&#34; pulumi-lang-java=&#34;`networkDevice`&#34; pulumi-lang-hcl=&#34;`network_device`&#34;&gt;`networkDevice`&lt;/span&gt; block from your configuration instead of setting `enabled = false`.
          * 
          * @return builder
          * 
          * @deprecated
-         * The &lt;span pulumi-lang-nodejs=&#34;`enabled`&#34; pulumi-lang-dotnet=&#34;`Enabled`&#34; pulumi-lang-go=&#34;`enabled`&#34; pulumi-lang-python=&#34;`enabled`&#34; pulumi-lang-yaml=&#34;`enabled`&#34; pulumi-lang-java=&#34;`enabled`&#34;&gt;`enabled`&lt;/span&gt; attribute is deprecated and will be removed in a future release. Remove the &lt;span pulumi-lang-nodejs=&#34;`networkDevice`&#34; pulumi-lang-dotnet=&#34;`NetworkDevice`&#34; pulumi-lang-go=&#34;`networkDevice`&#34; pulumi-lang-python=&#34;`network_device`&#34; pulumi-lang-yaml=&#34;`networkDevice`&#34; pulumi-lang-java=&#34;`networkDevice`&#34;&gt;`networkDevice`&lt;/span&gt; block from your configuration instead of setting `enabled = false`.
+         * The &lt;span pulumi-lang-nodejs=&#34;`enabled`&#34; pulumi-lang-dotnet=&#34;`Enabled`&#34; pulumi-lang-go=&#34;`enabled`&#34; pulumi-lang-python=&#34;`enabled`&#34; pulumi-lang-yaml=&#34;`enabled`&#34; pulumi-lang-java=&#34;`enabled`&#34; pulumi-lang-hcl=&#34;`enabled`&#34;&gt;`enabled`&lt;/span&gt; attribute is deprecated and will be removed in a future release. Remove the &lt;span pulumi-lang-nodejs=&#34;`networkDevice`&#34; pulumi-lang-dotnet=&#34;`NetworkDevice`&#34; pulumi-lang-go=&#34;`networkDevice`&#34; pulumi-lang-python=&#34;`network_device`&#34; pulumi-lang-yaml=&#34;`networkDevice`&#34; pulumi-lang-java=&#34;`networkDevice`&#34; pulumi-lang-hcl=&#34;`network_device`&#34;&gt;`networkDevice`&lt;/span&gt; block from your configuration instead of setting `enabled = false`.
          * 
          */
-        @Deprecated /* The <span pulumi-lang-nodejs=""`enabled`"" pulumi-lang-dotnet=""`Enabled`"" pulumi-lang-go=""`enabled`"" pulumi-lang-python=""`enabled`"" pulumi-lang-yaml=""`enabled`"" pulumi-lang-java=""`enabled`"">`enabled`</span> attribute is deprecated and will be removed in a future release. Remove the <span pulumi-lang-nodejs=""`networkDevice`"" pulumi-lang-dotnet=""`NetworkDevice`"" pulumi-lang-go=""`networkDevice`"" pulumi-lang-python=""`network_device`"" pulumi-lang-yaml=""`networkDevice`"" pulumi-lang-java=""`networkDevice`"">`networkDevice`</span> block from your configuration instead of setting `enabled = false`. */
+        @Deprecated /* The <span pulumi-lang-nodejs=""`enabled`"" pulumi-lang-dotnet=""`Enabled`"" pulumi-lang-go=""`enabled`"" pulumi-lang-python=""`enabled`"" pulumi-lang-yaml=""`enabled`"" pulumi-lang-java=""`enabled`"" pulumi-lang-hcl=""`enabled`"">`enabled`</span> attribute is deprecated and will be removed in a future release. Remove the <span pulumi-lang-nodejs=""`networkDevice`"" pulumi-lang-dotnet=""`NetworkDevice`"" pulumi-lang-go=""`networkDevice`"" pulumi-lang-python=""`network_device`"" pulumi-lang-yaml=""`networkDevice`"" pulumi-lang-java=""`networkDevice`"" pulumi-lang-hcl=""`network_device`"">`networkDevice`</span> block from your configuration instead of setting `enabled = false`. */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
         /**
-         * @param firewall Whether this interface&#39;s firewall rules should be used (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+         * @param firewall Whether this interface&#39;s firewall rules should be used (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -312,7 +312,7 @@ public final class VmLegacyNetworkDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param firewall Whether this interface&#39;s firewall rules should be used (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+         * @param firewall Whether this interface&#39;s firewall rules should be used (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class VmLegacyNetworkDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param model The network device model (defaults to &lt;span pulumi-lang-nodejs=&#34;`virtio`&#34; pulumi-lang-dotnet=&#34;`Virtio`&#34; pulumi-lang-go=&#34;`virtio`&#34; pulumi-lang-python=&#34;`virtio`&#34; pulumi-lang-yaml=&#34;`virtio`&#34; pulumi-lang-java=&#34;`virtio`&#34;&gt;`virtio`&lt;/span&gt;).
+         * @param model The network device model (defaults to &lt;span pulumi-lang-nodejs=&#34;`virtio`&#34; pulumi-lang-dotnet=&#34;`Virtio`&#34; pulumi-lang-go=&#34;`virtio`&#34; pulumi-lang-python=&#34;`virtio`&#34; pulumi-lang-yaml=&#34;`virtio`&#34; pulumi-lang-java=&#34;`virtio`&#34; pulumi-lang-hcl=&#34;`virtio`&#34;&gt;`virtio`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class VmLegacyNetworkDeviceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param model The network device model (defaults to &lt;span pulumi-lang-nodejs=&#34;`virtio`&#34; pulumi-lang-dotnet=&#34;`Virtio`&#34; pulumi-lang-go=&#34;`virtio`&#34; pulumi-lang-python=&#34;`virtio`&#34; pulumi-lang-yaml=&#34;`virtio`&#34; pulumi-lang-java=&#34;`virtio`&#34;&gt;`virtio`&lt;/span&gt;).
+         * @param model The network device model (defaults to &lt;span pulumi-lang-nodejs=&#34;`virtio`&#34; pulumi-lang-dotnet=&#34;`Virtio`&#34; pulumi-lang-go=&#34;`virtio`&#34; pulumi-lang-python=&#34;`virtio`&#34; pulumi-lang-yaml=&#34;`virtio`&#34; pulumi-lang-java=&#34;`virtio`&#34; pulumi-lang-hcl=&#34;`virtio`&#34;&gt;`virtio`&lt;/span&gt;).
          * 
          * @return builder
          * 

@@ -76,6 +76,13 @@ namespace Pulumi.ProxmoxVE.Outputs
         /// </summary>
         public readonly string? PathInDatastore;
         /// <summary>
+        /// The number of I/O queues for this disk, `2` or
+        /// greater. Only supported for SCSI disks, and applied by Proxmox only
+        /// when `ScsiHardware` is set to `virtio-scsi-single`. A change requires
+        /// a VM power cycle (or reboot via the Proxmox API) to take effect.
+        /// </summary>
+        public readonly int? Queues;
+        /// <summary>
         /// Whether the drive should be considered for replication jobs (defaults to `True`).
         /// </summary>
         public readonly bool? Replicate;
@@ -122,6 +129,8 @@ namespace Pulumi.ProxmoxVE.Outputs
 
             string? pathInDatastore,
 
+            int? queues,
+
             bool? replicate,
 
             string? serial,
@@ -143,6 +152,7 @@ namespace Pulumi.ProxmoxVE.Outputs
             Interface = @interface;
             Iothread = iothread;
             PathInDatastore = pathInDatastore;
+            Queues = queues;
             Replicate = replicate;
             Serial = serial;
             Size = size;

@@ -91,8 +91,13 @@ type ServerLegacy struct {
 	InfluxMaxBodySize pulumi.IntPtrOutput `pulumi:"influxMaxBodySize"`
 	// The InfluxDB organization. Only necessary when using the http v2 api. Has no meaning when using v2 compatibility api.
 	InfluxOrganization pulumi.StringPtrOutput `pulumi:"influxOrganization"`
-	// The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
+	// The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead. Cannot be used together with `influxTokenWo`.
 	InfluxToken pulumi.StringPtrOutput `pulumi:"influxToken"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The InfluxDB access token (write-only). Prefer this over `influxToken` to avoid storing the secret in Terraform state. Cannot be used together with `influxToken`.
+	InfluxTokenWo pulumi.StringPtrOutput `pulumi:"influxTokenWo"`
+	// Increment this counter to rotate `influxTokenWo` without changing other fields.
+	InfluxTokenWoVersion pulumi.IntPtrOutput `pulumi:"influxTokenWoVersion"`
 	// Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
 	InfluxVerify pulumi.BoolPtrOutput `pulumi:"influxVerify"`
 	// MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
@@ -144,11 +149,15 @@ func NewServerLegacy(ctx *pulumi.Context,
 	if args.InfluxToken != nil {
 		args.InfluxToken = pulumi.ToSecret(args.InfluxToken).(pulumi.StringPtrInput)
 	}
+	if args.InfluxTokenWo != nil {
+		args.InfluxTokenWo = pulumi.ToSecret(args.InfluxTokenWo).(pulumi.StringPtrInput)
+	}
 	if args.OpentelemetryHeaders != nil {
 		args.OpentelemetryHeaders = pulumi.ToSecret(args.OpentelemetryHeaders).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"influxToken",
+		"influxTokenWo",
 		"opentelemetryHeaders",
 	})
 	opts = append(opts, secrets)
@@ -191,8 +200,13 @@ type serverLegacyState struct {
 	InfluxMaxBodySize *int `pulumi:"influxMaxBodySize"`
 	// The InfluxDB organization. Only necessary when using the http v2 api. Has no meaning when using v2 compatibility api.
 	InfluxOrganization *string `pulumi:"influxOrganization"`
-	// The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
+	// The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead. Cannot be used together with `influxTokenWo`.
 	InfluxToken *string `pulumi:"influxToken"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The InfluxDB access token (write-only). Prefer this over `influxToken` to avoid storing the secret in Terraform state. Cannot be used together with `influxToken`.
+	InfluxTokenWo *string `pulumi:"influxTokenWo"`
+	// Increment this counter to rotate `influxTokenWo` without changing other fields.
+	InfluxTokenWoVersion *int `pulumi:"influxTokenWoVersion"`
 	// Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
 	InfluxVerify *bool `pulumi:"influxVerify"`
 	// MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
@@ -242,8 +256,13 @@ type ServerLegacyState struct {
 	InfluxMaxBodySize pulumi.IntPtrInput
 	// The InfluxDB organization. Only necessary when using the http v2 api. Has no meaning when using v2 compatibility api.
 	InfluxOrganization pulumi.StringPtrInput
-	// The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
+	// The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead. Cannot be used together with `influxTokenWo`.
 	InfluxToken pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The InfluxDB access token (write-only). Prefer this over `influxToken` to avoid storing the secret in Terraform state. Cannot be used together with `influxToken`.
+	InfluxTokenWo pulumi.StringPtrInput
+	// Increment this counter to rotate `influxTokenWo` without changing other fields.
+	InfluxTokenWoVersion pulumi.IntPtrInput
 	// Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
 	InfluxVerify pulumi.BoolPtrInput
 	// MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
@@ -297,8 +316,13 @@ type serverLegacyArgs struct {
 	InfluxMaxBodySize *int `pulumi:"influxMaxBodySize"`
 	// The InfluxDB organization. Only necessary when using the http v2 api. Has no meaning when using v2 compatibility api.
 	InfluxOrganization *string `pulumi:"influxOrganization"`
-	// The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
+	// The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead. Cannot be used together with `influxTokenWo`.
 	InfluxToken *string `pulumi:"influxToken"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The InfluxDB access token (write-only). Prefer this over `influxToken` to avoid storing the secret in Terraform state. Cannot be used together with `influxToken`.
+	InfluxTokenWo *string `pulumi:"influxTokenWo"`
+	// Increment this counter to rotate `influxTokenWo` without changing other fields.
+	InfluxTokenWoVersion *int `pulumi:"influxTokenWoVersion"`
 	// Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
 	InfluxVerify *bool `pulumi:"influxVerify"`
 	// MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
@@ -349,8 +373,13 @@ type ServerLegacyArgs struct {
 	InfluxMaxBodySize pulumi.IntPtrInput
 	// The InfluxDB organization. Only necessary when using the http v2 api. Has no meaning when using v2 compatibility api.
 	InfluxOrganization pulumi.StringPtrInput
-	// The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
+	// The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead. Cannot be used together with `influxTokenWo`.
 	InfluxToken pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The InfluxDB access token (write-only). Prefer this over `influxToken` to avoid storing the secret in Terraform state. Cannot be used together with `influxToken`.
+	InfluxTokenWo pulumi.StringPtrInput
+	// Increment this counter to rotate `influxTokenWo` without changing other fields.
+	InfluxTokenWoVersion pulumi.IntPtrInput
 	// Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
 	InfluxVerify pulumi.BoolPtrInput
 	// MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
@@ -510,9 +539,20 @@ func (o ServerLegacyOutput) InfluxOrganization() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerLegacy) pulumi.StringPtrOutput { return v.InfluxOrganization }).(pulumi.StringPtrOutput)
 }
 
-// The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
+// The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead. Cannot be used together with `influxTokenWo`.
 func (o ServerLegacyOutput) InfluxToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerLegacy) pulumi.StringPtrOutput { return v.InfluxToken }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// The InfluxDB access token (write-only). Prefer this over `influxToken` to avoid storing the secret in Terraform state. Cannot be used together with `influxToken`.
+func (o ServerLegacyOutput) InfluxTokenWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerLegacy) pulumi.StringPtrOutput { return v.InfluxTokenWo }).(pulumi.StringPtrOutput)
+}
+
+// Increment this counter to rotate `influxTokenWo` without changing other fields.
+func (o ServerLegacyOutput) InfluxTokenWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServerLegacy) pulumi.IntPtrOutput { return v.InfluxTokenWoVersion }).(pulumi.IntPtrOutput)
 }
 
 // Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.

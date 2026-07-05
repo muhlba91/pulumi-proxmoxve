@@ -335,6 +335,7 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetContainersLegacyArgs;
+     * import com.pulumi.proxmoxve.inputs.GetContainersLegacyFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -404,6 +405,7 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetContainersLegacyArgs;
+     * import com.pulumi.proxmoxve.inputs.GetContainersLegacyFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -473,6 +475,7 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetContainersLegacyArgs;
+     * import com.pulumi.proxmoxve.inputs.GetContainersLegacyFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -542,6 +545,7 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetContainersLegacyArgs;
+     * import com.pulumi.proxmoxve.inputs.GetContainersLegacyFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -611,6 +615,7 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetContainersLegacyArgs;
+     * import com.pulumi.proxmoxve.inputs.GetContainersLegacyFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -680,6 +685,7 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetContainersLegacyArgs;
+     * import com.pulumi.proxmoxve.inputs.GetContainersLegacyFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -749,6 +755,7 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetContainersLegacyArgs;
+     * import com.pulumi.proxmoxve.inputs.GetContainersLegacyFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -839,7 +846,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:index/getDatastores:getDatastores", TypeShape.of(GetDatastoresResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-go=&#34;`getDatastores`&#34; pulumi-lang-python=&#34;`get_datastores`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-java=&#34;`proxmoxve.getDatastores`&#34;&gt;`proxmoxve.getDatastores`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-go=&#34;`getDatastores`&#34; pulumi-lang-python=&#34;`get_datastores`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-java=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-hcl=&#34;`data.proxmox_datastores`&#34;&gt;`proxmoxve.getDatastores`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about all the datastores available to a specific node.
      * 
@@ -848,7 +855,7 @@ public final class ProxmoxveFunctions {
         return getDatastoresLegacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-go=&#34;`getDatastores`&#34; pulumi-lang-python=&#34;`get_datastores`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-java=&#34;`proxmoxve.getDatastores`&#34;&gt;`proxmoxve.getDatastores`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-go=&#34;`getDatastores`&#34; pulumi-lang-python=&#34;`get_datastores`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-java=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-hcl=&#34;`data.proxmox_datastores`&#34;&gt;`proxmoxve.getDatastores`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about all the datastores available to a specific node.
      * 
@@ -857,7 +864,7 @@ public final class ProxmoxveFunctions {
         return getDatastoresLegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-go=&#34;`getDatastores`&#34; pulumi-lang-python=&#34;`get_datastores`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-java=&#34;`proxmoxve.getDatastores`&#34;&gt;`proxmoxve.getDatastores`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-go=&#34;`getDatastores`&#34; pulumi-lang-python=&#34;`get_datastores`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-java=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-hcl=&#34;`data.proxmox_datastores`&#34;&gt;`proxmoxve.getDatastores`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about all the datastores available to a specific node.
      * 
@@ -866,7 +873,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invoke("proxmoxve:index/getDatastoresLegacy:getDatastoresLegacy", TypeShape.of(GetDatastoresLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-go=&#34;`getDatastores`&#34; pulumi-lang-python=&#34;`get_datastores`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-java=&#34;`proxmoxve.getDatastores`&#34;&gt;`proxmoxve.getDatastores`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-go=&#34;`getDatastores`&#34; pulumi-lang-python=&#34;`get_datastores`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-java=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-hcl=&#34;`data.proxmox_datastores`&#34;&gt;`proxmoxve.getDatastores`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about all the datastores available to a specific node.
      * 
@@ -875,7 +882,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invoke("proxmoxve:index/getDatastoresLegacy:getDatastoresLegacy", TypeShape.of(GetDatastoresLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-go=&#34;`getDatastores`&#34; pulumi-lang-python=&#34;`get_datastores`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-java=&#34;`proxmoxve.getDatastores`&#34;&gt;`proxmoxve.getDatastores`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-go=&#34;`getDatastores`&#34; pulumi-lang-python=&#34;`get_datastores`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-java=&#34;`proxmoxve.getDatastores`&#34; pulumi-lang-hcl=&#34;`data.proxmox_datastores`&#34;&gt;`proxmoxve.getDatastores`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about all the datastores available to a specific node.
      * 
@@ -1158,7 +1165,7 @@ public final class ProxmoxveFunctions {
      *         var example = new Vm("example", VmArgs.builder()
      *             .nodeName("pve")
      *             .vmId(100)
-     *             .cdrom(VmCdromArgs.builder()
+     *             .cdrom(com.pulumi.proxmoxve.inputs.VmCdromArgs.builder()
      *                 .fileId(ubuntuIso.id())
      *                 .build())
      *             .cpu(VmCpuArgs.builder()
@@ -1248,7 +1255,7 @@ public final class ProxmoxveFunctions {
      *         var example = new Vm("example", VmArgs.builder()
      *             .nodeName("pve")
      *             .vmId(100)
-     *             .cdrom(VmCdromArgs.builder()
+     *             .cdrom(com.pulumi.proxmoxve.inputs.VmCdromArgs.builder()
      *                 .fileId(ubuntuIso.id())
      *                 .build())
      *             .cpu(VmCpuArgs.builder()
@@ -1338,7 +1345,7 @@ public final class ProxmoxveFunctions {
      *         var example = new Vm("example", VmArgs.builder()
      *             .nodeName("pve")
      *             .vmId(100)
-     *             .cdrom(VmCdromArgs.builder()
+     *             .cdrom(com.pulumi.proxmoxve.inputs.VmCdromArgs.builder()
      *                 .fileId(ubuntuIso.id())
      *                 .build())
      *             .cpu(VmCpuArgs.builder()
@@ -1428,7 +1435,7 @@ public final class ProxmoxveFunctions {
      *         var example = new Vm("example", VmArgs.builder()
      *             .nodeName("pve")
      *             .vmId(100)
-     *             .cdrom(VmCdromArgs.builder()
+     *             .cdrom(com.pulumi.proxmoxve.inputs.VmCdromArgs.builder()
      *                 .fileId(ubuntuIso.id())
      *                 .build())
      *             .cpu(VmCpuArgs.builder()
@@ -1518,7 +1525,7 @@ public final class ProxmoxveFunctions {
      *         var example = new Vm("example", VmArgs.builder()
      *             .nodeName("pve")
      *             .vmId(100)
-     *             .cdrom(VmCdromArgs.builder()
+     *             .cdrom(com.pulumi.proxmoxve.inputs.VmCdromArgs.builder()
      *                 .fileId(ubuntuIso.id())
      *                 .build())
      *             .cpu(VmCpuArgs.builder()
@@ -1544,7 +1551,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:index/getFile:getFile", TypeShape.of(GetFileResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getFile`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getFile`&#34; pulumi-lang-go=&#34;`getFile`&#34; pulumi-lang-python=&#34;`get_file`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getFile`&#34; pulumi-lang-java=&#34;`proxmoxve.getFile`&#34;&gt;`proxmoxve.getFile`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getFile`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getFile`&#34; pulumi-lang-go=&#34;`getFile`&#34; pulumi-lang-python=&#34;`get_file`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getFile`&#34; pulumi-lang-java=&#34;`proxmoxve.getFile`&#34; pulumi-lang-hcl=&#34;`data.proxmox_file`&#34;&gt;`proxmoxve.getFile`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about an existing file in a Proxmox Virtual Environment node.
      * 
@@ -1644,7 +1651,7 @@ public final class ProxmoxveFunctions {
         return getFileLegacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getFile`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getFile`&#34; pulumi-lang-go=&#34;`getFile`&#34; pulumi-lang-python=&#34;`get_file`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getFile`&#34; pulumi-lang-java=&#34;`proxmoxve.getFile`&#34;&gt;`proxmoxve.getFile`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getFile`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getFile`&#34; pulumi-lang-go=&#34;`getFile`&#34; pulumi-lang-python=&#34;`get_file`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getFile`&#34; pulumi-lang-java=&#34;`proxmoxve.getFile`&#34; pulumi-lang-hcl=&#34;`data.proxmox_file`&#34;&gt;`proxmoxve.getFile`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about an existing file in a Proxmox Virtual Environment node.
      * 
@@ -1744,7 +1751,7 @@ public final class ProxmoxveFunctions {
         return getFileLegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getFile`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getFile`&#34; pulumi-lang-go=&#34;`getFile`&#34; pulumi-lang-python=&#34;`get_file`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getFile`&#34; pulumi-lang-java=&#34;`proxmoxve.getFile`&#34;&gt;`proxmoxve.getFile`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getFile`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getFile`&#34; pulumi-lang-go=&#34;`getFile`&#34; pulumi-lang-python=&#34;`get_file`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getFile`&#34; pulumi-lang-java=&#34;`proxmoxve.getFile`&#34; pulumi-lang-hcl=&#34;`data.proxmox_file`&#34;&gt;`proxmoxve.getFile`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about an existing file in a Proxmox Virtual Environment node.
      * 
@@ -1844,7 +1851,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invoke("proxmoxve:index/getFileLegacy:getFileLegacy", TypeShape.of(GetFileLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getFile`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getFile`&#34; pulumi-lang-go=&#34;`getFile`&#34; pulumi-lang-python=&#34;`get_file`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getFile`&#34; pulumi-lang-java=&#34;`proxmoxve.getFile`&#34;&gt;`proxmoxve.getFile`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getFile`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getFile`&#34; pulumi-lang-go=&#34;`getFile`&#34; pulumi-lang-python=&#34;`get_file`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getFile`&#34; pulumi-lang-java=&#34;`proxmoxve.getFile`&#34; pulumi-lang-hcl=&#34;`data.proxmox_file`&#34;&gt;`proxmoxve.getFile`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about an existing file in a Proxmox Virtual Environment node.
      * 
@@ -1944,7 +1951,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invoke("proxmoxve:index/getFileLegacy:getFileLegacy", TypeShape.of(GetFileLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getFile`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getFile`&#34; pulumi-lang-go=&#34;`getFile`&#34; pulumi-lang-python=&#34;`get_file`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getFile`&#34; pulumi-lang-java=&#34;`proxmoxve.getFile`&#34;&gt;`proxmoxve.getFile`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getFile`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getFile`&#34; pulumi-lang-go=&#34;`getFile`&#34; pulumi-lang-python=&#34;`get_file`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getFile`&#34; pulumi-lang-java=&#34;`proxmoxve.getFile`&#34; pulumi-lang-hcl=&#34;`data.proxmox_file`&#34;&gt;`proxmoxve.getFile`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about an existing file in a Proxmox Virtual Environment node.
      * 
@@ -2647,7 +2654,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:index/getHagroup:getHagroup", TypeShape.of(GetHagroupResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-go=&#34;`Hagroup`&#34; pulumi-lang-python=&#34;`Hagroup`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-java=&#34;`proxmoxve.Hagroup`&#34;&gt;`proxmoxve.Hagroup`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-go=&#34;`Hagroup`&#34; pulumi-lang-python=&#34;`Hagroup`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-java=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-hcl=&#34;`proxmox_hagroup`&#34;&gt;`proxmoxve.Hagroup`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a specific High Availability group.
      * 
@@ -2661,7 +2668,7 @@ public final class ProxmoxveFunctions {
         return getHagroupLegacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-go=&#34;`Hagroup`&#34; pulumi-lang-python=&#34;`Hagroup`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-java=&#34;`proxmoxve.Hagroup`&#34;&gt;`proxmoxve.Hagroup`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-go=&#34;`Hagroup`&#34; pulumi-lang-python=&#34;`Hagroup`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-java=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-hcl=&#34;`proxmox_hagroup`&#34;&gt;`proxmoxve.Hagroup`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a specific High Availability group.
      * 
@@ -2675,7 +2682,7 @@ public final class ProxmoxveFunctions {
         return getHagroupLegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-go=&#34;`Hagroup`&#34; pulumi-lang-python=&#34;`Hagroup`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-java=&#34;`proxmoxve.Hagroup`&#34;&gt;`proxmoxve.Hagroup`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-go=&#34;`Hagroup`&#34; pulumi-lang-python=&#34;`Hagroup`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-java=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-hcl=&#34;`proxmox_hagroup`&#34;&gt;`proxmoxve.Hagroup`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a specific High Availability group.
      * 
@@ -2689,7 +2696,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invoke("proxmoxve:index/getHagroupLegacy:getHagroupLegacy", TypeShape.of(GetHagroupLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-go=&#34;`Hagroup`&#34; pulumi-lang-python=&#34;`Hagroup`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-java=&#34;`proxmoxve.Hagroup`&#34;&gt;`proxmoxve.Hagroup`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-go=&#34;`Hagroup`&#34; pulumi-lang-python=&#34;`Hagroup`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-java=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-hcl=&#34;`proxmox_hagroup`&#34;&gt;`proxmoxve.Hagroup`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a specific High Availability group.
      * 
@@ -2703,7 +2710,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invoke("proxmoxve:index/getHagroupLegacy:getHagroupLegacy", TypeShape.of(GetHagroupLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-go=&#34;`Hagroup`&#34; pulumi-lang-python=&#34;`Hagroup`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-java=&#34;`proxmoxve.Hagroup`&#34;&gt;`proxmoxve.Hagroup`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-go=&#34;`Hagroup`&#34; pulumi-lang-python=&#34;`Hagroup`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-java=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-hcl=&#34;`proxmox_hagroup`&#34;&gt;`proxmoxve.Hagroup`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a specific High Availability group.
      * 
@@ -2997,7 +3004,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:index/getHagroups:getHagroups", TypeShape.of(GetHagroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-go=&#34;`getHagroups`&#34; pulumi-lang-python=&#34;`get_hagroups`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-java=&#34;`proxmoxve.getHagroups`&#34;&gt;`proxmoxve.getHagroups`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-go=&#34;`getHagroups`&#34; pulumi-lang-python=&#34;`get_hagroups`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-java=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-hcl=&#34;`data.proxmox_hagroups`&#34;&gt;`proxmoxve.getHagroups`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves the list of High Availability groups.
      * 
@@ -3039,7 +3046,7 @@ public final class ProxmoxveFunctions {
         return getHagroupsLegacy(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-go=&#34;`getHagroups`&#34; pulumi-lang-python=&#34;`get_hagroups`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-java=&#34;`proxmoxve.getHagroups`&#34;&gt;`proxmoxve.getHagroups`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-go=&#34;`getHagroups`&#34; pulumi-lang-python=&#34;`get_hagroups`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-java=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-hcl=&#34;`data.proxmox_hagroups`&#34;&gt;`proxmoxve.getHagroups`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves the list of High Availability groups.
      * 
@@ -3081,7 +3088,7 @@ public final class ProxmoxveFunctions {
         return getHagroupsLegacyPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-go=&#34;`getHagroups`&#34; pulumi-lang-python=&#34;`get_hagroups`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-java=&#34;`proxmoxve.getHagroups`&#34;&gt;`proxmoxve.getHagroups`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-go=&#34;`getHagroups`&#34; pulumi-lang-python=&#34;`get_hagroups`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-java=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-hcl=&#34;`data.proxmox_hagroups`&#34;&gt;`proxmoxve.getHagroups`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves the list of High Availability groups.
      * 
@@ -3123,7 +3130,7 @@ public final class ProxmoxveFunctions {
         return getHagroupsLegacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-go=&#34;`getHagroups`&#34; pulumi-lang-python=&#34;`get_hagroups`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-java=&#34;`proxmoxve.getHagroups`&#34;&gt;`proxmoxve.getHagroups`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-go=&#34;`getHagroups`&#34; pulumi-lang-python=&#34;`get_hagroups`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-java=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-hcl=&#34;`data.proxmox_hagroups`&#34;&gt;`proxmoxve.getHagroups`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves the list of High Availability groups.
      * 
@@ -3165,7 +3172,7 @@ public final class ProxmoxveFunctions {
         return getHagroupsLegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-go=&#34;`getHagroups`&#34; pulumi-lang-python=&#34;`get_hagroups`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-java=&#34;`proxmoxve.getHagroups`&#34;&gt;`proxmoxve.getHagroups`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-go=&#34;`getHagroups`&#34; pulumi-lang-python=&#34;`get_hagroups`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-java=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-hcl=&#34;`data.proxmox_hagroups`&#34;&gt;`proxmoxve.getHagroups`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves the list of High Availability groups.
      * 
@@ -3207,7 +3214,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invoke("proxmoxve:index/getHagroupsLegacy:getHagroupsLegacy", TypeShape.of(GetHagroupsLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-go=&#34;`getHagroups`&#34; pulumi-lang-python=&#34;`get_hagroups`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-java=&#34;`proxmoxve.getHagroups`&#34;&gt;`proxmoxve.getHagroups`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-go=&#34;`getHagroups`&#34; pulumi-lang-python=&#34;`get_hagroups`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-java=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-hcl=&#34;`data.proxmox_hagroups`&#34;&gt;`proxmoxve.getHagroups`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves the list of High Availability groups.
      * 
@@ -3249,7 +3256,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invoke("proxmoxve:index/getHagroupsLegacy:getHagroupsLegacy", TypeShape.of(GetHagroupsLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-go=&#34;`getHagroups`&#34; pulumi-lang-python=&#34;`get_hagroups`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-java=&#34;`proxmoxve.getHagroups`&#34;&gt;`proxmoxve.getHagroups`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-go=&#34;`getHagroups`&#34; pulumi-lang-python=&#34;`get_hagroups`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-java=&#34;`proxmoxve.getHagroups`&#34; pulumi-lang-hcl=&#34;`data.proxmox_hagroups`&#34;&gt;`proxmoxve.getHagroups`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves the list of High Availability groups.
      * 
@@ -3351,7 +3358,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:index/getHaresource:getHaresource", TypeShape.of(GetHaresourceResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-go=&#34;`Haresource`&#34; pulumi-lang-python=&#34;`Haresource`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-java=&#34;`proxmoxve.Haresource`&#34;&gt;`proxmoxve.Haresource`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-go=&#34;`Haresource`&#34; pulumi-lang-python=&#34;`Haresource`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-java=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-hcl=&#34;`proxmox_haresource`&#34;&gt;`proxmoxve.Haresource`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a specific High Availability resource.
      * 
@@ -3365,7 +3372,7 @@ public final class ProxmoxveFunctions {
         return getHaresourceLegacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-go=&#34;`Haresource`&#34; pulumi-lang-python=&#34;`Haresource`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-java=&#34;`proxmoxve.Haresource`&#34;&gt;`proxmoxve.Haresource`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-go=&#34;`Haresource`&#34; pulumi-lang-python=&#34;`Haresource`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-java=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-hcl=&#34;`proxmox_haresource`&#34;&gt;`proxmoxve.Haresource`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a specific High Availability resource.
      * 
@@ -3379,7 +3386,7 @@ public final class ProxmoxveFunctions {
         return getHaresourceLegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-go=&#34;`Haresource`&#34; pulumi-lang-python=&#34;`Haresource`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-java=&#34;`proxmoxve.Haresource`&#34;&gt;`proxmoxve.Haresource`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-go=&#34;`Haresource`&#34; pulumi-lang-python=&#34;`Haresource`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-java=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-hcl=&#34;`proxmox_haresource`&#34;&gt;`proxmoxve.Haresource`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a specific High Availability resource.
      * 
@@ -3393,7 +3400,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invoke("proxmoxve:index/getHaresourceLegacy:getHaresourceLegacy", TypeShape.of(GetHaresourceLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-go=&#34;`Haresource`&#34; pulumi-lang-python=&#34;`Haresource`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-java=&#34;`proxmoxve.Haresource`&#34;&gt;`proxmoxve.Haresource`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-go=&#34;`Haresource`&#34; pulumi-lang-python=&#34;`Haresource`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-java=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-hcl=&#34;`proxmox_haresource`&#34;&gt;`proxmoxve.Haresource`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a specific High Availability resource.
      * 
@@ -3407,7 +3414,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invoke("proxmoxve:index/getHaresourceLegacy:getHaresourceLegacy", TypeShape.of(GetHaresourceLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-go=&#34;`Haresource`&#34; pulumi-lang-python=&#34;`Haresource`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-java=&#34;`proxmoxve.Haresource`&#34;&gt;`proxmoxve.Haresource`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-go=&#34;`Haresource`&#34; pulumi-lang-python=&#34;`Haresource`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-java=&#34;`proxmoxve.Haresource`&#34; pulumi-lang-hcl=&#34;`proxmox_haresource`&#34;&gt;`proxmoxve.Haresource`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a specific High Availability resource.
      * 
@@ -3778,7 +3785,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:index/getHaresources:getHaresources", TypeShape.of(GetHaresourcesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-go=&#34;`getHaresources`&#34; pulumi-lang-python=&#34;`get_haresources`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-java=&#34;`proxmoxve.getHaresources`&#34;&gt;`proxmoxve.getHaresources`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-go=&#34;`getHaresources`&#34; pulumi-lang-python=&#34;`get_haresources`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-java=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-hcl=&#34;`data.proxmox_haresources`&#34;&gt;`proxmoxve.getHaresources`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves the list of High Availability resources.
      * 
@@ -3831,7 +3838,7 @@ public final class ProxmoxveFunctions {
         return getHaresourcesLegacy(GetHaresourcesLegacyArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-go=&#34;`getHaresources`&#34; pulumi-lang-python=&#34;`get_haresources`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-java=&#34;`proxmoxve.getHaresources`&#34;&gt;`proxmoxve.getHaresources`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-go=&#34;`getHaresources`&#34; pulumi-lang-python=&#34;`get_haresources`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-java=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-hcl=&#34;`data.proxmox_haresources`&#34;&gt;`proxmoxve.getHaresources`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves the list of High Availability resources.
      * 
@@ -3884,7 +3891,7 @@ public final class ProxmoxveFunctions {
         return getHaresourcesLegacyPlain(GetHaresourcesLegacyPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-go=&#34;`getHaresources`&#34; pulumi-lang-python=&#34;`get_haresources`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-java=&#34;`proxmoxve.getHaresources`&#34;&gt;`proxmoxve.getHaresources`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-go=&#34;`getHaresources`&#34; pulumi-lang-python=&#34;`get_haresources`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-java=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-hcl=&#34;`data.proxmox_haresources`&#34;&gt;`proxmoxve.getHaresources`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves the list of High Availability resources.
      * 
@@ -3937,7 +3944,7 @@ public final class ProxmoxveFunctions {
         return getHaresourcesLegacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-go=&#34;`getHaresources`&#34; pulumi-lang-python=&#34;`get_haresources`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-java=&#34;`proxmoxve.getHaresources`&#34;&gt;`proxmoxve.getHaresources`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-go=&#34;`getHaresources`&#34; pulumi-lang-python=&#34;`get_haresources`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-java=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-hcl=&#34;`data.proxmox_haresources`&#34;&gt;`proxmoxve.getHaresources`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves the list of High Availability resources.
      * 
@@ -3990,7 +3997,7 @@ public final class ProxmoxveFunctions {
         return getHaresourcesLegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-go=&#34;`getHaresources`&#34; pulumi-lang-python=&#34;`get_haresources`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-java=&#34;`proxmoxve.getHaresources`&#34;&gt;`proxmoxve.getHaresources`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-go=&#34;`getHaresources`&#34; pulumi-lang-python=&#34;`get_haresources`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-java=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-hcl=&#34;`data.proxmox_haresources`&#34;&gt;`proxmoxve.getHaresources`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves the list of High Availability resources.
      * 
@@ -4043,7 +4050,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invoke("proxmoxve:index/getHaresourcesLegacy:getHaresourcesLegacy", TypeShape.of(GetHaresourcesLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-go=&#34;`getHaresources`&#34; pulumi-lang-python=&#34;`get_haresources`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-java=&#34;`proxmoxve.getHaresources`&#34;&gt;`proxmoxve.getHaresources`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-go=&#34;`getHaresources`&#34; pulumi-lang-python=&#34;`get_haresources`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-java=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-hcl=&#34;`data.proxmox_haresources`&#34;&gt;`proxmoxve.getHaresources`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves the list of High Availability resources.
      * 
@@ -4096,7 +4103,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invoke("proxmoxve:index/getHaresourcesLegacy:getHaresourcesLegacy", TypeShape.of(GetHaresourcesLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-go=&#34;`getHaresources`&#34; pulumi-lang-python=&#34;`get_haresources`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-java=&#34;`proxmoxve.getHaresources`&#34;&gt;`proxmoxve.getHaresources`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-go=&#34;`getHaresources`&#34; pulumi-lang-python=&#34;`get_haresources`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-java=&#34;`proxmoxve.getHaresources`&#34; pulumi-lang-hcl=&#34;`data.proxmox_haresources`&#34;&gt;`proxmoxve.getHaresources`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves the list of High Availability resources.
      * 
@@ -5645,7 +5652,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:index/getReplication:getReplication", TypeShape.of(GetReplicationResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Replication`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Replication`&#34; pulumi-lang-go=&#34;`Replication`&#34; pulumi-lang-python=&#34;`Replication`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Replication`&#34; pulumi-lang-java=&#34;`proxmoxve.Replication`&#34;&gt;`proxmoxve.Replication`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Replication`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Replication`&#34; pulumi-lang-go=&#34;`Replication`&#34; pulumi-lang-python=&#34;`Replication`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Replication`&#34; pulumi-lang-java=&#34;`proxmoxve.Replication`&#34; pulumi-lang-hcl=&#34;`proxmox_replication`&#34;&gt;`proxmoxve.Replication`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about an existing Replication.
      * 
@@ -5696,7 +5703,7 @@ public final class ProxmoxveFunctions {
         return getReplicationLegacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Replication`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Replication`&#34; pulumi-lang-go=&#34;`Replication`&#34; pulumi-lang-python=&#34;`Replication`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Replication`&#34; pulumi-lang-java=&#34;`proxmoxve.Replication`&#34;&gt;`proxmoxve.Replication`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Replication`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Replication`&#34; pulumi-lang-go=&#34;`Replication`&#34; pulumi-lang-python=&#34;`Replication`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Replication`&#34; pulumi-lang-java=&#34;`proxmoxve.Replication`&#34; pulumi-lang-hcl=&#34;`proxmox_replication`&#34;&gt;`proxmoxve.Replication`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about an existing Replication.
      * 
@@ -5747,7 +5754,7 @@ public final class ProxmoxveFunctions {
         return getReplicationLegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Replication`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Replication`&#34; pulumi-lang-go=&#34;`Replication`&#34; pulumi-lang-python=&#34;`Replication`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Replication`&#34; pulumi-lang-java=&#34;`proxmoxve.Replication`&#34;&gt;`proxmoxve.Replication`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Replication`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Replication`&#34; pulumi-lang-go=&#34;`Replication`&#34; pulumi-lang-python=&#34;`Replication`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Replication`&#34; pulumi-lang-java=&#34;`proxmoxve.Replication`&#34; pulumi-lang-hcl=&#34;`proxmox_replication`&#34;&gt;`proxmoxve.Replication`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about an existing Replication.
      * 
@@ -5798,7 +5805,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invoke("proxmoxve:index/getReplicationLegacy:getReplicationLegacy", TypeShape.of(GetReplicationLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Replication`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Replication`&#34; pulumi-lang-go=&#34;`Replication`&#34; pulumi-lang-python=&#34;`Replication`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Replication`&#34; pulumi-lang-java=&#34;`proxmoxve.Replication`&#34;&gt;`proxmoxve.Replication`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Replication`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Replication`&#34; pulumi-lang-go=&#34;`Replication`&#34; pulumi-lang-python=&#34;`Replication`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Replication`&#34; pulumi-lang-java=&#34;`proxmoxve.Replication`&#34; pulumi-lang-hcl=&#34;`proxmox_replication`&#34;&gt;`proxmoxve.Replication`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about an existing Replication.
      * 
@@ -5849,7 +5856,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invoke("proxmoxve:index/getReplicationLegacy:getReplicationLegacy", TypeShape.of(GetReplicationLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Replication`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Replication`&#34; pulumi-lang-go=&#34;`Replication`&#34; pulumi-lang-python=&#34;`Replication`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Replication`&#34; pulumi-lang-java=&#34;`proxmoxve.Replication`&#34;&gt;`proxmoxve.Replication`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Replication`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Replication`&#34; pulumi-lang-go=&#34;`Replication`&#34; pulumi-lang-python=&#34;`Replication`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Replication`&#34; pulumi-lang-java=&#34;`proxmoxve.Replication`&#34; pulumi-lang-hcl=&#34;`proxmox_replication`&#34;&gt;`proxmoxve.Replication`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about an existing Replication.
      * 
@@ -6187,7 +6194,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:index/getReplications:getReplications", TypeShape.of(GetReplicationsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-go=&#34;`getReplications`&#34; pulumi-lang-python=&#34;`get_replications`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-java=&#34;`proxmoxve.getReplications`&#34;&gt;`proxmoxve.getReplications`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-go=&#34;`getReplications`&#34; pulumi-lang-python=&#34;`get_replications`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-java=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-hcl=&#34;`data.proxmox_replications`&#34;&gt;`proxmoxve.getReplications`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about all Replications in Proxmox.
      * 
@@ -6230,7 +6237,7 @@ public final class ProxmoxveFunctions {
         return getReplicationsLegacy(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-go=&#34;`getReplications`&#34; pulumi-lang-python=&#34;`get_replications`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-java=&#34;`proxmoxve.getReplications`&#34;&gt;`proxmoxve.getReplications`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-go=&#34;`getReplications`&#34; pulumi-lang-python=&#34;`get_replications`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-java=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-hcl=&#34;`data.proxmox_replications`&#34;&gt;`proxmoxve.getReplications`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about all Replications in Proxmox.
      * 
@@ -6273,7 +6280,7 @@ public final class ProxmoxveFunctions {
         return getReplicationsLegacyPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-go=&#34;`getReplications`&#34; pulumi-lang-python=&#34;`get_replications`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-java=&#34;`proxmoxve.getReplications`&#34;&gt;`proxmoxve.getReplications`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-go=&#34;`getReplications`&#34; pulumi-lang-python=&#34;`get_replications`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-java=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-hcl=&#34;`data.proxmox_replications`&#34;&gt;`proxmoxve.getReplications`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about all Replications in Proxmox.
      * 
@@ -6316,7 +6323,7 @@ public final class ProxmoxveFunctions {
         return getReplicationsLegacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-go=&#34;`getReplications`&#34; pulumi-lang-python=&#34;`get_replications`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-java=&#34;`proxmoxve.getReplications`&#34;&gt;`proxmoxve.getReplications`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-go=&#34;`getReplications`&#34; pulumi-lang-python=&#34;`get_replications`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-java=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-hcl=&#34;`data.proxmox_replications`&#34;&gt;`proxmoxve.getReplications`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about all Replications in Proxmox.
      * 
@@ -6359,7 +6366,7 @@ public final class ProxmoxveFunctions {
         return getReplicationsLegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-go=&#34;`getReplications`&#34; pulumi-lang-python=&#34;`get_replications`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-java=&#34;`proxmoxve.getReplications`&#34;&gt;`proxmoxve.getReplications`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-go=&#34;`getReplications`&#34; pulumi-lang-python=&#34;`get_replications`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-java=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-hcl=&#34;`data.proxmox_replications`&#34;&gt;`proxmoxve.getReplications`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about all Replications in Proxmox.
      * 
@@ -6402,7 +6409,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invoke("proxmoxve:index/getReplicationsLegacy:getReplicationsLegacy", TypeShape.of(GetReplicationsLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-go=&#34;`getReplications`&#34; pulumi-lang-python=&#34;`get_replications`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-java=&#34;`proxmoxve.getReplications`&#34;&gt;`proxmoxve.getReplications`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-go=&#34;`getReplications`&#34; pulumi-lang-python=&#34;`get_replications`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-java=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-hcl=&#34;`data.proxmox_replications`&#34;&gt;`proxmoxve.getReplications`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about all Replications in Proxmox.
      * 
@@ -6445,7 +6452,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invoke("proxmoxve:index/getReplicationsLegacy:getReplicationsLegacy", TypeShape.of(GetReplicationsLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-go=&#34;`getReplications`&#34; pulumi-lang-python=&#34;`get_replications`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-java=&#34;`proxmoxve.getReplications`&#34;&gt;`proxmoxve.getReplications`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-go=&#34;`getReplications`&#34; pulumi-lang-python=&#34;`get_replications`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-java=&#34;`proxmoxve.getReplications`&#34; pulumi-lang-hcl=&#34;`data.proxmox_replications`&#34;&gt;`proxmoxve.getReplications`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about all Replications in Proxmox.
      * 
@@ -7972,7 +7979,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:index/getVersion:getVersion", TypeShape.of(GetVersionResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-go=&#34;`getVersion`&#34; pulumi-lang-python=&#34;`get_version`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-java=&#34;`proxmoxve.getVersion`&#34;&gt;`proxmoxve.getVersion`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-go=&#34;`getVersion`&#34; pulumi-lang-python=&#34;`get_version`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-java=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-hcl=&#34;`data.proxmox_version`&#34;&gt;`proxmoxve.getVersion`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves API version details.
      * 
@@ -8018,7 +8025,7 @@ public final class ProxmoxveFunctions {
         return getVersionLegacy(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-go=&#34;`getVersion`&#34; pulumi-lang-python=&#34;`get_version`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-java=&#34;`proxmoxve.getVersion`&#34;&gt;`proxmoxve.getVersion`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-go=&#34;`getVersion`&#34; pulumi-lang-python=&#34;`get_version`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-java=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-hcl=&#34;`data.proxmox_version`&#34;&gt;`proxmoxve.getVersion`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves API version details.
      * 
@@ -8064,7 +8071,7 @@ public final class ProxmoxveFunctions {
         return getVersionLegacyPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-go=&#34;`getVersion`&#34; pulumi-lang-python=&#34;`get_version`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-java=&#34;`proxmoxve.getVersion`&#34;&gt;`proxmoxve.getVersion`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-go=&#34;`getVersion`&#34; pulumi-lang-python=&#34;`get_version`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-java=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-hcl=&#34;`data.proxmox_version`&#34;&gt;`proxmoxve.getVersion`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves API version details.
      * 
@@ -8110,7 +8117,7 @@ public final class ProxmoxveFunctions {
         return getVersionLegacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-go=&#34;`getVersion`&#34; pulumi-lang-python=&#34;`get_version`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-java=&#34;`proxmoxve.getVersion`&#34;&gt;`proxmoxve.getVersion`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-go=&#34;`getVersion`&#34; pulumi-lang-python=&#34;`get_version`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-java=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-hcl=&#34;`data.proxmox_version`&#34;&gt;`proxmoxve.getVersion`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves API version details.
      * 
@@ -8156,7 +8163,7 @@ public final class ProxmoxveFunctions {
         return getVersionLegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-go=&#34;`getVersion`&#34; pulumi-lang-python=&#34;`get_version`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-java=&#34;`proxmoxve.getVersion`&#34;&gt;`proxmoxve.getVersion`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-go=&#34;`getVersion`&#34; pulumi-lang-python=&#34;`get_version`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-java=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-hcl=&#34;`data.proxmox_version`&#34;&gt;`proxmoxve.getVersion`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves API version details.
      * 
@@ -8202,7 +8209,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invoke("proxmoxve:index/getVersionLegacy:getVersionLegacy", TypeShape.of(GetVersionLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-go=&#34;`getVersion`&#34; pulumi-lang-python=&#34;`get_version`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-java=&#34;`proxmoxve.getVersion`&#34;&gt;`proxmoxve.getVersion`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-go=&#34;`getVersion`&#34; pulumi-lang-python=&#34;`get_version`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-java=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-hcl=&#34;`data.proxmox_version`&#34;&gt;`proxmoxve.getVersion`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves API version details.
      * 
@@ -8248,7 +8255,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invoke("proxmoxve:index/getVersionLegacy:getVersionLegacy", TypeShape.of(GetVersionLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-go=&#34;`getVersion`&#34; pulumi-lang-python=&#34;`get_version`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-java=&#34;`proxmoxve.getVersion`&#34;&gt;`proxmoxve.getVersion`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-go=&#34;`getVersion`&#34; pulumi-lang-python=&#34;`get_version`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-java=&#34;`proxmoxve.getVersion`&#34; pulumi-lang-hcl=&#34;`data.proxmox_version`&#34;&gt;`proxmoxve.getVersion`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves API version details.
      * 
@@ -8294,7 +8301,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:index/getVersionLegacy:getVersionLegacy", TypeShape.of(GetVersionLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34; pulumi-lang-hcl=&#34;`proxmox_vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a specific VM.
      * 
@@ -8303,7 +8310,7 @@ public final class ProxmoxveFunctions {
         return getVm2Legacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34; pulumi-lang-hcl=&#34;`proxmox_vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a specific VM.
      * 
@@ -8312,7 +8319,7 @@ public final class ProxmoxveFunctions {
         return getVm2LegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34; pulumi-lang-hcl=&#34;`proxmox_vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a specific VM.
      * 
@@ -8321,7 +8328,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invoke("proxmoxve:index/getVm2Legacy:getVm2Legacy", TypeShape.of(GetVm2LegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34; pulumi-lang-hcl=&#34;`proxmox_vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a specific VM.
      * 
@@ -8330,7 +8337,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invoke("proxmoxve:index/getVm2Legacy:getVm2Legacy", TypeShape.of(GetVm2LegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34; pulumi-lang-hcl=&#34;`proxmox_vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a specific VM.
      * 
@@ -8374,7 +8381,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:index/getVm:getVm", TypeShape.of(GetVmResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34; pulumi-lang-hcl=&#34;`proxmox_vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a specific VM.
      * 
@@ -8419,7 +8426,7 @@ public final class ProxmoxveFunctions {
         return getVmLegacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34; pulumi-lang-hcl=&#34;`proxmox_vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a specific VM.
      * 
@@ -8464,7 +8471,7 @@ public final class ProxmoxveFunctions {
         return getVmLegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34; pulumi-lang-hcl=&#34;`proxmox_vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a specific VM.
      * 
@@ -8509,7 +8516,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invoke("proxmoxve:index/getVmLegacy:getVmLegacy", TypeShape.of(GetVmLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34; pulumi-lang-hcl=&#34;`proxmox_vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a specific VM.
      * 
@@ -8554,7 +8561,7 @@ public final class ProxmoxveFunctions {
         return Deployment.getInstance().invoke("proxmoxve:index/getVmLegacy:getVmLegacy", TypeShape.of(GetVmLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Vm`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Vm`&#34; pulumi-lang-go=&#34;`Vm`&#34; pulumi-lang-python=&#34;`Vm`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Vm`&#34; pulumi-lang-java=&#34;`proxmoxve.Vm`&#34; pulumi-lang-hcl=&#34;`proxmox_vm`&#34;&gt;`proxmoxve.Vm`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a specific VM.
      * 
@@ -8613,6 +8620,7 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetVmsLegacyArgs;
+     * import com.pulumi.proxmoxve.inputs.GetVmsLegacyFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -8682,6 +8690,7 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetVmsLegacyArgs;
+     * import com.pulumi.proxmoxve.inputs.GetVmsLegacyFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -8751,6 +8760,7 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetVmsLegacyArgs;
+     * import com.pulumi.proxmoxve.inputs.GetVmsLegacyFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -8820,6 +8830,7 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetVmsLegacyArgs;
+     * import com.pulumi.proxmoxve.inputs.GetVmsLegacyFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -8889,6 +8900,7 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetVmsLegacyArgs;
+     * import com.pulumi.proxmoxve.inputs.GetVmsLegacyFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -8958,6 +8970,7 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetVmsLegacyArgs;
+     * import com.pulumi.proxmoxve.inputs.GetVmsLegacyFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;
@@ -9027,6 +9040,7 @@ public final class ProxmoxveFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.proxmoxve.ProxmoxveFunctions;
      * import com.pulumi.proxmoxve.inputs.GetVmsLegacyArgs;
+     * import com.pulumi.proxmoxve.inputs.GetVmsLegacyFilterArgs;
      * import java.util.ArrayList;
      * import java.util.Arrays;
      * import java.util.Map;

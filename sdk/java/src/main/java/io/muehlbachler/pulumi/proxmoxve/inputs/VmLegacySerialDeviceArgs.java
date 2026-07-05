@@ -16,7 +16,7 @@ public final class VmLegacySerialDeviceArgs extends com.pulumi.resources.Resourc
     public static final VmLegacySerialDeviceArgs Empty = new VmLegacySerialDeviceArgs();
 
     /**
-     * The device (defaults to &lt;span pulumi-lang-nodejs=&#34;`socket`&#34; pulumi-lang-dotnet=&#34;`Socket`&#34; pulumi-lang-go=&#34;`socket`&#34; pulumi-lang-python=&#34;`socket`&#34; pulumi-lang-yaml=&#34;`socket`&#34; pulumi-lang-java=&#34;`socket`&#34;&gt;`socket`&lt;/span&gt;).
+     * The device (defaults to &lt;span pulumi-lang-nodejs=&#34;`socket`&#34; pulumi-lang-dotnet=&#34;`Socket`&#34; pulumi-lang-go=&#34;`socket`&#34; pulumi-lang-python=&#34;`socket`&#34; pulumi-lang-yaml=&#34;`socket`&#34; pulumi-lang-java=&#34;`socket`&#34; pulumi-lang-hcl=&#34;`socket`&#34;&gt;`socket`&lt;/span&gt;).
      * - `/dev/*` - A host serial device.
      * 
      */
@@ -24,7 +24,7 @@ public final class VmLegacySerialDeviceArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> device;
 
     /**
-     * @return The device (defaults to &lt;span pulumi-lang-nodejs=&#34;`socket`&#34; pulumi-lang-dotnet=&#34;`Socket`&#34; pulumi-lang-go=&#34;`socket`&#34; pulumi-lang-python=&#34;`socket`&#34; pulumi-lang-yaml=&#34;`socket`&#34; pulumi-lang-java=&#34;`socket`&#34;&gt;`socket`&lt;/span&gt;).
+     * @return The device (defaults to &lt;span pulumi-lang-nodejs=&#34;`socket`&#34; pulumi-lang-dotnet=&#34;`Socket`&#34; pulumi-lang-go=&#34;`socket`&#34; pulumi-lang-python=&#34;`socket`&#34; pulumi-lang-yaml=&#34;`socket`&#34; pulumi-lang-java=&#34;`socket`&#34; pulumi-lang-hcl=&#34;`socket`&#34;&gt;`socket`&lt;/span&gt;).
      * - `/dev/*` - A host serial device.
      * 
      */
@@ -57,7 +57,7 @@ public final class VmLegacySerialDeviceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param device The device (defaults to &lt;span pulumi-lang-nodejs=&#34;`socket`&#34; pulumi-lang-dotnet=&#34;`Socket`&#34; pulumi-lang-go=&#34;`socket`&#34; pulumi-lang-python=&#34;`socket`&#34; pulumi-lang-yaml=&#34;`socket`&#34; pulumi-lang-java=&#34;`socket`&#34;&gt;`socket`&lt;/span&gt;).
+         * @param device The device (defaults to &lt;span pulumi-lang-nodejs=&#34;`socket`&#34; pulumi-lang-dotnet=&#34;`Socket`&#34; pulumi-lang-go=&#34;`socket`&#34; pulumi-lang-python=&#34;`socket`&#34; pulumi-lang-yaml=&#34;`socket`&#34; pulumi-lang-java=&#34;`socket`&#34; pulumi-lang-hcl=&#34;`socket`&#34;&gt;`socket`&lt;/span&gt;).
          * - `/dev/*` - A host serial device.
          * 
          * @return builder
@@ -69,7 +69,7 @@ public final class VmLegacySerialDeviceArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param device The device (defaults to &lt;span pulumi-lang-nodejs=&#34;`socket`&#34; pulumi-lang-dotnet=&#34;`Socket`&#34; pulumi-lang-go=&#34;`socket`&#34; pulumi-lang-python=&#34;`socket`&#34; pulumi-lang-yaml=&#34;`socket`&#34; pulumi-lang-java=&#34;`socket`&#34;&gt;`socket`&lt;/span&gt;).
+         * @param device The device (defaults to &lt;span pulumi-lang-nodejs=&#34;`socket`&#34; pulumi-lang-dotnet=&#34;`Socket`&#34; pulumi-lang-go=&#34;`socket`&#34; pulumi-lang-python=&#34;`socket`&#34; pulumi-lang-yaml=&#34;`socket`&#34; pulumi-lang-java=&#34;`socket`&#34; pulumi-lang-hcl=&#34;`socket`&#34;&gt;`socket`&lt;/span&gt;).
          * - `/dev/*` - A host serial device.
          * 
          * @return builder

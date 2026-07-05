@@ -18,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-go=&#34;`sdn/zone.Qinq`&#34; pulumi-lang-python=&#34;`sdn/zone.Qinq`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Qinq`&#34;&gt;`proxmoxve.sdn/zone.Qinq`&lt;/span&gt; instead. This resource will be removed in v1.0.
+ * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-go=&#34;`sdn/zone.Qinq`&#34; pulumi-lang-python=&#34;`sdn/zone.Qinq`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_zone_qinq`&#34;&gt;`proxmoxve.sdn/zone.Qinq`&lt;/span&gt; instead. This resource will be removed in v1.0.
  * 
  * QinQ Zone in Proxmox SDN. QinQ also known as VLAN stacking, that uses multiple layers of VLAN tags for isolation. The QinQ zone defines the outer VLAN tag (the Service VLAN) whereas the inner VLAN tag is defined by the VNet. Your physical network switches must support stacked VLANs for this configuration. Due to the double stacking of tags, you need 4 more bytes for QinQ VLANs. For example, you must reduce the MTU to 1496 if you physical interface MTU is 1500.
  * 
@@ -204,14 +204,14 @@ public class QinqLegacy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.reverseDns);
     }
     /**
-     * Service VLAN tag for QinQ. The tag must be between &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`4094`&#34; pulumi-lang-dotnet=&#34;`4094`&#34; pulumi-lang-go=&#34;`4094`&#34; pulumi-lang-python=&#34;`4094`&#34; pulumi-lang-yaml=&#34;`4094`&#34; pulumi-lang-java=&#34;`4094`&#34;&gt;`4094`&lt;/span&gt;.
+     * Service VLAN tag for QinQ. The tag must be between &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34; pulumi-lang-hcl=&#34;`1`&#34;&gt;`1`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`4094`&#34; pulumi-lang-dotnet=&#34;`4094`&#34; pulumi-lang-go=&#34;`4094`&#34; pulumi-lang-python=&#34;`4094`&#34; pulumi-lang-yaml=&#34;`4094`&#34; pulumi-lang-java=&#34;`4094`&#34; pulumi-lang-hcl=&#34;`4094`&#34;&gt;`4094`&lt;/span&gt;.
      * 
      */
     @Export(name="serviceVlan", refs={Integer.class}, tree="[0]")
     private Output<Integer> serviceVlan;
 
     /**
-     * @return Service VLAN tag for QinQ. The tag must be between &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`4094`&#34; pulumi-lang-dotnet=&#34;`4094`&#34; pulumi-lang-go=&#34;`4094`&#34; pulumi-lang-python=&#34;`4094`&#34; pulumi-lang-yaml=&#34;`4094`&#34; pulumi-lang-java=&#34;`4094`&#34;&gt;`4094`&lt;/span&gt;.
+     * @return Service VLAN tag for QinQ. The tag must be between &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34; pulumi-lang-hcl=&#34;`1`&#34;&gt;`1`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`4094`&#34; pulumi-lang-dotnet=&#34;`4094`&#34; pulumi-lang-go=&#34;`4094`&#34; pulumi-lang-python=&#34;`4094`&#34; pulumi-lang-yaml=&#34;`4094`&#34; pulumi-lang-java=&#34;`4094`&#34; pulumi-lang-hcl=&#34;`4094`&#34;&gt;`4094`&lt;/span&gt;.
      * 
      */
     public Output<Integer> serviceVlan() {

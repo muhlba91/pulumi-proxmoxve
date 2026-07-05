@@ -12,12 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetPciFilters {
     /**
-     * @return Filter by PCI class code prefix (e.g. &lt;span pulumi-lang-nodejs=&#34;`03`&#34; pulumi-lang-dotnet=&#34;`03`&#34; pulumi-lang-go=&#34;`03`&#34; pulumi-lang-python=&#34;`03`&#34; pulumi-lang-yaml=&#34;`03`&#34; pulumi-lang-java=&#34;`03`&#34;&gt;`03`&lt;/span&gt; to match all display controllers). The &lt;span pulumi-lang-nodejs=&#34;`0x`&#34; pulumi-lang-dotnet=&#34;`0x`&#34; pulumi-lang-go=&#34;`0x`&#34; pulumi-lang-python=&#34;`0x`&#34; pulumi-lang-yaml=&#34;`0x`&#34; pulumi-lang-java=&#34;`0x`&#34;&gt;`0x`&lt;/span&gt; prefix in class codes is stripped before matching.
+     * @return Filter by PCI class code prefix (e.g. &lt;span pulumi-lang-nodejs=&#34;`03`&#34; pulumi-lang-dotnet=&#34;`03`&#34; pulumi-lang-go=&#34;`03`&#34; pulumi-lang-python=&#34;`03`&#34; pulumi-lang-yaml=&#34;`03`&#34; pulumi-lang-java=&#34;`03`&#34; pulumi-lang-hcl=&#34;`03`&#34;&gt;`03`&lt;/span&gt; to match all display controllers). The &lt;span pulumi-lang-nodejs=&#34;`0x`&#34; pulumi-lang-dotnet=&#34;`0x`&#34; pulumi-lang-go=&#34;`0x`&#34; pulumi-lang-python=&#34;`0x`&#34; pulumi-lang-yaml=&#34;`0x`&#34; pulumi-lang-java=&#34;`0x`&#34; pulumi-lang-hcl=&#34;`0x`&#34;&gt;`0x`&lt;/span&gt; prefix in class codes is stripped before matching.
      * 
      */
     private @Nullable String class_;
     /**
-     * @return Filter by device ID prefix. The &lt;span pulumi-lang-nodejs=&#34;`0x`&#34; pulumi-lang-dotnet=&#34;`0x`&#34; pulumi-lang-go=&#34;`0x`&#34; pulumi-lang-python=&#34;`0x`&#34; pulumi-lang-yaml=&#34;`0x`&#34; pulumi-lang-java=&#34;`0x`&#34;&gt;`0x`&lt;/span&gt; prefix in device IDs is stripped before matching.
+     * @return Filter by device ID prefix. The &lt;span pulumi-lang-nodejs=&#34;`0x`&#34; pulumi-lang-dotnet=&#34;`0x`&#34; pulumi-lang-go=&#34;`0x`&#34; pulumi-lang-python=&#34;`0x`&#34; pulumi-lang-yaml=&#34;`0x`&#34; pulumi-lang-java=&#34;`0x`&#34; pulumi-lang-hcl=&#34;`0x`&#34;&gt;`0x`&lt;/span&gt; prefix in device IDs is stripped before matching.
      * 
      */
     private @Nullable String deviceId;
@@ -27,21 +27,21 @@ public final class GetPciFilters {
      */
     private @Nullable String id;
     /**
-     * @return Filter by vendor ID prefix (e.g. &lt;span pulumi-lang-nodejs=&#34;`8086`&#34; pulumi-lang-dotnet=&#34;`8086`&#34; pulumi-lang-go=&#34;`8086`&#34; pulumi-lang-python=&#34;`8086`&#34; pulumi-lang-yaml=&#34;`8086`&#34; pulumi-lang-java=&#34;`8086`&#34;&gt;`8086`&lt;/span&gt; for Intel devices). The &lt;span pulumi-lang-nodejs=&#34;`0x`&#34; pulumi-lang-dotnet=&#34;`0x`&#34; pulumi-lang-go=&#34;`0x`&#34; pulumi-lang-python=&#34;`0x`&#34; pulumi-lang-yaml=&#34;`0x`&#34; pulumi-lang-java=&#34;`0x`&#34;&gt;`0x`&lt;/span&gt; prefix in vendor IDs is stripped before matching.
+     * @return Filter by vendor ID prefix (e.g. &lt;span pulumi-lang-nodejs=&#34;`8086`&#34; pulumi-lang-dotnet=&#34;`8086`&#34; pulumi-lang-go=&#34;`8086`&#34; pulumi-lang-python=&#34;`8086`&#34; pulumi-lang-yaml=&#34;`8086`&#34; pulumi-lang-java=&#34;`8086`&#34; pulumi-lang-hcl=&#34;`8086`&#34;&gt;`8086`&lt;/span&gt; for Intel devices). The &lt;span pulumi-lang-nodejs=&#34;`0x`&#34; pulumi-lang-dotnet=&#34;`0x`&#34; pulumi-lang-go=&#34;`0x`&#34; pulumi-lang-python=&#34;`0x`&#34; pulumi-lang-yaml=&#34;`0x`&#34; pulumi-lang-java=&#34;`0x`&#34; pulumi-lang-hcl=&#34;`0x`&#34;&gt;`0x`&lt;/span&gt; prefix in vendor IDs is stripped before matching.
      * 
      */
     private @Nullable String vendorId;
 
     private GetPciFilters() {}
     /**
-     * @return Filter by PCI class code prefix (e.g. &lt;span pulumi-lang-nodejs=&#34;`03`&#34; pulumi-lang-dotnet=&#34;`03`&#34; pulumi-lang-go=&#34;`03`&#34; pulumi-lang-python=&#34;`03`&#34; pulumi-lang-yaml=&#34;`03`&#34; pulumi-lang-java=&#34;`03`&#34;&gt;`03`&lt;/span&gt; to match all display controllers). The &lt;span pulumi-lang-nodejs=&#34;`0x`&#34; pulumi-lang-dotnet=&#34;`0x`&#34; pulumi-lang-go=&#34;`0x`&#34; pulumi-lang-python=&#34;`0x`&#34; pulumi-lang-yaml=&#34;`0x`&#34; pulumi-lang-java=&#34;`0x`&#34;&gt;`0x`&lt;/span&gt; prefix in class codes is stripped before matching.
+     * @return Filter by PCI class code prefix (e.g. &lt;span pulumi-lang-nodejs=&#34;`03`&#34; pulumi-lang-dotnet=&#34;`03`&#34; pulumi-lang-go=&#34;`03`&#34; pulumi-lang-python=&#34;`03`&#34; pulumi-lang-yaml=&#34;`03`&#34; pulumi-lang-java=&#34;`03`&#34; pulumi-lang-hcl=&#34;`03`&#34;&gt;`03`&lt;/span&gt; to match all display controllers). The &lt;span pulumi-lang-nodejs=&#34;`0x`&#34; pulumi-lang-dotnet=&#34;`0x`&#34; pulumi-lang-go=&#34;`0x`&#34; pulumi-lang-python=&#34;`0x`&#34; pulumi-lang-yaml=&#34;`0x`&#34; pulumi-lang-java=&#34;`0x`&#34; pulumi-lang-hcl=&#34;`0x`&#34;&gt;`0x`&lt;/span&gt; prefix in class codes is stripped before matching.
      * 
      */
     public Optional<String> class_() {
         return Optional.ofNullable(this.class_);
     }
     /**
-     * @return Filter by device ID prefix. The &lt;span pulumi-lang-nodejs=&#34;`0x`&#34; pulumi-lang-dotnet=&#34;`0x`&#34; pulumi-lang-go=&#34;`0x`&#34; pulumi-lang-python=&#34;`0x`&#34; pulumi-lang-yaml=&#34;`0x`&#34; pulumi-lang-java=&#34;`0x`&#34;&gt;`0x`&lt;/span&gt; prefix in device IDs is stripped before matching.
+     * @return Filter by device ID prefix. The &lt;span pulumi-lang-nodejs=&#34;`0x`&#34; pulumi-lang-dotnet=&#34;`0x`&#34; pulumi-lang-go=&#34;`0x`&#34; pulumi-lang-python=&#34;`0x`&#34; pulumi-lang-yaml=&#34;`0x`&#34; pulumi-lang-java=&#34;`0x`&#34; pulumi-lang-hcl=&#34;`0x`&#34;&gt;`0x`&lt;/span&gt; prefix in device IDs is stripped before matching.
      * 
      */
     public Optional<String> deviceId() {
@@ -55,7 +55,7 @@ public final class GetPciFilters {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return Filter by vendor ID prefix (e.g. &lt;span pulumi-lang-nodejs=&#34;`8086`&#34; pulumi-lang-dotnet=&#34;`8086`&#34; pulumi-lang-go=&#34;`8086`&#34; pulumi-lang-python=&#34;`8086`&#34; pulumi-lang-yaml=&#34;`8086`&#34; pulumi-lang-java=&#34;`8086`&#34;&gt;`8086`&lt;/span&gt; for Intel devices). The &lt;span pulumi-lang-nodejs=&#34;`0x`&#34; pulumi-lang-dotnet=&#34;`0x`&#34; pulumi-lang-go=&#34;`0x`&#34; pulumi-lang-python=&#34;`0x`&#34; pulumi-lang-yaml=&#34;`0x`&#34; pulumi-lang-java=&#34;`0x`&#34;&gt;`0x`&lt;/span&gt; prefix in vendor IDs is stripped before matching.
+     * @return Filter by vendor ID prefix (e.g. &lt;span pulumi-lang-nodejs=&#34;`8086`&#34; pulumi-lang-dotnet=&#34;`8086`&#34; pulumi-lang-go=&#34;`8086`&#34; pulumi-lang-python=&#34;`8086`&#34; pulumi-lang-yaml=&#34;`8086`&#34; pulumi-lang-java=&#34;`8086`&#34; pulumi-lang-hcl=&#34;`8086`&#34;&gt;`8086`&lt;/span&gt; for Intel devices). The &lt;span pulumi-lang-nodejs=&#34;`0x`&#34; pulumi-lang-dotnet=&#34;`0x`&#34; pulumi-lang-go=&#34;`0x`&#34; pulumi-lang-python=&#34;`0x`&#34; pulumi-lang-yaml=&#34;`0x`&#34; pulumi-lang-java=&#34;`0x`&#34; pulumi-lang-hcl=&#34;`0x`&#34;&gt;`0x`&lt;/span&gt; prefix in vendor IDs is stripped before matching.
      * 
      */
     public Optional<String> vendorId() {

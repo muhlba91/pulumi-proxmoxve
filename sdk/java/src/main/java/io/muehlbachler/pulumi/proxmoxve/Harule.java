@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
  * &gt; **Note:** This resource requires Proxmox VE 9.0 or later. In PVE 9, HA groups
  * have been replaced by HA rules, which provide node affinity and resource affinity
  * capabilities. For PVE 8 and earlier, use
- * &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-go=&#34;`Hagroup`&#34; pulumi-lang-python=&#34;`Hagroup`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-java=&#34;`proxmoxve.Hagroup`&#34;&gt;`proxmoxve.Hagroup`&lt;/span&gt; instead.
+ * &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-go=&#34;`Hagroup`&#34; pulumi-lang-python=&#34;`Hagroup`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-java=&#34;`proxmoxve.Hagroup`&#34; pulumi-lang-hcl=&#34;`proxmox_hagroup`&#34;&gt;`proxmoxve.Hagroup`&lt;/span&gt; instead.
  * 
  * ## Example Usage
  * 
@@ -111,14 +111,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="proxmoxve:index/harule:Harule")
 public class Harule extends com.pulumi.resources.CustomResource {
     /**
-     * The resource affinity type (resource-affinity only). &lt;span pulumi-lang-nodejs=&#34;`positive`&#34; pulumi-lang-dotnet=&#34;`Positive`&#34; pulumi-lang-go=&#34;`positive`&#34; pulumi-lang-python=&#34;`positive`&#34; pulumi-lang-yaml=&#34;`positive`&#34; pulumi-lang-java=&#34;`positive`&#34;&gt;`positive`&lt;/span&gt; keeps resources on the same node, &lt;span pulumi-lang-nodejs=&#34;`negative`&#34; pulumi-lang-dotnet=&#34;`Negative`&#34; pulumi-lang-go=&#34;`negative`&#34; pulumi-lang-python=&#34;`negative`&#34; pulumi-lang-yaml=&#34;`negative`&#34; pulumi-lang-java=&#34;`negative`&#34;&gt;`negative`&lt;/span&gt; keeps them on separate nodes.
+     * The resource affinity type (resource-affinity only). &lt;span pulumi-lang-nodejs=&#34;`positive`&#34; pulumi-lang-dotnet=&#34;`Positive`&#34; pulumi-lang-go=&#34;`positive`&#34; pulumi-lang-python=&#34;`positive`&#34; pulumi-lang-yaml=&#34;`positive`&#34; pulumi-lang-java=&#34;`positive`&#34; pulumi-lang-hcl=&#34;`positive`&#34;&gt;`positive`&lt;/span&gt; keeps resources on the same node, &lt;span pulumi-lang-nodejs=&#34;`negative`&#34; pulumi-lang-dotnet=&#34;`Negative`&#34; pulumi-lang-go=&#34;`negative`&#34; pulumi-lang-python=&#34;`negative`&#34; pulumi-lang-yaml=&#34;`negative`&#34; pulumi-lang-java=&#34;`negative`&#34; pulumi-lang-hcl=&#34;`negative`&#34;&gt;`negative`&lt;/span&gt; keeps them on separate nodes.
      * 
      */
     @Export(name="affinity", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> affinity;
 
     /**
-     * @return The resource affinity type (resource-affinity only). &lt;span pulumi-lang-nodejs=&#34;`positive`&#34; pulumi-lang-dotnet=&#34;`Positive`&#34; pulumi-lang-go=&#34;`positive`&#34; pulumi-lang-python=&#34;`positive`&#34; pulumi-lang-yaml=&#34;`positive`&#34; pulumi-lang-java=&#34;`positive`&#34;&gt;`positive`&lt;/span&gt; keeps resources on the same node, &lt;span pulumi-lang-nodejs=&#34;`negative`&#34; pulumi-lang-dotnet=&#34;`Negative`&#34; pulumi-lang-go=&#34;`negative`&#34; pulumi-lang-python=&#34;`negative`&#34; pulumi-lang-yaml=&#34;`negative`&#34; pulumi-lang-java=&#34;`negative`&#34;&gt;`negative`&lt;/span&gt; keeps them on separate nodes.
+     * @return The resource affinity type (resource-affinity only). &lt;span pulumi-lang-nodejs=&#34;`positive`&#34; pulumi-lang-dotnet=&#34;`Positive`&#34; pulumi-lang-go=&#34;`positive`&#34; pulumi-lang-python=&#34;`positive`&#34; pulumi-lang-yaml=&#34;`positive`&#34; pulumi-lang-java=&#34;`positive`&#34; pulumi-lang-hcl=&#34;`positive`&#34;&gt;`positive`&lt;/span&gt; keeps resources on the same node, &lt;span pulumi-lang-nodejs=&#34;`negative`&#34; pulumi-lang-dotnet=&#34;`Negative`&#34; pulumi-lang-go=&#34;`negative`&#34; pulumi-lang-python=&#34;`negative`&#34; pulumi-lang-yaml=&#34;`negative`&#34; pulumi-lang-java=&#34;`negative`&#34; pulumi-lang-hcl=&#34;`negative`&#34;&gt;`negative`&lt;/span&gt; keeps them on separate nodes.
      * 
      */
     public Output<Optional<String>> affinity() {
@@ -139,28 +139,28 @@ public class Harule extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.comment);
     }
     /**
-     * Whether the HA rule is disabled. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
+     * Whether the HA rule is disabled. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
      * 
      */
     @Export(name="disable", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> disable;
 
     /**
-     * @return Whether the HA rule is disabled. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
+     * @return Whether the HA rule is disabled. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
      * 
      */
     public Output<Boolean> disable() {
         return this.disable;
     }
     /**
-     * The member nodes for this rule (node-affinity only). They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or &lt;span pulumi-lang-nodejs=&#34;`null`&#34; pulumi-lang-dotnet=&#34;`Null`&#34; pulumi-lang-go=&#34;`null`&#34; pulumi-lang-python=&#34;`null`&#34; pulumi-lang-yaml=&#34;`null`&#34; pulumi-lang-java=&#34;`null`&#34;&gt;`null`&lt;/span&gt; for unset priorities.
+     * The member nodes for this rule (node-affinity only). They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or &lt;span pulumi-lang-nodejs=&#34;`null`&#34; pulumi-lang-dotnet=&#34;`Null`&#34; pulumi-lang-go=&#34;`null`&#34; pulumi-lang-python=&#34;`null`&#34; pulumi-lang-yaml=&#34;`null`&#34; pulumi-lang-java=&#34;`null`&#34; pulumi-lang-hcl=&#34;`null`&#34;&gt;`null`&lt;/span&gt; for unset priorities.
      * 
      */
     @Export(name="nodes", refs={Map.class,String.class,Integer.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Integer>> nodes;
 
     /**
-     * @return The member nodes for this rule (node-affinity only). They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or &lt;span pulumi-lang-nodejs=&#34;`null`&#34; pulumi-lang-dotnet=&#34;`Null`&#34; pulumi-lang-go=&#34;`null`&#34; pulumi-lang-python=&#34;`null`&#34; pulumi-lang-yaml=&#34;`null`&#34; pulumi-lang-java=&#34;`null`&#34;&gt;`null`&lt;/span&gt; for unset priorities.
+     * @return The member nodes for this rule (node-affinity only). They are provided as a map, where the keys are the node names and the values represent their priority: integers for known priorities or &lt;span pulumi-lang-nodejs=&#34;`null`&#34; pulumi-lang-dotnet=&#34;`Null`&#34; pulumi-lang-go=&#34;`null`&#34; pulumi-lang-python=&#34;`null`&#34; pulumi-lang-yaml=&#34;`null`&#34; pulumi-lang-java=&#34;`null`&#34; pulumi-lang-hcl=&#34;`null`&#34;&gt;`null`&lt;/span&gt; for unset priorities.
      * 
      */
     public Output<Optional<Map<String,Integer>>> nodes() {
@@ -195,14 +195,14 @@ public class Harule extends com.pulumi.resources.CustomResource {
         return this.rule;
     }
     /**
-     * Whether the node affinity rule is strict (node-affinity only). When strict, resources cannot run on nodes not listed. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
+     * Whether the node affinity rule is strict (node-affinity only). When strict, resources cannot run on nodes not listed. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
      * 
      */
     @Export(name="strict", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> strict;
 
     /**
-     * @return Whether the node affinity rule is strict (node-affinity only). When strict, resources cannot run on nodes not listed. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
+     * @return Whether the node affinity rule is strict (node-affinity only). When strict, resources cannot run on nodes not listed. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
      * 
      */
     public Output<Boolean> strict() {

@@ -19,14 +19,14 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
     public static final ProviderSshArgs Empty = new ProviderSshArgs();
 
     /**
-     * Whether to use the SSH agent for authentication. Takes precedence over the &lt;span pulumi-lang-nodejs=&#34;`privateKey`&#34; pulumi-lang-dotnet=&#34;`PrivateKey`&#34; pulumi-lang-go=&#34;`privateKey`&#34; pulumi-lang-python=&#34;`private_key`&#34; pulumi-lang-yaml=&#34;`privateKey`&#34; pulumi-lang-java=&#34;`privateKey`&#34;&gt;`privateKey`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`password`&#34; pulumi-lang-dotnet=&#34;`Password`&#34; pulumi-lang-go=&#34;`password`&#34; pulumi-lang-python=&#34;`password`&#34; pulumi-lang-yaml=&#34;`password`&#34; pulumi-lang-java=&#34;`password`&#34;&gt;`password`&lt;/span&gt; fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt; if not set.
+     * Whether to use the SSH agent for authentication. Takes precedence over the &lt;span pulumi-lang-nodejs=&#34;`privateKey`&#34; pulumi-lang-dotnet=&#34;`PrivateKey`&#34; pulumi-lang-go=&#34;`privateKey`&#34; pulumi-lang-python=&#34;`private_key`&#34; pulumi-lang-yaml=&#34;`privateKey`&#34; pulumi-lang-java=&#34;`privateKey`&#34; pulumi-lang-hcl=&#34;`private_key`&#34;&gt;`privateKey`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`password`&#34; pulumi-lang-dotnet=&#34;`Password`&#34; pulumi-lang-go=&#34;`password`&#34; pulumi-lang-python=&#34;`password`&#34; pulumi-lang-yaml=&#34;`password`&#34; pulumi-lang-java=&#34;`password`&#34; pulumi-lang-hcl=&#34;`password`&#34;&gt;`password`&lt;/span&gt; fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt; if not set.
      * 
      */
     @Import(name="agent")
     private @Nullable Output<Boolean> agent;
 
     /**
-     * @return Whether to use the SSH agent for authentication. Takes precedence over the &lt;span pulumi-lang-nodejs=&#34;`privateKey`&#34; pulumi-lang-dotnet=&#34;`PrivateKey`&#34; pulumi-lang-go=&#34;`privateKey`&#34; pulumi-lang-python=&#34;`private_key`&#34; pulumi-lang-yaml=&#34;`privateKey`&#34; pulumi-lang-java=&#34;`privateKey`&#34;&gt;`privateKey`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`password`&#34; pulumi-lang-dotnet=&#34;`Password`&#34; pulumi-lang-go=&#34;`password`&#34; pulumi-lang-python=&#34;`password`&#34; pulumi-lang-yaml=&#34;`password`&#34; pulumi-lang-java=&#34;`password`&#34;&gt;`password`&lt;/span&gt; fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt; if not set.
+     * @return Whether to use the SSH agent for authentication. Takes precedence over the &lt;span pulumi-lang-nodejs=&#34;`privateKey`&#34; pulumi-lang-dotnet=&#34;`PrivateKey`&#34; pulumi-lang-go=&#34;`privateKey`&#34; pulumi-lang-python=&#34;`private_key`&#34; pulumi-lang-yaml=&#34;`privateKey`&#34; pulumi-lang-java=&#34;`privateKey`&#34; pulumi-lang-hcl=&#34;`private_key`&#34;&gt;`privateKey`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`password`&#34; pulumi-lang-dotnet=&#34;`Password`&#34; pulumi-lang-go=&#34;`password`&#34; pulumi-lang-python=&#34;`password`&#34; pulumi-lang-yaml=&#34;`password`&#34; pulumi-lang-java=&#34;`password`&#34; pulumi-lang-hcl=&#34;`password`&#34;&gt;`password`&lt;/span&gt; fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt; if not set.
      * 
      */
     public Optional<Output<Boolean>> agent() {
@@ -34,14 +34,14 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt; if not set.
+     * Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt; if not set.
      * 
      */
     @Import(name="agentForwarding")
     private @Nullable Output<Boolean> agentForwarding;
 
     /**
-     * @return Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt; if not set.
+     * @return Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt; if not set.
      * 
      */
     public Optional<Output<Boolean>> agentForwarding() {
@@ -64,14 +64,14 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The method used to resolve node IP addresses for SSH connections. Set to &lt;span pulumi-lang-nodejs=&#34;`dns`&#34; pulumi-lang-dotnet=&#34;`Dns`&#34; pulumi-lang-go=&#34;`dns`&#34; pulumi-lang-python=&#34;`dns`&#34; pulumi-lang-yaml=&#34;`dns`&#34; pulumi-lang-java=&#34;`dns`&#34;&gt;`dns`&lt;/span&gt; to skip the Proxmox API-based resolution and use local DNS instead. DNS resolution prefers IPv4 but falls back to IPv6 if no IPv4 addresses are available. Useful in multi-subnet environments where the API may return an inaccessible IP. Defaults to &lt;span pulumi-lang-nodejs=&#34;`api`&#34; pulumi-lang-dotnet=&#34;`Api`&#34; pulumi-lang-go=&#34;`api`&#34; pulumi-lang-python=&#34;`api`&#34; pulumi-lang-yaml=&#34;`api`&#34; pulumi-lang-java=&#34;`api`&#34;&gt;`api`&lt;/span&gt;.
+     * The method used to resolve node IP addresses for SSH connections. Set to &lt;span pulumi-lang-nodejs=&#34;`dns`&#34; pulumi-lang-dotnet=&#34;`Dns`&#34; pulumi-lang-go=&#34;`dns`&#34; pulumi-lang-python=&#34;`dns`&#34; pulumi-lang-yaml=&#34;`dns`&#34; pulumi-lang-java=&#34;`dns`&#34; pulumi-lang-hcl=&#34;`dns`&#34;&gt;`dns`&lt;/span&gt; to skip the Proxmox API-based resolution and use local DNS instead. DNS resolution prefers IPv4 but falls back to IPv6 if no IPv4 addresses are available. Useful in multi-subnet environments where the API may return an inaccessible IP. Defaults to &lt;span pulumi-lang-nodejs=&#34;`api`&#34; pulumi-lang-dotnet=&#34;`Api`&#34; pulumi-lang-go=&#34;`api`&#34; pulumi-lang-python=&#34;`api`&#34; pulumi-lang-yaml=&#34;`api`&#34; pulumi-lang-java=&#34;`api`&#34; pulumi-lang-hcl=&#34;`api`&#34;&gt;`api`&lt;/span&gt;.
      * 
      */
     @Import(name="nodeAddressSource")
     private @Nullable Output<String> nodeAddressSource;
 
     /**
-     * @return The method used to resolve node IP addresses for SSH connections. Set to &lt;span pulumi-lang-nodejs=&#34;`dns`&#34; pulumi-lang-dotnet=&#34;`Dns`&#34; pulumi-lang-go=&#34;`dns`&#34; pulumi-lang-python=&#34;`dns`&#34; pulumi-lang-yaml=&#34;`dns`&#34; pulumi-lang-java=&#34;`dns`&#34;&gt;`dns`&lt;/span&gt; to skip the Proxmox API-based resolution and use local DNS instead. DNS resolution prefers IPv4 but falls back to IPv6 if no IPv4 addresses are available. Useful in multi-subnet environments where the API may return an inaccessible IP. Defaults to &lt;span pulumi-lang-nodejs=&#34;`api`&#34; pulumi-lang-dotnet=&#34;`Api`&#34; pulumi-lang-go=&#34;`api`&#34; pulumi-lang-python=&#34;`api`&#34; pulumi-lang-yaml=&#34;`api`&#34; pulumi-lang-java=&#34;`api`&#34;&gt;`api`&lt;/span&gt;.
+     * @return The method used to resolve node IP addresses for SSH connections. Set to &lt;span pulumi-lang-nodejs=&#34;`dns`&#34; pulumi-lang-dotnet=&#34;`Dns`&#34; pulumi-lang-go=&#34;`dns`&#34; pulumi-lang-python=&#34;`dns`&#34; pulumi-lang-yaml=&#34;`dns`&#34; pulumi-lang-java=&#34;`dns`&#34; pulumi-lang-hcl=&#34;`dns`&#34;&gt;`dns`&lt;/span&gt; to skip the Proxmox API-based resolution and use local DNS instead. DNS resolution prefers IPv4 but falls back to IPv6 if no IPv4 addresses are available. Useful in multi-subnet environments where the API may return an inaccessible IP. Defaults to &lt;span pulumi-lang-nodejs=&#34;`api`&#34; pulumi-lang-dotnet=&#34;`Api`&#34; pulumi-lang-go=&#34;`api`&#34; pulumi-lang-python=&#34;`api`&#34; pulumi-lang-yaml=&#34;`api`&#34; pulumi-lang-java=&#34;`api`&#34; pulumi-lang-hcl=&#34;`api`&#34;&gt;`api`&lt;/span&gt;.
      * 
      */
     public Optional<Output<String>> nodeAddressSource() {
@@ -94,14 +94,14 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The password used for the SSH connection. Defaults to the value of the &lt;span pulumi-lang-nodejs=&#34;`password`&#34; pulumi-lang-dotnet=&#34;`Password`&#34; pulumi-lang-go=&#34;`password`&#34; pulumi-lang-python=&#34;`password`&#34; pulumi-lang-yaml=&#34;`password`&#34; pulumi-lang-java=&#34;`password`&#34;&gt;`password`&lt;/span&gt; field of the &lt;span pulumi-lang-nodejs=&#34;`provider`&#34; pulumi-lang-dotnet=&#34;`Provider`&#34; pulumi-lang-go=&#34;`provider`&#34; pulumi-lang-python=&#34;`provider`&#34; pulumi-lang-yaml=&#34;`provider`&#34; pulumi-lang-java=&#34;`provider`&#34;&gt;`provider`&lt;/span&gt; block when using username/password authentication. Default has no effect when using API token authentication, as there is no password to inherit. Can also be sourced from `PROXMOX_VE_SSH_PASSWORD`.
+     * The password used for the SSH connection. Defaults to the value of the &lt;span pulumi-lang-nodejs=&#34;`password`&#34; pulumi-lang-dotnet=&#34;`Password`&#34; pulumi-lang-go=&#34;`password`&#34; pulumi-lang-python=&#34;`password`&#34; pulumi-lang-yaml=&#34;`password`&#34; pulumi-lang-java=&#34;`password`&#34; pulumi-lang-hcl=&#34;`password`&#34;&gt;`password`&lt;/span&gt; field of the &lt;span pulumi-lang-nodejs=&#34;`provider`&#34; pulumi-lang-dotnet=&#34;`Provider`&#34; pulumi-lang-go=&#34;`provider`&#34; pulumi-lang-python=&#34;`provider`&#34; pulumi-lang-yaml=&#34;`provider`&#34; pulumi-lang-java=&#34;`provider`&#34; pulumi-lang-hcl=&#34;`provider`&#34;&gt;`provider`&lt;/span&gt; block when using username/password authentication. Default has no effect when using API token authentication, as there is no password to inherit. Can also be sourced from `PROXMOX_VE_SSH_PASSWORD`.
      * 
      */
     @Import(name="password")
     private @Nullable Output<String> password;
 
     /**
-     * @return The password used for the SSH connection. Defaults to the value of the &lt;span pulumi-lang-nodejs=&#34;`password`&#34; pulumi-lang-dotnet=&#34;`Password`&#34; pulumi-lang-go=&#34;`password`&#34; pulumi-lang-python=&#34;`password`&#34; pulumi-lang-yaml=&#34;`password`&#34; pulumi-lang-java=&#34;`password`&#34;&gt;`password`&lt;/span&gt; field of the &lt;span pulumi-lang-nodejs=&#34;`provider`&#34; pulumi-lang-dotnet=&#34;`Provider`&#34; pulumi-lang-go=&#34;`provider`&#34; pulumi-lang-python=&#34;`provider`&#34; pulumi-lang-yaml=&#34;`provider`&#34; pulumi-lang-java=&#34;`provider`&#34;&gt;`provider`&lt;/span&gt; block when using username/password authentication. Default has no effect when using API token authentication, as there is no password to inherit. Can also be sourced from `PROXMOX_VE_SSH_PASSWORD`.
+     * @return The password used for the SSH connection. Defaults to the value of the &lt;span pulumi-lang-nodejs=&#34;`password`&#34; pulumi-lang-dotnet=&#34;`Password`&#34; pulumi-lang-go=&#34;`password`&#34; pulumi-lang-python=&#34;`password`&#34; pulumi-lang-yaml=&#34;`password`&#34; pulumi-lang-java=&#34;`password`&#34; pulumi-lang-hcl=&#34;`password`&#34;&gt;`password`&lt;/span&gt; field of the &lt;span pulumi-lang-nodejs=&#34;`provider`&#34; pulumi-lang-dotnet=&#34;`Provider`&#34; pulumi-lang-go=&#34;`provider`&#34; pulumi-lang-python=&#34;`provider`&#34; pulumi-lang-yaml=&#34;`provider`&#34; pulumi-lang-java=&#34;`provider`&#34; pulumi-lang-hcl=&#34;`provider`&#34;&gt;`provider`&lt;/span&gt; block when using username/password authentication. Default has no effect when using API token authentication, as there is no password to inherit. Can also be sourced from `PROXMOX_VE_SSH_PASSWORD`.
      * 
      */
     public Optional<Output<String>> password() {
@@ -169,14 +169,14 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The username used for the SSH connection. Defaults to the value of the &lt;span pulumi-lang-nodejs=&#34;`username`&#34; pulumi-lang-dotnet=&#34;`Username`&#34; pulumi-lang-go=&#34;`username`&#34; pulumi-lang-python=&#34;`username`&#34; pulumi-lang-yaml=&#34;`username`&#34; pulumi-lang-java=&#34;`username`&#34;&gt;`username`&lt;/span&gt; field of the &lt;span pulumi-lang-nodejs=&#34;`provider`&#34; pulumi-lang-dotnet=&#34;`Provider`&#34; pulumi-lang-go=&#34;`provider`&#34; pulumi-lang-python=&#34;`provider`&#34; pulumi-lang-yaml=&#34;`provider`&#34; pulumi-lang-java=&#34;`provider`&#34;&gt;`provider`&lt;/span&gt; block.
+     * The username used for the SSH connection. Defaults to the value of the &lt;span pulumi-lang-nodejs=&#34;`username`&#34; pulumi-lang-dotnet=&#34;`Username`&#34; pulumi-lang-go=&#34;`username`&#34; pulumi-lang-python=&#34;`username`&#34; pulumi-lang-yaml=&#34;`username`&#34; pulumi-lang-java=&#34;`username`&#34; pulumi-lang-hcl=&#34;`username`&#34;&gt;`username`&lt;/span&gt; field of the &lt;span pulumi-lang-nodejs=&#34;`provider`&#34; pulumi-lang-dotnet=&#34;`Provider`&#34; pulumi-lang-go=&#34;`provider`&#34; pulumi-lang-python=&#34;`provider`&#34; pulumi-lang-yaml=&#34;`provider`&#34; pulumi-lang-java=&#34;`provider`&#34; pulumi-lang-hcl=&#34;`provider`&#34;&gt;`provider`&lt;/span&gt; block.
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return The username used for the SSH connection. Defaults to the value of the &lt;span pulumi-lang-nodejs=&#34;`username`&#34; pulumi-lang-dotnet=&#34;`Username`&#34; pulumi-lang-go=&#34;`username`&#34; pulumi-lang-python=&#34;`username`&#34; pulumi-lang-yaml=&#34;`username`&#34; pulumi-lang-java=&#34;`username`&#34;&gt;`username`&lt;/span&gt; field of the &lt;span pulumi-lang-nodejs=&#34;`provider`&#34; pulumi-lang-dotnet=&#34;`Provider`&#34; pulumi-lang-go=&#34;`provider`&#34; pulumi-lang-python=&#34;`provider`&#34; pulumi-lang-yaml=&#34;`provider`&#34; pulumi-lang-java=&#34;`provider`&#34;&gt;`provider`&lt;/span&gt; block.
+     * @return The username used for the SSH connection. Defaults to the value of the &lt;span pulumi-lang-nodejs=&#34;`username`&#34; pulumi-lang-dotnet=&#34;`Username`&#34; pulumi-lang-go=&#34;`username`&#34; pulumi-lang-python=&#34;`username`&#34; pulumi-lang-yaml=&#34;`username`&#34; pulumi-lang-java=&#34;`username`&#34; pulumi-lang-hcl=&#34;`username`&#34;&gt;`username`&lt;/span&gt; field of the &lt;span pulumi-lang-nodejs=&#34;`provider`&#34; pulumi-lang-dotnet=&#34;`Provider`&#34; pulumi-lang-go=&#34;`provider`&#34; pulumi-lang-python=&#34;`provider`&#34; pulumi-lang-yaml=&#34;`provider`&#34; pulumi-lang-java=&#34;`provider`&#34; pulumi-lang-hcl=&#34;`provider`&#34;&gt;`provider`&lt;/span&gt; block.
      * 
      */
     public Optional<Output<String>> username() {
@@ -218,7 +218,7 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param agent Whether to use the SSH agent for authentication. Takes precedence over the &lt;span pulumi-lang-nodejs=&#34;`privateKey`&#34; pulumi-lang-dotnet=&#34;`PrivateKey`&#34; pulumi-lang-go=&#34;`privateKey`&#34; pulumi-lang-python=&#34;`private_key`&#34; pulumi-lang-yaml=&#34;`privateKey`&#34; pulumi-lang-java=&#34;`privateKey`&#34;&gt;`privateKey`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`password`&#34; pulumi-lang-dotnet=&#34;`Password`&#34; pulumi-lang-go=&#34;`password`&#34; pulumi-lang-python=&#34;`password`&#34; pulumi-lang-yaml=&#34;`password`&#34; pulumi-lang-java=&#34;`password`&#34;&gt;`password`&lt;/span&gt; fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt; if not set.
+         * @param agent Whether to use the SSH agent for authentication. Takes precedence over the &lt;span pulumi-lang-nodejs=&#34;`privateKey`&#34; pulumi-lang-dotnet=&#34;`PrivateKey`&#34; pulumi-lang-go=&#34;`privateKey`&#34; pulumi-lang-python=&#34;`private_key`&#34; pulumi-lang-yaml=&#34;`privateKey`&#34; pulumi-lang-java=&#34;`privateKey`&#34; pulumi-lang-hcl=&#34;`private_key`&#34;&gt;`privateKey`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`password`&#34; pulumi-lang-dotnet=&#34;`Password`&#34; pulumi-lang-go=&#34;`password`&#34; pulumi-lang-python=&#34;`password`&#34; pulumi-lang-yaml=&#34;`password`&#34; pulumi-lang-java=&#34;`password`&#34; pulumi-lang-hcl=&#34;`password`&#34;&gt;`password`&lt;/span&gt; fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt; if not set.
          * 
          * @return builder
          * 
@@ -229,7 +229,7 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param agent Whether to use the SSH agent for authentication. Takes precedence over the &lt;span pulumi-lang-nodejs=&#34;`privateKey`&#34; pulumi-lang-dotnet=&#34;`PrivateKey`&#34; pulumi-lang-go=&#34;`privateKey`&#34; pulumi-lang-python=&#34;`private_key`&#34; pulumi-lang-yaml=&#34;`privateKey`&#34; pulumi-lang-java=&#34;`privateKey`&#34;&gt;`privateKey`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`password`&#34; pulumi-lang-dotnet=&#34;`Password`&#34; pulumi-lang-go=&#34;`password`&#34; pulumi-lang-python=&#34;`password`&#34; pulumi-lang-yaml=&#34;`password`&#34; pulumi-lang-java=&#34;`password`&#34;&gt;`password`&lt;/span&gt; fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt; if not set.
+         * @param agent Whether to use the SSH agent for authentication. Takes precedence over the &lt;span pulumi-lang-nodejs=&#34;`privateKey`&#34; pulumi-lang-dotnet=&#34;`PrivateKey`&#34; pulumi-lang-go=&#34;`privateKey`&#34; pulumi-lang-python=&#34;`private_key`&#34; pulumi-lang-yaml=&#34;`privateKey`&#34; pulumi-lang-java=&#34;`privateKey`&#34; pulumi-lang-hcl=&#34;`private_key`&#34;&gt;`privateKey`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`password`&#34; pulumi-lang-dotnet=&#34;`Password`&#34; pulumi-lang-go=&#34;`password`&#34; pulumi-lang-python=&#34;`password`&#34; pulumi-lang-yaml=&#34;`password`&#34; pulumi-lang-java=&#34;`password`&#34; pulumi-lang-hcl=&#34;`password`&#34;&gt;`password`&lt;/span&gt; fields. Defaults to the value of the `PROXMOX_VE_SSH_AGENT` environment variable, or &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt; if not set.
          * 
          * @return builder
          * 
@@ -239,7 +239,7 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param agentForwarding Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt; if not set.
+         * @param agentForwarding Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt; if not set.
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param agentForwarding Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt; if not set.
+         * @param agentForwarding Whether to enable SSH agent forwarding. Defaults to the value of the `PROXMOX_VE_SSH_AGENT_FORWARDING` environment variable, or &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt; if not set.
          * 
          * @return builder
          * 
@@ -281,7 +281,7 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeAddressSource The method used to resolve node IP addresses for SSH connections. Set to &lt;span pulumi-lang-nodejs=&#34;`dns`&#34; pulumi-lang-dotnet=&#34;`Dns`&#34; pulumi-lang-go=&#34;`dns`&#34; pulumi-lang-python=&#34;`dns`&#34; pulumi-lang-yaml=&#34;`dns`&#34; pulumi-lang-java=&#34;`dns`&#34;&gt;`dns`&lt;/span&gt; to skip the Proxmox API-based resolution and use local DNS instead. DNS resolution prefers IPv4 but falls back to IPv6 if no IPv4 addresses are available. Useful in multi-subnet environments where the API may return an inaccessible IP. Defaults to &lt;span pulumi-lang-nodejs=&#34;`api`&#34; pulumi-lang-dotnet=&#34;`Api`&#34; pulumi-lang-go=&#34;`api`&#34; pulumi-lang-python=&#34;`api`&#34; pulumi-lang-yaml=&#34;`api`&#34; pulumi-lang-java=&#34;`api`&#34;&gt;`api`&lt;/span&gt;.
+         * @param nodeAddressSource The method used to resolve node IP addresses for SSH connections. Set to &lt;span pulumi-lang-nodejs=&#34;`dns`&#34; pulumi-lang-dotnet=&#34;`Dns`&#34; pulumi-lang-go=&#34;`dns`&#34; pulumi-lang-python=&#34;`dns`&#34; pulumi-lang-yaml=&#34;`dns`&#34; pulumi-lang-java=&#34;`dns`&#34; pulumi-lang-hcl=&#34;`dns`&#34;&gt;`dns`&lt;/span&gt; to skip the Proxmox API-based resolution and use local DNS instead. DNS resolution prefers IPv4 but falls back to IPv6 if no IPv4 addresses are available. Useful in multi-subnet environments where the API may return an inaccessible IP. Defaults to &lt;span pulumi-lang-nodejs=&#34;`api`&#34; pulumi-lang-dotnet=&#34;`Api`&#34; pulumi-lang-go=&#34;`api`&#34; pulumi-lang-python=&#34;`api`&#34; pulumi-lang-yaml=&#34;`api`&#34; pulumi-lang-java=&#34;`api`&#34; pulumi-lang-hcl=&#34;`api`&#34;&gt;`api`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -292,7 +292,7 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeAddressSource The method used to resolve node IP addresses for SSH connections. Set to &lt;span pulumi-lang-nodejs=&#34;`dns`&#34; pulumi-lang-dotnet=&#34;`Dns`&#34; pulumi-lang-go=&#34;`dns`&#34; pulumi-lang-python=&#34;`dns`&#34; pulumi-lang-yaml=&#34;`dns`&#34; pulumi-lang-java=&#34;`dns`&#34;&gt;`dns`&lt;/span&gt; to skip the Proxmox API-based resolution and use local DNS instead. DNS resolution prefers IPv4 but falls back to IPv6 if no IPv4 addresses are available. Useful in multi-subnet environments where the API may return an inaccessible IP. Defaults to &lt;span pulumi-lang-nodejs=&#34;`api`&#34; pulumi-lang-dotnet=&#34;`Api`&#34; pulumi-lang-go=&#34;`api`&#34; pulumi-lang-python=&#34;`api`&#34; pulumi-lang-yaml=&#34;`api`&#34; pulumi-lang-java=&#34;`api`&#34;&gt;`api`&lt;/span&gt;.
+         * @param nodeAddressSource The method used to resolve node IP addresses for SSH connections. Set to &lt;span pulumi-lang-nodejs=&#34;`dns`&#34; pulumi-lang-dotnet=&#34;`Dns`&#34; pulumi-lang-go=&#34;`dns`&#34; pulumi-lang-python=&#34;`dns`&#34; pulumi-lang-yaml=&#34;`dns`&#34; pulumi-lang-java=&#34;`dns`&#34; pulumi-lang-hcl=&#34;`dns`&#34;&gt;`dns`&lt;/span&gt; to skip the Proxmox API-based resolution and use local DNS instead. DNS resolution prefers IPv4 but falls back to IPv6 if no IPv4 addresses are available. Useful in multi-subnet environments where the API may return an inaccessible IP. Defaults to &lt;span pulumi-lang-nodejs=&#34;`api`&#34; pulumi-lang-dotnet=&#34;`Api`&#34; pulumi-lang-go=&#34;`api`&#34; pulumi-lang-python=&#34;`api`&#34; pulumi-lang-yaml=&#34;`api`&#34; pulumi-lang-java=&#34;`api`&#34; pulumi-lang-hcl=&#34;`api`&#34;&gt;`api`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password used for the SSH connection. Defaults to the value of the &lt;span pulumi-lang-nodejs=&#34;`password`&#34; pulumi-lang-dotnet=&#34;`Password`&#34; pulumi-lang-go=&#34;`password`&#34; pulumi-lang-python=&#34;`password`&#34; pulumi-lang-yaml=&#34;`password`&#34; pulumi-lang-java=&#34;`password`&#34;&gt;`password`&lt;/span&gt; field of the &lt;span pulumi-lang-nodejs=&#34;`provider`&#34; pulumi-lang-dotnet=&#34;`Provider`&#34; pulumi-lang-go=&#34;`provider`&#34; pulumi-lang-python=&#34;`provider`&#34; pulumi-lang-yaml=&#34;`provider`&#34; pulumi-lang-java=&#34;`provider`&#34;&gt;`provider`&lt;/span&gt; block when using username/password authentication. Default has no effect when using API token authentication, as there is no password to inherit. Can also be sourced from `PROXMOX_VE_SSH_PASSWORD`.
+         * @param password The password used for the SSH connection. Defaults to the value of the &lt;span pulumi-lang-nodejs=&#34;`password`&#34; pulumi-lang-dotnet=&#34;`Password`&#34; pulumi-lang-go=&#34;`password`&#34; pulumi-lang-python=&#34;`password`&#34; pulumi-lang-yaml=&#34;`password`&#34; pulumi-lang-java=&#34;`password`&#34; pulumi-lang-hcl=&#34;`password`&#34;&gt;`password`&lt;/span&gt; field of the &lt;span pulumi-lang-nodejs=&#34;`provider`&#34; pulumi-lang-dotnet=&#34;`Provider`&#34; pulumi-lang-go=&#34;`provider`&#34; pulumi-lang-python=&#34;`provider`&#34; pulumi-lang-yaml=&#34;`provider`&#34; pulumi-lang-java=&#34;`provider`&#34; pulumi-lang-hcl=&#34;`provider`&#34;&gt;`provider`&lt;/span&gt; block when using username/password authentication. Default has no effect when using API token authentication, as there is no password to inherit. Can also be sourced from `PROXMOX_VE_SSH_PASSWORD`.
          * 
          * @return builder
          * 
@@ -344,7 +344,7 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param password The password used for the SSH connection. Defaults to the value of the &lt;span pulumi-lang-nodejs=&#34;`password`&#34; pulumi-lang-dotnet=&#34;`Password`&#34; pulumi-lang-go=&#34;`password`&#34; pulumi-lang-python=&#34;`password`&#34; pulumi-lang-yaml=&#34;`password`&#34; pulumi-lang-java=&#34;`password`&#34;&gt;`password`&lt;/span&gt; field of the &lt;span pulumi-lang-nodejs=&#34;`provider`&#34; pulumi-lang-dotnet=&#34;`Provider`&#34; pulumi-lang-go=&#34;`provider`&#34; pulumi-lang-python=&#34;`provider`&#34; pulumi-lang-yaml=&#34;`provider`&#34; pulumi-lang-java=&#34;`provider`&#34;&gt;`provider`&lt;/span&gt; block when using username/password authentication. Default has no effect when using API token authentication, as there is no password to inherit. Can also be sourced from `PROXMOX_VE_SSH_PASSWORD`.
+         * @param password The password used for the SSH connection. Defaults to the value of the &lt;span pulumi-lang-nodejs=&#34;`password`&#34; pulumi-lang-dotnet=&#34;`Password`&#34; pulumi-lang-go=&#34;`password`&#34; pulumi-lang-python=&#34;`password`&#34; pulumi-lang-yaml=&#34;`password`&#34; pulumi-lang-java=&#34;`password`&#34; pulumi-lang-hcl=&#34;`password`&#34;&gt;`password`&lt;/span&gt; field of the &lt;span pulumi-lang-nodejs=&#34;`provider`&#34; pulumi-lang-dotnet=&#34;`Provider`&#34; pulumi-lang-go=&#34;`provider`&#34; pulumi-lang-python=&#34;`provider`&#34; pulumi-lang-yaml=&#34;`provider`&#34; pulumi-lang-java=&#34;`provider`&#34; pulumi-lang-hcl=&#34;`provider`&#34;&gt;`provider`&lt;/span&gt; block when using username/password authentication. Default has no effect when using API token authentication, as there is no password to inherit. Can also be sourced from `PROXMOX_VE_SSH_PASSWORD`.
          * 
          * @return builder
          * 
@@ -438,7 +438,7 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username The username used for the SSH connection. Defaults to the value of the &lt;span pulumi-lang-nodejs=&#34;`username`&#34; pulumi-lang-dotnet=&#34;`Username`&#34; pulumi-lang-go=&#34;`username`&#34; pulumi-lang-python=&#34;`username`&#34; pulumi-lang-yaml=&#34;`username`&#34; pulumi-lang-java=&#34;`username`&#34;&gt;`username`&lt;/span&gt; field of the &lt;span pulumi-lang-nodejs=&#34;`provider`&#34; pulumi-lang-dotnet=&#34;`Provider`&#34; pulumi-lang-go=&#34;`provider`&#34; pulumi-lang-python=&#34;`provider`&#34; pulumi-lang-yaml=&#34;`provider`&#34; pulumi-lang-java=&#34;`provider`&#34;&gt;`provider`&lt;/span&gt; block.
+         * @param username The username used for the SSH connection. Defaults to the value of the &lt;span pulumi-lang-nodejs=&#34;`username`&#34; pulumi-lang-dotnet=&#34;`Username`&#34; pulumi-lang-go=&#34;`username`&#34; pulumi-lang-python=&#34;`username`&#34; pulumi-lang-yaml=&#34;`username`&#34; pulumi-lang-java=&#34;`username`&#34; pulumi-lang-hcl=&#34;`username`&#34;&gt;`username`&lt;/span&gt; field of the &lt;span pulumi-lang-nodejs=&#34;`provider`&#34; pulumi-lang-dotnet=&#34;`Provider`&#34; pulumi-lang-go=&#34;`provider`&#34; pulumi-lang-python=&#34;`provider`&#34; pulumi-lang-yaml=&#34;`provider`&#34; pulumi-lang-java=&#34;`provider`&#34; pulumi-lang-hcl=&#34;`provider`&#34;&gt;`provider`&lt;/span&gt; block.
          * 
          * @return builder
          * 
@@ -449,7 +449,7 @@ public final class ProviderSshArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param username The username used for the SSH connection. Defaults to the value of the &lt;span pulumi-lang-nodejs=&#34;`username`&#34; pulumi-lang-dotnet=&#34;`Username`&#34; pulumi-lang-go=&#34;`username`&#34; pulumi-lang-python=&#34;`username`&#34; pulumi-lang-yaml=&#34;`username`&#34; pulumi-lang-java=&#34;`username`&#34;&gt;`username`&lt;/span&gt; field of the &lt;span pulumi-lang-nodejs=&#34;`provider`&#34; pulumi-lang-dotnet=&#34;`Provider`&#34; pulumi-lang-go=&#34;`provider`&#34; pulumi-lang-python=&#34;`provider`&#34; pulumi-lang-yaml=&#34;`provider`&#34; pulumi-lang-java=&#34;`provider`&#34;&gt;`provider`&lt;/span&gt; block.
+         * @param username The username used for the SSH connection. Defaults to the value of the &lt;span pulumi-lang-nodejs=&#34;`username`&#34; pulumi-lang-dotnet=&#34;`Username`&#34; pulumi-lang-go=&#34;`username`&#34; pulumi-lang-python=&#34;`username`&#34; pulumi-lang-yaml=&#34;`username`&#34; pulumi-lang-java=&#34;`username`&#34; pulumi-lang-hcl=&#34;`username`&#34;&gt;`username`&lt;/span&gt; field of the &lt;span pulumi-lang-nodejs=&#34;`provider`&#34; pulumi-lang-dotnet=&#34;`Provider`&#34; pulumi-lang-go=&#34;`provider`&#34; pulumi-lang-python=&#34;`provider`&#34; pulumi-lang-yaml=&#34;`provider`&#34; pulumi-lang-java=&#34;`provider`&#34; pulumi-lang-hcl=&#34;`provider`&#34;&gt;`provider`&lt;/span&gt; block.
          * 
          * @return builder
          * 

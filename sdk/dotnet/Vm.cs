@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.ProxmoxVE
 {
     /// <summary>
-    /// !&gt; **DO NOT USE**
+    /// &gt; **DO NOT USE**
     /// This is an experimental implementation of a Proxmox VM resource using Plugin Framework.&lt;br&gt;&lt;br&gt;It is a Proof of Concept, highly experimental and **will** change in future. It does not support all features of the Proxmox API for VMs and **MUST NOT** be used in production.
     /// 
     /// &gt; Many attributes are marked as **optional** _and_ **computed** in the schema,

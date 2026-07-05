@@ -21,7 +21,7 @@ public final class ContainerLegacyNetworkInterfaceArgs extends com.pulumi.resour
 
     /**
      * The name of the network bridge (defaults
-     * to &lt;span pulumi-lang-nodejs=&#34;`vmbr0`&#34; pulumi-lang-dotnet=&#34;`Vmbr0`&#34; pulumi-lang-go=&#34;`vmbr0`&#34; pulumi-lang-python=&#34;`vmbr0`&#34; pulumi-lang-yaml=&#34;`vmbr0`&#34; pulumi-lang-java=&#34;`vmbr0`&#34;&gt;`vmbr0`&lt;/span&gt;).
+     * to &lt;span pulumi-lang-nodejs=&#34;`vmbr0`&#34; pulumi-lang-dotnet=&#34;`Vmbr0`&#34; pulumi-lang-go=&#34;`vmbr0`&#34; pulumi-lang-python=&#34;`vmbr0`&#34; pulumi-lang-yaml=&#34;`vmbr0`&#34; pulumi-lang-java=&#34;`vmbr0`&#34; pulumi-lang-hcl=&#34;`vmbr0`&#34;&gt;`vmbr0`&lt;/span&gt;).
      * 
      */
     @Import(name="bridge")
@@ -29,7 +29,7 @@ public final class ContainerLegacyNetworkInterfaceArgs extends com.pulumi.resour
 
     /**
      * @return The name of the network bridge (defaults
-     * to &lt;span pulumi-lang-nodejs=&#34;`vmbr0`&#34; pulumi-lang-dotnet=&#34;`Vmbr0`&#34; pulumi-lang-go=&#34;`vmbr0`&#34; pulumi-lang-python=&#34;`vmbr0`&#34; pulumi-lang-yaml=&#34;`vmbr0`&#34; pulumi-lang-java=&#34;`vmbr0`&#34;&gt;`vmbr0`&lt;/span&gt;).
+     * to &lt;span pulumi-lang-nodejs=&#34;`vmbr0`&#34; pulumi-lang-dotnet=&#34;`Vmbr0`&#34; pulumi-lang-go=&#34;`vmbr0`&#34; pulumi-lang-python=&#34;`vmbr0`&#34; pulumi-lang-yaml=&#34;`vmbr0`&#34; pulumi-lang-java=&#34;`vmbr0`&#34; pulumi-lang-hcl=&#34;`vmbr0`&#34;&gt;`vmbr0`&lt;/span&gt;).
      * 
      */
     public Optional<Output<String>> bridge() {
@@ -38,7 +38,7 @@ public final class ContainerLegacyNetworkInterfaceArgs extends com.pulumi.resour
 
     /**
      * Whether to enable the network device (defaults
-     * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     @Import(name="enabled")
@@ -46,7 +46,7 @@ public final class ContainerLegacyNetworkInterfaceArgs extends com.pulumi.resour
 
     /**
      * @return Whether to enable the network device (defaults
-     * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -55,7 +55,7 @@ public final class ContainerLegacyNetworkInterfaceArgs extends com.pulumi.resour
 
     /**
      * Whether this interface&#39;s firewall rules should be
-     * used (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * used (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Import(name="firewall")
@@ -63,7 +63,7 @@ public final class ContainerLegacyNetworkInterfaceArgs extends com.pulumi.resour
 
     /**
      * @return Whether this interface&#39;s firewall rules should be
-     * used (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * used (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> firewall() {
@@ -72,7 +72,7 @@ public final class ContainerLegacyNetworkInterfaceArgs extends com.pulumi.resour
 
     /**
      * Whether the host runs DHCP on this interface&#39;s
-     * behalf (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). Requires Proxmox VE 9.1+. Required for
+     * behalf (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). Requires Proxmox VE 9.1+. Required for
      * application containers that do not include a DHCP client.
      * 
      */
@@ -81,7 +81,7 @@ public final class ContainerLegacyNetworkInterfaceArgs extends com.pulumi.resour
 
     /**
      * @return Whether the host runs DHCP on this interface&#39;s
-     * behalf (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). Requires Proxmox VE 9.1+. Required for
+     * behalf (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). Requires Proxmox VE 9.1+. Required for
      * application containers that do not include a DHCP client.
      * 
      */
@@ -200,7 +200,7 @@ public final class ContainerLegacyNetworkInterfaceArgs extends com.pulumi.resour
 
         /**
          * @param bridge The name of the network bridge (defaults
-         * to &lt;span pulumi-lang-nodejs=&#34;`vmbr0`&#34; pulumi-lang-dotnet=&#34;`Vmbr0`&#34; pulumi-lang-go=&#34;`vmbr0`&#34; pulumi-lang-python=&#34;`vmbr0`&#34; pulumi-lang-yaml=&#34;`vmbr0`&#34; pulumi-lang-java=&#34;`vmbr0`&#34;&gt;`vmbr0`&lt;/span&gt;).
+         * to &lt;span pulumi-lang-nodejs=&#34;`vmbr0`&#34; pulumi-lang-dotnet=&#34;`Vmbr0`&#34; pulumi-lang-go=&#34;`vmbr0`&#34; pulumi-lang-python=&#34;`vmbr0`&#34; pulumi-lang-yaml=&#34;`vmbr0`&#34; pulumi-lang-java=&#34;`vmbr0`&#34; pulumi-lang-hcl=&#34;`vmbr0`&#34;&gt;`vmbr0`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class ContainerLegacyNetworkInterfaceArgs extends com.pulumi.resour
 
         /**
          * @param bridge The name of the network bridge (defaults
-         * to &lt;span pulumi-lang-nodejs=&#34;`vmbr0`&#34; pulumi-lang-dotnet=&#34;`Vmbr0`&#34; pulumi-lang-go=&#34;`vmbr0`&#34; pulumi-lang-python=&#34;`vmbr0`&#34; pulumi-lang-yaml=&#34;`vmbr0`&#34; pulumi-lang-java=&#34;`vmbr0`&#34;&gt;`vmbr0`&lt;/span&gt;).
+         * to &lt;span pulumi-lang-nodejs=&#34;`vmbr0`&#34; pulumi-lang-dotnet=&#34;`Vmbr0`&#34; pulumi-lang-go=&#34;`vmbr0`&#34; pulumi-lang-python=&#34;`vmbr0`&#34; pulumi-lang-yaml=&#34;`vmbr0`&#34; pulumi-lang-java=&#34;`vmbr0`&#34; pulumi-lang-hcl=&#34;`vmbr0`&#34;&gt;`vmbr0`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -223,7 +223,7 @@ public final class ContainerLegacyNetworkInterfaceArgs extends com.pulumi.resour
 
         /**
          * @param enabled Whether to enable the network device (defaults
-         * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+         * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class ContainerLegacyNetworkInterfaceArgs extends com.pulumi.resour
 
         /**
          * @param enabled Whether to enable the network device (defaults
-         * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+         * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class ContainerLegacyNetworkInterfaceArgs extends com.pulumi.resour
 
         /**
          * @param firewall Whether this interface&#39;s firewall rules should be
-         * used (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+         * used (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -258,7 +258,7 @@ public final class ContainerLegacyNetworkInterfaceArgs extends com.pulumi.resour
 
         /**
          * @param firewall Whether this interface&#39;s firewall rules should be
-         * used (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+         * used (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class ContainerLegacyNetworkInterfaceArgs extends com.pulumi.resour
 
         /**
          * @param hostManaged Whether the host runs DHCP on this interface&#39;s
-         * behalf (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). Requires Proxmox VE 9.1+. Required for
+         * behalf (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). Requires Proxmox VE 9.1+. Required for
          * application containers that do not include a DHCP client.
          * 
          * @return builder
@@ -282,7 +282,7 @@ public final class ContainerLegacyNetworkInterfaceArgs extends com.pulumi.resour
 
         /**
          * @param hostManaged Whether the host runs DHCP on this interface&#39;s
-         * behalf (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). Requires Proxmox VE 9.1+. Required for
+         * behalf (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). Requires Proxmox VE 9.1+. Required for
          * application containers that do not include a DHCP client.
          * 
          * @return builder

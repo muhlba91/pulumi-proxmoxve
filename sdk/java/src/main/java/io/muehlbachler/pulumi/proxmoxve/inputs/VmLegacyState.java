@@ -42,14 +42,14 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
     public static final VmLegacyState Empty = new VmLegacyState();
 
     /**
-     * Whether to enable ACPI (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * Whether to enable ACPI (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     @Import(name="acpi")
     private @Nullable Output<Boolean> acpi;
 
     /**
-     * @return Whether to enable ACPI (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * @return Whether to enable ACPI (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> acpi() {
@@ -102,14 +102,14 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The BIOS implementation (defaults to &lt;span pulumi-lang-nodejs=&#34;`seabios`&#34; pulumi-lang-dotnet=&#34;`Seabios`&#34; pulumi-lang-go=&#34;`seabios`&#34; pulumi-lang-python=&#34;`seabios`&#34; pulumi-lang-yaml=&#34;`seabios`&#34; pulumi-lang-java=&#34;`seabios`&#34;&gt;`seabios`&lt;/span&gt;).
+     * The BIOS implementation (defaults to &lt;span pulumi-lang-nodejs=&#34;`seabios`&#34; pulumi-lang-dotnet=&#34;`Seabios`&#34; pulumi-lang-go=&#34;`seabios`&#34; pulumi-lang-python=&#34;`seabios`&#34; pulumi-lang-yaml=&#34;`seabios`&#34; pulumi-lang-java=&#34;`seabios`&#34; pulumi-lang-hcl=&#34;`seabios`&#34;&gt;`seabios`&lt;/span&gt;).
      * 
      */
     @Import(name="bios")
     private @Nullable Output<String> bios;
 
     /**
-     * @return The BIOS implementation (defaults to &lt;span pulumi-lang-nodejs=&#34;`seabios`&#34; pulumi-lang-dotnet=&#34;`Seabios`&#34; pulumi-lang-go=&#34;`seabios`&#34; pulumi-lang-python=&#34;`seabios`&#34; pulumi-lang-yaml=&#34;`seabios`&#34; pulumi-lang-java=&#34;`seabios`&#34;&gt;`seabios`&lt;/span&gt;).
+     * @return The BIOS implementation (defaults to &lt;span pulumi-lang-nodejs=&#34;`seabios`&#34; pulumi-lang-dotnet=&#34;`Seabios`&#34; pulumi-lang-go=&#34;`seabios`&#34; pulumi-lang-python=&#34;`seabios`&#34; pulumi-lang-yaml=&#34;`seabios`&#34; pulumi-lang-java=&#34;`seabios`&#34; pulumi-lang-hcl=&#34;`seabios`&#34;&gt;`seabios`&lt;/span&gt;).
      * 
      */
     public Optional<Output<String>> bios() {
@@ -177,14 +177,14 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to delete unreferenced disks on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
+     * Whether to delete unreferenced disks on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
      * 
      */
     @Import(name="deleteUnreferencedDisksOnDestroy")
     private @Nullable Output<Boolean> deleteUnreferencedDisksOnDestroy;
 
     /**
-     * @return Whether to delete unreferenced disks on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
+     * @return Whether to delete unreferenced disks on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
      * 
      */
     public Optional<Output<Boolean>> deleteUnreferencedDisksOnDestroy() {
@@ -222,16 +222,16 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The efi disk device (required if &lt;span pulumi-lang-nodejs=&#34;`bios`&#34; pulumi-lang-dotnet=&#34;`Bios`&#34; pulumi-lang-go=&#34;`bios`&#34; pulumi-lang-python=&#34;`bios`&#34; pulumi-lang-yaml=&#34;`bios`&#34; pulumi-lang-java=&#34;`bios`&#34;&gt;`bios`&lt;/span&gt; is set
-     * to &lt;span pulumi-lang-nodejs=&#34;`ovmf`&#34; pulumi-lang-dotnet=&#34;`Ovmf`&#34; pulumi-lang-go=&#34;`ovmf`&#34; pulumi-lang-python=&#34;`ovmf`&#34; pulumi-lang-yaml=&#34;`ovmf`&#34; pulumi-lang-java=&#34;`ovmf`&#34;&gt;`ovmf`&lt;/span&gt;)
+     * The efi disk device (required if &lt;span pulumi-lang-nodejs=&#34;`bios`&#34; pulumi-lang-dotnet=&#34;`Bios`&#34; pulumi-lang-go=&#34;`bios`&#34; pulumi-lang-python=&#34;`bios`&#34; pulumi-lang-yaml=&#34;`bios`&#34; pulumi-lang-java=&#34;`bios`&#34; pulumi-lang-hcl=&#34;`bios`&#34;&gt;`bios`&lt;/span&gt; is set
+     * to &lt;span pulumi-lang-nodejs=&#34;`ovmf`&#34; pulumi-lang-dotnet=&#34;`Ovmf`&#34; pulumi-lang-go=&#34;`ovmf`&#34; pulumi-lang-python=&#34;`ovmf`&#34; pulumi-lang-yaml=&#34;`ovmf`&#34; pulumi-lang-java=&#34;`ovmf`&#34; pulumi-lang-hcl=&#34;`ovmf`&#34;&gt;`ovmf`&lt;/span&gt;)
      * 
      */
     @Import(name="efiDisk")
     private @Nullable Output<VmLegacyEfiDiskArgs> efiDisk;
 
     /**
-     * @return The efi disk device (required if &lt;span pulumi-lang-nodejs=&#34;`bios`&#34; pulumi-lang-dotnet=&#34;`Bios`&#34; pulumi-lang-go=&#34;`bios`&#34; pulumi-lang-python=&#34;`bios`&#34; pulumi-lang-yaml=&#34;`bios`&#34; pulumi-lang-java=&#34;`bios`&#34;&gt;`bios`&lt;/span&gt; is set
-     * to &lt;span pulumi-lang-nodejs=&#34;`ovmf`&#34; pulumi-lang-dotnet=&#34;`Ovmf`&#34; pulumi-lang-go=&#34;`ovmf`&#34; pulumi-lang-python=&#34;`ovmf`&#34; pulumi-lang-yaml=&#34;`ovmf`&#34; pulumi-lang-java=&#34;`ovmf`&#34;&gt;`ovmf`&lt;/span&gt;)
+     * @return The efi disk device (required if &lt;span pulumi-lang-nodejs=&#34;`bios`&#34; pulumi-lang-dotnet=&#34;`Bios`&#34; pulumi-lang-go=&#34;`bios`&#34; pulumi-lang-python=&#34;`bios`&#34; pulumi-lang-yaml=&#34;`bios`&#34; pulumi-lang-java=&#34;`bios`&#34; pulumi-lang-hcl=&#34;`bios`&#34;&gt;`bios`&lt;/span&gt; is set
+     * to &lt;span pulumi-lang-nodejs=&#34;`ovmf`&#34; pulumi-lang-dotnet=&#34;`Ovmf`&#34; pulumi-lang-go=&#34;`ovmf`&#34; pulumi-lang-python=&#34;`ovmf`&#34; pulumi-lang-yaml=&#34;`ovmf`&#34; pulumi-lang-java=&#34;`ovmf`&#34; pulumi-lang-hcl=&#34;`ovmf`&#34;&gt;`ovmf`&lt;/span&gt;)
      * 
      */
     public Optional<Output<VmLegacyEfiDiskArgs>> efiDisk() {
@@ -269,26 +269,26 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Selectively enable hotplug features. Use &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; to
-     * disable, &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt; to enable all. Valid features: &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`network`&#34; pulumi-lang-dotnet=&#34;`Network`&#34; pulumi-lang-go=&#34;`network`&#34; pulumi-lang-python=&#34;`network`&#34; pulumi-lang-yaml=&#34;`network`&#34; pulumi-lang-java=&#34;`network`&#34;&gt;`network`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`usb`&#34; pulumi-lang-dotnet=&#34;`Usb`&#34; pulumi-lang-go=&#34;`usb`&#34; pulumi-lang-python=&#34;`usb`&#34; pulumi-lang-yaml=&#34;`usb`&#34; pulumi-lang-java=&#34;`usb`&#34;&gt;`usb`&lt;/span&gt;,
-     * &lt;span pulumi-lang-nodejs=&#34;`memory`&#34; pulumi-lang-dotnet=&#34;`Memory`&#34; pulumi-lang-go=&#34;`memory`&#34; pulumi-lang-python=&#34;`memory`&#34; pulumi-lang-yaml=&#34;`memory`&#34; pulumi-lang-java=&#34;`memory`&#34;&gt;`memory`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`cpu`&#34; pulumi-lang-dotnet=&#34;`Cpu`&#34; pulumi-lang-go=&#34;`cpu`&#34; pulumi-lang-python=&#34;`cpu`&#34; pulumi-lang-yaml=&#34;`cpu`&#34; pulumi-lang-java=&#34;`cpu`&#34;&gt;`cpu`&lt;/span&gt;. Memory hotplug requires NUMA to be enabled. If not set,
-     * PVE defaults to `network,disk,usb`. When &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt; is included in the
+     * Selectively enable hotplug features. Use &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt; to
+     * disable, &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34; pulumi-lang-hcl=&#34;`1`&#34;&gt;`1`&lt;/span&gt; to enable all. Valid features: &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34; pulumi-lang-hcl=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`network`&#34; pulumi-lang-dotnet=&#34;`Network`&#34; pulumi-lang-go=&#34;`network`&#34; pulumi-lang-python=&#34;`network`&#34; pulumi-lang-yaml=&#34;`network`&#34; pulumi-lang-java=&#34;`network`&#34; pulumi-lang-hcl=&#34;`network`&#34;&gt;`network`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`usb`&#34; pulumi-lang-dotnet=&#34;`Usb`&#34; pulumi-lang-go=&#34;`usb`&#34; pulumi-lang-python=&#34;`usb`&#34; pulumi-lang-yaml=&#34;`usb`&#34; pulumi-lang-java=&#34;`usb`&#34; pulumi-lang-hcl=&#34;`usb`&#34;&gt;`usb`&lt;/span&gt;,
+     * &lt;span pulumi-lang-nodejs=&#34;`memory`&#34; pulumi-lang-dotnet=&#34;`Memory`&#34; pulumi-lang-go=&#34;`memory`&#34; pulumi-lang-python=&#34;`memory`&#34; pulumi-lang-yaml=&#34;`memory`&#34; pulumi-lang-java=&#34;`memory`&#34; pulumi-lang-hcl=&#34;`memory`&#34;&gt;`memory`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`cpu`&#34; pulumi-lang-dotnet=&#34;`Cpu`&#34; pulumi-lang-go=&#34;`cpu`&#34; pulumi-lang-python=&#34;`cpu`&#34; pulumi-lang-yaml=&#34;`cpu`&#34; pulumi-lang-java=&#34;`cpu`&#34; pulumi-lang-hcl=&#34;`cpu`&#34;&gt;`cpu`&lt;/span&gt;. Memory hotplug requires NUMA to be enabled. If not set,
+     * PVE defaults to `network,disk,usb`. When &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34; pulumi-lang-hcl=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt; is included in the
      * hotplug list, disk resizes on a running VM are applied live without a
-     * reboot. When &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt; is excluded, the provider will reboot the VM after
-     * resize (controlled by &lt;span pulumi-lang-nodejs=&#34;`rebootAfterUpdate`&#34; pulumi-lang-dotnet=&#34;`RebootAfterUpdate`&#34; pulumi-lang-go=&#34;`rebootAfterUpdate`&#34; pulumi-lang-python=&#34;`reboot_after_update`&#34; pulumi-lang-yaml=&#34;`rebootAfterUpdate`&#34; pulumi-lang-java=&#34;`rebootAfterUpdate`&#34;&gt;`rebootAfterUpdate`&lt;/span&gt;).
+     * reboot. When &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34; pulumi-lang-hcl=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt; is excluded, the provider will reboot the VM after
+     * resize (controlled by &lt;span pulumi-lang-nodejs=&#34;`rebootAfterUpdate`&#34; pulumi-lang-dotnet=&#34;`RebootAfterUpdate`&#34; pulumi-lang-go=&#34;`rebootAfterUpdate`&#34; pulumi-lang-python=&#34;`reboot_after_update`&#34; pulumi-lang-yaml=&#34;`rebootAfterUpdate`&#34; pulumi-lang-java=&#34;`rebootAfterUpdate`&#34; pulumi-lang-hcl=&#34;`reboot_after_update`&#34;&gt;`rebootAfterUpdate`&lt;/span&gt;).
      * 
      */
     @Import(name="hotplug")
     private @Nullable Output<String> hotplug;
 
     /**
-     * @return Selectively enable hotplug features. Use &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; to
-     * disable, &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt; to enable all. Valid features: &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`network`&#34; pulumi-lang-dotnet=&#34;`Network`&#34; pulumi-lang-go=&#34;`network`&#34; pulumi-lang-python=&#34;`network`&#34; pulumi-lang-yaml=&#34;`network`&#34; pulumi-lang-java=&#34;`network`&#34;&gt;`network`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`usb`&#34; pulumi-lang-dotnet=&#34;`Usb`&#34; pulumi-lang-go=&#34;`usb`&#34; pulumi-lang-python=&#34;`usb`&#34; pulumi-lang-yaml=&#34;`usb`&#34; pulumi-lang-java=&#34;`usb`&#34;&gt;`usb`&lt;/span&gt;,
-     * &lt;span pulumi-lang-nodejs=&#34;`memory`&#34; pulumi-lang-dotnet=&#34;`Memory`&#34; pulumi-lang-go=&#34;`memory`&#34; pulumi-lang-python=&#34;`memory`&#34; pulumi-lang-yaml=&#34;`memory`&#34; pulumi-lang-java=&#34;`memory`&#34;&gt;`memory`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`cpu`&#34; pulumi-lang-dotnet=&#34;`Cpu`&#34; pulumi-lang-go=&#34;`cpu`&#34; pulumi-lang-python=&#34;`cpu`&#34; pulumi-lang-yaml=&#34;`cpu`&#34; pulumi-lang-java=&#34;`cpu`&#34;&gt;`cpu`&lt;/span&gt;. Memory hotplug requires NUMA to be enabled. If not set,
-     * PVE defaults to `network,disk,usb`. When &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt; is included in the
+     * @return Selectively enable hotplug features. Use &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt; to
+     * disable, &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34; pulumi-lang-hcl=&#34;`1`&#34;&gt;`1`&lt;/span&gt; to enable all. Valid features: &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34; pulumi-lang-hcl=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`network`&#34; pulumi-lang-dotnet=&#34;`Network`&#34; pulumi-lang-go=&#34;`network`&#34; pulumi-lang-python=&#34;`network`&#34; pulumi-lang-yaml=&#34;`network`&#34; pulumi-lang-java=&#34;`network`&#34; pulumi-lang-hcl=&#34;`network`&#34;&gt;`network`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`usb`&#34; pulumi-lang-dotnet=&#34;`Usb`&#34; pulumi-lang-go=&#34;`usb`&#34; pulumi-lang-python=&#34;`usb`&#34; pulumi-lang-yaml=&#34;`usb`&#34; pulumi-lang-java=&#34;`usb`&#34; pulumi-lang-hcl=&#34;`usb`&#34;&gt;`usb`&lt;/span&gt;,
+     * &lt;span pulumi-lang-nodejs=&#34;`memory`&#34; pulumi-lang-dotnet=&#34;`Memory`&#34; pulumi-lang-go=&#34;`memory`&#34; pulumi-lang-python=&#34;`memory`&#34; pulumi-lang-yaml=&#34;`memory`&#34; pulumi-lang-java=&#34;`memory`&#34; pulumi-lang-hcl=&#34;`memory`&#34;&gt;`memory`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`cpu`&#34; pulumi-lang-dotnet=&#34;`Cpu`&#34; pulumi-lang-go=&#34;`cpu`&#34; pulumi-lang-python=&#34;`cpu`&#34; pulumi-lang-yaml=&#34;`cpu`&#34; pulumi-lang-java=&#34;`cpu`&#34; pulumi-lang-hcl=&#34;`cpu`&#34;&gt;`cpu`&lt;/span&gt;. Memory hotplug requires NUMA to be enabled. If not set,
+     * PVE defaults to `network,disk,usb`. When &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34; pulumi-lang-hcl=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt; is included in the
      * hotplug list, disk resizes on a running VM are applied live without a
-     * reboot. When &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt; is excluded, the provider will reboot the VM after
-     * resize (controlled by &lt;span pulumi-lang-nodejs=&#34;`rebootAfterUpdate`&#34; pulumi-lang-dotnet=&#34;`RebootAfterUpdate`&#34; pulumi-lang-go=&#34;`rebootAfterUpdate`&#34; pulumi-lang-python=&#34;`reboot_after_update`&#34; pulumi-lang-yaml=&#34;`rebootAfterUpdate`&#34; pulumi-lang-java=&#34;`rebootAfterUpdate`&#34;&gt;`rebootAfterUpdate`&lt;/span&gt;).
+     * reboot. When &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34; pulumi-lang-hcl=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt; is excluded, the provider will reboot the VM after
+     * resize (controlled by &lt;span pulumi-lang-nodejs=&#34;`rebootAfterUpdate`&#34; pulumi-lang-dotnet=&#34;`RebootAfterUpdate`&#34; pulumi-lang-go=&#34;`rebootAfterUpdate`&#34; pulumi-lang-python=&#34;`reboot_after_update`&#34; pulumi-lang-yaml=&#34;`rebootAfterUpdate`&#34; pulumi-lang-java=&#34;`rebootAfterUpdate`&#34; pulumi-lang-hcl=&#34;`reboot_after_update`&#34;&gt;`rebootAfterUpdate`&lt;/span&gt;).
      * 
      */
     public Optional<Output<String>> hotplug() {
@@ -312,7 +312,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The IPv4 addresses per network interface published by the
-     * QEMU agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * QEMU agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
     @Import(name="ipv4Addresses")
@@ -320,7 +320,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The IPv4 addresses per network interface published by the
-     * QEMU agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * QEMU agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
     public Optional<Output<List<List<String>>>> ipv4Addresses() {
@@ -329,7 +329,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The IPv6 addresses per network interface published by the
-     * QEMU agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * QEMU agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
     @Import(name="ipv6Addresses")
@@ -337,7 +337,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The IPv6 addresses per network interface published by the
-     * QEMU agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * QEMU agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
     public Optional<Output<List<List<String>>>> ipv6Addresses() {
@@ -392,14 +392,14 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The VM machine type (defaults to &lt;span pulumi-lang-nodejs=&#34;`pc`&#34; pulumi-lang-dotnet=&#34;`Pc`&#34; pulumi-lang-go=&#34;`pc`&#34; pulumi-lang-python=&#34;`pc`&#34; pulumi-lang-yaml=&#34;`pc`&#34; pulumi-lang-java=&#34;`pc`&#34;&gt;`pc`&lt;/span&gt;).
+     * The VM machine type (defaults to &lt;span pulumi-lang-nodejs=&#34;`pc`&#34; pulumi-lang-dotnet=&#34;`Pc`&#34; pulumi-lang-go=&#34;`pc`&#34; pulumi-lang-python=&#34;`pc`&#34; pulumi-lang-yaml=&#34;`pc`&#34; pulumi-lang-java=&#34;`pc`&#34; pulumi-lang-hcl=&#34;`pc`&#34;&gt;`pc`&lt;/span&gt;).
      * 
      */
     @Import(name="machine")
     private @Nullable Output<String> machine;
 
     /**
-     * @return The VM machine type (defaults to &lt;span pulumi-lang-nodejs=&#34;`pc`&#34; pulumi-lang-dotnet=&#34;`Pc`&#34; pulumi-lang-go=&#34;`pc`&#34; pulumi-lang-python=&#34;`pc`&#34; pulumi-lang-yaml=&#34;`pc`&#34; pulumi-lang-java=&#34;`pc`&#34;&gt;`pc`&lt;/span&gt;).
+     * @return The VM machine type (defaults to &lt;span pulumi-lang-nodejs=&#34;`pc`&#34; pulumi-lang-dotnet=&#34;`Pc`&#34; pulumi-lang-go=&#34;`pc`&#34; pulumi-lang-python=&#34;`pc`&#34; pulumi-lang-yaml=&#34;`pc`&#34; pulumi-lang-java=&#34;`pc`&#34; pulumi-lang-hcl=&#34;`pc`&#34;&gt;`pc`&lt;/span&gt;).
      * 
      */
     public Optional<Output<String>> machine() {
@@ -423,7 +423,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Migrate the VM on node change instead of re-creating
-     * it (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * it (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Import(name="migrate")
@@ -431,7 +431,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Migrate the VM on node change instead of re-creating
-     * it (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * it (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> migrate() {
@@ -470,7 +470,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The network interface names published by the QEMU
-     * agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
     @Import(name="networkInterfaceNames")
@@ -478,7 +478,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The network interface names published by the QEMU
-     * agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
     public Optional<Output<List<String>>> networkInterfaceNames() {
@@ -519,7 +519,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Specifies whether a VM will be started during system
-     * boot. (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
+     * boot. (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
      * 
      */
     @Import(name="onBoot")
@@ -527,7 +527,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Specifies whether a VM will be started during system
-     * boot. (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
+     * boot. (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
      * 
      */
     public Optional<Output<Boolean>> onBoot() {
@@ -565,14 +565,14 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Import(name="protection")
     private @Nullable Output<Boolean> protection;
 
     /**
-     * @return Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * @return Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> protection() {
@@ -580,14 +580,14 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to purge the VM from backup configurations on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
+     * Whether to purge the VM from backup configurations on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
      * 
      */
     @Import(name="purgeOnDestroy")
     private @Nullable Output<Boolean> purgeOnDestroy;
 
     /**
-     * @return Whether to purge the VM from backup configurations on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
+     * @return Whether to purge the VM from backup configurations on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
      * 
      */
     public Optional<Output<Boolean>> purgeOnDestroy() {
@@ -595,14 +595,14 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Reboot the VM after initial creation (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * Reboot the VM after initial creation (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Import(name="reboot")
     private @Nullable Output<Boolean> reboot;
 
     /**
-     * @return Reboot the VM after initial creation (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * @return Reboot the VM after initial creation (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> reboot() {
@@ -612,10 +612,10 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
     /**
      * Whether the provider may automatically
      * reboot or power off the VM during update operations when required to apply
-     * changes. If &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;, updates that require taking the VM offline fail
+     * changes. If &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;, updates that require taking the VM offline fail
      * instead of being applied automatically. Changes that are applied
      * successfully but still need a later manual reboot emit a warning instead
-     * (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     @Import(name="rebootAfterUpdate")
@@ -624,10 +624,10 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return Whether the provider may automatically
      * reboot or power off the VM during update operations when required to apply
-     * changes. If &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;, updates that require taking the VM offline fail
+     * changes. If &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;, updates that require taking the VM offline fail
      * instead of being applied automatically. Changes that are applied
      * successfully but still need a later manual reboot emit a warning instead
-     * (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> rebootAfterUpdate() {
@@ -698,7 +698,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Whether to start the virtual machine (defaults
-     * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     @Import(name="started")
@@ -706,7 +706,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Whether to start the virtual machine (defaults
-     * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> started() {
@@ -729,14 +729,14 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to stop rather than shutdown on VM destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * Whether to stop rather than shutdown on VM destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
     @Import(name="stopOnDestroy")
     private @Nullable Output<Boolean> stopOnDestroy;
 
     /**
-     * @return Whether to stop rather than shutdown on VM destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+     * @return Whether to stop rather than shutdown on VM destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
      * 
      */
     public Optional<Output<Boolean>> stopOnDestroy() {
@@ -745,7 +745,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Whether to enable the USB tablet device (defaults
-     * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     @Import(name="tabletDevice")
@@ -753,7 +753,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Whether to enable the USB tablet device (defaults
-     * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> tabletDevice() {
@@ -764,7 +764,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
      * A list of tags of the VM. This is only meta information (
      * defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
      * template is not sorted, then Proxmox will always report a difference on the
-     * resource. You may use the &lt;span pulumi-lang-nodejs=&#34;`ignoreChanges`&#34; pulumi-lang-dotnet=&#34;`IgnoreChanges`&#34; pulumi-lang-go=&#34;`ignoreChanges`&#34; pulumi-lang-python=&#34;`ignore_changes`&#34; pulumi-lang-yaml=&#34;`ignoreChanges`&#34; pulumi-lang-java=&#34;`ignoreChanges`&#34;&gt;`ignoreChanges`&lt;/span&gt; lifecycle meta-argument to ignore
+     * resource. You may use the &lt;span pulumi-lang-nodejs=&#34;`ignoreChanges`&#34; pulumi-lang-dotnet=&#34;`IgnoreChanges`&#34; pulumi-lang-go=&#34;`ignoreChanges`&#34; pulumi-lang-python=&#34;`ignore_changes`&#34; pulumi-lang-yaml=&#34;`ignoreChanges`&#34; pulumi-lang-java=&#34;`ignoreChanges`&#34; pulumi-lang-hcl=&#34;`ignore_changes`&#34;&gt;`ignoreChanges`&lt;/span&gt; lifecycle meta-argument to ignore
      * changes to this attribute.
      * 
      */
@@ -775,7 +775,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
      * @return A list of tags of the VM. This is only meta information (
      * defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
      * template is not sorted, then Proxmox will always report a difference on the
-     * resource. You may use the &lt;span pulumi-lang-nodejs=&#34;`ignoreChanges`&#34; pulumi-lang-dotnet=&#34;`IgnoreChanges`&#34; pulumi-lang-go=&#34;`ignoreChanges`&#34; pulumi-lang-python=&#34;`ignore_changes`&#34; pulumi-lang-yaml=&#34;`ignoreChanges`&#34; pulumi-lang-java=&#34;`ignoreChanges`&#34;&gt;`ignoreChanges`&lt;/span&gt; lifecycle meta-argument to ignore
+     * resource. You may use the &lt;span pulumi-lang-nodejs=&#34;`ignoreChanges`&#34; pulumi-lang-dotnet=&#34;`IgnoreChanges`&#34; pulumi-lang-go=&#34;`ignoreChanges`&#34; pulumi-lang-python=&#34;`ignore_changes`&#34; pulumi-lang-yaml=&#34;`ignoreChanges`&#34; pulumi-lang-java=&#34;`ignoreChanges`&#34; pulumi-lang-hcl=&#34;`ignore_changes`&#34;&gt;`ignoreChanges`&lt;/span&gt; lifecycle meta-argument to ignore
      * changes to this attribute.
      * 
      */
@@ -785,9 +785,9 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Whether the VM should be a template. Setting this
-     * from &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt; to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt; converts an existing VM to a template in place.
+     * from &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt; to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt; converts an existing VM to a template in place.
      * Converting a template back to a regular VM is not supported (defaults to
-     * &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Import(name="template")
@@ -795,9 +795,9 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Whether the VM should be a template. Setting this
-     * from &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt; to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt; converts an existing VM to a template in place.
+     * from &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt; to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt; converts an existing VM to a template in place.
      * Converting a template back to a regular VM is not supported (defaults to
-     * &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> template() {
@@ -859,10 +859,10 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
      * Disk move timeout
      * 
      * @deprecated
-     * This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create /&lt;span pulumi-lang-nodejs=&#34; timeoutClone &#34; pulumi-lang-dotnet=&#34; TimeoutClone &#34; pulumi-lang-go=&#34; timeoutClone &#34; pulumi-lang-python=&#34; timeout_clone &#34; pulumi-lang-yaml=&#34; timeoutClone &#34; pulumi-lang-java=&#34; timeoutClone &#34;&gt; timeoutClone &lt;/span&gt;/ timeout_migrate) is used instead.
+     * This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create /&lt;span pulumi-lang-nodejs=&#34; timeoutClone &#34; pulumi-lang-dotnet=&#34; TimeoutClone &#34; pulumi-lang-go=&#34; timeoutClone &#34; pulumi-lang-python=&#34; timeout_clone &#34; pulumi-lang-yaml=&#34; timeoutClone &#34; pulumi-lang-java=&#34; timeoutClone &#34; pulumi-lang-hcl=&#34; timeout_clone &#34;&gt; timeoutClone &lt;/span&gt;/ timeout_migrate) is used instead.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create /<span pulumi-lang-nodejs="" timeoutClone "" pulumi-lang-dotnet="" TimeoutClone "" pulumi-lang-go="" timeoutClone "" pulumi-lang-python="" timeout_clone "" pulumi-lang-yaml="" timeoutClone "" pulumi-lang-java="" timeoutClone ""> timeoutClone </span>/ timeout_migrate) is used instead. */
+    @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create /<span pulumi-lang-nodejs="" timeoutClone "" pulumi-lang-dotnet="" TimeoutClone "" pulumi-lang-go="" timeoutClone "" pulumi-lang-python="" timeout_clone "" pulumi-lang-yaml="" timeoutClone "" pulumi-lang-java="" timeoutClone "" pulumi-lang-hcl="" timeout_clone ""> timeoutClone </span>/ timeout_migrate) is used instead. */
     @Import(name="timeoutMoveDisk")
     private @Nullable Output<Integer> timeoutMoveDisk;
 
@@ -870,10 +870,10 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
      * @return Disk move timeout
      * 
      * @deprecated
-     * This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create /&lt;span pulumi-lang-nodejs=&#34; timeoutClone &#34; pulumi-lang-dotnet=&#34; TimeoutClone &#34; pulumi-lang-go=&#34; timeoutClone &#34; pulumi-lang-python=&#34; timeout_clone &#34; pulumi-lang-yaml=&#34; timeoutClone &#34; pulumi-lang-java=&#34; timeoutClone &#34;&gt; timeoutClone &lt;/span&gt;/ timeout_migrate) is used instead.
+     * This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create /&lt;span pulumi-lang-nodejs=&#34; timeoutClone &#34; pulumi-lang-dotnet=&#34; TimeoutClone &#34; pulumi-lang-go=&#34; timeoutClone &#34; pulumi-lang-python=&#34; timeout_clone &#34; pulumi-lang-yaml=&#34; timeoutClone &#34; pulumi-lang-java=&#34; timeoutClone &#34; pulumi-lang-hcl=&#34; timeout_clone &#34;&gt; timeoutClone &lt;/span&gt;/ timeout_migrate) is used instead.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create /<span pulumi-lang-nodejs="" timeoutClone "" pulumi-lang-dotnet="" TimeoutClone "" pulumi-lang-go="" timeoutClone "" pulumi-lang-python="" timeout_clone "" pulumi-lang-yaml="" timeoutClone "" pulumi-lang-java="" timeoutClone ""> timeoutClone </span>/ timeout_migrate) is used instead. */
+    @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create /<span pulumi-lang-nodejs="" timeoutClone "" pulumi-lang-dotnet="" TimeoutClone "" pulumi-lang-go="" timeoutClone "" pulumi-lang-python="" timeout_clone "" pulumi-lang-yaml="" timeoutClone "" pulumi-lang-java="" timeoutClone "" pulumi-lang-hcl="" timeout_clone ""> timeoutClone </span>/ timeout_migrate) is used instead. */
     public Optional<Output<Integer>> timeoutMoveDisk() {
         return Optional.ofNullable(this.timeoutMoveDisk);
     }
@@ -949,7 +949,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
     /**
      * The TPM state device. The VM must be stopped before
      * adding, removing, or moving a TPM state device; the provider automatically
-     * handles the shutdown/start cycle. Changing &lt;span pulumi-lang-nodejs=&#34;`version`&#34; pulumi-lang-dotnet=&#34;`Version`&#34; pulumi-lang-go=&#34;`version`&#34; pulumi-lang-python=&#34;`version`&#34; pulumi-lang-yaml=&#34;`version`&#34; pulumi-lang-java=&#34;`version`&#34;&gt;`version`&lt;/span&gt; requires recreating the
+     * handles the shutdown/start cycle. Changing &lt;span pulumi-lang-nodejs=&#34;`version`&#34; pulumi-lang-dotnet=&#34;`Version`&#34; pulumi-lang-go=&#34;`version`&#34; pulumi-lang-python=&#34;`version`&#34; pulumi-lang-yaml=&#34;`version`&#34; pulumi-lang-java=&#34;`version`&#34; pulumi-lang-hcl=&#34;`version`&#34;&gt;`version`&lt;/span&gt; requires recreating the
      * VM because Proxmox only supports setting the TPM version at creation time.
      * 
      */
@@ -959,7 +959,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The TPM state device. The VM must be stopped before
      * adding, removing, or moving a TPM state device; the provider automatically
-     * handles the shutdown/start cycle. Changing &lt;span pulumi-lang-nodejs=&#34;`version`&#34; pulumi-lang-dotnet=&#34;`Version`&#34; pulumi-lang-go=&#34;`version`&#34; pulumi-lang-python=&#34;`version`&#34; pulumi-lang-yaml=&#34;`version`&#34; pulumi-lang-java=&#34;`version`&#34;&gt;`version`&lt;/span&gt; requires recreating the
+     * handles the shutdown/start cycle. Changing &lt;span pulumi-lang-nodejs=&#34;`version`&#34; pulumi-lang-dotnet=&#34;`Version`&#34; pulumi-lang-go=&#34;`version`&#34; pulumi-lang-python=&#34;`version`&#34; pulumi-lang-yaml=&#34;`version`&#34; pulumi-lang-java=&#34;`version`&#34; pulumi-lang-hcl=&#34;`version`&#34;&gt;`version`&lt;/span&gt; requires recreating the
      * VM because Proxmox only supports setting the TPM version at creation time.
      * 
      */
@@ -1127,7 +1127,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param acpi Whether to enable ACPI (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+         * @param acpi Whether to enable ACPI (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1138,7 +1138,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param acpi Whether to enable ACPI (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+         * @param acpi Whether to enable ACPI (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1211,7 +1211,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bios The BIOS implementation (defaults to &lt;span pulumi-lang-nodejs=&#34;`seabios`&#34; pulumi-lang-dotnet=&#34;`Seabios`&#34; pulumi-lang-go=&#34;`seabios`&#34; pulumi-lang-python=&#34;`seabios`&#34; pulumi-lang-yaml=&#34;`seabios`&#34; pulumi-lang-java=&#34;`seabios`&#34;&gt;`seabios`&lt;/span&gt;).
+         * @param bios The BIOS implementation (defaults to &lt;span pulumi-lang-nodejs=&#34;`seabios`&#34; pulumi-lang-dotnet=&#34;`Seabios`&#34; pulumi-lang-go=&#34;`seabios`&#34; pulumi-lang-python=&#34;`seabios`&#34; pulumi-lang-yaml=&#34;`seabios`&#34; pulumi-lang-java=&#34;`seabios`&#34; pulumi-lang-hcl=&#34;`seabios`&#34;&gt;`seabios`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1222,7 +1222,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bios The BIOS implementation (defaults to &lt;span pulumi-lang-nodejs=&#34;`seabios`&#34; pulumi-lang-dotnet=&#34;`Seabios`&#34; pulumi-lang-go=&#34;`seabios`&#34; pulumi-lang-python=&#34;`seabios`&#34; pulumi-lang-yaml=&#34;`seabios`&#34; pulumi-lang-java=&#34;`seabios`&#34;&gt;`seabios`&lt;/span&gt;).
+         * @param bios The BIOS implementation (defaults to &lt;span pulumi-lang-nodejs=&#34;`seabios`&#34; pulumi-lang-dotnet=&#34;`Seabios`&#34; pulumi-lang-go=&#34;`seabios`&#34; pulumi-lang-python=&#34;`seabios`&#34; pulumi-lang-yaml=&#34;`seabios`&#34; pulumi-lang-java=&#34;`seabios`&#34; pulumi-lang-hcl=&#34;`seabios`&#34;&gt;`seabios`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1326,7 +1326,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deleteUnreferencedDisksOnDestroy Whether to delete unreferenced disks on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
+         * @param deleteUnreferencedDisksOnDestroy Whether to delete unreferenced disks on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -1337,7 +1337,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deleteUnreferencedDisksOnDestroy Whether to delete unreferenced disks on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
+         * @param deleteUnreferencedDisksOnDestroy Whether to delete unreferenced disks on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -1399,8 +1399,8 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param efiDisk The efi disk device (required if &lt;span pulumi-lang-nodejs=&#34;`bios`&#34; pulumi-lang-dotnet=&#34;`Bios`&#34; pulumi-lang-go=&#34;`bios`&#34; pulumi-lang-python=&#34;`bios`&#34; pulumi-lang-yaml=&#34;`bios`&#34; pulumi-lang-java=&#34;`bios`&#34;&gt;`bios`&lt;/span&gt; is set
-         * to &lt;span pulumi-lang-nodejs=&#34;`ovmf`&#34; pulumi-lang-dotnet=&#34;`Ovmf`&#34; pulumi-lang-go=&#34;`ovmf`&#34; pulumi-lang-python=&#34;`ovmf`&#34; pulumi-lang-yaml=&#34;`ovmf`&#34; pulumi-lang-java=&#34;`ovmf`&#34;&gt;`ovmf`&lt;/span&gt;)
+         * @param efiDisk The efi disk device (required if &lt;span pulumi-lang-nodejs=&#34;`bios`&#34; pulumi-lang-dotnet=&#34;`Bios`&#34; pulumi-lang-go=&#34;`bios`&#34; pulumi-lang-python=&#34;`bios`&#34; pulumi-lang-yaml=&#34;`bios`&#34; pulumi-lang-java=&#34;`bios`&#34; pulumi-lang-hcl=&#34;`bios`&#34;&gt;`bios`&lt;/span&gt; is set
+         * to &lt;span pulumi-lang-nodejs=&#34;`ovmf`&#34; pulumi-lang-dotnet=&#34;`Ovmf`&#34; pulumi-lang-go=&#34;`ovmf`&#34; pulumi-lang-python=&#34;`ovmf`&#34; pulumi-lang-yaml=&#34;`ovmf`&#34; pulumi-lang-java=&#34;`ovmf`&#34; pulumi-lang-hcl=&#34;`ovmf`&#34;&gt;`ovmf`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -1411,8 +1411,8 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param efiDisk The efi disk device (required if &lt;span pulumi-lang-nodejs=&#34;`bios`&#34; pulumi-lang-dotnet=&#34;`Bios`&#34; pulumi-lang-go=&#34;`bios`&#34; pulumi-lang-python=&#34;`bios`&#34; pulumi-lang-yaml=&#34;`bios`&#34; pulumi-lang-java=&#34;`bios`&#34;&gt;`bios`&lt;/span&gt; is set
-         * to &lt;span pulumi-lang-nodejs=&#34;`ovmf`&#34; pulumi-lang-dotnet=&#34;`Ovmf`&#34; pulumi-lang-go=&#34;`ovmf`&#34; pulumi-lang-python=&#34;`ovmf`&#34; pulumi-lang-yaml=&#34;`ovmf`&#34; pulumi-lang-java=&#34;`ovmf`&#34;&gt;`ovmf`&lt;/span&gt;)
+         * @param efiDisk The efi disk device (required if &lt;span pulumi-lang-nodejs=&#34;`bios`&#34; pulumi-lang-dotnet=&#34;`Bios`&#34; pulumi-lang-go=&#34;`bios`&#34; pulumi-lang-python=&#34;`bios`&#34; pulumi-lang-yaml=&#34;`bios`&#34; pulumi-lang-java=&#34;`bios`&#34; pulumi-lang-hcl=&#34;`bios`&#34;&gt;`bios`&lt;/span&gt; is set
+         * to &lt;span pulumi-lang-nodejs=&#34;`ovmf`&#34; pulumi-lang-dotnet=&#34;`Ovmf`&#34; pulumi-lang-go=&#34;`ovmf`&#34; pulumi-lang-python=&#34;`ovmf`&#34; pulumi-lang-yaml=&#34;`ovmf`&#34; pulumi-lang-java=&#34;`ovmf`&#34; pulumi-lang-hcl=&#34;`ovmf`&#34;&gt;`ovmf`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -1474,13 +1474,13 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hotplug Selectively enable hotplug features. Use &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; to
-         * disable, &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt; to enable all. Valid features: &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`network`&#34; pulumi-lang-dotnet=&#34;`Network`&#34; pulumi-lang-go=&#34;`network`&#34; pulumi-lang-python=&#34;`network`&#34; pulumi-lang-yaml=&#34;`network`&#34; pulumi-lang-java=&#34;`network`&#34;&gt;`network`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`usb`&#34; pulumi-lang-dotnet=&#34;`Usb`&#34; pulumi-lang-go=&#34;`usb`&#34; pulumi-lang-python=&#34;`usb`&#34; pulumi-lang-yaml=&#34;`usb`&#34; pulumi-lang-java=&#34;`usb`&#34;&gt;`usb`&lt;/span&gt;,
-         * &lt;span pulumi-lang-nodejs=&#34;`memory`&#34; pulumi-lang-dotnet=&#34;`Memory`&#34; pulumi-lang-go=&#34;`memory`&#34; pulumi-lang-python=&#34;`memory`&#34; pulumi-lang-yaml=&#34;`memory`&#34; pulumi-lang-java=&#34;`memory`&#34;&gt;`memory`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`cpu`&#34; pulumi-lang-dotnet=&#34;`Cpu`&#34; pulumi-lang-go=&#34;`cpu`&#34; pulumi-lang-python=&#34;`cpu`&#34; pulumi-lang-yaml=&#34;`cpu`&#34; pulumi-lang-java=&#34;`cpu`&#34;&gt;`cpu`&lt;/span&gt;. Memory hotplug requires NUMA to be enabled. If not set,
-         * PVE defaults to `network,disk,usb`. When &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt; is included in the
+         * @param hotplug Selectively enable hotplug features. Use &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt; to
+         * disable, &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34; pulumi-lang-hcl=&#34;`1`&#34;&gt;`1`&lt;/span&gt; to enable all. Valid features: &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34; pulumi-lang-hcl=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`network`&#34; pulumi-lang-dotnet=&#34;`Network`&#34; pulumi-lang-go=&#34;`network`&#34; pulumi-lang-python=&#34;`network`&#34; pulumi-lang-yaml=&#34;`network`&#34; pulumi-lang-java=&#34;`network`&#34; pulumi-lang-hcl=&#34;`network`&#34;&gt;`network`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`usb`&#34; pulumi-lang-dotnet=&#34;`Usb`&#34; pulumi-lang-go=&#34;`usb`&#34; pulumi-lang-python=&#34;`usb`&#34; pulumi-lang-yaml=&#34;`usb`&#34; pulumi-lang-java=&#34;`usb`&#34; pulumi-lang-hcl=&#34;`usb`&#34;&gt;`usb`&lt;/span&gt;,
+         * &lt;span pulumi-lang-nodejs=&#34;`memory`&#34; pulumi-lang-dotnet=&#34;`Memory`&#34; pulumi-lang-go=&#34;`memory`&#34; pulumi-lang-python=&#34;`memory`&#34; pulumi-lang-yaml=&#34;`memory`&#34; pulumi-lang-java=&#34;`memory`&#34; pulumi-lang-hcl=&#34;`memory`&#34;&gt;`memory`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`cpu`&#34; pulumi-lang-dotnet=&#34;`Cpu`&#34; pulumi-lang-go=&#34;`cpu`&#34; pulumi-lang-python=&#34;`cpu`&#34; pulumi-lang-yaml=&#34;`cpu`&#34; pulumi-lang-java=&#34;`cpu`&#34; pulumi-lang-hcl=&#34;`cpu`&#34;&gt;`cpu`&lt;/span&gt;. Memory hotplug requires NUMA to be enabled. If not set,
+         * PVE defaults to `network,disk,usb`. When &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34; pulumi-lang-hcl=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt; is included in the
          * hotplug list, disk resizes on a running VM are applied live without a
-         * reboot. When &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt; is excluded, the provider will reboot the VM after
-         * resize (controlled by &lt;span pulumi-lang-nodejs=&#34;`rebootAfterUpdate`&#34; pulumi-lang-dotnet=&#34;`RebootAfterUpdate`&#34; pulumi-lang-go=&#34;`rebootAfterUpdate`&#34; pulumi-lang-python=&#34;`reboot_after_update`&#34; pulumi-lang-yaml=&#34;`rebootAfterUpdate`&#34; pulumi-lang-java=&#34;`rebootAfterUpdate`&#34;&gt;`rebootAfterUpdate`&lt;/span&gt;).
+         * reboot. When &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34; pulumi-lang-hcl=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt; is excluded, the provider will reboot the VM after
+         * resize (controlled by &lt;span pulumi-lang-nodejs=&#34;`rebootAfterUpdate`&#34; pulumi-lang-dotnet=&#34;`RebootAfterUpdate`&#34; pulumi-lang-go=&#34;`rebootAfterUpdate`&#34; pulumi-lang-python=&#34;`reboot_after_update`&#34; pulumi-lang-yaml=&#34;`rebootAfterUpdate`&#34; pulumi-lang-java=&#34;`rebootAfterUpdate`&#34; pulumi-lang-hcl=&#34;`reboot_after_update`&#34;&gt;`rebootAfterUpdate`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1491,13 +1491,13 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param hotplug Selectively enable hotplug features. Use &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; to
-         * disable, &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt; to enable all. Valid features: &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`network`&#34; pulumi-lang-dotnet=&#34;`Network`&#34; pulumi-lang-go=&#34;`network`&#34; pulumi-lang-python=&#34;`network`&#34; pulumi-lang-yaml=&#34;`network`&#34; pulumi-lang-java=&#34;`network`&#34;&gt;`network`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`usb`&#34; pulumi-lang-dotnet=&#34;`Usb`&#34; pulumi-lang-go=&#34;`usb`&#34; pulumi-lang-python=&#34;`usb`&#34; pulumi-lang-yaml=&#34;`usb`&#34; pulumi-lang-java=&#34;`usb`&#34;&gt;`usb`&lt;/span&gt;,
-         * &lt;span pulumi-lang-nodejs=&#34;`memory`&#34; pulumi-lang-dotnet=&#34;`Memory`&#34; pulumi-lang-go=&#34;`memory`&#34; pulumi-lang-python=&#34;`memory`&#34; pulumi-lang-yaml=&#34;`memory`&#34; pulumi-lang-java=&#34;`memory`&#34;&gt;`memory`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`cpu`&#34; pulumi-lang-dotnet=&#34;`Cpu`&#34; pulumi-lang-go=&#34;`cpu`&#34; pulumi-lang-python=&#34;`cpu`&#34; pulumi-lang-yaml=&#34;`cpu`&#34; pulumi-lang-java=&#34;`cpu`&#34;&gt;`cpu`&lt;/span&gt;. Memory hotplug requires NUMA to be enabled. If not set,
-         * PVE defaults to `network,disk,usb`. When &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt; is included in the
+         * @param hotplug Selectively enable hotplug features. Use &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt; to
+         * disable, &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34; pulumi-lang-hcl=&#34;`1`&#34;&gt;`1`&lt;/span&gt; to enable all. Valid features: &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34; pulumi-lang-hcl=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`network`&#34; pulumi-lang-dotnet=&#34;`Network`&#34; pulumi-lang-go=&#34;`network`&#34; pulumi-lang-python=&#34;`network`&#34; pulumi-lang-yaml=&#34;`network`&#34; pulumi-lang-java=&#34;`network`&#34; pulumi-lang-hcl=&#34;`network`&#34;&gt;`network`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`usb`&#34; pulumi-lang-dotnet=&#34;`Usb`&#34; pulumi-lang-go=&#34;`usb`&#34; pulumi-lang-python=&#34;`usb`&#34; pulumi-lang-yaml=&#34;`usb`&#34; pulumi-lang-java=&#34;`usb`&#34; pulumi-lang-hcl=&#34;`usb`&#34;&gt;`usb`&lt;/span&gt;,
+         * &lt;span pulumi-lang-nodejs=&#34;`memory`&#34; pulumi-lang-dotnet=&#34;`Memory`&#34; pulumi-lang-go=&#34;`memory`&#34; pulumi-lang-python=&#34;`memory`&#34; pulumi-lang-yaml=&#34;`memory`&#34; pulumi-lang-java=&#34;`memory`&#34; pulumi-lang-hcl=&#34;`memory`&#34;&gt;`memory`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`cpu`&#34; pulumi-lang-dotnet=&#34;`Cpu`&#34; pulumi-lang-go=&#34;`cpu`&#34; pulumi-lang-python=&#34;`cpu`&#34; pulumi-lang-yaml=&#34;`cpu`&#34; pulumi-lang-java=&#34;`cpu`&#34; pulumi-lang-hcl=&#34;`cpu`&#34;&gt;`cpu`&lt;/span&gt;. Memory hotplug requires NUMA to be enabled. If not set,
+         * PVE defaults to `network,disk,usb`. When &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34; pulumi-lang-hcl=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt; is included in the
          * hotplug list, disk resizes on a running VM are applied live without a
-         * reboot. When &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt; is excluded, the provider will reboot the VM after
-         * resize (controlled by &lt;span pulumi-lang-nodejs=&#34;`rebootAfterUpdate`&#34; pulumi-lang-dotnet=&#34;`RebootAfterUpdate`&#34; pulumi-lang-go=&#34;`rebootAfterUpdate`&#34; pulumi-lang-python=&#34;`reboot_after_update`&#34; pulumi-lang-yaml=&#34;`rebootAfterUpdate`&#34; pulumi-lang-java=&#34;`rebootAfterUpdate`&#34;&gt;`rebootAfterUpdate`&lt;/span&gt;).
+         * reboot. When &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34; pulumi-lang-hcl=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt; is excluded, the provider will reboot the VM after
+         * resize (controlled by &lt;span pulumi-lang-nodejs=&#34;`rebootAfterUpdate`&#34; pulumi-lang-dotnet=&#34;`RebootAfterUpdate`&#34; pulumi-lang-go=&#34;`rebootAfterUpdate`&#34; pulumi-lang-python=&#34;`reboot_after_update`&#34; pulumi-lang-yaml=&#34;`rebootAfterUpdate`&#34; pulumi-lang-java=&#34;`rebootAfterUpdate`&#34; pulumi-lang-hcl=&#34;`reboot_after_update`&#34;&gt;`rebootAfterUpdate`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1529,7 +1529,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ipv4Addresses The IPv4 addresses per network interface published by the
-         * QEMU agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+         * QEMU agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -1541,7 +1541,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ipv4Addresses The IPv4 addresses per network interface published by the
-         * QEMU agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+         * QEMU agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -1552,7 +1552,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ipv4Addresses The IPv4 addresses per network interface published by the
-         * QEMU agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+         * QEMU agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -1563,7 +1563,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ipv6Addresses The IPv6 addresses per network interface published by the
-         * QEMU agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+         * QEMU agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -1575,7 +1575,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ipv6Addresses The IPv6 addresses per network interface published by the
-         * QEMU agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+         * QEMU agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -1586,7 +1586,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ipv6Addresses The IPv6 addresses per network interface published by the
-         * QEMU agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+         * QEMU agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -1672,7 +1672,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param machine The VM machine type (defaults to &lt;span pulumi-lang-nodejs=&#34;`pc`&#34; pulumi-lang-dotnet=&#34;`Pc`&#34; pulumi-lang-go=&#34;`pc`&#34; pulumi-lang-python=&#34;`pc`&#34; pulumi-lang-yaml=&#34;`pc`&#34; pulumi-lang-java=&#34;`pc`&#34;&gt;`pc`&lt;/span&gt;).
+         * @param machine The VM machine type (defaults to &lt;span pulumi-lang-nodejs=&#34;`pc`&#34; pulumi-lang-dotnet=&#34;`Pc`&#34; pulumi-lang-go=&#34;`pc`&#34; pulumi-lang-python=&#34;`pc`&#34; pulumi-lang-yaml=&#34;`pc`&#34; pulumi-lang-java=&#34;`pc`&#34; pulumi-lang-hcl=&#34;`pc`&#34;&gt;`pc`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1683,7 +1683,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param machine The VM machine type (defaults to &lt;span pulumi-lang-nodejs=&#34;`pc`&#34; pulumi-lang-dotnet=&#34;`Pc`&#34; pulumi-lang-go=&#34;`pc`&#34; pulumi-lang-python=&#34;`pc`&#34; pulumi-lang-yaml=&#34;`pc`&#34; pulumi-lang-java=&#34;`pc`&#34;&gt;`pc`&lt;/span&gt;).
+         * @param machine The VM machine type (defaults to &lt;span pulumi-lang-nodejs=&#34;`pc`&#34; pulumi-lang-dotnet=&#34;`Pc`&#34; pulumi-lang-go=&#34;`pc`&#34; pulumi-lang-python=&#34;`pc`&#34; pulumi-lang-yaml=&#34;`pc`&#34; pulumi-lang-java=&#34;`pc`&#34; pulumi-lang-hcl=&#34;`pc`&#34;&gt;`pc`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1715,7 +1715,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param migrate Migrate the VM on node change instead of re-creating
-         * it (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+         * it (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1727,7 +1727,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param migrate Migrate the VM on node change instead of re-creating
-         * it (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+         * it (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1790,7 +1790,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param networkInterfaceNames The network interface names published by the QEMU
-         * agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+         * agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -1802,7 +1802,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param networkInterfaceNames The network interface names published by the QEMU
-         * agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+         * agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -1813,7 +1813,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param networkInterfaceNames The network interface names published by the QEMU
-         * agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+         * agent (empty list when `agent.enabled` is &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -1878,7 +1878,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param onBoot Specifies whether a VM will be started during system
-         * boot. (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
+         * boot. (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -1890,7 +1890,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param onBoot Specifies whether a VM will be started during system
-         * boot. (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
+         * boot. (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -1942,7 +1942,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protection Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+         * @param protection Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1953,7 +1953,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param protection Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+         * @param protection Sets the protection flag of the VM. This will disable the remove VM and remove disk operations (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1963,7 +1963,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param purgeOnDestroy Whether to purge the VM from backup configurations on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
+         * @param purgeOnDestroy Whether to purge the VM from backup configurations on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -1974,7 +1974,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param purgeOnDestroy Whether to purge the VM from backup configurations on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
+         * @param purgeOnDestroy Whether to purge the VM from backup configurations on destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -1984,7 +1984,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reboot Reboot the VM after initial creation (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+         * @param reboot Reboot the VM after initial creation (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -1995,7 +1995,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reboot Reboot the VM after initial creation (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+         * @param reboot Reboot the VM after initial creation (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -2007,10 +2007,10 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param rebootAfterUpdate Whether the provider may automatically
          * reboot or power off the VM during update operations when required to apply
-         * changes. If &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;, updates that require taking the VM offline fail
+         * changes. If &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;, updates that require taking the VM offline fail
          * instead of being applied automatically. Changes that are applied
          * successfully but still need a later manual reboot emit a warning instead
-         * (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+         * (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -2023,10 +2023,10 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param rebootAfterUpdate Whether the provider may automatically
          * reboot or power off the VM during update operations when required to apply
-         * changes. If &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;, updates that require taking the VM offline fail
+         * changes. If &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;, updates that require taking the VM offline fail
          * instead of being applied automatically. Changes that are applied
          * successfully but still need a later manual reboot emit a warning instead
-         * (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+         * (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -2143,7 +2143,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param started Whether to start the virtual machine (defaults
-         * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+         * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -2155,7 +2155,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param started Whether to start the virtual machine (defaults
-         * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+         * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -2186,7 +2186,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stopOnDestroy Whether to stop rather than shutdown on VM destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+         * @param stopOnDestroy Whether to stop rather than shutdown on VM destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -2197,7 +2197,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stopOnDestroy Whether to stop rather than shutdown on VM destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
+         * @param stopOnDestroy Whether to stop rather than shutdown on VM destroy (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;)
          * 
          * @return builder
          * 
@@ -2208,7 +2208,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tabletDevice Whether to enable the USB tablet device (defaults
-         * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+         * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -2220,7 +2220,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param tabletDevice Whether to enable the USB tablet device (defaults
-         * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+         * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -2233,7 +2233,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
          * @param tags A list of tags of the VM. This is only meta information (
          * defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
          * template is not sorted, then Proxmox will always report a difference on the
-         * resource. You may use the &lt;span pulumi-lang-nodejs=&#34;`ignoreChanges`&#34; pulumi-lang-dotnet=&#34;`IgnoreChanges`&#34; pulumi-lang-go=&#34;`ignoreChanges`&#34; pulumi-lang-python=&#34;`ignore_changes`&#34; pulumi-lang-yaml=&#34;`ignoreChanges`&#34; pulumi-lang-java=&#34;`ignoreChanges`&#34;&gt;`ignoreChanges`&lt;/span&gt; lifecycle meta-argument to ignore
+         * resource. You may use the &lt;span pulumi-lang-nodejs=&#34;`ignoreChanges`&#34; pulumi-lang-dotnet=&#34;`IgnoreChanges`&#34; pulumi-lang-go=&#34;`ignoreChanges`&#34; pulumi-lang-python=&#34;`ignore_changes`&#34; pulumi-lang-yaml=&#34;`ignoreChanges`&#34; pulumi-lang-java=&#34;`ignoreChanges`&#34; pulumi-lang-hcl=&#34;`ignore_changes`&#34;&gt;`ignoreChanges`&lt;/span&gt; lifecycle meta-argument to ignore
          * changes to this attribute.
          * 
          * @return builder
@@ -2248,7 +2248,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
          * @param tags A list of tags of the VM. This is only meta information (
          * defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
          * template is not sorted, then Proxmox will always report a difference on the
-         * resource. You may use the &lt;span pulumi-lang-nodejs=&#34;`ignoreChanges`&#34; pulumi-lang-dotnet=&#34;`IgnoreChanges`&#34; pulumi-lang-go=&#34;`ignoreChanges`&#34; pulumi-lang-python=&#34;`ignore_changes`&#34; pulumi-lang-yaml=&#34;`ignoreChanges`&#34; pulumi-lang-java=&#34;`ignoreChanges`&#34;&gt;`ignoreChanges`&lt;/span&gt; lifecycle meta-argument to ignore
+         * resource. You may use the &lt;span pulumi-lang-nodejs=&#34;`ignoreChanges`&#34; pulumi-lang-dotnet=&#34;`IgnoreChanges`&#34; pulumi-lang-go=&#34;`ignoreChanges`&#34; pulumi-lang-python=&#34;`ignore_changes`&#34; pulumi-lang-yaml=&#34;`ignoreChanges`&#34; pulumi-lang-java=&#34;`ignoreChanges`&#34; pulumi-lang-hcl=&#34;`ignore_changes`&#34;&gt;`ignoreChanges`&lt;/span&gt; lifecycle meta-argument to ignore
          * changes to this attribute.
          * 
          * @return builder
@@ -2262,7 +2262,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
          * @param tags A list of tags of the VM. This is only meta information (
          * defaults to `[]`). Note: Proxmox always sorts the VM tags. If the list in
          * template is not sorted, then Proxmox will always report a difference on the
-         * resource. You may use the &lt;span pulumi-lang-nodejs=&#34;`ignoreChanges`&#34; pulumi-lang-dotnet=&#34;`IgnoreChanges`&#34; pulumi-lang-go=&#34;`ignoreChanges`&#34; pulumi-lang-python=&#34;`ignore_changes`&#34; pulumi-lang-yaml=&#34;`ignoreChanges`&#34; pulumi-lang-java=&#34;`ignoreChanges`&#34;&gt;`ignoreChanges`&lt;/span&gt; lifecycle meta-argument to ignore
+         * resource. You may use the &lt;span pulumi-lang-nodejs=&#34;`ignoreChanges`&#34; pulumi-lang-dotnet=&#34;`IgnoreChanges`&#34; pulumi-lang-go=&#34;`ignoreChanges`&#34; pulumi-lang-python=&#34;`ignore_changes`&#34; pulumi-lang-yaml=&#34;`ignoreChanges`&#34; pulumi-lang-java=&#34;`ignoreChanges`&#34; pulumi-lang-hcl=&#34;`ignore_changes`&#34;&gt;`ignoreChanges`&lt;/span&gt; lifecycle meta-argument to ignore
          * changes to this attribute.
          * 
          * @return builder
@@ -2274,9 +2274,9 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param template Whether the VM should be a template. Setting this
-         * from &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt; to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt; converts an existing VM to a template in place.
+         * from &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt; to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt; converts an existing VM to a template in place.
          * Converting a template back to a regular VM is not supported (defaults to
-         * &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+         * &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -2288,9 +2288,9 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param template Whether the VM should be a template. Setting this
-         * from &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt; to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt; converts an existing VM to a template in place.
+         * from &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt; to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt; converts an existing VM to a template in place.
          * Converting a template back to a regular VM is not supported (defaults to
-         * &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+         * &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -2374,10 +2374,10 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create /&lt;span pulumi-lang-nodejs=&#34; timeoutClone &#34; pulumi-lang-dotnet=&#34; TimeoutClone &#34; pulumi-lang-go=&#34; timeoutClone &#34; pulumi-lang-python=&#34; timeout_clone &#34; pulumi-lang-yaml=&#34; timeoutClone &#34; pulumi-lang-java=&#34; timeoutClone &#34;&gt; timeoutClone &lt;/span&gt;/ timeout_migrate) is used instead.
+         * This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create /&lt;span pulumi-lang-nodejs=&#34; timeoutClone &#34; pulumi-lang-dotnet=&#34; TimeoutClone &#34; pulumi-lang-go=&#34; timeoutClone &#34; pulumi-lang-python=&#34; timeout_clone &#34; pulumi-lang-yaml=&#34; timeoutClone &#34; pulumi-lang-java=&#34; timeoutClone &#34; pulumi-lang-hcl=&#34; timeout_clone &#34;&gt; timeoutClone &lt;/span&gt;/ timeout_migrate) is used instead.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create /<span pulumi-lang-nodejs="" timeoutClone "" pulumi-lang-dotnet="" TimeoutClone "" pulumi-lang-go="" timeoutClone "" pulumi-lang-python="" timeout_clone "" pulumi-lang-yaml="" timeoutClone "" pulumi-lang-java="" timeoutClone ""> timeoutClone </span>/ timeout_migrate) is used instead. */
+        @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create /<span pulumi-lang-nodejs="" timeoutClone "" pulumi-lang-dotnet="" TimeoutClone "" pulumi-lang-go="" timeoutClone "" pulumi-lang-python="" timeout_clone "" pulumi-lang-yaml="" timeoutClone "" pulumi-lang-java="" timeoutClone "" pulumi-lang-hcl="" timeout_clone ""> timeoutClone </span>/ timeout_migrate) is used instead. */
         public Builder timeoutMoveDisk(@Nullable Output<Integer> timeoutMoveDisk) {
             $.timeoutMoveDisk = timeoutMoveDisk;
             return this;
@@ -2389,10 +2389,10 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create /&lt;span pulumi-lang-nodejs=&#34; timeoutClone &#34; pulumi-lang-dotnet=&#34; TimeoutClone &#34; pulumi-lang-go=&#34; timeoutClone &#34; pulumi-lang-python=&#34; timeout_clone &#34; pulumi-lang-yaml=&#34; timeoutClone &#34; pulumi-lang-java=&#34; timeoutClone &#34;&gt; timeoutClone &lt;/span&gt;/ timeout_migrate) is used instead.
+         * This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create /&lt;span pulumi-lang-nodejs=&#34; timeoutClone &#34; pulumi-lang-dotnet=&#34; TimeoutClone &#34; pulumi-lang-go=&#34; timeoutClone &#34; pulumi-lang-python=&#34; timeout_clone &#34; pulumi-lang-yaml=&#34; timeoutClone &#34; pulumi-lang-java=&#34; timeoutClone &#34; pulumi-lang-hcl=&#34; timeout_clone &#34;&gt; timeoutClone &lt;/span&gt;/ timeout_migrate) is used instead.
          * 
          */
-        @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create /<span pulumi-lang-nodejs="" timeoutClone "" pulumi-lang-dotnet="" TimeoutClone "" pulumi-lang-go="" timeoutClone "" pulumi-lang-python="" timeout_clone "" pulumi-lang-yaml="" timeoutClone "" pulumi-lang-java="" timeoutClone ""> timeoutClone </span>/ timeout_migrate) is used instead. */
+        @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (timeout_create /<span pulumi-lang-nodejs="" timeoutClone "" pulumi-lang-dotnet="" TimeoutClone "" pulumi-lang-go="" timeoutClone "" pulumi-lang-python="" timeout_clone "" pulumi-lang-yaml="" timeoutClone "" pulumi-lang-java="" timeoutClone "" pulumi-lang-hcl="" timeout_clone ""> timeoutClone </span>/ timeout_migrate) is used instead. */
         public Builder timeoutMoveDisk(Integer timeoutMoveDisk) {
             return timeoutMoveDisk(Output.of(timeoutMoveDisk));
         }
@@ -2492,7 +2492,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param tpmState The TPM state device. The VM must be stopped before
          * adding, removing, or moving a TPM state device; the provider automatically
-         * handles the shutdown/start cycle. Changing &lt;span pulumi-lang-nodejs=&#34;`version`&#34; pulumi-lang-dotnet=&#34;`Version`&#34; pulumi-lang-go=&#34;`version`&#34; pulumi-lang-python=&#34;`version`&#34; pulumi-lang-yaml=&#34;`version`&#34; pulumi-lang-java=&#34;`version`&#34;&gt;`version`&lt;/span&gt; requires recreating the
+         * handles the shutdown/start cycle. Changing &lt;span pulumi-lang-nodejs=&#34;`version`&#34; pulumi-lang-dotnet=&#34;`Version`&#34; pulumi-lang-go=&#34;`version`&#34; pulumi-lang-python=&#34;`version`&#34; pulumi-lang-yaml=&#34;`version`&#34; pulumi-lang-java=&#34;`version`&#34; pulumi-lang-hcl=&#34;`version`&#34;&gt;`version`&lt;/span&gt; requires recreating the
          * VM because Proxmox only supports setting the TPM version at creation time.
          * 
          * @return builder
@@ -2506,7 +2506,7 @@ public final class VmLegacyState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param tpmState The TPM state device. The VM must be stopped before
          * adding, removing, or moving a TPM state device; the provider automatically
-         * handles the shutdown/start cycle. Changing &lt;span pulumi-lang-nodejs=&#34;`version`&#34; pulumi-lang-dotnet=&#34;`Version`&#34; pulumi-lang-go=&#34;`version`&#34; pulumi-lang-python=&#34;`version`&#34; pulumi-lang-yaml=&#34;`version`&#34; pulumi-lang-java=&#34;`version`&#34;&gt;`version`&lt;/span&gt; requires recreating the
+         * handles the shutdown/start cycle. Changing &lt;span pulumi-lang-nodejs=&#34;`version`&#34; pulumi-lang-dotnet=&#34;`Version`&#34; pulumi-lang-go=&#34;`version`&#34; pulumi-lang-python=&#34;`version`&#34; pulumi-lang-yaml=&#34;`version`&#34; pulumi-lang-java=&#34;`version`&#34; pulumi-lang-hcl=&#34;`version`&#34;&gt;`version`&lt;/span&gt; requires recreating the
          * VM because Proxmox only supports setting the TPM version at creation time.
          * 
          * @return builder

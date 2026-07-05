@@ -60,6 +60,8 @@ type HaresourceLegacy struct {
 
 	// The comment associated with this resource.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
+	// Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
+	Failback pulumi.BoolPtrOutput `pulumi:"failback"`
 	// The identifier of the High Availability group this resource is a member of.
 	Group pulumi.StringPtrOutput `pulumi:"group"`
 	// The maximal number of relocation attempts.
@@ -109,6 +111,8 @@ func GetHaresourceLegacy(ctx *pulumi.Context,
 type haresourceLegacyState struct {
 	// The comment associated with this resource.
 	Comment *string `pulumi:"comment"`
+	// Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
+	Failback *bool `pulumi:"failback"`
 	// The identifier of the High Availability group this resource is a member of.
 	Group *string `pulumi:"group"`
 	// The maximal number of relocation attempts.
@@ -126,6 +130,8 @@ type haresourceLegacyState struct {
 type HaresourceLegacyState struct {
 	// The comment associated with this resource.
 	Comment pulumi.StringPtrInput
+	// Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
+	Failback pulumi.BoolPtrInput
 	// The identifier of the High Availability group this resource is a member of.
 	Group pulumi.StringPtrInput
 	// The maximal number of relocation attempts.
@@ -147,6 +153,8 @@ func (HaresourceLegacyState) ElementType() reflect.Type {
 type haresourceLegacyArgs struct {
 	// The comment associated with this resource.
 	Comment *string `pulumi:"comment"`
+	// Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
+	Failback *bool `pulumi:"failback"`
 	// The identifier of the High Availability group this resource is a member of.
 	Group *string `pulumi:"group"`
 	// The maximal number of relocation attempts.
@@ -165,6 +173,8 @@ type haresourceLegacyArgs struct {
 type HaresourceLegacyArgs struct {
 	// The comment associated with this resource.
 	Comment pulumi.StringPtrInput
+	// Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
+	Failback pulumi.BoolPtrInput
 	// The identifier of the High Availability group this resource is a member of.
 	Group pulumi.StringPtrInput
 	// The maximal number of relocation attempts.
@@ -269,6 +279,11 @@ func (o HaresourceLegacyOutput) ToHaresourceLegacyOutputWithContext(ctx context.
 // The comment associated with this resource.
 func (o HaresourceLegacyOutput) Comment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HaresourceLegacy) pulumi.StringPtrOutput { return v.Comment }).(pulumi.StringPtrOutput)
+}
+
+// Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
+func (o HaresourceLegacyOutput) Failback() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HaresourceLegacy) pulumi.BoolPtrOutput { return v.Failback }).(pulumi.BoolPtrOutput)
 }
 
 // The identifier of the High Availability group this resource is a member of.

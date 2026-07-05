@@ -60,6 +60,12 @@ namespace Pulumi.ProxmoxVE
         public Output<string?> Comment { get; private set; } = null!;
 
         /// <summary>
+        /// Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
+        /// </summary>
+        [Output("failback")]
+        public Output<bool?> Failback { get; private set; } = null!;
+
+        /// <summary>
         /// The identifier of the High Availability group this resource is a member of.
         /// </summary>
         [Output("group")]
@@ -149,6 +155,12 @@ namespace Pulumi.ProxmoxVE
         public Input<string>? Comment { get; set; }
 
         /// <summary>
+        /// Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
+        /// </summary>
+        [Input("failback")]
+        public Input<bool>? Failback { get; set; }
+
+        /// <summary>
         /// The identifier of the High Availability group this resource is a member of.
         /// </summary>
         [Input("group")]
@@ -197,6 +209,12 @@ namespace Pulumi.ProxmoxVE
         /// </summary>
         [Input("comment")]
         public Input<string>? Comment { get; set; }
+
+        /// <summary>
+        /// Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
+        /// </summary>
+        [Input("failback")]
+        public Input<bool>? Failback { get; set; }
 
         /// <summary>
         /// The identifier of the High Availability group this resource is a member of.

@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Instances can be imported using the &lt;span pulumi-lang-nodejs=&#34;`roleId`&#34; pulumi-lang-dotnet=&#34;`RoleId`&#34; pulumi-lang-go=&#34;`roleId`&#34; pulumi-lang-python=&#34;`role_id`&#34; pulumi-lang-yaml=&#34;`roleId`&#34; pulumi-lang-java=&#34;`roleId`&#34;&gt;`roleId`&lt;/span&gt;, e.g.,
+ * Instances can be imported using the &lt;span pulumi-lang-nodejs=&#34;`roleId`&#34; pulumi-lang-dotnet=&#34;`RoleId`&#34; pulumi-lang-go=&#34;`roleId`&#34; pulumi-lang-python=&#34;`role_id`&#34; pulumi-lang-yaml=&#34;`roleId`&#34; pulumi-lang-java=&#34;`roleId`&#34; pulumi-lang-hcl=&#34;`role_id`&#34;&gt;`roleId`&lt;/span&gt;, e.g.,
  * 
  * ```sh
  * $ pulumi import proxmoxve:index/roleLegacy:RoleLegacy operations_monitoring operations-monitoring

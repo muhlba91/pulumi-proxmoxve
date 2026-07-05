@@ -61,6 +61,19 @@ namespace Pulumi.ProxmoxVE.Acme.Dns
         public Output<ImmutableDictionary<string, string>?> Data { get; private set; } = null!;
 
         /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// DNS plugin data, supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so credentials are never stored in Terraform state. Requires Terraform 1.11+. Mutually exclusive with `Data`. Pair with `DataWoVersion` to push rotated values.
+        /// </summary>
+        [Output("dataWo")]
+        public Output<ImmutableDictionary<string, string>?> DataWo { get; private set; } = null!;
+
+        /// <summary>
+        /// Version counter for `DataWo`. Because write-only values are not stored in state, Terraform cannot detect when `DataWo` changes; increment this value to signal a rotation and force the new `DataWo` to be sent.
+        /// </summary>
+        [Output("dataWoVersion")]
+        public Output<int?> DataWoVersion { get; private set; } = null!;
+
+        /// <summary>
         /// SHA1 digest of the current configuration. Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
         /// </summary>
         [Output("digest")]
@@ -73,7 +86,7 @@ namespace Pulumi.ProxmoxVE.Acme.Dns
         public Output<bool?> Disable { get; private set; } = null!;
 
         /// <summary>
-        /// ACME Plugin ID name.
+        /// ACME plugin ID name.
         /// </summary>
         [Output("plugin")]
         public Output<string> pluginName { get; private set; } = null!;
@@ -108,6 +121,10 @@ namespace Pulumi.ProxmoxVE.Acme.Dns
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/muhlba91/pulumi-proxmoxve",
+                AdditionalSecretOutputs =
+                {
+                    "dataWo",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -149,6 +166,29 @@ namespace Pulumi.ProxmoxVE.Acme.Dns
             set => _data = value;
         }
 
+        [Input("dataWo")]
+        private InputMap<string>? _dataWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// DNS plugin data, supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so credentials are never stored in Terraform state. Requires Terraform 1.11+. Mutually exclusive with `Data`. Pair with `DataWoVersion` to push rotated values.
+        /// </summary>
+        public InputMap<string> DataWo
+        {
+            get => _dataWo ?? (_dataWo = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _dataWo = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
+
+        /// <summary>
+        /// Version counter for `DataWo`. Because write-only values are not stored in state, Terraform cannot detect when `DataWo` changes; increment this value to signal a rotation and force the new `DataWo` to be sent.
+        /// </summary>
+        [Input("dataWoVersion")]
+        public Input<int>? DataWoVersion { get; set; }
+
         /// <summary>
         /// SHA1 digest of the current configuration. Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
         /// </summary>
@@ -162,7 +202,7 @@ namespace Pulumi.ProxmoxVE.Acme.Dns
         public Input<bool>? Disable { get; set; }
 
         /// <summary>
-        /// ACME Plugin ID name.
+        /// ACME plugin ID name.
         /// </summary>
         [Input("plugin", required: true)]
         public Input<string> pluginName { get; set; } = null!;
@@ -199,6 +239,29 @@ namespace Pulumi.ProxmoxVE.Acme.Dns
             set => _data = value;
         }
 
+        [Input("dataWo")]
+        private InputMap<string>? _dataWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// DNS plugin data, supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so credentials are never stored in Terraform state. Requires Terraform 1.11+. Mutually exclusive with `Data`. Pair with `DataWoVersion` to push rotated values.
+        /// </summary>
+        public InputMap<string> DataWo
+        {
+            get => _dataWo ?? (_dataWo = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _dataWo = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
+
+        /// <summary>
+        /// Version counter for `DataWo`. Because write-only values are not stored in state, Terraform cannot detect when `DataWo` changes; increment this value to signal a rotation and force the new `DataWo` to be sent.
+        /// </summary>
+        [Input("dataWoVersion")]
+        public Input<int>? DataWoVersion { get; set; }
+
         /// <summary>
         /// SHA1 digest of the current configuration. Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
         /// </summary>
@@ -212,7 +275,7 @@ namespace Pulumi.ProxmoxVE.Acme.Dns
         public Input<bool>? Disable { get; set; }
 
         /// <summary>
-        /// ACME Plugin ID name.
+        /// ACME plugin ID name.
         /// </summary>
         [Input("plugin")]
         public Input<string>? pluginName { get; set; }

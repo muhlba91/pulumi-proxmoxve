@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-go=&#34;`acme.Account`&#34; pulumi-lang-python=&#34;`acme.Account`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.Account`&#34;&gt;`proxmoxve.acme.Account`&lt;/span&gt; instead. This resource will be removed in v1.0.
+ * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-go=&#34;`acme.Account`&#34; pulumi-lang-python=&#34;`acme.Account`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-hcl=&#34;`proxmox_acme_account`&#34;&gt;`proxmoxve.acme.Account`&lt;/span&gt; instead. This resource will be removed in v1.0.
  * 
  * Manages an ACME account in a Proxmox VE cluster.
  * 

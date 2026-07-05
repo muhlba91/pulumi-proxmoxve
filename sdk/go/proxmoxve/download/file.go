@@ -122,6 +122,15 @@ import (
 //	}
 //
 // ```
+//
+// ## Import
+//
+// !/usr/bin/env sh
+// A download file can be imported using its identifier in the format: node_name/datastore_id:content_type/file_name, e.g.:
+//
+// ```sh
+// $ pulumi import proxmoxve:download/file:File ubuntu_iso pve/local:iso/ubuntu-24.04-server.iso
+// ```
 type File struct {
 	pulumi.CustomResourceState
 

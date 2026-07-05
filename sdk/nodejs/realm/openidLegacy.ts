@@ -49,19 +49,6 @@ import * as utilities from "../utilities";
  * - You must maintain the client key in your Terraform configuration or use a variable
  * - The client key will be marked as sensitive in Terraform state
  *
- * ### Username Claim
- *
- * The `usernameClaim` attribute is **fixed after creation** — it cannot be changed once the realm is created. Changing it requires destroying and recreating the realm. Common values:
- *
- * - `subject` (default) — Uses the OpenID `sub` claim
- * - `username` — Uses the `preferredUsername` claim
- * - `email` — Uses the `email` claim
- * - `upn` — Uses the User Principal Name claim (common with ADFS/Azure AD)
- *
- * Any valid OpenID claim name can be used. Ensure the chosen claim provides unique, stable identifiers for your users.
- *
- * ### Common Configuration Scenarios
- *
  * #### Minimal Configuration
  *
  * ```typescript
@@ -146,6 +133,10 @@ export class OpenidLegacy extends pulumi.CustomResource {
      */
     declare public readonly acrValues: pulumi.Output<string | undefined>;
     /**
+     * Audiences that the OpenID Issuer may include that are accepted for the client (comma-separated).
+     */
+    declare public readonly audiences: pulumi.Output<string | undefined>;
+    /**
      * Automatically create users on the Proxmox cluster if they do not exist.
      */
     declare public readonly autocreate: pulumi.Output<boolean>;
@@ -157,6 +148,15 @@ export class OpenidLegacy extends pulumi.CustomResource {
      * OpenID Connect Client Key (secret). Note: stored in Proxmox but not returned by API.
      */
     declare public readonly clientKey: pulumi.Output<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * OpenID Connect Client Key (secret), supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so it is never stored in Terraform state or plan. Requires Terraform 1.11+. Mutually exclusive with `clientKey`. Pair with `clientKeyWoVersion` to push a rotated secret.
+     */
+    declare public readonly clientKeyWo: pulumi.Output<string | undefined>;
+    /**
+     * Version counter for `clientKeyWo`. Because write-only values are not stored in state, Terraform cannot detect when `clientKeyWo` changes; increment this value to signal a rotation and force the new secret to be sent.
+     */
+    declare public readonly clientKeyWoVersion: pulumi.Output<number | undefined>;
     /**
      * Description of the realm.
      */
@@ -216,9 +216,12 @@ export class OpenidLegacy extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as OpenidLegacyState | undefined;
             resourceInputs["acrValues"] = state?.acrValues;
+            resourceInputs["audiences"] = state?.audiences;
             resourceInputs["autocreate"] = state?.autocreate;
             resourceInputs["clientId"] = state?.clientId;
             resourceInputs["clientKey"] = state?.clientKey;
+            resourceInputs["clientKeyWo"] = state?.clientKeyWo;
+            resourceInputs["clientKeyWoVersion"] = state?.clientKeyWoVersion;
             resourceInputs["comment"] = state?.comment;
             resourceInputs["default"] = state?.default;
             resourceInputs["groupsAutocreate"] = state?.groupsAutocreate;
@@ -242,9 +245,12 @@ export class OpenidLegacy extends pulumi.CustomResource {
                 throw new Error("Missing required property 'realm'");
             }
             resourceInputs["acrValues"] = args?.acrValues;
+            resourceInputs["audiences"] = args?.audiences;
             resourceInputs["autocreate"] = args?.autocreate;
             resourceInputs["clientId"] = args?.clientId;
             resourceInputs["clientKey"] = args?.clientKey ? pulumi.secret(args.clientKey) : undefined;
+            resourceInputs["clientKeyWo"] = args?.clientKeyWo ? pulumi.secret(args.clientKeyWo) : undefined;
+            resourceInputs["clientKeyWoVersion"] = args?.clientKeyWoVersion;
             resourceInputs["comment"] = args?.comment;
             resourceInputs["default"] = args?.default;
             resourceInputs["groupsAutocreate"] = args?.groupsAutocreate;
@@ -258,7 +264,7 @@ export class OpenidLegacy extends pulumi.CustomResource {
             resourceInputs["usernameClaim"] = args?.usernameClaim;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["clientKey"] };
+        const secretOpts = { additionalSecretOutputs: ["clientKey", "clientKeyWo"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(OpenidLegacy.__pulumiType, name, resourceInputs, opts);
     }
@@ -273,6 +279,10 @@ export interface OpenidLegacyState {
      */
     acrValues?: pulumi.Input<string | undefined>;
     /**
+     * Audiences that the OpenID Issuer may include that are accepted for the client (comma-separated).
+     */
+    audiences?: pulumi.Input<string | undefined>;
+    /**
      * Automatically create users on the Proxmox cluster if they do not exist.
      */
     autocreate?: pulumi.Input<boolean | undefined>;
@@ -284,6 +294,15 @@ export interface OpenidLegacyState {
      * OpenID Connect Client Key (secret). Note: stored in Proxmox but not returned by API.
      */
     clientKey?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * OpenID Connect Client Key (secret), supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so it is never stored in Terraform state or plan. Requires Terraform 1.11+. Mutually exclusive with `clientKey`. Pair with `clientKeyWoVersion` to push a rotated secret.
+     */
+    clientKeyWo?: pulumi.Input<string | undefined>;
+    /**
+     * Version counter for `clientKeyWo`. Because write-only values are not stored in state, Terraform cannot detect when `clientKeyWo` changes; increment this value to signal a rotation and force the new secret to be sent.
+     */
+    clientKeyWoVersion?: pulumi.Input<number | undefined>;
     /**
      * Description of the realm.
      */
@@ -339,6 +358,10 @@ export interface OpenidLegacyArgs {
      */
     acrValues?: pulumi.Input<string | undefined>;
     /**
+     * Audiences that the OpenID Issuer may include that are accepted for the client (comma-separated).
+     */
+    audiences?: pulumi.Input<string | undefined>;
+    /**
      * Automatically create users on the Proxmox cluster if they do not exist.
      */
     autocreate?: pulumi.Input<boolean | undefined>;
@@ -350,6 +373,15 @@ export interface OpenidLegacyArgs {
      * OpenID Connect Client Key (secret). Note: stored in Proxmox but not returned by API.
      */
     clientKey?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * OpenID Connect Client Key (secret), supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so it is never stored in Terraform state or plan. Requires Terraform 1.11+. Mutually exclusive with `clientKey`. Pair with `clientKeyWoVersion` to push a rotated secret.
+     */
+    clientKeyWo?: pulumi.Input<string | undefined>;
+    /**
+     * Version counter for `clientKeyWo`. Because write-only values are not stored in state, Terraform cannot detect when `clientKeyWo` changes; increment this value to signal a rotation and force the new secret to be sent.
+     */
+    clientKeyWoVersion?: pulumi.Input<number | undefined>;
     /**
      * Description of the realm.
      */

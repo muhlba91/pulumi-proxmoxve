@@ -137,6 +137,10 @@ namespace Pulumi.ProxmoxVE
         /// </summary>
         public readonly string Comment;
         /// <summary>
+        /// Automatic failback to the preferred node when it becomes available again (PVE 9+).
+        /// </summary>
+        public readonly bool Failback;
+        /// <summary>
         /// The identifier of the High Availability group this resource is a member of.
         /// </summary>
         public readonly string Group;
@@ -169,6 +173,8 @@ namespace Pulumi.ProxmoxVE
         private GetHaresourceResult(
             string comment,
 
+            bool failback,
+
             string group,
 
             string id,
@@ -184,6 +190,7 @@ namespace Pulumi.ProxmoxVE
             string type)
         {
             Comment = comment;
+            Failback = failback;
             Group = group;
             Id = id;
             MaxRelocate = maxRelocate;

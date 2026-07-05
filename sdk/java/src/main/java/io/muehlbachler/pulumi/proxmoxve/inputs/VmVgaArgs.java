@@ -17,14 +17,14 @@ public final class VmVgaArgs extends com.pulumi.resources.ResourceArgs {
     public static final VmVgaArgs Empty = new VmVgaArgs();
 
     /**
-     * Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only &lt;span pulumi-lang-nodejs=&#34;`vnc`&#34; pulumi-lang-dotnet=&#34;`Vnc`&#34; pulumi-lang-go=&#34;`vnc`&#34; pulumi-lang-python=&#34;`vnc`&#34; pulumi-lang-yaml=&#34;`vnc`&#34; pulumi-lang-java=&#34;`vnc`&#34;&gt;`vnc`&lt;/span&gt; is available. Migration with VNC clipboard is not supported by Proxmox.
+     * Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only &lt;span pulumi-lang-nodejs=&#34;`vnc`&#34; pulumi-lang-dotnet=&#34;`Vnc`&#34; pulumi-lang-go=&#34;`vnc`&#34; pulumi-lang-python=&#34;`vnc`&#34; pulumi-lang-yaml=&#34;`vnc`&#34; pulumi-lang-java=&#34;`vnc`&#34; pulumi-lang-hcl=&#34;`vnc`&#34;&gt;`vnc`&lt;/span&gt; is available. Migration with VNC clipboard is not supported by Proxmox.
      * 
      */
     @Import(name="clipboard")
     private @Nullable Output<String> clipboard;
 
     /**
-     * @return Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only &lt;span pulumi-lang-nodejs=&#34;`vnc`&#34; pulumi-lang-dotnet=&#34;`Vnc`&#34; pulumi-lang-go=&#34;`vnc`&#34; pulumi-lang-python=&#34;`vnc`&#34; pulumi-lang-yaml=&#34;`vnc`&#34; pulumi-lang-java=&#34;`vnc`&#34;&gt;`vnc`&lt;/span&gt; is available. Migration with VNC clipboard is not supported by Proxmox.
+     * @return Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only &lt;span pulumi-lang-nodejs=&#34;`vnc`&#34; pulumi-lang-dotnet=&#34;`Vnc`&#34; pulumi-lang-go=&#34;`vnc`&#34; pulumi-lang-python=&#34;`vnc`&#34; pulumi-lang-yaml=&#34;`vnc`&#34; pulumi-lang-java=&#34;`vnc`&#34; pulumi-lang-hcl=&#34;`vnc`&#34;&gt;`vnc`&lt;/span&gt; is available. Migration with VNC clipboard is not supported by Proxmox.
      * 
      */
     public Optional<Output<String>> clipboard() {
@@ -47,14 +47,14 @@ public final class VmVgaArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The VGA type (defaults to &lt;span pulumi-lang-nodejs=&#34;`std`&#34; pulumi-lang-dotnet=&#34;`Std`&#34; pulumi-lang-go=&#34;`std`&#34; pulumi-lang-python=&#34;`std`&#34; pulumi-lang-yaml=&#34;`std`&#34; pulumi-lang-java=&#34;`std`&#34;&gt;`std`&lt;/span&gt;).
+     * The VGA type (defaults to &lt;span pulumi-lang-nodejs=&#34;`std`&#34; pulumi-lang-dotnet=&#34;`Std`&#34; pulumi-lang-go=&#34;`std`&#34; pulumi-lang-python=&#34;`std`&#34; pulumi-lang-yaml=&#34;`std`&#34; pulumi-lang-java=&#34;`std`&#34; pulumi-lang-hcl=&#34;`std`&#34;&gt;`std`&lt;/span&gt;).
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The VGA type (defaults to &lt;span pulumi-lang-nodejs=&#34;`std`&#34; pulumi-lang-dotnet=&#34;`Std`&#34; pulumi-lang-go=&#34;`std`&#34; pulumi-lang-python=&#34;`std`&#34; pulumi-lang-yaml=&#34;`std`&#34; pulumi-lang-java=&#34;`std`&#34;&gt;`std`&lt;/span&gt;).
+     * @return The VGA type (defaults to &lt;span pulumi-lang-nodejs=&#34;`std`&#34; pulumi-lang-dotnet=&#34;`Std`&#34; pulumi-lang-go=&#34;`std`&#34; pulumi-lang-python=&#34;`std`&#34; pulumi-lang-yaml=&#34;`std`&#34; pulumi-lang-java=&#34;`std`&#34; pulumi-lang-hcl=&#34;`std`&#34;&gt;`std`&lt;/span&gt;).
      * 
      */
     public Optional<Output<String>> type() {
@@ -88,7 +88,7 @@ public final class VmVgaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clipboard Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only &lt;span pulumi-lang-nodejs=&#34;`vnc`&#34; pulumi-lang-dotnet=&#34;`Vnc`&#34; pulumi-lang-go=&#34;`vnc`&#34; pulumi-lang-python=&#34;`vnc`&#34; pulumi-lang-yaml=&#34;`vnc`&#34; pulumi-lang-java=&#34;`vnc`&#34;&gt;`vnc`&lt;/span&gt; is available. Migration with VNC clipboard is not supported by Proxmox.
+         * @param clipboard Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only &lt;span pulumi-lang-nodejs=&#34;`vnc`&#34; pulumi-lang-dotnet=&#34;`Vnc`&#34; pulumi-lang-go=&#34;`vnc`&#34; pulumi-lang-python=&#34;`vnc`&#34; pulumi-lang-yaml=&#34;`vnc`&#34; pulumi-lang-java=&#34;`vnc`&#34; pulumi-lang-hcl=&#34;`vnc`&#34;&gt;`vnc`&lt;/span&gt; is available. Migration with VNC clipboard is not supported by Proxmox.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class VmVgaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param clipboard Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only &lt;span pulumi-lang-nodejs=&#34;`vnc`&#34; pulumi-lang-dotnet=&#34;`Vnc`&#34; pulumi-lang-go=&#34;`vnc`&#34; pulumi-lang-python=&#34;`vnc`&#34; pulumi-lang-yaml=&#34;`vnc`&#34; pulumi-lang-java=&#34;`vnc`&#34;&gt;`vnc`&lt;/span&gt; is available. Migration with VNC clipboard is not supported by Proxmox.
+         * @param clipboard Enable a specific clipboard. If not set, depending on the display type the SPICE one will be added. Currently only &lt;span pulumi-lang-nodejs=&#34;`vnc`&#34; pulumi-lang-dotnet=&#34;`Vnc`&#34; pulumi-lang-go=&#34;`vnc`&#34; pulumi-lang-python=&#34;`vnc`&#34; pulumi-lang-yaml=&#34;`vnc`&#34; pulumi-lang-java=&#34;`vnc`&#34; pulumi-lang-hcl=&#34;`vnc`&#34;&gt;`vnc`&lt;/span&gt; is available. Migration with VNC clipboard is not supported by Proxmox.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class VmVgaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The VGA type (defaults to &lt;span pulumi-lang-nodejs=&#34;`std`&#34; pulumi-lang-dotnet=&#34;`Std`&#34; pulumi-lang-go=&#34;`std`&#34; pulumi-lang-python=&#34;`std`&#34; pulumi-lang-yaml=&#34;`std`&#34; pulumi-lang-java=&#34;`std`&#34;&gt;`std`&lt;/span&gt;).
+         * @param type The VGA type (defaults to &lt;span pulumi-lang-nodejs=&#34;`std`&#34; pulumi-lang-dotnet=&#34;`Std`&#34; pulumi-lang-go=&#34;`std`&#34; pulumi-lang-python=&#34;`std`&#34; pulumi-lang-yaml=&#34;`std`&#34; pulumi-lang-java=&#34;`std`&#34; pulumi-lang-hcl=&#34;`std`&#34;&gt;`std`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class VmVgaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The VGA type (defaults to &lt;span pulumi-lang-nodejs=&#34;`std`&#34; pulumi-lang-dotnet=&#34;`Std`&#34; pulumi-lang-go=&#34;`std`&#34; pulumi-lang-python=&#34;`std`&#34; pulumi-lang-yaml=&#34;`std`&#34; pulumi-lang-java=&#34;`std`&#34;&gt;`std`&lt;/span&gt;).
+         * @param type The VGA type (defaults to &lt;span pulumi-lang-nodejs=&#34;`std`&#34; pulumi-lang-dotnet=&#34;`Std`&#34; pulumi-lang-go=&#34;`std`&#34; pulumi-lang-python=&#34;`std`&#34; pulumi-lang-yaml=&#34;`std`&#34; pulumi-lang-java=&#34;`std`&#34; pulumi-lang-hcl=&#34;`std`&#34;&gt;`std`&lt;/span&gt;).
          * 
          * @return builder
          * 

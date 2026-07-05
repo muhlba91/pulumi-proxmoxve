@@ -497,7 +497,7 @@ class Vm(pulumi.CustomResource):
                  vga: pulumi.Input[Optional[Union['VmVgaArgs', 'VmVgaArgsDict']]] = None,
                  __props__=None):
         """
-        !> **DO NOT USE**
+        > **DO NOT USE**
         This is an experimental implementation of a Proxmox VM resource using Plugin Framework.<br><br>It is a Proof of Concept, highly experimental and **will** change in future. It does not support all features of the Proxmox API for VMs and **MUST NOT** be used in production.
 
         > Many attributes are marked as **optional** _and_ **computed** in the schema,
@@ -531,7 +531,7 @@ class Vm(pulumi.CustomResource):
                  args: VmArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        !> **DO NOT USE**
+        > **DO NOT USE**
         This is an experimental implementation of a Proxmox VM resource using Plugin Framework.<br><br>It is a Proof of Concept, highly experimental and **will** change in future. It does not support all features of the Proxmox API for VMs and **MUST NOT** be used in production.
 
         > Many attributes are marked as **optional** _and_ **computed** in the schema,

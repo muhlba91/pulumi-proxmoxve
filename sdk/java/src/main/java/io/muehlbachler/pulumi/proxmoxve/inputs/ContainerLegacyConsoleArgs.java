@@ -19,7 +19,7 @@ public final class ContainerLegacyConsoleArgs extends com.pulumi.resources.Resou
 
     /**
      * Whether to enable the console device (defaults
-     * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     @Import(name="enabled")
@@ -27,7 +27,7 @@ public final class ContainerLegacyConsoleArgs extends com.pulumi.resources.Resou
 
     /**
      * @return Whether to enable the console device (defaults
-     * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -35,14 +35,14 @@ public final class ContainerLegacyConsoleArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The number of available TTY (defaults to &lt;span pulumi-lang-nodejs=&#34;`2`&#34; pulumi-lang-dotnet=&#34;`2`&#34; pulumi-lang-go=&#34;`2`&#34; pulumi-lang-python=&#34;`2`&#34; pulumi-lang-yaml=&#34;`2`&#34; pulumi-lang-java=&#34;`2`&#34;&gt;`2`&lt;/span&gt;).
+     * The number of available TTY (defaults to &lt;span pulumi-lang-nodejs=&#34;`2`&#34; pulumi-lang-dotnet=&#34;`2`&#34; pulumi-lang-go=&#34;`2`&#34; pulumi-lang-python=&#34;`2`&#34; pulumi-lang-yaml=&#34;`2`&#34; pulumi-lang-java=&#34;`2`&#34; pulumi-lang-hcl=&#34;`2`&#34;&gt;`2`&lt;/span&gt;).
      * 
      */
     @Import(name="ttyCount")
     private @Nullable Output<Integer> ttyCount;
 
     /**
-     * @return The number of available TTY (defaults to &lt;span pulumi-lang-nodejs=&#34;`2`&#34; pulumi-lang-dotnet=&#34;`2`&#34; pulumi-lang-go=&#34;`2`&#34; pulumi-lang-python=&#34;`2`&#34; pulumi-lang-yaml=&#34;`2`&#34; pulumi-lang-java=&#34;`2`&#34;&gt;`2`&lt;/span&gt;).
+     * @return The number of available TTY (defaults to &lt;span pulumi-lang-nodejs=&#34;`2`&#34; pulumi-lang-dotnet=&#34;`2`&#34; pulumi-lang-go=&#34;`2`&#34; pulumi-lang-python=&#34;`2`&#34; pulumi-lang-yaml=&#34;`2`&#34; pulumi-lang-java=&#34;`2`&#34; pulumi-lang-hcl=&#34;`2`&#34;&gt;`2`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Integer>> ttyCount() {
@@ -50,14 +50,14 @@ public final class ContainerLegacyConsoleArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The console mode (defaults to &lt;span pulumi-lang-nodejs=&#34;`tty`&#34; pulumi-lang-dotnet=&#34;`Tty`&#34; pulumi-lang-go=&#34;`tty`&#34; pulumi-lang-python=&#34;`tty`&#34; pulumi-lang-yaml=&#34;`tty`&#34; pulumi-lang-java=&#34;`tty`&#34;&gt;`tty`&lt;/span&gt;).
+     * The console mode (defaults to &lt;span pulumi-lang-nodejs=&#34;`tty`&#34; pulumi-lang-dotnet=&#34;`Tty`&#34; pulumi-lang-go=&#34;`tty`&#34; pulumi-lang-python=&#34;`tty`&#34; pulumi-lang-yaml=&#34;`tty`&#34; pulumi-lang-java=&#34;`tty`&#34; pulumi-lang-hcl=&#34;`tty`&#34;&gt;`tty`&lt;/span&gt;).
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The console mode (defaults to &lt;span pulumi-lang-nodejs=&#34;`tty`&#34; pulumi-lang-dotnet=&#34;`Tty`&#34; pulumi-lang-go=&#34;`tty`&#34; pulumi-lang-python=&#34;`tty`&#34; pulumi-lang-yaml=&#34;`tty`&#34; pulumi-lang-java=&#34;`tty`&#34;&gt;`tty`&lt;/span&gt;).
+     * @return The console mode (defaults to &lt;span pulumi-lang-nodejs=&#34;`tty`&#34; pulumi-lang-dotnet=&#34;`Tty`&#34; pulumi-lang-go=&#34;`tty`&#34; pulumi-lang-python=&#34;`tty`&#34; pulumi-lang-yaml=&#34;`tty`&#34; pulumi-lang-java=&#34;`tty`&#34; pulumi-lang-hcl=&#34;`tty`&#34;&gt;`tty`&lt;/span&gt;).
      * 
      */
     public Optional<Output<String>> type() {
@@ -92,7 +92,7 @@ public final class ContainerLegacyConsoleArgs extends com.pulumi.resources.Resou
 
         /**
          * @param enabled Whether to enable the console device (defaults
-         * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+         * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class ContainerLegacyConsoleArgs extends com.pulumi.resources.Resou
 
         /**
          * @param enabled Whether to enable the console device (defaults
-         * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+         * to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class ContainerLegacyConsoleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param ttyCount The number of available TTY (defaults to &lt;span pulumi-lang-nodejs=&#34;`2`&#34; pulumi-lang-dotnet=&#34;`2`&#34; pulumi-lang-go=&#34;`2`&#34; pulumi-lang-python=&#34;`2`&#34; pulumi-lang-yaml=&#34;`2`&#34; pulumi-lang-java=&#34;`2`&#34;&gt;`2`&lt;/span&gt;).
+         * @param ttyCount The number of available TTY (defaults to &lt;span pulumi-lang-nodejs=&#34;`2`&#34; pulumi-lang-dotnet=&#34;`2`&#34; pulumi-lang-go=&#34;`2`&#34; pulumi-lang-python=&#34;`2`&#34; pulumi-lang-yaml=&#34;`2`&#34; pulumi-lang-java=&#34;`2`&#34; pulumi-lang-hcl=&#34;`2`&#34;&gt;`2`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class ContainerLegacyConsoleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param ttyCount The number of available TTY (defaults to &lt;span pulumi-lang-nodejs=&#34;`2`&#34; pulumi-lang-dotnet=&#34;`2`&#34; pulumi-lang-go=&#34;`2`&#34; pulumi-lang-python=&#34;`2`&#34; pulumi-lang-yaml=&#34;`2`&#34; pulumi-lang-java=&#34;`2`&#34;&gt;`2`&lt;/span&gt;).
+         * @param ttyCount The number of available TTY (defaults to &lt;span pulumi-lang-nodejs=&#34;`2`&#34; pulumi-lang-dotnet=&#34;`2`&#34; pulumi-lang-go=&#34;`2`&#34; pulumi-lang-python=&#34;`2`&#34; pulumi-lang-yaml=&#34;`2`&#34; pulumi-lang-java=&#34;`2`&#34; pulumi-lang-hcl=&#34;`2`&#34;&gt;`2`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class ContainerLegacyConsoleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param type The console mode (defaults to &lt;span pulumi-lang-nodejs=&#34;`tty`&#34; pulumi-lang-dotnet=&#34;`Tty`&#34; pulumi-lang-go=&#34;`tty`&#34; pulumi-lang-python=&#34;`tty`&#34; pulumi-lang-yaml=&#34;`tty`&#34; pulumi-lang-java=&#34;`tty`&#34;&gt;`tty`&lt;/span&gt;).
+         * @param type The console mode (defaults to &lt;span pulumi-lang-nodejs=&#34;`tty`&#34; pulumi-lang-dotnet=&#34;`Tty`&#34; pulumi-lang-go=&#34;`tty`&#34; pulumi-lang-python=&#34;`tty`&#34; pulumi-lang-yaml=&#34;`tty`&#34; pulumi-lang-java=&#34;`tty`&#34; pulumi-lang-hcl=&#34;`tty`&#34;&gt;`tty`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -146,7 +146,7 @@ public final class ContainerLegacyConsoleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param type The console mode (defaults to &lt;span pulumi-lang-nodejs=&#34;`tty`&#34; pulumi-lang-dotnet=&#34;`Tty`&#34; pulumi-lang-go=&#34;`tty`&#34; pulumi-lang-python=&#34;`tty`&#34; pulumi-lang-yaml=&#34;`tty`&#34; pulumi-lang-java=&#34;`tty`&#34;&gt;`tty`&lt;/span&gt;).
+         * @param type The console mode (defaults to &lt;span pulumi-lang-nodejs=&#34;`tty`&#34; pulumi-lang-dotnet=&#34;`Tty`&#34; pulumi-lang-go=&#34;`tty`&#34; pulumi-lang-python=&#34;`tty`&#34; pulumi-lang-yaml=&#34;`tty`&#34; pulumi-lang-java=&#34;`tty`&#34; pulumi-lang-hcl=&#34;`tty`&#34;&gt;`tty`&lt;/span&gt;).
          * 
          * @return builder
          * 

@@ -20,6 +20,11 @@ import javax.annotation.Nullable;
 /**
  * Manages a user.
  * 
+ * &gt; **Deprecation:** the inline &lt;span pulumi-lang-nodejs=&#34;`acl`&#34; pulumi-lang-dotnet=&#34;`Acl`&#34; pulumi-lang-go=&#34;`acl`&#34; pulumi-lang-python=&#34;`acl`&#34; pulumi-lang-yaml=&#34;`acl`&#34; pulumi-lang-java=&#34;`acl`&#34; pulumi-lang-hcl=&#34;`acl`&#34;&gt;`acl`&lt;/span&gt; block is deprecated. Manage user ACLs via the dedicated
+ * &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Acl`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Acl`&#34; pulumi-lang-go=&#34;`Acl`&#34; pulumi-lang-python=&#34;`Acl`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Acl`&#34; pulumi-lang-java=&#34;`proxmoxve.Acl`&#34; pulumi-lang-hcl=&#34;`proxmox_acl`&#34;&gt;`proxmoxve.Acl`&lt;/span&gt; resource instead. The &lt;span pulumi-lang-nodejs=&#34;`acl`&#34; pulumi-lang-dotnet=&#34;`Acl`&#34; pulumi-lang-go=&#34;`acl`&#34; pulumi-lang-python=&#34;`acl`&#34; pulumi-lang-yaml=&#34;`acl`&#34; pulumi-lang-java=&#34;`acl`&#34; pulumi-lang-hcl=&#34;`acl`&#34;&gt;`acl`&lt;/span&gt; block is no longer auto-populated from a
+ * cluster-wide fetch on refresh or import; existing configurations using &lt;span pulumi-lang-nodejs=&#34;`acl`&#34; pulumi-lang-dotnet=&#34;`Acl`&#34; pulumi-lang-go=&#34;`acl`&#34; pulumi-lang-python=&#34;`acl`&#34; pulumi-lang-yaml=&#34;`acl`&#34; pulumi-lang-java=&#34;`acl`&#34; pulumi-lang-hcl=&#34;`acl`&#34;&gt;`acl`&lt;/span&gt; blocks continue
+ * to work, but new code should use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Acl`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Acl`&#34; pulumi-lang-go=&#34;`Acl`&#34; pulumi-lang-python=&#34;`Acl`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Acl`&#34; pulumi-lang-java=&#34;`proxmoxve.Acl`&#34; pulumi-lang-hcl=&#34;`proxmox_acl`&#34;&gt;`proxmoxve.Acl`&lt;/span&gt;.
+ * 
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -30,11 +35,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import io.muehlbachler.pulumi.proxmoxve.RoleLegacy;
- * import io.muehlbachler.pulumi.proxmoxve.RoleLegacyArgs;
  * import io.muehlbachler.pulumi.proxmoxve.UserLegacy;
  * import io.muehlbachler.pulumi.proxmoxve.UserLegacyArgs;
- * import com.pulumi.proxmoxve.inputs.UserLegacyAclArgs;
+ * import io.muehlbachler.pulumi.proxmoxve.RoleLegacy;
+ * import io.muehlbachler.pulumi.proxmoxve.RoleLegacyArgs;
+ * import io.muehlbachler.pulumi.proxmoxve.Acl;
+ * import io.muehlbachler.pulumi.proxmoxve.AclArgs;
  * import java.util.ArrayList;
  * import java.util.Arrays;
  * import java.util.Map;
@@ -48,20 +54,22 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
+ *         var operationsAutomation = new UserLegacy("operationsAutomation", UserLegacyArgs.builder()
+ *             .comment("Managed by Pulumi")
+ *             .password("a-strong-password")
+ *             .userId("operations-automation}{@literal @}{@code pve")
+ *             .build());
+ * 
  *         var operationsMonitoring = new RoleLegacy("operationsMonitoring", RoleLegacyArgs.builder()
  *             .roleId("operations-monitoring")
  *             .privileges("VM.GuestAgent.Audit")
  *             .build());
  * 
- *         var operationsAutomation = new UserLegacy("operationsAutomation", UserLegacyArgs.builder()
- *             .acls(UserLegacyAclArgs.builder()
- *                 .path("/vms/1234")
- *                 .propagate(true)
- *                 .roleId(operationsMonitoring.roleId())
- *                 .build())
- *             .comment("Managed by Pulumi")
- *             .password("a-strong-password")
- *             .userId("operations-automation}{@literal @}{@code pve")
+ *         var operationsAutomationVms = new Acl("operationsAutomationVms", AclArgs.builder()
+ *             .userId(operationsAutomation.userId())
+ *             .path("/vms/1234")
+ *             .roleId(operationsMonitoring.roleId())
+ *             .propagate(true)
  *             .build());
  * 
  *     }}{@code
@@ -72,7 +80,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Instances can be imported using the &lt;span pulumi-lang-nodejs=&#34;`userId`&#34; pulumi-lang-dotnet=&#34;`UserId`&#34; pulumi-lang-go=&#34;`userId`&#34; pulumi-lang-python=&#34;`user_id`&#34; pulumi-lang-yaml=&#34;`userId`&#34; pulumi-lang-java=&#34;`userId`&#34;&gt;`userId`&lt;/span&gt;, e.g.,
+ * Instances can be imported using the &lt;span pulumi-lang-nodejs=&#34;`userId`&#34; pulumi-lang-dotnet=&#34;`UserId`&#34; pulumi-lang-go=&#34;`userId`&#34; pulumi-lang-python=&#34;`user_id`&#34; pulumi-lang-yaml=&#34;`userId`&#34; pulumi-lang-java=&#34;`userId`&#34; pulumi-lang-hcl=&#34;`user_id`&#34;&gt;`userId`&lt;/span&gt;, e.g.,
  * 
  * ```sh
  * $ pulumi import proxmoxve:index/userLegacy:UserLegacy operations_automation operations-automation{@literal @}pve
@@ -82,14 +90,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="proxmoxve:index/userLegacy:UserLegacy")
 public class UserLegacy extends com.pulumi.resources.CustomResource {
     /**
-     * The access control list (multiple blocks supported).
+     * The access control list (multiple blocks supported). Use
+     * &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Acl`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Acl`&#34; pulumi-lang-go=&#34;`Acl`&#34; pulumi-lang-python=&#34;`Acl`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Acl`&#34; pulumi-lang-java=&#34;`proxmoxve.Acl`&#34; pulumi-lang-hcl=&#34;`proxmox_acl`&#34;&gt;`proxmoxve.Acl`&lt;/span&gt; instead.
+     * 
+     * @deprecated
+     * Manage ACLs via the dedicated &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Acl`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Acl`&#34; pulumi-lang-go=&#34;`Acl`&#34; pulumi-lang-python=&#34;`Acl`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Acl`&#34; pulumi-lang-java=&#34;`proxmoxve.Acl`&#34; pulumi-lang-hcl=&#34;`proxmox_acl`&#34;&gt;`proxmoxve.Acl`&lt;/span&gt; resource instead. The inline &lt;span pulumi-lang-nodejs=&#34;`acl`&#34; pulumi-lang-dotnet=&#34;`Acl`&#34; pulumi-lang-go=&#34;`acl`&#34; pulumi-lang-python=&#34;`acl`&#34; pulumi-lang-yaml=&#34;`acl`&#34; pulumi-lang-java=&#34;`acl`&#34; pulumi-lang-hcl=&#34;`acl`&#34;&gt;`acl`&lt;/span&gt; block is no longer auto-populated from the cluster on refresh or import; existing users with &lt;span pulumi-lang-nodejs=&#34;`acl`&#34; pulumi-lang-dotnet=&#34;`Acl`&#34; pulumi-lang-go=&#34;`acl`&#34; pulumi-lang-python=&#34;`acl`&#34; pulumi-lang-yaml=&#34;`acl`&#34; pulumi-lang-java=&#34;`acl`&#34; pulumi-lang-hcl=&#34;`acl`&#34;&gt;`acl`&lt;/span&gt; blocks continue to work, but new code should use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Acl`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Acl`&#34; pulumi-lang-go=&#34;`Acl`&#34; pulumi-lang-python=&#34;`Acl`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Acl`&#34; pulumi-lang-java=&#34;`proxmoxve.Acl`&#34; pulumi-lang-hcl=&#34;`proxmox_acl`&#34;&gt;`proxmoxve.Acl`&lt;/span&gt;.
      * 
      */
+    @Deprecated /* Manage ACLs via the dedicated <span pulumi-lang-nodejs=""`proxmoxve.Acl`"" pulumi-lang-dotnet=""`proxmoxve.Acl`"" pulumi-lang-go=""`Acl`"" pulumi-lang-python=""`Acl`"" pulumi-lang-yaml=""`proxmoxve.Acl`"" pulumi-lang-java=""`proxmoxve.Acl`"" pulumi-lang-hcl=""`proxmox_acl`"">`proxmoxve.Acl`</span> resource instead. The inline <span pulumi-lang-nodejs=""`acl`"" pulumi-lang-dotnet=""`Acl`"" pulumi-lang-go=""`acl`"" pulumi-lang-python=""`acl`"" pulumi-lang-yaml=""`acl`"" pulumi-lang-java=""`acl`"" pulumi-lang-hcl=""`acl`"">`acl`</span> block is no longer auto-populated from the cluster on refresh or import; existing users with <span pulumi-lang-nodejs=""`acl`"" pulumi-lang-dotnet=""`Acl`"" pulumi-lang-go=""`acl`"" pulumi-lang-python=""`acl`"" pulumi-lang-yaml=""`acl`"" pulumi-lang-java=""`acl`"" pulumi-lang-hcl=""`acl`"">`acl`</span> blocks continue to work, but new code should use <span pulumi-lang-nodejs=""`proxmoxve.Acl`"" pulumi-lang-dotnet=""`proxmoxve.Acl`"" pulumi-lang-go=""`Acl`"" pulumi-lang-python=""`Acl`"" pulumi-lang-yaml=""`proxmoxve.Acl`"" pulumi-lang-java=""`proxmoxve.Acl`"" pulumi-lang-hcl=""`proxmox_acl`"">`proxmoxve.Acl`</span>. */
     @Export(name="acls", refs={List.class,UserLegacyAcl.class}, tree="[0,1]")
     private Output</* @Nullable */ List<UserLegacyAcl>> acls;
 
     /**
-     * @return The access control list (multiple blocks supported).
+     * @return The access control list (multiple blocks supported). Use
+     * &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Acl`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Acl`&#34; pulumi-lang-go=&#34;`Acl`&#34; pulumi-lang-python=&#34;`Acl`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Acl`&#34; pulumi-lang-java=&#34;`proxmoxve.Acl`&#34; pulumi-lang-hcl=&#34;`proxmox_acl`&#34;&gt;`proxmoxve.Acl`&lt;/span&gt; instead.
      * 
      */
     public Output<Optional<List<UserLegacyAcl>>> acls() {

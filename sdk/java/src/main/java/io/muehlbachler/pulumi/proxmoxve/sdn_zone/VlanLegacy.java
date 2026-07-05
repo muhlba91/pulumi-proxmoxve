@@ -18,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-go=&#34;`sdn/zone.Vlan`&#34; pulumi-lang-python=&#34;`sdn/zone.Vlan`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Vlan`&#34;&gt;`proxmoxve.sdn/zone.Vlan`&lt;/span&gt; instead. This resource will be removed in v1.0.
+ * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-go=&#34;`sdn/zone.Vlan`&#34; pulumi-lang-python=&#34;`sdn/zone.Vlan`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_zone_vlan`&#34;&gt;`proxmoxve.sdn/zone.Vlan`&lt;/span&gt; instead. This resource will be removed in v1.0.
  * 
  * VLAN Zone in Proxmox SDN. It uses an existing local Linux or OVS bridge to connect to the node&#39;s physical interface. It uses VLAN tagging defined in the VNet to isolate the network segments. This allows connectivity of VMs between different nodes.
  * 

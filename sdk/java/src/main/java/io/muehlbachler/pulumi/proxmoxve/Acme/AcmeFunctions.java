@@ -114,7 +114,7 @@ public final class AcmeFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:acme/getAccount:getAccount", TypeShape.of(GetAccountResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-go=&#34;`acme.Account`&#34; pulumi-lang-python=&#34;`acme.Account`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.Account`&#34;&gt;`proxmoxve.acme.Account`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-go=&#34;`acme.Account`&#34; pulumi-lang-python=&#34;`acme.Account`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-hcl=&#34;`proxmox_acme_account`&#34;&gt;`proxmoxve.acme.Account`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a specific ACME account.
      * 
@@ -128,7 +128,7 @@ public final class AcmeFunctions {
         return getAccountLegacy(GetAccountLegacyArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-go=&#34;`acme.Account`&#34; pulumi-lang-python=&#34;`acme.Account`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.Account`&#34;&gt;`proxmoxve.acme.Account`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-go=&#34;`acme.Account`&#34; pulumi-lang-python=&#34;`acme.Account`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-hcl=&#34;`proxmox_acme_account`&#34;&gt;`proxmoxve.acme.Account`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a specific ACME account.
      * 
@@ -142,7 +142,7 @@ public final class AcmeFunctions {
         return getAccountLegacyPlain(GetAccountLegacyPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-go=&#34;`acme.Account`&#34; pulumi-lang-python=&#34;`acme.Account`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.Account`&#34;&gt;`proxmoxve.acme.Account`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-go=&#34;`acme.Account`&#34; pulumi-lang-python=&#34;`acme.Account`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-hcl=&#34;`proxmox_acme_account`&#34;&gt;`proxmoxve.acme.Account`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a specific ACME account.
      * 
@@ -156,7 +156,7 @@ public final class AcmeFunctions {
         return getAccountLegacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-go=&#34;`acme.Account`&#34; pulumi-lang-python=&#34;`acme.Account`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.Account`&#34;&gt;`proxmoxve.acme.Account`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-go=&#34;`acme.Account`&#34; pulumi-lang-python=&#34;`acme.Account`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-hcl=&#34;`proxmox_acme_account`&#34;&gt;`proxmoxve.acme.Account`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a specific ACME account.
      * 
@@ -170,7 +170,7 @@ public final class AcmeFunctions {
         return getAccountLegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-go=&#34;`acme.Account`&#34; pulumi-lang-python=&#34;`acme.Account`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.Account`&#34;&gt;`proxmoxve.acme.Account`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-go=&#34;`acme.Account`&#34; pulumi-lang-python=&#34;`acme.Account`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-hcl=&#34;`proxmox_acme_account`&#34;&gt;`proxmoxve.acme.Account`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a specific ACME account.
      * 
@@ -184,7 +184,7 @@ public final class AcmeFunctions {
         return Deployment.getInstance().invoke("proxmoxve:acme/getAccountLegacy:getAccountLegacy", TypeShape.of(GetAccountLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-go=&#34;`acme.Account`&#34; pulumi-lang-python=&#34;`acme.Account`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.Account`&#34;&gt;`proxmoxve.acme.Account`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-go=&#34;`acme.Account`&#34; pulumi-lang-python=&#34;`acme.Account`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-hcl=&#34;`proxmox_acme_account`&#34;&gt;`proxmoxve.acme.Account`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a specific ACME account.
      * 
@@ -198,7 +198,7 @@ public final class AcmeFunctions {
         return Deployment.getInstance().invoke("proxmoxve:acme/getAccountLegacy:getAccountLegacy", TypeShape.of(GetAccountLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-go=&#34;`acme.Account`&#34; pulumi-lang-python=&#34;`acme.Account`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.Account`&#34;&gt;`proxmoxve.acme.Account`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-go=&#34;`acme.Account`&#34; pulumi-lang-python=&#34;`acme.Account`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-hcl=&#34;`proxmox_acme_account`&#34;&gt;`proxmoxve.acme.Account`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a specific ACME account.
      * 
@@ -492,7 +492,7 @@ public final class AcmeFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:acme/getAccounts:getAccounts", TypeShape.of(GetAccountsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-go=&#34;`acme.getAccounts`&#34; pulumi-lang-python=&#34;`acme_get_accounts`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getAccounts`&#34;&gt;`proxmoxve.acme.getAccounts`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-go=&#34;`acme.getAccounts`&#34; pulumi-lang-python=&#34;`acme_get_accounts`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-hcl=&#34;`data.proxmox_acme_accounts`&#34;&gt;`proxmoxve.acme.getAccounts`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves the list of ACME accounts.
      * 
@@ -534,7 +534,7 @@ public final class AcmeFunctions {
         return getAccountsLegacy(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-go=&#34;`acme.getAccounts`&#34; pulumi-lang-python=&#34;`acme_get_accounts`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getAccounts`&#34;&gt;`proxmoxve.acme.getAccounts`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-go=&#34;`acme.getAccounts`&#34; pulumi-lang-python=&#34;`acme_get_accounts`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-hcl=&#34;`data.proxmox_acme_accounts`&#34;&gt;`proxmoxve.acme.getAccounts`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves the list of ACME accounts.
      * 
@@ -576,7 +576,7 @@ public final class AcmeFunctions {
         return getAccountsLegacyPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-go=&#34;`acme.getAccounts`&#34; pulumi-lang-python=&#34;`acme_get_accounts`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getAccounts`&#34;&gt;`proxmoxve.acme.getAccounts`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-go=&#34;`acme.getAccounts`&#34; pulumi-lang-python=&#34;`acme_get_accounts`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-hcl=&#34;`data.proxmox_acme_accounts`&#34;&gt;`proxmoxve.acme.getAccounts`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves the list of ACME accounts.
      * 
@@ -618,7 +618,7 @@ public final class AcmeFunctions {
         return getAccountsLegacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-go=&#34;`acme.getAccounts`&#34; pulumi-lang-python=&#34;`acme_get_accounts`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getAccounts`&#34;&gt;`proxmoxve.acme.getAccounts`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-go=&#34;`acme.getAccounts`&#34; pulumi-lang-python=&#34;`acme_get_accounts`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-hcl=&#34;`data.proxmox_acme_accounts`&#34;&gt;`proxmoxve.acme.getAccounts`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves the list of ACME accounts.
      * 
@@ -660,7 +660,7 @@ public final class AcmeFunctions {
         return getAccountsLegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-go=&#34;`acme.getAccounts`&#34; pulumi-lang-python=&#34;`acme_get_accounts`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getAccounts`&#34;&gt;`proxmoxve.acme.getAccounts`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-go=&#34;`acme.getAccounts`&#34; pulumi-lang-python=&#34;`acme_get_accounts`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-hcl=&#34;`data.proxmox_acme_accounts`&#34;&gt;`proxmoxve.acme.getAccounts`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves the list of ACME accounts.
      * 
@@ -702,7 +702,7 @@ public final class AcmeFunctions {
         return Deployment.getInstance().invoke("proxmoxve:acme/getAccountsLegacy:getAccountsLegacy", TypeShape.of(GetAccountsLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-go=&#34;`acme.getAccounts`&#34; pulumi-lang-python=&#34;`acme_get_accounts`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getAccounts`&#34;&gt;`proxmoxve.acme.getAccounts`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-go=&#34;`acme.getAccounts`&#34; pulumi-lang-python=&#34;`acme_get_accounts`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-hcl=&#34;`data.proxmox_acme_accounts`&#34;&gt;`proxmoxve.acme.getAccounts`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves the list of ACME accounts.
      * 
@@ -744,7 +744,7 @@ public final class AcmeFunctions {
         return Deployment.getInstance().invoke("proxmoxve:acme/getAccountsLegacy:getAccountsLegacy", TypeShape.of(GetAccountsLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-go=&#34;`acme.getAccounts`&#34; pulumi-lang-python=&#34;`acme_get_accounts`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getAccounts`&#34;&gt;`proxmoxve.acme.getAccounts`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-go=&#34;`acme.getAccounts`&#34; pulumi-lang-python=&#34;`acme_get_accounts`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getAccounts`&#34; pulumi-lang-hcl=&#34;`data.proxmox_acme_accounts`&#34;&gt;`proxmoxve.acme.getAccounts`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves the list of ACME accounts.
      * 
@@ -1001,7 +1001,7 @@ public final class AcmeFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:acme/getPlugin:getPlugin", TypeShape.of(GetPluginResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-go=&#34;`acme.getPlugin`&#34; pulumi-lang-python=&#34;`acme_get_plugin`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getPlugin`&#34;&gt;`proxmoxve.acme.getPlugin`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-go=&#34;`acme.getPlugin`&#34; pulumi-lang-python=&#34;`acme_get_plugin`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-hcl=&#34;`data.proxmox_acme_plugin`&#34;&gt;`proxmoxve.acme.getPlugin`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves a single ACME plugin by plugin ID name.
      * 
@@ -1046,7 +1046,7 @@ public final class AcmeFunctions {
         return getPluginLegacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-go=&#34;`acme.getPlugin`&#34; pulumi-lang-python=&#34;`acme_get_plugin`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getPlugin`&#34;&gt;`proxmoxve.acme.getPlugin`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-go=&#34;`acme.getPlugin`&#34; pulumi-lang-python=&#34;`acme_get_plugin`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-hcl=&#34;`data.proxmox_acme_plugin`&#34;&gt;`proxmoxve.acme.getPlugin`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves a single ACME plugin by plugin ID name.
      * 
@@ -1091,7 +1091,7 @@ public final class AcmeFunctions {
         return getPluginLegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-go=&#34;`acme.getPlugin`&#34; pulumi-lang-python=&#34;`acme_get_plugin`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getPlugin`&#34;&gt;`proxmoxve.acme.getPlugin`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-go=&#34;`acme.getPlugin`&#34; pulumi-lang-python=&#34;`acme_get_plugin`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-hcl=&#34;`data.proxmox_acme_plugin`&#34;&gt;`proxmoxve.acme.getPlugin`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves a single ACME plugin by plugin ID name.
      * 
@@ -1136,7 +1136,7 @@ public final class AcmeFunctions {
         return Deployment.getInstance().invoke("proxmoxve:acme/getPluginLegacy:getPluginLegacy", TypeShape.of(GetPluginLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-go=&#34;`acme.getPlugin`&#34; pulumi-lang-python=&#34;`acme_get_plugin`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getPlugin`&#34;&gt;`proxmoxve.acme.getPlugin`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-go=&#34;`acme.getPlugin`&#34; pulumi-lang-python=&#34;`acme_get_plugin`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-hcl=&#34;`data.proxmox_acme_plugin`&#34;&gt;`proxmoxve.acme.getPlugin`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves a single ACME plugin by plugin ID name.
      * 
@@ -1181,7 +1181,7 @@ public final class AcmeFunctions {
         return Deployment.getInstance().invoke("proxmoxve:acme/getPluginLegacy:getPluginLegacy", TypeShape.of(GetPluginLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-go=&#34;`acme.getPlugin`&#34; pulumi-lang-python=&#34;`acme_get_plugin`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getPlugin`&#34;&gt;`proxmoxve.acme.getPlugin`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-go=&#34;`acme.getPlugin`&#34; pulumi-lang-python=&#34;`acme_get_plugin`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getPlugin`&#34; pulumi-lang-hcl=&#34;`data.proxmox_acme_plugin`&#34;&gt;`proxmoxve.acme.getPlugin`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves a single ACME plugin by plugin ID name.
      * 
@@ -1506,7 +1506,7 @@ public final class AcmeFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:acme/getPlugins:getPlugins", TypeShape.of(GetPluginsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-go=&#34;`acme.getPlugins`&#34; pulumi-lang-python=&#34;`acme_get_plugins`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getPlugins`&#34;&gt;`proxmoxve.acme.getPlugins`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-go=&#34;`acme.getPlugins`&#34; pulumi-lang-python=&#34;`acme_get_plugins`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-hcl=&#34;`data.proxmox_acme_plugins`&#34;&gt;`proxmoxve.acme.getPlugins`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves the list of ACME plugins.
      * 
@@ -1548,7 +1548,7 @@ public final class AcmeFunctions {
         return getPluginsLegacy(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-go=&#34;`acme.getPlugins`&#34; pulumi-lang-python=&#34;`acme_get_plugins`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getPlugins`&#34;&gt;`proxmoxve.acme.getPlugins`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-go=&#34;`acme.getPlugins`&#34; pulumi-lang-python=&#34;`acme_get_plugins`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-hcl=&#34;`data.proxmox_acme_plugins`&#34;&gt;`proxmoxve.acme.getPlugins`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves the list of ACME plugins.
      * 
@@ -1590,7 +1590,7 @@ public final class AcmeFunctions {
         return getPluginsLegacyPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-go=&#34;`acme.getPlugins`&#34; pulumi-lang-python=&#34;`acme_get_plugins`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getPlugins`&#34;&gt;`proxmoxve.acme.getPlugins`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-go=&#34;`acme.getPlugins`&#34; pulumi-lang-python=&#34;`acme_get_plugins`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-hcl=&#34;`data.proxmox_acme_plugins`&#34;&gt;`proxmoxve.acme.getPlugins`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves the list of ACME plugins.
      * 
@@ -1632,7 +1632,7 @@ public final class AcmeFunctions {
         return getPluginsLegacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-go=&#34;`acme.getPlugins`&#34; pulumi-lang-python=&#34;`acme_get_plugins`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getPlugins`&#34;&gt;`proxmoxve.acme.getPlugins`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-go=&#34;`acme.getPlugins`&#34; pulumi-lang-python=&#34;`acme_get_plugins`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-hcl=&#34;`data.proxmox_acme_plugins`&#34;&gt;`proxmoxve.acme.getPlugins`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves the list of ACME plugins.
      * 
@@ -1674,7 +1674,7 @@ public final class AcmeFunctions {
         return getPluginsLegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-go=&#34;`acme.getPlugins`&#34; pulumi-lang-python=&#34;`acme_get_plugins`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getPlugins`&#34;&gt;`proxmoxve.acme.getPlugins`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-go=&#34;`acme.getPlugins`&#34; pulumi-lang-python=&#34;`acme_get_plugins`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-hcl=&#34;`data.proxmox_acme_plugins`&#34;&gt;`proxmoxve.acme.getPlugins`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves the list of ACME plugins.
      * 
@@ -1716,7 +1716,7 @@ public final class AcmeFunctions {
         return Deployment.getInstance().invoke("proxmoxve:acme/getPluginsLegacy:getPluginsLegacy", TypeShape.of(GetPluginsLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-go=&#34;`acme.getPlugins`&#34; pulumi-lang-python=&#34;`acme_get_plugins`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getPlugins`&#34;&gt;`proxmoxve.acme.getPlugins`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-go=&#34;`acme.getPlugins`&#34; pulumi-lang-python=&#34;`acme_get_plugins`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-hcl=&#34;`data.proxmox_acme_plugins`&#34;&gt;`proxmoxve.acme.getPlugins`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves the list of ACME plugins.
      * 
@@ -1758,7 +1758,7 @@ public final class AcmeFunctions {
         return Deployment.getInstance().invoke("proxmoxve:acme/getPluginsLegacy:getPluginsLegacy", TypeShape.of(GetPluginsLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-go=&#34;`acme.getPlugins`&#34; pulumi-lang-python=&#34;`acme_get_plugins`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getPlugins`&#34;&gt;`proxmoxve.acme.getPlugins`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-go=&#34;`acme.getPlugins`&#34; pulumi-lang-python=&#34;`acme_get_plugins`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.getPlugins`&#34; pulumi-lang-hcl=&#34;`data.proxmox_acme_plugins`&#34;&gt;`proxmoxve.acme.getPlugins`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves the list of ACME plugins.
      * 

@@ -113,10 +113,23 @@ namespace Pulumi.ProxmoxVE.Metrics
         public Output<string?> InfluxOrganization { get; private set; } = null!;
 
         /// <summary>
-        /// The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
+        /// The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead. Cannot be used together with `InfluxTokenWo`.
         /// </summary>
         [Output("influxToken")]
         public Output<string?> InfluxToken { get; private set; } = null!;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The InfluxDB access token (write-only). Prefer this over `InfluxToken` to avoid storing the secret in Terraform state. Cannot be used together with `InfluxToken`.
+        /// </summary>
+        [Output("influxTokenWo")]
+        public Output<string?> InfluxTokenWo { get; private set; } = null!;
+
+        /// <summary>
+        /// Increment this counter to rotate `InfluxTokenWo` without changing other fields.
+        /// </summary>
+        [Output("influxTokenWoVersion")]
+        public Output<int?> InfluxTokenWoVersion { get; private set; } = null!;
 
         /// <summary>
         /// Set to `False` to disable certificate verification for https endpoints. If not set, PVE default is `True`.
@@ -235,6 +248,7 @@ namespace Pulumi.ProxmoxVE.Metrics
                 AdditionalSecretOutputs =
                 {
                     "influxToken",
+                    "influxTokenWo",
                     "opentelemetryHeaders",
                 },
             };
@@ -312,7 +326,7 @@ namespace Pulumi.ProxmoxVE.Metrics
         private Input<string>? _influxToken;
 
         /// <summary>
-        /// The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
+        /// The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead. Cannot be used together with `InfluxTokenWo`.
         /// </summary>
         public Input<string>? InfluxToken
         {
@@ -323,6 +337,29 @@ namespace Pulumi.ProxmoxVE.Metrics
                 _influxToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("influxTokenWo")]
+        private Input<string>? _influxTokenWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The InfluxDB access token (write-only). Prefer this over `InfluxToken` to avoid storing the secret in Terraform state. Cannot be used together with `InfluxToken`.
+        /// </summary>
+        public Input<string>? InfluxTokenWo
+        {
+            get => _influxTokenWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _influxTokenWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Increment this counter to rotate `InfluxTokenWo` without changing other fields.
+        /// </summary>
+        [Input("influxTokenWoVersion")]
+        public Input<int>? InfluxTokenWoVersion { get; set; }
 
         /// <summary>
         /// Set to `False` to disable certificate verification for https endpoints. If not set, PVE default is `True`.
@@ -484,7 +521,7 @@ namespace Pulumi.ProxmoxVE.Metrics
         private Input<string>? _influxToken;
 
         /// <summary>
-        /// The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
+        /// The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead. Cannot be used together with `InfluxTokenWo`.
         /// </summary>
         public Input<string>? InfluxToken
         {
@@ -495,6 +532,29 @@ namespace Pulumi.ProxmoxVE.Metrics
                 _influxToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("influxTokenWo")]
+        private Input<string>? _influxTokenWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The InfluxDB access token (write-only). Prefer this over `InfluxToken` to avoid storing the secret in Terraform state. Cannot be used together with `InfluxToken`.
+        /// </summary>
+        public Input<string>? InfluxTokenWo
+        {
+            get => _influxTokenWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _influxTokenWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Increment this counter to rotate `InfluxTokenWo` without changing other fields.
+        /// </summary>
+        [Input("influxTokenWoVersion")]
+        public Input<int>? InfluxTokenWoVersion { get; set; }
 
         /// <summary>
         /// Set to `False` to disable certificate verification for https endpoints. If not set, PVE default is `True`.

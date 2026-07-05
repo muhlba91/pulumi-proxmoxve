@@ -60,11 +60,16 @@ type Plugin struct {
 	Api pulumi.StringOutput `pulumi:"api"`
 	// DNS plugin data.
 	Data pulumi.StringMapOutput `pulumi:"data"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// DNS plugin data, supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so credentials are never stored in Terraform state. Requires Terraform 1.11+. Mutually exclusive with `data`. Pair with `dataWoVersion` to push rotated values.
+	DataWo pulumi.StringMapOutput `pulumi:"dataWo"`
+	// Version counter for `dataWo`. Because write-only values are not stored in state, Terraform cannot detect when `dataWo` changes; increment this value to signal a rotation and force the new `dataWo` to be sent.
+	DataWoVersion pulumi.IntPtrOutput `pulumi:"dataWoVersion"`
 	// SHA1 digest of the current configuration. Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
 	Digest pulumi.StringOutput `pulumi:"digest"`
 	// Flag to disable the config.
 	Disable pulumi.BoolPtrOutput `pulumi:"disable"`
-	// ACME Plugin ID name.
+	// ACME plugin ID name.
 	Plugin pulumi.StringOutput `pulumi:"plugin"`
 	// Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records (0 - 172800).
 	ValidationDelay pulumi.IntOutput `pulumi:"validationDelay"`
@@ -83,6 +88,13 @@ func NewPlugin(ctx *pulumi.Context,
 	if args.Plugin == nil {
 		return nil, errors.New("invalid value for required argument 'Plugin'")
 	}
+	if args.DataWo != nil {
+		args.DataWo = pulumi.ToSecret(args.DataWo).(pulumi.StringMapInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"dataWo",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Plugin
 	err := ctx.RegisterResource("proxmoxve:acme/dns/plugin:Plugin", name, args, &resource, opts...)
@@ -110,11 +122,16 @@ type pluginState struct {
 	Api *string `pulumi:"api"`
 	// DNS plugin data.
 	Data map[string]string `pulumi:"data"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// DNS plugin data, supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so credentials are never stored in Terraform state. Requires Terraform 1.11+. Mutually exclusive with `data`. Pair with `dataWoVersion` to push rotated values.
+	DataWo map[string]string `pulumi:"dataWo"`
+	// Version counter for `dataWo`. Because write-only values are not stored in state, Terraform cannot detect when `dataWo` changes; increment this value to signal a rotation and force the new `dataWo` to be sent.
+	DataWoVersion *int `pulumi:"dataWoVersion"`
 	// SHA1 digest of the current configuration. Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
 	Digest *string `pulumi:"digest"`
 	// Flag to disable the config.
 	Disable *bool `pulumi:"disable"`
-	// ACME Plugin ID name.
+	// ACME plugin ID name.
 	Plugin *string `pulumi:"plugin"`
 	// Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records (0 - 172800).
 	ValidationDelay *int `pulumi:"validationDelay"`
@@ -125,11 +142,16 @@ type PluginState struct {
 	Api pulumi.StringPtrInput
 	// DNS plugin data.
 	Data pulumi.StringMapInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// DNS plugin data, supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so credentials are never stored in Terraform state. Requires Terraform 1.11+. Mutually exclusive with `data`. Pair with `dataWoVersion` to push rotated values.
+	DataWo pulumi.StringMapInput
+	// Version counter for `dataWo`. Because write-only values are not stored in state, Terraform cannot detect when `dataWo` changes; increment this value to signal a rotation and force the new `dataWo` to be sent.
+	DataWoVersion pulumi.IntPtrInput
 	// SHA1 digest of the current configuration. Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
 	Digest pulumi.StringPtrInput
 	// Flag to disable the config.
 	Disable pulumi.BoolPtrInput
-	// ACME Plugin ID name.
+	// ACME plugin ID name.
 	Plugin pulumi.StringPtrInput
 	// Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records (0 - 172800).
 	ValidationDelay pulumi.IntPtrInput
@@ -144,11 +166,16 @@ type pluginArgs struct {
 	Api string `pulumi:"api"`
 	// DNS plugin data.
 	Data map[string]string `pulumi:"data"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// DNS plugin data, supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so credentials are never stored in Terraform state. Requires Terraform 1.11+. Mutually exclusive with `data`. Pair with `dataWoVersion` to push rotated values.
+	DataWo map[string]string `pulumi:"dataWo"`
+	// Version counter for `dataWo`. Because write-only values are not stored in state, Terraform cannot detect when `dataWo` changes; increment this value to signal a rotation and force the new `dataWo` to be sent.
+	DataWoVersion *int `pulumi:"dataWoVersion"`
 	// SHA1 digest of the current configuration. Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
 	Digest *string `pulumi:"digest"`
 	// Flag to disable the config.
 	Disable *bool `pulumi:"disable"`
-	// ACME Plugin ID name.
+	// ACME plugin ID name.
 	Plugin string `pulumi:"plugin"`
 	// Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records (0 - 172800).
 	ValidationDelay *int `pulumi:"validationDelay"`
@@ -160,11 +187,16 @@ type PluginArgs struct {
 	Api pulumi.StringInput
 	// DNS plugin data.
 	Data pulumi.StringMapInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// DNS plugin data, supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so credentials are never stored in Terraform state. Requires Terraform 1.11+. Mutually exclusive with `data`. Pair with `dataWoVersion` to push rotated values.
+	DataWo pulumi.StringMapInput
+	// Version counter for `dataWo`. Because write-only values are not stored in state, Terraform cannot detect when `dataWo` changes; increment this value to signal a rotation and force the new `dataWo` to be sent.
+	DataWoVersion pulumi.IntPtrInput
 	// SHA1 digest of the current configuration. Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
 	Digest pulumi.StringPtrInput
 	// Flag to disable the config.
 	Disable pulumi.BoolPtrInput
-	// ACME Plugin ID name.
+	// ACME plugin ID name.
 	Plugin pulumi.StringInput
 	// Extra delay in seconds to wait before requesting validation. Allows to cope with a long TTL of DNS records (0 - 172800).
 	ValidationDelay pulumi.IntPtrInput
@@ -267,6 +299,17 @@ func (o PluginOutput) Data() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Plugin) pulumi.StringMapOutput { return v.Data }).(pulumi.StringMapOutput)
 }
 
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// DNS plugin data, supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so credentials are never stored in Terraform state. Requires Terraform 1.11+. Mutually exclusive with `data`. Pair with `dataWoVersion` to push rotated values.
+func (o PluginOutput) DataWo() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Plugin) pulumi.StringMapOutput { return v.DataWo }).(pulumi.StringMapOutput)
+}
+
+// Version counter for `dataWo`. Because write-only values are not stored in state, Terraform cannot detect when `dataWo` changes; increment this value to signal a rotation and force the new `dataWo` to be sent.
+func (o PluginOutput) DataWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Plugin) pulumi.IntPtrOutput { return v.DataWoVersion }).(pulumi.IntPtrOutput)
+}
+
 // SHA1 digest of the current configuration. Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
 func (o PluginOutput) Digest() pulumi.StringOutput {
 	return o.ApplyT(func(v *Plugin) pulumi.StringOutput { return v.Digest }).(pulumi.StringOutput)
@@ -277,7 +320,7 @@ func (o PluginOutput) Disable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Plugin) pulumi.BoolPtrOutput { return v.Disable }).(pulumi.BoolPtrOutput)
 }
 
-// ACME Plugin ID name.
+// ACME plugin ID name.
 func (o PluginOutput) Plugin() pulumi.StringOutput {
 	return o.ApplyT(func(v *Plugin) pulumi.StringOutput { return v.Plugin }).(pulumi.StringOutput)
 }

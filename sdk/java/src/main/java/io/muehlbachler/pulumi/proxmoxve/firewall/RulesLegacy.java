@@ -20,7 +20,7 @@ import javax.annotation.Nullable;
 /**
  * Manages cluster-level, node-level or VM/container-level firewall rules.
  * 
- * &gt; Before creating a new &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.firewall.RulesLegacy`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.firewall.RulesLegacy`&#34; pulumi-lang-go=&#34;`firewall.RulesLegacy`&#34; pulumi-lang-python=&#34;`firewall.RulesLegacy`&#34; pulumi-lang-yaml=&#34;`proxmoxve.firewall.RulesLegacy`&#34; pulumi-lang-java=&#34;`proxmoxve.firewall.RulesLegacy`&#34;&gt;`proxmoxve.firewall.RulesLegacy`&lt;/span&gt; resource, verify that no rules already exist for the target (cluster, node, VM, or container). If rules are already configured, import them first using the appropriate import command.
+ * &gt; Before creating a new &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.firewall.RulesLegacy`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.firewall.RulesLegacy`&#34; pulumi-lang-go=&#34;`firewall.RulesLegacy`&#34; pulumi-lang-python=&#34;`firewall.RulesLegacy`&#34; pulumi-lang-yaml=&#34;`proxmoxve.firewall.RulesLegacy`&#34; pulumi-lang-java=&#34;`proxmoxve.firewall.RulesLegacy`&#34; pulumi-lang-hcl=&#34;`proxmox_virtual_environment_firewall_rules`&#34;&gt;`proxmoxve.firewall.RulesLegacy`&lt;/span&gt; resource, verify that no rules already exist for the target (cluster, node, VM, or container). If rules are already configured, import them first using the appropriate import command.
  * 
  * ## Example Usage
  * 
@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * ### Cluster Rules
- * Use the import ID: &lt;span pulumi-lang-nodejs=&#34;`cluster`&#34; pulumi-lang-dotnet=&#34;`Cluster`&#34; pulumi-lang-go=&#34;`cluster`&#34; pulumi-lang-python=&#34;`cluster`&#34; pulumi-lang-yaml=&#34;`cluster`&#34; pulumi-lang-java=&#34;`cluster`&#34;&gt;`cluster`&lt;/span&gt;
+ * Use the import ID: &lt;span pulumi-lang-nodejs=&#34;`cluster`&#34; pulumi-lang-dotnet=&#34;`Cluster`&#34; pulumi-lang-go=&#34;`cluster`&#34; pulumi-lang-python=&#34;`cluster`&#34; pulumi-lang-yaml=&#34;`cluster`&#34; pulumi-lang-java=&#34;`cluster`&#34; pulumi-lang-hcl=&#34;`cluster`&#34;&gt;`cluster`&lt;/span&gt;
  * 
  * **Example:**
  * ```sh
@@ -100,7 +100,7 @@ import javax.annotation.Nullable;
  * 
  * ### Node Rules
  * Use the import ID format: `node/&lt;node_name&gt;`
- * Example uses node name &lt;span pulumi-lang-nodejs=&#34;`pve`&#34; pulumi-lang-dotnet=&#34;`Pve`&#34; pulumi-lang-go=&#34;`pve`&#34; pulumi-lang-python=&#34;`pve`&#34; pulumi-lang-yaml=&#34;`pve`&#34; pulumi-lang-java=&#34;`pve`&#34;&gt;`pve`&lt;/span&gt;.
+ * Example uses node name &lt;span pulumi-lang-nodejs=&#34;`pve`&#34; pulumi-lang-dotnet=&#34;`Pve`&#34; pulumi-lang-go=&#34;`pve`&#34; pulumi-lang-python=&#34;`pve`&#34; pulumi-lang-yaml=&#34;`pve`&#34; pulumi-lang-java=&#34;`pve`&#34; pulumi-lang-hcl=&#34;`pve`&#34;&gt;`pve`&lt;/span&gt;.
  * 
  * **Example:**
  * ```sh
@@ -109,7 +109,7 @@ import javax.annotation.Nullable;
  * 
  * ### VM Rules
  * Use the import ID format: `vm/&lt;node_name&gt;/&lt;vm_id&gt;`
- * Example uses node name &lt;span pulumi-lang-nodejs=&#34;`pve`&#34; pulumi-lang-dotnet=&#34;`Pve`&#34; pulumi-lang-go=&#34;`pve`&#34; pulumi-lang-python=&#34;`pve`&#34; pulumi-lang-yaml=&#34;`pve`&#34; pulumi-lang-java=&#34;`pve`&#34;&gt;`pve`&lt;/span&gt; and VM ID &lt;span pulumi-lang-nodejs=&#34;`100`&#34; pulumi-lang-dotnet=&#34;`100`&#34; pulumi-lang-go=&#34;`100`&#34; pulumi-lang-python=&#34;`100`&#34; pulumi-lang-yaml=&#34;`100`&#34; pulumi-lang-java=&#34;`100`&#34;&gt;`100`&lt;/span&gt;.
+ * Example uses node name &lt;span pulumi-lang-nodejs=&#34;`pve`&#34; pulumi-lang-dotnet=&#34;`Pve`&#34; pulumi-lang-go=&#34;`pve`&#34; pulumi-lang-python=&#34;`pve`&#34; pulumi-lang-yaml=&#34;`pve`&#34; pulumi-lang-java=&#34;`pve`&#34; pulumi-lang-hcl=&#34;`pve`&#34;&gt;`pve`&lt;/span&gt; and VM ID &lt;span pulumi-lang-nodejs=&#34;`100`&#34; pulumi-lang-dotnet=&#34;`100`&#34; pulumi-lang-go=&#34;`100`&#34; pulumi-lang-python=&#34;`100`&#34; pulumi-lang-yaml=&#34;`100`&#34; pulumi-lang-java=&#34;`100`&#34; pulumi-lang-hcl=&#34;`100`&#34;&gt;`100`&lt;/span&gt;.
  * 
  * **Example:**
  * ```sh
@@ -118,7 +118,7 @@ import javax.annotation.Nullable;
  * 
  * ### Container Rules
  * Use the import ID format: `container/&lt;node_name&gt;/&lt;container_id&gt;`
- * Example uses node name &lt;span pulumi-lang-nodejs=&#34;`pve`&#34; pulumi-lang-dotnet=&#34;`Pve`&#34; pulumi-lang-go=&#34;`pve`&#34; pulumi-lang-python=&#34;`pve`&#34; pulumi-lang-yaml=&#34;`pve`&#34; pulumi-lang-java=&#34;`pve`&#34;&gt;`pve`&lt;/span&gt; and container ID &lt;span pulumi-lang-nodejs=&#34;`100`&#34; pulumi-lang-dotnet=&#34;`100`&#34; pulumi-lang-go=&#34;`100`&#34; pulumi-lang-python=&#34;`100`&#34; pulumi-lang-yaml=&#34;`100`&#34; pulumi-lang-java=&#34;`100`&#34;&gt;`100`&lt;/span&gt;.
+ * Example uses node name &lt;span pulumi-lang-nodejs=&#34;`pve`&#34; pulumi-lang-dotnet=&#34;`Pve`&#34; pulumi-lang-go=&#34;`pve`&#34; pulumi-lang-python=&#34;`pve`&#34; pulumi-lang-yaml=&#34;`pve`&#34; pulumi-lang-java=&#34;`pve`&#34; pulumi-lang-hcl=&#34;`pve`&#34;&gt;`pve`&lt;/span&gt; and container ID &lt;span pulumi-lang-nodejs=&#34;`100`&#34; pulumi-lang-dotnet=&#34;`100`&#34; pulumi-lang-go=&#34;`100`&#34; pulumi-lang-python=&#34;`100`&#34; pulumi-lang-yaml=&#34;`100`&#34; pulumi-lang-java=&#34;`100`&#34; pulumi-lang-hcl=&#34;`100`&#34;&gt;`100`&lt;/span&gt;.
  * 
  * **Example:**
  * ```sh
@@ -158,7 +158,7 @@ public class RulesLegacy extends com.pulumi.resources.CustomResource {
     }
     /**
      * Firewall rule block (multiple blocks supported).
-     * The provider supports two types of the &lt;span pulumi-lang-nodejs=&#34;`rule`&#34; pulumi-lang-dotnet=&#34;`Rule`&#34; pulumi-lang-go=&#34;`rule`&#34; pulumi-lang-python=&#34;`rule`&#34; pulumi-lang-yaml=&#34;`rule`&#34; pulumi-lang-java=&#34;`rule`&#34;&gt;`rule`&lt;/span&gt; blocks:
+     * The provider supports two types of the &lt;span pulumi-lang-nodejs=&#34;`rule`&#34; pulumi-lang-dotnet=&#34;`Rule`&#34; pulumi-lang-go=&#34;`rule`&#34; pulumi-lang-python=&#34;`rule`&#34; pulumi-lang-yaml=&#34;`rule`&#34; pulumi-lang-java=&#34;`rule`&#34; pulumi-lang-hcl=&#34;`rule`&#34;&gt;`rule`&lt;/span&gt; blocks:
      * - A rule definition block, which includes the following arguments:
      * 
      */
@@ -167,7 +167,7 @@ public class RulesLegacy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Firewall rule block (multiple blocks supported).
-     * The provider supports two types of the &lt;span pulumi-lang-nodejs=&#34;`rule`&#34; pulumi-lang-dotnet=&#34;`Rule`&#34; pulumi-lang-go=&#34;`rule`&#34; pulumi-lang-python=&#34;`rule`&#34; pulumi-lang-yaml=&#34;`rule`&#34; pulumi-lang-java=&#34;`rule`&#34;&gt;`rule`&lt;/span&gt; blocks:
+     * The provider supports two types of the &lt;span pulumi-lang-nodejs=&#34;`rule`&#34; pulumi-lang-dotnet=&#34;`Rule`&#34; pulumi-lang-go=&#34;`rule`&#34; pulumi-lang-python=&#34;`rule`&#34; pulumi-lang-yaml=&#34;`rule`&#34; pulumi-lang-java=&#34;`rule`&#34; pulumi-lang-hcl=&#34;`rule`&#34;&gt;`rule`&lt;/span&gt; blocks:
      * - A rule definition block, which includes the following arguments:
      * 
      */

@@ -12,6 +12,11 @@ namespace Pulumi.ProxmoxVE
     /// <summary>
     /// Manages a user.
     /// 
+    /// &gt; **Deprecation:** the inline `Acl` block is deprecated. Manage user ACLs via the dedicated
+    /// `proxmoxve.Acl` resource instead. The `Acl` block is no longer auto-populated from a
+    /// cluster-wide fetch on refresh or import; existing configurations using `Acl` blocks continue
+    /// to work, but new code should use `proxmoxve.Acl`.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -22,6 +27,13 @@ namespace Pulumi.ProxmoxVE
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
+    ///     var operationsAutomation = new ProxmoxVE.UserLegacy("operations_automation", new()
+    ///     {
+    ///         Comment = "Managed by Pulumi",
+    ///         Password = "a-strong-password",
+    ///         UserId = "operations-automation@pve",
+    ///     });
+    /// 
     ///     var operationsMonitoring = new ProxmoxVE.RoleLegacy("operations_monitoring", new()
     ///     {
     ///         RoleId = "operations-monitoring",
@@ -31,20 +43,12 @@ namespace Pulumi.ProxmoxVE
     ///         },
     ///     });
     /// 
-    ///     var operationsAutomation = new ProxmoxVE.UserLegacy("operations_automation", new()
+    ///     var operationsAutomationVms = new ProxmoxVE.Acl("operations_automation_vms", new()
     ///     {
-    ///         Acls = new[]
-    ///         {
-    ///             new ProxmoxVE.Inputs.UserLegacyAclArgs
-    ///             {
-    ///                 Path = "/vms/1234",
-    ///                 Propagate = true,
-    ///                 RoleId = operationsMonitoring.RoleId,
-    ///             },
-    ///         },
-    ///         Comment = "Managed by Pulumi",
-    ///         Password = "a-strong-password",
-    ///         UserId = "operations-automation@pve",
+    ///         UserId = operationsAutomation.UserId,
+    ///         Path = "/vms/1234",
+    ///         RoleId = operationsMonitoring.RoleId,
+    ///         Propagate = true,
     ///     });
     /// 
     /// });
@@ -62,7 +66,8 @@ namespace Pulumi.ProxmoxVE
     public partial class UserLegacy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The access control list (multiple blocks supported).
+        /// The access control list (multiple blocks supported). Use
+        /// `proxmoxve.Acl` instead.
         /// </summary>
         [Output("acls")]
         public Output<ImmutableArray<Outputs.UserLegacyAcl>> Acls { get; private set; } = null!;
@@ -182,8 +187,10 @@ namespace Pulumi.ProxmoxVE
         private InputList<Inputs.UserLegacyAclArgs>? _acls;
 
         /// <summary>
-        /// The access control list (multiple blocks supported).
+        /// The access control list (multiple blocks supported). Use
+        /// `proxmoxve.Acl` instead.
         /// </summary>
+        [Obsolete(@"Manage ACLs via the dedicated `proxmoxve.Acl` resource instead. The inline `Acl` block is no longer auto-populated from the cluster on refresh or import; existing users with `Acl` blocks continue to work, but new code should use `proxmoxve.Acl`.")]
         public InputList<Inputs.UserLegacyAclArgs> Acls
         {
             get => _acls ?? (_acls = new InputList<Inputs.UserLegacyAclArgs>());
@@ -278,8 +285,10 @@ namespace Pulumi.ProxmoxVE
         private InputList<Inputs.UserLegacyAclGetArgs>? _acls;
 
         /// <summary>
-        /// The access control list (multiple blocks supported).
+        /// The access control list (multiple blocks supported). Use
+        /// `proxmoxve.Acl` instead.
         /// </summary>
+        [Obsolete(@"Manage ACLs via the dedicated `proxmoxve.Acl` resource instead. The inline `Acl` block is no longer auto-populated from the cluster on refresh or import; existing users with `Acl` blocks continue to work, but new code should use `proxmoxve.Acl`.")]
         public InputList<Inputs.UserLegacyAclGetArgs> Acls
         {
             get => _acls ?? (_acls = new InputList<Inputs.UserLegacyAclGetArgs>());

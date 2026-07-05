@@ -67,6 +67,10 @@ export class HaresourceLegacy extends pulumi.CustomResource {
      */
     declare public readonly comment: pulumi.Output<string | undefined>;
     /**
+     * Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
+     */
+    declare public readonly failback: pulumi.Output<boolean | undefined>;
+    /**
      * The identifier of the High Availability group this resource is a member of.
      */
     declare public readonly group: pulumi.Output<string | undefined>;
@@ -105,6 +109,7 @@ export class HaresourceLegacy extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as HaresourceLegacyState | undefined;
             resourceInputs["comment"] = state?.comment;
+            resourceInputs["failback"] = state?.failback;
             resourceInputs["group"] = state?.group;
             resourceInputs["maxRelocate"] = state?.maxRelocate;
             resourceInputs["maxRestart"] = state?.maxRestart;
@@ -117,6 +122,7 @@ export class HaresourceLegacy extends pulumi.CustomResource {
                 throw new Error("Missing required property 'resourceId'");
             }
             resourceInputs["comment"] = args?.comment;
+            resourceInputs["failback"] = args?.failback;
             resourceInputs["group"] = args?.group;
             resourceInputs["maxRelocate"] = args?.maxRelocate;
             resourceInputs["maxRestart"] = args?.maxRestart;
@@ -137,6 +143,10 @@ export interface HaresourceLegacyState {
      * The comment associated with this resource.
      */
     comment?: pulumi.Input<string | undefined>;
+    /**
+     * Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
+     */
+    failback?: pulumi.Input<boolean | undefined>;
     /**
      * The identifier of the High Availability group this resource is a member of.
      */
@@ -171,6 +181,10 @@ export interface HaresourceLegacyArgs {
      * The comment associated with this resource.
      */
     comment?: pulumi.Input<string | undefined>;
+    /**
+     * Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
+     */
+    failback?: pulumi.Input<boolean | undefined>;
     /**
      * The identifier of the High Availability group this resource is a member of.
      */

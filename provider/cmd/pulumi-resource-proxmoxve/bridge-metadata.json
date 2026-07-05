@@ -1335,6 +1335,393 @@
         }
     },
     "auto-settings": {},
+    "default-resource-schema-fixups": {
+        "resources": {
+            "proxmox_acl": {},
+            "proxmox_acme_account": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "proxmox_acme_certificate": {},
+            "proxmox_acme_dns_plugin": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "proxmox_apt_repository": {},
+            "proxmox_apt_standard_repository": {},
+            "proxmox_backup_job": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_ceph_pool": {},
+            "proxmox_cloned_vm": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_cluster_options": {},
+            "proxmox_download_file": {},
+            "proxmox_hagroup": {},
+            "proxmox_hardware_mapping_dir": {},
+            "proxmox_hardware_mapping_pci": {},
+            "proxmox_hardware_mapping_usb": {},
+            "proxmox_haresource": {},
+            "proxmox_harule": {},
+            "proxmox_metrics_server": {},
+            "proxmox_network_linux_bond": {},
+            "proxmox_network_linux_bridge": {},
+            "proxmox_network_linux_vlan": {},
+            "proxmox_node_config": {},
+            "proxmox_node_disk_zfs": {},
+            "proxmox_node_firewall": {},
+            "proxmox_oci_image": {},
+            "proxmox_pool_membership": {},
+            "proxmox_realm_ldap": {},
+            "proxmox_realm_openid": {},
+            "proxmox_realm_sync": {},
+            "proxmox_replication": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_sdn_applier": {},
+            "proxmox_sdn_controller_evpn": {
+                "fields": {
+                    "id": {
+                        "name": "sdnControllerEvpnId"
+                    }
+                },
+                "computeID": {
+                    "kind": "delegate",
+                    "field": "sdnControllerEvpnId"
+                }
+            },
+            "proxmox_sdn_fabric_node_openfabric": {},
+            "proxmox_sdn_fabric_node_ospf": {},
+            "proxmox_sdn_fabric_openfabric": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_sdn_fabric_ospf": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_sdn_subnet": {},
+            "proxmox_sdn_vnet": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_sdn_zone_evpn": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_sdn_zone_qinq": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_sdn_zone_simple": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_sdn_zone_vlan": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_sdn_zone_vxlan": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_storage_cifs": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_storage_directory": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_storage_lvm": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_storage_lvmthin": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_storage_nfs": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_storage_pbs": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_storage_zfspool": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_user_token": {},
+            "proxmox_virtual_environment_acl": {},
+            "proxmox_virtual_environment_acme_account": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "proxmox_virtual_environment_acme_certificate": {},
+            "proxmox_virtual_environment_acme_dns_plugin": {
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "proxmox_virtual_environment_apt_repository": {},
+            "proxmox_virtual_environment_apt_standard_repository": {},
+            "proxmox_virtual_environment_cloned_vm": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_virtual_environment_cluster_options": {},
+            "proxmox_virtual_environment_download_file": {},
+            "proxmox_virtual_environment_hagroup": {},
+            "proxmox_virtual_environment_hardware_mapping_dir": {},
+            "proxmox_virtual_environment_hardware_mapping_pci": {},
+            "proxmox_virtual_environment_hardware_mapping_usb": {},
+            "proxmox_virtual_environment_haresource": {},
+            "proxmox_virtual_environment_harule": {},
+            "proxmox_virtual_environment_metrics_server": {},
+            "proxmox_virtual_environment_network_linux_bridge": {},
+            "proxmox_virtual_environment_network_linux_vlan": {},
+            "proxmox_virtual_environment_node_firewall": {},
+            "proxmox_virtual_environment_oci_image": {},
+            "proxmox_virtual_environment_pool_membership": {},
+            "proxmox_virtual_environment_realm_ldap": {},
+            "proxmox_virtual_environment_realm_openid": {},
+            "proxmox_virtual_environment_realm_sync": {},
+            "proxmox_virtual_environment_replication": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_virtual_environment_sdn_applier": {},
+            "proxmox_virtual_environment_sdn_fabric_node_openfabric": {},
+            "proxmox_virtual_environment_sdn_fabric_node_ospf": {},
+            "proxmox_virtual_environment_sdn_fabric_openfabric": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_virtual_environment_sdn_fabric_ospf": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_virtual_environment_sdn_subnet": {},
+            "proxmox_virtual_environment_sdn_vnet": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_virtual_environment_sdn_zone_evpn": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_virtual_environment_sdn_zone_qinq": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_virtual_environment_sdn_zone_simple": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_virtual_environment_sdn_zone_vlan": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_virtual_environment_sdn_zone_vxlan": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_virtual_environment_storage_cifs": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_virtual_environment_storage_directory": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_virtual_environment_storage_lvm": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_virtual_environment_storage_lvmthin": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_virtual_environment_storage_nfs": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_virtual_environment_storage_pbs": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_virtual_environment_storage_zfspool": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_virtual_environment_user_token": {},
+            "proxmox_virtual_environment_vm2": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            },
+            "proxmox_vm": {
+                "fields": {
+                    "id": {
+                        "name": "resourceId",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    },
     "mux": {
         "resources": {
             "proxmoxve:acme/account:Account": 1,
@@ -1348,6 +1735,7 @@
             "proxmoxve:apt/standard/repository:Repository": 1,
             "proxmoxve:apt/standard/repositoryLegacy:RepositoryLegacy": 1,
             "proxmoxve:backup/job:Job": 1,
+            "proxmoxve:ceph/pool:Pool": 1,
             "proxmoxve:cloned/vm:Vm": 1,
             "proxmoxve:cloned/vmLegacy:VmLegacy": 1,
             "proxmoxve:cluster/firewall/security/groupLegacy:GroupLegacy": 0,
@@ -1396,6 +1784,8 @@
             "proxmoxve:network/linux/bridgeLegacy:BridgeLegacy": 1,
             "proxmoxve:network/linux/vlan:Vlan": 1,
             "proxmoxve:network/linux/vlanLegacy:VlanLegacy": 1,
+            "proxmoxve:node/config:Config": 1,
+            "proxmoxve:node/disk/zfs:Zfs": 1,
             "proxmoxve:node/firewall:Firewall": 1,
             "proxmoxve:node/firewallLegacy:FirewallLegacy": 1,
             "proxmoxve:oci/image:Image": 1,
@@ -1464,6 +1854,7 @@
             "proxmoxve:apt/standard/getRepository:getRepository": 1,
             "proxmoxve:apt/standard/getRepositoryLegacy:getRepositoryLegacy": 1,
             "proxmoxve:backup/getJobs:getJobs": 1,
+            "proxmoxve:ceph/getStatus:getStatus": 1,
             "proxmoxve:hardware/getMappings:getMappings": 1,
             "proxmoxve:hardware/getMappingsLegacy:getMappingsLegacy": 1,
             "proxmoxve:hardware/getPci:getPci": 1,
@@ -1513,6 +1904,7 @@
             "proxmoxve:index/getVmsLegacy:getVmsLegacy": 0,
             "proxmoxve:metrics/getServer:getServer": 1,
             "proxmoxve:metrics/getServerLegacy:getServerLegacy": 1,
+            "proxmoxve:node/getConfig:getConfig": 1,
             "proxmoxve:sdn/controller/getEvpn:getEvpn": 1,
             "proxmoxve:sdn/fabric/getOpenfabric:getOpenfabric": 1,
             "proxmoxve:sdn/fabric/getOpenfabricLegacy:getOpenfabricLegacy": 1,

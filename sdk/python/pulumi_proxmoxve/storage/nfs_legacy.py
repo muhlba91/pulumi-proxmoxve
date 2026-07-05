@@ -26,6 +26,8 @@ class NfsLegacyArgs:
                  server: pulumi.Input[_builtins.str],
                  backups: pulumi.Input[Optional['NfsLegacyBackupsArgs']] = None,
                  contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 create_base_path: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_subdirs: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable: pulumi.Input[Optional[_builtins.bool]] = None,
                  nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  options: pulumi.Input[Optional[_builtins.str]] = None,
@@ -39,6 +41,8 @@ class NfsLegacyArgs:
         :param pulumi.Input[_builtins.str] server: The IP address or DNS name of the NFS server.
         :param pulumi.Input['NfsLegacyBackupsArgs'] backups: Configure backup retention settings for the storage type.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contents: The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
+        :param pulumi.Input[_builtins.bool] create_base_path: Create the base directory if it doesn't exist.
+        :param pulumi.Input[_builtins.bool] create_subdirs: Populate the directory with the default structure.
         :param pulumi.Input[_builtins.bool] disable: Whether the storage is disabled.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: A list of nodes where this storage is available.
         :param pulumi.Input[_builtins.str] options: The options to pass to the NFS service.
@@ -52,6 +56,10 @@ class NfsLegacyArgs:
             pulumi.set(__self__, "backups", backups)
         if contents is not None:
             pulumi.set(__self__, "contents", contents)
+        if create_base_path is not None:
+            pulumi.set(__self__, "create_base_path", create_base_path)
+        if create_subdirs is not None:
+            pulumi.set(__self__, "create_subdirs", create_subdirs)
         if disable is not None:
             pulumi.set(__self__, "disable", disable)
         if nodes is not None:
@@ -124,6 +132,30 @@ class NfsLegacyArgs:
         pulumi.set(self, "contents", value)
 
     @_builtins.property
+    @pulumi.getter(name="createBasePath")
+    def create_base_path(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Create the base directory if it doesn't exist.
+        """
+        return pulumi.get(self, "create_base_path")
+
+    @create_base_path.setter
+    def create_base_path(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "create_base_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createSubdirs")
+    def create_subdirs(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Populate the directory with the default structure.
+        """
+        return pulumi.get(self, "create_subdirs")
+
+    @create_subdirs.setter
+    def create_subdirs(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "create_subdirs", value)
+
+    @_builtins.property
     @pulumi.getter
     def disable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -189,6 +221,8 @@ class _NfsLegacyState:
     def __init__(__self__, *,
                  backups: pulumi.Input[Optional['NfsLegacyBackupsArgs']] = None,
                  contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 create_base_path: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_subdirs: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable: pulumi.Input[Optional[_builtins.bool]] = None,
                  export: pulumi.Input[Optional[_builtins.str]] = None,
                  nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -203,6 +237,8 @@ class _NfsLegacyState:
 
         :param pulumi.Input['NfsLegacyBackupsArgs'] backups: Configure backup retention settings for the storage type.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contents: The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
+        :param pulumi.Input[_builtins.bool] create_base_path: Create the base directory if it doesn't exist.
+        :param pulumi.Input[_builtins.bool] create_subdirs: Populate the directory with the default structure.
         :param pulumi.Input[_builtins.bool] disable: Whether the storage is disabled.
         :param pulumi.Input[_builtins.str] export: The path of the NFS export.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: A list of nodes where this storage is available.
@@ -217,6 +253,10 @@ class _NfsLegacyState:
             pulumi.set(__self__, "backups", backups)
         if contents is not None:
             pulumi.set(__self__, "contents", contents)
+        if create_base_path is not None:
+            pulumi.set(__self__, "create_base_path", create_base_path)
+        if create_subdirs is not None:
+            pulumi.set(__self__, "create_subdirs", create_subdirs)
         if disable is not None:
             pulumi.set(__self__, "disable", disable)
         if export is not None:
@@ -259,6 +299,30 @@ class _NfsLegacyState:
     @contents.setter
     def contents(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "contents", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createBasePath")
+    def create_base_path(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Create the base directory if it doesn't exist.
+        """
+        return pulumi.get(self, "create_base_path")
+
+    @create_base_path.setter
+    def create_base_path(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "create_base_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createSubdirs")
+    def create_subdirs(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Populate the directory with the default structure.
+        """
+        return pulumi.get(self, "create_subdirs")
+
+    @create_subdirs.setter
+    def create_subdirs(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "create_subdirs", value)
 
     @_builtins.property
     @pulumi.getter
@@ -377,6 +441,8 @@ class NfsLegacy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backups: pulumi.Input[Optional[Union['NfsLegacyBackupsArgs', 'NfsLegacyBackupsArgsDict']]] = None,
                  contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 create_base_path: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_subdirs: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable: pulumi.Input[Optional[_builtins.bool]] = None,
                  export: pulumi.Input[Optional[_builtins.str]] = None,
                  nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -430,6 +496,8 @@ class NfsLegacy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['NfsLegacyBackupsArgs', 'NfsLegacyBackupsArgsDict']] backups: Configure backup retention settings for the storage type.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contents: The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
+        :param pulumi.Input[_builtins.bool] create_base_path: Create the base directory if it doesn't exist.
+        :param pulumi.Input[_builtins.bool] create_subdirs: Populate the directory with the default structure.
         :param pulumi.Input[_builtins.bool] disable: Whether the storage is disabled.
         :param pulumi.Input[_builtins.str] export: The path of the NFS export.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: A list of nodes where this storage is available.
@@ -502,6 +570,8 @@ class NfsLegacy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backups: pulumi.Input[Optional[Union['NfsLegacyBackupsArgs', 'NfsLegacyBackupsArgsDict']]] = None,
                  contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 create_base_path: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_subdirs: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable: pulumi.Input[Optional[_builtins.bool]] = None,
                  export: pulumi.Input[Optional[_builtins.str]] = None,
                  nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -521,6 +591,8 @@ class NfsLegacy(pulumi.CustomResource):
 
             __props__.__dict__["backups"] = backups
             __props__.__dict__["contents"] = contents
+            __props__.__dict__["create_base_path"] = create_base_path
+            __props__.__dict__["create_subdirs"] = create_subdirs
             __props__.__dict__["disable"] = disable
             if export is None and not opts.urn:
                 raise TypeError("Missing required property 'export'")
@@ -548,6 +620,8 @@ class NfsLegacy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             backups: pulumi.Input[Optional[Union['NfsLegacyBackupsArgs', 'NfsLegacyBackupsArgsDict']]] = None,
             contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            create_base_path: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_subdirs: pulumi.Input[Optional[_builtins.bool]] = None,
             disable: pulumi.Input[Optional[_builtins.bool]] = None,
             export: pulumi.Input[Optional[_builtins.str]] = None,
             nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -566,6 +640,8 @@ class NfsLegacy(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['NfsLegacyBackupsArgs', 'NfsLegacyBackupsArgsDict']] backups: Configure backup retention settings for the storage type.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contents: The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
+        :param pulumi.Input[_builtins.bool] create_base_path: Create the base directory if it doesn't exist.
+        :param pulumi.Input[_builtins.bool] create_subdirs: Populate the directory with the default structure.
         :param pulumi.Input[_builtins.bool] disable: Whether the storage is disabled.
         :param pulumi.Input[_builtins.str] export: The path of the NFS export.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: A list of nodes where this storage is available.
@@ -582,6 +658,8 @@ class NfsLegacy(pulumi.CustomResource):
 
         __props__.__dict__["backups"] = backups
         __props__.__dict__["contents"] = contents
+        __props__.__dict__["create_base_path"] = create_base_path
+        __props__.__dict__["create_subdirs"] = create_subdirs
         __props__.__dict__["disable"] = disable
         __props__.__dict__["export"] = export
         __props__.__dict__["nodes"] = nodes
@@ -608,6 +686,22 @@ class NfsLegacy(pulumi.CustomResource):
         The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
         """
         return pulumi.get(self, "contents")
+
+    @_builtins.property
+    @pulumi.getter(name="createBasePath")
+    def create_base_path(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Create the base directory if it doesn't exist.
+        """
+        return pulumi.get(self, "create_base_path")
+
+    @_builtins.property
+    @pulumi.getter(name="createSubdirs")
+    def create_subdirs(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Populate the directory with the default structure.
+        """
+        return pulumi.get(self, "create_subdirs")
 
     @_builtins.property
     @pulumi.getter

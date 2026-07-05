@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.user.Token`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.user.Token`&#34; pulumi-lang-go=&#34;`user.Token`&#34; pulumi-lang-python=&#34;`user.Token`&#34; pulumi-lang-yaml=&#34;`proxmoxve.user.Token`&#34; pulumi-lang-java=&#34;`proxmoxve.user.Token`&#34;&gt;`proxmoxve.user.Token`&lt;/span&gt; instead. This resource will be removed in v1.0.
+ * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.user.Token`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.user.Token`&#34; pulumi-lang-go=&#34;`user.Token`&#34; pulumi-lang-python=&#34;`user.Token`&#34; pulumi-lang-yaml=&#34;`proxmoxve.user.Token`&#34; pulumi-lang-java=&#34;`proxmoxve.user.Token`&#34; pulumi-lang-hcl=&#34;`proxmox_user_token`&#34;&gt;`proxmoxve.user.Token`&lt;/span&gt; instead. This resource will be removed in v1.0.
  * 
  * User API tokens.
  * 

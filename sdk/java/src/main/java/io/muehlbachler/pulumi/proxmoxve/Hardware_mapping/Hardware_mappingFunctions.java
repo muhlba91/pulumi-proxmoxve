@@ -246,7 +246,7 @@ public final class Hardware_mappingFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:hardware/mapping/getDir:getDir", TypeShape.of(GetDirResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-go=&#34;`hardware/mapping.Dir`&#34; pulumi-lang-python=&#34;`hardware/mapping.Dir`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware/mapping.Dir`&#34;&gt;`proxmoxve.hardware/mapping.Dir`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-go=&#34;`hardware/mapping.Dir`&#34; pulumi-lang-python=&#34;`hardware/mapping.Dir`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-hcl=&#34;`proxmox_hardware_mapping_dir`&#34;&gt;`proxmoxve.hardware/mapping.Dir`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves a directory mapping from a Proxmox VE cluster.
      * 
@@ -291,7 +291,7 @@ public final class Hardware_mappingFunctions {
         return getDirLegacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-go=&#34;`hardware/mapping.Dir`&#34; pulumi-lang-python=&#34;`hardware/mapping.Dir`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware/mapping.Dir`&#34;&gt;`proxmoxve.hardware/mapping.Dir`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-go=&#34;`hardware/mapping.Dir`&#34; pulumi-lang-python=&#34;`hardware/mapping.Dir`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-hcl=&#34;`proxmox_hardware_mapping_dir`&#34;&gt;`proxmoxve.hardware/mapping.Dir`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves a directory mapping from a Proxmox VE cluster.
      * 
@@ -336,7 +336,7 @@ public final class Hardware_mappingFunctions {
         return getDirLegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-go=&#34;`hardware/mapping.Dir`&#34; pulumi-lang-python=&#34;`hardware/mapping.Dir`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware/mapping.Dir`&#34;&gt;`proxmoxve.hardware/mapping.Dir`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-go=&#34;`hardware/mapping.Dir`&#34; pulumi-lang-python=&#34;`hardware/mapping.Dir`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-hcl=&#34;`proxmox_hardware_mapping_dir`&#34;&gt;`proxmoxve.hardware/mapping.Dir`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves a directory mapping from a Proxmox VE cluster.
      * 
@@ -381,7 +381,7 @@ public final class Hardware_mappingFunctions {
         return Deployment.getInstance().invoke("proxmoxve:hardware/mapping/getDirLegacy:getDirLegacy", TypeShape.of(GetDirLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-go=&#34;`hardware/mapping.Dir`&#34; pulumi-lang-python=&#34;`hardware/mapping.Dir`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware/mapping.Dir`&#34;&gt;`proxmoxve.hardware/mapping.Dir`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-go=&#34;`hardware/mapping.Dir`&#34; pulumi-lang-python=&#34;`hardware/mapping.Dir`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-hcl=&#34;`proxmox_hardware_mapping_dir`&#34;&gt;`proxmoxve.hardware/mapping.Dir`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves a directory mapping from a Proxmox VE cluster.
      * 
@@ -426,7 +426,7 @@ public final class Hardware_mappingFunctions {
         return Deployment.getInstance().invoke("proxmoxve:hardware/mapping/getDirLegacy:getDirLegacy", TypeShape.of(GetDirLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-go=&#34;`hardware/mapping.Dir`&#34; pulumi-lang-python=&#34;`hardware/mapping.Dir`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware/mapping.Dir`&#34;&gt;`proxmoxve.hardware/mapping.Dir`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-go=&#34;`hardware/mapping.Dir`&#34; pulumi-lang-python=&#34;`hardware/mapping.Dir`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware/mapping.Dir`&#34; pulumi-lang-hcl=&#34;`proxmox_hardware_mapping_dir`&#34;&gt;`proxmoxve.hardware/mapping.Dir`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves a directory mapping from a Proxmox VE cluster.
      * 
@@ -686,7 +686,7 @@ public final class Hardware_mappingFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:hardware/mapping/getPci:getPci", TypeShape.of(GetPciResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-go=&#34;`hardware/mapping.Pci`&#34; pulumi-lang-python=&#34;`hardware/mapping.Pci`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware/mapping.Pci`&#34;&gt;`proxmoxve.hardware/mapping.Pci`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-go=&#34;`hardware/mapping.Pci`&#34; pulumi-lang-python=&#34;`hardware/mapping.Pci`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-hcl=&#34;`proxmox_hardware_mapping_pci`&#34;&gt;`proxmoxve.hardware/mapping.Pci`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves a PCI hardware mapping from a Proxmox VE cluster.
      * 
@@ -731,7 +731,7 @@ public final class Hardware_mappingFunctions {
         return getPciLegacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-go=&#34;`hardware/mapping.Pci`&#34; pulumi-lang-python=&#34;`hardware/mapping.Pci`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware/mapping.Pci`&#34;&gt;`proxmoxve.hardware/mapping.Pci`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-go=&#34;`hardware/mapping.Pci`&#34; pulumi-lang-python=&#34;`hardware/mapping.Pci`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-hcl=&#34;`proxmox_hardware_mapping_pci`&#34;&gt;`proxmoxve.hardware/mapping.Pci`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves a PCI hardware mapping from a Proxmox VE cluster.
      * 
@@ -776,7 +776,7 @@ public final class Hardware_mappingFunctions {
         return getPciLegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-go=&#34;`hardware/mapping.Pci`&#34; pulumi-lang-python=&#34;`hardware/mapping.Pci`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware/mapping.Pci`&#34;&gt;`proxmoxve.hardware/mapping.Pci`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-go=&#34;`hardware/mapping.Pci`&#34; pulumi-lang-python=&#34;`hardware/mapping.Pci`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-hcl=&#34;`proxmox_hardware_mapping_pci`&#34;&gt;`proxmoxve.hardware/mapping.Pci`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves a PCI hardware mapping from a Proxmox VE cluster.
      * 
@@ -821,7 +821,7 @@ public final class Hardware_mappingFunctions {
         return Deployment.getInstance().invoke("proxmoxve:hardware/mapping/getPciLegacy:getPciLegacy", TypeShape.of(GetPciLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-go=&#34;`hardware/mapping.Pci`&#34; pulumi-lang-python=&#34;`hardware/mapping.Pci`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware/mapping.Pci`&#34;&gt;`proxmoxve.hardware/mapping.Pci`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-go=&#34;`hardware/mapping.Pci`&#34; pulumi-lang-python=&#34;`hardware/mapping.Pci`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-hcl=&#34;`proxmox_hardware_mapping_pci`&#34;&gt;`proxmoxve.hardware/mapping.Pci`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves a PCI hardware mapping from a Proxmox VE cluster.
      * 
@@ -866,7 +866,7 @@ public final class Hardware_mappingFunctions {
         return Deployment.getInstance().invoke("proxmoxve:hardware/mapping/getPciLegacy:getPciLegacy", TypeShape.of(GetPciLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-go=&#34;`hardware/mapping.Pci`&#34; pulumi-lang-python=&#34;`hardware/mapping.Pci`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware/mapping.Pci`&#34;&gt;`proxmoxve.hardware/mapping.Pci`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-go=&#34;`hardware/mapping.Pci`&#34; pulumi-lang-python=&#34;`hardware/mapping.Pci`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware/mapping.Pci`&#34; pulumi-lang-hcl=&#34;`proxmox_hardware_mapping_pci`&#34;&gt;`proxmoxve.hardware/mapping.Pci`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves a PCI hardware mapping from a Proxmox VE cluster.
      * 
@@ -1126,7 +1126,7 @@ public final class Hardware_mappingFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:hardware/mapping/getUsb:getUsb", TypeShape.of(GetUsbResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-go=&#34;`hardware/mapping.Usb`&#34; pulumi-lang-python=&#34;`hardware/mapping.Usb`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware/mapping.Usb`&#34;&gt;`proxmoxve.hardware/mapping.Usb`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-go=&#34;`hardware/mapping.Usb`&#34; pulumi-lang-python=&#34;`hardware/mapping.Usb`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-hcl=&#34;`proxmox_hardware_mapping_usb`&#34;&gt;`proxmoxve.hardware/mapping.Usb`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves a USB hardware mapping from a Proxmox VE cluster.
      * 
@@ -1171,7 +1171,7 @@ public final class Hardware_mappingFunctions {
         return getUsbLegacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-go=&#34;`hardware/mapping.Usb`&#34; pulumi-lang-python=&#34;`hardware/mapping.Usb`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware/mapping.Usb`&#34;&gt;`proxmoxve.hardware/mapping.Usb`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-go=&#34;`hardware/mapping.Usb`&#34; pulumi-lang-python=&#34;`hardware/mapping.Usb`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-hcl=&#34;`proxmox_hardware_mapping_usb`&#34;&gt;`proxmoxve.hardware/mapping.Usb`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves a USB hardware mapping from a Proxmox VE cluster.
      * 
@@ -1216,7 +1216,7 @@ public final class Hardware_mappingFunctions {
         return getUsbLegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-go=&#34;`hardware/mapping.Usb`&#34; pulumi-lang-python=&#34;`hardware/mapping.Usb`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware/mapping.Usb`&#34;&gt;`proxmoxve.hardware/mapping.Usb`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-go=&#34;`hardware/mapping.Usb`&#34; pulumi-lang-python=&#34;`hardware/mapping.Usb`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-hcl=&#34;`proxmox_hardware_mapping_usb`&#34;&gt;`proxmoxve.hardware/mapping.Usb`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves a USB hardware mapping from a Proxmox VE cluster.
      * 
@@ -1261,7 +1261,7 @@ public final class Hardware_mappingFunctions {
         return Deployment.getInstance().invoke("proxmoxve:hardware/mapping/getUsbLegacy:getUsbLegacy", TypeShape.of(GetUsbLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-go=&#34;`hardware/mapping.Usb`&#34; pulumi-lang-python=&#34;`hardware/mapping.Usb`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware/mapping.Usb`&#34;&gt;`proxmoxve.hardware/mapping.Usb`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-go=&#34;`hardware/mapping.Usb`&#34; pulumi-lang-python=&#34;`hardware/mapping.Usb`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-hcl=&#34;`proxmox_hardware_mapping_usb`&#34;&gt;`proxmoxve.hardware/mapping.Usb`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves a USB hardware mapping from a Proxmox VE cluster.
      * 
@@ -1306,7 +1306,7 @@ public final class Hardware_mappingFunctions {
         return Deployment.getInstance().invoke("proxmoxve:hardware/mapping/getUsbLegacy:getUsbLegacy", TypeShape.of(GetUsbLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-go=&#34;`hardware/mapping.Usb`&#34; pulumi-lang-python=&#34;`hardware/mapping.Usb`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware/mapping.Usb`&#34;&gt;`proxmoxve.hardware/mapping.Usb`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-go=&#34;`hardware/mapping.Usb`&#34; pulumi-lang-python=&#34;`hardware/mapping.Usb`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware/mapping.Usb`&#34; pulumi-lang-hcl=&#34;`proxmox_hardware_mapping_usb`&#34;&gt;`proxmoxve.hardware/mapping.Usb`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves a USB hardware mapping from a Proxmox VE cluster.
      * 

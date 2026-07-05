@@ -44,7 +44,7 @@ public final class GetReplicationResult {
      */
     private Double rate;
     /**
-     * @return Storage replication schedule. The format is a subset of &lt;span pulumi-lang-nodejs=&#34;`systemd`&#34; pulumi-lang-dotnet=&#34;`Systemd`&#34; pulumi-lang-go=&#34;`systemd`&#34; pulumi-lang-python=&#34;`systemd`&#34; pulumi-lang-yaml=&#34;`systemd`&#34; pulumi-lang-java=&#34;`systemd`&#34;&gt;`systemd`&lt;/span&gt; calendar events. Defaults to *&#47;15
+     * @return Storage replication schedule. The format is a subset of &lt;span pulumi-lang-nodejs=&#34;`systemd`&#34; pulumi-lang-dotnet=&#34;`Systemd`&#34; pulumi-lang-go=&#34;`systemd`&#34; pulumi-lang-python=&#34;`systemd`&#34; pulumi-lang-yaml=&#34;`systemd`&#34; pulumi-lang-java=&#34;`systemd`&#34; pulumi-lang-hcl=&#34;`systemd`&#34;&gt;`systemd`&lt;/span&gt; calendar events. Defaults to *&#47;15
      * 
      */
     private String schedule;
@@ -108,7 +108,7 @@ public final class GetReplicationResult {
         return this.rate;
     }
     /**
-     * @return Storage replication schedule. The format is a subset of &lt;span pulumi-lang-nodejs=&#34;`systemd`&#34; pulumi-lang-dotnet=&#34;`Systemd`&#34; pulumi-lang-go=&#34;`systemd`&#34; pulumi-lang-python=&#34;`systemd`&#34; pulumi-lang-yaml=&#34;`systemd`&#34; pulumi-lang-java=&#34;`systemd`&#34;&gt;`systemd`&lt;/span&gt; calendar events. Defaults to *&#47;15
+     * @return Storage replication schedule. The format is a subset of &lt;span pulumi-lang-nodejs=&#34;`systemd`&#34; pulumi-lang-dotnet=&#34;`Systemd`&#34; pulumi-lang-go=&#34;`systemd`&#34; pulumi-lang-python=&#34;`systemd`&#34; pulumi-lang-yaml=&#34;`systemd`&#34; pulumi-lang-java=&#34;`systemd`&#34; pulumi-lang-hcl=&#34;`systemd`&#34;&gt;`systemd`&lt;/span&gt; calendar events. Defaults to *&#47;15
      * 
      */
     public String schedule() {

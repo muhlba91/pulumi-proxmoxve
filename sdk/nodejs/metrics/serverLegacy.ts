@@ -106,9 +106,18 @@ export class ServerLegacy extends pulumi.CustomResource {
      */
     declare public readonly influxOrganization: pulumi.Output<string | undefined>;
     /**
-     * The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
+     * The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead. Cannot be used together with `influxTokenWo`.
      */
     declare public readonly influxToken: pulumi.Output<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The InfluxDB access token (write-only). Prefer this over `influxToken` to avoid storing the secret in Terraform state. Cannot be used together with `influxToken`.
+     */
+    declare public readonly influxTokenWo: pulumi.Output<string | undefined>;
+    /**
+     * Increment this counter to rotate `influxTokenWo` without changing other fields.
+     */
+    declare public readonly influxTokenWoVersion: pulumi.Output<number | undefined>;
     /**
      * Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
      */
@@ -192,6 +201,8 @@ export class ServerLegacy extends pulumi.CustomResource {
             resourceInputs["influxMaxBodySize"] = state?.influxMaxBodySize;
             resourceInputs["influxOrganization"] = state?.influxOrganization;
             resourceInputs["influxToken"] = state?.influxToken;
+            resourceInputs["influxTokenWo"] = state?.influxTokenWo;
+            resourceInputs["influxTokenWoVersion"] = state?.influxTokenWoVersion;
             resourceInputs["influxVerify"] = state?.influxVerify;
             resourceInputs["mtu"] = state?.mtu;
             resourceInputs["name"] = state?.name;
@@ -227,6 +238,8 @@ export class ServerLegacy extends pulumi.CustomResource {
             resourceInputs["influxMaxBodySize"] = args?.influxMaxBodySize;
             resourceInputs["influxOrganization"] = args?.influxOrganization;
             resourceInputs["influxToken"] = args?.influxToken ? pulumi.secret(args.influxToken) : undefined;
+            resourceInputs["influxTokenWo"] = args?.influxTokenWo ? pulumi.secret(args.influxTokenWo) : undefined;
+            resourceInputs["influxTokenWoVersion"] = args?.influxTokenWoVersion;
             resourceInputs["influxVerify"] = args?.influxVerify;
             resourceInputs["mtu"] = args?.mtu;
             resourceInputs["name"] = args?.name;
@@ -244,7 +257,7 @@ export class ServerLegacy extends pulumi.CustomResource {
             resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["influxToken", "opentelemetryHeaders"] };
+        const secretOpts = { additionalSecretOutputs: ["influxToken", "influxTokenWo", "opentelemetryHeaders"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(ServerLegacy.__pulumiType, name, resourceInputs, opts);
     }
@@ -287,9 +300,18 @@ export interface ServerLegacyState {
      */
     influxOrganization?: pulumi.Input<string | undefined>;
     /**
-     * The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
+     * The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead. Cannot be used together with `influxTokenWo`.
      */
     influxToken?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The InfluxDB access token (write-only). Prefer this over `influxToken` to avoid storing the secret in Terraform state. Cannot be used together with `influxToken`.
+     */
+    influxTokenWo?: pulumi.Input<string | undefined>;
+    /**
+     * Increment this counter to rotate `influxTokenWo` without changing other fields.
+     */
+    influxTokenWoVersion?: pulumi.Input<number | undefined>;
     /**
      * Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
      */
@@ -389,9 +411,18 @@ export interface ServerLegacyArgs {
      */
     influxOrganization?: pulumi.Input<string | undefined>;
     /**
-     * The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
+     * The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead. Cannot be used together with `influxTokenWo`.
      */
     influxToken?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The InfluxDB access token (write-only). Prefer this over `influxToken` to avoid storing the secret in Terraform state. Cannot be used together with `influxToken`.
+     */
+    influxTokenWo?: pulumi.Input<string | undefined>;
+    /**
+     * Increment this counter to rotate `influxTokenWo` without changing other fields.
+     */
+    influxTokenWoVersion?: pulumi.Input<number | undefined>;
     /**
      * Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
      */

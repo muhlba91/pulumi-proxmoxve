@@ -74,7 +74,7 @@ public final class VmLegacyDisk {
      */
     private @Nullable String serial;
     /**
-     * @return Disk size (GiB) when creating new disks. **Note:** Disk shrinking is not supported. Attempting to set &lt;span pulumi-lang-nodejs=&#34;`sizeGb`&#34; pulumi-lang-dotnet=&#34;`SizeGb`&#34; pulumi-lang-go=&#34;`sizeGb`&#34; pulumi-lang-python=&#34;`size_gb`&#34; pulumi-lang-yaml=&#34;`sizeGb`&#34; pulumi-lang-java=&#34;`sizeGb`&#34;&gt;`sizeGb`&lt;/span&gt; to a value smaller than the current disk size will result in an error. Only disk expansion is allowed.
+     * @return Disk size (GiB) when creating new disks. **Note:** Disk shrinking is not supported. Attempting to set &lt;span pulumi-lang-nodejs=&#34;`sizeGb`&#34; pulumi-lang-dotnet=&#34;`SizeGb`&#34; pulumi-lang-go=&#34;`sizeGb`&#34; pulumi-lang-python=&#34;`size_gb`&#34; pulumi-lang-yaml=&#34;`sizeGb`&#34; pulumi-lang-java=&#34;`sizeGb`&#34; pulumi-lang-hcl=&#34;`size_gb`&#34;&gt;`sizeGb`&lt;/span&gt; to a value smaller than the current disk size will result in an error. Only disk expansion is allowed.
      * 
      */
     private @Nullable Integer sizeGb;
@@ -170,7 +170,7 @@ public final class VmLegacyDisk {
         return Optional.ofNullable(this.serial);
     }
     /**
-     * @return Disk size (GiB) when creating new disks. **Note:** Disk shrinking is not supported. Attempting to set &lt;span pulumi-lang-nodejs=&#34;`sizeGb`&#34; pulumi-lang-dotnet=&#34;`SizeGb`&#34; pulumi-lang-go=&#34;`sizeGb`&#34; pulumi-lang-python=&#34;`size_gb`&#34; pulumi-lang-yaml=&#34;`sizeGb`&#34; pulumi-lang-java=&#34;`sizeGb`&#34;&gt;`sizeGb`&lt;/span&gt; to a value smaller than the current disk size will result in an error. Only disk expansion is allowed.
+     * @return Disk size (GiB) when creating new disks. **Note:** Disk shrinking is not supported. Attempting to set &lt;span pulumi-lang-nodejs=&#34;`sizeGb`&#34; pulumi-lang-dotnet=&#34;`SizeGb`&#34; pulumi-lang-go=&#34;`sizeGb`&#34; pulumi-lang-python=&#34;`size_gb`&#34; pulumi-lang-yaml=&#34;`sizeGb`&#34; pulumi-lang-java=&#34;`sizeGb`&#34; pulumi-lang-hcl=&#34;`size_gb`&#34;&gt;`sizeGb`&lt;/span&gt; to a value smaller than the current disk size will result in an error. Only disk expansion is allowed.
      * 
      */
     public Optional<Integer> sizeGb() {

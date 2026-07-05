@@ -318,6 +318,7 @@ utilities.lazyLoad(exports, ["VmLegacy"], () => require("./vmLegacy"));
 import * as acme from "./acme";
 import * as apt from "./apt";
 import * as backup from "./backup";
+import * as ceph from "./ceph";
 import * as cloned from "./cloned";
 import * as cluster from "./cluster";
 import * as config from "./config";
@@ -339,6 +340,7 @@ export {
     acme,
     apt,
     backup,
+    ceph,
     cloned,
     cluster,
     config,

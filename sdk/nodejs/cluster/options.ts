@@ -101,9 +101,29 @@ export class Options extends pulumi.CustomResource {
      */
     declare public readonly console: pulumi.Output<string | undefined>;
     /**
-     * Cluster resource scheduling setting for HA. Must be `static` | `basic` (default is `basic`).
+     * Cluster resource scheduling setting for HA. Must be `static` | `basic` | `dynamic` (default is `basic`). `dynamic` requires Proxmox VE 9.2+.
      */
     declare public readonly crsHa: pulumi.Output<string>;
+    /**
+     * Whether to use CRS for balancing HA resources automatically depending on the current node imbalance. Requires Proxmox VE 9.2+.
+     */
+    declare public readonly crsHaAutoRebalance: pulumi.Output<boolean | undefined>;
+    /**
+     * The number of HA rounds for which the cluster node imbalance threshold must be exceeded before triggering an automatic resource balancing migration (default is `3`). Requires Proxmox VE 9.2+.
+     */
+    declare public readonly crsHaAutoRebalanceHoldDuration: pulumi.Output<number | undefined>;
+    /**
+     * The minimum relative improvement in cluster node imbalance, in percent, to commit to a resource balancing migration. Must be between `0` and `100` (default is `10`). Requires Proxmox VE 9.2+.
+     */
+    declare public readonly crsHaAutoRebalanceMargin: pulumi.Output<number | undefined>;
+    /**
+     * The method to use for the scoring of balancing migrations. Must be `bruteforce` | `topsis` (default is `bruteforce`). Requires Proxmox VE 9.2+.
+     */
+    declare public readonly crsHaAutoRebalanceMethod: pulumi.Output<string | undefined>;
+    /**
+     * The cluster node imbalance, in percent, which will trigger the automatic resource balancing system if exceeded. Must be between `0` and `100` (default is `30`). Requires Proxmox VE 9.2+.
+     */
+    declare public readonly crsHaAutoRebalanceThreshold: pulumi.Output<number | undefined>;
     /**
      * Cluster resource scheduling setting for HA rebalance on start.
      */
@@ -177,6 +197,11 @@ export class Options extends pulumi.CustomResource {
             resourceInputs["bandwidthLimitRestore"] = state?.bandwidthLimitRestore;
             resourceInputs["console"] = state?.console;
             resourceInputs["crsHa"] = state?.crsHa;
+            resourceInputs["crsHaAutoRebalance"] = state?.crsHaAutoRebalance;
+            resourceInputs["crsHaAutoRebalanceHoldDuration"] = state?.crsHaAutoRebalanceHoldDuration;
+            resourceInputs["crsHaAutoRebalanceMargin"] = state?.crsHaAutoRebalanceMargin;
+            resourceInputs["crsHaAutoRebalanceMethod"] = state?.crsHaAutoRebalanceMethod;
+            resourceInputs["crsHaAutoRebalanceThreshold"] = state?.crsHaAutoRebalanceThreshold;
             resourceInputs["crsHaRebalanceOnStart"] = state?.crsHaRebalanceOnStart;
             resourceInputs["description"] = state?.description;
             resourceInputs["emailFrom"] = state?.emailFrom;
@@ -199,6 +224,11 @@ export class Options extends pulumi.CustomResource {
             resourceInputs["bandwidthLimitRestore"] = args?.bandwidthLimitRestore;
             resourceInputs["console"] = args?.console;
             resourceInputs["crsHa"] = args?.crsHa;
+            resourceInputs["crsHaAutoRebalance"] = args?.crsHaAutoRebalance;
+            resourceInputs["crsHaAutoRebalanceHoldDuration"] = args?.crsHaAutoRebalanceHoldDuration;
+            resourceInputs["crsHaAutoRebalanceMargin"] = args?.crsHaAutoRebalanceMargin;
+            resourceInputs["crsHaAutoRebalanceMethod"] = args?.crsHaAutoRebalanceMethod;
+            resourceInputs["crsHaAutoRebalanceThreshold"] = args?.crsHaAutoRebalanceThreshold;
             resourceInputs["crsHaRebalanceOnStart"] = args?.crsHaRebalanceOnStart;
             resourceInputs["description"] = args?.description;
             resourceInputs["emailFrom"] = args?.emailFrom;
@@ -247,9 +277,29 @@ export interface OptionsState {
      */
     console?: pulumi.Input<string | undefined>;
     /**
-     * Cluster resource scheduling setting for HA. Must be `static` | `basic` (default is `basic`).
+     * Cluster resource scheduling setting for HA. Must be `static` | `basic` | `dynamic` (default is `basic`). `dynamic` requires Proxmox VE 9.2+.
      */
     crsHa?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to use CRS for balancing HA resources automatically depending on the current node imbalance. Requires Proxmox VE 9.2+.
+     */
+    crsHaAutoRebalance?: pulumi.Input<boolean | undefined>;
+    /**
+     * The number of HA rounds for which the cluster node imbalance threshold must be exceeded before triggering an automatic resource balancing migration (default is `3`). Requires Proxmox VE 9.2+.
+     */
+    crsHaAutoRebalanceHoldDuration?: pulumi.Input<number | undefined>;
+    /**
+     * The minimum relative improvement in cluster node imbalance, in percent, to commit to a resource balancing migration. Must be between `0` and `100` (default is `10`). Requires Proxmox VE 9.2+.
+     */
+    crsHaAutoRebalanceMargin?: pulumi.Input<number | undefined>;
+    /**
+     * The method to use for the scoring of balancing migrations. Must be `bruteforce` | `topsis` (default is `bruteforce`). Requires Proxmox VE 9.2+.
+     */
+    crsHaAutoRebalanceMethod?: pulumi.Input<string | undefined>;
+    /**
+     * The cluster node imbalance, in percent, which will trigger the automatic resource balancing system if exceeded. Must be between `0` and `100` (default is `30`). Requires Proxmox VE 9.2+.
+     */
+    crsHaAutoRebalanceThreshold?: pulumi.Input<number | undefined>;
     /**
      * Cluster resource scheduling setting for HA rebalance on start.
      */
@@ -333,9 +383,29 @@ export interface OptionsArgs {
      */
     console?: pulumi.Input<string | undefined>;
     /**
-     * Cluster resource scheduling setting for HA. Must be `static` | `basic` (default is `basic`).
+     * Cluster resource scheduling setting for HA. Must be `static` | `basic` | `dynamic` (default is `basic`). `dynamic` requires Proxmox VE 9.2+.
      */
     crsHa?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to use CRS for balancing HA resources automatically depending on the current node imbalance. Requires Proxmox VE 9.2+.
+     */
+    crsHaAutoRebalance?: pulumi.Input<boolean | undefined>;
+    /**
+     * The number of HA rounds for which the cluster node imbalance threshold must be exceeded before triggering an automatic resource balancing migration (default is `3`). Requires Proxmox VE 9.2+.
+     */
+    crsHaAutoRebalanceHoldDuration?: pulumi.Input<number | undefined>;
+    /**
+     * The minimum relative improvement in cluster node imbalance, in percent, to commit to a resource balancing migration. Must be between `0` and `100` (default is `10`). Requires Proxmox VE 9.2+.
+     */
+    crsHaAutoRebalanceMargin?: pulumi.Input<number | undefined>;
+    /**
+     * The method to use for the scoring of balancing migrations. Must be `bruteforce` | `topsis` (default is `bruteforce`). Requires Proxmox VE 9.2+.
+     */
+    crsHaAutoRebalanceMethod?: pulumi.Input<string | undefined>;
+    /**
+     * The cluster node imbalance, in percent, which will trigger the automatic resource balancing system if exceeded. Must be between `0` and `100` (default is `30`). Requires Proxmox VE 9.2+.
+     */
+    crsHaAutoRebalanceThreshold?: pulumi.Input<number | undefined>;
     /**
      * Cluster resource scheduling setting for HA rebalance on start.
      */

@@ -17,14 +17,14 @@ public final class VmLegacyWatchdogArgs extends com.pulumi.resources.ResourceArg
     public static final VmLegacyWatchdogArgs Empty = new VmLegacyWatchdogArgs();
 
     /**
-     * The action to perform if after activation the guest fails to poll the watchdog in time  (defaults to &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34;&gt;`none`&lt;/span&gt;).
+     * The action to perform if after activation the guest fails to poll the watchdog in time  (defaults to &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34; pulumi-lang-hcl=&#34;`none`&#34;&gt;`none`&lt;/span&gt;).
      * 
      */
     @Import(name="action")
     private @Nullable Output<String> action;
 
     /**
-     * @return The action to perform if after activation the guest fails to poll the watchdog in time  (defaults to &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34;&gt;`none`&lt;/span&gt;).
+     * @return The action to perform if after activation the guest fails to poll the watchdog in time  (defaults to &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34; pulumi-lang-hcl=&#34;`none`&#34;&gt;`none`&lt;/span&gt;).
      * 
      */
     public Optional<Output<String>> action() {
@@ -32,14 +32,14 @@ public final class VmLegacyWatchdogArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Whether the watchdog is enabled (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * Whether the watchdog is enabled (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
     /**
-     * @return Whether the watchdog is enabled (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * @return Whether the watchdog is enabled (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -47,14 +47,14 @@ public final class VmLegacyWatchdogArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The watchdog type to emulate (defaults to &lt;span pulumi-lang-nodejs=&#34;`i6300esb`&#34; pulumi-lang-dotnet=&#34;`I6300esb`&#34; pulumi-lang-go=&#34;`i6300esb`&#34; pulumi-lang-python=&#34;`i6300esb`&#34; pulumi-lang-yaml=&#34;`i6300esb`&#34; pulumi-lang-java=&#34;`i6300esb`&#34;&gt;`i6300esb`&lt;/span&gt;).
+     * The watchdog type to emulate (defaults to &lt;span pulumi-lang-nodejs=&#34;`i6300esb`&#34; pulumi-lang-dotnet=&#34;`I6300esb`&#34; pulumi-lang-go=&#34;`i6300esb`&#34; pulumi-lang-python=&#34;`i6300esb`&#34; pulumi-lang-yaml=&#34;`i6300esb`&#34; pulumi-lang-java=&#34;`i6300esb`&#34; pulumi-lang-hcl=&#34;`i6300esb`&#34;&gt;`i6300esb`&lt;/span&gt;).
      * 
      */
     @Import(name="model")
     private @Nullable Output<String> model;
 
     /**
-     * @return The watchdog type to emulate (defaults to &lt;span pulumi-lang-nodejs=&#34;`i6300esb`&#34; pulumi-lang-dotnet=&#34;`I6300esb`&#34; pulumi-lang-go=&#34;`i6300esb`&#34; pulumi-lang-python=&#34;`i6300esb`&#34; pulumi-lang-yaml=&#34;`i6300esb`&#34; pulumi-lang-java=&#34;`i6300esb`&#34;&gt;`i6300esb`&lt;/span&gt;).
+     * @return The watchdog type to emulate (defaults to &lt;span pulumi-lang-nodejs=&#34;`i6300esb`&#34; pulumi-lang-dotnet=&#34;`I6300esb`&#34; pulumi-lang-go=&#34;`i6300esb`&#34; pulumi-lang-python=&#34;`i6300esb`&#34; pulumi-lang-yaml=&#34;`i6300esb`&#34; pulumi-lang-java=&#34;`i6300esb`&#34; pulumi-lang-hcl=&#34;`i6300esb`&#34;&gt;`i6300esb`&lt;/span&gt;).
      * 
      */
     public Optional<Output<String>> model() {
@@ -88,7 +88,7 @@ public final class VmLegacyWatchdogArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param action The action to perform if after activation the guest fails to poll the watchdog in time  (defaults to &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34;&gt;`none`&lt;/span&gt;).
+         * @param action The action to perform if after activation the guest fails to poll the watchdog in time  (defaults to &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34; pulumi-lang-hcl=&#34;`none`&#34;&gt;`none`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class VmLegacyWatchdogArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param action The action to perform if after activation the guest fails to poll the watchdog in time  (defaults to &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34;&gt;`none`&lt;/span&gt;).
+         * @param action The action to perform if after activation the guest fails to poll the watchdog in time  (defaults to &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34; pulumi-lang-hcl=&#34;`none`&#34;&gt;`none`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class VmLegacyWatchdogArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enabled Whether the watchdog is enabled (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+         * @param enabled Whether the watchdog is enabled (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class VmLegacyWatchdogArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param enabled Whether the watchdog is enabled (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+         * @param enabled Whether the watchdog is enabled (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class VmLegacyWatchdogArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param model The watchdog type to emulate (defaults to &lt;span pulumi-lang-nodejs=&#34;`i6300esb`&#34; pulumi-lang-dotnet=&#34;`I6300esb`&#34; pulumi-lang-go=&#34;`i6300esb`&#34; pulumi-lang-python=&#34;`i6300esb`&#34; pulumi-lang-yaml=&#34;`i6300esb`&#34; pulumi-lang-java=&#34;`i6300esb`&#34;&gt;`i6300esb`&lt;/span&gt;).
+         * @param model The watchdog type to emulate (defaults to &lt;span pulumi-lang-nodejs=&#34;`i6300esb`&#34; pulumi-lang-dotnet=&#34;`I6300esb`&#34; pulumi-lang-go=&#34;`i6300esb`&#34; pulumi-lang-python=&#34;`i6300esb`&#34; pulumi-lang-yaml=&#34;`i6300esb`&#34; pulumi-lang-java=&#34;`i6300esb`&#34; pulumi-lang-hcl=&#34;`i6300esb`&#34;&gt;`i6300esb`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class VmLegacyWatchdogArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param model The watchdog type to emulate (defaults to &lt;span pulumi-lang-nodejs=&#34;`i6300esb`&#34; pulumi-lang-dotnet=&#34;`I6300esb`&#34; pulumi-lang-go=&#34;`i6300esb`&#34; pulumi-lang-python=&#34;`i6300esb`&#34; pulumi-lang-yaml=&#34;`i6300esb`&#34; pulumi-lang-java=&#34;`i6300esb`&#34;&gt;`i6300esb`&lt;/span&gt;).
+         * @param model The watchdog type to emulate (defaults to &lt;span pulumi-lang-nodejs=&#34;`i6300esb`&#34; pulumi-lang-dotnet=&#34;`I6300esb`&#34; pulumi-lang-go=&#34;`i6300esb`&#34; pulumi-lang-python=&#34;`i6300esb`&#34; pulumi-lang-yaml=&#34;`i6300esb`&#34; pulumi-lang-java=&#34;`i6300esb`&#34; pulumi-lang-hcl=&#34;`i6300esb`&#34;&gt;`i6300esb`&lt;/span&gt;).
          * 
          * @return builder
          * 

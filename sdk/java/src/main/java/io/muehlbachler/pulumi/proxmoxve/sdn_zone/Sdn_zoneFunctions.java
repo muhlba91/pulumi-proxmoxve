@@ -338,7 +338,7 @@ public final class Sdn_zoneFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:sdn/zone/getEvpn:getEvpn", TypeShape.of(GetEvpnResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-go=&#34;`sdn/zone.Evpn`&#34; pulumi-lang-python=&#34;`sdn/zone.Evpn`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Evpn`&#34;&gt;`proxmoxve.sdn/zone.Evpn`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-go=&#34;`sdn/zone.Evpn`&#34; pulumi-lang-python=&#34;`sdn/zone.Evpn`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_zone_evpn`&#34;&gt;`proxmoxve.sdn/zone.Evpn`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about an EVPN Zone in Proxmox SDN. The EVPN zone creates a routable Layer 3 network, capable of spanning across multiple clusters.
      * 
@@ -399,7 +399,7 @@ public final class Sdn_zoneFunctions {
         return getEvpnLegacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-go=&#34;`sdn/zone.Evpn`&#34; pulumi-lang-python=&#34;`sdn/zone.Evpn`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Evpn`&#34;&gt;`proxmoxve.sdn/zone.Evpn`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-go=&#34;`sdn/zone.Evpn`&#34; pulumi-lang-python=&#34;`sdn/zone.Evpn`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_zone_evpn`&#34;&gt;`proxmoxve.sdn/zone.Evpn`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about an EVPN Zone in Proxmox SDN. The EVPN zone creates a routable Layer 3 network, capable of spanning across multiple clusters.
      * 
@@ -460,7 +460,7 @@ public final class Sdn_zoneFunctions {
         return getEvpnLegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-go=&#34;`sdn/zone.Evpn`&#34; pulumi-lang-python=&#34;`sdn/zone.Evpn`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Evpn`&#34;&gt;`proxmoxve.sdn/zone.Evpn`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-go=&#34;`sdn/zone.Evpn`&#34; pulumi-lang-python=&#34;`sdn/zone.Evpn`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_zone_evpn`&#34;&gt;`proxmoxve.sdn/zone.Evpn`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about an EVPN Zone in Proxmox SDN. The EVPN zone creates a routable Layer 3 network, capable of spanning across multiple clusters.
      * 
@@ -521,7 +521,7 @@ public final class Sdn_zoneFunctions {
         return Deployment.getInstance().invoke("proxmoxve:sdn/zone/getEvpnLegacy:getEvpnLegacy", TypeShape.of(GetEvpnLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-go=&#34;`sdn/zone.Evpn`&#34; pulumi-lang-python=&#34;`sdn/zone.Evpn`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Evpn`&#34;&gt;`proxmoxve.sdn/zone.Evpn`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-go=&#34;`sdn/zone.Evpn`&#34; pulumi-lang-python=&#34;`sdn/zone.Evpn`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_zone_evpn`&#34;&gt;`proxmoxve.sdn/zone.Evpn`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about an EVPN Zone in Proxmox SDN. The EVPN zone creates a routable Layer 3 network, capable of spanning across multiple clusters.
      * 
@@ -582,7 +582,7 @@ public final class Sdn_zoneFunctions {
         return Deployment.getInstance().invoke("proxmoxve:sdn/zone/getEvpnLegacy:getEvpnLegacy", TypeShape.of(GetEvpnLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-go=&#34;`sdn/zone.Evpn`&#34; pulumi-lang-python=&#34;`sdn/zone.Evpn`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Evpn`&#34;&gt;`proxmoxve.sdn/zone.Evpn`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-go=&#34;`sdn/zone.Evpn`&#34; pulumi-lang-python=&#34;`sdn/zone.Evpn`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_zone_evpn`&#34;&gt;`proxmoxve.sdn/zone.Evpn`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about an EVPN Zone in Proxmox SDN. The EVPN zone creates a routable Layer 3 network, capable of spanning across multiple clusters.
      * 
@@ -913,7 +913,7 @@ public final class Sdn_zoneFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:sdn/zone/getQinq:getQinq", TypeShape.of(GetQinqResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-go=&#34;`sdn/zone.Qinq`&#34; pulumi-lang-python=&#34;`sdn/zone.Qinq`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Qinq`&#34;&gt;`proxmoxve.sdn/zone.Qinq`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-go=&#34;`sdn/zone.Qinq`&#34; pulumi-lang-python=&#34;`sdn/zone.Qinq`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_zone_qinq`&#34;&gt;`proxmoxve.sdn/zone.Qinq`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a QinQ Zone in Proxmox SDN. QinQ also known as VLAN stacking, that uses multiple layers of VLAN tags for isolation. The QinQ zone defines the outer VLAN tag (the Service VLAN) whereas the inner VLAN tag is defined by the VNet. Your physical network switches must support stacked VLANs for this configuration. Due to the double stacking of tags, you need 4 more bytes for QinQ VLANs. For example, you must reduce the MTU to 1496 if you physical interface MTU is 1500.
      * 
@@ -969,7 +969,7 @@ public final class Sdn_zoneFunctions {
         return getQinqLegacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-go=&#34;`sdn/zone.Qinq`&#34; pulumi-lang-python=&#34;`sdn/zone.Qinq`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Qinq`&#34;&gt;`proxmoxve.sdn/zone.Qinq`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-go=&#34;`sdn/zone.Qinq`&#34; pulumi-lang-python=&#34;`sdn/zone.Qinq`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_zone_qinq`&#34;&gt;`proxmoxve.sdn/zone.Qinq`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a QinQ Zone in Proxmox SDN. QinQ also known as VLAN stacking, that uses multiple layers of VLAN tags for isolation. The QinQ zone defines the outer VLAN tag (the Service VLAN) whereas the inner VLAN tag is defined by the VNet. Your physical network switches must support stacked VLANs for this configuration. Due to the double stacking of tags, you need 4 more bytes for QinQ VLANs. For example, you must reduce the MTU to 1496 if you physical interface MTU is 1500.
      * 
@@ -1025,7 +1025,7 @@ public final class Sdn_zoneFunctions {
         return getQinqLegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-go=&#34;`sdn/zone.Qinq`&#34; pulumi-lang-python=&#34;`sdn/zone.Qinq`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Qinq`&#34;&gt;`proxmoxve.sdn/zone.Qinq`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-go=&#34;`sdn/zone.Qinq`&#34; pulumi-lang-python=&#34;`sdn/zone.Qinq`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_zone_qinq`&#34;&gt;`proxmoxve.sdn/zone.Qinq`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a QinQ Zone in Proxmox SDN. QinQ also known as VLAN stacking, that uses multiple layers of VLAN tags for isolation. The QinQ zone defines the outer VLAN tag (the Service VLAN) whereas the inner VLAN tag is defined by the VNet. Your physical network switches must support stacked VLANs for this configuration. Due to the double stacking of tags, you need 4 more bytes for QinQ VLANs. For example, you must reduce the MTU to 1496 if you physical interface MTU is 1500.
      * 
@@ -1081,7 +1081,7 @@ public final class Sdn_zoneFunctions {
         return Deployment.getInstance().invoke("proxmoxve:sdn/zone/getQinqLegacy:getQinqLegacy", TypeShape.of(GetQinqLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-go=&#34;`sdn/zone.Qinq`&#34; pulumi-lang-python=&#34;`sdn/zone.Qinq`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Qinq`&#34;&gt;`proxmoxve.sdn/zone.Qinq`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-go=&#34;`sdn/zone.Qinq`&#34; pulumi-lang-python=&#34;`sdn/zone.Qinq`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_zone_qinq`&#34;&gt;`proxmoxve.sdn/zone.Qinq`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a QinQ Zone in Proxmox SDN. QinQ also known as VLAN stacking, that uses multiple layers of VLAN tags for isolation. The QinQ zone defines the outer VLAN tag (the Service VLAN) whereas the inner VLAN tag is defined by the VNet. Your physical network switches must support stacked VLANs for this configuration. Due to the double stacking of tags, you need 4 more bytes for QinQ VLANs. For example, you must reduce the MTU to 1496 if you physical interface MTU is 1500.
      * 
@@ -1137,7 +1137,7 @@ public final class Sdn_zoneFunctions {
         return Deployment.getInstance().invoke("proxmoxve:sdn/zone/getQinqLegacy:getQinqLegacy", TypeShape.of(GetQinqLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-go=&#34;`sdn/zone.Qinq`&#34; pulumi-lang-python=&#34;`sdn/zone.Qinq`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Qinq`&#34;&gt;`proxmoxve.sdn/zone.Qinq`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-go=&#34;`sdn/zone.Qinq`&#34; pulumi-lang-python=&#34;`sdn/zone.Qinq`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Qinq`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_zone_qinq`&#34;&gt;`proxmoxve.sdn/zone.Qinq`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a QinQ Zone in Proxmox SDN. QinQ also known as VLAN stacking, that uses multiple layers of VLAN tags for isolation. The QinQ zone defines the outer VLAN tag (the Service VLAN) whereas the inner VLAN tag is defined by the VNet. Your physical network switches must support stacked VLANs for this configuration. Due to the double stacking of tags, you need 4 more bytes for QinQ VLANs. For example, you must reduce the MTU to 1496 if you physical interface MTU is 1500.
      * 
@@ -1448,7 +1448,7 @@ public final class Sdn_zoneFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:sdn/zone/getSimple:getSimple", TypeShape.of(GetSimpleResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-go=&#34;`sdn/zone.Simple`&#34; pulumi-lang-python=&#34;`sdn/zone.Simple`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Simple`&#34;&gt;`proxmoxve.sdn/zone.Simple`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-go=&#34;`sdn/zone.Simple`&#34; pulumi-lang-python=&#34;`sdn/zone.Simple`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_zone_simple`&#34;&gt;`proxmoxve.sdn/zone.Simple`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a Simple Zone in Proxmox SDN. It will create an isolated VNet bridge. This bridge is not linked to a physical interface, and VM traffic is only local on each the node. It can be used in NAT or routed setups.
      * 
@@ -1501,7 +1501,7 @@ public final class Sdn_zoneFunctions {
         return getSimpleLegacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-go=&#34;`sdn/zone.Simple`&#34; pulumi-lang-python=&#34;`sdn/zone.Simple`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Simple`&#34;&gt;`proxmoxve.sdn/zone.Simple`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-go=&#34;`sdn/zone.Simple`&#34; pulumi-lang-python=&#34;`sdn/zone.Simple`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_zone_simple`&#34;&gt;`proxmoxve.sdn/zone.Simple`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a Simple Zone in Proxmox SDN. It will create an isolated VNet bridge. This bridge is not linked to a physical interface, and VM traffic is only local on each the node. It can be used in NAT or routed setups.
      * 
@@ -1554,7 +1554,7 @@ public final class Sdn_zoneFunctions {
         return getSimpleLegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-go=&#34;`sdn/zone.Simple`&#34; pulumi-lang-python=&#34;`sdn/zone.Simple`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Simple`&#34;&gt;`proxmoxve.sdn/zone.Simple`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-go=&#34;`sdn/zone.Simple`&#34; pulumi-lang-python=&#34;`sdn/zone.Simple`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_zone_simple`&#34;&gt;`proxmoxve.sdn/zone.Simple`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a Simple Zone in Proxmox SDN. It will create an isolated VNet bridge. This bridge is not linked to a physical interface, and VM traffic is only local on each the node. It can be used in NAT or routed setups.
      * 
@@ -1607,7 +1607,7 @@ public final class Sdn_zoneFunctions {
         return Deployment.getInstance().invoke("proxmoxve:sdn/zone/getSimpleLegacy:getSimpleLegacy", TypeShape.of(GetSimpleLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-go=&#34;`sdn/zone.Simple`&#34; pulumi-lang-python=&#34;`sdn/zone.Simple`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Simple`&#34;&gt;`proxmoxve.sdn/zone.Simple`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-go=&#34;`sdn/zone.Simple`&#34; pulumi-lang-python=&#34;`sdn/zone.Simple`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_zone_simple`&#34;&gt;`proxmoxve.sdn/zone.Simple`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a Simple Zone in Proxmox SDN. It will create an isolated VNet bridge. This bridge is not linked to a physical interface, and VM traffic is only local on each the node. It can be used in NAT or routed setups.
      * 
@@ -1660,7 +1660,7 @@ public final class Sdn_zoneFunctions {
         return Deployment.getInstance().invoke("proxmoxve:sdn/zone/getSimpleLegacy:getSimpleLegacy", TypeShape.of(GetSimpleLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-go=&#34;`sdn/zone.Simple`&#34; pulumi-lang-python=&#34;`sdn/zone.Simple`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Simple`&#34;&gt;`proxmoxve.sdn/zone.Simple`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-go=&#34;`sdn/zone.Simple`&#34; pulumi-lang-python=&#34;`sdn/zone.Simple`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Simple`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_zone_simple`&#34;&gt;`proxmoxve.sdn/zone.Simple`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a Simple Zone in Proxmox SDN. It will create an isolated VNet bridge. This bridge is not linked to a physical interface, and VM traffic is only local on each the node. It can be used in NAT or routed setups.
      * 
@@ -1973,7 +1973,7 @@ public final class Sdn_zoneFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:sdn/zone/getVlan:getVlan", TypeShape.of(GetVlanResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-go=&#34;`sdn/zone.Vlan`&#34; pulumi-lang-python=&#34;`sdn/zone.Vlan`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Vlan`&#34;&gt;`proxmoxve.sdn/zone.Vlan`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-go=&#34;`sdn/zone.Vlan`&#34; pulumi-lang-python=&#34;`sdn/zone.Vlan`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_zone_vlan`&#34;&gt;`proxmoxve.sdn/zone.Vlan`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a VLAN Zone in Proxmox SDN. It uses an existing local Linux or OVS bridge to connect to the node&#39;s physical interface. It uses VLAN tagging defined in the VNet to isolate the network segments. This allows connectivity of VMs between different nodes.
      * 
@@ -2027,7 +2027,7 @@ public final class Sdn_zoneFunctions {
         return getVlanLegacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-go=&#34;`sdn/zone.Vlan`&#34; pulumi-lang-python=&#34;`sdn/zone.Vlan`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Vlan`&#34;&gt;`proxmoxve.sdn/zone.Vlan`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-go=&#34;`sdn/zone.Vlan`&#34; pulumi-lang-python=&#34;`sdn/zone.Vlan`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_zone_vlan`&#34;&gt;`proxmoxve.sdn/zone.Vlan`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a VLAN Zone in Proxmox SDN. It uses an existing local Linux or OVS bridge to connect to the node&#39;s physical interface. It uses VLAN tagging defined in the VNet to isolate the network segments. This allows connectivity of VMs between different nodes.
      * 
@@ -2081,7 +2081,7 @@ public final class Sdn_zoneFunctions {
         return getVlanLegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-go=&#34;`sdn/zone.Vlan`&#34; pulumi-lang-python=&#34;`sdn/zone.Vlan`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Vlan`&#34;&gt;`proxmoxve.sdn/zone.Vlan`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-go=&#34;`sdn/zone.Vlan`&#34; pulumi-lang-python=&#34;`sdn/zone.Vlan`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_zone_vlan`&#34;&gt;`proxmoxve.sdn/zone.Vlan`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a VLAN Zone in Proxmox SDN. It uses an existing local Linux or OVS bridge to connect to the node&#39;s physical interface. It uses VLAN tagging defined in the VNet to isolate the network segments. This allows connectivity of VMs between different nodes.
      * 
@@ -2135,7 +2135,7 @@ public final class Sdn_zoneFunctions {
         return Deployment.getInstance().invoke("proxmoxve:sdn/zone/getVlanLegacy:getVlanLegacy", TypeShape.of(GetVlanLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-go=&#34;`sdn/zone.Vlan`&#34; pulumi-lang-python=&#34;`sdn/zone.Vlan`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Vlan`&#34;&gt;`proxmoxve.sdn/zone.Vlan`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-go=&#34;`sdn/zone.Vlan`&#34; pulumi-lang-python=&#34;`sdn/zone.Vlan`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_zone_vlan`&#34;&gt;`proxmoxve.sdn/zone.Vlan`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a VLAN Zone in Proxmox SDN. It uses an existing local Linux or OVS bridge to connect to the node&#39;s physical interface. It uses VLAN tagging defined in the VNet to isolate the network segments. This allows connectivity of VMs between different nodes.
      * 
@@ -2189,7 +2189,7 @@ public final class Sdn_zoneFunctions {
         return Deployment.getInstance().invoke("proxmoxve:sdn/zone/getVlanLegacy:getVlanLegacy", TypeShape.of(GetVlanLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-go=&#34;`sdn/zone.Vlan`&#34; pulumi-lang-python=&#34;`sdn/zone.Vlan`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Vlan`&#34;&gt;`proxmoxve.sdn/zone.Vlan`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-go=&#34;`sdn/zone.Vlan`&#34; pulumi-lang-python=&#34;`sdn/zone.Vlan`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Vlan`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_zone_vlan`&#34;&gt;`proxmoxve.sdn/zone.Vlan`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a VLAN Zone in Proxmox SDN. It uses an existing local Linux or OVS bridge to connect to the node&#39;s physical interface. It uses VLAN tagging defined in the VNet to isolate the network segments. This allows connectivity of VMs between different nodes.
      * 
@@ -2503,7 +2503,7 @@ public final class Sdn_zoneFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:sdn/zone/getVxlan:getVxlan", TypeShape.of(GetVxlanResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-go=&#34;`sdn/zone.Vxlan`&#34; pulumi-lang-python=&#34;`sdn/zone.Vxlan`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Vxlan`&#34;&gt;`proxmoxve.sdn/zone.Vxlan`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-go=&#34;`sdn/zone.Vxlan`&#34; pulumi-lang-python=&#34;`sdn/zone.Vxlan`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_zone_vxlan`&#34;&gt;`proxmoxve.sdn/zone.Vxlan`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a VXLAN Zone in Proxmox SDN. It establishes a tunnel (overlay) on top of an existing network (underlay). This encapsulates layer 2 Ethernet frames within layer 4 UDP datagrams using the default destination port 4789. You have to configure the underlay network yourself to enable UDP connectivity between all peers. Because VXLAN encapsulation uses 50 bytes, the MTU needs to be 50 bytes lower than the outgoing physical interface.
      * 
@@ -2557,7 +2557,7 @@ public final class Sdn_zoneFunctions {
         return getVxlanLegacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-go=&#34;`sdn/zone.Vxlan`&#34; pulumi-lang-python=&#34;`sdn/zone.Vxlan`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Vxlan`&#34;&gt;`proxmoxve.sdn/zone.Vxlan`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-go=&#34;`sdn/zone.Vxlan`&#34; pulumi-lang-python=&#34;`sdn/zone.Vxlan`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_zone_vxlan`&#34;&gt;`proxmoxve.sdn/zone.Vxlan`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a VXLAN Zone in Proxmox SDN. It establishes a tunnel (overlay) on top of an existing network (underlay). This encapsulates layer 2 Ethernet frames within layer 4 UDP datagrams using the default destination port 4789. You have to configure the underlay network yourself to enable UDP connectivity between all peers. Because VXLAN encapsulation uses 50 bytes, the MTU needs to be 50 bytes lower than the outgoing physical interface.
      * 
@@ -2611,7 +2611,7 @@ public final class Sdn_zoneFunctions {
         return getVxlanLegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-go=&#34;`sdn/zone.Vxlan`&#34; pulumi-lang-python=&#34;`sdn/zone.Vxlan`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Vxlan`&#34;&gt;`proxmoxve.sdn/zone.Vxlan`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-go=&#34;`sdn/zone.Vxlan`&#34; pulumi-lang-python=&#34;`sdn/zone.Vxlan`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_zone_vxlan`&#34;&gt;`proxmoxve.sdn/zone.Vxlan`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a VXLAN Zone in Proxmox SDN. It establishes a tunnel (overlay) on top of an existing network (underlay). This encapsulates layer 2 Ethernet frames within layer 4 UDP datagrams using the default destination port 4789. You have to configure the underlay network yourself to enable UDP connectivity between all peers. Because VXLAN encapsulation uses 50 bytes, the MTU needs to be 50 bytes lower than the outgoing physical interface.
      * 
@@ -2665,7 +2665,7 @@ public final class Sdn_zoneFunctions {
         return Deployment.getInstance().invoke("proxmoxve:sdn/zone/getVxlanLegacy:getVxlanLegacy", TypeShape.of(GetVxlanLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-go=&#34;`sdn/zone.Vxlan`&#34; pulumi-lang-python=&#34;`sdn/zone.Vxlan`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Vxlan`&#34;&gt;`proxmoxve.sdn/zone.Vxlan`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-go=&#34;`sdn/zone.Vxlan`&#34; pulumi-lang-python=&#34;`sdn/zone.Vxlan`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_zone_vxlan`&#34;&gt;`proxmoxve.sdn/zone.Vxlan`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a VXLAN Zone in Proxmox SDN. It establishes a tunnel (overlay) on top of an existing network (underlay). This encapsulates layer 2 Ethernet frames within layer 4 UDP datagrams using the default destination port 4789. You have to configure the underlay network yourself to enable UDP connectivity between all peers. Because VXLAN encapsulation uses 50 bytes, the MTU needs to be 50 bytes lower than the outgoing physical interface.
      * 
@@ -2719,7 +2719,7 @@ public final class Sdn_zoneFunctions {
         return Deployment.getInstance().invoke("proxmoxve:sdn/zone/getVxlanLegacy:getVxlanLegacy", TypeShape.of(GetVxlanLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-go=&#34;`sdn/zone.Vxlan`&#34; pulumi-lang-python=&#34;`sdn/zone.Vxlan`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Vxlan`&#34;&gt;`proxmoxve.sdn/zone.Vxlan`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-go=&#34;`sdn/zone.Vxlan`&#34; pulumi-lang-python=&#34;`sdn/zone.Vxlan`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_zone_vxlan`&#34;&gt;`proxmoxve.sdn/zone.Vxlan`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about a VXLAN Zone in Proxmox SDN. It establishes a tunnel (overlay) on top of an existing network (underlay). This encapsulates layer 2 Ethernet frames within layer 4 UDP datagrams using the default destination port 4789. You have to configure the underlay network yourself to enable UDP connectivity between all peers. Because VXLAN encapsulation uses 50 bytes, the MTU needs to be 50 bytes lower than the outgoing physical interface.
      * 

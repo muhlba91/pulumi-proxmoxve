@@ -13,6 +13,7 @@ import io.muehlbachler.pulumi.proxmoxve.acme_dns.inputs.PluginState;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -101,6 +102,36 @@ public class Plugin extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.data);
     }
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * DNS plugin data, supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so credentials are never stored in Terraform state. Requires Terraform 1.11+. Mutually exclusive with &lt;span pulumi-lang-nodejs=&#34;`data`&#34; pulumi-lang-dotnet=&#34;`Data`&#34; pulumi-lang-go=&#34;`data`&#34; pulumi-lang-python=&#34;`data`&#34; pulumi-lang-yaml=&#34;`data`&#34; pulumi-lang-java=&#34;`data`&#34; pulumi-lang-hcl=&#34;`data`&#34;&gt;`data`&lt;/span&gt;. Pair with &lt;span pulumi-lang-nodejs=&#34;`dataWoVersion`&#34; pulumi-lang-dotnet=&#34;`DataWoVersion`&#34; pulumi-lang-go=&#34;`dataWoVersion`&#34; pulumi-lang-python=&#34;`data_wo_version`&#34; pulumi-lang-yaml=&#34;`dataWoVersion`&#34; pulumi-lang-java=&#34;`dataWoVersion`&#34; pulumi-lang-hcl=&#34;`data_wo_version`&#34;&gt;`dataWoVersion`&lt;/span&gt; to push rotated values.
+     * 
+     */
+    @Export(name="dataWo", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> dataWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * DNS plugin data, supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so credentials are never stored in Terraform state. Requires Terraform 1.11+. Mutually exclusive with &lt;span pulumi-lang-nodejs=&#34;`data`&#34; pulumi-lang-dotnet=&#34;`Data`&#34; pulumi-lang-go=&#34;`data`&#34; pulumi-lang-python=&#34;`data`&#34; pulumi-lang-yaml=&#34;`data`&#34; pulumi-lang-java=&#34;`data`&#34; pulumi-lang-hcl=&#34;`data`&#34;&gt;`data`&lt;/span&gt;. Pair with &lt;span pulumi-lang-nodejs=&#34;`dataWoVersion`&#34; pulumi-lang-dotnet=&#34;`DataWoVersion`&#34; pulumi-lang-go=&#34;`dataWoVersion`&#34; pulumi-lang-python=&#34;`data_wo_version`&#34; pulumi-lang-yaml=&#34;`dataWoVersion`&#34; pulumi-lang-java=&#34;`dataWoVersion`&#34; pulumi-lang-hcl=&#34;`data_wo_version`&#34;&gt;`dataWoVersion`&lt;/span&gt; to push rotated values.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> dataWo() {
+        return Codegen.optional(this.dataWo);
+    }
+    /**
+     * Version counter for &lt;span pulumi-lang-nodejs=&#34;`dataWo`&#34; pulumi-lang-dotnet=&#34;`DataWo`&#34; pulumi-lang-go=&#34;`dataWo`&#34; pulumi-lang-python=&#34;`data_wo`&#34; pulumi-lang-yaml=&#34;`dataWo`&#34; pulumi-lang-java=&#34;`dataWo`&#34; pulumi-lang-hcl=&#34;`data_wo`&#34;&gt;`dataWo`&lt;/span&gt;. Because write-only values are not stored in state, Terraform cannot detect when &lt;span pulumi-lang-nodejs=&#34;`dataWo`&#34; pulumi-lang-dotnet=&#34;`DataWo`&#34; pulumi-lang-go=&#34;`dataWo`&#34; pulumi-lang-python=&#34;`data_wo`&#34; pulumi-lang-yaml=&#34;`dataWo`&#34; pulumi-lang-java=&#34;`dataWo`&#34; pulumi-lang-hcl=&#34;`data_wo`&#34;&gt;`dataWo`&lt;/span&gt; changes; increment this value to signal a rotation and force the new &lt;span pulumi-lang-nodejs=&#34;`dataWo`&#34; pulumi-lang-dotnet=&#34;`DataWo`&#34; pulumi-lang-go=&#34;`dataWo`&#34; pulumi-lang-python=&#34;`data_wo`&#34; pulumi-lang-yaml=&#34;`dataWo`&#34; pulumi-lang-java=&#34;`dataWo`&#34; pulumi-lang-hcl=&#34;`data_wo`&#34;&gt;`dataWo`&lt;/span&gt; to be sent.
+     * 
+     */
+    @Export(name="dataWoVersion", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> dataWoVersion;
+
+    /**
+     * @return Version counter for &lt;span pulumi-lang-nodejs=&#34;`dataWo`&#34; pulumi-lang-dotnet=&#34;`DataWo`&#34; pulumi-lang-go=&#34;`dataWo`&#34; pulumi-lang-python=&#34;`data_wo`&#34; pulumi-lang-yaml=&#34;`dataWo`&#34; pulumi-lang-java=&#34;`dataWo`&#34; pulumi-lang-hcl=&#34;`data_wo`&#34;&gt;`dataWo`&lt;/span&gt;. Because write-only values are not stored in state, Terraform cannot detect when &lt;span pulumi-lang-nodejs=&#34;`dataWo`&#34; pulumi-lang-dotnet=&#34;`DataWo`&#34; pulumi-lang-go=&#34;`dataWo`&#34; pulumi-lang-python=&#34;`data_wo`&#34; pulumi-lang-yaml=&#34;`dataWo`&#34; pulumi-lang-java=&#34;`dataWo`&#34; pulumi-lang-hcl=&#34;`data_wo`&#34;&gt;`dataWo`&lt;/span&gt; changes; increment this value to signal a rotation and force the new &lt;span pulumi-lang-nodejs=&#34;`dataWo`&#34; pulumi-lang-dotnet=&#34;`DataWo`&#34; pulumi-lang-go=&#34;`dataWo`&#34; pulumi-lang-python=&#34;`data_wo`&#34; pulumi-lang-yaml=&#34;`dataWo`&#34; pulumi-lang-java=&#34;`dataWo`&#34; pulumi-lang-hcl=&#34;`data_wo`&#34;&gt;`dataWo`&lt;/span&gt; to be sent.
+     * 
+     */
+    public Output<Optional<Integer>> dataWoVersion() {
+        return Codegen.optional(this.dataWoVersion);
+    }
+    /**
      * SHA1 digest of the current configuration. Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
      * 
      */
@@ -129,14 +160,14 @@ public class Plugin extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.disable);
     }
     /**
-     * ACME Plugin ID name.
+     * ACME plugin ID name.
      * 
      */
     @Export(name="plugin", refs={String.class}, tree="[0]")
     private Output<String> plugin;
 
     /**
-     * @return ACME Plugin ID name.
+     * @return ACME plugin ID name.
      * 
      */
     public Output<String> plugin() {
@@ -197,6 +228,9 @@ public class Plugin extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .pluginDownloadURL("github://api.github.com/muhlba91/pulumi-proxmoxve")
+            .additionalSecretOutputs(List.of(
+                "dataWo"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

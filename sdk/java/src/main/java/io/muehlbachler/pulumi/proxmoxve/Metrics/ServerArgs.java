@@ -19,14 +19,14 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
     public static final ServerArgs Empty = new ServerArgs();
 
     /**
-     * Set this to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt; to disable this metric server. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
+     * Set this to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt; to disable this metric server. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
      * 
      */
     @Import(name="disable")
     private @Nullable Output<Boolean> disable;
 
     /**
-     * @return Set this to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt; to disable this metric server. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
+     * @return Set this to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt; to disable this metric server. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
      * 
      */
     public Optional<Output<Boolean>> disable() {
@@ -49,14 +49,14 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Protocol to send graphite data. Choice is between &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`tcp`&#34; pulumi-lang-dotnet=&#34;`Tcp`&#34; pulumi-lang-go=&#34;`tcp`&#34; pulumi-lang-python=&#34;`tcp`&#34; pulumi-lang-yaml=&#34;`tcp`&#34; pulumi-lang-java=&#34;`tcp`&#34;&gt;`tcp`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt;.
+     * Protocol to send graphite data. Choice is between &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34; pulumi-lang-hcl=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`tcp`&#34; pulumi-lang-dotnet=&#34;`Tcp`&#34; pulumi-lang-go=&#34;`tcp`&#34; pulumi-lang-python=&#34;`tcp`&#34; pulumi-lang-yaml=&#34;`tcp`&#34; pulumi-lang-java=&#34;`tcp`&#34; pulumi-lang-hcl=&#34;`tcp`&#34;&gt;`tcp`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34; pulumi-lang-hcl=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt;.
      * 
      */
     @Import(name="graphiteProto")
     private @Nullable Output<String> graphiteProto;
 
     /**
-     * @return Protocol to send graphite data. Choice is between &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`tcp`&#34; pulumi-lang-dotnet=&#34;`Tcp`&#34; pulumi-lang-go=&#34;`tcp`&#34; pulumi-lang-python=&#34;`tcp`&#34; pulumi-lang-yaml=&#34;`tcp`&#34; pulumi-lang-java=&#34;`tcp`&#34;&gt;`tcp`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt;.
+     * @return Protocol to send graphite data. Choice is between &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34; pulumi-lang-hcl=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`tcp`&#34; pulumi-lang-dotnet=&#34;`Tcp`&#34; pulumi-lang-go=&#34;`tcp`&#34; pulumi-lang-python=&#34;`tcp`&#34; pulumi-lang-yaml=&#34;`tcp`&#34; pulumi-lang-java=&#34;`tcp`&#34; pulumi-lang-hcl=&#34;`tcp`&#34;&gt;`tcp`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34; pulumi-lang-hcl=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt;.
      * 
      */
     public Optional<Output<String>> graphiteProto() {
@@ -94,14 +94,14 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Protocol for InfluxDB. Choice is between &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`http`&#34; pulumi-lang-dotnet=&#34;`Http`&#34; pulumi-lang-go=&#34;`http`&#34; pulumi-lang-python=&#34;`http`&#34; pulumi-lang-yaml=&#34;`http`&#34; pulumi-lang-java=&#34;`http`&#34;&gt;`http`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`https`&#34; pulumi-lang-dotnet=&#34;`Https`&#34; pulumi-lang-go=&#34;`https`&#34; pulumi-lang-python=&#34;`https`&#34; pulumi-lang-yaml=&#34;`https`&#34; pulumi-lang-java=&#34;`https`&#34;&gt;`https`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt;.
+     * Protocol for InfluxDB. Choice is between &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34; pulumi-lang-hcl=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`http`&#34; pulumi-lang-dotnet=&#34;`Http`&#34; pulumi-lang-go=&#34;`http`&#34; pulumi-lang-python=&#34;`http`&#34; pulumi-lang-yaml=&#34;`http`&#34; pulumi-lang-java=&#34;`http`&#34; pulumi-lang-hcl=&#34;`http`&#34;&gt;`http`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`https`&#34; pulumi-lang-dotnet=&#34;`Https`&#34; pulumi-lang-go=&#34;`https`&#34; pulumi-lang-python=&#34;`https`&#34; pulumi-lang-yaml=&#34;`https`&#34; pulumi-lang-java=&#34;`https`&#34; pulumi-lang-hcl=&#34;`https`&#34;&gt;`https`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34; pulumi-lang-hcl=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt;.
      * 
      */
     @Import(name="influxDbProto")
     private @Nullable Output<String> influxDbProto;
 
     /**
-     * @return Protocol for InfluxDB. Choice is between &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`http`&#34; pulumi-lang-dotnet=&#34;`Http`&#34; pulumi-lang-go=&#34;`http`&#34; pulumi-lang-python=&#34;`http`&#34; pulumi-lang-yaml=&#34;`http`&#34; pulumi-lang-java=&#34;`http`&#34;&gt;`http`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`https`&#34; pulumi-lang-dotnet=&#34;`Https`&#34; pulumi-lang-go=&#34;`https`&#34; pulumi-lang-python=&#34;`https`&#34; pulumi-lang-yaml=&#34;`https`&#34; pulumi-lang-java=&#34;`https`&#34;&gt;`https`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt;.
+     * @return Protocol for InfluxDB. Choice is between &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34; pulumi-lang-hcl=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`http`&#34; pulumi-lang-dotnet=&#34;`Http`&#34; pulumi-lang-go=&#34;`http`&#34; pulumi-lang-python=&#34;`http`&#34; pulumi-lang-yaml=&#34;`http`&#34; pulumi-lang-java=&#34;`http`&#34; pulumi-lang-hcl=&#34;`http`&#34;&gt;`http`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`https`&#34; pulumi-lang-dotnet=&#34;`Https`&#34; pulumi-lang-go=&#34;`https`&#34; pulumi-lang-python=&#34;`https`&#34; pulumi-lang-yaml=&#34;`https`&#34; pulumi-lang-java=&#34;`https`&#34; pulumi-lang-hcl=&#34;`https`&#34;&gt;`https`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34; pulumi-lang-hcl=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt;.
      * 
      */
     public Optional<Output<String>> influxDbProto() {
@@ -109,14 +109,14 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * InfluxDB max-body-size in bytes. Requests are batched up to this size. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`25000000`&#34; pulumi-lang-dotnet=&#34;`25000000`&#34; pulumi-lang-go=&#34;`25000000`&#34; pulumi-lang-python=&#34;`25000000`&#34; pulumi-lang-yaml=&#34;`25000000`&#34; pulumi-lang-java=&#34;`25000000`&#34;&gt;`25000000`&lt;/span&gt;.
+     * InfluxDB max-body-size in bytes. Requests are batched up to this size. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`25000000`&#34; pulumi-lang-dotnet=&#34;`25000000`&#34; pulumi-lang-go=&#34;`25000000`&#34; pulumi-lang-python=&#34;`25000000`&#34; pulumi-lang-yaml=&#34;`25000000`&#34; pulumi-lang-java=&#34;`25000000`&#34; pulumi-lang-hcl=&#34;`25000000`&#34;&gt;`25000000`&lt;/span&gt;.
      * 
      */
     @Import(name="influxMaxBodySize")
     private @Nullable Output<Integer> influxMaxBodySize;
 
     /**
-     * @return InfluxDB max-body-size in bytes. Requests are batched up to this size. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`25000000`&#34; pulumi-lang-dotnet=&#34;`25000000`&#34; pulumi-lang-go=&#34;`25000000`&#34; pulumi-lang-python=&#34;`25000000`&#34; pulumi-lang-yaml=&#34;`25000000`&#34; pulumi-lang-java=&#34;`25000000`&#34;&gt;`25000000`&lt;/span&gt;.
+     * @return InfluxDB max-body-size in bytes. Requests are batched up to this size. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`25000000`&#34; pulumi-lang-dotnet=&#34;`25000000`&#34; pulumi-lang-go=&#34;`25000000`&#34; pulumi-lang-python=&#34;`25000000`&#34; pulumi-lang-yaml=&#34;`25000000`&#34; pulumi-lang-java=&#34;`25000000`&#34; pulumi-lang-hcl=&#34;`25000000`&#34;&gt;`25000000`&lt;/span&gt;.
      * 
      */
     public Optional<Output<Integer>> influxMaxBodySize() {
@@ -139,14 +139,14 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
+     * The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead. Cannot be used together with &lt;span pulumi-lang-nodejs=&#34;`influxTokenWo`&#34; pulumi-lang-dotnet=&#34;`InfluxTokenWo`&#34; pulumi-lang-go=&#34;`influxTokenWo`&#34; pulumi-lang-python=&#34;`influx_token_wo`&#34; pulumi-lang-yaml=&#34;`influxTokenWo`&#34; pulumi-lang-java=&#34;`influxTokenWo`&#34; pulumi-lang-hcl=&#34;`influx_token_wo`&#34;&gt;`influxTokenWo`&lt;/span&gt;.
      * 
      */
     @Import(name="influxToken")
     private @Nullable Output<String> influxToken;
 
     /**
-     * @return The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
+     * @return The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead. Cannot be used together with &lt;span pulumi-lang-nodejs=&#34;`influxTokenWo`&#34; pulumi-lang-dotnet=&#34;`InfluxTokenWo`&#34; pulumi-lang-go=&#34;`influxTokenWo`&#34; pulumi-lang-python=&#34;`influx_token_wo`&#34; pulumi-lang-yaml=&#34;`influxTokenWo`&#34; pulumi-lang-java=&#34;`influxTokenWo`&#34; pulumi-lang-hcl=&#34;`influx_token_wo`&#34;&gt;`influxTokenWo`&lt;/span&gt;.
      * 
      */
     public Optional<Output<String>> influxToken() {
@@ -154,14 +154,46 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Set to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt; to disable certificate verification for https endpoints. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The InfluxDB access token (write-only). Prefer this over &lt;span pulumi-lang-nodejs=&#34;`influxToken`&#34; pulumi-lang-dotnet=&#34;`InfluxToken`&#34; pulumi-lang-go=&#34;`influxToken`&#34; pulumi-lang-python=&#34;`influx_token`&#34; pulumi-lang-yaml=&#34;`influxToken`&#34; pulumi-lang-java=&#34;`influxToken`&#34; pulumi-lang-hcl=&#34;`influx_token`&#34;&gt;`influxToken`&lt;/span&gt; to avoid storing the secret in Terraform state. Cannot be used together with &lt;span pulumi-lang-nodejs=&#34;`influxToken`&#34; pulumi-lang-dotnet=&#34;`InfluxToken`&#34; pulumi-lang-go=&#34;`influxToken`&#34; pulumi-lang-python=&#34;`influx_token`&#34; pulumi-lang-yaml=&#34;`influxToken`&#34; pulumi-lang-java=&#34;`influxToken`&#34; pulumi-lang-hcl=&#34;`influx_token`&#34;&gt;`influxToken`&lt;/span&gt;.
+     * 
+     */
+    @Import(name="influxTokenWo")
+    private @Nullable Output<String> influxTokenWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The InfluxDB access token (write-only). Prefer this over &lt;span pulumi-lang-nodejs=&#34;`influxToken`&#34; pulumi-lang-dotnet=&#34;`InfluxToken`&#34; pulumi-lang-go=&#34;`influxToken`&#34; pulumi-lang-python=&#34;`influx_token`&#34; pulumi-lang-yaml=&#34;`influxToken`&#34; pulumi-lang-java=&#34;`influxToken`&#34; pulumi-lang-hcl=&#34;`influx_token`&#34;&gt;`influxToken`&lt;/span&gt; to avoid storing the secret in Terraform state. Cannot be used together with &lt;span pulumi-lang-nodejs=&#34;`influxToken`&#34; pulumi-lang-dotnet=&#34;`InfluxToken`&#34; pulumi-lang-go=&#34;`influxToken`&#34; pulumi-lang-python=&#34;`influx_token`&#34; pulumi-lang-yaml=&#34;`influxToken`&#34; pulumi-lang-java=&#34;`influxToken`&#34; pulumi-lang-hcl=&#34;`influx_token`&#34;&gt;`influxToken`&lt;/span&gt;.
+     * 
+     */
+    public Optional<Output<String>> influxTokenWo() {
+        return Optional.ofNullable(this.influxTokenWo);
+    }
+
+    /**
+     * Increment this counter to rotate &lt;span pulumi-lang-nodejs=&#34;`influxTokenWo`&#34; pulumi-lang-dotnet=&#34;`InfluxTokenWo`&#34; pulumi-lang-go=&#34;`influxTokenWo`&#34; pulumi-lang-python=&#34;`influx_token_wo`&#34; pulumi-lang-yaml=&#34;`influxTokenWo`&#34; pulumi-lang-java=&#34;`influxTokenWo`&#34; pulumi-lang-hcl=&#34;`influx_token_wo`&#34;&gt;`influxTokenWo`&lt;/span&gt; without changing other fields.
+     * 
+     */
+    @Import(name="influxTokenWoVersion")
+    private @Nullable Output<Integer> influxTokenWoVersion;
+
+    /**
+     * @return Increment this counter to rotate &lt;span pulumi-lang-nodejs=&#34;`influxTokenWo`&#34; pulumi-lang-dotnet=&#34;`InfluxTokenWo`&#34; pulumi-lang-go=&#34;`influxTokenWo`&#34; pulumi-lang-python=&#34;`influx_token_wo`&#34; pulumi-lang-yaml=&#34;`influxTokenWo`&#34; pulumi-lang-java=&#34;`influxTokenWo`&#34; pulumi-lang-hcl=&#34;`influx_token_wo`&#34;&gt;`influxTokenWo`&lt;/span&gt; without changing other fields.
+     * 
+     */
+    public Optional<Output<Integer>> influxTokenWoVersion() {
+        return Optional.ofNullable(this.influxTokenWoVersion);
+    }
+
+    /**
+     * Set to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt; to disable certificate verification for https endpoints. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
      * 
      */
     @Import(name="influxVerify")
     private @Nullable Output<Boolean> influxVerify;
 
     /**
-     * @return Set to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt; to disable certificate verification for https endpoints. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
+     * @return Set to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt; to disable certificate verification for https endpoints. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
      * 
      */
     public Optional<Output<Boolean>> influxVerify() {
@@ -169,14 +201,14 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`1500`&#34; pulumi-lang-dotnet=&#34;`1500`&#34; pulumi-lang-go=&#34;`1500`&#34; pulumi-lang-python=&#34;`1500`&#34; pulumi-lang-yaml=&#34;`1500`&#34; pulumi-lang-java=&#34;`1500`&#34;&gt;`1500`&lt;/span&gt; (allowed &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34;&gt;`512`&lt;/span&gt; - &lt;span pulumi-lang-nodejs=&#34;`65536`&#34; pulumi-lang-dotnet=&#34;`65536`&#34; pulumi-lang-go=&#34;`65536`&#34; pulumi-lang-python=&#34;`65536`&#34; pulumi-lang-yaml=&#34;`65536`&#34; pulumi-lang-java=&#34;`65536`&#34;&gt;`65536`&lt;/span&gt;).
+     * MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`1500`&#34; pulumi-lang-dotnet=&#34;`1500`&#34; pulumi-lang-go=&#34;`1500`&#34; pulumi-lang-python=&#34;`1500`&#34; pulumi-lang-yaml=&#34;`1500`&#34; pulumi-lang-java=&#34;`1500`&#34; pulumi-lang-hcl=&#34;`1500`&#34;&gt;`1500`&lt;/span&gt; (allowed &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34; pulumi-lang-hcl=&#34;`512`&#34;&gt;`512`&lt;/span&gt; - &lt;span pulumi-lang-nodejs=&#34;`65536`&#34; pulumi-lang-dotnet=&#34;`65536`&#34; pulumi-lang-go=&#34;`65536`&#34; pulumi-lang-python=&#34;`65536`&#34; pulumi-lang-yaml=&#34;`65536`&#34; pulumi-lang-java=&#34;`65536`&#34; pulumi-lang-hcl=&#34;`65536`&#34;&gt;`65536`&lt;/span&gt;).
      * 
      */
     @Import(name="mtu")
     private @Nullable Output<Integer> mtu;
 
     /**
-     * @return MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`1500`&#34; pulumi-lang-dotnet=&#34;`1500`&#34; pulumi-lang-go=&#34;`1500`&#34; pulumi-lang-python=&#34;`1500`&#34; pulumi-lang-yaml=&#34;`1500`&#34; pulumi-lang-java=&#34;`1500`&#34;&gt;`1500`&lt;/span&gt; (allowed &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34;&gt;`512`&lt;/span&gt; - &lt;span pulumi-lang-nodejs=&#34;`65536`&#34; pulumi-lang-dotnet=&#34;`65536`&#34; pulumi-lang-go=&#34;`65536`&#34; pulumi-lang-python=&#34;`65536`&#34; pulumi-lang-yaml=&#34;`65536`&#34; pulumi-lang-java=&#34;`65536`&#34;&gt;`65536`&lt;/span&gt;).
+     * @return MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`1500`&#34; pulumi-lang-dotnet=&#34;`1500`&#34; pulumi-lang-go=&#34;`1500`&#34; pulumi-lang-python=&#34;`1500`&#34; pulumi-lang-yaml=&#34;`1500`&#34; pulumi-lang-java=&#34;`1500`&#34; pulumi-lang-hcl=&#34;`1500`&#34;&gt;`1500`&lt;/span&gt; (allowed &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34; pulumi-lang-hcl=&#34;`512`&#34;&gt;`512`&lt;/span&gt; - &lt;span pulumi-lang-nodejs=&#34;`65536`&#34; pulumi-lang-dotnet=&#34;`65536`&#34; pulumi-lang-go=&#34;`65536`&#34; pulumi-lang-python=&#34;`65536`&#34; pulumi-lang-yaml=&#34;`65536`&#34; pulumi-lang-java=&#34;`65536`&#34; pulumi-lang-hcl=&#34;`65536`&#34;&gt;`65536`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Integer>> mtu() {
@@ -199,14 +231,14 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * OpenTelemetry compression algorithm for requests. Choice is between &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34;&gt;`none`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`gzip`&#34; pulumi-lang-dotnet=&#34;`Gzip`&#34; pulumi-lang-go=&#34;`gzip`&#34; pulumi-lang-python=&#34;`gzip`&#34; pulumi-lang-yaml=&#34;`gzip`&#34; pulumi-lang-java=&#34;`gzip`&#34;&gt;`gzip`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`gzip`&#34; pulumi-lang-dotnet=&#34;`Gzip`&#34; pulumi-lang-go=&#34;`gzip`&#34; pulumi-lang-python=&#34;`gzip`&#34; pulumi-lang-yaml=&#34;`gzip`&#34; pulumi-lang-java=&#34;`gzip`&#34;&gt;`gzip`&lt;/span&gt;.
+     * OpenTelemetry compression algorithm for requests. Choice is between &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34; pulumi-lang-hcl=&#34;`none`&#34;&gt;`none`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`gzip`&#34; pulumi-lang-dotnet=&#34;`Gzip`&#34; pulumi-lang-go=&#34;`gzip`&#34; pulumi-lang-python=&#34;`gzip`&#34; pulumi-lang-yaml=&#34;`gzip`&#34; pulumi-lang-java=&#34;`gzip`&#34; pulumi-lang-hcl=&#34;`gzip`&#34;&gt;`gzip`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`gzip`&#34; pulumi-lang-dotnet=&#34;`Gzip`&#34; pulumi-lang-go=&#34;`gzip`&#34; pulumi-lang-python=&#34;`gzip`&#34; pulumi-lang-yaml=&#34;`gzip`&#34; pulumi-lang-java=&#34;`gzip`&#34; pulumi-lang-hcl=&#34;`gzip`&#34;&gt;`gzip`&lt;/span&gt;.
      * 
      */
     @Import(name="opentelemetryCompression")
     private @Nullable Output<String> opentelemetryCompression;
 
     /**
-     * @return OpenTelemetry compression algorithm for requests. Choice is between &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34;&gt;`none`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`gzip`&#34; pulumi-lang-dotnet=&#34;`Gzip`&#34; pulumi-lang-go=&#34;`gzip`&#34; pulumi-lang-python=&#34;`gzip`&#34; pulumi-lang-yaml=&#34;`gzip`&#34; pulumi-lang-java=&#34;`gzip`&#34;&gt;`gzip`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`gzip`&#34; pulumi-lang-dotnet=&#34;`Gzip`&#34; pulumi-lang-go=&#34;`gzip`&#34; pulumi-lang-python=&#34;`gzip`&#34; pulumi-lang-yaml=&#34;`gzip`&#34; pulumi-lang-java=&#34;`gzip`&#34;&gt;`gzip`&lt;/span&gt;.
+     * @return OpenTelemetry compression algorithm for requests. Choice is between &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34; pulumi-lang-hcl=&#34;`none`&#34;&gt;`none`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`gzip`&#34; pulumi-lang-dotnet=&#34;`Gzip`&#34; pulumi-lang-go=&#34;`gzip`&#34; pulumi-lang-python=&#34;`gzip`&#34; pulumi-lang-yaml=&#34;`gzip`&#34; pulumi-lang-java=&#34;`gzip`&#34; pulumi-lang-hcl=&#34;`gzip`&#34;&gt;`gzip`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`gzip`&#34; pulumi-lang-dotnet=&#34;`Gzip`&#34; pulumi-lang-go=&#34;`gzip`&#34; pulumi-lang-python=&#34;`gzip`&#34; pulumi-lang-yaml=&#34;`gzip`&#34; pulumi-lang-java=&#34;`gzip`&#34; pulumi-lang-hcl=&#34;`gzip`&#34;&gt;`gzip`&lt;/span&gt;.
      * 
      */
     public Optional<Output<String>> opentelemetryCompression() {
@@ -229,14 +261,14 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * OpenTelemetry maximum request body size in bytes. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`10000000`&#34; pulumi-lang-dotnet=&#34;`10000000`&#34; pulumi-lang-go=&#34;`10000000`&#34; pulumi-lang-python=&#34;`10000000`&#34; pulumi-lang-yaml=&#34;`10000000`&#34; pulumi-lang-java=&#34;`10000000`&#34;&gt;`10000000`&lt;/span&gt;.
+     * OpenTelemetry maximum request body size in bytes. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`10000000`&#34; pulumi-lang-dotnet=&#34;`10000000`&#34; pulumi-lang-go=&#34;`10000000`&#34; pulumi-lang-python=&#34;`10000000`&#34; pulumi-lang-yaml=&#34;`10000000`&#34; pulumi-lang-java=&#34;`10000000`&#34; pulumi-lang-hcl=&#34;`10000000`&#34;&gt;`10000000`&lt;/span&gt;.
      * 
      */
     @Import(name="opentelemetryMaxBodySize")
     private @Nullable Output<Integer> opentelemetryMaxBodySize;
 
     /**
-     * @return OpenTelemetry maximum request body size in bytes. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`10000000`&#34; pulumi-lang-dotnet=&#34;`10000000`&#34; pulumi-lang-go=&#34;`10000000`&#34; pulumi-lang-python=&#34;`10000000`&#34; pulumi-lang-yaml=&#34;`10000000`&#34; pulumi-lang-java=&#34;`10000000`&#34;&gt;`10000000`&lt;/span&gt;.
+     * @return OpenTelemetry maximum request body size in bytes. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`10000000`&#34; pulumi-lang-dotnet=&#34;`10000000`&#34; pulumi-lang-go=&#34;`10000000`&#34; pulumi-lang-python=&#34;`10000000`&#34; pulumi-lang-yaml=&#34;`10000000`&#34; pulumi-lang-java=&#34;`10000000`&#34; pulumi-lang-hcl=&#34;`10000000`&#34;&gt;`10000000`&lt;/span&gt;.
      * 
      */
     public Optional<Output<Integer>> opentelemetryMaxBodySize() {
@@ -259,14 +291,14 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Protocol for OpenTelemetry. Choice is between &lt;span pulumi-lang-nodejs=&#34;`http`&#34; pulumi-lang-dotnet=&#34;`Http`&#34; pulumi-lang-go=&#34;`http`&#34; pulumi-lang-python=&#34;`http`&#34; pulumi-lang-yaml=&#34;`http`&#34; pulumi-lang-java=&#34;`http`&#34;&gt;`http`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`https`&#34; pulumi-lang-dotnet=&#34;`Https`&#34; pulumi-lang-go=&#34;`https`&#34; pulumi-lang-python=&#34;`https`&#34; pulumi-lang-yaml=&#34;`https`&#34; pulumi-lang-java=&#34;`https`&#34;&gt;`https`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`https`&#34; pulumi-lang-dotnet=&#34;`Https`&#34; pulumi-lang-go=&#34;`https`&#34; pulumi-lang-python=&#34;`https`&#34; pulumi-lang-yaml=&#34;`https`&#34; pulumi-lang-java=&#34;`https`&#34;&gt;`https`&lt;/span&gt;.
+     * Protocol for OpenTelemetry. Choice is between &lt;span pulumi-lang-nodejs=&#34;`http`&#34; pulumi-lang-dotnet=&#34;`Http`&#34; pulumi-lang-go=&#34;`http`&#34; pulumi-lang-python=&#34;`http`&#34; pulumi-lang-yaml=&#34;`http`&#34; pulumi-lang-java=&#34;`http`&#34; pulumi-lang-hcl=&#34;`http`&#34;&gt;`http`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`https`&#34; pulumi-lang-dotnet=&#34;`Https`&#34; pulumi-lang-go=&#34;`https`&#34; pulumi-lang-python=&#34;`https`&#34; pulumi-lang-yaml=&#34;`https`&#34; pulumi-lang-java=&#34;`https`&#34; pulumi-lang-hcl=&#34;`https`&#34;&gt;`https`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`https`&#34; pulumi-lang-dotnet=&#34;`Https`&#34; pulumi-lang-go=&#34;`https`&#34; pulumi-lang-python=&#34;`https`&#34; pulumi-lang-yaml=&#34;`https`&#34; pulumi-lang-java=&#34;`https`&#34; pulumi-lang-hcl=&#34;`https`&#34;&gt;`https`&lt;/span&gt;.
      * 
      */
     @Import(name="opentelemetryProto")
     private @Nullable Output<String> opentelemetryProto;
 
     /**
-     * @return Protocol for OpenTelemetry. Choice is between &lt;span pulumi-lang-nodejs=&#34;`http`&#34; pulumi-lang-dotnet=&#34;`Http`&#34; pulumi-lang-go=&#34;`http`&#34; pulumi-lang-python=&#34;`http`&#34; pulumi-lang-yaml=&#34;`http`&#34; pulumi-lang-java=&#34;`http`&#34;&gt;`http`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`https`&#34; pulumi-lang-dotnet=&#34;`Https`&#34; pulumi-lang-go=&#34;`https`&#34; pulumi-lang-python=&#34;`https`&#34; pulumi-lang-yaml=&#34;`https`&#34; pulumi-lang-java=&#34;`https`&#34;&gt;`https`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`https`&#34; pulumi-lang-dotnet=&#34;`Https`&#34; pulumi-lang-go=&#34;`https`&#34; pulumi-lang-python=&#34;`https`&#34; pulumi-lang-yaml=&#34;`https`&#34; pulumi-lang-java=&#34;`https`&#34;&gt;`https`&lt;/span&gt;.
+     * @return Protocol for OpenTelemetry. Choice is between &lt;span pulumi-lang-nodejs=&#34;`http`&#34; pulumi-lang-dotnet=&#34;`Http`&#34; pulumi-lang-go=&#34;`http`&#34; pulumi-lang-python=&#34;`http`&#34; pulumi-lang-yaml=&#34;`http`&#34; pulumi-lang-java=&#34;`http`&#34; pulumi-lang-hcl=&#34;`http`&#34;&gt;`http`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`https`&#34; pulumi-lang-dotnet=&#34;`Https`&#34; pulumi-lang-go=&#34;`https`&#34; pulumi-lang-python=&#34;`https`&#34; pulumi-lang-yaml=&#34;`https`&#34; pulumi-lang-java=&#34;`https`&#34; pulumi-lang-hcl=&#34;`https`&#34;&gt;`https`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`https`&#34; pulumi-lang-dotnet=&#34;`Https`&#34; pulumi-lang-go=&#34;`https`&#34; pulumi-lang-python=&#34;`https`&#34; pulumi-lang-yaml=&#34;`https`&#34; pulumi-lang-java=&#34;`https`&#34; pulumi-lang-hcl=&#34;`https`&#34;&gt;`https`&lt;/span&gt;.
      * 
      */
     public Optional<Output<String>> opentelemetryProto() {
@@ -289,14 +321,14 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * OpenTelemetry HTTP request timeout in seconds. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`5`&#34; pulumi-lang-dotnet=&#34;`5`&#34; pulumi-lang-go=&#34;`5`&#34; pulumi-lang-python=&#34;`5`&#34; pulumi-lang-yaml=&#34;`5`&#34; pulumi-lang-java=&#34;`5`&#34;&gt;`5`&lt;/span&gt;.
+     * OpenTelemetry HTTP request timeout in seconds. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`5`&#34; pulumi-lang-dotnet=&#34;`5`&#34; pulumi-lang-go=&#34;`5`&#34; pulumi-lang-python=&#34;`5`&#34; pulumi-lang-yaml=&#34;`5`&#34; pulumi-lang-java=&#34;`5`&#34; pulumi-lang-hcl=&#34;`5`&#34;&gt;`5`&lt;/span&gt;.
      * 
      */
     @Import(name="opentelemetryTimeout")
     private @Nullable Output<Integer> opentelemetryTimeout;
 
     /**
-     * @return OpenTelemetry HTTP request timeout in seconds. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`5`&#34; pulumi-lang-dotnet=&#34;`5`&#34; pulumi-lang-go=&#34;`5`&#34; pulumi-lang-python=&#34;`5`&#34; pulumi-lang-yaml=&#34;`5`&#34; pulumi-lang-java=&#34;`5`&#34;&gt;`5`&lt;/span&gt;.
+     * @return OpenTelemetry HTTP request timeout in seconds. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`5`&#34; pulumi-lang-dotnet=&#34;`5`&#34; pulumi-lang-go=&#34;`5`&#34; pulumi-lang-python=&#34;`5`&#34; pulumi-lang-yaml=&#34;`5`&#34; pulumi-lang-java=&#34;`5`&#34; pulumi-lang-hcl=&#34;`5`&#34;&gt;`5`&lt;/span&gt;.
      * 
      */
     public Optional<Output<Integer>> opentelemetryTimeout() {
@@ -304,14 +336,14 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * OpenTelemetry verify SSL certificates. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
+     * OpenTelemetry verify SSL certificates. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
      * 
      */
     @Import(name="opentelemetryVerifySsl")
     private @Nullable Output<Boolean> opentelemetryVerifySsl;
 
     /**
-     * @return OpenTelemetry verify SSL certificates. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
+     * @return OpenTelemetry verify SSL certificates. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
      * 
      */
     public Optional<Output<Boolean>> opentelemetryVerifySsl() {
@@ -349,14 +381,14 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * TCP socket timeout in seconds. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;.
+     * TCP socket timeout in seconds. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34; pulumi-lang-hcl=&#34;`1`&#34;&gt;`1`&lt;/span&gt;.
      * 
      */
     @Import(name="timeout")
     private @Nullable Output<Integer> timeout;
 
     /**
-     * @return TCP socket timeout in seconds. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;.
+     * @return TCP socket timeout in seconds. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34; pulumi-lang-hcl=&#34;`1`&#34;&gt;`1`&lt;/span&gt;.
      * 
      */
     public Optional<Output<Integer>> timeout() {
@@ -364,14 +396,14 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Plugin type. Choice is between &lt;span pulumi-lang-nodejs=&#34;`graphite`&#34; pulumi-lang-dotnet=&#34;`Graphite`&#34; pulumi-lang-go=&#34;`graphite`&#34; pulumi-lang-python=&#34;`graphite`&#34; pulumi-lang-yaml=&#34;`graphite`&#34; pulumi-lang-java=&#34;`graphite`&#34;&gt;`graphite`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`influxdb`&#34; pulumi-lang-dotnet=&#34;`Influxdb`&#34; pulumi-lang-go=&#34;`influxdb`&#34; pulumi-lang-python=&#34;`influxdb`&#34; pulumi-lang-yaml=&#34;`influxdb`&#34; pulumi-lang-java=&#34;`influxdb`&#34;&gt;`influxdb`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`opentelemetry`&#34; pulumi-lang-dotnet=&#34;`Opentelemetry`&#34; pulumi-lang-go=&#34;`opentelemetry`&#34; pulumi-lang-python=&#34;`opentelemetry`&#34; pulumi-lang-yaml=&#34;`opentelemetry`&#34; pulumi-lang-java=&#34;`opentelemetry`&#34;&gt;`opentelemetry`&lt;/span&gt;.
+     * Plugin type. Choice is between &lt;span pulumi-lang-nodejs=&#34;`graphite`&#34; pulumi-lang-dotnet=&#34;`Graphite`&#34; pulumi-lang-go=&#34;`graphite`&#34; pulumi-lang-python=&#34;`graphite`&#34; pulumi-lang-yaml=&#34;`graphite`&#34; pulumi-lang-java=&#34;`graphite`&#34; pulumi-lang-hcl=&#34;`graphite`&#34;&gt;`graphite`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`influxdb`&#34; pulumi-lang-dotnet=&#34;`Influxdb`&#34; pulumi-lang-go=&#34;`influxdb`&#34; pulumi-lang-python=&#34;`influxdb`&#34; pulumi-lang-yaml=&#34;`influxdb`&#34; pulumi-lang-java=&#34;`influxdb`&#34; pulumi-lang-hcl=&#34;`influxdb`&#34;&gt;`influxdb`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`opentelemetry`&#34; pulumi-lang-dotnet=&#34;`Opentelemetry`&#34; pulumi-lang-go=&#34;`opentelemetry`&#34; pulumi-lang-python=&#34;`opentelemetry`&#34; pulumi-lang-yaml=&#34;`opentelemetry`&#34; pulumi-lang-java=&#34;`opentelemetry`&#34; pulumi-lang-hcl=&#34;`opentelemetry`&#34;&gt;`opentelemetry`&lt;/span&gt;.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Plugin type. Choice is between &lt;span pulumi-lang-nodejs=&#34;`graphite`&#34; pulumi-lang-dotnet=&#34;`Graphite`&#34; pulumi-lang-go=&#34;`graphite`&#34; pulumi-lang-python=&#34;`graphite`&#34; pulumi-lang-yaml=&#34;`graphite`&#34; pulumi-lang-java=&#34;`graphite`&#34;&gt;`graphite`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`influxdb`&#34; pulumi-lang-dotnet=&#34;`Influxdb`&#34; pulumi-lang-go=&#34;`influxdb`&#34; pulumi-lang-python=&#34;`influxdb`&#34; pulumi-lang-yaml=&#34;`influxdb`&#34; pulumi-lang-java=&#34;`influxdb`&#34;&gt;`influxdb`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`opentelemetry`&#34; pulumi-lang-dotnet=&#34;`Opentelemetry`&#34; pulumi-lang-go=&#34;`opentelemetry`&#34; pulumi-lang-python=&#34;`opentelemetry`&#34; pulumi-lang-yaml=&#34;`opentelemetry`&#34; pulumi-lang-java=&#34;`opentelemetry`&#34;&gt;`opentelemetry`&lt;/span&gt;.
+     * @return Plugin type. Choice is between &lt;span pulumi-lang-nodejs=&#34;`graphite`&#34; pulumi-lang-dotnet=&#34;`Graphite`&#34; pulumi-lang-go=&#34;`graphite`&#34; pulumi-lang-python=&#34;`graphite`&#34; pulumi-lang-yaml=&#34;`graphite`&#34; pulumi-lang-java=&#34;`graphite`&#34; pulumi-lang-hcl=&#34;`graphite`&#34;&gt;`graphite`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`influxdb`&#34; pulumi-lang-dotnet=&#34;`Influxdb`&#34; pulumi-lang-go=&#34;`influxdb`&#34; pulumi-lang-python=&#34;`influxdb`&#34; pulumi-lang-yaml=&#34;`influxdb`&#34; pulumi-lang-java=&#34;`influxdb`&#34; pulumi-lang-hcl=&#34;`influxdb`&#34;&gt;`influxdb`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`opentelemetry`&#34; pulumi-lang-dotnet=&#34;`Opentelemetry`&#34; pulumi-lang-go=&#34;`opentelemetry`&#34; pulumi-lang-python=&#34;`opentelemetry`&#34; pulumi-lang-yaml=&#34;`opentelemetry`&#34; pulumi-lang-java=&#34;`opentelemetry`&#34; pulumi-lang-hcl=&#34;`opentelemetry`&#34;&gt;`opentelemetry`&lt;/span&gt;.
      * 
      */
     public Output<String> type() {
@@ -390,6 +422,8 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         this.influxMaxBodySize = $.influxMaxBodySize;
         this.influxOrganization = $.influxOrganization;
         this.influxToken = $.influxToken;
+        this.influxTokenWo = $.influxTokenWo;
+        this.influxTokenWoVersion = $.influxTokenWoVersion;
         this.influxVerify = $.influxVerify;
         this.mtu = $.mtu;
         this.name = $.name;
@@ -426,7 +460,7 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disable Set this to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt; to disable this metric server. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
+         * @param disable Set this to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt; to disable this metric server. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -437,7 +471,7 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disable Set this to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt; to disable this metric server. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
+         * @param disable Set this to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt; to disable this metric server. Defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -468,7 +502,7 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param graphiteProto Protocol to send graphite data. Choice is between &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`tcp`&#34; pulumi-lang-dotnet=&#34;`Tcp`&#34; pulumi-lang-go=&#34;`tcp`&#34; pulumi-lang-python=&#34;`tcp`&#34; pulumi-lang-yaml=&#34;`tcp`&#34; pulumi-lang-java=&#34;`tcp`&#34;&gt;`tcp`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt;.
+         * @param graphiteProto Protocol to send graphite data. Choice is between &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34; pulumi-lang-hcl=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`tcp`&#34; pulumi-lang-dotnet=&#34;`Tcp`&#34; pulumi-lang-go=&#34;`tcp`&#34; pulumi-lang-python=&#34;`tcp`&#34; pulumi-lang-yaml=&#34;`tcp`&#34; pulumi-lang-java=&#34;`tcp`&#34; pulumi-lang-hcl=&#34;`tcp`&#34;&gt;`tcp`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34; pulumi-lang-hcl=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -479,7 +513,7 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param graphiteProto Protocol to send graphite data. Choice is between &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`tcp`&#34; pulumi-lang-dotnet=&#34;`Tcp`&#34; pulumi-lang-go=&#34;`tcp`&#34; pulumi-lang-python=&#34;`tcp`&#34; pulumi-lang-yaml=&#34;`tcp`&#34; pulumi-lang-java=&#34;`tcp`&#34;&gt;`tcp`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt;.
+         * @param graphiteProto Protocol to send graphite data. Choice is between &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34; pulumi-lang-hcl=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`tcp`&#34; pulumi-lang-dotnet=&#34;`Tcp`&#34; pulumi-lang-go=&#34;`tcp`&#34; pulumi-lang-python=&#34;`tcp`&#34; pulumi-lang-yaml=&#34;`tcp`&#34; pulumi-lang-java=&#34;`tcp`&#34; pulumi-lang-hcl=&#34;`tcp`&#34;&gt;`tcp`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34; pulumi-lang-hcl=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -531,7 +565,7 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param influxDbProto Protocol for InfluxDB. Choice is between &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`http`&#34; pulumi-lang-dotnet=&#34;`Http`&#34; pulumi-lang-go=&#34;`http`&#34; pulumi-lang-python=&#34;`http`&#34; pulumi-lang-yaml=&#34;`http`&#34; pulumi-lang-java=&#34;`http`&#34;&gt;`http`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`https`&#34; pulumi-lang-dotnet=&#34;`Https`&#34; pulumi-lang-go=&#34;`https`&#34; pulumi-lang-python=&#34;`https`&#34; pulumi-lang-yaml=&#34;`https`&#34; pulumi-lang-java=&#34;`https`&#34;&gt;`https`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt;.
+         * @param influxDbProto Protocol for InfluxDB. Choice is between &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34; pulumi-lang-hcl=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`http`&#34; pulumi-lang-dotnet=&#34;`Http`&#34; pulumi-lang-go=&#34;`http`&#34; pulumi-lang-python=&#34;`http`&#34; pulumi-lang-yaml=&#34;`http`&#34; pulumi-lang-java=&#34;`http`&#34; pulumi-lang-hcl=&#34;`http`&#34;&gt;`http`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`https`&#34; pulumi-lang-dotnet=&#34;`Https`&#34; pulumi-lang-go=&#34;`https`&#34; pulumi-lang-python=&#34;`https`&#34; pulumi-lang-yaml=&#34;`https`&#34; pulumi-lang-java=&#34;`https`&#34; pulumi-lang-hcl=&#34;`https`&#34;&gt;`https`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34; pulumi-lang-hcl=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -542,7 +576,7 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param influxDbProto Protocol for InfluxDB. Choice is between &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`http`&#34; pulumi-lang-dotnet=&#34;`Http`&#34; pulumi-lang-go=&#34;`http`&#34; pulumi-lang-python=&#34;`http`&#34; pulumi-lang-yaml=&#34;`http`&#34; pulumi-lang-java=&#34;`http`&#34;&gt;`http`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`https`&#34; pulumi-lang-dotnet=&#34;`Https`&#34; pulumi-lang-go=&#34;`https`&#34; pulumi-lang-python=&#34;`https`&#34; pulumi-lang-yaml=&#34;`https`&#34; pulumi-lang-java=&#34;`https`&#34;&gt;`https`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt;.
+         * @param influxDbProto Protocol for InfluxDB. Choice is between &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34; pulumi-lang-hcl=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`http`&#34; pulumi-lang-dotnet=&#34;`Http`&#34; pulumi-lang-go=&#34;`http`&#34; pulumi-lang-python=&#34;`http`&#34; pulumi-lang-yaml=&#34;`http`&#34; pulumi-lang-java=&#34;`http`&#34; pulumi-lang-hcl=&#34;`http`&#34;&gt;`http`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`https`&#34; pulumi-lang-dotnet=&#34;`Https`&#34; pulumi-lang-go=&#34;`https`&#34; pulumi-lang-python=&#34;`https`&#34; pulumi-lang-yaml=&#34;`https`&#34; pulumi-lang-java=&#34;`https`&#34; pulumi-lang-hcl=&#34;`https`&#34;&gt;`https`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`udp`&#34; pulumi-lang-dotnet=&#34;`Udp`&#34; pulumi-lang-go=&#34;`udp`&#34; pulumi-lang-python=&#34;`udp`&#34; pulumi-lang-yaml=&#34;`udp`&#34; pulumi-lang-java=&#34;`udp`&#34; pulumi-lang-hcl=&#34;`udp`&#34;&gt;`udp`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -552,7 +586,7 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param influxMaxBodySize InfluxDB max-body-size in bytes. Requests are batched up to this size. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`25000000`&#34; pulumi-lang-dotnet=&#34;`25000000`&#34; pulumi-lang-go=&#34;`25000000`&#34; pulumi-lang-python=&#34;`25000000`&#34; pulumi-lang-yaml=&#34;`25000000`&#34; pulumi-lang-java=&#34;`25000000`&#34;&gt;`25000000`&lt;/span&gt;.
+         * @param influxMaxBodySize InfluxDB max-body-size in bytes. Requests are batched up to this size. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`25000000`&#34; pulumi-lang-dotnet=&#34;`25000000`&#34; pulumi-lang-go=&#34;`25000000`&#34; pulumi-lang-python=&#34;`25000000`&#34; pulumi-lang-yaml=&#34;`25000000`&#34; pulumi-lang-java=&#34;`25000000`&#34; pulumi-lang-hcl=&#34;`25000000`&#34;&gt;`25000000`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -563,7 +597,7 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param influxMaxBodySize InfluxDB max-body-size in bytes. Requests are batched up to this size. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`25000000`&#34; pulumi-lang-dotnet=&#34;`25000000`&#34; pulumi-lang-go=&#34;`25000000`&#34; pulumi-lang-python=&#34;`25000000`&#34; pulumi-lang-yaml=&#34;`25000000`&#34; pulumi-lang-java=&#34;`25000000`&#34;&gt;`25000000`&lt;/span&gt;.
+         * @param influxMaxBodySize InfluxDB max-body-size in bytes. Requests are batched up to this size. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`25000000`&#34; pulumi-lang-dotnet=&#34;`25000000`&#34; pulumi-lang-go=&#34;`25000000`&#34; pulumi-lang-python=&#34;`25000000`&#34; pulumi-lang-yaml=&#34;`25000000`&#34; pulumi-lang-java=&#34;`25000000`&#34; pulumi-lang-hcl=&#34;`25000000`&#34;&gt;`25000000`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -594,7 +628,7 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param influxToken The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
+         * @param influxToken The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead. Cannot be used together with &lt;span pulumi-lang-nodejs=&#34;`influxTokenWo`&#34; pulumi-lang-dotnet=&#34;`InfluxTokenWo`&#34; pulumi-lang-go=&#34;`influxTokenWo`&#34; pulumi-lang-python=&#34;`influx_token_wo`&#34; pulumi-lang-yaml=&#34;`influxTokenWo`&#34; pulumi-lang-java=&#34;`influxTokenWo`&#34; pulumi-lang-hcl=&#34;`influx_token_wo`&#34;&gt;`influxTokenWo`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -605,7 +639,7 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param influxToken The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
+         * @param influxToken The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead. Cannot be used together with &lt;span pulumi-lang-nodejs=&#34;`influxTokenWo`&#34; pulumi-lang-dotnet=&#34;`InfluxTokenWo`&#34; pulumi-lang-go=&#34;`influxTokenWo`&#34; pulumi-lang-python=&#34;`influx_token_wo`&#34; pulumi-lang-yaml=&#34;`influxTokenWo`&#34; pulumi-lang-java=&#34;`influxTokenWo`&#34; pulumi-lang-hcl=&#34;`influx_token_wo`&#34;&gt;`influxTokenWo`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -615,7 +649,51 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param influxVerify Set to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt; to disable certificate verification for https endpoints. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
+         * @param influxTokenWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The InfluxDB access token (write-only). Prefer this over &lt;span pulumi-lang-nodejs=&#34;`influxToken`&#34; pulumi-lang-dotnet=&#34;`InfluxToken`&#34; pulumi-lang-go=&#34;`influxToken`&#34; pulumi-lang-python=&#34;`influx_token`&#34; pulumi-lang-yaml=&#34;`influxToken`&#34; pulumi-lang-java=&#34;`influxToken`&#34; pulumi-lang-hcl=&#34;`influx_token`&#34;&gt;`influxToken`&lt;/span&gt; to avoid storing the secret in Terraform state. Cannot be used together with &lt;span pulumi-lang-nodejs=&#34;`influxToken`&#34; pulumi-lang-dotnet=&#34;`InfluxToken`&#34; pulumi-lang-go=&#34;`influxToken`&#34; pulumi-lang-python=&#34;`influx_token`&#34; pulumi-lang-yaml=&#34;`influxToken`&#34; pulumi-lang-java=&#34;`influxToken`&#34; pulumi-lang-hcl=&#34;`influx_token`&#34;&gt;`influxToken`&lt;/span&gt;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder influxTokenWo(@Nullable Output<String> influxTokenWo) {
+            $.influxTokenWo = influxTokenWo;
+            return this;
+        }
+
+        /**
+         * @param influxTokenWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * The InfluxDB access token (write-only). Prefer this over &lt;span pulumi-lang-nodejs=&#34;`influxToken`&#34; pulumi-lang-dotnet=&#34;`InfluxToken`&#34; pulumi-lang-go=&#34;`influxToken`&#34; pulumi-lang-python=&#34;`influx_token`&#34; pulumi-lang-yaml=&#34;`influxToken`&#34; pulumi-lang-java=&#34;`influxToken`&#34; pulumi-lang-hcl=&#34;`influx_token`&#34;&gt;`influxToken`&lt;/span&gt; to avoid storing the secret in Terraform state. Cannot be used together with &lt;span pulumi-lang-nodejs=&#34;`influxToken`&#34; pulumi-lang-dotnet=&#34;`InfluxToken`&#34; pulumi-lang-go=&#34;`influxToken`&#34; pulumi-lang-python=&#34;`influx_token`&#34; pulumi-lang-yaml=&#34;`influxToken`&#34; pulumi-lang-java=&#34;`influxToken`&#34; pulumi-lang-hcl=&#34;`influx_token`&#34;&gt;`influxToken`&lt;/span&gt;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder influxTokenWo(String influxTokenWo) {
+            return influxTokenWo(Output.of(influxTokenWo));
+        }
+
+        /**
+         * @param influxTokenWoVersion Increment this counter to rotate &lt;span pulumi-lang-nodejs=&#34;`influxTokenWo`&#34; pulumi-lang-dotnet=&#34;`InfluxTokenWo`&#34; pulumi-lang-go=&#34;`influxTokenWo`&#34; pulumi-lang-python=&#34;`influx_token_wo`&#34; pulumi-lang-yaml=&#34;`influxTokenWo`&#34; pulumi-lang-java=&#34;`influxTokenWo`&#34; pulumi-lang-hcl=&#34;`influx_token_wo`&#34;&gt;`influxTokenWo`&lt;/span&gt; without changing other fields.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder influxTokenWoVersion(@Nullable Output<Integer> influxTokenWoVersion) {
+            $.influxTokenWoVersion = influxTokenWoVersion;
+            return this;
+        }
+
+        /**
+         * @param influxTokenWoVersion Increment this counter to rotate &lt;span pulumi-lang-nodejs=&#34;`influxTokenWo`&#34; pulumi-lang-dotnet=&#34;`InfluxTokenWo`&#34; pulumi-lang-go=&#34;`influxTokenWo`&#34; pulumi-lang-python=&#34;`influx_token_wo`&#34; pulumi-lang-yaml=&#34;`influxTokenWo`&#34; pulumi-lang-java=&#34;`influxTokenWo`&#34; pulumi-lang-hcl=&#34;`influx_token_wo`&#34;&gt;`influxTokenWo`&lt;/span&gt; without changing other fields.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder influxTokenWoVersion(Integer influxTokenWoVersion) {
+            return influxTokenWoVersion(Output.of(influxTokenWoVersion));
+        }
+
+        /**
+         * @param influxVerify Set to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt; to disable certificate verification for https endpoints. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -626,7 +704,7 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param influxVerify Set to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt; to disable certificate verification for https endpoints. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
+         * @param influxVerify Set to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt; to disable certificate verification for https endpoints. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -636,7 +714,7 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mtu MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`1500`&#34; pulumi-lang-dotnet=&#34;`1500`&#34; pulumi-lang-go=&#34;`1500`&#34; pulumi-lang-python=&#34;`1500`&#34; pulumi-lang-yaml=&#34;`1500`&#34; pulumi-lang-java=&#34;`1500`&#34;&gt;`1500`&lt;/span&gt; (allowed &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34;&gt;`512`&lt;/span&gt; - &lt;span pulumi-lang-nodejs=&#34;`65536`&#34; pulumi-lang-dotnet=&#34;`65536`&#34; pulumi-lang-go=&#34;`65536`&#34; pulumi-lang-python=&#34;`65536`&#34; pulumi-lang-yaml=&#34;`65536`&#34; pulumi-lang-java=&#34;`65536`&#34;&gt;`65536`&lt;/span&gt;).
+         * @param mtu MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`1500`&#34; pulumi-lang-dotnet=&#34;`1500`&#34; pulumi-lang-go=&#34;`1500`&#34; pulumi-lang-python=&#34;`1500`&#34; pulumi-lang-yaml=&#34;`1500`&#34; pulumi-lang-java=&#34;`1500`&#34; pulumi-lang-hcl=&#34;`1500`&#34;&gt;`1500`&lt;/span&gt; (allowed &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34; pulumi-lang-hcl=&#34;`512`&#34;&gt;`512`&lt;/span&gt; - &lt;span pulumi-lang-nodejs=&#34;`65536`&#34; pulumi-lang-dotnet=&#34;`65536`&#34; pulumi-lang-go=&#34;`65536`&#34; pulumi-lang-python=&#34;`65536`&#34; pulumi-lang-yaml=&#34;`65536`&#34; pulumi-lang-java=&#34;`65536`&#34; pulumi-lang-hcl=&#34;`65536`&#34;&gt;`65536`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -647,7 +725,7 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mtu MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`1500`&#34; pulumi-lang-dotnet=&#34;`1500`&#34; pulumi-lang-go=&#34;`1500`&#34; pulumi-lang-python=&#34;`1500`&#34; pulumi-lang-yaml=&#34;`1500`&#34; pulumi-lang-java=&#34;`1500`&#34;&gt;`1500`&lt;/span&gt; (allowed &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34;&gt;`512`&lt;/span&gt; - &lt;span pulumi-lang-nodejs=&#34;`65536`&#34; pulumi-lang-dotnet=&#34;`65536`&#34; pulumi-lang-go=&#34;`65536`&#34; pulumi-lang-python=&#34;`65536`&#34; pulumi-lang-yaml=&#34;`65536`&#34; pulumi-lang-java=&#34;`65536`&#34;&gt;`65536`&lt;/span&gt;).
+         * @param mtu MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`1500`&#34; pulumi-lang-dotnet=&#34;`1500`&#34; pulumi-lang-go=&#34;`1500`&#34; pulumi-lang-python=&#34;`1500`&#34; pulumi-lang-yaml=&#34;`1500`&#34; pulumi-lang-java=&#34;`1500`&#34; pulumi-lang-hcl=&#34;`1500`&#34;&gt;`1500`&lt;/span&gt; (allowed &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34; pulumi-lang-hcl=&#34;`512`&#34;&gt;`512`&lt;/span&gt; - &lt;span pulumi-lang-nodejs=&#34;`65536`&#34; pulumi-lang-dotnet=&#34;`65536`&#34; pulumi-lang-go=&#34;`65536`&#34; pulumi-lang-python=&#34;`65536`&#34; pulumi-lang-yaml=&#34;`65536`&#34; pulumi-lang-java=&#34;`65536`&#34; pulumi-lang-hcl=&#34;`65536`&#34;&gt;`65536`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -678,7 +756,7 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param opentelemetryCompression OpenTelemetry compression algorithm for requests. Choice is between &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34;&gt;`none`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`gzip`&#34; pulumi-lang-dotnet=&#34;`Gzip`&#34; pulumi-lang-go=&#34;`gzip`&#34; pulumi-lang-python=&#34;`gzip`&#34; pulumi-lang-yaml=&#34;`gzip`&#34; pulumi-lang-java=&#34;`gzip`&#34;&gt;`gzip`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`gzip`&#34; pulumi-lang-dotnet=&#34;`Gzip`&#34; pulumi-lang-go=&#34;`gzip`&#34; pulumi-lang-python=&#34;`gzip`&#34; pulumi-lang-yaml=&#34;`gzip`&#34; pulumi-lang-java=&#34;`gzip`&#34;&gt;`gzip`&lt;/span&gt;.
+         * @param opentelemetryCompression OpenTelemetry compression algorithm for requests. Choice is between &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34; pulumi-lang-hcl=&#34;`none`&#34;&gt;`none`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`gzip`&#34; pulumi-lang-dotnet=&#34;`Gzip`&#34; pulumi-lang-go=&#34;`gzip`&#34; pulumi-lang-python=&#34;`gzip`&#34; pulumi-lang-yaml=&#34;`gzip`&#34; pulumi-lang-java=&#34;`gzip`&#34; pulumi-lang-hcl=&#34;`gzip`&#34;&gt;`gzip`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`gzip`&#34; pulumi-lang-dotnet=&#34;`Gzip`&#34; pulumi-lang-go=&#34;`gzip`&#34; pulumi-lang-python=&#34;`gzip`&#34; pulumi-lang-yaml=&#34;`gzip`&#34; pulumi-lang-java=&#34;`gzip`&#34; pulumi-lang-hcl=&#34;`gzip`&#34;&gt;`gzip`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -689,7 +767,7 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param opentelemetryCompression OpenTelemetry compression algorithm for requests. Choice is between &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34;&gt;`none`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`gzip`&#34; pulumi-lang-dotnet=&#34;`Gzip`&#34; pulumi-lang-go=&#34;`gzip`&#34; pulumi-lang-python=&#34;`gzip`&#34; pulumi-lang-yaml=&#34;`gzip`&#34; pulumi-lang-java=&#34;`gzip`&#34;&gt;`gzip`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`gzip`&#34; pulumi-lang-dotnet=&#34;`Gzip`&#34; pulumi-lang-go=&#34;`gzip`&#34; pulumi-lang-python=&#34;`gzip`&#34; pulumi-lang-yaml=&#34;`gzip`&#34; pulumi-lang-java=&#34;`gzip`&#34;&gt;`gzip`&lt;/span&gt;.
+         * @param opentelemetryCompression OpenTelemetry compression algorithm for requests. Choice is between &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34; pulumi-lang-hcl=&#34;`none`&#34;&gt;`none`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`gzip`&#34; pulumi-lang-dotnet=&#34;`Gzip`&#34; pulumi-lang-go=&#34;`gzip`&#34; pulumi-lang-python=&#34;`gzip`&#34; pulumi-lang-yaml=&#34;`gzip`&#34; pulumi-lang-java=&#34;`gzip`&#34; pulumi-lang-hcl=&#34;`gzip`&#34;&gt;`gzip`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`gzip`&#34; pulumi-lang-dotnet=&#34;`Gzip`&#34; pulumi-lang-go=&#34;`gzip`&#34; pulumi-lang-python=&#34;`gzip`&#34; pulumi-lang-yaml=&#34;`gzip`&#34; pulumi-lang-java=&#34;`gzip`&#34; pulumi-lang-hcl=&#34;`gzip`&#34;&gt;`gzip`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -720,7 +798,7 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param opentelemetryMaxBodySize OpenTelemetry maximum request body size in bytes. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`10000000`&#34; pulumi-lang-dotnet=&#34;`10000000`&#34; pulumi-lang-go=&#34;`10000000`&#34; pulumi-lang-python=&#34;`10000000`&#34; pulumi-lang-yaml=&#34;`10000000`&#34; pulumi-lang-java=&#34;`10000000`&#34;&gt;`10000000`&lt;/span&gt;.
+         * @param opentelemetryMaxBodySize OpenTelemetry maximum request body size in bytes. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`10000000`&#34; pulumi-lang-dotnet=&#34;`10000000`&#34; pulumi-lang-go=&#34;`10000000`&#34; pulumi-lang-python=&#34;`10000000`&#34; pulumi-lang-yaml=&#34;`10000000`&#34; pulumi-lang-java=&#34;`10000000`&#34; pulumi-lang-hcl=&#34;`10000000`&#34;&gt;`10000000`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -731,7 +809,7 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param opentelemetryMaxBodySize OpenTelemetry maximum request body size in bytes. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`10000000`&#34; pulumi-lang-dotnet=&#34;`10000000`&#34; pulumi-lang-go=&#34;`10000000`&#34; pulumi-lang-python=&#34;`10000000`&#34; pulumi-lang-yaml=&#34;`10000000`&#34; pulumi-lang-java=&#34;`10000000`&#34;&gt;`10000000`&lt;/span&gt;.
+         * @param opentelemetryMaxBodySize OpenTelemetry maximum request body size in bytes. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`10000000`&#34; pulumi-lang-dotnet=&#34;`10000000`&#34; pulumi-lang-go=&#34;`10000000`&#34; pulumi-lang-python=&#34;`10000000`&#34; pulumi-lang-yaml=&#34;`10000000`&#34; pulumi-lang-java=&#34;`10000000`&#34; pulumi-lang-hcl=&#34;`10000000`&#34;&gt;`10000000`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -762,7 +840,7 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param opentelemetryProto Protocol for OpenTelemetry. Choice is between &lt;span pulumi-lang-nodejs=&#34;`http`&#34; pulumi-lang-dotnet=&#34;`Http`&#34; pulumi-lang-go=&#34;`http`&#34; pulumi-lang-python=&#34;`http`&#34; pulumi-lang-yaml=&#34;`http`&#34; pulumi-lang-java=&#34;`http`&#34;&gt;`http`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`https`&#34; pulumi-lang-dotnet=&#34;`Https`&#34; pulumi-lang-go=&#34;`https`&#34; pulumi-lang-python=&#34;`https`&#34; pulumi-lang-yaml=&#34;`https`&#34; pulumi-lang-java=&#34;`https`&#34;&gt;`https`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`https`&#34; pulumi-lang-dotnet=&#34;`Https`&#34; pulumi-lang-go=&#34;`https`&#34; pulumi-lang-python=&#34;`https`&#34; pulumi-lang-yaml=&#34;`https`&#34; pulumi-lang-java=&#34;`https`&#34;&gt;`https`&lt;/span&gt;.
+         * @param opentelemetryProto Protocol for OpenTelemetry. Choice is between &lt;span pulumi-lang-nodejs=&#34;`http`&#34; pulumi-lang-dotnet=&#34;`Http`&#34; pulumi-lang-go=&#34;`http`&#34; pulumi-lang-python=&#34;`http`&#34; pulumi-lang-yaml=&#34;`http`&#34; pulumi-lang-java=&#34;`http`&#34; pulumi-lang-hcl=&#34;`http`&#34;&gt;`http`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`https`&#34; pulumi-lang-dotnet=&#34;`Https`&#34; pulumi-lang-go=&#34;`https`&#34; pulumi-lang-python=&#34;`https`&#34; pulumi-lang-yaml=&#34;`https`&#34; pulumi-lang-java=&#34;`https`&#34; pulumi-lang-hcl=&#34;`https`&#34;&gt;`https`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`https`&#34; pulumi-lang-dotnet=&#34;`Https`&#34; pulumi-lang-go=&#34;`https`&#34; pulumi-lang-python=&#34;`https`&#34; pulumi-lang-yaml=&#34;`https`&#34; pulumi-lang-java=&#34;`https`&#34; pulumi-lang-hcl=&#34;`https`&#34;&gt;`https`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -773,7 +851,7 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param opentelemetryProto Protocol for OpenTelemetry. Choice is between &lt;span pulumi-lang-nodejs=&#34;`http`&#34; pulumi-lang-dotnet=&#34;`Http`&#34; pulumi-lang-go=&#34;`http`&#34; pulumi-lang-python=&#34;`http`&#34; pulumi-lang-yaml=&#34;`http`&#34; pulumi-lang-java=&#34;`http`&#34;&gt;`http`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`https`&#34; pulumi-lang-dotnet=&#34;`Https`&#34; pulumi-lang-go=&#34;`https`&#34; pulumi-lang-python=&#34;`https`&#34; pulumi-lang-yaml=&#34;`https`&#34; pulumi-lang-java=&#34;`https`&#34;&gt;`https`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`https`&#34; pulumi-lang-dotnet=&#34;`Https`&#34; pulumi-lang-go=&#34;`https`&#34; pulumi-lang-python=&#34;`https`&#34; pulumi-lang-yaml=&#34;`https`&#34; pulumi-lang-java=&#34;`https`&#34;&gt;`https`&lt;/span&gt;.
+         * @param opentelemetryProto Protocol for OpenTelemetry. Choice is between &lt;span pulumi-lang-nodejs=&#34;`http`&#34; pulumi-lang-dotnet=&#34;`Http`&#34; pulumi-lang-go=&#34;`http`&#34; pulumi-lang-python=&#34;`http`&#34; pulumi-lang-yaml=&#34;`http`&#34; pulumi-lang-java=&#34;`http`&#34; pulumi-lang-hcl=&#34;`http`&#34;&gt;`http`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`https`&#34; pulumi-lang-dotnet=&#34;`Https`&#34; pulumi-lang-go=&#34;`https`&#34; pulumi-lang-python=&#34;`https`&#34; pulumi-lang-yaml=&#34;`https`&#34; pulumi-lang-java=&#34;`https`&#34; pulumi-lang-hcl=&#34;`https`&#34;&gt;`https`&lt;/span&gt;. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`https`&#34; pulumi-lang-dotnet=&#34;`Https`&#34; pulumi-lang-go=&#34;`https`&#34; pulumi-lang-python=&#34;`https`&#34; pulumi-lang-yaml=&#34;`https`&#34; pulumi-lang-java=&#34;`https`&#34; pulumi-lang-hcl=&#34;`https`&#34;&gt;`https`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -804,7 +882,7 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param opentelemetryTimeout OpenTelemetry HTTP request timeout in seconds. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`5`&#34; pulumi-lang-dotnet=&#34;`5`&#34; pulumi-lang-go=&#34;`5`&#34; pulumi-lang-python=&#34;`5`&#34; pulumi-lang-yaml=&#34;`5`&#34; pulumi-lang-java=&#34;`5`&#34;&gt;`5`&lt;/span&gt;.
+         * @param opentelemetryTimeout OpenTelemetry HTTP request timeout in seconds. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`5`&#34; pulumi-lang-dotnet=&#34;`5`&#34; pulumi-lang-go=&#34;`5`&#34; pulumi-lang-python=&#34;`5`&#34; pulumi-lang-yaml=&#34;`5`&#34; pulumi-lang-java=&#34;`5`&#34; pulumi-lang-hcl=&#34;`5`&#34;&gt;`5`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -815,7 +893,7 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param opentelemetryTimeout OpenTelemetry HTTP request timeout in seconds. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`5`&#34; pulumi-lang-dotnet=&#34;`5`&#34; pulumi-lang-go=&#34;`5`&#34; pulumi-lang-python=&#34;`5`&#34; pulumi-lang-yaml=&#34;`5`&#34; pulumi-lang-java=&#34;`5`&#34;&gt;`5`&lt;/span&gt;.
+         * @param opentelemetryTimeout OpenTelemetry HTTP request timeout in seconds. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`5`&#34; pulumi-lang-dotnet=&#34;`5`&#34; pulumi-lang-go=&#34;`5`&#34; pulumi-lang-python=&#34;`5`&#34; pulumi-lang-yaml=&#34;`5`&#34; pulumi-lang-java=&#34;`5`&#34; pulumi-lang-hcl=&#34;`5`&#34;&gt;`5`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -825,7 +903,7 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param opentelemetryVerifySsl OpenTelemetry verify SSL certificates. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
+         * @param opentelemetryVerifySsl OpenTelemetry verify SSL certificates. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -836,7 +914,7 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param opentelemetryVerifySsl OpenTelemetry verify SSL certificates. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
+         * @param opentelemetryVerifySsl OpenTelemetry verify SSL certificates. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -888,7 +966,7 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeout TCP socket timeout in seconds. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;.
+         * @param timeout TCP socket timeout in seconds. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34; pulumi-lang-hcl=&#34;`1`&#34;&gt;`1`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -899,7 +977,7 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param timeout TCP socket timeout in seconds. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;.
+         * @param timeout TCP socket timeout in seconds. If not set, PVE default is &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34; pulumi-lang-hcl=&#34;`1`&#34;&gt;`1`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -909,7 +987,7 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Plugin type. Choice is between &lt;span pulumi-lang-nodejs=&#34;`graphite`&#34; pulumi-lang-dotnet=&#34;`Graphite`&#34; pulumi-lang-go=&#34;`graphite`&#34; pulumi-lang-python=&#34;`graphite`&#34; pulumi-lang-yaml=&#34;`graphite`&#34; pulumi-lang-java=&#34;`graphite`&#34;&gt;`graphite`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`influxdb`&#34; pulumi-lang-dotnet=&#34;`Influxdb`&#34; pulumi-lang-go=&#34;`influxdb`&#34; pulumi-lang-python=&#34;`influxdb`&#34; pulumi-lang-yaml=&#34;`influxdb`&#34; pulumi-lang-java=&#34;`influxdb`&#34;&gt;`influxdb`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`opentelemetry`&#34; pulumi-lang-dotnet=&#34;`Opentelemetry`&#34; pulumi-lang-go=&#34;`opentelemetry`&#34; pulumi-lang-python=&#34;`opentelemetry`&#34; pulumi-lang-yaml=&#34;`opentelemetry`&#34; pulumi-lang-java=&#34;`opentelemetry`&#34;&gt;`opentelemetry`&lt;/span&gt;.
+         * @param type Plugin type. Choice is between &lt;span pulumi-lang-nodejs=&#34;`graphite`&#34; pulumi-lang-dotnet=&#34;`Graphite`&#34; pulumi-lang-go=&#34;`graphite`&#34; pulumi-lang-python=&#34;`graphite`&#34; pulumi-lang-yaml=&#34;`graphite`&#34; pulumi-lang-java=&#34;`graphite`&#34; pulumi-lang-hcl=&#34;`graphite`&#34;&gt;`graphite`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`influxdb`&#34; pulumi-lang-dotnet=&#34;`Influxdb`&#34; pulumi-lang-go=&#34;`influxdb`&#34; pulumi-lang-python=&#34;`influxdb`&#34; pulumi-lang-yaml=&#34;`influxdb`&#34; pulumi-lang-java=&#34;`influxdb`&#34; pulumi-lang-hcl=&#34;`influxdb`&#34;&gt;`influxdb`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`opentelemetry`&#34; pulumi-lang-dotnet=&#34;`Opentelemetry`&#34; pulumi-lang-go=&#34;`opentelemetry`&#34; pulumi-lang-python=&#34;`opentelemetry`&#34; pulumi-lang-yaml=&#34;`opentelemetry`&#34; pulumi-lang-java=&#34;`opentelemetry`&#34; pulumi-lang-hcl=&#34;`opentelemetry`&#34;&gt;`opentelemetry`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -920,7 +998,7 @@ public final class ServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Plugin type. Choice is between &lt;span pulumi-lang-nodejs=&#34;`graphite`&#34; pulumi-lang-dotnet=&#34;`Graphite`&#34; pulumi-lang-go=&#34;`graphite`&#34; pulumi-lang-python=&#34;`graphite`&#34; pulumi-lang-yaml=&#34;`graphite`&#34; pulumi-lang-java=&#34;`graphite`&#34;&gt;`graphite`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`influxdb`&#34; pulumi-lang-dotnet=&#34;`Influxdb`&#34; pulumi-lang-go=&#34;`influxdb`&#34; pulumi-lang-python=&#34;`influxdb`&#34; pulumi-lang-yaml=&#34;`influxdb`&#34; pulumi-lang-java=&#34;`influxdb`&#34;&gt;`influxdb`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`opentelemetry`&#34; pulumi-lang-dotnet=&#34;`Opentelemetry`&#34; pulumi-lang-go=&#34;`opentelemetry`&#34; pulumi-lang-python=&#34;`opentelemetry`&#34; pulumi-lang-yaml=&#34;`opentelemetry`&#34; pulumi-lang-java=&#34;`opentelemetry`&#34;&gt;`opentelemetry`&lt;/span&gt;.
+         * @param type Plugin type. Choice is between &lt;span pulumi-lang-nodejs=&#34;`graphite`&#34; pulumi-lang-dotnet=&#34;`Graphite`&#34; pulumi-lang-go=&#34;`graphite`&#34; pulumi-lang-python=&#34;`graphite`&#34; pulumi-lang-yaml=&#34;`graphite`&#34; pulumi-lang-java=&#34;`graphite`&#34; pulumi-lang-hcl=&#34;`graphite`&#34;&gt;`graphite`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`influxdb`&#34; pulumi-lang-dotnet=&#34;`Influxdb`&#34; pulumi-lang-go=&#34;`influxdb`&#34; pulumi-lang-python=&#34;`influxdb`&#34; pulumi-lang-yaml=&#34;`influxdb`&#34; pulumi-lang-java=&#34;`influxdb`&#34; pulumi-lang-hcl=&#34;`influxdb`&#34;&gt;`influxdb`&lt;/span&gt; | &lt;span pulumi-lang-nodejs=&#34;`opentelemetry`&#34; pulumi-lang-dotnet=&#34;`Opentelemetry`&#34; pulumi-lang-go=&#34;`opentelemetry`&#34; pulumi-lang-python=&#34;`opentelemetry`&#34; pulumi-lang-yaml=&#34;`opentelemetry`&#34; pulumi-lang-java=&#34;`opentelemetry`&#34; pulumi-lang-hcl=&#34;`opentelemetry`&#34;&gt;`opentelemetry`&lt;/span&gt;.
          * 
          * @return builder
          * 

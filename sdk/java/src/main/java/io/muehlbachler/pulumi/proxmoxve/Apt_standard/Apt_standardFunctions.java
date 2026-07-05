@@ -239,7 +239,7 @@ public final class Apt_standardFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:apt/standard/getRepository:getRepository", TypeShape.of(GetRepositoryResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-go=&#34;`apt/standard.Repository`&#34; pulumi-lang-python=&#34;`apt/standard.Repository`&#34; pulumi-lang-yaml=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-java=&#34;`proxmoxve.apt/standard.Repository`&#34;&gt;`proxmoxve.apt/standard.Repository`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-go=&#34;`apt/standard.Repository`&#34; pulumi-lang-python=&#34;`apt/standard.Repository`&#34; pulumi-lang-yaml=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-java=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-hcl=&#34;`proxmox_apt_standard_repository`&#34;&gt;`proxmoxve.apt/standard.Repository`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves an APT standard repository from a Proxmox VE cluster.
      * 
@@ -285,7 +285,7 @@ public final class Apt_standardFunctions {
         return getRepositoryLegacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-go=&#34;`apt/standard.Repository`&#34; pulumi-lang-python=&#34;`apt/standard.Repository`&#34; pulumi-lang-yaml=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-java=&#34;`proxmoxve.apt/standard.Repository`&#34;&gt;`proxmoxve.apt/standard.Repository`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-go=&#34;`apt/standard.Repository`&#34; pulumi-lang-python=&#34;`apt/standard.Repository`&#34; pulumi-lang-yaml=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-java=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-hcl=&#34;`proxmox_apt_standard_repository`&#34;&gt;`proxmoxve.apt/standard.Repository`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves an APT standard repository from a Proxmox VE cluster.
      * 
@@ -331,7 +331,7 @@ public final class Apt_standardFunctions {
         return getRepositoryLegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-go=&#34;`apt/standard.Repository`&#34; pulumi-lang-python=&#34;`apt/standard.Repository`&#34; pulumi-lang-yaml=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-java=&#34;`proxmoxve.apt/standard.Repository`&#34;&gt;`proxmoxve.apt/standard.Repository`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-go=&#34;`apt/standard.Repository`&#34; pulumi-lang-python=&#34;`apt/standard.Repository`&#34; pulumi-lang-yaml=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-java=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-hcl=&#34;`proxmox_apt_standard_repository`&#34;&gt;`proxmoxve.apt/standard.Repository`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves an APT standard repository from a Proxmox VE cluster.
      * 
@@ -377,7 +377,7 @@ public final class Apt_standardFunctions {
         return Deployment.getInstance().invoke("proxmoxve:apt/standard/getRepositoryLegacy:getRepositoryLegacy", TypeShape.of(GetRepositoryLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-go=&#34;`apt/standard.Repository`&#34; pulumi-lang-python=&#34;`apt/standard.Repository`&#34; pulumi-lang-yaml=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-java=&#34;`proxmoxve.apt/standard.Repository`&#34;&gt;`proxmoxve.apt/standard.Repository`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-go=&#34;`apt/standard.Repository`&#34; pulumi-lang-python=&#34;`apt/standard.Repository`&#34; pulumi-lang-yaml=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-java=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-hcl=&#34;`proxmox_apt_standard_repository`&#34;&gt;`proxmoxve.apt/standard.Repository`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves an APT standard repository from a Proxmox VE cluster.
      * 
@@ -423,7 +423,7 @@ public final class Apt_standardFunctions {
         return Deployment.getInstance().invoke("proxmoxve:apt/standard/getRepositoryLegacy:getRepositoryLegacy", TypeShape.of(GetRepositoryLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-go=&#34;`apt/standard.Repository`&#34; pulumi-lang-python=&#34;`apt/standard.Repository`&#34; pulumi-lang-yaml=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-java=&#34;`proxmoxve.apt/standard.Repository`&#34;&gt;`proxmoxve.apt/standard.Repository`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-go=&#34;`apt/standard.Repository`&#34; pulumi-lang-python=&#34;`apt/standard.Repository`&#34; pulumi-lang-yaml=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-java=&#34;`proxmoxve.apt/standard.Repository`&#34; pulumi-lang-hcl=&#34;`proxmox_apt_standard_repository`&#34;&gt;`proxmoxve.apt/standard.Repository`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves an APT standard repository from a Proxmox VE cluster.
      * 

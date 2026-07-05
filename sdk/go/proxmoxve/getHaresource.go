@@ -34,6 +34,8 @@ type LookupHaresourceArgs struct {
 type LookupHaresourceResult struct {
 	// The comment associated with this resource.
 	Comment string `pulumi:"comment"`
+	// Automatic failback to the preferred node when it becomes available again (PVE 9+).
+	Failback bool `pulumi:"failback"`
 	// The identifier of the High Availability group this resource is a member of.
 	Group string `pulumi:"group"`
 	// The unique identifier of this resource.
@@ -87,6 +89,11 @@ func (o LookupHaresourceResultOutput) ToLookupHaresourceResultOutputWithContext(
 // The comment associated with this resource.
 func (o LookupHaresourceResultOutput) Comment() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHaresourceResult) string { return v.Comment }).(pulumi.StringOutput)
+}
+
+// Automatic failback to the preferred node when it becomes available again (PVE 9+).
+func (o LookupHaresourceResultOutput) Failback() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupHaresourceResult) bool { return v.Failback }).(pulumi.BoolOutput)
 }
 
 // The identifier of the High Availability group this resource is a member of.

@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VmLegacyVga {
     /**
-     * @return Enable VNC clipboard by setting to &lt;span pulumi-lang-nodejs=&#34;`vnc`&#34; pulumi-lang-dotnet=&#34;`Vnc`&#34; pulumi-lang-go=&#34;`vnc`&#34; pulumi-lang-python=&#34;`vnc`&#34; pulumi-lang-yaml=&#34;`vnc`&#34; pulumi-lang-java=&#34;`vnc`&#34;&gt;`vnc`&lt;/span&gt;. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
+     * @return Enable VNC clipboard by setting to &lt;span pulumi-lang-nodejs=&#34;`vnc`&#34; pulumi-lang-dotnet=&#34;`Vnc`&#34; pulumi-lang-go=&#34;`vnc`&#34; pulumi-lang-python=&#34;`vnc`&#34; pulumi-lang-yaml=&#34;`vnc`&#34; pulumi-lang-java=&#34;`vnc`&#34; pulumi-lang-hcl=&#34;`vnc`&#34;&gt;`vnc`&lt;/span&gt;. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
      * 
      */
     private @Nullable String clipboard;
     /**
-     * @return The VGA memory in megabytes (defaults to &lt;span pulumi-lang-nodejs=&#34;`16`&#34; pulumi-lang-dotnet=&#34;`16`&#34; pulumi-lang-go=&#34;`16`&#34; pulumi-lang-python=&#34;`16`&#34; pulumi-lang-yaml=&#34;`16`&#34; pulumi-lang-java=&#34;`16`&#34;&gt;`16`&lt;/span&gt;).
+     * @return The VGA memory in megabytes (defaults to &lt;span pulumi-lang-nodejs=&#34;`16`&#34; pulumi-lang-dotnet=&#34;`16`&#34; pulumi-lang-go=&#34;`16`&#34; pulumi-lang-python=&#34;`16`&#34; pulumi-lang-yaml=&#34;`16`&#34; pulumi-lang-java=&#34;`16`&#34; pulumi-lang-hcl=&#34;`16`&#34;&gt;`16`&lt;/span&gt;).
      * 
      */
     private @Nullable Integer memory;
     /**
-     * @return The VGA type (defaults to &lt;span pulumi-lang-nodejs=&#34;`std`&#34; pulumi-lang-dotnet=&#34;`Std`&#34; pulumi-lang-go=&#34;`std`&#34; pulumi-lang-python=&#34;`std`&#34; pulumi-lang-yaml=&#34;`std`&#34; pulumi-lang-java=&#34;`std`&#34;&gt;`std`&lt;/span&gt;).
+     * @return The VGA type (defaults to &lt;span pulumi-lang-nodejs=&#34;`std`&#34; pulumi-lang-dotnet=&#34;`Std`&#34; pulumi-lang-go=&#34;`std`&#34; pulumi-lang-python=&#34;`std`&#34; pulumi-lang-yaml=&#34;`std`&#34; pulumi-lang-java=&#34;`std`&#34; pulumi-lang-hcl=&#34;`std`&#34;&gt;`std`&lt;/span&gt;).
      * 
      */
     private @Nullable String type;
 
     private VmLegacyVga() {}
     /**
-     * @return Enable VNC clipboard by setting to &lt;span pulumi-lang-nodejs=&#34;`vnc`&#34; pulumi-lang-dotnet=&#34;`Vnc`&#34; pulumi-lang-go=&#34;`vnc`&#34; pulumi-lang-python=&#34;`vnc`&#34; pulumi-lang-yaml=&#34;`vnc`&#34; pulumi-lang-java=&#34;`vnc`&#34;&gt;`vnc`&lt;/span&gt;. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
+     * @return Enable VNC clipboard by setting to &lt;span pulumi-lang-nodejs=&#34;`vnc`&#34; pulumi-lang-dotnet=&#34;`Vnc`&#34; pulumi-lang-go=&#34;`vnc`&#34; pulumi-lang-python=&#34;`vnc`&#34; pulumi-lang-yaml=&#34;`vnc`&#34; pulumi-lang-java=&#34;`vnc`&#34; pulumi-lang-hcl=&#34;`vnc`&#34;&gt;`vnc`&lt;/span&gt;. See the [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_virtual_machines_settings) section 10.2.8 for more information.
      * 
      */
     public Optional<String> clipboard() {
         return Optional.ofNullable(this.clipboard);
     }
     /**
-     * @return The VGA memory in megabytes (defaults to &lt;span pulumi-lang-nodejs=&#34;`16`&#34; pulumi-lang-dotnet=&#34;`16`&#34; pulumi-lang-go=&#34;`16`&#34; pulumi-lang-python=&#34;`16`&#34; pulumi-lang-yaml=&#34;`16`&#34; pulumi-lang-java=&#34;`16`&#34;&gt;`16`&lt;/span&gt;).
+     * @return The VGA memory in megabytes (defaults to &lt;span pulumi-lang-nodejs=&#34;`16`&#34; pulumi-lang-dotnet=&#34;`16`&#34; pulumi-lang-go=&#34;`16`&#34; pulumi-lang-python=&#34;`16`&#34; pulumi-lang-yaml=&#34;`16`&#34; pulumi-lang-java=&#34;`16`&#34; pulumi-lang-hcl=&#34;`16`&#34;&gt;`16`&lt;/span&gt;).
      * 
      */
     public Optional<Integer> memory() {
         return Optional.ofNullable(this.memory);
     }
     /**
-     * @return The VGA type (defaults to &lt;span pulumi-lang-nodejs=&#34;`std`&#34; pulumi-lang-dotnet=&#34;`Std`&#34; pulumi-lang-go=&#34;`std`&#34; pulumi-lang-python=&#34;`std`&#34; pulumi-lang-yaml=&#34;`std`&#34; pulumi-lang-java=&#34;`std`&#34;&gt;`std`&lt;/span&gt;).
+     * @return The VGA type (defaults to &lt;span pulumi-lang-nodejs=&#34;`std`&#34; pulumi-lang-dotnet=&#34;`Std`&#34; pulumi-lang-go=&#34;`std`&#34; pulumi-lang-python=&#34;`std`&#34; pulumi-lang-yaml=&#34;`std`&#34; pulumi-lang-java=&#34;`std`&#34; pulumi-lang-hcl=&#34;`std`&#34;&gt;`std`&lt;/span&gt;).
      * 
      */
     public Optional<String> type() {

@@ -19,7 +19,7 @@ public final class VmLegacyAgentArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Whether to enable the QEMU agent (defaults
-     * to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Import(name="enabled")
@@ -27,7 +27,7 @@ public final class VmLegacyAgentArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Whether to enable the QEMU agent (defaults
-     * to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> enabled() {
@@ -36,7 +36,7 @@ public final class VmLegacyAgentArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The maximum amount of time to wait for data from
-     * the QEMU agent to become available ( defaults to &lt;span pulumi-lang-nodejs=&#34;`15m`&#34; pulumi-lang-dotnet=&#34;`15m`&#34; pulumi-lang-go=&#34;`15m`&#34; pulumi-lang-python=&#34;`15m`&#34; pulumi-lang-yaml=&#34;`15m`&#34; pulumi-lang-java=&#34;`15m`&#34;&gt;`15m`&lt;/span&gt;).
+     * the QEMU agent to become available ( defaults to &lt;span pulumi-lang-nodejs=&#34;`15m`&#34; pulumi-lang-dotnet=&#34;`15m`&#34; pulumi-lang-go=&#34;`15m`&#34; pulumi-lang-python=&#34;`15m`&#34; pulumi-lang-yaml=&#34;`15m`&#34; pulumi-lang-java=&#34;`15m`&#34; pulumi-lang-hcl=&#34;`15m`&#34;&gt;`15m`&lt;/span&gt;).
      * 
      */
     @Import(name="timeout")
@@ -44,7 +44,7 @@ public final class VmLegacyAgentArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The maximum amount of time to wait for data from
-     * the QEMU agent to become available ( defaults to &lt;span pulumi-lang-nodejs=&#34;`15m`&#34; pulumi-lang-dotnet=&#34;`15m`&#34; pulumi-lang-go=&#34;`15m`&#34; pulumi-lang-python=&#34;`15m`&#34; pulumi-lang-yaml=&#34;`15m`&#34; pulumi-lang-java=&#34;`15m`&#34;&gt;`15m`&lt;/span&gt;).
+     * the QEMU agent to become available ( defaults to &lt;span pulumi-lang-nodejs=&#34;`15m`&#34; pulumi-lang-dotnet=&#34;`15m`&#34; pulumi-lang-go=&#34;`15m`&#34; pulumi-lang-python=&#34;`15m`&#34; pulumi-lang-yaml=&#34;`15m`&#34; pulumi-lang-java=&#34;`15m`&#34; pulumi-lang-hcl=&#34;`15m`&#34;&gt;`15m`&lt;/span&gt;).
      * 
      */
     public Optional<Output<String>> timeout() {
@@ -53,7 +53,7 @@ public final class VmLegacyAgentArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Whether to enable the FSTRIM feature in the QEMU agent
-     * (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Import(name="trim")
@@ -61,7 +61,7 @@ public final class VmLegacyAgentArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Whether to enable the FSTRIM feature in the QEMU agent
-     * (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> trim() {
@@ -69,14 +69,14 @@ public final class VmLegacyAgentArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The QEMU agent interface type (defaults to &lt;span pulumi-lang-nodejs=&#34;`virtio`&#34; pulumi-lang-dotnet=&#34;`Virtio`&#34; pulumi-lang-go=&#34;`virtio`&#34; pulumi-lang-python=&#34;`virtio`&#34; pulumi-lang-yaml=&#34;`virtio`&#34; pulumi-lang-java=&#34;`virtio`&#34;&gt;`virtio`&lt;/span&gt;).
+     * The QEMU agent interface type (defaults to &lt;span pulumi-lang-nodejs=&#34;`virtio`&#34; pulumi-lang-dotnet=&#34;`Virtio`&#34; pulumi-lang-go=&#34;`virtio`&#34; pulumi-lang-python=&#34;`virtio`&#34; pulumi-lang-yaml=&#34;`virtio`&#34; pulumi-lang-java=&#34;`virtio`&#34; pulumi-lang-hcl=&#34;`virtio`&#34;&gt;`virtio`&lt;/span&gt;).
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The QEMU agent interface type (defaults to &lt;span pulumi-lang-nodejs=&#34;`virtio`&#34; pulumi-lang-dotnet=&#34;`Virtio`&#34; pulumi-lang-go=&#34;`virtio`&#34; pulumi-lang-python=&#34;`virtio`&#34; pulumi-lang-yaml=&#34;`virtio`&#34; pulumi-lang-java=&#34;`virtio`&#34;&gt;`virtio`&lt;/span&gt;).
+     * @return The QEMU agent interface type (defaults to &lt;span pulumi-lang-nodejs=&#34;`virtio`&#34; pulumi-lang-dotnet=&#34;`Virtio`&#34; pulumi-lang-go=&#34;`virtio`&#34; pulumi-lang-python=&#34;`virtio`&#34; pulumi-lang-yaml=&#34;`virtio`&#34; pulumi-lang-java=&#34;`virtio`&#34; pulumi-lang-hcl=&#34;`virtio`&#34;&gt;`virtio`&lt;/span&gt;).
      * 
      */
     public Optional<Output<String>> type() {
@@ -128,7 +128,7 @@ public final class VmLegacyAgentArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param enabled Whether to enable the QEMU agent (defaults
-         * to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+         * to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class VmLegacyAgentArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param enabled Whether to enable the QEMU agent (defaults
-         * to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+         * to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class VmLegacyAgentArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param timeout The maximum amount of time to wait for data from
-         * the QEMU agent to become available ( defaults to &lt;span pulumi-lang-nodejs=&#34;`15m`&#34; pulumi-lang-dotnet=&#34;`15m`&#34; pulumi-lang-go=&#34;`15m`&#34; pulumi-lang-python=&#34;`15m`&#34; pulumi-lang-yaml=&#34;`15m`&#34; pulumi-lang-java=&#34;`15m`&#34;&gt;`15m`&lt;/span&gt;).
+         * the QEMU agent to become available ( defaults to &lt;span pulumi-lang-nodejs=&#34;`15m`&#34; pulumi-lang-dotnet=&#34;`15m`&#34; pulumi-lang-go=&#34;`15m`&#34; pulumi-lang-python=&#34;`15m`&#34; pulumi-lang-yaml=&#34;`15m`&#34; pulumi-lang-java=&#34;`15m`&#34; pulumi-lang-hcl=&#34;`15m`&#34;&gt;`15m`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class VmLegacyAgentArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param timeout The maximum amount of time to wait for data from
-         * the QEMU agent to become available ( defaults to &lt;span pulumi-lang-nodejs=&#34;`15m`&#34; pulumi-lang-dotnet=&#34;`15m`&#34; pulumi-lang-go=&#34;`15m`&#34; pulumi-lang-python=&#34;`15m`&#34; pulumi-lang-yaml=&#34;`15m`&#34; pulumi-lang-java=&#34;`15m`&#34;&gt;`15m`&lt;/span&gt;).
+         * the QEMU agent to become available ( defaults to &lt;span pulumi-lang-nodejs=&#34;`15m`&#34; pulumi-lang-dotnet=&#34;`15m`&#34; pulumi-lang-go=&#34;`15m`&#34; pulumi-lang-python=&#34;`15m`&#34; pulumi-lang-yaml=&#34;`15m`&#34; pulumi-lang-java=&#34;`15m`&#34; pulumi-lang-hcl=&#34;`15m`&#34;&gt;`15m`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class VmLegacyAgentArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param trim Whether to enable the FSTRIM feature in the QEMU agent
-         * (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+         * (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class VmLegacyAgentArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param trim Whether to enable the FSTRIM feature in the QEMU agent
-         * (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+         * (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class VmLegacyAgentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The QEMU agent interface type (defaults to &lt;span pulumi-lang-nodejs=&#34;`virtio`&#34; pulumi-lang-dotnet=&#34;`Virtio`&#34; pulumi-lang-go=&#34;`virtio`&#34; pulumi-lang-python=&#34;`virtio`&#34; pulumi-lang-yaml=&#34;`virtio`&#34; pulumi-lang-java=&#34;`virtio`&#34;&gt;`virtio`&lt;/span&gt;).
+         * @param type The QEMU agent interface type (defaults to &lt;span pulumi-lang-nodejs=&#34;`virtio`&#34; pulumi-lang-dotnet=&#34;`Virtio`&#34; pulumi-lang-go=&#34;`virtio`&#34; pulumi-lang-python=&#34;`virtio`&#34; pulumi-lang-yaml=&#34;`virtio`&#34; pulumi-lang-java=&#34;`virtio`&#34; pulumi-lang-hcl=&#34;`virtio`&#34;&gt;`virtio`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -207,7 +207,7 @@ public final class VmLegacyAgentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The QEMU agent interface type (defaults to &lt;span pulumi-lang-nodejs=&#34;`virtio`&#34; pulumi-lang-dotnet=&#34;`Virtio`&#34; pulumi-lang-go=&#34;`virtio`&#34; pulumi-lang-python=&#34;`virtio`&#34; pulumi-lang-yaml=&#34;`virtio`&#34; pulumi-lang-java=&#34;`virtio`&#34;&gt;`virtio`&lt;/span&gt;).
+         * @param type The QEMU agent interface type (defaults to &lt;span pulumi-lang-nodejs=&#34;`virtio`&#34; pulumi-lang-dotnet=&#34;`Virtio`&#34; pulumi-lang-go=&#34;`virtio`&#34; pulumi-lang-python=&#34;`virtio`&#34; pulumi-lang-yaml=&#34;`virtio`&#34; pulumi-lang-java=&#34;`virtio`&#34; pulumi-lang-hcl=&#34;`virtio`&#34;&gt;`virtio`&lt;/span&gt;).
          * 
          * @return builder
          * 

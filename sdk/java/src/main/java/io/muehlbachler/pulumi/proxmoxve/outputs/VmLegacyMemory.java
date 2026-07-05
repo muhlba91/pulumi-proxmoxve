@@ -14,13 +14,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VmLegacyMemory {
     /**
-     * @return The dedicated memory in megabytes (defaults to &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34;&gt;`512`&lt;/span&gt;).
+     * @return The dedicated memory in megabytes (defaults to &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34; pulumi-lang-hcl=&#34;`512`&#34;&gt;`512`&lt;/span&gt;).
      * 
      */
     private @Nullable Integer dedicated;
     /**
-     * @return The floating memory in megabytes. The default is &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;, which disables &#34;ballooning device&#34; for the VM.
-     * Please note that Proxmox has ballooning enabled by default. To enable it, set &lt;span pulumi-lang-nodejs=&#34;`floating`&#34; pulumi-lang-dotnet=&#34;`Floating`&#34; pulumi-lang-go=&#34;`floating`&#34; pulumi-lang-python=&#34;`floating`&#34; pulumi-lang-yaml=&#34;`floating`&#34; pulumi-lang-java=&#34;`floating`&#34;&gt;`floating`&lt;/span&gt; to the same value as &lt;span pulumi-lang-nodejs=&#34;`dedicated`&#34; pulumi-lang-dotnet=&#34;`Dedicated`&#34; pulumi-lang-go=&#34;`dedicated`&#34; pulumi-lang-python=&#34;`dedicated`&#34; pulumi-lang-yaml=&#34;`dedicated`&#34; pulumi-lang-java=&#34;`dedicated`&#34;&gt;`dedicated`&lt;/span&gt;.
+     * @return The floating memory in megabytes. The default is &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt;, which disables &#34;ballooning device&#34; for the VM.
+     * Please note that Proxmox has ballooning enabled by default. To enable it, set &lt;span pulumi-lang-nodejs=&#34;`floating`&#34; pulumi-lang-dotnet=&#34;`Floating`&#34; pulumi-lang-go=&#34;`floating`&#34; pulumi-lang-python=&#34;`floating`&#34; pulumi-lang-yaml=&#34;`floating`&#34; pulumi-lang-java=&#34;`floating`&#34; pulumi-lang-hcl=&#34;`floating`&#34;&gt;`floating`&lt;/span&gt; to the same value as &lt;span pulumi-lang-nodejs=&#34;`dedicated`&#34; pulumi-lang-dotnet=&#34;`Dedicated`&#34; pulumi-lang-go=&#34;`dedicated`&#34; pulumi-lang-python=&#34;`dedicated`&#34; pulumi-lang-yaml=&#34;`dedicated`&#34; pulumi-lang-java=&#34;`dedicated`&#34; pulumi-lang-hcl=&#34;`dedicated`&#34;&gt;`dedicated`&lt;/span&gt;.
      * See [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_memory) section 10.2.6 for more information.
      * 
      */
@@ -31,30 +31,30 @@ public final class VmLegacyMemory {
      */
     private @Nullable String hugepages;
     /**
-     * @return Keep hugepages memory after the VM is stopped (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * @return Keep hugepages memory after the VM is stopped (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
-     * Settings &lt;span pulumi-lang-nodejs=&#34;`hugepages`&#34; pulumi-lang-dotnet=&#34;`Hugepages`&#34; pulumi-lang-go=&#34;`hugepages`&#34; pulumi-lang-python=&#34;`hugepages`&#34; pulumi-lang-yaml=&#34;`hugepages`&#34; pulumi-lang-java=&#34;`hugepages`&#34;&gt;`hugepages`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`keepHugepages`&#34; pulumi-lang-dotnet=&#34;`KeepHugepages`&#34; pulumi-lang-go=&#34;`keepHugepages`&#34; pulumi-lang-python=&#34;`keep_hugepages`&#34; pulumi-lang-yaml=&#34;`keepHugepages`&#34; pulumi-lang-java=&#34;`keepHugepages`&#34;&gt;`keepHugepages`&lt;/span&gt; are only allowed for `root{@literal @}pam` authenticated user.
+     * Settings &lt;span pulumi-lang-nodejs=&#34;`hugepages`&#34; pulumi-lang-dotnet=&#34;`Hugepages`&#34; pulumi-lang-go=&#34;`hugepages`&#34; pulumi-lang-python=&#34;`hugepages`&#34; pulumi-lang-yaml=&#34;`hugepages`&#34; pulumi-lang-java=&#34;`hugepages`&#34; pulumi-lang-hcl=&#34;`hugepages`&#34;&gt;`hugepages`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`keepHugepages`&#34; pulumi-lang-dotnet=&#34;`KeepHugepages`&#34; pulumi-lang-go=&#34;`keepHugepages`&#34; pulumi-lang-python=&#34;`keep_hugepages`&#34; pulumi-lang-yaml=&#34;`keepHugepages`&#34; pulumi-lang-java=&#34;`keepHugepages`&#34; pulumi-lang-hcl=&#34;`keep_hugepages`&#34;&gt;`keepHugepages`&lt;/span&gt; are only allowed for `root{@literal @}pam` authenticated user.
      * And required `cpu.numa` to be enabled.
      * 
      */
     private @Nullable Boolean keepHugepages;
     /**
-     * @return The shared memory in megabytes (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
+     * @return The shared memory in megabytes (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
      * 
      */
     private @Nullable Integer shared;
 
     private VmLegacyMemory() {}
     /**
-     * @return The dedicated memory in megabytes (defaults to &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34;&gt;`512`&lt;/span&gt;).
+     * @return The dedicated memory in megabytes (defaults to &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34; pulumi-lang-hcl=&#34;`512`&#34;&gt;`512`&lt;/span&gt;).
      * 
      */
     public Optional<Integer> dedicated() {
         return Optional.ofNullable(this.dedicated);
     }
     /**
-     * @return The floating memory in megabytes. The default is &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;, which disables &#34;ballooning device&#34; for the VM.
-     * Please note that Proxmox has ballooning enabled by default. To enable it, set &lt;span pulumi-lang-nodejs=&#34;`floating`&#34; pulumi-lang-dotnet=&#34;`Floating`&#34; pulumi-lang-go=&#34;`floating`&#34; pulumi-lang-python=&#34;`floating`&#34; pulumi-lang-yaml=&#34;`floating`&#34; pulumi-lang-java=&#34;`floating`&#34;&gt;`floating`&lt;/span&gt; to the same value as &lt;span pulumi-lang-nodejs=&#34;`dedicated`&#34; pulumi-lang-dotnet=&#34;`Dedicated`&#34; pulumi-lang-go=&#34;`dedicated`&#34; pulumi-lang-python=&#34;`dedicated`&#34; pulumi-lang-yaml=&#34;`dedicated`&#34; pulumi-lang-java=&#34;`dedicated`&#34;&gt;`dedicated`&lt;/span&gt;.
+     * @return The floating memory in megabytes. The default is &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt;, which disables &#34;ballooning device&#34; for the VM.
+     * Please note that Proxmox has ballooning enabled by default. To enable it, set &lt;span pulumi-lang-nodejs=&#34;`floating`&#34; pulumi-lang-dotnet=&#34;`Floating`&#34; pulumi-lang-go=&#34;`floating`&#34; pulumi-lang-python=&#34;`floating`&#34; pulumi-lang-yaml=&#34;`floating`&#34; pulumi-lang-java=&#34;`floating`&#34; pulumi-lang-hcl=&#34;`floating`&#34;&gt;`floating`&lt;/span&gt; to the same value as &lt;span pulumi-lang-nodejs=&#34;`dedicated`&#34; pulumi-lang-dotnet=&#34;`Dedicated`&#34; pulumi-lang-go=&#34;`dedicated`&#34; pulumi-lang-python=&#34;`dedicated`&#34; pulumi-lang-yaml=&#34;`dedicated`&#34; pulumi-lang-java=&#34;`dedicated`&#34; pulumi-lang-hcl=&#34;`dedicated`&#34;&gt;`dedicated`&lt;/span&gt;.
      * See [Proxmox documentation](https://pve.proxmox.com/pve-docs/pve-admin-guide.html#qm_memory) section 10.2.6 for more information.
      * 
      */
@@ -69,9 +69,9 @@ public final class VmLegacyMemory {
         return Optional.ofNullable(this.hugepages);
     }
     /**
-     * @return Keep hugepages memory after the VM is stopped (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * @return Keep hugepages memory after the VM is stopped (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
-     * Settings &lt;span pulumi-lang-nodejs=&#34;`hugepages`&#34; pulumi-lang-dotnet=&#34;`Hugepages`&#34; pulumi-lang-go=&#34;`hugepages`&#34; pulumi-lang-python=&#34;`hugepages`&#34; pulumi-lang-yaml=&#34;`hugepages`&#34; pulumi-lang-java=&#34;`hugepages`&#34;&gt;`hugepages`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`keepHugepages`&#34; pulumi-lang-dotnet=&#34;`KeepHugepages`&#34; pulumi-lang-go=&#34;`keepHugepages`&#34; pulumi-lang-python=&#34;`keep_hugepages`&#34; pulumi-lang-yaml=&#34;`keepHugepages`&#34; pulumi-lang-java=&#34;`keepHugepages`&#34;&gt;`keepHugepages`&lt;/span&gt; are only allowed for `root{@literal @}pam` authenticated user.
+     * Settings &lt;span pulumi-lang-nodejs=&#34;`hugepages`&#34; pulumi-lang-dotnet=&#34;`Hugepages`&#34; pulumi-lang-go=&#34;`hugepages`&#34; pulumi-lang-python=&#34;`hugepages`&#34; pulumi-lang-yaml=&#34;`hugepages`&#34; pulumi-lang-java=&#34;`hugepages`&#34; pulumi-lang-hcl=&#34;`hugepages`&#34;&gt;`hugepages`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`keepHugepages`&#34; pulumi-lang-dotnet=&#34;`KeepHugepages`&#34; pulumi-lang-go=&#34;`keepHugepages`&#34; pulumi-lang-python=&#34;`keep_hugepages`&#34; pulumi-lang-yaml=&#34;`keepHugepages`&#34; pulumi-lang-java=&#34;`keepHugepages`&#34; pulumi-lang-hcl=&#34;`keep_hugepages`&#34;&gt;`keepHugepages`&lt;/span&gt; are only allowed for `root{@literal @}pam` authenticated user.
      * And required `cpu.numa` to be enabled.
      * 
      */
@@ -79,7 +79,7 @@ public final class VmLegacyMemory {
         return Optional.ofNullable(this.keepHugepages);
     }
     /**
-     * @return The shared memory in megabytes (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
+     * @return The shared memory in megabytes (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
      * 
      */
     public Optional<Integer> shared() {

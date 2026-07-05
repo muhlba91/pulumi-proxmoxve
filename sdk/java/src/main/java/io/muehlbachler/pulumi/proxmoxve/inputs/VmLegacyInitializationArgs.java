@@ -71,7 +71,7 @@ public final class VmLegacyInitializationArgs extends com.pulumi.resources.Resou
      * The hardware interface to connect the cloud-init
      * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
      * detected if the setting is missing but a cloud-init image is present,
-     * otherwise defaults to &lt;span pulumi-lang-nodejs=&#34;`ide2`&#34; pulumi-lang-dotnet=&#34;`Ide2`&#34; pulumi-lang-go=&#34;`ide2`&#34; pulumi-lang-python=&#34;`ide2`&#34; pulumi-lang-yaml=&#34;`ide2`&#34; pulumi-lang-java=&#34;`ide2`&#34;&gt;`ide2`&lt;/span&gt;.
+     * otherwise defaults to &lt;span pulumi-lang-nodejs=&#34;`ide2`&#34; pulumi-lang-dotnet=&#34;`Ide2`&#34; pulumi-lang-go=&#34;`ide2`&#34; pulumi-lang-python=&#34;`ide2`&#34; pulumi-lang-yaml=&#34;`ide2`&#34; pulumi-lang-java=&#34;`ide2`&#34; pulumi-lang-hcl=&#34;`ide2`&#34;&gt;`ide2`&lt;/span&gt;.
      * 
      */
     @Import(name="interface")
@@ -81,7 +81,7 @@ public final class VmLegacyInitializationArgs extends com.pulumi.resources.Resou
      * @return The hardware interface to connect the cloud-init
      * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
      * detected if the setting is missing but a cloud-init image is present,
-     * otherwise defaults to &lt;span pulumi-lang-nodejs=&#34;`ide2`&#34; pulumi-lang-dotnet=&#34;`Ide2`&#34; pulumi-lang-go=&#34;`ide2`&#34; pulumi-lang-python=&#34;`ide2`&#34; pulumi-lang-yaml=&#34;`ide2`&#34; pulumi-lang-java=&#34;`ide2`&#34;&gt;`ide2`&lt;/span&gt;.
+     * otherwise defaults to &lt;span pulumi-lang-nodejs=&#34;`ide2`&#34; pulumi-lang-dotnet=&#34;`Ide2`&#34; pulumi-lang-go=&#34;`ide2`&#34; pulumi-lang-python=&#34;`ide2`&#34; pulumi-lang-yaml=&#34;`ide2`&#34; pulumi-lang-java=&#34;`ide2`&#34; pulumi-lang-hcl=&#34;`ide2`&#34;&gt;`ide2`&lt;/span&gt;.
      * 
      */
     public Optional<Output<String>> interface_() {
@@ -125,7 +125,7 @@ public final class VmLegacyInitializationArgs extends com.pulumi.resources.Resou
     /**
      * The identifier for a file containing
      * network configuration data passed to the VM via cloud-init (conflicts
-     * with &lt;span pulumi-lang-nodejs=&#34;`ipConfig`&#34; pulumi-lang-dotnet=&#34;`IpConfig`&#34; pulumi-lang-go=&#34;`ipConfig`&#34; pulumi-lang-python=&#34;`ip_config`&#34; pulumi-lang-yaml=&#34;`ipConfig`&#34; pulumi-lang-java=&#34;`ipConfig`&#34;&gt;`ipConfig`&lt;/span&gt;).
+     * with &lt;span pulumi-lang-nodejs=&#34;`ipConfig`&#34; pulumi-lang-dotnet=&#34;`IpConfig`&#34; pulumi-lang-go=&#34;`ipConfig`&#34; pulumi-lang-python=&#34;`ip_config`&#34; pulumi-lang-yaml=&#34;`ipConfig`&#34; pulumi-lang-java=&#34;`ipConfig`&#34; pulumi-lang-hcl=&#34;`ip_config`&#34;&gt;`ipConfig`&lt;/span&gt;).
      * 
      */
     @Import(name="networkDataFileId")
@@ -134,7 +134,7 @@ public final class VmLegacyInitializationArgs extends com.pulumi.resources.Resou
     /**
      * @return The identifier for a file containing
      * network configuration data passed to the VM via cloud-init (conflicts
-     * with &lt;span pulumi-lang-nodejs=&#34;`ipConfig`&#34; pulumi-lang-dotnet=&#34;`IpConfig`&#34; pulumi-lang-go=&#34;`ipConfig`&#34; pulumi-lang-python=&#34;`ip_config`&#34; pulumi-lang-yaml=&#34;`ipConfig`&#34; pulumi-lang-java=&#34;`ipConfig`&#34;&gt;`ipConfig`&lt;/span&gt;).
+     * with &lt;span pulumi-lang-nodejs=&#34;`ipConfig`&#34; pulumi-lang-dotnet=&#34;`IpConfig`&#34; pulumi-lang-go=&#34;`ipConfig`&#34; pulumi-lang-python=&#34;`ip_config`&#34; pulumi-lang-yaml=&#34;`ipConfig`&#34; pulumi-lang-java=&#34;`ipConfig`&#34; pulumi-lang-hcl=&#34;`ip_config`&#34;&gt;`ipConfig`&lt;/span&gt;).
      * 
      */
     public Optional<Output<String>> networkDataFileId() {
@@ -158,7 +158,7 @@ public final class VmLegacyInitializationArgs extends com.pulumi.resources.Resou
 
     /**
      * Whether to do an automatic package upgrade after
-     * the first boot (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * the first boot (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * Setting this is only allowed for `root{@literal @}pam` authenticated user.
      * 
      */
@@ -167,7 +167,7 @@ public final class VmLegacyInitializationArgs extends com.pulumi.resources.Resou
 
     /**
      * @return Whether to do an automatic package upgrade after
-     * the first boot (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * the first boot (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * Setting this is only allowed for `root{@literal @}pam` authenticated user.
      * 
      */
@@ -177,7 +177,7 @@ public final class VmLegacyInitializationArgs extends com.pulumi.resources.Resou
 
     /**
      * The user account configuration (conflicts
-     * with &lt;span pulumi-lang-nodejs=&#34;`userDataFileId`&#34; pulumi-lang-dotnet=&#34;`UserDataFileId`&#34; pulumi-lang-go=&#34;`userDataFileId`&#34; pulumi-lang-python=&#34;`user_data_file_id`&#34; pulumi-lang-yaml=&#34;`userDataFileId`&#34; pulumi-lang-java=&#34;`userDataFileId`&#34;&gt;`userDataFileId`&lt;/span&gt;).
+     * with &lt;span pulumi-lang-nodejs=&#34;`userDataFileId`&#34; pulumi-lang-dotnet=&#34;`UserDataFileId`&#34; pulumi-lang-go=&#34;`userDataFileId`&#34; pulumi-lang-python=&#34;`user_data_file_id`&#34; pulumi-lang-yaml=&#34;`userDataFileId`&#34; pulumi-lang-java=&#34;`userDataFileId`&#34; pulumi-lang-hcl=&#34;`user_data_file_id`&#34;&gt;`userDataFileId`&lt;/span&gt;).
      * 
      */
     @Import(name="userAccount")
@@ -185,7 +185,7 @@ public final class VmLegacyInitializationArgs extends com.pulumi.resources.Resou
 
     /**
      * @return The user account configuration (conflicts
-     * with &lt;span pulumi-lang-nodejs=&#34;`userDataFileId`&#34; pulumi-lang-dotnet=&#34;`UserDataFileId`&#34; pulumi-lang-go=&#34;`userDataFileId`&#34; pulumi-lang-python=&#34;`user_data_file_id`&#34; pulumi-lang-yaml=&#34;`userDataFileId`&#34; pulumi-lang-java=&#34;`userDataFileId`&#34;&gt;`userDataFileId`&lt;/span&gt;).
+     * with &lt;span pulumi-lang-nodejs=&#34;`userDataFileId`&#34; pulumi-lang-dotnet=&#34;`UserDataFileId`&#34; pulumi-lang-go=&#34;`userDataFileId`&#34; pulumi-lang-python=&#34;`user_data_file_id`&#34; pulumi-lang-yaml=&#34;`userDataFileId`&#34; pulumi-lang-java=&#34;`userDataFileId`&#34; pulumi-lang-hcl=&#34;`user_data_file_id`&#34;&gt;`userDataFileId`&lt;/span&gt;).
      * 
      */
     public Optional<Output<VmLegacyInitializationUserAccountArgs>> userAccount() {
@@ -194,7 +194,7 @@ public final class VmLegacyInitializationArgs extends com.pulumi.resources.Resou
 
     /**
      * The identifier for a file containing
-     * custom user data (conflicts with &lt;span pulumi-lang-nodejs=&#34;`userAccount`&#34; pulumi-lang-dotnet=&#34;`UserAccount`&#34; pulumi-lang-go=&#34;`userAccount`&#34; pulumi-lang-python=&#34;`user_account`&#34; pulumi-lang-yaml=&#34;`userAccount`&#34; pulumi-lang-java=&#34;`userAccount`&#34;&gt;`userAccount`&lt;/span&gt;).
+     * custom user data (conflicts with &lt;span pulumi-lang-nodejs=&#34;`userAccount`&#34; pulumi-lang-dotnet=&#34;`UserAccount`&#34; pulumi-lang-go=&#34;`userAccount`&#34; pulumi-lang-python=&#34;`user_account`&#34; pulumi-lang-yaml=&#34;`userAccount`&#34; pulumi-lang-java=&#34;`userAccount`&#34; pulumi-lang-hcl=&#34;`user_account`&#34;&gt;`userAccount`&lt;/span&gt;).
      * 
      */
     @Import(name="userDataFileId")
@@ -202,7 +202,7 @@ public final class VmLegacyInitializationArgs extends com.pulumi.resources.Resou
 
     /**
      * @return The identifier for a file containing
-     * custom user data (conflicts with &lt;span pulumi-lang-nodejs=&#34;`userAccount`&#34; pulumi-lang-dotnet=&#34;`UserAccount`&#34; pulumi-lang-go=&#34;`userAccount`&#34; pulumi-lang-python=&#34;`user_account`&#34; pulumi-lang-yaml=&#34;`userAccount`&#34; pulumi-lang-java=&#34;`userAccount`&#34;&gt;`userAccount`&lt;/span&gt;).
+     * custom user data (conflicts with &lt;span pulumi-lang-nodejs=&#34;`userAccount`&#34; pulumi-lang-dotnet=&#34;`UserAccount`&#34; pulumi-lang-go=&#34;`userAccount`&#34; pulumi-lang-python=&#34;`user_account`&#34; pulumi-lang-yaml=&#34;`userAccount`&#34; pulumi-lang-java=&#34;`userAccount`&#34; pulumi-lang-hcl=&#34;`user_account`&#34;&gt;`userAccount`&lt;/span&gt;).
      * 
      */
     public Optional<Output<String>> userDataFileId() {
@@ -330,7 +330,7 @@ public final class VmLegacyInitializationArgs extends com.pulumi.resources.Resou
          * @param interface_ The hardware interface to connect the cloud-init
          * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
          * detected if the setting is missing but a cloud-init image is present,
-         * otherwise defaults to &lt;span pulumi-lang-nodejs=&#34;`ide2`&#34; pulumi-lang-dotnet=&#34;`Ide2`&#34; pulumi-lang-go=&#34;`ide2`&#34; pulumi-lang-python=&#34;`ide2`&#34; pulumi-lang-yaml=&#34;`ide2`&#34; pulumi-lang-java=&#34;`ide2`&#34;&gt;`ide2`&lt;/span&gt;.
+         * otherwise defaults to &lt;span pulumi-lang-nodejs=&#34;`ide2`&#34; pulumi-lang-dotnet=&#34;`Ide2`&#34; pulumi-lang-go=&#34;`ide2`&#34; pulumi-lang-python=&#34;`ide2`&#34; pulumi-lang-yaml=&#34;`ide2`&#34; pulumi-lang-java=&#34;`ide2`&#34; pulumi-lang-hcl=&#34;`ide2`&#34;&gt;`ide2`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -344,7 +344,7 @@ public final class VmLegacyInitializationArgs extends com.pulumi.resources.Resou
          * @param interface_ The hardware interface to connect the cloud-init
          * image to. Must be one of `ide0..3`, `sata0..5`, `scsi0..30`. Will be
          * detected if the setting is missing but a cloud-init image is present,
-         * otherwise defaults to &lt;span pulumi-lang-nodejs=&#34;`ide2`&#34; pulumi-lang-dotnet=&#34;`Ide2`&#34; pulumi-lang-go=&#34;`ide2`&#34; pulumi-lang-python=&#34;`ide2`&#34; pulumi-lang-yaml=&#34;`ide2`&#34; pulumi-lang-java=&#34;`ide2`&#34;&gt;`ide2`&lt;/span&gt;.
+         * otherwise defaults to &lt;span pulumi-lang-nodejs=&#34;`ide2`&#34; pulumi-lang-dotnet=&#34;`Ide2`&#34; pulumi-lang-go=&#34;`ide2`&#34; pulumi-lang-python=&#34;`ide2`&#34; pulumi-lang-yaml=&#34;`ide2`&#34; pulumi-lang-java=&#34;`ide2`&#34; pulumi-lang-hcl=&#34;`ide2`&#34;&gt;`ide2`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -413,7 +413,7 @@ public final class VmLegacyInitializationArgs extends com.pulumi.resources.Resou
         /**
          * @param networkDataFileId The identifier for a file containing
          * network configuration data passed to the VM via cloud-init (conflicts
-         * with &lt;span pulumi-lang-nodejs=&#34;`ipConfig`&#34; pulumi-lang-dotnet=&#34;`IpConfig`&#34; pulumi-lang-go=&#34;`ipConfig`&#34; pulumi-lang-python=&#34;`ip_config`&#34; pulumi-lang-yaml=&#34;`ipConfig`&#34; pulumi-lang-java=&#34;`ipConfig`&#34;&gt;`ipConfig`&lt;/span&gt;).
+         * with &lt;span pulumi-lang-nodejs=&#34;`ipConfig`&#34; pulumi-lang-dotnet=&#34;`IpConfig`&#34; pulumi-lang-go=&#34;`ipConfig`&#34; pulumi-lang-python=&#34;`ip_config`&#34; pulumi-lang-yaml=&#34;`ipConfig`&#34; pulumi-lang-java=&#34;`ipConfig`&#34; pulumi-lang-hcl=&#34;`ip_config`&#34;&gt;`ipConfig`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -426,7 +426,7 @@ public final class VmLegacyInitializationArgs extends com.pulumi.resources.Resou
         /**
          * @param networkDataFileId The identifier for a file containing
          * network configuration data passed to the VM via cloud-init (conflicts
-         * with &lt;span pulumi-lang-nodejs=&#34;`ipConfig`&#34; pulumi-lang-dotnet=&#34;`IpConfig`&#34; pulumi-lang-go=&#34;`ipConfig`&#34; pulumi-lang-python=&#34;`ip_config`&#34; pulumi-lang-yaml=&#34;`ipConfig`&#34; pulumi-lang-java=&#34;`ipConfig`&#34;&gt;`ipConfig`&lt;/span&gt;).
+         * with &lt;span pulumi-lang-nodejs=&#34;`ipConfig`&#34; pulumi-lang-dotnet=&#34;`IpConfig`&#34; pulumi-lang-go=&#34;`ipConfig`&#34; pulumi-lang-python=&#34;`ip_config`&#34; pulumi-lang-yaml=&#34;`ipConfig`&#34; pulumi-lang-java=&#34;`ipConfig`&#34; pulumi-lang-hcl=&#34;`ip_config`&#34;&gt;`ipConfig`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -458,7 +458,7 @@ public final class VmLegacyInitializationArgs extends com.pulumi.resources.Resou
 
         /**
          * @param upgrade Whether to do an automatic package upgrade after
-         * the first boot (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+         * the first boot (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * Setting this is only allowed for `root{@literal @}pam` authenticated user.
          * 
          * @return builder
@@ -471,7 +471,7 @@ public final class VmLegacyInitializationArgs extends com.pulumi.resources.Resou
 
         /**
          * @param upgrade Whether to do an automatic package upgrade after
-         * the first boot (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+         * the first boot (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
          * Setting this is only allowed for `root{@literal @}pam` authenticated user.
          * 
          * @return builder
@@ -483,7 +483,7 @@ public final class VmLegacyInitializationArgs extends com.pulumi.resources.Resou
 
         /**
          * @param userAccount The user account configuration (conflicts
-         * with &lt;span pulumi-lang-nodejs=&#34;`userDataFileId`&#34; pulumi-lang-dotnet=&#34;`UserDataFileId`&#34; pulumi-lang-go=&#34;`userDataFileId`&#34; pulumi-lang-python=&#34;`user_data_file_id`&#34; pulumi-lang-yaml=&#34;`userDataFileId`&#34; pulumi-lang-java=&#34;`userDataFileId`&#34;&gt;`userDataFileId`&lt;/span&gt;).
+         * with &lt;span pulumi-lang-nodejs=&#34;`userDataFileId`&#34; pulumi-lang-dotnet=&#34;`UserDataFileId`&#34; pulumi-lang-go=&#34;`userDataFileId`&#34; pulumi-lang-python=&#34;`user_data_file_id`&#34; pulumi-lang-yaml=&#34;`userDataFileId`&#34; pulumi-lang-java=&#34;`userDataFileId`&#34; pulumi-lang-hcl=&#34;`user_data_file_id`&#34;&gt;`userDataFileId`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -495,7 +495,7 @@ public final class VmLegacyInitializationArgs extends com.pulumi.resources.Resou
 
         /**
          * @param userAccount The user account configuration (conflicts
-         * with &lt;span pulumi-lang-nodejs=&#34;`userDataFileId`&#34; pulumi-lang-dotnet=&#34;`UserDataFileId`&#34; pulumi-lang-go=&#34;`userDataFileId`&#34; pulumi-lang-python=&#34;`user_data_file_id`&#34; pulumi-lang-yaml=&#34;`userDataFileId`&#34; pulumi-lang-java=&#34;`userDataFileId`&#34;&gt;`userDataFileId`&lt;/span&gt;).
+         * with &lt;span pulumi-lang-nodejs=&#34;`userDataFileId`&#34; pulumi-lang-dotnet=&#34;`UserDataFileId`&#34; pulumi-lang-go=&#34;`userDataFileId`&#34; pulumi-lang-python=&#34;`user_data_file_id`&#34; pulumi-lang-yaml=&#34;`userDataFileId`&#34; pulumi-lang-java=&#34;`userDataFileId`&#34; pulumi-lang-hcl=&#34;`user_data_file_id`&#34;&gt;`userDataFileId`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -506,7 +506,7 @@ public final class VmLegacyInitializationArgs extends com.pulumi.resources.Resou
 
         /**
          * @param userDataFileId The identifier for a file containing
-         * custom user data (conflicts with &lt;span pulumi-lang-nodejs=&#34;`userAccount`&#34; pulumi-lang-dotnet=&#34;`UserAccount`&#34; pulumi-lang-go=&#34;`userAccount`&#34; pulumi-lang-python=&#34;`user_account`&#34; pulumi-lang-yaml=&#34;`userAccount`&#34; pulumi-lang-java=&#34;`userAccount`&#34;&gt;`userAccount`&lt;/span&gt;).
+         * custom user data (conflicts with &lt;span pulumi-lang-nodejs=&#34;`userAccount`&#34; pulumi-lang-dotnet=&#34;`UserAccount`&#34; pulumi-lang-go=&#34;`userAccount`&#34; pulumi-lang-python=&#34;`user_account`&#34; pulumi-lang-yaml=&#34;`userAccount`&#34; pulumi-lang-java=&#34;`userAccount`&#34; pulumi-lang-hcl=&#34;`user_account`&#34;&gt;`userAccount`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -518,7 +518,7 @@ public final class VmLegacyInitializationArgs extends com.pulumi.resources.Resou
 
         /**
          * @param userDataFileId The identifier for a file containing
-         * custom user data (conflicts with &lt;span pulumi-lang-nodejs=&#34;`userAccount`&#34; pulumi-lang-dotnet=&#34;`UserAccount`&#34; pulumi-lang-go=&#34;`userAccount`&#34; pulumi-lang-python=&#34;`user_account`&#34; pulumi-lang-yaml=&#34;`userAccount`&#34; pulumi-lang-java=&#34;`userAccount`&#34;&gt;`userAccount`&lt;/span&gt;).
+         * custom user data (conflicts with &lt;span pulumi-lang-nodejs=&#34;`userAccount`&#34; pulumi-lang-dotnet=&#34;`UserAccount`&#34; pulumi-lang-go=&#34;`userAccount`&#34; pulumi-lang-python=&#34;`user_account`&#34; pulumi-lang-yaml=&#34;`userAccount`&#34; pulumi-lang-java=&#34;`userAccount`&#34; pulumi-lang-hcl=&#34;`user_account`&#34;&gt;`userAccount`&lt;/span&gt;).
          * 
          * @return builder
          * 

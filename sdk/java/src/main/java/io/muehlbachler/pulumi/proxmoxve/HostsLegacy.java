@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Instances can be imported using the &lt;span pulumi-lang-nodejs=&#34;`nodeName`&#34; pulumi-lang-dotnet=&#34;`NodeName`&#34; pulumi-lang-go=&#34;`nodeName`&#34; pulumi-lang-python=&#34;`node_name`&#34; pulumi-lang-yaml=&#34;`nodeName`&#34; pulumi-lang-java=&#34;`nodeName`&#34;&gt;`nodeName`&lt;/span&gt;, e.g.,
+ * Instances can be imported using the &lt;span pulumi-lang-nodejs=&#34;`nodeName`&#34; pulumi-lang-dotnet=&#34;`NodeName`&#34; pulumi-lang-go=&#34;`nodeName`&#34; pulumi-lang-python=&#34;`node_name`&#34; pulumi-lang-yaml=&#34;`nodeName`&#34; pulumi-lang-java=&#34;`nodeName`&#34; pulumi-lang-hcl=&#34;`node_name`&#34;&gt;`nodeName`&lt;/span&gt;, e.g.,
  * 
  * ```sh
  * $ pulumi import proxmoxve:index/hostsLegacy:HostsLegacy first_node_host_entries first-node
@@ -103,7 +103,7 @@ public class HostsLegacy extends com.pulumi.resources.CustomResource {
         return this.digest;
     }
     /**
-     * The host entries (conversion of &lt;span pulumi-lang-nodejs=&#34;`addresses`&#34; pulumi-lang-dotnet=&#34;`Addresses`&#34; pulumi-lang-go=&#34;`addresses`&#34; pulumi-lang-python=&#34;`addresses`&#34; pulumi-lang-yaml=&#34;`addresses`&#34; pulumi-lang-java=&#34;`addresses`&#34;&gt;`addresses`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`hostnames`&#34; pulumi-lang-dotnet=&#34;`Hostnames`&#34; pulumi-lang-go=&#34;`hostnames`&#34; pulumi-lang-python=&#34;`hostnames`&#34; pulumi-lang-yaml=&#34;`hostnames`&#34; pulumi-lang-java=&#34;`hostnames`&#34;&gt;`hostnames`&lt;/span&gt; into
+     * The host entries (conversion of &lt;span pulumi-lang-nodejs=&#34;`addresses`&#34; pulumi-lang-dotnet=&#34;`Addresses`&#34; pulumi-lang-go=&#34;`addresses`&#34; pulumi-lang-python=&#34;`addresses`&#34; pulumi-lang-yaml=&#34;`addresses`&#34; pulumi-lang-java=&#34;`addresses`&#34; pulumi-lang-hcl=&#34;`addresses`&#34;&gt;`addresses`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`hostnames`&#34; pulumi-lang-dotnet=&#34;`Hostnames`&#34; pulumi-lang-go=&#34;`hostnames`&#34; pulumi-lang-python=&#34;`hostnames`&#34; pulumi-lang-yaml=&#34;`hostnames`&#34; pulumi-lang-java=&#34;`hostnames`&#34; pulumi-lang-hcl=&#34;`hostnames`&#34;&gt;`hostnames`&lt;/span&gt; into
      * objects).
      * 
      */
@@ -111,7 +111,7 @@ public class HostsLegacy extends com.pulumi.resources.CustomResource {
     private Output<List<HostsLegacyEntry>> entries;
 
     /**
-     * @return The host entries (conversion of &lt;span pulumi-lang-nodejs=&#34;`addresses`&#34; pulumi-lang-dotnet=&#34;`Addresses`&#34; pulumi-lang-go=&#34;`addresses`&#34; pulumi-lang-python=&#34;`addresses`&#34; pulumi-lang-yaml=&#34;`addresses`&#34; pulumi-lang-java=&#34;`addresses`&#34;&gt;`addresses`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`hostnames`&#34; pulumi-lang-dotnet=&#34;`Hostnames`&#34; pulumi-lang-go=&#34;`hostnames`&#34; pulumi-lang-python=&#34;`hostnames`&#34; pulumi-lang-yaml=&#34;`hostnames`&#34; pulumi-lang-java=&#34;`hostnames`&#34;&gt;`hostnames`&lt;/span&gt; into
+     * @return The host entries (conversion of &lt;span pulumi-lang-nodejs=&#34;`addresses`&#34; pulumi-lang-dotnet=&#34;`Addresses`&#34; pulumi-lang-go=&#34;`addresses`&#34; pulumi-lang-python=&#34;`addresses`&#34; pulumi-lang-yaml=&#34;`addresses`&#34; pulumi-lang-java=&#34;`addresses`&#34; pulumi-lang-hcl=&#34;`addresses`&#34;&gt;`addresses`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`hostnames`&#34; pulumi-lang-dotnet=&#34;`Hostnames`&#34; pulumi-lang-go=&#34;`hostnames`&#34; pulumi-lang-python=&#34;`hostnames`&#34; pulumi-lang-yaml=&#34;`hostnames`&#34; pulumi-lang-java=&#34;`hostnames`&#34; pulumi-lang-hcl=&#34;`hostnames`&#34;&gt;`hostnames`&lt;/span&gt; into
      * objects).
      * 
      */

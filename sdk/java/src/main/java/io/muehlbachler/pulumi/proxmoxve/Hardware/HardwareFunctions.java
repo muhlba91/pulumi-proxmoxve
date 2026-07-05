@@ -297,7 +297,7 @@ public final class HardwareFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:hardware/getMappings:getMappings", TypeShape.of(GetMappingsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-go=&#34;`hardware.getMappings`&#34; pulumi-lang-python=&#34;`hardware_get_mappings`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware.getMappings`&#34;&gt;`proxmoxve.hardware.getMappings`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-go=&#34;`hardware.getMappings`&#34; pulumi-lang-python=&#34;`hardware_get_mappings`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-hcl=&#34;`data.proxmox_hardware_mappings`&#34;&gt;`proxmoxve.hardware.getMappings`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves a list of hardware mapping resources.
      * 
@@ -354,7 +354,7 @@ public final class HardwareFunctions {
         return getMappingsLegacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-go=&#34;`hardware.getMappings`&#34; pulumi-lang-python=&#34;`hardware_get_mappings`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware.getMappings`&#34;&gt;`proxmoxve.hardware.getMappings`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-go=&#34;`hardware.getMappings`&#34; pulumi-lang-python=&#34;`hardware_get_mappings`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-hcl=&#34;`data.proxmox_hardware_mappings`&#34;&gt;`proxmoxve.hardware.getMappings`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves a list of hardware mapping resources.
      * 
@@ -411,7 +411,7 @@ public final class HardwareFunctions {
         return getMappingsLegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-go=&#34;`hardware.getMappings`&#34; pulumi-lang-python=&#34;`hardware_get_mappings`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware.getMappings`&#34;&gt;`proxmoxve.hardware.getMappings`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-go=&#34;`hardware.getMappings`&#34; pulumi-lang-python=&#34;`hardware_get_mappings`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-hcl=&#34;`data.proxmox_hardware_mappings`&#34;&gt;`proxmoxve.hardware.getMappings`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves a list of hardware mapping resources.
      * 
@@ -468,7 +468,7 @@ public final class HardwareFunctions {
         return Deployment.getInstance().invoke("proxmoxve:hardware/getMappingsLegacy:getMappingsLegacy", TypeShape.of(GetMappingsLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-go=&#34;`hardware.getMappings`&#34; pulumi-lang-python=&#34;`hardware_get_mappings`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware.getMappings`&#34;&gt;`proxmoxve.hardware.getMappings`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-go=&#34;`hardware.getMappings`&#34; pulumi-lang-python=&#34;`hardware_get_mappings`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-hcl=&#34;`data.proxmox_hardware_mappings`&#34;&gt;`proxmoxve.hardware.getMappings`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves a list of hardware mapping resources.
      * 
@@ -525,7 +525,7 @@ public final class HardwareFunctions {
         return Deployment.getInstance().invoke("proxmoxve:hardware/getMappingsLegacy:getMappingsLegacy", TypeShape.of(GetMappingsLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-go=&#34;`hardware.getMappings`&#34; pulumi-lang-python=&#34;`hardware_get_mappings`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware.getMappings`&#34;&gt;`proxmoxve.hardware.getMappings`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-go=&#34;`hardware.getMappings`&#34; pulumi-lang-python=&#34;`hardware_get_mappings`&#34; pulumi-lang-yaml=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-java=&#34;`proxmoxve.hardware.getMappings`&#34; pulumi-lang-hcl=&#34;`data.proxmox_hardware_mappings`&#34;&gt;`proxmoxve.hardware.getMappings`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves a list of hardware mapping resources.
      * 

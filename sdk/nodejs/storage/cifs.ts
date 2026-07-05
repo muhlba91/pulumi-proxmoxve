@@ -80,6 +80,14 @@ export class Cifs extends pulumi.CustomResource {
      */
     declare public readonly contents: pulumi.Output<string[]>;
     /**
+     * Create the base directory if it doesn't exist.
+     */
+    declare public readonly createBasePath: pulumi.Output<boolean>;
+    /**
+     * Populate the directory with the default structure.
+     */
+    declare public readonly createSubdirs: pulumi.Output<boolean>;
+    /**
      * Whether the storage is disabled.
      */
     declare public readonly disable: pulumi.Output<boolean>;
@@ -91,6 +99,10 @@ export class Cifs extends pulumi.CustomResource {
      * A list of nodes where this storage is available.
      */
     declare public readonly nodes: pulumi.Output<string[]>;
+    /**
+     * The mount options for the SMB/CIFS share (see 'man mount.cifs').
+     */
+    declare public readonly options: pulumi.Output<string | undefined>;
     /**
      * The password for authenticating with the SMB/CIFS server.
      */
@@ -143,9 +155,12 @@ export class Cifs extends pulumi.CustomResource {
             const state = argsOrState as CifsState | undefined;
             resourceInputs["backups"] = state?.backups;
             resourceInputs["contents"] = state?.contents;
+            resourceInputs["createBasePath"] = state?.createBasePath;
+            resourceInputs["createSubdirs"] = state?.createSubdirs;
             resourceInputs["disable"] = state?.disable;
             resourceInputs["domain"] = state?.domain;
             resourceInputs["nodes"] = state?.nodes;
+            resourceInputs["options"] = state?.options;
             resourceInputs["password"] = state?.password;
             resourceInputs["preallocation"] = state?.preallocation;
             resourceInputs["resourceId"] = state?.resourceId;
@@ -174,9 +189,12 @@ export class Cifs extends pulumi.CustomResource {
             }
             resourceInputs["backups"] = args?.backups;
             resourceInputs["contents"] = args?.contents;
+            resourceInputs["createBasePath"] = args?.createBasePath;
+            resourceInputs["createSubdirs"] = args?.createSubdirs;
             resourceInputs["disable"] = args?.disable;
             resourceInputs["domain"] = args?.domain;
             resourceInputs["nodes"] = args?.nodes;
+            resourceInputs["options"] = args?.options;
             resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["preallocation"] = args?.preallocation;
             resourceInputs["resourceId"] = args?.resourceId;
@@ -209,6 +227,14 @@ export interface CifsState {
      */
     contents?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * Create the base directory if it doesn't exist.
+     */
+    createBasePath?: pulumi.Input<boolean | undefined>;
+    /**
+     * Populate the directory with the default structure.
+     */
+    createSubdirs?: pulumi.Input<boolean | undefined>;
+    /**
      * Whether the storage is disabled.
      */
     disable?: pulumi.Input<boolean | undefined>;
@@ -220,6 +246,10 @@ export interface CifsState {
      * A list of nodes where this storage is available.
      */
     nodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The mount options for the SMB/CIFS share (see 'man mount.cifs').
+     */
+    options?: pulumi.Input<string | undefined>;
     /**
      * The password for authenticating with the SMB/CIFS server.
      */
@@ -271,6 +301,14 @@ export interface CifsArgs {
      */
     contents?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * Create the base directory if it doesn't exist.
+     */
+    createBasePath?: pulumi.Input<boolean | undefined>;
+    /**
+     * Populate the directory with the default structure.
+     */
+    createSubdirs?: pulumi.Input<boolean | undefined>;
+    /**
      * Whether the storage is disabled.
      */
     disable?: pulumi.Input<boolean | undefined>;
@@ -282,6 +320,10 @@ export interface CifsArgs {
      * A list of nodes where this storage is available.
      */
     nodes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The mount options for the SMB/CIFS share (see 'man mount.cifs').
+     */
+    options?: pulumi.Input<string | undefined>;
     /**
      * The password for authenticating with the SMB/CIFS server.
      */

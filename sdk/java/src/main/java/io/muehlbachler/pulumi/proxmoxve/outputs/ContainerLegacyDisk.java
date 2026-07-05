@@ -21,7 +21,7 @@ public final class ContainerLegacyDisk {
     private @Nullable Boolean acl;
     /**
      * @return The Proxmox storage ID where the rootfs
-     * volume is created (defaults to &lt;span pulumi-lang-nodejs=&#34;`local`&#34; pulumi-lang-dotnet=&#34;`Local`&#34; pulumi-lang-go=&#34;`local`&#34; pulumi-lang-python=&#34;`local`&#34; pulumi-lang-yaml=&#34;`local`&#34; pulumi-lang-java=&#34;`local`&#34;&gt;`local`&lt;/span&gt;).
+     * volume is created (defaults to &lt;span pulumi-lang-nodejs=&#34;`local`&#34; pulumi-lang-dotnet=&#34;`Local`&#34; pulumi-lang-go=&#34;`local`&#34; pulumi-lang-python=&#34;`local`&#34; pulumi-lang-yaml=&#34;`local`&#34; pulumi-lang-java=&#34;`local`&#34; pulumi-lang-hcl=&#34;`local`&#34;&gt;`local`&lt;/span&gt;).
      * 
      */
     private @Nullable String datastoreId;
@@ -48,8 +48,8 @@ public final class ContainerLegacyDisk {
     private @Nullable Boolean replicate;
     /**
      * @return The size of the root filesystem in gigabytes (defaults
-     * to &lt;span pulumi-lang-nodejs=&#34;`4`&#34; pulumi-lang-dotnet=&#34;`4`&#34; pulumi-lang-go=&#34;`4`&#34; pulumi-lang-python=&#34;`4`&#34; pulumi-lang-yaml=&#34;`4`&#34; pulumi-lang-java=&#34;`4`&#34;&gt;`4`&lt;/span&gt;). When set to 0 a directory or zfs/btrfs subvolume will be created.
-     * Requires &lt;span pulumi-lang-nodejs=&#34;`datastoreId`&#34; pulumi-lang-dotnet=&#34;`DatastoreId`&#34; pulumi-lang-go=&#34;`datastoreId`&#34; pulumi-lang-python=&#34;`datastore_id`&#34; pulumi-lang-yaml=&#34;`datastoreId`&#34; pulumi-lang-java=&#34;`datastoreId`&#34;&gt;`datastoreId`&lt;/span&gt; to be set.
+     * to &lt;span pulumi-lang-nodejs=&#34;`4`&#34; pulumi-lang-dotnet=&#34;`4`&#34; pulumi-lang-go=&#34;`4`&#34; pulumi-lang-python=&#34;`4`&#34; pulumi-lang-yaml=&#34;`4`&#34; pulumi-lang-java=&#34;`4`&#34; pulumi-lang-hcl=&#34;`4`&#34;&gt;`4`&lt;/span&gt;). When set to 0 a directory or zfs/btrfs subvolume will be created.
+     * Requires &lt;span pulumi-lang-nodejs=&#34;`datastoreId`&#34; pulumi-lang-dotnet=&#34;`DatastoreId`&#34; pulumi-lang-go=&#34;`datastoreId`&#34; pulumi-lang-python=&#34;`datastore_id`&#34; pulumi-lang-yaml=&#34;`datastoreId`&#34; pulumi-lang-java=&#34;`datastoreId`&#34; pulumi-lang-hcl=&#34;`datastore_id`&#34;&gt;`datastoreId`&lt;/span&gt; to be set.
      * 
      */
     private @Nullable Integer size;
@@ -64,7 +64,7 @@ public final class ContainerLegacyDisk {
     }
     /**
      * @return The Proxmox storage ID where the rootfs
-     * volume is created (defaults to &lt;span pulumi-lang-nodejs=&#34;`local`&#34; pulumi-lang-dotnet=&#34;`Local`&#34; pulumi-lang-go=&#34;`local`&#34; pulumi-lang-python=&#34;`local`&#34; pulumi-lang-yaml=&#34;`local`&#34; pulumi-lang-java=&#34;`local`&#34;&gt;`local`&lt;/span&gt;).
+     * volume is created (defaults to &lt;span pulumi-lang-nodejs=&#34;`local`&#34; pulumi-lang-dotnet=&#34;`Local`&#34; pulumi-lang-go=&#34;`local`&#34; pulumi-lang-python=&#34;`local`&#34; pulumi-lang-yaml=&#34;`local`&#34; pulumi-lang-java=&#34;`local`&#34; pulumi-lang-hcl=&#34;`local`&#34;&gt;`local`&lt;/span&gt;).
      * 
      */
     public Optional<String> datastoreId() {
@@ -101,8 +101,8 @@ public final class ContainerLegacyDisk {
     }
     /**
      * @return The size of the root filesystem in gigabytes (defaults
-     * to &lt;span pulumi-lang-nodejs=&#34;`4`&#34; pulumi-lang-dotnet=&#34;`4`&#34; pulumi-lang-go=&#34;`4`&#34; pulumi-lang-python=&#34;`4`&#34; pulumi-lang-yaml=&#34;`4`&#34; pulumi-lang-java=&#34;`4`&#34;&gt;`4`&lt;/span&gt;). When set to 0 a directory or zfs/btrfs subvolume will be created.
-     * Requires &lt;span pulumi-lang-nodejs=&#34;`datastoreId`&#34; pulumi-lang-dotnet=&#34;`DatastoreId`&#34; pulumi-lang-go=&#34;`datastoreId`&#34; pulumi-lang-python=&#34;`datastore_id`&#34; pulumi-lang-yaml=&#34;`datastoreId`&#34; pulumi-lang-java=&#34;`datastoreId`&#34;&gt;`datastoreId`&lt;/span&gt; to be set.
+     * to &lt;span pulumi-lang-nodejs=&#34;`4`&#34; pulumi-lang-dotnet=&#34;`4`&#34; pulumi-lang-go=&#34;`4`&#34; pulumi-lang-python=&#34;`4`&#34; pulumi-lang-yaml=&#34;`4`&#34; pulumi-lang-java=&#34;`4`&#34; pulumi-lang-hcl=&#34;`4`&#34;&gt;`4`&lt;/span&gt;). When set to 0 a directory or zfs/btrfs subvolume will be created.
+     * Requires &lt;span pulumi-lang-nodejs=&#34;`datastoreId`&#34; pulumi-lang-dotnet=&#34;`DatastoreId`&#34; pulumi-lang-go=&#34;`datastoreId`&#34; pulumi-lang-python=&#34;`datastore_id`&#34; pulumi-lang-yaml=&#34;`datastoreId`&#34; pulumi-lang-java=&#34;`datastoreId`&#34; pulumi-lang-hcl=&#34;`datastore_id`&#34;&gt;`datastoreId`&lt;/span&gt; to be set.
      * 
      */
     public Optional<Integer> size() {

@@ -6339,11 +6339,13 @@ func (o VmLegacyAgentPtrOutput) WaitForIp() VmLegacyAgentWaitForIpPtrOutput {
 }
 
 type VmLegacyAgentWaitForIp struct {
+	// Whether to disable waiting for the agent to report an IP address (defaults to `false`). Set to `true` to skip the IP lookup entirely, so the provider does not wait for the agent during `refresh` and at the end of `apply`. Useful when the guest agent is slow to start, not yet installed, or not running, to avoid blocking those operations. When disabled, `ipv4Addresses`, `ipv6Addresses`, and `networkInterfaceNames` are left empty.
+	Disabled *bool `pulumi:"disabled"`
 	// Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
 	Ipv4 *bool `pulumi:"ipv4"`
 	// Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
 	//
-	// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+	// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
 	Ipv6 *bool `pulumi:"ipv6"`
 }
 
@@ -6359,11 +6361,13 @@ type VmLegacyAgentWaitForIpInput interface {
 }
 
 type VmLegacyAgentWaitForIpArgs struct {
+	// Whether to disable waiting for the agent to report an IP address (defaults to `false`). Set to `true` to skip the IP lookup entirely, so the provider does not wait for the agent during `refresh` and at the end of `apply`. Useful when the guest agent is slow to start, not yet installed, or not running, to avoid blocking those operations. When disabled, `ipv4Addresses`, `ipv6Addresses`, and `networkInterfaceNames` are left empty.
+	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
 	Ipv4 pulumi.BoolPtrInput `pulumi:"ipv4"`
 	// Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
 	//
-	// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+	// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
 	Ipv6 pulumi.BoolPtrInput `pulumi:"ipv6"`
 }
 
@@ -6444,6 +6448,11 @@ func (o VmLegacyAgentWaitForIpOutput) ToVmLegacyAgentWaitForIpPtrOutputWithConte
 	}).(VmLegacyAgentWaitForIpPtrOutput)
 }
 
+// Whether to disable waiting for the agent to report an IP address (defaults to `false`). Set to `true` to skip the IP lookup entirely, so the provider does not wait for the agent during `refresh` and at the end of `apply`. Useful when the guest agent is slow to start, not yet installed, or not running, to avoid blocking those operations. When disabled, `ipv4Addresses`, `ipv6Addresses`, and `networkInterfaceNames` are left empty.
+func (o VmLegacyAgentWaitForIpOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmLegacyAgentWaitForIp) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
+}
+
 // Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
 func (o VmLegacyAgentWaitForIpOutput) Ipv4() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VmLegacyAgentWaitForIp) *bool { return v.Ipv4 }).(pulumi.BoolPtrOutput)
@@ -6451,7 +6460,7 @@ func (o VmLegacyAgentWaitForIpOutput) Ipv4() pulumi.BoolPtrOutput {
 
 // Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
 //
-// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
 func (o VmLegacyAgentWaitForIpOutput) Ipv6() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VmLegacyAgentWaitForIp) *bool { return v.Ipv6 }).(pulumi.BoolPtrOutput)
 }
@@ -6480,6 +6489,16 @@ func (o VmLegacyAgentWaitForIpPtrOutput) Elem() VmLegacyAgentWaitForIpOutput {
 	}).(VmLegacyAgentWaitForIpOutput)
 }
 
+// Whether to disable waiting for the agent to report an IP address (defaults to `false`). Set to `true` to skip the IP lookup entirely, so the provider does not wait for the agent during `refresh` and at the end of `apply`. Useful when the guest agent is slow to start, not yet installed, or not running, to avoid blocking those operations. When disabled, `ipv4Addresses`, `ipv6Addresses`, and `networkInterfaceNames` are left empty.
+func (o VmLegacyAgentWaitForIpPtrOutput) Disabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VmLegacyAgentWaitForIp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
 func (o VmLegacyAgentWaitForIpPtrOutput) Ipv4() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VmLegacyAgentWaitForIp) *bool {
@@ -6492,7 +6511,7 @@ func (o VmLegacyAgentWaitForIpPtrOutput) Ipv4() pulumi.BoolPtrOutput {
 
 // Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
 //
-// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+// When `waitForIp` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
 func (o VmLegacyAgentWaitForIpPtrOutput) Ipv6() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VmLegacyAgentWaitForIp) *bool {
 		if v == nil {
@@ -7811,6 +7830,11 @@ type VmLegacyDisk struct {
 	// or (as root only) host's filesystem paths (`datastoreId` empty string).
 	// See "*Example: Attached disks*".
 	PathInDatastore *string `pulumi:"pathInDatastore"`
+	// The number of I/O queues for this disk, `2` or
+	// greater. Only supported for SCSI disks, and applied by Proxmox only
+	// when `scsiHardware` is set to `virtio-scsi-single`. A change requires
+	// a VM power cycle (or reboot via the Proxmox API) to take effect.
+	Queues *int `pulumi:"queues"`
 	// Whether the drive should be considered for replication jobs (defaults to `true`).
 	Replicate *bool `pulumi:"replicate"`
 	// The serial number of the disk, up to 20 bytes long.
@@ -7877,6 +7901,11 @@ type VmLegacyDiskArgs struct {
 	// or (as root only) host's filesystem paths (`datastoreId` empty string).
 	// See "*Example: Attached disks*".
 	PathInDatastore pulumi.StringPtrInput `pulumi:"pathInDatastore"`
+	// The number of I/O queues for this disk, `2` or
+	// greater. Only supported for SCSI disks, and applied by Proxmox only
+	// when `scsiHardware` is set to `virtio-scsi-single`. A change requires
+	// a VM power cycle (or reboot via the Proxmox API) to take effect.
+	Queues pulumi.IntPtrInput `pulumi:"queues"`
 	// Whether the drive should be considered for replication jobs (defaults to `true`).
 	Replicate pulumi.BoolPtrInput `pulumi:"replicate"`
 	// The serial number of the disk, up to 20 bytes long.
@@ -8013,6 +8042,14 @@ func (o VmLegacyDiskOutput) Iothread() pulumi.BoolPtrOutput {
 // See "*Example: Attached disks*".
 func (o VmLegacyDiskOutput) PathInDatastore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmLegacyDisk) *string { return v.PathInDatastore }).(pulumi.StringPtrOutput)
+}
+
+// The number of I/O queues for this disk, `2` or
+// greater. Only supported for SCSI disks, and applied by Proxmox only
+// when `scsiHardware` is set to `virtio-scsi-single`. A change requires
+// a VM power cycle (or reboot via the Proxmox API) to take effect.
+func (o VmLegacyDiskOutput) Queues() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmLegacyDisk) *int { return v.Queues }).(pulumi.IntPtrOutput)
 }
 
 // Whether the drive should be considered for replication jobs (defaults to `true`).

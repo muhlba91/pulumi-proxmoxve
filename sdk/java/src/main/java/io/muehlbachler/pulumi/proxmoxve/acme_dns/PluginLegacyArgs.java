@@ -50,6 +50,38 @@ public final class PluginLegacyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * DNS plugin data, supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so credentials are never stored in Terraform state. Requires Terraform 1.11+. Mutually exclusive with &lt;span pulumi-lang-nodejs=&#34;`data`&#34; pulumi-lang-dotnet=&#34;`Data`&#34; pulumi-lang-go=&#34;`data`&#34; pulumi-lang-python=&#34;`data`&#34; pulumi-lang-yaml=&#34;`data`&#34; pulumi-lang-java=&#34;`data`&#34; pulumi-lang-hcl=&#34;`data`&#34;&gt;`data`&lt;/span&gt;. Pair with &lt;span pulumi-lang-nodejs=&#34;`dataWoVersion`&#34; pulumi-lang-dotnet=&#34;`DataWoVersion`&#34; pulumi-lang-go=&#34;`dataWoVersion`&#34; pulumi-lang-python=&#34;`data_wo_version`&#34; pulumi-lang-yaml=&#34;`dataWoVersion`&#34; pulumi-lang-java=&#34;`dataWoVersion`&#34; pulumi-lang-hcl=&#34;`data_wo_version`&#34;&gt;`dataWoVersion`&lt;/span&gt; to push rotated values.
+     * 
+     */
+    @Import(name="dataWo")
+    private @Nullable Output<Map<String,String>> dataWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * DNS plugin data, supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so credentials are never stored in Terraform state. Requires Terraform 1.11+. Mutually exclusive with &lt;span pulumi-lang-nodejs=&#34;`data`&#34; pulumi-lang-dotnet=&#34;`Data`&#34; pulumi-lang-go=&#34;`data`&#34; pulumi-lang-python=&#34;`data`&#34; pulumi-lang-yaml=&#34;`data`&#34; pulumi-lang-java=&#34;`data`&#34; pulumi-lang-hcl=&#34;`data`&#34;&gt;`data`&lt;/span&gt;. Pair with &lt;span pulumi-lang-nodejs=&#34;`dataWoVersion`&#34; pulumi-lang-dotnet=&#34;`DataWoVersion`&#34; pulumi-lang-go=&#34;`dataWoVersion`&#34; pulumi-lang-python=&#34;`data_wo_version`&#34; pulumi-lang-yaml=&#34;`dataWoVersion`&#34; pulumi-lang-java=&#34;`dataWoVersion`&#34; pulumi-lang-hcl=&#34;`data_wo_version`&#34;&gt;`dataWoVersion`&lt;/span&gt; to push rotated values.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> dataWo() {
+        return Optional.ofNullable(this.dataWo);
+    }
+
+    /**
+     * Version counter for &lt;span pulumi-lang-nodejs=&#34;`dataWo`&#34; pulumi-lang-dotnet=&#34;`DataWo`&#34; pulumi-lang-go=&#34;`dataWo`&#34; pulumi-lang-python=&#34;`data_wo`&#34; pulumi-lang-yaml=&#34;`dataWo`&#34; pulumi-lang-java=&#34;`dataWo`&#34; pulumi-lang-hcl=&#34;`data_wo`&#34;&gt;`dataWo`&lt;/span&gt;. Because write-only values are not stored in state, Terraform cannot detect when &lt;span pulumi-lang-nodejs=&#34;`dataWo`&#34; pulumi-lang-dotnet=&#34;`DataWo`&#34; pulumi-lang-go=&#34;`dataWo`&#34; pulumi-lang-python=&#34;`data_wo`&#34; pulumi-lang-yaml=&#34;`dataWo`&#34; pulumi-lang-java=&#34;`dataWo`&#34; pulumi-lang-hcl=&#34;`data_wo`&#34;&gt;`dataWo`&lt;/span&gt; changes; increment this value to signal a rotation and force the new &lt;span pulumi-lang-nodejs=&#34;`dataWo`&#34; pulumi-lang-dotnet=&#34;`DataWo`&#34; pulumi-lang-go=&#34;`dataWo`&#34; pulumi-lang-python=&#34;`data_wo`&#34; pulumi-lang-yaml=&#34;`dataWo`&#34; pulumi-lang-java=&#34;`dataWo`&#34; pulumi-lang-hcl=&#34;`data_wo`&#34;&gt;`dataWo`&lt;/span&gt; to be sent.
+     * 
+     */
+    @Import(name="dataWoVersion")
+    private @Nullable Output<Integer> dataWoVersion;
+
+    /**
+     * @return Version counter for &lt;span pulumi-lang-nodejs=&#34;`dataWo`&#34; pulumi-lang-dotnet=&#34;`DataWo`&#34; pulumi-lang-go=&#34;`dataWo`&#34; pulumi-lang-python=&#34;`data_wo`&#34; pulumi-lang-yaml=&#34;`dataWo`&#34; pulumi-lang-java=&#34;`dataWo`&#34; pulumi-lang-hcl=&#34;`data_wo`&#34;&gt;`dataWo`&lt;/span&gt;. Because write-only values are not stored in state, Terraform cannot detect when &lt;span pulumi-lang-nodejs=&#34;`dataWo`&#34; pulumi-lang-dotnet=&#34;`DataWo`&#34; pulumi-lang-go=&#34;`dataWo`&#34; pulumi-lang-python=&#34;`data_wo`&#34; pulumi-lang-yaml=&#34;`dataWo`&#34; pulumi-lang-java=&#34;`dataWo`&#34; pulumi-lang-hcl=&#34;`data_wo`&#34;&gt;`dataWo`&lt;/span&gt; changes; increment this value to signal a rotation and force the new &lt;span pulumi-lang-nodejs=&#34;`dataWo`&#34; pulumi-lang-dotnet=&#34;`DataWo`&#34; pulumi-lang-go=&#34;`dataWo`&#34; pulumi-lang-python=&#34;`data_wo`&#34; pulumi-lang-yaml=&#34;`dataWo`&#34; pulumi-lang-java=&#34;`dataWo`&#34; pulumi-lang-hcl=&#34;`data_wo`&#34;&gt;`dataWo`&lt;/span&gt; to be sent.
+     * 
+     */
+    public Optional<Output<Integer>> dataWoVersion() {
+        return Optional.ofNullable(this.dataWoVersion);
+    }
+
+    /**
      * SHA1 digest of the current configuration. Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
      * 
      */
@@ -80,14 +112,14 @@ public final class PluginLegacyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ACME Plugin ID name.
+     * ACME plugin ID name.
      * 
      */
     @Import(name="plugin", required=true)
     private Output<String> plugin;
 
     /**
-     * @return ACME Plugin ID name.
+     * @return ACME plugin ID name.
      * 
      */
     public Output<String> plugin() {
@@ -114,6 +146,8 @@ public final class PluginLegacyArgs extends com.pulumi.resources.ResourceArgs {
     private PluginLegacyArgs(PluginLegacyArgs $) {
         this.api = $.api;
         this.data = $.data;
+        this.dataWo = $.dataWo;
+        this.dataWoVersion = $.dataWoVersion;
         this.digest = $.digest;
         this.disable = $.disable;
         this.plugin = $.plugin;
@@ -181,6 +215,50 @@ public final class PluginLegacyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param dataWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * DNS plugin data, supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so credentials are never stored in Terraform state. Requires Terraform 1.11+. Mutually exclusive with &lt;span pulumi-lang-nodejs=&#34;`data`&#34; pulumi-lang-dotnet=&#34;`Data`&#34; pulumi-lang-go=&#34;`data`&#34; pulumi-lang-python=&#34;`data`&#34; pulumi-lang-yaml=&#34;`data`&#34; pulumi-lang-java=&#34;`data`&#34; pulumi-lang-hcl=&#34;`data`&#34;&gt;`data`&lt;/span&gt;. Pair with &lt;span pulumi-lang-nodejs=&#34;`dataWoVersion`&#34; pulumi-lang-dotnet=&#34;`DataWoVersion`&#34; pulumi-lang-go=&#34;`dataWoVersion`&#34; pulumi-lang-python=&#34;`data_wo_version`&#34; pulumi-lang-yaml=&#34;`dataWoVersion`&#34; pulumi-lang-java=&#34;`dataWoVersion`&#34; pulumi-lang-hcl=&#34;`data_wo_version`&#34;&gt;`dataWoVersion`&lt;/span&gt; to push rotated values.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataWo(@Nullable Output<Map<String,String>> dataWo) {
+            $.dataWo = dataWo;
+            return this;
+        }
+
+        /**
+         * @param dataWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * DNS plugin data, supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so credentials are never stored in Terraform state. Requires Terraform 1.11+. Mutually exclusive with &lt;span pulumi-lang-nodejs=&#34;`data`&#34; pulumi-lang-dotnet=&#34;`Data`&#34; pulumi-lang-go=&#34;`data`&#34; pulumi-lang-python=&#34;`data`&#34; pulumi-lang-yaml=&#34;`data`&#34; pulumi-lang-java=&#34;`data`&#34; pulumi-lang-hcl=&#34;`data`&#34;&gt;`data`&lt;/span&gt;. Pair with &lt;span pulumi-lang-nodejs=&#34;`dataWoVersion`&#34; pulumi-lang-dotnet=&#34;`DataWoVersion`&#34; pulumi-lang-go=&#34;`dataWoVersion`&#34; pulumi-lang-python=&#34;`data_wo_version`&#34; pulumi-lang-yaml=&#34;`dataWoVersion`&#34; pulumi-lang-java=&#34;`dataWoVersion`&#34; pulumi-lang-hcl=&#34;`data_wo_version`&#34;&gt;`dataWoVersion`&lt;/span&gt; to push rotated values.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataWo(Map<String,String> dataWo) {
+            return dataWo(Output.of(dataWo));
+        }
+
+        /**
+         * @param dataWoVersion Version counter for &lt;span pulumi-lang-nodejs=&#34;`dataWo`&#34; pulumi-lang-dotnet=&#34;`DataWo`&#34; pulumi-lang-go=&#34;`dataWo`&#34; pulumi-lang-python=&#34;`data_wo`&#34; pulumi-lang-yaml=&#34;`dataWo`&#34; pulumi-lang-java=&#34;`dataWo`&#34; pulumi-lang-hcl=&#34;`data_wo`&#34;&gt;`dataWo`&lt;/span&gt;. Because write-only values are not stored in state, Terraform cannot detect when &lt;span pulumi-lang-nodejs=&#34;`dataWo`&#34; pulumi-lang-dotnet=&#34;`DataWo`&#34; pulumi-lang-go=&#34;`dataWo`&#34; pulumi-lang-python=&#34;`data_wo`&#34; pulumi-lang-yaml=&#34;`dataWo`&#34; pulumi-lang-java=&#34;`dataWo`&#34; pulumi-lang-hcl=&#34;`data_wo`&#34;&gt;`dataWo`&lt;/span&gt; changes; increment this value to signal a rotation and force the new &lt;span pulumi-lang-nodejs=&#34;`dataWo`&#34; pulumi-lang-dotnet=&#34;`DataWo`&#34; pulumi-lang-go=&#34;`dataWo`&#34; pulumi-lang-python=&#34;`data_wo`&#34; pulumi-lang-yaml=&#34;`dataWo`&#34; pulumi-lang-java=&#34;`dataWo`&#34; pulumi-lang-hcl=&#34;`data_wo`&#34;&gt;`dataWo`&lt;/span&gt; to be sent.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataWoVersion(@Nullable Output<Integer> dataWoVersion) {
+            $.dataWoVersion = dataWoVersion;
+            return this;
+        }
+
+        /**
+         * @param dataWoVersion Version counter for &lt;span pulumi-lang-nodejs=&#34;`dataWo`&#34; pulumi-lang-dotnet=&#34;`DataWo`&#34; pulumi-lang-go=&#34;`dataWo`&#34; pulumi-lang-python=&#34;`data_wo`&#34; pulumi-lang-yaml=&#34;`dataWo`&#34; pulumi-lang-java=&#34;`dataWo`&#34; pulumi-lang-hcl=&#34;`data_wo`&#34;&gt;`dataWo`&lt;/span&gt;. Because write-only values are not stored in state, Terraform cannot detect when &lt;span pulumi-lang-nodejs=&#34;`dataWo`&#34; pulumi-lang-dotnet=&#34;`DataWo`&#34; pulumi-lang-go=&#34;`dataWo`&#34; pulumi-lang-python=&#34;`data_wo`&#34; pulumi-lang-yaml=&#34;`dataWo`&#34; pulumi-lang-java=&#34;`dataWo`&#34; pulumi-lang-hcl=&#34;`data_wo`&#34;&gt;`dataWo`&lt;/span&gt; changes; increment this value to signal a rotation and force the new &lt;span pulumi-lang-nodejs=&#34;`dataWo`&#34; pulumi-lang-dotnet=&#34;`DataWo`&#34; pulumi-lang-go=&#34;`dataWo`&#34; pulumi-lang-python=&#34;`data_wo`&#34; pulumi-lang-yaml=&#34;`dataWo`&#34; pulumi-lang-java=&#34;`dataWo`&#34; pulumi-lang-hcl=&#34;`data_wo`&#34;&gt;`dataWo`&lt;/span&gt; to be sent.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dataWoVersion(Integer dataWoVersion) {
+            return dataWoVersion(Output.of(dataWoVersion));
+        }
+
+        /**
          * @param digest SHA1 digest of the current configuration. Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
          * 
          * @return builder
@@ -223,7 +301,7 @@ public final class PluginLegacyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param plugin ACME Plugin ID name.
+         * @param plugin ACME plugin ID name.
          * 
          * @return builder
          * 
@@ -234,7 +312,7 @@ public final class PluginLegacyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param plugin ACME Plugin ID name.
+         * @param plugin ACME plugin ID name.
          * 
          * @return builder
          * 

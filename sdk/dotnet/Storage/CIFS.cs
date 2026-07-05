@@ -76,6 +76,18 @@ namespace Pulumi.ProxmoxVE.Storage
         public Output<ImmutableArray<string>> Contents { get; private set; } = null!;
 
         /// <summary>
+        /// Create the base directory if it doesn't exist.
+        /// </summary>
+        [Output("createBasePath")]
+        public Output<bool> CreateBasePath { get; private set; } = null!;
+
+        /// <summary>
+        /// Populate the directory with the default structure.
+        /// </summary>
+        [Output("createSubdirs")]
+        public Output<bool> CreateSubdirs { get; private set; } = null!;
+
+        /// <summary>
         /// Whether the storage is disabled.
         /// </summary>
         [Output("disable")]
@@ -92,6 +104,12 @@ namespace Pulumi.ProxmoxVE.Storage
         /// </summary>
         [Output("nodes")]
         public Output<ImmutableArray<string>> Nodes { get; private set; } = null!;
+
+        /// <summary>
+        /// The mount options for the SMB/CIFS share (see 'man mount.cifs').
+        /// </summary>
+        [Output("options")]
+        public Output<string?> Options { get; private set; } = null!;
 
         /// <summary>
         /// The password for authenticating with the SMB/CIFS server.
@@ -221,6 +239,18 @@ namespace Pulumi.ProxmoxVE.Storage
         }
 
         /// <summary>
+        /// Create the base directory if it doesn't exist.
+        /// </summary>
+        [Input("createBasePath")]
+        public Input<bool>? CreateBasePath { get; set; }
+
+        /// <summary>
+        /// Populate the directory with the default structure.
+        /// </summary>
+        [Input("createSubdirs")]
+        public Input<bool>? CreateSubdirs { get; set; }
+
+        /// <summary>
         /// Whether the storage is disabled.
         /// </summary>
         [Input("disable")]
@@ -243,6 +273,12 @@ namespace Pulumi.ProxmoxVE.Storage
             get => _nodes ?? (_nodes = new InputList<string>());
             set => _nodes = value;
         }
+
+        /// <summary>
+        /// The mount options for the SMB/CIFS share (see 'man mount.cifs').
+        /// </summary>
+        [Input("options")]
+        public Input<string>? Options { get; set; }
 
         [Input("password", required: true)]
         private Input<string>? _password;
@@ -329,6 +365,18 @@ namespace Pulumi.ProxmoxVE.Storage
         }
 
         /// <summary>
+        /// Create the base directory if it doesn't exist.
+        /// </summary>
+        [Input("createBasePath")]
+        public Input<bool>? CreateBasePath { get; set; }
+
+        /// <summary>
+        /// Populate the directory with the default structure.
+        /// </summary>
+        [Input("createSubdirs")]
+        public Input<bool>? CreateSubdirs { get; set; }
+
+        /// <summary>
         /// Whether the storage is disabled.
         /// </summary>
         [Input("disable")]
@@ -351,6 +399,12 @@ namespace Pulumi.ProxmoxVE.Storage
             get => _nodes ?? (_nodes = new InputList<string>());
             set => _nodes = value;
         }
+
+        /// <summary>
+        /// The mount options for the SMB/CIFS share (see 'man mount.cifs').
+        /// </summary>
+        [Input("options")]
+        public Input<string>? Options { get; set; }
 
         [Input("password")]
         private Input<string>? _password;

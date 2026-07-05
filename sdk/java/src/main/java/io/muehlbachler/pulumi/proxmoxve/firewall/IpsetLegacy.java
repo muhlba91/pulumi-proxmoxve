@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  * 
  * ### Cluster IPSet
  * Use the import ID: `cluster/&lt;ipset_name&gt;`
- * Example uses ipset name &lt;span pulumi-lang-nodejs=&#34;`localNetwork`&#34; pulumi-lang-dotnet=&#34;`LocalNetwork`&#34; pulumi-lang-go=&#34;`localNetwork`&#34; pulumi-lang-python=&#34;`local_network`&#34; pulumi-lang-yaml=&#34;`localNetwork`&#34; pulumi-lang-java=&#34;`localNetwork`&#34;&gt;`localNetwork`&lt;/span&gt;.
+ * Example uses ipset name &lt;span pulumi-lang-nodejs=&#34;`localNetwork`&#34; pulumi-lang-dotnet=&#34;`LocalNetwork`&#34; pulumi-lang-go=&#34;`localNetwork`&#34; pulumi-lang-python=&#34;`local_network`&#34; pulumi-lang-yaml=&#34;`localNetwork`&#34; pulumi-lang-java=&#34;`localNetwork`&#34; pulumi-lang-hcl=&#34;`local_network`&#34;&gt;`localNetwork`&lt;/span&gt;.
  * 
  * **Example:**
  * ```sh
@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  * 
  * ### VM IPSet
  * Use the import ID format: `vm/&lt;node_name&gt;/&lt;vm_id&gt;/&lt;ipset_name&gt;`
- * Example uses node name &lt;span pulumi-lang-nodejs=&#34;`pve`&#34; pulumi-lang-dotnet=&#34;`Pve`&#34; pulumi-lang-go=&#34;`pve`&#34; pulumi-lang-python=&#34;`pve`&#34; pulumi-lang-yaml=&#34;`pve`&#34; pulumi-lang-java=&#34;`pve`&#34;&gt;`pve`&lt;/span&gt; and VM ID &lt;span pulumi-lang-nodejs=&#34;`100`&#34; pulumi-lang-dotnet=&#34;`100`&#34; pulumi-lang-go=&#34;`100`&#34; pulumi-lang-python=&#34;`100`&#34; pulumi-lang-yaml=&#34;`100`&#34; pulumi-lang-java=&#34;`100`&#34;&gt;`100`&lt;/span&gt; and ipset name &lt;span pulumi-lang-nodejs=&#34;`localNetwork`&#34; pulumi-lang-dotnet=&#34;`LocalNetwork`&#34; pulumi-lang-go=&#34;`localNetwork`&#34; pulumi-lang-python=&#34;`local_network`&#34; pulumi-lang-yaml=&#34;`localNetwork`&#34; pulumi-lang-java=&#34;`localNetwork`&#34;&gt;`localNetwork`&lt;/span&gt;.
+ * Example uses node name &lt;span pulumi-lang-nodejs=&#34;`pve`&#34; pulumi-lang-dotnet=&#34;`Pve`&#34; pulumi-lang-go=&#34;`pve`&#34; pulumi-lang-python=&#34;`pve`&#34; pulumi-lang-yaml=&#34;`pve`&#34; pulumi-lang-java=&#34;`pve`&#34; pulumi-lang-hcl=&#34;`pve`&#34;&gt;`pve`&lt;/span&gt; and VM ID &lt;span pulumi-lang-nodejs=&#34;`100`&#34; pulumi-lang-dotnet=&#34;`100`&#34; pulumi-lang-go=&#34;`100`&#34; pulumi-lang-python=&#34;`100`&#34; pulumi-lang-yaml=&#34;`100`&#34; pulumi-lang-java=&#34;`100`&#34; pulumi-lang-hcl=&#34;`100`&#34;&gt;`100`&lt;/span&gt; and ipset name &lt;span pulumi-lang-nodejs=&#34;`localNetwork`&#34; pulumi-lang-dotnet=&#34;`LocalNetwork`&#34; pulumi-lang-go=&#34;`localNetwork`&#34; pulumi-lang-python=&#34;`local_network`&#34; pulumi-lang-yaml=&#34;`localNetwork`&#34; pulumi-lang-java=&#34;`localNetwork`&#34; pulumi-lang-hcl=&#34;`local_network`&#34;&gt;`localNetwork`&lt;/span&gt;.
  * 
  * **Example:**
  * ```sh
@@ -99,7 +99,7 @@ import javax.annotation.Nullable;
  * 
  * ### Container IPSet
  * Use the import ID format: `container/&lt;node_name&gt;/&lt;container_id&gt;/&lt;ipset_name&gt;`
- * Example uses node name &lt;span pulumi-lang-nodejs=&#34;`pve`&#34; pulumi-lang-dotnet=&#34;`Pve`&#34; pulumi-lang-go=&#34;`pve`&#34; pulumi-lang-python=&#34;`pve`&#34; pulumi-lang-yaml=&#34;`pve`&#34; pulumi-lang-java=&#34;`pve`&#34;&gt;`pve`&lt;/span&gt; and container ID &lt;span pulumi-lang-nodejs=&#34;`100`&#34; pulumi-lang-dotnet=&#34;`100`&#34; pulumi-lang-go=&#34;`100`&#34; pulumi-lang-python=&#34;`100`&#34; pulumi-lang-yaml=&#34;`100`&#34; pulumi-lang-java=&#34;`100`&#34;&gt;`100`&lt;/span&gt; and ipset name &lt;span pulumi-lang-nodejs=&#34;`localNetwork`&#34; pulumi-lang-dotnet=&#34;`LocalNetwork`&#34; pulumi-lang-go=&#34;`localNetwork`&#34; pulumi-lang-python=&#34;`local_network`&#34; pulumi-lang-yaml=&#34;`localNetwork`&#34; pulumi-lang-java=&#34;`localNetwork`&#34;&gt;`localNetwork`&lt;/span&gt;.
+ * Example uses node name &lt;span pulumi-lang-nodejs=&#34;`pve`&#34; pulumi-lang-dotnet=&#34;`Pve`&#34; pulumi-lang-go=&#34;`pve`&#34; pulumi-lang-python=&#34;`pve`&#34; pulumi-lang-yaml=&#34;`pve`&#34; pulumi-lang-java=&#34;`pve`&#34; pulumi-lang-hcl=&#34;`pve`&#34;&gt;`pve`&lt;/span&gt; and container ID &lt;span pulumi-lang-nodejs=&#34;`100`&#34; pulumi-lang-dotnet=&#34;`100`&#34; pulumi-lang-go=&#34;`100`&#34; pulumi-lang-python=&#34;`100`&#34; pulumi-lang-yaml=&#34;`100`&#34; pulumi-lang-java=&#34;`100`&#34; pulumi-lang-hcl=&#34;`100`&#34;&gt;`100`&lt;/span&gt; and ipset name &lt;span pulumi-lang-nodejs=&#34;`localNetwork`&#34; pulumi-lang-dotnet=&#34;`LocalNetwork`&#34; pulumi-lang-go=&#34;`localNetwork`&#34; pulumi-lang-python=&#34;`local_network`&#34; pulumi-lang-yaml=&#34;`localNetwork`&#34; pulumi-lang-java=&#34;`localNetwork`&#34; pulumi-lang-hcl=&#34;`local_network`&#34;&gt;`localNetwork`&lt;/span&gt;.
  * 
  * **Example:**
  * ```sh

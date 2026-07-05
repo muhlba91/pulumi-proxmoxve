@@ -28,10 +28,14 @@ class GroupLegacyArgs:
         The set of arguments for constructing a GroupLegacy resource.
 
         :param pulumi.Input[_builtins.str] group_id: The group identifier.
-        :param pulumi.Input[Sequence[pulumi.Input['GroupLegacyAclArgs']]] acls: The access control list (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input['GroupLegacyAclArgs']]] acls: The access control list (multiple blocks supported). Use
+               `Acl` instead.
         :param pulumi.Input[_builtins.str] comment: The group comment.
         """
         pulumi.set(__self__, "group_id", group_id)
+        if acls is not None:
+            warnings.warn("""Manage ACLs via the dedicated `Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `Acl`.""", DeprecationWarning)
+            pulumi.log.warn("""acls is deprecated: Manage ACLs via the dedicated `Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `Acl`.""")
         if acls is not None:
             pulumi.set(__self__, "acls", acls)
         if comment is not None:
@@ -51,9 +55,11 @@ class GroupLegacyArgs:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Manage ACLs via the dedicated `Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `Acl`.""")
     def acls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GroupLegacyAclArgs']]]]:
         """
-        The access control list (multiple blocks supported).
+        The access control list (multiple blocks supported). Use
+        `Acl` instead.
         """
         return pulumi.get(self, "acls")
 
@@ -84,11 +90,15 @@ class _GroupLegacyState:
         """
         Input properties used for looking up and filtering GroupLegacy resources.
 
-        :param pulumi.Input[Sequence[pulumi.Input['GroupLegacyAclArgs']]] acls: The access control list (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input['GroupLegacyAclArgs']]] acls: The access control list (multiple blocks supported). Use
+               `Acl` instead.
         :param pulumi.Input[_builtins.str] comment: The group comment.
         :param pulumi.Input[_builtins.str] group_id: The group identifier.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: The group members as a list of `username@realm` entries
         """
+        if acls is not None:
+            warnings.warn("""Manage ACLs via the dedicated `Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `Acl`.""", DeprecationWarning)
+            pulumi.log.warn("""acls is deprecated: Manage ACLs via the dedicated `Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `Acl`.""")
         if acls is not None:
             pulumi.set(__self__, "acls", acls)
         if comment is not None:
@@ -100,9 +110,11 @@ class _GroupLegacyState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Manage ACLs via the dedicated `Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `Acl`.""")
     def acls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GroupLegacyAclArgs']]]]:
         """
-        The access control list (multiple blocks supported).
+        The access control list (multiple blocks supported). Use
+        `Acl` instead.
         """
         return pulumi.get(self, "acls")
 
@@ -160,6 +172,11 @@ class GroupLegacy(pulumi.CustomResource):
         """
         Manages a user group.
 
+        > **Deprecation:** the inline `acl` block is deprecated. Manage group ACLs via the dedicated
+        `Acl` resource instead. The `acl` block is no longer auto-populated from a
+        cluster-wide fetch on refresh or import; existing configurations using `acl` blocks continue
+        to work, but new code should use `Acl`.
+
         ## Example Usage
 
         ```python
@@ -182,7 +199,8 @@ class GroupLegacy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupLegacyAclArgs', 'GroupLegacyAclArgsDict']]]] acls: The access control list (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupLegacyAclArgs', 'GroupLegacyAclArgsDict']]]] acls: The access control list (multiple blocks supported). Use
+               `Acl` instead.
         :param pulumi.Input[_builtins.str] comment: The group comment.
         :param pulumi.Input[_builtins.str] group_id: The group identifier.
         """
@@ -194,6 +212,11 @@ class GroupLegacy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages a user group.
+
+        > **Deprecation:** the inline `acl` block is deprecated. Manage group ACLs via the dedicated
+        `Acl` resource instead. The `acl` block is no longer auto-populated from a
+        cluster-wide fetch on refresh or import; existing configurations using `acl` blocks continue
+        to work, but new code should use `Acl`.
 
         ## Example Usage
 
@@ -269,7 +292,8 @@ class GroupLegacy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupLegacyAclArgs', 'GroupLegacyAclArgsDict']]]] acls: The access control list (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['GroupLegacyAclArgs', 'GroupLegacyAclArgsDict']]]] acls: The access control list (multiple blocks supported). Use
+               `Acl` instead.
         :param pulumi.Input[_builtins.str] comment: The group comment.
         :param pulumi.Input[_builtins.str] group_id: The group identifier.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: The group members as a list of `username@realm` entries
@@ -286,9 +310,11 @@ class GroupLegacy(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Manage ACLs via the dedicated `Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `Acl`.""")
     def acls(self) -> pulumi.Output[Optional[Sequence['outputs.GroupLegacyAcl']]]:
         """
-        The access control list (multiple blocks supported).
+        The access control list (multiple blocks supported). Use
+        `Acl` instead.
         """
         return pulumi.get(self, "acls")
 

@@ -18,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Replication`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Replication`&#34; pulumi-lang-go=&#34;`Replication`&#34; pulumi-lang-python=&#34;`Replication`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Replication`&#34; pulumi-lang-java=&#34;`proxmoxve.Replication`&#34;&gt;`proxmoxve.Replication`&lt;/span&gt; instead. This resource will be removed in v1.0.
+ * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.Replication`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.Replication`&#34; pulumi-lang-go=&#34;`Replication`&#34; pulumi-lang-python=&#34;`Replication`&#34; pulumi-lang-yaml=&#34;`proxmoxve.Replication`&#34; pulumi-lang-java=&#34;`proxmoxve.Replication`&#34; pulumi-lang-hcl=&#34;`proxmox_replication`&#34;&gt;`proxmoxve.Replication`&lt;/span&gt; instead. This resource will be removed in v1.0.
  * 
  * Manages Proxmox VE Replication.
  * 
@@ -151,14 +151,14 @@ public class ReplicationLegacy extends com.pulumi.resources.CustomResource {
         return this.resourceId;
     }
     /**
-     * Storage replication schedule. The format is a subset of &lt;span pulumi-lang-nodejs=&#34;`systemd`&#34; pulumi-lang-dotnet=&#34;`Systemd`&#34; pulumi-lang-go=&#34;`systemd`&#34; pulumi-lang-python=&#34;`systemd`&#34; pulumi-lang-yaml=&#34;`systemd`&#34; pulumi-lang-java=&#34;`systemd`&#34;&gt;`systemd`&lt;/span&gt; calendar events. Defaults to *&#47;15
+     * Storage replication schedule. The format is a subset of &lt;span pulumi-lang-nodejs=&#34;`systemd`&#34; pulumi-lang-dotnet=&#34;`Systemd`&#34; pulumi-lang-go=&#34;`systemd`&#34; pulumi-lang-python=&#34;`systemd`&#34; pulumi-lang-yaml=&#34;`systemd`&#34; pulumi-lang-java=&#34;`systemd`&#34; pulumi-lang-hcl=&#34;`systemd`&#34;&gt;`systemd`&lt;/span&gt; calendar events. Defaults to *&#47;15
      * 
      */
     @Export(name="schedule", refs={String.class}, tree="[0]")
     private Output<String> schedule;
 
     /**
-     * @return Storage replication schedule. The format is a subset of &lt;span pulumi-lang-nodejs=&#34;`systemd`&#34; pulumi-lang-dotnet=&#34;`Systemd`&#34; pulumi-lang-go=&#34;`systemd`&#34; pulumi-lang-python=&#34;`systemd`&#34; pulumi-lang-yaml=&#34;`systemd`&#34; pulumi-lang-java=&#34;`systemd`&#34;&gt;`systemd`&lt;/span&gt; calendar events. Defaults to *&#47;15
+     * @return Storage replication schedule. The format is a subset of &lt;span pulumi-lang-nodejs=&#34;`systemd`&#34; pulumi-lang-dotnet=&#34;`Systemd`&#34; pulumi-lang-go=&#34;`systemd`&#34; pulumi-lang-python=&#34;`systemd`&#34; pulumi-lang-yaml=&#34;`systemd`&#34; pulumi-lang-java=&#34;`systemd`&#34; pulumi-lang-hcl=&#34;`systemd`&#34;&gt;`systemd`&lt;/span&gt; calendar events. Defaults to *&#47;15
      * 
      */
     public Output<String> schedule() {

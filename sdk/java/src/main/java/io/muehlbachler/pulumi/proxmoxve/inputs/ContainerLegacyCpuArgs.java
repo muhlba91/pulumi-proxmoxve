@@ -18,14 +18,14 @@ public final class ContainerLegacyCpuArgs extends com.pulumi.resources.ResourceA
     public static final ContainerLegacyCpuArgs Empty = new ContainerLegacyCpuArgs();
 
     /**
-     * The CPU architecture (defaults to &lt;span pulumi-lang-nodejs=&#34;`amd64`&#34; pulumi-lang-dotnet=&#34;`Amd64`&#34; pulumi-lang-go=&#34;`amd64`&#34; pulumi-lang-python=&#34;`amd64`&#34; pulumi-lang-yaml=&#34;`amd64`&#34; pulumi-lang-java=&#34;`amd64`&#34;&gt;`amd64`&lt;/span&gt;).
+     * The CPU architecture (defaults to &lt;span pulumi-lang-nodejs=&#34;`amd64`&#34; pulumi-lang-dotnet=&#34;`Amd64`&#34; pulumi-lang-go=&#34;`amd64`&#34; pulumi-lang-python=&#34;`amd64`&#34; pulumi-lang-yaml=&#34;`amd64`&#34; pulumi-lang-java=&#34;`amd64`&#34; pulumi-lang-hcl=&#34;`amd64`&#34;&gt;`amd64`&lt;/span&gt;).
      * 
      */
     @Import(name="architecture")
     private @Nullable Output<String> architecture;
 
     /**
-     * @return The CPU architecture (defaults to &lt;span pulumi-lang-nodejs=&#34;`amd64`&#34; pulumi-lang-dotnet=&#34;`Amd64`&#34; pulumi-lang-go=&#34;`amd64`&#34; pulumi-lang-python=&#34;`amd64`&#34; pulumi-lang-yaml=&#34;`amd64`&#34; pulumi-lang-java=&#34;`amd64`&#34;&gt;`amd64`&lt;/span&gt;).
+     * @return The CPU architecture (defaults to &lt;span pulumi-lang-nodejs=&#34;`amd64`&#34; pulumi-lang-dotnet=&#34;`Amd64`&#34; pulumi-lang-go=&#34;`amd64`&#34; pulumi-lang-python=&#34;`amd64`&#34; pulumi-lang-yaml=&#34;`amd64`&#34; pulumi-lang-java=&#34;`amd64`&#34; pulumi-lang-hcl=&#34;`amd64`&#34;&gt;`amd64`&lt;/span&gt;).
      * 
      */
     public Optional<Output<String>> architecture() {
@@ -33,14 +33,14 @@ public final class ContainerLegacyCpuArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The number of CPU cores (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
+     * The number of CPU cores (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34; pulumi-lang-hcl=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
      * 
      */
     @Import(name="cores")
     private @Nullable Output<Integer> cores;
 
     /**
-     * @return The number of CPU cores (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
+     * @return The number of CPU cores (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34; pulumi-lang-hcl=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Integer>> cores() {
@@ -48,14 +48,14 @@ public final class ContainerLegacyCpuArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Limit of CPU usage. Value &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; indicates no limit (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
+     * Limit of CPU usage. Value &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt; indicates no limit (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
      * 
      */
     @Import(name="limit")
     private @Nullable Output<Double> limit;
 
     /**
-     * @return Limit of CPU usage. Value &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; indicates no limit (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
+     * @return Limit of CPU usage. Value &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt; indicates no limit (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Double>> limit() {
@@ -63,14 +63,14 @@ public final class ContainerLegacyCpuArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The CPU units (defaults to &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt;).
+     * The CPU units (defaults to &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34; pulumi-lang-hcl=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt;).
      * 
      */
     @Import(name="units")
     private @Nullable Output<Integer> units;
 
     /**
-     * @return The CPU units (defaults to &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt;).
+     * @return The CPU units (defaults to &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34; pulumi-lang-hcl=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Integer>> units() {
@@ -105,7 +105,7 @@ public final class ContainerLegacyCpuArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param architecture The CPU architecture (defaults to &lt;span pulumi-lang-nodejs=&#34;`amd64`&#34; pulumi-lang-dotnet=&#34;`Amd64`&#34; pulumi-lang-go=&#34;`amd64`&#34; pulumi-lang-python=&#34;`amd64`&#34; pulumi-lang-yaml=&#34;`amd64`&#34; pulumi-lang-java=&#34;`amd64`&#34;&gt;`amd64`&lt;/span&gt;).
+         * @param architecture The CPU architecture (defaults to &lt;span pulumi-lang-nodejs=&#34;`amd64`&#34; pulumi-lang-dotnet=&#34;`Amd64`&#34; pulumi-lang-go=&#34;`amd64`&#34; pulumi-lang-python=&#34;`amd64`&#34; pulumi-lang-yaml=&#34;`amd64`&#34; pulumi-lang-java=&#34;`amd64`&#34; pulumi-lang-hcl=&#34;`amd64`&#34;&gt;`amd64`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class ContainerLegacyCpuArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param architecture The CPU architecture (defaults to &lt;span pulumi-lang-nodejs=&#34;`amd64`&#34; pulumi-lang-dotnet=&#34;`Amd64`&#34; pulumi-lang-go=&#34;`amd64`&#34; pulumi-lang-python=&#34;`amd64`&#34; pulumi-lang-yaml=&#34;`amd64`&#34; pulumi-lang-java=&#34;`amd64`&#34;&gt;`amd64`&lt;/span&gt;).
+         * @param architecture The CPU architecture (defaults to &lt;span pulumi-lang-nodejs=&#34;`amd64`&#34; pulumi-lang-dotnet=&#34;`Amd64`&#34; pulumi-lang-go=&#34;`amd64`&#34; pulumi-lang-python=&#34;`amd64`&#34; pulumi-lang-yaml=&#34;`amd64`&#34; pulumi-lang-java=&#34;`amd64`&#34; pulumi-lang-hcl=&#34;`amd64`&#34;&gt;`amd64`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -126,7 +126,7 @@ public final class ContainerLegacyCpuArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param cores The number of CPU cores (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
+         * @param cores The number of CPU cores (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34; pulumi-lang-hcl=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class ContainerLegacyCpuArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param cores The number of CPU cores (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
+         * @param cores The number of CPU cores (defaults to &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34; pulumi-lang-hcl=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class ContainerLegacyCpuArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param limit Limit of CPU usage. Value &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; indicates no limit (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
+         * @param limit Limit of CPU usage. Value &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt; indicates no limit (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -158,7 +158,7 @@ public final class ContainerLegacyCpuArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param limit Limit of CPU usage. Value &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; indicates no limit (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
+         * @param limit Limit of CPU usage. Value &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt; indicates no limit (defaults to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class ContainerLegacyCpuArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param units The CPU units (defaults to &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt;).
+         * @param units The CPU units (defaults to &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34; pulumi-lang-hcl=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class ContainerLegacyCpuArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param units The CPU units (defaults to &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt;).
+         * @param units The CPU units (defaults to &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34; pulumi-lang-hcl=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt;).
          * 
          * @return builder
          * 

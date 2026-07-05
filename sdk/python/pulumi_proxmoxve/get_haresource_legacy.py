@@ -26,10 +26,13 @@ class GetHaresourceLegacyResult:
     """
     A collection of values returned by getHaresourceLegacy.
     """
-    def __init__(__self__, comment=None, group=None, id=None, max_relocate=None, max_restart=None, resource_id=None, state=None, type=None):
+    def __init__(__self__, comment=None, failback=None, group=None, id=None, max_relocate=None, max_restart=None, resource_id=None, state=None, type=None):
         if comment and not isinstance(comment, str):
             raise TypeError("Expected argument 'comment' to be a str")
         pulumi.set(__self__, "comment", comment)
+        if failback and not isinstance(failback, bool):
+            raise TypeError("Expected argument 'failback' to be a bool")
+        pulumi.set(__self__, "failback", failback)
         if group and not isinstance(group, str):
             raise TypeError("Expected argument 'group' to be a str")
         pulumi.set(__self__, "group", group)
@@ -59,6 +62,14 @@ class GetHaresourceLegacyResult:
         The comment associated with this resource.
         """
         return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter
+    def failback(self) -> _builtins.bool:
+        """
+        Automatic failback to the preferred node when it becomes available again (PVE 9+).
+        """
+        return pulumi.get(self, "failback")
 
     @_builtins.property
     @pulumi.getter
@@ -124,6 +135,7 @@ class AwaitableGetHaresourceLegacyResult(GetHaresourceLegacyResult):
             yield self
         return GetHaresourceLegacyResult(
             comment=self.comment,
+            failback=self.failback,
             group=self.group,
             id=self.id,
             max_relocate=self.max_relocate,
@@ -163,6 +175,7 @@ def get_haresource_legacy(resource_id: Optional[_builtins.str] = None,
 
     return AwaitableGetHaresourceLegacyResult(
         comment=pulumi.get(__ret__, 'comment'),
+        failback=pulumi.get(__ret__, 'failback'),
         group=pulumi.get(__ret__, 'group'),
         id=pulumi.get(__ret__, 'id'),
         max_relocate=pulumi.get(__ret__, 'max_relocate'),
@@ -199,6 +212,7 @@ def get_haresource_legacy_output(resource_id: pulumi.Input[Optional[_builtins.st
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:index/getHaresourceLegacy:getHaresourceLegacy', __args__, opts=opts, typ=GetHaresourceLegacyResult)
     return __ret__.apply(lambda __response__: GetHaresourceLegacyResult(
         comment=pulumi.get(__response__, 'comment'),
+        failback=pulumi.get(__response__, 'failback'),
         group=pulumi.get(__response__, 'group'),
         id=pulumi.get(__response__, 'id'),
         max_relocate=pulumi.get(__response__, 'max_relocate'),

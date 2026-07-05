@@ -35,8 +35,8 @@ import javax.annotation.Nullable;
 /**
  * Manages an LXC container on a Proxmox VE node.
  * 
- * A container&#39;s root filesystem (the &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt; block) and any additional volumes
- * (&lt;span pulumi-lang-nodejs=&#34;`mountPoint`&#34; pulumi-lang-dotnet=&#34;`MountPoint`&#34; pulumi-lang-go=&#34;`mountPoint`&#34; pulumi-lang-python=&#34;`mount_point`&#34; pulumi-lang-yaml=&#34;`mountPoint`&#34; pulumi-lang-java=&#34;`mountPoint`&#34;&gt;`mountPoint`&lt;/span&gt; blocks) can be placed on any Proxmox VE storage backend —
+ * A container&#39;s root filesystem (the &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34; pulumi-lang-hcl=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt; block) and any additional volumes
+ * (&lt;span pulumi-lang-nodejs=&#34;`mountPoint`&#34; pulumi-lang-dotnet=&#34;`MountPoint`&#34; pulumi-lang-go=&#34;`mountPoint`&#34; pulumi-lang-python=&#34;`mount_point`&#34; pulumi-lang-yaml=&#34;`mountPoint`&#34; pulumi-lang-java=&#34;`mountPoint`&#34; pulumi-lang-hcl=&#34;`mount_point`&#34;&gt;`mountPoint`&lt;/span&gt; blocks) can be placed on any Proxmox VE storage backend —
  * directory, LVM, LVM-thin, ZFS, Ceph RBD, NFS, CIFS, or any other storage
  * configured on the cluster. Bind mounts of arbitrary host directories are
  * also supported. See the Storage section below for details.
@@ -66,6 +66,8 @@ import javax.annotation.Nullable;
  * import io.muehlbachler.pulumi.proxmoxve.ContainerLegacyArgs;
  * import com.pulumi.proxmoxve.inputs.ContainerLegacyFeaturesArgs;
  * import com.pulumi.proxmoxve.inputs.ContainerLegacyInitializationArgs;
+ * import com.pulumi.proxmoxve.inputs.ContainerLegacyInitializationIpConfigArgs;
+ * import com.pulumi.proxmoxve.inputs.ContainerLegacyInitializationIpConfigIpv4Args;
  * import com.pulumi.proxmoxve.inputs.ContainerLegacyInitializationUserAccountArgs;
  * import com.pulumi.proxmoxve.inputs.ContainerLegacyNetworkInterfaceArgs;
  * import com.pulumi.proxmoxve.inputs.ContainerLegacyDiskArgs;
@@ -219,29 +221,29 @@ import javax.annotation.Nullable;
  * 
  * Containers attach storage through two block types:
  * 
- * - **&lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt;** — the root filesystem (rootfs). Exactly one rootfs per
- *   container; the &lt;span pulumi-lang-nodejs=&#34;`datastoreId`&#34; pulumi-lang-dotnet=&#34;`DatastoreId`&#34; pulumi-lang-go=&#34;`datastoreId`&#34; pulumi-lang-python=&#34;`datastore_id`&#34; pulumi-lang-yaml=&#34;`datastoreId`&#34; pulumi-lang-java=&#34;`datastoreId`&#34;&gt;`datastoreId`&lt;/span&gt; argument selects the Proxmox storage pool
+ * - **&lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34; pulumi-lang-hcl=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt;** — the root filesystem (rootfs). Exactly one rootfs per
+ *   container; the &lt;span pulumi-lang-nodejs=&#34;`datastoreId`&#34; pulumi-lang-dotnet=&#34;`DatastoreId`&#34; pulumi-lang-go=&#34;`datastoreId`&#34; pulumi-lang-python=&#34;`datastore_id`&#34; pulumi-lang-yaml=&#34;`datastoreId`&#34; pulumi-lang-java=&#34;`datastoreId`&#34; pulumi-lang-hcl=&#34;`datastore_id`&#34;&gt;`datastoreId`&lt;/span&gt; argument selects the Proxmox storage pool
  *   it lives on.
- * - **&lt;span pulumi-lang-nodejs=&#34;`mountPoint`&#34; pulumi-lang-dotnet=&#34;`MountPoint`&#34; pulumi-lang-go=&#34;`mountPoint`&#34; pulumi-lang-python=&#34;`mount_point`&#34; pulumi-lang-yaml=&#34;`mountPoint`&#34; pulumi-lang-java=&#34;`mountPoint`&#34;&gt;`mountPoint`&lt;/span&gt;** — zero or more additional volumes or bind mounts,
- *   each mounted at a separate &lt;span pulumi-lang-nodejs=&#34;`path`&#34; pulumi-lang-dotnet=&#34;`Path`&#34; pulumi-lang-go=&#34;`path`&#34; pulumi-lang-python=&#34;`path`&#34; pulumi-lang-yaml=&#34;`path`&#34; pulumi-lang-java=&#34;`path`&#34;&gt;`path`&lt;/span&gt; inside the container.
+ * - **&lt;span pulumi-lang-nodejs=&#34;`mountPoint`&#34; pulumi-lang-dotnet=&#34;`MountPoint`&#34; pulumi-lang-go=&#34;`mountPoint`&#34; pulumi-lang-python=&#34;`mount_point`&#34; pulumi-lang-yaml=&#34;`mountPoint`&#34; pulumi-lang-java=&#34;`mountPoint`&#34; pulumi-lang-hcl=&#34;`mount_point`&#34;&gt;`mountPoint`&lt;/span&gt;** — zero or more additional volumes or bind mounts,
+ *   each mounted at a separate &lt;span pulumi-lang-nodejs=&#34;`path`&#34; pulumi-lang-dotnet=&#34;`Path`&#34; pulumi-lang-go=&#34;`path`&#34; pulumi-lang-python=&#34;`path`&#34; pulumi-lang-yaml=&#34;`path`&#34; pulumi-lang-java=&#34;`path`&#34; pulumi-lang-hcl=&#34;`path`&#34;&gt;`path`&lt;/span&gt; inside the container.
  * 
- * Both block types are backend-agnostic: &lt;span pulumi-lang-nodejs=&#34;`datastoreId`&#34; pulumi-lang-dotnet=&#34;`DatastoreId`&#34; pulumi-lang-go=&#34;`datastoreId`&#34; pulumi-lang-python=&#34;`datastore_id`&#34; pulumi-lang-yaml=&#34;`datastoreId`&#34; pulumi-lang-java=&#34;`datastoreId`&#34;&gt;`datastoreId`&lt;/span&gt; (on &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt;) and
- * &lt;span pulumi-lang-nodejs=&#34;`volume`&#34; pulumi-lang-dotnet=&#34;`Volume`&#34; pulumi-lang-go=&#34;`volume`&#34; pulumi-lang-python=&#34;`volume`&#34; pulumi-lang-yaml=&#34;`volume`&#34; pulumi-lang-java=&#34;`volume`&#34;&gt;`volume`&lt;/span&gt; (on &lt;span pulumi-lang-nodejs=&#34;`mountPoint`&#34; pulumi-lang-dotnet=&#34;`MountPoint`&#34; pulumi-lang-go=&#34;`mountPoint`&#34; pulumi-lang-python=&#34;`mount_point`&#34; pulumi-lang-yaml=&#34;`mountPoint`&#34; pulumi-lang-java=&#34;`mountPoint`&#34;&gt;`mountPoint`&lt;/span&gt;) accept any Proxmox storage ID, regardless of
+ * Both block types are backend-agnostic: &lt;span pulumi-lang-nodejs=&#34;`datastoreId`&#34; pulumi-lang-dotnet=&#34;`DatastoreId`&#34; pulumi-lang-go=&#34;`datastoreId`&#34; pulumi-lang-python=&#34;`datastore_id`&#34; pulumi-lang-yaml=&#34;`datastoreId`&#34; pulumi-lang-java=&#34;`datastoreId`&#34; pulumi-lang-hcl=&#34;`datastore_id`&#34;&gt;`datastoreId`&lt;/span&gt; (on &lt;span pulumi-lang-nodejs=&#34;`disk`&#34; pulumi-lang-dotnet=&#34;`Disk`&#34; pulumi-lang-go=&#34;`disk`&#34; pulumi-lang-python=&#34;`disk`&#34; pulumi-lang-yaml=&#34;`disk`&#34; pulumi-lang-java=&#34;`disk`&#34; pulumi-lang-hcl=&#34;`disk`&#34;&gt;`disk`&lt;/span&gt;) and
+ * &lt;span pulumi-lang-nodejs=&#34;`volume`&#34; pulumi-lang-dotnet=&#34;`Volume`&#34; pulumi-lang-go=&#34;`volume`&#34; pulumi-lang-python=&#34;`volume`&#34; pulumi-lang-yaml=&#34;`volume`&#34; pulumi-lang-java=&#34;`volume`&#34; pulumi-lang-hcl=&#34;`volume`&#34;&gt;`volume`&lt;/span&gt; (on &lt;span pulumi-lang-nodejs=&#34;`mountPoint`&#34; pulumi-lang-dotnet=&#34;`MountPoint`&#34; pulumi-lang-go=&#34;`mountPoint`&#34; pulumi-lang-python=&#34;`mount_point`&#34; pulumi-lang-yaml=&#34;`mountPoint`&#34; pulumi-lang-java=&#34;`mountPoint`&#34; pulumi-lang-hcl=&#34;`mount_point`&#34;&gt;`mountPoint`&lt;/span&gt;) accept any Proxmox storage ID, regardless of
  * backend type. Run `pvesm status` on the host or use the
- * &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getDatastoresLegacy`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getDatastoresLegacy`&#34; pulumi-lang-go=&#34;`getDatastoresLegacy`&#34; pulumi-lang-python=&#34;`get_datastores_legacy`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getDatastoresLegacy`&#34; pulumi-lang-java=&#34;`proxmoxve.getDatastoresLegacy`&#34;&gt;`proxmoxve.getDatastoresLegacy`&lt;/span&gt;
+ * &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.getDatastoresLegacy`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.getDatastoresLegacy`&#34; pulumi-lang-go=&#34;`getDatastoresLegacy`&#34; pulumi-lang-python=&#34;`get_datastores_legacy`&#34; pulumi-lang-yaml=&#34;`proxmoxve.getDatastoresLegacy`&#34; pulumi-lang-java=&#34;`proxmoxve.getDatastoresLegacy`&#34; pulumi-lang-hcl=&#34;`data.proxmox_virtual_environment_datastores`&#34;&gt;`proxmoxve.getDatastoresLegacy`&lt;/span&gt;
  * data source to list configured storages.
  * 
  * The `mount_point.volume` attribute accepts three forms:
  * 
  * | Form                       | Meaning                                                  | Example                            |
  * | -------------------------- | -------------------------------------------------------- | ---------------------------------- |
- * | Storage ID                 | Allocate a new volume on that storage (requires &lt;span pulumi-lang-nodejs=&#34;`size`&#34; pulumi-lang-dotnet=&#34;`Size`&#34; pulumi-lang-go=&#34;`size`&#34; pulumi-lang-python=&#34;`size`&#34; pulumi-lang-yaml=&#34;`size`&#34; pulumi-lang-java=&#34;`size`&#34;&gt;`size`&lt;/span&gt;)  | `local-lvm`, `tank-zfs`            |
+ * | Storage ID                 | Allocate a new volume on that storage (requires &lt;span pulumi-lang-nodejs=&#34;`size`&#34; pulumi-lang-dotnet=&#34;`Size`&#34; pulumi-lang-go=&#34;`size`&#34; pulumi-lang-python=&#34;`size`&#34; pulumi-lang-yaml=&#34;`size`&#34; pulumi-lang-java=&#34;`size`&#34; pulumi-lang-hcl=&#34;`size`&#34;&gt;`size`&lt;/span&gt;)  | `local-lvm`, `tank-zfs`            |
  * | Storage ID + volume name   | Mount an existing volume by its full PVE volume ID       | `local-lvm:subvol-108-disk-101`    |
  * | Absolute host path         | Bind-mount a host directory (requires `root{@literal @}pam` auth)   | `/mnt/bindmounts/shared`           |
  * 
  * ## Import
  * 
- * Instances can be imported using the &lt;span pulumi-lang-nodejs=&#34;`nodeName`&#34; pulumi-lang-dotnet=&#34;`NodeName`&#34; pulumi-lang-go=&#34;`nodeName`&#34; pulumi-lang-python=&#34;`node_name`&#34; pulumi-lang-yaml=&#34;`nodeName`&#34; pulumi-lang-java=&#34;`nodeName`&#34;&gt;`nodeName`&lt;/span&gt; and the &lt;span pulumi-lang-nodejs=&#34;`vmId`&#34; pulumi-lang-dotnet=&#34;`VmId`&#34; pulumi-lang-go=&#34;`vmId`&#34; pulumi-lang-python=&#34;`vm_id`&#34; pulumi-lang-yaml=&#34;`vmId`&#34; pulumi-lang-java=&#34;`vmId`&#34;&gt;`vmId`&lt;/span&gt;, e.g.,
+ * Instances can be imported using the &lt;span pulumi-lang-nodejs=&#34;`nodeName`&#34; pulumi-lang-dotnet=&#34;`NodeName`&#34; pulumi-lang-go=&#34;`nodeName`&#34; pulumi-lang-python=&#34;`node_name`&#34; pulumi-lang-yaml=&#34;`nodeName`&#34; pulumi-lang-java=&#34;`nodeName`&#34; pulumi-lang-hcl=&#34;`node_name`&#34;&gt;`nodeName`&lt;/span&gt; and the &lt;span pulumi-lang-nodejs=&#34;`vmId`&#34; pulumi-lang-dotnet=&#34;`VmId`&#34; pulumi-lang-go=&#34;`vmId`&#34; pulumi-lang-python=&#34;`vm_id`&#34; pulumi-lang-yaml=&#34;`vmId`&#34; pulumi-lang-java=&#34;`vmId`&#34; pulumi-lang-hcl=&#34;`vm_id`&#34;&gt;`vmId`&lt;/span&gt;, e.g.,
  * 
  * ```sh
  * $ pulumi import proxmoxve:index/containerLegacy:ContainerLegacy ubuntu_container first-node/1234
@@ -535,14 +537,14 @@ public class ContainerLegacy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.poolId);
     }
     /**
-     * Whether to set the protection flag of the container (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). This will prevent the container itself and its disk for remove/update operations.
+     * Whether to set the protection flag of the container (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). This will prevent the container itself and its disk for remove/update operations.
      * 
      */
     @Export(name="protection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> protection;
 
     /**
-     * @return Whether to set the protection flag of the container (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). This will prevent the container itself and its disk for remove/update operations.
+     * @return Whether to set the protection flag of the container (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;). This will prevent the container itself and its disk for remove/update operations.
      * 
      */
     public Output<Optional<Boolean>> protection() {
@@ -550,7 +552,7 @@ public class ContainerLegacy extends com.pulumi.resources.CustomResource {
     }
     /**
      * Automatically start container when the host
-     * system boots (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * system boots (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     @Export(name="startOnBoot", refs={Boolean.class}, tree="[0]")
@@ -558,21 +560,21 @@ public class ContainerLegacy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Automatically start container when the host
-     * system boots (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * system boots (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Output<Optional<Boolean>> startOnBoot() {
         return Codegen.optional(this.startOnBoot);
     }
     /**
-     * Whether to start the container (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * Whether to start the container (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     @Export(name="started", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> started;
 
     /**
-     * @return Whether to start the container (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * @return Whether to start the container (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Output<Optional<Boolean>> started() {
@@ -596,7 +598,7 @@ public class ContainerLegacy extends com.pulumi.resources.CustomResource {
      * A list of tags the container tags. This is only meta
      * information (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.
      * If tag contains capital letters, then Proxmox will always report a
-     * difference on the resource. You may use the &lt;span pulumi-lang-nodejs=&#34;`ignoreChanges`&#34; pulumi-lang-dotnet=&#34;`IgnoreChanges`&#34; pulumi-lang-go=&#34;`ignoreChanges`&#34; pulumi-lang-python=&#34;`ignore_changes`&#34; pulumi-lang-yaml=&#34;`ignoreChanges`&#34; pulumi-lang-java=&#34;`ignoreChanges`&#34;&gt;`ignoreChanges`&lt;/span&gt; lifecycle
+     * difference on the resource. You may use the &lt;span pulumi-lang-nodejs=&#34;`ignoreChanges`&#34; pulumi-lang-dotnet=&#34;`IgnoreChanges`&#34; pulumi-lang-go=&#34;`ignoreChanges`&#34; pulumi-lang-python=&#34;`ignore_changes`&#34; pulumi-lang-yaml=&#34;`ignoreChanges`&#34; pulumi-lang-java=&#34;`ignoreChanges`&#34; pulumi-lang-hcl=&#34;`ignore_changes`&#34;&gt;`ignoreChanges`&lt;/span&gt; lifecycle
      * meta-argument to ignore changes to this attribute.
      * 
      */
@@ -607,7 +609,7 @@ public class ContainerLegacy extends com.pulumi.resources.CustomResource {
      * @return A list of tags the container tags. This is only meta
      * information (defaults to `[]`). Note: Proxmox always sorts the container tags and set them to lowercase.
      * If tag contains capital letters, then Proxmox will always report a
-     * difference on the resource. You may use the &lt;span pulumi-lang-nodejs=&#34;`ignoreChanges`&#34; pulumi-lang-dotnet=&#34;`IgnoreChanges`&#34; pulumi-lang-go=&#34;`ignoreChanges`&#34; pulumi-lang-python=&#34;`ignore_changes`&#34; pulumi-lang-yaml=&#34;`ignoreChanges`&#34; pulumi-lang-java=&#34;`ignoreChanges`&#34;&gt;`ignoreChanges`&lt;/span&gt; lifecycle
+     * difference on the resource. You may use the &lt;span pulumi-lang-nodejs=&#34;`ignoreChanges`&#34; pulumi-lang-dotnet=&#34;`IgnoreChanges`&#34; pulumi-lang-go=&#34;`ignoreChanges`&#34; pulumi-lang-python=&#34;`ignore_changes`&#34; pulumi-lang-yaml=&#34;`ignoreChanges`&#34; pulumi-lang-java=&#34;`ignoreChanges`&#34; pulumi-lang-hcl=&#34;`ignore_changes`&#34;&gt;`ignoreChanges`&lt;/span&gt; lifecycle
      * meta-argument to ignore changes to this attribute.
      * 
      */
@@ -615,14 +617,14 @@ public class ContainerLegacy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * Whether to create a template (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * Whether to create a template (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Export(name="template", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> template;
 
     /**
-     * @return Whether to create a template (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * @return Whether to create a template (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Output<Optional<Boolean>> template() {
@@ -674,10 +676,10 @@ public class ContainerLegacy extends com.pulumi.resources.CustomResource {
      * Start container timeout
      * 
      * @deprecated
-     * This field is deprecated and will be removed in a future release. An overall operation timeout (&lt;span pulumi-lang-nodejs=&#34;`timeoutCreate`&#34; pulumi-lang-dotnet=&#34;`TimeoutCreate`&#34; pulumi-lang-go=&#34;`timeoutCreate`&#34; pulumi-lang-python=&#34;`timeout_create`&#34; pulumi-lang-yaml=&#34;`timeoutCreate`&#34; pulumi-lang-java=&#34;`timeoutCreate`&#34;&gt;`timeoutCreate`&lt;/span&gt; / &lt;span pulumi-lang-nodejs=&#34;`timeoutClone`&#34; pulumi-lang-dotnet=&#34;`TimeoutClone`&#34; pulumi-lang-go=&#34;`timeoutClone`&#34; pulumi-lang-python=&#34;`timeout_clone`&#34; pulumi-lang-yaml=&#34;`timeoutClone`&#34; pulumi-lang-java=&#34;`timeoutClone`&#34;&gt;`timeoutClone`&lt;/span&gt;) is used instead.
+     * This field is deprecated and will be removed in a future release. An overall operation timeout (&lt;span pulumi-lang-nodejs=&#34;`timeoutCreate`&#34; pulumi-lang-dotnet=&#34;`TimeoutCreate`&#34; pulumi-lang-go=&#34;`timeoutCreate`&#34; pulumi-lang-python=&#34;`timeout_create`&#34; pulumi-lang-yaml=&#34;`timeoutCreate`&#34; pulumi-lang-java=&#34;`timeoutCreate`&#34; pulumi-lang-hcl=&#34;`timeout_create`&#34;&gt;`timeoutCreate`&lt;/span&gt; / &lt;span pulumi-lang-nodejs=&#34;`timeoutClone`&#34; pulumi-lang-dotnet=&#34;`TimeoutClone`&#34; pulumi-lang-go=&#34;`timeoutClone`&#34; pulumi-lang-python=&#34;`timeout_clone`&#34; pulumi-lang-yaml=&#34;`timeoutClone`&#34; pulumi-lang-java=&#34;`timeoutClone`&#34; pulumi-lang-hcl=&#34;`timeout_clone`&#34;&gt;`timeoutClone`&lt;/span&gt;) is used instead.
      * 
      */
-    @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (<span pulumi-lang-nodejs=""`timeoutCreate`"" pulumi-lang-dotnet=""`TimeoutCreate`"" pulumi-lang-go=""`timeoutCreate`"" pulumi-lang-python=""`timeout_create`"" pulumi-lang-yaml=""`timeoutCreate`"" pulumi-lang-java=""`timeoutCreate`"">`timeoutCreate`</span> / <span pulumi-lang-nodejs=""`timeoutClone`"" pulumi-lang-dotnet=""`TimeoutClone`"" pulumi-lang-go=""`timeoutClone`"" pulumi-lang-python=""`timeout_clone`"" pulumi-lang-yaml=""`timeoutClone`"" pulumi-lang-java=""`timeoutClone`"">`timeoutClone`</span>) is used instead. */
+    @Deprecated /* This field is deprecated and will be removed in a future release. An overall operation timeout (<span pulumi-lang-nodejs=""`timeoutCreate`"" pulumi-lang-dotnet=""`TimeoutCreate`"" pulumi-lang-go=""`timeoutCreate`"" pulumi-lang-python=""`timeout_create`"" pulumi-lang-yaml=""`timeoutCreate`"" pulumi-lang-java=""`timeoutCreate`"" pulumi-lang-hcl=""`timeout_create`"">`timeoutCreate`</span> / <span pulumi-lang-nodejs=""`timeoutClone`"" pulumi-lang-dotnet=""`TimeoutClone`"" pulumi-lang-go=""`timeoutClone`"" pulumi-lang-python=""`timeout_clone`"" pulumi-lang-yaml=""`timeoutClone`"" pulumi-lang-java=""`timeoutClone`"" pulumi-lang-hcl=""`timeout_clone`"">`timeoutClone`</span>) is used instead. */
     @Export(name="timeoutStart", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeoutStart;
 
@@ -703,14 +705,14 @@ public class ContainerLegacy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.timeoutUpdate);
     }
     /**
-     * Whether the container runs as unprivileged on the host (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * Whether the container runs as unprivileged on the host (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Export(name="unprivileged", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> unprivileged;
 
     /**
-     * @return Whether the container runs as unprivileged on the host (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * @return Whether the container runs as unprivileged on the host (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Output<Optional<Boolean>> unprivileged() {

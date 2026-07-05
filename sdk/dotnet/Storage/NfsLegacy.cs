@@ -77,6 +77,18 @@ namespace Pulumi.ProxmoxVE.Storage
         public Output<ImmutableArray<string>> Contents { get; private set; } = null!;
 
         /// <summary>
+        /// Create the base directory if it doesn't exist.
+        /// </summary>
+        [Output("createBasePath")]
+        public Output<bool> CreateBasePath { get; private set; } = null!;
+
+        /// <summary>
+        /// Populate the directory with the default structure.
+        /// </summary>
+        [Output("createSubdirs")]
+        public Output<bool> CreateSubdirs { get; private set; } = null!;
+
+        /// <summary>
         /// Whether the storage is disabled.
         /// </summary>
         [Output("disable")]
@@ -196,6 +208,18 @@ namespace Pulumi.ProxmoxVE.Storage
         }
 
         /// <summary>
+        /// Create the base directory if it doesn't exist.
+        /// </summary>
+        [Input("createBasePath")]
+        public Input<bool>? CreateBasePath { get; set; }
+
+        /// <summary>
+        /// Populate the directory with the default structure.
+        /// </summary>
+        [Input("createSubdirs")]
+        public Input<bool>? CreateSubdirs { get; set; }
+
+        /// <summary>
         /// Whether the storage is disabled.
         /// </summary>
         [Input("disable")]
@@ -274,6 +298,18 @@ namespace Pulumi.ProxmoxVE.Storage
             get => _contents ?? (_contents = new InputList<string>());
             set => _contents = value;
         }
+
+        /// <summary>
+        /// Create the base directory if it doesn't exist.
+        /// </summary>
+        [Input("createBasePath")]
+        public Input<bool>? CreateBasePath { get; set; }
+
+        /// <summary>
+        /// Populate the directory with the default structure.
+        /// </summary>
+        [Input("createSubdirs")]
+        public Input<bool>? CreateSubdirs { get; set; }
 
         /// <summary>
         /// Whether the storage is disabled.

@@ -57,7 +57,7 @@ public final class GetVmResult {
      */
     private GetVmRng rng;
     /**
-     * @return The status of the VM (e.g., &lt;span pulumi-lang-nodejs=&#34;`running`&#34; pulumi-lang-dotnet=&#34;`Running`&#34; pulumi-lang-go=&#34;`running`&#34; pulumi-lang-python=&#34;`running`&#34; pulumi-lang-yaml=&#34;`running`&#34; pulumi-lang-java=&#34;`running`&#34;&gt;`running`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`stopped`&#34; pulumi-lang-dotnet=&#34;`Stopped`&#34; pulumi-lang-go=&#34;`stopped`&#34; pulumi-lang-python=&#34;`stopped`&#34; pulumi-lang-yaml=&#34;`stopped`&#34; pulumi-lang-java=&#34;`stopped`&#34;&gt;`stopped`&lt;/span&gt;).
+     * @return The status of the VM (e.g., &lt;span pulumi-lang-nodejs=&#34;`running`&#34; pulumi-lang-dotnet=&#34;`Running`&#34; pulumi-lang-go=&#34;`running`&#34; pulumi-lang-python=&#34;`running`&#34; pulumi-lang-yaml=&#34;`running`&#34; pulumi-lang-java=&#34;`running`&#34; pulumi-lang-hcl=&#34;`running`&#34;&gt;`running`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`stopped`&#34; pulumi-lang-dotnet=&#34;`Stopped`&#34; pulumi-lang-go=&#34;`stopped`&#34; pulumi-lang-python=&#34;`stopped`&#34; pulumi-lang-yaml=&#34;`stopped`&#34; pulumi-lang-java=&#34;`stopped`&#34; pulumi-lang-hcl=&#34;`stopped`&#34;&gt;`stopped`&lt;/span&gt;).
      * 
      */
     private String status;
@@ -129,7 +129,7 @@ public final class GetVmResult {
         return this.rng;
     }
     /**
-     * @return The status of the VM (e.g., &lt;span pulumi-lang-nodejs=&#34;`running`&#34; pulumi-lang-dotnet=&#34;`Running`&#34; pulumi-lang-go=&#34;`running`&#34; pulumi-lang-python=&#34;`running`&#34; pulumi-lang-yaml=&#34;`running`&#34; pulumi-lang-java=&#34;`running`&#34;&gt;`running`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`stopped`&#34; pulumi-lang-dotnet=&#34;`Stopped`&#34; pulumi-lang-go=&#34;`stopped`&#34; pulumi-lang-python=&#34;`stopped`&#34; pulumi-lang-yaml=&#34;`stopped`&#34; pulumi-lang-java=&#34;`stopped`&#34;&gt;`stopped`&lt;/span&gt;).
+     * @return The status of the VM (e.g., &lt;span pulumi-lang-nodejs=&#34;`running`&#34; pulumi-lang-dotnet=&#34;`Running`&#34; pulumi-lang-go=&#34;`running`&#34; pulumi-lang-python=&#34;`running`&#34; pulumi-lang-yaml=&#34;`running`&#34; pulumi-lang-java=&#34;`running`&#34; pulumi-lang-hcl=&#34;`running`&#34;&gt;`running`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`stopped`&#34; pulumi-lang-dotnet=&#34;`Stopped`&#34; pulumi-lang-go=&#34;`stopped`&#34; pulumi-lang-python=&#34;`stopped`&#34; pulumi-lang-yaml=&#34;`stopped`&#34; pulumi-lang-java=&#34;`stopped`&#34; pulumi-lang-hcl=&#34;`stopped`&#34;&gt;`stopped`&lt;/span&gt;).
      * 
      */
     public String status() {

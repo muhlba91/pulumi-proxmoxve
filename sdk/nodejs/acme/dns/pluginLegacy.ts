@@ -71,6 +71,15 @@ export class PluginLegacy extends pulumi.CustomResource {
      */
     declare public readonly data: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * DNS plugin data, supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so credentials are never stored in Terraform state. Requires Terraform 1.11+. Mutually exclusive with `data`. Pair with `dataWoVersion` to push rotated values.
+     */
+    declare public readonly dataWo: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * Version counter for `dataWo`. Because write-only values are not stored in state, Terraform cannot detect when `dataWo` changes; increment this value to signal a rotation and force the new `dataWo` to be sent.
+     */
+    declare public readonly dataWoVersion: pulumi.Output<number | undefined>;
+    /**
      * SHA1 digest of the current configuration. Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
      */
     declare public readonly digest: pulumi.Output<string>;
@@ -79,7 +88,7 @@ export class PluginLegacy extends pulumi.CustomResource {
      */
     declare public readonly disable: pulumi.Output<boolean | undefined>;
     /**
-     * ACME Plugin ID name.
+     * ACME plugin ID name.
      */
     declare public readonly plugin: pulumi.Output<string>;
     /**
@@ -102,6 +111,8 @@ export class PluginLegacy extends pulumi.CustomResource {
             const state = argsOrState as PluginLegacyState | undefined;
             resourceInputs["api"] = state?.api;
             resourceInputs["data"] = state?.data;
+            resourceInputs["dataWo"] = state?.dataWo;
+            resourceInputs["dataWoVersion"] = state?.dataWoVersion;
             resourceInputs["digest"] = state?.digest;
             resourceInputs["disable"] = state?.disable;
             resourceInputs["plugin"] = state?.plugin;
@@ -116,12 +127,16 @@ export class PluginLegacy extends pulumi.CustomResource {
             }
             resourceInputs["api"] = args?.api;
             resourceInputs["data"] = args?.data;
+            resourceInputs["dataWo"] = args?.dataWo ? pulumi.secret(args.dataWo) : undefined;
+            resourceInputs["dataWoVersion"] = args?.dataWoVersion;
             resourceInputs["digest"] = args?.digest;
             resourceInputs["disable"] = args?.disable;
             resourceInputs["plugin"] = args?.plugin;
             resourceInputs["validationDelay"] = args?.validationDelay;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["dataWo"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(PluginLegacy.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -139,6 +154,15 @@ export interface PluginLegacyState {
      */
     data?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * DNS plugin data, supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so credentials are never stored in Terraform state. Requires Terraform 1.11+. Mutually exclusive with `data`. Pair with `dataWoVersion` to push rotated values.
+     */
+    dataWo?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Version counter for `dataWo`. Because write-only values are not stored in state, Terraform cannot detect when `dataWo` changes; increment this value to signal a rotation and force the new `dataWo` to be sent.
+     */
+    dataWoVersion?: pulumi.Input<number | undefined>;
+    /**
      * SHA1 digest of the current configuration. Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
      */
     digest?: pulumi.Input<string | undefined>;
@@ -147,7 +171,7 @@ export interface PluginLegacyState {
      */
     disable?: pulumi.Input<boolean | undefined>;
     /**
-     * ACME Plugin ID name.
+     * ACME plugin ID name.
      */
     plugin?: pulumi.Input<string | undefined>;
     /**
@@ -169,6 +193,15 @@ export interface PluginLegacyArgs {
      */
     data?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * DNS plugin data, supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so credentials are never stored in Terraform state. Requires Terraform 1.11+. Mutually exclusive with `data`. Pair with `dataWoVersion` to push rotated values.
+     */
+    dataWo?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Version counter for `dataWo`. Because write-only values are not stored in state, Terraform cannot detect when `dataWo` changes; increment this value to signal a rotation and force the new `dataWo` to be sent.
+     */
+    dataWoVersion?: pulumi.Input<number | undefined>;
+    /**
      * SHA1 digest of the current configuration. Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
      */
     digest?: pulumi.Input<string | undefined>;
@@ -177,7 +210,7 @@ export interface PluginLegacyArgs {
      */
     disable?: pulumi.Input<boolean | undefined>;
     /**
-     * ACME Plugin ID name.
+     * ACME plugin ID name.
      */
     plugin: pulumi.Input<string>;
     /**

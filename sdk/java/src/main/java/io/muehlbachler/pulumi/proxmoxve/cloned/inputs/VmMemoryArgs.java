@@ -18,14 +18,14 @@ public final class VmMemoryArgs extends com.pulumi.resources.ResourceArgs {
     public static final VmMemoryArgs Empty = new VmMemoryArgs();
 
     /**
-     * Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; disables the balloon driver entirely.
+     * Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt; disables the balloon driver entirely.
      * 
      */
     @Import(name="balloon")
     private @Nullable Output<Integer> balloon;
 
     /**
-     * @return Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; disables the balloon driver entirely.
+     * @return Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt; disables the balloon driver entirely.
      * 
      */
     public Optional<Output<Integer>> balloon() {
@@ -36,9 +36,9 @@ public final class VmMemoryArgs extends com.pulumi.resources.ResourceArgs {
      * Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses.
      * 
      * **Options:**
-     * - &lt;span pulumi-lang-nodejs=&#34;`2`&#34; pulumi-lang-dotnet=&#34;`2`&#34; pulumi-lang-go=&#34;`2`&#34; pulumi-lang-python=&#34;`2`&#34; pulumi-lang-yaml=&#34;`2`&#34; pulumi-lang-java=&#34;`2`&#34;&gt;`2`&lt;/span&gt; - Use 2 MiB hugepages
-     * - &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt; - Use 1 GiB hugepages
-     * - &lt;span pulumi-lang-nodejs=&#34;`any`&#34; pulumi-lang-dotnet=&#34;`Any`&#34; pulumi-lang-go=&#34;`any`&#34; pulumi-lang-python=&#34;`any`&#34; pulumi-lang-yaml=&#34;`any`&#34; pulumi-lang-java=&#34;`any`&#34;&gt;`any`&lt;/span&gt; - Use any available hugepage size
+     * - &lt;span pulumi-lang-nodejs=&#34;`2`&#34; pulumi-lang-dotnet=&#34;`2`&#34; pulumi-lang-go=&#34;`2`&#34; pulumi-lang-python=&#34;`2`&#34; pulumi-lang-yaml=&#34;`2`&#34; pulumi-lang-java=&#34;`2`&#34; pulumi-lang-hcl=&#34;`2`&#34;&gt;`2`&lt;/span&gt; - Use 2 MiB hugepages
+     * - &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34; pulumi-lang-hcl=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt; - Use 1 GiB hugepages
+     * - &lt;span pulumi-lang-nodejs=&#34;`any`&#34; pulumi-lang-dotnet=&#34;`Any`&#34; pulumi-lang-go=&#34;`any`&#34; pulumi-lang-python=&#34;`any`&#34; pulumi-lang-yaml=&#34;`any`&#34; pulumi-lang-java=&#34;`any`&#34; pulumi-lang-hcl=&#34;`any`&#34;&gt;`any`&lt;/span&gt; - Use any available hugepage size
      * 
      */
     @Import(name="hugepages")
@@ -48,9 +48,9 @@ public final class VmMemoryArgs extends com.pulumi.resources.ResourceArgs {
      * @return Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses.
      * 
      * **Options:**
-     * - &lt;span pulumi-lang-nodejs=&#34;`2`&#34; pulumi-lang-dotnet=&#34;`2`&#34; pulumi-lang-go=&#34;`2`&#34; pulumi-lang-python=&#34;`2`&#34; pulumi-lang-yaml=&#34;`2`&#34; pulumi-lang-java=&#34;`2`&#34;&gt;`2`&lt;/span&gt; - Use 2 MiB hugepages
-     * - &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt; - Use 1 GiB hugepages
-     * - &lt;span pulumi-lang-nodejs=&#34;`any`&#34; pulumi-lang-dotnet=&#34;`Any`&#34; pulumi-lang-go=&#34;`any`&#34; pulumi-lang-python=&#34;`any`&#34; pulumi-lang-yaml=&#34;`any`&#34; pulumi-lang-java=&#34;`any`&#34;&gt;`any`&lt;/span&gt; - Use any available hugepage size
+     * - &lt;span pulumi-lang-nodejs=&#34;`2`&#34; pulumi-lang-dotnet=&#34;`2`&#34; pulumi-lang-go=&#34;`2`&#34; pulumi-lang-python=&#34;`2`&#34; pulumi-lang-yaml=&#34;`2`&#34; pulumi-lang-java=&#34;`2`&#34; pulumi-lang-hcl=&#34;`2`&#34;&gt;`2`&lt;/span&gt; - Use 2 MiB hugepages
+     * - &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34; pulumi-lang-hcl=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt; - Use 1 GiB hugepages
+     * - &lt;span pulumi-lang-nodejs=&#34;`any`&#34; pulumi-lang-dotnet=&#34;`Any`&#34; pulumi-lang-go=&#34;`any`&#34; pulumi-lang-python=&#34;`any`&#34; pulumi-lang-yaml=&#34;`any`&#34; pulumi-lang-java=&#34;`any`&#34; pulumi-lang-hcl=&#34;`any`&#34;&gt;`any`&lt;/span&gt; - Use any available hugepage size
      * 
      */
     public Optional<Output<String>> hugepages() {
@@ -58,14 +58,14 @@ public final class VmMemoryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Don&#39;t release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt; keeps them allocated for faster VM startup.
+     * Don&#39;t release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt; keeps them allocated for faster VM startup.
      * 
      */
     @Import(name="keepHugepages")
     private @Nullable Output<Boolean> keepHugepages;
 
     /**
-     * @return Don&#39;t release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt; keeps them allocated for faster VM startup.
+     * @return Don&#39;t release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt; keeps them allocated for faster VM startup.
      * 
      */
     public Optional<Output<Boolean>> keepHugepages() {
@@ -88,14 +88,14 @@ public final class VmMemoryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon &gt; 0), memory between &lt;span pulumi-lang-nodejs=&#34;`balloon`&#34; pulumi-lang-dotnet=&#34;`Balloon`&#34; pulumi-lang-go=&#34;`balloon`&#34; pulumi-lang-python=&#34;`balloon`&#34; pulumi-lang-yaml=&#34;`balloon`&#34; pulumi-lang-java=&#34;`balloon`&#34;&gt;`balloon`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`size`&#34; pulumi-lang-dotnet=&#34;`Size`&#34; pulumi-lang-go=&#34;`size`&#34; pulumi-lang-python=&#34;`size`&#34; pulumi-lang-yaml=&#34;`size`&#34; pulumi-lang-java=&#34;`size`&#34;&gt;`size`&lt;/span&gt; can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM. Defaults to PVE&#39;s implicit &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34;&gt;`512`&lt;/span&gt; MiB when unset.
+     * Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon &gt; 0), memory between &lt;span pulumi-lang-nodejs=&#34;`balloon`&#34; pulumi-lang-dotnet=&#34;`Balloon`&#34; pulumi-lang-go=&#34;`balloon`&#34; pulumi-lang-python=&#34;`balloon`&#34; pulumi-lang-yaml=&#34;`balloon`&#34; pulumi-lang-java=&#34;`balloon`&#34; pulumi-lang-hcl=&#34;`balloon`&#34;&gt;`balloon`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`size`&#34; pulumi-lang-dotnet=&#34;`Size`&#34; pulumi-lang-go=&#34;`size`&#34; pulumi-lang-python=&#34;`size`&#34; pulumi-lang-yaml=&#34;`size`&#34; pulumi-lang-java=&#34;`size`&#34; pulumi-lang-hcl=&#34;`size`&#34;&gt;`size`&lt;/span&gt; can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM. Defaults to PVE&#39;s implicit &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34; pulumi-lang-hcl=&#34;`512`&#34;&gt;`512`&lt;/span&gt; MiB when unset.
      * 
      */
     @Import(name="size")
     private @Nullable Output<Integer> size;
 
     /**
-     * @return Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon &gt; 0), memory between &lt;span pulumi-lang-nodejs=&#34;`balloon`&#34; pulumi-lang-dotnet=&#34;`Balloon`&#34; pulumi-lang-go=&#34;`balloon`&#34; pulumi-lang-python=&#34;`balloon`&#34; pulumi-lang-yaml=&#34;`balloon`&#34; pulumi-lang-java=&#34;`balloon`&#34;&gt;`balloon`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`size`&#34; pulumi-lang-dotnet=&#34;`Size`&#34; pulumi-lang-go=&#34;`size`&#34; pulumi-lang-python=&#34;`size`&#34; pulumi-lang-yaml=&#34;`size`&#34; pulumi-lang-java=&#34;`size`&#34;&gt;`size`&lt;/span&gt; can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM. Defaults to PVE&#39;s implicit &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34;&gt;`512`&lt;/span&gt; MiB when unset.
+     * @return Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon &gt; 0), memory between &lt;span pulumi-lang-nodejs=&#34;`balloon`&#34; pulumi-lang-dotnet=&#34;`Balloon`&#34; pulumi-lang-go=&#34;`balloon`&#34; pulumi-lang-python=&#34;`balloon`&#34; pulumi-lang-yaml=&#34;`balloon`&#34; pulumi-lang-java=&#34;`balloon`&#34; pulumi-lang-hcl=&#34;`balloon`&#34;&gt;`balloon`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`size`&#34; pulumi-lang-dotnet=&#34;`Size`&#34; pulumi-lang-go=&#34;`size`&#34; pulumi-lang-python=&#34;`size`&#34; pulumi-lang-yaml=&#34;`size`&#34; pulumi-lang-java=&#34;`size`&#34; pulumi-lang-hcl=&#34;`size`&#34;&gt;`size`&lt;/span&gt; can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM. Defaults to PVE&#39;s implicit &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34; pulumi-lang-hcl=&#34;`512`&#34;&gt;`512`&lt;/span&gt; MiB when unset.
      * 
      */
     public Optional<Output<Integer>> size() {
@@ -131,7 +131,7 @@ public final class VmMemoryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param balloon Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; disables the balloon driver entirely.
+         * @param balloon Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt; disables the balloon driver entirely.
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class VmMemoryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param balloon Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34;&gt;`0`&lt;/span&gt; disables the balloon driver entirely.
+         * @param balloon Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to &lt;span pulumi-lang-nodejs=&#34;`0`&#34; pulumi-lang-dotnet=&#34;`0`&#34; pulumi-lang-go=&#34;`0`&#34; pulumi-lang-python=&#34;`0`&#34; pulumi-lang-yaml=&#34;`0`&#34; pulumi-lang-java=&#34;`0`&#34; pulumi-lang-hcl=&#34;`0`&#34;&gt;`0`&lt;/span&gt; disables the balloon driver entirely.
          * 
          * @return builder
          * 
@@ -155,9 +155,9 @@ public final class VmMemoryArgs extends com.pulumi.resources.ResourceArgs {
          * @param hugepages Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses.
          * 
          * **Options:**
-         * - &lt;span pulumi-lang-nodejs=&#34;`2`&#34; pulumi-lang-dotnet=&#34;`2`&#34; pulumi-lang-go=&#34;`2`&#34; pulumi-lang-python=&#34;`2`&#34; pulumi-lang-yaml=&#34;`2`&#34; pulumi-lang-java=&#34;`2`&#34;&gt;`2`&lt;/span&gt; - Use 2 MiB hugepages
-         * - &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt; - Use 1 GiB hugepages
-         * - &lt;span pulumi-lang-nodejs=&#34;`any`&#34; pulumi-lang-dotnet=&#34;`Any`&#34; pulumi-lang-go=&#34;`any`&#34; pulumi-lang-python=&#34;`any`&#34; pulumi-lang-yaml=&#34;`any`&#34; pulumi-lang-java=&#34;`any`&#34;&gt;`any`&lt;/span&gt; - Use any available hugepage size
+         * - &lt;span pulumi-lang-nodejs=&#34;`2`&#34; pulumi-lang-dotnet=&#34;`2`&#34; pulumi-lang-go=&#34;`2`&#34; pulumi-lang-python=&#34;`2`&#34; pulumi-lang-yaml=&#34;`2`&#34; pulumi-lang-java=&#34;`2`&#34; pulumi-lang-hcl=&#34;`2`&#34;&gt;`2`&lt;/span&gt; - Use 2 MiB hugepages
+         * - &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34; pulumi-lang-hcl=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt; - Use 1 GiB hugepages
+         * - &lt;span pulumi-lang-nodejs=&#34;`any`&#34; pulumi-lang-dotnet=&#34;`Any`&#34; pulumi-lang-go=&#34;`any`&#34; pulumi-lang-python=&#34;`any`&#34; pulumi-lang-yaml=&#34;`any`&#34; pulumi-lang-java=&#34;`any`&#34; pulumi-lang-hcl=&#34;`any`&#34;&gt;`any`&lt;/span&gt; - Use any available hugepage size
          * 
          * @return builder
          * 
@@ -171,9 +171,9 @@ public final class VmMemoryArgs extends com.pulumi.resources.ResourceArgs {
          * @param hugepages Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses.
          * 
          * **Options:**
-         * - &lt;span pulumi-lang-nodejs=&#34;`2`&#34; pulumi-lang-dotnet=&#34;`2`&#34; pulumi-lang-go=&#34;`2`&#34; pulumi-lang-python=&#34;`2`&#34; pulumi-lang-yaml=&#34;`2`&#34; pulumi-lang-java=&#34;`2`&#34;&gt;`2`&lt;/span&gt; - Use 2 MiB hugepages
-         * - &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt; - Use 1 GiB hugepages
-         * - &lt;span pulumi-lang-nodejs=&#34;`any`&#34; pulumi-lang-dotnet=&#34;`Any`&#34; pulumi-lang-go=&#34;`any`&#34; pulumi-lang-python=&#34;`any`&#34; pulumi-lang-yaml=&#34;`any`&#34; pulumi-lang-java=&#34;`any`&#34;&gt;`any`&lt;/span&gt; - Use any available hugepage size
+         * - &lt;span pulumi-lang-nodejs=&#34;`2`&#34; pulumi-lang-dotnet=&#34;`2`&#34; pulumi-lang-go=&#34;`2`&#34; pulumi-lang-python=&#34;`2`&#34; pulumi-lang-yaml=&#34;`2`&#34; pulumi-lang-java=&#34;`2`&#34; pulumi-lang-hcl=&#34;`2`&#34;&gt;`2`&lt;/span&gt; - Use 2 MiB hugepages
+         * - &lt;span pulumi-lang-nodejs=&#34;`1024`&#34; pulumi-lang-dotnet=&#34;`1024`&#34; pulumi-lang-go=&#34;`1024`&#34; pulumi-lang-python=&#34;`1024`&#34; pulumi-lang-yaml=&#34;`1024`&#34; pulumi-lang-java=&#34;`1024`&#34; pulumi-lang-hcl=&#34;`1024`&#34;&gt;`1024`&lt;/span&gt; - Use 1 GiB hugepages
+         * - &lt;span pulumi-lang-nodejs=&#34;`any`&#34; pulumi-lang-dotnet=&#34;`Any`&#34; pulumi-lang-go=&#34;`any`&#34; pulumi-lang-python=&#34;`any`&#34; pulumi-lang-yaml=&#34;`any`&#34; pulumi-lang-java=&#34;`any`&#34; pulumi-lang-hcl=&#34;`any`&#34;&gt;`any`&lt;/span&gt; - Use any available hugepage size
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class VmMemoryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keepHugepages Don&#39;t release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt; keeps them allocated for faster VM startup.
+         * @param keepHugepages Don&#39;t release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt; keeps them allocated for faster VM startup.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class VmMemoryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keepHugepages Don&#39;t release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt; keeps them allocated for faster VM startup.
+         * @param keepHugepages Don&#39;t release hugepages when the VM shuts down. By default, hugepages are released back to the host when the VM stops. Setting this to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt; keeps them allocated for faster VM startup.
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class VmMemoryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param size Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon &gt; 0), memory between &lt;span pulumi-lang-nodejs=&#34;`balloon`&#34; pulumi-lang-dotnet=&#34;`Balloon`&#34; pulumi-lang-go=&#34;`balloon`&#34; pulumi-lang-python=&#34;`balloon`&#34; pulumi-lang-yaml=&#34;`balloon`&#34; pulumi-lang-java=&#34;`balloon`&#34;&gt;`balloon`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`size`&#34; pulumi-lang-dotnet=&#34;`Size`&#34; pulumi-lang-go=&#34;`size`&#34; pulumi-lang-python=&#34;`size`&#34; pulumi-lang-yaml=&#34;`size`&#34; pulumi-lang-java=&#34;`size`&#34;&gt;`size`&lt;/span&gt; can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM. Defaults to PVE&#39;s implicit &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34;&gt;`512`&lt;/span&gt; MiB when unset.
+         * @param size Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon &gt; 0), memory between &lt;span pulumi-lang-nodejs=&#34;`balloon`&#34; pulumi-lang-dotnet=&#34;`Balloon`&#34; pulumi-lang-go=&#34;`balloon`&#34; pulumi-lang-python=&#34;`balloon`&#34; pulumi-lang-yaml=&#34;`balloon`&#34; pulumi-lang-java=&#34;`balloon`&#34; pulumi-lang-hcl=&#34;`balloon`&#34;&gt;`balloon`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`size`&#34; pulumi-lang-dotnet=&#34;`Size`&#34; pulumi-lang-go=&#34;`size`&#34; pulumi-lang-python=&#34;`size`&#34; pulumi-lang-yaml=&#34;`size`&#34; pulumi-lang-java=&#34;`size`&#34; pulumi-lang-hcl=&#34;`size`&#34;&gt;`size`&lt;/span&gt; can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM. Defaults to PVE&#39;s implicit &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34; pulumi-lang-hcl=&#34;`512`&#34;&gt;`512`&lt;/span&gt; MiB when unset.
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class VmMemoryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param size Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon &gt; 0), memory between &lt;span pulumi-lang-nodejs=&#34;`balloon`&#34; pulumi-lang-dotnet=&#34;`Balloon`&#34; pulumi-lang-go=&#34;`balloon`&#34; pulumi-lang-python=&#34;`balloon`&#34; pulumi-lang-yaml=&#34;`balloon`&#34; pulumi-lang-java=&#34;`balloon`&#34;&gt;`balloon`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`size`&#34; pulumi-lang-dotnet=&#34;`Size`&#34; pulumi-lang-go=&#34;`size`&#34; pulumi-lang-python=&#34;`size`&#34; pulumi-lang-yaml=&#34;`size`&#34; pulumi-lang-java=&#34;`size`&#34;&gt;`size`&lt;/span&gt; can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM. Defaults to PVE&#39;s implicit &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34;&gt;`512`&lt;/span&gt; MiB when unset.
+         * @param size Total memory available to the VM in MiB. This is the total RAM the VM can use. When ballooning is enabled (balloon &gt; 0), memory between &lt;span pulumi-lang-nodejs=&#34;`balloon`&#34; pulumi-lang-dotnet=&#34;`Balloon`&#34; pulumi-lang-go=&#34;`balloon`&#34; pulumi-lang-python=&#34;`balloon`&#34; pulumi-lang-yaml=&#34;`balloon`&#34; pulumi-lang-java=&#34;`balloon`&#34; pulumi-lang-hcl=&#34;`balloon`&#34;&gt;`balloon`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`size`&#34; pulumi-lang-dotnet=&#34;`Size`&#34; pulumi-lang-go=&#34;`size`&#34; pulumi-lang-python=&#34;`size`&#34; pulumi-lang-yaml=&#34;`size`&#34; pulumi-lang-java=&#34;`size`&#34; pulumi-lang-hcl=&#34;`size`&#34;&gt;`size`&lt;/span&gt; can be reclaimed by the host. When ballooning is disabled (balloon = 0), this is the fixed amount of RAM allocated to the VM. Defaults to PVE&#39;s implicit &lt;span pulumi-lang-nodejs=&#34;`512`&#34; pulumi-lang-dotnet=&#34;`512`&#34; pulumi-lang-go=&#34;`512`&#34; pulumi-lang-python=&#34;`512`&#34; pulumi-lang-yaml=&#34;`512`&#34; pulumi-lang-java=&#34;`512`&#34; pulumi-lang-hcl=&#34;`512`&#34;&gt;`512`&lt;/span&gt; MiB when unset.
          * 
          * @return builder
          * 

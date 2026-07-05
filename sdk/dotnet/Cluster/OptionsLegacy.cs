@@ -102,10 +102,40 @@ namespace Pulumi.ProxmoxVE.Cluster
         public Output<string?> Console { get; private set; } = null!;
 
         /// <summary>
-        /// Cluster resource scheduling setting for HA. Must be `Static` | `Basic` (default is `Basic`).
+        /// Cluster resource scheduling setting for HA. Must be `Static` | `Basic` | `Dynamic` (default is `Basic`). `Dynamic` requires Proxmox VE 9.2+.
         /// </summary>
         [Output("crsHa")]
         public Output<string> CrsHa { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to use CRS for balancing HA resources automatically depending on the current node imbalance. Requires Proxmox VE 9.2+.
+        /// </summary>
+        [Output("crsHaAutoRebalance")]
+        public Output<bool?> CrsHaAutoRebalance { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of HA rounds for which the cluster node imbalance threshold must be exceeded before triggering an automatic resource balancing migration (default is `3`). Requires Proxmox VE 9.2+.
+        /// </summary>
+        [Output("crsHaAutoRebalanceHoldDuration")]
+        public Output<int?> CrsHaAutoRebalanceHoldDuration { get; private set; } = null!;
+
+        /// <summary>
+        /// The minimum relative improvement in cluster node imbalance, in percent, to commit to a resource balancing migration. Must be between `0` and `100` (default is `10`). Requires Proxmox VE 9.2+.
+        /// </summary>
+        [Output("crsHaAutoRebalanceMargin")]
+        public Output<int?> CrsHaAutoRebalanceMargin { get; private set; } = null!;
+
+        /// <summary>
+        /// The method to use for the scoring of balancing migrations. Must be `Bruteforce` | `Topsis` (default is `Bruteforce`). Requires Proxmox VE 9.2+.
+        /// </summary>
+        [Output("crsHaAutoRebalanceMethod")]
+        public Output<string?> CrsHaAutoRebalanceMethod { get; private set; } = null!;
+
+        /// <summary>
+        /// The cluster node imbalance, in percent, which will trigger the automatic resource balancing system if exceeded. Must be between `0` and `100` (default is `30`). Requires Proxmox VE 9.2+.
+        /// </summary>
+        [Output("crsHaAutoRebalanceThreshold")]
+        public Output<int?> CrsHaAutoRebalanceThreshold { get; private set; } = null!;
 
         /// <summary>
         /// Cluster resource scheduling setting for HA rebalance on start.
@@ -269,10 +299,40 @@ namespace Pulumi.ProxmoxVE.Cluster
         public Input<string>? Console { get; set; }
 
         /// <summary>
-        /// Cluster resource scheduling setting for HA. Must be `Static` | `Basic` (default is `Basic`).
+        /// Cluster resource scheduling setting for HA. Must be `Static` | `Basic` | `Dynamic` (default is `Basic`). `Dynamic` requires Proxmox VE 9.2+.
         /// </summary>
         [Input("crsHa")]
         public Input<string>? CrsHa { get; set; }
+
+        /// <summary>
+        /// Whether to use CRS for balancing HA resources automatically depending on the current node imbalance. Requires Proxmox VE 9.2+.
+        /// </summary>
+        [Input("crsHaAutoRebalance")]
+        public Input<bool>? CrsHaAutoRebalance { get; set; }
+
+        /// <summary>
+        /// The number of HA rounds for which the cluster node imbalance threshold must be exceeded before triggering an automatic resource balancing migration (default is `3`). Requires Proxmox VE 9.2+.
+        /// </summary>
+        [Input("crsHaAutoRebalanceHoldDuration")]
+        public Input<int>? CrsHaAutoRebalanceHoldDuration { get; set; }
+
+        /// <summary>
+        /// The minimum relative improvement in cluster node imbalance, in percent, to commit to a resource balancing migration. Must be between `0` and `100` (default is `10`). Requires Proxmox VE 9.2+.
+        /// </summary>
+        [Input("crsHaAutoRebalanceMargin")]
+        public Input<int>? CrsHaAutoRebalanceMargin { get; set; }
+
+        /// <summary>
+        /// The method to use for the scoring of balancing migrations. Must be `Bruteforce` | `Topsis` (default is `Bruteforce`). Requires Proxmox VE 9.2+.
+        /// </summary>
+        [Input("crsHaAutoRebalanceMethod")]
+        public Input<string>? CrsHaAutoRebalanceMethod { get; set; }
+
+        /// <summary>
+        /// The cluster node imbalance, in percent, which will trigger the automatic resource balancing system if exceeded. Must be between `0` and `100` (default is `30`). Requires Proxmox VE 9.2+.
+        /// </summary>
+        [Input("crsHaAutoRebalanceThreshold")]
+        public Input<int>? CrsHaAutoRebalanceThreshold { get; set; }
 
         /// <summary>
         /// Cluster resource scheduling setting for HA rebalance on start.
@@ -397,10 +457,40 @@ namespace Pulumi.ProxmoxVE.Cluster
         public Input<string>? Console { get; set; }
 
         /// <summary>
-        /// Cluster resource scheduling setting for HA. Must be `Static` | `Basic` (default is `Basic`).
+        /// Cluster resource scheduling setting for HA. Must be `Static` | `Basic` | `Dynamic` (default is `Basic`). `Dynamic` requires Proxmox VE 9.2+.
         /// </summary>
         [Input("crsHa")]
         public Input<string>? CrsHa { get; set; }
+
+        /// <summary>
+        /// Whether to use CRS for balancing HA resources automatically depending on the current node imbalance. Requires Proxmox VE 9.2+.
+        /// </summary>
+        [Input("crsHaAutoRebalance")]
+        public Input<bool>? CrsHaAutoRebalance { get; set; }
+
+        /// <summary>
+        /// The number of HA rounds for which the cluster node imbalance threshold must be exceeded before triggering an automatic resource balancing migration (default is `3`). Requires Proxmox VE 9.2+.
+        /// </summary>
+        [Input("crsHaAutoRebalanceHoldDuration")]
+        public Input<int>? CrsHaAutoRebalanceHoldDuration { get; set; }
+
+        /// <summary>
+        /// The minimum relative improvement in cluster node imbalance, in percent, to commit to a resource balancing migration. Must be between `0` and `100` (default is `10`). Requires Proxmox VE 9.2+.
+        /// </summary>
+        [Input("crsHaAutoRebalanceMargin")]
+        public Input<int>? CrsHaAutoRebalanceMargin { get; set; }
+
+        /// <summary>
+        /// The method to use for the scoring of balancing migrations. Must be `Bruteforce` | `Topsis` (default is `Bruteforce`). Requires Proxmox VE 9.2+.
+        /// </summary>
+        [Input("crsHaAutoRebalanceMethod")]
+        public Input<string>? CrsHaAutoRebalanceMethod { get; set; }
+
+        /// <summary>
+        /// The cluster node imbalance, in percent, which will trigger the automatic resource balancing system if exceeded. Must be between `0` and `100` (default is `30`). Requires Proxmox VE 9.2+.
+        /// </summary>
+        [Input("crsHaAutoRebalanceThreshold")]
+        public Input<int>? CrsHaAutoRebalanceThreshold { get; set; }
 
         /// <summary>
         /// Cluster resource scheduling setting for HA rebalance on start.

@@ -172,14 +172,14 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Deprecated: use&lt;span pulumi-lang-nodejs=&#34; pruneBackups &#34; pulumi-lang-dotnet=&#34; PruneBackups &#34; pulumi-lang-go=&#34; pruneBackups &#34; pulumi-lang-python=&#34; prune_backups &#34; pulumi-lang-yaml=&#34; pruneBackups &#34; pulumi-lang-java=&#34; pruneBackups &#34;&gt; pruneBackups &lt;/span&gt;instead. Maximum number of backup files per guest.
+     * Deprecated: use&lt;span pulumi-lang-nodejs=&#34; pruneBackups &#34; pulumi-lang-dotnet=&#34; PruneBackups &#34; pulumi-lang-go=&#34; pruneBackups &#34; pulumi-lang-python=&#34; prune_backups &#34; pulumi-lang-yaml=&#34; pruneBackups &#34; pulumi-lang-java=&#34; pruneBackups &#34; pulumi-lang-hcl=&#34; prune_backups &#34;&gt; pruneBackups &lt;/span&gt;instead. Maximum number of backup files per guest.
      * 
      */
     @Import(name="maxfiles")
     private @Nullable Output<Integer> maxfiles;
 
     /**
-     * @return Deprecated: use&lt;span pulumi-lang-nodejs=&#34; pruneBackups &#34; pulumi-lang-dotnet=&#34; PruneBackups &#34; pulumi-lang-go=&#34; pruneBackups &#34; pulumi-lang-python=&#34; prune_backups &#34; pulumi-lang-yaml=&#34; pruneBackups &#34; pulumi-lang-java=&#34; pruneBackups &#34;&gt; pruneBackups &lt;/span&gt;instead. Maximum number of backup files per guest.
+     * @return Deprecated: use&lt;span pulumi-lang-nodejs=&#34; pruneBackups &#34; pulumi-lang-dotnet=&#34; PruneBackups &#34; pulumi-lang-go=&#34; pruneBackups &#34; pulumi-lang-python=&#34; prune_backups &#34; pulumi-lang-yaml=&#34; pruneBackups &#34; pulumi-lang-java=&#34; pruneBackups &#34; pulumi-lang-hcl=&#34; prune_backups &#34;&gt; pruneBackups &lt;/span&gt;instead. Maximum number of backup files per guest.
      * 
      */
     public Optional<Output<Integer>> maxfiles() {
@@ -787,7 +787,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxfiles Deprecated: use&lt;span pulumi-lang-nodejs=&#34; pruneBackups &#34; pulumi-lang-dotnet=&#34; PruneBackups &#34; pulumi-lang-go=&#34; pruneBackups &#34; pulumi-lang-python=&#34; prune_backups &#34; pulumi-lang-yaml=&#34; pruneBackups &#34; pulumi-lang-java=&#34; pruneBackups &#34;&gt; pruneBackups &lt;/span&gt;instead. Maximum number of backup files per guest.
+         * @param maxfiles Deprecated: use&lt;span pulumi-lang-nodejs=&#34; pruneBackups &#34; pulumi-lang-dotnet=&#34; PruneBackups &#34; pulumi-lang-go=&#34; pruneBackups &#34; pulumi-lang-python=&#34; prune_backups &#34; pulumi-lang-yaml=&#34; pruneBackups &#34; pulumi-lang-java=&#34; pruneBackups &#34; pulumi-lang-hcl=&#34; prune_backups &#34;&gt; pruneBackups &lt;/span&gt;instead. Maximum number of backup files per guest.
          * 
          * @return builder
          * 
@@ -798,7 +798,7 @@ public final class JobState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param maxfiles Deprecated: use&lt;span pulumi-lang-nodejs=&#34; pruneBackups &#34; pulumi-lang-dotnet=&#34; PruneBackups &#34; pulumi-lang-go=&#34; pruneBackups &#34; pulumi-lang-python=&#34; prune_backups &#34; pulumi-lang-yaml=&#34; pruneBackups &#34; pulumi-lang-java=&#34; pruneBackups &#34;&gt; pruneBackups &lt;/span&gt;instead. Maximum number of backup files per guest.
+         * @param maxfiles Deprecated: use&lt;span pulumi-lang-nodejs=&#34; pruneBackups &#34; pulumi-lang-dotnet=&#34; PruneBackups &#34; pulumi-lang-go=&#34; pruneBackups &#34; pulumi-lang-python=&#34; prune_backups &#34; pulumi-lang-yaml=&#34; pruneBackups &#34; pulumi-lang-java=&#34; pruneBackups &#34; pulumi-lang-hcl=&#34; prune_backups &#34;&gt; pruneBackups &lt;/span&gt;instead. Maximum number of backup files per guest.
          * 
          * @return builder
          * 

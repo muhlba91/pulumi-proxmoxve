@@ -17,7 +17,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.apt.Repository`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.apt.Repository`&#34; pulumi-lang-go=&#34;`apt.Repository`&#34; pulumi-lang-python=&#34;`apt.Repository`&#34; pulumi-lang-yaml=&#34;`proxmoxve.apt.Repository`&#34; pulumi-lang-java=&#34;`proxmoxve.apt.Repository`&#34;&gt;`proxmoxve.apt.Repository`&lt;/span&gt; instead. This resource will be removed in v1.0.
+ * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.apt.Repository`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.apt.Repository`&#34; pulumi-lang-go=&#34;`apt.Repository`&#34; pulumi-lang-python=&#34;`apt.Repository`&#34; pulumi-lang-yaml=&#34;`proxmoxve.apt.Repository`&#34; pulumi-lang-java=&#34;`proxmoxve.apt.Repository`&#34; pulumi-lang-hcl=&#34;`proxmox_apt_repository`&#34;&gt;`proxmoxve.apt.Repository`&lt;/span&gt; instead. This resource will be removed in v1.0.
  * 
  * Manages an APT repository of a Proxmox VE node.
  * 

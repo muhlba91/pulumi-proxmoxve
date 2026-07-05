@@ -59,19 +59,6 @@ namespace Pulumi.ProxmoxVE.Realm
     /// - You must maintain the client key in your Terraform configuration or use a variable
     /// - The client key will be marked as sensitive in Terraform state
     /// 
-    /// ### Username Claim
-    /// 
-    /// The `UsernameClaim` attribute is **fixed after creation** — it cannot be changed once the realm is created. Changing it requires destroying and recreating the realm. Common values:
-    /// 
-    /// - `Subject` (default) — Uses the OpenID `Sub` claim
-    /// - `Username` — Uses the `PreferredUsername` claim
-    /// - `Email` — Uses the `Email` claim
-    /// - `Upn` — Uses the User Principal Name claim (common with ADFS/Azure AD)
-    /// 
-    /// Any valid OpenID claim name can be used. Ensure the chosen claim provides unique, stable identifiers for your users.
-    /// 
-    /// ### Common Configuration Scenarios
-    /// 
     /// #### Minimal Configuration
     /// 
     /// ```csharp
@@ -147,6 +134,12 @@ namespace Pulumi.ProxmoxVE.Realm
         public Output<string?> AcrValues { get; private set; } = null!;
 
         /// <summary>
+        /// Audiences that the OpenID Issuer may include that are accepted for the client (comma-separated).
+        /// </summary>
+        [Output("audiences")]
+        public Output<string?> Audiences { get; private set; } = null!;
+
+        /// <summary>
         /// Automatically create users on the Proxmox cluster if they do not exist.
         /// </summary>
         [Output("autocreate")]
@@ -163,6 +156,19 @@ namespace Pulumi.ProxmoxVE.Realm
         /// </summary>
         [Output("clientKey")]
         public Output<string?> ClientKey { get; private set; } = null!;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// OpenID Connect Client Key (secret), supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so it is never stored in Terraform state or plan. Requires Terraform 1.11+. Mutually exclusive with `ClientKey`. Pair with `ClientKeyWoVersion` to push a rotated secret.
+        /// </summary>
+        [Output("clientKeyWo")]
+        public Output<string?> ClientKeyWo { get; private set; } = null!;
+
+        /// <summary>
+        /// Version counter for `ClientKeyWo`. Because write-only values are not stored in state, Terraform cannot detect when `ClientKeyWo` changes; increment this value to signal a rotation and force the new secret to be sent.
+        /// </summary>
+        [Output("clientKeyWoVersion")]
+        public Output<int?> ClientKeyWoVersion { get; private set; } = null!;
 
         /// <summary>
         /// Description of the realm.
@@ -257,6 +263,7 @@ namespace Pulumi.ProxmoxVE.Realm
                 AdditionalSecretOutputs =
                 {
                     "clientKey",
+                    "clientKeyWo",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -288,6 +295,12 @@ namespace Pulumi.ProxmoxVE.Realm
         public Input<string>? AcrValues { get; set; }
 
         /// <summary>
+        /// Audiences that the OpenID Issuer may include that are accepted for the client (comma-separated).
+        /// </summary>
+        [Input("audiences")]
+        public Input<string>? Audiences { get; set; }
+
+        /// <summary>
         /// Automatically create users on the Proxmox cluster if they do not exist.
         /// </summary>
         [Input("autocreate")]
@@ -314,6 +327,29 @@ namespace Pulumi.ProxmoxVE.Realm
                 _clientKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("clientKeyWo")]
+        private Input<string>? _clientKeyWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// OpenID Connect Client Key (secret), supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so it is never stored in Terraform state or plan. Requires Terraform 1.11+. Mutually exclusive with `ClientKey`. Pair with `ClientKeyWoVersion` to push a rotated secret.
+        /// </summary>
+        public Input<string>? ClientKeyWo
+        {
+            get => _clientKeyWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientKeyWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Version counter for `ClientKeyWo`. Because write-only values are not stored in state, Terraform cannot detect when `ClientKeyWo` changes; increment this value to signal a rotation and force the new secret to be sent.
+        /// </summary>
+        [Input("clientKeyWoVersion")]
+        public Input<int>? ClientKeyWoVersion { get; set; }
 
         /// <summary>
         /// Description of the realm.
@@ -396,6 +432,12 @@ namespace Pulumi.ProxmoxVE.Realm
         public Input<string>? AcrValues { get; set; }
 
         /// <summary>
+        /// Audiences that the OpenID Issuer may include that are accepted for the client (comma-separated).
+        /// </summary>
+        [Input("audiences")]
+        public Input<string>? Audiences { get; set; }
+
+        /// <summary>
         /// Automatically create users on the Proxmox cluster if they do not exist.
         /// </summary>
         [Input("autocreate")]
@@ -422,6 +464,29 @@ namespace Pulumi.ProxmoxVE.Realm
                 _clientKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("clientKeyWo")]
+        private Input<string>? _clientKeyWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// OpenID Connect Client Key (secret), supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so it is never stored in Terraform state or plan. Requires Terraform 1.11+. Mutually exclusive with `ClientKey`. Pair with `ClientKeyWoVersion` to push a rotated secret.
+        /// </summary>
+        public Input<string>? ClientKeyWo
+        {
+            get => _clientKeyWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _clientKeyWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Version counter for `ClientKeyWo`. Because write-only values are not stored in state, Terraform cannot detect when `ClientKeyWo` changes; increment this value to signal a rotation and force the new secret to be sent.
+        /// </summary>
+        [Input("clientKeyWoVersion")]
+        public Input<int>? ClientKeyWoVersion { get; set; }
 
         /// <summary>
         /// Description of the realm.

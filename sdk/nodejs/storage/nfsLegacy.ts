@@ -83,6 +83,14 @@ export class NfsLegacy extends pulumi.CustomResource {
      */
     declare public readonly contents: pulumi.Output<string[]>;
     /**
+     * Create the base directory if it doesn't exist.
+     */
+    declare public readonly createBasePath: pulumi.Output<boolean>;
+    /**
+     * Populate the directory with the default structure.
+     */
+    declare public readonly createSubdirs: pulumi.Output<boolean>;
+    /**
      * Whether the storage is disabled.
      */
     declare public readonly disable: pulumi.Output<boolean>;
@@ -134,6 +142,8 @@ export class NfsLegacy extends pulumi.CustomResource {
             const state = argsOrState as NfsLegacyState | undefined;
             resourceInputs["backups"] = state?.backups;
             resourceInputs["contents"] = state?.contents;
+            resourceInputs["createBasePath"] = state?.createBasePath;
+            resourceInputs["createSubdirs"] = state?.createSubdirs;
             resourceInputs["disable"] = state?.disable;
             resourceInputs["export"] = state?.export;
             resourceInputs["nodes"] = state?.nodes;
@@ -156,6 +166,8 @@ export class NfsLegacy extends pulumi.CustomResource {
             }
             resourceInputs["backups"] = args?.backups;
             resourceInputs["contents"] = args?.contents;
+            resourceInputs["createBasePath"] = args?.createBasePath;
+            resourceInputs["createSubdirs"] = args?.createSubdirs;
             resourceInputs["disable"] = args?.disable;
             resourceInputs["export"] = args?.export;
             resourceInputs["nodes"] = args?.nodes;
@@ -183,6 +195,14 @@ export interface NfsLegacyState {
      * The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
      */
     contents?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Create the base directory if it doesn't exist.
+     */
+    createBasePath?: pulumi.Input<boolean | undefined>;
+    /**
+     * Populate the directory with the default structure.
+     */
+    createSubdirs?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the storage is disabled.
      */
@@ -233,6 +253,14 @@ export interface NfsLegacyArgs {
      * The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
      */
     contents?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Create the base directory if it doesn't exist.
+     */
+    createBasePath?: pulumi.Input<boolean | undefined>;
+    /**
+     * Populate the directory with the default structure.
+     */
+    createSubdirs?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the storage is disabled.
      */

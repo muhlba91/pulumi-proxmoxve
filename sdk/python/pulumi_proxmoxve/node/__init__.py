@@ -6,5 +6,15 @@ import builtins as _builtins
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .config import *
 from .firewall import *
 from .firewall_legacy import *
+from .get_config import *
+
+# Make subpackages available:
+if typing.TYPE_CHECKING:
+    import pulumi_proxmoxve.node.disk as __disk
+    disk = __disk
+else:
+    disk = _utilities.lazy_import('pulumi_proxmoxve.node.disk')
+

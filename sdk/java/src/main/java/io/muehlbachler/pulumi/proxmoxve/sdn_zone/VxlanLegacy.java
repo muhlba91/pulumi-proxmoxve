@@ -18,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-go=&#34;`sdn/zone.Vxlan`&#34; pulumi-lang-python=&#34;`sdn/zone.Vxlan`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Vxlan`&#34;&gt;`proxmoxve.sdn/zone.Vxlan`&lt;/span&gt; instead. This resource will be removed in v1.0.
+ * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-go=&#34;`sdn/zone.Vxlan`&#34; pulumi-lang-python=&#34;`sdn/zone.Vxlan`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Vxlan`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_zone_vxlan`&#34;&gt;`proxmoxve.sdn/zone.Vxlan`&lt;/span&gt; instead. This resource will be removed in v1.0.
  * 
  * VXLAN Zone in Proxmox SDN. It establishes a tunnel (overlay) on top of an existing network (underlay). This encapsulates layer 2 Ethernet frames within layer 4 UDP datagrams using the default destination port 4789. You have to configure the underlay network yourself to enable UDP connectivity between all peers. Because VXLAN encapsulation uses 50 bytes, the MTU needs to be 50 bytes lower than the outgoing physical interface.
  * 

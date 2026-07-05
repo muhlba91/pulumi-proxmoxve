@@ -1130,7 +1130,7 @@ class VmLegacyMemory(dict):
                  size: Optional[_builtins.int] = None):
         """
         :param _builtins.int balloon: Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely.
-        :param _builtins.str hugepages: Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses. 
+        :param _builtins.str hugepages: Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses.
                
                **Options:**
                - `2` - Use 2 MiB hugepages
@@ -1163,7 +1163,7 @@ class VmLegacyMemory(dict):
     @pulumi.getter
     def hugepages(self) -> Optional[_builtins.str]:
         """
-        Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses. 
+        Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses.
 
         **Options:**
         - `2` - Use 2 MiB hugepages
@@ -1530,7 +1530,7 @@ class VmMemory(dict):
                  size: Optional[_builtins.int] = None):
         """
         :param _builtins.int balloon: Minimum guaranteed memory in MiB via balloon device. This is the floor amount of RAM that is always guaranteed to the VM. Setting to `0` disables the balloon driver entirely.
-        :param _builtins.str hugepages: Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses. 
+        :param _builtins.str hugepages: Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses.
                
                **Options:**
                - `2` - Use 2 MiB hugepages
@@ -1563,7 +1563,7 @@ class VmMemory(dict):
     @pulumi.getter
     def hugepages(self) -> Optional[_builtins.str]:
         """
-        Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses. 
+        Enable hugepages for VM memory allocation. Hugepages can improve performance for memory-intensive workloads by reducing TLB misses.
 
         **Options:**
         - `2` - Use 2 MiB hugepages

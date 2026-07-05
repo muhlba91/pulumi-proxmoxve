@@ -18,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.network/linux.Bridge`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.network/linux.Bridge`&#34; pulumi-lang-go=&#34;`network/linux.Bridge`&#34; pulumi-lang-python=&#34;`network/linux.Bridge`&#34; pulumi-lang-yaml=&#34;`proxmoxve.network/linux.Bridge`&#34; pulumi-lang-java=&#34;`proxmoxve.network/linux.Bridge`&#34;&gt;`proxmoxve.network/linux.Bridge`&lt;/span&gt; instead. This resource will be removed in v1.0.
+ * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.network/linux.Bridge`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.network/linux.Bridge`&#34; pulumi-lang-go=&#34;`network/linux.Bridge`&#34; pulumi-lang-python=&#34;`network/linux.Bridge`&#34; pulumi-lang-yaml=&#34;`proxmoxve.network/linux.Bridge`&#34; pulumi-lang-java=&#34;`proxmoxve.network/linux.Bridge`&#34; pulumi-lang-hcl=&#34;`proxmox_network_linux_bridge`&#34;&gt;`proxmoxve.network/linux.Bridge`&lt;/span&gt; instead. This resource will be removed in v1.0.
  * 
  * Manages a Linux Bridge network interface in a Proxmox VE node.
  * 
@@ -114,14 +114,14 @@ public class BridgeLegacy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.address6);
     }
     /**
-     * Automatically start interface on boot (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * Automatically start interface on boot (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     @Export(name="autostart", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> autostart;
 
     /**
-     * @return Automatically start interface on boot (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * @return Automatically start interface on boot (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Output<Boolean> autostart() {
@@ -226,42 +226,42 @@ public class BridgeLegacy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ports);
     }
     /**
-     * Timeout for network reload operations in seconds (defaults to &lt;span pulumi-lang-nodejs=&#34;`100`&#34; pulumi-lang-dotnet=&#34;`100`&#34; pulumi-lang-go=&#34;`100`&#34; pulumi-lang-python=&#34;`100`&#34; pulumi-lang-yaml=&#34;`100`&#34; pulumi-lang-java=&#34;`100`&#34;&gt;`100`&lt;/span&gt;).
+     * Timeout for network reload operations in seconds (defaults to &lt;span pulumi-lang-nodejs=&#34;`100`&#34; pulumi-lang-dotnet=&#34;`100`&#34; pulumi-lang-go=&#34;`100`&#34; pulumi-lang-python=&#34;`100`&#34; pulumi-lang-yaml=&#34;`100`&#34; pulumi-lang-java=&#34;`100`&#34; pulumi-lang-hcl=&#34;`100`&#34;&gt;`100`&lt;/span&gt;).
      * 
      */
     @Export(name="timeoutReload", refs={Integer.class}, tree="[0]")
     private Output<Integer> timeoutReload;
 
     /**
-     * @return Timeout for network reload operations in seconds (defaults to &lt;span pulumi-lang-nodejs=&#34;`100`&#34; pulumi-lang-dotnet=&#34;`100`&#34; pulumi-lang-go=&#34;`100`&#34; pulumi-lang-python=&#34;`100`&#34; pulumi-lang-yaml=&#34;`100`&#34; pulumi-lang-java=&#34;`100`&#34;&gt;`100`&lt;/span&gt;).
+     * @return Timeout for network reload operations in seconds (defaults to &lt;span pulumi-lang-nodejs=&#34;`100`&#34; pulumi-lang-dotnet=&#34;`100`&#34; pulumi-lang-go=&#34;`100`&#34; pulumi-lang-python=&#34;`100`&#34; pulumi-lang-yaml=&#34;`100`&#34; pulumi-lang-java=&#34;`100`&#34; pulumi-lang-hcl=&#34;`100`&#34;&gt;`100`&lt;/span&gt;).
      * 
      */
     public Output<Integer> timeoutReload() {
         return this.timeoutReload;
     }
     /**
-     * VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `&#34;2-4094&#34;`, `&#34;1 20 130&#34;`, or `&#34;1 10-20 30&#34;`). Requires &lt;span pulumi-lang-nodejs=&#34;`vlanAware &#34; pulumi-lang-dotnet=&#34;`VlanAware &#34; pulumi-lang-go=&#34;`vlanAware &#34; pulumi-lang-python=&#34;`vlan_aware &#34; pulumi-lang-yaml=&#34;`vlanAware &#34; pulumi-lang-java=&#34;`vlanAware &#34;&gt;`vlanAware &lt;/span&gt;= true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
+     * VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `&#34;2-4094&#34;`, `&#34;1 20 130&#34;`, or `&#34;1 10-20 30&#34;`). Requires &lt;span pulumi-lang-nodejs=&#34;`vlanAware &#34; pulumi-lang-dotnet=&#34;`VlanAware &#34; pulumi-lang-go=&#34;`vlanAware &#34; pulumi-lang-python=&#34;`vlan_aware &#34; pulumi-lang-yaml=&#34;`vlanAware &#34; pulumi-lang-java=&#34;`vlanAware &#34; pulumi-lang-hcl=&#34;`vlan_aware &#34;&gt;`vlanAware &lt;/span&gt;= true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
      * 
      */
     @Export(name="vids", refs={String.class}, tree="[0]")
     private Output<String> vids;
 
     /**
-     * @return VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `&#34;2-4094&#34;`, `&#34;1 20 130&#34;`, or `&#34;1 10-20 30&#34;`). Requires &lt;span pulumi-lang-nodejs=&#34;`vlanAware &#34; pulumi-lang-dotnet=&#34;`VlanAware &#34; pulumi-lang-go=&#34;`vlanAware &#34; pulumi-lang-python=&#34;`vlan_aware &#34; pulumi-lang-yaml=&#34;`vlanAware &#34; pulumi-lang-java=&#34;`vlanAware &#34;&gt;`vlanAware &lt;/span&gt;= true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
+     * @return VLAN IDs allowed on the bridge (Linux Bridge `bridge-vids`). Space-separated list of VLAN IDs and/or hyphenated ranges (e.g. `&#34;2-4094&#34;`, `&#34;1 20 130&#34;`, or `&#34;1 10-20 30&#34;`). Requires &lt;span pulumi-lang-nodejs=&#34;`vlanAware &#34; pulumi-lang-dotnet=&#34;`VlanAware &#34; pulumi-lang-go=&#34;`vlanAware &#34; pulumi-lang-python=&#34;`vlan_aware &#34; pulumi-lang-yaml=&#34;`vlanAware &#34; pulumi-lang-java=&#34;`vlanAware &#34; pulumi-lang-hcl=&#34;`vlan_aware &#34;&gt;`vlanAware &lt;/span&gt;= true`. PVE/ifupdown2 fills in `2-4094` as the implicit default for VLAN-aware bridges when this attribute is omitted; the provider surfaces that default in state.
      * 
      */
     public Output<String> vids() {
         return this.vids;
     }
     /**
-     * Whether the interface bridge is VLAN aware (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * Whether the interface bridge is VLAN aware (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Export(name="vlanAware", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> vlanAware;
 
     /**
-     * @return Whether the interface bridge is VLAN aware (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * @return Whether the interface bridge is VLAN aware (defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Output<Boolean> vlanAware() {

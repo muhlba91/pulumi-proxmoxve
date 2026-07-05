@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { ConfigArgs, ConfigState } from "./config";
+export type Config = import("./config").Config;
+export const Config: typeof import("./config").Config = null as any;
+utilities.lazyLoad(exports, ["Config"], () => require("./config"));
+
 export { FirewallArgs, FirewallState } from "./firewall";
 export type Firewall = import("./firewall").Firewall;
 export const Firewall: typeof import("./firewall").Firewall = null as any;
@@ -15,11 +20,25 @@ export type FirewallLegacy = import("./firewallLegacy").FirewallLegacy;
 export const FirewallLegacy: typeof import("./firewallLegacy").FirewallLegacy = null as any;
 utilities.lazyLoad(exports, ["FirewallLegacy"], () => require("./firewallLegacy"));
 
+export { GetConfigArgs, GetConfigResult, GetConfigOutputArgs } from "./getConfig";
+export const getConfig: typeof import("./getConfig").getConfig = null as any;
+export const getConfigOutput: typeof import("./getConfig").getConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getConfig","getConfigOutput"], () => require("./getConfig"));
+
+
+// Export sub-modules:
+import * as disk from "./disk";
+
+export {
+    disk,
+};
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "proxmoxve:node/config:Config":
+                return new Config(name, <any>undefined, { urn })
             case "proxmoxve:node/firewall:Firewall":
                 return new Firewall(name, <any>undefined, { urn })
             case "proxmoxve:node/firewallLegacy:FirewallLegacy":
@@ -29,5 +48,6 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("proxmoxve", "node/config", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "node/firewall", _module)
 pulumi.runtime.registerResourceModule("proxmoxve", "node/firewallLegacy", _module)

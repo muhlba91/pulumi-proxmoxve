@@ -9,6 +9,11 @@ import * as utilities from "./utilities";
 /**
  * Manages a user group.
  *
+ * > **Deprecation:** the inline `acl` block is deprecated. Manage group ACLs via the dedicated
+ * `proxmoxve.Acl` resource instead. The `acl` block is no longer auto-populated from a
+ * cluster-wide fetch on refresh or import; existing configurations using `acl` blocks continue
+ * to work, but new code should use `proxmoxve.Acl`.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -58,7 +63,10 @@ export class GroupLegacy extends pulumi.CustomResource {
     }
 
     /**
-     * The access control list (multiple blocks supported).
+     * The access control list (multiple blocks supported). Use
+     * `proxmoxve.Acl` instead.
+     *
+     * @deprecated Manage ACLs via the dedicated `proxmoxve.Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `proxmoxve.Acl`.
      */
     declare public readonly acls: pulumi.Output<outputs.GroupLegacyAcl[] | undefined>;
     /**
@@ -111,7 +119,10 @@ export class GroupLegacy extends pulumi.CustomResource {
  */
 export interface GroupLegacyState {
     /**
-     * The access control list (multiple blocks supported).
+     * The access control list (multiple blocks supported). Use
+     * `proxmoxve.Acl` instead.
+     *
+     * @deprecated Manage ACLs via the dedicated `proxmoxve.Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `proxmoxve.Acl`.
      */
     acls?: pulumi.Input<pulumi.Input<inputs.GroupLegacyAcl>[] | undefined>;
     /**
@@ -133,7 +144,10 @@ export interface GroupLegacyState {
  */
 export interface GroupLegacyArgs {
     /**
-     * The access control list (multiple blocks supported).
+     * The access control list (multiple blocks supported). Use
+     * `proxmoxve.Acl` instead.
+     *
+     * @deprecated Manage ACLs via the dedicated `proxmoxve.Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing groups with `acl` blocks continue to work, but new code should use `proxmoxve.Acl`.
      */
     acls?: pulumi.Input<pulumi.Input<inputs.GroupLegacyAcl>[] | undefined>;
     /**

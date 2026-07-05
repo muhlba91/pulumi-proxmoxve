@@ -14,7 +14,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/fabric.Ospf`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/fabric.Ospf`&#34; pulumi-lang-go=&#34;`sdn/fabric.Ospf`&#34; pulumi-lang-python=&#34;`sdn/fabric.Ospf`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/fabric.Ospf`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/fabric.Ospf`&#34;&gt;`proxmoxve.sdn/fabric.Ospf`&lt;/span&gt; instead. This resource will be removed in v1.0.
+ * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/fabric.Ospf`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/fabric.Ospf`&#34; pulumi-lang-go=&#34;`sdn/fabric.Ospf`&#34; pulumi-lang-python=&#34;`sdn/fabric.Ospf`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/fabric.Ospf`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/fabric.Ospf`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_fabric_ospf`&#34;&gt;`proxmoxve.sdn/fabric.Ospf`&lt;/span&gt; instead. This resource will be removed in v1.0.
  * 
  * OSPF Fabric in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
  * 

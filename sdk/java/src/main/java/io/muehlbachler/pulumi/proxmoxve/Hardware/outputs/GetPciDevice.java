@@ -13,12 +13,12 @@ import java.util.Objects;
 @CustomType
 public final class GetPciDevice {
     /**
-     * @return The PCI class code (hex, e.g. &lt;span pulumi-lang-nodejs=&#34;`0x030000`&#34; pulumi-lang-dotnet=&#34;`0x030000`&#34; pulumi-lang-go=&#34;`0x030000`&#34; pulumi-lang-python=&#34;`0x030000`&#34; pulumi-lang-yaml=&#34;`0x030000`&#34; pulumi-lang-java=&#34;`0x030000`&#34;&gt;`0x030000`&lt;/span&gt;).
+     * @return The PCI class code (hex, e.g. &lt;span pulumi-lang-nodejs=&#34;`0x030000`&#34; pulumi-lang-dotnet=&#34;`0x030000`&#34; pulumi-lang-go=&#34;`0x030000`&#34; pulumi-lang-python=&#34;`0x030000`&#34; pulumi-lang-yaml=&#34;`0x030000`&#34; pulumi-lang-java=&#34;`0x030000`&#34; pulumi-lang-hcl=&#34;`0x030000`&#34;&gt;`0x030000`&lt;/span&gt;).
      * 
      */
     private String class_;
     /**
-     * @return The PCI device ID (hex, e.g. &lt;span pulumi-lang-nodejs=&#34;`0x5916`&#34; pulumi-lang-dotnet=&#34;`0x5916`&#34; pulumi-lang-go=&#34;`0x5916`&#34; pulumi-lang-python=&#34;`0x5916`&#34; pulumi-lang-yaml=&#34;`0x5916`&#34; pulumi-lang-java=&#34;`0x5916`&#34;&gt;`0x5916`&lt;/span&gt;).
+     * @return The PCI device ID (hex, e.g. &lt;span pulumi-lang-nodejs=&#34;`0x5916`&#34; pulumi-lang-dotnet=&#34;`0x5916`&#34; pulumi-lang-go=&#34;`0x5916`&#34; pulumi-lang-python=&#34;`0x5916`&#34; pulumi-lang-yaml=&#34;`0x5916`&#34; pulumi-lang-java=&#34;`0x5916`&#34; pulumi-lang-hcl=&#34;`0x5916`&#34;&gt;`0x5916`&lt;/span&gt;).
      * 
      */
     private String device;
@@ -63,7 +63,7 @@ public final class GetPciDevice {
      */
     private String subsystemVendorName;
     /**
-     * @return The PCI vendor ID (hex, e.g. &lt;span pulumi-lang-nodejs=&#34;`0x8086`&#34; pulumi-lang-dotnet=&#34;`0x8086`&#34; pulumi-lang-go=&#34;`0x8086`&#34; pulumi-lang-python=&#34;`0x8086`&#34; pulumi-lang-yaml=&#34;`0x8086`&#34; pulumi-lang-java=&#34;`0x8086`&#34;&gt;`0x8086`&lt;/span&gt;).
+     * @return The PCI vendor ID (hex, e.g. &lt;span pulumi-lang-nodejs=&#34;`0x8086`&#34; pulumi-lang-dotnet=&#34;`0x8086`&#34; pulumi-lang-go=&#34;`0x8086`&#34; pulumi-lang-python=&#34;`0x8086`&#34; pulumi-lang-yaml=&#34;`0x8086`&#34; pulumi-lang-java=&#34;`0x8086`&#34; pulumi-lang-hcl=&#34;`0x8086`&#34;&gt;`0x8086`&lt;/span&gt;).
      * 
      */
     private String vendor;
@@ -75,14 +75,14 @@ public final class GetPciDevice {
 
     private GetPciDevice() {}
     /**
-     * @return The PCI class code (hex, e.g. &lt;span pulumi-lang-nodejs=&#34;`0x030000`&#34; pulumi-lang-dotnet=&#34;`0x030000`&#34; pulumi-lang-go=&#34;`0x030000`&#34; pulumi-lang-python=&#34;`0x030000`&#34; pulumi-lang-yaml=&#34;`0x030000`&#34; pulumi-lang-java=&#34;`0x030000`&#34;&gt;`0x030000`&lt;/span&gt;).
+     * @return The PCI class code (hex, e.g. &lt;span pulumi-lang-nodejs=&#34;`0x030000`&#34; pulumi-lang-dotnet=&#34;`0x030000`&#34; pulumi-lang-go=&#34;`0x030000`&#34; pulumi-lang-python=&#34;`0x030000`&#34; pulumi-lang-yaml=&#34;`0x030000`&#34; pulumi-lang-java=&#34;`0x030000`&#34; pulumi-lang-hcl=&#34;`0x030000`&#34;&gt;`0x030000`&lt;/span&gt;).
      * 
      */
     public String class_() {
         return this.class_;
     }
     /**
-     * @return The PCI device ID (hex, e.g. &lt;span pulumi-lang-nodejs=&#34;`0x5916`&#34; pulumi-lang-dotnet=&#34;`0x5916`&#34; pulumi-lang-go=&#34;`0x5916`&#34; pulumi-lang-python=&#34;`0x5916`&#34; pulumi-lang-yaml=&#34;`0x5916`&#34; pulumi-lang-java=&#34;`0x5916`&#34;&gt;`0x5916`&lt;/span&gt;).
+     * @return The PCI device ID (hex, e.g. &lt;span pulumi-lang-nodejs=&#34;`0x5916`&#34; pulumi-lang-dotnet=&#34;`0x5916`&#34; pulumi-lang-go=&#34;`0x5916`&#34; pulumi-lang-python=&#34;`0x5916`&#34; pulumi-lang-yaml=&#34;`0x5916`&#34; pulumi-lang-java=&#34;`0x5916`&#34; pulumi-lang-hcl=&#34;`0x5916`&#34;&gt;`0x5916`&lt;/span&gt;).
      * 
      */
     public String device() {
@@ -145,7 +145,7 @@ public final class GetPciDevice {
         return this.subsystemVendorName;
     }
     /**
-     * @return The PCI vendor ID (hex, e.g. &lt;span pulumi-lang-nodejs=&#34;`0x8086`&#34; pulumi-lang-dotnet=&#34;`0x8086`&#34; pulumi-lang-go=&#34;`0x8086`&#34; pulumi-lang-python=&#34;`0x8086`&#34; pulumi-lang-yaml=&#34;`0x8086`&#34; pulumi-lang-java=&#34;`0x8086`&#34;&gt;`0x8086`&lt;/span&gt;).
+     * @return The PCI vendor ID (hex, e.g. &lt;span pulumi-lang-nodejs=&#34;`0x8086`&#34; pulumi-lang-dotnet=&#34;`0x8086`&#34; pulumi-lang-go=&#34;`0x8086`&#34; pulumi-lang-python=&#34;`0x8086`&#34; pulumi-lang-yaml=&#34;`0x8086`&#34; pulumi-lang-java=&#34;`0x8086`&#34; pulumi-lang-hcl=&#34;`0x8086`&#34;&gt;`0x8086`&lt;/span&gt;).
      * 
      */
     public String vendor() {

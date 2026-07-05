@@ -11,6 +11,7 @@ import io.muehlbachler.pulumi.proxmoxve.Utilities;
 import io.muehlbachler.pulumi.proxmoxve.realm.OpenidArgs;
 import io.muehlbachler.pulumi.proxmoxve.realm.inputs.OpenidState;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -77,24 +78,11 @@ import javax.annotation.Nullable;
  * 
  * ### Client Key Security
  * 
- * The &lt;span pulumi-lang-nodejs=&#34;`clientKey`&#34; pulumi-lang-dotnet=&#34;`ClientKey`&#34; pulumi-lang-go=&#34;`clientKey`&#34; pulumi-lang-python=&#34;`client_key`&#34; pulumi-lang-yaml=&#34;`clientKey`&#34; pulumi-lang-java=&#34;`clientKey`&#34;&gt;`clientKey`&lt;/span&gt; is sent to Proxmox and stored securely, but it&#39;s never returned by the API. This means:
+ * The &lt;span pulumi-lang-nodejs=&#34;`clientKey`&#34; pulumi-lang-dotnet=&#34;`ClientKey`&#34; pulumi-lang-go=&#34;`clientKey`&#34; pulumi-lang-python=&#34;`client_key`&#34; pulumi-lang-yaml=&#34;`clientKey`&#34; pulumi-lang-java=&#34;`clientKey`&#34; pulumi-lang-hcl=&#34;`client_key`&#34;&gt;`clientKey`&lt;/span&gt; is sent to Proxmox and stored securely, but it&#39;s never returned by the API. This means:
  * 
  * - Terraform cannot detect if the client key was changed outside of Terraform
  * - You must maintain the client key in your Terraform configuration or use a variable
  * - The client key will be marked as sensitive in Terraform state
- * 
- * ### Username Claim
- * 
- * The &lt;span pulumi-lang-nodejs=&#34;`usernameClaim`&#34; pulumi-lang-dotnet=&#34;`UsernameClaim`&#34; pulumi-lang-go=&#34;`usernameClaim`&#34; pulumi-lang-python=&#34;`username_claim`&#34; pulumi-lang-yaml=&#34;`usernameClaim`&#34; pulumi-lang-java=&#34;`usernameClaim`&#34;&gt;`usernameClaim`&lt;/span&gt; attribute is **fixed after creation** — it cannot be changed once the realm is created. Changing it requires destroying and recreating the realm. Common values:
- * 
- * - &lt;span pulumi-lang-nodejs=&#34;`subject`&#34; pulumi-lang-dotnet=&#34;`Subject`&#34; pulumi-lang-go=&#34;`subject`&#34; pulumi-lang-python=&#34;`subject`&#34; pulumi-lang-yaml=&#34;`subject`&#34; pulumi-lang-java=&#34;`subject`&#34;&gt;`subject`&lt;/span&gt; (default) — Uses the OpenID &lt;span pulumi-lang-nodejs=&#34;`sub`&#34; pulumi-lang-dotnet=&#34;`Sub`&#34; pulumi-lang-go=&#34;`sub`&#34; pulumi-lang-python=&#34;`sub`&#34; pulumi-lang-yaml=&#34;`sub`&#34; pulumi-lang-java=&#34;`sub`&#34;&gt;`sub`&lt;/span&gt; claim
- * - &lt;span pulumi-lang-nodejs=&#34;`username`&#34; pulumi-lang-dotnet=&#34;`Username`&#34; pulumi-lang-go=&#34;`username`&#34; pulumi-lang-python=&#34;`username`&#34; pulumi-lang-yaml=&#34;`username`&#34; pulumi-lang-java=&#34;`username`&#34;&gt;`username`&lt;/span&gt; — Uses the &lt;span pulumi-lang-nodejs=&#34;`preferredUsername`&#34; pulumi-lang-dotnet=&#34;`PreferredUsername`&#34; pulumi-lang-go=&#34;`preferredUsername`&#34; pulumi-lang-python=&#34;`preferred_username`&#34; pulumi-lang-yaml=&#34;`preferredUsername`&#34; pulumi-lang-java=&#34;`preferredUsername`&#34;&gt;`preferredUsername`&lt;/span&gt; claim
- * - &lt;span pulumi-lang-nodejs=&#34;`email`&#34; pulumi-lang-dotnet=&#34;`Email`&#34; pulumi-lang-go=&#34;`email`&#34; pulumi-lang-python=&#34;`email`&#34; pulumi-lang-yaml=&#34;`email`&#34; pulumi-lang-java=&#34;`email`&#34;&gt;`email`&lt;/span&gt; — Uses the &lt;span pulumi-lang-nodejs=&#34;`email`&#34; pulumi-lang-dotnet=&#34;`Email`&#34; pulumi-lang-go=&#34;`email`&#34; pulumi-lang-python=&#34;`email`&#34; pulumi-lang-yaml=&#34;`email`&#34; pulumi-lang-java=&#34;`email`&#34;&gt;`email`&lt;/span&gt; claim
- * - &lt;span pulumi-lang-nodejs=&#34;`upn`&#34; pulumi-lang-dotnet=&#34;`Upn`&#34; pulumi-lang-go=&#34;`upn`&#34; pulumi-lang-python=&#34;`upn`&#34; pulumi-lang-yaml=&#34;`upn`&#34; pulumi-lang-java=&#34;`upn`&#34;&gt;`upn`&lt;/span&gt; — Uses the User Principal Name claim (common with ADFS/Azure AD)
- * 
- * Any valid OpenID claim name can be used. Ensure the chosen claim provides unique, stable identifiers for your users.
- * 
- * ### Common Configuration Scenarios
  * 
  * #### Minimal Configuration
  * 
@@ -193,7 +181,7 @@ import javax.annotation.Nullable;
  * $ pulumi import proxmoxve:realm/openid:Openid example example-oidc
  * ```
  * 
- * &gt; When importing, the &lt;span pulumi-lang-nodejs=&#34;`clientKey`&#34; pulumi-lang-dotnet=&#34;`ClientKey`&#34; pulumi-lang-go=&#34;`clientKey`&#34; pulumi-lang-python=&#34;`client_key`&#34; pulumi-lang-yaml=&#34;`clientKey`&#34; pulumi-lang-java=&#34;`clientKey`&#34;&gt;`clientKey`&lt;/span&gt; attribute cannot be imported since it&#39;s not returned by the Proxmox API. You&#39;ll need to set this attribute in your Terraform configuration after the import to manage it with Terraform.
+ * &gt; When importing, the &lt;span pulumi-lang-nodejs=&#34;`clientKey`&#34; pulumi-lang-dotnet=&#34;`ClientKey`&#34; pulumi-lang-go=&#34;`clientKey`&#34; pulumi-lang-python=&#34;`client_key`&#34; pulumi-lang-yaml=&#34;`clientKey`&#34; pulumi-lang-java=&#34;`clientKey`&#34; pulumi-lang-hcl=&#34;`client_key`&#34;&gt;`clientKey`&lt;/span&gt; attribute cannot be imported since it&#39;s not returned by the Proxmox API. You&#39;ll need to set this attribute in your Terraform configuration after the import to manage it with Terraform.
  * 
  */
 @ResourceType(type="proxmoxve:realm/openid:Openid")
@@ -211,6 +199,20 @@ public class Openid extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> acrValues() {
         return Codegen.optional(this.acrValues);
+    }
+    /**
+     * Audiences that the OpenID Issuer may include that are accepted for the client (comma-separated).
+     * 
+     */
+    @Export(name="audiences", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> audiences;
+
+    /**
+     * @return Audiences that the OpenID Issuer may include that are accepted for the client (comma-separated).
+     * 
+     */
+    public Output<Optional<String>> audiences() {
+        return Codegen.optional(this.audiences);
     }
     /**
      * Automatically create users on the Proxmox cluster if they do not exist.
@@ -253,6 +255,36 @@ public class Openid extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> clientKey() {
         return Codegen.optional(this.clientKey);
+    }
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * OpenID Connect Client Key (secret), supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so it is never stored in Terraform state or plan. Requires Terraform 1.11+. Mutually exclusive with &lt;span pulumi-lang-nodejs=&#34;`clientKey`&#34; pulumi-lang-dotnet=&#34;`ClientKey`&#34; pulumi-lang-go=&#34;`clientKey`&#34; pulumi-lang-python=&#34;`client_key`&#34; pulumi-lang-yaml=&#34;`clientKey`&#34; pulumi-lang-java=&#34;`clientKey`&#34; pulumi-lang-hcl=&#34;`client_key`&#34;&gt;`clientKey`&lt;/span&gt;. Pair with &lt;span pulumi-lang-nodejs=&#34;`clientKeyWoVersion`&#34; pulumi-lang-dotnet=&#34;`ClientKeyWoVersion`&#34; pulumi-lang-go=&#34;`clientKeyWoVersion`&#34; pulumi-lang-python=&#34;`client_key_wo_version`&#34; pulumi-lang-yaml=&#34;`clientKeyWoVersion`&#34; pulumi-lang-java=&#34;`clientKeyWoVersion`&#34; pulumi-lang-hcl=&#34;`client_key_wo_version`&#34;&gt;`clientKeyWoVersion`&lt;/span&gt; to push a rotated secret.
+     * 
+     */
+    @Export(name="clientKeyWo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> clientKeyWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * OpenID Connect Client Key (secret), supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so it is never stored in Terraform state or plan. Requires Terraform 1.11+. Mutually exclusive with &lt;span pulumi-lang-nodejs=&#34;`clientKey`&#34; pulumi-lang-dotnet=&#34;`ClientKey`&#34; pulumi-lang-go=&#34;`clientKey`&#34; pulumi-lang-python=&#34;`client_key`&#34; pulumi-lang-yaml=&#34;`clientKey`&#34; pulumi-lang-java=&#34;`clientKey`&#34; pulumi-lang-hcl=&#34;`client_key`&#34;&gt;`clientKey`&lt;/span&gt;. Pair with &lt;span pulumi-lang-nodejs=&#34;`clientKeyWoVersion`&#34; pulumi-lang-dotnet=&#34;`ClientKeyWoVersion`&#34; pulumi-lang-go=&#34;`clientKeyWoVersion`&#34; pulumi-lang-python=&#34;`client_key_wo_version`&#34; pulumi-lang-yaml=&#34;`clientKeyWoVersion`&#34; pulumi-lang-java=&#34;`clientKeyWoVersion`&#34; pulumi-lang-hcl=&#34;`client_key_wo_version`&#34;&gt;`clientKeyWoVersion`&lt;/span&gt; to push a rotated secret.
+     * 
+     */
+    public Output<Optional<String>> clientKeyWo() {
+        return Codegen.optional(this.clientKeyWo);
+    }
+    /**
+     * Version counter for &lt;span pulumi-lang-nodejs=&#34;`clientKeyWo`&#34; pulumi-lang-dotnet=&#34;`ClientKeyWo`&#34; pulumi-lang-go=&#34;`clientKeyWo`&#34; pulumi-lang-python=&#34;`client_key_wo`&#34; pulumi-lang-yaml=&#34;`clientKeyWo`&#34; pulumi-lang-java=&#34;`clientKeyWo`&#34; pulumi-lang-hcl=&#34;`client_key_wo`&#34;&gt;`clientKeyWo`&lt;/span&gt;. Because write-only values are not stored in state, Terraform cannot detect when &lt;span pulumi-lang-nodejs=&#34;`clientKeyWo`&#34; pulumi-lang-dotnet=&#34;`ClientKeyWo`&#34; pulumi-lang-go=&#34;`clientKeyWo`&#34; pulumi-lang-python=&#34;`client_key_wo`&#34; pulumi-lang-yaml=&#34;`clientKeyWo`&#34; pulumi-lang-java=&#34;`clientKeyWo`&#34; pulumi-lang-hcl=&#34;`client_key_wo`&#34;&gt;`clientKeyWo`&lt;/span&gt; changes; increment this value to signal a rotation and force the new secret to be sent.
+     * 
+     */
+    @Export(name="clientKeyWoVersion", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> clientKeyWoVersion;
+
+    /**
+     * @return Version counter for &lt;span pulumi-lang-nodejs=&#34;`clientKeyWo`&#34; pulumi-lang-dotnet=&#34;`ClientKeyWo`&#34; pulumi-lang-go=&#34;`clientKeyWo`&#34; pulumi-lang-python=&#34;`client_key_wo`&#34; pulumi-lang-yaml=&#34;`clientKeyWo`&#34; pulumi-lang-java=&#34;`clientKeyWo`&#34; pulumi-lang-hcl=&#34;`client_key_wo`&#34;&gt;`clientKeyWo`&lt;/span&gt;. Because write-only values are not stored in state, Terraform cannot detect when &lt;span pulumi-lang-nodejs=&#34;`clientKeyWo`&#34; pulumi-lang-dotnet=&#34;`ClientKeyWo`&#34; pulumi-lang-go=&#34;`clientKeyWo`&#34; pulumi-lang-python=&#34;`client_key_wo`&#34; pulumi-lang-yaml=&#34;`clientKeyWo`&#34; pulumi-lang-java=&#34;`clientKeyWo`&#34; pulumi-lang-hcl=&#34;`client_key_wo`&#34;&gt;`clientKeyWo`&lt;/span&gt; changes; increment this value to signal a rotation and force the new secret to be sent.
+     * 
+     */
+    public Output<Optional<Integer>> clientKeyWoVersion() {
+        return Codegen.optional(this.clientKeyWoVersion);
     }
     /**
      * Description of the realm.
@@ -395,14 +427,14 @@ public class Openid extends com.pulumi.resources.CustomResource {
         return this.scopes;
     }
     /**
-     * OpenID claim used to generate the unique username. Common values are &lt;span pulumi-lang-nodejs=&#34;`subject`&#34; pulumi-lang-dotnet=&#34;`Subject`&#34; pulumi-lang-go=&#34;`subject`&#34; pulumi-lang-python=&#34;`subject`&#34; pulumi-lang-yaml=&#34;`subject`&#34; pulumi-lang-java=&#34;`subject`&#34;&gt;`subject`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`username`&#34; pulumi-lang-dotnet=&#34;`Username`&#34; pulumi-lang-go=&#34;`username`&#34; pulumi-lang-python=&#34;`username`&#34; pulumi-lang-yaml=&#34;`username`&#34; pulumi-lang-java=&#34;`username`&#34;&gt;`username`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`email`&#34; pulumi-lang-dotnet=&#34;`Email`&#34; pulumi-lang-go=&#34;`email`&#34; pulumi-lang-python=&#34;`email`&#34; pulumi-lang-yaml=&#34;`email`&#34; pulumi-lang-java=&#34;`email`&#34;&gt;`email`&lt;/span&gt;, and &lt;span pulumi-lang-nodejs=&#34;`upn`&#34; pulumi-lang-dotnet=&#34;`Upn`&#34; pulumi-lang-go=&#34;`upn`&#34; pulumi-lang-python=&#34;`upn`&#34; pulumi-lang-yaml=&#34;`upn`&#34; pulumi-lang-java=&#34;`upn`&#34;&gt;`upn`&lt;/span&gt;.
+     * OpenID claim used to generate the unique username. Common values are &lt;span pulumi-lang-nodejs=&#34;`subject`&#34; pulumi-lang-dotnet=&#34;`Subject`&#34; pulumi-lang-go=&#34;`subject`&#34; pulumi-lang-python=&#34;`subject`&#34; pulumi-lang-yaml=&#34;`subject`&#34; pulumi-lang-java=&#34;`subject`&#34; pulumi-lang-hcl=&#34;`subject`&#34;&gt;`subject`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`username`&#34; pulumi-lang-dotnet=&#34;`Username`&#34; pulumi-lang-go=&#34;`username`&#34; pulumi-lang-python=&#34;`username`&#34; pulumi-lang-yaml=&#34;`username`&#34; pulumi-lang-java=&#34;`username`&#34; pulumi-lang-hcl=&#34;`username`&#34;&gt;`username`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`email`&#34; pulumi-lang-dotnet=&#34;`Email`&#34; pulumi-lang-go=&#34;`email`&#34; pulumi-lang-python=&#34;`email`&#34; pulumi-lang-yaml=&#34;`email`&#34; pulumi-lang-java=&#34;`email`&#34; pulumi-lang-hcl=&#34;`email`&#34;&gt;`email`&lt;/span&gt;, and &lt;span pulumi-lang-nodejs=&#34;`upn`&#34; pulumi-lang-dotnet=&#34;`Upn`&#34; pulumi-lang-go=&#34;`upn`&#34; pulumi-lang-python=&#34;`upn`&#34; pulumi-lang-yaml=&#34;`upn`&#34; pulumi-lang-java=&#34;`upn`&#34; pulumi-lang-hcl=&#34;`upn`&#34;&gt;`upn`&lt;/span&gt;.
      * 
      */
     @Export(name="usernameClaim", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> usernameClaim;
 
     /**
-     * @return OpenID claim used to generate the unique username. Common values are &lt;span pulumi-lang-nodejs=&#34;`subject`&#34; pulumi-lang-dotnet=&#34;`Subject`&#34; pulumi-lang-go=&#34;`subject`&#34; pulumi-lang-python=&#34;`subject`&#34; pulumi-lang-yaml=&#34;`subject`&#34; pulumi-lang-java=&#34;`subject`&#34;&gt;`subject`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`username`&#34; pulumi-lang-dotnet=&#34;`Username`&#34; pulumi-lang-go=&#34;`username`&#34; pulumi-lang-python=&#34;`username`&#34; pulumi-lang-yaml=&#34;`username`&#34; pulumi-lang-java=&#34;`username`&#34;&gt;`username`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`email`&#34; pulumi-lang-dotnet=&#34;`Email`&#34; pulumi-lang-go=&#34;`email`&#34; pulumi-lang-python=&#34;`email`&#34; pulumi-lang-yaml=&#34;`email`&#34; pulumi-lang-java=&#34;`email`&#34;&gt;`email`&lt;/span&gt;, and &lt;span pulumi-lang-nodejs=&#34;`upn`&#34; pulumi-lang-dotnet=&#34;`Upn`&#34; pulumi-lang-go=&#34;`upn`&#34; pulumi-lang-python=&#34;`upn`&#34; pulumi-lang-yaml=&#34;`upn`&#34; pulumi-lang-java=&#34;`upn`&#34;&gt;`upn`&lt;/span&gt;.
+     * @return OpenID claim used to generate the unique username. Common values are &lt;span pulumi-lang-nodejs=&#34;`subject`&#34; pulumi-lang-dotnet=&#34;`Subject`&#34; pulumi-lang-go=&#34;`subject`&#34; pulumi-lang-python=&#34;`subject`&#34; pulumi-lang-yaml=&#34;`subject`&#34; pulumi-lang-java=&#34;`subject`&#34; pulumi-lang-hcl=&#34;`subject`&#34;&gt;`subject`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`username`&#34; pulumi-lang-dotnet=&#34;`Username`&#34; pulumi-lang-go=&#34;`username`&#34; pulumi-lang-python=&#34;`username`&#34; pulumi-lang-yaml=&#34;`username`&#34; pulumi-lang-java=&#34;`username`&#34; pulumi-lang-hcl=&#34;`username`&#34;&gt;`username`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`email`&#34; pulumi-lang-dotnet=&#34;`Email`&#34; pulumi-lang-go=&#34;`email`&#34; pulumi-lang-python=&#34;`email`&#34; pulumi-lang-yaml=&#34;`email`&#34; pulumi-lang-java=&#34;`email`&#34; pulumi-lang-hcl=&#34;`email`&#34;&gt;`email`&lt;/span&gt;, and &lt;span pulumi-lang-nodejs=&#34;`upn`&#34; pulumi-lang-dotnet=&#34;`Upn`&#34; pulumi-lang-go=&#34;`upn`&#34; pulumi-lang-python=&#34;`upn`&#34; pulumi-lang-yaml=&#34;`upn`&#34; pulumi-lang-java=&#34;`upn`&#34; pulumi-lang-hcl=&#34;`upn`&#34;&gt;`upn`&lt;/span&gt;.
      * 
      */
     public Output<Optional<String>> usernameClaim() {
@@ -450,7 +482,8 @@ public class Openid extends com.pulumi.resources.CustomResource {
             .version(Utilities.getVersion())
             .pluginDownloadURL("github://api.github.com/muhlba91/pulumi-proxmoxve")
             .additionalSecretOutputs(List.of(
-                "clientKey"
+                "clientKey",
+                "clientKeyWo"
             ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);

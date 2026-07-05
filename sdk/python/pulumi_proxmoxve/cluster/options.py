@@ -28,6 +28,11 @@ class OptionsArgs:
                  bandwidth_limit_restore: pulumi.Input[Optional[_builtins.int]] = None,
                  console: pulumi.Input[Optional[_builtins.str]] = None,
                  crs_ha: pulumi.Input[Optional[_builtins.str]] = None,
+                 crs_ha_auto_rebalance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 crs_ha_auto_rebalance_hold_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 crs_ha_auto_rebalance_margin: pulumi.Input[Optional[_builtins.int]] = None,
+                 crs_ha_auto_rebalance_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 crs_ha_auto_rebalance_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  crs_ha_rebalance_on_start: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  email_from: pulumi.Input[Optional[_builtins.str]] = None,
@@ -50,7 +55,12 @@ class OptionsArgs:
         :param pulumi.Input[_builtins.int] bandwidth_limit_move: Move I/O bandwidth limit in KiB/s.
         :param pulumi.Input[_builtins.int] bandwidth_limit_restore: Restore I/O bandwidth limit in KiB/s.
         :param pulumi.Input[_builtins.str] console: Select the default Console viewer. Must be `applet` | `vv`| `html5` | `xtermjs`. You can either use the builtin java applet (VNC; deprecated and maps to html5), an external virt-viewer compatible application (SPICE), an HTML5 based vnc viewer (noVNC), or an HTML5 based console client (xtermjs). If the selected viewer is not available (e.g. SPICE not activated for the VM), the fallback is noVNC.
-        :param pulumi.Input[_builtins.str] crs_ha: Cluster resource scheduling setting for HA. Must be `static` | `basic` (default is `basic`).
+        :param pulumi.Input[_builtins.str] crs_ha: Cluster resource scheduling setting for HA. Must be `static` | `basic` | `dynamic` (default is `basic`). `dynamic` requires Proxmox VE 9.2+.
+        :param pulumi.Input[_builtins.bool] crs_ha_auto_rebalance: Whether to use CRS for balancing HA resources automatically depending on the current node imbalance. Requires Proxmox VE 9.2+.
+        :param pulumi.Input[_builtins.int] crs_ha_auto_rebalance_hold_duration: The number of HA rounds for which the cluster node imbalance threshold must be exceeded before triggering an automatic resource balancing migration (default is `3`). Requires Proxmox VE 9.2+.
+        :param pulumi.Input[_builtins.int] crs_ha_auto_rebalance_margin: The minimum relative improvement in cluster node imbalance, in percent, to commit to a resource balancing migration. Must be between `0` and `100` (default is `10`). Requires Proxmox VE 9.2+.
+        :param pulumi.Input[_builtins.str] crs_ha_auto_rebalance_method: The method to use for the scoring of balancing migrations. Must be `bruteforce` | `topsis` (default is `bruteforce`). Requires Proxmox VE 9.2+.
+        :param pulumi.Input[_builtins.int] crs_ha_auto_rebalance_threshold: The cluster node imbalance, in percent, which will trigger the automatic resource balancing system if exceeded. Must be between `0` and `100` (default is `30`). Requires Proxmox VE 9.2+.
         :param pulumi.Input[_builtins.bool] crs_ha_rebalance_on_start: Cluster resource scheduling setting for HA rebalance on start.
         :param pulumi.Input[_builtins.str] description: Datacenter description. Shown in the web-interface datacenter notes panel. This is saved as comment inside the configuration file.
         :param pulumi.Input[_builtins.str] email_from: email address to send notification from (default is root@$hostname).
@@ -79,6 +89,16 @@ class OptionsArgs:
             pulumi.set(__self__, "console", console)
         if crs_ha is not None:
             pulumi.set(__self__, "crs_ha", crs_ha)
+        if crs_ha_auto_rebalance is not None:
+            pulumi.set(__self__, "crs_ha_auto_rebalance", crs_ha_auto_rebalance)
+        if crs_ha_auto_rebalance_hold_duration is not None:
+            pulumi.set(__self__, "crs_ha_auto_rebalance_hold_duration", crs_ha_auto_rebalance_hold_duration)
+        if crs_ha_auto_rebalance_margin is not None:
+            pulumi.set(__self__, "crs_ha_auto_rebalance_margin", crs_ha_auto_rebalance_margin)
+        if crs_ha_auto_rebalance_method is not None:
+            pulumi.set(__self__, "crs_ha_auto_rebalance_method", crs_ha_auto_rebalance_method)
+        if crs_ha_auto_rebalance_threshold is not None:
+            pulumi.set(__self__, "crs_ha_auto_rebalance_threshold", crs_ha_auto_rebalance_threshold)
         if crs_ha_rebalance_on_start is not None:
             pulumi.set(__self__, "crs_ha_rebalance_on_start", crs_ha_rebalance_on_start)
         if description is not None:
@@ -182,13 +202,73 @@ class OptionsArgs:
     @pulumi.getter(name="crsHa")
     def crs_ha(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Cluster resource scheduling setting for HA. Must be `static` | `basic` (default is `basic`).
+        Cluster resource scheduling setting for HA. Must be `static` | `basic` | `dynamic` (default is `basic`). `dynamic` requires Proxmox VE 9.2+.
         """
         return pulumi.get(self, "crs_ha")
 
     @crs_ha.setter
     def crs_ha(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "crs_ha", value)
+
+    @_builtins.property
+    @pulumi.getter(name="crsHaAutoRebalance")
+    def crs_ha_auto_rebalance(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to use CRS for balancing HA resources automatically depending on the current node imbalance. Requires Proxmox VE 9.2+.
+        """
+        return pulumi.get(self, "crs_ha_auto_rebalance")
+
+    @crs_ha_auto_rebalance.setter
+    def crs_ha_auto_rebalance(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "crs_ha_auto_rebalance", value)
+
+    @_builtins.property
+    @pulumi.getter(name="crsHaAutoRebalanceHoldDuration")
+    def crs_ha_auto_rebalance_hold_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of HA rounds for which the cluster node imbalance threshold must be exceeded before triggering an automatic resource balancing migration (default is `3`). Requires Proxmox VE 9.2+.
+        """
+        return pulumi.get(self, "crs_ha_auto_rebalance_hold_duration")
+
+    @crs_ha_auto_rebalance_hold_duration.setter
+    def crs_ha_auto_rebalance_hold_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "crs_ha_auto_rebalance_hold_duration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="crsHaAutoRebalanceMargin")
+    def crs_ha_auto_rebalance_margin(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The minimum relative improvement in cluster node imbalance, in percent, to commit to a resource balancing migration. Must be between `0` and `100` (default is `10`). Requires Proxmox VE 9.2+.
+        """
+        return pulumi.get(self, "crs_ha_auto_rebalance_margin")
+
+    @crs_ha_auto_rebalance_margin.setter
+    def crs_ha_auto_rebalance_margin(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "crs_ha_auto_rebalance_margin", value)
+
+    @_builtins.property
+    @pulumi.getter(name="crsHaAutoRebalanceMethod")
+    def crs_ha_auto_rebalance_method(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The method to use for the scoring of balancing migrations. Must be `bruteforce` | `topsis` (default is `bruteforce`). Requires Proxmox VE 9.2+.
+        """
+        return pulumi.get(self, "crs_ha_auto_rebalance_method")
+
+    @crs_ha_auto_rebalance_method.setter
+    def crs_ha_auto_rebalance_method(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "crs_ha_auto_rebalance_method", value)
+
+    @_builtins.property
+    @pulumi.getter(name="crsHaAutoRebalanceThreshold")
+    def crs_ha_auto_rebalance_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The cluster node imbalance, in percent, which will trigger the automatic resource balancing system if exceeded. Must be between `0` and `100` (default is `30`). Requires Proxmox VE 9.2+.
+        """
+        return pulumi.get(self, "crs_ha_auto_rebalance_threshold")
+
+    @crs_ha_auto_rebalance_threshold.setter
+    def crs_ha_auto_rebalance_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "crs_ha_auto_rebalance_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="crsHaRebalanceOnStart")
@@ -357,6 +437,11 @@ class _OptionsState:
                  bandwidth_limit_restore: pulumi.Input[Optional[_builtins.int]] = None,
                  console: pulumi.Input[Optional[_builtins.str]] = None,
                  crs_ha: pulumi.Input[Optional[_builtins.str]] = None,
+                 crs_ha_auto_rebalance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 crs_ha_auto_rebalance_hold_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 crs_ha_auto_rebalance_margin: pulumi.Input[Optional[_builtins.int]] = None,
+                 crs_ha_auto_rebalance_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 crs_ha_auto_rebalance_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  crs_ha_rebalance_on_start: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  email_from: pulumi.Input[Optional[_builtins.str]] = None,
@@ -379,7 +464,12 @@ class _OptionsState:
         :param pulumi.Input[_builtins.int] bandwidth_limit_move: Move I/O bandwidth limit in KiB/s.
         :param pulumi.Input[_builtins.int] bandwidth_limit_restore: Restore I/O bandwidth limit in KiB/s.
         :param pulumi.Input[_builtins.str] console: Select the default Console viewer. Must be `applet` | `vv`| `html5` | `xtermjs`. You can either use the builtin java applet (VNC; deprecated and maps to html5), an external virt-viewer compatible application (SPICE), an HTML5 based vnc viewer (noVNC), or an HTML5 based console client (xtermjs). If the selected viewer is not available (e.g. SPICE not activated for the VM), the fallback is noVNC.
-        :param pulumi.Input[_builtins.str] crs_ha: Cluster resource scheduling setting for HA. Must be `static` | `basic` (default is `basic`).
+        :param pulumi.Input[_builtins.str] crs_ha: Cluster resource scheduling setting for HA. Must be `static` | `basic` | `dynamic` (default is `basic`). `dynamic` requires Proxmox VE 9.2+.
+        :param pulumi.Input[_builtins.bool] crs_ha_auto_rebalance: Whether to use CRS for balancing HA resources automatically depending on the current node imbalance. Requires Proxmox VE 9.2+.
+        :param pulumi.Input[_builtins.int] crs_ha_auto_rebalance_hold_duration: The number of HA rounds for which the cluster node imbalance threshold must be exceeded before triggering an automatic resource balancing migration (default is `3`). Requires Proxmox VE 9.2+.
+        :param pulumi.Input[_builtins.int] crs_ha_auto_rebalance_margin: The minimum relative improvement in cluster node imbalance, in percent, to commit to a resource balancing migration. Must be between `0` and `100` (default is `10`). Requires Proxmox VE 9.2+.
+        :param pulumi.Input[_builtins.str] crs_ha_auto_rebalance_method: The method to use for the scoring of balancing migrations. Must be `bruteforce` | `topsis` (default is `bruteforce`). Requires Proxmox VE 9.2+.
+        :param pulumi.Input[_builtins.int] crs_ha_auto_rebalance_threshold: The cluster node imbalance, in percent, which will trigger the automatic resource balancing system if exceeded. Must be between `0` and `100` (default is `30`). Requires Proxmox VE 9.2+.
         :param pulumi.Input[_builtins.bool] crs_ha_rebalance_on_start: Cluster resource scheduling setting for HA rebalance on start.
         :param pulumi.Input[_builtins.str] description: Datacenter description. Shown in the web-interface datacenter notes panel. This is saved as comment inside the configuration file.
         :param pulumi.Input[_builtins.str] email_from: email address to send notification from (default is root@$hostname).
@@ -408,6 +498,16 @@ class _OptionsState:
             pulumi.set(__self__, "console", console)
         if crs_ha is not None:
             pulumi.set(__self__, "crs_ha", crs_ha)
+        if crs_ha_auto_rebalance is not None:
+            pulumi.set(__self__, "crs_ha_auto_rebalance", crs_ha_auto_rebalance)
+        if crs_ha_auto_rebalance_hold_duration is not None:
+            pulumi.set(__self__, "crs_ha_auto_rebalance_hold_duration", crs_ha_auto_rebalance_hold_duration)
+        if crs_ha_auto_rebalance_margin is not None:
+            pulumi.set(__self__, "crs_ha_auto_rebalance_margin", crs_ha_auto_rebalance_margin)
+        if crs_ha_auto_rebalance_method is not None:
+            pulumi.set(__self__, "crs_ha_auto_rebalance_method", crs_ha_auto_rebalance_method)
+        if crs_ha_auto_rebalance_threshold is not None:
+            pulumi.set(__self__, "crs_ha_auto_rebalance_threshold", crs_ha_auto_rebalance_threshold)
         if crs_ha_rebalance_on_start is not None:
             pulumi.set(__self__, "crs_ha_rebalance_on_start", crs_ha_rebalance_on_start)
         if description is not None:
@@ -511,13 +611,73 @@ class _OptionsState:
     @pulumi.getter(name="crsHa")
     def crs_ha(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Cluster resource scheduling setting for HA. Must be `static` | `basic` (default is `basic`).
+        Cluster resource scheduling setting for HA. Must be `static` | `basic` | `dynamic` (default is `basic`). `dynamic` requires Proxmox VE 9.2+.
         """
         return pulumi.get(self, "crs_ha")
 
     @crs_ha.setter
     def crs_ha(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "crs_ha", value)
+
+    @_builtins.property
+    @pulumi.getter(name="crsHaAutoRebalance")
+    def crs_ha_auto_rebalance(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to use CRS for balancing HA resources automatically depending on the current node imbalance. Requires Proxmox VE 9.2+.
+        """
+        return pulumi.get(self, "crs_ha_auto_rebalance")
+
+    @crs_ha_auto_rebalance.setter
+    def crs_ha_auto_rebalance(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "crs_ha_auto_rebalance", value)
+
+    @_builtins.property
+    @pulumi.getter(name="crsHaAutoRebalanceHoldDuration")
+    def crs_ha_auto_rebalance_hold_duration(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of HA rounds for which the cluster node imbalance threshold must be exceeded before triggering an automatic resource balancing migration (default is `3`). Requires Proxmox VE 9.2+.
+        """
+        return pulumi.get(self, "crs_ha_auto_rebalance_hold_duration")
+
+    @crs_ha_auto_rebalance_hold_duration.setter
+    def crs_ha_auto_rebalance_hold_duration(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "crs_ha_auto_rebalance_hold_duration", value)
+
+    @_builtins.property
+    @pulumi.getter(name="crsHaAutoRebalanceMargin")
+    def crs_ha_auto_rebalance_margin(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The minimum relative improvement in cluster node imbalance, in percent, to commit to a resource balancing migration. Must be between `0` and `100` (default is `10`). Requires Proxmox VE 9.2+.
+        """
+        return pulumi.get(self, "crs_ha_auto_rebalance_margin")
+
+    @crs_ha_auto_rebalance_margin.setter
+    def crs_ha_auto_rebalance_margin(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "crs_ha_auto_rebalance_margin", value)
+
+    @_builtins.property
+    @pulumi.getter(name="crsHaAutoRebalanceMethod")
+    def crs_ha_auto_rebalance_method(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The method to use for the scoring of balancing migrations. Must be `bruteforce` | `topsis` (default is `bruteforce`). Requires Proxmox VE 9.2+.
+        """
+        return pulumi.get(self, "crs_ha_auto_rebalance_method")
+
+    @crs_ha_auto_rebalance_method.setter
+    def crs_ha_auto_rebalance_method(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "crs_ha_auto_rebalance_method", value)
+
+    @_builtins.property
+    @pulumi.getter(name="crsHaAutoRebalanceThreshold")
+    def crs_ha_auto_rebalance_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The cluster node imbalance, in percent, which will trigger the automatic resource balancing system if exceeded. Must be between `0` and `100` (default is `30`). Requires Proxmox VE 9.2+.
+        """
+        return pulumi.get(self, "crs_ha_auto_rebalance_threshold")
+
+    @crs_ha_auto_rebalance_threshold.setter
+    def crs_ha_auto_rebalance_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "crs_ha_auto_rebalance_threshold", value)
 
     @_builtins.property
     @pulumi.getter(name="crsHaRebalanceOnStart")
@@ -689,6 +849,11 @@ class Options(pulumi.CustomResource):
                  bandwidth_limit_restore: pulumi.Input[Optional[_builtins.int]] = None,
                  console: pulumi.Input[Optional[_builtins.str]] = None,
                  crs_ha: pulumi.Input[Optional[_builtins.str]] = None,
+                 crs_ha_auto_rebalance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 crs_ha_auto_rebalance_hold_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 crs_ha_auto_rebalance_margin: pulumi.Input[Optional[_builtins.int]] = None,
+                 crs_ha_auto_rebalance_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 crs_ha_auto_rebalance_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  crs_ha_rebalance_on_start: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  email_from: pulumi.Input[Optional[_builtins.str]] = None,
@@ -753,7 +918,12 @@ class Options(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] bandwidth_limit_move: Move I/O bandwidth limit in KiB/s.
         :param pulumi.Input[_builtins.int] bandwidth_limit_restore: Restore I/O bandwidth limit in KiB/s.
         :param pulumi.Input[_builtins.str] console: Select the default Console viewer. Must be `applet` | `vv`| `html5` | `xtermjs`. You can either use the builtin java applet (VNC; deprecated and maps to html5), an external virt-viewer compatible application (SPICE), an HTML5 based vnc viewer (noVNC), or an HTML5 based console client (xtermjs). If the selected viewer is not available (e.g. SPICE not activated for the VM), the fallback is noVNC.
-        :param pulumi.Input[_builtins.str] crs_ha: Cluster resource scheduling setting for HA. Must be `static` | `basic` (default is `basic`).
+        :param pulumi.Input[_builtins.str] crs_ha: Cluster resource scheduling setting for HA. Must be `static` | `basic` | `dynamic` (default is `basic`). `dynamic` requires Proxmox VE 9.2+.
+        :param pulumi.Input[_builtins.bool] crs_ha_auto_rebalance: Whether to use CRS for balancing HA resources automatically depending on the current node imbalance. Requires Proxmox VE 9.2+.
+        :param pulumi.Input[_builtins.int] crs_ha_auto_rebalance_hold_duration: The number of HA rounds for which the cluster node imbalance threshold must be exceeded before triggering an automatic resource balancing migration (default is `3`). Requires Proxmox VE 9.2+.
+        :param pulumi.Input[_builtins.int] crs_ha_auto_rebalance_margin: The minimum relative improvement in cluster node imbalance, in percent, to commit to a resource balancing migration. Must be between `0` and `100` (default is `10`). Requires Proxmox VE 9.2+.
+        :param pulumi.Input[_builtins.str] crs_ha_auto_rebalance_method: The method to use for the scoring of balancing migrations. Must be `bruteforce` | `topsis` (default is `bruteforce`). Requires Proxmox VE 9.2+.
+        :param pulumi.Input[_builtins.int] crs_ha_auto_rebalance_threshold: The cluster node imbalance, in percent, which will trigger the automatic resource balancing system if exceeded. Must be between `0` and `100` (default is `30`). Requires Proxmox VE 9.2+.
         :param pulumi.Input[_builtins.bool] crs_ha_rebalance_on_start: Cluster resource scheduling setting for HA rebalance on start.
         :param pulumi.Input[_builtins.str] description: Datacenter description. Shown in the web-interface datacenter notes panel. This is saved as comment inside the configuration file.
         :param pulumi.Input[_builtins.str] email_from: email address to send notification from (default is root@$hostname).
@@ -838,6 +1008,11 @@ class Options(pulumi.CustomResource):
                  bandwidth_limit_restore: pulumi.Input[Optional[_builtins.int]] = None,
                  console: pulumi.Input[Optional[_builtins.str]] = None,
                  crs_ha: pulumi.Input[Optional[_builtins.str]] = None,
+                 crs_ha_auto_rebalance: pulumi.Input[Optional[_builtins.bool]] = None,
+                 crs_ha_auto_rebalance_hold_duration: pulumi.Input[Optional[_builtins.int]] = None,
+                 crs_ha_auto_rebalance_margin: pulumi.Input[Optional[_builtins.int]] = None,
+                 crs_ha_auto_rebalance_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 crs_ha_auto_rebalance_threshold: pulumi.Input[Optional[_builtins.int]] = None,
                  crs_ha_rebalance_on_start: pulumi.Input[Optional[_builtins.bool]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  email_from: pulumi.Input[Optional[_builtins.str]] = None,
@@ -867,6 +1042,11 @@ class Options(pulumi.CustomResource):
             __props__.__dict__["bandwidth_limit_restore"] = bandwidth_limit_restore
             __props__.__dict__["console"] = console
             __props__.__dict__["crs_ha"] = crs_ha
+            __props__.__dict__["crs_ha_auto_rebalance"] = crs_ha_auto_rebalance
+            __props__.__dict__["crs_ha_auto_rebalance_hold_duration"] = crs_ha_auto_rebalance_hold_duration
+            __props__.__dict__["crs_ha_auto_rebalance_margin"] = crs_ha_auto_rebalance_margin
+            __props__.__dict__["crs_ha_auto_rebalance_method"] = crs_ha_auto_rebalance_method
+            __props__.__dict__["crs_ha_auto_rebalance_threshold"] = crs_ha_auto_rebalance_threshold
             __props__.__dict__["crs_ha_rebalance_on_start"] = crs_ha_rebalance_on_start
             __props__.__dict__["description"] = description
             __props__.__dict__["email_from"] = email_from
@@ -897,6 +1077,11 @@ class Options(pulumi.CustomResource):
             bandwidth_limit_restore: pulumi.Input[Optional[_builtins.int]] = None,
             console: pulumi.Input[Optional[_builtins.str]] = None,
             crs_ha: pulumi.Input[Optional[_builtins.str]] = None,
+            crs_ha_auto_rebalance: pulumi.Input[Optional[_builtins.bool]] = None,
+            crs_ha_auto_rebalance_hold_duration: pulumi.Input[Optional[_builtins.int]] = None,
+            crs_ha_auto_rebalance_margin: pulumi.Input[Optional[_builtins.int]] = None,
+            crs_ha_auto_rebalance_method: pulumi.Input[Optional[_builtins.str]] = None,
+            crs_ha_auto_rebalance_threshold: pulumi.Input[Optional[_builtins.int]] = None,
             crs_ha_rebalance_on_start: pulumi.Input[Optional[_builtins.bool]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             email_from: pulumi.Input[Optional[_builtins.str]] = None,
@@ -923,7 +1108,12 @@ class Options(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] bandwidth_limit_move: Move I/O bandwidth limit in KiB/s.
         :param pulumi.Input[_builtins.int] bandwidth_limit_restore: Restore I/O bandwidth limit in KiB/s.
         :param pulumi.Input[_builtins.str] console: Select the default Console viewer. Must be `applet` | `vv`| `html5` | `xtermjs`. You can either use the builtin java applet (VNC; deprecated and maps to html5), an external virt-viewer compatible application (SPICE), an HTML5 based vnc viewer (noVNC), or an HTML5 based console client (xtermjs). If the selected viewer is not available (e.g. SPICE not activated for the VM), the fallback is noVNC.
-        :param pulumi.Input[_builtins.str] crs_ha: Cluster resource scheduling setting for HA. Must be `static` | `basic` (default is `basic`).
+        :param pulumi.Input[_builtins.str] crs_ha: Cluster resource scheduling setting for HA. Must be `static` | `basic` | `dynamic` (default is `basic`). `dynamic` requires Proxmox VE 9.2+.
+        :param pulumi.Input[_builtins.bool] crs_ha_auto_rebalance: Whether to use CRS for balancing HA resources automatically depending on the current node imbalance. Requires Proxmox VE 9.2+.
+        :param pulumi.Input[_builtins.int] crs_ha_auto_rebalance_hold_duration: The number of HA rounds for which the cluster node imbalance threshold must be exceeded before triggering an automatic resource balancing migration (default is `3`). Requires Proxmox VE 9.2+.
+        :param pulumi.Input[_builtins.int] crs_ha_auto_rebalance_margin: The minimum relative improvement in cluster node imbalance, in percent, to commit to a resource balancing migration. Must be between `0` and `100` (default is `10`). Requires Proxmox VE 9.2+.
+        :param pulumi.Input[_builtins.str] crs_ha_auto_rebalance_method: The method to use for the scoring of balancing migrations. Must be `bruteforce` | `topsis` (default is `bruteforce`). Requires Proxmox VE 9.2+.
+        :param pulumi.Input[_builtins.int] crs_ha_auto_rebalance_threshold: The cluster node imbalance, in percent, which will trigger the automatic resource balancing system if exceeded. Must be between `0` and `100` (default is `30`). Requires Proxmox VE 9.2+.
         :param pulumi.Input[_builtins.bool] crs_ha_rebalance_on_start: Cluster resource scheduling setting for HA rebalance on start.
         :param pulumi.Input[_builtins.str] description: Datacenter description. Shown in the web-interface datacenter notes panel. This is saved as comment inside the configuration file.
         :param pulumi.Input[_builtins.str] email_from: email address to send notification from (default is root@$hostname).
@@ -949,6 +1139,11 @@ class Options(pulumi.CustomResource):
         __props__.__dict__["bandwidth_limit_restore"] = bandwidth_limit_restore
         __props__.__dict__["console"] = console
         __props__.__dict__["crs_ha"] = crs_ha
+        __props__.__dict__["crs_ha_auto_rebalance"] = crs_ha_auto_rebalance
+        __props__.__dict__["crs_ha_auto_rebalance_hold_duration"] = crs_ha_auto_rebalance_hold_duration
+        __props__.__dict__["crs_ha_auto_rebalance_margin"] = crs_ha_auto_rebalance_margin
+        __props__.__dict__["crs_ha_auto_rebalance_method"] = crs_ha_auto_rebalance_method
+        __props__.__dict__["crs_ha_auto_rebalance_threshold"] = crs_ha_auto_rebalance_threshold
         __props__.__dict__["crs_ha_rebalance_on_start"] = crs_ha_rebalance_on_start
         __props__.__dict__["description"] = description
         __props__.__dict__["email_from"] = email_from
@@ -1016,9 +1211,49 @@ class Options(pulumi.CustomResource):
     @pulumi.getter(name="crsHa")
     def crs_ha(self) -> pulumi.Output[_builtins.str]:
         """
-        Cluster resource scheduling setting for HA. Must be `static` | `basic` (default is `basic`).
+        Cluster resource scheduling setting for HA. Must be `static` | `basic` | `dynamic` (default is `basic`). `dynamic` requires Proxmox VE 9.2+.
         """
         return pulumi.get(self, "crs_ha")
+
+    @_builtins.property
+    @pulumi.getter(name="crsHaAutoRebalance")
+    def crs_ha_auto_rebalance(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Whether to use CRS for balancing HA resources automatically depending on the current node imbalance. Requires Proxmox VE 9.2+.
+        """
+        return pulumi.get(self, "crs_ha_auto_rebalance")
+
+    @_builtins.property
+    @pulumi.getter(name="crsHaAutoRebalanceHoldDuration")
+    def crs_ha_auto_rebalance_hold_duration(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The number of HA rounds for which the cluster node imbalance threshold must be exceeded before triggering an automatic resource balancing migration (default is `3`). Requires Proxmox VE 9.2+.
+        """
+        return pulumi.get(self, "crs_ha_auto_rebalance_hold_duration")
+
+    @_builtins.property
+    @pulumi.getter(name="crsHaAutoRebalanceMargin")
+    def crs_ha_auto_rebalance_margin(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The minimum relative improvement in cluster node imbalance, in percent, to commit to a resource balancing migration. Must be between `0` and `100` (default is `10`). Requires Proxmox VE 9.2+.
+        """
+        return pulumi.get(self, "crs_ha_auto_rebalance_margin")
+
+    @_builtins.property
+    @pulumi.getter(name="crsHaAutoRebalanceMethod")
+    def crs_ha_auto_rebalance_method(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The method to use for the scoring of balancing migrations. Must be `bruteforce` | `topsis` (default is `bruteforce`). Requires Proxmox VE 9.2+.
+        """
+        return pulumi.get(self, "crs_ha_auto_rebalance_method")
+
+    @_builtins.property
+    @pulumi.getter(name="crsHaAutoRebalanceThreshold")
+    def crs_ha_auto_rebalance_threshold(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        The cluster node imbalance, in percent, which will trigger the automatic resource balancing system if exceeded. Must be between `0` and `100` (default is `30`). Requires Proxmox VE 9.2+.
+        """
+        return pulumi.get(self, "crs_ha_auto_rebalance_threshold")
 
     @_builtins.property
     @pulumi.getter(name="crsHaRebalanceOnStart")

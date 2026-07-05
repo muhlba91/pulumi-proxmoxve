@@ -6,6 +6,7 @@ package io.muehlbachler.pulumi.proxmoxve.realm.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -29,6 +30,21 @@ public final class OpenidLegacyState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> acrValues() {
         return Optional.ofNullable(this.acrValues);
+    }
+
+    /**
+     * Audiences that the OpenID Issuer may include that are accepted for the client (comma-separated).
+     * 
+     */
+    @Import(name="audiences")
+    private @Nullable Output<String> audiences;
+
+    /**
+     * @return Audiences that the OpenID Issuer may include that are accepted for the client (comma-separated).
+     * 
+     */
+    public Optional<Output<String>> audiences() {
+        return Optional.ofNullable(this.audiences);
     }
 
     /**
@@ -74,6 +90,38 @@ public final class OpenidLegacyState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> clientKey() {
         return Optional.ofNullable(this.clientKey);
+    }
+
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * OpenID Connect Client Key (secret), supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so it is never stored in Terraform state or plan. Requires Terraform 1.11+. Mutually exclusive with &lt;span pulumi-lang-nodejs=&#34;`clientKey`&#34; pulumi-lang-dotnet=&#34;`ClientKey`&#34; pulumi-lang-go=&#34;`clientKey`&#34; pulumi-lang-python=&#34;`client_key`&#34; pulumi-lang-yaml=&#34;`clientKey`&#34; pulumi-lang-java=&#34;`clientKey`&#34; pulumi-lang-hcl=&#34;`client_key`&#34;&gt;`clientKey`&lt;/span&gt;. Pair with &lt;span pulumi-lang-nodejs=&#34;`clientKeyWoVersion`&#34; pulumi-lang-dotnet=&#34;`ClientKeyWoVersion`&#34; pulumi-lang-go=&#34;`clientKeyWoVersion`&#34; pulumi-lang-python=&#34;`client_key_wo_version`&#34; pulumi-lang-yaml=&#34;`clientKeyWoVersion`&#34; pulumi-lang-java=&#34;`clientKeyWoVersion`&#34; pulumi-lang-hcl=&#34;`client_key_wo_version`&#34;&gt;`clientKeyWoVersion`&lt;/span&gt; to push a rotated secret.
+     * 
+     */
+    @Import(name="clientKeyWo")
+    private @Nullable Output<String> clientKeyWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * OpenID Connect Client Key (secret), supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so it is never stored in Terraform state or plan. Requires Terraform 1.11+. Mutually exclusive with &lt;span pulumi-lang-nodejs=&#34;`clientKey`&#34; pulumi-lang-dotnet=&#34;`ClientKey`&#34; pulumi-lang-go=&#34;`clientKey`&#34; pulumi-lang-python=&#34;`client_key`&#34; pulumi-lang-yaml=&#34;`clientKey`&#34; pulumi-lang-java=&#34;`clientKey`&#34; pulumi-lang-hcl=&#34;`client_key`&#34;&gt;`clientKey`&lt;/span&gt;. Pair with &lt;span pulumi-lang-nodejs=&#34;`clientKeyWoVersion`&#34; pulumi-lang-dotnet=&#34;`ClientKeyWoVersion`&#34; pulumi-lang-go=&#34;`clientKeyWoVersion`&#34; pulumi-lang-python=&#34;`client_key_wo_version`&#34; pulumi-lang-yaml=&#34;`clientKeyWoVersion`&#34; pulumi-lang-java=&#34;`clientKeyWoVersion`&#34; pulumi-lang-hcl=&#34;`client_key_wo_version`&#34;&gt;`clientKeyWoVersion`&lt;/span&gt; to push a rotated secret.
+     * 
+     */
+    public Optional<Output<String>> clientKeyWo() {
+        return Optional.ofNullable(this.clientKeyWo);
+    }
+
+    /**
+     * Version counter for &lt;span pulumi-lang-nodejs=&#34;`clientKeyWo`&#34; pulumi-lang-dotnet=&#34;`ClientKeyWo`&#34; pulumi-lang-go=&#34;`clientKeyWo`&#34; pulumi-lang-python=&#34;`client_key_wo`&#34; pulumi-lang-yaml=&#34;`clientKeyWo`&#34; pulumi-lang-java=&#34;`clientKeyWo`&#34; pulumi-lang-hcl=&#34;`client_key_wo`&#34;&gt;`clientKeyWo`&lt;/span&gt;. Because write-only values are not stored in state, Terraform cannot detect when &lt;span pulumi-lang-nodejs=&#34;`clientKeyWo`&#34; pulumi-lang-dotnet=&#34;`ClientKeyWo`&#34; pulumi-lang-go=&#34;`clientKeyWo`&#34; pulumi-lang-python=&#34;`client_key_wo`&#34; pulumi-lang-yaml=&#34;`clientKeyWo`&#34; pulumi-lang-java=&#34;`clientKeyWo`&#34; pulumi-lang-hcl=&#34;`client_key_wo`&#34;&gt;`clientKeyWo`&lt;/span&gt; changes; increment this value to signal a rotation and force the new secret to be sent.
+     * 
+     */
+    @Import(name="clientKeyWoVersion")
+    private @Nullable Output<Integer> clientKeyWoVersion;
+
+    /**
+     * @return Version counter for &lt;span pulumi-lang-nodejs=&#34;`clientKeyWo`&#34; pulumi-lang-dotnet=&#34;`ClientKeyWo`&#34; pulumi-lang-go=&#34;`clientKeyWo`&#34; pulumi-lang-python=&#34;`client_key_wo`&#34; pulumi-lang-yaml=&#34;`clientKeyWo`&#34; pulumi-lang-java=&#34;`clientKeyWo`&#34; pulumi-lang-hcl=&#34;`client_key_wo`&#34;&gt;`clientKeyWo`&lt;/span&gt;. Because write-only values are not stored in state, Terraform cannot detect when &lt;span pulumi-lang-nodejs=&#34;`clientKeyWo`&#34; pulumi-lang-dotnet=&#34;`ClientKeyWo`&#34; pulumi-lang-go=&#34;`clientKeyWo`&#34; pulumi-lang-python=&#34;`client_key_wo`&#34; pulumi-lang-yaml=&#34;`clientKeyWo`&#34; pulumi-lang-java=&#34;`clientKeyWo`&#34; pulumi-lang-hcl=&#34;`client_key_wo`&#34;&gt;`clientKeyWo`&lt;/span&gt; changes; increment this value to signal a rotation and force the new secret to be sent.
+     * 
+     */
+    public Optional<Output<Integer>> clientKeyWoVersion() {
+        return Optional.ofNullable(this.clientKeyWoVersion);
     }
 
     /**
@@ -227,14 +275,14 @@ public final class OpenidLegacyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * OpenID claim used to generate the unique username. Common values are &lt;span pulumi-lang-nodejs=&#34;`subject`&#34; pulumi-lang-dotnet=&#34;`Subject`&#34; pulumi-lang-go=&#34;`subject`&#34; pulumi-lang-python=&#34;`subject`&#34; pulumi-lang-yaml=&#34;`subject`&#34; pulumi-lang-java=&#34;`subject`&#34;&gt;`subject`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`username`&#34; pulumi-lang-dotnet=&#34;`Username`&#34; pulumi-lang-go=&#34;`username`&#34; pulumi-lang-python=&#34;`username`&#34; pulumi-lang-yaml=&#34;`username`&#34; pulumi-lang-java=&#34;`username`&#34;&gt;`username`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`email`&#34; pulumi-lang-dotnet=&#34;`Email`&#34; pulumi-lang-go=&#34;`email`&#34; pulumi-lang-python=&#34;`email`&#34; pulumi-lang-yaml=&#34;`email`&#34; pulumi-lang-java=&#34;`email`&#34;&gt;`email`&lt;/span&gt;, and &lt;span pulumi-lang-nodejs=&#34;`upn`&#34; pulumi-lang-dotnet=&#34;`Upn`&#34; pulumi-lang-go=&#34;`upn`&#34; pulumi-lang-python=&#34;`upn`&#34; pulumi-lang-yaml=&#34;`upn`&#34; pulumi-lang-java=&#34;`upn`&#34;&gt;`upn`&lt;/span&gt;.
+     * OpenID claim used to generate the unique username. Common values are &lt;span pulumi-lang-nodejs=&#34;`subject`&#34; pulumi-lang-dotnet=&#34;`Subject`&#34; pulumi-lang-go=&#34;`subject`&#34; pulumi-lang-python=&#34;`subject`&#34; pulumi-lang-yaml=&#34;`subject`&#34; pulumi-lang-java=&#34;`subject`&#34; pulumi-lang-hcl=&#34;`subject`&#34;&gt;`subject`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`username`&#34; pulumi-lang-dotnet=&#34;`Username`&#34; pulumi-lang-go=&#34;`username`&#34; pulumi-lang-python=&#34;`username`&#34; pulumi-lang-yaml=&#34;`username`&#34; pulumi-lang-java=&#34;`username`&#34; pulumi-lang-hcl=&#34;`username`&#34;&gt;`username`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`email`&#34; pulumi-lang-dotnet=&#34;`Email`&#34; pulumi-lang-go=&#34;`email`&#34; pulumi-lang-python=&#34;`email`&#34; pulumi-lang-yaml=&#34;`email`&#34; pulumi-lang-java=&#34;`email`&#34; pulumi-lang-hcl=&#34;`email`&#34;&gt;`email`&lt;/span&gt;, and &lt;span pulumi-lang-nodejs=&#34;`upn`&#34; pulumi-lang-dotnet=&#34;`Upn`&#34; pulumi-lang-go=&#34;`upn`&#34; pulumi-lang-python=&#34;`upn`&#34; pulumi-lang-yaml=&#34;`upn`&#34; pulumi-lang-java=&#34;`upn`&#34; pulumi-lang-hcl=&#34;`upn`&#34;&gt;`upn`&lt;/span&gt;.
      * 
      */
     @Import(name="usernameClaim")
     private @Nullable Output<String> usernameClaim;
 
     /**
-     * @return OpenID claim used to generate the unique username. Common values are &lt;span pulumi-lang-nodejs=&#34;`subject`&#34; pulumi-lang-dotnet=&#34;`Subject`&#34; pulumi-lang-go=&#34;`subject`&#34; pulumi-lang-python=&#34;`subject`&#34; pulumi-lang-yaml=&#34;`subject`&#34; pulumi-lang-java=&#34;`subject`&#34;&gt;`subject`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`username`&#34; pulumi-lang-dotnet=&#34;`Username`&#34; pulumi-lang-go=&#34;`username`&#34; pulumi-lang-python=&#34;`username`&#34; pulumi-lang-yaml=&#34;`username`&#34; pulumi-lang-java=&#34;`username`&#34;&gt;`username`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`email`&#34; pulumi-lang-dotnet=&#34;`Email`&#34; pulumi-lang-go=&#34;`email`&#34; pulumi-lang-python=&#34;`email`&#34; pulumi-lang-yaml=&#34;`email`&#34; pulumi-lang-java=&#34;`email`&#34;&gt;`email`&lt;/span&gt;, and &lt;span pulumi-lang-nodejs=&#34;`upn`&#34; pulumi-lang-dotnet=&#34;`Upn`&#34; pulumi-lang-go=&#34;`upn`&#34; pulumi-lang-python=&#34;`upn`&#34; pulumi-lang-yaml=&#34;`upn`&#34; pulumi-lang-java=&#34;`upn`&#34;&gt;`upn`&lt;/span&gt;.
+     * @return OpenID claim used to generate the unique username. Common values are &lt;span pulumi-lang-nodejs=&#34;`subject`&#34; pulumi-lang-dotnet=&#34;`Subject`&#34; pulumi-lang-go=&#34;`subject`&#34; pulumi-lang-python=&#34;`subject`&#34; pulumi-lang-yaml=&#34;`subject`&#34; pulumi-lang-java=&#34;`subject`&#34; pulumi-lang-hcl=&#34;`subject`&#34;&gt;`subject`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`username`&#34; pulumi-lang-dotnet=&#34;`Username`&#34; pulumi-lang-go=&#34;`username`&#34; pulumi-lang-python=&#34;`username`&#34; pulumi-lang-yaml=&#34;`username`&#34; pulumi-lang-java=&#34;`username`&#34; pulumi-lang-hcl=&#34;`username`&#34;&gt;`username`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`email`&#34; pulumi-lang-dotnet=&#34;`Email`&#34; pulumi-lang-go=&#34;`email`&#34; pulumi-lang-python=&#34;`email`&#34; pulumi-lang-yaml=&#34;`email`&#34; pulumi-lang-java=&#34;`email`&#34; pulumi-lang-hcl=&#34;`email`&#34;&gt;`email`&lt;/span&gt;, and &lt;span pulumi-lang-nodejs=&#34;`upn`&#34; pulumi-lang-dotnet=&#34;`Upn`&#34; pulumi-lang-go=&#34;`upn`&#34; pulumi-lang-python=&#34;`upn`&#34; pulumi-lang-yaml=&#34;`upn`&#34; pulumi-lang-java=&#34;`upn`&#34; pulumi-lang-hcl=&#34;`upn`&#34;&gt;`upn`&lt;/span&gt;.
      * 
      */
     public Optional<Output<String>> usernameClaim() {
@@ -245,9 +293,12 @@ public final class OpenidLegacyState extends com.pulumi.resources.ResourceArgs {
 
     private OpenidLegacyState(OpenidLegacyState $) {
         this.acrValues = $.acrValues;
+        this.audiences = $.audiences;
         this.autocreate = $.autocreate;
         this.clientId = $.clientId;
         this.clientKey = $.clientKey;
+        this.clientKeyWo = $.clientKeyWo;
+        this.clientKeyWoVersion = $.clientKeyWoVersion;
         this.comment = $.comment;
         this.default_ = $.default_;
         this.groupsAutocreate = $.groupsAutocreate;
@@ -298,6 +349,27 @@ public final class OpenidLegacyState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder acrValues(String acrValues) {
             return acrValues(Output.of(acrValues));
+        }
+
+        /**
+         * @param audiences Audiences that the OpenID Issuer may include that are accepted for the client (comma-separated).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder audiences(@Nullable Output<String> audiences) {
+            $.audiences = audiences;
+            return this;
+        }
+
+        /**
+         * @param audiences Audiences that the OpenID Issuer may include that are accepted for the client (comma-separated).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder audiences(String audiences) {
+            return audiences(Output.of(audiences));
         }
 
         /**
@@ -361,6 +433,50 @@ public final class OpenidLegacyState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder clientKey(String clientKey) {
             return clientKey(Output.of(clientKey));
+        }
+
+        /**
+         * @param clientKeyWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * OpenID Connect Client Key (secret), supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so it is never stored in Terraform state or plan. Requires Terraform 1.11+. Mutually exclusive with &lt;span pulumi-lang-nodejs=&#34;`clientKey`&#34; pulumi-lang-dotnet=&#34;`ClientKey`&#34; pulumi-lang-go=&#34;`clientKey`&#34; pulumi-lang-python=&#34;`client_key`&#34; pulumi-lang-yaml=&#34;`clientKey`&#34; pulumi-lang-java=&#34;`clientKey`&#34; pulumi-lang-hcl=&#34;`client_key`&#34;&gt;`clientKey`&lt;/span&gt;. Pair with &lt;span pulumi-lang-nodejs=&#34;`clientKeyWoVersion`&#34; pulumi-lang-dotnet=&#34;`ClientKeyWoVersion`&#34; pulumi-lang-go=&#34;`clientKeyWoVersion`&#34; pulumi-lang-python=&#34;`client_key_wo_version`&#34; pulumi-lang-yaml=&#34;`clientKeyWoVersion`&#34; pulumi-lang-java=&#34;`clientKeyWoVersion`&#34; pulumi-lang-hcl=&#34;`client_key_wo_version`&#34;&gt;`clientKeyWoVersion`&lt;/span&gt; to push a rotated secret.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientKeyWo(@Nullable Output<String> clientKeyWo) {
+            $.clientKeyWo = clientKeyWo;
+            return this;
+        }
+
+        /**
+         * @param clientKeyWo **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+         * OpenID Connect Client Key (secret), supplied as a [write-only argument](https://developer.hashicorp.com/terraform/language/resources/ephemeral/write-only) so it is never stored in Terraform state or plan. Requires Terraform 1.11+. Mutually exclusive with &lt;span pulumi-lang-nodejs=&#34;`clientKey`&#34; pulumi-lang-dotnet=&#34;`ClientKey`&#34; pulumi-lang-go=&#34;`clientKey`&#34; pulumi-lang-python=&#34;`client_key`&#34; pulumi-lang-yaml=&#34;`clientKey`&#34; pulumi-lang-java=&#34;`clientKey`&#34; pulumi-lang-hcl=&#34;`client_key`&#34;&gt;`clientKey`&lt;/span&gt;. Pair with &lt;span pulumi-lang-nodejs=&#34;`clientKeyWoVersion`&#34; pulumi-lang-dotnet=&#34;`ClientKeyWoVersion`&#34; pulumi-lang-go=&#34;`clientKeyWoVersion`&#34; pulumi-lang-python=&#34;`client_key_wo_version`&#34; pulumi-lang-yaml=&#34;`clientKeyWoVersion`&#34; pulumi-lang-java=&#34;`clientKeyWoVersion`&#34; pulumi-lang-hcl=&#34;`client_key_wo_version`&#34;&gt;`clientKeyWoVersion`&lt;/span&gt; to push a rotated secret.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientKeyWo(String clientKeyWo) {
+            return clientKeyWo(Output.of(clientKeyWo));
+        }
+
+        /**
+         * @param clientKeyWoVersion Version counter for &lt;span pulumi-lang-nodejs=&#34;`clientKeyWo`&#34; pulumi-lang-dotnet=&#34;`ClientKeyWo`&#34; pulumi-lang-go=&#34;`clientKeyWo`&#34; pulumi-lang-python=&#34;`client_key_wo`&#34; pulumi-lang-yaml=&#34;`clientKeyWo`&#34; pulumi-lang-java=&#34;`clientKeyWo`&#34; pulumi-lang-hcl=&#34;`client_key_wo`&#34;&gt;`clientKeyWo`&lt;/span&gt;. Because write-only values are not stored in state, Terraform cannot detect when &lt;span pulumi-lang-nodejs=&#34;`clientKeyWo`&#34; pulumi-lang-dotnet=&#34;`ClientKeyWo`&#34; pulumi-lang-go=&#34;`clientKeyWo`&#34; pulumi-lang-python=&#34;`client_key_wo`&#34; pulumi-lang-yaml=&#34;`clientKeyWo`&#34; pulumi-lang-java=&#34;`clientKeyWo`&#34; pulumi-lang-hcl=&#34;`client_key_wo`&#34;&gt;`clientKeyWo`&lt;/span&gt; changes; increment this value to signal a rotation and force the new secret to be sent.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientKeyWoVersion(@Nullable Output<Integer> clientKeyWoVersion) {
+            $.clientKeyWoVersion = clientKeyWoVersion;
+            return this;
+        }
+
+        /**
+         * @param clientKeyWoVersion Version counter for &lt;span pulumi-lang-nodejs=&#34;`clientKeyWo`&#34; pulumi-lang-dotnet=&#34;`ClientKeyWo`&#34; pulumi-lang-go=&#34;`clientKeyWo`&#34; pulumi-lang-python=&#34;`client_key_wo`&#34; pulumi-lang-yaml=&#34;`clientKeyWo`&#34; pulumi-lang-java=&#34;`clientKeyWo`&#34; pulumi-lang-hcl=&#34;`client_key_wo`&#34;&gt;`clientKeyWo`&lt;/span&gt;. Because write-only values are not stored in state, Terraform cannot detect when &lt;span pulumi-lang-nodejs=&#34;`clientKeyWo`&#34; pulumi-lang-dotnet=&#34;`ClientKeyWo`&#34; pulumi-lang-go=&#34;`clientKeyWo`&#34; pulumi-lang-python=&#34;`client_key_wo`&#34; pulumi-lang-yaml=&#34;`clientKeyWo`&#34; pulumi-lang-java=&#34;`clientKeyWo`&#34; pulumi-lang-hcl=&#34;`client_key_wo`&#34;&gt;`clientKeyWo`&lt;/span&gt; changes; increment this value to signal a rotation and force the new secret to be sent.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientKeyWoVersion(Integer clientKeyWoVersion) {
+            return clientKeyWoVersion(Output.of(clientKeyWoVersion));
         }
 
         /**
@@ -574,7 +690,7 @@ public final class OpenidLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param usernameClaim OpenID claim used to generate the unique username. Common values are &lt;span pulumi-lang-nodejs=&#34;`subject`&#34; pulumi-lang-dotnet=&#34;`Subject`&#34; pulumi-lang-go=&#34;`subject`&#34; pulumi-lang-python=&#34;`subject`&#34; pulumi-lang-yaml=&#34;`subject`&#34; pulumi-lang-java=&#34;`subject`&#34;&gt;`subject`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`username`&#34; pulumi-lang-dotnet=&#34;`Username`&#34; pulumi-lang-go=&#34;`username`&#34; pulumi-lang-python=&#34;`username`&#34; pulumi-lang-yaml=&#34;`username`&#34; pulumi-lang-java=&#34;`username`&#34;&gt;`username`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`email`&#34; pulumi-lang-dotnet=&#34;`Email`&#34; pulumi-lang-go=&#34;`email`&#34; pulumi-lang-python=&#34;`email`&#34; pulumi-lang-yaml=&#34;`email`&#34; pulumi-lang-java=&#34;`email`&#34;&gt;`email`&lt;/span&gt;, and &lt;span pulumi-lang-nodejs=&#34;`upn`&#34; pulumi-lang-dotnet=&#34;`Upn`&#34; pulumi-lang-go=&#34;`upn`&#34; pulumi-lang-python=&#34;`upn`&#34; pulumi-lang-yaml=&#34;`upn`&#34; pulumi-lang-java=&#34;`upn`&#34;&gt;`upn`&lt;/span&gt;.
+         * @param usernameClaim OpenID claim used to generate the unique username. Common values are &lt;span pulumi-lang-nodejs=&#34;`subject`&#34; pulumi-lang-dotnet=&#34;`Subject`&#34; pulumi-lang-go=&#34;`subject`&#34; pulumi-lang-python=&#34;`subject`&#34; pulumi-lang-yaml=&#34;`subject`&#34; pulumi-lang-java=&#34;`subject`&#34; pulumi-lang-hcl=&#34;`subject`&#34;&gt;`subject`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`username`&#34; pulumi-lang-dotnet=&#34;`Username`&#34; pulumi-lang-go=&#34;`username`&#34; pulumi-lang-python=&#34;`username`&#34; pulumi-lang-yaml=&#34;`username`&#34; pulumi-lang-java=&#34;`username`&#34; pulumi-lang-hcl=&#34;`username`&#34;&gt;`username`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`email`&#34; pulumi-lang-dotnet=&#34;`Email`&#34; pulumi-lang-go=&#34;`email`&#34; pulumi-lang-python=&#34;`email`&#34; pulumi-lang-yaml=&#34;`email`&#34; pulumi-lang-java=&#34;`email`&#34; pulumi-lang-hcl=&#34;`email`&#34;&gt;`email`&lt;/span&gt;, and &lt;span pulumi-lang-nodejs=&#34;`upn`&#34; pulumi-lang-dotnet=&#34;`Upn`&#34; pulumi-lang-go=&#34;`upn`&#34; pulumi-lang-python=&#34;`upn`&#34; pulumi-lang-yaml=&#34;`upn`&#34; pulumi-lang-java=&#34;`upn`&#34; pulumi-lang-hcl=&#34;`upn`&#34;&gt;`upn`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -585,7 +701,7 @@ public final class OpenidLegacyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param usernameClaim OpenID claim used to generate the unique username. Common values are &lt;span pulumi-lang-nodejs=&#34;`subject`&#34; pulumi-lang-dotnet=&#34;`Subject`&#34; pulumi-lang-go=&#34;`subject`&#34; pulumi-lang-python=&#34;`subject`&#34; pulumi-lang-yaml=&#34;`subject`&#34; pulumi-lang-java=&#34;`subject`&#34;&gt;`subject`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`username`&#34; pulumi-lang-dotnet=&#34;`Username`&#34; pulumi-lang-go=&#34;`username`&#34; pulumi-lang-python=&#34;`username`&#34; pulumi-lang-yaml=&#34;`username`&#34; pulumi-lang-java=&#34;`username`&#34;&gt;`username`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`email`&#34; pulumi-lang-dotnet=&#34;`Email`&#34; pulumi-lang-go=&#34;`email`&#34; pulumi-lang-python=&#34;`email`&#34; pulumi-lang-yaml=&#34;`email`&#34; pulumi-lang-java=&#34;`email`&#34;&gt;`email`&lt;/span&gt;, and &lt;span pulumi-lang-nodejs=&#34;`upn`&#34; pulumi-lang-dotnet=&#34;`Upn`&#34; pulumi-lang-go=&#34;`upn`&#34; pulumi-lang-python=&#34;`upn`&#34; pulumi-lang-yaml=&#34;`upn`&#34; pulumi-lang-java=&#34;`upn`&#34;&gt;`upn`&lt;/span&gt;.
+         * @param usernameClaim OpenID claim used to generate the unique username. Common values are &lt;span pulumi-lang-nodejs=&#34;`subject`&#34; pulumi-lang-dotnet=&#34;`Subject`&#34; pulumi-lang-go=&#34;`subject`&#34; pulumi-lang-python=&#34;`subject`&#34; pulumi-lang-yaml=&#34;`subject`&#34; pulumi-lang-java=&#34;`subject`&#34; pulumi-lang-hcl=&#34;`subject`&#34;&gt;`subject`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`username`&#34; pulumi-lang-dotnet=&#34;`Username`&#34; pulumi-lang-go=&#34;`username`&#34; pulumi-lang-python=&#34;`username`&#34; pulumi-lang-yaml=&#34;`username`&#34; pulumi-lang-java=&#34;`username`&#34; pulumi-lang-hcl=&#34;`username`&#34;&gt;`username`&lt;/span&gt;, &lt;span pulumi-lang-nodejs=&#34;`email`&#34; pulumi-lang-dotnet=&#34;`Email`&#34; pulumi-lang-go=&#34;`email`&#34; pulumi-lang-python=&#34;`email`&#34; pulumi-lang-yaml=&#34;`email`&#34; pulumi-lang-java=&#34;`email`&#34; pulumi-lang-hcl=&#34;`email`&#34;&gt;`email`&lt;/span&gt;, and &lt;span pulumi-lang-nodejs=&#34;`upn`&#34; pulumi-lang-dotnet=&#34;`Upn`&#34; pulumi-lang-go=&#34;`upn`&#34; pulumi-lang-python=&#34;`upn`&#34; pulumi-lang-yaml=&#34;`upn`&#34; pulumi-lang-java=&#34;`upn`&#34; pulumi-lang-hcl=&#34;`upn`&#34;&gt;`upn`&lt;/span&gt;.
          * 
          * @return builder
          * 

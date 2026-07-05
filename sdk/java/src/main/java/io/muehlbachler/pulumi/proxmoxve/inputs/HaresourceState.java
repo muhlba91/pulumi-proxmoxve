@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -29,6 +30,21 @@ public final class HaresourceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> comment() {
         return Optional.ofNullable(this.comment);
+    }
+
+    /**
+     * Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
+     * 
+     */
+    @Import(name="failback")
+    private @Nullable Output<Boolean> failback;
+
+    /**
+     * @return Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
+     * 
+     */
+    public Optional<Output<Boolean>> failback() {
+        return Optional.ofNullable(this.failback);
     }
 
     /**
@@ -107,14 +123,14 @@ public final class HaresourceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of HA resources to create. If unset, it will be deduced from the &lt;span pulumi-lang-nodejs=&#34;`resourceId`&#34; pulumi-lang-dotnet=&#34;`ResourceId`&#34; pulumi-lang-go=&#34;`resourceId`&#34; pulumi-lang-python=&#34;`resource_id`&#34; pulumi-lang-yaml=&#34;`resourceId`&#34; pulumi-lang-java=&#34;`resourceId`&#34;&gt;`resourceId`&lt;/span&gt;.
+     * The type of HA resources to create. If unset, it will be deduced from the &lt;span pulumi-lang-nodejs=&#34;`resourceId`&#34; pulumi-lang-dotnet=&#34;`ResourceId`&#34; pulumi-lang-go=&#34;`resourceId`&#34; pulumi-lang-python=&#34;`resource_id`&#34; pulumi-lang-yaml=&#34;`resourceId`&#34; pulumi-lang-java=&#34;`resourceId`&#34; pulumi-lang-hcl=&#34;`resource_id`&#34;&gt;`resourceId`&lt;/span&gt;.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of HA resources to create. If unset, it will be deduced from the &lt;span pulumi-lang-nodejs=&#34;`resourceId`&#34; pulumi-lang-dotnet=&#34;`ResourceId`&#34; pulumi-lang-go=&#34;`resourceId`&#34; pulumi-lang-python=&#34;`resource_id`&#34; pulumi-lang-yaml=&#34;`resourceId`&#34; pulumi-lang-java=&#34;`resourceId`&#34;&gt;`resourceId`&lt;/span&gt;.
+     * @return The type of HA resources to create. If unset, it will be deduced from the &lt;span pulumi-lang-nodejs=&#34;`resourceId`&#34; pulumi-lang-dotnet=&#34;`ResourceId`&#34; pulumi-lang-go=&#34;`resourceId`&#34; pulumi-lang-python=&#34;`resource_id`&#34; pulumi-lang-yaml=&#34;`resourceId`&#34; pulumi-lang-java=&#34;`resourceId`&#34; pulumi-lang-hcl=&#34;`resource_id`&#34;&gt;`resourceId`&lt;/span&gt;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -125,6 +141,7 @@ public final class HaresourceState extends com.pulumi.resources.ResourceArgs {
 
     private HaresourceState(HaresourceState $) {
         this.comment = $.comment;
+        this.failback = $.failback;
         this.group = $.group;
         this.maxRelocate = $.maxRelocate;
         this.maxRestart = $.maxRestart;
@@ -170,6 +187,27 @@ public final class HaresourceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder comment(String comment) {
             return comment(Output.of(comment));
+        }
+
+        /**
+         * @param failback Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder failback(@Nullable Output<Boolean> failback) {
+            $.failback = failback;
+            return this;
+        }
+
+        /**
+         * @param failback Automatic failback to the preferred node when it becomes available again (Proxmox VE 9+). Leave unset to use the cluster default.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder failback(Boolean failback) {
+            return failback(Output.of(failback));
         }
 
         /**
@@ -278,7 +316,7 @@ public final class HaresourceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of HA resources to create. If unset, it will be deduced from the &lt;span pulumi-lang-nodejs=&#34;`resourceId`&#34; pulumi-lang-dotnet=&#34;`ResourceId`&#34; pulumi-lang-go=&#34;`resourceId`&#34; pulumi-lang-python=&#34;`resource_id`&#34; pulumi-lang-yaml=&#34;`resourceId`&#34; pulumi-lang-java=&#34;`resourceId`&#34;&gt;`resourceId`&lt;/span&gt;.
+         * @param type The type of HA resources to create. If unset, it will be deduced from the &lt;span pulumi-lang-nodejs=&#34;`resourceId`&#34; pulumi-lang-dotnet=&#34;`ResourceId`&#34; pulumi-lang-go=&#34;`resourceId`&#34; pulumi-lang-python=&#34;`resource_id`&#34; pulumi-lang-yaml=&#34;`resourceId`&#34; pulumi-lang-java=&#34;`resourceId`&#34; pulumi-lang-hcl=&#34;`resource_id`&#34;&gt;`resourceId`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -289,7 +327,7 @@ public final class HaresourceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of HA resources to create. If unset, it will be deduced from the &lt;span pulumi-lang-nodejs=&#34;`resourceId`&#34; pulumi-lang-dotnet=&#34;`ResourceId`&#34; pulumi-lang-go=&#34;`resourceId`&#34; pulumi-lang-python=&#34;`resource_id`&#34; pulumi-lang-yaml=&#34;`resourceId`&#34; pulumi-lang-java=&#34;`resourceId`&#34;&gt;`resourceId`&lt;/span&gt;.
+         * @param type The type of HA resources to create. If unset, it will be deduced from the &lt;span pulumi-lang-nodejs=&#34;`resourceId`&#34; pulumi-lang-dotnet=&#34;`ResourceId`&#34; pulumi-lang-go=&#34;`resourceId`&#34; pulumi-lang-python=&#34;`resource_id`&#34; pulumi-lang-yaml=&#34;`resourceId`&#34; pulumi-lang-java=&#34;`resourceId`&#34; pulumi-lang-hcl=&#34;`resource_id`&#34;&gt;`resourceId`&lt;/span&gt;.
          * 
          * @return builder
          * 

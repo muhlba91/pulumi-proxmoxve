@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "proxmoxve:node/config:Config":
+		r = &Config{}
 	case "proxmoxve:node/firewall:Firewall":
 		r = &Firewall{}
 	case "proxmoxve:node/firewallLegacy:FirewallLegacy":
@@ -38,6 +40,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"proxmoxve",
+		"node/config",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"proxmoxve",
 		"node/firewall",

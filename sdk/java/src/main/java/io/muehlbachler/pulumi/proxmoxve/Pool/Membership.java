@@ -116,14 +116,14 @@ public class Membership extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.storageId);
     }
     /**
-     * Resource pool membership type (can be &lt;span pulumi-lang-nodejs=&#34;`vm`&#34; pulumi-lang-dotnet=&#34;`Vm`&#34; pulumi-lang-go=&#34;`vm`&#34; pulumi-lang-python=&#34;`vm`&#34; pulumi-lang-yaml=&#34;`vm`&#34; pulumi-lang-java=&#34;`vm`&#34;&gt;`vm`&lt;/span&gt; for VMs and CTs or &lt;span pulumi-lang-nodejs=&#34;`storage`&#34; pulumi-lang-dotnet=&#34;`Storage`&#34; pulumi-lang-go=&#34;`storage`&#34; pulumi-lang-python=&#34;`storage`&#34; pulumi-lang-yaml=&#34;`storage`&#34; pulumi-lang-java=&#34;`storage`&#34;&gt;`storage`&lt;/span&gt; for storages)
+     * Resource pool membership type (can be &lt;span pulumi-lang-nodejs=&#34;`vm`&#34; pulumi-lang-dotnet=&#34;`Vm`&#34; pulumi-lang-go=&#34;`vm`&#34; pulumi-lang-python=&#34;`vm`&#34; pulumi-lang-yaml=&#34;`vm`&#34; pulumi-lang-java=&#34;`vm`&#34; pulumi-lang-hcl=&#34;`vm`&#34;&gt;`vm`&lt;/span&gt; for VMs and CTs or &lt;span pulumi-lang-nodejs=&#34;`storage`&#34; pulumi-lang-dotnet=&#34;`Storage`&#34; pulumi-lang-go=&#34;`storage`&#34; pulumi-lang-python=&#34;`storage`&#34; pulumi-lang-yaml=&#34;`storage`&#34; pulumi-lang-java=&#34;`storage`&#34; pulumi-lang-hcl=&#34;`storage`&#34;&gt;`storage`&lt;/span&gt; for storages)
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Resource pool membership type (can be &lt;span pulumi-lang-nodejs=&#34;`vm`&#34; pulumi-lang-dotnet=&#34;`Vm`&#34; pulumi-lang-go=&#34;`vm`&#34; pulumi-lang-python=&#34;`vm`&#34; pulumi-lang-yaml=&#34;`vm`&#34; pulumi-lang-java=&#34;`vm`&#34;&gt;`vm`&lt;/span&gt; for VMs and CTs or &lt;span pulumi-lang-nodejs=&#34;`storage`&#34; pulumi-lang-dotnet=&#34;`Storage`&#34; pulumi-lang-go=&#34;`storage`&#34; pulumi-lang-python=&#34;`storage`&#34; pulumi-lang-yaml=&#34;`storage`&#34; pulumi-lang-java=&#34;`storage`&#34;&gt;`storage`&lt;/span&gt; for storages)
+     * @return Resource pool membership type (can be &lt;span pulumi-lang-nodejs=&#34;`vm`&#34; pulumi-lang-dotnet=&#34;`Vm`&#34; pulumi-lang-go=&#34;`vm`&#34; pulumi-lang-python=&#34;`vm`&#34; pulumi-lang-yaml=&#34;`vm`&#34; pulumi-lang-java=&#34;`vm`&#34; pulumi-lang-hcl=&#34;`vm`&#34;&gt;`vm`&lt;/span&gt; for VMs and CTs or &lt;span pulumi-lang-nodejs=&#34;`storage`&#34; pulumi-lang-dotnet=&#34;`Storage`&#34; pulumi-lang-go=&#34;`storage`&#34; pulumi-lang-python=&#34;`storage`&#34; pulumi-lang-yaml=&#34;`storage`&#34; pulumi-lang-java=&#34;`storage`&#34; pulumi-lang-hcl=&#34;`storage`&#34;&gt;`storage`&lt;/span&gt; for storages)
      * 
      */
     public Output<String> type() {

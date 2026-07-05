@@ -198,14 +198,14 @@ public final class VmDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Disk size (GiB) when creating new disks. **Note:** Disk shrinking is not supported. Attempting to set &lt;span pulumi-lang-nodejs=&#34;`sizeGb`&#34; pulumi-lang-dotnet=&#34;`SizeGb`&#34; pulumi-lang-go=&#34;`sizeGb`&#34; pulumi-lang-python=&#34;`size_gb`&#34; pulumi-lang-yaml=&#34;`sizeGb`&#34; pulumi-lang-java=&#34;`sizeGb`&#34;&gt;`sizeGb`&lt;/span&gt; to a value smaller than the current disk size will result in an error. Only disk expansion is allowed.
+     * Disk size (GiB) when creating new disks. **Note:** Disk shrinking is not supported. Attempting to set &lt;span pulumi-lang-nodejs=&#34;`sizeGb`&#34; pulumi-lang-dotnet=&#34;`SizeGb`&#34; pulumi-lang-go=&#34;`sizeGb`&#34; pulumi-lang-python=&#34;`size_gb`&#34; pulumi-lang-yaml=&#34;`sizeGb`&#34; pulumi-lang-java=&#34;`sizeGb`&#34; pulumi-lang-hcl=&#34;`size_gb`&#34;&gt;`sizeGb`&lt;/span&gt; to a value smaller than the current disk size will result in an error. Only disk expansion is allowed.
      * 
      */
     @Import(name="sizeGb")
     private @Nullable Output<Integer> sizeGb;
 
     /**
-     * @return Disk size (GiB) when creating new disks. **Note:** Disk shrinking is not supported. Attempting to set &lt;span pulumi-lang-nodejs=&#34;`sizeGb`&#34; pulumi-lang-dotnet=&#34;`SizeGb`&#34; pulumi-lang-go=&#34;`sizeGb`&#34; pulumi-lang-python=&#34;`size_gb`&#34; pulumi-lang-yaml=&#34;`sizeGb`&#34; pulumi-lang-java=&#34;`sizeGb`&#34;&gt;`sizeGb`&lt;/span&gt; to a value smaller than the current disk size will result in an error. Only disk expansion is allowed.
+     * @return Disk size (GiB) when creating new disks. **Note:** Disk shrinking is not supported. Attempting to set &lt;span pulumi-lang-nodejs=&#34;`sizeGb`&#34; pulumi-lang-dotnet=&#34;`SizeGb`&#34; pulumi-lang-go=&#34;`sizeGb`&#34; pulumi-lang-python=&#34;`size_gb`&#34; pulumi-lang-yaml=&#34;`sizeGb`&#34; pulumi-lang-java=&#34;`sizeGb`&#34; pulumi-lang-hcl=&#34;`size_gb`&#34;&gt;`sizeGb`&lt;/span&gt; to a value smaller than the current disk size will result in an error. Only disk expansion is allowed.
      * 
      */
     public Optional<Output<Integer>> sizeGb() {
@@ -517,7 +517,7 @@ public final class VmDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sizeGb Disk size (GiB) when creating new disks. **Note:** Disk shrinking is not supported. Attempting to set &lt;span pulumi-lang-nodejs=&#34;`sizeGb`&#34; pulumi-lang-dotnet=&#34;`SizeGb`&#34; pulumi-lang-go=&#34;`sizeGb`&#34; pulumi-lang-python=&#34;`size_gb`&#34; pulumi-lang-yaml=&#34;`sizeGb`&#34; pulumi-lang-java=&#34;`sizeGb`&#34;&gt;`sizeGb`&lt;/span&gt; to a value smaller than the current disk size will result in an error. Only disk expansion is allowed.
+         * @param sizeGb Disk size (GiB) when creating new disks. **Note:** Disk shrinking is not supported. Attempting to set &lt;span pulumi-lang-nodejs=&#34;`sizeGb`&#34; pulumi-lang-dotnet=&#34;`SizeGb`&#34; pulumi-lang-go=&#34;`sizeGb`&#34; pulumi-lang-python=&#34;`size_gb`&#34; pulumi-lang-yaml=&#34;`sizeGb`&#34; pulumi-lang-java=&#34;`sizeGb`&#34; pulumi-lang-hcl=&#34;`size_gb`&#34;&gt;`sizeGb`&lt;/span&gt; to a value smaller than the current disk size will result in an error. Only disk expansion is allowed.
          * 
          * @return builder
          * 
@@ -528,7 +528,7 @@ public final class VmDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sizeGb Disk size (GiB) when creating new disks. **Note:** Disk shrinking is not supported. Attempting to set &lt;span pulumi-lang-nodejs=&#34;`sizeGb`&#34; pulumi-lang-dotnet=&#34;`SizeGb`&#34; pulumi-lang-go=&#34;`sizeGb`&#34; pulumi-lang-python=&#34;`size_gb`&#34; pulumi-lang-yaml=&#34;`sizeGb`&#34; pulumi-lang-java=&#34;`sizeGb`&#34;&gt;`sizeGb`&lt;/span&gt; to a value smaller than the current disk size will result in an error. Only disk expansion is allowed.
+         * @param sizeGb Disk size (GiB) when creating new disks. **Note:** Disk shrinking is not supported. Attempting to set &lt;span pulumi-lang-nodejs=&#34;`sizeGb`&#34; pulumi-lang-dotnet=&#34;`SizeGb`&#34; pulumi-lang-go=&#34;`sizeGb`&#34; pulumi-lang-python=&#34;`size_gb`&#34; pulumi-lang-yaml=&#34;`sizeGb`&#34; pulumi-lang-java=&#34;`sizeGb`&#34; pulumi-lang-hcl=&#34;`size_gb`&#34;&gt;`sizeGb`&lt;/span&gt; to a value smaller than the current disk size will result in an error. Only disk expansion is allowed.
          * 
          * @return builder
          * 

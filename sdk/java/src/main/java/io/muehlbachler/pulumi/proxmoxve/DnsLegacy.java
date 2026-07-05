@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Instances can be imported using the &lt;span pulumi-lang-nodejs=&#34;`nodeName`&#34; pulumi-lang-dotnet=&#34;`NodeName`&#34; pulumi-lang-go=&#34;`nodeName`&#34; pulumi-lang-python=&#34;`node_name`&#34; pulumi-lang-yaml=&#34;`nodeName`&#34; pulumi-lang-java=&#34;`nodeName`&#34;&gt;`nodeName`&lt;/span&gt;, e.g.,
+ * Instances can be imported using the &lt;span pulumi-lang-nodejs=&#34;`nodeName`&#34; pulumi-lang-dotnet=&#34;`NodeName`&#34; pulumi-lang-go=&#34;`nodeName`&#34; pulumi-lang-python=&#34;`node_name`&#34; pulumi-lang-yaml=&#34;`nodeName`&#34; pulumi-lang-java=&#34;`nodeName`&#34; pulumi-lang-hcl=&#34;`node_name`&#34;&gt;`nodeName`&lt;/span&gt;, e.g.,
  * 
  * ```sh
  * $ pulumi import proxmoxve:index/dnsLegacy:DnsLegacy first_node first-node

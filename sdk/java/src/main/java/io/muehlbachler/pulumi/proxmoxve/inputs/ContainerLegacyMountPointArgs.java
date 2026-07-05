@@ -35,7 +35,7 @@ public final class ContainerLegacyMountPointArgs extends com.pulumi.resources.Re
 
     /**
      * Whether to include the mount point in backups (only
-     * used for volume mount points, defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * used for volume mount points, defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     @Import(name="backup")
@@ -43,7 +43,7 @@ public final class ContainerLegacyMountPointArgs extends com.pulumi.resources.Re
 
     /**
      * @return Whether to include the mount point in backups (only
-     * used for volume mount points, defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+     * used for volume mount points, defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
      * 
      */
     public Optional<Output<Boolean>> backup() {
@@ -84,7 +84,7 @@ public final class ContainerLegacyMountPointArgs extends com.pulumi.resources.Re
 
     /**
      * The in-datastore path to the mount point volume.
-     * Use this attribute for cross-resource references instead of &lt;span pulumi-lang-nodejs=&#34;`volume`&#34; pulumi-lang-dotnet=&#34;`Volume`&#34; pulumi-lang-go=&#34;`volume`&#34; pulumi-lang-python=&#34;`volume`&#34; pulumi-lang-yaml=&#34;`volume`&#34; pulumi-lang-java=&#34;`volume`&#34;&gt;`volume`&lt;/span&gt;.
+     * Use this attribute for cross-resource references instead of &lt;span pulumi-lang-nodejs=&#34;`volume`&#34; pulumi-lang-dotnet=&#34;`Volume`&#34; pulumi-lang-go=&#34;`volume`&#34; pulumi-lang-python=&#34;`volume`&#34; pulumi-lang-yaml=&#34;`volume`&#34; pulumi-lang-java=&#34;`volume`&#34; pulumi-lang-hcl=&#34;`volume`&#34;&gt;`volume`&lt;/span&gt;.
      * 
      */
     @Import(name="pathInDatastore")
@@ -92,7 +92,7 @@ public final class ContainerLegacyMountPointArgs extends com.pulumi.resources.Re
 
     /**
      * @return The in-datastore path to the mount point volume.
-     * Use this attribute for cross-resource references instead of &lt;span pulumi-lang-nodejs=&#34;`volume`&#34; pulumi-lang-dotnet=&#34;`Volume`&#34; pulumi-lang-go=&#34;`volume`&#34; pulumi-lang-python=&#34;`volume`&#34; pulumi-lang-yaml=&#34;`volume`&#34; pulumi-lang-java=&#34;`volume`&#34;&gt;`volume`&lt;/span&gt;.
+     * Use this attribute for cross-resource references instead of &lt;span pulumi-lang-nodejs=&#34;`volume`&#34; pulumi-lang-dotnet=&#34;`Volume`&#34; pulumi-lang-go=&#34;`volume`&#34; pulumi-lang-python=&#34;`volume`&#34; pulumi-lang-yaml=&#34;`volume`&#34; pulumi-lang-java=&#34;`volume`&#34; pulumi-lang-hcl=&#34;`volume`&#34;&gt;`volume`&lt;/span&gt;.
      * 
      */
     public Optional<Output<String>> pathInDatastore() {
@@ -260,7 +260,7 @@ public final class ContainerLegacyMountPointArgs extends com.pulumi.resources.Re
 
         /**
          * @param backup Whether to include the mount point in backups (only
-         * used for volume mount points, defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+         * used for volume mount points, defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -272,7 +272,7 @@ public final class ContainerLegacyMountPointArgs extends com.pulumi.resources.Re
 
         /**
          * @param backup Whether to include the mount point in backups (only
-         * used for volume mount points, defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
+         * used for volume mount points, defaults to &lt;span pulumi-lang-nodejs=&#34;`false`&#34; pulumi-lang-dotnet=&#34;`False`&#34; pulumi-lang-go=&#34;`false`&#34; pulumi-lang-python=&#34;`false`&#34; pulumi-lang-yaml=&#34;`false`&#34; pulumi-lang-java=&#34;`false`&#34; pulumi-lang-hcl=&#34;`false`&#34;&gt;`false`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -337,7 +337,7 @@ public final class ContainerLegacyMountPointArgs extends com.pulumi.resources.Re
 
         /**
          * @param pathInDatastore The in-datastore path to the mount point volume.
-         * Use this attribute for cross-resource references instead of &lt;span pulumi-lang-nodejs=&#34;`volume`&#34; pulumi-lang-dotnet=&#34;`Volume`&#34; pulumi-lang-go=&#34;`volume`&#34; pulumi-lang-python=&#34;`volume`&#34; pulumi-lang-yaml=&#34;`volume`&#34; pulumi-lang-java=&#34;`volume`&#34;&gt;`volume`&lt;/span&gt;.
+         * Use this attribute for cross-resource references instead of &lt;span pulumi-lang-nodejs=&#34;`volume`&#34; pulumi-lang-dotnet=&#34;`Volume`&#34; pulumi-lang-go=&#34;`volume`&#34; pulumi-lang-python=&#34;`volume`&#34; pulumi-lang-yaml=&#34;`volume`&#34; pulumi-lang-java=&#34;`volume`&#34; pulumi-lang-hcl=&#34;`volume`&#34;&gt;`volume`&lt;/span&gt;.
          * 
          * @return builder
          * 
@@ -349,7 +349,7 @@ public final class ContainerLegacyMountPointArgs extends com.pulumi.resources.Re
 
         /**
          * @param pathInDatastore The in-datastore path to the mount point volume.
-         * Use this attribute for cross-resource references instead of &lt;span pulumi-lang-nodejs=&#34;`volume`&#34; pulumi-lang-dotnet=&#34;`Volume`&#34; pulumi-lang-go=&#34;`volume`&#34; pulumi-lang-python=&#34;`volume`&#34; pulumi-lang-yaml=&#34;`volume`&#34; pulumi-lang-java=&#34;`volume`&#34;&gt;`volume`&lt;/span&gt;.
+         * Use this attribute for cross-resource references instead of &lt;span pulumi-lang-nodejs=&#34;`volume`&#34; pulumi-lang-dotnet=&#34;`Volume`&#34; pulumi-lang-go=&#34;`volume`&#34; pulumi-lang-python=&#34;`volume`&#34; pulumi-lang-yaml=&#34;`volume`&#34; pulumi-lang-java=&#34;`volume`&#34; pulumi-lang-hcl=&#34;`volume`&#34;&gt;`volume`&lt;/span&gt;.
          * 
          * @return builder
          * 

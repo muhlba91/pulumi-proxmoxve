@@ -2409,18 +2409,30 @@ class VmLegacyAgent(dict):
 @pulumi.output_type
 class VmLegacyAgentWaitForIp(dict):
     def __init__(__self__, *,
+                 disabled: Optional[_builtins.bool] = None,
                  ipv4: Optional[_builtins.bool] = None,
                  ipv6: Optional[_builtins.bool] = None):
         """
+        :param _builtins.bool disabled: Whether to disable waiting for the agent to report an IP address (defaults to `false`). Set to `true` to skip the IP lookup entirely, so the provider does not wait for the agent during `refresh` and at the end of `apply`. Useful when the guest agent is slow to start, not yet installed, or not running, to avoid blocking those operations. When disabled, `ipv4_addresses`, `ipv6_addresses`, and `network_interface_names` are left empty.
         :param _builtins.bool ipv4: Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
         :param _builtins.bool ipv6: Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
                
-               When `wait_for_ip` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+               When `wait_for_ip` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
         """
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
         if ipv4 is not None:
             pulumi.set(__self__, "ipv4", ipv4)
         if ipv6 is not None:
             pulumi.set(__self__, "ipv6", ipv6)
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> Optional[_builtins.bool]:
+        """
+        Whether to disable waiting for the agent to report an IP address (defaults to `false`). Set to `true` to skip the IP lookup entirely, so the provider does not wait for the agent during `refresh` and at the end of `apply`. Useful when the guest agent is slow to start, not yet installed, or not running, to avoid blocking those operations. When disabled, `ipv4_addresses`, `ipv6_addresses`, and `network_interface_names` are left empty.
+        """
+        return pulumi.get(self, "disabled")
 
     @_builtins.property
     @pulumi.getter
@@ -2436,7 +2448,7 @@ class VmLegacyAgentWaitForIp(dict):
         """
         Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
 
-        When `wait_for_ip` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+        When `wait_for_ip` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
         """
         return pulumi.get(self, "ipv6")
 
@@ -2777,26 +2789,26 @@ class VmLegacyCpu(dict):
         :param Sequence[_builtins.str] flags: The CPU flags.
                - `+aes`/`-aes` - Activate AES instruction set for HW acceleration.
                - `+amd-no-ssb`/`-amd-no-ssb` - Notifies guest OS that host is not
-               vulnerable for Spectre on AMD CPUs.
+                 vulnerable for Spectre on AMD CPUs.
                - `+amd-ssbd`/`-amd-ssbd` - Improves Spectre mitigation performance with
-               AMD CPUs, best used with "virt-ssbd".
+                 AMD CPUs, best used with "virt-ssbd".
                - `+hv-evmcs`/`-hv-evmcs` - Improve performance for nested
-               virtualization (only supported on Intel CPUs).
+                 virtualization (only supported on Intel CPUs).
                - `+hv-tlbflush`/`-hv-tlbflush` - Improve performance in overcommitted
-               Windows guests (may lead to guest BSOD on old CPUs).
+                 Windows guests (may lead to guest BSOD on old CPUs).
                - `+ibpb`/`-ibpb` - Allows improved Spectre mitigation on AMD CPUs.
                - `+md-clear`/`-md-clear` - Required to let the guest OS know if MDS is
-               mitigated correctly.
+                 mitigated correctly.
                - `+pcid`/`-pcid` - Meltdown fix cost reduction on Westmere, Sandy- and
-               Ivy Bridge Intel CPUs.
+                 Ivy Bridge Intel CPUs.
                - `+pdpe1gb`/`-pdpe1gb` - Allows guest OS to use 1 GB size pages, if
-               host HW supports it.
+                 host HW supports it.
                - `+spec-ctrl`/`-spec-ctrl` - Allows improved Spectre mitigation with
-               Intel CPUs.
+                 Intel CPUs.
                - `+ssbd`/`-ssbd` - Protection for "Speculative Store Bypass" for Intel
-               models.
+                 models.
                - `+virt-ssbd`/`-virt-ssbd` - Basis for "Speculative Store Bypass"
-               protection for AMD models.
+                 protection for AMD models.
         :param _builtins.int hotplugged: The number of hotplugged vCPUs (defaults
                to `0`).
         :param _builtins.float limit: Limit of CPU usage, `0...128` (supports
@@ -2862,26 +2874,26 @@ class VmLegacyCpu(dict):
         The CPU flags.
         - `+aes`/`-aes` - Activate AES instruction set for HW acceleration.
         - `+amd-no-ssb`/`-amd-no-ssb` - Notifies guest OS that host is not
-        vulnerable for Spectre on AMD CPUs.
+          vulnerable for Spectre on AMD CPUs.
         - `+amd-ssbd`/`-amd-ssbd` - Improves Spectre mitigation performance with
-        AMD CPUs, best used with "virt-ssbd".
+          AMD CPUs, best used with "virt-ssbd".
         - `+hv-evmcs`/`-hv-evmcs` - Improve performance for nested
-        virtualization (only supported on Intel CPUs).
+          virtualization (only supported on Intel CPUs).
         - `+hv-tlbflush`/`-hv-tlbflush` - Improve performance in overcommitted
-        Windows guests (may lead to guest BSOD on old CPUs).
+          Windows guests (may lead to guest BSOD on old CPUs).
         - `+ibpb`/`-ibpb` - Allows improved Spectre mitigation on AMD CPUs.
         - `+md-clear`/`-md-clear` - Required to let the guest OS know if MDS is
-        mitigated correctly.
+          mitigated correctly.
         - `+pcid`/`-pcid` - Meltdown fix cost reduction on Westmere, Sandy- and
-        Ivy Bridge Intel CPUs.
+          Ivy Bridge Intel CPUs.
         - `+pdpe1gb`/`-pdpe1gb` - Allows guest OS to use 1 GB size pages, if
-        host HW supports it.
+          host HW supports it.
         - `+spec-ctrl`/`-spec-ctrl` - Allows improved Spectre mitigation with
-        Intel CPUs.
+          Intel CPUs.
         - `+ssbd`/`-ssbd` - Protection for "Speculative Store Bypass" for Intel
-        models.
+          models.
         - `+virt-ssbd`/`-virt-ssbd` - Basis for "Speculative Store Bypass"
-        protection for AMD models.
+          protection for AMD models.
         """
         return pulumi.get(self, "flags")
 
@@ -2976,6 +2988,7 @@ class VmLegacyDisk(dict):
                  import_from: Optional[_builtins.str] = None,
                  iothread: Optional[_builtins.bool] = None,
                  path_in_datastore: Optional[_builtins.str] = None,
+                 queues: Optional[_builtins.int] = None,
                  replicate: Optional[_builtins.bool] = None,
                  serial: Optional[_builtins.str] = None,
                  size: Optional[_builtins.int] = None,
@@ -3011,6 +3024,10 @@ class VmLegacyDisk(dict):
                ***Experimental.***Use to attach another VM's disks,
                or (as root only) host's filesystem paths (`datastore_id` empty string).
                See "*Example: Attached disks*".
+        :param _builtins.int queues: The number of I/O queues for this disk, `2` or
+               greater. Only supported for SCSI disks, and applied by Proxmox only
+               when `scsi_hardware` is set to `virtio-scsi-single`. A change requires
+               a VM power cycle (or reboot via the Proxmox API) to take effect.
         :param _builtins.bool replicate: Whether the drive should be considered for replication jobs (defaults to `true`).
         :param _builtins.str serial: The serial number of the disk, up to 20 bytes long.
         :param _builtins.int size: The disk size in gigabytes (defaults to `8`).
@@ -3040,6 +3057,8 @@ class VmLegacyDisk(dict):
             pulumi.set(__self__, "iothread", iothread)
         if path_in_datastore is not None:
             pulumi.set(__self__, "path_in_datastore", path_in_datastore)
+        if queues is not None:
+            pulumi.set(__self__, "queues", queues)
         if replicate is not None:
             pulumi.set(__self__, "replicate", replicate)
         if serial is not None:
@@ -3156,6 +3175,17 @@ class VmLegacyDisk(dict):
         See "*Example: Attached disks*".
         """
         return pulumi.get(self, "path_in_datastore")
+
+    @_builtins.property
+    @pulumi.getter
+    def queues(self) -> Optional[_builtins.int]:
+        """
+        The number of I/O queues for this disk, `2` or
+        greater. Only supported for SCSI disks, and applied by Proxmox only
+        when `scsi_hardware` is set to `virtio-scsi-single`. A change requires
+        a VM power cycle (or reboot via the Proxmox API) to take effect.
+        """
+        return pulumi.get(self, "queues")
 
     @_builtins.property
     @pulumi.getter

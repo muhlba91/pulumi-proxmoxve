@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.network/linux.Vlan`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.network/linux.Vlan`&#34; pulumi-lang-go=&#34;`network/linux.Vlan`&#34; pulumi-lang-python=&#34;`network/linux.Vlan`&#34; pulumi-lang-yaml=&#34;`proxmoxve.network/linux.Vlan`&#34; pulumi-lang-java=&#34;`proxmoxve.network/linux.Vlan`&#34;&gt;`proxmoxve.network/linux.Vlan`&lt;/span&gt; instead. This resource will be removed in v1.0.
+ * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.network/linux.Vlan`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.network/linux.Vlan`&#34; pulumi-lang-go=&#34;`network/linux.Vlan`&#34; pulumi-lang-python=&#34;`network/linux.Vlan`&#34; pulumi-lang-yaml=&#34;`proxmoxve.network/linux.Vlan`&#34; pulumi-lang-java=&#34;`proxmoxve.network/linux.Vlan`&#34; pulumi-lang-hcl=&#34;`proxmox_network_linux_vlan`&#34;&gt;`proxmoxve.network/linux.Vlan`&lt;/span&gt; instead. This resource will be removed in v1.0.
  * 
  * Manages a Linux VLAN network interface in a Proxmox VE node.
  * 
@@ -109,14 +109,14 @@ public class VlanLegacy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.address6);
     }
     /**
-     * Automatically start interface on boot (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * Automatically start interface on boot (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     @Export(name="autostart", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> autostart;
 
     /**
-     * @return Automatically start interface on boot (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
+     * @return Automatically start interface on boot (defaults to &lt;span pulumi-lang-nodejs=&#34;`true`&#34; pulumi-lang-dotnet=&#34;`True`&#34; pulumi-lang-go=&#34;`true`&#34; pulumi-lang-python=&#34;`true`&#34; pulumi-lang-yaml=&#34;`true`&#34; pulumi-lang-java=&#34;`true`&#34; pulumi-lang-hcl=&#34;`true`&#34;&gt;`true`&lt;/span&gt;).
      * 
      */
     public Output<Boolean> autostart() {
@@ -165,14 +165,14 @@ public class VlanLegacy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.gateway6);
     }
     /**
-     * The VLAN raw device. See also &lt;span pulumi-lang-nodejs=&#34;`name`&#34; pulumi-lang-dotnet=&#34;`Name`&#34; pulumi-lang-go=&#34;`name`&#34; pulumi-lang-python=&#34;`name`&#34; pulumi-lang-yaml=&#34;`name`&#34; pulumi-lang-java=&#34;`name`&#34;&gt;`name`&lt;/span&gt;.
+     * The VLAN raw device. See also &lt;span pulumi-lang-nodejs=&#34;`name`&#34; pulumi-lang-dotnet=&#34;`Name`&#34; pulumi-lang-go=&#34;`name`&#34; pulumi-lang-python=&#34;`name`&#34; pulumi-lang-yaml=&#34;`name`&#34; pulumi-lang-java=&#34;`name`&#34; pulumi-lang-hcl=&#34;`name`&#34;&gt;`name`&lt;/span&gt;.
      * 
      */
     @Export(name="interface", refs={String.class}, tree="[0]")
     private Output<String> interface_;
 
     /**
-     * @return The VLAN raw device. See also &lt;span pulumi-lang-nodejs=&#34;`name`&#34; pulumi-lang-dotnet=&#34;`Name`&#34; pulumi-lang-go=&#34;`name`&#34; pulumi-lang-python=&#34;`name`&#34; pulumi-lang-yaml=&#34;`name`&#34; pulumi-lang-java=&#34;`name`&#34;&gt;`name`&lt;/span&gt;.
+     * @return The VLAN raw device. See also &lt;span pulumi-lang-nodejs=&#34;`name`&#34; pulumi-lang-dotnet=&#34;`Name`&#34; pulumi-lang-go=&#34;`name`&#34; pulumi-lang-python=&#34;`name`&#34; pulumi-lang-yaml=&#34;`name`&#34; pulumi-lang-java=&#34;`name`&#34; pulumi-lang-hcl=&#34;`name`&#34;&gt;`name`&lt;/span&gt;.
      * 
      */
     public Output<String> interface_() {
@@ -193,14 +193,14 @@ public class VlanLegacy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.mtu);
     }
     /**
-     * The interface name. Either add the VLAN tag number to an existing interface name, e.g. `ens18.21` (and do not set &lt;span pulumi-lang-nodejs=&#34;`interface`&#34; pulumi-lang-dotnet=&#34;`Interface`&#34; pulumi-lang-go=&#34;`interface`&#34; pulumi-lang-python=&#34;`interface`&#34; pulumi-lang-yaml=&#34;`interface`&#34; pulumi-lang-java=&#34;`interface`&#34;&gt;`interface`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`vlan`&#34; pulumi-lang-dotnet=&#34;`Vlan`&#34; pulumi-lang-go=&#34;`vlan`&#34; pulumi-lang-python=&#34;`vlan`&#34; pulumi-lang-yaml=&#34;`vlan`&#34; pulumi-lang-java=&#34;`vlan`&#34;&gt;`vlan`&lt;/span&gt;), or use custom name, e.g. &lt;span pulumi-lang-nodejs=&#34;`vlanLab`&#34; pulumi-lang-dotnet=&#34;`VlanLab`&#34; pulumi-lang-go=&#34;`vlanLab`&#34; pulumi-lang-python=&#34;`vlan_lab`&#34; pulumi-lang-yaml=&#34;`vlanLab`&#34; pulumi-lang-java=&#34;`vlanLab`&#34;&gt;`vlanLab`&lt;/span&gt; (&lt;span pulumi-lang-nodejs=&#34;`interface`&#34; pulumi-lang-dotnet=&#34;`Interface`&#34; pulumi-lang-go=&#34;`interface`&#34; pulumi-lang-python=&#34;`interface`&#34; pulumi-lang-yaml=&#34;`interface`&#34; pulumi-lang-java=&#34;`interface`&#34;&gt;`interface`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`vlan`&#34; pulumi-lang-dotnet=&#34;`Vlan`&#34; pulumi-lang-go=&#34;`vlan`&#34; pulumi-lang-python=&#34;`vlan`&#34; pulumi-lang-yaml=&#34;`vlan`&#34; pulumi-lang-java=&#34;`vlan`&#34;&gt;`vlan`&lt;/span&gt; are then required).
+     * The interface name. Either add the VLAN tag number to an existing interface name, e.g. `ens18.21` (and do not set &lt;span pulumi-lang-nodejs=&#34;`interface`&#34; pulumi-lang-dotnet=&#34;`Interface`&#34; pulumi-lang-go=&#34;`interface`&#34; pulumi-lang-python=&#34;`interface`&#34; pulumi-lang-yaml=&#34;`interface`&#34; pulumi-lang-java=&#34;`interface`&#34; pulumi-lang-hcl=&#34;`interface`&#34;&gt;`interface`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`vlan`&#34; pulumi-lang-dotnet=&#34;`Vlan`&#34; pulumi-lang-go=&#34;`vlan`&#34; pulumi-lang-python=&#34;`vlan`&#34; pulumi-lang-yaml=&#34;`vlan`&#34; pulumi-lang-java=&#34;`vlan`&#34; pulumi-lang-hcl=&#34;`vlan`&#34;&gt;`vlan`&lt;/span&gt;), or use custom name, e.g. &lt;span pulumi-lang-nodejs=&#34;`vlanLab`&#34; pulumi-lang-dotnet=&#34;`VlanLab`&#34; pulumi-lang-go=&#34;`vlanLab`&#34; pulumi-lang-python=&#34;`vlan_lab`&#34; pulumi-lang-yaml=&#34;`vlanLab`&#34; pulumi-lang-java=&#34;`vlanLab`&#34; pulumi-lang-hcl=&#34;`vlan_lab`&#34;&gt;`vlanLab`&lt;/span&gt; (&lt;span pulumi-lang-nodejs=&#34;`interface`&#34; pulumi-lang-dotnet=&#34;`Interface`&#34; pulumi-lang-go=&#34;`interface`&#34; pulumi-lang-python=&#34;`interface`&#34; pulumi-lang-yaml=&#34;`interface`&#34; pulumi-lang-java=&#34;`interface`&#34; pulumi-lang-hcl=&#34;`interface`&#34;&gt;`interface`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`vlan`&#34; pulumi-lang-dotnet=&#34;`Vlan`&#34; pulumi-lang-go=&#34;`vlan`&#34; pulumi-lang-python=&#34;`vlan`&#34; pulumi-lang-yaml=&#34;`vlan`&#34; pulumi-lang-java=&#34;`vlan`&#34; pulumi-lang-hcl=&#34;`vlan`&#34;&gt;`vlan`&lt;/span&gt; are then required).
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The interface name. Either add the VLAN tag number to an existing interface name, e.g. `ens18.21` (and do not set &lt;span pulumi-lang-nodejs=&#34;`interface`&#34; pulumi-lang-dotnet=&#34;`Interface`&#34; pulumi-lang-go=&#34;`interface`&#34; pulumi-lang-python=&#34;`interface`&#34; pulumi-lang-yaml=&#34;`interface`&#34; pulumi-lang-java=&#34;`interface`&#34;&gt;`interface`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`vlan`&#34; pulumi-lang-dotnet=&#34;`Vlan`&#34; pulumi-lang-go=&#34;`vlan`&#34; pulumi-lang-python=&#34;`vlan`&#34; pulumi-lang-yaml=&#34;`vlan`&#34; pulumi-lang-java=&#34;`vlan`&#34;&gt;`vlan`&lt;/span&gt;), or use custom name, e.g. &lt;span pulumi-lang-nodejs=&#34;`vlanLab`&#34; pulumi-lang-dotnet=&#34;`VlanLab`&#34; pulumi-lang-go=&#34;`vlanLab`&#34; pulumi-lang-python=&#34;`vlan_lab`&#34; pulumi-lang-yaml=&#34;`vlanLab`&#34; pulumi-lang-java=&#34;`vlanLab`&#34;&gt;`vlanLab`&lt;/span&gt; (&lt;span pulumi-lang-nodejs=&#34;`interface`&#34; pulumi-lang-dotnet=&#34;`Interface`&#34; pulumi-lang-go=&#34;`interface`&#34; pulumi-lang-python=&#34;`interface`&#34; pulumi-lang-yaml=&#34;`interface`&#34; pulumi-lang-java=&#34;`interface`&#34;&gt;`interface`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`vlan`&#34; pulumi-lang-dotnet=&#34;`Vlan`&#34; pulumi-lang-go=&#34;`vlan`&#34; pulumi-lang-python=&#34;`vlan`&#34; pulumi-lang-yaml=&#34;`vlan`&#34; pulumi-lang-java=&#34;`vlan`&#34;&gt;`vlan`&lt;/span&gt; are then required).
+     * @return The interface name. Either add the VLAN tag number to an existing interface name, e.g. `ens18.21` (and do not set &lt;span pulumi-lang-nodejs=&#34;`interface`&#34; pulumi-lang-dotnet=&#34;`Interface`&#34; pulumi-lang-go=&#34;`interface`&#34; pulumi-lang-python=&#34;`interface`&#34; pulumi-lang-yaml=&#34;`interface`&#34; pulumi-lang-java=&#34;`interface`&#34; pulumi-lang-hcl=&#34;`interface`&#34;&gt;`interface`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`vlan`&#34; pulumi-lang-dotnet=&#34;`Vlan`&#34; pulumi-lang-go=&#34;`vlan`&#34; pulumi-lang-python=&#34;`vlan`&#34; pulumi-lang-yaml=&#34;`vlan`&#34; pulumi-lang-java=&#34;`vlan`&#34; pulumi-lang-hcl=&#34;`vlan`&#34;&gt;`vlan`&lt;/span&gt;), or use custom name, e.g. &lt;span pulumi-lang-nodejs=&#34;`vlanLab`&#34; pulumi-lang-dotnet=&#34;`VlanLab`&#34; pulumi-lang-go=&#34;`vlanLab`&#34; pulumi-lang-python=&#34;`vlan_lab`&#34; pulumi-lang-yaml=&#34;`vlanLab`&#34; pulumi-lang-java=&#34;`vlanLab`&#34; pulumi-lang-hcl=&#34;`vlan_lab`&#34;&gt;`vlanLab`&lt;/span&gt; (&lt;span pulumi-lang-nodejs=&#34;`interface`&#34; pulumi-lang-dotnet=&#34;`Interface`&#34; pulumi-lang-go=&#34;`interface`&#34; pulumi-lang-python=&#34;`interface`&#34; pulumi-lang-yaml=&#34;`interface`&#34; pulumi-lang-java=&#34;`interface`&#34; pulumi-lang-hcl=&#34;`interface`&#34;&gt;`interface`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`vlan`&#34; pulumi-lang-dotnet=&#34;`Vlan`&#34; pulumi-lang-go=&#34;`vlan`&#34; pulumi-lang-python=&#34;`vlan`&#34; pulumi-lang-yaml=&#34;`vlan`&#34; pulumi-lang-java=&#34;`vlan`&#34; pulumi-lang-hcl=&#34;`vlan`&#34;&gt;`vlan`&lt;/span&gt; are then required).
      * 
      */
     public Output<String> name() {
@@ -221,28 +221,28 @@ public class VlanLegacy extends com.pulumi.resources.CustomResource {
         return this.nodeName;
     }
     /**
-     * Timeout for network reload operations in seconds (defaults to &lt;span pulumi-lang-nodejs=&#34;`100`&#34; pulumi-lang-dotnet=&#34;`100`&#34; pulumi-lang-go=&#34;`100`&#34; pulumi-lang-python=&#34;`100`&#34; pulumi-lang-yaml=&#34;`100`&#34; pulumi-lang-java=&#34;`100`&#34;&gt;`100`&lt;/span&gt;).
+     * Timeout for network reload operations in seconds (defaults to &lt;span pulumi-lang-nodejs=&#34;`100`&#34; pulumi-lang-dotnet=&#34;`100`&#34; pulumi-lang-go=&#34;`100`&#34; pulumi-lang-python=&#34;`100`&#34; pulumi-lang-yaml=&#34;`100`&#34; pulumi-lang-java=&#34;`100`&#34; pulumi-lang-hcl=&#34;`100`&#34;&gt;`100`&lt;/span&gt;).
      * 
      */
     @Export(name="timeoutReload", refs={Integer.class}, tree="[0]")
     private Output<Integer> timeoutReload;
 
     /**
-     * @return Timeout for network reload operations in seconds (defaults to &lt;span pulumi-lang-nodejs=&#34;`100`&#34; pulumi-lang-dotnet=&#34;`100`&#34; pulumi-lang-go=&#34;`100`&#34; pulumi-lang-python=&#34;`100`&#34; pulumi-lang-yaml=&#34;`100`&#34; pulumi-lang-java=&#34;`100`&#34;&gt;`100`&lt;/span&gt;).
+     * @return Timeout for network reload operations in seconds (defaults to &lt;span pulumi-lang-nodejs=&#34;`100`&#34; pulumi-lang-dotnet=&#34;`100`&#34; pulumi-lang-go=&#34;`100`&#34; pulumi-lang-python=&#34;`100`&#34; pulumi-lang-yaml=&#34;`100`&#34; pulumi-lang-java=&#34;`100`&#34; pulumi-lang-hcl=&#34;`100`&#34;&gt;`100`&lt;/span&gt;).
      * 
      */
     public Output<Integer> timeoutReload() {
         return this.timeoutReload;
     }
     /**
-     * The VLAN tag. See also &lt;span pulumi-lang-nodejs=&#34;`name`&#34; pulumi-lang-dotnet=&#34;`Name`&#34; pulumi-lang-go=&#34;`name`&#34; pulumi-lang-python=&#34;`name`&#34; pulumi-lang-yaml=&#34;`name`&#34; pulumi-lang-java=&#34;`name`&#34;&gt;`name`&lt;/span&gt;.
+     * The VLAN tag. See also &lt;span pulumi-lang-nodejs=&#34;`name`&#34; pulumi-lang-dotnet=&#34;`Name`&#34; pulumi-lang-go=&#34;`name`&#34; pulumi-lang-python=&#34;`name`&#34; pulumi-lang-yaml=&#34;`name`&#34; pulumi-lang-java=&#34;`name`&#34; pulumi-lang-hcl=&#34;`name`&#34;&gt;`name`&lt;/span&gt;.
      * 
      */
     @Export(name="vlan", refs={Integer.class}, tree="[0]")
     private Output<Integer> vlan;
 
     /**
-     * @return The VLAN tag. See also &lt;span pulumi-lang-nodejs=&#34;`name`&#34; pulumi-lang-dotnet=&#34;`Name`&#34; pulumi-lang-go=&#34;`name`&#34; pulumi-lang-python=&#34;`name`&#34; pulumi-lang-yaml=&#34;`name`&#34; pulumi-lang-java=&#34;`name`&#34;&gt;`name`&lt;/span&gt;.
+     * @return The VLAN tag. See also &lt;span pulumi-lang-nodejs=&#34;`name`&#34; pulumi-lang-dotnet=&#34;`Name`&#34; pulumi-lang-go=&#34;`name`&#34; pulumi-lang-python=&#34;`name`&#34; pulumi-lang-yaml=&#34;`name`&#34; pulumi-lang-java=&#34;`name`&#34; pulumi-lang-hcl=&#34;`name`&#34;&gt;`name`&lt;/span&gt;.
      * 
      */
     public Output<Integer> vlan() {

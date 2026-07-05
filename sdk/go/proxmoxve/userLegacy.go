@@ -14,6 +14,11 @@ import (
 
 // Manages a user.
 //
+// > **Deprecation:** the inline `acl` block is deprecated. Manage user ACLs via the dedicated
+// `Acl` resource instead. The `acl` block is no longer auto-populated from a
+// cluster-wide fetch on refresh or import; existing configurations using `acl` blocks continue
+// to work, but new code should use `Acl`.
+//
 // ## Example Usage
 //
 // ```go
@@ -28,6 +33,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			operationsAutomation, err := proxmoxve.NewUserLegacy(ctx, "operations_automation", &proxmoxve.UserLegacyArgs{
+//				Comment:  pulumi.String("Managed by Pulumi"),
+//				Password: pulumi.String("a-strong-password"),
+//				UserId:   pulumi.String("operations-automation@pve"),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			operationsMonitoring, err := proxmoxve.NewRoleLegacy(ctx, "operations_monitoring", &proxmoxve.RoleLegacyArgs{
 //				RoleId: pulumi.String("operations-monitoring"),
 //				Privileges: pulumi.StringArray{
@@ -37,17 +50,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = proxmoxve.NewUserLegacy(ctx, "operations_automation", &proxmoxve.UserLegacyArgs{
-//				Acls: proxmoxve.UserLegacyAclArray{
-//					&proxmoxve.UserLegacyAclArgs{
-//						Path:      pulumi.String("/vms/1234"),
-//						Propagate: pulumi.Bool(true),
-//						RoleId:    operationsMonitoring.RoleId,
-//					},
-//				},
-//				Comment:  pulumi.String("Managed by Pulumi"),
-//				Password: pulumi.String("a-strong-password"),
-//				UserId:   pulumi.String("operations-automation@pve"),
+//			_, err = proxmoxve.NewAcl(ctx, "operations_automation_vms", &proxmoxve.AclArgs{
+//				UserId:    operationsAutomation.UserId,
+//				Path:      pulumi.String("/vms/1234"),
+//				RoleId:    operationsMonitoring.RoleId,
+//				Propagate: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -68,7 +75,10 @@ import (
 type UserLegacy struct {
 	pulumi.CustomResourceState
 
-	// The access control list (multiple blocks supported).
+	// The access control list (multiple blocks supported). Use
+	// `Acl` instead.
+	//
+	// Deprecated: Manage ACLs via the dedicated `Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing users with `acl` blocks continue to work, but new code should use `Acl`.
 	Acls UserLegacyAclArrayOutput `pulumi:"acls"`
 	// The user comment.
 	Comment pulumi.StringPtrOutput `pulumi:"comment"`
@@ -132,7 +142,10 @@ func GetUserLegacy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering UserLegacy resources.
 type userLegacyState struct {
-	// The access control list (multiple blocks supported).
+	// The access control list (multiple blocks supported). Use
+	// `Acl` instead.
+	//
+	// Deprecated: Manage ACLs via the dedicated `Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing users with `acl` blocks continue to work, but new code should use `Acl`.
 	Acls []UserLegacyAcl `pulumi:"acls"`
 	// The user comment.
 	Comment *string `pulumi:"comment"`
@@ -157,7 +170,10 @@ type userLegacyState struct {
 }
 
 type UserLegacyState struct {
-	// The access control list (multiple blocks supported).
+	// The access control list (multiple blocks supported). Use
+	// `Acl` instead.
+	//
+	// Deprecated: Manage ACLs via the dedicated `Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing users with `acl` blocks continue to work, but new code should use `Acl`.
 	Acls UserLegacyAclArrayInput
 	// The user comment.
 	Comment pulumi.StringPtrInput
@@ -186,7 +202,10 @@ func (UserLegacyState) ElementType() reflect.Type {
 }
 
 type userLegacyArgs struct {
-	// The access control list (multiple blocks supported).
+	// The access control list (multiple blocks supported). Use
+	// `Acl` instead.
+	//
+	// Deprecated: Manage ACLs via the dedicated `Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing users with `acl` blocks continue to work, but new code should use `Acl`.
 	Acls []UserLegacyAcl `pulumi:"acls"`
 	// The user comment.
 	Comment *string `pulumi:"comment"`
@@ -212,7 +231,10 @@ type userLegacyArgs struct {
 
 // The set of arguments for constructing a UserLegacy resource.
 type UserLegacyArgs struct {
-	// The access control list (multiple blocks supported).
+	// The access control list (multiple blocks supported). Use
+	// `Acl` instead.
+	//
+	// Deprecated: Manage ACLs via the dedicated `Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing users with `acl` blocks continue to work, but new code should use `Acl`.
 	Acls UserLegacyAclArrayInput
 	// The user comment.
 	Comment pulumi.StringPtrInput
@@ -323,7 +345,10 @@ func (o UserLegacyOutput) ToUserLegacyOutputWithContext(ctx context.Context) Use
 	return o
 }
 
-// The access control list (multiple blocks supported).
+// The access control list (multiple blocks supported). Use
+// `Acl` instead.
+//
+// Deprecated: Manage ACLs via the dedicated `Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing users with `acl` blocks continue to work, but new code should use `Acl`.
 func (o UserLegacyOutput) Acls() UserLegacyAclArrayOutput {
 	return o.ApplyT(func(v *UserLegacy) UserLegacyAclArrayOutput { return v.Acls }).(UserLegacyAclArrayOutput)
 }

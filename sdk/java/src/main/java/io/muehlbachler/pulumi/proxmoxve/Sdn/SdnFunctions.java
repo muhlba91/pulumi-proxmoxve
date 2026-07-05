@@ -69,7 +69,7 @@ public final class SdnFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:sdn/getSubnet:getSubnet", TypeShape.of(GetSubnetResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-go=&#34;`sdn.Subnet`&#34; pulumi-lang-python=&#34;`sdn.Subnet`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.Subnet`&#34;&gt;`proxmoxve.sdn.Subnet`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-go=&#34;`sdn.Subnet`&#34; pulumi-lang-python=&#34;`sdn.Subnet`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_subnet`&#34;&gt;`proxmoxve.sdn.Subnet`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieve details about a specific SDN Subnet in Proxmox VE.
      * 
@@ -78,7 +78,7 @@ public final class SdnFunctions {
         return getSubnetLegacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-go=&#34;`sdn.Subnet`&#34; pulumi-lang-python=&#34;`sdn.Subnet`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.Subnet`&#34;&gt;`proxmoxve.sdn.Subnet`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-go=&#34;`sdn.Subnet`&#34; pulumi-lang-python=&#34;`sdn.Subnet`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_subnet`&#34;&gt;`proxmoxve.sdn.Subnet`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieve details about a specific SDN Subnet in Proxmox VE.
      * 
@@ -87,7 +87,7 @@ public final class SdnFunctions {
         return getSubnetLegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-go=&#34;`sdn.Subnet`&#34; pulumi-lang-python=&#34;`sdn.Subnet`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.Subnet`&#34;&gt;`proxmoxve.sdn.Subnet`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-go=&#34;`sdn.Subnet`&#34; pulumi-lang-python=&#34;`sdn.Subnet`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_subnet`&#34;&gt;`proxmoxve.sdn.Subnet`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieve details about a specific SDN Subnet in Proxmox VE.
      * 
@@ -96,7 +96,7 @@ public final class SdnFunctions {
         return Deployment.getInstance().invoke("proxmoxve:sdn/getSubnetLegacy:getSubnetLegacy", TypeShape.of(GetSubnetLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-go=&#34;`sdn.Subnet`&#34; pulumi-lang-python=&#34;`sdn.Subnet`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.Subnet`&#34;&gt;`proxmoxve.sdn.Subnet`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-go=&#34;`sdn.Subnet`&#34; pulumi-lang-python=&#34;`sdn.Subnet`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_subnet`&#34;&gt;`proxmoxve.sdn.Subnet`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieve details about a specific SDN Subnet in Proxmox VE.
      * 
@@ -105,7 +105,7 @@ public final class SdnFunctions {
         return Deployment.getInstance().invoke("proxmoxve:sdn/getSubnetLegacy:getSubnetLegacy", TypeShape.of(GetSubnetLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-go=&#34;`sdn.Subnet`&#34; pulumi-lang-python=&#34;`sdn.Subnet`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.Subnet`&#34;&gt;`proxmoxve.sdn.Subnet`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-go=&#34;`sdn.Subnet`&#34; pulumi-lang-python=&#34;`sdn.Subnet`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.Subnet`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_subnet`&#34;&gt;`proxmoxve.sdn.Subnet`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieve details about a specific SDN Subnet in Proxmox VE.
      * 
@@ -364,7 +364,7 @@ public final class SdnFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:sdn/getVnet:getVnet", TypeShape.of(GetVnetResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-go=&#34;`sdn.Vnet`&#34; pulumi-lang-python=&#34;`sdn.Vnet`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.Vnet`&#34;&gt;`proxmoxve.sdn.Vnet`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-go=&#34;`sdn.Vnet`&#34; pulumi-lang-python=&#34;`sdn.Vnet`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_vnet`&#34;&gt;`proxmoxve.sdn.Vnet`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about an existing SDN VNet.
      * 
@@ -416,7 +416,7 @@ public final class SdnFunctions {
         return getVnetLegacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-go=&#34;`sdn.Vnet`&#34; pulumi-lang-python=&#34;`sdn.Vnet`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.Vnet`&#34;&gt;`proxmoxve.sdn.Vnet`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-go=&#34;`sdn.Vnet`&#34; pulumi-lang-python=&#34;`sdn.Vnet`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_vnet`&#34;&gt;`proxmoxve.sdn.Vnet`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about an existing SDN VNet.
      * 
@@ -468,7 +468,7 @@ public final class SdnFunctions {
         return getVnetLegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-go=&#34;`sdn.Vnet`&#34; pulumi-lang-python=&#34;`sdn.Vnet`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.Vnet`&#34;&gt;`proxmoxve.sdn.Vnet`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-go=&#34;`sdn.Vnet`&#34; pulumi-lang-python=&#34;`sdn.Vnet`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_vnet`&#34;&gt;`proxmoxve.sdn.Vnet`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about an existing SDN VNet.
      * 
@@ -520,7 +520,7 @@ public final class SdnFunctions {
         return Deployment.getInstance().invoke("proxmoxve:sdn/getVnetLegacy:getVnetLegacy", TypeShape.of(GetVnetLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-go=&#34;`sdn.Vnet`&#34; pulumi-lang-python=&#34;`sdn.Vnet`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.Vnet`&#34;&gt;`proxmoxve.sdn.Vnet`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-go=&#34;`sdn.Vnet`&#34; pulumi-lang-python=&#34;`sdn.Vnet`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_vnet`&#34;&gt;`proxmoxve.sdn.Vnet`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about an existing SDN VNet.
      * 
@@ -572,7 +572,7 @@ public final class SdnFunctions {
         return Deployment.getInstance().invoke("proxmoxve:sdn/getVnetLegacy:getVnetLegacy", TypeShape.of(GetVnetLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-go=&#34;`sdn.Vnet`&#34; pulumi-lang-python=&#34;`sdn.Vnet`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.Vnet`&#34;&gt;`proxmoxve.sdn.Vnet`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-go=&#34;`sdn.Vnet`&#34; pulumi-lang-python=&#34;`sdn.Vnet`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.Vnet`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_vnet`&#34;&gt;`proxmoxve.sdn.Vnet`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about an existing SDN VNet.
      * 
@@ -911,7 +911,7 @@ public final class SdnFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:sdn/getVnets:getVnets", TypeShape.of(GetVnetsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-go=&#34;`sdn.getVnets`&#34; pulumi-lang-python=&#34;`sdn_get_vnets`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.getVnets`&#34;&gt;`proxmoxve.sdn.getVnets`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-go=&#34;`sdn.getVnets`&#34; pulumi-lang-python=&#34;`sdn_get_vnets`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-hcl=&#34;`data.proxmox_sdn_vnets`&#34;&gt;`proxmoxve.sdn.getVnets`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.
      * 
@@ -954,7 +954,7 @@ public final class SdnFunctions {
         return getVnetsLegacy(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-go=&#34;`sdn.getVnets`&#34; pulumi-lang-python=&#34;`sdn_get_vnets`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.getVnets`&#34;&gt;`proxmoxve.sdn.getVnets`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-go=&#34;`sdn.getVnets`&#34; pulumi-lang-python=&#34;`sdn_get_vnets`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-hcl=&#34;`data.proxmox_sdn_vnets`&#34;&gt;`proxmoxve.sdn.getVnets`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.
      * 
@@ -997,7 +997,7 @@ public final class SdnFunctions {
         return getVnetsLegacyPlain(InvokeArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-go=&#34;`sdn.getVnets`&#34; pulumi-lang-python=&#34;`sdn_get_vnets`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.getVnets`&#34;&gt;`proxmoxve.sdn.getVnets`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-go=&#34;`sdn.getVnets`&#34; pulumi-lang-python=&#34;`sdn_get_vnets`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-hcl=&#34;`data.proxmox_sdn_vnets`&#34;&gt;`proxmoxve.sdn.getVnets`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.
      * 
@@ -1040,7 +1040,7 @@ public final class SdnFunctions {
         return getVnetsLegacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-go=&#34;`sdn.getVnets`&#34; pulumi-lang-python=&#34;`sdn_get_vnets`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.getVnets`&#34;&gt;`proxmoxve.sdn.getVnets`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-go=&#34;`sdn.getVnets`&#34; pulumi-lang-python=&#34;`sdn_get_vnets`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-hcl=&#34;`data.proxmox_sdn_vnets`&#34;&gt;`proxmoxve.sdn.getVnets`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.
      * 
@@ -1083,7 +1083,7 @@ public final class SdnFunctions {
         return getVnetsLegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-go=&#34;`sdn.getVnets`&#34; pulumi-lang-python=&#34;`sdn_get_vnets`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.getVnets`&#34;&gt;`proxmoxve.sdn.getVnets`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-go=&#34;`sdn.getVnets`&#34; pulumi-lang-python=&#34;`sdn_get_vnets`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-hcl=&#34;`data.proxmox_sdn_vnets`&#34;&gt;`proxmoxve.sdn.getVnets`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.
      * 
@@ -1126,7 +1126,7 @@ public final class SdnFunctions {
         return Deployment.getInstance().invoke("proxmoxve:sdn/getVnetsLegacy:getVnetsLegacy", TypeShape.of(GetVnetsLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-go=&#34;`sdn.getVnets`&#34; pulumi-lang-python=&#34;`sdn_get_vnets`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.getVnets`&#34;&gt;`proxmoxve.sdn.getVnets`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-go=&#34;`sdn.getVnets`&#34; pulumi-lang-python=&#34;`sdn_get_vnets`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-hcl=&#34;`data.proxmox_sdn_vnets`&#34;&gt;`proxmoxve.sdn.getVnets`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.
      * 
@@ -1169,7 +1169,7 @@ public final class SdnFunctions {
         return Deployment.getInstance().invoke("proxmoxve:sdn/getVnetsLegacy:getVnetsLegacy", TypeShape.of(GetVnetsLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-go=&#34;`sdn.getVnets`&#34; pulumi-lang-python=&#34;`sdn_get_vnets`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.getVnets`&#34;&gt;`proxmoxve.sdn.getVnets`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-go=&#34;`sdn.getVnets`&#34; pulumi-lang-python=&#34;`sdn_get_vnets`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.getVnets`&#34; pulumi-lang-hcl=&#34;`data.proxmox_sdn_vnets`&#34;&gt;`proxmoxve.sdn.getVnets`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about all SDN VNets in Proxmox. This data source lists all virtual networks configured in the Software-Defined Networking setup.
      * 
@@ -1611,7 +1611,7 @@ public final class SdnFunctions {
         return Deployment.getInstance().invokeAsync("proxmoxve:sdn/getZones:getZones", TypeShape.of(GetZonesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-go=&#34;`sdn.getZones`&#34; pulumi-lang-python=&#34;`sdn_get_zones`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.getZones`&#34;&gt;`proxmoxve.sdn.getZones`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-go=&#34;`sdn.getZones`&#34; pulumi-lang-python=&#34;`sdn_get_zones`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-hcl=&#34;`data.proxmox_sdn_zones`&#34;&gt;`proxmoxve.sdn.getZones`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about all SDN Zones in Proxmox. This data source can optionally filter zones by type.
      * 
@@ -1670,7 +1670,7 @@ public final class SdnFunctions {
         return getZonesLegacy(GetZonesLegacyArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-go=&#34;`sdn.getZones`&#34; pulumi-lang-python=&#34;`sdn_get_zones`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.getZones`&#34;&gt;`proxmoxve.sdn.getZones`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-go=&#34;`sdn.getZones`&#34; pulumi-lang-python=&#34;`sdn_get_zones`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-hcl=&#34;`data.proxmox_sdn_zones`&#34;&gt;`proxmoxve.sdn.getZones`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about all SDN Zones in Proxmox. This data source can optionally filter zones by type.
      * 
@@ -1729,7 +1729,7 @@ public final class SdnFunctions {
         return getZonesLegacyPlain(GetZonesLegacyPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-go=&#34;`sdn.getZones`&#34; pulumi-lang-python=&#34;`sdn_get_zones`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.getZones`&#34;&gt;`proxmoxve.sdn.getZones`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-go=&#34;`sdn.getZones`&#34; pulumi-lang-python=&#34;`sdn_get_zones`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-hcl=&#34;`data.proxmox_sdn_zones`&#34;&gt;`proxmoxve.sdn.getZones`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about all SDN Zones in Proxmox. This data source can optionally filter zones by type.
      * 
@@ -1788,7 +1788,7 @@ public final class SdnFunctions {
         return getZonesLegacy(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-go=&#34;`sdn.getZones`&#34; pulumi-lang-python=&#34;`sdn_get_zones`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.getZones`&#34;&gt;`proxmoxve.sdn.getZones`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-go=&#34;`sdn.getZones`&#34; pulumi-lang-python=&#34;`sdn_get_zones`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-hcl=&#34;`data.proxmox_sdn_zones`&#34;&gt;`proxmoxve.sdn.getZones`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about all SDN Zones in Proxmox. This data source can optionally filter zones by type.
      * 
@@ -1847,7 +1847,7 @@ public final class SdnFunctions {
         return getZonesLegacyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-go=&#34;`sdn.getZones`&#34; pulumi-lang-python=&#34;`sdn_get_zones`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.getZones`&#34;&gt;`proxmoxve.sdn.getZones`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-go=&#34;`sdn.getZones`&#34; pulumi-lang-python=&#34;`sdn_get_zones`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-hcl=&#34;`data.proxmox_sdn_zones`&#34;&gt;`proxmoxve.sdn.getZones`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about all SDN Zones in Proxmox. This data source can optionally filter zones by type.
      * 
@@ -1906,7 +1906,7 @@ public final class SdnFunctions {
         return Deployment.getInstance().invoke("proxmoxve:sdn/getZonesLegacy:getZonesLegacy", TypeShape.of(GetZonesLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-go=&#34;`sdn.getZones`&#34; pulumi-lang-python=&#34;`sdn_get_zones`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.getZones`&#34;&gt;`proxmoxve.sdn.getZones`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-go=&#34;`sdn.getZones`&#34; pulumi-lang-python=&#34;`sdn_get_zones`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-hcl=&#34;`data.proxmox_sdn_zones`&#34;&gt;`proxmoxve.sdn.getZones`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about all SDN Zones in Proxmox. This data source can optionally filter zones by type.
      * 
@@ -1965,7 +1965,7 @@ public final class SdnFunctions {
         return Deployment.getInstance().invoke("proxmoxve:sdn/getZonesLegacy:getZonesLegacy", TypeShape.of(GetZonesLegacyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-go=&#34;`sdn.getZones`&#34; pulumi-lang-python=&#34;`sdn_get_zones`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.getZones`&#34;&gt;`proxmoxve.sdn.getZones`&lt;/span&gt; instead. This data source will be removed in v1.0.
+     * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-go=&#34;`sdn.getZones`&#34; pulumi-lang-python=&#34;`sdn_get_zones`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn.getZones`&#34; pulumi-lang-hcl=&#34;`data.proxmox_sdn_zones`&#34;&gt;`proxmoxve.sdn.getZones`&lt;/span&gt; instead. This data source will be removed in v1.0.
      * 
      * Retrieves information about all SDN Zones in Proxmox. This data source can optionally filter zones by type.
      * 

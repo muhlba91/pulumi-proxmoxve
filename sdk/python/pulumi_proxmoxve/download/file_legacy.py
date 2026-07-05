@@ -519,6 +519,15 @@ class FileLegacy(pulumi.CustomResource):
             url="https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.tar.gz")
         ```
 
+        ## Import
+
+        !/usr/bin/env sh
+        A download file can be imported using its identifier in the format: node_name/datastore_id:content_type/file_name, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:download/fileLegacy:FileLegacy ubuntu_iso pve/local:iso/ubuntu-24.04-server.iso
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -609,6 +618,15 @@ class FileLegacy(pulumi.CustomResource):
             datastore_id="local",
             node_name="pve",
             url="https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.tar.gz")
+        ```
+
+        ## Import
+
+        !/usr/bin/env sh
+        A download file can be imported using its identifier in the format: node_name/datastore_id:content_type/file_name, e.g.:
+
+        ```sh
+        $ pulumi import proxmoxve:download/fileLegacy:FileLegacy ubuntu_iso pve/local:iso/ubuntu-24.04-server.iso
         ```
 
 

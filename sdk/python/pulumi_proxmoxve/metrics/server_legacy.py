@@ -31,6 +31,8 @@ class ServerLegacyArgs:
                  influx_max_body_size: pulumi.Input[Optional[_builtins.int]] = None,
                  influx_organization: pulumi.Input[Optional[_builtins.str]] = None,
                  influx_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 influx_token_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 influx_token_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  influx_verify: pulumi.Input[Optional[_builtins.bool]] = None,
                  mtu: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -57,7 +59,10 @@ class ServerLegacyArgs:
         :param pulumi.Input[_builtins.str] influx_db_proto: Protocol for InfluxDB. Choice is between `udp` | `http` | `https`. If not set, PVE default is `udp`.
         :param pulumi.Input[_builtins.int] influx_max_body_size: InfluxDB max-body-size in bytes. Requests are batched up to this size. If not set, PVE default is `25000000`.
         :param pulumi.Input[_builtins.str] influx_organization: The InfluxDB organization. Only necessary when using the http v2 api. Has no meaning when using v2 compatibility api.
-        :param pulumi.Input[_builtins.str] influx_token: The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
+        :param pulumi.Input[_builtins.str] influx_token: The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead. Cannot be used together with `influx_token_wo`.
+        :param pulumi.Input[_builtins.str] influx_token_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The InfluxDB access token (write-only). Prefer this over `influx_token` to avoid storing the secret in Terraform state. Cannot be used together with `influx_token`.
+        :param pulumi.Input[_builtins.int] influx_token_wo_version: Increment this counter to rotate `influx_token_wo` without changing other fields.
         :param pulumi.Input[_builtins.bool] influx_verify: Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
         :param pulumi.Input[_builtins.int] mtu: MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
         :param pulumi.Input[_builtins.str] name: Unique name that will be ID of this metric server in PVE.
@@ -92,6 +97,10 @@ class ServerLegacyArgs:
             pulumi.set(__self__, "influx_organization", influx_organization)
         if influx_token is not None:
             pulumi.set(__self__, "influx_token", influx_token)
+        if influx_token_wo is not None:
+            pulumi.set(__self__, "influx_token_wo", influx_token_wo)
+        if influx_token_wo_version is not None:
+            pulumi.set(__self__, "influx_token_wo_version", influx_token_wo_version)
         if influx_verify is not None:
             pulumi.set(__self__, "influx_verify", influx_verify)
         if mtu is not None:
@@ -253,13 +262,38 @@ class ServerLegacyArgs:
     @pulumi.getter(name="influxToken")
     def influx_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
+        The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead. Cannot be used together with `influx_token_wo`.
         """
         return pulumi.get(self, "influx_token")
 
     @influx_token.setter
     def influx_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "influx_token", value)
+
+    @_builtins.property
+    @pulumi.getter(name="influxTokenWo")
+    def influx_token_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The InfluxDB access token (write-only). Prefer this over `influx_token` to avoid storing the secret in Terraform state. Cannot be used together with `influx_token`.
+        """
+        return pulumi.get(self, "influx_token_wo")
+
+    @influx_token_wo.setter
+    def influx_token_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "influx_token_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="influxTokenWoVersion")
+    def influx_token_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Increment this counter to rotate `influx_token_wo` without changing other fields.
+        """
+        return pulumi.get(self, "influx_token_wo_version")
+
+    @influx_token_wo_version.setter
+    def influx_token_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "influx_token_wo_version", value)
 
     @_builtins.property
     @pulumi.getter(name="influxVerify")
@@ -418,6 +452,8 @@ class _ServerLegacyState:
                  influx_max_body_size: pulumi.Input[Optional[_builtins.int]] = None,
                  influx_organization: pulumi.Input[Optional[_builtins.str]] = None,
                  influx_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 influx_token_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 influx_token_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  influx_verify: pulumi.Input[Optional[_builtins.bool]] = None,
                  mtu: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -444,7 +480,10 @@ class _ServerLegacyState:
         :param pulumi.Input[_builtins.str] influx_db_proto: Protocol for InfluxDB. Choice is between `udp` | `http` | `https`. If not set, PVE default is `udp`.
         :param pulumi.Input[_builtins.int] influx_max_body_size: InfluxDB max-body-size in bytes. Requests are batched up to this size. If not set, PVE default is `25000000`.
         :param pulumi.Input[_builtins.str] influx_organization: The InfluxDB organization. Only necessary when using the http v2 api. Has no meaning when using v2 compatibility api.
-        :param pulumi.Input[_builtins.str] influx_token: The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
+        :param pulumi.Input[_builtins.str] influx_token: The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead. Cannot be used together with `influx_token_wo`.
+        :param pulumi.Input[_builtins.str] influx_token_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The InfluxDB access token (write-only). Prefer this over `influx_token` to avoid storing the secret in Terraform state. Cannot be used together with `influx_token`.
+        :param pulumi.Input[_builtins.int] influx_token_wo_version: Increment this counter to rotate `influx_token_wo` without changing other fields.
         :param pulumi.Input[_builtins.bool] influx_verify: Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
         :param pulumi.Input[_builtins.int] mtu: MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
         :param pulumi.Input[_builtins.str] name: Unique name that will be ID of this metric server in PVE.
@@ -479,6 +518,10 @@ class _ServerLegacyState:
             pulumi.set(__self__, "influx_organization", influx_organization)
         if influx_token is not None:
             pulumi.set(__self__, "influx_token", influx_token)
+        if influx_token_wo is not None:
+            pulumi.set(__self__, "influx_token_wo", influx_token_wo)
+        if influx_token_wo_version is not None:
+            pulumi.set(__self__, "influx_token_wo_version", influx_token_wo_version)
         if influx_verify is not None:
             pulumi.set(__self__, "influx_verify", influx_verify)
         if mtu is not None:
@@ -610,13 +653,38 @@ class _ServerLegacyState:
     @pulumi.getter(name="influxToken")
     def influx_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
+        The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead. Cannot be used together with `influx_token_wo`.
         """
         return pulumi.get(self, "influx_token")
 
     @influx_token.setter
     def influx_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "influx_token", value)
+
+    @_builtins.property
+    @pulumi.getter(name="influxTokenWo")
+    def influx_token_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The InfluxDB access token (write-only). Prefer this over `influx_token` to avoid storing the secret in Terraform state. Cannot be used together with `influx_token`.
+        """
+        return pulumi.get(self, "influx_token_wo")
+
+    @influx_token_wo.setter
+    def influx_token_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "influx_token_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="influxTokenWoVersion")
+    def influx_token_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Increment this counter to rotate `influx_token_wo` without changing other fields.
+        """
+        return pulumi.get(self, "influx_token_wo_version")
+
+    @influx_token_wo_version.setter
+    def influx_token_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "influx_token_wo_version", value)
 
     @_builtins.property
     @pulumi.getter(name="influxVerify")
@@ -814,6 +882,8 @@ class ServerLegacy(pulumi.CustomResource):
                  influx_max_body_size: pulumi.Input[Optional[_builtins.int]] = None,
                  influx_organization: pulumi.Input[Optional[_builtins.str]] = None,
                  influx_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 influx_token_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 influx_token_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  influx_verify: pulumi.Input[Optional[_builtins.bool]] = None,
                  mtu: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -879,7 +949,10 @@ class ServerLegacy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] influx_db_proto: Protocol for InfluxDB. Choice is between `udp` | `http` | `https`. If not set, PVE default is `udp`.
         :param pulumi.Input[_builtins.int] influx_max_body_size: InfluxDB max-body-size in bytes. Requests are batched up to this size. If not set, PVE default is `25000000`.
         :param pulumi.Input[_builtins.str] influx_organization: The InfluxDB organization. Only necessary when using the http v2 api. Has no meaning when using v2 compatibility api.
-        :param pulumi.Input[_builtins.str] influx_token: The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
+        :param pulumi.Input[_builtins.str] influx_token: The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead. Cannot be used together with `influx_token_wo`.
+        :param pulumi.Input[_builtins.str] influx_token_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The InfluxDB access token (write-only). Prefer this over `influx_token` to avoid storing the secret in Terraform state. Cannot be used together with `influx_token`.
+        :param pulumi.Input[_builtins.int] influx_token_wo_version: Increment this counter to rotate `influx_token_wo` without changing other fields.
         :param pulumi.Input[_builtins.bool] influx_verify: Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
         :param pulumi.Input[_builtins.int] mtu: MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
         :param pulumi.Input[_builtins.str] name: Unique name that will be ID of this metric server in PVE.
@@ -965,6 +1038,8 @@ class ServerLegacy(pulumi.CustomResource):
                  influx_max_body_size: pulumi.Input[Optional[_builtins.int]] = None,
                  influx_organization: pulumi.Input[Optional[_builtins.str]] = None,
                  influx_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 influx_token_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 influx_token_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  influx_verify: pulumi.Input[Optional[_builtins.bool]] = None,
                  mtu: pulumi.Input[Optional[_builtins.int]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -998,6 +1073,8 @@ class ServerLegacy(pulumi.CustomResource):
             __props__.__dict__["influx_max_body_size"] = influx_max_body_size
             __props__.__dict__["influx_organization"] = influx_organization
             __props__.__dict__["influx_token"] = None if influx_token is None else pulumi.Output.secret(influx_token)
+            __props__.__dict__["influx_token_wo"] = None if influx_token_wo is None else pulumi.Output.secret(influx_token_wo)
+            __props__.__dict__["influx_token_wo_version"] = influx_token_wo_version
             __props__.__dict__["influx_verify"] = influx_verify
             __props__.__dict__["mtu"] = mtu
             __props__.__dict__["name"] = name
@@ -1019,7 +1096,7 @@ class ServerLegacy(pulumi.CustomResource):
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["influxToken", "opentelemetryHeaders"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["influxToken", "influxTokenWo", "opentelemetryHeaders"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ServerLegacy, __self__).__init__(
             'proxmoxve:metrics/serverLegacy:ServerLegacy',
@@ -1040,6 +1117,8 @@ class ServerLegacy(pulumi.CustomResource):
             influx_max_body_size: pulumi.Input[Optional[_builtins.int]] = None,
             influx_organization: pulumi.Input[Optional[_builtins.str]] = None,
             influx_token: pulumi.Input[Optional[_builtins.str]] = None,
+            influx_token_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            influx_token_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             influx_verify: pulumi.Input[Optional[_builtins.bool]] = None,
             mtu: pulumi.Input[Optional[_builtins.int]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1070,7 +1149,10 @@ class ServerLegacy(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] influx_db_proto: Protocol for InfluxDB. Choice is between `udp` | `http` | `https`. If not set, PVE default is `udp`.
         :param pulumi.Input[_builtins.int] influx_max_body_size: InfluxDB max-body-size in bytes. Requests are batched up to this size. If not set, PVE default is `25000000`.
         :param pulumi.Input[_builtins.str] influx_organization: The InfluxDB organization. Only necessary when using the http v2 api. Has no meaning when using v2 compatibility api.
-        :param pulumi.Input[_builtins.str] influx_token: The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
+        :param pulumi.Input[_builtins.str] influx_token: The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead. Cannot be used together with `influx_token_wo`.
+        :param pulumi.Input[_builtins.str] influx_token_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The InfluxDB access token (write-only). Prefer this over `influx_token` to avoid storing the secret in Terraform state. Cannot be used together with `influx_token`.
+        :param pulumi.Input[_builtins.int] influx_token_wo_version: Increment this counter to rotate `influx_token_wo` without changing other fields.
         :param pulumi.Input[_builtins.bool] influx_verify: Set to `false` to disable certificate verification for https endpoints. If not set, PVE default is `true`.
         :param pulumi.Input[_builtins.int] mtu: MTU (maximum transmission unit) for metrics transmission over UDP. If not set, PVE default is `1500` (allowed `512` - `65536`).
         :param pulumi.Input[_builtins.str] name: Unique name that will be ID of this metric server in PVE.
@@ -1100,6 +1182,8 @@ class ServerLegacy(pulumi.CustomResource):
         __props__.__dict__["influx_max_body_size"] = influx_max_body_size
         __props__.__dict__["influx_organization"] = influx_organization
         __props__.__dict__["influx_token"] = influx_token
+        __props__.__dict__["influx_token_wo"] = influx_token_wo
+        __props__.__dict__["influx_token_wo_version"] = influx_token_wo_version
         __props__.__dict__["influx_verify"] = influx_verify
         __props__.__dict__["mtu"] = mtu
         __props__.__dict__["name"] = name
@@ -1185,9 +1269,26 @@ class ServerLegacy(pulumi.CustomResource):
     @pulumi.getter(name="influxToken")
     def influx_token(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead.
+        The InfluxDB access token. Only necessary when using the http v2 api. If the v2 compatibility api is used, use `user:password` instead. Cannot be used together with `influx_token_wo`.
         """
         return pulumi.get(self, "influx_token")
+
+    @_builtins.property
+    @pulumi.getter(name="influxTokenWo")
+    def influx_token_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The InfluxDB access token (write-only). Prefer this over `influx_token` to avoid storing the secret in Terraform state. Cannot be used together with `influx_token`.
+        """
+        return pulumi.get(self, "influx_token_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="influxTokenWoVersion")
+    def influx_token_wo_version(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Increment this counter to rotate `influx_token_wo` without changing other fields.
+        """
+        return pulumi.get(self, "influx_token_wo_version")
 
     @_builtins.property
     @pulumi.getter(name="influxVerify")

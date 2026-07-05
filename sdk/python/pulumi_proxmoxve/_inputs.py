@@ -895,7 +895,7 @@ class ContainerLegacyIdmapArgs:
 
 
 class ContainerLegacyInitializationArgsDict(TypedDict):
-    dns: NotRequired[pulumi.Input[Optional['ContainerLegacyInitializationDnsArgs']]]
+    dns: NotRequired[pulumi.Input[Optional['ContainerLegacyInitializationDnsArgsDict']]]
     """
     The DNS configuration.
     """
@@ -907,12 +907,12 @@ class ContainerLegacyInitializationArgsDict(TypedDict):
     """
     The hostname. Must be a valid DNS name.
     """
-    ip_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyInitializationIpConfigArgs']]]]]
+    ip_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ContainerLegacyInitializationIpConfigArgsDict']]]]]
     """
     The IP configuration (one block per network
     device).
     """
-    user_account: NotRequired[pulumi.Input[Optional['ContainerLegacyInitializationUserAccountArgs']]]
+    user_account: NotRequired[pulumi.Input[Optional['ContainerLegacyInitializationUserAccountArgsDict']]]
     """
     The user account configuration.
     """
@@ -1086,11 +1086,11 @@ class ContainerLegacyInitializationDnsArgs:
 
 
 class ContainerLegacyInitializationIpConfigArgsDict(TypedDict):
-    ipv4: NotRequired[pulumi.Input[Optional['ContainerLegacyInitializationIpConfigIpv4Args']]]
+    ipv4: NotRequired[pulumi.Input[Optional['ContainerLegacyInitializationIpConfigIpv4ArgsDict']]]
     """
     The IPv4 configuration.
     """
-    ipv6: NotRequired[pulumi.Input[Optional['ContainerLegacyInitializationIpConfigIpv6Args']]]
+    ipv6: NotRequired[pulumi.Input[Optional['ContainerLegacyInitializationIpConfigIpv6ArgsDict']]]
     """
     The IPv6 configuration.
     """
@@ -2448,7 +2448,7 @@ class ProviderSshArgsDict(TypedDict):
     """
     The method used to resolve node IP addresses for SSH connections. Set to `dns` to skip the Proxmox API-based resolution and use local DNS instead. DNS resolution prefers IPv4 but falls back to IPv6 if no IPv4 addresses are available. Useful in multi-subnet environments where the API may return an inaccessible IP. Defaults to `api`.
     """
-    nodes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ProviderSshNodeArgs']]]]]
+    nodes: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['ProviderSshNodeArgsDict']]]]]
     """
     Overrides for SSH connection configuration for a Proxmox VE node.
     """
@@ -3517,7 +3517,7 @@ class VmLegacyAgentArgsDict(TypedDict):
     """
     The QEMU agent interface type (defaults to `virtio`).
     """
-    wait_for_ip: NotRequired[pulumi.Input[Optional['VmLegacyAgentWaitForIpArgs']]]
+    wait_for_ip: NotRequired[pulumi.Input[Optional['VmLegacyAgentWaitForIpArgsDict']]]
     """
     Configuration for waiting for specific IP address types when the VM starts.
     """
@@ -3616,6 +3616,10 @@ class VmLegacyAgentArgs:
 
 
 class VmLegacyAgentWaitForIpArgsDict(TypedDict):
+    disabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Whether to disable waiting for the agent to report an IP address (defaults to `false`). Set to `true` to skip the IP lookup entirely, so the provider does not wait for the agent during `refresh` and at the end of `apply`. Useful when the guest agent is slow to start, not yet installed, or not running, to avoid blocking those operations. When disabled, `ipv4_addresses`, `ipv6_addresses`, and `network_interface_names` are left empty.
+    """
     ipv4: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
@@ -3624,24 +3628,40 @@ class VmLegacyAgentWaitForIpArgsDict(TypedDict):
     """
     Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
 
-    When `wait_for_ip` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+    When `wait_for_ip` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
     """
 
 @pulumi.input_type
 class VmLegacyAgentWaitForIpArgs:
     def __init__(__self__, *,
+                 disabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  ipv4: pulumi.Input[Optional[_builtins.bool]] = None,
                  ipv6: pulumi.Input[Optional[_builtins.bool]] = None):
         """
+        :param pulumi.Input[_builtins.bool] disabled: Whether to disable waiting for the agent to report an IP address (defaults to `false`). Set to `true` to skip the IP lookup entirely, so the provider does not wait for the agent during `refresh` and at the end of `apply`. Useful when the guest agent is slow to start, not yet installed, or not running, to avoid blocking those operations. When disabled, `ipv4_addresses`, `ipv6_addresses`, and `network_interface_names` are left empty.
         :param pulumi.Input[_builtins.bool] ipv4: Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `false`).
         :param pulumi.Input[_builtins.bool] ipv6: Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
                
-               When `wait_for_ip` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+               When `wait_for_ip` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
         """
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
         if ipv4 is not None:
             pulumi.set(__self__, "ipv4", ipv4)
         if ipv6 is not None:
             pulumi.set(__self__, "ipv6", ipv6)
+
+    @_builtins.property
+    @pulumi.getter
+    def disabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether to disable waiting for the agent to report an IP address (defaults to `false`). Set to `true` to skip the IP lookup entirely, so the provider does not wait for the agent during `refresh` and at the end of `apply`. Useful when the guest agent is slow to start, not yet installed, or not running, to avoid blocking those operations. When disabled, `ipv4_addresses`, `ipv6_addresses`, and `network_interface_names` are left empty.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "disabled", value)
 
     @_builtins.property
     @pulumi.getter
@@ -3661,7 +3681,7 @@ class VmLegacyAgentWaitForIpArgs:
         """
         Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `false`).
 
-        When `wait_for_ip` is not specified or both `ipv4` and `ipv6` are `false`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+        When `wait_for_ip` is not specified or both `ipv4` and `ipv6` are `false` (and `disabled` is `false`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
         """
         return pulumi.get(self, "ipv6")
 
@@ -4098,26 +4118,26 @@ class VmLegacyCpuArgsDict(TypedDict):
     The CPU flags.
     - `+aes`/`-aes` - Activate AES instruction set for HW acceleration.
     - `+amd-no-ssb`/`-amd-no-ssb` - Notifies guest OS that host is not
-    vulnerable for Spectre on AMD CPUs.
+      vulnerable for Spectre on AMD CPUs.
     - `+amd-ssbd`/`-amd-ssbd` - Improves Spectre mitigation performance with
-    AMD CPUs, best used with "virt-ssbd".
+      AMD CPUs, best used with "virt-ssbd".
     - `+hv-evmcs`/`-hv-evmcs` - Improve performance for nested
-    virtualization (only supported on Intel CPUs).
+      virtualization (only supported on Intel CPUs).
     - `+hv-tlbflush`/`-hv-tlbflush` - Improve performance in overcommitted
-    Windows guests (may lead to guest BSOD on old CPUs).
+      Windows guests (may lead to guest BSOD on old CPUs).
     - `+ibpb`/`-ibpb` - Allows improved Spectre mitigation on AMD CPUs.
     - `+md-clear`/`-md-clear` - Required to let the guest OS know if MDS is
-    mitigated correctly.
+      mitigated correctly.
     - `+pcid`/`-pcid` - Meltdown fix cost reduction on Westmere, Sandy- and
-    Ivy Bridge Intel CPUs.
+      Ivy Bridge Intel CPUs.
     - `+pdpe1gb`/`-pdpe1gb` - Allows guest OS to use 1 GB size pages, if
-    host HW supports it.
+      host HW supports it.
     - `+spec-ctrl`/`-spec-ctrl` - Allows improved Spectre mitigation with
-    Intel CPUs.
+      Intel CPUs.
     - `+ssbd`/`-ssbd` - Protection for "Speculative Store Bypass" for Intel
-    models.
+      models.
     - `+virt-ssbd`/`-virt-ssbd` - Basis for "Speculative Store Bypass"
-    protection for AMD models.
+      protection for AMD models.
     """
     hotplugged: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -4170,26 +4190,26 @@ class VmLegacyCpuArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] flags: The CPU flags.
                - `+aes`/`-aes` - Activate AES instruction set for HW acceleration.
                - `+amd-no-ssb`/`-amd-no-ssb` - Notifies guest OS that host is not
-               vulnerable for Spectre on AMD CPUs.
+                 vulnerable for Spectre on AMD CPUs.
                - `+amd-ssbd`/`-amd-ssbd` - Improves Spectre mitigation performance with
-               AMD CPUs, best used with "virt-ssbd".
+                 AMD CPUs, best used with "virt-ssbd".
                - `+hv-evmcs`/`-hv-evmcs` - Improve performance for nested
-               virtualization (only supported on Intel CPUs).
+                 virtualization (only supported on Intel CPUs).
                - `+hv-tlbflush`/`-hv-tlbflush` - Improve performance in overcommitted
-               Windows guests (may lead to guest BSOD on old CPUs).
+                 Windows guests (may lead to guest BSOD on old CPUs).
                - `+ibpb`/`-ibpb` - Allows improved Spectre mitigation on AMD CPUs.
                - `+md-clear`/`-md-clear` - Required to let the guest OS know if MDS is
-               mitigated correctly.
+                 mitigated correctly.
                - `+pcid`/`-pcid` - Meltdown fix cost reduction on Westmere, Sandy- and
-               Ivy Bridge Intel CPUs.
+                 Ivy Bridge Intel CPUs.
                - `+pdpe1gb`/`-pdpe1gb` - Allows guest OS to use 1 GB size pages, if
-               host HW supports it.
+                 host HW supports it.
                - `+spec-ctrl`/`-spec-ctrl` - Allows improved Spectre mitigation with
-               Intel CPUs.
+                 Intel CPUs.
                - `+ssbd`/`-ssbd` - Protection for "Speculative Store Bypass" for Intel
-               models.
+                 models.
                - `+virt-ssbd`/`-virt-ssbd` - Basis for "Speculative Store Bypass"
-               protection for AMD models.
+                 protection for AMD models.
         :param pulumi.Input[_builtins.int] hotplugged: The number of hotplugged vCPUs (defaults
                to `0`).
         :param pulumi.Input[_builtins.float] limit: Limit of CPU usage, `0...128` (supports
@@ -4267,26 +4287,26 @@ class VmLegacyCpuArgs:
         The CPU flags.
         - `+aes`/`-aes` - Activate AES instruction set for HW acceleration.
         - `+amd-no-ssb`/`-amd-no-ssb` - Notifies guest OS that host is not
-        vulnerable for Spectre on AMD CPUs.
+          vulnerable for Spectre on AMD CPUs.
         - `+amd-ssbd`/`-amd-ssbd` - Improves Spectre mitigation performance with
-        AMD CPUs, best used with "virt-ssbd".
+          AMD CPUs, best used with "virt-ssbd".
         - `+hv-evmcs`/`-hv-evmcs` - Improve performance for nested
-        virtualization (only supported on Intel CPUs).
+          virtualization (only supported on Intel CPUs).
         - `+hv-tlbflush`/`-hv-tlbflush` - Improve performance in overcommitted
-        Windows guests (may lead to guest BSOD on old CPUs).
+          Windows guests (may lead to guest BSOD on old CPUs).
         - `+ibpb`/`-ibpb` - Allows improved Spectre mitigation on AMD CPUs.
         - `+md-clear`/`-md-clear` - Required to let the guest OS know if MDS is
-        mitigated correctly.
+          mitigated correctly.
         - `+pcid`/`-pcid` - Meltdown fix cost reduction on Westmere, Sandy- and
-        Ivy Bridge Intel CPUs.
+          Ivy Bridge Intel CPUs.
         - `+pdpe1gb`/`-pdpe1gb` - Allows guest OS to use 1 GB size pages, if
-        host HW supports it.
+          host HW supports it.
         - `+spec-ctrl`/`-spec-ctrl` - Allows improved Spectre mitigation with
-        Intel CPUs.
+          Intel CPUs.
         - `+ssbd`/`-ssbd` - Protection for "Speculative Store Bypass" for Intel
-        models.
+          models.
         - `+virt-ssbd`/`-virt-ssbd` - Basis for "Speculative Store Bypass"
-        protection for AMD models.
+          protection for AMD models.
         """
         return pulumi.get(self, "flags")
 
@@ -4433,6 +4453,13 @@ class VmLegacyDiskArgsDict(TypedDict):
     or (as root only) host's filesystem paths (`datastore_id` empty string).
     See "*Example: Attached disks*".
     """
+    queues: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The number of I/O queues for this disk, `2` or
+    greater. Only supported for SCSI disks, and applied by Proxmox only
+    when `scsi_hardware` is set to `virtio-scsi-single`. A change requires
+    a VM power cycle (or reboot via the Proxmox API) to take effect.
+    """
     replicate: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Whether the drive should be considered for replication jobs (defaults to `true`).
@@ -4445,7 +4472,7 @@ class VmLegacyDiskArgsDict(TypedDict):
     """
     The disk size in gigabytes (defaults to `8`).
     """
-    speed: NotRequired[pulumi.Input[Optional['VmLegacyDiskSpeedArgs']]]
+    speed: NotRequired[pulumi.Input[Optional['VmLegacyDiskSpeedArgsDict']]]
     """
     The speed limits.
     """
@@ -4470,6 +4497,7 @@ class VmLegacyDiskArgs:
                  import_from: pulumi.Input[Optional[_builtins.str]] = None,
                  iothread: pulumi.Input[Optional[_builtins.bool]] = None,
                  path_in_datastore: pulumi.Input[Optional[_builtins.str]] = None,
+                 queues: pulumi.Input[Optional[_builtins.int]] = None,
                  replicate: pulumi.Input[Optional[_builtins.bool]] = None,
                  serial: pulumi.Input[Optional[_builtins.str]] = None,
                  size: pulumi.Input[Optional[_builtins.int]] = None,
@@ -4505,6 +4533,10 @@ class VmLegacyDiskArgs:
                ***Experimental.***Use to attach another VM's disks,
                or (as root only) host's filesystem paths (`datastore_id` empty string).
                See "*Example: Attached disks*".
+        :param pulumi.Input[_builtins.int] queues: The number of I/O queues for this disk, `2` or
+               greater. Only supported for SCSI disks, and applied by Proxmox only
+               when `scsi_hardware` is set to `virtio-scsi-single`. A change requires
+               a VM power cycle (or reboot via the Proxmox API) to take effect.
         :param pulumi.Input[_builtins.bool] replicate: Whether the drive should be considered for replication jobs (defaults to `true`).
         :param pulumi.Input[_builtins.str] serial: The serial number of the disk, up to 20 bytes long.
         :param pulumi.Input[_builtins.int] size: The disk size in gigabytes (defaults to `8`).
@@ -4534,6 +4566,8 @@ class VmLegacyDiskArgs:
             pulumi.set(__self__, "iothread", iothread)
         if path_in_datastore is not None:
             pulumi.set(__self__, "path_in_datastore", path_in_datastore)
+        if queues is not None:
+            pulumi.set(__self__, "queues", queues)
         if replicate is not None:
             pulumi.set(__self__, "replicate", replicate)
         if serial is not None:
@@ -4694,6 +4728,21 @@ class VmLegacyDiskArgs:
     @path_in_datastore.setter
     def path_in_datastore(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "path_in_datastore", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def queues(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of I/O queues for this disk, `2` or
+        greater. Only supported for SCSI disks, and applied by Proxmox only
+        when `scsi_hardware` is set to `virtio-scsi-single`. A change requires
+        a VM power cycle (or reboot via the Proxmox API) to take effect.
+        """
+        return pulumi.get(self, "queues")
+
+    @queues.setter
+    def queues(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "queues", value)
 
     @_builtins.property
     @pulumi.getter
@@ -5244,7 +5293,7 @@ class VmLegacyInitializationArgsDict(TypedDict):
     The identifier for the datastore to create the
     cloud-init disk in (defaults to `local-lvm`).
     """
-    dns: NotRequired[pulumi.Input[Optional['VmLegacyInitializationDnsArgs']]]
+    dns: NotRequired[pulumi.Input[Optional['VmLegacyInitializationDnsArgsDict']]]
     """
     The DNS configuration.
     """
@@ -5259,7 +5308,7 @@ class VmLegacyInitializationArgsDict(TypedDict):
     detected if the setting is missing but a cloud-init image is present,
     otherwise defaults to `ide2`.
     """
-    ip_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VmLegacyInitializationIpConfigArgs']]]]]
+    ip_configs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input['VmLegacyInitializationIpConfigArgsDict']]]]]
     """
     The IP configuration (one block per network
     device).
@@ -5285,7 +5334,7 @@ class VmLegacyInitializationArgsDict(TypedDict):
     the first boot (defaults to `true`).
     Setting this is only allowed for `root@pam` authenticated user.
     """
-    user_account: NotRequired[pulumi.Input[Optional['VmLegacyInitializationUserAccountArgs']]]
+    user_account: NotRequired[pulumi.Input[Optional['VmLegacyInitializationUserAccountArgsDict']]]
     """
     The user account configuration (conflicts
     with `user_data_file_id`).
@@ -5576,11 +5625,11 @@ class VmLegacyInitializationDnsArgs:
 
 
 class VmLegacyInitializationIpConfigArgsDict(TypedDict):
-    ipv4: NotRequired[pulumi.Input[Optional['VmLegacyInitializationIpConfigIpv4Args']]]
+    ipv4: NotRequired[pulumi.Input[Optional['VmLegacyInitializationIpConfigIpv4ArgsDict']]]
     """
     The IPv4 configuration.
     """
-    ipv6: NotRequired[pulumi.Input[Optional['VmLegacyInitializationIpConfigIpv6Args']]]
+    ipv6: NotRequired[pulumi.Input[Optional['VmLegacyInitializationIpConfigIpv6ArgsDict']]]
     """
     The IPv6 configuration.
     """

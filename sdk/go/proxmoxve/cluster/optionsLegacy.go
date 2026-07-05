@@ -83,8 +83,18 @@ type OptionsLegacy struct {
 	BandwidthLimitRestore pulumi.IntPtrOutput `pulumi:"bandwidthLimitRestore"`
 	// Select the default Console viewer. Must be `applet` | `vv`| `html5` | `xtermjs`. You can either use the builtin java applet (VNC; deprecated and maps to html5), an external virt-viewer compatible application (SPICE), an HTML5 based vnc viewer (noVNC), or an HTML5 based console client (xtermjs). If the selected viewer is not available (e.g. SPICE not activated for the VM), the fallback is noVNC.
 	Console pulumi.StringPtrOutput `pulumi:"console"`
-	// Cluster resource scheduling setting for HA. Must be `static` | `basic` (default is `basic`).
+	// Cluster resource scheduling setting for HA. Must be `static` | `basic` | `dynamic` (default is `basic`). `dynamic` requires Proxmox VE 9.2+.
 	CrsHa pulumi.StringOutput `pulumi:"crsHa"`
+	// Whether to use CRS for balancing HA resources automatically depending on the current node imbalance. Requires Proxmox VE 9.2+.
+	CrsHaAutoRebalance pulumi.BoolPtrOutput `pulumi:"crsHaAutoRebalance"`
+	// The number of HA rounds for which the cluster node imbalance threshold must be exceeded before triggering an automatic resource balancing migration (default is `3`). Requires Proxmox VE 9.2+.
+	CrsHaAutoRebalanceHoldDuration pulumi.IntPtrOutput `pulumi:"crsHaAutoRebalanceHoldDuration"`
+	// The minimum relative improvement in cluster node imbalance, in percent, to commit to a resource balancing migration. Must be between `0` and `100` (default is `10`). Requires Proxmox VE 9.2+.
+	CrsHaAutoRebalanceMargin pulumi.IntPtrOutput `pulumi:"crsHaAutoRebalanceMargin"`
+	// The method to use for the scoring of balancing migrations. Must be `bruteforce` | `topsis` (default is `bruteforce`). Requires Proxmox VE 9.2+.
+	CrsHaAutoRebalanceMethod pulumi.StringPtrOutput `pulumi:"crsHaAutoRebalanceMethod"`
+	// The cluster node imbalance, in percent, which will trigger the automatic resource balancing system if exceeded. Must be between `0` and `100` (default is `30`). Requires Proxmox VE 9.2+.
+	CrsHaAutoRebalanceThreshold pulumi.IntPtrOutput `pulumi:"crsHaAutoRebalanceThreshold"`
 	// Cluster resource scheduling setting for HA rebalance on start.
 	CrsHaRebalanceOnStart pulumi.BoolPtrOutput `pulumi:"crsHaRebalanceOnStart"`
 	// Datacenter description. Shown in the web-interface datacenter notes panel. This is saved as comment inside the configuration file.
@@ -155,8 +165,18 @@ type optionsLegacyState struct {
 	BandwidthLimitRestore *int `pulumi:"bandwidthLimitRestore"`
 	// Select the default Console viewer. Must be `applet` | `vv`| `html5` | `xtermjs`. You can either use the builtin java applet (VNC; deprecated and maps to html5), an external virt-viewer compatible application (SPICE), an HTML5 based vnc viewer (noVNC), or an HTML5 based console client (xtermjs). If the selected viewer is not available (e.g. SPICE not activated for the VM), the fallback is noVNC.
 	Console *string `pulumi:"console"`
-	// Cluster resource scheduling setting for HA. Must be `static` | `basic` (default is `basic`).
+	// Cluster resource scheduling setting for HA. Must be `static` | `basic` | `dynamic` (default is `basic`). `dynamic` requires Proxmox VE 9.2+.
 	CrsHa *string `pulumi:"crsHa"`
+	// Whether to use CRS for balancing HA resources automatically depending on the current node imbalance. Requires Proxmox VE 9.2+.
+	CrsHaAutoRebalance *bool `pulumi:"crsHaAutoRebalance"`
+	// The number of HA rounds for which the cluster node imbalance threshold must be exceeded before triggering an automatic resource balancing migration (default is `3`). Requires Proxmox VE 9.2+.
+	CrsHaAutoRebalanceHoldDuration *int `pulumi:"crsHaAutoRebalanceHoldDuration"`
+	// The minimum relative improvement in cluster node imbalance, in percent, to commit to a resource balancing migration. Must be between `0` and `100` (default is `10`). Requires Proxmox VE 9.2+.
+	CrsHaAutoRebalanceMargin *int `pulumi:"crsHaAutoRebalanceMargin"`
+	// The method to use for the scoring of balancing migrations. Must be `bruteforce` | `topsis` (default is `bruteforce`). Requires Proxmox VE 9.2+.
+	CrsHaAutoRebalanceMethod *string `pulumi:"crsHaAutoRebalanceMethod"`
+	// The cluster node imbalance, in percent, which will trigger the automatic resource balancing system if exceeded. Must be between `0` and `100` (default is `30`). Requires Proxmox VE 9.2+.
+	CrsHaAutoRebalanceThreshold *int `pulumi:"crsHaAutoRebalanceThreshold"`
 	// Cluster resource scheduling setting for HA rebalance on start.
 	CrsHaRebalanceOnStart *bool `pulumi:"crsHaRebalanceOnStart"`
 	// Datacenter description. Shown in the web-interface datacenter notes panel. This is saved as comment inside the configuration file.
@@ -198,8 +218,18 @@ type OptionsLegacyState struct {
 	BandwidthLimitRestore pulumi.IntPtrInput
 	// Select the default Console viewer. Must be `applet` | `vv`| `html5` | `xtermjs`. You can either use the builtin java applet (VNC; deprecated and maps to html5), an external virt-viewer compatible application (SPICE), an HTML5 based vnc viewer (noVNC), or an HTML5 based console client (xtermjs). If the selected viewer is not available (e.g. SPICE not activated for the VM), the fallback is noVNC.
 	Console pulumi.StringPtrInput
-	// Cluster resource scheduling setting for HA. Must be `static` | `basic` (default is `basic`).
+	// Cluster resource scheduling setting for HA. Must be `static` | `basic` | `dynamic` (default is `basic`). `dynamic` requires Proxmox VE 9.2+.
 	CrsHa pulumi.StringPtrInput
+	// Whether to use CRS for balancing HA resources automatically depending on the current node imbalance. Requires Proxmox VE 9.2+.
+	CrsHaAutoRebalance pulumi.BoolPtrInput
+	// The number of HA rounds for which the cluster node imbalance threshold must be exceeded before triggering an automatic resource balancing migration (default is `3`). Requires Proxmox VE 9.2+.
+	CrsHaAutoRebalanceHoldDuration pulumi.IntPtrInput
+	// The minimum relative improvement in cluster node imbalance, in percent, to commit to a resource balancing migration. Must be between `0` and `100` (default is `10`). Requires Proxmox VE 9.2+.
+	CrsHaAutoRebalanceMargin pulumi.IntPtrInput
+	// The method to use for the scoring of balancing migrations. Must be `bruteforce` | `topsis` (default is `bruteforce`). Requires Proxmox VE 9.2+.
+	CrsHaAutoRebalanceMethod pulumi.StringPtrInput
+	// The cluster node imbalance, in percent, which will trigger the automatic resource balancing system if exceeded. Must be between `0` and `100` (default is `30`). Requires Proxmox VE 9.2+.
+	CrsHaAutoRebalanceThreshold pulumi.IntPtrInput
 	// Cluster resource scheduling setting for HA rebalance on start.
 	CrsHaRebalanceOnStart pulumi.BoolPtrInput
 	// Datacenter description. Shown in the web-interface datacenter notes panel. This is saved as comment inside the configuration file.
@@ -245,8 +275,18 @@ type optionsLegacyArgs struct {
 	BandwidthLimitRestore *int `pulumi:"bandwidthLimitRestore"`
 	// Select the default Console viewer. Must be `applet` | `vv`| `html5` | `xtermjs`. You can either use the builtin java applet (VNC; deprecated and maps to html5), an external virt-viewer compatible application (SPICE), an HTML5 based vnc viewer (noVNC), or an HTML5 based console client (xtermjs). If the selected viewer is not available (e.g. SPICE not activated for the VM), the fallback is noVNC.
 	Console *string `pulumi:"console"`
-	// Cluster resource scheduling setting for HA. Must be `static` | `basic` (default is `basic`).
+	// Cluster resource scheduling setting for HA. Must be `static` | `basic` | `dynamic` (default is `basic`). `dynamic` requires Proxmox VE 9.2+.
 	CrsHa *string `pulumi:"crsHa"`
+	// Whether to use CRS for balancing HA resources automatically depending on the current node imbalance. Requires Proxmox VE 9.2+.
+	CrsHaAutoRebalance *bool `pulumi:"crsHaAutoRebalance"`
+	// The number of HA rounds for which the cluster node imbalance threshold must be exceeded before triggering an automatic resource balancing migration (default is `3`). Requires Proxmox VE 9.2+.
+	CrsHaAutoRebalanceHoldDuration *int `pulumi:"crsHaAutoRebalanceHoldDuration"`
+	// The minimum relative improvement in cluster node imbalance, in percent, to commit to a resource balancing migration. Must be between `0` and `100` (default is `10`). Requires Proxmox VE 9.2+.
+	CrsHaAutoRebalanceMargin *int `pulumi:"crsHaAutoRebalanceMargin"`
+	// The method to use for the scoring of balancing migrations. Must be `bruteforce` | `topsis` (default is `bruteforce`). Requires Proxmox VE 9.2+.
+	CrsHaAutoRebalanceMethod *string `pulumi:"crsHaAutoRebalanceMethod"`
+	// The cluster node imbalance, in percent, which will trigger the automatic resource balancing system if exceeded. Must be between `0` and `100` (default is `30`). Requires Proxmox VE 9.2+.
+	CrsHaAutoRebalanceThreshold *int `pulumi:"crsHaAutoRebalanceThreshold"`
 	// Cluster resource scheduling setting for HA rebalance on start.
 	CrsHaRebalanceOnStart *bool `pulumi:"crsHaRebalanceOnStart"`
 	// Datacenter description. Shown in the web-interface datacenter notes panel. This is saved as comment inside the configuration file.
@@ -289,8 +329,18 @@ type OptionsLegacyArgs struct {
 	BandwidthLimitRestore pulumi.IntPtrInput
 	// Select the default Console viewer. Must be `applet` | `vv`| `html5` | `xtermjs`. You can either use the builtin java applet (VNC; deprecated and maps to html5), an external virt-viewer compatible application (SPICE), an HTML5 based vnc viewer (noVNC), or an HTML5 based console client (xtermjs). If the selected viewer is not available (e.g. SPICE not activated for the VM), the fallback is noVNC.
 	Console pulumi.StringPtrInput
-	// Cluster resource scheduling setting for HA. Must be `static` | `basic` (default is `basic`).
+	// Cluster resource scheduling setting for HA. Must be `static` | `basic` | `dynamic` (default is `basic`). `dynamic` requires Proxmox VE 9.2+.
 	CrsHa pulumi.StringPtrInput
+	// Whether to use CRS for balancing HA resources automatically depending on the current node imbalance. Requires Proxmox VE 9.2+.
+	CrsHaAutoRebalance pulumi.BoolPtrInput
+	// The number of HA rounds for which the cluster node imbalance threshold must be exceeded before triggering an automatic resource balancing migration (default is `3`). Requires Proxmox VE 9.2+.
+	CrsHaAutoRebalanceHoldDuration pulumi.IntPtrInput
+	// The minimum relative improvement in cluster node imbalance, in percent, to commit to a resource balancing migration. Must be between `0` and `100` (default is `10`). Requires Proxmox VE 9.2+.
+	CrsHaAutoRebalanceMargin pulumi.IntPtrInput
+	// The method to use for the scoring of balancing migrations. Must be `bruteforce` | `topsis` (default is `bruteforce`). Requires Proxmox VE 9.2+.
+	CrsHaAutoRebalanceMethod pulumi.StringPtrInput
+	// The cluster node imbalance, in percent, which will trigger the automatic resource balancing system if exceeded. Must be between `0` and `100` (default is `30`). Requires Proxmox VE 9.2+.
+	CrsHaAutoRebalanceThreshold pulumi.IntPtrInput
 	// Cluster resource scheduling setting for HA rebalance on start.
 	CrsHaRebalanceOnStart pulumi.BoolPtrInput
 	// Datacenter description. Shown in the web-interface datacenter notes panel. This is saved as comment inside the configuration file.
@@ -436,9 +486,34 @@ func (o OptionsLegacyOutput) Console() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OptionsLegacy) pulumi.StringPtrOutput { return v.Console }).(pulumi.StringPtrOutput)
 }
 
-// Cluster resource scheduling setting for HA. Must be `static` | `basic` (default is `basic`).
+// Cluster resource scheduling setting for HA. Must be `static` | `basic` | `dynamic` (default is `basic`). `dynamic` requires Proxmox VE 9.2+.
 func (o OptionsLegacyOutput) CrsHa() pulumi.StringOutput {
 	return o.ApplyT(func(v *OptionsLegacy) pulumi.StringOutput { return v.CrsHa }).(pulumi.StringOutput)
+}
+
+// Whether to use CRS for balancing HA resources automatically depending on the current node imbalance. Requires Proxmox VE 9.2+.
+func (o OptionsLegacyOutput) CrsHaAutoRebalance() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OptionsLegacy) pulumi.BoolPtrOutput { return v.CrsHaAutoRebalance }).(pulumi.BoolPtrOutput)
+}
+
+// The number of HA rounds for which the cluster node imbalance threshold must be exceeded before triggering an automatic resource balancing migration (default is `3`). Requires Proxmox VE 9.2+.
+func (o OptionsLegacyOutput) CrsHaAutoRebalanceHoldDuration() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OptionsLegacy) pulumi.IntPtrOutput { return v.CrsHaAutoRebalanceHoldDuration }).(pulumi.IntPtrOutput)
+}
+
+// The minimum relative improvement in cluster node imbalance, in percent, to commit to a resource balancing migration. Must be between `0` and `100` (default is `10`). Requires Proxmox VE 9.2+.
+func (o OptionsLegacyOutput) CrsHaAutoRebalanceMargin() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OptionsLegacy) pulumi.IntPtrOutput { return v.CrsHaAutoRebalanceMargin }).(pulumi.IntPtrOutput)
+}
+
+// The method to use for the scoring of balancing migrations. Must be `bruteforce` | `topsis` (default is `bruteforce`). Requires Proxmox VE 9.2+.
+func (o OptionsLegacyOutput) CrsHaAutoRebalanceMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OptionsLegacy) pulumi.StringPtrOutput { return v.CrsHaAutoRebalanceMethod }).(pulumi.StringPtrOutput)
+}
+
+// The cluster node imbalance, in percent, which will trigger the automatic resource balancing system if exceeded. Must be between `0` and `100` (default is `30`). Requires Proxmox VE 9.2+.
+func (o OptionsLegacyOutput) CrsHaAutoRebalanceThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OptionsLegacy) pulumi.IntPtrOutput { return v.CrsHaAutoRebalanceThreshold }).(pulumi.IntPtrOutput)
 }
 
 // Cluster resource scheduling setting for HA rebalance on start.

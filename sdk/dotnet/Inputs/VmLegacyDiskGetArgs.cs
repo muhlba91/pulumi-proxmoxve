@@ -97,6 +97,15 @@ namespace Pulumi.ProxmoxVE.Inputs
         public Input<string>? PathInDatastore { get; set; }
 
         /// <summary>
+        /// The number of I/O queues for this disk, `2` or
+        /// greater. Only supported for SCSI disks, and applied by Proxmox only
+        /// when `ScsiHardware` is set to `virtio-scsi-single`. A change requires
+        /// a VM power cycle (or reboot via the Proxmox API) to take effect.
+        /// </summary>
+        [Input("queues")]
+        public Input<int>? Queues { get; set; }
+
+        /// <summary>
         /// Whether the drive should be considered for replication jobs (defaults to `True`).
         /// </summary>
         [Input("replicate")]

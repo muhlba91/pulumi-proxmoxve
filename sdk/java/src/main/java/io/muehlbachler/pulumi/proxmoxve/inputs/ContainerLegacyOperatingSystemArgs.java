@@ -19,7 +19,7 @@ public final class ContainerLegacyOperatingSystemArgs extends com.pulumi.resourc
     /**
      * The identifier for an OS template file.
      * The ID format is `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`.
-     * Can be also taken from &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.download.FileLegacy`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.download.FileLegacy`&#34; pulumi-lang-go=&#34;`download.FileLegacy`&#34; pulumi-lang-python=&#34;`download.FileLegacy`&#34; pulumi-lang-yaml=&#34;`proxmoxve.download.FileLegacy`&#34; pulumi-lang-java=&#34;`proxmoxve.download.FileLegacy`&#34;&gt;`proxmoxve.download.FileLegacy`&lt;/span&gt; resource, or from the output of `pvesm list &lt;storage&gt;`.
+     * Can be also taken from &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.download.FileLegacy`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.download.FileLegacy`&#34; pulumi-lang-go=&#34;`download.FileLegacy`&#34; pulumi-lang-python=&#34;`download.FileLegacy`&#34; pulumi-lang-yaml=&#34;`proxmoxve.download.FileLegacy`&#34; pulumi-lang-java=&#34;`proxmoxve.download.FileLegacy`&#34; pulumi-lang-hcl=&#34;`proxmox_virtual_environment_download_file`&#34;&gt;`proxmoxve.download.FileLegacy`&lt;/span&gt; resource, or from the output of `pvesm list &lt;storage&gt;`.
      * 
      */
     @Import(name="templateFileId", required=true)
@@ -28,7 +28,7 @@ public final class ContainerLegacyOperatingSystemArgs extends com.pulumi.resourc
     /**
      * @return The identifier for an OS template file.
      * The ID format is `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`.
-     * Can be also taken from &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.download.FileLegacy`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.download.FileLegacy`&#34; pulumi-lang-go=&#34;`download.FileLegacy`&#34; pulumi-lang-python=&#34;`download.FileLegacy`&#34; pulumi-lang-yaml=&#34;`proxmoxve.download.FileLegacy`&#34; pulumi-lang-java=&#34;`proxmoxve.download.FileLegacy`&#34;&gt;`proxmoxve.download.FileLegacy`&lt;/span&gt; resource, or from the output of `pvesm list &lt;storage&gt;`.
+     * Can be also taken from &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.download.FileLegacy`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.download.FileLegacy`&#34; pulumi-lang-go=&#34;`download.FileLegacy`&#34; pulumi-lang-python=&#34;`download.FileLegacy`&#34; pulumi-lang-yaml=&#34;`proxmoxve.download.FileLegacy`&#34; pulumi-lang-java=&#34;`proxmoxve.download.FileLegacy`&#34; pulumi-lang-hcl=&#34;`proxmox_virtual_environment_download_file`&#34;&gt;`proxmoxve.download.FileLegacy`&lt;/span&gt; resource, or from the output of `pvesm list &lt;storage&gt;`.
      * 
      */
     public Output<String> templateFileId() {
@@ -36,14 +36,14 @@ public final class ContainerLegacyOperatingSystemArgs extends com.pulumi.resourc
     }
 
     /**
-     * The type (defaults to &lt;span pulumi-lang-nodejs=&#34;`unmanaged`&#34; pulumi-lang-dotnet=&#34;`Unmanaged`&#34; pulumi-lang-go=&#34;`unmanaged`&#34; pulumi-lang-python=&#34;`unmanaged`&#34; pulumi-lang-yaml=&#34;`unmanaged`&#34; pulumi-lang-java=&#34;`unmanaged`&#34;&gt;`unmanaged`&lt;/span&gt;).
+     * The type (defaults to &lt;span pulumi-lang-nodejs=&#34;`unmanaged`&#34; pulumi-lang-dotnet=&#34;`Unmanaged`&#34; pulumi-lang-go=&#34;`unmanaged`&#34; pulumi-lang-python=&#34;`unmanaged`&#34; pulumi-lang-yaml=&#34;`unmanaged`&#34; pulumi-lang-java=&#34;`unmanaged`&#34; pulumi-lang-hcl=&#34;`unmanaged`&#34;&gt;`unmanaged`&lt;/span&gt;).
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type (defaults to &lt;span pulumi-lang-nodejs=&#34;`unmanaged`&#34; pulumi-lang-dotnet=&#34;`Unmanaged`&#34; pulumi-lang-go=&#34;`unmanaged`&#34; pulumi-lang-python=&#34;`unmanaged`&#34; pulumi-lang-yaml=&#34;`unmanaged`&#34; pulumi-lang-java=&#34;`unmanaged`&#34;&gt;`unmanaged`&lt;/span&gt;).
+     * @return The type (defaults to &lt;span pulumi-lang-nodejs=&#34;`unmanaged`&#34; pulumi-lang-dotnet=&#34;`Unmanaged`&#34; pulumi-lang-go=&#34;`unmanaged`&#34; pulumi-lang-python=&#34;`unmanaged`&#34; pulumi-lang-yaml=&#34;`unmanaged`&#34; pulumi-lang-java=&#34;`unmanaged`&#34; pulumi-lang-hcl=&#34;`unmanaged`&#34;&gt;`unmanaged`&lt;/span&gt;).
      * 
      */
     public Optional<Output<String>> type() {
@@ -78,7 +78,7 @@ public final class ContainerLegacyOperatingSystemArgs extends com.pulumi.resourc
         /**
          * @param templateFileId The identifier for an OS template file.
          * The ID format is `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`.
-         * Can be also taken from &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.download.FileLegacy`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.download.FileLegacy`&#34; pulumi-lang-go=&#34;`download.FileLegacy`&#34; pulumi-lang-python=&#34;`download.FileLegacy`&#34; pulumi-lang-yaml=&#34;`proxmoxve.download.FileLegacy`&#34; pulumi-lang-java=&#34;`proxmoxve.download.FileLegacy`&#34;&gt;`proxmoxve.download.FileLegacy`&lt;/span&gt; resource, or from the output of `pvesm list &lt;storage&gt;`.
+         * Can be also taken from &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.download.FileLegacy`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.download.FileLegacy`&#34; pulumi-lang-go=&#34;`download.FileLegacy`&#34; pulumi-lang-python=&#34;`download.FileLegacy`&#34; pulumi-lang-yaml=&#34;`proxmoxve.download.FileLegacy`&#34; pulumi-lang-java=&#34;`proxmoxve.download.FileLegacy`&#34; pulumi-lang-hcl=&#34;`proxmox_virtual_environment_download_file`&#34;&gt;`proxmoxve.download.FileLegacy`&lt;/span&gt; resource, or from the output of `pvesm list &lt;storage&gt;`.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class ContainerLegacyOperatingSystemArgs extends com.pulumi.resourc
         /**
          * @param templateFileId The identifier for an OS template file.
          * The ID format is `&lt;datastore_id&gt;:&lt;content_type&gt;/&lt;file_name&gt;`, for example `local:iso/jammy-server-cloudimg-amd64.tar.gz`.
-         * Can be also taken from &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.download.FileLegacy`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.download.FileLegacy`&#34; pulumi-lang-go=&#34;`download.FileLegacy`&#34; pulumi-lang-python=&#34;`download.FileLegacy`&#34; pulumi-lang-yaml=&#34;`proxmoxve.download.FileLegacy`&#34; pulumi-lang-java=&#34;`proxmoxve.download.FileLegacy`&#34;&gt;`proxmoxve.download.FileLegacy`&lt;/span&gt; resource, or from the output of `pvesm list &lt;storage&gt;`.
+         * Can be also taken from &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.download.FileLegacy`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.download.FileLegacy`&#34; pulumi-lang-go=&#34;`download.FileLegacy`&#34; pulumi-lang-python=&#34;`download.FileLegacy`&#34; pulumi-lang-yaml=&#34;`proxmoxve.download.FileLegacy`&#34; pulumi-lang-java=&#34;`proxmoxve.download.FileLegacy`&#34; pulumi-lang-hcl=&#34;`proxmox_virtual_environment_download_file`&#34;&gt;`proxmoxve.download.FileLegacy`&lt;/span&gt; resource, or from the output of `pvesm list &lt;storage&gt;`.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class ContainerLegacyOperatingSystemArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param type The type (defaults to &lt;span pulumi-lang-nodejs=&#34;`unmanaged`&#34; pulumi-lang-dotnet=&#34;`Unmanaged`&#34; pulumi-lang-go=&#34;`unmanaged`&#34; pulumi-lang-python=&#34;`unmanaged`&#34; pulumi-lang-yaml=&#34;`unmanaged`&#34; pulumi-lang-java=&#34;`unmanaged`&#34;&gt;`unmanaged`&lt;/span&gt;).
+         * @param type The type (defaults to &lt;span pulumi-lang-nodejs=&#34;`unmanaged`&#34; pulumi-lang-dotnet=&#34;`Unmanaged`&#34; pulumi-lang-go=&#34;`unmanaged`&#34; pulumi-lang-python=&#34;`unmanaged`&#34; pulumi-lang-yaml=&#34;`unmanaged`&#34; pulumi-lang-java=&#34;`unmanaged`&#34; pulumi-lang-hcl=&#34;`unmanaged`&#34;&gt;`unmanaged`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -112,7 +112,7 @@ public final class ContainerLegacyOperatingSystemArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param type The type (defaults to &lt;span pulumi-lang-nodejs=&#34;`unmanaged`&#34; pulumi-lang-dotnet=&#34;`Unmanaged`&#34; pulumi-lang-go=&#34;`unmanaged`&#34; pulumi-lang-python=&#34;`unmanaged`&#34; pulumi-lang-yaml=&#34;`unmanaged`&#34; pulumi-lang-java=&#34;`unmanaged`&#34;&gt;`unmanaged`&lt;/span&gt;).
+         * @param type The type (defaults to &lt;span pulumi-lang-nodejs=&#34;`unmanaged`&#34; pulumi-lang-dotnet=&#34;`Unmanaged`&#34; pulumi-lang-go=&#34;`unmanaged`&#34; pulumi-lang-python=&#34;`unmanaged`&#34; pulumi-lang-yaml=&#34;`unmanaged`&#34; pulumi-lang-java=&#34;`unmanaged`&#34; pulumi-lang-hcl=&#34;`unmanaged`&#34;&gt;`unmanaged`&lt;/span&gt;).
          * 
          * @return builder
          * 

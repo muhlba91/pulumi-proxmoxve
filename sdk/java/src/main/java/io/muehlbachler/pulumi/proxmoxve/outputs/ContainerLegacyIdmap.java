@@ -22,12 +22,12 @@ public final class ContainerLegacyIdmap {
      */
     private Integer hostId;
     /**
-     * @return Number of IDs to map (must be at least &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
+     * @return Number of IDs to map (must be at least &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34; pulumi-lang-hcl=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
      * 
      */
     private Integer size;
     /**
-     * @return Mapping type (&lt;span pulumi-lang-nodejs=&#34;`uid`&#34; pulumi-lang-dotnet=&#34;`Uid`&#34; pulumi-lang-go=&#34;`uid`&#34; pulumi-lang-python=&#34;`uid`&#34; pulumi-lang-yaml=&#34;`uid`&#34; pulumi-lang-java=&#34;`uid`&#34;&gt;`uid`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`gid`&#34; pulumi-lang-dotnet=&#34;`Gid`&#34; pulumi-lang-go=&#34;`gid`&#34; pulumi-lang-python=&#34;`gid`&#34; pulumi-lang-yaml=&#34;`gid`&#34; pulumi-lang-java=&#34;`gid`&#34;&gt;`gid`&lt;/span&gt;).
+     * @return Mapping type (&lt;span pulumi-lang-nodejs=&#34;`uid`&#34; pulumi-lang-dotnet=&#34;`Uid`&#34; pulumi-lang-go=&#34;`uid`&#34; pulumi-lang-python=&#34;`uid`&#34; pulumi-lang-yaml=&#34;`uid`&#34; pulumi-lang-java=&#34;`uid`&#34; pulumi-lang-hcl=&#34;`uid`&#34;&gt;`uid`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`gid`&#34; pulumi-lang-dotnet=&#34;`Gid`&#34; pulumi-lang-go=&#34;`gid`&#34; pulumi-lang-python=&#34;`gid`&#34; pulumi-lang-yaml=&#34;`gid`&#34; pulumi-lang-java=&#34;`gid`&#34; pulumi-lang-hcl=&#34;`gid`&#34;&gt;`gid`&lt;/span&gt;).
      * 
      */
     private String type;
@@ -48,14 +48,14 @@ public final class ContainerLegacyIdmap {
         return this.hostId;
     }
     /**
-     * @return Number of IDs to map (must be at least &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
+     * @return Number of IDs to map (must be at least &lt;span pulumi-lang-nodejs=&#34;`1`&#34; pulumi-lang-dotnet=&#34;`1`&#34; pulumi-lang-go=&#34;`1`&#34; pulumi-lang-python=&#34;`1`&#34; pulumi-lang-yaml=&#34;`1`&#34; pulumi-lang-java=&#34;`1`&#34; pulumi-lang-hcl=&#34;`1`&#34;&gt;`1`&lt;/span&gt;).
      * 
      */
     public Integer size() {
         return this.size;
     }
     /**
-     * @return Mapping type (&lt;span pulumi-lang-nodejs=&#34;`uid`&#34; pulumi-lang-dotnet=&#34;`Uid`&#34; pulumi-lang-go=&#34;`uid`&#34; pulumi-lang-python=&#34;`uid`&#34; pulumi-lang-yaml=&#34;`uid`&#34; pulumi-lang-java=&#34;`uid`&#34;&gt;`uid`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`gid`&#34; pulumi-lang-dotnet=&#34;`Gid`&#34; pulumi-lang-go=&#34;`gid`&#34; pulumi-lang-python=&#34;`gid`&#34; pulumi-lang-yaml=&#34;`gid`&#34; pulumi-lang-java=&#34;`gid`&#34;&gt;`gid`&lt;/span&gt;).
+     * @return Mapping type (&lt;span pulumi-lang-nodejs=&#34;`uid`&#34; pulumi-lang-dotnet=&#34;`Uid`&#34; pulumi-lang-go=&#34;`uid`&#34; pulumi-lang-python=&#34;`uid`&#34; pulumi-lang-yaml=&#34;`uid`&#34; pulumi-lang-java=&#34;`uid`&#34; pulumi-lang-hcl=&#34;`uid`&#34;&gt;`uid`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`gid`&#34; pulumi-lang-dotnet=&#34;`Gid`&#34; pulumi-lang-go=&#34;`gid`&#34; pulumi-lang-python=&#34;`gid`&#34; pulumi-lang-yaml=&#34;`gid`&#34; pulumi-lang-java=&#34;`gid`&#34; pulumi-lang-hcl=&#34;`gid`&#34;&gt;`gid`&lt;/span&gt;).
      * 
      */
     public String type() {

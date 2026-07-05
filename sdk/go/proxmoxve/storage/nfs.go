@@ -72,6 +72,10 @@ type Nfs struct {
 	Backups NfsBackupsPtrOutput `pulumi:"backups"`
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents pulumi.StringArrayOutput `pulumi:"contents"`
+	// Create the base directory if it doesn't exist.
+	CreateBasePath pulumi.BoolOutput `pulumi:"createBasePath"`
+	// Populate the directory with the default structure.
+	CreateSubdirs pulumi.BoolOutput `pulumi:"createSubdirs"`
 	// Whether the storage is disabled.
 	Disable pulumi.BoolOutput `pulumi:"disable"`
 	// The path of the NFS export.
@@ -141,6 +145,10 @@ type nfsState struct {
 	Backups *NfsBackups `pulumi:"backups"`
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents []string `pulumi:"contents"`
+	// Create the base directory if it doesn't exist.
+	CreateBasePath *bool `pulumi:"createBasePath"`
+	// Populate the directory with the default structure.
+	CreateSubdirs *bool `pulumi:"createSubdirs"`
 	// Whether the storage is disabled.
 	Disable *bool `pulumi:"disable"`
 	// The path of the NFS export.
@@ -166,6 +174,10 @@ type NfsState struct {
 	Backups NfsBackupsPtrInput
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents pulumi.StringArrayInput
+	// Create the base directory if it doesn't exist.
+	CreateBasePath pulumi.BoolPtrInput
+	// Populate the directory with the default structure.
+	CreateSubdirs pulumi.BoolPtrInput
 	// Whether the storage is disabled.
 	Disable pulumi.BoolPtrInput
 	// The path of the NFS export.
@@ -195,6 +207,10 @@ type nfsArgs struct {
 	Backups *NfsBackups `pulumi:"backups"`
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents []string `pulumi:"contents"`
+	// Create the base directory if it doesn't exist.
+	CreateBasePath *bool `pulumi:"createBasePath"`
+	// Populate the directory with the default structure.
+	CreateSubdirs *bool `pulumi:"createSubdirs"`
 	// Whether the storage is disabled.
 	Disable *bool `pulumi:"disable"`
 	// The path of the NFS export.
@@ -219,6 +235,10 @@ type NfsArgs struct {
 	Backups NfsBackupsPtrInput
 	// The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 	Contents pulumi.StringArrayInput
+	// Create the base directory if it doesn't exist.
+	CreateBasePath pulumi.BoolPtrInput
+	// Populate the directory with the default structure.
+	CreateSubdirs pulumi.BoolPtrInput
 	// Whether the storage is disabled.
 	Disable pulumi.BoolPtrInput
 	// The path of the NFS export.
@@ -332,6 +352,16 @@ func (o NfsOutput) Backups() NfsBackupsPtrOutput {
 // The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
 func (o NfsOutput) Contents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Nfs) pulumi.StringArrayOutput { return v.Contents }).(pulumi.StringArrayOutput)
+}
+
+// Create the base directory if it doesn't exist.
+func (o NfsOutput) CreateBasePath() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Nfs) pulumi.BoolOutput { return v.CreateBasePath }).(pulumi.BoolOutput)
+}
+
+// Populate the directory with the default structure.
+func (o NfsOutput) CreateSubdirs() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Nfs) pulumi.BoolOutput { return v.CreateSubdirs }).(pulumi.BoolOutput)
 }
 
 // Whether the storage is disabled.

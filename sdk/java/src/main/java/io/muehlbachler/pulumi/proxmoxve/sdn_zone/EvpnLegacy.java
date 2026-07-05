@@ -18,7 +18,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-go=&#34;`sdn/zone.Evpn`&#34; pulumi-lang-python=&#34;`sdn/zone.Evpn`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Evpn`&#34;&gt;`proxmoxve.sdn/zone.Evpn`&lt;/span&gt; instead. This resource will be removed in v1.0.
+ * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-go=&#34;`sdn/zone.Evpn`&#34; pulumi-lang-python=&#34;`sdn/zone.Evpn`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/zone.Evpn`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_zone_evpn`&#34;&gt;`proxmoxve.sdn/zone.Evpn`&lt;/span&gt; instead. This resource will be removed in v1.0.
  * 
  * EVPN Zone in Proxmox SDN. The EVPN zone creates a routable Layer 3 network, capable of spanning across multiple clusters.
  * 

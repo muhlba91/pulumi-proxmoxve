@@ -13,6 +13,12 @@ namespace Pulumi.ProxmoxVE.Inputs
     public sealed class VmLegacyAgentWaitForIpGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Whether to disable waiting for the agent to report an IP address (defaults to `False`). Set to `True` to skip the IP lookup entirely, so the provider does not wait for the agent during `Refresh` and at the end of `Apply`. Useful when the guest agent is slow to start, not yet installed, or not running, to avoid blocking those operations. When disabled, `Ipv4Addresses`, `Ipv6Addresses`, and `NetworkInterfaceNames` are left empty.
+        /// </summary>
+        [Input("disabled")]
+        public Input<bool>? Disabled { get; set; }
+
+        /// <summary>
         /// Wait for at least one IPv4 address (non-loopback, non-link-local) (defaults to `False`).
         /// </summary>
         [Input("ipv4")]
@@ -21,7 +27,7 @@ namespace Pulumi.ProxmoxVE.Inputs
         /// <summary>
         /// Wait for at least one IPv6 address (non-loopback, non-link-local) (defaults to `False`).
         /// 
-        /// When `WaitForIp` is not specified or both `Ipv4` and `Ipv6` are `False`, the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
+        /// When `WaitForIp` is not specified or both `Ipv4` and `Ipv6` are `False` (and `Disabled` is `False`), the provider waits for any valid global unicast address (IPv4 or IPv6). In dual-stack networks where DHCPv6 responds faster, this may result in only IPv6 addresses being available. Set `ipv4 = true` to ensure IPv4 address availability.
         /// </summary>
         [Input("ipv6")]
         public Input<bool>? Ipv6 { get; set; }

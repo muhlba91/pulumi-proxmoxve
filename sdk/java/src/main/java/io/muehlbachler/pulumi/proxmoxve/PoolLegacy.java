@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Instances can be imported using the &lt;span pulumi-lang-nodejs=&#34;`poolId`&#34; pulumi-lang-dotnet=&#34;`PoolId`&#34; pulumi-lang-go=&#34;`poolId`&#34; pulumi-lang-python=&#34;`pool_id`&#34; pulumi-lang-yaml=&#34;`poolId`&#34; pulumi-lang-java=&#34;`poolId`&#34;&gt;`poolId`&lt;/span&gt;, e.g.,
+ * Instances can be imported using the &lt;span pulumi-lang-nodejs=&#34;`poolId`&#34; pulumi-lang-dotnet=&#34;`PoolId`&#34; pulumi-lang-go=&#34;`poolId`&#34; pulumi-lang-python=&#34;`pool_id`&#34; pulumi-lang-yaml=&#34;`poolId`&#34; pulumi-lang-java=&#34;`poolId`&#34; pulumi-lang-hcl=&#34;`pool_id`&#34;&gt;`poolId`&lt;/span&gt;, e.g.,
  * 
  * ```sh
  * $ pulumi import proxmoxve:index/poolLegacy:PoolLegacy operations_pool operations-pool

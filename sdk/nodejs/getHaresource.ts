@@ -48,6 +48,10 @@ export interface GetHaresourceResult {
      */
     readonly comment: string;
     /**
+     * Automatic failback to the preferred node when it becomes available again (PVE 9+).
+     */
+    readonly failback: boolean;
+    /**
      * The identifier of the High Availability group this resource is a member of.
      */
     readonly group: string;

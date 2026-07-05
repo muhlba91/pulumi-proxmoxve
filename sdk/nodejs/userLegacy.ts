@@ -9,25 +9,31 @@ import * as utilities from "./utilities";
 /**
  * Manages a user.
  *
+ * > **Deprecation:** the inline `acl` block is deprecated. Manage user ACLs via the dedicated
+ * `proxmoxve.Acl` resource instead. The `acl` block is no longer auto-populated from a
+ * cluster-wide fetch on refresh or import; existing configurations using `acl` blocks continue
+ * to work, but new code should use `proxmoxve.Acl`.
+ *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as proxmoxve from "@muhlba91/pulumi-proxmoxve";
  *
+ * const operationsAutomation = new proxmoxve.UserLegacy("operations_automation", {
+ *     comment: "Managed by Pulumi",
+ *     password: "a-strong-password",
+ *     userId: "operations-automation@pve",
+ * });
  * const operationsMonitoring = new proxmoxve.RoleLegacy("operations_monitoring", {
  *     roleId: "operations-monitoring",
  *     privileges: ["VM.GuestAgent.Audit"],
  * });
- * const operationsAutomation = new proxmoxve.UserLegacy("operations_automation", {
- *     acls: [{
- *         path: "/vms/1234",
- *         propagate: true,
- *         roleId: operationsMonitoring.roleId,
- *     }],
- *     comment: "Managed by Pulumi",
- *     password: "a-strong-password",
- *     userId: "operations-automation@pve",
+ * const operationsAutomationVms = new proxmoxve.Acl("operations_automation_vms", {
+ *     userId: operationsAutomation.userId,
+ *     path: "/vms/1234",
+ *     roleId: operationsMonitoring.roleId,
+ *     propagate: true,
  * });
  * ```
  *
@@ -68,7 +74,10 @@ export class UserLegacy extends pulumi.CustomResource {
     }
 
     /**
-     * The access control list (multiple blocks supported).
+     * The access control list (multiple blocks supported). Use
+     * `proxmoxve.Acl` instead.
+     *
+     * @deprecated Manage ACLs via the dedicated `proxmoxve.Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing users with `acl` blocks continue to work, but new code should use `proxmoxve.Acl`.
      */
     declare public readonly acls: pulumi.Output<outputs.UserLegacyAcl[] | undefined>;
     /**
@@ -165,7 +174,10 @@ export class UserLegacy extends pulumi.CustomResource {
  */
 export interface UserLegacyState {
     /**
-     * The access control list (multiple blocks supported).
+     * The access control list (multiple blocks supported). Use
+     * `proxmoxve.Acl` instead.
+     *
+     * @deprecated Manage ACLs via the dedicated `proxmoxve.Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing users with `acl` blocks continue to work, but new code should use `proxmoxve.Acl`.
      */
     acls?: pulumi.Input<pulumi.Input<inputs.UserLegacyAcl>[] | undefined>;
     /**
@@ -215,7 +227,10 @@ export interface UserLegacyState {
  */
 export interface UserLegacyArgs {
     /**
-     * The access control list (multiple blocks supported).
+     * The access control list (multiple blocks supported). Use
+     * `proxmoxve.Acl` instead.
+     *
+     * @deprecated Manage ACLs via the dedicated `proxmoxve.Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing users with `acl` blocks continue to work, but new code should use `proxmoxve.Acl`.
      */
     acls?: pulumi.Input<pulumi.Input<inputs.UserLegacyAcl>[] | undefined>;
     /**

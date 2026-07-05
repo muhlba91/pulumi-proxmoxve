@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
  * 
  * ### Password Security
  * 
- * The &lt;span pulumi-lang-nodejs=&#34;`bindPassword`&#34; pulumi-lang-dotnet=&#34;`BindPassword`&#34; pulumi-lang-go=&#34;`bindPassword`&#34; pulumi-lang-python=&#34;`bind_password`&#34; pulumi-lang-yaml=&#34;`bindPassword`&#34; pulumi-lang-java=&#34;`bindPassword`&#34;&gt;`bindPassword`&lt;/span&gt; is sent to Proxmox and stored securely, but it&#39;s never returned by the API. This means:
+ * The &lt;span pulumi-lang-nodejs=&#34;`bindPassword`&#34; pulumi-lang-dotnet=&#34;`BindPassword`&#34; pulumi-lang-go=&#34;`bindPassword`&#34; pulumi-lang-python=&#34;`bind_password`&#34; pulumi-lang-yaml=&#34;`bindPassword`&#34; pulumi-lang-java=&#34;`bindPassword`&#34; pulumi-lang-hcl=&#34;`bind_password`&#34;&gt;`bindPassword`&lt;/span&gt; is sent to Proxmox and stored securely, but it&#39;s never returned by the API. This means:
  * - Terraform cannot detect if the password was changed outside of Terraform
  * - You must maintain the password in your Terraform configuration or use a variable
  * - The password will be marked as sensitive in Terraform state
@@ -91,12 +91,12 @@ import javax.annotation.Nullable;
  * 
  * ### User Synchronization
  * 
- * To trigger synchronization, use the &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.realm.Sync`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.realm.Sync`&#34; pulumi-lang-go=&#34;`realm.Sync`&#34; pulumi-lang-python=&#34;`realm.Sync`&#34; pulumi-lang-yaml=&#34;`proxmoxve.realm.Sync`&#34; pulumi-lang-java=&#34;`proxmoxve.realm.Sync`&#34;&gt;`proxmoxve.realm.Sync`&lt;/span&gt; resource.
+ * To trigger synchronization, use the &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.realm.Sync`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.realm.Sync`&#34; pulumi-lang-go=&#34;`realm.Sync`&#34; pulumi-lang-python=&#34;`realm.Sync`&#34; pulumi-lang-yaml=&#34;`proxmoxve.realm.Sync`&#34; pulumi-lang-java=&#34;`proxmoxve.realm.Sync`&#34; pulumi-lang-hcl=&#34;`proxmox_realm_sync`&#34;&gt;`proxmoxve.realm.Sync`&lt;/span&gt; resource.
  * 
  * ### Common Configuration Scenarios
  * 
  * #### Anonymous Binding
- * For testing or public LDAP servers, omit &lt;span pulumi-lang-nodejs=&#34;`bindDn`&#34; pulumi-lang-dotnet=&#34;`BindDn`&#34; pulumi-lang-go=&#34;`bindDn`&#34; pulumi-lang-python=&#34;`bind_dn`&#34; pulumi-lang-yaml=&#34;`bindDn`&#34; pulumi-lang-java=&#34;`bindDn`&#34;&gt;`bindDn`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`bindPassword`&#34; pulumi-lang-dotnet=&#34;`BindPassword`&#34; pulumi-lang-go=&#34;`bindPassword`&#34; pulumi-lang-python=&#34;`bind_password`&#34; pulumi-lang-yaml=&#34;`bindPassword`&#34; pulumi-lang-java=&#34;`bindPassword`&#34;&gt;`bindPassword`&lt;/span&gt; to use anonymous binding:
+ * For testing or public LDAP servers, omit &lt;span pulumi-lang-nodejs=&#34;`bindDn`&#34; pulumi-lang-dotnet=&#34;`BindDn`&#34; pulumi-lang-go=&#34;`bindDn`&#34; pulumi-lang-python=&#34;`bind_dn`&#34; pulumi-lang-yaml=&#34;`bindDn`&#34; pulumi-lang-java=&#34;`bindDn`&#34; pulumi-lang-hcl=&#34;`bind_dn`&#34;&gt;`bindDn`&lt;/span&gt; and &lt;span pulumi-lang-nodejs=&#34;`bindPassword`&#34; pulumi-lang-dotnet=&#34;`BindPassword`&#34; pulumi-lang-go=&#34;`bindPassword`&#34; pulumi-lang-python=&#34;`bind_password`&#34; pulumi-lang-yaml=&#34;`bindPassword`&#34; pulumi-lang-java=&#34;`bindPassword`&#34; pulumi-lang-hcl=&#34;`bind_password`&#34;&gt;`bindPassword`&lt;/span&gt; to use anonymous binding:
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -235,7 +235,7 @@ import javax.annotation.Nullable;
  * $ pulumi import proxmoxve:realm/ldap:Ldap example example.com
  * ```
  * 
- * &gt; When importing, the &lt;span pulumi-lang-nodejs=&#34;`bindPassword`&#34; pulumi-lang-dotnet=&#34;`BindPassword`&#34; pulumi-lang-go=&#34;`bindPassword`&#34; pulumi-lang-python=&#34;`bind_password`&#34; pulumi-lang-yaml=&#34;`bindPassword`&#34; pulumi-lang-java=&#34;`bindPassword`&#34;&gt;`bindPassword`&lt;/span&gt; attribute cannot be imported since it&#39;s not returned by the Proxmox API. You&#39;ll need to set this attribute in your Terraform configuration after the import to manage it with Terraform.
+ * &gt; When importing, the &lt;span pulumi-lang-nodejs=&#34;`bindPassword`&#34; pulumi-lang-dotnet=&#34;`BindPassword`&#34; pulumi-lang-go=&#34;`bindPassword`&#34; pulumi-lang-python=&#34;`bind_password`&#34; pulumi-lang-yaml=&#34;`bindPassword`&#34; pulumi-lang-java=&#34;`bindPassword`&#34; pulumi-lang-hcl=&#34;`bind_password`&#34;&gt;`bindPassword`&lt;/span&gt; attribute cannot be imported since it&#39;s not returned by the Proxmox API. You&#39;ll need to set this attribute in your Terraform configuration after the import to manage it with Terraform.
  * 
  */
 @ResourceType(type="proxmoxve:realm/ldap:Ldap")

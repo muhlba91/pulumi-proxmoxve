@@ -16,14 +16,14 @@ public final class GetHaresourcesLegacyArgs extends com.pulumi.resources.InvokeA
     public static final GetHaresourcesLegacyArgs Empty = new GetHaresourcesLegacyArgs();
 
     /**
-     * The type of High Availability resources to fetch (&lt;span pulumi-lang-nodejs=&#34;`vm`&#34; pulumi-lang-dotnet=&#34;`Vm`&#34; pulumi-lang-go=&#34;`vm`&#34; pulumi-lang-python=&#34;`vm`&#34; pulumi-lang-yaml=&#34;`vm`&#34; pulumi-lang-java=&#34;`vm`&#34;&gt;`vm`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`ct`&#34; pulumi-lang-dotnet=&#34;`Ct`&#34; pulumi-lang-go=&#34;`ct`&#34; pulumi-lang-python=&#34;`ct`&#34; pulumi-lang-yaml=&#34;`ct`&#34; pulumi-lang-java=&#34;`ct`&#34;&gt;`ct`&lt;/span&gt;). All resources will be fetched if this option is unset.
+     * The type of High Availability resources to fetch (&lt;span pulumi-lang-nodejs=&#34;`vm`&#34; pulumi-lang-dotnet=&#34;`Vm`&#34; pulumi-lang-go=&#34;`vm`&#34; pulumi-lang-python=&#34;`vm`&#34; pulumi-lang-yaml=&#34;`vm`&#34; pulumi-lang-java=&#34;`vm`&#34; pulumi-lang-hcl=&#34;`vm`&#34;&gt;`vm`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`ct`&#34; pulumi-lang-dotnet=&#34;`Ct`&#34; pulumi-lang-go=&#34;`ct`&#34; pulumi-lang-python=&#34;`ct`&#34; pulumi-lang-yaml=&#34;`ct`&#34; pulumi-lang-java=&#34;`ct`&#34; pulumi-lang-hcl=&#34;`ct`&#34;&gt;`ct`&lt;/span&gt;). All resources will be fetched if this option is unset.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of High Availability resources to fetch (&lt;span pulumi-lang-nodejs=&#34;`vm`&#34; pulumi-lang-dotnet=&#34;`Vm`&#34; pulumi-lang-go=&#34;`vm`&#34; pulumi-lang-python=&#34;`vm`&#34; pulumi-lang-yaml=&#34;`vm`&#34; pulumi-lang-java=&#34;`vm`&#34;&gt;`vm`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`ct`&#34; pulumi-lang-dotnet=&#34;`Ct`&#34; pulumi-lang-go=&#34;`ct`&#34; pulumi-lang-python=&#34;`ct`&#34; pulumi-lang-yaml=&#34;`ct`&#34; pulumi-lang-java=&#34;`ct`&#34;&gt;`ct`&lt;/span&gt;). All resources will be fetched if this option is unset.
+     * @return The type of High Availability resources to fetch (&lt;span pulumi-lang-nodejs=&#34;`vm`&#34; pulumi-lang-dotnet=&#34;`Vm`&#34; pulumi-lang-go=&#34;`vm`&#34; pulumi-lang-python=&#34;`vm`&#34; pulumi-lang-yaml=&#34;`vm`&#34; pulumi-lang-java=&#34;`vm`&#34; pulumi-lang-hcl=&#34;`vm`&#34;&gt;`vm`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`ct`&#34; pulumi-lang-dotnet=&#34;`Ct`&#34; pulumi-lang-go=&#34;`ct`&#34; pulumi-lang-python=&#34;`ct`&#34; pulumi-lang-yaml=&#34;`ct`&#34; pulumi-lang-java=&#34;`ct`&#34; pulumi-lang-hcl=&#34;`ct`&#34;&gt;`ct`&lt;/span&gt;). All resources will be fetched if this option is unset.
      * 
      */
     public Optional<Output<String>> type() {
@@ -55,7 +55,7 @@ public final class GetHaresourcesLegacyArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param type The type of High Availability resources to fetch (&lt;span pulumi-lang-nodejs=&#34;`vm`&#34; pulumi-lang-dotnet=&#34;`Vm`&#34; pulumi-lang-go=&#34;`vm`&#34; pulumi-lang-python=&#34;`vm`&#34; pulumi-lang-yaml=&#34;`vm`&#34; pulumi-lang-java=&#34;`vm`&#34;&gt;`vm`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`ct`&#34; pulumi-lang-dotnet=&#34;`Ct`&#34; pulumi-lang-go=&#34;`ct`&#34; pulumi-lang-python=&#34;`ct`&#34; pulumi-lang-yaml=&#34;`ct`&#34; pulumi-lang-java=&#34;`ct`&#34;&gt;`ct`&lt;/span&gt;). All resources will be fetched if this option is unset.
+         * @param type The type of High Availability resources to fetch (&lt;span pulumi-lang-nodejs=&#34;`vm`&#34; pulumi-lang-dotnet=&#34;`Vm`&#34; pulumi-lang-go=&#34;`vm`&#34; pulumi-lang-python=&#34;`vm`&#34; pulumi-lang-yaml=&#34;`vm`&#34; pulumi-lang-java=&#34;`vm`&#34; pulumi-lang-hcl=&#34;`vm`&#34;&gt;`vm`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`ct`&#34; pulumi-lang-dotnet=&#34;`Ct`&#34; pulumi-lang-go=&#34;`ct`&#34; pulumi-lang-python=&#34;`ct`&#34; pulumi-lang-yaml=&#34;`ct`&#34; pulumi-lang-java=&#34;`ct`&#34; pulumi-lang-hcl=&#34;`ct`&#34;&gt;`ct`&lt;/span&gt;). All resources will be fetched if this option is unset.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class GetHaresourcesLegacyArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param type The type of High Availability resources to fetch (&lt;span pulumi-lang-nodejs=&#34;`vm`&#34; pulumi-lang-dotnet=&#34;`Vm`&#34; pulumi-lang-go=&#34;`vm`&#34; pulumi-lang-python=&#34;`vm`&#34; pulumi-lang-yaml=&#34;`vm`&#34; pulumi-lang-java=&#34;`vm`&#34;&gt;`vm`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`ct`&#34; pulumi-lang-dotnet=&#34;`Ct`&#34; pulumi-lang-go=&#34;`ct`&#34; pulumi-lang-python=&#34;`ct`&#34; pulumi-lang-yaml=&#34;`ct`&#34; pulumi-lang-java=&#34;`ct`&#34;&gt;`ct`&lt;/span&gt;). All resources will be fetched if this option is unset.
+         * @param type The type of High Availability resources to fetch (&lt;span pulumi-lang-nodejs=&#34;`vm`&#34; pulumi-lang-dotnet=&#34;`Vm`&#34; pulumi-lang-go=&#34;`vm`&#34; pulumi-lang-python=&#34;`vm`&#34; pulumi-lang-yaml=&#34;`vm`&#34; pulumi-lang-java=&#34;`vm`&#34; pulumi-lang-hcl=&#34;`vm`&#34;&gt;`vm`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`ct`&#34; pulumi-lang-dotnet=&#34;`Ct`&#34; pulumi-lang-go=&#34;`ct`&#34; pulumi-lang-python=&#34;`ct`&#34; pulumi-lang-yaml=&#34;`ct`&#34; pulumi-lang-java=&#34;`ct`&#34; pulumi-lang-hcl=&#34;`ct`&#34;&gt;`ct`&lt;/span&gt;). All resources will be fetched if this option is unset.
          * 
          * @return builder
          * 

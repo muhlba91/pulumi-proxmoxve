@@ -51,10 +51,10 @@ public final class SyncLegacyArgs extends com.pulumi.resources.ResourceArgs {
      * Perform a full sync.
      * 
      * @deprecated
-     * Deprecated by Proxmox: use&lt;span pulumi-lang-nodejs=&#34; removeVanished &#34; pulumi-lang-dotnet=&#34; RemoveVanished &#34; pulumi-lang-go=&#34; removeVanished &#34; pulumi-lang-python=&#34; remove_vanished &#34; pulumi-lang-yaml=&#34; removeVanished &#34; pulumi-lang-java=&#34; removeVanished &#34;&gt; removeVanished &lt;/span&gt;instead.
+     * Deprecated by Proxmox: use&lt;span pulumi-lang-nodejs=&#34; removeVanished &#34; pulumi-lang-dotnet=&#34; RemoveVanished &#34; pulumi-lang-go=&#34; removeVanished &#34; pulumi-lang-python=&#34; remove_vanished &#34; pulumi-lang-yaml=&#34; removeVanished &#34; pulumi-lang-java=&#34; removeVanished &#34; pulumi-lang-hcl=&#34; remove_vanished &#34;&gt; removeVanished &lt;/span&gt;instead.
      * 
      */
-    @Deprecated /* Deprecated by Proxmox: use<span pulumi-lang-nodejs="" removeVanished "" pulumi-lang-dotnet="" RemoveVanished "" pulumi-lang-go="" removeVanished "" pulumi-lang-python="" remove_vanished "" pulumi-lang-yaml="" removeVanished "" pulumi-lang-java="" removeVanished ""> removeVanished </span>instead. */
+    @Deprecated /* Deprecated by Proxmox: use<span pulumi-lang-nodejs="" removeVanished "" pulumi-lang-dotnet="" RemoveVanished "" pulumi-lang-go="" removeVanished "" pulumi-lang-python="" remove_vanished "" pulumi-lang-yaml="" removeVanished "" pulumi-lang-java="" removeVanished "" pulumi-lang-hcl="" remove_vanished ""> removeVanished </span>instead. */
     @Import(name="full")
     private @Nullable Output<Boolean> full;
 
@@ -62,10 +62,10 @@ public final class SyncLegacyArgs extends com.pulumi.resources.ResourceArgs {
      * @return Perform a full sync.
      * 
      * @deprecated
-     * Deprecated by Proxmox: use&lt;span pulumi-lang-nodejs=&#34; removeVanished &#34; pulumi-lang-dotnet=&#34; RemoveVanished &#34; pulumi-lang-go=&#34; removeVanished &#34; pulumi-lang-python=&#34; remove_vanished &#34; pulumi-lang-yaml=&#34; removeVanished &#34; pulumi-lang-java=&#34; removeVanished &#34;&gt; removeVanished &lt;/span&gt;instead.
+     * Deprecated by Proxmox: use&lt;span pulumi-lang-nodejs=&#34; removeVanished &#34; pulumi-lang-dotnet=&#34; RemoveVanished &#34; pulumi-lang-go=&#34; removeVanished &#34; pulumi-lang-python=&#34; remove_vanished &#34; pulumi-lang-yaml=&#34; removeVanished &#34; pulumi-lang-java=&#34; removeVanished &#34; pulumi-lang-hcl=&#34; remove_vanished &#34;&gt; removeVanished &lt;/span&gt;instead.
      * 
      */
-    @Deprecated /* Deprecated by Proxmox: use<span pulumi-lang-nodejs="" removeVanished "" pulumi-lang-dotnet="" RemoveVanished "" pulumi-lang-go="" removeVanished "" pulumi-lang-python="" remove_vanished "" pulumi-lang-yaml="" removeVanished "" pulumi-lang-java="" removeVanished ""> removeVanished </span>instead. */
+    @Deprecated /* Deprecated by Proxmox: use<span pulumi-lang-nodejs="" removeVanished "" pulumi-lang-dotnet="" RemoveVanished "" pulumi-lang-go="" removeVanished "" pulumi-lang-python="" remove_vanished "" pulumi-lang-yaml="" removeVanished "" pulumi-lang-java="" removeVanished "" pulumi-lang-hcl="" remove_vanished ""> removeVanished </span>instead. */
     public Optional<Output<Boolean>> full() {
         return Optional.ofNullable(this.full);
     }
@@ -74,10 +74,10 @@ public final class SyncLegacyArgs extends com.pulumi.resources.ResourceArgs {
      * Purge removed entries.
      * 
      * @deprecated
-     * Deprecated by Proxmox: use&lt;span pulumi-lang-nodejs=&#34; removeVanished &#34; pulumi-lang-dotnet=&#34; RemoveVanished &#34; pulumi-lang-go=&#34; removeVanished &#34; pulumi-lang-python=&#34; remove_vanished &#34; pulumi-lang-yaml=&#34; removeVanished &#34; pulumi-lang-java=&#34; removeVanished &#34;&gt; removeVanished &lt;/span&gt;instead.
+     * Deprecated by Proxmox: use&lt;span pulumi-lang-nodejs=&#34; removeVanished &#34; pulumi-lang-dotnet=&#34; RemoveVanished &#34; pulumi-lang-go=&#34; removeVanished &#34; pulumi-lang-python=&#34; remove_vanished &#34; pulumi-lang-yaml=&#34; removeVanished &#34; pulumi-lang-java=&#34; removeVanished &#34; pulumi-lang-hcl=&#34; remove_vanished &#34;&gt; removeVanished &lt;/span&gt;instead.
      * 
      */
-    @Deprecated /* Deprecated by Proxmox: use<span pulumi-lang-nodejs="" removeVanished "" pulumi-lang-dotnet="" RemoveVanished "" pulumi-lang-go="" removeVanished "" pulumi-lang-python="" remove_vanished "" pulumi-lang-yaml="" removeVanished "" pulumi-lang-java="" removeVanished ""> removeVanished </span>instead. */
+    @Deprecated /* Deprecated by Proxmox: use<span pulumi-lang-nodejs="" removeVanished "" pulumi-lang-dotnet="" RemoveVanished "" pulumi-lang-go="" removeVanished "" pulumi-lang-python="" remove_vanished "" pulumi-lang-yaml="" removeVanished "" pulumi-lang-java="" removeVanished "" pulumi-lang-hcl="" remove_vanished ""> removeVanished </span>instead. */
     @Import(name="purge")
     private @Nullable Output<Boolean> purge;
 
@@ -85,10 +85,10 @@ public final class SyncLegacyArgs extends com.pulumi.resources.ResourceArgs {
      * @return Purge removed entries.
      * 
      * @deprecated
-     * Deprecated by Proxmox: use&lt;span pulumi-lang-nodejs=&#34; removeVanished &#34; pulumi-lang-dotnet=&#34; RemoveVanished &#34; pulumi-lang-go=&#34; removeVanished &#34; pulumi-lang-python=&#34; remove_vanished &#34; pulumi-lang-yaml=&#34; removeVanished &#34; pulumi-lang-java=&#34; removeVanished &#34;&gt; removeVanished &lt;/span&gt;instead.
+     * Deprecated by Proxmox: use&lt;span pulumi-lang-nodejs=&#34; removeVanished &#34; pulumi-lang-dotnet=&#34; RemoveVanished &#34; pulumi-lang-go=&#34; removeVanished &#34; pulumi-lang-python=&#34; remove_vanished &#34; pulumi-lang-yaml=&#34; removeVanished &#34; pulumi-lang-java=&#34; removeVanished &#34; pulumi-lang-hcl=&#34; remove_vanished &#34;&gt; removeVanished &lt;/span&gt;instead.
      * 
      */
-    @Deprecated /* Deprecated by Proxmox: use<span pulumi-lang-nodejs="" removeVanished "" pulumi-lang-dotnet="" RemoveVanished "" pulumi-lang-go="" removeVanished "" pulumi-lang-python="" remove_vanished "" pulumi-lang-yaml="" removeVanished "" pulumi-lang-java="" removeVanished ""> removeVanished </span>instead. */
+    @Deprecated /* Deprecated by Proxmox: use<span pulumi-lang-nodejs="" removeVanished "" pulumi-lang-dotnet="" RemoveVanished "" pulumi-lang-go="" removeVanished "" pulumi-lang-python="" remove_vanished "" pulumi-lang-yaml="" removeVanished "" pulumi-lang-java="" removeVanished "" pulumi-lang-hcl="" remove_vanished ""> removeVanished </span>instead. */
     public Optional<Output<Boolean>> purge() {
         return Optional.ofNullable(this.purge);
     }
@@ -109,14 +109,14 @@ public final class SyncLegacyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * How to handle vanished entries (e.g. `acl;properties;entry` or &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34;&gt;`none`&lt;/span&gt;).
+     * How to handle vanished entries (e.g. `acl;properties;entry` or &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34; pulumi-lang-hcl=&#34;`none`&#34;&gt;`none`&lt;/span&gt;).
      * 
      */
     @Import(name="removeVanished")
     private @Nullable Output<String> removeVanished;
 
     /**
-     * @return How to handle vanished entries (e.g. `acl;properties;entry` or &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34;&gt;`none`&lt;/span&gt;).
+     * @return How to handle vanished entries (e.g. `acl;properties;entry` or &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34; pulumi-lang-hcl=&#34;`none`&#34;&gt;`none`&lt;/span&gt;).
      * 
      */
     public Optional<Output<String>> removeVanished() {
@@ -216,10 +216,10 @@ public final class SyncLegacyArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Deprecated by Proxmox: use&lt;span pulumi-lang-nodejs=&#34; removeVanished &#34; pulumi-lang-dotnet=&#34; RemoveVanished &#34; pulumi-lang-go=&#34; removeVanished &#34; pulumi-lang-python=&#34; remove_vanished &#34; pulumi-lang-yaml=&#34; removeVanished &#34; pulumi-lang-java=&#34; removeVanished &#34;&gt; removeVanished &lt;/span&gt;instead.
+         * Deprecated by Proxmox: use&lt;span pulumi-lang-nodejs=&#34; removeVanished &#34; pulumi-lang-dotnet=&#34; RemoveVanished &#34; pulumi-lang-go=&#34; removeVanished &#34; pulumi-lang-python=&#34; remove_vanished &#34; pulumi-lang-yaml=&#34; removeVanished &#34; pulumi-lang-java=&#34; removeVanished &#34; pulumi-lang-hcl=&#34; remove_vanished &#34;&gt; removeVanished &lt;/span&gt;instead.
          * 
          */
-        @Deprecated /* Deprecated by Proxmox: use<span pulumi-lang-nodejs="" removeVanished "" pulumi-lang-dotnet="" RemoveVanished "" pulumi-lang-go="" removeVanished "" pulumi-lang-python="" remove_vanished "" pulumi-lang-yaml="" removeVanished "" pulumi-lang-java="" removeVanished ""> removeVanished </span>instead. */
+        @Deprecated /* Deprecated by Proxmox: use<span pulumi-lang-nodejs="" removeVanished "" pulumi-lang-dotnet="" RemoveVanished "" pulumi-lang-go="" removeVanished "" pulumi-lang-python="" remove_vanished "" pulumi-lang-yaml="" removeVanished "" pulumi-lang-java="" removeVanished "" pulumi-lang-hcl="" remove_vanished ""> removeVanished </span>instead. */
         public Builder full(@Nullable Output<Boolean> full) {
             $.full = full;
             return this;
@@ -231,10 +231,10 @@ public final class SyncLegacyArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Deprecated by Proxmox: use&lt;span pulumi-lang-nodejs=&#34; removeVanished &#34; pulumi-lang-dotnet=&#34; RemoveVanished &#34; pulumi-lang-go=&#34; removeVanished &#34; pulumi-lang-python=&#34; remove_vanished &#34; pulumi-lang-yaml=&#34; removeVanished &#34; pulumi-lang-java=&#34; removeVanished &#34;&gt; removeVanished &lt;/span&gt;instead.
+         * Deprecated by Proxmox: use&lt;span pulumi-lang-nodejs=&#34; removeVanished &#34; pulumi-lang-dotnet=&#34; RemoveVanished &#34; pulumi-lang-go=&#34; removeVanished &#34; pulumi-lang-python=&#34; remove_vanished &#34; pulumi-lang-yaml=&#34; removeVanished &#34; pulumi-lang-java=&#34; removeVanished &#34; pulumi-lang-hcl=&#34; remove_vanished &#34;&gt; removeVanished &lt;/span&gt;instead.
          * 
          */
-        @Deprecated /* Deprecated by Proxmox: use<span pulumi-lang-nodejs="" removeVanished "" pulumi-lang-dotnet="" RemoveVanished "" pulumi-lang-go="" removeVanished "" pulumi-lang-python="" remove_vanished "" pulumi-lang-yaml="" removeVanished "" pulumi-lang-java="" removeVanished ""> removeVanished </span>instead. */
+        @Deprecated /* Deprecated by Proxmox: use<span pulumi-lang-nodejs="" removeVanished "" pulumi-lang-dotnet="" RemoveVanished "" pulumi-lang-go="" removeVanished "" pulumi-lang-python="" remove_vanished "" pulumi-lang-yaml="" removeVanished "" pulumi-lang-java="" removeVanished "" pulumi-lang-hcl="" remove_vanished ""> removeVanished </span>instead. */
         public Builder full(Boolean full) {
             return full(Output.of(full));
         }
@@ -245,10 +245,10 @@ public final class SyncLegacyArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Deprecated by Proxmox: use&lt;span pulumi-lang-nodejs=&#34; removeVanished &#34; pulumi-lang-dotnet=&#34; RemoveVanished &#34; pulumi-lang-go=&#34; removeVanished &#34; pulumi-lang-python=&#34; remove_vanished &#34; pulumi-lang-yaml=&#34; removeVanished &#34; pulumi-lang-java=&#34; removeVanished &#34;&gt; removeVanished &lt;/span&gt;instead.
+         * Deprecated by Proxmox: use&lt;span pulumi-lang-nodejs=&#34; removeVanished &#34; pulumi-lang-dotnet=&#34; RemoveVanished &#34; pulumi-lang-go=&#34; removeVanished &#34; pulumi-lang-python=&#34; remove_vanished &#34; pulumi-lang-yaml=&#34; removeVanished &#34; pulumi-lang-java=&#34; removeVanished &#34; pulumi-lang-hcl=&#34; remove_vanished &#34;&gt; removeVanished &lt;/span&gt;instead.
          * 
          */
-        @Deprecated /* Deprecated by Proxmox: use<span pulumi-lang-nodejs="" removeVanished "" pulumi-lang-dotnet="" RemoveVanished "" pulumi-lang-go="" removeVanished "" pulumi-lang-python="" remove_vanished "" pulumi-lang-yaml="" removeVanished "" pulumi-lang-java="" removeVanished ""> removeVanished </span>instead. */
+        @Deprecated /* Deprecated by Proxmox: use<span pulumi-lang-nodejs="" removeVanished "" pulumi-lang-dotnet="" RemoveVanished "" pulumi-lang-go="" removeVanished "" pulumi-lang-python="" remove_vanished "" pulumi-lang-yaml="" removeVanished "" pulumi-lang-java="" removeVanished "" pulumi-lang-hcl="" remove_vanished ""> removeVanished </span>instead. */
         public Builder purge(@Nullable Output<Boolean> purge) {
             $.purge = purge;
             return this;
@@ -260,10 +260,10 @@ public final class SyncLegacyArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          * @deprecated
-         * Deprecated by Proxmox: use&lt;span pulumi-lang-nodejs=&#34; removeVanished &#34; pulumi-lang-dotnet=&#34; RemoveVanished &#34; pulumi-lang-go=&#34; removeVanished &#34; pulumi-lang-python=&#34; remove_vanished &#34; pulumi-lang-yaml=&#34; removeVanished &#34; pulumi-lang-java=&#34; removeVanished &#34;&gt; removeVanished &lt;/span&gt;instead.
+         * Deprecated by Proxmox: use&lt;span pulumi-lang-nodejs=&#34; removeVanished &#34; pulumi-lang-dotnet=&#34; RemoveVanished &#34; pulumi-lang-go=&#34; removeVanished &#34; pulumi-lang-python=&#34; remove_vanished &#34; pulumi-lang-yaml=&#34; removeVanished &#34; pulumi-lang-java=&#34; removeVanished &#34; pulumi-lang-hcl=&#34; remove_vanished &#34;&gt; removeVanished &lt;/span&gt;instead.
          * 
          */
-        @Deprecated /* Deprecated by Proxmox: use<span pulumi-lang-nodejs="" removeVanished "" pulumi-lang-dotnet="" RemoveVanished "" pulumi-lang-go="" removeVanished "" pulumi-lang-python="" remove_vanished "" pulumi-lang-yaml="" removeVanished "" pulumi-lang-java="" removeVanished ""> removeVanished </span>instead. */
+        @Deprecated /* Deprecated by Proxmox: use<span pulumi-lang-nodejs="" removeVanished "" pulumi-lang-dotnet="" RemoveVanished "" pulumi-lang-go="" removeVanished "" pulumi-lang-python="" remove_vanished "" pulumi-lang-yaml="" removeVanished "" pulumi-lang-java="" removeVanished "" pulumi-lang-hcl="" remove_vanished ""> removeVanished </span>instead. */
         public Builder purge(Boolean purge) {
             return purge(Output.of(purge));
         }
@@ -290,7 +290,7 @@ public final class SyncLegacyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param removeVanished How to handle vanished entries (e.g. `acl;properties;entry` or &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34;&gt;`none`&lt;/span&gt;).
+         * @param removeVanished How to handle vanished entries (e.g. `acl;properties;entry` or &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34; pulumi-lang-hcl=&#34;`none`&#34;&gt;`none`&lt;/span&gt;).
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class SyncLegacyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param removeVanished How to handle vanished entries (e.g. `acl;properties;entry` or &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34;&gt;`none`&lt;/span&gt;).
+         * @param removeVanished How to handle vanished entries (e.g. `acl;properties;entry` or &lt;span pulumi-lang-nodejs=&#34;`none`&#34; pulumi-lang-dotnet=&#34;`None`&#34; pulumi-lang-go=&#34;`none`&#34; pulumi-lang-python=&#34;`none`&#34; pulumi-lang-yaml=&#34;`none`&#34; pulumi-lang-java=&#34;`none`&#34; pulumi-lang-hcl=&#34;`none`&#34;&gt;`none`&lt;/span&gt;).
          * 
          * @return builder
          * 

@@ -36,7 +36,8 @@ class UserLegacyArgs:
         The set of arguments for constructing a UserLegacy resource.
 
         :param pulumi.Input[_builtins.str] user_id: The user identifier.
-        :param pulumi.Input[Sequence[pulumi.Input['UserLegacyAclArgs']]] acls: The access control list (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input['UserLegacyAclArgs']]] acls: The access control list (multiple blocks supported). Use
+               `Acl` instead.
         :param pulumi.Input[_builtins.str] comment: The user comment.
         :param pulumi.Input[_builtins.str] email: The user's email address.
         :param pulumi.Input[_builtins.bool] enabled: Whether the user account is enabled.
@@ -48,6 +49,9 @@ class UserLegacyArgs:
         :param pulumi.Input[_builtins.str] password: The user's password. Required for PVE or PAM realms.
         """
         pulumi.set(__self__, "user_id", user_id)
+        if acls is not None:
+            warnings.warn("""Manage ACLs via the dedicated `Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing users with `acl` blocks continue to work, but new code should use `Acl`.""", DeprecationWarning)
+            pulumi.log.warn("""acls is deprecated: Manage ACLs via the dedicated `Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing users with `acl` blocks continue to work, but new code should use `Acl`.""")
         if acls is not None:
             pulumi.set(__self__, "acls", acls)
         if comment is not None:
@@ -83,9 +87,11 @@ class UserLegacyArgs:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Manage ACLs via the dedicated `Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing users with `acl` blocks continue to work, but new code should use `Acl`.""")
     def acls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserLegacyAclArgs']]]]:
         """
-        The access control list (multiple blocks supported).
+        The access control list (multiple blocks supported). Use
+        `Acl` instead.
         """
         return pulumi.get(self, "acls")
 
@@ -219,7 +225,8 @@ class _UserLegacyState:
         """
         Input properties used for looking up and filtering UserLegacy resources.
 
-        :param pulumi.Input[Sequence[pulumi.Input['UserLegacyAclArgs']]] acls: The access control list (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input['UserLegacyAclArgs']]] acls: The access control list (multiple blocks supported). Use
+               `Acl` instead.
         :param pulumi.Input[_builtins.str] comment: The user comment.
         :param pulumi.Input[_builtins.str] email: The user's email address.
         :param pulumi.Input[_builtins.bool] enabled: Whether the user account is enabled.
@@ -231,6 +238,9 @@ class _UserLegacyState:
         :param pulumi.Input[_builtins.str] password: The user's password. Required for PVE or PAM realms.
         :param pulumi.Input[_builtins.str] user_id: The user identifier.
         """
+        if acls is not None:
+            warnings.warn("""Manage ACLs via the dedicated `Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing users with `acl` blocks continue to work, but new code should use `Acl`.""", DeprecationWarning)
+            pulumi.log.warn("""acls is deprecated: Manage ACLs via the dedicated `Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing users with `acl` blocks continue to work, but new code should use `Acl`.""")
         if acls is not None:
             pulumi.set(__self__, "acls", acls)
         if comment is not None:
@@ -256,9 +266,11 @@ class _UserLegacyState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Manage ACLs via the dedicated `Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing users with `acl` blocks continue to work, but new code should use `Acl`.""")
     def acls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['UserLegacyAclArgs']]]]:
         """
-        The access control list (multiple blocks supported).
+        The access control list (multiple blocks supported). Use
+        `Acl` instead.
         """
         return pulumi.get(self, "acls")
 
@@ -408,24 +420,29 @@ class UserLegacy(pulumi.CustomResource):
         """
         Manages a user.
 
+        > **Deprecation:** the inline `acl` block is deprecated. Manage user ACLs via the dedicated
+        `Acl` resource instead. The `acl` block is no longer auto-populated from a
+        cluster-wide fetch on refresh or import; existing configurations using `acl` blocks continue
+        to work, but new code should use `Acl`.
+
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
 
-        operations_monitoring = proxmoxve.RoleLegacy("operations_monitoring",
-            role_id="operations-monitoring",
-            privileges=["VM.GuestAgent.Audit"])
         operations_automation = proxmoxve.UserLegacy("operations_automation",
-            acls=[{
-                "path": "/vms/1234",
-                "propagate": True,
-                "role_id": operations_monitoring.role_id,
-            }],
             comment="Managed by Pulumi",
             password="a-strong-password",
             user_id="operations-automation@pve")
+        operations_monitoring = proxmoxve.RoleLegacy("operations_monitoring",
+            role_id="operations-monitoring",
+            privileges=["VM.GuestAgent.Audit"])
+        operations_automation_vms = proxmoxve.Acl("operations_automation_vms",
+            user_id=operations_automation.user_id,
+            path="/vms/1234",
+            role_id=operations_monitoring.role_id,
+            propagate=True)
         ```
 
         ## Import
@@ -439,7 +456,8 @@ class UserLegacy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserLegacyAclArgs', 'UserLegacyAclArgsDict']]]] acls: The access control list (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserLegacyAclArgs', 'UserLegacyAclArgsDict']]]] acls: The access control list (multiple blocks supported). Use
+               `Acl` instead.
         :param pulumi.Input[_builtins.str] comment: The user comment.
         :param pulumi.Input[_builtins.str] email: The user's email address.
         :param pulumi.Input[_builtins.bool] enabled: Whether the user account is enabled.
@@ -460,24 +478,29 @@ class UserLegacy(pulumi.CustomResource):
         """
         Manages a user.
 
+        > **Deprecation:** the inline `acl` block is deprecated. Manage user ACLs via the dedicated
+        `Acl` resource instead. The `acl` block is no longer auto-populated from a
+        cluster-wide fetch on refresh or import; existing configurations using `acl` blocks continue
+        to work, but new code should use `Acl`.
+
         ## Example Usage
 
         ```python
         import pulumi
         import pulumi_proxmoxve as proxmoxve
 
-        operations_monitoring = proxmoxve.RoleLegacy("operations_monitoring",
-            role_id="operations-monitoring",
-            privileges=["VM.GuestAgent.Audit"])
         operations_automation = proxmoxve.UserLegacy("operations_automation",
-            acls=[{
-                "path": "/vms/1234",
-                "propagate": True,
-                "role_id": operations_monitoring.role_id,
-            }],
             comment="Managed by Pulumi",
             password="a-strong-password",
             user_id="operations-automation@pve")
+        operations_monitoring = proxmoxve.RoleLegacy("operations_monitoring",
+            role_id="operations-monitoring",
+            privileges=["VM.GuestAgent.Audit"])
+        operations_automation_vms = proxmoxve.Acl("operations_automation_vms",
+            user_id=operations_automation.user_id,
+            path="/vms/1234",
+            role_id=operations_monitoring.role_id,
+            propagate=True)
         ```
 
         ## Import
@@ -567,7 +590,8 @@ class UserLegacy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['UserLegacyAclArgs', 'UserLegacyAclArgsDict']]]] acls: The access control list (multiple blocks supported).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['UserLegacyAclArgs', 'UserLegacyAclArgsDict']]]] acls: The access control list (multiple blocks supported). Use
+               `Acl` instead.
         :param pulumi.Input[_builtins.str] comment: The user comment.
         :param pulumi.Input[_builtins.str] email: The user's email address.
         :param pulumi.Input[_builtins.bool] enabled: Whether the user account is enabled.
@@ -598,9 +622,11 @@ class UserLegacy(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Manage ACLs via the dedicated `Acl` resource instead. The inline `acl` block is no longer auto-populated from the cluster on refresh or import; existing users with `acl` blocks continue to work, but new code should use `Acl`.""")
     def acls(self) -> pulumi.Output[Optional[Sequence['outputs.UserLegacyAcl']]]:
         """
-        The access control list (multiple blocks supported).
+        The access control list (multiple blocks supported). Use
+        `Acl` instead.
         """
         return pulumi.get(self, "acls")
 

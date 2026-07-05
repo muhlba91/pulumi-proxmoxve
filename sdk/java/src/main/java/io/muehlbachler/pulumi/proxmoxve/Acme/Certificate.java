@@ -20,8 +20,8 @@ import javax.annotation.Nullable;
  * Manages ACME SSL certificates for Proxmox VE nodes.
  * 
  * This resource orders and renews certificates from an ACME Certificate Authority (like Let&#39;s Encrypt) for a specific node. Before using this resource, ensure that:
- * - An ACME account is configured (using &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-go=&#34;`acme.Account`&#34; pulumi-lang-python=&#34;`acme.Account`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.Account`&#34;&gt;`proxmoxve.acme.Account`&lt;/span&gt;)
- * - DNS plugins are configured if using DNS-01 challenge (using &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme/dns.Plugin`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme/dns.Plugin`&#34; pulumi-lang-go=&#34;`acme/dns.Plugin`&#34; pulumi-lang-python=&#34;`acme/dns.Plugin`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme/dns.Plugin`&#34; pulumi-lang-java=&#34;`proxmoxve.acme/dns.Plugin`&#34;&gt;`proxmoxve.acme/dns.Plugin`&lt;/span&gt;)
+ * - An ACME account is configured (using &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-go=&#34;`acme.Account`&#34; pulumi-lang-python=&#34;`acme.Account`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-java=&#34;`proxmoxve.acme.Account`&#34; pulumi-lang-hcl=&#34;`proxmox_acme_account`&#34;&gt;`proxmoxve.acme.Account`&lt;/span&gt;)
+ * - DNS plugins are configured if using DNS-01 challenge (using &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.acme/dns.Plugin`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.acme/dns.Plugin`&#34; pulumi-lang-go=&#34;`acme/dns.Plugin`&#34; pulumi-lang-python=&#34;`acme/dns.Plugin`&#34; pulumi-lang-yaml=&#34;`proxmoxve.acme/dns.Plugin`&#34; pulumi-lang-java=&#34;`proxmoxve.acme/dns.Plugin`&#34; pulumi-lang-hcl=&#34;`proxmox_acme_dns_plugin`&#34;&gt;`proxmoxve.acme/dns.Plugin`&lt;/span&gt;)
  * 
  * ## Example Usage
  * 

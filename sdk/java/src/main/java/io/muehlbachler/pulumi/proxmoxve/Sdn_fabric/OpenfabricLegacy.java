@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/fabric.Openfabric`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/fabric.Openfabric`&#34; pulumi-lang-go=&#34;`sdn/fabric.Openfabric`&#34; pulumi-lang-python=&#34;`sdn/fabric.Openfabric`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/fabric.Openfabric`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/fabric.Openfabric`&#34;&gt;`proxmoxve.sdn/fabric.Openfabric`&lt;/span&gt; instead. This resource will be removed in v1.0.
+ * &gt; **Deprecated:** Use &lt;span pulumi-lang-nodejs=&#34;`proxmoxve.sdn/fabric.Openfabric`&#34; pulumi-lang-dotnet=&#34;`proxmoxve.sdn/fabric.Openfabric`&#34; pulumi-lang-go=&#34;`sdn/fabric.Openfabric`&#34; pulumi-lang-python=&#34;`sdn/fabric.Openfabric`&#34; pulumi-lang-yaml=&#34;`proxmoxve.sdn/fabric.Openfabric`&#34; pulumi-lang-java=&#34;`proxmoxve.sdn/fabric.Openfabric`&#34; pulumi-lang-hcl=&#34;`proxmox_sdn_fabric_openfabric`&#34;&gt;`proxmoxve.sdn/fabric.Openfabric`&lt;/span&gt; instead. This resource will be removed in v1.0.
  * 
  * OpenFabric Fabric in Proxmox SDN. Fabrics in Proxmox VE SDN provide automated routing between nodes in a cluster.
  * 
@@ -24,28 +24,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="proxmoxve:sdn/fabric/openfabricLegacy:OpenfabricLegacy")
 public class OpenfabricLegacy extends com.pulumi.resources.CustomResource {
     /**
-     * The&lt;span pulumi-lang-nodejs=&#34; csnpInterval &#34; pulumi-lang-dotnet=&#34; CsnpInterval &#34; pulumi-lang-go=&#34; csnpInterval &#34; pulumi-lang-python=&#34; csnp_interval &#34; pulumi-lang-yaml=&#34; csnpInterval &#34; pulumi-lang-java=&#34; csnpInterval &#34;&gt; csnpInterval &lt;/span&gt;property for OpenFabric.
+     * The&lt;span pulumi-lang-nodejs=&#34; csnpInterval &#34; pulumi-lang-dotnet=&#34; CsnpInterval &#34; pulumi-lang-go=&#34; csnpInterval &#34; pulumi-lang-python=&#34; csnp_interval &#34; pulumi-lang-yaml=&#34; csnpInterval &#34; pulumi-lang-java=&#34; csnpInterval &#34; pulumi-lang-hcl=&#34; csnp_interval &#34;&gt; csnpInterval &lt;/span&gt;property for OpenFabric.
      * 
      */
     @Export(name="csnpInterval", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> csnpInterval;
 
     /**
-     * @return The&lt;span pulumi-lang-nodejs=&#34; csnpInterval &#34; pulumi-lang-dotnet=&#34; CsnpInterval &#34; pulumi-lang-go=&#34; csnpInterval &#34; pulumi-lang-python=&#34; csnp_interval &#34; pulumi-lang-yaml=&#34; csnpInterval &#34; pulumi-lang-java=&#34; csnpInterval &#34;&gt; csnpInterval &lt;/span&gt;property for OpenFabric.
+     * @return The&lt;span pulumi-lang-nodejs=&#34; csnpInterval &#34; pulumi-lang-dotnet=&#34; CsnpInterval &#34; pulumi-lang-go=&#34; csnpInterval &#34; pulumi-lang-python=&#34; csnp_interval &#34; pulumi-lang-yaml=&#34; csnpInterval &#34; pulumi-lang-java=&#34; csnpInterval &#34; pulumi-lang-hcl=&#34; csnp_interval &#34;&gt; csnpInterval &lt;/span&gt;property for OpenFabric.
      * 
      */
     public Output<Optional<Integer>> csnpInterval() {
         return Codegen.optional(this.csnpInterval);
     }
     /**
-     * The&lt;span pulumi-lang-nodejs=&#34; helloInterval &#34; pulumi-lang-dotnet=&#34; HelloInterval &#34; pulumi-lang-go=&#34; helloInterval &#34; pulumi-lang-python=&#34; hello_interval &#34; pulumi-lang-yaml=&#34; helloInterval &#34; pulumi-lang-java=&#34; helloInterval &#34;&gt; helloInterval &lt;/span&gt;property for OpenFabric.
+     * The&lt;span pulumi-lang-nodejs=&#34; helloInterval &#34; pulumi-lang-dotnet=&#34; HelloInterval &#34; pulumi-lang-go=&#34; helloInterval &#34; pulumi-lang-python=&#34; hello_interval &#34; pulumi-lang-yaml=&#34; helloInterval &#34; pulumi-lang-java=&#34; helloInterval &#34; pulumi-lang-hcl=&#34; hello_interval &#34;&gt; helloInterval &lt;/span&gt;property for OpenFabric.
      * 
      */
     @Export(name="helloInterval", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> helloInterval;
 
     /**
-     * @return The&lt;span pulumi-lang-nodejs=&#34; helloInterval &#34; pulumi-lang-dotnet=&#34; HelloInterval &#34; pulumi-lang-go=&#34; helloInterval &#34; pulumi-lang-python=&#34; hello_interval &#34; pulumi-lang-yaml=&#34; helloInterval &#34; pulumi-lang-java=&#34; helloInterval &#34;&gt; helloInterval &lt;/span&gt;property for OpenFabric.
+     * @return The&lt;span pulumi-lang-nodejs=&#34; helloInterval &#34; pulumi-lang-dotnet=&#34; HelloInterval &#34; pulumi-lang-go=&#34; helloInterval &#34; pulumi-lang-python=&#34; hello_interval &#34; pulumi-lang-yaml=&#34; helloInterval &#34; pulumi-lang-java=&#34; helloInterval &#34; pulumi-lang-hcl=&#34; hello_interval &#34;&gt; helloInterval &lt;/span&gt;property for OpenFabric.
      * 
      */
     public Output<Optional<Integer>> helloInterval() {

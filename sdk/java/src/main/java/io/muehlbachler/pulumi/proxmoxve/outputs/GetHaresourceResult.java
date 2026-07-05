@@ -5,6 +5,7 @@ package io.muehlbachler.pulumi.proxmoxve.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -16,6 +17,11 @@ public final class GetHaresourceResult {
      * 
      */
     private String comment;
+    /**
+     * @return Automatic failback to the preferred node when it becomes available again (PVE 9+).
+     * 
+     */
+    private Boolean failback;
     /**
      * @return The identifier of the High Availability group this resource is a member of.
      * 
@@ -47,7 +53,7 @@ public final class GetHaresourceResult {
      */
     private String state;
     /**
-     * @return The type of High Availability resource (&lt;span pulumi-lang-nodejs=&#34;`vm`&#34; pulumi-lang-dotnet=&#34;`Vm`&#34; pulumi-lang-go=&#34;`vm`&#34; pulumi-lang-python=&#34;`vm`&#34; pulumi-lang-yaml=&#34;`vm`&#34; pulumi-lang-java=&#34;`vm`&#34;&gt;`vm`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`ct`&#34; pulumi-lang-dotnet=&#34;`Ct`&#34; pulumi-lang-go=&#34;`ct`&#34; pulumi-lang-python=&#34;`ct`&#34; pulumi-lang-yaml=&#34;`ct`&#34; pulumi-lang-java=&#34;`ct`&#34;&gt;`ct`&lt;/span&gt;).
+     * @return The type of High Availability resource (&lt;span pulumi-lang-nodejs=&#34;`vm`&#34; pulumi-lang-dotnet=&#34;`Vm`&#34; pulumi-lang-go=&#34;`vm`&#34; pulumi-lang-python=&#34;`vm`&#34; pulumi-lang-yaml=&#34;`vm`&#34; pulumi-lang-java=&#34;`vm`&#34; pulumi-lang-hcl=&#34;`vm`&#34;&gt;`vm`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`ct`&#34; pulumi-lang-dotnet=&#34;`Ct`&#34; pulumi-lang-go=&#34;`ct`&#34; pulumi-lang-python=&#34;`ct`&#34; pulumi-lang-yaml=&#34;`ct`&#34; pulumi-lang-java=&#34;`ct`&#34; pulumi-lang-hcl=&#34;`ct`&#34;&gt;`ct`&lt;/span&gt;).
      * 
      */
     private String type;
@@ -59,6 +65,13 @@ public final class GetHaresourceResult {
      */
     public String comment() {
         return this.comment;
+    }
+    /**
+     * @return Automatic failback to the preferred node when it becomes available again (PVE 9+).
+     * 
+     */
+    public Boolean failback() {
+        return this.failback;
     }
     /**
      * @return The identifier of the High Availability group this resource is a member of.
@@ -103,7 +116,7 @@ public final class GetHaresourceResult {
         return this.state;
     }
     /**
-     * @return The type of High Availability resource (&lt;span pulumi-lang-nodejs=&#34;`vm`&#34; pulumi-lang-dotnet=&#34;`Vm`&#34; pulumi-lang-go=&#34;`vm`&#34; pulumi-lang-python=&#34;`vm`&#34; pulumi-lang-yaml=&#34;`vm`&#34; pulumi-lang-java=&#34;`vm`&#34;&gt;`vm`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`ct`&#34; pulumi-lang-dotnet=&#34;`Ct`&#34; pulumi-lang-go=&#34;`ct`&#34; pulumi-lang-python=&#34;`ct`&#34; pulumi-lang-yaml=&#34;`ct`&#34; pulumi-lang-java=&#34;`ct`&#34;&gt;`ct`&lt;/span&gt;).
+     * @return The type of High Availability resource (&lt;span pulumi-lang-nodejs=&#34;`vm`&#34; pulumi-lang-dotnet=&#34;`Vm`&#34; pulumi-lang-go=&#34;`vm`&#34; pulumi-lang-python=&#34;`vm`&#34; pulumi-lang-yaml=&#34;`vm`&#34; pulumi-lang-java=&#34;`vm`&#34; pulumi-lang-hcl=&#34;`vm`&#34;&gt;`vm`&lt;/span&gt; or &lt;span pulumi-lang-nodejs=&#34;`ct`&#34; pulumi-lang-dotnet=&#34;`Ct`&#34; pulumi-lang-go=&#34;`ct`&#34; pulumi-lang-python=&#34;`ct`&#34; pulumi-lang-yaml=&#34;`ct`&#34; pulumi-lang-java=&#34;`ct`&#34; pulumi-lang-hcl=&#34;`ct`&#34;&gt;`ct`&lt;/span&gt;).
      * 
      */
     public String type() {
@@ -120,6 +133,7 @@ public final class GetHaresourceResult {
     @CustomType.Builder
     public static final class Builder {
         private String comment;
+        private Boolean failback;
         private String group;
         private String id;
         private Integer maxRelocate;
@@ -131,6 +145,7 @@ public final class GetHaresourceResult {
         public Builder(GetHaresourceResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.comment = defaults.comment;
+    	      this.failback = defaults.failback;
     	      this.group = defaults.group;
     	      this.id = defaults.id;
     	      this.maxRelocate = defaults.maxRelocate;
@@ -146,6 +161,14 @@ public final class GetHaresourceResult {
               throw new MissingRequiredPropertyException("GetHaresourceResult", "comment");
             }
             this.comment = comment;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder failback(Boolean failback) {
+            if (failback == null) {
+              throw new MissingRequiredPropertyException("GetHaresourceResult", "failback");
+            }
+            this.failback = failback;
             return this;
         }
         @CustomType.Setter
@@ -207,6 +230,7 @@ public final class GetHaresourceResult {
         public GetHaresourceResult build() {
             final var _resultValue = new GetHaresourceResult();
             _resultValue.comment = comment;
+            _resultValue.failback = failback;
             _resultValue.group = group;
             _resultValue.id = id;
             _resultValue.maxRelocate = maxRelocate;

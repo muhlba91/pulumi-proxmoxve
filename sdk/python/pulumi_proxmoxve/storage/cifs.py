@@ -28,9 +28,12 @@ class CifsArgs:
                  username: pulumi.Input[_builtins.str],
                  backups: pulumi.Input[Optional['CifsBackupsArgs']] = None,
                  contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 create_base_path: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_subdirs: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable: pulumi.Input[Optional[_builtins.bool]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
                  preallocation: pulumi.Input[Optional[_builtins.str]] = None,
                  snapshot_as_volume_chain: pulumi.Input[Optional[_builtins.bool]] = None,
                  subdirectory: pulumi.Input[Optional[_builtins.str]] = None):
@@ -44,9 +47,12 @@ class CifsArgs:
         :param pulumi.Input[_builtins.str] username: The username for authenticating with the SMB/CIFS server.
         :param pulumi.Input['CifsBackupsArgs'] backups: Configure backup retention settings for the storage type.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contents: The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
+        :param pulumi.Input[_builtins.bool] create_base_path: Create the base directory if it doesn't exist.
+        :param pulumi.Input[_builtins.bool] create_subdirs: Populate the directory with the default structure.
         :param pulumi.Input[_builtins.bool] disable: Whether the storage is disabled.
         :param pulumi.Input[_builtins.str] domain: The SMB/CIFS domain.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: A list of nodes where this storage is available.
+        :param pulumi.Input[_builtins.str] options: The mount options for the SMB/CIFS share (see 'man mount.cifs').
         :param pulumi.Input[_builtins.str] preallocation: The preallocation mode for raw and qcow2 images.
         :param pulumi.Input[_builtins.bool] snapshot_as_volume_chain: Enable support for creating snapshots through volume backing-chains.
         :param pulumi.Input[_builtins.str] subdirectory: A subdirectory to mount within the share.
@@ -60,12 +66,18 @@ class CifsArgs:
             pulumi.set(__self__, "backups", backups)
         if contents is not None:
             pulumi.set(__self__, "contents", contents)
+        if create_base_path is not None:
+            pulumi.set(__self__, "create_base_path", create_base_path)
+        if create_subdirs is not None:
+            pulumi.set(__self__, "create_subdirs", create_subdirs)
         if disable is not None:
             pulumi.set(__self__, "disable", disable)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if nodes is not None:
             pulumi.set(__self__, "nodes", nodes)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
         if preallocation is not None:
             pulumi.set(__self__, "preallocation", preallocation)
         if snapshot_as_volume_chain is not None:
@@ -158,6 +170,30 @@ class CifsArgs:
         pulumi.set(self, "contents", value)
 
     @_builtins.property
+    @pulumi.getter(name="createBasePath")
+    def create_base_path(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Create the base directory if it doesn't exist.
+        """
+        return pulumi.get(self, "create_base_path")
+
+    @create_base_path.setter
+    def create_base_path(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "create_base_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createSubdirs")
+    def create_subdirs(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Populate the directory with the default structure.
+        """
+        return pulumi.get(self, "create_subdirs")
+
+    @create_subdirs.setter
+    def create_subdirs(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "create_subdirs", value)
+
+    @_builtins.property
     @pulumi.getter
     def disable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -192,6 +228,18 @@ class CifsArgs:
     @nodes.setter
     def nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "nodes", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def options(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The mount options for the SMB/CIFS share (see 'man mount.cifs').
+        """
+        return pulumi.get(self, "options")
+
+    @options.setter
+    def options(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter
@@ -235,9 +283,12 @@ class _CifsState:
     def __init__(__self__, *,
                  backups: pulumi.Input[Optional['CifsBackupsArgs']] = None,
                  contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 create_base_path: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_subdirs: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable: pulumi.Input[Optional[_builtins.bool]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  preallocation: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -252,9 +303,12 @@ class _CifsState:
 
         :param pulumi.Input['CifsBackupsArgs'] backups: Configure backup retention settings for the storage type.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contents: The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
+        :param pulumi.Input[_builtins.bool] create_base_path: Create the base directory if it doesn't exist.
+        :param pulumi.Input[_builtins.bool] create_subdirs: Populate the directory with the default structure.
         :param pulumi.Input[_builtins.bool] disable: Whether the storage is disabled.
         :param pulumi.Input[_builtins.str] domain: The SMB/CIFS domain.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: A list of nodes where this storage is available.
+        :param pulumi.Input[_builtins.str] options: The mount options for the SMB/CIFS share (see 'man mount.cifs').
         :param pulumi.Input[_builtins.str] password: The password for authenticating with the SMB/CIFS server.
         :param pulumi.Input[_builtins.str] preallocation: The preallocation mode for raw and qcow2 images.
         :param pulumi.Input[_builtins.str] resource_id: The unique identifier of the storage.
@@ -269,12 +323,18 @@ class _CifsState:
             pulumi.set(__self__, "backups", backups)
         if contents is not None:
             pulumi.set(__self__, "contents", contents)
+        if create_base_path is not None:
+            pulumi.set(__self__, "create_base_path", create_base_path)
+        if create_subdirs is not None:
+            pulumi.set(__self__, "create_subdirs", create_subdirs)
         if disable is not None:
             pulumi.set(__self__, "disable", disable)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if nodes is not None:
             pulumi.set(__self__, "nodes", nodes)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
         if password is not None:
             pulumi.set(__self__, "password", password)
         if preallocation is not None:
@@ -319,6 +379,30 @@ class _CifsState:
         pulumi.set(self, "contents", value)
 
     @_builtins.property
+    @pulumi.getter(name="createBasePath")
+    def create_base_path(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Create the base directory if it doesn't exist.
+        """
+        return pulumi.get(self, "create_base_path")
+
+    @create_base_path.setter
+    def create_base_path(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "create_base_path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createSubdirs")
+    def create_subdirs(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Populate the directory with the default structure.
+        """
+        return pulumi.get(self, "create_subdirs")
+
+    @create_subdirs.setter
+    def create_subdirs(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "create_subdirs", value)
+
+    @_builtins.property
     @pulumi.getter
     def disable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -353,6 +437,18 @@ class _CifsState:
     @nodes.setter
     def nodes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "nodes", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def options(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The mount options for the SMB/CIFS share (see 'man mount.cifs').
+        """
+        return pulumi.get(self, "options")
+
+    @options.setter
+    def options(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter
@@ -471,9 +567,12 @@ class Cifs(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backups: pulumi.Input[Optional[Union['CifsBackupsArgs', 'CifsBackupsArgsDict']]] = None,
                  contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 create_base_path: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_subdirs: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable: pulumi.Input[Optional[_builtins.bool]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  preallocation: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -524,9 +623,12 @@ class Cifs(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['CifsBackupsArgs', 'CifsBackupsArgsDict']] backups: Configure backup retention settings for the storage type.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contents: The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
+        :param pulumi.Input[_builtins.bool] create_base_path: Create the base directory if it doesn't exist.
+        :param pulumi.Input[_builtins.bool] create_subdirs: Populate the directory with the default structure.
         :param pulumi.Input[_builtins.bool] disable: Whether the storage is disabled.
         :param pulumi.Input[_builtins.str] domain: The SMB/CIFS domain.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: A list of nodes where this storage is available.
+        :param pulumi.Input[_builtins.str] options: The mount options for the SMB/CIFS share (see 'man mount.cifs').
         :param pulumi.Input[_builtins.str] password: The password for authenticating with the SMB/CIFS server.
         :param pulumi.Input[_builtins.str] preallocation: The preallocation mode for raw and qcow2 images.
         :param pulumi.Input[_builtins.str] resource_id: The unique identifier of the storage.
@@ -596,9 +698,12 @@ class Cifs(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backups: pulumi.Input[Optional[Union['CifsBackupsArgs', 'CifsBackupsArgsDict']]] = None,
                  contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 create_base_path: pulumi.Input[Optional[_builtins.bool]] = None,
+                 create_subdirs: pulumi.Input[Optional[_builtins.bool]] = None,
                  disable: pulumi.Input[Optional[_builtins.bool]] = None,
                  domain: pulumi.Input[Optional[_builtins.str]] = None,
                  nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 options: pulumi.Input[Optional[_builtins.str]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  preallocation: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -618,9 +723,12 @@ class Cifs(pulumi.CustomResource):
 
             __props__.__dict__["backups"] = backups
             __props__.__dict__["contents"] = contents
+            __props__.__dict__["create_base_path"] = create_base_path
+            __props__.__dict__["create_subdirs"] = create_subdirs
             __props__.__dict__["disable"] = disable
             __props__.__dict__["domain"] = domain
             __props__.__dict__["nodes"] = nodes
+            __props__.__dict__["options"] = options
             if password is None and not opts.urn:
                 raise TypeError("Missing required property 'password'")
             __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
@@ -656,9 +764,12 @@ class Cifs(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             backups: pulumi.Input[Optional[Union['CifsBackupsArgs', 'CifsBackupsArgsDict']]] = None,
             contents: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            create_base_path: pulumi.Input[Optional[_builtins.bool]] = None,
+            create_subdirs: pulumi.Input[Optional[_builtins.bool]] = None,
             disable: pulumi.Input[Optional[_builtins.bool]] = None,
             domain: pulumi.Input[Optional[_builtins.str]] = None,
             nodes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            options: pulumi.Input[Optional[_builtins.str]] = None,
             password: pulumi.Input[Optional[_builtins.str]] = None,
             preallocation: pulumi.Input[Optional[_builtins.str]] = None,
             resource_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -677,9 +788,12 @@ class Cifs(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['CifsBackupsArgs', 'CifsBackupsArgsDict']] backups: Configure backup retention settings for the storage type.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] contents: The content types that can be stored on this storage. Valid values: `backup` (VM backups), `images` (VM disk images), `import` (VM disk images for import), `iso` (ISO images), `rootdir` (container root directories), `snippets` (cloud-init, hook scripts, etc.), `vztmpl` (container templates).
+        :param pulumi.Input[_builtins.bool] create_base_path: Create the base directory if it doesn't exist.
+        :param pulumi.Input[_builtins.bool] create_subdirs: Populate the directory with the default structure.
         :param pulumi.Input[_builtins.bool] disable: Whether the storage is disabled.
         :param pulumi.Input[_builtins.str] domain: The SMB/CIFS domain.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nodes: A list of nodes where this storage is available.
+        :param pulumi.Input[_builtins.str] options: The mount options for the SMB/CIFS share (see 'man mount.cifs').
         :param pulumi.Input[_builtins.str] password: The password for authenticating with the SMB/CIFS server.
         :param pulumi.Input[_builtins.str] preallocation: The preallocation mode for raw and qcow2 images.
         :param pulumi.Input[_builtins.str] resource_id: The unique identifier of the storage.
@@ -696,9 +810,12 @@ class Cifs(pulumi.CustomResource):
 
         __props__.__dict__["backups"] = backups
         __props__.__dict__["contents"] = contents
+        __props__.__dict__["create_base_path"] = create_base_path
+        __props__.__dict__["create_subdirs"] = create_subdirs
         __props__.__dict__["disable"] = disable
         __props__.__dict__["domain"] = domain
         __props__.__dict__["nodes"] = nodes
+        __props__.__dict__["options"] = options
         __props__.__dict__["password"] = password
         __props__.__dict__["preallocation"] = preallocation
         __props__.__dict__["resource_id"] = resource_id
@@ -727,6 +844,22 @@ class Cifs(pulumi.CustomResource):
         return pulumi.get(self, "contents")
 
     @_builtins.property
+    @pulumi.getter(name="createBasePath")
+    def create_base_path(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Create the base directory if it doesn't exist.
+        """
+        return pulumi.get(self, "create_base_path")
+
+    @_builtins.property
+    @pulumi.getter(name="createSubdirs")
+    def create_subdirs(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Populate the directory with the default structure.
+        """
+        return pulumi.get(self, "create_subdirs")
+
+    @_builtins.property
     @pulumi.getter
     def disable(self) -> pulumi.Output[_builtins.bool]:
         """
@@ -749,6 +882,14 @@ class Cifs(pulumi.CustomResource):
         A list of nodes where this storage is available.
         """
         return pulumi.get(self, "nodes")
+
+    @_builtins.property
+    @pulumi.getter
+    def options(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The mount options for the SMB/CIFS share (see 'man mount.cifs').
+        """
+        return pulumi.get(self, "options")
 
     @_builtins.property
     @pulumi.getter

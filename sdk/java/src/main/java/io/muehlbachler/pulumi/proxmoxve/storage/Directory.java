@@ -93,18 +93,46 @@ public class Directory extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.backups);
     }
     /**
-     * The content types that can be stored on this storage. Valid values: &lt;span pulumi-lang-nodejs=&#34;`backup`&#34; pulumi-lang-dotnet=&#34;`Backup`&#34; pulumi-lang-go=&#34;`backup`&#34; pulumi-lang-python=&#34;`backup`&#34; pulumi-lang-yaml=&#34;`backup`&#34; pulumi-lang-java=&#34;`backup`&#34;&gt;`backup`&lt;/span&gt; (VM backups), &lt;span pulumi-lang-nodejs=&#34;`images`&#34; pulumi-lang-dotnet=&#34;`Images`&#34; pulumi-lang-go=&#34;`images`&#34; pulumi-lang-python=&#34;`images`&#34; pulumi-lang-yaml=&#34;`images`&#34; pulumi-lang-java=&#34;`images`&#34;&gt;`images`&lt;/span&gt; (VM disk images), &lt;span pulumi-lang-nodejs=&#34;`import`&#34; pulumi-lang-dotnet=&#34;`Import`&#34; pulumi-lang-go=&#34;`import`&#34; pulumi-lang-python=&#34;`import`&#34; pulumi-lang-yaml=&#34;`import`&#34; pulumi-lang-java=&#34;`import`&#34;&gt;`import`&lt;/span&gt; (VM disk images for import), &lt;span pulumi-lang-nodejs=&#34;`iso`&#34; pulumi-lang-dotnet=&#34;`Iso`&#34; pulumi-lang-go=&#34;`iso`&#34; pulumi-lang-python=&#34;`iso`&#34; pulumi-lang-yaml=&#34;`iso`&#34; pulumi-lang-java=&#34;`iso`&#34;&gt;`iso`&lt;/span&gt; (ISO images), &lt;span pulumi-lang-nodejs=&#34;`rootdir`&#34; pulumi-lang-dotnet=&#34;`Rootdir`&#34; pulumi-lang-go=&#34;`rootdir`&#34; pulumi-lang-python=&#34;`rootdir`&#34; pulumi-lang-yaml=&#34;`rootdir`&#34; pulumi-lang-java=&#34;`rootdir`&#34;&gt;`rootdir`&lt;/span&gt; (container root directories), &lt;span pulumi-lang-nodejs=&#34;`snippets`&#34; pulumi-lang-dotnet=&#34;`Snippets`&#34; pulumi-lang-go=&#34;`snippets`&#34; pulumi-lang-python=&#34;`snippets`&#34; pulumi-lang-yaml=&#34;`snippets`&#34; pulumi-lang-java=&#34;`snippets`&#34;&gt;`snippets`&lt;/span&gt; (cloud-init, hook scripts, etc.), &lt;span pulumi-lang-nodejs=&#34;`vztmpl`&#34; pulumi-lang-dotnet=&#34;`Vztmpl`&#34; pulumi-lang-go=&#34;`vztmpl`&#34; pulumi-lang-python=&#34;`vztmpl`&#34; pulumi-lang-yaml=&#34;`vztmpl`&#34; pulumi-lang-java=&#34;`vztmpl`&#34;&gt;`vztmpl`&lt;/span&gt; (container templates).
+     * The content types that can be stored on this storage. Valid values: &lt;span pulumi-lang-nodejs=&#34;`backup`&#34; pulumi-lang-dotnet=&#34;`Backup`&#34; pulumi-lang-go=&#34;`backup`&#34; pulumi-lang-python=&#34;`backup`&#34; pulumi-lang-yaml=&#34;`backup`&#34; pulumi-lang-java=&#34;`backup`&#34; pulumi-lang-hcl=&#34;`backup`&#34;&gt;`backup`&lt;/span&gt; (VM backups), &lt;span pulumi-lang-nodejs=&#34;`images`&#34; pulumi-lang-dotnet=&#34;`Images`&#34; pulumi-lang-go=&#34;`images`&#34; pulumi-lang-python=&#34;`images`&#34; pulumi-lang-yaml=&#34;`images`&#34; pulumi-lang-java=&#34;`images`&#34; pulumi-lang-hcl=&#34;`images`&#34;&gt;`images`&lt;/span&gt; (VM disk images), &lt;span pulumi-lang-nodejs=&#34;`import`&#34; pulumi-lang-dotnet=&#34;`Import`&#34; pulumi-lang-go=&#34;`import`&#34; pulumi-lang-python=&#34;`import`&#34; pulumi-lang-yaml=&#34;`import`&#34; pulumi-lang-java=&#34;`import`&#34; pulumi-lang-hcl=&#34;`import`&#34;&gt;`import`&lt;/span&gt; (VM disk images for import), &lt;span pulumi-lang-nodejs=&#34;`iso`&#34; pulumi-lang-dotnet=&#34;`Iso`&#34; pulumi-lang-go=&#34;`iso`&#34; pulumi-lang-python=&#34;`iso`&#34; pulumi-lang-yaml=&#34;`iso`&#34; pulumi-lang-java=&#34;`iso`&#34; pulumi-lang-hcl=&#34;`iso`&#34;&gt;`iso`&lt;/span&gt; (ISO images), &lt;span pulumi-lang-nodejs=&#34;`rootdir`&#34; pulumi-lang-dotnet=&#34;`Rootdir`&#34; pulumi-lang-go=&#34;`rootdir`&#34; pulumi-lang-python=&#34;`rootdir`&#34; pulumi-lang-yaml=&#34;`rootdir`&#34; pulumi-lang-java=&#34;`rootdir`&#34; pulumi-lang-hcl=&#34;`rootdir`&#34;&gt;`rootdir`&lt;/span&gt; (container root directories), &lt;span pulumi-lang-nodejs=&#34;`snippets`&#34; pulumi-lang-dotnet=&#34;`Snippets`&#34; pulumi-lang-go=&#34;`snippets`&#34; pulumi-lang-python=&#34;`snippets`&#34; pulumi-lang-yaml=&#34;`snippets`&#34; pulumi-lang-java=&#34;`snippets`&#34; pulumi-lang-hcl=&#34;`snippets`&#34;&gt;`snippets`&lt;/span&gt; (cloud-init, hook scripts, etc.), &lt;span pulumi-lang-nodejs=&#34;`vztmpl`&#34; pulumi-lang-dotnet=&#34;`Vztmpl`&#34; pulumi-lang-go=&#34;`vztmpl`&#34; pulumi-lang-python=&#34;`vztmpl`&#34; pulumi-lang-yaml=&#34;`vztmpl`&#34; pulumi-lang-java=&#34;`vztmpl`&#34; pulumi-lang-hcl=&#34;`vztmpl`&#34;&gt;`vztmpl`&lt;/span&gt; (container templates).
      * 
      */
     @Export(name="contents", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> contents;
 
     /**
-     * @return The content types that can be stored on this storage. Valid values: &lt;span pulumi-lang-nodejs=&#34;`backup`&#34; pulumi-lang-dotnet=&#34;`Backup`&#34; pulumi-lang-go=&#34;`backup`&#34; pulumi-lang-python=&#34;`backup`&#34; pulumi-lang-yaml=&#34;`backup`&#34; pulumi-lang-java=&#34;`backup`&#34;&gt;`backup`&lt;/span&gt; (VM backups), &lt;span pulumi-lang-nodejs=&#34;`images`&#34; pulumi-lang-dotnet=&#34;`Images`&#34; pulumi-lang-go=&#34;`images`&#34; pulumi-lang-python=&#34;`images`&#34; pulumi-lang-yaml=&#34;`images`&#34; pulumi-lang-java=&#34;`images`&#34;&gt;`images`&lt;/span&gt; (VM disk images), &lt;span pulumi-lang-nodejs=&#34;`import`&#34; pulumi-lang-dotnet=&#34;`Import`&#34; pulumi-lang-go=&#34;`import`&#34; pulumi-lang-python=&#34;`import`&#34; pulumi-lang-yaml=&#34;`import`&#34; pulumi-lang-java=&#34;`import`&#34;&gt;`import`&lt;/span&gt; (VM disk images for import), &lt;span pulumi-lang-nodejs=&#34;`iso`&#34; pulumi-lang-dotnet=&#34;`Iso`&#34; pulumi-lang-go=&#34;`iso`&#34; pulumi-lang-python=&#34;`iso`&#34; pulumi-lang-yaml=&#34;`iso`&#34; pulumi-lang-java=&#34;`iso`&#34;&gt;`iso`&lt;/span&gt; (ISO images), &lt;span pulumi-lang-nodejs=&#34;`rootdir`&#34; pulumi-lang-dotnet=&#34;`Rootdir`&#34; pulumi-lang-go=&#34;`rootdir`&#34; pulumi-lang-python=&#34;`rootdir`&#34; pulumi-lang-yaml=&#34;`rootdir`&#34; pulumi-lang-java=&#34;`rootdir`&#34;&gt;`rootdir`&lt;/span&gt; (container root directories), &lt;span pulumi-lang-nodejs=&#34;`snippets`&#34; pulumi-lang-dotnet=&#34;`Snippets`&#34; pulumi-lang-go=&#34;`snippets`&#34; pulumi-lang-python=&#34;`snippets`&#34; pulumi-lang-yaml=&#34;`snippets`&#34; pulumi-lang-java=&#34;`snippets`&#34;&gt;`snippets`&lt;/span&gt; (cloud-init, hook scripts, etc.), &lt;span pulumi-lang-nodejs=&#34;`vztmpl`&#34; pulumi-lang-dotnet=&#34;`Vztmpl`&#34; pulumi-lang-go=&#34;`vztmpl`&#34; pulumi-lang-python=&#34;`vztmpl`&#34; pulumi-lang-yaml=&#34;`vztmpl`&#34; pulumi-lang-java=&#34;`vztmpl`&#34;&gt;`vztmpl`&lt;/span&gt; (container templates).
+     * @return The content types that can be stored on this storage. Valid values: &lt;span pulumi-lang-nodejs=&#34;`backup`&#34; pulumi-lang-dotnet=&#34;`Backup`&#34; pulumi-lang-go=&#34;`backup`&#34; pulumi-lang-python=&#34;`backup`&#34; pulumi-lang-yaml=&#34;`backup`&#34; pulumi-lang-java=&#34;`backup`&#34; pulumi-lang-hcl=&#34;`backup`&#34;&gt;`backup`&lt;/span&gt; (VM backups), &lt;span pulumi-lang-nodejs=&#34;`images`&#34; pulumi-lang-dotnet=&#34;`Images`&#34; pulumi-lang-go=&#34;`images`&#34; pulumi-lang-python=&#34;`images`&#34; pulumi-lang-yaml=&#34;`images`&#34; pulumi-lang-java=&#34;`images`&#34; pulumi-lang-hcl=&#34;`images`&#34;&gt;`images`&lt;/span&gt; (VM disk images), &lt;span pulumi-lang-nodejs=&#34;`import`&#34; pulumi-lang-dotnet=&#34;`Import`&#34; pulumi-lang-go=&#34;`import`&#34; pulumi-lang-python=&#34;`import`&#34; pulumi-lang-yaml=&#34;`import`&#34; pulumi-lang-java=&#34;`import`&#34; pulumi-lang-hcl=&#34;`import`&#34;&gt;`import`&lt;/span&gt; (VM disk images for import), &lt;span pulumi-lang-nodejs=&#34;`iso`&#34; pulumi-lang-dotnet=&#34;`Iso`&#34; pulumi-lang-go=&#34;`iso`&#34; pulumi-lang-python=&#34;`iso`&#34; pulumi-lang-yaml=&#34;`iso`&#34; pulumi-lang-java=&#34;`iso`&#34; pulumi-lang-hcl=&#34;`iso`&#34;&gt;`iso`&lt;/span&gt; (ISO images), &lt;span pulumi-lang-nodejs=&#34;`rootdir`&#34; pulumi-lang-dotnet=&#34;`Rootdir`&#34; pulumi-lang-go=&#34;`rootdir`&#34; pulumi-lang-python=&#34;`rootdir`&#34; pulumi-lang-yaml=&#34;`rootdir`&#34; pulumi-lang-java=&#34;`rootdir`&#34; pulumi-lang-hcl=&#34;`rootdir`&#34;&gt;`rootdir`&lt;/span&gt; (container root directories), &lt;span pulumi-lang-nodejs=&#34;`snippets`&#34; pulumi-lang-dotnet=&#34;`Snippets`&#34; pulumi-lang-go=&#34;`snippets`&#34; pulumi-lang-python=&#34;`snippets`&#34; pulumi-lang-yaml=&#34;`snippets`&#34; pulumi-lang-java=&#34;`snippets`&#34; pulumi-lang-hcl=&#34;`snippets`&#34;&gt;`snippets`&lt;/span&gt; (cloud-init, hook scripts, etc.), &lt;span pulumi-lang-nodejs=&#34;`vztmpl`&#34; pulumi-lang-dotnet=&#34;`Vztmpl`&#34; pulumi-lang-go=&#34;`vztmpl`&#34; pulumi-lang-python=&#34;`vztmpl`&#34; pulumi-lang-yaml=&#34;`vztmpl`&#34; pulumi-lang-java=&#34;`vztmpl`&#34; pulumi-lang-hcl=&#34;`vztmpl`&#34;&gt;`vztmpl`&lt;/span&gt; (container templates).
      * 
      */
     public Output<List<String>> contents() {
         return this.contents;
+    }
+    /**
+     * Create the base directory if it doesn&#39;t exist.
+     * 
+     */
+    @Export(name="createBasePath", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> createBasePath;
+
+    /**
+     * @return Create the base directory if it doesn&#39;t exist.
+     * 
+     */
+    public Output<Boolean> createBasePath() {
+        return this.createBasePath;
+    }
+    /**
+     * Populate the directory with the default structure.
+     * 
+     */
+    @Export(name="createSubdirs", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> createSubdirs;
+
+    /**
+     * @return Populate the directory with the default structure.
+     * 
+     */
+    public Output<Boolean> createSubdirs() {
+        return this.createSubdirs;
     }
     /**
      * Whether the storage is disabled.
