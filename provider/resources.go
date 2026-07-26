@@ -18,7 +18,6 @@ import (
 	"context"
 	"fmt"
 	"path"
-	"strconv"
 
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
@@ -41,6 +40,8 @@ import (
 const (
 	mainPkg = "proxmoxve"
 	mainMod = "index"
+
+	renamedIDKey resource.PropertyKey = "resourceId"
 )
 
 var resourceIDOverrides = map[string][]string{
@@ -154,24 +155,21 @@ func moduleComputeStrategy() tfbridge.Strategy {
 }
 
 func resourceComputeIDOverride() func(context.Context, resource.PropertyMap) (resource.ID, error) {
-    return func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
-        const resourceIDPropertyKey = resource.PropertyKey("id")
-        switch id := state[resourceIDPropertyKey].V.(type) {
-        case int:
-            return resource.ID(strconv.Itoa(id)), nil
-        case float64:
-            return resource.ID(strconv.Itoa(int(id))), nil
-        case string:
-            return resource.ID(id), nil
-        default:
-            return "", fmt.Errorf("unexpected id type %T", state[resourceIDPropertyKey].V)
-        }
-    }
+	return func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
+		v, ok := state[renamedIDKey]
+		if !ok {
+			return "", fmt.Errorf("resourceComputeIDOverride: %q missing from state", renamedIDKey)
+		}
+		if v.IsString() {
+			return resource.ID(v.StringValue()), nil
+		}
+		return resource.ID(fmt.Sprintf("%v", v.V)), nil
+	}
 }
 
 func resourceFieldIDOverride(fields map[string]*tfbridge.SchemaInfo) map[string]*tfbridge.SchemaInfo {
 	fields["id"] = &tfbridge.SchemaInfo{
-		Name: "resourceId",
+		Name: string(renamedIDKey),
 		Type: "string",
 	}
 	return fields
