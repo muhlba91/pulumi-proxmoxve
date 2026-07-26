@@ -154,10 +154,19 @@ func moduleComputeStrategy() tfbridge.Strategy {
 }
 
 func resourceComputeIDOverride() func(context.Context, resource.PropertyMap) (resource.ID, error) {
-	return func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
-		const resourceIDPropertyKey = resource.PropertyKey("id")
-		return resource.ID(strconv.Itoa(state[resourceIDPropertyKey].V.(int))), nil
-	}
+    return func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
+        const resourceIDPropertyKey = resource.PropertyKey("id")
+        switch id := state[resourceIDPropertyKey].V.(type) {
+        case int:
+            return resource.ID(strconv.Itoa(id)), nil
+        case float64:
+            return resource.ID(strconv.Itoa(int(id))), nil
+        case string:
+            return resource.ID(id), nil
+        default:
+            return "", fmt.Errorf("unexpected id type %T", state[resourceIDPropertyKey].V)
+        }
+    }
 }
 
 func resourceFieldIDOverride(fields map[string]*tfbridge.SchemaInfo) map[string]*tfbridge.SchemaInfo {
