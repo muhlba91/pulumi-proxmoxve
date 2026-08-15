@@ -1,6 +1,13 @@
 # Changelog
 
 
+## [8.4.1](https://github.com/muhlba91/pulumi-proxmoxve/compare/v8.4.0...v8.4.1) (2026-08-15)
+
+
+### Bug Fixes
+
+* **ci:** use corepack and newer yarn for nodejs packaging ([bb0fe1a](https://github.com/muhlba91/pulumi-proxmoxve/commit/bb0fe1a578d35fcf40468f03be79516a5d9bd41b))
+
 ## [8.4.0](https://github.com/muhlba91/pulumi-proxmoxve/compare/v8.3.0...v8.4.0) (2026-08-15)
 
 
