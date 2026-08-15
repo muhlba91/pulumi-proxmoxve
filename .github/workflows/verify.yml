@@ -120,6 +120,8 @@ jobs:
         with:
           node-version: "${{ matrix.node-version }}"
         if: matrix.language == 'nodejs'
+      - run: corepack enable && corepack prepare yarn@stable --activate
+        if: matrix.language == 'nodejs'
       - name: Setup Java
         uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5.7.0
         with:

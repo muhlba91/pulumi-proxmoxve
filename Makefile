@@ -64,7 +64,7 @@ build_nodejs:: install_plugins tfgen # build the node sdk
 	rm -rf sdk/nodejs/
 	$(WORKING_DIR)/bin/$(TFGEN) nodejs --overlays provider/overlays/nodejs --out sdk/nodejs/
 	cd sdk/nodejs/ && \
-        yarn install && \
+        yarn install --no-immutable && \
         yarn run tsc && \
         cp ../../README.md ../../LICENSE package.json yarn.lock ./bin/ && \
     	sed -i.bak -e "s/\$${VERSION}/$(VERSION)/g" ./bin/package.json
