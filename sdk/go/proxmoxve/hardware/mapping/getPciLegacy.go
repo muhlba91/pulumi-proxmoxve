@@ -72,12 +72,8 @@ type LookupPciLegacyResult struct {
 }
 
 func LookupPciLegacyOutput(ctx *pulumi.Context, args LookupPciLegacyOutputArgs, opts ...pulumi.InvokeOption) LookupPciLegacyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPciLegacyResultOutput, error) {
-			args := v.(LookupPciLegacyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:hardware/mapping/getPciLegacy:getPciLegacy", args, LookupPciLegacyResultOutput{}, options).(LookupPciLegacyResultOutput), nil
-		}).(LookupPciLegacyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:hardware/mapping/getPciLegacy:getPciLegacy", args, LookupPciLegacyResultOutput{}, options).(LookupPciLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getPciLegacy.

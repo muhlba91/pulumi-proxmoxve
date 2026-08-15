@@ -2226,7 +2226,7 @@ class VmLegacy(pulumi.CustomResource):
                     },
                 }],
                 "user_account": {
-                    "keys": [std.trimspace_output(input=ubuntu_vm_key.public_key_openssh).apply(lambda invoke: invoke.result)],
+                    "keys": [std.trimspace_output(input=ubuntu_vm_key.public_key_openssh).result],
                     "password": ubuntu_vm_password.result,
                     "username": "ubuntu",
                 },
@@ -2549,7 +2549,7 @@ class VmLegacy(pulumi.CustomResource):
                     },
                 }],
                 "user_account": {
-                    "keys": [std.trimspace_output(input=ubuntu_vm_key.public_key_openssh).apply(lambda invoke: invoke.result)],
+                    "keys": [std.trimspace_output(input=ubuntu_vm_key.public_key_openssh).result],
                     "password": ubuntu_vm_password.result,
                     "username": "ubuntu",
                 },

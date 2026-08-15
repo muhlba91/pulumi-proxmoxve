@@ -63,7 +63,7 @@ import * as utilities from "./utilities";
  *             userAccount: {
  *                 keys: [std.trimspaceOutput({
  *                     input: ubuntuContainerKey.publicKeyOpenssh,
- *                 }).apply(invoke => invoke.result)],
+ *                 }).result],
  *                 password: ubuntuContainerPassword.result,
  *             },
  *         },

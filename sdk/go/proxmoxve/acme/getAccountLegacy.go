@@ -38,8 +38,6 @@ type LookupAccountLegacyResult struct {
 	Account GetAccountLegacyAccount `pulumi:"account"`
 	// The directory URL of the ACME account.
 	Directory string `pulumi:"directory"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// The location URL of the ACME account.
 	Location string `pulumi:"location"`
 	// The identifier of the ACME account to read.
@@ -49,12 +47,8 @@ type LookupAccountLegacyResult struct {
 }
 
 func LookupAccountLegacyOutput(ctx *pulumi.Context, args LookupAccountLegacyOutputArgs, opts ...pulumi.InvokeOption) LookupAccountLegacyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAccountLegacyResultOutput, error) {
-			args := v.(LookupAccountLegacyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:acme/getAccountLegacy:getAccountLegacy", args, LookupAccountLegacyResultOutput{}, options).(LookupAccountLegacyResultOutput), nil
-		}).(LookupAccountLegacyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:acme/getAccountLegacy:getAccountLegacy", args, LookupAccountLegacyResultOutput{}, options).(LookupAccountLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getAccountLegacy.
@@ -90,11 +84,6 @@ func (o LookupAccountLegacyResultOutput) Account() GetAccountLegacyAccountOutput
 // The directory URL of the ACME account.
 func (o LookupAccountLegacyResultOutput) Directory() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountLegacyResult) string { return v.Directory }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupAccountLegacyResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAccountLegacyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The location URL of the ACME account.

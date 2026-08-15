@@ -35,10 +35,6 @@ export function getReplicationsLegacy(opts?: pulumi.InvokeOptions): Promise<GetR
  */
 export interface GetReplicationsLegacyResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * List of Replications.
      */
     readonly replications: outputs.GetReplicationsLegacyReplication[];

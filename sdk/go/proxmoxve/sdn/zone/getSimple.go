@@ -88,12 +88,8 @@ type LookupSimpleResult struct {
 }
 
 func LookupSimpleOutput(ctx *pulumi.Context, args LookupSimpleOutputArgs, opts ...pulumi.InvokeOption) LookupSimpleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSimpleResultOutput, error) {
-			args := v.(LookupSimpleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:sdn/zone/getSimple:getSimple", args, LookupSimpleResultOutput{}, options).(LookupSimpleResultOutput), nil
-		}).(LookupSimpleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:sdn/zone/getSimple:getSimple", args, LookupSimpleResultOutput{}, options).(LookupSimpleResultOutput)
 }
 
 // A collection of arguments for invoking getSimple.

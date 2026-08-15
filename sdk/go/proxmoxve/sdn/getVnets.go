@@ -52,17 +52,13 @@ func GetVnets(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetVnetsResult
 
 // A collection of values returned by getVnets.
 type GetVnetsResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// List of SDN VNets.
 	Vnets []GetVnetsVnet `pulumi:"vnets"`
 }
 
 func GetVnetsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetVnetsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetVnetsResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("proxmoxve:sdn/getVnets:getVnets", nil, GetVnetsResultOutput{}, options).(GetVnetsResultOutput), nil
-	}).(GetVnetsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:sdn/getVnets:getVnets", nil, GetVnetsResultOutput{}, options).(GetVnetsResultOutput)
 }
 
 // A collection of values returned by getVnets.
@@ -78,11 +74,6 @@ func (o GetVnetsResultOutput) ToGetVnetsResultOutput() GetVnetsResultOutput {
 
 func (o GetVnetsResultOutput) ToGetVnetsResultOutputWithContext(ctx context.Context) GetVnetsResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetVnetsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVnetsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // List of SDN VNets.

@@ -93,12 +93,8 @@ type LookupServerLegacyResult struct {
 }
 
 func LookupServerLegacyOutput(ctx *pulumi.Context, args LookupServerLegacyOutputArgs, opts ...pulumi.InvokeOption) LookupServerLegacyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupServerLegacyResultOutput, error) {
-			args := v.(LookupServerLegacyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:metrics/getServerLegacy:getServerLegacy", args, LookupServerLegacyResultOutput{}, options).(LookupServerLegacyResultOutput), nil
-		}).(LookupServerLegacyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:metrics/getServerLegacy:getServerLegacy", args, LookupServerLegacyResultOutput{}, options).(LookupServerLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getServerLegacy.

@@ -32,10 +32,6 @@ export function getPluginsLegacy(opts?: pulumi.InvokeOptions): Promise<GetPlugin
  */
 export interface GetPluginsLegacyResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * List of ACME plugins
      */
     readonly plugins: outputs.acme.GetPluginsLegacyPlugin[];

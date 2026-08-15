@@ -92,21 +92,13 @@ namespace Pulumi.ProxmoxVE.Acme
     public sealed class GetPluginsResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// List of ACME plugins
         /// </summary>
         public readonly ImmutableArray<Outputs.GetPluginsPluginResult> Plugins;
 
         [OutputConstructor]
-        private GetPluginsResult(
-            string id,
-
-            ImmutableArray<Outputs.GetPluginsPluginResult> plugins)
+        private GetPluginsResult(ImmutableArray<Outputs.GetPluginsPluginResult> plugins)
         {
-            Id = id;
             Plugins = plugins;
         }
     }

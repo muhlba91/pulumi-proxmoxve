@@ -15,11 +15,6 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetZonesLegacyResult {
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return Filter zones by type (simple, vlan, qinq, vxlan, evpn).
      * 
      */
@@ -31,13 +26,6 @@ public final class GetZonesLegacyResult {
     private List<GetZonesLegacyZone> zones;
 
     private GetZonesLegacyResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     /**
      * @return Filter zones by type (simple, vlan, qinq, vxlan, evpn).
      * 
@@ -62,25 +50,15 @@ public final class GetZonesLegacyResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private @Nullable String type;
         private List<GetZonesLegacyZone> zones;
         public Builder() {}
         public Builder(GetZonesLegacyResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.type = defaults.type;
     	      this.zones = defaults.zones;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetZonesLegacyResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
 
@@ -100,7 +78,6 @@ public final class GetZonesLegacyResult {
         }
         public GetZonesLegacyResult build() {
             final var _resultValue = new GetZonesLegacyResult();
-            _resultValue.id = id;
             _resultValue.type = type;
             _resultValue.zones = zones;
             return _resultValue;

@@ -63,8 +63,6 @@ type GetPluginResult struct {
 	Data map[string]string `pulumi:"data"`
 	// Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
 	Digest string `pulumi:"digest"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// ACME Plugin ID name.
 	Plugin string `pulumi:"plugin"`
 	// ACME challenge type (dns, standalone).
@@ -74,12 +72,8 @@ type GetPluginResult struct {
 }
 
 func GetPluginOutput(ctx *pulumi.Context, args GetPluginOutputArgs, opts ...pulumi.InvokeOption) GetPluginResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPluginResultOutput, error) {
-			args := v.(GetPluginArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:acme/getPlugin:getPlugin", args, GetPluginResultOutput{}, options).(GetPluginResultOutput), nil
-		}).(GetPluginResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:acme/getPlugin:getPlugin", args, GetPluginResultOutput{}, options).(GetPluginResultOutput)
 }
 
 // A collection of arguments for invoking getPlugin.
@@ -120,11 +114,6 @@ func (o GetPluginResultOutput) Data() pulumi.StringMapOutput {
 // Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
 func (o GetPluginResultOutput) Digest() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPluginResult) string { return v.Digest }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetPluginResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPluginResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // ACME Plugin ID name.

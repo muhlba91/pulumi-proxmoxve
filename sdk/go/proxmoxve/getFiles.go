@@ -46,19 +46,13 @@ type GetFilesResult struct {
 	FileNameRegex *string `pulumi:"fileNameRegex"`
 	// The list of files in the datastore.
 	Files []GetFilesFile `pulumi:"files"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// The name of the node.
 	NodeName string `pulumi:"nodeName"`
 }
 
 func GetFilesOutput(ctx *pulumi.Context, args GetFilesOutputArgs, opts ...pulumi.InvokeOption) GetFilesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetFilesResultOutput, error) {
-			args := v.(GetFilesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:index/getFiles:getFiles", args, GetFilesResultOutput{}, options).(GetFilesResultOutput), nil
-		}).(GetFilesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:index/getFiles:getFiles", args, GetFilesResultOutput{}, options).(GetFilesResultOutput)
 }
 
 // A collection of arguments for invoking getFiles.
@@ -110,11 +104,6 @@ func (o GetFilesResultOutput) FileNameRegex() pulumi.StringPtrOutput {
 // The list of files in the datastore.
 func (o GetFilesResultOutput) Files() GetFilesFileArrayOutput {
 	return o.ApplyT(func(v GetFilesResult) []GetFilesFile { return v.Files }).(GetFilesFileArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetFilesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFilesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The name of the node.

@@ -85,8 +85,6 @@ type GetPciResult struct {
 	Devices []GetPciDevice `pulumi:"devices"`
 	// Client-side filters for narrowing down results. All filters use prefix matching.
 	Filters *GetPciFilters `pulumi:"filters"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// The name of the node to list PCI devices from.
 	NodeName string `pulumi:"nodeName"`
 	// A list of PCI class IDs (hex prefixes) to exclude from the results. If not set, the Proxmox default blacklist is used which filters out memory controllers (05), bridges (06), and processors (0b). Set to an empty list to return all devices.
@@ -94,12 +92,8 @@ type GetPciResult struct {
 }
 
 func GetPciOutput(ctx *pulumi.Context, args GetPciOutputArgs, opts ...pulumi.InvokeOption) GetPciResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPciResultOutput, error) {
-			args := v.(GetPciArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:hardware/getPci:getPci", args, GetPciResultOutput{}, options).(GetPciResultOutput), nil
-		}).(GetPciResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:hardware/getPci:getPci", args, GetPciResultOutput{}, options).(GetPciResultOutput)
 }
 
 // A collection of arguments for invoking getPci.
@@ -139,11 +133,6 @@ func (o GetPciResultOutput) Devices() GetPciDeviceArrayOutput {
 // Client-side filters for narrowing down results. All filters use prefix matching.
 func (o GetPciResultOutput) Filters() GetPciFiltersPtrOutput {
 	return o.ApplyT(func(v GetPciResult) *GetPciFilters { return v.Filters }).(GetPciFiltersPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetPciResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPciResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The name of the node to list PCI devices from.

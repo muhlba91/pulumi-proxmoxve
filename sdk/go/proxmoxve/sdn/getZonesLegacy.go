@@ -78,8 +78,6 @@ type GetZonesLegacyArgs struct {
 
 // A collection of values returned by getZonesLegacy.
 type GetZonesLegacyResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Filter zones by type (simple, vlan, qinq, vxlan, evpn).
 	Type *string `pulumi:"type"`
 	// List of SDN zones.
@@ -87,12 +85,8 @@ type GetZonesLegacyResult struct {
 }
 
 func GetZonesLegacyOutput(ctx *pulumi.Context, args GetZonesLegacyOutputArgs, opts ...pulumi.InvokeOption) GetZonesLegacyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetZonesLegacyResultOutput, error) {
-			args := v.(GetZonesLegacyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:sdn/getZonesLegacy:getZonesLegacy", args, GetZonesLegacyResultOutput{}, options).(GetZonesLegacyResultOutput), nil
-		}).(GetZonesLegacyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:sdn/getZonesLegacy:getZonesLegacy", args, GetZonesLegacyResultOutput{}, options).(GetZonesLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getZonesLegacy.
@@ -118,11 +112,6 @@ func (o GetZonesLegacyResultOutput) ToGetZonesLegacyResultOutput() GetZonesLegac
 
 func (o GetZonesLegacyResultOutput) ToGetZonesLegacyResultOutputWithContext(ctx context.Context) GetZonesLegacyResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetZonesLegacyResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZonesLegacyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Filter zones by type (simple, vlan, qinq, vxlan, evpn).

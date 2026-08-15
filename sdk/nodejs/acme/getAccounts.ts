@@ -31,10 +31,6 @@ export interface GetAccountsResult {
      * The identifiers of the ACME accounts.
      */
     readonly accounts: string[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }
 /**
  * Retrieves the list of ACME accounts.

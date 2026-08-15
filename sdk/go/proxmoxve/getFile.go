@@ -77,8 +77,8 @@ import (
 //				Cpu: &proxmoxve.VmCpuArgs{
 //					Cores: pulumi.Int(2),
 //				},
-//				Memory: []map[string]interface{}{
-//					map[string]interface{}{
+//				Memory: []map[string]int{
+//					{
 //						"dedicated": 2048,
 //					},
 //				},
@@ -89,8 +89,8 @@ import (
 //						"size":        20,
 //					},
 //				},
-//				NetworkDevice: []map[string]interface{}{
-//					map[string]interface{}{
+//				NetworkDevice: []map[string]string{
+//					{
 //						"bridge": "vmbr0",
 //					},
 //				},
@@ -146,12 +146,8 @@ type GetFileResult struct {
 }
 
 func GetFileOutput(ctx *pulumi.Context, args GetFileOutputArgs, opts ...pulumi.InvokeOption) GetFileResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetFileResultOutput, error) {
-			args := v.(GetFileArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:index/getFile:getFile", args, GetFileResultOutput{}, options).(GetFileResultOutput), nil
-		}).(GetFileResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:index/getFile:getFile", args, GetFileResultOutput{}, options).(GetFileResultOutput)
 }
 
 // A collection of arguments for invoking getFile.

@@ -33,10 +33,6 @@ export function getVnets(opts?: pulumi.InvokeOptions): Promise<GetVnetsResult> {
  */
 export interface GetVnetsResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * List of SDN VNets.
      */
     readonly vnets: outputs.sdn.GetVnetsVnet[];

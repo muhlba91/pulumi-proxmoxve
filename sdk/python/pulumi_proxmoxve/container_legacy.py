@@ -1212,7 +1212,7 @@ class ContainerLegacy(pulumi.CustomResource):
                     },
                 }],
                 "user_account": {
-                    "keys": [std.trimspace_output(input=ubuntu_container_key.public_key_openssh).apply(lambda invoke: invoke.result)],
+                    "keys": [std.trimspace_output(input=ubuntu_container_key.public_key_openssh).result],
                     "password": ubuntu_container_password.result,
                 },
             },
@@ -1411,7 +1411,7 @@ class ContainerLegacy(pulumi.CustomResource):
                     },
                 }],
                 "user_account": {
-                    "keys": [std.trimspace_output(input=ubuntu_container_key.public_key_openssh).apply(lambda invoke: invoke.result)],
+                    "keys": [std.trimspace_output(input=ubuntu_container_key.public_key_openssh).result],
                     "password": ubuntu_container_password.result,
                 },
             },

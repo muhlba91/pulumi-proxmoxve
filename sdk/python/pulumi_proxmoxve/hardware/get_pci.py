@@ -28,16 +28,13 @@ class GetPciResult:
     """
     A collection of values returned by getPci.
     """
-    def __init__(__self__, devices=None, filters=None, id=None, node_name=None, pci_class_blacklists=None):
+    def __init__(__self__, devices=None, filters=None, node_name=None, pci_class_blacklists=None):
         if devices and not isinstance(devices, list):
             raise TypeError("Expected argument 'devices' to be a list")
         pulumi.set(__self__, "devices", devices)
         if filters and not isinstance(filters, dict):
             raise TypeError("Expected argument 'filters' to be a dict")
         pulumi.set(__self__, "filters", filters)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if node_name and not isinstance(node_name, str):
             raise TypeError("Expected argument 'node_name' to be a str")
         pulumi.set(__self__, "node_name", node_name)
@@ -60,14 +57,6 @@ class GetPciResult:
         Client-side filters for narrowing down results. All filters use prefix matching.
         """
         return pulumi.get(self, "filters")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="nodeName")
@@ -94,7 +83,6 @@ class AwaitableGetPciResult(GetPciResult):
         return GetPciResult(
             devices=self.devices,
             filters=self.filters,
-            id=self.id,
             node_name=self.node_name,
             pci_class_blacklists=self.pci_class_blacklists)
 
@@ -141,7 +129,6 @@ def get_pci(filters: Optional[Union['GetPciFiltersArgs', 'GetPciFiltersArgsDict'
     return AwaitableGetPciResult(
         devices=pulumi.get(__ret__, 'devices'),
         filters=pulumi.get(__ret__, 'filters'),
-        id=pulumi.get(__ret__, 'id'),
         node_name=pulumi.get(__ret__, 'node_name'),
         pci_class_blacklists=pulumi.get(__ret__, 'pci_class_blacklists'))
 def get_pci_output(filters: pulumi.Input[Optional[Optional[Union['GetPciFiltersArgs', 'GetPciFiltersArgsDict']]]] = None,
@@ -185,6 +172,5 @@ def get_pci_output(filters: pulumi.Input[Optional[Optional[Union['GetPciFiltersA
     return __ret__.apply(lambda __response__: GetPciResult(
         devices=pulumi.get(__response__, 'devices'),
         filters=pulumi.get(__response__, 'filters'),
-        id=pulumi.get(__response__, 'id'),
         node_name=pulumi.get(__response__, 'node_name'),
         pci_class_blacklists=pulumi.get(__response__, 'pci_class_blacklists')))

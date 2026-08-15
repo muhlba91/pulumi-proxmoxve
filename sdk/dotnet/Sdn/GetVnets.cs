@@ -104,21 +104,13 @@ namespace Pulumi.ProxmoxVE.Sdn
     public sealed class GetVnetsResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// List of SDN VNets.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetVnetsVnetResult> Vnets;
 
         [OutputConstructor]
-        private GetVnetsResult(
-            string id,
-
-            ImmutableArray<Outputs.GetVnetsVnetResult> vnets)
+        private GetVnetsResult(ImmutableArray<Outputs.GetVnetsVnetResult> vnets)
         {
-            Id = id;
             Vnets = vnets;
         }
     }

@@ -24,11 +24,6 @@ public final class GetAccountLegacyResult {
      */
     private String directory;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return The location URL of the ACME account.
      * 
      */
@@ -58,13 +53,6 @@ public final class GetAccountLegacyResult {
      */
     public String directory() {
         return this.directory;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return The location URL of the ACME account.
@@ -99,7 +87,6 @@ public final class GetAccountLegacyResult {
     public static final class Builder {
         private GetAccountLegacyAccount account;
         private String directory;
-        private String id;
         private String location;
         private @Nullable String name;
         private String tos;
@@ -108,7 +95,6 @@ public final class GetAccountLegacyResult {
     	      Objects.requireNonNull(defaults);
     	      this.account = defaults.account;
     	      this.directory = defaults.directory;
-    	      this.id = defaults.id;
     	      this.location = defaults.location;
     	      this.name = defaults.name;
     	      this.tos = defaults.tos;
@@ -128,14 +114,6 @@ public final class GetAccountLegacyResult {
               throw new MissingRequiredPropertyException("GetAccountLegacyResult", "directory");
             }
             this.directory = directory;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetAccountLegacyResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -164,7 +142,6 @@ public final class GetAccountLegacyResult {
             final var _resultValue = new GetAccountLegacyResult();
             _resultValue.account = account;
             _resultValue.directory = directory;
-            _resultValue.id = id;
             _resultValue.location = location;
             _resultValue.name = name;
             _resultValue.tos = tos;

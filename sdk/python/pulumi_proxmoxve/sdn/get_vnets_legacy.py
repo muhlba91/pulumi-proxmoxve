@@ -27,21 +27,10 @@ class GetVnetsLegacyResult:
     """
     A collection of values returned by getVnetsLegacy.
     """
-    def __init__(__self__, id=None, vnets=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, vnets=None):
         if vnets and not isinstance(vnets, list):
             raise TypeError("Expected argument 'vnets' to be a list")
         pulumi.set(__self__, "vnets", vnets)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -58,7 +47,6 @@ class AwaitableGetVnetsLegacyResult(GetVnetsLegacyResult):
         if False:
             yield self
         return GetVnetsLegacyResult(
-            id=self.id,
             vnets=self.vnets)
 
 
@@ -86,7 +74,6 @@ def get_vnets_legacy(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
     __ret__ = pulumi.runtime.invoke('proxmoxve:sdn/getVnetsLegacy:getVnetsLegacy', __args__, opts=opts, typ=GetVnetsLegacyResult).value
 
     return AwaitableGetVnetsLegacyResult(
-        id=pulumi.get(__ret__, 'id'),
         vnets=pulumi.get(__ret__, 'vnets'))
 def get_vnets_legacy_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVnetsLegacyResult]:
     """
@@ -111,5 +98,4 @@ def get_vnets_legacy_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.In
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:sdn/getVnetsLegacy:getVnetsLegacy', __args__, opts=opts, typ=GetVnetsLegacyResult)
     return __ret__.apply(lambda __response__: GetVnetsLegacyResult(
-        id=pulumi.get(__response__, 'id'),
         vnets=pulumi.get(__response__, 'vnets')))

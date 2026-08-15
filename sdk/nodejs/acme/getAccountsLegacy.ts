@@ -33,10 +33,6 @@ export interface GetAccountsLegacyResult {
      * The identifiers of the ACME accounts.
      */
     readonly accounts: string[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }
 /**
  * > **Deprecated:** Use `proxmoxve.acme.getAccounts` instead. This data source will be removed in v1.0.

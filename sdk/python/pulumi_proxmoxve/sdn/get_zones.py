@@ -27,24 +27,13 @@ class GetZonesResult:
     """
     A collection of values returned by getZones.
     """
-    def __init__(__self__, id=None, type=None, zones=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, type=None, zones=None):
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
         if zones and not isinstance(zones, list):
             raise TypeError("Expected argument 'zones' to be a list")
         pulumi.set(__self__, "zones", zones)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -69,7 +58,6 @@ class AwaitableGetZonesResult(GetZonesResult):
         if False:
             yield self
         return GetZonesResult(
-            id=self.id,
             type=self.type,
             zones=self.zones)
 
@@ -109,7 +97,6 @@ def get_zones(type: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('proxmoxve:sdn/getZones:getZones', __args__, opts=opts, typ=GetZonesResult).value
 
     return AwaitableGetZonesResult(
-        id=pulumi.get(__ret__, 'id'),
         type=pulumi.get(__ret__, 'type'),
         zones=pulumi.get(__ret__, 'zones'))
 def get_zones_output(type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -146,6 +133,5 @@ def get_zones_output(type: pulumi.Input[Optional[Optional[_builtins.str]]] = Non
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:sdn/getZones:getZones', __args__, opts=opts, typ=GetZonesResult)
     return __ret__.apply(lambda __response__: GetZonesResult(
-        id=pulumi.get(__response__, 'id'),
         type=pulumi.get(__response__, 'type'),
         zones=pulumi.get(__response__, 'zones')))

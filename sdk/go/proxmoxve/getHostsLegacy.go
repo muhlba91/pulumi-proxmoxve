@@ -71,12 +71,8 @@ type LookupHostsLegacyResult struct {
 }
 
 func LookupHostsLegacyOutput(ctx *pulumi.Context, args LookupHostsLegacyOutputArgs, opts ...pulumi.InvokeOption) LookupHostsLegacyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupHostsLegacyResultOutput, error) {
-			args := v.(LookupHostsLegacyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:index/getHostsLegacy:getHostsLegacy", args, LookupHostsLegacyResultOutput{}, options).(LookupHostsLegacyResultOutput), nil
-		}).(LookupHostsLegacyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:index/getHostsLegacy:getHostsLegacy", args, LookupHostsLegacyResultOutput{}, options).(LookupHostsLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getHostsLegacy.

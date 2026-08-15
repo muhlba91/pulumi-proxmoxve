@@ -66,12 +66,8 @@ type LookupPoolLegacyResult struct {
 }
 
 func LookupPoolLegacyOutput(ctx *pulumi.Context, args LookupPoolLegacyOutputArgs, opts ...pulumi.InvokeOption) LookupPoolLegacyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPoolLegacyResultOutput, error) {
-			args := v.(LookupPoolLegacyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:index/getPoolLegacy:getPoolLegacy", args, LookupPoolLegacyResultOutput{}, options).(LookupPoolLegacyResultOutput), nil
-		}).(LookupPoolLegacyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:index/getPoolLegacy:getPoolLegacy", args, LookupPoolLegacyResultOutput{}, options).(LookupPoolLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getPoolLegacy.

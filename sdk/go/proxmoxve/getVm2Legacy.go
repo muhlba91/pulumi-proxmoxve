@@ -61,12 +61,8 @@ type LookupVm2LegacyResult struct {
 }
 
 func LookupVm2LegacyOutput(ctx *pulumi.Context, args LookupVm2LegacyOutputArgs, opts ...pulumi.InvokeOption) LookupVm2LegacyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupVm2LegacyResultOutput, error) {
-			args := v.(LookupVm2LegacyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:index/getVm2Legacy:getVm2Legacy", args, LookupVm2LegacyResultOutput{}, options).(LookupVm2LegacyResultOutput), nil
-		}).(LookupVm2LegacyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:index/getVm2Legacy:getVm2Legacy", args, LookupVm2LegacyResultOutput{}, options).(LookupVm2LegacyResultOutput)
 }
 
 // A collection of arguments for invoking getVm2Legacy.

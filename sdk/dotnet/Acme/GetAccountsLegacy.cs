@@ -101,19 +101,11 @@ namespace Pulumi.ProxmoxVE.Acme
         /// The identifiers of the ACME accounts.
         /// </summary>
         public readonly ImmutableArray<string> Accounts;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
-        private GetAccountsLegacyResult(
-            ImmutableArray<string> accounts,
-
-            string id)
+        private GetAccountsLegacyResult(ImmutableArray<string> accounts)
         {
             Accounts = accounts;
-            Id = id;
         }
     }
 }

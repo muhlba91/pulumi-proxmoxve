@@ -46,14 +46,14 @@ import (
 //				return err
 //			}
 //			_, err = pool.NewMembership(ctx, "vm_membership", &pool.MembershipArgs{
-//				PoolId: testPool.ID(),
+//				PoolId: testPool.ID().ToIDOutput().ToStringOutput(),
 //				VmId:   testVm1.ResourceId,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = pool.NewMembership(ctx, "storage_membership", &pool.MembershipArgs{
-//				PoolId:    testPool.ID(),
+//				PoolId:    testPool.ID().ToIDOutput().ToStringOutput(),
 //				StorageId: pulumi.String("local-lvm"),
 //			})
 //			if err != nil {

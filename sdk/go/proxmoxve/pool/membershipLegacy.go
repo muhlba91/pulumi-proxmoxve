@@ -25,6 +25,8 @@ import (
 //
 // import (
 //
+//	"strconv"
+//
 //	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve"
 //	"github.com/muhlba91/pulumi-proxmoxve/sdk/v8/go/proxmoxve/pool"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -48,14 +50,14 @@ import (
 //				return err
 //			}
 //			_, err = pool.NewMembershipLegacy(ctx, "vm_membership", &pool.MembershipLegacyArgs{
-//				PoolId: testPool.ID(),
-//				VmId:   testVm1.ID(),
+//				PoolId: testPool.ID().ToIDOutput().ToStringOutput(),
+//				VmId:   testVm1.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = pool.NewMembershipLegacy(ctx, "storage_membership", &pool.MembershipLegacyArgs{
-//				PoolId:    testPool.ID(),
+//				PoolId:    testPool.ID().ToIDOutput().ToStringOutput(),
 //				StorageId: pulumi.String("local-lvm"),
 //			})
 //			if err != nil {

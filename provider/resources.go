@@ -41,6 +41,8 @@ import (
 const (
 	mainPkg = "proxmoxve"
 	mainMod = "index"
+
+	renamedIDKey resource.PropertyKey = "resourceId"
 )
 
 var resourceIDOverrides = map[string][]string{
@@ -155,14 +157,30 @@ func moduleComputeStrategy() tfbridge.Strategy {
 
 func resourceComputeIDOverride() func(context.Context, resource.PropertyMap) (resource.ID, error) {
 	return func(_ context.Context, state resource.PropertyMap) (resource.ID, error) {
-		const resourceIDPropertyKey = resource.PropertyKey("id")
-		return resource.ID(strconv.Itoa(state[resourceIDPropertyKey].V.(int))), nil
+		v, ok := state[renamedIDKey]
+		if !ok {
+			return "", fmt.Errorf("resourceComputeIDOverride: %q missing from state", renamedIDKey)
+		}
+
+		var id string
+		switch vv := v.V.(type) {
+		case int:
+			id = strconv.Itoa(vv)
+		case int64:
+			id = strconv.FormatInt(vv, 10)
+		case string:
+			id = vv
+		default:
+			return "", fmt.Errorf("resourceComputeIDOverride: unexpected type %T for %q", vv, renamedIDKey)
+		}
+
+		return resource.ID(id), nil
 	}
 }
 
 func resourceFieldIDOverride(fields map[string]*tfbridge.SchemaInfo) map[string]*tfbridge.SchemaInfo {
 	fields["id"] = &tfbridge.SchemaInfo{
-		Name: "resourceId",
+		Name: string(renamedIDKey),
 		Type: "string",
 	}
 	return fields

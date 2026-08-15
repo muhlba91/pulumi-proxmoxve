@@ -27,21 +27,10 @@ class GetVnetsResult:
     """
     A collection of values returned by getVnets.
     """
-    def __init__(__self__, id=None, vnets=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, vnets=None):
         if vnets and not isinstance(vnets, list):
             raise TypeError("Expected argument 'vnets' to be a list")
         pulumi.set(__self__, "vnets", vnets)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -58,7 +47,6 @@ class AwaitableGetVnetsResult(GetVnetsResult):
         if False:
             yield self
         return GetVnetsResult(
-            id=self.id,
             vnets=self.vnets)
 
 
@@ -84,7 +72,6 @@ def get_vnets(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVnetsR
     __ret__ = pulumi.runtime.invoke('proxmoxve:sdn/getVnets:getVnets', __args__, opts=opts, typ=GetVnetsResult).value
 
     return AwaitableGetVnetsResult(
-        id=pulumi.get(__ret__, 'id'),
         vnets=pulumi.get(__ret__, 'vnets'))
 def get_vnets_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVnetsResult]:
     """
@@ -107,5 +94,4 @@ def get_vnets_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOut
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:sdn/getVnets:getVnets', __args__, opts=opts, typ=GetVnetsResult)
     return __ret__.apply(lambda __response__: GetVnetsResult(
-        id=pulumi.get(__response__, 'id'),
         vnets=pulumi.get(__response__, 'vnets')))

@@ -33,10 +33,6 @@ export function getReplications(opts?: pulumi.InvokeOptions): Promise<GetReplica
  */
 export interface GetReplicationsResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * List of Replications.
      */
     readonly replications: outputs.GetReplicationsReplication[];

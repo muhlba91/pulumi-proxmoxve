@@ -36,8 +36,6 @@ type LookupAccountResult struct {
 	Account GetAccountAccount `pulumi:"account"`
 	// The directory URL of the ACME account.
 	Directory string `pulumi:"directory"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// The location URL of the ACME account.
 	Location string `pulumi:"location"`
 	// The identifier of the ACME account to read.
@@ -47,12 +45,8 @@ type LookupAccountResult struct {
 }
 
 func LookupAccountOutput(ctx *pulumi.Context, args LookupAccountOutputArgs, opts ...pulumi.InvokeOption) LookupAccountResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAccountResultOutput, error) {
-			args := v.(LookupAccountArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:acme/getAccount:getAccount", args, LookupAccountResultOutput{}, options).(LookupAccountResultOutput), nil
-		}).(LookupAccountResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:acme/getAccount:getAccount", args, LookupAccountResultOutput{}, options).(LookupAccountResultOutput)
 }
 
 // A collection of arguments for invoking getAccount.
@@ -88,11 +82,6 @@ func (o LookupAccountResultOutput) Account() GetAccountAccountOutput {
 // The directory URL of the ACME account.
 func (o LookupAccountResultOutput) Directory() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountResult) string { return v.Directory }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o LookupAccountResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupAccountResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The location URL of the ACME account.

@@ -6,17 +6,11 @@ package io.muehlbachler.pulumi.proxmoxve.acme.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import io.muehlbachler.pulumi.proxmoxve.acme.outputs.GetPluginsLegacyPlugin;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetPluginsLegacyResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     /**
      * @return List of ACME plugins
      * 
@@ -24,13 +18,6 @@ public final class GetPluginsLegacyResult {
     private List<GetPluginsLegacyPlugin> plugins;
 
     private GetPluginsLegacyResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     /**
      * @return List of ACME plugins
      * 
@@ -48,23 +35,13 @@ public final class GetPluginsLegacyResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private List<GetPluginsLegacyPlugin> plugins;
         public Builder() {}
         public Builder(GetPluginsLegacyResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.plugins = defaults.plugins;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetPluginsLegacyResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder plugins(List<GetPluginsLegacyPlugin> plugins) {
             if (plugins == null) {
@@ -78,7 +55,6 @@ public final class GetPluginsLegacyResult {
         }
         public GetPluginsLegacyResult build() {
             final var _resultValue = new GetPluginsLegacyResult();
-            _resultValue.id = id;
             _resultValue.plugins = plugins;
             return _resultValue;
         }

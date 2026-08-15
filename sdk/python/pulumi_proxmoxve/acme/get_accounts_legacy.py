@@ -26,13 +26,10 @@ class GetAccountsLegacyResult:
     """
     A collection of values returned by getAccountsLegacy.
     """
-    def __init__(__self__, accounts=None, id=None):
+    def __init__(__self__, accounts=None):
         if accounts and not isinstance(accounts, list):
             raise TypeError("Expected argument 'accounts' to be a list")
         pulumi.set(__self__, "accounts", accounts)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
 
     @_builtins.property
     @pulumi.getter
@@ -42,14 +39,6 @@ class GetAccountsLegacyResult:
         """
         return pulumi.get(self, "accounts")
 
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
 
 class AwaitableGetAccountsLegacyResult(GetAccountsLegacyResult):
     # pylint: disable=using-constant-test
@@ -57,8 +46,7 @@ class AwaitableGetAccountsLegacyResult(GetAccountsLegacyResult):
         if False:
             yield self
         return GetAccountsLegacyResult(
-            accounts=self.accounts,
-            id=self.id)
+            accounts=self.accounts)
 
 
 def get_accounts_legacy(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountsLegacyResult:
@@ -82,8 +70,7 @@ def get_accounts_legacy(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitabl
     __ret__ = pulumi.runtime.invoke('proxmoxve:acme/getAccountsLegacy:getAccountsLegacy', __args__, opts=opts, typ=GetAccountsLegacyResult).value
 
     return AwaitableGetAccountsLegacyResult(
-        accounts=pulumi.get(__ret__, 'accounts'),
-        id=pulumi.get(__ret__, 'id'))
+        accounts=pulumi.get(__ret__, 'accounts'))
 def get_accounts_legacy_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountsLegacyResult]:
     """
     > **Deprecated:** Use `acme_get_accounts` instead. This data source will be removed in v1.0.
@@ -104,5 +91,4 @@ def get_accounts_legacy_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:acme/getAccountsLegacy:getAccountsLegacy', __args__, opts=opts, typ=GetAccountsLegacyResult)
     return __ret__.apply(lambda __response__: GetAccountsLegacyResult(
-        accounts=pulumi.get(__response__, 'accounts'),
-        id=pulumi.get(__response__, 'id')))
+        accounts=pulumi.get(__response__, 'accounts')))

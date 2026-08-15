@@ -77,12 +77,8 @@ type GetHaresourcesLegacyResult struct {
 }
 
 func GetHaresourcesLegacyOutput(ctx *pulumi.Context, args GetHaresourcesLegacyOutputArgs, opts ...pulumi.InvokeOption) GetHaresourcesLegacyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetHaresourcesLegacyResultOutput, error) {
-			args := v.(GetHaresourcesLegacyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:index/getHaresourcesLegacy:getHaresourcesLegacy", args, GetHaresourcesLegacyResultOutput{}, options).(GetHaresourcesLegacyResultOutput), nil
-		}).(GetHaresourcesLegacyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:index/getHaresourcesLegacy:getHaresourcesLegacy", args, GetHaresourcesLegacyResultOutput{}, options).(GetHaresourcesLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getHaresourcesLegacy.

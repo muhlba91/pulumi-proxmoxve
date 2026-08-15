@@ -91,12 +91,8 @@ type LookupVlanLegacyResult struct {
 }
 
 func LookupVlanLegacyOutput(ctx *pulumi.Context, args LookupVlanLegacyOutputArgs, opts ...pulumi.InvokeOption) LookupVlanLegacyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupVlanLegacyResultOutput, error) {
-			args := v.(LookupVlanLegacyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:sdn/zone/getVlanLegacy:getVlanLegacy", args, LookupVlanLegacyResultOutput{}, options).(LookupVlanLegacyResultOutput), nil
-		}).(LookupVlanLegacyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:sdn/zone/getVlanLegacy:getVlanLegacy", args, LookupVlanLegacyResultOutput{}, options).(LookupVlanLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getVlanLegacy.

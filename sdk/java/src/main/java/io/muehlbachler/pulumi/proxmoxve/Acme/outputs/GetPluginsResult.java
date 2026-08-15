@@ -6,17 +6,11 @@ package io.muehlbachler.pulumi.proxmoxve.acme.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import io.muehlbachler.pulumi.proxmoxve.acme.outputs.GetPluginsPlugin;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetPluginsResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     /**
      * @return List of ACME plugins
      * 
@@ -24,13 +18,6 @@ public final class GetPluginsResult {
     private List<GetPluginsPlugin> plugins;
 
     private GetPluginsResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     /**
      * @return List of ACME plugins
      * 
@@ -48,23 +35,13 @@ public final class GetPluginsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private List<GetPluginsPlugin> plugins;
         public Builder() {}
         public Builder(GetPluginsResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.plugins = defaults.plugins;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetPluginsResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder plugins(List<GetPluginsPlugin> plugins) {
             if (plugins == null) {
@@ -78,7 +55,6 @@ public final class GetPluginsResult {
         }
         public GetPluginsResult build() {
             final var _resultValue = new GetPluginsResult();
-            _resultValue.id = id;
             _resultValue.plugins = plugins;
             return _resultValue;
         }

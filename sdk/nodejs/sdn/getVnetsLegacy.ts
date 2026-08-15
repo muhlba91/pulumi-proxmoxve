@@ -35,10 +35,6 @@ export function getVnetsLegacy(opts?: pulumi.InvokeOptions): Promise<GetVnetsLeg
  */
 export interface GetVnetsLegacyResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * List of SDN VNets.
      */
     readonly vnets: outputs.sdn.GetVnetsLegacyVnet[];

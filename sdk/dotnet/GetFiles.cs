@@ -272,10 +272,6 @@ namespace Pulumi.ProxmoxVE
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFilesFileResult> Files;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// The name of the node.
         /// </summary>
         public readonly string NodeName;
@@ -290,15 +286,12 @@ namespace Pulumi.ProxmoxVE
 
             ImmutableArray<Outputs.GetFilesFileResult> files,
 
-            string id,
-
             string nodeName)
         {
             ContentType = contentType;
             DatastoreId = datastoreId;
             FileNameRegex = fileNameRegex;
             Files = files;
-            Id = id;
             NodeName = nodeName;
         }
     }

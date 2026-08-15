@@ -40,19 +40,13 @@ type GetDatastoresLegacyResult struct {
 	Datastores []GetDatastoresLegacyDatastore `pulumi:"datastores"`
 	// The filters to apply to the stores.
 	Filters *GetDatastoresLegacyFilters `pulumi:"filters"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// The name of the node to retrieve the stores from.
 	NodeName string `pulumi:"nodeName"`
 }
 
 func GetDatastoresLegacyOutput(ctx *pulumi.Context, args GetDatastoresLegacyOutputArgs, opts ...pulumi.InvokeOption) GetDatastoresLegacyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDatastoresLegacyResultOutput, error) {
-			args := v.(GetDatastoresLegacyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:index/getDatastoresLegacy:getDatastoresLegacy", args, GetDatastoresLegacyResultOutput{}, options).(GetDatastoresLegacyResultOutput), nil
-		}).(GetDatastoresLegacyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:index/getDatastoresLegacy:getDatastoresLegacy", args, GetDatastoresLegacyResultOutput{}, options).(GetDatastoresLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getDatastoresLegacy.
@@ -92,11 +86,6 @@ func (o GetDatastoresLegacyResultOutput) Datastores() GetDatastoresLegacyDatasto
 // The filters to apply to the stores.
 func (o GetDatastoresLegacyResultOutput) Filters() GetDatastoresLegacyFiltersPtrOutput {
 	return o.ApplyT(func(v GetDatastoresLegacyResult) *GetDatastoresLegacyFilters { return v.Filters }).(GetDatastoresLegacyFiltersPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetDatastoresLegacyResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatastoresLegacyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The name of the node to retrieve the stores from.

@@ -55,12 +55,8 @@ type LookupSubnetLegacyResult struct {
 }
 
 func LookupSubnetLegacyOutput(ctx *pulumi.Context, args LookupSubnetLegacyOutputArgs, opts ...pulumi.InvokeOption) LookupSubnetLegacyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSubnetLegacyResultOutput, error) {
-			args := v.(LookupSubnetLegacyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:sdn/getSubnetLegacy:getSubnetLegacy", args, LookupSubnetLegacyResultOutput{}, options).(LookupSubnetLegacyResultOutput), nil
-		}).(LookupSubnetLegacyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:sdn/getSubnetLegacy:getSubnetLegacy", args, LookupSubnetLegacyResultOutput{}, options).(LookupSubnetLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getSubnetLegacy.

@@ -76,10 +76,8 @@ type GetNodesLegacyResult struct {
 }
 
 func GetNodesLegacyOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetNodesLegacyResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetNodesLegacyResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("proxmoxve:index/getNodesLegacy:getNodesLegacy", nil, GetNodesLegacyResultOutput{}, options).(GetNodesLegacyResultOutput), nil
-	}).(GetNodesLegacyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:index/getNodesLegacy:getNodesLegacy", nil, GetNodesLegacyResultOutput{}, options).(GetNodesLegacyResultOutput)
 }
 
 // A collection of values returned by getNodesLegacy.

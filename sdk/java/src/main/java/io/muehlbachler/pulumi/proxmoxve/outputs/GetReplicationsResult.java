@@ -6,17 +6,11 @@ package io.muehlbachler.pulumi.proxmoxve.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import io.muehlbachler.pulumi.proxmoxve.outputs.GetReplicationsReplication;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetReplicationsResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     /**
      * @return List of Replications.
      * 
@@ -24,13 +18,6 @@ public final class GetReplicationsResult {
     private List<GetReplicationsReplication> replications;
 
     private GetReplicationsResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     /**
      * @return List of Replications.
      * 
@@ -48,23 +35,13 @@ public final class GetReplicationsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private List<GetReplicationsReplication> replications;
         public Builder() {}
         public Builder(GetReplicationsResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.replications = defaults.replications;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetReplicationsResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder replications(List<GetReplicationsReplication> replications) {
             if (replications == null) {
@@ -78,7 +55,6 @@ public final class GetReplicationsResult {
         }
         public GetReplicationsResult build() {
             final var _resultValue = new GetReplicationsResult();
-            _resultValue.id = id;
             _resultValue.replications = replications;
             return _resultValue;
         }

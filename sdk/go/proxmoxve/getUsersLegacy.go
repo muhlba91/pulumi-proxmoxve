@@ -71,10 +71,8 @@ type GetUsersLegacyResult struct {
 }
 
 func GetUsersLegacyOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetUsersLegacyResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetUsersLegacyResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("proxmoxve:index/getUsersLegacy:getUsersLegacy", nil, GetUsersLegacyResultOutput{}, options).(GetUsersLegacyResultOutput), nil
-	}).(GetUsersLegacyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:index/getUsersLegacy:getUsersLegacy", nil, GetUsersLegacyResultOutput{}, options).(GetUsersLegacyResultOutput)
 }
 
 // A collection of values returned by getUsersLegacy.

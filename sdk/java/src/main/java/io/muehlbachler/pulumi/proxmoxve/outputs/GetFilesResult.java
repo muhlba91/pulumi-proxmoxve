@@ -35,11 +35,6 @@ public final class GetFilesResult {
      */
     private List<GetFilesFile> files;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return The name of the node.
      * 
      */
@@ -75,13 +70,6 @@ public final class GetFilesResult {
         return this.files;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return The name of the node.
      * 
      */
@@ -102,7 +90,6 @@ public final class GetFilesResult {
         private String datastoreId;
         private @Nullable String fileNameRegex;
         private List<GetFilesFile> files;
-        private String id;
         private String nodeName;
         public Builder() {}
         public Builder(GetFilesResult defaults) {
@@ -111,7 +98,6 @@ public final class GetFilesResult {
     	      this.datastoreId = defaults.datastoreId;
     	      this.fileNameRegex = defaults.fileNameRegex;
     	      this.files = defaults.files;
-    	      this.id = defaults.id;
     	      this.nodeName = defaults.nodeName;
         }
 
@@ -147,14 +133,6 @@ public final class GetFilesResult {
             return files(List.of(files));
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetFilesResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder nodeName(String nodeName) {
             if (nodeName == null) {
               throw new MissingRequiredPropertyException("GetFilesResult", "nodeName");
@@ -168,7 +146,6 @@ public final class GetFilesResult {
             _resultValue.datastoreId = datastoreId;
             _resultValue.fileNameRegex = fileNameRegex;
             _resultValue.files = files;
-            _resultValue.id = id;
             _resultValue.nodeName = nodeName;
             return _resultValue;
         }

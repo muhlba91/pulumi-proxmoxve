@@ -59,12 +59,8 @@ type LookupVmResult struct {
 }
 
 func LookupVmOutput(ctx *pulumi.Context, args LookupVmOutputArgs, opts ...pulumi.InvokeOption) LookupVmResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupVmResultOutput, error) {
-			args := v.(LookupVmArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:index/getVm:getVm", args, LookupVmResultOutput{}, options).(LookupVmResultOutput), nil
-		}).(LookupVmResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:index/getVm:getVm", args, LookupVmResultOutput{}, options).(LookupVmResultOutput)
 }
 
 // A collection of arguments for invoking getVm.

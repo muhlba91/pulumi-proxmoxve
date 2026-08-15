@@ -52,17 +52,13 @@ func GetReplications(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetRepl
 
 // A collection of values returned by getReplications.
 type GetReplicationsResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// List of Replications.
 	Replications []GetReplicationsReplication `pulumi:"replications"`
 }
 
 func GetReplicationsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetReplicationsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetReplicationsResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("proxmoxve:index/getReplications:getReplications", nil, GetReplicationsResultOutput{}, options).(GetReplicationsResultOutput), nil
-	}).(GetReplicationsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:index/getReplications:getReplications", nil, GetReplicationsResultOutput{}, options).(GetReplicationsResultOutput)
 }
 
 // A collection of values returned by getReplications.
@@ -78,11 +74,6 @@ func (o GetReplicationsResultOutput) ToGetReplicationsResultOutput() GetReplicat
 
 func (o GetReplicationsResultOutput) ToGetReplicationsResultOutputWithContext(ctx context.Context) GetReplicationsResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetReplicationsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetReplicationsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // List of Replications.

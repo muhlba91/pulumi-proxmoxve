@@ -51,10 +51,6 @@ export interface GetDatastoresLegacyResult {
      */
     readonly filters?: outputs.GetDatastoresLegacyFilters;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * The name of the node to retrieve the stores from.
      */
     readonly nodeName: string;

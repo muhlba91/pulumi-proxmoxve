@@ -65,8 +65,6 @@ type GetPluginLegacyResult struct {
 	Data map[string]string `pulumi:"data"`
 	// Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
 	Digest string `pulumi:"digest"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// ACME Plugin ID name.
 	Plugin string `pulumi:"plugin"`
 	// ACME challenge type (dns, standalone).
@@ -76,12 +74,8 @@ type GetPluginLegacyResult struct {
 }
 
 func GetPluginLegacyOutput(ctx *pulumi.Context, args GetPluginLegacyOutputArgs, opts ...pulumi.InvokeOption) GetPluginLegacyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPluginLegacyResultOutput, error) {
-			args := v.(GetPluginLegacyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:acme/getPluginLegacy:getPluginLegacy", args, GetPluginLegacyResultOutput{}, options).(GetPluginLegacyResultOutput), nil
-		}).(GetPluginLegacyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:acme/getPluginLegacy:getPluginLegacy", args, GetPluginLegacyResultOutput{}, options).(GetPluginLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getPluginLegacy.
@@ -122,11 +116,6 @@ func (o GetPluginLegacyResultOutput) Data() pulumi.StringMapOutput {
 // Prevent changes if current configuration file has a different digest. This can be used to prevent concurrent modifications.
 func (o GetPluginLegacyResultOutput) Digest() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPluginLegacyResult) string { return v.Digest }).(pulumi.StringOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetPluginLegacyResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPluginLegacyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // ACME Plugin ID name.

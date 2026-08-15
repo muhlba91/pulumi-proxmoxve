@@ -53,10 +53,6 @@ export interface GetPluginResult {
      */
     readonly digest: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * ACME Plugin ID name.
      */
     readonly plugin: string;

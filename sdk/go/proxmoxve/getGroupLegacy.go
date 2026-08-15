@@ -68,12 +68,8 @@ type LookupGroupLegacyResult struct {
 }
 
 func LookupGroupLegacyOutput(ctx *pulumi.Context, args LookupGroupLegacyOutputArgs, opts ...pulumi.InvokeOption) LookupGroupLegacyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGroupLegacyResultOutput, error) {
-			args := v.(LookupGroupLegacyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:index/getGroupLegacy:getGroupLegacy", args, LookupGroupLegacyResultOutput{}, options).(LookupGroupLegacyResultOutput), nil
-		}).(LookupGroupLegacyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:index/getGroupLegacy:getGroupLegacy", args, LookupGroupLegacyResultOutput{}, options).(LookupGroupLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getGroupLegacy.

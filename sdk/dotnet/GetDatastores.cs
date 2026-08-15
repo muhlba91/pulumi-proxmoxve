@@ -108,10 +108,6 @@ namespace Pulumi.ProxmoxVE
         /// </summary>
         public readonly Outputs.GetDatastoresFiltersResult? Filters;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// The name of the node to retrieve the stores from.
         /// </summary>
         public readonly string NodeName;
@@ -122,13 +118,10 @@ namespace Pulumi.ProxmoxVE
 
             Outputs.GetDatastoresFiltersResult? filters,
 
-            string id,
-
             string nodeName)
         {
             Datastores = datastores;
             Filters = filters;
-            Id = id;
             NodeName = nodeName;
         }
     }

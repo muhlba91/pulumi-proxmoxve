@@ -66,10 +66,8 @@ type GetVersionLegacyResult struct {
 }
 
 func GetVersionLegacyOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetVersionLegacyResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetVersionLegacyResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("proxmoxve:index/getVersionLegacy:getVersionLegacy", nil, GetVersionLegacyResultOutput{}, options).(GetVersionLegacyResultOutput), nil
-	}).(GetVersionLegacyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:index/getVersionLegacy:getVersionLegacy", nil, GetVersionLegacyResultOutput{}, options).(GetVersionLegacyResultOutput)
 }
 
 // A collection of values returned by getVersionLegacy.

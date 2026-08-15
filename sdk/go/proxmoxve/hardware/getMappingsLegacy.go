@@ -90,12 +90,8 @@ type GetMappingsLegacyResult struct {
 }
 
 func GetMappingsLegacyOutput(ctx *pulumi.Context, args GetMappingsLegacyOutputArgs, opts ...pulumi.InvokeOption) GetMappingsLegacyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetMappingsLegacyResultOutput, error) {
-			args := v.(GetMappingsLegacyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:hardware/getMappingsLegacy:getMappingsLegacy", args, GetMappingsLegacyResultOutput{}, options).(GetMappingsLegacyResultOutput), nil
-		}).(GetMappingsLegacyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:hardware/getMappingsLegacy:getMappingsLegacy", args, GetMappingsLegacyResultOutput{}, options).(GetMappingsLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getMappingsLegacy.

@@ -26,11 +26,6 @@ public final class GetPciResult {
      */
     private @Nullable GetPciFilters filters;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return The name of the node to list PCI devices from.
      * 
      */
@@ -55,13 +50,6 @@ public final class GetPciResult {
      */
     public Optional<GetPciFilters> filters() {
         return Optional.ofNullable(this.filters);
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return The name of the node to list PCI devices from.
@@ -89,7 +77,6 @@ public final class GetPciResult {
     public static final class Builder {
         private List<GetPciDevice> devices;
         private @Nullable GetPciFilters filters;
-        private String id;
         private String nodeName;
         private @Nullable List<String> pciClassBlacklists;
         public Builder() {}
@@ -97,7 +84,6 @@ public final class GetPciResult {
     	      Objects.requireNonNull(defaults);
     	      this.devices = defaults.devices;
     	      this.filters = defaults.filters;
-    	      this.id = defaults.id;
     	      this.nodeName = defaults.nodeName;
     	      this.pciClassBlacklists = defaults.pciClassBlacklists;
         }
@@ -117,14 +103,6 @@ public final class GetPciResult {
         public Builder filters(@Nullable GetPciFilters filters) {
 
             this.filters = filters;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetPciResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -148,7 +126,6 @@ public final class GetPciResult {
             final var _resultValue = new GetPciResult();
             _resultValue.devices = devices;
             _resultValue.filters = filters;
-            _resultValue.id = id;
             _resultValue.nodeName = nodeName;
             _resultValue.pciClassBlacklists = pciClassBlacklists;
             return _resultValue;

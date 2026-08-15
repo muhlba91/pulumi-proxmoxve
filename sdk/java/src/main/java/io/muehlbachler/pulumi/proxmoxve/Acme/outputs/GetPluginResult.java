@@ -28,11 +28,6 @@ public final class GetPluginResult {
      */
     private String digest;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return ACME Plugin ID name.
      * 
      */
@@ -71,13 +66,6 @@ public final class GetPluginResult {
         return this.digest;
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return ACME Plugin ID name.
      * 
      */
@@ -111,7 +99,6 @@ public final class GetPluginResult {
         private String api;
         private Map<String,String> data;
         private String digest;
-        private String id;
         private String plugin;
         private String type;
         private Integer validationDelay;
@@ -121,7 +108,6 @@ public final class GetPluginResult {
     	      this.api = defaults.api;
     	      this.data = defaults.data;
     	      this.digest = defaults.digest;
-    	      this.id = defaults.id;
     	      this.plugin = defaults.plugin;
     	      this.type = defaults.type;
     	      this.validationDelay = defaults.validationDelay;
@@ -149,14 +135,6 @@ public final class GetPluginResult {
               throw new MissingRequiredPropertyException("GetPluginResult", "digest");
             }
             this.digest = digest;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetPluginResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -188,7 +166,6 @@ public final class GetPluginResult {
             _resultValue.api = api;
             _resultValue.data = data;
             _resultValue.digest = digest;
-            _resultValue.id = id;
             _resultValue.plugin = plugin;
             _resultValue.type = type;
             _resultValue.validationDelay = validationDelay;

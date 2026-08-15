@@ -66,12 +66,8 @@ type LookupDnsLegacyResult struct {
 }
 
 func LookupDnsLegacyOutput(ctx *pulumi.Context, args LookupDnsLegacyOutputArgs, opts ...pulumi.InvokeOption) LookupDnsLegacyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDnsLegacyResultOutput, error) {
-			args := v.(LookupDnsLegacyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:index/getDnsLegacy:getDnsLegacy", args, LookupDnsLegacyResultOutput{}, options).(LookupDnsLegacyResultOutput), nil
-		}).(LookupDnsLegacyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:index/getDnsLegacy:getDnsLegacy", args, LookupDnsLegacyResultOutput{}, options).(LookupDnsLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getDnsLegacy.

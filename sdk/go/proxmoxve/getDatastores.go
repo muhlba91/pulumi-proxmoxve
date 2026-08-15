@@ -38,19 +38,13 @@ type GetDatastoresResult struct {
 	Datastores []GetDatastoresDatastore `pulumi:"datastores"`
 	// The filters to apply to the stores.
 	Filters *GetDatastoresFilters `pulumi:"filters"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// The name of the node to retrieve the stores from.
 	NodeName string `pulumi:"nodeName"`
 }
 
 func GetDatastoresOutput(ctx *pulumi.Context, args GetDatastoresOutputArgs, opts ...pulumi.InvokeOption) GetDatastoresResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetDatastoresResultOutput, error) {
-			args := v.(GetDatastoresArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:index/getDatastores:getDatastores", args, GetDatastoresResultOutput{}, options).(GetDatastoresResultOutput), nil
-		}).(GetDatastoresResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:index/getDatastores:getDatastores", args, GetDatastoresResultOutput{}, options).(GetDatastoresResultOutput)
 }
 
 // A collection of arguments for invoking getDatastores.
@@ -90,11 +84,6 @@ func (o GetDatastoresResultOutput) Datastores() GetDatastoresDatastoreArrayOutpu
 // The filters to apply to the stores.
 func (o GetDatastoresResultOutput) Filters() GetDatastoresFiltersPtrOutput {
 	return o.ApplyT(func(v GetDatastoresResult) *GetDatastoresFilters { return v.Filters }).(GetDatastoresFiltersPtrOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetDatastoresResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDatastoresResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The name of the node to retrieve the stores from.

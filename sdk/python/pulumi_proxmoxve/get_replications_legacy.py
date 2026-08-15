@@ -27,21 +27,10 @@ class GetReplicationsLegacyResult:
     """
     A collection of values returned by getReplicationsLegacy.
     """
-    def __init__(__self__, id=None, replications=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, replications=None):
         if replications and not isinstance(replications, list):
             raise TypeError("Expected argument 'replications' to be a list")
         pulumi.set(__self__, "replications", replications)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -58,7 +47,6 @@ class AwaitableGetReplicationsLegacyResult(GetReplicationsLegacyResult):
         if False:
             yield self
         return GetReplicationsLegacyResult(
-            id=self.id,
             replications=self.replications)
 
 
@@ -86,7 +74,6 @@ def get_replications_legacy(opts: Optional[pulumi.InvokeOptions] = None) -> Awai
     __ret__ = pulumi.runtime.invoke('proxmoxve:index/getReplicationsLegacy:getReplicationsLegacy', __args__, opts=opts, typ=GetReplicationsLegacyResult).value
 
     return AwaitableGetReplicationsLegacyResult(
-        id=pulumi.get(__ret__, 'id'),
         replications=pulumi.get(__ret__, 'replications'))
 def get_replications_legacy_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetReplicationsLegacyResult]:
     """
@@ -111,5 +98,4 @@ def get_replications_legacy_output(opts: Optional[Union[pulumi.InvokeOptions, pu
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:index/getReplicationsLegacy:getReplicationsLegacy', __args__, opts=opts, typ=GetReplicationsLegacyResult)
     return __ret__.apply(lambda __response__: GetReplicationsLegacyResult(
-        id=pulumi.get(__response__, 'id'),
         replications=pulumi.get(__response__, 'replications')))

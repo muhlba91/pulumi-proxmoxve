@@ -54,17 +54,13 @@ func GetReplicationsLegacy(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*G
 
 // A collection of values returned by getReplicationsLegacy.
 type GetReplicationsLegacyResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// List of Replications.
 	Replications []GetReplicationsLegacyReplication `pulumi:"replications"`
 }
 
 func GetReplicationsLegacyOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetReplicationsLegacyResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetReplicationsLegacyResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("proxmoxve:index/getReplicationsLegacy:getReplicationsLegacy", nil, GetReplicationsLegacyResultOutput{}, options).(GetReplicationsLegacyResultOutput), nil
-	}).(GetReplicationsLegacyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:index/getReplicationsLegacy:getReplicationsLegacy", nil, GetReplicationsLegacyResultOutput{}, options).(GetReplicationsLegacyResultOutput)
 }
 
 // A collection of values returned by getReplicationsLegacy.
@@ -80,11 +76,6 @@ func (o GetReplicationsLegacyResultOutput) ToGetReplicationsLegacyResultOutput()
 
 func (o GetReplicationsLegacyResultOutput) ToGetReplicationsLegacyResultOutputWithContext(ctx context.Context) GetReplicationsLegacyResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetReplicationsLegacyResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetReplicationsLegacyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // List of Replications.

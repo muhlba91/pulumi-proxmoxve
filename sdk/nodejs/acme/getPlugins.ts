@@ -30,10 +30,6 @@ export function getPlugins(opts?: pulumi.InvokeOptions): Promise<GetPluginsResul
  */
 export interface GetPluginsResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * List of ACME plugins
      */
     readonly plugins: outputs.acme.GetPluginsPlugin[];

@@ -53,15 +53,11 @@ func GetAccountsLegacy(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAc
 type GetAccountsLegacyResult struct {
 	// The identifiers of the ACME accounts.
 	Accounts []string `pulumi:"accounts"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 }
 
 func GetAccountsLegacyOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetAccountsLegacyResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetAccountsLegacyResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("proxmoxve:acme/getAccountsLegacy:getAccountsLegacy", nil, GetAccountsLegacyResultOutput{}, options).(GetAccountsLegacyResultOutput), nil
-	}).(GetAccountsLegacyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:acme/getAccountsLegacy:getAccountsLegacy", nil, GetAccountsLegacyResultOutput{}, options).(GetAccountsLegacyResultOutput)
 }
 
 // A collection of values returned by getAccountsLegacy.
@@ -82,11 +78,6 @@ func (o GetAccountsLegacyResultOutput) ToGetAccountsLegacyResultOutputWithContex
 // The identifiers of the ACME accounts.
 func (o GetAccountsLegacyResultOutput) Accounts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAccountsLegacyResult) []string { return v.Accounts }).(pulumi.StringArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetAccountsLegacyResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAccountsLegacyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func init() {

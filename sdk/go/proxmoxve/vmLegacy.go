@@ -89,7 +89,7 @@ import (
 //				Disks: proxmoxve.VmLegacyDiskArray{
 //					&proxmoxve.VmLegacyDiskArgs{
 //						DatastoreId: pulumi.String("local-lvm"),
-//						ImportFrom:  latestUbuntu22JammyQcow2Img.ID(),
+//						ImportFrom:  latestUbuntu22JammyQcow2Img.ID().ToIDOutput().ToStringOutput(),
 //						Interface:   pulumi.String("scsi0"),
 //					},
 //				},
@@ -105,10 +105,7 @@ import (
 //						Keys: pulumi.StringArray{
 //							std.TrimspaceOutput(ctx, std.TrimspaceOutputArgs{
 //								Input: ubuntuVmKey.PublicKeyOpenssh,
-//							}, nil).ApplyT(func(invoke std.TrimspaceResult) (*string, error) {
-//								val := invoke.Result
-//								return &val, nil
-//							}).(pulumi.StringPtrOutput),
+//							}, nil).Result(),
 //						},
 //						Password: ubuntuVmPassword.Result,
 //						Username: pulumi.String("ubuntu"),

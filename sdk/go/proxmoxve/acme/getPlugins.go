@@ -49,17 +49,13 @@ func GetPlugins(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetPluginsRe
 
 // A collection of values returned by getPlugins.
 type GetPluginsResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// List of ACME plugins
 	Plugins []GetPluginsPlugin `pulumi:"plugins"`
 }
 
 func GetPluginsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetPluginsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetPluginsResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("proxmoxve:acme/getPlugins:getPlugins", nil, GetPluginsResultOutput{}, options).(GetPluginsResultOutput), nil
-	}).(GetPluginsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:acme/getPlugins:getPlugins", nil, GetPluginsResultOutput{}, options).(GetPluginsResultOutput)
 }
 
 // A collection of values returned by getPlugins.
@@ -75,11 +71,6 @@ func (o GetPluginsResultOutput) ToGetPluginsResultOutput() GetPluginsResultOutpu
 
 func (o GetPluginsResultOutput) ToGetPluginsResultOutputWithContext(ctx context.Context) GetPluginsResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetPluginsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPluginsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // List of ACME plugins

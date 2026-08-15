@@ -57,10 +57,6 @@ export interface GetAccountLegacyResult {
      */
     readonly directory: string;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * The location URL of the ACME account.
      */
     readonly location: string;

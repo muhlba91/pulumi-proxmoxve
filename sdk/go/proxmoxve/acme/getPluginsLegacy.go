@@ -51,17 +51,13 @@ func GetPluginsLegacy(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetPlu
 
 // A collection of values returned by getPluginsLegacy.
 type GetPluginsLegacyResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// List of ACME plugins
 	Plugins []GetPluginsLegacyPlugin `pulumi:"plugins"`
 }
 
 func GetPluginsLegacyOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetPluginsLegacyResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetPluginsLegacyResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("proxmoxve:acme/getPluginsLegacy:getPluginsLegacy", nil, GetPluginsLegacyResultOutput{}, options).(GetPluginsLegacyResultOutput), nil
-	}).(GetPluginsLegacyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:acme/getPluginsLegacy:getPluginsLegacy", nil, GetPluginsLegacyResultOutput{}, options).(GetPluginsLegacyResultOutput)
 }
 
 // A collection of values returned by getPluginsLegacy.
@@ -77,11 +73,6 @@ func (o GetPluginsLegacyResultOutput) ToGetPluginsLegacyResultOutput() GetPlugin
 
 func (o GetPluginsLegacyResultOutput) ToGetPluginsLegacyResultOutputWithContext(ctx context.Context) GetPluginsLegacyResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetPluginsLegacyResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetPluginsLegacyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // List of ACME plugins

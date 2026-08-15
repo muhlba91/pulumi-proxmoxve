@@ -79,12 +79,8 @@ type LookupVnetResult struct {
 }
 
 func LookupVnetOutput(ctx *pulumi.Context, args LookupVnetOutputArgs, opts ...pulumi.InvokeOption) LookupVnetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupVnetResultOutput, error) {
-			args := v.(LookupVnetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:sdn/getVnet:getVnet", args, LookupVnetResultOutput{}, options).(LookupVnetResultOutput), nil
-		}).(LookupVnetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:sdn/getVnet:getVnet", args, LookupVnetResultOutput{}, options).(LookupVnetResultOutput)
 }
 
 // A collection of arguments for invoking getVnet.

@@ -222,10 +222,6 @@ namespace Pulumi.ProxmoxVE.Hardware
         /// </summary>
         public readonly Outputs.GetPciFiltersResult? Filters;
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// The name of the node to list PCI devices from.
         /// </summary>
         public readonly string NodeName;
@@ -240,15 +236,12 @@ namespace Pulumi.ProxmoxVE.Hardware
 
             Outputs.GetPciFiltersResult? filters,
 
-            string id,
-
             string nodeName,
 
             ImmutableArray<string> pciClassBlacklists)
         {
             Devices = devices;
             Filters = filters;
-            Id = id;
             NodeName = nodeName;
             PciClassBlacklists = pciClassBlacklists;
         }

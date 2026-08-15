@@ -27,16 +27,13 @@ class GetAccountLegacyResult:
     """
     A collection of values returned by getAccountLegacy.
     """
-    def __init__(__self__, account=None, directory=None, id=None, location=None, name=None, tos=None):
+    def __init__(__self__, account=None, directory=None, location=None, name=None, tos=None):
         if account and not isinstance(account, dict):
             raise TypeError("Expected argument 'account' to be a dict")
         pulumi.set(__self__, "account", account)
         if directory and not isinstance(directory, str):
             raise TypeError("Expected argument 'directory' to be a str")
         pulumi.set(__self__, "directory", directory)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if location and not isinstance(location, str):
             raise TypeError("Expected argument 'location' to be a str")
         pulumi.set(__self__, "location", location)
@@ -62,14 +59,6 @@ class GetAccountLegacyResult:
         The directory URL of the ACME account.
         """
         return pulumi.get(self, "directory")
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -104,7 +93,6 @@ class AwaitableGetAccountLegacyResult(GetAccountLegacyResult):
         return GetAccountLegacyResult(
             account=self.account,
             directory=self.directory,
-            id=self.id,
             location=self.location,
             name=self.name,
             tos=self.tos)
@@ -141,7 +129,6 @@ def get_account_legacy(name: Optional[_builtins.str] = None,
     return AwaitableGetAccountLegacyResult(
         account=pulumi.get(__ret__, 'account'),
         directory=pulumi.get(__ret__, 'directory'),
-        id=pulumi.get(__ret__, 'id'),
         location=pulumi.get(__ret__, 'location'),
         name=pulumi.get(__ret__, 'name'),
         tos=pulumi.get(__ret__, 'tos'))
@@ -175,7 +162,6 @@ def get_account_legacy_output(name: pulumi.Input[Optional[Optional[_builtins.str
     return __ret__.apply(lambda __response__: GetAccountLegacyResult(
         account=pulumi.get(__response__, 'account'),
         directory=pulumi.get(__response__, 'directory'),
-        id=pulumi.get(__response__, 'id'),
         location=pulumi.get(__response__, 'location'),
         name=pulumi.get(__response__, 'name'),
         tos=pulumi.get(__response__, 'tos')))

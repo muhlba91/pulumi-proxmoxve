@@ -27,8 +27,8 @@ import * as utilities from "./utilities";
  *     })).result;
  *     // Only download if the image doesn't already exist
  *     const ubuntuNoble: proxmoxve.download.FileLegacy[] = [];
- *     for (const range = {value: 0}; range.value < (imageExists ? 0 : 1); range.value++) {
- *         ubuntuNoble.push(new proxmoxve.download.FileLegacy(`ubuntu_noble-${range.value}`, {
+ *     for (let range = 0; range < (imageExists ? 0 : 1); range++) {
+ *         ubuntuNoble.push(new proxmoxve.download.FileLegacy(`ubuntu_noble-${range}`, {
  *             datastoreId: "local",
  *             nodeName: "pve",
  *             contentType: "iso",
@@ -100,10 +100,6 @@ export interface GetFilesResult {
      */
     readonly files: outputs.GetFilesFile[];
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * The name of the node.
      */
     readonly nodeName: string;
@@ -129,8 +125,8 @@ export interface GetFilesResult {
  *     })).result;
  *     // Only download if the image doesn't already exist
  *     const ubuntuNoble: proxmoxve.download.FileLegacy[] = [];
- *     for (const range = {value: 0}; range.value < (imageExists ? 0 : 1); range.value++) {
- *         ubuntuNoble.push(new proxmoxve.download.FileLegacy(`ubuntu_noble-${range.value}`, {
+ *     for (let range = 0; range < (imageExists ? 0 : 1); range++) {
+ *         ubuntuNoble.push(new proxmoxve.download.FileLegacy(`ubuntu_noble-${range}`, {
  *             datastoreId: "local",
  *             nodeName: "pve",
  *             contentType: "iso",

@@ -16,11 +16,6 @@ public final class GetAccountsLegacyResult {
      * 
      */
     private List<String> accounts;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
 
     private GetAccountsLegacyResult() {}
     /**
@@ -29,13 +24,6 @@ public final class GetAccountsLegacyResult {
      */
     public List<String> accounts() {
         return this.accounts;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
 
     public static Builder builder() {
@@ -48,12 +36,10 @@ public final class GetAccountsLegacyResult {
     @CustomType.Builder
     public static final class Builder {
         private List<String> accounts;
-        private String id;
         public Builder() {}
         public Builder(GetAccountsLegacyResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accounts = defaults.accounts;
-    	      this.id = defaults.id;
         }
 
         @CustomType.Setter
@@ -67,18 +53,9 @@ public final class GetAccountsLegacyResult {
         public Builder accounts(String... accounts) {
             return accounts(List.of(accounts));
         }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetAccountsLegacyResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         public GetAccountsLegacyResult build() {
             final var _resultValue = new GetAccountsLegacyResult();
             _resultValue.accounts = accounts;
-            _resultValue.id = id;
             return _resultValue;
         }
     }

@@ -27,7 +27,7 @@ class GetFilesResult:
     """
     A collection of values returned by getFiles.
     """
-    def __init__(__self__, content_type=None, datastore_id=None, file_name_regex=None, files=None, id=None, node_name=None):
+    def __init__(__self__, content_type=None, datastore_id=None, file_name_regex=None, files=None, node_name=None):
         if content_type and not isinstance(content_type, str):
             raise TypeError("Expected argument 'content_type' to be a str")
         pulumi.set(__self__, "content_type", content_type)
@@ -40,9 +40,6 @@ class GetFilesResult:
         if files and not isinstance(files, list):
             raise TypeError("Expected argument 'files' to be a list")
         pulumi.set(__self__, "files", files)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if node_name and not isinstance(node_name, str):
             raise TypeError("Expected argument 'node_name' to be a str")
         pulumi.set(__self__, "node_name", node_name)
@@ -80,14 +77,6 @@ class GetFilesResult:
         return pulumi.get(self, "files")
 
     @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
     @pulumi.getter(name="nodeName")
     def node_name(self) -> _builtins.str:
         """
@@ -106,7 +95,6 @@ class AwaitableGetFilesResult(GetFilesResult):
             datastore_id=self.datastore_id,
             file_name_regex=self.file_name_regex,
             files=self.files,
-            id=self.id,
             node_name=self.node_name)
 
 
@@ -131,9 +119,9 @@ def get_files(content_type: Optional[_builtins.str] = None,
         content_type="iso")
     image_exists = std.anytrue(input=[f.file_name == "noble-server-cloudimg-amd64.img" for f in iso_files.files]).result
     # Only download if the image doesn't already exist
-    ubuntu_noble: list[Any] = []
-    for range in [{"value": i} for i in range(0, 0 if image_exists else 1)]:
-        ubuntu_noble.append(proxmoxve.download.FileLegacy(f"ubuntu_noble-{range['value']}",
+    ubuntu_noble: list[proxmoxve.download.FileLegacy] = []
+    for ubuntu_noble_range in [{"value": i} for i in range(0, 0 if image_exists else 1)]:
+        ubuntu_noble.append(proxmoxve.download.FileLegacy(f"ubuntu_noble-{ubuntu_noble_range['value']}",
             datastore_id="local",
             node_name="pve",
             content_type="iso",
@@ -164,7 +152,6 @@ def get_files(content_type: Optional[_builtins.str] = None,
         datastore_id=pulumi.get(__ret__, 'datastore_id'),
         file_name_regex=pulumi.get(__ret__, 'file_name_regex'),
         files=pulumi.get(__ret__, 'files'),
-        id=pulumi.get(__ret__, 'id'),
         node_name=pulumi.get(__ret__, 'node_name'))
 def get_files_output(content_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      datastore_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -187,9 +174,9 @@ def get_files_output(content_type: pulumi.Input[Optional[Optional[_builtins.str]
         content_type="iso")
     image_exists = std.anytrue(input=[f.file_name == "noble-server-cloudimg-amd64.img" for f in iso_files.files]).result
     # Only download if the image doesn't already exist
-    ubuntu_noble: list[Any] = []
-    for range in [{"value": i} for i in range(0, 0 if image_exists else 1)]:
-        ubuntu_noble.append(proxmoxve.download.FileLegacy(f"ubuntu_noble-{range['value']}",
+    ubuntu_noble: list[proxmoxve.download.FileLegacy] = []
+    for ubuntu_noble_range in [{"value": i} for i in range(0, 0 if image_exists else 1)]:
+        ubuntu_noble.append(proxmoxve.download.FileLegacy(f"ubuntu_noble-{ubuntu_noble_range['value']}",
             datastore_id="local",
             node_name="pve",
             content_type="iso",
@@ -219,5 +206,4 @@ def get_files_output(content_type: pulumi.Input[Optional[Optional[_builtins.str]
         datastore_id=pulumi.get(__response__, 'datastore_id'),
         file_name_regex=pulumi.get(__response__, 'file_name_regex'),
         files=pulumi.get(__response__, 'files'),
-        id=pulumi.get(__response__, 'id'),
         node_name=pulumi.get(__response__, 'node_name')))

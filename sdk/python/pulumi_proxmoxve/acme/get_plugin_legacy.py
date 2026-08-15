@@ -26,7 +26,7 @@ class GetPluginLegacyResult:
     """
     A collection of values returned by getPluginLegacy.
     """
-    def __init__(__self__, api=None, data=None, digest=None, id=None, plugin=None, type=None, validation_delay=None):
+    def __init__(__self__, api=None, data=None, digest=None, plugin=None, type=None, validation_delay=None):
         if api and not isinstance(api, str):
             raise TypeError("Expected argument 'api' to be a str")
         pulumi.set(__self__, "api", api)
@@ -36,9 +36,6 @@ class GetPluginLegacyResult:
         if digest and not isinstance(digest, str):
             raise TypeError("Expected argument 'digest' to be a str")
         pulumi.set(__self__, "digest", digest)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if plugin and not isinstance(plugin, str):
             raise TypeError("Expected argument 'plugin' to be a str")
         pulumi.set(__self__, "plugin", plugin)
@@ -75,14 +72,6 @@ class GetPluginLegacyResult:
 
     @_builtins.property
     @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
-    @pulumi.getter
     def plugin(self) -> _builtins.str:
         """
         ACME Plugin ID name.
@@ -115,7 +104,6 @@ class AwaitableGetPluginLegacyResult(GetPluginLegacyResult):
             api=self.api,
             data=self.data,
             digest=self.digest,
-            id=self.id,
             plugin=self.plugin,
             type=self.type,
             validation_delay=self.validation_delay)
@@ -150,7 +138,6 @@ def get_plugin_legacy(plugin: Optional[_builtins.str] = None,
         api=pulumi.get(__ret__, 'api'),
         data=pulumi.get(__ret__, 'data'),
         digest=pulumi.get(__ret__, 'digest'),
-        id=pulumi.get(__ret__, 'id'),
         plugin=pulumi.get(__ret__, 'plugin'),
         type=pulumi.get(__ret__, 'type'),
         validation_delay=pulumi.get(__ret__, 'validation_delay'))
@@ -182,7 +169,6 @@ def get_plugin_legacy_output(plugin: pulumi.Input[Optional[_builtins.str]] = Non
         api=pulumi.get(__response__, 'api'),
         data=pulumi.get(__response__, 'data'),
         digest=pulumi.get(__response__, 'digest'),
-        id=pulumi.get(__response__, 'id'),
         plugin=pulumi.get(__response__, 'plugin'),
         type=pulumi.get(__response__, 'type'),
         validation_delay=pulumi.get(__response__, 'validation_delay')))

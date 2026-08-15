@@ -27,21 +27,10 @@ class GetReplicationsResult:
     """
     A collection of values returned by getReplications.
     """
-    def __init__(__self__, id=None, replications=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, replications=None):
         if replications and not isinstance(replications, list):
             raise TypeError("Expected argument 'replications' to be a list")
         pulumi.set(__self__, "replications", replications)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -58,7 +47,6 @@ class AwaitableGetReplicationsResult(GetReplicationsResult):
         if False:
             yield self
         return GetReplicationsResult(
-            id=self.id,
             replications=self.replications)
 
 
@@ -84,7 +72,6 @@ def get_replications(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGe
     __ret__ = pulumi.runtime.invoke('proxmoxve:index/getReplications:getReplications', __args__, opts=opts, typ=GetReplicationsResult).value
 
     return AwaitableGetReplicationsResult(
-        id=pulumi.get(__ret__, 'id'),
         replications=pulumi.get(__ret__, 'replications'))
 def get_replications_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetReplicationsResult]:
     """
@@ -107,5 +94,4 @@ def get_replications_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.In
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:index/getReplications:getReplications', __args__, opts=opts, typ=GetReplicationsResult)
     return __ret__.apply(lambda __response__: GetReplicationsResult(
-        id=pulumi.get(__response__, 'id'),
         replications=pulumi.get(__response__, 'replications')))

@@ -104,21 +104,13 @@ namespace Pulumi.ProxmoxVE
     public sealed class GetReplicationsResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// List of Replications.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetReplicationsReplicationResult> Replications;
 
         [OutputConstructor]
-        private GetReplicationsResult(
-            string id,
-
-            ImmutableArray<Outputs.GetReplicationsReplicationResult> replications)
+        private GetReplicationsResult(ImmutableArray<Outputs.GetReplicationsReplicationResult> replications)
         {
-            Id = id;
             Replications = replications;
         }
     }

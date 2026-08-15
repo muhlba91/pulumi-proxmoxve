@@ -49,12 +49,8 @@ type LookupOpenfabricLegacyResult struct {
 }
 
 func LookupOpenfabricLegacyOutput(ctx *pulumi.Context, args LookupOpenfabricLegacyOutputArgs, opts ...pulumi.InvokeOption) LookupOpenfabricLegacyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOpenfabricLegacyResultOutput, error) {
-			args := v.(LookupOpenfabricLegacyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:sdn/fabric/node/getOpenfabricLegacy:getOpenfabricLegacy", args, LookupOpenfabricLegacyResultOutput{}, options).(LookupOpenfabricLegacyResultOutput), nil
-		}).(LookupOpenfabricLegacyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:sdn/fabric/node/getOpenfabricLegacy:getOpenfabricLegacy", args, LookupOpenfabricLegacyResultOutput{}, options).(LookupOpenfabricLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getOpenfabricLegacy.

@@ -57,10 +57,8 @@ type GetGroupsLegacyResult struct {
 }
 
 func GetGroupsLegacyOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetGroupsLegacyResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetGroupsLegacyResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("proxmoxve:index/getGroupsLegacy:getGroupsLegacy", nil, GetGroupsLegacyResultOutput{}, options).(GetGroupsLegacyResultOutput), nil
-	}).(GetGroupsLegacyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:index/getGroupsLegacy:getGroupsLegacy", nil, GetGroupsLegacyResultOutput{}, options).(GetGroupsLegacyResultOutput)
 }
 
 // A collection of values returned by getGroupsLegacy.

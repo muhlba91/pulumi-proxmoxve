@@ -88,10 +88,7 @@ import (
 //						Keys: pulumi.StringArray{
 //							std.TrimspaceOutput(ctx, std.TrimspaceOutputArgs{
 //								Input: ubuntuContainerKey.PublicKeyOpenssh,
-//							}, nil).ApplyT(func(invoke std.TrimspaceResult) (*string, error) {
-//								val := invoke.Result
-//								return &val, nil
-//							}).(pulumi.StringPtrOutput),
+//							}, nil).Result(),
 //						},
 //						Password: ubuntuContainerPassword.Result,
 //					},
@@ -106,7 +103,7 @@ import (
 //					Size:        pulumi.Int(4),
 //				},
 //				OperatingSystem: &proxmoxve.ContainerLegacyOperatingSystemArgs{
-//					TemplateFileId: ubuntu2504LxcImg.ID(),
+//					TemplateFileId: ubuntu2504LxcImg.ID().ToIDOutput().ToStringOutput(),
 //					Type:           pulumi.String("ubuntu"),
 //				},
 //				Startup: &proxmoxve.ContainerLegacyStartupArgs{

@@ -56,10 +56,8 @@ type GetHagroupsResult struct {
 }
 
 func GetHagroupsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetHagroupsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetHagroupsResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("proxmoxve:index/getHagroups:getHagroups", nil, GetHagroupsResultOutput{}, options).(GetHagroupsResultOutput), nil
-	}).(GetHagroupsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:index/getHagroups:getHagroups", nil, GetHagroupsResultOutput{}, options).(GetHagroupsResultOutput)
 }
 
 // A collection of values returned by getHagroups.

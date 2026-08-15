@@ -184,10 +184,6 @@ namespace Pulumi.ProxmoxVE.Sdn
     public sealed class GetZonesResult
     {
         /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
         /// Filter zones by type (simple, vlan, qinq, vxlan, evpn).
         /// </summary>
         public readonly string? Type;
@@ -198,13 +194,10 @@ namespace Pulumi.ProxmoxVE.Sdn
 
         [OutputConstructor]
         private GetZonesResult(
-            string id,
-
             string? type,
 
             ImmutableArray<Outputs.GetZonesZoneResult> zones)
         {
-            Id = id;
             Type = type;
             Zones = zones;
         }

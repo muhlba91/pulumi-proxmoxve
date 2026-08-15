@@ -27,21 +27,10 @@ class GetPluginsResult:
     """
     A collection of values returned by getPlugins.
     """
-    def __init__(__self__, id=None, plugins=None):
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
+    def __init__(__self__, plugins=None):
         if plugins and not isinstance(plugins, list):
             raise TypeError("Expected argument 'plugins' to be a list")
         pulumi.set(__self__, "plugins", plugins)
-
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter
@@ -58,7 +47,6 @@ class AwaitableGetPluginsResult(GetPluginsResult):
         if False:
             yield self
         return GetPluginsResult(
-            id=self.id,
             plugins=self.plugins)
 
 
@@ -81,7 +69,6 @@ def get_plugins(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPlug
     __ret__ = pulumi.runtime.invoke('proxmoxve:acme/getPlugins:getPlugins', __args__, opts=opts, typ=GetPluginsResult).value
 
     return AwaitableGetPluginsResult(
-        id=pulumi.get(__ret__, 'id'),
         plugins=pulumi.get(__ret__, 'plugins'))
 def get_plugins_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPluginsResult]:
     """
@@ -101,5 +88,4 @@ def get_plugins_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeO
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:acme/getPlugins:getPlugins', __args__, opts=opts, typ=GetPluginsResult)
     return __ret__.apply(lambda __response__: GetPluginsResult(
-        id=pulumi.get(__response__, 'id'),
         plugins=pulumi.get(__response__, 'plugins')))

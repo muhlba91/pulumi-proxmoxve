@@ -55,10 +55,8 @@ type GetJobsResult struct {
 }
 
 func GetJobsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetJobsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetJobsResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("proxmoxve:backup/getJobs:getJobs", nil, GetJobsResultOutput{}, options).(GetJobsResultOutput), nil
-	}).(GetJobsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:backup/getJobs:getJobs", nil, GetJobsResultOutput{}, options).(GetJobsResultOutput)
 }
 
 // A collection of values returned by getJobs.

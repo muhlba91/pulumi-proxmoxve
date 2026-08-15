@@ -6,17 +6,11 @@ package io.muehlbachler.pulumi.proxmoxve.sdn.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import io.muehlbachler.pulumi.proxmoxve.sdn.outputs.GetVnetsVnet;
-import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetVnetsResult {
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
     /**
      * @return List of SDN VNets.
      * 
@@ -24,13 +18,6 @@ public final class GetVnetsResult {
     private List<GetVnetsVnet> vnets;
 
     private GetVnetsResult() {}
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
     /**
      * @return List of SDN VNets.
      * 
@@ -48,23 +35,13 @@ public final class GetVnetsResult {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String id;
         private List<GetVnetsVnet> vnets;
         public Builder() {}
         public Builder(GetVnetsResult defaults) {
     	      Objects.requireNonNull(defaults);
-    	      this.id = defaults.id;
     	      this.vnets = defaults.vnets;
         }
 
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetVnetsResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
         @CustomType.Setter
         public Builder vnets(List<GetVnetsVnet> vnets) {
             if (vnets == null) {
@@ -78,7 +55,6 @@ public final class GetVnetsResult {
         }
         public GetVnetsResult build() {
             final var _resultValue = new GetVnetsResult();
-            _resultValue.id = id;
             _resultValue.vnets = vnets;
             return _resultValue;
         }

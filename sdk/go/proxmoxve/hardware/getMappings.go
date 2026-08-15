@@ -88,12 +88,8 @@ type GetMappingsResult struct {
 }
 
 func GetMappingsOutput(ctx *pulumi.Context, args GetMappingsOutputArgs, opts ...pulumi.InvokeOption) GetMappingsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetMappingsResultOutput, error) {
-			args := v.(GetMappingsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:hardware/getMappings:getMappings", args, GetMappingsResultOutput{}, options).(GetMappingsResultOutput), nil
-		}).(GetMappingsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:hardware/getMappings:getMappings", args, GetMappingsResultOutput{}, options).(GetMappingsResultOutput)
 }
 
 // A collection of arguments for invoking getMappings.

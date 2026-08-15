@@ -76,7 +76,7 @@ import * as utilities from "./utilities";
  *             userAccount: {
  *                 keys: [std.trimspaceOutput({
  *                     input: ubuntuVmKey.publicKeyOpenssh,
- *                 }).apply(invoke => invoke.result)],
+ *                 }).result],
  *                 password: ubuntuVmPassword.result,
  *                 username: "ubuntu",
  *             },

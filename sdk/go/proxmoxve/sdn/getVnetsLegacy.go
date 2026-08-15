@@ -54,17 +54,13 @@ func GetVnetsLegacy(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetVnets
 
 // A collection of values returned by getVnetsLegacy.
 type GetVnetsLegacyResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// List of SDN VNets.
 	Vnets []GetVnetsLegacyVnet `pulumi:"vnets"`
 }
 
 func GetVnetsLegacyOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetVnetsLegacyResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetVnetsLegacyResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("proxmoxve:sdn/getVnetsLegacy:getVnetsLegacy", nil, GetVnetsLegacyResultOutput{}, options).(GetVnetsLegacyResultOutput), nil
-	}).(GetVnetsLegacyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:sdn/getVnetsLegacy:getVnetsLegacy", nil, GetVnetsLegacyResultOutput{}, options).(GetVnetsLegacyResultOutput)
 }
 
 // A collection of values returned by getVnetsLegacy.
@@ -80,11 +76,6 @@ func (o GetVnetsLegacyResultOutput) ToGetVnetsLegacyResultOutput() GetVnetsLegac
 
 func (o GetVnetsLegacyResultOutput) ToGetVnetsLegacyResultOutputWithContext(ctx context.Context) GetVnetsLegacyResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetVnetsLegacyResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVnetsLegacyResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // List of SDN VNets.

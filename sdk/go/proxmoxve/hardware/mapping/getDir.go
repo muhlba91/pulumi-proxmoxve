@@ -68,12 +68,8 @@ type LookupDirResult struct {
 }
 
 func LookupDirOutput(ctx *pulumi.Context, args LookupDirOutputArgs, opts ...pulumi.InvokeOption) LookupDirResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDirResultOutput, error) {
-			args := v.(LookupDirArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:hardware/mapping/getDir:getDir", args, LookupDirResultOutput{}, options).(LookupDirResultOutput), nil
-		}).(LookupDirResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:hardware/mapping/getDir:getDir", args, LookupDirResultOutput{}, options).(LookupDirResultOutput)
 }
 
 // A collection of arguments for invoking getDir.

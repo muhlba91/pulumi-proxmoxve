@@ -45,12 +45,8 @@ type LookupOspfResult struct {
 }
 
 func LookupOspfOutput(ctx *pulumi.Context, args LookupOspfOutputArgs, opts ...pulumi.InvokeOption) LookupOspfResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOspfResultOutput, error) {
-			args := v.(LookupOspfArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:sdn/fabric/node/getOspf:getOspf", args, LookupOspfResultOutput{}, options).(LookupOspfResultOutput), nil
-		}).(LookupOspfResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:sdn/fabric/node/getOspf:getOspf", args, LookupOspfResultOutput{}, options).(LookupOspfResultOutput)
 }
 
 // A collection of arguments for invoking getOspf.

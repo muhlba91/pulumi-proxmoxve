@@ -112,12 +112,8 @@ type LookupEvpnLegacyResult struct {
 }
 
 func LookupEvpnLegacyOutput(ctx *pulumi.Context, args LookupEvpnLegacyOutputArgs, opts ...pulumi.InvokeOption) LookupEvpnLegacyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupEvpnLegacyResultOutput, error) {
-			args := v.(LookupEvpnLegacyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:sdn/zone/getEvpnLegacy:getEvpnLegacy", args, LookupEvpnLegacyResultOutput{}, options).(LookupEvpnLegacyResultOutput), nil
-		}).(LookupEvpnLegacyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:sdn/zone/getEvpnLegacy:getEvpnLegacy", args, LookupEvpnLegacyResultOutput{}, options).(LookupEvpnLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getEvpnLegacy.

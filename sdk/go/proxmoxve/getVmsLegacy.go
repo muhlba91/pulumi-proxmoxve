@@ -113,12 +113,8 @@ type GetVmsLegacyResult struct {
 }
 
 func GetVmsLegacyOutput(ctx *pulumi.Context, args GetVmsLegacyOutputArgs, opts ...pulumi.InvokeOption) GetVmsLegacyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetVmsLegacyResultOutput, error) {
-			args := v.(GetVmsLegacyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:index/getVmsLegacy:getVmsLegacy", args, GetVmsLegacyResultOutput{}, options).(GetVmsLegacyResultOutput), nil
-		}).(GetVmsLegacyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:index/getVmsLegacy:getVmsLegacy", args, GetVmsLegacyResultOutput{}, options).(GetVmsLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getVmsLegacy.

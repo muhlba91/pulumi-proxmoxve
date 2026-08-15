@@ -76,8 +76,6 @@ type GetZonesArgs struct {
 
 // A collection of values returned by getZones.
 type GetZonesResult struct {
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 	// Filter zones by type (simple, vlan, qinq, vxlan, evpn).
 	Type *string `pulumi:"type"`
 	// List of SDN zones.
@@ -85,12 +83,8 @@ type GetZonesResult struct {
 }
 
 func GetZonesOutput(ctx *pulumi.Context, args GetZonesOutputArgs, opts ...pulumi.InvokeOption) GetZonesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetZonesResultOutput, error) {
-			args := v.(GetZonesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:sdn/getZones:getZones", args, GetZonesResultOutput{}, options).(GetZonesResultOutput), nil
-		}).(GetZonesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:sdn/getZones:getZones", args, GetZonesResultOutput{}, options).(GetZonesResultOutput)
 }
 
 // A collection of arguments for invoking getZones.
@@ -116,11 +110,6 @@ func (o GetZonesResultOutput) ToGetZonesResultOutput() GetZonesResultOutput {
 
 func (o GetZonesResultOutput) ToGetZonesResultOutputWithContext(ctx context.Context) GetZonesResultOutput {
 	return o
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetZonesResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetZonesResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Filter zones by type (simple, vlan, qinq, vxlan, evpn).

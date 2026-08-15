@@ -64,12 +64,8 @@ type LookupRoleLegacyResult struct {
 }
 
 func LookupRoleLegacyOutput(ctx *pulumi.Context, args LookupRoleLegacyOutputArgs, opts ...pulumi.InvokeOption) LookupRoleLegacyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRoleLegacyResultOutput, error) {
-			args := v.(LookupRoleLegacyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:index/getRoleLegacy:getRoleLegacy", args, LookupRoleLegacyResultOutput{}, options).(LookupRoleLegacyResultOutput), nil
-		}).(LookupRoleLegacyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:index/getRoleLegacy:getRoleLegacy", args, LookupRoleLegacyResultOutput{}, options).(LookupRoleLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getRoleLegacy.

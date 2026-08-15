@@ -26,13 +26,10 @@ class GetAccountsResult:
     """
     A collection of values returned by getAccounts.
     """
-    def __init__(__self__, accounts=None, id=None):
+    def __init__(__self__, accounts=None):
         if accounts and not isinstance(accounts, list):
             raise TypeError("Expected argument 'accounts' to be a list")
         pulumi.set(__self__, "accounts", accounts)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
 
     @_builtins.property
     @pulumi.getter
@@ -42,14 +39,6 @@ class GetAccountsResult:
         """
         return pulumi.get(self, "accounts")
 
-    @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
 
 class AwaitableGetAccountsResult(GetAccountsResult):
     # pylint: disable=using-constant-test
@@ -57,8 +46,7 @@ class AwaitableGetAccountsResult(GetAccountsResult):
         if False:
             yield self
         return GetAccountsResult(
-            accounts=self.accounts,
-            id=self.id)
+            accounts=self.accounts)
 
 
 def get_accounts(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountsResult:
@@ -80,8 +68,7 @@ def get_accounts(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAcc
     __ret__ = pulumi.runtime.invoke('proxmoxve:acme/getAccounts:getAccounts', __args__, opts=opts, typ=GetAccountsResult).value
 
     return AwaitableGetAccountsResult(
-        accounts=pulumi.get(__ret__, 'accounts'),
-        id=pulumi.get(__ret__, 'id'))
+        accounts=pulumi.get(__ret__, 'accounts'))
 def get_accounts_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountsResult]:
     """
     Retrieves the list of ACME accounts.
@@ -100,5 +87,4 @@ def get_accounts_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.Invoke
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('proxmoxve:acme/getAccounts:getAccounts', __args__, opts=opts, typ=GetAccountsResult)
     return __ret__.apply(lambda __response__: GetAccountsResult(
-        accounts=pulumi.get(__response__, 'accounts'),
-        id=pulumi.get(__response__, 'id')))
+        accounts=pulumi.get(__response__, 'accounts')))

@@ -51,15 +51,11 @@ func GetAccounts(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetAccounts
 type GetAccountsResult struct {
 	// The identifiers of the ACME accounts.
 	Accounts []string `pulumi:"accounts"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
 }
 
 func GetAccountsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetAccountsResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetAccountsResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("proxmoxve:acme/getAccounts:getAccounts", nil, GetAccountsResultOutput{}, options).(GetAccountsResultOutput), nil
-	}).(GetAccountsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:acme/getAccounts:getAccounts", nil, GetAccountsResultOutput{}, options).(GetAccountsResultOutput)
 }
 
 // A collection of values returned by getAccounts.
@@ -80,11 +76,6 @@ func (o GetAccountsResultOutput) ToGetAccountsResultOutputWithContext(ctx contex
 // The identifiers of the ACME accounts.
 func (o GetAccountsResultOutput) Accounts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetAccountsResult) []string { return v.Accounts }).(pulumi.StringArrayOutput)
-}
-
-// The provider-assigned unique ID for this managed resource.
-func (o GetAccountsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetAccountsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -47,12 +47,8 @@ type LookupOspfLegacyResult struct {
 }
 
 func LookupOspfLegacyOutput(ctx *pulumi.Context, args LookupOspfLegacyOutputArgs, opts ...pulumi.InvokeOption) LookupOspfLegacyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOspfLegacyResultOutput, error) {
-			args := v.(LookupOspfLegacyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:sdn/fabric/node/getOspfLegacy:getOspfLegacy", args, LookupOspfLegacyResultOutput{}, options).(LookupOspfLegacyResultOutput), nil
-		}).(LookupOspfLegacyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:sdn/fabric/node/getOspfLegacy:getOspfLegacy", args, LookupOspfLegacyResultOutput{}, options).(LookupOspfLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getOspfLegacy.

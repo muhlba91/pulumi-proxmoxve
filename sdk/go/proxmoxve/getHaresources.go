@@ -75,12 +75,8 @@ type GetHaresourcesResult struct {
 }
 
 func GetHaresourcesOutput(ctx *pulumi.Context, args GetHaresourcesOutputArgs, opts ...pulumi.InvokeOption) GetHaresourcesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetHaresourcesResultOutput, error) {
-			args := v.(GetHaresourcesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:index/getHaresources:getHaresources", args, GetHaresourcesResultOutput{}, options).(GetHaresourcesResultOutput), nil
-		}).(GetHaresourcesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:index/getHaresources:getHaresources", args, GetHaresourcesResultOutput{}, options).(GetHaresourcesResultOutput)
 }
 
 // A collection of arguments for invoking getHaresources.

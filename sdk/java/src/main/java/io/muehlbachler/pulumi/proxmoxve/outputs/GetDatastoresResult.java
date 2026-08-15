@@ -26,11 +26,6 @@ public final class GetDatastoresResult {
      */
     private @Nullable GetDatastoresFilters filters;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return The name of the node to retrieve the stores from.
      * 
      */
@@ -52,13 +47,6 @@ public final class GetDatastoresResult {
         return Optional.ofNullable(this.filters);
     }
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
-    }
-    /**
      * @return The name of the node to retrieve the stores from.
      * 
      */
@@ -77,14 +65,12 @@ public final class GetDatastoresResult {
     public static final class Builder {
         private @Nullable List<GetDatastoresDatastore> datastores;
         private @Nullable GetDatastoresFilters filters;
-        private String id;
         private String nodeName;
         public Builder() {}
         public Builder(GetDatastoresResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datastores = defaults.datastores;
     	      this.filters = defaults.filters;
-    	      this.id = defaults.id;
     	      this.nodeName = defaults.nodeName;
         }
 
@@ -104,14 +90,6 @@ public final class GetDatastoresResult {
             return this;
         }
         @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetDatastoresResult", "id");
-            }
-            this.id = id;
-            return this;
-        }
-        @CustomType.Setter
         public Builder nodeName(String nodeName) {
             if (nodeName == null) {
               throw new MissingRequiredPropertyException("GetDatastoresResult", "nodeName");
@@ -123,7 +101,6 @@ public final class GetDatastoresResult {
             final var _resultValue = new GetDatastoresResult();
             _resultValue.datastores = datastores;
             _resultValue.filters = filters;
-            _resultValue.id = id;
             _resultValue.nodeName = nodeName;
             return _resultValue;
         }

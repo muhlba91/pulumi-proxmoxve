@@ -49,10 +49,6 @@ export interface GetDatastoresResult {
      */
     readonly filters?: outputs.GetDatastoresFilters;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * The name of the node to retrieve the stores from.
      */
     readonly nodeName: string;

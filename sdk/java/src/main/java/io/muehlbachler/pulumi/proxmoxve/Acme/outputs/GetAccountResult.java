@@ -24,11 +24,6 @@ public final class GetAccountResult {
      */
     private String directory;
     /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    private String id;
-    /**
      * @return The location URL of the ACME account.
      * 
      */
@@ -58,13 +53,6 @@ public final class GetAccountResult {
      */
     public String directory() {
         return this.directory;
-    }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
-    public String id() {
-        return this.id;
     }
     /**
      * @return The location URL of the ACME account.
@@ -99,7 +87,6 @@ public final class GetAccountResult {
     public static final class Builder {
         private GetAccountAccount account;
         private String directory;
-        private String id;
         private String location;
         private @Nullable String name;
         private String tos;
@@ -108,7 +95,6 @@ public final class GetAccountResult {
     	      Objects.requireNonNull(defaults);
     	      this.account = defaults.account;
     	      this.directory = defaults.directory;
-    	      this.id = defaults.id;
     	      this.location = defaults.location;
     	      this.name = defaults.name;
     	      this.tos = defaults.tos;
@@ -128,14 +114,6 @@ public final class GetAccountResult {
               throw new MissingRequiredPropertyException("GetAccountResult", "directory");
             }
             this.directory = directory;
-            return this;
-        }
-        @CustomType.Setter
-        public Builder id(String id) {
-            if (id == null) {
-              throw new MissingRequiredPropertyException("GetAccountResult", "id");
-            }
-            this.id = id;
             return this;
         }
         @CustomType.Setter
@@ -164,7 +142,6 @@ public final class GetAccountResult {
             final var _resultValue = new GetAccountResult();
             _resultValue.account = account;
             _resultValue.directory = directory;
-            _resultValue.id = id;
             _resultValue.location = location;
             _resultValue.name = name;
             _resultValue.tos = tos;

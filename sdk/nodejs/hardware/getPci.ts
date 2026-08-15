@@ -75,10 +75,6 @@ export interface GetPciResult {
      */
     readonly filters?: outputs.hardware.GetPciFilters;
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * The name of the node to list PCI devices from.
      */
     readonly nodeName: string;

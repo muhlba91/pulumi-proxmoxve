@@ -28,16 +28,13 @@ class GetDatastoresLegacyResult:
     """
     A collection of values returned by getDatastoresLegacy.
     """
-    def __init__(__self__, datastores=None, filters=None, id=None, node_name=None):
+    def __init__(__self__, datastores=None, filters=None, node_name=None):
         if datastores and not isinstance(datastores, list):
             raise TypeError("Expected argument 'datastores' to be a list")
         pulumi.set(__self__, "datastores", datastores)
         if filters and not isinstance(filters, dict):
             raise TypeError("Expected argument 'filters' to be a dict")
         pulumi.set(__self__, "filters", filters)
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        pulumi.set(__self__, "id", id)
         if node_name and not isinstance(node_name, str):
             raise TypeError("Expected argument 'node_name' to be a str")
         pulumi.set(__self__, "node_name", node_name)
@@ -59,14 +56,6 @@ class GetDatastoresLegacyResult:
         return pulumi.get(self, "filters")
 
     @_builtins.property
-    @pulumi.getter
-    def id(self) -> _builtins.str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
-        return pulumi.get(self, "id")
-
-    @_builtins.property
     @pulumi.getter(name="nodeName")
     def node_name(self) -> _builtins.str:
         """
@@ -83,7 +72,6 @@ class AwaitableGetDatastoresLegacyResult(GetDatastoresLegacyResult):
         return GetDatastoresLegacyResult(
             datastores=self.datastores,
             filters=self.filters,
-            id=self.id,
             node_name=self.node_name)
 
 
@@ -111,7 +99,6 @@ def get_datastores_legacy(datastores: Optional[Sequence[Union['GetDatastoresLega
     return AwaitableGetDatastoresLegacyResult(
         datastores=pulumi.get(__ret__, 'datastores'),
         filters=pulumi.get(__ret__, 'filters'),
-        id=pulumi.get(__ret__, 'id'),
         node_name=pulumi.get(__ret__, 'node_name'))
 def get_datastores_legacy_output(datastores: pulumi.Input[Optional[Optional[Sequence[Union['GetDatastoresLegacyDatastoreArgs', 'GetDatastoresLegacyDatastoreArgsDict']]]]] = None,
                                  filters: pulumi.Input[Optional[Optional[Union['GetDatastoresLegacyFiltersArgs', 'GetDatastoresLegacyFiltersArgsDict']]]] = None,
@@ -136,5 +123,4 @@ def get_datastores_legacy_output(datastores: pulumi.Input[Optional[Optional[Sequ
     return __ret__.apply(lambda __response__: GetDatastoresLegacyResult(
         datastores=pulumi.get(__response__, 'datastores'),
         filters=pulumi.get(__response__, 'filters'),
-        id=pulumi.get(__response__, 'id'),
         node_name=pulumi.get(__response__, 'node_name')))

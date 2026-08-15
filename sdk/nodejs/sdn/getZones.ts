@@ -57,10 +57,6 @@ export interface GetZonesArgs {
  */
 export interface GetZonesResult {
     /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
-    /**
      * Filter zones by type (simple, vlan, qinq, vxlan, evpn).
      */
     readonly type?: string;

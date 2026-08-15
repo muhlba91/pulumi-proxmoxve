@@ -95,12 +95,8 @@ type LookupQinqResult struct {
 }
 
 func LookupQinqOutput(ctx *pulumi.Context, args LookupQinqOutputArgs, opts ...pulumi.InvokeOption) LookupQinqResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupQinqResultOutput, error) {
-			args := v.(LookupQinqArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("proxmoxve:sdn/zone/getQinq:getQinq", args, LookupQinqResultOutput{}, options).(LookupQinqResultOutput), nil
-		}).(LookupQinqResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("proxmoxve:sdn/zone/getQinq:getQinq", args, LookupQinqResultOutput{}, options).(LookupQinqResultOutput)
 }
 
 // A collection of arguments for invoking getQinq.
