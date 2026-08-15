@@ -57,8 +57,10 @@ type GetVnetsResult struct {
 }
 
 func GetVnetsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetVnetsResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:sdn/getVnets:getVnets", nil, GetVnetsResultOutput{}, options).(GetVnetsResultOutput)
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetVnetsResultOutput, error) {
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("proxmoxve:sdn/getVnets:getVnets", nil, GetVnetsResultOutput{}, options).(GetVnetsResultOutput), nil
+	}).(GetVnetsResultOutput)
 }
 
 // A collection of values returned by getVnets.

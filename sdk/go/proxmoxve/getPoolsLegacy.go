@@ -55,8 +55,10 @@ type GetPoolsLegacyResult struct {
 }
 
 func GetPoolsLegacyOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetPoolsLegacyResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:index/getPoolsLegacy:getPoolsLegacy", nil, GetPoolsLegacyResultOutput{}, options).(GetPoolsLegacyResultOutput)
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetPoolsLegacyResultOutput, error) {
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("proxmoxve:index/getPoolsLegacy:getPoolsLegacy", nil, GetPoolsLegacyResultOutput{}, options).(GetPoolsLegacyResultOutput), nil
+	}).(GetPoolsLegacyResultOutput)
 }
 
 // A collection of values returned by getPoolsLegacy.

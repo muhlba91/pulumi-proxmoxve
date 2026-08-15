@@ -110,8 +110,12 @@ type LookupEvpnResult struct {
 }
 
 func LookupEvpnOutput(ctx *pulumi.Context, args LookupEvpnOutputArgs, opts ...pulumi.InvokeOption) LookupEvpnResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:sdn/zone/getEvpn:getEvpn", args, LookupEvpnResultOutput{}, options).(LookupEvpnResultOutput)
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupEvpnResultOutput, error) {
+			args := v.(LookupEvpnArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:sdn/zone/getEvpn:getEvpn", args, LookupEvpnResultOutput{}, options).(LookupEvpnResultOutput), nil
+		}).(LookupEvpnResultOutput)
 }
 
 // A collection of arguments for invoking getEvpn.

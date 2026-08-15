@@ -97,8 +97,12 @@ type LookupQinqLegacyResult struct {
 }
 
 func LookupQinqLegacyOutput(ctx *pulumi.Context, args LookupQinqLegacyOutputArgs, opts ...pulumi.InvokeOption) LookupQinqLegacyResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:sdn/zone/getQinqLegacy:getQinqLegacy", args, LookupQinqLegacyResultOutput{}, options).(LookupQinqLegacyResultOutput)
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupQinqLegacyResultOutput, error) {
+			args := v.(LookupQinqLegacyArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:sdn/zone/getQinqLegacy:getQinqLegacy", args, LookupQinqLegacyResultOutput{}, options).(LookupQinqLegacyResultOutput), nil
+		}).(LookupQinqLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getQinqLegacy.

@@ -70,8 +70,12 @@ type LookupUsbLegacyResult struct {
 }
 
 func LookupUsbLegacyOutput(ctx *pulumi.Context, args LookupUsbLegacyOutputArgs, opts ...pulumi.InvokeOption) LookupUsbLegacyResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:hardware/mapping/getUsbLegacy:getUsbLegacy", args, LookupUsbLegacyResultOutput{}, options).(LookupUsbLegacyResultOutput)
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupUsbLegacyResultOutput, error) {
+			args := v.(LookupUsbLegacyArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:hardware/mapping/getUsbLegacy:getUsbLegacy", args, LookupUsbLegacyResultOutput{}, options).(LookupUsbLegacyResultOutput), nil
+		}).(LookupUsbLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getUsbLegacy.

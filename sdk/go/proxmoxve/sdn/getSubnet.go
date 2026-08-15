@@ -53,8 +53,12 @@ type LookupSubnetResult struct {
 }
 
 func LookupSubnetOutput(ctx *pulumi.Context, args LookupSubnetOutputArgs, opts ...pulumi.InvokeOption) LookupSubnetResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:sdn/getSubnet:getSubnet", args, LookupSubnetResultOutput{}, options).(LookupSubnetResultOutput)
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupSubnetResultOutput, error) {
+			args := v.(LookupSubnetArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:sdn/getSubnet:getSubnet", args, LookupSubnetResultOutput{}, options).(LookupSubnetResultOutput), nil
+		}).(LookupSubnetResultOutput)
 }
 
 // A collection of arguments for invoking getSubnet.

@@ -79,8 +79,12 @@ type LookupRepositoryResult struct {
 }
 
 func LookupRepositoryOutput(ctx *pulumi.Context, args LookupRepositoryOutputArgs, opts ...pulumi.InvokeOption) LookupRepositoryResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:apt/standard/getRepository:getRepository", args, LookupRepositoryResultOutput{}, options).(LookupRepositoryResultOutput)
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupRepositoryResultOutput, error) {
+			args := v.(LookupRepositoryArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:apt/standard/getRepository:getRepository", args, LookupRepositoryResultOutput{}, options).(LookupRepositoryResultOutput), nil
+		}).(LookupRepositoryResultOutput)
 }
 
 // A collection of arguments for invoking getRepository.

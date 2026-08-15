@@ -70,8 +70,12 @@ type LookupDirLegacyResult struct {
 }
 
 func LookupDirLegacyOutput(ctx *pulumi.Context, args LookupDirLegacyOutputArgs, opts ...pulumi.InvokeOption) LookupDirLegacyResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:hardware/mapping/getDirLegacy:getDirLegacy", args, LookupDirLegacyResultOutput{}, options).(LookupDirLegacyResultOutput)
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupDirLegacyResultOutput, error) {
+			args := v.(LookupDirLegacyArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:hardware/mapping/getDirLegacy:getDirLegacy", args, LookupDirLegacyResultOutput{}, options).(LookupDirLegacyResultOutput), nil
+		}).(LookupDirLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getDirLegacy.

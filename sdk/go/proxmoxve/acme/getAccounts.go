@@ -54,8 +54,10 @@ type GetAccountsResult struct {
 }
 
 func GetAccountsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetAccountsResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:acme/getAccounts:getAccounts", nil, GetAccountsResultOutput{}, options).(GetAccountsResultOutput)
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetAccountsResultOutput, error) {
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("proxmoxve:acme/getAccounts:getAccounts", nil, GetAccountsResultOutput{}, options).(GetAccountsResultOutput), nil
+	}).(GetAccountsResultOutput)
 }
 
 // A collection of values returned by getAccounts.

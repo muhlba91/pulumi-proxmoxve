@@ -86,8 +86,12 @@ type GetStatusResult struct {
 }
 
 func GetStatusOutput(ctx *pulumi.Context, args GetStatusOutputArgs, opts ...pulumi.InvokeOption) GetStatusResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:ceph/getStatus:getStatus", args, GetStatusResultOutput{}, options).(GetStatusResultOutput)
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetStatusResultOutput, error) {
+			args := v.(GetStatusArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:ceph/getStatus:getStatus", args, GetStatusResultOutput{}, options).(GetStatusResultOutput), nil
+		}).(GetStatusResultOutput)
 }
 
 // A collection of arguments for invoking getStatus.

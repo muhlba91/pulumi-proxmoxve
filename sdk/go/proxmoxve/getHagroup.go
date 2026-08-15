@@ -47,8 +47,12 @@ type LookupHagroupResult struct {
 }
 
 func LookupHagroupOutput(ctx *pulumi.Context, args LookupHagroupOutputArgs, opts ...pulumi.InvokeOption) LookupHagroupResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:index/getHagroup:getHagroup", args, LookupHagroupResultOutput{}, options).(LookupHagroupResultOutput)
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupHagroupResultOutput, error) {
+			args := v.(LookupHagroupArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:index/getHagroup:getHagroup", args, LookupHagroupResultOutput{}, options).(LookupHagroupResultOutput), nil
+		}).(LookupHagroupResultOutput)
 }
 
 // A collection of arguments for invoking getHagroup.

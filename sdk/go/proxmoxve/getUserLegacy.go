@@ -80,8 +80,12 @@ type LookupUserLegacyResult struct {
 }
 
 func LookupUserLegacyOutput(ctx *pulumi.Context, args LookupUserLegacyOutputArgs, opts ...pulumi.InvokeOption) LookupUserLegacyResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:index/getUserLegacy:getUserLegacy", args, LookupUserLegacyResultOutput{}, options).(LookupUserLegacyResultOutput)
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupUserLegacyResultOutput, error) {
+			args := v.(LookupUserLegacyArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:index/getUserLegacy:getUserLegacy", args, LookupUserLegacyResultOutput{}, options).(LookupUserLegacyResultOutput), nil
+		}).(LookupUserLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getUserLegacy.

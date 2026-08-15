@@ -45,8 +45,12 @@ type GetDatastoresLegacyResult struct {
 }
 
 func GetDatastoresLegacyOutput(ctx *pulumi.Context, args GetDatastoresLegacyOutputArgs, opts ...pulumi.InvokeOption) GetDatastoresLegacyResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:index/getDatastoresLegacy:getDatastoresLegacy", args, GetDatastoresLegacyResultOutput{}, options).(GetDatastoresLegacyResultOutput)
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetDatastoresLegacyResultOutput, error) {
+			args := v.(GetDatastoresLegacyArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:index/getDatastoresLegacy:getDatastoresLegacy", args, GetDatastoresLegacyResultOutput{}, options).(GetDatastoresLegacyResultOutput), nil
+		}).(GetDatastoresLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getDatastoresLegacy.

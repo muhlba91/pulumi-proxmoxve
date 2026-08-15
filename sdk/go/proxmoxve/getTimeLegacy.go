@@ -68,8 +68,12 @@ type LookupTimeLegacyResult struct {
 }
 
 func LookupTimeLegacyOutput(ctx *pulumi.Context, args LookupTimeLegacyOutputArgs, opts ...pulumi.InvokeOption) LookupTimeLegacyResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:index/getTimeLegacy:getTimeLegacy", args, LookupTimeLegacyResultOutput{}, options).(LookupTimeLegacyResultOutput)
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupTimeLegacyResultOutput, error) {
+			args := v.(LookupTimeLegacyArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:index/getTimeLegacy:getTimeLegacy", args, LookupTimeLegacyResultOutput{}, options).(LookupTimeLegacyResultOutput), nil
+		}).(LookupTimeLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getTimeLegacy.

@@ -83,8 +83,12 @@ type GetZonesResult struct {
 }
 
 func GetZonesOutput(ctx *pulumi.Context, args GetZonesOutputArgs, opts ...pulumi.InvokeOption) GetZonesResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:sdn/getZones:getZones", args, GetZonesResultOutput{}, options).(GetZonesResultOutput)
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetZonesResultOutput, error) {
+			args := v.(GetZonesArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:sdn/getZones:getZones", args, GetZonesResultOutput{}, options).(GetZonesResultOutput), nil
+		}).(GetZonesResultOutput)
 }
 
 // A collection of arguments for invoking getZones.

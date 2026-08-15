@@ -59,8 +59,10 @@ type GetVnetsLegacyResult struct {
 }
 
 func GetVnetsLegacyOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetVnetsLegacyResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:sdn/getVnetsLegacy:getVnetsLegacy", nil, GetVnetsLegacyResultOutput{}, options).(GetVnetsLegacyResultOutput)
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetVnetsLegacyResultOutput, error) {
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("proxmoxve:sdn/getVnetsLegacy:getVnetsLegacy", nil, GetVnetsLegacyResultOutput{}, options).(GetVnetsLegacyResultOutput), nil
+	}).(GetVnetsLegacyResultOutput)
 }
 
 // A collection of values returned by getVnetsLegacy.

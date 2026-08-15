@@ -59,8 +59,10 @@ type GetRolesLegacyResult struct {
 }
 
 func GetRolesLegacyOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetRolesLegacyResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:index/getRolesLegacy:getRolesLegacy", nil, GetRolesLegacyResultOutput{}, options).(GetRolesLegacyResultOutput)
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetRolesLegacyResultOutput, error) {
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("proxmoxve:index/getRolesLegacy:getRolesLegacy", nil, GetRolesLegacyResultOutput{}, options).(GetRolesLegacyResultOutput), nil
+	}).(GetRolesLegacyResultOutput)
 }
 
 // A collection of values returned by getRolesLegacy.

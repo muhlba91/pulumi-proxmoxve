@@ -57,8 +57,10 @@ type GetReplicationsResult struct {
 }
 
 func GetReplicationsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetReplicationsResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:index/getReplications:getReplications", nil, GetReplicationsResultOutput{}, options).(GetReplicationsResultOutput)
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetReplicationsResultOutput, error) {
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("proxmoxve:index/getReplications:getReplications", nil, GetReplicationsResultOutput{}, options).(GetReplicationsResultOutput), nil
+	}).(GetReplicationsResultOutput)
 }
 
 // A collection of values returned by getReplications.

@@ -85,8 +85,12 @@ type GetZonesLegacyResult struct {
 }
 
 func GetZonesLegacyOutput(ctx *pulumi.Context, args GetZonesLegacyOutputArgs, opts ...pulumi.InvokeOption) GetZonesLegacyResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:sdn/getZonesLegacy:getZonesLegacy", args, GetZonesLegacyResultOutput{}, options).(GetZonesLegacyResultOutput)
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetZonesLegacyResultOutput, error) {
+			args := v.(GetZonesLegacyArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:sdn/getZonesLegacy:getZonesLegacy", args, GetZonesLegacyResultOutput{}, options).(GetZonesLegacyResultOutput), nil
+		}).(GetZonesLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getZonesLegacy.

@@ -56,8 +56,10 @@ type GetAccountsLegacyResult struct {
 }
 
 func GetAccountsLegacyOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetAccountsLegacyResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:acme/getAccountsLegacy:getAccountsLegacy", nil, GetAccountsLegacyResultOutput{}, options).(GetAccountsLegacyResultOutput)
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetAccountsLegacyResultOutput, error) {
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("proxmoxve:acme/getAccountsLegacy:getAccountsLegacy", nil, GetAccountsLegacyResultOutput{}, options).(GetAccountsLegacyResultOutput), nil
+	}).(GetAccountsLegacyResultOutput)
 }
 
 // A collection of values returned by getAccountsLegacy.

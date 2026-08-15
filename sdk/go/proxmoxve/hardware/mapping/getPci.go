@@ -70,8 +70,12 @@ type LookupPciResult struct {
 }
 
 func LookupPciOutput(ctx *pulumi.Context, args LookupPciOutputArgs, opts ...pulumi.InvokeOption) LookupPciResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:hardware/mapping/getPci:getPci", args, LookupPciResultOutput{}, options).(LookupPciResultOutput)
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupPciResultOutput, error) {
+			args := v.(LookupPciArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:hardware/mapping/getPci:getPci", args, LookupPciResultOutput{}, options).(LookupPciResultOutput), nil
+		}).(LookupPciResultOutput)
 }
 
 // A collection of arguments for invoking getPci.

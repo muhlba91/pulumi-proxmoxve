@@ -89,8 +89,12 @@ type LookupVxlanResult struct {
 }
 
 func LookupVxlanOutput(ctx *pulumi.Context, args LookupVxlanOutputArgs, opts ...pulumi.InvokeOption) LookupVxlanResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:sdn/zone/getVxlan:getVxlan", args, LookupVxlanResultOutput{}, options).(LookupVxlanResultOutput)
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupVxlanResultOutput, error) {
+			args := v.(LookupVxlanArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:sdn/zone/getVxlan:getVxlan", args, LookupVxlanResultOutput{}, options).(LookupVxlanResultOutput), nil
+		}).(LookupVxlanResultOutput)
 }
 
 // A collection of arguments for invoking getVxlan.

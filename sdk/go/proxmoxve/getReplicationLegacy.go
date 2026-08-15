@@ -88,8 +88,12 @@ type LookupReplicationLegacyResult struct {
 }
 
 func LookupReplicationLegacyOutput(ctx *pulumi.Context, args LookupReplicationLegacyOutputArgs, opts ...pulumi.InvokeOption) LookupReplicationLegacyResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:index/getReplicationLegacy:getReplicationLegacy", args, LookupReplicationLegacyResultOutput{}, options).(LookupReplicationLegacyResultOutput)
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupReplicationLegacyResultOutput, error) {
+			args := v.(LookupReplicationLegacyArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:index/getReplicationLegacy:getReplicationLegacy", args, LookupReplicationLegacyResultOutput{}, options).(LookupReplicationLegacyResultOutput), nil
+		}).(LookupReplicationLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getReplicationLegacy.

@@ -81,8 +81,12 @@ type LookupVnetLegacyResult struct {
 }
 
 func LookupVnetLegacyOutput(ctx *pulumi.Context, args LookupVnetLegacyOutputArgs, opts ...pulumi.InvokeOption) LookupVnetLegacyResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:sdn/getVnetLegacy:getVnetLegacy", args, LookupVnetLegacyResultOutput{}, options).(LookupVnetLegacyResultOutput)
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupVnetLegacyResultOutput, error) {
+			args := v.(LookupVnetLegacyArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:sdn/getVnetLegacy:getVnetLegacy", args, LookupVnetLegacyResultOutput{}, options).(LookupVnetLegacyResultOutput), nil
+		}).(LookupVnetLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getVnetLegacy.

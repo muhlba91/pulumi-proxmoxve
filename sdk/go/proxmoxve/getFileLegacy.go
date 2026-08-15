@@ -144,8 +144,12 @@ type LookupFileLegacyResult struct {
 }
 
 func LookupFileLegacyOutput(ctx *pulumi.Context, args LookupFileLegacyOutputArgs, opts ...pulumi.InvokeOption) LookupFileLegacyResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:index/getFileLegacy:getFileLegacy", args, LookupFileLegacyResultOutput{}, options).(LookupFileLegacyResultOutput)
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupFileLegacyResultOutput, error) {
+			args := v.(LookupFileLegacyArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:index/getFileLegacy:getFileLegacy", args, LookupFileLegacyResultOutput{}, options).(LookupFileLegacyResultOutput), nil
+		}).(LookupFileLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getFileLegacy.

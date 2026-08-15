@@ -47,8 +47,12 @@ type LookupAccountLegacyResult struct {
 }
 
 func LookupAccountLegacyOutput(ctx *pulumi.Context, args LookupAccountLegacyOutputArgs, opts ...pulumi.InvokeOption) LookupAccountLegacyResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:acme/getAccountLegacy:getAccountLegacy", args, LookupAccountLegacyResultOutput{}, options).(LookupAccountLegacyResultOutput)
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupAccountLegacyResultOutput, error) {
+			args := v.(LookupAccountLegacyArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:acme/getAccountLegacy:getAccountLegacy", args, LookupAccountLegacyResultOutput{}, options).(LookupAccountLegacyResultOutput), nil
+		}).(LookupAccountLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getAccountLegacy.

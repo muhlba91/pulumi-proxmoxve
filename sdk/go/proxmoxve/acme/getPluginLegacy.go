@@ -74,8 +74,12 @@ type GetPluginLegacyResult struct {
 }
 
 func GetPluginLegacyOutput(ctx *pulumi.Context, args GetPluginLegacyOutputArgs, opts ...pulumi.InvokeOption) GetPluginLegacyResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:acme/getPluginLegacy:getPluginLegacy", args, GetPluginLegacyResultOutput{}, options).(GetPluginLegacyResultOutput)
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetPluginLegacyResultOutput, error) {
+			args := v.(GetPluginLegacyArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:acme/getPluginLegacy:getPluginLegacy", args, GetPluginLegacyResultOutput{}, options).(GetPluginLegacyResultOutput), nil
+		}).(GetPluginLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getPluginLegacy.

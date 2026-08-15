@@ -54,8 +54,10 @@ type GetPluginsResult struct {
 }
 
 func GetPluginsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetPluginsResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:acme/getPlugins:getPlugins", nil, GetPluginsResultOutput{}, options).(GetPluginsResultOutput)
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetPluginsResultOutput, error) {
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("proxmoxve:acme/getPlugins:getPlugins", nil, GetPluginsResultOutput{}, options).(GetPluginsResultOutput), nil
+	}).(GetPluginsResultOutput)
 }
 
 // A collection of values returned by getPlugins.

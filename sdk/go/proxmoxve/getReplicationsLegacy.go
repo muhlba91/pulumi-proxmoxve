@@ -59,8 +59,10 @@ type GetReplicationsLegacyResult struct {
 }
 
 func GetReplicationsLegacyOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetReplicationsLegacyResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:index/getReplicationsLegacy:getReplicationsLegacy", nil, GetReplicationsLegacyResultOutput{}, options).(GetReplicationsLegacyResultOutput)
+	return pulumi.ToOutput(0).ApplyT(func(int) (GetReplicationsLegacyResultOutput, error) {
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("proxmoxve:index/getReplicationsLegacy:getReplicationsLegacy", nil, GetReplicationsLegacyResultOutput{}, options).(GetReplicationsLegacyResultOutput), nil
+	}).(GetReplicationsLegacyResultOutput)
 }
 
 // A collection of values returned by getReplicationsLegacy.

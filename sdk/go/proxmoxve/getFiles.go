@@ -51,8 +51,12 @@ type GetFilesResult struct {
 }
 
 func GetFilesOutput(ctx *pulumi.Context, args GetFilesOutputArgs, opts ...pulumi.InvokeOption) GetFilesResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:index/getFiles:getFiles", args, GetFilesResultOutput{}, options).(GetFilesResultOutput)
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetFilesResultOutput, error) {
+			args := v.(GetFilesArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:index/getFiles:getFiles", args, GetFilesResultOutput{}, options).(GetFilesResultOutput), nil
+		}).(GetFilesResultOutput)
 }
 
 // A collection of arguments for invoking getFiles.

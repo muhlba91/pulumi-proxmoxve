@@ -92,8 +92,12 @@ type GetPciResult struct {
 }
 
 func GetPciOutput(ctx *pulumi.Context, args GetPciOutputArgs, opts ...pulumi.InvokeOption) GetPciResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:hardware/getPci:getPci", args, GetPciResultOutput{}, options).(GetPciResultOutput)
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetPciResultOutput, error) {
+			args := v.(GetPciArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:hardware/getPci:getPci", args, GetPciResultOutput{}, options).(GetPciResultOutput), nil
+		}).(GetPciResultOutput)
 }
 
 // A collection of arguments for invoking getPci.

@@ -90,8 +90,12 @@ type LookupSimpleLegacyResult struct {
 }
 
 func LookupSimpleLegacyOutput(ctx *pulumi.Context, args LookupSimpleLegacyOutputArgs, opts ...pulumi.InvokeOption) LookupSimpleLegacyResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:sdn/zone/getSimpleLegacy:getSimpleLegacy", args, LookupSimpleLegacyResultOutput{}, options).(LookupSimpleLegacyResultOutput)
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupSimpleLegacyResultOutput, error) {
+			args := v.(LookupSimpleLegacyArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:sdn/zone/getSimpleLegacy:getSimpleLegacy", args, LookupSimpleLegacyResultOutput{}, options).(LookupSimpleLegacyResultOutput), nil
+		}).(LookupSimpleLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getSimpleLegacy.

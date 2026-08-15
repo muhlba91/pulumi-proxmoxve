@@ -91,8 +91,12 @@ type LookupServerResult struct {
 }
 
 func LookupServerOutput(ctx *pulumi.Context, args LookupServerOutputArgs, opts ...pulumi.InvokeOption) LookupServerResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:metrics/getServer:getServer", args, LookupServerResultOutput{}, options).(LookupServerResultOutput)
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (LookupServerResultOutput, error) {
+			args := v.(LookupServerArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:metrics/getServer:getServer", args, LookupServerResultOutput{}, options).(LookupServerResultOutput), nil
+		}).(LookupServerResultOutput)
 }
 
 // A collection of arguments for invoking getServer.

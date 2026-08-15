@@ -113,8 +113,12 @@ type GetContainersLegacyResult struct {
 }
 
 func GetContainersLegacyOutput(ctx *pulumi.Context, args GetContainersLegacyOutputArgs, opts ...pulumi.InvokeOption) GetContainersLegacyResultOutput {
-	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-	return ctx.InvokeOutput("proxmoxve:index/getContainersLegacy:getContainersLegacy", args, GetContainersLegacyResultOutput{}, options).(GetContainersLegacyResultOutput)
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
+		ApplyT(func(v interface{}) (GetContainersLegacyResultOutput, error) {
+			args := v.(GetContainersLegacyArgs)
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("proxmoxve:index/getContainersLegacy:getContainersLegacy", args, GetContainersLegacyResultOutput{}, options).(GetContainersLegacyResultOutput), nil
+		}).(GetContainersLegacyResultOutput)
 }
 
 // A collection of arguments for invoking getContainersLegacy.
