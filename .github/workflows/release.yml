@@ -21,6 +21,7 @@ jobs:
     name: Release
     outputs:
       release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
     permissions:
       contents: write
       pull-requests: write
@@ -108,7 +109,7 @@ jobs:
           - nodejs
           - python
           - dotnet
-          # - java
+          - java
 
     steps:
       - uses: step-security/harden-runner@05e31511f85b41b11d1cf0ef85d0992719546e2c # v2.21.0
@@ -170,43 +171,49 @@ jobs:
           path: ${{ secrets.VAULT_PATH }}
           role: ${{ secrets.VAULT_ROLE }}
           secrets: |
-            github-pulumi-proxmoxve/data/nuget publish_key | NUGET_PUBLISH_KEY ;
             github-pulumi-proxmoxve/data/java signing_key | SIGNING_KEY ;
             github-pulumi-proxmoxve/data/java signing_key_id | SIGNING_KEY_ID ;
             github-pulumi-proxmoxve/data/java signing_password | SIGNING_PASSWORD ;
             github-pulumi-proxmoxve/data/sonatype publish_password | PUBLISH_REPO_PASSWORD ;
             github-pulumi-proxmoxve/data/sonatype publish_username | PUBLISH_REPO_USERNAME
 
-      - name: Publish .NET SDK
-        run: |
-          dotnet nuget push -s "${{ env.NUGET_FEED_URL }}" -k "${{ env.NUGET_PUBLISH_KEY }}" ${{github.workspace}}/sdk/dotnet/bin/Debug/*.nupkg
+      - uses: NuGet/login@8d196754b4036150537f80ac539e15c2f1028841 # v1
+        id: nuget-login
+        with:
+          user: ${{ github.repository_owner }}
+        if: matrix.language == 'dotnet'
+      - run: |
+          dotnet nuget push --source "${{ env.NUGET_FEED_URL }}" --api-key "${{ steps.nuget-login.outputs.NUGET_API_KEY }}" ${{github.workspace}}/sdk/dotnet/bin/Debug/*.nupkg
         if: matrix.language == 'dotnet'
 
-      - name: Publish Python SDK
-        uses: pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33 # release/v1
+      - uses: pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33 # release/v1
         with:
           skip-existing: true
           packages-dir: "${{ github.workspace }}/sdk/python/bin/dist/"
         if: matrix.language == 'python'
 
-      - name: Publish NodeJS SDK
-        working-directory: ./sdk/nodejs/bin
+      - working-directory: ./sdk/nodejs/bin
         run: |
           npm publish --access public --provenance
         if: matrix.language == 'nodejs'
 
-      - name: Java PACKAGE_VERSION
-        run: |
+      # Java SDK publishing is in alpha stage, so we will continue on error until it is supported (https://github.com/muhlba91/pulumi-proxmoxve/issues/66)
+      - run: |
           echo "PACKAGE_VERSION=${{ env.VERSION_NAME }}" >> $GITHUB_ENV
         if: matrix.language == 'java'
-      - name: Publish Java SDK
-        working-directory: sdk/java
+        continue-on-error: true
+      - working-directory: sdk/java
         run: gradle publishToSonatype closeAndReleaseSonatypeStagingRepository
         if: matrix.language == 'java'
-        continue-on-error: true # Java SDK publishing is in alpha stage
+        continue-on-error: true
+      - uses: softprops/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228 # v3.0.2
+        with:
+          tag_name: ${{ needs.release.outputs.tag_name }}
+          files: "${{ github.workspace }}/sdk/java/build/libs/io.muehlbachler.pulumi.proxmoxve.jar"
+        if: matrix.language == 'java'
+        continue-on-error: true
 
-      - name: Publish Go SDK
-        uses: pulumi/publish-go-sdk-action@0a153fa3c54227a3c0f7c97a57033ecfe94ab3c2
+      - uses: pulumi/publish-go-sdk-action@0a153fa3c54227a3c0f7c97a57033ecfe94ab3c2
         if: matrix.language == 'go'
         with:
           repository: ${{ github.repository }}
