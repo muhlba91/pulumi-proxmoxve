@@ -58,21 +58,9 @@ import (
 //				return err
 //			}
 //			_, err = proxmoxve.NewVmLegacy(ctx, "ubuntu_vm", &proxmoxve.VmLegacyArgs{
-//				SerialDevices: proxmoxve.VmLegacySerialDeviceArray{
-//					&proxmoxve.VmLegacySerialDeviceArgs{},
-//				},
-//				Name:        pulumi.String("terraform-provider-proxmox-ubuntu-vm"),
-//				Description: pulumi.String("Managed by Pulumi"),
-//				Tags: pulumi.StringArray{
-//					pulumi.String("terraform"),
-//					pulumi.String("ubuntu"),
-//				},
-//				NodeName: pulumi.String("first-node"),
-//				VmId:     pulumi.Int(4321),
 //				Agent: &proxmoxve.VmLegacyAgentArgs{
 //					Enabled: pulumi.Bool(false),
 //				},
-//				StopOnDestroy: pulumi.Bool(true),
 //				Startup: &proxmoxve.VmLegacyStartupArgs{
 //					Order:     pulumi.Int(3),
 //					UpDelay:   pulumi.Int(60),
@@ -86,21 +74,7 @@ import (
 //					Dedicated: pulumi.Int(2048),
 //					Floating:  pulumi.Int(2048),
 //				},
-//				Disks: proxmoxve.VmLegacyDiskArray{
-//					&proxmoxve.VmLegacyDiskArgs{
-//						DatastoreId: pulumi.String("local-lvm"),
-//						ImportFrom:  latestUbuntu22JammyQcow2Img.ID().ToIDOutput().ToStringOutput(),
-//						Interface:   pulumi.String("scsi0"),
-//					},
-//				},
 //				Initialization: &proxmoxve.VmLegacyInitializationArgs{
-//					IpConfigs: proxmoxve.VmLegacyInitializationIpConfigArray{
-//						&proxmoxve.VmLegacyInitializationIpConfigArgs{
-//							Ipv4: &proxmoxve.VmLegacyInitializationIpConfigIpv4Args{
-//								Address: pulumi.String("dhcp"),
-//							},
-//						},
-//					},
 //					UserAccount: &proxmoxve.VmLegacyInitializationUserAccountArgs{
 //						Keys: pulumi.StringArray{
 //							std.TrimspaceOutput(ctx, std.TrimspaceOutputArgs{
@@ -110,18 +84,35 @@ import (
 //						Password: ubuntuVmPassword.Result,
 //						Username: pulumi.String("ubuntu"),
 //					},
-//					UserDataFileId: pulumi.Any(cloudConfig.Id),
-//				},
-//				NetworkDevices: proxmoxve.VmLegacyNetworkDeviceArray{
-//					&proxmoxve.VmLegacyNetworkDeviceArgs{
-//						Bridge: pulumi.String("vmbr0"),
+//					IpConfigs: proxmoxve.VmLegacyInitializationIpConfigArray{
+//						&proxmoxve.VmLegacyInitializationIpConfigArgs{
+//							Ipv4: &proxmoxve.VmLegacyInitializationIpConfigIpv4Args{
+//								Address: pulumi.String("dhcp"),
+//							},
+//						},
 //					},
+//					UserDataFileId: pulumi.Any(cloudConfig.Id),
 //				},
 //				OperatingSystem: &proxmoxve.VmLegacyOperatingSystemArgs{
 //					Type: pulumi.String("l26"),
 //				},
 //				TpmState: &proxmoxve.VmLegacyTpmStateArgs{
 //					Version: pulumi.String("v2.0"),
+//				},
+//				Disks: proxmoxve.VmLegacyDiskArray{
+//					&proxmoxve.VmLegacyDiskArgs{
+//						DatastoreId: pulumi.String("local-lvm"),
+//						ImportFrom:  latestUbuntu22JammyQcow2Img.ID().ToIDOutput().ToStringOutput(),
+//						Interface:   pulumi.String("scsi0"),
+//					},
+//				},
+//				NetworkDevices: proxmoxve.VmLegacyNetworkDeviceArray{
+//					&proxmoxve.VmLegacyNetworkDeviceArgs{
+//						Bridge: pulumi.String("vmbr0"),
+//					},
+//				},
+//				SerialDevices: proxmoxve.VmLegacySerialDeviceArray{
+//					&proxmoxve.VmLegacySerialDeviceArgs{},
 //				},
 //				Virtiofs: proxmoxve.VmLegacyVirtiofArray{
 //					&proxmoxve.VmLegacyVirtiofArgs{
@@ -130,6 +121,15 @@ import (
 //						DirectIo: pulumi.Bool(true),
 //					},
 //				},
+//				Name:        pulumi.String("terraform-provider-proxmox-ubuntu-vm"),
+//				Description: pulumi.String("Managed by Pulumi"),
+//				Tags: pulumi.StringArray{
+//					pulumi.String("terraform"),
+//					pulumi.String("ubuntu"),
+//				},
+//				NodeName:      pulumi.String("first-node"),
+//				VmId:          pulumi.Int(4321),
+//				StopOnDestroy: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

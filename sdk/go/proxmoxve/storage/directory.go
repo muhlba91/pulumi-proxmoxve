@@ -29,6 +29,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := storage.NewDirectory(ctx, "example", &storage.DirectoryArgs{
+//				Backups: &storage.DirectoryBackupsArgs{
+//					MaxProtectedBackups: pulumi.Int(5),
+//					KeepDaily:           pulumi.Int(7),
+//				},
 //				ResourceId: pulumi.String("example-dir"),
 //				Path:       pulumi.String("/var/lib/vz"),
 //				Nodes: pulumi.StringArray{
@@ -39,10 +43,6 @@ import (
 //				},
 //				Shared:  pulumi.Bool(true),
 //				Disable: pulumi.Bool(false),
-//				Backups: &storage.DirectoryBackupsArgs{
-//					MaxProtectedBackups: pulumi.Int(5),
-//					KeepDaily:           pulumi.Int(7),
-//				},
 //			})
 //			if err != nil {
 //				return err

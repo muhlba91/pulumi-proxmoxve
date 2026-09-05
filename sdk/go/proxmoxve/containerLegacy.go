@@ -68,22 +68,10 @@ import (
 //				return err
 //			}
 //			_, err = proxmoxve.NewContainerLegacy(ctx, "ubuntu_container", &proxmoxve.ContainerLegacyArgs{
-//				Description:  pulumi.String("Managed by Pulumi"),
-//				NodeName:     pulumi.String("first-node"),
-//				VmId:         pulumi.Int(1234),
-//				Unprivileged: pulumi.Bool(true),
 //				Features: &proxmoxve.ContainerLegacyFeaturesArgs{
 //					Nesting: pulumi.Bool(true),
 //				},
 //				Initialization: &proxmoxve.ContainerLegacyInitializationArgs{
-//					Hostname: pulumi.String("terraform-provider-proxmox-ubuntu-container"),
-//					IpConfigs: proxmoxve.ContainerLegacyInitializationIpConfigArray{
-//						&proxmoxve.ContainerLegacyInitializationIpConfigArgs{
-//							Ipv4: &proxmoxve.ContainerLegacyInitializationIpConfigIpv4Args{
-//								Address: pulumi.String("dhcp"),
-//							},
-//						},
-//					},
 //					UserAccount: &proxmoxve.ContainerLegacyInitializationUserAccountArgs{
 //						Keys: pulumi.StringArray{
 //							std.TrimspaceOutput(ctx, std.TrimspaceOutputArgs{
@@ -92,11 +80,14 @@ import (
 //						},
 //						Password: ubuntuContainerPassword.Result,
 //					},
-//				},
-//				NetworkInterfaces: proxmoxve.ContainerLegacyNetworkInterfaceArray{
-//					&proxmoxve.ContainerLegacyNetworkInterfaceArgs{
-//						Name: pulumi.String("veth0"),
+//					IpConfigs: proxmoxve.ContainerLegacyInitializationIpConfigArray{
+//						&proxmoxve.ContainerLegacyInitializationIpConfigArgs{
+//							Ipv4: &proxmoxve.ContainerLegacyInitializationIpConfigIpv4Args{
+//								Address: pulumi.String("dhcp"),
+//							},
+//						},
 //					},
+//					Hostname: pulumi.String("terraform-provider-proxmox-ubuntu-container"),
 //				},
 //				Disk: &proxmoxve.ContainerLegacyDiskArgs{
 //					DatastoreId: pulumi.String("local-lvm"),
@@ -111,6 +102,15 @@ import (
 //					UpDelay:   pulumi.Int(60),
 //					DownDelay: pulumi.Int(60),
 //				},
+//				NetworkInterfaces: proxmoxve.ContainerLegacyNetworkInterfaceArray{
+//					&proxmoxve.ContainerLegacyNetworkInterfaceArgs{
+//						Name: pulumi.String("veth0"),
+//					},
+//				},
+//				Description:  pulumi.String("Managed by Pulumi"),
+//				NodeName:     pulumi.String("first-node"),
+//				VmId:         pulumi.Int(1234),
+//				Unprivileged: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -144,8 +144,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := proxmoxve.NewContainerLegacy(ctx, "custom_storage", &proxmoxve.ContainerLegacyArgs{
-//				NodeName: pulumi.String("first-node"),
-//				VmId:     pulumi.Int(1235),
 //				Disk: &proxmoxve.ContainerLegacyDiskArgs{
 //					DatastoreId: pulumi.String("tank-zfs"),
 //					Size:        pulumi.Int(32),
@@ -166,6 +164,8 @@ import (
 //						Path:   pulumi.String("/mnt/shared"),
 //					},
 //				},
+//				NodeName: pulumi.String("first-node"),
+//				VmId:     pulumi.Int(1235),
 //			})
 //			if err != nil {
 //				return err

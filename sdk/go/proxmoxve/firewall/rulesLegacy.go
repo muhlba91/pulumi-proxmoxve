@@ -30,8 +30,6 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := firewall.NewRulesLegacy(ctx, "inbound", &firewall.RulesLegacyArgs{
-//				NodeName: pulumi.Any(example.NodeName),
-//				VmId:     pulumi.Any(example.VmId),
 //				Rules: firewall.RulesLegacyRuleArray{
 //					&firewall.RulesLegacyRuleArgs{
 //						Type:    pulumi.String("in"),
@@ -57,6 +55,8 @@ import (
 //						Iface:         pulumi.String("net0"),
 //					},
 //				},
+//				NodeName: pulumi.Any(example.NodeName),
+//				VmId:     pulumi.Any(example.VmId),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				example,
 //				exampleProxmoxVirtualEnvironmentClusterFirewallSecurityGroup,

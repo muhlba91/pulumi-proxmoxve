@@ -37,11 +37,11 @@ import (
 //				return err
 //			}
 //			proxmoxVirtualEnvironmentCertificateSelfSignedCert, err := tls.NewSelfSignedCert(ctx, "proxmox_virtual_environment_certificate", &tls.SelfSignedCertArgs{
-//				PrivateKeyPem: proxmoxVirtualEnvironmentCertificate.PrivateKeyPem,
 //				Subject: &tls.SelfSignedCertSubjectArgs{
 //					CommonName:   pulumi.String("example.com"),
 //					Organization: pulumi.String("Terraform Provider for Proxmox"),
 //				},
+//				PrivateKeyPem:       proxmoxVirtualEnvironmentCertificate.PrivateKeyPem,
 //				ValidityPeriodHours: pulumi.Int(8760),
 //				AllowedUses: pulumi.StringArray{
 //					pulumi.String("key_encipherment"),

@@ -67,19 +67,12 @@ import (
 //			ctx.Export("ubuntuIsoSize", ubuntuIso.FileSize)
 //			ctx.Export("containerTemplateFormat", ubuntuContainerTemplate.FileFormat)
 //			_, err = proxmoxve.NewVm(ctx, "example", &proxmoxve.VmArgs{
-//				NodeName: pulumi.String("pve"),
-//				VmId:     100,
-//				Cdrom: proxmoxve.VmCdromMap{
-//					&proxmoxve.VmCdromArgs{
-//						FileId: pulumi.String(ubuntuIso.Id),
-//					},
-//				},
 //				Cpu: &proxmoxve.VmCpuArgs{
 //					Cores: pulumi.Int(2),
 //				},
-//				Memory: []map[string]int{
-//					{
-//						"dedicated": 2048,
+//				Cdrom: proxmoxve.VmCdromMap{
+//					&proxmoxve.VmCdromArgs{
+//						FileId: pulumi.String(ubuntuIso.Id),
 //					},
 //				},
 //				Disk: []map[string]interface{}{
@@ -89,11 +82,18 @@ import (
 //						"size":        20,
 //					},
 //				},
+//				Memory: []map[string]int{
+//					{
+//						"dedicated": 2048,
+//					},
+//				},
 //				NetworkDevice: []map[string]string{
 //					{
 //						"bridge": "vmbr0",
 //					},
 //				},
+//				NodeName: pulumi.String("pve"),
+//				VmId:     100,
 //			})
 //			if err != nil {
 //				return err
